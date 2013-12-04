@@ -348,7 +348,9 @@ var ExploreLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-        if (task.canExplore()) {
+        var statue = task.canExplore();
+
+        if (statue == CAN_EXPLORE) {
             this._lock();
 
             var that = this;
@@ -364,8 +366,10 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
             }, this._getTaskId());
-        } else {
+        } else if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
+        } else {
+            return;
         }
 
         if (noviceTeachingLayer.isNoviceTeaching()) {
@@ -390,27 +394,28 @@ var ExploreLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
     },
 
-    _toNext: function () {
+    _toNext: function (cb) {
         cc.log("ExploreLayer _toNext");
 
         var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
+        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
+
+        var that = this;
+
         passEffect.animationManager.setCompletedAnimationCallback(this, function () {
             passEffect.removeFromParent();
-            this.scheduleOnce(function () {
-                this._index += 1;
+            that._index += 1;
 
-                if (this._index > this._maxIndex) {
-                    this._unlock();
-                    this._onClickBack();
-                }
-
-                this.update();
-
-                this.scheduleOnce(this._unlock, 1);
-            }, 1);
+            if (that._index > that._maxIndex) {
+                that._unlock();
+                that._onClickBack();
+            }
+            that.scheduleOnce(that._unlock, 1);
+            cb();
+            that.update();
         });
     },
 
@@ -418,6 +423,18 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _showReward");
 
         if (this._reward) {
+
+            if (this._reward.money && this._reward.exp) {
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            }
+
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
                 cc.DelayTime.create(0.6),
@@ -493,22 +510,32 @@ var ExploreLayer = cc.Layer.extend({
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
 
-                this._reward = null;
+                var next = function () {
+                    if (upgradeReward) {
+                        var cb = function () {
+
+                            gameMark.updateGoldRewardMark(false);
+
+                            if (goldList) {
+                                GoldLayer.pop(goldList);
+                            }
+                        };
+                        PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
+                    } else if (goldList) {
+                        GoldLayer.pop(goldList);
+                    }
+
+                }
 
                 if (toNext) {
-                    this._toNext();
+                    this._toNext(next);
                 } else {
                     this._unlock();
+                    next();
                 }
 
-                if (goldList) {
-                    GoldLayer.pop(goldList);
-                }
+                this._reward = null;
 
-                if (upgradeReward) {
-                    PlayerUpgradeLayer.pop(upgradeReward);
-                    gameMark.updateGoldRewardMark(false);
-                }
             }, 1);
 
             return 1;
@@ -595,43 +622,26 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _openBox");
+        cc.log("TaskLayer _showBox");
 
-        var boxAction = cc.Sequence.create(
-            cc.Spawn.create(
-                cc.MoveBy.create(0.3, cc.p(0, -165)),
-                cc.ScaleTo.create(0.3, 1, 1)
-            ),
-            cc.CallFunc.create(
-                this._openBox,
-                this
-            )
-        );
+        var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
+        boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
+        this.addChild(boxEffect);
 
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-        this._closeBoxSprite.setScale(0.9);
-        this._closeBoxSprite.setVisible(true);
-
-        this._openBoxSprite.setVisible(false);
-
-        this._closeBoxSprite.runAction(boxAction);
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            boxEffect.removeFromParent();
+        });
     },
 
     _openBox: function () {
         cc.log("TaskLayer _openBox");
 
-        this._closeBoxSprite.setVisible(false);
-        this._openBoxSprite.setVisible(true);
-
         var that = this;
         var cb = function () {
-            that._openBoxSprite.setVisible(false);
             that.update();
         };
 
-        this.scheduleOnce(function () {
-            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
-        }, 0.5);
+        LotteryCardLayer.pop({card: this._reward.card, cb: cb});
     },
 
     _onBuyPower: function () {

@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `created` DATETIME NOT NULL,
   `userId` INT(10) UNSIGNED NOT NULL,
   `areaId` SMALLINT(5) UNSIGNED NOT NULL,
   `name` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -124,5 +124,23 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `onlineUser`;
+CREATE TABLE IF NOT EXISTS `onlineUser` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `lvDistribution`;
+CREATE TABLE IF NOT EXISTS `lvDistribution` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` Date,
+  `lv` INT(10) UNSIGNED DEFAULT '0',
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  `playerCreateDate` Date,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

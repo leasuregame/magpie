@@ -89,12 +89,12 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._powerLabel.setPosition(cc.p(427, 36));
         this.addChild(this._powerLabel);
 
-        var vipLv = player.get("vip");
-        if (vipLv) {
-            var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            vipSprite.setPosition(cc.p(410, 87));
-            this.addChild(vipSprite);
-        }
+        var vipLv = player.get("vip") || 0;
+
+        var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
+        vipSprite.setPosition(cc.p(410, 87));
+        this.addChild(vipSprite);
+
 
         return true;
     },

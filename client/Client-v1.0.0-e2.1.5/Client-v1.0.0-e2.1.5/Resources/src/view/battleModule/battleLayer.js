@@ -22,6 +22,7 @@ var BatterLayer = cc.Layer.extend({
     _tipNode: null,
     _spiritNode: null,
     _locate: null,
+    _isPlayback: false,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -33,6 +34,7 @@ var BatterLayer = cc.Layer.extend({
         this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
+        this._isPlayback = battleLog.get("isPlayback");
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
 
@@ -81,12 +83,21 @@ var BatterLayer = cc.Layer.extend({
             }
         }
 
-        this._backItem = cc.MenuItemImage.create(
-            main_scene_image.button12,
-            main_scene_image.button12s,
-            this._onClickBack,
-            this
-        );
+        if (this._isPlayback) {
+            this._backItem = cc.MenuItemImage.create(
+                main_scene_image.button26,
+                main_scene_image.button26s,
+                this._onClickBack,
+                this
+            );
+        } else {
+            this._backItem = cc.MenuItemImage.create(
+                main_scene_image.button12,
+                main_scene_image.button12s,
+                this._onClickBack,
+                this
+            );
+        }
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
 
         var menu = cc.Menu.create(this._backItem);
@@ -420,7 +431,7 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
+//                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
                     effect1Node.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
@@ -722,7 +733,9 @@ var BatterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (gameData.player.get("lv") < 10) {
+        if (this._isPlayback) {
+            this.end();
+        } else if (gameData.player.get("lv") < 10) {
             TipLayer.tip("10级以后，可以跳过战斗");
         } else {
             this.end();

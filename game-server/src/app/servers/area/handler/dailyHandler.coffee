@@ -10,6 +10,7 @@ Handler = (@app) ->
 Handler::lottery = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  goldResume = 20
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -21,15 +22,16 @@ Handler::lottery = (msg, session, next) ->
     if player.dailyGift.lotteryCount <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
-    if player.gold < 10
+    if player.gold < goldResume
       return next(null, {code: 501, msg: '魔石不足'})
 
     if player.dailyGift.lotteryFreeCount > 0
       ### 免费抽奖次数减一 ###
+      goldResume = 0
       player.updateGift 'lotteryFreeCount', player.dailyGift.lotteryFreeCount-1
     else
-      ### 无免费次数，则消耗10个魔石 ###
-      player.decrease('gold', 10)
+      ### 无免费次数，则消耗20个魔石 ###
+      player.decrease('gold', goldResume)
 
     ### 抽奖次数减一 ###
     player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
@@ -45,7 +47,8 @@ Handler::lottery = (msg, session, next) ->
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
       lotteryCount: player.toJson().dailyGift.lotteryCount,
-      lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount
+      lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount,
+      goldResume: goldResume
       }
     })
 
@@ -79,7 +82,7 @@ Handler::signIn = (msg, session, next) ->
 Handler::reSignIn = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  goldResume = 10
+  goldResume = 20
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -131,10 +134,10 @@ Handler::getSignInGift = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能重复领取'})
 
     setIfExist = (attrs) ->
-      player.increase att, val for att, val of rew when att in attrs
+      player.increase att, val for att, val of rew when att in attrs and val > 0
       return
 
-    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold']
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments']
     player.incSpirit(rew.spirit)
     if rew.lottery_free_count > 0
       dg = utility.deepCopy(player.dailyGift)

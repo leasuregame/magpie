@@ -27,9 +27,13 @@ var MainMenuLayer = cc.Layer.extend({
         ShopLayer
     ],
 
+    _passGuide: null,
+    _tournamentGuide: null,
+
     onEnter: function () {
         this._super();
         this.update();
+        this.updateGuide();
     },
 
     init: function () {
@@ -93,9 +97,46 @@ var MainMenuLayer = cc.Layer.extend({
         this._markSprite.setVisible(false);
     },
 
+    updateGuide: function () {
+        cc.log("MainMenuLayer updateGuide");
+
+        var basePoint = this._mainMenuLayerFit.itemBasePoint;
+        var offsetX = this._mainMenuLayerFit.itemOffsetX;
+
+        if (gameGuide.get("passGuide")) {
+            this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._passGuide.setRotation(180);
+            this._passGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+            this.addChild(this._passGuide);
+        }
+
+        if (gameGuide.get("tournamentGuide")) {
+            this._tournamentGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._tournamentGuide.setRotation(180);
+            this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+            this.addChild(this._tournamentGuide);
+        }
+    },
+
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            if (index == 2) {
+                if (this._passGuide) {
+                    this._passGuide.removeFromParent();
+                    this._passGuide = null;
+                    gameGuide.set("passGuide", false);
+                }
+            }
+
+            if (index == 3) {
+                if (this._tournamentGuide) {
+                    this._tournamentGuide.removeFromParent();
+                    this._tournamentGuide = null;
+                    gameGuide.set("tournamentGuide", false);
+                }
+            }
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 

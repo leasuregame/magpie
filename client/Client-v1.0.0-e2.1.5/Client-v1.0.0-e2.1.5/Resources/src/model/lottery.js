@@ -44,12 +44,12 @@ var Lottery = Entity.extend({
             var energy = player.get("energy");
 
             if (level == 1 && energy < 200) {
-                TipLayer.tip("活力值不足");
+                TipLayer.tip("活力点不足");
                 return false;
             }
 
             if (level == 2 && energy < 1000) {
-                TipLayer.tip("活力值不足");
+                TipLayer.tip("活力点不足");
                 return false;
             }
         } else if (type == LOTTERY_BY_GOLD) {

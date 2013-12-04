@@ -118,7 +118,7 @@ describe("Battle Log Data Access Object", function () {
         });
 
         describe("when battle log no exist", function () {
-            it("should can no get battle log by id", function (done) {
+            it("should can not get battle log by id", function (done) {
                 dao.battleLog.fetchOne({where: {own: data.own}}, function (err, res) {
                     should.strictEqual(res, null);
                     err.msg.should.be.equal("can not find battleLog");
@@ -126,7 +126,7 @@ describe("Battle Log Data Access Object", function () {
                 })
             });
 
-            it("should can no get battle log by own id", function (done) {
+            it("should can not get battle log by own id", function (done) {
                 dao.battleLog.fetchMany({where: {own: data.own}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.eql([]);
@@ -134,7 +134,7 @@ describe("Battle Log Data Access Object", function () {
                 })
             });
 
-            it("should can no get battle log by enemy id", function (done) {
+            it("should can not get battle log by enemy id", function (done) {
                 dao.battleLog.fetchMany({where: {enemy: data.enemy}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.eql([]);

@@ -59,10 +59,12 @@ var TreasureHunt = Entity.extend({
                 var id = msg.resourceId;
                 var table = outputTables.treasure_hunt.rows[id];
 
+                var goldResume = data.msg.goldResume;
+
                 gameData.player.add(table.type, table.value);
 
                 if (that._freeCount <= 0) {
-                    gameData.player.add("gold", -10);
+                    gameData.player.add("gold", -goldResume);
                 }
 
                 that._count = msg.lotteryCount;

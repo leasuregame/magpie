@@ -20,6 +20,7 @@ var TournamentLayer = cc.Layer.extend({
     _scrollView: null,
     _rewardLabel: null,
     _rewardItem: null,
+    _rewardEffect: null,
     _menu: null,
     _expProgress: null,
     _lvLabel: null,
@@ -124,11 +125,12 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickRankReward,
             this
         );
+        this._rewardItem.setVisible(false);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -177,7 +179,7 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop(this._upgradeReward);
+            PlayerUpgradeLayer.pop({reward: this._upgradeReward});
             this._upgradeReward = null;
         }
 
@@ -210,6 +212,15 @@ var TournamentLayer = cc.Layer.extend({
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
+
+            if (reward.canReceive) {
+                if (!this._rewardEffect) {
+                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                    this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
+                    this.addChild(this._rewardEffect, 1);
+                }
+            }
+
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
             this._rewardItem.setVisible(false);
@@ -226,7 +237,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
-        var height = len * 135;
+        var height = len * 135 + 80;
         var playerId = gameData.player.get("id");
         var own = len;
 
@@ -236,10 +247,20 @@ var TournamentLayer = cc.Layer.extend({
             if (playerId == this._rankList[i].playerId) {
                 own = i;
             }
-
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
-            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
+
+            if (i < 10) {
+                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
+            } else {
+                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1) - 55));
+            }
+
+            if (i == 9) {
+                var line = cc.Sprite.create(main_scene_image.icon296);
+                line.setPosition(cc.p(310, height - 135 * (i + 1) - 15));
+                scrollViewLayer.addChild(line, 2);
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
@@ -290,6 +311,12 @@ var TournamentLayer = cc.Layer.extend({
         var that = this;
         gameData.tournament.receive(function (reward) {
             lz.tipReward(reward);
+
+            if (that._rewardEffect) {
+                that._rewardEffect.removeFromParent();
+                that._rewardEffect = null;
+            }
+
             that._updateRankRewardItem();
         });
     },
@@ -375,7 +402,16 @@ var TournamentLayer = cc.Layer.extend({
                 lz.tipReward(data);
             }, id, count);
         }
+    },
+
+    showTip: function() {
+        cc.log("TournamentLayer showTip");
+        var that = this;
+        TournamentTipLayer.pop(function() {
+            that._onClickBuyCount();
+        });
     }
+
 });
 
 TournamentLayer.create = function () {

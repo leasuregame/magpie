@@ -12,7 +12,7 @@
  * */
 
 
-var CardEvolutionLayer = cc.Layer.extend({
+var CardEvolutionLabel = cc.Layer.extend({
     _cardEvolutionLayerFit: null,
 
     _leadCard: null,
@@ -28,6 +28,9 @@ var CardEvolutionLayer = cc.Layer.extend({
     _selectRetinueCardItem: null,
     _evolutionItem: null,
     _selectLeadCardIcon: null,
+
+    _evolutionEffect: null,
+    _index: null,
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -281,19 +284,25 @@ var CardEvolutionLayer = cc.Layer.extend({
             cardIdList.push(this._retinueCard[i].get("id"));
         }
 
-        var that = this;
-        this._leadCard.evolution(function (data) {
-            cc.log(data);
+        var card = lz.clone(this._leadCard);
 
+        var that = this;
+        this._leadCard.evolution(function (state) {
+            cc.log(state);
             that._retinueCard = [];
+            if(state != EVOLUTION_ERROR) {
+                CardEvolutionLayer.pop({card: card, state: state});
+            }
             that.update();
+
         }, cardIdList);
     }
+
 });
 
 
-CardEvolutionLayer.create = function () {
-    var ret = new CardEvolutionLayer();
+CardEvolutionLabel.create = function () {
+    var ret = new CardEvolutionLabel();
 
     if (ret && ret.init()) {
         return ret;

@@ -71,10 +71,17 @@ var TournamentLabel = cc.Node.extend({
         nameLabel.setPosition(cc.p(30, 99));
         this.addChild(nameLabel);
 
-        var rankingLabel = StrokeLabel.create(this._player.ranking, "STHeitiTC-Medium", 38);
-        rankingLabel.setColor(cc.c3b(255, 242, 206));
-        rankingLabel.setPosition(cc.p(95, 42));
-        this.addChild(rankingLabel);
+        var ranking = this._player.ranking;
+        if (ranking <= 3) {
+            var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
+            rankingIcon.setPosition(cc.p(95, 44));
+            this.addChild(rankingIcon);
+        } else {
+            var rankingLabel = StrokeLabel.create(ranking, "STHeitiTC-Medium", 38);
+            rankingLabel.setColor(cc.c3b(255, 242, 206));
+            rankingLabel.setPosition(cc.p(95, 42));
+            this.addChild(rankingLabel);
+        }
 
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
@@ -185,19 +192,39 @@ var TournamentLabel = cc.Node.extend({
                     LineUpDetail.pop(data);
                 }, this._player.playerId);
             } else {
-                gameData.tournament.defiance(function (data) {
-                    cc.log(data);
 
-                    if (data) {
-                        if (data.upgradeReward) {
-                            that._target._setPlayerUpgradeReward(data.upgradeReward);
-                        }
+                var tournament = gameData.tournament;
+                var count = tournament.get("count");
 
-                        BattlePlayer.getInstance().play(data.battleLogId);
-                    } else {
-                        that._target.update();
+                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed") || 1;
+                isFirstCountUsed = parseInt(isFirstCountUsed);
+                if (count == 0 && isFirstCountUsed == 1) {
+
+                    sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 0);
+                    this._target.showTip();
+
+                } else {
+
+                    if(count != 0) {
+                        sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 1);
                     }
-                }, this._player.playerId, this._player.ranking);
+
+                    gameData.tournament.defiance(function (data) {
+                        cc.log(data);
+
+                        if (data) {
+                            if (data.upgradeReward) {
+                                that._target._setPlayerUpgradeReward(data.upgradeReward);
+                            }
+
+                            BattlePlayer.getInstance().play(data.battleLogId);
+                        } else {
+                            that._target.update();
+                        }
+                    }, this._player.playerId, this._player.ranking);
+
+
+                }
             }
         }
     }

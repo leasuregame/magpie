@@ -19,6 +19,8 @@ var CardLibraryLayer = cc.Layer.extend({
     _cardLockIcon: {},
     _effect: {},
     _scrollView: null,
+    _isSort: null,
+    _selectIcon: null,
 
     onEnter: function () {
         cc.log("CardLibraryLayer onEnter");
@@ -44,6 +46,8 @@ var CardLibraryLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._cardLibraryLayerFit = gameFit.mainScene.cardLibraryLayer;
+
+        this._isSort = false;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -72,6 +76,41 @@ var CardLibraryLayer = cc.Layer.extend({
         tipLabel.setPosition(this._cardLibraryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        var sortItem = cc.MenuItemImage.create(
+            main_scene_image.icon301,
+            main_scene_image.icon301,
+            this._onClickSort,
+            this
+        );
+        sortItem.setAnchorPoint(cc.p(0, 0.5));
+        sortItem.setPosition(this._cardLibraryLayerFit.sortItemPoint);
+
+        this._selectIcon = cc.Sprite.create(main_scene_image.icon20);
+        this._selectIcon.setVisible(this._isSort);
+        this._selectIcon.setPosition(this._cardLibraryLayerFit.selectIconPoint);
+        this.addChild(this._selectIcon, 2);
+
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._cardLibraryLayerFit.backItemPoint);
+        var menu = cc.Menu.create(sortItem, backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
+        this.addCardLibrary();
+
+        return true;
+    },
+
+    addCardLibrary: function () {
+        cc.log("CardLibraryLayer addCardLibrary isSort: " + this._isSort);
+
+        gameData.cardLibrary.isSortByState(this._isSort);
+
         var cardLibrary = gameData.cardLibrary.get("cardLibrary");
         var len = cardLibrary.length;
 
@@ -81,6 +120,10 @@ var CardLibraryLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
+
+        if (this._scrollView) {
+            this._scrollView.removeFromParent();
+        }
 
         this._cardItem = {};
         this._cardLockIcon = {};
@@ -112,18 +155,6 @@ var CardLibraryLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._cardLibraryLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
-
-        return true;
     },
 
     update: function () {
@@ -168,6 +199,14 @@ var CardLibraryLayer = cc.Layer.extend({
         }
     },
 
+    _onClickSort: function () {
+        cc.log("CardLibraryLayer _onClickSort");
+        this._isSort = !this._isSort;
+        this._selectIcon.setVisible(this._isSort);
+        this.addCardLibrary();
+        this.update();
+    },
+
     _onClickCard: function (data) {
         return function () {
             cc.log("CardLibraryLayer _onClickCard: " + data.id);
@@ -184,6 +223,22 @@ var CardLibraryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
+
+                    var effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                    effect.setPosition(cc.p(54, 54));
+                    that._cardItem[id].addChild(effect);
+
+                    cc.log(effect);
+
+                    effect.animationManager.setCompletedAnimationCallback(this, function () {
+                        var lightEffect = cc.BuilderReader.load(main_scene_image.uiEffect21, this);
+                        lightEffect.setPosition(cc.p(100, 100));
+                        that._cardItem[id].addChild(lightEffect);
+                        lightEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                            lightEffect.removeFromParent();
+                        });
+                        effect.removeFromParent();
+                    });
 
                     TipLayer.tipNoBg("活力点: +" + data);
 

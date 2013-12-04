@@ -37,24 +37,28 @@ var AREA_STATUS = {
     10: {
         statusName: "新区",
         color: cc.c3b(108, 218, 0),
+        url: main_scene_image.icon292,
         canLogin: true
     },
 
     20: {
         statusName: "正常",
         color: cc.c3b(0, 195, 244),
+        url: main_scene_image.icon293,
         canLogin: true
     },
 
     30: {
         statusName: "爆满",
         color: cc.c3b(226, 0, 0),
+        url: main_scene_image.icon294,
         canLogin: true
     },
 
     40: {
         statusName: "维护",
         color: cc.c3b(120, 120, 120),
+        url: main_scene_image.icon295,
         canLogin: false
     }
 };
@@ -86,7 +90,8 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  " + status.statusName;
+            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  ";// + status.statusName;
+            this._areaList[i].url = status.url;
         }
     },
 
@@ -259,7 +264,7 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                LogoutLayer.pop("网络不给力，点击确定重新连接...");
+                LogoutLayer.pop("网络断开，点击确定重新连接...");
             });
 
             that._closeAllWaitLayer();
@@ -354,8 +359,13 @@ var Server = Entity.extend({
         cc.log(cc.Director.getInstance().getRunningScene());
         cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
 
+        var point = cc.p(320, 568);
+        if (gameDevice != "Iphone5") {
+            point = cc.p(360, 480);
+        }
+
         var waitSprite = cc.Sprite.create(main_scene_image.icon42);
-        waitSprite.setPosition(cc.p(320, 568));
+        waitSprite.setPosition(point);
         this._waitLayer.addChild(waitSprite);
 
         waitSprite.setOpacity(0);

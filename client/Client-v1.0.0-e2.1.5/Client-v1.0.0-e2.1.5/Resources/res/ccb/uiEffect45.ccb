@@ -604,8 +604,6 @@
 						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2201,9 +2199,9 @@
 						<key>displayName</key>
 						<string>card_frame4</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>card_frame</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -3219,9 +3217,9 @@
 						<key>displayName</key>
 						<string>card12_half1</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>card_half</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -3380,9 +3378,9 @@
 						<key>displayName</key>
 						<string>card_icon1</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>card_icon</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -3451,6 +3449,8 @@
 								<integer>255</integer>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -4822,8 +4822,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>startSetStar</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -4838,8 +4838,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>_setCard</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>

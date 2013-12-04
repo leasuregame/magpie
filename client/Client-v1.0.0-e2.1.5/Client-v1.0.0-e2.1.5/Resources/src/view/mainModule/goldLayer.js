@@ -79,8 +79,8 @@ var GoldLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var isFirstGold = sys.localStorage.getItem(gameData.user.get('name') + "firstGold") || 1;
-        if (isFirstGold == 1) {
+        var isFirstGold = parseInt(sys.localStorage.getItem(gameData.user.get("name") + "firstGold")) || 0;
+        if (!isFirstGold) {
             this._tipText = cc.LabelTTF.create("点击大魔石，化为小魔石", "STHeitiTC-Medium", 40);
             this._tipText.setAnchorPoint(cc.p(0.5, 0.5));
             this._tipText.setPosition(this._goldLayerFit.tipTextPoint);
@@ -91,17 +91,13 @@ var GoldLayer = LazyLayer.extend({
             this._tipText2.setPosition(this._goldLayerFit.tipText2Point);
             this.addChild(this._tipText2);
 
-            sys.localStorage.setItem(gameData.user.get('name') + "firstGold", 0);
+            sys.localStorage.setItem(gameData.user.get("name") + "firstGold", 1);
         }
 
-        this._goldBoxItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.icon221,
-            main_scene_image.icon221,
-            this._onClickGoldBox,
-            this
-        );
+        this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);
+        this._goldBoxItem.controller.goldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
-        menu.addChild(this._goldBoxItem);
+        this.addChild(this._goldBoxItem);
 
         var action = cc.Sequence.create(
             cc.Spawn.create(
@@ -140,9 +136,9 @@ var GoldLayer = LazyLayer.extend({
         if (value > 20) {
             scale = 0.45;
         } else if (value > 10) {
-            scale = 0.35;
+            scale = 0.37;
         } else if (value > 5) {
-            scale = 0.25;
+            scale = 0.30;
         }
 
         return scale;
@@ -292,7 +288,11 @@ var GoldLayer = LazyLayer.extend({
         if (this._tipText2 != null) {
             this._tipText2.removeFromParent();
         }
-        this._open();
+        this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
+            this._goldBoxItem.removeFromParent();
+            this._open();
+        });
     },
 
     _onClickGold: function (index) {

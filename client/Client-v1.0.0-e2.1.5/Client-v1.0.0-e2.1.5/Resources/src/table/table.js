@@ -1,6 +1,18 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
@@ -25,18 +37,6 @@ var nameChanged = {
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -91,6 +91,8 @@ var nameChanged = {
     "任务怪物属性表": "task_card",
     "task_config": "任务卡牌配置表",
     "任务卡牌配置表": "task_config",
+    "task_through_reward": "通关仙币奖励",
+    "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
     "recharge": "充值类型",
@@ -331,281 +333,6 @@ var outputTables = {
                 "desc": "累计消耗魔石100000",
                 "gold": 50,
                 "energy": 500
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[13,43,218,248,153,123]",
-                "star4": "[59]"
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "pass": 10,
-                "card4_position": 30,
-                "lottery": 20,
-                "card5_position": 50,
-                "ranking_list": 40
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 10000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 25000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 50000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 9999999,
-                "energy": 99999,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 1000,
-                "energy": 50
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 1000,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 2000,
-                "lottery_free_count": 5,
-                "gold": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 3000,
-                "lottery_free_count": 10,
-                "gold": 300
             }
         }
     },
@@ -1065,67 +792,6 @@ var outputTables = {
             }
         },
         "rows": {
-            "1": {
-                "id": 1,
-                "number": 1,
-                "name": "石猴·孙悟空",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 103,
-                "description": "不要老是跟我提五百年后的事情，烦不烦啊！",
-                "url": 3
-            },
-            "2": {
-                "id": 2,
-                "number": 1,
-                "name": "美猴王·孙悟空",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 125,
-                "description": "凭什么我是妖，你是仙，户口本上有写么？",
-                "url": 3
-            },
-            "3": {
-                "id": 3,
-                "number": 1,
-                "name": "齐天大圣·孙悟空",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 352,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
-                "url": 3
-            },
-            "4": {
-                "id": 4,
-                "number": 1,
-                "name": "行者·孙悟空",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 503,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
-                "url": 3
-            },
-            "5": {
-                "id": 5,
-                "number": 1,
-                "name": "斗战圣佛·孙悟空",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 651,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
-                "url": 3
-            },
             "6": {
                 "id": 6,
                 "number": 2,
@@ -1135,7 +801,7 @@ var outputTables = {
                 "atk": 45,
                 "hp": 129,
                 "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
-                "url": 3
+                "url": 2
             },
             "7": {
                 "id": 7,
@@ -1146,7 +812,7 @@ var outputTables = {
                 "atk": 91,
                 "hp": 275,
                 "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
-                "url": 3
+                "url": 2
             },
             "8": {
                 "id": 8,
@@ -1157,9 +823,9 @@ var outputTables = {
                 "atk": 142,
                 "hp": 398,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
-                "url": 3
+                "url": 2
             },
             "9": {
                 "id": 9,
@@ -1170,9 +836,9 @@ var outputTables = {
                 "atk": 182,
                 "hp": 543,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
-                "url": 3
+                "url": 2
             },
             "10": {
                 "id": 10,
@@ -1183,9 +849,9 @@ var outputTables = {
                 "atk": 255,
                 "hp": 713,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "那年，我管银河系。",
-                "url": 3
+                "url": 2
             },
             "11": {
                 "id": 11,
@@ -1248,189 +914,6 @@ var outputTables = {
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
-            "16": {
-                "id": 16,
-                "number": 4,
-                "name": "大力·牛魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 121,
-                "description": "力气大不是罪，不能什么脏活累活都叫我做啊！",
-                "url": 3
-            },
-            "17": {
-                "id": 17,
-                "number": 4,
-                "name": "芭蕉洞主·牛魔王",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 151,
-                "description": "我按照芭蕉叶的样子，给你铸了把扇子，妹纸，你喜欢么？",
-                "url": 3
-            },
-            "18": {
-                "id": 18,
-                "number": 4,
-                "name": "平天大圣·牛魔王",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
-                "url": 3
-            },
-            "19": {
-                "id": 19,
-                "number": 4,
-                "name": "众神之神·牛魔王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 520,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
-                "url": 3
-            },
-            "20": {
-                "id": 20,
-                "number": 4,
-                "name": "放下屠刀·牛魔王",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 675,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
-                "url": 3
-            },
-            "21": {
-                "id": 21,
-                "number": 5,
-                "name": "唐僧·金蝉子",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
-                "url": 3
-            },
-            "22": {
-                "id": 22,
-                "number": 5,
-                "name": "普渡众佛·金蝉子",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 249,
-                "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
-                "url": 3
-            },
-            "23": {
-                "id": 23,
-                "number": 5,
-                "name": "燃灯道人·金蝉子",
-                "star": 3,
-                "lv": 1,
-                "atk": 148,
-                "hp": 377,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
-                "url": 3
-            },
-            "24": {
-                "id": 24,
-                "number": 5,
-                "name": "功德佛·金蝉子",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 522,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
-                "url": 3
-            },
-            "25": {
-                "id": 25,
-                "number": 5,
-                "name": "真身·金蝉子",
-                "star": 5,
-                "lv": 1,
-                "atk": 272,
-                "hp": 676,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
-                "url": 3
-            },
-            "26": {
-                "id": 26,
-                "number": 6,
-                "name": "龟兹公主·铁扇公主",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 105,
-                "description": "那一年，我在龟兹，那一年，我是公主。",
-                "url": 3
-            },
-            "27": {
-                "id": 27,
-                "number": 6,
-                "name": "罗刹女·铁扇公主",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 225,
-                "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
-                "url": 3
-            },
-            "28": {
-                "id": 28,
-                "number": 6,
-                "name": "芭蕉扇·铁扇公主",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 341,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "你热么？我给你扇扇？",
-                "url": 3
-            },
-            "29": {
-                "id": 29,
-                "number": 6,
-                "name": "牛夫人·铁扇公主",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 501,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
-                "url": 3
-            },
-            "30": {
-                "id": 30,
-                "number": 6,
-                "name": "情比金坚·铁扇公主",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 630,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
-                "url": 3
-            },
             "31": {
                 "id": 31,
                 "number": 7,
@@ -1440,7 +923,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 125,
                 "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
-                "url": 3
+                "url": 7
             },
             "32": {
                 "id": 32,
@@ -1451,7 +934,7 @@ var outputTables = {
                 "atk": 101,
                 "hp": 251,
                 "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
-                "url": 3
+                "url": 7
             },
             "33": {
                 "id": 33,
@@ -1462,9 +945,9 @@ var outputTables = {
                 "atk": 151,
                 "hp": 371,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
-                "url": 3
+                "url": 7
             },
             "34": {
                 "id": 34,
@@ -1475,9 +958,9 @@ var outputTables = {
                 "atk": 205,
                 "hp": 519,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
-                "url": 3
+                "url": 7
             },
             "35": {
                 "id": 35,
@@ -1488,70 +971,9 @@ var outputTables = {
                 "atk": 277,
                 "hp": 677,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "斧头帮知道吧，那是我开创的。",
-                "url": 3
-            },
-            "36": {
-                "id": 36,
-                "number": 8,
-                "name": "神二代·红孩儿",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 122,
-                "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
-                "url": 9
-            },
-            "37": {
-                "id": 37,
-                "number": 8,
-                "name": "火云洞·红孩儿",
-                "star": 2,
-                "lv": 1,
-                "atk": 100,
-                "hp": 248,
-                "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
-                "url": 9
-            },
-            "38": {
-                "id": 38,
-                "number": 8,
-                "name": "三味真火·红孩儿",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 376,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
-                "url": 9
-            },
-            "39": {
-                "id": 39,
-                "number": 8,
-                "name": "圣婴大王·红孩儿",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "虽然我长个正太样儿，却有颗大叔的心。",
-                "url": 9
-            },
-            "40": {
-                "id": 40,
-                "number": 8,
-                "name": "善财童子·红孩儿",
-                "star": 5,
-                "lv": 1,
-                "atk": 273,
-                "hp": 671,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
-                "url": 9
+                "url": 7
             },
             "41": {
                 "id": 41,
@@ -1612,128 +1034,6 @@ var outputTables = {
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
-                "url": 9
-            },
-            "46": {
-                "id": 46,
-                "number": 10,
-                "name": "阿哥·雷震子",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 119,
-                "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
-                "url": 9
-            },
-            "47": {
-                "id": 47,
-                "number": 10,
-                "name": "羽人·雷震子",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 244,
-                "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
-                "url": 9
-            },
-            "48": {
-                "id": 48,
-                "number": 10,
-                "name": "救父·雷震子",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
-                "url": 9
-            },
-            "49": {
-                "id": 49,
-                "number": 10,
-                "name": "出五关·雷震子",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
-                "url": 9
-            },
-            "50": {
-                "id": 50,
-                "number": 10,
-                "name": "金刚·雷震子",
-                "star": 5,
-                "lv": 1,
-                "atk": 281,
-                "hp": 651,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
-                "url": 9
-            },
-            "51": {
-                "id": 51,
-                "number": 11,
-                "name": "羽麟奴·妲己",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 125,
-                "description": "那年我和大家一起高歌：从我羽麟，北平成汤！",
-                "url": 9
-            },
-            "52": {
-                "id": 52,
-                "number": 11,
-                "name": "轩辕坟·妲己",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 255,
-                "description": "南巢一役后，我躲进了轩辕坟，千年修行，千年孤独。",
-                "url": 9
-            },
-            "53": {
-                "id": 53,
-                "number": 11,
-                "name": "彰德夫人·妲己",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 368,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
-                "url": 9
-            },
-            "54": {
-                "id": 54,
-                "number": 11,
-                "name": "醉生梦死·妲己",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 516,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "我不懂什么红颜祸水，我只是棋盘中的一颗棋子，但我知道我们是真爱！",
-                "url": 9
-            },
-            "55": {
-                "id": 55,
-                "number": 11,
-                "name": "九尾天狐·妲己",
-                "star": 5,
-                "lv": 1,
-                "atk": 283,
-                "hp": 670,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
                 "url": 9
             },
             "56": {
@@ -1797,311 +1097,6 @@ var outputTables = {
                 "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
                 "url": 12
             },
-            "61": {
-                "id": 61,
-                "number": 13,
-                "name": "总兵·李靖",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 130,
-                "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
-                "url": 12
-            },
-            "62": {
-                "id": 62,
-                "number": 13,
-                "name": "人父·李靖",
-                "star": 2,
-                "lv": 1,
-                "atk": 113,
-                "hp": 259,
-                "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
-                "url": 12
-            },
-            "63": {
-                "id": 63,
-                "number": 13,
-                "name": "降魔大元帅·李靖",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 380,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
-                "url": 12
-            },
-            "64": {
-                "id": 64,
-                "number": 13,
-                "name": "保卫天庭·李靖",
-                "star": 4,
-                "lv": 1,
-                "atk": 219,
-                "hp": 529,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
-                "url": 12
-            },
-            "65": {
-                "id": 65,
-                "number": 13,
-                "name": "托塔天王·李靖",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 680,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
-                "url": 12
-            },
-            "66": {
-                "id": 66,
-                "number": 14,
-                "name": "快枪手·赵公民",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 122,
-                "description": "天下武功，无坚不破，唯快不破，所以先下手总是没错。",
-                "url": 12
-            },
-            "67": {
-                "id": 67,
-                "number": 14,
-                "name": "神鞭·赵公民",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 243,
-                "description": "想歪的给我面壁去，我说的是武器。",
-                "url": 12
-            },
-            "68": {
-                "id": 68,
-                "number": 14,
-                "name": "大罗金仙·赵公明",
-                "star": 3,
-                "lv": 1,
-                "atk": 149,
-                "hp": 374,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
-                "url": 12
-            },
-            "69": {
-                "id": 69,
-                "number": 14,
-                "name": "玄坛真君·赵公明",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 518,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
-                "url": 12
-            },
-            "70": {
-                "id": 70,
-                "number": 14,
-                "name": "财神·赵公明",
-                "star": 5,
-                "lv": 1,
-                "atk": 271,
-                "hp": 672,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
-                "url": 12
-            },
-            "71": {
-                "id": 71,
-                "number": 15,
-                "name": "异类·申公豹",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 121,
-                "description": "虽然我们是修炼成仙，但我知道他们看不起我的异类出身。",
-                "url": 12
-            },
-            "72": {
-                "id": 72,
-                "number": 15,
-                "name": "铁齿铜牙·申公豹",
-                "star": 2,
-                "lv": 1,
-                "atk": 102,
-                "hp": 244,
-                "description": "就算我能把死的说成活的，也无法改变阐教的种族主义思想。",
-                "url": 12
-            },
-            "73": {
-                "id": 73,
-                "number": 15,
-                "name": "雷公鞭·申公豹",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 369,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
-                "url": 12
-            },
-            "74": {
-                "id": 74,
-                "number": 15,
-                "name": "万妖之王·申公豹",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 525,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
-                "url": 12
-            },
-            "75": {
-                "id": 75,
-                "number": 15,
-                "name": "分水将军·申公豹",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 666,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
-                "url": 12
-            },
-            "76": {
-                "id": 76,
-                "number": 16,
-                "name": "瞬移·土行孙",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
-                "url": 12
-            },
-            "77": {
-                "id": 77,
-                "number": 16,
-                "name": "遁神·土行孙",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 247,
-                "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
-                "url": 12
-            },
-            "78": {
-                "id": 78,
-                "number": 16,
-                "name": "捆仙绳·土行孙",
-                "star": 3,
-                "lv": 1,
-                "atk": 156,
-                "hp": 380,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
-                "url": 12
-            },
-            "79": {
-                "id": 79,
-                "number": 16,
-                "name": "地行仙·土行孙",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 520,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
-                "url": 12
-            },
-            "80": {
-                "id": 80,
-                "number": 16,
-                "name": "土府星君·土行孙",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 681,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
-                "url": 12
-            },
-            "81": {
-                "id": 81,
-                "number": 17,
-                "name": "捕蛇者·法海",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 123,
-                "description": "我只是把捉到的白蛇卖了而已，谁想会记恨我几辈子。",
-                "url": 12
-            },
-            "82": {
-                "id": 82,
-                "number": 17,
-                "name": "苦修·法海",
-                "star": 2,
-                "lv": 1,
-                "atk": 104,
-                "hp": 251,
-                "description": "好不容易炼成的丹药被她偷吃了，我这辈子又白练了。",
-                "url": 12
-            },
-            "83": {
-                "id": 83,
-                "number": 17,
-                "name": "金山住持·法海",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
-                "url": 12
-            },
-            "84": {
-                "id": 84,
-                "number": 17,
-                "name": "雷峰塔·法海",
-                "star": 4,
-                "lv": 1,
-                "atk": 209,
-                "hp": 525,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
-                "url": 12
-            },
-            "85": {
-                "id": 85,
-                "number": 17,
-                "name": "升仙·法海",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 685,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
-                "url": 12
-            },
             "86": {
                 "id": 86,
                 "number": 18,
@@ -2111,7 +1106,7 @@ var outputTables = {
                 "atk": 55,
                 "hp": 131,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
-                "url": 12
+                "url": 18
             },
             "87": {
                 "id": 87,
@@ -2122,7 +1117,7 @@ var outputTables = {
                 "atk": 106,
                 "hp": 254,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
-                "url": 12
+                "url": 18
             },
             "88": {
                 "id": 88,
@@ -2133,9 +1128,9 @@ var outputTables = {
                 "atk": 143,
                 "hp": 369,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
-                "url": 12
+                "url": 18
             },
             "89": {
                 "id": 89,
@@ -2146,9 +1141,9 @@ var outputTables = {
                 "atk": 206,
                 "hp": 524,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "白素贞你住手吧，许仙真的不在珠海金山！",
-                "url": 12
+                "url": 18
             },
             "90": {
                 "id": 90,
@@ -2159,9 +1154,9 @@ var outputTables = {
                 "atk": 265,
                 "hp": 689,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
-                "url": 12
+                "url": 18
             },
             "91": {
                 "id": 91,
@@ -2172,7 +1167,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "description": "我修行了一千年，孤独了一千年。",
-                "url": 12
+                "url": 19
             },
             "92": {
                 "id": 92,
@@ -2183,7 +1178,7 @@ var outputTables = {
                 "atk": 106,
                 "hp": 244,
                 "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
-                "url": 12
+                "url": 19
             },
             "93": {
                 "id": 93,
@@ -2194,9 +1189,9 @@ var outputTables = {
                 "atk": 152,
                 "hp": 372,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "法海你不懂爱，姐姐不要你，我也不会从。",
-                "url": 12
+                "url": 19
             },
             "94": {
                 "id": 94,
@@ -2207,9 +1202,9 @@ var outputTables = {
                 "atk": 203,
                 "hp": 515,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "法海，要么你跟我走，要么你放过我姐姐！",
-                "url": 12
+                "url": 19
             },
             "95": {
                 "id": 95,
@@ -2220,9 +1215,9 @@ var outputTables = {
                 "atk": 268,
                 "hp": 677,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
-                "url": 12
+                "url": 19
             },
             "96": {
                 "id": 96,
@@ -2233,7 +1228,7 @@ var outputTables = {
                 "atk": 60,
                 "hp": 118,
                 "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
-                "url": 12
+                "url": 20
             },
             "97": {
                 "id": 97,
@@ -2244,7 +1239,7 @@ var outputTables = {
                 "atk": 111,
                 "hp": 239,
                 "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
-                "url": 12
+                "url": 20
             },
             "98": {
                 "id": 98,
@@ -2255,9 +1250,9 @@ var outputTables = {
                 "atk": 161,
                 "hp": 370,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
-                "url": 12
+                "url": 20
             },
             "99": {
                 "id": 99,
@@ -2268,9 +1263,9 @@ var outputTables = {
                 "atk": 221,
                 "hp": 522,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
-                "url": 12
+                "url": 20
             },
             "100": {
                 "id": 100,
@@ -2281,70 +1276,9 @@ var outputTables = {
                 "atk": 290,
                 "hp": 662,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
-                "url": 12
-            },
-            "101": {
-                "id": 101,
-                "number": 21,
-                "name": "黄粱梦·吕洞宾",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 122,
-                "description": "黄粱一梦告诉我：睡前一定要吃饱，不然美梦都会被饿醒。",
-                "url": 12
-            },
-            "102": {
-                "id": 102,
-                "number": 21,
-                "name": "双修·吕洞宾",
-                "star": 2,
-                "lv": 1,
-                "atk": 108,
-                "hp": 240,
-                "description": "双修就像结对编程，要两个人一起搞，你懂的。",
-                "url": 12
-            },
-            "103": {
-                "id": 103,
-                "number": 21,
-                "name": "纯阳子·吕洞宾",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 360,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
-                "url": 12
-            },
-            "104": {
-                "id": 104,
-                "number": 21,
-                "name": "剑仙·吕洞宾",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 512,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
-                "url": 12
-            },
-            "105": {
-                "id": 105,
-                "number": 21,
-                "name": "吕祖·吕洞宾",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 676,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
-                "url": 12
+                "url": 20
             },
             "106": {
                 "id": 106,
@@ -2355,7 +1289,7 @@ var outputTables = {
                 "atk": 56,
                 "hp": 137,
                 "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
-                "url": 25
+                "url": 22
             },
             "107": {
                 "id": 107,
@@ -2366,7 +1300,7 @@ var outputTables = {
                 "atk": 111,
                 "hp": 241,
                 "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
-                "url": 25
+                "url": 22
             },
             "108": {
                 "id": 108,
@@ -2377,9 +1311,9 @@ var outputTables = {
                 "atk": 159,
                 "hp": 358,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
-                "url": 25
+                "url": 22
             },
             "109": {
                 "id": 109,
@@ -2390,9 +1324,9 @@ var outputTables = {
                 "atk": 221,
                 "hp": 516,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
-                "url": 25
+                "url": 22
             },
             "110": {
                 "id": 110,
@@ -2403,131 +1337,9 @@ var outputTables = {
                 "atk": 276,
                 "hp": 683,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
-                "url": 25
-            },
-            "111": {
-                "id": 111,
-                "number": 23,
-                "name": "散汉·汉钟离",
-                "star": 1,
-                "lv": 1,
-                "atk": 52,
-                "hp": 129,
-                "description": "以前管我们这种人叫散汉，现在叫屌丝。",
-                "url": 25
-            },
-            "112": {
-                "id": 112,
-                "number": 23,
-                "name": "征讨将军·汉钟离",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 242,
-                "description": "我学文的，偏要我去当领兵打仗，真当我是袁崇焕啊。",
-                "url": 25
-            },
-            "113": {
-                "id": 113,
-                "number": 23,
-                "name": "十日试·汉钟离",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 363,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
-                "url": 25
-            },
-            "114": {
-                "id": 114,
-                "number": 23,
-                "name": "炼金术·汉钟离",
-                "star": 4,
-                "lv": 1,
-                "atk": 211,
-                "hp": 522,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
-                "url": 25
-            },
-            "115": {
-                "id": 115,
-                "number": 23,
-                "name": "正阳真人·汉钟离",
-                "star": 5,
-                "lv": 1,
-                "atk": 282,
-                "hp": 674,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
-                "url": 25
-            },
-            "116": {
-                "id": 116,
-                "number": 24,
-                "name": "驴友·张果老",
-                "star": 1,
-                "lv": 1,
-                "atk": 39,
-                "hp": 128,
-                "description": "骑驴比骑马有个性多了，况且有户口的马，那才是驴嘛！",
-                "url": 25
-            },
-            "117": {
-                "id": 117,
-                "number": 24,
-                "name": "歌手·张果老",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 269,
-                "description": "我的歌路很广，穷则乞讨时用，达则可开演唱会。",
-                "url": 25
-            },
-            "118": {
-                "id": 118,
-                "number": 24,
-                "name": "通玄先生·张果老",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 388,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
-                "url": 25
-            },
-            "119": {
-                "id": 119,
-                "number": 24,
-                "name": "广宗道人·张果老",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 555,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
-                "url": 25
-            },
-            "120": {
-                "id": 120,
-                "number": 24,
-                "name": "冲妙真人·张果老",
-                "star": 5,
-                "lv": 1,
-                "atk": 249,
-                "hp": 709,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
-                "url": 25
+                "url": 22
             },
             "121": {
                 "id": 121,
@@ -2590,128 +1402,6 @@ var outputTables = {
                 "description": "离开的那天，我的爱与肉身一起，在风中化去了。",
                 "url": 25
             },
-            "126": {
-                "id": 126,
-                "number": 26,
-                "name": "行医采药·蓝采和",
-                "star": 1,
-                "lv": 1,
-                "atk": 40,
-                "hp": 130,
-                "description": "我们那时候行医不用上学，有点植物学基础，会烹饪就行。",
-                "url": 25
-            },
-            "127": {
-                "id": 127,
-                "number": 26,
-                "name": "流浪汉·蓝采和",
-                "star": 2,
-                "lv": 1,
-                "atk": 90,
-                "hp": 270,
-                "description": "想和你就这样流浪，一起看雪看星星看月亮，从诗词歌赋谈到人生哲学。",
-                "url": 25
-            },
-            "128": {
-                "id": 128,
-                "number": 26,
-                "name": "万花篮·蓝采和",
-                "star": 3,
-                "lv": 1,
-                "atk": 140,
-                "hp": 390,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！",
-                "url": 25
-            },
-            "129": {
-                "id": 129,
-                "number": 26,
-                "name": "阴阳体·蓝采和",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 560,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。",
-                "url": 25
-            },
-            "130": {
-                "id": 130,
-                "number": 26,
-                "name": "度仙·蓝采和",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 710,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。",
-                "url": 25
-            },
-            "131": {
-                "id": 131,
-                "number": 27,
-                "name": "农夫·牛郎",
-                "star": 1,
-                "lv": 1,
-                "atk": 43,
-                "hp": 125,
-                "description": "给地主打工不轻松，不过地主也不容易，省吃俭用才有了这么多地。",
-                "url": 25
-            },
-            "132": {
-                "id": 132,
-                "number": 27,
-                "name": "神牛·牛郎",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 266,
-                "description": "大哥，你是神牛早点说嘛，能不能给我变个十万八万花花先！",
-                "url": 25
-            },
-            "133": {
-                "id": 133,
-                "number": 27,
-                "name": "更衣室の恋·牛郎",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！",
-                "url": 25
-            },
-            "134": {
-                "id": 134,
-                "number": 27,
-                "name": "天庭驸马·牛郎",
-                "star": 4,
-                "lv": 1,
-                "atk": 186,
-                "hp": 549,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。",
-                "url": 25
-            },
-            "135": {
-                "id": 135,
-                "number": 27,
-                "name": "牵牛星·牛郎",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 719,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！",
-                "url": 25
-            },
             "136": {
                 "id": 136,
                 "number": 28,
@@ -2721,7 +1411,7 @@ var outputTables = {
                 "atk": 42,
                 "hp": 122,
                 "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
-                "url": 25
+                "url": 28
             },
             "137": {
                 "id": 137,
@@ -2732,7 +1422,7 @@ var outputTables = {
                 "atk": 92,
                 "hp": 262,
                 "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
-                "url": 25
+                "url": 28
             },
             "138": {
                 "id": 138,
@@ -2743,9 +1433,9 @@ var outputTables = {
                 "atk": 132,
                 "hp": 382,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。",
-                "url": 25
+                "url": 28
             },
             "139": {
                 "id": 139,
@@ -2756,9 +1446,9 @@ var outputTables = {
                 "atk": 182,
                 "hp": 552,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。",
-                "url": 25
+                "url": 28
             },
             "140": {
                 "id": 140,
@@ -2769,70 +1459,9 @@ var outputTables = {
                 "atk": 242,
                 "hp": 712,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
-                "url": 25
-            },
-            "141": {
-                "id": 141,
-                "number": 29,
-                "name": "决斗·吴刚",
-                "star": 1,
-                "lv": 1,
-                "atk": 33,
-                "hp": 123,
-                "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
-                "url": 25
-            },
-            "142": {
-                "id": 142,
-                "number": 29,
-                "name": "刺配·吴刚",
-                "star": 2,
-                "lv": 1,
-                "atk": 83,
-                "hp": 263,
-                "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
-                "url": 25
-            },
-            "143": {
-                "id": 143,
-                "number": 29,
-                "name": "樵夫·吴刚",
-                "star": 3,
-                "lv": 1,
-                "atk": 133,
-                "hp": 383,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。",
-                "url": 25
-            },
-            "144": {
-                "id": 144,
-                "number": 29,
-                "name": "逆袭·吴刚",
-                "star": 4,
-                "lv": 1,
-                "atk": 183,
-                "hp": 553,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？",
-                "url": 25
-            },
-            "145": {
-                "id": 145,
-                "number": 29,
-                "name": "桂花仙·吴刚",
-                "star": 5,
-                "lv": 1,
-                "atk": 243,
-                "hp": 703,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。",
-                "url": 25
+                "url": 28
             },
             "146": {
                 "id": 146,
@@ -2843,7 +1472,7 @@ var outputTables = {
                 "atk": 46,
                 "hp": 133,
                 "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
-                "url": 25
+                "url": 30
             },
             "147": {
                 "id": 147,
@@ -2854,7 +1483,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 262,
                 "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
-                "url": 25
+                "url": 30
             },
             "148": {
                 "id": 148,
@@ -2865,9 +1494,9 @@ var outputTables = {
                 "atk": 145,
                 "hp": 385,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
-                "url": 25
+                "url": 30
             },
             "149": {
                 "id": 149,
@@ -2878,9 +1507,9 @@ var outputTables = {
                 "atk": 188,
                 "hp": 556,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
-                "url": 25
+                "url": 30
             },
             "150": {
                 "id": 150,
@@ -2891,9 +1520,9 @@ var outputTables = {
                 "atk": 244,
                 "hp": 721,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
-                "url": 25
+                "url": 30
             },
             "151": {
                 "id": 151,
@@ -2926,7 +1555,7 @@ var outputTables = {
                 "atk": 149,
                 "hp": 378,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
                 "url": 31
             },
@@ -2939,7 +1568,7 @@ var outputTables = {
                 "atk": 201,
                 "hp": 549,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。",
                 "url": 31
             },
@@ -2952,7 +1581,7 @@ var outputTables = {
                 "atk": 265,
                 "hp": 719,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
                 "url": 31
             },
@@ -2965,7 +1594,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
-                "url": 36
+                "url": 32
             },
             "157": {
                 "id": 157,
@@ -2976,7 +1605,7 @@ var outputTables = {
                 "atk": 105,
                 "hp": 277,
                 "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
-                "url": 36
+                "url": 32
             },
             "158": {
                 "id": 158,
@@ -2987,9 +1616,9 @@ var outputTables = {
                 "atk": 154,
                 "hp": 369,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
-                "url": 36
+                "url": 32
             },
             "159": {
                 "id": 159,
@@ -3000,9 +1629,9 @@ var outputTables = {
                 "atk": 206,
                 "hp": 556,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
-                "url": 36
+                "url": 32
             },
             "160": {
                 "id": 160,
@@ -3013,70 +1642,9 @@ var outputTables = {
                 "atk": 266,
                 "hp": 666,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
-                "url": 36
-            },
-            "161": {
-                "id": 161,
-                "number": 33,
-                "name": "科员·日游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 125,
-                "description": "我怎么也是个有编制的神，可不是临时工。",
-                "url": 36
-            },
-            "162": {
-                "id": 162,
-                "number": 33,
-                "name": "副科长·日游神",
-                "star": 2,
-                "lv": 1,
-                "atk": 112,
-                "hp": 244,
-                "description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
-                "url": 36
-            },
-            "163": {
-                "id": 163,
-                "number": 33,
-                "name": "科长·日游神",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 374,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "这次能提拔，多亏巨灵神他们给我指了条路。",
-                "url": 36
-            },
-            "164": {
-                "id": 164,
-                "number": 33,
-                "name": "副处长·日游神",
-                "star": 4,
-                "lv": 1,
-                "atk": 222,
-                "hp": 519,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！",
-                "url": 36
-            },
-            "165": {
-                "id": 165,
-                "number": 33,
-                "name": "处长·日游神",
-                "star": 5,
-                "lv": 1,
-                "atk": 268,
-                "hp": 669,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。",
-                "url": 36
+                "url": 32
             },
             "166": {
                 "id": 166,
@@ -3087,7 +1655,7 @@ var outputTables = {
                 "atk": 60,
                 "hp": 122,
                 "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
-                "url": 36
+                "url": 34
             },
             "167": {
                 "id": 167,
@@ -3098,7 +1666,7 @@ var outputTables = {
                 "atk": 115,
                 "hp": 246,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
-                "url": 36
+                "url": 34
             },
             "168": {
                 "id": 168,
@@ -3111,7 +1679,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。",
-                "url": 36
+                "url": 34
             },
             "169": {
                 "id": 169,
@@ -3124,7 +1692,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "为啥那个唱歌的神仙升的比我快那么多!",
-                "url": 36
+                "url": 34
             },
             "170": {
                 "id": 170,
@@ -3137,68 +1705,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "笑什么笑，是大校不是大笑，严肃点！",
-                "url": 36
-            },
-            "171": {
-                "id": 171,
-                "number": 35,
-                "name": "瑶草·瑶姬",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 135,
-                "description": "我是一株吃了会让你幸福的草，唯一不幸福的就是我本身。",
-                "url": 31
-            },
-            "172": {
-                "id": 172,
-                "number": 35,
-                "name": "神女峰·瑶姬",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 256,
-                "description": "我化作一道险峰，等着真心的你来攀登。",
-                "url": 31
-            },
-            "173": {
-                "id": 173,
-                "number": 35,
-                "name": "巫山云雨·瑶姬",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 380,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？",
-                "url": 31
-            },
-            "174": {
-                "id": 174,
-                "number": 35,
-                "name": "神女赋·瑶姬",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 535,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。",
-                "url": 31
-            },
-            "175": {
-                "id": 175,
-                "number": 35,
-                "name": "巫山神女·瑶姬",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 730,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "曾经沧海难为水，除却巫山不是云。",
-                "url": 31
+                "url": 34
             },
             "176": {
                 "id": 176,
@@ -3231,7 +1738,7 @@ var outputTables = {
                 "atk": 151,
                 "hp": 381,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "不喜欢就是不喜欢，龙王太子又如何！",
                 "url": 36
             },
@@ -3244,7 +1751,7 @@ var outputTables = {
                 "atk": 200,
                 "hp": 536,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "再逼我就跳海，死了我也不放过你！",
                 "url": 36
             },
@@ -3257,69 +1764,8 @@ var outputTables = {
                 "atk": 280,
                 "hp": 721,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。",
-                "url": 36
-            },
-            "181": {
-                "id": 181,
-                "number": 37,
-                "name": "巨人·夸父",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 133,
-                "description": "不是每一瓶牛奶都可以叫特仑苏，不是每一个巨人都可以成为夸父。",
-                "url": 36
-            },
-            "182": {
-                "id": 182,
-                "number": 37,
-                "name": "守护者·夸父",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 261,
-                "description": "我不是你的优乐美，我是你的守护神！",
-                "url": 36
-            },
-            "183": {
-                "id": 183,
-                "number": 37,
-                "name": "星降术·夸父",
-                "star": 3,
-                "lv": 1,
-                "atk": 150,
-                "hp": 391,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！",
-                "url": 36
-            },
-            "184": {
-                "id": 184,
-                "number": 37,
-                "name": "神行·夸父",
-                "star": 4,
-                "lv": 1,
-                "atk": 202,
-                "hp": 540,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。",
-                "url": 36
-            },
-            "185": {
-                "id": 185,
-                "number": 37,
-                "name": "逐日·夸父",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 731,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "别问我为什么要追日，除非你不抗日！",
                 "url": 36
             },
             "186": {
@@ -3353,7 +1799,7 @@ var outputTables = {
                 "atk": 144,
                 "hp": 388,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。",
                 "url": 38
             },
@@ -3366,7 +1812,7 @@ var outputTables = {
                 "atk": 205,
                 "hp": 541,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "唯有射下那九个太阳，才能压下我内心的怒火。",
                 "url": 38
             },
@@ -3379,7 +1825,7 @@ var outputTables = {
                 "atk": 277,
                 "hp": 729,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……",
                 "url": 38
             },
@@ -3414,7 +1860,7 @@ var outputTables = {
                 "atk": 159,
                 "hp": 352,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！",
                 "url": 39
             },
@@ -3427,7 +1873,7 @@ var outputTables = {
                 "atk": 212,
                 "hp": 502,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。",
                 "url": 39
             },
@@ -3440,192 +1886,9 @@ var outputTables = {
                 "atk": 290,
                 "hp": 647,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "想我的时候，打一盘Luna地图或是看看钱包。",
                 "url": 39
-            },
-            "196": {
-                "id": 196,
-                "number": 40,
-                "name": "无名巨人·刑天",
-                "star": 1,
-                "lv": 1,
-                "atk": 61,
-                "hp": 120,
-                "description": "我的身材和我的名字一样威武。",
-                "url": 39
-            },
-            "197": {
-                "id": 197,
-                "number": 40,
-                "name": "文艺青年·刑天",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 230,
-                "description": "业余时间我也写写诗歌，在微博上发发鸡汤文。",
-                "url": 39
-            },
-            "198": {
-                "id": 198,
-                "number": 40,
-                "name": "求战·刑天",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 350,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。",
-                "url": 39
-            },
-            "199": {
-                "id": 199,
-                "number": 40,
-                "name": "永不妥协·刑天",
-                "star": 4,
-                "lv": 1,
-                "atk": 215,
-                "hp": 500,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "虽千万人吾往矣，这才是亮剑精神！",
-                "url": 39
-            },
-            "200": {
-                "id": 200,
-                "number": 40,
-                "name": "无首战神·刑天",
-                "star": 5,
-                "lv": 1,
-                "atk": 299,
-                "hp": 644,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。",
-                "url": 39
-            },
-            "201": {
-                "id": 201,
-                "number": 41,
-                "name": "拜师·沉香",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 119,
-                "description": "我师父早年跳霹雳舞，成仙后大家都叫他霹雳大仙。",
-                "url": 39
-            },
-            "202": {
-                "id": 202,
-                "number": 41,
-                "name": "宣花斧·沉香",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 234,
-                "description": "幸福生活不能光靠手，所以师父给了我把宣花斧。",
-                "url": 39
-            },
-            "203": {
-                "id": 203,
-                "number": 41,
-                "name": "战三眼·沉香",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 355,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "你能救母，我也能救母，我是沉香，我为我自己代言。",
-                "url": 39
-            },
-            "204": {
-                "id": 204,
-                "number": 41,
-                "name": "劈山·沉香",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 498,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "别人走路我爬山，别人劈柴我劈山。",
-                "url": 39
-            },
-            "205": {
-                "id": 205,
-                "number": 41,
-                "name": "宝莲灯·沉香",
-                "star": 5,
-                "lv": 1,
-                "atk": 296,
-                "hp": 644,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。",
-                "url": 39
-            },
-            "206": {
-                "id": 206,
-                "number": 42,
-                "name": "修缘·济公",
-                "star": 1,
-                "lv": 1,
-                "atk": 58,
-                "hp": 125,
-                "description": "呐，不要说我没有提醒你，修行呢，最要紧的是开心！",
-                "url": 38
-            },
-            "207": {
-                "id": 207,
-                "number": 42,
-                "name": "颠·济公",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 235,
-                "description": "别人笑我太疯癫，我笑他人看不穿。",
-                "url": 38
-            },
-            "208": {
-                "id": 208,
-                "number": 42,
-                "name": "酒肉和尚·济公",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 355,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。",
-                "url": 38
-            },
-            "209": {
-                "id": 209,
-                "number": 42,
-                "name": "降龙罗汉·济公",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 505,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。",
-                "url": 38
-            },
-            "210": {
-                "id": 210,
-                "number": 42,
-                "name": "降龙尊者·济公",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 660,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。",
-                "url": 38
             },
             "211": {
                 "id": 211,
@@ -3636,7 +1899,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 121,
                 "description": "嫁给河伯是我一生最大的错。",
-                "url": 38
+                "url": 43
             },
             "212": {
                 "id": 212,
@@ -3647,7 +1910,7 @@ var outputTables = {
                 "atk": 101,
                 "hp": 251,
                 "description": "我献出洛书，只是想离开这个人。",
-                "url": 38
+                "url": 43
             },
             "213": {
                 "id": 213,
@@ -3658,9 +1921,9 @@ var outputTables = {
                 "atk": 151,
                 "hp": 371,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "第一次见到他的时候，我就记住了他的名字：后羿。",
-                "url": 38
+                "url": 43
             },
             "214": {
                 "id": 214,
@@ -3671,9 +1934,9 @@ var outputTables = {
                 "atk": 201,
                 "hp": 521,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。",
-                "url": 38
+                "url": 43
             },
             "215": {
                 "id": 215,
@@ -3684,9 +1947,9 @@ var outputTables = {
                 "atk": 271,
                 "hp": 671,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。",
-                "url": 38
+                "url": 43
             },
             "216": {
                 "id": 216,
@@ -3719,7 +1982,7 @@ var outputTables = {
                 "atk": 158,
                 "hp": 374,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
                 "url": 44
             },
@@ -3732,7 +1995,7 @@ var outputTables = {
                 "atk": 203,
                 "hp": 531,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
                 "url": 44
             },
@@ -3745,252 +2008,8 @@ var outputTables = {
                 "atk": 274,
                 "hp": 678,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
-                "url": 44
-            },
-            "221": {
-                "id": 221,
-                "number": 45,
-                "name": "日高一平·修罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 123,
-                "description": "师父曾经说过，如果把我和阿凯加起来，再除二就是十全十美了。",
-                "url": 44
-            },
-            "222": {
-                "id": 222,
-                "number": 45,
-                "name": "变身·修罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 256,
-                "description": "我肚子一饿就会失去战意，连脱战甲的时间都等不了。",
-                "url": 44
-            },
-            "223": {
-                "id": 223,
-                "number": 45,
-                "name": "魔破拳·修罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 153,
-                "hp": 374,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这拳打出来之前，得先做一次全身运动，比较费时间。",
-                "url": 44
-            },
-            "224": {
-                "id": 224,
-                "number": 45,
-                "name": "梵天战甲·修罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 531,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。",
-                "url": 44
-            },
-            "225": {
-                "id": 225,
-                "number": 45,
-                "name": "创造神·修罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 274,
-                "hp": 675,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。",
-                "url": 44
-            },
-            "226": {
-                "id": 226,
-                "number": 46,
-                "name": "力伽·迦楼罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 115,
-                "description": "我是迦楼罗王力迦，天空界最帅的男人，没有之一。",
-                "url": 44
-            },
-            "227": {
-                "id": 227,
-                "number": 46,
-                "name": "凤凰·迦楼罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 256,
-                "description": "凤凰会涅槃，我没有那么容易死。",
-                "url": 44
-            },
-            "228": {
-                "id": 228,
-                "number": 46,
-                "name": "羽吹雪·迦楼罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 379,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "我吹的是红红的血，不是白白的雪。",
-                "url": 44
-            },
-            "229": {
-                "id": 229,
-                "number": 46,
-                "name": "火翼阵·迦楼罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 208,
-                "hp": 530,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。",
-                "url": 44
-            },
-            "230": {
-                "id": 230,
-                "number": 46,
-                "name": "众鸟之王·迦楼罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 689,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "每个人都有一个大鸟梦，而我的是众鸟之王。",
-                "url": 44
-            },
-            "231": {
-                "id": 231,
-                "number": 47,
-                "name": "莲伽·紧那罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 116,
-                "description": "谁说女孩不能做神将，我就是神将中的神将——八部众！",
-                "url": 44
-            },
-            "232": {
-                "id": 232,
-                "number": 47,
-                "name": "爱与恨·紧那罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 254,
-                "description": "我无法说服自己爱上一个浪子，对不起，马里千。",
-                "url": 44
-            },
-            "233": {
-                "id": 233,
-                "number": 47,
-                "name": "天王情·紧那罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 147,
-                "hp": 376,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "如果非要做一个选择，就让我死在乔伽的手下吧。",
-                "url": 44
-            },
-            "234": {
-                "id": 234,
-                "number": 47,
-                "name": "宿命·紧那罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 523,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。",
-                "url": 44
-            },
-            "235": {
-                "id": 235,
-                "number": 47,
-                "name": "无双环·紧那罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 670,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "既然无法在一起，那就把我的武器叫做无双环吧。",
-                "url": 44
-            },
-            "236": {
-                "id": 236,
-                "number": 48,
-                "name": "三眼·杨戬",
-                "star": 1,
-                "lv": 1,
-                "atk": 44,
-                "hp": 133,
-                "description": "他们笑我三只眼，是嫉妒我比他们看的更清楚，可这也是我的烦恼。",
-                "url": 44
-            },
-            "237": {
-                "id": 237,
-                "number": 48,
-                "name": "啸天·杨戬",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 285,
-                "description": "当所有的人，离开我的时候，你劝我要安静从容。谢谢你，哮天犬。",
-                "url": 44
-            },
-            "238": {
-                "id": 238,
-                "number": 48,
-                "name": "仙·杨戬",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 402,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。",
-                "url": 44
-            },
-            "239": {
-                "id": 239,
-                "number": 48,
-                "name": "神·杨戬",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 555,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！",
-                "url": 44
-            },
-            "240": {
-                "id": 240,
-                "number": 48,
-                "name": "二郎神·杨戬",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 718,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。",
                 "url": 44
             },
             "241": {
@@ -4002,7 +2021,7 @@ var outputTables = {
                 "atk": 46,
                 "hp": 140,
                 "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
-                "url": 44
+                "url": 49
             },
             "242": {
                 "id": 242,
@@ -4013,7 +2032,7 @@ var outputTables = {
                 "atk": 92,
                 "hp": 290,
                 "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
-                "url": 44
+                "url": 49
             },
             "243": {
                 "id": 243,
@@ -4024,9 +2043,9 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
-                "url": 44
+                "url": 49
             },
             "244": {
                 "id": 244,
@@ -4037,9 +2056,9 @@ var outputTables = {
                 "atk": 192,
                 "hp": 560,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
-                "url": 44
+                "url": 49
             },
             "245": {
                 "id": 245,
@@ -4050,9 +2069,9 @@ var outputTables = {
                 "atk": 262,
                 "hp": 720,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
-                "url": 44
+                "url": 49
             },
             "246": {
                 "id": 246,
@@ -4085,7 +2104,7 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
                 "url": 50
             },
@@ -4098,7 +2117,7 @@ var outputTables = {
                 "atk": 185,
                 "hp": 556,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
                 "url": 50
             },
@@ -4111,9 +2130,70 @@ var outputTables = {
                 "atk": 255,
                 "hp": 725,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
                 "url": 50
+            },
+            "251": {
+                "id": 251,
+                "number": 51,
+                "name": "智慧·文曲星",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 135,
+                "description": "天生智商300多，这不是我的错。",
+                "url": 51
+            },
+            "252": {
+                "id": 252,
+                "number": 51,
+                "name": "凡尘·文曲星",
+                "star": 2,
+                "lv": 1,
+                "atk": 110,
+                "hp": 257,
+                "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
+                "url": 51
+            },
+            "253": {
+                "id": 253,
+                "number": 51,
+                "name": "状元·文曲星",
+                "star": 3,
+                "lv": 1,
+                "atk": 152,
+                "hp": 382,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "状元只是一个名分，真正的能力才是关键。",
+                "url": 51
+            },
+            "254": {
+                "id": 254,
+                "number": 51,
+                "name": "了然缘·文曲星",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 535,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "有时候，我会看破仙尘，我不禁陷入了深深的沉思。",
+                "url": 51
+            },
+            "255": {
+                "id": 255,
+                "number": 51,
+                "name": "慧心三界·文曲星",
+                "star": 5,
+                "lv": 1,
+                "atk": 281,
+                "hp": 722,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "智慧的最高境界，是无知。",
+                "url": 51
             },
             "10000": {
                 "id": 10000,
@@ -9987,10 +8067,7 @@ var outputTables = {
                 "id": 1,
                 "elixir": 20,
                 "atk": 1,
-                "hp": 2,
-                "star3_max": 100000,
-                "star4_max": 160000,
-                "star5_max": 240000
+                "hp": 2
             }
         }
     },
@@ -10389,6 +8466,292 @@ var outputTables = {
                 "money_need": 50000,
                 "rate_per_card": 4,
                 "max_num": 25
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,88,178,218,123,138,243]",
+                "star4": "[59,149]"
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "pass": 10,
+                "card3_position": 15,
+                "lottery": 20,
+                "card4_position": 30,
+                "ranking_list": 40,
+                "card5_position": 50
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 100000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 160000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 240000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 9999999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 2000,
+                "energy": 100
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 5000,
+                "energy": 100,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 800,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 20000,
+                "energy": 300,
+                "skillPoint": 1000,
+                "elixir": 1000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 30000,
+                "energy": 500,
+                "skillPoint": 2000,
+                "elixir": 2000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 50000,
+                "energy": 800,
+                "skillPoint": 3000,
+                "elixir": 3000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
             }
         }
     },
@@ -23182,7 +21545,8 @@ var outputTables = {
                 "first_name": "松雨"
             },
             "2373": {
-                "id": 2373
+                "id": 2373,
+                "first_name": "松风"
             },
             "2374": {
                 "id": 2374,
@@ -23217,7 +21581,8 @@ var outputTables = {
                 "first_name": "木莲"
             },
             "2382": {
-                "id": 2382
+                "id": 2382,
+                "first_name": "木香"
             },
             "2383": {
                 "id": 2383,
@@ -23252,7 +21617,8 @@ var outputTables = {
                 "first_name": "林衡"
             },
             "2391": {
-                "id": 2391
+                "id": 2391,
+                "first_name": "林森"
             },
             "2392": {
                 "id": 2392,
@@ -23283,7 +21649,8 @@ var outputTables = {
                 "first_name": "树声"
             },
             "2399": {
-                "id": 2399
+                "id": 2399,
+                "first_name": "树君"
             },
             "2400": {
                 "id": 2400,
@@ -23354,7 +21721,8 @@ var outputTables = {
                 "first_name": "楚天"
             },
             "2417": {
-                "id": 2417
+                "id": 2417,
+                "first_name": "楚云"
             },
             "2418": {
                 "id": 2418,
@@ -23389,7 +21757,8 @@ var outputTables = {
                 "first_name": "荣畅"
             },
             "2426": {
-                "id": 2426
+                "id": 2426,
+                "first_name": "荣志"
             },
             "2427": {
                 "id": 2427,
@@ -23404,7 +21773,8 @@ var outputTables = {
                 "first_name": "荣华"
             },
             "2430": {
-                "id": 2430
+                "id": 2430,
+                "first_name": "伟霖"
             },
             "2431": {
                 "id": 2431,
@@ -24960,9 +23330,9 @@ var outputTables = {
     "rank": {
         "colComment": {},
         "rows": {
-            "10": {
-                "id": 10,
-                "lv": 10,
+            "5": {
+                "id": 5,
+                "lv": 5,
                 "win_exp": 1,
                 "win_money": 10,
                 "win_elixir": 100,
@@ -24970,9 +23340,9 @@ var outputTables = {
                 "lose_money": 5,
                 "lose_elixir": 50
             },
-            "11": {
-                "id": 11,
-                "lv": 11,
+            "6": {
+                "id": 6,
+                "lv": 6,
                 "win_exp": 2,
                 "win_money": 11,
                 "win_elixir": 110,
@@ -24980,9 +23350,9 @@ var outputTables = {
                 "lose_money": 6,
                 "lose_elixir": 55
             },
-            "12": {
-                "id": 12,
-                "lv": 12,
+            "7": {
+                "id": 7,
+                "lv": 7,
                 "win_exp": 3,
                 "win_money": 12,
                 "win_elixir": 120,
@@ -24990,9 +23360,9 @@ var outputTables = {
                 "lose_money": 6,
                 "lose_elixir": 60
             },
-            "13": {
-                "id": 13,
-                "lv": 13,
+            "8": {
+                "id": 8,
+                "lv": 8,
                 "win_exp": 4,
                 "win_money": 13,
                 "win_elixir": 130,
@@ -25000,9 +23370,9 @@ var outputTables = {
                 "lose_money": 7,
                 "lose_elixir": 65
             },
-            "14": {
-                "id": 14,
-                "lv": 14,
+            "9": {
+                "id": 9,
+                "lv": 9,
                 "win_exp": 5,
                 "win_money": 14,
                 "win_elixir": 140,
@@ -25010,9 +23380,9 @@ var outputTables = {
                 "lose_money": 7,
                 "lose_elixir": 70
             },
-            "15": {
-                "id": 15,
-                "lv": 15,
+            "10": {
+                "id": 10,
+                "lv": 10,
                 "win_exp": 6,
                 "win_money": 15,
                 "win_elixir": 150,
@@ -25020,9 +23390,9 @@ var outputTables = {
                 "lose_money": 8,
                 "lose_elixir": 75
             },
-            "16": {
-                "id": 16,
-                "lv": 16,
+            "11": {
+                "id": 11,
+                "lv": 11,
                 "win_exp": 7,
                 "win_money": 16,
                 "win_elixir": 160,
@@ -25030,9 +23400,9 @@ var outputTables = {
                 "lose_money": 8,
                 "lose_elixir": 80
             },
-            "17": {
-                "id": 17,
-                "lv": 17,
+            "12": {
+                "id": 12,
+                "lv": 12,
                 "win_exp": 8,
                 "win_money": 17,
                 "win_elixir": 170,
@@ -25040,9 +23410,9 @@ var outputTables = {
                 "lose_money": 9,
                 "lose_elixir": 85
             },
-            "18": {
-                "id": 18,
-                "lv": 18,
+            "13": {
+                "id": 13,
+                "lv": 13,
                 "win_exp": 9,
                 "win_money": 18,
                 "win_elixir": 180,
@@ -25050,9 +23420,9 @@ var outputTables = {
                 "lose_money": 9,
                 "lose_elixir": 90
             },
-            "19": {
-                "id": 19,
-                "lv": 19,
+            "14": {
+                "id": 14,
+                "lv": 14,
                 "win_exp": 10,
                 "win_money": 19,
                 "win_elixir": 190,
@@ -25060,9 +23430,9 @@ var outputTables = {
                 "lose_money": 10,
                 "lose_elixir": 95
             },
-            "20": {
-                "id": 20,
-                "lv": 20,
+            "15": {
+                "id": 15,
+                "lv": 15,
                 "win_exp": 11,
                 "win_money": 20,
                 "win_elixir": 200,
@@ -25070,9 +23440,9 @@ var outputTables = {
                 "lose_money": 10,
                 "lose_elixir": 100
             },
-            "21": {
-                "id": 21,
-                "lv": 21,
+            "16": {
+                "id": 16,
+                "lv": 16,
                 "win_exp": 12,
                 "win_money": 21,
                 "win_elixir": 210,
@@ -25080,9 +23450,9 @@ var outputTables = {
                 "lose_money": 11,
                 "lose_elixir": 105
             },
-            "22": {
-                "id": 22,
-                "lv": 22,
+            "17": {
+                "id": 17,
+                "lv": 17,
                 "win_exp": 13,
                 "win_money": 22,
                 "win_elixir": 220,
@@ -25090,9 +23460,9 @@ var outputTables = {
                 "lose_money": 11,
                 "lose_elixir": 110
             },
-            "23": {
-                "id": 23,
-                "lv": 23,
+            "18": {
+                "id": 18,
+                "lv": 18,
                 "win_exp": 14,
                 "win_money": 23,
                 "win_elixir": 230,
@@ -25100,9 +23470,9 @@ var outputTables = {
                 "lose_money": 12,
                 "lose_elixir": 115
             },
-            "24": {
-                "id": 24,
-                "lv": 24,
+            "19": {
+                "id": 19,
+                "lv": 19,
                 "win_exp": 15,
                 "win_money": 24,
                 "win_elixir": 240,
@@ -25110,9 +23480,9 @@ var outputTables = {
                 "lose_money": 12,
                 "lose_elixir": 120
             },
-            "25": {
-                "id": 25,
-                "lv": 25,
+            "20": {
+                "id": 20,
+                "lv": 20,
                 "win_exp": 16,
                 "win_money": 25,
                 "win_elixir": 250,
@@ -25120,9 +23490,9 @@ var outputTables = {
                 "lose_money": 13,
                 "lose_elixir": 125
             },
-            "26": {
-                "id": 26,
-                "lv": 26,
+            "21": {
+                "id": 21,
+                "lv": 21,
                 "win_exp": 17,
                 "win_money": 26,
                 "win_elixir": 260,
@@ -25130,9 +23500,9 @@ var outputTables = {
                 "lose_money": 13,
                 "lose_elixir": 130
             },
-            "27": {
-                "id": 27,
-                "lv": 27,
+            "22": {
+                "id": 22,
+                "lv": 22,
                 "win_exp": 18,
                 "win_money": 27,
                 "win_elixir": 270,
@@ -25140,9 +23510,9 @@ var outputTables = {
                 "lose_money": 14,
                 "lose_elixir": 135
             },
-            "28": {
-                "id": 28,
-                "lv": 28,
+            "23": {
+                "id": 23,
+                "lv": 23,
                 "win_exp": 19,
                 "win_money": 28,
                 "win_elixir": 280,
@@ -25150,9 +23520,9 @@ var outputTables = {
                 "lose_money": 14,
                 "lose_elixir": 140
             },
-            "29": {
-                "id": 29,
-                "lv": 29,
+            "24": {
+                "id": 24,
+                "lv": 24,
                 "win_exp": 20,
                 "win_money": 29,
                 "win_elixir": 290,
@@ -25160,9 +23530,9 @@ var outputTables = {
                 "lose_money": 15,
                 "lose_elixir": 145
             },
-            "30": {
-                "id": 30,
-                "lv": 30,
+            "25": {
+                "id": 25,
+                "lv": 25,
                 "win_exp": 21,
                 "win_money": 30,
                 "win_elixir": 300,
@@ -25170,9 +23540,9 @@ var outputTables = {
                 "lose_money": 15,
                 "lose_elixir": 150
             },
-            "31": {
-                "id": 31,
-                "lv": 31,
+            "26": {
+                "id": 26,
+                "lv": 26,
                 "win_exp": 22,
                 "win_money": 31,
                 "win_elixir": 310,
@@ -25180,9 +23550,9 @@ var outputTables = {
                 "lose_money": 16,
                 "lose_elixir": 155
             },
-            "32": {
-                "id": 32,
-                "lv": 32,
+            "27": {
+                "id": 27,
+                "lv": 27,
                 "win_exp": 23,
                 "win_money": 32,
                 "win_elixir": 320,
@@ -25190,9 +23560,9 @@ var outputTables = {
                 "lose_money": 16,
                 "lose_elixir": 160
             },
-            "33": {
-                "id": 33,
-                "lv": 33,
+            "28": {
+                "id": 28,
+                "lv": 28,
                 "win_exp": 24,
                 "win_money": 33,
                 "win_elixir": 330,
@@ -25200,9 +23570,9 @@ var outputTables = {
                 "lose_money": 17,
                 "lose_elixir": 165
             },
-            "34": {
-                "id": 34,
-                "lv": 34,
+            "29": {
+                "id": 29,
+                "lv": 29,
                 "win_exp": 25,
                 "win_money": 34,
                 "win_elixir": 340,
@@ -25210,9 +23580,9 @@ var outputTables = {
                 "lose_money": 17,
                 "lose_elixir": 170
             },
-            "35": {
-                "id": 35,
-                "lv": 35,
+            "30": {
+                "id": 30,
+                "lv": 30,
                 "win_exp": 26,
                 "win_money": 35,
                 "win_elixir": 350,
@@ -25220,9 +23590,9 @@ var outputTables = {
                 "lose_money": 18,
                 "lose_elixir": 175
             },
-            "36": {
-                "id": 36,
-                "lv": 36,
+            "31": {
+                "id": 31,
+                "lv": 31,
                 "win_exp": 27,
                 "win_money": 36,
                 "win_elixir": 360,
@@ -25230,9 +23600,9 @@ var outputTables = {
                 "lose_money": 18,
                 "lose_elixir": 180
             },
-            "37": {
-                "id": 37,
-                "lv": 37,
+            "32": {
+                "id": 32,
+                "lv": 32,
                 "win_exp": 28,
                 "win_money": 37,
                 "win_elixir": 370,
@@ -25240,9 +23610,9 @@ var outputTables = {
                 "lose_money": 19,
                 "lose_elixir": 185
             },
-            "38": {
-                "id": 38,
-                "lv": 38,
+            "33": {
+                "id": 33,
+                "lv": 33,
                 "win_exp": 29,
                 "win_money": 38,
                 "win_elixir": 380,
@@ -25250,9 +23620,9 @@ var outputTables = {
                 "lose_money": 19,
                 "lose_elixir": 190
             },
-            "39": {
-                "id": 39,
-                "lv": 39,
+            "34": {
+                "id": 34,
+                "lv": 34,
                 "win_exp": 30,
                 "win_money": 39,
                 "win_elixir": 390,
@@ -25260,9 +23630,9 @@ var outputTables = {
                 "lose_money": 20,
                 "lose_elixir": 195
             },
-            "40": {
-                "id": 40,
-                "lv": 40,
+            "35": {
+                "id": 35,
+                "lv": 35,
                 "win_exp": 31,
                 "win_money": 40,
                 "win_elixir": 400,
@@ -25270,9 +23640,9 @@ var outputTables = {
                 "lose_money": 20,
                 "lose_elixir": 200
             },
-            "41": {
-                "id": 41,
-                "lv": 41,
+            "36": {
+                "id": 36,
+                "lv": 36,
                 "win_exp": 32,
                 "win_money": 41,
                 "win_elixir": 410,
@@ -25280,9 +23650,9 @@ var outputTables = {
                 "lose_money": 21,
                 "lose_elixir": 205
             },
-            "42": {
-                "id": 42,
-                "lv": 42,
+            "37": {
+                "id": 37,
+                "lv": 37,
                 "win_exp": 33,
                 "win_money": 42,
                 "win_elixir": 420,
@@ -25290,9 +23660,9 @@ var outputTables = {
                 "lose_money": 21,
                 "lose_elixir": 210
             },
-            "43": {
-                "id": 43,
-                "lv": 43,
+            "38": {
+                "id": 38,
+                "lv": 38,
                 "win_exp": 34,
                 "win_money": 43,
                 "win_elixir": 430,
@@ -25300,9 +23670,9 @@ var outputTables = {
                 "lose_money": 22,
                 "lose_elixir": 215
             },
-            "44": {
-                "id": 44,
-                "lv": 44,
+            "39": {
+                "id": 39,
+                "lv": 39,
                 "win_exp": 35,
                 "win_money": 44,
                 "win_elixir": 440,
@@ -25310,9 +23680,9 @@ var outputTables = {
                 "lose_money": 22,
                 "lose_elixir": 220
             },
-            "45": {
-                "id": 45,
-                "lv": 45,
+            "40": {
+                "id": 40,
+                "lv": 40,
                 "win_exp": 36,
                 "win_money": 45,
                 "win_elixir": 450,
@@ -25320,9 +23690,9 @@ var outputTables = {
                 "lose_money": 23,
                 "lose_elixir": 225
             },
-            "46": {
-                "id": 46,
-                "lv": 46,
+            "41": {
+                "id": 41,
+                "lv": 41,
                 "win_exp": 37,
                 "win_money": 46,
                 "win_elixir": 460,
@@ -25330,9 +23700,9 @@ var outputTables = {
                 "lose_money": 23,
                 "lose_elixir": 230
             },
-            "47": {
-                "id": 47,
-                "lv": 47,
+            "42": {
+                "id": 42,
+                "lv": 42,
                 "win_exp": 38,
                 "win_money": 47,
                 "win_elixir": 470,
@@ -25340,9 +23710,9 @@ var outputTables = {
                 "lose_money": 24,
                 "lose_elixir": 235
             },
-            "48": {
-                "id": 48,
-                "lv": 48,
+            "43": {
+                "id": 43,
+                "lv": 43,
                 "win_exp": 39,
                 "win_money": 48,
                 "win_elixir": 480,
@@ -25350,9 +23720,9 @@ var outputTables = {
                 "lose_money": 24,
                 "lose_elixir": 240
             },
-            "49": {
-                "id": 49,
-                "lv": 49,
+            "44": {
+                "id": 44,
+                "lv": 44,
                 "win_exp": 40,
                 "win_money": 49,
                 "win_elixir": 490,
@@ -25360,9 +23730,9 @@ var outputTables = {
                 "lose_money": 25,
                 "lose_elixir": 245
             },
-            "50": {
-                "id": 50,
-                "lv": 50,
+            "45": {
+                "id": 45,
+                "lv": 45,
                 "win_exp": 41,
                 "win_money": 50,
                 "win_elixir": 500,
@@ -25370,9 +23740,9 @@ var outputTables = {
                 "lose_money": 25,
                 "lose_elixir": 250
             },
-            "51": {
-                "id": 51,
-                "lv": 51,
+            "46": {
+                "id": 46,
+                "lv": 46,
                 "win_exp": 42,
                 "win_money": 51,
                 "win_elixir": 510,
@@ -25380,9 +23750,9 @@ var outputTables = {
                 "lose_money": 26,
                 "lose_elixir": 255
             },
-            "52": {
-                "id": 52,
-                "lv": 52,
+            "47": {
+                "id": 47,
+                "lv": 47,
                 "win_exp": 43,
                 "win_money": 52,
                 "win_elixir": 520,
@@ -25390,9 +23760,9 @@ var outputTables = {
                 "lose_money": 26,
                 "lose_elixir": 260
             },
-            "53": {
-                "id": 53,
-                "lv": 53,
+            "48": {
+                "id": 48,
+                "lv": 48,
                 "win_exp": 44,
                 "win_money": 53,
                 "win_elixir": 530,
@@ -25400,9 +23770,9 @@ var outputTables = {
                 "lose_money": 27,
                 "lose_elixir": 265
             },
-            "54": {
-                "id": 54,
-                "lv": 54,
+            "49": {
+                "id": 49,
+                "lv": 49,
                 "win_exp": 45,
                 "win_money": 54,
                 "win_elixir": 540,
@@ -25410,9 +23780,9 @@ var outputTables = {
                 "lose_money": 27,
                 "lose_elixir": 270
             },
-            "55": {
-                "id": 55,
-                "lv": 55,
+            "50": {
+                "id": 50,
+                "lv": 50,
                 "win_exp": 46,
                 "win_money": 55,
                 "win_elixir": 550,
@@ -25420,9 +23790,9 @@ var outputTables = {
                 "lose_money": 28,
                 "lose_elixir": 275
             },
-            "56": {
-                "id": 56,
-                "lv": 56,
+            "51": {
+                "id": 51,
+                "lv": 51,
                 "win_exp": 47,
                 "win_money": 56,
                 "win_elixir": 560,
@@ -25430,9 +23800,9 @@ var outputTables = {
                 "lose_money": 28,
                 "lose_elixir": 280
             },
-            "57": {
-                "id": 57,
-                "lv": 57,
+            "52": {
+                "id": 52,
+                "lv": 52,
                 "win_exp": 48,
                 "win_money": 57,
                 "win_elixir": 570,
@@ -25440,9 +23810,9 @@ var outputTables = {
                 "lose_money": 29,
                 "lose_elixir": 285
             },
-            "58": {
-                "id": 58,
-                "lv": 58,
+            "53": {
+                "id": 53,
+                "lv": 53,
                 "win_exp": 49,
                 "win_money": 58,
                 "win_elixir": 580,
@@ -25450,9 +23820,9 @@ var outputTables = {
                 "lose_money": 29,
                 "lose_elixir": 290
             },
-            "59": {
-                "id": 59,
-                "lv": 59,
+            "54": {
+                "id": 54,
+                "lv": 54,
                 "win_exp": 50,
                 "win_money": 59,
                 "win_elixir": 590,
@@ -25460,9 +23830,9 @@ var outputTables = {
                 "lose_money": 30,
                 "lose_elixir": 295
             },
-            "60": {
-                "id": 60,
-                "lv": 60,
+            "55": {
+                "id": 55,
+                "lv": 55,
                 "win_exp": 51,
                 "win_money": 60,
                 "win_elixir": 600,
@@ -25470,9 +23840,9 @@ var outputTables = {
                 "lose_money": 30,
                 "lose_elixir": 300
             },
-            "61": {
-                "id": 61,
-                "lv": 61,
+            "56": {
+                "id": 56,
+                "lv": 56,
                 "win_exp": 52,
                 "win_money": 61,
                 "win_elixir": 610,
@@ -25480,9 +23850,9 @@ var outputTables = {
                 "lose_money": 31,
                 "lose_elixir": 305
             },
-            "62": {
-                "id": 62,
-                "lv": 62,
+            "57": {
+                "id": 57,
+                "lv": 57,
                 "win_exp": 53,
                 "win_money": 62,
                 "win_elixir": 620,
@@ -25490,9 +23860,9 @@ var outputTables = {
                 "lose_money": 31,
                 "lose_elixir": 310
             },
-            "63": {
-                "id": 63,
-                "lv": 63,
+            "58": {
+                "id": 58,
+                "lv": 58,
                 "win_exp": 54,
                 "win_money": 63,
                 "win_elixir": 630,
@@ -25500,9 +23870,9 @@ var outputTables = {
                 "lose_money": 32,
                 "lose_elixir": 315
             },
-            "64": {
-                "id": 64,
-                "lv": 64,
+            "59": {
+                "id": 59,
+                "lv": 59,
                 "win_exp": 55,
                 "win_money": 64,
                 "win_elixir": 640,
@@ -25510,9 +23880,9 @@ var outputTables = {
                 "lose_money": 32,
                 "lose_elixir": 320
             },
-            "65": {
-                "id": 65,
-                "lv": 65,
+            "60": {
+                "id": 60,
+                "lv": 60,
                 "win_exp": 56,
                 "win_money": 65,
                 "win_elixir": 650,
@@ -25520,9 +23890,9 @@ var outputTables = {
                 "lose_money": 33,
                 "lose_elixir": 325
             },
-            "66": {
-                "id": 66,
-                "lv": 66,
+            "61": {
+                "id": 61,
+                "lv": 61,
                 "win_exp": 57,
                 "win_money": 66,
                 "win_elixir": 660,
@@ -25530,9 +23900,9 @@ var outputTables = {
                 "lose_money": 33,
                 "lose_elixir": 330
             },
-            "67": {
-                "id": 67,
-                "lv": 67,
+            "62": {
+                "id": 62,
+                "lv": 62,
                 "win_exp": 58,
                 "win_money": 67,
                 "win_elixir": 670,
@@ -25540,9 +23910,9 @@ var outputTables = {
                 "lose_money": 34,
                 "lose_elixir": 335
             },
-            "68": {
-                "id": 68,
-                "lv": 68,
+            "63": {
+                "id": 63,
+                "lv": 63,
                 "win_exp": 59,
                 "win_money": 68,
                 "win_elixir": 680,
@@ -25550,9 +23920,9 @@ var outputTables = {
                 "lose_money": 34,
                 "lose_elixir": 340
             },
-            "69": {
-                "id": 69,
-                "lv": 69,
+            "64": {
+                "id": 64,
+                "lv": 64,
                 "win_exp": 60,
                 "win_money": 69,
                 "win_elixir": 690,
@@ -25560,9 +23930,9 @@ var outputTables = {
                 "lose_money": 35,
                 "lose_elixir": 345
             },
-            "70": {
-                "id": 70,
-                "lv": 70,
+            "65": {
+                "id": 65,
+                "lv": 65,
                 "win_exp": 61,
                 "win_money": 70,
                 "win_elixir": 700,
@@ -25570,9 +23940,9 @@ var outputTables = {
                 "lose_money": 35,
                 "lose_elixir": 350
             },
-            "71": {
-                "id": 71,
-                "lv": 71,
+            "66": {
+                "id": 66,
+                "lv": 66,
                 "win_exp": 62,
                 "win_money": 71,
                 "win_elixir": 710,
@@ -25580,9 +23950,9 @@ var outputTables = {
                 "lose_money": 36,
                 "lose_elixir": 355
             },
-            "72": {
-                "id": 72,
-                "lv": 72,
+            "67": {
+                "id": 67,
+                "lv": 67,
                 "win_exp": 63,
                 "win_money": 72,
                 "win_elixir": 720,
@@ -25590,9 +23960,9 @@ var outputTables = {
                 "lose_money": 36,
                 "lose_elixir": 360
             },
-            "73": {
-                "id": 73,
-                "lv": 73,
+            "68": {
+                "id": 68,
+                "lv": 68,
                 "win_exp": 64,
                 "win_money": 73,
                 "win_elixir": 730,
@@ -25600,9 +23970,9 @@ var outputTables = {
                 "lose_money": 37,
                 "lose_elixir": 365
             },
-            "74": {
-                "id": 74,
-                "lv": 74,
+            "69": {
+                "id": 69,
+                "lv": 69,
                 "win_exp": 65,
                 "win_money": 74,
                 "win_elixir": 740,
@@ -25610,9 +23980,9 @@ var outputTables = {
                 "lose_money": 37,
                 "lose_elixir": 370
             },
-            "75": {
-                "id": 75,
-                "lv": 75,
+            "70": {
+                "id": 70,
+                "lv": 70,
                 "win_exp": 66,
                 "win_money": 75,
                 "win_elixir": 750,
@@ -25620,9 +23990,9 @@ var outputTables = {
                 "lose_money": 38,
                 "lose_elixir": 375
             },
-            "76": {
-                "id": 76,
-                "lv": 76,
+            "71": {
+                "id": 71,
+                "lv": 71,
                 "win_exp": 67,
                 "win_money": 76,
                 "win_elixir": 760,
@@ -25630,9 +24000,9 @@ var outputTables = {
                 "lose_money": 38,
                 "lose_elixir": 380
             },
-            "77": {
-                "id": 77,
-                "lv": 77,
+            "72": {
+                "id": 72,
+                "lv": 72,
                 "win_exp": 68,
                 "win_money": 77,
                 "win_elixir": 770,
@@ -25640,9 +24010,9 @@ var outputTables = {
                 "lose_money": 39,
                 "lose_elixir": 385
             },
-            "78": {
-                "id": 78,
-                "lv": 78,
+            "73": {
+                "id": 73,
+                "lv": 73,
                 "win_exp": 69,
                 "win_money": 78,
                 "win_elixir": 780,
@@ -25650,9 +24020,9 @@ var outputTables = {
                 "lose_money": 39,
                 "lose_elixir": 390
             },
-            "79": {
-                "id": 79,
-                "lv": 79,
+            "74": {
+                "id": 74,
+                "lv": 74,
                 "win_exp": 70,
                 "win_money": 79,
                 "win_elixir": 790,
@@ -25660,9 +24030,9 @@ var outputTables = {
                 "lose_money": 40,
                 "lose_elixir": 395
             },
-            "80": {
-                "id": 80,
-                "lv": 80,
+            "75": {
+                "id": 75,
+                "lv": 75,
                 "win_exp": 71,
                 "win_money": 80,
                 "win_elixir": 800,
@@ -25670,9 +24040,9 @@ var outputTables = {
                 "lose_money": 40,
                 "lose_elixir": 400
             },
-            "81": {
-                "id": 81,
-                "lv": 81,
+            "76": {
+                "id": 76,
+                "lv": 76,
                 "win_exp": 72,
                 "win_money": 81,
                 "win_elixir": 810,
@@ -25680,9 +24050,9 @@ var outputTables = {
                 "lose_money": 41,
                 "lose_elixir": 405
             },
-            "82": {
-                "id": 82,
-                "lv": 82,
+            "77": {
+                "id": 77,
+                "lv": 77,
                 "win_exp": 73,
                 "win_money": 82,
                 "win_elixir": 820,
@@ -25690,9 +24060,9 @@ var outputTables = {
                 "lose_money": 41,
                 "lose_elixir": 410
             },
-            "83": {
-                "id": 83,
-                "lv": 83,
+            "78": {
+                "id": 78,
+                "lv": 78,
                 "win_exp": 74,
                 "win_money": 83,
                 "win_elixir": 830,
@@ -25700,9 +24070,9 @@ var outputTables = {
                 "lose_money": 42,
                 "lose_elixir": 415
             },
-            "84": {
-                "id": 84,
-                "lv": 84,
+            "79": {
+                "id": 79,
+                "lv": 79,
                 "win_exp": 75,
                 "win_money": 84,
                 "win_elixir": 840,
@@ -25710,9 +24080,9 @@ var outputTables = {
                 "lose_money": 42,
                 "lose_elixir": 420
             },
-            "85": {
-                "id": 85,
-                "lv": 85,
+            "80": {
+                "id": 80,
+                "lv": 80,
                 "win_exp": 76,
                 "win_money": 85,
                 "win_elixir": 850,
@@ -25720,9 +24090,9 @@ var outputTables = {
                 "lose_money": 43,
                 "lose_elixir": 425
             },
-            "86": {
-                "id": 86,
-                "lv": 86,
+            "81": {
+                "id": 81,
+                "lv": 81,
                 "win_exp": 77,
                 "win_money": 86,
                 "win_elixir": 860,
@@ -25730,9 +24100,9 @@ var outputTables = {
                 "lose_money": 43,
                 "lose_elixir": 430
             },
-            "87": {
-                "id": 87,
-                "lv": 87,
+            "82": {
+                "id": 82,
+                "lv": 82,
                 "win_exp": 78,
                 "win_money": 87,
                 "win_elixir": 870,
@@ -25740,9 +24110,9 @@ var outputTables = {
                 "lose_money": 44,
                 "lose_elixir": 435
             },
-            "88": {
-                "id": 88,
-                "lv": 88,
+            "83": {
+                "id": 83,
+                "lv": 83,
                 "win_exp": 79,
                 "win_money": 88,
                 "win_elixir": 880,
@@ -25750,9 +24120,9 @@ var outputTables = {
                 "lose_money": 44,
                 "lose_elixir": 440
             },
-            "89": {
-                "id": 89,
-                "lv": 89,
+            "84": {
+                "id": 84,
+                "lv": 84,
                 "win_exp": 80,
                 "win_money": 89,
                 "win_elixir": 890,
@@ -25760,9 +24130,9 @@ var outputTables = {
                 "lose_money": 45,
                 "lose_elixir": 445
             },
-            "90": {
-                "id": 90,
-                "lv": 90,
+            "85": {
+                "id": 85,
+                "lv": 85,
                 "win_exp": 81,
                 "win_money": 90,
                 "win_elixir": 900,
@@ -25770,9 +24140,9 @@ var outputTables = {
                 "lose_money": 45,
                 "lose_elixir": 450
             },
-            "91": {
-                "id": 91,
-                "lv": 91,
+            "86": {
+                "id": 86,
+                "lv": 86,
                 "win_exp": 82,
                 "win_money": 91,
                 "win_elixir": 910,
@@ -25780,9 +24150,9 @@ var outputTables = {
                 "lose_money": 46,
                 "lose_elixir": 455
             },
-            "92": {
-                "id": 92,
-                "lv": 92,
+            "87": {
+                "id": 87,
+                "lv": 87,
                 "win_exp": 83,
                 "win_money": 92,
                 "win_elixir": 920,
@@ -25790,9 +24160,9 @@ var outputTables = {
                 "lose_money": 46,
                 "lose_elixir": 460
             },
-            "93": {
-                "id": 93,
-                "lv": 93,
+            "88": {
+                "id": 88,
+                "lv": 88,
                 "win_exp": 84,
                 "win_money": 93,
                 "win_elixir": 930,
@@ -25800,9 +24170,9 @@ var outputTables = {
                 "lose_money": 47,
                 "lose_elixir": 465
             },
-            "94": {
-                "id": 94,
-                "lv": 94,
+            "89": {
+                "id": 89,
+                "lv": 89,
                 "win_exp": 85,
                 "win_money": 94,
                 "win_elixir": 940,
@@ -25810,9 +24180,9 @@ var outputTables = {
                 "lose_money": 47,
                 "lose_elixir": 470
             },
-            "95": {
-                "id": 95,
-                "lv": 95,
+            "90": {
+                "id": 90,
+                "lv": 90,
                 "win_exp": 86,
                 "win_money": 95,
                 "win_elixir": 950,
@@ -25820,9 +24190,9 @@ var outputTables = {
                 "lose_money": 48,
                 "lose_elixir": 475
             },
-            "96": {
-                "id": 96,
-                "lv": 96,
+            "91": {
+                "id": 91,
+                "lv": 91,
                 "win_exp": 87,
                 "win_money": 96,
                 "win_elixir": 960,
@@ -25830,9 +24200,9 @@ var outputTables = {
                 "lose_money": 48,
                 "lose_elixir": 480
             },
-            "97": {
-                "id": 97,
-                "lv": 97,
+            "92": {
+                "id": 92,
+                "lv": 92,
                 "win_exp": 88,
                 "win_money": 97,
                 "win_elixir": 970,
@@ -25840,9 +24210,9 @@ var outputTables = {
                 "lose_money": 49,
                 "lose_elixir": 485
             },
-            "98": {
-                "id": 98,
-                "lv": 98,
+            "93": {
+                "id": 93,
+                "lv": 93,
                 "win_exp": 89,
                 "win_money": 98,
                 "win_elixir": 980,
@@ -25850,9 +24220,9 @@ var outputTables = {
                 "lose_money": 49,
                 "lose_elixir": 490
             },
-            "99": {
-                "id": 99,
-                "lv": 99,
+            "94": {
+                "id": 94,
+                "lv": 94,
                 "win_exp": 90,
                 "win_money": 99,
                 "win_elixir": 990,
@@ -25860,15 +24230,65 @@ var outputTables = {
                 "lose_money": 50,
                 "lose_elixir": 495
             },
-            "100": {
-                "id": 100,
-                "lv": 100,
+            "95": {
+                "id": 95,
+                "lv": 95,
                 "win_exp": 91,
                 "win_money": 100,
                 "win_elixir": 1000,
                 "lose_exp": 46,
                 "lose_money": 50,
                 "lose_elixir": 500
+            },
+            "96": {
+                "id": 96,
+                "lv": 96,
+                "win_exp": 92,
+                "win_money": 101,
+                "win_elixir": 1010,
+                "lose_exp": 46,
+                "lose_money": 51,
+                "lose_elixir": 505
+            },
+            "97": {
+                "id": 97,
+                "lv": 97,
+                "win_exp": 93,
+                "win_money": 102,
+                "win_elixir": 1020,
+                "lose_exp": 47,
+                "lose_money": 51,
+                "lose_elixir": 510
+            },
+            "98": {
+                "id": 98,
+                "lv": 98,
+                "win_exp": 94,
+                "win_money": 103,
+                "win_elixir": 1030,
+                "lose_exp": 47,
+                "lose_money": 52,
+                "lose_elixir": 515
+            },
+            "99": {
+                "id": 99,
+                "lv": 99,
+                "win_exp": 95,
+                "win_money": 104,
+                "win_elixir": 1040,
+                "lose_exp": 48,
+                "lose_money": 52,
+                "lose_elixir": 520
+            },
+            "100": {
+                "id": 100,
+                "lv": 100,
+                "win_exp": 96,
+                "win_money": 105,
+                "win_elixir": 1050,
+                "lose_exp": 48,
+                "lose_money": 53,
+                "lose_elixir": 525
             }
         }
     },
@@ -25980,7 +24400,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "method": "money",
-                "name": "仙币",
+                "name": "一小袋仙币",
                 "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
                 "consume_type": "gold",
                 "consume": 10,
@@ -25991,7 +24411,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "method": "money",
-                "name": "仙币",
+                "name": "一袋仙币",
                 "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
                 "consume_type": "gold",
                 "consume": 50,
@@ -26002,7 +24422,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "method": "money",
-                "name": "仙币",
+                "name": "一大袋仙币",
                 "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
@@ -26014,7 +24434,7 @@ var outputTables = {
                 "id": 5,
                 "method": "power",
                 "name": "体力",
-                "disc": "每次购买可获得50点体力。每日最多买6次。VIP除外。",
+                "disc": "每次购买可获得50点体力。每日最多买5次。VIP除外。",
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "power",
@@ -46002,6 +44422,2011 @@ var outputTables = {
             }
         }
     },
+    "task_through_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money_obtain": 500
+            },
+            "2": {
+                "id": 2,
+                "money_obtain": 505
+            },
+            "3": {
+                "id": 3,
+                "money_obtain": 510
+            },
+            "4": {
+                "id": 4,
+                "money_obtain": 515
+            },
+            "5": {
+                "id": 5,
+                "money_obtain": 520
+            },
+            "6": {
+                "id": 6,
+                "money_obtain": 525
+            },
+            "7": {
+                "id": 7,
+                "money_obtain": 530
+            },
+            "8": {
+                "id": 8,
+                "money_obtain": 535
+            },
+            "9": {
+                "id": 9,
+                "money_obtain": 540
+            },
+            "10": {
+                "id": 10,
+                "money_obtain": 545
+            },
+            "11": {
+                "id": 11,
+                "money_obtain": 550
+            },
+            "12": {
+                "id": 12,
+                "money_obtain": 555
+            },
+            "13": {
+                "id": 13,
+                "money_obtain": 560
+            },
+            "14": {
+                "id": 14,
+                "money_obtain": 565
+            },
+            "15": {
+                "id": 15,
+                "money_obtain": 570
+            },
+            "16": {
+                "id": 16,
+                "money_obtain": 575
+            },
+            "17": {
+                "id": 17,
+                "money_obtain": 580
+            },
+            "18": {
+                "id": 18,
+                "money_obtain": 585
+            },
+            "19": {
+                "id": 19,
+                "money_obtain": 590
+            },
+            "20": {
+                "id": 20,
+                "money_obtain": 595
+            },
+            "21": {
+                "id": 21,
+                "money_obtain": 600
+            },
+            "22": {
+                "id": 22,
+                "money_obtain": 605
+            },
+            "23": {
+                "id": 23,
+                "money_obtain": 610
+            },
+            "24": {
+                "id": 24,
+                "money_obtain": 615
+            },
+            "25": {
+                "id": 25,
+                "money_obtain": 620
+            },
+            "26": {
+                "id": 26,
+                "money_obtain": 625
+            },
+            "27": {
+                "id": 27,
+                "money_obtain": 630
+            },
+            "28": {
+                "id": 28,
+                "money_obtain": 635
+            },
+            "29": {
+                "id": 29,
+                "money_obtain": 640
+            },
+            "30": {
+                "id": 30,
+                "money_obtain": 645
+            },
+            "31": {
+                "id": 31,
+                "money_obtain": 650
+            },
+            "32": {
+                "id": 32,
+                "money_obtain": 655
+            },
+            "33": {
+                "id": 33,
+                "money_obtain": 660
+            },
+            "34": {
+                "id": 34,
+                "money_obtain": 665
+            },
+            "35": {
+                "id": 35,
+                "money_obtain": 670
+            },
+            "36": {
+                "id": 36,
+                "money_obtain": 675
+            },
+            "37": {
+                "id": 37,
+                "money_obtain": 680
+            },
+            "38": {
+                "id": 38,
+                "money_obtain": 685
+            },
+            "39": {
+                "id": 39,
+                "money_obtain": 690
+            },
+            "40": {
+                "id": 40,
+                "money_obtain": 695
+            },
+            "41": {
+                "id": 41,
+                "money_obtain": 700
+            },
+            "42": {
+                "id": 42,
+                "money_obtain": 705
+            },
+            "43": {
+                "id": 43,
+                "money_obtain": 710
+            },
+            "44": {
+                "id": 44,
+                "money_obtain": 715
+            },
+            "45": {
+                "id": 45,
+                "money_obtain": 720
+            },
+            "46": {
+                "id": 46,
+                "money_obtain": 725
+            },
+            "47": {
+                "id": 47,
+                "money_obtain": 730
+            },
+            "48": {
+                "id": 48,
+                "money_obtain": 735
+            },
+            "49": {
+                "id": 49,
+                "money_obtain": 740
+            },
+            "50": {
+                "id": 50,
+                "money_obtain": 745
+            },
+            "51": {
+                "id": 51,
+                "money_obtain": 750
+            },
+            "52": {
+                "id": 52,
+                "money_obtain": 755
+            },
+            "53": {
+                "id": 53,
+                "money_obtain": 760
+            },
+            "54": {
+                "id": 54,
+                "money_obtain": 765
+            },
+            "55": {
+                "id": 55,
+                "money_obtain": 770
+            },
+            "56": {
+                "id": 56,
+                "money_obtain": 775
+            },
+            "57": {
+                "id": 57,
+                "money_obtain": 780
+            },
+            "58": {
+                "id": 58,
+                "money_obtain": 785
+            },
+            "59": {
+                "id": 59,
+                "money_obtain": 790
+            },
+            "60": {
+                "id": 60,
+                "money_obtain": 795
+            },
+            "61": {
+                "id": 61,
+                "money_obtain": 800
+            },
+            "62": {
+                "id": 62,
+                "money_obtain": 805
+            },
+            "63": {
+                "id": 63,
+                "money_obtain": 810
+            },
+            "64": {
+                "id": 64,
+                "money_obtain": 815
+            },
+            "65": {
+                "id": 65,
+                "money_obtain": 820
+            },
+            "66": {
+                "id": 66,
+                "money_obtain": 825
+            },
+            "67": {
+                "id": 67,
+                "money_obtain": 830
+            },
+            "68": {
+                "id": 68,
+                "money_obtain": 835
+            },
+            "69": {
+                "id": 69,
+                "money_obtain": 840
+            },
+            "70": {
+                "id": 70,
+                "money_obtain": 845
+            },
+            "71": {
+                "id": 71,
+                "money_obtain": 850
+            },
+            "72": {
+                "id": 72,
+                "money_obtain": 855
+            },
+            "73": {
+                "id": 73,
+                "money_obtain": 860
+            },
+            "74": {
+                "id": 74,
+                "money_obtain": 865
+            },
+            "75": {
+                "id": 75,
+                "money_obtain": 870
+            },
+            "76": {
+                "id": 76,
+                "money_obtain": 875
+            },
+            "77": {
+                "id": 77,
+                "money_obtain": 880
+            },
+            "78": {
+                "id": 78,
+                "money_obtain": 885
+            },
+            "79": {
+                "id": 79,
+                "money_obtain": 890
+            },
+            "80": {
+                "id": 80,
+                "money_obtain": 895
+            },
+            "81": {
+                "id": 81,
+                "money_obtain": 900
+            },
+            "82": {
+                "id": 82,
+                "money_obtain": 905
+            },
+            "83": {
+                "id": 83,
+                "money_obtain": 910
+            },
+            "84": {
+                "id": 84,
+                "money_obtain": 915
+            },
+            "85": {
+                "id": 85,
+                "money_obtain": 920
+            },
+            "86": {
+                "id": 86,
+                "money_obtain": 925
+            },
+            "87": {
+                "id": 87,
+                "money_obtain": 930
+            },
+            "88": {
+                "id": 88,
+                "money_obtain": 935
+            },
+            "89": {
+                "id": 89,
+                "money_obtain": 940
+            },
+            "90": {
+                "id": 90,
+                "money_obtain": 945
+            },
+            "91": {
+                "id": 91,
+                "money_obtain": 950
+            },
+            "92": {
+                "id": 92,
+                "money_obtain": 955
+            },
+            "93": {
+                "id": 93,
+                "money_obtain": 960
+            },
+            "94": {
+                "id": 94,
+                "money_obtain": 965
+            },
+            "95": {
+                "id": 95,
+                "money_obtain": 970
+            },
+            "96": {
+                "id": 96,
+                "money_obtain": 975
+            },
+            "97": {
+                "id": 97,
+                "money_obtain": 980
+            },
+            "98": {
+                "id": 98,
+                "money_obtain": 985
+            },
+            "99": {
+                "id": 99,
+                "money_obtain": 990
+            },
+            "100": {
+                "id": 100,
+                "money_obtain": 995
+            },
+            "101": {
+                "id": 101,
+                "money_obtain": 1000
+            },
+            "102": {
+                "id": 102,
+                "money_obtain": 1005
+            },
+            "103": {
+                "id": 103,
+                "money_obtain": 1010
+            },
+            "104": {
+                "id": 104,
+                "money_obtain": 1015
+            },
+            "105": {
+                "id": 105,
+                "money_obtain": 1020
+            },
+            "106": {
+                "id": 106,
+                "money_obtain": 1025
+            },
+            "107": {
+                "id": 107,
+                "money_obtain": 1030
+            },
+            "108": {
+                "id": 108,
+                "money_obtain": 1035
+            },
+            "109": {
+                "id": 109,
+                "money_obtain": 1040
+            },
+            "110": {
+                "id": 110,
+                "money_obtain": 1045
+            },
+            "111": {
+                "id": 111,
+                "money_obtain": 1050
+            },
+            "112": {
+                "id": 112,
+                "money_obtain": 1055
+            },
+            "113": {
+                "id": 113,
+                "money_obtain": 1060
+            },
+            "114": {
+                "id": 114,
+                "money_obtain": 1065
+            },
+            "115": {
+                "id": 115,
+                "money_obtain": 1070
+            },
+            "116": {
+                "id": 116,
+                "money_obtain": 1075
+            },
+            "117": {
+                "id": 117,
+                "money_obtain": 1080
+            },
+            "118": {
+                "id": 118,
+                "money_obtain": 1085
+            },
+            "119": {
+                "id": 119,
+                "money_obtain": 1090
+            },
+            "120": {
+                "id": 120,
+                "money_obtain": 1095
+            },
+            "121": {
+                "id": 121,
+                "money_obtain": 1100
+            },
+            "122": {
+                "id": 122,
+                "money_obtain": 1105
+            },
+            "123": {
+                "id": 123,
+                "money_obtain": 1110
+            },
+            "124": {
+                "id": 124,
+                "money_obtain": 1115
+            },
+            "125": {
+                "id": 125,
+                "money_obtain": 1120
+            },
+            "126": {
+                "id": 126,
+                "money_obtain": 1125
+            },
+            "127": {
+                "id": 127,
+                "money_obtain": 1130
+            },
+            "128": {
+                "id": 128,
+                "money_obtain": 1135
+            },
+            "129": {
+                "id": 129,
+                "money_obtain": 1140
+            },
+            "130": {
+                "id": 130,
+                "money_obtain": 1145
+            },
+            "131": {
+                "id": 131,
+                "money_obtain": 1150
+            },
+            "132": {
+                "id": 132,
+                "money_obtain": 1155
+            },
+            "133": {
+                "id": 133,
+                "money_obtain": 1160
+            },
+            "134": {
+                "id": 134,
+                "money_obtain": 1165
+            },
+            "135": {
+                "id": 135,
+                "money_obtain": 1170
+            },
+            "136": {
+                "id": 136,
+                "money_obtain": 1175
+            },
+            "137": {
+                "id": 137,
+                "money_obtain": 1180
+            },
+            "138": {
+                "id": 138,
+                "money_obtain": 1185
+            },
+            "139": {
+                "id": 139,
+                "money_obtain": 1190
+            },
+            "140": {
+                "id": 140,
+                "money_obtain": 1195
+            },
+            "141": {
+                "id": 141,
+                "money_obtain": 1200
+            },
+            "142": {
+                "id": 142,
+                "money_obtain": 1205
+            },
+            "143": {
+                "id": 143,
+                "money_obtain": 1210
+            },
+            "144": {
+                "id": 144,
+                "money_obtain": 1215
+            },
+            "145": {
+                "id": 145,
+                "money_obtain": 1220
+            },
+            "146": {
+                "id": 146,
+                "money_obtain": 1225
+            },
+            "147": {
+                "id": 147,
+                "money_obtain": 1230
+            },
+            "148": {
+                "id": 148,
+                "money_obtain": 1235
+            },
+            "149": {
+                "id": 149,
+                "money_obtain": 1240
+            },
+            "150": {
+                "id": 150,
+                "money_obtain": 1245
+            },
+            "151": {
+                "id": 151,
+                "money_obtain": 1250
+            },
+            "152": {
+                "id": 152,
+                "money_obtain": 1255
+            },
+            "153": {
+                "id": 153,
+                "money_obtain": 1260
+            },
+            "154": {
+                "id": 154,
+                "money_obtain": 1265
+            },
+            "155": {
+                "id": 155,
+                "money_obtain": 1270
+            },
+            "156": {
+                "id": 156,
+                "money_obtain": 1275
+            },
+            "157": {
+                "id": 157,
+                "money_obtain": 1280
+            },
+            "158": {
+                "id": 158,
+                "money_obtain": 1285
+            },
+            "159": {
+                "id": 159,
+                "money_obtain": 1290
+            },
+            "160": {
+                "id": 160,
+                "money_obtain": 1295
+            },
+            "161": {
+                "id": 161,
+                "money_obtain": 1300
+            },
+            "162": {
+                "id": 162,
+                "money_obtain": 1305
+            },
+            "163": {
+                "id": 163,
+                "money_obtain": 1310
+            },
+            "164": {
+                "id": 164,
+                "money_obtain": 1315
+            },
+            "165": {
+                "id": 165,
+                "money_obtain": 1320
+            },
+            "166": {
+                "id": 166,
+                "money_obtain": 1325
+            },
+            "167": {
+                "id": 167,
+                "money_obtain": 1330
+            },
+            "168": {
+                "id": 168,
+                "money_obtain": 1335
+            },
+            "169": {
+                "id": 169,
+                "money_obtain": 1340
+            },
+            "170": {
+                "id": 170,
+                "money_obtain": 1345
+            },
+            "171": {
+                "id": 171,
+                "money_obtain": 1350
+            },
+            "172": {
+                "id": 172,
+                "money_obtain": 1355
+            },
+            "173": {
+                "id": 173,
+                "money_obtain": 1360
+            },
+            "174": {
+                "id": 174,
+                "money_obtain": 1365
+            },
+            "175": {
+                "id": 175,
+                "money_obtain": 1370
+            },
+            "176": {
+                "id": 176,
+                "money_obtain": 1375
+            },
+            "177": {
+                "id": 177,
+                "money_obtain": 1380
+            },
+            "178": {
+                "id": 178,
+                "money_obtain": 1385
+            },
+            "179": {
+                "id": 179,
+                "money_obtain": 1390
+            },
+            "180": {
+                "id": 180,
+                "money_obtain": 1395
+            },
+            "181": {
+                "id": 181,
+                "money_obtain": 1400
+            },
+            "182": {
+                "id": 182,
+                "money_obtain": 1405
+            },
+            "183": {
+                "id": 183,
+                "money_obtain": 1410
+            },
+            "184": {
+                "id": 184,
+                "money_obtain": 1415
+            },
+            "185": {
+                "id": 185,
+                "money_obtain": 1420
+            },
+            "186": {
+                "id": 186,
+                "money_obtain": 1425
+            },
+            "187": {
+                "id": 187,
+                "money_obtain": 1430
+            },
+            "188": {
+                "id": 188,
+                "money_obtain": 1435
+            },
+            "189": {
+                "id": 189,
+                "money_obtain": 1440
+            },
+            "190": {
+                "id": 190,
+                "money_obtain": 1445
+            },
+            "191": {
+                "id": 191,
+                "money_obtain": 1450
+            },
+            "192": {
+                "id": 192,
+                "money_obtain": 1455
+            },
+            "193": {
+                "id": 193,
+                "money_obtain": 1460
+            },
+            "194": {
+                "id": 194,
+                "money_obtain": 1465
+            },
+            "195": {
+                "id": 195,
+                "money_obtain": 1470
+            },
+            "196": {
+                "id": 196,
+                "money_obtain": 1475
+            },
+            "197": {
+                "id": 197,
+                "money_obtain": 1480
+            },
+            "198": {
+                "id": 198,
+                "money_obtain": 1485
+            },
+            "199": {
+                "id": 199,
+                "money_obtain": 1490
+            },
+            "200": {
+                "id": 200,
+                "money_obtain": 1495
+            },
+            "201": {
+                "id": 201,
+                "money_obtain": 1500
+            },
+            "202": {
+                "id": 202,
+                "money_obtain": 1505
+            },
+            "203": {
+                "id": 203,
+                "money_obtain": 1510
+            },
+            "204": {
+                "id": 204,
+                "money_obtain": 1515
+            },
+            "205": {
+                "id": 205,
+                "money_obtain": 1520
+            },
+            "206": {
+                "id": 206,
+                "money_obtain": 1525
+            },
+            "207": {
+                "id": 207,
+                "money_obtain": 1530
+            },
+            "208": {
+                "id": 208,
+                "money_obtain": 1535
+            },
+            "209": {
+                "id": 209,
+                "money_obtain": 1540
+            },
+            "210": {
+                "id": 210,
+                "money_obtain": 1545
+            },
+            "211": {
+                "id": 211,
+                "money_obtain": 1550
+            },
+            "212": {
+                "id": 212,
+                "money_obtain": 1555
+            },
+            "213": {
+                "id": 213,
+                "money_obtain": 1560
+            },
+            "214": {
+                "id": 214,
+                "money_obtain": 1565
+            },
+            "215": {
+                "id": 215,
+                "money_obtain": 1570
+            },
+            "216": {
+                "id": 216,
+                "money_obtain": 1575
+            },
+            "217": {
+                "id": 217,
+                "money_obtain": 1580
+            },
+            "218": {
+                "id": 218,
+                "money_obtain": 1585
+            },
+            "219": {
+                "id": 219,
+                "money_obtain": 1590
+            },
+            "220": {
+                "id": 220,
+                "money_obtain": 1595
+            },
+            "221": {
+                "id": 221,
+                "money_obtain": 1600
+            },
+            "222": {
+                "id": 222,
+                "money_obtain": 1605
+            },
+            "223": {
+                "id": 223,
+                "money_obtain": 1610
+            },
+            "224": {
+                "id": 224,
+                "money_obtain": 1615
+            },
+            "225": {
+                "id": 225,
+                "money_obtain": 1620
+            },
+            "226": {
+                "id": 226,
+                "money_obtain": 1625
+            },
+            "227": {
+                "id": 227,
+                "money_obtain": 1630
+            },
+            "228": {
+                "id": 228,
+                "money_obtain": 1635
+            },
+            "229": {
+                "id": 229,
+                "money_obtain": 1640
+            },
+            "230": {
+                "id": 230,
+                "money_obtain": 1645
+            },
+            "231": {
+                "id": 231,
+                "money_obtain": 1650
+            },
+            "232": {
+                "id": 232,
+                "money_obtain": 1655
+            },
+            "233": {
+                "id": 233,
+                "money_obtain": 1660
+            },
+            "234": {
+                "id": 234,
+                "money_obtain": 1665
+            },
+            "235": {
+                "id": 235,
+                "money_obtain": 1670
+            },
+            "236": {
+                "id": 236,
+                "money_obtain": 1675
+            },
+            "237": {
+                "id": 237,
+                "money_obtain": 1680
+            },
+            "238": {
+                "id": 238,
+                "money_obtain": 1685
+            },
+            "239": {
+                "id": 239,
+                "money_obtain": 1690
+            },
+            "240": {
+                "id": 240,
+                "money_obtain": 1695
+            },
+            "241": {
+                "id": 241,
+                "money_obtain": 1700
+            },
+            "242": {
+                "id": 242,
+                "money_obtain": 1705
+            },
+            "243": {
+                "id": 243,
+                "money_obtain": 1710
+            },
+            "244": {
+                "id": 244,
+                "money_obtain": 1715
+            },
+            "245": {
+                "id": 245,
+                "money_obtain": 1720
+            },
+            "246": {
+                "id": 246,
+                "money_obtain": 1725
+            },
+            "247": {
+                "id": 247,
+                "money_obtain": 1730
+            },
+            "248": {
+                "id": 248,
+                "money_obtain": 1735
+            },
+            "249": {
+                "id": 249,
+                "money_obtain": 1740
+            },
+            "250": {
+                "id": 250,
+                "money_obtain": 1745
+            },
+            "251": {
+                "id": 251,
+                "money_obtain": 1750
+            },
+            "252": {
+                "id": 252,
+                "money_obtain": 1755
+            },
+            "253": {
+                "id": 253,
+                "money_obtain": 1760
+            },
+            "254": {
+                "id": 254,
+                "money_obtain": 1765
+            },
+            "255": {
+                "id": 255,
+                "money_obtain": 1770
+            },
+            "256": {
+                "id": 256,
+                "money_obtain": 1775
+            },
+            "257": {
+                "id": 257,
+                "money_obtain": 1780
+            },
+            "258": {
+                "id": 258,
+                "money_obtain": 1785
+            },
+            "259": {
+                "id": 259,
+                "money_obtain": 1790
+            },
+            "260": {
+                "id": 260,
+                "money_obtain": 1795
+            },
+            "261": {
+                "id": 261,
+                "money_obtain": 1800
+            },
+            "262": {
+                "id": 262,
+                "money_obtain": 1805
+            },
+            "263": {
+                "id": 263,
+                "money_obtain": 1810
+            },
+            "264": {
+                "id": 264,
+                "money_obtain": 1815
+            },
+            "265": {
+                "id": 265,
+                "money_obtain": 1820
+            },
+            "266": {
+                "id": 266,
+                "money_obtain": 1825
+            },
+            "267": {
+                "id": 267,
+                "money_obtain": 1830
+            },
+            "268": {
+                "id": 268,
+                "money_obtain": 1835
+            },
+            "269": {
+                "id": 269,
+                "money_obtain": 1840
+            },
+            "270": {
+                "id": 270,
+                "money_obtain": 1845
+            },
+            "271": {
+                "id": 271,
+                "money_obtain": 1850
+            },
+            "272": {
+                "id": 272,
+                "money_obtain": 1855
+            },
+            "273": {
+                "id": 273,
+                "money_obtain": 1860
+            },
+            "274": {
+                "id": 274,
+                "money_obtain": 1865
+            },
+            "275": {
+                "id": 275,
+                "money_obtain": 1870
+            },
+            "276": {
+                "id": 276,
+                "money_obtain": 1875
+            },
+            "277": {
+                "id": 277,
+                "money_obtain": 1880
+            },
+            "278": {
+                "id": 278,
+                "money_obtain": 1885
+            },
+            "279": {
+                "id": 279,
+                "money_obtain": 1890
+            },
+            "280": {
+                "id": 280,
+                "money_obtain": 1895
+            },
+            "281": {
+                "id": 281,
+                "money_obtain": 1900
+            },
+            "282": {
+                "id": 282,
+                "money_obtain": 1905
+            },
+            "283": {
+                "id": 283,
+                "money_obtain": 1910
+            },
+            "284": {
+                "id": 284,
+                "money_obtain": 1915
+            },
+            "285": {
+                "id": 285,
+                "money_obtain": 1920
+            },
+            "286": {
+                "id": 286,
+                "money_obtain": 1925
+            },
+            "287": {
+                "id": 287,
+                "money_obtain": 1930
+            },
+            "288": {
+                "id": 288,
+                "money_obtain": 1935
+            },
+            "289": {
+                "id": 289,
+                "money_obtain": 1940
+            },
+            "290": {
+                "id": 290,
+                "money_obtain": 1945
+            },
+            "291": {
+                "id": 291,
+                "money_obtain": 1950
+            },
+            "292": {
+                "id": 292,
+                "money_obtain": 1955
+            },
+            "293": {
+                "id": 293,
+                "money_obtain": 1960
+            },
+            "294": {
+                "id": 294,
+                "money_obtain": 1965
+            },
+            "295": {
+                "id": 295,
+                "money_obtain": 1970
+            },
+            "296": {
+                "id": 296,
+                "money_obtain": 1975
+            },
+            "297": {
+                "id": 297,
+                "money_obtain": 1980
+            },
+            "298": {
+                "id": 298,
+                "money_obtain": 1985
+            },
+            "299": {
+                "id": 299,
+                "money_obtain": 1990
+            },
+            "300": {
+                "id": 300,
+                "money_obtain": 1995
+            },
+            "301": {
+                "id": 301,
+                "money_obtain": 2000
+            },
+            "302": {
+                "id": 302,
+                "money_obtain": 2005
+            },
+            "303": {
+                "id": 303,
+                "money_obtain": 2010
+            },
+            "304": {
+                "id": 304,
+                "money_obtain": 2015
+            },
+            "305": {
+                "id": 305,
+                "money_obtain": 2020
+            },
+            "306": {
+                "id": 306,
+                "money_obtain": 2025
+            },
+            "307": {
+                "id": 307,
+                "money_obtain": 2030
+            },
+            "308": {
+                "id": 308,
+                "money_obtain": 2035
+            },
+            "309": {
+                "id": 309,
+                "money_obtain": 2040
+            },
+            "310": {
+                "id": 310,
+                "money_obtain": 2045
+            },
+            "311": {
+                "id": 311,
+                "money_obtain": 2050
+            },
+            "312": {
+                "id": 312,
+                "money_obtain": 2055
+            },
+            "313": {
+                "id": 313,
+                "money_obtain": 2060
+            },
+            "314": {
+                "id": 314,
+                "money_obtain": 2065
+            },
+            "315": {
+                "id": 315,
+                "money_obtain": 2070
+            },
+            "316": {
+                "id": 316,
+                "money_obtain": 2075
+            },
+            "317": {
+                "id": 317,
+                "money_obtain": 2080
+            },
+            "318": {
+                "id": 318,
+                "money_obtain": 2085
+            },
+            "319": {
+                "id": 319,
+                "money_obtain": 2090
+            },
+            "320": {
+                "id": 320,
+                "money_obtain": 2095
+            },
+            "321": {
+                "id": 321,
+                "money_obtain": 2100
+            },
+            "322": {
+                "id": 322,
+                "money_obtain": 2105
+            },
+            "323": {
+                "id": 323,
+                "money_obtain": 2110
+            },
+            "324": {
+                "id": 324,
+                "money_obtain": 2115
+            },
+            "325": {
+                "id": 325,
+                "money_obtain": 2120
+            },
+            "326": {
+                "id": 326,
+                "money_obtain": 2125
+            },
+            "327": {
+                "id": 327,
+                "money_obtain": 2130
+            },
+            "328": {
+                "id": 328,
+                "money_obtain": 2135
+            },
+            "329": {
+                "id": 329,
+                "money_obtain": 2140
+            },
+            "330": {
+                "id": 330,
+                "money_obtain": 2145
+            },
+            "331": {
+                "id": 331,
+                "money_obtain": 2150
+            },
+            "332": {
+                "id": 332,
+                "money_obtain": 2155
+            },
+            "333": {
+                "id": 333,
+                "money_obtain": 2160
+            },
+            "334": {
+                "id": 334,
+                "money_obtain": 2165
+            },
+            "335": {
+                "id": 335,
+                "money_obtain": 2170
+            },
+            "336": {
+                "id": 336,
+                "money_obtain": 2175
+            },
+            "337": {
+                "id": 337,
+                "money_obtain": 2180
+            },
+            "338": {
+                "id": 338,
+                "money_obtain": 2185
+            },
+            "339": {
+                "id": 339,
+                "money_obtain": 2190
+            },
+            "340": {
+                "id": 340,
+                "money_obtain": 2195
+            },
+            "341": {
+                "id": 341,
+                "money_obtain": 2200
+            },
+            "342": {
+                "id": 342,
+                "money_obtain": 2205
+            },
+            "343": {
+                "id": 343,
+                "money_obtain": 2210
+            },
+            "344": {
+                "id": 344,
+                "money_obtain": 2215
+            },
+            "345": {
+                "id": 345,
+                "money_obtain": 2220
+            },
+            "346": {
+                "id": 346,
+                "money_obtain": 2225
+            },
+            "347": {
+                "id": 347,
+                "money_obtain": 2230
+            },
+            "348": {
+                "id": 348,
+                "money_obtain": 2235
+            },
+            "349": {
+                "id": 349,
+                "money_obtain": 2240
+            },
+            "350": {
+                "id": 350,
+                "money_obtain": 2245
+            },
+            "351": {
+                "id": 351,
+                "money_obtain": 2250
+            },
+            "352": {
+                "id": 352,
+                "money_obtain": 2255
+            },
+            "353": {
+                "id": 353,
+                "money_obtain": 2260
+            },
+            "354": {
+                "id": 354,
+                "money_obtain": 2265
+            },
+            "355": {
+                "id": 355,
+                "money_obtain": 2270
+            },
+            "356": {
+                "id": 356,
+                "money_obtain": 2275
+            },
+            "357": {
+                "id": 357,
+                "money_obtain": 2280
+            },
+            "358": {
+                "id": 358,
+                "money_obtain": 2285
+            },
+            "359": {
+                "id": 359,
+                "money_obtain": 2290
+            },
+            "360": {
+                "id": 360,
+                "money_obtain": 2295
+            },
+            "361": {
+                "id": 361,
+                "money_obtain": 2300
+            },
+            "362": {
+                "id": 362,
+                "money_obtain": 2305
+            },
+            "363": {
+                "id": 363,
+                "money_obtain": 2310
+            },
+            "364": {
+                "id": 364,
+                "money_obtain": 2315
+            },
+            "365": {
+                "id": 365,
+                "money_obtain": 2320
+            },
+            "366": {
+                "id": 366,
+                "money_obtain": 2325
+            },
+            "367": {
+                "id": 367,
+                "money_obtain": 2330
+            },
+            "368": {
+                "id": 368,
+                "money_obtain": 2335
+            },
+            "369": {
+                "id": 369,
+                "money_obtain": 2340
+            },
+            "370": {
+                "id": 370,
+                "money_obtain": 2345
+            },
+            "371": {
+                "id": 371,
+                "money_obtain": 2350
+            },
+            "372": {
+                "id": 372,
+                "money_obtain": 2355
+            },
+            "373": {
+                "id": 373,
+                "money_obtain": 2360
+            },
+            "374": {
+                "id": 374,
+                "money_obtain": 2365
+            },
+            "375": {
+                "id": 375,
+                "money_obtain": 2370
+            },
+            "376": {
+                "id": 376,
+                "money_obtain": 2375
+            },
+            "377": {
+                "id": 377,
+                "money_obtain": 2380
+            },
+            "378": {
+                "id": 378,
+                "money_obtain": 2385
+            },
+            "379": {
+                "id": 379,
+                "money_obtain": 2390
+            },
+            "380": {
+                "id": 380,
+                "money_obtain": 2395
+            },
+            "381": {
+                "id": 381,
+                "money_obtain": 2400
+            },
+            "382": {
+                "id": 382,
+                "money_obtain": 2405
+            },
+            "383": {
+                "id": 383,
+                "money_obtain": 2410
+            },
+            "384": {
+                "id": 384,
+                "money_obtain": 2415
+            },
+            "385": {
+                "id": 385,
+                "money_obtain": 2420
+            },
+            "386": {
+                "id": 386,
+                "money_obtain": 2425
+            },
+            "387": {
+                "id": 387,
+                "money_obtain": 2430
+            },
+            "388": {
+                "id": 388,
+                "money_obtain": 2435
+            },
+            "389": {
+                "id": 389,
+                "money_obtain": 2440
+            },
+            "390": {
+                "id": 390,
+                "money_obtain": 2445
+            },
+            "391": {
+                "id": 391,
+                "money_obtain": 2450
+            },
+            "392": {
+                "id": 392,
+                "money_obtain": 2455
+            },
+            "393": {
+                "id": 393,
+                "money_obtain": 2460
+            },
+            "394": {
+                "id": 394,
+                "money_obtain": 2465
+            },
+            "395": {
+                "id": 395,
+                "money_obtain": 2470
+            },
+            "396": {
+                "id": 396,
+                "money_obtain": 2475
+            },
+            "397": {
+                "id": 397,
+                "money_obtain": 2480
+            },
+            "398": {
+                "id": 398,
+                "money_obtain": 2485
+            },
+            "399": {
+                "id": 399,
+                "money_obtain": 2490
+            },
+            "400": {
+                "id": 400,
+                "money_obtain": 2495
+            },
+            "401": {
+                "id": 401,
+                "money_obtain": 2500
+            },
+            "402": {
+                "id": 402,
+                "money_obtain": 2505
+            },
+            "403": {
+                "id": 403,
+                "money_obtain": 2510
+            },
+            "404": {
+                "id": 404,
+                "money_obtain": 2515
+            },
+            "405": {
+                "id": 405,
+                "money_obtain": 2520
+            },
+            "406": {
+                "id": 406,
+                "money_obtain": 2525
+            },
+            "407": {
+                "id": 407,
+                "money_obtain": 2530
+            },
+            "408": {
+                "id": 408,
+                "money_obtain": 2535
+            },
+            "409": {
+                "id": 409,
+                "money_obtain": 2540
+            },
+            "410": {
+                "id": 410,
+                "money_obtain": 2545
+            },
+            "411": {
+                "id": 411,
+                "money_obtain": 2550
+            },
+            "412": {
+                "id": 412,
+                "money_obtain": 2555
+            },
+            "413": {
+                "id": 413,
+                "money_obtain": 2560
+            },
+            "414": {
+                "id": 414,
+                "money_obtain": 2565
+            },
+            "415": {
+                "id": 415,
+                "money_obtain": 2570
+            },
+            "416": {
+                "id": 416,
+                "money_obtain": 2575
+            },
+            "417": {
+                "id": 417,
+                "money_obtain": 2580
+            },
+            "418": {
+                "id": 418,
+                "money_obtain": 2585
+            },
+            "419": {
+                "id": 419,
+                "money_obtain": 2590
+            },
+            "420": {
+                "id": 420,
+                "money_obtain": 2595
+            },
+            "421": {
+                "id": 421,
+                "money_obtain": 2600
+            },
+            "422": {
+                "id": 422,
+                "money_obtain": 2605
+            },
+            "423": {
+                "id": 423,
+                "money_obtain": 2610
+            },
+            "424": {
+                "id": 424,
+                "money_obtain": 2615
+            },
+            "425": {
+                "id": 425,
+                "money_obtain": 2620
+            },
+            "426": {
+                "id": 426,
+                "money_obtain": 2625
+            },
+            "427": {
+                "id": 427,
+                "money_obtain": 2630
+            },
+            "428": {
+                "id": 428,
+                "money_obtain": 2635
+            },
+            "429": {
+                "id": 429,
+                "money_obtain": 2640
+            },
+            "430": {
+                "id": 430,
+                "money_obtain": 2645
+            },
+            "431": {
+                "id": 431,
+                "money_obtain": 2650
+            },
+            "432": {
+                "id": 432,
+                "money_obtain": 2655
+            },
+            "433": {
+                "id": 433,
+                "money_obtain": 2660
+            },
+            "434": {
+                "id": 434,
+                "money_obtain": 2665
+            },
+            "435": {
+                "id": 435,
+                "money_obtain": 2670
+            },
+            "436": {
+                "id": 436,
+                "money_obtain": 2675
+            },
+            "437": {
+                "id": 437,
+                "money_obtain": 2680
+            },
+            "438": {
+                "id": 438,
+                "money_obtain": 2685
+            },
+            "439": {
+                "id": 439,
+                "money_obtain": 2690
+            },
+            "440": {
+                "id": 440,
+                "money_obtain": 2695
+            },
+            "441": {
+                "id": 441,
+                "money_obtain": 2700
+            },
+            "442": {
+                "id": 442,
+                "money_obtain": 2705
+            },
+            "443": {
+                "id": 443,
+                "money_obtain": 2710
+            },
+            "444": {
+                "id": 444,
+                "money_obtain": 2715
+            },
+            "445": {
+                "id": 445,
+                "money_obtain": 2720
+            },
+            "446": {
+                "id": 446,
+                "money_obtain": 2725
+            },
+            "447": {
+                "id": 447,
+                "money_obtain": 2730
+            },
+            "448": {
+                "id": 448,
+                "money_obtain": 2735
+            },
+            "449": {
+                "id": 449,
+                "money_obtain": 2740
+            },
+            "450": {
+                "id": 450,
+                "money_obtain": 2745
+            },
+            "451": {
+                "id": 451,
+                "money_obtain": 2750
+            },
+            "452": {
+                "id": 452,
+                "money_obtain": 2755
+            },
+            "453": {
+                "id": 453,
+                "money_obtain": 2760
+            },
+            "454": {
+                "id": 454,
+                "money_obtain": 2765
+            },
+            "455": {
+                "id": 455,
+                "money_obtain": 2770
+            },
+            "456": {
+                "id": 456,
+                "money_obtain": 2775
+            },
+            "457": {
+                "id": 457,
+                "money_obtain": 2780
+            },
+            "458": {
+                "id": 458,
+                "money_obtain": 2785
+            },
+            "459": {
+                "id": 459,
+                "money_obtain": 2790
+            },
+            "460": {
+                "id": 460,
+                "money_obtain": 2795
+            },
+            "461": {
+                "id": 461,
+                "money_obtain": 2800
+            },
+            "462": {
+                "id": 462,
+                "money_obtain": 2805
+            },
+            "463": {
+                "id": 463,
+                "money_obtain": 2810
+            },
+            "464": {
+                "id": 464,
+                "money_obtain": 2815
+            },
+            "465": {
+                "id": 465,
+                "money_obtain": 2820
+            },
+            "466": {
+                "id": 466,
+                "money_obtain": 2825
+            },
+            "467": {
+                "id": 467,
+                "money_obtain": 2830
+            },
+            "468": {
+                "id": 468,
+                "money_obtain": 2835
+            },
+            "469": {
+                "id": 469,
+                "money_obtain": 2840
+            },
+            "470": {
+                "id": 470,
+                "money_obtain": 2845
+            },
+            "471": {
+                "id": 471,
+                "money_obtain": 2850
+            },
+            "472": {
+                "id": 472,
+                "money_obtain": 2855
+            },
+            "473": {
+                "id": 473,
+                "money_obtain": 2860
+            },
+            "474": {
+                "id": 474,
+                "money_obtain": 2865
+            },
+            "475": {
+                "id": 475,
+                "money_obtain": 2870
+            },
+            "476": {
+                "id": 476,
+                "money_obtain": 2875
+            },
+            "477": {
+                "id": 477,
+                "money_obtain": 2880
+            },
+            "478": {
+                "id": 478,
+                "money_obtain": 2885
+            },
+            "479": {
+                "id": 479,
+                "money_obtain": 2890
+            },
+            "480": {
+                "id": 480,
+                "money_obtain": 2895
+            },
+            "481": {
+                "id": 481,
+                "money_obtain": 2900
+            },
+            "482": {
+                "id": 482,
+                "money_obtain": 2905
+            },
+            "483": {
+                "id": 483,
+                "money_obtain": 2910
+            },
+            "484": {
+                "id": 484,
+                "money_obtain": 2915
+            },
+            "485": {
+                "id": 485,
+                "money_obtain": 2920
+            },
+            "486": {
+                "id": 486,
+                "money_obtain": 2925
+            },
+            "487": {
+                "id": 487,
+                "money_obtain": 2930
+            },
+            "488": {
+                "id": 488,
+                "money_obtain": 2935
+            },
+            "489": {
+                "id": 489,
+                "money_obtain": 2940
+            },
+            "490": {
+                "id": 490,
+                "money_obtain": 2945
+            },
+            "491": {
+                "id": 491,
+                "money_obtain": 2950
+            },
+            "492": {
+                "id": 492,
+                "money_obtain": 2955
+            },
+            "493": {
+                "id": 493,
+                "money_obtain": 2960
+            },
+            "494": {
+                "id": 494,
+                "money_obtain": 2965
+            },
+            "495": {
+                "id": 495,
+                "money_obtain": 2970
+            },
+            "496": {
+                "id": 496,
+                "money_obtain": 2975
+            },
+            "497": {
+                "id": 497,
+                "money_obtain": 2980
+            },
+            "498": {
+                "id": 498,
+                "money_obtain": 2985
+            },
+            "499": {
+                "id": 499,
+                "money_obtain": 2990
+            },
+            "500": {
+                "id": 500,
+                "money_obtain": 2995
+            }
+        }
+    },
     "wipe_out": {
         "colComment": {},
         "rows": {
@@ -46212,38 +46637,38 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "cash": 10,
-                "gold": 10
+                "cash": 6,
+                "gold": 6
             },
             "2": {
                 "id": 2,
                 "cash": 30,
-                "gold": 30
+                "gold": 33
             },
             "3": {
                 "id": 3,
-                "cash": 50,
-                "gold": 50
+                "cash": 68,
+                "gold": 76
             },
             "4": {
                 "id": 4,
-                "cash": 100,
-                "gold": 120
+                "cash": 128,
+                "gold": 146
             },
             "5": {
                 "id": 5,
-                "cash": 200,
-                "gold": 250
+                "cash": 198,
+                "gold": 232
             },
             "6": {
                 "id": 6,
-                "cash": 500,
-                "gold": 700
+                "cash": 328,
+                "gold": 403
             },
             "7": {
                 "id": 7,
-                "cash": 600,
-                "gold": 800
+                "cash": 648,
+                "gold": 842
             }
         }
     },

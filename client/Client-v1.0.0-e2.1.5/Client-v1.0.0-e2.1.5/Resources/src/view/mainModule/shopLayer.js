@@ -47,26 +47,26 @@ var ShopLayer = cc.Layer.extend({
         this.addChild(headIcon, 1);
 
         this._vipLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button22,
-            main_scene_image.button22s,
-            main_scene_image.button22d,
+            main_scene_image.button23,
+            main_scene_image.button23s,
+            main_scene_image.button23d,
             main_scene_image.icon158,
             this._onClickVipLayer,
             this
         );
         this._vipLayerItem.setPosition(this._shopLayerFit.vipLayerItemPoint);
-        this._vipLayerItem.setOffset(cc.p(-6, -5));
+        this._vipLayerItem.setOffset(cc.p(0, -5));
 
         this._propsLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
+            main_scene_image.button22,
+            main_scene_image.button22s,
+            main_scene_image.button22d,
             main_scene_image.icon157,
             this._onClickPropsLayer,
             this
         );
         this._propsLayerItem.setPosition(this._shopLayerFit.propsLayerItemPoint);
-        this._propsLayerItem.setOffset(cc.p(0, -5));
+        this._propsLayerItem.setOffset(cc.p(-6, -5));
 
         var menu = cc.Menu.create(
             this._vipLayerItem,
@@ -75,7 +75,7 @@ var ShopLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
-        this._onClickVipLayer();
+        this._onClickPropsLayer();
 
         return true;
     },

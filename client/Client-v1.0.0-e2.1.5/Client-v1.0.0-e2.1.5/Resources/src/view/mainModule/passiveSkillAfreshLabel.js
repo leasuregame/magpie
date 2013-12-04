@@ -96,7 +96,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 22);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
-        this._tipLabel.setPosition(cc.p(227, 45));
+        this._tipLabel.setPosition(this._passiveSkillAfreshLabelFit.tipLabelPoint);
         this._resLabel.addChild(this._tipLabel);
 
         var resMenu = cc.Menu.create();
@@ -172,7 +172,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
-        var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
+        var moneyLabel = cc.LabelTTF.create("2000 / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
@@ -181,7 +181,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         goldIcon.setPosition(cc.p(325, 92));
         this._resLabel.addChild(goldIcon);
 
-        var goldLabel = cc.LabelTTF.create("10 / 次", "STHeitiTC-Medium", 20);
+        var goldLabel = cc.LabelTTF.create("20 / 次", "STHeitiTC-Medium", 20);
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);
@@ -401,6 +401,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopItem.setPosition(this._passiveSkillAfreshLabelFit.stopItemPoint);
 
         var shyLayerMenu = cc.Menu.create(stopItem);
+        shyLayerMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         shyLayerMenu.setPosition(cc.p(0, 0));
         this._shyLayer.addChild(shyLayerMenu);
 
@@ -432,7 +433,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             var passiveSkillCount = 0;
             var lockNum = 0;
             var passiveSkill = this._leadCard.get("passiveSkill");
-
+            var maxValue = 0.0;
             this._afreshIdList = [];
             for (var key in passiveSkill) {
                 var passiveSkillLabel = this._passiveSkillList[passiveSkillCount++];
@@ -442,6 +443,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 }
 
                 var value = passiveSkill[key].value.toFixed(1);
+                if (value > maxValue) {
+                    maxValue = value;
+                }
                 if (value == 10.0) {
                     passiveSkillLabel.valueLabel.setString("     + " + value + "% (满)");
                 } else {
@@ -476,8 +480,18 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                                 cc.MoveBy.create(0.1, cc.p(-5, 0))
                             )
                         );
+
                     }
                 }
+            }
+
+            if (maxValue == 10.0 && isAfresh) {
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect26, this);
+                effect.setPosition(this._passiveSkillAfreshLabelFit.effectPoint);
+                this.addChild(effect, 2);
+                effect.animationManager.setCompletedAnimationCallback(this, function () {
+                    effect.removeFromParent();
+                });
             }
 
             for (var i = 0; i < passiveSkillCount; ++i) {
@@ -573,18 +587,23 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         cc.log(maxValue);
         cc.log(isCanAfresh);
+
         if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
-                if (maxValue >= 5.0) {
+                if (maxValue >= 8.0) {
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
+                    this._onClickStop();
+                } else if (maxValue >= 5.0) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
                     this._onClickStop();
                 }
             } else if (this._stopType == STOP_UNTIL_YELLOW) {
                 if (maxValue >= 8.0) {
-                    TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
                     this._onClickStop();
                 }
             }
+
         } else {
             this._onClickStop();
         }
@@ -775,7 +794,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.unschedule(this._setTip);
 
         this._tipLabel.setFontSize(18);
-        this._tipLabel.setString("魔石洗炼获得金色属性概率提升10倍");
+        this._tipLabel.setString("魔石洗炼获得金色属性概率提升100倍");
     }
 });
 

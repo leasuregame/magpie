@@ -12,7 +12,12 @@
  * */
 
 
+var MAX_CARD_TABLE_ID = 1000;
 var MAX_CARD_STAR = 5;
+
+var EVOLUTION_SUCCESS = 1;
+var EVOLUTION_FAIL = 0;
+var EVOLUTION_ERROR = -1;
 
 var passiveSkillDescription = {
     atk_improve: "攻击",
@@ -81,7 +86,7 @@ var Card = Entity.extend({
             cc.log("=============================================");
         }
 
-        this._newCardMark = this._id && sys.localStorage.getItem("card_" + this._id + "_mark") || false;
+        this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 
         return true;
     },
@@ -190,7 +195,6 @@ var Card = Entity.extend({
 
     setNewCardMark: function (mark) {
         this._newCardMark = mark;
-
         sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
     },
 
@@ -372,7 +376,7 @@ var Card = Entity.extend({
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
             return skillUpgradeTable["star" + this._star];
         }
 
@@ -455,9 +459,9 @@ var Card = Entity.extend({
                 that.update(msg);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -20000);
+                    gameData.player.add("money", -2000);
                 } else if (type == USE_GOLD) {
-                    gameData.player.add("gold", -10);
+                    gameData.player.add("gold", -20);
                 }
 
                 cb(true);
@@ -476,7 +480,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
@@ -529,8 +533,8 @@ var Card = Entity.extend({
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);
-
-                cb();
+                var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+                cb(result);
 
                 lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
@@ -538,7 +542,7 @@ var Card = Entity.extend({
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                cb(EVOLUTION_ERROR);
             }
         });
     },

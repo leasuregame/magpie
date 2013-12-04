@@ -75,8 +75,12 @@ var SelectAreaLayer = cc.Layer.extend({
 
             var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
             areaLabel.setColor(area.color);
-            areaLabel.setPosition(cc.p(300, 30));
+            areaLabel.setPosition(cc.p(250, 30));
             areaItem.addChild(areaLabel);
+
+            var statusIcon = cc.Sprite.create(area.url);
+            statusIcon.setPosition(cc.p(400, 30));
+            areaItem.addChild(statusIcon);
 
             menu.addChild(areaItem);
         }

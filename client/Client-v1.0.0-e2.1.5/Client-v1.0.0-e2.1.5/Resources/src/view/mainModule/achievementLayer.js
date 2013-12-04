@@ -68,7 +68,6 @@ var AchievementLayer = cc.Layer.extend({
 
         var achievement = gameData.achievement.get("achievement");
         var len = gameData.achievement.get("length");
-        cc.log(achievement);
         var scrollViewHeight = len * 120;
         if (scrollViewHeight < 700) {
             scrollViewHeight = 700;

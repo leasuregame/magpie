@@ -76,6 +76,7 @@ var appFiles = [
 
     'src/model/gameData.js',
     'src/model/gameMark.js',
+    'src/model/gameGuide.js',
 
     'src/controls/progress.js',
     'src/controls/lazyLayer.js',
@@ -110,6 +111,7 @@ var appFiles = [
     'src/view/mainModule/bubbleLabel.js',
     'src/view/mainModule/cardDetails.js',
     'src/view/mainModule/cardEvolutionLabel.js',
+    'src/view/mainModule/cardEvolutionLayer.js',
     'src/view/mainModule/cardFullNode.js',
     'src/view/mainModule/cardHalfNode.js',
     'src/view/mainModule/cardHeadNode.js',
@@ -162,6 +164,7 @@ var appFiles = [
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',
     'src/view/mainModule/tournamentRankLayer.js',
+    'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
@@ -202,5 +205,5 @@ gameFitAdapter();
 var loginScene = LoginScene.create();
 
 // run
-//director.runWithScene(myScene);
-director.replaceScene(loginScene);
+director.runWithScene(loginScene);
+//director.replaceScene(loginScene);

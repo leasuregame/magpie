@@ -204,11 +204,12 @@ var Player = (function(_super) {
 
         // executeVipPrivilege(this);
         correctPower(this);
+        this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
 
     Player.FIELDS = [
         'id',
-        'createTime',
+        'created',
         'userId',
         'areaId',
         'name',
@@ -317,7 +318,7 @@ var Player = (function(_super) {
             flag: []
         },
         cards: {},
-        rank: {},
+        rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
         rowFragmentCount: 0,
@@ -372,12 +373,17 @@ var Player = (function(_super) {
 
         var pass = utility.deepCopy(this.pass);
         pass.resetTimes = 1;
+        pass.mark = [];
+
+        var task = utility.deepCopy(this.task);
+        task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
         spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
+        this.task = task;
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
@@ -971,15 +977,11 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.isCanUseElixirForCard = function(cardId) {
-        if (_.has(this.elixirPerLv, cardId)) {
-            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+    Player.prototype.canUseElixir = function() {
+        if (this.lv >= 80) {
+            return Number.MAX_VALUE;
         }
-        return true;
-    };
-
-    Player.prototype.canUseElixir = function(cardId) {
-        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+        return elixirLimit(this.lv);
     };
 
     Player.prototype.useElixirForCard = function(cardId, elixir) {
@@ -1078,7 +1080,7 @@ var Player = (function(_super) {
     Player.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.createTime,
+            createTime: new Date(this.created).getTime(),
             userId: this.userId,
             areaId: this.areaId,
             name: this.name,
@@ -1117,12 +1119,12 @@ var Player = (function(_super) {
     return Player;
 })(Entity);
 
-var elxirLimit = function(lv) {
-    var limit = 2000;
-    if (lv > 50 && lv <= 100) {
-        limit = 4000;
+var elixirLimit = function(lv) {
+    if (lv <= 50) {
+        return 2000 * lv;
+    } else {
+        return 2000 * 50 + 4000 * (lv - 50);
     }
-    return limit;
 };
 
 // var processSpiritPoll = function(sp) {
@@ -1195,6 +1197,7 @@ var checkLineUp = function(player) {
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {
+        3: fdata.card3_position,
         4: fdata.card4_position,
         5: fdata.card5_position
     };

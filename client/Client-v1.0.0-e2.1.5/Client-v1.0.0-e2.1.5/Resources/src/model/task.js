@@ -16,6 +16,10 @@ var TASK_CHAPTER_COUNT = 10;
 var TASK_SECTION_COUNT = 5;
 var TASK_POINTS_COUNT = 10;
 
+var POWER_NO_ENOUGH = 0;
+var CARD_FULL = 1;
+var CAN_EXPLORE = 2;
+
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
@@ -98,15 +102,15 @@ var Task = Entity.extend({
 
         if (gameData.player.get("power") < this._powerNeed) {
             TipLayer.tip("体力不足");
-            return false;
+            return POWER_NO_ENOUGH;
         }
 
         if (gameData.cardList.isFull()) {
             TipLayer.tip("卡牌已满，请先消耗");
-            return false;
+            return CARD_FULL;
         }
 
-        return true;
+        return CAN_EXPLORE;
     },
 
     canWipeOut: function () {
@@ -190,6 +194,11 @@ var Task = Entity.extend({
                     player.upgrade(msg.upgradeInfo);
 
                     cbData.upgradeReward = msg.upgradeInfo.rewards;
+                }
+
+                if (msg.through_reward) {
+                    cbData.through_reward = msg.through_reward;
+                    player.add('money',msg.through_reward.money);
                 }
 
                 if (msg.result == "fight") {

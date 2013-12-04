@@ -609,6 +609,8 @@ var CardListLayer = cc.Layer.extend({
             countLabel.setString(len);
             expLabel.setString(exp);
         };
+
+        this._selectCallback();
     },
 
     _initCardEvolutionRetinue: function () {
@@ -649,6 +651,8 @@ var CardListLayer = cc.Layer.extend({
             countLabel.setString(len);
             rateLabel.setString(rate + "%");
         };
+
+        this._selectCallback();
     },
 
     _initSell: function () {
@@ -724,6 +728,8 @@ var CardListLayer = cc.Layer.extend({
             countLabel.setString(len);
             moneyLabel.setString(money);
         };
+
+        this._selectCallback();
     },
 
     _clearOtherLayer: function () {
@@ -842,6 +848,7 @@ var CardListLayer = cc.Layer.extend({
         var i, key, len = cardList.length;
 
         for (i = 0; i < len; ++i) {
+            cardList[i].setNewCardMark(false);
             cardList[i] = cardList[i].get("id");
         }
 

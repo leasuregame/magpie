@@ -15,6 +15,8 @@
 var PlayerUpgradeLayer = LazyLayer.extend({
     _playerUpgradeLayerFit: null,
 
+    _cb: null,
+
     onEnter: function () {
         cc.log("PlayerUpgradeLayer onEnter");
 
@@ -39,7 +41,11 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         this._playerUpgradeLayerFit = gameFit.mainScene.playerUpgradeLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        if (data.cb) {
+            this._cb = data.cb;
+        }
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._playerUpgradeLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
@@ -51,36 +57,28 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
         layer.addChild(ccbNode);
 
-        var str = lz.getRewardString(data);
+        var label = ccbNode.controller.label;
+
+        var str = lz.getRewardString(data.reward);
         var len = str.length;
 
         var offsetY = this._playerUpgradeLayerFit.offsetY;
 
-        var lvBgLabel = cc.Sprite.create(main_scene_image.icon115);
-        lvBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
-        lvBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-        layer.addChild(lvBgLabel);
-
         var lv = gameData.player.get("lv");
         var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
+        lvLabel.setColor(cc.c3b(115, 255, 100));
         lvLabel.setAnchorPoint(cc.p(0.5, 1));
         lvLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-        layer.addChild(lvLabel);
+        label.addChild(lvLabel);
 
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;
-
-            var rewardBgLabel = cc.Sprite.create(main_scene_image.icon115);
-            rewardBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
-            rewardBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardBgLabel);
 
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
         }
 
@@ -94,10 +92,11 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         );
         okItem.setPosition(this._playerUpgradeLayerFit.okItemPoint);
 
+
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
+        label.addChild(menu);
 
         layer.setScale(0.1);
         layer.runAction(
@@ -115,7 +114,14 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        gameGuide.updateGuide();
+
         this.removeFromParent();
+
+        if(this._cb) {
+            this._cb();
+        }
+
     }
 });
 

@@ -19,6 +19,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     _expLabel: null,
     _countLabel: null,
     _preObtainLabel: null,
+    _goldLabel: null,
     _spirit: null,
     spiritNode: null,
     _spiritPool: null,
@@ -102,6 +103,15 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._preObtainLabel.setPosition(this._spiritPoolLayerFit.preObtainLabelPoint);
         this.addChild(this._preObtainLabel);
 
+        var goldIcon = cc.Sprite.create(main_scene_image.icon95);
+        goldIcon.setPosition(this._spiritPoolLayerFit.goldIconPoint);
+        this.addChild(goldIcon);
+
+        this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(this._spiritPoolLayerFit.goldLabelPoint);
+        this.addChild(this._goldLabel);
+
         var lvIcon = cc.LabelTTF.create("灵气池", "STHeitiTC-Medium", 30);
         lvIcon.setColor(cc.c3b(255, 248, 69));
         lvIcon.setPosition(this._spiritPoolLayerFit.lvIconPoint);
@@ -161,11 +171,13 @@ var SpiritPoolLayer = cc.Layer.extend({
         this.spiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
 
         var spiritPool = gameData.spiritPool;
+        var player = gameData.player;
 
         this._lvLabel.setString("LV.  " + spiritPool.get("lv"));
         this._expLabel.setString("经验  " + spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
         this._countLabel.setString(spiritPool.get("collectCount"));
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
+        this._goldLabel.setString(player.get("gold"));
     },
 
     _collectSpirit: function () {

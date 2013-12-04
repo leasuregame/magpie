@@ -6,6 +6,7 @@ table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
+achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
 rankingConfig = table.getTableItem('ranking_list',1)
@@ -43,7 +44,7 @@ Handler::rankingList = (msg, session, next) ->
       if player.lv < fdata.rank
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
-      if not player.rank?
+      if not player.rank? or _.isEmpty(player.rank)
         ### first time enter ranking list ###
         app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
           if err
@@ -56,7 +57,8 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      if player.rank.recentChallenger.length > 0
+      console.log 'rank info: ', player.rank
+      if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])

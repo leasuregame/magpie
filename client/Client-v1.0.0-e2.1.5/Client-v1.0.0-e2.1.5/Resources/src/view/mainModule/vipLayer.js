@@ -14,7 +14,7 @@
 
 var vipBoxGoods = {
     energy: {
-        name: "活力值",
+        name: "活力点",
         url: "icon110"
     },
 
@@ -253,8 +253,11 @@ var VipLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
-    _addVipBoxDetails: function (data) {
+    _addVipBoxDetails: function (obj) {
         cc.log("VipLayer _addVipBoxDetails");
+
+        var data = obj.data;
+        var cb = obj.cb;
 
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
@@ -293,6 +296,9 @@ var VipLayer = cc.Layer.extend({
             main_scene_image.icon21,
             function () {
                 lazyLayer.removeFromParent();
+                if (cb) {
+                    cb();
+                }
             },
             this
         );
@@ -374,9 +380,11 @@ var VipLayer = cc.Layer.extend({
             var that = this;
             gameData.shop.buyVipBox(function (data) {
                 cc.log(data);
-
-                that.update();
-                lz.tipReward(data);
+                var cb = function () {
+                    that.update();
+                    lz.tipReward(data);
+                }
+                that._addVipBoxDetails({data: data, cb: cb});
             }, id);
         }
     },
@@ -387,7 +395,7 @@ var VipLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this._addVipBoxDetails(data);
+            this._addVipBoxDetails({data: data});
         }
     }
 });

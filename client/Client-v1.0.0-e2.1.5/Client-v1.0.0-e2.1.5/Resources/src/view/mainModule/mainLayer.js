@@ -29,17 +29,24 @@ var MainLayer = cc.Layer.extend({
         MessageLayer,
         ConfigLayer
     ],
+
     _activityMark: null,
     _cardLibraryMark: null,
     _achievementMark: null,
     _friendMark: null,
     _messageMark: null,
 
+    _treasureHuntGuide: null,
+    _rankGuide: null,
+
+    _spiritLayerItem: null,
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
         this._super();
         this.updateMark();
+        this.updateGuide();
 
         lz.dc.beginLogPageView("主界面");
     },
@@ -96,14 +103,6 @@ var MainLayer = cc.Layer.extend({
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
-
-        var spiritLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            this._onClickLayer(0),
-            this
-        );
-        spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -219,11 +218,10 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(11),
             this
         );
-        configLayerItem.setScale(0.8);
+
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
-            spiritLayerItem,
             lotteryLayerItem,
             treasureHuntLayerItem,
             strengthenLayerItem,
@@ -239,7 +237,37 @@ var MainLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var isVisible = false;
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
+
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
+
+        this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
+        this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+
+        this._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+
+        this.addChild(this._spiritLayerItem);
+
         return true;
+    },
+
+    _onClickSpiritItem: function () {
+        cc.log("MainLayer _onClickSpiritItem");
+
+        MainScene.getInstance().switchLayer(this._layer[0]);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
+        }
+
     },
 
     updateMark: function () {
@@ -252,9 +280,43 @@ var MainLayer = cc.Layer.extend({
         this._messageMark.setVisible(gameMark.getMessageMark());
     },
 
+    updateGuide: function () {
+        cc.log("MainLayer updateGuide");
+
+        if (gameGuide.get("treasureHuntGuide")) {
+            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._treasureHuntGuide);
+        }
+
+        if (gameGuide.get("rankGuide")) {
+            this._rankGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
+            this._rankGuide.setRotation(180);
+            this.addChild(this._rankGuide);
+        }
+
+    },
+
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            if (index == 2) {
+                if (this._treasureHuntGuide) {
+                    this._treasureHuntGuide.removeFromParent();
+                    this._treasureHuntGuide = null;
+                    gameGuide.set("treasureHuntGuide", false);
+                }
+            }
+
+            if (index == 7) {
+                if (this._rankGuide) {
+                    this._rankGuide.removeFromParent();
+                    this._rankGuide = null;
+                    gameGuide.set("rankGuide", false);
+                }
+            }
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 

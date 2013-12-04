@@ -23,9 +23,9 @@ var MainLayer = cc.Layer.extend({
 
         cc.BuilderReader.setResourcePath("../");
 
-        var bgSprite = cc.Sprite.create(main_scene_image.testBg);
-        bgSprite.setPosition(cc.p(360, 568));
-        this.addChild(bgSprite);
+        // var bgSprite = cc.Sprite.create(main_scene_image.testBg);
+        // bgSprite.setPosition(cc.p(360, 568));
+        // this.addChild(bgSprite);
 
         this._urlEditBox = cc.EditBox.create(cc.size(300, 40), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._urlEditBox.setPosition(cc.p(200, 1100));

@@ -506,16 +506,7 @@ var main_scene_image = {
 
     
     
-    screen: effect_scene_path + "screen.jpg",
-    tanxian: effect_scene_path + "tanxian.jpg",
-    xiantai: effect_scene_path + "xiantai.jpg",
-    xiulian: effect_scene_path + "xiulian.jpg",
-    yuanshen: effect_scene_path + "yuanshen.jpg",
-    zhaohuan: effect_scene_path + "zhaohuan.jpg",
-    testBg: effect_scene_path + "testBg.png",
-    tiaoshi: effect_scene_path + "tiaoshi.jpg",
-    up1: effect_scene_path + "up1.png",
-
+ 
 
 
 
@@ -896,7 +887,9 @@ var main_scene_res = [
     //effect
 ];
 
-var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+var cardResIdList = [
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     var cardId = cardResIdList[cardIndex];
@@ -918,44 +911,6 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
 
 for (var taskId = 1; taskId <= 50; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
-}
-
-var effectConfig = [
-    10,
-    10,
-    10,
-    5,
-    6,
-    7,
-    6,
-    8,
-    6,
-    12,
-    8,
-    4,
-    4
-];
-
-var effectRect = [
-    cc.rect(0, 0, 160, 80),
-    cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 640, 218),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 182, 171),
-    cc.rect(0, 0, 250, 275),
-    cc.rect(0, 0, 83, 261),
-    cc.rect(0, 0, 251, 279),
-    cc.rect(0, 0, 188, 263),
-    cc.rect(0, 0, 464, 391),
-    cc.rect(0, 0, 280, 308),
-    cc.rect(0, 0, 170, 185)
-];
-
-for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
-    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = effect_scene_path + effectId + "/" + frameI + ".png";
-    }
 }
 
 for (var key in main_scene_image) {

@@ -1,5 +1,5 @@
 app = require('pomelo').app
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 rankManager = require '../../../manager/rankManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'

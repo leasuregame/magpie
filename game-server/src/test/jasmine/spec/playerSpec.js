@@ -1,7 +1,7 @@
 describe("Connector Server", function() {
   var userid;
   var pid;
-  var myName = 'wuzhanghai';
+  var myName = '大海无量';
 
   beforeAll(function() {
     doAjax('/loaddata/csv', {}, function(data) {});

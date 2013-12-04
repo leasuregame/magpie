@@ -10,6 +10,8 @@ var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
+var verifier = require('./app/components/verifier');
+var PlayerManager = require('./app/manager/playerManager');
 /**
  * Init app for client.
  */
@@ -102,6 +104,7 @@ app.configure('production|development', 'connector|auth', function() {
 
 app.configure('production|development', 'area', function() {
   app.set('messageService', new MessageService(app));
+  app.set('playerManager', new PlayerManager(app));
 
   area.init({app: app});
   msgQueue.init({app: app});
@@ -128,6 +131,7 @@ app.configure('production|development', 'area', function() {
   }});
 
   app.load(counter);
+  app.load(verifier);
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

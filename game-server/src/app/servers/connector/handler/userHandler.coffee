@@ -8,6 +8,9 @@ ACCOUNT_REG = /[\w+]{6,50}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
+APP_STORE_TYPE = 'app'
+TONG_BU_TYPE = 'tongbu'
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -39,10 +42,10 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin('app', @app, msg, session, next)
+  doLogin(APP_STORE_TYPE, @app, msg, session, next)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin('tongbu', @app, msg, session, next)
+  doLogin(TONG_BU_TYPE, @app, msg, session, next)
 
 doLogin  = (type, app, msg, session, next) ->
   areaId = msg.areaId

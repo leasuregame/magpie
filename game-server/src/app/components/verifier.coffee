@@ -106,7 +106,8 @@ updatePlayer = (app, buyRecord, receiptResult) ->
 
     times = 1
     if player.cash is 0
-      times = 3  ### 首冲获得三倍魔石 ###
+      ### 首冲获得三倍魔石 ###
+      times = 3  
 
     player.increase('cash', product.cash)
     player.increase('gold', (product.cash * 10 + product.gold) * times)

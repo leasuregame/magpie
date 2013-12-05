@@ -253,7 +253,7 @@ describe("Area Server", function() {
 				};
 
 				var count = 1;
-				var totalCount = 10000;
+				var totalCount = 100;
 				var curLv = 10
 
 				it(totalCount + '次', function() {
@@ -330,7 +330,7 @@ var checkExploreResult = function(data, task, oldTask) {
 	switch (res.result) {
 		case 'fight':
 			expect(res.battle_log).toBeBattleLog();
-
+			console.log('card lv: ', res.battle_log.rewards.cards[0].lv);
 			if (res.battle_log.winner == 'own') {
 				expect(res.task).toEqual({
 					id: task.id,

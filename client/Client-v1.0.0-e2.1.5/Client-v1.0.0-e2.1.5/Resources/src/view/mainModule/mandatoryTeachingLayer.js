@@ -23,7 +23,7 @@ var teaching = [
         effectOrder: [19, 23, 21, 11, 13, 25]
     },
     {
-        overStep: 0,
+        overStep: 7,
         clickType: [1, 0, 0, 0, 0, 0, 0],
         effectOrder: [26, 23, 24, 27, 11, 13, 25]
     }
@@ -62,7 +62,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         var uid = gameData.player.get("uid");
 
-        this._progress = parseInt(sys.localStorage.getItem(uid + "MTprogress")) || 2;
+        this._progress = parseInt(sys.localStorage.getItem(uid + "MTprogress")) || 3;
         this._step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + this._progress)) || 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
@@ -180,11 +180,12 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         cc.log(this._rect);
         if (this.isVisible()) {
             var point = touch.getLocation();
+            var isShield = !cc.rectContainsPoint(this._rect, point);
             if(this._step == this._overStep - 1) {
                 this.clearAndSave();
                 this.next();
             }
-            return !cc.rectContainsPoint(this._rect, point);
+            return isShield;
         } else {
             return false;
         }

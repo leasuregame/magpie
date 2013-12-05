@@ -734,6 +734,9 @@ var main_scene_image = {
     up140: effect_scene_path + "uiEffect/" + "up140.png",
     up141: effect_scene_path + "uiEffect/" + "up141.png",
     up142: effect_scene_path + "uiEffect/" + "up142.png",
+    up143: effect_scene_path + "uiEffect/" + "up143.png",
+    up144: effect_scene_path + "uiEffect/" + "up144.png",
+    up145: effect_scene_path + "uiEffect/" + "up145.png",
     
 
 
@@ -918,6 +921,7 @@ var main_scene_image = {
     uiEffect54: ccb_scene_path + "uiEffect54.ccbi",
     uiEffect55: ccb_scene_path + "uiEffect55.ccbi",
     uiEffect56: ccb_scene_path + "uiEffect56.ccbi",
+    uiEffect57: ccb_scene_path + "uiEffect57.ccbi",
 
     //开场动画
     startAnimation1: ccb_scene_path + "startAnimation1.ccbi",
@@ -970,4 +974,5 @@ main_scene_res.push({src: "../res/font/tipNumber.fnt"});
 main_scene_res.push({src: "../res/font/tipNumber.png"});
 main_scene_res.push({src: "../res/font/UInumber.fnt"});
 main_scene_res.push({src: "../res/font/UInumber.png"});
-
+main_scene_res.push({src: "../res/font/AchievementWord.fnt"});
+main_scene_res.push({src: "../res/font/AchievementWord.png"});

@@ -283,13 +283,13 @@ var MainLayer = cc.Layer.extend({
     updateGuide: function () {
         cc.log("MainLayer updateGuide");
 
-        if (gameGuide.get("treasureHuntGuide")) {
+        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
             this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
             this.addChild(this._treasureHuntGuide);
         }
 
-        if (gameGuide.get("rankGuide")) {
+        if (gameGuide.get("rankGuide") && !this._rankGuide) {
             this._rankGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
             this._rankGuide.setRotation(180);

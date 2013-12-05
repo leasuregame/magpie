@@ -74,15 +74,15 @@ var LineUpLabel = cc.Layer.extend({
     updateGuide: function () {
         cc.log("LineUpLabel updateGuide");
 
-        if (gameGuide.get("card5Guide")) {
+        if (gameGuide.get("card5Guide") && !this._card5Guide) {
             this._card5Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card5Guide.setPosition(cc.p(79 + 122 * 4, 0));
             this.addChild(this._card5Guide, 10);
-        } else if (gameGuide.get("card4Guide")) {
+        } else if (gameGuide.get("card4Guide") && !this._card4Guide) {
             this._card4Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card4Guide.setPosition(cc.p(79 + 122 * 3, 0));
             this.addChild(this._card4Guide, 10);
-        } else if (gameGuide.get("card3Guide")) {
+        } else if (gameGuide.get("card3Guide") && !this._card3Guide) {
             this._card3Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
             this.addChild(this._card3Guide, 10);

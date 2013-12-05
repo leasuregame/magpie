@@ -103,14 +103,14 @@ var MainMenuLayer = cc.Layer.extend({
         var basePoint = this._mainMenuLayerFit.itemBasePoint;
         var offsetX = this._mainMenuLayerFit.itemOffsetX;
 
-        if (gameGuide.get("passGuide")) {
+        if (gameGuide.get("passGuide") && !this._passGuide) {
             this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._passGuide.setRotation(180);
             this._passGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
             this.addChild(this._passGuide);
         }
 
-        if (gameGuide.get("tournamentGuide")) {
+        if (gameGuide.get("tournamentGuide") && !this._tournamentGuide) {
             this._tournamentGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._tournamentGuide.setRotation(180);
             this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));

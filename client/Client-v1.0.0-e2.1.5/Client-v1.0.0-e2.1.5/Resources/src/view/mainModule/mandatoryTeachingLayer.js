@@ -6,26 +6,31 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var teaching = [
     {
         overStep: 9,
         clickType: [1, 0, 0, 0, 0, 0, 0, 0, 0],
-        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25]
+        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25],
+        layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4]
     },
     {
         overStep: 7,
         clickType: [1, 0, 0, 0, 0, 0, 0],
-        effectOrder: [18, 20, 24, 21, 11, 13, 25]
+        effectOrder: [18, 20, 24, 21, 11, 13, 25],
+        layerOrder: [2, 0, 4, 4, 4, 4, 4]
     },
     {
         overStep: 6,
         clickType: [1, 0, 0, 0, 0, 0],
-        effectOrder: [19, 23, 21, 11, 13, 25]
+        effectOrder: [19, 23, 21, 11, 13, 25],
+        layerOrder: [3, 0, 5, 5, 5, 5]
     },
     {
-        overStep: 7,
-        clickType: [1, 0, 0, 0, 0, 0, 0],
-        effectOrder: [26, 23, 24, 27, 11, 13, 25]
+        overStep: 6,
+        clickType: [1, 0, 0, 0, 0, 0],
+        effectOrder: [26, 24, 27, 11, 13, 25],
+        layerOrder: [0, 5, 5, 5, 5, 5]
     }
 
 ];
@@ -35,6 +40,16 @@ var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 
 var MandatoryTeachingLayer = LazyLayer.extend({
     _mandatoryTeachingLayerFit: null,
+
+
+    _layer: [
+        MainLayer,
+        ExploreLayer,
+        TournamentLayer,
+        PassLayer,
+        StrengthenLayer,
+        EvolutionLayer
+    ],
 
     _progress: 0,   //总的教学进度
     _step: 0,       //当前教学步骤
@@ -62,11 +77,12 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         var uid = gameData.player.get("uid");
 
-        this._progress = parseInt(sys.localStorage.getItem(uid + "MTprogress")) || 3;
+        this._progress = parseInt(sys.localStorage.getItem(uid + "MTprogress")) || 0;
         this._step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + this._progress)) || 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
         this._effectOrder = teaching[this._progress].effectOrder;
+        this._layerOrder = teaching[this._progress].layerOrder;
 
         this._rectOrder = this._mandatoryTeachingLayerFit.rectOrders[this._progress];
         this._effectPoints = this._mandatoryTeachingLayerFit.effectPoints[this._progress];
@@ -75,6 +91,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         if (this.isTeaching()) {
             this._load();
+            this._save();
         }
 
         return true;
@@ -83,6 +100,24 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
     _load: function () {
         cc.log("MandatoryTeachingLayer _load");
+
+        if (this._progress < 3) {
+            if (this._step > 2) {
+                this._step = 2;
+            }
+        } else {
+            if (this._step > 1) {
+                this._step = 1;
+            }
+        }
+
+        var layer = this._layer[this._layerOrder[this._step]];
+        if (layer == ExploreLayer) {
+            var id = gameData.task.get("id");
+            MainScene.getInstance().switch(ExploreLayer.create(id));
+        } else {
+            MainScene.getInstance().switchLayer(layer);
+        }
 
         this._changeEffect(this._effectOrder[this._step]);
 
@@ -109,6 +144,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
             sys.localStorage.setItem(uid + "MTprogress", this._progress + 1);
             sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._overStep);
         } else {
+            sys.localStorage.setItem(uid + "MTprogress", this._progress);
             sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._step);
         }
     },
@@ -181,7 +217,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         if (this.isVisible()) {
             var point = touch.getLocation();
             var isShield = !cc.rectContainsPoint(this._rect, point);
-            if(this._step == this._overStep - 1) {
+            if (this._step == this._overStep - 1) {
                 this.clearAndSave();
                 this.next();
             }
@@ -218,5 +254,25 @@ MandatoryTeachingLayer.remove = function () {
         mandatoryTeachingLayer = null;
     }
 };
+
+MandatoryTeachingLayer.isNeedTeaching = function () {
+    cc.log("MandatoryTeachingLayer isNeedTeaching");
+
+    var uid = gameData.player.get("uid");
+    var progress = parseInt(sys.localStorage.getItem(uid + "MTprogress"));
+    var step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + progress)) || 0;
+
+    cc.log("progress = " + progress);
+
+    if(isNaN(progress)) {
+        return false;
+    }else if (step < teaching[progress].overStep) {
+        return true;
+    }
+
+    return false;
+
+};
+
 
 var mandatoryTeachingLayer = null;

@@ -11,22 +11,22 @@ var teaching = [
     {
         overStep: 0,
         clickType: [],
-        effectOrder: []
+        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25]
     },
     {
         overStep: 0,
         clickType: [],
-        effectOrder: []
+        effectOrder: [18, 20, 24, 21, 11, 13, 25]
     },
     {
         overStep: 0,
         clickType: [],
-        effectOrder: []
+        effectOrder: [19, 23, 21, 11, 13, 25]
     },
     {
         overStep: 0,
         clickType: [],
-        effectOrder: []
+        effectOrder: [26, 23, 24, 27, 11, 13, 25]
     }
 
 ];
@@ -67,7 +67,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         this._effectOrder = teaching[this._progress].effectOrder;
         this._rect = cc.rect(0, 0, 0, 0);
 
-        if(this.isTeaching()) {
+        if (this.isTeaching()) {
             this._load();
         }
 
@@ -99,7 +99,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         var uid = gameData.player.get("uid");
 
-        if(this._step >= this._overStep) {
+        if (this._step >= this._overStep) {
             sys.localStorage.setItem(uid + "MTprogress", this._progress + 1);
             sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._overStep);
         } else {
@@ -118,7 +118,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
     },
 
-    clearAndSave: function() {
+    clearAndSave: function () {
         cc.log("MandatoryTeachingLayer clearAndSave");
 
         this._rect = cc.rect(0, 0, 0, 0);
@@ -158,7 +158,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     isTeaching: function () {
         cc.log("MandatoryTeachingLayer isTeaching");
 
-        if(this._step < this._overStep) {
+        if (this._step < this._overStep) {
             return true;
         }
         return false;
@@ -193,16 +193,16 @@ MandatoryTeachingLayer.create = function () {
 
 MandatoryTeachingLayer.pop = function () {
     cc.log("MandatoryTeachingLayer pop");
-    if(mandatoryTeachingLayer) {
+    if (mandatoryTeachingLayer) {
         MandatoryTeachingLayer.remove();
     }
     mandatoryTeachingLayer = MandatoryTeachingLayer.create();
     MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
 };
 
-MandatoryTeachingLayer.remove = function() {
+MandatoryTeachingLayer.remove = function () {
     cc.log("MandatoryTeachingLayer remove");
-    if(mandatoryTeachingLayer) {
+    if (mandatoryTeachingLayer) {
         mandatoryTeachingLayer.removeFromParent();
         mandatoryTeachingLayer = null;
     }

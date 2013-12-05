@@ -254,6 +254,13 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_SKILL_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -287,6 +294,13 @@ var SkillUpgradeLabel = cc.Node.extend({
         if (gameData.player.get("skillPoint") < this._leadCard.getUpgradeNeedSKillPoint()) {
             TipLayer.tip("技能点不足");
             return;
+        }
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
         }
 
         var that = this;

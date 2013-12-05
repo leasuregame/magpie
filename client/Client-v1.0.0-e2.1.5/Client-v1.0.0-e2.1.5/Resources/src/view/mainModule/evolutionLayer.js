@@ -116,6 +116,14 @@ var EvolutionLayer = cc.Layer.extend({
         this._passiveSkillUpgradeItem.setEnabled(true);
 
         this._switchLabel(SkillUpgradeLabel);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
     },
 
     _onClickPassiveSkillUpgrade: function () {
@@ -127,6 +135,13 @@ var EvolutionLayer = cc.Layer.extend({
         this._passiveSkillUpgradeItem.setEnabled(false);
 
         this._switchLabel(PassiveSkillAfreshLabel);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
     },
 
     _switchLabel: function (runLabel) {

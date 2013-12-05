@@ -651,6 +651,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
             cc.log(data);
@@ -742,6 +749,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
 
         this._afresh();
     },

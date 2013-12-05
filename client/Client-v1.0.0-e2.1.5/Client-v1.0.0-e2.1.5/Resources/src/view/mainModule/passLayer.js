@@ -562,6 +562,16 @@ var PassLayer = cc.Layer.extend({
                     that._upgradeReward = data.upgradeReward || null;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
+
+                    if(that._isWin) {
+                        var uid = gameData.player.get("uid");
+                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "firstPassWin")) || 1;
+                        if(isFirstPassWin == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstPassWin", 0);
+                        }
+                    }
+
                 } else {
                     that.update();
 

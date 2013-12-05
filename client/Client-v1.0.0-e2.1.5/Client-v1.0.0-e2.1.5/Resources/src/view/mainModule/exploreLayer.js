@@ -554,6 +554,11 @@ var ExploreLayer = cc.Layer.extend({
 
                     this.scheduleOnce(function () {
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
+                        var uid = gameData.player.get("uid");
+                        var firstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                        if(firstFight == 1) {
+                            MandatoryTeachingLayer.pop();
+                        }
                         this._spiritNode.normal();
                     }, 1);
                 } else if (this._reward.result == "box") {

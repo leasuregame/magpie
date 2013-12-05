@@ -731,6 +731,9 @@ var main_scene_image = {
     up137: effect_scene_path + "uiEffect/" + "up137.png",
     up138: effect_scene_path + "uiEffect/" + "up138.png",
     up139: effect_scene_path + "uiEffect/" + "up139.png",
+    up140: effect_scene_path + "uiEffect/" + "up140.png",
+    up141: effect_scene_path + "uiEffect/" + "up141.png",
+    up142: effect_scene_path + "uiEffect/" + "up142.png",
     
 
 
@@ -912,6 +915,9 @@ var main_scene_image = {
     uiEffect51: ccb_scene_path + "uiEffect51.ccbi",
     uiEffect52: ccb_scene_path + "uiEffect52.ccbi",
     uiEffect53: ccb_scene_path + "uiEffect53.ccbi",
+    uiEffect54: ccb_scene_path + "uiEffect54.ccbi",
+    uiEffect55: ccb_scene_path + "uiEffect55.ccbi",
+    uiEffect56: ccb_scene_path + "uiEffect56.ccbi",
 
     //开场动画
     startAnimation1: ccb_scene_path + "startAnimation1.ccbi",

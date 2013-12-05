@@ -213,7 +213,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont_Exp</string>
 						<key>memberVarAssignmentName</key>
-						<string>moneyLabel</string>
+						<string>expLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -532,7 +532,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont_Money</string>
 						<key>memberVarAssignmentName</key>
-						<string>expLabel</string>
+						<string>moneyLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

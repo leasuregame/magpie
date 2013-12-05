@@ -88,7 +88,7 @@ var EvolutionLayer = cc.Layer.extend({
 
         this._skillUpgradeItem.setEnabled(false);
         this._passiveSkillUpgradeItem.setEnabled(true);
-        this._switchLabel(CardEvolutionLabel);
+        this._switchLabel(SkillUpgradeLabel);
 
         this.retain();
 

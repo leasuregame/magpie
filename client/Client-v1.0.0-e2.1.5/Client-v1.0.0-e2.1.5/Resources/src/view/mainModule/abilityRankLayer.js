@@ -47,8 +47,8 @@ var AbilityRankLayer = cc.Layer.extend({
         var len = this._abilityRankList.length;
 
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._abilityRankLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._abilityRankLayerFit.scrollViewHeight;
         }
 
         var scrollViewLayer = MarkLayer.create(this._abilityRankLayerFit.scrollViewLayerRect);

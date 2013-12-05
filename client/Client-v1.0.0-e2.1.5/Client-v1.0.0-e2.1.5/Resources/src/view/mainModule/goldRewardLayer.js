@@ -69,7 +69,10 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var len = keys.length;
 
-        var scrollViewHeight = len * this._goldRewardLayerFit.scrollViewHeight;
+        var scrollViewHeight = len * 135;
+        if (scrollViewHeight < this._goldRewardLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._goldRewardLayerFit.scrollViewHeight;
+        }
 
         this._scrollView = cc.ScrollView.create(this._goldRewardLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setPosition(this._goldRewardLayerFit.scrollViewPoint);

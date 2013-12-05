@@ -183,8 +183,6 @@ var CardListLayer = cc.Layer.extend({
 
         this._scrollViewHeight = 135 * cardCount;
 
-        if (this._scrollViewHeight < 620) this._scrollViewHeight = 620;
-
         this._scrollView.setContentSize(cc.size(585, this._scrollViewHeight));
         this._scrollView.updateInset();
 

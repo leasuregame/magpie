@@ -69,8 +69,8 @@ var AchievementLayer = cc.Layer.extend({
         var achievement = gameData.achievement.getAchievementList();
         var len = achievement.length;
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._achievementLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._achievementLayerFit.scrollViewHeight;
         }
 
         var scrollViewLayer = MarkLayer.create(this._achievementLayerFit.scrollViewLayerRect);

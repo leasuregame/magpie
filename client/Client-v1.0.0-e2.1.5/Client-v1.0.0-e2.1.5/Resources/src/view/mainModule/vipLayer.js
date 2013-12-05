@@ -147,6 +147,8 @@ var VipLayer = cc.Layer.extend({
 
         var vipBoxList = gameData.shop.getVipBoxList();
         var len = vipBoxList.length;
+        var index = 0;
+        var vip = gameData.player.get("vip");
 
         var scrollViewLayer = MarkLayer.create(this._vipLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
@@ -154,11 +156,18 @@ var VipLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 180;
+        if (scrollViewHeight < this._vipLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._vipLayerFit.scrollViewHeight;
+        }
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 170 - i * 180;
 
             var vipBox = vipBoxList[i];
+
+            if (index == 0 && vipBox.id <= vip) {
+                index = i;
+            }
 
             var bgSprite = cc.Sprite.create(main_scene_image.icon162);
             bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -249,7 +258,13 @@ var VipLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+
+        if (index) {
+            offsetY = Math.min(this._scrollView.minContainerOffset().y + index * 180, 0);
+            this._scrollView.setContentOffset(cc.p(0, offsetY));
+        } else {
+            this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+        }
     },
 
     _update: function () {
@@ -278,7 +293,6 @@ var VipLayer = cc.Layer.extend({
         for (var key in data) {
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
                 var goods = vipBoxGoods[key];
-                // var point = goods.point;
                 var point = this._vipLayerFit.vipBoxGoodsPoints[key];
 
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
@@ -391,7 +405,7 @@ var VipLayer = cc.Layer.extend({
                 var cb = function () {
                     that.update();
                     lz.tipReward(data);
-                }
+                };
                 that._addVipBoxDetails({data: data, cb: cb});
             }, id);
         }

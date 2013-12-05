@@ -204,7 +204,6 @@ var TournamentLabel = cc.Node.extend({
                     this._target.showTip();
 
                 } else {
-
                     if(count != 0) {
                         sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
                     }

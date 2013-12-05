@@ -13,6 +13,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
@@ -37,8 +39,6 @@ var nameChanged = {
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -55,12 +55,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -69,6 +63,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -267,7 +267,7 @@ var outputTables = {
                 "method": "energyTo",
                 "need": 100000,
                 "name": "活力无限",
-                "desc": "累计获得100000活力值",
+                "desc": "累计获得100000活力点",
                 "gold": 100,
                 "energy": 1000
             },
@@ -333,6 +333,109 @@ var outputTables = {
                 "desc": "累计消耗魔石100000",
                 "gold": 50,
                 "energy": 500
+            },
+            "26": {
+                "id": 26,
+                "need": 10,
+                "name": "十步之遥",
+                "gold": 10,
+                "energy": 50
+            },
+            "27": {
+                "id": 27,
+                "need": 1,
+                "name": "鬼门关之旅",
+                "desc": "通关鬼门关",
+                "gold": 10,
+                "energy": 50
+            },
+            "28": {
+                "id": 28,
+                "need": 1,
+                "name": "天道首胜",
+                "desc": "在天道中获得第一场胜利",
+                "gold": 10,
+                "energy": 50
+            },
+            "29": {
+                "id": 29,
+                "need": 1,
+                "name": "苦寒地狱",
+                "desc": "通关苦寒地狱篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "30": {
+                "id": 30,
+                "need": 1,
+                "name": "凄凉人间",
+                "desc": "通关凄凉人间篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "31": {
+                "id": 31,
+                "need": 1,
+                "name": "南天之门",
+                "desc": "通关南天之门篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "32": {
+                "id": 32,
+                "need": 1,
+                "name": "西天取经",
+                "desc": "通关西天取经篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "33": {
+                "id": 33,
+                "need": 1,
+                "name": "莲花加持",
+                "desc": "通关莲花加持篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "34": {
+                "id": 34,
+                "need": 1,
+                "name": "千年之修",
+                "desc": "通关千年之修篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "35": {
+                "id": 35,
+                "need": 1,
+                "name": "斩妖除魔",
+                "desc": "通关斩妖除魔篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "36": {
+                "id": 36,
+                "need": 1,
+                "name": "降龙伏虎",
+                "desc": "通关降龙伏虎篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "37": {
+                "id": 37,
+                "need": 1,
+                "name": "普度众生",
+                "desc": "通关普度众生篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "38": {
+                "id": 38,
+                "need": 1,
+                "name": "尊者之身",
+                "desc": "通关尊者之身篇章",
+                "gold": 10,
+                "energy": 100
             }
         }
     },
@@ -8469,6 +8572,191 @@ var outputTables = {
             }
         }
     },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 90,
+                "rate": 27
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 9,
+                "rate": 2.7
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 1,
+                "rate": 0.3
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 10,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 90,
+                "rate": 13.5
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 100,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 9,
+                "rate": 1.35
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 90,
+                "rate": 9
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 9,
+                "rate": 0.9
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 100,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 90,
+                "rate": 9
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 9,
+                "rate": 0.9
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 10000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 50,
+                "name": "活力点",
+                "type_rate": 10,
+                "value_rate": 90,
+                "rate": 9
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 10,
+                "value_rate": 9,
+                "rate": 0.9
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 1000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 90,
+                "rate": 13.5
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 9,
+                "rate": 1.35
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
     "player_upgrade_reward": {
         "colComment": {},
         "rows": {
@@ -8603,10 +8891,13 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "rank": 5,
+                "use_elixir": 5,
                 "pass": 10,
+                "skill_upgrade": 10,
                 "card3_position": 15,
                 "lottery": 20,
                 "card4_position": 30,
+                "pass_skillafresh": 35,
                 "ranking_list": 40,
                 "card5_position": 50
             }
@@ -8752,191 +9043,6 @@ var outputTables = {
                 "fragments": 5,
                 "gold": 0,
                 "spirit": 0
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 90,
-                "rate": 27
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 9,
-                "rate": 2.7
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 1,
-                "rate": 0.3
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 10,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 100,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 5000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 100,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 1000,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 100,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 10000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 50,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 100,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 1000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },
@@ -24453,253 +24559,6 @@ var outputTables = {
             }
         }
     },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -25004,6 +24863,253 @@ var outputTables = {
                 "star5_inc_max": 45,
                 "star5_grow": 5,
                 "rate5": 40
+            }
+        }
+    },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -26247,602 +26353,602 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "exp": 5,
-                "money": 8,
+                "exp": 1,
+                "money": 1,
                 "skill_point": 10
             },
             "2": {
                 "id": 2,
-                "exp": 6,
-                "money": 9,
+                "exp": 2,
+                "money": 2,
                 "skill_point": 15
             },
             "3": {
                 "id": 3,
-                "exp": 7,
-                "money": 10,
+                "exp": 3,
+                "money": 3,
                 "skill_point": 20
             },
             "4": {
                 "id": 4,
-                "exp": 8,
-                "money": 11,
+                "exp": 4,
+                "money": 4,
                 "skill_point": 25
             },
             "5": {
                 "id": 5,
-                "exp": 9,
-                "money": 12,
+                "exp": 5,
+                "money": 5,
                 "skill_point": 60
             },
             "6": {
                 "id": 6,
-                "exp": 10,
-                "money": 13,
+                "exp": 6,
+                "money": 6,
                 "skill_point": 35
             },
             "7": {
                 "id": 7,
-                "exp": 11,
-                "money": 14,
+                "exp": 7,
+                "money": 7,
                 "skill_point": 40
             },
             "8": {
                 "id": 8,
-                "exp": 12,
-                "money": 15,
+                "exp": 8,
+                "money": 8,
                 "skill_point": 45
             },
             "9": {
                 "id": 9,
-                "exp": 13,
-                "money": 16,
+                "exp": 9,
+                "money": 9,
                 "skill_point": 50
             },
             "10": {
                 "id": 10,
-                "exp": 14,
-                "money": 17,
+                "exp": 10,
+                "money": 10,
                 "skill_point": 110
             },
             "11": {
                 "id": 11,
-                "exp": 15,
-                "money": 18,
+                "exp": 11,
+                "money": 11,
                 "skill_point": 60
             },
             "12": {
                 "id": 12,
-                "exp": 16,
-                "money": 19,
+                "exp": 12,
+                "money": 12,
                 "skill_point": 65
             },
             "13": {
                 "id": 13,
-                "exp": 17,
-                "money": 20,
+                "exp": 13,
+                "money": 13,
                 "skill_point": 70
             },
             "14": {
                 "id": 14,
-                "exp": 18,
-                "money": 21,
+                "exp": 14,
+                "money": 14,
                 "skill_point": 75
             },
             "15": {
                 "id": 15,
-                "exp": 19,
-                "money": 22,
+                "exp": 15,
+                "money": 15,
                 "skill_point": 160
             },
             "16": {
                 "id": 16,
-                "exp": 20,
-                "money": 23,
+                "exp": 16,
+                "money": 16,
                 "skill_point": 85
             },
             "17": {
                 "id": 17,
-                "exp": 21,
-                "money": 24,
+                "exp": 17,
+                "money": 17,
                 "skill_point": 90
             },
             "18": {
                 "id": 18,
-                "exp": 22,
-                "money": 25,
+                "exp": 18,
+                "money": 18,
                 "skill_point": 95
             },
             "19": {
                 "id": 19,
-                "exp": 23,
-                "money": 26,
+                "exp": 19,
+                "money": 19,
                 "skill_point": 100
             },
             "20": {
                 "id": 20,
-                "exp": 24,
-                "money": 27,
+                "exp": 20,
+                "money": 20,
                 "skill_point": 210
             },
             "21": {
                 "id": 21,
-                "exp": 25,
-                "money": 28,
+                "exp": 21,
+                "money": 21,
                 "skill_point": 110
             },
             "22": {
                 "id": 22,
-                "exp": 26,
-                "money": 29,
+                "exp": 22,
+                "money": 22,
                 "skill_point": 115
             },
             "23": {
                 "id": 23,
-                "exp": 27,
-                "money": 30,
+                "exp": 23,
+                "money": 23,
                 "skill_point": 120
             },
             "24": {
                 "id": 24,
-                "exp": 28,
-                "money": 31,
+                "exp": 24,
+                "money": 24,
                 "skill_point": 125
             },
             "25": {
                 "id": 25,
-                "exp": 29,
-                "money": 32,
+                "exp": 25,
+                "money": 25,
                 "skill_point": 260
             },
             "26": {
                 "id": 26,
-                "exp": 30,
-                "money": 33,
+                "exp": 26,
+                "money": 26,
                 "skill_point": 135
             },
             "27": {
                 "id": 27,
-                "exp": 31,
-                "money": 34,
+                "exp": 27,
+                "money": 27,
                 "skill_point": 140
             },
             "28": {
                 "id": 28,
-                "exp": 32,
-                "money": 35,
+                "exp": 28,
+                "money": 28,
                 "skill_point": 145
             },
             "29": {
                 "id": 29,
-                "exp": 33,
-                "money": 36,
+                "exp": 29,
+                "money": 29,
                 "skill_point": 150
             },
             "30": {
                 "id": 30,
-                "exp": 34,
-                "money": 37,
+                "exp": 30,
+                "money": 30,
                 "skill_point": 310
             },
             "31": {
                 "id": 31,
-                "exp": 35,
-                "money": 38,
+                "exp": 31,
+                "money": 31,
                 "skill_point": 160
             },
             "32": {
                 "id": 32,
-                "exp": 36,
-                "money": 39,
+                "exp": 32,
+                "money": 32,
                 "skill_point": 165
             },
             "33": {
                 "id": 33,
-                "exp": 37,
-                "money": 40,
+                "exp": 33,
+                "money": 33,
                 "skill_point": 170
             },
             "34": {
                 "id": 34,
-                "exp": 38,
-                "money": 41,
+                "exp": 34,
+                "money": 34,
                 "skill_point": 175
             },
             "35": {
                 "id": 35,
-                "exp": 39,
-                "money": 42,
+                "exp": 35,
+                "money": 35,
                 "skill_point": 360
             },
             "36": {
                 "id": 36,
-                "exp": 40,
-                "money": 43,
+                "exp": 36,
+                "money": 36,
                 "skill_point": 185
             },
             "37": {
                 "id": 37,
-                "exp": 41,
-                "money": 44,
+                "exp": 37,
+                "money": 37,
                 "skill_point": 190
             },
             "38": {
                 "id": 38,
-                "exp": 42,
-                "money": 45,
+                "exp": 38,
+                "money": 38,
                 "skill_point": 195
             },
             "39": {
                 "id": 39,
-                "exp": 43,
-                "money": 46,
+                "exp": 39,
+                "money": 39,
                 "skill_point": 200
             },
             "40": {
                 "id": 40,
-                "exp": 44,
-                "money": 47,
+                "exp": 40,
+                "money": 40,
                 "skill_point": 410
             },
             "41": {
                 "id": 41,
-                "exp": 45,
-                "money": 48,
+                "exp": 41,
+                "money": 41,
                 "skill_point": 210
             },
             "42": {
                 "id": 42,
-                "exp": 46,
-                "money": 49,
+                "exp": 42,
+                "money": 42,
                 "skill_point": 215
             },
             "43": {
                 "id": 43,
-                "exp": 47,
-                "money": 50,
+                "exp": 43,
+                "money": 43,
                 "skill_point": 220
             },
             "44": {
                 "id": 44,
-                "exp": 48,
-                "money": 51,
+                "exp": 44,
+                "money": 44,
                 "skill_point": 225
             },
             "45": {
                 "id": 45,
-                "exp": 49,
-                "money": 52,
+                "exp": 45,
+                "money": 45,
                 "skill_point": 460
             },
             "46": {
                 "id": 46,
-                "exp": 50,
-                "money": 53,
+                "exp": 46,
+                "money": 46,
                 "skill_point": 235
             },
             "47": {
                 "id": 47,
-                "exp": 51,
-                "money": 54,
+                "exp": 47,
+                "money": 47,
                 "skill_point": 240
             },
             "48": {
                 "id": 48,
-                "exp": 52,
-                "money": 55,
+                "exp": 48,
+                "money": 48,
                 "skill_point": 245
             },
             "49": {
                 "id": 49,
-                "exp": 53,
-                "money": 56,
+                "exp": 49,
+                "money": 49,
                 "skill_point": 250
             },
             "50": {
                 "id": 50,
-                "exp": 54,
-                "money": 57,
+                "exp": 50,
+                "money": 50,
                 "skill_point": 510
             },
             "51": {
                 "id": 51,
-                "exp": 55,
-                "money": 58,
+                "exp": 51,
+                "money": 51,
                 "skill_point": 260
             },
             "52": {
                 "id": 52,
-                "exp": 56,
-                "money": 59,
+                "exp": 52,
+                "money": 52,
                 "skill_point": 265
             },
             "53": {
                 "id": 53,
-                "exp": 57,
-                "money": 60,
+                "exp": 53,
+                "money": 53,
                 "skill_point": 270
             },
             "54": {
                 "id": 54,
-                "exp": 58,
-                "money": 61,
+                "exp": 54,
+                "money": 54,
                 "skill_point": 275
             },
             "55": {
                 "id": 55,
-                "exp": 59,
-                "money": 62,
+                "exp": 55,
+                "money": 55,
                 "skill_point": 560
             },
             "56": {
                 "id": 56,
-                "exp": 60,
-                "money": 63,
+                "exp": 56,
+                "money": 56,
                 "skill_point": 285
             },
             "57": {
                 "id": 57,
-                "exp": 61,
-                "money": 64,
+                "exp": 57,
+                "money": 57,
                 "skill_point": 290
             },
             "58": {
                 "id": 58,
-                "exp": 62,
-                "money": 65,
+                "exp": 58,
+                "money": 58,
                 "skill_point": 295
             },
             "59": {
                 "id": 59,
-                "exp": 63,
-                "money": 66,
+                "exp": 59,
+                "money": 59,
                 "skill_point": 300
             },
             "60": {
                 "id": 60,
-                "exp": 64,
-                "money": 67,
+                "exp": 60,
+                "money": 60,
                 "skill_point": 610
             },
             "61": {
                 "id": 61,
-                "exp": 65,
-                "money": 68,
+                "exp": 61,
+                "money": 61,
                 "skill_point": 310
             },
             "62": {
                 "id": 62,
-                "exp": 66,
-                "money": 69,
+                "exp": 62,
+                "money": 62,
                 "skill_point": 315
             },
             "63": {
                 "id": 63,
-                "exp": 67,
-                "money": 70,
+                "exp": 63,
+                "money": 63,
                 "skill_point": 320
             },
             "64": {
                 "id": 64,
-                "exp": 68,
-                "money": 71,
+                "exp": 64,
+                "money": 64,
                 "skill_point": 325
             },
             "65": {
                 "id": 65,
-                "exp": 69,
-                "money": 72,
+                "exp": 65,
+                "money": 65,
                 "skill_point": 660
             },
             "66": {
                 "id": 66,
-                "exp": 70,
-                "money": 73,
+                "exp": 66,
+                "money": 66,
                 "skill_point": 335
             },
             "67": {
                 "id": 67,
-                "exp": 71,
-                "money": 74,
+                "exp": 67,
+                "money": 67,
                 "skill_point": 340
             },
             "68": {
                 "id": 68,
-                "exp": 72,
-                "money": 75,
+                "exp": 68,
+                "money": 68,
                 "skill_point": 345
             },
             "69": {
                 "id": 69,
-                "exp": 73,
-                "money": 76,
+                "exp": 69,
+                "money": 69,
                 "skill_point": 350
             },
             "70": {
                 "id": 70,
-                "exp": 74,
-                "money": 77,
+                "exp": 70,
+                "money": 70,
                 "skill_point": 710
             },
             "71": {
                 "id": 71,
-                "exp": 75,
-                "money": 78,
+                "exp": 71,
+                "money": 71,
                 "skill_point": 360
             },
             "72": {
                 "id": 72,
-                "exp": 76,
-                "money": 79,
+                "exp": 72,
+                "money": 72,
                 "skill_point": 365
             },
             "73": {
                 "id": 73,
-                "exp": 77,
-                "money": 80,
+                "exp": 73,
+                "money": 73,
                 "skill_point": 370
             },
             "74": {
                 "id": 74,
-                "exp": 78,
-                "money": 81,
+                "exp": 74,
+                "money": 74,
                 "skill_point": 375
             },
             "75": {
                 "id": 75,
-                "exp": 79,
-                "money": 82,
+                "exp": 75,
+                "money": 75,
                 "skill_point": 760
             },
             "76": {
                 "id": 76,
-                "exp": 80,
-                "money": 83,
+                "exp": 76,
+                "money": 76,
                 "skill_point": 385
             },
             "77": {
                 "id": 77,
-                "exp": 81,
-                "money": 84,
+                "exp": 77,
+                "money": 77,
                 "skill_point": 390
             },
             "78": {
                 "id": 78,
-                "exp": 82,
-                "money": 85,
+                "exp": 78,
+                "money": 78,
                 "skill_point": 395
             },
             "79": {
                 "id": 79,
-                "exp": 83,
-                "money": 86,
+                "exp": 79,
+                "money": 79,
                 "skill_point": 400
             },
             "80": {
                 "id": 80,
-                "exp": 84,
-                "money": 87,
+                "exp": 80,
+                "money": 80,
                 "skill_point": 810
             },
             "81": {
                 "id": 81,
-                "exp": 85,
-                "money": 88,
+                "exp": 81,
+                "money": 81,
                 "skill_point": 410
             },
             "82": {
                 "id": 82,
-                "exp": 86,
-                "money": 89,
+                "exp": 82,
+                "money": 82,
                 "skill_point": 415
             },
             "83": {
                 "id": 83,
-                "exp": 87,
-                "money": 90,
+                "exp": 83,
+                "money": 83,
                 "skill_point": 420
             },
             "84": {
                 "id": 84,
-                "exp": 88,
-                "money": 91,
+                "exp": 84,
+                "money": 84,
                 "skill_point": 425
             },
             "85": {
                 "id": 85,
-                "exp": 89,
-                "money": 92,
+                "exp": 85,
+                "money": 85,
                 "skill_point": 860
             },
             "86": {
                 "id": 86,
-                "exp": 90,
-                "money": 93,
+                "exp": 86,
+                "money": 86,
                 "skill_point": 435
             },
             "87": {
                 "id": 87,
-                "exp": 91,
-                "money": 94,
+                "exp": 87,
+                "money": 87,
                 "skill_point": 440
             },
             "88": {
                 "id": 88,
-                "exp": 92,
-                "money": 95,
+                "exp": 88,
+                "money": 88,
                 "skill_point": 445
             },
             "89": {
                 "id": 89,
-                "exp": 93,
-                "money": 96,
+                "exp": 89,
+                "money": 89,
                 "skill_point": 450
             },
             "90": {
                 "id": 90,
-                "exp": 94,
-                "money": 97,
+                "exp": 90,
+                "money": 90,
                 "skill_point": 910
             },
             "91": {
                 "id": 91,
-                "exp": 95,
-                "money": 98,
+                "exp": 91,
+                "money": 91,
                 "skill_point": 460
             },
             "92": {
                 "id": 92,
-                "exp": 96,
-                "money": 99,
+                "exp": 92,
+                "money": 92,
                 "skill_point": 465
             },
             "93": {
                 "id": 93,
-                "exp": 97,
-                "money": 100,
+                "exp": 93,
+                "money": 93,
                 "skill_point": 470
             },
             "94": {
                 "id": 94,
-                "exp": 98,
-                "money": 101,
+                "exp": 94,
+                "money": 94,
                 "skill_point": 475
             },
             "95": {
                 "id": 95,
-                "exp": 99,
-                "money": 102,
+                "exp": 95,
+                "money": 95,
                 "skill_point": 960
             },
             "96": {
                 "id": 96,
-                "exp": 100,
-                "money": 103,
+                "exp": 96,
+                "money": 96,
                 "skill_point": 485
             },
             "97": {
                 "id": 97,
-                "exp": 101,
-                "money": 104,
+                "exp": 97,
+                "money": 97,
                 "skill_point": 490
             },
             "98": {
                 "id": 98,
-                "exp": 102,
-                "money": 105,
+                "exp": 98,
+                "money": 98,
                 "skill_point": 495
             },
             "99": {
                 "id": 99,
-                "exp": 103,
-                "money": 106,
+                "exp": 99,
+                "money": 99,
                 "skill_point": 500
             },
             "100": {
                 "id": 100,
-                "exp": 104,
-                "money": 107,
+                "exp": 100,
+                "money": 100,
                 "skill_point": 1010
             }
         }
@@ -46686,85 +46792,85 @@ var outputTables = {
                 "id": 1,
                 "lv": 1,
                 "name": "Vip1",
-                "cash": 10,
-                "total_cash": 10
+                "cash": 6,
+                "total_cash": 6
             },
             "2": {
                 "id": 2,
                 "lv": 2,
                 "name": "Vip2",
                 "cash": 50,
-                "total_cash": 60
+                "total_cash": 56
             },
             "3": {
                 "id": 3,
                 "lv": 3,
                 "name": "Vip3",
                 "cash": 100,
-                "total_cash": 160
+                "total_cash": 156
             },
             "4": {
                 "id": 4,
                 "lv": 4,
                 "name": "Vip4",
                 "cash": 200,
-                "total_cash": 360
+                "total_cash": 356
             },
             "5": {
                 "id": 5,
                 "lv": 5,
                 "name": "Vip5",
                 "cash": 500,
-                "total_cash": 860
+                "total_cash": 856
             },
             "6": {
                 "id": 6,
                 "lv": 6,
                 "name": "Vip6",
                 "cash": 1000,
-                "total_cash": 1860
+                "total_cash": 1856
             },
             "7": {
                 "id": 7,
                 "lv": 7,
                 "name": "Vip7",
                 "cash": 2000,
-                "total_cash": 3860
+                "total_cash": 3856
             },
             "8": {
                 "id": 8,
                 "lv": 8,
                 "name": "Vip8",
                 "cash": 5000,
-                "total_cash": 8860
+                "total_cash": 8856
             },
             "9": {
                 "id": 9,
                 "lv": 9,
                 "name": "Vip9",
                 "cash": 8000,
-                "total_cash": 16860
+                "total_cash": 16856
             },
             "10": {
                 "id": 10,
                 "lv": 10,
                 "name": "Vip10",
                 "cash": 10000,
-                "total_cash": 26860
+                "total_cash": 26856
             },
             "11": {
                 "id": 11,
                 "lv": 11,
                 "name": "Vip11",
                 "cash": 20000,
-                "total_cash": 46860
+                "total_cash": 46856
             },
             "12": {
                 "id": 12,
                 "lv": 12,
                 "name": "Vip12",
                 "cash": 50000,
-                "total_cash": 96860
+                "total_cash": 96856
             }
         }
     },

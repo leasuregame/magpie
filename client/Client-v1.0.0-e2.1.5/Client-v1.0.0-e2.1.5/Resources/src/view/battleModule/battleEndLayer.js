@@ -57,15 +57,15 @@ var BattleEndLayer = cc.Layer.extend({
         if (len == 0) {
             if (isWin) {
                 str = [
-                    "再接再励",
-                    "勇往直前",
-                    "打遍三界无敌手"
+                    {str: "再接再励", color: cc.c3b(255, 239, 131)},
+                    {str: "勇往直前", color: cc.c3b(255, 239, 131)},
+                    {str: "打遍三界无敌手", color: cc.c3b(255, 239, 131)}
                 ];
             } else {
                 str = [
-                    "胜败乃常事",
-                    "搞搞强化培养洗练",
-                    "必能打过"
+                    {str: "胜败乃常事", color: cc.c3b(255, 255, 255)},
+                    {str: "搞搞强化培养洗练", color: cc.c3b(255, 255, 255)},
+                    {str: "必能打过", color: cc.c3b(255, 255, 255)}
                 ];
             }
 
@@ -75,8 +75,8 @@ var BattleEndLayer = cc.Layer.extend({
         var offsetY = this._battleEndLayerFit.offsetYHeight;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
-            rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
-            rewardLabel.setColor(cc.c3b(255, 239, 131));
+            rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
             label.addChild(rewardLabel);

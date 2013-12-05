@@ -277,10 +277,10 @@ var fit4Iphone4 = {
             "bgSpritePoint": cc.p(40, 106),
             "bgSpriteRect2": cc.rect(0, 0, 640, 706),
             "playerHeaderLabelPoint": cc.p(40, 802),
-            "cardEvolutionItemPoint": cc.p(110, 756),
-            "cardEvolutionItemOffset": cc.p(-7, -2),
-            "cardTrainItemPoint": cc.p(254, 756),
-            "cardTrainItemOffset": cc.p(0, -2)
+            "skillUpgradeItemPoint": cc.p(110, 756),
+            "skillUpgradeItemOffset": cc.p(-7, -2),
+            "passiveSkillUpgradeItemPoint": cc.p(254, 756),
+            "passiveSkillUpgradeItemOffset": cc.p(0, -2)
         },
         "exchangeLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -863,10 +863,10 @@ var fit4Iphone4 = {
             "playerHeaderLabelPoint": cc.p(40, 802),
             "cardUpgradeItemPoint": cc.p(110, 756),
             "cardUpgradeItemOffset": cc.p(-7, -2),
-            "skillUpgradeItemPoint": cc.p(254, 756),
-            "skillUpgradeItemOffset": cc.p(0, -2),
-            "passiveSkillUpgradeItemPoint": cc.p(404, 756),
-            "passiveSkillUpgradeItemOffset": cc.p(0, -2)
+            "cardTrainItemPoint": cc.p(254, 756),
+            "cardTrainItemOffset": cc.p(0, -2),
+            "cardEvolutionItemPoint": cc.p(404, 756),
+            "cardEvolutionItemOffset": cc.p(0, -2)
 
         },
         "systemMessageLayer": {
@@ -1344,10 +1344,10 @@ var fit4Iphone5 = {
             "bgSpritePoint": cc.p(0, 106),
             "bgSpriteRect2": cc.rect(0, 0, 640, 845),
             "playerHeaderLabelPoint": cc.p(0, 968),
-            "cardEvolutionItemPoint": cc.p(70, 897),
-            "cardEvolutionItemOffset": cc.p(-7, -2),
-            "cardTrainItemPoint": cc.p(214, 897),
-            "cardTrainItemOffset": cc.p(0, -2)
+            "skillUpgradeItemPoint": cc.p(70, 897),
+            "skillUpgradeItemOffset": cc.p(-7, -2),
+            "passiveSkillUpgradeItemPoint": cc.p(214, 897),
+            "passiveSkillUpgradeItemOffset": cc.p(0, -2)
         },
         "exchangeLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1931,10 +1931,10 @@ var fit4Iphone5 = {
             "playerHeaderLabelPoint": cc.p(0, 968),
             "cardUpgradeItemPoint": cc.p(70, 897),
             "cardUpgradeItemOffset": cc.p(-7, -2),
-            "skillUpgradeItemPoint": cc.p(214, 897),
-            "skillUpgradeItemOffset": cc.p(0, -2),
-            "passiveSkillUpgradeItemPoint": cc.p(364, 897),
-            "passiveSkillUpgradeItemOffset": cc.p(0, -2)
+            "cardTrainItemPoint": cc.p(214, 897),
+            "cardTrainItemOffset": cc.p(0, -2),
+            "cardEvolutionItemPoint": cc.p(364, 897),
+            "cardEvolutionItemOffset": cc.p(0, -2)
 
         },
         "systemMessageLayer": {

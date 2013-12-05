@@ -175,7 +175,6 @@ var Player = Entity.extend({
         } else if (this._lv >= table.card3_position) {
             MAX_LINE_UP_CARD = 3;
         }
-
     },
 
     getAbility: function () {

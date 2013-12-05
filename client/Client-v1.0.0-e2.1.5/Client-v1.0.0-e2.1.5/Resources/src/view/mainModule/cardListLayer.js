@@ -448,6 +448,8 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionMaster: function () {
         cc.log("CardListLayer _initCardEvolutionMaster");
 
+        TipLayer.tip("只有满级的卡牌才可以进行星级进阶");
+
         this._initMaster();
 
         var cardList = gameData.cardList.get("cardList");
@@ -465,6 +467,8 @@ var CardListLayer = cc.Layer.extend({
 
     _initSkillUpgradeMaster: function () {
         cc.log("CardListLayer _initSkillUpgradeMaster");
+
+        TipLayer.tip("3星以下卡牌无法进行技能升级");
 
         this._initMaster();
 
@@ -578,6 +582,8 @@ var CardListLayer = cc.Layer.extend({
     _initCardUpgradeRetinue: function () {
         cc.log("CardListLayer _initCardUpgradeRetinue");
 
+        TipLayer.tip("已上阵的卡牌不可以作为从卡");
+
         this._initRetinue();
 
         this._onSelectAllLowItem.setVisible(true);
@@ -615,6 +621,8 @@ var CardListLayer = cc.Layer.extend({
 
     _initCardEvolutionRetinue: function () {
         cc.log("CardListLayer _initCardEvolutionRetinue");
+
+        TipLayer.tip("星级进阶只能消耗相同星级的卡牌");
 
         this._initRetinue();
 

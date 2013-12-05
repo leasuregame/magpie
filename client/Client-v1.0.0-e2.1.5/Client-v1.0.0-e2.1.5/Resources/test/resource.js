@@ -760,6 +760,17 @@ var main_scene_image = {
     tutorials14: ccb_scene_path + "tutorials14.ccbi",
     tutorials15: ccb_scene_path + "tutorials15.ccbi",
     tutorials16: ccb_scene_path + "tutorials16.ccbi",
+    tutorials17: ccb_scene_path + "tutorials17.ccbi",
+    tutorials18: ccb_scene_path + "tutorials18.ccbi",
+    tutorials19: ccb_scene_path + "tutorials19.ccbi",
+    tutorials20: ccb_scene_path + "tutorials20.ccbi",
+    tutorials21: ccb_scene_path + "tutorials21.ccbi",
+    tutorials22: ccb_scene_path + "tutorials22.ccbi",
+    tutorials23: ccb_scene_path + "tutorials23.ccbi",
+    tutorials24: ccb_scene_path + "tutorials24.ccbi",
+    tutorials25: ccb_scene_path + "tutorials25.ccbi",
+    tutorials26: ccb_scene_path + "tutorials26.ccbi",
+    tutorials27: ccb_scene_path + "tutorials27.ccbi",
     testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
     spiritNode: ccb_scene_path + "spiritNode.ccbi",
     battleNode: ccb_scene_path + "battleNode.ccbi",
@@ -791,6 +802,31 @@ var main_scene_image = {
     23: effect_scene_path + "test/" + "23.png",
     24: effect_scene_path + "test/" + "24.png",
     25: effect_scene_path + "test/" + "25.png",
+    
+
+    //开场动画素材
+    s1: effect_scene_path + "startAnimation/" + "s1.png",
+    s2: effect_scene_path + "startAnimation/" + "s2.png",
+    s3: effect_scene_path + "startAnimation/" + "s3.png",
+    s4: effect_scene_path + "startAnimation/" + "s4.png",
+    s5: effect_scene_path + "startAnimation/" + "s5.png",
+    s6: effect_scene_path + "startAnimation/" + "s6.png",
+    s7: effect_scene_path + "startAnimation/" + "s7.png",
+    s8: effect_scene_path + "startAnimation/" + "s8.png",
+    s9: effect_scene_path + "startAnimation/" + "s9.png",
+    s10: effect_scene_path + "startAnimation/" + "s10.png",
+    s11: effect_scene_path + "startAnimation/" + "s11.png",
+    s12: effect_scene_path + "startAnimation/" + "s12.png",
+    s13: effect_scene_path + "startAnimation/" + "s13.png",
+    s14: effect_scene_path + "startAnimation/" + "s14.png",
+    s15: effect_scene_path + "startAnimation/" + "s15.png",
+    s16: effect_scene_path + "startAnimation/" + "s16.png",
+    s17: effect_scene_path + "startAnimation/" + "s17.png",
+    s18: effect_scene_path + "startAnimation/" + "s18.png",
+    s19: effect_scene_path + "startAnimation/" + "s19.png",
+    s20: effect_scene_path + "startAnimation/" + "s20.png",
+
+
 
 
 
@@ -876,6 +912,9 @@ var main_scene_image = {
     uiEffect51: ccb_scene_path + "uiEffect51.ccbi",
     uiEffect52: ccb_scene_path + "uiEffect52.ccbi",
     uiEffect53: ccb_scene_path + "uiEffect53.ccbi",
+
+    //开场动画
+    startAnimation1: ccb_scene_path + "startAnimation1.ccbi",
 };
 
 var main_scene_res = [
@@ -923,4 +962,6 @@ main_scene_res.push({src: "../res/font/skillName.fnt"});
 main_scene_res.push({src: "../res/font/skillName.png"});
 main_scene_res.push({src: "../res/font/tipNumber.fnt"});
 main_scene_res.push({src: "../res/font/tipNumber.png"});
+main_scene_res.push({src: "../res/font/UInumber.fnt"});
+main_scene_res.push({src: "../res/font/UInumber.png"});
 

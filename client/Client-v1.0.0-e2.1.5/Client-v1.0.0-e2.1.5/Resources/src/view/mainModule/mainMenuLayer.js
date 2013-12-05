@@ -146,6 +146,13 @@ var MainMenuLayer = cc.Layer.extend({
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
             }
+
+            if (mandatoryTeachingLayer) {
+                if (mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
+            }
         }
     }
 });

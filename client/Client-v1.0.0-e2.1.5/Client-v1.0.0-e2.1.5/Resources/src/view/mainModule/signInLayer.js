@@ -268,9 +268,8 @@ var SignInLayer = cc.Layer.extend({
         this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._index));
 
         var monthMark = signIn.getMonthMark(this._index);
-        var count = monthMark.count;
 
-        this._signInCountLabel.setString(count);
+        this._signInCountLabel.setString(monthMark.count);
 
         if (this._index != 0) {
             for (var i = 0; i < 5; ++i) {
@@ -288,7 +287,6 @@ var SignInLayer = cc.Layer.extend({
                 this._elementList[i].rewardIcon.setVisible(visible);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);
 
-                var monthMark = gameData.signIn.getMonthMark(0);
                 var table = outputTables.signIn_rewards.rows[i + 1];
                 var count = table.count != -1 ? table.count : monthMark.days;
 

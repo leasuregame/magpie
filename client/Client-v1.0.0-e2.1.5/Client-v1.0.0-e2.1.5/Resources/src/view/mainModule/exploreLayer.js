@@ -314,16 +314,6 @@ var ExploreLayer = cc.Layer.extend({
             }
         }
 
-        if(this._reward) {
-           // if(this._reward.result == "fight") {
-                var uid = gameData.player.get("uid");
-                var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
-                if(isFirstFight == 1) {
-                    MandatoryTeachingLayer.pop();
-                }
-           // }
-        }
-
     },
 
 
@@ -545,6 +535,18 @@ var ExploreLayer = cc.Layer.extend({
                     this.scheduleOnce(function () {
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
+
+                        if(this._reward) {
+                            if(this._reward.result == "fight") {
+                                var uid = gameData.player.get("uid");
+                                var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                                if(isFirstFight == 1) {
+                                    MandatoryTeachingLayer.pop();
+                                    sys.localStorage.setItem(uid + "firstFight", 0);
+                                }
+                            }
+                        }
+
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();

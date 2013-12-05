@@ -143,6 +143,13 @@ var StrengthenLayer = cc.Layer.extend({
         this._cardEvolutionItem.setEnabled(true);
 
         this._switchLabel(CardTrainLabel);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
     },
 
     _onClickCardEvolution: function () {

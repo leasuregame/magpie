@@ -301,6 +301,13 @@ var CardTrainLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_TRAIN_MASTER, function (data) {
             cc.log(data);
@@ -334,6 +341,13 @@ var CardTrainLabel = cc.Layer.extend({
         if (this._trainCount == TRAIN_ZERO_COUNT) {
             TipLayer.tip("请选择培养次数");
             return;
+        }
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
         }
 
         var elixir = gameData.player.get("elixir");

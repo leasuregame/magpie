@@ -199,10 +199,6 @@ pomelo.on('onLightUpCard', function(data) {
   console.log('Receive a message: ', data.msg);
 });
 
-pomelo.on('onVerifyResult', function(data) {
-  console.log('onVerifyResult', data);
-});
-
 var loginWith = function(account, pwd, areaId) {
   request("connector.userHandler.login", {
     account: account,
@@ -270,6 +266,13 @@ var game = {
         console.log('onVerifyResult', data);
       });
 
+      pomelo.on('onPowerGive', function(data) {
+        console.log('on power given', data);
+      });
+
+      pomelo.on('onPowerGiveEnd', function(data) {
+        console.log('on power given', data);
+      });
     });
   },
   login: function(name, pwd, areaId) {

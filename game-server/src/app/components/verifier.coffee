@@ -55,11 +55,11 @@ class Component
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
+  console.log 'execute verify, ', items.length
   return if items.length is 0
 
   async.each items, (item, done) ->
-    return if item.doing 
-    item.doing = true
+    #return done() if item.doing
     tryCount = 0
 
     postReceipt = (reqUrl, receiptData) ->
@@ -75,8 +75,11 @@ executeVerify = (app, queue) ->
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           updatePlayer(app, item, body)
-        else
+        else if body.status is 21005
           item.doing = false
+          updateBuyRecord(app, item.id, {status: body.status})
+        else 
+          queue.del(item.id)
           updateBuyRecord(app, item.id, {status: body.status})
 
         if body.status is 21007 and tryCount == 0
@@ -105,7 +108,8 @@ updatePlayer = (app, buyRecord, receiptResult) ->
 
     times = 1
     if player.cash is 0
-      times = 3  ### 首冲获得三倍魔石 ###
+      ### 首冲获得三倍魔石 ###
+      times = 3  
 
     player.increase('cash', product.cash)
     player.increase('gold', (product.cash * 10 + product.gold) * times)

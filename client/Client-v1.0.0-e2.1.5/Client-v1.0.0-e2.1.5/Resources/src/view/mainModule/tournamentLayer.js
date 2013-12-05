@@ -245,9 +245,13 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
-        var height = len * 135 + 80;
         var playerId = gameData.player.get("id");
         var own = len;
+
+        var scrollViewHeight = len * 135 + 80;
+        if (scrollViewHeight < this._tournamentLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._tournamentLayerFit.scrollViewHeight;
+        }
 
         var scrollViewLayer = MarkLayer.create(this._tournamentLayerFit.scrollViewLayerRect);
 
@@ -259,20 +263,20 @@ var TournamentLayer = cc.Layer.extend({
             scrollViewLayer.addChild(tournamentPlayerLabel);
 
             if (i < 10) {
-                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
             } else {
-                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1) - 55));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
             }
 
             if (i == 9) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, height - 135 * (i + 1) - 15));
+                line.setPosition(cc.p(310, scrollViewHeight - 135 * (i + 1) - 15));
                 scrollViewLayer.addChild(line, 2);
             }
         }
 
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, height));
+        this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, scrollViewHeight));
         this._scrollView.setPosition(this._tournamentLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();

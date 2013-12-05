@@ -205,7 +205,7 @@ var TournamentLabel = cc.Node.extend({
 
                 } else {
 
-                    if(count != 0) {
+                    if (count != 0) {
                         sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 1);
                     }
 

@@ -47,8 +47,8 @@ var TournamentRankLayer = cc.Layer.extend({
         var len = this._tournamentRankList.length;
 
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._tournamentRankLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._tournamentRankLayerFit.scrollViewHeight;
         }
 
         var scrollViewLayer = MarkLayer.create(this._tournamentRankLayerFit.scrollViewLayerRect);

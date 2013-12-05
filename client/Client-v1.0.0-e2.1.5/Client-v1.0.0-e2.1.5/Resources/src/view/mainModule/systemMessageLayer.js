@@ -62,8 +62,8 @@ var SystemMessageLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 127 - 20;
-        if (scrollViewHeight < 742) {
-            scrollViewHeight = 742;
+        if (scrollViewHeight < this._systemMessageLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._systemMessageLayerFit.scrollViewHeight;
         }
 
         this._scrollViewElement = {};

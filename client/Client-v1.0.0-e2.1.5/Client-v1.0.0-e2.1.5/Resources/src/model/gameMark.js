@@ -75,10 +75,12 @@ var gameMark = {
 
         var mark = this._achievement;
         if (mark == false) {
-            var achievement = gameData.achievement.get("achievement");
-            for (var key in achievement) {
-                var isReceiver = achievement[key].isReceiver;
-                var isAchieve = achievement[key].isAchieve;
+            var achievementList = gameData.achievement.getAchievementList();
+            var len = achievementList.length;
+
+            for (var i = 0; i < len; ++i) {
+                var isReceiver = achievementList[i].isReceiver;
+                var isAchieve = achievementList[i].isAchieve;
                 if (!isReceiver) {
                     if (isAchieve) {
                         mark = true;

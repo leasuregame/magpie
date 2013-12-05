@@ -13,8 +13,7 @@
 
 
 var Achievement = Entity.extend({
-    _achievement: {},
-    _length: 0,
+    _achievement: [],
 
     init: function () {
         cc.log("Achievement init");
@@ -26,13 +25,12 @@ var Achievement = Entity.extend({
         cc.log("Achievement update");
         cc.log(data);
 
-        this._achievement = {};
-        this._length = 0;
+        this._achievement = [];
 
         var table = outputTables.achievement.rows;
 
         for (var key in table) {
-            this._achievement[key] = {
+            var achievement = {
                 id: table[key].id,
                 need: table[key].need,
                 count: 0,
@@ -43,15 +41,14 @@ var Achievement = Entity.extend({
             };
 
             if (data[key]) {
-                this._achievement[key].count = data[key].got || 0;
-                this._achievement[key].isReceiver = data[key].isTake || false;
-                this._achievement[key].isAchieve = data[key].isAchieve || false;
+                achievement.count = data[key].got || 0;
+                achievement.isReceiver = data[key].isTake || false;
+                achievement.isAchieve = data[key].isAchieve || false;
             }
 
-            this._length += 1;
+            this._achievement.push(achievement);
         }
     },
-
 
     sync: function () {
         cc.log("Achievement sync");
@@ -94,8 +91,52 @@ var Achievement = Entity.extend({
         );
     },
 
+    getAchievementList: function () {
+        cc.log("Achievement getAchievementList");
+
+        this._achievement.sort(this._cmp);
+
+        return this._achievement;
+    },
+
+    _cmp: function (a, b) {
+        cc.log("Achievement _cmp");
+
+        var canReceiveA = a.isAchieve && !a.isReceiver;
+        var canReceiveB = b.isAchieve && !b.isReceiver;
+
+        if (canReceiveA && !canReceiveB) {
+            return -1;
+        } else if (!canReceiveA && canReceiveB) {
+            return 1;
+        } else {
+            return (a.id - b.id);
+        }
+    },
+
+    getAchievement: function (id) {
+        cc.log("Achievement getAchievement");
+
+        var len = this._achievement.length;
+
+        for (var i = 0; i < len; ++i) {
+            if (this._achievement[i].id == id) {
+                return this._achievement[i];
+            }
+        }
+
+        return null;
+    },
+
     receiver: function (cb, id) {
         cc.log("Achievement receiver");
+
+        var achievement = this.getAchievement(id);
+
+        if (!achievement) {
+            TipLayer.tip("领取的成就不存在");
+            return;
+        }
 
         var that = this;
         lz.server.request("area.achieveHandler.getReward", {
@@ -107,11 +148,11 @@ var Achievement = Entity.extend({
             if (data.code == 200) {
                 cc.log("receiver success");
 
-                that._achievement[id].isReceiver = true;
+                achievement.isReceiver = true;
 
                 var reward = {
-                    gold: that._achievement[id].gold,
-                    energy: that._achievement[id].energy
+                    gold: achievement.gold,
+                    energy: achievement.energy
                 };
 
                 gameData.player.adds(reward);
@@ -130,7 +171,7 @@ var Achievement = Entity.extend({
     setAchieve: function (id) {
         cc.log("Achievement setAchieve");
 
-        var achievement = this._achievement[id];
+        var achievement = this.getAchievement(id);
         achievement.isAchieve = true;
         achievement.count = achievement.need;
     }

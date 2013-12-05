@@ -178,13 +178,15 @@ class Manager
     player.consumePower(taskData.power_consume)
 
     ###  判断是否升级 ###
-    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, rewards) ->
+    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, level9Box, rewards) ->
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv
           rewards: rewards
           friendsCount: player.friendsCount
         }
+      if level9Box?
+        data.level9Box = level9Box
 
       cb(null, data)
 

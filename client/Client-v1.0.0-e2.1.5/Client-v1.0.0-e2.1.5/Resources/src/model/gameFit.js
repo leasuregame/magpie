@@ -31,6 +31,7 @@ var fit4Iphone4 = {
             "offsetYHeight": 80,
             "replayItemPoint": cc.p(-85, -252),
             "okItemPoint": cc.p(85, -252),
+            "goStrengthenLayerItemPoint": cc.p(0, -360),
             "fragmentEffectPoint": cc.p(360, 200)
         },
         "batterLayer": {
@@ -1098,6 +1099,7 @@ var fit4Iphone5 = {
             "offsetYHeight": 80,
             "replayItemPoint": cc.p(-85, -252),
             "okItemPoint": cc.p(85, -252),
+            "goStrengthenLayerItemPoint": cc.p(0, -360),
             "fragmentEffectPoint": cc.p(320, 270)
         },
         "batterLayer": {

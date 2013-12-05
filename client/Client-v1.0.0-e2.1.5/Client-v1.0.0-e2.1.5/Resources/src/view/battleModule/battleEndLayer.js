@@ -87,7 +87,6 @@ var BattleEndLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.create(
             main_scene_image.button66,
             main_scene_image.button66s,
-            //  main_scene_image.icon21,
             this.end,
             this
         );
@@ -96,15 +95,35 @@ var BattleEndLayer = cc.Layer.extend({
         var replayItem = cc.MenuItemImage.create(
             main_scene_image.button67,
             main_scene_image.button67s,
-            //main_scene_image.icon291,
             this.replay,
             this
         );
         replayItem.setPosition(this._battleEndLayerFit.replayItemPoint);
 
-        var menu = cc.Menu.create(okItem, replayItem);
+        var goStrengthenLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button27,
+            main_scene_image.button27s,
+            main_scene_image.icon126,
+            this._onClickGoStrengthenLayer,
+            this
+        );
+        goStrengthenLayerItem.setPosition(this._battleEndLayerFit.goStrengthenLayerItemPoint);
+
+        var menu = cc.Menu.create(okItem, replayItem, goStrengthenLayerItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
+
+        var goStrengthenLayerIcon = goStrengthenLayerItem.getIconImage();
+        goStrengthenLayerIcon.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.FadeOut.create(2),
+                    cc.FadeIn.create(2)
+                )
+            )
+        );
+
+        goStrengthenLayerItem.setVisible(!isWin);
 
         this.setVisible(false);
 
@@ -144,8 +163,13 @@ var BattleEndLayer = cc.Layer.extend({
 
         BattlePlayer.getInstance().next();
         BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
-    }
+    },
 
+    _onClickGoStrengthenLayer: function () {
+        cc.log("BattleEndLayer _onClickGoStrengthenLayer");
+
+        BattlePlayer.getInstance().end(StrengthenLayer);
+    }
 });
 
 

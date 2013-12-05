@@ -213,7 +213,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont_Exp</string>
 						<key>memberVarAssignmentName</key>
-						<string>moneyLabel</string>
+						<string>expLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -267,8 +267,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -598,6 +596,8 @@
 								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -760,7 +760,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.69799017906188965</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>1.5</real>
 			<key>resolution</key>

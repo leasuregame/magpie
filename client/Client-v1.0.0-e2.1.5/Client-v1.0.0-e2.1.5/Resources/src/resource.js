@@ -1,4 +1,4 @@
-    // login scene res
+// login scene res
 var login_scene_path = "res/login/";
 
 var login_scene_image = {
@@ -196,9 +196,11 @@ var main_scene_image = {
     button21s: main_scene_path + "button21s.png",
     button22: main_scene_path + "button22.png",
     button22s: main_scene_path + "button22s.png",
+    button22h: main_scene_path + "button22h.png",
     button22d: main_scene_path + "button22d.png",
     button23: main_scene_path + "button23.png",
     button23s: main_scene_path + "button23s.png",
+    button23h: main_scene_path + "button23h.png",
     button23d: main_scene_path + "button23d.png",
     button24: main_scene_path + "button24.png",
     button24s: main_scene_path + "button24s.png",
@@ -207,8 +209,8 @@ var main_scene_image = {
     button25d: main_scene_path + "button25d.png",
     button26: main_scene_path + "button26.png",
     button26s: main_scene_path + "button26s.png",
-//    button27: main_scene_path + "button27.png",
-//    button27s: main_scene_path + "button27s.png",
+    button27: main_scene_path + "button27.png",
+    button27s: main_scene_path + "button27s.png",
 //    button28: main_scene_path + "button28.png",
 //    button28s: main_scene_path + "button28s.png",
 //    button29: main_scene_path + "button29.png",
@@ -404,7 +406,7 @@ var main_scene_image = {
     icon123: main_scene_path + "icon123.png",
     icon124: main_scene_path + "icon124.png",
     icon125: main_scene_path + "icon125.png",
-//    icon126: main_scene_path + "icon126.png",
+    icon126: main_scene_path + "icon126.png",
     icon127: main_scene_path + "icon127.png",
     icon128: main_scene_path + "icon128.png",
     icon129: main_scene_path + "icon129.png",

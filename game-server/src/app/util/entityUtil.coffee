@@ -31,6 +31,7 @@ module.exports =
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
     isUpgrade = false
+    level9Box = null
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
     while(player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
@@ -45,6 +46,16 @@ module.exports =
       rewards.elixir += upgradeInfo.elixir
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
+      if player.lv is 9
+        level9Box = 
+          money: 50000
+          skillPoint: 20000
+          energy: 5000
+          powerValue: 200
+        player.increase('money', level9Box.money)
+        player.increase('skillPoint', level9Box.skillPoint)
+        player.increase('energy', level9Box.energy)
+        player.addPower(level9Box.powerValue)        
 
     if isUpgrade
       player.increase('money', rewards.money)
@@ -52,7 +63,7 @@ module.exports =
       player.increase('skillPoint', rewards.skillPoint)
       player.increase('elixir', rewards.elixir)
       
-    cb(isUpgrade, rewards)
+    cb(isUpgrade, level9Box, rewards)
 
   randomCardId: (star) ->
     tableIds = table.getTable('cards').filter((id) -> id <= 500)

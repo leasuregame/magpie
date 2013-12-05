@@ -74,8 +74,8 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;
 
-            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
-            rewardLabel.setColor(cc.c3b(255, 239, 131));
+            var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 22);
+            rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
             label.addChild(rewardLabel);
@@ -118,7 +118,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         this.removeFromParent();
 
-        if(this._cb) {
+        if (this._cb) {
             this._cb();
         }
 

@@ -68,39 +68,40 @@ var StrengthenLayer = cc.Layer.extend({
         this._cardUpgradeItem.setPosition(this._strengthenLayerFit.cardUpgradeItemPoint);
         this._cardUpgradeItem.setOffset(this._strengthenLayerFit.cardUpgradeItemOffset);
 
-        this._skillUpgradeItem = cc.MenuItemImage.createWithIcon(
+        this._cardTrainItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
             main_scene_image.button23d,
-            main_scene_image.icon46,
-            this._onClickSkillUpgrade,
+            main_scene_image.icon82,
+            this._onClickCardTrain,
             this
         );
-        this._skillUpgradeItem.setPosition(this._strengthenLayerFit.skillUpgradeItemPoint);
-        this._skillUpgradeItem.setOffset(this._strengthenLayerFit.skillUpgradeItemOffset);
+        this._cardTrainItem.setPosition(this._strengthenLayerFit.cardTrainItemPoint);
+        this._cardTrainItem.setOffset(this._strengthenLayerFit.cardTrainItemOffset);
 
-        this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
+        this._cardEvolutionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
             main_scene_image.button23d,
-            main_scene_image.icon47,
-            this._onClickPassiveSkillUpgrade,
+            main_scene_image.icon81,
+            this._onClickCardEvolution,
             this
         );
-        this._passiveSkillUpgradeItem.setPosition(this._strengthenLayerFit.passiveSkillUpgradeItemPoint);
-        this._passiveSkillUpgradeItem.setOffset(this._strengthenLayerFit.passiveSkillUpgradeItemOffset);
+        this._cardEvolutionItem.setPosition(this._strengthenLayerFit.cardEvolutionItemPoint);
+        this._cardEvolutionItem.setOffset(this._strengthenLayerFit.cardEvolutionItemOffset);
 
         var menu = cc.Menu.create(
             this._cardUpgradeItem,
-            this._skillUpgradeItem,
-            this._passiveSkillUpgradeItem
+            this._cardTrainItem,
+            this._cardEvolutionItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         this._cardUpgradeItem.setEnabled(false);
-        this._skillUpgradeItem.setEnabled(true);
-        this._passiveSkillUpgradeItem.setEnabled(true);
+        this._cardTrainItem.setEnabled(true);
+        this._cardEvolutionItem.setEnabled(true);
+
         this._switchLabel(CardUpgradeLabel);
 
         this.retain();
@@ -126,34 +127,34 @@ var StrengthenLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardUpgradeItem.setEnabled(false);
-        this._skillUpgradeItem.setEnabled(true);
-        this._passiveSkillUpgradeItem.setEnabled(true);
+        this._cardTrainItem.setEnabled(true);
+        this._cardEvolutionItem.setEnabled(true);
 
         this._switchLabel(CardUpgradeLabel);
     },
 
-    _onClickSkillUpgrade: function () {
+    _onClickCardTrain: function () {
         cc.log("StrengthenLayer _onClickSkillUpgrade");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardUpgradeItem.setEnabled(true);
-        this._skillUpgradeItem.setEnabled(false);
-        this._passiveSkillUpgradeItem.setEnabled(true);
+        this._cardTrainItem.setEnabled(false);
+        this._cardEvolutionItem.setEnabled(true);
 
-        this._switchLabel(SkillUpgradeLabel);
+        this._switchLabel(CardTrainLabel);
     },
 
-    _onClickPassiveSkillUpgrade: function () {
-        cc.log("StrengthenLayer _onClickPassiveSkillUpgrade");
+    _onClickCardEvolution: function () {
+        cc.log("EvolutionLayer _onClickCardEvolution");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardUpgradeItem.setEnabled(true);
-        this._skillUpgradeItem.setEnabled(true);
-        this._passiveSkillUpgradeItem.setEnabled(false);
+        this._cardTrainItem.setEnabled(true);
+        this._cardEvolutionItem.setEnabled(false);
 
-        this._switchLabel(PassiveSkillAfreshLabel);
+        this._switchLabel(CardEvolutionLabel);
     },
 
     _switchLabel: function (runLabel) {

@@ -16,7 +16,6 @@ var Rank = Entity.extend({
     _abilityRankList: [],
     _lvRankList: [],
     _passRankList: [],
-    _tournamentRankList: [],
 
     init: function () {
         cc.log("Rank init");
@@ -32,7 +31,6 @@ var Rank = Entity.extend({
         this._abilityRankList = data.ability || [];
         this._lvRankList = data.level || [];
         this._passRankList = data.pass || [];
-        this._tournamentRankList = data.ranking || [];
     },
 
     sync: function () {

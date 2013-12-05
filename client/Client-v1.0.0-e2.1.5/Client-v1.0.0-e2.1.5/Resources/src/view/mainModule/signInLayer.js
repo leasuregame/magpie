@@ -190,6 +190,7 @@ var SignInLayer = cc.Layer.extend({
             );
             rewardItem.setPosition(point);
             menu.addChild(rewardItem);
+            rewardItem.setEnabled(false);
 
             var rewardIcon = cc.Sprite.create(main_scene_image["icon" + (189 + i)]);
             rewardIcon.setPosition(point);

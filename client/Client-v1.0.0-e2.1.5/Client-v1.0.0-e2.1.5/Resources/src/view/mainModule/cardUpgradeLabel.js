@@ -400,6 +400,13 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -424,6 +431,13 @@ var CardUpgradeLabel = cc.Layer.extend({
         cc.log("CardUpgradeLabel _onClickSelectRetinueCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
 
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_RETINUE, function (data) {
@@ -457,6 +471,13 @@ var CardUpgradeLabel = cc.Layer.extend({
         if (this._money > gameData.player.get("money")) {
             TipLayer.tip("仙币不足");
             return;
+        }
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
         }
 
         LazyLayer.showCloudLayer();

@@ -9,23 +9,23 @@
 var teaching = [
 
     {
-        overStep: 0,
-        clickType: [],
+        overStep: 9,
+        clickType: [1, 0, 0, 0, 0, 0, 0, 0, 0],
         effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25]
     },
     {
         overStep: 0,
-        clickType: [],
+        clickType: [1, 0, 0, 0, 0, 0, 0],
         effectOrder: [18, 20, 24, 21, 11, 13, 25]
     },
     {
         overStep: 0,
-        clickType: [],
+        clickType: [1, 0, 0, 0, 0, 0],
         effectOrder: [19, 23, 21, 11, 13, 25]
     },
     {
         overStep: 0,
-        clickType: [],
+        clickType: [1, 0, 0, 0, 0, 0, 0],
         effectOrder: [26, 23, 24, 27, 11, 13, 25]
     }
 
@@ -35,14 +35,15 @@ var teaching = [
 var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 
 var MandatoryTeachingLayer = LazyLayer.extend({
+    _mandatoryTeachingLayerFit: null,
 
     _progress: 0,   //总的教学进度
     _step: 0,       //当前教学步骤
     _overStep: 0,    //结束教学步骤
     _layerOrder: [],
     _clickType: [],
-    _rectOrder: null,
-    _effectPoints: null,
+    _rectOrder: [],
+    _effectPoints: [],
     _effectOrder: [],
     _effectNode: null,
     _rect: cc.rect(0, 0, 0, 0),    //点击有效区域
@@ -56,6 +57,8 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._mandatoryTeachingLayerFit = gameFit.mainScene.mandatoryTeachingLayer;
+
         this.setTouchPriority(MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY);
 
         var uid = gameData.player.get("uid");
@@ -65,6 +68,10 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
         this._effectOrder = teaching[this._progress].effectOrder;
+
+        this._rectOrder = this._mandatoryTeachingLayerFit.rectOrders[this._progress];
+        this._effectPoints = this._mandatoryTeachingLayerFit.effectPoints[this._progress];
+
         this._rect = cc.rect(0, 0, 0, 0);
 
         if (this.isTeaching()) {

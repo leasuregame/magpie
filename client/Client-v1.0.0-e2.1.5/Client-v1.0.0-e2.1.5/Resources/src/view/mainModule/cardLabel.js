@@ -306,6 +306,13 @@ var CardLabel = cc.Node.extend({
                 noviceTeachingLayer.next();
             }
 
+            if(mandatoryTeachingLayer) {
+                if(mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
+            }
+
             this.select();
         }
     }

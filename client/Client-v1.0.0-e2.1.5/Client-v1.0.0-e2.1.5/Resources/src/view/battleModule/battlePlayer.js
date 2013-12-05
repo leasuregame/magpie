@@ -43,6 +43,7 @@ var BattlePlayer = cc.Class.extend({
         cc.log("BattlePlayer end");
 
         cc.Director.getInstance().popScene();
+
 //      cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.getInstance()));
     }
 });

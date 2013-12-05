@@ -1585,6 +1585,29 @@ var fit4Iphone5 = {
             "markSpriteBasePoint": cc.p(53, 54),
             "markSpriteOffsetX": 107
         },
+        "mandatoryTeachingLayer": {
+            "rectOrders": {
+                "0": [
+                    cc.rect(17, 4, 106, 106), cc.rect(405, 608, 211, 91), cc.rect(253, 611, 135, 158),
+                    cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(345, 162, 150, 70),
+                    cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
+                ],
+                "1": [],
+                "2": [],
+                "3": []
+            },
+            "effectPoints": {
+                "0": [
+                    cc.p(53, 54), cc.p(515, 653), cc.p(320, 690),
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(420, 197),
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
+                ],
+                "1": [],
+                "2": [],
+                "3": []
+
+            }
+        },
         "messageLabel": {
             "messageLabelPoint": cc.p(600, 18),
             "offsetXWidth": 640

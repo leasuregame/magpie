@@ -206,6 +206,10 @@ var LotteryLayer = cc.Layer.extend({
 
         this.update();
 
+        if(noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.setVisible(false);
+        }
+
         LotteryCardLayer.pop(this._data);
 
         LazyLayer.closeCloudLayer();
@@ -225,7 +229,6 @@ var LotteryLayer = cc.Layer.extend({
 
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();
-                noviceTeachingLayer.setVisible(false);
             }
 
             LazyLayer.showCloudLayer();

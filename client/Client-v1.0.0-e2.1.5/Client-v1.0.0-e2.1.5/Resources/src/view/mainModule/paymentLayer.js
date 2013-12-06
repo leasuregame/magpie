@@ -72,7 +72,7 @@ var PaymentLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var tipIcon = cc.Sprite.create(main_scene_image.icon160);
+        var tipIcon = cc.Sprite.create(main_scene_image.icon304);
         tipIcon.setPosition(this._paymentLayerFit.tipIconPoint);
         this.addChild(tipIcon);
 

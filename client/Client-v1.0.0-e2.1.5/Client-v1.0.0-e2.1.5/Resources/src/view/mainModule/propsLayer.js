@@ -84,6 +84,10 @@ var PropsLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var buyIcon = cc.Sprite.create(main_scene_image.icon303);
+        buyIcon.setPosition(this._propsLayerFit.buyIconPoint);
+        this.addChild(buyIcon);
+
         var productList = gameData.shop.getProductList();
         var len = productList.length;
 

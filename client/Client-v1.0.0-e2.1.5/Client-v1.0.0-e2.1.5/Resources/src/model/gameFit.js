@@ -687,7 +687,7 @@ var fit4Iphone4 = {
             "bgSpritePoint": cc.p(360, 492),
             "closeItemPoint": cc.p(605, 837),
             "vipPrivilegeItemPoint": cc.p(530, 752),
-            "tipIconPoint": cc.p(260, 812),
+            "tipIconPoint": cc.p(300, 812),
             "tipLabelPoint": cc.p(115, 752),
             "scrollViewHeight": 550,
             "scrollViewLayerRect": cc.rect(107, 172, 500, 550),
@@ -769,6 +769,7 @@ var fit4Iphone4 = {
             "goldLabelPoint": cc.p(310, 844),
             "moneyLabelPoint": cc.p(435, 844),
             "paymentItemPoint": cc.p(600, 846),
+            "buyIconPoint": cc.p(600, 816),
             "scrollViewHeight": 680,
             "scrollViewLayerRect": cc.rect(40, 122, 640, 680),
             "scrollViewSize": cc.size(640, 680),
@@ -1110,6 +1111,7 @@ var fit4Iphone4 = {
             "goldLabelPoint": cc.p(310, 844),
             "moneyLabelPoint": cc.p(435, 844),
             "paymentItemPoint": cc.p(600, 846),
+            "buyIconPoint": cc.p(600, 816),
             "scrollViewHeight": 680,
             "scrollViewLayerRect": cc.rect(40, 122, 640, 680),
             "scrollViewSize": cc.size(640, 680),
@@ -1828,7 +1830,7 @@ var fit4Iphone5 = {
             "bgSpritePoint": cc.p(320, 580),
             "closeItemPoint": cc.p(565, 980),
             "vipPrivilegeItemPoint": cc.p(490, 895),
-            "tipIconPoint": cc.p(220, 955),
+            "tipIconPoint": cc.p(260, 955),
             "tipLabelPoint": cc.p(75, 895),
             "scrollViewHeight": 645,
             "scrollViewLayerRect": cc.rect(67, 220, 500, 645),
@@ -1910,6 +1912,7 @@ var fit4Iphone5 = {
             "goldLabelPoint": cc.p(270, 1020),
             "moneyLabelPoint": cc.p(395, 1020),
             "paymentItemPoint": cc.p(560, 1022),
+            "buyIconPoint": cc.p(560, 992),
             "scrollViewHeight": 843,
             "scrollViewLayerRect": cc.rect(40, 106, 640, 843),
             "scrollViewSize": cc.size(640, 822),
@@ -2242,7 +2245,7 @@ var fit4Iphone5 = {
             "titleLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItemPoint": cc.p(220, 520),
-            "closeItemPoint": cc.p(420, 520),
+            "closeItemPoint": cc.p(420, 520)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2252,6 +2255,7 @@ var fit4Iphone5 = {
             "goldLabelPoint": cc.p(270, 1020),
             "moneyLabelPoint": cc.p(395, 1020),
             "paymentItemPoint": cc.p(560, 1022),
+            "buyIconPoint": cc.p(560, 992),
             "scrollViewHeight": 843,
             "scrollViewLayerRect": cc.rect(40, 106, 640, 843),
             "scrollViewSize": cc.size(640, 822),
@@ -2289,7 +2293,7 @@ var fit4Iphone5 = {
 var gameFit = null;
 var gameDevice = "Unknown";
 
-var gameFitAdapter = function() {
+var gameFitAdapter = function () {
     cc.log("gameFitAdapter");
 
     var size = cc.Director.getInstance().getWinSize();

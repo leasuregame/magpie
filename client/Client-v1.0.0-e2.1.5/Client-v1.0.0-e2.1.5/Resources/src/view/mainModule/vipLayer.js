@@ -133,6 +133,10 @@ var VipLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var buyIcon = cc.Sprite.create(main_scene_image.icon303);
+        buyIcon.setPosition(this._vipLayerFit.buyIconPoint);
+        this.addChild(buyIcon);
+
         return true;
     },
 

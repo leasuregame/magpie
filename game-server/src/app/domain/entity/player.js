@@ -619,9 +619,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        //if (this.power.value !== power.value) {
+        if (!_.isNumber(power.value)) {
+            console.log('=========power value is wrong=========', power);
+        }
         this.set('power', power);
-        //}
     };
 
     Player.prototype.consumePower = function(value) {
@@ -634,6 +635,7 @@ var Player = (function(_super) {
         }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
+        console.log('power consume: ', value, power);
         this.updatePower(power);
         this.emit('power.consume', cVal);
     };
@@ -646,6 +648,7 @@ var Player = (function(_super) {
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
+        console.log('power resume: ', value, power);
         this.updatePower(power);
     };
 
@@ -654,6 +657,7 @@ var Player = (function(_super) {
         var power = _.clone(this.power);
         power.value += value;
         power.time = Date.now();
+        console.log('add power: ', value, power);
         this.updatePower(power);
     };
 
@@ -661,6 +665,7 @@ var Player = (function(_super) {
         var power = utility.deepCopy(this.power);
         power.value += value;
         power.time = Date.now();
+        console.log('give power: ', value, power);
         this.updatePower(power);
 
         // 更新dailyGift的power

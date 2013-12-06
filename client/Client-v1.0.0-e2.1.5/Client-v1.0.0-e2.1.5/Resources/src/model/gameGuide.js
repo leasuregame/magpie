@@ -63,17 +63,27 @@ var gameGuide = {
         for (var i = 1; i <= 7; i++) {
             var guide = FUNCTION_OPEN[i];
             if (lv == table[guide.tableName]) {
-                TipLayer.tip(guide.tip);
+
+                var point = gameFit.gameGuide.effectPoint;
+                var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect58, this);
+                tipEffect.controller.tipLabel.setString(guide.tip);
+                tipEffect.setPosition(point);
+                tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    tipEffect.removeFromParent();
+                });
+
                 this.set(guide.name, true);
                 MainScene.getInstance().updateGuide();
+                MainScene.getInstance().getLayer().addChild(tipEffect);
+
                 break;
             }
         }
 
-        if(lv == PASSIVE_SKILL_AFRESH_LV) {
+        if (lv == PASSIVE_SKILL_AFRESH_LV) {
             var uid = gameData.player.get("uid");
             var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
-            if(isFirstPassiveSkillAfresh == -1) {
+            if (isFirstPassiveSkillAfresh == -1) {
                 sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 1);
             }
         }

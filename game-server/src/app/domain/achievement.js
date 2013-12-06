@@ -33,8 +33,8 @@ Achievement.rankingToOne = function(player) {
 	checkIsReached(player, 'rankingToOne', 1);
 };
 
-Achievement.friends = function(player, count) {
-	checkIsReached_alpha(player, 'friends', count);
+Achievement.friends = function(player) {
+	checkIsReached_alpha(player, 'friends', 1);
 };
 
 Achievement.elixirTo = function(player, eli) {

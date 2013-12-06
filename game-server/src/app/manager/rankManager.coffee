@@ -56,7 +56,7 @@ Manager = module.exports =
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
-      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, cb)
+      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
 
 updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->

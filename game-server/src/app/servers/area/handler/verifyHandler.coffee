@@ -56,16 +56,21 @@ vitualBuy = (app, msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
   table = require('../../../manager/table')
+  products = table.getTable('recharge').filter (dkkd, item) -> item.product_id is id
+  if products and products.length > 0
+    product = products[0]
+  else
+  	throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
+    
   app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    data = table.getTableItem('recharge', id)
     times = 1
     if player.cash is 0
     	times = 3
-    player.increase('cash', data.cash)
-    player.increase('gold', ((data.cash * 10) + data.gold) * times)
+    player.increase('cash', product.cash)
+    player.increase('gold', ((product.cash * 10) + product.gold) * times)
     player.save()
 
     successMsg(app, player)

@@ -492,8 +492,6 @@ var ExploreLayer = cc.Layer.extend({
                     if (upgradeReward) {
                         var cb = function () {
 
-                            gameMark.updateGoldRewardMark(false);
-
                             if (goldList) {
                                 GoldLayer.pop({
                                     goldList: goldList,

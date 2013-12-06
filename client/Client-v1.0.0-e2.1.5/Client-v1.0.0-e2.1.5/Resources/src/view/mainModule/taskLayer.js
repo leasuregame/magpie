@@ -273,7 +273,7 @@ var TaskLayer = cc.Layer.extend({
             var task = gameData.task;
 
             if (id > task.getSection()) {
-                TipLayer.tip("当前关卡未打开");
+                TipLayer.tip("当前关卡未开启");
 
                 return;
             }

@@ -486,6 +486,8 @@ var CardListLayer = cc.Layer.extend({
     _initPassiveSkillAfreshMaster: function () {
         cc.log("CardListLayer _initPassiveSkillAfreshMaster");
 
+        TipLayer.tip("3星以下卡牌无法进行被动洗练");
+
         this._initMaster();
 
         var cardList = gameData.cardList.get("cardList");
@@ -826,8 +828,8 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }

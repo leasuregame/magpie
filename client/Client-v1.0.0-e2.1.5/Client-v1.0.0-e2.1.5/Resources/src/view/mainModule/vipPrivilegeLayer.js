@@ -13,7 +13,7 @@
 
 
 var vipPrivilegeDescription = {
-    lottery_free_count: "每日寻宝次数",
+    lottery_free_count: "每日免费寻宝次数",
     friend_count: "好友上限",
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",

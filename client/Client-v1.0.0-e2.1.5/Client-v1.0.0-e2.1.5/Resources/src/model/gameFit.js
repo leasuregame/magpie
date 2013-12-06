@@ -735,6 +735,16 @@ var fit4Iphone4 = {
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
         },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(360, 512),
+            "okItemPoint": cc.p(360, 332),
+            "boxGoodsPoints": {
+                money: cc.p(210, 662),
+                skillPoint: cc.p(430, 662),
+                energy: cc.p(210, 562),
+                power: cc.p(430, 562)
+            }
+        },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
             "headTextPoint": cc.p(165, 812),
@@ -1855,6 +1865,16 @@ var fit4Iphone5 = {
             "offsetY": 150,
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
+        },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(320, 600),
+            "okItemPoint": cc.p(0, 420),
+            "boxGoodsPoints": {
+                money: cc.p(170, 750),
+                skillPoint: cc.p(390, 750),
+                energy: cc.p(170, 650),
+                power: cc.p(390, 650)
+            }
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),

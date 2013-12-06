@@ -82,5 +82,5 @@ successMsg = (app, player) ->
     }
   }, (err, res) ->
     if err
-      logger.error('faild to send message to playerId ', playerId)
+      logger.error('faild to send message to playerId ', player.id)
 		

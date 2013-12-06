@@ -1093,6 +1093,13 @@ var fit4Iphone4 = {
             "freeCountLabelPoint": cc.p(420, 342),
             "countLabelPoint": cc.p(420, 282)
         },
+        "goPaymentLayer": {
+            "bgSpritePoint": cc.p(360, 492),
+            "titleLabelPoint": cc.p(360, 572),
+            "tipLabelPoint": cc.p(360, 512),
+            "paymentItemPoint": cc.p(260, 432),
+            "closeItemPoint": cc.p(460, 432)
+        },
         "vipLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headLabelPoint": cc.p(40, 817),
@@ -2223,6 +2230,13 @@ var fit4Iphone5 = {
             "treasureHuntIcon2Point": cc.p(315, 545),
             "freeCountLabelPoint": cc.p(380, 430),
             "countLabelPoint": cc.p(380, 370)
+        },
+        "goPaymentLayer": {
+            "bgSpritePoint": cc.p(320, 580),
+            "titleLabelPoint": cc.p(320, 660),
+            "tipLabelPoint": cc.p(320, 600),
+            "paymentItemPoint": cc.p(220, 520),
+            "closeItemPoint": cc.p(420, 520),
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),

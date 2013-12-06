@@ -174,6 +174,16 @@ var Achievement = Entity.extend({
         var achievement = this.getAchievement(id);
         achievement.isAchieve = true;
         achievement.count = achievement.need;
+
+        var point = cc.p(320, 568);
+        if (gameDevice != "Iphone5") {
+            point = cc.p(360, 480);
+        }
+
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect57, this);
+        ccbNode.setPosition(point);
+        ccbNode.controller.label.setString(achievement.name);
+        MainScene.getInstance().addChild(ccbNode, 20);
     }
 });
 

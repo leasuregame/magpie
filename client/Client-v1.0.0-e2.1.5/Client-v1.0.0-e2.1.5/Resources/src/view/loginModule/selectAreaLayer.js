@@ -86,8 +86,6 @@ var SelectAreaLayer = cc.Layer.extend({
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
 
-        this.selectAreaFrame = selectAreaFrame;
-
         return true;
     },
 

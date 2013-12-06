@@ -57,6 +57,11 @@ var MainScene = cc.Scene.extend({
         } else {
             this.switchLayer(MainLayer);
         }
+
+        if (MandatoryTeachingLayer.isNeedTeaching()) {
+            MandatoryTeachingLayer.pop();
+        }
+
     },
 
     changeMessage: function (msg) {

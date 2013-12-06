@@ -184,21 +184,28 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.sets({
-                    power: msg.power.value,
-                    powerTimestamp: msg.power.time,
-                    exp: msg.exp
-                });
-
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
 
                     cbData.upgradeReward = msg.upgradeInfo.rewards;
                 }
 
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
+                }
+
                 if (msg.through_reward) {
                     cbData.through_reward = msg.through_reward;
-                    player.add('money',msg.through_reward.money);
+                    player.add('money', msg.through_reward.money);
                 }
 
                 if (msg.result == "fight") {
@@ -215,6 +222,12 @@ var Task = Entity.extend({
                         cbData.card = card;
                     }
                 }
+
+                player.sets({
+                    power: msg.power.value,
+                    powerTimestamp: msg.power.time,
+                    exp: msg.exp
+                });
 
                 cb(cbData);
 

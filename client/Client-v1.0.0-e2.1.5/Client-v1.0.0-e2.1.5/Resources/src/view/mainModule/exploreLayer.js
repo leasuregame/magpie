@@ -29,6 +29,7 @@ var ExploreLayer = cc.Layer.extend({
     _scrollView: null,
     _element: {},
     _reward: null,
+    _level9Box: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -308,14 +309,11 @@ var ExploreLayer = cc.Layer.extend({
             var point = this._mapLabel[i].getPosition();
 
             if (point.x < this._exploreLayerFit.pointX) {
-                //point.x += 1920;
                 point.x += 2560;
                 this._mapLabel[i].setPosition(point);
             }
         }
-
     },
-
 
     _getScrollViewOffset: function () {
         cc.log("ExploreLayer _getScrollViewOffset");
@@ -365,7 +363,6 @@ var ExploreLayer = cc.Layer.extend({
                 } else {
                     that._unlock();
                 }
-
             }, this._getTaskId());
         } else if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
@@ -489,6 +486,7 @@ var ExploreLayer = cc.Layer.extend({
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
+                var level9Box = this._reward.level9Box;
 
                 var next = function () {
                     if (upgradeReward) {
@@ -497,7 +495,14 @@ var ExploreLayer = cc.Layer.extend({
                             gameMark.updateGoldRewardMark(false);
 
                             if (goldList) {
-                                GoldLayer.pop(goldList);
+                                GoldLayer.pop({
+                                    goldList: goldList,
+                                    cb: function () {
+                                        if (level9Box) {
+                                            Level9BoxLayer.pop(level9Box);
+                                        }
+                                    }
+                                });
                             }
                         };
                         PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
@@ -536,15 +541,11 @@ var ExploreLayer = cc.Layer.extend({
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
 
-                        if(this._reward) {
-                            if(this._reward.result == "fight") {
-                                var uid = gameData.player.get("uid");
-                                var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
-                                if(isFirstFight == 1) {
-                                    MandatoryTeachingLayer.pop();
-                                    sys.localStorage.setItem(uid + "firstFight", 0);
-                                }
-                            }
+                        var uid = gameData.player.get("uid");
+                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                        if (isFirstFight == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstFight", 0);
                         }
 
                     }, 1);

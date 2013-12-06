@@ -41,21 +41,15 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         this._playerUpgradeLayerFit = gameFit.mainScene.playerUpgradeLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        if (data.cb) {
-            this._cb = data.cb;
-        }
+        this._cb = data.cb || null;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._playerUpgradeLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
-        var layer = cc.Layer.create();
-        layer.setPosition(cc.p(0, 0));
-        this.addChild(layer);
-
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect32, this);
         ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
-        layer.addChild(ccbNode);
+        this.addChild(ccbNode);
 
         var label = ccbNode.controller.label;
 
@@ -92,19 +86,10 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         );
         okItem.setPosition(this._playerUpgradeLayerFit.okItemPoint);
 
-
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
-
-        layer.setScale(0.1);
-        layer.runAction(
-            cc.Sequence.create(
-                cc.ScaleTo.create(0.3, 1.05, 1.05),
-                cc.ScaleTo.create(0.05, 1, 1)
-            )
-        );
 
         return true;
     },
@@ -121,7 +106,6 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         if (this._cb) {
             this._cb();
         }
-
     }
 });
 

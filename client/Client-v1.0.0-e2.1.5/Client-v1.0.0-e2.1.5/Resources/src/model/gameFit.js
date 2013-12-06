@@ -523,6 +523,49 @@ var fit4Iphone4 = {
             "markSpriteBasePoint": cc.p(93, 54),
             "markSpriteOffsetX": 107
         },
+        "mandatoryTeachingLayer": {
+            "rectOrders": {
+                "0": [
+                    cc.rect(57, 4, 106, 106), cc.rect(445, 467, 221, 91), cc.rect(293, 518, 135, 158),
+                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(385, 147, 150, 70),
+                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(0, 0, 640, 1136)
+                ],
+                "1": [
+                    cc.rect(57, 4, 106, 106), cc.rect(445, 467, 221, 91), cc.rect(179, 728, 150, 57),
+                    cc.rect(293, 518, 135, 158), cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40),
+                    cc.rect(0, 0, 640, 1136)
+                ],
+                "2": [
+                    cc.rect(57, 4, 106, 106), cc.rect(445, 277, 221, 91), cc.rect(293, 518, 135, 158),
+                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(0, 0, 640, 1136)
+                ],
+                "3": [
+                    cc.rect(445, 277, 221, 91), cc.rect(179, 728, 150, 57), cc.rect(137, 582, 108, 108),
+                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(0, 0, 640, 1136)
+                ]
+            },
+            "effectPoints": {
+                "0": [
+                    cc.p(93, 54), cc.p(555, 512), cc.p(360, 597),
+                    cc.p(360, 732), cc.p(603, 840), cc.p(460, 182),
+                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
+                ],
+                "1": [
+                    cc.p(93, 54), cc.p(555, 512), cc.p(254, 756),
+                    cc.p(360, 597), cc.p(360, 732), cc.p(603, 840),
+                    cc.p(360, 182)
+                ],
+                "2": [
+                    cc.p(93, 54), cc.p(555, 322), cc.p(360, 597),
+                    cc.p(360, 732), cc.p(603, 840), cc.p(360, 182)
+                ],
+                "3": [
+                    cc.p(555, 322), cc.p(254, 756), cc.p(191, 636),
+                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
+                ]
+
+            }
+        },
         "messageLabel": {
             "messageLabelPoint": cc.p(640, 18),
             "offsetXWidth": 640
@@ -691,6 +734,16 @@ var fit4Iphone4 = {
             "offsetY": 150,
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
+        },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(360, 512),
+            "okItemPoint": cc.p(360, 332),
+            "boxGoodsPoints": {
+                money: cc.p(210, 662),
+                skillPoint: cc.p(430, 662),
+                energy: cc.p(210, 562),
+                power: cc.p(430, 562)
+            }
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
@@ -1059,12 +1112,12 @@ var fit4Iphone4 = {
             "paymentItem2Point": cc.p(260, 432),
             "closeItemPoint": cc.p(460, 432),
             "vipBoxGoodsPoints": {
-                energy: cc.p(220, 662),
-                money: cc.p(440, 662),
-                skillPoint: cc.p(220, 562),
-                elixir: cc.p(440, 562),
-                fragments: cc.p(220, 462),
-                exp_card: cc.p(440, 462)
+                energy: cc.p(210, 662),
+                money: cc.p(430, 662),
+                skillPoint: cc.p(210, 562),
+                elixir: cc.p(430, 562),
+                fragments: cc.p(210, 462),
+                exp_card: cc.p(430, 462)
             }
         },
         "vipPrivilegeLayer": {
@@ -1604,20 +1657,23 @@ var fit4Iphone5 = {
         "mandatoryTeachingLayer": {
             "rectOrders": {
                 "0": [
-                    cc.rect(17, 4, 106, 106), cc.rect(405, 608, 211, 91), cc.rect(253, 611, 135, 158),
+                    cc.rect(17, 4, 106, 106), cc.rect(405, 608, 221, 91), cc.rect(253, 611, 135, 158),
                     cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(345, 162, 150, 70),
                     cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
                 ],
                 "1": [
-                    cc.rect(17, 4, 106, 106), cc.rect(405, 608, 211, 91), cc.rect(139, 869, 150, 57),
+                    cc.rect(17, 4, 106, 106), cc.rect(405, 608, 221, 91), cc.rect(139, 869, 150, 57),
                     cc.rect(253, 611, 135, 158), cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40),
                     cc.rect(0, 0, 640, 1136)
                 ],
                 "2": [
-                    cc.rect(17, 4, 106, 106), cc.rect(405, 312, 211, 91), cc.rect(253, 611, 135, 158),
+                    cc.rect(17, 4, 106, 106), cc.rect(405, 312, 221, 91), cc.rect(253, 611, 135, 158),
                     cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
                 ],
-                "3": []
+                "3": [
+                    cc.rect(405, 312, 221, 91), cc.rect(139, 869, 150, 57), cc.rect(97, 670, 108, 108),
+                    cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
+                ]
             },
             "effectPoints": {
                 "0": [
@@ -1634,7 +1690,10 @@ var fit4Iphone5 = {
                     cc.p(53, 54), cc.p(515, 357), cc.p(320, 690),
                     cc.p(320, 886), cc.p(563, 1012), cc.p(320, 197)
                 ],
-                "3": []
+                "3": [
+                    cc.p(515, 357), cc.p(214, 897), cc.p(151, 724),
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
+                ]
 
             }
         },
@@ -1806,6 +1865,16 @@ var fit4Iphone5 = {
             "offsetY": 150,
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
+        },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(320, 600),
+            "okItemPoint": cc.p(0, 420),
+            "boxGoodsPoints": {
+                money: cc.p(170, 750),
+                skillPoint: cc.p(390, 750),
+                energy: cc.p(170, 650),
+                power: cc.p(390, 650)
+            }
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),
@@ -2174,12 +2243,12 @@ var fit4Iphone5 = {
             "paymentItem2Point": cc.p(220, 520),
             "closeItemPoint": cc.p(420, 520),
             "vipBoxGoodsPoints": {
-                energy: cc.p(180, 750),
-                money: cc.p(400, 750),
-                skillPoint: cc.p(180, 650),
-                elixir: cc.p(400, 650),
-                fragments: cc.p(180, 550),
-                exp_card: cc.p(400, 550)
+                energy: cc.p(170, 750),
+                money: cc.p(390, 750),
+                skillPoint: cc.p(170, 650),
+                elixir: cc.p(390, 650),
+                fragments: cc.p(170, 550),
+                exp_card: cc.p(390, 550)
             }
         },
         "vipPrivilegeLayer": {

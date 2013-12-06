@@ -230,7 +230,7 @@ var gameGoodsName = {
     },
     "totalSpirit": {
         name: "灵气",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(118, 238, 60)
     },
     "cards": {
         name: "经验元灵",

@@ -823,7 +823,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>115</real>
+										<real>95</real>
 										<real>-130</real>
 									</array>
 								</dict>
@@ -836,7 +836,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -1004,7 +1004,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-115</real>
+										<real>-95</real>
 										<real>-108</real>
 									</array>
 								</dict>
@@ -1017,7 +1017,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -1347,12 +1347,12 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>80</real>
+										<real>100</real>
 										<real>225</real>
 									</array>
 								</dict>
@@ -1390,7 +1390,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>80</real>
+							<real>100</real>
 							<real>225</real>
 							<integer>0</integer>
 						</array>
@@ -1528,12 +1528,12 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-50</real>
+										<real>-70</real>
 										<real>67</real>
 									</array>
 								</dict>
@@ -1571,7 +1571,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-50</real>
+							<real>-70</real>
 							<real>67</real>
 							<integer>0</integer>
 						</array>
@@ -1696,7 +1696,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-175</real>
+										<real>-145</real>
 										<real>342</real>
 									</array>
 								</dict>
@@ -1709,7 +1709,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -2802,7 +2802,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-80</real>
+										<real>-60</real>
 										<real>-180</real>
 									</array>
 								</dict>
@@ -2815,7 +2815,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>8</real>
+									<real>13.333333015441895</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>

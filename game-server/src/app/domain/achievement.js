@@ -111,7 +111,8 @@ Achievement.passFirstWin = function(player) {
 
 Achievement.taskPartPassTo = function(player, chapter) {
 	// 5个大章为为一个part 
-	if (chapter % 5 == 0) {
+	var part = chapter % 5;
+	if (part == 0) {
 		checkIsReached(player, 'taskPartPassTo', part);
 	}	
 };

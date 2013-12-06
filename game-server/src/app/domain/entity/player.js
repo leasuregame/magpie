@@ -626,7 +626,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.consumePower = function(value) {
-        if (this.power.value <= 0) return;
+        if (typeof value == 'undefined' || this.power.value <= 0) return;
 
         var power = utility.deepCopy(this.power);
         var cVal = value;
@@ -643,7 +643,7 @@ var Player = (function(_super) {
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv);
 
-        if (this.power.value >= max_power) return;
+        if (typeof value == 'undefined' || this.power.value >= max_power) return;
 
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);

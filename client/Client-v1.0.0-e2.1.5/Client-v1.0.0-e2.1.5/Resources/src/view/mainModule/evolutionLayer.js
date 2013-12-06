@@ -56,33 +56,39 @@ var EvolutionLayer = cc.Layer.extend({
         bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        this._cardEvolutionItem = cc.MenuItemImage.createWithIcon(
+
+        this._skillUpgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button22,
             main_scene_image.button22s,
             main_scene_image.button22d,
-            main_scene_image.icon81,
-            this._onClickCardEvolution,
+            main_scene_image.icon46,
+            this._onClickSkillUpgrade,
             this
         );
-        this._cardEvolutionItem.setPosition(this._evolutionLayerFit.cardEvolutionItemPoint);
-        this._cardEvolutionItem.setOffset(this._evolutionLayerFit.cardEvolutionItemOffset);
+        this._skillUpgradeItem.setPosition(this._evolutionLayerFit.skillUpgradeItemPoint);
+        this._skillUpgradeItem.setOffset(this._evolutionLayerFit.skillUpgradeItemOffset);
 
-        this._cardTrainItem = cc.MenuItemImage.createWithIcon(
+        this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
             main_scene_image.button23d,
-            main_scene_image.icon82,
-            this._onClickCardTrain,
+            main_scene_image.icon47,
+            this._onClickPassiveSkillUpgrade,
             this
         );
-        this._cardTrainItem.setPosition(this._evolutionLayerFit.cardTrainItemPoint);
-        this._cardTrainItem.setOffset(this._evolutionLayerFit.cardTrainItemOffset);
+        this._passiveSkillUpgradeItem.setPosition(this._evolutionLayerFit.passiveSkillUpgradeItemPoint);
+        this._passiveSkillUpgradeItem.setOffset(this._evolutionLayerFit.passiveSkillUpgradeItemOffset);
 
-        var menu = cc.Menu.create(this._cardEvolutionItem, this._cardTrainItem);
+        var menu = cc.Menu.create(
+            this._skillUpgradeItem,
+            this._passiveSkillUpgradeItem
+        );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._onClickCardEvolution();
+        this._skillUpgradeItem.setEnabled(false);
+        this._passiveSkillUpgradeItem.setEnabled(true);
+        this._switchLabel(SkillUpgradeLabel);
 
         this.retain();
 
@@ -101,26 +107,41 @@ var EvolutionLayer = cc.Layer.extend({
         MainScene.getInstance().switch(this);
     },
 
-    _onClickCardEvolution: function () {
+    _onClickSkillUpgrade: function () {
+        cc.log("StrengthenLayer _onClickSkillUpgrade");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._skillUpgradeItem.setEnabled(false);
+        this._passiveSkillUpgradeItem.setEnabled(true);
+
+        this._switchLabel(SkillUpgradeLabel);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
+    },
+
+    _onClickPassiveSkillUpgrade: function () {
         cc.log("EvolutionLayer _onClickCardEvolution");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._cardEvolutionItem.setEnabled(false);
-        this._cardTrainItem.setEnabled(true);
+        this._skillUpgradeItem.setEnabled(true);
+        this._passiveSkillUpgradeItem.setEnabled(false);
 
-        this._switchLabel(CardEvolutionLabel);
-    },
+        this._switchLabel(PassiveSkillAfreshLabel);
 
-    _onClickCardTrain: function () {
-        cc.log("EvolutionLayer _onClickCardTrain");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._cardEvolutionItem.setEnabled(true);
-        this._cardTrainItem.setEnabled(false);
-
-        this._switchLabel(CardTrainLabel);
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
     },
 
     _switchLabel: function (runLabel) {

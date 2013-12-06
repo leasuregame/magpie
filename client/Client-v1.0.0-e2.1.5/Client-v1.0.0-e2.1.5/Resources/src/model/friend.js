@@ -240,7 +240,7 @@ var Friend = Entity.extend({
                     friend.giveCount += 1;
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy").name + ": +" + msg.energy);
 
                     cb("success");
 
@@ -278,7 +278,7 @@ var Friend = Entity.extend({
 
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy").name + ": +" + msg.energy);
 
                     cb("success");
 

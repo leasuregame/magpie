@@ -120,6 +120,9 @@ var CardLibraryLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
+        if (scrollViewHeight < this._cardLibraryLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._cardLibraryLayerFit.scrollViewHeight;
+        }
 
         if (this._scrollView) {
             this._scrollView.removeFromParent();

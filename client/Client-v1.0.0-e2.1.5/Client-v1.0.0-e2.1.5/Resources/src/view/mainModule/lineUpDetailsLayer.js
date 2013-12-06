@@ -165,5 +165,7 @@ LineUpDetailsLayer.pop = function (cardList, index) {
     var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList, index);
 
     MainScene.getInstance().addChild(lineUpDetailsLayer, 10);
+
+    return lineUpDetailsLayer;
 };
 

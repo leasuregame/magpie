@@ -313,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._mapLabel[i].setPosition(point);
             }
         }
+
     },
 
 
@@ -480,31 +481,10 @@ var ExploreLayer = cc.Layer.extend({
                 progressLabel.runAction(action);
             }
 
-            if (this._reward.money) {
-                var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-                moneyIcon.setScale(0.4);
-                moneyIcon.setPosition(x + 95, 415);
-                this._scrollView.addChild(moneyIcon);
-                moneyIcon.setAnchorPoint(cc.p(0.5, 0.5));
-
-                moneyIcon.runAction(
-                    cc.Spawn.create(
-                        cc.MoveBy.create(0.5, cc.p(0, 25)),
-                        cc.ScaleTo.create(0.5, 0.6, 0.6),
-                        cc.Sequence.create(
-                            cc.FadeIn.create(0.3),
-                            cc.DelayTime.create(0.6),
-                            cc.FadeOut.create(0.1)
-                        )
-                    )
-                );
-            }
-
             this.scheduleOnce(function () {
                 if (powerLabel) powerLabel.removeFromParent();
                 if (expLabel) expLabel.removeFromParent();
                 if (progressLabel) progressLabel.removeFromParent();
-                if (moneyIcon) moneyIcon.removeFromParent();
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
@@ -525,7 +505,7 @@ var ExploreLayer = cc.Layer.extend({
                         GoldLayer.pop(goldList);
                     }
 
-                }
+                };
 
                 if (toNext) {
                     this._toNext(next);
@@ -555,6 +535,14 @@ var ExploreLayer = cc.Layer.extend({
                     this.scheduleOnce(function () {
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
+
+                        var uid = gameData.player.get("uid");
+                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                        if (isFirstFight == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstFight", 0);
+                        }
+
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();
@@ -647,7 +635,7 @@ var ExploreLayer = cc.Layer.extend({
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
-        var id = 5;
+        var id = 2;
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);

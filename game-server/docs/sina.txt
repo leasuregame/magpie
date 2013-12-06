@@ -8,6 +8,8 @@ user：root
 
 ssh -l root -p 8022 124.238.236.33
 
+ssh -l root -p 8022 124.238.236.32
+
 http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
@@ -59,3 +61,15 @@ cd ../gm && make runserver2 && cd ../game-server
 tail -f ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 test, 123
+
+use Dev http Client to test verify receipt.
+
+新浪服务器master：
+角色账号：987123000
+登陆密码：helloboy
+
+服务器：花果山
+角色名称：卫萤
+
+服务器：水帘洞
+角色名称：杨翠阳

@@ -139,12 +139,6 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._spirit.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
         this.addChild(this._spirit);
 
-        if (gameData.spirit.canUpgrade()) {
-            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2_1", 0);
-        } else {
-            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1_1", 0);
-        }
-
         var useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button34,
             main_scene_image.button34,
@@ -178,6 +172,12 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._countLabel.setString(spiritPool.get("collectCount"));
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
         this._goldLabel.setString(player.get("gold"));
+
+        if (gameData.spirit.canUpgrade()) {
+            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2_1", 0);
+        } else {
+            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1_1", 0);
+        }
     },
 
     _collectSpirit: function () {

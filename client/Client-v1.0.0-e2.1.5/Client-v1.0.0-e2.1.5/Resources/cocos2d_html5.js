@@ -87,6 +87,8 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
+            '../Resources-AppStore/appStoreModel/payment.js',
+
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
             'src/model/battleStep.js',
@@ -105,6 +107,8 @@
             'src/controls/LzMenuItem.js',
             'src/controls/tipLayer.js',
             'src/controls/colorLabelTTF.js',
+            'src/controls/waitLayer.js',
+            'src/controls/dialog.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
@@ -188,6 +192,7 @@
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
+            'src/view/mainModule/mandatoryTeachingLayer.js',
             'src/view/mainModule/noviceTeachingLayer.js',
             'src/view/mainModule/mainScene.js',
 

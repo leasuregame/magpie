@@ -196,17 +196,16 @@ var TournamentLabel = cc.Node.extend({
                 var tournament = gameData.tournament;
                 var count = tournament.get("count");
 
-                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed") || 1;
+                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "firstCountUsed") || 1;
                 isFirstCountUsed = parseInt(isFirstCountUsed);
                 if (count == 0 && isFirstCountUsed == 1) {
 
-                    sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 0);
+                    sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 0);
                     this._target.showTip();
 
                 } else {
-
                     if(count != 0) {
-                        sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 1);
+                        sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
                     }
 
                     gameData.tournament.defiance(function (data) {
@@ -218,6 +217,14 @@ var TournamentLabel = cc.Node.extend({
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);
+
+                            var uid = gameData.player.get("uid");
+                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament")) || 1;
+                            if(isFirstTournament == 1) {
+                                MandatoryTeachingLayer.pop();
+                                sys.localStorage.setItem(uid + "firstTournament", 0);
+                            }
+
                         } else {
                             that._target.update();
                         }

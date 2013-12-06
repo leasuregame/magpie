@@ -57,7 +57,6 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var scrollViewLayer = MarkLayer.create(this._goldRewardLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
-        menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
@@ -70,10 +69,12 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var len = keys.length;
 
-        var scrollViewHeight = len * this._goldRewardLayerFit.scrollViewHeight;
+        var scrollViewHeight = len * 135;
+        if (scrollViewHeight < this._goldRewardLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._goldRewardLayerFit.scrollViewHeight;
+        }
 
         this._scrollView = cc.ScrollView.create(this._goldRewardLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setTouchPriority(-300);
         this._scrollView.setPosition(this._goldRewardLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();

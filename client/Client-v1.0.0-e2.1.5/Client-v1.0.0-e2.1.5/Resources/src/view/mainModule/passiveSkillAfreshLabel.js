@@ -197,6 +197,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
 
+        var blueLabel = cc.Sprite.create(main_scene_image.icon50);
+        blueLabel.setScaleX(0.91);
+        blueLabel.setScaleY(0.4);
+        blueLabel.setAnchorPoint(cc.p(0, 0.5));
+        blueLabel.setPosition(cc.p(0, 178));
+        this._stopTypeLabel.addChild(blueLabel);
+
+        var yellowLabel = cc.Sprite.create(main_scene_image.icon50);
+        yellowLabel.setScaleX(0.91);
+        yellowLabel.setScaleY(0.4);
+        yellowLabel.setAnchorPoint(cc.p(0, 0.5));
+        yellowLabel.setPosition(cc.p(0, 96));
+        this._stopTypeLabel.addChild(yellowLabel);
+
         var stopUntilBlueIcon = ColorLabelTTF.create(
             {
                 string: "出现",
@@ -408,7 +422,10 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._shyLayer.setVisible(false);
 
         this._reset();
-        this._onClickUseMoney();
+
+        this._useType = USE_MONEY;
+        this._useMoneyItem.setEnabled(false);
+        this._useGoldItem.setEnabled(true);
 
         return true;
     },
@@ -634,6 +651,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
             cc.log(data);
@@ -725,6 +749,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
 
         this._afresh();
     },

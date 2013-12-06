@@ -71,7 +71,6 @@ var NewPlayerLayer = cc.Layer.extend({
             }
         });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        //this._nameEditBox.setMaxLength(6);
         newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
         newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function(){

@@ -72,6 +72,8 @@ var VipLayer = cc.Layer.extend({
         this._super();
         this.update();
 
+        this.schedule(this._update, 1);
+
         lz.dc.beginLogPageView("VIP礼包界面");
     },
 
@@ -137,10 +139,7 @@ var VipLayer = cc.Layer.extend({
     update: function () {
         cc.log("VipLayer update");
 
-        var player = gameData.player;
-
-        this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
+        this._update();
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -148,6 +147,8 @@ var VipLayer = cc.Layer.extend({
 
         var vipBoxList = gameData.shop.getVipBoxList();
         var len = vipBoxList.length;
+        var index;
+        var vip = gameData.player.get("vip");
 
         var scrollViewLayer = MarkLayer.create(this._vipLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
@@ -155,6 +156,9 @@ var VipLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 180;
+        if (scrollViewHeight < this._vipLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._vipLayerFit.scrollViewHeight;
+        }
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 170 - i * 180;
@@ -165,6 +169,14 @@ var VipLayer = cc.Layer.extend({
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(17, y));
             scrollViewLayer.addChild(bgSprite);
+
+            if (vipBox.id <= vip && index == undefined) {
+                index = i;
+
+                var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect56, this);
+                ccbNode.setPosition(cc.p(320, y + 85));
+                scrollViewLayer.addChild(ccbNode);
+            }
 
             var vipBoxDetailsItem = cc.MenuItemImage.create(
                 main_scene_image[vipBoxUrl["vip" + vipBox.id]],
@@ -250,7 +262,18 @@ var VipLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+
+        offsetY = Math.min(this._scrollView.minContainerOffset().y + (index  || 0) * 180, 0);
+        this._scrollView.setContentOffset(cc.p(0, offsetY));
+    },
+
+    _update: function () {
+        cc.log("VipLayer _update");
+
+        var player = gameData.player;
+
+        this._goldLabel.setString(player.get("gold"));
+        this._moneyLabel.setString(player.get("money"));
     },
 
     _addVipBoxDetails: function (obj) {
@@ -270,7 +293,6 @@ var VipLayer = cc.Layer.extend({
         for (var key in data) {
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
                 var goods = vipBoxGoods[key];
-                // var point = goods.point;
                 var point = this._vipLayerFit.vipBoxGoodsPoints[key];
 
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
@@ -383,7 +405,7 @@ var VipLayer = cc.Layer.extend({
                 var cb = function () {
                     that.update();
                     lz.tipReward(data);
-                }
+                };
                 that._addVipBoxDetails({data: data, cb: cb});
             }, id);
         }

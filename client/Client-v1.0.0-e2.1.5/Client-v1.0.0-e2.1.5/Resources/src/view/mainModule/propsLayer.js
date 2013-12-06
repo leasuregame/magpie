@@ -11,7 +11,7 @@
  * props layer
  * */
 
-var productUrl = ["icon283", "icon278", "icon279", "icon280", "icon284"];
+var productUrl = ["icon283", "icon284", "icon278", "icon279", "icon280"];
 
 var PropsLayer = cc.Layer.extend({
     _propsLayerFit: null,
@@ -24,6 +24,8 @@ var PropsLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        this.schedule(this.update, 1);
 
         lz.dc.beginLogPageView("道具界面");
     },

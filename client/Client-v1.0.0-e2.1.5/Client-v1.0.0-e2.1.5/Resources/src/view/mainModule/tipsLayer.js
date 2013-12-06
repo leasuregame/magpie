@@ -245,4 +245,6 @@ TipsLayer.pop = function () {
     var tipsLayer = TipsLayer.create();
 
     MainScene.getInstance().getLayer().addChild(tipsLayer, 10);
+
+    return tipsLayer;
 };

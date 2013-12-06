@@ -62,8 +62,8 @@ var BattleMessageLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 127 - 20;
-        if (scrollViewHeight < 742) {
-            scrollViewHeight = 742;
+        if (scrollViewHeight < this._battleMessageLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._battleMessageLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; ++i) {

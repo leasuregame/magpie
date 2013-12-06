@@ -127,6 +127,9 @@ var VipPrivilegeLayer = LazyLayer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 355;
+        if (scrollViewHeight < this._vipPrivilegeLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._vipPrivilegeLayerFit.scrollViewHeight;
+        }
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 355 - i * 355;

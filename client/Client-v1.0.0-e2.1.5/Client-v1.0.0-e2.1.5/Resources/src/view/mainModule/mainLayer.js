@@ -47,6 +47,7 @@ var MainLayer = cc.Layer.extend({
         this._super();
         this.updateMark();
         this.updateGuide();
+        this.onTeaching();
 
         lz.dc.beginLogPageView("主界面");
     },
@@ -283,17 +284,29 @@ var MainLayer = cc.Layer.extend({
     updateGuide: function () {
         cc.log("MainLayer updateGuide");
 
-        if (gameGuide.get("treasureHuntGuide")) {
+        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
             this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
             this.addChild(this._treasureHuntGuide);
         }
 
-        if (gameGuide.get("rankGuide")) {
+        if (gameGuide.get("rankGuide") && !this._rankGuide) {
             this._rankGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
             this._rankGuide.setRotation(180);
             this.addChild(this._rankGuide);
+        }
+
+    },
+
+    onTeaching: function() {
+        cc.log("MainLayer onTeaching");
+
+        var uid = gameData.player.get("uid");
+        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
+        if(isFirstPassiveSkillAfresh == 1) {
+            MandatoryTeachingLayer.pop();
+            sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 0);
         }
 
     },
@@ -325,6 +338,13 @@ var MainLayer = cc.Layer.extend({
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
+            }
+
+            if(mandatoryTeachingLayer) {
+                if(mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
             }
         }
     }

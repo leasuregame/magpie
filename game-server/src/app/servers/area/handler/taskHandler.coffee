@@ -11,6 +11,7 @@ spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
+achieve = require '../../../domain/achievement'
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 
@@ -60,7 +61,7 @@ Handler::explore = (msg, session, next) ->
                 taskManager.obtainBattleRewards(player, data, chapterId, battleLog, callback)
 
               (callback) ->
-                taskManager.countExploreResult player, data, taskId, callback
+                taskManager.countExploreResult player, data, taskId, chapterId, callback
             ], (err, results) ->
               cb(err, results[1])
           else
@@ -71,9 +72,9 @@ Handler::explore = (msg, session, next) ->
           if err
             cb(err, null)
           else
-            taskManager.countExploreResult player, data, taskId, cb
+            taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
-        taskManager.countExploreResult player, data, taskId, cb
+        taskManager.countExploreResult player, data, taskId, chapterId, cb
   ], (err, data) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
@@ -199,6 +200,10 @@ Handler::passBarrier = (msg, session, next) ->
             }
           if box
             level9Box = level9Box
+
+        if layer is 1
+          ### 天道首胜 成就 ###
+          achieve.passFirstWin(player)
 
       cb(null, bl, upgradeInfo, level9Box)
 

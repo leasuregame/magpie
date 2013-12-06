@@ -164,7 +164,7 @@ var addEvents = function(player) {
 };
 
 var correctPower = function(player) {
-    var interval, power, now, times, resumePoint;
+    var interval, power, now, times = 1, resumePoint;
 
     interval = playerConfig.POWER_RESUME.interval;
     power = player.power;
@@ -283,7 +283,7 @@ var Player = (function(_super) {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 5, // 购买体力次数
+            powerBuyCount: 3, // 购买体力次数
             challengeCount: 10, // 每日有奖竞技次数
             challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
@@ -356,7 +356,7 @@ var Player = (function(_super) {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 5 + vipPrivilege.buy_power_count, // 购买体力次数
+            powerBuyCount: 3 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
             challengeBuyCount: 10, // 每日有奖竞技购买次数
             receivedBless: { // 接收的祝福

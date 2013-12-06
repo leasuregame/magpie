@@ -162,13 +162,7 @@ var VipLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 170 - i * 180;
-
             var vipBox = vipBoxList[i];
-
-            var bgSprite = cc.Sprite.create(main_scene_image.icon162);
-            bgSprite.setAnchorPoint(cc.p(0, 0));
-            bgSprite.setPosition(cc.p(17, y));
-            scrollViewLayer.addChild(bgSprite);
 
             if (vipBox.id <= vip && index == undefined) {
                 index = i;
@@ -177,6 +171,11 @@ var VipLayer = cc.Layer.extend({
                 ccbNode.setPosition(cc.p(320, y + 85));
                 scrollViewLayer.addChild(ccbNode);
             }
+
+            var bgSprite = cc.Sprite.create(main_scene_image.icon162);
+            bgSprite.setAnchorPoint(cc.p(0, 0));
+            bgSprite.setPosition(cc.p(17, y));
+            scrollViewLayer.addChild(bgSprite);
 
             var vipBoxDetailsItem = cc.MenuItemImage.create(
                 main_scene_image[vipBoxUrl["vip" + vipBox.id]],
@@ -263,7 +262,7 @@ var VipLayer = cc.Layer.extend({
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
 
-        offsetY = Math.min(this._scrollView.minContainerOffset().y + (index  || 0) * 180, 0);
+        offsetY = Math.min(this._scrollView.minContainerOffset().y + (index || 0) * 180, 0);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
     },
 

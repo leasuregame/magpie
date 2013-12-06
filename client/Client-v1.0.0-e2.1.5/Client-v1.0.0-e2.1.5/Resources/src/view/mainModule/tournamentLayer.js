@@ -179,7 +179,16 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop({reward: this._upgradeReward});
+            PlayerUpgradeLayer.pop({
+                reward: this._upgradeReward,
+                cb: function () {
+                    if(this._level9Box) {
+                        Level9BoxLayer.pop(this._level9Box);
+                        this._level9Box = null;
+                    }
+
+                }
+            });
             this._upgradeReward = null;
         }
 
@@ -301,10 +310,11 @@ var TournamentLayer = cc.Layer.extend({
         return null;
     },
 
-    _setPlayerUpgradeReward: function (upgradeReward) {
+    _setPlayerUpgradeReward: function (upgradeReward, level9Box) {
         cc.log("TournamentLayer _setPlayerUpgradeReward");
 
         this._upgradeReward = upgradeReward || null;
+        this._level9Box = level9Box || null;
     },
 
     _onClickPlayer: function (id, point) {

@@ -735,6 +735,16 @@ var fit4Iphone4 = {
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
         },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(360, 512),
+            "okItemPoint": cc.p(360, 332),
+            "boxGoodsPoints": {
+                money: cc.p(210, 662),
+                skillPoint: cc.p(430, 662),
+                energy: cc.p(210, 562),
+                power: cc.p(430, 562)
+            }
+        },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
             "headTextPoint": cc.p(165, 812),
@@ -1102,12 +1112,12 @@ var fit4Iphone4 = {
             "paymentItem2Point": cc.p(260, 432),
             "closeItemPoint": cc.p(460, 432),
             "vipBoxGoodsPoints": {
-                energy: cc.p(220, 662),
-                money: cc.p(440, 662),
-                skillPoint: cc.p(220, 562),
-                elixir: cc.p(440, 562),
-                fragments: cc.p(220, 462),
-                exp_card: cc.p(440, 462)
+                energy: cc.p(210, 662),
+                money: cc.p(430, 662),
+                skillPoint: cc.p(210, 562),
+                elixir: cc.p(430, 562),
+                fragments: cc.p(210, 462),
+                exp_card: cc.p(430, 462)
             }
         },
         "vipPrivilegeLayer": {
@@ -1856,6 +1866,16 @@ var fit4Iphone5 = {
             "rewardLabelPointX": 0,
             "okItemPoint": cc.p(0, -180)
         },
+        "level9BoxLayer": {
+            "bgSpritePoint": cc.p(320, 600),
+            "okItemPoint": cc.p(0, 420),
+            "boxGoodsPoints": {
+                money: cc.p(170, 750),
+                skillPoint: cc.p(390, 750),
+                energy: cc.p(170, 650),
+                power: cc.p(390, 650)
+            }
+        },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),
             "headTextPoint": cc.p(125, 988),
@@ -2223,12 +2243,12 @@ var fit4Iphone5 = {
             "paymentItem2Point": cc.p(220, 520),
             "closeItemPoint": cc.p(420, 520),
             "vipBoxGoodsPoints": {
-                energy: cc.p(180, 750),
-                money: cc.p(400, 750),
-                skillPoint: cc.p(180, 650),
-                elixir: cc.p(400, 650),
-                fragments: cc.p(180, 550),
-                exp_card: cc.p(400, 550)
+                energy: cc.p(170, 750),
+                money: cc.p(390, 750),
+                skillPoint: cc.p(170, 650),
+                elixir: cc.p(390, 650),
+                fragments: cc.p(170, 550),
+                exp_card: cc.p(390, 550)
             }
         },
         "vipPrivilegeLayer": {

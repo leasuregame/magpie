@@ -261,16 +261,7 @@ MandatoryTeachingLayer.pop = function (progress) {
         mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
         MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
     }, 0.1);
-
 };
-
-//MandatoryTeachingLayer.remove = function () {
-//    cc.log("MandatoryTeachingLayer remove");
-//    if (mandatoryTeachingLayer) {
-//        mandatoryTeachingLayer.removeFromParent();
-//        mandatoryTeachingLayer = null;
-//    }
-//};
 
 MandatoryTeachingLayer.teachingProgress = function () {
     cc.log("MandatoryTeachingLayer isNeedTeaching");

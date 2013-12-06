@@ -37,6 +37,16 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("技能升级界面");
+    },
+
+    onExit: function () {
+        cc.log("SkillUpgradeLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("技能升级界面");
     },
 
     init: function () {
@@ -242,6 +252,15 @@ var SkillUpgradeLabel = cc.Node.extend({
     _onClickSelectLeadCard: function () {
         cc.log("SkillUpgradeLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_SKILL_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -265,6 +284,8 @@ var SkillUpgradeLabel = cc.Node.extend({
     _onClickUpgrade: function () {
         cc.log("SkillUpgradeLabel _onClickUpgrade");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (!this._leadCard.canUpgradeSkill()) {
             TipLayer.tip("技能不可升级");
             return;
@@ -275,17 +296,24 @@ var SkillUpgradeLabel = cc.Node.extend({
             return;
         }
 
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
-            playEffect({
-                effectId: 11,
-                target: that,
-                loops: 1,
-                delay: 0.1,
-                zOrder: 10,
-                position: that._skillUpgradeLabelFit.effectPoint,
-                clear: true
-            });
+//            playEffect({
+//                effectId: 11,
+//                target: that,
+//                loops: 1,
+//                delay: 0.1,
+//                zOrder: 10,
+//                position: that._skillUpgradeLabelFit.effectPoint,
+//                clear: true
+//            });
 
             that.update();
         });

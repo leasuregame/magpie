@@ -56,12 +56,15 @@ var TreasureHunt = Entity.extend({
 
                 var msg = data.msg;
 
-                var table = outputTables.treasure_hunt.rows[msg.resourceId];
+                var id = msg.resourceId;
+                var table = outputTables.treasure_hunt.rows[id];
+
+                var goldResume = data.msg.goldResume;
 
                 gameData.player.add(table.type, table.value);
 
                 if (that._freeCount <= 0) {
-                    gameData.player.add("gold", -10);
+                    gameData.player.add("gold", -goldResume);
                 }
 
                 that._count = msg.lotteryCount;
@@ -70,9 +73,11 @@ var TreasureHunt = Entity.extend({
                 var str = table.name + ": +" + table.value;
 
                 cb({
-                    id: msg.resourceId,
+                    id: id,
                     str: str
                 });
+
+                lz.dc.event("event_treasure_hunt", id);
             } else {
                 cc.log("treasureHunt fail");
 

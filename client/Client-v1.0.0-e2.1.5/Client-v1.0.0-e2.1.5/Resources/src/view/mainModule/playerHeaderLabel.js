@@ -81,7 +81,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._moneyLabel);
 
         var powerIcon = cc.Sprite.create(main_scene_image.icon150);
-        powerIcon.setPosition(cc.p(360,38));
+        powerIcon.setPosition(cc.p(360, 38));
         this.addChild(powerIcon);
 
         this._powerLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 22);
@@ -89,12 +89,12 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._powerLabel.setPosition(cc.p(427, 36));
         this.addChild(this._powerLabel);
 
-        var vipLv = player.get("vip");
-        if (vipLv) {
-            var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            vipSprite.setPosition(cc.p(410, 87));
-            this.addChild(vipSprite);
-        }
+        var vipLv = player.get("vip") || 0;
+
+        var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
+        vipSprite.setPosition(cc.p(410, 87));
+        this.addChild(vipSprite);
+
 
         return true;
     },
@@ -113,6 +113,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
     _onClickPlayerDetails: function () {
         cc.log("MainLayer _onClickPlayerDetails");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().getLayer().addChild(PlayerDetails.create(), 10);
     },

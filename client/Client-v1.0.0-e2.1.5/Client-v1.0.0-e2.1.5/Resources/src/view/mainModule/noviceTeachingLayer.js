@@ -42,13 +42,25 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
 
-        this._step = sys.localStorage.getItem(gameData.user.get("account") + "step") || 0;
+        this._step = parseInt(sys.localStorage.getItem(gameData.user.get("account") + "step")) || 0;
+
         cc.log("step = " + this._step);
 
         this._rect = cc.rect(0, 0, 0, 0);
 
         if (this.isNoviceTeaching()) {
             this._load();
+            var overItem = cc.MenuItemImage.create(
+                main_scene_image.icon290,
+                main_scene_image.icon290,
+                this.onOverTeaching,
+                this
+            );
+            overItem.setPosition(this._noviceTeachingLayerFit.overItemPoint);
+
+            var menu = cc.Menu.create(overItem);
+            menu.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
+            this.addChild(menu, 1);
         }
 
         return true;
@@ -86,6 +98,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     },
 
     clearAndSave: function () {
+        this._rect = cc.rect(0, 0, 0, 0);
         this._clearEffect();
         this._step++;
         this._save();
@@ -107,9 +120,6 @@ var NoviceTeachingLayer = LazyLayer.extend({
             cc.log("加入特效");
 
             var node = cc.BuilderReader.load(main_scene_image[url], this);
-
-            cc.log(node);
-            cc.log(this);
 
             if (node != null) {
                 node.setAnchorPoint(cc.p(0, 0));
@@ -148,6 +158,73 @@ var NoviceTeachingLayer = LazyLayer.extend({
         }
     },
 
+    _showOverTeaching: function () {
+        cc.log("NoviceTeachingLayer showOverTeaching");
+
+        var layer = LazyLayer.create();
+        this.addChild(layer);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(this._noviceTeachingLayerFit.bgLayerPoint);
+        layer.addChild(bgLayer);
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg16);
+        bgSprite.setPosition(this._noviceTeachingLayerFit.bgSpritePoint);
+        layer.addChild(bgSprite);
+
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._noviceTeachingLayerFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        layer.addChild(msgBgIcon);
+
+        var tipLabel = cc.LabelTTF.create("教学可以帮你更好的熟悉游戏，", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(this._noviceTeachingLayerFit.tipLabelPoint);
+        //tipLabel.setColor(cc.c3b(255, 239, 131));
+        tipLabel.setAnchorPoint(cc.p(0.5, 1));
+        layer.addChild(tipLabel);
+
+        var tipLabel2 = cc.LabelTTF.create("你确定要跳过吗？", "STHeitiTC-Medium", 25);
+        tipLabel2.setPosition(this._noviceTeachingLayerFit.tipLabel2Point);
+        //tipLabel.setColor(cc.c3b(255, 239, 131));
+        tipLabel2.setAnchorPoint(cc.p(0.5, 1));
+        layer.addChild(tipLabel2);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            function () {
+                this._overTeaching();
+                layer.removeFromParent();
+            },
+            this
+        );
+        okItem.setPosition(this._noviceTeachingLayerFit.okItemPoint);
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                layer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(this._noviceTeachingLayerFit.closeItemPoint);
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+    },
+
+
+    _overTeaching: function () {
+        this._step = OVER_NOVICE_STEP;
+        this._save();
+        this.removeFromParent();
+    },
+
     /**
      * callback when a touch event moved
      * @param {cc.Touch} touch
@@ -162,7 +239,14 @@ var NoviceTeachingLayer = LazyLayer.extend({
         } else {
             return false;
         }
+    },
+
+
+    onOverTeaching: function () {
+        cc.log("NoviceTeachingLayer onOverTeaching");
+        this._showOverTeaching();
     }
+
 
 });
 
@@ -177,22 +261,4 @@ NoviceTeachingLayer.create = function () {
     return null;
 };
 
-
-/*
- * 单例
- * */
-(function () {
-    var _noviceTeachingLayer = null;
-
-    NoviceTeachingLayer.getInstance = function () {
-        if (_noviceTeachingLayer == null) {
-            _noviceTeachingLayer = NoviceTeachingLayer.create();
-        }
-
-        return _noviceTeachingLayer;
-    };
-
-    NoviceTeachingLayer.destroy = function () {
-        _noviceTeachingLayer = null;
-    };
-})();
+var noviceTeachingLayer = null;

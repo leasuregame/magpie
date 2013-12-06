@@ -77,7 +77,7 @@ LazyLayer.create = function () {
 };
 
 
-(function(){
+(function () {
     var _cloudLayer = null;
 
     LazyLayer.showCloudLayer = function () {
@@ -96,7 +96,7 @@ LazyLayer.create = function () {
 })();
 
 
-(function(){
+(function () {
     var _cloudLayer = null;
 
     LazyLayer.showCloudAll = function () {

@@ -18,6 +18,7 @@ var PassLayer = cc.Layer.extend({
     _top: 0,
     _isWin: null,
     _upgradeReward: null,
+    _level9Box: null,
     _spirit: null,
     _towerSprite: null,
     _topLabel: null,
@@ -34,6 +35,16 @@ var PassLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("天道界面");
+    },
+
+    onExit: function () {
+        cc.log("PassLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("天道界面");
     },
 
     init: function () {
@@ -208,7 +219,15 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop(this._upgradeReward);
+            PlayerUpgradeLayer.pop({
+                reward: this._upgradeReward,
+                cb: function () {
+                    if (this._level9Box) {
+                        Level9BoxLayer.pop(this._level9Box);
+                        this._level9Box = null;
+                    }
+                }
+            });
             this._upgradeReward = null;
         }
 
@@ -339,7 +358,7 @@ var PassLayer = cc.Layer.extend({
         var layer = LazyLayer.create();
         this.addChild(layer);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 
@@ -399,28 +418,30 @@ var PassLayer = cc.Layer.extend({
         layer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         MainScene.getInstance().addChild(layer, 10);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg17);
+        var bgSprite = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
         bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
+        var label = bgSprite.controller.label;
+
         var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
         obtainSprite.setPosition(this._passLayerFit.obtainSpritePoint);
-        layer.addChild(obtainSprite);
+        label.addChild(obtainSprite);
 
         var str = lz.getRewardString(reward);
         var len = str.length;
 
         var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
-            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
-            rewardLabel.setColor(cc.c3b(255, 239, 131));
+            var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(point);
-            layer.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
             point.y -= this._passLayerFit.rewardLabelOffsetY;
         }
@@ -440,7 +461,9 @@ var PassLayer = cc.Layer.extend({
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
+        label.addChild(menu);
+
+        bgSprite.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
     },
 
     _blackHoleRotate: function () {
@@ -521,6 +544,8 @@ var PassLayer = cc.Layer.extend({
         return function () {
             cc.log("PassLayer _onClickDefiance: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
             this._element[id].passItem.stopAllActions();
 
             this._element[id].passItem.runAction(
@@ -544,8 +569,19 @@ var PassLayer = cc.Layer.extend({
 
                 if (data) {
                     that._upgradeReward = data.upgradeReward || null;
+                    that._level9Box = data.level9Box || null;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
+
+                    if (that._isWin) {
+                        var uid = gameData.player.get("uid");
+                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "firstPassWin")) || 1;
+                        if (isFirstPassWin == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstPassWin", 0);
+                        }
+                    }
+
                 } else {
                     that.update();
 
@@ -558,6 +594,8 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         LazyLayer.showCloudAll();
 
         var that = this;
@@ -566,6 +604,7 @@ var PassLayer = cc.Layer.extend({
 
             if (data) {
                 that._upgradeReward = data.upgradeReward || null;
+                that._level9Box = data.level9Box || null;
 
                 that._wipeOutAnimation(data.reward);
             } else {
@@ -580,6 +619,10 @@ var PassLayer = cc.Layer.extend({
     _onClickMystical: function () {
         cc.log("PassLayer _onClickMystical");
 
+        gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
+        LazyLayer.showCloudLayer();
+
         var that = this;
         gameData.pass.mystical(function (battleLogId) {
             that._isWin = BattlePlayer.getInstance().play(battleLogId);
@@ -588,6 +631,8 @@ var PassLayer = cc.Layer.extend({
 
     _onClickReset: function () {
         cc.log("PassLayer _onClickReset");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._showReset();
     }

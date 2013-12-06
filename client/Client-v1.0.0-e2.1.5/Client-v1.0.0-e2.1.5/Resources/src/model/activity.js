@@ -6,11 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var GOLD_RECEIVE = 1;
 var GOLD_NO_RECEIVE = 0;
 
 var Activity = Entity.extend({
-
     _type: {},
 
     init: function () {
@@ -33,7 +33,27 @@ var Activity = Entity.extend({
                 cc.log(data);
                 if (data.code == 200) {
                     cc.log("sync success");
+
                     that.update(data.msg.levelReward);
+
+                    lz.server.on("onPowerGive", function (data) {
+                        cc.log("***** on powerGive:");
+                        cc.log(data);
+
+                        gameMark.updatePowerRewardMark(true);
+                    });
+
+                    lz.server.on("onPowerGiveEnd", function (data) {
+                        cc.log("***** on PowerGiveEnd:");
+                        cc.log(data);
+
+                        gameMark.updatePowerRewardMark(false);
+                    });
+
+                    gameMark.updateActivityMark(false);
+                    gameMark.updatePowerRewardMark(data.msg.canGetPower);
+
+                    lz.dc.event("event_activity");
                 } else {
                     cc.log("sync fail");
 
@@ -59,19 +79,21 @@ var Activity = Entity.extend({
         }
     },
 
-    getPowerReward: function () {
+    getPowerReward: function (cb) {
         cc.log("Activity getPowerReward");
         lz.server.request("area.playerHandler.givePower", {}, function (data) {
             cc.log(data);
             if (data.code == 200) {
                 var power = data.msg.powerValue;
-                if (power + gameData.player.get("power") > 150) {
-                    power = 150 - gameData.player.get("power");
-                }
-                TipLayer.tip("体力: +" + power);
+
+                TipLayer.tipNoBg("体力: +" + power);
                 gameData.player.add("power", power);
+
+                lz.dc.event("event_give_power");
+                cb();
             } else {
                 TipLayer.tip(data.msg);
+                cb();
             }
         });
     },
@@ -82,13 +104,17 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip("魔石: +" + data.msg.gold);
+                TipLayer.tipNoBg("魔石: +" + data.msg.gold);
+
                 gameData.player.add("gold", data.msg.gold);
                 that._changeTypeById(id, GOLD_RECEIVE);
+
                 cb(true);
+
+                lz.dc.event("event_receive_level_reward", id);
             } else {
                 TipLayer.tip(data.msg);
-                cb(false)
+                cb(false);
             }
         });
     },

@@ -144,7 +144,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 1
+                        targetId: 1,
+                        ranking: 20003
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -175,7 +176,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 101
+                        targetId: 101,
+                        ranking: 20002
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -212,7 +214,8 @@ describe("Area Server", function() {
 
             it('player should be upgrated', function() {
                 request('area.rankHandler.challenge', {
-                    targetId: 101
+                    targetId: 101,
+                    ranking: 20002
                 }, function(data) {
                     console.log(data);
                     expect(data.msg.upgradeInfo).toEqual({
@@ -257,7 +260,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 5000
+                                elixir: 10000
                             }                            
                         });
                     });
@@ -269,7 +272,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 3000
+                                elixir: 8000
                             }                            
                         });
                     });
@@ -281,7 +284,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 2500
+                                elixir: 5000
                             }                            
                         });
                     });
@@ -293,7 +296,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 2000
+                                elixir: 3000
                             }                            
                         });
                     });
@@ -305,7 +308,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 1000
+                                elixir: 2000
                             }                            
                         });
                     });
@@ -342,7 +345,7 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                elixir: 1000
+                                elixir: 2000
                             }                            
                         });
                     });

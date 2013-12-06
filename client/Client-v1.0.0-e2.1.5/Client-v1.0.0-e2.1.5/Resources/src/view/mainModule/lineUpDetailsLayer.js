@@ -25,6 +25,16 @@ var LineUpDetailsLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("上阵卡牌列表界面");
+    },
+
+    onExit: function () {
+        cc.log("LineUpDetailsLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("上阵卡牌列表界面");
     },
 
     init: function (cardList, index) {
@@ -134,6 +144,8 @@ var LineUpDetailsLayer = cc.Layer.extend({
     _onClickClose: function () {
         cc.log("LineUpDetailsLayer update");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     }
 });
@@ -153,5 +165,7 @@ LineUpDetailsLayer.pop = function (cardList, index) {
     var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList, index);
 
     MainScene.getInstance().addChild(lineUpDetailsLayer, 10);
+
+    return lineUpDetailsLayer;
 };
 

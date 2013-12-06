@@ -25,6 +25,16 @@ var ExchangeLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡魂兑换界面");
+    },
+
+    onExit: function () {
+        cc.log("ExchangeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡魂兑换界面");
     },
 
     init: function () {
@@ -111,12 +121,12 @@ var ExchangeLayer = cc.Layer.extend({
             "STHeitiTC-Medium",
             17
         );
-        tipLabel1.setAnchorPoint(cc.p(0,0.5));
+        tipLabel1.setAnchorPoint(cc.p(0, 0.5));
         tipLabel1.setPosition(this._exchangeLayerFit.tipLabel1Point);
         this.addChild(tipLabel1);
 
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
         fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
         this.addChild(fragmentIcon);
 
@@ -125,12 +135,12 @@ var ExchangeLayer = cc.Layer.extend({
             "STHeitiTC-Medium",
             17
         );
-        tipLabel2.setAnchorPoint(cc.p(0,0.5));
+        tipLabel2.setAnchorPoint(cc.p(0, 0.5));
         tipLabel2.setPosition(this._exchangeLayerFit.tipLabel2Point);
         this.addChild(tipLabel2);
 
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
         fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
         this.addChild(fragmentIcon);
 
@@ -163,6 +173,9 @@ var ExchangeLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = Math.ceil(len / 4) * 143 - 33;
+        if (scrollViewHeight < this._exchangeLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._exchangeLayerFit.scrollViewHeight;
+        }
 
         this._cardItem = {};
         this._effect = {};
@@ -190,6 +203,8 @@ var ExchangeLayer = cc.Layer.extend({
         return function () {
             cc.log("ExchangeLayer _onClickCard: " + data.id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var id = data.id;
             var card = data.card;
             var star = card.get("star");
@@ -214,6 +229,8 @@ var ExchangeLayer = cc.Layer.extend({
         return function () {
             cc.log("ExchangeLayer _onClickExchange");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var exchange = gameData.exchange;
 
             if (!exchange.canExchange(star)) {
@@ -234,6 +251,8 @@ var ExchangeLayer = cc.Layer.extend({
     },
 
     _onClickSelectStar4: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._type == SELECT_STAR4_EXCHANGE_CARD) {
             this._type = SELECT_ALL_EXCHANGE_CARD;
 
@@ -249,6 +268,8 @@ var ExchangeLayer = cc.Layer.extend({
     },
 
     _onClickSelectStar5: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._type == SELECT_STAR5_EXCHANGE_CARD) {
             this._type = SELECT_ALL_EXCHANGE_CARD;
 
@@ -266,6 +287,8 @@ var ExchangeLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("ExchangeLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(LotteryLayer);
     }

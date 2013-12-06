@@ -146,6 +146,7 @@ var Shop = Entity.extend({
                     var nowPrivilegeTable = outputTables.recharge.rows[nowVip];
 
                     player.add("gold", rechargeTable.cash * 10 + rechargeTable.gold);
+                    player.set("vip", nowVip);
 
                     gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
                     gameData.friend.adds({
@@ -159,6 +160,8 @@ var Shop = Entity.extend({
                 }
 
                 cb();
+
+                lz.dc.event("event_pay", id);
             } else {
                 cc.log("payment fail");
 
@@ -212,6 +215,8 @@ var Shop = Entity.extend({
                     fragment: table.fragments || 0,
                     cards: table.exp_card || 0
                 });
+
+                lz.dc.event("event_buy_vip_box", id);
             } else {
                 cc.log("buyVipBox fail");
 
@@ -256,6 +261,8 @@ var Shop = Entity.extend({
                 var reward = that.ProductHandle[table.method](msg);
 
                 cb(reward);
+
+                lz.dc.event("event_buy_product", id)
             } else {
                 cc.log("buyProduct fail");
 
@@ -353,14 +360,14 @@ var Shop = Entity.extend({
             var count;
             var player = gameData.player;
 
-            count = Math.ceil((player.get("maxPower") - player.get("power")) / table.obtain);
-            if (count <= 0) {
-                product.tip = "体力已满";
-                product.count = 0;
-                return product;
-            } else {
-                product.count = Math.min(product.count, count);
-            }
+//            count = Math.ceil((player.get("maxPower") - player.get("power")) / table.obtain);
+//            if (count <= 0) {
+//                product.tip = "体力已满";
+//                product.count = 0;
+//                return product;
+//            } else {
+//                product.count = Math.min(product.count, count);
+//            }
 
             count = Math.floor(player.get("gold") / product.price);
             if (count <= 0) {
@@ -433,7 +440,7 @@ var Shop = Entity.extend({
             player.set(msg.consume.key, msg.consume.value);
 
             return {
-                power: msg.power
+                money: msg.money
             }
         },
 

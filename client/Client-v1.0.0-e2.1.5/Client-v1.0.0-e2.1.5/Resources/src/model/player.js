@@ -12,13 +12,19 @@
  * */
 
 
+var UPDATE_POWER_TIME_INTERVAL = 2;
+var UPDATE_POWER_TIME = 600000;
+var UPDATE_POWER_VALUE = 5;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
+    _uid: "",           // 玩家唯一标识
     _createTime: 0,     // 创建时间
     _userId: 0,         // 账号id
     _areaId: 0,         // 区
     _name: "",          // 角色
     _power: 0,          // 体力
+    _powerTimestamp: 0, // 体力时间戳
     _lv: 0,             // 等级
     _exp: 0,            // 经验
     _gold: 0,           // 魔石
@@ -60,8 +66,11 @@ var Player = Entity.extend({
         gameData.activity.init();
         gameData.speak.init();
         gameData.exchange.init();
+        gameData.payment.init();
 
         cc.log(this);
+
+        this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
 
         return true;
     },
@@ -80,6 +89,7 @@ var Player = Entity.extend({
         cc.log("Player update");
 
         this.set("id", data.id);
+        this.set("uid", data.uniqueId);
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
@@ -95,7 +105,9 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
+        this.set("powerTimestamp", data.power.time);
 
+        gameData.clock.init(data.serverTime);
         gameData.cardList.init(data.cards);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
@@ -113,6 +125,27 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
+    },
+
+    updatePower: function () {
+        if (this._power > this._maxPower) {
+            return;
+        }
+
+        var serverTime = gameData.clock.get("time");
+
+        var interval = serverTime - this._powerTimestamp;
+
+        if (interval > 0) {
+            var times = Math.floor(interval / UPDATE_POWER_TIME);
+
+            this._power += UPDATE_POWER_VALUE * times;
+            this._powerTimestamp += times * UPDATE_POWER_TIME;
+
+            if (this._power > this._maxPower) {
+                this._power = this._maxPower;
+            }
+        }
     },
 
     upgrade: function (data) {
@@ -133,14 +166,14 @@ var Player = Entity.extend({
 
         var table = outputTables.function_limit.rows[1];
 
-        MAX_LINE_UP_CARD = 3;
-
-        if (this._lv >= table.card4_position) {
-            MAX_LINE_UP_CARD = 4;
-        }
+        MAX_LINE_UP_CARD = 2;
 
         if (this._lv >= table.card5_position) {
             MAX_LINE_UP_CARD = 5;
+        } else if (this._lv >= table.card4_position) {
+            MAX_LINE_UP_CARD = 4;
+        } else if (this._lv >= table.card3_position) {
+            MAX_LINE_UP_CARD = 3;
         }
     },
 
@@ -171,6 +204,8 @@ var Player = Entity.extend({
                 cc.log("sendMessage success");
 
                 cb("success");
+
+                lz.dc.event("event_send_message");
             } else {
                 cc.log("sendMessage fail");
 
@@ -197,6 +232,8 @@ var Player = Entity.extend({
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 cb(battleLogId);
+
+                lz.dc.event("event_fight");
             } else {
                 cc.log("learn fail");
 
@@ -221,6 +258,8 @@ var Player = Entity.extend({
                 var msg = data.msg;
 
                 cb(msg);
+
+                lz.dc.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
 

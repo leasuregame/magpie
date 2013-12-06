@@ -24,6 +24,16 @@ var CardDetails = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌详细信息界面");
+    },
+
+    onExit: function () {
+        cc.log("CardDetails onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌详细信息界面");
     },
 
     init: function (card, cb) {
@@ -37,7 +47,7 @@ var CardDetails = LazyLayer.extend({
         this._card = card;
         this._cb = cb;
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
+        var bgLayer = cc.LayerColor.create(cc.c4b(30, 15, 10, 255), 640, 1136);
         bgLayer.setPosition(this._cardDetailsFit.bgLayerPoint);
         this.addChild(bgLayer, -1);
 
@@ -295,6 +305,8 @@ var CardDetails = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("CardDetails _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
         this.removeFromParent();
 
@@ -319,5 +331,7 @@ CardDetails.pop = function (card, cb) {
     var cardDetails = CardDetails.create(card, cb);
 
     cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+
+    return cardDetails;
 };
 

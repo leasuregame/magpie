@@ -12,6 +12,7 @@
  * */
 
 var gameData = {
+    clock: null,
     sound: Sound.create(),
     user: User.create(),
     player: null,
@@ -28,6 +29,7 @@ var gameData = {
     spirit: null,
     spiritPool: null,
     friend: null,
+    payment: null,
     shop: null,
     signIn: null,
     achievement: null,
@@ -38,6 +40,7 @@ var gameData = {
     gameInit: function () {
         cc.log("gameData init");
 
+        this.clock = Clock.create();
         this.player = Player.create();
         this.cardList = CardList.create();
         this.lineUp = LineUp.create();
@@ -52,6 +55,7 @@ var gameData = {
         this.spirit = Spirit.create();
         this.spiritPool = SpiritPool.create();
         this.friend = Friend.create();
+        this.payment = Payment.create();
         this.shop = Shop.create();
         this.signIn = SignIn.create();
         this.achievement = Achievement.create();

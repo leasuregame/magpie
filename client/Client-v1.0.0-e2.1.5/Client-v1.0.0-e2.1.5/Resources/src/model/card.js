@@ -12,7 +12,12 @@
  * */
 
 
+var MAX_CARD_TABLE_ID = 1000;
 var MAX_CARD_STAR = 5;
+
+var EVOLUTION_SUCCESS = 1;
+var EVOLUTION_FAIL = 0;
+var EVOLUTION_ERROR = -1;
 
 var passiveSkillDescription = {
     atk_improve: "攻击",
@@ -38,6 +43,7 @@ var Card = Entity.extend({
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
+    _kind: 0,
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
@@ -55,6 +61,8 @@ var Card = Entity.extend({
 
     _url: "",
 
+    _newCardMark: false,
+
     init: function (data) {
         cc.log("Card init");
 
@@ -69,15 +77,16 @@ var Card = Entity.extend({
 
             cc.log(this);
 
-            if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
+            if (data != undefined && data.hp != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
                 cc.Assert(data.hp == this._hp, "Card hp error");
 
-            if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
+            if (data != undefined && data.atk != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
                 cc.Assert(data.atk == this._atk, "Card atk error");
 
             cc.log("=============================================");
         }
 
+        this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 
         return true;
     },
@@ -131,6 +140,7 @@ var Card = Entity.extend({
         this._name = cardTable.name;
         this._description = cardTable.description;
         this._star = cardTable.star;
+        this._kind = cardTable.number || 0;
         this._initHp = cardTable.hp;
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
@@ -149,7 +159,7 @@ var Card = Entity.extend({
 //        this._hp = this._initHp;
 //        this._atk = this._initAtk;
 
-        this._url = "card" + (cardTable.number % 6 + 1);
+        this._url = "card" + cardTable.url;
 
         // 读取卡牌升级配置表
         var cardGrowTable = outputTables.card_grow.rows[this._lv];
@@ -181,6 +191,11 @@ var Card = Entity.extend({
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
+    },
+
+    setNewCardMark: function (mark) {
+        this._newCardMark = mark;
+        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
     },
 
     getSkillType: function () {
@@ -304,6 +319,12 @@ var Card = Entity.extend({
         return (cardGrow.cur_exp + this.getCardExp());
     },
 
+    canUpgrade: function () {
+        cc.log("Card canUpgrade");
+
+        return (this._lv < this._maxLv);
+    },
+
     upgrade: function (cb, cardIdList) {
         cc.log("Card upgrade " + this._id);
         cc.log(cardIdList);
@@ -333,6 +354,8 @@ var Card = Entity.extend({
                     exp: msg.exp_obtain,
                     money: msg.money_consume
                 });
+
+                lz.dc.event("event_card_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 
@@ -346,14 +369,14 @@ var Card = Entity.extend({
     canUpgradeSkill: function () {
         cc.log("Card canUpgradeSkill");
 
-        return (this._star > 2 && this._skillLv < this._skillMaxLv)
+        return (this._star > 2 && (this._skillLv < this._skillMaxLv));
     },
 
     getUpgradeNeedSKillPoint: function () {
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
             return skillUpgradeTable["star" + this._star];
         }
 
@@ -397,6 +420,8 @@ var Card = Entity.extend({
                 gameData.player.add("skillPoint", -msg.skillPoint);
 
                 cb();
+
+                lz.dc.event("event_card_skill_upgrade", that._skillLv);
             } else {
                 cc.log("upgradeSkill fail");
 
@@ -434,12 +459,14 @@ var Card = Entity.extend({
                 that.update(msg);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -20000);
+                    gameData.player.add("money", -2000);
                 } else if (type == USE_GOLD) {
-                    gameData.player.add("gold", -10);
+                    gameData.player.add("gold", -20);
                 }
 
                 cb(true);
+
+                lz.dc.event("event_card_passive_skill_afresh", type);
             } else {
                 cc.log("passSkillAfresh fail");
 
@@ -453,13 +480,13 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return (this._star < 5);
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
         cc.log("Card getPreCardRate");
 
-        if (this.canEvolution()) {
+        if (this._star < MAX_CARD_STAR) {
             return outputTables.star_upgrade.rows[this._star].rate_per_card;
         }
 
@@ -506,14 +533,16 @@ var Card = Entity.extend({
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);
+                var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+                cb(result);
 
-                cb();
+                lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
                 cc.log("evolution fail");
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                cb(EVOLUTION_ERROR);
             }
         });
     },
@@ -546,6 +575,8 @@ var Card = Entity.extend({
                 gameData.player.add("elixir", -elixir);
 
                 cb();
+
+                lz.dc.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
                 cc.log("train fail");
 

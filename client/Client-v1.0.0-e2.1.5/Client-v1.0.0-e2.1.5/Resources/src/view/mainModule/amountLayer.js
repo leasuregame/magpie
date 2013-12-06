@@ -180,6 +180,8 @@ var AmountLayer = LazyLayer.extend({
     _onClickAdd: function () {
         cc.log("AmountLayer _onClickAdd");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._count += 1;
         this.update();
 
@@ -188,12 +190,16 @@ var AmountLayer = LazyLayer.extend({
     _onClickAddAdd: function () {
         cc.log("AmountLayer _onClickAddAdd");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._count += 10;
         this.update();
     },
 
     _onClickSub: function () {
         cc.log("AmountLayer _onClickSub");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._count -= 1;
         this.update();
@@ -202,12 +208,16 @@ var AmountLayer = LazyLayer.extend({
     _onClickSubSub: function () {
         cc.log("AmountLayer _onClickSubSub");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._count -= 10;
         this.update();
     },
 
     _onClickOk: function () {
         cc.log("AmountLayer _onClickSend");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cb(this._count);
 
@@ -216,6 +226,8 @@ var AmountLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("AmountLayer _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
     }
@@ -237,4 +249,6 @@ AmountLayer.pop = function (cb, data) {
     var amountLayer = AmountLayer.create(cb, data);
 
     MainScene.getInstance().getLayer().addChild(amountLayer, 10);
+
+    return amountLayer;
 };

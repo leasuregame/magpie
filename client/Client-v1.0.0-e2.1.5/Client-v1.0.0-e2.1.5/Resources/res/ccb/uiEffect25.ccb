@@ -173,7 +173,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/icon200.png</string>
+							<string>res/main/icon200.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -336,7 +336,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up64.png</string>
+							<string>res/effect/uiEffect/up64.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -449,7 +449,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.046037554740905762</real>
 			<key>position</key>
 			<real>1</real>
 			<key>resolution</key>
@@ -461,7 +461,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.066666670143604279</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/highlights_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

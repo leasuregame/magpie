@@ -98,7 +98,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>100</integer>
+											<integer>80</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -113,7 +113,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>100</integer>
+											<integer>80</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -236,7 +236,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>80</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -542,8 +542,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.30000001192092896</real>
-											<real>0.30000001192092896</real>
+											<real>3.2000000476837158</real>
+											<real>1.3999999761581421</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -564,7 +564,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p29.png</string>
+											<string>res/effect/effect/p29.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -575,7 +575,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -744,7 +744,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<false/>
+										<true/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -781,8 +781,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>10</real>
+											<real>0.20000000298023224</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1007,7 +1007,7 @@
 										<key>type</key>
 										<string>Texture</string>
 										<key>value</key>
-										<string>effect/effect/p18.png</string>
+										<string>res/effect/effect/p18.png</string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1164,7 +1164,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<false/>
+										<true/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1201,8 +1201,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>8</real>
+											<real>0.5</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1427,7 +1427,7 @@
 										<key>type</key>
 										<string>Texture</string>
 										<key>value</key>
-										<string>effect/effect/p30.png</string>
+										<string>res/effect/effect/p30.png</string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1456,7 +1456,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-960</real>
+									<real>-320</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -1719,8 +1719,8 @@
 													<integer>4</integer>
 													<key>value</key>
 													<array>
-														<real>2</real>
-														<real>2</real>
+														<real>1</real>
+														<real>1</real>
 													</array>
 												</dict>
 												<dict>
@@ -1737,8 +1737,8 @@
 													<integer>4</integer>
 													<key>value</key>
 													<array>
-														<real>2</real>
-														<real>2</real>
+														<real>1</real>
+														<real>1</real>
 													</array>
 												</dict>
 												<dict>
@@ -1816,8 +1816,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1838,7 +1838,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p31.png</string>
+											<string>res/main/spirit_1_skill.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1849,9 +1849,22 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>flip</string>
+										<key>type</key>
+										<string>Flip</string>
+										<key>value</key>
+										<array>
+											<true/>
+											<false/>
+										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -1878,7 +1891,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-960</real>
+									<real>-320</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -2098,8 +2111,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -2118,7 +2131,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2318,8 +2331,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -2338,7 +2351,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2539,8 +2552,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -2559,7 +2572,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2759,8 +2772,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -2779,7 +2792,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3003,7 +3016,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.8333332538604736</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -3013,7 +3026,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.1666666716337204</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_subtitle_spirit.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

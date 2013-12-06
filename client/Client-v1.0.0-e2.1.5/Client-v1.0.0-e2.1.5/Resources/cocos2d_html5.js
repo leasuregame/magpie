@@ -54,6 +54,7 @@
             'src/model/entity.js',
 
             'src/model/lz.js',
+            'src/model/dataCollection.js',
             'src/model/pomelo.js',
             'src/model/server.js',
 
@@ -61,6 +62,7 @@
             'src/model/gameConfig.js',
 
             'src/model/gameFit.js',
+            'src/model/clock.js',
             'src/model/user.js',
             'src/model/player.js',
             'src/model/card.js',
@@ -85,11 +87,15 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
+            '../Resources-AppStore/appStoreModel/payment.js',
+
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
             'src/model/battleStep.js',
 
             'src/model/gameData.js',
+            'src/model/gameMark.js',
+            'src/model/gameGuide.js',
 
             'src/controls/progress.js',
             'src/controls/lazyLayer.js',
@@ -101,13 +107,15 @@
             'src/controls/LzMenuItem.js',
             'src/controls/tipLayer.js',
             'src/controls/colorLabelTTF.js',
+            'src/controls/waitLayer.js',
+            'src/controls/dialog.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
             'src/view/loginModule/logoutLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
-            'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
+            'src/view/loginModule/selectAreaLayer.js',
 
             'src/view/mainModule/effect.js',
 
@@ -124,6 +132,7 @@
             'src/view/mainModule/bubbleLabel.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardEvolutionLabel.js',
+            'src/view/mainModule/cardEvolutionLayer.js',
             'src/view/mainModule/cardFullNode.js',
             'src/view/mainModule/cardHalfNode.js',
             'src/view/mainModule/cardHeadNode.js',
@@ -139,9 +148,9 @@
             'src/view/mainModule/exploreLayer.js',
             'src/view/mainModule/friendLayer.js',
             'src/view/mainModule/friendMessageLayer.js',
-            'src/view/mainModule/gamblingLayer.js',
             'src/view/mainModule/gameFrame.js',
             'src/view/mainModule/goldLayer.js',
+            'src/view/mainModule/level9BoxLayer.js',
             'src/view/mainModule/lineUpDetail.js',
             'src/view/mainModule/lineUpDetailsLayer.js',
             'src/view/mainModule/lineUpLabel.js',
@@ -161,7 +170,6 @@
             'src/view/mainModule/playerTournamentLabel.js',
             'src/view/mainModule/playerUpgradeLayer.js',
             'src/view/mainModule/propsLayer.js',
-            'src/view/mainModule/pveLayer.js',
             'src/view/mainModule/rankLayer.js',
             'src/view/mainModule/readMessageLayer.js',
             'src/view/mainModule/sendMessageLayer.js',
@@ -177,14 +185,15 @@
             'src/view/mainModule/taskLayer.js',
             'src/view/mainModule/tournamentLayer.js',
             'src/view/mainModule/tournamentLabel.js',
-            'src/view/mainModule/tournamentMessageLabel.js',
             'src/view/mainModule/tournamentRankLayer.js',
+            'src/view/mainModule/tournamentTipLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
+            'src/view/mainModule/mandatoryTeachingLayer.js',
             'src/view/mainModule/noviceTeachingLayer.js',
             'src/view/mainModule/mainScene.js',
 

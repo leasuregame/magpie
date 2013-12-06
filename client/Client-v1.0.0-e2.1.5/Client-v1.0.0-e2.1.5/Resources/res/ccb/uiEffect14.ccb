@@ -99,7 +99,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>40</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -107,7 +107,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.30000001192092896</real>
+						<real>0.40000000596046448</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -115,7 +115,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>20</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -254,7 +254,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
+							<real>250</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -276,7 +276,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>-800</real>
+							<real>-600</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -286,7 +286,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>main/icon149.png</string>
+						<string>res/main/icon149.png</string>
 					</dict>
 				</array>
 				<key>selected</key>

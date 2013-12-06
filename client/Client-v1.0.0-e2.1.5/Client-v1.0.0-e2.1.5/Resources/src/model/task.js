@@ -16,6 +16,10 @@ var TASK_CHAPTER_COUNT = 10;
 var TASK_SECTION_COUNT = 5;
 var TASK_POINTS_COUNT = 10;
 
+var POWER_NO_ENOUGH = 0;
+var CARD_FULL = 1;
+var CAN_EXPLORE = 2;
+
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
@@ -98,10 +102,15 @@ var Task = Entity.extend({
 
         if (gameData.player.get("power") < this._powerNeed) {
             TipLayer.tip("体力不足");
-            return false;
+            return POWER_NO_ENOUGH;
         }
 
-        return true;
+        if (gameData.cardList.isFull()) {
+            TipLayer.tip("卡牌已满，请先消耗");
+            return CARD_FULL;
+        }
+
+        return CAN_EXPLORE;
     },
 
     canWipeOut: function () {
@@ -175,15 +184,28 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.sets({
-                    power: msg.power.value,
-                    exp: msg.exp
-                });
-
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
 
                     cbData.upgradeReward = msg.upgradeInfo.rewards;
+                }
+
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
+                }
+
+                if (msg.through_reward) {
+                    cbData.through_reward = msg.through_reward;
+                    player.add('money', msg.through_reward.money);
                 }
 
                 if (msg.result == "fight") {
@@ -201,7 +223,15 @@ var Task = Entity.extend({
                     }
                 }
 
+                player.sets({
+                    power: msg.power.value,
+                    powerTimestamp: msg.power.time,
+                    exp: msg.exp
+                });
+
                 cb(cbData);
+
+                lz.dc.event("event_task", id);
             } else {
                 cc.log("explore fail");
 
@@ -243,6 +273,8 @@ var Task = Entity.extend({
                 gameData.player.adds(reward);
 
                 cb(reward);
+
+                lz.dc.event("event_wipe_out_task", id);
             } else {
                 cc.log("wipeOut fail");
 
@@ -264,6 +296,8 @@ var Task = Entity.extend({
                 cc.log("obtainGold success.");
 
                 gameData.player.add("gold", gold);
+
+                lz.dc.event("event_momo", gold);
             } else {
                 cc.log("obtainGold fail");
 

@@ -15,6 +15,22 @@
 var PaymentLayer = LazyLayer.extend({
     _paymentLayerFit: null,
 
+    onEnter: function () {
+        cc.log("PaymentLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("充值界面");
+    },
+
+    onExit: function () {
+        cc.log("PaymentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("充值界面");
+    },
+
     init: function () {
         cc.log("PaymentLayer init");
 
@@ -22,8 +38,12 @@ var PaymentLayer = LazyLayer.extend({
 
         this._paymentLayerFit = gameFit.mainScene.paymentLayer;
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(this._paymentLayerFit.bgLayerPoint);
+        this.addChild(bgLayer);
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(540, 720));
+        bgSprite.setContentSize(this._paymentLayerFit.bgSpriteContentSize);
         bgSprite.setPosition(this._paymentLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
@@ -156,7 +176,7 @@ var PaymentLayer = LazyLayer.extend({
                 main_scene_image.button21,
                 main_scene_image.button21s,
                 main_scene_image.icon159,
-                this._onClickPayment(paymentTypeList[i].id),
+                this._onClickPayment(paymentTypeList[i].product_id),
                 this
             );
             paymentItem.setPosition(cc.p(421, y + 50));
@@ -180,11 +200,15 @@ var PaymentLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("PaymentLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     },
 
     _onClickVipPrivilege: function () {
         cc.log("PaymentLayer _onClickVipPrivilege");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var parent = this.getParent();
 
@@ -194,16 +218,13 @@ var PaymentLayer = LazyLayer.extend({
         this.removeFromParent();
     },
 
-    _onClickPayment: function (id) {
+    _onClickPayment: function (productId) {
         return function () {
-            cc.log("PaymentLayer _onClickPayment: " + id);
+            cc.log("PaymentLayer _onClickPayment: " + productId);
 
-            var parent = this.getParent();
-            gameData.shop.payment(function (data) {
-                cc.log(data);
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-                parent.update();
-            }, id);
+            gameData.payment.buy(productId);
         }
     }
 });
@@ -223,4 +244,6 @@ PaymentLayer.pop = function () {
     var paymentLayer = PaymentLayer.create();
 
     MainScene.getInstance().getLayer().addChild(paymentLayer, 10);
+
+    return paymentLayer;
 };

@@ -45,8 +45,25 @@ var CardLabel = cc.Node.extend({
         cardItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardItemMenu);
 
-        var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
+        var newCardMarkIcon = null;
+
+        var cardHeadItem = CardHeadNode.getCardHeadItem(this._card, function () {
+            CardDetails.pop(this._card);
+
+            this._card.setNewCardMark(false);
+
+            if (newCardMarkIcon) {
+                newCardMarkIcon.removeFromParent();
+                newCardMarkIcon = null;
+            }
+        }, this);
         cardHeadItem.setPosition(cc.p(70, 65));
+
+        if (this._card.get("newCardMark")) {
+            newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
+            newCardMarkIcon.setPosition(cc.p(25, 31));
+            cardHeadItem.addChild(newCardMarkIcon);
+        }
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
@@ -55,17 +72,27 @@ var CardLabel = cc.Node.extend({
         var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
         nameIcon.setContentSize(cc.size(190, 30));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
-        nameIcon.setPosition(cc.p(145, 100));
+        nameIcon.setPosition(cc.p(155, 100));
         this.addChild(nameIcon);
 
         var otherIcon = cc.Sprite.create(main_scene_image.icon30);
         otherIcon.setPosition(cc.p(200, 34));
         this.addChild(otherIcon);
 
+        var skillType = this._card.get("skillType");
+        if (skillType > 3) {
+            skillType = 3;
+        }
+
+        var skillTypeIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
+        skillTypeIcon.setAnchorPoint(cc.p(0, 0.5));
+        skillTypeIcon.setPosition(cc.p(142, 100));
+        this.addChild(skillTypeIcon);
+
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), "STHeitiTC-Medium", 20);
         nameLabel.setColor(cc.c3b(255, 242, 206));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(150, 100));
+        nameLabel.setPosition(cc.p(180, 100));
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create(this._card.get("lv"), "STHeitiTC-Medium", 22);
@@ -85,7 +112,7 @@ var CardLabel = cc.Node.extend({
         this.addChild(this._starLabel);
 
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
-        this._useLabel.setPosition(cc.p(400, 100));
+        this._useLabel.setPosition(cc.p(410, 100));
         this.addChild(this._useLabel);
         this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
 
@@ -262,15 +289,30 @@ var CardLabel = cc.Node.extend({
         this.setEnabled(enabled);
     },
 
+    getCard: function () {
+        cc.log("CardLabel getCard");
+
+        return this._card;
+    },
+
     _onClickCard: function () {
         cc.log("CardLabel _onClickCard" + this._card.get("id"));
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._selectType != SELECT_TYPE_DEFAULT) {
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.next();
             }
-            
+
+            if(mandatoryTeachingLayer) {
+                if(mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
+            }
+
             this.select();
         }
     }

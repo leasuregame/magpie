@@ -58,7 +58,7 @@ var BattleCardNode = cc.Node.extend({
 
         var frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
 
-        var num = Math.floor((this._star - 1) / 2) + 1;
+        var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
         if (this._skillType > 3) {
@@ -87,7 +87,7 @@ var BattleCardNode = cc.Node.extend({
             null,
             main_scene_image.progress13,
             0,
-            this._hp
+            Math.floor(this._hp / 2)
         );
         this._spiritHpProgress.setPosition(cc.p(0, -100));
         this.addChild(this._spiritHpProgress);
@@ -106,7 +106,7 @@ var BattleCardNode = cc.Node.extend({
         this._star = cardTable.star;
         this._skillId = cardTable.skill_id;
         this._skillName = cardTable.skill_name || "";
-        this._url = "card" + (cardTable.number % 6 + 1);
+        this._url = "card" + cardTable.url;
 
         // 读取技能配置表
         if (this._skillId) {
@@ -144,26 +144,26 @@ var BattleCardNode = cc.Node.extend({
                 differenceValue = this._hpProgress.getDifferenceValue();
                 differenceTime = time * differenceValue / absValue;
 
-                this._hpProgress.setAllValue(this._hp, this._hp, differenceTime);
+                this._hpProgress.setValue(this._hp, differenceTime);
 
                 this.scheduleOnce(function () {
-                    this._spiritHpProgress.setAllValue(this._nowHp - this._hp, this._hp, time - differenceTime);
+                    this._spiritHpProgress.setValue(this._nowHp - this._hp, time - differenceTime);
                 }, differenceTime);
             } else {
-                this._hpProgress.setAllValue(this._nowHp, this._hp, time);
+                this._hpProgress.setValue(this._nowHp, time);
             }
         } else if (value < 0) {
             if (this._nowHp < this._hp) {
                 differenceValue = this._spiritHpProgress.getValue();
                 differenceTime = time * differenceValue / absValue;
 
-                this._spiritHpProgress.setAllValue(0, this._hp, differenceTime);
+                this._spiritHpProgress.setValue(0, differenceTime);
 
                 this.scheduleOnce(function () {
-                    this._hpProgress.setAllValue(this._nowHp, this._hp, time - differenceTime);
+                    this._hpProgress.setValue(this._nowHp, time - differenceTime);
                 }, differenceTime);
             } else {
-                this._spiritHpProgress.setAllValue(this._nowHp - this._hp, this._hp, time);
+                this._spiritHpProgress.setValue(this._nowHp - this._hp, time);
             }
         }
     },
@@ -194,6 +194,8 @@ var BattleCardNode = cc.Node.extend({
             for (var i = 0; i < len; ++i) {
                 ccbNode.controller["label" + i].setString(this._skillName[i]);
             }
+
+            ccbNode.controller.card.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
         }
 
         return ccbNode;

@@ -31,6 +31,16 @@ var CardTrainLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌培养界面");
+    },
+
+    onExit: function () {
+        cc.log("CardTrainLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌培养界面");
     },
 
     init: function () {
@@ -115,10 +125,6 @@ var CardTrainLabel = cc.Layer.extend({
         tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
-        this._tipLabel = cc.Node.create();
-        this._tipLabel.setPosition(this._cardTrainLabelFit.tipLabelPoint);
-        this.addChild(this._tipLabel);
-
         var tipLabel1 = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
@@ -138,64 +144,44 @@ var CardTrainLabel = cc.Layer.extend({
 
         var trainCountLabel = cc.Sprite.create(main_scene_image.icon50);
         trainCountLabel.setScaleY(0.4);
-        trainCountLabel.setPosition(cc.p(0, -25));
+        trainCountLabel.setPosition(cc.p(0, -35));
         this._helpLabel.addChild(trainCountLabel);
 
-        var trainHpIcon = cc.LabelTTF.create("培养生命", "STHeitiTC-Medium", 22);
-        trainHpIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainHpIcon.setPosition(cc.p(-130, 25));
-        this._helpLabel.addChild(trainHpIcon);
-
-        var trainAtkIcon = cc.LabelTTF.create("培养攻击", "STHeitiTC-Medium", 22);
-        trainAtkIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainAtkIcon.setPosition(cc.p(110, 25));
-        this._helpLabel.addChild(trainAtkIcon);
-
-        var trainOneIcon = cc.LabelTTF.create("培养 1 次", "STHeitiTC-Medium", 22);
-        trainOneIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainOneIcon.setPosition(cc.p(-130, -25));
-        this._helpLabel.addChild(trainOneIcon);
-
-        var trainTenIcon = cc.LabelTTF.create("培养 10 次", "STHeitiTC-Medium", 22);
-        trainTenIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainTenIcon.setPosition(cc.p(110, -25));
-        this._helpLabel.addChild(trainTenIcon);
-
         this._trainHpItem = cc.MenuItemImage.create(
-            main_scene_image.button25,
-            main_scene_image.button25s,
-            main_scene_image.button25d,
+            main_scene_image.button62,
+            main_scene_image.button62,
+            main_scene_image.button62s,
             this._onClickTrainHp,
             this
         );
         this._trainHpItem.setPosition(cc.p(-160, 25));
 
         this._trainAtkItem = cc.MenuItemImage.create(
-            main_scene_image.button25,
-            main_scene_image.button25s,
-            main_scene_image.button25d,
+            main_scene_image.button63,
+            main_scene_image.button63,
+            main_scene_image.button63s,
             this._onClickTrainAtk,
             this
         );
         this._trainAtkItem.setPosition(cc.p(80, 25));
 
         this._trainOneItem = cc.MenuItemImage.create(
-            main_scene_image.button25,
-            main_scene_image.button25s,
-            main_scene_image.button25d,
+            main_scene_image.button64,
+            main_scene_image.button64,
+            main_scene_image.button64s,
             this._onClickTrainOne,
             this
         );
-        this._trainOneItem.setPosition(cc.p(-160, -25));
+        this._trainOneItem.setPosition(cc.p(-168, -35));
 
         this._trainTenItem = cc.MenuItemImage.create(
-            main_scene_image.button25,
-            main_scene_image.button25s,
-            main_scene_image.button25d,
+            main_scene_image.button65,
+            main_scene_image.button65,
+            main_scene_image.button65s,
             this._onClickTrainTen,
             this
         );
-        this._trainTenItem.setPosition(cc.p(80, -25));
+        this._trainTenItem.setPosition(cc.p(80, -35));
 
         var helpMenu = cc.Menu.create(
             this._trainHpItem,
@@ -313,8 +299,17 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("CardTrainLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_TRAIN_MASTER, function (data) {
             cc.log(data);
 
             if (data) {
@@ -336,6 +331,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickTrain: function () {
         cc.log("CardTrainLabel _onClickTrain");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._trainType == TRAIN_CARD_NULL) {
             TipLayer.tip("请选择培养类型");
             return;
@@ -344,6 +341,13 @@ var CardTrainLabel = cc.Layer.extend({
         if (this._trainCount == TRAIN_ZERO_COUNT) {
             TipLayer.tip("请选择培养次数");
             return;
+        }
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
         }
 
         var elixir = gameData.player.get("elixir");
@@ -365,6 +369,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickTrainHp: function () {
         cc.log("CardTrainLabel _onClickTrainHp");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._trainType = TRAIN_CARD_HP;
         this._trainHpItem.setEnabled(false);
         this._trainAtkItem.setEnabled(true);
@@ -374,6 +380,8 @@ var CardTrainLabel = cc.Layer.extend({
 
     _onClickTrainAtk: function () {
         cc.log("CardTrainLabel _onClickTrainAtk");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._trainType = TRAIN_CARD_ATK;
         this._trainHpItem.setEnabled(true);
@@ -385,6 +393,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickTrainOne: function () {
         cc.log("CardTrainLabel _onClickTrainOne");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._trainCount = TRAIN_ONE_COUNT;
         this._trainOneItem.setEnabled(false);
         this._trainTenItem.setEnabled(true);
@@ -394,6 +404,8 @@ var CardTrainLabel = cc.Layer.extend({
 
     _onClickTrainTen: function () {
         cc.log("CardTrainLabel _onClickTrainTen");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._trainCount = TRAIN_TEN_COUNT;
         this._trainOneItem.setEnabled(true);

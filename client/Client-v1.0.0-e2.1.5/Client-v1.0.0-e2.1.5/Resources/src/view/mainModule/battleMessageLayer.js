@@ -22,6 +22,16 @@ var BattleMessageLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("战斗消息界面");
+    },
+
+    onExit: function () {
+        cc.log("BattleMessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("战斗消息界面");
     },
 
     init: function () {
@@ -52,8 +62,8 @@ var BattleMessageLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 127 - 20;
-        if (scrollViewHeight < 742) {
-            scrollViewHeight = 742;
+        if (scrollViewHeight < this._battleMessageLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._battleMessageLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; ++i) {
@@ -102,6 +112,8 @@ var BattleMessageLayer = cc.Layer.extend({
     _onClickPlayback: function (id) {
         return function () {
             cc.log("BattleMessageLayer onClickPlayback: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.message.playback(id);
         }

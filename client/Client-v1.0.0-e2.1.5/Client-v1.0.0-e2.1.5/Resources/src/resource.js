@@ -1,8 +1,3 @@
-var SETTING_IS_BROWSER = false;
-if (typeof(navigator) != 'undefined') {
-    SETTING_IS_BROWSER = true;
-}
-
 // login scene res
 var login_scene_path = "res/login/";
 
@@ -68,23 +63,14 @@ var main_scene_image = {
 
     card0: main_scene_path + "card0.png",
 
-    spirit1: main_scene_path + "spirit1.png",
-    spirit2: main_scene_path + "spirit2.png",
-    spirit3: main_scene_path + "spirit3.png",
-    spirit4: main_scene_path + "spirit4.png",
-    spirit5: main_scene_path + "spirit5.png",
-    spirit6: main_scene_path + "spirit6.png",
-    spirit7: main_scene_path + "spirit7.png",
-    spirit8: main_scene_path + "spirit8.png",
-    spirit9: main_scene_path + "spirit9.png",
-    spirit10: main_scene_path + "spirit10.png",
-
     spirit_1_0: main_scene_path + "spirit_1_0.png",
     spirit_1_1: main_scene_path + "spirit_1_1.png",
     spirit_1_2: main_scene_path + "spirit_1_2.png",
     spirit_1_3: main_scene_path + "spirit_1_3.png",
     spirit_1_4: main_scene_path + "spirit_1_4.png",
     spirit_1_5: main_scene_path + "spirit_1_5.png",
+
+    spirit_1_skill: main_scene_path + "spirit_1_skill.png",
 
     spirit_side: main_scene_path + "spirit_side.png",
 
@@ -107,6 +93,7 @@ var main_scene_image = {
     progress12: main_scene_path + "progress12.png",
     progress13: main_scene_path + "progress13.png",
 
+    vip0: main_scene_path + "vip0.png",
     vip1: main_scene_path + "vip1.png",
     vip2: main_scene_path + "vip2.png",
     vip3: main_scene_path + "vip3.png",
@@ -131,6 +118,7 @@ var main_scene_image = {
     num_red_8: main_scene_path + "num_red_8.png",
     num_red_9: main_scene_path + "num_red_9.png",
 
+    edit: main_scene_path + "edit.png",
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
     edit3: main_scene_path + "edit3.png",
@@ -208,19 +196,21 @@ var main_scene_image = {
     button21s: main_scene_path + "button21s.png",
     button22: main_scene_path + "button22.png",
     button22s: main_scene_path + "button22s.png",
+    button22h: main_scene_path + "button22h.png",
     button22d: main_scene_path + "button22d.png",
     button23: main_scene_path + "button23.png",
     button23s: main_scene_path + "button23s.png",
+    button23h: main_scene_path + "button23h.png",
     button23d: main_scene_path + "button23d.png",
     button24: main_scene_path + "button24.png",
     button24s: main_scene_path + "button24s.png",
     button25: main_scene_path + "button25.png",
     button25s: main_scene_path + "button25s.png",
     button25d: main_scene_path + "button25d.png",
-//    button26: main_scene_path + "button26.png",
-//    button26s: main_scene_path + "button26s.png",
-//    button27: main_scene_path + "button27.png",
-//    button27s: main_scene_path + "button27s.png",
+    button26: main_scene_path + "button26.png",
+    button26s: main_scene_path + "button26s.png",
+    button27: main_scene_path + "button27.png",
+    button27s: main_scene_path + "button27s.png",
 //    button28: main_scene_path + "button28.png",
 //    button28s: main_scene_path + "button28s.png",
 //    button29: main_scene_path + "button29.png",
@@ -280,6 +270,18 @@ var main_scene_image = {
     button60s: main_scene_path + "button60s.png",
     button61: main_scene_path + "button61.png",
     button61s: main_scene_path + "button61s.png",
+    button62: main_scene_path + "button62.png",
+    button62s: main_scene_path + "button62s.png",
+    button63: main_scene_path + "button63.png",
+    button63s: main_scene_path + "button63s.png",
+    button64: main_scene_path + "button64.png",
+    button64s: main_scene_path + "button64s.png",
+    button65: main_scene_path + "button65.png",
+    button65s: main_scene_path + "button65s.png",
+    button66: main_scene_path + "button66.png",
+    button66s: main_scene_path + "button66s.png",
+    button67: main_scene_path + "button67.png",
+    button67s: main_scene_path + "button67s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -373,9 +375,9 @@ var main_scene_image = {
     icon90: main_scene_path + "icon90.png",
     icon91: main_scene_path + "icon91.png",
     icon92: main_scene_path + "icon92.png",
-//    icon93: main_scene_path + "icon93.png",
+    icon93: main_scene_path + "icon93.png",
     icon94: main_scene_path + "icon94.png",
-//    icon95: main_scene_path + "icon95.png",
+    icon95: main_scene_path + "icon95.png",
     icon96: main_scene_path + "icon96.png",
     icon97: main_scene_path + "icon97.png",
     icon98: main_scene_path + "icon98.png",
@@ -404,7 +406,7 @@ var main_scene_image = {
     icon123: main_scene_path + "icon123.png",
     icon124: main_scene_path + "icon124.png",
     icon125: main_scene_path + "icon125.png",
-//    icon126: main_scene_path + "icon126.png",
+    icon126: main_scene_path + "icon126.png",
     icon127: main_scene_path + "icon127.png",
     icon128: main_scene_path + "icon128.png",
     icon129: main_scene_path + "icon129.png",
@@ -567,6 +569,24 @@ var main_scene_image = {
     icon286: main_scene_path + "icon286.png",
     icon287: main_scene_path + "icon287.png",
     icon288: main_scene_path + "icon288.png",
+    icon289: main_scene_path + "icon289.png",
+    icon290: main_scene_path + "icon290.png",
+    icon291: main_scene_path + "icon291.png",
+    icon292: main_scene_path + "icon292.png",
+    icon293: main_scene_path + "icon293.png",
+    icon294: main_scene_path + "icon294.png",
+    icon295: main_scene_path + "icon295.png",
+    icon296: main_scene_path + "icon296.png",
+    icon297: main_scene_path + "icon297.png",
+    icon298: main_scene_path + "icon298.png",
+    icon299: main_scene_path + "icon299.png",
+    icon300: main_scene_path + "icon300.png",
+    icon301: main_scene_path + "icon301.png",
+    icon302: main_scene_path + "icon302.png",
+
+    card30000_head1: main_scene_path + "card30000_head1.png",
+    card30000_half1: main_scene_path + "card30000_half1.png",
+    card30000_full1: main_scene_path + "card30000_full1.png",
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
@@ -621,32 +641,32 @@ var main_scene_image = {
     uiEffect29: "res/ccb/uiEffect29.ccbi",
     uiEffect30: "res/ccb/uiEffect30.ccbi",
     uiEffect31: "res/ccb/uiEffect31.ccbi",
-//    uiEffect32: "res/ccb/uiEffect32.ccbi",
-//    uiEffect33: "res/ccb/uiEffect33.ccbi",
-//    uiEffect34: "res/ccb/uiEffect34.ccbi",
-//    uiEffect35: "res/ccb/uiEffect35.ccbi",
-//    uiEffect36: "res/ccb/uiEffect36.ccbi",
-//    uiEffect37: "res/ccb/uiEffect37.ccbi",
-//    uiEffect38: "res/ccb/uiEffect38.ccbi",
-//    uiEffect39: "res/ccb/uiEffect39.ccbi",
-//    uiEffect40: "res/ccb/uiEffect40.ccbi",
-//    uiEffect41: "res/ccb/uiEffect41.ccbi",
+    uiEffect32: "res/ccb/uiEffect32.ccbi",
+    uiEffect33: "res/ccb/uiEffect33.ccbi",
+    uiEffect34: "res/ccb/uiEffect34.ccbi",
+    uiEffect35: "res/ccb/uiEffect35.ccbi",
+    uiEffect36: "res/ccb/uiEffect36.ccbi",
+    uiEffect37: "res/ccb/uiEffect37.ccbi",
+    uiEffect38: "res/ccb/uiEffect38.ccbi",
+    uiEffect39: "res/ccb/uiEffect39.ccbi",
+    uiEffect40: "res/ccb/uiEffect40.ccbi",
+    uiEffect41: "res/ccb/uiEffect41.ccbi",
 //    uiEffect42: "res/ccb/uiEffect42.ccbi",
-//    uiEffect43: "res/ccb/uiEffect43.ccbi",
-//    uiEffect44: "res/ccb/uiEffect44.ccbi",
-//    uiEffect45: "res/ccb/uiEffect45.ccbi",
+    uiEffect43: "res/ccb/uiEffect43.ccbi",
+    uiEffect44: "res/ccb/uiEffect44.ccbi",
+    uiEffect45: "res/ccb/uiEffect45.ccbi",
 //    uiEffect46: "res/ccb/uiEffect46.ccbi",
-//    uiEffect47: "res/ccb/uiEffect47.ccbi",
-//    uiEffect48: "res/ccb/uiEffect48.ccbi",
-//    uiEffect49: "res/ccb/uiEffect49.ccbi",
-//    uiEffect50: "res/ccb/uiEffect50.ccbi",
-//    uiEffect51: "res/ccb/uiEffect51.ccbi",
-//    uiEffect52: "res/ccb/uiEffect52.ccbi",
-//    uiEffect53: "res/ccb/uiEffect53.ccbi",
-//    uiEffect54: "res/ccb/uiEffect54.ccbi",
-//    uiEffect55: "res/ccb/uiEffect55.ccbi",
-//    uiEffect56: "res/ccb/uiEffect56.ccbi",
-//    uiEffect57: "res/ccb/uiEffect57.ccbi",
+    uiEffect47: "res/ccb/uiEffect47.ccbi",
+    uiEffect48: "res/ccb/uiEffect48.ccbi",
+    uiEffect49: "res/ccb/uiEffect49.ccbi",
+    uiEffect50: "res/ccb/uiEffect50.ccbi",
+    uiEffect51: "res/ccb/uiEffect51.ccbi",
+    uiEffect52: "res/ccb/uiEffect52.ccbi",
+    uiEffect53: "res/ccb/uiEffect53.ccbi",
+    uiEffect54: "res/ccb/uiEffect54.ccbi",
+    uiEffect55: "res/ccb/uiEffect55.ccbi",
+    uiEffect56: "res/ccb/uiEffect56.ccbi",
+    uiEffect57: "res/ccb/uiEffect57.ccbi",
 //    uiEffect58: "res/ccb/uiEffect58.ccbi",
 //    uiEffect59: "res/ccb/uiEffect59.ccbi",
 //    uiEffect60: "res/ccb/uiEffect60.ccbi",
@@ -773,6 +793,37 @@ var main_scene_image = {
     up71: "res/effect/uiEffect/up71.png",
     up72: "res/effect/uiEffect/up72.png",
     up73: "res/effect/uiEffect/up73.png",
+    up74: "res/effect/uiEffect/up74.png",
+    up75: "res/effect/uiEffect/up75.png",
+    up76: "res/effect/uiEffect/up76.png",
+    up77: "res/effect/uiEffect/up77.png",
+    up78: "res/effect/uiEffect/up78.png",
+    up79: "res/effect/uiEffect/up79.png",
+    up80: "res/effect/uiEffect/up80.png",
+    up81: "res/effect/uiEffect/up81.png",
+    up82: "res/effect/uiEffect/up82.png",
+    up83: "res/effect/uiEffect/up83.png",
+    up84: "res/effect/uiEffect/up84.png",
+    up85: "res/effect/uiEffect/up85.png",
+    up86: "res/effect/uiEffect/up86.png",
+    up87: "res/effect/uiEffect/up87.png",
+    up88: "res/effect/uiEffect/up88.png",
+    up89: "res/effect/uiEffect/up89.png",
+    up90: "res/effect/uiEffect/up90.png",
+    up91: "res/effect/uiEffect/up91.png",
+    up92: "res/effect/uiEffect/up92.png",
+    up93: "res/effect/uiEffect/up93.png",
+    // up94: "res/effect/uiEffect/up94.png",
+    up95: "res/effect/uiEffect/up95.png",
+    up96: "res/effect/uiEffect/up96.png",
+    up97: "res/effect/uiEffect/up97.png",
+    up98: "res/effect/uiEffect/up98.png",
+    up99: "res/effect/uiEffect/up99.png",
+    up100: "res/effect/uiEffect/up100.png",
+    up101: "res/effect/uiEffect/up101.png",
+    up102: "res/effect/uiEffect/up102.png",
+    up103: "res/effect/uiEffect/up103.png",
+    up104: "res/effect/uiEffect/up104.png",
 
 
     // 新手特效
@@ -792,6 +843,19 @@ var main_scene_image = {
     tutorials14: "res/ccb/tutorials14.ccbi",
     tutorials15: "res/ccb/tutorials15.ccbi",
     tutorials16: "res/ccb/tutorials16.ccbi",
+    tutorials17: "res/ccb/tutorials17.ccbi",
+    tutorials18: "res/ccb/tutorials18.ccbi",
+    tutorials19: "res/ccb/tutorials19.ccbi",
+    tutorials20: "res/ccb/tutorials20.ccbi",
+    tutorials21: "res/ccb/tutorials21.ccbi",
+    tutorials22: "res/ccb/tutorials22.ccbi",
+    tutorials23: "res/ccb/tutorials23.ccbi",
+    tutorials24: "res/ccb/tutorials24.ccbi",
+    tutorials25: "res/ccb/tutorials25.ccbi",
+    tutorials26: "res/ccb/tutorials26.ccbi",
+    tutorials27: "res/ccb/tutorials27.ccbi",
+
+
 
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",
@@ -802,9 +866,24 @@ var main_scene_image = {
 
     main_bg_music: "res/sound/main_bg_music.mp3",
     battle_bg_music: "res/sound/battle_bg_music.mp3",
+    battle_sound_aoe: "res/sound/battle_sound_aoe.wav",
+    battle_sound_atk: "res/sound/battle_sound_atk.wav",
+    battle_sound_buff: "res/sound/battle_sound_buff.wav",
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
+    battle_sound_lose: "res/sound/battle_sound_lose.wav",
     battle_sound_miss: "res/sound/battle_sound_miss.wav",
-    click_button_sound: "res/sound/click_button_sound.wav"
+    battle_sound_single: "res/sound/battle_sound_single.wav",
+    battle_sound_subtitle_card: "res/sound/battle_sound_subtitle_card.wav",
+    battle_sound_subtitle_spirit: "res/sound/battle_sound_subtitle_spirit.wav",
+    battle_sound_win: "res/sound/battle_sound_win.wav",
+    card_upgrade_sound: "res/sound/card_upgrade_sound.wav",
+    click_building_sound: "res/sound/click_building_sound.wav",
+    click_gold_sound: "res/sound/click_gold_sound.wav",
+    highlights_sound: "res/sound/highlights_sound.wav",
+    click_button_sound: "res/sound/click_button_sound.wav",
+    player_upgrade_sound: "res/sound/player_upgrade_sound.wav",
+    spirit_upgrade_sound: "res/sound/spirit_upgrade_sound.wav",
+    star_sound: "res/sound/star_sound.wav"
 };
 
 var main_scene_res = [
@@ -816,7 +895,13 @@ var main_scene_res = [
     //effect
 ];
 
-for (var cardId = 1; cardId <= 6; ++cardId) {
+var cardResIdList = [
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+];
+
+for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
+    var cardId = cardResIdList[cardIndex];
+
     main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
@@ -828,54 +913,16 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
-for (var cardId = 1001; cardId <= 1003; ++cardId) {
-    main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
+for (var cardId = 10000; cardId <= 10047; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
-    main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
 }
 
 for (var taskId = 1; taskId <= 50; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
-}
-
-var effectConfig = [
-    10,
-    10,
-    10,
-    5,
-    6,
-    7,
-    6,
-    8,
-    6,
-    12,
-    8,
-    4,
-    4
-];
-
-var effectRect = [
-    cc.rect(0, 0, 160, 80),
-    cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 640, 218),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 182, 171),
-    cc.rect(0, 0, 250, 275),
-    cc.rect(0, 0, 83, 261),
-    cc.rect(0, 0, 251, 279),
-    cc.rect(0, 0, 188, 263),
-    cc.rect(0, 0, 464, 391),
-    cc.rect(0, 0, 280, 308),
-    cc.rect(0, 0, 170, 185)
-];
-
-for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
-    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = "res/effect/" + effectId + "/" + frameI + ".png";
-    }
 }
 
 for (var key in main_scene_image) {
@@ -887,6 +934,8 @@ main_scene_res.push({src: "./res/font/skillName.fnt"});
 main_scene_res.push({src: "./res/font/skillName.png"});
 main_scene_res.push({src: "./res/font/tipNumber.fnt"});
 main_scene_res.push({src: "./res/font/tipNumber.png"});
+main_scene_res.push({src: "./res/font/UInumber.fnt"});
+main_scene_res.push({src: "./res/font/UInumber.png"});
 
 // battle scene res
 var battle_scene_res = [

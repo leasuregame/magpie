@@ -83,6 +83,8 @@ var Spirit = Entity.extend({
                 that.update(msg.spiritor);
 
                 cb(true);
+
+                lz.dc.event("event_spirit_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 

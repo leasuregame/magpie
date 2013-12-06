@@ -15,10 +15,26 @@
 var ConfigLayer = cc.Layer.extend({
     _configLayerFit: null,
 
-    musicOpen: true,
-    soundOpen: true,
+    musicOpen: false,
+    soundOpen: false,
     musicSelect: null,
     soundSelect: null,
+
+    onEnter: function () {
+        cc.log("ConfigLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("设置界面");
+    },
+
+    onExit: function () {
+        cc.log("ConfigLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("设置界面");
+    },
 
     init: function () {
         cc.log("ConfigLayer init");
@@ -29,8 +45,8 @@ var ConfigLayer = cc.Layer.extend({
 
         var sound = gameData.sound;
 
-        this.musicOpen = sound.get("openMusic");
-        this.soundOpen = sound.get("openEffect");
+        this.musicOpen = sound.isOpenMusic();
+        this.soundOpen = sound.isOpenEffect();
 
         cc.log(this.musicOpen);
         cc.log(this.soundOpen);
@@ -63,7 +79,7 @@ var ConfigLayer = cc.Layer.extend({
         var bgMusicItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this._onClickBgMusic(),
+            this._onClickBgMusic,
             this
         );
 
@@ -71,7 +87,6 @@ var ConfigLayer = cc.Layer.extend({
         bgMusicItem.setPosition(this._configLayerFit.bgMusicItemPoint);
 
         var bgMusicItemTitle = StrokeLabel.create("背景音乐", "STHeitiTC-Medium", 30);
-        //bgMusicItemTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicItemTitle.setAnchorPoint(cc.p(0, 0.5));
         bgMusicItemTitle.setPosition(cc.p(40, 55));
         bgMusicItem.addChild(bgMusicItemTitle);
@@ -82,7 +97,6 @@ var ConfigLayer = cc.Layer.extend({
         bgMusicItem.addChild(bgMusicOpenSprite);
 
         var bgMusicOpenSpriteTitle = StrokeLabel.create("开", "STHeitiTC-Medium", 30);
-        //bgMusicOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
         bgMusicOpenSpriteTitle.setPosition(cc.p(530, 55));
         bgMusicItem.addChild(bgMusicOpenSpriteTitle);
@@ -96,7 +110,7 @@ var ConfigLayer = cc.Layer.extend({
         var soundItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this._onClickSound(),
+            this._onClickSound,
             this
 
         );
@@ -104,7 +118,6 @@ var ConfigLayer = cc.Layer.extend({
         soundItem.setPosition(this._configLayerFit.soundItemPoint);
 
         var soundItemTitle = StrokeLabel.create("游戏音效", "STHeitiTC-Medium", 30);
-        //soundItemTitle.setColor(cc.c3b(255, 239, 131));
         soundItemTitle.setAnchorPoint(cc.p(0, 0.5));
         soundItemTitle.setPosition(cc.p(40, 55));
         soundItem.addChild(soundItemTitle);
@@ -115,7 +128,6 @@ var ConfigLayer = cc.Layer.extend({
         soundItem.addChild(soundOpenSprite);
 
         var soundOpenSpriteTitle = StrokeLabel.create("开", "STHeitiTC-Medium", 30);
-        //soundOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         soundOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
         soundOpenSpriteTitle.setPosition(cc.p(530, 55));
         soundItem.addChild(soundOpenSpriteTitle);
@@ -139,7 +151,6 @@ var ConfigLayer = cc.Layer.extend({
         tipsItem.setPosition(this._configLayerFit.tipsItemPoint);
 
         var tipsItemTitle = StrokeLabel.create("攻略", "STHeitiTC-Medium", 30);
-        //tipsItemTitle.setColor(cc.c3b(255, 239, 131));
         tipsItemTitle.setAnchorPoint(cc.p(0, 0.5));
         tipsItemTitle.setPosition(cc.p(40, 55));
         tipsItem.addChild(tipsItemTitle);
@@ -158,8 +169,7 @@ var ConfigLayer = cc.Layer.extend({
         QQGroup.setAnchorPoint(cc.p(0, 0));
         QQGroup.setPosition(this._configLayerFit.QQGroupPoint);
 
-        var QQGroupTitle = StrokeLabel.create("Q群： xxxxxxx", "STHeitiTC-Medium", 30);
-        //feedbackItemTitle.setColor(cc.c3b(255, 239, 131));
+        var QQGroupTitle = StrokeLabel.create("Q群： 264272502", "STHeitiTC-Medium", 30);
         QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);
@@ -178,41 +188,48 @@ var ConfigLayer = cc.Layer.extend({
     },
 
     _onClickBgMusic: function () {
-        return function () {
-            cc.log("ConfigLayer _onClickBgMusic");
-            this.musicOpen = !this.musicOpen;
-            this.musicSelect.setVisible(this.musicOpen);
+        cc.log("ConfigLayer _onClickBgMusic");
 
-            if (this.musicOpen) {
-                gameData.sound.openMusic();
-            } else {
-                gameData.sound.closeMusic();
-            }
-        };
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.musicOpen = !this.musicOpen;
+        this.musicSelect.setVisible(this.musicOpen);
+
+        if (this.musicOpen) {
+            gameData.sound.openMusic();
+        } else {
+            gameData.sound.closeMusic();
+        }
     },
 
     _onClickSound: function () {
-        return function () {
-            cc.log("ConfigLayer _onClickSound");
-            this.soundOpen = !this.soundOpen;
-            this.soundSelect.setVisible(this.soundOpen);
+        cc.log("ConfigLayer _onClickSound");
 
-            if (this.soundOpen) {
-                gameData.sound.openEffect();
-            } else {
-                gameData.sound.closeEffect();
-            }
-        };
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.soundOpen = !this.soundOpen;
+        this.soundSelect.setVisible(this.soundOpen);
+
+        if (this.soundOpen) {
+            gameData.sound.openEffect();
+        } else {
+            gameData.sound.closeEffect();
+        }
     },
 
     _onClickTips: function () {
         cc.log("ConfigLayer _onClickTips");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var tipsLayer = TipsLayer.create();
         this.addChild(tipsLayer, 1);
     },
 
     _onClickBack: function () {
         cc.log("ConfigLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

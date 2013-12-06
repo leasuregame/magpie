@@ -13,7 +13,7 @@
 
 
 var vipPrivilegeDescription = {
-    lottery_free_count: "每日寻宝次数",
+    lottery_free_count: "每日免费寻宝次数",
     friend_count: "好友上限",
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",
@@ -25,12 +25,32 @@ var vipPrivilegeDescription = {
 var VipPrivilegeLayer = LazyLayer.extend({
     _vipPrivilegeLayerFit: null,
 
+    onEnter: function () {
+        cc.log("VipPrivilegeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("VIP特权界面");
+    },
+
+    onExit: function () {
+        cc.log("VipPrivilegeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("VIP特权界面");
+    },
+
     init: function () {
         cc.log("VipPrivilegeLayer init");
 
         if (!this._super()) return false;
 
         this._vipPrivilegeLayerFit = gameFit.mainScene.vipPrivilegeLayer;
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(this._vipPrivilegeLayerFit.bgLayerPoint);
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(this._vipPrivilegeLayerFit.bgSpriteContentSize);
@@ -107,6 +127,9 @@ var VipPrivilegeLayer = LazyLayer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 355;
+        if (scrollViewHeight < this._vipPrivilegeLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._vipPrivilegeLayerFit.scrollViewHeight;
+        }
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 355 - i * 355;
@@ -191,6 +214,8 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("VipPrivilegeLayer _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var parent = this.getParent();
 

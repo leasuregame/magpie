@@ -22,6 +22,7 @@ var BatterLayer = cc.Layer.extend({
     _tipNode: null,
     _spiritNode: null,
     _locate: null,
+    _isPlayback: false,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -33,6 +34,7 @@ var BatterLayer = cc.Layer.extend({
         this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
+        this._isPlayback = battleLog.get("isPlayback");
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
 
@@ -81,12 +83,21 @@ var BatterLayer = cc.Layer.extend({
             }
         }
 
-        this._backItem = cc.MenuItemImage.create(
-            main_scene_image.button12,
-            main_scene_image.button12s,
-            this._onClickBack,
-            this
-        );
+        if (this._isPlayback) {
+            this._backItem = cc.MenuItemImage.create(
+                main_scene_image.button26,
+                main_scene_image.button26s,
+                this._onClickBack,
+                this
+            );
+        } else {
+            this._backItem = cc.MenuItemImage.create(
+                main_scene_image.button12,
+                main_scene_image.button12s,
+                this._onClickBack,
+                this
+            );
+        }
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
 
         var menu = cc.Menu.create(this._backItem);
@@ -173,7 +184,7 @@ var BatterLayer = cc.Layer.extend({
             if (that._counter == 0) {
                 var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
                 effect15Node.setPosition(that._batterLayerFit.effect15NodePoint);
-                that.addChild(effect15Node);
+                that.addChild(effect15Node, 5);
 
                 effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
                     effect15Node.removeFromParent();
@@ -266,14 +277,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", "+" + cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", spiritHp);
+                    that.tip(index, "buf_1", "+" + spiritHp);
                 })();
             }
         }
@@ -353,21 +364,21 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var addSubtitleNodeCb = function () {
-                if (ccbNode) {
-                    ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
-                    that.addChild(ccbNode, 5);
+                ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
+                that.addChild(ccbNode, 5);
 
-                    ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
-                } else {
-                    cb();
-                }
+                ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
             };
 
-            this._battleNode[attacker].runAnimations(
-                "rea_1",
-                0,
-                addSubtitleNodeCb
-            );
+            if (ccbNode) {
+                this._battleNode[attacker].runAnimations(
+                    "rea_1",
+                    0,
+                    addSubtitleNodeCb
+                );
+            } else {
+                cb();
+            }
         } else {
             this.normalAtk(battleStep);
         }
@@ -420,7 +431,7 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
+//                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
                     effect1Node.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
@@ -722,8 +733,10 @@ var BatterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (gameData.player.get("lv") < 10) {
-            TipLayer.tip("10级开始后，可以跳过战斗");
+        if (this._isPlayback) {
+            this.end();
+        } else if (gameData.player.get("lv") < 10) {
+            TipLayer.tip("10级以后，可以跳过战斗");
         } else {
             this.end();
         }

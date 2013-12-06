@@ -10,9 +10,14 @@
 /*
  * 命名空间
  * */
-var lz = {};
+var lz = lz || {};
 
+lz.TARGET_PLATFORM_IS_BROWSER = !("opengl" in sys.capabilities && "browser" != sys.platform);
 
+/*
+ * 模仿 setTimeout 和 clearTimeout 写的函数
+ * 与浏览器中调用方式一致
+ * */
 (function () {
     var _callback = {};
     var _index = 0;
@@ -31,19 +36,13 @@ var lz = {};
 
     lz.unschedule = function (fn) {
         // explicit nil handling
-
         cc.Director.getInstance().getScheduler().unscheduleCallbackForTarget(lz, fn);
     };
 
     lz.setTimeout = function (fn, delay) {
-//        cc.log("setTimeOut: " + _index);
-
         var _fn = (function (index) {
             return function () {
                 fn();
-
-//                cc.log("delete callback: " + index);
-
                 delete _callback[index];
             }
         })(_index);
@@ -61,10 +60,7 @@ var lz = {};
 
     lz.clearTimeout = function (index) {
         if (_callback[index]) {
-//            cc.log("clearTimeout: " + index);
-
             lz.unschedule(_callback[index]);
-
             delete _callback[index];
         }
     };
@@ -113,12 +109,24 @@ lz.clone = function (obj) {
     return newObj;
 };
 
+/*
+ * 传入图片生成纹理
+ * */
+lz.getTexture = function (filename) {
+    var texture = cc.TextureCache.getInstance().textureForKey(filename);
+
+    if (!texture) {
+        texture = cc.TextureCache.getInstance().addImage(filename);
+    }
+
+    return texture;
+};
 
 /*
  * 格式化字符串，分隔成段
  * */
 lz.format = function (str, length) {
-    cc.log("CardDetails _getDescription");
+    cc.log("lz format");
 
     if (!length || length <= 0) return [];
 
@@ -145,30 +153,15 @@ lz.getStrWidth = function (str, fonName, fontSize) {
     return label.getContentSize().width;
 };
 
-lz.getColor = function (colorType) {
-    var color = cc.c3b(255, 255, 255);
-
-    switch (colorType) {
-        case "green" :
-            color = cc.c3b(118, 238, 60);
-            break;
-        case "blue" :
-            color = cc.c3b(105, 218, 255);
-            break;
-        case "yellow" :
-            color = cc.c3b(255, 248, 69);
-            break;
-    }
-
-    return color;
-};
-
+/*
+ * 获取两个点之间地骗转角
+ * */
 lz.getAngle = function (p1, p2) {
     return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
 };
 
 /*
- * 获取介于两数之间的随机数[a, b)
+ * 获取两数之间的随机数[a, b)
  * */
 lz.random = function (a, b) {
     if (b == undefined) {
@@ -199,25 +192,73 @@ var gameGoodsIcon = {
 };
 
 var gameGoodsName = {
-    "exp": "经验",
-    "money": "仙币",
-    "gold": "魔石",
-    "powerValue": "体力",
-    "power": "体力",
-    "elixir": "仙丹",
-    "fragment": "卡魂",
-    "energy": "活力",
-    "skillPoint": "技能点",
-    "totalSpirit": "灵气",
-    "cards": "经验卡",
-    "exp_card": "经验卡",
-    "freeCount": "免费抽奖次数",
-    "lottery_free_count": "免费抽奖次数",
-    "challengeCount": "有奖竞技次数"
+    "exp": {
+        name: "经验",
+        color: cc.c3b(255, 239, 131)
+    },
+    "money": {
+        name: "仙币",
+        color: cc.c3b(255, 239, 131)
+    },
+    "gold": {
+        name: "魔石",
+        color: cc.c3b(118, 238, 60)
+    },
+    "powerValue": {
+        name: "体力",
+        color: cc.c3b(255, 239, 131)
+    },
+    "power": {
+        name: "经验",
+        color: cc.c3b(255, 239, 131)
+    },
+    "elixir": {
+        name: "仙丹",
+        color: cc.c3b(255, 239, 131)
+    },
+    "fragment": {
+        name: "卡魂",
+        color: cc.c3b(255, 239, 131)
+    },
+    "energy": {
+        name: "活力点",
+        color: cc.c3b(255, 239, 131)
+    },
+    "skillPoint": {
+        name: "技能点",
+        color: cc.c3b(255, 239, 131)
+    },
+    "totalSpirit": {
+        name: "灵气",
+        color: cc.c3b(118, 238, 60)
+    },
+    "cards": {
+        name: "经验元灵",
+        color: cc.c3b(255, 239, 131)
+    },
+    "exp_card": {
+        name: "经验元灵",
+        color: cc.c3b(255, 239, 131)
+    },
+    "freeCount": {
+        name: "免费抽奖次数",
+        color: cc.c3b(255, 239, 131)
+    },
+    "lottery_free_count": {
+        name: "免费抽奖次数",
+        color: cc.c3b(255, 239, 131)
+    },
+    "challengeCount": {
+        name: "有奖竞技次数",
+        color: cc.c3b(255, 239, 131)
+    }
 };
 
 lz.getNameByKey = function (key) {
-    return gameGoodsName[key] || key;
+    return gameGoodsName[key] || {
+        name: key,
+        color: cc.c3b(255, 255, 255)
+    };
 };
 
 lz.getRewardString = function (data) {
@@ -225,17 +266,51 @@ lz.getRewardString = function (data) {
 
     for (var key in data) {
         if (data[key]) {
+            var reward = lz.getNameByKey(key);
+
             if (key == "cards") {
-                str.push(lz.getNameByKey(key) + " : " + data[key].length);
+                var cards = data[key];
+                if (cards.length > 0) {
+                    str.push({
+                        str: cards[0].lv + "级" + reward.name + " : " + 1,
+                        color: reward.color
+                    });
+                }
             } else {
                 if (data[key] > 0) {
-                    str.push(lz.getNameByKey(key) + " : " + data[key]);
+                    str.push({
+                        str: reward.name + " : " + data[key],
+                        color: reward.color
+                    });
                 }
             }
         }
     }
 
     return str;
+};
+
+lz.tipReward = function (reward) {
+    reward = reward || {};
+
+    var key;
+    var delay = 0;
+
+    for (key in reward) {
+        if (!reward[key]) return;
+
+        var fn = (function (key) {
+            return function () {
+                var str = lz.getNameByKey(key);
+
+                TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+            }
+        })(key);
+
+        lz.scheduleOnce(fn, delay);
+
+        delay += 0.6;
+    }
 };
 
 lz.getTimeStr = function (time) {
@@ -252,38 +327,6 @@ lz.getTimeStr = function (time) {
     }
 
     return timeStr;
-};
-
-lz.tipReward = function (reward) {
-    reward = reward || {};
-
-    var key;
-    var delay = 0;
-
-    for (key in reward) {
-        if (!reward[key]) return;
-
-        var fn = (function (key) {
-            return function () {
-                TipLayer.tipNoBg(lz.getNameByKey(key) + ": +" + reward[key]);
-            }
-        })(key);
-
-
-        lz.scheduleOnce(fn, delay);
-
-        delay += 0.6;
-    }
-};
-
-lz.getTexture = function (filename) {
-    var texture = cc.TextureCache.getInstance().textureForKey(filename);
-
-    if (!texture) {
-        texture = cc.TextureCache.getInstance().addImage(filename);
-    }
-
-    return texture;
 };
 
 /*

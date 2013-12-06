@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>deviceOrientationLandscapeLeft</key>
-	<true/>
+	<false/>
 	<key>deviceOrientationLandscapeRight</key>
-	<true/>
+	<false/>
 	<key>deviceOrientationPortrait</key>
 	<false/>
 	<key>deviceOrientationUpsideDown</key>
@@ -21,21 +21,21 @@
 	<key>generatedSpriteSheets</key>
 	<dict/>
 	<key>javascriptBased</key>
-	<true/>
+	<false/>
 	<key>javascriptMainCCB</key>
 	<string></string>
 	<key>needRepublish</key>
 	<false/>
 	<key>onlyPublishCCBs</key>
-	<false/>
-	<key>publishDirectory</key>
-	<string>/res</string>
-	<key>publishDirectoryAndroid</key>
-	<string>/res</string>
-	<key>publishDirectoryHTML5</key>
-	<string>Published-HTML5</string>
-	<key>publishEnabledAndroid</key>
 	<true/>
+	<key>publishDirectory</key>
+	<string>.</string>
+	<key>publishDirectoryAndroid</key>
+	<string></string>
+	<key>publishDirectoryHTML5</key>
+	<string></string>
+	<key>publishEnabledAndroid</key>
+	<false/>
 	<key>publishEnabledHTML5</key>
 	<false/>
 	<key>publishEnablediPhone</key>
@@ -55,26 +55,21 @@
 	<key>publishResolution_ipadhd</key>
 	<true/>
 	<key>publishResolution_large</key>
-	<true/>
+	<false/>
 	<key>publishResolution_medium</key>
-	<true/>
+	<false/>
 	<key>publishResolution_small</key>
-	<true/>
+	<false/>
 	<key>publishResolution_xlarge</key>
-	<true/>
+	<false/>
 	<key>publishResolution_xsmall</key>
-	<true/>
+	<false/>
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
 	<integer>4</integer>
 	<key>resourcePaths</key>
-	<array>
-		<dict>
-			<key>path</key>
-			<string>res</string>
-		</dict>
-	</array>
+	<array/>
 	<key>versionStr</key>
 	<string>Version: 3.0-alpha5
 GitHub: 76499877e8

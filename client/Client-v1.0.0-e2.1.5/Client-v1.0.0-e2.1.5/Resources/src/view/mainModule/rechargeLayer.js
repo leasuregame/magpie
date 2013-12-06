@@ -15,6 +15,16 @@ var RechargeLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("充值优惠界面");
+    },
+
+    onExit: function () {
+        cc.log("RechargeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("充值优惠界面");
     },
 
     init: function () {
@@ -39,13 +49,13 @@ var RechargeLayer = cc.Layer.extend({
         midIcon.setPosition(this._rechargeLayerFit.midIconPoint);
         this.addChild(midIcon);
 
-        var itemText = cc.LabelTTF.create('时间：从XX时间---XX时间', "STHeitiTC-Medium", 20);
+        var itemText = cc.LabelTTF.create('首次充值，3倍返利。', "STHeitiTC-Medium", 20);
         itemText.setAnchorPoint(cc.p(0, 0));
         itemText.setPosition(this._rechargeLayerFit.itemTextPoint);
         itemText.setColor(cc.c3b(97, 11, 9));
         this.addChild(itemText);
 
-        var description = lz.format('奖励：任意充值，均可额外获得两倍魔石赠送。你还在犹豫什么呢，赶紧充值吧。', 14);
+        var description = lz.format('首次任意金额的充值，你都将获得3倍的魔石。不是2倍，更不是1倍，是3倍。送啥都不如送这玩意来的更直接，更实在。', 14);
         for (var i = 0; i < description.length; i++) {
             var text = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 20);
             text.setAnchorPoint(cc.p(0, 0));
@@ -74,6 +84,8 @@ var RechargeLayer = cc.Layer.extend({
     },
 
     _onClickGo2Payment: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(ShopLayer);
     }
 });

@@ -20,8 +20,8 @@ var SYSTEM_MESSAGE = 4;
 var ASKING_STATUS = 1;
 var ACCEPT_STATUS = 2;
 var REJECT_STATUS = 3;
-var HANDLED_STATUS = 4;
-var UNHANDLED_STATUS = 5;
+var UNHANDLED_STATUS = 4;
+var HANDLED_STATUS = 5;
 var NOTICE_STATUS = 6;
 
 var Message = Entity.extend({
@@ -77,7 +77,12 @@ var Message = Entity.extend({
                         cc.log(data);
 
                         gameData.message.push(data.msg);
+
                     });
+
+                    gameMark.updateMessageMark(false);
+
+                    lz.dc.event("event_message_list");
                 } else {
                     cc.log("sync fail");
 
@@ -93,18 +98,21 @@ var Message = Entity.extend({
 
         if (msg.type == ADD_FRIEND_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == LEAVE_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == BATTLE_MESSAGE) {
             this._battleMessage.push(msg);
         } else if (msg.type == SYSTEM_MESSAGE) {
             this._systemMessage.push(msg);
+            gameMark.updateSystemMessageMark(true);
         }
 
         this._sort();
     },
 
-    accept: function (msgId) {
+    accept: function (cb, msgId) {
         cc.log("Message accept: " + msgId);
 
         var len = this._friendMessage.length;
@@ -132,6 +140,8 @@ var Message = Entity.extend({
                     message.status = ACCEPT_STATUS;
 
                     gameData.friend.push(msg);
+                    cb();
+                    lz.dc.event("event_friend_accept");
                 } else {
                     cc.log("accept fail");
                 }
@@ -141,7 +151,7 @@ var Message = Entity.extend({
         }
     },
 
-    reject: function (msgId) {
+    reject: function (cb, msgId) {
         cc.log("Message reject: " + msgId);
 
         var len = this._friendMessage.length;
@@ -165,7 +175,8 @@ var Message = Entity.extend({
                     cc.log("reject success");
 
                     message.status = REJECT_STATUS;
-
+                    cb();
+                    lz.dc.event("event_friend_reject");
                 } else {
                     cc.log("reject fail");
                 }
@@ -215,7 +226,10 @@ var Message = Entity.extend({
                     lz.tipReward(msg);
 
                     cb();
+
+                    lz.dc.event("event_handle_sys_message");
                 } else {
+                    TipLayer.tip(data.msg);
                     cc.log("receive fail");
                 }
             });
@@ -251,6 +265,8 @@ var Message = Entity.extend({
                 var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 BattlePlayer.getInstance().play(battleLogId, true);
+
+                lz.dc.event("event_battle_play_back");
             } else {
                 cc.log("playback fail");
 

@@ -39,11 +39,14 @@ var BattlePlayer = cc.Class.extend({
         this._battleScene.next();
     },
 
-    end: function () {
+    end: function (goLayer) {
         cc.log("BattlePlayer end");
 
         cc.Director.getInstance().popScene();
-//      cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.getInstance()));
+
+        if (goLayer) {
+            MainScene.getInstance().switchLayer(goLayer);
+        }
     }
 });
 

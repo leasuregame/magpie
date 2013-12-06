@@ -205,7 +205,7 @@ var Task = Entity.extend({
 
                 if (msg.through_reward) {
                     cbData.through_reward = msg.through_reward;
-                    player.add('money', msg.through_reward.money);
+                    player.add("money", msg.through_reward.money);
                 }
 
                 if (msg.result == "fight") {

@@ -209,7 +209,7 @@ var gameGoodsName = {
         color: cc.c3b(255, 239, 131)
     },
     "power": {
-        name: "经验",
+        name: "体力",
         color: cc.c3b(255, 239, 131)
     },
     "elixir": {

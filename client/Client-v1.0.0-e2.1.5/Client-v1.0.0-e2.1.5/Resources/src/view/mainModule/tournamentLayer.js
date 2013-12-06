@@ -198,7 +198,6 @@ var TournamentLayer = cc.Layer.extend({
                     } else {
                         next();
                     }
-
                 }
             });
             this._upgradeReward = null;

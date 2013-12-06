@@ -491,16 +491,19 @@ var ExploreLayer = cc.Layer.extend({
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
-
                             if (goldList) {
                                 GoldLayer.pop({
                                     goldList: goldList,
                                     cb: function () {
                                         if (level9Box) {
-                                            Level9BoxLayer.pop(level9Box);
+                                            Level9BoxLayer.pop({reward: level9Box});
                                         }
                                     }
                                 });
+                            } else {
+                                if (level9Box) {
+                                    Level9BoxLayer.pop({reward: level9Box});
+                                }
                             }
                         };
                         PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});

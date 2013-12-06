@@ -55,7 +55,7 @@ Handler::appStore = (msg, session, next) ->
 vitualBuy = (app, msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
-
+  table = require('../../../manager/table')
   app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})

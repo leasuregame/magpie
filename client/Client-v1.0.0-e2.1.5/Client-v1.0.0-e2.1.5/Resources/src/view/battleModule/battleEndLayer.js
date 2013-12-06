@@ -75,15 +75,13 @@ var BattleEndLayer = cc.Layer.extend({
         var offsetY = this._battleEndLayerFit.offsetYHeight;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
-            if (str[i].str != "卡魂") {
-                rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
-                rewardLabel.setColor(str[i].color);
-                rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-                rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
-                label.addChild(rewardLabel);
+            rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(str[i].color);
+            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+            rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
+            label.addChild(rewardLabel);
 
-                offsetY -= 53;
-            }
+            offsetY -= 53;
         }
 
         var okItem = cc.MenuItemImage.create(

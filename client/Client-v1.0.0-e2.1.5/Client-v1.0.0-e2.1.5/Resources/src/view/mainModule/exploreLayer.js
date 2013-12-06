@@ -507,10 +507,22 @@ var ExploreLayer = cc.Layer.extend({
                             }
                         };
                         PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
-                    } else if (goldList) {
-                        GoldLayer.pop(goldList);
+                    } else {
+                        if (goldList) {
+                            GoldLayer.pop({
+                                goldList: goldList,
+                                cb: function () {
+                                    if (level9Box) {
+                                        Level9BoxLayer.pop({reward: level9Box});
+                                    }
+                                }
+                            });
+                        } else {
+                            if (level9Box) {
+                                Level9BoxLayer.pop({reward: level9Box});
+                            }
+                        }
                     }
-
                 };
 
                 if (toNext) {
@@ -521,7 +533,6 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
                 this._reward = null;
-
             }, 1);
 
             return 1;

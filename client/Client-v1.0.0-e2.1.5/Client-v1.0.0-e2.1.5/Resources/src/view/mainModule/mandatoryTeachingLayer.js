@@ -119,10 +119,13 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         }
 
         var layer = this._layer[this._layerOrder[this._step]];
+
+        cc.log("layer = " + layer);
         if (layer == ExploreLayer) {
-            var id = gameData.task.get("id");
+//            var id = gameData.task.getSection();
+//            cc.log(id);
             if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
-                MainScene.getInstance().switch(ExploreLayer.create(id));
+                MainScene.getInstance().switch(ExploreLayer.create(1));
             }
 
         } else {

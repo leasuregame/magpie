@@ -218,17 +218,29 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
+        var next = function () {
+            var uid = gameData.player.get("uid");
+            var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "firstPassWin"));
+            if (isFirstPassWin == 1) {
+                sys.localStorage.setItem(uid + "firstPassWin", 2);
+                MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
+            }
+
+        };
+
         if (this._upgradeReward) {
             PlayerUpgradeLayer.pop({
                 reward: this._upgradeReward,
                 cb: function () {
                     if (this._level9Box) {
-                        Level9BoxLayer.pop(this._level9Box);
+                        Level9BoxLayer.pop({reward: this._level9Box, cb: next});
                         this._level9Box = null;
                     }
                 }
             });
             this._upgradeReward = null;
+        } else {
+            next();
         }
 
         var pass = gameData.pass;

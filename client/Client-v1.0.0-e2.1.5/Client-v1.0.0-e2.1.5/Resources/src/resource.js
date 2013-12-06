@@ -936,6 +936,8 @@ main_scene_res.push({src: "./res/font/tipNumber.fnt"});
 main_scene_res.push({src: "./res/font/tipNumber.png"});
 main_scene_res.push({src: "./res/font/UInumber.fnt"});
 main_scene_res.push({src: "./res/font/UInumber.png"});
+main_scene_res.push({src: "./res/font/AchievementWord.fnt"});
+main_scene_res.push({src: "./res/font/AchievementWord.png"});
 
 // battle scene res
 var battle_scene_res = [

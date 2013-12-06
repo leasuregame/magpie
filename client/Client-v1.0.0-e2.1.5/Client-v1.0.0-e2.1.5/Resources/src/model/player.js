@@ -177,7 +177,6 @@ var Player = Entity.extend({
         }
 
         gameMark.updateGoldRewardMark(false);
-
     },
 
     getAbility: function () {

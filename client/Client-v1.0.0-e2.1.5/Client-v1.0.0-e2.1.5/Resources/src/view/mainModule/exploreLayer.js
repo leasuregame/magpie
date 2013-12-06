@@ -664,8 +664,6 @@ var ExploreLayer = cc.Layer.extend({
                     title: "体力购买次数已用完",
                     msg: "成为VIP1，每日即可获得额外的购买次数"
                 });
-            } else {
-                TipLayer.tip(product.tip);
             }
 
             return;

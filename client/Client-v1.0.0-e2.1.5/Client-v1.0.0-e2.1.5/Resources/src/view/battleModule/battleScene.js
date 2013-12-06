@@ -12,8 +12,6 @@
  * */
 
 
-var BATTLE_PLAY_SPEED = 1.3;
-
 var BattleScene = cc.Scene.extend({
     _battleProcess: [],
     _index: 0,
@@ -64,10 +62,6 @@ var BattleScene = cc.Scene.extend({
     play: function () {
         cc.log("BattleScene play");
 
-        gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
-
-        cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEED);
-
         this._index = 0;
         this.next();
     },
@@ -85,8 +79,6 @@ var BattleScene = cc.Scene.extend({
     end: function () {
         cc.log("BattleScene end");
 
-        gameData.sound.playMusic();
-        cc.Director.getInstance().getScheduler().setTimeScale(1);
         BattlePlayer.getInstance().end();
     }
 });

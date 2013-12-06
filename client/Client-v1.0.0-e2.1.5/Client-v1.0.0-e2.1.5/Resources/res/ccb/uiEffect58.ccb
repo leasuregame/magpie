@@ -75,7 +75,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>2.3333332538604736</real>
+											<real>3.2999999523162842</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -90,7 +90,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3</real>
+											<real>4</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -281,7 +281,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>2.3333332538604736</real>
+											<real>3.2999999523162842</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -296,7 +296,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3</real>
+											<real>4</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -445,7 +445,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -499,7 +499,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>2.3333332538604736</real>
+											<real>3.2999999523162842</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -514,7 +514,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3</real>
+											<real>4</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -656,7 +656,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -695,8 +695,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -733,7 +731,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>2.9333333969116211</real>
+											<real>3.9000000953674316</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -797,7 +795,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1187,13 +1185,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>3</real>
+			<real>4</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -26,6 +26,7 @@ var BattleLog = Entity.extend({
     _battleStepLen: 0,
     _index: -1,
     _isPlayback: false,
+    _isFirstTournament: false,
 
     init: function (id, isPlayback) {
         cc.log("BattleLog init");
@@ -44,6 +45,13 @@ var BattleLog = Entity.extend({
         this.set("battleStep", battleLog.steps);
         this.set("battleStepLen", battleLog.steps.length);
         this.set("isPlayback", isPlayback);
+
+        var uid = gameData.player.get("uid");
+        if (parseInt(sys.localStorage.getItem(uid + "firstTournament")) == 1) {
+            this.set("isFirstTournament", true);
+        } else {
+            this.set("isFirstTournament", false);
+        }
 
         for (var key in this._card) {
             this._card[key].index = key;

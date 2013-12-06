@@ -162,11 +162,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
         cc.log("NoviceTeachingLayer showOverTeaching");
 
         var layer = LazyLayer.create();
+        layer.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
         this.addChild(layer);
-
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
-        bgLayer.setPosition(this._noviceTeachingLayerFit.bgLayerPoint);
-        layer.addChild(bgLayer);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg16);
         bgSprite.setPosition(this._noviceTeachingLayerFit.bgSpritePoint);

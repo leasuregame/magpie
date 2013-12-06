@@ -60,7 +60,7 @@ vitualBuy = (app, msg, session, next) ->
   if products and products.length > 0
     product = products[0]
   else
-  	throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
+  	throw new Error('can not file product info by product id ', id)
     
   app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err

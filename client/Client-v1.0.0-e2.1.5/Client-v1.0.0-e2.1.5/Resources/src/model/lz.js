@@ -277,7 +277,7 @@ lz.getRewardString = function (data) {
                     });
                 }
             } else {
-                if (data[key] > 0) {
+                if (key != "fragment" && data[key] > 0) {
                     str.push({
                         str: reward.name + " : " + data[key],
                         color: reward.color

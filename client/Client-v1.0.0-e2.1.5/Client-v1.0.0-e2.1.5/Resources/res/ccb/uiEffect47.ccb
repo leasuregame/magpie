@@ -522,7 +522,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up121.png</string>
+							<string>res/effect/uiEffect/up120.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -860,6 +860,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -940,8 +942,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>_openBox</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -957,7 +959,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

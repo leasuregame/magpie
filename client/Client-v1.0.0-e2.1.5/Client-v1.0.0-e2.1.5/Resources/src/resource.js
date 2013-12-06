@@ -196,19 +196,21 @@ var main_scene_image = {
     button21s: main_scene_path + "button21s.png",
     button22: main_scene_path + "button22.png",
     button22s: main_scene_path + "button22s.png",
+    button22h: main_scene_path + "button22h.png",
     button22d: main_scene_path + "button22d.png",
     button23: main_scene_path + "button23.png",
     button23s: main_scene_path + "button23s.png",
+    button23h: main_scene_path + "button23h.png",
     button23d: main_scene_path + "button23d.png",
     button24: main_scene_path + "button24.png",
     button24s: main_scene_path + "button24s.png",
     button25: main_scene_path + "button25.png",
     button25s: main_scene_path + "button25s.png",
     button25d: main_scene_path + "button25d.png",
-//    button26: main_scene_path + "button26.png",
-//    button26s: main_scene_path + "button26s.png",
-//    button27: main_scene_path + "button27.png",
-//    button27s: main_scene_path + "button27s.png",
+    button26: main_scene_path + "button26.png",
+    button26s: main_scene_path + "button26s.png",
+    button27: main_scene_path + "button27.png",
+    button27s: main_scene_path + "button27s.png",
 //    button28: main_scene_path + "button28.png",
 //    button28s: main_scene_path + "button28s.png",
 //    button29: main_scene_path + "button29.png",
@@ -404,7 +406,7 @@ var main_scene_image = {
     icon123: main_scene_path + "icon123.png",
     icon124: main_scene_path + "icon124.png",
     icon125: main_scene_path + "icon125.png",
-//    icon126: main_scene_path + "icon126.png",
+    icon126: main_scene_path + "icon126.png",
     icon127: main_scene_path + "icon127.png",
     icon128: main_scene_path + "icon128.png",
     icon129: main_scene_path + "icon129.png",
@@ -580,6 +582,7 @@ var main_scene_image = {
     icon299: main_scene_path + "icon299.png",
     icon300: main_scene_path + "icon300.png",
     icon301: main_scene_path + "icon301.png",
+    icon302: main_scene_path + "icon302.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -653,17 +656,17 @@ var main_scene_image = {
     uiEffect44: "res/ccb/uiEffect44.ccbi",
     uiEffect45: "res/ccb/uiEffect45.ccbi",
 //    uiEffect46: "res/ccb/uiEffect46.ccbi",
-//    uiEffect47: "res/ccb/uiEffect47.ccbi",
-//    uiEffect48: "res/ccb/uiEffect48.ccbi",
-//    uiEffect49: "res/ccb/uiEffect49.ccbi",
-//    uiEffect50: "res/ccb/uiEffect50.ccbi",
-//    uiEffect51: "res/ccb/uiEffect51.ccbi",
-//    uiEffect52: "res/ccb/uiEffect52.ccbi",
-//    uiEffect53: "res/ccb/uiEffect53.ccbi",
-//    uiEffect54: "res/ccb/uiEffect54.ccbi",
-//    uiEffect55: "res/ccb/uiEffect55.ccbi",
-//    uiEffect56: "res/ccb/uiEffect56.ccbi",
-//    uiEffect57: "res/ccb/uiEffect57.ccbi",
+    uiEffect47: "res/ccb/uiEffect47.ccbi",
+    uiEffect48: "res/ccb/uiEffect48.ccbi",
+    uiEffect49: "res/ccb/uiEffect49.ccbi",
+    uiEffect50: "res/ccb/uiEffect50.ccbi",
+    uiEffect51: "res/ccb/uiEffect51.ccbi",
+    uiEffect52: "res/ccb/uiEffect52.ccbi",
+    uiEffect53: "res/ccb/uiEffect53.ccbi",
+    uiEffect54: "res/ccb/uiEffect54.ccbi",
+    uiEffect55: "res/ccb/uiEffect55.ccbi",
+    uiEffect56: "res/ccb/uiEffect56.ccbi",
+    uiEffect57: "res/ccb/uiEffect57.ccbi",
 //    uiEffect58: "res/ccb/uiEffect58.ccbi",
 //    uiEffect59: "res/ccb/uiEffect59.ccbi",
 //    uiEffect60: "res/ccb/uiEffect60.ccbi",
@@ -840,6 +843,19 @@ var main_scene_image = {
     tutorials14: "res/ccb/tutorials14.ccbi",
     tutorials15: "res/ccb/tutorials15.ccbi",
     tutorials16: "res/ccb/tutorials16.ccbi",
+    tutorials17: "res/ccb/tutorials17.ccbi",
+    tutorials18: "res/ccb/tutorials18.ccbi",
+    tutorials19: "res/ccb/tutorials19.ccbi",
+    tutorials20: "res/ccb/tutorials20.ccbi",
+    tutorials21: "res/ccb/tutorials21.ccbi",
+    tutorials22: "res/ccb/tutorials22.ccbi",
+    tutorials23: "res/ccb/tutorials23.ccbi",
+    tutorials24: "res/ccb/tutorials24.ccbi",
+    tutorials25: "res/ccb/tutorials25.ccbi",
+    tutorials26: "res/ccb/tutorials26.ccbi",
+    tutorials27: "res/ccb/tutorials27.ccbi",
+
+
 
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",
@@ -901,7 +917,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
-for (var cardId = 10000; cardId <= 10032; ++cardId) {
+for (var cardId = 10000; cardId <= 10047; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }
 
@@ -918,6 +934,8 @@ main_scene_res.push({src: "./res/font/skillName.fnt"});
 main_scene_res.push({src: "./res/font/skillName.png"});
 main_scene_res.push({src: "./res/font/tipNumber.fnt"});
 main_scene_res.push({src: "./res/font/tipNumber.png"});
+main_scene_res.push({src: "./res/font/UInumber.fnt"});
+main_scene_res.push({src: "./res/font/UInumber.png"});
 
 // battle scene res
 var battle_scene_res = [

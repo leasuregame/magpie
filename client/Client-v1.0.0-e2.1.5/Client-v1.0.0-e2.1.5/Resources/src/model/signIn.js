@@ -16,13 +16,13 @@ var MAX_SIGN_IN_HISTORY = 12;
 
 var SignIn = Entity.extend({
     _monthsMark: [],
-    _flag: 0,
+    _flag: [],
 
     init: function () {
         cc.log("SignIn init");
 
         this._monthsMark = [];
-        this._flag = 0;
+        this._flag = [];
 
         this.sync();
     },
@@ -31,16 +31,22 @@ var SignIn = Entity.extend({
         cc.log("SignIn update");
         cc.log(data);
 
-        var months = data.months || {};
+        var months = data || {};
 
-        this._flag = data.flag || 0;
+        this._flag = [];
         this._monthsMark = [];
 
         for (var i = 0; i < MAX_SIGN_IN_HISTORY; ++i) {
             var monthMark = this._getMonthData(i);
 
             var key = monthMark.year.toString() + monthMark.month.toString();
-            monthMark.mark = months[key] || 0;
+
+            if (months[key]) {
+                monthMark.mark = months[key].mark || 0;
+                this._flag[i] = months[key].flag || 0;
+            } else {
+                monthMark.mark = 0;
+            }
 
             monthMark.count = 0;
             for (var j = 0; j < monthMark.days; ++j) {
@@ -134,7 +140,7 @@ var SignIn = Entity.extend({
         cc.log("MonthLabel canReceive");
 
         if (index == 0) {
-            return ((this._flag >> i & 1) != 1);
+            return ((this._flag[0] >> i & 1) != 1);
         }
 
 

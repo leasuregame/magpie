@@ -15,6 +15,10 @@
 var MAX_CARD_TABLE_ID = 1000;
 var MAX_CARD_STAR = 5;
 
+var EVOLUTION_SUCCESS = 1;
+var EVOLUTION_FAIL = 0;
+var EVOLUTION_ERROR = -1;
+
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",
@@ -372,7 +376,7 @@ var Card = Entity.extend({
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
             return skillUpgradeTable["star" + this._star];
         }
 
@@ -455,7 +459,7 @@ var Card = Entity.extend({
                 that.update(msg);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -20000);
+                    gameData.player.add("money", -2000);
                 } else if (type == USE_GOLD) {
                     gameData.player.add("gold", -20);
                 }
@@ -529,8 +533,8 @@ var Card = Entity.extend({
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);
-
-                cb();
+                var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+                cb(result);
 
                 lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
@@ -538,7 +542,7 @@ var Card = Entity.extend({
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                cb(EVOLUTION_ERROR);
             }
         });
     },

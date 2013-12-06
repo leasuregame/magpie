@@ -118,18 +118,22 @@ class Manager
   @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
+    firstWin = false
     task = utility.deepCopy(player.task)
     if not task.hasWin
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
       player.task = task
 
+      if task.id == 1
+        firstWin = true # 第一小关第一次赢
+
     ### 每次战斗结束都有10%的概率获得5魔石 ###
     if utility.hitRate(taskRate.gold_obtain.rate)
       player.increase('gold', taskRate.gold_obtain.value)
       battleLog.rewards.gold = taskRate.gold_obtain.value  
 
-    saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
+    saveExpCardsInfo player.id, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)
 
@@ -175,13 +179,15 @@ class Manager
     player.consumePower(taskData.power_consume)
 
     ###  判断是否升级 ###
-    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, rewards) ->
+    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, level9Box, rewards) ->
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv
           rewards: rewards
           friendsCount: player.friendsCount
         }
+      if level9Box?
+        data.level9Box = level9Box
 
       cb(null, data)
 
@@ -214,15 +220,16 @@ bornPassiveSkill = () ->
     value: parseFloat (value/100).toFixed(1)
   }
 
-saveExpCardsInfo = (playerId, count, cb) ->
+saveExpCardsInfo = (playerId, count, firstWin, cb) ->
   cd = taskRate.card_drop
   results = []
   async.times count
     , (n, callback) ->
+      lv = if firstWin then 15 else parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
       dao.card.createExpCard(
         data: {
           playerId: playerId,
-          lv: parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+          lv: lv
         }, callback
       )
     , cb

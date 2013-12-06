@@ -87,6 +87,8 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
+            '../Resources-AppStore/appStoreModel/payment.js',
+
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
             'src/model/battleStep.js',
@@ -130,6 +132,7 @@
             'src/view/mainModule/bubbleLabel.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardEvolutionLabel.js',
+            'src/view/mainModule/cardEvolutionLayer.js',
             'src/view/mainModule/cardFullNode.js',
             'src/view/mainModule/cardHalfNode.js',
             'src/view/mainModule/cardHeadNode.js',
@@ -189,6 +192,7 @@
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
+            'src/view/mainModule/mandatoryTeachingLayer.js',
             'src/view/mainModule/noviceTeachingLayer.js',
             'src/view/mainModule/mainScene.js',
 

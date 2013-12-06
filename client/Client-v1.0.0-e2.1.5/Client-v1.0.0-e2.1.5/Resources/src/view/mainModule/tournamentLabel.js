@@ -74,7 +74,7 @@ var TournamentLabel = cc.Node.extend({
         var ranking = this._player.ranking;
         if (ranking <= 3) {
             var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
-            rankingIcon.setPosition(cc.p(95, 42));
+            rankingIcon.setPosition(cc.p(95, 44));
             this.addChild(rankingIcon);
         } else {
             var rankingLabel = StrokeLabel.create(ranking, "STHeitiTC-Medium", 38);
@@ -193,35 +193,45 @@ var TournamentLabel = cc.Node.extend({
                 }, this._player.playerId);
             } else {
 
-                // 有问题，sys.localStorage.getItem读出来是字符串，也就是"0";
-//                var tournament = gameData.tournament;
-//                var count = tournament.get("count");
+                var tournament = gameData.tournament;
+                var count = tournament.get("count");
 
-//                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed") || 1;
+                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "firstCountUsed") || 1;
+                isFirstCountUsed = parseInt(isFirstCountUsed);
+                if (count == 0 && isFirstCountUsed == 1) {
 
-//                if(count == 0 && isFirstCountUsed == 1) {
-//
-//                    sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 0);
-//                    TournamentTipLayer.pop();
-//
-//                } else {
-//
-                gameData.tournament.defiance(function (data) {
-                    cc.log(data);
+                    sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 0);
+                    this._target.showTip();
 
-                    if (data) {
-                        if (data.upgradeReward) {
-                            that._target._setPlayerUpgradeReward(data.upgradeReward);
-                        }
-
-                        BattlePlayer.getInstance().play(data.battleLogId);
-                    } else {
-                        that._target.update();
+                } else {
+                    if(count != 0) {
+                        sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
                     }
-                }, this._player.playerId, this._player.ranking);
+
+                    gameData.tournament.defiance(function (data) {
+                        cc.log(data);
+
+                        if (data) {
+                            if (data.upgradeReward) {
+                                that._target._setPlayerUpgradeReward(data.upgradeReward);
+                            }
+
+                            BattlePlayer.getInstance().play(data.battleLogId);
+
+                            var uid = gameData.player.get("uid");
+                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament")) || 1;
+                            if(isFirstTournament == 1) {
+                                MandatoryTeachingLayer.pop();
+                                sys.localStorage.setItem(uid + "firstTournament", 0);
+                            }
+
+                        } else {
+                            that._target.update();
+                        }
+                    }, this._player.playerId, this._player.ranking);
 
 
-//                }
+                }
             }
         }
     }

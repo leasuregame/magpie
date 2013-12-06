@@ -57,15 +57,15 @@ var BattleEndLayer = cc.Layer.extend({
         if (len == 0) {
             if (isWin) {
                 str = [
-                    "再接再励",
-                    "勇往直前",
-                    "打遍三界无敌手"
+                    {str: "再接再励", color: cc.c3b(255, 239, 131)},
+                    {str: "勇往直前", color: cc.c3b(255, 239, 131)},
+                    {str: "打遍三界无敌手", color: cc.c3b(255, 239, 131)}
                 ];
             } else {
                 str = [
-                    "胜败乃常事",
-                    "搞搞强化培养洗练",
-                    "必能打过"
+                    {str: "胜败乃常事", color: cc.c3b(255, 255, 255)},
+                    {str: "搞搞强化培养洗练", color: cc.c3b(255, 255, 255)},
+                    {str: "必能打过", color: cc.c3b(255, 255, 255)}
                 ];
             }
 
@@ -75,8 +75,8 @@ var BattleEndLayer = cc.Layer.extend({
         var offsetY = this._battleEndLayerFit.offsetYHeight;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
-            rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
-            rewardLabel.setColor(cc.c3b(255, 239, 131));
+            rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
             label.addChild(rewardLabel);
@@ -87,7 +87,6 @@ var BattleEndLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.create(
             main_scene_image.button66,
             main_scene_image.button66s,
-          //  main_scene_image.icon21,
             this.end,
             this
         );
@@ -96,15 +95,35 @@ var BattleEndLayer = cc.Layer.extend({
         var replayItem = cc.MenuItemImage.create(
             main_scene_image.button67,
             main_scene_image.button67s,
-            //main_scene_image.icon291,
             this.replay,
             this
         );
         replayItem.setPosition(this._battleEndLayerFit.replayItemPoint);
 
-        var menu = cc.Menu.create(okItem, replayItem);
+        var goStrengthenLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button27,
+            main_scene_image.button27s,
+            main_scene_image.icon126,
+            this._onClickGoStrengthenLayer,
+            this
+        );
+        goStrengthenLayerItem.setPosition(this._battleEndLayerFit.goStrengthenLayerItemPoint);
+
+        var menu = cc.Menu.create(okItem, replayItem, goStrengthenLayerItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
+
+        var goStrengthenLayerIcon = goStrengthenLayerItem.getIconImage();
+        goStrengthenLayerIcon.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.FadeOut.create(2),
+                    cc.FadeIn.create(2)
+                )
+            )
+        );
+
+        goStrengthenLayerItem.setVisible(!isWin);
 
         this.setVisible(false);
 
@@ -119,10 +138,14 @@ var BattleEndLayer = cc.Layer.extend({
         this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
 
         var fragment = this._battleLog.get("reward").fragment;
+
         if (fragment) {
             var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
             this.addChild(fragmentEffect, 1);
+
+            fragmentEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+
         }
 
     },
@@ -140,8 +163,13 @@ var BattleEndLayer = cc.Layer.extend({
 
         BattlePlayer.getInstance().next();
         BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
-    }
+    },
 
+    _onClickGoStrengthenLayer: function () {
+        cc.log("BattleEndLayer _onClickGoStrengthenLayer");
+
+        BattlePlayer.getInstance().end(StrengthenLayer);
+    }
 });
 
 

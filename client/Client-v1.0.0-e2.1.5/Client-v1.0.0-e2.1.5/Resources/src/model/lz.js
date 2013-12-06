@@ -192,25 +192,73 @@ var gameGoodsIcon = {
 };
 
 var gameGoodsName = {
-    "exp": "经验",
-    "money": "仙币",
-    "gold": "魔石",
-    "powerValue": "体力",
-    "power": "体力",
-    "elixir": "仙丹",
-    "fragment": "卡魂",
-    "energy": "活力",
-    "skillPoint": "技能点",
-    "totalSpirit": "灵气",
-    "cards": "级经验元灵",
-    "exp_card": "经验元灵",
-    "freeCount": "免费抽奖次数",
-    "lottery_free_count": "免费抽奖次数",
-    "challengeCount": "有奖竞技次数"
+    "exp": {
+        name: "经验",
+        color: cc.c3b(255, 239, 131)
+    },
+    "money": {
+        name: "仙币",
+        color: cc.c3b(255, 239, 131)
+    },
+    "gold": {
+        name: "魔石",
+        color: cc.c3b(118, 238, 60)
+    },
+    "powerValue": {
+        name: "体力",
+        color: cc.c3b(255, 239, 131)
+    },
+    "power": {
+        name: "经验",
+        color: cc.c3b(255, 239, 131)
+    },
+    "elixir": {
+        name: "仙丹",
+        color: cc.c3b(255, 239, 131)
+    },
+    "fragment": {
+        name: "卡魂",
+        color: cc.c3b(255, 239, 131)
+    },
+    "energy": {
+        name: "活力点",
+        color: cc.c3b(255, 239, 131)
+    },
+    "skillPoint": {
+        name: "技能点",
+        color: cc.c3b(255, 239, 131)
+    },
+    "totalSpirit": {
+        name: "灵气",
+        color: cc.c3b(255, 239, 131)
+    },
+    "cards": {
+        name: "经验元灵",
+        color: cc.c3b(255, 239, 131)
+    },
+    "exp_card": {
+        name: "经验元灵",
+        color: cc.c3b(255, 239, 131)
+    },
+    "freeCount": {
+        name: "免费抽奖次数",
+        color: cc.c3b(255, 239, 131)
+    },
+    "lottery_free_count": {
+        name: "免费抽奖次数",
+        color: cc.c3b(255, 239, 131)
+    },
+    "challengeCount": {
+        name: "有奖竞技次数",
+        color: cc.c3b(255, 239, 131)
+    }
 };
 
 lz.getNameByKey = function (key) {
-    return gameGoodsName[key] || key;
+    return gameGoodsName[key] || {
+        name: key,
+        color: cc.c3b(255, 255, 255)
+    };
 };
 
 lz.getRewardString = function (data) {
@@ -218,16 +266,22 @@ lz.getRewardString = function (data) {
 
     for (var key in data) {
         if (data[key]) {
+            var reward = lz.getNameByKey(key);
+
             if (key == "cards") {
                 var cards = data[key];
                 if (cards.length > 0) {
-                    str.push(cards[0].lv + lz.getNameByKey(key) + " : " + 1);
+                    str.push({
+                        str: cards[0].lv + "级" + reward.name + " : " + 1,
+                        color: reward.color
+                    });
                 }
             } else {
-                if (key == "fragment") {
-                    continue;
-                } else if (data[key] > 0) {
-                    str.push(lz.getNameByKey(key) + " : " + data[key]);
+                if (data[key] > 0) {
+                    str.push({
+                        str: reward.name + " : " + data[key],
+                        color: reward.color
+                    });
                 }
             }
         }
@@ -247,10 +301,11 @@ lz.tipReward = function (reward) {
 
         var fn = (function (key) {
             return function () {
-                TipLayer.tipNoBg(lz.getNameByKey(key) + ": +" + reward[key]);
+                var str = lz.getNameByKey(key);
+
+                TipLayer.tipNoBg(str.name + ": +" + reward[key]);
             }
         })(key);
-
 
         lz.scheduleOnce(fn, delay);
 

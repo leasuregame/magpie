@@ -313,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._mapLabel[i].setPosition(point);
             }
         }
+
     },
 
 
@@ -401,6 +402,8 @@ var ExploreLayer = cc.Layer.extend({
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
+        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
+
         var that = this;
 
         passEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -421,6 +424,18 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _showReward");
 
         if (this._reward) {
+
+            if (this._reward.money && this._reward.exp) {
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            }
+
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
                 cc.DelayTime.create(0.6),
@@ -466,37 +481,14 @@ var ExploreLayer = cc.Layer.extend({
                 progressLabel.runAction(action);
             }
 
-            if (this._reward.money) {
-                var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-                moneyIcon.setScale(0.4);
-                moneyIcon.setPosition(x + 95, 415);
-                this._scrollView.addChild(moneyIcon);
-                moneyIcon.setAnchorPoint(cc.p(0.5, 0.5));
-
-                moneyIcon.runAction(
-                    cc.Spawn.create(
-                        cc.MoveBy.create(0.5, cc.p(0, 25)),
-                        cc.ScaleTo.create(0.5, 0.6, 0.6),
-                        cc.Sequence.create(
-                            cc.FadeIn.create(0.3),
-                            cc.DelayTime.create(0.6),
-                            cc.FadeOut.create(0.1)
-                        )
-                    )
-                );
-            }
-
             this.scheduleOnce(function () {
                 if (powerLabel) powerLabel.removeFromParent();
                 if (expLabel) expLabel.removeFromParent();
                 if (progressLabel) progressLabel.removeFromParent();
-                if (moneyIcon) moneyIcon.removeFromParent();
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
-
-                this._reward = null;
 
                 var next = function () {
                     if (upgradeReward) {
@@ -513,7 +505,7 @@ var ExploreLayer = cc.Layer.extend({
                         GoldLayer.pop(goldList);
                     }
 
-                }
+                };
 
                 if (toNext) {
                     this._toNext(next);
@@ -522,6 +514,7 @@ var ExploreLayer = cc.Layer.extend({
                     next();
                 }
 
+                this._reward = null;
 
             }, 1);
 
@@ -542,6 +535,18 @@ var ExploreLayer = cc.Layer.extend({
                     this.scheduleOnce(function () {
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
+
+                        if(this._reward) {
+                            if(this._reward.result == "fight") {
+                                var uid = gameData.player.get("uid");
+                                var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                                if(isFirstFight == 1) {
+                                    MandatoryTeachingLayer.pop();
+                                    sys.localStorage.setItem(uid + "firstFight", 0);
+                                }
+                            }
+                        }
+
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();
@@ -609,49 +614,32 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _openBox");
+        cc.log("TaskLayer _showBox");
 
-        var boxAction = cc.Sequence.create(
-            cc.Spawn.create(
-                cc.MoveBy.create(0.3, cc.p(0, -165)),
-                cc.ScaleTo.create(0.3, 1, 1)
-            ),
-            cc.CallFunc.create(
-                this._openBox,
-                this
-            )
-        );
+        var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
+        boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
+        this.addChild(boxEffect);
 
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-        this._closeBoxSprite.setScale(0.9);
-        this._closeBoxSprite.setVisible(true);
-
-        this._openBoxSprite.setVisible(false);
-
-        this._closeBoxSprite.runAction(boxAction);
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            boxEffect.removeFromParent();
+        });
     },
 
     _openBox: function () {
         cc.log("TaskLayer _openBox");
 
-        this._closeBoxSprite.setVisible(false);
-        this._openBoxSprite.setVisible(true);
-
         var that = this;
         var cb = function () {
-            that._openBoxSprite.setVisible(false);
             that.update();
         };
 
-        this.scheduleOnce(function () {
-            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
-        }, 0.5);
+        LotteryCardLayer.pop({card: this._reward.card, cb: cb});
     },
 
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
-        var id = 5;
+        var id = 2;
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);

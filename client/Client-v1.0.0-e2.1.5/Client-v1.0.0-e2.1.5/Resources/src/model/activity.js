@@ -43,6 +43,13 @@ var Activity = Entity.extend({
                         gameMark.updatePowerRewardMark(true);
                     });
 
+                    lz.server.on("onPowerGiveEnd", function (data) {
+                        cc.log("***** on PowerGiveEnd:");
+                        cc.log(data);
+
+                        gameMark.updatePowerRewardMark(false);
+                    });
+
                     gameMark.updateActivityMark(false);
                     gameMark.updatePowerRewardMark(data.msg.canGetPower);
 

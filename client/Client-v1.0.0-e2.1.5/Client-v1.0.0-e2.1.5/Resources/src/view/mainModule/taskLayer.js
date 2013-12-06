@@ -202,48 +202,56 @@ var TaskLayer = cc.Layer.extend({
         var minIndex = Math.max(this._index - 2, 0) * TASK_SECTION_COUNT + 1;
         var maxIndex = Math.min(this._index + 1, TASK_CHAPTER_COUNT) * TASK_SECTION_COUNT;
 
+        var that = this;
+
         for (var key in this._sectionItem) {
-            var sectionItem = this._sectionItem[key];
 
-            if (sectionItem != undefined) {
-                var index = parseInt(key);
+            (function (key) {
+                var sectionItem = that._sectionItem[key];
 
-                if (index >= minIndex && index <= maxIndex) {
-                    sectionItem.setVisible(true);
+                if (sectionItem != undefined) {
+                    var index = parseInt(key);
 
-                    if (index > section) {
-                        sectionItem.showIconImage();
-                        sectionItem.setColor(cc.c3b(130, 130, 130));
-                    } else {
-                        sectionItem.hidIconImage();
-                        sectionItem.setColor(cc.c3b(255, 255, 255));
+                    if (index >= minIndex && index <= maxIndex) {
+                        sectionItem.setVisible(true);
 
-                        var point = this._sectionItem[index].getPosition();
-                        var size = this._sectionItem[index].getContentSize();
-
-                        if (task.getMarkByIndex(index) == true) {
-                            if (this._goldItem[index] == null) {
-                                this._goldItem[index] = cc.BuilderReader.load(main_scene_image.uiEffect13, this);
-                                this._goldItem[index].setPosition(cc.p(point.x, point.y + size.height));
-                                this._scrollView.addChild(this._goldItem[index] , 1);
-                            }
+                        if (index > section) {
+                            sectionItem.showIconImage();
+                            sectionItem.setColor(cc.c3b(130, 130, 130));
                         } else {
-                            if(this._goldItem[index]) {
-                                this._goldItem[index].removeFromParent();
-                                this._goldItem[index] = null;
-                                var goldGetEffect = cc.BuilderReader.load(main_scene_image.uiEffect14, this);
-                                goldGetEffect.setPosition(cc.p(point.x, point.y + size.height));
-                                this._scrollView.addChild(goldGetEffect , 1);
-                                goldGetEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                                    goldGetEffect.removeFromParent();
-                                });
+                            sectionItem.hidIconImage();
+                            sectionItem.setColor(cc.c3b(255, 255, 255));
+
+                            var itemPoint = that._sectionItem[index].getPosition();
+                            var itemSize = that._sectionItem[index].getContentSize();
+
+                            if (task.getMarkByIndex(index) == true) {
+                                if (that._goldItem[index] == null) {
+                                    that._goldItem[index] = cc.BuilderReader.load(main_scene_image.uiEffect13, that);
+                                    that._goldItem[index].setPosition(cc.p(itemPoint.x, itemPoint.y + itemSize.height));
+                                    that._scrollView.addChild(that._goldItem[index], 1);
+                                }
+                            } else {
+                                if (that._goldItem[index]) {
+                                    that._goldItem[index].removeFromParent();
+                                    that._goldItem[index] = null;
+
+                                    var goldGetEffect = cc.BuilderReader.load(main_scene_image.uiEffect14, that);
+                                    goldGetEffect.setPosition(cc.p(itemPoint.x, itemPoint.y + itemSize.height));
+                                    that._scrollView.addChild(goldGetEffect, 1);
+                                    goldGetEffect.animationManager.setCompletedAnimationCallback(that, function () {
+                                        goldGetEffect.removeFromParent();
+                                    });
+
+
+                                }
                             }
                         }
+                    } else {
+                        sectionItem.setVisible(false);
                     }
-                } else {
-                    sectionItem.setVisible(false);
                 }
-            }
+            })(key);
         }
     },
 

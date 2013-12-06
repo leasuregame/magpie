@@ -120,6 +120,9 @@ var CardLibraryLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
+        if (scrollViewHeight < this._cardLibraryLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._cardLibraryLayerFit.scrollViewHeight;
+        }
 
         if (this._scrollView) {
             this._scrollView.removeFromParent();
@@ -231,6 +234,12 @@ var CardLibraryLayer = cc.Layer.extend({
                     cc.log(effect);
 
                     effect.animationManager.setCompletedAnimationCallback(this, function () {
+                        var lightEffect = cc.BuilderReader.load(main_scene_image.uiEffect21, this);
+                        lightEffect.setPosition(cc.p(100, 100));
+                        that._cardItem[id].addChild(lightEffect);
+                        lightEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                            lightEffect.removeFromParent();
+                        });
                         effect.removeFromParent();
                     });
 

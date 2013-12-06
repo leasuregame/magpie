@@ -20,27 +20,27 @@ var FUNCTION_OPEN = {
     },
     "3": {
         "tableName": "card3_position",
-        "tip": "第3个卡槽已开启，现在可上阵新的卡牌。",
+        "tip": "第3个卡槽已开启，现在可回到首页，上阵新的卡牌。",
         "name": "card3Guide"
     },
     "4": {
         "tableName": "lottery",
-        "tip": "寻宝已开启，现在可参与。",
+        "tip": "寻宝已开启，现在可回到首页参与该功能。",
         "name": "treasureHuntGuide"
     },
     "5": {
         "tableName": "card4_position",
-        "tip": "第4个卡槽已开启，现在可上阵新的卡牌。",
+        "tip": "第4个卡槽已开启，现在可回到首页，上阵新的卡牌。",
         "name": "card4Guide"
     },
     "6": {
         "tableName": "ranking_list",
-        "tip": "排行榜已开放，现在可进行查询。",
+        "tip": "排行榜已开放，现在可回到首页，进行查询。",
         "name": "rankGuide"
     },
     "7": {
         "tableName": "card5_position",
-        "tip": "第5个卡槽已开启，现在可上阵新的卡牌。",
+        "tip": "第5个卡槽已开启，现在可回到首页，上阵新的卡牌。",
         "name": "card5Guide"
     }
 };

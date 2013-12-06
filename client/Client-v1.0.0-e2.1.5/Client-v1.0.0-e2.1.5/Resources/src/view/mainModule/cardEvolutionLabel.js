@@ -12,7 +12,7 @@
  * */
 
 
-var CardEvolutionLayer = cc.Layer.extend({
+var CardEvolutionLabel = cc.Layer.extend({
     _cardEvolutionLayerFit: null,
 
     _leadCard: null,
@@ -28,6 +28,9 @@ var CardEvolutionLayer = cc.Layer.extend({
     _selectRetinueCardItem: null,
     _evolutionItem: null,
     _selectLeadCardIcon: null,
+
+    _evolutionEffect: null,
+    _index: null,
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -196,10 +199,18 @@ var CardEvolutionLayer = cc.Layer.extend({
 
             this._resLabel.setVisible(true);
 
+            var needMoney = this._leadCard.getEvolutionNeedMoney();
+
             this._nameLabel.setString(this._leadCard.get("name"));
             this._evolutionRateLabel.setString("0%");
             this._cardCountLabel.setString("0");
-            this._moneyLabel.setString(this._leadCard.getEvolutionNeedMoney());
+            this._moneyLabel.setString(needMoney);
+
+            if (needMoney > gameData.player.get("money")) {
+                this._moneyLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);
@@ -281,19 +292,25 @@ var CardEvolutionLayer = cc.Layer.extend({
             cardIdList.push(this._retinueCard[i].get("id"));
         }
 
-        var that = this;
-        this._leadCard.evolution(function (data) {
-            cc.log(data);
+        var card = lz.clone(this._leadCard);
 
+        var that = this;
+        this._leadCard.evolution(function (state) {
+            cc.log(state);
             that._retinueCard = [];
+            if(state != EVOLUTION_ERROR) {
+                CardEvolutionLayer.pop({card: card, state: state});
+            }
             that.update();
+
         }, cardIdList);
     }
+
 });
 
 
-CardEvolutionLayer.create = function () {
-    var ret = new CardEvolutionLayer();
+CardEvolutionLabel.create = function () {
+    var ret = new CardEvolutionLabel();
 
     if (ret && ret.init()) {
         return ret;

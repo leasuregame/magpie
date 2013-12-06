@@ -52,31 +52,37 @@ var LineUpLabel = cc.Layer.extend({
 
         for (var i = 0; i < 5; ++i) {
             var cardHeadItem = null;
-
+            var effect = null;
             if (i < MAX_LINE_UP_CARD) {
                 cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+
+                if (lineUpCardList[i]) {
+                    effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                    effect.setPosition(cc.p(79 + 122 * i, 0));
+                    this.addChild(effect, 2);
+                }
 
             } else {
                 cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
             }
-
             cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
             menu.addChild(cardHeadItem);
+
         }
     },
 
     updateGuide: function () {
         cc.log("LineUpLabel updateGuide");
 
-        if (gameGuide.get("card5Guide")) {
+        if (gameGuide.get("card5Guide") && !this._card5Guide) {
             this._card5Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card5Guide.setPosition(cc.p(79 + 122 * 4, 0));
             this.addChild(this._card5Guide, 10);
-        } else if (gameGuide.get("card4Guide")) {
+        } else if (gameGuide.get("card4Guide") && !this._card4Guide) {
             this._card4Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card4Guide.setPosition(cc.p(79 + 122 * 3, 0));
             this.addChild(this._card4Guide, 10);
-        } else if (gameGuide.get("card3Guide")) {
+        } else if (gameGuide.get("card3Guide") && !this._card3Guide) {
             this._card3Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
             this.addChild(this._card3Guide, 10);

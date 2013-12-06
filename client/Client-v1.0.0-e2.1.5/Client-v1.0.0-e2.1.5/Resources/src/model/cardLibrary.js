@@ -147,7 +147,7 @@ var CardLibrary = Entity.extend({
         var tableIdA = a.card.get("tableId");
         var tableIdB = b.card.get("tableId");
 
-        if (stateA != stateB) {
+        if (stateA != stateB && (stateA == CARD_RECEIVE || stateB == CARD_RECEIVE)) {
             return stateB - stateA;
         } else if (starA != starB) {
             return (starB - starA);

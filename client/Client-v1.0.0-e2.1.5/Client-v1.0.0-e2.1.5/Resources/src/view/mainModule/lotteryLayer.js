@@ -170,7 +170,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(tipBgSprite);
 
         var tipLabel = cc.LabelTTF.create(
-            "祝福好友，每日登录可获得活力值",
+            "祝福好友，每日登录可获得活力点",
             "STHeitiTC-Medium",
             20
         );

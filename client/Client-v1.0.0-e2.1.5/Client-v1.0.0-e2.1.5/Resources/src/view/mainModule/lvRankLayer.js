@@ -47,8 +47,8 @@ var LvRankLayer = cc.Layer.extend({
         var len = this._lvRankList.length;
 
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._lvRankLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._lvRankLayerFit.scrollViewHeight;
         }
 
         var scrollViewLayer = MarkLayer.create(this._lvRankLayerFit.scrollViewLayerRect);

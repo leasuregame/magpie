@@ -420,7 +420,7 @@
 								<key>value</key>
 								<array>
 									<real>-30</real>
-									<real>125</real>
+									<real>150</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -501,6 +501,18 @@
 								<integer>2</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>0.0</real>
+											<real>-23</real>
+											<integer>0</integer>
+										</array>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>anchorPoint</string>
@@ -610,7 +622,7 @@
 										<key>value</key>
 										<array>
 											<real>190</real>
-											<real>107</real>
+											<real>132</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -919,7 +931,7 @@
 								<key>value</key>
 								<array>
 									<real>-43</real>
-									<real>-56</real>
+									<real>-31</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1037,7 +1049,7 @@
 								<key>value</key>
 								<array>
 									<real>-195</real>
-									<real>-55</real>
+									<real>-30</real>
 									<integer>0</integer>
 								</array>
 							</dict>

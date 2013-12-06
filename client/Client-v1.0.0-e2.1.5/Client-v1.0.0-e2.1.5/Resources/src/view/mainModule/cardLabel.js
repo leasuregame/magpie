@@ -45,8 +45,25 @@ var CardLabel = cc.Node.extend({
         cardItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardItemMenu);
 
-        var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
+        var newCardMarkIcon = null;
+
+        var cardHeadItem = CardHeadNode.getCardHeadItem(this._card, function () {
+            CardDetails.pop(this._card);
+
+            this._card.setNewCardMark(false);
+
+            if (newCardMarkIcon) {
+                newCardMarkIcon.removeFromParent();
+                newCardMarkIcon = null;
+            }
+        }, this);
         cardHeadItem.setPosition(cc.p(70, 65));
+
+        if (this._card.get("newCardMark")) {
+            newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
+            newCardMarkIcon.setPosition(cc.p(25, 31));
+            cardHeadItem.addChild(newCardMarkIcon);
+        }
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
@@ -62,13 +79,12 @@ var CardLabel = cc.Node.extend({
         otherIcon.setPosition(cc.p(200, 34));
         this.addChild(otherIcon);
 
-        var url = main_scene_image.icon297;
-        if(this._card.get("skillType") == 2) {
-            url = main_scene_image.icon298;
-        } else if(this._card.get("skillType") > 2){
-            url = main_scene_image.icon299;
+        var skillType = this._card.get("skillType");
+        if (skillType > 3) {
+            skillType = 3;
         }
-        var skillTypeIcon = cc.Sprite.create(url);
+
+        var skillTypeIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
         skillTypeIcon.setAnchorPoint(cc.p(0, 0.5));
         skillTypeIcon.setPosition(cc.p(142, 100));
         this.addChild(skillTypeIcon);
@@ -288,6 +304,13 @@ var CardLabel = cc.Node.extend({
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
+            }
+
+            if(mandatoryTeachingLayer) {
+                if(mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
             }
 
             this.select();

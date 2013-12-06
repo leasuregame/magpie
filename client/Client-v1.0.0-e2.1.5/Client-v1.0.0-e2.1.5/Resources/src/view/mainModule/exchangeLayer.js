@@ -173,6 +173,9 @@ var ExchangeLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = Math.ceil(len / 4) * 143 - 33;
+        if (scrollViewHeight < this._exchangeLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._exchangeLayerFit.scrollViewHeight;
+        }
 
         this._cardItem = {};
         this._effect = {};

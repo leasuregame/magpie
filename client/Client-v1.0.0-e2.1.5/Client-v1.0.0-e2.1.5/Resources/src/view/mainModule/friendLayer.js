@@ -275,8 +275,8 @@ var FriendLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = len * 127;
-        if (scrollViewHeight < 620) {
-            scrollViewHeight = 620;
+        if (scrollViewHeight < this._friendLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._friendLayerFit.scrollViewHeight;
         }
 
         this._friendItem = {};

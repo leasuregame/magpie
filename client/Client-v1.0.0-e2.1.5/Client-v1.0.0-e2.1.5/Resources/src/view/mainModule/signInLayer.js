@@ -190,6 +190,7 @@ var SignInLayer = cc.Layer.extend({
             );
             rewardItem.setPosition(point);
             menu.addChild(rewardItem);
+            rewardItem.setEnabled(false);
 
             var rewardIcon = cc.Sprite.create(main_scene_image["icon" + (189 + i)]);
             rewardIcon.setPosition(point);
@@ -267,23 +268,34 @@ var SignInLayer = cc.Layer.extend({
         this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._index));
 
         var monthMark = signIn.getMonthMark(this._index);
-        var count = monthMark.count;
 
-        this._signInCountLabel.setString(count);
+        this._signInCountLabel.setString(monthMark.count);
 
-        for (var i = 0; i < 5; ++i) {
-            var visible = signIn.canReceive(this._index, i);
-            this._elementList[i].rewardIcon.setVisible(visible);
-            this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+        if (this._index != 0) {
+            for (var i = 0; i < 5; ++i) {
 
-            var monthMark = gameData.signIn.getMonthMark(0);
-            var table = outputTables.signIn_rewards.rows[i + 1];
-            var count = table.count != -1 ? table.count : monthMark.days;
-            if (monthMark.count >= count) {
-                this._elementList[i].readyRewardItem.setVisible(visible);
-                this._elementList[i].rewardIcon.setVisible(false);
+                this._elementList[i].readyRewardItem.setVisible(false);
+                this._elementList[i].rewardIcon.setVisible(true);
+                this._elementList[i].alreadyRewardIcon.setVisible(false);
+                this._elementList[i].rewardItem.setVisible(true);
+
+            }
+        } else {
+            for (var i = 0; i < 5; ++i) {
+
+                var visible = signIn.canReceive(this._index, i);
+                this._elementList[i].rewardIcon.setVisible(visible);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);
-                this._elementList[i].rewardItem.setVisible(!visible);
+
+                var table = outputTables.signIn_rewards.rows[i + 1];
+                var count = table.count != -1 ? table.count : monthMark.days;
+
+                if (monthMark.count >= count) {
+                    this._elementList[i].readyRewardItem.setVisible(visible);
+                    this._elementList[i].rewardIcon.setVisible(false);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                    this._elementList[i].rewardItem.setVisible(!visible);
+                }
             }
         }
     },

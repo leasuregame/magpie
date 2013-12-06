@@ -469,7 +469,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -634,7 +634,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>70</real>
+									<real>38</real>
 									<real>-50</real>
 									<integer>0</integer>
 								</array>
@@ -690,7 +690,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -850,7 +850,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>70</real>
+									<real>32.352943420410156</real>
 									<real>-50</real>
 									<integer>0</integer>
 								</array>
@@ -906,7 +906,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>240</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1116,7 +1116,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-70</real>
+									<real>-34</real>
 									<real>-50</real>
 									<integer>0</integer>
 								</array>
@@ -1172,7 +1172,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>230</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1343,7 +1343,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-70</real>
+									<real>-30</real>
 									<real>-50</real>
 									<integer>0</integer>
 								</array>
@@ -1399,7 +1399,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2180,7 +2180,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.13333334028720856</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

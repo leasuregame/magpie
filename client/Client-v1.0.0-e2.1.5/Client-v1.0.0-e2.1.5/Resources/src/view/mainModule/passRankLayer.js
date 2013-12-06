@@ -47,8 +47,8 @@ var PassRankLayer = cc.Layer.extend({
         var len = this._passRankList.length;
 
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._passRankLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._passRankLayerFit.scrollViewHeight;
         }
 
         var scrollViewLayer = MarkLayer.create(this._passRankLayerFit.scrollViewLayerRect);

@@ -10,7 +10,7 @@
 
 // gate server config
 var GATE_SERVER_HOST = "124.238.236.32";
-var GATE_SERVER_PORT = "3009";
+var GATE_SERVER_PORT = "4009";
 
 // connect timeout
 var CONNECT_TIMEOUT = 5;
@@ -77,7 +77,7 @@ var Server = Entity.extend({
         cc.log("Server update");
 
         this._host = data.host;
-        this._port = 3010;
+        this._port = data.port;
         this._areaList = data.servers;
 
         var len = this._areaList.length;

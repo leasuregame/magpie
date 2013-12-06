@@ -81,6 +81,7 @@ class Manager
     if chapterId? and player.hasTaskMark(chapterId)
       console.log 'type of chapterId: ', typeof chapterId
       console.log 'has wipe out chapter: ', 'chapterId = ' + chapterId, 'task=', JSON.stringify(player.task)
+      console.log JSON.stringify(player.taskMark)
       return cb({code: 501, msg: '已扫荡'})
 
     if chapterId? and not player.hasTaskMark(chapterId)

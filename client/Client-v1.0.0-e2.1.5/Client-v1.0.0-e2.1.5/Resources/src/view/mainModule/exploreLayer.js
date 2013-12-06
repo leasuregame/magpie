@@ -488,11 +488,6 @@ var ExploreLayer = cc.Layer.extend({
                 var upgradeReward = this._reward.upgradeReward;
                 var level9Box = this._reward.level9Box;
 
-                cc.log("xxxxxxxxxxxxxxx");
-                cc.log(level9Box);
-                cc.log("xxxxxxxxxxxxxxx");
-
-
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
@@ -503,13 +498,13 @@ var ExploreLayer = cc.Layer.extend({
                                     goldList: goldList,
                                     cb: function () {
                                         if (level9Box) {
-                                            Level9BoxLayer.pop(level9Box);
+                                            Level9BoxLayer.pop({reward: level9Box});
                                         }
                                     }
                                 });
                             } else {
                                 if (level9Box) {
-                                    Level9BoxLayer.pop(level9Box);
+                                    Level9BoxLayer.pop({reward: level9Box});
                                 }
                             }
                         };

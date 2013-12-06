@@ -51,7 +51,6 @@ var CardEvolutionLayer = LazyLayer.extend({
             that._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
                 that._end();
             });
-
         };
 
         this._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -64,7 +63,6 @@ var CardEvolutionLayer = LazyLayer.extend({
             } else {
                 this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
                 next();
-
             }
         });
 

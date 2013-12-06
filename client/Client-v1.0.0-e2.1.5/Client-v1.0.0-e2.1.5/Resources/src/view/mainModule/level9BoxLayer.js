@@ -100,6 +100,8 @@ var Level9BoxLayer = LazyLayer.extend({
     _onClickBox: function () {
         cc.log("Level9Box _onClickBox");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._ccbNode.controller.boxItem.setEnabled(false);
         this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
     },
@@ -107,19 +109,23 @@ var Level9BoxLayer = LazyLayer.extend({
     _showBox: function () {
         cc.log("Level9Box _showBox");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._tipLabel.setVisible(true);
     },
 
     _onClickOk: function () {
         cc.log("Level9BoxLayer _onClickOk");
 
-        if(this._cb) {
-            this._cb();
-        }
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
 
         lz.tipReward(this._reward);
+
+        if(this._cb) {
+            this._cb();
+        }
     }
 });
 

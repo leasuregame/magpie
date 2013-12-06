@@ -33,7 +33,7 @@ module.exports =
     isUpgrade = false
     level9Box = null
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
-    while(player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
+    while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.elixirPerLv = {}

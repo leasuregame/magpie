@@ -53,7 +53,7 @@ make inittables
 node ./bin/dao.js all production
 
 # kill a process tree
-kill -- -$( ps opgid= 5241 | tr -d ' ' )
+kill -- -$( ps opgid= 1499 | tr -d ' ' )
 
 cd game-server
 pkill -9 -f node

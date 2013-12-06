@@ -360,15 +360,6 @@ var Shop = Entity.extend({
             var count;
             var player = gameData.player;
 
-//            count = Math.ceil((player.get("maxPower") - player.get("power")) / table.obtain);
-//            if (count <= 0) {
-//                product.tip = "体力已满";
-//                product.count = 0;
-//                return product;
-//            } else {
-//                product.count = Math.min(product.count, count);
-//            }
-
             count = Math.floor(player.get("gold") / product.price);
             if (count <= 0) {
                 product.tip = "魔石不足";

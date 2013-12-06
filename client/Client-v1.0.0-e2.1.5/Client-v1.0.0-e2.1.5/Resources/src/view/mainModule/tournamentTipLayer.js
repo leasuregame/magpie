@@ -46,7 +46,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
         var y = this._tournamentTipLayerFit.offsetPointY;
 
-        var description = lz.format('每日有奖竞技次数用完之后，你可以继续挑战，但不能再获得奖励。你可以购买额外的有奖竞技次数。', 21);
+        var description = lz.format("每日有奖竞技次数用完之后，你可以继续挑战，但不能再获得奖励。你可以购买额外的有奖竞技次数。", 21);
         for (var i = 0; i < description.length; i++) {
             var itemText = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 22);
             itemText.setAnchorPoint(cc.p(0, 0));
@@ -82,11 +82,13 @@ var TournamentTipLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("TournamentTipLayer _onClickClose");
+
         this.removeFromParent();
     },
 
     _onClickBuy: function() {
         cc.log("TournamentTipLayer _onClickBuy");
+
         this._cb();
         this.removeFromParent();
     }

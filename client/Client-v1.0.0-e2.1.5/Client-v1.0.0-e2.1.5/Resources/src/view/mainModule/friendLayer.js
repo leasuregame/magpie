@@ -363,7 +363,7 @@ var FriendLayer = cc.Layer.extend({
                 giveBlessItem.setPosition(point);
                 menu.addChild(giveBlessItem);
 
-                giveBlessItem.setEnabled(giveCount > 0 && friendList[i].canGive);
+                giveBlessItem.setEnabled(friendList[i].canGive);
             }
         }
 
@@ -411,6 +411,16 @@ var FriendLayer = cc.Layer.extend({
             cc.log("FriendLayer _onClickGiveBless: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var friend = gameData.friend;
+
+            if (friend.get("giveCount") <= 0) {
+                GoPaymentLayer.pop({
+                    title: "祝福次数已用完",
+                    msg: "成为VIP2，每日即可获得额外的祝福次数"
+                });
+                return;
+            }
 
             var that = this;
             gameData.friend.giveBless(function (data) {

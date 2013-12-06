@@ -118,6 +118,8 @@ var LotteryCardLayer = LazyLayer.extend({
         cc.log("LazyLayer onTouchBegan");
 
         if (this._canClick) {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this.removeFromParent();
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.setVisible(true);

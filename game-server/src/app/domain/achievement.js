@@ -1,6 +1,7 @@
 var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
+var _ = require('underscore');
 var messageService = null;
 
 var app = require('pomelo').app;
@@ -25,7 +26,7 @@ Achievement.winCount = function(player, count) {
 };
 
 Achievement.winningStreak = function(player, count) {
-	checkIsReached(player, 'winningStreak', count);
+	checkIsReached(player, 'winningStreak', count, true);
 };
 
 Achievement.rankingToOne = function(player) {
@@ -115,7 +116,7 @@ Achievement.taskPartPassTo = function(player, chapter) {
 	}	
 };
 
-var checkIsReached_alpha = function(player, method, incVal) {
+var checkIsReached_alpha = function(player, method, incVal, useMax) {
 	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
 		method: method
@@ -123,10 +124,10 @@ var checkIsReached_alpha = function(player, method, incVal) {
 	if (!_.isEmpty(items)) {
 		need = items[0].got + incVal;
 	}
-	checkIsReached(player, method, need);
+	checkIsReached(player, method, need, useMax);
 };
 
-var checkIsReached = function(player, method, need) {
+var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
 	achs.forEach(function(ach) {
 		if ( (typeof player.achievement[ach.id] == 'undefined') || 
@@ -134,10 +135,10 @@ var checkIsReached = function(player, method, need) {
 			reachAchievement(player, ach.id);
 		}
 	});
-	updateAchievement(player, method, need);
+	updateAchievement(player, method, need, useMax);
 };
 
-var updateAchievement = function(player, method, got) {
+var updateAchievement = function(player, method, got, useMax) {
 	var ach = utility.deepCopy(player.achievement);
 	var items = _.where(_.values(ach), {
 		method: method
@@ -146,7 +147,11 @@ var updateAchievement = function(player, method, got) {
 	if (!_.isEmpty(items)) {
 		items.forEach(function(i) {
 			if (!i.isAchieve) {
-				i.got = got;
+				if (useMax) {
+					i.got = _.max([i.got, got]);
+				} else {
+					i.got = got;
+				}
 			}
 		});
 	}

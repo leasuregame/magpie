@@ -55,8 +55,11 @@ var SpiritPool = Entity.extend({
     canCollect: function (useGold) {
         cc.log("SpiritPool canCollect");
 
-        if (this._collectCount < 1) {
-            TipLayer.tip("采集次数已用完");
+        if (this._collectCount <= 0) {
+            GoPaymentLayer.pop({
+                title: "采集次数已用完",
+                msg: "成为VIP3，每日即可获得额外的采集次数"
+            });
             return false;
         }
 

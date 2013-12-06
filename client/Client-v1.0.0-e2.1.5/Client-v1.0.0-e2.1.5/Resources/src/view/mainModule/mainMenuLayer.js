@@ -138,6 +138,13 @@ var MainMenuLayer = cc.Layer.extend({
                 }
             }
 
+            if (mandatoryTeachingLayer) {
+                if (mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
+            }
+
             MainScene.getInstance().switchLayer(this._layer[index]);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
@@ -147,12 +154,7 @@ var MainMenuLayer = cc.Layer.extend({
                 noviceTeachingLayer.next();
             }
 
-            if (mandatoryTeachingLayer) {
-                if (mandatoryTeachingLayer.isTeaching()) {
-                    mandatoryTeachingLayer.clearAndSave();
-                    mandatoryTeachingLayer.next();
-                }
-            }
+
         }
     }
 });

@@ -831,6 +831,29 @@ var main_scene_image = {
     s18: effect_scene_path + "startAnimation/" + "s18.png",
     s19: effect_scene_path + "startAnimation/" + "s19.png",
     s20: effect_scene_path + "startAnimation/" + "s20.png",
+    s21: effect_scene_path + "startAnimation/" + "s21.png",
+    s22: effect_scene_path + "startAnimation/" + "s22.png",
+    s23: effect_scene_path + "startAnimation/" + "s23.png",
+    s24: effect_scene_path + "startAnimation/" + "s24.png",
+    s25: effect_scene_path + "startAnimation/" + "s25.png",
+    s26: effect_scene_path + "startAnimation/" + "s26.png",
+    s27: effect_scene_path + "startAnimation/" + "s27.png",
+    s28: effect_scene_path + "startAnimation/" + "s28.png",
+    s29: effect_scene_path + "startAnimation/" + "s29.png",
+    s30: effect_scene_path + "startAnimation/" + "s30.png",
+    s31: effect_scene_path + "startAnimation/" + "s31.png",
+    s32: effect_scene_path + "startAnimation/" + "s32.png",
+    s33: effect_scene_path + "startAnimation/" + "s33.png",
+    s34: effect_scene_path + "startAnimation/" + "s34.png",
+    s35: effect_scene_path + "startAnimation/" + "s35.png",
+    s36: effect_scene_path + "startAnimation/" + "s36.png",
+    s37: effect_scene_path + "startAnimation/" + "s37.png",
+    s38: effect_scene_path + "startAnimation/" + "s38.png",
+    s39: effect_scene_path + "startAnimation/" + "s39.png",
+    s40: effect_scene_path + "startAnimation/" + "s40.png",
+    s41: effect_scene_path + "startAnimation/" + "s41.png",
+    s42: effect_scene_path + "startAnimation/" + "s42.png",
+    s43: effect_scene_path + "startAnimation/" + "s43.png",
 
 
 
@@ -922,9 +945,11 @@ var main_scene_image = {
     uiEffect55: ccb_scene_path + "uiEffect55.ccbi",
     uiEffect56: ccb_scene_path + "uiEffect56.ccbi",
     uiEffect57: ccb_scene_path + "uiEffect57.ccbi",
+    uiEffect58: ccb_scene_path + "uiEffect58.ccbi",
 
     //开场动画
     startAnimation1: ccb_scene_path + "startAnimation1.ccbi",
+    startAnimation2: ccb_scene_path + "startAnimation2.ccbi",
 };
 
 var main_scene_res = [

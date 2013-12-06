@@ -178,18 +178,30 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        var next = function () {
+            var uid = gameData.player.get("uid");
+            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
+            if (isFirstTournament == 1) {
+                sys.localStorage.setItem(uid + "firstTournament", 2);
+                MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
+            }
+
+        };
+
         if (this._upgradeReward) {
             PlayerUpgradeLayer.pop({
                 reward: this._upgradeReward,
                 cb: function () {
-                    if(this._level9Box) {
-                        Level9BoxLayer.pop(this._level9Box);
+                    if (this._level9Box) {
+                        Level9BoxLayer.pop({reward: this._level9Box, cb: next});
                         this._level9Box = null;
                     }
 
                 }
             });
             this._upgradeReward = null;
+        } else {
+            next();
         }
 
         var player = gameData.player;

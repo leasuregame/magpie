@@ -2089,6 +2089,17 @@
 								<key>value</key>
 								<integer>255</integer>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>flip</string>
+								<key>type</key>
+								<string>Flip</string>
+								<key>value</key>
+								<array>
+									<true/>
+									<false/>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -2340,8 +2351,6 @@
 						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

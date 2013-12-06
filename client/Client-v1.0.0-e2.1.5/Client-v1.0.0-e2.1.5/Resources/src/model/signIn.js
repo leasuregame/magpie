@@ -143,7 +143,6 @@ var SignIn = Entity.extend({
             return ((this._flag[0] >> i & 1) != 1);
         }
 
-
         return false;
     },
 
@@ -243,7 +242,7 @@ var SignIn = Entity.extend({
 
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
-                that._flag = that._flag | (1 << (id - 1));
+                that._flag[0] = that._flag[0] | (1 << (id - 1));
 
                 cb({
                     money: table.money,

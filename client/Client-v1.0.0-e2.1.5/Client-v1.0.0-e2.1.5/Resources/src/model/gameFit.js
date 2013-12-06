@@ -18,6 +18,9 @@ var fit4Iphone4 = {
         "frame1Point": cc.p(0, 480),
         "frame2Point": cc.p(680, 480)
     },
+    "gameGuide": {
+        "effectPoint": cc.p(360, 480)
+    },
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -983,7 +986,6 @@ var fit4Iphone4 = {
                 cc.p(420, 470),
                 cc.p(480, 260),
                 cc.p(360, 70),
-
                 cc.p(140, 550),
                 cc.p(200, 270),
                 cc.p(430, 460),
@@ -1152,6 +1154,10 @@ var fit4Iphone5 = {
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)
+    },
+
+    "gameGuide": {
+        "effectPoint": cc.p(320, 568)
     },
 
     "battleScene": {
@@ -2283,7 +2289,7 @@ var fit4Iphone5 = {
 var gameFit = null;
 var gameDevice = "Unknown";
 
-var gameFitAdapter = function () {
+var gameFitAdapter = function() {
     cc.log("gameFitAdapter");
 
     var size = cc.Director.getInstance().getWinSize();

@@ -11,6 +11,9 @@
 var Level9BoxLayer = LazyLayer.extend({
     _level9BoxLayerFit: null,
 
+    _reward: null,
+    _cb: null,
+
     onEnter: function () {
         cc.log("Level9BoxLayer onEnter");
 
@@ -32,7 +35,8 @@ var Level9BoxLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._reward = data;
+        this._reward = data.reward;
+        this._cb = data.cb;
 
         this._level9BoxLayerFit = gameFit.mainScene.level9BoxLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -118,6 +122,10 @@ var Level9BoxLayer = LazyLayer.extend({
         this.removeFromParent();
 
         lz.tipReward(this._reward);
+
+        if(this._cb) {
+            this._cb();
+        }
     }
 });
 

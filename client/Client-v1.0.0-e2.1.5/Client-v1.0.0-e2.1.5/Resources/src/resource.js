@@ -667,7 +667,7 @@ var main_scene_image = {
     uiEffect55: "res/ccb/uiEffect55.ccbi",
     uiEffect56: "res/ccb/uiEffect56.ccbi",
     uiEffect57: "res/ccb/uiEffect57.ccbi",
-//    uiEffect58: "res/ccb/uiEffect58.ccbi",
+    uiEffect58: "res/ccb/uiEffect58.ccbi",
 //    uiEffect59: "res/ccb/uiEffect59.ccbi",
 //    uiEffect60: "res/ccb/uiEffect60.ccbi",
 //    uiEffect61: "res/ccb/uiEffect61.ccbi",
@@ -936,6 +936,8 @@ main_scene_res.push({src: "./res/font/tipNumber.fnt"});
 main_scene_res.push({src: "./res/font/tipNumber.png"});
 main_scene_res.push({src: "./res/font/UInumber.fnt"});
 main_scene_res.push({src: "./res/font/UInumber.png"});
+main_scene_res.push({src: "./res/font/AchievementWord.fnt"});
+main_scene_res.push({src: "./res/font/AchievementWord.png"});
 
 // battle scene res
 var battle_scene_res = [

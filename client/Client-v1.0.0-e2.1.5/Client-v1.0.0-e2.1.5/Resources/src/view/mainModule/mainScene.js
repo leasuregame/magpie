@@ -58,8 +58,10 @@ var MainScene = cc.Scene.extend({
             this.switchLayer(MainLayer);
         }
 
-        if (MandatoryTeachingLayer.isNeedTeaching()) {
-            MandatoryTeachingLayer.pop();
+        var progress = MandatoryTeachingLayer.teachingProgress();
+
+        if (progress != PROGRESS_NULL) {
+            MandatoryTeachingLayer.pop(progress);
         }
 
     },

@@ -15,10 +15,10 @@ var teaching = [
         layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4]
     },
     {
-        overStep: 7,
-        clickType: [1, 0, 0, 0, 0, 0, 0],
-        effectOrder: [18, 20, 24, 21, 11, 13, 25],
-        layerOrder: [2, 0, 4, 4, 4, 4, 4]
+        overStep: 6,
+        clickType: [1, 0, 0, 0, 0, 0],
+        effectOrder: [18, 20, 24, 21, 11, 13],
+        layerOrder: [2, 0, 4, 4, 4, 4]
     },
     {
         overStep: 6,
@@ -35,6 +35,11 @@ var teaching = [
 
 ];
 
+var PROGRESS_NULL = -1;
+var FIRST_FIGHT = 0;
+var FIRST_TOURNAMENT = 1;
+var FIRST_PASS_WIN = 2;
+var FIRST_PASSIVE_SKILL_AFRESH = 3;
 
 var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 
@@ -66,7 +71,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     _currentTeaching: null,
 
 
-    init: function () {
+    init: function (progress) {
         cc.log("MandatoryTeachingLayer init");
 
         if (!this._super()) return false;
@@ -77,7 +82,9 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         var uid = gameData.player.get("uid");
 
-        this._progress = parseInt(sys.localStorage.getItem(uid + "MTprogress")) || 0;
+        cc.log(progress);
+
+        this._progress = progress;
         this._step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + this._progress)) || 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
@@ -100,7 +107,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
     _load: function () {
         cc.log("MandatoryTeachingLayer _load");
-
+        cc.log(this._step);
         if (this._progress < 3) {
             if (this._step > 2) {
                 this._step = 2;
@@ -114,7 +121,10 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         var layer = this._layer[this._layerOrder[this._step]];
         if (layer == ExploreLayer) {
             var id = gameData.task.get("id");
-            MainScene.getInstance().switch(ExploreLayer.create(id));
+            if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
+                MainScene.getInstance().switch(ExploreLayer.create(id));
+            }
+
         } else {
             MainScene.getInstance().switchLayer(layer);
         }
@@ -141,7 +151,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         var uid = gameData.player.get("uid");
 
         if (this._step >= this._overStep) {
-            sys.localStorage.setItem(uid + "MTprogress", this._progress + 1);
+            sys.localStorage.setItem(uid + "MTprogress", PROGRESS_NULL);
             sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._overStep);
         } else {
             sys.localStorage.setItem(uid + "MTprogress", this._progress);
@@ -228,22 +238,22 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     }
 });
 
-MandatoryTeachingLayer.create = function () {
+MandatoryTeachingLayer.create = function (progress) {
     var ret = new MandatoryTeachingLayer();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(progress)) {
         return ret;
     }
 
     return null;
 };
 
-MandatoryTeachingLayer.pop = function () {
+MandatoryTeachingLayer.pop = function (progress) {
     cc.log("MandatoryTeachingLayer pop");
     if (mandatoryTeachingLayer) {
         MandatoryTeachingLayer.remove();
     }
-    mandatoryTeachingLayer = MandatoryTeachingLayer.create();
+    mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
     MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
 };
 
@@ -255,22 +265,23 @@ MandatoryTeachingLayer.remove = function () {
     }
 };
 
-MandatoryTeachingLayer.isNeedTeaching = function () {
+MandatoryTeachingLayer.teachingProgress = function () {
     cc.log("MandatoryTeachingLayer isNeedTeaching");
 
     var uid = gameData.player.get("uid");
     var progress = parseInt(sys.localStorage.getItem(uid + "MTprogress"));
-    var step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + progress)) || 0;
+    var step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + progress));
 
     cc.log("progress = " + progress);
+    cc.log("step = " + step);
 
-    if(isNaN(progress)) {
-        return false;
-    }else if (step < teaching[progress].overStep) {
-        return true;
+    if (isNaN(progress) || isNaN(step) || progress == PROGRESS_NULL) {
+        return PROGRESS_NULL;
+    } else if (step < teaching[progress].overStep) {
+        return progress;
     }
 
-    return false;
+    return PROGRESS_NULL;
 
 };
 

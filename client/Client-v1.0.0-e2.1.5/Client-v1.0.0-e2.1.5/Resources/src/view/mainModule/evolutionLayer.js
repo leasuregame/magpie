@@ -141,7 +141,7 @@ var EvolutionLayer = cc.Layer.extend({
 
         var limitLv = outputTables.function_limit.rows[1].pass_skillafresh;
         if (gameData.player.get("lv") < limitLv) {
-            TipLayer.tip("被动技能洗炼" + limitLv + "级开放");
+            TipLayer.tip(limitLv + "级开放");
             return;
         }
 

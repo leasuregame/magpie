@@ -488,10 +488,14 @@ var ExploreLayer = cc.Layer.extend({
                 var upgradeReward = this._reward.upgradeReward;
                 var level9Box = this._reward.level9Box;
 
+                cc.log("xxxxxxxxxxxxxxx");
+                cc.log(level9Box);
+                cc.log("xxxxxxxxxxxxxxx");
+
+
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
-
                             gameMark.updateGoldRewardMark(false);
 
                             if (goldList) {
@@ -503,6 +507,10 @@ var ExploreLayer = cc.Layer.extend({
                                         }
                                     }
                                 });
+                            } else {
+                                if (level9Box) {
+                                    Level9BoxLayer.pop(level9Box);
+                                }
                             }
                         };
                         PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});

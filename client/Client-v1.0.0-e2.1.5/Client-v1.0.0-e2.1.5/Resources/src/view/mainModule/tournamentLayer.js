@@ -195,6 +195,8 @@ var TournamentLayer = cc.Layer.extend({
                     if (this._level9Box) {
                         Level9BoxLayer.pop({reward: this._level9Box, cb: next});
                         this._level9Box = null;
+                    } else {
+                        next();
                     }
                 }
             });

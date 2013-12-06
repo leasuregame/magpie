@@ -163,7 +163,14 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         var layer = LazyLayer.create();
         layer.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
-        this.addChild(layer);
+        this.addChild(layer, 10);
+
+        var that = this;
+        layer.onTouchBegan = function (touch, event) {
+            cc.log("LazyLayer onTouchBegan");
+
+            return (that.isVisible() && layer.isVisible());
+        };
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg16);
         bgSprite.setPosition(this._noviceTeachingLayerFit.bgSpritePoint);

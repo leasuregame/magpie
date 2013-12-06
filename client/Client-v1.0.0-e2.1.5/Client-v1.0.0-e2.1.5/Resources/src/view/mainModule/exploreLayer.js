@@ -491,8 +491,6 @@ var ExploreLayer = cc.Layer.extend({
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
-                            gameMark.updateGoldRewardMark(false);
-
                             if (goldList) {
                                 GoldLayer.pop({
                                     goldList: goldList,
@@ -541,17 +539,17 @@ var ExploreLayer = cc.Layer.extend({
                     this._spiritNode.encounterBattle();
 
                     this.scheduleOnce(function () {
-                        BattlePlayer.getInstance().play(this._reward.battleLogId);
+                        var isWin = BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
 
-                        var uid = gameData.player.get("uid");
-                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
-                        cc.log(isFirstFight);
-                        if (isFirstFight == 1) {
-                            sys.localStorage.setItem(uid + "firstFight", 2);
-                            MandatoryTeachingLayer.pop(FIRST_FIGHT);
+                        if (isWin) {
+                            var uid = gameData.player.get("uid");
+                            var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                            if (isFirstFight == 1) {
+                                sys.localStorage.setItem(uid + "firstFight", 2);
+                                MandatoryTeachingLayer.pop(FIRST_FIGHT);
+                            }
                         }
-
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();

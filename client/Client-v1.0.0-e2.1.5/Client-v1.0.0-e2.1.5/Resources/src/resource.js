@@ -583,6 +583,9 @@ var main_scene_image = {
     icon300: main_scene_path + "icon300.png",
     icon301: main_scene_path + "icon301.png",
     icon302: main_scene_path + "icon302.png",
+    icon303: main_scene_path + "icon303.png",
+    icon304: main_scene_path + "icon304.png",
+
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -854,7 +857,6 @@ var main_scene_image = {
     tutorials25: "res/ccb/tutorials25.ccbi",
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
-
 
 
     // 新手特效资源

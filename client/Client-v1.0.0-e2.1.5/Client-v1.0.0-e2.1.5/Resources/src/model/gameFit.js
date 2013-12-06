@@ -1883,7 +1883,7 @@ var fit4Iphone5 = {
         },
         "level9BoxLayer": {
             "bgSpritePoint": cc.p(320, 600),
-            "okItemPoint": cc.p(0, 420),
+            "okItemPoint": cc.p(320, 420),
             "boxGoodsPoints": {
                 money: cc.p(170, 750),
                 skillPoint: cc.p(390, 750),

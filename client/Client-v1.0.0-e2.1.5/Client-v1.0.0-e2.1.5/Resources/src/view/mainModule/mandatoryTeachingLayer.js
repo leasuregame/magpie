@@ -46,7 +46,6 @@ var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 var MandatoryTeachingLayer = LazyLayer.extend({
     _mandatoryTeachingLayerFit: null,
 
-
     _layer: [
         MainLayer,
         ExploreLayer,
@@ -285,7 +284,6 @@ MandatoryTeachingLayer.teachingProgress = function () {
     }
 
     return PROGRESS_NULL;
-
 };
 
 

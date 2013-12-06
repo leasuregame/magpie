@@ -28,11 +28,11 @@ var gameMark = {
         if (mark == false) {
             if (this.getSignInMark() == true) {
                 mark = true;
-            } else if (this.getPowerRewardMark() == true) {
-                mark = true;
             } else if (this.getGoldRewardMark() == true) {
                 mark = true;
             } else if (this.getRechargeMark() == true) {
+                mark = true;
+            } else if (this.getPowerRewardMark() == true) {
                 mark = true;
             }
         }
@@ -195,12 +195,19 @@ var gameMark = {
         var mark = this._goldReward;
         if (mark == false) {
             var goldRewards = outputTables.player_upgrade_reward.rows;
-            var lv = gameData.player.get("lv");
+            var lv = gameData.player.get('lv');
             var keys = Object.keys(goldRewards);
+            keys.sort(function (a, b) {
+                return parseInt(a) > parseInt(b);
+            });
             var len = keys.length;
             for (var i = 0; i < len; ++i) {
                 var key = keys[i];
-                if (gameData.activity.getTypeById(goldRewards[key].id) == GOLD_NO_RECEIVE) {
+                var type = gameData.activity.getTypeById(goldRewards[key].id);
+                cc.log("playerLv : " + lv);
+                cc.log(goldRewards[key].lv);
+                cc.log("type = " + type);
+                if (type == GOLD_NO_RECEIVE) {
                     if (lv >= goldRewards[key].lv) {
                         mark = true;
                         break;
@@ -208,6 +215,8 @@ var gameMark = {
                 }
             }
         }
+
+        cc.log(mark);
         this._goldReward = mark;
         return mark;
     },

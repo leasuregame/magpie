@@ -13,8 +13,8 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
-#include "js_bindings_IAPHelp.hpp"
-#include "js_cocos2dx_autogen_extension.hpp"
+//#include "js_bindings_IAPHelp.hpp"
+//#include "js_cocos2dx_autogen_extension.hpp"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
 #include <dirent.h>
@@ -69,8 +69,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
-    sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
-    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
+//    sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
+//    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
     
     sc->start();
     

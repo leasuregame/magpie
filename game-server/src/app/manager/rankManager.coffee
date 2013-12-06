@@ -111,7 +111,7 @@ reflashRank = (player, clg, targetId, def) ->
 checkAchievement = (player, challenger) ->
   achieve.winCount(player, challenger.winCount)
   achieve.winningStreak(player, challenger.winningStreak)
-  achieve.rankingToOne(player) if palyer.ranking is 1
+  achieve.rankingToOne(player) if player.ranking is 1
 
 rewardPercent = (ranking) ->
   pct = 0

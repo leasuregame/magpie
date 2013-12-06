@@ -813,14 +813,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.setTaskMark = function(chapter) {
-        this.taskMark.mark(chapter);
+        this.taskMark.setValue(this.task.mark).mark(chapter);
         var task = utility.deepCopy(this.task);
         task.mark = this.taskMark.value;
         this.task = task;
     };
 
     Player.prototype.hasTaskMark = function(chapter) {
-        return this.taskMark.hasMark(chapter);
+        return this.taskMark.setValue(this.task.mark).hasMark(chapter);
     };
 
     Player.prototype.setPassMark = function(layer) {

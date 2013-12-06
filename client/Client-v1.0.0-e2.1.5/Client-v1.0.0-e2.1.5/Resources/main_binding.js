@@ -133,6 +133,7 @@ var appFiles = [
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
     'src/view/mainModule/goldLayer.js',
+    'src/view/mainModule/level9BoxLayer.js.js',
     'src/view/mainModule/lineUpDetail.js',
     'src/view/mainModule/lineUpDetailsLayer.js',
     'src/view/mainModule/lineUpLabel.js',

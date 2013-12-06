@@ -112,7 +112,6 @@ var TournamentLabel = cc.Node.extend({
                 );
                 var tipIcon = cc.Sprite.create(main_scene_image.icon288);
                 tipIcon.setPosition(cc.p(530, 27));
-                //tipText.setColor(cc.c3b(255, 0, 0));
                 this.addChild(tipIcon);
             }
 
@@ -131,8 +130,6 @@ var TournamentLabel = cc.Node.extend({
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setPosition(cc.p(530, 48));
             this.addChild(abilityLabel);
-
-            //playerItem.setEnabled(false);
         }
 
         var cardList = this._player.cardList;
@@ -148,7 +145,6 @@ var TournamentLabel = cc.Node.extend({
         var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
         scrollView.setContentSize(cc.size(378, 75.6));
         scrollView.setPosition(cc.p(206, 30));
-//        scrollView.setBounceable(false);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -213,7 +209,7 @@ var TournamentLabel = cc.Node.extend({
 
                         if (data) {
                             if (data.upgradeReward) {
-                                that._target._setPlayerUpgradeReward(data.upgradeReward);
+                                that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);

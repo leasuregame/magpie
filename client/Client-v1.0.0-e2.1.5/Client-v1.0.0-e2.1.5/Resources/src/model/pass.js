@@ -125,6 +125,19 @@ var Pass = Entity.extend({
                     cbData.upgradeReward = upgradeInfo.rewards;
                 }
 
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
+                }
+
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(cbData);
@@ -171,6 +184,19 @@ var Pass = Entity.extend({
                     player.upgrade(upgradeInfo);
 
                     cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
                 }
 
                 cbData.reward = {

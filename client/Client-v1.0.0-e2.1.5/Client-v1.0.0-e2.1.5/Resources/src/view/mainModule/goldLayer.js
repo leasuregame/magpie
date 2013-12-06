@@ -24,6 +24,7 @@ var MAX_GOLD_ROTATION = 450;
 var GoldLayer = LazyLayer.extend({
     _goldLayerFit: null,
 
+    _cb: null,
     _gold: 0,
     _goldList: [],
     _goldItem: [],
@@ -58,7 +59,8 @@ var GoldLayer = LazyLayer.extend({
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._gold = 0;
-        this._goldList = data || [];
+        this._goldList = data.goldList || [];
+        this._cb = data.cb || null;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, this._goldLayerFit.bgLayerHeight);
         bgLayer.setPosition(this._goldLayerFit.bgLayerPoint);
@@ -274,6 +276,10 @@ var GoldLayer = LazyLayer.extend({
 
         this.scheduleOnce(function () {
             this.removeFromParent();
+
+            if (this._cb) {
+                this._cb();
+            }
         }, 2);
     },
 

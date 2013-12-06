@@ -164,7 +164,7 @@ var addEvents = function(player) {
 };
 
 var correctPower = function(player) {
-    var interval, power, now, times, resumePoint;
+    var interval, power, now, times = 1, resumePoint;
 
     interval = playerConfig.POWER_RESUME.interval;
     power = player.power;

@@ -50,6 +50,7 @@ Manager = module.exports =
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
+        checkAchievement(player, challenger)
 
       else
         updateRankInfo(defender, challenger)

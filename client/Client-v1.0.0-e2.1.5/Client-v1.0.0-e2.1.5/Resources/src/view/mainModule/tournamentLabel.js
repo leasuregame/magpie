@@ -204,7 +204,7 @@ var TournamentLabel = cc.Node.extend({
                     this._target.showTip();
 
                 } else {
-                    if(count != 0) {
+                    if (count != 0) {
                         sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
                     }
 
@@ -217,14 +217,11 @@ var TournamentLabel = cc.Node.extend({
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);
-
                             var uid = gameData.player.get("uid");
-                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament")) || 1;
-                            if(isFirstTournament == 1) {
-                                MandatoryTeachingLayer.pop();
-                                sys.localStorage.setItem(uid + "firstTournament", 0);
+                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
+                            if (isFirstTournament != 2) {
+                                sys.localStorage.setItem(uid + "firstTournament", 1);
                             }
-
                         } else {
                             that._target.update();
                         }

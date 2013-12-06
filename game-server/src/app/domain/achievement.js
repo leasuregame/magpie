@@ -20,28 +20,28 @@ Achievement.passTo = function(player, layer) {
 	checkIsReached(player, 'passTo', layer);
 };
 
-Achievement.winCount = function(player, ranking) {
-	checkIsReached(player, 'winCount', ranking);
+Achievement.winCount = function(player, count) {
+	checkIsReached(player, 'winCount', count);
 };
 
-Achievement.winningStreak = function(player, ranking) {
-	checkIsReached(player, 'winningStreak', ranking);
+Achievement.winningStreak = function(player, count) {
+	checkIsReached(player, 'winningStreak', count);
 };
 
 Achievement.rankingToOne = function(player) {
-	checkIsReached(player, 'rankingToOne', 1)
+	checkIsReached(player, 'rankingToOne', 1);
 };
 
 Achievement.friends = function(player, count) {
-	checkIsReached(player, 'friends', count);
+	checkIsReached_alpha(player, 'friends', count);
 };
 
 Achievement.elixirTo = function(player, eli) {
-	checkIsReached(player, 'elixirTo', eli);
+	checkIsReached_alpha(player, 'elixirTo', eli);
 };
 
 Achievement.energyTo = function(player, energy) {
-	checkIsReached(player, 'energyTo', energy);
+	checkIsReached_alpha(player, 'energyTo', energy);
 };
 
 Achievement.powerConsume = function(player, power) {
@@ -94,6 +94,25 @@ Achievement.soLucky = function(player) {
 
 Achievement.v587 = function(player) {
 	checkIsReached_alpha(player, 'v587', 1);
+};
+
+Achievement.taskPoinTo = function(player) {
+	checkIsReached_alpha(player, 'taskPoinTo', 1);
+};
+
+Achievement.taskChapterPassTo = function(player, chapter) {
+	checkIsReached(player, 'taskChapterPassTo', chapter);
+};
+
+Achievement.passFirstWin = function(player) {
+	checkIsReached_alpha(player, 'passFirstWin', 1);
+};
+
+Achievement.taskPartPassTo = function(player, chapter) {
+	// 5个大章为为一个part 
+	if (charpter % 5 == 0) {
+		checkIsReached(player, 'taskPartPassTo', part);
+	}	
 };
 
 var checkIsReached_alpha = function(player, method, incVal) {

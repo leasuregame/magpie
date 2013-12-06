@@ -56,7 +56,7 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
     
     uid = userId + '*' + player.areaId
     messageService.add(uid, serverId, player.id, player.name)
-    return callback null, player.toJson()
+    return callback null, _.extend(player.toJson(), serverTime: Date.now())
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId

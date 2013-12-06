@@ -8,6 +8,7 @@ dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
 fightManager = require './fightManager'
+achieve = require '../domain/achievement'
 logger = require('pomelo-logger').getLogger(__filename)
 
 class Manager
@@ -142,7 +143,7 @@ class Manager
       player.addCards results
       cb()
 
-  @countExploreResult: (player, data, taskId, cb) ->
+  @countExploreResult: (player, data, taskId, chapterId, cb) ->
     taskData = table.getTableItem('task', taskId)
 
     _.extend data, {
@@ -156,15 +157,23 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
+      if taskId < 4
+        ### 十步之遥 成就奖励 ###
+        achieve.taskPoinTo(player)
+
       task = utility.deepCopy(player.task)
       task.progress += 1
       if task.progress >= taskData.points
+        if taskId%10 is 0
+          ### 一大关结束，触发摸一摸功能 ###
+          data.momo = player.createMonoGift()
+          ### 通关成就 ###
+          achieve.taskChapterPassTo(player, chapterId)
+          achieve.taskPartPassTo(player, chapterId)
+
         task.progress = 0
         task.id += 1
-        task.hasWin = false
-        ### 一大关结束，触发摸一摸功能 ###
-        if task.id % 10 is 1 && task.id != 1
-          data.momo = player.createMonoGift();
+        task.hasWin = false       
 
         rew = table.getTableItem('task_through_reward', task.id-1)
         if not rew

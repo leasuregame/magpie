@@ -184,12 +184,6 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.sets({
-                    power: msg.power.value,
-                    powerTimestamp: msg.power.time,
-                    exp: msg.exp
-                });
-
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
 
@@ -228,6 +222,12 @@ var Task = Entity.extend({
                         cbData.card = card;
                     }
                 }
+
+                player.sets({
+                    power: msg.power.value,
+                    powerTimestamp: msg.power.time,
+                    exp: msg.exp
+                });
 
                 cb(cbData);
 

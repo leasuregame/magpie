@@ -831,6 +831,11 @@ var main_scene_image = {
     s18: effect_scene_path + "startAnimation/" + "s18.png",
     s19: effect_scene_path + "startAnimation/" + "s19.png",
     s20: effect_scene_path + "startAnimation/" + "s20.png",
+    s21: effect_scene_path + "startAnimation/" + "s21.png",
+    s22: effect_scene_path + "startAnimation/" + "s22.png",
+    s23: effect_scene_path + "startAnimation/" + "s23.png",
+    s24: effect_scene_path + "startAnimation/" + "s24.png",
+    s25: effect_scene_path + "startAnimation/" + "s25.png",
 
 
 

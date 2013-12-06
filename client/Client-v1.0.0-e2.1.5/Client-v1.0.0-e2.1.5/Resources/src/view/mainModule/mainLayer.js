@@ -47,6 +47,7 @@ var MainLayer = cc.Layer.extend({
         this._super();
         this.updateMark();
         this.updateGuide();
+        this.onTeaching();
 
         lz.dc.beginLogPageView("主界面");
     },
@@ -294,6 +295,18 @@ var MainLayer = cc.Layer.extend({
             this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
             this._rankGuide.setRotation(180);
             this.addChild(this._rankGuide);
+        }
+
+    },
+
+    onTeaching: function() {
+        cc.log("MainLayer onTeaching");
+
+        var uid = gameData.player.get("uid");
+        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
+        if(isFirstPassiveSkillAfresh == 1) {
+            MandatoryTeachingLayer.pop();
+            sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 0);
         }
 
     },

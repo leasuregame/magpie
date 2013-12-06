@@ -536,15 +536,11 @@ var ExploreLayer = cc.Layer.extend({
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
 
-                        if(this._reward) {
-                            if(this._reward.result == "fight") {
-                                var uid = gameData.player.get("uid");
-                                var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
-                                if(isFirstFight == 1) {
-                                    MandatoryTeachingLayer.pop();
-                                    sys.localStorage.setItem(uid + "firstFight", 0);
-                                }
-                            }
+                        var uid = gameData.player.get("uid");
+                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                        if (isFirstFight == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstFight", 0);
                         }
 
                     }, 1);

@@ -116,7 +116,7 @@ Achievement.taskPartPassTo = function(player, chapter) {
 	}	
 };
 
-var checkIsReached_alpha = function(player, method, incVal, useMax=false) {
+var checkIsReached_alpha = function(player, method, incVal, useMax) {
 	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
 		method: method
@@ -127,7 +127,7 @@ var checkIsReached_alpha = function(player, method, incVal, useMax=false) {
 	checkIsReached(player, method, need, useMax);
 };
 
-var checkIsReached = function(player, method, need, useMax=false) {
+var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
 	achs.forEach(function(ach) {
 		if ( (typeof player.achievement[ach.id] == 'undefined') || 

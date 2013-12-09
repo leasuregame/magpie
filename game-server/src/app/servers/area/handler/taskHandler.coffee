@@ -155,6 +155,7 @@ Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   layer = msg.layer
   player = null
+  firstWin = false
 
   async.waterfall [
     (cb) ->
@@ -162,6 +163,8 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+      oldLayer = player.passLayer
+
       fdata = table.getTableItem('function_limit', 1)
       if fdata? and player.lv < fdata.pass
         return next(null, {code: 501, msg: fdata.pass+'级开放'}) 
@@ -201,9 +204,10 @@ Handler::passBarrier = (msg, session, next) ->
           if box
             level9Box = level9Box
 
-        if layer is 1
+        if layer is 1 and oldLayer is layer-1
           ### 天道首胜 成就 ###
           achieve.passFirstWin(player)
+          firstWin = true
 
       cb(null, bl, upgradeInfo, level9Box)
 
@@ -219,7 +223,8 @@ Handler::passBarrier = (msg, session, next) ->
       level9Box: level9Box if level9Box
       pass: player.getPass(),
       power: player.power,
-      exp: player.exp
+      exp: player.exp,
+      firstWin: firstWin if firstWin
     }})
 
 ###

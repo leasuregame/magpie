@@ -102,6 +102,7 @@ Handler::challenge = (msg, session, next) ->
 
   player = null
   target = null
+  isWin = fasle
   async.waterfall [
     (cb) ->
       playerManager.getPlayers [playerId, targetId], cb
@@ -130,12 +131,17 @@ Handler::challenge = (msg, session, next) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
+      firstWin = false
+      if isWin and (player.rank?.winCount is 1)
+        firstWin = true
+
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl
         upgradeInfo: upgradeInfo if upgradeInfo
         level9Box: level9Box if level9Box
         exp: player.exp
+        firstWin: firstWin if firstWin
       }})
 
       saveBattleLog(bl, playerName)

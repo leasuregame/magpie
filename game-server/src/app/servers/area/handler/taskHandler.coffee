@@ -156,6 +156,7 @@ Handler::passBarrier = (msg, session, next) ->
   layer = msg.layer
   player = null
   firstWin = false
+  oldLayer = -10
 
   async.waterfall [
     (cb) ->

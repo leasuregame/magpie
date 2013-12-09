@@ -124,6 +124,9 @@ var Rank = (function(_super) {
 			})
 			.filter(function(i) {
 				return i < self.historyRanking;
+			})
+			.sort(function(x, y) {
+				return y - x;
 			});
 	};
 

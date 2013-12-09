@@ -180,9 +180,9 @@ var TournamentLayer = cc.Layer.extend({
 
         var next = function () {
             var uid = gameData.player.get("uid");
-            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
+            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "_firstTournament"));
             if (isFirstTournament == 1) {
-                sys.localStorage.setItem(uid + "firstTournament", 2);
+                sys.localStorage.setItem(uid + "_firstTournament", 2);
                 MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
             }
 

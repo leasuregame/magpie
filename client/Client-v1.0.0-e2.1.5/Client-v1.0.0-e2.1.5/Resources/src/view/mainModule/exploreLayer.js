@@ -555,9 +555,9 @@ var ExploreLayer = cc.Layer.extend({
 
                         if (isWin) {
                             var uid = gameData.player.get("uid");
-                            var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                            var isFirstFight = parseInt(sys.localStorage.getItem(uid + "_firstFight")) || 1;
                             if (isFirstFight == 1) {
-                                sys.localStorage.setItem(uid + "firstFight", 2);
+                                sys.localStorage.setItem(uid + "_firstFight", 2);
                                 MandatoryTeachingLayer.pop(FIRST_FIGHT);
                             }
                         }

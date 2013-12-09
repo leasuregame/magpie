@@ -220,9 +220,9 @@ var PassLayer = cc.Layer.extend({
 
         var next = function () {
             var uid = gameData.player.get("uid");
-            var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "firstPassWin"));
+            var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "_firstPassWin"));
             if (isFirstPassWin == 1) {
-                sys.localStorage.setItem(uid + "firstPassWin", 2);
+                sys.localStorage.setItem(uid + "_firstPassWin", 2);
                 MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
             }
         };
@@ -588,9 +588,9 @@ var PassLayer = cc.Layer.extend({
 
                     if (that._isWin) {
                         var uid = gameData.player.get("uid");
-                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "firstPassWin"));
+                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "_firstPassWin"));
                         if (isFirstPassWin != 2) {
-                            sys.localStorage.setItem(uid + "firstPassWin", 1);
+                            sys.localStorage.setItem(uid + "_firstPassWin", 1);
                         }
                     }
 

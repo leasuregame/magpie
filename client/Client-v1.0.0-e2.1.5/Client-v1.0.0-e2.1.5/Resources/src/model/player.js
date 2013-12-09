@@ -176,6 +176,7 @@ var Player = Entity.extend({
             MAX_LINE_UP_CARD = 3;
         }
 
+        gameGuide.updateGuide();
         gameMark.updateGoldRewardMark(false);
     },
 

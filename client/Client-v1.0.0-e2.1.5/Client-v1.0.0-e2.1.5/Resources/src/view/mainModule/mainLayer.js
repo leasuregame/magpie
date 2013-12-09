@@ -303,9 +303,9 @@ var MainLayer = cc.Layer.extend({
         cc.log("MainLayer onTeaching");
 
         var uid = gameData.player.get("uid");
-        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
+        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "_firstPassiveSkillAfresh")) || -1;
         if(isFirstPassiveSkillAfresh == 1) {
-            sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 2);
+            sys.localStorage.setItem(uid + "_firstPassiveSkillAfresh", 2);
             MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
         }
 

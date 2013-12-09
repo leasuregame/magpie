@@ -82,9 +82,9 @@ var gameGuide = {
 
         if (lv == PASSIVE_SKILL_AFRESH_LV) {
             var uid = gameData.player.get("uid");
-            var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
+            var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "_firstPassiveSkillAfresh")) || -1;
             if (isFirstPassiveSkillAfresh == -1) {
-                sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 1);
+                sys.localStorage.setItem(uid + "_firstPassiveSkillAfresh", 1);
             }
         }
     },

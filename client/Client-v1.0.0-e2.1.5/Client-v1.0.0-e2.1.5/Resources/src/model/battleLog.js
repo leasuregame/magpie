@@ -47,7 +47,7 @@ var BattleLog = Entity.extend({
         this.set("isPlayback", isPlayback);
 
         var uid = gameData.player.get("uid");
-        if (parseInt(sys.localStorage.getItem(uid + "firstTournament")) == 1) {
+        if (parseInt(sys.localStorage.getItem(uid + "_firstTournament")) == 1) {
             this.set("isFirstTournament", true);
         } else {
             this.set("isFirstTournament", false);

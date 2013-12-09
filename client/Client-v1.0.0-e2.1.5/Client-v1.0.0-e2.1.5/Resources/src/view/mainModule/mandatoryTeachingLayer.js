@@ -84,7 +84,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         cc.log(progress);
 
         this._progress = progress;
-        this._step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + this._progress)) || 0;
+        this._step = parseInt(sys.localStorage.getItem(uid + "_MTprogress" + this._progress)) || 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
         this._effectOrder = teaching[this._progress].effectOrder;
@@ -153,11 +153,11 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         var uid = gameData.player.get("uid");
 
         if (this._step >= this._overStep) {
-            sys.localStorage.setItem(uid + "MTprogress", PROGRESS_NULL);
-            sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._overStep);
+            sys.localStorage.setItem(uid + "_MTprogress", PROGRESS_NULL);
+            sys.localStorage.setItem(uid + "_MTprogress" + this._progress, this._overStep);
         } else {
-            sys.localStorage.setItem(uid + "MTprogress", this._progress);
-            sys.localStorage.setItem(uid + "MTprogress" + this._progress, this._step);
+            sys.localStorage.setItem(uid + "_MTprogress", this._progress);
+            sys.localStorage.setItem(uid + "_MTprogress" + this._progress, this._step);
         }
     },
 
@@ -276,8 +276,8 @@ MandatoryTeachingLayer.teachingProgress = function () {
     cc.log("MandatoryTeachingLayer isNeedTeaching");
 
     var uid = gameData.player.get("uid");
-    var progress = parseInt(sys.localStorage.getItem(uid + "MTprogress"));
-    var step = parseInt(sys.localStorage.getItem(uid + "MTprogress" + progress));
+    var progress = parseInt(sys.localStorage.getItem(uid + "_MTprogress"));
+    var step = parseInt(sys.localStorage.getItem(uid + "_MTprogress" + progress));
 
     cc.log("progress = " + progress);
     cc.log("step = " + step);

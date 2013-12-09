@@ -23,6 +23,31 @@ var BatterLayer = cc.Layer.extend({
     _spiritNode: null,
     _locate: null,
     _isPlayback: false,
+    _skillTable: {
+        1: "singleAtk",
+        2: "aoeAtk1",
+        3: "aoeAtk1",
+        4: "aoeAtk2",
+        5: "aoeAtk3",
+        6: "aoeAtk3",
+        7: "heal",
+        8: "heal",
+        9: "heal",
+        10: "heal"
+    },
+    _noSkillTable: {
+        0: "normalAtk1",
+        1: "normalAtk2",
+        2: "normalAtk3",
+        3: "normalAtk3",
+        4: "normalAtk3",
+        5: "normalAtk3",
+        6: "normalAtk3",
+        7: "normalAtk1",
+        8: "normalAtk1",
+        9: "normalAtk1",
+        10: "normalAtk1"
+    },
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -335,11 +360,10 @@ var BatterLayer = cc.Layer.extend({
         cc.log("BattleLayer attack");
         cc.log(battleStep);
 
-        if (battleStep.isSkill()) {
-            var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
-            var isSpiritAtk = battleStep.isSpiritAtk();
+        var skillId = this._battleNode[battleStep.get("attacker")].getSkillId();
 
-            if (isSpiritAtk) {
+        if (battleStep.isSkill()) {
+            if (battleStep.isSpiritAtk()) {
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
@@ -352,15 +376,7 @@ var BatterLayer = cc.Layer.extend({
                     ccbNode.removeFromParent();
                 }
 
-                if (skillType === 1) {
-                    that.singleAtk(battleStep);
-                } else if (skillType === 2) {
-                    that.aoeAtk(battleStep);
-                } else if (skillType === 3) {
-                    that.heal(battleStep);
-                } else if (skillType === 4) {
-                    that.heal(battleStep);
-                }
+                that[that._skillTable[skillId]](battleStep);
             };
 
             var addSubtitleNodeCb = function () {
@@ -376,15 +392,26 @@ var BatterLayer = cc.Layer.extend({
                     0,
                     addSubtitleNodeCb
                 );
+
+                var effect18Node = cc.BuilderReader.load(main_scene_image.effect18, this);
+                effect18Node.setPosition(this._locate[attacker]);
+                this.addChild(effect18Node);
+
+                effect18Node.animationManager.setCompletedAnimationCallback(this, function () {
+                    effect18Node.removeFromParent();
+                });
             } else {
                 cb();
             }
         } else {
-            this.normalAtk(battleStep);
+            cc.log(skillId);
+            cc.log(this._noSkillTable[skillId]);
+
+            this[this._noSkillTable[skillId]](battleStep);
         }
     },
 
-    normalAtk: function (battleStep) {
+    normalAtk1: function (battleStep) {
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
@@ -431,8 +458,143 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-//                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
                     effect1Node.runAction(
+                        cc.EaseSineIn.create(
+                            cc.MoveTo.create(
+                                effect1NodeAnimationManager.getSequenceDuration(
+                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                ),
+                                targetLocate
+                            )
+                        )
+                    );
+                })();
+            }
+        };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_1_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
+    },
+
+    normalAtk2: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        battleStep.recover();
+        this.callback = function () {
+            var that = this;
+
+            while (battleStep.hasNextTarget()) {
+                (function () {
+                    var target = battleStep.getTarget();
+                    var targetLocate = that._locate[target];
+                    var targetNode = that._battleNode[target];
+                    var effect = battleStep.getEffect();
+                    var isCrit = battleStep.isCrit();
+
+                    var effect23Node = cc.BuilderReader.load(main_scene_image.effect23, that);
+                    effect23Node.setPosition(attackerLocate);
+                    that.addChild(effect23Node);
+
+                    var effect1NodeAnimationManager = effect23Node.animationManager;
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                        effect23Node.removeFromParent();
+
+                        var effect22Node = cc.BuilderReader.load(main_scene_image.effect22, that);
+                        effect22Node.setPosition(targetLocate);
+                        that.addChild(effect22Node);
+
+                        var nextStepCallback2 = that.nextStepCallback();
+                        effect22Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect22Node.removeFromParent();
+                            nextStepCallback2();
+                        });
+
+                        targetNode.runAnimations(
+                            (effect ? "def_1_" : "mis_1_") + that._getDirection(target),
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, false, isCrit);
+
+                        nextStepCallback1();
+                    });
+
+                    effect23Node.runAction(
+                        cc.EaseSineIn.create(
+                            cc.MoveTo.create(
+                                effect1NodeAnimationManager.getSequenceDuration(
+                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                ),
+                                targetLocate
+                            )
+                        )
+                    );
+                })();
+            }
+        };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_1_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
+    },
+
+    normalAtk3: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        battleStep.recover();
+        this.callback = function () {
+            var that = this;
+
+            while (battleStep.hasNextTarget()) {
+                (function () {
+                    var target = battleStep.getTarget();
+                    var targetLocate = that._locate[target];
+                    var targetNode = that._battleNode[target];
+                    var effect = battleStep.getEffect();
+                    var isCrit = battleStep.isCrit();
+
+                    var effect25Node = cc.BuilderReader.load(main_scene_image.effect25, that);
+                    effect25Node.setPosition(attackerLocate);
+                    that.addChild(effect25Node);
+
+                    var effect1NodeAnimationManager = effect25Node.animationManager;
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                        effect25Node.removeFromParent();
+
+                        var effect24Node = cc.BuilderReader.load(main_scene_image.effect24, that);
+                        effect24Node.setPosition(targetLocate);
+                        that.addChild(effect24Node);
+
+                        var nextStepCallback2 = that.nextStepCallback();
+                        effect24Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect24Node.removeFromParent();
+                            nextStepCallback2();
+                        });
+
+                        targetNode.runAnimations(
+                            (effect ? "def_1_" : "mis_1_") + that._getDirection(target),
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, false, isCrit);
+
+                        nextStepCallback1();
+                    });
+
+                    effect25Node.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
                                 effect1NodeAnimationManager.getSequenceDuration(
@@ -498,13 +660,136 @@ var BatterLayer = cc.Layer.extend({
         );
     },
 
-    aoeAtk: function (battleStep) {
+    aoeAtk1: function (battleStep) {
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
         this.callback = function () {
             var that = this;
+
+            while (battleStep.hasNextTarget()) {
+                (function () {
+                    var target = battleStep.getTarget();
+                    var targetLocate = that._locate[target];
+                    var targetNode = that._battleNode[target];
+                    var effect = battleStep.getEffect();
+                    var isCrit = battleStep.isCrit();
+
+                    var effect19Node = cc.BuilderReader.load(main_scene_image.effect19, that);
+                    effect19Node.setPosition(attackerLocate);
+                    that.addChild(effect19Node);
+
+                    var effect1NodeAnimationManager = effect19Node.animationManager;
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                        effect19Node.removeFromParent();
+
+                        var effect20Node = cc.BuilderReader.load(main_scene_image.effect20, that);
+                        effect20Node.setPosition(targetLocate);
+                        that.addChild(effect20Node);
+
+                        var nextStepCallback2 = that.nextStepCallback();
+                        effect20Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect20Node.removeFromParent();
+                            nextStepCallback2();
+                        });
+
+                        targetNode.runAnimations(
+                            (effect ? "def_3_" : "mis_1_") + that._getDirection(target),
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, true, isCrit);
+
+                        nextStepCallback1();
+                    });
+
+                    effect19Node.runAction(
+                        cc.EaseSineIn.create(
+                            cc.MoveTo.create(
+                                effect1NodeAnimationManager.getSequenceDuration(
+                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                ),
+                                targetLocate
+                            )
+                        )
+                    );
+                })();
+            }
+        };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_3_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
+    },
+
+    aoeAtk2: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        battleStep.recover();
+        this.callback = function () {
+            var that = this;
+
+            while (battleStep.hasNextTarget()) {
+                (function () {
+                    var target = battleStep.getTarget();
+                    var targetLocate = that._locate[target];
+                    var targetNode = that._battleNode[target];
+                    var effect = battleStep.getEffect();
+                    var isCrit = battleStep.isCrit();
+
+                    var effect21Node = cc.BuilderReader.load(main_scene_image.effect21, that);
+                    effect21Node.setPosition(targetLocate);
+                    that.addChild(effect21Node);
+
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect21Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect21Node.removeFromParent();
+                        nextStepCallback1();
+                    });
+
+                    targetNode.runAnimations(
+                        (effect ? "def_3_" : "mis_1_") + that._getDirection(target),
+                        0,
+                        that.nextStepCallback()
+                    );
+
+                    targetNode.update(effect);
+                    that.tipHarm(target, effect, true, isCrit);
+                })();
+            }
+        };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_3_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
+    },
+
+    aoeAtk3: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        battleStep.recover();
+        this.callback = function () {
+            var that = this;
+
+            var effect16Node = cc.BuilderReader.load(main_scene_image.effect16, this);
+            effect16Node.setPosition(this._locate[attacker]);
+            this.addChild(effect16Node);
+
+            var nextStepCallback = this.nextStepCallback();
+            effect16Node.animationManager.setCompletedAnimationCallback(this, function () {
+                effect16Node.removeFromParent();
+                nextStepCallback();
+            });
 
             while (battleStep.hasNextTarget()) {
                 (function () {

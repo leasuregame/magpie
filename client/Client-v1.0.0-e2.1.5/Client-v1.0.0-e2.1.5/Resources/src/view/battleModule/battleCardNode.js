@@ -49,7 +49,7 @@ var BattleCardNode = cc.Node.extend({
         this._nowHp = this._hp;
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
-        this._skillType = data.skillType || 0;
+        this._skillId = data.skillId || 0;
         this._isDie = false;
 
         this._load();
@@ -72,8 +72,6 @@ var BattleCardNode = cc.Node.extend({
         this._cardSprite.setTexture(cardSpriteTexture);
         this._iconSprite.setTexture(iconSpriteTexture);
 
-        this.addChild(this._ccbNode);
-
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
             main_scene_image.progress12,
@@ -92,6 +90,8 @@ var BattleCardNode = cc.Node.extend({
         this._spiritHpProgress.setPosition(cc.p(0, -100));
         this.addChild(this._spiritHpProgress);
 
+        this.addChild(this._ccbNode);
+
         this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
         this.addChild(this._tipLabel);
 
@@ -104,19 +104,19 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = cardTable.skill_id;
+        this._skillId = cardTable.skill_id || 0;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 
         // 读取技能配置表
         if (this._skillId) {
             var skillTable = outputTables.skills.rows[this._skillId];
-            this._skillType = skillTable.type;
+            this._skillType = skillTable.type || 0;
         }
     },
 
-    getSkillType: function () {
-        return this._skillType;
+    getSkillId: function () {
+        return this._skillId;
     },
 
     getSpiritHp: function () {
@@ -221,16 +221,22 @@ var BattleCardNode = cc.Node.extend({
     die: function () {
         cc.log("BattleCardNode die");
 
-        if (!this._isDie && this._nowHp <= 0) {
-            this._isDie = true;
+        if (!this._isDie) {
+            if (this._nowHp <= 0) {
+                this._isDie = true;
 
-            this.runAnimations("die_1");
+                this.runAnimations("die_1");
 
-            this._hpProgress.setVisible(false);
-            this._spiritHpProgress.setVisible(false);
+                this._hpProgress.setVisible(false);
+                this._spiritHpProgress.setVisible(false);
 
-            if (this._spirit > 0) {
-                this.getParent().releaseSpirit(this._index, this._spirit);
+                if (this._spirit > 0) {
+                    this.getParent().releaseSpirit(this._index, this._spirit);
+                }
+            } else if (this._nowHp / this._hp < 0.05) {
+                if (this._animationManager.getRunningSequenceName() != "god_1") {
+                    this.runAnimations("god_1");
+                }
             }
         }
     }

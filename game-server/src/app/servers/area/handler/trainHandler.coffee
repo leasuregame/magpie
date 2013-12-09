@@ -386,12 +386,8 @@ Handler::starUpgrade = (msg, session, next) ->
   ], (err, result) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
-
-    cardManager.getCardInfo card.id, (err, res) ->
-      if err
-        return next(null, err)
       
-      next(null, {code: 200, msg: {upgrade: is_upgrade, card: res.toJson()}})
+    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

@@ -15,6 +15,7 @@
 var UPDATE_POWER_TIME_INTERVAL = 2;
 var UPDATE_POWER_TIME = 600000;
 var UPDATE_POWER_VALUE = 5;
+var OVER_NOVICE_STEP = 17;
 
 var Player = Entity.extend({
     _id: 0,             // 数据库id
@@ -46,7 +47,7 @@ var Player = Entity.extend({
     _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
 
-    _noviceTeachStep: OVER_NOVICE_STEP, //是否需要进行新手教程
+    _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
     init: function (data) {
         cc.log("Player init");
@@ -164,6 +165,8 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
+
+        gameGuide.updateGuide();
     },
 
     _lvChangeEvent: function () {
@@ -183,7 +186,6 @@ var Player = Entity.extend({
             MAX_LINE_UP_CARD = 3;
         }
 
-        gameGuide.updateGuide();
         gameMark.updateGoldRewardMark(false);
     },
 

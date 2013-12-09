@@ -8,7 +8,6 @@
  * */
 
 var NOVICE_TEACHING_LAYER_HANDLER_PRIORITY = -201;
-var OVER_NOVICE_STEP = 17;
 
 var NoviceTeachingLayer = LazyLayer.extend({
     _noviceTeachingLayerFit: null,

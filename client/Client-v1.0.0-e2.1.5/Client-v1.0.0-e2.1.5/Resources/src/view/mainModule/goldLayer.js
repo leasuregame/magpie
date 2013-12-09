@@ -307,6 +307,14 @@ var GoldLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect29, this);
+            var point = this._goldItem[index].getPosition();
+            effect.setPosition(point);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect, 10);
+
             this._obtainGold(index);
         }
     }

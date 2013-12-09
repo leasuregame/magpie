@@ -131,9 +131,9 @@ Handler::challenge = (msg, session, next) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
-      firstWin = false
-      if isWin and (player.rank?.winCount is 1)
-        firstWin = true
+      firstTime = false
+      if player.rank?.startCount is 1
+        firstTime = true
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
@@ -141,7 +141,7 @@ Handler::challenge = (msg, session, next) ->
         upgradeInfo: upgradeInfo if upgradeInfo
         level9Box: level9Box if level9Box
         exp: player.exp
-        firstWin: firstWin if firstWin
+        firstTime: firstTime if firstTime
       }})
 
       saveBattleLog(bl, playerName)

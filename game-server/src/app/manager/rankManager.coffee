@@ -27,6 +27,7 @@ Manager = module.exports =
       challenger = (ranks.filter (r) -> r.playerId == player.id)?[0]
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]
       challenger.increase('challengeCount')
+      challenger.increase('startCount')
       defender.increase('challengeCount')
       
       rewards = {ranking_elixir: 0}

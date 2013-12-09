@@ -41,12 +41,13 @@ var Rank = (function(_super) {
 	}
 
 	Rank.FIELDS = [
-		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'winCount', 
+		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'startCount', 'winCount', 
 		'loseCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
 	];
 	Rank.DEFAULT_VALUES = {
 		ranking: 0,
 		challengeCount: 0,
+		startCount: 0,
 		winCount: 0,
 		loseCount: 0,
 		winningStreak: 0,

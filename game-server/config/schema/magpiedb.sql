@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `playerId` INT(10) UNSIGNED NOT NULL,
   `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
   `challengeCount` BIGINT(20) UNSIGNED DEFAULT '0',
+  `startCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `winCount` INT(10) UNSIGNED DEFAULT '0',
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',

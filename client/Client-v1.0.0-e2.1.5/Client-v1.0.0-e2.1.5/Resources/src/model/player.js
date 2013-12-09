@@ -46,6 +46,8 @@ var Player = Entity.extend({
     _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
 
+    _noviceTeachStep: OVER_NOVICE_STEP, //是否需要进行新手教程
+
     init: function (data) {
         cc.log("Player init");
 
@@ -125,6 +127,11 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
+
+        if (data.teachingStep) {
+            this.set("noviceTeachStep", data.teachingStep);
+        }
+
     },
 
     updatePower: function () {
@@ -265,6 +272,24 @@ var Player = Entity.extend({
                 lz.dc.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    setStep: function (step, cb) {
+        cc.log("Player setStep: " + step);
+        var that = this;
+        lz.server.request("area.playerHandler.setStep", {
+            step: step
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+            if (data.code == 200) {
+                cb();
+            } else {
+                cc.log("setStep fail");
 
                 TipLayer.tip(data.msg);
             }

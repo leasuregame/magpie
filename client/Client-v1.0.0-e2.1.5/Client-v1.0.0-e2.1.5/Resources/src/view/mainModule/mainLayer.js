@@ -299,13 +299,11 @@ var MainLayer = cc.Layer.extend({
 
     },
 
-    onTeaching: function() {
+    onTeaching: function () {
         cc.log("MainLayer onTeaching");
 
-        var uid = gameData.player.get("uid");
-        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "_firstPassiveSkillAfresh")) || -1;
-        if(isFirstPassiveSkillAfresh == 1) {
-            sys.localStorage.setItem(uid + "_firstPassiveSkillAfresh", 2);
+        if (gameGuide.get("isFirstPassiveSkillAfresh")) {
+            this.set("isFirstPassiveSkillAfresh", false);
             MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
         }
 
@@ -340,8 +338,8 @@ var MainLayer = cc.Layer.extend({
                 noviceTeachingLayer.next();
             }
 
-            if(mandatoryTeachingLayer) {
-                if(mandatoryTeachingLayer.isTeaching()) {
+            if (mandatoryTeachingLayer) {
+                if (mandatoryTeachingLayer.isTeaching()) {
                     mandatoryTeachingLayer.clearAndSave();
                     mandatoryTeachingLayer.next();
                 }

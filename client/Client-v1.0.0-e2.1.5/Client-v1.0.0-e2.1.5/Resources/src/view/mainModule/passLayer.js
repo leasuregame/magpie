@@ -29,6 +29,7 @@ var PassLayer = cc.Layer.extend({
     _scrollView: null,
     _element: {},
     _blackHoleSprite: [],
+    _isFirstPassWin: false,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -219,10 +220,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer update");
 
         var next = function () {
-            var uid = gameData.player.get("uid");
-            var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "_firstPassWin"));
-            if (isFirstPassWin == 1) {
-                sys.localStorage.setItem(uid + "_firstPassWin", 2);
+            if (this._isFirstPassWin) {
                 MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
             }
         };
@@ -617,6 +615,7 @@ var PassLayer = cc.Layer.extend({
             if (data) {
                 that._upgradeReward = data.upgradeReward || null;
                 that._level9Box = data.level9Box || null;
+                that._isFirstPassWin = data.isFirstPassWin || false;
 
                 that._wipeOutAnimation(data.reward);
             } else {

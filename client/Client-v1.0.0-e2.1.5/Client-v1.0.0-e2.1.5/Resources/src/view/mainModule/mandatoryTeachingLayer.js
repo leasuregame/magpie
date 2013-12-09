@@ -56,7 +56,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     ],
 
     _progress: 0,   //总的教学进度
-    _step: 0,       //当前教学步骤
+    _step: 100,       //当前教学步骤
     _overStep: 0,    //结束教学步骤
     _layerOrder: [],
     _clickType: [],
@@ -84,7 +84,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         cc.log(progress);
 
         this._progress = progress;
-        this._step = parseInt(sys.localStorage.getItem(uid + "_MTprogress" + this._progress)) || 0;
+        this._step = 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
         this._effectOrder = teaching[this._progress].effectOrder;
@@ -95,44 +95,41 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         this._rect = cc.rect(0, 0, 0, 0);
 
-        if (this.isTeaching()) {
-            this._load();
-            this._save();
-        }
+        this._changeEffect(this._effectOrder[this._step]);
 
         return true;
 
     },
 
-    _load: function () {
-        cc.log("MandatoryTeachingLayer _load");
-        cc.log(this._step);
-        if (this._progress < 3) {
-            if (this._step > 2) {
-                this._step = 2;
-            }
-        } else {
-            if (this._step > 1) {
-                this._step = 1;
-            }
-        }
-
-        var layer = this._layer[this._layerOrder[this._step]];
-
-        cc.log("layer = " + layer);
-        if (layer == ExploreLayer) {
-
-            if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
-                MainScene.getInstance().switch(ExploreLayer.create(1));
-            }
-
-        } else {
-            MainScene.getInstance().switchLayer(layer);
-        }
-
-        this._changeEffect(this._effectOrder[this._step]);
-
-    },
+//    _load: function () {
+//        cc.log("MandatoryTeachingLayer _load");
+//        cc.log(this._step);
+//        if (this._progress < 3) {
+//            if (this._step > 2) {
+//                this._step = 2;
+//            }
+//        } else {
+//            if (this._step > 1) {
+//                this._step = 1;
+//            }
+//        }
+//
+//        var layer = this._layer[this._layerOrder[this._step]];
+//
+//        cc.log("layer = " + layer);
+//        if (layer == ExploreLayer) {
+//
+//            if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
+//                MainScene.getInstance().switch(ExploreLayer.create(1));
+//            }
+//
+//        } else {
+//            MainScene.getInstance().switchLayer(layer);
+//        }
+//
+//        this._changeEffect(this._effectOrder[this._step]);
+//
+//    },
 
     next: function () {
         cc.log("MandatoryTeachingLayer next");
@@ -145,20 +142,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
             mandatoryTeachingLayer = null;
         }
 
-    },
-
-    _save: function () {
-        cc.log("MandatoryTeachingLayer _save");
-
-        var uid = gameData.player.get("uid");
-
-        if (this._step >= this._overStep) {
-            sys.localStorage.setItem(uid + "_MTprogress", PROGRESS_NULL);
-            sys.localStorage.setItem(uid + "_MTprogress" + this._progress, this._overStep);
-        } else {
-            sys.localStorage.setItem(uid + "_MTprogress", this._progress);
-            sys.localStorage.setItem(uid + "_MTprogress" + this._progress, this._step);
-        }
     },
 
     _clearEffect: function () {
@@ -178,7 +161,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         this._rect = cc.rect(0, 0, 0, 0);
         this._clearEffect();
         this._step++;
-        this._save();
     },
 
     _changeEffect: function (id) {
@@ -263,33 +245,5 @@ MandatoryTeachingLayer.pop = function (progress) {
     }, 0.1);
 
 };
-
-//MandatoryTeachingLayer.remove = function () {
-//    cc.log("MandatoryTeachingLayer remove");
-//    if (mandatoryTeachingLayer) {
-//        mandatoryTeachingLayer.removeFromParent();
-//        mandatoryTeachingLayer = null;
-//    }
-//};
-
-MandatoryTeachingLayer.teachingProgress = function () {
-    cc.log("MandatoryTeachingLayer isNeedTeaching");
-
-    var uid = gameData.player.get("uid");
-    var progress = parseInt(sys.localStorage.getItem(uid + "_MTprogress"));
-    var step = parseInt(sys.localStorage.getItem(uid + "_MTprogress" + progress));
-
-    cc.log("progress = " + progress);
-    cc.log("step = " + step);
-
-    if (isNaN(progress) || isNaN(step) || progress == PROGRESS_NULL) {
-        return PROGRESS_NULL;
-    } else if (step < teaching[progress].overStep) {
-        return progress;
-    }
-
-    return PROGRESS_NULL;
-};
-
 
 var mandatoryTeachingLayer = null;

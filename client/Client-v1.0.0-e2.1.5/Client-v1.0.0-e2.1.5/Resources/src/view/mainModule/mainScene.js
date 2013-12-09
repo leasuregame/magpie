@@ -58,12 +58,6 @@ var MainScene = cc.Scene.extend({
             this.switchLayer(MainLayer);
         }
 
-        var progress = MandatoryTeachingLayer.teachingProgress();
-
-        if (progress != PROGRESS_NULL) {
-            MandatoryTeachingLayer.pop(progress);
-        }
-
     },
 
     changeMessage: function (msg) {

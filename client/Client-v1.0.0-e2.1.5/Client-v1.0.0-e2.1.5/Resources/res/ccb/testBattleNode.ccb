@@ -419,7 +419,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card_frame1.png</string>
+									<string>res/main/card_frame1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -851,7 +851,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card2_half2.png</string>
+									<string>res/main/card2_half2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -940,7 +940,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card_icon1.png</string>
+									<string>res/main/card_icon1.png</string>
 								</array>
 							</dict>
 						</array>

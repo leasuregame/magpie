@@ -406,6 +406,10 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
+      fun_limit = table.getTableItem('function_limit', 1)
+      if player.lv < fun_limit?.pass_skillafresh 
+        return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
+
       consumeVal = passSkillConfig.CONSUME[type] * psIds.length
 
       if player[_pros[type]] < consumeVal

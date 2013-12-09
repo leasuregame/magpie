@@ -23,6 +23,8 @@ var ShyLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._cb = cb || function () {
             this.removeFromParent();
         };

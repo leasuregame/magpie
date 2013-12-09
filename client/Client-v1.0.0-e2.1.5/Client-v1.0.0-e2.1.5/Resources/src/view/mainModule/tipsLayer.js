@@ -10,8 +10,23 @@
 var itemTitle = ['元神', '修炼', '天道', '竞技', '好友', 'VIP', '卡牌升级', '技能升级', '被动洗练', '星级进阶', '属性培养'];
 
 var TipsLayer = LazyLayer.extend({
-
     _tipsLayerFit: null,
+
+    onEnter: function () {
+        cc.log("TipsLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("帮助界面");
+    },
+
+    onExit: function () {
+        cc.log("TipsLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("帮助界面");
+    },
 
     init: function () {
         cc.log('TipsLayer init');
@@ -113,7 +128,7 @@ var TipsLayer = LazyLayer.extend({
 
         //好友描述
         y = scrollViewHeight - 55 - 30 - 250 * 4;
-        var description = lz.format('你可以通过祝福好友来获取活力值，活力值可以代替魔石进行卡牌召唤。', 28);
+        var description = lz.format('你可以通过祝福好友来获取活力点，活力点可以代替魔石进行卡牌召唤。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         //VIP描述
@@ -185,7 +200,7 @@ var TipsLayer = LazyLayer.extend({
         var description = lz.format('你可以通过参与竞技场来获取仙丹奖励。仙丹可以用来提升卡牌的基本属性。', 28);
         this._addDescription(description, y, scrollViewLayer);
         y -= description.length * 25;
-        var description = lz.format('每10点仙丹可以提升1点攻击力，或2点生命值。', 28);
+        var description = lz.format('每20点仙丹可以提升1点攻击力，或2点生命值。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         scrollView.setContentSize(cc.size(580, scrollViewHeight));
@@ -208,6 +223,8 @@ var TipsLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("TipsLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     }
 });
@@ -228,4 +245,6 @@ TipsLayer.pop = function () {
     var tipsLayer = TipsLayer.create();
 
     MainScene.getInstance().getLayer().addChild(tipsLayer, 10);
+
+    return tipsLayer;
 };

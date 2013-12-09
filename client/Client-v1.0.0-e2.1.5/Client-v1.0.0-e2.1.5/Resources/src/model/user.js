@@ -54,8 +54,8 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "chenchen";
-        this._password = sys.localStorage.getItem("password") || "1";
+        this._account = sys.localStorage.getItem("account") || "";
+        this._password = sys.localStorage.getItem("password") || "";
         this._area = parseInt(sys.localStorage.getItem("area")) || 0;
     },
 
@@ -157,6 +157,8 @@ var User = Entity.extend({
                     } else {
                         cb(2);
                     }
+
+                    lz.dc.event("event_login", that._area);
                 } else {
                     cc.log("login fail");
 
@@ -168,21 +170,15 @@ var User = Entity.extend({
         });
     },
 
-    register: function (cb, account, password, name) {
+    register: function (cb, account, password) {
         cc.log("User register");
-
-        var param = {
-            account: account,
-            password: password
-        };
-
-        if (name) {
-            param.name = name;
-        }
 
         var that = this;
         lz.server.connectGameServer(function () {
-            lz.server.request("connector.userHandler.register", param, function (data) {
+            lz.server.request("connector.userHandler.register", {
+                account: account,
+                password: password
+            }, function (data) {
                 cc.log(data);
 
                 if (data.code == 200) {
@@ -194,6 +190,8 @@ var User = Entity.extend({
                     that._save();
 
                     cb();
+
+                    lz.dc.event("event_register");
                 } else {
                     cc.log("register fail");
 
@@ -221,6 +219,8 @@ var User = Entity.extend({
                 gameData.player.init(msg.player);
 
                 cb();
+
+                lz.dc.event("event_create_player", that._area);
             } else {
                 cc.log("createPlayer fail");
 

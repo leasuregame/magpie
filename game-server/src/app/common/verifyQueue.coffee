@@ -23,13 +23,15 @@ class Queue
     @ids.splice idx, 1
     delete @items[id]
 
-  waiting: () ->
-    @len() > 0 and @_needToProcess().length > 0
-
   len: () ->
     @ids.length
 
   needToProcess: () ->
-    _.values(@items).filter (i) -> not i.doing
+    results = []
+    for id, item of @items
+      if not item.doing and results.length <= 10
+        item.doing = true
+        results.push item
+    results
 
 module.exports = Queue

@@ -34,12 +34,23 @@ var CardUpgradeLabel = cc.Layer.extend({
     _selectRetinueCardItem: null,
     _upgradeItem: null,
     _selectLeadCardIcon: null,
+    _money: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌升级界面");
+    },
+
+    onExit: function () {
+        cc.log("CardUpgradeLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌升级界面");
     },
 
     init: function () {
@@ -273,14 +284,20 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             var dummyCard = lz.clone(this._leadCard);
 
-            var money = dummyCard.addExp(exp);
+            this._money = dummyCard.addExp(exp);
 
             this._hpAdditionLabel.setString("+ " + (dummyCard.get("hp") - this._leadCard.get("hp")));
             this._atkAdditionLabel.setString("+ " + (dummyCard.get("atk") - this._leadCard.get("atk")));
 
             this._expLabel.setString(exp);
-            this._moneyLabel.setString(money);
+            this._moneyLabel.setString(this._money);
             this._cardCountLabel.setString(cardCount);
+
+            if (this._money > gameData.player.get("money")) {
+                this._moneyLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
 
             var isDummyCard = true;
             var lvCallFuncAction = cc.CallFunc.create(function () {
@@ -329,6 +346,9 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._stopAllActions();
 
         var nowExp = exp;
+        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect15, this);
+        upgradeEffect.setPosition(this._cardUpgradeLabelFit.effectPoint);
+        this.addChild(upgradeEffect);
 
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
@@ -366,6 +386,9 @@ var CardUpgradeLabel = cc.Layer.extend({
                 this.unschedule(fn);
                 this._retinueCard = [];
                 this.update();
+
+                upgradeEffect.removeFromParent();
+                LazyLayer.closeCloudLayer();
             }
         };
 
@@ -374,6 +397,15 @@ var CardUpgradeLabel = cc.Layer.extend({
 
     _onClickSelectLeadCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
 
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
@@ -398,6 +430,15 @@ var CardUpgradeLabel = cc.Layer.extend({
     _onClickSelectRetinueCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectRetinueCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_RETINUE, function (data) {
             cc.log(data);
@@ -420,6 +461,27 @@ var CardUpgradeLabel = cc.Layer.extend({
     _onClickUpgrade: function () {
         cc.log("CardUpgradeLabel _onClickUpgrade");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (!this._leadCard.canUpgrade()) {
+            TipLayer.tip("卡牌已满级");
+            return;
+        }
+
+        if (this._money > gameData.player.get("money")) {
+            TipLayer.tip("仙币不足");
+            return;
+        }
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
+        LazyLayer.showCloudLayer();
+
         var cardIdList = [];
         var len = this._retinueCard.length;
         for (var i = 0; i < len; ++i) {
@@ -432,18 +494,13 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._leadCard.upgrade(function (data) {
             cc.log(data);
 
-            that._retinueCard = [];
-            that._upgrade(dummyCard, data.exp, data.money, len);
-
-            playEffect({
-                effectId: 11,
-                target: that,
-                loops: 1,
-                delay: 0.1,
-                zOrder: 10,
-                position: that._cardUpgradeLabelFit.effectPoint,
-                clear: true
-            });
+            if (data) {
+                that._retinueCard = [];
+                that._upgrade(dummyCard, data.exp, data.money, len);
+            } else {
+                this.update();
+                LazyLayer.closeCloudLayer();
+            }
         }, cardIdList);
     }
 });

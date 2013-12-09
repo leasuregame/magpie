@@ -12,8 +12,26 @@ var LotteryCardLayer = LazyLayer.extend({
     _lotteryCardLayerFit: null,
     _index: 0,
     _card: null,
+    _fragment: null,
+    _cb: null,
     _canClick: false,
     _ccbNode: null,
+
+    onEnter: function () {
+        cc.log("LotteryCardLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("抽卡获得卡牌界面");
+    },
+
+    onExit: function () {
+        cc.log("LotteryCardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("抽卡获得卡牌界面");
+    },
 
     init: function (data) {
         cc.log("LotteryCardLayer init");
@@ -23,6 +41,8 @@ var LotteryCardLayer = LazyLayer.extend({
         this._lotteryCardLayerFit = gameFit.mainScene.lotteryCardLayer;
 
         this._card = data.card;
+        this._fragment = data.fragment;
+        this._cb = data.cb || null;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
@@ -49,11 +69,6 @@ var LotteryCardLayer = LazyLayer.extend({
             this._canClick = true;
         });
 
-        if (data.fragment) {
-            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
-            ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
-            this.addChild(ccbNode, 1);
-        }
 
         return true;
     },
@@ -62,6 +77,15 @@ var LotteryCardLayer = LazyLayer.extend({
         cc.log("LotteryCardLayer startSetStar");
 
         this._index = 0;
+
+        if (this._fragment) {
+            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
+            ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
+            this.addChild(ccbNode, 1);
+
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+
+        }
 
         this._setStar();
     },
@@ -95,12 +119,15 @@ var LotteryCardLayer = LazyLayer.extend({
 
         if (this._canClick) {
             this.removeFromParent();
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().setVisible(true);
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.setVisible(true);
+                noviceTeachingLayer.next();
+            }
+
+            if(this._cb) {
+                this._cb();
             }
         }
-
         return true;
     }
 });
@@ -121,4 +148,6 @@ LotteryCardLayer.pop = function (data) {
     var lotteryCardLayer = LotteryCardLayer.create(data);
 
     MainScene.getInstance().addChild(lotteryCardLayer, 10);
+
+    return lotteryCardLayer;
 };

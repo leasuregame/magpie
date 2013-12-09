@@ -16,12 +16,14 @@ var BG_LABEL_COUNT = 5;
 
 var StrokeLabel = cc.Node.extend({
     _strLabel: null,
-    _strBgLabel: [],
+    _strBgLabel: null,
 
     init: function (arg) {
         cc.log("StrokeLabel init");
 
         if (!this._super()) return false;
+
+        this._strBgLabel = [];
 
         var string = arg[0];
         var fontName = arg[1] || "STHeitiTC-Medium";
@@ -69,11 +71,13 @@ var StrokeLabel = cc.Node.extend({
     },
 
     setString: function (text) {
+
         this._strLabel.setString(text);
 
         for (var i = 0; i < BG_LABEL_COUNT; ++i) {
             this._strBgLabel[i].setString(text);
         }
+
     },
 
     setColor: function (color3) {

@@ -21,6 +21,22 @@ var RankLayer = cc.Layer.extend({
     _passRankLayerItem: null,
     _tournamentRankLayerItem: null,
 
+    onEnter: function () {
+        cc.log("RankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("RankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("排行榜界面");
+    },
+
     init: function () {
         cc.log("RankLayer init");
 
@@ -65,20 +81,10 @@ var RankLayer = cc.Layer.extend({
         );
         this._passRankLayerItem.setPosition(this._rankLayerFit.passRankLayerItemPoint);
 
-        this._tournamentRankLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
-            this._onClickTournamentRankLayer,
-            this
-        );
-        this._tournamentRankLayerItem.setPosition(this._rankLayerFit.tournamentRankLayerItemPoint);
-
         var menu = cc.Menu.create(
             this._abilityRankLayerItem,
             this._lvRankLayerItem,
-            this._passRankLayerItem,
-            this._tournamentRankLayerItem
+            this._passRankLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 0);
@@ -95,11 +101,10 @@ var RankLayer = cc.Layer.extend({
         passRankIcon.setPosition(this._rankLayerFit.passRankIconPoint);
         this.addChild(passRankIcon, 1);
 
-        var tournamentRankIcon = cc.Sprite.create(main_scene_image.icon199);
-        tournamentRankIcon.setPosition(this._rankLayerFit.tournamentRankIconPoint);
-        this.addChild(tournamentRankIcon, 1);
-
-        this._onClickAbilityRankLayer();
+        this._abilityRankLayerItem.setEnabled(false);
+        this._lvRankLayerItem.setEnabled(true);
+        this._passRankLayerItem.setEnabled(true);
+        this.switchLayer(AbilityRankLayer);
 
         return true;
     },
@@ -107,10 +112,11 @@ var RankLayer = cc.Layer.extend({
     _onClickAbilityRankLayer: function () {
         cc.log("RankLayer _onClickAbilityRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(false);
         this._lvRankLayerItem.setEnabled(true);
         this._passRankLayerItem.setEnabled(true);
-        this._tournamentRankLayerItem.setEnabled(true);
 
         this.switchLayer(AbilityRankLayer);
     },
@@ -118,10 +124,11 @@ var RankLayer = cc.Layer.extend({
     _onClickLvRankLayer: function () {
         cc.log("RankLayer _onClickLvRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(true);
         this._lvRankLayerItem.setEnabled(false);
         this._passRankLayerItem.setEnabled(true);
-        this._tournamentRankLayerItem.setEnabled(true);
 
         this.switchLayer(LvRankLayer);
     },
@@ -129,27 +136,17 @@ var RankLayer = cc.Layer.extend({
     _onClickPassRankLayer: function () {
         cc.log("RankLayer _onClickPassRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(true);
         this._lvRankLayerItem.setEnabled(true);
         this._passRankLayerItem.setEnabled(false);
-        this._tournamentRankLayerItem.setEnabled(true);
 
         this.switchLayer(PassRankLayer);
     },
 
-    _onClickTournamentRankLayer: function () {
-        cc.log("RankLayer _onClickTournamentRankLayer");
-
-        this._abilityRankLayerItem.setEnabled(true);
-        this._lvRankLayerItem.setEnabled(true);
-        this._passRankLayerItem.setEnabled(true);
-        this._tournamentRankLayerItem.setEnabled(false);
-
-        this.switchLayer(TournamentRankLayer);
-    },
-
     switchLayer: function (runLayer) {
-        cc.log("PveLayer switchMenu");
+        cc.log("RankLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {

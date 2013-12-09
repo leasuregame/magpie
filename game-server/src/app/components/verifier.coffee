@@ -55,13 +55,14 @@ class Component
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
+  console.log 'execute verify, ', items.length
   return if items.length is 0
 
   async.each items, (item, done) ->
-    return if item.doing 
-    item.doing = true
+    #return done() if item.doing
+    tryCount = 0
 
-    poseReceipt = (reqUrl, receiptData, callback) ->
+    postReceipt = (reqUrl, receiptData) ->
       request.post {
         headers: 'content-type': 'application/json'
         url: reqUrl
@@ -69,15 +70,25 @@ executeVerify = (app, queue) ->
       }, (err, res, body) ->
         if err
           logger.error('faild to verify app store receipt.', err)
+          return
 
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           updatePlayer(app, item, body)
-        else
-          item.doning = false
+        else if body.status is 21005
+          item.doing = false
+          updateBuyRecord(app, item.id, {status: body.status})
+        else 
+          queue.del(item.id)
           updateBuyRecord(app, item.id, {status: body.status})
 
-      done()
+        if body.status is 21007 and tryCount == 0
+          tryCount += 1
+          return postReceipt(SANBOX_URL, receiptData)
+
+        done()
+
+    postReceipt(VERIFY_URL, item.receiptData)
   , (err) ->
     if err
       logger.error('faild to verify app store reciept.', err)
@@ -95,8 +106,13 @@ updatePlayer = (app, buyRecord, receiptResult) ->
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
       return
 
+    times = 1
+    if player.cash is 0
+      ### 首冲获得三倍魔石 ###
+      times = 3  
+
     player.increase('cash', product.cash)
-    player.increase('gold', product.cash * 10)
+    player.increase('gold', (product.cash * 10 + product.gold) * times)
     player.save()
 
     rdata = 

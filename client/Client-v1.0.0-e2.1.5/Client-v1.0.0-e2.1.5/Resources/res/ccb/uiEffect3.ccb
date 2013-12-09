@@ -153,7 +153,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -162,7 +162,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>50</integer>
+								<integer>100</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -251,7 +251,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -260,7 +260,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>50</integer>
+								<integer>100</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -335,7 +335,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -344,7 +344,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>50</integer>
+								<integer>100</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -382,7 +382,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-78.720001220703125</real>
+							<real>0.0</real>
 							<real>180</real>
 							<integer>0</integer>
 						</array>
@@ -562,7 +562,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 						</array>
@@ -639,7 +639,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -727,7 +727,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 						</array>
@@ -755,8 +755,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>73.471992492675781</real>
-							<real>-141.09333801269531</real>
+							<real>0.0</real>
+							<real>-140</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -883,7 +883,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3666666746139526</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up37.png</string>
+							<string>res/effect/uiEffect/up37.png</string>
 						</array>
 					</dict>
 				</array>
@@ -128,7 +128,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>ccb/uiEffect12.ccb</string>
+						<string>res/ccb/uiEffect12.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -278,7 +278,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up38.png</string>
+							<string>res/effect/uiEffect/up38.png</string>
 						</array>
 					</dict>
 				</array>
@@ -429,7 +429,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up39.png</string>
+							<string>res/effect/uiEffect/up39.png</string>
 						</array>
 					</dict>
 				</array>

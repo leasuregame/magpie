@@ -15,6 +15,22 @@
 var LogoutLayer = LazyLayer.extend({
     _logoutLayerFit: null,
 
+    onEnter: function () {
+        cc.log("LogoutLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("退出登录界面");
+    },
+
+    onExit: function () {
+        cc.log("LogoutLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("退出登录界面");
+    },
+
     init: function (msg) {
         cc.log("LogoutLayer init");
 
@@ -29,9 +45,14 @@ var LogoutLayer = LazyLayer.extend({
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(520, 300));
+        bgSprite.setContentSize(cc.size(520, 260));
         bgSprite.setPosition(this._logoutLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
+
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._logoutLayerFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        this.addChild(msgBgIcon);
 
         var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 28);
         msgLabel.setPosition(this._logoutLayerFit.msgLabelPoint);
@@ -83,4 +104,6 @@ LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
     cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 500);
+
+    return logoutLayer;
 };

@@ -55,7 +55,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.13333334028720856</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -104,8 +104,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -128,7 +130,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.20000000298023224</real>
+									<real>0.13333334028720856</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -146,7 +148,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.26666668057441711</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -288,7 +290,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p32.png</string>
+							<string>res/effect/effect/p32.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -338,7 +340,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.13333334028720856</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -387,8 +389,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -411,7 +415,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.20000000298023224</real>
+									<real>0.13333334028720856</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -429,7 +433,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.26666668057441711</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -571,7 +575,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p33.png</string>
+							<string>res/effect/effect/p33.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -606,7 +610,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.13333334028720856</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -621,7 +625,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.20000000298023224</real>
+									<real>0.1666666716337204</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -636,7 +640,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.30000001192092896</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -661,7 +665,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.13333334028720856</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -679,7 +683,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.20000000298023224</real>
+									<real>0.1666666716337204</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -697,7 +701,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.30000001192092896</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -773,7 +777,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p34.png</string>
+							<string>res/effect/effect/p34.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -824,7 +828,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.10000000149011612</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -839,11 +843,11 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.20000000298023224</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -854,7 +858,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.26666668057441711</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -879,7 +883,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.20000000298023224</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -897,7 +901,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.26666668057441711</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -973,7 +977,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/12.png</string>
+									<string>res/effect/test/12.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1031,7 +1035,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.10000000149011612</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1046,11 +1050,11 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.20000000298023224</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1061,7 +1065,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.26666668057441711</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1086,7 +1090,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.20000000298023224</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -1104,7 +1108,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.26666668057441711</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -1180,7 +1184,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/12.png</string>
+									<string>res/effect/test/12.png</string>
 								</array>
 							</dict>
 							<dict>

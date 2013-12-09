@@ -32,31 +32,35 @@ Manager = module.exports =
       rewards = {ranking_elixir: 0}
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
       upgradeInfo = null
+      level9Box = null
       if player.dailyGift.challengeCount > 0
         countRewards(player, challenger, isWin, rewards)
-        entityUtil.upgradePlayer player, rewards.exp, (isUpgrade, rew) ->
+        entityUtil.upgradePlayer player, rewards.exp, (isUpgrade, box, rew) ->
           if isUpgrade
             upgradeInfo = {
               lv: player.lv
               rewards: rew
               friendsCount: player.friendsCount
             }
+          if box?
+            level9Box = box
 
       if isWin
         exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
+        checkAchievement(player, challenger)
 
       else
         updateRankInfo(defender, challenger)
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
-      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, cb)
+      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
 
-updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, cb) ->
+updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
   
   jobs = [
     {
@@ -84,7 +88,7 @@ updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, cb) -
       data: playerData
   } if not _.isEmpty(playerData)
 
-  job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo) 
+  job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo, level9Box) 
 
 exchangeRanking = (cha, def) ->
   if cha.ranking > def.ranking
@@ -107,7 +111,7 @@ reflashRank = (player, clg, targetId, def) ->
 checkAchievement = (player, challenger) ->
   achieve.winCount(player, challenger.winCount)
   achieve.winningStreak(player, challenger.winningStreak)
-  achieve.rankingToOne(player) if palyer.ranking is 1
+  achieve.rankingToOne(player) if player.ranking is 1
 
 rewardPercent = (ranking) ->
   pct = 0

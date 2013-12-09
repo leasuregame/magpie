@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -56,7 +56,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>ccb/uiEffect8.ccb</string>
+						<string>res/ccb/uiEffect8.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -220,7 +220,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>219</real>
+									<real>209</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -265,7 +265,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up22.png</string>
+									<string>res/effect/uiEffect/up22.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -364,7 +364,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>118</real>
+									<real>128</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -409,7 +409,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up22.png</string>
+									<string>res/effect/uiEffect/up22.png</string>
 								</array>
 							</dict>
 						</array>
@@ -483,7 +483,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up23.png</string>
+									<string>res/effect/uiEffect/up23.png</string>
 								</array>
 							</dict>
 						</array>
@@ -555,7 +555,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up26.png</string>
+									<string>res/effect/uiEffect/up26.png</string>
 								</array>
 							</dict>
 						</array>
@@ -827,7 +827,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up24.png</string>
+									<string>res/effect/uiEffect/up24.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -971,7 +971,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up24.png</string>
+									<string>res/effect/uiEffect/up24.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1045,7 +1045,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up25.png</string>
+									<string>res/effect/uiEffect/up25.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1117,7 +1117,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up26.png</string>
+									<string>res/effect/uiEffect/up26.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1146,7 +1146,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>10</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1183,8 +1183,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1330,7 +1328,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
+									<real>1</real>
 									<real>1</real>
 									<false/>
 									<integer>0</integer>
@@ -1352,7 +1350,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p8.png</string>
+									<string>res/effect/effect/p8.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1401,7 +1399,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1605,7 +1603,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p8.png</string>
+									<string>res/effect/effect/p8.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1777,7 +1775,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1828,7 +1826,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.76666665077209473</real>
+			<real>0.10000000149011612</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1838,7 +1836,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.10000000149011612</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/summon_door.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>
@@ -1889,7 +1906,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.10000000149011612</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/summon_door.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

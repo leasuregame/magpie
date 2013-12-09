@@ -61,6 +61,7 @@ var Friend = Entity.extend({
                         cc.log(data);
 
                         that._onBless(data.msg);
+                        gameMark.updateFriendMark(true);
                     });
 
                     lz.server.on("onFriendAction", function (data) {
@@ -69,6 +70,10 @@ var Friend = Entity.extend({
 
                         that._onFriendAction(data.msg);
                     });
+
+                    gameMark.updateFriendMark(false);
+
+                    lz.dc.event("event_friend");
                 } else {
                     cc.log("sync fail");
 
@@ -107,7 +112,8 @@ var Friend = Entity.extend({
 
         friend.canGive = friend.canGive || true;
         friend.canReceive = friend.canReceive || false;
-
+        friend.giveCount = friend.giveCount || 0;
+        friend.receiveCount = friend.receiveCount || 0;
         this._friendList.push(friend);
     },
 
@@ -174,6 +180,8 @@ var Friend = Entity.extend({
                 cc.log("addFriend success");
 
                 TipLayer.tip("请求已发送");
+
+                lz.dc.event("event_add_friend");
             } else {
                 cc.log("addFriend fail");
 
@@ -200,6 +208,8 @@ var Friend = Entity.extend({
                 TipLayer.tip("删除成功");
 
                 cb();
+
+                lz.dc.event("event_delete_friend");
             } else {
                 cc.log("deleteFriend fail");
 
@@ -227,12 +237,14 @@ var Friend = Entity.extend({
 
                     that._giveCount -= 1;
                     friend.canGive = false;
-
+                    friend.giveCount += 1;
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy").name + ": +" + msg.energy);
 
                     cb("success");
+
+                    lz.dc.event("event_give_bless");
                 } else {
                     cc.log("giveBless fail");
                 }
@@ -261,14 +273,16 @@ var Friend = Entity.extend({
 
                     that._receiveCount -= 1;
                     friend.canReceive = false;
-
+                    friend.receiveCount += 1;
                     delete friend.msgId;
 
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy").name + ": +" + msg.energy);
 
                     cb("success");
+
+                    lz.dc.event("event_receive_bless");
                 } else {
                     cc.log("receiveBless fail");
                 }

@@ -24,6 +24,7 @@ var MAX_GOLD_ROTATION = 450;
 var GoldLayer = LazyLayer.extend({
     _goldLayerFit: null,
 
+    _cb: null,
     _gold: 0,
     _goldList: [],
     _goldItem: [],
@@ -31,6 +32,22 @@ var GoldLayer = LazyLayer.extend({
     _length: 0,
     _tipText: null,
     _tipText2: null,
+
+    onEnter: function () {
+        cc.log("GoldLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("摸一摸界面");
+    },
+
+    onExit: function () {
+        cc.log("GoldLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("摸一摸界面");
+    },
 
     init: function (data) {
         cc.log("GoldLayer init");
@@ -42,7 +59,8 @@ var GoldLayer = LazyLayer.extend({
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._gold = 0;
-        this._goldList = data || [];
+        this._goldList = data.goldList || [];
+        this._cb = data.cb || null;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, this._goldLayerFit.bgLayerHeight);
         bgLayer.setPosition(this._goldLayerFit.bgLayerPoint);
@@ -63,8 +81,8 @@ var GoldLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var isFirstGold = sys.localStorage.getItem(gameData.user.get('name') + "firstGold") || 1;
-        if (isFirstGold == 1) {
+        var isFirstGold = parseInt(sys.localStorage.getItem(gameData.user.get("name") + "firstGold")) || 0;
+        if (!isFirstGold) {
             this._tipText = cc.LabelTTF.create("点击大魔石，化为小魔石", "STHeitiTC-Medium", 40);
             this._tipText.setAnchorPoint(cc.p(0.5, 0.5));
             this._tipText.setPosition(this._goldLayerFit.tipTextPoint);
@@ -75,17 +93,13 @@ var GoldLayer = LazyLayer.extend({
             this._tipText2.setPosition(this._goldLayerFit.tipText2Point);
             this.addChild(this._tipText2);
 
-            sys.localStorage.setItem(gameData.user.get('name') + "firstGold", 0);
+            sys.localStorage.setItem(gameData.user.get("name") + "firstGold", 1);
         }
 
-        this._goldBoxItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.icon221,
-            main_scene_image.icon221,
-            this._onClickGoldBox,
-            this
-        );
+        this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);
+        this._goldBoxItem.controller.goldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
-        menu.addChild(this._goldBoxItem);
+        this.addChild(this._goldBoxItem);
 
         var action = cc.Sequence.create(
             cc.Spawn.create(
@@ -124,9 +138,9 @@ var GoldLayer = LazyLayer.extend({
         if (value > 20) {
             scale = 0.45;
         } else if (value > 10) {
-            scale = 0.35;
+            scale = 0.37;
         } else if (value > 5) {
-            scale = 0.25;
+            scale = 0.30;
         }
 
         return scale;
@@ -262,23 +276,36 @@ var GoldLayer = LazyLayer.extend({
 
         this.scheduleOnce(function () {
             this.removeFromParent();
+
+            if (this._cb) {
+                this._cb();
+            }
         }, 2);
     },
 
     _onClickGoldBox: function () {
         cc.log("GoldLayer _onClickGoldBox");
+
+        gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
+
         if (this._tipText != null) {
             this._tipText.removeFromParent();
         }
         if (this._tipText2 != null) {
             this._tipText2.removeFromParent();
         }
-        this._open();
+        this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
+            this._goldBoxItem.removeFromParent();
+            this._open();
+        });
     },
 
     _onClickGold: function (index) {
         return function () {
             cc.log("GoldLayer _onClickGold: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
             this._obtainGold(index);
         }

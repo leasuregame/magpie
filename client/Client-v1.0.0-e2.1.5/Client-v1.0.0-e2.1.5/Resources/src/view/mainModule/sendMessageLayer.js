@@ -84,12 +84,10 @@ var SendMessageLayer = LazyLayer.extend({
         return true;
     },
 
-//    editBoxReturn: function () {
-//        this._onClickSend();
-//    },
-
     _onClickSend: function () {
         cc.log("SendMessageLayer _onClickSend");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var text = this._messageEditBox.getText();
 
@@ -111,6 +109,8 @@ var SendMessageLayer = LazyLayer.extend({
     _onClickCancel: function () {
         cc.log("SendMessageLayer _onClickCancel");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     }
 });
@@ -131,5 +131,7 @@ SendMessageLayer.pop = function (id, name) {
     var sendMessageLayer = SendMessageLayer.create(id, name);
 
     MainScene.getInstance().getLayer().addChild(sendMessageLayer, 10);
+
+    return sendMessageLayer;
 };
 

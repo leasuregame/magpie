@@ -20,11 +20,24 @@ var LotteryLayer = cc.Layer.extend({
     _energyLabel: null,
     _lotteryLabel: null,
 
+    _goldLotteryIcon: [],
+    _goldLotteryLabel: [],
+
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("抽卡界面");
+    },
+
+    onExit: function () {
+        cc.log("LotteryLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("抽卡界面");
     },
 
     init: function () {
@@ -116,15 +129,24 @@ var LotteryLayer = cc.Layer.extend({
             var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 330 * i;
             var y = this._lotteryLayerFit.goldLotteryItemBasePoint.y;
 
-            var goldLotteryItem = cc.MenuItemImage.createWithIcon(
+            var goldLotteryItem = cc.MenuItemImage.create(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (139 + i)],
                 this._onClickLottery(LOTTERY_BY_GOLD, i + 1),
                 this
             );
             goldLotteryItem.setPosition(cc.p(x, y));
+
+            this._goldLotteryIcon[i] = cc.Sprite.create(main_scene_image["icon" + (139 + i)]);
+            this._goldLotteryIcon[i].setPosition(cc.p(75, 35));
+            goldLotteryItem.addChild(this._goldLotteryIcon[i]);
+
+            this._goldLotteryLabel[i] = StrokeLabel.create("首抽免费", "STHeitiTC-Medium", 25);
+            this._goldLotteryLabel[i].setPosition(cc.p(75, 35));
+            this._goldLotteryLabel[i].setColor(cc.c3b(255, 239, 131));
+            goldLotteryItem.addChild(this._goldLotteryLabel[i]);
+
             menu.addChild(goldLotteryItem);
 
             x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 330 * i;
@@ -148,7 +170,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(tipBgSprite);
 
         var tipLabel = cc.LabelTTF.create(
-            "祝福好友，每日登录可获得活力值",
+            "祝福好友，每日登录可获得活力点",
             "STHeitiTC-Medium",
             20
         );
@@ -166,6 +188,17 @@ var LotteryLayer = cc.Layer.extend({
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));
         this._fragmentLabel.setString(player.get("fragment"));
+
+
+        var isFirstLottery = gameData.lottery._freeLowLotteryCard;
+
+        this._goldLotteryIcon[0].setVisible(!isFirstLottery);
+        this._goldLotteryLabel[0].setVisible(isFirstLottery);
+
+        isFirstLottery = gameData.lottery._freeHighLotteryCard;
+        this._goldLotteryIcon[1].setVisible(!isFirstLottery);
+        this._goldLotteryLabel[1].setVisible(isFirstLottery);
+
     },
 
     showCard: function () {
@@ -182,15 +215,17 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var lottery = gameData.lottery;
 
             if (!lottery.canLottery(type, level)) {
                 return;
             }
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().setVisible(false);
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.setVisible(false);
             }
 
             LazyLayer.showCloudLayer();
@@ -224,11 +259,15 @@ var LotteryLayer = cc.Layer.extend({
     _onClickExchange: function () {
         cc.log("LotteryLayer _onClickExchange");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(ExchangeLayer);
     },
 
     _onClickBack: function () {
         cc.log("LotteryLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

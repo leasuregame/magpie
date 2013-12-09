@@ -44,17 +44,15 @@ var main_scene_image = {
 
     card0: main_scene_path + "card0.png",
 
-    spirit1: main_scene_path + "spirit1.png",
-    spirit2: main_scene_path + "spirit2.png",
-    spirit3: main_scene_path + "spirit3.png",
-    spirit4: main_scene_path + "spirit4.png",
-    spirit5: main_scene_path + "spirit5.png",
-    spirit6: main_scene_path + "spirit6.png",
-    spirit7: main_scene_path + "spirit7.png",
-    spirit8: main_scene_path + "spirit8.png",
-    spirit9: main_scene_path + "spirit9.png",
-    spirit10: main_scene_path + "spirit10.png",
+    spirit_1_0: main_scene_path + "spirit_1_0.png",
+    spirit_1_1: main_scene_path + "spirit_1_1.png",
+    spirit_1_2: main_scene_path + "spirit_1_2.png",
+    spirit_1_3: main_scene_path + "spirit_1_3.png",
+    spirit_1_4: main_scene_path + "spirit_1_4.png",
+    spirit_1_5: main_scene_path + "spirit_1_5.png",
 
+    spirit_1_skill: main_scene_path + "spirit_1_skill.png",
+    
     spirit_side: main_scene_path + "spirit_side.png",
 
     spirit_face1: main_scene_path + "spirit_face1.png",
@@ -508,16 +506,7 @@ var main_scene_image = {
 
     
     
-    screen: effect_scene_path + "screen.jpg",
-    tanxian: effect_scene_path + "tanxian.jpg",
-    xiantai: effect_scene_path + "xiantai.jpg",
-    xiulian: effect_scene_path + "xiulian.jpg",
-    yuanshen: effect_scene_path + "yuanshen.jpg",
-    zhaohuan: effect_scene_path + "zhaohuan.jpg",
-    testBg: effect_scene_path + "testBg.png",
-    tiaoshi: effect_scene_path + "tiaoshi.jpg",
-    up1: effect_scene_path + "up1.png",
-
+ 
 
 
 
@@ -555,7 +544,7 @@ var main_scene_image = {
     p21: effect_scene_path + "effect/" + "p21.png",
     p22: effect_scene_path + "effect/" + "p22.png",
     p23: effect_scene_path + "effect/" + "p23.png",
-    p24: effect_scene_path + "effect/" + "p24.png",
+    p24: effect_scene_path + "effect/" + "p24.png", 
     p25: effect_scene_path + "effect/" + "p25.png",
     p26: effect_scene_path + "effect/" + "p26.png",
     p27: effect_scene_path + "effect/" + "p27.png",
@@ -577,7 +566,30 @@ var main_scene_image = {
     p43: effect_scene_path + "effect/" + "p43.png",
     p44: effect_scene_path + "effect/" + "p44.png",
     p45: effect_scene_path + "effect/" + "p45.png",
-    
+    p46: effect_scene_path + "effect/" + "p46.png",
+    p47: effect_scene_path + "effect/" + "p47.png",
+    p48: effect_scene_path + "effect/" + "p48.png",
+    p49: effect_scene_path + "effect/" + "p49.png",
+    p50: effect_scene_path + "effect/" + "p50.png",
+    p51: effect_scene_path + "effect/" + "p51.png",
+    p52: effect_scene_path + "effect/" + "p52.png",
+    p53: effect_scene_path + "effect/" + "p53.png",
+    p54: effect_scene_path + "effect/" + "p54.png",
+    p55: effect_scene_path + "effect/" + "p55.png",
+    p56: effect_scene_path + "effect/" + "p56.png",
+    p57: effect_scene_path + "effect/" + "p57.png",
+    p58: effect_scene_path + "effect/" + "p58.png",
+    p59: effect_scene_path + "effect/" + "p59.png",
+    p60: effect_scene_path + "effect/" + "p60.png",
+    p61: effect_scene_path + "effect/" + "p61.png",
+    p62: effect_scene_path + "effect/" + "p62.png",
+    p63: effect_scene_path + "effect/" + "p63.png",
+    p64: effect_scene_path + "effect/" + "p64.png",
+    p65: effect_scene_path + "effect/" + "p65.png",
+    p66: effect_scene_path + "effect/" + "p66.png",
+    p67: effect_scene_path + "effect/" + "p67.png",
+    p68: effect_scene_path + "effect/" + "p68.png",
+    p69: effect_scene_path + "effect/" + "p69.png",
 
     //UI特效
     up1: effect_scene_path + "uiEffect/" + "up1.png",
@@ -663,12 +675,81 @@ var main_scene_image = {
     up81: effect_scene_path + "uiEffect/" + "up81.png",
     up82: effect_scene_path + "uiEffect/" + "up82.png",
     up83: effect_scene_path + "uiEffect/" + "up83.png",
+    up84: effect_scene_path + "uiEffect/" + "up84.png",
+    up85: effect_scene_path + "uiEffect/" + "up85.png",
+    up86: effect_scene_path + "uiEffect/" + "up86.png",
+    up87: effect_scene_path + "uiEffect/" + "up87.png",
+    up88: effect_scene_path + "uiEffect/" + "up88.png",
+    up89: effect_scene_path + "uiEffect/" + "up89.png",
+    up90: effect_scene_path + "uiEffect/" + "up90.png",
+    up91: effect_scene_path + "uiEffect/" + "up91.png",
+    up92: effect_scene_path + "uiEffect/" + "up92.png",
+    up93: effect_scene_path + "uiEffect/" + "up93.png",
+    
+    up95: effect_scene_path + "uiEffect/" + "up95.png",
+    up96: effect_scene_path + "uiEffect/" + "up96.png",
+    up97: effect_scene_path + "uiEffect/" + "up97.png",
+    up98: effect_scene_path + "uiEffect/" + "up98.png",
+    up99: effect_scene_path + "uiEffect/" + "up99.png",
+    up100: effect_scene_path + "uiEffect/" + "up100.png",
+    up101: effect_scene_path + "uiEffect/" + "up101.png",
+    up102: effect_scene_path + "uiEffect/" + "up102.png",
+    up103: effect_scene_path + "uiEffect/" + "up103.png",
+    up104: effect_scene_path + "uiEffect/" + "up104.png",
+    up105: effect_scene_path + "uiEffect/" + "up105.png",
+    up106: effect_scene_path + "uiEffect/" + "up106.png",
+    up107: effect_scene_path + "uiEffect/" + "up107.png",
+    up108: effect_scene_path + "uiEffect/" + "up108.png",
+    up109: effect_scene_path + "uiEffect/" + "up109.png",
+    up110: effect_scene_path + "uiEffect/" + "up110.png",
+    up111: effect_scene_path + "uiEffect/" + "up111.png",
+    up112: effect_scene_path + "uiEffect/" + "up112.png",
+    up113: effect_scene_path + "uiEffect/" + "up113.png",
+    up114: effect_scene_path + "uiEffect/" + "up114.png",
+    up115: effect_scene_path + "uiEffect/" + "up115.png",
+    up116: effect_scene_path + "uiEffect/" + "up116.png",
+    up117: effect_scene_path + "uiEffect/" + "up117.png",
+    up118: effect_scene_path + "uiEffect/" + "up118.png",
+    up119: effect_scene_path + "uiEffect/" + "up119.png",
+    up120: effect_scene_path + "uiEffect/" + "up120.png",
+    up121: effect_scene_path + "uiEffect/" + "up121.png",
+    up122: effect_scene_path + "uiEffect/" + "up122.png",
+    up123: effect_scene_path + "uiEffect/" + "up123.png",
+    up124: effect_scene_path + "uiEffect/" + "up124.png",
+    up125: effect_scene_path + "uiEffect/" + "up125.png",
+    up126: effect_scene_path + "uiEffect/" + "up126.png",
+    up127: effect_scene_path + "uiEffect/" + "up127.png",
+    up128: effect_scene_path + "uiEffect/" + "up128.png",
+    up129: effect_scene_path + "uiEffect/" + "up129.png",
+    up130: effect_scene_path + "uiEffect/" + "up130.png",
+    up131: effect_scene_path + "uiEffect/" + "up131.png",
+    up132: effect_scene_path + "uiEffect/" + "up132.png",
+    up133: effect_scene_path + "uiEffect/" + "up133.png",
+    up134: effect_scene_path + "uiEffect/" + "up134.png",
+    up135: effect_scene_path + "uiEffect/" + "up135.png",
+    up136: effect_scene_path + "uiEffect/" + "up136.png",
+    up137: effect_scene_path + "uiEffect/" + "up137.png",
+    up138: effect_scene_path + "uiEffect/" + "up138.png",
+    up139: effect_scene_path + "uiEffect/" + "up139.png",
+    up140: effect_scene_path + "uiEffect/" + "up140.png",
+    up141: effect_scene_path + "uiEffect/" + "up141.png",
+    up142: effect_scene_path + "uiEffect/" + "up142.png",
+    up143: effect_scene_path + "uiEffect/" + "up143.png",
+    up144: effect_scene_path + "uiEffect/" + "up144.png",
+    up145: effect_scene_path + "uiEffect/" + "up145.png",
+    up146: effect_scene_path + "uiEffect/" + "up146.png",
 
 
 
 
-
-    texiao8: ccb_scene_path + "texiao8.ccbi",
+    texiao1: ccb_scene_path + "texiao1.ccbi",
+    texiao2: ccb_scene_path + "texiao2.ccbi",
+    texiao3: ccb_scene_path + "texiao3.ccbi",
+    texiao4: ccb_scene_path + "texiao4.ccbi",
+    texiao5: ccb_scene_path + "texiao5.ccbi",
+    texiao6: ccb_scene_path + "texiao6.ccbi",
+    texiao7: ccb_scene_path + "texiao7.ccbi",
+   
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",
@@ -685,9 +766,72 @@ var main_scene_image = {
     tutorials14: ccb_scene_path + "tutorials14.ccbi",
     tutorials15: ccb_scene_path + "tutorials15.ccbi",
     tutorials16: ccb_scene_path + "tutorials16.ccbi",
+    tutorials17: ccb_scene_path + "tutorials17.ccbi",
+    tutorials18: ccb_scene_path + "tutorials18.ccbi",
+    tutorials19: ccb_scene_path + "tutorials19.ccbi",
+    tutorials20: ccb_scene_path + "tutorials20.ccbi",
+    tutorials21: ccb_scene_path + "tutorials21.ccbi",
+    tutorials22: ccb_scene_path + "tutorials22.ccbi",
+    tutorials23: ccb_scene_path + "tutorials23.ccbi",
+    tutorials24: ccb_scene_path + "tutorials24.ccbi",
+    tutorials25: ccb_scene_path + "tutorials25.ccbi",
+    tutorials26: ccb_scene_path + "tutorials26.ccbi",
+    tutorials27: ccb_scene_path + "tutorials27.ccbi",
     testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
     spiritNode: ccb_scene_path + "spiritNode.ccbi",
     battleNode: ccb_scene_path + "battleNode.ccbi",
+
+
+    //testpicture
+    1: effect_scene_path + "test/" + "1.png",
+    2: effect_scene_path + "test/" + "2.png",
+    3: effect_scene_path + "test/" + "3.png",
+    4: effect_scene_path + "test/" + "4.png",
+    5: effect_scene_path + "test/" + "5.png",
+    6: effect_scene_path + "test/" + "6.png",
+    7: effect_scene_path + "test/" + "7.png",
+    8: effect_scene_path + "test/" + "8.png",
+    9: effect_scene_path + "test/" + "9.png",
+    10: effect_scene_path + "test/" + "10.png",
+    11: effect_scene_path + "test/" + "11.png",
+    12: effect_scene_path + "test/" + "12.png",
+    13: effect_scene_path + "test/" + "13.png",
+    14: effect_scene_path + "test/" + "14.png",
+    15: effect_scene_path + "test/" + "15.png",
+    16: effect_scene_path + "test/" + "16.png",
+    17: effect_scene_path + "test/" + "17.png",
+    18: effect_scene_path + "test/" + "18.png",
+    19: effect_scene_path + "test/" + "19.png",
+    20: effect_scene_path + "test/" + "20.png",
+    21: effect_scene_path + "test/" + "21.png",
+    22: effect_scene_path + "test/" + "22.png",
+    23: effect_scene_path + "test/" + "23.png",
+    24: effect_scene_path + "test/" + "24.png",
+    25: effect_scene_path + "test/" + "25.png",
+    
+
+    //开场动画素材
+    s1: effect_scene_path + "startAnimation/" + "s1.png",
+    s2: effect_scene_path + "startAnimation/" + "s2.png",
+    s3: effect_scene_path + "startAnimation/" + "s3.png",
+    s4: effect_scene_path + "startAnimation/" + "s4.png",
+    s5: effect_scene_path + "startAnimation/" + "s5.png",
+    s6: effect_scene_path + "startAnimation/" + "s6.png",
+    s7: effect_scene_path + "startAnimation/" + "s7.png",
+    s8: effect_scene_path + "startAnimation/" + "s8.png",
+    s9: effect_scene_path + "startAnimation/" + "s9.png",
+    s10: effect_scene_path + "startAnimation/" + "s10.png",
+    s11: effect_scene_path + "startAnimation/" + "s11.png",
+    s12: effect_scene_path + "startAnimation/" + "s12.png",
+    s13: effect_scene_path + "startAnimation/" + "s13.png",
+    s14: effect_scene_path + "startAnimation/" + "s14.png",
+    s15: effect_scene_path + "startAnimation/" + "s15.png",
+    s16: effect_scene_path + "startAnimation/" + "s16.png",
+    s17: effect_scene_path + "startAnimation/" + "s17.png",
+    s18: effect_scene_path + "startAnimation/" + "s18.png",
+    s19: effect_scene_path + "startAnimation/" + "s19.png",
+    s20: effect_scene_path + "startAnimation/" + "s20.png",
+
 
 
 
@@ -710,6 +854,17 @@ var main_scene_image = {
     effect13: ccb_scene_path + "effect13.ccbi", 
     effect14: ccb_scene_path + "effect14.ccbi", 
     effect15: ccb_scene_path + "effect15.ccbi", 
+    effect16: ccb_scene_path + "effect16.ccbi", 
+    effect17: ccb_scene_path + "effect17.ccbi", 
+    effect18: ccb_scene_path + "effect18.ccbi", 
+    effect19: ccb_scene_path + "effect19.ccbi", 
+    effect20: ccb_scene_path + "effect20.ccbi", 
+    effect21: ccb_scene_path + "effect21.ccbi", 
+    effect22: ccb_scene_path + "effect22.ccbi",
+    effect23: ccb_scene_path + "effect23.ccbi",
+    effect24: ccb_scene_path + "effect24.ccbi",
+    effect25: ccb_scene_path + "effect25.ccbi",
+
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
     uiEffect3: ccb_scene_path + "uiEffect3.ccbi", 
@@ -743,7 +898,33 @@ var main_scene_image = {
     uiEffect31: ccb_scene_path + "uiEffect31.ccbi",
     uiEffect32: ccb_scene_path + "uiEffect32.ccbi",
     uiEffect33: ccb_scene_path + "uiEffect33.ccbi",
-    
+    uiEffect34: ccb_scene_path + "uiEffect34.ccbi",
+    uiEffect35: ccb_scene_path + "uiEffect35.ccbi",
+    uiEffect36: ccb_scene_path + "uiEffect36.ccbi",
+    uiEffect37: ccb_scene_path + "uiEffect37.ccbi",
+    uiEffect38: ccb_scene_path + "uiEffect38.ccbi",
+    uiEffect39: ccb_scene_path + "uiEffect39.ccbi",
+    uiEffect40: ccb_scene_path + "uiEffect40.ccbi",
+    uiEffect41: ccb_scene_path + "uiEffect41.ccbi",
+    uiEffect42: ccb_scene_path + "uiEffect42.ccbi",
+    uiEffect43: ccb_scene_path + "uiEffect43.ccbi",
+    uiEffect44: ccb_scene_path + "uiEffect44.ccbi",
+    uiEffect45: ccb_scene_path + "uiEffect45.ccbi",
+    uiEffect46: ccb_scene_path + "uiEffect46.ccbi",
+    uiEffect47: ccb_scene_path + "uiEffect47.ccbi",
+    uiEffect48: ccb_scene_path + "uiEffect48.ccbi",
+    uiEffect49: ccb_scene_path + "uiEffect49.ccbi",
+    uiEffect50: ccb_scene_path + "uiEffect50.ccbi",
+    uiEffect51: ccb_scene_path + "uiEffect51.ccbi",
+    uiEffect52: ccb_scene_path + "uiEffect52.ccbi",
+    uiEffect53: ccb_scene_path + "uiEffect53.ccbi",
+    uiEffect54: ccb_scene_path + "uiEffect54.ccbi",
+    uiEffect55: ccb_scene_path + "uiEffect55.ccbi",
+    uiEffect56: ccb_scene_path + "uiEffect56.ccbi",
+    uiEffect57: ccb_scene_path + "uiEffect57.ccbi",
+
+    //开场动画
+    startAnimation1: ccb_scene_path + "startAnimation1.ccbi",
 };
 
 var main_scene_res = [
@@ -755,7 +936,13 @@ var main_scene_res = [
     //effect
 ];
 
-for (var cardId = 1; cardId <= 6; ++cardId) {
+var cardResIdList = [
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+];
+
+for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
+    var cardId = cardResIdList[cardIndex];
+
     main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
@@ -767,54 +954,12 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
-}
 
-for (var cardId = 1001; cardId <= 1003; ++cardId) {
-    main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
-    main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
-    main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
 for (var taskId = 1; taskId <= 50; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
-}
-
-var effectConfig = [
-    10,
-    10,
-    10,
-    5,
-    6,
-    7,
-    6,
-    8,
-    6,
-    12,
-    8,
-    4,
-    4
-];
-
-var effectRect = [
-    cc.rect(0, 0, 160, 80),
-    cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 640, 218),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 182, 171),
-    cc.rect(0, 0, 250, 275),
-    cc.rect(0, 0, 83, 261),
-    cc.rect(0, 0, 251, 279),
-    cc.rect(0, 0, 188, 263),
-    cc.rect(0, 0, 464, 391),
-    cc.rect(0, 0, 280, 308),
-    cc.rect(0, 0, 170, 185)
-];
-
-for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
-    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = effect_scene_path + effectId + "/" + frameI + ".png";
-    }
 }
 
 for (var key in main_scene_image) {
@@ -827,4 +972,7 @@ main_scene_res.push({src: "../res/font/skillName.fnt"});
 main_scene_res.push({src: "../res/font/skillName.png"});
 main_scene_res.push({src: "../res/font/tipNumber.fnt"});
 main_scene_res.push({src: "../res/font/tipNumber.png"});
-
+main_scene_res.push({src: "../res/font/UInumber.fnt"});
+main_scene_res.push({src: "../res/font/UInumber.png"});
+main_scene_res.push({src: "../res/font/AchievementWord.fnt"});
+main_scene_res.push({src: "../res/font/AchievementWord.png"});

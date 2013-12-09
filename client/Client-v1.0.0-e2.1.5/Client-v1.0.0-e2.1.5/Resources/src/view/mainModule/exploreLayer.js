@@ -29,12 +29,23 @@ var ExploreLayer = cc.Layer.extend({
     _scrollView: null,
     _element: {},
     _reward: null,
+    _level9Box: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("探索界面");
+    },
+
+    onExit: function () {
+        cc.log("ExploreLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("探索界面");
     },
 
     init: function (sectionId) {
@@ -65,7 +76,7 @@ var ExploreLayer = cc.Layer.extend({
         headIcon.setPosition(this._exploreLayerFit.headIconPoint);
         this.addChild(headIcon, 1);
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
@@ -294,16 +305,15 @@ var ExploreLayer = cc.Layer.extend({
             this._element[i].descriptionLabel.setVisible(i == this._index);
         }
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             var point = this._mapLabel[i].getPosition();
 
             if (point.x < this._exploreLayerFit.pointX) {
-                point.x += 1920;
+                point.x += 2560;
                 this._mapLabel[i].setPosition(point);
             }
         }
     },
-
 
     _getScrollViewOffset: function () {
         cc.log("ExploreLayer _getScrollViewOffset");
@@ -325,15 +335,21 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        MainScene.getInstance().switchLayer(PveLayer);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().switchLayer(TaskLayer);
     },
 
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var task = gameData.task;
 
-        if (task.canExplore()) {
+        var statue = task.canExplore();
+
+        if (statue == CAN_EXPLORE) {
             this._lock();
 
             var that = this;
@@ -347,15 +363,16 @@ var ExploreLayer = cc.Layer.extend({
                 } else {
                     that._unlock();
                 }
-
             }, this._getTaskId());
-        } else {
+        } else if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
+        } else {
+            return;
         }
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
-            NoviceTeachingLayer.getInstance().next();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
         }
     },
 
@@ -375,29 +392,47 @@ var ExploreLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
     },
 
-    _toNext: function () {
-        cc.log("ExploreLayer _next");
+    _toNext: function (cb) {
+        cc.log("ExploreLayer _toNext");
 
-        TipLayer.tip("恭喜您，本关已完成");
+        var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
+        passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
+        this.addChild(passEffect);
 
-        this.scheduleOnce(function () {
-            this._index += 1;
+        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
 
-            if (this._index > this._maxIndex) {
-                this._unlock();
-                this._onClickBack();
+        var that = this;
+
+        passEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            passEffect.removeFromParent();
+            that._index += 1;
+
+            if (that._index > that._maxIndex) {
+                that._unlock();
+                that._onClickBack();
             }
-
-            this.update();
-
-            this.scheduleOnce(this._unlock, 1);
-        }, 1);
+            that.scheduleOnce(that._unlock, 1);
+            cb();
+            that.update();
+        });
     },
 
     _showReward: function () {
         cc.log("ExploreLayer _showReward");
 
         if (this._reward) {
+
+            if (this._reward.money && this._reward.exp) {
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            }
+
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
                 cc.DelayTime.create(0.6),
@@ -443,51 +478,49 @@ var ExploreLayer = cc.Layer.extend({
                 progressLabel.runAction(action);
             }
 
-            if (this._reward.money) {
-                var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-                moneyIcon.setScale(0.4);
-                moneyIcon.setPosition(x + 95, 415);
-                this._scrollView.addChild(moneyIcon);
-                moneyIcon.setAnchorPoint(cc.p(0.5, 0.5));
-
-                moneyIcon.runAction(
-                    cc.Spawn.create(
-                        cc.MoveBy.create(0.5, cc.p(0, 25)),
-                        cc.ScaleTo.create(0.5, 0.6, 0.6),
-                        cc.Sequence.create(
-                            cc.FadeIn.create(0.3),
-                            cc.DelayTime.create(0.6),
-                            cc.FadeOut.create(0.1)
-                        )
-                    )
-                );
-            }
-
             this.scheduleOnce(function () {
                 if (powerLabel) powerLabel.removeFromParent();
                 if (expLabel) expLabel.removeFromParent();
                 if (progressLabel) progressLabel.removeFromParent();
-                if (moneyIcon) moneyIcon.removeFromParent();
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
+                var level9Box = this._reward.level9Box;
+
+                var next = function () {
+                    if (upgradeReward) {
+                        var cb = function () {
+
+                            gameMark.updateGoldRewardMark(false);
+
+                            if (goldList) {
+                                GoldLayer.pop({
+                                    goldList: goldList,
+                                    cb: function () {
+                                        if (level9Box) {
+                                            Level9BoxLayer.pop(level9Box);
+                                        }
+                                    }
+                                });
+                            }
+                        };
+                        PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
+                    } else if (goldList) {
+                        GoldLayer.pop(goldList);
+                    }
+
+                };
+
+                if (toNext) {
+                    this._toNext(next);
+                } else {
+                    this._unlock();
+                    next();
+                }
 
                 this._reward = null;
 
-                if (toNext) {
-                    this._toNext();
-                } else {
-                    this._unlock();
-                }
-
-                if (goldList) {
-                    GoldLayer.pop(goldList);
-                }
-
-                if (upgradeReward) {
-                    PlayerUpgradeLayer.pop(upgradeReward);
-                }
             }, 1);
 
             return 1;
@@ -507,6 +540,14 @@ var ExploreLayer = cc.Layer.extend({
                     this.scheduleOnce(function () {
                         BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
+
+                        var uid = gameData.player.get("uid");
+                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                        if (isFirstFight == 1) {
+                            MandatoryTeachingLayer.pop();
+                            sys.localStorage.setItem(uid + "firstFight", 0);
+                        }
+
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();
@@ -568,55 +609,38 @@ var ExploreLayer = cc.Layer.extend({
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             this._mapLabel[i].runAction(mapAction.copy());
         }
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _openBox");
+        cc.log("TaskLayer _showBox");
 
-        var boxAction = cc.Sequence.create(
-            cc.Spawn.create(
-                cc.MoveBy.create(0.3, cc.p(0, -165)),
-                cc.ScaleTo.create(0.3, 1, 1)
-            ),
-            cc.CallFunc.create(
-                this._openBox,
-                this
-            )
-        );
+        var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
+        boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
+        this.addChild(boxEffect);
 
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-        this._closeBoxSprite.setScale(0.9);
-        this._closeBoxSprite.setVisible(true);
-
-        this._openBoxSprite.setVisible(false);
-
-        this._closeBoxSprite.runAction(boxAction);
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            boxEffect.removeFromParent();
+        });
     },
 
     _openBox: function () {
         cc.log("TaskLayer _openBox");
 
-        this._closeBoxSprite.setVisible(false);
-        this._openBoxSprite.setVisible(true);
-
         var that = this;
         var cb = function () {
-            that._openBoxSprite.setVisible(false);
             that.update();
         };
 
-        this.scheduleOnce(function () {
-            CardDetails.pop(this._reward.card, cb);
-        }, 0.5);
+        LotteryCardLayer.pop({card: this._reward.card, cb: cb});
     },
 
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
-        var id = 5;
+        var id = 2;
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);

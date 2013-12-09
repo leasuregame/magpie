@@ -20,6 +20,7 @@ var TournamentLayer = cc.Layer.extend({
     _scrollView: null,
     _rewardLabel: null,
     _rewardItem: null,
+    _rewardEffect: null,
     _menu: null,
     _expProgress: null,
     _lvLabel: null,
@@ -33,6 +34,16 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("竞技界面");
+    },
+
+    onExit: function () {
+        cc.log("TournamentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("竞技界面");
     },
 
     init: function () {
@@ -114,11 +125,12 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickRankReward,
             this
         );
+        this._rewardItem.setVisible(false);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -167,7 +179,16 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop(this._upgradeReward);
+            PlayerUpgradeLayer.pop({
+                reward: this._upgradeReward,
+                cb: function () {
+                    if(this._level9Box) {
+                        Level9BoxLayer.pop(this._level9Box);
+                        this._level9Box = null;
+                    }
+
+                }
+            });
             this._upgradeReward = null;
         }
 
@@ -187,6 +208,16 @@ var TournamentLayer = cc.Layer.extend({
             that._addRankScrollView();
             that._updateRankRewardItem();
         });
+
+    },
+
+    _update: function () {
+        cc.log("TournamentLayer _update");
+
+        var tournament = gameData.tournament;
+
+        this._rankingLabel.setString(tournament.get("ranking"));
+        this._countLabel.setString(tournament.get("count"));
     },
 
     _updateRankRewardItem: function () {
@@ -200,8 +231,17 @@ var TournamentLayer = cc.Layer.extend({
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
+
+            if (reward.canReceive) {
+                if (!this._rewardEffect) {
+                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                    this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
+                    this.addChild(this._rewardEffect, 1);
+                }
+            }
+
         } else {
-            this._rewardLabel.setVisible(false);
+            this._rewardLabel.setString("所有奖励已经领取完");
             this._rewardItem.setVisible(false);
         }
     },
@@ -209,16 +249,19 @@ var TournamentLayer = cc.Layer.extend({
     _addRankScrollView: function () {
         cc.log("TournamentLayer _addRankScrollView");
 
-        var tournament = gameData.tournament;
+        this._update();
 
-        this._rankingLabel.setString(tournament.get("ranking"));
-        this._countLabel.setString(tournament.get("count"));
+        var tournament = gameData.tournament;
 
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
-        var height = len * 135;
         var playerId = gameData.player.get("id");
         var own = len;
+
+        var scrollViewHeight = len * 135 + 80;
+        if (scrollViewHeight < this._tournamentLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._tournamentLayerFit.scrollViewHeight;
+        }
 
         var scrollViewLayer = MarkLayer.create(this._tournamentLayerFit.scrollViewLayerRect);
 
@@ -226,16 +269,25 @@ var TournamentLayer = cc.Layer.extend({
             if (playerId == this._rankList[i].playerId) {
                 own = i;
             }
-
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
-            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
+
+            if (i < 10) {
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
+            } else {
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
+            }
+
+            if (i == 9) {
+                var line = cc.Sprite.create(main_scene_image.icon296);
+                line.setPosition(cc.p(310, scrollViewHeight - 135 * (i + 1) - 15));
+                scrollViewLayer.addChild(line, 2);
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, height));
+        this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, scrollViewHeight));
         this._scrollView.setPosition(this._tournamentLayerFit.scrollViewPoint);
-        this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
 
@@ -258,14 +310,17 @@ var TournamentLayer = cc.Layer.extend({
         return null;
     },
 
-    _setPlayerUpgradeReward: function (upgradeReward) {
+    _setPlayerUpgradeReward: function (upgradeReward, level9Box) {
         cc.log("TournamentLayer _setPlayerUpgradeReward");
 
         this._upgradeReward = upgradeReward || null;
+        this._level9Box = level9Box || null;
     },
 
     _onClickPlayer: function (id, point) {
         cc.log("TournamentLayer _onClickPlayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._selectId = id;
         this._skyDialog.show(point);
@@ -274,15 +329,25 @@ var TournamentLayer = cc.Layer.extend({
     _onClickRankReward: function () {
         cc.log("TournamentLayer _onClickRankReward");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.tournament.receive(function (reward) {
             lz.tipReward(reward);
+
+            if (that._rewardEffect) {
+                that._rewardEffect.removeFromParent();
+                that._rewardEffect = null;
+            }
+
             that._updateRankRewardItem();
         });
     },
 
     _onClickDetail: function () {
         cc.log("TournamentLayer _onClickDetail: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var player = this._getPlayer(this._selectId);
 
@@ -300,6 +365,8 @@ var TournamentLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("TournamentLayer _onClickSendMessage: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._getPlayer(this._selectId);
 
         if (player) {
@@ -312,6 +379,8 @@ var TournamentLayer = cc.Layer.extend({
     _onClickAddFriend: function () {
         cc.log("TournamentLayer _onClickAddFriend: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._getPlayer(this._selectId);
 
         if (player) {
@@ -323,6 +392,8 @@ var TournamentLayer = cc.Layer.extend({
 
     _onClickBuyCount: function () {
         cc.log("TournamentLayer _onClickBuyCount");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var id = 6;
         var product = gameData.shop.getProduct(id);
@@ -349,12 +420,21 @@ var TournamentLayer = cc.Layer.extend({
         if (count > 0) {
             var that = this;
             gameData.shop.buyProduct(function (data) {
-                that.update();
+                that._update();
 
                 lz.tipReward(data);
             }, id, count);
         }
+    },
+
+    showTip: function () {
+        cc.log("TournamentLayer showTip");
+        var that = this;
+        TournamentTipLayer.pop(function () {
+            that._onClickBuyCount();
+        });
     }
+
 });
 
 TournamentLayer.create = function () {

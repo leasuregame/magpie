@@ -16,6 +16,21 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+Handler::setStep = (msg, session, next) ->
+  playerId = session.get('playerId')
+  step = msg.step
+
+  if not step or not _.isNumber(step)
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    player.set('teachingStep', step)
+    player.save()
+    next(null, {code: 200})
+
 Handler::getFriends = (msg, session, next) ->
   playerId = session.get('playerId')
 

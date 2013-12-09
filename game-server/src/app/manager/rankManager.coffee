@@ -50,13 +50,12 @@ Manager = module.exports =
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
-        checkAchievement(player, challenger)
-
       else
         updateRankInfo(defender, challenger)
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
+      checkAchievement(player, challenger) if isWin
       updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
 

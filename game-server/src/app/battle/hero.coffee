@@ -16,7 +16,7 @@ FLOAT_SCOPE = 15
 
 floatUpOrDown = (val) ->
   x = parseInt val * FLOAT_SCOPE / 100
-  return _.random val - x, val + x
+  return parseInt _.random val - x, val + x
 
 class Hero extends Module
   @include Events

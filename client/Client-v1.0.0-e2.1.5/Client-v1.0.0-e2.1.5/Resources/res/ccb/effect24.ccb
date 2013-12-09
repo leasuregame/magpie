@@ -882,9 +882,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>114</integer>
-									<integer>252</integer>
-									<integer>213</integer>
+									<integer>28</integer>
+									<integer>249</integer>
+									<integer>200</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1157,9 +1157,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>254</integer>
-									<integer>255</integer>
-									<integer>255</integer>
+									<integer>47</integer>
+									<integer>168</integer>
+									<integer>175</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1574,8 +1574,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

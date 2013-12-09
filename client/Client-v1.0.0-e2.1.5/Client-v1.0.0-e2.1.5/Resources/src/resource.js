@@ -583,6 +583,9 @@ var main_scene_image = {
     icon300: main_scene_path + "icon300.png",
     icon301: main_scene_path + "icon301.png",
     icon302: main_scene_path + "icon302.png",
+    icon303: main_scene_path + "icon303.png",
+    icon304: main_scene_path + "icon304.png",
+
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -593,7 +596,6 @@ var main_scene_image = {
     spiritNode: "res/ccb/spiritNode.ccbi",
     tipNode: "res/ccb/tipNode.ccbi",
 
-    TestTimelineCallback: "res/ccb/TestTimelineCallback.ccbi",
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",
     effect3: "res/ccb/effect3.ccbi",
@@ -609,6 +611,16 @@ var main_scene_image = {
     effect13: "res/ccb/effect13.ccbi",
     effect14: "res/ccb/effect14.ccbi",
     effect15: "res/ccb/effect15.ccbi",
+    effect16: "res/ccb/effect16.ccbi",
+    effect17: "res/ccb/effect17.ccbi",
+    effect18: "res/ccb/effect18.ccbi",
+    effect19: "res/ccb/effect19.ccbi",
+    effect20: "res/ccb/effect20.ccbi",
+    effect21: "res/ccb/effect21.ccbi",
+    effect22: "res/ccb/effect22.ccbi",
+    effect23: "res/ccb/effect23.ccbi",
+    effect24: "res/ccb/effect24.ccbi",
+    effect25: "res/ccb/effect25.ccbi",
 
     uiEffect1: "res/ccb/uiEffect1.ccbi",
     uiEffect2: "res/ccb/uiEffect2.ccbi",
@@ -854,7 +866,6 @@ var main_scene_image = {
     tutorials25: "res/ccb/tutorials25.ccbi",
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
-
 
 
     // 新手特效资源

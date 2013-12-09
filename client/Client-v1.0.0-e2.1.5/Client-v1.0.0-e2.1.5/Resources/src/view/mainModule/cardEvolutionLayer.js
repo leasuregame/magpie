@@ -41,7 +41,9 @@ var CardEvolutionLayer = LazyLayer.extend({
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._evolutionEffect = cc.BuilderReader.load(main_scene_image.uiEffect45, this);
-        this._evolutionEffect.setPosition(cc.p(320, 690));
+
+        var point = gameFit.mainScene.cardEvolutionLayer.selectLeadCardItemPoint;
+        this._evolutionEffect.setPosition(point);
         this._setCard();
         this.addChild(this._evolutionEffect);
 
@@ -51,7 +53,6 @@ var CardEvolutionLayer = LazyLayer.extend({
             that._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
                 that._end();
             });
-
         };
 
         this._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -64,7 +65,6 @@ var CardEvolutionLayer = LazyLayer.extend({
             } else {
                 this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
                 next();
-
             }
         });
 

@@ -66,7 +66,7 @@ var GoldLayer = LazyLayer.extend({
         bgLayer.setPosition(this._goldLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
-        var goldIcon = cc.Sprite.create(main_scene_image.icon214);
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
         goldIcon.setPosition(this._goldLayerFit.goldIconPoint);
         this.addChild(goldIcon);
 

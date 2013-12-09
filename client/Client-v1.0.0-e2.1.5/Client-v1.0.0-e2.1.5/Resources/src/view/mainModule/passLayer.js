@@ -225,7 +225,6 @@ var PassLayer = cc.Layer.extend({
                 sys.localStorage.setItem(uid + "firstPassWin", 2);
                 MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
             }
-
         };
 
         if (this._upgradeReward) {
@@ -235,6 +234,8 @@ var PassLayer = cc.Layer.extend({
                     if (this._level9Box) {
                         Level9BoxLayer.pop({reward: this._level9Box, cb: next});
                         this._level9Box = null;
+                    } else {
+                        next();
                     }
                 }
             });

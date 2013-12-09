@@ -68,14 +68,25 @@ var EvolutionLayer = cc.Layer.extend({
         this._skillUpgradeItem.setPosition(this._evolutionLayerFit.skillUpgradeItemPoint);
         this._skillUpgradeItem.setOffset(this._evolutionLayerFit.skillUpgradeItemOffset);
 
-        this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
-            main_scene_image.icon47,
-            this._onClickPassiveSkillUpgrade,
-            this
-        );
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass_skillafresh) {
+            this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon47,
+                this._onClickPassiveSkillUpgrade,
+                this
+            );
+        } else {
+            this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23,
+                main_scene_image.button23s,
+                main_scene_image.button23d,
+                main_scene_image.icon47,
+                this._onClickPassiveSkillUpgrade,
+                this
+            );
+        }
         this._passiveSkillUpgradeItem.setPosition(this._evolutionLayerFit.passiveSkillUpgradeItemPoint);
         this._passiveSkillUpgradeItem.setOffset(this._evolutionLayerFit.passiveSkillUpgradeItemOffset);
 
@@ -117,17 +128,22 @@ var EvolutionLayer = cc.Layer.extend({
 
         this._switchLabel(SkillUpgradeLabel);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
         }
-
     },
 
     _onClickPassiveSkillUpgrade: function () {
         cc.log("EvolutionLayer _onClickCardEvolution");
+
+        var limitLv = outputTables.function_limit.rows[1].pass_skillafresh;
+        if (gameData.player.get("lv") < limitLv) {
+            TipLayer.tip(limitLv + "级开放");
+            return;
+        }
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -136,8 +152,8 @@ var EvolutionLayer = cc.Layer.extend({
 
         this._switchLabel(PassiveSkillAfreshLabel);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }

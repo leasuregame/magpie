@@ -81,7 +81,7 @@ var AchievementLayer = cc.Layer.extend({
         this._scrollViewElement = {};
 
         var y = scrollViewHeight;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             y -= 120;
             var id = achievement[i].id;
 
@@ -145,7 +145,7 @@ var AchievementLayer = cc.Layer.extend({
                     this._scrollViewElement[id].isReceiverIcon = isReceiverIcon;
                     this._scrollViewElement[id].receiverItem = receiverItem;
                 } else {
-                    var goldIcon = cc.Sprite.create(main_scene_image.icon214);
+                    var goldIcon = cc.Sprite.create(main_scene_image.icon148);
                     goldIcon.setPosition(cc.p(410, y + 50));
                     scrollViewLayer.addChild(goldIcon);
 
@@ -155,7 +155,7 @@ var AchievementLayer = cc.Layer.extend({
                     goldLabel.setPosition(cc.p(430, y + 50));
                     scrollViewLayer.addChild(goldLabel);
 
-                    var energyIcon = cc.Sprite.create(main_scene_image.icon213);
+                    var energyIcon = cc.Sprite.create(main_scene_image.icon154);
                     energyIcon.setPosition(cc.p(510, y + 50));
                     scrollViewLayer.addChild(energyIcon);
 

@@ -133,6 +133,10 @@ var VipLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var buyIcon = cc.Sprite.create(main_scene_image.icon303);
+        buyIcon.setPosition(this._vipLayerFit.buyIconPoint);
+        this.addChild(buyIcon);
+
         return true;
     },
 
@@ -330,53 +334,6 @@ var VipLayer = cc.Layer.extend({
         lazyLayer.addChild(menu);
     },
 
-    _addTip: function (id) {
-        cc.log("VipLayer _addTip");
-
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer);
-
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 250));
-        bgSprite.setPosition(this._vipLayerFit.bgSprite2Point);
-        lazyLayer.addChild(bgSprite);
-
-        var failLabel = StrokeLabel.create("购 买 失 败", "STHeitiTC-Medium", 25);
-        failLabel.setPosition(this._vipLayerFit.failLabelPoint);
-        lazyLayer.addChild(failLabel);
-
-        var tipLabel = cc.LabelTTF.create("只有达到VIP" + id + "才能购买此礼包，快去充值吧！", "STHeitiTC-Medium", 20);
-        tipLabel.setPosition(this._vipLayerFit.tipLabelPoint);
-        lazyLayer.addChild(tipLabel);
-
-        var paymentItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button21,
-            main_scene_image.button21s,
-            main_scene_image.icon159,
-            function () {
-                lazyLayer.removeFromParent();
-                this._onClickPayment();
-            },
-            this
-        );
-        paymentItem.setPosition(this._vipLayerFit.paymentItem2Point);
-
-        var closeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon36,
-            function () {
-                lazyLayer.removeFromParent();
-            },
-            this
-        );
-        closeItem.setPosition(this._vipLayerFit.closeItemPoint);
-
-        var menu = cc.Menu.create(paymentItem, closeItem);
-        menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
-    },
-
     _onClickPayment: function () {
         cc.log("VipLayer _onClickPayment");
 
@@ -392,13 +349,21 @@ var VipLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            var that = this;
+
             if (gameData.player.get("vip") < id) {
-                this._addTip(id);
+                GoPaymentLayer.pop({
+                    title: "购 买 失 败",
+                    msg: "只有达到VIP" + id + "才能购买此礼包，快去充值吧！",
+                    cb: function () {
+                        var paymentLayer = PaymentLayer.create();
+                        that.addChild(paymentLayer, 1);
+                    }
+                });
 
                 return;
             }
 
-            var that = this;
             gameData.shop.buyVipBox(function (data) {
                 cc.log(data);
                 var cb = function () {

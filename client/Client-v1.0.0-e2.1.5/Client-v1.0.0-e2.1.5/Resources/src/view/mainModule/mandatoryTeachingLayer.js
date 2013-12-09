@@ -46,7 +46,6 @@ var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 var MandatoryTeachingLayer = LazyLayer.extend({
     _mandatoryTeachingLayerFit: null,
 
-
     _layer: [
         MainLayer,
         ExploreLayer,
@@ -119,10 +118,12 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         }
 
         var layer = this._layer[this._layerOrder[this._step]];
+
+        cc.log("layer = " + layer);
         if (layer == ExploreLayer) {
-            var id = gameData.task.get("id");
+
             if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
-                MainScene.getInstance().switch(ExploreLayer.create(id));
+                MainScene.getInstance().switch(ExploreLayer.create(1));
             }
 
         } else {
@@ -141,6 +142,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
             this._changeEffect(this._effectOrder[this._step]);
         } else {
             this.removeFromParent();
+            mandatoryTeachingLayer = null;
         }
 
     },
@@ -251,18 +253,14 @@ MandatoryTeachingLayer.create = function (progress) {
 MandatoryTeachingLayer.pop = function (progress) {
     cc.log("MandatoryTeachingLayer pop");
     if (mandatoryTeachingLayer) {
-        MandatoryTeachingLayer.remove();
-    }
-    mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
-    MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
-};
-
-MandatoryTeachingLayer.remove = function () {
-    cc.log("MandatoryTeachingLayer remove");
-    if (mandatoryTeachingLayer) {
         mandatoryTeachingLayer.removeFromParent();
         mandatoryTeachingLayer = null;
     }
+
+    lz.scheduleOnce(function () {
+        mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
+        MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
+    }, 0.1);
 };
 
 MandatoryTeachingLayer.teachingProgress = function () {
@@ -282,7 +280,6 @@ MandatoryTeachingLayer.teachingProgress = function () {
     }
 
     return PROGRESS_NULL;
-
 };
 
 

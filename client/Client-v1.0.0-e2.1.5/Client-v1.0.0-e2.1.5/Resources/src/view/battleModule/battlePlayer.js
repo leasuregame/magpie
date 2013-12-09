@@ -12,6 +12,9 @@
  * */
 
 
+var BATTLE_PLAY_SPEED = 1.3;
+var MAIN_PLAY_SPEED = 1;
+
 var BattlePlayer = cc.Class.extend({
     _battleScene: null,
 
@@ -30,6 +33,9 @@ var BattlePlayer = cc.Class.extend({
             this._battleScene.play();
         }
 
+        gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
+        cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEED);
+
         return battleLog.isWin();
     },
 
@@ -41,6 +47,9 @@ var BattlePlayer = cc.Class.extend({
 
     end: function (goLayer) {
         cc.log("BattlePlayer end");
+
+        gameData.sound.playMusic();
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
         cc.Director.getInstance().popScene();
 

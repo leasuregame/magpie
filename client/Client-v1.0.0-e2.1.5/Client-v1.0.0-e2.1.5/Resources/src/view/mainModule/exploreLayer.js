@@ -491,25 +491,38 @@ var ExploreLayer = cc.Layer.extend({
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
-
-                            gameMark.updateGoldRewardMark(false);
-
                             if (goldList) {
                                 GoldLayer.pop({
                                     goldList: goldList,
                                     cb: function () {
                                         if (level9Box) {
-                                            Level9BoxLayer.pop(level9Box);
+                                            Level9BoxLayer.pop({reward: level9Box});
                                         }
                                     }
                                 });
+                            } else {
+                                if (level9Box) {
+                                    Level9BoxLayer.pop({reward: level9Box});
+                                }
                             }
                         };
                         PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
-                    } else if (goldList) {
-                        GoldLayer.pop(goldList);
+                    } else {
+                        if (goldList) {
+                            GoldLayer.pop({
+                                goldList: goldList,
+                                cb: function () {
+                                    if (level9Box) {
+                                        Level9BoxLayer.pop({reward: level9Box});
+                                    }
+                                }
+                            });
+                        } else {
+                            if (level9Box) {
+                                Level9BoxLayer.pop({reward: level9Box});
+                            }
+                        }
                     }
-
                 };
 
                 if (toNext) {
@@ -520,7 +533,6 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
                 this._reward = null;
-
             }, 1);
 
             return 1;
@@ -538,17 +550,17 @@ var ExploreLayer = cc.Layer.extend({
                     this._spiritNode.encounterBattle();
 
                     this.scheduleOnce(function () {
-                        BattlePlayer.getInstance().play(this._reward.battleLogId);
+                        var isWin = BattlePlayer.getInstance().play(this._reward.battleLogId);
                         this._spiritNode.normal();
 
-                        var uid = gameData.player.get("uid");
-                        var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
-                        cc.log(isFirstFight);
-                        if (isFirstFight == 1) {
-                            sys.localStorage.setItem(uid + "firstFight", 2);
-                            MandatoryTeachingLayer.pop(FIRST_FIGHT);
+                        if (isWin) {
+                            var uid = gameData.player.get("uid");
+                            var isFirstFight = parseInt(sys.localStorage.getItem(uid + "firstFight")) || 1;
+                            if (isFirstFight == 1) {
+                                sys.localStorage.setItem(uid + "firstFight", 2);
+                                MandatoryTeachingLayer.pop(FIRST_FIGHT);
+                            }
                         }
-
                     }, 1);
                 } else if (this._reward.result == "box") {
                     this._spiritNode.encounterBox();
@@ -647,6 +659,13 @@ var ExploreLayer = cc.Layer.extend({
         cc.log(product);
 
         if (product.count <= 0) {
+            if (gameData.shop.get("powerBuyCount") <= 0) {
+                GoPaymentLayer.pop({
+                    title: "体力购买次数已用完",
+                    msg: "成为VIP1，每日即可获得额外的购买次数"
+                });
+            }
+
             return;
         }
 

@@ -168,7 +168,7 @@ var BattleEndLayer = cc.Layer.extend({
     _onClickGoStrengthenLayer: function () {
         cc.log("BattleEndLayer _onClickGoStrengthenLayer");
 
-        if(this._battleLog.get("isFirstTournament")) {
+        if (this._battleLog.get("isFirstTournament")) {
             this.end();
             return;
         }

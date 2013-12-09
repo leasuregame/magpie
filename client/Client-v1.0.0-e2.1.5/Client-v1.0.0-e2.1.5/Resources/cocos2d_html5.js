@@ -87,7 +87,7 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
-            '../Resources-AppStore/appStoreModel/payment.js',
+            '../Resources-TB/TBModel/payment.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -150,6 +150,7 @@
             'src/view/mainModule/friendMessageLayer.js',
             'src/view/mainModule/gameFrame.js',
             'src/view/mainModule/goldLayer.js',
+            'src/view/mainModule/goPaymentLayer.js',
             'src/view/mainModule/level9BoxLayer.js',
             'src/view/mainModule/lineUpDetail.js',
             'src/view/mainModule/lineUpDetailsLayer.js',

@@ -63,6 +63,7 @@ cd ../gm && make runserver2 && cd ../game-server
 
 tail -f ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
+http://124.238.236.32:7003
 test, 123
 
 use Dev http Client to test verify receipt.

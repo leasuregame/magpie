@@ -243,7 +243,7 @@ MandatoryTeachingLayer.pop = function (progress) {
         mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
         MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
     }, 0.1);
-
 };
+
 
 var mandatoryTeachingLayer = null;

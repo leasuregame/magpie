@@ -738,6 +738,7 @@ var main_scene_image = {
     up144: effect_scene_path + "uiEffect/" + "up144.png",
     up145: effect_scene_path + "uiEffect/" + "up145.png",
     up146: effect_scene_path + "uiEffect/" + "up146.png",
+    up147: effect_scene_path + "uiEffect/" + "up147.png",
 
 
 

@@ -81,7 +81,7 @@ var AchievementLayer = cc.Layer.extend({
         this._scrollViewElement = {};
 
         var y = scrollViewHeight;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             y -= 120;
             var id = achievement[i].id;
 

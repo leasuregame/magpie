@@ -664,7 +664,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>80</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -680,7 +680,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>200</integer>
+						<integer>100</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -959,7 +959,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>3</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

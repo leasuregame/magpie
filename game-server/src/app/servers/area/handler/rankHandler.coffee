@@ -102,7 +102,7 @@ Handler::challenge = (msg, session, next) ->
 
   player = null
   target = null
-  isWin = fasle
+  isWin = false
   async.waterfall [
     (cb) ->
       playerManager.getPlayers [playerId, targetId], cb

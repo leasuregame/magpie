@@ -192,16 +192,16 @@ var TournamentLabel = cc.Node.extend({
                 var tournament = gameData.tournament;
                 var count = tournament.get("count");
 
-                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "firstCountUsed") || 1;
+                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "_firstCountUsed") || 1;
                 isFirstCountUsed = parseInt(isFirstCountUsed);
                 if (count == 0 && isFirstCountUsed == 1) {
 
-                    sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 0);
+                    sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 0);
                     this._target.showTip();
 
                 } else {
                     if (count != 0) {
-                        sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
+                        sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 1);
                     }
 
                     gameData.tournament.defiance(function (data) {
@@ -212,10 +212,15 @@ var TournamentLabel = cc.Node.extend({
                                 that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
                             }
 
+                            if (data.upgradeReward) {
+                                that._target._setFirstTournament(data.firstTournament);
+                            }
+
+
                             var uid = gameData.player.get("uid");
-                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
+                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "_firstTournament"));
                             if (isFirstTournament != 2) {
-                                sys.localStorage.setItem(uid + "firstTournament", 1);
+                                sys.localStorage.setItem(uid + "_firstTournament", 1);
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);

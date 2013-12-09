@@ -204,9 +204,6 @@ var gameMark = {
             for (var i = 0; i < len; ++i) {
                 var key = keys[i];
                 var type = gameData.activity.getTypeById(goldRewards[key].id);
-                cc.log("playerLv : " + lv);
-                cc.log(goldRewards[key].lv);
-                cc.log("type = " + type);
                 if (type == GOLD_NO_RECEIVE) {
                     if (lv >= goldRewards[key].lv) {
                         mark = true;

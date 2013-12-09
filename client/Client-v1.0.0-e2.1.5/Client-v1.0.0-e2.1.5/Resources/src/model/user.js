@@ -49,6 +49,7 @@ var User = Entity.extend({
         this.set("lastLoginArea", data.lastLoginArea);
         this.set("lastLoginTime", data.lastLoginTime);
         this.set("lastLoginDevice", data.lastLoginDevice);
+
     },
 
     _load: function () {

@@ -28,6 +28,9 @@ var TournamentLayer = cc.Layer.extend({
     _countLabel: null,
     _abilityLabel: null,
     _upgradeReward: null,
+    _level9Box: null,
+    _isFirstTournament: false,
+
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -179,13 +182,10 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var next = function () {
-            var uid = gameData.player.get("uid");
-            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
-            if (isFirstTournament == 1) {
-                sys.localStorage.setItem(uid + "firstTournament", 2);
+
+            if (this._isFirstTournament) {
                 MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
             }
-
         };
 
         if (this._upgradeReward) {
@@ -328,6 +328,12 @@ var TournamentLayer = cc.Layer.extend({
 
         this._upgradeReward = upgradeReward || null;
         this._level9Box = level9Box || null;
+    },
+
+    _setFirstTournament: function(isFirstTournament) {
+        cc.log("TournamentLayer _setFirstTournament");
+
+        this._isFirstTournament = isFirstTournament;
     },
 
     _onClickPlayer: function (id, point) {

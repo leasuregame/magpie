@@ -199,6 +199,10 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
+                if(msg.firstWin) {
+                    cbData.isFirstPassWin = msg.firstWin;
+                }
+
                 cbData.reward = {
                     exp: reward.exp_obtain,
                     money: reward.money_obtain,

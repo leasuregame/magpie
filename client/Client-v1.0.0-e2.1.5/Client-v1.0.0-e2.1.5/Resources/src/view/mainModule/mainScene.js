@@ -77,11 +77,11 @@ var MainScene = cc.Scene.extend({
     },
 
     updateMark: function () {
-        this.scheduleOnce(function() {
-            if (this._nowLayer && this._nowLayer.updateMark) {
-                this._nowLayer.updateMark();
-            }
-        }, 5);
+
+        if (this._nowLayer && this._nowLayer.updateMark) {
+            this._nowLayer.updateMark();
+        }
+
     },
 
     updateGuide: function () {

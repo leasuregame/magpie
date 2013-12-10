@@ -208,6 +208,8 @@ var Task = Entity.extend({
                     player.add("money", msg.through_reward.money);
                 }
 
+                cc.log("first_win: " + msg.first_win);
+
                 if (msg.first_win) {
                     cbData.isFirstFight = msg.first_win;
                 }

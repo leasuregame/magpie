@@ -181,9 +181,10 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        var that = this;
         var next = function () {
-
-            if (this._isFirstTournament) {
+            cc.log("isFirstTournament: " + that._isFirstTournament);
+            if (that._isFirstTournament) {
                 MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
             }
         };

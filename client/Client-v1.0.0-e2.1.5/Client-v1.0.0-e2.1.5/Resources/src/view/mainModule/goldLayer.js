@@ -30,8 +30,7 @@ var GoldLayer = LazyLayer.extend({
     _goldItem: [],
     _goldBoxItem: null,
     _length: 0,
-    _tipText: null,
-    _tipText2: null,
+    _tipEffect: null,
 
     onEnter: function () {
         cc.log("GoldLayer onEnter");
@@ -83,15 +82,11 @@ var GoldLayer = LazyLayer.extend({
 
         var isFirstGold = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "_firstGold")) || 0;
         if (!isFirstGold) {
-            this._tipText = cc.LabelTTF.create("点击大魔石，化为小魔石", "STHeitiTC-Medium", 40);
-            this._tipText.setAnchorPoint(cc.p(0.5, 0.5));
-            this._tipText.setPosition(this._goldLayerFit.tipTextPoint);
-            this.addChild(this._tipText);
 
-            this._tipText2 = cc.LabelTTF.create("点击小魔石，即可获得对应奖励", "STHeitiTC-Medium", 40);
-            this._tipText2.setAnchorPoint(cc.p(0.5, 0.5));
-            this._tipText2.setPosition(this._goldLayerFit.tipText2Point);
-            this.addChild(this._tipText2);
+            this._tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect54, this);
+            this._tipEffect.setPosition(this._goldLayerFit.tipText2Point);
+            this._tipEffect.setAnchorPoint(cc.p(0.5, 0.5));
+            this.addChild(this._tipEffect);
 
             sys.localStorage.setItem(gameData.player.get("uid") + "_firstGold", 1);
         }
@@ -265,6 +260,10 @@ var GoldLayer = LazyLayer.extend({
     _end: function () {
         cc.log("GoldLayer _end");
 
+        if(this._tipEffect) {
+            this._tipEffect.removeFromParent();
+        }
+
         if (this._gold > 0) {
             gameData.task.obtainGold(this._gold);
 
@@ -288,15 +287,13 @@ var GoldLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
-        if (this._tipText != null) {
-            this._tipText.removeFromParent();
-        }
-        if (this._tipText2 != null) {
-            this._tipText2.removeFromParent();
-        }
         this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
         this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
             this._goldBoxItem.removeFromParent();
+            if (this._tipEffect) {
+                this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);
+                this._tipEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            }
             this._open();
         });
     },

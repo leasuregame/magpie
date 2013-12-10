@@ -554,7 +554,7 @@ var ExploreLayer = cc.Layer.extend({
                         this._spiritNode.normal();
 
                         if (isWin) {
-                            if (this._reward.isFirstWin) {
+                            if (this._reward.isFirstFight) {
                                 MandatoryTeachingLayer.pop(FIRST_FIGHT);
                             }
                         }

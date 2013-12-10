@@ -138,6 +138,13 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
+
+                cc.log("firstWin: " + msg.firstWin);
+
+                if(msg.firstWin) {
+                    cbData.isFirstPassWin = msg.firstWin;
+                }
+
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(cbData);

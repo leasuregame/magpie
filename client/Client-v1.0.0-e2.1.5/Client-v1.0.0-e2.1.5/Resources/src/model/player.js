@@ -54,6 +54,11 @@ var Player = Entity.extend({
 
         MAX_LINE_UP_CARD = 3;
 
+        cc.log("teachingStep = " + data.teachingStep);
+        if (data.teachingStep != null) {
+            this.set("noviceTeachStep", data.teachingStep);
+        }
+
         this.off();
         this.on("lvChange", this._lvChangeEvent);
 
@@ -128,10 +133,6 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
-
-        if (data.teachingStep) {
-            this.set("noviceTeachStep", data.teachingStep);
-        }
 
     },
 
@@ -280,7 +281,7 @@ var Player = Entity.extend({
         });
     },
 
-    setStep: function (step, cb) {
+    setStep: function (step) {
         cc.log("Player setStep: " + step);
         var that = this;
         lz.server.request("area.playerHandler.setStep", {
@@ -289,7 +290,7 @@ var Player = Entity.extend({
             cc.log("pomelo websocket callback data:");
             cc.log(data);
             if (data.code == 200) {
-                cb();
+                cc.log("setStep success");
             } else {
                 cc.log("setStep fail");
 

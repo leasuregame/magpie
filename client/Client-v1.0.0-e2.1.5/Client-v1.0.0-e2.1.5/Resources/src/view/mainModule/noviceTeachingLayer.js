@@ -81,11 +81,9 @@ var NoviceTeachingLayer = LazyLayer.extend({
         this._changeEffect(this._effectOrder[this._step]);
     },
 
-    _save: function (cb) {
-        cc.log("NoviceTeachingLayer _save");
-        gameData.player.setStep(this._step, function () {
-            cb();
-        });
+    _save: function () {
+        cc.log("NoviceTeachingLayer _save: " + this._step);
+        gameData.player.setStep(this._step);
     },
 
     next: function () {
@@ -102,9 +100,9 @@ var NoviceTeachingLayer = LazyLayer.extend({
         this._rect = cc.rect(0, 0, 0, 0);
         this._step++;
         var that = this;
-        this._save(function () {
-            that._clearEffect();
-        });
+
+        this._save();
+        that._clearEffect();
 
     },
 
@@ -146,8 +144,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     },
 
     _getStep: function () {
-        cc.log("NoviceTeachingLayer getStep");
-        cc.log(this._step);
+        cc.log("NoviceTeachingLayer getStep: " + this._step);
         return this._step || 0;
     },
 
@@ -228,11 +225,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
     _overTeaching: function () {
         cc.log("NoviceTeachingLayer _overTeaching");
         this._step = OVER_NOVICE_STEP;
-        var that = this;
-        this._save(function () {
-            that.removeFromParent();
-        });
-
+        this._save();
+        this.removeFromParent();
     },
 
     /**

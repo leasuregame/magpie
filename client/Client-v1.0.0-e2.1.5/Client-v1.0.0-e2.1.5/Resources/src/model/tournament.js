@@ -167,7 +167,8 @@ var Tournament = Entity.extend({
                     cbData.level9Box = box;
                 }
 
-                if(msg.firstTime) {
+                cc.log("firstTime: " + msg.firstTime);
+                if (msg.firstTime) {
                     cbData.isFirstTournament = msg.firstTime;
                 }
 

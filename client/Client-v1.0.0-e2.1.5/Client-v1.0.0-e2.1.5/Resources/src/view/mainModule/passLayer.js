@@ -30,6 +30,7 @@ var PassLayer = cc.Layer.extend({
     _element: {},
     _blackHoleSprite: [],
     _isFirstPassWin: false,
+    _scrollViewLayer: null,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -151,6 +152,8 @@ var PassLayer = cc.Layer.extend({
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
 
+        this._scrollViewLayer = scrollViewLayer;
+
         this._scrollView = cc.ScrollView.create(this._passLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setContentSize(this._passLayerFit.scrollViewContentSize);
         this._scrollView.setPosition(this._passLayerFit.scrollViewPoint);
@@ -219,8 +222,10 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
+        var that = this;
         var next = function () {
-            if (this._isFirstPassWin) {
+            cc.log("isFirstPassWin: " + that._isFirstPassWin);
+            if (that._isFirstPassWin) {
                 MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
             }
         };
@@ -343,13 +348,16 @@ var PassLayer = cc.Layer.extend({
 
         var ladderSprite = this._element[index].ladderSprite;
 
-        ladderSprite.stopAllActions();
+        var url = "uiEffect" + (50 + index % 2);
+        var effect = cc.BuilderReader.load(main_scene_image[url], this);
+        effect.setPosition(ladderSprite.getPosition());
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+            ladderSprite.setVisible(true);
+        });
 
-        var showAction = cc.Show.create();
-        var fadeInAction = cc.FadeIn.create(1.5);
-        var blinkAction = cc.Blink.create(1, 2);
-        var action = cc.Sequence.create(showAction, fadeInAction, blinkAction);
-        ladderSprite.runAction(action);
+        this._scrollViewLayer.addChild(effect);
+
     },
 
     _reset: function () {
@@ -581,16 +589,10 @@ var PassLayer = cc.Layer.extend({
                 if (data) {
                     that._upgradeReward = data.upgradeReward || null;
                     that._level9Box = data.level9Box || null;
+                    that._isFirstPassWin = data.isFirstPassWin || false;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
 
-                    if (that._isWin) {
-                        var uid = gameData.player.get("uid");
-                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "_firstPassWin"));
-                        if (isFirstPassWin != 2) {
-                            sys.localStorage.setItem(uid + "_firstPassWin", 1);
-                        }
-                    }
 
                 } else {
                     that.update();

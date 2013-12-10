@@ -584,7 +584,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>9.3277778625488281</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1146,7 +1146,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>10</real>
+							<real>0.67222237586975098</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1775,7 +1775,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

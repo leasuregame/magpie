@@ -8,12 +8,23 @@
 
 var PowerRewardLayer = cc.Layer.extend({
     _powerRewardLayerFit: null,
+    _btnGetReward: null,
 
     onEnter: function () {
         cc.log("PowerRewardLayer onEnter");
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("领取体力界面");
+    },
+
+    onExit: function () {
+        cc.log("PowerRewardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("领取体力界面");
     },
 
     init: function () {
@@ -82,24 +93,34 @@ var PowerRewardLayer = cc.Layer.extend({
 
         }
 
-        var btnGetReward = cc.MenuItemImage.createWithIcon(
+        this._btnGetReward = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
             main_scene_image.button10s,
+            main_scene_image.button9d,
             main_scene_image.icon123,
             this._onClickGetReward,
             this
         );
 
-        btnGetReward.setPosition(this._powerRewardLayerFit.btnGetRewardPoint);
+        this._btnGetReward.setPosition(this._powerRewardLayerFit.btnGetRewardPoint);
+        this._btnGetReward.setEnabled(gameMark.getPowerRewardMark());
 
-        var menu = cc.Menu.create(btnGetReward);
+        var menu = cc.Menu.create(this._btnGetReward);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
     },
 
     _onClickGetReward: function () {
         cc.log("PowerRewardLayer _onClickGetReward");
-        gameData.activity.getPowerReward();
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+
+        gameData.activity.getPowerReward(function () {
+            gameMark.updatePowerRewardMark(false);
+            that._btnGetReward.setEnabled(false);
+        });
     }
 
 

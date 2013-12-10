@@ -38,6 +38,16 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("寻宝界面");
+    },
+
+    onExit: function () {
+        cc.log("TreasureHuntLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("寻宝界面");
     },
 
     init: function () {
@@ -122,11 +132,11 @@ var TreasureHuntLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._treasureHuntItem.setScale(0.9);
+        this._treasureHuntItem.setScale(1.3);
         this._treasureHuntItem.runAction(cc.RepeatForever.create(
             cc.Sequence.create(
                 cc.ScaleTo.create(1.5, 1.05, 1.05),
-                cc.ScaleTo.create(1.5, 0.9, 0.9)
+                cc.ScaleTo.create(1.5, 1.3, 1.3)
             )
         ));
 
@@ -291,6 +301,8 @@ var TreasureHuntLayer = cc.Layer.extend({
     _onClickTreasureHunt: function () {
         cc.log("TreasureHuntLayer _onClickTreasureHunt");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var treasureHunt = gameData.treasureHunt;
 
         if (!treasureHunt.canTreasureHunt()) {
@@ -320,6 +332,8 @@ var TreasureHuntLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("TreasureHuntLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

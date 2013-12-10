@@ -1,4 +1,4 @@
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 cardManager = require '../../../manager/cardManager'
 lottery = require '../../../manager/lottery'
 async = require 'async'
@@ -386,12 +386,8 @@ Handler::starUpgrade = (msg, session, next) ->
   ], (err, result) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
-
-    cardManager.getCardInfo card.id, (err, res) ->
-      if err
-        return next(null, err)
       
-      next(null, {code: 200, msg: {upgrade: is_upgrade, card: res.toJson()}})
+    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -406,6 +402,10 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
+      fun_limit = table.getTableItem('function_limit', 1)
+      if player.lv < fun_limit?.pass_skillafresh 
+        return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
+
       consumeVal = passSkillConfig.CONSUME[type] * psIds.length
 
       if player[_pros[type]] < consumeVal

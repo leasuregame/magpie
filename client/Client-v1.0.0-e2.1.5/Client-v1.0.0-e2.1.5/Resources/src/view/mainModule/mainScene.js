@@ -12,12 +12,28 @@
  * */
 
 
-cc.BuilderReader.setResourcePath("./res/");
+cc.BuilderReader.setResourcePath("./");
 
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
     _mainMenuLayer: null,
+
+    onEnter: function () {
+        cc.log("MainScene onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("主场景");
+    },
+
+    onExit: function () {
+        cc.log("MainScene onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("主场景");
+    },
 
     init: function () {
         cc.log("MainScene init");
@@ -35,12 +51,17 @@ var MainScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
-        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+        noviceTeachingLayer = NoviceTeachingLayer.create();
         if (noviceTeachingLayer.isNoviceTeaching()) {
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
         }
+
+        if (MandatoryTeachingLayer.isNeedTeaching()) {
+            MandatoryTeachingLayer.pop();
+        }
+
     },
 
     changeMessage: function (msg) {
@@ -51,6 +72,20 @@ var MainScene = cc.Scene.extend({
 
     getLayer: function () {
         return this._nowLayer;
+    },
+
+    updateMark: function () {
+        if (this._nowLayer && this._nowLayer.updateMark) {
+            this._nowLayer.updateMark();
+        }
+    },
+
+    updateGuide: function () {
+        if (this._nowLayer && this._nowLayer.updateGuide) {
+            this._nowLayer.updateGuide();
+        }
+
+        this._mainMenuLayer.updateGuide();
     },
 
     switchLayer: function (runLayer) {
@@ -100,6 +135,6 @@ var MainScene = cc.Scene.extend({
     MainScene.destroy = function () {
         _mainScene = null;
 
-        cc.AudioEngine.getInstance().stopMusic();
+        gameData.sound.stopMusic();
     };
 })();

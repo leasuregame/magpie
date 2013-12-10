@@ -1,5 +1,5 @@
 dao = require('pomelo').app.get('dao')
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
@@ -438,12 +438,8 @@ Handler::accept = (msg, session, next) ->
     player.addFriend newFriend
     playerManager.addFriendIfOnline sender.id, myInfo
 
-    achieve.friends(player, player.friends.length)
-    dao.friend.getFriends sender.id, (err, senderFriends) ->
-      if err
-        return next(null, {code: err.code or 500, msg: err.msg or err})
-
-      achieve.friends(sender, senderFriends.length)
+    achieve.friends(player)
+    achieve.friends(sender)
 
     sendMessage @app, message.sender, {
       route: 'onFriendAction'

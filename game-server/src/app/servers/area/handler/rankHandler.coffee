@@ -1,5 +1,5 @@
 app = require('pomelo').app
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 rankManager = require '../../../manager/rankManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
@@ -44,7 +44,7 @@ Handler::rankingList = (msg, session, next) ->
       if player.lv < fdata.rank
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
-      if not player.rank?
+      if not player.rank? or _.isEmpty(player.rank)
         ### first time enter ranking list ###
         app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
           if err
@@ -57,7 +57,8 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      if player.rank.recentChallenger.length > 0
+      console.log 'rank info: ', player.rank
+      if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])
@@ -101,6 +102,7 @@ Handler::challenge = (msg, session, next) ->
 
   player = null
   target = null
+  isWin = false
   async.waterfall [
     (cb) ->
       playerManager.getPlayers [playerId, targetId], cb
@@ -119,21 +121,27 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo) ->
+      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
         if err and not res
           return cb(err)
         else
-          return cb(null, rewards, bl, upgradeInfo)
+          return cb(null, rewards, bl, upgradeInfo, level9Box)
 
-  ], (err, rewards, bl, upgradeInfo) ->
+  ], (err, rewards, bl, upgradeInfo, level9Box) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
+      firstTime = false
+      if player.rank?.startCount is 1
+        firstTime = true
+
       bl.rewards = rewards
       next(null, {code: 200, msg: {
-        battleLog: bl,
+        battleLog: bl
         upgradeInfo: upgradeInfo if upgradeInfo
+        level9Box: level9Box if level9Box
         exp: player.exp
+        firstTime: firstTime if firstTime
       }})
 
       saveBattleLog(bl, playerName)
@@ -255,6 +263,7 @@ saveBattleLog = (bl, playerName) ->
     result = '你赢了'
 
   app.get('dao').battleLog.create data: {
+    type: 'pvp'
     own: playerId
     enemy: targetId
     battleLog: bl

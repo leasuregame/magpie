@@ -12,7 +12,7 @@
  * */
 
 
-var MAX_LINE_UP_CARD = 3;
+var MAX_LINE_UP_CARD = 2;
 var MAX_LINE_UP_SIZE = 6;
 var SPIRIT_ID = -1;
 
@@ -110,6 +110,8 @@ var LineUp = Entity.extend({
                         that.update(msg.lineUp);
 
                         cb(true);
+
+                        lz.dc.event("event_lineup");
                     } else {
                         cc.log("changeLineUp fail");
 

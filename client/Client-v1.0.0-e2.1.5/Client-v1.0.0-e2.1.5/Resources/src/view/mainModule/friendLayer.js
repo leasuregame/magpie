@@ -31,6 +31,16 @@ var FriendLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("好友界面");
+    },
+
+    onExit: function () {
+        cc.log("FriendLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("好友界面");
     },
 
     init: function () {
@@ -265,8 +275,8 @@ var FriendLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu);
 
         var scrollViewHeight = len * 127;
-        if (scrollViewHeight < 620) {
-            scrollViewHeight = 620;
+        if (scrollViewHeight < this._friendLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._friendLayerFit.scrollViewHeight;
         }
 
         this._friendItem = {};
@@ -302,6 +312,18 @@ var FriendLayer = cc.Layer.extend({
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
             abilityLabel.setPosition(cc.p(157, y + 36));
             scrollViewLayer.addChild(abilityLabel);
+
+            var giveCountLabel = cc.LabelTTF.create("送出祝福: " + friendList[i].giveCount, "STHeitiTC-Medium", 22);
+            giveCountLabel.setColor(cc.c3b(56, 3, 5));
+            giveCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            giveCountLabel.setPosition(cc.p(250, y + 80));
+            scrollViewLayer.addChild(giveCountLabel);
+
+            var receiveCountLabel = cc.LabelTTF.create("收到祝福: " + friendList[i].receiveCount, "STHeitiTC-Medium", 22);
+            receiveCountLabel.setColor(cc.c3b(56, 3, 5));
+            receiveCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            receiveCountLabel.setPosition(cc.p(250, y + 41));
+            scrollViewLayer.addChild(receiveCountLabel);
 
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
@@ -358,6 +380,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickAddFriend: function () {
         cc.log("FriendLayer _onClickAddFriend");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._nameEditBox.setVisible(true);
         this._addFriendLayer.setVisible(true);
     },
@@ -365,6 +389,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("FriendLayer _onClickOk");
         cc.log("name: " + this._nameEditBox.getText());
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.friend.addFriend(this._nameEditBox.getText());
 
@@ -374,6 +400,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickCancel: function () {
         cc.log("FriendLayer _onClickCancel");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._nameEditBox.setVisible(false);
         this._addFriendLayer.setVisible(false);
     },
@@ -382,11 +410,14 @@ var FriendLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendLayer _onClickGiveBless: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var that = this;
             gameData.friend.giveBless(function (data) {
                 cc.log(data);
 
                 that.update();
+
             }, id);
         }
 
@@ -396,11 +427,14 @@ var FriendLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendLayer _onClickReceiveBless: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var that = this;
             gameData.friend.receiveBless(function (data) {
                 cc.log(data);
 
                 that.update();
+                gameMark.updateFriendMark(false);
             }, id);
         }
     },
@@ -408,6 +442,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickFriend: function (id) {
         return function () {
             cc.log("FriendLayer _onClickFriend: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var point = this._friendItem[id].convertToWorldSpace(cc.p(230, 98));
 
@@ -419,6 +455,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickDetail: function () {
         cc.log("FriendLayer _onClickDetail: " + this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var friend = gameData.friend.getFriend(this._selectFriend);
 
         if (friend) {
@@ -426,6 +464,8 @@ var FriendLayer = cc.Layer.extend({
                 cc.log(data);
 
                 LineUpDetail.pop(data);
+                gameMark.updateFriendMark(false);
+
             }, this._selectFriend);
         } else {
             TipLayer.tip("找不到该玩家");
@@ -434,6 +474,8 @@ var FriendLayer = cc.Layer.extend({
 
     _onClickSendMessage: function () {
         cc.log("FriendLayer _onClickSendMessage: " + this._selectFriend);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var friend = gameData.friend.getFriend(this._selectFriend);
 
@@ -448,6 +490,8 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickFight: " + this._selectFriend);
         cc.log(this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.player.fight(function (battleLogId) {
             BattlePlayer.getInstance().play(battleLogId);
@@ -457,6 +501,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickDeleteFriend: function () {
         cc.log("FriendLayer _onClickDeleteFriend: " + this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.friend.deleteFriend(function (data) {
             that.update();
@@ -465,6 +511,8 @@ var FriendLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("FriendLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

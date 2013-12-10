@@ -217,7 +217,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up40.png</string>
+									<string>res/effect/uiEffect/up40.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -289,7 +289,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/icon149.png</string>
+									<string>res/main/icon149.png</string>
 								</array>
 							</dict>
 						</array>
@@ -629,7 +629,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up41.png</string>
+						<string>res/effect/uiEffect/up41.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -679,8 +679,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

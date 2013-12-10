@@ -30,6 +30,36 @@ var MainLayer = cc.Layer.extend({
         ConfigLayer
     ],
 
+    _activityMark: null,
+    _cardLibraryMark: null,
+    _achievementMark: null,
+    _friendMark: null,
+    _messageMark: null,
+
+    _treasureHuntGuide: null,
+    _rankGuide: null,
+
+    _spiritLayerItem: null,
+
+    onEnter: function () {
+        cc.log("MainLayer onEnter");
+
+        this._super();
+        this.updateMark();
+        this.updateGuide();
+        this.onTeaching();
+
+        lz.dc.beginLogPageView("主界面");
+    },
+
+    onExit: function () {
+        cc.log("MainLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("主界面");
+    },
+
     init: function () {
         cc.log("MainLayer init");
 
@@ -74,14 +104,6 @@ var MainLayer = cc.Layer.extend({
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
-
-        var spiritLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            this._onClickLayer(0),
-            this
-        );
-        spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -131,6 +153,10 @@ var MainLayer = cc.Layer.extend({
         );
         activityLayerItem.setPosition(this._mainLayerFit.activityLayerItemPoint);
 
+        this._activityMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._activityMark.setPosition(cc.p(75, 80));
+        activityLayerItem.addChild(this._activityMark);
+
         var cardLibraryLayerItem = cc.MenuItemImage.create(
             main_scene_image.button53,
             main_scene_image.button53s,
@@ -138,6 +164,10 @@ var MainLayer = cc.Layer.extend({
             this
         );
         cardLibraryLayerItem.setPosition(this._mainLayerFit.cardLibraryLayerItemPoint);
+
+        this._cardLibraryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._cardLibraryMark.setPosition(cc.p(75, 80));
+        cardLibraryLayerItem.addChild(this._cardLibraryMark);
 
         var rankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button54,
@@ -155,6 +185,10 @@ var MainLayer = cc.Layer.extend({
         );
         achievementLayerItem.setPosition(this._mainLayerFit.achievementLayerItemPoint);
 
+        this._achievementMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._achievementMark.setPosition(cc.p(75, 80));
+        achievementLayerItem.addChild(this._achievementMark);
+
         var friendLayerItem = cc.MenuItemImage.create(
             main_scene_image.button56,
             main_scene_image.button56s,
@@ -162,6 +196,10 @@ var MainLayer = cc.Layer.extend({
             this
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
+
+        this._friendMark = cc.Sprite.create(main_scene_image.icon289);
+        this._friendMark.setPosition(cc.p(75, 80));
+        friendLayerItem.addChild(this._friendMark);
 
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
@@ -171,17 +209,20 @@ var MainLayer = cc.Layer.extend({
         );
         messageItem.setPosition(this._mainLayerFit.messageItemPoint);
 
+        this._messageMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._messageMark.setPosition(cc.p(75, 80));
+        messageItem.addChild(this._messageMark);
+
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
             main_scene_image.button60s,
             this._onClickLayer(11),
             this
         );
-        configLayerItem.setScale(0.8);
+
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
-            spiritLayerItem,
             lotteryLayerItem,
             treasureHuntLayerItem,
             strengthenLayerItem,
@@ -197,20 +238,113 @@ var MainLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var isVisible = false;
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
+
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
+
+        this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
+        this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+
+        this._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+
+        this.addChild(this._spiritLayerItem);
+
         return true;
+    },
+
+    _onClickSpiritItem: function () {
+        cc.log("MainLayer _onClickSpiritItem");
+
+        MainScene.getInstance().switchLayer(this._layer[0]);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
+        }
+
+    },
+
+    updateMark: function () {
+        cc.log("MainLayer updateMark");
+
+        this._activityMark.setVisible(gameMark.getActivityMark());
+        this._cardLibraryMark.setVisible(gameMark.getCardLibraryMark());
+        this._achievementMark.setVisible(gameMark.getAchievementMark());
+        this._friendMark.setVisible(gameMark.getFriendMark());
+        this._messageMark.setVisible(gameMark.getMessageMark());
+    },
+
+    updateGuide: function () {
+        cc.log("MainLayer updateGuide");
+
+        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
+            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._treasureHuntGuide);
+        }
+
+        if (gameGuide.get("rankGuide") && !this._rankGuide) {
+            this._rankGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
+            this._rankGuide.setRotation(180);
+            this.addChild(this._rankGuide);
+        }
+
+    },
+
+    onTeaching: function() {
+        cc.log("MainLayer onTeaching");
+
+        var uid = gameData.player.get("uid");
+        var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
+        if(isFirstPassiveSkillAfresh == 1) {
+            MandatoryTeachingLayer.pop();
+            sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 0);
+        }
+
     },
 
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
+            if (index == 2) {
+                if (this._treasureHuntGuide) {
+                    this._treasureHuntGuide.removeFromParent();
+                    this._treasureHuntGuide = null;
+                    gameGuide.set("treasureHuntGuide", false);
+                }
+            }
+
+            if (index == 7) {
+                if (this._rankGuide) {
+                    this._rankGuide.removeFromParent();
+                    this._rankGuide = null;
+                    gameGuide.set("rankGuide", false);
+                }
+            }
+
             MainScene.getInstance().switchLayer(this._layer[index]);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.next();
+            }
+
+            if(mandatoryTeachingLayer) {
+                if(mandatoryTeachingLayer.isTeaching()) {
+                    mandatoryTeachingLayer.clearAndSave();
+                    mandatoryTeachingLayer.next();
+                }
             }
         }
     }

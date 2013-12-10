@@ -44,12 +44,12 @@ var Lottery = Entity.extend({
             var energy = player.get("energy");
 
             if (level == 1 && energy < 200) {
-                TipLayer.tip("活力值不足");
+                TipLayer.tip("活力点不足");
                 return false;
             }
 
             if (level == 2 && energy < 1000) {
-                TipLayer.tip("活力值不足");
+                TipLayer.tip("活力点不足");
                 return false;
             }
         } else if (type == LOTTERY_BY_GOLD) {
@@ -66,6 +66,11 @@ var Lottery = Entity.extend({
             }
         } else {
             TipLayer.tip("抽卡类型错误");
+            return false;
+        }
+
+        if (gameData.cardList.isFull()) {
+            TipLayer.tip("卡牌已满，请先消耗");
             return false;
         }
 
@@ -112,6 +117,8 @@ var Lottery = Entity.extend({
                     card: card,
                     fragment: msg.fragment
                 });
+
+                lz.dc.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
 

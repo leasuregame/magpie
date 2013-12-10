@@ -47,6 +47,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("被动洗炼界面");
+    },
+
+    onExit: function () {
+        cc.log("PassiveSkillAfreshLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("被动洗炼界面");
     },
 
     init: function () {
@@ -86,7 +96,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 22);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
-        this._tipLabel.setPosition(cc.p(227, 45));
+        this._tipLabel.setPosition(this._passiveSkillAfreshLabelFit.tipLabelPoint);
         this._resLabel.addChild(this._tipLabel);
 
         var resMenu = cc.Menu.create();
@@ -162,7 +172,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
-        var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
+        var moneyLabel = cc.LabelTTF.create("2000 / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
@@ -171,7 +181,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         goldIcon.setPosition(cc.p(325, 92));
         this._resLabel.addChild(goldIcon);
 
-        var goldLabel = cc.LabelTTF.create("10 / 次", "STHeitiTC-Medium", 20);
+        var goldLabel = cc.LabelTTF.create("20 / 次", "STHeitiTC-Medium", 20);
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);
@@ -186,6 +196,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var stopTypeBgSprite = cc.Sprite.create(main_scene_image.bg16);
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
+
+        var blueLabel = cc.Sprite.create(main_scene_image.icon50);
+        blueLabel.setScaleX(0.91);
+        blueLabel.setScaleY(0.4);
+        blueLabel.setAnchorPoint(cc.p(0, 0.5));
+        blueLabel.setPosition(cc.p(0, 178));
+        this._stopTypeLabel.addChild(blueLabel);
+
+        var yellowLabel = cc.Sprite.create(main_scene_image.icon50);
+        yellowLabel.setScaleX(0.91);
+        yellowLabel.setScaleY(0.4);
+        yellowLabel.setAnchorPoint(cc.p(0, 0.5));
+        yellowLabel.setPosition(cc.p(0, 96));
+        this._stopTypeLabel.addChild(yellowLabel);
 
         var stopUntilBlueIcon = ColorLabelTTF.create(
             {
@@ -391,13 +415,17 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopItem.setPosition(this._passiveSkillAfreshLabelFit.stopItemPoint);
 
         var shyLayerMenu = cc.Menu.create(stopItem);
+        shyLayerMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         shyLayerMenu.setPosition(cc.p(0, 0));
         this._shyLayer.addChild(shyLayerMenu);
 
         this._shyLayer.setVisible(false);
 
         this._reset();
-        this._onClickUseMoney();
+
+        this._useType = USE_MONEY;
+        this._useMoneyItem.setEnabled(false);
+        this._useGoldItem.setEnabled(true);
 
         return true;
     },
@@ -422,7 +450,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             var passiveSkillCount = 0;
             var lockNum = 0;
             var passiveSkill = this._leadCard.get("passiveSkill");
-
+            var maxValue = 0.0;
             this._afreshIdList = [];
             for (var key in passiveSkill) {
                 var passiveSkillLabel = this._passiveSkillList[passiveSkillCount++];
@@ -432,8 +460,14 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 }
 
                 var value = passiveSkill[key].value.toFixed(1);
-                passiveSkillLabel.valueLabel.setString("+ " + value + "%");
-
+                if (value > maxValue) {
+                    maxValue = value;
+                }
+                if (value == 10.0) {
+                    passiveSkillLabel.valueLabel.setString("     + " + value + "% (满)");
+                } else {
+                    passiveSkillLabel.valueLabel.setString("+ " + value + "%");
+                }
                 if (value >= 8.0) {
                     passiveSkillLabel.valueLabel.setColor(cc.c3b(255, 248, 69));
                 } else if (value >= 5.0) {
@@ -463,8 +497,18 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                                 cc.MoveBy.create(0.1, cc.p(-5, 0))
                             )
                         );
+
                     }
                 }
+            }
+
+            if (maxValue == 10.0 && isAfresh) {
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect26, this);
+                effect.setPosition(this._passiveSkillAfreshLabelFit.effectPoint);
+                this.addChild(effect, 2);
+                effect.animationManager.setCompletedAnimationCallback(this, function () {
+                    effect.removeFromParent();
+                });
             }
 
             for (var i = 0; i < passiveSkillCount; ++i) {
@@ -560,18 +604,23 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         cc.log(maxValue);
         cc.log(isCanAfresh);
+
         if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
-                if (maxValue >= 5.0) {
+                if (maxValue >= 8.0) {
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
+                    this._onClickStop();
+                } else if (maxValue >= 5.0) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
                     this._onClickStop();
                 }
             } else if (this._stopType == STOP_UNTIL_YELLOW) {
                 if (maxValue >= 8.0) {
-                    TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
                     this._onClickStop();
                 }
             }
+
         } else {
             this._onClickStop();
         }
@@ -599,6 +648,15 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickSelectLeadCard: function () {
         cc.log("PassiveSkillAfreshLabel _onClickSelectLeadCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
 
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
@@ -628,6 +686,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         return function () {
             cc.log("PassiveSkillAfreshLabel _onClickLock: " + index);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var passiveSkill = this._passiveSkillList[index];
             passiveSkill.isLock = !passiveSkill.isLock;
             passiveSkill.hookLabel.setVisible(passiveSkill.isLock);
@@ -640,6 +700,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickUseMoney: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseMoney");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._useType = USE_MONEY;
         this._useMoneyItem.setEnabled(false);
         this._useGoldItem.setEnabled(true);
@@ -649,6 +711,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickUseGold: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseGold");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._useType = USE_GOLD;
         this._useMoneyItem.setEnabled(true);
@@ -660,6 +724,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickStopUntilBlue: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStopUntilBlue");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._stopType = STOP_UNTIL_BLUE;
         this._stopUntilBlueItem.setEnabled(false);
         this._stopUntilYellowItem.setEnabled(true);
@@ -669,6 +735,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStopUntilYellow: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStopUntilYellow");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._stopType = STOP_UNTIL_YELLOW;
         this._stopUntilBlueItem.setEnabled(true);
@@ -680,11 +748,22 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if(mandatoryTeachingLayer) {
+            if(mandatoryTeachingLayer.isTeaching()) {
+                mandatoryTeachingLayer.clearAndSave();
+                mandatoryTeachingLayer.next();
+            }
+        }
+
         this._afresh();
     },
 
     _onClickRepeatAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickRepeatAfresh");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(false);
         this._afreshItem.setVisible(false);
@@ -697,6 +776,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStart: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStart");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(false);
@@ -716,6 +797,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickCancel: function () {
         cc.log("PassiveSkillAfreshLabel _onClickCancel");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(true);
         this._repeatAfreshItem.setVisible(true);
@@ -727,6 +810,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStop: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStop");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(true);
@@ -740,7 +825,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.unschedule(this._setTip);
 
         this._tipLabel.setFontSize(18);
-        this._tipLabel.setString("魔石洗炼获得金色属性概率提升10倍");
+        this._tipLabel.setString("魔石洗炼获得金色属性概率提升100倍");
     }
 });
 

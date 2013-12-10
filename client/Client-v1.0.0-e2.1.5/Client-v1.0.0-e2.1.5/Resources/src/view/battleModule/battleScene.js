@@ -12,9 +12,27 @@
  * */
 
 
+var BATTLE_PLAY_SPEED = 1.3;
+
 var BattleScene = cc.Scene.extend({
     _battleProcess: [],
     _index: 0,
+
+    onEnter: function () {
+        cc.log("BattleScene onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("战斗场景");
+    },
+
+    onExit: function () {
+        cc.log("BattleScene onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("战斗场景");
+    },
 
     init: function (battleLog) {
         cc.log("BattleScene init");
@@ -48,6 +66,8 @@ var BattleScene = cc.Scene.extend({
 
         gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
 
+        cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEED);
+
         this._index = 0;
         this.next();
     },
@@ -66,7 +86,7 @@ var BattleScene = cc.Scene.extend({
         cc.log("BattleScene end");
 
         gameData.sound.playMusic();
-
+        cc.Director.getInstance().getScheduler().setTimeScale(1);
         BattlePlayer.getInstance().end();
     }
 });

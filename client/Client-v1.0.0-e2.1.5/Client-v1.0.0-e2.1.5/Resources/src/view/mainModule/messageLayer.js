@@ -18,6 +18,25 @@ var MessageLayer = cc.Layer.extend({
     _battleMessageLayerItem: null,
     _friendMessageLayerItem: null,
     _systemMessageLayerItem: null,
+    _friendMessageMark: null,
+    _systemMessageMark: null,
+
+    onEnter: function () {
+        cc.log("MessageLayer onEnter");
+
+        this._super();
+        this.updateMark();
+
+        lz.dc.beginLogPageView("消息界面");
+    },
+
+    onExit: function () {
+        cc.log("MessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("消息界面");
+    },
 
     init: function () {
         cc.log("MessageLayer init");
@@ -49,6 +68,11 @@ var MessageLayer = cc.Layer.extend({
         );
         this._friendMessageLayerItem.setPosition(this._messageLayerFit.friendMessageLayerItemPoint);
 
+        this._friendMessageMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._friendMessageMark.setPosition(cc.p(125, 50));
+        this._friendMessageMark.setVisible(false);
+        this._friendMessageLayerItem.addChild(this._friendMessageMark, 3);
+
         this._systemMessageLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
             main_scene_image.button23s,
@@ -57,6 +81,11 @@ var MessageLayer = cc.Layer.extend({
             this
         );
         this._systemMessageLayerItem.setPosition(this._messageLayerFit.systemMessageLayerItemPoint);
+
+        this._systemMessageMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._systemMessageMark.setPosition(cc.p(125, 50));
+        this._systemMessageMark.setVisible(false);
+        this._systemMessageLayerItem.addChild(this._systemMessageMark, 3);
 
         var menu = cc.Menu.create(
             this._battleMessageLayerItem,
@@ -83,13 +112,18 @@ var MessageLayer = cc.Layer.extend({
         bgSprite.setPosition(this._messageLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        this._onClickBattleMessageLayer();
+        this._battleMessageLayerItem.setEnabled(false);
+        this._friendMessageLayerItem.setEnabled(true);
+        this._systemMessageLayerItem.setEnabled(true);
+        this.switchLayer(BattleMessageLayer);
 
         return true;
     },
 
     _onClickBattleMessageLayer: function () {
         cc.log("MessageLayer _onClickBattleMessageLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._battleMessageLayerItem.setEnabled(false);
         this._friendMessageLayerItem.setEnabled(true);
@@ -101,6 +135,8 @@ var MessageLayer = cc.Layer.extend({
     _onClickFriendMessageLayer: function () {
         cc.log("MessageLayer _onClickFriendMessageLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._battleMessageLayerItem.setEnabled(true);
         this._friendMessageLayerItem.setEnabled(false);
         this._systemMessageLayerItem.setEnabled(true);
@@ -110,6 +146,8 @@ var MessageLayer = cc.Layer.extend({
 
     _onClickSystemMessageLayer: function () {
         cc.log("MessageLayer _onClickSystemMessageLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._battleMessageLayerItem.setEnabled(true);
         this._friendMessageLayerItem.setEnabled(true);
@@ -127,6 +165,13 @@ var MessageLayer = cc.Layer.extend({
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
         }
+    },
+
+    updateMark: function () {
+        cc.log("MessageLayer updateMark");
+        this._friendMessageMark.setVisible(gameMark.getFriendMessageMark());
+        this._systemMessageMark.setVisible(gameMark.getSystemMessageMark());
+
     }
 });
 

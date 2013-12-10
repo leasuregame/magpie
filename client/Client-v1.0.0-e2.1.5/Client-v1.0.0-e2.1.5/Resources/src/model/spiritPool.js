@@ -91,6 +91,8 @@ var SpiritPool = Entity.extend({
                 that.update(msg.spiritPool);
 
                 cb(msg);
+
+                lz.dc.event("event_collect", useGold);
             } else {
                 cc.log("upgrade fail");
 

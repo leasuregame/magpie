@@ -31,12 +31,12 @@ var CardHeadNode = cc.Node.extend({
             url = "icon12";
         } else if (this._card) {
             star = this._card.get("star");
-            url = this._card.get("url") + "_head" + (Math.floor((star - 1) / 2) + 1);
+            url = this._card.get("url") + "_head" + (star > 2 ? star - 2 : 1);
         }
 
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(cc.p(6, 10));
+        this._cardSprite.setPosition(cc.p(0, 6));
         this.addChild(this._cardSprite);
 
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);

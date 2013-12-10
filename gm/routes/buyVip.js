@@ -7,6 +7,8 @@
  */
 
 var GameUser = require('../models/gameUser');
+var table = require('../models/manager/table');
+
 
 var buyVip = function(app) {
 
@@ -18,9 +20,13 @@ var buyVip = function(app) {
             var env = app.settings.env;
             GameUser.getUserByAccount(env,player.userId,player.areaId,function(err,user){
                 if(!err) {
+                    var recharge = table.getTable("recharge");
+                    console.log(recharge._data);
+
                     res.render('buyVip', {
                         user: req.session.user,
                         gameUser:user,
+                        recharge: recharge._data,
                         player : req.session.player,
                         area : req.session.area,
                         success: req.flash('success').toString(),

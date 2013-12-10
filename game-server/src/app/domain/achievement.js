@@ -1,6 +1,7 @@
 var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
+var _ = require('underscore');
 var messageService = null;
 
 var app = require('pomelo').app;
@@ -20,28 +21,28 @@ Achievement.passTo = function(player, layer) {
 	checkIsReached(player, 'passTo', layer);
 };
 
-Achievement.winCount = function(player, ranking) {
-	checkIsReached(player, 'winCount', ranking);
+Achievement.winCount = function(player, count) {
+	checkIsReached(player, 'winCount', count);
 };
 
-Achievement.winningStreak = function(player, ranking) {
-	checkIsReached(player, 'winningStreak', ranking);
+Achievement.winningStreak = function(player, count) {
+	checkIsReached(player, 'winningStreak', count, true);
 };
 
 Achievement.rankingToOne = function(player) {
-	checkIsReached(player, 'rankingToOne', 1)
+	checkIsReached(player, 'rankingToOne', 1);
 };
 
-Achievement.friends = function(player, count) {
-	checkIsReached(player, 'friends', count);
+Achievement.friends = function(player) {
+	checkIsReached_alpha(player, 'friends', 1);
 };
 
 Achievement.elixirTo = function(player, eli) {
-	checkIsReached(player, 'elixirTo', eli);
+	checkIsReached_alpha(player, 'elixirTo', eli);
 };
 
 Achievement.energyTo = function(player, energy) {
-	checkIsReached(player, 'energyTo', energy);
+	checkIsReached_alpha(player, 'energyTo', energy);
 };
 
 Achievement.powerConsume = function(player, power) {
@@ -96,7 +97,26 @@ Achievement.v587 = function(player) {
 	checkIsReached_alpha(player, 'v587', 1);
 };
 
-var checkIsReached_alpha = function(player, method, incVal) {
+Achievement.taskPoinTo = function(player) {
+	checkIsReached_alpha(player, 'taskPoinTo', 1);
+};
+
+Achievement.taskChapterPassTo = function(player, chapter) {
+	checkIsReached(player, 'taskChapterPassTo', chapter);
+};
+
+Achievement.passFirstWin = function(player) {
+	checkIsReached_alpha(player, 'passFirstWin', 1);
+};
+
+Achievement.taskPartPassTo = function(player, chapter) {
+	// 5个大章为为一个part 
+	if (chapter % 5 == 0) {
+		checkIsReached(player, 'taskPartPassTo', parseInt(chapter/5));
+	}	
+};
+
+var checkIsReached_alpha = function(player, method, incVal, useMax) {
 	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
 		method: method
@@ -104,10 +124,10 @@ var checkIsReached_alpha = function(player, method, incVal) {
 	if (!_.isEmpty(items)) {
 		need = items[0].got + incVal;
 	}
-	checkIsReached(player, method, need);
+	checkIsReached(player, method, need, useMax);
 };
 
-var checkIsReached = function(player, method, need) {
+var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
 	achs.forEach(function(ach) {
 		if ( (typeof player.achievement[ach.id] == 'undefined') || 
@@ -115,10 +135,10 @@ var checkIsReached = function(player, method, need) {
 			reachAchievement(player, ach.id);
 		}
 	});
-	updateAchievement(player, method, need);
+	updateAchievement(player, method, need, useMax);
 };
 
-var updateAchievement = function(player, method, got) {
+var updateAchievement = function(player, method, got, useMax) {
 	var ach = utility.deepCopy(player.achievement);
 	var items = _.where(_.values(ach), {
 		method: method
@@ -127,7 +147,11 @@ var updateAchievement = function(player, method, got) {
 	if (!_.isEmpty(items)) {
 		items.forEach(function(i) {
 			if (!i.isAchieve) {
-				i.got = got;
+				if (useMax) {
+					i.got = _.max([i.got, got]);
+				} else {
+					i.got = got;
+				}
 			}
 		});
 	}

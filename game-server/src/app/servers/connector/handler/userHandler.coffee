@@ -52,7 +52,13 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
 
     (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), cb
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), (err, u) ->
+        if err and err.code is 404
+          cb({code: 501, msg: '用户不存在'})
+        else if err
+          cb(err)
+        else 
+          cb(null, u)
 
     (res, cb) =>
       user = res
@@ -84,7 +90,11 @@ Handler::login = (msg, session, next) ->
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
-    next(null, {code: 200, msg: {user: user, player: player, serverTime: Date.now()}})
+    ### 只有每个账号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
+    if user?.roles.length > 1 or player?.teachingStep >= 17
+      delete player.teachingStep
+
+    next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->
   if not session or not session.uid

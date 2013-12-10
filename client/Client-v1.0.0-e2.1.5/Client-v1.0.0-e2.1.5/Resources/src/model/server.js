@@ -9,11 +9,8 @@
 
 
 // gate server config
-var GATE_SERVER_HOST = "124.238.236.33";
-var GATE_SERVER_PORT = "3009";
-
-// wait layer handler priority
-var WAIT_LAYER_HANDLER_PRIORITY = -500;
+var GATE_SERVER_HOST = "124.238.236.32";
+var GATE_SERVER_PORT = "4009";
 
 // connect timeout
 var CONNECT_TIMEOUT = 5;
@@ -37,24 +34,28 @@ var AREA_STATUS = {
     10: {
         statusName: "新区",
         color: cc.c3b(108, 218, 0),
+        url: main_scene_image.icon292,
         canLogin: true
     },
 
     20: {
         statusName: "正常",
         color: cc.c3b(0, 195, 244),
+        url: main_scene_image.icon293,
         canLogin: true
     },
 
     30: {
         statusName: "爆满",
         color: cc.c3b(226, 0, 0),
+        url: main_scene_image.icon294,
         canLogin: true
     },
 
     40: {
         statusName: "维护",
         color: cc.c3b(120, 120, 120),
+        url: main_scene_image.icon295,
         canLogin: false
     }
 };
@@ -76,7 +77,7 @@ var Server = Entity.extend({
         cc.log("Server update");
 
         this._host = data.host;
-        this._port = 3010;
+        this._port = data.port;
         this._areaList = data.servers;
 
         var len = this._areaList.length;
@@ -86,7 +87,8 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  " + status.statusName;
+            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  ";// + status.statusName;
+            this._areaList[i].url = status.url;
         }
     },
 
@@ -169,18 +171,26 @@ var Server = Entity.extend({
 
                 success = true;
 
-                var msg = data.msg;
+                if (data.code == 200) {
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                that.off();
-                that.disconnect();
+                    that.off();
+                    that.disconnect();
 
-                if (cb) {
-                    cb(that._serverList);
+                    if (cb) {
+                        cb(that._serverList);
+                    }
+
+                    that._closeAllWaitLayer();
+
+                    lz.dc.event("event_query_entry");
+                } else {
+                    lz.scheduleOnce(function () {
+                        that.connectGateServer(cb);
+                    }, RECONNECT_TIME);
                 }
-
-                that._closeAllWaitLayer();
             });
 
         lz.scheduleOnce(function () {
@@ -251,7 +261,11 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                LogoutLayer.pop("请重新连接");
+                Dialog.pop("网络断开，点击确定重新连接...", function () {
+                    MainScene.destroy();
+
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                });
             });
 
             that._closeAllWaitLayer();
@@ -321,15 +335,15 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
-//        if (this._areaList) {
-//            var len = this._areaList.length;
-//
-//            if (len > 0) {
-//                return this._areaList[len - 1].id;
-//            }
-//        }
+        if (this._areaList) {
+            var len = this._areaList.length;
 
-        return 1;
+            if (len > 0) {
+                return this._areaList[len - 1].id;
+            }
+        }
+
+        return 0;
     },
 
     _showWaitLayer: function () {
@@ -341,33 +355,7 @@ var Server = Entity.extend({
             return;
         }
 
-        this._waitLayer = LazyLayer.create();
-        this._waitLayer.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
-        cc.log(cc.Director.getInstance().getRunningScene());
-        cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
-
-        var waitSprite = cc.Sprite.create(main_scene_image.icon42);
-        waitSprite.setPosition(cc.p(320, 568));
-        this._waitLayer.addChild(waitSprite);
-
-        waitSprite.setOpacity(0);
-
-        waitSprite.runAction(
-            cc.Sequence.create(
-                cc.DelayTime.create(0.3),
-                cc.Spawn.create(
-                    cc.FadeIn.create(0.3),
-                    cc.RotateBy.create(0.3, -120)
-                ),
-                cc.CallFunc.create(function () {
-                    waitSprite.runAction(
-                        cc.RepeatForever.create(
-                            cc.RotateBy.create(0.3, -120)
-                        )
-                    )
-                })
-            )
-        );
+        this._waitLayer = WaitLayer.pop();
     },
 
     _closeWaitLayer: function () {

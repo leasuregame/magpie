@@ -27,6 +27,7 @@ var BubbleNode = cc.Node.extend({
 
         for (var i = 0; i < len; ++i) {
             var strLabel = cc.LabelTTF.create(strList[i], "STHeitiTC-Medium", 18);
+            strLabel.setColor(cc.c3b(92, 47, 22));
             strLabel.setAnchorPoint(cc.p(0, 0.5));
             strLabel.setPosition(cc.p(30, 88 - i * 25));
             this.addChild(strLabel);

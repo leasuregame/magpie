@@ -42,6 +42,7 @@ var SpiritNode = cc.Node.extend({
 
         if (this._bubbleNode) {
             this._bubbleNode.removeFromParent();
+            this._bubbleNode = null;
         }
 
         if (Math.random() < 0.2) {
@@ -58,9 +59,10 @@ var SpiritNode = cc.Node.extend({
                 this._bubbleNode.setPosition(cc.p(45, 30));
                 this.addChild(this._bubbleNode);
 
-                this.scheduleOnce(function () {
-                    this._bubbleNode.removeFromParent();
-                    this._bubbleNode = null;
+                var that = this;
+                this._bubbleNode.scheduleOnce(function () {
+                    that._bubbleNode.removeFromParent();
+                    that._bubbleNode = null;
                 }, 2.5);
             }
         }
@@ -91,21 +93,26 @@ SpiritNode.create = function (spiritLv) {
 };
 
 
-//SpiritNode.getSpiritItem = function (cb, target) {
-//    cb = cb || function () {
-//        var spiritDetails = SpiritDetails.create();
-//        MainScene.getInstance().addChild(spiritDetails, 1);
-//    };
-//    target = target || this;
-//
-//    var spiritItem = cc.MenuItemImage.create(
-//        main_scene_image.spirit1,
-//        main_scene_image.spirit1,
-//        cb,
-//        target
-//    );
-//
-//    spiritItem.setScale(0.9);
-//
-//    return spiritItem;
-//};
+SpiritNode.getSpiritItem = function (cb, target) {
+    cb = cb || function () {
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
+        }
+
+        var spiritDetails = SpiritDetails.create();
+        MainScene.getInstance().addChild(spiritDetails, 1);
+    };
+    target = target || this;
+
+    var spiritItem = cc.MenuItemImage.create(
+        main_scene_image.spirit1,
+        main_scene_image.spirit1,
+        cb,
+        target
+    );
+
+    spiritItem.setScale(0.9);
+
+    return spiritItem;
+};

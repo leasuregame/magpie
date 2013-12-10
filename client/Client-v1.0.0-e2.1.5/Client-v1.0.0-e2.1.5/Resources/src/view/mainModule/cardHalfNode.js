@@ -27,8 +27,8 @@ var CardHalfNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = Math.floor((star - 1) / 2) + 1;
-        var skillType = this._card.get("skillType");
+        var index = star > 2 ? star - 2 : 1;
+        var skillType = this._card.get("skillType") || 0;
         if (skillType > 3) {
             skillType = 3;
         }
@@ -39,29 +39,29 @@ var CardHalfNode = cc.Node.extend({
         this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
         this.addChild(this._cardSprite);
 
-        if (skillType) {
-            this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
-            this._iconSprite.setPosition(cc.p(40, -53));
-            this.addChild(this._iconSprite);
-        }
+        // if (skillType) {
+        this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
+        this._iconSprite.setPosition(cc.p(40, -53));
+        this.addChild(this._iconSprite);
+        //  }
 
         return true;
     },
 
-    up: function() {
+    up: function () {
         this._frameSprite.setScale(1.05);
         this._cardSprite.setScale(1.1);
 
-        if(this._iconSprite) {
+        if (this._iconSprite) {
             this._iconSprite.setScale(1.05);
         }
     },
 
-    put: function() {
+    put: function () {
         this._frameSprite.setScale(1);
         this._cardSprite.setScale(1);
 
-        if(this._iconSprite) {
+        if (this._iconSprite) {
             this._iconSprite.setScale(1);
         }
     },

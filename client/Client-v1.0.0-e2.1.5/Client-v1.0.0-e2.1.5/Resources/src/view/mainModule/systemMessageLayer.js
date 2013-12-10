@@ -23,6 +23,16 @@ var SystemMessageLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("系统消息界面");
+    },
+
+    onExit: function () {
+        cc.log("SystemMessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("系统消息界面");
     },
 
     init: function () {
@@ -52,8 +62,8 @@ var SystemMessageLayer = cc.Layer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 127 - 20;
-        if (scrollViewHeight < 742) {
-            scrollViewHeight = 742;
+        if (scrollViewHeight < this._systemMessageLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._systemMessageLayerFit.scrollViewHeight;
         }
 
         this._scrollViewElement = {};
@@ -120,11 +130,16 @@ var SystemMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("SystemMessageLayer onClickPlayback: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var element = this._scrollViewElement[id];
 
             gameData.message.receive(function () {
                 element.receiveItem.setVisible(false);
                 element.hasBeenReceiveIcon.setVisible(true);
+
+                gameMark.updateSystemMessageMark(false);
+
             }, id);
         }
     }

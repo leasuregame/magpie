@@ -17,6 +17,16 @@ var GoldRewardLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("冲级奖励界面");
+    },
+
+    onExit: function () {
+        cc.log("GoldRewardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("冲级奖励界面");
     },
 
     init: function () {
@@ -47,7 +57,6 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var scrollViewLayer = MarkLayer.create(this._goldRewardLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
-        menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
@@ -60,10 +69,12 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var len = keys.length;
 
-        var scrollViewHeight = len * this._goldRewardLayerFit.scrollViewHeight;
+        var scrollViewHeight = len * 135;
+        if (scrollViewHeight < this._goldRewardLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._goldRewardLayerFit.scrollViewHeight;
+        }
 
         this._scrollView = cc.ScrollView.create(this._goldRewardLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setTouchPriority(-300);
         this._scrollView.setPosition(this._goldRewardLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
@@ -138,21 +149,22 @@ var GoldRewardLayer = cc.Layer.extend({
     },
 
     _onClickGetReward: function (id) {
-
         return function () {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             cc.log(id);
             var element = this._scrollViewElement[id];
             gameData.activity.getGoldReward(id, function (isOK) {
                 if (isOK) {
                     element.btnGetReward.setVisible(false);
                     element.hasBeenGainIcon.setVisible(true);
+
+                    gameMark.updateGoldRewardMark(false);
                 }
             });
         };
 
     }
-
-
 });
 
 GoldRewardLayer.create = function () {

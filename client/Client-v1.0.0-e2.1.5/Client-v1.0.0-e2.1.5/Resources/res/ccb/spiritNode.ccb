@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>9</integer>
+	<integer>8</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -2126,7 +2126,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit_1_1.png</string>
+							<string>res/main/spirit_1_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4300,7 +4300,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit_1_1.png</string>
+							<string>res/main/spirit_1_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4609,7 +4609,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p23.png</string>
+							<string>res/effect/effect/p23.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4646,8 +4646,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4755,7 +4753,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>0.43333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5163,7 +5161,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.60000002384185791</real>
+			<real>0.80000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5214,7 +5212,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.80000001192092896</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5248,7 +5246,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>1.8333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

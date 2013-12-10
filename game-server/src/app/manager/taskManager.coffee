@@ -8,6 +8,7 @@ dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
 fightManager = require './fightManager'
+achieve = require '../domain/achievement'
 logger = require('pomelo-logger').getLogger(__filename)
 
 class Manager
@@ -77,6 +78,12 @@ class Manager
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
       player.setTaskMark(id)
 
+    if chapterId? and player.hasTaskMark(chapterId)
+      console.log 'type of chapterId: ', typeof chapterId
+      console.log 'has wipe out chapter: ', 'chapterId = ' + chapterId, 'task=', JSON.stringify(player.task)
+      console.log JSON.stringify(player.taskMark)
+      return cb({code: 501, msg: '已扫荡'})
+
     if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)
     else
@@ -112,13 +119,23 @@ class Manager
   @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
+    firstWin = false
     task = utility.deepCopy(player.task)
     if not task.hasWin
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
       player.task = task
 
-    saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
+      if task.id == 1
+        firstWin = true # 第一小关第一次赢
+        data.first_win = true
+
+    ### 每次战斗结束都有10%的概率获得5魔石 ###
+    if utility.hitRate(taskRate.gold_obtain.rate)
+      player.increase('gold', taskRate.gold_obtain.value)
+      battleLog.rewards.gold = taskRate.gold_obtain.value  
+
+    saveExpCardsInfo player.id, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)
 
@@ -128,7 +145,7 @@ class Manager
       player.addCards results
       cb()
 
-  @countExploreResult: (player, data, taskId, cb) ->
+  @countExploreResult: (player, data, taskId, chapterId, cb) ->
     taskData = table.getTableItem('task', taskId)
 
     _.extend data, {
@@ -142,20 +159,29 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
+      if taskId < 4
+        ### 十步之遥 成就奖励 ###
+        achieve.taskPoinTo(player)
+
       task = utility.deepCopy(player.task)
       task.progress += 1
       if task.progress >= taskData.points
+        if taskId%10 is 0
+          ### 一大关结束，触发摸一摸功能 ###
+          data.momo = player.createMonoGift()
+          ### 通关成就 ###
+          achieve.taskChapterPassTo(player, chapterId)
+          achieve.taskPartPassTo(player, chapterId)
+
         task.progress = 0
         task.id += 1
-        task.hasWin = false
-        ### 一大关结束，触发摸一摸功能 ###
-        if task.id % 10 is 1 && task.id != 1
-          data.momo = player.createMonoGift();
+        task.hasWin = false       
 
-        rew = table.getTableItem('task_throught_reward', task.id-1)
+        rew = table.getTableItem('task_through_reward', task.id-1)
         if not rew
           logger.error('can not find throught reward by id', task.id-1)
-        data.throught_reaward = {money: rew?.money_obtain}
+        data.through_reward = {money: rew?.money_obtain}
+        player.increase('money', rew?.money_obtain or 0)
       player.set('task', task)
 
     ### consume power first, then add exp
@@ -163,13 +189,15 @@ class Manager
     player.consumePower(taskData.power_consume)
 
     ###  判断是否升级 ###
-    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, rewards) ->
+    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, level9Box, rewards) ->
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv
           rewards: rewards
           friendsCount: player.friendsCount
         }
+      if level9Box?
+        data.level9Box = level9Box
 
       cb(null, data)
 
@@ -202,15 +230,16 @@ bornPassiveSkill = () ->
     value: parseFloat (value/100).toFixed(1)
   }
 
-saveExpCardsInfo = (playerId, count, cb) ->
+saveExpCardsInfo = (playerId, count, firstWin, cb) ->
   cd = taskRate.card_drop
   results = []
   async.times count
     , (n, callback) ->
+      lv = if firstWin then 15 else parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
       dao.card.createExpCard(
         data: {
           playerId: playerId,
-          lv: parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+          lv: lv
         }, callback
       )
     , cb

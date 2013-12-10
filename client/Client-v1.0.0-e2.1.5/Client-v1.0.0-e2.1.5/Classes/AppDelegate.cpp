@@ -13,6 +13,8 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
+#include "js_bindings_IAPHelp.hpp"
+#include "js_cocos2dx_autogen_extension.hpp"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
 #include <dirent.h>
@@ -67,19 +69,21 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
-
+    sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
+    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
+    
     sc->start();
     
-    CCScene *scene = CCScene::create();
-    UpdateLayer *updateLayer = new UpdateLayer();
-    scene->addChild(updateLayer);
-    updateLayer->release();
+//    CCScene *scene = CCScene::create();
+//    UpdateLayer *updateLayer = new UpdateLayer();
+//    scene->addChild(updateLayer);
+//    updateLayer->release();
+//    
+//    pDirector->runWithScene(scene);
     
-    pDirector->runWithScene(scene);
-    
-//    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
-//    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-//    ScriptingCore::getInstance()->runScript("hello.js");
+    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
+    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+    ScriptingCore::getInstance()->runScript("main_binding.js");
     
     return true;
 }

@@ -71,10 +71,17 @@ var TournamentLabel = cc.Node.extend({
         nameLabel.setPosition(cc.p(30, 99));
         this.addChild(nameLabel);
 
-        var rankingLabel = StrokeLabel.create(this._player.ranking, "STHeitiTC-Medium", 38);
-        rankingLabel.setColor(cc.c3b(255, 242, 206));
-        rankingLabel.setPosition(cc.p(95, 42));
-        this.addChild(rankingLabel);
+        var ranking = this._player.ranking;
+        if (ranking <= 3) {
+            var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
+            rankingIcon.setPosition(cc.p(95, 44));
+            this.addChild(rankingIcon);
+        } else {
+            var rankingLabel = StrokeLabel.create(ranking, "STHeitiTC-Medium", 38);
+            rankingLabel.setColor(cc.c3b(255, 242, 206));
+            rankingLabel.setPosition(cc.p(95, 42));
+            this.addChild(rankingLabel);
+        }
 
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
@@ -105,7 +112,6 @@ var TournamentLabel = cc.Node.extend({
                 );
                 var tipIcon = cc.Sprite.create(main_scene_image.icon288);
                 tipIcon.setPosition(cc.p(530, 27));
-                //tipText.setColor(cc.c3b(255, 0, 0));
                 this.addChild(tipIcon);
             }
 
@@ -124,8 +130,6 @@ var TournamentLabel = cc.Node.extend({
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setPosition(cc.p(530, 48));
             this.addChild(abilityLabel);
-
-            //playerItem.setEnabled(false);
         }
 
         var cardList = this._player.cardList;
@@ -141,7 +145,6 @@ var TournamentLabel = cc.Node.extend({
         var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
         scrollView.setContentSize(cc.size(378, 75.6));
         scrollView.setPosition(cc.p(206, 30));
-//        scrollView.setBounceable(false);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -163,6 +166,8 @@ var TournamentLabel = cc.Node.extend({
     _onClickPlayer: function () {
         cc.log("TournamentLabel _onClickPlayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var point = this.convertToWorldSpace(cc.p(185, 95));
 
         this._target._onClickPlayer(this._player.playerId, point);
@@ -170,6 +175,8 @@ var TournamentLabel = cc.Node.extend({
 
     _onClickFunction: function () {
         cc.log("TournamentLabel _onClickFunction " + this._player.type);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (this._player.playerId != gameData.player.get("id")) {
             var that = this;
@@ -181,19 +188,46 @@ var TournamentLabel = cc.Node.extend({
                     LineUpDetail.pop(data);
                 }, this._player.playerId);
             } else {
-                gameData.tournament.defiance(function (data) {
-                    cc.log(data);
 
-                    if (data) {
-                        if (data.upgradeReward) {
-                            that._target._setPlayerUpgradeReward(data.upgradeReward);
-                        }
+                var tournament = gameData.tournament;
+                var count = tournament.get("count");
 
-                        BattlePlayer.getInstance().play(data.battleLogId);
-                    } else {
-                        that._target.update();
+                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "firstCountUsed") || 1;
+                isFirstCountUsed = parseInt(isFirstCountUsed);
+                if (count == 0 && isFirstCountUsed == 1) {
+
+                    sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 0);
+                    this._target.showTip();
+
+                } else {
+                    if (count != 0) {
+                        sys.localStorage.setItem(gameData.player.get("uid") + "firstCountUsed", 1);
                     }
-                }, this._player.playerId, this._player.ranking);
+
+                    gameData.tournament.defiance(function (data) {
+                        cc.log(data);
+
+                        if (data) {
+                            if (data.upgradeReward) {
+                                that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
+                            }
+
+                            BattlePlayer.getInstance().play(data.battleLogId);
+
+                            var uid = gameData.player.get("uid");
+                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament")) || 1;
+                            if (isFirstTournament == 1) {
+                                MandatoryTeachingLayer.pop();
+                                sys.localStorage.setItem(uid + "firstTournament", 0);
+                            }
+
+                        } else {
+                            that._target.update();
+                        }
+                    }, this._player.playerId, this._player.ranking);
+
+
+                }
             }
         }
     }

@@ -15,6 +15,24 @@
 var PlayerUpgradeLayer = LazyLayer.extend({
     _playerUpgradeLayerFit: null,
 
+    _cb: null,
+
+    onEnter: function () {
+        cc.log("PlayerUpgradeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("玩家升级界面");
+    },
+
+    onExit: function () {
+        cc.log("PlayerUpgradeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("玩家升级界面");
+    },
+
     init: function (data) {
         cc.log("PlayerUpgradeLayer init");
 
@@ -23,40 +41,39 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         this._playerUpgradeLayerFit = gameFit.mainScene.playerUpgradeLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        this._cb = data.cb || null;
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._playerUpgradeLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
-        var layer = cc.Layer.create();
-        layer.setPosition(cc.p(0, 0));
-        this.addChild(layer);
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect32, this);
+        ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
+        this.addChild(ccbNode);
 
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
-        bgSprite.setContentSize(cc.size(450, 400));
-        bgSprite.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
-        layer.addChild(bgSprite);
+        var label = ccbNode.controller.label;
 
-        var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
-        obtainSprite.setPosition(this._playerUpgradeLayerFit.obtainSpritePoint);
-        layer.addChild(obtainSprite);
-
-        var str = lz.getRewardString(data);
+        var str = lz.getRewardString(data.reward);
         var len = str.length;
 
         var offsetY = this._playerUpgradeLayerFit.offsetY;
-        for (var i = 0; i < len; ++i) {
-            var rewardBgLabel = cc.Sprite.create(main_scene_image.icon115);
-            rewardBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
-            rewardBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardBgLabel);
 
-            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
-            rewardLabel.setColor(cc.c3b(255, 239, 131));
+        var lv = gameData.player.get("lv");
+        var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
+        lvLabel.setColor(cc.c3b(115, 255, 100));
+        lvLabel.setAnchorPoint(cc.p(0.5, 1));
+        lvLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
+        label.addChild(lvLabel);
+
+        for (var i = 0; i < len; ++i) {
+            offsetY -= 45;
+
+            var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 22);
+            rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
-            offsetY -= 45;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -72,15 +89,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
-
-        layer.setScale(0.1);
-        layer.runAction(
-            cc.Sequence.create(
-                cc.ScaleTo.create(0.3, 1.05, 1.05),
-                cc.ScaleTo.create(0.05, 1, 1)
-            )
-        );
+        label.addChild(menu);
 
         return true;
     },
@@ -88,7 +97,15 @@ var PlayerUpgradeLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("PlayerUpgradeLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        gameGuide.updateGuide();
+
         this.removeFromParent();
+
+        if (this._cb) {
+            this._cb();
+        }
     }
 });
 

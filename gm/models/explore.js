@@ -19,7 +19,7 @@ var Explore = function () {
 var maxId = 500;
 var result = [];
 
-Explore.simulate = function (env, areaId, playerId,task, cb) {
+Explore.simulate = function (env, areaId, playerId, task, cb) {
 
     //console.log(JSON.parse(task));
     var options = {
@@ -32,7 +32,7 @@ Explore.simulate = function (env, areaId, playerId,task, cb) {
                 time: Date.now(),
                 value: 100000
             },
-            task:JSON.parse(task)
+            task: JSON.parse(task)
         }
     };
 
@@ -45,16 +45,16 @@ Explore.simulate = function (env, areaId, playerId,task, cb) {
 
 };
 
-Explore.getUserByAccount = function (env, uid, aid,cb) {
-    dbClient.shutdown();
+Explore.getUserByAccount = function (env, uid, aid, cb) {
+   // dbClient.shutdown();
     var db = getDB('userdb', env);
     dbClient.init(db);
-    userDao.getUserByAccount({where: {id: uid}}, function(err,user){
+    userDao.getUserByAccount({where: {id: uid}}, function (err, user) {
 
         dbClient.shutdown();
         var db = getDB(aid, env);
         dbClient.init(db);
-        return cb(err,user);
+        return cb(err, user);
     });
 };
 

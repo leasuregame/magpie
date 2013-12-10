@@ -27,12 +27,18 @@ module.exports =
     genSkillInc(card) if card.star >= 3
 
   upgradePlayer: (player, exp, cb) ->
+    ### 等级到达最高级后不加经验 ###
+    if player.lv >= MAX_PLAYER_LV
+      player.exp = 0
+      return
+
     player.increase('exp', exp)
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
     isUpgrade = false
+    level9Box = null
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
-    while(player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
+    while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.elixirPerLv = {}
@@ -45,17 +51,30 @@ module.exports =
       rewards.elixir += upgradeInfo.elixir
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
+      if player.lv is 9
+        level9Box = 
+          money: 50000
+          skillPoint: 20000
+          energy: 5000
+          powerValue: 200
+        player.increase('money', level9Box.money)
+        player.increase('skillPoint', level9Box.skillPoint)
+        player.increase('energy', level9Box.energy)
+        player.addPower(level9Box.powerValue)        
 
     if isUpgrade
       player.increase('money', rewards.money)
       player.increase('energy', rewards.energy)
       player.increase('skillPoint', rewards.skillPoint)
       player.increase('elixir', rewards.elixir)
+
+    if player.lv is MAX_PLAYER_LV
+      player.exp = 0
       
-    cb(isUpgrade, rewards)
+    cb(isUpgrade, level9Box, rewards)
 
   randomCardId: (star) ->
-    tableIds = table.getTable('cards').filter((id) -> id <= 250)
+    tableIds = table.getTable('cards').filter((id) -> id <= 500)
         .map((item) -> parseInt(item.id))
         .sort((x, y) -> x - y)
     len = tableIds.length

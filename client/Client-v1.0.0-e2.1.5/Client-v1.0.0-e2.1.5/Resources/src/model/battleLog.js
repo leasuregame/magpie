@@ -17,12 +17,15 @@ var BattleLog = Entity.extend({
     _type: PVE_BATTLE_LOG,
     _card: {},
     _ownId: 0,
+    _ownName: null,
     _enemyId: 0,
+    _enemyName: null,
     _winner: "",
     _reward: null,
     _battleStep: null,
     _battleStepLen: 0,
     _index: -1,
+    _isPlayback: false,
 
     init: function (id, isPlayback) {
         cc.log("BattleLog init");
@@ -33,11 +36,14 @@ var BattleLog = Entity.extend({
         this.set("type", battleLog.type);
         this.set("card", battleLog.cards);
         this.set("ownId", battleLog.ownId);
+        this.set("ownName", battleLog.ownName);
         this.set("enemyId", battleLog.enemyId);
+        this.set("enemyName", battleLog.enemyName);
         this.set("winner", battleLog.winner);
         this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);
         this.set("battleStepLen", battleLog.steps.length);
+        this.set("isPlayback", isPlayback);
 
         for (var key in this._card) {
             this._card[key].index = key;

@@ -104,7 +104,7 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = cardTable.skill_id || 0;
+        this._skillId = cardTable.skill_id || this._skillId;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 

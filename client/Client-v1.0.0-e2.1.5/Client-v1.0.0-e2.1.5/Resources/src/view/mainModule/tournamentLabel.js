@@ -212,15 +212,8 @@ var TournamentLabel = cc.Node.extend({
                                 that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
                             }
 
-                            if (data.upgradeReward) {
-                                that._target._setFirstTournament(data.firstTournament);
-                            }
-
-
-                            var uid = gameData.player.get("uid");
-                            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "_firstTournament"));
-                            if (isFirstTournament != 2) {
-                                sys.localStorage.setItem(uid + "_firstTournament", 1);
+                            if (data.isFirstTournament) {
+                                that._target._setFirstTournament(data.isFirstTournament);
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);

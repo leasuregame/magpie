@@ -219,8 +219,10 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
+        var that = this;
         var next = function () {
-            if (this._isFirstPassWin) {
+            cc.log("isFirstPassWin: " + that._isFirstPassWin);
+            if (that._isFirstPassWin) {
                 MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
             }
         };
@@ -581,16 +583,10 @@ var PassLayer = cc.Layer.extend({
                 if (data) {
                     that._upgradeReward = data.upgradeReward || null;
                     that._level9Box = data.level9Box || null;
+                    that._isFirstPassWin = data.isFirstPassWin || false;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
 
-                    if (that._isWin) {
-                        var uid = gameData.player.get("uid");
-                        var isFirstPassWin = parseInt(sys.localStorage.getItem(uid + "_firstPassWin"));
-                        if (isFirstPassWin != 2) {
-                            sys.localStorage.setItem(uid + "_firstPassWin", 1);
-                        }
-                    }
 
                 } else {
                     that.update();

@@ -214,7 +214,7 @@ Handler::passBarrier = (msg, session, next) ->
 
       cb(null, bl, upgradeInfo, level9Box)
 
-  ], (err, bl, upgradeInfo, level9Box) ->
+  ], (err, bl, upgradeInfo, level9Box) =>
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -367,7 +367,7 @@ checkFragment = (battleLog, player, chapterId) ->
 saveBattleLog = (app, pid, eid, type, bl) ->
   app.get('dao').battleLog.create {
     data: {
-      playerId: pid
+      own: pid
       enemy: eid
       type: type
       battleLog: bl

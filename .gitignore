@@ -6,7 +6,6 @@ node_modules
 client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5.xcodeproj/project.xcworkspace
 client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5.xcodeproj/xcuserdata
 Cocos2d-html5-*
-cocos2d-x-*
 client/nohup.out
 client/Resources.zip
 fileLookup.plist

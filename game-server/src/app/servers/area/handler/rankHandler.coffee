@@ -263,6 +263,7 @@ saveBattleLog = (bl, playerName) ->
     result = '你赢了'
 
   app.get('dao').battleLog.create data: {
+    type: 'pvp'
     own: playerId
     enemy: targetId
     battleLog: bl

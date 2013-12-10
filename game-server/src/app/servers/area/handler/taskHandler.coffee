@@ -75,7 +75,7 @@ Handler::explore = (msg, session, next) ->
             taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
         taskManager.countExploreResult player, data, taskId, chapterId, cb
-  ], (err, data) ->
+  ], (err, data) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
@@ -84,6 +84,8 @@ Handler::explore = (msg, session, next) ->
     data.power = player.power
     data.exp = player.exp
     next(null, {code: 200, msg: data})
+
+    saveBattleLog(@app, playerId, taskId, 'pve_task', data.battle_log) if data.battle_log?
 
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -228,6 +230,8 @@ Handler::passBarrier = (msg, session, next) ->
       firstWin: firstWin if firstWin
     }})
 
+    saveBattleLog(@app, playerId, layer, 'pve_pass', bl) if bl?
+
 ###
   重置关卡
 ###
@@ -359,4 +363,16 @@ checkFragment = (battleLog, player, chapterId) ->
     player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
+
+saveBattleLog = (app, pid, eid, type, bl) ->
+  app.get('dao').battleLog.create {
+    data: {
+      playerId: pid
+      enemy: eid
+      type: type
+      battleLog: bl
+    }
+  }, (err, res) ->
+    if err
+      logger.error '[faild to save battleLog]', err
     

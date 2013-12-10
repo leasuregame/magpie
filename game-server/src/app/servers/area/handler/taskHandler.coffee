@@ -12,6 +12,7 @@ utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
 achieve = require '../../../domain/achievement'
+logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 

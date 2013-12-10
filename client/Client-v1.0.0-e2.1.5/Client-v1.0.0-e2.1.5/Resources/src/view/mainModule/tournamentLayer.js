@@ -79,7 +79,12 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(expBg);
         expBg.setScale(0.8);
 
-        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
+        var url = main_scene_image.exp;
+        if (gameData.player.isFullLv()) {
+            url = main_scene_image.exp_full;
+        }
+
+        this._expProgress = Progress.create(null, url, 0, 0, true);
         this._expProgress.setPosition(this._tournamentLayerFit.expProgressPoint);
         this.addChild(this._expProgress);
         this._expProgress.setScale(0.8);
@@ -142,8 +147,8 @@ var TournamentLayer = cc.Layer.extend({
         label.setContentSize(this._tournamentLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button10,
+            main_scene_image.button10,
             main_scene_image.icon120,
             this._onClickDetail,
             this
@@ -208,7 +213,12 @@ var TournamentLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        if(player.isFullLv()) {
+            this._expProgress.setAllValue(0, 0);
+        } else {
+            this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        }
+
         this._lvLabel.setString(player.get("lv"));
 
         if (this._scrollView != null) {

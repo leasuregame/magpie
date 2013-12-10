@@ -52,6 +52,7 @@ var main_scene_image = {
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
     exp: main_scene_path + "exp.png",
+    exp_full: main_scene_path + "exp_full.png",
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
@@ -585,6 +586,8 @@ var main_scene_image = {
     icon302: main_scene_path + "icon302.png",
     icon303: main_scene_path + "icon303.png",
     icon304: main_scene_path + "icon304.png",
+    icon305: main_scene_path + "icon305.png",
+    icon306: main_scene_path + "icon306.png",
 
 
     card30000_head1: main_scene_path + "card30000_head1.png",

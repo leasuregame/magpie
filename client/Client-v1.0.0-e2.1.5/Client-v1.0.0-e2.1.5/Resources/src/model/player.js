@@ -170,6 +170,16 @@ var Player = Entity.extend({
         gameGuide.updateGuide();
     },
 
+    isFullLv: function() {
+        cc.log("Player isFullLv");
+
+        if(this._lv == this._maxLv) {
+            return true;
+        }
+
+        return false;
+    },
+
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
 

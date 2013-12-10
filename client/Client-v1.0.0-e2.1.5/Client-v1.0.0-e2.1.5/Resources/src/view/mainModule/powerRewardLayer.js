@@ -8,6 +8,7 @@
 
 var PowerRewardLayer = cc.Layer.extend({
     _powerRewardLayerFit: null,
+
     _btnGetReward: null,
 
     onEnter: function () {
@@ -54,10 +55,15 @@ var PowerRewardLayer = cc.Layer.extend({
         tipIcon.setPosition(this._powerRewardLayerFit.tipIconPoint);
         this.addChild(tipIcon);
 
-        var powerBgIcon = cc.Sprite.create(main_scene_image.icon270);
-        powerBgIcon.setAnchorPoint(cc.p(0, 0));
-        powerBgIcon.setPosition(this._powerRewardLayerFit.powerBgIconPoint);
-        this.addChild(powerBgIcon);
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect53, this);
+        effect.setPosition(this._powerRewardLayerFit.powerBgIconPoint);
+        if (gameMark.getPowerRewardMark()) {
+            effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+        } else {
+            effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+        }
+
+        this.addChild(effect);
 
         var time = ['中午', '12', '13', '晚上', '18', '19'];
 

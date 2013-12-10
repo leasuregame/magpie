@@ -1895,7 +1895,7 @@ var fit4Iphone5 = {
             "lineIconPoint": cc.p(0, 963),
             "headTextPoint": cc.p(125, 988),
             "tipIconPoint": cc.p(80, 715),
-            "powerBgIconPoint": cc.p(85, 290),
+            "powerBgIconPoint": cc.p(320, 450),
             "textOffsetX": 270,
             "itemText1BasePoint": cc.p(160, 810),
             "itemText2BasePoint": cc.p(120, 770),

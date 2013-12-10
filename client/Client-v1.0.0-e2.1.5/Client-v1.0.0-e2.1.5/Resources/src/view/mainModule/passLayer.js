@@ -30,6 +30,7 @@ var PassLayer = cc.Layer.extend({
     _element: {},
     _blackHoleSprite: [],
     _isFirstPassWin: false,
+    _scrollViewLayer: null,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -150,6 +151,8 @@ var PassLayer = cc.Layer.extend({
         this._spirit.setAnchorPoint(cc.p(0, 0));
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
+
+        this._scrollViewLayer = scrollViewLayer;
 
         this._scrollView = cc.ScrollView.create(this._passLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setContentSize(this._passLayerFit.scrollViewContentSize);
@@ -345,13 +348,16 @@ var PassLayer = cc.Layer.extend({
 
         var ladderSprite = this._element[index].ladderSprite;
 
-        ladderSprite.stopAllActions();
+        var url = "uiEffect" + (50 + index % 2);
+        var effect = cc.BuilderReader.load(main_scene_image[url], this);
+        effect.setPosition(ladderSprite.getPosition());
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+            ladderSprite.setVisible(true);
+        });
 
-        var showAction = cc.Show.create();
-        var fadeInAction = cc.FadeIn.create(1.5);
-        var blinkAction = cc.Blink.create(1, 2);
-        var action = cc.Sequence.create(showAction, fadeInAction, blinkAction);
-        ladderSprite.runAction(action);
+        this._scrollViewLayer.addChild(effect);
+
     },
 
     _reset: function () {

@@ -27,6 +27,11 @@ module.exports =
     genSkillInc(card) if card.star >= 3
 
   upgradePlayer: (player, exp, cb) ->
+    ### 等级到达最高级后不加经验 ###
+    if player.lv >= MAX_PLAYER_LV
+      player.exp = 0
+      return
+
     player.increase('exp', exp)
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
@@ -62,6 +67,9 @@ module.exports =
       player.increase('energy', rewards.energy)
       player.increase('skillPoint', rewards.skillPoint)
       player.increase('elixir', rewards.elixir)
+
+    if player.lv is MAX_PLAYER_LV
+      player.exp = 0
       
     cb(isUpgrade, level9Box, rewards)
 

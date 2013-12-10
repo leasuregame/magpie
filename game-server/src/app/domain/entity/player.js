@@ -482,6 +482,10 @@ var Player = (function(_super) {
         if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
+
+            if (spiritor.lv == MAX_SPIRITOR_LV) {
+                total_spirit = 0;
+            }
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
@@ -496,6 +500,10 @@ var Player = (function(_super) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
+
+            if (sp.lv == MAX_SPIRITPOOL_LV) {
+                total_exp = 0;
+            }
         }
         sp.exp = total_exp;
         this.set('spiritPool', sp);

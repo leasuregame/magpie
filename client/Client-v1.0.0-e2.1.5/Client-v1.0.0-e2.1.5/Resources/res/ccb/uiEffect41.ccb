@@ -206,7 +206,7 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
+								<key>seqExpanded</key>
 								<true/>
 							</dict>
 						</array>
@@ -406,8 +406,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>8</real>
-									<real>3</real>
+									<real>10</real>
+									<real>5</real>
 								</array>
 							</dict>
 							<dict>
@@ -417,8 +417,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
-									<real>2</real>
+									<real>8</real>
+									<real>3</real>
 								</array>
 							</dict>
 							<dict>
@@ -462,9 +462,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.45138674974441528</real>
-										<real>0.99309605360031128</real>
 										<real>1</real>
+										<real>0.61210864782333374</real>
+										<real>0.75805360078811646</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -598,6 +598,8 @@
 								<string>res/ccb/uiEffect46.ccb</string>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

@@ -376,7 +376,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -416,7 +416,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -477,7 +477,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -640,7 +640,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -680,7 +680,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -741,7 +741,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -915,7 +915,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.36666667461395264</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -976,7 +976,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.36666667461395264</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>

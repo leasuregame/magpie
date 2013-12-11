@@ -56,7 +56,7 @@ var PowerRewardLayer = cc.Layer.extend({
 
         this.addChild(this._effect);
 
-        var time = ['中午', '12', '13', '晚上', '18', '19'];
+        var time = ['中午', '11', '13', '晚上', '17', '19'];
 
         for (var i = 0; i < 2; i++) {
 

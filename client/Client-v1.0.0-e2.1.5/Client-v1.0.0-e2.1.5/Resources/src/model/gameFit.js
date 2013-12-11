@@ -302,10 +302,13 @@ var fit4Iphone4 = {
             "tipLabel2Point": cc.p(400, 850),
             "fragmentIconPoint1": cc.p(295, 850),
             "fragmentIconPoint2": cc.p(535, 850),
-            "scrollViewHeight": 650,
-            "scrollViewLayerRect": cc.rect(40, 118, 640, 650),
-            "scrollViewSize": cc.size(640, 650),
-            "scrollViewPoint": cc.p(40, 118)
+            "scrollViewHeight": 605,
+            "scrollViewLayerRect": cc.rect(40, 163, 640, 605),
+            "scrollViewSize": cc.size(640, 605),
+            "scrollViewPoint": cc.p(40, 163),
+            "bottomLabelPoint": cc.p(360, 136),
+            "tipLabel3Point": cc.p(330, 136),
+            "fragmentIconPoint3": cc.p(520, 136)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1444,10 +1447,13 @@ var fit4Iphone5 = {
             "tipLabel2Point": cc.p(340, 1026),
             "fragmentIconPoint1": cc.p(255, 1026),
             "fragmentIconPoint2": cc.p(475, 1026),
-            "scrollViewHeight": 824,
-            "scrollViewLayerRect": cc.rect(0, 118, 640, 824),
-            "scrollViewSize": cc.size(640, 824),
-            "scrollViewPoint": cc.p(0, 118)
+            "scrollViewHeight": 779,
+            "scrollViewLayerRect": cc.rect(0, 163, 640, 779),
+            "scrollViewSize": cc.size(640, 779),
+            "scrollViewPoint": cc.p(0, 163),
+            "bottomLabelPoint": cc.p(320, 136),
+            "tipLabel3Point": cc.p(290, 136),
+            "fragmentIconPoint3": cc.p(480, 136)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),

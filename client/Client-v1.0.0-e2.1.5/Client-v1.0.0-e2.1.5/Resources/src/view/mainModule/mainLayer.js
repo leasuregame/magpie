@@ -238,22 +238,29 @@ var MainLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var isVisible = false;
-        var spirit = gameData.spirit;
-        var spiritPool = gameData.spiritPool;
-
-        if (spirit.canUpgrade()) {
-            isVisible = true;
-        } else if (spiritPool.get("collectCount") > 0) {
-            isVisible = true;
-        }
-
         this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
         this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
-
-        this._spiritLayerItem.controller.markEffect.setVisible(isVisible);
-
+        this._spiritLayerItem.controller.markEffect.setVisible(false);
         this.addChild(this._spiritLayerItem);
+
+        var isVisible = false;
+        var that = this;
+        this.scheduleOnce(function () {
+
+            var spirit = gameData.spirit;
+            var spiritPool = gameData.spiritPool;
+
+            if (spirit.canUpgrade()) {
+                isVisible = true;
+            } else if (spiritPool.get("collectCount") > 0) {
+                isVisible = true;
+            }
+
+            that._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+
+        }, 0.1);
+
+
 
         return true;
     },

@@ -288,13 +288,15 @@ var GoldLayer = LazyLayer.extend({
         gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
         this._btnGoldBox.setEnabled(false);
+
+        if (this._tipEffect) {
+            this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);
+            this._tipEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+        }
+
         this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
         this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
             this._goldBoxItem.removeFromParent();
-            if (this._tipEffect) {
-                this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);
-                this._tipEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-            }
             this._open();
         });
     },

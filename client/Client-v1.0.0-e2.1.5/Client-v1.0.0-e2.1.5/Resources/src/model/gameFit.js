@@ -210,10 +210,10 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 863),
             "sortItemPoint": cc.p(80, 818),
             "selectIconPoint": cc.p(105, 818),
-            "scrollViewHeight": 690,
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 690),
-            "scrollViewSize": cc.size(640, 690),
-            "scrollViewPoint": cc.p(40, 106),
+            "scrollViewHeight": 700,
+            "scrollViewLayerRect": cc.rect(40, 126, 640, 700),
+            "scrollViewSize": cc.size(640, 700),
+            "scrollViewPoint": cc.p(40, 126),
             "backItemPoint": cc.p(100, 920)
         },
         "cardListLayer": {
@@ -1352,10 +1352,10 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 1039),
             "sortItemPoint": cc.p(40, 995),
             "selectIconPoint": cc.p(65, 995),
-            "scrollViewHeight": 865,
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 865),
-            "scrollViewSize": cc.size(640, 865),
-            "scrollViewPoint": cc.p(0, 106),
+            "scrollViewHeight": 875,
+            "scrollViewLayerRect": cc.rect(0, 126, 640, 875),
+            "scrollViewSize": cc.size(640, 875),
+            "scrollViewPoint": cc.p(0, 126),
             "backItemPoint": cc.p(60, 1096)
         },
         "cardListLayer": {

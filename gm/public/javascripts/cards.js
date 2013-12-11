@@ -51,7 +51,7 @@ var OperateConfig = {
 //卡牌默认属性
 var CardConfig = {
     lv: 1,
-    skillLv: 0,
+    skillLv: 1,
     elixirHp: 0,
     elixirAtk: 0,
     star: 1,

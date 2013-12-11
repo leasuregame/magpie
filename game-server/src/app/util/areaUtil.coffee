@@ -8,6 +8,8 @@ FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag')
 DEFAULT_FLAG = powerGiven: [], endPowerGiven: [], date: '1970-1-1'
 SYSTEM = -1
 
+DURATION = playerConfig.POWER_GIVE.duration
+
 module.exports = 
   doGivePower: (app, hour = new Date().getHours()) ->
     [start_give_power, end_give_power] = @_canGivePower(hour, app)
@@ -49,7 +51,7 @@ module.exports =
       data.powerGiven = []
       @_writeFlag JSON.stringify(data), app
 
-    last_hour = if hour is 0 then 23 else hour - 1
+    last_hour = if hour < DURATION then (24 - DURATION + hour) else (hour - DURATION)
     start_give_power = hours.indexOf(hour) > -1 and data.powerGiven.indexOf(hour) < 0
     end_give_power = hours.indexOf(last_hour) > -1 and data.endPowerGiven.indexOf(last_hour) < 0
     [start_give_power, end_give_power]

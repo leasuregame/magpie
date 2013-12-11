@@ -1,8 +1,0 @@
-//
-// Prefix header for all source files of the 'Magpie' target in the 'Magpie' project
-//
-
-#ifdef __OBJC__
-	#import <Foundation/Foundation.h>
-	#import <UIKit/UIKit.h>
-#endif

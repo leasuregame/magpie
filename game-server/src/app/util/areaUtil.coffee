@@ -53,7 +53,7 @@ module.exports =
 
     last_hour = if hour < DURATION then (24 - DURATION + hour) else (hour - DURATION)
     start_give_power = hours.indexOf(hour) > -1 and data.powerGiven.indexOf(hour) < 0
-    end_give_power = hours.indexOf(last_hour) > -1 and data.endPowerGiven.indexOf(last_hour) < 0
+    end_give_power = hours.indexOf(last_hour) > -1 and data.endPowerGiven.indexOf(hour) < 0
     [start_give_power, end_give_power]
 
   _addSysMsg: (app, key) ->

@@ -344,7 +344,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -456,7 +456,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
+							<real>80</real>
 							<real>60</real>
 						</array>
 					</dict>
@@ -474,7 +474,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.5</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -491,8 +491,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
-							<real>0.10000000149011612</real>
+							<real>0.80000001192092896</real>
+							<real>0.20000000298023224</real>
 						</array>
 					</dict>
 					<dict>
@@ -502,8 +502,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>5</real>
+							<real>35</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -513,8 +513,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
+							<real>10</real>
 							<real>5</real>
-							<real>2</real>
 						</array>
 					</dict>
 					<dict>
@@ -524,8 +524,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>20</real>
+							<real>30</real>
+							<real>5</real>
 						</array>
 					</dict>
 					<dict>
@@ -621,7 +621,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
+							<real>10</real>
 							<real>5</real>
 						</array>
 					</dict>
@@ -656,6 +656,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -703,8 +705,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

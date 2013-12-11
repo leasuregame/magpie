@@ -127,13 +127,14 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(this._tournamentLayerFit.buyCountItemPoint);
 
-        this._rewardItem = cc.MenuItemImage.createWithIcon(
+        this._rewardItem = cc.MenuItemImage.create(
             main_scene_image.button17,
             main_scene_image.button17s,
+            main_scene_image.button17d,
             this._onClickRankReward,
             this
         );
-        this._rewardItem.setVisible(false);
+        //this._rewardItem.setVisible(false);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
@@ -254,7 +255,7 @@ var TournamentLayer = cc.Layer.extend({
         if (reward) {
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
-            this._rewardItem.setVisible(reward.canReceive);
+            this._rewardItem.setEnabled(reward.canReceive);
 
             if (reward.canReceive) {
                 if (!this._rewardEffect) {
@@ -266,7 +267,7 @@ var TournamentLayer = cc.Layer.extend({
 
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
-            this._rewardItem.setVisible(false);
+            this._rewardItem.setEnabled(false);
         }
     },
 

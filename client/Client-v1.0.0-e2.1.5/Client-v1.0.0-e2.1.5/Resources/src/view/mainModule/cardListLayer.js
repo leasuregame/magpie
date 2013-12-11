@@ -506,6 +506,8 @@ var CardListLayer = cc.Layer.extend({
     _initCardTrainMaster: function () {
         cc.log("CardListLayer _initCardTrainMaster");
 
+        TipLayer.tip("3星以下卡牌不可进行属性培养");
+
         this._initMaster();
 
         var cardList = gameData.cardList.get("cardList");

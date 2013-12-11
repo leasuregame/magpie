@@ -97,10 +97,12 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/effect/p69.png</string>
+											<string>res/effect/effect/p65.png</string>
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -197,7 +199,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>180</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -560,8 +562,6 @@
 										<string>res/effect/effect/p15.png</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -744,7 +744,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.26666668057441711</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -153,7 +153,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/effect/p68.png</string>
+											<string>res/effect/effect/p64.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -673,10 +673,10 @@
 										<key>value</key>
 										<array>
 											<array>
-												<real>0.38431999087333679</real>
-												<real>0.13173624873161316</real>
-												<real>0.015324926935136318</real>
-												<real>1</real>
+												<real>0.17039307951927185</real>
+												<real>0.034555967897176743</real>
+												<real>0.0</real>
+												<real>0.89999997615814209</real>
 											</array>
 											<array>
 												<real>0.0</real>

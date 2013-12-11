@@ -301,8 +301,8 @@ var CardTrainLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -343,8 +343,8 @@ var CardTrainLabel = cc.Layer.extend({
             return;
         }
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -361,6 +361,13 @@ var CardTrainLabel = cc.Layer.extend({
         var that = this;
         this._leadCard.train(function (data) {
             cc.log(data);
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
+            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            that.addChild(effect, 10);
 
             that.update();
         }, this._trainCount, this._trainType);

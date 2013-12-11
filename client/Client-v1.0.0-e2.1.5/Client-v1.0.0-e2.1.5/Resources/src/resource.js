@@ -52,6 +52,7 @@ var main_scene_image = {
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
     exp: main_scene_path + "exp.png",
+    exp_full: main_scene_path + "exp_full.png",
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
@@ -185,6 +186,7 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
+    button17d: main_scene_path + "button17d.png",
     button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
@@ -585,6 +587,8 @@ var main_scene_image = {
     icon302: main_scene_path + "icon302.png",
     icon303: main_scene_path + "icon303.png",
     icon304: main_scene_path + "icon304.png",
+    icon305: main_scene_path + "icon305.png",
+    icon306: main_scene_path + "icon306.png",
 
 
     card30000_head1: main_scene_path + "card30000_head1.png",
@@ -663,7 +667,7 @@ var main_scene_image = {
     uiEffect39: "res/ccb/uiEffect39.ccbi",
     uiEffect40: "res/ccb/uiEffect40.ccbi",
     uiEffect41: "res/ccb/uiEffect41.ccbi",
-//    uiEffect42: "res/ccb/uiEffect42.ccbi",
+    uiEffect42: "res/ccb/uiEffect42.ccbi",
     uiEffect43: "res/ccb/uiEffect43.ccbi",
     uiEffect44: "res/ccb/uiEffect44.ccbi",
     uiEffect45: "res/ccb/uiEffect45.ccbi",

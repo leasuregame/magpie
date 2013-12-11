@@ -8,7 +8,9 @@
 
 var PowerRewardLayer = cc.Layer.extend({
     _powerRewardLayerFit: null,
+
     _btnGetReward: null,
+    _effect: null,
 
     onEnter: function () {
         cc.log("PowerRewardLayer onEnter");
@@ -32,11 +34,6 @@ var PowerRewardLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
         this._powerRewardLayerFit = gameFit.mainScene.powerRewardLayer;
-        return true;
-    },
-
-    update: function () {
-        cc.log("PowerRewardLayer update");
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
         lineIcon.setAnchorPoint(cc.p(0, 0));
@@ -54,12 +51,12 @@ var PowerRewardLayer = cc.Layer.extend({
         tipIcon.setPosition(this._powerRewardLayerFit.tipIconPoint);
         this.addChild(tipIcon);
 
-        var powerBgIcon = cc.Sprite.create(main_scene_image.icon270);
-        powerBgIcon.setAnchorPoint(cc.p(0, 0));
-        powerBgIcon.setPosition(this._powerRewardLayerFit.powerBgIconPoint);
-        this.addChild(powerBgIcon);
+        this._effect = cc.BuilderReader.load(main_scene_image.uiEffect53, this);
+        this._effect.setPosition(this._powerRewardLayerFit.powerBgIconPoint);
 
-        var time = ['中午', '12', '13', '晚上', '18', '19'];
+        this.addChild(this._effect);
+
+        var time = ['中午', '11', '13', '晚上', '17', '19'];
 
         for (var i = 0; i < 2; i++) {
 
@@ -108,6 +105,23 @@ var PowerRewardLayer = cc.Layer.extend({
         var menu = cc.Menu.create(this._btnGetReward);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        return true;
+    },
+
+    update: function () {
+        cc.log("PowerRewardLayer update");
+
+        var isMark = gameMark.getPowerRewardMark();
+
+        if (isMark) {
+            this._effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+        } else {
+            this._effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+        }
+
+        this._btnGetReward.setEnabled(isMark);
+
     },
 
     _onClickGetReward: function () {
@@ -119,7 +133,7 @@ var PowerRewardLayer = cc.Layer.extend({
 
         gameData.activity.getPowerReward(function () {
             gameMark.updatePowerRewardMark(false);
-            that._btnGetReward.setEnabled(false);
+            that.update();
         });
     }
 

@@ -346,9 +346,9 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._stopAllActions();
 
         var nowExp = exp;
-        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect15, this);
-        upgradeEffect.setPosition(this._cardUpgradeLabelFit.effectPoint);
-        this.addChild(upgradeEffect);
+        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
+        upgradeEffect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(upgradeEffect, 10);
 
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
@@ -387,7 +387,10 @@ var CardUpgradeLabel = cc.Layer.extend({
                 this._retinueCard = [];
                 this.update();
 
-                upgradeEffect.removeFromParent();
+                upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    upgradeEffect.removeFromParent();
+                });
                 LazyLayer.closeCloudLayer();
             }
         };
@@ -400,8 +403,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -432,8 +435,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -473,8 +476,8 @@ var CardUpgradeLabel = cc.Layer.extend({
             return;
         }
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -498,7 +501,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 that._retinueCard = [];
                 that._upgrade(dummyCard, data.exp, data.money, len);
             } else {
-                this.update();
+                that.update();
                 LazyLayer.closeCloudLayer();
             }
         }, cardIdList);

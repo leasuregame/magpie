@@ -33,7 +33,6 @@ var Activity = Entity.extend({
                 cc.log(data);
                 if (data.code == 200) {
                     cc.log("sync success");
-
                     that.update(data.msg.levelReward);
 
                     lz.server.on("onPowerGive", function (data) {
@@ -73,8 +72,10 @@ var Activity = Entity.extend({
                 if ((mark[index] >> offset & 1) == 1) {
                     this._changeTypeById(i, GOLD_RECEIVE);
                 } else {
-                    this._changeTypeById(i, GOLD_NO_RECEIVE)
+                    this._changeTypeById(i, GOLD_NO_RECEIVE);
                 }
+            } else {
+                this._changeTypeById(i, GOLD_NO_RECEIVE);
             }
         }
     },

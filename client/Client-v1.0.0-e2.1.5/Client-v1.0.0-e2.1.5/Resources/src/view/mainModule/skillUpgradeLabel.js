@@ -138,7 +138,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._helpLabel.setPosition(this._skillUpgradeLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
+        var needSkillPointIcon = cc.LabelTTF.create("升级需要技能点:", "STHeitiTC-Medium", 22);
         needSkillPointIcon.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needSkillPointIcon);
 
@@ -254,8 +254,8 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -296,8 +296,8 @@ var SkillUpgradeLabel = cc.Node.extend({
             return;
         }
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -305,16 +305,12 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
-//            playEffect({
-//                effectId: 11,
-//                target: that,
-//                loops: 1,
-//                delay: 0.1,
-//                zOrder: 10,
-//                position: that._skillUpgradeLabelFit.effectPoint,
-//                clear: true
-//            });
-
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect52, this);
+            effect.setPosition(that._skillUpgradeLabelFit.selectLeadCardItemPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            that.addChild(effect, 10);
             that.update();
         });
     }

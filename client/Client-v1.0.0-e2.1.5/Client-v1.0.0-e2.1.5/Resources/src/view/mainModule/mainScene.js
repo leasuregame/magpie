@@ -58,12 +58,6 @@ var MainScene = cc.Scene.extend({
             this.switchLayer(MainLayer);
         }
 
-        var progress = MandatoryTeachingLayer.teachingProgress();
-
-        if (progress != PROGRESS_NULL) {
-            MandatoryTeachingLayer.pop(progress);
-        }
-
     },
 
     changeMessage: function (msg) {
@@ -77,9 +71,11 @@ var MainScene = cc.Scene.extend({
     },
 
     updateMark: function () {
+
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
+        
     },
 
     updateGuide: function () {

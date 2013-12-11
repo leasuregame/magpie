@@ -208,6 +208,12 @@ var Task = Entity.extend({
                     player.add("money", msg.through_reward.money);
                 }
 
+                cc.log("first_win: " + msg.first_win);
+
+                if (msg.first_win) {
+                    cbData.isFirstFight = msg.first_win;
+                }
+
                 if (msg.result == "fight") {
                     msg.battle_log.rewards.money = msg.money_obtain;
                     msg.battle_log.rewards.exp = msg.exp_obtain;

@@ -28,6 +28,9 @@ var TournamentLayer = cc.Layer.extend({
     _countLabel: null,
     _abilityLabel: null,
     _upgradeReward: null,
+    _level9Box: null,
+    _isFirstTournament: false,
+
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -76,7 +79,12 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(expBg);
         expBg.setScale(0.8);
 
-        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
+        var url = main_scene_image.exp;
+        if (gameData.player.isFullLv()) {
+            url = main_scene_image.exp_full;
+        }
+
+        this._expProgress = Progress.create(null, url, 0, 0, true);
         this._expProgress.setPosition(this._tournamentLayerFit.expProgressPoint);
         this.addChild(this._expProgress);
         this._expProgress.setScale(0.8);
@@ -119,13 +127,14 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(this._tournamentLayerFit.buyCountItemPoint);
 
-        this._rewardItem = cc.MenuItemImage.createWithIcon(
+        this._rewardItem = cc.MenuItemImage.create(
             main_scene_image.button17,
             main_scene_image.button17s,
+            main_scene_image.button17d,
             this._onClickRankReward,
             this
         );
-        this._rewardItem.setVisible(false);
+        //this._rewardItem.setVisible(false);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
@@ -178,14 +187,12 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        var that = this;
         var next = function () {
-            var uid = gameData.player.get("uid");
-            var isFirstTournament = parseInt(sys.localStorage.getItem(uid + "firstTournament"));
-            if (isFirstTournament == 1) {
-                sys.localStorage.setItem(uid + "firstTournament", 2);
+            cc.log("isFirstTournament: " + that._isFirstTournament);
+            if (that._isFirstTournament) {
                 MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
             }
-
         };
 
         if (this._upgradeReward) {
@@ -207,7 +214,12 @@ var TournamentLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        if(player.isFullLv()) {
+            this._expProgress.setAllValue(0, 0);
+        } else {
+            this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        }
+
         this._lvLabel.setString(player.get("lv"));
 
         if (this._scrollView != null) {
@@ -243,7 +255,7 @@ var TournamentLayer = cc.Layer.extend({
         if (reward) {
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
-            this._rewardItem.setVisible(reward.canReceive);
+            this._rewardItem.setEnabled(reward.canReceive);
 
             if (reward.canReceive) {
                 if (!this._rewardEffect) {
@@ -255,7 +267,7 @@ var TournamentLayer = cc.Layer.extend({
 
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
-            this._rewardItem.setVisible(false);
+            this._rewardItem.setEnabled(false);
         }
     },
 
@@ -328,6 +340,12 @@ var TournamentLayer = cc.Layer.extend({
 
         this._upgradeReward = upgradeReward || null;
         this._level9Box = level9Box || null;
+    },
+
+    _setFirstTournament: function(isFirstTournament) {
+        cc.log("TournamentLayer _setFirstTournament");
+
+        this._isFirstTournament = isFirstTournament;
     },
 
     _onClickPlayer: function (id, point) {

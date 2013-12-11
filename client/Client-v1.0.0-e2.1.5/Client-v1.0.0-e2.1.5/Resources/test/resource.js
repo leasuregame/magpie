@@ -551,7 +551,7 @@ var main_scene_image = {
     p28: effect_scene_path + "effect/" + "p28.png",
     p29: effect_scene_path + "effect/" + "p29.png",
     p30: effect_scene_path + "effect/" + "p30.png",
-    p31: effect_scene_path + "effect/" + "p31.png",
+    
     p32: effect_scene_path + "effect/" + "p32.png",
     p33: effect_scene_path + "effect/" + "p33.png",
     p34: effect_scene_path + "effect/" + "p34.png",
@@ -575,7 +575,7 @@ var main_scene_image = {
     p52: effect_scene_path + "effect/" + "p52.png",
     p53: effect_scene_path + "effect/" + "p53.png",
     p54: effect_scene_path + "effect/" + "p54.png",
-    p55: effect_scene_path + "effect/" + "p55.png",
+    
     p56: effect_scene_path + "effect/" + "p56.png",
     p57: effect_scene_path + "effect/" + "p57.png",
     p58: effect_scene_path + "effect/" + "p58.png",
@@ -588,8 +588,8 @@ var main_scene_image = {
     p65: effect_scene_path + "effect/" + "p65.png",
     p66: effect_scene_path + "effect/" + "p66.png",
     p67: effect_scene_path + "effect/" + "p67.png",
-    p68: effect_scene_path + "effect/" + "p68.png",
-    p69: effect_scene_path + "effect/" + "p69.png",
+    
+    
 
     //UI特效
     up1: effect_scene_path + "uiEffect/" + "up1.png",
@@ -739,6 +739,9 @@ var main_scene_image = {
     up145: effect_scene_path + "uiEffect/" + "up145.png",
     up146: effect_scene_path + "uiEffect/" + "up146.png",
     up147: effect_scene_path + "uiEffect/" + "up147.png",
+    up148: effect_scene_path + "uiEffect/" + "up148.png",
+    up149: effect_scene_path + "uiEffect/" + "up149.png",
+    up150: effect_scene_path + "uiEffect/" + "up150.png",
 
 
 
@@ -900,6 +903,8 @@ var main_scene_image = {
     s86: effect_scene_path + "startAnimation/" + "s86.png",
     s87: effect_scene_path + "startAnimation/" + "s87.png",
     s88: effect_scene_path + "startAnimation/" + "s88.png",
+    s89: effect_scene_path + "startAnimation/" + "s89.png",
+    s90: effect_scene_path + "startAnimation/" + "s90.png",
 
 
 
@@ -992,6 +997,7 @@ var main_scene_image = {
     uiEffect56: ccb_scene_path + "uiEffect56.ccbi",
     uiEffect57: ccb_scene_path + "uiEffect57.ccbi",
     uiEffect58: ccb_scene_path + "uiEffect58.ccbi",
+    uiEffect59: ccb_scene_path + "uiEffect59.ccbi",
 
     //开场动画
     startAnimation1: ccb_scene_path + "startAnimation1.ccbi",

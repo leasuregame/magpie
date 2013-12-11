@@ -926,7 +926,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/14.png</string>
+									<string>res/effect/effect/p66.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1201,7 +1201,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/14.png</string>
+									<string>res/effect/effect/p66.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1438,7 +1438,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/test/30.png</string>
+							<string>res/effect/effect/p67.png</string>
 						</array>
 					</dict>
 					<dict>

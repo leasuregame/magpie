@@ -147,8 +147,8 @@ var TournamentLayer = cc.Layer.extend({
         label.setContentSize(this._tournamentLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button10,
-            main_scene_image.button10,
+            main_scene_image.button9,
+            main_scene_image.button9s,
             main_scene_image.icon120,
             this._onClickDetail,
             this

@@ -88,8 +88,8 @@ var TournamentLabel = cc.Node.extend({
 
             if (this._player.type == CAN_ADD_FRIEND) {
                 functionItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
+                    main_scene_image.button10,
+                    main_scene_image.button10s,
                     main_scene_image.icon120,
                     this._onClickFunction,
                     this

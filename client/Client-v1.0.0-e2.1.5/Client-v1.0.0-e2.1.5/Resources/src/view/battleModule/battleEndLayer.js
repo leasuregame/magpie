@@ -169,11 +169,13 @@ var BattleEndLayer = cc.Layer.extend({
         cc.log("BattleEndLayer _onClickGoStrengthenLayer");
 
         if (this._battleLog.get("isFirstTournament")) {
+            this._battleLog.set("isFirstTournament", false);
             this.end();
             return;
         }
 
         BattlePlayer.getInstance().end(StrengthenLayer);
+
     }
 });
 

@@ -41,6 +41,7 @@ class Matrix
     @matrixOrder.indexOf(pos)
 
   attackElement: (scope, args, filter) ->
+    console.log 'get attack element: ', scope, args, filter, @all().map (i)-> id: i.id, hp: i.hp, pos: i.pos, tableId: i.card_id
     try
       if scope of @
         els = @[scope](args, filter)

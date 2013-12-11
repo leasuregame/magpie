@@ -8,7 +8,7 @@ tab = require '../manager/table'
 utility = require '../common/utility'
 _ = require 'underscore'
 battleLog = require './battle_log'
-log = require('pomelo-logger').getLogger(__filename)
+logger = require('pomelo-logger').getLogger('battle-log', __filename)
 
 STATE_ORIGIN = 0
 STATE_ATTACKED = 1
@@ -99,10 +99,10 @@ class Hero extends Module
     return if @player.enemy.death()
 
     if not enemys or enemys.length is 0
-      log.warn '技能攻击时，攻击的对方卡牌不能为空'
+      console.log '技能攻击时，攻击的对方卡牌不能为空'
       return
 
-    log.debug @idx, '使用技能', @skill.name, @skill.type
+    console.log @idx, '使用技能', @skill.name, @skill.type
 
     switch @skill.type
       when 'single_fight', 'aoe' 
@@ -126,17 +126,17 @@ class Hero extends Module
         # 闪避
         _step.d.push enemy.idx
         _step.e.push 0
-        log.debug enemy.idx, '闪避'
+        console.log enemy.idx, '闪避'
         continue
       else if @isCrit()
         # 暴击
         _dmg = parseInt _dmg * @crit_factor
         _d = -enemy.idx # 负索引代表暴击
-        log.debug enemy.idx, '暴击'
+        console.log enemy.idx, '暴击'
       else
         _d = enemy.idx
 
-      log.debug "#{enemy.idx} 受到伤害 #{_dmg}"
+      console.log "#{enemy.idx} 受到伤害 #{_dmg}"
       ### 上下浮动15% ###
       _dmg = floatUpOrDown(_dmg)
 
@@ -169,7 +169,7 @@ class Hero extends Module
       # debug
       _step['dhp'] = enemy.hp
 
-      log.info "#{enemy.idx} 加血 #{realHp}"
+      console.log "#{enemy.idx} 加血 #{realHp}"
 
     @log _step
     callback enemys
@@ -177,7 +177,7 @@ class Hero extends Module
   normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
     
-    if _.isArray(_hero) and _hero.length is 1
+    if _hero? and _.isArray(_hero) and _hero.length is 1
       _hero = _hero[0]
       
       _dmg = @atk
@@ -193,7 +193,7 @@ class Hero extends Module
 
       _step = {a: @idx, d: [_d], e: [-_dmg], r: []}
 
-      log.debug "#{_hero.idx} 受到伤害 #{_dmg}"
+      console.log "#{_hero.idx} 受到伤害 #{_dmg}"
 
       _hero.damage _dmg, @, _step
       # debug
@@ -202,7 +202,7 @@ class Hero extends Module
       @log _step
       callback _hero
     else
-      log.error "普通攻击：找不到对方可攻击的卡牌"
+      console.log "普通攻击：找不到对方可攻击的卡牌"
       #throw new Error('Normal Attack Error: can not find target to be attacked.')
       callback()
 
@@ -215,13 +215,13 @@ class Hero extends Module
     # 检查，伤害反弹
     # @_checkRebound(enemy, value, step)
 
-    log.debug "#{@idx} 死亡" if @death()
+    console.log "#{@idx} 死亡" if @death()
     step['death'] = true if @death()
 
   damageOnly: (value) ->
     @hp -= value
 
-    log.debug "#{@idx} 死亡" if @death()
+    console.log "#{@idx} 死亡" if @death()
     #step['death'] = true if @death()
   
   _checkDmgReduce: (value, step) ->
@@ -229,7 +229,7 @@ class Hero extends Module
     if _value < value
       step.e.pop()
       step.e.push -_value
-      log.info '伤害减少了：', value - _value
+      console.log '伤害减少了：', value - _value
 
     _value
 
@@ -238,7 +238,7 @@ class Hero extends Module
     if _val isnt 0
       enemy.damageOnly _val
       step.r.push -_val
-      log.info "伤害反弹给 #{enemy.idx}, #{_val}"
+      console.log "伤害反弹给 #{enemy.idx}, #{_val}"
     else
       step.r.push null
 

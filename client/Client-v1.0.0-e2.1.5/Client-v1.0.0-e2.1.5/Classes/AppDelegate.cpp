@@ -74,16 +74,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     sc->start();
     
-//    CCScene *scene = CCScene::create();
-//    UpdateLayer *updateLayer = new UpdateLayer();
-//    scene->addChild(updateLayer);
-//    updateLayer->release();
-//    
-//    pDirector->runWithScene(scene);
+    CCScene *scene = CCScene::create();
+    UpdateLayer *updateLayer = new UpdateLayer();
+    scene->addChild(updateLayer);
+    updateLayer->release();
     
-    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
-    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    ScriptingCore::getInstance()->runScript("main_binding.js");
+    pDirector->runWithScene(scene);
+    
+//    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
+//    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+//    ScriptingCore::getInstance()->runScript("main_binding.js");
     
     return true;
 }
@@ -220,6 +220,8 @@ bool UpdateLayer::init()
     pProgressLabel->setPosition(ccp(size.width/7, size.height/5));
     pProgressLabel->setAnchorPoint(ccp(0, 0));
     addChild(pProgressLabel);
+    
+    CCLOG((getAssetsManager()->getVersion()).c_str());
     
     return true;
 }

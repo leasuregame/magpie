@@ -15,6 +15,7 @@
 var UPDATE_POWER_TIME_INTERVAL = 2;
 var UPDATE_POWER_TIME = 600000;
 var UPDATE_POWER_VALUE = 5;
+var OVER_NOVICE_STEP = 17;
 
 var Player = Entity.extend({
     _id: 0,             // 数据库id
@@ -46,10 +47,17 @@ var Player = Entity.extend({
     _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
 
+    _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
+
     init: function (data) {
         cc.log("Player init");
 
         MAX_LINE_UP_CARD = 3;
+
+        cc.log("teachingStep = " + data.teachingStep);
+        if (data.teachingStep != null) {
+            this.set("noviceTeachStep", data.teachingStep);
+        }
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
@@ -125,6 +133,7 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
+
     },
 
     updatePower: function () {
@@ -157,6 +166,8 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
+
+        gameGuide.updateGuide();
     },
 
     _lvChangeEvent: function () {
@@ -264,6 +275,24 @@ var Player = Entity.extend({
                 lz.dc.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    setStep: function (step) {
+        cc.log("Player setStep: " + step);
+        var that = this;
+        lz.server.request("area.playerHandler.setStep", {
+            step: step
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("setStep success");
+            } else {
+                cc.log("setStep fail");
 
                 TipLayer.tip(data.msg);
             }

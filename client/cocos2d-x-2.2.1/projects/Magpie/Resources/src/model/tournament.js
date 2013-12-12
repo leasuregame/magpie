@@ -167,6 +167,11 @@ var Tournament = Entity.extend({
                     cbData.level9Box = box;
                 }
 
+                cc.log("firstTime: " + msg.firstTime);
+                if (msg.firstTime) {
+                    cbData.isFirstTournament = msg.firstTime;
+                }
+
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 cb(cbData);

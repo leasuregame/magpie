@@ -56,6 +56,7 @@ var gameGuide = {
     _card3Guide: false,
     _card4Guide: false,
     _card5Guide: false,
+    _isFirstPassiveSkillAfresh: false,
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
@@ -81,11 +82,7 @@ var gameGuide = {
         }
 
         if (lv == PASSIVE_SKILL_AFRESH_LV) {
-            var uid = gameData.player.get("uid");
-            var isFirstPassiveSkillAfresh = parseInt(sys.localStorage.getItem(uid + "firstPassiveSkillAfresh")) || -1;
-            if (isFirstPassiveSkillAfresh == -1) {
-                sys.localStorage.setItem(uid + "firstPassiveSkillAfresh", 1);
-            }
+            this.set("isFirstPassiveSkillAfresh", true);
         }
     },
 

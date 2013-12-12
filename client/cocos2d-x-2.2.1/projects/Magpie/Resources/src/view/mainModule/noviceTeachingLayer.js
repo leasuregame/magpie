@@ -8,7 +8,6 @@
  * */
 
 var NOVICE_TEACHING_LAYER_HANDLER_PRIORITY = -201;
-var OVER_NOVICE_STEP = 17;
 
 var NoviceTeachingLayer = LazyLayer.extend({
     _noviceTeachingLayerFit: null,
@@ -42,7 +41,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
 
-        this._step = parseInt(sys.localStorage.getItem(gameData.user.get("account") + "step")) || 0;
+        this._step = gameData.player.get("noviceTeachStep");
 
         cc.log("step = " + this._step);
 
@@ -83,8 +82,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
     },
 
     _save: function () {
-        cc.log("NoviceTeachingLayer _save");
-        sys.localStorage.setItem(gameData.user.get("account") + "step", this._step);
+        cc.log("NoviceTeachingLayer _save: " + this._step);
+        gameData.player.setStep(this._step);
     },
 
     next: function () {
@@ -99,9 +98,12 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     clearAndSave: function () {
         this._rect = cc.rect(0, 0, 0, 0);
-        this._clearEffect();
         this._step++;
+        var that = this;
+
         this._save();
+        that._clearEffect();
+
     },
 
     _clearEffect: function () {
@@ -142,8 +144,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     },
 
     _getStep: function () {
-        cc.log("NoviceTeachingLayer getStep");
-        cc.log(this._step);
+        cc.log("NoviceTeachingLayer getStep: " + this._step);
         return this._step || 0;
     },
 
@@ -183,13 +184,11 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         var tipLabel = cc.LabelTTF.create("教学可以帮你更好的熟悉游戏，", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(this._noviceTeachingLayerFit.tipLabelPoint);
-        //tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setAnchorPoint(cc.p(0.5, 1));
         layer.addChild(tipLabel);
 
         var tipLabel2 = cc.LabelTTF.create("你确定要跳过吗？", "STHeitiTC-Medium", 25);
         tipLabel2.setPosition(this._noviceTeachingLayerFit.tipLabel2Point);
-        //tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel2.setAnchorPoint(cc.p(0.5, 1));
         layer.addChild(tipLabel2);
 
@@ -224,6 +223,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
 
     _overTeaching: function () {
+        cc.log("NoviceTeachingLayer _overTeaching");
         this._step = OVER_NOVICE_STEP;
         this._save();
         this.removeFromParent();

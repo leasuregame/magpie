@@ -22,6 +22,7 @@ var CardUpgradeLabel = cc.Layer.extend({
     _helpLabel: null,
     _expLabel: null,
     _moneyLabel: null,
+    _expNeedLabel: null,
     _cardCountLabel: null,
     _resLabel: null,
     _hpLabel: null,
@@ -128,30 +129,39 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.addChild(this._helpLabel);
 
         var expIcon = cc.LabelTTF.create("获得经验:", "STHeitiTC-Medium", 22);
-        expIcon.setPosition(cc.p(-160, 20));
+        expIcon.setPosition(cc.p(-180, 20));
         this._helpLabel.addChild(expIcon);
 
         var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
-        moneyIcon.setPosition(cc.p(-160, -20));
+        moneyIcon.setPosition(cc.p(-180, -20));
         this._helpLabel.addChild(moneyIcon);
 
+        var expNeedIcon = cc.LabelTTF.create("满级还需经验:", "STHeitiTC-Medium", 22);
+        expNeedIcon.setPosition(cc.p(78, 20));
+        this._helpLabel.addChild(expNeedIcon);
+
         var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setPosition(cc.p(120, -20));
+        cardCountIcon.setPosition(cc.p(100, -20));
         this._helpLabel.addChild(cardCountIcon);
 
         this._expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._expLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._expLabel.setPosition(cc.p(-100, 18));
+        this._expLabel.setPosition(cc.p(-120, 18));
         this._helpLabel.addChild(this._expLabel);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(-100, -22));
+        this._moneyLabel.setPosition(cc.p(-120, -22));
         this._helpLabel.addChild(this._moneyLabel);
+
+        this._expNeedLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._expNeedLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._expNeedLabel.setPosition(cc.p(160, 18));
+        this._helpLabel.addChild(this._expNeedLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(180, -22));
+        this._cardCountLabel.setPosition(cc.p(160, -22));
         this._helpLabel.addChild(this._cardCountLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
@@ -255,6 +265,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             this._expLabel.setString("0");
             this._moneyLabel.setString("0");
+            cc.log(this._leadCard.getCardFullLvNeedExp());
+            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
             this._cardCountLabel.setString("0");
 
             this._lvLabel.setString(this._leadCard.get("lv"));
@@ -291,6 +303,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             this._expLabel.setString(exp);
             this._moneyLabel.setString(this._money);
+            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
             this._cardCountLabel.setString(cardCount);
 
             if (this._money > gameData.player.get("money")) {
@@ -346,7 +359,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._stopAllActions();
 
         var nowExp = exp;
-        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect15, this);
+        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
         upgradeEffect.setPosition(this._cardUpgradeLabelFit.effectPoint);
         this.addChild(upgradeEffect);
 
@@ -387,7 +400,10 @@ var CardUpgradeLabel = cc.Layer.extend({
                 this._retinueCard = [];
                 this.update();
 
-                upgradeEffect.removeFromParent();
+                upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    upgradeEffect.removeF
+                });
                 LazyLayer.closeCloudLayer();
             }
         };
@@ -400,8 +416,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -432,8 +448,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -473,8 +489,8 @@ var CardUpgradeLabel = cc.Layer.extend({
             return;
         }
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -498,7 +514,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 that._retinueCard = [];
                 that._upgrade(dummyCard, data.exp, data.money, len);
             } else {
-                this.update();
+                that.update();
                 LazyLayer.closeCloudLayer();
             }
         }, cardIdList);

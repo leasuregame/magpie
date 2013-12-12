@@ -319,6 +319,16 @@ var Card = Entity.extend({
         return (cardGrow.cur_exp + this.getCardExp());
     },
 
+
+    getCardFullLvNeedExp: function () {
+        cc.log("Card getCardFullLvNeedExp");
+
+        // 读取卡牌升级配置表
+        var cardGrow = outputTables.card_grow.rows[this._maxLv];
+
+        return (cardGrow.cur_exp - this.getCardExp());
+    },
+
     canUpgrade: function () {
         cc.log("Card canUpgrade");
 

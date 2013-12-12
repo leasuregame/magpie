@@ -106,7 +106,7 @@ var SpiritDetails = LazyLayer.extend({
         this._passiveHarmLabel.setPosition(this._spiritDetailsFit.passiveHarmLabelPoint);
         this.addChild(this._passiveHarmLabel);
 
-        this._lvLabel = cc.LabelTTF.create("LV.  0", "STHeitiTC-Medium", 22);
+        this._lvLabel = cc.LabelTTF.create("LV.  0 / 0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._spiritDetailsFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
@@ -155,7 +155,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
-        this._lvLabel.setString("LV.  " + spirit.get("lv"));
+        this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
 //        this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");

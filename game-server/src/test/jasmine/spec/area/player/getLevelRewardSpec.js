@@ -15,16 +15,16 @@ describe("Area Server", function() {
 						console.log(data);
 						expect(data).toEqual({
 							code: 501,
-							msg: '参数错误'
+							msg: '找不到该奖励'
 						});
 					});
 				});
 			});
 
-			describe('当等级奖励已经领取是', function() {
+			describe('当等级奖励已经领取时', function() {
 				beforeEach(function() {
 					doAjax('/update/player/100', {
-						levelReward: [512]
+						levelReward: [1]
 					}, function() {
 						loginWith('arthur', '1', 1);
 					});
@@ -32,7 +32,7 @@ describe("Area Server", function() {
 
 				it('不能重复领取', function() {
 					request('area.playerHandler.getLevelReward', {
-						lv: 10
+						id: 1
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({
@@ -50,7 +50,7 @@ describe("Area Server", function() {
 
 				it('不能领取', function() {
 					request('area.playerHandler.getLevelReward', {
-						lv: 100
+						id: 10
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({
@@ -68,12 +68,12 @@ describe("Area Server", function() {
 
 				it('不能领取', function() {
 					request('area.playerHandler.getLevelReward', {
-						lv: 9
+						id: 11
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({
 							code: 501,
-							msg: '找不到等级为9的奖励'
+							msg: '找不到该奖励'
 						});
 					});
 				});
@@ -91,7 +91,7 @@ describe("Area Server", function() {
 
 				it('应该可以正确领取奖励', function() {
 					request('area.playerHandler.getLevelReward', {
-						lv: 10
+						id: 1
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({

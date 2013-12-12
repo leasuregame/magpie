@@ -3,7 +3,7 @@ Battle = require '../battle/battle'
 battleLog = require '../battle/battle_log'
 Player = require '../battle/player'
 VirtualPlayer = require '../battle/virtual_player'
-playerManager = require './playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
 
 class Manager

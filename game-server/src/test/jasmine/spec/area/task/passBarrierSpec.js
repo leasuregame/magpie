@@ -164,6 +164,41 @@ describe("Area Server", function() {
 							});
 						});
 					});
+
+					describe('when player level upgrade to 9', function() {
+						beforeEach(function() {
+							doAjax('/update/player/' + 108, {
+								exp: 75,
+								lv: 8
+							}, function() {
+								loginWith('user5', '1', 1);
+							});
+						});
+
+						it('should can upgrade player', function() {
+							request('area.taskHandler.passBarrier', {
+								layer: 1
+							}, function(data) {
+								console.log(data);
+								expect(data.code).toEqual(200);
+								expect(data.msg.upgradeInfo).toEqual({
+									lv: 26,
+									rewards: {
+										money: 250,
+										energy: 90,
+										skillPoint: 200,
+										elixir: 200
+									},
+									friendsCount: 20
+								});
+								expect(data.msg.exp).toEqual(2);
+
+								doAjax('/player/108', function(err, res) {
+									console.log(err, res);
+								});
+							});
+						});
+					});
 				});
 			});
 

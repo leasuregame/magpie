@@ -1,6 +1,6 @@
 app = require('pomelo').app
 dao = app.get('dao')
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 area = require '../../../domain/area/area'
 messageService = app.get('messageService')
 async = require('async')
@@ -56,7 +56,7 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
     
     uid = userId + '*' + player.areaId
     messageService.add(uid, serverId, player.id, player.name)
-    return callback null, player.toJson()
+    return callback null, _.extend(player.toJson(), serverTime: Date.now())
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId
@@ -65,8 +65,10 @@ Remote::playerLeave = (playerId, uid, serverId, callback) ->
   callback()
 
 initPlayer = (player, callback) ->
-  playerManager.addExpCardFor player, 2, (err, res) ->
-    if err
-      return callback(err)
+  return callback(null, player)
+  
+  # playerManager.addExpCardFor player, 2, (err, res) ->
+  #   if err
+  #     return callback(err)
 
-    callback(null, player)
+  #   callback(null, player)

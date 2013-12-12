@@ -18,10 +18,10 @@ beforeEach(function() {
       var cards_ok = false;
       var enemy_card_length = own_card_length = 0;
       _.each(battleLog.cards, function(val, id) {
-        if(id <= 6 && _.isObject(val)) {
+        if (id <= 6 && _.isObject(val)) {
           own_card_length += 1;
         }
-        if(id > 6 && _.isObject(val)) {
+        if (id > 6 && _.isObject(val)) {
           enemy_card_length += 1;
         }
       });
@@ -195,7 +195,7 @@ var initPomelo = function() {
   });
 };
 
-pomelo.on('onLightUpCard', function(data){
+pomelo.on('onLightUpCard', function(data) {
   console.log('Receive a message: ', data.msg);
 });
 
@@ -226,7 +226,7 @@ var game = {
       port: port
     }, function() {
       console.log('connect success!');
-      pomelo.on('onLeaveMessage', function(data){
+      pomelo.on('onLeaveMessage', function(data) {
         console.log('Receive a message: ', data);
       });
 
@@ -250,7 +250,7 @@ var game = {
         console.log('receive a bless: ', data);
       });
 
-      pomelo.on('onLightUpCard', function(data){
+      pomelo.on('onLightUpCard', function(data) {
         console.log('Receive a message: ', data);
       });
 
@@ -262,17 +262,30 @@ var game = {
         console.log('on close', data);
       });
 
+      pomelo.on('onVerifyResult', function(data) {
+        console.log('onVerifyResult', data);
+      });
+
+      pomelo.on('onPowerGive', function(data) {
+        console.log('on power given', data);
+      });
+
+      pomelo.on('onPowerGiveEnd', function(data) {
+        console.log('on power given', data);
+      });
     });
   },
   login: function(name, pwd, areaId) {
-    pomelo.request('connector.userHandler.login', 
-      {account: name, password: pwd, areaId: areaId}
-      , function(data) {
+    pomelo.request('connector.userHandler.login', {
+      account: name,
+      password: pwd,
+      areaId: areaId
+    }, function(data) {
       console.log(data);
     });
   },
   request: function(route, args) {
-    pomelo.request(route, args, function(data){
+    pomelo.request(route, args, function(data) {
       console.log(data);
     });
   }

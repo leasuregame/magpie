@@ -1,0 +1,13 @@
+#ignore file magpie
+platform
+proj.blackberry
+proj.emscripten
+proj.ios
+proj.linux
+proj.mac
+proj.marmalade
+proj.nacl
+proj.tizen
+proj.win32
+proj.winrt
+proj.wp8

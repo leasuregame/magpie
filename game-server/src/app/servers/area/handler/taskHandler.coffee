@@ -1,4 +1,4 @@
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
@@ -11,6 +11,7 @@ spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
+achieve = require '../../../domain/achievement'
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 
@@ -45,7 +46,6 @@ Handler::explore = (msg, session, next) ->
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          #{pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
           {pid: player.id, tableId: taskId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
@@ -61,7 +61,7 @@ Handler::explore = (msg, session, next) ->
                 taskManager.obtainBattleRewards(player, data, chapterId, battleLog, callback)
 
               (callback) ->
-                taskManager.countExploreResult player, data, taskId, callback
+                taskManager.countExploreResult player, data, taskId, chapterId, callback
             ], (err, results) ->
               cb(err, results[1])
           else
@@ -72,9 +72,9 @@ Handler::explore = (msg, session, next) ->
           if err
             cb(err, null)
           else
-            taskManager.countExploreResult player, data, taskId, cb
+            taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
-        taskManager.countExploreResult player, data, taskId, cb
+        taskManager.countExploreResult player, data, taskId, chapterId, cb
   ], (err, data) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
@@ -123,16 +123,21 @@ Handler::wipeOut = (msg, session, next) ->
       taskManager.wipeOut player, type, chapterId, cb
   ], (err, player, rewards) ->
     if err
+      console.log 'wipe out error: ', err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     upgradeInfo = null
-    entityUtil.upgradePlayer player, rewards.exp_obtain, (isUpgrade, rew) ->
+    level9Box = null
+    entityUtil.upgradePlayer player, rewards.exp_obtain, (isUpgrade, box, rew) ->
       if isUpgrade
         upgradeInfo = {
           lv: player.lv
           rewards: rew
           friendsCount: player.friendsCount
         }
+      if box
+        level9Box = box
+
     player.save()
     next(null, {code: 200, msg: {
       rewards: rewards
@@ -140,6 +145,7 @@ Handler::wipeOut = (msg, session, next) ->
       power: player.power
       exp: player.exp
       upgradeInfo: upgradeInfo if upgradeInfo
+      level9Box: level9Box if level9Box
     }})
 
 ###
@@ -174,6 +180,7 @@ Handler::passBarrier = (msg, session, next) ->
       ### 第一次经过layer层，才有灵气掉落 ###
       countSpirit(player, bl, 'PASS') if player.passLayer is layer-1
       upgradeInfo = null
+      level9Box = null
       if bl.winner is 'own'
         rdata = table.getTableItem 'pass_reward', layer
         _.extend bl.rewards, {
@@ -184,17 +191,23 @@ Handler::passBarrier = (msg, session, next) ->
 
         updatePlayer(player, bl.rewards, layer)
         checkMysticalPass(player)
-        entityUtil.upgradePlayer player, bl.rewards.exp, (isUpgrade, rewards) ->
+        entityUtil.upgradePlayer player, bl.rewards.exp, (isUpgrade, box, rewards) ->
           if isUpgrade
             upgradeInfo = {
               lv: player.lv
               rewards: rewards
               friendsCount: player.friendsCount
             }
+          if box
+            level9Box = level9Box
 
-      cb(null, bl, upgradeInfo)
+        if layer is 1
+          ### 天道首胜 成就 ###
+          achieve.passFirstWin(player)
 
-  ], (err, bl, upgradeInfo) ->
+      cb(null, bl, upgradeInfo, level9Box)
+
+  ], (err, bl, upgradeInfo, level9Box) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -203,6 +216,7 @@ Handler::passBarrier = (msg, session, next) ->
     next(null, {code: 200, msg: {
       battleLog: bl, 
       upgradeInfo: upgradeInfo if upgradeInfo
+      level9Box: level9Box if level9Box
       pass: player.getPass(),
       power: player.power,
       exp: player.exp

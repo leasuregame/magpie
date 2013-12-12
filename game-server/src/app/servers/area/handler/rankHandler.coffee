@@ -22,9 +22,10 @@ INTERVALS =
   199: 5
   1: 1
 
-STATUS_NORMAL = 0
-STATUS_CHALLENGE = 1
-STATUS_COUNTER_ATTACK = 2
+STATUS_NORMAL = 0  # 正常状态，可查看 ###
+STATUS_CHALLENGE = 1  # 可挑战状态 ###
+STATUS_COUNTER_ATTACK = 2  # 可反击状态 ###
+STATUS_DISPLAYE = 3  # 可显示状态，不显示查询按钮 ###
 
 module.exports = (app) ->
   new Handler(app)
@@ -65,6 +66,7 @@ Handler::rankingList = (msg, session, next) ->
 
     (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
+      console.log 'rankingList: ', rankings
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
@@ -223,7 +225,6 @@ genRankings = (ranking) ->
   if ranking <= rankingConfig.top
      for r in [rankingConfig.top + 1..rankingConfig.challenge_count - rankingConfig.top + 1]
         _results[r] = STATUS_CHALLENGE
-
   else
     keys = Object.keys(INTERVALS)
     step = 1
@@ -240,6 +241,9 @@ genRankings = (ranking) ->
         _results[ranking - r + 1]
 
   _results[ranking] = STATUS_NORMAL
+  if ranking > rankingConfig.top
+    for j in [1..rankingConfig.add_count]
+      _results[ranking+j] = STATUS_DISPLAYE
   _.extend(top, _results)
 
 filterPlayersInfo = (players, ranks, rankings) ->

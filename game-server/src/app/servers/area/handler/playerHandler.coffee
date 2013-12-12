@@ -150,7 +150,11 @@ Handler::getLevelReward = (msg, session, next) ->
     next(null, {code: 200, msg: {gold: data.gold}})
 
 canGetPower = (hour) ->
-  _.contains playerConfig.POWER_GIVE.hours, hour
+  canGetHours = []
+  for h in playerConfig.POWER_GIVE.hours
+    for i in [0...playerConfig.POWER_GIVE.duration]
+      canGetHours.push h+i 
+  _.contains canGetHours, hour
 
 hasGetPower = (player, hour) ->
   _.contains player.dailyGift.powerGiven, hour

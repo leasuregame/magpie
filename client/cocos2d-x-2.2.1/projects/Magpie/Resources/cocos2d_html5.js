@@ -43,7 +43,7 @@
         frameRate: 30,
         loadExtension: true,
         tag: 'gameCanvas', //the dom element to run cocos2d on
-        engineDir: '../../../Cocos2d-html5-v2.2/cocos2d/',
+        engineDir: '../../../../Cocos2d-html5-v2.2.1/cocos2d/',
         //SingleEngineFile:'',
         appFiles: [
             'src/resource.js',
@@ -87,7 +87,7 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
-            '../Resources-TB/TBModel/payment.js',
+            'TB/payment.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',

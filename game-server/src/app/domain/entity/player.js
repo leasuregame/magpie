@@ -33,6 +33,7 @@ var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
 var MAX_POWER_VALUE = resData.power_value;
 var MAX_CARD_COUNT = resData.card_count_limit;
+var MIN_CARD_COUNT = resData.card_count_min;
 
 var lvLimit = table.getTableItem('lv_limit', 1);
 var MAX_SPIRITOR_LV = lvLimit.spirit_lv_limit;
@@ -323,7 +324,7 @@ var Player = (function(_super) {
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
-        cardsCount: 100,
+        cardsCount: MIN_CARD_COUNT,
         resetDate: '1970-1-1',
         firstTime: {
             lowLuckyCard: 1,

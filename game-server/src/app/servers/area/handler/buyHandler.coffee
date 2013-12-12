@@ -13,7 +13,7 @@ Handler = (@app) ->
 Handler::buyProduct = (msg, session, next)->
   playerId = session.get('playerId')
   productId = msg.id
-  times = msg.times
+  times = if msg.times? then msg.times else 1
 
   product = table.getTableItem('product',productId)
   if(products[product.method])
@@ -186,4 +186,20 @@ products =
           cardIds: cards.map (c) -> c.id
         }})
 
+  cardCount: (playerId, product, times, next) ->
+
+    playerManager.getPlayerInfo pid: playerId, (err, player) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or err})
+
+      if player.cardsCount >= RESOURE_LIMIT.card_count_limit
+        return next(null, {code: 501, msg: "卡牌容量已经达到最大值"})
+
+      if player.gold < product.consume*times
+        return next(null, {code: 501, msg: "魔石不足"})
+
+      player.increase('cardsCount', product.obtain*times)
+      player.save()
+
+      next(null, {code: 200})
 

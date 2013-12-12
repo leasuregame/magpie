@@ -595,7 +595,7 @@
 								<key>type</key>
 								<string>CCBFile</string>
 								<key>value</key>
-								<string>res/ccb/uiEffect46.ccb</string>
+								<string>res/ccb/uiEffect61.ccb</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -625,7 +625,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1.5679991245269775</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -752,7 +752,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5</real>
+			<real>4.3000001907348633</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

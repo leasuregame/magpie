@@ -187,6 +187,8 @@ products =
         }})
 
   cardCount: (playerId, product, times, next) ->
+    consume = product.consume*times
+    obtain = product.obtain*times
 
     playerManager.getPlayerInfo pid: playerId, (err, player) ->
       if err
@@ -198,8 +200,14 @@ products =
       if player.gold < product.consume*times
         return next(null, {code: 501, msg: "魔石不足"})
 
-      player.increase('cardsCount', product.obtain*times)
+      player.decrease(product.consume_type, consume)
+      player.increase('cardsCount', obtain)
       player.save()
 
-      next(null, {code: 200})
+      next(null, {
+        code: 200, 
+        msg: 
+          consume: key: product.consume_type, value: player.gold
+          cardCount: player.cardsCount
+      })
 

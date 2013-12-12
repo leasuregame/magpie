@@ -97,6 +97,7 @@ Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
+  times = if msg.times? then msg.times else 1
 
   typeMapping = {}
   typeMapping[LOTTERY_BY_GOLD] = 'gold'

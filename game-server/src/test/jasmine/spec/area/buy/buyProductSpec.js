@@ -8,13 +8,16 @@ describe("Area Server", function() {
 			describe("cardCount", function() {
 				describe("当魔石不足时", function() {
 					beforeEach(function() {
-						loginWith('poorman', '1', 1);
+						doAjax('/update/player/106', {
+							gold: 4
+						}, function(err, res) {
+							loginWith('poorman', '1', 1);	
+						});	
 					});
 
 					it("不能购买卡库位置", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:7,
-							times: 1
+                            id:7
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
@@ -26,13 +29,16 @@ describe("Area Server", function() {
 
 				describe("当卡牌卡库容量已经达到最大值时", function() {
 					beforeEach(function() {
-						loginWith('arthur', '1', 1);
+						doAjax('/update/player/101', {
+							cardsCount: 100
+						}, function(err, res) {
+							loginWith('user4', '1', 1);	
+						});						
 					});
 
 					it("不能购买卡库位置", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:1,
-							times: 1
+                            id:7
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
@@ -48,9 +54,9 @@ describe("Area Server", function() {
 						loginWith('arthur', '1', 1);
 					});
 
-					it("不能购买卡库位置", function() {
+					it("卡库容量会相应增加", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:1
+                            id:7
 						}, function(data) {
 							expect(data).toEqual({
 								code: 200

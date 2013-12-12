@@ -22,7 +22,7 @@ var Payment = Entity.extend({
     _waitLayer: null,
 
     init: function () {
-        cc.log("Payment init");
+        cc.log("AppStore Payment init");
 
         this._paymentKey = gameData.player.get("uid") + "_payment_key";
         this._receiptList = [];
@@ -70,7 +70,7 @@ var Payment = Entity.extend({
     },
 
     _load: function () {
-        cc.log("Payment _load");
+        cc.log("AppStore Payment _load");
 
         var receiptListJson = sys.localStorage.getItem(this._paymentKey);
 
@@ -80,13 +80,13 @@ var Payment = Entity.extend({
     },
 
     _save: function () {
-        cc.log("Payment _save");
+        cc.log("AppStore Payment _save");
 
         sys.localStorage.setItem(this._paymentKey, JSON.stringify(this._receiptList));
     },
 
     _judge: function () {
-        cc.log("Payment _judge");
+        cc.log("AppStore Payment _judge");
 
         var len = this._receiptList.length;
 
@@ -96,7 +96,7 @@ var Payment = Entity.extend({
     },
 
     _push: function (receipt) {
-        cc.log("Payment _push");
+        cc.log("AppStore Payment _push");
 
         this._receiptList.push(receipt);
 
@@ -106,7 +106,7 @@ var Payment = Entity.extend({
     },
 
     _pop: function (receipt) {
-        cc.log("Payment _pop");
+        cc.log("AppStore Payment _pop");
 
         var len = this._receiptList.length;
 
@@ -120,7 +120,7 @@ var Payment = Entity.extend({
     },
 
     buy: function (productId) {
-        cc.log("Payment buy");
+        cc.log("AppStore Payment buy");
 
         if (lz.IAPHelp) {
             this._showWaitLayer();
@@ -129,8 +129,8 @@ var Payment = Entity.extend({
         }
     },
 
-    _sendReceipt: function (receipt) {
-        cc.log("Payment _sendReceipt");
+    _sendReceipt: function (receipt) {z
+        cc.log("AppStore Payment _sendReceipt");
 
         var that = this;
         lz.server.request("area.verifyHandler.appStore", {
@@ -151,7 +151,7 @@ var Payment = Entity.extend({
     },
 
     _payCallback: function (paymentData) {
-        cc.log("Payment _payCallback");
+        cc.log("AppStore Payment _payCallback");
 
         cc.log("=============================================================");
         cc.log("paymentData state: " + paymentData.state);
@@ -195,7 +195,7 @@ var Payment = Entity.extend({
     },
 
     _showWaitLayer: function () {
-        cc.log("Payment _showWaitLayer");
+        cc.log("AppStore Payment _showWaitLayer");
 
         if (!this._waitLayer) {
             this._waitLayer = WaitLayer.pop();
@@ -203,7 +203,7 @@ var Payment = Entity.extend({
     },
 
     _closeWaitLayer: function () {
-        cc.log("Payment _closeWaitLayer");
+        cc.log("AppStore Payment _closeWaitLayer");
 
         if (this._waitLayer) {
             this._waitLayer.removeFromParent();

@@ -345,6 +345,11 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (gameData.cardList.isFull()) {
+            CardListFullTipLayer.pop();
+            return;
+        }
+
         var task = gameData.task;
 
         var statue = task.canExplore();

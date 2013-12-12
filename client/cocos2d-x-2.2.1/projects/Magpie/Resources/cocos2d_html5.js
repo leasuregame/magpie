@@ -138,6 +138,7 @@
             'src/view/mainModule/cardHeadNode.js',
             'src/view/mainModule/cardLabel.js',
             'src/view/mainModule/cardLibraryLayer.js',
+            'src/view/mainModule/cardListFullTipLayer.js',
             'src/view/mainModule/cardListLayer.js',
             'src/view/mainModule/cardTrainLabel.js',
             'src/view/mainModule/cardUpgradeLabel.js',

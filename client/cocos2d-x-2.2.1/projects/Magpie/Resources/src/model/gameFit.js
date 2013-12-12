@@ -216,6 +216,15 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 106),
             "backItemPoint": cc.p(100, 920)
         },
+        "cardListFullTipLayer": {
+            "bgSpritePoint": cc.p(360, 480),
+            "tipTitleLabelPoint": cc.p(360, 590),
+            "tipLabelPoint": cc.p(360, 530),
+            "go2StrengthenItemPoint": cc.p(480, 462),
+            "go2SellPoint": cc.p(240, 387),
+            "go2BuyPoint": cc.p(240, 462),
+            "cancelItemPoint": cc.p(480, 387)
+        },
         "cardListLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headIconPoint": cc.p(40, 880),
@@ -1357,6 +1366,15 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 865),
             "scrollViewPoint": cc.p(0, 106),
             "backItemPoint": cc.p(60, 1096)
+        },
+        "cardListFullTipLayer": {
+            "bgSpritePoint": cc.p(320, 568),
+            "tipTitleLabelPoint": cc.p(320, 678),
+            "tipLabelPoint": cc.p(320, 618),
+            "go2StrengthenItemPoint": cc.p(440, 550),
+            "go2SellPoint": cc.p(200, 475),
+            "go2BuyPoint": cc.p(200, 550),
+            "cancelItemPoint": cc.p(440, 475)
         },
         "cardListLayer": {
             "bgSpritePoint": cc.p(0, 106),

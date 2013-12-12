@@ -221,6 +221,11 @@ var LotteryLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            if (gameData.cardList.isFull()) {
+                CardListFullTipLayer.pop();
+                return;
+            }
+
             var lottery = gameData.lottery;
 
             if (!lottery.canLottery(type, level)) {
@@ -263,6 +268,11 @@ var LotteryLayer = cc.Layer.extend({
         cc.log("LotteryLayer _onClickExchange");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (gameData.cardList.isFull()) {
+            CardListFullTipLayer.pop();
+            return;
+        }
 
         MainScene.getInstance().switchLayer(ExchangeLayer);
     },

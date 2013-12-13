@@ -104,7 +104,6 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
-
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -291,7 +290,7 @@ var outputTables = {
             },
             "21": {
                 "id": 21,
-                "method": "fun",
+                "method": "soLucky",
                 "need": 1,
                 "name": "买彩票去吧",
                 "desc": "用1张素材卡成功进阶该卡牌",
@@ -891,11 +890,11 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "grow_per_lv": 10,
-                "star1": 500,
-                "star2": 700,
-                "star3": 900,
-                "star4": 1100,
-                "star5": 1300
+                "star1": 200,
+                "star2": 500,
+                "star3": 1500,
+                "star4": 3000,
+                "star5": 7000
             }
         }
     },
@@ -1245,7 +1244,7 @@ var outputTables = {
                 "atk": 143,
                 "hp": 369,
                 "skill_name": "水漫金山",
-                "skill_id": 2,
+                "skill_id": 5,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
                 "url": 18
             },
@@ -1258,7 +1257,7 @@ var outputTables = {
                 "atk": 206,
                 "hp": 524,
                 "skill_name": "水漫金山",
-                "skill_id": 2,
+                "skill_id": 5,
                 "description": "白素贞你住手吧，许仙真的不在珠海金山！",
                 "url": 18
             },
@@ -1271,7 +1270,7 @@ var outputTables = {
                 "atk": 265,
                 "hp": 689,
                 "skill_name": "水漫金山",
-                "skill_id": 2,
+                "skill_id": 5,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
                 "url": 18
             },
@@ -1550,7 +1549,7 @@ var outputTables = {
                 "atk": 132,
                 "hp": 382,
                 "skill_name": "鹊桥泪",
-                "skill_id": 6,
+                "skill_id": 7,
                 "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。",
                 "url": 28
             },
@@ -1563,7 +1562,7 @@ var outputTables = {
                 "atk": 182,
                 "hp": 552,
                 "skill_name": "鹊桥泪",
-                "skill_id": 6,
+                "skill_id": 7,
                 "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。",
                 "url": 28
             },
@@ -1576,7 +1575,7 @@ var outputTables = {
                 "atk": 242,
                 "hp": 712,
                 "skill_name": "鹊桥泪",
-                "skill_id": 6,
+                "skill_id": 7,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
                 "url": 28
             },
@@ -1611,7 +1610,7 @@ var outputTables = {
                 "atk": 145,
                 "hp": 385,
                 "skill_name": "鬼脚七",
-                "skill_id": 7,
+                "skill_id": 1,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
                 "url": 30
             },
@@ -1624,7 +1623,7 @@ var outputTables = {
                 "atk": 188,
                 "hp": 556,
                 "skill_name": "鬼脚七",
-                "skill_id": 7,
+                "skill_id": 1,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
                 "url": 30
             },
@@ -1637,7 +1636,7 @@ var outputTables = {
                 "atk": 244,
                 "hp": 721,
                 "skill_name": "鬼脚七",
-                "skill_id": 7,
+                "skill_id": 1,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
                 "url": 30
             },
@@ -1672,7 +1671,7 @@ var outputTables = {
                 "atk": 149,
                 "hp": 378,
                 "skill_name": "招魂蟠",
-                "skill_id": 8,
+                "skill_id": 6,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
                 "url": 31
             },
@@ -1685,7 +1684,7 @@ var outputTables = {
                 "atk": 201,
                 "hp": 549,
                 "skill_name": "招魂蟠",
-                "skill_id": 8,
+                "skill_id": 6,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。",
                 "url": 31
             },
@@ -1698,7 +1697,7 @@ var outputTables = {
                 "atk": 265,
                 "hp": 719,
                 "skill_name": "招魂蟠",
-                "skill_id": 8,
+                "skill_id": 6,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
                 "url": 31
             },
@@ -1733,7 +1732,7 @@ var outputTables = {
                 "atk": 154,
                 "hp": 369,
                 "skill_name": "哭丧棒",
-                "skill_id": 9,
+                "skill_id": 2,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
                 "url": 32
             },
@@ -1746,7 +1745,7 @@ var outputTables = {
                 "atk": 206,
                 "hp": 556,
                 "skill_name": "哭丧棒",
-                "skill_id": 9,
+                "skill_id": 2,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
                 "url": 32
             },
@@ -1759,7 +1758,7 @@ var outputTables = {
                 "atk": 266,
                 "hp": 666,
                 "skill_name": "哭丧棒",
-                "skill_id": 9,
+                "skill_id": 2,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
                 "url": 32
             },
@@ -1855,7 +1854,7 @@ var outputTables = {
                 "atk": 151,
                 "hp": 381,
                 "skill_name": "碧波滔天",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "不喜欢就是不喜欢，龙王太子又如何！",
                 "url": 36
             },
@@ -1868,7 +1867,7 @@ var outputTables = {
                 "atk": 200,
                 "hp": 536,
                 "skill_name": "碧波滔天",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "再逼我就跳海，死了我也不放过你！",
                 "url": 36
             },
@@ -1881,7 +1880,7 @@ var outputTables = {
                 "atk": 280,
                 "hp": 721,
                 "skill_name": "碧波滔天",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。",
                 "url": 36
             },
@@ -2038,7 +2037,7 @@ var outputTables = {
                 "atk": 151,
                 "hp": 371,
                 "skill_name": "水乳之欢",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "第一次见到他的时候，我就记住了他的名字：后羿。",
                 "url": 43
             },
@@ -2051,7 +2050,7 @@ var outputTables = {
                 "atk": 201,
                 "hp": 521,
                 "skill_name": "水乳之欢",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。",
                 "url": 43
             },
@@ -2064,7 +2063,7 @@ var outputTables = {
                 "atk": 271,
                 "hp": 671,
                 "skill_name": "水乳之欢",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。",
                 "url": 43
             },
@@ -2099,7 +2098,7 @@ var outputTables = {
                 "atk": 158,
                 "hp": 374,
                 "skill_name": "无米之炊",
-                "skill_id": 5,
+                "skill_id": 2,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
                 "url": 44
             },
@@ -2112,7 +2111,7 @@ var outputTables = {
                 "atk": 203,
                 "hp": 531,
                 "skill_name": "无米之炊",
-                "skill_id": 5,
+                "skill_id": 2,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
                 "url": 44
             },
@@ -2125,7 +2124,7 @@ var outputTables = {
                 "atk": 274,
                 "hp": 678,
                 "skill_name": "无米之炊",
-                "skill_id": 5,
+                "skill_id": 2,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
                 "url": 44
             },
@@ -2160,7 +2159,7 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "龙骨枪",
-                "skill_id": 6,
+                "skill_id": 1,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
                 "url": 49
             },
@@ -2173,7 +2172,7 @@ var outputTables = {
                 "atk": 192,
                 "hp": 560,
                 "skill_name": "龙骨枪",
-                "skill_id": 6,
+                "skill_id": 1,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
                 "url": 49
             },
@@ -2186,7 +2185,7 @@ var outputTables = {
                 "atk": 262,
                 "hp": 720,
                 "skill_name": "龙骨枪",
-                "skill_id": 6,
+                "skill_id": 1,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
                 "url": 49
             },
@@ -8710,7 +8709,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "star3": "[8,13,33,43,168,88,178,218,123,138,243]",
-                "star4": "[59,149]"
+                "star4": "[59,139]"
             }
         }
     },
@@ -8720,13 +8719,13 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "rank": 5,
+                "card3_position": 7,
                 "pass": 10,
-                "card3_position": 15,
-                "lottery": 20,
-                "card4_position": 30,
-                "pass_skillafresh": 35,
-                "ranking_list": 40,
-                "card5_position": 50
+                "card4_position": 18,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "pass_skillafresh": 45
             }
         }
     },
@@ -8792,6 +8791,7 @@ var outputTables = {
                 "money": 99999999,
                 "skillPoint": 9999999,
                 "energy": 99999,
+                "card_count_min": 35,
                 "card_count_limit": 100,
                 "power_value": 150,
                 "elixir": 999999
@@ -24417,7 +24417,8 @@ var outputTables = {
                 "id": 1,
                 "top": 10,
                 "challenge_count": 10,
-                "beat_back_count": 3
+                "beat_back_count": 3,
+                "add_count": 3
             }
         }
     },
@@ -24566,6 +24567,16 @@ var outputTables = {
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "7": {
+                "id": 7,
+                "method": "cardCount",
+                "name": "卡库位置",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "cardsCount",
                 "obtain": 1,
                 "isVisible": 0
             }
@@ -24772,25 +24783,6 @@ var outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 2,
-                "star3_inc_min": 45,
-                "star3_inc_max": 50,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 55,
-                "star4_inc_max": 60,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 65,
-                "star5_inc_max": 70,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
                 "star3_inc_min": 35,
                 "star3_inc_max": 40,
                 "star3_grow": 5,
@@ -24801,6 +24793,25 @@ var outputTables = {
                 "rate4": 35,
                 "star5_inc_min": 55,
                 "star5_inc_max": 60,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3_inc_min": 25,
+                "star3_inc_max": 30,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 40,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 45,
+                "star5_inc_max": 50,
                 "star5_grow": 5,
                 "rate5": 40
             },
@@ -47158,4 +47169,4 @@ var outputTables = {
             }
         }
     }
-};
+}

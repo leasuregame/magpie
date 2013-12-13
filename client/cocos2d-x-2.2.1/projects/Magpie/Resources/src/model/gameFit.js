@@ -236,7 +236,7 @@ var fit4Iphone4 = {
             "sortItemPoint": cc.p(140, 142),
             "onSelectAllLowItemPoint": cc.p(300, 142),
             "selectAllLowHookIconPoint": cc.p(235, 142),
-            "cardCountLabelPoint": cc.p(570, 142),
+            "cardCountLabelPoint": cc.p(550, 142),
             "titleLabelPoint": cc.p(360, 920),
             "lineUpItemPoint": cc.p(120, 838),
             "sellItemPoint": cc.p(600, 838),
@@ -246,7 +246,8 @@ var fit4Iphone4 = {
             "countLabelPoint": cc.p(247, 838),
             "expLabelPoint": cc.p(425, 838),
             "rateLabelPoint": cc.p(425, 838),
-            "moneyLabelPoint": cc.p(425, 838)
+            "moneyLabelPoint": cc.p(425, 838),
+            "buyCountItemPoint": cc.p(630, 141)
         },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(364, 525),
@@ -1387,7 +1388,7 @@ var fit4Iphone5 = {
             "sortItemPoint": cc.p(100, 152),
             "onSelectAllLowItemPoint": cc.p(260, 152),
             "selectAllLowHookIconPoint": cc.p(195, 152),
-            "cardCountLabelPoint": cc.p(530, 152),
+            "cardCountLabelPoint": cc.p(510, 152),
             "titleLabelPoint": cc.p(320, 1096),
             "lineUpItemPoint": cc.p(80, 1014),
             "sellItemPoint": cc.p(560, 1014),
@@ -1397,7 +1398,8 @@ var fit4Iphone5 = {
             "countLabelPoint": cc.p(207, 1014),
             "expLabelPoint": cc.p(385, 1014),
             "rateLabelPoint": cc.p(385, 1014),
-            "moneyLabelPoint": cc.p(385, 1014)
+            "moneyLabelPoint": cc.p(385, 1014),
+            "buyCountItemPoint": cc.p(590, 151)
         },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(324, 613),

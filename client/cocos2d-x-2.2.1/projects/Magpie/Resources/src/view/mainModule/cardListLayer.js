@@ -313,7 +313,16 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var menu = cc.Menu.create(sellItem, lineUpItem);
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setScale(1.2);
+        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
+
+        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },
@@ -836,6 +845,43 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._cb(this._getSelectCardList());
+    },
+
+    _onClickBuyCount: function() {
+        cc.log("CardListLayer _onClickBuyCount");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var id = 7;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("CardListLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that._update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     _onClickSell: function () {

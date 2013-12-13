@@ -22,10 +22,10 @@ var CardList = Entity.extend({
     _count: 0,
     _maxCount: 0,
 
-    init: function (cardList) {
+    init: function (cardList, cardsCount) {
         cc.log("CardList init");
 
-        this._maxCount = outputTables.resource_limit.rows[1].card_count_limit;
+        this._maxCount = cardsCount || outputTables.resource_limit.rows[1].card_count_min;
 
         this._cardList = {};
         var len = cardList.length;

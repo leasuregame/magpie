@@ -109,14 +109,45 @@ var CardListFullTipLayer = LazyLayer.extend({
     _onClickGo2Buy: function() {
         cc.log("CardListFullTipLayer _onClickGo2Buy");
         this.removeFromParent();
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var id = 7;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
     },
 
     _onClickCancel: function() {
         cc.log("CardListFullTipLayer _onClickCancel");
         this.removeFromParent();
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("CardListFullTipLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that._update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     }
-
-
 });
 
 CardListFullTipLayer.create = function() {

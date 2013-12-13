@@ -116,7 +116,7 @@ var Player = Entity.extend({
         this.set("powerTimestamp", data.power.time);
 
         gameData.clock.init(data.serverTime);
-        gameData.cardList.init(data.cards);
+        gameData.cardList.init(data.cards, data.cardsCount);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
         gameData.pass.init(data.pass);

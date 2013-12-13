@@ -54,3 +54,5 @@
 12.排名奖励10不见了 -- done
 13.四星升五星时，第一次返回的星级有问题
 14.竞技排名达到第一名不能达成bug  -- done
+
+SELECT * FROM table_name AS r1 JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM table_name)) AS id) AS r2 WHERE r1.id >= r2.id ORDER BY r1.id ASC LIMIT 5;

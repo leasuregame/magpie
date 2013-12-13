@@ -16,7 +16,6 @@ achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 logger = require('pomelo-logger').getLogger(__filename)
 
-MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
@@ -107,6 +106,8 @@ Handler::luckyCard = (msg, session, next) ->
   consumeVal = 0
   fragment = 0
   isFree = 0
+
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -120,7 +121,8 @@ Handler::luckyCard = (msg, session, next) ->
         isFree = player.firstTime.highLuckyCard
         player.setFirstTime('highLuckyCard', 0)
 
-      if _.keys(player.cards).length >= MAX_CARD_COUNT
+      cardCount = _.keys(player.cards).length
+      if cardCount >= player.cardsCount or cardCount + times > player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
       rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
@@ -143,7 +145,7 @@ Handler::luckyCard = (msg, session, next) ->
       entityUtil.createCard card, cb
         
     (cardEnt, cb) =>
-      player.addCard(cardEnt);
+      player.addCard(cardEnt)
       if(level == LOW_LUCKYCARD)
           player.increase('rowFragmentCount',1)
       else
@@ -670,7 +672,7 @@ Handler::exchangeCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if _.keys(player.cards).length >= MAX_CARD_COUNT
+      if _.keys(player.cards).length >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
       
       if player.fragments < cardConfig.CARD_EXCHANGE[star]

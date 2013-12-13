@@ -4,8 +4,8 @@ var path = require('path');
 var fs = require('fs');
 var mime = require('mime');
 
-var LAST_VERSION = '1.7';
-var CURR_VERSION = '1.8';
+var LAST_VERSION = '1.7.0';
+var CURR_VERSION = '1.8.0';
 var PORT = 3434;
 
 var server = http.createServer(function(req, res) {
@@ -16,6 +16,10 @@ var server = http.createServer(function(req, res) {
 
     var filename = 'big.zip';
     if (method == 'update') {
+        if (!/^\d{1,2}.\d{1,2}.\d{1,2}/.test(version)) {
+            res.writeHead(400, "Bad Version Number");
+            return res.end();
+        }
         if (version == LAST_VERSION) {
             filename = 'small.zip';
         }

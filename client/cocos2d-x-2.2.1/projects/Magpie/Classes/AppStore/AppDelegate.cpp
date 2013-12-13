@@ -16,7 +16,7 @@
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
 #include "js_bindings_IAPHelp.hpp"
-//#include "js_cocos2dx_autogen_extension.hpp"
+#include "js_cocos2dx_autogen_extension.hpp"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -68,7 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
     sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
-//    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
+    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
 
     sc->start();
     

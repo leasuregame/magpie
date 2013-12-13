@@ -501,6 +501,9 @@
 		902B08FC1858C6AB003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08F91858C6AB003A2A49 /* payment.js */; };
 		902B09021858C6BC003A2A49 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08FF1858C6BC003A2A49 /* main_binding.js */; };
 		902B09031858C6BC003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B09001858C6BC003A2A49 /* payment.js */; };
+		90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */; };
+		90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90338EBA185A18C300224717 /* libMobClickLibrary.a */; };
+		90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EBD185A18C300224717 /* MobClickCPP.mm */; };
 		90C44170185965FE000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4416E185965FE000C5D75 /* AppDelegate.cpp */; };
 		90C4417418596605000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4417218596605000C5D75 /* AppDelegate.cpp */; };
 		90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C51859A2CD000C5D75 /* IAPHelp.mm */; };
@@ -1014,6 +1017,12 @@
 		902B08F91858C6AB003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		902B08FF1858C6BC003A2A49 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
 		902B09001858C6BC003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
+		90338EB9185A18C300224717 /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
+		90338EBA185A18C300224717 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		90338EBB185A18C300224717 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		90338EBC185A18C300224717 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
+		90338EBD185A18C300224717 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
 		90C4416E185965FE000C5D75 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		90C4416F185965FE000C5D75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90C4417218596605000C5D75 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1073,6 +1082,7 @@
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
 				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
+				90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */,
 				D454520A156E22B400887EB5 /* libxml2.dylib in Frameworks */,
 				A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */,
 				A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */,
@@ -1968,6 +1978,19 @@
 			path = ../Resources/TB;
 			sourceTree = "<group>";
 		};
+		90338EB7185A18C300224717 /* DataDollection */ = {
+			isa = PBXGroup;
+			children = (
+				90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */,
+				90338EB9185A18C300224717 /* js_cocos2dx_autogen_extension.hpp */,
+				90338EBA185A18C300224717 /* libMobClickLibrary.a */,
+				90338EBB185A18C300224717 /* MobClick.h */,
+				90338EBC185A18C300224717 /* MobClickCPP.h */,
+				90338EBD185A18C300224717 /* MobClickCPP.mm */,
+			);
+			path = DataDollection;
+			sourceTree = "<group>";
+		};
 		90C4416D185965FE000C5D75 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1989,6 +2012,7 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90338EB7185A18C300224717 /* DataDollection */,
 				90C441C31859A2CD000C5D75 /* IAPHelp */,
 			);
 			name = lib;
@@ -2626,6 +2650,7 @@
 				1AA51AEA16F71BA3000FDF05 /* jsb_opengl_constants.js in Sources */,
 				1A40E7971727C102006D4861 /* Animation.cpp in Sources */,
 				1A40E7981727C102006D4861 /* AnimationState.cpp in Sources */,
+				90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */,
 				1A40E7991727C102006D4861 /* AnimationStateData.cpp in Sources */,
 				1A40E79A1727C102006D4861 /* Atlas.cpp in Sources */,
 				1A40E79B1727C102006D4861 /* AtlasAttachmentLoader.cpp in Sources */,
@@ -2648,6 +2673,7 @@
 				1A40E7B11727C3DB006D4861 /* jsb_opengl_manual.cpp in Sources */,
 				3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */,
 				1A40E7B21727C3DB006D4861 /* jsb_opengl_registration.cpp in Sources */,
+				90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */,
 				1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */,
 				1A96A4F1174A3369008653A9 /* HttpClient.cpp in Sources */,
@@ -2769,9 +2795,9 @@
 				INFOPLIST_FILE = TB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2815,9 +2841,9 @@
 				INFOPLIST_FILE = TB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2919,9 +2945,10 @@
 				INFOPLIST_FILE = AppStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
+					"$(SRCROOT)/../lib/DataDollection",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2968,9 +2995,10 @@
 				INFOPLIST_FILE = AppStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
+					"$(SRCROOT)/../lib/DataDollection",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

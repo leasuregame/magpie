@@ -96,11 +96,11 @@ class Hero extends Module
     if @sp? then @sp.isCrit() else false
 
   usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
-    return if @player.enemy.death()
+    return callback() if @player.enemy.death()
 
     if not enemys or enemys.length is 0
       console.log '技能攻击时，攻击的对方卡牌不能为空'
-      return
+      return callback()
 
     console.log @idx, '使用技能', @skill.name, @skill.type
 

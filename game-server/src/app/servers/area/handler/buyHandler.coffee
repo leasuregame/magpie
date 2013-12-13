@@ -146,7 +146,7 @@ products =
       next null, {
         code: 200,
         msg: {
-          challengeCount: times,
+          challengeCount: player.dailyGift.challengeCount,
           consume: {
             key: "gold",
             value: player.gold
@@ -208,6 +208,6 @@ products =
         code: 200, 
         msg: 
           consume: key: product.consume_type, value: player.gold
-          cardCount: player.cardsCount
+          cardsCount: player.cardsCount
       })
 

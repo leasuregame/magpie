@@ -754,6 +754,7 @@ var main_scene_image = {
     texiao5: ccb_scene_path + "texiao5.ccbi",
     texiao6: ccb_scene_path + "texiao6.ccbi",
     texiao7: ccb_scene_path + "texiao7.ccbi",
+    
    
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
@@ -916,6 +917,18 @@ var main_scene_image = {
     s98: effect_scene_path + "startAnimation/" + "s98.png",
     s99: effect_scene_path + "startAnimation/" + "s99.png",
     s100: effect_scene_path + "startAnimation/" + "s100.png",
+    s101: effect_scene_path + "startAnimation/" + "s101.png",
+    s102: effect_scene_path + "startAnimation/" + "s102.png",
+    s103: effect_scene_path + "startAnimation/" + "s103.png",
+    s104: effect_scene_path + "startAnimation/" + "s104.png",
+    s105: effect_scene_path + "startAnimation/" + "s105.png",
+    s106: effect_scene_path + "startAnimation/" + "s106.png",
+    s107: effect_scene_path + "startAnimation/" + "s107.png",
+    s108: effect_scene_path + "startAnimation/" + "s108.png",
+    s109: effect_scene_path + "startAnimation/" + "s109.png",
+    s110: effect_scene_path + "startAnimation/" + "s110.png",
+    s111: effect_scene_path + "startAnimation/" + "s111.png",
+    s112: effect_scene_path + "startAnimation/" + "s112.png",
 
 
 

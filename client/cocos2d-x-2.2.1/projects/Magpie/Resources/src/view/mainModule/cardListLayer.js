@@ -43,6 +43,7 @@ var CardListLayer = cc.Layer.extend({
     _isSelectAllLow: false,         // 是否选择全部低星卡
     _sortItem1: null,
     _sortItem2: null,
+    _cardCountLabel: null,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -148,14 +149,14 @@ var CardListLayer = cc.Layer.extend({
         cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
         this.addChild(cardCountIcon);
 
-        var cardCountLabel = cc.LabelTTF.create(
+        this._cardCountLabel = cc.LabelTTF.create(
             gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
             "STHeitiTC-Medium",
             22
         );
-        cardCountLabel.setColor(cc.c3b(255, 239, 131));
-        cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(cardCountLabel);
+        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(this._cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
@@ -174,6 +175,11 @@ var CardListLayer = cc.Layer.extend({
 
         this._updateScrollViewHeight();
         this._sortCardLabel();
+    },
+
+    _update: function() {
+        cc.log("CardListLayer _update");
+        this._cardCountLabel.setString(gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"));
     },
 
     _updateScrollViewHeight: function () {
@@ -514,6 +520,8 @@ var CardListLayer = cc.Layer.extend({
 
     _initCardTrainMaster: function () {
         cc.log("CardListLayer _initCardTrainMaster");
+
+        TipLayer.tip("3星以下卡牌不可进行属性培养");
 
         this._initMaster();
 

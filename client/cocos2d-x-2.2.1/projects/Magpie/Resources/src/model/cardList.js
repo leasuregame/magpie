@@ -169,6 +169,8 @@ var CardList = Entity.extend({
 
                 gameData.player.add("money", msg.price);
 
+                TipLayer.tipNoBg("仙币：+" + msg.price);
+
                 cb();
 
                 lz.dc.event("event_card_sell", cardIdList.length);

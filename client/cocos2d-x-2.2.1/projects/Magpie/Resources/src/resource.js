@@ -52,6 +52,7 @@ var main_scene_image = {
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
     exp: main_scene_path + "exp.png",
+    exp_full: main_scene_path + "exp_full.png",
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
@@ -185,6 +186,7 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
+    button17d: main_scene_path + "button17d.png",
     button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
@@ -586,7 +588,9 @@ var main_scene_image = {
     icon303: main_scene_path + "icon303.png",
     icon304: main_scene_path + "icon304.png",
     icon305: main_scene_path + "icon305.png",
-
+    icon306: main_scene_path + "icon306.png",
+    icon307: main_scene_path + "icon307.png",
+    icon308: main_scene_path + "icon308.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -729,7 +733,7 @@ var main_scene_image = {
     p28: "res/effect/effect/p28.png",
     p29: "res/effect/effect/p29.png",
     p30: "res/effect/effect/p30.png",
- //   p31: "res/effect/effect/p31.png",
+  //  p31: "res/effect/effect/p31.png",
     p32: "res/effect/effect/p32.png",
     p33: "res/effect/effect/p33.png",
 

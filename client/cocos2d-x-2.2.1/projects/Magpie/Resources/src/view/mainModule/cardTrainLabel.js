@@ -363,7 +363,7 @@ var CardTrainLabel = cc.Layer.extend({
             cc.log(data);
 
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
             effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });

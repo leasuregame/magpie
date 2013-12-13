@@ -70,7 +70,7 @@ var CardListFullTipLayer = LazyLayer.extend({
         var go2BuyItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon305,
+            main_scene_image.icon307,
             this._onClickGo2Buy,
             this
         );
@@ -79,7 +79,7 @@ var CardListFullTipLayer = LazyLayer.extend({
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon72,
+            main_scene_image.icon308,
             this._onClickCancel,
             this
         );
@@ -142,8 +142,6 @@ var CardListFullTipLayer = LazyLayer.extend({
         if (count > 0) {
             var that = this;
             gameData.shop.buyProduct(function (data) {
-                that._update();
-
                 lz.tipReward(data);
             }, id, count);
         }

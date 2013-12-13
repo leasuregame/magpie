@@ -16,7 +16,6 @@ achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 logger = require('pomelo-logger').getLogger(__filename)
 
-MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
@@ -97,15 +96,62 @@ Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
+  times = if msg.times? then msg.times else 1
 
   typeMapping = {}
   typeMapping[LOTTERY_BY_GOLD] = 'gold'
   typeMapping[LOTTERY_BY_ENERGY] = 'energy'
 
   player = null
-  consumeVal = 0
-  fragment = 0
+  totalConsume = 0
+  totalFragment = 0
   isFree = 0
+
+  generateCard = (player, level, type, times, isFree, cb) ->
+    if isFree and times is 1
+      except_ids = _.values(player.cards).map (c) -> c.tableId
+      [card, consumeVal, fragment] = lottery.freeLottery(level, except_ids)
+      totalConsume = consumeVal
+      totalFragment = fragment
+      cb(null, [card])
+    else
+      rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
+      hfc = player.highFragmentCount + 1 #高级抽卡魂次数
+      hdcc = player.highDrawCardCount + 1 #高级抽卡次数
+
+      async.times times, (n, next) ->
+        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++)
+        totalConsume += consumeVal
+        totalFragment += fragment
+        next(null, card, consumeVal, fragment)
+      , (err, cards, consumes, fragments) ->
+        console.log '-a-', cards, totalConsume, totalFragment
+        cb(null, cards)
+
+  processCards = (cards) ->
+    ### 抽奖次数成就 ###
+    achieve.luckyCardCount(player, times)
+
+    ### 高级抽奖次数成就 ###
+    if level is HIGH_LUCKYCARD
+      achieve.highLuckyCardCount(player, times)
+
+    for ent in cards
+      ### 获得五星卡成就 ###
+      if ent.star is 5
+        achieve.star5card(player)
+
+      if level is HIGH_LUCKYCARD and ent.star == 5 #抽到5星卡牌，高级抽卡次数变为0
+        player.set('highDrawCardCount',0)
+        card = table.getTableItem('cards', ent.tableId)
+        msg = {
+          #route: 'onSystemMessage',
+          msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
+          type: 0
+        }
+        #@app.get('messageService').pushMessage(msg)
+        msgQueue.push(msg)
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -119,84 +165,59 @@ Handler::luckyCard = (msg, session, next) ->
         isFree = player.firstTime.highLuckyCard
         player.setFirstTime('highLuckyCard', 0)
 
-      if _.keys(player.cards).length >= MAX_CARD_COUNT
+      cardCount = _.keys(player.cards).length
+      if cardCount >= player.cardsCount or cardCount + times > player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
       rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
       hfc = player.highFragmentCount + 1 #高级抽卡魂次数
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
-      if isFree
-        except_ids = _.values(player.cards).map (c) -> c.tableId
-        [card, consumeVal, fragment] = lottery.freeLottery(level, except_ids)
-      else
-        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc, hfc, hdcc)
+      generateCard player, level, type, times, isFree, cb
 
-      if player[typeMapping[type]] < consumeVal
+    (cards, cb) ->
+      if player[typeMapping[type]] < totalConsume
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
-      card.playerId = player.id
-      cb(null, card)
-
-    (card, cb) ->
-      entityUtil.createCard card, cb
+      card.playerId = player.id for card in cards
+      async.map cards, entityUtil.createCard, cb
         
-    (cardEnt, cb) =>
-      player.addCard(cardEnt);
+    (cardEnts, cb) =>
+      player.addCards(cardEnts)
       if(level == LOW_LUCKYCARD)
-          player.increase('rowFragmentCount',1)
+          player.increase('rowFragmentCount', times)
       else
-          player.increase('highFragmentCount',1)
-          player.increase('highDrawCardCount',1);
+          player.increase('highFragmentCount', times)
+          player.increase('highDrawCardCount', times)
 
       if type is LOTTERY_BY_GOLD
-        player.decrease('gold', consumeVal)
+        player.decrease('gold', totalConsume)
 
       if type is LOTTERY_BY_ENERGY
-        player.decrease('energy', consumeVal)
+        player.decrease('energy', totalConsume)
 
-      if level is HIGH_LUCKYCARD and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
-        player.set('highDrawCardCount',0)
-        card = table.getTableItem('cards', cardEnt.tableId)
-        msg = {
-          #route: 'onSystemMessage',
-          msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
-          type: 0
-        }
-        #@app.get('messageService').pushMessage(msg)
-        msgQueue.push(msg)
+      processCards(cardEnts)
 
-      if fragment
-        player.increase('fragments',fragment)
+      if totalFragment
+        player.increase('fragments',totalFragment)
         if level is LOW_LUCKYCARD
           player.set('rowFragmentCount',0)
         else
           player.set('highFragmentCount',0)
 
-      cb(null, cardEnt, player)
-  ], (err, cardEnt, player) ->
+      cb(null, cardEnts)
+  ], (err, cardEnts) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
-
-    ### 获得五星卡成就 ###
-    if cardEnt.star is 5
-      achieve.star5card(player)
-
-    ### 抽奖次数成就 ###
-    achieve.luckyCardCount(player)
-
-    ### 高级抽奖次数成就 ###
-    if level is HIGH_LUCKYCARD
-      achieve.highLuckyCardCount(player)
 
     player.save()
     next(null, {
       code: 200, 
-      msg: {
-        card: cardEnt.toJson(), 
-        consume: consumeVal,
-        fragment: fragment
-      }
+      msg:
+        card: cardEnts[0].toJson() if cardEnts.length is 1
+        cards: (cardEnts.map (c) -> c.toJson()) if cardEnts.length > 1
+        consume: totalConsume
+        fragment: totalFragment
     })
 
 Handler::skillUpgrade = (msg, session, next) ->
@@ -669,7 +690,7 @@ Handler::exchangeCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if _.keys(player.cards).length >= MAX_CARD_COUNT
+      if _.keys(player.cards).length >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
       
       if player.fragments < cardConfig.CARD_EXCHANGE[star]

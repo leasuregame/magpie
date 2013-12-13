@@ -14,8 +14,6 @@ dao = require('pomelo').app.get('dao')
 achieve = require '../../../domain/achievement'
 logger = require('pomelo-logger').getLogger(__filename)
 
-MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
-
 module.exports = (app) ->
   new Handler(app)
 
@@ -36,7 +34,7 @@ Handler::explore = (msg, session, next) ->
       player = _player
       taskId = player.task.id unless taskId?
 
-      if _.keys(player.cards).length >= MAX_CARD_COUNT
+      if _.keys(player.cards).length >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
       if taskId > player.task.id 

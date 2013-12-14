@@ -122,6 +122,7 @@
             'src/view/mainModule/cocosBuilderClass.js',
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
+            'src/view/mainModule/addFriendsLayer.js',
             'src/view/mainModule/rechargeLayer.js',
             'src/view/mainModule/powerRewardLayer.js',
             'src/view/mainModule/goldRewardLayer.js',

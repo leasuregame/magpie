@@ -123,6 +123,7 @@ var main_scene_image = {
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
     edit3: main_scene_path + "edit3.png",
+    edit4: main_scene_path + "edit4.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
@@ -284,6 +285,8 @@ var main_scene_image = {
     button66s: main_scene_path + "button66s.png",
     button67: main_scene_path + "button67.png",
     button67s: main_scene_path + "button67s.png",
+    button68: main_scene_path + "button68.png",
+    button68s: main_scene_path + "button68s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -592,6 +595,8 @@ var main_scene_image = {
     icon307: main_scene_path + "icon307.png",
     icon308: main_scene_path + "icon308.png",
     icon309: main_scene_path + "icon309.png",
+    icon310: main_scene_path + "icon310.png",
+    icon311: main_scene_path + "icon311.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",

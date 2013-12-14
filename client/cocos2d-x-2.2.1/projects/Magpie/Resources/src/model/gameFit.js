@@ -121,6 +121,30 @@ var fit4Iphone4 = {
             "itemBasePoint": cc.p(65, 862),
             "itemOffsetX": 107
         },
+        "addFriendLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "lineIconPoint": cc.p(360, 791),
+            "backItemPoint": cc.p(100, 920),
+            "giveCountIconPoint": cc.p(130, 858),
+            "receiveCountIconPoint": cc.p(130, 824),
+            "giveCountLabelPoint": cc.p(215, 856),
+            "receiveCountLabelPoint": cc.p(215, 822),
+            "updateFriendsItemPoint": cc.p(600, 841),
+            "nameEditBoxIconPoint": cc.p(340, 732),
+            "nameEditBoxSize": cc.size(538, 67),
+            "nameEditBoxPoint": cc.p(350, 732),
+            "searchFriendItemPoint": cc.p(620, 732),
+            "friendCountIconPoint": cc.p(565, 139),
+            "slashIconPoint": cc.p(565, 137),
+            "friendCountLabelPoint": cc.p(550, 137),
+            "maxFriendCountLabelPoint": cc.p(580, 137),
+            "scrollViewHeight": 640,
+            "scrollViewLayerRect": cc.rect(40, 176, 640, 500),
+            "scrollViewSize": cc.size(591, 500),
+            "scrollViewPoint": cc.p(65, 176)
+        },
         "amountLayer": {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpriteContentSize": cc.size(550, 300),
@@ -377,10 +401,10 @@ var fit4Iphone4 = {
             "nameEditBoxPoint": cc.p(360, 512),
             "okPoint": cc.p(260, 442),
             "cancelPoint": cc.p(460, 442),
-            "scrollViewHeight": 610,
-            "scrollViewLayerRect": cc.rect(40, 166, 640, 610),
-            "scrollViewSize": cc.size(640, 610),
-            "scrollViewPoint": cc.p(65, 166)
+            "scrollViewHeight": 580,
+            "scrollViewLayerRect": cc.rect(40, 176, 640, 580),
+            "scrollViewSize": cc.size(640, 580),
+            "scrollViewPoint": cc.p(65, 176)
         },
         "friendMessageLayer": {
             "scrollViewHeight": 742,
@@ -1276,6 +1300,31 @@ var fit4Iphone5 = {
             "itemBasePoint": cc.p(25, 1038),
             "itemOffsetX": 107
         },
+        "addFriendLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "lineIconPoint": cc.p(320, 975),
+            "backItemPoint": cc.p(60, 1096),
+            "giveCountIconPoint": cc.p(90, 1034),
+            "receiveCountIconPoint": cc.p(90, 1000),
+            "giveCountLabelPoint": cc.p(175, 1032),
+            "receiveCountLabelPoint": cc.p(175, 998),
+            "updateFriendsItemPoint": cc.p(560, 1017),
+            "nameEditBoxIconPoint": cc.p(300, 908),
+            "nameEditBoxSize": cc.size(538, 67),
+            "nameEditBoxPoint": cc.p(310, 908),
+            "searchFriendItemPoint": cc.p(580, 908),
+            "addFriendItemPoint": cc.p(560, 1017),
+            "friendCountIconPoint": cc.p(525, 139),
+            "slashIconPoint": cc.p(525, 137),
+            "friendCountLabelPoint": cc.p(510, 137),
+            "maxFriendCountLabelPoint": cc.p(540, 137),
+            "scrollViewHeight": 660,
+            "scrollViewLayerRect": cc.rect(0, 176, 640, 660),
+            "scrollViewSize": cc.size(591, 660),
+            "scrollViewPoint": cc.p(25, 176)
+        },
         "amountLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpriteContentSize": cc.size(550, 300),
@@ -1532,10 +1581,10 @@ var fit4Iphone5 = {
             "nameEditBoxPoint": cc.p(320, 600),
             "okPoint": cc.p(220, 530),
             "cancelPoint": cc.p(420, 530),
-            "scrollViewHeight": 929,
-            "scrollViewLayerRect": cc.rect(0, 106, 640, 929),
-            "scrollViewSize": cc.size(591, 816),
-            "scrollViewPoint": cc.p(25, 106)
+            "scrollViewHeight": 766,
+            "scrollViewLayerRect": cc.rect(0, 176, 640, 766),
+            "scrollViewSize": cc.size(591, 766),
+            "scrollViewPoint": cc.p(25, 176)
         },
         "friendMessageLayer": {
             "scrollViewHeight": 880,

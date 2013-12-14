@@ -208,6 +208,40 @@ director.setAnimationInterval(1.0 / 30);
 // fit dev
 gameFitAdapter();
 
+var tbadapter = tb.TBAdapter.TBAdapterInstance();
+tbadapter.TBInitPlatformWithAppID(100000, 1, true);
+cc.log("inited tbadapter...");
+tbadapter.initDidFinishWithUpdateCodeHandler = function(code) {
+    cc.log("finish init with code: ");
+    cc.log(code);
+    
+    tbadapter.TBLogin();
+};
+
+tbadapter.loginResultHandler = function(isSuccess, userInfo) {
+    cc.log("login result: ");
+    cc.log(isSuccess);
+    cc.log("userInfo");
+    cc.log(userInfo.nikeName);
+    cc.log(userInfo.userId);
+    cc.log(userInfo.sessionId);
+    
+    cc.log(tbadapter.TBIsLogined());
+    cc.log(tbadapter.TBSessionID());
+    cc.log(tbadapter.TBUserID());
+    cc.log(tbadapter.TBNickName());
+    tbadapter.TBEnterBBS();
+};
+
+tbadapter.leavePlatformHandler = function(closeType, order) {
+    cc.log("leave platform");
+    cc.log(closeType);
+    cc.log(order);
+};
+
+cc.log('is login');
+cc.log(tbadapter.TBIsLogined());
+
 // create a scene. it's an autorelease object
 var loginScene = LoginScene.create();
 

@@ -27,6 +27,7 @@ Manager = module.exports =
       challenger = (ranks.filter (r) -> r.playerId == player.id)?[0]
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]
       challenger.increase('challengeCount')
+      challenger.increase('startCount')
       defender.increase('challengeCount')
       
       rewards = {ranking_elixir: 0}
@@ -50,13 +51,12 @@ Manager = module.exports =
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
-        checkAchievement(player, challenger)
-
       else
         updateRankInfo(defender, challenger)
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
+      checkAchievement(player, challenger) if isWin
       updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
 
@@ -111,7 +111,7 @@ reflashRank = (player, clg, targetId, def) ->
 checkAchievement = (player, challenger) ->
   achieve.winCount(player, challenger.winCount)
   achieve.winningStreak(player, challenger.winningStreak)
-  achieve.rankingToOne(player) if player.ranking is 1
+  achieve.rankingToOne(player) if player.rank.ranking is 1
 
 rewardPercent = (ranking) ->
   pct = 0

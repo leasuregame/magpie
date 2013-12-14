@@ -28,7 +28,6 @@ var FriendDao = (function(_super) {
     domain.FIELDS = ['playerId', 'friendId', 'giveCount', 'receiveCount'];
     FriendDao.domain = domain;   
 
-
     FriendDao.getFriends = function(playerId, cb) {
         var sql = 'select p.id, p.name, p.lv, p.ability, f.giveCount, f.receiveCount from player as p \
             join friend as f on p.id = f.friendId \

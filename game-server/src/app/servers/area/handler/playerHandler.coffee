@@ -24,9 +24,10 @@ Handler::searchPlayer = (msg, session, next) ->
     fields: ['id', 'name', 'lv', 'ability']
   }, (err, player) ->
     if err
-      next(null, {code: 501, msg: "找不到玩家"})
+      return next(null, {code: 501, msg: "找不到玩家"})
 
-    next(null, {code: 200, 
+    next(null, {
+      code: 200
       msg: 
         id: player.id
         name: player.name

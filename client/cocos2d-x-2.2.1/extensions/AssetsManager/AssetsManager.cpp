@@ -36,6 +36,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <dirent.h>
 #endif
 
 #include "support/zip_support/unzip.h"
@@ -74,8 +75,7 @@ struct ProgressMessage
 // Implementation of AssetsManager
 
 AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* versionFileUrl/* =NULL */, const char* storagePath/* =NULL */)
-:  _storagePath(storagePath)
-, _version("")
+: _version("")
 , _packageUrl(packageUrl)
 , _versionFileUrl(versionFileUrl)
 , _downloadedVersion("")
@@ -83,8 +83,9 @@ AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* vers
 , _tid(NULL)
 , _connectionTimeout(0)
 , _delegate(NULL)
+, _shouldDeleteDelegateWhenExit(false)
 {
-    checkStoragePath();
+    this->setStoragePath(storagePath);
     _schedule = new Helper();
 }
 
@@ -93,6 +94,12 @@ AssetsManager::~AssetsManager()
     if (_schedule)
     {
         _schedule->release();
+    }
+    
+    // 添加释放代理操作
+    if (_shouldDeleteDelegateWhenExit)
+    {
+        delete _delegate;
     }
 }
 
@@ -284,6 +291,43 @@ bool AssetsManager::uncompress()
         }
         else
         {
+            // 从3.0版本拷贝
+            //There are not directory entry in some case.
+            //So we need to test whether the file directory exists when uncompressing file entry
+            //, if does not exist then create directory
+            string fileNameStr(fileName);
+            size_t startIndex=0;
+            size_t index=fileNameStr.find("/",startIndex);
+            
+            while(index!=-1)
+            {
+                string dir=_storagePath+fileNameStr.substr(0,index);
+                
+                FILE *out = fopen(dir.c_str(), "r");
+                
+                if(!out)
+                {
+                    if (!createDirectory(dir.c_str()))
+                    {
+                        CCLOG("can not create directory %s", dir.c_str());
+                        unzClose(zipfile);
+                        return false;
+                    }
+                    else
+                    {
+                        CCLOG("create directory %s",dir.c_str());
+                    }
+                }
+                else
+                {
+                    fclose(out);
+                }
+                
+                startIndex=index+1;
+                
+                index=fileNameStr.find("/",startIndex);
+            }
+            
             // Entry is a file, so extract it.
             
             // Open current file.
@@ -374,8 +418,14 @@ void AssetsManager::setSearchPath()
 {
     vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
-    searchPaths.insert(iter, _storagePath);
-    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+    
+    // 修改资源搜索路径
+    // 如果第一个搜索路径与当前更新的路径一样
+    // 则不更新搜索路径
+    if(*iter != _storagePath) {
+        searchPaths.insert(iter, _storagePath);
+        CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+    }
 }
 
 static size_t downLoadPackage(void *ptr, size_t size, size_t nmemb, void *userdata)
@@ -456,8 +506,19 @@ const char* AssetsManager::getStoragePath() const
 
 void AssetsManager::setStoragePath(const char *storagePath)
 {
-    _storagePath = storagePath;
-    checkStoragePath();
+    string path = storagePath;
+    
+    if (path.size() > 0 && path[_storagePath.size() - 1] != '/')
+    {
+        // 修改路径，若传入的路径为简单目录，转换成绝对路径
+        path = CCFileUtils::sharedFileUtils()->getWritablePath() + path + "/";
+    }
+    
+    if(path != _storagePath) {
+        _storagePath = path;
+        
+        this->createStoragePath();
+    }
 }
 
 const char* AssetsManager::getVersionFileUrl() const
@@ -606,6 +667,134 @@ void AssetsManager::Helper::handleUpdateSucceed(Message *msg)
     }
     
     if (manager) manager->_delegate->onSuccess();
+}
+
+/*
+ 创建目录
+ */
+void AssetsManager::createStoragePath()
+{
+    // Remove downloaded files
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+    DIR *dir = NULL;
+    
+    dir = opendir (_storagePath.c_str());
+    if (!dir)
+    {
+        mkdir(_storagePath.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+    }
+#else
+    if ((GetFileAttributesA(_storagePath.c_str())) == INVALID_FILE_ATTRIBUTES)
+    {
+        CreateDirectoryA(_storagePath.c_str(), 0);
+    }
+#endif
+}
+
+/*
+ 删除目录
+ */
+void AssetsManager::destroyStoragePath()
+{
+    // Delete recorded version codes.
+    deleteVersion();
+    
+    // Remove downloaded files
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+    string command = "rm -r ";
+    // Path may include space.
+    command += "\"" + _storagePath + "\"";
+    system(command.c_str());
+#else
+    string command = "rd /s /q ";
+    // Path may include space.
+    command += "\"" + _storagePath + "\"";
+    system(command.c_str());
+#endif
+}
+
+AssetsManager* AssetsManager::create(
+                                     const char* packageUrl,
+                                     const char* versionFileUrl,
+                                     const char* storagePath,
+                                     jsval jsThisObj,
+                                     jsval errorCallback,
+                                     jsval progressCallback,
+                                     jsval successCallback
+) {
+    class DelegateProtocolImpl : public AssetsManagerDelegateProtocol
+    {
+        public :
+        DelegateProtocolImpl(jsval jsThisObj, jsval errorCallback, jsval progressCallback, jsval successCallback)
+        : _jsThisObj(jsThisObj)
+        , _errorCallback(errorCallback)
+        , _progressCallback(progressCallback)
+        , _successCallback(successCallback)
+        {
+            
+        }
+        
+        virtual void onError(AssetsManager::ErrorCode errorCode)
+        {
+            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+            jsval retval = JSVAL_NULL;
+            
+            if(!_errorCallback.isNullOrUndefined()) {
+                jsval jsErrorCode = INT_TO_JSVAL(errorCode);
+                
+                if (_jsThisObj.isNullOrUndefined()) {
+                    JS_CallFunctionValue(cx, NULL, _errorCallback, 1, &jsErrorCode, &retval);
+                }
+                else {
+                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _errorCallback, 1, &jsErrorCode, &retval);
+                }
+            }
+        }
+        
+        virtual void onProgress(int percent)
+        {
+            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+            jsval retval = JSVAL_NULL;
+            
+            if(!_progressCallback.isNullOrUndefined()) {
+                jsval jsPercent = INT_TO_JSVAL(percent);
+                
+                if (_jsThisObj.isNullOrUndefined()) {
+                    JS_CallFunctionValue(cx, NULL, _progressCallback, 1, &jsPercent, &retval);
+                }
+                else {
+                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 1, &jsPercent, &retval);
+                }
+            }
+        }
+        
+        virtual void onSuccess()
+        {
+            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+            jsval retval = JSVAL_NULL;
+            
+            if(!_progressCallback.isNullOrUndefined()) {
+                if (_jsThisObj.isNullOrUndefined()) {
+                    JS_CallFunctionValue(cx, NULL, _progressCallback, 0, NULL, &retval);
+                }
+                else {
+                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 0, NULL, &retval);
+                }
+            }
+        }
+        
+        private :
+        jsval _jsThisObj;
+        jsval _errorCallback;
+        jsval _progressCallback;
+        jsval _successCallback;
+    };
+    
+    AssetsManager* manager = new AssetsManager(packageUrl, versionFileUrl, storagePath);
+    DelegateProtocolImpl* delegate = new DelegateProtocolImpl(jsThisObj, errorCallback, progressCallback, successCallback);
+    manager->setDelegate(delegate);
+    manager->_shouldDeleteDelegateWhenExit = true;
+    return manager;
 }
 
 NS_CC_EXT_END;

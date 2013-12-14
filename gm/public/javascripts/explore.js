@@ -14,6 +14,7 @@ var maxId = 500;
 var times = 0;
 var tid = 0;
 var user;
+var type;
 
 var TYPE = {
     ONEPASS: 0,
@@ -47,16 +48,17 @@ $(document).ready(function () {
     $("#btnGoOn").click(function () {
         times = 0;
         submitStart(TYPE.GOON);
-        // submitExplore(user.account, user.password, areaId);
     });
     $("#btnStop").click(function() {
         maxId = 0;
     });
 });
 
-function submitStart(type) {
+function submitStart(t) {
 
     var task;
+
+    type = t;
 
     if (type == TYPE.START) {
         task = {
@@ -84,46 +86,34 @@ function submitStart(type) {
             if (msg.type != "success") {
                 setShowMsg(msg);
             } else {
-                //  var user = msg.info;
                 times = 0;
-
-                login(user.account, user.password, areaId, function (err, taskId, pid) {
-
-                    if (err) {
-                        console.log(err);
-                    }
-                    else {
-                        initResult();
-                        playerId = pid;
-                        if (type == TYPE.ONEPASS)
-                            maxId = taskId;
-                        else
-                            maxId = 500;
-                        explore(taskId);
-                    }
+                deleteCards(function(){
+                    initResult();
+                    login2Explore();
                 });
-
-                // submitExplore(user.account, user.password, areaId);
             }
         }
     });
 };
 
+function login2Explore() {
 
-//
-//function submitExplore(account, password, areaId) {
-//    login(account, password, areaId, function (err, taskId, pid) {
-//
-//        if (err) {
-//            console.log(err);
-//        }
-//        else {
-//            initResult();
-//            playerId = pid;
-//            explore(taskId);
-//        }
-//    });
-//};
+    login(user.account, user.password, areaId, function (err, taskId, pid) {
+
+        if (err) {
+            console.log(err);
+        }
+        else {
+            playerId = pid;
+            if (type == TYPE.ONEPASS)
+                maxId = taskId;
+            else
+                maxId = 500;
+            explore(taskId);
+        }
+    });
+};
+
 
 var result = {};
 
@@ -252,7 +242,6 @@ function showResult(task) {
 
 
 function explore(id) {
-    // console.log(taskId);
 
     var route = "area.taskHandler.explore";
     pomelo.request(route, {
@@ -276,9 +265,10 @@ function explore(id) {
 
             tid = id;
 
-            if (times % 100 == 0) {   //每100次探索清理一次获得的卡牌
+            if (times % 100 == 0) {   //每100次探索清理卡牌
                 deleteCards(function () {
-                    explore(id);
+                    pomelo.disconnect();
+                    login2Explore();
                 });
             } else {
                 explore(id);
@@ -312,8 +302,7 @@ function isStop(data, id) {
 
 
 function login(account, password, areaId, cb) {
-    // queryEntry(function(host,port){
-    //var host = "127.0.0.1";
+
     initConnect(function(){
         var route = "connector.userHandler.login";
         pomelo.request(route, {
@@ -329,50 +318,10 @@ function login(account, password, areaId, cb) {
             }
         });
     });
-//    var host = ip;
-//    var port = 3010;
-//    pomelo.init({
-//        host: host,
-//        port: port,
-//        log: true
-//    }, function () {
-//        var route = "connector.userHandler.login";
-//        pomelo.request(route, {
-//            account: account,
-//            password: password,
-//            areaId: areaId
-//        }, function (data) {
-//            if (data.code === 200) {
-//                console.log(data);
-//                return cb(null, data.msg.player.task.id, data.msg.player.id);
-//            } else {
-//                return cb(data.msg, null, null);
-//            }
-//        });
-//    });
-    // });
+
 };
 
-/*
- function queryEntry(cb) {
- var route = 'gate.gateHandler.queryEntry';
- pomelo.init({
- host: "127.0.0.1",
- port: 3009,
- log: true
- }, function() {
- pomelo.request(route,function(data) {
- pomelo.disconnect();
- if(data.code === 500) {
- //    showError(LOGIN_ERROR);
- return;
- }
- //   console.log(data);
- cb(data.host, data.port);
- });
- });
- };
- */
+
 
 //信息提示
 function setShowMsg(msg) {

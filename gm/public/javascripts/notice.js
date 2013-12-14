@@ -10,7 +10,7 @@ function setAreas(a) {
 function initList() {
     var inner = "";
     inner += '<option value = "-1">所有</option>';
-    areas.forEach(function (area) {
+    servers.forEach(function (area) {
         inner += '<option value =' + area.id + '>' + area.name + '</option>';
     });
     $("#area").append(inner);
@@ -25,6 +25,10 @@ function initList() {
 
 $(document).ready(function () {
 
+    initServer(function() {
+        initList();
+    });
+
     $("#btnOk").click(function () {
         submit();
     });
@@ -36,13 +40,13 @@ function submit() {
 	var msg = getMsg();
 
 	if (areaId == ALL) {  //全部服务器
-        var len = areas.length;
+        var len = servers.length;
         var id = 0;
 
         async.whilst(
             function(){ return id < len; },
             function(cb){
-                dealAll(areas[id].id,msg,function(err){
+                dealAll(servers[id].id,msg,function(err){
                     if(err)
                         cb(err);
                     id++;

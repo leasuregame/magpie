@@ -4,6 +4,7 @@ var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var _ = require('underscore');
 var utility = require('../../common/utility');
+var uuid = require('node-uuid');
 
 var ACTION = {
   INSERT: 'insert',
@@ -69,8 +70,14 @@ var DaoBase = (function() {
       data.createTime = Date.now();
     }
 
-    if (this.table == 'player' && !data.created) {
-      data.created = utility.dateFormat(new Date(), 'yyyy-MM-dd h:mm:ss')
+    if (this.table == 'player') {
+      if (!data.created){
+        data.created = utility.dateFormat(new Date(), 'yyyy-MM-dd h:mm:ss')
+      }
+      if (!data.uniqueId) {
+        data.uniqueId = uuid.v1();
+      }
+      
     }
 
     for (key in data) {

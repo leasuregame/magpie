@@ -17,7 +17,8 @@ createMysqlPool = function (config) {
                 user: mysqlConfig.user,
                 port: mysqlConfig.port,
                 password: mysqlConfig.password,
-                database: mysqlConfig.database
+                database: mysqlConfig.database,
+                insecureAuth: true
             });
             return callback(null, client);
         },

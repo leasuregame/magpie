@@ -21,7 +21,9 @@
         "pomelo-monitor": ">=0.3.3",
         "pomelo-sync-plugin": "*",
         "pomelo-cli": "*",
-        "pomelo-admin": "*"
+        "pomelo-admin": "*",
+        "request": "2.27",
+        "node-uuid": "1.4.1"
     },
     "devDependencies": {
         "underscore": "1.4.4",

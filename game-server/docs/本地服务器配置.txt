@@ -1,0 +1,55 @@
+本地服务器配置
+零. Ssh
+帐号: leasure
+密码: LeasureGame
+命令：ssh leasure@192.168.1.11
+登陆后 sudo -i 可提升到root权限。
+
+一. Ftp
+配置文件: /etc/vsftpd.conf
+用户及权限配置文件在此文件夹内：/etc/vsftpd_user_conf,文件名为账号名，文件内容为给用户的权限和配置。
+用户账号管理文件：/etc/vsftpd_login.db (pam权限文件）
+参考：http://wiki.ubuntu.org.cn/Vsftpd%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE
+当前已有账号：
+ftpread:ftpread
+ftproot:iamroot
+都是对/home/leasure的访问账号，一个只读，一个可读写
+ftp启动或重启命令
+service ftpd start
+service ftpd stop
+service ftpd restart
+
+
+二. Samba(即共享文件夹)
+配置文件: /etc/samba/sam.conf
+参考：http://yuanbin.blog.51cto.com/363003/115761/
+Samba启动或重启命令
+service samba4 start
+service samba4 stop
+service samba4 restart
+
+
+三. Svn
+Svn数据库存放位置：/home/lz_svn/
+权限配置文件:/home/lz_svn/authz
+账号密码配置文件：/home/lz_svn/passwd
+更改账号密码后，重启机器生效。
+参考：http://www.oksvn.com/Help/289.shtml
+Svn是直接命令行启动的，另外在/etc/rc.local设置了命令启动svn服务
+svnserve -d -r /home/lz_svn/trunk
+
+
+四. Apache
+配置文件：/etc/apache2/apache2.conf
+参考：http://blog.csdn.net/cookies_6362/article/details/2881206
+
+五. Quickbuild 5.0 
+文件位置:/home/leasure/quickbuild-5.0.3
+启动文件:/home/leasure/quickbuild-5.0.3/server.sh
+服务器重启后,发现qb有不正常反应,可以ssh登录后,重新执行server.sh,主要原因是启动所在编码不是utf-8.估计是未进入系统全就启动了进程.导致编码错误.
+登录地址:http://192.168.1.11:8810
+帐号:leasuregame
+密码:leasure114E
+
+六. Jenkins(有，但我也不清楚，治平搭建的）
+

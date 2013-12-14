@@ -1,5 +1,5 @@
 dao = require('pomelo').app.get('dao')
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'

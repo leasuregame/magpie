@@ -27,11 +27,11 @@ Handler::randomPlayers = (msg, session, next) ->
     (player, cb) ->
       ids = player.friends.map (f) -> f.id
       dao.player.random playerId, ids, limit, cb
-  ], (err, friends) ->
+  ], (err, players) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200, msg: friends: friends})
+    next(null, {code: 200, msg: players: players})
 
 Handler::setStep = (msg, session, next) ->
   playerId = session.get('playerId')

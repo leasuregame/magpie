@@ -16,7 +16,7 @@ var server = http.createServer(function(req, res) {
 
     var filename = 'big.zip';
     if (method == 'update') {
-        if (!/^\d{1,2}.\d{1,2}.\d{1,2}/.test(version)) {
+        if (version != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}/.test(version)) {
             res.writeHead(400, "Bad Version Number");
             return res.end();
         }

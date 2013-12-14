@@ -25,6 +25,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
+var util = require('util');
 
 var PlayerDao = (function(_super) {
     utility.extends(PlayerDao, _super);
@@ -255,6 +256,29 @@ var PlayerDao = (function(_super) {
                 done(null, player);
             }
         })
+    };
+
+    PlayerDao.random = function(playerId, exceptIds, limit, cb) {
+        exceptIds.push(playerId);
+        var sql = 'SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 \
+            JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 \
+            WHERE r1.id not in (%s) and r1.id >= r2.id \
+            ORDER BY r1.id ASC \
+            LIMIT %d';
+
+        sql = util.format(sql, exceptIds.toString(), limit);
+        dbClient.query(sql, [], function(err, res) {
+            if (err) {
+                logger.error('[SQL OERROR, when fetch player by random]');
+                logger.error(err.stack);
+            }
+
+            if ( !! res && res.length > 0) {
+                return cb(null, res);
+            } else {
+                return cb(null, []);
+            }
+        });
     };
 
     return PlayerDao;

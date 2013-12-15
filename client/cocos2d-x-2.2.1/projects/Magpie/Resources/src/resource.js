@@ -700,7 +700,7 @@ var main_scene_image = {
     uiEffect56: "res/ccb/uiEffect56.ccbi",
     uiEffect57: "res/ccb/uiEffect57.ccbi",
     uiEffect58: "res/ccb/uiEffect58.ccbi",
-//    uiEffect59: "res/ccb/uiEffect59.ccbi",
+    uiEffect59: "res/ccb/uiEffect59.ccbi",
 //    uiEffect60: "res/ccb/uiEffect60.ccbi",
 //    uiEffect61: "res/ccb/uiEffect61.ccbi",
 //    uiEffect62: "res/ccb/uiEffect62.ccbi",
@@ -886,7 +886,7 @@ var main_scene_image = {
     tutorials25: "res/ccb/tutorials25.ccbi",
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
-
+    tutorials29: "res/ccb/tutorials29.ccbi",
 
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",

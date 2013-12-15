@@ -75,7 +75,7 @@ var gameGuide = {
 
                 this.set(guide.name, true);
                 MainScene.getInstance().updateGuide();
-                MainScene.getInstance().getLayer().addChild(tipEffect);
+                MainScene.getInstance().getLayer().addChild(tipEffect, 10);
 
                 break;
             }

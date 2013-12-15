@@ -569,7 +569,8 @@ var fit4Iphone4 = {
                 "0": [
                     cc.rect(57, 4, 106, 106), cc.rect(445, 467, 221, 91), cc.rect(293, 518, 135, 158),
                     cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(385, 147, 150, 70),
-                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(0, 0, 640, 1136)
+                    cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(185, 147, 150, 70),
+                    cc.rect(164, 4, 106, 106)
                 ],
                 "1": [
                     cc.rect(57, 4, 106, 106), cc.rect(445, 467, 221, 91), cc.rect(179, 728, 150, 57),
@@ -589,7 +590,8 @@ var fit4Iphone4 = {
                 "0": [
                     cc.p(93, 54), cc.p(555, 512), cc.p(360, 597),
                     cc.p(360, 732), cc.p(603, 840), cc.p(460, 182),
-                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
+                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182),
+                    cc.p(200, 54)
                 ],
                 "1": [
                     cc.p(93, 54), cc.p(555, 512), cc.p(254, 756),
@@ -925,7 +927,7 @@ var fit4Iphone4 = {
             "upgradeItemPoint": cc.p(360, 402),
             "closeItemPoint": cc.p(360, 42),
             "spiritNodePoint": cc.p(360, 632),
-            "effectPoint": cc.p(360, 652)
+            "effectPoint": cc.p(360, 480)
         },
         "spiritPoolLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1755,7 +1757,8 @@ var fit4Iphone5 = {
                 "0": [
                     cc.rect(17, 4, 106, 106), cc.rect(405, 608, 221, 91), cc.rect(253, 611, 135, 158),
                     cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(345, 162, 150, 70),
-                    cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
+                    cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(145, 162, 150, 70),
+                    cc.rect(124, 4, 106, 106)
                 ],
                 "1": [
                     cc.rect(17, 4, 106, 106), cc.rect(405, 608, 221, 91), cc.rect(139, 869, 150, 57),
@@ -1775,7 +1778,8 @@ var fit4Iphone5 = {
                 "0": [
                     cc.p(53, 54), cc.p(515, 653), cc.p(320, 690),
                     cc.p(320, 886), cc.p(563, 1012), cc.p(420, 197),
-                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197),
+                    cc.p(160, 54)
                 ],
                 "1": [
                     cc.p(53, 54), cc.p(515, 653), cc.p(214, 897),
@@ -2111,7 +2115,7 @@ var fit4Iphone5 = {
             "upgradeItemPoint": cc.p(320, 500),
             "closeItemPoint": cc.p(320, 130),
             "spiritNodePoint": cc.p(320, 720),
-            "effectPoint": cc.p(320, 740)
+            "effectPoint": cc.p(320, 568)
         },
         "spiritPoolLayer": {
             "bgSpritePoint": cc.p(0, 106),

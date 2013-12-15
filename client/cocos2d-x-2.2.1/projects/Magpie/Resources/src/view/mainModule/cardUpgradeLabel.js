@@ -403,6 +403,11 @@ var CardUpgradeLabel = cc.Layer.extend({
                 upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
                 upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
                     upgradeEffect.removeFromParent();
+                    if (mandatoryTeachingLayer) {
+                        if (mandatoryTeachingLayer.isTeaching()) {
+                            mandatoryTeachingLayer.next();
+                        }
+                    }
                 });
                 LazyLayer.closeCloudLayer();
             }
@@ -492,7 +497,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
-                mandatoryTeachingLayer.next();
             }
         }
 

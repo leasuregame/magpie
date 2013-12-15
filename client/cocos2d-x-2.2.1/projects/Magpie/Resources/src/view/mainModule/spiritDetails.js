@@ -19,8 +19,10 @@ var SpiritDetails = LazyLayer.extend({
     _lvLabel: null,
     _expLabel: null,
     _passiveHarmLabel: null,
+    _oldPassiveHarm: 0,
     _skillHarmLabel: null,
     _upgradeItem: null,
+    _ccbNode: null,
 
     onEnter: function () {
         cc.log("SpiritDetails onEnter");
@@ -158,17 +160,30 @@ var SpiritDetails = LazyLayer.extend({
         this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
-//        this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
     },
 
     closeCloud: function () {
         cc.log("SpiritDetails closeCloud");
 
-        LazyLayer.closeCloudAll();
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect59, this);
+        var controller = effect.controller;
+        var spirit = gameData.spirit;
 
-        if (noviceTeachingLayer.isNoviceTeaching()) {
-            noviceTeachingLayer.next();
-        }
+        controller.oldLvLabel.setString("LV.  " + (spirit.get("lv") - 1));
+        controller.nowLvLabel.setString("LV.  " + spirit.get("lv"));
+        controller.oldPassiveHarmLabel.setString(this._oldPassiveHarm);
+        controller.nowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+
+        effect.setPosition(this._spiritDetailsFit.effectPoint);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+            LazyLayer.closeCloudAll();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.next();
+            }
+        });
+
+        this.addChild(effect);
     },
 
     _onClickUpgrade: function () {
@@ -189,6 +204,7 @@ var SpiritDetails = LazyLayer.extend({
             cc.log(success);
 
             if (success) {
+                that._oldPassiveHarm = that._passiveHarmLabel.getString();
                 that._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             } else {
                 that.update();

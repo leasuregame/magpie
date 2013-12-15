@@ -271,7 +271,8 @@ var fit4Iphone4 = {
             "expLabelPoint": cc.p(425, 838),
             "rateLabelPoint": cc.p(425, 838),
             "moneyLabelPoint": cc.p(425, 838),
-            "buyCountItemPoint": cc.p(630, 141)
+            "buyCountItemPoint": cc.p(630, 141),
+            "tipLayerPoint": cc.p(130, 838)
         },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(364, 525),
@@ -1458,7 +1459,8 @@ var fit4Iphone5 = {
             "expLabelPoint": cc.p(385, 1014),
             "rateLabelPoint": cc.p(385, 1014),
             "moneyLabelPoint": cc.p(385, 1014),
-            "buyCountItemPoint": cc.p(590, 151)
+            "buyCountItemPoint": cc.p(590, 151),
+            "tipLayerPoint": cc.p(90, 1014)
         },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(324, 613),

@@ -67,11 +67,15 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;
-
+            if (str[i].icon) {
+                var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
+                rewardIcon.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX - 25, offsetY));
+                label.addChild(rewardIcon);
+            }
             var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 22);
             rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
+            rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX + 30, offsetY));
             label.addChild(rewardLabel);
 
         }

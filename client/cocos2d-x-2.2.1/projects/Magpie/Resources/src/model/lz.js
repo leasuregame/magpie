@@ -186,7 +186,7 @@ var gameGoodsIcon = {
     "gold": "icon148",
     "power": "icon150",
     "elixir": "icon151",
-    "fragment": "icon145",
+    "fragment": "icon243",
     "energy": "icon154",
     "skillPoint": "icon152"
 };
@@ -198,35 +198,43 @@ var gameGoodsName = {
     },
     "money": {
         name: "仙币",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["money"]
     },
     "gold": {
         name: "魔石",
-        color: cc.c3b(118, 238, 60)
+        color: cc.c3b(118, 238, 60),
+        icon: gameGoodsIcon["gold"]
     },
     "powerValue": {
         name: "体力",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["powerValue"]
     },
     "power": {
         name: "体力",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["power"]
     },
     "elixir": {
         name: "仙丹",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["elixir"]
     },
     "fragment": {
         name: "卡魂",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["fragment"]
     },
     "energy": {
         name: "活力点",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["energy"]
     },
     "skillPoint": {
         name: "技能点",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["skillPoint"]
     },
     "totalSpirit": {
         name: "灵气",

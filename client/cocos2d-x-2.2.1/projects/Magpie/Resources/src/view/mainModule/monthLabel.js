@@ -44,12 +44,13 @@ var MonthLabel = cc.Node.extend({
             var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
 
             var url = "icon186";
-
-            if (this._index == 0) {
-                if (i + 1 <= nowDay) {
-                    url = "icon305";
-                }
-            }
+            var flag = monthMark.mark >> i & 1;
+//
+//            if (this._index == 0) {
+//                if (i + 1 <= nowDay && !flag) {
+//                    url = "icon305";
+//                }
+//            }
 
             var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);

@@ -231,6 +231,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         this._step = OVER_NOVICE_STEP;
         this._save();
         this.removeFromParent();
+        gameGuide.updateLotteryGuide();
     },
 
     /**

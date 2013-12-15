@@ -57,6 +57,7 @@ var gameGuide = {
     _card4Guide: false,
     _card5Guide: false,
     _isFirstPassiveSkillAfresh: false,
+    _lotteryGuide: false,
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
@@ -83,6 +84,13 @@ var gameGuide = {
 
         if (lv == PASSIVE_SKILL_AFRESH_LV) {
             this.set("isFirstPassiveSkillAfresh", true);
+        }
+    },
+
+    updateLotteryGuide: function() {
+        if (gameData.lottery._freeLowLotteryCard || gameData.lottery._freeHighLotteryCard) {
+            this.set("lotteryGuide", true);
+            MainScene.getInstance().updateGuide();
         }
     },
 

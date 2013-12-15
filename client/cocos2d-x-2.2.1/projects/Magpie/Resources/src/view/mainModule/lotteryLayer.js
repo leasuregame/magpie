@@ -260,9 +260,9 @@ var LotteryLayer = cc.Layer.extend({
         if (noviceTeachingLayer.isNoviceTeaching()) {
             noviceTeachingLayer.setVisible(false);
         }
-        if (this._times = 1) {
+        if (this._times == 1) {
             LotteryCardLayer.pop(this._data);
-        } else if (this._times = 10) {
+        } else if (this._times == 10) {
             TenLotteryCardLayer.pop(this._data);
         }
 
@@ -310,7 +310,7 @@ var LotteryLayer = cc.Layer.extend({
 
             var lottery = gameData.lottery;
 
-            if (!lottery.canLottery(type, level, times)) {
+            if (!lottery.canLottery(type, level, this._times)) {
                 return;
             }
 
@@ -345,7 +345,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
-                    fn();
+                    fn(data);
 
                 }, type, level);
             } else if (this._times == 10) {
@@ -353,7 +353,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
-                    fn();
+                    fn(data);
 
                 }, type, level);
             }

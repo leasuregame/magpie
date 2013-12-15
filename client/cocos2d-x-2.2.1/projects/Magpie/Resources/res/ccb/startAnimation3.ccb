@@ -836,7 +836,7 @@
 								<key>value</key>
 								<array>
 									<real>25</real>
-									<real>20</real>
+									<real>36.000003814697266</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -891,7 +891,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>102</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -931,8 +931,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2245,8 +2245,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4122,8 +4122,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4302,7 +4302,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4311,8 +4311,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>720</real>
-							<real>1136</real>
+							<real>1440</real>
+							<real>2272</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4388,7 +4388,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -15048,7 +15048,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>1.0666667222976685</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -15058,7 +15058,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.60000002384185791</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/peaches.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>
@@ -15092,7 +15111,206 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.13333334028720856</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/insert.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.53333336114883423</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.9666666984558105</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>3.0333333015441895</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/ding.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>3.4333333969116211</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>4.3666667938232422</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/money.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>5.0333333015441895</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>6.6999998092651367</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>8.1333332061767578</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/Wordinsert.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>9.2666664123535156</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>11.899999618530273</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/insert.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>
@@ -15116,7 +15334,7 @@
 			<key>offset</key>
 			<real>0.35427474975585938</real>
 			<key>position</key>
-			<real>5.5</real>
+			<real>4.0666666030883789</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -15126,7 +15344,170 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.63333332538604736</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.4666666984558105</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.6000000238418579</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.7333333492279053</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.8666666746139526</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>2</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>2.1333334445953369</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>2.2666666507720947</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/pop.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>4.0666666030883789</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/noword.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

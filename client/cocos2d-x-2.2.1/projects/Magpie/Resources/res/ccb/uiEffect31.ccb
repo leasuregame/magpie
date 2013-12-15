@@ -82,7 +82,7 @@
 												<key>opt</key>
 												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>3</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
@@ -279,8 +279,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1</real>
-												<real>1</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 									</array>
@@ -378,8 +378,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2</real>
+									<real>2</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -566,13 +566,17 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.23333333432674408</real>
+			<real>0.26666668057441711</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
+<<<<<<< HEAD
 			<real>0.23333333432674408</real>
+=======
+			<real>0.26666668057441711</real>
+>>>>>>> muwan
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

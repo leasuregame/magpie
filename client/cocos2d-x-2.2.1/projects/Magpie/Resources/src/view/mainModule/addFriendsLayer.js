@@ -103,7 +103,6 @@ var AddFriendsLayer = cc.Layer.extend({
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        this._nameEditBox.setMaxLength(6);
         this._nameEditBox.setPlaceHolder("请输入好友名字");
         this.addChild(this._nameEditBox);
 

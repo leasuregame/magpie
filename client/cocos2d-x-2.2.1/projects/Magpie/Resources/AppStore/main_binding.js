@@ -169,6 +169,7 @@ var appFiles = [
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
+    'src/view/mainModule/tenLotteryCardLayer.js',
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',
     'src/view/mainModule/tournamentRankLayer.js',

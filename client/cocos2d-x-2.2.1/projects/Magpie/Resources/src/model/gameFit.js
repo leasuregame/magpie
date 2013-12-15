@@ -2224,6 +2224,9 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(0, 106),
             "titlePointY": 920
         },
+        "tenLotteryCardLayer": {
+            "ccbNodePoint": cc.p(320, 568)
+        },
         "tipsLayer": {
             "bgSpriteContentSize": cc.size(648, 943),
             "bgSpritePoint": cc.p(0, 106),

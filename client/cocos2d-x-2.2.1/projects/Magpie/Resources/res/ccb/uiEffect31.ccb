@@ -572,7 +572,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
+<<<<<<< HEAD
+			<real>0.23333333432674408</real>
+=======
 			<real>0.26666668057441711</real>
+>>>>>>> muwan
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

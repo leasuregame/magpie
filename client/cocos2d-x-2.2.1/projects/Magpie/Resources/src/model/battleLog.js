@@ -46,13 +46,6 @@ var BattleLog = Entity.extend({
         this.set("battleStepLen", battleLog.steps.length);
         this.set("isPlayback", isPlayback);
 
-        var uid = gameData.player.get("uid");
-        if (parseInt(sys.localStorage.getItem(uid + "_firstTournament")) == 1) {
-            this.set("isFirstTournament", true);
-        } else {
-            this.set("isFirstTournament", false);
-        }
-
         for (var key in this._card) {
             this._card[key].index = key;
         }
@@ -61,6 +54,9 @@ var BattleLog = Entity.extend({
             this._reward = {};
         }
 
+       if (battleLog.isFirstTournament) {
+            this.set("isFirstTournament", true);
+       }
         var player = gameData.player;
         var spirit = gameData.spirit;
         var cardList = gameData.cardList;

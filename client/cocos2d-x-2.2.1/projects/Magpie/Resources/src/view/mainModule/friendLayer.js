@@ -381,9 +381,9 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickAddFriend");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._nameEditBox.setVisible(true);
-        this._addFriendLayer.setVisible(true);
+        MainScene.getInstance().switchLayer(AddFriendsLayer);
+//        this._nameEditBox.setVisible(true);
+//        this._addFriendLayer.setVisible(true);
     },
 
     _onClickOk: function () {

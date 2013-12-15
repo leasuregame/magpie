@@ -9,9 +9,10 @@ module.exports = {
     "point": 5
   },
   "POWER_GIVE": {
-    "hours": [12, 18], 
-    "point": 50,
-    "interval": 60000
+    "hours": [11, 17], // 体力赠送的开始的时间点
+    "duration": 2,     // 体力领取持续的时间段，单位（小时）
+    "point": 50,       // 领取的体力值
+    "interval": 60000  
   },
 
   "BUY_MONEY": { //购买仙币类型

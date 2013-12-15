@@ -516,6 +516,7 @@ var fit4Iphone4 = {
             "exchangeItemPoint": cc.p(600, 850),
             "goldLotteryItemBasePoint": cc.p(203, 222),
             "energyLotteryItemBasePoint": cc.p(203, 302),
+            "tenLotteryItemPoint": cc.p(370, 262),
             "tipBgSpritePoint": cc.p(360, 152),
             "tipLabelPoint": cc.p(360, 152)
         },
@@ -1696,6 +1697,7 @@ var fit4Iphone5 = {
             "exchangeItemPoint": cc.p(560, 1026),
             "goldLotteryItemBasePoint": cc.p(163, 290),
             "energyLotteryItemBasePoint": cc.p(163, 380),
+            "tenLotteryItemPoint": cc.p(330, 335),
             "tipBgSpritePoint": cc.p(320, 170),
             "tipLabelPoint": cc.p(320, 170)
         },

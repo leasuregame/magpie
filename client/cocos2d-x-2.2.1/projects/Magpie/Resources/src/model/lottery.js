@@ -157,9 +157,10 @@ var Lottery = Entity.extend({
                 cc.log("lottery success");
 
                 var msg = data.msg;
+                var cards = [];
                 for (var i = 0; i < msg.cards.length; i++) {
-                    var card = Card.create(msg.cards[i]);
-                    gameData.cardList.push(card);
+                    cards[i] = Card.create(msg.cards[i]);
+                    gameData.cardList.push(cards[i]);
                 }
 
                 var player = gameData.player;
@@ -174,7 +175,7 @@ var Lottery = Entity.extend({
                 }
 
                 cb({
-                    card: card,
+                    card: cards,
                     fragment: msg.fragment
                 });
 

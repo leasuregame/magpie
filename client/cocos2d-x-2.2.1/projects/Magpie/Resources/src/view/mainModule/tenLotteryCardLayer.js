@@ -31,12 +31,12 @@ var TenLotteryCardLayer = LazyLayer.extend({
     init: function (data) {
         cc.log("TenLotteryCardLayer init");
 
-        if(!this._super())  return false;
+        if (!this._super())  return false;
 
         this._tenLotteryCardLayerFit = gameFit.mainScene.tenLotteryCardLayer;
 
         this._canClick = false;
-        this._card = data.card;
+        this._cardList = data.card;
         this._fragment = data.fragment;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -46,13 +46,18 @@ var TenLotteryCardLayer = LazyLayer.extend({
         this._setCard();
         this.addChild(this._ccbNode);
 
+        this._ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+            this._canClick = true;
+        });
+
         return true;
     },
 
     _setCard: function () {
-        cc.log("CardEvolutionLayer _setCard");
+        cc.log("TenLotteryCardLayer _setCard");
 
-        for(var i = 0; i < this._cardList.length;i++) {
+        for (var i = 0; i < this._cardList.length; i++) {
+
             var card = this._cardList[i];
             var url = card.get("url");
             var star = card.get("star");
@@ -62,11 +67,20 @@ var TenLotteryCardLayer = LazyLayer.extend({
             if (skillType > 3) {
                 skillType = 3;
             }
+            this["card_half_" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["card_icon_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+            this["card_frame_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+        }
+    },
 
-            var cardNode = this._evolutionEffect.controller["card" + i];
+    _setFragment: function () {
+        cc.log("TenLotteryCardLayer _setFragment: " + this._fragment);
 
-            cardNode["card_half"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            cardNode["card_icon"].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+        if (this._fragment) {
+            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
+            ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint1);
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            this.addChild(ccbNode, 1);
         }
     },
 
@@ -78,7 +92,7 @@ var TenLotteryCardLayer = LazyLayer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             this.removeFromParent();
-            if(this._cb) {
+            if (this._cb) {
                 this._cb();
             }
         }
@@ -100,4 +114,5 @@ TenLotteryCardLayer.create = function (data) {
 TenLotteryCardLayer.pop = function (data) {
     var tenLotteryCardLayer = TenLotteryCardLayer.create(data);
     MainScene.getInstance().addChild(tenLotteryCardLayer, 10);
+    return tenLotteryCardLayer;
 };

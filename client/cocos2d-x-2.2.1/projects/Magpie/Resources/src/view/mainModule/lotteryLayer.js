@@ -154,7 +154,6 @@ var LotteryLayer = cc.Layer.extend({
 
             this._goldTenLotteryIcon[i] = cc.Sprite.create(main_scene_image["icon" + (312 + i)]);
             this._goldTenLotteryIcon[i].setPosition(cc.p(75, 35));
-            this._goldTenLotteryIcon[i].setVisible(false);
             goldLotteryItem.addChild(this._goldTenLotteryIcon[i]);
 
             this._goldLotteryLabel[i] = StrokeLabel.create("首抽免费", "STHeitiTC-Medium", 25);
@@ -182,7 +181,6 @@ var LotteryLayer = cc.Layer.extend({
 
             this._energyTenLotteryIcon[i] = cc.Sprite.create(main_scene_image["icon" + (314 + i)]);
             this._energyTenLotteryIcon[i].setPosition(cc.p(75, 35));
-            this._energyTenLotteryIcon[i].setVisible(false);
             energyLotteryItem.addChild(this._energyTenLotteryIcon[i]);
 
             menu.addChild(energyLotteryItem);
@@ -206,7 +204,6 @@ var LotteryLayer = cc.Layer.extend({
         );
 
         this._closeTenLotteryItem.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
-        this._closeTenLotteryItem.setVisible(false);
         menu.addChild(this._closeTenLotteryItem);
 
         var tipBgSprite = cc.Sprite.create(main_scene_image.icon245);
@@ -234,21 +231,45 @@ var LotteryLayer = cc.Layer.extend({
         this._energyLabel.setString(player.get("energy"));
         this._fragmentLabel.setString(player.get("fragment"));
 
+        this._energyLotteryIcon[0].setVisible(this._times == 1);
+        this._energyLotteryIcon[1].setVisible(this._times == 1);
+
+        this._energyTenLotteryIcon[0].setVisible(this._times == 10);
+        this._energyTenLotteryIcon[1].setVisible(this._times == 10);
+
         var isVisible = true;
 
         var isFirstLottery = gameData.lottery._freeLowLotteryCard;
-        if(isFirstLottery) isVisible = false;
+        if (isFirstLottery) {
+            isVisible = false;
+            this._goldLotteryIcon[0].setVisible(false);
+            this._goldTenLotteryIcon[0].setVisible(false);
+        } else {
+            this._goldLotteryIcon[0].setVisible(this._times == 1);
+            this._goldTenLotteryIcon[0].setVisible(this._times == 10);
+        }
 
-        this._goldLotteryIcon[0].setVisible(!isFirstLottery);
         this._goldLotteryLabel[0].setVisible(isFirstLottery);
 
         isFirstLottery = gameData.lottery._freeHighLotteryCard;
-        if(isFirstLottery) isVisible = false;
+        if (isFirstLottery) {
+            isVisible = false;
+            this._goldLotteryIcon[1].setVisible(false);
+            this._goldTenLotteryIcon[1].setVisible(false);
+        } else {
+            this._goldLotteryIcon[1].setVisible(this._times == 1);
+            this._goldTenLotteryIcon[1].setVisible(this._times == 10);
+        }
 
-        this._goldLotteryIcon[1].setVisible(!isFirstLottery);
         this._goldLotteryLabel[1].setVisible(isFirstLottery);
 
-        this._openTenLotteryItem.setVisible(isVisible);
+        if (!isVisible) {
+            this._openTenLotteryItem.setVisible(false);
+            this._closeTenLotteryItem.setVisible(false)
+        } else {
+            this._closeTenLotteryItem.setVisible(this._times == 10);
+            this._openTenLotteryItem.setVisible(this._times == 1);
+        }
 
     },
 
@@ -272,6 +293,8 @@ var LotteryLayer = cc.Layer.extend({
     _onClickOpenTenLottery: function () {
         cc.log("LotteryLayer _onClickOpenTenLottery");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._closeTenLotteryItem.setVisible(true);
         this._openTenLotteryItem.setVisible(false);
         for (var i = 0; i < 2; i++) {
@@ -285,6 +308,8 @@ var LotteryLayer = cc.Layer.extend({
 
     _onClickCloseTenLottery: function () {
         cc.log("LotteryLayer _onClickCloseTenLottery");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._closeTenLotteryItem.setVisible(false);
         this._openTenLotteryItem.setVisible(true);

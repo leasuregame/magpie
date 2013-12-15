@@ -292,7 +292,8 @@ lz.getRewardString = function (data) {
                 if (key != "fragment" && data[key] > 0) {
                     str.push({
                         str: reward.name + " : " + data[key],
-                        color: reward.color
+                        color: reward.color,
+                        icon: reward.icon
                     });
                 }
             }

@@ -131,12 +131,15 @@ var User = Entity.extend({
         cc.log(this._area);
 
         this._save();
-
+                         cc.log(tbadapter.TBSessionID());
+                         cc.log(tbadapter.TBUserID());
+                         cc.log(tbadapter.TBNickName());
         var that = this;
         lz.server.connectGameServer(function () {
-            lz.server.request("connector.userHandler.login", {
-                account: that._account,
-                password: that._password,
+            lz.server.request("connector.userHandler.loginTB", {
+                nickName: tbadapter.TBNickName(),
+                userId: tbadapter.TBUserID(),
+                sessionId: tbadapter.TBSessionID(),
                 areaId: that._area
             }, function (data) {
                 cc.log(data);

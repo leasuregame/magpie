@@ -48,7 +48,7 @@ module.exports =
 
   checkSession: (args, cb) ->
     sessionId = args.sessionId
-    userId = args.userId
+    userId = parseInt args.userId
     nickName = args.nickName
     areaId = args.areaId
     frontendId = args.frontendId
@@ -60,7 +60,7 @@ module.exports =
           if err
             logger.error('faild to check tongbu session id', sessionId, userId)
 
-          console.log err, body
+          console.log err, body, userId
           statusCode = parseInt body
           if statusCode > 0 and statusCode is userId
             done(null, true)

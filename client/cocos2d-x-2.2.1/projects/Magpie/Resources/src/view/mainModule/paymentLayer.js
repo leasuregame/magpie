@@ -226,7 +226,7 @@ var PaymentLayer = LazyLayer.extend({
 
             //gameData.payment.buy(productId);
                                     
-                                    tbadapter.TBUnipayForCoinWithOrder("orderno", 100, "area:1")
+                                    tbadapter.TBUnipayForCoinWithOrder("orderno-"+gameData.player.id+"-"+productId, gameData.player.id, "100:1:"+productId);
         }
     }
 });

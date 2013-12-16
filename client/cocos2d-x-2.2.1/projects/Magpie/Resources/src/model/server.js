@@ -9,8 +9,8 @@
 
 
 // gate server config
-var GATE_SERVER_HOST = "124.238.236.33";
-var GATE_SERVER_PORT = "4009";
+var GATE_SERVER_HOST = "127.0.0.1";
+var GATE_SERVER_PORT = "3009";
 
 // connect timeout
 var CONNECT_TIMEOUT = 5;

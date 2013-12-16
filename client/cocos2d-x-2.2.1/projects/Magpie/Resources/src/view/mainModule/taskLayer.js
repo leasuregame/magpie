@@ -20,6 +20,7 @@ var TaskLayer = cc.Layer.extend({
     _turnRightSprite: null,
     _markSprite: null,
     _wipeOutItem: null,
+    _tipItem: null,
     _sectionItem: {},
     _scrollView: null,
     _locate: [],
@@ -68,14 +69,23 @@ var TaskLayer = cc.Layer.extend({
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.button9d,
             main_scene_image.icon44,
             this._onClickWipeOut,
             this
         );
         this._wipeOutItem.setPosition(this._taskLayerFit.wipeOutItemPoint);
 
-        var menu = cc.Menu.create(this._wipeOutItem);
+        this._tipItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9d,
+            main_scene_image.button9d,
+            main_scene_image.icon44,
+            this._onClickTip,
+            this
+        );
+
+        this._tipItem.setPosition(this._taskLayerFit.wipeOutItemPoint);
+
+        var menu = cc.Menu.create(this._wipeOutItem, this._tipItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -191,7 +201,9 @@ var TaskLayer = cc.Layer.extend({
         this._turnLeftSprite.setVisible(this._index > 1);
         this._turnRightSprite.setVisible(this._index < TASK_CHAPTER_COUNT);
 
-        this._wipeOutItem.setEnabled(task.canWipeOut());
+        var isVisible = task.canWipeOut();
+        this._wipeOutItem.setVisible(isVisible);
+        this._tipItem.setVisible(!isVisible);
 
         var section = task.getSection();
 
@@ -312,6 +324,11 @@ var TaskLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._wipOut();
+    },
+
+    _onClickTip: function () {
+        cc.log("TaskLayer _onClickTip");
+        TipLayer.tip("已通关卡，每天可获得1次仙币奖励。");
     },
 
     /**

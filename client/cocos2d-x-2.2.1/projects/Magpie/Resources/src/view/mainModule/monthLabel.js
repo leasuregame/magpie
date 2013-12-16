@@ -38,10 +38,21 @@ var MonthLabel = cc.Node.extend({
         this.addChild(bgSprite);
 
         this._hookList = [];
+        var nowDay = new Date().getDate();
+
         for (var i = 0; i < monthMark.days; ++i) {
             var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
 
-            var label = cc.Sprite.create(main_scene_image.icon186);
+            var url = "icon186";
+            var flag = monthMark.mark >> i & 1;
+//
+//            if (this._index == 0) {
+//                if (i + 1 <= nowDay && !flag) {
+//                    url = "icon305";
+//                }
+//            }
+
+            var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);
             this.addChild(label);
 
@@ -50,8 +61,8 @@ var MonthLabel = cc.Node.extend({
             dayLabel.setPosition(point);
             this.addChild(dayLabel);
 
-            var hookLabel = cc.Sprite.create(main_scene_image.icon20);
-            hookLabel.setPosition(cc.p(point.x, point.y - 5));
+            var hookLabel = cc.Sprite.create(main_scene_image.icon306);
+            hookLabel.setPosition(point);
             this.addChild(hookLabel);
             hookLabel.setVisible(false);
 

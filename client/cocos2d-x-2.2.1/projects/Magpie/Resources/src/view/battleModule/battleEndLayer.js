@@ -72,13 +72,20 @@ var BattleEndLayer = cc.Layer.extend({
             len = 3;
         }
 
-        var offsetY = this._battleEndLayerFit.offsetYHeight;
+        var offsetY = 80;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
+
+            if (str[i].icon) {
+                var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
+                rewardIcon.setPosition(cc.p(-60, offsetY - 10));
+                label.addChild(rewardIcon);
+            }
+
             rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
+            rewardLabel.setPosition(cc.p(15, offsetY));
             label.addChild(rewardLabel);
 
             offsetY -= 53;
@@ -169,11 +176,13 @@ var BattleEndLayer = cc.Layer.extend({
         cc.log("BattleEndLayer _onClickGoStrengthenLayer");
 
         if (this._battleLog.get("isFirstTournament")) {
+            this._battleLog.set("isFirstTournament", false);
             this.end();
             return;
         }
 
         BattlePlayer.getInstance().end(StrengthenLayer);
+
     }
 });
 

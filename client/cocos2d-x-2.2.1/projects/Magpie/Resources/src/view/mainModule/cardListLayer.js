@@ -43,6 +43,8 @@ var CardListLayer = cc.Layer.extend({
     _isSelectAllLow: false,         // 是否选择全部低星卡
     _sortItem1: null,
     _sortItem2: null,
+    _cardCountLabel: null,
+    _tipLabel: null,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -148,17 +150,22 @@ var CardListLayer = cc.Layer.extend({
         cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
         this.addChild(cardCountIcon);
 
-        var cardCountLabel = cc.LabelTTF.create(
+        this._cardCountLabel = cc.LabelTTF.create(
             gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
             "STHeitiTC-Medium",
             22
         );
-        cardCountLabel.setColor(cc.c3b(255, 239, 131));
-        cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(cardCountLabel);
+        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(this._cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
+
+        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._tipLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._tipLabel.setPosition(this._cardListLayerFit.tipLayerPoint);
+        //this.addChild(this._tipLabel);
 
         this.setSelectType(selectType);
         this._excludeList.distinct();
@@ -174,6 +181,11 @@ var CardListLayer = cc.Layer.extend({
 
         this._updateScrollViewHeight();
         this._sortCardLabel();
+    },
+
+    _update: function () {
+        cc.log("CardListLayer _update");
+        this._cardCountLabel.setString(gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"));
     },
 
     _updateScrollViewHeight: function () {
@@ -313,7 +325,16 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var menu = cc.Menu.create(sellItem, lineUpItem);
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setScale(1.2);
+        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
+
+        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },
@@ -446,7 +467,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionMaster: function () {
         cc.log("CardListLayer _initCardEvolutionMaster");
 
-        TipLayer.tip("只有满级的卡牌才可以进行星级进阶");
+        this._tipLabel.setString("只有满级的卡牌才可以进行星级进阶");
 
         this._initMaster();
 
@@ -466,7 +487,7 @@ var CardListLayer = cc.Layer.extend({
     _initSkillUpgradeMaster: function () {
         cc.log("CardListLayer _initSkillUpgradeMaster");
 
-        TipLayer.tip("3星以下卡牌无法进行技能升级");
+        this._tipLabel.setString("3星以下卡牌无法进行技能升级");
 
         this._initMaster();
 
@@ -486,7 +507,7 @@ var CardListLayer = cc.Layer.extend({
     _initPassiveSkillAfreshMaster: function () {
         cc.log("CardListLayer _initPassiveSkillAfreshMaster");
 
-        TipLayer.tip("3星以下卡牌无法进行被动洗练");
+        this._tipLabel.setString("3星以下卡牌无法进行被动洗练");
 
         this._initMaster();
 
@@ -505,6 +526,8 @@ var CardListLayer = cc.Layer.extend({
 
     _initCardTrainMaster: function () {
         cc.log("CardListLayer _initCardTrainMaster");
+
+        this._tipLabel.setString("3星以下卡牌不可进行属性培养");
 
         this._initMaster();
 
@@ -582,7 +605,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardUpgradeRetinue: function () {
         cc.log("CardListLayer _initCardUpgradeRetinue");
 
-        TipLayer.tip("已上阵的卡牌不可以作为从卡");
+        this._tipLabel.setString("已上阵的卡牌不可以作为从卡");
 
         this._initRetinue();
 
@@ -622,7 +645,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionRetinue: function () {
         cc.log("CardListLayer _initCardEvolutionRetinue");
 
-        TipLayer.tip("星级进阶只能消耗相同星级的卡牌");
+        this._tipLabel.setString("星级进阶只能消耗相同星级的卡牌");
 
         this._initRetinue();
 
@@ -836,6 +859,43 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._cb(this._getSelectCardList());
+    },
+
+    _onClickBuyCount: function () {
+        cc.log("CardListLayer _onClickBuyCount");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var id = 7;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("CardListLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that._update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     _onClickSell: function () {

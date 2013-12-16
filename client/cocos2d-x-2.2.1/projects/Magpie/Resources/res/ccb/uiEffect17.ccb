@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -109,7 +109,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>120</real>
+													<real>90</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -137,7 +137,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>120</real>
+													<real>90</real>
 												</dict>
 												<dict>
 													<key>easing</key>
@@ -148,11 +148,11 @@
 													<key>name</key>
 													<string>rotation</string>
 													<key>time</key>
-													<real>3</real>
+													<real>4</real>
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>480</real>
+													<real>450</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -206,8 +206,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>8</real>
-											<real>8</real>
+											<real>6</real>
+											<real>6</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -220,7 +220,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>120</real>
+										<real>450</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -238,7 +238,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/uiEffect/up30.png</string>
+											<string>res/effect/uiEffect/up155.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -355,7 +355,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-120</real>
+													<real>-90</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -383,7 +383,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-120</real>
+													<real>-90</real>
 												</dict>
 												<dict>
 													<key>easing</key>
@@ -394,11 +394,11 @@
 													<key>name</key>
 													<string>rotation</string>
 													<key>time</key>
-													<real>3</real>
+													<real>4</real>
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-480</real>
+													<real>-450</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -452,8 +452,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>7</real>
-											<real>7</real>
+											<real>6</real>
+											<real>6</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -466,7 +466,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-120</real>
+										<real>-450</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -484,7 +484,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/uiEffect/up30.png</string>
+											<string>res/effect/uiEffect/up155.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -528,7 +528,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCNode</string>
+						<string>CCNode_light</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -543,7 +543,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-50</real>
+									<real>20</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -892,8 +892,261 @@
 								<false/>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
+					</dict>
+					<dict>
+						<key>animatedProperties</key>
+						<dict>
+							<key>0</key>
+							<dict>
+								<key>scale</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.40000000596046448</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>2</real>
+												<real>2</real>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.53333336114883423</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>0.80000001192092896</real>
+												<real>0.80000001192092896</real>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.63333332538604736</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>1</real>
+												<real>1</real>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>scale</string>
+									<key>type</key>
+									<integer>4</integer>
+								</dict>
+							</dict>
+						</dict>
+						<key>baseClass</key>
+						<string>CCNode</string>
+						<key>children</key>
+						<array>
+							<dict>
+								<key>animatedProperties</key>
+								<dict>
+									<key>0</key>
+									<dict>
+										<key>opacity</key>
+										<dict>
+											<key>keyframes</key>
+											<array>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>1</integer>
+													</dict>
+													<key>name</key>
+													<string>opacity</string>
+													<key>time</key>
+													<real>0.40000000596046448</real>
+													<key>type</key>
+													<integer>5</integer>
+													<key>value</key>
+													<integer>0</integer>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>1</integer>
+													</dict>
+													<key>name</key>
+													<string>opacity</string>
+													<key>time</key>
+													<real>0.46666666865348816</real>
+													<key>type</key>
+													<integer>5</integer>
+													<key>value</key>
+													<integer>255</integer>
+												</dict>
+											</array>
+											<key>name</key>
+											<string>opacity</string>
+											<key>type</key>
+											<integer>5</integer>
+										</dict>
+									</dict>
+								</dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>up156</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string></string>
+											<string>res/effect/uiEffect/up156.png</string>
+										</array>
+									</dict>
+									<dict>
+										<key>baseValue</key>
+										<integer>255</integer>
+										<key>name</key>
+										<string>opacity</string>
+										<key>type</key>
+										<string>Byte</string>
+										<key>value</key>
+										<integer>255</integer>
+									</dict>
+								</array>
+								<key>seqExpanded</key>
+								<true/>
+							</dict>
+						</array>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>CCNode_replace</string>
+						<key>memberVarAssignmentName</key>
+						<string></string>
+						<key>memberVarAssignmentType</key>
+						<integer>0</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>230</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
+								</array>
+							</dict>
+							<dict>
+								<key>baseValue</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+								</array>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+						</array>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -996,7 +1249,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1394,17 +1647,17 @@
 			<key>chainedSequenceId</key>
 			<integer>1</integer>
 			<key>length</key>
-			<real>3</real>
+			<real>4</real>
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>296.24859619140625</real>
+			<real>259.10675048828125</real>
 			<key>sequenceId</key>
 			<integer>1</integer>
 			<key>soundChannel</key>

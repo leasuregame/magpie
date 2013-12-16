@@ -139,27 +139,13 @@ void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
     };
     this->TBExcuteCallback("initDidFinishWithUpdateCodeHandler", 1, v, NULL);
 }
-void TBAdapter::TBLoginResultHandle(bool isSuccess, const char *nikeName,const char *userId,const char *sessionId){
+void TBAdapter::TBLoginResultHandle(bool isSuccess){
 #warning 登录结果处理（需要自定义）
     //this->ShowMessage("登录结果:%d");
-    
-    //cocos2d::CCLog("login result handler: %s");
-    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
-    JSObject* jsobj = JS_NewObject(cx, NULL, NULL, NULL);
-    jsval vp_nikeName = c_string_to_jsval(cx, nikeName);
-    jsval vp_userId = c_string_to_jsval(cx, userId);
-    jsval vp_sessionId = c_string_to_jsval(cx, sessionId);
-    JS_SetProperty(cx, jsobj, "nikeName", &vp_nikeName);
-    JS_SetProperty(cx, jsobj, "userId", &vp_userId);
-    JS_SetProperty(cx, jsobj, "sessionId", &vp_sessionId);
-    
-    jsval userinfo = OBJECT_TO_JSVAL(jsobj);
-    
     js_proxy_t* p = jsb_get_native_proxy(this);
     jsval retval;
     jsval v[] = {
-        v[0] = BOOLEAN_TO_JSVAL(isSuccess),
-        v[1] = userinfo
+        v[0] = BOOLEAN_TO_JSVAL(isSuccess)
     };
     //cocos2d::CCLog("%s %s %s", nikeName, userId, sessionId);
     
@@ -313,23 +299,7 @@ static TBCallbackHandler *p_instance = NULL;
 - (void)TBLoginNotify:(id)notify{
     NSDictionary *dict = [notify userInfo];
 	BOOL isSuccess  = [[dict objectForKey:@"result"] boolValue];
-    TBPlatformUserInfo *user = [dict objectForKey:@"tbuserinfo"];
-    const char *nickName = [user.nickName cStringUsingEncoding:NSASCIIStringEncoding];
-    const char *userID = [user.userID cStringUsingEncoding:NSASCIIStringEncoding];
-    const char *sessionID = [user.sessionID cStringUsingEncoding:NSASCIIStringEncoding];
-    
-//    char* nn = new char[100];//足够长
-//    strcpy(nn,nickName);
-//    
-//    char *uuid = new char[100];
-//    strcpy(uuid, userID);
-//    
-//    char *sid = new char[100];
-//    strcpy(sid, sessionID);
-//    
-//    UserData ud = {nn, uuid, sid};
-//    cocos2d::CCLog("%s, %s, %s", nn, uuid, sid);
-    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess, nickName, userID, sessionID);
+    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess);
 }
 /**
  *	注销结果通知

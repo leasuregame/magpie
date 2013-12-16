@@ -84,7 +84,7 @@ public:
     int TBEnterBBS(int tag);
 /************************以下函数需要开发根据实际应用自定义************************/
     void TBInitDidFinishWithUpdateCode(int code);
-    void TBLoginResultHandle(bool isSuccess,const char *nikeName,const char *userId,const char *sessionId);
+    void TBLoginResultHandle(bool isSuccess);
     void TBLogoutHandle();
     void TBLeavedPlatformHandle(int closeType, const char *order);
     void TBCheckUpdateFinished(int updateResult);

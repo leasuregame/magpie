@@ -29,7 +29,6 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
-
 JSClass  *jsb_TBAdapter_class;
 JSObject *jsb_TBAdapter_prototype;
 
@@ -588,22 +587,16 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle(JSContext *cx, uint32_t ar
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	TBAdapter* cobj = (TBAdapter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 4) {
+	if (argc == 1) {
 		JSBool arg0;
-		const char* arg1;
-		const char* arg2;
-		const char* arg3;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
-		std::string arg3_tmp; ok &= jsval_to_std_string(cx, argv[3], &arg3_tmp); arg3 = arg3_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->TBLoginResultHandle(arg0, arg1, arg2, arg3);
+		cobj->TBLoginResultHandle(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
     
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 4);
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter(JSContext *cx, uint32_t argc, jsval *vp)
@@ -702,7 +695,7 @@ void js_jsb_TBAdapter_TBAdapter_finalize(JSFreeOp *fop, JSObject *obj) {
         
         TBAdapter *nobj = static_cast<TBAdapter *>(nproxy->ptr);
         if (nobj)
-            delete nobj;
+        delete nobj;
         
         jsb_remove_proxy(nproxy, jsproxy);
     }
@@ -760,7 +753,7 @@ void js_register_jsb_TBAdapter_TBAdapter(JSContext *cx, JSObject *global) {
 		JS_FN("TBBuyGoodsSuccessWithOrder", js_jsb_TBAdapter_TBAdapter_TBBuyGoodsSuccessWithOrder, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBSessionID", js_jsb_TBAdapter_TBAdapter_TBSessionID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBUnipayForCoinWhthOrder", js_jsb_TBAdapter_TBAdapter_TBUnipayForCoinWhthOrder, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("TBLoginResultHandle", js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("TBLoginResultHandle", js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBEnterUserCenter", js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBCheckUpdate", js_jsb_TBAdapter_TBAdapter_TBCheckUpdate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBInitPlatformWithAppID", js_jsb_TBAdapter_TBAdapter_TBInitPlatformWithAppID, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),

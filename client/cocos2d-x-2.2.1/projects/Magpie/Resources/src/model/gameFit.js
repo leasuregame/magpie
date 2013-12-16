@@ -25,9 +25,9 @@ var fit4Iphone4 = {
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(40, 0),
-            "winBgSpritePoint": cc.p(360, 612),
+            "winBgSpritePoint": cc.p(360, 480),
             "obtainSpritePoint": cc.p(0, 173),
-            "failBgSpritePoint": cc.p(360, 612),
+            "failBgSpritePoint": cc.p(360, 480),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
             "replayItemPoint": cc.p(-85, -252),
@@ -1212,9 +1212,9 @@ var fit4Iphone5 = {
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(0, 0),
-            "winBgSpritePoint": cc.p(320, 680),
+            "winBgSpritePoint": cc.p(320, 568),
             "obtainSpritePoint": cc.p(0, 173),
-            "failBgSpritePoint": cc.p(320, 680),
+            "failBgSpritePoint": cc.p(320, 568),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
             "replayItemPoint": cc.p(-85, -252),

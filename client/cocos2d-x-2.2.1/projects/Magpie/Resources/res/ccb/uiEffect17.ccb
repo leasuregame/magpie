@@ -1024,9 +1024,9 @@
 								<key>displayName</key>
 								<string>up156</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>titleIcon</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1083,6 +1083,8 @@
 										<integer>255</integer>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

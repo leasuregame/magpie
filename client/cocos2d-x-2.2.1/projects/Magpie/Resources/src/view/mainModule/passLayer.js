@@ -446,23 +446,27 @@ var PassLayer = cc.Layer.extend({
         layer.addChild(bgSprite);
 
         var label = bgSprite.controller.label;
-
-        var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
-        obtainSprite.setPosition(this._passLayerFit.obtainSpritePoint);
-        label.addChild(obtainSprite);
+        var titleIcon = bgSprite.controller.titleIcon;
+        titleIcon.setTexture(lz.getTexture(main_scene_image.icon226));
 
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-        var point = this._passLayerFit.rewardLabelBasePoint;
+        var offsetY = 133;
+        //var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
+            if (str[i].icon) {
+                var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
+                rewardIcon.setPosition(cc.p(-60, offsetY - 10));
+                label.addChild(rewardIcon);
+            }
             var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
-            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(point);
+            rewardLabel.setAnchorPoint(cc.p(0, 1));
+            rewardLabel.setPosition(cc.p(-30, offsetY));
             label.addChild(rewardLabel);
-
-            point.y -= this._passLayerFit.rewardLabelOffsetY;
+            offsetY -= 53;
+            // point.y -= this._passLayerFit.rewardLabelOffsetY;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(

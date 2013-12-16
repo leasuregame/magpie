@@ -113,20 +113,31 @@ Handler::luckyCard = (msg, session, next) ->
       [card, consumeVal, fragment] = lottery.freeLottery(level, except_ids)
       totalConsume = consumeVal
       totalFragment = fragment
-      cb(null, [card])
+      cb(null, [card], 0, 0, 0)
     else
       rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
       hfc = player.highFragmentCount + 1 #高级抽卡魂次数
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
-      async.times times, (n, next) ->
+      async.timesSeries times, (n, next) ->
         [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++)
         totalConsume += consumeVal
         totalFragment += fragment
+        
+        ### 获得卡魂，重设卡魂抽卡次数 ###
+        if fragment 
+          if level is LOW_LUCKYCARD
+            rfc = 1
+          else
+            hfc = 1
+        
+        ### 抽到5星卡牌，高级抽卡次数变为0 ###
+        if level is HIGH_LUCKYCARD and card.star is 5
+          hdcc = 1
+
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
-        console.log '-a-', cards, totalConsume, totalFragment
-        cb(null, cards)
+        cb(null, cards, --rfc, --hfc, --hdcc)
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###
@@ -141,8 +152,7 @@ Handler::luckyCard = (msg, session, next) ->
       if ent.star is 5
         achieve.star5card(player)
 
-      if level is HIGH_LUCKYCARD and ent.star == 5 #抽到5星卡牌，高级抽卡次数变为0
-        player.set('highDrawCardCount',0)
+      if level is HIGH_LUCKYCARD and ent.star == 5 
         card = table.getTableItem('cards', ent.tableId)
         msg = {
           #route: 'onSystemMessage',
@@ -169,26 +179,24 @@ Handler::luckyCard = (msg, session, next) ->
       if cardCount >= player.cardsCount or cardCount + times > player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
-      rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
-      hfc = player.highFragmentCount + 1 #高级抽卡魂次数
-      hdcc = player.highDrawCardCount + 1 #高级抽卡次数
-
       generateCard player, level, type, times, isFree, cb
 
-    (cards, cb) ->
+    (cards, rfc, hfc, hdcc, cb) ->
+      totalConsume = parseInt totalConsume*0.8 if times is 10
       if player[typeMapping[type]] < totalConsume
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
+
+      if(level == LOW_LUCKYCARD)
+          player.set('rowFragmentCount', rfc)
+      else
+          player.set('highFragmentCount', hfc)
+          player.set('highDrawCardCount', hdcc)
 
       card.playerId = player.id for card in cards
       async.map cards, entityUtil.createCard, cb
         
     (cardEnts, cb) =>
       player.addCards(cardEnts)
-      if(level == LOW_LUCKYCARD)
-          player.increase('rowFragmentCount', times)
-      else
-          player.increase('highFragmentCount', times)
-          player.increase('highDrawCardCount', times)
 
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', totalConsume)
@@ -200,10 +208,6 @@ Handler::luckyCard = (msg, session, next) ->
 
       if totalFragment
         player.increase('fragments',totalFragment)
-        if level is LOW_LUCKYCARD
-          player.set('rowFragmentCount',0)
-        else
-          player.set('highFragmentCount',0)
 
       cb(null, cardEnts)
   ], (err, cardEnts) ->

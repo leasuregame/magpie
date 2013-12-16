@@ -12,7 +12,8 @@ utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
 achieve = require '../../../domain/achievement'
-logger = require('pomelo-logger').getLogger(__filename)
+
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 
 module.exports = (app) ->
   new Handler(app)
@@ -34,7 +35,7 @@ Handler::explore = (msg, session, next) ->
       player = _player
       taskId = player.task.id unless taskId?
 
-      if _.keys(player.cards).length >= player.cardsCount
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
       if taskId > player.task.id 
@@ -74,7 +75,7 @@ Handler::explore = (msg, session, next) ->
             taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
         taskManager.countExploreResult player, data, taskId, chapterId, cb
-  ], (err, data) =>
+  ], (err, data) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
@@ -83,8 +84,6 @@ Handler::explore = (msg, session, next) ->
     data.power = player.power
     data.exp = player.exp
     next(null, {code: 200, msg: data})
-
-    saveBattleLog(@app, playerId, taskId, 'pve_task', data.battle_log) if data.battle_log?
 
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -156,8 +155,6 @@ Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   layer = msg.layer
   player = null
-  firstWin = false
-  oldLayer = -10
 
   async.waterfall [
     (cb) ->
@@ -165,8 +162,6 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      oldLayer = player.passLayer
-
       fdata = table.getTableItem('function_limit', 1)
       if fdata? and player.lv < fdata.pass
         return next(null, {code: 501, msg: fdata.pass+'级开放'}) 
@@ -206,14 +201,13 @@ Handler::passBarrier = (msg, session, next) ->
           if box
             level9Box = level9Box
 
-        if layer is 1 and oldLayer is layer-1
+        if layer is 1
           ### 天道首胜 成就 ###
           achieve.passFirstWin(player)
-          firstWin = true
 
       cb(null, bl, upgradeInfo, level9Box)
 
-  ], (err, bl, upgradeInfo, level9Box) =>
+  ], (err, bl, upgradeInfo, level9Box) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -225,11 +219,8 @@ Handler::passBarrier = (msg, session, next) ->
       level9Box: level9Box if level9Box
       pass: player.getPass(),
       power: player.power,
-      exp: player.exp,
-      firstWin: firstWin if firstWin
+      exp: player.exp
     }})
-
-    saveBattleLog(@app, playerId, layer, 'pve_pass', bl) if bl?
 
 ###
   重置关卡
@@ -362,16 +353,4 @@ checkFragment = (battleLog, player, chapterId) ->
     player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
-
-saveBattleLog = (app, pid, eid, type, bl) ->
-  app.get('dao').battleLog.create {
-    data: {
-      own: pid
-      enemy: eid
-      type: type
-      battleLog: bl
-    }
-  }, (err, res) ->
-    if err
-      logger.error '[faild to save battleLog]', err
     

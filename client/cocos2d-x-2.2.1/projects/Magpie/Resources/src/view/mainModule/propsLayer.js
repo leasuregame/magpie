@@ -186,11 +186,6 @@ var PropsLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            if (id == 1 && gameData.cardList.isFull()) {
-                CardListFullTipLayer.pop();
-                return;
-            }
-
             var product = gameData.shop.getProduct(id);
 
             cc.log(product);

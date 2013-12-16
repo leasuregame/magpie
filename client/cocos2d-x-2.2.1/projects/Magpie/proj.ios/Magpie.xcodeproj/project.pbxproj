@@ -503,10 +503,6 @@
 		902B09031858C6BC003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B09001858C6BC003A2A49 /* payment.js */; };
 		90C44170185965FE000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4416E185965FE000C5D75 /* AppDelegate.cpp */; };
 		90C4417418596605000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4417218596605000C5D75 /* AppDelegate.cpp */; };
-		90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C51859A2CD000C5D75 /* IAPHelp.mm */; };
-		90C441CC1859A2CD000C5D75 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C71859A2CD000C5D75 /* IAPHelpOC.mm */; };
-		90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C81859A2CD000C5D75 /* js_bindings_IAPHelp.cpp */; };
-		90C441CE1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90C441CA1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -1018,13 +1014,6 @@
 		90C4416F185965FE000C5D75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90C4417218596605000C5D75 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		90C4417318596605000C5D75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		90C441C41859A2CD000C5D75 /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
-		90C441C51859A2CD000C5D75 /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
-		90C441C61859A2CD000C5D75 /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
-		90C441C71859A2CD000C5D75 /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
-		90C441C81859A2CD000C5D75 /* js_bindings_IAPHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_IAPHelp.cpp; sourceTree = "<group>"; };
-		90C441C91859A2CD000C5D75 /* js_bindings_IAPHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_IAPHelp.hpp; sourceTree = "<group>"; };
-		90C441CA1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_IAPHelp_api.js; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* Magpie-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1986,34 +1975,10 @@
 			path = TB;
 			sourceTree = "<group>";
 		};
-		90C441C21859A2AB000C5D75 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				90C441C31859A2CD000C5D75 /* IAPHelp */,
-			);
-			name = lib;
-			path = ../lib;
-			sourceTree = "<group>";
-		};
-		90C441C31859A2CD000C5D75 /* IAPHelp */ = {
-			isa = PBXGroup;
-			children = (
-				90C441C41859A2CD000C5D75 /* IAPHelp.h */,
-				90C441C51859A2CD000C5D75 /* IAPHelp.mm */,
-				90C441C61859A2CD000C5D75 /* IAPHelpOC.h */,
-				90C441C71859A2CD000C5D75 /* IAPHelpOC.mm */,
-				90C441C81859A2CD000C5D75 /* js_bindings_IAPHelp.cpp */,
-				90C441C91859A2CD000C5D75 /* js_bindings_IAPHelp.hpp */,
-				90C441CA1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js */,
-			);
-			path = IAPHelp;
-			sourceTree = "<group>";
-		};
 		A92275321517C094001B78AA = {
 			isa = PBXGroup;
 			children = (
 				15A3D2EC1682F076002FB0C5 /* cocos2dx.xcodeproj */,
-				90C441C21859A2AB000C5D75 /* lib */,
 				15A3D2F81682F0A0002FB0C5 /* bindings */,
 				15A3D3311682F0B5002FB0C5 /* chipmunk */,
 				D4545214156E28EF00887EB5 /* Classes */,
@@ -2617,7 +2582,6 @@
 				1A4B644B16EE23A70025FE93 /* jsb_cocos2dx_extension_auto_api.js in Sources */,
 				3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */,
 				1A4B644C16EE23A70025FE93 /* jsb_cocos2dx_extension_auto.cpp in Sources */,
-				90C441CC1859A2CD000C5D75 /* IAPHelpOC.mm in Sources */,
 				1A4B644F16EE23B30025FE93 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
 				1A4B645116EE24900025FE93 /* jsb_cocos2d_extension.js in Sources */,
 				1A4B645316EE24980025FE93 /* main.debug.js in Sources */,
@@ -2651,7 +2615,6 @@
 				1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */,
 				1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */,
 				1A96A4F1174A3369008653A9 /* HttpClient.cpp in Sources */,
-				90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */,
 				1AB87010175E0759005D39BF /* CCSkeleton.cpp in Sources */,
 				1AB87011175E0759005D39BF /* CCSkeletonAnimation.cpp in Sources */,
 				1AB87014175E0768005D39BF /* WebSocket.cpp in Sources */,
@@ -2696,7 +2659,6 @@
 				1A5E74BD17F0874400B9ACAE /* UIInputManager.cpp in Sources */,
 				1A5E74BE17F0874400B9ACAE /* UILayer.cpp in Sources */,
 				1A5E74C017F0874400B9ACAE /* UIListView.cpp in Sources */,
-				90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */,
 				1A5E74C117F0874400B9ACAE /* UIPageView.cpp in Sources */,
 				1A5E74C217F0874400B9ACAE /* UIScrollView.cpp in Sources */,
 				1A5E74C317F0874400B9ACAE /* UIButton.cpp in Sources */,
@@ -2709,7 +2671,6 @@
 				1A5E74C917F0874400B9ACAE /* UILoadingBar.cpp in Sources */,
 				1A5E74CA17F0874400B9ACAE /* UISlider.cpp in Sources */,
 				1A5E74CB17F0874400B9ACAE /* UISwitch.cpp in Sources */,
-				90C441CE1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js in Sources */,
 				1A5E74CC17F0874400B9ACAE /* UITextField.cpp in Sources */,
 				1A5E74CD17F0874400B9ACAE /* CSContentJsonDictionary.cpp in Sources */,
 				1A5E74CE17F0874400B9ACAE /* DictionaryHelper.cpp in Sources */,

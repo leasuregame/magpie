@@ -22,10 +22,10 @@ var CardList = Entity.extend({
     _count: 0,
     _maxCount: 0,
 
-    init: function (cardList, cardsCount) {
+    init: function (cardList) {
         cc.log("CardList init");
 
-        this._maxCount = cardsCount || outputTables.resource_limit.rows[1].card_count_min;
+        this._maxCount = outputTables.resource_limit.rows[1].card_count_limit;
 
         this._cardList = {};
         var len = cardList.length;
@@ -168,8 +168,6 @@ var CardList = Entity.extend({
                 that.deleteById(cardIdList);
 
                 gameData.player.add("money", msg.price);
-
-                TipLayer.tipNoBg("仙币：+" + msg.price);
 
                 cb();
 

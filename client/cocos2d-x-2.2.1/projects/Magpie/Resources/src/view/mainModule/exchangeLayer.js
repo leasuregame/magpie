@@ -112,6 +112,10 @@ var ExchangeLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var tipIcon = cc.Sprite.create(main_scene_image.icon245);
+        tipIcon.setPosition(this._exchangeLayerFit.tipIconPoint);
+        //this.addChild(tipIcon);
+
         var tipLabel1 = cc.LabelTTF.create(
             "兑换 5 星卡需要 " + EXCHANGE_STAR5_CARD,
             "STHeitiTC-Medium",
@@ -121,10 +125,10 @@ var ExchangeLayer = cc.Layer.extend({
         tipLabel1.setPosition(this._exchangeLayerFit.tipLabel1Point);
         this.addChild(tipLabel1);
 
-        var fragmentIcon1 = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon1.setAnchorPoint(cc.p(0, 0.5));
-        fragmentIcon1.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
-        this.addChild(fragmentIcon1);
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
+        this.addChild(fragmentIcon);
 
         var tipLabel2 = cc.LabelTTF.create(
             "兑换 4 星卡需要 " + EXCHANGE_STAR4_CARD,
@@ -135,27 +139,10 @@ var ExchangeLayer = cc.Layer.extend({
         tipLabel2.setPosition(this._exchangeLayerFit.tipLabel2Point);
         this.addChild(tipLabel2);
 
-        var fragmentIcon2 = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon2.setAnchorPoint(cc.p(0, 0.5));
-        fragmentIcon2.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
-        this.addChild(fragmentIcon2);
-
-        var bottomLabel = cc.Sprite.create(main_scene_image.icon245);
-        bottomLabel.setPosition(this._exchangeLayerFit.bottomLabelPoint);
-        this.addChild(bottomLabel);
-
-        var tipLabel3 = cc.LabelTTF.create(
-            "参与卡牌召唤，任务探索，均有概率获得卡魂",
-            "STHeitiTC-Medium",
-            17
-        );
-        tipLabel3.setPosition(this._exchangeLayerFit.tipLabel3Point);
-        this.addChild(tipLabel3);
-
-        var fragmentIcon3 = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon3.setPosition(this._exchangeLayerFit.fragmentIconPoint3);
-        this.addChild(fragmentIcon3);
-
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
+        this.addChild(fragmentIcon);
 
         this._update();
 

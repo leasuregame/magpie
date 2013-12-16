@@ -47,10 +47,6 @@ var PaymentLayer = LazyLayer.extend({
         bgSprite.setPosition(this._paymentLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var tipIcon = cc.Sprite.create(main_scene_image.icon304);
-        tipIcon.setPosition(this._paymentLayerFit.tipIconPoint);
-        this.addChild(tipIcon);
-
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
             main_scene_image.button37s,
@@ -75,6 +71,10 @@ var PaymentLayer = LazyLayer.extend({
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        var tipIcon = cc.Sprite.create(main_scene_image.icon304);
+        tipIcon.setPosition(this._paymentLayerFit.tipIconPoint);
+        this.addChild(tipIcon);
 
         var nextVipCash = gameData.shop.getNextVipCash();
         var vip = gameData.player.get("vip");

@@ -75,7 +75,6 @@ public:
     CCNode* getRootNode();
     void setRootNode(CCNode* pRootNode); // weak reference    
     
-    float getSequenceDuration(const std::string &name);
 
     void addDocumentCallbackNode(CCNode *node);
     void addDocumentCallbackName(std::string name);

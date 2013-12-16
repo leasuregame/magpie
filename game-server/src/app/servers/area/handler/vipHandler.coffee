@@ -6,6 +6,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -60,7 +62,7 @@ checkResourceLimit = (player, boxInfo, cb) ->
     key for key in keys when player[key] >= resLimit[key]
 
   results = maxValue ['energy', 'money', 'skillPoint', 'elixir']
-  if _.keys(player.cards).length >= player.cardsCount
+  if _.keys(player.cards).length >= resLimit.card_count_limit
     results.push 'card'
     
   if results.length > 0
@@ -87,6 +89,7 @@ openVipBox = (player, boxInfo, next) ->
     return
 
   setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
+  player.addPower(boxInfo.power)
 
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id

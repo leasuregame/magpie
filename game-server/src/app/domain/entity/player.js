@@ -32,7 +32,7 @@ var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
 var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
 var MAX_POWER_VALUE = resData.power_value;
-var MIN_CARD_COUNT = resData.card_count_min;
+var MAX_CARD_COUNT = resData.card_count_limit;
 
 var lvLimit = table.getTableItem('lv_limit', 1);
 var MAX_SPIRITOR_LV = lvLimit.spirit_lv_limit;
@@ -245,8 +245,7 @@ var Player = (function(_super) {
         'cardsCount',
         'resetDate',
         'firstTime',
-        'levelReward',
-        'teachingStep'
+        'levelReward'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -323,14 +322,13 @@ var Player = (function(_super) {
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
-        cardsCount: MIN_CARD_COUNT,
+        cardsCount: 100,
         resetDate: '1970-1-1',
         firstTime: {
             lowLuckyCard: 1,
             highLuckyCard: 1
         },
-        levelReward: [],
-        teachingStep: 0
+        levelReward: []
     };
 
     Player.prototype.resetData = function() {
@@ -482,10 +480,6 @@ var Player = (function(_super) {
         if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
-
-            if (spiritor.lv == MAX_SPIRITOR_LV) {
-                total_spirit = 0;
-            }
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
@@ -500,10 +494,6 @@ var Player = (function(_super) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
-
-            if (sp.lv == MAX_SPIRITPOOL_LV) {
-                total_exp = 0;
-            }
         }
         sp.exp = total_exp;
         this.set('spiritPool', sp);
@@ -629,14 +619,13 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        if (!_.isNumber(power.value)) {
-            console.log('=========power value is wrong=========', power);
-        }
+        //if (this.power.value !== power.value) {
         this.set('power', power);
+        //}
     };
 
     Player.prototype.consumePower = function(value) {
-        if (typeof value == 'undefined' || this.power.value <= 0) return;
+        if (this.power.value <= 0) return;
 
         var power = utility.deepCopy(this.power);
         var cVal = value;
@@ -645,7 +634,6 @@ var Player = (function(_super) {
         }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
-        console.log('power consume: ', value, power);
         this.updatePower(power);
         this.emit('power.consume', cVal);
     };
@@ -653,25 +641,19 @@ var Player = (function(_super) {
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv);
 
-        if (typeof value == 'undefined' || this.power.value >= max_power) return;
+        if (this.power.value >= max_power) return;
 
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
-        console.log('power resume: ', value, power);
         this.updatePower(power);
     };
 
     //直接添加体力，不受上限限制
     Player.prototype.addPower = function(value) {
-        if (!_.isNumber(value)) {
-            logger.error('can not add power with value: ', value);
-            return;
-        }
         var power = _.clone(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('add power: ', value, power);
         this.updatePower(power);
     };
 
@@ -679,7 +661,6 @@ var Player = (function(_super) {
         var power = utility.deepCopy(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('give power: ', value, power);
         this.updatePower(power);
 
         // 更新dailyGift的power
@@ -832,14 +813,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.setTaskMark = function(chapter) {
-        this.taskMark.setValue(this.task.mark).mark(chapter);
+        this.taskMark.mark(chapter);
         var task = utility.deepCopy(this.task);
         task.mark = this.taskMark.value;
         this.task = task;
     };
 
     Player.prototype.hasTaskMark = function(chapter) {
-        return this.taskMark.setValue(this.task.mark).hasMark(chapter);
+        return this.taskMark.hasMark(chapter);
     };
 
     Player.prototype.setPassMark = function(layer) {
@@ -1148,8 +1129,7 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.firstTime : void 0,
-            teachingStep: this.teachingStep
+            firstTime: this.hasFirstTime() ? this.firstTime : void 0
         };
     };
 

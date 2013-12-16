@@ -360,8 +360,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         var nowExp = exp;
         var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
-        upgradeEffect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
-        this.addChild(upgradeEffect, 10);
+        upgradeEffect.setPosition(this._cardUpgradeLabelFit.effectPoint);
+        this.addChild(upgradeEffect);
 
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
@@ -402,7 +402,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
                 upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                    upgradeEffect.removeFromParent();
+                    upgradeEffect.removeF
                 });
                 LazyLayer.closeCloudLayer();
             }

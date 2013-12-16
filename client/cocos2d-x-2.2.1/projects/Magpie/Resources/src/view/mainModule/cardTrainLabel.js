@@ -137,11 +137,13 @@ var CardTrainLabel = cc.Layer.extend({
         this._helpLabel.setPosition(this._cardTrainLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var trainTypeLabel = cc.Sprite.create(main_scene_image.icon309);
+        var trainTypeLabel = cc.Sprite.create(main_scene_image.icon50);
+        trainTypeLabel.setScaleY(0.4);
         trainTypeLabel.setPosition(cc.p(0, 25));
         this._helpLabel.addChild(trainTypeLabel);
 
-        var trainCountLabel = cc.Sprite.create(main_scene_image.icon309);
+        var trainCountLabel = cc.Sprite.create(main_scene_image.icon50);
+        trainCountLabel.setScaleY(0.4);
         trainCountLabel.setPosition(cc.p(0, -35));
         this._helpLabel.addChild(trainCountLabel);
 
@@ -152,7 +154,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainHp,
             this
         );
-        this._trainHpItem.setPosition(cc.p(-120, 25));
+        this._trainHpItem.setPosition(cc.p(-160, 25));
 
         this._trainAtkItem = cc.MenuItemImage.create(
             main_scene_image.button63,
@@ -161,7 +163,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainAtk,
             this
         );
-        this._trainAtkItem.setPosition(cc.p(110, 25));
+        this._trainAtkItem.setPosition(cc.p(80, 25));
 
         this._trainOneItem = cc.MenuItemImage.create(
             main_scene_image.button64,
@@ -170,7 +172,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainOne,
             this
         );
-        this._trainOneItem.setPosition(cc.p(-128, -35));
+        this._trainOneItem.setPosition(cc.p(-168, -35));
 
         this._trainTenItem = cc.MenuItemImage.create(
             main_scene_image.button65,
@@ -179,7 +181,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainTen,
             this
         );
-        this._trainTenItem.setPosition(cc.p(110, -35));
+        this._trainTenItem.setPosition(cc.p(80, -35));
 
         var helpMenu = cc.Menu.create(
             this._trainHpItem,
@@ -361,7 +363,7 @@ var CardTrainLabel = cc.Layer.extend({
             cc.log(data);
 
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            effect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
             effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });

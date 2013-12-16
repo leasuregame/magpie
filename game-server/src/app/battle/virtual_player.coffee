@@ -55,7 +55,7 @@ class VirtualPlayer extends Player
         hp: c.hp
         atk: c.atk
         boss: true if c.boss?
-        skillId: c.skill_id if c.skill?
+        skillType: c.skill_setting.type_linktarget.id if c.skill?
       }
     cobj
 

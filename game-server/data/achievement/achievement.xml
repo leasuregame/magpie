@@ -20,7 +20,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10440</WindowHeight>
+  <WindowHeight>7620</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>4040</WindowTopX>
   <WindowTopY>3700</WindowTopY>
@@ -256,7 +256,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">soLucky</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">fun</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">买彩票去吧</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">用1张素材卡成功进阶该卡牌</Data></Cell>
@@ -431,12 +431,12 @@
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <TopRowVisible>14</TopRowVisible>
+   <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>23</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>28</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

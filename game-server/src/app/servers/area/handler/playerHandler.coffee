@@ -16,21 +16,6 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-Handler::setStep = (msg, session, next) ->
-  playerId = session.get('playerId')
-  step = msg.step
-
-  if not step or not _.isNumber(step)
-    return next(null, {code: 501, msg: '参数错误'})
-
-  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    player.set('teachingStep', step)
-    player.save()
-    next(null, {code: 200})
-
 Handler::getFriends = (msg, session, next) ->
   playerId = session.get('playerId')
 
@@ -150,11 +135,7 @@ Handler::getLevelReward = (msg, session, next) ->
     next(null, {code: 200, msg: {gold: data.gold}})
 
 canGetPower = (hour) ->
-  canGetHours = []
-  for h in playerConfig.POWER_GIVE.hours
-    for i in [0...playerConfig.POWER_GIVE.duration]
-      canGetHours.push h+i 
-  _.contains canGetHours, hour
+  _.contains playerConfig.POWER_GIVE.hours, hour
 
 hasGetPower = (player, hour) ->
   _.contains player.dailyGift.powerGiven, hour

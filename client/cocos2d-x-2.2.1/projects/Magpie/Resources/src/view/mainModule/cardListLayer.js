@@ -43,7 +43,6 @@ var CardListLayer = cc.Layer.extend({
     _isSelectAllLow: false,         // 是否选择全部低星卡
     _sortItem1: null,
     _sortItem2: null,
-    _cardCountLabel: null,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -149,14 +148,14 @@ var CardListLayer = cc.Layer.extend({
         cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
         this.addChild(cardCountIcon);
 
-        this._cardCountLabel = cc.LabelTTF.create(
+        var cardCountLabel = cc.LabelTTF.create(
             gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
             "STHeitiTC-Medium",
             22
         );
-        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
-        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(this._cardCountLabel);
+        cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
@@ -175,11 +174,6 @@ var CardListLayer = cc.Layer.extend({
 
         this._updateScrollViewHeight();
         this._sortCardLabel();
-    },
-
-    _update: function() {
-        cc.log("CardListLayer _update");
-        this._cardCountLabel.setString(gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"));
     },
 
     _updateScrollViewHeight: function () {
@@ -319,16 +313,7 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var buyCountItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
-            this._onClickBuyCount,
-            this
-        );
-        buyCountItem.setScale(1.2);
-        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
-
-        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
+        var menu = cc.Menu.create(sellItem, lineUpItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },
@@ -520,8 +505,6 @@ var CardListLayer = cc.Layer.extend({
 
     _initCardTrainMaster: function () {
         cc.log("CardListLayer _initCardTrainMaster");
-
-        TipLayer.tip("3星以下卡牌不可进行属性培养");
 
         this._initMaster();
 
@@ -853,43 +836,6 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._cb(this._getSelectCardList());
-    },
-
-    _onClickBuyCount: function() {
-        cc.log("CardListLayer _onClickBuyCount");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        var id = 7;
-        var product = gameData.shop.getProduct(id);
-
-        cc.log(product);
-
-        if (product.count <= 0) {
-            TipLayer.tip(product.tip);
-            return;
-        }
-
-        var that = this;
-        AmountLayer.pop(
-            function (count) {
-                that._buyCount(id, count);
-            },
-            product
-        );
-    },
-
-    _buyCount: function (id, count) {
-        cc.log("CardListLayer _buyCount");
-
-        if (count > 0) {
-            var that = this;
-            gameData.shop.buyProduct(function (data) {
-                that._update();
-
-                lz.tipReward(data);
-            }, id, count);
-        }
     },
 
     _onClickSell: function () {

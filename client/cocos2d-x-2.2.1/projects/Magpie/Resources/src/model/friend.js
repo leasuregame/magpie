@@ -150,46 +150,6 @@ var Friend = Entity.extend({
         return null;
     },
 
-    searchFriend: function (name, cb) {
-        cc.log("Friend searchFriend: " + name);
-
-        var that = this;
-        lz.server.request("area.playerHandler.searchPlayer", {
-            name: name
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("searchFriend success");
-                cb(data.msg);
-
-            } else {
-                cc.log("searchFriend fail");
-                TipLayer.tip(data.msg);
-                cb();
-            }
-        });
-    },
-
-    randomFriendsList: function (cb) {
-        cc.log("Friend randomFriendsList");
-
-        lz.server.request("area.playerHandler.randomPlayers", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("searchFriend success");
-                cb(data.msg.players);
-
-            } else {
-                cc.log("searchFriend fail");
-                cb();
-            }
-        });
-    },
-
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
 

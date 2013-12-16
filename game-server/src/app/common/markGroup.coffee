@@ -12,10 +12,6 @@ class MarkGroup
 		val = utility.mark @_getItem(num), @_val(num)
 		@_setItem(num, val)
 
-	setValue: (val) ->
-		@value = val
-		@
-
 	_getItem: (num) ->
 		idx = @_idx(num)
 		if @value[idx]? then @value[idx] else 0

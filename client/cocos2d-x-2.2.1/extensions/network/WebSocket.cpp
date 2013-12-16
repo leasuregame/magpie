@@ -319,9 +319,6 @@ bool WebSocket::init(const Delegate& delegate,
             strcpy(name, (*iter).c_str());
             _wsProtocols[i].name = name;
             _wsProtocols[i].callback = WebSocketCallbackWrapper::onSocketCallback;
-            
-            // 修改缓冲区大小
-            _wsProtocols[i].rx_buffer_size = 1024 * 200;  // 200k
         }
     }
     else
@@ -330,9 +327,6 @@ bool WebSocket::init(const Delegate& delegate,
         strcpy(name, "default-protocol");
         _wsProtocols[0].name = name;
         _wsProtocols[0].callback = WebSocketCallbackWrapper::onSocketCallback;
-        
-        // 修改缓冲区大小
-        _wsProtocols[0].rx_buffer_size = 1024 * 200;  // 200k
     }
     
     // WebSocket thread needs to be invoked at the end of this method.

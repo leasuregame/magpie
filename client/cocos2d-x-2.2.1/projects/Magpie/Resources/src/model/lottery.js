@@ -37,44 +37,32 @@ var Lottery = Entity.extend({
         }
     },
 
-    canLottery: function (type, level, times) {
+    canLottery: function (type, level) {
         var player = gameData.player;
 
         if (type == LOTTERY_BY_ENERGY) {
             var energy = player.get("energy");
 
-            if (level == 1) {
-                var needEnergy = (times == 1) ? 200 * times : 200 * times * 0.8;
-                if (energy < needEnergy) {
-                    TipLayer.tip("活力点不足");
-                    return false;
-                }
+            if (level == 1 && energy < 200) {
+                TipLayer.tip("活力点不足");
+                return false;
             }
 
-            if (level == 2) {
-                var needEnergy = (times == 1) ? 1000 * times : 1000 * times * 0.8;
-                if (energy < needEnergy) {
-                    TipLayer.tip("活力点不足");
-                    return false;
-                }
+            if (level == 2 && energy < 1000) {
+                TipLayer.tip("活力点不足");
+                return false;
             }
         } else if (type == LOTTERY_BY_GOLD) {
             var gold = player.get("gold");
 
-            if (level == 1 && !this._freeLowLotteryCard) {
-                var needGold = (times == 1) ? 39 * times : 39 * times * 0.8;
-                if (gold < needGold) {
-                    TipLayer.tip("魔石不足");
-                    return false;
-                }
+            if (level == 1 && !this._freeLowLotteryCard && gold < 39) {
+                TipLayer.tip("魔石不足");
+                return false;
             }
 
-            if (level == 2 && !this._freeHighLotteryCard) {
-                var needGold = (times == 1) ? 199 * times : 199 * times * 0.8;
-                if (gold < needGold) {
-                    TipLayer.tip("魔石不足");
-                    return false;
-                }
+            if (level == 2 && !this._freeHighLotteryCard && gold < 199) {
+                TipLayer.tip("魔石不足");
+                return false;
             }
         } else {
             TipLayer.tip("抽卡类型错误");
@@ -127,55 +115,6 @@ var Lottery = Entity.extend({
 
                 cb({
                     card: card,
-                    fragment: msg.fragment
-                });
-
-                lz.dc.event("event_lottery", "type:" + type + " level:" + level);
-            } else {
-                cc.log("lottery fail");
-
-                TipLayer.tip(data.msg);
-
-                cb();
-            }
-        });
-    },
-
-    tenLottery: function (cb, type, level) {
-        cc.log("Lottery tenLottery");
-
-        var that = this;
-        lz.server.request("area.trainHandler.luckyCard", {
-            times: 10,
-            type: type,
-            level: level
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("lottery success");
-
-                var msg = data.msg;
-                var cards = [];
-                for (var i = 0; i < msg.cards.length; i++) {
-                    cards[i] = Card.create(msg.cards[i]);
-                    gameData.cardList.push(cards[i]);
-                }
-
-                var player = gameData.player;
-                if (type == LOTTERY_BY_GOLD) {
-                    player.add("gold", -msg.consume);
-                } else if (type == LOTTERY_BY_ENERGY) {
-                    player.add("energy", -msg.consume);
-                }
-
-                if (msg.fragment > 0) {
-                    player.add("fragment", msg.fragment);
-                }
-
-                cb({
-                    card: cards,
                     fragment: msg.fragment
                 });
 

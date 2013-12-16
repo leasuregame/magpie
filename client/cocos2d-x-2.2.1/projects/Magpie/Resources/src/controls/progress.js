@@ -112,7 +112,7 @@ var Progress = cc.Node.extend({
             this._value = this._maxValue;
         }
 
-        var ratio = 100;
+        var ratio = 0;
 
         if (this._maxValue > 0) {
             ratio = this._value / this._maxValue * 100;

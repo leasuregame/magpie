@@ -13,7 +13,7 @@ Handler = (@app) ->
 Handler::buyProduct = (msg, session, next)->
   playerId = session.get('playerId')
   productId = msg.id
-  times = if msg.times? then msg.times else 1
+  times = msg.times
 
   product = table.getTableItem('product',productId)
   if(products[product.method])
@@ -162,13 +162,13 @@ products =
       if err
         return next(null, {code: err.code or 500, msg: err.msg or err})
 
-      if _.keys(player.cards).length >= player.cardsCount
+      if _.keys(player.cards).length >= RESOURE_LIMIT.card_count_limit
         return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
       if player.money < times * PRICE
         return next(null, {code: 501, msg: '仙币不足'})
 
-      if _.keys(player.cards).length + times > player.cardsCount
+      if _.keys(player.cards).length + times > RESOURE_LIMIT.card_count_limit
         return nexl(null, {code: 501, msg: '卡牌容量不足'})
 
       playerManager.addExpCardFor player, times, (err, cards) ->
@@ -186,28 +186,4 @@ products =
           cardIds: cards.map (c) -> c.id
         }})
 
-  cardCount: (playerId, product, times, next) ->
-    consume = product.consume*times
-    obtain = product.obtain*times
-
-    playerManager.getPlayerInfo pid: playerId, (err, player) ->
-      if err
-        return next(null, {code: err.code or 500, msg: err.msg or err})
-
-      if player.cardsCount >= RESOURE_LIMIT.card_count_limit
-        return next(null, {code: 501, msg: "卡牌容量已经达到最大值"})
-
-      if player.gold < product.consume*times
-        return next(null, {code: 501, msg: "魔石不足"})
-
-      player.decrease(product.consume_type, consume)
-      player.increase('cardsCount', obtain)
-      player.save()
-
-      next(null, {
-        code: 200, 
-        msg: 
-          consume: key: product.consume_type, value: player.gold
-          cardCount: player.cardsCount
-      })
 

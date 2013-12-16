@@ -54,9 +54,7 @@ var BattlePlayer = cc.Class.extend({
         cc.Director.getInstance().popScene();
 
         if (goLayer) {
-
             MainScene.getInstance().switchLayer(goLayer);
-            LazyLayer.closeCloudAll();
         }
     }
 });

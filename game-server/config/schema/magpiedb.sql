@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `player` (
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `firstTime` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `teachingStep` SMALLINT(3) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -104,7 +103,6 @@ DROP TABLE IF EXISTS `battleLog`;
 CREATE TABLE IF NOT EXISTS `battleLog` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
-  `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `own` INT(10) UNSIGNED NOT NULL,
   `enemy` INT(10) UNSIGNED DEFAULT '0',
   `battleLog` VARCHAR(5000) COLLATE utf8_unicode_ci NOT NULL,
@@ -121,7 +119,6 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `playerId` INT(10) UNSIGNED NOT NULL,
   `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
   `challengeCount` BIGINT(20) UNSIGNED DEFAULT '0',
-  `startCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `winCount` INT(10) UNSIGNED DEFAULT '0',
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',

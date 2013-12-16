@@ -7409,9 +7409,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_1</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -7527,9 +7527,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_1</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -7645,9 +7645,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_1</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -7989,9 +7989,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_2</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -8107,9 +8107,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_2</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -8225,9 +8225,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_2</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -8569,9 +8569,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_3</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -8687,9 +8687,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_3</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -8805,9 +8805,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_3</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9149,9 +9149,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_4</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9267,9 +9267,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_4</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9385,9 +9385,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_4</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9729,9 +9729,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_5</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9847,9 +9847,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_5</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -9965,9 +9965,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_5</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -10309,9 +10309,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_6</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -10376,35 +10376,6 @@
 								<dict>
 									<key>0</key>
 									<dict>
-										<key>color</key>
-										<dict>
-											<key>keyframes</key>
-											<array>
-												<dict>
-													<key>easing</key>
-													<dict>
-														<key>type</key>
-														<integer>1</integer>
-													</dict>
-													<key>name</key>
-													<string>color</string>
-													<key>time</key>
-													<real>13.833333015441895</real>
-													<key>type</key>
-													<integer>6</integer>
-													<key>value</key>
-													<array>
-														<integer>255</integer>
-														<integer>255</integer>
-														<integer>255</integer>
-													</array>
-												</dict>
-											</array>
-											<key>name</key>
-											<string>color</string>
-											<key>type</key>
-											<integer>6</integer>
-										</dict>
 										<key>opacity</key>
 										<dict>
 											<key>keyframes</key>
@@ -10456,9 +10427,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_6</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -10513,24 +10484,6 @@
 										<string>Byte</string>
 										<key>value</key>
 										<integer>255</integer>
-									</dict>
-									<dict>
-										<key>baseValue</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -10592,9 +10545,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_6</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -10936,9 +10889,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_7</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -11054,9 +11007,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_7</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -11172,9 +11125,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_7</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -11516,9 +11469,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_8</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -11634,9 +11587,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_8</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -11752,9 +11705,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_8</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12096,9 +12049,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_9</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12214,9 +12167,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_9</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12332,9 +12285,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_9</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12676,9 +12629,9 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_10</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12794,9 +12747,9 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_10</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -12912,9 +12865,9 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_10</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -13825,6 +13778,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -13866,8 +13821,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_setFragment</string>
-							<integer>2</integer>
+							<string></string>
+							<integer>0</integer>
 						</array>
 					</dict>
 				</array>

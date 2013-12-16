@@ -47,7 +47,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
         this._cardLibraryLayerFit = gameFit.mainScene.cardLibraryLayer;
 
-        this._isSort = true;
+        this._isSort = false;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -76,6 +76,20 @@ var CardLibraryLayer = cc.Layer.extend({
         tipLabel.setPosition(this._cardLibraryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        var sortItem = cc.MenuItemImage.create(
+            main_scene_image.icon301,
+            main_scene_image.icon301,
+            this._onClickSort,
+            this
+        );
+        sortItem.setAnchorPoint(cc.p(0, 0.5));
+        sortItem.setPosition(this._cardLibraryLayerFit.sortItemPoint);
+
+        this._selectIcon = cc.Sprite.create(main_scene_image.icon20);
+        this._selectIcon.setVisible(this._isSort);
+        this._selectIcon.setPosition(this._cardLibraryLayerFit.selectIconPoint);
+        this.addChild(this._selectIcon, 2);
+
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
             main_scene_image.button8s,
@@ -83,7 +97,7 @@ var CardLibraryLayer = cc.Layer.extend({
             this
         );
         backItem.setPosition(this._cardLibraryLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
+        var menu = cc.Menu.create(sortItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -123,7 +137,7 @@ var CardLibraryLayer = cc.Layer.extend({
             var id = cardLibrary[i].id;
 
             var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
-            cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+            cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 89 - 143 * row));
             menu.addChild(cardItem);
 
             this._cardItem[id] = cardItem;

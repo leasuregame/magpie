@@ -9,6 +9,7 @@ var argsFilter = require('./app/servers/area/filter/argsFilter');
 var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
+var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
 var PlayerManager = require('./app/manager/playerManager');
 /**
@@ -83,6 +84,7 @@ app.configure('production|development', 'gate', function(){
   });
 
   app.set('serverStateService', new ServerStateService(app));
+  app.load(simpleWeb);
 });
 
 // configure sql database

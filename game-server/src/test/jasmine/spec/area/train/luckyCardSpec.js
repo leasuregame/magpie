@@ -72,7 +72,7 @@ describe("Area Server", function() {
 						loginWith(arthur.account, arthur.password, arthur.areaId);
 					});
 
-					var doIt = function(type, timeout) {
+					var doIt = function(type, timeout, times) {
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							before_gold = res.data.gold;
 							before_energy = res.data.energy;
@@ -81,7 +81,8 @@ describe("Area Server", function() {
 
 						request('area.trainHandler.luckyCard', {
 							type: type,
-							level: level
+							level: level,
+							times: times
 						}, function(data) {
 							console.log(name, data);
 							expect(data.code).toEqual(200);
@@ -91,7 +92,7 @@ describe("Area Server", function() {
 								'fragment'
 							]);
 
-							var card = data.msg.card;
+							var card = data.msg.card || data.msg.cards[0];
 							var scope = CARD_SCOPE[level];
 							checkCard(card, scope["from"], scope["to"]);
 
@@ -141,10 +142,10 @@ describe("Area Server", function() {
 						}, timeout);
 					};
 
-					var LOTTERY_COUNT = 45;
+					var LOTTERY_COUNT = 10;
 					var test = function(test_name, type) {
 						it(test_name, function() {
-							doIt(type, 5000);
+							doIt(type, 5000, 1);
 						});
 					};
 
@@ -152,7 +153,7 @@ describe("Area Server", function() {
 						it(test_name + ' >> ' + LOTTERY_COUNT + ' times', function() {
 							for (var i = 0; i < LOTTERY_COUNT; i++) {
 								(function(i) {
-									doIt(type, 15000);
+									doIt(type, 15000, 2);
 								})(i);
 							}
 						});
@@ -199,7 +200,7 @@ describe("Area Server", function() {
 			describe("当次数达到上限时", function() {
 
 				beforeAll(function() {
-					doAjax('/update/player/100', {
+					doAjax('/update/player/108', {
 						rowFragmentCount: 99,
 						highFragmentCount: 39,
 						highDrawCardCount: 239
@@ -211,7 +212,7 @@ describe("Area Server", function() {
 				});
 
 				beforeEach(function() {
-					loginWith(arthur.account, arthur.password, arthur.areaId);
+					loginWith('user5', '1', 1);
 				})
 
 				it('普通抽卡可以获得卡魂', function() {

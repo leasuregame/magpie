@@ -8,6 +8,9 @@ ACCOUNT_REG = /[\w+]{6,50}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
+APP_STORE_TYPE = 'app'
+TONG_BU_TYPE = 'tongbu'
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -39,8 +42,12 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  account = msg.account
-  password = msg.password
+  doLogin(APP_STORE_TYPE, @app, msg, session, next)
+
+Handler::loginTB = (msg, session, next) ->
+  doLogin(TONG_BU_TYPE, @app, msg, session, next)
+
+doLogin  = (type, app, msg, session, next) ->
   areaId = msg.areaId
 
   user = null
@@ -52,7 +59,8 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
 
     (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), (err, u) ->
+      [args, method] = authParams(type, msg, app)
+      app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -63,12 +71,12 @@ Handler::login = (msg, session, next) ->
     (res, cb) =>
       user = res
       uid = user.id + '*' + areaId
-      sessionService = @app.get 'sessionService'
+      sessionService = app.get 'sessionService'
       sessionService.kick(uid,cb)
     (cb) =>
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -83,12 +91,16 @@ Handler::login = (msg, session, next) ->
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)
-        session.on('closed', onUserLeave.bind(null, @app))
+        session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
+
+    ### 只有每个账号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
+    if user?.roles.length > 1 or player?.teachingStep >= 17
+      delete player.teachingStep
 
     next(null, {code: 200, msg: {user: user, player: player}})
 
@@ -99,3 +111,14 @@ onUserLeave = (app, session, reason) ->
     if err
       logger.error 'user leave error' + err
 
+authParams = (type, msg, app) ->
+  keyMap = 
+    app: keys: ['account', 'password', 'areaId'], method: 'auth'
+    tongbu: keys: ['nickName', 'userId', 'sessionId', 'areaId'], method: 'checkSession'
+  
+  args  = {}
+  for k in keyMap[type]?.keys
+    args[k] = msg[k] if msg[k]?
+
+  args.fronendId = app.getServerId()
+  [args, keyMap[type]?.method]

@@ -1088,6 +1088,8 @@ main_scene_res.push({src: "../res/font/UInumber.fnt"});
 main_scene_res.push({src: "../res/font/UInumber.png"});
 main_scene_res.push({src: "../res/font/AchievementWord.fnt"});
 main_scene_res.push({src: "../res/font/AchievementWord.png"});
+main_scene_res.push({src: "../res/font/levelWord.fnt"});
+main_scene_res.push({src: "../res/font/levelWord.png"});
 
 
 

@@ -54,6 +54,8 @@ var BattleEndLayer = cc.Layer.extend({
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
 
+        var isNoReward = false;
+
         if (len == 0) {
             if (isWin) {
                 str = [
@@ -68,7 +70,7 @@ var BattleEndLayer = cc.Layer.extend({
                     {str: "必能打过", color: cc.c3b(255, 255, 255)}
                 ];
             }
-
+            isNoReward = true;
             len = 3;
         }
 
@@ -84,8 +86,14 @@ var BattleEndLayer = cc.Layer.extend({
 
             rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
-            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(15, offsetY));
+            if (!isNoReward) {
+                rewardLabel.setAnchorPoint(cc.p(0, 1));
+                rewardLabel.setPosition(cc.p(-30, offsetY));
+            } else {
+                rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+                rewardLabel.setPosition(cc.p(15, offsetY));
+            }
+
             label.addChild(rewardLabel);
 
             offsetY -= 53;

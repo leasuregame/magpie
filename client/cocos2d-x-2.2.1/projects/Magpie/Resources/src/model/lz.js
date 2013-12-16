@@ -188,13 +188,17 @@ var gameGoodsIcon = {
     "elixir": "icon151",
     "fragment": "icon243",
     "energy": "icon154",
-    "skillPoint": "icon152"
+    "skillPoint": "icon152",
+    "spirit": "icon317",
+    "exp_card": "icon316",
+    "exp": "icon318"
 };
 
 var gameGoodsName = {
     "exp": {
         name: "经验",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp"]
     },
     "money": {
         name: "仙币",
@@ -238,15 +242,18 @@ var gameGoodsName = {
     },
     "totalSpirit": {
         name: "灵气",
-        color: cc.c3b(118, 238, 60)
+        color: cc.c3b(118, 238, 60),
+        icon: gameGoodsIcon["spirit"]
     },
     "cards": {
         name: "经验元灵",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp_card"]
     },
     "exp_card": {
         name: "经验元灵",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp_card"]
     },
     "freeCount": {
         name: "免费抽奖次数",
@@ -285,7 +292,8 @@ lz.getRewardString = function (data) {
                 if (cards.length > 0) {
                     str.push({
                         str: cards[0].lv + "级" + reward.name + " : " + 1,
-                        color: reward.color
+                        color: reward.color,
+                        icon: reward.icon
                     });
                 }
             } else {

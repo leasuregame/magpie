@@ -501,6 +501,15 @@
 		902B08FC1858C6AB003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08F91858C6AB003A2A49 /* payment.js */; };
 		902B09021858C6BC003A2A49 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08FF1858C6BC003A2A49 /* main_binding.js */; };
 		902B09031858C6BC003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B09001858C6BC003A2A49 /* payment.js */; };
+		90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */; };
+		90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90338EBA185A18C300224717 /* libMobClickLibrary.a */; };
+		90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EBD185A18C300224717 /* MobClickCPP.mm */; };
+		90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90338ECB185B1E9100224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
+		90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
+		90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
+		90338ECE185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
 		90C44170185965FE000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4416E185965FE000C5D75 /* AppDelegate.cpp */; };
 		90C4417418596605000C5D75 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C4417218596605000C5D75 /* AppDelegate.cpp */; };
 		90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C51859A2CD000C5D75 /* IAPHelp.mm */; };
@@ -1014,6 +1023,17 @@
 		902B08F91858C6AB003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		902B08FF1858C6BC003A2A49 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
 		902B09001858C6BC003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
+		90338EB9185A18C300224717 /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
+		90338EBA185A18C300224717 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		90338EBB185A18C300224717 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		90338EBC185A18C300224717 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
+		90338EBD185A18C300224717 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
+		90338EC3185AAAF600224717 /* AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetsManager.cpp; sourceTree = "<group>"; };
+		90338EC4185AAAF600224717 /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsManager.h; sourceTree = "<group>"; };
+		90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_AssetsManager.cpp; sourceTree = "<group>"; };
+		90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_AssetsManager.hpp; sourceTree = "<group>"; };
+		90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_AssetsManager.js; sourceTree = "<group>"; };
 		90C4416E185965FE000C5D75 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		90C4416F185965FE000C5D75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90C4417218596605000C5D75 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1073,6 +1093,7 @@
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
 				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
+				90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */,
 				D454520A156E22B400887EB5 /* libxml2.dylib in Frameworks */,
 				A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */,
 				A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */,
@@ -1347,6 +1368,7 @@
 		15A3D4A91682F1A4002FB0C5 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				90338EC2185AAAF600224717 /* AssetsManager */,
 				1A5E740117F0874400B9ACAE /* CocoStudio */,
 				15A3D4AB1682F1A4002FB0C5 /* CCBReader */,
 				15A3D4E01682F1A4002FB0C5 /* cocos-ext.h */,
@@ -1968,6 +1990,38 @@
 			path = ../Resources/TB;
 			sourceTree = "<group>";
 		};
+		90338EB7185A18C300224717 /* DataDollection */ = {
+			isa = PBXGroup;
+			children = (
+				90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */,
+				90338EB9185A18C300224717 /* js_cocos2dx_autogen_extension.hpp */,
+				90338EBA185A18C300224717 /* libMobClickLibrary.a */,
+				90338EBB185A18C300224717 /* MobClick.h */,
+				90338EBC185A18C300224717 /* MobClickCPP.h */,
+				90338EBD185A18C300224717 /* MobClickCPP.mm */,
+			);
+			path = DataDollection;
+			sourceTree = "<group>";
+		};
+		90338EC2185AAAF600224717 /* AssetsManager */ = {
+			isa = PBXGroup;
+			children = (
+				90338EC3185AAAF600224717 /* AssetsManager.cpp */,
+				90338EC4185AAAF600224717 /* AssetsManager.h */,
+			);
+			path = AssetsManager;
+			sourceTree = "<group>";
+		};
+		90338EC7185B1E9100224717 /* AssetsManagerBindings */ = {
+			isa = PBXGroup;
+			children = (
+				90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */,
+				90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */,
+				90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */,
+			);
+			path = AssetsManagerBindings;
+			sourceTree = "<group>";
+		};
 		90C4416D185965FE000C5D75 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1989,6 +2043,8 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90338EC7185B1E9100224717 /* AssetsManagerBindings */,
+				90338EB7185A18C300224717 /* DataDollection */,
 				90C441C31859A2CD000C5D75 /* IAPHelp */,
 			);
 			name = lib;
@@ -2353,6 +2409,7 @@
 				902B07D21858C475003A2A49 /* cpSweep1D.c in Sources */,
 				902B07D31858C475003A2A49 /* cpVect.c in Sources */,
 				902B07D41858C475003A2A49 /* CDAudioManager.m in Sources */,
+				90338ECE185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */,
 				902B07D51858C475003A2A49 /* CDOpenALSupport.m in Sources */,
 				902B07D61858C475003A2A49 /* CocosDenshion.m in Sources */,
 				902B07D71858C475003A2A49 /* SimpleAudioEngine.mm in Sources */,
@@ -2367,6 +2424,7 @@
 				902B07E01858C475003A2A49 /* CCControlButtonLoader.cpp in Sources */,
 				902B07E11858C475003A2A49 /* CCControlLoader.cpp in Sources */,
 				902B07E21858C475003A2A49 /* CCData.cpp in Sources */,
+				90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */,
 				902B07E31858C475003A2A49 /* CCLabelBMFontLoader.cpp in Sources */,
 				902B07E41858C475003A2A49 /* CCLabelTTFLoader.cpp in Sources */,
 				902B07E51858C475003A2A49 /* CCLayerColorLoader.cpp in Sources */,
@@ -2475,6 +2533,7 @@
 				902B084C1858C475003A2A49 /* CCTweenFunction.cpp in Sources */,
 				902B084D1858C475003A2A49 /* CCUtilMath.cpp in Sources */,
 				902B084E1858C475003A2A49 /* CCComAttribute.cpp in Sources */,
+				90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */,
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
@@ -2599,6 +2658,7 @@
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,
+				90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */,
 				15A3D54A1682F1A5002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3D54B1682F1A5002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3D54D1682F1A5002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
@@ -2626,6 +2686,7 @@
 				1AA51AEA16F71BA3000FDF05 /* jsb_opengl_constants.js in Sources */,
 				1A40E7971727C102006D4861 /* Animation.cpp in Sources */,
 				1A40E7981727C102006D4861 /* AnimationState.cpp in Sources */,
+				90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */,
 				1A40E7991727C102006D4861 /* AnimationStateData.cpp in Sources */,
 				1A40E79A1727C102006D4861 /* Atlas.cpp in Sources */,
 				1A40E79B1727C102006D4861 /* AtlasAttachmentLoader.cpp in Sources */,
@@ -2648,10 +2709,12 @@
 				1A40E7B11727C3DB006D4861 /* jsb_opengl_manual.cpp in Sources */,
 				3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */,
 				1A40E7B21727C3DB006D4861 /* jsb_opengl_registration.cpp in Sources */,
+				90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */,
 				1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */,
 				1A96A4F1174A3369008653A9 /* HttpClient.cpp in Sources */,
 				90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */,
+				90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */,
 				1AB87010175E0759005D39BF /* CCSkeleton.cpp in Sources */,
 				1AB87011175E0759005D39BF /* CCSkeletonAnimation.cpp in Sources */,
 				1AB87014175E0768005D39BF /* WebSocket.cpp in Sources */,
@@ -2693,6 +2756,7 @@
 				1A5E74BA17F0874400B9ACAE /* UILayoutDefine.cpp in Sources */,
 				1A5E74BB17F0874400B9ACAE /* CocosGUI.cpp in Sources */,
 				1A5E74BC17F0874400B9ACAE /* UIHelper.cpp in Sources */,
+				90338ECB185B1E9100224717 /* js_bindings_AssetsManager.cpp in Sources */,
 				1A5E74BD17F0874400B9ACAE /* UIInputManager.cpp in Sources */,
 				1A5E74BE17F0874400B9ACAE /* UILayer.cpp in Sources */,
 				1A5E74C017F0874400B9ACAE /* UIListView.cpp in Sources */,
@@ -2769,9 +2833,9 @@
 				INFOPLIST_FILE = TB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2815,9 +2879,9 @@
 				INFOPLIST_FILE = TB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2919,9 +2983,10 @@
 				INFOPLIST_FILE = AppStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
+					"$(SRCROOT)/../lib/DataDollection",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -2968,9 +3033,10 @@
 				INFOPLIST_FILE = AppStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
+					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
+					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
+					"$(SRCROOT)/../lib/DataDollection",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

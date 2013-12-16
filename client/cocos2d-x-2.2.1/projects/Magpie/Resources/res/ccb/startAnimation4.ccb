@@ -4656,7 +4656,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>148</real>
+									<real>151.61904907226562</real>
 									<real>-226</real>
 									<integer>0</integer>
 								</array>
@@ -4712,7 +4712,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>194</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -4895,7 +4895,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4981,7 +4981,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6168,7 +6168,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -6197,8 +6197,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>130</real>
+									<real>-382</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -6387,7 +6387,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>225</real>
+									<real>228.61904907226562</real>
 									<real>-418</real>
 									<integer>0</integer>
 								</array>
@@ -6443,7 +6443,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>152</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -6598,7 +6598,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>1.3809514045715332</real>
 									<real>-388</real>
 									<integer>0</integer>
 								</array>
@@ -6654,7 +6654,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>122</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -8646,7 +8646,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>3.6666667461395264</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>next</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -8659,7 +8676,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3.6666667461395264</real>
+			<real>2.8666665554046631</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

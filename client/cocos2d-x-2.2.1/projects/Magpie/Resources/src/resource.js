@@ -751,7 +751,7 @@ var main_scene_image = {
     p28: "res/effect/effect/p28.png",
     p29: "res/effect/effect/p29.png",
     p30: "res/effect/effect/p30.png",
-  //  p31: "res/effect/effect/p31.png",
+    //  p31: "res/effect/effect/p31.png",
     p32: "res/effect/effect/p32.png",
     p33: "res/effect/effect/p33.png",
 
@@ -891,6 +891,15 @@ var main_scene_image = {
     tutorials27: "res/ccb/tutorials27.ccbi",
     tutorials29: "res/ccb/tutorials29.ccbi",
 
+
+    // 动画
+    startAnimation1: "res/ccb/startAnimation1.ccbi",
+    startAnimation2: "res/ccb/startAnimation2.ccbi",
+    startAnimation3: "res/ccb/startAnimation3.ccbi",
+    startAnimation4: "res/ccb/startAnimation4.ccbi",
+    startAnimation5: "res/ccb/startAnimation5.ccbi",
+
+
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",
     hand: "res/effect/NewPlayer/hand.png",
@@ -917,7 +926,24 @@ var main_scene_image = {
     click_button_sound: "res/sound/click_button_sound.wav",
     player_upgrade_sound: "res/sound/player_upgrade_sound.wav",
     spirit_upgrade_sound: "res/sound/spirit_upgrade_sound.wav",
-    star_sound: "res/sound/star_sound.wav"
+    star_sound: "res/sound/star_sound.wav",
+
+    start_animation_music: "res/sound/startAnimationSound/start_animation_music.mp3",
+    angry: "res/sound/startAnimationSound/angry.wav",
+    boom: "res/sound/startAnimationSound/boom.wav",
+    ding: "res/sound/startAnimationSound/ding.wav",
+    funny: "res/sound/startAnimationSound/funny.wav",
+    insert: "res/sound/startAnimationSound/insert.wav",
+    keep: "res/sound/startAnimationSound/keep.wav",
+    money: "res/sound/startAnimationSound/money.wav",
+    noword: "res/sound/startAnimationSound/noword.wav",
+    pop: "res/sound/startAnimationSound/pop.wav",
+    rock: "res/sound/startAnimationSound/rock.wav",
+    peaches: "res/sound/startAnimationSound/peaches.wav",
+    shardow: "res/sound/startAnimationSound/shardow.wav",
+    smallTree: "res/sound/startAnimationSound/smallTree.wav",
+    tree_light: "res/sound/startAnimationSound/tree_light.wav",
+    Wordinsert: "res/sound/startAnimationSound/Wordinsert.wav"
 };
 
 var main_scene_res = [

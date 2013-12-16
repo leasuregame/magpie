@@ -16,11 +16,9 @@ var LoginScene = cc.Scene.extend({
     _nowLayer: null,
 
     onEnter: function () {
-        cc.log("Login onEnter");
+        cc.log("LoginScene onEnter");
 
         this._super();
-
-        this.switchLayer(LoginLayer);
 
         lz.dc.beginLogPageView("登录场景");
     },
@@ -42,6 +40,8 @@ var LoginScene = cc.Scene.extend({
             var gameFrame = GameFrame.create();
             this.addChild(gameFrame, 100);
         }
+
+        this.switchLayer(LoginLayer);
 
         return true;
     },

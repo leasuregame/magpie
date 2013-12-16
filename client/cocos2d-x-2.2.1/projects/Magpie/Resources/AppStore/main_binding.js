@@ -100,6 +100,9 @@ var appFiles = [
     'src/view/loginModule/registerLayer.js',
     'src/view/loginModule/selectAreaLayer.js',
 
+    'src/view/startAnimationModule/startAnimationLayer.js',
+    'src/view/startAnimationModule/startAnimationScene.js',
+
     'src/view/mainModule/effect.js',
 
     'src/view/mainModule/cocosBuilderClass.js',

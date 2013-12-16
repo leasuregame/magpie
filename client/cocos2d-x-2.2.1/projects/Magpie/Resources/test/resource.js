@@ -1088,3 +1088,22 @@ main_scene_res.push({src: "../res/font/UInumber.fnt"});
 main_scene_res.push({src: "../res/font/UInumber.png"});
 main_scene_res.push({src: "../res/font/AchievementWord.fnt"});
 main_scene_res.push({src: "../res/font/AchievementWord.png"});
+
+
+
+//音效
+main_scene_res.push({src: "../res/sound/startAnimationsound/angry.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/boom.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/ding.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/funny.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/insert.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/keep.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/money.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/noword.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/peaches.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/pop.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/rock.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/shardow.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/smallTree.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/tree_light.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/Wordinsert.wav"});

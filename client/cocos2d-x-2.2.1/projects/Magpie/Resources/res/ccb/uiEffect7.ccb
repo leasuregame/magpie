@@ -3374,7 +3374,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/main/card_frame_s.png</string>
+							<string>res/effect/uiEffect/up160.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4305,8 +4305,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

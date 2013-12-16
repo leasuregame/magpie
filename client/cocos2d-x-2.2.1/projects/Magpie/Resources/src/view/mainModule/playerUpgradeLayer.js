@@ -56,14 +56,19 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         var str = lz.getRewardString(data.reward);
         var len = str.length;
 
-        var offsetY = 150;
+
 
         var lv = gameData.player.get("lv");
-        var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
-        lvLabel.setColor(cc.c3b(115, 255, 100));
-        lvLabel.setAnchorPoint(cc.p(0.5, 1));
-        lvLabel.setPosition(cc.p(0, offsetY));
-        label.addChild(lvLabel);
+
+        var lvLabel = ccbNode.controller.lvLabel;
+        lvLabel.setString(lv);
+//        var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
+//        lvLabel.setColor(cc.c3b(115, 255, 100));
+//        lvLabel.setAnchorPoint(cc.p(0.5, 1));
+//        lvLabel.setPosition(cc.p(0, offsetY));
+//        label.addChild(lvLabel);
+
+        var offsetY = 150;
 
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;

@@ -165,7 +165,7 @@ var CardListLayer = cc.Layer.extend({
         this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._tipLabel.setAnchorPoint(cc.p(0, 0.5));
         this._tipLabel.setPosition(this._cardListLayerFit.tipLayerPoint);
-        //this.addChild(this._tipLabel);
+        this.addChild(this._tipLabel);
 
         this.setSelectType(selectType);
         this._excludeList.distinct();
@@ -605,7 +605,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardUpgradeRetinue: function () {
         cc.log("CardListLayer _initCardUpgradeRetinue");
 
-        this._tipLabel.setString("已上阵的卡牌不可以作为从卡");
+        //this._tipLabel.setString("已上阵的卡牌不可以作为从卡");
 
         this._initRetinue();
 
@@ -645,7 +645,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionRetinue: function () {
         cc.log("CardListLayer _initCardEvolutionRetinue");
 
-        this._tipLabel.setString("星级进阶只能消耗相同星级的卡牌");
+        //this._tipLabel.setString("星级进阶只能消耗相同星级的卡牌");
 
         this._initRetinue();
 

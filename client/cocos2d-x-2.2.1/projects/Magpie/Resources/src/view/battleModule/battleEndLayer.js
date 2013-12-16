@@ -79,7 +79,7 @@ var BattleEndLayer = cc.Layer.extend({
 
             if (str[i].icon) {
                 var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
-                rewardIcon.setPosition(cc.p(-60, offsetY - 10));
+                rewardIcon.setPosition(cc.p(-70, offsetY - 10));
                 label.addChild(rewardIcon);
             }
 
@@ -87,7 +87,7 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel.setColor(str[i].color);
             if (!isNoReward) {
                 rewardLabel.setAnchorPoint(cc.p(0, 1));
-                rewardLabel.setPosition(cc.p(-30, offsetY));
+                rewardLabel.setPosition(cc.p(-40, offsetY));
             } else {
                 rewardLabel.setAnchorPoint(cc.p(0.5, 1));
                 rewardLabel.setPosition(cc.p(0, offsetY));

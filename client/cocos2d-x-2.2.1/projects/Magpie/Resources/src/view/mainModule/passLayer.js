@@ -457,13 +457,13 @@ var PassLayer = cc.Layer.extend({
         for (var i = 0; i < len; ++i) {
             if (str[i].icon) {
                 var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
-                rewardIcon.setPosition(cc.p(-60, offsetY - 10));
+                rewardIcon.setPosition(cc.p(-70, offsetY - 10));
                 label.addChild(rewardIcon);
             }
             var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0, 1));
-            rewardLabel.setPosition(cc.p(-30, offsetY));
+            rewardLabel.setPosition(cc.p(-40, offsetY));
             label.addChild(rewardLabel);
             offsetY -= 53;
             // point.y -= this._passLayerFit.rewardLabelOffsetY;

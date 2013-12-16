@@ -8777,7 +8777,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>7</real>
+			<real>2.3666665554046631</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -8800,7 +8800,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/rock.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_rock_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8818,7 +8818,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8836,7 +8836,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/keep.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_keep_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8906,7 +8906,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8924,7 +8924,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8942,7 +8942,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8960,7 +8960,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8978,7 +8978,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/funny.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_funny_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -8996,7 +8996,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

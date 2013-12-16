@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -821,7 +821,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -931,8 +931,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1161,7 +1161,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1308,7 +1308,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1446,7 +1446,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1595,7 +1595,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1744,7 +1744,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1893,7 +1893,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -2031,7 +2031,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2180,7 +2180,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2216,7 +2216,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2241,8 +2241,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4091,7 +4091,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4116,8 +4116,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4380,7 +4380,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -14549,7 +14549,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -14564,7 +14564,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>130</real>
+									<real>150</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -14825,7 +14825,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>160</real>
+									<real>130</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -14880,7 +14880,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -15587,7 +15587,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/peaches.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_peaches_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15640,7 +15640,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15658,7 +15658,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15676,7 +15676,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15694,7 +15694,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/ding.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_ding_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15712,7 +15712,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15730,7 +15730,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/money.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_ding_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15748,7 +15748,25 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>6.0333333015441895</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_money_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15766,7 +15784,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15784,7 +15802,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/Wordinsert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_wordinsert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15802,7 +15820,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15820,7 +15838,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/insert.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_insert_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15867,7 +15885,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5.5</real>
+			<real>4.0666666030883789</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -15890,7 +15908,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15908,7 +15926,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15926,7 +15944,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15944,7 +15962,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15962,7 +15980,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15980,7 +15998,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15998,7 +16016,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -16016,7 +16034,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/pop.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -16034,7 +16052,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/noword.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_noword_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

@@ -747,6 +747,13 @@ var main_scene_image = {
     up153: effect_scene_path + "uiEffect/" + "up153.png",
     up154: effect_scene_path + "uiEffect/" + "up154.png",
     up155: effect_scene_path + "uiEffect/" + "up155.png",
+    up156: effect_scene_path + "uiEffect/" + "up156.png",
+    up157: effect_scene_path + "uiEffect/" + "up157.png",
+    up158: effect_scene_path + "uiEffect/" + "up158.png",
+    up159: effect_scene_path + "uiEffect/" + "up159.png",
+    up160: effect_scene_path + "uiEffect/" + "up160.png",
+   
+
    
 
 
@@ -1094,18 +1101,19 @@ main_scene_res.push({src: "../res/font/levelWord.png"});
 
 
 //音效
-main_scene_res.push({src: "../res/sound/startAnimationsound/angry.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/boom.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/ding.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/funny.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/insert.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/keep.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/money.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/noword.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/peaches.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/pop.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/rock.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/shardow.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/smallTree.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/tree_light.wav"});
-main_scene_res.push({src: "../res/sound/startAnimationsound/Wordinsert.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_angry_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_boom_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_ding_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_funny_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_insert_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_keep_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_money_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_noword_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_peaches_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_pop_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_rock_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_shardow_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_smalltree_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_treelight_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_wordinsert_sound.wav"});
+main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_breaktree_sound.wav"});

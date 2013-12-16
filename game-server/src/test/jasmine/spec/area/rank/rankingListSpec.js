@@ -39,16 +39,13 @@ describe("Area Server", function() {
                             console.log(Date.now(), (Date.now() - s) / 1000, data);
                             var cur_ranking = id - 9999;
                             //expect(data).toEqual('');
-                            expect(data.msg[data.msg.length - 1].ranking).toEqual(cur_ranking);
+                            expect(data.msg.rank.rankList[data.msg.rank.rankList.length - 1].ranking).toEqual(cur_ranking);
 
                             expect(_.map(data.msg.rank.rankList, function(p) {
                                 return p.ranking;
                             }).sort(function(a, b) {
                                 return a - b;
                             })).toEqual(genRankings(cur_ranking, index));
-
-                            //expect(data.msg).toEqual({});
-
                         });
                     });
 

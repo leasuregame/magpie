@@ -53,16 +53,18 @@ make inittables
 node ./bin/dao.js all production
 
 # kill a process tree
-kill -- -$( ps opgid= 1499 | tr -d ' ' )
+kill -- -$( ps opgid= 17165 | tr -d ' ' )
 
 cd game-server
 pkill -9 -f node
 make build
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
+cd ../update-server && forever start app.js && cd ../game-server
 
 tail -f ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
+http://124.238.236.33:7003
 test, 123
 
 <<<<<<< HEAD

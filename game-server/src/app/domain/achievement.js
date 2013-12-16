@@ -33,8 +33,8 @@ Achievement.rankingToOne = function(player) {
 	checkIsReached(player, 'rankingToOne', 1);
 };
 
-Achievement.friends = function(player, count) {
-	checkIsReached_alpha(player, 'friends', count);
+Achievement.friends = function(player) {
+	checkIsReached_alpha(player, 'friends', 1);
 };
 
 Achievement.elixirTo = function(player, eli) {
@@ -81,12 +81,12 @@ Achievement.psTo10 = function(player) {
 	checkIsReached_alpha(player, 'psTo10', 1);
 };
 
-Achievement.luckyCardCount = function(player) {
-	checkIsReached_alpha(player, 'luckyCardCount', 1);
+Achievement.luckyCardCount = function(player, count) {
+	checkIsReached_alpha(player, 'luckyCardCount', count);
 };
 
-Achievement.highLuckyCardCount = function(player) {
-	checkIsReached_alpha(player, 'highLuckyCardCount', 1);
+Achievement.highLuckyCardCount = function(player, count) {
+	checkIsReached_alpha(player, 'highLuckyCardCount', count);
 };
 
 Achievement.soLucky = function(player) {
@@ -111,8 +111,8 @@ Achievement.passFirstWin = function(player) {
 
 Achievement.taskPartPassTo = function(player, chapter) {
 	// 5个大章为为一个part 
-	if (charpter % 5 == 0) {
-		checkIsReached(player, 'taskPartPassTo', part);
+	if (chapter % 5 == 0) {
+		checkIsReached(player, 'taskPartPassTo', parseInt(chapter/5));
 	}	
 };
 

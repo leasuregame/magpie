@@ -41,6 +41,7 @@ class Matrix
     @matrixOrder.indexOf(pos)
 
   attackElement: (scope, args, filter) ->
+    console.log 'get attack element: ', scope, args, filter, @all().map (i)-> id: i.id, hp: i.hp, pos: i.pos, tableId: i.card_id
     try
       if scope of @
         els = @[scope](args, filter)
@@ -55,8 +56,7 @@ class Matrix
     @attackElement scope, args 
 
   getElement: (pos) ->
-    # 根据对方给出的位置，找到可以被攻击的对象
-    
+    # 根据对方给出的位置，找到可以被攻击的对象    
     if _.isString(pos) and pos.length is 2
       attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     else if _.isNumber(pos) and pos < (@rows * @cols)
@@ -143,13 +143,16 @@ class Matrix
   all: ->
     _.filter @allWithNull(), (i) -> i?
 
+  alive: ->
+    _.filter @allWithNull(), (i) -> i? and not i.death?()
+
   allWithNull: ->
     _res = []
     _res = _res.concat(row) for row in @elements
     _res
 
   hp_max: ->
-    items = @all()
+    items = @alive()
     return null if items.length == 0
 
     res = items[0]
@@ -158,7 +161,7 @@ class Matrix
     res
 
   hp_min: ->
-    items = @all()
+    items = @alive()
     return null if items.length == 0
 
     res = items[0]
@@ -167,7 +170,7 @@ class Matrix
     res
 
   atk_max: ->
-    items = @all()
+    items = @alive()
     return null if items.length == 0
 
     res = items[0]
@@ -176,7 +179,7 @@ class Matrix
     res
 
   atk_min: ->
-    items = @all()
+    items = @alive()
     return null if items.length == 0
 
     res = items[0]

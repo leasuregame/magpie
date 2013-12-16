@@ -11,6 +11,7 @@ module.exports =
 		cb(null, session.fontendId)
 
 	area: (session, msg, app, cb) ->
+		# session is the first arg of the rpc call
 		areas = app.get 'areaIdMap'
 		serverId = areas[session.get('areaId')]
 

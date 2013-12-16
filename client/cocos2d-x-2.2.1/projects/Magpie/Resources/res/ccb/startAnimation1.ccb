@@ -9163,7 +9163,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_smalltree_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

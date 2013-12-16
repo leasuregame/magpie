@@ -38,6 +38,7 @@ var MainLayer = cc.Layer.extend({
 
     _treasureHuntGuide: null,
     _rankGuide: null,
+    _lotteryGuide: null,
 
     _spiritLayerItem: null,
 
@@ -261,7 +262,6 @@ var MainLayer = cc.Layer.extend({
         }, 0.1);
 
 
-
         return true;
     },
 
@@ -304,6 +304,12 @@ var MainLayer = cc.Layer.extend({
             this.addChild(this._rankGuide);
         }
 
+        if (gameGuide.get("lotteryGuide") && !this._lotteryGuide) {
+            this._lotteryGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._lotteryGuide.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
+            this.addChild(this._lotteryGuide);
+        }
+
     },
 
     onTeaching: function () {
@@ -319,6 +325,14 @@ var MainLayer = cc.Layer.extend({
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            if (index == 1) {
+                if (this._lotteryGuide) {
+                    this._lotteryGuide.removeFromParent();
+                    this._lotteryGuide = null;
+                    gameGuide.set("lotteryGuide", false);
+                }
+            }
 
             if (index == 2) {
                 if (this._treasureHuntGuide) {

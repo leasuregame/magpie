@@ -19,12 +19,12 @@ var MainMenuLayer = cc.Layer.extend({
 
     _markSprite: null,
     _layer: [
-        MainLayer,
-        TaskLayer,
-        PassLayer,
-        TournamentLayer,
-        CardListLayer,
-        ShopLayer
+        [MainLayer],
+        [TaskLayer, ExploreLayer],
+        [PassLayer],
+        [TournamentLayer],
+        [CardListLayer],
+        [ShopLayer]
     ],
 
     _passGuide: null,
@@ -86,12 +86,13 @@ var MainMenuLayer = cc.Layer.extend({
         var offsetX = this._mainMenuLayerFit.markSpriteOffsetX;
 
         for (var i = 0; i < len; ++i) {
-            if (runLayer instanceof this._layer[i]) {
-                this._markSprite.setPosition(cc.p(basePoint.x + offsetX * i, basePoint.y));
-                this._markSprite.setVisible(true);
-                return;
+            for (var j = 0; j < this._layer[i].length; j++) {
+                if (runLayer instanceof this._layer[i][j]) {
+                    this._markSprite.setPosition(cc.p(basePoint.x + offsetX * i, basePoint.y));
+                    this._markSprite.setVisible(true);
+                    return;
+                }
             }
-
         }
 
         this._markSprite.setVisible(false);
@@ -145,7 +146,7 @@ var MainMenuLayer = cc.Layer.extend({
                 }
             }
 
-            MainScene.getInstance().switchLayer(this._layer[index]);
+            MainScene.getInstance().switchLayer(this._layer[index][0]);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

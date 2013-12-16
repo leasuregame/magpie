@@ -225,6 +225,12 @@ void CCMenu::registerWithTouchDispatcher()
 
 bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
+    if (kScriptTypeNone != m_eScriptType)
+    {
+        CCLOG("js ccTouchBegan");
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerTouchEvent(this, CCTOUCHBEGAN, touch);
+    }
+    
     CC_UNUSED_PARAM(event);
     if (m_eState != kCCMenuStateWaiting || ! m_bVisible || !m_bEnabled)
     {
@@ -251,6 +257,21 @@ bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)
 
 void CCMenu::ccTouchEnded(CCTouch *touch, CCEvent* event)
 {
+    bool isScroll = false;
+    
+    if (kScriptTypeNone != m_eScriptType)
+    {
+        CCLOG("js ccTouchEnded");
+        isScroll = (CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerTouchEvent(this, CCTOUCHENDED, touch) == 1);
+    }
+    
+    if(isScroll)
+    {
+        CCLOG("isScroll run ccTouchCancelled");
+        this->ccTouchCancelled(touch, event);
+        return;
+    }
+    
     CC_UNUSED_PARAM(touch);
     CC_UNUSED_PARAM(event);
     CCAssert(m_eState == kCCMenuStateTrackingTouch, "[Menu ccTouchEnded] -- invalid state");
@@ -276,6 +297,12 @@ void CCMenu::ccTouchCancelled(CCTouch *touch, CCEvent* event)
 
 void CCMenu::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
+    if (kScriptTypeNone != m_eScriptType)
+    {
+        CCLOG("js ccTouchMoved");
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerTouchEvent(this, CCTOUCHMOVED, touch);
+    }
+    
     CC_UNUSED_PARAM(event);
     CCAssert(m_eState == kCCMenuStateTrackingTouch, "[Menu ccTouchMoved] -- invalid state");
     CCMenuItem *currentItem = this->itemForTouch(touch);

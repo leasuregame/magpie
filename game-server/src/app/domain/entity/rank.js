@@ -41,12 +41,13 @@ var Rank = (function(_super) {
 	}
 
 	Rank.FIELDS = [
-		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'winCount', 
+		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'startCount', 'winCount', 
 		'loseCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
 	];
 	Rank.DEFAULT_VALUES = {
 		ranking: 0,
 		challengeCount: 0,
+		startCount: 0,
 		winCount: 0,
 		loseCount: 0,
 		winningStreak: 0,
@@ -123,6 +124,9 @@ var Rank = (function(_super) {
 			})
 			.filter(function(i) {
 				return i < self.historyRanking;
+			})
+			.sort(function(x, y) {
+				return y - x;
 			});
 	};
 

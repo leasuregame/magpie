@@ -1095,23 +1095,3 @@ main_scene_res.push({src: "../res/font/UInumber.fnt"});
 main_scene_res.push({src: "../res/font/UInumber.png"});
 main_scene_res.push({src: "../res/font/AchievementWord.fnt"});
 main_scene_res.push({src: "../res/font/AchievementWord.png"});
-
-
-
-// sound
-main_scene_res.push({src: "../res/sound/battle_bg_music.mp3"});
-main_scene_res.push({src: "../res/sound/battle_sound_aoe.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_atk.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_buff.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_heal.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_lose.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_miss.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_single.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_subtitle_card.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_subtitle_spirit.wav"});
-main_scene_res.push({src: "../res/sound/battle_sound_win.wav"});
-main_scene_res.push({src: "../res/sound/card_upgrade_sound.wav"});
-main_scene_res.push({src: "../res/sound/click_building_sound.wav"});
-main_scene_res.push({src: "../res/sound/click_button_sound.wav"});
-
-

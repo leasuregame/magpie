@@ -239,7 +239,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -404,7 +404,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -548,9 +548,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF</string>
 								<key>memberVarAssignmentName</key>
-								<string>oldLvLabel</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -624,7 +624,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -895,7 +895,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>255</integer>
+												<integer>0</integer>
 											</dict>
 										</array>
 										<key>seqExpanded</key>
@@ -987,9 +987,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF_Lvs</string>
 										<key>memberVarAssignmentName</key>
-										<string>nowLvLabel</string>
+										<string></string>
 										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
+										<integer>0</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -1063,7 +1063,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>255</integer>
+												<integer>0</integer>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -1395,7 +1395,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1523,9 +1523,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF_Per</string>
 								<key>memberVarAssignmentName</key>
-								<string>oldPassiveHarmLabel</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
+								<integer>0</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1599,7 +1599,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1638,8 +1638,6 @@
 										<string></string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -1872,7 +1870,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>255</integer>
+												<integer>0</integer>
 											</dict>
 										</array>
 										<key>seqExpanded</key>
@@ -1964,9 +1962,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF_Pers</string>
 										<key>memberVarAssignmentName</key>
-										<string>nowPassiveHarmLabel</string>
+										<string></string>
 										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
+										<integer>0</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -2040,7 +2038,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>255</integer>
+												<integer>0</integer>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -2342,7 +2340,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.0333333015441895</real>
+			<real>3</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

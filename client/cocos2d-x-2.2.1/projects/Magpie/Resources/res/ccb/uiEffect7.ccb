@@ -885,7 +885,11 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
+<<<<<<< HEAD
+								<real>72</real>
+=======
 								<real>292</real>
+>>>>>>> muwan
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1120,7 +1124,11 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
+<<<<<<< HEAD
+								<real>72</real>
+=======
 								<real>292</real>
+>>>>>>> muwan
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1686,7 +1694,11 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
+<<<<<<< HEAD
+								<integer>237</integer>
+=======
 								<integer>100</integer>
+>>>>>>> muwan
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1701,8 +1713,13 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
+<<<<<<< HEAD
+									<integer>250</integer>
+									<integer>230</integer>
+=======
 									<integer>254</integer>
 									<integer>255</integer>
+>>>>>>> muwan
 									<integer>255</integer>
 								</array>
 							</dict>
@@ -4365,7 +4382,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
+<<<<<<< HEAD
+			<real>2</real>
+=======
 			<real>6.3333334922790527</real>
+>>>>>>> muwan
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

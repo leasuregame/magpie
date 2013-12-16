@@ -74,8 +74,8 @@ var PlayerUpgradeLayer = LazyLayer.extend({
             }
             var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 22);
             rewardLabel.setColor(str[i].color);
-            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(15, offsetY));
+            rewardLabel.setAnchorPoint(cc.p(0, 1));
+            rewardLabel.setPosition(cc.p(-30, offsetY));
             label.addChild(rewardLabel);
 
         }

@@ -210,9 +210,9 @@ void AssetsManager::update()
     
     // 1. Urls of package and version should be valid;
     // 2. Package should be a zip file.
-    if (_versionFileUrl.size() == 0 ||
-        _packageUrl.size() == 0 ||
-        std::string::npos == _packageUrl.find(".zip"))
+    // 去除检查url后面带.zip的判断
+    // std::string::npos == _packageUrl.find(".zip")
+    if (_versionFileUrl.size() == 0 || _packageUrl.size() == 0)
     {
         CCLOG("no version file url, or no package url, or the package is not a zip file");
         return;
@@ -721,7 +721,7 @@ AssetsManager* AssetsManager::create(
                                      jsval errorCallback,
                                      jsval progressCallback,
                                      jsval successCallback
-) {
+                                     ) {
     class DelegateProtocolImpl : public AssetsManagerDelegateProtocol
     {
         public :
@@ -736,6 +736,8 @@ AssetsManager* AssetsManager::create(
         
         virtual void onError(AssetsManager::ErrorCode errorCode)
         {
+            CCLOG("onError");
+            
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
@@ -753,6 +755,8 @@ AssetsManager* AssetsManager::create(
         
         virtual void onProgress(int percent)
         {
+            CCLOG("onProgress");
+            
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
@@ -770,15 +774,17 @@ AssetsManager* AssetsManager::create(
         
         virtual void onSuccess()
         {
+            CCLOG("onSuccess");
+            
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
-            if(!_progressCallback.isNullOrUndefined()) {
+            if(!_successCallback.isNullOrUndefined()) {
                 if (_jsThisObj.isNullOrUndefined()) {
-                    JS_CallFunctionValue(cx, NULL, _progressCallback, 0, NULL, &retval);
+                    JS_CallFunctionValue(cx, NULL, _successCallback, 0, NULL, &retval);
                 }
                 else {
-                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 0, NULL, &retval);
+                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _successCallback, 0, NULL, &retval);
                 }
             }
         }

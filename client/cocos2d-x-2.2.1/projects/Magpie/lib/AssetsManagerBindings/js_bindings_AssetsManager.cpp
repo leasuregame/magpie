@@ -34,16 +34,12 @@ JSBool js_cocos2dx_extension_AssetsManager_create(JSContext *cx, uint32_t argc, 
 		const char* arg0;
 		const char* arg1;
 		const char* arg2;
-		jsval arg3;
-		jsval arg4;
-		jsval arg5;
-        jsval arg6;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
         
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_create : Error processing arguments");
-		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::create(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::create(arg0, arg1, arg2, argv[3], argv[4], argv[5], argv[6]);
 		jsval jsret;
 		do {
             if (ret) {

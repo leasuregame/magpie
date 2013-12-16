@@ -747,14 +747,7 @@ var main_scene_image = {
     up153: effect_scene_path + "uiEffect/" + "up153.png",
     up154: effect_scene_path + "uiEffect/" + "up154.png",
     up155: effect_scene_path + "uiEffect/" + "up155.png",
-    up156: effect_scene_path + "uiEffect/" + "up156.png",
-    up157: effect_scene_path + "uiEffect/" + "up157.png",
-    up158: effect_scene_path + "uiEffect/" + "up158.png",
-    up159: effect_scene_path + "uiEffect/" + "up159.png",
-    up160: effect_scene_path + "uiEffect/" + "up160.png",
-    up161: effect_scene_path + "uiEffect/" + "up161.png",
-    up162: effect_scene_path + "uiEffect/" + "up162.png",
-
+   
 
 
 

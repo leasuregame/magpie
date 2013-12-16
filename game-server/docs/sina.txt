@@ -60,6 +60,7 @@ pkill -9 -f node
 make build
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
+cd ../update-server && forever start app.js && cd ../game-server
 
 tail -f ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003

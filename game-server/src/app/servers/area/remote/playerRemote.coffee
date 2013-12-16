@@ -20,7 +20,7 @@ Remote::createPlayer = (args, callback) ->
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
     if not err and player
-      return callback({code: 501, msg: "player exists."})
+      return callback({code: 501, msg: "该玩家已存在"})
     
     async.waterfall [
       (cb) ->
@@ -46,7 +46,7 @@ Remote::createPlayer = (args, callback) ->
 Remote::getPlayerByUserId = (userId, serverId, callback) ->
   dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
     if err and not player
-      return callback {code: 501, msg: 'can not find player by user id: ' + userId}
+      return callback {code: 501, msg: '找不到玩家'}
 
     ### 每天重置一次玩家的部分数据 ###
     player.resetData() if not player.isReset()

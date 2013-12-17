@@ -33,6 +33,8 @@ var main = function() {
       break;
     case 'delete-unused-cards':
       quenues.push(gdata.deleteUnUsedCards);
+    case 'fix-duplicate-ranking': 
+      quenues.push(gdata.fixDuplicateRanking);
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

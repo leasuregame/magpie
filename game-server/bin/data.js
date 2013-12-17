@@ -17,7 +17,52 @@ var Data = function(db, dir) {
   } else {
     this.fixtures_dir = path.join(__dirname, '..', 'config', 'fixtures/');
   }
+};
 
+Data.prototype.fixDuplicateRanking = function() {
+  var self = this;
+  this.db['rank'].fetchMany({
+    where: '1=1'
+  }, function(err, res) {
+
+    var groups = _.groupBy(res, function(i) {
+      return i.ranking;
+    });
+    console.log(_.keys(groups), groups['1'].map(function(i) {
+      return i.id;
+    }));
+
+    var items = []
+    for (var r in groups) {
+      var g = groups[r];
+      if (g.length > 1) {
+        for (var j = 1; j < g.length; j++) {
+          items.push(g[j]);
+        }
+      }
+    }
+    console.log(items.length, '====adsfadsfas');
+    async.eachSeries(items, function(item, done) {
+      console.log('-a-a-', item.toJson());
+      self.db['rank'].maxRanking(function(err, maxRanking) {
+        console.log(err, maxRanking, item.id);
+        self.db['rank'].update({
+          data: {
+            ranking: maxRanking
+          },
+          where: {
+            id: item.id
+          }
+        }, function(err, _res) {
+          console.log(err, _res);
+          done();
+        });
+      });
+    }, function(err) {
+      console.log(err);
+    });
+
+  });
 };
 
 Data.prototype.deleteUnUsedCards = function() {
@@ -217,7 +262,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
           delete row[key];
         }
       });
-      
+
       console.log(row.playerName);
       var playerData = {
         id: parseInt(row.id),
@@ -289,7 +334,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         var player = results[1];
         var rank = results[3];
         var cards = results[4];
-        
+
         player.addCards(cards);
         player.lineUp = random_lineup(cards);
         self.db.player.update({

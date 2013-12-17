@@ -289,13 +289,16 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         var player = results[1];
         var rank = results[3];
         var cards = results[4];
+        
+        player.addCards(cards);
         player.lineUp = random_lineup(cards);
         self.db.player.update({
           where: {
             id: player.id
           },
           data: {
-            lineUp: player.lineUp
+            lineUp: player.lineUp,
+            ability: player.getAbility()
           }
         }, function(err, res) {
           console.log(row.id);

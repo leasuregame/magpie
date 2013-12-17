@@ -224,9 +224,9 @@ var PaymentLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            //gameData.payment.buy(productId);
+            gameData.payment.buy(productId);
                                     
-                                    tbadapter.TBUnipayForCoinWithOrder("orderno-"+gameData.player.id+"-"+productId, gameData.player.id, "100:1:"+productId);
+            //tbadapter.TBUnipayForCoinWithOrder("orderno-"+gameData.player.id+"-"+productId, gameData.player.id, "100:1:"+productId);
         }
     }
 });

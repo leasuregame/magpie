@@ -39,10 +39,9 @@ var BattleEndLayer = cc.Layer.extend({
             this.addChild(this._ccbNode);
 
             label = this._ccbNode.controller.label;
+            var titleIcon = this._ccbNode.controller.titleIcon;
+            titleIcon.setTexture(lz.getTexture(main_scene_image.icon227));
 
-            var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
-            obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
-            label.addChild(obtainSprite);
         } else {
             this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
             this._ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
@@ -74,13 +73,13 @@ var BattleEndLayer = cc.Layer.extend({
             len = 3;
         }
 
-        var offsetY = 80;
+        var offsetY = 133;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
 
             if (str[i].icon) {
                 var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
-                rewardIcon.setPosition(cc.p(-60, offsetY - 10));
+                rewardIcon.setPosition(cc.p(-70, offsetY - 10));
                 label.addChild(rewardIcon);
             }
 
@@ -88,10 +87,10 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel.setColor(str[i].color);
             if (!isNoReward) {
                 rewardLabel.setAnchorPoint(cc.p(0, 1));
-                rewardLabel.setPosition(cc.p(-30, offsetY));
+                rewardLabel.setPosition(cc.p(-40, offsetY));
             } else {
                 rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-                rewardLabel.setPosition(cc.p(15, offsetY));
+                rewardLabel.setPosition(cc.p(0, offsetY));
             }
 
             label.addChild(rewardLabel);
@@ -105,7 +104,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.end,
             this
         );
-        okItem.setPosition(this._battleEndLayerFit.okItemPoint);
+        okItem.setPosition(cc.p(100, -253));
 
         var replayItem = cc.MenuItemImage.create(
             main_scene_image.button67,
@@ -113,7 +112,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.replay,
             this
         );
-        replayItem.setPosition(this._battleEndLayerFit.replayItemPoint);
+        replayItem.setPosition(cc.p(-100, -253));
 
         var goStrengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button27,

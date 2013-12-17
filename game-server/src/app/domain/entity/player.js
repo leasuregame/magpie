@@ -1149,7 +1149,8 @@ var Player = (function(_super) {
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
             firstTime: this.hasFirstTime() ? this.firstTime : void 0,
-            teachingStep: this.teachingStep
+            teachingStep: this.teachingStep,
+            cardsCount: this.cardsCount
         };
     };
 

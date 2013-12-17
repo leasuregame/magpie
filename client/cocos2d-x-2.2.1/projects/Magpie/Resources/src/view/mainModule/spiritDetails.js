@@ -169,10 +169,12 @@ var SpiritDetails = LazyLayer.extend({
         var controller = effect.controller;
         var spirit = gameData.spirit;
 
-        controller.oldLvLabel.setString("LV.  " + (spirit.get("lv") - 1));
-        controller.nowLvLabel.setString("LV.  " + spirit.get("lv"));
+        var lv = spirit.get("lv");
+        controller.oldLvLabel.setString("LV.  " + (lv - 1));
+        controller.nowLvLabel.setString("LV.  " + lv);
         controller.oldPassiveHarmLabel.setString(this._oldPassiveHarm);
         controller.nowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+        controller.spiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));
 
         effect.setPosition(this._spiritDetailsFit.effectPoint);
         effect.animationManager.setCompletedAnimationCallback(this, function () {

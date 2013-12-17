@@ -81,12 +81,12 @@ Achievement.psTo10 = function(player) {
 	checkIsReached_alpha(player, 'psTo10', 1);
 };
 
-Achievement.luckyCardCount = function(player) {
-	checkIsReached_alpha(player, 'luckyCardCount', 1);
+Achievement.luckyCardCount = function(player, count) {
+	checkIsReached_alpha(player, 'luckyCardCount', count);
 };
 
-Achievement.highLuckyCardCount = function(player) {
-	checkIsReached_alpha(player, 'highLuckyCardCount', 1);
+Achievement.highLuckyCardCount = function(player, count) {
+	checkIsReached_alpha(player, 'highLuckyCardCount', count);
 };
 
 Achievement.soLucky = function(player) {

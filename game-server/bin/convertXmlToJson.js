@@ -40,7 +40,7 @@ var walk = function(dir, done) {
 };
 
 var outputFiles = [
-  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json'
+  '../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json'
   //'../../gm/config/table/table.json'
 ];
 

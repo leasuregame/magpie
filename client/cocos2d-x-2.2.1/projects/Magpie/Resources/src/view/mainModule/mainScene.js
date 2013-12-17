@@ -34,8 +34,6 @@ var MainScene = cc.Scene.extend({
 
         this._super();
 
-        this.release();
-
         lz.dc.endLogPageView("主场景");
     },
 
@@ -133,6 +131,7 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
+        _mainScene.release();
         _mainScene = null;
 
         gameData.sound.stopMusic();

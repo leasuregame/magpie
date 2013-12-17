@@ -492,6 +492,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -913,7 +915,7 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>4</string>
+								<string></string>
 							</dict>
 						</array>
 					</dict>

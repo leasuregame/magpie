@@ -222,6 +222,10 @@ var Friend = Entity.extend({
                 TipLayer.tip("请求已发送");
 
                 lz.dc.event("event_add_friend");
+            } else if(data.code == 501){
+                cc.log("addFriend fail");
+
+                TipLayer.tip(data.msg);
             } else {
                 cc.log("addFriend fail");
 

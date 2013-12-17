@@ -138,7 +138,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._helpLabel.setPosition(this._skillUpgradeLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
+        var needSkillPointIcon = cc.LabelTTF.create("升级需要技能点:", "STHeitiTC-Medium", 22);
         needSkillPointIcon.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needSkillPointIcon);
 

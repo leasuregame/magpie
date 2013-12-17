@@ -104,7 +104,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.end,
             this
         );
-        okItem.setPosition(cc.p(85, -272));
+        okItem.setPosition(cc.p(100, -253));
 
         var replayItem = cc.MenuItemImage.create(
             main_scene_image.button67,
@@ -112,7 +112,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.replay,
             this
         );
-        replayItem.setPosition(cc.p(-85, -272));
+        replayItem.setPosition(cc.p(-100, -253));
 
         var goStrengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button27,

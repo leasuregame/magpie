@@ -131,8 +131,10 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
-        _mainScene.release();
-        _mainScene = null;
+        if(_mainScene) {
+            _mainScene.release();
+            _mainScene = null;
+        }
 
         gameData.sound.stopMusic();
     };

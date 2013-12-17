@@ -56,7 +56,7 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool canCollect");
 
         if (this._collectCount <= 0) {
-            var tipVip = gameData.player.get("vip");
+            var tipVip = gameData.player.get("vip") + 1;
 
             tipVip = Math.max(tipVip, 3);
             tipVip = Math.min(tipVip, 12);

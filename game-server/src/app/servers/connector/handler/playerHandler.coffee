@@ -1,7 +1,7 @@
 dao = require('pomelo').app.get('dao')
 async = require('async')
 
-CHINESE_REG = /^[0-9\u4e00-\u9fa5]{1,6}$/
+CHINESE_REG = /^[a-zA-Z0-9\u4e00-\u9fa5]{1,6}$/
 EMPTY_SPACE_REG = /\s+/g
 
 module.exports = (app) ->

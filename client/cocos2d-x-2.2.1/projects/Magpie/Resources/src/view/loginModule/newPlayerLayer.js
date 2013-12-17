@@ -74,7 +74,7 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
         newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function () {
-            this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
+            this._nameEditBox.setPlaceHolder("请输入汉字、子母或数字");
             this._setRandomName();
         });
 

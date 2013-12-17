@@ -16,7 +16,7 @@ var ACCOUNT_REG = /^[\w+-]{6,50}$/;
 var PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/;
 var EMPTY_SPACE_REG = /\s+/g;
 var CHINESE_REG = /^[\u4e00-\u9fa5]{1,6}$/;
-var NICKNAME_REG = /^[0-9\u4e00-\u9fa5]{1,6}$/;
+var NICKNAME_REG = /^[a-zA-Z0-9\u4e00-\u9fa5]{1,6}$/;
 
 var LoginLayer = cc.Layer.extend({
     _loginLayerFit: null,

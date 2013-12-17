@@ -95,7 +95,7 @@ var BattleEndLayer = cc.Layer.extend({
 
             label.addChild(rewardLabel);
 
-            offsetY -= 53;
+            offsetY -= 57;
         }
 
         var okItem = cc.MenuItemImage.create(

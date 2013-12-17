@@ -453,7 +453,6 @@ var PassLayer = cc.Layer.extend({
         var len = str.length;
 
         var offsetY = 133;
-        //var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             if (str[i].icon) {
                 var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
@@ -465,8 +464,7 @@ var PassLayer = cc.Layer.extend({
             rewardLabel.setAnchorPoint(cc.p(0, 1));
             rewardLabel.setPosition(cc.p(-40, offsetY));
             label.addChild(rewardLabel);
-            offsetY -= 53;
-            // point.y -= this._passLayerFit.rewardLabelOffsetY;
+            offsetY -= 57;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(

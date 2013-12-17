@@ -115,11 +115,20 @@ var CardList = Entity.extend({
         cc.log("CardList _sort: " + type);
 
         var typeList = [type, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
+        var lineUp = gameData.lineUp;
 
         return function (a, b) {
             var aa = cardList[a];
             var bb = cardList[b];
             var len = typeList.length;
+
+            if (!lineUp.isLineUpCard(aa.get("id")) && lineUp.isLineUpCard(bb.get("id"))) {
+                return -1;
+            }
+
+            if (lineUp.isLineUpCard(aa.get("id")) && !lineUp.isLineUpCard(bb.get("id"))) {
+                return 1;
+            }
 
             for (var i = 0; i < len; ++i) {
                 if (aa.has(typeList[i]) && bb.has(typeList[i])) {

@@ -19,28 +19,24 @@ var Data = function(db, dir) {
   }
 };
 
-Data.prototype.resetRanking = function(){
+Data.prototype.resetRanking = function() {
   var self = this;
-  this.db['rank'].fetchMany({
-    where: '1=1',
-    orderBy: 'ranking'
-  }, function(err, res) {
-    res.splice(0, 1);
-    
+  this.db['rank'].orderByAbility(function(err, res) {
+    console.log(err, res);
     self.db['rank'].maxRanking(function(err, maxRanking) {
       var count = maxRanking;
       async.eachSeries(res, function(item, done) {
-          self.db['rank'].update({
-            data: {
-              ranking: count++
-            },
-            where: {
-              id: item.id
-            }
-          }, function(err, _res) {
-            console.log(err, _res);
-            done();
-          });
+        self.db['rank'].update({
+          data: {
+            ranking: count++
+          },
+          where: {
+            id: item.id
+          }
+        }, function(err, _res) {
+          console.log('dfad', err, _res);
+          done();
+        });
       }, function(err) {
         console.log(err);
       });

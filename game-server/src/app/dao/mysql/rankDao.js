@@ -34,6 +34,10 @@ var RankDao = (function(_super) {
         dbClient.query(sql, [], cb);
     };
 
+    RankDao.orderByAbility = function(cb) {
+        dbClient.query('select r.id from rank r join player p where r.playerId = p.id order by p.ability DESC', [], cb);
+    };
+
     RankDao.maxRanking = function(cb) {
         dbClient.query('select max(ranking) + 1 as next_ranking from rank', function(err, res) {
             if (err) {

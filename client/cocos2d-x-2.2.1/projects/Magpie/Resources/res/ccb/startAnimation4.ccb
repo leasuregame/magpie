@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>3</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -1152,7 +1152,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>73</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2041,7 +2041,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
+											<real>2</real>
 											<real>133</real>
 											<integer>0</integer>
 										</array>
@@ -2122,7 +2122,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -2352,8 +2352,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.2000000476837158</real>
-									<real>1.2000000476837158</real>
+									<real>0.60000002384185791</real>
+									<real>0.0</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2393,7 +2393,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -2422,8 +2422,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>-2</real>
+							<real>2</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3140,7 +3140,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4305,7 +4305,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4656,7 +4656,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>148</real>
+									<real>168</real>
 									<real>-226</real>
 									<integer>0</integer>
 								</array>
@@ -4712,7 +4712,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -4895,7 +4895,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4981,7 +4981,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6168,7 +6168,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -6197,8 +6197,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>130</real>
+									<real>-382</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -6387,7 +6387,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>225</real>
+									<real>245</real>
 									<real>-418</real>
 									<integer>0</integer>
 								</array>
@@ -6443,7 +6443,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -6598,7 +6598,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>-15</real>
 									<real>-388</real>
 									<integer>0</integer>
 								</array>
@@ -6654,7 +6654,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6690,7 +6690,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6923,7 +6923,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -7128,7 +7128,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -7143,7 +7143,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>190</real>
+									<real>237</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -8446,7 +8446,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.4333333969116211</real>
+			<real>1.7000000476837158</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -8457,6 +8457,24 @@
 			<dict>
 				<key>keyframes</key>
 				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/地震.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
 					<dict>
 						<key>easing</key>
 						<dict>

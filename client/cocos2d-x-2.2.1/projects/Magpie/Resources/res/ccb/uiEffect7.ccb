@@ -342,7 +342,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>130</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -464,7 +464,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>130</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -584,7 +584,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>130</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -885,7 +885,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>292</real>
+								<real>151.03446960449219</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1120,7 +1120,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>292</real>
+								<real>151.03446960449219</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1686,7 +1686,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>100</integer>
+								<integer>9</integer>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1701,8 +1701,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>254</integer>
-									<integer>255</integer>
+									<integer>246</integer>
+									<integer>158</integer>
 									<integer>255</integer>
 								</array>
 							</dict>
@@ -1960,7 +1960,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>51</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2279,7 +2279,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -4363,7 +4363,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>6.3333334922790527</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4386,7 +4386,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/startAnimation_ding_sound.wav</string>
+							<string>res/sound/single_draw_card_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

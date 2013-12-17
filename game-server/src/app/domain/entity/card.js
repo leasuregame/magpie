@@ -105,7 +105,7 @@ var checkSkillLv = function(card) {
         return x - y;
     });
 
-    skillLv = 0;
+    skillLv = 1;
     for (i = 0; i < items.length; i++) {
         el = items[i];
         if (sp >= el) {

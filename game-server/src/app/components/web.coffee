@@ -44,12 +44,12 @@ checkOrderResult = (app, req, res) ->
   sign = params.sign
 
   tempsign = md5 util.format(
-    'source=%s&trade_no=%s&amout=%d&partner=%s&paydes=%s&key=%s',
+    'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&key=%s',
     source, trade_no, amount, partner, paydes, APPKEY
   )
   if debug
     tempsign = md5 util.format(
-      'source=%s&trade_no=%s&amout=%d&partner=%s&paydes=%s&debug=%d&key=%s',
+      'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&key=%s',
       source, trade_no, amount, partner, paydes, debug, APPKEY
     )
 
@@ -80,6 +80,6 @@ checkOrderResult = (app, req, res) ->
     res.write(JSON.stringify {status: 'error'})
     res.end()
 
-md5 = (str) ->
+md5 = (text) ->
   hash = require('crypto').createHash('md5')
-  hash.update(str).digest('hex')
+  hash.update(text).digest('hex')

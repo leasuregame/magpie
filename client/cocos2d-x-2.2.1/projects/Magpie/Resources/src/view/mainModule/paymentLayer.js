@@ -176,7 +176,7 @@ var PaymentLayer = LazyLayer.extend({
                 main_scene_image.button21,
                 main_scene_image.button21s,
                 main_scene_image.icon159,
-                this._onClickPayment(paymentTypeList[i].product_id),
+                this._onClickPayment(paymentTypeList[i].id),
                 this
             );
             paymentItem.setPosition(cc.p(421, y + 50));
@@ -224,9 +224,21 @@ var PaymentLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            gameData.payment.buy(productId);
+            //gameData.payment.buy(productId);
                                     
-            //tbadapter.TBUnipayForCoinWithOrder("orderno-"+gameData.player.id+"-"+productId, gameData.player.id, "100:1:"+productId);
+                                    
+            tbadapter.TBUnipayForCoinWithOrder("orderno-"+gameData.player.get('id')+"-"+productId, 128, "100:1:"+productId);
+                                    
+                                    tbadapter.buyGoodsSuccessWithOrderHandler = function(order) {
+                                    cc.log('buy goods success:');
+                                    cc.log(order);
+                                    };
+                                    
+                                    tbadapter.buyGoodsFailedHandler = function(order, error) {
+                                    cc.log('buy goods failed:');
+                                    cc.log(order);
+                                    cc.log(error);
+                                    };
         }
     }
 });

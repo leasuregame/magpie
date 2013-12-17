@@ -108,11 +108,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         progressBgSprite.setPosition(cc.p(30, -35));
         this._resLabel.addChild(progressBgSprite);
 
-        this._greenProgress = Progress.create(null, main_scene_image.progress6, 0, 0);
+        this._greenProgress = Progress.create(null, main_scene_image.progress6, 0, 1);
         this._greenProgress.setPosition(cc.p(30, -35));
         this._resLabel.addChild(this._greenProgress);
 
-        this._yellowProgress = Progress.create(null, main_scene_image.progress5, 0, 0);
+        this._yellowProgress = Progress.create(null, main_scene_image.progress5, 0, 1);
         this._yellowProgress.setPosition(cc.p(30, -35));
         this._resLabel.addChild(this._yellowProgress);
 
@@ -271,7 +271,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             this._lvLabel.setString(this._leadCard.get("lv"));
             this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-            this._greenProgress.setAllValue(0, 0);
+            this._greenProgress.setAllValue(0, 1);
 
             this._selectRetinueCardItem.setEnabled(true);
             this._upgradeItem.setEnabled(false);
@@ -318,11 +318,11 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 if (this._leadCard.get("lv") < dummyCard.get("lv")) {
                     if (isDummyCard) {
-                        this._yellowProgress.setAllValue(0, 0);
+                        this._yellowProgress.setAllValue(0, 1);
                         this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                     } else {
                         this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-                        this._greenProgress.setAllValue(0, 0);
+                        this._greenProgress.setAllValue(0, 1);
                     }
                 } else {
                     if (isDummyCard) {
@@ -330,7 +330,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                         this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                     } else {
                         this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-                        this._greenProgress.setAllValue(0, 0);
+                        this._greenProgress.setAllValue(0, 1);
                     }
                 }
 

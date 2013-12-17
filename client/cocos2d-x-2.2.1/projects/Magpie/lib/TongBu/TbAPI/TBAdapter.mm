@@ -198,7 +198,7 @@ void TBAdapter::TBBuyGoodsFailed(const char *order,int error){
         v[1] = UINT_TO_JSVAL(error)
     };
     
-    this->TBExcuteCallback("leavedPlatformHandler", 2, v, NULL);
+    this->TBExcuteCallback("buyGoodsFailedHandler", 2, v, NULL);
 }
 void TBAdapter::TBBuyGoodsDidEnterWebview(const char *order){
 #warning 余额不足，进入充值支付页面（需要自定义）

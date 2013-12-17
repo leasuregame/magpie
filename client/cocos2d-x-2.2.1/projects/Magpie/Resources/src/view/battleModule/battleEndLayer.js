@@ -39,10 +39,9 @@ var BattleEndLayer = cc.Layer.extend({
             this.addChild(this._ccbNode);
 
             label = this._ccbNode.controller.label;
+            var titleIcon = this._ccbNode.controller.titleIcon;
+            titleIcon.setTexture(lz.getTexture(main_scene_image.icon227));
 
-            var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
-            obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
-            label.addChild(obtainSprite);
         } else {
             this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
             this._ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
@@ -53,6 +52,8 @@ var BattleEndLayer = cc.Layer.extend({
 
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
+
+        var isNoReward = false;
 
         if (len == 0) {
             if (isWin) {
@@ -68,17 +69,30 @@ var BattleEndLayer = cc.Layer.extend({
                     {str: "必能打过", color: cc.c3b(255, 255, 255)}
                 ];
             }
-
+            isNoReward = true;
             len = 3;
         }
 
-        var offsetY = this._battleEndLayerFit.offsetYHeight;
+        var offsetY = 133;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
+
+            if (str[i].icon) {
+                var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
+                rewardIcon.setPosition(cc.p(-70, offsetY - 10));
+                label.addChild(rewardIcon);
+            }
+
             rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
-            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
+            if (!isNoReward) {
+                rewardLabel.setAnchorPoint(cc.p(0, 1));
+                rewardLabel.setPosition(cc.p(-40, offsetY));
+            } else {
+                rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+                rewardLabel.setPosition(cc.p(0, offsetY));
+            }
+
             label.addChild(rewardLabel);
 
             offsetY -= 53;
@@ -90,7 +104,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.end,
             this
         );
-        okItem.setPosition(this._battleEndLayerFit.okItemPoint);
+        okItem.setPosition(cc.p(85, -272));
 
         var replayItem = cc.MenuItemImage.create(
             main_scene_image.button67,
@@ -98,7 +112,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.replay,
             this
         );
-        replayItem.setPosition(this._battleEndLayerFit.replayItemPoint);
+        replayItem.setPosition(cc.p(-85, -272));
 
         var goStrengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button27,
@@ -169,11 +183,13 @@ var BattleEndLayer = cc.Layer.extend({
         cc.log("BattleEndLayer _onClickGoStrengthenLayer");
 
         if (this._battleLog.get("isFirstTournament")) {
+            this._battleLog.set("isFirstTournament", false);
             this.end();
             return;
         }
 
         BattlePlayer.getInstance().end(StrengthenLayer);
+
     }
 });
 

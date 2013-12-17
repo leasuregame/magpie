@@ -15,6 +15,9 @@
 var MonthLabel = cc.Node.extend({
     _index: 0,
     _hookList: [],
+    _dayLabel: [],
+    _hookEffect: [],
+    _signInEffect: null,
 
     onEnter: function () {
         cc.log("MonthLabel onEnter");
@@ -38,22 +41,27 @@ var MonthLabel = cc.Node.extend({
         this.addChild(bgSprite);
 
         this._hookList = [];
-        for (var i = 0; i < monthMark.days; ++i) {
-            var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
+        this._hookEffect = [];
+        this._signInEffect = null;
 
-            var label = cc.Sprite.create(main_scene_image.icon186);
+        for (var i = 0; i < monthMark.days; ++i) {
+            var flag = monthMark.mark >> i & 1;
+            var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
+            var url = "icon186";
+
+            var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);
             this.addChild(label);
 
-            var dayLabel = cc.LabelTTF.create(i + 1, "STHeitiTC-Medium", 40);
-            dayLabel.setColor(cc.c3b(255, 252, 175));
-            dayLabel.setPosition(point);
-            this.addChild(dayLabel);
+            this._dayLabel[i] = cc.LabelTTF.create(i + 1, "STHeitiTC-Medium", 40);
+            this._dayLabel[i].setColor(cc.c3b(255, 252, 175));
+            this._dayLabel[i].setPosition(point);
+            this.addChild(this._dayLabel[i]);
 
-            var hookLabel = cc.Sprite.create(main_scene_image.icon20);
-            hookLabel.setPosition(cc.p(point.x, point.y - 5));
+            var hookLabel = cc.Sprite.create(main_scene_image.icon306);
+            hookLabel.setPosition(point);
             this.addChild(hookLabel);
-            hookLabel.setVisible(false);
+            hookLabel.setVisible(flag);
 
             this._hookList[i] = hookLabel;
         }
@@ -70,14 +78,47 @@ var MonthLabel = cc.Node.extend({
         cc.log("MonthLabel update");
 
         var monthMark = gameData.signIn.getMonthMark(this._index);
+        var nowDay = new Date().getDate();
 
         for (var i = 0; i < monthMark.days; ++i) {
             var flag = monthMark.mark >> i & 1;
 
             if (flag) {
-                this._hookList[i].setVisible(true);
+
+                if (i + 1 == nowDay && this._signInEffect) {
+                    this._signInEffect.removeFromParent();
+                    this._signInEffect = null;
+                }
+
+                if (!this._hookList[i].isVisible()) {
+
+                    var effect = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
+                    var point = this._hookList[i].getPosition();
+                    effect.setPosition(point);
+
+                    var hook = this._hookList[i];
+                    effect.animationManager.setCompletedAnimationCallback(this, function () {
+                        effect.removeFromParent();
+                        hook.setVisible(true);
+                    });
+
+                    this.addChild(effect);
+
+                } else {
+                    this._hookList[i].setVisible(true);
+                }
+
             } else {
                 this._hookList[i].setVisible(false);
+
+                if (this._index == 0) {
+                    var point = this._dayLabel[i].getPosition();
+                    if (i + 1 == nowDay && !this._signInEffect) {
+                        this._signInEffect = cc.BuilderReader.load(main_scene_image.uiEffect60, this);
+                        this._signInEffect.setPosition(point);
+                        this.addChild(this._signInEffect);
+                    }
+                }
             }
         }
     }

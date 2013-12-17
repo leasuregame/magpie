@@ -415,7 +415,7 @@ var Shop = Entity.extend({
             };
 
             var cardList = gameData.cardList;
-            product.count = outputTables.resource_limit.rows[1].card_count_limit - cardList.get("count");
+            product.count = outputTables.resource_limit.rows[1].card_count_limit - cardList.get("maxCount");
             if (product.count <= 0) {
                 product.tip = "已达到购买上限";
                 product.count = 0;

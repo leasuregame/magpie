@@ -95,11 +95,9 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._powerLabel);
 
         var vipLv = player.get("vip") || 0;
-
         var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
         vipSprite.setPosition(cc.p(410, 87));
         this.addChild(vipSprite);
-
 
         return true;
     },

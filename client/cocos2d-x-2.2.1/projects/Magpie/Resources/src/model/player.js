@@ -101,6 +101,7 @@ var Player = Entity.extend({
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
+        this.set("vip", data.vip);
         this.set("name", data.name);
         this.set("lv", data.lv);
         this.set("exp", data.exp);
@@ -110,7 +111,6 @@ var Player = Entity.extend({
         this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
         this.set("energy", data.energy);
-        this.set("vip", data.vip);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
@@ -133,7 +133,6 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
-
     },
 
     updatePower: function () {

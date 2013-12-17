@@ -56,9 +56,14 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool canCollect");
 
         if (this._collectCount <= 0) {
+            var tipVip = gameData.player.get("vip");
+
+            tipVip = Math.max(tipVip, 3);
+            tipVip = Math.min(tipVip, 12);
+
             GoPaymentLayer.pop({
                 title: "采集次数已用完",
-                msg: "成为VIP3，每日即可获得额外的采集次数"
+                msg: "成为VIP" + tipVip + "，每日即可获得额外的采集次数"
             });
             return false;
         }
@@ -95,7 +100,7 @@ var SpiritPool = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_collect", useGold);
+                lz.dc.event("event_collect", useGold ? "useGold" : "none");
             } else {
                 cc.log("upgrade fail");
 

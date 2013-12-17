@@ -19,8 +19,8 @@ Handler::orderList = (msg, session, next) ->
 		(cb) ->
 			dao.player.orderBy 'ability DESC, lv DESC', 50, cb
 
-		(cb) ->
-			dao.player.orderByRanking 50, cb
+		# (cb) ->
+		# 	dao.player.orderByRanking 50, cb
 
 		(cb) ->
 			dao.player.orderByLayer 50, cb
@@ -36,8 +36,8 @@ Handler::orderList = (msg, session, next) ->
 			msg: {
 				level: results[0]
 				ability: results[1]
-				ranking: results[2]
-				pass: results[3]
+				# ranking: results[2]
+				pass: results[2]
 			}
 		})
 

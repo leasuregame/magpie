@@ -20,9 +20,9 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>8120</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
+  <WindowWidth>30060</WindowWidth>
+  <WindowTopX>3500</WindowTopX>
+  <WindowTopY>2960</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -138,7 +138,7 @@
     <Cell><Data ss:Type="String">卡库位置</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="String">cardsCount</Data></Cell>
+    <Cell><Data ss:Type="String">cardCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
@@ -154,8 +154,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -7286,21 +7286,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>2.5</real>
+											<real>2.5666666030883789</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -7866,21 +7864,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>2.6666667461395264</real>
+											<real>2.7333333492279053</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -8446,21 +8442,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>2.8333332538604736</real>
+											<real>2.9000000953674316</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -9026,21 +9020,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3</real>
+											<real>3.0666666030883789</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -9606,21 +9598,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3.1666667461395264</real>
+											<real>3.2333333492279053</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -10186,21 +10176,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3.3333332538604736</real>
+											<real>3.4000000953674316</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -10766,21 +10754,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3.5</real>
+											<real>3.5666666030883789</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -11346,21 +11332,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3.6666667461395264</real>
+											<real>3.7333333492279053</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -11926,21 +11910,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>3.8333332538604736</real>
+											<real>3.9000000953674316</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -12506,21 +12488,19 @@
 										<dict>
 											<key>easing</key>
 											<dict>
-												<key>opt</key>
-												<real>2</real>
 												<key>type</key>
-												<integer>2</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>4</real>
+											<real>4.0666666030883789</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>

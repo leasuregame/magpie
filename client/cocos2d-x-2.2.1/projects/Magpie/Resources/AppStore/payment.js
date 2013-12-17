@@ -129,7 +129,7 @@ var Payment = Entity.extend({
         }
     },
 
-    _sendReceipt: function (receipt) {z
+    _sendReceipt: function (receipt) {
         cc.log("AppStore Payment _sendReceipt");
 
         var that = this;

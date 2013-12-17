@@ -21,8 +21,6 @@ var FriendLayer = cc.Layer.extend({
     _friendCountLabel: null,
     _maxFriendCountLabel: null,
     _skyDialog: null,
-    _addFriendLayer: null,
-    _nameEditBox: null,
     _scrollView: null,
     _friendItem: {},
 
@@ -132,8 +130,6 @@ var FriendLayer = cc.Layer.extend({
         this._maxFriendCountLabel.setPosition(this._friendLayerFit.maxFriendCountLabelPoint);
         this.addChild(this._maxFriendCountLabel);
 
-        this._addAddFriendLayer();
-
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
 
@@ -184,64 +180,6 @@ var FriendLayer = cc.Layer.extend({
         this._skyDialog.setRect(this._friendLayerFit.skyDialogRect);
 
         return true;
-    },
-
-    _addAddFriendLayer: function () {
-        cc.log("FriendLayer _addAddFriendLayer");
-
-        this._addFriendLayer = LazyLayer.create();
-
-        var functionLabel = cc.Sprite.create(main_scene_image.bg16);
-        functionLabel.setPosition(this._friendLayerFit.functionLabelPoint);
-        this._addFriendLayer.addChild(functionLabel);
-
-        var tipLabel = cc.LabelTTF.create("请输入玩家名字", "STHeitiTC-Medium", 26);
-        tipLabel.setColor(cc.c3b(255, 239, 131));
-        tipLabel.setPosition(this._friendLayerFit.tipLabelPoint);
-        this._addFriendLayer.addChild(tipLabel);
-
-        this._nameEditBox = cc.EditBox.create(this._friendLayerFit.nameEditBoxSize, cc.Scale9Sprite.create(main_scene_image.edit3));
-        this._nameEditBox.setPosition(this._friendLayerFit.nameEditBoxPoint);
-        this._nameEditBox.setDelegate(this);
-        this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        this._nameEditBox.setMaxLength(18);
-        this._addFriendLayer.addChild(this._nameEditBox);
-
-        var okItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            this._onClickOk,
-            this
-        );
-        okItem.setPosition(this._friendLayerFit.okPoint);
-
-        var cancelItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            this._onClickCancel,
-            this
-        );
-        cancelItem.setPosition(this._friendLayerFit.cancelPoint);
-
-        var menu = cc.Menu.create(
-            okItem,
-            cancelItem
-        );
-        menu.setPosition(cc.p(0, 0));
-        this._addFriendLayer.addChild(menu);
-
-        var okIcon = cc.Sprite.create(main_scene_image.icon21);
-        okIcon.setPosition(this._friendLayerFit.okPoint);
-        this._addFriendLayer.addChild(okIcon);
-
-        var cancelIcon = cc.Sprite.create(main_scene_image.icon72);
-        cancelIcon.setPosition(this._friendLayerFit.cancelPoint);
-        this._addFriendLayer.addChild(cancelIcon);
-
-        this.addChild(this._addFriendLayer, 1);
-
-        this._nameEditBox.setVisible(false);
-        this._addFriendLayer.setVisible(false);
     },
 
     update: function () {
@@ -382,28 +320,6 @@ var FriendLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         MainScene.getInstance().switchLayer(AddFriendsLayer);
-//        this._nameEditBox.setVisible(true);
-//        this._addFriendLayer.setVisible(true);
-    },
-
-    _onClickOk: function () {
-        cc.log("FriendLayer _onClickOk");
-        cc.log("name: " + this._nameEditBox.getText());
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        gameData.friend.addFriend(this._nameEditBox.getText());
-
-        this._onClickCancel();
-    },
-
-    _onClickCancel: function () {
-        cc.log("FriendLayer _onClickCancel");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._nameEditBox.setVisible(false);
-        this._addFriendLayer.setVisible(false);
     },
 
     _onClickGiveBless: function (id) {

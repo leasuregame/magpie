@@ -163,13 +163,13 @@ products =
         return next(null, {code: err.code or 500, msg: err.msg or err})
 
       if _.keys(player.cards).length >= player.cardsCount
-        return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
+        return next(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
       if player.money < times * PRICE
         return next(null, {code: 501, msg: '仙币不足'})
 
       if _.keys(player.cards).length + times > player.cardsCount
-        return nexl(null, {code: 501, msg: '卡牌容量不足'})
+        return next(null, {code: 501, msg: '卡牌容量不足'})
 
       playerManager.addExpCardFor player, times, (err, cards) ->
         if err
@@ -194,7 +194,7 @@ products =
       if err
         return next(null, {code: err.code or 500, msg: err.msg or err})
 
-      if player.cardsCount >= RESOURE_LIMIT.card_count_limit
+      if player.cardsCount >= RESOURE_LIMIT.card_count_limit or player.cardsCount + times > RESOURE_LIMIT.card_count_limit
         return next(null, {code: 501, msg: "卡牌容量已经达到最大值"})
 
       if player.gold < product.consume*times

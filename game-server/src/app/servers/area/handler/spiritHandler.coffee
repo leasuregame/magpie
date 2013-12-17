@@ -66,6 +66,7 @@ Handler::spiritorUpgrade = (msg, session, next) ->
       return next(null, {code: 501, msg: '灵气不够，不能升级'})
 
     player.spiritorUprade()
+    player.updateAbility()
     player.save()
     next(null, {code: 200, msg: {
       spiritor: player.getSpiritor()

@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -945,6 +945,8 @@
 											<integer>2</integer>
 										</dict>
 									</dict>
+									<key>1</key>
+									<dict/>
 								</dict>
 								<key>baseClass</key>
 								<string>CCSprite</string>
@@ -963,8 +965,8 @@
 									<dict>
 										<key>baseValue</key>
 										<array>
-											<real>13</real>
-											<real>-30</real>
+											<real>3</real>
+											<real>-45</real>
 										</array>
 										<key>name</key>
 										<string>position</string>
@@ -1003,7 +1005,7 @@
 									</dict>
 									<dict>
 										<key>baseValue</key>
-										<real>0.0</real>
+										<real>-5</real>
 										<key>name</key>
 										<string>rotation</string>
 										<key>type</key>

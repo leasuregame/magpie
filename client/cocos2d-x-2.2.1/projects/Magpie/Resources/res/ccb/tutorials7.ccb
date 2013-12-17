@@ -846,8 +846,6 @@
 						<integer>0</integer>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1908,9 +1906,12 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>主人。。
-现在，我们可以去召唤各路神仙！
-让他们与我们一起斩妖除魔，普度众生！</string>
+								<string>元神已经觉醒，号角已经吹响！
+踏上极品神仙追求极品蟠桃之路已开启。
+现在，我们可以去召唤各路神仙了！
+主人，
+嫦娥，后羿，孙猴子。。。
+你想让谁为你效命，尽管去召唤吧！</string>
 							</dict>
 						</array>
 					</dict>

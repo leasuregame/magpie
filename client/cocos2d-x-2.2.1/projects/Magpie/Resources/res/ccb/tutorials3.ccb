@@ -846,8 +846,6 @@
 						<integer>0</integer>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1906,10 +1904,12 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>激动人心的时刻到了！
-主人！！！
-现在可以唤醒我沉睡的灵魂了！
-我要崛起了！！！</string>
+								<string>激动人心的时刻到了，主人！
+现在可以唤醒我那沉睡的灵魂了。
+我要崛起了！我要是崛起了，
+主人你当极品神仙就指日可待了。
+我可以为各路神仙提供巨额神力加成。
+</string>
 							</dict>
 						</array>
 					</dict>

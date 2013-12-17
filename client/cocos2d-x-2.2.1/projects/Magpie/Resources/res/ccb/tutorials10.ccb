@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -810,8 +810,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.7999999523162842</real>
-							<real>1.7999999523162842</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -846,8 +846,6 @@
 						<integer>0</integer>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1908,7 +1906,10 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>主人。现在，让众神仙上阵吧！！</string>
+								<string>主人，现在，让我们的神仙上阵吧！
+我已经隐约感觉到你召唤的这两位神仙，
+在一定程度上已经具备了极品的特质。
+哦，耶！</string>
 							</dict>
 						</array>
 					</dict>

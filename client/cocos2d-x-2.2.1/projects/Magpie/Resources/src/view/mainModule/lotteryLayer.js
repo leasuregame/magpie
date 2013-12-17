@@ -364,7 +364,8 @@ var LotteryLayer = cc.Layer.extend({
                 } else {
                     LazyLayer.closeCloudLayer();
                 }
-            }
+            };
+
             if (this._times == 1) {
                 lottery.lottery(function (data) {
                     cc.log(data);

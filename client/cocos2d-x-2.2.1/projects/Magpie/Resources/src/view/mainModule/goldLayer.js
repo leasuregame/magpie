@@ -267,10 +267,10 @@ var GoldLayer = LazyLayer.extend({
         if (this._gold > 0) {
             gameData.task.obtainGold(this._gold);
 
-            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 魔石", "STHeitiTC-Medium", 35);
-            tipLabel.setColor(cc.c3b(255, 239, 131));
-            tipLabel.setPosition(this._goldLayerFit.tipLabelPoint);
-            this.addChild(tipLabel);
+            var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect65, this);
+            tipEffect.controller.goldLabel.setString(this._gold);
+            tipEffect.setPosition(this._goldLayerFit.tipLabelPoint);
+            this.addChild(tipEffect);
         }
 
         this.scheduleOnce(function () {

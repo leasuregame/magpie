@@ -14,6 +14,9 @@ var AddFriendsLayer = cc.Layer.extend({
     _nameEditBox: null,
     _friendsList: [],
     _scrollView: null,
+    _skyDialog: null,
+    _friendItem: [],
+    _selectFriend: null,
 
     onEnter: function () {
         cc.log("AddFriendsLayer onEnter");
@@ -40,6 +43,7 @@ var AddFriendsLayer = cc.Layer.extend({
         this._addFriendsLayerFit = gameFit.mainScene.addFriendLayer;
 
         this._friendsList = [];
+        this._friendItem = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -140,6 +144,37 @@ var AddFriendsLayer = cc.Layer.extend({
         this._maxFriendCountLabel.setPosition(this._addFriendsLayerFit.maxFriendCountLabelPoint);
         this.addChild(this._maxFriendCountLabel);
 
+        this._skyDialog = SkyDialog.create();
+        this.addChild(this._skyDialog, 10);
+
+        var label = cc.Scale9Sprite.create(main_scene_image.bg16);
+        label.setContentSize(this._addFriendsLayerFit.labelContentSize);
+
+        var detailItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon120,
+            this._onClickDetail,
+            this
+        );
+        detailItem.setPosition(this._addFriendsLayerFit.detailItemPoint);
+
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon119,
+            this._onClickSendMessage,
+            this
+        );
+        sendMessageItem.setPosition(this._addFriendsLayerFit.sendMessageItemPoint);
+
+        var skyDialogMenu = cc.Menu.create(detailItem, sendMessageItem);
+        skyDialogMenu.setPosition(cc.p(0, 0));
+        label.addChild(skyDialogMenu);
+
+        this._skyDialog.setLabel(label);
+        this._skyDialog.setRect(this._addFriendsLayerFit.skyDialogRect);
+
         this._onClickUpdateFriends();
 
         return true;
@@ -173,15 +208,26 @@ var AddFriendsLayer = cc.Layer.extend({
 
         var menu = LazyMenu.create();
 
+        var friendMenu = LazyMenu.create();
+        friendMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(friendMenu);
+
         for (var i = 0; i < listLen; i++) {
 
             var y = scrollViewHeight - 127 - 127 * i;
 
-            var bgSprite = cc.Sprite.create(main_scene_image.button15);
-            bgSprite.setPosition(cc.p(0, y));
-            bgSprite.setScaleY(0.9);
-            bgSprite.setAnchorPoint(cc.p(0, 0));
-            scrollViewLayer.addChild(bgSprite);
+            var friendItem = cc.MenuItemImage.create(
+                main_scene_image.button15,
+                main_scene_image.button15s,
+                main_scene_image.button15d,
+                this._onClickFriend(i),
+                this
+            );
+            friendItem.setAnchorPoint(cc.p(0, 0));
+            friendItem.setPosition(cc.p(0, y));
+            friendItem.setScaleY(0.9);
+            friendMenu.addChild(friendItem);
+            this._friendItem[i] = friendItem;
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(180, 35));
@@ -239,9 +285,48 @@ var AddFriendsLayer = cc.Layer.extend({
 
     },
 
+    _onClickFriend: function (index) {
+        return function () {
+            cc.log("AddFriendsLayer _onClickFriend: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var point = this._friendItem[index].convertToWorldSpace(cc.p(230, 98));
+
+            this._selectFriend = index;
+            this._skyDialog.show(point);
+        }
+    },
+
+    _onClickDetail: function () {
+        cc.log("AddFriendsLayer _onClickDetail: " + this._selectFriend);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        gameData.player.playerDetail(function (data) {
+            cc.log(data);
+
+            LineUpDetail.pop(data);
+            gameMark.updateFriendMark(false);
+
+        }, this._friendsList[this._selectFriend].id);
+    },
+
+    _onClickSendMessage: function () {
+        cc.log("AddFriendsLayer _onClickSendMessage: " + this._selectFriend);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var friend = this._friendsList[this._selectFriend];
+
+        SendMessageLayer.pop(friend.id, friend.name);
+    },
+
     _onClickAddFriend: function (index) {
         var that = this;
         return function () {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var name = that._friendsList[index].name;
             cc.log("AddFriendsLayer _onClickAddFriend: " + name);
 

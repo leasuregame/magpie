@@ -144,7 +144,12 @@ var fit4Iphone4 = {
             "scrollViewHeight": 640,
             "scrollViewLayerRect": cc.rect(40, 176, 640, 500),
             "scrollViewSize": cc.size(591, 500),
-            "scrollViewPoint": cc.p(65, 176)
+            "scrollViewPoint": cc.p(65, 176),
+            "labelContentSize": cc.size(216, 240),
+            "detailItemPoint": cc.p(108, 170),
+            "sendMessageItemPoint": cc.p(108, 80),
+            "skyDialogRect": cc.rect(40, 198, 640, 700)
+
         },
         "amountLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -1333,7 +1338,12 @@ var fit4Iphone5 = {
             "scrollViewHeight": 660,
             "scrollViewLayerRect": cc.rect(0, 176, 640, 660),
             "scrollViewSize": cc.size(591, 660),
-            "scrollViewPoint": cc.p(25, 176)
+            "scrollViewPoint": cc.p(25, 176),
+            "labelContentSize": cc.size(216, 240),
+            "detailItemPoint": cc.p(108, 170),
+            "sendMessageItemPoint": cc.p(108, 80),
+            "skyDialogRect": cc.rect(0, 198, 640, 788)
+
         },
         "amountLayer": {
             "bgLayerPoint": cc.p(0, 0),

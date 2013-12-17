@@ -221,6 +221,8 @@ var RegisterLayer = cc.Layer.extend({
         user.register(function (data) {
             cc.log(data);
 
+            TipLayer.tip("注册成功，请登录游戏");
+
             that.getParent().updateEditBox();
             that.removeFromParent();
         }, account, password);

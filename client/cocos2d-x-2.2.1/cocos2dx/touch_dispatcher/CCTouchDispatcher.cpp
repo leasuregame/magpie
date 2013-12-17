@@ -400,33 +400,39 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
     //
     // process standard handlers 2nd
     //
-    if (uStandardHandlersCount > 0 && pMutableTouches->count() > 0)
+    // 源码已修改
+    // 吞没点击后，仍然往下发送ccTouchesEnd & ccTouchesCancelled事件
+    if (uStandardHandlersCount > 0)
     {
         CCStandardTouchHandler *pHandler = NULL;
         CCObject* pObj = NULL;
         CCARRAY_FOREACH(m_pStandardHandlers, pObj)
         {
             pHandler = (CCStandardTouchHandler*)(pObj);
-
+            
             if (! pHandler)
             {
                 break;
             }
-
+            
             switch (sHelper.m_type)
             {
-            case CCTOUCHBEGAN:
-                pHandler->getDelegate()->ccTouchesBegan(pMutableTouches, pEvent);
-                break;
-            case CCTOUCHMOVED:
-                pHandler->getDelegate()->ccTouchesMoved(pMutableTouches, pEvent);
-                break;
-            case CCTOUCHENDED:
-                pHandler->getDelegate()->ccTouchesEnded(pMutableTouches, pEvent);
-                break;
-            case CCTOUCHCANCELLED:
-                pHandler->getDelegate()->ccTouchesCancelled(pMutableTouches, pEvent);
-                break;
+                case CCTOUCHBEGAN:
+                    if(pMutableTouches->count() > 0) {
+                        pHandler->getDelegate()->ccTouchesBegan(pMutableTouches, pEvent);
+                    }
+                    break;
+                case CCTOUCHMOVED:
+                    if(pMutableTouches->count() > 0) {
+                        pHandler->getDelegate()->ccTouchesMoved(pMutableTouches, pEvent);
+                    }
+                    break;
+                case CCTOUCHENDED:
+                    pHandler->getDelegate()->ccTouchesEnded(pMutableTouches, pEvent);
+                    break;
+                case CCTOUCHCANCELLED:
+                    pHandler->getDelegate()->ccTouchesCancelled(pMutableTouches, pEvent);
+                    break;
             }
         }
     }

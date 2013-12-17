@@ -100,11 +100,15 @@ var appFiles = [
     'src/view/loginModule/registerLayer.js',
     'src/view/loginModule/selectAreaLayer.js',
 
+    'src/view/startAnimationModule/startAnimationLayer.js',
+    'src/view/startAnimationModule/startAnimationScene.js',
+
     'src/view/mainModule/effect.js',
 
     'src/view/mainModule/cocosBuilderClass.js',
     'src/view/mainModule/abilityRankLayer.js',
     'src/view/mainModule/achievementLayer.js',
+    'src/view/mainModule/addFriendsLayer.js',
     'src/view/mainModule/rechargeLayer.js',
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
@@ -121,6 +125,7 @@ var appFiles = [
     'src/view/mainModule/cardHeadNode.js',
     'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardLibraryLayer.js',
+    'src/view/mainModule/cardListFullTipLayer.js',
     'src/view/mainModule/cardListLayer.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
@@ -167,6 +172,7 @@ var appFiles = [
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
+    'src/view/mainModule/tenLotteryCardLayer.js',
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',
     'src/view/mainModule/tournamentRankLayer.js',

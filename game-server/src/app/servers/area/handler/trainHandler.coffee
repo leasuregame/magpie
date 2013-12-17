@@ -176,7 +176,7 @@ Handler::luckyCard = (msg, session, next) ->
         player.setFirstTime('highLuckyCard', 0)
 
       cardCount = _.keys(player.cards).length
-      if cardCount >= player.cardsCount or cardCount + times > player.cardsCount
+      if cardCount >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
       generateCard player, level, type, times, isFree, cb

@@ -402,7 +402,42 @@ var Shop = Entity.extend({
             }
 
             return product;
+        },
+        cardCount: function (table) {
+            var product = {
+                name: table.name,
+                consumeType: table.consume_type,
+                price: table.consume,
+                obtain: table.obtain,
+                unit: "个",
+                count: 0,
+                tip: ""
+            };
+
+            var cardList = gameData.cardList;
+            product.count = outputTables.resource_limit.rows[1].card_count_limit - cardList.get("count");
+            if (product.count <= 0) {
+                product.tip = "已达到购买上限";
+                product.count = 0;
+            }
+
+            var count;
+            var player = gameData.player;
+
+
+            count = Math.floor(player.get("gold") / product.price);
+            if (count <= 0) {
+                product.tip = "魔石不足";
+                product.count = 0;
+                return product;
+            } else {
+                product.count = Math.min(product.count, count);
+            }
+
+            return product;
+
         }
+
     },
 
     ProductHandle: {
@@ -449,11 +484,20 @@ var Shop = Entity.extend({
 
         challengeCount: function (msg, times) {
             gameData.shop.add("challengeBuyCount", -times);
-            gameData.tournament.add("count", msg.challengeCount);
+            gameData.tournament.set("count", msg.challengeCount);
             gameData.player.set(msg.consume.key, msg.consume.value);
 
             return {
-                challengeCount: msg.challengeCount
+                challengeCount: times
+            }
+        },
+
+        cardCount: function (msg, times) {
+            gameData.cardList.set("maxCount", msg.cardsCount);
+            gameData.player.set(msg.consume.key, msg.consume.value);
+
+            return {
+                cardsCount: times
             }
         }
     },

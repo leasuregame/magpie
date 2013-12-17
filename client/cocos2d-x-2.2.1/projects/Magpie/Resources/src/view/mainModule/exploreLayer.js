@@ -663,9 +663,14 @@ var ExploreLayer = cc.Layer.extend({
 
         if (product.count <= 0) {
             if (gameData.shop.get("powerBuyCount") <= 0) {
+                var tipVip = gameData.player.get("vip") + 1;
+
+                tipVip = Math.max(tipVip, 1);
+                tipVip = Math.min(tipVip, 12);
+
                 GoPaymentLayer.pop({
                     title: "体力购买次数已用完",
-                    msg: "成为VIP1，每日即可获得额外的购买次数"
+                    msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
                 });
             }
 

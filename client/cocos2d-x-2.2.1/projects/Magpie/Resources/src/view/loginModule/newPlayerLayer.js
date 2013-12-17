@@ -58,15 +58,18 @@ var NewPlayerLayer = cc.Layer.extend({
              */
             editBoxEditingDidEnd: function (sender) {
                 var text = sender.getText();
-                var len = text.length;
-                if (!text) {
-                    TipLayer.tip("请输入昵称");
-                } else if (len < 1 || len > 6) {
-                    TipLayer.tip("昵称为1~6位中文或数字");
-                } else if (EMPTY_SPACE_REG.test(text)) {
-                    TipLayer.tip("昵称不能包含空格");
-                } else if (!NICKNAME_REG.test(text)) {
-                    TipLayer.tip("昵称不能包含非法字符");
+
+                if (text) {
+                    var len = text.length;
+                    if (!text) {
+                        TipLayer.tip("请输入昵称");
+                    } else if (len < 1 || len > 6) {
+                        TipLayer.tip("昵称为1~6位中文或数字");
+                    } else if (EMPTY_SPACE_REG.test(text)) {
+                        TipLayer.tip("昵称不能包含空格");
+                    } else if (!NICKNAME_REG.test(text)) {
+                        TipLayer.tip("昵称不能包含非法字符");
+                    }
                 }
             }
         });
@@ -74,7 +77,7 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
         newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function () {
-            this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
+            this._nameEditBox.setPlaceHolder("汉字、子母或数字");
             this._setRandomName();
         });
 

@@ -9403,7 +9403,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>5.5</real>
+						<real>6.5</real>
 						<key>type</key>
 						<integer>10</integer>
 						<key>value</key>
@@ -9419,13 +9419,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>5.5</real>
+			<real>6.5</real>
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.93350696563720703</real>
 			<key>position</key>
-			<real>5.5</real>
+			<real>6.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

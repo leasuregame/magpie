@@ -52,6 +52,10 @@ Handler::strengthen = (msg, session, next) ->
       player.strengthen target, sources, cb
 
     (results, targetCard, cb) ->
+      ### 更新玩家战斗力值 ###
+      if player.isLineUpCard(targetCard) 
+        player.updateAbility()
+
       _jobs = []
 
       cardData = targetCard.getSaveData()
@@ -261,6 +265,10 @@ Handler::skillUpgrade = (msg, session, next) ->
       cb(null, player, card)
 
     (player, card, cb) ->
+      ### 更新玩家战斗力值 ###
+      if player.isLineUpCard(card) 
+        player.updateAbility()
+
       _jobs = []
 
       playerData = player.getSaveData()
@@ -380,6 +388,10 @@ Handler::starUpgrade = (msg, session, next) ->
       cb null
 
     (cb) ->
+      ### 更新玩家战斗力值 ###
+      if player.isLineUpCard(card) 
+        player.updateAbility()
+
       _jobs = []
 
       playerData = player.getSaveData()
@@ -449,6 +461,10 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
+    ### 更新玩家战斗力值 ###
+    if player.isLineUpCard(card) 
+      player.updateAbility()
+      
     player.save()
     # 拥有了百分之10的被动属性成就
     if (card.passiveSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0

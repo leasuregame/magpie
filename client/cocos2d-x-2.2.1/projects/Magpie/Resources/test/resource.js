@@ -1117,3 +1117,11 @@ main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_small
 main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_treelight_sound.wav"});
 main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_wordinsert_sound.wav"});
 main_scene_res.push({src: "../res/sound/startAnimationsound/startAnimation_breaktree_sound.wav"});
+
+main_scene_res.push({src: "../res/sound/battle_sound_aoe2.wav"});
+main_scene_res.push({src: "../res/sound/battle_sound_atk2.wav"});
+main_scene_res.push({src: "../res/sound/battle_sound_atk3.wav"});
+
+
+
+

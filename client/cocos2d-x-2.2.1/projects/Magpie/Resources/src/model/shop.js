@@ -258,7 +258,7 @@ var Shop = Entity.extend({
                 var table = outputTables.product.rows[id];
                 var msg = data.msg;
 
-                var reward = that.ProductHandle[table.method](msg);
+                var reward = that.ProductHandle[table.method](msg, times);
 
                 cb(reward);
 

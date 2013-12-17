@@ -34,6 +34,16 @@ var RankDao = (function(_super) {
         dbClient.query(sql, [], cb);
     };
 
+    RankDao.maxRanking = function(cb) {
+        dbClient.query('select max(ranking) + 1 as next_ranking from rank', function(err, res) {
+            if (err) {
+                return cb(err);
+            }
+            
+            return cb(null, res[0].next_ranking);
+        });
+    };
+
     RankDao.initRankingInfo = function(pid, cb) {
         RankDao.fetchOne({
             where: {

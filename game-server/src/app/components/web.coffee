@@ -20,7 +20,7 @@ class Component
       else 
         res.writeHead(404, 'Not Found')
         res.end()
-    .listen(5050, '127.0.0.1')
+    .listen(5050, '124.238.236.32')
     console.log 'create web on http://127.0.0.1:5050'
     process.nextTick cb
 

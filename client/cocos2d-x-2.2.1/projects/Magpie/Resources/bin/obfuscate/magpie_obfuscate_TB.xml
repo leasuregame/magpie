@@ -6,8 +6,8 @@
 
     <target name="compile">
         <!--advanced / simple-->
-        <jscomp compilationLevel="advanced" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game.js">
+        <jscomp compilationLevel="simple" warning="quiet"
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/TB/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>

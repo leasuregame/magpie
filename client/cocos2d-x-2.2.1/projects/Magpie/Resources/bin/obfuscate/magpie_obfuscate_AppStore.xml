@@ -6,7 +6,7 @@
 
     <target name="compile">
         <!--advanced / simple-->
-        <jscomp compilationLevel="advanced" warning="quiet"
+        <jscomp compilationLevel="simple" warning="quiet"
                 debug="false" output="${basedir}/projects/Magpie/Resources/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
@@ -88,12 +88,13 @@
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
 
-                <file name="src/view/loginModule/loginScene.js"/>
+                <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/loginLayer.js"/>
                 <file name="src/view/loginModule/logoutLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>
+                <file name="src/view/loginModule/loginScene.js"/>
 
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>

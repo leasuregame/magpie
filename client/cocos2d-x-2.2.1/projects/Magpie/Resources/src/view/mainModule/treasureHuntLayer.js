@@ -279,10 +279,10 @@ var TreasureHuntLayer = cc.Layer.extend({
         var scaleAction2 = cc.ScaleTo.create(0.3, 1);
 
         var selectFrameAction = cc.Sequence.create(
-            scaleAction1.copy(),
-            scaleAction2.copy(),
-            scaleAction1.copy(),
-            scaleAction2.copy(),
+            scaleAction1.clone(),
+            scaleAction2.clone(),
+            scaleAction1.clone(),
+            scaleAction2.clone(),
             scaleAction1,
             scaleAction2
         );

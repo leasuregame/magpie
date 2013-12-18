@@ -9,10 +9,10 @@
 var LoginBgLayer = cc.Layer.extend({
     _loginBgLayerFit: null,
 
-    init: function() {
+    init: function () {
         cc.log("LoginBgLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this._loginBgLayerFit = gameFit.loginScene.loginBgLayer;
 
@@ -25,11 +25,11 @@ var LoginBgLayer = cc.Layer.extend({
 
 });
 
-LoginBgLayer.create = function() {
+LoginBgLayer.create = function () {
     cc.log("LoginBgLayer create");
 
     var ref = new LoginBgLayer();
-    if(ref && ref.init()) {
+    if (ref && ref.init()) {
         return ref;
     }
 

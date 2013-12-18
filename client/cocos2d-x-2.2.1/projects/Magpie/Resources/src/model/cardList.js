@@ -73,7 +73,7 @@ var CardList = Entity.extend({
         this.update();
     },
 
-    delete: function (card) {
+    deleteCard: function (card) {
         cc.log("CardList delete");
 
         if (card instanceof Array) {

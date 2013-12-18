@@ -26,7 +26,7 @@ var GoPaymentLayer = LazyLayer.extend({
         this._cb = data.cb || function () {
             var shopLayer = ShopLayer.create();
             shopLayer.switchLayer(VipLayer);
-            MainScene.getInstance().switch(shopLayer);
+            MainScene.getInstance().switchTo(shopLayer);
         };
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);

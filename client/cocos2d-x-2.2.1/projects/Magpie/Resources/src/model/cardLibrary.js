@@ -187,7 +187,7 @@ var CardLibrary = Entity.extend({
 
                 that._changeTypeById(id, CARD_EXIST);
 
-                cb(msg.energy);
+                cb(msg);
 
                 lz.dc.event("event_receive_card_book_reward", id);
             } else {

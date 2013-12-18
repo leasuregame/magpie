@@ -322,7 +322,7 @@ var SignInLayer = cc.Layer.extend({
 
             that.update();
 
-            lz.tipRewardWithIcon(data);
+            lz.tipReward(data);
             gameMark.updateSignInMark(false);
         });
     },
@@ -338,7 +338,7 @@ var SignInLayer = cc.Layer.extend({
 
             that.update();
 
-            lz.tipRewardWithIcon(data);
+            lz.tipReward(data);
         });
     },
 

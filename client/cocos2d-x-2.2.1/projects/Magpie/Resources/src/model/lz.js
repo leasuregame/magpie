@@ -327,8 +327,12 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-
-                TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                var icon = lz.getGameGoodsIcon(key);
+                if (icon) {
+                    TipLayer.tipWithIcon(lz.getGameGoodsIcon(key), " +" + reward[key]);
+                } else {
+                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                }
             }
         })(key);
 
@@ -337,30 +341,6 @@ lz.tipReward = function (reward) {
         delay += 0.6;
     }
 };
-
-lz.tipRewardWithIcon = function (reward) {
-    reward = reward || {};
-
-    var key;
-    var delay = 0;
-
-    for (key in reward) {
-        if (!reward[key]) return;
-
-        var fn = (function (key) {
-            return function () {
-                var str = lz.getNameByKey(key);
-
-                TipLayer.tipWithIcon(lz.getGameGoodsIcon(key), "+" + reward[key]);
-            }
-        })(key);
-
-        lz.scheduleOnce(fn, delay);
-
-        delay += 0.6;
-    }
-};
-
 
 lz.getTimeStr = function (time) {
     cc.log("BattleMessageLayer _getTimeStr");

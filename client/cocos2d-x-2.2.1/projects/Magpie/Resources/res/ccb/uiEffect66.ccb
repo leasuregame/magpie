@@ -422,9 +422,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+100</string>
+								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

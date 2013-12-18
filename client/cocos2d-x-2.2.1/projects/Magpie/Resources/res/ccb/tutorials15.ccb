@@ -650,8 +650,6 @@
 						<integer>0</integer>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1169,7 +1167,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>326</real>
+									<real>310</real>
 									<real>95</real>
 									<integer>0</integer>
 								</array>
@@ -1269,8 +1267,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>主人。。
-现在让我们踏上除魔修行的娱乐之途吧！</string>
+								<string>主人，
+现在让我们踏上极品神仙之路吧！
+吃掉大蟠桃，成为极品大神，
+傲视整个天庭，冲出银河系，
+走向宇宙！！</string>
 							</dict>
 						</array>
 					</dict>

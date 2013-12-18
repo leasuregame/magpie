@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -823,7 +823,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -838,7 +838,7 @@
 								<key>value</key>
 								<array>
 									<real>25</real>
-									<real>40</real>
+									<real>20</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -893,7 +893,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1165,7 +1165,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1314,7 +1314,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1452,7 +1452,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1601,7 +1601,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1750,7 +1750,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1899,7 +1899,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -2037,7 +2037,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2186,7 +2186,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2222,7 +2222,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2510,7 +2510,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2542,7 +2542,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -2711,7 +2711,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2751,7 +2751,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2931,7 +2931,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2971,7 +2971,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3151,7 +3151,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3191,7 +3191,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3371,7 +3371,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3403,7 +3403,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3583,7 +3583,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3623,7 +3623,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3803,7 +3803,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3843,7 +3843,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4023,7 +4023,7 @@
 								<key>value</key>
 								<array>
 									<real>1.6000000238418579</real>
-									<real>0.0</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -4063,7 +4063,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4099,7 +4099,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4390,7 +4390,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4730,7 +4730,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -4959,7 +4959,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -5316,7 +5316,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -5636,7 +5636,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>658</real>
+									<real>320</real>
 									<real>350</real>
 									<integer>0</integer>
 								</array>
@@ -5692,7 +5692,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -5865,7 +5865,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>658</real>
+									<real>320</real>
 									<real>350</real>
 									<integer>0</integer>
 								</array>
@@ -5921,7 +5921,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -6546,7 +6546,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -6866,8 +6866,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>-320</real>
+									<real>-30</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -6922,7 +6922,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -7095,8 +7095,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>-320</real>
+									<real>-30</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -7151,7 +7151,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -7616,7 +7616,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -7936,8 +7936,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>320</real>
+									<real>15</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -7992,7 +7992,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -8165,8 +8165,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>320</real>
+									<real>15</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -8221,7 +8221,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -8626,7 +8626,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -8867,7 +8867,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -8904,8 +8904,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>2.5999999046325684</real>
+							<real>2.2000000476837158</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -9251,7 +9251,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -9265,8 +9265,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-45</real>
-							<real>-192</real>
+							<real>-275</real>
+							<real>-82</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -9307,7 +9307,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>-360</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -9336,7 +9336,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 			</dict>
@@ -9528,7 +9528,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -9542,8 +9542,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>94</real>
-							<real>-240</real>
+							<real>-45</real>
+							<real>-192</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -9869,8 +9869,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>-320</real>
+									<real>-370</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -9925,7 +9925,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -10098,8 +10098,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>-320</real>
+									<real>-339</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -10154,7 +10154,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -10374,7 +10374,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -10879,7 +10879,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -11199,8 +11199,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>320</real>
+									<real>-330</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -11255,7 +11255,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -11428,8 +11428,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>320</real>
+									<real>-301</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -11484,7 +11484,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -11829,7 +11829,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -12108,8 +12108,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2</real>
+									<real>2</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -12566,8 +12566,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2</real>
+									<real>1.7999999523162842</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -13032,8 +13032,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2.4000000953674316</real>
+									<real>2.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -13490,8 +13490,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2.4000000953674316</real>
+									<real>1.7999999523162842</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -13956,8 +13956,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>2.2000000476837158</real>
+									<real>2</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -14251,7 +14251,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -14576,7 +14576,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>130</real>
+									<real>155</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -14631,7 +14631,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -14822,7 +14822,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -14892,7 +14892,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -15627,9 +15627,9 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>6.7423539161682129</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>10.766666412353516</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -15814,7 +15814,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/startAnimationSound/startAnimation_wordinsert_sound.wav</string>
+							<string>res/sound/startAnimationSound/startAnimation_noword_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -15897,7 +15897,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>4.6666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -16059,7 +16059,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>3.3666665554046631</real>
+						<real>3.3333332538604736</real>
 						<key>type</key>
 						<integer>9</integer>
 						<key>value</key>

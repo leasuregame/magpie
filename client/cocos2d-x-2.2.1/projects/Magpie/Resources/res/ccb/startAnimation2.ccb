@@ -5375,6 +5375,24 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
+						<real>2.1666667461395264</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_wind_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
 						<real>5.2666668891906738</real>
 						<key>type</key>
 						<integer>9</integer>

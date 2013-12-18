@@ -206,6 +206,10 @@ var LotteryLayer = cc.Layer.extend({
         this._closeTenLotteryItem.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
         menu.addChild(this._closeTenLotteryItem);
 
+        var privilegeIcon = cc.Sprite.create(main_scene_image.icon319);
+        privilegeIcon.setPosition(this._lotteryLayerFit.privilegeIconPoint);
+        this.addChild(privilegeIcon);
+
         var tipBgSprite = cc.Sprite.create(main_scene_image.icon245);
         tipBgSprite.setPosition(this._lotteryLayerFit.tipBgSpritePoint);
         tipBgSprite.setScaleY(1.1);

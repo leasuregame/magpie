@@ -134,6 +134,17 @@ var NewPlayerLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
+    },
+
+    _onClickClose: function () {
+        cc.log("NewPlayerLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+       // lz.server.disconnect();
+        this.getParent().switch(LoginLayer.create());
+        this.removeFromParent();
+
     }
 });
 

@@ -55,10 +55,6 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
-        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect36, this);
-        bgEffect.setPosition(this._loginLayerFit.bgEffectPoint);
-        this.addChild(bgEffect);
-
         this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
@@ -200,10 +196,7 @@ var LoginLayer = cc.Layer.extend({
             if (type == 1) {
                 cc.Director.getInstance().replaceScene(MainScene.getInstance());
             } else if (type == 2) {
-                //that.getParent().switchLayer(NewPlayerLayer);
-                var newPlayerLayer = NewPlayerLayer.create();
-                that.addChild(newPlayerLayer);
-                that._loginFrame.setVisible(false);
+                that.getParent().switch(NewPlayerLayer.create());
             }
         });
     },
@@ -212,11 +205,7 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer _onClickRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._loginFrame.setVisible(false);
-
-        var registerLayer = RegisterLayer.create();
-        this.addChild(registerLayer, 1);
+        this.getParent().switch(RegisterLayer.create());
     }
 });
 

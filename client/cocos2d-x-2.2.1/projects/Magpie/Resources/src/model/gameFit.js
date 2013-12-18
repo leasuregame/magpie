@@ -68,8 +68,10 @@ var fit4Iphone4 = {
         }
     },
     "loginScene": {
+        "loginBgLayer": {
+            "bgEffectPoint": cc.p(360, 480)
+        },
         "loginLayer": {
-            "bgEffectPoint": cc.p(360, 480),
             "loginFramePoint": cc.p(360, 520),
             "accountNodePoint": cc.p(0, -260),
             "passwordNodePoint": cc.p(0, -350),
@@ -1262,6 +1264,9 @@ var fit4Iphone5 = {
     },
 
     "loginScene": {
+        "loginBgLayer": {
+            "bgEffectPoint": cc.p(320, 568)
+        },
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
             "loginFramePoint": cc.p(320, 568),

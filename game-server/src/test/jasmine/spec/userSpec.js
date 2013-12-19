@@ -5,7 +5,7 @@ describe("Connector Server", function() {
     var userid;
 
     beforeAll(function() {
-      doAjax('/createDb', {}, function(data) {});
+      doAjax('/loaddata/csv', {}, function(data) {});
     });
 
     describe('connector.userHandler.register', function() {
@@ -20,10 +20,10 @@ describe("Connector Server", function() {
           });
         });
 
-        it("register with a valid email and password", function() {
+        it("register with a valid acount and password", function() {
           request('connector.userHandler.register', {
             account: 'test_email@qq.com',
-            password: '1'
+            password: '123456'
           }, function(data) {
             console.log(data);
             expect(typeof data.msg.userId).toEqual('number');
@@ -32,15 +32,15 @@ describe("Connector Server", function() {
           });
         });
 
-        // it("register with an invalid email", function() {
-        //   request('connector.userHandler.register', {
-        //     account: '123456',
-        //     password: '1'
-        //   }, function(data) {
-        //     userid = data.uid
-        //     expect(data.code).toEqual(501);
-        //   });
-        // });
+        it("register with an invalid acount", function() {
+          request('connector.userHandler.register', {
+            account: '123456()',
+            password: '123456'
+          }, function(data) {
+            userid = data.uid
+            expect(data.code).toEqual(501);
+          });
+        });
 
         it("register with empty email or password", function() {
           request('connector.userHandler.register', {
@@ -48,7 +48,17 @@ describe("Connector Server", function() {
             password: ''
           }, function(data) {
             expect(data.code).toEqual(501);
-            expect(data.msg).toEqual('参数不正确！');
+            expect(data.msg).toEqual('用户名或密码不能为空');
+          });
+        });
+
+        it("register with wrong password", function() {
+          request('connector.userHandler.register', {
+            account: 'correctAccount',
+            password: 'we#122'
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('密码只能由6-20位的数字或字母组成');
           });
         });
       });
@@ -57,7 +67,7 @@ describe("Connector Server", function() {
         beforeEach(function() {
           doAjax('/adduser', {
             account: 'test_email_1@qq.com',
-            password: '1'
+            password: '123456'
           }, function(data) {
             userid = data.uid;
           });
@@ -72,10 +82,10 @@ describe("Connector Server", function() {
         it("should not can be register with exist email", function() {
           request('connector.userHandler.register', {
             account: 'test_email_1@qq.com',
-            password: 1
+            password: '123456'
           }, function(data) {
             expect(data.code).toEqual(501);
-            expect(data.msg).toEqual('')
+            expect(data.msg).toEqual('用户已经存在')
           });
         });
 
@@ -85,95 +95,23 @@ describe("Connector Server", function() {
 
     describe("connector.userHandler.login", function() {
 
-
       describe("when user has been register", function() {
 
-        var addedUserId;
-        beforeEach(function() {
-          request('connector.userHandler.register', {
-            account: 'test_account',
-            pasword: 1
-          }, function(data) {
-            addedUserId = data.uid;
-            request('connector.userHandler.login', {
-              account: 'test_account',
-              password: 1
-            }, function(data) {
-              console.log(data);
-              request('connector.playerHandler.createPlayer', {
-                areaId: 1,
-                userId: addedUserId,
-                name: 'test_player'
-              }, function(data) {
-                playerId = data.playerId;
-                createTime = data.ct;
-              });
-            });
-          });
-        });
-
-        afterEach(function() {
-          doAjax('removeuser', {
-            uid: addedUserId
-          }, function() {});
-        });
-
-        describe("and player for user is created", function() {
-          var playerId;
-          var createTime;
-
-          afterEach(function() {
-            doAjax('/removePlayer', {
-              playerId: playerId
-            }, function(data) {});
-          });
+        describe("and player for user is created", function() {          
 
           it("should can be login, and return player info", function() {
             request('connector.userHandler.login', {
-              account: 'test_account',
+              account: 'arthur',
               password: '1',
               areaId: 1
             }, function(data) {
               console.log('after login');
               console.log(data);
-              expect(data).toEqual({});
-              // expect(data.msg.user.id).toEqual(addedUserId);
-              // expect(data.msg.user.account).toEqual('test_account');
-              // expect(data.msg.player).toEqual({
-              //   id: playerId,
-              //   createTime: createTime,
-              //   userId: addedUserId,
-              //   areaId: 1,
-              //   name: 'player1',
-              //   power: '',
-              //   lv: 1,
-              //   vip: 0,
-              //   vipBox: '',
-              //   cash: 0,
-              //   exp: 0,
-              //   money: 0,
-              //   gold: 0,
-              //   lineUp: {},
-              //   ability: 0,
-              //   task: '',
-              //   pass: {
-              //     canReset: false,
-              //     hasMystical: false,
-              //     layer: 0,
-              //     mark: []
-              //   },
-              //   dailyGift: {},
-              //   skillPoint: 0,
-              //   energy: 0,
-              //   elixir: 0,
-              //   spiritor: '',
-              //   spiritPool: {},
-              //   cards: [],
-              //   rank: {},
-              //   friends: [],
-              //   signIn: {},
-              //   friendsCount: 20
-              // });
+              expect(typeof data.msg.user).toEqual('object');
+              expect(typeof data.msg.player).toEqual('object');
+
+              expect(data.msg.user.account).toEqual('arthur');
+              expect(data.msg.player.userId).toEqual(100);
             });
           });
 
@@ -182,8 +120,8 @@ describe("Connector Server", function() {
         describe("and player for user is not created", function() {
           it("should can be login, and player is undefined", function() {
             request('connector.userHandler.login', {
-              account: 'testaccount',
-              password: '1',
+              account: 'userNotHavePlayer',
+              password: '123456',
               areaId: 1
             }, function(data) {
               console.log('result: ', data);
@@ -199,13 +137,13 @@ describe("Connector Server", function() {
       describe("when user not register", function() {
         it("should can be login, and player is undefined", function() {
           request('connector.userHandler.login', {
-            account: 'not exisit user',
-            password: '1',
+            account: 'notexisituser',
+            password: '123456',
             areaId: 1
           }, function(data) {
             console.log('result: ', data);
-            expect(data.code).toEqual(404);
-            expect(data.msg).toEqual('can not find user');
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('用户不存在');
           });
         });
       });

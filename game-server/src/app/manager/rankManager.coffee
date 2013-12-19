@@ -22,7 +22,7 @@ Manager = module.exports =
         return cb(err)
 
       if !!ranks and ranks.length isnt 2
-        return cb({code: 501, msg: 'can not get all rank records'})
+        return cb({code: 501, msg: '拿不对方的竞技排行信息'})
 
       challenger = (ranks.filter (r) -> r.playerId == player.id)?[0]
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]

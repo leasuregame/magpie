@@ -16,11 +16,11 @@ var ACTION = {
 var addSyncEvent = function(syncKey, entity, cb) {
   entity.on('save', function(cb) {
     var fn;
-    if (app.get('debug')) {
-      fn = app.get('sync').flush;
-    } else {
-      fn = app.get('sync').exec;
-    }
+    // 实时更新
+    fn = app.get('sync').flush;
+    
+    // 周期性更新
+    // fn = app.get('sync').exec;
     fn.call(app.get('sync'),
       syncKey,
       entity.id, {

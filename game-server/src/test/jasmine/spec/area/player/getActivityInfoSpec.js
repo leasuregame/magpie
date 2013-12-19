@@ -15,6 +15,7 @@ describe("Area Server", function() {
 						console.log(data);
 						expect(data.code).toEqual(200);
 						expect(data.msg).toEqual({
+							canGetPower: true,
 							levelReward: []
 						});
 					});

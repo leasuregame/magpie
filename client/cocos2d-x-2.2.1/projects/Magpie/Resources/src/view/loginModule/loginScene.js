@@ -43,6 +43,9 @@ var LoginScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
+        var loginBgLayer = LoginBgLayer.create();
+        this.addChild(loginBgLayer);
+
         return true;
     },
 

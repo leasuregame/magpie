@@ -228,8 +228,8 @@ var CardLibraryLayer = cc.Layer.extend({
                         });
                         effect.removeFromParent();
                     });
-
-                    TipLayer.tipNoBg("活力点: +" + data);
+                    lz.tipReward(data);
+                   // TipLayer.tipNoBg("活力点: +" + data);
 
                     gameMark.updateCardLibraryMark(false);
                 }, id);

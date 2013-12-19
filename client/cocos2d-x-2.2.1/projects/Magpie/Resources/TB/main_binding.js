@@ -94,6 +94,7 @@ var appFiles = [
     'src/controls/dialog.js',
 
     'src/view/loginModule/loginScene.js',
+    'src/view/loginModule/loginBgLayer.js',
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
     'src/view/loginModule/newPlayerLayer.js',

@@ -311,6 +311,10 @@ lz.getRewardString = function (data) {
     return str;
 };
 
+lz.getGameGoodsIcon = function (name) {
+    return gameGoodsIcon[name];
+};
+
 lz.tipReward = function (reward) {
     reward = reward || {};
 
@@ -323,8 +327,12 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-
-                TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+               // var icon = lz.getGameGoodsIcon(key);
+                if (str.icon) {
+                    TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
+                } else {
+                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                }
             }
         })(key);
 

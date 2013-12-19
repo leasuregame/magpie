@@ -68,8 +68,10 @@ var fit4Iphone4 = {
         }
     },
     "loginScene": {
+        "loginBgLayer": {
+            "bgEffectPoint": cc.p(360, 480)
+        },
         "loginLayer": {
-            "bgEffectPoint": cc.p(360, 480),
             "loginFramePoint": cc.p(360, 520),
             "accountNodePoint": cc.p(0, -260),
             "passwordNodePoint": cc.p(0, -350),
@@ -266,7 +268,7 @@ var fit4Iphone4 = {
             "sortItemPoint": cc.p(140, 142),
             "onSelectAllLowItemPoint": cc.p(300, 142),
             "selectAllLowHookIconPoint": cc.p(235, 142),
-            "cardCountLabelPoint": cc.p(550, 142),
+            "cardCountLabelPoint": cc.p(535, 142),
             "titleLabelPoint": cc.p(360, 920),
             "lineUpItemPoint": cc.p(120, 838),
             "sellItemPoint": cc.p(600, 838),
@@ -277,7 +279,7 @@ var fit4Iphone4 = {
             "expLabelPoint": cc.p(425, 838),
             "rateLabelPoint": cc.p(425, 838),
             "moneyLabelPoint": cc.p(425, 838),
-            "buyCountItemPoint": cc.p(630, 141),
+            "buyCountItemPoint": cc.p(615, 141),
             "tipLayerPoint": cc.p(130, 838)
         },
         "cardTrainLabel": {
@@ -315,7 +317,8 @@ var fit4Iphone4 = {
             "bgMusicItemPoint": cc.p(55, 762),
             "soundItemPoint": cc.p(55, 642),
             "tipsItemPoint": cc.p(55, 522),
-            "QQGroupPoint": cc.p(55, 402)
+            "QQGroupPoint": cc.p(55, 402),
+            "go2LoginItemPoint": cc.p(55, 282)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
@@ -525,7 +528,8 @@ var fit4Iphone4 = {
             "energyLotteryItemBasePoint": cc.p(203, 302),
             "tenLotteryItemPoint": cc.p(370, 262),
             "tipBgSpritePoint": cc.p(360, 152),
-            "tipLabelPoint": cc.p(360, 152)
+            "tipLabelPoint": cc.p(360, 152),
+            "privilegeIconPoint": cc.p(370, 212)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
@@ -1261,6 +1265,9 @@ var fit4Iphone5 = {
     },
 
     "loginScene": {
+        "loginBgLayer": {
+            "bgEffectPoint": cc.p(320, 568)
+        },
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
             "loginFramePoint": cc.p(320, 568),
@@ -1460,7 +1467,7 @@ var fit4Iphone5 = {
             "sortItemPoint": cc.p(100, 152),
             "onSelectAllLowItemPoint": cc.p(260, 152),
             "selectAllLowHookIconPoint": cc.p(195, 152),
-            "cardCountLabelPoint": cc.p(510, 152),
+            "cardCountLabelPoint": cc.p(495, 152),
             "titleLabelPoint": cc.p(320, 1096),
             "lineUpItemPoint": cc.p(80, 1014),
             "sellItemPoint": cc.p(560, 1014),
@@ -1471,7 +1478,7 @@ var fit4Iphone5 = {
             "expLabelPoint": cc.p(385, 1014),
             "rateLabelPoint": cc.p(385, 1014),
             "moneyLabelPoint": cc.p(385, 1014),
-            "buyCountItemPoint": cc.p(590, 151),
+            "buyCountItemPoint": cc.p(575, 151),
             "tipLayerPoint": cc.p(90, 1014)
         },
         "cardTrainLabel": {
@@ -1509,7 +1516,8 @@ var fit4Iphone5 = {
             "bgMusicItemPoint": cc.p(15, 938),
             "soundItemPoint": cc.p(15, 818),
             "tipsItemPoint": cc.p(15, 698),
-            "QQGroupPoint": cc.p(15, 578)
+            "QQGroupPoint": cc.p(15, 578),
+            "go2LoginItemPoint": cc.p(15, 458)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
@@ -1719,7 +1727,8 @@ var fit4Iphone5 = {
             "energyLotteryItemBasePoint": cc.p(163, 380),
             "tenLotteryItemPoint": cc.p(330, 335),
             "tipBgSpritePoint": cc.p(320, 170),
-            "tipLabelPoint": cc.p(320, 170)
+            "tipLabelPoint": cc.p(320, 170),
+            "privilegeIconPoint": cc.p(330, 285)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,

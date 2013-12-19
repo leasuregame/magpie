@@ -30,7 +30,7 @@ var TreasureHuntLayer = cc.Layer.extend({
     _slideCount: 0,
     _nowSlideNum: 0,
     _interval: 0,
-    _str: "",
+    _str: {},
     _locate: [],
 
     onEnter: function () {
@@ -290,8 +290,9 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.runAction(selectFrameAction);
 
         this.scheduleOnce(function () {
-            TipLayer.tipNoBg(this._str);
-            this._str = "";
+            // TipLayer.tipNoBg(this._str);
+            lz.tipReward(this._str);
+            this._str = {};
 
             this._selectFrame.setVisible(false);
             this._treasureHuntItem.setEnabled(true);

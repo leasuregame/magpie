@@ -70,7 +70,8 @@ var TreasureHunt = Entity.extend({
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
-                var str = table.name + ": +" + table.value;
+                var str = {};
+                str[table.type] = table.value;
 
                 cb({
                     id: id,

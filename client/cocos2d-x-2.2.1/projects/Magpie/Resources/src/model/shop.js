@@ -385,7 +385,7 @@ var Shop = Entity.extend({
 
             product.count = gameData.shop.get("challengeBuyCount");
             if (product.count <= 0) {
-                product.tip = "有奖竞技购买次数已用完，VIP可购买更多";
+                product.tip = "有奖竞技购买次数已用完";
                 product.count = 0;
             }
 

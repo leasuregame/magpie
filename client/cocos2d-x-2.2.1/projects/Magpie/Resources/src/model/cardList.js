@@ -177,8 +177,8 @@ var CardList = Entity.extend({
                 that.deleteById(cardIdList);
 
                 gameData.player.add("money", msg.price);
-
-                TipLayer.tipNoBg("仙币：+" + msg.price);
+                TipLayer.tipWithIcon(lz.getGameGoodsIcon("money"), " +" + msg.price);
+                //TipLayer.tipNoBg("仙币：+" + msg.price);
 
                 cb();
 

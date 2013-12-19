@@ -174,11 +174,32 @@ var ConfigLayer = cc.Layer.extend({
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);
 
+        var go2LoginItem = cc.MenuItemImage.create(
+            main_scene_image.icon127,
+            main_scene_image.icon127,
+            this._onClickGo2Login,
+            this
+        );
+
+        go2LoginItem.setAnchorPoint(cc.p(0, 0));
+        go2LoginItem.setPosition(this._configLayerFit.go2LoginItemPoint);
+
+        var go2LoginItemTitle = StrokeLabel.create("退出登录", "STHeitiTC-Medium", 30);
+        go2LoginItemTitle.setAnchorPoint(cc.p(0, 0.5));
+        go2LoginItemTitle.setPosition(cc.p(40, 55));
+        go2LoginItem.addChild(go2LoginItemTitle);
+
+        var go2LoginIcon = cc.Sprite.create(main_scene_image.icon273);
+        go2LoginIcon.setAnchorPoint(cc.p(0, 0.5));
+        go2LoginIcon.setPosition(cc.p(518, 55));
+        go2LoginItem.addChild(go2LoginIcon);
+
         var menu = cc.Menu.create(
             bgMusicItem,
             soundItem,
             tipsItem,
-            QQGroup
+            QQGroup,
+            go2LoginItem
         );
 
         menu.setPosition(cc.p(0, 0));
@@ -232,6 +253,15 @@ var ConfigLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
+    },
+
+    _onClickGo2Login: function () {
+        cc.log("ConfigLayer _onClickGo2Login");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.destroy();
+        cc.Director.getInstance().replaceScene(LoginScene.create());
     }
 });
 

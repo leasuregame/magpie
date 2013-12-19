@@ -24,7 +24,7 @@
                 <file name="jsb_cocosbuilder.js"/>
                 <file name="jsb_sys.js"/>
             </sources>
-            <sources dir="${basedir}/projects/Magpie/Resources/">
+            <sources dir="${basedir}/projects/Magpie/Res/">
                 <file name="src/resource.js"/>
                 <file name="src/table/table.js"/>
 

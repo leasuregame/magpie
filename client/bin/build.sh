@@ -2,6 +2,34 @@
 
 echo "magpie client build"
 
+function init
+{
+	echo "build init"
+
+	clear
+
+	echo "cp Resources to Res"
+	cp -RP cocos2d-x-2.2.1/projects/Magpie/Resources cocos2d-x-2.2.1/projects/Magpie/Res
+
+	cd cocos2d-x-2.2.1/projects/Magpie
+
+	echo "delete all cc.log"
+	perl -pi -e "s/cc.log/\/\/cc.log/gi" `find Res -iname *.js`
+
+	cd ../../../
+}
+
+function clear
+{
+	echo "build clear"
+
+	echo "clear file"
+	if [ -d "cocos2d-x-2.2.1/projects/Magpie/Res" ]; then
+		echo "clear Res"
+		rm -R cocos2d-x-2.2.1/projects/Magpie/Res
+	fi
+}
+
 function build_AppStore
 {
 	echo "build_AppStore"
@@ -57,12 +85,18 @@ function build_TB
 }
 
 if [ ! -n "$1" ]; then
+	init
 	build_AppStore
 	build_TB
+	clear
 elif [ "$1" = "AppStore" ] || [ "$1" = "appstore" ]; then
+	init
 	build_AppStore
+	clear
 elif [ "$1" = "TB" ] || [ "$1" = "tb" ]; then
+	init
 	build_TB
+	clear
 else
 	echo "Example: sh $0 \"\" or \"AppStore\" or \"appstore\" or \"TB\" or \"tb\""
 fi

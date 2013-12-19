@@ -157,6 +157,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickExplore,
             this
         );
+        this._exploreItem.setScale(1.2);
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
 
 
@@ -229,10 +230,10 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 22);
+            var description = lz.format(chapterTable[id].description, 19);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
-                var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
+                var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 24);
                 storyLabel.setAnchorPoint(cc.p(0, 0));
                 storyLabel.setPosition(cc.p(0, -30 * j));
                 descriptionLabel.addChild(storyLabel);
@@ -590,9 +591,13 @@ var ExploreLayer = cc.Layer.extend({
 
         var spiritMoveAction = cc.Sequence.create(
             cc.DelayTime.create(0.2),
+            cc.CallFunc.create(function () {
+                gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
+            }, this),
             cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
             cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
             cc.DelayTime.create(0.1)
+
         );
 
         var spiritRepeatAction = cc.Repeat.create(

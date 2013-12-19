@@ -338,7 +338,20 @@ var PassLayer = cc.Layer.extend({
 
         this._spirit.setPosition(this._getCardLocation(index - 1));
         var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), height, jumps);
-        this._spirit.runAction(jumpAction);
+        var callFuncAction = cc.CallFunc.create(function () {
+            gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
+        }, this);
+
+        var playSoundAction = cc.Sequence.create(
+            callFuncAction,
+            cc.DelayTime.create(duration / 3),
+            callFuncAction,
+            cc.DelayTime.create(duration / 3),
+            callFuncAction
+        );
+        this._spirit.runAction(
+            cc.Spawn.create(playSoundAction, jumpAction)
+        );
 
         this._locate(index, duration);
     },

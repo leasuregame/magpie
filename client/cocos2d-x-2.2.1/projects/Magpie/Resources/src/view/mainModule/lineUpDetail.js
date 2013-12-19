@@ -146,6 +146,7 @@ var LineUpDetail = LazyLayer.extend({
 
         if (this._cardList.length > 0) {
             LineUpDetailsLayer.pop(this._cardList, this._selectIndex);
+            this._selectIndex = 0;
         }
     },
 
@@ -230,6 +231,7 @@ var LineUpDetail = LazyLayer.extend({
             this.onTouchCancelled(touch, event);
 
             if (this._isClick) {
+
                 if (this._node[index] && typeof(this._node[index]) == "object") {
                     for (var i = 0; i < this._cardList.length; i++) {
                         var card = this._cardList[i];
@@ -239,7 +241,10 @@ var LineUpDetail = LazyLayer.extend({
                         }
                     }
                 }
-                this._onClickCard();
+
+                if (this._selectIndex > 0) {
+                    this._onClickCard();
+                }
             }
         }
 

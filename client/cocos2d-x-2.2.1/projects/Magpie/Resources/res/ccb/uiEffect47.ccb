@@ -45,7 +45,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>res/effect/uiEffect/up120.png</string>
+										<string>res/effect/uiEffect/up165.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -63,7 +63,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>res/effect/uiEffect/up121.png</string>
+										<string>res/effect/uiEffect/up166.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -495,8 +495,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.0750000476837158</real>
-							<real>0.875</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -512,7 +512,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>res/effect/uiEffect/up120.png</string>
+							<string>res/effect/uiEffect/up165.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -522,7 +522,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up120.png</string>
+							<string>res/effect/uiEffect/up166.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -593,7 +593,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -959,7 +959,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1333333253860474</real>
+			<real>3</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

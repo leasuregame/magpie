@@ -40,7 +40,7 @@ describe("Area Server", function() {
 					});
 				});
 
-				describe("当玩家元宝不足时", function() {
+				describe("当玩家魔石不足时", function() {
 					beforeEach(function() {
 						loginWith('poorVip', '1', 1);
 					});
@@ -51,7 +51,7 @@ describe("Area Server", function() {
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
-								msg: '元宝不足'
+								msg: '魔石不足'
 							});
 						});
 					});
@@ -114,8 +114,6 @@ describe("Area Server", function() {
 										ability: 14,
 										lv: 6,
 										exp: 29,
-										skillLv: 0,
-										skillInc: 0,
 										skillPoint: 0,
 										elixirHp: 0,
 										elixirAtk: 0,
@@ -126,7 +124,7 @@ describe("Area Server", function() {
 						});
 					};
 
-					for (var i = 1; i <= 11; i++) {
+					for (var i = 1; i <= 7; i++) {
 						(function(i) {
 							buyVipBox(i)
 						})(i);

@@ -11,20 +11,14 @@ describe("Area Server", function() {
 		describe("area.taskHandler.explore", function() {
 
 			describe("when start a explore", function() {
-				var arthur = {
-					id: 100,
-					playerId: 100,
-					areaId: 1,
-					account: 'arthur',
-					password: '1'
-				};
+
 				beforeEach(function() {
-					loginWith(arthur.account, arthur.password, arthur.areaId);
+					loginWith('1', '1', 1);
 				});
 
 				it("should can be return the correct result", function() {
 					request('area.taskHandler.explore', {
-						taskId: 250
+						taskId: 100
 					}, function(data) {
 						console.log(data);
 						expect(data.code).toEqual(200);
@@ -49,7 +43,7 @@ describe("Area Server", function() {
 
 								if (res.battle_log.winner == 'own') {
 									expect(res.task).toEqual({
-										id: 250,
+										id: 100,
 										progress: 3,
 										mark: []
 									});
@@ -58,7 +52,7 @@ describe("Area Server", function() {
 									]);
 								} else {
 									expect(res.task).toEqual({
-										id: 250,
+										id: 100,
 										progress: 2,
 										mark: []
 									});
@@ -77,7 +71,7 @@ describe("Area Server", function() {
 									expect(res.open_box_card).toEqual(null);
 								}
 								expect(res.task).toEqual({
-									id: 250,
+									id: 100,
 									progress: 3,
 									mark: []
 								});
@@ -87,15 +81,15 @@ describe("Area Server", function() {
 								expect(res.battle_log).toEqual(null);
 								expect(res.open_box_card).toEqual(null);
 								expect(res.task).toEqual({
-									id: 250,
+									id: 100,
 									progress: 3,
 									mark: []
 								});
 						}
 
 						expect(res.power_consume).toEqual(5);
-						expect(res.exp_obtain).toEqual(145);
-						expect(res.money_obtain).toEqual(290);
+						expect(res.exp_obtain).toEqual(70);
+						expect(res.money_obtain).toEqual(140);
 					});
 				});
 			});
@@ -130,7 +124,7 @@ describe("Area Server", function() {
 				});
 			});
 
-			describe('when player level upgrade to 9', function(){
+			describe('when player level upgrade to 9', function() {
 				beforeEach(function() {
 					doAjax('/update/player/' + 108, {
 						exp: 75,
@@ -147,16 +141,16 @@ describe("Area Server", function() {
 						console.log(data);
 						expect(data.code).toEqual(200);
 						expect(data.msg.upgradeInfo).toEqual({
-							lv: 26,
+							lv: 9,
 							rewards: {
-								money: 250,
-								energy: 90,
-								skillPoint: 200,
-								elixir: 200
+								money: 100,
+								energy: 10,
+								skillPoint: 10,
+								elixir: 10
 							},
 							friendsCount: 20
 						});
-						expect(data.msg.exp).toEqual(2);
+						expect(data.msg.exp).toEqual(1);
 
 						doAjax('/player/108', function(err, res) {
 							console.log(err, res);
@@ -186,9 +180,12 @@ describe("Area Server", function() {
 							expect(data.msg.upgradeInfo).toEqual({
 								lv: 31,
 								rewards: {
-									money : 300, energy : 115, skillPoint : 250, elixir : 250
+									money: 300,
+									energy: 115,
+									skillPoint: 250,
+									elixir: 250
 								},
-								friendsCount: 60
+								friendsCount: 45
 							});
 							expect(data.msg.exp).toEqual(1);
 						});
@@ -215,7 +212,10 @@ describe("Area Server", function() {
 							expect(data.msg.upgradeInfo).toEqual({
 								lv: 31,
 								rewards: {
-									money : 300, energy : 115, skillPoint : 250, elixir : 250
+									money: 300,
+									energy: 115,
+									skillPoint: 250,
+									elixir: 250
 								},
 								friendsCount: 30
 							});

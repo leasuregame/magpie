@@ -171,7 +171,7 @@ describe("Area Server", function() {
 						},
 						function(data) {
 							expect(data.code).toEqual(501);
-							expect(data.msg).toEqual('铜板不足');
+							expect(data.msg).toEqual('仙币不足');
 							console.log(data);
 						}
 					);

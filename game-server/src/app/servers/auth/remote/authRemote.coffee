@@ -33,14 +33,11 @@ module.exports =
   register: (args, cb) ->
     account = args.account
     password = args.password
-
-    if not account or account is '' or not password or password is ''
-      return cb({code: 501, msg: Resources.ERROR.INVALID_PARAMS})
     
     dao.user.create data: {account: account, password: password}, (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY" 
-          return cb({code: 501, msg: Resources.ERROR.USER_EXSISTS})
+          return cb({code: 501, msg: '用户已经存在'})
         else
           return cb({code: 500, msg: err.msg})
       

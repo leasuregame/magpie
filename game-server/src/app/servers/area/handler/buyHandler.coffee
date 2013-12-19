@@ -69,9 +69,9 @@ products =
         }
 
   power: (playerId, product, times, next) ->
-
     player = null
     powerValue = times * product.obtain
+
     gold = times * product.consume
 
     async.waterfall [

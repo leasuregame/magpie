@@ -26,10 +26,10 @@ describe("Gate Server", function() {
 					expect(_.contains([3010, 3011], data.msg.port)).toEqual(true);
 					expect(data.msg.servers).toEqual([{
 						id: 1,
-						name: '花果山'
+						name: '开天辟地'
 					}, {
 						id: 2,
-						name: '水帘洞'
+						name: '八仙过海'
 					}]);
 				});
 			});

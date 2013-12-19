@@ -77,8 +77,8 @@ describe("Area Server", function() {
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({
-							code: 501,
-							msg: '体力已达上限'
+							code: 200,
+							msg: { powerValue : 50 }
 						});
 					});
 				});

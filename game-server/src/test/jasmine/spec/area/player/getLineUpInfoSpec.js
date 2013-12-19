@@ -26,10 +26,11 @@ describe("Area Server", function() {
 					request('area.playerHandler.getLineUpInfo', {
 						playerId: 101
 					}, function(data) {
+						console.log(data);
 						expect(data.code).toEqual(200);
 						expect(data.msg.name).toEqual('Defender');
 						expect(data.msg.lv).toEqual(42);
-						expect(Object.keys(data.msg.lineUp)).toEqual( [ '2', '3', '4', '5', '6' ] );
+						expect(Object.keys(data.msg.lineUp)).toEqual( [ '1', '2', '3', '4', '5', '6' ] );
 					});
 				});
 			});

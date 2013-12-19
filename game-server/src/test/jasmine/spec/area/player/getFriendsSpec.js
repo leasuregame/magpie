@@ -25,6 +25,8 @@ describe("Area Server", function() {
 								name: 'Linc',
 								lv: 25,
 								ability: 0,
+								giveCount: 0,
+								receiveCount: 0,
 								canReceive: false,
 								canGive: true
 							}, {
@@ -32,6 +34,8 @@ describe("Area Server", function() {
 								name: 'Marhon',
 								lv: 11,
 								ability: 0,
+								giveCount: 0,
+								receiveCount: 0,
 								canReceive: false,
 								canGive: true
 							}],
@@ -62,6 +66,8 @@ describe("Area Server", function() {
 								name: 'Linc',
 								lv: 25,
 								ability: 0,
+								giveCount: 0,
+								receiveCount: 0,
 								canReceive: false,
 								canGive: true
 							}],

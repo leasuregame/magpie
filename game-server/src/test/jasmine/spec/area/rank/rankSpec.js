@@ -180,22 +180,8 @@ describe("Area Server", function() {
                         ranking: 20002
                     }, function(data) {
                         console.log(data);
-                        expect(data.code).toEqual(200);
-                        expect(data.msg.battleLog).toBeBattleLog();
-                        expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
-
-                        var isWin = data.msg.battleLog.winner == 'own';
-                        expect(data.msg.battleLog.rewards).hasProperties([
-                            'exp', 'money', 'elixir', 'ranking_elixir'
-                        ]);
-
-                        if (isWin) {
-                            checkChallengeResults(1, 20000, null, isWin, data);
-                            checkChallengeResults(2, 20001, 100, !isWin, data);
-                        } else {
-                            checkChallengeResults(1, 20001, null, isWin, data);
-                            checkChallengeResults(2, 20000, null, !isWin, data);
-                        }
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('对方排名已发生改变');
                     });
                 });
 
@@ -371,7 +357,7 @@ describe("Area Server", function() {
                     });
 
                     doAjax('/player/2', {}, function(res){
-                        expect(res.data.elixir).toEqual(before_player.elixir + 1000);
+                        expect(res.data.elixir).toEqual(before_player.elixir + 2000);
                     });
 
                     doAjax('/rank/4', {}, function(res){

@@ -81,7 +81,5 @@ var TipLayer = {
         });
         cc.Director.getInstance().getRunningScene().addChild(effect, 10000);
 
-    },
-
-
+    }
 };

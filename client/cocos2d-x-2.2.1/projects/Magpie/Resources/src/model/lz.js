@@ -327,9 +327,9 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-                var icon = lz.getGameGoodsIcon(key);
-                if (icon) {
-                    TipLayer.tipWithIcon(lz.getGameGoodsIcon(key), " +" + reward[key]);
+               // var icon = lz.getGameGoodsIcon(key);
+                if (str.icon) {
+                    TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {
                     TipLayer.tipNoBg(str.name + ": +" + reward[key]);
                 }

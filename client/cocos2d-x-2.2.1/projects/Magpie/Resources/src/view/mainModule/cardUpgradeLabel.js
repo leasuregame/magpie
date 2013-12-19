@@ -108,11 +108,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         progressBgSprite.setPosition(cc.p(30, -35));
         this._resLabel.addChild(progressBgSprite);
 
-        this._greenProgress = Progress.create(null, main_scene_image.progress6, 0, 0);
+        this._greenProgress = Progress.create(null, main_scene_image.progress6, 0, 1);
         this._greenProgress.setPosition(cc.p(30, -35));
         this._resLabel.addChild(this._greenProgress);
 
-        this._yellowProgress = Progress.create(null, main_scene_image.progress5, 0, 0);
+        this._yellowProgress = Progress.create(null, main_scene_image.progress5, 0, 1);
         this._yellowProgress.setPosition(cc.p(30, -35));
         this._resLabel.addChild(this._yellowProgress);
 
@@ -271,7 +271,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             this._lvLabel.setString(this._leadCard.get("lv"));
             this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-            this._greenProgress.setAllValue(0, 0);
+            this._greenProgress.setAllValue(0, 1);
 
             this._selectRetinueCardItem.setEnabled(true);
             this._upgradeItem.setEnabled(false);
@@ -318,11 +318,11 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 if (this._leadCard.get("lv") < dummyCard.get("lv")) {
                     if (isDummyCard) {
-                        this._yellowProgress.setAllValue(0, 0);
+                        this._yellowProgress.setAllValue(0, 1);
                         this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                     } else {
                         this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-                        this._greenProgress.setAllValue(0, 0);
+                        this._greenProgress.setAllValue(0, 1);
                     }
                 } else {
                     if (isDummyCard) {
@@ -330,7 +330,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                         this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                     } else {
                         this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
-                        this._greenProgress.setAllValue(0, 0);
+                        this._greenProgress.setAllValue(0, 1);
                     }
                 }
 
@@ -341,9 +341,9 @@ var CardUpgradeLabel = cc.Layer.extend({
             var fadeInAction = cc.FadeIn.create(1);
 
             var lvLabelAction = cc.Sequence.create(
-                fadeOutAction.copy(),
-                lvCallFuncAction.copy(),
-                fadeInAction.copy()
+                fadeOutAction.clone(),
+                lvCallFuncAction.clone(),
+                fadeInAction.clone()
             );
 
 
@@ -360,8 +360,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         var nowExp = exp;
         var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
-        upgradeEffect.setPosition(this._cardUpgradeLabelFit.effectPoint);
-        this.addChild(upgradeEffect);
+        upgradeEffect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(upgradeEffect, 10);
 
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
@@ -398,11 +398,34 @@ var CardUpgradeLabel = cc.Layer.extend({
             if (nowExp <= 0) {
                 this.unschedule(fn);
                 this._retinueCard = [];
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._hpLabel.runAction(spawnAction.clone());
+                this._atkLabel.runAction(spawnAction.clone());
+
                 this.update();
 
                 upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
                 upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                    upgradeEffect.removeF
+                    upgradeEffect.removeFromParent();
+                    if (mandatoryTeachingLayer) {
+                        if (mandatoryTeachingLayer.isTeaching()) {
+                            mandatoryTeachingLayer.next();
+                        }
+                    }
                 });
                 LazyLayer.closeCloudLayer();
             }
@@ -492,7 +515,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
-                mandatoryTeachingLayer.next();
             }
         }
 

@@ -6,29 +6,28 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
 var teaching = [
     {
-        overStep: 9,
-        clickType: [1, 0, 0, 0, 0, 0, 0, 0, 0],
-        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25],
-        layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4]
+        overStep: 10,
+        clickType: [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25, 29],
+        layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4, 4]
     },
     {
         overStep: 6,
-        clickType: [1, 0, 0, 0, 0, 0],
+        clickType: [1, 0, 0, 0, 0, 2],
         effectOrder: [18, 20, 24, 21, 11, 13],
         layerOrder: [2, 0, 4, 4, 4, 4]
     },
     {
         overStep: 6,
-        clickType: [1, 0, 0, 0, 0, 0],
+        clickType: [1, 0, 0, 0, 0, 2],
         effectOrder: [19, 23, 21, 11, 13, 25],
         layerOrder: [3, 0, 5, 5, 5, 5]
     },
     {
         overStep: 6,
-        clickType: [1, 0, 0, 0, 0, 0],
+        clickType: [1, 0, 0, 0, 0, 2],
         effectOrder: [26, 24, 27, 11, 13, 25],
         layerOrder: [0, 5, 5, 5, 5, 5]
     }
@@ -101,36 +100,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
     },
 
-//    _load: function () {
-//        cc.log("MandatoryTeachingLayer _load");
-//        cc.log(this._step);
-//        if (this._progress < 3) {
-//            if (this._step > 2) {
-//                this._step = 2;
-//            }
-//        } else {
-//            if (this._step > 1) {
-//                this._step = 1;
-//            }
-//        }
-//
-//        var layer = this._layer[this._layerOrder[this._step]];
-//
-//        cc.log("layer = " + layer);
-//        if (layer == ExploreLayer) {
-//
-//            if (!(MainScene.getInstance().getLayer() instanceof ExploreLayer)) {
-//                MainScene.getInstance().switch(ExploreLayer.create(1));
-//            }
-//
-//        } else {
-//            MainScene.getInstance().switchLayer(layer);
-//        }
-//
-//        this._changeEffect(this._effectOrder[this._step]);
-//
-//    },
-
     next: function () {
         cc.log("MandatoryTeachingLayer next");
 
@@ -176,7 +145,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
                 node.setPosition(this._effectPoints[this._step]);
                 this.addChild(node);
                 this._effectNode = node;
-                if (this._clickType[this._rect] == 0) {
+                if (this._clickType[this._rect] != CLICK_WAITING) {
                     this._rect = this._rectOrder[this._step];
                 } else {
                     var that = this;
@@ -211,7 +180,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         if (this.isVisible()) {
             var point = touch.getLocation();
             var isShield = !cc.rectContainsPoint(this._rect, point);
-            if (this._step == this._overStep - 1) {
+            if (this._clickType[this._rect] == CLICK_ANY) {
                 this.clearAndSave();
                 this.next();
             }

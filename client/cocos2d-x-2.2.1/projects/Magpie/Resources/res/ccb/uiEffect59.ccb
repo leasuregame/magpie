@@ -239,7 +239,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -336,9 +336,9 @@
 								<key>displayName</key>
 								<string>spirit</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>spiritIcon</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -404,7 +404,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -548,9 +548,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>oldLvLabel</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -624,7 +624,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -895,7 +895,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>0</integer>
+												<integer>255</integer>
 											</dict>
 										</array>
 										<key>seqExpanded</key>
@@ -987,9 +987,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF_Lvs</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>nowLvLabel</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -1063,7 +1063,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>0</integer>
+												<integer>255</integer>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -1395,7 +1395,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1523,9 +1523,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF_Per</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>oldPassiveHarmLabel</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1599,7 +1599,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1870,7 +1870,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>0</integer>
+												<integer>255</integer>
 											</dict>
 										</array>
 										<key>seqExpanded</key>
@@ -1962,9 +1962,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF_Pers</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>nowPassiveHarmLabel</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -2038,7 +2038,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>0</integer>
+												<integer>255</integer>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -2340,7 +2340,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

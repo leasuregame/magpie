@@ -423,8 +423,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.93973320722579956</real>
-										<real>0.88540041446685791</real>
+										<real>0.80000001192092896</real>
+										<real>0.80000001192092896</real>
 									</array>
 								</dict>
 								<dict>
@@ -441,8 +441,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>1.8018301725387573</real>
-										<real>1.7945098876953125</real>
+										<real>1.7999999523162842</real>
+										<real>1.7999999523162842</real>
 									</array>
 								</dict>
 							</array>
@@ -502,8 +502,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.8018301725387573</real>
-							<real>1.7945098876953125</real>
+							<real>1.7999999523162842</real>
+							<real>1.7999999523162842</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -538,6 +538,10 @@
 						<integer>0</integer>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>

@@ -260,17 +260,17 @@ var GoldLayer = LazyLayer.extend({
     _end: function () {
         cc.log("GoldLayer _end");
 
-        if(this._tipEffect) {
+        if (this._tipEffect) {
             this._tipEffect.removeFromParent();
         }
 
         if (this._gold > 0) {
             gameData.task.obtainGold(this._gold);
 
-            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 魔石", "STHeitiTC-Medium", 35);
-            tipLabel.setColor(cc.c3b(255, 239, 131));
-            tipLabel.setPosition(this._goldLayerFit.tipLabelPoint);
-            this.addChild(tipLabel);
+            var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect65, this);
+            tipEffect.controller.goldLabel.setString(this._gold);
+            tipEffect.setPosition(this._goldLayerFit.tipLabelPoint);
+            this.addChild(tipEffect);
         }
 
         this.scheduleOnce(function () {
@@ -287,13 +287,16 @@ var GoldLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
+        this._btnGoldBox.setEnabled(false);
+
+        if (this._tipEffect) {
+            this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);
+            this._tipEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+        }
+
         this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
         this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
             this._goldBoxItem.removeFromParent();
-            if (this._tipEffect) {
-                this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);
-                this._tipEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-            }
             this._open();
         });
     },

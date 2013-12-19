@@ -112,13 +112,13 @@ var StrengthenLayer = cc.Layer.extend({
     switchToCardListLayer: function (cardListLayer) {
         cc.log("StrengthenLayer switchToCardListLayer");
 
-        MainScene.getInstance().switch(cardListLayer);
+        MainScene.getInstance().switchTo(cardListLayer);
     },
 
     backToThisLayer: function () {
         cc.log("StrengthenLayer backToThisLayer");
 
-        MainScene.getInstance().switch(this);
+        MainScene.getInstance().switchTo(this);
     },
 
     _onClickCardUpgrade: function () {

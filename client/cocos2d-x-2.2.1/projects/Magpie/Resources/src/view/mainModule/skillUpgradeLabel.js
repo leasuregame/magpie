@@ -31,6 +31,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _nextSkillHarmLabel: null,
     _upgradeItem: null,
     _selectLeadCardIcon: null,
+    _showUpgrade: false,
 
     onEnter: function () {
         cc.log("SkillUpgradeLabel onEnter");
@@ -138,7 +139,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._helpLabel.setPosition(this._skillUpgradeLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
+        var needSkillPointIcon = cc.LabelTTF.create("升级需要技能点:", "STHeitiTC-Medium", 22);
         needSkillPointIcon.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needSkillPointIcon);
 
@@ -227,6 +228,28 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._skillLvLabel.setString(this._leadCard.get("skillLv"));
             this._skillHarmLabel.setString(this._leadCard.get("skillHarm") + "%");
 
+            if (this._showUpgrade) {
+                this._showUpgrade = false;
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+
+                this._skillLvLabel.runAction(spawnAction.clone());
+                this._skillHarmLabel.runAction(spawnAction.clone());
+            }
+
             if (this._leadCard.canUpgradeSkill()) {
                 this._arrowLabel1.setVisible(true);
                 this._arrowLabel2.setVisible(true);
@@ -311,6 +334,7 @@ var SkillUpgradeLabel = cc.Node.extend({
                 effect.removeFromParent();
             });
             that.addChild(effect, 10);
+            that._showUpgrade = true;
             that.update();
         });
     }

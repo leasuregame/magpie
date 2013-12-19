@@ -37,6 +37,10 @@ var TipsLayer = LazyLayer.extend({
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 88));
+        this.addChild(bgLayer);
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(this._tipsLayerFit.bgSpriteContentSize);
         bgSprite.setAnchorPoint(cc.p(0, 0));

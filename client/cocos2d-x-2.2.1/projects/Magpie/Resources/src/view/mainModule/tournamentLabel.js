@@ -15,6 +15,7 @@
 var CAN_ADD_FRIEND = 0;
 var CAN_DEFIANCE = 1;
 var CAN_COUNTER_ATTACK = 2;
+var CAN_DISPLAY = 3;
 
 var TournamentLabel = cc.Node.extend({
     _target: null,
@@ -86,40 +87,43 @@ var TournamentLabel = cc.Node.extend({
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
 
-            if (this._player.type == CAN_ADD_FRIEND) {
-                functionItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
-                    main_scene_image.icon120,
-                    this._onClickFunction,
-                    this
-                );
-            } else if (this._player.type == CAN_DEFIANCE) {
-                functionItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
-                    main_scene_image.icon43,
-                    this._onClickFunction,
-                    this
-                );
-            } else if (this._player.type == CAN_COUNTER_ATTACK) {
-                functionItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button11,
-                    main_scene_image.button11s,
-                    main_scene_image.icon40,
-                    this._onClickFunction,
-                    this
-                );
-                var tipIcon = cc.Sprite.create(main_scene_image.icon288);
-                tipIcon.setPosition(cc.p(530, 27));
-                this.addChild(tipIcon);
+            if (this._player.type != CAN_DISPLAY) {
+                if (this._player.type == CAN_ADD_FRIEND) {
+                    functionItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button10,
+                        main_scene_image.button10s,
+                        main_scene_image.icon120,
+                        this._onClickFunction,
+                        this
+                    );
+                } else if (this._player.type == CAN_DEFIANCE) {
+                    functionItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.icon43,
+                        this._onClickFunction,
+                        this
+                    );
+                } else if (this._player.type == CAN_COUNTER_ATTACK) {
+                    functionItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button11,
+                        main_scene_image.button11s,
+                        main_scene_image.icon40,
+                        this._onClickFunction,
+                        this
+                    );
+                    var tipIcon = cc.Sprite.create(main_scene_image.icon288);
+                    tipIcon.setPosition(cc.p(530, 27));
+                    this.addChild(tipIcon);
+                }
+
+                functionItem.setPosition(cc.p(530, 67));
+
+                var functionItemMenu = LazyMenu.create(functionItem);
+                functionItemMenu.setPosition(cc.p(0, 0));
+                this.addChild(functionItemMenu);
             }
 
-            functionItem.setPosition(cc.p(530, 67));
-
-            var functionItemMenu = LazyMenu.create(functionItem);
-            functionItemMenu.setPosition(cc.p(0, 0));
-            this.addChild(functionItemMenu);
         } else {
             var abilityIcon = cc.LabelTTF.create("战力", "STHeitiTC-Medium", 22);
             abilityIcon.setColor(cc.c3b(56, 3, 5));

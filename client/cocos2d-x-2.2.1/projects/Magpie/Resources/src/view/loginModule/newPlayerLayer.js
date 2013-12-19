@@ -58,23 +58,26 @@ var NewPlayerLayer = cc.Layer.extend({
              */
             editBoxEditingDidEnd: function (sender) {
                 var text = sender.getText();
-                var len = text.length;
-                if(!text) {
-                    TipLayer.tip("请输入昵称");
-                } else if(len < 1 || len > 6) {
-                    TipLayer.tip("昵称为1~6位中文或数字");
-                } else if (EMPTY_SPACE_REG.test(text)) {
-                    TipLayer.tip("昵称不能包含空格");
-                } else if (!NICKNAME_REG.test(text)) {
-                    TipLayer.tip("昵称不能包含非法字符");
+
+                if (text) {
+                    var len = text.length;
+                    if (!text) {
+                        TipLayer.tip("请输入昵称");
+                    } else if (len < 1 || len > 6) {
+                        TipLayer.tip("昵称为1~6位");
+                    } else if (EMPTY_SPACE_REG.test(text)) {
+                        TipLayer.tip("昵称不能包含空格");
+                    } else if (!NICKNAME_REG.test(text)) {
+                        TipLayer.tip("昵称不能包含非法字符");
+                    }
                 }
             }
         });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
-        newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function(){
-            this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
+        newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function () {
+            this._nameEditBox.setPlaceHolder("汉字、子母或数字");
             this._setRandomName();
         });
 
@@ -121,7 +124,7 @@ var NewPlayerLayer = cc.Layer.extend({
         }
 
         gameData.user.createPlayer(function () {
-            cc.Director.getInstance().replaceScene(MainScene.getInstance());
+            cc.Director.getInstance().replaceScene(StartAnimationScene.create());
         }, name);
     },
 
@@ -131,6 +134,17 @@ var NewPlayerLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
+    },
+
+    _onClickClose: function () {
+        cc.log("NewPlayerLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+       // lz.server.disconnect();
+        this.getParent().switchTo(LoginLayer.create());
+        this.removeFromParent();
+
     }
 });
 

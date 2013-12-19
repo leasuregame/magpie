@@ -24,6 +24,8 @@ var MainScene = cc.Scene.extend({
 
         this._super();
 
+        gameData.sound.playMusic();
+
         lz.dc.beginLogPageView("主场景");
     },
 
@@ -37,8 +39,6 @@ var MainScene = cc.Scene.extend({
 
     init: function () {
         cc.log("MainScene init");
-
-        gameData.sound.playMusic();
 
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
@@ -58,6 +58,7 @@ var MainScene = cc.Scene.extend({
             this.switchLayer(MainLayer);
         }
 
+        this.retain();
     },
 
     changeMessage: function (msg) {
@@ -71,7 +72,6 @@ var MainScene = cc.Scene.extend({
     },
 
     updateMark: function () {
-
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
@@ -96,11 +96,11 @@ var MainScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.switch(runLayer.create());
+            this.switchTo(runLayer.create());
         }
     },
 
-    switch: function (layerObject) {
+    switchTo: function (layerObject) {
         cc.log("MainScene switch");
 
         if (this._nowLayer != null) {
@@ -131,7 +131,10 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
-        _mainScene = null;
+        if(_mainScene) {
+            _mainScene.release();
+            _mainScene = null;
+        }
 
         gameData.sound.stopMusic();
     };

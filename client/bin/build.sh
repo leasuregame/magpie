@@ -34,24 +34,24 @@ function build_AppStore
 {
 	echo "build_AppStore"
 
-	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.js" ]; then
+	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.js" ]; then
 		echo "game.js exist remove it"
-		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.js
+		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.js
 	fi
 
 	echo "obfuscate magpie appstore file to game.js"
 	ant -buildfile cocos2d-x-2.2.1/projects/Magpie/Resources/bin/obfuscate/magpie_obfuscate_AppStore.xml
 
-	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.js" ]; then
-		if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.jsc" ]; then
+	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.js" ]; then
+		if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.jsc" ]; then
 			echo "game.jsc exist remove it"
-			rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.jsc
+			rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.jsc
 		fi
 
 		echo "compile magpie appstore game.js to game.jsc"
-		cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py jscompile -s cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore -d cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore 
+		cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py jscompile -s cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases -d cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases 
 		echo "complete to game.jsc remove game.js"
-		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore/game.js
+		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/AppStore-Releases/game.js
 	else
 		echo "magpie appstore file game.js not exist"
 	fi 
@@ -61,24 +61,24 @@ function build_TB
 {
 	echo "build_TB"
 
-	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.js" ]; then
+	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js" ]; then
 		echo "game.js exist remove it"
-		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.js
+		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js
 	fi
 
 	echo "obfuscate magpie tb file to game.js"
 	ant -buildfile cocos2d-x-2.2.1/projects/Magpie/Resources/bin/obfuscate/magpie_obfuscate_TB.xml
 
-	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.js" ]; then
-		if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.jsc" ]; then
+	if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js" ]; then
+		if [ -f "cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.jsc" ]; then
 			echo "game.jsc exist remove it"
-			rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.jsc
+			rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.jsc
 		fi
 
 		echo "compile magpie tb game.js to game.jsc"
-		cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py jscompile -s cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB -d cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB 
+		cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py jscompile -s cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases -d cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases 
 		echo "complete to game.jsc remove game.js"
-		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB/game.js
+		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js
 	else
 		echo "magpie tb file game.js not exist"
 	fi 

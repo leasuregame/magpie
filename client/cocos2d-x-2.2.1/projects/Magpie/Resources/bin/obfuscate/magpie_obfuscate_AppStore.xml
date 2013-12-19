@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/AppStore/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/AppStore-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>
@@ -17,12 +17,11 @@
                 <file name="jsb_cocos2d_constants.js"/>
                 <file name="jsb_cocos2d.js"/>
                 <file name="jsb_cocos2d_extension.js"/>
-                <file name="jsb_chipmunk_constants.js"/>
-                <file name="jsb_chipmunk.js"/>
                 <file name="jsb_opengl_constants.js"/>
                 <file name="jsb_opengl.js"/>
                 <file name="jsb_cocosbuilder.js"/>
                 <file name="jsb_sys.js"/>
+                <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res/">
                 <file name="src/resource.js"/>

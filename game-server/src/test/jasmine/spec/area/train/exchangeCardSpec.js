@@ -65,11 +65,11 @@ describe("Area Server", function() {
           });
         };
 
-        for (var i = 1; i <= 250; i++) {
-          (function(i) {
-            doTest(i);
-          })(i);
-        }
+        // for (var i = 1; i <= 250; i++) {
+        //   (function(i) {
+        //     doTest(i);
+        //   })(i);
+        // }
       });
 
 

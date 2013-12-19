@@ -103,7 +103,7 @@ var Friend = Entity.extend({
         if (type == FRIEND_ACTION_ADD) {
             this.push(msg.friend);
         } else if (type == FRIEND_ACTION_DELETE) {
-            this.delete(msg.friend.id);
+            this.deleteFriend(msg.friend.id);
         }
     },
 
@@ -117,7 +117,7 @@ var Friend = Entity.extend({
         this._friendList.push(friend);
     },
 
-    delete: function (friendId) {
+    deleteFriend: function (friendId) {
         var len = this._friendList.length;
 
         for (var i = 0; i < len; ++i) {
@@ -247,7 +247,7 @@ var Friend = Entity.extend({
             if (data.code == 200) {
                 cc.log("deleteFriend success");
 
-                that.delete(friendId);
+                that.deleteFriend(friendId);
 
                 TipLayer.tip("删除成功");
 

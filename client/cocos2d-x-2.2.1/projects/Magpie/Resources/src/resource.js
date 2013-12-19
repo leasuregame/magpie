@@ -937,6 +937,7 @@ var main_scene_image = {
     spirit_upgrade_sound: "res/sound/spirit_upgrade_sound.wav",
     star_sound: "res/sound/star_sound.wav",
     summon_door: "res/sound/summon_door.wav",
+    passive_skill_afresh: "res/sound/passive_skill_afresh.wav",
 
     start_animation_music: "res/sound/startAnimationSound/start_animation_music.mp3",
     startAnimation_angry_sound: "res/sound/startAnimationSound/startAnimation_angry_sound.wav",

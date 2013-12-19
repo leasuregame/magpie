@@ -109,13 +109,13 @@ var EvolutionLayer = cc.Layer.extend({
     switchToCardListLayer: function (cardListLayer) {
         cc.log("EvolutionLayer switchToCardListLayer");
 
-        MainScene.getInstance().switch(cardListLayer);
+        MainScene.getInstance().switchTo(cardListLayer);
     },
 
     backToThisLayer: function () {
         cc.log("EvolutionLayer backToThisLayer");
 
-        MainScene.getInstance().switch(this);
+        MainScene.getInstance().switchTo(this);
     },
 
     _onClickSkillUpgrade: function () {

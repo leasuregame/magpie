@@ -96,11 +96,11 @@ var MainScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.switch(runLayer.create());
+            this.switchTo(runLayer.create());
         }
     },
 
-    switch: function (layerObject) {
+    switchTo: function (layerObject) {
         cc.log("MainScene switch");
 
         if (this._nowLayer != null) {

@@ -83,7 +83,7 @@ describe("Area Server", function() {
                                         powerValue: 120
                                     }),
                                     type: 4, // message
-                                    status: 5 // unhandled
+                                    status: 4 // unhandled
                                 }, function(res) {
                                     cb(null, res);
                                 });
@@ -104,14 +104,14 @@ describe("Area Server", function() {
                         });
                     });
 
-                    it("should can not get the system message", function() {
+                    it("should can get the system message", function() {
                         request('area.messageHandler.handleSysMsg', {
                             msgId: msgId
                         }, function(data) {
                             console.log(data);
-                            expect(data.code).toEqual(501);
+                            expect(data.code).toEqual(200);
                             expect(data.msg).toEqual(
-                                '体力已达上限'
+                                 { gold : 100, money : 100, powerValue : 120 } 
                             );
                         });
                     });
@@ -123,7 +123,7 @@ describe("Area Server", function() {
 
                     beforeEach(function() {
 
-                        doAjax('/update/player/' + 100, {
+                        doAjax('/update/player/' + 101, {
                             "gold": 0,
                             "money": 0,
                             "power": JSON.stringify({
@@ -134,7 +134,7 @@ describe("Area Server", function() {
                             "elixir": 0
                         }, function(res) {
                             console.log(res);
-                            loginWith(arthur.account, arthur.password, arthur.areaId);
+                            loginWith('user4', '1', 1);
                         });
 
                     });
@@ -153,10 +153,10 @@ describe("Area Server", function() {
                             });
 
                             doAjax('/message/' + msgId, {}, function(res) {
-                                expect(res.data.status).toEqual(5);
+                                expect(res.data.status).toEqual(4);
                             });
 
-                            doAjax('/player/' + arthur.playerId, {}, function(res) {
+                            doAjax('/player/' + 101, {}, function(res) {
                                 expect(res.data.gold).toEqual(before_player.gold + 100);
                                 expect(res.data.money).toEqual(before_player.money + 100);
                                 expect(JSON.parse(res.data.power).value)
@@ -192,12 +192,12 @@ describe("Area Server", function() {
                             });
 
                             doAjax('/message/' + msgId, {}, function(res) {
-                                expect(res.data.status).toEqual(5);
+                                expect(res.data.status).toEqual(4);
                             });
 
                             doAjax('/player/1', {}, function(res) {
                                 expect(JSON.parse(res.data.power).value)
-                                    .toEqual(150);
+                                    .toEqual(220);
                             });
                         });
                     });

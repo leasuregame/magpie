@@ -296,7 +296,7 @@ var TaskLayer = cc.Layer.extend({
                 return;
             }
 
-            MainScene.getInstance().switch(ExploreLayer.create(id));
+            MainScene.getInstance().switchTo(ExploreLayer.create(id));
 
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();

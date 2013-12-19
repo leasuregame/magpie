@@ -341,9 +341,9 @@ var CardUpgradeLabel = cc.Layer.extend({
             var fadeInAction = cc.FadeIn.create(1);
 
             var lvLabelAction = cc.Sequence.create(
-                fadeOutAction.copy(),
-                lvCallFuncAction.copy(),
-                fadeInAction.copy()
+                fadeOutAction.clone(),
+                lvCallFuncAction.clone(),
+                fadeInAction.clone()
             );
 
 
@@ -398,6 +398,24 @@ var CardUpgradeLabel = cc.Layer.extend({
             if (nowExp <= 0) {
                 this.unschedule(fn);
                 this._retinueCard = [];
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._hpLabel.runAction(spawnAction.clone());
+                this._atkLabel.runAction(spawnAction.clone());
+
                 this.update();
 
                 upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);

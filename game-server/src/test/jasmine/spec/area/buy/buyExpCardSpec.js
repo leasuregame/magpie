@@ -6,7 +6,7 @@ describe("Area Server", function() {
 			});
 
 			describe("购买经验卡", function() {
-				describe("当铜板不足时", function() {
+				describe("当仙币不足时", function() {
 					beforeEach(function() {
 						loginWith('poorman', '1', 1);
 					});
@@ -18,7 +18,7 @@ describe("Area Server", function() {
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
-								msg: '铜板不足'
+								msg: '仙币不足'
 							});
 						});
 					});
@@ -26,7 +26,7 @@ describe("Area Server", function() {
 
 				describe("当铜板充足时", function() {
 					beforeEach(function() {
-						loginWith('arthur', '1', 1);
+						loginWith('1', '1', 1);
 					});
 
 					it("可以购买指定数量的经验卡牌", function() {
@@ -34,6 +34,7 @@ describe("Area Server", function() {
                             id:1,
 							times: 1
 						}, function(data) {
+							console.log(data);
 							expect(data.code).toEqual(200);
 							expect(data.msg.cards.length).toEqual(1);
 							expect(data.msg.card.tableId).toEqual(30000);

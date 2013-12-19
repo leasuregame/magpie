@@ -364,6 +364,11 @@ var VipLayer = cc.Layer.extend({
                 return;
             }
 
+            if (gameData.cardList.isFull()) {
+                CardListFullTipLayer.pop();
+                return;
+            }
+
             gameData.shop.buyVipBox(function (data) {
                 cc.log(data);
                 var cb = function () {

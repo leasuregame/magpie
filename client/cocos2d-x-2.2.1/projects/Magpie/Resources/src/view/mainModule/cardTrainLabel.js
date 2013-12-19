@@ -25,6 +25,7 @@ var CardTrainLabel = cc.Layer.extend({
 
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
+    _showTrain: false,
 
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
@@ -268,6 +269,30 @@ var CardTrainLabel = cc.Layer.extend({
             this._hpLabel.setString(this._leadCard.get("hp"));
             this._atkLabel.setString(this._leadCard.get("atk"));
 
+            if (this._showTrain) {
+                this._showTrain = false;
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                if (this._trainType == TRAIN_CARD_ATK) {
+                    this._atkLabel.runAction(spawnAction);
+                } else {
+                    this._hpLabel.runAction(spawnAction);
+                }
+
+            }
+
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
                 if (this._trainType == TRAIN_CARD_HP) {
                     this._hpAdditionLabel.setString("+ " + (this._trainCount * 2));
@@ -366,7 +391,7 @@ var CardTrainLabel = cc.Layer.extend({
                 effect.removeFromParent();
             });
             that.addChild(effect, 10);
-
+            that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);
     },

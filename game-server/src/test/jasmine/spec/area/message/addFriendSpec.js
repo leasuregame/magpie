@@ -190,9 +190,9 @@ describe("Area Server", function() {
                 it('should can return message list for current login user', function() {
                     request('area.messageHandler.messageList', {}, function(data) {
                         console.log(data);
-                        expect(data.msg.friend.length).toEqual(6);
+                        expect(data.msg.friend.length).toEqual(7);
                         expect(data.msg.battle.length).toEqual(2);
-                        expect(data.msg.system.length).toEqual(1);
+                        expect(data.msg.system.length).toEqual(5);
                     });
                 });
             });
@@ -248,7 +248,7 @@ describe('when add a friend', function() {
 
     });
 
-    describe('when opposite‘s friends is full', function() {
+    describe('when player‘s friends is full', function() {
 
         beforeEach(function() {
             loginWith(player.account, player.password, player.areaId);

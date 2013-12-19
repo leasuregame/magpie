@@ -222,7 +222,7 @@ var RegisterLayer = cc.Layer.extend({
             cc.log(data);
 
             TipLayer.tip("注册成功，请登录游戏");
-            that.getParent().switch(LoginLayer.create());
+            that.getParent().switchTo(LoginLayer.create());
             that.removeFromParent();
         }, account, password);
     },
@@ -232,7 +232,7 @@ var RegisterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switch(LoginLayer.create());
+        this.getParent().switchTo(LoginLayer.create());
         this.removeFromParent();
     }
 });

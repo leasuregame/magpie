@@ -64,7 +64,7 @@ var NewPlayerLayer = cc.Layer.extend({
                     if (!text) {
                         TipLayer.tip("请输入昵称");
                     } else if (len < 1 || len > 6) {
-                        TipLayer.tip("昵称为1~6位中文或数字");
+                        TipLayer.tip("昵称为1~6位");
                     } else if (EMPTY_SPACE_REG.test(text)) {
                         TipLayer.tip("昵称不能包含空格");
                     } else if (!NICKNAME_REG.test(text)) {
@@ -142,7 +142,7 @@ var NewPlayerLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
        // lz.server.disconnect();
-        this.getParent().switch(LoginLayer.create());
+        this.getParent().switchTo(LoginLayer.create());
         this.removeFromParent();
 
     }

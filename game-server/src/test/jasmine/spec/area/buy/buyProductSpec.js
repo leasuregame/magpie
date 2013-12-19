@@ -11,13 +11,13 @@ describe("Area Server", function() {
 						doAjax('/update/player/106', {
 							gold: 4
 						}, function(err, res) {
-							loginWith('poorman', '1', 1);	
-						});	
+							loginWith('poorman', '1', 1);
+						});
 					});
 
 					it("不能购买卡库位置", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:7
+							id: 7
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
@@ -32,13 +32,13 @@ describe("Area Server", function() {
 						doAjax('/update/player/101', {
 							cardsCount: 100
 						}, function(err, res) {
-							loginWith('user4', '1', 1);	
-						});						
+							loginWith('user4', '1', 1);
+						});
 					});
 
 					it("不能购买卡库位置", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:7
+							id: 7
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
@@ -56,15 +56,22 @@ describe("Area Server", function() {
 
 					it("卡库容量会相应增加", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:7
+							id: 7
 						}, function(data) {
 							expect(data).toEqual({
-								code: 200
+								code: 200,
+								msg: {
+									consume: {
+										key: 'gold',
+										value: 39990
+									},
+									cardsCount: 36
+								}
 							});
 
 							doAjax('/player/100', function(res) {
 								var p = res.data;
-								expect(p.cardsCount).toEqual(36);
+								expect(p.cardsCount).toEqual(data.msg.cardsCount);
 							});
 						});
 					});

@@ -341,9 +341,9 @@ var CardUpgradeLabel = cc.Layer.extend({
             var fadeInAction = cc.FadeIn.create(1);
 
             var lvLabelAction = cc.Sequence.create(
-                fadeOutAction.copy(),
-                lvCallFuncAction.copy(),
-                fadeInAction.copy()
+                fadeOutAction.clone(),
+                lvCallFuncAction.clone(),
+                fadeInAction.clone()
             );
 
 

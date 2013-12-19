@@ -103,7 +103,7 @@ var CardListFullTipLayer = LazyLayer.extend({
     _onClickGo2Sell: function() {
         cc.log("CardListFullTipLayer _onGo2Sell");
         this.removeFromParent();
-        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
+        MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_SELL));
     },
 
     _onClickGo2Buy: function() {

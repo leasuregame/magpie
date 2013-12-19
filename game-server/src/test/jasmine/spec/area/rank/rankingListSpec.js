@@ -2,11 +2,11 @@ describe("Area Server", function() {
 
     describe("Rank Handler", function() {
         describe("ranking list", function() {
-            // beforeAll(function() {
-            //     doAjax('/loaddata/all', {}, function(data) {
-            //         expect(data).toEqual('done');
-            //     });
-            // });
+            beforeAll(function() {
+                doAjax('/loaddata/all', {}, function(data) {
+                    expect(data).toEqual('done');
+                });
+            });
 
             var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
             var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
@@ -90,24 +90,22 @@ describe("Area Server", function() {
                 describe("when players ranking is in top 10", function() {
 
                     beforeEach(function() {
-                        loginWith('3', '1', 1);
+                       
+                            loginWith('3', '1', 1);                      
                     });
 
                     it('should can be return correct ranking list', function() {
                         request('area.rankHandler.rankingList', {
-                            playerId: 3
+                            playerId: 10009
                         }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
-                            expect(rankList.length).toEqual(21);
-                            for (var i = 0; i < 3; i++)
-                                expect(rankList[i].type).toEqual(2);
-                            for (var i = 3; i < 10; i++)
-                                expect(rankList[i].type).toEqual(0);
-                            for (var i = 10; i < 20; i++)
+                            expect(rankList.length).toEqual(11);
+                            for (var i = 0; i < 9; i++)
                                 expect(rankList[i].type).toEqual(1);
 
-                            expect(rankList[20].type).toEqual(0);
+                            expect(rankList[9].type).toEqual(0);
+                            expect(rankList[10].type).toEqual(1);
                         });
                     });
 
@@ -121,17 +119,18 @@ describe("Area Server", function() {
 
                     it('should can be return correct ranking list', function() {
                         request('area.rankHandler.rankingList', {
-                            playerId: 4
+                            playerId: 10900
                         }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
-                            expect(rankList.length).toEqual(22);
+                            expect(rankList.length).toEqual(24);
                             for (var i = 0; i < 10; i++)
                                 expect(rankList[i].type).toEqual(0);
                             for (var i = 10; i < 20; i++)
                                 expect(rankList[i].type).toEqual(1);
-                            expect(rankList[20].type).toEqual(2);
-                            expect(rankList[21].type).toEqual(0);
+                            for (var i = 21; i < 24; i++)
+                                expect(rankList[i].type).toEqual(3);
+                            expect(rankList[20].type).toEqual(0);
 
                         });
                     });

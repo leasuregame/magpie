@@ -114,7 +114,7 @@ describe("Area Server", function() {
                         request('area.taskHandler.resetPassMark', {}, function(data) {
                             console.log(data);
                             expect(data.code).toEqual(501);
-                            expect(data.msg).toEqual('元宝不足');
+                            expect(data.msg).toEqual('魔石不足');
                         });
                     });
                 });

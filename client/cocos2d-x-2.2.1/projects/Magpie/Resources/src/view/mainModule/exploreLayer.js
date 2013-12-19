@@ -462,7 +462,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._scrollView.addChild(powerLabel, 2);
                 powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
 
-                powerLabel.runAction(action.copy());
+                powerLabel.runAction(action.clone());
             }
 
             if (this._reward.exp) {
@@ -471,7 +471,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._scrollView.addChild(expLabel, 2);
                 expLabel.setAnchorPoint(cc.p(0.5, 0.5));
 
-                expLabel.runAction(action.copy());
+                expLabel.runAction(action.clone());
             }
 
 
@@ -631,7 +631,7 @@ var ExploreLayer = cc.Layer.extend({
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
 
         for (var i = 0; i < 4; ++i) {
-            this._mapLabel[i].runAction(mapAction.copy());
+            this._mapLabel[i].runAction(mapAction.clone());
         }
     },
 

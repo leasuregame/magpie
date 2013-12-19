@@ -57,7 +57,7 @@ describe("Area Server", function() {
                             challengeCount++;
                             challengeBuyCount--;
                             gold -= BUY_CHALLENGECOUNT.gold;
-                            expect(data.msg.challengeCount).toEqual(1);
+                            expect(data.msg.challengeCount).toEqual(challengeCount);
                             expect(data.msg.consume).toEqual({
                                 "key": "gold",
                                 "value": gold
@@ -109,7 +109,7 @@ describe("Area Server", function() {
 
             });
 
-            describe('当元宝不足时', function() {
+            describe('当魔石不足时', function() {
 
                 beforeEach(function() {
                     doAjax('/player/114',{},function(msg) {
@@ -136,7 +136,7 @@ describe("Area Server", function() {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
-                        expect(data.msg).toEqual('元宝不足');
+                        expect(data.msg).toEqual('魔石不足');
                         doAjax('/player/114',{},function(msg) {
                             player = msg.data;
                             console.log(player);

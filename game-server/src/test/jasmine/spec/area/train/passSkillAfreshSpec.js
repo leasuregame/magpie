@@ -53,7 +53,7 @@ describe("Area Server", function() {
             psIds: [0]
           }, function(data) {
             expect(data.code).toEqual(501);
-            expect(data.msg).toEqual('铜板/元宝不足，不能洗炼');
+            expect(data.msg).toEqual('铜板/魔石不足，不能洗炼');
             console.log(data);
           });
         });

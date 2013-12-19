@@ -85,12 +85,25 @@ describe("Area Server", function() {
 							times: times
 						}, function(data) {
 							console.log(name, data);
+							if (data.code == 501 && data.msg == '卡牌容量已经达到最大值') {
+								return;
+							}
+
 							expect(data.code).toEqual(200);
-							expect(data.msg).hasProperties([
-								'card',
-								'consume',
-								'fragment'
-							]);
+							if (times > 1) {
+								expect(data.msg).hasProperties([
+									'cards',
+									'consume',
+									'fragment'
+								]);
+							} else {
+								expect(data.msg).hasProperties([
+									'card',
+									'consume',
+									'fragment'
+								]);
+							}
+
 
 							var card = data.msg.card || data.msg.cards[0];
 							var scope = CARD_SCOPE[level];
@@ -98,18 +111,22 @@ describe("Area Server", function() {
 
 							doAjax('/card/' + card.id, {}, function(res) {
 								expect(_.pick(res.data,
-									'id', 'tableId', 'lv', 'exp', 'skillLv', 'skillPoint', 'elixirHp', 'elixirAtk'
+									'id', 'tableId', 'lv', 'exp', 'skillPoint', 'elixirHp', 'elixirAtk'
 								))
 									.toEqual({
 										id: card.id,
 										tableId: card.tableId,
 										lv: card.lv,
 										exp: card.exp,
-										skillLv: card.skillLv,
 										skillPoint: card.skillPoint,
 										elixirHp: card.elixirHp,
 										elixirAtk: card.elixirAtk,
 									});
+
+								if (card.star >= 3) {
+									expect(res.data.skillLv).toEqual(card.skillLv);
+								}
+
 								var pss = JSON.parse(res.data.passiveSkills);
 								for (var i = 0; i < card.passiveSkills.length; i++) {
 									var ps = card.passiveSkills[i];
@@ -120,7 +137,6 @@ describe("Area Server", function() {
 										value: ps.value
 									});
 								}
-
 							});
 
 
@@ -171,8 +187,16 @@ describe("Area Server", function() {
 
 			describe("when gold or energy is not enought", function() {
 
-				it("元宝不足时，不能抽卡", function() {
-					loginWith('user3', '1', 1);
+				it("魔石不足时，不能抽卡", function() {
+					doAjax('/update/player/104', {
+						firstTime: JSON.stringify({
+							highLuckyCard: 0,
+							lowLuckyCard: 0
+						})
+					}, function() {
+						loginWith('user3', '1', 1);
+					});
+
 					request('area.trainHandler.luckyCard', {
 						type: LOTTERY_TYPE.GOLD,
 						level: 1
@@ -194,7 +218,6 @@ describe("Area Server", function() {
 						expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
 					});
 				});
-
 			});
 
 			describe("当次数达到上限时", function() {
@@ -203,11 +226,14 @@ describe("Area Server", function() {
 					doAjax('/update/player/108', {
 						rowFragmentCount: 99,
 						highFragmentCount: 39,
-						highDrawCardCount: 239
+						highDrawCardCount: 239,
+						firstTime: JSON.stringify({
+							lowLuckyCard: 0,
+							highLuckyCard: 0
+						}),
+						gold: 300
 					}, function(data) {
-						//expect(data).toEqual('done');
 						console.log(data);
-
 					});
 				});
 
@@ -223,7 +249,6 @@ describe("Area Server", function() {
 					}, function(data) {
 						console.log(data);
 						expect(data.code).toEqual(200);
-						// expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
 						expect(data.msg.fragment).toEqual(1);
 					});
 				});
@@ -254,7 +279,7 @@ describe("Area Server", function() {
 
 			describe('第一次抽卡', function() {
 				describe('普通抽卡', function() {
-					beforeEach(function(){
+					beforeEach(function() {
 						loginWith('115', '1', 1);
 					});
 
@@ -282,8 +307,16 @@ describe("Area Server", function() {
 				});
 
 				describe('高级抽卡', function() {
-					beforeEach(function(){
-						loginWith('user5', '1', 1);
+					beforeEach(function() {
+						doAjax('/update/player/108', {
+							firstTime: JSON.stringify({
+								lowLuckyCard: 1,
+								highLuckyCard: 1
+							}),
+							gold: 0
+						}, function(data) {
+							loginWith('user5', '1', 1);
+						});
 					});
 
 					it('只有第一次免费', function() {

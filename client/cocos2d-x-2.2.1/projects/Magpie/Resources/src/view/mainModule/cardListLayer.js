@@ -725,7 +725,7 @@ var CardListLayer = cc.Layer.extend({
             function () {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-                MainScene.getInstance().switch(CardListLayer.create());
+                MainScene.getInstance().switchTo(CardListLayer.create());
             },
             this
         );
@@ -903,7 +903,7 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
+        MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_SELL));
     },
 
     _onClickSellOk: function () {
@@ -920,7 +920,7 @@ var CardListLayer = cc.Layer.extend({
         }
 
         gameData.cardList.sell(function () {
-            MainScene.getInstance().switch(CardListLayer.create());
+            MainScene.getInstance().switchTo(CardListLayer.create());
         }, cardIdList);
     },
 

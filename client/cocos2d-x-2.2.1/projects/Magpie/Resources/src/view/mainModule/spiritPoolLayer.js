@@ -188,10 +188,10 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
             this.addChild(spirit);
 
-            var str = "灵气: +" + this._reward.spirit_obtain;
+           // var str = "灵气: +" + this._reward.spirit_obtain;
 
             if (this._reward.isDouble) {
-                str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
+              //  str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
                 spirit.setScale(1.5);
             }
 
@@ -224,7 +224,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
             this.scheduleOnce(function () {
                 spirit.removeFromParent();
-                TipLayer.tipNoBg(str);
+                // TipLayer.tipNoBg(str);
+                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
                 this.update();
 
                 if (noviceTeachingLayer.isNoviceTeaching()) {

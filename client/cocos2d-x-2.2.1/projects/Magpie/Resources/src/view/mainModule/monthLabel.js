@@ -18,6 +18,7 @@ var MonthLabel = cc.Node.extend({
     _dayLabel: [],
     _hookEffect: [],
     _signInEffect: null,
+    _effect: [],
 
     onEnter: function () {
         cc.log("MonthLabel onEnter");
@@ -42,6 +43,7 @@ var MonthLabel = cc.Node.extend({
 
         this._hookList = [];
         this._hookEffect = [];
+        this._effect = [];
         this._signInEffect = null;
 
         for (var i = 0; i < monthMark.days; ++i) {
@@ -90,19 +92,19 @@ var MonthLabel = cc.Node.extend({
                     this._signInEffect = null;
                 }
 
-                if (!this._hookList[i].isVisible()) {
+                if (!this._hookList[i].isVisible() && !this._effect[i]) {
 
-                    var effect = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
+                    this._effect[i] = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
                     var point = this._hookList[i].getPosition();
-                    effect.setPosition(point);
-
+                    this._effect[i].setPosition(point);
+                    var that = this;
                     var hook = this._hookList[i];
-                    effect.animationManager.setCompletedAnimationCallback(this, function () {
-                        effect.removeFromParent();
+                    this._effect[i].animationManager.setCompletedAnimationCallback(this, function () {
+                        that._effect.removeFromParent();
                         hook.setVisible(true);
                     });
 
-                    this.addChild(effect);
+                    this.addChild(this._effect[i]);
 
                 } else {
                     this._hookList[i].setVisible(true);

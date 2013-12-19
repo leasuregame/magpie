@@ -16,6 +16,7 @@ var UPDATE_POWER_TIME_INTERVAL = 2;
 var UPDATE_POWER_TIME = 600000;
 var UPDATE_POWER_VALUE = 5;
 var OVER_NOVICE_STEP = 17;
+var LOTTERY_ENOUGH = 200;
 
 var Player = Entity.extend({
     _id: 0,             // 数据库id
@@ -61,6 +62,7 @@ var Player = Entity.extend({
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
+        this.on("energyChange", this._energyChangeEvent);
 
         this._load();
         this.update(data);
@@ -169,10 +171,10 @@ var Player = Entity.extend({
         gameGuide.updateGuide();
     },
 
-    isFullLv: function() {
+    isFullLv: function () {
         cc.log("Player isFullLv");
 
-        if(this._lv == this._maxLv) {
+        if (this._lv == this._maxLv) {
             return true;
         }
 
@@ -197,6 +199,15 @@ var Player = Entity.extend({
         }
 
         gameMark.updateGoldRewardMark(false);
+    },
+
+    _energyChangeEvent: function () {
+        cc.log("Player _energyChangeEvent");
+        if (this._energy >= LOTTERY_ENOUGH) {
+            gameMark.updateLotteryMark(true);
+        } else {
+            gameMark.updateLotteryMark(false);
+        }
     },
 
     getAbility: function () {

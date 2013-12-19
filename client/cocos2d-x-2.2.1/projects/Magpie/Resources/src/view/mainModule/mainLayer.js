@@ -35,6 +35,7 @@ var MainLayer = cc.Layer.extend({
     _achievementMark: null,
     _friendMark: null,
     _messageMark: null,
+    _lotteryMark: null,
 
     _treasureHuntGuide: null,
     _rankGuide: null,
@@ -115,6 +116,9 @@ var MainLayer = cc.Layer.extend({
         );
         lotteryLayerItem.setOffset(cc.p(-5, 5));
         lotteryLayerItem.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
+        this._lotteryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._lotteryMark.setPosition(cc.p(185, 80));
+        lotteryLayerItem.addChild(this._lotteryMark);
 
         var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -286,6 +290,8 @@ var MainLayer = cc.Layer.extend({
         this._achievementMark.setVisible(gameMark.getAchievementMark());
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
+        this._lotteryMark.setVisible(gameMark.getLotteryMark());
+
     },
 
     updateGuide: function () {

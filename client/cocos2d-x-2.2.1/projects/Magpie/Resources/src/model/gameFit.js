@@ -528,7 +528,8 @@ var fit4Iphone4 = {
             "energyLotteryItemBasePoint": cc.p(203, 302),
             "tenLotteryItemPoint": cc.p(370, 262),
             "tipBgSpritePoint": cc.p(360, 152),
-            "tipLabelPoint": cc.p(360, 152)
+            "tipLabelPoint": cc.p(360, 152),
+            "privilegeIconPoint": cc.p(370, 212)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
@@ -1726,7 +1727,8 @@ var fit4Iphone5 = {
             "energyLotteryItemBasePoint": cc.p(163, 380),
             "tenLotteryItemPoint": cc.p(330, 335),
             "tipBgSpritePoint": cc.p(320, 170),
-            "tipLabelPoint": cc.p(320, 170)
+            "tipLabelPoint": cc.p(320, 170),
+            "privilegeIconPoint": cc.p(330, 285)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,

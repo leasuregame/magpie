@@ -491,6 +491,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                         valueLabel.runAction(
                             cc.Sequence.create(
                                 cc.FadeIn.create(1),
+                                cc.CallFunc.create(function () {
+                                    gameData.sound.playEffect(main_scene_image.passive_skill_afresh, false);
+                                }, this),
                                 cc.MoveBy.create(0.1, cc.p(5, 0)),
                                 cc.MoveBy.create(0.1, cc.p(-5, 0)),
                                 cc.MoveBy.create(0.1, cc.p(5, 0)),
@@ -651,8 +654,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }
@@ -750,8 +753,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(mandatoryTeachingLayer) {
-            if(mandatoryTeachingLayer.isTeaching()) {
+        if (mandatoryTeachingLayer) {
+            if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
                 mandatoryTeachingLayer.next();
             }

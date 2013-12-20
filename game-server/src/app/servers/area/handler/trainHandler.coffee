@@ -707,7 +707,7 @@ Handler::getExchangeCards = (msg, session, next) ->
     player.set('exchangeCards', JSON.stringify(ids))
     player.decrease('money', consumeVal)
     player.save()
-    next(null, {code: 200, msg: ids: ids, cval: consumeVal})
+    next(null, {code: 200, msg: ids: ids})
 
 Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')

@@ -300,7 +300,12 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                product.count = Math.min(product.count, count);
+                if(count <= product.count) {
+                    product.count = count;
+                    product.tip = "仙币不足";
+                } else {
+                    product.tip = "已达卡库容量上限，无法购买更多";
+                }
             }
 
             return product;
@@ -335,6 +340,7 @@ var Shop = Entity.extend({
                 return product;
             } else {
                 product.count = Math.min(product.count, count);
+                product.tip = "魔石不足";
             }
 
             return product;
@@ -366,7 +372,12 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                product.count = Math.min(product.count, count);
+                if(count <= product.count) {
+                    product.count = count;
+                    product.tip = "魔石不足";
+                } else {
+                    product.tip = "已达购买次数上限，无法购买更多";
+                }
             }
 
             return product;
@@ -398,7 +409,12 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                product.count = Math.min(product.count, count);
+                if(count <= product.count) {
+                    product.count = count;
+                    product.tip = "魔石不足";
+                } else {
+                    product.tip = "已达购买次数上限，无法购买更多";
+                }
             }
 
             return product;
@@ -431,7 +447,12 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                product.count = Math.min(product.count, count);
+                if(count <= product.count) {
+                    product.count = count;
+                    product.tip = "魔石不足";
+                } else {
+                    product.tip = "已达卡库容量上限，无法购买更多";
+                }
             }
 
             return product;

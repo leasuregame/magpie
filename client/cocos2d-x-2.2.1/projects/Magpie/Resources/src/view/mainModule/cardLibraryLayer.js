@@ -105,7 +105,7 @@ var CardLibraryLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
+        var scrollViewHeight = Math.ceil(250 / 4) * 143 + 25;
         if (scrollViewHeight < this._cardLibraryLayerFit.scrollViewHeight) {
             scrollViewHeight = this._cardLibraryLayerFit.scrollViewHeight;
         }
@@ -117,24 +117,43 @@ var CardLibraryLayer = cc.Layer.extend({
         this._cardItem = {};
         this._cardLockIcon = {};
         this._effect = {};
-        for (var i = 0; i < len; ++i) {
-            var row = Math.floor(i / 4);
-            var index = i % 4;
+        var i;
+        var row = 0;
+        var index = 0;
+        for (i = 0; i < len; ++i) {
+            row = Math.floor(i / 4);
+            index = i % 4;
             var id = cardLibrary[i].id;
             var type = gameData.cardLibrary.getTypeById(id);
-            if (type != CARD_NO_EXIST) {
-                var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
-                cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
-                menu.addChild(cardItem);
+            if (type == CARD_EXIST) {
+                this._cardItem[id] = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
+                this._cardItem[id].setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                menu.addChild(this._cardItem[id]);
 
-                this._cardItem[id] = cardItem;
+            } else if (type == CARD_RECEIVE) {
+                this._cardItem[id] = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
+                this._cardItem[id].setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                menu.addChild(this._cardItem[id]);
+
+                this._cardLockIcon[id] = cc.Sprite.create(main_scene_image.card_back);
+                this._cardLockIcon[id].setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                scrollViewLayer.addChild(this._cardLockIcon[id], 2);
+
+
             } else {
-                var cardLockIcon = cc.Sprite.create(main_scene_image.card_back);
-                cardLockIcon.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
-                scrollViewLayer.addChild(cardLockIcon);
+                this._cardLockIcon[id] = cc.Sprite.create(main_scene_image.card_back);
+                this._cardLockIcon[id].setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                scrollViewLayer.addChild(this._cardLockIcon[id], 2);
 
-                this._cardLockIcon[id] = cardLockIcon;
             }
+        }
+
+        for(; i < 250; i++) {
+            row = Math.floor(i / 4);
+            index = i % 4;
+            var cardLockIcon = cc.Sprite.create(main_scene_image.card_back);
+            cardLockIcon.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+            scrollViewLayer.addChild(cardLockIcon, 2);
         }
 
         this._scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
@@ -171,10 +190,10 @@ var CardLibraryLayer = cc.Layer.extend({
                     this._effect[key] = null;
                 }
 
-//                if (this._cardLockIcon[key]) {
-//                    this._cardLockIcon[key].removeFromParent();
-//                    this._cardLockIcon[key] = null;
-//                }
+                if (this._cardLockIcon[key]) {
+                    this._cardLockIcon[key].removeFromParent();
+                    this._cardLockIcon[key] = null;
+                }
 
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));

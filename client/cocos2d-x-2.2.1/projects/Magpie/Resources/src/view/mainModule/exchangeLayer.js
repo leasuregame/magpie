@@ -101,7 +101,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(backItem, updateItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         var costLabel = cc.Sprite.create(main_scene_image.icon331);
         costLabel.setPosition(this._exchangeLayerFit.costLabelPoint);

@@ -105,7 +105,7 @@ var CardLibraryLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var scrollViewHeight = Math.ceil(250 / 4) * 143 + 25;
+        var scrollViewHeight = Math.ceil(250 / 4) * 143;
         if (scrollViewHeight < this._cardLibraryLayerFit.scrollViewHeight) {
             scrollViewHeight = this._cardLibraryLayerFit.scrollViewHeight;
         }
@@ -203,7 +203,7 @@ var CardLibraryLayer = cc.Layer.extend({
                     var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect19, this);
                     ccbNode.setPosition(cardItem.getPosition());
                     this._effect[key] = ccbNode;
-                    this._scrollView.addChild(this._effect[key]);
+                    this._scrollView.addChild(this._effect[key], 3);
                 }
             }
         }

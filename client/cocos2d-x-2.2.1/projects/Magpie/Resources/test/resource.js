@@ -588,6 +588,12 @@ var main_scene_image = {
     p65: effect_scene_path + "effect/" + "p65.png",
     p66: effect_scene_path + "effect/" + "p66.png",
     p67: effect_scene_path + "effect/" + "p67.png",
+    p68: effect_scene_path + "effect/" + "p68.png",
+    p69: effect_scene_path + "effect/" + "p69.png",
+    p70: effect_scene_path + "effect/" + "p70.png",
+    p71: effect_scene_path + "effect/" + "p71.png",
+    p72: effect_scene_path + "effect/" + "p72.png",
+    p73: effect_scene_path + "effect/" + "p73.png",
     
     
 
@@ -972,6 +978,8 @@ var main_scene_image = {
     effect23: ccb_scene_path + "effect23.ccbi",
     effect24: ccb_scene_path + "effect24.ccbi",
     effect25: ccb_scene_path + "effect25.ccbi",
+    effect26: ccb_scene_path + "effect26.ccbi",
+    effect27: ccb_scene_path + "effect27.ccbi",
 
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 

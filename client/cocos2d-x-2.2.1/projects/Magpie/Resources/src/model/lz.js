@@ -254,6 +254,11 @@ var gameGoodsName = {
         name: "灵气",
         color: cc.c3b(118, 238, 60),
         icon: gameGoodsIcon["spirit"]
+    }, 
+    "spirit": {
+        name: "灵气",
+        color: cc.c3b(118, 238, 60),
+        icon: gameGoodsIcon["spirit"]
     },
     "cards": {
         name: "经验元灵",
@@ -337,7 +342,6 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-                // var icon = lz.getGameGoodsIcon(key);
                 if (str.icon) {
                     TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {

@@ -18,7 +18,6 @@ var Entity = require('./entity');
 var playerConfig = require('../../../config/data/player');
 var msgConfig = require('../../../config/data/message');
 var spiritConfig = require('../../../config/data/spirit');
-var lotteryConfig = require('../../../config/data/lottery');
 var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
@@ -41,9 +40,16 @@ var MAX_SPIRITPOOL_LV = lvLimit.spirit_pool_lv_limit;
 var giveBlessTab = table.getTable('give_bless_config');
 var receiveBlessTab = table.getTable('receive_bless_config');
 var friendsCountTab = table.getTable('friends_config');
+var dgTabRow = table.getTable('daily_gift', 1);
 var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).count;
 var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).count;
 var DEFAULT_FRIENDS_COUNT = friendsCountTab.getItem(1).count;
+
+var DAILY_LOTTERY_COUNT = dgTabRow.lottery_count;
+var LOTTERY_FREE_COUNT = dgTabRow.lottery_free_count;
+var POWER_BUY_COUNT = dgTabRow.power_buy_count;
+var CHALLENGE_COUNT = dgTabRow.challenge_count;
+var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
 
 var defaultMark = function() {
     var i, result = [];
@@ -246,7 +252,8 @@ var Player = (function(_super) {
         'resetDate',
         'firstTime',
         'levelReward',
-        'teachingStep'
+        'teachingStep',
+        'exchangeCards'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -281,12 +288,12 @@ var Player = (function(_super) {
             resetTimes: 1
         },
         dailyGift: {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
-            lotteryFreeCount: 0, // 每日免费抽奖次数
+            lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 3, // 购买体力次数
-            challengeCount: 10, // 每日有奖竞技次数
-            challengeBuyCount: 10, //每日有奖竞技购买次数
+            powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
+            challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
+            challengeBuyCount: CHALLENGE_BUY_COUNT, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -330,7 +337,8 @@ var Player = (function(_super) {
             highLuckyCard: 1
         },
         levelReward: [],
-        teachingStep: 0
+        teachingStep: 0,
+        exchangeCards: []
     };
 
     Player.prototype.resetData = function() {
@@ -355,12 +363,12 @@ var Player = (function(_super) {
         var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
 
         var dg = {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
-            lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
+            lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 3 + vipPrivilege.buy_power_count, // 购买体力次数
-            challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
-            challengeBuyCount: 10, // 每日有奖竞技购买次数
+            powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
+            challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
+            challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
                 givers: []
@@ -1150,7 +1158,8 @@ var Player = (function(_super) {
             signIn: utility.deepCopy(this.signIn),
             firstTime: this.hasFirstTime() ? this.firstTime : void 0,
             teachingStep: this.teachingStep,
-            cardsCount: this.cardsCount
+            cardsCount: this.cardsCount,
+            exchangeCards: this.exchangeCards
         };
     };
 
@@ -1186,7 +1195,7 @@ var elixirLimit = function(lv) {
 //     dg = utility.deepCopy(dg);
 //     dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
 //     dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;
-//     dg.lotteryCount = lotteryConfig.DAILY_LOTTERY_COUNT - dg.lotteryCount;
+//     dg.lotteryCount = DAILY_LOTTERY_COUNT - dg.lotteryCount;
 //     return dg;
 // };
 

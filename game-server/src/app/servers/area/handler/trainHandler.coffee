@@ -692,6 +692,23 @@ Handler::getCardBookEnergy = (msg, session, next) ->
     player.save()
     return next(null, {code: 200, msg: energy: ENERGY})
 
+Handler::getExchangeCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  consumeVal = 1000
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    if player.money < consumeVal
+      return next(null, {code: 501, msg: '仙币不足'})
+
+    ids = entityUtil.randomCardIds([4,5], 4)
+    player.set('exchangeCards', JSON.stringify(ids))
+    player.decrease('money', consumeVal)
+    player.save()
+    next(null, {code: 200, msg: ids: ids})
+
 Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId

@@ -16,7 +16,7 @@ var LoginScene = cc.Scene.extend({
     _nowLayer: null,
 
     onEnter: function () {
-        cc.log("Login onEnter");
+        cc.log("LoginScene onEnter");
 
         this._super();
 
@@ -43,6 +43,9 @@ var LoginScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
+        var loginBgLayer = LoginBgLayer.create();
+        this.addChild(loginBgLayer);
+
         return true;
     },
 
@@ -56,11 +59,11 @@ var LoginScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.switch(runLayer.create());
+            this.switchTo(runLayer.create());
         }
     },
 
-    switch: function (layerObject) {
+    switchTo: function (layerObject) {
         cc.log("LoginScene switch");
 
         if (this._nowLayer != null) {

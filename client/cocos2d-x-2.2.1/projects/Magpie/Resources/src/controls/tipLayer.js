@@ -66,5 +66,20 @@ var TipLayer = {
 
     tipNoBg: function (str, color, fontName, fontSize) {
         this._tip(false, str, color, fontName, fontSize);
+    },
+
+    tipWithIcon: function (icon, str) {
+        cc.log("tipWithIcon: " + icon + " " + str);
+
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect66, this);
+        var controller = effect.controller;
+        controller.goodsIcon.setTexture(lz.getTexture(main_scene_image[icon]));
+        controller.goodsLabel.setString(str);
+        effect.setPosition(gameFit.GAME_MIDPOINT);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+        });
+        cc.Director.getInstance().getRunningScene().addChild(effect, 10000);
+
     }
 };

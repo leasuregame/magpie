@@ -25,6 +25,7 @@ var CardTrainLabel = cc.Layer.extend({
 
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
+    _showTrain: false,
 
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
@@ -137,13 +138,11 @@ var CardTrainLabel = cc.Layer.extend({
         this._helpLabel.setPosition(this._cardTrainLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var trainTypeLabel = cc.Sprite.create(main_scene_image.icon50);
-        trainTypeLabel.setScaleY(0.4);
+        var trainTypeLabel = cc.Sprite.create(main_scene_image.icon309);
         trainTypeLabel.setPosition(cc.p(0, 25));
         this._helpLabel.addChild(trainTypeLabel);
 
-        var trainCountLabel = cc.Sprite.create(main_scene_image.icon50);
-        trainCountLabel.setScaleY(0.4);
+        var trainCountLabel = cc.Sprite.create(main_scene_image.icon309);
         trainCountLabel.setPosition(cc.p(0, -35));
         this._helpLabel.addChild(trainCountLabel);
 
@@ -154,7 +153,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainHp,
             this
         );
-        this._trainHpItem.setPosition(cc.p(-160, 25));
+        this._trainHpItem.setPosition(cc.p(-120, 25));
 
         this._trainAtkItem = cc.MenuItemImage.create(
             main_scene_image.button63,
@@ -163,7 +162,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainAtk,
             this
         );
-        this._trainAtkItem.setPosition(cc.p(80, 25));
+        this._trainAtkItem.setPosition(cc.p(110, 25));
 
         this._trainOneItem = cc.MenuItemImage.create(
             main_scene_image.button64,
@@ -172,7 +171,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainOne,
             this
         );
-        this._trainOneItem.setPosition(cc.p(-168, -35));
+        this._trainOneItem.setPosition(cc.p(-128, -35));
 
         this._trainTenItem = cc.MenuItemImage.create(
             main_scene_image.button65,
@@ -181,7 +180,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainTen,
             this
         );
-        this._trainTenItem.setPosition(cc.p(80, -35));
+        this._trainTenItem.setPosition(cc.p(110, -35));
 
         var helpMenu = cc.Menu.create(
             this._trainHpItem,
@@ -269,6 +268,30 @@ var CardTrainLabel = cc.Layer.extend({
             this._nameLabel.setString(this._leadCard.get("name"));
             this._hpLabel.setString(this._leadCard.get("hp"));
             this._atkLabel.setString(this._leadCard.get("atk"));
+
+            if (this._showTrain) {
+                this._showTrain = false;
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                if (this._trainType == TRAIN_CARD_ATK) {
+                    this._atkLabel.runAction(spawnAction);
+                } else {
+                    this._hpLabel.runAction(spawnAction);
+                }
+
+            }
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
                 if (this._trainType == TRAIN_CARD_HP) {
@@ -363,12 +386,12 @@ var CardTrainLabel = cc.Layer.extend({
             cc.log(data);
 
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
             effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });
             that.addChild(effect, 10);
-
+            that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);
     },

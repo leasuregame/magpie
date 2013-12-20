@@ -28,6 +28,7 @@
 
 #include "cocos2d.h"
 #include "ExtensionMacros.h"
+#include "cocos2d_specifics.hpp"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT) && (CC_TARGET_PLATFORM != CC_PLATFORM_WP8)
 #include <string>
@@ -77,7 +78,7 @@ public:
      * @param versionFileUrl URL of version file. It should contain version code of new package.
      * @param storagePath The path to store downloaded resources.
      */
-    AssetsManager(const char* packageUrl = NULL, const char* versionFileUrl = NULL, const char* storagePath = NULL);
+    AssetsManager(const char* packageUrl = "", const char* versionFileUrl = "", const char* storagePath = "");
     
     virtual ~AssetsManager();
     
@@ -139,10 +140,30 @@ public:
      */
     unsigned int getConnectionTimeout();
     
+    /** @brief Initializes storage path.
+     */
+    void createStoragePath();
+    
+    /** @brief Destroys storage path.
+     */
+    void destroyStoragePath();
+    
     /* downloadAndUncompress is the entry of a new thread 
      */
     friend void* assetsManagerDownloadAndUncompress(void*);
     friend int assetsManagerProgressFunc(void *, double, double, double, double);
+    
+    /* @brief To access within scripting environment
+     */
+    static AssetsManager* create(
+                                 const char* packageUrl,
+                                 const char* versionFileUrl,
+                                 const char* storagePath,
+                                 jsval jsThisObj,
+                                 jsval errorCallback,
+                                 jsval progressCallback,
+                                 jsval successCallback
+    );
     
 protected:
     bool downLoad();
@@ -195,6 +216,8 @@ private:
     unsigned int _connectionTimeout;
     
     AssetsManagerDelegateProtocol *_delegate; // weak reference
+    
+    bool _shouldDeleteDelegateWhenExit;
 };
 
 class AssetsManagerDelegateProtocol

@@ -773,13 +773,13 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         var constants = exports.constants = {};
 
         constants.TYPES = {
-            uInt32: 0,
-            sInt32: 0,
-            int32: 0,
-            double: 1,
-            string: 2,
-            message: 2,
-            float: 5
+            "uInt32": 0,
+            "sInt32": 0,
+            "int32": 0,
+            "double": 1,
+            "string": 2,
+            "message": 2,
+            "float": 5
         };
 
     })('undefined' !== typeof protobuf ? protobuf : module.exports, this);
@@ -869,8 +869,8 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return n;
         };
 
-        Codec.encodeFloat = function (float) {
-            float32Array[0] = float;
+        Codec.encodeFloat = function (f) {
+            float32Array[0] = f;
             return uInt8Array;
         };
 
@@ -886,8 +886,8 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return float32Array[0];
         };
 
-        Codec.encodeDouble = function (double) {
-            float64Array[0] = double;
+        Codec.encodeDouble = function (d) {
+            float64Array[0] = d;
             return uInt8Array.subarray(0, 8);
         };
 
@@ -1288,13 +1288,13 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                 case 'sInt32' :
                     return codec.decodeSInt32(getBytes());
                 case 'float' :
-                    var float = codec.decodeFloat(buffer, offset);
+                    var f = codec.decodeFloat(buffer, offset);
                     offset += 4;
-                    return float;
+                    return f;
                 case 'double' :
-                    var double = codec.decodeDouble(buffer, offset);
+                    var d = codec.decodeDouble(buffer, offset);
                     offset += 8;
-                    return double;
+                    return d;
                 case 'string' :
                     var length = codec.decodeUInt32(getBytes());
 

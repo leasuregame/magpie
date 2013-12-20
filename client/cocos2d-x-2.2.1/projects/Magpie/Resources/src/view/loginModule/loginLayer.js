@@ -16,7 +16,7 @@ var ACCOUNT_REG = /^[\w+-]{6,50}$/;
 var PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/;
 var EMPTY_SPACE_REG = /\s+/g;
 var CHINESE_REG = /^[\u4e00-\u9fa5]{1,6}$/;
-var NICKNAME_REG = /^[0-9\u4e00-\u9fa5]{1,6}$/;
+var NICKNAME_REG = /^[a-zA-Z0-9\u4e00-\u9fa5]{1,6}$/;
 
 var LoginLayer = cc.Layer.extend({
     _loginLayerFit: null,
@@ -54,10 +54,6 @@ var LoginLayer = cc.Layer.extend({
         user = gameData.user;
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
-
-        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect36, this);
-        bgEffect.setPosition(this._loginLayerFit.bgEffectPoint);
-        this.addChild(bgEffect);
 
         this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
@@ -200,10 +196,7 @@ var LoginLayer = cc.Layer.extend({
             if (type == 1) {
                 cc.Director.getInstance().replaceScene(MainScene.getInstance());
             } else if (type == 2) {
-                //that.getParent().switchLayer(NewPlayerLayer);
-                var newPlayerLayer = NewPlayerLayer.create();
-                that.addChild(newPlayerLayer);
-                that._loginFrame.setVisible(false);
+                that.getParent().switchTo(NewPlayerLayer.create());
             }
         });
     },
@@ -212,11 +205,7 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer _onClickRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._loginFrame.setVisible(false);
-
-        var registerLayer = RegisterLayer.create();
-        this.addChild(registerLayer, 1);
+        this.getParent().switchTo(RegisterLayer.create());
     }
 });
 

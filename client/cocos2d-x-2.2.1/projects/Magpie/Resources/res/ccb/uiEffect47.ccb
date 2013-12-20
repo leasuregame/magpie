@@ -45,7 +45,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>res/effect/uiEffect/up120.png</string>
+										<string>res/effect/uiEffect/up165.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -63,7 +63,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>res/effect/uiEffect/up121.png</string>
+										<string>res/effect/uiEffect/up166.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -512,7 +512,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>res/effect/uiEffect/up120.png</string>
+							<string>res/effect/uiEffect/up165.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -522,7 +522,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up120.png</string>
+							<string>res/effect/uiEffect/up166.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -969,7 +969,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.20000000298023224</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_pop_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

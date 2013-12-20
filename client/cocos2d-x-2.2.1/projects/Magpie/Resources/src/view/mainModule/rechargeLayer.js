@@ -88,7 +88,7 @@ var RechargeLayer = cc.Layer.extend({
 
         var shopLayer = ShopLayer.create();
         shopLayer.switchLayer(VipLayer);
-        MainScene.getInstance().switch(shopLayer);
+        MainScene.getInstance().switchTo(shopLayer);
     }
 });
 

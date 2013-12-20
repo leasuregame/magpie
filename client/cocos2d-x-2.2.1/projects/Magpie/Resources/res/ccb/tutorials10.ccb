@@ -680,8 +680,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.93973320722579956</real>
-										<real>0.88540041446685791</real>
+										<real>0.80000001192092896</real>
+										<real>0.80000001192092896</real>
 									</array>
 								</dict>
 								<dict>
@@ -698,8 +698,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>1.8018301725387573</real>
-										<real>1.7945098876953125</real>
+										<real>1.7999999523162842</real>
+										<real>1.7999999523162842</real>
 									</array>
 								</dict>
 							</array>
@@ -1906,7 +1906,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>主人。现在，让众神仙上阵吧！！</string>
+								<string>主人，现在，
+让我们的神仙上阵吧！
+我已隐约感觉到召唤的这两位神仙，
+在一定程度上已具备了极品的特质。
+哦，耶！</string>
 							</dict>
 						</array>
 					</dict>
@@ -2225,8 +2229,6 @@
 								<string>res/effect/uiEffect/up72.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

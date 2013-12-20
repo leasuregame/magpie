@@ -505,7 +505,9 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-                    effect26Node.setScaleY(lz.getDistance(attackerLocate, targetLocate) / 960);
+                    var k = lz.getDistance(attackerLocate, targetLocate) / 960;
+                    effect26Node.setScaleX(k);
+                    effect26Node.setScaleY(k);
                     effect26Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
 
                     that.scheduleOnce(function () {

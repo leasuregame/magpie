@@ -16,6 +16,7 @@ var UPDATE_POWER_TIME_INTERVAL = 2;
 var UPDATE_POWER_TIME = 600000;
 var UPDATE_POWER_VALUE = 5;
 var OVER_NOVICE_STEP = 17;
+var LOTTERY_ENOUGH = 200;
 
 var Player = Entity.extend({
     _id: 0,             // 数据库id
@@ -61,6 +62,7 @@ var Player = Entity.extend({
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
+        this.on("energyChange", this._energyChangeEvent);
 
         this._load();
         this.update(data);
@@ -101,6 +103,7 @@ var Player = Entity.extend({
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
+        this.set("vip", data.vip);
         this.set("name", data.name);
         this.set("lv", data.lv);
         this.set("exp", data.exp);
@@ -110,13 +113,12 @@ var Player = Entity.extend({
         this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
         this.set("energy", data.energy);
-        this.set("vip", data.vip);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
 
         gameData.clock.init(data.serverTime);
-        gameData.cardList.init(data.cards);
+        gameData.cardList.init(data.cards, data.cardsCount);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
         gameData.pass.init(data.pass);
@@ -133,7 +135,6 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
-
     },
 
     updatePower: function () {
@@ -170,6 +171,16 @@ var Player = Entity.extend({
         gameGuide.updateGuide();
     },
 
+    isFullLv: function () {
+        cc.log("Player isFullLv");
+
+        if (this._lv == this._maxLv) {
+            return true;
+        }
+
+        return false;
+    },
+
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
 
@@ -188,6 +199,15 @@ var Player = Entity.extend({
         }
 
         gameMark.updateGoldRewardMark(false);
+    },
+
+    _energyChangeEvent: function () {
+        cc.log("Player _energyChangeEvent");
+        if (this._energy >= LOTTERY_ENOUGH) {
+            gameMark.updateLotteryMark(true);
+        } else {
+            gameMark.updateLotteryMark(false);
+        }
     },
 
     getAbility: function () {

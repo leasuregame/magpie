@@ -113,7 +113,7 @@ var LineUpLabel = cc.Layer.extend({
             gameGuide.set("card3Guide", false);
         }
 
-        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
+        MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP));
 
         if (noviceTeachingLayer.isNoviceTeaching()) {
             noviceTeachingLayer.clearAndSave();

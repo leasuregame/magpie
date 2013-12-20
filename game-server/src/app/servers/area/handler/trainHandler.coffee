@@ -692,6 +692,9 @@ Handler::getCardBookEnergy = (msg, session, next) ->
     player.save()
     return next(null, {code: 200, msg: energy: ENERGY})
 
+Handler::getExchangeCards = (msg, session, next) ->
+  next()
+
 Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId

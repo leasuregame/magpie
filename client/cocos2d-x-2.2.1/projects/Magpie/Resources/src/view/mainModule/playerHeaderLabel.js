@@ -47,11 +47,16 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(nameLabel);
 
         var expBg = cc.Sprite.create(main_scene_image.exp_bg);
-        expBg.setPosition(cc.p(214, 36));
+        expBg.setPosition(cc.p(210, 36));
         this.addChild(expBg);
 
-        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(210, 36));
+        var url = main_scene_image.exp;
+        if (player.isFullLv()) {
+            url = main_scene_image.exp_full;
+        }
+
+        this._expProgress = Progress.create(null, url, 0, 0, true);
+        this._expProgress.setPosition(cc.p(214, 36));
         this.addChild(this._expProgress);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
@@ -90,11 +95,9 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._powerLabel);
 
         var vipLv = player.get("vip") || 0;
-
         var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
         vipSprite.setPosition(cc.p(410, 87));
         this.addChild(vipSprite);
-
 
         return true;
     },
@@ -104,7 +107,12 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        if(player.isFullLv()) {
+            this._expProgress.setAllValue(0, 0);
+        } else {
+            this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
+        }
+
         this._lvLabel.setString(player.get("lv"));
         this._goldLabel.setString(player.get("gold"));
         this._moneyLabel.setString(player.get("money"));

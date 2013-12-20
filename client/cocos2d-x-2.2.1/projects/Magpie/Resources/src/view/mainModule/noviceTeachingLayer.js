@@ -9,6 +9,10 @@
 
 var NOVICE_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 
+var CLICK_RIGHT_NOW = 0;
+var CLICK_WAITING = 1;
+var CLICK_ANY = 2;
+
 var NoviceTeachingLayer = LazyLayer.extend({
     _noviceTeachingLayerFit: null,
 
@@ -128,7 +132,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
                 node.setPosition(this._effectPoints[this._step]);
                 this.addChild(node);
                 this._effectNode = node;
-                if (this._clickType[this._rect] == 0) {
+                if (this._clickType[this._rect] == CLICK_RIGHT_NOW) {
                     this._rect = this._rectOrder[this._step];
                 } else {
                     var that = this;
@@ -227,6 +231,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         this._step = OVER_NOVICE_STEP;
         this._save();
         this.removeFromParent();
+        gameGuide.updateLotteryGuide();
     },
 
     /**

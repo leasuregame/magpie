@@ -87,7 +87,8 @@ var Activity = Entity.extend({
             if (data.code == 200) {
                 var power = data.msg.powerValue;
 
-                TipLayer.tipNoBg("体力: +" + power);
+                // TipLayer.tipNoBg("体力: +" + power);
+                TipLayer.tipWithIcon(lz.getGameGoodsIcon("power"), " +" + power);
                 gameData.player.add("power", power);
 
                 lz.dc.event("event_give_power");
@@ -105,8 +106,8 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tipNoBg("魔石: +" + data.msg.gold);
-
+                //TipLayer.tipNoBg("魔石: +" + data.msg.gold);
+                TipLayer.tipWithIcon(lz.getGameGoodsIcon("gold"), " +" + data.msg.gold);
                 gameData.player.add("gold", data.msg.gold);
                 that._changeTypeById(id, GOLD_RECEIVE);
 

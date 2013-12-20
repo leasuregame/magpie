@@ -20,6 +20,7 @@ var gameMark = {
     _powerReward: false,
     _goldReward: false,
     _recharge: false,
+    _lottery: false,
 
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
@@ -288,6 +289,24 @@ var gameMark = {
         cc.log("gameMark updateSystemMessageMark");
         this._systemMessage = mark;
         this.updateMessageMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getLotteryMark: function() {
+        cc.log("gameMark getLotteryMark");
+
+        if(!this._lottery) {
+            var energy = gameData.player.get("energy");
+            if(energy >= LOTTERY_ENOUGH) {
+                this._lottery = true;
+            }
+        }
+        return this._lottery;
+    },
+
+    updateLotteryMark: function(mark) {
+        cc.log("gameMark updateLotteryMark");
+        this._lottery = mark;
         MainScene.getInstance().updateMark();
     }
 

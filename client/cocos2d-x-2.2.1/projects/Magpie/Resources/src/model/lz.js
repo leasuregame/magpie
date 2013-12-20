@@ -186,59 +186,74 @@ var gameGoodsIcon = {
     "gold": "icon148",
     "power": "icon150",
     "elixir": "icon151",
-    "fragment": "icon145",
+    "fragment": "icon243",
     "energy": "icon154",
-    "skillPoint": "icon152"
+    "skillPoint": "icon152",
+    "spirit": "icon317",
+    "exp_card": "icon316",
+    "exp": "icon318"
 };
 
 var gameGoodsName = {
     "exp": {
         name: "经验",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp"]
     },
     "money": {
         name: "仙币",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["money"]
     },
     "gold": {
         name: "魔石",
-        color: cc.c3b(118, 238, 60)
+        color: cc.c3b(118, 238, 60),
+        icon: gameGoodsIcon["gold"]
     },
     "powerValue": {
         name: "体力",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["powerValue"]
     },
     "power": {
         name: "体力",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["power"]
     },
     "elixir": {
         name: "仙丹",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["elixir"]
     },
     "fragment": {
         name: "卡魂",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["fragment"]
     },
     "energy": {
         name: "活力点",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["energy"]
     },
     "skillPoint": {
         name: "技能点",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["skillPoint"]
     },
     "totalSpirit": {
         name: "灵气",
-        color: cc.c3b(118, 238, 60)
+        color: cc.c3b(118, 238, 60),
+        icon: gameGoodsIcon["spirit"]
     },
     "cards": {
         name: "经验元灵",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp_card"]
     },
     "exp_card": {
         name: "经验元灵",
-        color: cc.c3b(255, 239, 131)
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["exp_card"]
     },
     "freeCount": {
         name: "免费抽奖次数",
@@ -250,6 +265,10 @@ var gameGoodsName = {
     },
     "challengeCount": {
         name: "有奖竞技次数",
+        color: cc.c3b(255, 239, 131)
+    },
+    "cardsCount": {
+        name: "卡库位置",
         color: cc.c3b(255, 239, 131)
     }
 };
@@ -273,14 +292,16 @@ lz.getRewardString = function (data) {
                 if (cards.length > 0) {
                     str.push({
                         str: cards[0].lv + "级" + reward.name + " : " + 1,
-                        color: reward.color
+                        color: reward.color,
+                        icon: reward.icon
                     });
                 }
             } else {
                 if (key != "fragment" && data[key] > 0) {
                     str.push({
                         str: reward.name + " : " + data[key],
-                        color: reward.color
+                        color: reward.color,
+                        icon: reward.icon
                     });
                 }
             }
@@ -288,6 +309,10 @@ lz.getRewardString = function (data) {
     }
 
     return str;
+};
+
+lz.getGameGoodsIcon = function (name) {
+    return gameGoodsIcon[name];
 };
 
 lz.tipReward = function (reward) {
@@ -302,8 +327,12 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-
-                TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+               // var icon = lz.getGameGoodsIcon(key);
+                if (str.icon) {
+                    TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
+                } else {
+                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                }
             }
         })(key);
 

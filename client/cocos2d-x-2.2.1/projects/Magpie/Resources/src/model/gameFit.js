@@ -336,8 +336,12 @@ var fit4Iphone4 = {
             "titleIconPoint": cc.p(360, 920),
             "headLabelPoint": cc.p(360, 850),
             "fragmentBgIconPoint": cc.p(540, 794),
-            "fragmentIconPoint": cc.p(570, 794),
-            "fragmentLabelPoint": cc.p(500, 794),
+            "fragmentIconPoint": cc.p(340, 850),
+            "fragmentLabelPoint": cc.p(380, 850),
+            "moneyIconPoint": cc.p(130, 850),
+            "moneyLabelPoint": cc.p(170, 850),
+            "updateItemPoint": cc.p(560, 850),
+            "costLabelPoint": cc.p(560, 799),
             "selectStar5ItemPoint": cc.p(130, 794),
             "selectStar4ItemPoint": cc.p(300, 794),
             "backItemPoint": cc.p(100, 920),
@@ -352,7 +356,9 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 163),
             "bottomLabelPoint": cc.p(360, 136),
             "tipLabel3Point": cc.p(330, 136),
-            "fragmentIconPoint3": cc.p(520, 136)
+            "fragmentIconPoint3": cc.p(520, 136),
+            "basePoint": cc.p(220, 630),
+            "offsetHeight": 310
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1535,9 +1541,12 @@ var fit4Iphone5 = {
             "titleIconPoint": cc.p(320, 1096),
             "headLabelPoint": cc.p(320, 1026),
             "fragmentBgIconPoint": cc.p(500, 970),
-            "fragmentIconPoint": cc.p(530, 970),
-            "fragmentLabelPoint": cc.p(460, 970),
-            "selectStar5ItemPoint": cc.p(90, 970),
+            "fragmentIconPoint": cc.p(300, 1026),
+            "fragmentLabelPoint": cc.p(340, 1026),
+            "moneyIconPoint": cc.p(90, 1026),
+            "moneyLabelPoint": cc.p(130, 1026),
+            "updateItemPoint": cc.p(520, 1026),
+            "costLabelPoint": cc.p(520, 975),
             "selectStar4ItemPoint": cc.p(260, 970),
             "backItemPoint": cc.p(60, 1096),
             "tipIconPoint": cc.p(320, 122),
@@ -1551,7 +1560,9 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(0, 163),
             "bottomLabelPoint": cc.p(320, 136),
             "tipLabel3Point": cc.p(290, 136),
-            "fragmentIconPoint3": cc.p(480, 136)
+            "fragmentIconPoint3": cc.p(480, 136),
+            "basePoint": cc.p(180, 760),
+            "offsetHeight": 360
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),

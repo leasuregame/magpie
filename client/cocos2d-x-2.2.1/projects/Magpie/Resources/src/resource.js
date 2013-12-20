@@ -47,6 +47,7 @@ var main_scene_image = {
     bg17: main_scene_path + "bg17.png",
     bg18: main_scene_path + "bg18.png",
     bg19: main_scene_path + "bg19.png",
+    bg20: main_scene_path + "bg20.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
@@ -125,6 +126,7 @@ var main_scene_image = {
     edit3: main_scene_path + "edit3.png",
     edit4: main_scene_path + "edit4.png",
 
+    card_back: main_scene_path + "card_back.png",
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
     card_frame2: main_scene_path + "card_frame2.png",
@@ -617,6 +619,10 @@ var main_scene_image = {
     icon325: main_scene_path + "icon325.png",
     icon326: main_scene_path + "icon326.png",
     icon327: main_scene_path + "icon327.png",
+    icon328: main_scene_path + "icon328.png",
+    icon329: main_scene_path + "icon329.png",
+    icon330: main_scene_path + "icon330.png",
+    icon331: main_scene_path + "icon331.png",
 
 
     card30000_head1: main_scene_path + "card30000_head1.png",

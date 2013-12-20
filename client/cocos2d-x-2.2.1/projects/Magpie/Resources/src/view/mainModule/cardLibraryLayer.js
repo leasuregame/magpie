@@ -121,19 +121,20 @@ var CardLibraryLayer = cc.Layer.extend({
             var row = Math.floor(i / 4);
             var index = i % 4;
             var id = cardLibrary[i].id;
+            var type = gameData.cardLibrary.getTypeById(id);
+            if (type != CARD_NO_EXIST) {
+                var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
+                cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                menu.addChild(cardItem);
 
-            var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
-            cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
-            menu.addChild(cardItem);
+                this._cardItem[id] = cardItem;
+            } else {
+                var cardLockIcon = cc.Sprite.create(main_scene_image.card_back);
+                cardLockIcon.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 69 - 143 * row));
+                scrollViewLayer.addChild(cardLockIcon);
 
-            this._cardItem[id] = cardItem;
-
-            var cardLockIcon = cc.Sprite.create(main_scene_image.icon200);
-            cardLockIcon.setScale(0.6);
-            cardLockIcon.setPosition(cc.p(83, 24));
-            cardItem.addChild(cardLockIcon);
-
-            this._cardLockIcon[id] = cardLockIcon;
+                this._cardLockIcon[id] = cardLockIcon;
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
@@ -170,10 +171,11 @@ var CardLibraryLayer = cc.Layer.extend({
                     this._effect[key] = null;
                 }
 
-                if (this._cardLockIcon[key]) {
-                    this._cardLockIcon[key].removeFromParent();
-                    this._cardLockIcon[key] = null;
-                }
+//                if (this._cardLockIcon[key]) {
+//                    this._cardLockIcon[key].removeFromParent();
+//                    this._cardLockIcon[key] = null;
+//                }
+
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));
 
@@ -229,7 +231,7 @@ var CardLibraryLayer = cc.Layer.extend({
                         effect.removeFromParent();
                     });
                     lz.tipReward(data);
-                   // TipLayer.tipNoBg("活力点: +" + data);
+                    // TipLayer.tipNoBg("活力点: +" + data);
 
                     gameMark.updateCardLibraryMark(false);
                 }, id);

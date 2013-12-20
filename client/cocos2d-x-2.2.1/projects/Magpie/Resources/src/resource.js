@@ -653,6 +653,8 @@ var main_scene_image = {
     effect23: "res/ccb/effect23.ccbi",
     effect24: "res/ccb/effect24.ccbi",
     effect25: "res/ccb/effect25.ccbi",
+    effect26: "res/ccb/effect26.ccbi",
+    effect27: "res/ccb/effect27.ccbi",
 
     uiEffect1: "res/ccb/uiEffect1.ccbi",
     uiEffect2: "res/ccb/uiEffect2.ccbi",

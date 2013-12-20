@@ -226,7 +226,6 @@ var TournamentLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var that = this;
         gameData.tournament.sync(function () {
             cc.log("TournamentLayer update callback");
 
@@ -264,7 +263,6 @@ var TournamentLayer = cc.Layer.extend({
                     this.addChild(this._rewardEffect, 1);
                 }
             }
-
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
             this._rewardItem.setEnabled(false);

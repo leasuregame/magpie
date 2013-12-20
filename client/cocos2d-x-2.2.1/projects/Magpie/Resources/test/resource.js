@@ -7,6 +7,8 @@ if (typeof(navigator) != 'undefined') {
 var main_scene_path = "../res/main/";
 var effect_scene_path = "../res/effect/";
 var ccb_scene_path = "../res/ccb/";
+var test_scene_path = "../res/test/";
+
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
@@ -588,6 +590,12 @@ var main_scene_image = {
     p65: effect_scene_path + "effect/" + "p65.png",
     p66: effect_scene_path + "effect/" + "p66.png",
     p67: effect_scene_path + "effect/" + "p67.png",
+    p68: effect_scene_path + "effect/" + "p68.png",
+    p69: effect_scene_path + "effect/" + "p69.png",
+    p70: effect_scene_path + "effect/" + "p70.png",
+    p71: effect_scene_path + "effect/" + "p71.png",
+    p72: effect_scene_path + "effect/" + "p72.png",
+    p73: effect_scene_path + "effect/" + "p73.png",
     
     
 
@@ -972,6 +980,8 @@ var main_scene_image = {
     effect23: ccb_scene_path + "effect23.ccbi",
     effect24: ccb_scene_path + "effect24.ccbi",
     effect25: ccb_scene_path + "effect25.ccbi",
+    effect26: ccb_scene_path + "effect26.ccbi",
+    effect27: ccb_scene_path + "effect27.ccbi",
 
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
@@ -1044,6 +1054,38 @@ var main_scene_image = {
     startAnimation3: ccb_scene_path + "startAnimation3.ccbi",
     startAnimation4: ccb_scene_path + "startAnimation4.ccbi",
     startAnimation5: ccb_scene_path + "startAnimation5.ccbi",
+
+
+    //技能特效测试素材
+    1: test_scene_path + "res/" + "1.png",
+    2: test_scene_path + "res/" + "2.png",
+    3: test_scene_path + "res/" + "3.png",
+    4: test_scene_path + "res/" + "4.png",
+    5: test_scene_path + "res/" + "5.png",
+    6: test_scene_path + "res/" + "6.png",
+    7: test_scene_path + "res/" + "7.png",
+    8: test_scene_path + "res/" + "8.png",
+    9: test_scene_path + "res/" + "9.png",
+    10: test_scene_path + "res/" + "10.png",
+    11: test_scene_path + "res/" + "11.png",
+    12: test_scene_path + "res/" + "12.png",
+    13: test_scene_path + "res/" + "13.png",
+    14: test_scene_path + "res/" + "14.png",
+    15: test_scene_path + "res/" + "15.png",
+    16: test_scene_path + "res/" + "16.png",
+    17: test_scene_path + "res/" + "17.png",
+    18: test_scene_path + "res/" + "18.png",
+    19: test_scene_path + "res/" + "19.png",
+    20: test_scene_path + "res/" + "20.png",
+
+
+    //技能特效
+    texiao1: test_scene_path + "ccb/" + "texiao1.ccbi",
+    texiao2: test_scene_path + "ccb/" + "texiao2.ccbi",
+    texiao3: test_scene_path + "ccb/" + "texiao3.ccbi",
+    texiao4: test_scene_path + "ccb/" + "texiao4.ccbi",
+    texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
+
 };
 
 var main_scene_res = [

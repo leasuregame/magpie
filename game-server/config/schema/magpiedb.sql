@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `firstTime` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
+  `exchangeCards` VARCHAR(50) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -858,52 +858,6 @@
 								<dict>
 									<key>0</key>
 									<dict>
-										<key>position</key>
-										<dict>
-											<key>keyframes</key>
-											<array>
-												<dict>
-													<key>easing</key>
-													<dict>
-														<key>type</key>
-														<integer>1</integer>
-													</dict>
-													<key>name</key>
-													<string>position</string>
-													<key>time</key>
-													<real>0.83333331346511841</real>
-													<key>type</key>
-													<integer>3</integer>
-													<key>value</key>
-													<array>
-														<real>13</real>
-														<real>-30</real>
-													</array>
-												</dict>
-												<dict>
-													<key>easing</key>
-													<dict>
-														<key>type</key>
-														<integer>1</integer>
-													</dict>
-													<key>name</key>
-													<string>position</string>
-													<key>time</key>
-													<real>1</real>
-													<key>type</key>
-													<integer>3</integer>
-													<key>value</key>
-													<array>
-														<real>3</real>
-														<real>-45</real>
-													</array>
-												</dict>
-											</array>
-											<key>name</key>
-											<string>position</string>
-											<key>type</key>
-											<integer>3</integer>
-										</dict>
 										<key>rotation</key>
 										<dict>
 											<key>keyframes</key>
@@ -911,8 +865,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>2</integer>
 													</dict>
 													<key>name</key>
 													<string>rotation</string>
@@ -963,19 +919,14 @@
 								<key>properties</key>
 								<array>
 									<dict>
-										<key>baseValue</key>
-										<array>
-											<real>3</real>
-											<real>-45</real>
-										</array>
 										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>3</real>
-											<real>-45</real>
+											<real>13</real>
+											<real>-30</real>
 											<integer>0</integer>
 										</array>
 									</dict>

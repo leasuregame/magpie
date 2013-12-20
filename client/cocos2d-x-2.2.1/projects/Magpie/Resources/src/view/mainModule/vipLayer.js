@@ -187,7 +187,7 @@ var VipLayer = cc.Layer.extend({
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setPosition(cc.p(95, y + 82));
+            vipBoxDetailsItem.setPosition(cc.p(95, y + 92));
             menu.addChild(vipBoxDetailsItem);
 
             var buyItem = cc.MenuItemImage.createWithIcon(

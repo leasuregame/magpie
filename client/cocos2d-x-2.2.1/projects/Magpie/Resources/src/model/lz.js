@@ -154,7 +154,17 @@ lz.getStrWidth = function (str, fonName, fontSize) {
 };
 
 /*
- * 获取两个点之间地骗转角
+ * 获取两点间距离
+ * */
+lz.getDistance = function (p1, p2) {
+    var x = p1.x - p2.x;
+    var y = p1.y - p2.y;
+
+    return Math.sqrt(x * x + y * y);
+};
+
+/*
+ * 获取两个点之间的偏转角
  * */
 lz.getAngle = function (p1, p2) {
     return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
@@ -327,7 +337,7 @@ lz.tipReward = function (reward) {
         var fn = (function (key) {
             return function () {
                 var str = lz.getNameByKey(key);
-               // var icon = lz.getGameGoodsIcon(key);
+                // var icon = lz.getGameGoodsIcon(key);
                 if (str.icon) {
                     TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {

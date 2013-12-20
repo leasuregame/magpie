@@ -63,6 +63,7 @@ var Player = Entity.extend({
         this.off();
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
+        this.on("vipChange", this._vipChangeEvent);
 
         this._load();
         this.update(data);
@@ -208,6 +209,11 @@ var Player = Entity.extend({
         } else {
             gameMark.updateLotteryMark(false);
         }
+    },
+
+    _vipChangeEvent: function () {
+        cc.log("Player _vipChangeEvent");
+        gameData.shop.updateMaxCount();
     },
 
     getAbility: function () {

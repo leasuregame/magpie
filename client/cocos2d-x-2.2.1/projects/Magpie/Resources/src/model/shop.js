@@ -13,11 +13,15 @@
 
 
 var MAX_VIP_LEVEL = 12;
+var INIT_POWER_BUY_TIMES = 3;
+var INIT_CHALLENGE_BUY_COUNT = 10;
 
 var Shop = Entity.extend({
     _useVipBoxList: [],
     _powerBuyCount: 0,
     _challengeBuyCount: 0,
+    _powerBuyMaxCount: 0,
+    _challengeBuyMaxCount: 0,
 
     init: function (data) {
         cc.log("Shop init");
@@ -27,6 +31,7 @@ var Shop = Entity.extend({
         this._challengeBuyCount = 0;
 
         this.update(data);
+        this.updateMaxCount();
     },
 
     update: function (data) {
@@ -35,6 +40,15 @@ var Shop = Entity.extend({
         this.set("useVipBoxList", data.useVipBoxList);
         this.set("powerBuyCount", data.powerBuyCount);
         this.set("challengeBuyCount", data.challengeBuyCount);
+    },
+
+    updateMaxCount: function() {
+        cc.log("Shop updateMaxCount");
+
+        var vip = gameData.player.get("vip");
+        var privilegeTable = outputTables.vip_privilege.rows[vip];
+        this._powerBuyMaxCount = INIT_POWER_BUY_TIMES + privilegeTable.buy_power_count;
+        this._challengeBuyMaxCount = INIT_CHALLENGE_BUY_COUNT + privilegeTable.challenge_count;
     },
 
     getPaymentTypeList: function () {
@@ -300,7 +314,7 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                if(count <= product.count) {
+                if (count <= product.count) {
                     product.count = count;
                     product.tip = "仙币不足";
                 } else {
@@ -354,7 +368,9 @@ var Shop = Entity.extend({
                 obtain: table.obtain,
                 unit: "点",
                 count: 0,
-                tip: ""
+                tip: "",
+                timesTip: "",
+                maxBuyTimes: gameData.shop.get("powerBuyMaxCount")
             };
 
             product.count = gameData.shop.get("powerBuyCount");
@@ -370,16 +386,14 @@ var Shop = Entity.extend({
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
-                return product;
             } else {
-                if(count <= product.count) {
+                if (count <= product.count) {
                     product.count = count;
                     product.tip = "魔石不足";
                 } else {
                     product.tip = "已达购买次数上限，无法购买更多";
                 }
             }
-
             return product;
         },
 
@@ -391,7 +405,8 @@ var Shop = Entity.extend({
                 obtain: table.obtain,
                 unit: "次",
                 count: 0,
-                tip: ""
+                tip: "",
+                maxBuyTimes: gameData.shop.get("challengeBuyMaxCount")
             };
 
             product.count = gameData.shop.get("challengeBuyCount");
@@ -407,9 +422,8 @@ var Shop = Entity.extend({
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
-                return product;
             } else {
-                if(count <= product.count) {
+                if (count <= product.count) {
                     product.count = count;
                     product.tip = "魔石不足";
                 } else {
@@ -447,7 +461,7 @@ var Shop = Entity.extend({
                 product.count = 0;
                 return product;
             } else {
-                if(count <= product.count) {
+                if (count <= product.count) {
                     product.count = count;
                     product.tip = "魔石不足";
                 } else {

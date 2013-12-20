@@ -472,8 +472,8 @@
 										<key>value</key>
 										<array>
 											<integer>0</integer>
-											<integer>223</integer>
-											<integer>166</integer>
+											<integer>86</integer>
+											<integer>68</integer>
 										</array>
 									</dict>
 									<dict>
@@ -488,8 +488,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

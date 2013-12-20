@@ -81,6 +81,17 @@ module.exports =
     idx = _.random(0, len/5 - 1) * 5 + parseInt(star) - 1
     tableIds[idx]
 
+  randomCardIds: (stars, num) ->
+    utility.randArrayItems getCardIdsByStar(stars), num
+
+getCardIdsByStar = (stars) ->
+  items = table.getTable('cards')
+  .filter((id, row) -> id <= 500 and row.star in stars)
+  .map((item) -> parseInt(item.id))
+  .sort((x, y) -> x - y)
+  console.log '-a-a-', items
+  items
+
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)
   skill = cdata.skill_id_linktarget

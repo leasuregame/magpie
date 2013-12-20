@@ -252,7 +252,8 @@ var Player = (function(_super) {
         'resetDate',
         'firstTime',
         'levelReward',
-        'teachingStep'
+        'teachingStep',
+        'exchangeCards'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -336,7 +337,8 @@ var Player = (function(_super) {
             highLuckyCard: 1
         },
         levelReward: [],
-        teachingStep: 0
+        teachingStep: 0,
+        exchangeCards: []
     };
 
     Player.prototype.resetData = function() {
@@ -1156,7 +1158,8 @@ var Player = (function(_super) {
             signIn: utility.deepCopy(this.signIn),
             firstTime: this.hasFirstTime() ? this.firstTime : void 0,
             teachingStep: this.teachingStep,
-            cardsCount: this.cardsCount
+            cardsCount: this.cardsCount,
+            exchangeCards: this.exchangeCards
         };
     };
 

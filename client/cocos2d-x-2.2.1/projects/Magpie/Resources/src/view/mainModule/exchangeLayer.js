@@ -159,7 +159,7 @@ var ExchangeLayer = cc.Layer.extend({
     _update: function () {
         cc.log("ExchangeLayer _update");
 
-        if(this._label) {
+        if (this._label) {
             this._label.removeFromParent();
             this._label = null;
         }
@@ -240,6 +240,55 @@ var ExchangeLayer = cc.Layer.extend({
         }
     },
 
+    _showTip: function (star, cb) {
+        cc.log("ExchangeLayer _showTip");
+
+        var lazyLayer = LazyLayer.create();
+        this.addChild(lazyLayer);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgSprite.setContentSize(cc.size(500, 230));
+        bgSprite.setPosition(this._exchangeLayerFit.bgSpritePoint2);
+        lazyLayer.addChild(bgSprite);
+
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._exchangeLayerFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        lazyLayer.addChild(msgBgIcon);
+
+        var tip = cc.LabelTTF.create("是否确定兑换该卡牌？", "STHeitiTC-Medium", 22);
+        tip.setPosition(this._exchangeLayerFit.tipPoint);
+        lazyLayer.addChild(tip);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            function () {
+                cb();
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+
+        okItem.setPosition(this._exchangeLayerFit.okItemPoint);
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(this._exchangeLayerFit.closeItemPoint);
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        lazyLayer.addChild(menu);
+    },
+
     _onClickExchange: function (id, star) {
         return function () {
             cc.log("ExchangeLayer _onClickExchange");
@@ -253,12 +302,17 @@ var ExchangeLayer = cc.Layer.extend({
             }
 
             var that = this;
-            exchange.exchange(function (data) {
-                cc.log(data);
-                that.update();
+            this._showTip(
+                star,
+                function () {
+                    exchange.exchange(function (data) {
+                        cc.log(data);
+                        that.update();
 
-                TipLayer.tip("恭喜您，获得 " + data.get("name"));
-            }, id, star);
+                        TipLayer.tip("恭喜您，获得 " + data.get("name"));
+                    }, id, star);
+                }
+            );
         };
     },
 
@@ -275,7 +329,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         var that = this;
-        gameData.exchange.getExchangeCards(function(){
+        gameData.exchange.getExchangeCards(function () {
             that.update();
             that._update();
         });

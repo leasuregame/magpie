@@ -63,6 +63,7 @@ cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server
 
 tail -f ./logs/node-log-area-server-1.log
+tail -n 2000 ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 http://124.238.236.33:7003
 test, 123

@@ -46,7 +46,7 @@ var RegisterLayer = cc.Layer.extend({
         registerFrame.setPosition(this._registerLayerFit.registerFramePoint);
         this.addChild(registerFrame);
 
-
+        var that = this;
         this._accountEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._accountEditBox.setPosition(cc.p(0, 0));
@@ -66,19 +66,7 @@ var RegisterLayer = cc.Layer.extend({
              * @param {cc.EditBox} sender
              */
             editBoxEditingDidEnd: function (sender) {
-                var text = sender.getText();
-                var len = text.length;
-                if(!text) {
-                    TipLayer.tip("请输入账号");
-                } else if(len < 6 || len > 50) {
-                    TipLayer.tip("账号长度为6-50位");
-                } else if (CHINESE_REG.test(text)) {
-                    TipLayer.tip("账号不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text)) {
-                    TipLayer.tip("账号不能包含空格");
-                } else if (!(EMAIL_REG.test(text) || ACCOUNT_REG.test(text))) {
-                    TipLayer.tip("账号不能包含非法字符");
-                }
+                that._judgeAccount();
             }
         });
         this._accountEditBox.setFont("STHeitiTC-Medium", 30);
@@ -106,19 +94,7 @@ var RegisterLayer = cc.Layer.extend({
              * @param {cc.EditBox} sender
              */
             editBoxEditingDidEnd: function (sender) {
-                var text = sender.getText();
-                var len = text.length;
-                if(!text) {
-                    TipLayer.tip("请输入密码");
-                } else if(len < 6 || len > 20) {
-                    TipLayer.tip("密码长度为6-20位");
-                } else if (CHINESE_REG.test(text)) {
-                    TipLayer.tip("密码不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text)) {
-                    TipLayer.tip("密码不能包含空格");
-                } else if (!PASSWORD_REG.test(text)) {
-                    TipLayer.tip("密码不能包含非法字符");
-                }
+                that._judgePassword();
             }
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 30);
@@ -146,19 +122,7 @@ var RegisterLayer = cc.Layer.extend({
              * @param {cc.EditBox} sender
              */
             editBoxEditingDidEnd: function (sender) {
-                var text = sender.getText();
-                var len = text.length;
-                if(!text) {
-                    TipLayer.tip("请再次输入密码");
-                } else if(len < 6 || len > 20) {
-                    TipLayer.tip("密码长度为6-20位");
-                } else if (CHINESE_REG.test(text)) {
-                    TipLayer.tip("密码不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text)) {
-                    TipLayer.tip("密码不能包含空格");
-                } else if (!PASSWORD_REG.test(text)) {
-                    TipLayer.tip("密码不能包含非法字符");
-                }
+                that._judgePasswordAgain();
             }
         });
         this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
@@ -176,30 +140,70 @@ var RegisterLayer = cc.Layer.extend({
         return true;
     },
 
-    canRegister: function (account, password, passwordAgain) {
-        cc.log("User canRegister");
+    _judgeAccount: function () {
+        cc.log("User _judgeAccount");
 
-        if (!account) {
+        var text = this._accountEditBox.getText();
+        var len = text.length;
+        if (!text) {
             TipLayer.tip("请输入账号");
-            return false;
+        } else if (len < 6 || len > 50) {
+            TipLayer.tip("账号长度为6-50位");
+        } else if (CHINESE_REG.test(text)) {
+            TipLayer.tip("账号不能包含中文");
+        } else if (EMPTY_SPACE_REG.test(text)) {
+            TipLayer.tip("账号不能包含空格");
+        } else if (!(EMAIL_REG.test(text) || ACCOUNT_REG.test(text))) {
+            TipLayer.tip("账号不能包含非法字符");
+        } else {
+            return true;
         }
 
-        if (!password) {
+        return false;
+    },
+
+    _judgePassword: function () {
+        cc.log("User _judgePassword");
+
+        var text = this._passwordEditBox.getText();
+        var len = text.length;
+        if (!text) {
             TipLayer.tip("请输入密码");
-            return false;
+        } else if (len < 6 || len > 20) {
+            TipLayer.tip("密码长度为6-20位");
+        } else if (CHINESE_REG.test(text)) {
+            TipLayer.tip("密码不能包含中文");
+        } else if (EMPTY_SPACE_REG.test(text)) {
+            TipLayer.tip("密码不能包含空格");
+        } else if (!PASSWORD_REG.test(text)) {
+            TipLayer.tip("密码不能包含非法字符");
+        } else {
+            return true;
         }
 
-        if (!passwordAgain) {
+        return false;
+    },
+
+    _judgePasswordAgain: function () {
+        cc.log("User _judgePasswordAgain");
+
+        var text = this._passwordAgainEditBox.getText();
+        var len = text.length;
+        if (!text) {
             TipLayer.tip("请再次输入密码");
-            return false;
+        } else if (len < 6 || len > 20) {
+            TipLayer.tip("密码长度为6-20位");
+        } else if (CHINESE_REG.test(text)) {
+            TipLayer.tip("密码不能包含中文");
+        } else if (EMPTY_SPACE_REG.test(text)) {
+            TipLayer.tip("密码不能包含空格");
+        } else if (!PASSWORD_REG.test(text)) {
+            TipLayer.tip("密码不能包含非法字符");
+        } else {
+            return true;
         }
 
-        if (password != passwordAgain) {
-            TipLayer.tip("两次密码输入不一致");
-            return false;
-        }
-
-        return true;
+        return false;
     },
 
     _onClickRegister: function () {
@@ -209,22 +213,19 @@ var RegisterLayer = cc.Layer.extend({
 
         var user = gameData.user;
 
-        var account = this._accountEditBox.getText();
-        var password = this._passwordEditBox.getText();
-        var passwordAgain = this._passwordAgainEditBox.getText();
+        if (this._judgeAccount() && this._judgePassword() && this._judgePasswordAgain()) {
+            var account = this._accountEditBox.getText();
+            var password = this._passwordEditBox.getText();
 
-        if (!this.canRegister(account, password, passwordAgain)) {
-            return;
+            var that = this;
+            user.register(function (data) {
+                cc.log(data);
+
+                TipLayer.tip("注册成功，请登录游戏");
+                that.getParent().switchTo(LoginLayer.create());
+                that.removeFromParent();
+            }, account, password);
         }
-
-        var that = this;
-        user.register(function (data) {
-            cc.log(data);
-
-            TipLayer.tip("注册成功，请登录游戏");
-            that.getParent().switchTo(LoginLayer.create());
-            that.removeFromParent();
-        }, account, password);
     },
 
     _onClickBack: function () {

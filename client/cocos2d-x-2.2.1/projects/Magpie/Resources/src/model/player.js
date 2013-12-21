@@ -63,6 +63,7 @@ var Player = Entity.extend({
         this.off();
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
+        this.on("vipChange", this._vipChangeEvent);
 
         this._load();
         this.update(data);
@@ -75,7 +76,7 @@ var Player = Entity.extend({
         gameData.achievement.init();
         gameData.activity.init();
         gameData.speak.init();
-        gameData.exchange.init();
+       // gameData.exchange.init();
         gameData.payment.init();
 
         cc.log(this);
@@ -135,6 +136,8 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
         gameData.lottery.init(data.firstTime);
+        cc.log(data.exchangeCards);
+        gameData.exchange.init(data.exchangeCards)
     },
 
     updatePower: function () {
@@ -208,6 +211,11 @@ var Player = Entity.extend({
         } else {
             gameMark.updateLotteryMark(false);
         }
+    },
+
+    _vipChangeEvent: function () {
+        cc.log("Player _vipChangeEvent");
+        gameData.shop.updateMaxCount();
     },
 
     getAbility: function () {

@@ -23,33 +23,35 @@ var SELECT_STAR5_EXCHANGE_CARD = 2;
 var Exchange = Entity.extend({
     _exchangeCardList: [],
 
-    init: function () {
+    init: function (ids) {
         cc.log("Exchange inigt");
-
         this._exchangeCardList = [];
 
-        this._load();
+        this._updateList(ids);
     },
 
     _load: function () {
         cc.log("Exchange _load");
+        var list = [10, 14, 45, 34];
+        this._updateList(list);
 
-        var table = outputTables.cards.rows;
+    },
 
-        for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            if (table[i] && (table[i].star === 4 || table[i].star === 5)) {
-                this._exchangeCardList.push({
-                    id: i,
-                    card: Card.create({
-                        tableId: i,
-                        lv: 1,
-                        skillLv: 1
-                    })
+    _updateList: function (ids) {
+        cc.log("Exchange updateList: " + ids);
+
+        this._exchangeCardList = [];
+        for (var i = 0; i < ids.length; ++i) {
+            this._exchangeCardList.push({
+                id: i,
+                card: Card.create({
+                    tableId: ids[i],
+                    lv: 1,
+                    skillLv: 1
                 })
-            }
+            })
         }
 
-        this._exchangeCardList.sort(this._sort);
     },
 
     _sort: function (a, b) {
@@ -66,31 +68,10 @@ var Exchange = Entity.extend({
         }
     },
 
-    getExchangeCardList: function (type) {
+    getExchangeCardList: function () {
         cc.log("Exchange getExchangeCardList");
 
-        type = type || SELECT_ALL_EXCHANGE_CARD;
-
-        if (type == SELECT_ALL_EXCHANGE_CARD) {
-            return this._exchangeCardList;
-        }
-
-        var cardList = [];
-        var len = this._exchangeCardList.length;
-
-        for (var i = 0; i < len; ++i) {
-            var star = this._exchangeCardList[i].card.get("star");
-
-            if (type == SELECT_STAR4_EXCHANGE_CARD && star === 4) {
-                cardList.push(this._exchangeCardList[i]);
-            }
-
-            if (type == SELECT_STAR5_EXCHANGE_CARD && star == 5) {
-                cardList.push(this._exchangeCardList[i]);
-            }
-        }
-
-        return cardList;
+        return this._exchangeCardList;
     },
 
     canExchange: function (star) {
@@ -113,6 +94,30 @@ var Exchange = Entity.extend({
         }
 
         return true;
+    },
+
+    getExchangeCards: function (cb) {
+        cc.log("Exchange getExchangeCards");
+
+        var that = this;
+        lz.server.request("area.trainHandler.getExchangeCards",
+            {},
+            function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("getExchangeCards success");
+                    var ids = data.msg.ids;
+                    that._updateList(ids);
+                    gameData.player.add("money", -1000);
+                    cb();
+                } else {
+                    cc.log("getExchangeCards fail");
+                    TipLayer.tip(data.msg);
+                    cb();
+                }
+            }
+        );
     },
 
     exchange: function (cb, id, star) {

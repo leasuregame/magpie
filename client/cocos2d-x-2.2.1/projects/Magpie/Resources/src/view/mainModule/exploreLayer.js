@@ -76,24 +76,22 @@ var ExploreLayer = cc.Layer.extend({
         headIcon.setPosition(this._exploreLayerFit.headIconPoint);
         this.addChild(headIcon, 1);
 
+        var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
+
+        var url = "bg" + (chapter % 2 == 0 ? 4 : 3);
         for (var i = 0; i < 4; ++i) {
-            this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
+            this._mapLabel[i] = cc.Sprite.create(main_scene_image[url]);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
         }
 
-        var line1Icon = cc.Sprite.create(main_scene_image.icon96);
-        line1Icon.setAnchorPoint(cc.p(0.5, 0));
-        line1Icon.setPosition(this._exploreLayerFit.line1IconPoint);
-        this.addChild(line1Icon, 1);
-
-        var line2Icon = cc.Sprite.create(main_scene_image.icon96);
-        line2Icon.setRotation(180);
-        line2Icon.setAnchorPoint(cc.p(0.5, 0));
-        line2Icon.setPosition(this._exploreLayerFit.line2IconPoint);
-        this.addChild(line2Icon, 1);
+        var lineIcon = cc.Sprite.create(main_scene_image.icon96);
+        lineIcon.setRotation(180);
+        lineIcon.setAnchorPoint(cc.p(0.5, 0));
+        lineIcon.setPosition(this._exploreLayerFit.line2IconPoint);
+        this.addChild(lineIcon, 1);
 
         var descriptionBgIcon = cc.Sprite.create(main_scene_image.icon287);
         descriptionBgIcon.setAnchorPoint(cc.p(0, 0));
@@ -104,8 +102,6 @@ var ExploreLayer = cc.Layer.extend({
         var descriptionIcon = cc.Sprite.create(main_scene_image.icon216);
         descriptionIcon.setPosition(this._exploreLayerFit.descriptionIconPoint);
         this.addChild(descriptionIcon);
-
-        var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
         titleLabel.setColor(cc.c3b(255, 239, 131));
@@ -149,15 +145,13 @@ var ExploreLayer = cc.Layer.extend({
         );
         backItem.setPosition(this._exploreLayerFit.backItemPoint);
 
-        this._exploreItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon38,
+        this._exploreItem = cc.MenuItemImage.create(
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            main_scene_image.button1d,
             this._onClickExplore,
             this
         );
-        this._exploreItem.setScale(1.2);
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
 
 

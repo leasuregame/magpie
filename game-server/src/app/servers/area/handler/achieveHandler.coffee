@@ -33,7 +33,7 @@ Handler::getReward = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     data = table.getTableItem('achievement', achId)
-    player.increase('money', data.money)
+    player.increase('energy', data.energy)
     player.increase('gold', data.gold)
     setAchievementRewardStatus(player, achId)
     player.save()

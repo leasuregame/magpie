@@ -78,7 +78,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
-        var url = "bg" + (chapter / 2 == 0 ? 4 : 3);
+        var url = "bg" + (chapter % 2 == 0 ? 4 : 3);
         for (var i = 0; i < 4; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image[url]);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));

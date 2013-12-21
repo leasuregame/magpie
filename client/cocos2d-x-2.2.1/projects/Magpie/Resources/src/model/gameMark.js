@@ -25,20 +25,11 @@ var gameMark = {
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
 
-        var mark = this._activity;
-        if (mark == false) {
-            if (this.getSignInMark() == true) {
-                mark = true;
-            } else if (this.getGoldRewardMark() == true) {
-                mark = true;
-            } else if (this.getRechargeMark() == true) {
-                mark = true;
-            } else if (this.getPowerRewardMark() == true) {
-                mark = true;
-            }
+        if (!this._activity) {
+            this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() || this.getPowerRewardMark();
         }
-        this._activity = mark;
-        return mark;
+
+        return this._activity;
     },
 
     updateActivityMark: function (mark) {
@@ -292,19 +283,19 @@ var gameMark = {
         MainScene.getInstance().updateMark();
     },
 
-    getLotteryMark: function() {
+    getLotteryMark: function () {
         cc.log("gameMark getLotteryMark");
 
-        if(!this._lottery) {
+        if (!this._lottery) {
             var energy = gameData.player.get("energy");
-            if(energy >= LOTTERY_ENOUGH) {
+            if (energy >= LOTTERY_ENOUGH) {
                 this._lottery = true;
             }
         }
         return this._lottery;
     },
 
-    updateLotteryMark: function(mark) {
+    updateLotteryMark: function (mark) {
         cc.log("gameMark updateLotteryMark");
         this._lottery = mark;
         MainScene.getInstance().updateMark();

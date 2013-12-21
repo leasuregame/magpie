@@ -532,8 +532,8 @@
 										<key>value</key>
 										<array>
 											<array>
-												<real>0.17039307951927185</real>
-												<real>0.034555967897176743</real>
+												<real>0.80540347099304199</real>
+												<real>0.28462120890617371</real>
 												<real>0.0</real>
 												<real>0.89999997615814209</real>
 											</array>
@@ -630,6 +630,8 @@
 										<string>res/effect/effect/p15.png</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

@@ -66,33 +66,28 @@ var SignInLayer = cc.Layer.extend({
 
         this._index = 0;
 
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(this._signInLayerFit.bgSpriteSize);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg21);
         bgSprite.setPosition(this._signInLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
+
+        var topBgLabel = cc.Sprite.create(main_scene_image.icon332);
+        topBgLabel.setPosition(this._signInLayerFit.topBgLabelPoint);
+        this.addChild(topBgLabel);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
         titleLabel.setPosition(this._signInLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
-        this._turnLeftItem = cc.MenuItemImage.create(
-            main_scene_image.icon37,
-            main_scene_image.icon37,
-            this._onClickTurnLeft,
-            this
-        );
+        this._turnLeftItem = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftItem.setRotation(180);
         this._turnLeftItem.setScale(0.8);
         this._turnLeftItem.setPosition(this._signInLayerFit.turnLeftItemPoint);
+        this.addChild(this._turnLeftItem);
 
-        this._turnRightItem = cc.MenuItemImage.create(
-            main_scene_image.icon37,
-            main_scene_image.icon37,
-            this._onClickTurnRight,
-            this
-        );
+        this._turnRightItem = cc.Sprite.create(main_scene_image.icon37);
         this._turnRightItem.setScale(0.8);
         this._turnRightItem.setPosition(this._signInLayerFit.turnRightItemPoint);
+        this.addChild(this._turnRightItem);
 
         this._signInItem = cc.MenuItemImage.create(
             main_scene_image.button10,
@@ -128,8 +123,6 @@ var SignInLayer = cc.Layer.extend({
         this.addChild(spend);
 
         var menu = cc.Menu.create(
-            this._turnLeftItem,
-            this._turnRightItem,
             this._signInItem,
             this._remedySignInItem
         );
@@ -376,23 +369,6 @@ var SignInLayer = cc.Layer.extend({
         }
     },
 
-    _onClickTurnLeft: function () {
-        cc.log("SignInLayer _onClickTurnLeft");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._index = Math.min(this._index + 1, MAX_SIGN_IN_HISTORY - 1);
-        this.update();
-    },
-
-    _onClickTurnRight: function () {
-        cc.log("SignInLayer _onClickTurnRight");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._index = Math.max(this._index - 1, 0);
-        this.update();
-    },
 
     /**
      * when a touch finished
@@ -414,7 +390,7 @@ var SignInLayer = cc.Layer.extend({
         } else if (beganOffset.x - endOffset.x < -80) {
             this._index = MAX_SIGN_IN_HISTORY + Math.ceil(endOffset.x / 510) - 1;
         }
-
+        cc.log("index = " + this._index);
         this.update();
     },
 

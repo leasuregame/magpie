@@ -48,6 +48,7 @@ var main_scene_image = {
     bg18: main_scene_path + "bg18.png",
     bg19: main_scene_path + "bg19.png",
     bg20: main_scene_path + "bg20.png",
+    bg21: main_scene_path + "bg21.png",
 
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
@@ -610,6 +611,7 @@ var main_scene_image = {
     icon329: main_scene_path + "icon329.png",
     icon330: main_scene_path + "icon330.png",
     icon331: main_scene_path + "icon331.png",
+    icon332: main_scene_path + "icon332.png",
 
 
     card30000_head1: main_scene_path + "card30000_head1.png",

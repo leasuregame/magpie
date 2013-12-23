@@ -886,8 +886,9 @@ var fit4Iphone4 = {
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
-            "bgSpritePoint": cc.p(362, 477),
-            "titleLabelPoint": cc.p(360, 807),
+            "bgSpritePoint": cc.p(362, 462),
+            "topBgLabelPoint": cc.p(368, 772),
+            "titleLabelPoint": cc.p(360, 817),
             "turnLeftItemPoint": cc.p(87, 592),
             "turnRightItemPoint": cc.p(631, 592),
             "signInItemPoint": cc.p(560, 367),
@@ -2096,7 +2097,8 @@ var fit4Iphone5 = {
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
-            "bgSpritePoint": cc.p(322, 565),
+            "bgSpritePoint": cc.p(322, 550),
+            "topBgLabelPoint": cc.p(328, 860),
             "titleLabelPoint": cc.p(320, 905),
             "turnLeftItemPoint": cc.p(47, 680),
             "turnRightItemPoint": cc.p(591, 680),

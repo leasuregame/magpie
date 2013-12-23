@@ -13,7 +13,7 @@ var mysql = require('mysql');
 
 var getDatabase = function(key,env) {
 
-    var mysqlConfig = require('../config/mysql1.json');
+    var mysqlConfig = require('../config/mysql.json');
 
     var val = mysqlConfig;
     if (mysqlConfig[env] && mysqlConfig[env][key]) {

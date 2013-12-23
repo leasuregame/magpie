@@ -17,18 +17,6 @@
 	overflow: scroll;
 	outline: none;
 }
-#voiceBtn {
-  width: 20px;
-  color: transparent;
-  background-color: transparent;
-  transform: scale(2.0, 2.0);
-  -webkit-transform: scale(2.0, 2.0);
-  -moz-transform: scale(2.0, 2.0);
-  border: transparent;
-  cursor: pointer;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
 
 div[data-role="editor-toolbar"] {
   -webkit-user-select: none;
@@ -39,4 +27,10 @@ div[data-role="editor-toolbar"] {
 
 .dropdown-menu a {
   cursor: pointer;
+}
+
+.content {
+  padding: 20px;
+  font-family:  "Microsoft YaHei","微软雅黑",helvetica,arial,verdana,tahoma,sans-serif;
+  font-size: 18px;
 }

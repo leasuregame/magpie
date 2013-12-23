@@ -2,13 +2,14 @@ var http = require('http');
 var url = require('url');
 var path = require('path');
 var read = require('fs').readFileSync;
+var write = require('fs').writeFileSync;
 var ejs = require('ejs');
-var htmlStr = require('html-strings');
+var qs = require('querystring');
 
 var HOST = '127.0.0.1';
 var PORT = '8001'
 
-var notice_path = './static/notice.html'
+var notice_path = './static/notice.ejs'
 
 function readFile(name) {
   return read(path.join(__dirname, name), 'utf8').replace(/\r/g, '');
@@ -17,7 +18,7 @@ function readFile(name) {
 http.createServer(function(req, res) {
 	var pathname = url.parse(req.url).pathname;
 
-	if (!pathname in routes){
+	if (!pathname in routes || pathname == '/favicon.ico'){
 		res.writeHead(404, 'Not Found');
 		return res.end();
 	}
@@ -33,7 +34,8 @@ console.log('notice server runing on http:'+HOST+':'+PORT);
 
 var index = function(req, res) {
 	var html = ejs.render(readFile('index.html'), {
-		text: 'notice content'
+		text: 'notice content',
+		filename: path.join(__dirname, 'index.html')
 	});
 	res.write(html);
 	res.end();
@@ -41,7 +43,7 @@ var index = function(req, res) {
 
 var admin = function(req, res) {
 	res.write(ejs.render(readFile('/static/admin.ejs'), {
-		text: htmlStr.escape(readFile('/static/notice.ejs')),
+		text: readFile('/static/notice.ejs'),
 		filename: path.join(__dirname, 'static', 'admin.ejs')
 	}));
 	res.end();
@@ -52,10 +54,13 @@ var saveNotice = function(req, res) {
 		res.writeHead(401, 'Forbidden')
 		return res.end();
 	}
-	console.log(req);
-
-	//fs.writeFileSync(notice_path, text);
-	res.end();
+	var body = '';
+	req.on('data', function(data) {
+		body += data;
+		write(notice_path, qs.parse(body).content);
+		res.end();
+	});
+	console.log(body);	
 };
 
 var static = function(req, res) {
@@ -65,6 +70,7 @@ var static = function(req, res) {
 };
 
 var routes = {
+	'/': index,
 	'/notice': index,
 	'/admin': admin,
 	'/notice/save': saveNotice,

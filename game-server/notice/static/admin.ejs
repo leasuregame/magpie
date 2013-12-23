@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
   <head>
     <meta charset="utf-8">
     <title>公告编辑</title>
@@ -21,7 +21,7 @@
 	<div id="alerts"></div>
     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
       <div class="btn-group">
-        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="文本"><i class="icon-font"></i><b class="caret"></b></a>
+        <a id="fontTarget" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="文本"><i class="icon-font"></i><b class="caret"></b></a>
           <ul class="dropdown-menu">
           </ul>
         </div>
@@ -52,6 +52,9 @@
         <a class="btn btn-default" data-edit="justifyfull" title="两端对齐 (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
       </div>
       <div class="btn-group">
+        <a class="btn btn-default" data-edit="inserthorizontalrule" title="insert hr"><i class="icon-minus"></i></a>
+      </div>
+      <div class="btn-group">
 		  <a class="btn dropdown-toggle" data-toggle="dropdown" title="链接"><i class="icon-link"></i></a>
 		    <div class="dropdown-menu input-append">
 			    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
@@ -72,7 +75,6 @@
     </div>
 
     <div id="editor">
-      <span>Go Ahead...</span>
       <% include notice %>
     </div>
     <br/>
@@ -90,7 +92,7 @@
       var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
             'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
             'Times New Roman', 'Verdana'],
-            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+            fontTarget = $("#fontTarget").siblings('.dropdown-menu');
       $.each(fonts, function (idx, fontName) {
           fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
       });
@@ -120,10 +122,13 @@
 
     $('#btn-save').on('click', function(e){
       e.preventDefault();
-
-      $.post('/notice/save', {
-        
-      })
+      var data = {
+        content: $('#editor').html()
+      };
+      console.log(data);
+      $.post('/notice/save', data, function(data, status) {
+        console.log(data, status);
+      });
     });
 
   });

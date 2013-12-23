@@ -51,15 +51,17 @@ var MonthLabel = cc.Node.extend({
             var flag = monthMark.mark >> i & 1;
             var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
             var url = "icon186";
+            var color = cc.c3b(112,100,70);
             if (i < nowDay && this._index == 0) {
                 url = "icon305";
+                color = cc.c3b(147, 97, 61);
             }
             var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);
             this.addChild(label);
 
             this._dayLabel[i] = cc.LabelTTF.create(i + 1, "STHeitiTC-Medium", 40);
-            this._dayLabel[i].setColor(cc.c3b(255, 252, 175));
+            this._dayLabel[i].setColor(color);
             this._dayLabel[i].setPosition(point);
             this.addChild(this._dayLabel[i]);
 

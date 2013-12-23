@@ -904,7 +904,7 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(510, 366),
             "scrollViewPoint": cc.p(105, 402),
             "signInCountIconPoint": cc.p(235, 367),
-            "signInCountLabelPoint": cc.p(330, 367),
+            "signInCountLabelPoint": cc.p(325, 367),
             "pointBasePoint": cc.p(160, 282),
             "pointOffsetX": 100,
             "rewardLabelPoint": cc.p(360, 202),
@@ -1184,7 +1184,7 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 680),
             "scrollViewPoint": cc.p(40, 122),
             "bgSprite2Point": cc.p(360, 492),
-            "okItemPoint": cc.p(360, 272),
+            "okItemPoint": cc.p(360, 232),
             "failLabelPoint": cc.p(360, 572),
             "tipLabelPoint": cc.p(360, 512),
             "paymentItem2Point": cc.p(260, 432),
@@ -1196,7 +1196,11 @@ var fit4Iphone4 = {
                 elixir: cc.p(430, 562),
                 fragments: cc.p(210, 462),
                 exp_card: cc.p(430, 462)
-            }
+            },
+            "scrollViewLayerRect2":cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
         },
         "vipPrivilegeLayer": {
             "bgLayerPoint": cc.p(40, 88),
@@ -2115,7 +2119,7 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(510, 366),
             "scrollViewPoint": cc.p(65, 490),
             "signInCountIconPoint": cc.p(195, 455),
-            "signInCountLabelPoint": cc.p(290, 455),
+            "signInCountLabelPoint": cc.p(285, 455),
             "pointBasePoint": cc.p(120, 370),
             "pointOffsetX": 100,
             "rewardLabelPoint": cc.p(320, 290),
@@ -2396,7 +2400,7 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 822),
             "scrollViewPoint": cc.p(0, 144),
             "bgSprite2Point": cc.p(320, 580),
-            "okItemPoint": cc.p(320, 360),
+            "okItemPoint": cc.p(320, 320),
             "failLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItem2Point": cc.p(220, 520),
@@ -2408,7 +2412,11 @@ var fit4Iphone5 = {
                 elixir: cc.p(390, 650),
                 fragments: cc.p(170, 550),
                 exp_card: cc.p(390, 550)
-            }
+            },
+            "scrollViewLayerRect2":cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
         },
         "vipPrivilegeLayer": {
             "bgLayerPoint": cc.p(0, 88),

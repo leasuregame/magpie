@@ -109,7 +109,7 @@ var SignInLayer = cc.Layer.extend({
         this._remedySignInItem.setScale(0.8);
         this._remedySignInItem.setPosition(this._signInLayerFit.remedySignInItemPoint);
 
-        var specialOfferIcon = cc.LayerColor.create(cc.c4b(66, 31, 28, 255), 108, 30);
+        var specialOfferIcon = cc.LayerColor.create(cc.c4b(153, 84, 50, 255), 108, 30);
         specialOfferIcon.setPosition(this._signInLayerFit.specialOfferIconPoint);
         this.addChild(specialOfferIcon);
 

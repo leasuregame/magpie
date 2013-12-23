@@ -569,7 +569,6 @@ Handler::useElixir = (msg, session, next) ->
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
-    player.useElixirForCard(cardId, elixir)
     
     _jobs = []
     playerData = player.getSaveData()

@@ -74,7 +74,6 @@ var addEvents = function(player) {
     //     if (exp >= upgradeInfo.exp) {
     //         player.increase('lv');
     //         // 清空每级仙丹使用详细信息
-    //         player.elixirPerLv = {};
     //         player.set('exp', exp - upgradeInfo.exp);
     //         // 获得升级奖励
     //         player.increase('money', upgradeInfo.money);
@@ -238,7 +237,6 @@ var Player = (function(_super) {
         'fragments',
         'energy',
         'elixir',
-        'elixirPerLv',
         'spiritor',
         'spiritPool',
         'signIn',
@@ -306,7 +304,6 @@ var Player = (function(_super) {
         fragments: 0,
         energy: 0,
         elixir: 0,
-        elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
             lv: 1,
@@ -1025,16 +1022,6 @@ var Player = (function(_super) {
             return Number.MAX_VALUE;
         }
         return elixirLimit(this.lv);
-    };
-
-    Player.prototype.useElixirForCard = function(cardId, elixir) {
-        var epl = utility.deepCopy(this.elixirPerLv);
-        if (_.has(epl, cardId)) {
-            epl[cardId] += elixir;
-        } else {
-            epl[cardId] = elixir;
-        }
-        this.elixirPerLv = epl;
     };
 
     Player.prototype.getRanking = function() {

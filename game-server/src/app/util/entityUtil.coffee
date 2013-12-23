@@ -41,7 +41,6 @@ module.exports =
     while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
-      player.elixirPerLv = {}
       player.decrease 'exp', upgradeInfo.exp
       updateFriendCount(player)
 

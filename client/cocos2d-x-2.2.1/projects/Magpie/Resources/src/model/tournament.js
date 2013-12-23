@@ -41,7 +41,6 @@ var Tournament = Entity.extend({
         this.set("canGetReward", data.canGetReward);
         this.set("notCanGetReward", data.notCanGetReward);
 
-
         if (data.rankList) {
             this._rankList = [];
 

@@ -290,7 +290,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.runAction(selectFrameAction);
 
         this.scheduleOnce(function () {
-            // TipLayer.tipNoBg(this._str);
             lz.tipReward(this._str);
             this._str = {};
 

@@ -9,20 +9,17 @@
 #ifndef __WEB_LAYER_OC__
 #define __WEB_LAYER_OC__
 
-#include "cocos2d.h"
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
-USING_NS_CC;
-
-@interface WebLayerOC : NSObject<UIWebViewDelegate, UIAlertViewDelegate>
+@interface WebLayerOC : NSObject<UIWebViewDelegate>
 {
     UIView * _uiView;
     UIWebView * _uiWebView;
     NSString * _url;
 }
 
-//- (id) init :(const char *)url :(const CCRect *)rect;
+- (id) init :(NSString * )url :(CGRect)rect;
 - (void) load;
 - (void) close;
 

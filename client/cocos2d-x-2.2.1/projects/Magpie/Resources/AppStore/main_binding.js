@@ -264,3 +264,5 @@ director.runWithScene(loginScene);
 //
 //updateObject.deleteVersion();
 //updateObject.update();
+
+lz.WebLayer.create("http://192.168.1.2/Announcement.html", cc.rect(0, 0, 640, 300));

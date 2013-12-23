@@ -7,10 +7,16 @@
 //
 
 #include "WebLayer.h"
+#include "WebLayerOC.h"
 
-WebLayer::WebLayer(const char * url, const CCRect * rect)
+WebLayer::WebLayer(const char * url, const CCRect rect)
 {
-//    _webLayerOC = [[WebLayerOC alloc] init:url :rect];
+    NSString * _url = [NSString stringWithUTF8String:url];
+    
+    CCPoint point = rect.origin;
+    CCSize size = rect.size;
+    
+    _webLayerOC = [[WebLayerOC alloc] init:_url :CGRectMake(point.x, point.y, size.width, size.height)];
 }
 
 WebLayer::~WebLayer()
@@ -23,7 +29,7 @@ void WebLayer::close()
     [_webLayerOC close];
 }
 
-WebLayer * WebLayer::create(const char * url, const CCRect * rect)
+WebLayer * WebLayer::create(const char * url, const CCRect rect)
 {
     return new WebLayer(url, rect);
 }

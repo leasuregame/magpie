@@ -358,7 +358,12 @@ var fit4Iphone4 = {
             "tipLabel3Point": cc.p(330, 136),
             "fragmentIconPoint3": cc.p(520, 136),
             "basePoint": cc.p(220, 630),
-            "offsetHeight": 310
+            "offsetHeight": 310,
+            "bgSpritePoint2": cc.p(360, 485),
+            "msgBgIconPoint": cc.p(360, 515),
+            "tipPoint": cc.p(360, 515),
+            "okItemPoint": cc.p(270, 429),
+            "closeItemPoint": cc.p(450, 429)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1562,7 +1567,12 @@ var fit4Iphone5 = {
             "tipLabel3Point": cc.p(290, 136),
             "fragmentIconPoint3": cc.p(480, 136),
             "basePoint": cc.p(180, 760),
-            "offsetHeight": 360
+            "offsetHeight": 360,
+            "bgSpritePoint2": cc.p(320, 573),
+            "msgBgIconPoint": cc.p(320, 608),
+            "tipPoint": cc.p(320, 608),
+            "okItemPoint": cc.p(230, 522),
+            "closeItemPoint": cc.p(410, 522)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),

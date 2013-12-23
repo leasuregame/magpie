@@ -396,10 +396,11 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _toNext");
 
         var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
+        passEffect.controller.goldLayer.setString(this._reward.through_reward.money);
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
-        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
+        //TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
 
         var that = this;
 

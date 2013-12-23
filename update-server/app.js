@@ -24,14 +24,19 @@ var server = http.createServer(function(req, res) {
             filename = 'small.zip';
         }
 
-        var filepath = path.join(__dirname, 'build', filename);
-        var mimetype = mime.lookup(filepath);
-        res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-        res.setHeader('Content-type', mimetype);
+        res.writeHead(302, {
+            location: 'https://github.com/visionmedia/ejs/archive/master.zip'
+        });
+        res.end();
 
-        var file = fs.createReadStream(filepath);
-        res.writeHead(200, 'ok');
-        file.pipe(res);
+        // var filepath = path.join(__dirname, 'build', filename);
+        // var mimetype = mime.lookup(filepath);
+        // res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+        // res.setHeader('Content-type', mimetype);
+
+        // var file = fs.createReadStream(filepath);
+        // res.writeHead(200, 'ok');
+        // file.pipe(res);
     } else if (method == 'version' && version == '') {
         res.write(CURR_VERSION);
         res.end();

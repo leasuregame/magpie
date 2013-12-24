@@ -279,9 +279,9 @@ var TournamentLayer = cc.Layer.extend({
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
         var playerId = gameData.player.get("id");
-        var own = len;
+        var index = 0;
 
-        var scrollViewHeight = len * 135 + 80;
+        var scrollViewHeight = len * 135 + 55;
         if (scrollViewHeight < this._tournamentLayerFit.scrollViewHeight) {
             scrollViewHeight = this._tournamentLayerFit.scrollViewHeight;
         }
@@ -290,8 +290,15 @@ var TournamentLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             if (playerId == this._rankList[i].playerId) {
-                own = i;
+                index = Math.min(i + 1, len - 1);
             }
+
+            if (i == 10) {
+                var line = cc.Sprite.create(main_scene_image.icon296);
+                line.setPosition(cc.p(310, scrollViewHeight - 135 * i - 15));
+                scrollViewLayer.addChild(line, 2);
+            }
+
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
             scrollViewLayer.addChild(tournamentPlayerLabel);
 
@@ -299,12 +306,6 @@ var TournamentLayer = cc.Layer.extend({
                 tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
             } else {
                 tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
-            }
-
-            if (i == 9) {
-                var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, scrollViewHeight - 135 * (i + 1) - 15));
-                scrollViewLayer.addChild(line, 2);
             }
         }
 
@@ -316,10 +317,13 @@ var TournamentLayer = cc.Layer.extend({
 
         this.addChild(this._scrollView);
 
-        var offsetY = this._scrollView.minContainerOffset().y;
-        offsetY = Math.min(offsetY + own * 135, 0);
-        this._scrollView.setContentOffset(cc.p(0, offsetY));
+        var offsetY = 0 - (len - 1 - index) * 135;
+        if (index < 10) offsetY -= 55;
+        offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
+        this._scrollView.setContentOffset(cc.p(0,  offsetY));
     },
+
+
 
     _getPlayer: function (id) {
         var len = this._rankList.length;

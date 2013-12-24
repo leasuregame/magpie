@@ -280,8 +280,8 @@ var LotteryLayer = cc.Layer.extend({
 
     },
 
-    showCard: function () {
-        cc.log("LotteryLayer showCard");
+    ccbFnShowCard: function () {
+        cc.log("LotteryLayer ccbFnShowCard");
 
         this.update();
 
@@ -358,16 +358,16 @@ var LotteryLayer = cc.Layer.extend({
                 if (data) {
                     that._data = data;
 
-                    var highDoorPosition = that._lotteryLabel.controller.highDoor.getPosition();
-                    var lowDoorPosition = that._lotteryLabel.controller.lowDoor.getPosition();
+                    var highDoorPosition = that._lotteryLabel.controller.ccbHighDoor.getPosition();
+                    var lowDoorPosition = that._lotteryLabel.controller.ccbLowDoor.getPosition();
 
                     that._lotteryLabel.animationManager.runAnimationsForSequenceNamedTweenDuration(
                         "animation_2_" + level,
                         0
                     );
 
-                    that._lotteryLabel.controller.highDoor.setPosition(highDoorPosition);
-                    that._lotteryLabel.controller.lowDoor.setPosition(lowDoorPosition);
+                    that._lotteryLabel.controller.ccbHighDoor.setPosition(highDoorPosition);
+                    that._lotteryLabel.controller.ccbLowDoor.setPosition(lowDoorPosition);
                 } else {
                     LazyLayer.closeCloudLayer();
                 }

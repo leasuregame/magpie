@@ -274,29 +274,18 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log("TreasureHuntLayer _end");
 
         this.update();
-
-        var scaleAction1 = cc.ScaleTo.create(0.3, 1.2);
-        var scaleAction2 = cc.ScaleTo.create(0.3, 1);
-
-        var selectFrameAction = cc.Sequence.create(
-            scaleAction1.clone(),
-            scaleAction2.clone(),
-            scaleAction1.clone(),
-            scaleAction2.clone(),
-            scaleAction1,
-            scaleAction2
-        );
-
-        this._selectFrame.runAction(selectFrameAction);
-
-        this.scheduleOnce(function () {
-            // TipLayer.tipNoBg(this._str);
+        this._selectFrame.setVisible(false);
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect35, this);
+        effect.setPosition(this._selectFrame.getPosition());
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
             lz.tipReward(this._str);
-            this._str = {};
-
-            this._selectFrame.setVisible(false);
             this._treasureHuntItem.setEnabled(true);
-        }, 1.8);
+
+        });
+
+        this.addChild(effect);
+
     },
 
     _onClickTreasureHunt: function () {

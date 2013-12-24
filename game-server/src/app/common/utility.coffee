@@ -37,6 +37,21 @@ Utility =
     else # default
       return
 
+  randArrayItems: (arr, num) ->
+    newArr = []
+    newArr.push i for i in arr
+    
+    results = []
+    for n in [0...num]
+      if newArr.length > 0
+        idx = Math.floor(Math.random() * newArr.length)
+        results.push newArr[idx]
+        newArr.splice(idx, 1)
+      else
+        break
+
+    results
+
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/
     if not pattern.exec(value)

@@ -87,7 +87,7 @@ var RechargeLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var shopLayer = ShopLayer.create();
-        shopLayer.switchLayer(VipLayer);
+        shopLayer._onClickVipLayer();
         MainScene.getInstance().switchTo(shopLayer);
     }
 });

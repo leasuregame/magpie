@@ -187,7 +187,8 @@ var VipLayer = cc.Layer.extend({
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setPosition(cc.p(95, y + 82));
+            vipBoxDetailsItem.setPosition(cc.p(95, y + 86));
+            vipBoxDetailsItem.setScale(0.8);
             menu.addChild(vipBoxDetailsItem);
 
             var buyItem = cc.MenuItemImage.createWithIcon(
@@ -288,32 +289,80 @@ var VipLayer = cc.Layer.extend({
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
 
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 550));
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        lazyLayer.addChild(bgLayer);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg21);
         bgSprite.setPosition(this._vipLayerFit.bgSprite2Point);
         lazyLayer.addChild(bgSprite);
 
-        for (var key in data) {
-            if (vipBoxGoods[key] != undefined && data[key] > 0) {
-                var goods = vipBoxGoods[key];
-                var point = this._vipLayerFit.vipBoxGoodsPoints[key];
+        var topBgIcon = cc.Sprite.create(main_scene_image.icon332);
+        topBgIcon.setPosition(this._vipLayerFit.topBgIconPoint);
+        lazyLayer.addChild(topBgIcon);
 
+        var titleIcon = cc.Sprite.create(main_scene_image.icon333);
+        titleIcon.setPosition(this._vipLayerFit.titleIconPoint);
+        lazyLayer.addChild(titleIcon);
+
+        var keys = Object.keys(data);
+        var len = keys.length;
+
+        var scrollViewLayer = MarkLayer.create(this._vipLayerFit.scrollViewLayerRect2);
+
+        var total = 0;
+        for (key in data) {
+            if (vipBoxGoods[key] != undefined && data[key] > 0) {
+                total++;
+            }
+        }
+
+        var scrollViewHeight = total * 120;
+        if (scrollViewHeight < 480) {
+            scrollViewHeight = 480;
+        }
+
+        var index = 0;
+        var x = 140;
+        for (var i = 0; i < len; i++) {
+            var key = keys[i];
+
+            if (vipBoxGoods[key] != undefined && data[key] > 0) {
+
+                var y = scrollViewHeight - index * 120 - 60;
+                var goods = vipBoxGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setPosition(point);
-                lazyLayer.addChild(goodsSprite);
+                goodsSprite.setPosition(cc.p(x - 10, y));
+                scrollViewLayer.addChild(goodsSprite);
 
                 var nameLabel = StrokeLabel.create(goods.name, "STHeitiTC-Medium", 25);
                 nameLabel.setColor(cc.c3b(255, 252, 175));
                 nameLabel.setAnchorPoint(cc.p(0, 0.5));
-                nameLabel.setPosition(cc.p(point.x + 50, point.y + 20));
-                lazyLayer.addChild(nameLabel);
+                nameLabel.setPosition(cc.p(x + 50, y + 20));
+                scrollViewLayer.addChild(nameLabel);
 
-                var countLabel = StrokeLabel.create(data[key], "STHeitiTC-Medium", 25);
+                var countBgIcon = cc.Sprite.create(main_scene_image.icon334);
+                countBgIcon.setPosition(cc.p(x + 170, y - 20));
+                scrollViewLayer.addChild(countBgIcon);
+
+                var countLabel = StrokeLabel.create("数量    " + data[key], "STHeitiTC-Medium", 25);
                 countLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLabel.setPosition(cc.p(point.x + 50, point.y - 20));
-                lazyLayer.addChild(countLabel);
+                countLabel.setPosition(cc.p(x + 50, y - 20));
+                scrollViewLayer.addChild(countLabel);
+                index++;
+
             }
         }
+
+        var scrollView = cc.ScrollView.create(cc.size(500, 480), scrollViewLayer);
+        scrollView.setTouchPriority(-300);
+        scrollView.setPosition(this._vipLayerFit.scrollViewPoint2);
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        lazyLayer.addChild(scrollView);
+
+        scrollView.setContentSize(cc.size(500, scrollViewHeight));
+        scrollView.setContentOffset(scrollView.minContainerOffset());
 
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -332,6 +381,8 @@ var VipLayer = cc.Layer.extend({
         var menu = cc.Menu.create(okItem);
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
+
+
     },
 
     _onClickPayment: function () {

@@ -266,7 +266,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -331,7 +331,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>70</integer>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1040,7 +1040,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1235,7 +1235,7 @@
 				<key>displayName</key>
 				<string>spirit</string>
 				<key>memberVarAssignmentName</key>
-				<string>spiritNode</string>
+				<string>ccbSpiritNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -2324,6 +2324,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -2515,7 +2517,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>update</string>
+							<string>ccbFnUpdate</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -2531,7 +2533,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>closeCloud</string>
+							<string>ccbFnCloseCloud</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -2548,7 +2550,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.5</real>
+			<real>4.3000001907348633</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

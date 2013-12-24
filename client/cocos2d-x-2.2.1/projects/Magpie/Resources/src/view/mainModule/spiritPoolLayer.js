@@ -21,7 +21,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     _preObtainLabel: null,
     _goldLabel: null,
     _spirit: null,
-    spiritNode: null,
+    ccbSpiritNode: null,
     _spiritPool: null,
     _hook: null,
     _useGold: false,
@@ -162,7 +162,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     update: function () {
         cc.log("SpiritPoolLayer update");
 
-        this.spiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
+        this.ccbSpiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
 
         var spiritPool = gameData.spiritPool;
         var player = gameData.player;
@@ -238,8 +238,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         LazyLayer.closeCloudLayer();
     },
 
-    _onClickSpiritPool: function () {
-        cc.log("SpiritPoolLayer _onClickSoulTable");
+    ccbFnSpiritPool: function () {
+        cc.log("SpiritPoolLayer ccbFnSpiritPool");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -269,8 +269,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         }, this._useGold);
     },
 
-    _onClickSpirit: function () {
-        cc.log("SpiritPoolLayer _onClickSpirit");
+    ccbFnSpirit: function () {
+        cc.log("SpiritPoolLayer ccbFnSpirit");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

@@ -801,14 +801,18 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(0, -180)
         },
         "level9BoxLayer": {
-            "bgSpritePoint": cc.p(360, 512),
-            "okItemPoint": cc.p(360, 332),
+            "bgSpritePoint": cc.p(360, 492),
+            "okItemPoint": cc.p(360, 232),
             "boxGoodsPoints": {
                 money: cc.p(210, 662),
                 skillPoint: cc.p(430, 662),
                 energy: cc.p(210, 562),
                 power: cc.p(430, 562)
-            }
+            },
+            "scrollViewLayerRect2":cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
@@ -2016,14 +2020,18 @@ var fit4Iphone5 = {
             "okItemPoint": cc.p(0, -180)
         },
         "level9BoxLayer": {
-            "bgSpritePoint": cc.p(320, 600),
-            "okItemPoint": cc.p(320, 420),
+            "bgSpritePoint": cc.p(320, 580),
+            "okItemPoint": cc.p(320, 320),
             "boxGoodsPoints": {
                 money: cc.p(170, 750),
                 skillPoint: cc.p(390, 750),
                 energy: cc.p(170, 650),
                 power: cc.p(390, 650)
-            }
+            },
+            "scrollViewLayerRect2":cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),

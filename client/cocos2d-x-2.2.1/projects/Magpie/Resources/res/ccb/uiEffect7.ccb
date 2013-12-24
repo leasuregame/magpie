@@ -286,7 +286,7 @@
 						<key>displayName</key>
 						<string>card</string>
 						<key>memberVarAssignmentName</key>
-						<string>cardFull0</string>
+						<string>ccbCardFull0</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -342,7 +342,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>130</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -408,7 +408,7 @@
 						<key>displayName</key>
 						<string>card</string>
 						<key>memberVarAssignmentName</key>
-						<string>cardFull1</string>
+						<string>ccbCardFull1</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -464,7 +464,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>130</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -528,7 +528,7 @@
 						<key>displayName</key>
 						<string>card</string>
 						<key>memberVarAssignmentName</key>
-						<string>cardFull2</string>
+						<string>ccbCardFull2</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -584,7 +584,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>130</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -885,7 +885,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>151.03446960449219</real>
+								<real>191.31033325195312</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1120,7 +1120,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>151.03446960449219</real>
+								<real>191.31033325195312</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1686,7 +1686,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>9</integer>
+								<integer>201</integer>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1701,8 +1701,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>246</integer>
-									<integer>158</integer>
+									<integer>249</integer>
+									<integer>216</integer>
 									<integer>255</integer>
 								</array>
 							</dict>
@@ -1874,7 +1874,7 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string>nameLabel</string>
+				<string>ccbNameLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1960,7 +1960,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>51</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4256,6 +4256,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4346,7 +4348,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>startSetStar</string>
+							<string>ccbFnStartSetStar</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4363,7 +4365,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>4.6666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

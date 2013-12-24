@@ -644,8 +644,8 @@ var PassLayer = cc.Layer.extend({
         });
     },
 
-    _onClickMystical: function () {
-        cc.log("PassLayer _onClickMystical");
+    ccbFnMystical: function () {
+        cc.log("PassLayer ccbFnMystical");
 
         gameData.sound.playEffect(main_scene_image.click_building_sound, false);
 

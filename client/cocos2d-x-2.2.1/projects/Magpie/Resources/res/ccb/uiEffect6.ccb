@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -220,7 +220,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>209.41648864746094</real>
+									<real>209</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -364,7 +364,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>127.58350372314453</real>
+									<real>128</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -584,7 +584,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>9.9111108779907227</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1146,7 +1146,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.088889040052890778</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1183,6 +1183,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1328,7 +1330,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.015306126326322556</real>
+									<real>1</real>
 									<real>1</real>
 									<false/>
 									<integer>0</integer>
@@ -1399,7 +1401,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1809,7 +1811,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>showCard</string>
+							<string>ccbFnShowCard</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -1826,7 +1828,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.23333333432674408</real>
+			<real>0.76666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1896,7 +1898,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.76666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

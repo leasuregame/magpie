@@ -81,7 +81,7 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
         //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(50);
-        this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
+        this._loginFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
 
 
         this._passwordEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
@@ -101,14 +101,14 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
         //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(20);
-        this._loginFrame.controller.passwordLabel.addChild(this._passwordEditBox);
+        this._loginFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
 
         this._accountEditBox.setText(user.get("account"));
         this._passwordEditBox.setText(user.get("password"));
 
         this._selectAreaName = StrokeLabel.create("", "STHeitiTC-Medium", 30);
         this._selectAreaName.setPosition(cc.p(0, 0));
-        this._loginFrame.controller.areaName.addChild(this._selectAreaName);
+        this._loginFrame.controller.ccbAreaName.addChild(this._selectAreaName);
 
         this.updateAreaList();
         return true

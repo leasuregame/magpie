@@ -1774,7 +1774,7 @@
 								<key>displayName</key>
 								<string>card</string>
 								<key>memberVarAssignmentName</key>
-								<string>card</string>
+								<string>ccbCard</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2054,7 +2054,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label0</string>
+								<string>ccbLabel0</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2274,7 +2274,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label1</string>
+								<string>ccbLabel1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2494,7 +2494,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label2</string>
+								<string>ccbLabel2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2714,7 +2714,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label3</string>
+								<string>ccbLabel3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>

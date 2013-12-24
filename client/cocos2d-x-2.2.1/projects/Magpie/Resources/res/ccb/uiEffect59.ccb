@@ -987,7 +987,7 @@
 										<key>displayName</key>
 										<string>CCLabelTTF_Lvs</string>
 										<key>memberVarAssignmentName</key>
-										<string>nowLvLabel</string>
+										<string>ccbNowLvLabel</string>
 										<key>memberVarAssignmentType</key>
 										<integer>1</integer>
 										<key>properties</key>
@@ -2089,8 +2089,6 @@
 												<string></string>
 											</dict>
 										</array>
-										<key>selected</key>
-										<true/>
 										<key>seqExpanded</key>
 										<true/>
 									</dict>

@@ -49,6 +49,7 @@ module.exports =
     if data.date isnt utility.shortDateString()
       data.date = utility.shortDateString()
       data.powerGiven = []
+      data.endPowerGiven = []
       @_writeFlag JSON.stringify(data), app
 
     last_hour = if hour < DURATION then (24 - DURATION + hour) else (hour - DURATION)

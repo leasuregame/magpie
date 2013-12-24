@@ -1107,6 +1107,10 @@ var Player = (function(_super) {
         this.levelReward = this.levelRewardMark.value;
     };
 
+    Player.prototype.lightUpCards = function() {
+        return this.cardBookMark.markPositions();
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,

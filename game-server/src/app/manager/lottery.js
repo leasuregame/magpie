@@ -18,8 +18,8 @@ var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 
-var lottery = function (level, type, rFragments, hFragment, hCounts) {
-    var card = newCard(level, hCounts);
+var lottery = function (level, type, rFragments, hFragment, hCounts, lightUpIds) {
+    var card = newCard(level, hCounts, lightUpIds);
     var fragment = gen_card_fragment(level, rFragments, hFragment);
     var consume_val = consume(level, type);
     //var pss = initPassiveSkill(card.star);
@@ -110,13 +110,13 @@ var gen_card_fragment = function (level, rCounts, hCounts) {
     console.log('counts',counts)
     counts = counts - margin.COUNTS;
     var rate = (counts <= 0 ) ? 0 : counts * margin.MARGIN;
-    console.log('rate',rate);
+    
     return utility.hitRate(rate) ? 1 : 0;
 };
 
-var newCard = function (level, hCounts) {
-    var card_star = parseInt(gen_card_star(level, hCounts));
-    var card_id = entityUtil.randomCardId(card_star);
+var newCard = function (level, hCounts, lightUpIds) {
+    var card_star = parseInt(gen_card_star(level, hCounts));    
+    var card_id = entityUtil.randomCardId(card_star, lightUpIds);
     var card_level = parseInt(gen_card_level(card_star));
 
     return {

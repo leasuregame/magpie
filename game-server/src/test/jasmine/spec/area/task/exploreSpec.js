@@ -269,6 +269,11 @@ describe("Area Server", function() {
 						power: JSON.stringify({
 							time: Date.now(),
 							value: 10000000
+						}),
+						cardsCount: 1000,
+						cardBook: JSON.stringify({
+							mark: [],
+							flag: []
 						})
 					}, function() {
 						//loginWith(passer.account, passer.password, passer.areaId);
@@ -289,7 +294,7 @@ describe("Area Server", function() {
 
 				var count = 1;
 				var totalCount = 100;
-				var curLv = 10
+				var curLv = 10;
 
 				it(totalCount + '次', function() {
 					var doTest = function() {

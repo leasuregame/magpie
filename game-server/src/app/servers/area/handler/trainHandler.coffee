@@ -124,7 +124,7 @@ Handler::luckyCard = (msg, session, next) ->
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
       async.timesSeries times, (n, next) ->
-        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++)
+        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++, player.lightUpCards())
         totalConsume += consumeVal
         totalFragment += fragment
         

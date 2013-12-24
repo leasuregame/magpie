@@ -29,7 +29,7 @@ class Manager
 
     ### 检查是否体力充足 ###
     if player.power.value < taskData.power_consume
-      return cb({code: 501,msg: '体力不足'}, null, null)
+      return cb({code: 501 ,msg: '体力不足'}, null, null)
 
     data.result = utility.randomValue(
       ['fight','box', 'none'],

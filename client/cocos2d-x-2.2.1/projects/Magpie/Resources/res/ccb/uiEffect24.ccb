@@ -307,7 +307,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>goldLayer</string>
+						<string>ccbGoldLayer</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

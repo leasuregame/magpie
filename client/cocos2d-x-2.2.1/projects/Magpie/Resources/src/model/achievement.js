@@ -182,7 +182,7 @@ var Achievement = Entity.extend({
 
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect57, this);
         ccbNode.setPosition(point);
-        ccbNode.controller.label.setString(achievement.name);
+        ccbNode.controller.ccbLabel.setString(achievement.name);
         MainScene.getInstance().addChild(ccbNode, 20);
     }
 });

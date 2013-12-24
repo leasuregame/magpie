@@ -580,7 +580,7 @@
 						<key>displayName</key>
 						<string>CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string>tipLabel</string>
+						<string>ccbTipLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

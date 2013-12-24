@@ -1890,7 +1890,7 @@
 						<key>displayName</key>
 						<string>CCMenuItemImage</string>
 						<key>memberVarAssignmentName</key>
-						<string>_btnGoldBox</string>
+						<string>ccbGoldBox</string>
 						<key>memberVarAssignmentType</key>
 						<integer>2</integer>
 						<key>properties</key>
@@ -1951,7 +1951,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickGoldBox</string>
+									<string>ccbFnGoldBox</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -2006,7 +2006,7 @@
 				<key>displayName</key>
 				<string>CCMenu</string>
 				<key>memberVarAssignmentName</key>
-				<string>goldBoxMenu</string>
+				<string>ccbGoldBoxMenu</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -2771,6 +2771,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

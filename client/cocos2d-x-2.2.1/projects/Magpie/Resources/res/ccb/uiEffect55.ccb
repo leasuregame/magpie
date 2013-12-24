@@ -1500,7 +1500,7 @@
 								<key>displayName</key>
 								<string>CCMenuItemImage</string>
 								<key>memberVarAssignmentName</key>
-								<string>boxItem</string>
+								<string>ccbBoxItem</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1576,7 +1576,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickBox</string>
+											<string>ccbFnBox</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -1631,7 +1631,7 @@
 						<key>displayName</key>
 						<string>CCMenu</string>
 						<key>memberVarAssignmentName</key>
-						<string>menu</string>
+						<string>ccbMenu</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -3611,7 +3611,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_showBox</string>
+							<string>ccbFnShowBox</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -3628,7 +3628,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

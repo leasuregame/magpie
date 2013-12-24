@@ -804,7 +804,7 @@
 								<key>displayName</key>
 								<string>CCNode</string>
 								<key>memberVarAssignmentName</key>
-								<string>label</string>
+								<string>ccbLabel</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -842,8 +842,6 @@
 										<false/>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1026,7 +1024,7 @@
 								<key>displayName</key>
 								<string>up156</string>
 								<key>memberVarAssignmentName</key>
-								<string>titleIcon</string>
+								<string>ccbTitleIcon</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1085,6 +1083,8 @@
 										<integer>255</integer>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

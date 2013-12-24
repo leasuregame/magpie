@@ -334,7 +334,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>areaList</string>
+						<string>ccbAreaList</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

@@ -180,8 +180,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         }
     },
 
-    _collectSpirit: function () {
-        cc.log("SpiritPoolLayer collectSpirit");
+    ccbFnCollectSpirit: function () {
+        cc.log("SpiritPoolLayer ccbFnCollectSpirit");
 
         if (this._reward) {
             var spirit = cc.Sprite.create(main_scene_image.icon247);

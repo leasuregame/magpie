@@ -11,6 +11,13 @@
     <script src="static/js/bootstrap.min.js"></script>
 		<link href="static/css/index.css" rel="stylesheet">
     <script src="static/js/bootstrap-wysiwyg.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="static/cleditor/jquery.cleditor.css" />
+    <script type="text/javascript" src="static/cleditor/jquery.cleditor.min.js"></script>
+    <script type="text/javascript" src="static/cleditor/jquery.cleditor.advancedtable.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () { $("#textarea").cleditor(); });
+    </script>
   </head>
   <body>
 
@@ -80,12 +87,17 @@
     <br/>
     <div class="row">
       <div class="span2 offset8">
-        <button id="btn-save" type="button" class="btn btn-primary btn-large btn-block">保存</button>
+        <button id="btn-save" type="button" class="btn btn-primary btn-large">保存</button>
+        <a href="/notice" target="blank" class="btn btn-primary btn-large">预览</a>
       </div>
     </div>
 
   </div>
+
 </div>
+  <div>
+    <textarea id="textarea" name="input"></textarea>
+  </div>
 <script>
   $(function(){
     function initToolbarBootstrapBindings() {

@@ -42,9 +42,9 @@ var index = function(req, res) {
 };
 
 var admin = function(req, res) {
-	res.write(ejs.render(readFile('/static/admin.ejs'), {
+	res.write(ejs.render(readFile('/static/cleditor.ejs'), {
 		text: readFile('/static/notice.ejs'),
-		filename: path.join(__dirname, 'static', 'admin.ejs')
+		filename: path.join(__dirname, 'static', 'cleditor.ejs')
 	}));
 	res.end();
 };

@@ -56,7 +56,7 @@ var SelectAreaLayer = cc.Layer.extend({
         scrollView.setPosition(cc.p(-320, -300));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
-        selectAreaFrame.controller.areaList.addChild(scrollView, 1);
+        selectAreaFrame.controller.ccbAreaList.addChild(scrollView, 1);
 
         for (var i = 0; i < len; ++i) {
 

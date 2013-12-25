@@ -245,7 +245,7 @@ var MainLayer = cc.Layer.extend({
 
         this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
         this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
-        this._spiritLayerItem.controller.markEffect.setVisible(false);
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(false);
         this.addChild(this._spiritLayerItem);
 
         var isVisible = false;
@@ -261,7 +261,7 @@ var MainLayer = cc.Layer.extend({
                 isVisible = true;
             }
 
-            that._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+            that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
         }, 0.1);
 
@@ -269,8 +269,8 @@ var MainLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickSpiritItem: function () {
-        cc.log("MainLayer _onClickSpiritItem");
+    ccbFnSpiritItem: function () {
+        cc.log("MainLayer ccbFnSpiritItem");
 
         MainScene.getInstance().switchLayer(this._layer[0]);
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);

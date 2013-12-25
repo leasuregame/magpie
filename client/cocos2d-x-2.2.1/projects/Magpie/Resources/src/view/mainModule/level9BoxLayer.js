@@ -45,7 +45,7 @@ var Level9BoxLayer = LazyLayer.extend({
         this._ccbNode.setPosition(this._level9BoxLayerFit.bgSpritePoint);
         this.addChild(this._ccbNode);
 
-        this._ccbNode.controller.menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        this._ccbNode.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._tipLabel = cc.Node.create();
         this.addChild(this._tipLabel);
@@ -143,17 +143,17 @@ var Level9BoxLayer = LazyLayer.extend({
         return true;
     },
 
-    _onClickBox: function () {
-        cc.log("Level9Box _onClickBox");
+    ccbFnBox: function () {
+        cc.log("Level9Box ccbFnBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._ccbNode.controller.boxItem.setEnabled(false);
+        this._ccbNode.controller.ccbBoxItem.setEnabled(false);
         this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
     },
 
-    _showBox: function () {
-        cc.log("Level9Box _showBox");
+    ccbFnShowBox: function () {
+        cc.log("Level9Box ccbFnShowBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

@@ -67,14 +67,14 @@ var TenLotteryCardLayer = LazyLayer.extend({
             if (skillType > 3) {
                 skillType = 3;
             }
-            this["card_half_" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            this["card_icon_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
-            this["card_frame_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+            this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
         }
     },
 
-    _setFragment: function () {
-        cc.log("TenLotteryCardLayer _setFragment: " + this._fragment);
+    ccbFnSetFragment: function () {
+        cc.log("TenLotteryCardLayer ccbFnSetFragment: " + this._fragment);
 
         if (this._fragment) {
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);

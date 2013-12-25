@@ -4170,7 +4170,7 @@
 						<key>displayName</key>
 						<string>cardFrame</string>
 						<key>memberVarAssignmentName</key>
-						<string>_frameSprite</string>
+						<string>ccbFrameSprite</string>
 						<key>memberVarAssignmentType</key>
 						<integer>2</integer>
 						<key>properties</key>
@@ -6687,7 +6687,7 @@
 						<key>displayName</key>
 						<string>cardHalf</string>
 						<key>memberVarAssignmentName</key>
-						<string>_cardSprite</string>
+						<string>ccbCardSprite</string>
 						<key>memberVarAssignmentType</key>
 						<integer>2</integer>
 						<key>properties</key>
@@ -7092,7 +7092,7 @@
 						<key>displayName</key>
 						<string>cardIcon</string>
 						<key>memberVarAssignmentName</key>
-						<string>_iconSprite</string>
+						<string>ccbIconSprite</string>
 						<key>memberVarAssignmentType</key>
 						<integer>2</integer>
 						<key>properties</key>
@@ -7172,7 +7172,7 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>_cardNode</string>
+				<string>ccbCardNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -7615,6 +7615,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -8182,7 +8184,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -8853,7 +8855,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -8870,7 +8872,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -8904,7 +8906,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -8921,7 +8923,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -8955,7 +8957,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -8972,7 +8974,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666667461395264</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9006,7 +9008,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9023,7 +9025,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.066666670143604279</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9091,7 +9093,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.26666668057441711</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9125,7 +9127,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9142,7 +9144,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9176,7 +9178,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9193,7 +9195,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9227,7 +9229,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9244,7 +9246,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.73333334922790527</real>
+			<real>0.56666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -9278,7 +9280,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9295,7 +9297,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.73333334922790527</real>
+			<real>0.56666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

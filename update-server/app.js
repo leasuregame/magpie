@@ -3,10 +3,12 @@ var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var mime = require('mime');
+var helper = require('./helper');
 
 var LAST_VERSION = '1.7.0';
 var CURR_VERSION = '1.8.0';
 var PORT = 3434;
+var KSS_HOST = 'http://kss.ksyun.com';
 
 var server = http.createServer(function(req, res) {
     var pathname = url.parse(req.url).pathname;
@@ -25,7 +27,7 @@ var server = http.createServer(function(req, res) {
         }
 
         res.writeHead(302, {
-            location: 'https://github.com/visionmedia/ejs/archive/master.zip'
+            location: helper.make_request_url('GET', 'magpie', filename, KSS_HOST)
         });
         res.end();
 
@@ -47,4 +49,3 @@ var server = http.createServer(function(req, res) {
 }).listen(PORT);
 
 console.log("Server running at port: http://127.0.0.1:" + PORT);
-

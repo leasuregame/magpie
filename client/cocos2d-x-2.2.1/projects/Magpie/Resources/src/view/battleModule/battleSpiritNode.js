@@ -30,18 +30,18 @@ var BattleSpiritNode = cc.Node.extend({
         this._animationManager = this._ccbNode.animationManager;
         this.addChild(this._ccbNode);
 
-        this._spiritSprite1.setTexture(spiritSpriteTexture);
-        this._spiritSprite2.setTexture(spiritSpriteTexture);
+        this.ccbSpiritSprite1.setTexture(spiritSpriteTexture);
+        this.ccbSpiritSprite2.setTexture(spiritSpriteTexture);
 
         return true;
     },
 
-    showAddition: function () {
+    ccbFnShowAddition: function () {
         var startIndex = this._index < 7 ? 1 : 7;
-        this.getParent().showAddition(startIndex);
+        this.getParent().ccbFnShowAddition(startIndex);
     },
 
-    callback: function () {
+    ccbFnCallback: function () {
         this.getParent().callback();
     },
 

@@ -150,7 +150,7 @@ var BatterLayer = cc.Layer.extend({
         var tipNode = this._tipNode[key];
 
         if (tipNode) {
-            tipNode.controller.label.setString(str);
+            tipNode.controller.ccbLabel.setString(str);
             tipNode.animationManager.runAnimationsForSequenceNamedTweenDuration(name, 0);
         }
     },
@@ -271,7 +271,7 @@ var BatterLayer = cc.Layer.extend({
         this.nextStep();
     },
 
-    showAddition: function (startIndex) {
+    ccbFnShowAddition: function (startIndex) {
         cc.log("BattleLayer showOwnAddition");
 
         var that = this;

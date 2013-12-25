@@ -109,6 +109,7 @@
             'src/controls/colorLabelTTF.js',
             'src/controls/waitLayer.js',
             'src/controls/dialog.js',
+            'src/controls/slideLayer.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginBgLayer.js',

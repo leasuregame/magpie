@@ -942,7 +942,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_openBox</string>
+							<string>ccbFnOpenBox</string>
 							<integer>2</integer>
 						</array>
 					</dict>

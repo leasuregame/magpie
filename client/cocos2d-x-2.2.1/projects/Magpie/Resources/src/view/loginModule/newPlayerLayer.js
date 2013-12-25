@@ -74,7 +74,7 @@ var NewPlayerLayer = cc.Layer.extend({
             }
         });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
+        newPlayerFrame.controller.ccbPlayerNameLabel.addChild(this._nameEditBox);
 
         newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function () {
             this._nameEditBox.setPlaceHolder("汉字、子母或数字");
@@ -97,16 +97,16 @@ var NewPlayerLayer = cc.Layer.extend({
         this._nameEditBox.setText(name);
     },
 
-    _onClickRandom: function () {
-        cc.log("NewPlayerLayer _onClickRandom");
+    ccbFnRandom: function () {
+        cc.log("NewPlayerLayer ccbFnRandom");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._setRandomName();
     },
 
-    _onClickOk: function () {
-        cc.log("NewPlayerLayer _onClickOk");
+    ccbFnOk: function () {
+        cc.log("NewPlayerLayer ccbFnOk");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -136,14 +136,12 @@ var NewPlayerLayer = cc.Layer.extend({
         this.removeFromParent();
     },
 
-    _onClickClose: function () {
-        cc.log("NewPlayerLayer _onClickBack");
+    ccbFnClose: function () {
+        cc.log("NewPlayerLayer ccbFnClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-       // lz.server.disconnect();
         this.getParent().switchTo(LoginLayer.create());
-        this.removeFromParent();
 
     }
 });

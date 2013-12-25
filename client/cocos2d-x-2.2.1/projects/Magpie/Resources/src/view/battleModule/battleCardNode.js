@@ -68,9 +68,9 @@ var BattleCardNode = cc.Node.extend({
 
         this._animationManager = this._ccbNode.animationManager;
 
-        this._frameSprite.setTexture(frameSpriteTexture);
-        this._cardSprite.setTexture(cardSpriteTexture);
-        this._iconSprite.setTexture(iconSpriteTexture);
+        this.ccbFrameSprite.setTexture(frameSpriteTexture);
+        this.ccbCardSprite.setTexture(cardSpriteTexture);
+        this.ccbIconSprite.setTexture(iconSpriteTexture);
 
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
@@ -168,7 +168,7 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
-    callback: function () {
+    ccbFnCallback: function () {
         this.getParent().callback();
     },
 
@@ -192,10 +192,10 @@ var BattleCardNode = cc.Node.extend({
 
             var len = this._skillName.length;
             for (var i = 0; i < len; ++i) {
-                ccbNode.controller["label" + i].setString(this._skillName[i]);
+                ccbNode.controller["ccbLabel" + i].setString(this._skillName[i]);
             }
 
-            ccbNode.controller.card.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
+            ccbNode.controller.ccbCard.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
         }
 
         return ccbNode;

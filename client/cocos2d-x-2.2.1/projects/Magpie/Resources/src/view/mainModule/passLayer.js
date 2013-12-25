@@ -458,8 +458,8 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
-        var label = bgSprite.controller.label;
-        var titleIcon = bgSprite.controller.titleIcon;
+        var label = bgSprite.controller.ccbLabel;
+        var titleIcon = bgSprite.controller.ccbTitleIcon;
         titleIcon.setTexture(lz.getTexture(main_scene_image.icon226));
 
         var str = lz.getRewardString(reward);

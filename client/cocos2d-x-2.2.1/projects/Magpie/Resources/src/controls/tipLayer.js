@@ -73,8 +73,8 @@ var TipLayer = {
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect66, this);
         var controller = effect.controller;
-        controller.goodsIcon.setTexture(lz.getTexture(main_scene_image[icon]));
-        controller.goodsLabel.setString(str);
+        controller.ccbGoodsIcon.setTexture(lz.getTexture(main_scene_image[icon]));
+        controller.ccbGoodsLabel.setString(str);
         effect.setPosition(gameFit.GAME_MIDPOINT);
         effect.animationManager.setCompletedAnimationCallback(this, function () {
             effect.removeFromParent();

@@ -504,8 +504,8 @@
 		90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */; };
 		90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90338EBA185A18C300224717 /* libMobClickLibrary.a */; };
 		90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EBD185A18C300224717 /* MobClickCPP.mm */; };
-		90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
-		90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
+		90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90338ECB185B1E9100224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
@@ -599,7 +599,7 @@
 		90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F51682F1A4002FB0C5 /* CCControlSwitch.cpp */; };
 		90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F71682F1A4002FB0C5 /* CCControlUtils.cpp */; };
 		90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F91682F1A4002FB0C5 /* CCInvocation.cpp */; };
-		90F535611862EAC2008207BD /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90F535611862EAC2008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FB1682F1A4002FB0C5 /* CCScale9Sprite.cpp */; };
 		90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FE1682F1A4002FB0C5 /* CCEditBox.cpp */; };
 		90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D5041682F1A4002FB0C5 /* CCEditBoxImplIOS.mm */; };
@@ -907,7 +907,7 @@
 		90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743717F0874400B9ACAE /* CCTweenFunction.cpp */; };
 		90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743917F0874400B9ACAE /* CCUtilMath.cpp */; };
 		90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743C17F0874400B9ACAE /* CCComAttribute.cpp */; };
-		90F536CA1862EB3C008207BD /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743E17F0874400B9ACAE /* CCComAudio.cpp */; };
 		90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744017F0874400B9ACAE /* CCComController.cpp */; };
 		90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744217F0874400B9ACAE /* CCComRender.cpp */; };
@@ -1524,7 +1524,7 @@
 		90338EBB185A18C300224717 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		90338EBC185A18C300224717 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
 		90338EBD185A18C300224717 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
-		90338EC3185AAAF600224717 /* AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetsManager.cpp; sourceTree = "<group>"; };
+		90338EC3185AAAF600224717 /* AssetsManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AssetsManager.mm; sourceTree = "<group>"; };
 		90338EC4185AAAF600224717 /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsManager.h; sourceTree = "<group>"; };
 		90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_AssetsManager.cpp; sourceTree = "<group>"; };
 		90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_AssetsManager.hpp; sourceTree = "<group>"; };
@@ -2561,7 +2561,7 @@
 		90338EC2185AAAF600224717 /* AssetsManager */ = {
 			isa = PBXGroup;
 			children = (
-				90338EC3185AAAF600224717 /* AssetsManager.cpp */,
+				90338EC3185AAAF600224717 /* AssetsManager.mm */,
 				90338EC4185AAAF600224717 /* AssetsManager.h */,
 			);
 			path = AssetsManager;
@@ -3286,7 +3286,7 @@
 				902B084C1858C475003A2A49 /* CCTweenFunction.cpp in Sources */,
 				902B084D1858C475003A2A49 /* CCUtilMath.cpp in Sources */,
 				902B084E1858C475003A2A49 /* CCComAttribute.cpp in Sources */,
-				90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */,
+				90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */,
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
@@ -3413,7 +3413,7 @@
 				90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */,
 				90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */,
 				90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */,
-				90F535611862EAC2008207BD /* AssetsManager.cpp in Sources */,
+				90F535611862EAC2008207BD /* AssetsManager.mm in Sources */,
 				90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */,
 				90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */,
 				90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */,
@@ -3693,7 +3693,7 @@
 				90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */,
 				90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */,
 				90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */,
-				90F536CA1862EB3C008207BD /* AssetsManager.cpp in Sources */,
+				90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */,
 				90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */,
 				90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */,
 				90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */,
@@ -3819,7 +3819,7 @@
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,
-				90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */,
+				90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */,
 				15A3D54A1682F1A5002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3D54B1682F1A5002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3D54D1682F1A5002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,

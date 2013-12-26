@@ -287,8 +287,14 @@ var TournamentLayer = cc.Layer.extend({
         }
 
         var scrollViewLayer = MarkLayer.create(this._tournamentLayerFit.scrollViewLayerRect);
+        var slideLabel = [];
 
         for (var i = 0; i < len; ++i) {
+
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
+
             if (playerId == this._rankList[i].playerId) {
                 index = Math.min(i + 1, len - 1);
             }
@@ -296,17 +302,19 @@ var TournamentLayer = cc.Layer.extend({
             if (i == 10) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
                 line.setPosition(cc.p(310, scrollViewHeight - 135 * i - 15));
-                scrollViewLayer.addChild(line, 2);
+                slideLabel[i].addChild(line, 2);
             }
 
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
-            scrollViewLayer.addChild(tournamentPlayerLabel);
+            slideLabel[i].addChild(tournamentPlayerLabel);
 
             if (i < 10) {
                 tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
             } else {
                 tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
             }
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
 
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
@@ -321,6 +329,17 @@ var TournamentLayer = cc.Layer.extend({
         if (index < 10) offsetY -= 55;
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
         this._scrollView.setContentOffset(cc.p(0,  offsetY));
+
+        var slideLayer = SlideLayer.create(
+            {
+                labels: slideLabel,
+                slideTime: 0.4,
+                timeTick: 0.05
+            }
+        );
+
+        slideLayer.showSlide();
+
     },
 
 

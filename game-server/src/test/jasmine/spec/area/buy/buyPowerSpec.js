@@ -65,7 +65,7 @@ describe("Area Server", function() {
                     })
                 };
 
-                for(var i = 1;i <= 3;i++) {
+                for(var i = 1;i <= 1;i++) {
                     (function(i) {
                         buyPower(i);
                     })(i);
@@ -165,7 +165,7 @@ describe("Area Server", function() {
                         console.log(player);
                         var dg = JSON.parse(player.dailyGift);
 
-                        dg.powerBuyCount = 5;
+                        dg.powerBuyCount = 1;
 
                         doAjax('/update/player/' + 113 ,{
                             dailyGift: dg,
@@ -187,7 +187,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyProduct',{id:2 , times: 6},function(data) {
+                    request('area.buyHandler.buyProduct',{id:2 , times: 2},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);

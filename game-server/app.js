@@ -9,6 +9,7 @@ var argsFilter = require('./app/servers/area/filter/argsFilter');
 var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
+var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
 var PlayerManager = require('./app/manager/playerManager');
 /**
@@ -139,6 +140,10 @@ app.configure('production|development', 'connector|auth|area', function() {
 
 app.configure('development', 'connector|auth|area', function() {
   app.set('debug', true);
+});
+
+app.configure('production|development', 'notice', function() {
+  app.load(simpleWeb);
 });
 
 // start app

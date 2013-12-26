@@ -51,7 +51,7 @@ Handler::explore = (msg, session, next) ->
 
           if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
-            player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'      
+            player.incSpirit battleLog.rewards.totalSpirit if battleLog.winner is 'own'      
 
           if battleLog.winner is 'own'
             checkFragment(battleLog, player, chapterId)
@@ -76,7 +76,10 @@ Handler::explore = (msg, session, next) ->
         taskManager.countExploreResult player, data, taskId, chapterId, cb
   ], (err, data) =>
     if err
-      return next(null, {code: err.code or 500, msg: err.msg})
+      if err.code is 501
+        return next(null, {code: err.code, msg: message: err.msg, power: player.power})
+      else 
+        return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
     data.task = player.getTask()

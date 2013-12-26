@@ -124,7 +124,7 @@ Handler::luckyCard = (msg, session, next) ->
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
       async.timesSeries times, (n, next) ->
-        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++)
+        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++, player.lightUpCards())
         totalConsume += consumeVal
         totalFragment += fragment
         
@@ -569,7 +569,6 @@ Handler::useElixir = (msg, session, next) ->
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
-    player.useElixirForCard(cardId, elixir)
     
     _jobs = []
     playerData = player.getSaveData()

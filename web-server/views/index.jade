@@ -1,0 +1,30 @@
+extends adminLayout
+
+block content
+  
+  div.jumbotron
+    h1 游戏 Web API
+      small.pull-right 115.29.175.156:9090
+    small [ ]中得字符为参数。[platform]为平台参数（app或tb）
+    small
+      a(href='http://www.ksyun.com/product/ks3', target='blank') 去更新下载包
+
+    dl
+      dt
+        span.label.label-primary /api/[platform]/version
+      dd
+        span 获取最新的版本号
+      dt
+        span.label.label-primary /api/[platform]/update/[version]
+      dd
+        p 获取更新包。[version]为当前手机游戏的版本号，根据这个版本号来判断是下载部分包还是完全包。
+        ul
+          li version 为空，下载完全包
+          li version 为上一版本号，下载部分包
+          li version 小于上一版本号，下载完全包
+
+      dt
+        span.label.label-primary /api/[platform]/notice
+      dd
+        p 游戏公告内容地址
+      

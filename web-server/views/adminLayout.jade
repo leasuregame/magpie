@@ -16,8 +16,10 @@ html
           a(class='navbar-brand', href='/') LeasureGame
         div(class='collapse navbar-collapse')
           ul(class='nav navbar-nav')
+            li(class=menu=='notice' ? 'active':'')
+              a(href='/admin/notice') 公告编辑
+            li(class=menu=='version' ? 'active':'')
+              a(href='/admin/version') 版本号
             li
-              a(href='/admin') 公告编辑
-            li(class='active')
-              a(href='/manage') 版本号
+              a(href='#') GM
       block content

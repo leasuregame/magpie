@@ -358,7 +358,12 @@ var fit4Iphone4 = {
             "tipLabel3Point": cc.p(330, 136),
             "fragmentIconPoint3": cc.p(520, 136),
             "basePoint": cc.p(220, 630),
-            "offsetHeight": 310
+            "offsetHeight": 310,
+            "bgSpritePoint2": cc.p(360, 485),
+            "msgBgIconPoint": cc.p(360, 515),
+            "tipPoint": cc.p(360, 515),
+            "okItemPoint": cc.p(270, 429),
+            "closeItemPoint": cc.p(450, 429)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -796,14 +801,18 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(0, -180)
         },
         "level9BoxLayer": {
-            "bgSpritePoint": cc.p(360, 512),
-            "okItemPoint": cc.p(360, 332),
+            "bgSpritePoint": cc.p(360, 492),
+            "okItemPoint": cc.p(360, 232),
             "boxGoodsPoints": {
                 money: cc.p(210, 662),
                 skillPoint: cc.p(430, 662),
                 energy: cc.p(210, 562),
                 power: cc.p(430, 562)
-            }
+            },
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
@@ -881,8 +890,9 @@ var fit4Iphone4 = {
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
-            "bgSpritePoint": cc.p(362, 477),
-            "titleLabelPoint": cc.p(360, 807),
+            "bgSpritePoint": cc.p(362, 462),
+            "topBgLabelPoint": cc.p(368, 772),
+            "titleLabelPoint": cc.p(360, 817),
             "turnLeftItemPoint": cc.p(87, 592),
             "turnRightItemPoint": cc.p(631, 592),
             "signInItemPoint": cc.p(560, 367),
@@ -898,7 +908,7 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(510, 366),
             "scrollViewPoint": cc.p(105, 402),
             "signInCountIconPoint": cc.p(235, 367),
-            "signInCountLabelPoint": cc.p(330, 367),
+            "signInCountLabelPoint": cc.p(325, 367),
             "pointBasePoint": cc.p(160, 282),
             "pointOffsetX": 100,
             "rewardLabelPoint": cc.p(360, 202),
@@ -939,8 +949,8 @@ var fit4Iphone4 = {
             "skillDescription1Point": cc.p(140, 192),
             "skillDescription2Point": cc.p(140, 162),
             "passiveHarmLabelPoint": cc.p(520, 279),
-            "lvLabelPoint": cc.p(260, 454),
-            "expLabelPoint": cc.p(420, 454),
+            "lvLabelPoint": cc.p(240, 454),
+            "expLabelPoint": cc.p(440, 454),
             "upgradeItemPoint": cc.p(360, 402),
             "closeItemPoint": cc.p(360, 42),
             "spiritNodePoint": cc.p(360, 632),
@@ -1178,7 +1188,9 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 680),
             "scrollViewPoint": cc.p(40, 122),
             "bgSprite2Point": cc.p(360, 492),
-            "okItemPoint": cc.p(360, 272),
+            "okItemPoint": cc.p(360, 232),
+            "buyItemPoint": cc.p(240, 232),
+            "cancelItemPoint": cc.p(480, 232),
             "failLabelPoint": cc.p(360, 572),
             "tipLabelPoint": cc.p(360, 512),
             "paymentItem2Point": cc.p(260, 432),
@@ -1190,7 +1202,11 @@ var fit4Iphone4 = {
                 elixir: cc.p(430, 562),
                 fragments: cc.p(210, 462),
                 exp_card: cc.p(430, 462)
-            }
+            },
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
         },
         "vipPrivilegeLayer": {
             "bgLayerPoint": cc.p(40, 88),
@@ -1562,7 +1578,12 @@ var fit4Iphone5 = {
             "tipLabel3Point": cc.p(290, 136),
             "fragmentIconPoint3": cc.p(480, 136),
             "basePoint": cc.p(180, 760),
-            "offsetHeight": 360
+            "offsetHeight": 360,
+            "bgSpritePoint2": cc.p(320, 573),
+            "msgBgIconPoint": cc.p(320, 608),
+            "tipPoint": cc.p(320, 608),
+            "okItemPoint": cc.p(230, 522),
+            "closeItemPoint": cc.p(410, 522)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2001,14 +2022,18 @@ var fit4Iphone5 = {
             "okItemPoint": cc.p(0, -180)
         },
         "level9BoxLayer": {
-            "bgSpritePoint": cc.p(320, 600),
-            "okItemPoint": cc.p(320, 420),
+            "bgSpritePoint": cc.p(320, 580),
+            "okItemPoint": cc.p(320, 320),
             "boxGoodsPoints": {
                 money: cc.p(170, 750),
                 skillPoint: cc.p(390, 750),
                 energy: cc.p(170, 650),
                 power: cc.p(390, 650)
-            }
+            },
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),
@@ -2086,7 +2111,8 @@ var fit4Iphone5 = {
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
-            "bgSpritePoint": cc.p(322, 565),
+            "bgSpritePoint": cc.p(322, 550),
+            "topBgLabelPoint": cc.p(328, 860),
             "titleLabelPoint": cc.p(320, 905),
             "turnLeftItemPoint": cc.p(47, 680),
             "turnRightItemPoint": cc.p(591, 680),
@@ -2103,7 +2129,7 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(510, 366),
             "scrollViewPoint": cc.p(65, 490),
             "signInCountIconPoint": cc.p(195, 455),
-            "signInCountLabelPoint": cc.p(290, 455),
+            "signInCountLabelPoint": cc.p(285, 455),
             "pointBasePoint": cc.p(120, 370),
             "pointOffsetX": 100,
             "rewardLabelPoint": cc.p(320, 290),
@@ -2144,8 +2170,8 @@ var fit4Iphone5 = {
             "skillDescription1Point": cc.p(100, 280),
             "skillDescription2Point": cc.p(100, 250),
             "passiveHarmLabelPoint": cc.p(480, 367),
-            "lvLabelPoint": cc.p(220, 560),
-            "expLabelPoint": cc.p(380, 560),
+            "lvLabelPoint": cc.p(200, 560),
+            "expLabelPoint": cc.p(400, 560),
             "upgradeItemPoint": cc.p(320, 500),
             "closeItemPoint": cc.p(320, 130),
             "spiritNodePoint": cc.p(320, 720),
@@ -2384,7 +2410,9 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 822),
             "scrollViewPoint": cc.p(0, 144),
             "bgSprite2Point": cc.p(320, 580),
-            "okItemPoint": cc.p(320, 360),
+            "okItemPoint": cc.p(320, 320),
+            "buyItemPoint": cc.p(200, 320),
+            "cancelItemPoint": cc.p(440, 320),
             "failLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItem2Point": cc.p(220, 520),
@@ -2396,7 +2424,11 @@ var fit4Iphone5 = {
                 elixir: cc.p(390, 650),
                 fragments: cc.p(170, 550),
                 exp_card: cc.p(390, 550)
-            }
+            },
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
         },
         "vipPrivilegeLayer": {
             "bgLayerPoint": cc.p(0, 88),

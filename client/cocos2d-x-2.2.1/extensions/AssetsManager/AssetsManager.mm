@@ -40,12 +40,14 @@
 #endif
 
 #include "support/zip_support/unzip.h"
+#import <Foundation/Foundation.h>
 
 using namespace cocos2d;
 using namespace std;
 
 NS_CC_EXT_BEGIN;
 
+#define KEY_OF_APP_VERSION   "app-version-code"
 #define KEY_OF_VERSION   "current-version-code"
 #define KEY_OF_DOWNLOADED_VERSION    "downloaded-version-code"
 #define TEMP_PACKAGE_FILE_NAME    "cocos2dx-update-temp-package.zip"
@@ -87,6 +89,8 @@ AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* vers
 {
     this->setStoragePath(storagePath);
     _schedule = new Helper();
+    
+    init();
 }
 
 AssetsManager::~AssetsManager()
@@ -100,6 +104,18 @@ AssetsManager::~AssetsManager()
     if (_shouldDeleteDelegateWhenExit)
     {
         delete _delegate;
+    }
+}
+
+void AssetsManager::init()
+{
+    std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
+    std::string appVersion = getAppVersion();
+    
+    if(oldAppVersion != appVersion) {
+        CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_APP_VERSION, appVersion);
+        
+        destroyStoragePath();
     }
 }
 
@@ -149,7 +165,7 @@ bool AssetsManager::checkUpdate()
         return false;
     }
     
-    string recordedVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION);
+    string recordedVersion = getVersion();
     if (recordedVersion == _version)
     {
         sendErrorMessage(kNoNewVersion);
@@ -419,11 +435,13 @@ void AssetsManager::setSearchPath()
     vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
     
+    std::string path = _storagePath + "data/";
+    
     // 修改资源搜索路径
     // 如果第一个搜索路径与当前更新的路径一样
     // 则不更新搜索路径
-    if(*iter != _storagePath) {
-        searchPaths.insert(iter, _storagePath);
+    if(*iter != path) {
+        searchPaths.insert(iter, path);
         CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
     }
 }
@@ -473,12 +491,13 @@ bool AssetsManager::downLoad()
     curl_easy_setopt(_curl, CURLOPT_NOPROGRESS, false);
     curl_easy_setopt(_curl, CURLOPT_PROGRESSFUNCTION, assetsManagerProgressFunc);
     curl_easy_setopt(_curl, CURLOPT_PROGRESSDATA, this);
+    curl_easy_setopt(_curl, CURLOPT_FOLLOWLOCATION, 1);
     res = curl_easy_perform(_curl);
     curl_easy_cleanup(_curl);
     if (res != 0)
     {
         sendErrorMessage(kNetwork);
-        CCLOG("error when download package");
+        CCLOG("error when download package %d", res);
         fclose(fp);
         return false;
     }
@@ -533,12 +552,12 @@ void AssetsManager::setVersionFileUrl(const char *versionFileUrl)
 
 string AssetsManager::getVersion()
 {
-    return CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION);
+    return CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, getAppVersion());
 }
 
 void AssetsManager::deleteVersion()
 {
-    CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_VERSION, "");
+    CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_VERSION, getAppVersion());
 }
 
 void AssetsManager::setDelegate(AssetsManagerDelegateProtocol *delegate)
@@ -572,8 +591,8 @@ void AssetsManager::sendErrorMessage(AssetsManager::ErrorCode code)
 // Implementation of AssetsManagerHelper
 
 AssetsManager::Helper::Helper()
+: _message(NULL)
 {
-    _messageQueue = new list<Message*>();
     pthread_mutex_init(&_messageQueueMutex, NULL);
     CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, 0, false);
 }
@@ -581,13 +600,19 @@ AssetsManager::Helper::Helper()
 AssetsManager::Helper::~Helper()
 {
     CCDirector::sharedDirector()->getScheduler()->unscheduleAllForTarget(this);
-    delete _messageQueue;
+    delete _message;
 }
 
 void AssetsManager::Helper::sendMessage(Message *msg)
 {
     pthread_mutex_lock(&_messageQueueMutex);
-    _messageQueue->push_back(msg);
+    
+    if(_message != NULL) {
+        delete _message;
+        _message = NULL;
+    }
+    
+    _message = msg;
     pthread_mutex_unlock(&_messageQueueMutex);
 }
 
@@ -597,16 +622,16 @@ void AssetsManager::Helper::update(float dt)
     
     // Returns quickly if no message
     pthread_mutex_lock(&_messageQueueMutex);
-    if (0 == _messageQueue->size())
+    if (_message == NULL)
     {
         pthread_mutex_unlock(&_messageQueueMutex);
         return;
     }
     
-    // Gets message
-    msg = *(_messageQueue->begin());
-    _messageQueue->pop_front();
+    msg = _message;
+    _message = NULL;
     pthread_mutex_unlock(&_messageQueueMutex);
+    
     
     switch (msg->what) {
         case ASSETSMANAGER_MESSAGE_UPDATE_SUCCEED:
@@ -696,21 +721,23 @@ void AssetsManager::createStoragePath()
  */
 void AssetsManager::destroyStoragePath()
 {
-    // Delete recorded version codes.
-    deleteVersion();
+    // save to document folder
+    std::string storagePath = _storagePath + "data/";
+    NSString *path = [NSString stringWithUTF8String:storagePath.c_str()];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    // Remove downloaded files
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
-    string command = "rm -r ";
-    // Path may include space.
-    command += "\"" + _storagePath + "\"";
-    system(command.c_str());
-#else
-    string command = "rd /s /q ";
-    // Path may include space.
-    command += "\"" + _storagePath + "\"";
-    system(command.c_str());
-#endif
+    // 如果存在删除
+    if([fileManager fileExistsAtPath:path]){
+        [fileManager removeItemAtPath:path error:nil];
+    }
+}
+
+/*
+ 获取客户端版本
+ */
+std::string AssetsManager::getAppVersion()
+{
+    return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] UTF8String];
 }
 
 AssetsManager* AssetsManager::create(

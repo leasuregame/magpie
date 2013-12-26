@@ -11,22 +11,20 @@
 
 @implementation WebLayerOC
 
-//- (id) init :(const char *)url :(const CCRect *)rect;
-//{
-//    if ((self = [super init])) {
-//        CCPoint point = rect->origin;
-//        CCSize size = rect->size;
-//        _uiView = [[UIView alloc] initWithFrame:CGRectMake(point.x, point.y, size.width, size.height)];
-//        _uiWebView = [[UIWebView alloc] initWithFrame:CGRectMake(point.x, point.y, size.width, size.height)];
-//        _url = [NSString stringWithUTF8String:url];
-//        
-//        [self load];
-//    }
-//    
-//    return self;
-//}
+- (id) init :(NSString *)url :(CGRect)rect;
+{
+    if ((self = [super init])) {
+        _uiView = [[UIView alloc] initWithFrame:rect];
+        _uiWebView = [[UIWebView alloc] initWithFrame:rect];
+        _url = url;
+        
+        [self load];
+    }
+    
+    return self;
+}
 
-- (void)dealloc
+- (void) dealloc
 {
     [_uiWebView release];
     [_uiView release];
@@ -37,7 +35,6 @@
 - (void) load
 {
     [_uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString :_url]]];
-    [_uiWebView setUserInteractionEnabled:NO];
 
     [_uiView addSubview:_uiWebView];
 

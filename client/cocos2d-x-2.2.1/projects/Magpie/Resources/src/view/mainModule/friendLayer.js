@@ -204,14 +204,6 @@ var FriendLayer = cc.Layer.extend({
 
         var scrollViewLayer = MarkLayer.create(this._friendLayerFit.scrollViewLayerRect);
 
-        var friendMenu = LazyMenu.create();
-        friendMenu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(friendMenu);
-
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
-
         var scrollViewHeight = len * 127;
         if (scrollViewHeight < this._friendLayerFit.scrollViewHeight) {
             scrollViewHeight = this._friendLayerFit.scrollViewHeight;
@@ -219,49 +211,63 @@ var FriendLayer = cc.Layer.extend({
 
         this._friendItem = {};
 
+        var slideLabel = [];
+
         for (var i = 0; i < len; ++i) {
             var id = friendList[i].id;
             var y = scrollViewHeight - 127 - 127 * i;
+
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
+
+            var friendMenu = LazyMenu.create();
+            friendMenu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(friendMenu);
+
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(menu);
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(180, 35));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
             nameIcon.setPosition(cc.p(40, y + 85));
-            scrollViewLayer.addChild(nameIcon);
+            slideLabel[i].addChild(nameIcon);
 
             var otherIcon = cc.Sprite.create(main_scene_image.icon30);
             otherIcon.setPosition(cc.p(96, y + 38));
-            scrollViewLayer.addChild(otherIcon);
+            slideLabel[i].addChild(otherIcon);
 
             var nameLabel = cc.LabelTTF.create(friendList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(50, y + 85));
-            scrollViewLayer.addChild(nameLabel);
+            slideLabel[i].addChild(nameLabel);
 
             var lvLabel = cc.LabelTTF.create(friendList[i].lv, "STHeitiTC-Medium", 22);
             lvLabel.setColor(cc.c3b(56, 3, 5));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
             lvLabel.setPosition(cc.p(76, y + 36));
-            scrollViewLayer.addChild(lvLabel);
+            slideLabel[i].addChild(lvLabel);
 
             var abilityLabel = cc.LabelTTF.create(friendList[i].ability, "STHeitiTC-Medium", 22);
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
             abilityLabel.setPosition(cc.p(157, y + 36));
-            scrollViewLayer.addChild(abilityLabel);
+            slideLabel[i].addChild(abilityLabel);
 
             var giveCountLabel = cc.LabelTTF.create("送出祝福: " + friendList[i].giveCount, "STHeitiTC-Medium", 22);
             giveCountLabel.setColor(cc.c3b(56, 3, 5));
             giveCountLabel.setAnchorPoint(cc.p(0, 0.5));
             giveCountLabel.setPosition(cc.p(250, y + 80));
-            scrollViewLayer.addChild(giveCountLabel);
+            slideLabel[i].addChild(giveCountLabel);
 
             var receiveCountLabel = cc.LabelTTF.create("收到祝福: " + friendList[i].receiveCount, "STHeitiTC-Medium", 22);
             receiveCountLabel.setColor(cc.c3b(56, 3, 5));
             receiveCountLabel.setAnchorPoint(cc.p(0, 0.5));
             receiveCountLabel.setPosition(cc.p(250, y + 41));
-            scrollViewLayer.addChild(receiveCountLabel);
+            slideLabel[i].addChild(receiveCountLabel);
 
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
@@ -303,6 +309,8 @@ var FriendLayer = cc.Layer.extend({
 
                 giveBlessItem.setEnabled(friendList[i].canGive);
             }
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
 
         this._scrollView = cc.ScrollView.create(this._friendLayerFit.scrollViewSize, scrollViewLayer);
@@ -313,6 +321,16 @@ var FriendLayer = cc.Layer.extend({
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
+
+        var slideLayer = SlideLayer.create(
+            {
+                labels: slideLabel,
+                slideTime: 0.4,
+                timeTick: 0.05
+            }
+        );
+
+        slideLayer.showSlide();
     },
 
     _onClickAddFriend: function () {

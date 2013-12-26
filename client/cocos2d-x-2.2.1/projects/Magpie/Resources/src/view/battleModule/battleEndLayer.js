@@ -38,8 +38,8 @@ var BattleEndLayer = cc.Layer.extend({
             this._ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
             this.addChild(this._ccbNode);
 
-            label = this._ccbNode.controller.label;
-            var titleIcon = this._ccbNode.controller.titleIcon;
+            label = this._ccbNode.controller.ccbLabel;
+            var titleIcon = this._ccbNode.controller.ccbTitleIcon;
             titleIcon.setTexture(lz.getTexture(main_scene_image.icon227));
 
         } else {
@@ -47,7 +47,7 @@ var BattleEndLayer = cc.Layer.extend({
             this._ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
             this.addChild(this._ccbNode);
 
-            label = this._ccbNode.controller.label;
+            label = this._ccbNode.controller.ccbLabel;
         }
 
         var str = lz.getRewardString(this._battleLog.get("reward"));

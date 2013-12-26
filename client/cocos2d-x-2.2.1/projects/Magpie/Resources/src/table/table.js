@@ -8897,6 +8897,18 @@ var outputTables = {
             "reflashExcCardsMoney": {
                 "id": "reflashExcCardsMoney",
                 "value": 1000
+            },
+            "twicePlaySpeedLv": {
+                "id": "twicePlaySpeedLv",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
             }
         }
     },

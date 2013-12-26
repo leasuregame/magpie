@@ -396,10 +396,9 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _toNext");
 
         var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
+        passEffect.controller.ccbGoldLayer.setString(this._reward.through_reward.money);
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
-
-        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
 
         var that = this;
 
@@ -424,8 +423,8 @@ var ExploreLayer = cc.Layer.extend({
 
             if (this._reward.money && this._reward.exp) {
                 var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
-                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
-                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.controller.ccbMoneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.ccbExpLabel.setString("+" + this._reward.exp);
                 rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
                 this.addChild(rewardEffect);
                 rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -641,8 +640,8 @@ var ExploreLayer = cc.Layer.extend({
         });
     },
 
-    _openBox: function () {
-        cc.log("TaskLayer _openBox");
+    ccbFnOpenBox: function () {
+        cc.log("TaskLayer ccbFnOpenBox");
 
         var that = this;
         var cb = function () {

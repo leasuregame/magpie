@@ -45,18 +45,23 @@ var MonthLabel = cc.Node.extend({
         this._hookEffect = [];
         this._effect = [];
         this._signInEffect = null;
+        var nowDay = new Date().getDate();
 
         for (var i = 0; i < monthMark.days; ++i) {
             var flag = monthMark.mark >> i & 1;
             var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
             var url = "icon186";
-
+            var color = cc.c3b(112,100,70);
+            if (i < nowDay && this._index == 0) {
+                url = "icon305";
+                color = cc.c3b(147, 97, 61);
+            }
             var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);
             this.addChild(label);
 
             this._dayLabel[i] = cc.LabelTTF.create(i + 1, "STHeitiTC-Medium", 40);
-            this._dayLabel[i].setColor(cc.c3b(255, 252, 175));
+            this._dayLabel[i].setColor(color);
             this._dayLabel[i].setPosition(point);
             this.addChild(this._dayLabel[i]);
 
@@ -81,47 +86,53 @@ var MonthLabel = cc.Node.extend({
 
         var monthMark = gameData.signIn.getMonthMark(this._index);
         var nowDay = new Date().getDate();
+        var that = this;
 
         for (var i = 0; i < monthMark.days; ++i) {
-            var flag = monthMark.mark >> i & 1;
+            (function(i){
+                var flag = monthMark.mark >> i & 1;
 
-            if (flag) {
+                if (flag) {
 
-                if (i + 1 == nowDay && this._signInEffect) {
-                    this._signInEffect.removeFromParent();
-                    this._signInEffect = null;
-                }
+                    if (i + 1 == nowDay && that._signInEffect) {
+                        that._signInEffect.removeFromParent();
+                        that._signInEffect = null;
+                    }
 
-                if (!this._hookList[i].isVisible() && !this._effect[i]) {
+                    if (!that._hookList[i].isVisible() && !that._effect[i]) {
 
-                    this._effect[i] = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
-                    var point = this._hookList[i].getPosition();
-                    this._effect[i].setPosition(point);
-                    var that = this;
-                    var hook = this._hookList[i];
-                    this._effect[i].animationManager.setCompletedAnimationCallback(this, function () {
-                        that._effect.removeFromParent();
-                        hook.setVisible(true);
-                    });
+                        that._effect[i] = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
+                        var point = that._hookList[i].getPosition();
+                        that._effect[i].setPosition(point);
 
-                    this.addChild(this._effect[i]);
+                        var hook = that._hookList[i];
+                        that._effect[i].animationManager.setCompletedAnimationCallback(this, function () {
+                            cc.log(i);
+                            that._effect[i].removeFromParent();
+                            that._effect[i] = null;
+                            hook.setVisible(true);
+                        });
+
+                        that.addChild(that._effect[i]);
+
+                    } else {
+                        that._hookList[i].setVisible(true);
+                    }
 
                 } else {
-                    this._hookList[i].setVisible(true);
-                }
+                    that._hookList[i].setVisible(false);
 
-            } else {
-                this._hookList[i].setVisible(false);
-
-                if (this._index == 0) {
-                    var point = this._dayLabel[i].getPosition();
-                    if (i + 1 == nowDay && !this._signInEffect) {
-                        this._signInEffect = cc.BuilderReader.load(main_scene_image.uiEffect60, this);
-                        this._signInEffect.setPosition(point);
-                        this.addChild(this._signInEffect);
+                    if (that._index == 0) {
+                        var point = that._dayLabel[i].getPosition();
+                        if (i + 1 == nowDay && !that._signInEffect) {
+                            that._signInEffect = cc.BuilderReader.load(main_scene_image.uiEffect60, this);
+                            that._signInEffect.setPosition(point);
+                            that.addChild(that._signInEffect);
+                        }
                     }
                 }
-            }
+            })(i);
+
         }
     }
 });

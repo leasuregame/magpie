@@ -40,4 +40,8 @@ gameFitAdapter();
 var loginScene = LoginScene.create();
 
 // run
-director.runWithScene(loginScene);
+if (director.getRunningScene()) {
+    director.replaceScene(loginScene);
+} else {
+    director.runWithScene(loginScene);
+}

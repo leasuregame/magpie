@@ -131,7 +131,7 @@
 						<key>displayName</key>
 						<string>up164</string>
 						<key>memberVarAssignmentName</key>
-						<string>goodsIcon</string>
+						<string>ccbGoodsIcon</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -203,7 +203,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>goodsLabel</string>
+						<string>ccbGoodsLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

@@ -504,8 +504,8 @@
 		90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */; };
 		90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90338EBA185A18C300224717 /* libMobClickLibrary.a */; };
 		90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EBD185A18C300224717 /* MobClickCPP.mm */; };
-		90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
-		90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
+		90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90338ECB185B1E9100224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
@@ -599,7 +599,7 @@
 		90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F51682F1A4002FB0C5 /* CCControlSwitch.cpp */; };
 		90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F71682F1A4002FB0C5 /* CCControlUtils.cpp */; };
 		90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F91682F1A4002FB0C5 /* CCInvocation.cpp */; };
-		90F535611862EAC2008207BD /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90F535611862EAC2008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FB1682F1A4002FB0C5 /* CCScale9Sprite.cpp */; };
 		90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FE1682F1A4002FB0C5 /* CCEditBox.cpp */; };
 		90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D5041682F1A4002FB0C5 /* CCEditBoxImplIOS.mm */; };
@@ -907,7 +907,7 @@
 		90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743717F0874400B9ACAE /* CCTweenFunction.cpp */; };
 		90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743917F0874400B9ACAE /* CCUtilMath.cpp */; };
 		90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743C17F0874400B9ACAE /* CCComAttribute.cpp */; };
-		90F536CA1862EB3C008207BD /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.cpp */; };
+		90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743E17F0874400B9ACAE /* CCComAudio.cpp */; };
 		90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744017F0874400B9ACAE /* CCComController.cpp */; };
 		90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744217F0874400B9ACAE /* CCComRender.cpp */; };
@@ -983,6 +983,20 @@
 		90F5375C1862F594008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F5375B1862F594008207BD /* game.jsc */; };
 		90F5375D186303E2008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		90F5375E186303E3008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
+		90F9F23918680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
+		90F9F23A18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
+		90F9F23B18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
+		90F9F23C18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
+		90F9F23D18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */; };
+		90F9F23F18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */; };
+		90F9F24118680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
+		90F9F24218680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
+		90F9F24318680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
+		90F9F24418680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
+		90F9F24518680B4C001821D5 /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23818680B4C001821D5 /* WebLayerOC.m */; };
+		90F9F24618680B4C001821D5 /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23818680B4C001821D5 /* WebLayerOC.m */; };
+		90F9F24718680B4C001821D5 /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23818680B4C001821D5 /* WebLayerOC.m */; };
+		90F9F24818680B4C001821D5 /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23818680B4C001821D5 /* WebLayerOC.m */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -1510,7 +1524,7 @@
 		90338EBB185A18C300224717 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		90338EBC185A18C300224717 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
 		90338EBD185A18C300224717 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
-		90338EC3185AAAF600224717 /* AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetsManager.cpp; sourceTree = "<group>"; };
+		90338EC3185AAAF600224717 /* AssetsManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AssetsManager.mm; sourceTree = "<group>"; };
 		90338EC4185AAAF600224717 /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsManager.h; sourceTree = "<group>"; };
 		90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_AssetsManager.cpp; sourceTree = "<group>"; };
 		90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_AssetsManager.hpp; sourceTree = "<group>"; };
@@ -1534,6 +1548,13 @@
 		90F537361862EBF6008207BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90F537581862F58C008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90F5375B1862F594008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
+		90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_WebLayer.cpp; sourceTree = "<group>"; };
+		90F9F23318680B4C001821D5 /* js_bindings_WebLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_WebLayer.hpp; sourceTree = "<group>"; };
+		90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_WebLayer_api.js; sourceTree = "<group>"; };
+		90F9F23518680B4C001821D5 /* WebLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLayer.h; sourceTree = "<group>"; };
+		90F9F23618680B4C001821D5 /* WebLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLayer.mm; sourceTree = "<group>"; };
+		90F9F23718680B4C001821D5 /* WebLayerOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLayerOC.h; sourceTree = "<group>"; };
+		90F9F23818680B4C001821D5 /* WebLayerOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLayerOC.m; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* Magpie-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -2540,7 +2561,7 @@
 		90338EC2185AAAF600224717 /* AssetsManager */ = {
 			isa = PBXGroup;
 			children = (
-				90338EC3185AAAF600224717 /* AssetsManager.cpp */,
+				90338EC3185AAAF600224717 /* AssetsManager.mm */,
 				90338EC4185AAAF600224717 /* AssetsManager.h */,
 			);
 			path = AssetsManager;
@@ -2559,6 +2580,7 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90F9F23118680B4C001821D5 /* WebLayer */,
 				90338EC7185B1E9100224717 /* AssetsManagerBindings */,
 				90338EB7185A18C300224717 /* DataDollection */,
 				90C441C31859A2CD000C5D75 /* IAPHelp */,
@@ -2641,6 +2663,20 @@
 				90F5375B1862F594008207BD /* game.jsc */,
 			);
 			path = "AppStore-Releases";
+			sourceTree = "<group>";
+		};
+		90F9F23118680B4C001821D5 /* WebLayer */ = {
+			isa = PBXGroup;
+			children = (
+				90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */,
+				90F9F23318680B4C001821D5 /* js_bindings_WebLayer.hpp */,
+				90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */,
+				90F9F23518680B4C001821D5 /* WebLayer.h */,
+				90F9F23618680B4C001821D5 /* WebLayer.mm */,
+				90F9F23718680B4C001821D5 /* WebLayerOC.h */,
+				90F9F23818680B4C001821D5 /* WebLayerOC.m */,
+			);
+			path = WebLayer;
 			sourceTree = "<group>";
 		};
 		A92275321517C094001B78AA = {
@@ -3171,6 +3207,7 @@
 				902B08011858C475003A2A49 /* CCSorting.cpp in Sources */,
 				902B08021858C475003A2A49 /* CCTableView.cpp in Sources */,
 				902B08031858C475003A2A49 /* CCTableViewCell.cpp in Sources */,
+				90F9F23B18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */,
 				902B08041858C475003A2A49 /* CCPhysicsDebugNode.cpp in Sources */,
 				902B08051858C475003A2A49 /* CCPhysicsSprite.cpp in Sources */,
 				902B08061858C475003A2A49 /* js_bindings_system_functions.cpp in Sources */,
@@ -3229,8 +3266,10 @@
 				902B083B1858C475003A2A49 /* CCProcessBase.cpp in Sources */,
 				902B083C1858C475003A2A49 /* CCTween.cpp in Sources */,
 				902B083D1858C475003A2A49 /* CCArmature.cpp in Sources */,
+				90F9F23F18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */,
 				902B083E1858C475003A2A49 /* CCBone.cpp in Sources */,
 				902B083F1858C475003A2A49 /* jsb_cocos2d_studio.js in Sources */,
+				90F9F24718680B4C001821D5 /* WebLayerOC.m in Sources */,
 				902B08401858C475003A2A49 /* CCDatas.cpp in Sources */,
 				902B08411858C475003A2A49 /* CCBatchNode.cpp in Sources */,
 				902B08421858C475003A2A49 /* CCDecorativeDisplay.cpp in Sources */,
@@ -3243,10 +3282,11 @@
 				902B08491858C475003A2A49 /* CCDataReaderHelper.cpp in Sources */,
 				902B084A1858C475003A2A49 /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				902B084B1858C475003A2A49 /* CCTransformHelp.cpp in Sources */,
+				90F9F24318680B4C001821D5 /* WebLayer.mm in Sources */,
 				902B084C1858C475003A2A49 /* CCTweenFunction.cpp in Sources */,
 				902B084D1858C475003A2A49 /* CCUtilMath.cpp in Sources */,
 				902B084E1858C475003A2A49 /* CCComAttribute.cpp in Sources */,
-				90338EC6185AAAF600224717 /* AssetsManager.cpp in Sources */,
+				90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */,
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
@@ -3290,6 +3330,7 @@
 				90F5350E1862EAC2008207BD /* UIListViewEx.cpp in Sources */,
 				90F5350F1862EAC2008207BD /* cocos2d_specifics.cpp in Sources */,
 				90F535101862EAC2008207BD /* cocosjs_manual_conversions.cpp in Sources */,
+				90F9F24218680B4C001821D5 /* WebLayer.mm in Sources */,
 				90F535111862EAC2008207BD /* js_bindings_ccbreader.cpp in Sources */,
 				90F535121862EAC2008207BD /* js_bindings_chipmunk_auto_classes.cpp in Sources */,
 				90F535131862EAC2008207BD /* js_bindings_chipmunk_functions.cpp in Sources */,
@@ -3311,6 +3352,7 @@
 				90F535231862EAC2008207BD /* cpRotaryLimitJoint.c in Sources */,
 				90F535241862EAC2008207BD /* cpSimpleMotor.c in Sources */,
 				90F535251862EAC2008207BD /* cpSlideJoint.c in Sources */,
+				90F9F24618680B4C001821D5 /* WebLayerOC.m in Sources */,
 				90F535261862EAC2008207BD /* cpArbiter.c in Sources */,
 				90F535271862EAC2008207BD /* cpArray.c in Sources */,
 				90F535281862EAC2008207BD /* cpBB.c in Sources */,
@@ -3327,6 +3369,7 @@
 				90F535331862EAC2008207BD /* cpSpaceQuery.c in Sources */,
 				90F535341862EAC2008207BD /* cpSpaceStep.c in Sources */,
 				90F535351862EAC2008207BD /* cpSpatialIndex.c in Sources */,
+				90F9F23A18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */,
 				90F535361862EAC2008207BD /* cpSweep1D.c in Sources */,
 				90F535371862EAC2008207BD /* cpVect.c in Sources */,
 				90F535381862EAC2008207BD /* CDAudioManager.m in Sources */,
@@ -3370,7 +3413,7 @@
 				90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */,
 				90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */,
 				90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */,
-				90F535611862EAC2008207BD /* AssetsManager.cpp in Sources */,
+				90F535611862EAC2008207BD /* AssetsManager.mm in Sources */,
 				90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */,
 				90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */,
 				90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */,
@@ -3500,6 +3543,7 @@
 				90F5362A1862EB3C008207BD /* js_bindings_chipmunk_registration.cpp in Sources */,
 				90F5362B1862EB3C008207BD /* js_bindings_core.cpp in Sources */,
 				90F5362C1862EB3C008207BD /* js_manual_conversions.cpp in Sources */,
+				90F9F23C18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */,
 				90F5362D1862EB3C008207BD /* ScriptingCore.cpp in Sources */,
 				90F537371862EBF6008207BD /* AppDelegate.cpp in Sources */,
 				90F5362E1862EB3C008207BD /* chipmunk.c in Sources */,
@@ -3573,6 +3617,7 @@
 				90F536741862EB3C008207BD /* CCControlStepper.cpp in Sources */,
 				90F536751862EB3C008207BD /* CCControlSwitch.cpp in Sources */,
 				90F536761862EB3C008207BD /* CCControlUtils.cpp in Sources */,
+				90F9F24818680B4C001821D5 /* WebLayerOC.m in Sources */,
 				90F536771862EB3C008207BD /* CCInvocation.cpp in Sources */,
 				90F536781862EB3C008207BD /* CCScale9Sprite.cpp in Sources */,
 				90F536791862EB3C008207BD /* CCEditBox.cpp in Sources */,
@@ -3591,6 +3636,7 @@
 				90F536881862EB3C008207BD /* jsb_cocos2dx_studio_auto.cpp in Sources */,
 				90F536891862EB3C008207BD /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				90F5368A1862EB3C008207BD /* jsb_cocos2dx_extension_manual.cpp in Sources */,
+				90F9F24418680B4C001821D5 /* WebLayer.mm in Sources */,
 				90F536901862EB3C008207BD /* Animation.cpp in Sources */,
 				90F536911862EB3C008207BD /* AnimationState.cpp in Sources */,
 				90F536921862EB3C008207BD /* AnimationStateData.cpp in Sources */,
@@ -3647,7 +3693,7 @@
 				90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */,
 				90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */,
 				90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */,
-				90F536CA1862EB3C008207BD /* AssetsManager.cpp in Sources */,
+				90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */,
 				90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */,
 				90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */,
 				90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */,
@@ -3753,6 +3799,7 @@
 				15A3D5351682F1A5002FB0C5 /* CCLayerLoader.cpp in Sources */,
 				15A3D5361682F1A5002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
 				15A3D5371682F1A5002FB0C5 /* CCMenuItemLoader.cpp in Sources */,
+				90F9F24518680B4C001821D5 /* WebLayerOC.m in Sources */,
 				15A3D5381682F1A5002FB0C5 /* CCNode+CCBRelativePositioning.cpp in Sources */,
 				15A3D5391682F1A5002FB0C5 /* CCNodeLoader.cpp in Sources */,
 				15A3D53A1682F1A5002FB0C5 /* CCNodeLoaderLibrary.cpp in Sources */,
@@ -3772,11 +3819,12 @@
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,
-				90338EC5185AAAF600224717 /* AssetsManager.cpp in Sources */,
+				90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */,
 				15A3D54A1682F1A5002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3D54B1682F1A5002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3D54D1682F1A5002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3D54F1682F1A5002FB0C5 /* CCScrollView.cpp in Sources */,
+				90F9F24118680B4C001821D5 /* WebLayer.mm in Sources */,
 				15A3D5501682F1A5002FB0C5 /* CCSorting.cpp in Sources */,
 				15A3D5511682F1A5002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3D5521682F1A5002FB0C5 /* CCTableViewCell.cpp in Sources */,
@@ -3830,6 +3878,7 @@
 				90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */,
 				90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */,
 				1AB87010175E0759005D39BF /* CCSkeleton.cpp in Sources */,
+				90F9F23918680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */,
 				1AB87011175E0759005D39BF /* CCSkeletonAnimation.cpp in Sources */,
 				1AB87014175E0768005D39BF /* WebSocket.cpp in Sources */,
 				1AB87017175E0773005D39BF /* jsb_websocket.cpp in Sources */,
@@ -3845,6 +3894,7 @@
 				1A5E74A117F0874400B9ACAE /* CCArmature.cpp in Sources */,
 				1A5E74A217F0874400B9ACAE /* CCBone.cpp in Sources */,
 				3EC20B7D18331CA200F2C4D6 /* jsb_cocos2d_studio.js in Sources */,
+				90F9F23D18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */,
 				1A5E74A317F0874400B9ACAE /* CCDatas.cpp in Sources */,
 				1A5E74A417F0874400B9ACAE /* CCBatchNode.cpp in Sources */,
 				1A5E74A517F0874400B9ACAE /* CCDecorativeDisplay.cpp in Sources */,

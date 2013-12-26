@@ -160,10 +160,11 @@ var Task = Entity.extend({
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
+            var player = gameData.player;
+            var msg = data.msg;
+
             if (data.code == 200) {
                 cc.log("explore success");
-
-                var msg = data.msg;
 
                 var cbData = {
                     result: msg.result,
@@ -181,8 +182,6 @@ var Task = Entity.extend({
                 }
 
                 that.update(msg.task);
-
-                var player = gameData.player;
 
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
@@ -241,7 +240,13 @@ var Task = Entity.extend({
             } else {
                 cc.log("explore fail");
 
-                TipLayer.tip(data.msg);
+                TipLayer.tip(msg.message);
+
+                player.sets({
+                    power: msg.power.value,
+                    powerTimestamp: msg.power.time,
+                    exp: msg.exp
+                });
 
                 cb(null);
             }

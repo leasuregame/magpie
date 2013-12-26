@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>8</integer>
+	<integer>11</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -2049,7 +2049,7 @@
 				<key>displayName</key>
 				<string>spirit</string>
 				<key>memberVarAssignmentName</key>
-				<string>_spiritSprite1</string>
+				<string>ccbSpiritSprite1</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -4223,7 +4223,7 @@
 				<key>displayName</key>
 				<string>spirit</string>
 				<key>memberVarAssignmentName</key>
-				<string>_spiritSprite2</string>
+				<string>ccbSpiritSprite2</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -4278,8 +4278,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4311,7 +4311,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4326,6 +4326,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4587,8 +4589,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>3.5</real>
+							<real>3.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4620,7 +4622,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4736,7 +4738,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4787,7 +4789,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4804,7 +4806,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>0.43333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4838,7 +4840,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4889,7 +4891,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4906,7 +4908,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.43333333730697632</real>
+			<real>0.26666668057441711</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4940,7 +4942,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4957,7 +4959,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.69999998807907104</real>
+			<real>0.20000000298023224</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4991,7 +4993,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5042,7 +5044,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5093,7 +5095,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>callback</string>
+							<string>ccbFnCallback</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5110,7 +5112,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.30000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5144,7 +5146,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>showAddition</string>
+							<string>ccbFnShowAddition</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5161,7 +5163,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.80000001192092896</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5195,7 +5197,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>showAddition</string>
+							<string>ccbFnShowAddition</string>
 							<integer>2</integer>
 						</array>
 					</dict>

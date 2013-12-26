@@ -45,7 +45,7 @@ var CardEvolutionLayer = LazyLayer.extend({
         var point = gameFit.mainScene.cardEvolutionLayer.selectLeadCardItemPoint;
         this._evolutionEffect.setPosition(point);
         this._setCard();
-        this._changeCardFrame();
+        this.ccbFnChangeCardFrame();
         this.addChild(this._evolutionEffect);
 
         var that = this;
@@ -85,20 +85,20 @@ var CardEvolutionLayer = LazyLayer.extend({
         }
         var controller = this._evolutionEffect.controller;
 
-        controller["card_half"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        controller["card_icon"].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+        controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+        controller["ccbCardIcon"].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
     },
 
-    _changeCardFrame: function() {
-        cc.log("CardEvolutionLayer _changeCardFrame");
+    ccbFnChangeCardFrame: function() {
+        cc.log("CardEvolutionLayer ccbFnChangeCardFrame");
 
         var star = this._card.get("star");
         var controller = this._evolutionEffect.controller;
-        controller["card_frame"].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+        controller["ccbCardFrame"].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
     },
 
-    startSetStar: function () {
-        cc.log("CardEvolutionLayer startSetStar");
+    ccbFnStartSetStar: function () {
+        cc.log("CardEvolutionLayer ccbFnStartSetStar");
         this._index = 0;
         this._setStar();
     },

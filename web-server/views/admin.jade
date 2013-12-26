@@ -14,7 +14,7 @@ block head
   script.
     $(document).ready(function () { 
       $("#editor").cleditor({
-        height: 600
+        height: 450
       }); 
 
 
@@ -43,4 +43,4 @@ block content
       div(class='col-md-4 col-md-offset-3')
         input(id='save', type='button', class='btn btn-default btn-lg btn-block' value='保存')
       div(class='col-md-4 col-md-offset-1')
-        a(class='btn btn-default btn-lg btn-block', target='blank', href='/notice') 预览
+        a(class='btn btn-default btn-lg btn-block', target='blank', href='/api/app/notice') 预览

@@ -8,25 +8,34 @@ exports.version = function(req, res) {
 
 exports.update = function(req, res) {
   var ver = req.params.version;
-  var filename = 'big.zip';
+  var platform = req.params.platform;
+  var vData = helper.versionData();
+  if (!platform in vData) {
+    return res.status(404).send('Not update for ' + platform);
+  }
+
+  var filename = vData[platform].filename;
 
   if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}/.test(ver)) {
     return res.status(400).send('Bad version number');
   }
 
   if (ver == helper.lastVersion()) {
-    filename = 'small.zip';
+    filename = vData[platform].lastFilename;
   }
 
   res.redirect(helper.make_request_url('GET', 'magpie', filename, KSS_HOST));
 };
 
 exports.manage = function(req, res) {
-  res.render('manage', {version: helper.versionData()});
+  res.render('manage', {
+    menu: 'version',
+    version: helper.versionData()
+  });
 };
 
 exports.updateVersion = function(req, res) {
   console.log(req.body);
   helper.updateVersions(req.body);
-  res.redirect('manage');
+  res.redirect('/admin/version');
 };

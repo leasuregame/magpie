@@ -36,7 +36,7 @@ var make_request_url = function(method, bucket, obj_key, server) {
   return request_url;
 };
 
-var versionPath = function(){
+var versionPath = function() {
   return path.join(__dirname, 'version.json');
 }
 
@@ -48,17 +48,25 @@ var getVersion = function() {
   return rversionData().version;
 };
 
-var getLastVersion = function(){
+var getLastVersion = function() {
   return versionData().lastVersion;
 };
 var updateVersions = function(data) {
   jdata = JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
-  if (data.curversion) {
-    jdata.version = data.curversion;
+
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename'];
+
+  var platform;
+  for (platform in jdata) {
+    for (var i = 0; i < fields.length; i++) {
+      var field = fields[i];
+      var vfield = platform+'_'+field;
+      if (vfield in data) {
+        jdata[platform][field] = data[vfield];
+      }
+    }
   }
-  if (data.lastversion) {
-    jdata.lastVersion = data.lastversion;
-  }
+
   fs.writeFileSync(versionPath(), JSON.stringify(jdata));
 };
 

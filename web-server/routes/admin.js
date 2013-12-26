@@ -17,6 +17,7 @@ var writeFile = function(name, text) {
 exports.admin = function(req, res) {
   res.render('admin', {
     title: '公告编辑',
+    menu: 'notice',
     content: readFile('notice.html')
   });
 };

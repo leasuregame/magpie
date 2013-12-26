@@ -193,8 +193,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3.2000000476837158</real>
-							<real>3.2000000476837158</real>
+							<real>2.7999999523162842</real>
+							<real>2.7999999523162842</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -226,7 +226,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>120</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -254,6 +254,56 @@
 				</array>
 				<key>seqExpanded</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CocosBuilderClass</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>60</real>
+							<real>70</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>res/ccb/uiEffect34.ccb</string>
+					</dict>
+				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -342,11 +392,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>128</real>
+			<real>454.8441162109375</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

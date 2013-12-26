@@ -32,7 +32,6 @@ var BattleCardNode = cc.Node.extend({
     _animationManager: null,
     _hpProgress: null,
     _spiritHpProgress: null,
-    _tipLabel: null,
 
     init: function (data, index) {
         cc.log("BattleCardNode init");
@@ -91,9 +90,6 @@ var BattleCardNode = cc.Node.extend({
         this.addChild(this._spiritHpProgress);
 
         this.addChild(this._ccbNode);
-
-        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
-        this.addChild(this._tipLabel);
 
         return true;
     },
@@ -186,9 +182,9 @@ var BattleCardNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect4, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect12, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect5, this);
         }
 
         if (ccbNode) {
@@ -229,7 +225,7 @@ var BattleCardNode = cc.Node.extend({
             if (this._nowHp <= 0) {
                 this._isDie = true;
 
-                this.runAnimations("die_1");
+                this.runAnimations("die");
 
                 this._hpProgress.setVisible(false);
                 this._spiritHpProgress.setVisible(false);
@@ -238,8 +234,8 @@ var BattleCardNode = cc.Node.extend({
                     this.getParent().releaseSpirit(this._index, this._spirit);
                 }
             } else if (this._nowHp / this._hp < 0.05) {
-                if (this._animationManager.getRunningSequenceName() != "god_1") {
-                    this.runAnimations("god_1");
+                if (this._animationManager.getRunningSequenceName() != "god") {
+                    this.runAnimations("god");
                 }
             }
         }

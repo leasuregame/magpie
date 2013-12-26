@@ -51,9 +51,9 @@ var BattleSpiritNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect6, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect7, this);
         }
 
         if (ccbNode) {

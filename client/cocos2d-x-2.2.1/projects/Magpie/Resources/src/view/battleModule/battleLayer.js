@@ -12,10 +12,11 @@
  * */
 
 
-var SUBTITLE_Z_ORDER = 50;
-var TIP_Z_ORDER = 40;
-var EFFECT_Z_ORDER = 30;
-var ATK_NODE_Z_ORDER = 20;
+var SUBTITLE_Z_ORDER = 60;
+var TIP_Z_ORDER = 50;
+var EFFECT_Z_ORDER = 40;
+var ATK_NODE_Z_ORDER = 30;
+var SPIRIT_Z_ORDER = 20;
 var NODE_Z_ORDER = 10;
 
 var BatterLayer = cc.Layer.extend({
@@ -30,31 +31,6 @@ var BatterLayer = cc.Layer.extend({
     _spiritNode: null,
     _locate: null,
     _isPlayback: false,
-    _skillTable: {
-        1: "singleAtk",
-        2: "aoeAtk1",
-        3: "aoeAtk1",
-        4: "aoeAtk2",
-        5: "aoeAtk3",
-        6: "aoeAtk3",
-        7: "heal",
-        8: "heal",
-        9: "heal",
-        10: "heal"
-    },
-    _noSkillTable: {
-        0: "normalAtk1",
-        1: "normalAtk2",
-        2: "normalAtk3",
-        3: "normalAtk3",
-        4: "normalAtk3",
-        5: "normalAtk3",
-        6: "normalAtk3",
-        7: "normalAtk1",
-        8: "normalAtk1",
-        9: "normalAtk1",
-        10: "normalAtk1"
-    },
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -97,10 +73,6 @@ var BatterLayer = cc.Layer.extend({
                 this._battleNode[key].setPosition(locate);
                 this._battleNode[key].setVisible(false);
                 this.addChild(this._battleNode[key], NODE_Z_ORDER);
-
-                if (index < 7) {
-                    this._battleNode[key].runAnimations("beg_1", 0, this.began());
-                }
 
                 this._tipNode[key] = cc.BuilderReader.load(main_scene_image.tipNode, this);
                 this._tipNode[key].setPosition(locate);
@@ -304,7 +276,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var battleEffect2Node = cc.BuilderReader.load(main_scene_image.battleEffect2, that);
                     battleEffect2Node.setPosition(locate);
-                    that.addChild(battleEffect2Node);
+                    that.addChild(battleEffect2Node, EFFECT_Z_ORDER);
 
                     var showSpiritAdditionCallback1 = that.showSpiritAdditionCallback();
                     battleEffect2Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -312,7 +284,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var battleEffect3Node = cc.BuilderReader.load(main_scene_image.battleEffect3, that);
                         battleEffect3Node.setPosition(locate);
-                        that.addChild(battleEffect3Node);
+                        that.addChild(battleEffect3Node, EFFECT_Z_ORDER);
 
                         var showSpiritAdditionCallback2 = that.showSpiritAdditionCallback();
                         battleEffect3Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -395,7 +367,7 @@ var BatterLayer = cc.Layer.extend({
                     ccbNode.removeFromParent();
                 }
 
-                that[skillFn](battleStep);
+                this["skill1"](battleStep);
             };
 
             var addSubtitleNodeCb = function () {
@@ -427,7 +399,7 @@ var BatterLayer = cc.Layer.extend({
 
             cc.log(normalAtkFn);
 
-            this[normalAtkFn](battleStep);
+            this["skill1"](battleStep);
         }
     },
 
@@ -451,7 +423,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect1_1 = cc.BuilderReader.load(main_scene_image.effect1_1, that);
                     effect1_1.setPosition(attackerLocate);
-                    that.addChild(effect1_1);
+                    that.addChild(effect1_1, EFFECT_Z_ORDER);
 
                     var effect1NodeAnimationManager = effect1_1.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -460,7 +432,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var effect1_2 = cc.BuilderReader.load(main_scene_image.effect1_2, that);
                         effect1_2.setPosition(targetLocate);
-                        that.addChild(effect1_2);
+                        that.addChild(effect1_2, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect1_2.animationManager.setCompletedAnimationCallback(that, function () {
@@ -519,7 +491,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect1Node = cc.BuilderReader.load(main_scene_image.effect1, that);
                     effect1Node.setPosition(attackerLocate);
-                    that.addChild(effect1Node);
+                    that.addChild(effect1Node, EFFECT_Z_ORDER);
 
                     var effect1NodeAnimationManager = effect1Node.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -528,7 +500,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var effect2Node = cc.BuilderReader.load(main_scene_image.effect2, that);
                         effect2Node.setPosition(targetLocate);
-                        that.addChild(effect2Node);
+                        that.addChild(effect2Node, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect2Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -587,7 +559,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect26Node = cc.BuilderReader.load(main_scene_image.effect26, that);
                     effect26Node.setPosition(attackerLocate);
-                    that.addChild(effect26Node);
+                    that.addChild(effect26Node, EFFECT_Z_ORDER);
 
                     var nextStepCallback1 = that.nextStepCallback();
                     effect26Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -603,7 +575,7 @@ var BatterLayer = cc.Layer.extend({
                     that.scheduleOnce(function () {
                         var effect27Node = cc.BuilderReader.load(main_scene_image.effect27, that);
                         effect27Node.setPosition(targetLocate);
-                        that.addChild(effect27Node);
+                        that.addChild(effect27Node, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect27Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -649,7 +621,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect25Node = cc.BuilderReader.load(main_scene_image.effect25, that);
                     effect25Node.setPosition(attackerLocate);
-                    that.addChild(effect25Node);
+                    that.addChild(effect25Node, EFFECT_Z_ORDER);
 
                     var effect1NodeAnimationManager = effect25Node.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -658,7 +630,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var effect24Node = cc.BuilderReader.load(main_scene_image.effect24, that);
                         effect24Node.setPosition(targetLocate);
-                        that.addChild(effect24Node);
+                        that.addChild(effect24Node, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect24Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -717,7 +689,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect3Node = cc.BuilderReader.load(main_scene_image.effect3, that);
                     effect3Node.setPosition(targetLocate);
-                    that.addChild(effect3Node);
+                    that.addChild(effect3Node, EFFECT_Z_ORDER);
 
                     var nextStepCallback = that.nextStepCallback();
                     effect3Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -762,7 +734,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect19Node = cc.BuilderReader.load(main_scene_image.effect19, that);
                     effect19Node.setPosition(attackerLocate);
-                    that.addChild(effect19Node);
+                    that.addChild(effect19Node, EFFECT_Z_ORDER);
 
                     var effect1NodeAnimationManager = effect19Node.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -771,7 +743,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var effect20Node = cc.BuilderReader.load(main_scene_image.effect20, that);
                         effect20Node.setPosition(targetLocate);
-                        that.addChild(effect20Node);
+                        that.addChild(effect20Node, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect20Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -830,7 +802,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect21Node = cc.BuilderReader.load(main_scene_image.effect21, that);
                     effect21Node.setPosition(targetLocate);
-                    that.addChild(effect21Node);
+                    that.addChild(effect21Node, EFFECT_Z_ORDER);
 
                     var nextStepCallback1 = that.nextStepCallback();
                     effect21Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -875,7 +847,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect4Node = cc.BuilderReader.load(main_scene_image.effect4, that);
                     effect4Node.setPosition(targetLocate);
-                    that.addChild(effect4Node);
+                    that.addChild(effect4Node, EFFECT_Z_ORDER);
 
                     var nextStepCallback1 = that.nextStepCallback();
                     effect4Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -883,7 +855,7 @@ var BatterLayer = cc.Layer.extend({
 
                         var effect5Node = cc.BuilderReader.load(main_scene_image.effect5, that);
                         effect5Node.setPosition(targetLocate);
-                        that.addChild(effect5Node);
+                        that.addChild(effect5Node, EFFECT_Z_ORDER);
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect5Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -923,7 +895,7 @@ var BatterLayer = cc.Layer.extend({
 
             var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, this);
             effect6Node.setPosition(attackerLocate);
-            this.addChild(effect6Node);
+            this.addChild(effect6Node, EFFECT_Z_ORDER);
 
             var nextStepCallback = this.nextStepCallback();
             effect6Node.animationManager.setCompletedAnimationCallback(this, function () {
@@ -941,7 +913,7 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect7Node = cc.BuilderReader.load(main_scene_image.effect7, that);
                     effect7Node.setPosition(targetLocate);
-                    that.addChild(effect7Node);
+                    that.addChild(effect7Node, EFFECT_Z_ORDER);
 
                     var nextStepCallback = that.nextStepCallback();
                     effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -981,7 +953,7 @@ var BatterLayer = cc.Layer.extend({
 
         spirit.setPosition(pointArray1[0]);
         spirit.setScale(0);
-        this.addChild(spirit, 1);
+        this.addChild(spirit, SPIRIT_Z_ORDER);
         this._spiritNode.push(spirit);
 
         var pointArray2 = [

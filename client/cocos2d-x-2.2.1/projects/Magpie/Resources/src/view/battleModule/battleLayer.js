@@ -49,6 +49,8 @@ var BatterLayer = cc.Layer.extend({
         10: "normalAtk1"
     },
 
+    _chooseSpeedItem: [],
+
     init: function (battleLog) {
         cc.log("BatterLayer init");
 
@@ -62,6 +64,8 @@ var BatterLayer = cc.Layer.extend({
         this._isPlayback = battleLog.get("isPlayback");
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
+
+        this._chooseSpeedItem = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._batterLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -127,6 +131,43 @@ var BatterLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
+
+        var table = outputTables.values.rows;
+        var times = [];
+
+        var keys = Object.keys(table);
+        var len = keys.length;
+
+        for (var i = 0; i < len; i++) {
+            var key = "playSpeedLv" + (i + 1);
+            if (table[key]) {
+                times.push(i + 1);
+            } else {
+                break;
+            }
+        }
+
+        var timesLen = times.length;
+
+        var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+
+        for (var j = 0; j < timesLen; j++) {
+            var time = times[0];
+            if(j < timesLen - 1) {
+                time = times[j + 1];
+            }
+            this._chooseSpeedItem[j + 1] = cc.MenuItemImage.create(
+                main_scene_image["button" + (71 + j)],
+                main_scene_image["button" + (71 + j) + "s"],
+                this._onClickChangePlaySpeed(time),
+                this
+            );
+
+            this._chooseSpeedItem[j + 1].setPosition(this._batterLayerFit.chooseSpeedItemPoint);
+
+            this._chooseSpeedItem[j + 1].setVisible(times[j] == playSpeedTimes);
+            menu.addChild(this._chooseSpeedItem[j + 1]);
+        }
 
         this._battleLog.recover();
     },
@@ -1004,12 +1045,47 @@ var BatterLayer = cc.Layer.extend({
 
         if (this._isPlayback) {
             this.end();
-        } else if (gameData.player.get("lv") < 10) {
-            TipLayer.tip("10级以后，可以跳过战斗");
-        } else {
+            return;
+        }
+
+        var table = outputTables.values.rows;
+        var needLv = table["passBattleLv"].value;
+        var needVip = table["passBattleVip"].value;
+        var player = gameData.player;
+
+        if (player.get("lv") >= needLv && player.get("vip") >= needVip) {
             this.end();
+        } else {
+            TipLayer.tip("VIP" + needVip + "玩家达到" + needLv + "级后，可跳过战斗。");
+        }
+    },
+
+    _onClickChangePlaySpeed: function (times) {
+        var that = this;
+        return function () {
+            cc.log("BattleLayer _onClickChangePlaySpeed: " + times);
+
+            var table = outputTables.values.rows;
+            var needLv = table["playSpeedLv" + times].value;
+
+            if (gameData.player.get("lv") >= needLv) {
+
+                cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[times]);
+                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", times);
+                that._chooseSpeedItem[times].setVisible(true);
+
+                var time = times - 1;
+                if(time < 1) {
+                    time = that._chooseSpeedItem.length - 1;
+                }
+                that._chooseSpeedItem[time].setVisible(false);
+
+            } else {
+                TipLayer.tip(needLv + "级可开启" + times + "倍战斗加速");
+            }
         }
     }
+
 });
 
 

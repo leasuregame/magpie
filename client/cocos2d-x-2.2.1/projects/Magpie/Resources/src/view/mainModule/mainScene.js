@@ -40,6 +40,8 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
 

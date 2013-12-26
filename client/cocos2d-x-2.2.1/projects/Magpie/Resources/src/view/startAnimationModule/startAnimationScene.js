@@ -32,6 +32,8 @@ var StartAnimationScene = cc.Scene.extend({
 
         if (!this._super()) return false;
 
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
         var startAnimationLayer = StartAnimationLayer.create();
         this.addChild(startAnimationLayer);
 

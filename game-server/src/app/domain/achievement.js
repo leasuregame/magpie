@@ -74,7 +74,7 @@ Achievement.star5card = function(player) {
 };
 
 Achievement.star5cardFullLevel = function(player) {
-	checkIsReached_alpha(player, 'star5cardLevelTo', 1);
+	checkIsReached_alpha(player, 'star5cardFullLevel', 1);
 };
 
 Achievement.psTo10 = function(player) {

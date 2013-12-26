@@ -33,15 +33,19 @@ Handler::getReward = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     data = table.getTableItem('achievement', achId)
-    player.increase('money', data.money)
+    if not data
+      return next(null, {code: 501, msg: '找不到对应的成就'})
+
+    ach = utility.deepCopy(player.achievement)
+    if not _.has(ach, achId) or not ach[achId].isAchieve
+      return next(null, {code: 501, msg: '还未达成该成就'})
+
+    if _.has(ach, achId) and ach[achId].isTake
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    ach[achId].isTake = true
+    player.achievement = ach
+    player.increase('energy', data.energy)
     player.increase('gold', data.gold)
-    setAchievementRewardStatus(player, achId)
     player.save()
     next(null, {code: 200})
-    
-
-setAchievementRewardStatus = (player, id) ->
-  ach = utility.deepCopy(player.achievement)
-  if _.has(ach, id) and not ach[id].isTake
-    ach[id].isTake = true
-  player.achievement = ach

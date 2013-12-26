@@ -265,6 +265,7 @@ var Server = Entity.extend({
                     MainScene.destroy();
 
                     cc.Director.getInstance().replaceScene(LoginScene.create());
+                    cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
                 });
             });
 

@@ -29,7 +29,7 @@ class Manager
 
     ### 检查是否体力充足 ###
     if player.power.value < taskData.power_consume
-      return cb({code: 501,msg: '体力不足'}, null, null)
+      return cb({code: 501 ,msg: '体力不足'}, null, null)
 
     data.result = utility.randomValue(
       ['fight','box', 'none'],
@@ -99,7 +99,8 @@ class Manager
     _obj = taskRate.open_box.star
 
     _rd_star = parseInt utility.randomValue(_.keys(_obj), _.values(_obj))
-    _card_table_id = entityUtil.randomCardId(_rd_star)
+    _card_table_id = entityUtil.randomCardId(_rd_star, player.lightUpCards())
+    
     entityUtil.createCard {
       star: _rd_star
       tableId: _card_table_id

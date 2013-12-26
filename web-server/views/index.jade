@@ -1,5 +1,14 @@
 extends adminLayout
 
 block content
-  div(class='bg')
-    != content
+  div.jumbotron
+    h2 自更新服务
+    ul
+      li
+        strong /api/version
+        span 获取最新的版本号
+      li
+        strong /api/update/<version>
+      li
+        span 获取更新包，<version> 为当前手机游戏的版本号。
+    

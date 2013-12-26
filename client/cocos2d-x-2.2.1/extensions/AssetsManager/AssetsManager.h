@@ -82,6 +82,8 @@ public:
     
     virtual ~AssetsManager();
     
+    void init();
+    
     /* @brief Check out if there is a new version resource.
      *        You may use this method before updating, then let user determine whether
      *        he wants to update resources.
@@ -148,6 +150,8 @@ public:
      */
     void destroyStoragePath();
     
+    std::string getAppVersion();
+    
     /* downloadAndUncompress is the entry of a new thread 
      */
     friend void* assetsManagerDownloadAndUncompress(void*);
@@ -194,7 +198,8 @@ private:
     private:
         void handleUpdateSucceed(Message *msg);
         
-        std::list<Message*> *_messageQueue;
+//        std::list<Message*> *_messageQueue;
+        Message* _message;
         pthread_mutex_t _messageQueueMutex;
     };
     

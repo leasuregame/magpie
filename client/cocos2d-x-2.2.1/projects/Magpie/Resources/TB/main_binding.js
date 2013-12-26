@@ -95,6 +95,7 @@ var appFiles = [
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginBgLayer.js',
+    'src/view/loginModule/updateLayer.js',
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
     'src/view/loginModule/newPlayerLayer.js',
@@ -219,5 +220,8 @@ gameFitAdapter();
 var loginScene = LoginScene.create();
 
 // run
-director.runWithScene(loginScene);
-//director.replaceScene(loginScene);
+if (director.getRunningScene()) {
+    director.replaceScene(loginScene);
+} else {
+    director.runWithScene(loginScene);
+}

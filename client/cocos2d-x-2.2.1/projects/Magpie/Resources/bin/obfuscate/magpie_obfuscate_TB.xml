@@ -88,6 +88,7 @@
                 <file name="src/controls/dialog.js"/>
 
                 <file name="src/view/loginModule/loginBgLayer.js"/>
+                <file name="src/view/loginModule/updateLayer.js"/>
                 <file name="src/view/loginModule/loginLayer.js"/>
                 <file name="src/view/loginModule/logoutLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>

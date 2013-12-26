@@ -162,3 +162,14 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `status` INT(6),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `tbOrder` (
+  `tradeNo` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `amount` INT(5) UNSIGNED,
+  `partner` VARCHAR(128) COLLATE utf8_unicode_ci,
+  `paydes` VARCHAR(100) COLLATE utf8_unicode_ci,
+  `status` INT(4),
+  `created` DATETIME,
+  PRIMARY KEY (`tradeNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

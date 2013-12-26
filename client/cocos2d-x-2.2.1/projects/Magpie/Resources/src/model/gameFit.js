@@ -57,7 +57,8 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(250, -450),
             "effect15NodePoint": cc.p(360, 480),
             "ccbNodePoint1": cc.p(360, 352),
-            "ccbNodePoint2": cc.p(360, 652)
+            "ccbNodePoint2": cc.p(360, 652),
+            "chooseSpeedItemPoint": cc.p(-250, -450)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 40,
@@ -1275,7 +1276,8 @@ var fit4Iphone5 = {
             "backItemPoint": cc.p(225, -530),
             "effect15NodePoint": cc.p(320, 568),
             "ccbNodePoint1": cc.p(320, 380),
-            "ccbNodePoint2": cc.p(320, 800)
+            "ccbNodePoint2": cc.p(320, 800),
+            "chooseSpeedItemPoint": cc.p(-225, -530)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 0,

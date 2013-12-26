@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9300</WindowHeight>
+  <WindowHeight>5540</WindowHeight>
   <WindowWidth>25040</WindowWidth>
-  <WindowTopX>14640</WindowTopX>
-  <WindowTopY>3120</WindowTopY>
+  <WindowTopX>14700</WindowTopX>
+  <WindowTopY>5760</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -35,7 +35,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="零碎的值配置表">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="175"/>
    <Column ss:AutoFitWidth="0" ss:Width="121"/>
@@ -52,7 +52,11 @@
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">twicePlaySpeedLv</Data></Cell>
+    <Cell><Data ss:Type="String">playSpeedLv1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">playSpeedLv2</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -71,8 +75,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

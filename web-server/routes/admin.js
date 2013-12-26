@@ -21,6 +21,13 @@ exports.admin = function(req, res) {
   });
 };
 
+exports.notice = function(req, res) {
+  res.render('notice', {
+    title: '公告',
+    content: fs.readFileSync(path.join(__dirname, '..', 'views', 'notice.html'), 'utf8')
+  });
+}
+
 exports.saveNotice = function(req, res) {
   if (req.body.content) {
     writeFile('notice.html', req.body.content);

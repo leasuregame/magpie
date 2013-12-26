@@ -1,4 +1,5 @@
 var helper = require('../util/helper');
+var KSS_HOST = 'http://kss.ksyun.com';
 
 exports.version = function(req, res) {
   var ver = helper.version();
@@ -9,7 +10,7 @@ exports.update = function(req, res) {
   var ver = req.params.version;
   var filename = 'big.zip';
 
-  if (version!= null && version != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}/.test(version)) {
+  if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}/.test(ver)) {
     return res.status(400).send('Bad version number');
   }
 
@@ -27,8 +28,5 @@ exports.manage = function(req, res) {
 exports.updateVersion = function(req, res) {
   console.log(req.body);
   helper.updateVersions(req.body);
-  res.render('manage', {
-    success: true,
-    version: helper.versionData()
-  });
+  res.redirect('manage');
 };

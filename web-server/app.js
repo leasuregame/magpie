@@ -30,12 +30,15 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/notice', admin.notice);
 app.get('/admin', admin.admin);
 app.post('/admin/save', admin.saveNotice);
-app.get('/version', update.version);
-app.get('/update/:version', update.update);
 app.get('/manage', update.manage);
 app.post('/manage', update.updateVersion);
+
+app.get('/api/version', update.version);
+app.get('/api/update', update.update);
+app.get('/api/update/:version', update.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

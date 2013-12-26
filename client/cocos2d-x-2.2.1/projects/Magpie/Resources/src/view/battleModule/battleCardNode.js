@@ -115,8 +115,12 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
-    getSkillId: function () {
-        return this._skillId;
+    getSkillFn: function () {
+
+    },
+
+    getNormalAtkFn: function () {
+
     },
 
     getSpiritHp: function () {

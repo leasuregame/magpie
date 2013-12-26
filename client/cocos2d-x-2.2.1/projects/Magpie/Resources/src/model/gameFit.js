@@ -55,9 +55,9 @@ var fit4Iphone4 = {
                 12: cc.p(560, 852)
             },
             "backItemPoint": cc.p(250, -450),
-            "effect15NodePoint": cc.p(360, 480),
-            "ccbNodePoint1": cc.p(360, 352),
-            "ccbNodePoint2": cc.p(360, 652)
+            "vsNodePoint": cc.p(360, 480),
+            "oSubtitleNode": cc.p(360, 352),
+            "eSubtitleNode": cc.p(360, 652)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 40,
@@ -1271,9 +1271,9 @@ var fit4Iphone5 = {
                 12: cc.p(520, 1000)
             },
             "backItemPoint": cc.p(225, -530),
-            "effect15NodePoint": cc.p(320, 568),
-            "ccbNodePoint1": cc.p(320, 380),
-            "ccbNodePoint2": cc.p(320, 800)
+            "vsNodePoint": cc.p(320, 568),
+            "oSubtitleNode": cc.p(320, 380),
+            "eSubtitleNode": cc.p(320, 800)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 0,

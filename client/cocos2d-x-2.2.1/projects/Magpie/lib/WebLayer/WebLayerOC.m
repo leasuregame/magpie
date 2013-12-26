@@ -35,7 +35,6 @@
 - (void) load
 {
     [_uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString :_url]]];
-//    [_uiWebView setUserInteractionEnabled:NO];
 
     [_uiView addSubview:_uiWebView];
 

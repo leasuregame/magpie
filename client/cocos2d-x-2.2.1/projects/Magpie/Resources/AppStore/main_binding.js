@@ -96,6 +96,7 @@ var appFiles = [
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginBgLayer.js',
+    'src/view/loginModule/updateLayer.js',
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
     'src/view/loginModule/newPlayerLayer.js',
@@ -220,50 +221,8 @@ gameFitAdapter();
 var loginScene = LoginScene.create();
 
 // run
-director.runWithScene(loginScene);
-//director.replaceScene(loginScene);
-
-//cc.log(cc.AssetsManager);
-//
-//var delegate = {
-//    errorCallback: function(errorCode) {
-//        cc.log("errorCallback: " + errorCode);
-//    },
-//
-//    progressCallback: function(percent) {
-//        percent = Math.min(percent, 100);
-//
-//        cc.log("progressCallback: " + percent);
-//    },
-//
-//    successCallback: function() {
-//        cc.log("successCallback");
-//    }
-//};
-//
-//var updateObject = cc.AssetsManager.create(
-//    "",
-//    "http://124.238.236.33:3434/version",
-//    "update_dir",
-//    delegate,
-//    delegate.errorCallback,
-//    delegate.progressCallback,
-//    delegate.successCallback
-//);
-//
-//cc.log(updateObject.getStoragePath());
-//cc.log(updateObject.getPackageUrl());
-//cc.log(updateObject.getVersionFileUrl());
-//
-//updateObject.setPackageUrl("http://124.238.236.33:3434/update/" + updateObject.getVersion());
-//
-//cc.log(updateObject.getStoragePath());
-//cc.log(updateObject.getPackageUrl());
-//cc.log(updateObject.getVersionFileUrl());
-//
-//cc.log(updateObject.update);
-//
-//updateObject.deleteVersion();
-//updateObject.update();
-
-lz.WebLayer.create("http://192.168.1.2/Announcement.html", cc.rect(0, 0, 640, 300));
+if (director.getRunningScene()) {
+    director.replaceScene(loginScene);
+} else {
+    director.runWithScene(loginScene);
+}

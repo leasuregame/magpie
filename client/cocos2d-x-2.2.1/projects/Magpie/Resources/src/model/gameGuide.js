@@ -68,7 +68,7 @@ var gameGuide = {
 
                 var point = gameFit.gameGuide.effectPoint;
                 var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect58, this);
-                tipEffect.controller.tipLabel.setString(guide.tip);
+                tipEffect.controller.ccbTipLabel.setString(guide.tip);
                 tipEffect.setPosition(point);
                 tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
                     tipEffect.removeFromParent();

@@ -100,7 +100,7 @@ var CardListLayer = cc.Layer.extend({
             var cardLabel = CardLabel.create(this, card, selectType);
             cardLabel.setAnchorPoint(cc.p(0, 0));
             cardLabel.setPosition(cc.p(0, 0));
-
+            cardLabel.setVisible(false);
             scrollViewLayer.addChild(cardLabel);
 
             this._cardLabel[key] = cardLabel;
@@ -214,6 +214,8 @@ var CardListLayer = cc.Layer.extend({
         var noSelectCardListIndex = [];
         var i;
 
+        var cardLabelList = [];
+
         for (i = 0; i < cardCount; ++i) {
             if (this._isCanSelect(cardListIndex[i])) {
                 canSelectCardListIndex.push(cardListIndex[i]);
@@ -232,6 +234,8 @@ var CardListLayer = cc.Layer.extend({
             var index = this._sortType == SORT_TYPE_DROP ? (cardCount - i) : (i + 1);
             this._cardLabel[cardListIndex[i]].setPosition(this._getCardLocation(index));
             flag[cardListIndex[i]] = true;
+
+            cardLabelList[index - 1] = this._cardLabel[cardListIndex[i]];
         }
 
         var len = this._excludeList.length;
@@ -247,6 +251,12 @@ var CardListLayer = cc.Layer.extend({
                 delete this._cardLabel[key];
             }
         }
+
+        var slideLayer = SlideLayer.create({
+            labels: cardLabelList
+        });
+
+        slideLayer.showSlide();
     },
 
     _getCardLocation: function (index) {

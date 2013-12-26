@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>8</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -1709,7 +1709,7 @@
 				<key>displayName</key>
 				<string>CCLabelBMFont</string>
 				<key>memberVarAssignmentName</key>
-				<string>label</string>
+				<string>ccbLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1737,7 +1737,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>30</real>
+							<real>50</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1799,8 +1799,8 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>254</integer>
-							<integer>251</integer>
+							<integer>255</integer>
+							<integer>205</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1824,8 +1824,6 @@
 						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1953,7 +1951,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2018,7 +2016,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>

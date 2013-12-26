@@ -8852,7 +8852,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -8902,7 +8902,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.0</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -9070,7 +9070,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -9120,7 +9120,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.0</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -9364,7 +9364,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>next</string>
+							<string>ccbFnNext</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9379,9 +9379,9 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.93350696563720703</real>
 			<key>position</key>
-			<real>4.0666666030883789</real>
+			<real>6.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

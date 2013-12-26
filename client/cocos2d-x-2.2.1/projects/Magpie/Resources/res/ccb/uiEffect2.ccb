@@ -119,7 +119,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickSpiritPool</string>
+									<string>ccbFnSpiritPool</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -2382,7 +2382,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>35</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2435,7 +2435,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>8.1818180084228516</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3001,7 +3001,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3054,7 +3054,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>35</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4428,7 +4428,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>180</real>
+								<real>9</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4457,7 +4457,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>51</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4661,7 +4661,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-180</real>
+								<real>-9</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4690,7 +4690,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>51</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4716,6 +4716,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -4738,7 +4740,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -4753,7 +4755,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>8.1818180084228516</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4914,7 +4916,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_collectSpirit</string>
+							<string>ccbFnCollectSpirit</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -4931,7 +4933,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>0.10000000149011612</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -177,7 +177,7 @@ var ExchangeLayer = cc.Layer.extend({
         this._label.addChild(menu);
 
         this._cardItem = {};
-        this._effect = {};
+
         var point = this._exchangeLayerFit.basePoint;
         for (var i = 0; i < len; ++i) {
 
@@ -189,6 +189,10 @@ var ExchangeLayer = cc.Layer.extend({
             cardItem.setPosition(cc.p(x - 7, y + 29));
             menu.addChild(cardItem);
             this._cardItem[exchangeCardList[i].id] = cardItem;
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+            effect.setPosition(cardItem.getPosition());
+            this.addChild(effect, 2);
 
             var skillType = card.get("skillType");
             if (skillType > 3) {

@@ -209,6 +209,7 @@ var TaskLayer = cc.Layer.extend({
 
         var size = this._sectionItem[section].getContentSize();
         var point = this._sectionItem[section].getPosition();
+
         this._markSprite.setPosition(cc.p(point.x, point.y + size.height - 30));
 
         var minIndex = Math.max(this._index - 2, 0) * TASK_SECTION_COUNT + 1;

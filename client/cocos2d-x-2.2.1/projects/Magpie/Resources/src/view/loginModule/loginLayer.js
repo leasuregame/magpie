@@ -59,9 +59,9 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        this._loginFrame.controller.accountNode.setPosition(this._loginLayerFit.accountNodePoint);
-        this._loginFrame.controller.passwordNode.setPosition(this._loginLayerFit.passwordNodePoint);
-        this._loginFrame.controller.startGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
+        this._loginFrame.controller.ccbAccountNode.setPosition(this._loginLayerFit.accountNodePoint);
+        this._loginFrame.controller.ccbPasswordNode.setPosition(this._loginLayerFit.passwordNodePoint);
+        this._loginFrame.controller.ccbStartGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
 
         this._accountEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
@@ -81,7 +81,7 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
         //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(50);
-        this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
+        this._loginFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
 
 
         this._passwordEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
@@ -101,14 +101,14 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
         //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(20);
-        this._loginFrame.controller.passwordLabel.addChild(this._passwordEditBox);
+        this._loginFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
 
         this._accountEditBox.setText(user.get("account"));
         this._passwordEditBox.setText(user.get("password"));
 
         this._selectAreaName = StrokeLabel.create("", "STHeitiTC-Medium", 30);
         this._selectAreaName.setPosition(cc.p(0, 0));
-        this._loginFrame.controller.areaName.addChild(this._selectAreaName);
+        this._loginFrame.controller.ccbAreaName.addChild(this._selectAreaName);
 
         this.updateAreaList();
         return true
@@ -164,8 +164,8 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setVisible(true);
     },
 
-    _onClickOpenArea: function () {
-        cc.log("LoginLayer _onClickOpenArea");
+    ccbFnOpenArea: function () {
+        cc.log("LoginLayer ccbFnOpenArea");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -175,8 +175,8 @@ var LoginLayer = cc.Layer.extend({
         this.addChild(selectAreaLayer, 1);
     },
 
-    _onClickLogin: function () {
-        cc.log("LoginLayer _onClickLogin");
+    ccbFnLogin: function () {
+        cc.log("LoginLayer ccbFnLogin");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -201,8 +201,8 @@ var LoginLayer = cc.Layer.extend({
         });
     },
 
-    _onClickRegister: function () {
-        cc.log("LoginLayer _onClickRegister");
+    ccbFnRegister: function () {
+        cc.log("LoginLayer ccbFnRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.getParent().switchTo(RegisterLayer.create());

@@ -86,6 +86,7 @@
                 <file name="src/controls/colorLabelTTF.js"/>
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
+                <file name='src/controls/slideLayer.js'/>
 
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>

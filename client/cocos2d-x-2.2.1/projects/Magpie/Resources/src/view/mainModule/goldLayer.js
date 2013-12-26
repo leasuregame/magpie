@@ -92,7 +92,7 @@ var GoldLayer = LazyLayer.extend({
         }
 
         this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);
-        this._goldBoxItem.controller.goldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        this._goldBoxItem.controller.ccbGoldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
         this.addChild(this._goldBoxItem);
 
@@ -268,7 +268,7 @@ var GoldLayer = LazyLayer.extend({
             gameData.task.obtainGold(this._gold);
 
             var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect65, this);
-            tipEffect.controller.goldLabel.setString(this._gold);
+            tipEffect.controller.ccbGoldLabel.setString(this._gold);
             tipEffect.setPosition(this._goldLayerFit.tipLabelPoint);
             this.addChild(tipEffect);
         }
@@ -282,12 +282,12 @@ var GoldLayer = LazyLayer.extend({
         }, 2);
     },
 
-    _onClickGoldBox: function () {
-        cc.log("GoldLayer _onClickGoldBox");
+    ccbFnGoldBox: function () {
+        cc.log("GoldLayer ccbFnGoldBox");
 
         gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
-        this._btnGoldBox.setEnabled(false);
+        this.ccbGoldBox.setEnabled(false);
 
         if (this._tipEffect) {
             this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);

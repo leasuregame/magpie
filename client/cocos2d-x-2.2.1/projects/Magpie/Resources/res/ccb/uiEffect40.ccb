@@ -552,7 +552,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickOk</string>
+											<string>ccbFnOk</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -665,7 +665,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickRandom</string>
+											<string>ccbFnRandom</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -724,7 +724,7 @@
 								<key>memberVarAssignmentName</key>
 								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
+								<integer>2</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -778,7 +778,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickClose</string>
+											<string>ccbFnClose</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -824,6 +824,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1149,7 +1151,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>playerNameLabel</string>
+						<string>ccbPlayerNameLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

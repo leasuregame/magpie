@@ -52,16 +52,16 @@ var LotteryCardLayer = LazyLayer.extend({
 
         var controller = this._ccbNode.controller;
 
-        controller.nameLabel.setString(this._card.get("name"));
+        controller.ccbNameLabel.setString(this._card.get("name"));
 
         var urlList = this._card.getCardFullUrl();
         var len = urlList.length;
 
         for (var i = 0; i < 3; ++i) {
             if (i < len) {
-                controller["cardFull" + i].setTexture(lz.getTexture(urlList[i]));
+                controller["ccbCardFull" + i].setTexture(lz.getTexture(urlList[i]));
             } else {
-                controller["cardFull" + i].setVisible(false);
+                controller["ccbCardFull" + i].setVisible(false);
             }
         }
 
@@ -73,8 +73,8 @@ var LotteryCardLayer = LazyLayer.extend({
         return true;
     },
 
-    startSetStar: function () {
-        cc.log("LotteryCardLayer startSetStar");
+    ccbFnStartSetStar: function () {
+        cc.log("LotteryCardLayer ccbFnStartSetStar");
 
         this._index = 0;
 

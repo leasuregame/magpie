@@ -15,7 +15,7 @@
 var SpiritDetails = LazyLayer.extend({
     _spiritDetailsFit: null,
 
-    spiritNode: null,
+    ccbSpiritNode: null,
     _lvLabel: null,
     _expLabel: null,
     _passiveHarmLabel: null,
@@ -153,7 +153,7 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        this.spiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
+        this.ccbSpiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
 
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
@@ -162,19 +162,33 @@ var SpiritDetails = LazyLayer.extend({
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
     },
 
-    closeCloud: function () {
-        cc.log("SpiritDetails closeCloud");
+    ccbFnUpdate: function () {
+        cc.log("SpiritDetails ccbFnUpdate");
+
+        var spirit = gameData.spirit;
+
+        this.ccbSpiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
+
+        this._upgradeItem.setEnabled(spirit.canUpgrade());
+
+        this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
+        this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
+        this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+    },
+
+    ccbFnCloseCloud: function () {
+        cc.log("SpiritDetails ccbFnCloseCloud");
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect59, this);
         var controller = effect.controller;
         var spirit = gameData.spirit;
 
         var lv = spirit.get("lv");
-        controller.oldLvLabel.setString("LV.  " + (lv - 1));
-        controller.nowLvLabel.setString("LV.  " + lv);
-        controller.oldPassiveHarmLabel.setString(this._oldPassiveHarm);
-        controller.nowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
-        controller.spiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));
+        controller.ccbOldLvLabel.setString("LV.  " + (lv - 1));
+        controller.ccbNowLvLabel.setString("LV.  " + lv);
+        controller.ccbOldPassiveHarmLabel.setString(this._oldPassiveHarm);
+        controller.ccbNowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+        controller.ccbSpiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));
 
         effect.setPosition(this._spiritDetailsFit.effectPoint);
         effect.animationManager.setCompletedAnimationCallback(this, function () {

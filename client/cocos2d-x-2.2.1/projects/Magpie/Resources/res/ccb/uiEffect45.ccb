@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -856,7 +856,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -907,7 +907,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>-20</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -936,7 +936,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1268,7 +1268,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1282,8 +1282,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>250</real>
+							<real>-10</real>
+							<real>150</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1319,7 +1319,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>37</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1348,7 +1348,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1514,7 +1514,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1551,8 +1551,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1584,7 +1584,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2124,7 +2124,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>240</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2153,7 +2153,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2347,7 +2347,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-240</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2376,7 +2376,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2424,7 +2424,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3013,7 +3013,7 @@
 						<key>displayName</key>
 						<string>card_frame4</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_frame</string>
+						<string>ccbCardFrame</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -3199,7 +3199,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3252,7 +3252,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -3486,7 +3486,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3500,8 +3500,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-63</real>
-									<real>-72</real>
+									<real>56.200031280517578</real>
+									<real>64.656074523925781</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3537,7 +3537,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>90</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3566,7 +3566,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3823,7 +3823,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3837,8 +3837,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>63</real>
-									<real>72</real>
+									<real>56.200031280517578</real>
+									<real>64.656074523925781</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3874,7 +3874,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>90</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3903,7 +3903,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4031,7 +4031,7 @@
 						<key>displayName</key>
 						<string>card12_half1</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_half</string>
+						<string>ccbCardHalf</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -4192,7 +4192,7 @@
 						<key>displayName</key>
 						<string>card_icon1</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_icon</string>
+						<string>ccbCardIcon</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -5600,7 +5600,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.6666667461395264</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5634,7 +5634,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>startSetStar</string>
+							<string>ccbFnStartSetStar</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5650,7 +5650,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_changeCardFrame</string>
+							<string>ccbFnChangeCardFrame</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5667,7 +5667,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.3333334922790527</real>
+			<real>1.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

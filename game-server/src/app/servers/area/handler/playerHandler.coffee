@@ -119,7 +119,7 @@ Handler::givePower = (msg, session, next) ->
 
   cur_hour = new Date().getHours()
 
-  if @app.get('debug')
+  if msg.hour
     cur_hour = msg.hour
 
   if not canGetPower(cur_hour)

@@ -30,12 +30,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/notice', admin.notice);
+
 app.get('/admin/notice', admin.admin);
 app.post('/admin/notice', admin.saveNotice);
 app.get('/admin/version', update.manage);
 app.post('/admin/version', update.updateVersion);
 
+app.get('/api/:platform/notice', admin.notice);
 app.get('/api/:platform/version', update.version);
 app.get('/api/:platform/update', update.update);
 app.get('/api/:platform/update/:version', update.update);

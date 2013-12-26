@@ -23,8 +23,9 @@ exports.admin = function(req, res) {
 };
 
 exports.notice = function(req, res) {
+  var platform = req.params.platform;
   res.render('notice', {
-    title: '公告',
+    title: platform+'公告',
     content: fs.readFileSync(path.join(__dirname, '..', 'views', 'notice.html'), 'utf8')
   });
 }

@@ -12,17 +12,17 @@ var test_scene_path = "../res/test/";
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
-    bg2: main_scene_path + "bg2.png",
+    // bg2: main_scene_path + "bg2.png",
     // bg3: main_scene_path + "bg3.png",
     bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
-    bg7: main_scene_path + "bg7.png",
+    // bg7: main_scene_path + "bg7.png",
     bg8: main_scene_path + "bg8.png",
     bg9: main_scene_path + "bg9.png",
     bg10: main_scene_path + "bg10.png",
     bg11: main_scene_path + "bg11.png",
-    bg12: main_scene_path + "bg12.png",
+    // bg12: main_scene_path + "bg12.png",
     bg13: main_scene_path + "bg13.png",
 //    bg14: main_scene_path + "bg14.png",
     bg15: main_scene_path + "bg15.png",
@@ -31,7 +31,7 @@ var main_scene_image = {
     bg18: main_scene_path + "bg18.png",
     bg19: main_scene_path + "bg19.png",
 
-    player_details_bg: main_scene_path + "player_details_bg.png",
+   
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
     exp: main_scene_path + "exp.png",
@@ -88,17 +88,6 @@ var main_scene_image = {
     vip11: main_scene_path + "vip11.png",
     vip12: main_scene_path + "vip12.png",
 
-    num_red_0: main_scene_path + "num_red_0.png",
-    num_red_1: main_scene_path + "num_red_1.png",
-    num_red_2: main_scene_path + "num_red_2.png",
-    num_red_3: main_scene_path + "num_red_3.png",
-    num_red_4: main_scene_path + "num_red_4.png",
-    num_red_5: main_scene_path + "num_red_5.png",
-    num_red_6: main_scene_path + "num_red_6.png",
-    num_red_7: main_scene_path + "num_red_7.png",
-    num_red_8: main_scene_path + "num_red_8.png",
-    num_red_9: main_scene_path + "num_red_9.png",
-
     // pve_bg1: main_scene_path + "pve_bg1.png",
     // pvp_bg1: main_scene_path + "pvp_bg1.png",
 
@@ -126,8 +115,6 @@ var main_scene_image = {
 
     // card_item_frame: main_scene_path + "card_item_frame.png",
 
-    button0: main_scene_path + "button0.png",
-    button0s: main_scene_path + "button0s.png",
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
     button2: main_scene_path + "button2.png",
@@ -1077,6 +1064,23 @@ var main_scene_image = {
     18: test_scene_path + "res/" + "18.png",
     19: test_scene_path + "res/" + "19.png",
     20: test_scene_path + "res/" + "20.png",
+    21: test_scene_path + "res/" + "21.png",
+    22: test_scene_path + "res/" + "22.png",
+    23: test_scene_path + "res/" + "23.png",
+    24: test_scene_path + "res/" + "24.png",
+    25: test_scene_path + "res/" + "25.png",
+    26: test_scene_path + "res/" + "26.png",
+    27: test_scene_path + "res/" + "27.png",
+    28: test_scene_path + "res/" + "28.png",
+    29: test_scene_path + "res/" + "29.png",
+    30: test_scene_path + "res/" + "30.png",
+    31: test_scene_path + "res/" + "31.png",
+    32: test_scene_path + "res/" + "32.png",
+    33: test_scene_path + "res/" + "33.png",
+    34: test_scene_path + "res/" + "34.png",
+    35: test_scene_path + "res/" + "35.png",
+    36: test_scene_path + "res/" + "36.png",
+    37: test_scene_path + "res/" + "37.png",
 
 
     //技能特效
@@ -1085,6 +1089,12 @@ var main_scene_image = {
     texiao3: test_scene_path + "ccb/" + "texiao3.ccbi",
     texiao4: test_scene_path + "ccb/" + "texiao4.ccbi",
     texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
+    texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
+    texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
+    texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
+    texiao9: test_scene_path + "ccb/" + "texiao9.ccbi",
+    texiao10: test_scene_path + "ccb/" + "texiao10.ccbi",
+    texiao11: test_scene_path + "ccb/" + "texiao11.ccbi",
 
 };
 

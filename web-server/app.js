@@ -31,15 +31,17 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-app.get('/admin/notice', notice.admin);
+app.get('/admin/notice', notice.noticeList);
+app.post('/admin/notice', notice.newNotice);
 app.get('/admin/notice/:platform', notice.getNotice);
+app.delete('/admin/notice/:platform', notice.delNotice);
 app.post('/admin/notice/:platform', notice.saveNotice);
 app.get('/admin/version', version.manage);
-app.post('/admin/version', version.updateVersion);
+app.post('/admin/version', version.updateVersion);  
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);
-app.get('/api/:platform/update', version.update);version
+app.get('/api/:platform/update', version.update);
 app.get('/api/:platform/update/:version', version.update);
 
 http.createServer(app).listen(app.get('port'), function(){

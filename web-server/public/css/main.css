@@ -2,3 +2,12 @@
   padding: 50px;
   background-color: #eee;
 }
+
+.actions a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.form-group {
+  margin-left: 30px;
+}

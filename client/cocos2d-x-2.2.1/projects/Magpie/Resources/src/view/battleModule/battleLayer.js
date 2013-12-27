@@ -1284,8 +1284,8 @@ var BatterLayer = cc.Layer.extend({
 
         if (battleStep.hasNextTarget()) {
             var target = battleStep.getTarget();
-            var targetLocate = that._locate[target];
-            var targetNode = that._battleNode[target];
+            var targetLocate = this._locate[target];
+            var targetNode = this._battleNode[target];
             var effect = battleStep.getEffect();
             var isCrit = battleStep.isCrit();
         }

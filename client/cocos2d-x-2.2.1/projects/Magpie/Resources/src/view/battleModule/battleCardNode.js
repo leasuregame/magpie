@@ -173,7 +173,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     ccbFnCallback: function () {
-        this.getParent().callback();
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {

@@ -5,8 +5,8 @@
 
 var express = require('express');
 var routes = require('./routes');
-var admin = require('./routes/admin');
-var update = require('./routes/update');
+var notice = require('./routes/notice');
+var version = require('./routes/version');
 var http = require('http');
 var path = require('path');
 
@@ -31,15 +31,18 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-app.get('/admin/notice', admin.admin);
-app.post('/admin/notice', admin.saveNotice);
-app.get('/admin/version', update.manage);
-app.post('/admin/version', update.updateVersion);
+app.get('/admin/notice', notice.noticeList);
+app.post('/admin/notice', notice.newNotice);
+app.get('/admin/notice/:platform', notice.getNotice);
+app.delete('/admin/notice/:platform', notice.delNotice);
+app.post('/admin/notice/:platform', notice.saveNotice);
+app.get('/admin/version', version.manage);
+app.post('/admin/version', version.updateVersion);  
 
-app.get('/api/:platform/notice', admin.notice);
-app.get('/api/:platform/version', update.version);
-app.get('/api/:platform/update', update.update);
-app.get('/api/:platform/update/:version', update.update);
+app.get('/api/:platform/notice', notice.notice);
+app.get('/api/:platform/version', version.version);
+app.get('/api/:platform/update', version.update);
+app.get('/api/:platform/update/:version', version.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

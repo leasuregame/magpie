@@ -20,7 +20,7 @@ block head
           content: $(".cleditorMain iframe").contents().find('body').html()
         };
         console.log(data);
-        $.post('/admin/notice', data, function(data, status) {
+        $.post('/admin/notice/#{platform}', data, function(data, status) {
           console.log(data, status);
         });
       });
@@ -41,4 +41,4 @@ block content
       div(class='col-md-4 col-md-offset-3')
         input(id='save', type='button', class='btn btn-default btn-lg btn-block' value='保存')
       div(class='col-md-4 col-md-offset-1')
-        a(class='btn btn-default btn-lg btn-block', target='blank', href='/api/app/notice') 预览
+        a(class='btn btn-default btn-lg btn-block', target='blank', href='/api/#{platform}/notice') 预览

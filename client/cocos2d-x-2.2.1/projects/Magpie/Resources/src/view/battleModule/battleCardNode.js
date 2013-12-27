@@ -27,6 +27,8 @@ var BattleCardNode = cc.Node.extend({
     _skillId: 0,
     _skillType: 0,
     _skillName: "",
+    _normalAtkId: 0,
+    _effectId: 0,
     _isDie: false,
     _ccbNode: null,
     _animationManager: null,
@@ -49,6 +51,8 @@ var BattleCardNode = cc.Node.extend({
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
         this._skillId = data.skillId || 0;
+        this._normalAtkId = data.normalAtkId || 0;
+        this._effectId = data.effectId || 0;
         this._isDie = false;
 
         this._load();
@@ -60,9 +64,6 @@ var BattleCardNode = cc.Node.extend({
         var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
-        if (this._skillType > 3) {
-            this._skillType = 3;
-        }
         var iconSpriteTexture = lz.getTexture(main_scene_image["card_icon" + this._skillType]);
 
         this._animationManager = this._ccbNode.animationManager;
@@ -100,7 +101,9 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = cardTable.skill_id || this._skillId;
+        this._skillId = this._skillId || cardTable.skill_id;
+        this._normalAtkId = this._normalAtkId || cardTable.normal_atk_id;
+        this._effectId = this._effectId || cardTable.effect_id;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 
@@ -108,15 +111,16 @@ var BattleCardNode = cc.Node.extend({
         if (this._skillId) {
             var skillTable = outputTables.skills.rows[this._skillId];
             this._skillType = skillTable.type || 0;
+            this._skillType = this._skillType > 3 ? 3 : this._skillType;
         }
     },
 
     getSkillFn: function () {
-
+        return ("skill" + this._effectId);
     },
 
     getNormalAtkFn: function () {
-
+        return ("normalAtk" + this._normalAtkId);
     },
 
     getSpiritHp: function () {
@@ -188,8 +192,6 @@ var BattleCardNode = cc.Node.extend({
         }
 
         if (ccbNode) {
-            cc.log(ccbNode);
-
             var len = this._skillName.length;
             for (var i = 0; i < len; ++i) {
                 ccbNode.controller["ccbLabel" + i].setString(this._skillName[i]);

@@ -451,7 +451,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -519,7 +519,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -587,7 +587,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -649,7 +649,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -717,7 +717,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -762,7 +762,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -830,7 +830,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -875,7 +875,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             while (battleStep.hasNextTarget()) {
@@ -931,7 +931,7 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
 
         battleStep.recover();
-        this.callback = function () {
+        this.ccbFnCallback = function () {
             var that = this;
 
             var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, this);

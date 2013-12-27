@@ -42,7 +42,7 @@ var BattleSpiritNode = cc.Node.extend({
     },
 
     ccbFnCallback: function () {
-        this.getParent().callback();
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {
@@ -54,10 +54,6 @@ var BattleSpiritNode = cc.Node.extend({
             ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect6, this);
         } else {
             ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect7, this);
-        }
-
-        if (ccbNode) {
-            cc.log(ccbNode);
         }
 
         return ccbNode;

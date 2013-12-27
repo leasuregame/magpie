@@ -19,12 +19,12 @@ var LoginScene = cc.Scene.extend({
         cc.log("LoginScene onEnter");
 
         this._super();
-
-        if(typeof UpdateLayer == "undefined") {
+//
+//        if(typeof UpdateLayer == "undefined") {
             this.switchLayer(LoginLayer);
-        } else {
-            this.switchLayer(UpdateLayer);
-        }
+//        } else {
+//            this.switchLayer(UpdateLayer);
+//        }
 
         lz.dc.beginLogPageView("登录场景");
     },

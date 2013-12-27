@@ -19,9 +19,11 @@ var NoticeLayer = LazyLayer.extend({
         var noticeEffect = cc.BuilderReader.load(main_scene_image.uiEffect69, this);
         noticeEffect.setPosition(cc.p(320, 568));
 
-        var url = "http://115.29.175.156:9090/api/app/notice";
-        this._webLayer = lz.WebLayer.create(url, cc.rect(10, 75, 260, 260));
-       // noticeEffect.controller.ccbNoticeLabel.addChild(webLayer);
+        var that = this;
+        this.scheduleOnce(function () {
+            var url = "http://115.29.175.156:9090/api/app/notice";
+            that._webLayer = lz.WebLayer.create(url, cc.rect(10, 75, 280, 260));
+        }, 0.15);
 
         this.addChild(noticeEffect);
 

@@ -21,7 +21,7 @@ var LoginScene = cc.Scene.extend({
         this._super();
 //
 //        if(typeof UpdateLayer == "undefined") {
-            this.switchLayer(LoginLayer);
+        this.switchLayer(LoginLayer);
 //        } else {
 //            this.switchLayer(UpdateLayer);
 //        }

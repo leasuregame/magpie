@@ -98,6 +98,7 @@ generateCardId = (star, tableIds, exceptIds) ->
       tableIds = getCardIdsByStar [star]
 
   idx = _.random(0, tableIds.length-1)
+  console.log '-b-', idx, star, tableIds, exceptIds
   tableIds[idx]
 
 getCardIdsByStar = (stars, exceptIds = []) ->
@@ -106,8 +107,10 @@ getCardIdsByStar = (stars, exceptIds = []) ->
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 
+  console.log '-a-', stars, items, exceptIds
+
   if items.length is 0 and exceptIds.length > 0
-    return exceptIds.filter (i) -> i in stars
+    return exceptIds.filter (i) -> (i%5 || 5) in stars
   items
 
 genSkillInc = (card) ->

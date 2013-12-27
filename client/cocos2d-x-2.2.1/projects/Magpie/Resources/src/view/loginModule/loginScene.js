@@ -42,6 +42,8 @@ var LoginScene = cc.Scene.extend({
 
         if (!this._super()) return false;
 
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
         if (gameDevice != "Iphone5") {
             var gameFrame = GameFrame.create();
             this.addChild(gameFrame, 100);

@@ -12,9 +12,7 @@
  * */
 
 
-
 var MAIN_PLAY_SPEED = 1;
-
 var BATTLE_PLAY_SPEEDS = [1, 1.3, 2];
 
 var BattlePlayer = cc.Class.extend({
@@ -59,7 +57,6 @@ var BattlePlayer = cc.Class.extend({
         cc.Director.getInstance().popScene();
 
         if (goLayer) {
-
             MainScene.getInstance().switchLayer(goLayer);
             LazyLayer.closeCloudAll();
         }

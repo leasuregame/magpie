@@ -31,8 +31,9 @@ var BatterLayer = cc.Layer.extend({
     _spiritNode: null,
     _locate: null,
     _isPlayback: false,
-
+    _backItem: null,
     _chooseSpeedItem: [],
+    _menu: null,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -101,18 +102,15 @@ var BatterLayer = cc.Layer.extend({
             );
         }
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
-        this._backItem.setVisible(false);
 
-        var menu = cc.Menu.create(this._backItem);
-        this.addChild(menu);
+        this._menu = cc.Menu.create(this._backItem);
+        this.addChild(this._menu);
 
         var table = outputTables.values.rows;
         var times = [];
+        var len = Object.keys(table).length;
 
-        var keys = Object.keys(table);
-        var len = keys.length;
-
-        for (var i = 0; i < len; i++) {
+        for (var i = 0; i < len; ++i) {
             var key = "playSpeedLv" + (i + 1);
             if (table[key]) {
                 times.push(i + 1);
@@ -122,10 +120,9 @@ var BatterLayer = cc.Layer.extend({
         }
 
         var timesLen = times.length;
-
         var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
 
-        for (var j = 0; j < timesLen; j++) {
+        for (var j = 0; j < timesLen; ++j) {
             var time = times[0];
             if (j < timesLen - 1) {
                 time = times[j + 1];
@@ -138,9 +135,9 @@ var BatterLayer = cc.Layer.extend({
             );
 
             this._chooseSpeedItem[j + 1].setPosition(this._batterLayerFit.chooseSpeedItemPoint);
-
             this._chooseSpeedItem[j + 1].setVisible(times[j] == playSpeedTimes);
-            menu.addChild(this._chooseSpeedItem[j + 1]);
+
+            this._menu.addChild(this._chooseSpeedItem[j + 1]);
         }
 
         this._battleLog.recover();
@@ -163,6 +160,8 @@ var BatterLayer = cc.Layer.extend({
                 }
             }
         }
+
+        this._menu.setVisible(true);
     },
 
     end: function () {
@@ -170,7 +169,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._isEnd = true;
 
-        this._backItem.setVisible(false);
+        this._menu.setVisible(false);
 
         this.stopAllActions();
         this.unscheduleAllCallbacks();
@@ -204,23 +203,21 @@ var BatterLayer = cc.Layer.extend({
             str = "+" + value;
 
             if (isCirt) {
-                name = "atk_2_2";
+                name = "heal_crit";
             } else {
-                name = "atk_2_1";
+                name = "heal";
             }
         } else {
             str = "" + value;
 
             if (isSkill) {
-                name = "atk_3_";
+                name = "skill";
             } else {
-                name = "atk_1_"
+                name = "atk"
             }
 
             if (isCirt) {
-                name += "2";
-            } else {
-                name += "1";
+                name += "_crit";
             }
         }
 
@@ -619,28 +616,24 @@ var BatterLayer = cc.Layer.extend({
         var that = this;
 
         this.ccbFnCallback = function () {
-            while (battleStep.hasNextTarget()) {
-                (function () {
-                    var effect3 = cc.BuilderReader.load(main_scene_image.effect3, that);
-                    effect3.setPosition(targetLocate);
-                    that.addChild(effect3, EFFECT_Z_ORDER);
+            var effect3 = cc.BuilderReader.load(main_scene_image.effect3, that);
+            effect3.setPosition(targetLocate);
+            that.addChild(effect3, EFFECT_Z_ORDER);
 
-                    var nextStepCallback = that.nextStepCallback();
-                    effect3.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect3.removeFromParent();
-                        nextStepCallback();
-                    });
+            var nextStepCallback = that.nextStepCallback();
+            effect3.animationManager.setCompletedAnimationCallback(that, function () {
+                effect3.removeFromParent();
+                nextStepCallback();
+            });
 
-                    targetNode.runAnimations(
-                        effect ? ("d_1_" + that._getDirection(target)) : "miss",
-                        0,
-                        that.nextStepCallback()
-                    );
+            targetNode.runAnimations(
+                effect ? ("d_1_" + that._getDirection(target)) : "miss",
+                0,
+                that.nextStepCallback()
+            );
 
-                    targetNode.update(effect);
-                    that.tipHarm(target, effect, false, isCrit);
-                })();
-            }
+            targetNode.update(effect);
+            that.tipHarm(target, effect, false, isCrit);
         };
 
         var nextStepCallback1 = this.nextStepCallback();
@@ -679,7 +672,10 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, cc.p(targetLocate.x, targetLocate.y - 79))
+                cc.MoveTo.create(
+                    time,
+                    cc.p(targetLocate.x, targetLocate.y + (that._getDirection(attacker) == "o" ? -79 : 79))
+                )
             );
         };
 
@@ -1143,7 +1139,6 @@ var BatterLayer = cc.Layer.extend({
                 nextStepCallback();
             });
 
-
             while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
@@ -1246,18 +1241,18 @@ var BatterLayer = cc.Layer.extend({
                     var effect = battleStep.getEffect();
                     var isCrit = battleStep.isCrit();
 
-                    var effect3Node = cc.BuilderReader.load(main_scene_image.effect3, that);
-                    effect3Node.setPosition(targetLocate);
-                    that.addChild(effect3Node, EFFECT_Z_ORDER);
+                    var effect800 = cc.BuilderReader.load(main_scene_image.effect800, that);
+                    effect800.setPosition(targetLocate);
+                    that.addChild(effect800, EFFECT_Z_ORDER);
 
                     var nextStepCallback = that.nextStepCallback();
-                    effect3Node.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect3Node.removeFromParent();
+                    effect800.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect800.removeFromParent();
                         nextStepCallback();
                     });
 
                     targetNode.runAnimations(
-                        (effect ? "def_2_" : "mis_1_") + that._getDirection(target),
+                        effect ? ("d_2_" + that._getDirection(target)) : "miss",
                         0,
                         that.nextStepCallback()
                     );
@@ -1269,7 +1264,7 @@ var BatterLayer = cc.Layer.extend({
         };
 
         this._battleNode[attacker].runAnimations(
-            "atk_2_" + this._getDirection(attacker),
+            "a_2_" + this._getDirection(attacker),
             0,
             this.nextStepCallback()
         );
@@ -1441,7 +1436,7 @@ var BatterLayer = cc.Layer.extend({
                             cc.Sequence.create(
                                 cc.DelayTime.create(1.5),
                                 cc.CallFunc.create(function () {
-                                    this._battleNode[index].runAnimations("col_1");
+                                    this._battleNode[index].runAnimations("col");
                                 }, this),
                                 cc.ScaleTo.create(0.5, 0.3, 0.3)
                             )
@@ -1502,6 +1497,8 @@ var BatterLayer = cc.Layer.extend({
         var that = this;
         return function () {
             cc.log("BattleLayer _onClickChangePlaySpeed: " + times);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var table = outputTables.values.rows;
             var needLv = table["playSpeedLv" + times].value;

@@ -19,7 +19,7 @@
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
-		<string>CCLayer</string>
+		<string>CCNode</string>
 		<key>children</key>
 		<array>
 			<dict>
@@ -757,7 +757,7 @@
 		<key>customClass</key>
 		<string></string>
 		<key>displayName</key>
-		<string>CCLayer</string>
+		<string>CCNode</string>
 		<key>jsController</key>
 		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
@@ -773,8 +773,8 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.5</real>
-					<real>0.5</real>
+					<real>0.0</real>
+					<real>0.0</real>
 				</array>
 			</dict>
 			<dict>
@@ -797,26 +797,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>touchEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>mouseEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<true/>
 			</dict>
 		</array>
 	</dict>
@@ -864,7 +844,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>306.0028076171875</real>
+			<real>444.56320190429688</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

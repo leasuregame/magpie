@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>13</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -6936,8 +6936,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.375</real>
-							<real>1.375</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -6950,7 +6950,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>5.75</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>

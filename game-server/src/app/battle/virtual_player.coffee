@@ -56,6 +56,8 @@ class VirtualPlayer extends Player
         atk: c.atk
         boss: true if c.boss?
         skillId: c.skill_id if c.skill?
+        normalAtkId: c.normal_atk_id
+        effectId: c.effect_id if c.skill?
       }
     cobj
 

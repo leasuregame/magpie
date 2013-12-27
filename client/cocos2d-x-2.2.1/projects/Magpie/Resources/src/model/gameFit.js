@@ -57,7 +57,7 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(250, -450),
             "vsNodePoint": cc.p(360, 480),
             "oSubtitleNode": cc.p(360, 352),
-            "eSubtitleNode": cc.p(360, 652)
+            "eSubtitleNode": cc.p(360, 652),
             "chooseSpeedItemPoint": cc.p(-250, -450)
         },
         "cloudLayer": {
@@ -1276,7 +1276,7 @@ var fit4Iphone5 = {
             "backItemPoint": cc.p(225, -530),
             "vsNodePoint": cc.p(320, 568),
             "oSubtitleNode": cc.p(320, 380),
-            "eSubtitleNode": cc.p(320, 800)
+            "eSubtitleNode": cc.p(320, 800),
             "chooseSpeedItemPoint": cc.p(-225, -530)
         },
         "cloudLayer": {

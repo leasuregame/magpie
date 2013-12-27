@@ -72,6 +72,8 @@ var BattleSpiritNode = cc.Node.extend({
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
     }
 });
 

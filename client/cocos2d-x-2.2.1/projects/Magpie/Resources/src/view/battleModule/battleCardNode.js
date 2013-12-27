@@ -120,7 +120,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     getNormalAtkFn: function () {
-        return ("normalAtk" + this._normalAtkId);
+        return ("skill" + this._normalAtkId);
     },
 
     getSpiritHp: function () {
@@ -218,6 +218,8 @@ var BattleCardNode = cc.Node.extend({
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
     },
 
     die: function () {

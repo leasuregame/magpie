@@ -52,6 +52,9 @@ var LoginScene = cc.Scene.extend({
         var loginBgLayer = LoginBgLayer.create();
         this.addChild(loginBgLayer);
 
+        var url = "http://115.29.175.156:9090/api/app/notice";
+      //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
+
         return true;
     },
 

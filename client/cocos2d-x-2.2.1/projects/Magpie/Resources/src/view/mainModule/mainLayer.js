@@ -202,7 +202,7 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
-        this._friendMark = cc.Sprite.create(main_scene_image.icon289);
+        this._friendMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
         this._friendMark.setPosition(cc.p(75, 80));
         friendLayerItem.addChild(this._friendMark);
 

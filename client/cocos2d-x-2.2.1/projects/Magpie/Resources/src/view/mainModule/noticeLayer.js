@@ -23,7 +23,7 @@ var NoticeLayer = LazyLayer.extend({
         this.scheduleOnce(function () {
             var url = "http://115.29.175.156:9090/api/app/notice";
             that._webLayer = lz.WebLayer.create(url, cc.rect(10, 75, 280, 260));
-        }, 0.15);
+        }, 0.2);
 
         this.addChild(noticeEffect);
 

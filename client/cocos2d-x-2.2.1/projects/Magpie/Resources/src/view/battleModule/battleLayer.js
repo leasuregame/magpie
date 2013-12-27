@@ -423,7 +423,8 @@ var BatterLayer = cc.Layer.extend({
                     ccbNode.removeFromParent();
                 }
 
-                this["skill1"](battleStep);
+                that.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
+                that[fn](battleStep);
             };
 
             var addSubtitleNodeCb = function () {
@@ -453,12 +454,9 @@ var BatterLayer = cc.Layer.extend({
         } else {
             fn = this._battleNode[attacker].getNormalAtkFn();
 
-            cc.log(fn);
+            this.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
+            this[fn](battleStep);
         }
-
-        this.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
-
-        this[fn](battleStep);
     },
 
     skill1: function (battleStep) {
@@ -870,6 +868,8 @@ var BatterLayer = cc.Layer.extend({
 
         var that = this;
         var fn = null;
+        var point = attackerLocate;
+
         this.ccbFnCallback = function () {
             if (fn) {
                 fn();
@@ -886,7 +886,7 @@ var BatterLayer = cc.Layer.extend({
                     var isCrit = battleStep.isCrit();
 
                     var effect401_1 = cc.BuilderReader.load(main_scene_image.effect401_1, that);
-                    effect401_1.setPosition(attackerLocate);
+                    effect401_1.setPosition(point);
                     that.addChild(effect401_1, EFFECT_Z_ORDER);
 
                     var nextStepCallback1 = that.nextStepCallback();
@@ -895,10 +895,10 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-                    var k = lz.getDistance(attackerLocate, targetLocate) / 960;
+                    var k = lz.getDistance(point, targetLocate) / 960;
                     effect401_1.setScaleX(k);
                     effect401_1.setScaleY(k);
-                    effect401_1.setRotation(lz.getAngle(attackerLocate, targetLocate));
+                    effect401_1.setRotation(lz.getAngle(point, targetLocate));
 
                     fn = function () {
                         var effect401_2 = cc.BuilderReader.load(main_scene_image.effect401_2, that);
@@ -920,6 +920,8 @@ var BatterLayer = cc.Layer.extend({
                         targetNode.update(effect);
                         that.tipHarm(target, effect, false, isCrit);
                     };
+
+                    point = targetLocate;
                 })();
             }
         };

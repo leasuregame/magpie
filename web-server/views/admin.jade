@@ -33,9 +33,12 @@ block head
 
 block content
   div(class='jumbotron', style='padding: 10px 20px 60px 20px')
+    div.pull-right
+      a(href='http://jsbeautifier.org/', target='blank') HTML格式化
     h1 公告编辑
       small 编辑完后记得要保存(⊙o⊙)哦
-    br
+    
+    
     textarea(id='editor') #{content}
     
     div(class='row')

@@ -13,8 +13,13 @@ html
     div(class='container')
       nav(class='navbar navbar-default', role='navigation')
         div(class='navbar-header')
+          button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='#nb-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
           a(class='navbar-brand', href='/') LeasureGame
-        div(class='collapse navbar-collapse')
+        div(class='collapse navbar-collapse', id='nb-collapse')
           ul(class='nav navbar-nav')
             li(class=menu=='notice' ? 'active':'')
               a(href='/admin/notice') 公告管理

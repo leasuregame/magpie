@@ -723,7 +723,7 @@ var main_scene_image = {
     uiEffect64: "res/ccb/uiEffect64.ccbi",
     uiEffect65: "res/ccb/uiEffect65.ccbi",
     uiEffect66: "res/ccb/uiEffect66.ccbi",
-//    uiEffect67: "res/ccb/uiEffect67.ccbi",
+    uiEffect67: "res/ccb/uiEffect67.ccbi",
 //    uiEffect68: "res/ccb/uiEffect68.ccbi",
     uiEffect69: "res/ccb/uiEffect69.ccbi",
 //    uiEffect70: "res/ccb/uiEffect70.ccbi",

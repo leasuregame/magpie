@@ -18,6 +18,7 @@ var SpiritPool = Entity.extend({
     _exp: 0,
     _maxExp: 0,
     _collectCount: 0,
+    _maxCollectCount: 0,
     _perObtain: 0,
 
     init: function (data) {
@@ -27,7 +28,8 @@ var SpiritPool = Entity.extend({
         this.on("lvChange", this._lvChangeEvent);
 
         this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
-
+        var vip = gameData.player.get("vip");
+        this._maxCollectCount = outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[vip].spirit_collect_count;
         this.update(data);
 
         cc.log(this);

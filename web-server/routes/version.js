@@ -2,8 +2,14 @@ var helper = require('../util/helper');
 var KSS_HOST = 'http://kss.ksyun.com';
 
 exports.version = function(req, res) {
-  var ver = helper.version();
-  res.send(ver);
+  var platform = req.params.platform;
+  helper.version(platform, function(err, ver) {
+    if (err != null) {
+      res.status(404).send(err);
+    } else {
+      res.send(ver);
+    }
+  });
 };
 
 exports.update = function(req, res) {

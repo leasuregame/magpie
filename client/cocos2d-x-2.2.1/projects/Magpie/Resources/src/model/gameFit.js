@@ -394,7 +394,9 @@ var fit4Iphone4 = {
             "pointX": -600,
             "closeBoxSpritePoint2": cc.p(360, 1025),
             "passEffectPoint": cc.p(360, 578),
-            "rewardEffectPoint": cc.p(360, 800)
+            "rewardEffectPoint": cc.p(360, 800),
+            "lvIconPoint": cc.p(104, 854),
+            "playerLvLabelPoint": cc.p(165, 851)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1615,7 +1617,9 @@ var fit4Iphone5 = {
             "pointX": -640,
             "closeBoxSpritePoint2": cc.p(320, 1025),
             "passEffectPoint": cc.p(320, 706),
-            "rewardEffectPoint": cc.p(320, 900)
+            "rewardEffectPoint": cc.p(320, 900),
+            "lvIconPoint": cc.p(64, 1022),
+            "playerLvLabelPoint": cc.p(125, 1019)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),

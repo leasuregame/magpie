@@ -27,12 +27,13 @@ var BattleCardNode = cc.Node.extend({
     _skillId: 0,
     _skillType: 0,
     _skillName: "",
+    _normalAtkId: 0,
+    _effectId: 0,
     _isDie: false,
     _ccbNode: null,
     _animationManager: null,
     _hpProgress: null,
     _spiritHpProgress: null,
-    _tipLabel: null,
 
     init: function (data, index) {
         cc.log("BattleCardNode init");
@@ -50,6 +51,8 @@ var BattleCardNode = cc.Node.extend({
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
         this._skillId = data.skillId || 0;
+        this._normalAtkId = data.normalAtkId || 0;
+        this._effectId = data.effectId || 0;
         this._isDie = false;
 
         this._load();
@@ -61,9 +64,6 @@ var BattleCardNode = cc.Node.extend({
         var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
-        if (this._skillType > 3) {
-            this._skillType = 3;
-        }
         var iconSpriteTexture = lz.getTexture(main_scene_image["card_icon" + this._skillType]);
 
         this._animationManager = this._ccbNode.animationManager;
@@ -78,7 +78,7 @@ var BattleCardNode = cc.Node.extend({
             this._nowHp,
             this._hp
         );
-        this._hpProgress.setPosition(cc.p(0, -100));
+        this._hpProgress.setPosition(cc.p(0, -88));
         this.addChild(this._hpProgress);
 
         this._spiritHpProgress = Progress.create(
@@ -87,13 +87,10 @@ var BattleCardNode = cc.Node.extend({
             0,
             Math.floor(this._hp / 2)
         );
-        this._spiritHpProgress.setPosition(cc.p(0, -100));
+        this._spiritHpProgress.setPosition(cc.p(0, -88));
         this.addChild(this._spiritHpProgress);
 
         this.addChild(this._ccbNode);
-
-        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
-        this.addChild(this._tipLabel);
 
         return true;
     },
@@ -104,7 +101,9 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = cardTable.skill_id || this._skillId;
+        this._skillId = this._skillId || cardTable.skill_id;
+        this._normalAtkId = this._normalAtkId || cardTable.normal_atk_id || 1;
+        this._effectId = this._effectId || cardTable.effect_id;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 
@@ -112,11 +111,16 @@ var BattleCardNode = cc.Node.extend({
         if (this._skillId) {
             var skillTable = outputTables.skills.rows[this._skillId];
             this._skillType = skillTable.type || 0;
+            this._skillType = this._skillType > 3 ? 3 : this._skillType;
         }
     },
 
-    getSkillId: function () {
-        return this._skillId;
+    getSkillFn: function () {
+        return ("skill" + this._effectId);
+    },
+
+    getNormalAtkFn: function () {
+        return ("skill" + this._normalAtkId);
     },
 
     getSpiritHp: function () {
@@ -169,7 +173,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     ccbFnCallback: function () {
-        this.getParent().callback();
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {
@@ -182,14 +186,12 @@ var BattleCardNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect4, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect12, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect5, this);
         }
 
         if (ccbNode) {
-            cc.log(ccbNode);
-
             var len = this._skillName.length;
             for (var i = 0; i < len; ++i) {
                 ccbNode.controller["ccbLabel" + i].setString(this._skillName[i]);
@@ -216,6 +218,8 @@ var BattleCardNode = cc.Node.extend({
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
     },
 
     die: function () {
@@ -225,7 +229,7 @@ var BattleCardNode = cc.Node.extend({
             if (this._nowHp <= 0) {
                 this._isDie = true;
 
-                this.runAnimations("die_1");
+                this.runAnimations("die");
 
                 this._hpProgress.setVisible(false);
                 this._spiritHpProgress.setVisible(false);
@@ -234,8 +238,8 @@ var BattleCardNode = cc.Node.extend({
                     this.getParent().releaseSpirit(this._index, this._spirit);
                 }
             } else if (this._nowHp / this._hp < 0.05) {
-                if (this._animationManager.getRunningSequenceName() != "god_1") {
-                    this.runAnimations("god_1");
+                if (this._animationManager.getRunningSequenceName() != "god") {
+                    this.runAnimations("god");
                 }
             }
         }

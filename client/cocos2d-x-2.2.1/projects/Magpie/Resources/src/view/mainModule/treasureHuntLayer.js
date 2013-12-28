@@ -103,12 +103,12 @@ var TreasureHuntLayer = cc.Layer.extend({
 
             var iconSprite = cc.Sprite.create(this._getIconUrl(table[i].type));
             iconSprite.setPosition(cc.p(point.x + 1, point.y - 1));
-            this.addChild(iconSprite);
+            this.addChild(iconSprite, 2);
 
             var valueLabel = cc.LabelTTF.create("+" + table[i].value, "STHeitiTC-Medium", 16);
             valueLabel.setAnchorPoint(cc.p(1, 0));
             valueLabel.setPosition(cc.p(point.x + 33, point.y - 35));
-            this.addChild(valueLabel);
+            this.addChild(valueLabel, 2);
         }
 
         this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
@@ -285,6 +285,14 @@ var TreasureHuntLayer = cc.Layer.extend({
         });
 
         this.addChild(effect);
+
+        var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect67, this);
+        effect2.setPosition(this._selectFrame.getPosition());
+        effect2.animationManager.setCompletedAnimationCallback(this, function () {
+            effect2.removeFromParent();
+        });
+
+        this.addChild(effect2, 3);
 
     },
 

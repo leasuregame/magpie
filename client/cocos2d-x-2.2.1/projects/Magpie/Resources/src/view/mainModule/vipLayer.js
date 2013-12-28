@@ -352,7 +352,7 @@ var VipLayer = cc.Layer.extend({
 
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
 
-                var y = scrollViewHeight - index * 120 - 60;
+                var y = scrollViewHeight - index * 110 - 60;
                 var goods = vipBoxGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
                 goodsSprite.setPosition(cc.p(x - 10, y));

@@ -153,7 +153,23 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
             var offsetY = y + 280;
             for (var key in vipPrivilege) {
-                if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
+                if (key == "description") {
+                    var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+                    vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+                    scrollViewLayer.addChild(vipPrivilegeIcon);
+
+                    var vipPrivilegeLabel = cc.LabelTTF.create(
+                        vipPrivilege[key],
+                        "STHeitiTC-Medium",
+                        20
+                    );
+
+                    vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+                    vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+                    scrollViewLayer.addChild(vipPrivilegeLabel);
+
+                    offsetY -= 35;
+                } else if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
                     var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
                     vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
                     scrollViewLayer.addChild(vipPrivilegeIcon);

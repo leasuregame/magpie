@@ -7,7 +7,7 @@
  */
 
 
-var NoticeLayer = LazyLayer.extend({
+var NoticeLayer = cc.Layer.extend({
 
     _webLayer: null,
 
@@ -27,6 +27,8 @@ var NoticeLayer = LazyLayer.extend({
 
         this.addChild(noticeEffect);
 
+        LazyLayer.showCloudAll();
+
         return true;
     },
 
@@ -34,6 +36,7 @@ var NoticeLayer = LazyLayer.extend({
         cc.log("NoticeLayer ccbFnClose");
         this._webLayer.close();
         this.removeFromParent();
+        LazyLayer.closeCloudAll();
     }
 
 });

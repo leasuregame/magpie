@@ -15,10 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10860</WindowHeight>
+  <WindowHeight>7100</WindowHeight>
   <WindowWidth>17020</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowTopX>7660</WindowTopX>
+  <WindowTopY>2400</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -34,12 +34,13 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="每日重置数据配置表">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:Width="116"/>
    <Column ss:Width="156"/>
    <Column ss:Width="140" ss:Span="1"/>
    <Column ss:Index="6" ss:Width="172"/>
+   <Column ss:AutoFitWidth="0" ss:Width="144"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ID</Data></Cell>
     <Cell><Data ss:Type="String">每日抽奖次数</Data></Cell>
@@ -47,6 +48,7 @@
     <Cell><Data ss:Type="String">每日体力购买次数</Data></Cell>
     <Cell><Data ss:Type="String">每日有奖竞技次数</Data></Cell>
     <Cell><Data ss:Type="String">每日有奖竞技购买次数</Data></Cell>
+    <Cell><Data ss:Type="String">每日灵气采集次数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -55,6 +57,7 @@
     <Cell><Data ss:Type="String">power_buy_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_buy_count</Data></Cell>
+    <Cell><Data ss:Type="String">collect_count</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -63,6 +66,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -72,8 +76,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

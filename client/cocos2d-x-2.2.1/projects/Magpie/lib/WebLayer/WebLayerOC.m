@@ -35,6 +35,12 @@
 - (void) load
 {
     [_uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString :_url]]];
+    
+    [_uiWebView setBackgroundColor:[UIColor clearColor]];
+    
+    [_uiWebView setOpaque:NO];
+    
+    _uiWebView.delegate = self;
 
     [_uiView addSubview:_uiWebView];
 

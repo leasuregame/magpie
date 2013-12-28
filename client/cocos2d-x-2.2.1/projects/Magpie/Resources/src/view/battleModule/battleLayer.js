@@ -1124,10 +1124,48 @@ var BatterLayer = cc.Layer.extend({
 
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
+        var that = this;
 
-        battleStep.recover();
         this.ccbFnCallback = function () {
-            var that = this;
+            that.ccbFnCallback = function () {
+                battleStep.recover();
+                while (battleStep.hasNextTarget()) {
+                    (function () {
+                        var target = battleStep.getTarget();
+                        var targetLocate = that._locate[target];
+                        var targetNode = that._battleNode[target];
+                        var effect = battleStep.getEffect();
+                        var isCrit = battleStep.isCrit();
+
+                        var effect700_2 = cc.BuilderReader.load(main_scene_image.effect700_2, that);
+                        effect700_2.setPosition(targetLocate);
+                        that.addChild(effect700_2, EFFECT_Z_ORDER);
+
+                        var nextStepCallback = that.nextStepCallback();
+                        effect700_2.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect700_2.removeFromParent();
+                            nextStepCallback();
+                        });
+
+                        targetNode.runAnimations(
+                            effect ? ("d_2_" + that._getDirection(target)) : "miss",
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, true, isCrit);
+                    })();
+                }
+            };
+
+            var point = null;
+
+            battleStep.recover();
+            while (battleStep.hasNextTarget()) {
+                var targetLocate = that._locate[battleStep.getTarget()];
+                point = point ? cc.p((targetLocate.x + point.x) / 2, (targetLocate.y + point.y) / 2) : targetLocate;
+            }
 
             var effect700_1 = cc.BuilderReader.load(main_scene_image.effect700_1, this);
             effect700_1.setPosition(attackerLocate);
@@ -1139,34 +1177,7 @@ var BatterLayer = cc.Layer.extend({
                 nextStepCallback();
             });
 
-            while (battleStep.hasNextTarget()) {
-                (function () {
-                    var target = battleStep.getTarget();
-                    var targetLocate = that._locate[target];
-                    var targetNode = that._battleNode[target];
-                    var effect = battleStep.getEffect();
-                    var isCrit = battleStep.isCrit();
-
-                    var effect700_2 = cc.BuilderReader.load(main_scene_image.effect700_2, that);
-                    effect700_2.setPosition(targetLocate);
-                    that.addChild(effect700_2, EFFECT_Z_ORDER);
-
-                    var nextStepCallback = that.nextStepCallback();
-                    effect700_2.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect700_2.removeFromParent();
-                        nextStepCallback();
-                    });
-
-                    targetNode.runAnimations(
-                        effect ? ("d_2_" + that._getDirection(target)) : "miss",
-                        0,
-                        that.nextStepCallback()
-                    );
-
-                    targetNode.update(effect);
-                    that.tipHarm(target, effect, true, isCrit);
-                })();
-            }
+            effect700_1.setRotation(lz.getAngle(attackerLocate, point));
         };
 
         this._battleNode[attacker].runAnimations(

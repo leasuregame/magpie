@@ -78,7 +78,7 @@ var BattleCardNode = cc.Node.extend({
             this._nowHp,
             this._hp
         );
-        this._hpProgress.setPosition(cc.p(0, -100));
+        this._hpProgress.setPosition(cc.p(0, -88));
         this.addChild(this._hpProgress);
 
         this._spiritHpProgress = Progress.create(
@@ -87,7 +87,7 @@ var BattleCardNode = cc.Node.extend({
             0,
             Math.floor(this._hp / 2)
         );
-        this._spiritHpProgress.setPosition(cc.p(0, -100));
+        this._spiritHpProgress.setPosition(cc.p(0, -88));
         this.addChild(this._spiritHpProgress);
 
         this.addChild(this._ccbNode);

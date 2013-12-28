@@ -58,6 +58,9 @@ var MainScene = cc.Scene.extend({
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
+          //  var url = "http://115.29.175.156:9090/api/app/notice";
+          //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 420));
+           // NoticeLayer.pop();
         }
 
         this.retain();

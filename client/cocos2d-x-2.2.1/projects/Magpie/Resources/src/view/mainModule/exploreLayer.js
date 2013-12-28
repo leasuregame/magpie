@@ -23,8 +23,6 @@ var ExploreLayer = cc.Layer.extend({
     _turnLeftSprite: null,
     _turnRightSprite: null,
     _mapLabel: [],
-    _closeBoxSprite: null,
-    _openBoxSprite: null,
     _exploreItem: null,
     _scrollView: null,
     _element: {},
@@ -126,16 +124,6 @@ var ExploreLayer = cc.Layer.extend({
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnRightSprite.setPosition(this._exploreLayerFit.turnRightSpritePoint);
         this.addChild(this._turnRightSprite, 2);
-
-        this._closeBoxSprite = cc.Sprite.create(main_scene_image.icon219);
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint);
-        this.addChild(this._closeBoxSprite);
-        this._closeBoxSprite.setVisible(false);
-
-        this._openBoxSprite = cc.Sprite.create(main_scene_image.icon220);
-        this._openBoxSprite.setPosition(this._exploreLayerFit.openBoxSpritePoint);
-        this.addChild(this._openBoxSprite);
-        this._openBoxSprite.setVisible(false);
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,

@@ -40,6 +40,8 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
 
@@ -56,6 +58,7 @@ var MainScene = cc.Scene.extend({
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
+        //    NoticeLayer.pop();
         }
 
         this.retain();

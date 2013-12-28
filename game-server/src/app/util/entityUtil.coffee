@@ -41,7 +41,6 @@ module.exports =
     while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
-      player.elixirPerLv = {}
       player.decrease 'exp', upgradeInfo.exp
       updateFriendCount(player)
 
@@ -73,34 +72,53 @@ module.exports =
       
     cb(isUpgrade, level9Box, rewards)
 
-  randomCardId: (star) ->
-    tableIds = table.getTable('cards').filter((id) -> id <= 500)
-        .map((item) -> parseInt(item.id))
-        .sort((x, y) -> x - y)
-    len = tableIds.length
-    idx = _.random(0, len/5 - 1) * 5 + parseInt(star) - 1
-    tableIds[idx]
+  randomCardId: (star, lightUpIds) ->
+    if lightUpIds.length > cardConfig.LUCKY_CARD_LIMIT.COUNT
+      if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
+        id = generateCardId star, null, lightUpIds
+      else
+        filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
+        id = generateCardId star, if filtered.length > 0 then filtered else lightUpIds
+        vstar = (id%5 || 5)
+        id += star - vstar if star isnt vstar
+    else
+      id = generateCardId star
+
+    id
 
   randomCardIds: (stars, num) ->
     utility.randArrayItems getCardIdsByStar(stars), num
 
-getCardIdsByStar = (stars) ->
+generateCardId = (star, tableIds, exceptIds) ->
+  ### exceptIds 为排除的id ###
+  if not tableIds
+    if exceptIds?
+      tableIds = getCardIdsByStar [star], exceptIds
+    else
+      tableIds = getCardIdsByStar [star]
+
+  idx = _.random(0, tableIds.length-1)
+  tableIds[idx]
+
+getCardIdsByStar = (stars, exceptIds = []) ->
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 500 and row.star in stars)
+  .filter((id, row) -> id <= 500 and parseInt(id) not in exceptIds and row.star in stars)
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
-  console.log '-a-a-', items
+
+  if items.length is 0 and exceptIds.length > 0
+    return exceptIds.filter (i) -> (i%5 || 5) in stars
   items
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)
-  skill = cdata.skill_id_linktarget
+  skill = cdata?.skill_id_linktarget
   if skill?
     min = skill["star#{card.star}_inc_min"]
     max = skill["star#{card.star}_inc_max"]
     card.skillInc = _.random(min, max)
   else
-    logger.warn('can not file skill info of card: ' + card.tableId)
+    logger.warn('can not find skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
   fl = playerConfig.FRIENDCOUNT_LIMIT

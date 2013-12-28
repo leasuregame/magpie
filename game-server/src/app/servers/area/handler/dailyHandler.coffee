@@ -1,6 +1,8 @@
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+DAILY_LOTTERY_COUNT = table.getTableItem('daily_gift', 1).lottery_count
+
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,6 +12,7 @@ Handler = (@app) ->
 Handler::lottery = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  times = 1
   goldResume = 20
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
@@ -33,19 +36,23 @@ Handler::lottery = (msg, session, next) ->
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
 
+    if DAILY_LOTTERY_COUNT - player.dailyGift.lotteryCount < 5
+      times = 3
+
     ### 抽奖次数减一 ###
     player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
 
     resource = randomReward()
     if resource.type is 'power'
-      player.resumePower(resource.value)
+      player.resumePower(resource.value*times)
     else
-      player.increase(resource.type, resource.value)
+      player.increase(resource.type, resource.value*times)
 
     player.save()
 
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
+      times: times,
       lotteryCount: player.toJson().dailyGift.lotteryCount,
       lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount,
       goldResume: goldResume

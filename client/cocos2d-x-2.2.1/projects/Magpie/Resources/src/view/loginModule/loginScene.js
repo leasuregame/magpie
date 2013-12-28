@@ -19,12 +19,12 @@ var LoginScene = cc.Scene.extend({
         cc.log("LoginScene onEnter");
 
         this._super();
-
-        if(typeof UpdateLayer == "undefined") {
-            this.switchLayer(LoginLayer);
-        } else {
-            this.switchLayer(UpdateLayer);
-        }
+//
+//        if(typeof UpdateLayer == "undefined") {
+        this.switchLayer(LoginLayer);
+//        } else {
+//            this.switchLayer(UpdateLayer);
+//        }
 
         lz.dc.beginLogPageView("登录场景");
     },
@@ -42,6 +42,8 @@ var LoginScene = cc.Scene.extend({
 
         if (!this._super()) return false;
 
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
         if (gameDevice != "Iphone5") {
             var gameFrame = GameFrame.create();
             this.addChild(gameFrame, 100);
@@ -49,6 +51,9 @@ var LoginScene = cc.Scene.extend({
 
         var loginBgLayer = LoginBgLayer.create();
         this.addChild(loginBgLayer);
+
+        var url = "http://115.29.175.156:9090/api/app/notice";
+      //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
 
         return true;
     },

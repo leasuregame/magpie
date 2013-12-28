@@ -59,6 +59,9 @@ var vipBoxUrl = {
     vip12: "icon281"
 };
 
+var LOOK_VIP_BOX = 1;
+var BUY_VIP_BOX = 2;
+
 var VipLayer = cc.Layer.extend({
     _vipLayerFit: null,
 
@@ -202,7 +205,7 @@ var VipLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon163,
-                this._onClickBuy(vipBox.id),
+                this._onClickBuy(vipBox),
                 this
             );
             buyItem.setPosition(cc.p(525, y + 45));
@@ -304,6 +307,7 @@ var VipLayer = cc.Layer.extend({
 
         var data = obj.data;
         var cb = obj.cb;
+        var type = obj.type;
 
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
@@ -348,7 +352,7 @@ var VipLayer = cc.Layer.extend({
 
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
 
-                var y = scrollViewHeight - index * 120 - 60;
+                var y = scrollViewHeight - index * 110 - 60;
                 var goods = vipBoxGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
                 goodsSprite.setPosition(cc.p(x - 10, y));
@@ -389,18 +393,42 @@ var VipLayer = cc.Layer.extend({
             main_scene_image.icon21,
             function () {
                 lazyLayer.removeFromParent();
+            },
+            this
+        );
+        okItem.setPosition(this._vipLayerFit.okItemPoint);
+        okItem.setVisible(type == LOOK_VIP_BOX);
+
+        var buyItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon163,
+            function () {
+                lazyLayer.removeFromParent();
                 if (cb) {
                     cb();
                 }
             },
             this
         );
-        okItem.setPosition(this._vipLayerFit.okItemPoint);
+        buyItem.setPosition(this._vipLayerFit.buyItemPoint);
+        buyItem.setVisible(type == BUY_VIP_BOX);
 
-        var menu = cc.Menu.create(okItem);
+        var cancelItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon308,
+            function () {
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+        cancelItem.setPosition(this._vipLayerFit.cancelItemPoint);
+        cancelItem.setVisible(type == BUY_VIP_BOX);
+
+        var menu = cc.Menu.create(okItem, buyItem, cancelItem);
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
-
 
     },
 
@@ -413,13 +441,14 @@ var VipLayer = cc.Layer.extend({
         this.addChild(paymentLayer, 1);
     },
 
-    _onClickBuy: function (id) {
+    _onClickBuy: function (vipBox) {
         return function () {
-            cc.log("VipLayer _onClickBuy: " + id);
+            cc.log("VipLayer _onClickBuy: " + vipBox.id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var that = this;
+            var id = vipBox.id;
 
             if (gameData.player.get("vip") < id) {
                 GoPaymentLayer.pop({
@@ -439,14 +468,20 @@ var VipLayer = cc.Layer.extend({
                 return;
             }
 
-            gameData.shop.buyVipBox(function (data) {
-                cc.log(data);
-                var cb = function () {
+
+            var cb = function () {
+                gameData.shop.buyVipBox(function (data) {
+                    cc.log(data);
                     that.update();
                     lz.tipReward(data);
-                };
-                that._addVipBoxDetails({data: data, cb: cb});
-            }, id);
+                }, id);
+            };
+
+            this._addVipBoxDetails({
+                data: vipBox,
+                cb: cb,
+                type: BUY_VIP_BOX
+            });
         }
     },
 
@@ -456,7 +491,7 @@ var VipLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this._addVipBoxDetails({data: data});
+            this._addVipBoxDetails({data: data, type: LOOK_VIP_BOX});
         }
     }
 });

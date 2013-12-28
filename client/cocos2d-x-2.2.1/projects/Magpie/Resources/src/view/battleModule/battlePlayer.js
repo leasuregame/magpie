@@ -12,8 +12,8 @@
  * */
 
 
-var BATTLE_PLAY_SPEED = 1.3;
 var MAIN_PLAY_SPEED = 1;
+var BATTLE_PLAY_SPEEDS = [1, 1.3, 2];
 
 var BattlePlayer = cc.Class.extend({
     _battleScene: null,
@@ -34,7 +34,10 @@ var BattlePlayer = cc.Class.extend({
         }
 
         gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
-        cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEED);
+
+        var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+
+        cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[playSpeedTimes]);
 
         return battleLog.isWin();
     },
@@ -54,7 +57,6 @@ var BattlePlayer = cc.Class.extend({
         cc.Director.getInstance().popScene();
 
         if (goLayer) {
-
             MainScene.getInstance().switchLayer(goLayer);
             LazyLayer.closeCloudAll();
         }

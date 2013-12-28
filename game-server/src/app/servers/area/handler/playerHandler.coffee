@@ -119,7 +119,7 @@ Handler::givePower = (msg, session, next) ->
 
   cur_hour = new Date().getHours()
 
-  if @app.get('debug')
+  if msg.hour
     cur_hour = msg.hour
 
   if not canGetPower(cur_hour)
@@ -155,7 +155,7 @@ Handler::getActivityInfo = (msg, session, next) ->
 
     cur_hour = new Date().getHours()
     next(null, {code: 200, msg: {
-      canGetPower: not hasGetPower(player, cur_hour) and canGetPower(cur_hour)
+      canGetPower: canGetPower(cur_hour) and not hasGetPower(player, cur_hour) 
       levelReward: player.levelReward
     }})
 
@@ -192,8 +192,14 @@ canGetPower = (hour) ->
       canGetHours.push h+i 
   _.contains canGetHours, hour
 
+powerGiveStartHour = (hour) ->
+  for h in playerConfig.POWER_GIVE.hours
+    for i in [0...playerConfig.POWER_GIVE.duration]
+      return h if h+i is hour
+
 hasGetPower = (player, hour) ->
-  _.contains player.dailyGift.powerGiven, hour
+  h = powerGiveStartHour(hour)
+  h? and _.contains player.dailyGift.powerGiven, h
 
 todayPeriod = () ->
   now = new Date()

@@ -55,9 +55,10 @@ var fit4Iphone4 = {
                 12: cc.p(560, 852)
             },
             "backItemPoint": cc.p(250, -450),
-            "effect15NodePoint": cc.p(360, 480),
-            "ccbNodePoint1": cc.p(360, 352),
-            "ccbNodePoint2": cc.p(360, 652)
+            "vsNodePoint": cc.p(360, 480),
+            "oSubtitleNode": cc.p(360, 352),
+            "eSubtitleNode": cc.p(360, 652),
+            "chooseSpeedItemPoint": cc.p(-250, -450)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 40,
@@ -535,12 +536,12 @@ var fit4Iphone4 = {
             "goldLabelPoint": cc.p(250, 850),
             "fragmentLabelPoint": cc.p(480, 850),
             "exchangeItemPoint": cc.p(600, 850),
-            "goldLotteryItemBasePoint": cc.p(203, 222),
-            "energyLotteryItemBasePoint": cc.p(203, 302),
-            "tenLotteryItemPoint": cc.p(370, 262),
+            "goldLotteryItemBasePoint": cc.p(203, 207),
+            "energyLotteryItemBasePoint": cc.p(203, 307),
+            "tenLotteryItemPoint": cc.p(370, 257),
             "tipBgSpritePoint": cc.p(360, 152),
             "tipLabelPoint": cc.p(360, 152),
-            "privilegeIconPoint": cc.p(370, 212)
+            "privilegeIconPoint": cc.p(370, 207)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
@@ -809,7 +810,7 @@ var fit4Iphone4 = {
                 energy: cc.p(210, 562),
                 power: cc.p(430, 562)
             },
-            "scrollViewLayerRect2":cc.rect(40, 262, 640, 480),
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
             "titleIconPoint": cc.p(360, 817)
@@ -949,8 +950,8 @@ var fit4Iphone4 = {
             "skillDescription1Point": cc.p(140, 192),
             "skillDescription2Point": cc.p(140, 162),
             "passiveHarmLabelPoint": cc.p(520, 279),
-            "lvLabelPoint": cc.p(260, 454),
-            "expLabelPoint": cc.p(420, 454),
+            "lvLabelPoint": cc.p(240, 454),
+            "expLabelPoint": cc.p(440, 454),
             "upgradeItemPoint": cc.p(360, 402),
             "closeItemPoint": cc.p(360, 42),
             "spiritNodePoint": cc.p(360, 632),
@@ -1189,6 +1190,8 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 122),
             "bgSprite2Point": cc.p(360, 492),
             "okItemPoint": cc.p(360, 232),
+            "buyItemPoint": cc.p(240, 232),
+            "cancelItemPoint": cc.p(480, 232),
             "failLabelPoint": cc.p(360, 572),
             "tipLabelPoint": cc.p(360, 512),
             "paymentItem2Point": cc.p(260, 432),
@@ -1201,7 +1204,7 @@ var fit4Iphone4 = {
                 fragments: cc.p(210, 462),
                 exp_card: cc.p(430, 462)
             },
-            "scrollViewLayerRect2":cc.rect(40, 262, 640, 480),
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
             "titleIconPoint": cc.p(360, 817)
@@ -1271,9 +1274,10 @@ var fit4Iphone5 = {
                 12: cc.p(520, 1000)
             },
             "backItemPoint": cc.p(225, -530),
-            "effect15NodePoint": cc.p(320, 568),
-            "ccbNodePoint1": cc.p(320, 380),
-            "ccbNodePoint2": cc.p(320, 800)
+            "vsNodePoint": cc.p(320, 568),
+            "oSubtitleNode": cc.p(320, 380),
+            "eSubtitleNode": cc.p(320, 800),
+            "chooseSpeedItemPoint": cc.p(-225, -530)
         },
         "cloudLayer": {
             MIN_CLOUD_POSITION_X: 0,
@@ -1753,12 +1757,12 @@ var fit4Iphone5 = {
             "goldLabelPoint": cc.p(210, 1026),
             "fragmentLabelPoint": cc.p(440, 1026),
             "exchangeItemPoint": cc.p(560, 1026),
-            "goldLotteryItemBasePoint": cc.p(163, 290),
-            "energyLotteryItemBasePoint": cc.p(163, 380),
-            "tenLotteryItemPoint": cc.p(330, 335),
+            "goldLotteryItemBasePoint": cc.p(163, 275),
+            "energyLotteryItemBasePoint": cc.p(163, 385),
+            "tenLotteryItemPoint": cc.p(330, 330),
             "tipBgSpritePoint": cc.p(320, 170),
             "tipLabelPoint": cc.p(320, 170),
-            "privilegeIconPoint": cc.p(330, 285)
+            "privilegeIconPoint": cc.p(330, 280)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,
@@ -2028,7 +2032,7 @@ var fit4Iphone5 = {
                 energy: cc.p(170, 650),
                 power: cc.p(390, 650)
             },
-            "scrollViewLayerRect2":cc.rect(0, 360, 640, 480),
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
             "titleIconPoint": cc.p(320, 905)
@@ -2168,8 +2172,8 @@ var fit4Iphone5 = {
             "skillDescription1Point": cc.p(100, 280),
             "skillDescription2Point": cc.p(100, 250),
             "passiveHarmLabelPoint": cc.p(480, 367),
-            "lvLabelPoint": cc.p(220, 560),
-            "expLabelPoint": cc.p(380, 560),
+            "lvLabelPoint": cc.p(200, 560),
+            "expLabelPoint": cc.p(400, 560),
             "upgradeItemPoint": cc.p(320, 500),
             "closeItemPoint": cc.p(320, 130),
             "spiritNodePoint": cc.p(320, 720),
@@ -2409,6 +2413,8 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(0, 144),
             "bgSprite2Point": cc.p(320, 580),
             "okItemPoint": cc.p(320, 320),
+            "buyItemPoint": cc.p(200, 320),
+            "cancelItemPoint": cc.p(440, 320),
             "failLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItem2Point": cc.p(220, 520),
@@ -2421,7 +2427,7 @@ var fit4Iphone5 = {
                 fragments: cc.p(170, 550),
                 exp_card: cc.p(390, 550)
             },
-            "scrollViewLayerRect2":cc.rect(0, 360, 640, 480),
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
             "titleIconPoint": cc.p(320, 905)

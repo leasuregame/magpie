@@ -169,7 +169,7 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._lvLabel.setString("LV.  " + spiritPool.get("lv") + " / " + spiritPool.get("maxLv"));
         this._expLabel.setString("经验  " + spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
-        this._countLabel.setString(spiritPool.get("collectCount"));
+        this._countLabel.setString(spiritPool.get("collectCount") + " / " + spiritPool.get("maxCollectCount"));
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
         this._goldLabel.setString(player.get("gold"));
 
@@ -188,10 +188,10 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
             this.addChild(spirit);
 
-           // var str = "灵气: +" + this._reward.spirit_obtain;
+            // var str = "灵气: +" + this._reward.spirit_obtain;
 
             if (this._reward.isDouble) {
-              //  str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
+                //  str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
                 spirit.setScale(1.5);
             }
 

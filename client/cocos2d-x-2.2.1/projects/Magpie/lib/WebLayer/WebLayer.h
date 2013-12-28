@@ -19,7 +19,7 @@ typedef struct objc_object WebLayerOC;
 
 USING_NS_CC;
 
-class WebLayer
+class WebLayer : public cocos2d::CCLayer
 {
 public:
     WebLayer(const char * url, const CCRect rect);

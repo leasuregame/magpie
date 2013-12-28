@@ -4,6 +4,8 @@ user：root
 124.238.236.32 219.232.247.32   uqg3RgSqxFZEVSq8iHurksx9CHFUASJw
 124.238.236.33 219.232.247.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
 
+115.29.175.156
+
 然后登陆新浪的ssh命令式：
 
 ssh -l root -p 8022 124.238.236.33
@@ -63,11 +65,10 @@ cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server
 
 tail -f ./logs/node-log-area-server-1.log
+tail -n 2000 ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 http://124.238.236.33:7003
 test, 123
-
-use Dev http Client to test verify receipt.
 
 新浪服务器master：
 角色账号：987123000
@@ -78,3 +79,4 @@ use Dev http Client to test verify receipt.
 
 服务器：水帘洞
 角色名称：杨翠阳
+>>>>>>> origin/Client

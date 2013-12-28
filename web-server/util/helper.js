@@ -44,8 +44,13 @@ var versionData = function() {
   return JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
 };
 
-var getVersion = function() {
-  return rversionData().version;
+var getVersion = function(platform, cb) {
+  var vdata = versionData();
+  if (typeof vdata[platform] == 'undefined') {
+    return cb('Can not find version by '+platform);
+  } else {
+    return cb(null, vdata[platform].version);
+  }
 };
 
 var getLastVersion = function() {

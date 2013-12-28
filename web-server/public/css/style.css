@@ -7,3 +7,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+#backtop {
+    position:fixed;
+    _position:absolute;
+    top:30px;
+    right: 30px;
+    color: #fff;
+    text-decoration: none;
+}

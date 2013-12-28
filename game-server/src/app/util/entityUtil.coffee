@@ -105,6 +105,9 @@ getCardIdsByStar = (stars, exceptIds = []) ->
   .filter((id, row) -> id <= 500 and parseInt(id) not in exceptIds and row.star in stars)
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
+
+  if items.length is 0 and exceptIds.length > 0
+    return exceptIds.filter (i) -> (i%5 || 5) in stars
   items
 
 genSkillInc = (card) ->
@@ -115,7 +118,7 @@ genSkillInc = (card) ->
     max = skill["star#{card.star}_inc_max"]
     card.skillInc = _.random(min, max)
   else
-    logger.warn('can not file skill info of card: ' + card.tableId)
+    logger.warn('can not find skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
   fl = playerConfig.FRIENDCOUNT_LIMIT

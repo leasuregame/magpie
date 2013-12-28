@@ -13,10 +13,8 @@ var UPDATE_NETWORK_ERROR = 1;
 var UPDATE_NO_NEW_VERSION_ERROR = 2;
 var UPDATE_UN_COMPRESS_ERROR = 3;
 
-var UPDATE_PACKAGE_URL = "http://192.168.1.2/data.zip";
-//var UPDATE_PACKAGE_URL = "http://124.238.236.33:3434/update/";
-var UPDATE_VERSION_URL = "http://192.168.1.2:8888";
-//var UPDATE_VERSION_URL = "http://124.238.236.33:3434/version";
+var UPDATE_PACKAGE_URL = "http://115.29.175.156:9090/api/app/update/";
+var UPDATE_VERSION_URL = "http://115.29.175.156:9090/api/app/version";
 var UPDATE_DIR = "update_dir";
 
 
@@ -36,9 +34,8 @@ var UpdateLayer = cc.Layer.extend({
             this.successCallback
         );
 
-        this._assetsManager.setPackageUrl(UPDATE_PACKAGE_URL);
-//        this._assetsManager.setPackageUrl(UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
-        cc.log(this._assetsManager.getVersion());
+        this._assetsManager.setPackageUrl(UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
+
         this.update();
 
         return true;

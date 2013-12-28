@@ -2,8 +2,14 @@ var helper = require('../util/helper');
 var KSS_HOST = 'http://kss.ksyun.com';
 
 exports.version = function(req, res) {
-  var ver = helper.version();
-  res.send(ver);
+  var platform = req.params.platform;
+  helper.version(platform, function(err, ver) {
+    if (err != null) {
+      res.status(404).send(err);
+    } else {
+      res.send(ver);
+    }
+  });
 };
 
 exports.update = function(req, res) {
@@ -15,8 +21,7 @@ exports.update = function(req, res) {
   }
 
   var filename = vData[platform].filename;
-
-  if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}/.test(ver)) {
+  if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}$/.test(ver)) {
     return res.status(400).send('Bad version number');
   }
 
@@ -35,7 +40,6 @@ exports.manage = function(req, res) {
 };
 
 exports.updateVersion = function(req, res) {
-  console.log(req.body);
   helper.updateVersions(req.body);
   res.redirect('/admin/version');
 };

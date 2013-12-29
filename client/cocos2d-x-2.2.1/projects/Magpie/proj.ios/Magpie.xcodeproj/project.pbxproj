@@ -510,6 +510,17 @@
 		90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
 		90338ECE185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
+		90C212C418704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */; };
+		90C212C518704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */; };
+		90C212C618704B5B00671D28 /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C212C018704B5B00671D28 /* TBAdapter.mm */; };
+		90C212C718704B5B00671D28 /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C212C018704B5B00671D28 /* TBAdapter.mm */; };
+		90C212C818704B5B00671D28 /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212C218704B5B00671D28 /* TBPlatform.framework */; };
+		90C212C918704B5B00671D28 /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212C218704B5B00671D28 /* TBPlatform.framework */; };
+		90C212CA18704B5B00671D28 /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90C212C318704B5B00671D28 /* TBPlatformResource.bundle */; };
+		90C212CB18704B5B00671D28 /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90C212C318704B5B00671D28 /* TBPlatformResource.bundle */; };
+		90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
+		90C212D11870702D00671D28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
 		90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C51859A2CD000C5D75 /* IAPHelp.mm */; };
 		90C441CC1859A2CD000C5D75 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C71859A2CD000C5D75 /* IAPHelpOC.mm */; };
 		90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C81859A2CD000C5D75 /* js_bindings_IAPHelp.cpp */; };
@@ -1529,6 +1540,16 @@
 		90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_AssetsManager.cpp; sourceTree = "<group>"; };
 		90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_AssetsManager.hpp; sourceTree = "<group>"; };
 		90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_AssetsManager.js; sourceTree = "<group>"; };
+		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
+		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
+		90C212BF18704B5B00671D28 /* TBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAdapter.h; sourceTree = "<group>"; };
+		90C212C018704B5B00671D28 /* TBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TBAdapter.mm; sourceTree = "<group>"; };
+		90C212C118704B5B00671D28 /* TBCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCallbackHandler.h; sourceTree = "<group>"; };
+		90C212C218704B5B00671D28 /* TBPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TBPlatform.framework; sourceTree = "<group>"; };
+		90C212C318704B5B00671D28 /* TBPlatformResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TBPlatformResource.bundle; sourceTree = "<group>"; };
+		90C212CC1870701E00671D28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		90C212CE1870702600671D28 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		90C212D01870702D00671D28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		90C441C41859A2CD000C5D75 /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
 		90C441C51859A2CD000C5D75 /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		90C441C61859A2CD000C5D75 /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
@@ -1579,11 +1600,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C212D11870702D00671D28 /* Security.framework in Frameworks */,
+				90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */,
+				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
+				902B08721858C475003A2A49 /* QuartzCore.framework in Frameworks */,
 				902B086E1858C475003A2A49 /* libsqlite3.dylib in Frameworks */,
 				902B086F1858C475003A2A49 /* libcocos2dx.a in Frameworks */,
 				902B08701858C475003A2A49 /* libz.dylib in Frameworks */,
+				90C212C818704B5B00671D28 /* TBPlatform.framework in Frameworks */,
 				902B08711858C475003A2A49 /* libxml2.dylib in Frameworks */,
-				902B08721858C475003A2A49 /* QuartzCore.framework in Frameworks */,
 				902B08731858C475003A2A49 /* OpenGLES.framework in Frameworks */,
 				902B08741858C475003A2A49 /* OpenAL.framework in Frameworks */,
 				902B08751858C475003A2A49 /* AudioToolbox.framework in Frameworks */,
@@ -1626,6 +1651,7 @@
 				90F536EB1862EB3C008207BD /* libsqlite3.dylib in Frameworks */,
 				90F536EC1862EB3C008207BD /* libcocos2dx.a in Frameworks */,
 				90F536ED1862EB3C008207BD /* libz.dylib in Frameworks */,
+				90C212C918704B5B00671D28 /* TBPlatform.framework in Frameworks */,
 				90F536EE1862EB3C008207BD /* libxml2.dylib in Frameworks */,
 				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
 				90F536F01862EB3C008207BD /* OpenGLES.framework in Frameworks */,
@@ -2577,9 +2603,32 @@
 			path = AssetsManagerBindings;
 			sourceTree = "<group>";
 		};
+		90C212BB18704B5B00671D28 /* TongBu */ = {
+			isa = PBXGroup;
+			children = (
+				90C212BC18704B5B00671D28 /* TbAPI */,
+				90C212C218704B5B00671D28 /* TBPlatform.framework */,
+				90C212C318704B5B00671D28 /* TBPlatformResource.bundle */,
+			);
+			path = TongBu;
+			sourceTree = "<group>";
+		};
+		90C212BC18704B5B00671D28 /* TbAPI */ = {
+			isa = PBXGroup;
+			children = (
+				90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */,
+				90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */,
+				90C212BF18704B5B00671D28 /* TBAdapter.h */,
+				90C212C018704B5B00671D28 /* TBAdapter.mm */,
+				90C212C118704B5B00671D28 /* TBCallbackHandler.h */,
+			);
+			path = TbAPI;
+			sourceTree = "<group>";
+		};
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90C212BB18704B5B00671D28 /* TongBu */,
 				90F9F23118680B4C001821D5 /* WebLayer */,
 				90338EC7185B1E9100224717 /* AssetsManagerBindings */,
 				90338EB7185A18C300224717 /* DataDollection */,
@@ -2711,6 +2760,9 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90C212D01870702D00671D28 /* Security.framework */,
+				90C212CE1870702600671D28 /* MessageUI.framework */,
+				90C212CC1870701E00671D28 /* SystemConfiguration.framework */,
 				902B08F41858C666003A2A49 /* StoreKit.framework */,
 				1A96A4F2174A3432008653A9 /* libcurl.a */,
 				1A82F5FA169AC92500C4B13A /* libsqlite3.dylib */,
@@ -2923,6 +2975,7 @@
 				902B08971858C475003A2A49 /* res in Resources */,
 				902B089D1858C475003A2A49 /* src in Resources */,
 				902B08A01858C475003A2A49 /* json_internalarray.inl in Resources */,
+				90C212CA18704B5B00671D28 /* TBPlatformResource.bundle in Resources */,
 				902B08A11858C475003A2A49 /* json_internalmap.inl in Resources */,
 				902B08A21858C475003A2A49 /* json_valueiterator.inl in Resources */,
 				902B08EF1858C571003A2A49 /* Icon-72.png in Resources */,
@@ -2987,6 +3040,7 @@
 				90F537141862EB3C008207BD /* CMakeLists.txt in Resources */,
 				90F537171862EB3C008207BD /* json_internalarray.inl in Resources */,
 				90F5375E186303E3008207BD /* res in Resources */,
+				90C212CB18704B5B00671D28 /* TBPlatformResource.bundle in Resources */,
 				90F537181862EB3C008207BD /* json_internalmap.inl in Resources */,
 				90F537191862EB3C008207BD /* json_valueiterator.inl in Resources */,
 				90F5371A1862EB3C008207BD /* Icon-72.png in Resources */,
@@ -3202,6 +3256,7 @@
 				902B07FC1858C475003A2A49 /* CCInvocation.cpp in Sources */,
 				902B07FD1858C475003A2A49 /* CCScale9Sprite.cpp in Sources */,
 				902B07FE1858C475003A2A49 /* CCEditBox.cpp in Sources */,
+				90C212C618704B5B00671D28 /* TBAdapter.mm in Sources */,
 				902B07FF1858C475003A2A49 /* CCEditBoxImplIOS.mm in Sources */,
 				902B08001858C475003A2A49 /* CCScrollView.cpp in Sources */,
 				902B08011858C475003A2A49 /* CCSorting.cpp in Sources */,
@@ -3312,6 +3367,7 @@
 				902B08651858C475003A2A49 /* UISlider.cpp in Sources */,
 				902B08661858C475003A2A49 /* UISwitch.cpp in Sources */,
 				902B08671858C475003A2A49 /* UITextField.cpp in Sources */,
+				90C212C418704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */,
 				902B08681858C475003A2A49 /* CSContentJsonDictionary.cpp in Sources */,
 				902B08691858C475003A2A49 /* DictionaryHelper.cpp in Sources */,
 				902B086A1858C475003A2A49 /* json_reader.cpp in Sources */,
@@ -3677,6 +3733,7 @@
 				90F536B61862EB3C008207BD /* CCProcessBase.cpp in Sources */,
 				90F536B71862EB3C008207BD /* CCTween.cpp in Sources */,
 				90F536B81862EB3C008207BD /* CCArmature.cpp in Sources */,
+				90C212C718704B5B00671D28 /* TBAdapter.mm in Sources */,
 				90F536B91862EB3C008207BD /* CCBone.cpp in Sources */,
 				90F536BB1862EB3C008207BD /* CCDatas.cpp in Sources */,
 				90F536BC1862EB3C008207BD /* CCBatchNode.cpp in Sources */,
@@ -3689,6 +3746,7 @@
 				90F536C31862EB3C008207BD /* CCArmatureDefine.cpp in Sources */,
 				90F536C41862EB3C008207BD /* CCDataReaderHelper.cpp in Sources */,
 				90F536C51862EB3C008207BD /* CCSpriteFrameCacheHelper.cpp in Sources */,
+				90C212C518704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */,
 				90F536C61862EB3C008207BD /* CCTransformHelp.cpp in Sources */,
 				90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */,
 				90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */,
@@ -3977,6 +4035,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4013,6 +4075,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB";
@@ -4026,6 +4089,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4059,6 +4126,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB";
@@ -4177,6 +4245,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4226,6 +4298,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (

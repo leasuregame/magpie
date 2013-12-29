@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>8</integer>
+	<integer>2</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -498,7 +498,58 @@
 						</dict>
 					</dict>
 					<key>2</key>
-					<dict/>
+					<dict>
+						<key>opacity</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>opacity</string>
+									<key>time</key>
+									<real>1</real>
+									<key>type</key>
+									<integer>5</integer>
+									<key>value</key>
+									<integer>0</integer>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>opacity</string>
+							<key>type</key>
+							<integer>5</integer>
+						</dict>
+						<key>visible</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>visible</string>
+									<key>time</key>
+									<real>1</real>
+									<key>type</key>
+									<integer>1</integer>
+									<key>value</key>
+									<true/>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>visible</string>
+							<key>type</key>
+							<integer>1</integer>
+						</dict>
+					</dict>
 					<key>3</key>
 					<dict>
 						<key>color</key>
@@ -1722,7 +1773,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1737,7 +1788,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>50</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1764,8 +1815,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1788,6 +1839,16 @@
 					</dict>
 					<dict>
 						<key>baseValue</key>
+						<integer>255</integer>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Byte</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>baseValue</key>
 						<array>
 							<integer>108</integer>
 							<integer>235</integer>
@@ -1799,9 +1860,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
+							<integer>108</integer>
+							<integer>235</integer>
 							<integer>255</integer>
-							<integer>205</integer>
-							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1824,6 +1885,8 @@
 						<string></string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2699,7 +2762,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -2714,7 +2777,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>60</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2741,8 +2804,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.0</real>
+							<real>0.0</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2767,8 +2830,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

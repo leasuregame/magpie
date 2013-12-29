@@ -652,9 +652,11 @@ var main_scene_image = {
 
     effect700_1: "res/ccb/effect700_1.ccbi",
     effect700_2: "res/ccb/effect700_2.ccbi",
-    effect701: "res/ccb/effect701.ccbi",
+    effect701_1: "res/ccb/effect701_1.ccbi",
+    effect701_2: "res/ccb/effect701_2.ccbi",
 
     effect800: "res/ccb/effect800.ccbi",
+    effect801: "res/ccb/effect801.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -822,6 +824,8 @@ var main_scene_image = {
     p81: "res/effect/effect/p81.png",
     p82: "res/effect/effect/p82.png",
     p83: "res/effect/effect/p83.png",
+    p84: "res/effect/effect/p84.png",
+    p85: "res/effect/effect/p85.png",
 
     up1: "res/effect/uiEffect/up1.png",
     up2: "res/effect/uiEffect/up2.png",

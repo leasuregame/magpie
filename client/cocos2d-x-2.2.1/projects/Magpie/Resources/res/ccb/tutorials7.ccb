@@ -55,7 +55,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.1666667461395264</real>
+									<real>1.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -70,7 +70,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.2000000476837158</real>
+									<real>1.5333333015441895</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -85,7 +85,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.2333333492279053</real>
+									<real>1.5666667222976685</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -100,7 +100,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.2666666507720947</real>
+									<real>1.6000000238418579</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -115,7 +115,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.2999999523162842</real>
+									<real>1.6333333253860474</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -130,7 +130,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.3333332538604736</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -724,7 +724,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.6666667461395264</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -749,7 +749,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>2.6666667461395264</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -970,7 +970,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.5</real>
+									<real>1.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -985,7 +985,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.6666667461395264</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1010,7 +1010,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>2.5</real>
+									<real>1.5</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1107,6 +1107,8 @@
 						<integer>255</integer>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1194,7 +1196,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.1666667461395264</real>
+									<real>1.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1209,7 +1211,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.3333332538604736</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1594,6 +1596,8 @@
 								<integer>255</integer>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -1737,6 +1741,8 @@
 								<integer>255</integer>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -1756,7 +1762,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.80000001192092896</real>
+											<real>0.40000000596046448</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1771,7 +1777,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.0666667222976685</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1913,6 +1919,8 @@
 你想让谁为你效命，尽管去召唤吧。</string>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -1932,7 +1940,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>1</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -2434,13 +2442,13 @@
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
-			<real>2.6666667461395264</real>
+			<real>1.6666667461395264</real>
 			<key>name</key>
 			<string>heimu_animation</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.6666667461395264</real>
+			<real>1.6666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

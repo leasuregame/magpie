@@ -42,7 +42,7 @@ var BattleSpiritNode = cc.Node.extend({
     },
 
     ccbFnCallback: function () {
-        this.getParent().callback();
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {
@@ -51,13 +51,9 @@ var BattleSpiritNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect6, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
-        }
-
-        if (ccbNode) {
-            cc.log(ccbNode);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect7, this);
         }
 
         return ccbNode;
@@ -76,6 +72,8 @@ var BattleSpiritNode = cc.Node.extend({
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
     }
 });
 

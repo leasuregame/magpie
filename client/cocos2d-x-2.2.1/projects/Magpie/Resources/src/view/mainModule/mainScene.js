@@ -58,6 +58,7 @@ var MainScene = cc.Scene.extend({
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
+        //    NoticeLayer.pop();
         }
 
         this.retain();

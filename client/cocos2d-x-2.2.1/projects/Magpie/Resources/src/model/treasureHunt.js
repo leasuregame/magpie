@@ -61,7 +61,9 @@ var TreasureHunt = Entity.extend({
 
                 var goldResume = data.msg.goldResume;
 
-                gameData.player.add(table.type, table.value);
+                var times = msg.times;
+
+                gameData.player.add(table.type, table.value * times);
 
                 if (that._freeCount <= 0) {
                     gameData.player.add("gold", -goldResume);
@@ -71,7 +73,7 @@ var TreasureHunt = Entity.extend({
                 that._freeCount = msg.lotteryFreeCount;
 
                 var str = {};
-                str[table.type] = table.value;
+                str[table.type] = table.value * times;
 
                 cb({
                     id: id,

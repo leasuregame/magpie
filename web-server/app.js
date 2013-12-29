@@ -9,6 +9,8 @@ var notice = require('./routes/notice');
 var version = require('./routes/version');
 var http = require('http');
 var path = require('path');
+var filter = require('./util/filter');
+var expressValidator = require('express-validator');
 
 var app = express();
 
@@ -21,23 +23,30 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(express.cookieParser('arthur wu'));
+app.use(express.session());
+app.use(express.bodyParser());
+app.use(expressValidator());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-
-app.get('/admin/notice', notice.noticeList);
-app.post('/admin/notice', notice.newNotice);
-app.get('/admin/notice/:platform', notice.getNotice);
-app.delete('/admin/notice/:platform', notice.delNotice);
-app.post('/admin/notice/:platform', notice.saveNotice);
-app.get('/admin/version', version.manage);
-app.post('/admin/version', version.updateVersion);  
+app.get('/', filter.authorize, routes.index);
+app.get('/login', routes.login);
+app.post('/login', routes.doLogin);
+app.get('/logout', routes.doLogout);
+app.get('/admin/notice', filter.authorize, notice.noticeList);
+app.post('/admin/notice', filter.authorize, notice.newNotice);
+app.get('/admin/notice/:platform', filter.authorize, notice.getNotice);
+app.delete('/admin/notice/:platform', filter.authorize, notice.delNotice);
+app.post('/admin/notice/:platform', filter.authorize, notice.saveNotice);
+app.get('/admin/version', filter.authorize, version.manage);
+app.post('/admin/version', filter.authorize, version.updateVersion);  
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);

@@ -87,7 +87,7 @@ var main_scene_image = {
     progress4: main_scene_path + "progress4.png",
     progress5: main_scene_path + "progress5.png",
     progress6: main_scene_path + "progress6.png",
-//    progress7: main_scene_path + "progress7.png",
+    progress7: main_scene_path + "progress7.png",
 //    progress8: main_scene_path + "progress8.png",
 //    progress9: main_scene_path + "progress9.png",
 //    progress10: main_scene_path + "progress10.png",
@@ -345,7 +345,7 @@ var main_scene_image = {
     icon57: main_scene_path + "icon57.png",
     icon58: main_scene_path + "icon58.png",
     icon59: main_scene_path + "icon59.png",
- //   icon60: main_scene_path + "icon60.png",
+    //   icon60: main_scene_path + "icon60.png",
     icon61: main_scene_path + "icon61.png",
 //    icon62: main_scene_path + "icon62.png",
     icon63: main_scene_path + "icon63.png",
@@ -618,6 +618,7 @@ var main_scene_image = {
     icon332: main_scene_path + "icon332.png",
     icon333: main_scene_path + "icon333.png",
     icon334: main_scene_path + "icon334.png",
+    icon335: main_scene_path + "icon335.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -652,9 +653,11 @@ var main_scene_image = {
 
     effect700_1: "res/ccb/effect700_1.ccbi",
     effect700_2: "res/ccb/effect700_2.ccbi",
-    effect701: "res/ccb/effect701.ccbi",
+    effect701_1: "res/ccb/effect701_1.ccbi",
+    effect701_2: "res/ccb/effect701_2.ccbi",
 
     effect800: "res/ccb/effect800.ccbi",
+    effect801: "res/ccb/effect801.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -822,6 +825,8 @@ var main_scene_image = {
     p81: "res/effect/effect/p81.png",
     p82: "res/effect/effect/p82.png",
     p83: "res/effect/effect/p83.png",
+    p84: "res/effect/effect/p84.png",
+    p85: "res/effect/effect/p85.png",
 
     up1: "res/effect/uiEffect/up1.png",
     up2: "res/effect/uiEffect/up2.png",

@@ -397,7 +397,9 @@ var fit4Iphone4 = {
             "pointX": -600,
             "closeBoxSpritePoint2": cc.p(360, 1025),
             "passEffectPoint": cc.p(360, 578),
-            "rewardEffectPoint": cc.p(360, 800)
+            "rewardEffectPoint": cc.p(360, 800),
+            "lvIconPoint": cc.p(104, 854),
+            "playerLvLabelPoint": cc.p(165, 851)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1164,12 +1166,12 @@ var fit4Iphone4 = {
             "headLabelPoint": cc.p(360, 850),
             "goldIconPoint": cc.p(570, 850),
             "goldLabelPoint": cc.p(600, 850),
-            "treasureHuntBgPoint": cc.p(360, 500),
-            "treasureHuntItemPoint": cc.p(360, 452),
+            "treasureHuntBgPoint": cc.p(360, 480),
+            "treasureHuntItemPoint": cc.p(360, 422),
             "treasureHuntIcon1Point": cc.p(355, 457),
-            "treasureHuntIcon2Point": cc.p(355, 457),
-            "freeCountLabelPoint": cc.p(420, 342),
-            "countLabelPoint": cc.p(420, 282)
+            "treasureHuntIcon2Point": cc.p(355, 427),
+            "freeCountLabelPoint": cc.p(420, 337),
+            "countLabelPoint": cc.p(420, 277)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(360, 492),
@@ -1620,7 +1622,9 @@ var fit4Iphone5 = {
             "pointX": -640,
             "closeBoxSpritePoint2": cc.p(320, 1025),
             "passEffectPoint": cc.p(320, 706),
-            "rewardEffectPoint": cc.p(320, 900)
+            "rewardEffectPoint": cc.p(320, 900),
+            "lvIconPoint": cc.p(64, 1022),
+            "playerLvLabelPoint": cc.p(125, 1019)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2389,12 +2393,12 @@ var fit4Iphone5 = {
             "headLabelPoint": cc.p(320, 1026),
             "goldIconPoint": cc.p(530, 1026),
             "goldLabelPoint": cc.p(560, 1026),
-            "treasureHuntBgPoint": cc.p(320, 588),
-            "treasureHuntItemPoint": cc.p(320, 540),
+            "treasureHuntBgPoint": cc.p(320, 548),
+            "treasureHuntItemPoint": cc.p(320, 490),
             "treasureHuntIcon1Point": cc.p(315, 545),
-            "treasureHuntIcon2Point": cc.p(315, 545),
-            "freeCountLabelPoint": cc.p(380, 430),
-            "countLabelPoint": cc.p(380, 370)
+            "treasureHuntIcon2Point": cc.p(315, 496),
+            "freeCountLabelPoint": cc.p(380, 406),
+            "countLabelPoint": cc.p(380, 346)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(320, 580),

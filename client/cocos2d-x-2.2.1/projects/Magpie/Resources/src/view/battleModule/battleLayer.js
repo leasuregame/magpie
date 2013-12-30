@@ -1533,7 +1533,7 @@ var BatterLayer = cc.Layer.extend({
         if (player.get("lv") >= needLv && player.get("vip") >= needVip) {
             this.end();
         } else {
-            TipLayer.tip("VIP" + needVip + "及以上玩家达到" + needLv + "级后，可跳过战斗。");
+            TipLayer.tip("VIP" + needVip + "及以上玩家达到" + needLv + "级后，可跳过战斗");
         }
     },
 

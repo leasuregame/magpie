@@ -24,13 +24,13 @@ var NoticeLayer = cc.Layer.extend({
         noticeEffect.setPosition(cc.p(320, 568));
 
         var that = this;
-        this.scheduleOnce(function () {
-            //var url = "http://115.29.175.156:9090/api/app/notice";
-            var url = "http://192.168.1.8:9090/api/app/notice";
-            that._webLayer = lz.WebLayer.create(url, cc.rect(25, 150, 270, 260));
-            LazyLayer.showCloudAll();
-        }, 0.01);
+       // this.scheduleOnce(function () {
+            var url = "http://115.29.175.156:9090/api/app/notice";
+            that._webLayer = lz.WebLayer.create(url, cc.rect(23, 150, 274, 265));
 
+      //  }, 0.01);
+
+        noticeEffect.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this.addChild(noticeEffect);
         return true;
     },
@@ -59,6 +59,9 @@ NoticeLayer.create = function () {
 NoticeLayer.pop = function () {
     cc.log("NoticeLayer pop");
 
-    var noticeLayer = NoticeLayer.create();
-    MainScene.getInstance().addChild(noticeLayer, 10);
+    lz.scheduleOnce(function () {
+        LazyLayer.showCloudAll();
+        var noticeLayer = NoticeLayer.create();
+        MainScene.getInstance().addChild(noticeLayer, 10);
+    },0.01);
 };

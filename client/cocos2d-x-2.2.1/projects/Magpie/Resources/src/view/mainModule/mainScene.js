@@ -78,7 +78,7 @@ var MainScene = cc.Scene.extend({
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
-        
+
     },
 
     updateGuide: function () {
@@ -134,7 +134,7 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
-        if(_mainScene) {
+        if (_mainScene) {
             _mainScene.release();
             _mainScene = null;
         }

@@ -98,7 +98,7 @@ var appFiles = [
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginBgLayer.js',
     'src/view/loginModule/updateLayer.js',
-    'src/view/loginModule/loginLayer.js',
+    'loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
     'src/view/loginModule/newPlayerLayer.js',
     'src/view/loginModule/registerLayer.js',

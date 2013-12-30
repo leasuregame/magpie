@@ -142,7 +142,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>70</real>
+							<real>80</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -160,7 +160,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.40000000596046448</real>
+						<real>0.5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -177,8 +177,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.20000000298023224</real>
+							<real>0.60000002384185791</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -307,7 +307,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>300</real>
+							<real>250</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -318,7 +318,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>0.0</real>
 							<real>0.0</real>
 						</array>
 					</dict>
@@ -476,7 +476,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.40000000596046448</real>
+						<real>0.5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -493,7 +493,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.60000002384185791</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -623,7 +623,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>350</real>
+							<real>250</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -1314,13 +1314,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

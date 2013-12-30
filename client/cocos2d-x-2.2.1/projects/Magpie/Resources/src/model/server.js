@@ -87,7 +87,7 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  ";// + status.statusName;
+            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name;
             this._areaList[i].url = status.url;
         }
     },

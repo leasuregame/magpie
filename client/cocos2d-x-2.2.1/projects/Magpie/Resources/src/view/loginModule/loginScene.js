@@ -19,12 +19,12 @@ var LoginScene = cc.Scene.extend({
         cc.log("LoginScene onEnter");
 
         this._super();
-//
-//        if(typeof UpdateLayer == "undefined") {
-        this.switchLayer(LoginLayer);
-//        } else {
-//            this.switchLayer(UpdateLayer);
-//        }
+
+        if (typeof UpdateLayer == "undefined") {
+            this.switchLayer(LoginLayer);
+        } else {
+            this.switchLayer(UpdateLayer);
+        }
 
         lz.dc.beginLogPageView("登录场景");
     },
@@ -53,7 +53,7 @@ var LoginScene = cc.Scene.extend({
         this.addChild(loginBgLayer);
 
         var url = "http://115.29.175.156:9090/api/app/notice";
-      //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
+        //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
 
         return true;
     },

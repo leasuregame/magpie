@@ -141,7 +141,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
     onTouchesEnded: function (touches, event) {
         cc.log("PlayerHeaderLabel onTouchesEnded");
 
-        if (this._isTouch) {
+        if (this._isTouch && touches[0] != undefined) {
             var point = this.convertToNodeSpace(touches[0].getLocation());
 
             if (cc.rectContainsPoint(this._selectRect, point)) {

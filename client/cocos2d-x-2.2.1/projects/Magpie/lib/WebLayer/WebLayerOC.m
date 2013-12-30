@@ -15,7 +15,15 @@
 {
     if ((self = [super init])) {
         _uiView = [[UIView alloc] initWithFrame:rect];
-        _uiWebView = [[UIWebView alloc] initWithFrame:rect];
+        
+        _uiWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+        [_uiWebView setBackgroundColor:[UIColor clearColor]];
+        [_uiWebView setOpaque:NO];
+        _uiWebView.delegate = self;
+        
+        [_uiView addSubview:_uiWebView];
+        [[EAGLView sharedEGLView] addSubview:_uiView];
+        
         _url = url;
         
         [self load];
@@ -35,16 +43,6 @@
 - (void) load
 {
     [_uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString :_url]]];
-    
-    [_uiWebView setBackgroundColor:[UIColor clearColor]];
-    
-    [_uiWebView setOpaque:NO];
-    
-    _uiWebView.delegate = self;
-
-    [_uiView addSubview:_uiWebView];
-
-    [[EAGLView sharedEGLView] addSubview:_uiView];
 }
 
 - (void) close

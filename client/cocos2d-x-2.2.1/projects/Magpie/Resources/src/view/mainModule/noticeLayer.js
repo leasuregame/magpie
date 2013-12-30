@@ -25,14 +25,13 @@ var NoticeLayer = cc.Layer.extend({
 
         var that = this;
         this.scheduleOnce(function () {
-            var url = "http://115.29.175.156:9090/api/app/notice";
-            that._webLayer = lz.WebLayer.create(url, cc.rect(20, 150, 280, 260));
-        }, 0.1);
+            //var url = "http://115.29.175.156:9090/api/app/notice";
+            var url = "http://192.168.1.8:9090/api/app/notice";
+            that._webLayer = lz.WebLayer.create(url, cc.rect(25, 150, 270, 260));
+            LazyLayer.showCloudAll();
+        }, 0.01);
 
         this.addChild(noticeEffect);
-
-        LazyLayer.showCloudAll();
-
         return true;
     },
 

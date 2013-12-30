@@ -87,11 +87,10 @@ var NewPlayerLayer = cc.Layer.extend({
     _setRandomName: function () {
         cc.log("NewPlayerLayer _setRandomName");
 
-        var user = gameData.user;
-        var name = user.getRandomName();
+        var name = lz.getRandomName();
 
-        while (!user.eligibleName(name)) {
-            name = user.getRandomName();
+        while (!lz.eligibleName(name)) {
+            name = lz.getRandomName();
         }
 
         this._nameEditBox.setText(name);
@@ -118,7 +117,7 @@ var NewPlayerLayer = cc.Layer.extend({
             return;
         }
 
-        if (!user.eligibleName(name)) {
+        if (!lz.eligibleName(name)) {
             TipLayer.tip("昵称已被占用");
             return;
         }

@@ -1,12 +1,15 @@
 // magpie project obfuscate exclude file
 
 // binding exclude
-var lz = function() {};
-var um = function() {};
+var lz = function () {};
+var um = function () {};
+var tb = function () {};
 
 CSSProperties.prototype.lz;
+
 CSSProperties.prototype.IAPHelp;
 CSSProperties.prototype.buy;
+
 CSSProperties.prototype.AssetsManager;
 CSSProperties.prototype.setStoragePath;
 CSSProperties.prototype.setPackageUrl;
@@ -21,6 +24,7 @@ CSSProperties.prototype.getVersionFileUrl;
 CSSProperties.prototype.deleteVersion;
 CSSProperties.prototype.ctor;
 CSSProperties.prototype.create;
+
 CSSProperties.prototype.um;
 CSSProperties.prototype.MobClickCPP;
 CSSProperties.prototype.setLogSendInterval;
@@ -42,11 +46,55 @@ CSSProperties.prototype.event;
 CSSProperties.prototype.updateOnlineConfig;
 CSSProperties.prototype.beginEvent;
 
-
-
+CSSProperties.prototype.tb;
+CSSProperties.prototype.TBAdapter;
+CSSProperties.prototype.TBAdapterInstance;
+CSSProperties.prototype.TBSwitchAccount;
+CSSProperties.prototype.TBUserID;
+CSSProperties.prototype.TBCheckOrderFailed;
+CSSProperties.prototype.TBUnipayForCoinWithOrder;
+CSSProperties.prototype.TBSetAppID;
+CSSProperties.prototype.TBSetAutoRotate;
+CSSProperties.prototype.TBLogin;
+CSSProperties.prototype.TBLogout;
+CSSProperties.prototype.TBIsLogined;
+CSSProperties.prototype.TBBuyGoodsFailed;
+CSSProperties.prototype.TBCheckUpdateFinished;
+CSSProperties.prototype.ShowMessage;
+CSSProperties.prototype.TBSetDebug;
+CSSProperties.prototype.TBSetScreenOrientation;
+CSSProperties.prototype.TBLogoutHandle;
+CSSProperties.prototype.TBBuyGoodsDidCancelByUser;
+CSSProperties.prototype.TBCheckOrderResultHandle;
+CSSProperties.prototype.TBCheckOrder;
+CSSProperties.prototype.TBNickName;
+CSSProperties.prototype.TBBuyGoodsDidEnterWebview;
+CSSProperties.prototype.TBEnterGameCenter;
+CSSProperties.prototype.TBEnterBBS;
+CSSProperties.prototype.TBInitDidFinishWithUpdateCode;
+CSSProperties.prototype.TBLeavedPlatformHandle;
+CSSProperties.prototype.TBBuyGoodsSuccessWithOrder;
+CSSProperties.prototype.TBSessionID;
+CSSProperties.prototype.TBUnipayForCoinWhthOrder;
+CSSProperties.prototype.TBLoginResultHandle;
+CSSProperties.prototype.TBEnterUserCenter;
+CSSProperties.prototype.TBCheckUpdate;
+CSSProperties.prototype.TBInitPlatformWithAppID;
+CSSProperties.prototype.ctor;
+// tb callback
+CSSProperties.prototype.initDidFinishWithUpdateCodeHandler;
+CSSProperties.prototype.loginResultHandler;
+CSSProperties.prototype.logoutHandler;
+CSSProperties.prototype.leavedPlatformHandler;
+CSSProperties.prototype.checkUpdateFinishedHandler;
+CSSProperties.prototype.buyGoodsSuccessWithOrderHandler;
+CSSProperties.prototype.buyGoodsFailedHandler;
+CSSProperties.prototype.buyGoodsDidEnterWebViewHandler;
+CSSProperties.prototype.checkOrderResultHandler;
+CSSProperties.prototype.checkOrderFailedHandler;
+CSSProperties.prototype.buyGoodsDidCancelByUser;
 
 // cocosBuilder exclude
-
 CSSProperties.prototype.ccbFnMystical;
 CSSProperties.prototype.ccbFnSpiritPool;
 CSSProperties.prototype.ccbFnCollectSpirit;

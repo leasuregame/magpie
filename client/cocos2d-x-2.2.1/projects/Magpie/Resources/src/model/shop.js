@@ -32,6 +32,44 @@ var Shop = Entity.extend({
 
         this.update(data);
         this.updateMaxCount();
+
+        lz.server.on("onVerifyResult", function (data) {
+            cc.log("***** on verify result:");
+            cc.log(data);
+
+            var msg = data.msg;
+
+            cc.log(msg.gold);
+            cc.log(msg.cash);
+
+            var player = gameData.player;
+
+            player.set("gold", msg.gold);
+            player.set("cash", msg.cash);
+
+            var nowVip = msg.vip;
+            var oldVip = player.get("vip");
+
+            if (nowVip && nowVip != oldVip) {
+                cc.log(nowVip);
+                cc.log(oldVip);
+
+                player.set("vip", nowVip);
+
+                var oldPrivilegeTable = outputTables.vip_privilege.rows[oldVip];
+                var nowPrivilegeTable = outputTables.vip_privilege.rows[nowVip];
+
+                gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
+                gameData.friend.adds({
+                    "maxFriendCount": nowPrivilegeTable.friend_count - oldPrivilegeTable.friend_count,
+                    "giveCount": nowPrivilegeTable.give_bless_count - oldPrivilegeTable.give_bless_count,
+                    "receiveCount": nowPrivilegeTable.receive_bless_count - oldPrivilegeTable.receive_bless_count
+                });
+                gameData.shop.add("powerBuyCount", nowPrivilegeTable.buy_power_count - oldPrivilegeTable.buy_power_count);
+                gameData.tournament.add("count", nowPrivilegeTable.challenge_count - oldPrivilegeTable.challenge_count);
+                gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
+            }
+        });
     },
 
     update: function (data) {
@@ -42,7 +80,7 @@ var Shop = Entity.extend({
         this.set("challengeBuyCount", data.challengeBuyCount);
     },
 
-    updateMaxCount: function() {
+    updateMaxCount: function () {
         cc.log("Shop updateMaxCount");
 
         var vip = gameData.player.get("vip");
@@ -133,55 +171,6 @@ var Shop = Entity.extend({
         if (vip == MAX_VIP_LEVEL) return 0;
 
         return outputTables.vip.rows[vip + 1].total_cash - player.get("cash");
-    },
-
-    payment: function (cb, id) {
-        cc.log("Shop payment: " + id);
-
-        var that = this;
-        lz.server.request("area.vipHandler.buyVip", {
-            id: id
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("payment success");
-
-                var msg = data.msg;
-
-                var player = gameData.player;
-                var nowVip = msg.vip;
-                var oldVip = player.get("vip");
-
-                if (nowVip != oldVip) {
-                    var rechargeTable = outputTables.recharge.rows[id];
-                    var oldPrivilegeTable = outputTables.recharge.rows[oldVip];
-                    var nowPrivilegeTable = outputTables.recharge.rows[nowVip];
-
-                    player.add("gold", rechargeTable.cash * 10 + rechargeTable.gold);
-                    player.set("vip", nowVip);
-
-                    gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
-                    gameData.friend.adds({
-                        "maxFriendCount": nowPrivilegeTable.friend_count - oldPrivilegeTable.friend_count,
-                        "giveCount": nowPrivilegeTable.give_bless_count - oldPrivilegeTable.give_bless_count,
-                        "receiveCount": nowPrivilegeTable.receive_bless_count - oldPrivilegeTable.receive_bless_count
-                    });
-                    gameData.shop.add("powerBuyCount", nowPrivilegeTable.buy_power_count - oldPrivilegeTable.buy_power_count);
-                    gameData.tournament.add("count", nowPrivilegeTable.challenge_count - oldPrivilegeTable.challenge_count);
-                    gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
-                }
-
-                cb();
-
-                lz.dc.event("event_pay", id);
-            } else {
-                cc.log("payment fail");
-
-                TipLayer.tip(data.msg);
-            }
-        });
     },
 
     buyVipBox: function (cb, id) {

@@ -1,0 +1,147 @@
+/**
+ * Created by lcc3536 on 13-12-30.
+ */
+
+
+/*
+ * user
+ * */
+
+
+var User = Entity.extend({
+    _id: 0,                 // 账号序号
+    _createTime: 0,         // 创建时间
+    _area: 1,               // 区
+    _name: "",              // 名字
+    _loginCount: 0,         // 总登录次数
+    _lastLoginArea: 0,      // 最后登录的区
+    _lastLoginTime: 0,      // 最后登录时间
+    _lastLoginDevice: "",   // 最后登录设备
+
+    init: function () {
+        cc.log("User init");
+
+        this._load();
+
+        return true;
+    },
+
+    update: function (data) {
+        cc.log("User update");
+
+        if (!data) return;
+
+        this.set("id", data.id);
+        this.set("createTime", data.createTime);
+        this.set("account", data.account);
+        this.set("name", data.name);
+        this.set("loginCount", data.loginCount);
+        this.set("lastLoginArea", data.lastLoginArea);
+        this.set("lastLoginTime", data.lastLoginTime);
+        this.set("lastLoginDevice", data.lastLoginDevice);
+    },
+
+    _load: function () {
+        cc.log("User _load");
+
+        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
+    },
+
+    _save: function () {
+        cc.log("User _save");
+
+        sys.localStorage.setItem("area", this._area);
+    },
+
+    login: function (cb) {
+        cc.log("User login");
+
+        cc.log(this._area);
+
+        this._save();
+
+        if (!tbAdapter.TBIsLogined()) {
+            tbAdapter.TBLogin(0);
+
+            return;
+        }
+
+        var that = this;
+        lz.server.connectGameServer(function () {
+            lz.server.request("connector.userHandler.loginTB", {
+                nickName: tbAdapter.TBNickName(),
+                userId: tbAdapter.TBUserID(),
+                sessionId: tbAdapter.TBSessionID(),
+                areaId: that._area
+            }, function (data) {
+                cc.log(data);
+
+                var msg = data.msg;
+
+                if (data.code == 200) {
+                    cc.log("login success");
+
+                    that.update(msg.user);
+
+                    var player = msg.player;
+
+                    if (player) {
+                        gameData.gameInit();
+                        gameData.player.init(msg.player);
+
+                        cb(1);
+                    } else {
+                        cb(2);
+                    }
+
+                    lz.dc.event("event_login", that._area);
+                } else {
+                    cc.log("login fail");
+
+                    cb(0);
+
+                    TipLayer.tip(data.msg);
+                }
+            });
+        });
+    },
+
+    createPlayer: function (cb, name) {
+        cc.log("User createPlayer");
+
+        var that = this;
+        lz.server.request("connector.playerHandler.createPlayer", {
+            name: name
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("createPlayer success");
+
+                var msg = data.msg;
+
+                gameData.gameInit();
+                gameData.player.init(msg.player);
+
+                cb();
+
+                lz.dc.event("event_create_player", that._area);
+            } else {
+                cc.log("createPlayer fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    }
+});
+
+
+User.create = function () {
+    var ret = new User();
+
+    if (ret && ret.init()) {
+        return ret;
+    }
+
+    return null;
+};

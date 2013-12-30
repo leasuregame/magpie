@@ -8,6 +8,7 @@
   "dependencies": {
     "express": "3.4.7",
     "jade": "*",
-    "express-validator": "*"
+    "express-validator": "*",
+    "js-beautify": "*"
   }
 }

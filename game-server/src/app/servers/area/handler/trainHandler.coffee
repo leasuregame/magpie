@@ -424,6 +424,7 @@ Handler::starUpgrade = (msg, session, next) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
       
+    player.popCards(sources)
     next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->

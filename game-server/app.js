@@ -120,6 +120,9 @@ app.configure('production|development', 'area', function() {
   }
   app.set('mysql', val);
 
+  var platform = require(app.getBase() + '/config/platform.json').platform;
+  app.set('platform', platform);
+
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 

@@ -71,6 +71,9 @@ var BatterLayer = cc.Layer.extend({
 
                 if (typeof(battleNode[key]) == "number") {
                     this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
+                    var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
+                    spiritFrame.setPosition(locate);
+                    this.addChild(spiritFrame);
                 } else {
                     this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
@@ -1533,7 +1536,7 @@ var BatterLayer = cc.Layer.extend({
         if (player.get("lv") >= needLv && player.get("vip") >= needVip) {
             this.end();
         } else {
-            TipLayer.tip("VIP" + needVip + "及以上玩家达到" + needLv + "级后，可跳过战斗");
+            TipLayer.tip("VIP" + needVip + "玩家" + needLv + "级开启");
         }
     },
 
@@ -1560,7 +1563,7 @@ var BatterLayer = cc.Layer.extend({
                 that._chooseSpeedItem[time].setVisible(false);
 
             } else {
-                TipLayer.tip(needLv + "级可开启" + times + "倍战斗加速");
+                TipLayer.tip(needLv + "级开启");
             }
         }
     }

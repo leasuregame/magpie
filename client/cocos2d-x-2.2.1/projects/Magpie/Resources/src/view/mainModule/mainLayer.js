@@ -86,19 +86,18 @@ var MainLayer = cc.Layer.extend({
         lineIcon.setAnchorPoint(cc.p(0, 0));
         lineIcon.setPosition(this._mainLayerFit.lineIconPoint);
         this.addChild(lineIcon);
-        var player = gameData.player;
 
         var abilityLabelIcon = cc.Sprite.create(main_scene_image.icon286);
         abilityLabelIcon.setAnchorPoint(cc.p(0, 0));
         abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
         this.addChild(abilityLabelIcon);
 
-        var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
+        var abilityLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
-        var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
+        var rankingLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         rankingLabel.setAnchorPoint(cc.p(0, 0.5));
         rankingLabel.setPosition(this._mainLayerFit.rankingLabelPoint);
         this.addChild(rankingLabel);
@@ -262,6 +261,12 @@ var MainLayer = cc.Layer.extend({
             }
 
             that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
+
+            var ability = gameData.player.getAbility();
+            var ranking = gameData.tournament.get("ranking");
+
+            abilityLabel.setString(ability);
+            rankingLabel.setString(ranking);
 
         }, 0.1);
 

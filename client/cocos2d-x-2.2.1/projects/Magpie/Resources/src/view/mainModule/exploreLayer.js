@@ -410,7 +410,7 @@ var ExploreLayer = cc.Layer.extend({
                 that._unlock();
                 that._onClickBack();
             }
-            that.scheduleOnce(that._unlock, 1);
+            that.scheduleOnce(that._unlock, 0.3);
             cb();
             that.update();
         });
@@ -583,13 +583,13 @@ var ExploreLayer = cc.Layer.extend({
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.2),
+            cc.DelayTime.create(0.16),
             cc.CallFunc.create(function () {
                 gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
             }, this),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
-            cc.DelayTime.create(0.1)
+            cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
+            cc.DelayTime.create(0.08)
 
         );
 

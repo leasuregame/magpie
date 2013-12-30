@@ -37,6 +37,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+        this.updateGuide();
 
         lz.dc.beginLogPageView("竞技界面");
     },
@@ -214,7 +215,7 @@ var TournamentLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        if(player.isFullLv()) {
+        if (player.isFullLv()) {
             this._expProgress.setAllValue(0, 0);
         } else {
             this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
@@ -293,7 +294,7 @@ var TournamentLayer = cc.Layer.extend({
 
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-            slideLabel[i].setVisible(false);
+            //    slideLabel[i].setVisible(false);
 
             if (playerId == this._rankList[i].playerId) {
                 index = Math.min(i + 1, len - 1);
@@ -328,20 +329,19 @@ var TournamentLayer = cc.Layer.extend({
         var offsetY = 0 - (len - 1 - index) * 135;
         if (index < 10) offsetY -= 55;
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
-        this._scrollView.setContentOffset(cc.p(0,  offsetY));
+        this._scrollView.setContentOffset(cc.p(0, offsetY));
 
-        var slideLayer = SlideLayer.create(
-            {
-                labels: slideLabel,
-                slideTime: 0.4,
-                timeTick: 0.05
-            }
-        );
-
-        slideLayer.showSlide();
+//        var slideLayer = SlideLayer.create(
+//            {
+//                labels: slideLabel,
+//                slideTime: 0.4,
+//                timeTick: 0.05
+//            }
+//        );
+//
+//        slideLayer.showSlide();
 
     },
-
 
 
     _getPlayer: function (id) {
@@ -363,7 +363,7 @@ var TournamentLayer = cc.Layer.extend({
         this._level9Box = level9Box || null;
     },
 
-    _setFirstTournament: function(isFirstTournament) {
+    _setFirstTournament: function (isFirstTournament) {
         cc.log("TournamentLayer _setFirstTournament");
 
         this._isFirstTournament = isFirstTournament;
@@ -485,6 +485,21 @@ var TournamentLayer = cc.Layer.extend({
         TournamentTipLayer.pop(function () {
             that._onClickBuyCount();
         });
+    },
+
+    updateGuide: function () {
+        cc.log("TournamentLayer updateGuide");
+
+        if (gameGuide.get("rankExplain")) {
+            gameGuide.set("rankExplain", false);
+            var url = gameGuide.getExplainEffect("rank");
+            var effect = cc.BuilderReader.load(main_scene_image[url], this);
+            effect.setPosition(gameFit.gameGuide.effectPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect, 10);
+        }
     }
 
 });

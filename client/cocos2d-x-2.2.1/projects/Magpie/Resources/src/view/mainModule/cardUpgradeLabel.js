@@ -36,6 +36,8 @@ var CardUpgradeLabel = cc.Layer.extend({
     _upgradeItem: null,
     _selectLeadCardIcon: null,
     _money: null,
+    _getExp: 0,
+    _needExp: 0,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -297,13 +299,14 @@ var CardUpgradeLabel = cc.Layer.extend({
             var dummyCard = lz.clone(this._leadCard);
 
             this._money = dummyCard.addExp(exp);
-
+            this._getExp = exp;
             this._hpAdditionLabel.setString("+ " + (dummyCard.get("hp") - this._leadCard.get("hp")));
             this._atkAdditionLabel.setString("+ " + (dummyCard.get("atk") - this._leadCard.get("atk")));
 
             this._expLabel.setString(exp);
             this._moneyLabel.setString(this._money);
-            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
+            this._needExp = this._leadCard.getCardFullLvNeedExp();
+            this._expNeedLabel.setString(this._needExp);
             this._cardCountLabel.setString(cardCount);
 
             if (this._money > gameData.player.get("money")) {
@@ -585,6 +588,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 if (data) {
                     that._retinueCard = [];
+                    that._getExp = 0;
+                    that._needExp = 0;
                     that._upgrade(dummyCard, data.exp, data.money, len);
                 } else {
                     that.update();
@@ -593,10 +598,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             }, cardIdList);
         };
 
-        var getExp = this._expLabel.getString();
-        var needExp = this._expNeedLabel.getString();
-
-        if (getExp > needExp) {
+        if (this._getExp > this._needExp) {
             this._showTip(next);
         } else {
             next();

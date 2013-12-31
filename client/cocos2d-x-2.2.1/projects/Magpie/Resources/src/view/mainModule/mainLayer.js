@@ -361,6 +361,14 @@ var MainLayer = cc.Layer.extend({
                 }
             }
 
+            if(index == 4) {
+                var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
+                if (gameData.player.get("lv") < limitLv) {
+                    TipLayer.tip(limitLv + "级开放");
+                    return;
+                }
+            }
+
             MainScene.getInstance().switchLayer(this._layer[index]);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);

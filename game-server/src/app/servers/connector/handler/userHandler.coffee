@@ -44,12 +44,12 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin(APP_STORE_TYPE, @app, msg, session, next)
+  doLogin(APP_STORE_TYPE, @app, msg, session, 'app', next)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin(TONG_BU_TYPE, @app, msg, session, next)
+  doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, next) ->
+doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
 
   user = null
@@ -58,7 +58,7 @@ doLogin  = (type, app, msg, session, next) ->
   async.waterfall [
     (cb) ->
       ### 检查是否最新版本 ###
-      checkVersion(app, msg, cb)
+      checkVersion(app, msg, platform, cb)
 
     (cb) =>
       session.set('areaId', areaId)
@@ -129,13 +129,16 @@ authParams = (type, msg, app) ->
   args.fronendId = app.getServerId()
   [args, keyMap[type]?.method]
 
-getLatestVersion = (app) ->
+getLatestVersion = (app, platform) ->
+  if not platform
+    platform = app.get('platform')
+    
   vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
-  vdata[app.get('platform')]?.version
+  vdata[platform]?.version
 
-checkVersion = (app, msg, cb) ->
+checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  if version is getLatestVersion(app)
+  if version is getLatestVersion(app, platform)
     cb()
   else 
     cb({code: 600, msg: '客户端版本不是最新'})

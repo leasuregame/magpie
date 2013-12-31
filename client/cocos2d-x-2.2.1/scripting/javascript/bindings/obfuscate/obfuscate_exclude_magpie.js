@@ -1,9 +1,9 @@
 // magpie project obfuscate exclude file
 
 // binding exclude
-var lz = function () {};
-var um = function () {};
-var tb = function () {};
+var lz = function() {};
+var um = function() {};
+var tb = function() {};
 
 CSSProperties.prototype.lz;
 
@@ -203,3 +203,5 @@ CSSProperties.prototype.ccbSpiritSprite1;
 CSSProperties.prototype.ccbSpiritSprite2;
 CSSProperties.prototype.ccbFnNext;
 CSSProperties.prototype.ccbSprite;
+CSSProperties.prototype.ccbFnAccountLogin;
+CSSProperties.prototype.ccbAreaNameLabel;

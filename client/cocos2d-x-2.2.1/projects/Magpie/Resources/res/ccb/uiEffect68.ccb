@@ -383,7 +383,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>240</real>
+									<real>256</real>
 									<real>-370</real>
 									<integer>0</integer>
 								</array>
@@ -1464,7 +1464,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
+									<real>-256</real>
 									<real>-370</real>
 									<integer>0</integer>
 								</array>
@@ -1677,8 +1677,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

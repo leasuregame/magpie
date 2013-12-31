@@ -13,8 +13,6 @@ var UPDATE_NETWORK_ERROR = 1;
 var UPDATE_NO_NEW_VERSION_ERROR = 2;
 var UPDATE_UN_COMPRESS_ERROR = 3;
 
-var UPDATE_PACKAGE_URL = "http://115.29.175.156:9090/api/app/update/";
-var UPDATE_VERSION_URL = "http://115.29.175.156:9090/api/app/version";
 var UPDATE_DIR = "update_dir";
 
 var UPDATE_TIP_LIST = [
@@ -68,12 +66,12 @@ var UpdateLayer = cc.Layer.extend({
             0,
             100
         );
-        this._updateProgress.setPosition(cc.p(320, 400));
+        this._updateProgress.setPosition(this._updateLayerFit.updateProgressPoint);
         this.addChild(this._updateProgress);
 
         this._assetsManager = cc.AssetsManager.create(
             "",
-            UPDATE_VERSION_URL,
+            lz.platformConfig.UPDATE_VERSION_URL,
             UPDATE_DIR,
             this,
             this.errorCallback,
@@ -81,9 +79,7 @@ var UpdateLayer = cc.Layer.extend({
             this.successCallback
         );
 
-        this._assetsManager.setPackageUrl(UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
-
-        this.update();
+        this._assetsManager.setPackageUrl(lz.platformConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
 
         return true;
     },
@@ -167,6 +163,10 @@ var UpdateLayer = cc.Layer.extend({
         cc.log("UpdateLayer noNewVersionCallback");
 
         this.getParent().switchLayer(LoginLayer);
+    },
+
+    getVersion: function () {
+        return (this._assetsManager.getVersion() || "");
     }
 });
 
@@ -180,3 +180,4 @@ UpdateLayer.create = function () {
 
     return null;
 };
+

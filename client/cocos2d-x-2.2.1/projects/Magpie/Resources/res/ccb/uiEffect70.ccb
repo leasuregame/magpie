@@ -37,11 +37,23 @@
 						<key>displayName</key>
 						<string>CCMenuItemImage</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbStartGameNode</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>-480</real>
+									<integer>0</integer>
+								</array>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>anchorPoint</string>
@@ -140,7 +152,7 @@
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>0</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -151,7 +163,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>230</real>
+									<real>-250</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -253,7 +265,7 @@
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>0</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -264,7 +276,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>130</real>
+									<real>-350</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -353,6 +365,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -373,7 +387,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-480</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -568,8 +582,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

@@ -27,44 +27,6 @@ var Payment = Entity.extend({
         this._paymentKey = gameData.player.get("uid") + "_payment_key";
         this._receiptList = [];
 
-        lz.server.on("onVerifyResult", function (data) {
-            cc.log("***** on verify result:");
-            cc.log(data);
-
-            var msg = data.msg;
-
-            cc.log(msg.gold);
-            cc.log(msg.cash);
-
-            var player = gameData.player;
-
-            player.set("gold", msg.gold);
-            player.set("cash", msg.cash);
-
-            var nowVip = msg.vip;
-            var oldVip = player.get("vip");
-
-            if (nowVip && nowVip != oldVip) {
-                cc.log(nowVip);
-                cc.log(oldVip);
-
-                player.set("vip", nowVip);
-
-                var oldPrivilegeTable = outputTables.vip_privilege.rows[oldVip];
-                var nowPrivilegeTable = outputTables.vip_privilege.rows[nowVip];
-
-                gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
-                gameData.friend.adds({
-                    "maxFriendCount": nowPrivilegeTable.friend_count - oldPrivilegeTable.friend_count,
-                    "giveCount": nowPrivilegeTable.give_bless_count - oldPrivilegeTable.give_bless_count,
-                    "receiveCount": nowPrivilegeTable.receive_bless_count - oldPrivilegeTable.receive_bless_count
-                });
-                gameData.shop.add("powerBuyCount", nowPrivilegeTable.buy_power_count - oldPrivilegeTable.buy_power_count);
-                gameData.tournament.add("count", nowPrivilegeTable.challenge_count - oldPrivilegeTable.challenge_count);
-                gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
-            }
-        });
-
         this._load();
         this.schedule(this._judge, JUDGE_INTERVAL);
     },
@@ -119,13 +81,13 @@ var Payment = Entity.extend({
         this._save();
     },
 
-    buy: function (productId) {
+    buy: function (product) {
         cc.log("AppStore Payment buy");
 
         if (lz.IAPHelp) {
             this._showWaitLayer();
 
-            lz.IAPHelp.buy(productId, this, this._payCallback);
+            lz.IAPHelp.buy(product.product_id, this, this._payCallback);
         }
     },
 
@@ -206,11 +168,6 @@ var Payment = Entity.extend({
         cc.log("AppStore Payment _closeWaitLayer");
 
         if (this._waitLayer) {
-            this._waitLayer.removeFromParent();
-            this._waitLayer = null;
-        }
-
-        if (this._waitTimes <= 0 && this._waitLayer) {
             this._waitLayer.removeFromParent();
             this._waitLayer = null;
         }

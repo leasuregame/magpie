@@ -59,56 +59,6 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        this._loginFrame.controller.ccbAccountNode.setPosition(this._loginLayerFit.accountNodePoint);
-        this._loginFrame.controller.ccbPasswordNode.setPosition(this._loginLayerFit.passwordNodePoint);
-        this._loginFrame.controller.ccbStartGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
-
-        this._accountEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._accountEditBox.setPosition(cc.p(0, -3));
-
-        this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
-        this._accountEditBox.setDelegate({
-            /**
-             * This method is called when an edit box gains focus after keyboard is shown.
-             * @param {cc.EditBox} sender
-             */
-            editBoxEditingDidBegin: function (sender) {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            }
-        });
-
-        this._accountEditBox.setFont("STHeitiTC-Medium", 35);
-        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._accountEditBox.setMaxLength(50);
-        this._loginFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
-
-
-        this._passwordEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._passwordEditBox.setPosition(cc.p(0, 0));
-
-        this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
-        this._passwordEditBox.setDelegate({
-            /**
-             * This method is called when an edit box gains focus after keyboard is shown.
-             * @param {cc.EditBox} sender
-             */
-            editBoxEditingDidBegin: function (sender) {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            }
-        });
-        this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
-        //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordEditBox.setMaxLength(20);
-        this._loginFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
-
-        this._accountEditBox.setText(user.get("account"));
-        this._passwordEditBox.setText(user.get("password"));
-
-        this._selectAreaName = StrokeLabel.create("", "STHeitiTC-Medium", 30);
-        this._selectAreaName.setPosition(cc.p(0, 0));
-        this._loginFrame.controller.ccbAreaName.addChild(this._selectAreaName);
 
         this.updateAreaList();
         return true
@@ -151,8 +101,6 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer updateSelectAreaName");
 
         var area = this._areaList[id];
-        this._selectAreaName.setString(area.name);
-        this._selectAreaName.setColor(area.color);
 
         this._loginFrame.setVisible(true);
     },
@@ -181,13 +129,6 @@ var LoginLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var user = gameData.user;
-
-        user.set("account", this._accountEditBox.getText());
-        user.set("password", this._passwordEditBox.getText());
-
-        if (!user.canLogin()) {
-            return;
-        }
 
         var that = this;
         user.login(function (type) {

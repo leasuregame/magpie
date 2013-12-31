@@ -188,7 +188,7 @@ void TBAdapter::TBBuyGoodsDidEnterWebview(const char *order){
         v[0] = c_string_to_jsval(cx, order)
     };
     
-    this->TBExcuteCallback("buyGoodsDidEnterVwebviewHandler", 1, v, NULL);
+    this->TBExcuteCallback("buyGoodsDidEnterWebViewHandler", 1, v, NULL);
 }
 void TBAdapter::TBCheckOrderResultHandle(const char *order,int status,int amount){
     JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
@@ -215,7 +215,7 @@ void TBAdapter::TBBuyGoodsDidCancelByUser(const char *order){
         v[0] = c_string_to_jsval(cx, order)
     };
     
-    this->TBExcuteCallback("checkOrderFailedHandler", 1, v, NULL);
+    this->TBExcuteCallback("buyGoodsDidCancelByUser", 1, v, NULL);
 }
 
 void TBAdapter::ShowMessage(char *msg){

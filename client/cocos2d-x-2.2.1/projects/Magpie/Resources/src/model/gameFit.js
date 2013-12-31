@@ -96,7 +96,8 @@ var fit4Iphone4 = {
             "selectAreaFramePoint": cc.p(360, 568)
         },
         "updateLayer": {
-            "updateFramePoint": cc.p(360, 480)
+            "updateFramePoint": cc.p(360, 480),
+            "updateProgressPoint": cc.p(360, 150)
         }
     },
 
@@ -1321,7 +1322,8 @@ var fit4Iphone5 = {
             "selectAreaFramePoint": cc.p(320, 568)
         },
         "updateLayer": {
-            "updateFramePoint": cc.p(320, 568)
+            "updateFramePoint": cc.p(320, 568),
+            "updateProgressPoint": cc.p(320, 238)
         }
     },
 

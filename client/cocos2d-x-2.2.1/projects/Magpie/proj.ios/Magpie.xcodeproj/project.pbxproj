@@ -497,10 +497,6 @@
 		902B08F11858C571003A2A49 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DF1858C571003A2A49 /* Icon-80.png */; };
 		902B08F31858C571003A2A49 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 902B08E11858C571003A2A49 /* iTunesArtwork */; };
 		902B08F51858C666003A2A49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902B08F41858C666003A2A49 /* StoreKit.framework */; };
-		902B08FB1858C6AB003A2A49 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08F81858C6AB003A2A49 /* main_binding.js */; };
-		902B08FC1858C6AB003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08F91858C6AB003A2A49 /* payment.js */; };
-		902B09021858C6BC003A2A49 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B08FF1858C6BC003A2A49 /* main_binding.js */; };
-		902B09031858C6BC003A2A49 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 902B09001858C6BC003A2A49 /* payment.js */; };
 		90338EBE185A18C300224717 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */; };
 		90338EBF185A18C300224717 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90338EBA185A18C300224717 /* libMobClickLibrary.a */; };
 		90338EC0185A18C300224717 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EBD185A18C300224717 /* MobClickCPP.mm */; };
@@ -508,8 +504,17 @@
 		90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90338ECB185B1E9100224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
 		90338ECC185B1E9200224717 /* js_bindings_AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */; };
-		90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
-		90338ECE185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */ = {isa = PBXBuildFile; fileRef = 90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */; };
+		9075096018716DB600E27689 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
+		9075096D187171BC00E27689 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096518716DBF00E27689 /* main_binding.js */; };
+		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
+		9075096F187171BC00E27689 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096718716DBF00E27689 /* platform.js */; };
+		90750970187171BC00E27689 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096818716DBF00E27689 /* user.js */; };
+		90A846B618726FB800582139 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C1A02518726F6E00CBC6FF /* loginLayer.js */; };
+		90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095A18716DB600E27689 /* loginLayer.js */; };
+		90C1A0201871722F00CBC6FF /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
+		90C1A0211871722F00CBC6FF /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095C18716DB600E27689 /* payment.js */; };
+		90C1A0221871722F00CBC6FF /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095D18716DB600E27689 /* platform.js */; };
+		90C1A0231871722F00CBC6FF /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095E18716DB600E27689 /* user.js */; };
 		90C212C418704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */; };
 		90C212C518704B5B00671D28 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */; };
 		90C212C618704B5B00671D28 /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C212C018704B5B00671D28 /* TBAdapter.mm */; };
@@ -524,7 +529,6 @@
 		90C441CB1859A2CD000C5D75 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C51859A2CD000C5D75 /* IAPHelp.mm */; };
 		90C441CC1859A2CD000C5D75 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C71859A2CD000C5D75 /* IAPHelpOC.mm */; };
 		90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C441C81859A2CD000C5D75 /* js_bindings_IAPHelp.cpp */; };
-		90C441CE1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90C441CA1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js */; };
 		90F5350B1862EAC2008207BD /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		90F5350C1862EAC2008207BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		90F5350D1862EAC2008207BD /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -998,8 +1002,6 @@
 		90F9F23A18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
 		90F9F23B18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
 		90F9F23C18680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */; };
-		90F9F23D18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */; };
-		90F9F23F18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23418680B4C001821D5 /* js_bindings_WebLayer_api.js */; };
 		90F9F24118680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
 		90F9F24218680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
 		90F9F24318680B4C001821D5 /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F23618680B4C001821D5 /* WebLayer.mm */; };
@@ -1525,10 +1527,6 @@
 		902B08E01858C571003A2A49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902B08E11858C571003A2A49 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		902B08F41858C666003A2A49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		902B08F81858C6AB003A2A49 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
-		902B08F91858C6AB003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
-		902B08FF1858C6BC003A2A49 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
-		902B09001858C6BC003A2A49 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		90338EB8185A18C300224717 /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
 		90338EB9185A18C300224717 /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
 		90338EBA185A18C300224717 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -1540,6 +1538,16 @@
 		90338EC8185B1E9100224717 /* js_bindings_AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_AssetsManager.cpp; sourceTree = "<group>"; };
 		90338EC9185B1E9100224717 /* js_bindings_AssetsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_AssetsManager.hpp; sourceTree = "<group>"; };
 		90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_AssetsManager.js; sourceTree = "<group>"; };
+		9075095A18716DB600E27689 /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
+		9075095B18716DB600E27689 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
+		9075095C18716DB600E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		9075095D18716DB600E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
+		9075095E18716DB600E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		9075096518716DBF00E27689 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
+		9075096618716DBF00E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		9075096718716DBF00E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
+		9075096818716DBF00E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
 		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
 		90C212BF18704B5B00671D28 /* TBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAdapter.h; sourceTree = "<group>"; };
@@ -1695,9 +1703,9 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9075096418716DBF00E27689 /* TB */,
+				9075095918716DB600E27689 /* AppStore */,
 				90F5374E1862F579008207BD /* game */,
-				902B08FD1858C6BC003A2A49 /* TB */,
-				902B08F61858C6AB003A2A49 /* AppStore */,
 				1AE4B40216D1FECD003C6D1C /* src */,
 				1AE4B40116D1FECD003C6D1C /* res */,
 			);
@@ -2551,26 +2559,6 @@
 			path = TB;
 			sourceTree = "<group>";
 		};
-		902B08F61858C6AB003A2A49 /* AppStore */ = {
-			isa = PBXGroup;
-			children = (
-				902B08F81858C6AB003A2A49 /* main_binding.js */,
-				902B08F91858C6AB003A2A49 /* payment.js */,
-			);
-			name = AppStore;
-			path = ../Resources/AppStore;
-			sourceTree = "<group>";
-		};
-		902B08FD1858C6BC003A2A49 /* TB */ = {
-			isa = PBXGroup;
-			children = (
-				902B08FF1858C6BC003A2A49 /* main_binding.js */,
-				902B09001858C6BC003A2A49 /* payment.js */,
-			);
-			name = TB;
-			path = ../Resources/TB;
-			sourceTree = "<group>";
-		};
 		90338EB7185A18C300224717 /* DataDollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -2601,6 +2589,32 @@
 				90338ECA185B1E9100224717 /* js_bindings_AssetsManager.js */,
 			);
 			path = AssetsManagerBindings;
+			sourceTree = "<group>";
+		};
+		9075095918716DB600E27689 /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				9075095A18716DB600E27689 /* loginLayer.js */,
+				9075095B18716DB600E27689 /* main_binding.js */,
+				9075095C18716DB600E27689 /* payment.js */,
+				9075095D18716DB600E27689 /* platform.js */,
+				9075095E18716DB600E27689 /* user.js */,
+			);
+			name = AppStore;
+			path = ../Resources/AppStore;
+			sourceTree = "<group>";
+		};
+		9075096418716DBF00E27689 /* TB */ = {
+			isa = PBXGroup;
+			children = (
+				90C1A02518726F6E00CBC6FF /* loginLayer.js */,
+				9075096518716DBF00E27689 /* main_binding.js */,
+				9075096618716DBF00E27689 /* payment.js */,
+				9075096718716DBF00E27689 /* platform.js */,
+				9075096818716DBF00E27689 /* user.js */,
+			);
+			name = TB;
+			path = ../Resources/TB;
 			sourceTree = "<group>";
 		};
 		90C212BB18704B5B00671D28 /* TongBu */ = {
@@ -2945,8 +2959,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902B09031858C6BC003A2A49 /* payment.js in Resources */,
-				902B09021858C6BC003A2A49 /* main_binding.js in Resources */,
+				90A846B618726FB800582139 /* loginLayer.js in Resources */,
+				9075096D187171BC00E27689 /* main_binding.js in Resources */,
+				9075096E187171BC00E27689 /* payment.js in Resources */,
+				9075096F187171BC00E27689 /* platform.js in Resources */,
+				90750970187171BC00E27689 /* user.js in Resources */,
 				902B08811858C475003A2A49 /* jsb_cocos2d_studio.js in Resources */,
 				902B08E41858C571003A2A49 /* Default@2x.png in Resources */,
 				902B08831858C475003A2A49 /* jsb_deprecated.js in Resources */,
@@ -3059,8 +3076,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902B08FB1858C6AB003A2A49 /* main_binding.js in Resources */,
-				902B08FC1858C6AB003A2A49 /* payment.js in Resources */,
+				90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */,
+				90C1A0201871722F00CBC6FF /* main_binding.js in Resources */,
+				90C1A0211871722F00CBC6FF /* payment.js in Resources */,
+				90C1A0221871722F00CBC6FF /* platform.js in Resources */,
+				90C1A0231871722F00CBC6FF /* user.js in Resources */,
 				3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */,
 				902B08BF1858C569003A2A49 /* Default@2x.png in Resources */,
 				1A5E740017F0870800B9ACAE /* jsb_deprecated.js in Resources */,
@@ -3212,7 +3232,6 @@
 				902B07D21858C475003A2A49 /* cpSweep1D.c in Sources */,
 				902B07D31858C475003A2A49 /* cpVect.c in Sources */,
 				902B07D41858C475003A2A49 /* CDAudioManager.m in Sources */,
-				90338ECE185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */,
 				902B07D51858C475003A2A49 /* CDOpenALSupport.m in Sources */,
 				902B07D61858C475003A2A49 /* CocosDenshion.m in Sources */,
 				902B07D71858C475003A2A49 /* SimpleAudioEngine.mm in Sources */,
@@ -3321,7 +3340,6 @@
 				902B083B1858C475003A2A49 /* CCProcessBase.cpp in Sources */,
 				902B083C1858C475003A2A49 /* CCTween.cpp in Sources */,
 				902B083D1858C475003A2A49 /* CCArmature.cpp in Sources */,
-				90F9F23F18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */,
 				902B083E1858C475003A2A49 /* CCBone.cpp in Sources */,
 				902B083F1858C475003A2A49 /* jsb_cocos2d_studio.js in Sources */,
 				90F9F24718680B4C001821D5 /* WebLayerOC.m in Sources */,
@@ -3934,7 +3952,6 @@
 				1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */,
 				1A96A4F1174A3369008653A9 /* HttpClient.cpp in Sources */,
 				90C441CD1859A2CD000C5D75 /* js_bindings_IAPHelp.cpp in Sources */,
-				90338ECD185B1E9200224717 /* js_bindings_AssetsManager.js in Sources */,
 				1AB87010175E0759005D39BF /* CCSkeleton.cpp in Sources */,
 				90F9F23918680B4C001821D5 /* js_bindings_WebLayer.cpp in Sources */,
 				1AB87011175E0759005D39BF /* CCSkeletonAnimation.cpp in Sources */,
@@ -3952,7 +3969,6 @@
 				1A5E74A117F0874400B9ACAE /* CCArmature.cpp in Sources */,
 				1A5E74A217F0874400B9ACAE /* CCBone.cpp in Sources */,
 				3EC20B7D18331CA200F2C4D6 /* jsb_cocos2d_studio.js in Sources */,
-				90F9F23D18680B4C001821D5 /* js_bindings_WebLayer_api.js in Sources */,
 				1A5E74A317F0874400B9ACAE /* CCDatas.cpp in Sources */,
 				1A5E74A417F0874400B9ACAE /* CCBatchNode.cpp in Sources */,
 				1A5E74A517F0874400B9ACAE /* CCDecorativeDisplay.cpp in Sources */,
@@ -3973,6 +3989,7 @@
 				1A5E74B417F0874400B9ACAE /* CCComRender.cpp in Sources */,
 				1A5E74B517F0874400B9ACAE /* CCInputDelegate.cpp in Sources */,
 				1A5E74B617F0874400B9ACAE /* UIRootWidget.cpp in Sources */,
+				9075096018716DB600E27689 /* main_binding.js in Sources */,
 				3EC20B7A18331C9000F2C4D6 /* UILayout.cpp in Sources */,
 				1A5E74B717F0874400B9ACAE /* UIWidget.cpp in Sources */,
 				1A5E74BA17F0874400B9ACAE /* UILayoutDefine.cpp in Sources */,
@@ -3994,7 +4011,6 @@
 				1A5E74C917F0874400B9ACAE /* UILoadingBar.cpp in Sources */,
 				1A5E74CA17F0874400B9ACAE /* UISlider.cpp in Sources */,
 				1A5E74CB17F0874400B9ACAE /* UISwitch.cpp in Sources */,
-				90C441CE1859A2CD000C5D75 /* js_bindings_IAPHelp_api.js in Sources */,
 				1A5E74CC17F0874400B9ACAE /* UITextField.cpp in Sources */,
 				1A5E74CD17F0874400B9ACAE /* CSContentJsonDictionary.cpp in Sources */,
 				1A5E74CE17F0874400B9ACAE /* DictionaryHelper.cpp in Sources */,

@@ -87,10 +87,10 @@ describe("Area Server", function() {
 
       describe("when player's skillPoint is not enought", function() {
         var user1 = {
-          account: 'user1',
+          account: '3',
           password: '1',
-          playerId: 107,
-          id: 107,
+          playerId: 3,
+          id: 3,
           areaId: 1
         };
         beforeEach(function() {
@@ -99,7 +99,7 @@ describe("Area Server", function() {
 
         it("can not upgrade card skill", function() {
           request('area.trainHandler.skillUpgrade', {
-            cardId: 163
+            cardId: 13
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('技能点不够，不能升级');

@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var beautify_html = require('js-beautify').html;
 
 var DIRNAME = path.join(__dirname, '..', 'data');
 
@@ -21,7 +22,7 @@ exports.html = function(name) {
 };
 
 exports.saveHtml = function(name, data) {
-  exports.write(filePath(name, 'html'), data);
+  exports.write(filePath(name, 'html'), beautify_html(data));
 };
 
 exports.read = function(name) {

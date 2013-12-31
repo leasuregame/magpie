@@ -240,6 +240,10 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      fun_limit = table.getTableItem('function_limit', 1)
+      if player.lv < fun_limit?.skill_upgrade 
+        return cb({code: 501, msg: "#{fun_limit.skill_upgrade}级开放"})
+
       card = player.getCard(cardId)
       cb(null, player, card)
 
@@ -424,6 +428,7 @@ Handler::starUpgrade = (msg, session, next) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
       
+    player.popCards(sources)
     next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->

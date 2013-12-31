@@ -248,14 +248,9 @@ var VipLayer = cc.Layer.extend({
             costLabel.setPosition(cc.p(275, y + 67));
             slideLabel[i].addChild(costLabel);
 
-            var specialOfferIcon = cc.LayerColor.create(cc.c4b(217, 59, 59, 255), 50, 30);
-            specialOfferIcon.setPosition(cc.p(170, y + 20));
+            var specialOfferIcon = cc.Sprite.create(main_scene_image.icon167);
+            specialOfferIcon.setPosition(cc.p(195, y + 35));
             slideLabel[i].addChild(specialOfferIcon);
-
-            var specialOfferIconLabel = cc.LabelTTF.create("现价", "STHeitiTC-Medium", 20);
-            specialOfferIconLabel.setAnchorPoint(cc.p(0, 0.5));
-            specialOfferIconLabel.setPosition(cc.p(175, y + 35));
-            slideLabel[i].addChild(specialOfferIconLabel);
 
             var goldIcon = cc.Sprite.create(main_scene_image.icon148);
             goldIcon.setScale(0.7);
@@ -437,8 +432,7 @@ var VipLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var paymentLayer = PaymentLayer.create();
-        this.addChild(paymentLayer, 1);
+        PaymentLayer.pop();
     },
 
     _onClickBuy: function (vipBox) {
@@ -455,8 +449,7 @@ var VipLayer = cc.Layer.extend({
                     title: "购 买 失 败",
                     msg: "只有达到VIP" + id + "才能购买此礼包，快去充值吧！",
                     cb: function () {
-                        var paymentLayer = PaymentLayer.create();
-                        that.addChild(paymentLayer, 1);
+                        PaymentLayer.pop();
                     }
                 });
 

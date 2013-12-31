@@ -117,6 +117,7 @@ var main_scene_image = {
 
     card_back: main_scene_path + "card_back.png",
     card_frame_s: main_scene_path + "card_frame_s.png",
+    card_frame0: main_scene_path + "card_frame0.png",
     card_frame1: main_scene_path + "card_frame1.png",
     card_frame2: main_scene_path + "card_frame2.png",
     card_frame3: main_scene_path + "card_frame3.png",

@@ -72,7 +72,7 @@ var LoginLayer = cc.Layer.extend({
     },
 
     updateAreaList: function () {
-        cc.log("LoginLayer upateAreaList");
+        cc.log("LoginLayer updateAreaList");
 
         var that = this;
         lz.server.connectGateServer(function () {

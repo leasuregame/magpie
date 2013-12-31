@@ -311,7 +311,12 @@ var fit4Iphone4 = {
             "selectRetinueCardItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
-            "effectPoint": cc.p(275, 397)
+            "effectPoint": cc.p(275, 397),
+            "bgSpritePoint2": cc.p(360, 485),
+            "msgBgIconPoint": cc.p(360, 515),
+            "tipPoint": cc.p(360, 515),
+            "okItemPoint": cc.p(270, 429),
+            "closeItemPoint": cc.p(450, 429)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1537,7 +1542,12 @@ var fit4Iphone5 = {
             "selectRetinueCardItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
-            "effectPoint": cc.p(235, 417)
+            "effectPoint": cc.p(235, 417),
+            "bgSpritePoint2": cc.p(320, 573),
+            "msgBgIconPoint": cc.p(320, 608),
+            "tipPoint": cc.p(320, 608),
+            "okItemPoint": cc.p(230, 522),
+            "closeItemPoint": cc.p(410, 522)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(0, 106),

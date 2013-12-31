@@ -24,7 +24,7 @@
         "pomelo-admin": "*",
         "request": "2.27",
         "node-uuid": "1.4.1",
-        "coffee-script": ">=1.6.2",
+        "coffee-script": ">=1.6.2"
     },
     "devDependencies": {
         "underscore": "1.4.4",

@@ -64,7 +64,7 @@ var main_scene_image = {
     gameFrame: main_scene_path + "gameFrame.png",
 
     //card0: main_scene_path + "card0.png",
-
+    spirit_frame: main_scene_path + "spirit_frame.png",
     spirit_1_0: main_scene_path + "spirit_1_0.png",
     spirit_1_1: main_scene_path + "spirit_1_1.png",
     spirit_1_2: main_scene_path + "spirit_1_2.png",
@@ -117,6 +117,7 @@ var main_scene_image = {
 
     card_back: main_scene_path + "card_back.png",
     card_frame_s: main_scene_path + "card_frame_s.png",
+    card_frame0: main_scene_path + "card_frame0.png",
     card_frame1: main_scene_path + "card_frame1.png",
     card_frame2: main_scene_path + "card_frame2.png",
     card_frame3: main_scene_path + "card_frame3.png",
@@ -740,6 +741,8 @@ var main_scene_image = {
     uiEffect68: "res/ccb/uiEffect68.ccbi",
     uiEffect69: "res/ccb/uiEffect69.ccbi",
     uiEffect70: "res/ccb/uiEffect70.ccbi",
+    uiEffect71: "res/ccb/uiEffect71.ccbi",
+    uiEffect72: "res/ccb/uiEffect72.ccbi",
 
 
     // 特效资源

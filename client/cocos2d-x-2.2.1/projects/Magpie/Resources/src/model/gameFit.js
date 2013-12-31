@@ -312,7 +312,12 @@ var fit4Iphone4 = {
             "selectRetinueCardItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
-            "effectPoint": cc.p(275, 397)
+            "effectPoint": cc.p(275, 397),
+            "bgSpritePoint2": cc.p(360, 485),
+            "msgBgIconPoint": cc.p(360, 515),
+            "tipPoint": cc.p(360, 515),
+            "okItemPoint": cc.p(270, 429),
+            "closeItemPoint": cc.p(450, 429)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -345,8 +350,8 @@ var fit4Iphone4 = {
             "fragmentLabelPoint": cc.p(380, 850),
             "moneyIconPoint": cc.p(130, 850),
             "moneyLabelPoint": cc.p(170, 850),
-            "updateItemPoint": cc.p(560, 850),
-            "costLabelPoint": cc.p(560, 814),
+            "updateItemPoint": cc.p(595, 850),
+            "costLabelPoint": cc.p(595, 814),
             "selectStar5ItemPoint": cc.p(130, 794),
             "selectStar4ItemPoint": cc.p(300, 794),
             "backItemPoint": cc.p(100, 920),
@@ -399,8 +404,8 @@ var fit4Iphone4 = {
             "closeBoxSpritePoint2": cc.p(360, 1025),
             "passEffectPoint": cc.p(360, 578),
             "rewardEffectPoint": cc.p(360, 800),
-            "lvIconPoint": cc.p(104, 854),
-            "playerLvLabelPoint": cc.p(165, 851)
+            "lvIconPoint": cc.p(124, 709),
+            "playerLvLabelPoint": cc.p(135, 706)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1539,7 +1544,12 @@ var fit4Iphone5 = {
             "selectRetinueCardItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
-            "effectPoint": cc.p(235, 417)
+            "effectPoint": cc.p(235, 417),
+            "bgSpritePoint2": cc.p(320, 573),
+            "msgBgIconPoint": cc.p(320, 608),
+            "tipPoint": cc.p(320, 608),
+            "okItemPoint": cc.p(230, 522),
+            "closeItemPoint": cc.p(410, 522)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1572,8 +1582,8 @@ var fit4Iphone5 = {
             "fragmentLabelPoint": cc.p(340, 1026),
             "moneyIconPoint": cc.p(90, 1026),
             "moneyLabelPoint": cc.p(130, 1026),
-            "updateItemPoint": cc.p(520, 1026),
-            "costLabelPoint": cc.p(520, 990),
+            "updateItemPoint": cc.p(555, 1026),
+            "costLabelPoint": cc.p(555, 990),
             "selectStar4ItemPoint": cc.p(260, 970),
             "backItemPoint": cc.p(60, 1096),
             "tipIconPoint": cc.p(320, 122),
@@ -1625,8 +1635,8 @@ var fit4Iphone5 = {
             "closeBoxSpritePoint2": cc.p(320, 1025),
             "passEffectPoint": cc.p(320, 706),
             "rewardEffectPoint": cc.p(320, 900),
-            "lvIconPoint": cc.p(64, 1022),
-            "playerLvLabelPoint": cc.p(125, 1019)
+            "lvIconPoint": cc.p(84, 837),
+            "playerLvLabelPoint": cc.p(95, 834)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),

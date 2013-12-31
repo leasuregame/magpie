@@ -37,6 +37,7 @@ var PassLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+        this.updateGuide();
 
         lz.dc.beginLogPageView("天道界面");
     },
@@ -663,6 +664,21 @@ var PassLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._showReset();
+    },
+
+    updateGuide: function () {
+        cc.log("PassLayer updateGuide");
+
+        if (gameGuide.get("passExplain")) {
+            gameGuide.set("passExplain", false);
+            var url = gameGuide.getExplainEffect("pass");
+            var effect = cc.BuilderReader.load(main_scene_image[url], this);
+            effect.setPosition(gameFit.gameGuide.effectPoint);
+            effect.animationManager.setCompletedAnimationCallback(this,function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect, 10);
+        }
     }
 });
 

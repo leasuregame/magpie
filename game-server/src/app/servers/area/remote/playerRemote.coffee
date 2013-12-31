@@ -4,6 +4,8 @@ playerManager = require('pomelo').app.get('playerManager')
 area = require '../../../domain/area/area'
 messageService = app.get('messageService')
 async = require('async')
+fs = require 'fs'
+path = require 'path'
 
 module.exports = (app) ->
   new Remote(app)
@@ -56,13 +58,17 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
     
     uid = userId + '*' + player.areaId
     messageService.add(uid, serverId, player.id, player.name)
-    return callback null, _.extend(player.toJson(), serverTime: Date.now())
+    return callback null, _.extend(player.toJson(), serverTime: Date.now(), version: getVersion(@app))
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId
   messageService.leave(uid, serverId)
 
   callback()
+
+getVersion = (app) ->
+  vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
+  vdata[app.get('platform')]?.version
 
 initPlayer = (player, callback) ->
   return callback(null, player)

@@ -130,17 +130,17 @@ describe("Area Server", function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 2, 
-                        status: 6
+                        status: 5
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 2, 
-                        status: 6
+                        status: 4
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 2,
-                        status: 6
+                        status: 4
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
@@ -185,6 +185,10 @@ describe("Area Server", function() {
                     }, function() {});
 
                     loginWith(arthur.account, arthur.password, arthur.areaId);
+                });
+
+                afterEach(function() {
+                    doAjax('')
                 });
 
                 it('should can return message list for current login user', function() {

@@ -137,13 +137,10 @@ Handler::messageList = (msg, session, next) ->
     next(null, {code: 200, msg: msgs})
 
 Handler::sysMsg = (msg, session, next) ->
-  console.log("msg = ",msg);
   content = msg.content
   options = msg.options or {}
   receiver = msg.playerId or SYSTEM
- # msgId = msg.msgId or 0
   dao.message.create data: {
-  #  msgId:msgId
     options: options
     sender: SYSTEM
     receiver: receiver
@@ -241,7 +238,7 @@ Handler::leaveMessage = (msg, session, next) ->
     options: {playerName: playerName}
     receiver: friendId
     content: content[0...50]
-    status: msgConfig.MESSAGESTATUS.NOTICE
+    status: msgConfig.MESSAGESTATUS.UNHANDLED
   }, (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -258,6 +255,13 @@ Handler::readMessage = (msg, session, next) ->
   dao.message.fetchOne where: id: msgId, (err, res) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    dao.message.update {
+      where: id: msgId
+      data: status: msgConfig.MESSAGESTATUS.HANDLED
+    }, (err, updated) ->
+      if err
+        logger.error('can not update message status with id', msgId )
 
     next(null, {code: 200, msg: res.content})
 

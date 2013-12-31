@@ -8577,6 +8577,7 @@ var outputTables = {
                 "rank": 5,
                 "card3_position": 6,
                 "pass": 10,
+                "skill_upgrade": 10,
                 "card4_position": 15,
                 "ranking_list": 20,
                 "lottery": 25,

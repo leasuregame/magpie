@@ -57,6 +57,8 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
+        this._loginFrame.controller.ccbStartGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
+
         this._accountLabel = StrokeLabel.create("当前未登陆", "STHeitiTC-Medium", 30);
         this._accountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._accountLabel.setPosition(cc.p(0, 0));
@@ -68,6 +70,9 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.controller.ccbAreaNameLabel.addChild(this._selectAreaName);
 
         this.updateAreaList();
+
+        this.schedule(this.updateAccountLabel, 1);
+
         return true
     },
 
@@ -80,7 +85,6 @@ var LoginLayer = cc.Layer.extend({
 
             that.scheduleOnce(that.updateAreaList, GATE_SERVER_TIMEOUT);
         });
-
     },
 
     addAreaList: function () {
@@ -101,7 +105,6 @@ var LoginLayer = cc.Layer.extend({
                 this.updateSelectAreaName(i);
             }
         }
-
     },
 
     updateSelectAreaName: function (id) {
@@ -114,10 +117,16 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setVisible(true);
     },
 
-    updateAccountLabel: function (account) {
+    updateAccountLabel: function () {
         cc.log("LoginLayer updateAccountLabel");
 
-        this._accountLabel.setString(account);
+        var str = "当前未登陆";
+
+        if (tbAdapter && tbAdapter.TBIsLogined()) {
+            str = tbAdapter.TBNickName();
+        }
+
+        this._accountLabel.setString(str);
     },
 
     ccbFnOpenArea: function () {
@@ -136,17 +145,8 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var user = gameData.user;
-
-//        user.set("account", this._accountEditBox.getText());
-//        user.set("password", this._passwordEditBox.getText());
-
-        if (!user.canLogin()) {
-            return;
-        }
-
         var that = this;
-        user.login(function (type) {
+        gameData.user.login(function (type) {
             cc.log(type);
 
             if (type == 1) {
@@ -161,7 +161,10 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer ccbFnAccountLogin");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        // this.getParent().switchTo(RegisterLayer.create());
+
+        if (tbAdapter && tbAdapter.TBLogin) {
+            tbAdapter.TBLogin(0);
+        }
     }
 });
 

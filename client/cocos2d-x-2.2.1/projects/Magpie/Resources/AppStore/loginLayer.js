@@ -99,7 +99,6 @@ var LoginLayer = cc.Layer.extend({
             }
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
-        //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(20);
         this._loginFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
 

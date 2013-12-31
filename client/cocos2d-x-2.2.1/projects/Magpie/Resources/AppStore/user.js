@@ -93,12 +93,21 @@ var User = Entity.extend({
 
         this._save();
 
+        var updateLayer = UpdateLayer.create();
+        updateLayer.retain();
+        var version = updateLayer.getVersion();
+
+        cc.log("=================================================");
+        cc.log(version);
+        cc.log("=================================================");
+
         var that = this;
         lz.server.connectGameServer(function () {
             lz.server.request("connector.userHandler.login", {
                 account: that._account,
                 password: that._password,
-                areaId: that._area
+                areaId: that._area,
+                version: version
             }, function (data) {
                 cc.log(data);
 
@@ -121,6 +130,13 @@ var User = Entity.extend({
                     }
 
                     lz.dc.event("event_login", that._area);
+                } else if (data.code == 600) {
+                    cc.log("login fail go to updateLayer");
+
+                    Dialog.pop("您的版本需要更新", function () {
+                        cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
+                        updateLayer.update();
+                    });
                 } else {
                     cc.log("login fail");
 

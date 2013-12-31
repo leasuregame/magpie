@@ -240,13 +240,15 @@ var Task = Entity.extend({
             } else {
                 cc.log("explore fail");
 
-                TipLayer.tip(msg.message);
+                if (msg) {
+                    TipLayer.tip(msg.message);
 
-                player.sets({
-                    power: msg.power.value,
-                    powerTimestamp: msg.power.time,
-                    exp: msg.exp
-                });
+                    player.sets({
+                        power: msg.power.value,
+                        powerTimestamp: msg.power.time,
+                        exp: msg.exp
+                    });
+                }
 
                 cb(null);
             }

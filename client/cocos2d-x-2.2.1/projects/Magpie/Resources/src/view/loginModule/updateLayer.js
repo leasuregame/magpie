@@ -66,7 +66,7 @@ var UpdateLayer = cc.Layer.extend({
             0,
             100
         );
-        this._updateProgress.setPosition(cc.p(320, 400));
+        this._updateProgress.setPosition(this._updateLayerFit.updateProgressPoint);
         this.addChild(this._updateProgress);
 
         this._assetsManager = cc.AssetsManager.create(
@@ -80,8 +80,6 @@ var UpdateLayer = cc.Layer.extend({
         );
 
         this._assetsManager.setPackageUrl(lz.platformConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
-
-        this.update();
 
         return true;
     },
@@ -165,6 +163,10 @@ var UpdateLayer = cc.Layer.extend({
         cc.log("UpdateLayer noNewVersionCallback");
 
         this.getParent().switchLayer(LoginLayer);
+    },
+
+    getVersion: function () {
+        return (this._assetsManager.getVersion() || "");
     }
 });
 
@@ -178,3 +180,4 @@ UpdateLayer.create = function () {
 
     return null;
 };
+

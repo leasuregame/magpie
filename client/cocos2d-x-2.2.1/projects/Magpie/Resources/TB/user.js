@@ -68,6 +68,11 @@ var User = Entity.extend({
 
         var updateLayer = UpdateLayer.create();
         updateLayer.retain();
+        var version = updateLayer.getVersion();
+
+        cc.log("=================================================");
+        cc.log(version);
+        cc.log("=================================================");
 
         var that = this;
         lz.server.connectGameServer(function () {
@@ -76,7 +81,7 @@ var User = Entity.extend({
                 userId: tbAdapter.TBUserID(),
                 sessionId: tbAdapter.TBSessionID(),
                 areaId: that._area,
-                version: updateLayer.getVersion()
+                version: version
             }, function (data) {
                 cc.log(data);
 

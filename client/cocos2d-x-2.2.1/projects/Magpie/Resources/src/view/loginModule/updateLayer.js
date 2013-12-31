@@ -66,7 +66,7 @@ var UpdateLayer = cc.Layer.extend({
             0,
             100
         );
-        this._updateProgress.setPosition(cc.p(320, 400));
+        this._updateProgress.setPosition(this._updateLayerFit.updateProgressPoint);
         this.addChild(this._updateProgress);
 
         this._assetsManager = cc.AssetsManager.create(

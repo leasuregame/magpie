@@ -14,14 +14,15 @@
 
 var LoginScene = cc.Scene.extend({
     _nowLayer: null,
+    _toLayer: null,
 
     onEnter: function () {
         cc.log("LoginScene onEnter");
 
         this._super();
 
-        if (this._nowLayer) {
-            this.switchTo(this._nowLayer);
+        if (this._toLayer) {
+            this.switchTo(this._toLayer);
         } else {
             this.switchLayer(LoginLayer);
         }
@@ -42,7 +43,7 @@ var LoginScene = cc.Scene.extend({
 
         if (!this._super()) return false;
 
-        this._nowLayer = toLayer;
+        this._toLayer = toLayer;
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 

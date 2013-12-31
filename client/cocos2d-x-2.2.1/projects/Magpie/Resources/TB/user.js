@@ -67,6 +67,8 @@ var User = Entity.extend({
         }
 
         var updateLayer = UpdateLayer.create();
+        updateLayer.retain();
+
         var that = this;
         lz.server.connectGameServer(function () {
             lz.server.request("connector.userHandler.loginTB", {
@@ -102,6 +104,7 @@ var User = Entity.extend({
 
                     Dialog.pop("您的版本需要更新", function () {
                         cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
+                        updateLayer.update();
                     });
                 } else {
                     cc.log("login fail");

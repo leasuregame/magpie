@@ -20,10 +20,10 @@ var LoginScene = cc.Scene.extend({
 
         this._super();
 
-        if (typeof UpdateLayer == "undefined") {
-            this.switchLayer(LoginLayer);
+        if (this._nowLayer) {
+            this.switchTo(this._nowLayer);
         } else {
-            this.switchLayer(UpdateLayer);
+            this.switchLayer(LoginLayer);
         }
 
         lz.dc.beginLogPageView("登录场景");
@@ -37,10 +37,12 @@ var LoginScene = cc.Scene.extend({
         lz.dc.endLogPageView("登录场景");
     },
 
-    init: function () {
+    init: function (toLayer) {
         cc.log("LoginScene init");
 
         if (!this._super()) return false;
+
+        this._nowLayer = toLayer;
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
@@ -51,9 +53,6 @@ var LoginScene = cc.Scene.extend({
 
         var loginBgLayer = LoginBgLayer.create();
         this.addChild(loginBgLayer);
-
-        var url = "http://115.29.175.156:9090/api/app/notice";
-        //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
 
         return true;
     },
@@ -85,10 +84,10 @@ var LoginScene = cc.Scene.extend({
 });
 
 
-LoginScene.create = function () {
+LoginScene.create = function (toLayer) {
     var ret = new LoginScene();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(toLayer)) {
         return ret;
     }
 

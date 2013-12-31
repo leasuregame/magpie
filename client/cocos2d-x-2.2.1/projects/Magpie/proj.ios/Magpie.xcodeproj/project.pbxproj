@@ -509,6 +509,7 @@
 		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
 		9075096F187171BC00E27689 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096718716DBF00E27689 /* platform.js */; };
 		90750970187171BC00E27689 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096818716DBF00E27689 /* user.js */; };
+		90A846B618726FB800582139 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C1A02518726F6E00CBC6FF /* loginLayer.js */; };
 		90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095A18716DB600E27689 /* loginLayer.js */; };
 		90C1A0201871722F00CBC6FF /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
 		90C1A0211871722F00CBC6FF /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095C18716DB600E27689 /* payment.js */; };
@@ -1546,6 +1547,7 @@
 		9075096618716DBF00E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		9075096718716DBF00E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
 		9075096818716DBF00E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
 		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
 		90C212BF18704B5B00671D28 /* TBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAdapter.h; sourceTree = "<group>"; };
@@ -2605,6 +2607,7 @@
 		9075096418716DBF00E27689 /* TB */ = {
 			isa = PBXGroup;
 			children = (
+				90C1A02518726F6E00CBC6FF /* loginLayer.js */,
 				9075096518716DBF00E27689 /* main_binding.js */,
 				9075096618716DBF00E27689 /* payment.js */,
 				9075096718716DBF00E27689 /* platform.js */,
@@ -2956,6 +2959,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A846B618726FB800582139 /* loginLayer.js in Resources */,
 				9075096D187171BC00E27689 /* main_binding.js in Resources */,
 				9075096E187171BC00E27689 /* payment.js in Resources */,
 				9075096F187171BC00E27689 /* platform.js in Resources */,

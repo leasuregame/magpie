@@ -29,6 +29,10 @@ var CONNECT_FAIL = 0;
 var CONNECT_SUCCESS = 1;
 var CONNECT_TRYING = 2;
 
+// disconnect status
+var DISCONNECT_DEFAULT = 0;
+var DISCONNECT_KICK = 1;
+
 // area status
 var AREA_STATUS = {
     10: {
@@ -68,6 +72,7 @@ var Server = Entity.extend({
     _areaList: null,
     _gateServerStatus: CONNECT_FAIL,
     _gameServerStatus: CONNECT_FAIL,
+    _disconnectStatus: DISCONNECT_DEFAULT,
 
     init: function () {
         cc.log("Server init");
@@ -95,6 +100,8 @@ var Server = Entity.extend({
     connectGateServer: function (cb) {
         cc.log("Server connectGateServer");
 
+        this.unscheduleAllCallbacks();
+
         this._gateServerStatus = CONNECT_FAIL;
         this._gameServerStatus = CONNECT_FAIL;
 
@@ -120,7 +127,7 @@ var Server = Entity.extend({
 
             that._gateServerStatus = CONNECT_FAIL;
 
-            lz.scheduleOnce(function () {
+            that.scheduleOnce(function () {
                 that.connectGateServer(cb);
             }, RECONNECT_TIME);
         });
@@ -134,6 +141,8 @@ var Server = Entity.extend({
         }, function () {
             cc.log("gate server connect success");
 
+            that.unscheduleAllCallbacks();
+
             success = true;
 
             that._gateServerStatus = CONNECT_SUCCESS;
@@ -141,7 +150,7 @@ var Server = Entity.extend({
             that.queryEntry(cb);
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that._gateServerStatus = CONNECT_FAIL;
 
@@ -152,6 +161,8 @@ var Server = Entity.extend({
 
     queryEntry: function (cb) {
         cc.log("Server queryEntry");
+
+        this.unscheduleAllCallbacks();
 
         if (!this._gateServerStatus == CONNECT_SUCCESS) {
             cc.log("请勿在连接未成功时获取数据");
@@ -168,6 +179,8 @@ var Server = Entity.extend({
             function (data) {
                 cc.log("pomelo websocket callback data:");
                 cc.log(data);
+
+                that.unscheduleAllCallbacks();
 
                 success = true;
 
@@ -187,13 +200,13 @@ var Server = Entity.extend({
 
                     lz.dc.event("event_query_entry");
                 } else {
-                    lz.scheduleOnce(function () {
+                    that.scheduleOnce(function () {
                         that.connectGateServer(cb);
                     }, RECONNECT_TIME);
                 }
             });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that.disconnect();
             }
@@ -201,17 +214,17 @@ var Server = Entity.extend({
     },
 
     connectGameServer: function (cb) {
-        cc.log("Server connectGameServer");
+        cc.log("Server connectGameServer: " + cb);
 
-        if (this.isConnect()) {
-            cb();
-
-            return;
-        }
+        this.unscheduleAllCallbacks();
 
         this._showWaitLayer();
 
         this.off();
+
+        if (this.isConnect()) {
+            this.disconnect();
+        }
 
         var success = false;
 
@@ -229,8 +242,8 @@ var Server = Entity.extend({
 
             that._gameServerStatus = CONNECT_FAIL;
 
-            lz.scheduleOnce(function () {
-                that.connectGameServer();
+            that.scheduleOnce(function () {
+                that.connectGameServer(cb);
             }, RECONNECT_TIME);
         });
 
@@ -243,9 +256,12 @@ var Server = Entity.extend({
         }, function () {
             cc.log("game server connect success");
 
+            that.unscheduleAllCallbacks();
+
             success = true;
 
             that._gameServerStatus = CONNECT_SUCCESS;
+            that._disconnectStatus = DISCONNECT_DEFAULT;
 
             that.off();
 
@@ -261,12 +277,19 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                Dialog.pop("网络断开，点击确定重新连接...", function () {
-                    MainScene.destroy();
+                if (that._disconnectStatus == DISCONNECT_KICK) {
+                    that.kick();
+                } else {
+                    that.reConnect();
+                }
+            });
 
-                    cc.Director.getInstance().replaceScene(LoginScene.create());
-                    cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
-                });
+            that.on("onKick", function () {
+                cc.log("***** on onKick:");
+
+                cc.log("异地登录");
+
+                that._disconnectStatus = DISCONNECT_KICK;
             });
 
             that._closeAllWaitLayer();
@@ -276,17 +299,19 @@ var Server = Entity.extend({
             }
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that._gameServerStatus = CONNECT_FAIL;
 
-                that.connectGameServer();
+                that.connectGameServer(cb);
             }
         }, CONNECT_TIMEOUT);
     },
 
     request: function (route, msg, cb, isBackstageRequest) {
         cc.log("Server request");
+
+        this.unscheduleAllCallbacks();
 
         if (!isBackstageRequest) {
             this._showWaitLayer();
@@ -301,6 +326,8 @@ var Server = Entity.extend({
 
         var that = this;
         lz.pomelo.request(route, msg, function (data) {
+            that.unscheduleAllCallbacks();
+
             success = true;
 
             if (!isBackstageRequest) {
@@ -310,11 +337,46 @@ var Server = Entity.extend({
             cb(data);
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that.disconnect();
             }
         }, REQUEST_TIMEOUT);
+    },
+
+    kick: function () {
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
+        Dialog.pop("异地登录...", function () {
+            MainScene.destroy();
+            cc.Director.getInstance().replaceScene(LoginScene.create());
+        });
+    },
+
+    reConnect: function () {
+        cc.log("Server reConnect");
+
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
+        TipLayer.tip("网络断开，正在重连...");
+
+        gameData.user.login(function (type) {
+            cc.log("Server reConnect success");
+
+            cc.log("-----------------------------------------------------");
+            cc.log("type: " + type);
+            cc.log("-----------------------------------------------------");
+
+            if (!type) {
+                Dialog.pop("重连失败，请重新登录", function () {
+                    MainScene.destroy();
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                });
+            } else {
+                MainScene.destroy();
+                cc.Director.getInstance().replaceScene(MainScene.getInstance());
+            }
+        });
     },
 
     disconnect: function () {

@@ -52,7 +52,7 @@ tbAdapter.loginResultHandler = function (isSuccess) {
 tbAdapter.logoutHandler = function () {
     cc.log("tbAdapter logoutHandler");
 
-    lz.server.disconnect();
+//    lz.server.disconnect();
 };
 
 // 离开平台回调

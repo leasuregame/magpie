@@ -81,8 +81,6 @@ var UpdateLayer = cc.Layer.extend({
 
         this._assetsManager.setPackageUrl(lz.platformConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
 
-        this.update();
-
         return true;
     },
 
@@ -165,6 +163,10 @@ var UpdateLayer = cc.Layer.extend({
         cc.log("UpdateLayer noNewVersionCallback");
 
         this.getParent().switchLayer(LoginLayer);
+    },
+
+    getVersion: function () {
+        return (this._assetsManager.getVersion() || "");
     }
 });
 
@@ -178,3 +180,4 @@ UpdateLayer.create = function () {
 
     return null;
 };
+

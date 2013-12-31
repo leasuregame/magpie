@@ -358,24 +358,24 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        TipLayer.tip("网络断开，正在重连...");
+        Dialog.pop("网络断开，点击重连...", function () {
+            gameData.user.login(function (type) {
+                cc.log("Server reConnect success");
 
-        gameData.user.login(function (type) {
-            cc.log("Server reConnect success");
+                cc.log("-----------------------------------------------------");
+                cc.log("type: " + type);
+                cc.log("-----------------------------------------------------");
 
-            cc.log("-----------------------------------------------------");
-            cc.log("type: " + type);
-            cc.log("-----------------------------------------------------");
-
-            if (!type) {
-                Dialog.pop("重连失败，请重新登录", function () {
+                if (!type) {
+                    Dialog.pop("重连失败，请重新登录", function () {
+                        MainScene.destroy();
+                        cc.Director.getInstance().replaceScene(LoginScene.create());
+                    });
+                } else {
                     MainScene.destroy();
-                    cc.Director.getInstance().replaceScene(LoginScene.create());
-                });
-            } else {
-                MainScene.destroy();
-                cc.Director.getInstance().replaceScene(MainScene.getInstance());
-            }
+                    cc.Director.getInstance().replaceScene(MainScene.getInstance());
+                }
+            });
         });
     },
 

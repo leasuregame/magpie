@@ -205,3 +205,4 @@ CSSProperties.prototype.ccbFnNext;
 CSSProperties.prototype.ccbSprite;
 CSSProperties.prototype.ccbFnAccountLogin;
 CSSProperties.prototype.ccbAreaNameLabel;
+CSSProperties.prototype.ccbFnPlayMusic;

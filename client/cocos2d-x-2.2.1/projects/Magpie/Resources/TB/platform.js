@@ -38,9 +38,10 @@ var TB_PLATFORM_LOGIN_SYNC_FAILED_ERROR = 300;  // 帐号同步出错
 var TB_PLATFORM_LOGIN_REQUEST_FAILED_ERROR = 400;  // 登录请求失败
 var TB_PLATFORM_NO_BBS = 1000; // 该游戏未配置论坛
 
+// 初始化同步推平台
 var tbAdapter = tb.TBAdapter.TBAdapterInstance();
-tbAdapter.TBSetAutoRotate(true);
 tbAdapter.TBInitPlatformWithAppID(131232, 1, false);
+tbAdapter.TBSetAutoRotate(true);
 
 // 初始化平台完成回调
 tbAdapter.initDidFinishWithUpdateCodeHandler = function (code) {

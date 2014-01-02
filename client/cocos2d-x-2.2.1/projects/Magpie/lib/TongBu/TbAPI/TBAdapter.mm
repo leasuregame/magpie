@@ -145,8 +145,6 @@ int TBAdapter::TBEnterBBS(int tag){
 }
 /************************以下函数需要开发根据实际应用自定义************************/
 void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
-    cocos2d::CCLog("initDidFinishWithUpdateCodeHandler call: %d", code);
-    
     jsval v[] = {
         v[0] = UINT_TO_JSVAL(code)
     };
@@ -282,7 +280,7 @@ static TBCallbackHandler *p_instance = NULL;
  */
 - (void)TBInitFinishedNotify:(NSNotification *)notify{
     int updateResult = [[notify.userInfo objectForKey:@"updateResult"] intValue];
-    TBAdapter::TBAdapterInstance() -> TBInitDidFinishWithUpdateCode(updateResult);
+    TBAdapter::TBAdapterInstance()->TBInitDidFinishWithUpdateCode(updateResult);
 }
 /**
  *	登录结果通知

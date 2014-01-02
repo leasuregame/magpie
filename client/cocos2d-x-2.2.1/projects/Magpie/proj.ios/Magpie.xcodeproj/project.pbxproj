@@ -228,6 +228,7 @@
 		3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7F18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp */; };
 		3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */; };
 		3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
+		9024377B1875734A00CF670C /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 902437781875732800CF670C /* game.jsc */; };
 		902B07A61858C475003A2A49 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		902B07A71858C475003A2A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		902B07A81858C475003A2A49 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -1003,7 +1004,6 @@
 		90F5372F1862EBE3008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F5372D1862EBE3008207BD /* AppDelegate.cpp */; };
 		90F537331862EBEB008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F537311862EBEB008207BD /* AppDelegate.cpp */; };
 		90F537371862EBF6008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F537351862EBF6008207BD /* AppDelegate.cpp */; };
-		90F537591862F58C008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F537581862F58C008207BD /* game.jsc */; };
 		90F5375C1862F594008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F5375B1862F594008207BD /* game.jsc */; };
 		90F5375D186303E2008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		90F5375E186303E3008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
@@ -1498,6 +1498,7 @@
 		3EC20B8018331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_cocos2dx_studio_auto.hpp; sourceTree = "<group>"; };
 		3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocos2dx_studio_manual.cpp; sourceTree = "<group>"; };
 		3EC20B8418331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocos2dx_studio_manual.h; sourceTree = "<group>"; };
+		902437781875732800CF670C /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		902B08A81858C475003A2A49 /* Magpie-TB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902B08AB1858C569003A2A49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		902B08AC1858C569003A2A49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -1586,7 +1587,6 @@
 		90F537321862EBEB008207BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90F537351862EBF6008207BD /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		90F537361862EBF6008207BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		90F537581862F58C008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90F5375B1862F594008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_WebLayer.cpp; sourceTree = "<group>"; };
 		90F9F23318680B4C001821D5 /* js_bindings_WebLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_WebLayer.hpp; sourceTree = "<group>"; };
@@ -1668,9 +1668,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
 				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
 				90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */,
+				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
 				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
 				90F536EB1862EB3C008207BD /* libsqlite3.dylib in Frameworks */,
 				90F536EC1862EB3C008207BD /* libcocos2dx.a in Frameworks */,
@@ -2525,6 +2525,14 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		902437761875732800CF670C /* TB-Releases */ = {
+			isa = PBXGroup;
+			children = (
+				902437781875732800CF670C /* game.jsc */,
+			);
+			path = "TB-Releases";
+			sourceTree = "<group>";
+		};
 		902B08AA1858C569003A2A49 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2731,19 +2739,11 @@
 		90F5374E1862F579008207BD /* game */ = {
 			isa = PBXGroup;
 			children = (
+				902437761875732800CF670C /* TB-Releases */,
 				90F5375A1862F594008207BD /* AppStore-Releases */,
-				90F537571862F58C008207BD /* TB-Releases */,
 			);
 			name = game;
 			path = ../Resources/game;
-			sourceTree = "<group>";
-		};
-		90F537571862F58C008207BD /* TB-Releases */ = {
-			isa = PBXGroup;
-			children = (
-				90F537581862F58C008207BD /* game.jsc */,
-			);
-			path = "TB-Releases";
 			sourceTree = "<group>";
 		};
 		90F5375A1862F594008207BD /* AppStore-Releases */ = {
@@ -3069,6 +3069,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9024377B1875734A00CF670C /* game.jsc in Resources */,
 				90F536FD1862EB3C008207BD /* Default@2x.png in Resources */,
 				90F537001862EB3C008207BD /* Icon-114.png in Resources */,
 				90F537021862EB3C008207BD /* Icon-57.png in Resources */,
@@ -3077,7 +3078,6 @@
 				90F537081862EB3C008207BD /* Icon-76.png in Resources */,
 				90F5370A1862EB3C008207BD /* Icon-152.png in Resources */,
 				90F5370F1862EB3C008207BD /* Icon-40.png in Resources */,
-				90F537591862F58C008207BD /* game.jsc in Resources */,
 				90F537121862EB3C008207BD /* README in Resources */,
 				90F537131862EB3C008207BD /* Icon-144.png in Resources */,
 				90F537141862EB3C008207BD /* CMakeLists.txt in Resources */,
@@ -4331,6 +4331,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB-Releases";
@@ -4381,6 +4382,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB-Releases";

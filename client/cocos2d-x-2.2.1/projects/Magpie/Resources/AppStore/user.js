@@ -50,8 +50,8 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "";
-        this._password = sys.localStorage.getItem("password") || "";
+        this._account = sys.localStorage.getItem("account") || "111111";
+        this._password = sys.localStorage.getItem("password") || "111111";
         this._area = parseInt(sys.localStorage.getItem("area")) || 0;
     },
 
@@ -93,13 +93,13 @@ var User = Entity.extend({
 
         this._save();
 
-        var updateLayer = UpdateLayer.create();
-        updateLayer.retain();
-        var version = updateLayer.getVersion();
-
-        cc.log("=================================================");
-        cc.log(version);
-        cc.log("=================================================");
+//        var updateLayer = UpdateLayer.create();
+//        updateLayer.retain();
+//        var version = updateLayer.getVersion();
+//
+//        cc.log("=================================================");
+//        cc.log(version);
+//        cc.log("=================================================");
 
         var that = this;
         lz.server.connectGameServer(function () {
@@ -107,7 +107,7 @@ var User = Entity.extend({
                 account: that._account,
                 password: that._password,
                 areaId: that._area,
-                version: version
+                version: "1.0.0"//version
             }, function (data) {
                 cc.log(data);
 

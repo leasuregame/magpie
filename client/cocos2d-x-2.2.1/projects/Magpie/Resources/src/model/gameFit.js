@@ -1465,10 +1465,10 @@ var fit4Iphone5 = {
             "resLabelPoint": cc.p(320, 430),
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
-            "selectLeadCardItemPoint": cc.p(320, 690),
+            "selectLeadCardItemPoint": cc.p(175, 710),
             "evolutionItemPoint": cc.p(220, 197),
             "selectRetinueCardItemPoint": cc.p(420, 197),
-            "selectLeadCardIconPoint": cc.p(320, 690),
+            "selectLeadCardIconPoint": cc.p(175, 710),
             "leadCardHalfNodePoint": cc.p(320, 690)
         },
         "cardLibraryLayer": {

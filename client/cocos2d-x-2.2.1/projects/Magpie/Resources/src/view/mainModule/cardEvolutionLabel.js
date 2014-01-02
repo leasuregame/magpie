@@ -31,6 +31,14 @@ var CardEvolutionLabel = cc.Layer.extend({
 
     _evolutionEffect: null,
     _index: null,
+    _newCard: null,
+
+    _cardLvLabel: [],
+    _cardHpLabel: [],
+    _cardAtkLabel: [],
+    _cardSkillLabel: [],
+    _cardSkillRateLabel: [],
+    _cardPssSkillLabel: [],
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -56,36 +64,80 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         this._cardEvolutionLayerFit = gameFit.mainScene.cardEvolutionLayer;
 
-        var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon83);
-        cardItemBgSprite.setPosition(this._cardEvolutionLayerFit.cardItemBgSpritePoint);
-        this.addChild(cardItemBgSprite);
+        var cardBgSprite = cc.Sprite.create(main_scene_image.icon336);
+        cardBgSprite.setPosition(cc.p(175, 569));
+        this.addChild(cardBgSprite);
+
+        var cardBgSprite2 = cc.Sprite.create(main_scene_image.icon336);
+        cardBgSprite2.setPosition(cc.p(465, 569));
+        this.addChild(cardBgSprite2);
+
+        this._resLabel = cc.Node.create();
+        this._resLabel.setPosition(cc.p(320, 499));
+        this.addChild(this._resLabel);
+
+        var resBgIcon = cc.Sprite.create(main_scene_image.icon337);
+        resBgIcon.setPosition(cc.p(-145, 0));
+        this._resLabel.addChild(resBgIcon);
+
+        var resBgIcon2 = cc.Sprite.create(main_scene_image.icon337);
+        resBgIcon2.setPosition(cc.p(145, 0));
+        this._resLabel.addChild(resBgIcon2);
+
+        for (var i = 0; i < 2; ++i) {
+            this._cardLvLabel[i] = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
+            this._cardLvLabel[i].setColor(cc.c3b(118, 238, 60));
+            this._cardLvLabel[i].setPosition(-140 + i * 290, 82);
+            this._resLabel.addChild(this._cardLvLabel[i]);
+
+            this._cardHpLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+            this._cardHpLabel[i].setPosition(-140 + i * 290, 48);
+            this._resLabel.addChild(this._cardHpLabel[i]);
+
+            this._cardAtkLabel[i] = cc.LabelTTF.create("0","STHeitiTC-Medium", 22);
+            this._cardAtkLabel[i].setPosition(-140 + i * 290, 14);
+            this._resLabel.addChild(this._cardAtkLabel[i]);
+
+            this._cardSkillLabel[i] = cc.LabelTTF.create("0%","STHeitiTC-Medium", 22);
+            this._cardSkillLabel[i].setPosition(-95 + i * 290, -17);
+            this._resLabel.addChild(this._cardSkillLabel[i]);
+
+            this._cardSkillRateLabel[i] = cc.LabelTTF.create("0%","STHeitiTC-Medium", 22);
+            this._cardSkillRateLabel[i].setPosition(-95 + i * 290, -51);
+            this._resLabel.addChild(this._cardSkillRateLabel[i]);
+
+            this._cardPssSkillLabel[i] = cc.LabelTTF.create("1","STHeitiTC-Medium", 22);
+            this._cardPssSkillLabel[i].setPosition(-95 + i * 290, -85);
+            this._resLabel.addChild(this._cardPssSkillLabel[i]);
+
+        }
+
+        var successBgIcon = cc.Sprite.create(main_scene_image.icon338);
+        successBgIcon.setPosition(cc.p(320, 710));
+        this.addChild(successBgIcon);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
         helpBgSprite.setPosition(this._cardEvolutionLayerFit.helpBgSpritePoint);
         this.addChild(helpBgSprite);
 
-        this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(this._cardEvolutionLayerFit.resLabelPoint);
-        this.addChild(this._resLabel);
-
-        var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
-        this._resLabel.addChild(resLabelBgSprite);
-
-        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._nameLabel.setColor(cc.c3b(255, 239, 131));
-        this._nameLabel.setPosition(cc.p(0, 25));
-        this._resLabel.addChild(this._nameLabel);
-
-        var evolutionRateIcon = cc.LabelTTF.create("成功概率:", "STHeitiTC-Medium", 22);
-        evolutionRateIcon.setColor(cc.c3b(255, 239, 131));
-        evolutionRateIcon.setPosition(cc.p(-30, -25));
-        this._resLabel.addChild(evolutionRateIcon);
-
         this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
         this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
-        this._evolutionRateLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._evolutionRateLabel.setPosition(cc.p(30, -27));
-        this._resLabel.addChild(this._evolutionRateLabel);
+        this._evolutionRateLabel.setPosition(cc.p(320, 695));
+        this.addChild(this._evolutionRateLabel);
+
+        var point = cc.p(320, 770);
+        for (var i = 0; i < 5; ++i) {
+            var x = point.x - 240;
+            var y = point.y - 30 * i;
+            var starBgIcon = cc.Sprite.create(main_scene_image.icon339);
+            starBgIcon.setPosition(cc.p(x, y));
+            this.addChild(starBgIcon);
+
+            x = point.x + 240;
+            var starBgIcon2 = cc.Sprite.create(main_scene_image.icon339);
+            starBgIcon2.setPosition(cc.p(x, y));
+            this.addChild(starBgIcon2);
+        }
 
         this._tipLabel = cc.Node.create();
         this._tipLabel.setPosition(this._cardEvolutionLayerFit.tipLabelPoint);
@@ -131,6 +183,17 @@ var CardEvolutionLabel = cc.Layer.extend({
         selectLeadCardItem.setScale(1.1);
         selectLeadCardItem.setPosition(this._cardEvolutionLayerFit.selectLeadCardItemPoint);
 
+        var newCardItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.card_frame1,
+            main_scene_image.card_frame1,
+            main_scene_image.icon340,
+            this._onClickNewCard,
+            this
+        );
+
+        newCardItem.setPosition(cc.p(465, 710));
+        newCardItem.setScale(1.1);
+
         this._evolutionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
@@ -151,7 +214,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardEvolutionLayerFit.selectRetinueCardItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._selectRetinueCardItem, this._evolutionItem);
+        var menu = cc.Menu.create(selectLeadCardItem, newCardItem, this._selectRetinueCardItem, this._evolutionItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -187,6 +250,7 @@ var CardEvolutionLabel = cc.Layer.extend({
 
             this._resLabel.setVisible(false);
             this._helpLabel.setVisible(false);
+            this._evolutionRateLabel.setVisible(false);
             this._tipLabel.setVisible(true);
 
             this._selectRetinueCardItem.setEnabled(false);
@@ -194,14 +258,12 @@ var CardEvolutionLabel = cc.Layer.extend({
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(this._cardEvolutionLayerFit.leadCardHalfNodePoint);
+            this._leadCardHalfNode.setPosition(cc.p(175, 710));
             this.addChild(this._leadCardHalfNode, 1);
 
             this._resLabel.setVisible(true);
 
             var needMoney = this._leadCard.getEvolutionNeedMoney();
-
-            this._nameLabel.setString(this._leadCard.get("name"));
             this._evolutionRateLabel.setString("0%");
             this._cardCountLabel.setString("0");
             this._moneyLabel.setString(needMoney);
@@ -212,11 +274,21 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._moneyLabel.setColor(cc.c3b(255, 255, 255));
             }
 
+            this._cardLvLabel[0].setString(this._leadCard.get("lv") + "/" + this._leadCard.get("maxLv"));
+            this._cardHpLabel[0].setString(this._leadCard.get("hp"));
+            this._cardAtkLabel[0].setString(this._leadCard.get("atk"));
+            this._cardSkillLabel[0].setString(this._leadCard.get("skillHarm"));
+            this._cardSkillRateLabel[0].setString(this._leadCard.get("skillRate"));
+            var star = this._leadCard.get("star");
+
+            this._cardPssSkillLabel[0].setString();
+
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);
-
+            this._evolutionRateLabel.setVisible(true);
             this._selectRetinueCardItem.setEnabled(true);
             this._evolutionItem.setEnabled(false);
+
         }
 
         var cardCount = this._retinueCard.length;
@@ -298,12 +370,18 @@ var CardEvolutionLabel = cc.Layer.extend({
         this._leadCard.evolution(function (state) {
             cc.log(state);
             that._retinueCard = [];
-            if(state != EVOLUTION_ERROR) {
+            if (state != EVOLUTION_ERROR) {
                 CardEvolutionLayer.pop({card: card, state: state});
             }
             that.update();
 
         }, cardIdList);
+    },
+
+    _onClickNewCard: function () {
+        cc.log("CardEvolutionLayer _onClickNewCard");
+
+
     }
 
 });

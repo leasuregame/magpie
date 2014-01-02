@@ -104,7 +104,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
-    ### 只有每个账号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
+    ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
     if user?.roles.length > 1 or player?.teachingStep >= 17
       delete player.teachingStep
 

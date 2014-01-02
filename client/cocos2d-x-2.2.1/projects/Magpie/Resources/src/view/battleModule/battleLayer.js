@@ -805,9 +805,35 @@ var BatterLayer = cc.Layer.extend({
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
-        battleStep.recover();
         this.ccbFnCallback = function () {
             var that = this;
+
+            var isFirst = true;
+            this.ccbFnCallback = function () {
+                if (!isFirst) {
+                    return;
+                }
+
+                battleStep.recover();
+                while (battleStep.hasNextTarget()) {
+                    (function () {
+                        var target = battleStep.getTarget();
+                        var targetLocate = that._locate[target];
+                        var targetNode = that._battleNode[target];
+                        var effect = battleStep.getEffect();
+                        var isCrit = battleStep.isCrit();
+
+                        targetNode.runAnimations(
+                            effect ? ("d_2_" + that._getDirection(target)) : "miss",
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, true, isCrit);
+                    })();
+                }
+            };
 
             var effect400_1 = cc.BuilderReader.load(main_scene_image.effect400_1, that);
             effect400_1.setPosition(attackerLocate);
@@ -819,6 +845,7 @@ var BatterLayer = cc.Layer.extend({
                 nextStepCallback();
             });
 
+            battleStep.recover();
             while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
@@ -836,15 +863,6 @@ var BatterLayer = cc.Layer.extend({
                         effect400_2.removeFromParent();
                         nextStepCallback();
                     });
-
-                    targetNode.runAnimations(
-                        effect ? ("d_2_" + that._getDirection(target)) : "miss",
-                        0,
-                        that.nextStepCallback()
-                    );
-
-                    targetNode.update(effect);
-                    that.tipHarm(target, effect, true, isCrit);
                 })();
             }
         };

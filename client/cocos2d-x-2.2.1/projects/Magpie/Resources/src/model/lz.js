@@ -375,7 +375,7 @@ lz.getTimeStr = function (time) {
 
 var MAX_LAST_NAME_COUNT = 250;
 var MAX_FIRST_NAME_COUNT = 2568;
-var MAX_ILLEGAL_STR_COUNT = 778;
+var MAX_ILLEGAL_STR_COUNT = 780;
 
 lz.getRandomFirstName = function () {
     cc.log("lz getRandomFirstName");

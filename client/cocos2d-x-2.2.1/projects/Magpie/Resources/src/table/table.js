@@ -1,4 +1,6 @@
 var nameChanged = {
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_price": "卡牌价格配置表",
@@ -39,8 +41,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -59,12 +59,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -73,6 +67,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -110,6 +110,353 @@ var nameChanged = {
 };
 
 var outputTables = {
+    "achievement": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 10,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 10,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 100,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 10,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingToOne",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第1",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "method": "v587",
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "竞技场中以1敌5，战胜对方",
+                "gold": 10,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 10,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 10,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 10,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardFullLevel",
+                "need": 1,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo10",
+                "need": 1,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 10,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 100000,
+                "name": "一大波仙丹",
+                "desc": "累计获得100000仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 100000,
+                "name": "活力无限",
+                "desc": "累计获得100000活力点",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 9999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到9999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 8888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到8888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "method": "soLucky",
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "用1张素材卡成功进阶该卡牌",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力10000点",
+                "gold": 10,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 10000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币1000万",
+                "gold": 10,
+                "energy": 100
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 100000,
+                "name": "挥金如土",
+                "desc": "累计消耗魔石100000",
+                "gold": 50,
+                "energy": 500
+            },
+            "26": {
+                "id": 26,
+                "method": "taskPoinTo",
+                "need": 10,
+                "name": "十步之遥",
+                "desc": "修炼里探索总进度达到10",
+                "gold": 10,
+                "energy": 50
+            },
+            "27": {
+                "id": 27,
+                "method": "taskChapterPassTo",
+                "need": 1,
+                "name": "鬼门关之旅",
+                "desc": "通关鬼门关",
+                "gold": 10,
+                "energy": 50
+            },
+            "28": {
+                "id": 28,
+                "method": "passFirstWin",
+                "need": 1,
+                "name": "天道首胜",
+                "desc": "在天道中获得第一场胜利",
+                "gold": 10,
+                "energy": 50
+            },
+            "29": {
+                "id": 29,
+                "method": "taskPartPassTo",
+                "need": 1,
+                "name": "苦寒地狱",
+                "desc": "通关苦寒地狱篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "30": {
+                "id": 30,
+                "method": "taskPartPassTo",
+                "need": 2,
+                "name": "凄凉人间",
+                "desc": "通关凄凉人间篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "31": {
+                "id": 31,
+                "method": "taskPartPassTo",
+                "need": 3,
+                "name": "南天之门",
+                "desc": "通关南天之门篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "32": {
+                "id": 32,
+                "method": "taskPartPassTo",
+                "need": 4,
+                "name": "西天取经",
+                "desc": "通关西天取经篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "33": {
+                "id": 33,
+                "method": "taskPartPassTo",
+                "need": 5,
+                "name": "莲花加持",
+                "desc": "通关莲花加持篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "34": {
+                "id": 34,
+                "method": "taskPartPassTo",
+                "need": 6,
+                "name": "千年之修",
+                "desc": "通关千年之修篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "35": {
+                "id": 35,
+                "method": "taskPartPassTo",
+                "need": 7,
+                "name": "斩妖除魔",
+                "desc": "通关斩妖除魔篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "36": {
+                "id": 36,
+                "method": "taskPartPassTo",
+                "need": 8,
+                "name": "降龙伏虎",
+                "desc": "通关降龙伏虎篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "37": {
+                "id": 37,
+                "method": "taskPartPassTo",
+                "need": 9,
+                "name": "普度众生",
+                "desc": "通关普度众生篇章",
+                "gold": 10,
+                "energy": 100
+            },
+            "38": {
+                "id": 38,
+                "method": "taskPartPassTo",
+                "need": 10,
+                "name": "尊者之身",
+                "desc": "通关尊者之身篇章",
+                "gold": 10,
+                "energy": 100
+            }
+        }
+    },
     "card_grow": {
         "colComment": {},
         "rows": {
@@ -919,7 +1266,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 55,
                 "hp": 131,
-                "normal_atk_id": 2,
+                "normal_atk_id": 1,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
                 "url": 18
             },
@@ -931,7 +1278,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 106,
                 "hp": 254,
-                "normal_atk_id": 2,
+                "normal_atk_id": 1,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
                 "url": 18
             },
@@ -943,10 +1290,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 143,
                 "hp": 369,
-                "skill_name": "水漫金山",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
                 "url": 18
             },
@@ -958,10 +1305,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 206,
                 "hp": 524,
-                "skill_name": "水漫金山",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
                 "description": "白素贞你住手吧，许仙真的不在珠海金山！",
                 "url": 18
             },
@@ -973,10 +1320,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 265,
                 "hp": 689,
-                "skill_name": "水漫金山",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
                 "url": 18
             },
@@ -2023,7 +2370,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 55,
                 "hp": 136,
-                "normal_atk_id": 1,
+                "normal_atk_id": 2,
                 "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
                 "url": 50
             },
@@ -2035,7 +2382,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 91,
                 "hp": 290,
-                "normal_atk_id": 1,
+                "normal_atk_id": 2,
                 "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
                 "url": 50
             },
@@ -2048,9 +2395,9 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "月光宝盒",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
                 "url": 50
             },
@@ -2063,9 +2410,9 @@ var outputTables = {
                 "atk": 185,
                 "hp": 556,
                 "skill_name": "月光宝盒",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
                 "url": 50
             },
@@ -2078,9 +2425,9 @@ var outputTables = {
                 "atk": 255,
                 "hp": 725,
                 "skill_name": "月光宝盒",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
                 "url": 50
             },
@@ -8501,7 +8848,7 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "star3": "[8,13,33,43,168,88,218,123,243]",
+                "star3": "[8,13,33,43,168,148,218,123,243]",
                 "star4": "[59,139]"
             }
         }
@@ -8752,353 +9099,6 @@ var outputTables = {
             "passBattleLv": {
                 "id": "passBattleLv",
                 "value": 10
-            }
-        }
-    },
-    "achievement": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "method": "levelTo",
-                "need": 50,
-                "name": "升级达人",
-                "desc": "角色等级达到50级",
-                "gold": 10,
-                "energy": 100
-            },
-            "2": {
-                "id": 2,
-                "method": "levelTo",
-                "need": 90,
-                "name": "疯狂升级",
-                "desc": "角色等级达到90级",
-                "gold": 100,
-                "energy": 1000
-            },
-            "3": {
-                "id": 3,
-                "method": "passTo",
-                "need": 50,
-                "name": "一半！",
-                "desc": "天道闯过50层",
-                "gold": 10,
-                "energy": 100
-            },
-            "4": {
-                "id": 4,
-                "method": "passTo",
-                "need": 100,
-                "name": "通关！",
-                "desc": "天道闯过100层",
-                "gold": 100,
-                "energy": 1000
-            },
-            "5": {
-                "id": 5,
-                "method": "winCount",
-                "need": 50,
-                "name": "小试牛刀",
-                "desc": "竞技获胜次数达到50场",
-                "gold": 10,
-                "energy": 100
-            },
-            "6": {
-                "id": 6,
-                "method": "winCount",
-                "need": 5000,
-                "name": "已经超神了",
-                "desc": "竞技获胜次数达到5000场",
-                "gold": 100,
-                "energy": 1000
-            },
-            "7": {
-                "id": 7,
-                "method": "winningStreak",
-                "need": 50,
-                "name": "所向披靡",
-                "desc": "竞技最高连胜达到50次",
-                "gold": 100,
-                "energy": 1000
-            },
-            "8": {
-                "id": 8,
-                "method": "rankingToOne",
-                "need": 1,
-                "name": "寂寞",
-                "desc": "竞技排名达到第1",
-                "gold": 100,
-                "energy": 1000
-            },
-            "9": {
-                "id": 9,
-                "method": "v587",
-                "need": 1,
-                "name": "霸气外射！",
-                "desc": "竞技场中以1敌5，战胜对方",
-                "gold": 10,
-                "energy": 100
-            },
-            "10": {
-                "id": 10,
-                "method": "friends",
-                "need": 20,
-                "name": "我们约会吧",
-                "desc": "拥有20个好友",
-                "gold": 10,
-                "energy": 100
-            },
-            "11": {
-                "id": 11,
-                "method": "gaveBless",
-                "need": 500,
-                "name": "无私奉献",
-                "desc": "为好友送出祝福达到500次",
-                "gold": 10,
-                "energy": 100
-            },
-            "12": {
-                "id": 12,
-                "method": "receivedBless",
-                "need": 100,
-                "name": "爱是相互的",
-                "desc": "收到好友祝福次数达到100次",
-                "gold": 300,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "method": "star5card",
-                "need": 1,
-                "name": "质的飞跃",
-                "desc": "获得1张5星卡",
-                "gold": 10,
-                "energy": 100
-            },
-            "14": {
-                "id": 14,
-                "method": "star5cardFullLevel",
-                "need": 1,
-                "name": "这就是实力",
-                "desc": "将1张5星卡强化到满级",
-                "gold": 50,
-                "energy": 500
-            },
-            "15": {
-                "id": 15,
-                "method": "star5card",
-                "need": 5,
-                "name": "你就是神！",
-                "desc": "获得5张5星卡",
-                "gold": 100,
-                "energy": 1000
-            },
-            "16": {
-                "id": 16,
-                "method": "psTo10",
-                "need": 1,
-                "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
-                "gold": 10,
-                "energy": 100
-            },
-            "17": {
-                "id": 17,
-                "method": "elixirTo",
-                "need": 100000,
-                "name": "一大波仙丹",
-                "desc": "累计获得100000仙丹",
-                "gold": 50,
-                "energy": 500
-            },
-            "18": {
-                "id": 18,
-                "method": "energyTo",
-                "need": 100000,
-                "name": "活力无限",
-                "desc": "累计获得100000活力点",
-                "gold": 100,
-                "energy": 1000
-            },
-            "19": {
-                "id": 19,
-                "method": "luckyCardCount",
-                "need": 9999,
-                "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到9999",
-                "gold": 100,
-                "energy": 500
-            },
-            "20": {
-                "id": 20,
-                "method": "highLuckyCardCount",
-                "need": 8888,
-                "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到8888",
-                "gold": 100,
-                "energy": 1000
-            },
-            "21": {
-                "id": 21,
-                "method": "soLucky",
-                "need": 1,
-                "name": "买彩票去吧",
-                "desc": "用1张素材卡成功进阶该卡牌",
-                "gold": 50,
-                "energy": 100
-            },
-            "22": {
-                "id": 22,
-                "method": "powerConsume",
-                "need": 10000,
-                "name": "孜孜不倦",
-                "desc": "累计消耗体力10000点",
-                "gold": 10,
-                "energy": 100
-            },
-            "23": {
-                "id": 23,
-                "method": "vip",
-                "need": 1,
-                "name": "我是VIP！",
-                "desc": "成为VIP用户",
-                "gold": 50,
-                "energy": 500
-            },
-            "24": {
-                "id": 24,
-                "method": "moneyConsume",
-                "need": 10000000,
-                "name": "不差钱",
-                "desc": "累计消耗仙币1000万",
-                "gold": 10,
-                "energy": 100
-            },
-            "25": {
-                "id": 25,
-                "method": "goldConsume",
-                "need": 100000,
-                "name": "挥金如土",
-                "desc": "累计消耗魔石100000",
-                "gold": 50,
-                "energy": 500
-            },
-            "26": {
-                "id": 26,
-                "method": "taskPoinTo",
-                "need": 10,
-                "name": "十步之遥",
-                "desc": "修炼里探索总进度达到10",
-                "gold": 10,
-                "energy": 50
-            },
-            "27": {
-                "id": 27,
-                "method": "taskChapterPassTo",
-                "need": 1,
-                "name": "鬼门关之旅",
-                "desc": "通关鬼门关",
-                "gold": 10,
-                "energy": 50
-            },
-            "28": {
-                "id": 28,
-                "method": "passFirstWin",
-                "need": 1,
-                "name": "天道首胜",
-                "desc": "在天道中获得第一场胜利",
-                "gold": 10,
-                "energy": 50
-            },
-            "29": {
-                "id": 29,
-                "method": "taskPartPassTo",
-                "need": 1,
-                "name": "苦寒地狱",
-                "desc": "通关苦寒地狱篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "30": {
-                "id": 30,
-                "method": "taskPartPassTo",
-                "need": 2,
-                "name": "凄凉人间",
-                "desc": "通关凄凉人间篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "31": {
-                "id": 31,
-                "method": "taskPartPassTo",
-                "need": 3,
-                "name": "南天之门",
-                "desc": "通关南天之门篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "32": {
-                "id": 32,
-                "method": "taskPartPassTo",
-                "need": 4,
-                "name": "西天取经",
-                "desc": "通关西天取经篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "33": {
-                "id": 33,
-                "method": "taskPartPassTo",
-                "need": 5,
-                "name": "莲花加持",
-                "desc": "通关莲花加持篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "34": {
-                "id": 34,
-                "method": "taskPartPassTo",
-                "need": 6,
-                "name": "千年之修",
-                "desc": "通关千年之修篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "35": {
-                "id": 35,
-                "method": "taskPartPassTo",
-                "need": 7,
-                "name": "斩妖除魔",
-                "desc": "通关斩妖除魔篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "36": {
-                "id": 36,
-                "method": "taskPartPassTo",
-                "need": 8,
-                "name": "降龙伏虎",
-                "desc": "通关降龙伏虎篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "37": {
-                "id": 37,
-                "method": "taskPartPassTo",
-                "need": 9,
-                "name": "普度众生",
-                "desc": "通关普度众生篇章",
-                "gold": 10,
-                "energy": 100
-            },
-            "38": {
-                "id": 38,
-                "method": "taskPartPassTo",
-                "need": 10,
-                "name": "尊者之身",
-                "desc": "通关尊者之身篇章",
-                "gold": 10,
-                "energy": 100
             }
         }
     },
@@ -12397,6 +12397,14 @@ var outputTables = {
             "777": {
                 "id": 777,
                 "illegal_str": "公告"
+            },
+            "778": {
+                "id": 778,
+                "illegal_str": "钓鱼岛"
+            },
+            "779": {
+                "id": 779,
+                "illegal_str": "尖阁列岛"
             }
         }
     },
@@ -24811,253 +24819,6 @@ var outputTables = {
             }
         }
     },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -25362,6 +25123,253 @@ var outputTables = {
                 "star5_inc_max": 45,
                 "star5_grow": 5,
                 "rate5": 40
+            }
+        }
+    },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -31450,7 +31458,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 180,
                 "coins_obtain": 360,
-                "description": "许多神仙最近也都有了自己的微博账号。有些还加了V。二郎神叫我与狗，巨灵神叫下体很硬，蓬莱仙女叫深不可测。"
+                "description": "许多神仙最近也都有了自己的微博帐号。有些还加了V。二郎神叫我与狗，巨灵神叫下体很硬，蓬莱仙女叫深不可测。"
             },
             "313": {
                 "id": 313,

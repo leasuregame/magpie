@@ -116,7 +116,6 @@
             'src/view/loginModule/loginBgLayer.js',
            // 'TB/loginLayer.js',
             'AppStore/loginLayer.js',
-            'src/view/loginModule/logoutLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
             'src/view/loginModule/selectAreaLayer.js',

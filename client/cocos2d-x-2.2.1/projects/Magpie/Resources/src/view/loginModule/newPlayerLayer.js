@@ -40,7 +40,6 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(340, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
-
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate({
@@ -110,7 +109,6 @@ var NewPlayerLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var name = this._nameEditBox.getText();
-        var user = gameData.user;
 
         if (!name) {
             TipLayer.tip("请输入昵称");
@@ -127,21 +125,12 @@ var NewPlayerLayer = cc.Layer.extend({
         }, name);
     },
 
-    _onClickBack: function () {
-        cc.log("NewPlayerLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
-    },
-
     ccbFnClose: function () {
         cc.log("NewPlayerLayer ccbFnClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switchTo(LoginLayer.create());
-
+        this.getParent().switchLayer(LoginLayer);
     }
 });
 

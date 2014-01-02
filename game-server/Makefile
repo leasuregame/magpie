@@ -13,6 +13,9 @@ start: build convert-data
 
 stop:
 	pomelo stop
+	pkill -9 -f node 
+
+restart: stop start
 
 clean: 
 	rm -r ./app

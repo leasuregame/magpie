@@ -120,9 +120,6 @@ app.configure('production|development', 'area', function() {
   }
   app.set('mysql', val);
 
-  var platform = require(app.getBase() + '/config/platform.json').platform;
-  app.set('platform', platform);
-
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 
@@ -139,6 +136,9 @@ app.configure('production|development', 'area', function() {
 app.configure('production|development', 'connector|auth|area', function() {
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
+
+  var platform = require(app.getBase() + '/config/platform.json').platform;
+  app.set('platform', platform);
 });
 
 app.configure('development', 'connector|auth|area', function() {

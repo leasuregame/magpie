@@ -248,6 +248,18 @@ Handler::leaveMessage = (msg, session, next) ->
       msg: res.toLeaveMessage()
     }, null, next
 
+Handler::setAsRead = (msg, session, next) ->
+  msgId = msg.msgId
+  dao.message.update {
+    where: id: msgId
+    data: status: msgConfig.MESSAGESTATUS.HANDLED
+  }, (err, res) ->
+    if err
+      logger.error('can not update message status with id', msgId )
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200})
+
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId

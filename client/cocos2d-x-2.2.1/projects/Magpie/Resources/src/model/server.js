@@ -277,6 +277,10 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
+                if (tbAdapter && tbAdapter.TBLogout) {
+                    tbAdapter.TBLogout(0);
+                }
+
                 if (that._disconnectStatus == DISCONNECT_KICK) {
                     that.kick();
                 } else {

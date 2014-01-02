@@ -411,6 +411,41 @@ lz.eligibleName = function (name) {
     return true;
 };
 
+lz.replaceStr = function (str) {
+    cc.log("lz replaceStr");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        var index = 0;
+        var illegalWord = illegalStr[i].illegal_str;
+        var len = illegalWord.length;
+
+        while (true) {
+            index = str.indexOf(illegalWord, index);
+
+            if (index == -1) {
+                break;
+            }
+
+            var sStr = str.substring(0, index);
+            var eStr = str.substring(index + len);
+
+            str = sStr;
+
+            for (var j = 0; j < len; ++j) {
+                str += "*";
+            }
+
+            str += eStr;
+
+            index += len;
+        }
+    }
+
+    return str;
+};
+
 
 /*
  * 数组去重

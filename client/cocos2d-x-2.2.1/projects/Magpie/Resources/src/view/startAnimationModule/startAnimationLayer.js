@@ -68,8 +68,8 @@ var StartAnimationLayer = cc.Layer.extend({
         cc.Director.getInstance().replaceScene(MainScene.getInstance());
     },
 
-    playMusic: function () {
-        cc.log("StartAnimationLayer playMusic");
+    ccbFnPlayMusic: function () {
+        cc.log("StartAnimationLayer ccbFnPlayMusic");
 
         gameData.sound.playMusic(main_scene_image.start_animation_music, true);
     }

@@ -11,6 +11,7 @@
 #include <TBPlatform/TBPlatform.h>
 #include "TBCallbackHandler.h"
 #include "cocos2d.h"
+#include "Reachability.h"
 
 //TBAdapter TBAdapter::TBAdapter(){
     //[TBCallbackHandler sharedHandler];
@@ -60,6 +61,21 @@ int TBAdapter::TBSetAutoRotate(bool autoRotate){
 }
 /*登录*/
 int TBAdapter::TBLogin(int tag){
+    /*检查网络，若网络不通则返回错误*/
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
+    switch ([reach currentReachabilityStatus]) {
+        case NotReachable:
+            // 没有网络连接
+            return TB_PLATFORM_NETWORKING_ERROR;
+            break;
+        case ReachableViaWWAN:
+            // 使用3G网络
+            break;
+        case ReachableViaWiFi:
+            // 使用WiFi网络
+            break;
+    }
+    
     return [[TBPlatform defaultPlatform] TBLogin:0];
 }
 /*注销*/
@@ -144,7 +160,7 @@ void TBAdapter::TBLoginResultHandle(bool isSuccess){
     };
     
     ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
-                                                           "loginResultHandler", 2, v, &retval);
+                                                           "loginResultHandler", 1, v, &retval);
 }
 void TBAdapter::TBLogoutHandle(){
     this->TBExcuteCallback("logoutHandler", 0, NULL, NULL);

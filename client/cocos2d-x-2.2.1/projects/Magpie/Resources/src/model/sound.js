@@ -79,19 +79,7 @@ var Sound = Entity.extend({
         this._openMusicKey = "openMusic";
         this._openEffectKey = "openEffect";
 
-//        this._load();
-
         return true;
-    },
-
-    _load: function () {
-        cc.log("Sound _load");
-
-        this._openMusic = parseInt(sys.localStorage.getItem(this._openMusicKey)) || SOUND_OPEN;
-        this._openEffect = parseInt(sys.localStorage.getItem(this._openEffectKey)) || SOUND_OPEN;
-
-        cc.AudioEngine.getInstance().setMusicVolume(this.isOpenMusic() ? MUSIC_VOLUME : NO_VOLUME);
-        cc.AudioEngine.getInstance().setEffectsVolume(this.isOpenEffect() ? EFFECT_VOLUME : NO_VOLUME);
     },
 
     _save: function () {

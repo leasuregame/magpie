@@ -509,6 +509,12 @@
 		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
 		9075096F187171BC00E27689 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096718716DBF00E27689 /* platform.js */; };
 		90750970187171BC00E27689 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096818716DBF00E27689 /* user.js */; };
+		909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		909D73B818754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73B918754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73BA18754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73BB18754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
 		90A846B618726FB800582139 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C1A02518726F6E00CBC6FF /* loginLayer.js */; };
 		90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
@@ -1550,6 +1556,8 @@
 		9075096618716DBF00E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		9075096718716DBF00E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
 		9075096818716DBF00E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		909D73B618754C1C009D69C4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		909D73B718754C1C009D69C4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
 		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
@@ -1611,9 +1619,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
 				90C212D11870702D00671D28 /* Security.framework in Frameworks */,
 				90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */,
-				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
 				902B08721858C475003A2A49 /* QuartzCore.framework in Frameworks */,
 				902B086E1858C475003A2A49 /* libsqlite3.dylib in Frameworks */,
 				902B086F1858C475003A2A49 /* libcocos2dx.a in Frameworks */,
@@ -1636,6 +1644,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				90F535DC1862EAC2008207BD /* libsqlite3.dylib in Frameworks */,
 				90F535DD1862EAC2008207BD /* libcocos2dx.a in Frameworks */,
 				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
@@ -1659,9 +1668,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
 				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
 				90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */,
-				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
 				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
 				90F536EB1862EB3C008207BD /* libsqlite3.dylib in Frameworks */,
 				90F536EC1862EB3C008207BD /* libcocos2dx.a in Frameworks */,
@@ -1684,6 +1693,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
 				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
@@ -2623,6 +2633,15 @@
 			path = ../Resources/TB;
 			sourceTree = "<group>";
 		};
+		909D73B518754C1C009D69C4 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				909D73B618754C1C009D69C4 /* Reachability.h */,
+				909D73B718754C1C009D69C4 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		90C212BB18704B5B00671D28 /* TongBu */ = {
 			isa = PBXGroup;
 			children = (
@@ -2648,6 +2667,7 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				909D73B518754C1C009D69C4 /* Reachability */,
 				90C212BB18704B5B00671D28 /* TongBu */,
 				90F9F23118680B4C001821D5 /* WebLayer */,
 				90338EC7185B1E9100224717 /* AssetsManagerBindings */,
@@ -3369,6 +3389,7 @@
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
+				909D73BA18754C1C009D69C4 /* Reachability.m in Sources */,
 				902B08521858C475003A2A49 /* CCInputDelegate.cpp in Sources */,
 				902B08531858C475003A2A49 /* UIRootWidget.cpp in Sources */,
 				902B08541858C475003A2A49 /* UILayout.cpp in Sources */,
@@ -3558,6 +3579,7 @@
 				90F535A81862EAC2008207BD /* CCBone.cpp in Sources */,
 				90F535AA1862EAC2008207BD /* CCDatas.cpp in Sources */,
 				90F535AB1862EAC2008207BD /* CCBatchNode.cpp in Sources */,
+				909D73B918754C1C009D69C4 /* Reachability.m in Sources */,
 				90F535AC1862EAC2008207BD /* CCDecorativeDisplay.cpp in Sources */,
 				90F535AD1862EAC2008207BD /* CCDisplayFactory.cpp in Sources */,
 				90F535AE1862EAC2008207BD /* CCDisplayManager.cpp in Sources */,
@@ -3742,6 +3764,7 @@
 				90F536A61862EB3C008207BD /* jsb_cocos2dx_studio_manual.cpp in Sources */,
 				90F536A71862EB3C008207BD /* jsb_opengl_registration.cpp in Sources */,
 				90F536A81862EB3C008207BD /* js_bindings_opengl.cpp in Sources */,
+				909D73BB18754C1C009D69C4 /* Reachability.m in Sources */,
 				90F536A91862EB3C008207BD /* XMLHTTPRequest.cpp in Sources */,
 				90F536AA1862EB3C008207BD /* HttpClient.cpp in Sources */,
 				90F536AB1862EB3C008207BD /* CCSkeleton.cpp in Sources */,
@@ -3898,6 +3921,7 @@
 				15A3D5441682F1A5002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
 				15A3D5451682F1A5002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15A3D5461682F1A5002FB0C5 /* CCControlStepper.cpp in Sources */,
+				909D73B818754C1C009D69C4 /* Reachability.m in Sources */,
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,

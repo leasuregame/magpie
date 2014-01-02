@@ -27,6 +27,17 @@ var TB_PLATFORM_LEAVED_FROM_LOGIN = 1;
 var TB_PLATFORM_LEAVED_FROM_USER_CENTER = 2;
 var TB_PLATFORM_LEAVED_FROM_USER_PAY = 3;
 
+var TB_PLATFORM_NO_APPID_ERROR = -105;    // 未设置AppID
+var TB_PLATFORM_NETWORKING_ERROR = -100;    // 网络不给力
+var TB_PLATFORM_NOT_LOGINED = -1;      // 玩家未登录
+var TB_PLATFORM_NO_ERROR = 0;       // 没有错误
+var TB_PLATFORM_LOGIN_FAILED_ERROR = 1;    // 登录失败
+var TB_PLATFORM_LOGIN_INCORRECT_ACCOUNT_OR_PASSWORD_ERROR = 2;    // 帐号或密码错误
+var TB_PLATFORM_LOGIN_INVALID_ACCOUNT_ERROR = 3;    // 帐号被禁用
+var TB_PLATFORM_LOGIN_SYNC_FAILED_ERROR = 300;  // 帐号同步出错
+var TB_PLATFORM_LOGIN_REQUEST_FAILED_ERROR = 400;  // 登录请求失败
+var TB_PLATFORM_NO_BBS = 1000; // 该游戏未配置论坛
+
 var tbAdapter = tb.TBAdapter.TBAdapterInstance();
 tbAdapter.TBSetAutoRotate(true);
 tbAdapter.TBInitPlatformWithAppID(131232, 1, false);
@@ -65,6 +76,9 @@ tbAdapter.leavedPlatformHandler = function (closeType, order) {
         case TB_PLATFORM_LEAVED_DEFAULT:
             break;
         case TB_PLATFORM_LEAVED_FROM_LOGIN:
+            if (!tbAdapter.TBIsLogined()) {
+                tbAdapter.TBLogin(0);
+            }
             break;
         case TB_PLATFORM_LEAVED_FROM_USER_CENTER:
             break;

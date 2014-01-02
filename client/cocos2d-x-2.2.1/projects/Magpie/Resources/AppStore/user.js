@@ -13,9 +13,9 @@
 
 
 var User = Entity.extend({
-    _id: 0,                 // 账号序号
+    _id: 0,                 // 帐号序号
     _createTime: 0,         // 创建时间
-    _account: "",           // 账号
+    _account: "",           // 帐号
     _password: "",          // 密码
     _area: 1,               // 区
     _name: "",              // 名字
@@ -72,7 +72,7 @@ var User = Entity.extend({
         }
 
         if (!this._account) {
-            TipLayer.tip("请输入账号");
+            TipLayer.tip("请输入帐号");
             return false;
         }
 

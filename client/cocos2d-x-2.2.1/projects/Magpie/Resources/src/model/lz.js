@@ -360,16 +360,17 @@ lz.getTimeStr = function (time) {
     cc.log("BattleMessageLayer _getTimeStr");
 
     var date = new Date(time);
-    var today = new Date();
-    var timeStr = "";
+//    var today = new Date();
+//    var timeStr = "";
 
-    if (today.toDateString() === date.toDateString()) {
-        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-    } else {
-        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-    }
+    return (date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay() +
+        "  " + date.getHours() + " : " + date.getMinutes());
 
-    return timeStr;
+//    if (today.toDateString() === date.toDateString()) {
+//        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+//    } else {
+//        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+//    }
 };
 
 var MAX_LAST_NAME_COUNT = 250;

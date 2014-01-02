@@ -11,12 +11,12 @@ function init
 	echo "cp Resources to Res"
 	cp -RP cocos2d-x-2.2.1/projects/Magpie/Resources cocos2d-x-2.2.1/projects/Magpie/Res
 
-	# cd cocos2d-x-2.2.1/projects/Magpie
+	cd cocos2d-x-2.2.1/projects/Magpie
 
-	# echo "delete all cc.log"
-	# perl -pi -e "s/cc.log/\/\/cc.log/gi" `find Res -iname *.js`
+	echo "delete all cc.log"
+	perl -pi -e "s/cc.log/\/\/cc.log/gi" `find Res -iname *.js`
 
-	# cd ../../../
+	cd ../../../
 }
 
 function clear
@@ -78,7 +78,7 @@ function build_TB
 		echo "compile magpie tb game.js to game.jsc"
 		cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py jscompile -s cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases -d cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases 
 		echo "complete to game.jsc remove game.js"
-		# rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js
+		rm cocos2d-x-2.2.1/projects/Magpie/Resources/game/TB-Releases/game.js
 	else
 		echo "magpie tb file game.js not exist"
 	fi 

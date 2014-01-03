@@ -254,7 +254,7 @@ var gameGoodsName = {
         name: "灵气",
         color: cc.c3b(118, 238, 60),
         icon: gameGoodsIcon["spirit"]
-    }, 
+    },
     "spirit": {
         name: "灵气",
         color: cc.c3b(118, 238, 60),
@@ -360,17 +360,92 @@ lz.getTimeStr = function (time) {
     cc.log("BattleMessageLayer _getTimeStr");
 
     var date = new Date(time);
-    var today = new Date();
-    var timeStr = "";
+//    var today = new Date();
+//    var timeStr = "";
 
-    if (today.toDateString() === date.toDateString()) {
-        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-    } else {
-        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+    return (date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay() +
+        "  " + date.getHours() + " : " + date.getMinutes());
+
+//    if (today.toDateString() === date.toDateString()) {
+//        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+//    } else {
+//        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+//    }
+};
+
+var MAX_LAST_NAME_COUNT = 250;
+var MAX_FIRST_NAME_COUNT = 2568;
+var MAX_ILLEGAL_STR_COUNT = 780;
+
+lz.getRandomFirstName = function () {
+    cc.log("lz getRandomFirstName");
+
+    return (outputTables.first_name.rows[lz.randomInt(1, MAX_FIRST_NAME_COUNT)].first_name);
+};
+
+lz.getRandomLastName = function () {
+    cc.log("lz getRandomLastName");
+
+    return (outputTables.last_name.rows[lz.randomInt(1, MAX_LAST_NAME_COUNT)].last_name);
+};
+
+lz.getRandomName = function () {
+    cc.log("lz getRandomName");
+
+    return (lz.getRandomLastName() + lz.getRandomFirstName());
+};
+
+lz.eligibleName = function (name) {
+    cc.log("lz eligibleName");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        if (name.indexOf(illegalStr[i].illegal_str) != -1) {
+            cc.log(illegalStr[i].illegal_str);
+
+            return false;
+        }
     }
 
-    return timeStr;
+    return true;
 };
+
+lz.replaceStr = function (str) {
+    cc.log("lz replaceStr");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        var index = 0;
+        var illegalWord = illegalStr[i].illegal_str;
+        var len = illegalWord.length;
+
+        while (true) {
+            index = str.indexOf(illegalWord, index);
+
+            if (index == -1) {
+                break;
+            }
+
+            var sStr = str.substring(0, index);
+            var eStr = str.substring(index + len);
+
+            str = sStr;
+
+            for (var j = 0; j < len; ++j) {
+                str += "*";
+            }
+
+            str += eStr;
+
+            index += len;
+        }
+    }
+
+    return str;
+};
+
 
 /*
  * 数组去重

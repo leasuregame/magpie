@@ -58,8 +58,14 @@ var BattleCardNode = cc.Node.extend({
         this._load();
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
+        var frameSpriteTexture;
 
-        var frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+        if (this.isLeadCard(this._tableId)) {
+            frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+        } else {
+            frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
+        }
+
 
         var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
@@ -243,6 +249,10 @@ var BattleCardNode = cc.Node.extend({
                 }
             }
         }
+    },
+
+    isLeadCard: function (tableId) {
+        return tableId < 10000 || tableId == 30000;
     }
 });
 

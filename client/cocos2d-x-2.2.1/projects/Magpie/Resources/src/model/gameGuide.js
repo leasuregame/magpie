@@ -20,7 +20,7 @@ var FUNCTION_OPEN = {
     },
     "3": {
         "tableName": "card3_position",
-        "tip": "第3个卡槽已开启，现在可回到首页，上阵新的卡牌。",
+        "tip": "第3个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card3Guide"
     },
     "4": {
@@ -30,7 +30,7 @@ var FUNCTION_OPEN = {
     },
     "5": {
         "tableName": "card4_position",
-        "tip": "第4个卡槽已开启，现在可回到首页，上阵新的卡牌。",
+        "tip": "第4个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card4Guide"
     },
     "6": {
@@ -40,8 +40,17 @@ var FUNCTION_OPEN = {
     },
     "7": {
         "tableName": "card5_position",
-        "tip": "第5个卡槽已开启，现在可回到首页，上阵新的卡牌。",
+        "tip": "第5个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card5Guide"
+    }
+};
+
+var EXPLAIN = {
+    "rank": {
+        effect: "uiEffect71"
+    },
+    "pass": {
+        effect: "uiEffect72"
     }
 };
 
@@ -75,6 +84,11 @@ var gameGuide = {
                 });
 
                 this.set(guide.name, true);
+
+                if (EXPLAIN[guide.tableName]) {
+                    this.set(guide.tableName + "Explain", true);
+                }
+
                 MainScene.getInstance().updateGuide();
                 MainScene.getInstance().getLayer().addChild(tipEffect, 10);
 
@@ -87,11 +101,15 @@ var gameGuide = {
         }
     },
 
-    updateLotteryGuide: function() {
+    updateLotteryGuide: function () {
         if (gameData.lottery._freeLowLotteryCard || gameData.lottery._freeHighLotteryCard) {
             this.set("lotteryGuide", true);
             MainScene.getInstance().updateGuide();
         }
+    },
+
+    getExplainEffect: function (name) {
+        return EXPLAIN[name].effect;
     },
 
     get: function (name) {

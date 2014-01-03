@@ -37,6 +37,7 @@ var appFiles = [
     'src/model/entity.js',
 
     'src/model/lz.js',
+    'platform.js',
     'src/model/dataCollection.js',
     'src/model/pomelo.js',
     'src/model/server.js',
@@ -46,7 +47,7 @@ var appFiles = [
 
     'src/model/gameFit.js',
     'src/model/clock.js',
-    'src/model/user.js',
+    'user.js',
     'src/model/player.js',
     'src/model/card.js',
     'src/model/cardList.js',
@@ -97,8 +98,7 @@ var appFiles = [
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginBgLayer.js',
     'src/view/loginModule/updateLayer.js',
-    'src/view/loginModule/loginLayer.js',
-    'src/view/loginModule/logoutLayer.js',
+    'loginLayer.js',
     'src/view/loginModule/newPlayerLayer.js',
     'src/view/loginModule/registerLayer.js',
     'src/view/loginModule/selectAreaLayer.js',

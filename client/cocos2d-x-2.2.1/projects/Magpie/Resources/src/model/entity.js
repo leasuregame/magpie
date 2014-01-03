@@ -70,5 +70,9 @@ var Entity = Event.extend({
     unschedule: function (fn) {
         // explicit nil handling
         cc.Director.getInstance().getScheduler().unscheduleCallbackForTarget(this, fn);
+    },
+
+    unscheduleAllCallbacks: function () {
+        cc.Director.getInstance().getScheduler().unscheduleAllCallbacksForTarget(this);
     }
 });

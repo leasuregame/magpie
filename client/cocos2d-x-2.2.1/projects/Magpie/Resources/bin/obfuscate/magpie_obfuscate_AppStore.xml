@@ -25,12 +25,14 @@
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res/">
                 <file name="src/resource.js"/>
+
                 <file name="src/table/table.js"/>
 
                 <file name="src/model/event.js"/>
                 <file name="src/model/entity.js"/>
 
                 <file name="src/model/lz.js"/>
+                <file name="AppStore/platform.js"/>
                 <file name="src/model/dataCollection.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
@@ -40,7 +42,7 @@
 
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="src/model/user.js"/>
+                <file name="AppStore/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -86,16 +88,15 @@
                 <file name="src/controls/colorLabelTTF.js"/>
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
-                <file name='src/controls/slideLayer.js'/>
+                <file name="src/controls/slideLayer.js"/>
 
+                <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="src/view/loginModule/loginLayer.js"/>
-                <file name="src/view/loginModule/logoutLayer.js"/>
+                <file name="AppStore/loginLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>
-                <file name="src/view/loginModule/loginScene.js"/>
 
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>

@@ -117,7 +117,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         lvIcon.setPosition(this._spiritPoolLayerFit.lvIconPoint);
         this.addChild(lvIcon);
 
-        this._lvLabel = cc.LabelTTF.create("LV.  0 / 0", "STHeitiTC-Medium", 22);
+        this._lvLabel = cc.LabelTTF.create("Lv.  0 / 0", "STHeitiTC-Medium", 22);
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(this._spiritPoolLayerFit.lvLabelPoint);
         this.addChild(this._lvLabel);
@@ -167,7 +167,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         var spiritPool = gameData.spiritPool;
         var player = gameData.player;
 
-        this._lvLabel.setString("LV.  " + spiritPool.get("lv") + " / " + spiritPool.get("maxLv"));
+        this._lvLabel.setString("Lv.  " + spiritPool.get("lv") + " / " + spiritPool.get("maxLv"));
         this._expLabel.setString("经验  " + spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
         this._countLabel.setString(spiritPool.get("collectCount") + " / " + spiritPool.get("maxCollectCount"));
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
@@ -188,10 +188,7 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
             this.addChild(spirit);
 
-            // var str = "灵气: +" + this._reward.spirit_obtain;
-
             if (this._reward.isDouble) {
-                //  str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
                 spirit.setScale(1.5);
             }
 
@@ -224,7 +221,6 @@ var SpiritPoolLayer = cc.Layer.extend({
 
             this.scheduleOnce(function () {
                 spirit.removeFromParent();
-                // TipLayer.tipNoBg(str);
                 TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
                 this.update();
 

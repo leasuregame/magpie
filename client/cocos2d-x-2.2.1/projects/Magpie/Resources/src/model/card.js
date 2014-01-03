@@ -592,7 +592,7 @@ var Card = Entity.extend({
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                //cb();
             }
         });
     },
@@ -607,6 +607,10 @@ var Card = Entity.extend({
         price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
 
         return price;
+    },
+
+    isLeadCard: function (tableId) {
+        return tableId < 10000 || tableId == 30000;
     }
 });
 

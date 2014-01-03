@@ -59,6 +59,8 @@ enum
 //CCMenu
 //
 
+bool CCMenu::onTouch = false;
+
 CCMenu* CCMenu::create()
 {
     return CCMenu::create(NULL, NULL);
@@ -225,6 +227,10 @@ void CCMenu::registerWithTouchDispatcher()
 
 bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
+    if(onTouch) {
+        return false;
+    }
+    
     if (kScriptTypeNone != m_eScriptType)
     {
         CCLOG("js ccTouchBegan");
@@ -250,6 +256,9 @@ bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)
     {
         m_eState = kCCMenuStateTrackingTouch;
         m_pSelectedItem->selected();
+        
+        onTouch = true;
+        
         return true;
     }
     return false;
@@ -281,6 +290,8 @@ void CCMenu::ccTouchEnded(CCTouch *touch, CCEvent* event)
         m_pSelectedItem->activate();
     }
     m_eState = kCCMenuStateWaiting;
+    
+    onTouch = false;
 }
 
 void CCMenu::ccTouchCancelled(CCTouch *touch, CCEvent* event)
@@ -293,6 +304,8 @@ void CCMenu::ccTouchCancelled(CCTouch *touch, CCEvent* event)
         m_pSelectedItem->unselected();
     }
     m_eState = kCCMenuStateWaiting;
+    
+    onTouch = false;
 }
 
 void CCMenu::ccTouchMoved(CCTouch* touch, CCEvent* event)

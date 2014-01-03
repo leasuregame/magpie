@@ -15,7 +15,9 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
+#include "js_bindings_AssetsManager.hpp"
 #include "js_bindings_WebLayer.hpp"
+#include "jsb_TBAdapter.hpp"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -66,14 +68,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
+    sc->addRegisterCallback(register_all_cocos2dx_extension_AssetsManager);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);
+    sc->addRegisterCallback(register_all_jsb_TBAdapter);
 
     sc->start();
     
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
     ScriptingCore::getInstance()->runScript("game.jsc");
-       
+    
     return true;
 }
 

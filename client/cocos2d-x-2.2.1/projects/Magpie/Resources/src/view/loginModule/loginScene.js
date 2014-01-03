@@ -14,17 +14,18 @@
 
 var LoginScene = cc.Scene.extend({
     _nowLayer: null,
+    _toLayer: null,
 
     onEnter: function () {
         cc.log("LoginScene onEnter");
 
         this._super();
-//
-//        if(typeof UpdateLayer == "undefined") {
-        this.switchLayer(LoginLayer);
-//        } else {
-//            this.switchLayer(UpdateLayer);
-//        }
+
+        if (this._toLayer) {
+            this.switchTo(this._toLayer);
+        } else {
+            this.switchLayer(LoginLayer);
+        }
 
         lz.dc.beginLogPageView("登录场景");
     },
@@ -37,23 +38,24 @@ var LoginScene = cc.Scene.extend({
         lz.dc.endLogPageView("登录场景");
     },
 
-    init: function () {
+    init: function (toLayer) {
         cc.log("LoginScene init");
 
         if (!this._super()) return false;
 
+        this._toLayer = toLayer;
+
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        if (gameDevice != "Iphone5") {
+        gameData.sound.stopMusic();
+
+        if (gameDevice !== "Iphone5") {
             var gameFrame = GameFrame.create();
             this.addChild(gameFrame, 100);
         }
 
         var loginBgLayer = LoginBgLayer.create();
         this.addChild(loginBgLayer);
-
-        var url = "http://115.29.175.156:9090/api/app/notice";
-      //  lz.WebLayer.create(url, cc.rect(0, 50, 320, 518));
 
         return true;
     },
@@ -85,10 +87,10 @@ var LoginScene = cc.Scene.extend({
 });
 
 
-LoginScene.create = function () {
+LoginScene.create = function (toLayer) {
     var ret = new LoginScene();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(toLayer)) {
         return ret;
     }
 

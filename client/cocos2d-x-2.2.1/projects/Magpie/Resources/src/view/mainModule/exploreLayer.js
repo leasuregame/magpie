@@ -28,6 +28,7 @@ var ExploreLayer = cc.Layer.extend({
     _element: {},
     _reward: null,
     _level9Box: null,
+    _playerLvLabel: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -77,13 +78,22 @@ var ExploreLayer = cc.Layer.extend({
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
         var url = "bg" + (chapter % 2 == 0 ? 4 : 3);
-        for (var i = 0; i < 4; ++i) {
+        for (var i = 0; i < 3; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image[url]);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
         }
+
+        var lvIcon = cc.Sprite.create(main_scene_image.icon335);
+        lvIcon.setPosition(this._exploreLayerFit.lvIconPoint);
+        this.addChild(lvIcon);
+
+        this._playerLvLabel = StrokeLabel.create("Lv. 0", "STHeitiTC-Medium", 28);
+        this._playerLvLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._playerLvLabel.setPosition(this._exploreLayerFit.playerLvLabelPoint);
+        this.addChild(this._playerLvLabel);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon96);
         lineIcon.setRotation(180);
@@ -272,6 +282,8 @@ var ExploreLayer = cc.Layer.extend({
         var value = progress.progress;
         var maxValue = progress.maxProgress;
 
+        this._playerLvLabel.setString("Lv. " + gameData.player.get("lv"));
+
         var time = this._showReward();
 
         var element = this._element[this._index];
@@ -288,11 +300,11 @@ var ExploreLayer = cc.Layer.extend({
             this._element[i].descriptionLabel.setVisible(i == this._index);
         }
 
-        for (var i = 0; i < 4; ++i) {
+        for (var i = 0; i < 3; ++i) {
             var point = this._mapLabel[i].getPosition();
 
             if (point.x < this._exploreLayerFit.pointX) {
-                point.x += 2560;
+                point.x += 1920;
                 this._mapLabel[i].setPosition(point);
             }
         }
@@ -398,7 +410,7 @@ var ExploreLayer = cc.Layer.extend({
                 that._unlock();
                 that._onClickBack();
             }
-            that.scheduleOnce(that._unlock, 1);
+            that.scheduleOnce(that._unlock, 0.3);
             cb();
             that.update();
         });
@@ -571,13 +583,13 @@ var ExploreLayer = cc.Layer.extend({
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.2),
+            cc.DelayTime.create(0.16),
             cc.CallFunc.create(function () {
                 gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
             }, this),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
-            cc.DelayTime.create(0.1)
+            cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
+            cc.DelayTime.create(0.08)
 
         );
 
@@ -611,7 +623,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
 
-        for (var i = 0; i < 4; ++i) {
+        for (var i = 0; i < 3; ++i) {
             this._mapLabel[i].runAction(mapAction.clone());
         }
     },

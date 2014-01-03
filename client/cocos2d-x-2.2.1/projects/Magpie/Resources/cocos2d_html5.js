@@ -63,7 +63,8 @@
 
             'src/model/gameFit.js',
             'src/model/clock.js',
-            'src/model/user.js',
+            //'TB/user.js',
+            'AppStore/user.js',
             'src/model/player.js',
             'src/model/card.js',
             'src/model/cardList.js',
@@ -113,8 +114,8 @@
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginBgLayer.js',
-            'src/view/loginModule/loginLayer.js',
-            'src/view/loginModule/logoutLayer.js',
+           // 'TB/loginLayer.js',
+            'AppStore/loginLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
             'src/view/loginModule/selectAreaLayer.js',

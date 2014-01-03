@@ -186,7 +186,7 @@ var AmountLayer = LazyLayer.extend({
             TipLayer.tip(this._tip);
             this._count = this._maxCount;
         }
-        // this._count = Math.min(this._count, this._maxCount);
+
         this._countLabel.setString(this._count);
 
         var consume = this._price * this._count;

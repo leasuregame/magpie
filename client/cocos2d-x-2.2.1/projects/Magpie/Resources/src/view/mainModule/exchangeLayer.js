@@ -180,51 +180,52 @@ var ExchangeLayer = cc.Layer.extend({
 
         var point = this._exchangeLayerFit.basePoint;
         for (var i = 0; i < len; ++i) {
+            if (exchangeCardList[i].id > 0) {
 
-            var card = exchangeCardList[i].card;
-            var x = point.x + (i % 2) * 300;
-            var y = point.y - parseInt(i / 2) * this._exchangeLayerFit.offsetHeight;
+                var card = exchangeCardList[i].card;
+                var x = point.x + (i % 2) * 300;
+                var y = point.y - parseInt(i / 2) * this._exchangeLayerFit.offsetHeight;
 
-            var cardItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(exchangeCardList[i]), this);
-            cardItem.setPosition(cc.p(x - 7, y + 29));
-            menu.addChild(cardItem);
-            this._cardItem[exchangeCardList[i].id] = cardItem;
+                var cardItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(exchangeCardList[i]), this);
+                cardItem.setPosition(cc.p(x - 7, y + 29));
+                menu.addChild(cardItem);
+                this._cardItem[exchangeCardList[i].id] = cardItem;
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
-            effect.setPosition(cardItem.getPosition());
-            this.addChild(effect, 2);
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                effect.setPosition(cardItem.getPosition());
+                this.addChild(effect, 2);
 
-            var skillType = card.get("skillType");
-            if (skillType > 3) {
-                skillType = 3;
+                var skillType = card.get("skillType");
+                if (skillType > 3) {
+                    skillType = 3;
+                }
+                var skillIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
+                skillIcon.setPosition(cc.p(x - 72, y - 40));
+                this._label.addChild(skillIcon);
+
+                var skillNameLabel = cc.LabelTTF.create(card.get("skillName"), "STHeitiTC-Medium", 22);
+                skillNameLabel.setPosition(cc.p(x - 5, y - 40));
+                this._label.addChild(skillNameLabel);
+
+                var name = card.get("name");
+                name = name.split("·")[1];
+                var cardNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 22);
+                cardNameLabel.setPosition(cc.p(x - 8, y + 113));
+                this._label.addChild(cardNameLabel);
+
+                var url = "icon" + (325 + card.get("star"));
+
+                var exchangeItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
+                    main_scene_image[url],
+                    this._onClickExchange(card.get("tableId"), card.get("star")),
+                    this
+                );
+                exchangeItem.setScale(0.8);
+                exchangeItem.setPosition(cc.p(x - 5, y - 88));
+                menu.addChild(exchangeItem);
             }
-            var skillIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
-            skillIcon.setPosition(cc.p(x - 70, y - 40));
-            this._label.addChild(skillIcon);
-
-            var skillNameLabel = cc.LabelTTF.create(card.get("skillName"), "STHeitiTC-Medium", 22);
-            skillNameLabel.setPosition(cc.p(x - 5, y - 40));
-            this._label.addChild(skillNameLabel);
-
-            var name = card.get("name");
-            name = name.split("·")[1];
-            var cardNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 22);
-            cardNameLabel.setPosition(cc.p(x - 8, y + 113));
-            this._label.addChild(cardNameLabel);
-
-            var url = "icon" + (325 + card.get("star"));
-
-            var exchangeItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                main_scene_image[url],
-                this._onClickExchange(card.get("tableId"), card.get("star")),
-                this
-            );
-            exchangeItem.setScale(0.8);
-            exchangeItem.setPosition(cc.p(x - 5, y - 88));
-            menu.addChild(exchangeItem);
-
         }
 
     },
@@ -312,7 +313,7 @@ var ExchangeLayer = cc.Layer.extend({
                     exchange.exchange(function (data) {
                         cc.log(data);
                         that.update();
-
+                        that._update();
                         TipLayer.tip("恭喜您，获得 " + data.get("name"));
                     }, id, star);
                 }

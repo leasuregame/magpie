@@ -748,6 +748,7 @@ var main_scene_image = {
     uiEffect70: "res/ccb/uiEffect70.ccbi",
     uiEffect71: "res/ccb/uiEffect71.ccbi",
     uiEffect72: "res/ccb/uiEffect72.ccbi",
+    uiEffect73: "res/ccb/uiEffect73.ccbi",
 
 
     // 特效资源

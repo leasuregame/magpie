@@ -40,9 +40,9 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        this._evolutionEffect = cc.BuilderReader.load(main_scene_image.uiEffect45, this);
+        this._evolutionEffect = cc.BuilderReader.load(main_scene_image.uiEffect73, this);
 
-        var point = gameFit.mainScene.cardEvolutionLayer.selectLeadCardItemPoint;
+        var point = gameFit.GAME_MIDPOINT;
         this._evolutionEffect.setPosition(point);
         this._setCard();
         this.ccbFnChangeCardFrame();

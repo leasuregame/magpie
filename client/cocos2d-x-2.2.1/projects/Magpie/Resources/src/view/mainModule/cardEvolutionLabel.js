@@ -67,16 +67,17 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         this._cardEvolutionLayerFit = gameFit.mainScene.cardEvolutionLayer;
 
+        var cardBgSpritePoint = this._cardEvolutionLayerFit.cardBgSpritePoint;
         var cardBgSprite = cc.Sprite.create(main_scene_image.icon336);
-        cardBgSprite.setPosition(cc.p(175, 569));
+        cardBgSprite.setPosition(cc.p(cardBgSpritePoint.x - 145, cardBgSpritePoint.y));
         this.addChild(cardBgSprite);
 
         var cardBgSprite2 = cc.Sprite.create(main_scene_image.icon336);
-        cardBgSprite2.setPosition(cc.p(465, 569));
+        cardBgSprite2.setPosition(cc.p(cardBgSpritePoint.x + 145, cardBgSpritePoint.y));
         this.addChild(cardBgSprite2);
 
         this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(320, 499));
+        this._resLabel.setPosition(this._cardEvolutionLayerFit.resLabelPoint);
         this.addChild(this._resLabel);
 
         var resBgIcon = cc.Sprite.create(main_scene_image.icon337);
@@ -112,7 +113,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         }
 
         var successBgIcon = cc.Sprite.create(main_scene_image.icon338);
-        successBgIcon.setPosition(cc.p(320, 710));
+        successBgIcon.setPosition(this._cardEvolutionLayerFit.successBgIconPoint);
         this.addChild(successBgIcon);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
@@ -120,10 +121,10 @@ var CardEvolutionLabel = cc.Layer.extend({
         this.addChild(helpBgSprite);
 
         this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
-        this._evolutionRateLabel.setPosition(cc.p(320, 695));
+        this._evolutionRateLabel.setPosition(this._cardEvolutionLayerFit.evolutionRatePoint);
         this.addChild(this._evolutionRateLabel);
 
-        var point = cc.p(320, 770);
+        var point = this._cardEvolutionLayerFit.starPoint;
         for (var i = 0; i < 5; ++i) {
             var x = point.x - 240;
             var y = point.y - 30 * i;
@@ -132,7 +133,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this.addChild(starBgIcon);
 
             this._oldStarIcon[i] = cc.Sprite.create(main_scene_image.star1);
-            this._oldStarIcon[i].setScaleX(0.68);
+            this._oldStarIcon[i].setScaleX(0.8);
             this._oldStarIcon[i].setScaleY(0.75);
             this._oldStarIcon[i].setPosition(cc.p(x, y));
             this.addChild(this._oldStarIcon[i]);
@@ -143,7 +144,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this.addChild(starBgIcon2);
 
             this._newStarIcon[i] = cc.Sprite.create(main_scene_image.star1);
-            this._newStarIcon[i].setScaleX(0.68);
+            this._newStarIcon[i].setScaleX(0.8);
             this._newStarIcon[i].setScaleY(0.75);
             this._newStarIcon[i].setPosition(cc.p(x, y));
             this.addChild(this._newStarIcon[i]);
@@ -201,7 +202,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this
         );
 
-        newCardItem.setPosition(cc.p(465, 710));
+        newCardItem.setPosition(this._cardEvolutionLayerFit.newCardItemPoint);
         newCardItem.setScale(1.1);
 
         this._evolutionItem = cc.MenuItemImage.createWithIcon(
@@ -278,7 +279,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(cc.p(175, 710));
+            this._leadCardHalfNode.setPosition(this._cardEvolutionLayerFit.selectLeadCardItemPoint);
             this.addChild(this._leadCardHalfNode, 1);
 
             this._resLabel.setVisible(true);
@@ -325,7 +326,7 @@ var CardEvolutionLabel = cc.Layer.extend({
 
                 this._newCard = CardHalfNode.create(this._virtualCard);
                 this._newCard.setScale(1.1);
-                this._newCard.setPosition(cc.p(465, 710));
+                this._newCard.setPosition(this._cardEvolutionLayerFit.newCardItemPoint);
                 this.addChild(this._newCard, 1);
             }
 
@@ -347,7 +348,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             if (rate == 100) {
                 this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
             } else {
-                this._evolutionRateLabel.setColor(cc.c3b(0, 0, 0));
+                this._evolutionRateLabel.setColor(cc.c3b(255, 255, 255));
             }
             this._cardCountLabel.setString(cardCount);
 
@@ -358,9 +359,12 @@ var CardEvolutionLabel = cc.Layer.extend({
     _update: function (state) {
         cc.log("CardEvolutionLayer _update: " + state);
 
+        this._evolutionRateLabel.setColor(cc.c3b(255, 255, 255));
+
         if (state == EVOLUTION_SUCCESS) {
             this._leadCardHalfNode.removeFromParent();
             this._leadCardHalfNode = null;
+            this._leadCard = null;
 
             this._cardLvLabel[0].setString("");
             this._cardHpLabel[0].setString("");
@@ -369,9 +373,24 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._cardPssSkillLabel[0].setString("");
             this._evolutionRateLabel.setString("");
 
+            this._selectLeadCardIcon.stopAllActions();
+            this._selectLeadCardIcon.setOpacity(255);
+
+            this._selectLeadCardIcon.runAction(
+                cc.RepeatForever.create(
+                    cc.Sequence.create(
+                        cc.FadeOut.create(1),
+                        cc.FadeIn.create(1)
+                    )
+                )
+            );
+
+
             for (var i = 0; i < 5; i++) {
                 this._oldStarIcon[i].setVisible(false);
             }
+        } else {
+            this._evolutionRateLabel.setString("");
 
         }
     },
@@ -445,8 +464,9 @@ var CardEvolutionLabel = cc.Layer.extend({
             if (state != EVOLUTION_ERROR) {
                 CardEvolutionLayer.pop({card: card, state: state});
             }
-            //that.update();
-            that._update(state);
+            that.scheduleOnce(function () {
+                that._update(state);
+            }, 0.5);
         }, cardIdList);
     },
 

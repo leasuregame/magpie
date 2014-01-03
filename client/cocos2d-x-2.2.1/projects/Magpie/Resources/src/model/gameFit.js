@@ -229,15 +229,20 @@ var fit4Iphone4 = {
         },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 539),
-            "helpBgSpritePoint": cc.p(360, 292),
-            "resLabelPoint": cc.p(360, 422),
-            "tipLabelPoint": cc.p(360, 292),
-            "helpLabelPoint": cc.p(360, 292),
-            "selectLeadCardItemPoint": cc.p(360, 597),
-            "evolutionItemPoint": cc.p(260, 182),
-            "selectRetinueCardItemPoint": cc.p(460, 182),
-            "selectLeadCardIconPoint": cc.p(360, 597),
-            "leadCardHalfNodePoint": cc.p(360, 597)
+            "helpBgSpritePoint": cc.p(360, 252),
+            "resLabelPoint": cc.p(360, 412),
+            "tipLabelPoint": cc.p(360, 252),
+            "helpLabelPoint": cc.p(360, 252),
+            "selectLeadCardItemPoint": cc.p(215, 617),
+            "evolutionItemPoint": cc.p(260, 152),
+            "selectRetinueCardItemPoint": cc.p(460, 152),
+            "selectLeadCardIconPoint": cc.p(215, 617),
+            "leadCardHalfNodePoint": cc.p(360, 617),
+            "cardBgSpritePoint": cc.p(360, 479),
+            "successBgIconPoint": cc.p(360, 617),
+            "evolutionRatePoint":cc.p(360, 602),
+            "starPoint": cc.p(360, 682),
+            "newCardItemPoint": cc.p(505, 617)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1462,14 +1467,19 @@ var fit4Iphone5 = {
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(319, 627),
             "helpBgSpritePoint": cc.p(320, 307),
-            "resLabelPoint": cc.p(320, 430),
+            "resLabelPoint": cc.p(320, 499),
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectLeadCardItemPoint": cc.p(175, 710),
             "evolutionItemPoint": cc.p(220, 197),
             "selectRetinueCardItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(175, 710),
-            "leadCardHalfNodePoint": cc.p(320, 690)
+            "leadCardHalfNodePoint": cc.p(320, 690),
+            "cardBgSpritePoint": cc.p(320, 569),
+            "successBgIconPoint": cc.p(320, 710),
+            "evolutionRatePoint":cc.p(320, 695),
+            "starPoint": cc.p(320, 770),
+            "newCardItemPoint": cc.p(465, 710)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(0, 106),

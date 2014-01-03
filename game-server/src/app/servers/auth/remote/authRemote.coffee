@@ -8,6 +8,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 
 CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
 accountMap = {}
+sessionIdMap = {}
 
 module.exports = 
   auth: (args, cb) ->
@@ -52,14 +53,18 @@ module.exports =
 
     async.waterfall [
       (done) ->
+        if validSessionId(userId, sessionId)
+          return done(null, true)
+
         url = "#{CHECK_URL}?k=#{sessionId}"
         request.get url, (err, res, body) ->
           if err
             logger.error('faild to check tongbu session id', sessionId, userId)
 
-          console.log err, body, userId
           statusCode = parseInt body
           if statusCode > 0 and statusCode is userId
+            ### 记住已登录用户和session ###
+            sessionIdMap[userId] = sessionId
             done(null, true)
           else if statusCode is -1
             done({code: 501, msg: '会话无效'})
@@ -97,6 +102,12 @@ module.exports =
 
       checkDuplicatedLogin(nickName, areaId, frontendId, user)
       cb(null, user?.toJson())
+
+validSessionId = (uid, sid) ->
+  if uid.toString() in Object.keys(sessionIdMap) and sessionIdMap[uid] is sid
+    return true
+  else
+    return false
 
 checkDuplicatedLogin = (account, areaId, frontendId, user) ->
   if accountMap[account] and areaId is accountMap[account].areaId

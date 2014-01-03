@@ -168,18 +168,6 @@
 						<array>
 							<dict>
 								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>-90</real>
-									<real>0.0</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>anchorPoint</string>
 								<key>type</key>
 								<string>Point</string>
@@ -247,8 +235,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>70</real>
-									<real>0.0</real>
+									<real>-50</real>
+									<real>-60</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -319,8 +307,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>90</real>
-									<real>0.0</real>
+									<real>-20</real>
+									<real>-60</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -373,8 +361,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -410,8 +396,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -525,7 +511,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -586,7 +572,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>230</real>
+							<real>200</real>
 							<real>40</real>
 						</array>
 					</dict>
@@ -874,7 +860,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -32,13 +32,16 @@ var CardEvolutionLabel = cc.Layer.extend({
     _evolutionEffect: null,
     _index: null,
     _newCard: null,
+    _virtualCard: null,
 
     _cardLvLabel: [],
     _cardHpLabel: [],
     _cardAtkLabel: [],
-    _cardSkillLabel: [],
     _cardSkillRateLabel: [],
     _cardPssSkillLabel: [],
+    _oldStarIcon: [],
+    _newStarIcon: [],
+
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -91,23 +94,19 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._resLabel.addChild(this._cardLvLabel[i]);
 
             this._cardHpLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-            this._cardHpLabel[i].setPosition(-140 + i * 290, 48);
+            this._cardHpLabel[i].setPosition(-140 + i * 290, 41);
             this._resLabel.addChild(this._cardHpLabel[i]);
 
-            this._cardAtkLabel[i] = cc.LabelTTF.create("0","STHeitiTC-Medium", 22);
-            this._cardAtkLabel[i].setPosition(-140 + i * 290, 14);
+            this._cardAtkLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+            this._cardAtkLabel[i].setPosition(-140 + i * 290, 0);
             this._resLabel.addChild(this._cardAtkLabel[i]);
 
-            this._cardSkillLabel[i] = cc.LabelTTF.create("0%","STHeitiTC-Medium", 22);
-            this._cardSkillLabel[i].setPosition(-95 + i * 290, -17);
-            this._resLabel.addChild(this._cardSkillLabel[i]);
-
-            this._cardSkillRateLabel[i] = cc.LabelTTF.create("0%","STHeitiTC-Medium", 22);
-            this._cardSkillRateLabel[i].setPosition(-95 + i * 290, -51);
+            this._cardSkillRateLabel[i] = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+            this._cardSkillRateLabel[i].setPosition(-95 + i * 290, -41);
             this._resLabel.addChild(this._cardSkillRateLabel[i]);
 
-            this._cardPssSkillLabel[i] = cc.LabelTTF.create("1","STHeitiTC-Medium", 22);
-            this._cardPssSkillLabel[i].setPosition(-95 + i * 290, -85);
+            this._cardPssSkillLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+            this._cardPssSkillLabel[i].setPosition(-95 + i * 290, -82);
             this._resLabel.addChild(this._cardPssSkillLabel[i]);
 
         }
@@ -121,7 +120,6 @@ var CardEvolutionLabel = cc.Layer.extend({
         this.addChild(helpBgSprite);
 
         this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
-        this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
         this._evolutionRateLabel.setPosition(cc.p(320, 695));
         this.addChild(this._evolutionRateLabel);
 
@@ -133,10 +131,22 @@ var CardEvolutionLabel = cc.Layer.extend({
             starBgIcon.setPosition(cc.p(x, y));
             this.addChild(starBgIcon);
 
+            this._oldStarIcon[i] = cc.Sprite.create(main_scene_image.star1);
+            this._oldStarIcon[i].setScaleX(0.68);
+            this._oldStarIcon[i].setScaleY(0.75);
+            this._oldStarIcon[i].setPosition(cc.p(x, y));
+            this.addChild(this._oldStarIcon[i]);
+
             x = point.x + 240;
             var starBgIcon2 = cc.Sprite.create(main_scene_image.icon339);
             starBgIcon2.setPosition(cc.p(x, y));
             this.addChild(starBgIcon2);
+
+            this._newStarIcon[i] = cc.Sprite.create(main_scene_image.star1);
+            this._newStarIcon[i].setScaleX(0.68);
+            this._newStarIcon[i].setScaleY(0.75);
+            this._newStarIcon[i].setPosition(cc.p(x, y));
+            this.addChild(this._newStarIcon[i]);
         }
 
         this._tipLabel = cc.Node.create();
@@ -233,6 +243,11 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._leadCardHalfNode = null;
         }
 
+        if (this._newCard) {
+            this._newCard.removeFromParent();
+            this._newCard = null;
+        }
+
         if (this._leadCard == null) {
             this._retinueCard = [];
 
@@ -247,6 +262,11 @@ var CardEvolutionLabel = cc.Layer.extend({
                     )
                 )
             );
+
+            for (var i = 0; i < 5; i++) {
+                this._oldStarIcon[i].setVisible(false);
+                this._newStarIcon[i].setVisible(false);
+            }
 
             this._resLabel.setVisible(false);
             this._helpLabel.setVisible(false);
@@ -277,11 +297,37 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._cardLvLabel[0].setString(this._leadCard.get("lv") + "/" + this._leadCard.get("maxLv"));
             this._cardHpLabel[0].setString(this._leadCard.get("hp"));
             this._cardAtkLabel[0].setString(this._leadCard.get("atk"));
-            this._cardSkillLabel[0].setString(this._leadCard.get("skillHarm"));
-            this._cardSkillRateLabel[0].setString(this._leadCard.get("skillRate"));
-            var star = this._leadCard.get("star");
+            this._cardSkillRateLabel[0].setString(this._leadCard.get("skillRate") + "%");
 
-            this._cardPssSkillLabel[0].setString();
+            var star = this._leadCard.get("star");
+            var num = (star < 3) ? 0 : star - 2;
+            this._cardPssSkillLabel[0].setString(num);
+
+            for (var i = 0; i < star; i++) {
+                this._oldStarIcon[i].setVisible(true);
+            }
+
+            if (star < 5) {
+
+                this._virtualCard = lz.clone(this._leadCard);
+                this._virtualCard.set("tableId", this._leadCard.get("tableId") + 1);
+                this._virtualCard.virtualCard();
+
+                this._cardLvLabel[1].setString(this._virtualCard.get("lv") + "/" + this._virtualCard.get("maxLv"));
+                this._cardHpLabel[1].setString(this._virtualCard.get("hp"));
+                this._cardAtkLabel[1].setString(this._virtualCard.get("atk"));
+                this._cardSkillRateLabel[1].setString(this._virtualCard.get("skillRate") + "%");
+                this._cardPssSkillLabel[1].setString(num + 1);
+
+                for (var i = 0; i <= star; i++) {
+                    this._newStarIcon[i].setVisible(true);
+                }
+
+                this._newCard = CardHalfNode.create(this._virtualCard);
+                this._newCard.setScale(1.1);
+                this._newCard.setPosition(cc.p(465, 710));
+                this.addChild(this._newCard, 1);
+            }
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);
@@ -298,9 +344,35 @@ var CardEvolutionLabel = cc.Layer.extend({
             rate = Math.min(rate, 100);
 
             this._evolutionRateLabel.setString(rate + "%");
+            if (rate == 100) {
+                this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
+            } else {
+                this._evolutionRateLabel.setColor(cc.c3b(0, 0, 0));
+            }
             this._cardCountLabel.setString(cardCount);
 
             this._evolutionItem.setEnabled(true);
+        }
+    },
+
+    _update: function (state) {
+        cc.log("CardEvolutionLayer _update: " + state);
+
+        if (state == EVOLUTION_SUCCESS) {
+            this._leadCardHalfNode.removeFromParent();
+            this._leadCardHalfNode = null;
+
+            this._cardLvLabel[0].setString("");
+            this._cardHpLabel[0].setString("");
+            this._cardAtkLabel[0].setString("");
+            this._cardSkillRateLabel[0].setString("");
+            this._cardPssSkillLabel[0].setString("");
+            this._evolutionRateLabel.setString("");
+
+            for (var i = 0; i < 5; i++) {
+                this._oldStarIcon[i].setVisible(false);
+            }
+
         }
     },
 
@@ -373,15 +445,14 @@ var CardEvolutionLabel = cc.Layer.extend({
             if (state != EVOLUTION_ERROR) {
                 CardEvolutionLayer.pop({card: card, state: state});
             }
-            that.update();
-
+            //that.update();
+            that._update(state);
         }, cardIdList);
     },
 
     _onClickNewCard: function () {
         cc.log("CardEvolutionLayer _onClickNewCard");
-
-
+        CardDetails.pop(this._virtualCard);
     }
 
 });

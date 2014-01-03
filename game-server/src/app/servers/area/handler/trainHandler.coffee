@@ -748,7 +748,7 @@ Handler::exchangeCard = (msg, session, next) ->
     player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
     setExchangedCard(player, tableId)
-    
+
     player.save()
     next(null, {code: 200, msg: {
       card: card.toJson(),
@@ -758,7 +758,7 @@ Handler::exchangeCard = (msg, session, next) ->
 setExchangedCard = (player, tid) ->
   newCards = []
   for id in player.exchangeCards
-    if id is tid
+    if (parseInt id) is (parseInt tid)
       newCards.push -id
     else
       newCards.push id

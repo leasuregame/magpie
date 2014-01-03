@@ -1108,9 +1108,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.lightUpCards = function() {
-        var f = this.cardBookFlag.markPositions();
-        var m = this.cardBookMark.markPositions(); 
-        return _.union(f, m);
+        return this.cardBookMark.markPositions();
     };
 
     Player.prototype.toJson = function() {

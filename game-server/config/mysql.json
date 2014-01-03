@@ -25,18 +25,18 @@
 
 	"production": {
 		"1": {
-			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
-			"port": "3306",
-			"database": "tb_area_1",
-			"user": "tb_leasuregame",
-			"password": "leasure405GAME"
+			"host": "127.0.0.1",
+			"port": "6603",
+			"database": "magpie_area_1",
+			"user": "dev",
+			"password": "1"
 		},
 		"userdb": {
-			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
-			"port": "3306",
-			"database": "tb_user",
-			"user": "tb_leasuregame",
-			"password": "leasure405GAME"
+			"host": "127.0.0.1",
+			"port": "6603",
+			"database": "userdb",
+			"user": "dev",
+			"password": "1"
 		}
 	}
 }

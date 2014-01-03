@@ -747,11 +747,22 @@ Handler::exchangeCard = (msg, session, next) ->
 
     player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
+    setExchangedCard(player, tableId)
+    
     player.save()
     next(null, {code: 200, msg: {
       card: card.toJson(),
       fragments: player.fragments
     }})
+
+setExchangedCard = (player, tid) ->
+  newCards = []
+  for id in player.exchangeCards
+    if id is tid
+      newCards.push -id
+    else
+      newCards.push id
+  player.set('exchangeCards', JSON.stringify(newCards))
 
 cardStar = (tableId) ->
   tableId % 5 or 5

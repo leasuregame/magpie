@@ -68,7 +68,7 @@ module.exports =
 
       (isValid, done) ->
         if not isValid
-          return done({code: 501, msg: '登陆失败，请重新登陆'})
+          return done({code: 501, msg: '登录失败，请重新登录'})
 
         dao.user.fetchOne {
           where: id: userId, account: nickName

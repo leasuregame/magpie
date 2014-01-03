@@ -16,7 +16,7 @@ http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
 git pull origin master
-账号：
+帐号：
 wuzhanghai@leasuregame.com
 密码：
 wuzhanghai34
@@ -71,7 +71,7 @@ http://124.238.236.33:7003
 test, 123
 
 新浪服务器master：
-角色账号：987123000
+角色帐号：987123000
 登陆密码：helloboy
 
 服务器：花果山

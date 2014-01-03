@@ -8,7 +8,6 @@
 
 
 var NoticeLayer = cc.Layer.extend({
-
     _webLayer: null,
 
     init: function () {
@@ -23,45 +22,42 @@ var NoticeLayer = cc.Layer.extend({
         var noticeEffect = cc.BuilderReader.load(main_scene_image.uiEffect69, this);
         noticeEffect.setPosition(cc.p(320, 568));
 
-        var that = this;
-       // this.scheduleOnce(function () {
-            var url = "http://115.29.175.156:9090/api/app/notice";
-            that._webLayer = lz.WebLayer.create(url, cc.rect(23, 150, 274, 265));
-
-      //  }, 0.01);
+        var url = "http://115.29.175.156:9090/api/app/notice";
+        this._webLayer = lz.WebLayer.create(url, cc.rect(0, 0, 320, 480));
 
         noticeEffect.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this.addChild(noticeEffect);
+
+        LazyLayer.showCloudAll();
+
         return true;
     },
 
     ccbFnClose: function () {
         cc.log("NoticeLayer ccbFnClose");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._webLayer.close();
         this.removeFromParent();
+
         LazyLayer.closeCloudAll();
     }
-
 });
 
 NoticeLayer.create = function () {
-    cc.log("NoticeLayer create");
+    var ret = new NoticeLayer();
 
-    var ref = new NoticeLayer();
-    if (ref && ref.init()) {
-        return ref;
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;
 };
 
 NoticeLayer.pop = function () {
-    cc.log("NoticeLayer pop");
-
     lz.scheduleOnce(function () {
-        LazyLayer.showCloudAll();
         var noticeLayer = NoticeLayer.create();
         MainScene.getInstance().addChild(noticeLayer, 10);
-    },0.01);
+    }, 0.01);
 };

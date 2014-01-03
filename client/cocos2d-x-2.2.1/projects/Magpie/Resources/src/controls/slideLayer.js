@@ -6,12 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var START_POINT = cc.p(1080, 0);
 var DEF_SLIDE_TIME = 0.4;
 var DEF_TIME_TICK = 0.05;
 
 var SlideLayer = cc.Class.extend({
-
     _labels: [],
     _points: [],
     _slideTime: 0,
@@ -23,6 +23,7 @@ var SlideLayer = cc.Class.extend({
         this._labels = args.labels;
         this._slideTime = args.slideTime || DEF_SLIDE_TIME;
         this._timeTick = args.timeTick || DEF_TIME_TICK;
+
         this._changePoint();
 
         return true;
@@ -43,21 +44,18 @@ var SlideLayer = cc.Class.extend({
 
             label.setPosition(cc.p(START_POINT.x, point.y));
         }
-
     },
 
     _playAction: function (index) {
         cc.log("SlideLabel _playAction");
 
         this._labels[index].setVisible(true);
-        var action = cc.Sequence.create(
+
+        this._labels[index].runAction(cc.Sequence.create(
             cc.EaseExponentialOut.create(
                 cc.MoveTo.create(this._slideTime, this._points[index])
             )
-        );
-
-        this._labels[index].runAction(action);
-
+        ));
     },
 
     showSlide: function () {
@@ -72,19 +70,15 @@ var SlideLayer = cc.Class.extend({
                 }, that._timeTick * i);
             })(i);
         }
-
-
     }
-
 });
 
 SlideLayer.create = function (args) {
-    cc.log("SlideLabel create");
+    var ret = new SlideLayer();
 
-    var ref = new SlideLayer();
-
-    if (ref && ref.init(args)) {
-        return ref;
+    if (ret && ret.init(args)) {
+        return ret;
     }
+
     return null;
 };

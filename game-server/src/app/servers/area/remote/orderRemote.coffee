@@ -73,9 +73,23 @@ Remote::add = (args, callback) ->
     player.increase('gold', (product.cash * 10 + product.gold) * times)
     player.save()
 
+
     successMsg(@app, player)
     callback(null, {ok: true})
     updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS)
+
+addGoldCard = (app, orderId, player, productId) ->
+  app.get('dao').goldCard.create {
+    data: {
+      orderId: orderId,
+      playerId: player.id,
+      type: productId
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to create goldCard record: ', err)
+
+    player.addGoldCard(res)
 
 updateOrderStatus = (app, tradeNo, status) ->
   app.get('dao').order.update {

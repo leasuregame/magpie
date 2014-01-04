@@ -134,11 +134,12 @@ Handler::givePower = (msg, session, next) ->
         }
       )      
 
-    if hasGetPower(player, cur_hour) 
+    star_hour = powerGiveStartHour cur_hour
+    if hasGetPower(player, star_hour) 
       return next(null, {code: 501, msg: '不能重复领取'})
 
     point = playerConfig.POWER_GIVE.point
-    player.givePower(cur_hour, point)
+    player.givePower(star_hour, point)
     player.save()
     next(null, {code: 200, msg: {powerValue: point}})
 
@@ -155,7 +156,7 @@ Handler::getActivityInfo = (msg, session, next) ->
 
     cur_hour = new Date().getHours()
     next(null, {code: 200, msg: {
-      canGetPower: canGetPower(cur_hour) and not hasGetPower(player, cur_hour) 
+      canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
       levelReward: player.levelReward
     }})
 
@@ -198,8 +199,7 @@ powerGiveStartHour = (hour) ->
       return h if h+i is hour
 
 hasGetPower = (player, hour) ->
-  h = powerGiveStartHour(hour)
-  h? and _.contains player.dailyGift.powerGiven, h
+  hour? and _.contains player.dailyGift.powerGiven, hour
 
 todayPeriod = () ->
   now = new Date()

@@ -59,6 +59,12 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -67,12 +73,6 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -1017,7 +1017,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 801,
                 "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
                 "url": 3
             },
@@ -1032,7 +1032,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 801,
                 "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
                 "url": 3
             },
@@ -1047,7 +1047,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 801,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
@@ -1155,7 +1155,7 @@ var outputTables = {
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 802,
                 "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
                 "url": 9
             },
@@ -1170,7 +1170,7 @@ var outputTables = {
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 802,
                 "description": "我对这次的任命很满意，感谢姬总对我的信任！",
                 "url": 9
             },
@@ -1185,7 +1185,7 @@ var outputTables = {
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 802,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
                 "url": 9
             },
@@ -1290,7 +1290,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 143,
                 "hp": 369,
-                "skill_name": "水漫金山",
+                "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 1,
                 "effect_id": 301,
@@ -1305,7 +1305,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 206,
                 "hp": 524,
-                "skill_name": "水漫金山",
+                "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 1,
                 "effect_id": 301,
@@ -1320,7 +1320,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 265,
                 "hp": 689,
-                "skill_name": "水漫金山",
+                "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 1,
                 "effect_id": 301,
@@ -1362,7 +1362,7 @@ var outputTables = {
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 600,
+                "effect_id": 601,
                 "description": "法海你不懂爱，姐姐不要你，我也不会从。",
                 "url": 19
             },
@@ -1377,7 +1377,7 @@ var outputTables = {
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 600,
+                "effect_id": 601,
                 "description": "法海，要么你跟我走，要么你放过我姐姐！",
                 "url": 19
             },
@@ -1392,7 +1392,7 @@ var outputTables = {
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 600,
+                "effect_id": 601,
                 "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
                 "url": 19
             },
@@ -1707,7 +1707,7 @@ var outputTables = {
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 803,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
                 "url": 30
             },
@@ -1722,7 +1722,7 @@ var outputTables = {
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 803,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
                 "url": 30
             },
@@ -1737,7 +1737,7 @@ var outputTables = {
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 803,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
                 "url": 30
             },
@@ -1776,7 +1776,7 @@ var outputTables = {
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 2,
-                "effect_id": 401,
+                "effect_id": 403,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
                 "url": 31
             },
@@ -1791,7 +1791,7 @@ var outputTables = {
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 2,
-                "effect_id": 401,
+                "effect_id": 403,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。",
                 "url": 31
             },
@@ -1806,7 +1806,7 @@ var outputTables = {
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 2,
-                "effect_id": 401,
+                "effect_id": 403,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
                 "url": 31
             },
@@ -1845,7 +1845,7 @@ var outputTables = {
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 502,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
                 "url": 32
             },
@@ -1860,7 +1860,7 @@ var outputTables = {
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 502,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
                 "url": 32
             },
@@ -1875,7 +1875,7 @@ var outputTables = {
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 502,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
                 "url": 32
             },
@@ -1914,7 +1914,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 804,
                 "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。",
                 "url": 34
             },
@@ -1929,7 +1929,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 804,
                 "description": "为啥那个唱歌的神仙升的比我快那么多!",
                 "url": 34
             },
@@ -1944,7 +1944,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 800,
+                "effect_id": 804,
                 "description": "笑什么笑，是大校不是大笑，严肃点！",
                 "url": 34
             },
@@ -2259,7 +2259,7 @@ var outputTables = {
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 501,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
                 "url": 44
             },
@@ -2274,7 +2274,7 @@ var outputTables = {
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 501,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
                 "url": 44
             },
@@ -2289,7 +2289,7 @@ var outputTables = {
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500,
+                "effect_id": 501,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
                 "url": 44
             },
@@ -2328,7 +2328,7 @@ var outputTables = {
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
                 "url": 49
             },
@@ -2343,7 +2343,7 @@ var outputTables = {
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
                 "url": 49
             },
@@ -2358,7 +2358,7 @@ var outputTables = {
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
                 "url": 49
             },
@@ -2397,7 +2397,7 @@ var outputTables = {
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400,
+                "effect_id": 402,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
                 "url": 50
             },
@@ -2412,7 +2412,7 @@ var outputTables = {
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400,
+                "effect_id": 402,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
                 "url": 50
             },
@@ -2427,7 +2427,7 @@ var outputTables = {
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400,
+                "effect_id": 402,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
                 "url": 50
             },
@@ -24819,6 +24819,253 @@ var outputTables = {
             }
         }
     },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -25123,253 +25370,6 @@ var outputTables = {
                 "star5_inc_max": 45,
                 "star5_grow": 5,
                 "rate5": 40
-            }
-        }
-    },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -33668,7 +33668,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10012": {
                 "id": 10012,
@@ -33679,7 +33679,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10013": {
                 "id": 10013,
@@ -33690,7 +33690,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10014": {
                 "id": 10014,
@@ -33712,7 +33712,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10016": {
                 "id": 10016,
@@ -33723,7 +33723,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10017": {
                 "id": 10017,
@@ -33778,7 +33778,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10022": {
                 "id": 10022,
@@ -33789,7 +33789,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10023": {
                 "id": 10023,
@@ -33888,7 +33888,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10032": {
                 "id": 10032,
@@ -33998,7 +33998,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10042": {
                 "id": 10042,
@@ -34108,7 +34108,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10052": {
                 "id": 10052,
@@ -34251,7 +34251,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10065": {
                 "id": 10065,
@@ -34328,7 +34328,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10072": {
                 "id": 10072,
@@ -34339,7 +34339,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10073": {
                 "id": 10073,
@@ -34350,7 +34350,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10074": {
                 "id": 10074,
@@ -34361,7 +34361,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10075": {
                 "id": 10075,
@@ -34372,7 +34372,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10076": {
                 "id": 10076,
@@ -34383,7 +34383,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10077": {
                 "id": 10077,
@@ -34438,7 +34438,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10082": {
                 "id": 10082,
@@ -34449,7 +34449,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10083": {
                 "id": 10083,
@@ -34548,7 +34548,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10092": {
                 "id": 10092,
@@ -34658,7 +34658,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10102": {
                 "id": 10102,
@@ -34691,7 +34691,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10105": {
                 "id": 10105,
@@ -34768,7 +34768,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10112": {
                 "id": 10112,
@@ -34988,7 +34988,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10132": {
                 "id": 10132,
@@ -34999,7 +34999,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10133": {
                 "id": 10133,
@@ -35010,7 +35010,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10134": {
                 "id": 10134,
@@ -35032,7 +35032,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10136": {
                 "id": 10136,
@@ -35043,7 +35043,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10137": {
                 "id": 10137,
@@ -35098,7 +35098,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10142": {
                 "id": 10142,
@@ -35109,7 +35109,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10143": {
                 "id": 10143,
@@ -35208,7 +35208,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10152": {
                 "id": 10152,
@@ -35318,7 +35318,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10162": {
                 "id": 10162,
@@ -35351,7 +35351,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10165": {
                 "id": 10165,
@@ -35428,7 +35428,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10172": {
                 "id": 10172,
@@ -35461,7 +35461,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10175": {
                 "id": 10175,
@@ -35571,7 +35571,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10185": {
                 "id": 10185,
@@ -35648,7 +35648,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10192": {
                 "id": 10192,
@@ -35659,7 +35659,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10193": {
                 "id": 10193,
@@ -35670,7 +35670,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10194": {
                 "id": 10194,
@@ -35681,7 +35681,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10195": {
                 "id": 10195,
@@ -35692,7 +35692,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10196": {
                 "id": 10196,
@@ -35703,7 +35703,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10197": {
                 "id": 10197,
@@ -35758,7 +35758,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10202": {
                 "id": 10202,
@@ -35769,7 +35769,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10203": {
                 "id": 10203,
@@ -35791,7 +35791,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10205": {
                 "id": 10205,
@@ -35868,7 +35868,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10212": {
                 "id": 10212,
@@ -35901,7 +35901,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10215": {
                 "id": 10215,
@@ -35978,7 +35978,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10222": {
                 "id": 10222,
@@ -36011,7 +36011,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10225": {
                 "id": 10225,
@@ -36088,7 +36088,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10232": {
                 "id": 10232,
@@ -36308,7 +36308,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10252": {
                 "id": 10252,
@@ -36319,7 +36319,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10253": {
                 "id": 10253,
@@ -36330,7 +36330,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10254": {
                 "id": 10254,
@@ -36352,7 +36352,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10256": {
                 "id": 10256,
@@ -36363,7 +36363,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10257": {
                 "id": 10257,
@@ -36418,7 +36418,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10262": {
                 "id": 10262,
@@ -36429,7 +36429,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10263": {
                 "id": 10263,
@@ -36528,7 +36528,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10272": {
                 "id": 10272,
@@ -36561,7 +36561,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10275": {
                 "id": 10275,
@@ -36638,7 +36638,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10282": {
                 "id": 10282,
@@ -36748,7 +36748,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10292": {
                 "id": 10292,
@@ -36781,7 +36781,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10295": {
                 "id": 10295,
@@ -36968,7 +36968,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10312": {
                 "id": 10312,
@@ -36979,7 +36979,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10313": {
                 "id": 10313,
@@ -36990,7 +36990,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10314": {
                 "id": 10314,
@@ -37012,7 +37012,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10316": {
                 "id": 10316,
@@ -37023,7 +37023,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10317": {
                 "id": 10317,
@@ -37078,7 +37078,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10322": {
                 "id": 10322,
@@ -37089,7 +37089,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10323": {
                 "id": 10323,
@@ -37188,7 +37188,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10332": {
                 "id": 10332,
@@ -37221,7 +37221,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10335": {
                 "id": 10335,
@@ -37298,7 +37298,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10342": {
                 "id": 10342,
@@ -37408,7 +37408,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10352": {
                 "id": 10352,
@@ -37441,7 +37441,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10355": {
                 "id": 10355,
@@ -37551,7 +37551,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10365": {
                 "id": 10365,
@@ -37628,7 +37628,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10372": {
                 "id": 10372,
@@ -37639,7 +37639,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10373": {
                 "id": 10373,
@@ -37650,7 +37650,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10374": {
                 "id": 10374,
@@ -37661,7 +37661,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10375": {
                 "id": 10375,
@@ -37672,7 +37672,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10376": {
                 "id": 10376,
@@ -37683,7 +37683,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10377": {
                 "id": 10377,
@@ -37738,7 +37738,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10382": {
                 "id": 10382,
@@ -37749,7 +37749,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10383": {
                 "id": 10383,
@@ -37848,7 +37848,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10392": {
                 "id": 10392,
@@ -37958,7 +37958,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10402": {
                 "id": 10402,
@@ -37991,7 +37991,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10405": {
                 "id": 10405,
@@ -38068,7 +38068,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10412": {
                 "id": 10412,
@@ -38101,7 +38101,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10415": {
                 "id": 10415,
@@ -38211,7 +38211,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10425": {
                 "id": 10425,
@@ -38288,7 +38288,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10432": {
                 "id": 10432,
@@ -38299,7 +38299,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10433": {
                 "id": 10433,
@@ -38310,7 +38310,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10434": {
                 "id": 10434,
@@ -38321,7 +38321,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10435": {
                 "id": 10435,
@@ -38332,7 +38332,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10436": {
                 "id": 10436,
@@ -38343,7 +38343,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10437": {
                 "id": 10437,
@@ -38398,7 +38398,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 802
             },
             "10442": {
                 "id": 10442,
@@ -38409,7 +38409,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "10443": {
                 "id": 10443,
@@ -38508,7 +38508,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 803
             },
             "10452": {
                 "id": 10452,
@@ -38618,7 +38618,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "10462": {
                 "id": 10462,
@@ -38651,7 +38651,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10465": {
                 "id": 10465,
@@ -38728,7 +38728,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 805
             },
             "10472": {
                 "id": 10472,
@@ -38761,7 +38761,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10475": {
                 "id": 10475,
@@ -38871,7 +38871,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 701
+                "effect_id": 700
             },
             "10485": {
                 "id": 10485,
@@ -38948,7 +38948,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "10492": {
                 "id": 10492,
@@ -38959,7 +38959,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "10493": {
                 "id": 10493,
@@ -38970,7 +38970,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "10494": {
                 "id": 10494,
@@ -38981,7 +38981,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "10495": {
                 "id": 10495,
@@ -38992,7 +38992,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "10496": {
                 "id": 10496,
@@ -39003,7 +39003,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "10497": {
                 "id": 10497,
@@ -39066,7 +39066,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 801
             },
             "20002": {
                 "id": 20002,
@@ -39077,7 +39077,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 501
             },
             "20003": {
                 "id": 20003,
@@ -39088,7 +39088,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "20004": {
                 "id": 20004,
@@ -39099,7 +39099,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 700
+                "effect_id": 701
             },
             "20005": {
                 "id": 20005,
@@ -39110,7 +39110,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 402
             },
             "20006": {
                 "id": 20006,
@@ -39121,7 +39121,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 401
+                "effect_id": 403
             },
             "20007": {
                 "id": 20007,
@@ -39176,7 +39176,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 1,
                 "normal_atk_id": 2,
-                "effect_id": 801
+                "effect_id": 802
             },
             "20012": {
                 "id": 20012,
@@ -39187,7 +39187,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 2,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 502
             },
             "20013": {
                 "id": 20013,
@@ -39209,7 +39209,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 4,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 700
             },
             "20015": {
                 "id": 20015,
@@ -39295,7 +39295,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 800
+                "effect_id": 804
             },
             "30003": {
                 "id": 30003,
@@ -39315,7 +39315,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 2,
                 "normal_atk_id": 2,
-                "effect_id": 500
+                "effect_id": 502
             },
             "30005": {
                 "id": 30005,
@@ -39335,7 +39335,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 3,
                 "normal_atk_id": 3,
-                "effect_id": 600
+                "effect_id": 601
             },
             "30007": {
                 "id": 30007,
@@ -39375,7 +39375,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 5,
                 "normal_atk_id": 2,
-                "effect_id": 400
+                "effect_id": 403
             }
         }
     },

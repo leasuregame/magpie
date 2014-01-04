@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `player` (
 DROP TABLE IF EXISTS `goldCard`;
 CREATE TABLE IF NOT EXISTS `goldCard` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `orderId` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
@@ -186,5 +187,5 @@ CREATE TABLE IF NOT EXISTS `tbOrder` (
   `paydes` VARCHAR(100) COLLATE utf8_unicode_ci,
   `status` INT(4),
   `created` DATETIME,
-  PRIMARY KEY (`tradeNo`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

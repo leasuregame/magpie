@@ -12,7 +12,7 @@ DURATION = playerConfig.POWER_GIVE.duration
 
 module.exports = 
   doGivePower: (app, hour = new Date().getHours()) ->
-    [start_give_power, end_give_power] = @_canGivePower(hour, app)
+    [start_give_power, end_give_power] = @_canGivePower(app, hour)
     
     if start_give_power
       @_update app, hour, 'powerGiven'
@@ -43,7 +43,7 @@ module.exports =
   _writeFlag: (data, app)->
     fs.writeFileSync(@_filePath(app), data)
 
-  _canGivePower: (hour = new Date().getHours(), app) ->
+  _canGivePower: (app, hour = new Date().getHours()) ->
     hours = playerConfig.POWER_GIVE.hours
     data = @_readFlag(app)
     if data.date isnt utility.shortDateString()

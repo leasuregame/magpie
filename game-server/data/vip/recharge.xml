@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-11-25T10:16:28Z</Created>
-  <LastSaved>2013-12-02T10:14:41Z</LastSaved>
+  <LastSaved>2014-01-04T08:28:02Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>12040</WindowHeight>
+  <WindowWidth>19740</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -37,25 +37,29 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="充值类型">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="4" ss:Width="245"/>
+   <Column ss:Index="4" ss:Width="325"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">金额/元</Data></Cell>
     <Cell><Data ss:Type="String">赠送元宝</Data></Cell>
     <Cell><Data ss:Type="String">appStore产品Id</Data></Cell>
+    <Cell><Data ss:Type="String">每天可领取</Data></Cell>
+    <Cell><Data ss:Type="String">有效天数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">cash</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="String">product_id</Data></Cell>
+    <Cell><Data ss:Type="String">daily_gold</Data></Cell>
+    <Cell><Data ss:Type="String">valid_days</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -99,6 +103,22 @@
     <Cell><Data ss:Type="Number">842</Data></Cell>
     <Cell><Data ss:Type="String">com.leasuregame.magpie.pay648</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="String">com.leasuregame.magpie.week.card.pay6</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="String">com.leasuregame.magpie.month.card.pay30</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -111,7 +131,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>10</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
@@ -123,8 +143,8 @@
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

@@ -49,6 +49,20 @@ CREATE TABLE IF NOT EXISTS `player` (
 -- ----------------------------
 -- Table structure for friend
 -- ----------------------------
+DROP TABLE IF EXISTS `goldCard`;
+CREATE TABLE IF NOT EXISTS `goldCard` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
+  `created` Date,
+  `validDate` Date,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for friend
+-- ----------------------------
 DROP TABLE IF EXISTS `friend`;
 CREATE TABLE IF NOT EXISTS `friend` (
   `playerId` INT(10) UNSIGNED NOT NULL,
@@ -164,6 +178,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `tbOrder` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tradeNo` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `amount` INT(5) UNSIGNED,

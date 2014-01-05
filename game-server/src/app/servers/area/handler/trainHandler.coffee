@@ -240,6 +240,10 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      fun_limit = table.getTableItem('function_limit', 1)
+      if player.lv < fun_limit?.skill_upgrade 
+        return cb({code: 501, msg: "#{fun_limit.skill_upgrade}级开放"})
+
       card = player.getCard(cardId)
       cb(null, player, card)
 
@@ -424,6 +428,7 @@ Handler::starUpgrade = (msg, session, next) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
       
+    player.popCards(sources)
     next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
@@ -742,11 +747,22 @@ Handler::exchangeCard = (msg, session, next) ->
 
     player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
+    setExchangedCard(player, tableId)
+
     player.save()
     next(null, {code: 200, msg: {
       card: card.toJson(),
       fragments: player.fragments
     }})
+
+setExchangedCard = (player, tid) ->
+  newCards = []
+  for id in player.exchangeCards
+    if (parseInt id) is (parseInt tid)
+      newCards.push -id
+    else
+      newCards.push id
+  player.set('exchangeCards', JSON.stringify(newCards))
 
 cardStar = (tableId) ->
   tableId % 5 or 5

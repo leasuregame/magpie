@@ -37,7 +37,7 @@ var make_request_url = function(method, bucket, obj_key, server) {
 };
 
 var versionPath = function() {
-  return path.join(__dirname, 'version.json');
+  return path.join(__dirname, '..', '..', 'shared', 'version.json');
 }
 
 var versionData = function() {

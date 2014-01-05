@@ -36,6 +36,8 @@ var CardUpgradeLabel = cc.Layer.extend({
     _upgradeItem: null,
     _selectLeadCardIcon: null,
     _money: null,
+    _getExp: 0,
+    _needExp: 0,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -297,13 +299,14 @@ var CardUpgradeLabel = cc.Layer.extend({
             var dummyCard = lz.clone(this._leadCard);
 
             this._money = dummyCard.addExp(exp);
-
+            this._getExp = exp;
             this._hpAdditionLabel.setString("+ " + (dummyCard.get("hp") - this._leadCard.get("hp")));
             this._atkAdditionLabel.setString("+ " + (dummyCard.get("atk") - this._leadCard.get("atk")));
 
             this._expLabel.setString(exp);
             this._moneyLabel.setString(this._money);
-            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
+            this._needExp = this._leadCard.getCardFullLvNeedExp();
+            this._expNeedLabel.setString(this._needExp);
             this._cardCountLabel.setString(cardCount);
 
             if (this._money > gameData.player.get("money")) {
@@ -497,6 +500,55 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.getParent().switchToCardListLayer(cardListLayer);
     },
 
+    _showTip: function (cb) {
+        cc.log("CardUpgradeLabel _showTip");
+
+        var lazyLayer = LazyLayer.create();
+        this.addChild(lazyLayer, 10);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgSprite.setContentSize(cc.size(500, 230));
+        bgSprite.setPosition(this._cardUpgradeLabelFit.bgSpritePoint2);
+        lazyLayer.addChild(bgSprite);
+
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._cardUpgradeLabelFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        lazyLayer.addChild(msgBgIcon);
+
+        var tip = cc.LabelTTF.create("卡牌经验已超过等级上限，确定继续么？", "STHeitiTC-Medium", 22);
+        tip.setPosition(this._cardUpgradeLabelFit.tipPoint);
+        lazyLayer.addChild(tip);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            function () {
+                cb();
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+
+        okItem.setPosition(this._cardUpgradeLabelFit.okItemPoint);
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(this._cardUpgradeLabelFit.closeItemPoint);
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        lazyLayer.addChild(menu);
+    },
+
     _onClickUpgrade: function () {
         cc.log("CardUpgradeLabel _onClickUpgrade");
 
@@ -518,28 +570,41 @@ var CardUpgradeLabel = cc.Layer.extend({
             }
         }
 
-        LazyLayer.showCloudLayer();
+        var that = this;
 
-        var cardIdList = [];
-        var len = this._retinueCard.length;
-        for (var i = 0; i < len; ++i) {
-            cardIdList.push(this._retinueCard[i].get("id"));
+        var next = function () {
+            LazyLayer.showCloudLayer();
+
+            var cardIdList = [];
+            var len = that._retinueCard.length;
+            for (var i = 0; i < len; ++i) {
+                cardIdList.push(that._retinueCard[i].get("id"));
+            }
+
+            var dummyCard = lz.clone(that._leadCard);
+
+            that._leadCard.upgrade(function (data) {
+                cc.log(data);
+
+                if (data) {
+                    that._retinueCard = [];
+                    that._getExp = 0;
+                    that._needExp = 0;
+                    that._upgrade(dummyCard, data.exp, data.money, len);
+                } else {
+                    that.update();
+                    LazyLayer.closeCloudLayer();
+                }
+            }, cardIdList);
+        };
+
+        if (this._getExp > this._needExp) {
+            this._showTip(next);
+        } else {
+            next();
         }
 
-        var dummyCard = lz.clone(this._leadCard);
 
-        var that = this;
-        this._leadCard.upgrade(function (data) {
-            cc.log(data);
-
-            if (data) {
-                that._retinueCard = [];
-                that._upgrade(dummyCard, data.exp, data.money, len);
-            } else {
-                that.update();
-                LazyLayer.closeCloudLayer();
-            }
-        }, cardIdList);
     }
 });
 

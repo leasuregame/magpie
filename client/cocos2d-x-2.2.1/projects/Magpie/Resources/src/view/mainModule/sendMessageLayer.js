@@ -98,6 +98,8 @@ var SendMessageLayer = LazyLayer.extend({
             return;
         }
 
+        text = lz.replaceStr(text);
+
         var that = this;
         gameData.player.sendMessage(function (data) {
             TipLayer.tip("留言成功");

@@ -275,6 +275,32 @@ var Message = Entity.extend({
         });
     },
 
+    setAsRead: function (id,cb) {
+
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == id) {
+                message = this._friendMessage[i];
+                break;
+            }
+        }
+
+        lz.server.request("area.messageHandler.setAsRead", {
+            msgId: id
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+            if (data.code == 200) {
+                 cc.log("setAsRead success");
+                 message.status = HANDLED_STATUS;
+                 cb();
+            } else {
+                cc.log("setAsRead fail");
+            }
+        })
+    },
+
     _sort: function () {
         cc.log("Message _sort");
 

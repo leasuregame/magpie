@@ -9,7 +9,7 @@
 
 
 var User = Entity.extend({
-    _id: 0,                 // 账号序号
+    _id: 0,                 // 帐号序号
     _createTime: 0,         // 创建时间
     _area: 1,               // 区
     _name: "",              // 名字
@@ -60,61 +60,88 @@ var User = Entity.extend({
 
         this._save();
 
-        if (!tbAdapter.TBIsLogined()) {
-            tbAdapter.TBLogin(0);
-
-            return;
-        }
-
-        var updateLayer = UpdateLayer.create();
-        updateLayer.retain();
-
         var that = this;
-        lz.server.connectGameServer(function () {
-            lz.server.request("connector.userHandler.loginTB", {
-                nickName: tbAdapter.TBNickName(),
-                userId: tbAdapter.TBUserID(),
-                sessionId: tbAdapter.TBSessionID(),
-                areaId: that._area,
-                version: updateLayer.getVersion()
-            }, function (data) {
-                cc.log(data);
 
-                var msg = data.msg;
+        var fn = function () {
+            if (typeof(UpdateLayer) != 'undefined') {
+                var updateLayer = UpdateLayer.create();
+                updateLayer.retain();
+                var version = updateLayer.getVersion();
+            }
 
-                if (data.code == 200) {
-                    cc.log("login success");
+            cc.log("=================================================");
+            cc.log(version);
+            cc.log("=================================================");
 
-                    that.update(msg.user);
+            lz.server.connectGameServer(function () {
+                lz.server.request("connector.userHandler.loginTB", {
+                    nickName: tbAdapter.TBNickName(),
+                    userId: tbAdapter.TBUserID(),
+                    sessionId: tbAdapter.TBSessionID(),
+                    areaId: that._area,
+                    version: version || "1.0.0"
+                }, function (data) {
+                    cc.log(data);
 
-                    var player = msg.player;
+                    var msg = data.msg;
 
-                    if (player) {
-                        gameData.gameInit();
-                        gameData.player.init(msg.player);
+                    if (data.code == 200) {
+                        cc.log("login success");
 
-                        cb(1);
+                        that.update(msg.user);
+
+                        var player = msg.player;
+
+                        if (player) {
+                            gameData.gameInit();
+                            gameData.player.init(msg.player);
+
+                            cb(1);
+                        } else {
+                            cb(2);
+                        }
+
+                        lz.dc.event("event_login", that._area);
+                    } else if (data.code == 600) {
+                        cc.log("login fail go to updateLayer");
+
+                        Dialog.pop("您的版本需要更新", function () {
+                            cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
+                            updateLayer.update();
+                        });
                     } else {
-                        cb(2);
+                        cc.log("login fail");
+
+                        cb(0);
+
+                        TipLayer.tip(data.msg);
                     }
-
-                    lz.dc.event("event_login", that._area);
-                } else if (data.code == 600) {
-                    cc.log("login fail go to updateLayer");
-
-                    Dialog.pop("您的版本需要更新", function () {
-                        cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
-                        updateLayer.update();
-                    });
-                } else {
-                    cc.log("login fail");
-
-                    cb(0);
-
-                    TipLayer.tip(data.msg);
-                }
+                });
             });
-        });
+        };
+
+        if (!tbAdapter.TBIsLogined()) {
+            // 登录成功回调
+            tbAdapter.loginResultHandler = function (isSuccess) {
+                cc.log("tbAdapter loginResultHandler: " + isSuccess);
+
+                tbAdapter.loginResultHandler = function () {
+                };
+
+                cc.log(tbAdapter.TBIsLogined());
+                cc.log(tbAdapter.TBSessionID());
+                cc.log(tbAdapter.TBUserID());
+                cc.log(tbAdapter.TBNickName());
+
+                fn();
+            };
+
+            if (tbAdapter.TBLogin(0) != TB_PLATFORM_NO_ERROR) {
+                cb(0);
+            }
+        } else {
+            fn();
+        }
     },
 
     createPlayer: function (cb, name) {

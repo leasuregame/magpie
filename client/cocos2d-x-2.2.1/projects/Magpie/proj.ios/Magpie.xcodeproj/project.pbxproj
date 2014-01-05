@@ -228,6 +228,7 @@
 		3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7F18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp */; };
 		3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */; };
 		3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
+		9024377B1875734A00CF670C /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 902437781875732800CF670C /* game.jsc */; };
 		902B07A61858C475003A2A49 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		902B07A71858C475003A2A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		902B07A81858C475003A2A49 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -509,7 +510,16 @@
 		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
 		9075096F187171BC00E27689 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096718716DBF00E27689 /* platform.js */; };
 		90750970187171BC00E27689 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096818716DBF00E27689 /* user.js */; };
+		909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		909D73B818754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73B918754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73BA18754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
+		909D73BB18754C1C009D69C4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 909D73B718754C1C009D69C4 /* Reachability.m */; };
 		90A846B618726FB800582139 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C1A02518726F6E00CBC6FF /* loginLayer.js */; };
+		90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
+		90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
+		90A846BB1872C04600582139 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
 		90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095A18716DB600E27689 /* loginLayer.js */; };
 		90C1A0201871722F00CBC6FF /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
 		90C1A0211871722F00CBC6FF /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095C18716DB600E27689 /* payment.js */; };
@@ -994,7 +1004,6 @@
 		90F5372F1862EBE3008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F5372D1862EBE3008207BD /* AppDelegate.cpp */; };
 		90F537331862EBEB008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F537311862EBEB008207BD /* AppDelegate.cpp */; };
 		90F537371862EBF6008207BD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F537351862EBF6008207BD /* AppDelegate.cpp */; };
-		90F537591862F58C008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F537581862F58C008207BD /* game.jsc */; };
 		90F5375C1862F594008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F5375B1862F594008207BD /* game.jsc */; };
 		90F5375D186303E2008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		90F5375E186303E3008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
@@ -1489,6 +1498,7 @@
 		3EC20B8018331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_cocos2dx_studio_auto.hpp; sourceTree = "<group>"; };
 		3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocos2dx_studio_manual.cpp; sourceTree = "<group>"; };
 		3EC20B8418331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocos2dx_studio_manual.h; sourceTree = "<group>"; };
+		902437781875732800CF670C /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		902B08A81858C475003A2A49 /* Magpie-TB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902B08AB1858C569003A2A49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		902B08AC1858C569003A2A49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -1547,6 +1557,8 @@
 		9075096618716DBF00E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
 		9075096718716DBF00E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
 		9075096818716DBF00E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		909D73B618754C1C009D69C4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		909D73B718754C1C009D69C4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
 		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
@@ -1575,7 +1587,6 @@
 		90F537321862EBEB008207BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90F537351862EBF6008207BD /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		90F537361862EBF6008207BD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		90F537581862F58C008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90F5375B1862F594008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90F9F23218680B4C001821D5 /* js_bindings_WebLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_WebLayer.cpp; sourceTree = "<group>"; };
 		90F9F23318680B4C001821D5 /* js_bindings_WebLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_WebLayer.hpp; sourceTree = "<group>"; };
@@ -1608,9 +1619,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
 				90C212D11870702D00671D28 /* Security.framework in Frameworks */,
 				90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */,
-				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
 				902B08721858C475003A2A49 /* QuartzCore.framework in Frameworks */,
 				902B086E1858C475003A2A49 /* libsqlite3.dylib in Frameworks */,
 				902B086F1858C475003A2A49 /* libcocos2dx.a in Frameworks */,
@@ -1633,6 +1644,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				90F535DC1862EAC2008207BD /* libsqlite3.dylib in Frameworks */,
 				90F535DD1862EAC2008207BD /* libcocos2dx.a in Frameworks */,
 				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
@@ -1656,12 +1668,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
+				90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */,
+				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
+				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
 				90F536EB1862EB3C008207BD /* libsqlite3.dylib in Frameworks */,
 				90F536EC1862EB3C008207BD /* libcocos2dx.a in Frameworks */,
 				90F536ED1862EB3C008207BD /* libz.dylib in Frameworks */,
 				90C212C918704B5B00671D28 /* TBPlatform.framework in Frameworks */,
 				90F536EE1862EB3C008207BD /* libxml2.dylib in Frameworks */,
-				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
 				90F536F01862EB3C008207BD /* OpenGLES.framework in Frameworks */,
 				90F536F11862EB3C008207BD /* OpenAL.framework in Frameworks */,
 				90F536F21862EB3C008207BD /* AudioToolbox.framework in Frameworks */,
@@ -1678,6 +1693,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
 				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
@@ -2509,6 +2525,14 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		902437761875732800CF670C /* TB-Releases */ = {
+			isa = PBXGroup;
+			children = (
+				902437781875732800CF670C /* game.jsc */,
+			);
+			path = "TB-Releases";
+			sourceTree = "<group>";
+		};
 		902B08AA1858C569003A2A49 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2617,6 +2641,15 @@
 			path = ../Resources/TB;
 			sourceTree = "<group>";
 		};
+		909D73B518754C1C009D69C4 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				909D73B618754C1C009D69C4 /* Reachability.h */,
+				909D73B718754C1C009D69C4 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		90C212BB18704B5B00671D28 /* TongBu */ = {
 			isa = PBXGroup;
 			children = (
@@ -2642,6 +2675,7 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				909D73B518754C1C009D69C4 /* Reachability */,
 				90C212BB18704B5B00671D28 /* TongBu */,
 				90F9F23118680B4C001821D5 /* WebLayer */,
 				90338EC7185B1E9100224717 /* AssetsManagerBindings */,
@@ -2705,19 +2739,11 @@
 		90F5374E1862F579008207BD /* game */ = {
 			isa = PBXGroup;
 			children = (
+				902437761875732800CF670C /* TB-Releases */,
 				90F5375A1862F594008207BD /* AppStore-Releases */,
-				90F537571862F58C008207BD /* TB-Releases */,
 			);
 			name = game;
 			path = ../Resources/game;
-			sourceTree = "<group>";
-		};
-		90F537571862F58C008207BD /* TB-Releases */ = {
-			isa = PBXGroup;
-			children = (
-				90F537581862F58C008207BD /* game.jsc */,
-			);
-			path = "TB-Releases";
 			sourceTree = "<group>";
 		};
 		90F5375A1862F594008207BD /* AppStore-Releases */ = {
@@ -3043,6 +3069,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9024377B1875734A00CF670C /* game.jsc in Resources */,
 				90F536FD1862EB3C008207BD /* Default@2x.png in Resources */,
 				90F537001862EB3C008207BD /* Icon-114.png in Resources */,
 				90F537021862EB3C008207BD /* Icon-57.png in Resources */,
@@ -3051,7 +3078,6 @@
 				90F537081862EB3C008207BD /* Icon-76.png in Resources */,
 				90F5370A1862EB3C008207BD /* Icon-152.png in Resources */,
 				90F5370F1862EB3C008207BD /* Icon-40.png in Resources */,
-				90F537591862F58C008207BD /* game.jsc in Resources */,
 				90F537121862EB3C008207BD /* README in Resources */,
 				90F537131862EB3C008207BD /* Icon-144.png in Resources */,
 				90F537141862EB3C008207BD /* CMakeLists.txt in Resources */,
@@ -3363,6 +3389,7 @@
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
+				909D73BA18754C1C009D69C4 /* Reachability.m in Sources */,
 				902B08521858C475003A2A49 /* CCInputDelegate.cpp in Sources */,
 				902B08531858C475003A2A49 /* UIRootWidget.cpp in Sources */,
 				902B08541858C475003A2A49 /* UILayout.cpp in Sources */,
@@ -3552,6 +3579,7 @@
 				90F535A81862EAC2008207BD /* CCBone.cpp in Sources */,
 				90F535AA1862EAC2008207BD /* CCDatas.cpp in Sources */,
 				90F535AB1862EAC2008207BD /* CCBatchNode.cpp in Sources */,
+				909D73B918754C1C009D69C4 /* Reachability.m in Sources */,
 				90F535AC1862EAC2008207BD /* CCDecorativeDisplay.cpp in Sources */,
 				90F535AD1862EAC2008207BD /* CCDisplayFactory.cpp in Sources */,
 				90F535AE1862EAC2008207BD /* CCDisplayManager.cpp in Sources */,
@@ -3736,6 +3764,7 @@
 				90F536A61862EB3C008207BD /* jsb_cocos2dx_studio_manual.cpp in Sources */,
 				90F536A71862EB3C008207BD /* jsb_opengl_registration.cpp in Sources */,
 				90F536A81862EB3C008207BD /* js_bindings_opengl.cpp in Sources */,
+				909D73BB18754C1C009D69C4 /* Reachability.m in Sources */,
 				90F536A91862EB3C008207BD /* XMLHTTPRequest.cpp in Sources */,
 				90F536AA1862EB3C008207BD /* HttpClient.cpp in Sources */,
 				90F536AB1862EB3C008207BD /* CCSkeleton.cpp in Sources */,
@@ -3892,6 +3921,7 @@
 				15A3D5441682F1A5002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
 				15A3D5451682F1A5002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15A3D5461682F1A5002FB0C5 /* CCControlStepper.cpp in Sources */,
+				909D73B818754C1C009D69C4 /* Reachability.m in Sources */,
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,
@@ -4053,7 +4083,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+					"$(SRCROOT)/../lib/TongBu",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
@@ -4107,7 +4137,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+					"$(SRCROOT)/../lib/TongBu",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -4263,7 +4293,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+					"$(SRCROOT)/../lib/TongBu",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
@@ -4301,6 +4331,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB-Releases";
@@ -4316,7 +4347,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/lcc3536/magpie/client/cocos2d-x-2.2.1/projects/Magpie/lib/TongBu",
+					"$(SRCROOT)/../lib/TongBu",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -4351,6 +4382,7 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-ObjC",
 					"-ljs_static",
 				);
 				PRODUCT_NAME = "Magpie-TB-Releases";

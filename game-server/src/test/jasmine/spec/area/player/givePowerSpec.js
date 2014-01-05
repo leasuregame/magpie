@@ -110,6 +110,7 @@ describe("Area Server", function() {
 
 						doAjax('/player/2', {}, function(res) {
 							expect(JSON.parse(res.data.power).value).toEqual(100);
+							expect(JSON.parse(res.data.dailyGift).powerGiven).toEqual([17]);
 						})
 					});
 				});

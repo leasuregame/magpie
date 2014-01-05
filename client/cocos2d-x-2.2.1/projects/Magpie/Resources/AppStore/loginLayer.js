@@ -195,7 +195,7 @@ var LoginLayer = cc.Layer.extend({
             if (type == 1) {
                 cc.Director.getInstance().replaceScene(MainScene.getInstance());
             } else if (type == 2) {
-                that.getParent().switchTo(NewPlayerLayer.create());
+                that.getParent().switchLayer(NewPlayerLayer);
             }
         });
     },
@@ -204,7 +204,7 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer ccbFnRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        this.getParent().switchTo(RegisterLayer.create());
+        this.getParent().switchLayer(RegisterLayer);
     }
 });
 

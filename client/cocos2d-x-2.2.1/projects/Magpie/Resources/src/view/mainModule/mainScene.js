@@ -58,7 +58,10 @@ var MainScene = cc.Scene.extend({
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
-//            NoticeLayer.pop();
+
+            if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+                NoticeLayer.pop();
+            }
         }
 
         this.retain();

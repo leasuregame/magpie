@@ -90,7 +90,7 @@ var ExploreLayer = cc.Layer.extend({
         lvIcon.setPosition(this._exploreLayerFit.lvIconPoint);
         this.addChild(lvIcon);
 
-        this._playerLvLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 25);
+        this._playerLvLabel = StrokeLabel.create("Lv. 0", "STHeitiTC-Medium", 28);
         this._playerLvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._playerLvLabel.setPosition(this._exploreLayerFit.playerLvLabelPoint);
         this.addChild(this._playerLvLabel);
@@ -282,7 +282,7 @@ var ExploreLayer = cc.Layer.extend({
         var value = progress.progress;
         var maxValue = progress.maxProgress;
 
-        this._playerLvLabel.setString(gameData.player.get("lv"));
+        this._playerLvLabel.setString("Lv. " + gameData.player.get("lv"));
 
         var time = this._showReward();
 
@@ -361,6 +361,7 @@ var ExploreLayer = cc.Layer.extend({
 
                     that._playAnimation();
                 } else {
+                    that.update();
                     that._unlock();
                 }
             }, this._getTaskId());
@@ -410,7 +411,7 @@ var ExploreLayer = cc.Layer.extend({
                 that._unlock();
                 that._onClickBack();
             }
-            that.scheduleOnce(that._unlock, 1);
+            that.scheduleOnce(that._unlock, 0.3);
             cb();
             that.update();
         });
@@ -583,13 +584,13 @@ var ExploreLayer = cc.Layer.extend({
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.2),
+            cc.DelayTime.create(0.16),
             cc.CallFunc.create(function () {
                 gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
             }, this),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
-            cc.DelayTime.create(0.1)
+            cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
+            cc.DelayTime.create(0.08)
 
         );
 

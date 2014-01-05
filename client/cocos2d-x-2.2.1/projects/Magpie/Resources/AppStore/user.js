@@ -93,9 +93,11 @@ var User = Entity.extend({
 
         this._save();
 
-        var updateLayer = UpdateLayer.create();
-        updateLayer.retain();
-        var version = updateLayer.getVersion();
+        if (typeof(UpdateLayer) != "undefined") {
+            var updateLayer = UpdateLayer.create();
+            updateLayer.retain();
+            var version = updateLayer.getVersion();
+        }
 
         cc.log("=================================================");
         cc.log(version);
@@ -107,7 +109,7 @@ var User = Entity.extend({
                 account: that._account,
                 password: that._password,
                 areaId: that._area,
-                version: version
+                version: version || "1.0.0"
             }, function (data) {
                 cc.log(data);
 

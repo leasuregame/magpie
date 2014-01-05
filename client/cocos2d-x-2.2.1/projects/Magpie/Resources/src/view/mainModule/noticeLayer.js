@@ -24,7 +24,7 @@ var NoticeLayer = cc.Layer.extend({
         var noticeEffect = cc.BuilderReader.load(main_scene_image.uiEffect69, this);
         noticeEffect.setPosition(point);
 
-        var rect = cc.rect(point.x - 250, point.y - 280, 500, 550);
+        var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
         this._webLayer = lz.WebLayer.create(lz.platformConfig.GAME_NOTICE_URL, rect);
 
         noticeEffect.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);

@@ -216,7 +216,7 @@
 								<key>value</key>
 								<array>
 									<real>-30</real>
-									<real>0.0</real>
+									<real>-2</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -269,6 +269,8 @@
 								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -289,7 +291,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -304,7 +306,7 @@
 						<key>value</key>
 						<array>
 							<real>-20</real>
-							<real>170</real>
+							<real>75.555557250976562</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -431,7 +433,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

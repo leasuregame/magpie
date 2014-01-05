@@ -235,7 +235,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-60</real>
+									<real>-50</real>
 									<real>-60</real>
 									<integer>0</integer>
 								</array>
@@ -307,7 +307,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-40</real>
+									<real>-20</real>
 									<real>-60</real>
 									<integer>0</integer>
 								</array>
@@ -361,8 +361,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -398,8 +396,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -862,7 +860,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

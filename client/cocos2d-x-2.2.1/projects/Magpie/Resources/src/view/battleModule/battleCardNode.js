@@ -66,7 +66,6 @@ var BattleCardNode = cc.Node.extend({
             frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
         }
 
-
         var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
@@ -122,10 +121,14 @@ var BattleCardNode = cc.Node.extend({
     },
 
     getSkillFn: function () {
+        this.setProgressVisible(false);
+
         return ("skill" + this._effectId);
     },
 
     getNormalAtkFn: function () {
+        this.setProgressVisible(false);
+
         return ("skill" + this._normalAtkId);
     },
 
@@ -140,7 +143,7 @@ var BattleCardNode = cc.Node.extend({
     update: function (value) {
         cc.log(this._index + " BattleCardNode update: " + value);
 
-        var time = 0.3;
+        var time = 0.2;
         var differenceValue;
         var differenceTime;
         var absValue = Math.abs(value);
@@ -152,26 +155,36 @@ var BattleCardNode = cc.Node.extend({
         if (value > 0) {
             if (this._nowHp > this._hp) {
                 differenceValue = this._hpProgress.getDifferenceValue();
-                differenceTime = time * differenceValue / absValue;
 
-                this._hpProgress.setValue(this._hp, differenceTime);
+                if (differenceValue > 0) {
+                    differenceTime = time * differenceValue / absValue;
 
-                this.scheduleOnce(function () {
-                    this._spiritHpProgress.setValue(this._nowHp - this._hp, time - differenceTime);
-                }, differenceTime);
+                    this._hpProgress.setValue(this._hp, differenceTime);
+
+                    this.scheduleOnce(function () {
+                        this._spiritHpProgress.setValue(this._nowHp - this._hp, time - differenceTime);
+                    }, differenceTime);
+                } else {
+                    this._spiritHpProgress.setValue(this._nowHp - this._hp, time);
+                }
             } else {
                 this._hpProgress.setValue(this._nowHp, time);
             }
         } else if (value < 0) {
             if (this._nowHp < this._hp) {
                 differenceValue = this._spiritHpProgress.getValue();
-                differenceTime = time * differenceValue / absValue;
 
-                this._spiritHpProgress.setValue(0, differenceTime);
+                if (differenceValue > 0) {
+                    differenceTime = time * differenceValue / absValue;
 
-                this.scheduleOnce(function () {
-                    this._hpProgress.setValue(this._nowHp, time - differenceTime);
-                }, differenceTime);
+                    this._spiritHpProgress.setValue(0, differenceTime);
+
+                    this.scheduleOnce(function () {
+                        this._hpProgress.setValue(this._nowHp, time - differenceTime);
+                    }, differenceTime);
+                } else {
+                    this._hpProgress.setValue(this._nowHp, time);
+                }
             } else {
                 this._spiritHpProgress.setValue(this._nowHp - this._hp, time);
             }
@@ -228,6 +241,11 @@ var BattleCardNode = cc.Node.extend({
         return this._animationManager.getSequenceDuration(name);
     },
 
+    setProgressVisible: function (visible) {
+        this._hpProgress.setVisible(visible);
+        this._spiritHpProgress.setVisible(visible);
+    },
+
     die: function () {
         cc.log("BattleCardNode die");
 
@@ -237,15 +255,18 @@ var BattleCardNode = cc.Node.extend({
 
                 this.runAnimations("die");
 
-                this._hpProgress.setVisible(false);
-                this._spiritHpProgress.setVisible(false);
+                this.setProgressVisible(false);
 
                 if (this._spirit > 0) {
                     this.getParent().releaseSpirit(this._index, this._spirit);
                 }
-            } else if (this._nowHp / this._hp < 0.05) {
-                if (this._animationManager.getRunningSequenceName() != "god") {
-                    this.runAnimations("god");
+            } else {
+                this.setProgressVisible(true);
+
+                if (this._nowHp / this._hp < 0.05) {
+                    if (this._animationManager.getRunningSequenceName() != "god") {
+                        this.runAnimations("god");
+                    }
                 }
             }
         }

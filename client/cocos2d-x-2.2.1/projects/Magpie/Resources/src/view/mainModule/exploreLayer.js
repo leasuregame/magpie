@@ -361,6 +361,7 @@ var ExploreLayer = cc.Layer.extend({
 
                     that._playAnimation();
                 } else {
+                    that.update();
                     that._unlock();
                 }
             }, this._getTaskId());

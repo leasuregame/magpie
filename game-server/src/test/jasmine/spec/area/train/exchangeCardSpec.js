@@ -70,13 +70,16 @@ describe("Area Server", function() {
         //     doTest(i);
         //   })(i);
         // }
+
+        doTest(9);
+
       });
 
 
       describe('when fragments is not enought', function() {
         beforeEach(function() {
           doAjax('/update/player/' + user1.playerId, {
-            fragments: 10
+            fragments: 5
           }, function(res) {
             loginWith(user1.account, user1.password, user1.areaId);
           });
@@ -85,7 +88,7 @@ describe("Area Server", function() {
 
         it('should can not exchange card that star is 1', function() {
           request('area.trainHandler.exchangeCard', {
-            tableId: 1
+            tableId: 6
           }, function(data) {
             expect(data).toEqual({
               code: 501,
@@ -96,7 +99,7 @@ describe("Area Server", function() {
 
         it('should can not exhcange a card that star is 4', function() {
           request('area.trainHandler.exchangeCard', {
-            tableId: 4
+            tableId: 9
           }, function(data) {
             expect(data).toEqual({
               code: 501,
@@ -107,11 +110,11 @@ describe("Area Server", function() {
       });
 
       describe('when args is empty', function() {
-        beforeEach(function(){
+        beforeEach(function() {
           loginWith(user1.account, user1.password, user1.areaId);
         });
 
-        it('should can not exhcange a card', function(){
+        it('should can not exhcange a card', function() {
           request('area.trainHandler.exchangeCard', {}, function(data) {
             console.log(data);
             expect(data).toEqual({

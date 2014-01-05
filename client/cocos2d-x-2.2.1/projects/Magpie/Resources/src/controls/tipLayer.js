@@ -16,16 +16,16 @@ var TipLayer = {
     _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
-        if (!str) return;
+        if (!str) {
+            return;
+        }
 
         color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
         fontSize = fontSize || 30;
 
-        var labelPoint = gameFit.controls.tipLayer.labelPoint;
-
         var label = cc.Node.create();
-        label.setPosition(labelPoint);
+        label.setPosition(gameFit.controls.tipLayer.labelPoint);
         cc.Director.getInstance().getRunningScene().addChild(label, 10000);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);
@@ -47,11 +47,9 @@ var TipLayer = {
             if (bgLabel) bgLabel.setOpacity(opacity);
         };
 
-        var point = gameFit.controls.tipLayer.actionPoint;
-
         label.runAction(
             cc.Sequence.create(
-                cc.MoveTo.create(1, point),
+                cc.MoveTo.create(1, gameFit.controls.tipLayer.actionPoint),
                 cc.FadeOut.create(0.2),
                 cc.CallFunc.create(function () {
                     label.removeFromParent();
@@ -72,14 +70,16 @@ var TipLayer = {
         cc.log("tipWithIcon: " + icon + " " + str);
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect66, this);
+
         var controller = effect.controller;
         controller.ccbGoodsIcon.setTexture(lz.getTexture(main_scene_image[icon]));
         controller.ccbGoodsLabel.setString(str);
+
         effect.setPosition(gameFit.GAME_MIDPOINT);
         effect.animationManager.setCompletedAnimationCallback(this, function () {
             effect.removeFromParent();
         });
+        
         cc.Director.getInstance().getRunningScene().addChild(effect, 10000);
-
     }
 };

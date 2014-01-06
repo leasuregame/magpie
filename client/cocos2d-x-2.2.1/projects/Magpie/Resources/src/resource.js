@@ -1000,7 +1000,7 @@ var main_scene_image = {
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
     tutorials29: "res/ccb/tutorials29.ccbi",
-
+    tutorials30: "res/ccb/tutorials30.ccbi",
 
     // 动画
     startAnimation1: "res/ccb/startAnimation1.ccbi",

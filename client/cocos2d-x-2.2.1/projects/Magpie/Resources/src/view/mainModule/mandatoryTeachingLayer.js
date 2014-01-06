@@ -14,10 +14,10 @@ var teaching = [
         layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4, 4]
     },
     {
-        overStep: 6,
-        clickType: [1, 0, 0, 0, 0, 2],
-        effectOrder: [18, 20, 24, 21, 11, 13],
-        layerOrder: [2, 0, 4, 4, 4, 4]
+        overStep: 8,
+        clickType: [1, 0, 0, 0, 0, 0, 1, 2],
+        effectOrder: [18, 20, 24, 21, 11, 13, 30, 25],
+        layerOrder: [2, 0, 4, 4, 4, 4, 4, 4]
     },
     {
         overStep: 6,
@@ -180,7 +180,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         if (this.isVisible()) {
             var point = touch.getLocation();
             var isShield = !cc.rectContainsPoint(this._rect, point);
-            if (this._clickType[this._rect] == CLICK_ANY) {
+            if (this._clickType[this._step] == CLICK_ANY) {
                 this.clearAndSave();
                 this.next();
             }

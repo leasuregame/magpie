@@ -307,6 +307,14 @@ var CardTrainLabel = cc.Layer.extend({
                     this._hpAdditionLabel.setVisible(false);
                     this._atkAdditionLabel.setVisible(true);
                 }
+
+                if (mandatoryTeachingLayer) {
+                    if (mandatoryTeachingLayer.isTeaching()) {
+                        mandatoryTeachingLayer.clearAndSave();
+                        mandatoryTeachingLayer.next();
+                    }
+                }
+
             } else {
                 this._hpAdditionLabel.setVisible(false);
                 this._atkAdditionLabel.setVisible(false);

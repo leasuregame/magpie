@@ -265,6 +265,8 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._atkLabel.setString(this._leadCard.get("atk"));
             this._atkAdditionLabel.setString("+ 0");
 
+            this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+
             this._expLabel.setString("0");
             this._moneyLabel.setString("0");
             cc.log(this._leadCard.getCardFullLvNeedExp());
@@ -348,7 +350,6 @@ var CardUpgradeLabel = cc.Layer.extend({
                 lvCallFuncAction.clone(),
                 fadeInAction.clone()
             );
-
 
             this._lvLabel.runAction(cc.RepeatForever.create(lvLabelAction));
 

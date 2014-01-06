@@ -305,7 +305,7 @@ var TournamentLayer = cc.Layer.extend({
 
             if (i == 10) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, scrollViewHeight - 160 * i - 25));
+                line.setPosition(cc.p(310, scrollViewHeight - 160 * i - 34));
                 slideLabel[i].addChild(line, 2);
             }
 

@@ -1090,57 +1090,10 @@ var main_scene_image = {
 
 
     //技能特效测试素材
-    1: test_scene_path + "res/" + "1.png",
-    2: test_scene_path + "res/" + "2.png",
-    3: test_scene_path + "res/" + "3.png",
-    4: test_scene_path + "res/" + "4.png",
-    5: test_scene_path + "res/" + "5.png",
-    6: test_scene_path + "res/" + "6.png",
-    7: test_scene_path + "res/" + "7.png",
-    8: test_scene_path + "res/" + "8.png",
-    9: test_scene_path + "res/" + "9.png",
-    10: test_scene_path + "res/" + "10.png",
-    11: test_scene_path + "res/" + "11.png",
-    12: test_scene_path + "res/" + "12.png",
-    13: test_scene_path + "res/" + "13.png",
-    14: test_scene_path + "res/" + "14.png",
-    15: test_scene_path + "res/" + "15.png",
-    16: test_scene_path + "res/" + "16.png",
-    17: test_scene_path + "res/" + "17.png",
-    18: test_scene_path + "res/" + "18.png",
-    19: test_scene_path + "res/" + "19.png",
-    20: test_scene_path + "res/" + "20.png",
-    21: test_scene_path + "res/" + "21.png",
-    22: test_scene_path + "res/" + "22.png",
-    23: test_scene_path + "res/" + "23.png",
-    24: test_scene_path + "res/" + "24.png",
-    25: test_scene_path + "res/" + "25.png",
-    26: test_scene_path + "res/" + "26.png",
-    27: test_scene_path + "res/" + "27.png",
-    28: test_scene_path + "res/" + "28.png",
-    29: test_scene_path + "res/" + "29.png",
-    30: test_scene_path + "res/" + "30.png",
-    31: test_scene_path + "res/" + "31.png",
-    32: test_scene_path + "res/" + "32.png",
-    33: test_scene_path + "res/" + "33.png",
-    34: test_scene_path + "res/" + "34.png",
-    35: test_scene_path + "res/" + "35.png",
-    36: test_scene_path + "res/" + "36.png",
-    37: test_scene_path + "res/" + "37.png",
-
+    
 
     //技能特效
-    texiao1: test_scene_path + "ccb/" + "texiao1.ccbi",
-    texiao2: test_scene_path + "ccb/" + "texiao2.ccbi",
-    texiao3: test_scene_path + "ccb/" + "texiao3.ccbi",
-    texiao4: test_scene_path + "ccb/" + "texiao4.ccbi",
-    texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
-    texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
-    texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
-    texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
-    texiao9: test_scene_path + "ccb/" + "texiao9.ccbi",
-    texiao10: test_scene_path + "ccb/" + "texiao10.ccbi",
-    texiao11: test_scene_path + "ccb/" + "texiao11.ccbi",
+   
 
 };
 

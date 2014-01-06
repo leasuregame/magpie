@@ -1071,6 +1071,7 @@ var main_scene_image = {
     startAnimation_boom_sound: "res/sound/startAnimationSound/startAnimation_boom_sound.wav",
     startAnimation_breaktree_sound: "res/sound/startAnimationSound/startAnimation_breaktree_sound.wav",
     startAnimation_ding_sound: "res/sound/startAnimationSound/startAnimation_ding_sound.wav",
+    startAnimation_drop_sound: "res/sound/startAnimationSound/startAnimation_drop_sound.wav",
     startAnimation_funny_sound: "res/sound/startAnimationSound/startAnimation_funny_sound.wav",
     startAnimation_insert_sound: "res/sound/startAnimationSound/startAnimation_insert_sound.wav",
     startAnimation_keep_sound: "res/sound/startAnimationSound/startAnimation_keep_sound.wav",
@@ -1082,6 +1083,7 @@ var main_scene_image = {
     startAnimation_shardow_sound: "res/sound/startAnimationSound/startAnimation_shardow_sound.wav",
     startAnimation_smalltree_sound: "res/sound/startAnimationSound/startAnimation_smalltree_sound.wav",
     startAnimation_treelight_sound: "res/sound/startAnimationSound/startAnimation_treelight_sound.wav",
+    startAnimation_wind_sound: "res/sound/startAnimationSound/startAnimation_wind_sound.wav",
     startAnimation_wordinsert_sound: "res/sound/startAnimationSound/startAnimation_wordinsert_sound.wav"
 };
 

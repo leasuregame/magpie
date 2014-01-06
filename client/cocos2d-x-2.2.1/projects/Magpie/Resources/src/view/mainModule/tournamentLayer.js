@@ -285,7 +285,7 @@ var TournamentLayer = cc.Layer.extend({
         var playerId = gameData.player.get("id");
         var index = 0;
 
-        var scrollViewHeight = len * 135 + 55;
+        var scrollViewHeight = len * 160 + 55;
         if (scrollViewHeight < this._tournamentLayerFit.scrollViewHeight) {
             scrollViewHeight = this._tournamentLayerFit.scrollViewHeight;
         }
@@ -305,7 +305,7 @@ var TournamentLayer = cc.Layer.extend({
 
             if (i == 10) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, scrollViewHeight - 135 * i - 15));
+                line.setPosition(cc.p(310, scrollViewHeight - 160 * i - 25));
                 slideLabel[i].addChild(line, 2);
             }
 
@@ -313,9 +313,9 @@ var TournamentLayer = cc.Layer.extend({
             slideLabel[i].addChild(tournamentPlayerLabel);
 
             if (i < 10) {
-                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 160 * (i + 1)));
             } else {
-                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 160 * (i + 1) - 55));
             }
 
             scrollViewLayer.addChild(slideLabel[i]);
@@ -329,7 +329,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this.addChild(this._scrollView);
 
-        var offsetY = 0 - (len - 1 - index) * 135;
+        var offsetY = 0 - (len - 1 - index) * 160;
         if (index < 10) offsetY -= 55;
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
         this._scrollView.setContentOffset(cc.p(0, offsetY));

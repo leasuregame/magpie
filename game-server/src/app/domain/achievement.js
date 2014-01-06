@@ -195,7 +195,7 @@ var sendMessage = function(player, achId) {
 			route: 'onAchieve',
 			msg: {
 				achieveId: achId,
-				fistTime: onlyOneAchieved(player.achievement) ? true : void 0;
+				fistTime: onlyOneAchieved(player.achievement) ? true : void 0
 			}
 		}, function(err, res) {
 			logger.info('push message(route: onAchieve):', err, res);

@@ -13,8 +13,6 @@
 
 
 var MAX_VIP_LEVEL = 12;
-var INIT_POWER_BUY_TIMES = 3;
-var INIT_CHALLENGE_BUY_COUNT = 10;
 
 var Shop = Entity.extend({
     _useVipBoxList: [],
@@ -84,9 +82,12 @@ var Shop = Entity.extend({
         cc.log("Shop updateMaxCount");
 
         var vip = gameData.player.get("vip");
+
         var privilegeTable = outputTables.vip_privilege.rows[vip];
-        this._powerBuyMaxCount = INIT_POWER_BUY_TIMES + privilegeTable.buy_power_count;
-        this._challengeBuyMaxCount = INIT_CHALLENGE_BUY_COUNT + privilegeTable.challenge_count;
+        var dailyGiftTable = outputTables.daily_gift.rows[1];
+
+        this._powerBuyMaxCount = dailyGiftTable.power_buy_count + privilegeTable.buy_power_count;
+        this._challengeBuyMaxCount = dailyGiftTable.challenge_buy_count + privilegeTable.challenge_count;
     },
 
     getPaymentTypeList: function () {

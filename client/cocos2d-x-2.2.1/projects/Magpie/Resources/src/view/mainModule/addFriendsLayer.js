@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var AddFriendsLayer = cc.Layer.extend({
     _addFriendsLayerFit: null,
 
@@ -289,16 +290,13 @@ var AddFriendsLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
 
-        var slideLayer = SlideLayer.create(
-            {
-                labels: slideLabel,
-                slideTime: 0.4,
-                timeTick: 0.05
-            }
-        );
+        var slideLayer = SlideLayer.create({
+            labels: slideLabel,
+            slideTime: 0.4,
+            timeTick: 0.05
+        });
 
         slideLayer.showSlide();
-
     },
 
     _onClickFriend: function (index) {
@@ -392,17 +390,14 @@ var AddFriendsLayer = cc.Layer.extend({
             that.update();
             that._updateFriendsItem.setEnabled(true);
         });
-
     }
-
 });
 
 AddFriendsLayer.create = function () {
+    var ret = new AddFriendsLayer();
 
-    var ref = new AddFriendsLayer();
-
-    if (ref && ref.init()) {
-        return ref;
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;

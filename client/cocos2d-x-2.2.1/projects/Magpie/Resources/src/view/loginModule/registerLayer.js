@@ -70,7 +70,6 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._accountEditBox.setFont("STHeitiTC-Medium", 30);
-        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(50);
         this._accountEditBox.setVisible(false);
         registerFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
@@ -126,7 +125,6 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
-        //this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordAgainEditBox.setMaxLength(20);
         this._passwordAgainEditBox.setVisible(false);
         registerFrame.controller.ccbPasswordAgainLabel.addChild(this._passwordAgainEditBox);
@@ -146,15 +144,15 @@ var RegisterLayer = cc.Layer.extend({
         var text = this._accountEditBox.getText();
         var len = text.length;
         if (!text) {
-            TipLayer.tip("请输入账号");
+            TipLayer.tip("请输入帐号");
         } else if (len < 6 || len > 50) {
-            TipLayer.tip("账号长度为6-50位");
+            TipLayer.tip("帐号长度为6-50位");
         } else if (CHINESE_REG.test(text)) {
-            TipLayer.tip("账号不能包含中文");
+            TipLayer.tip("帐号不能包含中文");
         } else if (EMPTY_SPACE_REG.test(text)) {
-            TipLayer.tip("账号不能包含空格");
+            TipLayer.tip("帐号不能包含空格");
         } else if (!(EMAIL_REG.test(text) || ACCOUNT_REG.test(text))) {
-            TipLayer.tip("账号不能包含非法字符");
+            TipLayer.tip("帐号不能包含非法字符");
         } else {
             return true;
         }
@@ -211,28 +209,18 @@ var RegisterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var user = gameData.user;
-
         if (this._judgeAccount() && this._judgePassword() && this._judgePasswordAgain()) {
             var account = this._accountEditBox.getText();
             var password = this._passwordEditBox.getText();
 
             var that = this;
-            user.register(function (data) {
+            gameData.user.register(function (data) {
                 cc.log(data);
 
                 TipLayer.tip("注册成功，请登录游戏");
-                that.getParent().switchTo(LoginLayer.create());
+                that.getParent().switchLayer(LoginLayer);
             }, account, password);
         }
-    },
-
-    _onClickBack: function () {
-        cc.log("RegisterLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.getParent().switchTo(LoginLayer.create());
     },
 
     ccbFnBack: function () {
@@ -240,7 +228,7 @@ var RegisterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switchTo(LoginLayer.create());
+        this.getParent().switchLayer(LoginLayer);
     }
 });
 

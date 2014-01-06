@@ -9,7 +9,7 @@
 
 
 // gate server config
-var GATE_SERVER_HOST = "115.29.175.156";
+var GATE_SERVER_HOST = "124.238.236.33";
 var GATE_SERVER_PORT = "3009";
 
 // connect timeout
@@ -277,6 +277,12 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
+                if (typeof(tbAdapter) != "undefined" && tbAdapter.TBLogout) {
+                    tbAdapter.TBLogout(0);
+                }
+
+                cc.Director.getInstance().pause();
+
                 if (that._disconnectStatus == DISCONNECT_KICK) {
                     that.kick();
                 } else {
@@ -348,6 +354,8 @@ var Server = Entity.extend({
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
         Dialog.pop("异地登录...", function () {
+            cc.Director.getInstance().resume();
+
             MainScene.destroy();
             cc.Director.getInstance().replaceScene(LoginScene.create());
         });
@@ -365,6 +373,8 @@ var Server = Entity.extend({
                 cc.log("-----------------------------------------------------");
                 cc.log("type: " + type);
                 cc.log("-----------------------------------------------------");
+
+                cc.Director.getInstance().resume();
 
                 if (!type) {
                     Dialog.pop("重连失败，请重新登录", function () {

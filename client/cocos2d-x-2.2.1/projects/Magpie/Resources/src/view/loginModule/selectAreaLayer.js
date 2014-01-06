@@ -6,6 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+/*
+ * select area layer
+ * */
+
+
 var SelectAreaLayer = cc.Layer.extend({
     _selectAreaLayerFit: null,
 
@@ -48,6 +54,7 @@ var SelectAreaLayer = cc.Layer.extend({
         if (scrollViewHeight < 400) {
             scrollViewHeight = 400;
         }
+
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -59,7 +66,6 @@ var SelectAreaLayer = cc.Layer.extend({
         selectAreaFrame.controller.ccbAreaList.addChild(scrollView, 1);
 
         for (var i = 0; i < len; ++i) {
-
             var areaItem = cc.MenuItemImage.create(
                 main_scene_image.up95,
                 main_scene_image.up95,
@@ -88,7 +94,6 @@ var SelectAreaLayer = cc.Layer.extend({
 
         return true;
     },
-
 
     _onClickArea: function (id) {
         return function () {

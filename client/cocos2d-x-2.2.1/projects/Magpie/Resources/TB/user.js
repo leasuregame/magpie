@@ -9,7 +9,7 @@
 
 
 var User = Entity.extend({
-    _id: 0,                 // 账号序号
+    _id: 0,                 // 帐号序号
     _createTime: 0,         // 创建时间
     _area: 1,               // 区
     _name: "",              // 名字
@@ -63,9 +63,11 @@ var User = Entity.extend({
         var that = this;
 
         var fn = function () {
-            var updateLayer = UpdateLayer.create();
-            updateLayer.retain();
-            var version = updateLayer.getVersion();
+            if (typeof(UpdateLayer) != 'undefined') {
+                var updateLayer = UpdateLayer.create();
+                updateLayer.retain();
+                var version = updateLayer.getVersion();
+            }
 
             cc.log("=================================================");
             cc.log(version);
@@ -77,7 +79,7 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version
+                    version: version || "1.0.0"
                 }, function (data) {
                     cc.log(data);
 
@@ -134,7 +136,9 @@ var User = Entity.extend({
                 fn();
             };
 
-            tbAdapter.TBLogin(0);
+            if (tbAdapter.TBLogin(0) != TB_PLATFORM_NO_ERROR) {
+                cb(0);
+            }
         } else {
             fn();
         }

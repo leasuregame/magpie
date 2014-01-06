@@ -59,7 +59,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginFrame.controller.ccbStartGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
 
-        this._accountLabel = StrokeLabel.create("当前未登陆", "STHeitiTC-Medium", 30);
+        this._accountLabel = StrokeLabel.create("当前未登录", "STHeitiTC-Medium", 30);
         this._accountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._accountLabel.setPosition(cc.p(0, 0));
         this._loginFrame.controller.ccbAccountLabel.addChild(this._accountLabel);
@@ -118,9 +118,7 @@ var LoginLayer = cc.Layer.extend({
     },
 
     updateAccountLabel: function () {
-        cc.log("LoginLayer updateAccountLabel");
-
-        var str = "当前未登陆";
+        var str = "当前未登录";
 
         if (tbAdapter && tbAdapter.TBIsLogined()) {
             str = tbAdapter.TBNickName();
@@ -152,7 +150,7 @@ var LoginLayer = cc.Layer.extend({
             if (type == 1) {
                 cc.Director.getInstance().replaceScene(MainScene.getInstance());
             } else if (type == 2) {
-                that.getParent().switchTo(NewPlayerLayer.create());
+                that.getParent().switchLayer(NewPlayerLayer);
             }
         });
     },

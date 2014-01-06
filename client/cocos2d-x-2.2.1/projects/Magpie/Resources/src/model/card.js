@@ -598,7 +598,7 @@ var Card = Entity.extend({
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                //cb();
             }
         });
     },

@@ -2,6 +2,8 @@ async = require 'async'
 utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
+fs = require 'fs'
+path = require 'path'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -42,18 +44,22 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin(APP_STORE_TYPE, @app, msg, session, next)
+  doLogin(APP_STORE_TYPE, @app, msg, session, 'app', next)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin(TONG_BU_TYPE, @app, msg, session, next)
+  doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, next) ->
+doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
 
   user = null
   player = null
   uid = null
   async.waterfall [
+    (cb) ->
+      ### 检查是否最新版本 ###
+      checkVersion(app, msg, platform, cb)
+
     (cb) =>
       session.set('areaId', areaId)
       session.pushAll cb
@@ -98,7 +104,7 @@ doLogin  = (type, app, msg, session, next) ->
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
-    ### 只有每个账号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
+    ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
     if user?.roles.length > 1 or player?.teachingStep >= 17
       delete player.teachingStep
 
@@ -122,3 +128,17 @@ authParams = (type, msg, app) ->
 
   args.fronendId = app.getServerId()
   [args, keyMap[type]?.method]
+
+getLatestVersion = (app, platform) ->
+  if not platform
+    platform = app.get('platform')
+    
+  vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
+  vdata[platform]?.version
+
+checkVersion = (app, msg, platform, cb) ->
+  version = msg.version or '1.0.0'
+  if version is getLatestVersion(app, platform)
+    cb()
+  else 
+    cb({code: 600, msg: '客户端版本不是最新'})

@@ -453,8 +453,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>2</real>
+									<real>1.3333333730697632</real>
+									<real>1.1666666269302368</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -494,7 +494,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>213</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -686,8 +686,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>2</real>
+									<real>1.3333333730697632</real>
+									<real>1.1666666269302368</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -727,7 +727,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>213</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -919,8 +919,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>2</real>
+									<real>0.99999964237213135</real>
+									<real>0.66666644811630249</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -960,7 +960,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>170</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1152,8 +1152,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>2</real>
+									<real>0.99999964237213135</real>
+									<real>0.66666644811630249</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1193,7 +1193,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>170</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1241,7 +1241,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1348,7 +1348,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1808,8 +1808,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1.5588235855102539</real>
+									<real>1.5588235855102539</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1822,7 +1822,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>15</real>
+								<real>3.75</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1851,7 +1851,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>225</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2072,8 +2072,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1.5588235855102539</real>
+									<real>1.5588235855102539</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2086,7 +2086,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>50</real>
+								<real>57.5</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2115,7 +2115,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>225</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2254,7 +2254,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.5</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -2267,7 +2284,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2277,7 +2294,62 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.10000000149011612</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect501_1.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.40000000596046448</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect800.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.5</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect800.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

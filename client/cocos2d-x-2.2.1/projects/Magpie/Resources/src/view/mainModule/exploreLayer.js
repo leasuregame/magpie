@@ -90,7 +90,7 @@ var ExploreLayer = cc.Layer.extend({
         lvIcon.setPosition(this._exploreLayerFit.lvIconPoint);
         this.addChild(lvIcon);
 
-        this._playerLvLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 25);
+        this._playerLvLabel = StrokeLabel.create("Lv. 0", "STHeitiTC-Medium", 28);
         this._playerLvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._playerLvLabel.setPosition(this._exploreLayerFit.playerLvLabelPoint);
         this.addChild(this._playerLvLabel);
@@ -282,7 +282,7 @@ var ExploreLayer = cc.Layer.extend({
         var value = progress.progress;
         var maxValue = progress.maxProgress;
 
-        this._playerLvLabel.setString(gameData.player.get("lv"));
+        this._playerLvLabel.setString("Lv. " + gameData.player.get("lv"));
 
         var time = this._showReward();
 
@@ -361,6 +361,7 @@ var ExploreLayer = cc.Layer.extend({
 
                     that._playAnimation();
                 } else {
+                    that.update();
                     that._unlock();
                 }
             }, this._getTaskId());

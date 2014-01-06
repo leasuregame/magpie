@@ -11,6 +11,7 @@
 #include <TBPlatform/TBPlatform.h>
 #include "TBCallbackHandler.h"
 #include "cocos2d.h"
+#include "Reachability.h"
 
 //TBAdapter TBAdapter::TBAdapter(){
     //[TBCallbackHandler sharedHandler];
@@ -60,6 +61,21 @@ int TBAdapter::TBSetAutoRotate(bool autoRotate){
 }
 /*登录*/
 int TBAdapter::TBLogin(int tag){
+    /*检查网络，若网络不通则返回错误*/
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
+    switch ([reach currentReachabilityStatus]) {
+        case NotReachable:
+            // 没有网络连接
+            return TB_PLATFORM_NETWORKING_ERROR;
+            break;
+        case ReachableViaWWAN:
+            // 使用3G网络
+            break;
+        case ReachableViaWiFi:
+            // 使用WiFi网络
+            break;
+    }
+    
     return [[TBPlatform defaultPlatform] TBLogin:0];
 }
 /*注销*/
@@ -129,8 +145,6 @@ int TBAdapter::TBEnterBBS(int tag){
 }
 /************************以下函数需要开发根据实际应用自定义************************/
 void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
-    cocos2d::CCLog("initDidFinishWithUpdateCodeHandler call: %d", code);
-    
     jsval v[] = {
         v[0] = UINT_TO_JSVAL(code)
     };
@@ -144,7 +158,7 @@ void TBAdapter::TBLoginResultHandle(bool isSuccess){
     };
     
     ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
-                                                           "loginResultHandler", 2, v, &retval);
+                                                           "loginResultHandler", 1, v, &retval);
 }
 void TBAdapter::TBLogoutHandle(){
     this->TBExcuteCallback("logoutHandler", 0, NULL, NULL);
@@ -266,7 +280,7 @@ static TBCallbackHandler *p_instance = NULL;
  */
 - (void)TBInitFinishedNotify:(NSNotification *)notify{
     int updateResult = [[notify.userInfo objectForKey:@"updateResult"] intValue];
-    TBAdapter::TBAdapterInstance() -> TBInitDidFinishWithUpdateCode(updateResult);
+    TBAdapter::TBAdapterInstance()->TBInitDidFinishWithUpdateCode(updateResult);
 }
 /**
  *	登录结果通知

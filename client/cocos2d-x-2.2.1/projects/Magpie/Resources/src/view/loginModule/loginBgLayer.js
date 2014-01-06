@@ -1,10 +1,16 @@
 /**
  * Created with JetBrains WebStorm.
- * User: lujunyu
+ * User: lcc3536
  * Date: 13-12-18
  * Time: 下午2:50
  * To change this template use File | Settings | File Templates.
  */
+
+
+/*
+ * login bg layer
+ * */
+
 
 var LoginBgLayer = cc.Layer.extend({
     _loginBgLayerFit: null,
@@ -22,17 +28,17 @@ var LoginBgLayer = cc.Layer.extend({
 
         return true;
     }
-
 });
+
 
 LoginBgLayer.create = function () {
     cc.log("LoginBgLayer create");
 
-    var ref = new LoginBgLayer();
-    if (ref && ref.init()) {
-        return ref;
+    var ret = new LoginBgLayer();
+
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;
-
 };

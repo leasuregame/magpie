@@ -108,7 +108,7 @@ var SpiritDetails = LazyLayer.extend({
         this._passiveHarmLabel.setPosition(this._spiritDetailsFit.passiveHarmLabelPoint);
         this.addChild(this._passiveHarmLabel);
 
-        this._lvLabel = cc.LabelTTF.create("LV.  0 / 0", "STHeitiTC-Medium", 22);
+        this._lvLabel = cc.LabelTTF.create("Lv.  0 / 0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._spiritDetailsFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
@@ -157,7 +157,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
-        this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
+        this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
     },
@@ -171,7 +171,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
-        this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
+        this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
     },
@@ -184,8 +184,8 @@ var SpiritDetails = LazyLayer.extend({
         var spirit = gameData.spirit;
 
         var lv = spirit.get("lv");
-        controller.ccbOldLvLabel.setString("LV.  " + (lv - 1));
-        controller.ccbNowLvLabel.setString("LV.  " + lv);
+        controller.ccbOldLvLabel.setString("Lv.  " + (lv - 1));
+        controller.ccbNowLvLabel.setString("Lv.  " + lv);
         controller.ccbOldPassiveHarmLabel.setString(this._oldPassiveHarm);
         controller.ccbNowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
         controller.ccbSpiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));

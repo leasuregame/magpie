@@ -360,21 +360,14 @@ lz.getTimeStr = function (time) {
     cc.log("BattleMessageLayer _getTimeStr");
 
     var date = new Date(time);
-    var today = new Date();
-    var timeStr = "";
 
-    if (today.toDateString() === date.toDateString()) {
-        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-    } else {
-        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-    }
-
-    return timeStr;
+    return (date.getFullYear() + " . " + (date.getMonth() + 1) + " . " + date.getDate() +
+        "  " + date.getHours() + " : " + date.getMinutes());
 };
 
 var MAX_LAST_NAME_COUNT = 250;
 var MAX_FIRST_NAME_COUNT = 2568;
-var MAX_ILLEGAL_STR_COUNT = 778;
+var MAX_ILLEGAL_STR_COUNT = 780;
 
 lz.getRandomFirstName = function () {
     cc.log("lz getRandomFirstName");
@@ -408,6 +401,41 @@ lz.eligibleName = function (name) {
     }
 
     return true;
+};
+
+lz.replaceStr = function (str) {
+    cc.log("lz replaceStr");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        var index = 0;
+        var illegalWord = illegalStr[i].illegal_str;
+        var len = illegalWord.length;
+
+        while (true) {
+            index = str.indexOf(illegalWord, index);
+
+            if (index == -1) {
+                break;
+            }
+
+            var sStr = str.substring(0, index);
+            var eStr = str.substring(index + len);
+
+            str = sStr;
+
+            for (var j = 0; j < len; ++j) {
+                str += "*";
+            }
+
+            str += eStr;
+
+            index += len;
+        }
+    }
+
+    return str;
 };
 
 

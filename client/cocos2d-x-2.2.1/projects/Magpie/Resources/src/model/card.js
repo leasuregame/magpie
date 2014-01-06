@@ -306,12 +306,6 @@ var Card = Entity.extend({
         return (this._lv < this._maxLv);
     },
 
-    virtualCard: function () {
-        this._loadCardTable();
-        this._loadSkillTable();
-        this._calculateAddition();
-    },
-
     upgrade: function (cb, cardIdList) {
         cc.log("Card upgrade " + this._id);
         cc.log(cardIdList);

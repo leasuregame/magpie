@@ -312,7 +312,7 @@ var CardEvolutionLabel = cc.Layer.extend({
 
                 this._virtualCard = lz.clone(this._leadCard);
                 this._virtualCard.set("tableId", this._leadCard.get("tableId") + 1);
-                this._virtualCard.virtualCard();
+                this._virtualCard.update();
 
                 this._cardLvLabel[1].setString(this._virtualCard.get("lv") + "/" + this._virtualCard.get("maxLv"));
                 this._cardHpLabel[1].setString(this._virtualCard.get("hp"));

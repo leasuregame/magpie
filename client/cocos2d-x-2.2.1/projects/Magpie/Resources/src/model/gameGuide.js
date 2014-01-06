@@ -54,10 +54,7 @@ var EXPLAIN = {
     }
 };
 
-var PASSIVE_SKILL_AFRESH_LV = 45;
-
 var gameGuide = {
-
     _tournamentGuide: false,
     _passGuide: false,
     _treasureHuntGuide: false,
@@ -119,5 +116,4 @@ var gameGuide = {
     set: function (name, value) {
         this["_" + name] = value;
     }
-
 };

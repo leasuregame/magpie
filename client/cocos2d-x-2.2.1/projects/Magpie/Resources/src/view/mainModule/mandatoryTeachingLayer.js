@@ -10,26 +10,27 @@ var teaching = [
     {
         overStep: 10,
         clickType: [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25, 29],
-        layerOrder: [1, 0, 4, 4, 4, 4, 4, 4, 4, 4]
+        effectOrder: [17, 20, 21, 11, 13, 22, 11, 13, 25, 29]
     },
     {
         overStep: 8,
         clickType: [1, 0, 0, 0, 0, 0, 1, 2],
-        effectOrder: [18, 20, 24, 21, 11, 13, 30, 25],
-        layerOrder: [2, 0, 4, 4, 4, 4, 4, 4]
+        effectOrder: [18, 20, 24, 21, 11, 13, 30, 25]
     },
     {
         overStep: 6,
         clickType: [1, 0, 0, 0, 0, 2],
-        effectOrder: [19, 23, 21, 11, 13, 25],
-        layerOrder: [3, 0, 5, 5, 5, 5]
+        effectOrder: [19, 23, 21, 11, 13, 25]
     },
     {
         overStep: 6,
         clickType: [1, 0, 0, 0, 0, 2],
-        effectOrder: [26, 24, 27, 11, 13, 25],
-        layerOrder: [0, 5, 5, 5, 5, 5]
+        effectOrder: [26, 24, 27, 11, 13, 25]
+    },
+    {
+        overStep: 4,
+        clickType: [0, 0, 0, 1],
+        effectOrder: [31, 32, 33, 34]
     }
 
 ];
@@ -39,25 +40,16 @@ var FIRST_FIGHT = 0;
 var FIRST_TOURNAMENT = 1;
 var FIRST_PASS_WIN = 2;
 var FIRST_PASSIVE_SKILL_AFRESH = 3;
+var FIRST_ACHIEVEMENT = 4;
 
 var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 
 var MandatoryTeachingLayer = LazyLayer.extend({
     _mandatoryTeachingLayerFit: null,
 
-    _layer: [
-        MainLayer,
-        ExploreLayer,
-        TournamentLayer,
-        PassLayer,
-        StrengthenLayer,
-        EvolutionLayer
-    ],
-
     _progress: 0,   //总的教学进度
     _step: 100,       //当前教学步骤
     _overStep: 0,    //结束教学步骤
-    _layerOrder: [],
     _clickType: [],
     _rectOrder: [],
     _effectPoints: [],
@@ -87,7 +79,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
         this._effectOrder = teaching[this._progress].effectOrder;
-        this._layerOrder = teaching[this._progress].layerOrder;
 
         this._rectOrder = this._mandatoryTeachingLayerFit.rectOrders[this._progress];
         this._effectPoints = this._mandatoryTeachingLayerFit.effectPoints[this._progress];
@@ -179,6 +170,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         cc.log(this._rect);
         if (this.isVisible()) {
             var point = touch.getLocation();
+            cc.log(point);
             var isShield = !cc.rectContainsPoint(this._rect, point);
             if (this._clickType[this._step] == CLICK_ANY) {
                 this.clearAndSave();

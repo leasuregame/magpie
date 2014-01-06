@@ -112,6 +112,8 @@ var User = Entity.extend({
                     } else {
                         cc.log("login fail");
 
+                        tbAdapter.TBLogout(0);
+
                         cb(0);
 
                         TipLayer.tip(data.msg);

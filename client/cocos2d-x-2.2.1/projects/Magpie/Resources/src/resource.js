@@ -620,6 +620,11 @@ var main_scene_image = {
     icon333: main_scene_path + "icon333.png",
     icon334: main_scene_path + "icon334.png",
     icon335: main_scene_path + "icon335.png",
+    icon336: main_scene_path + "icon336.png",
+    icon337: main_scene_path + "icon337.png",
+    icon338: main_scene_path + "icon338.png",
+    icon339: main_scene_path + "icon339.png",
+    icon340: main_scene_path + "icon340.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -752,6 +757,7 @@ var main_scene_image = {
     uiEffect70: "res/ccb/uiEffect70.ccbi",
     uiEffect71: "res/ccb/uiEffect71.ccbi",
     uiEffect72: "res/ccb/uiEffect72.ccbi",
+    uiEffect73: "res/ccb/uiEffect73.ccbi",
 
 
     // 特效资源
@@ -994,7 +1000,11 @@ var main_scene_image = {
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
     tutorials29: "res/ccb/tutorials29.ccbi",
-
+    tutorials30: "res/ccb/tutorials30.ccbi",
+    tutorials31: "res/ccb/tutorials31.ccbi",
+    tutorials32: "res/ccb/tutorials32.ccbi",
+    tutorials33: "res/ccb/tutorials33.ccbi",
+    tutorials34: "res/ccb/tutorials34.ccbi",
 
     // 动画
     startAnimation1: "res/ccb/startAnimation1.ccbi",

@@ -50,8 +50,8 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "";
-        this._password = sys.localStorage.getItem("password") || "";
+        this._account = sys.localStorage.getItem("account") || "111111";
+        this._password = sys.localStorage.getItem("password") || "111111";
         this._area = parseInt(sys.localStorage.getItem("area")) || 0;
     },
 

@@ -330,7 +330,6 @@ var MainLayer = cc.Layer.extend({
             this.set("isFirstPassiveSkillAfresh", false);
             MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
         }
-
     },
 
     _onClickLayer: function (index) {

@@ -229,15 +229,20 @@ var fit4Iphone4 = {
         },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 539),
-            "helpBgSpritePoint": cc.p(360, 292),
-            "resLabelPoint": cc.p(360, 422),
-            "tipLabelPoint": cc.p(360, 292),
-            "helpLabelPoint": cc.p(360, 292),
-            "selectLeadCardItemPoint": cc.p(360, 597),
-            "evolutionItemPoint": cc.p(260, 182),
-            "selectRetinueCardItemPoint": cc.p(460, 182),
-            "selectLeadCardIconPoint": cc.p(360, 597),
-            "leadCardHalfNodePoint": cc.p(360, 597)
+            "helpBgSpritePoint": cc.p(360, 252),
+            "resLabelPoint": cc.p(360, 412),
+            "tipLabelPoint": cc.p(360, 252),
+            "helpLabelPoint": cc.p(360, 252),
+            "selectLeadCardItemPoint": cc.p(215, 617),
+            "evolutionItemPoint": cc.p(260, 152),
+            "selectRetinueCardItemPoint": cc.p(460, 152),
+            "selectLeadCardIconPoint": cc.p(215, 617),
+            "leadCardHalfNodePoint": cc.p(360, 617),
+            "cardBgSpritePoint": cc.p(360, 479),
+            "successBgIconPoint": cc.p(360, 617),
+            "evolutionRatePoint": cc.p(360, 602),
+            "starPoint": cc.p(360, 682),
+            "newCardItemPoint": cc.p(505, 617)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -573,8 +578,8 @@ var fit4Iphone4 = {
             "bgSpritePoint": cc.p(40, 106),
             "playerHeaderLabelPoint": cc.p(40, 802),
             "lineIconPoint": cc.p(40, 784),
-            "abilityLabelIconPoint": cc.p(78, 591),
-            "abilityLabelPoint": cc.p(240, 608),
+            "abilityLabelIconPoint": cc.p(48, 591),
+            "abilityLabelPoint": cc.p(220, 608),
             "rankingLabelPoint": cc.p(470, 608),
             "lineUpLabelPoint": cc.p(40, 712),
             "spiritLayerItemPoint": cc.p(360, 412),
@@ -609,7 +614,7 @@ var fit4Iphone4 = {
                 "1": [
                     cc.rect(57, 4, 106, 106), cc.rect(445, 467, 221, 91), cc.rect(179, 728, 150, 57),
                     cc.rect(293, 518, 135, 158), cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40),
-                    cc.rect(0, 0, 640, 1136)
+                    cc.rect(124, 222, 487, 120), cc.rect(0, 0, 640, 1136)
                 ],
                 "2": [
                     cc.rect(57, 4, 106, 106), cc.rect(445, 277, 221, 91), cc.rect(293, 518, 135, 158),
@@ -618,6 +623,10 @@ var fit4Iphone4 = {
                 "3": [
                     cc.rect(445, 277, 221, 91), cc.rect(179, 728, 150, 57), cc.rect(137, 582, 108, 108),
                     cc.rect(200, 676, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(0, 0, 640, 1136)
+                ],
+                "4": [
+                    cc.rect(57, 4, 106, 106), cc.rect(365, 115, 98, 84), cc.rect(495, 750, 150, 70),
+                    cc.rect(164, 4, 106, 106)
                 ]
             },
             "effectPoints": {
@@ -630,7 +639,7 @@ var fit4Iphone4 = {
                 "1": [
                     cc.p(93, 54), cc.p(555, 512), cc.p(254, 756),
                     cc.p(360, 597), cc.p(360, 732), cc.p(603, 840),
-                    cc.p(360, 182)
+                    cc.p(360, 292), cc.p(360, 182)
                 ],
                 "2": [
                     cc.p(93, 54), cc.p(555, 322), cc.p(360, 597),
@@ -639,8 +648,11 @@ var fit4Iphone4 = {
                 "3": [
                     cc.p(555, 322), cc.p(254, 756), cc.p(191, 636),
                     cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
+                ],
+                "4": [
+                    cc.p(93, 54), cc.p(414, 157), cc.p(360, 785),
+                    cc.p(200, 54)
                 ]
-
             }
         },
         "messageLabel": {
@@ -1462,14 +1474,19 @@ var fit4Iphone5 = {
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(319, 627),
             "helpBgSpritePoint": cc.p(320, 307),
-            "resLabelPoint": cc.p(320, 430),
+            "resLabelPoint": cc.p(320, 499),
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
-            "selectLeadCardItemPoint": cc.p(320, 690),
+            "selectLeadCardItemPoint": cc.p(175, 710),
             "evolutionItemPoint": cc.p(220, 197),
             "selectRetinueCardItemPoint": cc.p(420, 197),
-            "selectLeadCardIconPoint": cc.p(320, 690),
-            "leadCardHalfNodePoint": cc.p(320, 690)
+            "selectLeadCardIconPoint": cc.p(175, 710),
+            "leadCardHalfNodePoint": cc.p(320, 690),
+            "cardBgSpritePoint": cc.p(320, 569),
+            "successBgIconPoint": cc.p(320, 710),
+            "evolutionRatePoint": cc.p(320, 695),
+            "starPoint": cc.p(320, 770),
+            "newCardItemPoint": cc.p(465, 710)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1805,8 +1822,8 @@ var fit4Iphone5 = {
             "bgSpritePoint": cc.p(0, 106),
             "playerHeaderLabelPoint": cc.p(0, 968),
             "lineIconPoint": cc.p(0, 950),
-            "abilityLabelIconPoint": cc.p(38, 732),
-            "abilityLabelPoint": cc.p(200, 749),
+            "abilityLabelIconPoint": cc.p(8, 732),
+            "abilityLabelPoint": cc.p(180, 749),
             "rankingLabelPoint": cc.p(430, 749),
             "lineUpLabelPoint": cc.p(0, 853),
             "spiritLayerItemPoint": cc.p(320, 500),
@@ -1841,7 +1858,7 @@ var fit4Iphone5 = {
                 "1": [
                     cc.rect(17, 4, 106, 106), cc.rect(405, 608, 221, 91), cc.rect(139, 869, 150, 57),
                     cc.rect(253, 611, 135, 158), cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40),
-                    cc.rect(0, 0, 640, 1136)
+                    cc.rect(84, 237, 487, 120), cc.rect(0, 0, 640, 1136)
                 ],
                 "2": [
                     cc.rect(17, 4, 106, 106), cc.rect(405, 312, 221, 91), cc.rect(253, 611, 135, 158),
@@ -1850,6 +1867,10 @@ var fit4Iphone5 = {
                 "3": [
                     cc.rect(405, 312, 221, 91), cc.rect(139, 869, 150, 57), cc.rect(97, 670, 108, 108),
                     cc.rect(160, 830, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(0, 0, 640, 1136)
+                ],
+                "4": [
+                    cc.rect(17, 4, 106, 106), cc.rect(325, 125, 98, 84), cc.rect(455, 932, 150, 70),
+                    cc.rect(124, 4, 106, 106)
                 ]
             },
             "effectPoints": {
@@ -1862,7 +1883,7 @@ var fit4Iphone5 = {
                 "1": [
                     cc.p(53, 54), cc.p(515, 653), cc.p(214, 897),
                     cc.p(320, 690), cc.p(320, 886), cc.p(563, 1012),
-                    cc.p(320, 197)
+                    cc.p(320, 307), cc.p(320, 197)
                 ],
                 "2": [
                     cc.p(53, 54), cc.p(515, 357), cc.p(320, 690),
@@ -1871,7 +1892,12 @@ var fit4Iphone5 = {
                 "3": [
                     cc.p(515, 357), cc.p(214, 897), cc.p(151, 724),
                     cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
+                ],
+                "4": [
+                    cc.p(53, 54), cc.p(374, 167), cc.p(320, 956),
+                    cc.p(160, 54)
                 ]
+
 
             }
         },

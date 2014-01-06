@@ -31,6 +31,8 @@ var TournamentLayer = cc.Layer.extend({
     _level9Box: null,
     _isFirstTournament: false,
 
+    _isFirstEnter: false,
+
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -58,6 +60,7 @@ var TournamentLayer = cc.Layer.extend({
         this._tournamentLayerFit = gameFit.mainScene.tournamentLayer;
 
         this._rankList = [];
+        this._isFirstEnter = true;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -294,7 +297,7 @@ var TournamentLayer = cc.Layer.extend({
 
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-            //    slideLabel[i].setVisible(false);
+         //   slideLabel[i].setVisible(!this._isFirstEnter);
 
             if (playerId == this._rankList[i].playerId) {
                 index = Math.min(i + 1, len - 1);
@@ -331,15 +334,19 @@ var TournamentLayer = cc.Layer.extend({
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
 
-//        var slideLayer = SlideLayer.create(
-//            {
-//                labels: slideLabel,
-//                slideTime: 0.4,
-//                timeTick: 0.05
-//            }
-//        );
+//        if(this._isFirstEnter) {
+//            var slideLayer = SlideLayer.create(
+//                {
+//                    labels: slideLabel,
+//                    slideTime: 0.4,
+//                    timeTick: 0.05
+//                }
+//            );
 //
-//        slideLayer.showSlide();
+//            slideLayer.showSlide();
+//            this._isFirstEnter = false;
+//        }
+
 
     },
 

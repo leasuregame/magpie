@@ -54,7 +54,7 @@ var EXPLAIN = {
     }
 };
 
-var PASSIVE_SKILL_AFRESH_LV = 35;
+var PASSIVE_SKILL_AFRESH_LV = 45;
 
 var gameGuide = {
 
@@ -96,7 +96,7 @@ var gameGuide = {
             }
         }
 
-        if (lv == PASSIVE_SKILL_AFRESH_LV) {
+        if (lv == table["pass_skillafresh"]) {
             this.set("isFirstPassiveSkillAfresh", true);
         }
     },

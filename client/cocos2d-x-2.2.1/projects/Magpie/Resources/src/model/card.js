@@ -59,7 +59,7 @@ var Card = Entity.extend({
     _skillType: 0,          // 技能类型
     _skillMaxLv: 0,         // 技能最大等级
 
-    _url: "",
+    _url: "",               // 图片资源路径
 
     _newCardMark: false,
 
@@ -69,22 +69,6 @@ var Card = Entity.extend({
         this._passiveSkill = {};
 
         this.update(data);
-
-        if (data.skillInc) {
-            cc.log("=============================================");
-            cc.log(data);
-
-
-            cc.log(this);
-
-            if (data != undefined && data.hp != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
-                cc.Assert(data.hp == this._hp, "Card hp error");
-
-            if (data != undefined && data.atk != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
-                cc.Assert(data.atk == this._atk, "Card atk error");
-
-            cc.log("=============================================");
-        }
 
         this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 
@@ -156,9 +140,6 @@ var Card = Entity.extend({
         this._initHp = Math.floor(this._initHp);
         this._initAtk = Math.floor(this._initAtk);
 
-//        this._hp = this._initHp;
-//        this._atk = this._initAtk;
-
         this._url = "card" + cardTable.url;
 
         // 读取卡牌升级配置表
@@ -193,37 +174,6 @@ var Card = Entity.extend({
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
     },
 
-    setNewCardMark: function (mark) {
-        this._newCardMark = mark;
-        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
-    },
-
-    getSkillType: function () {
-        cc.log("Card _getSkillType");
-
-        if (this._skillType == 1 || this._skillType == 2) {
-            return "攻击";
-        }
-
-        if (this._skillType == 3 || this._skillType == 4) {
-            return "治疗";
-        }
-
-        return "";
-    },
-
-    hasSkill: function () {
-        return (!!this._skillId);
-    },
-
-    hasPassiveSkill: function () {
-        for (var key in this._passiveSkill) {
-            return true;
-        }
-
-        return false;
-    },
-
     _calculateAddition: function () {
         cc.log("Card _calculateAddition");
 
@@ -253,6 +203,37 @@ var Card = Entity.extend({
 
         this._hp = this._initHp + elixirHp + psHp;
         this._atk = this._initAtk + elixirAtk + psAtk;
+    },
+
+    setNewCardMark: function (mark) {
+        this._newCardMark = mark;
+        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
+    },
+
+    getSkillType: function () {
+        cc.log("Card _getSkillType");
+
+        if (this._skillType == 1 || this._skillType == 2) {
+            return "攻击";
+        }
+
+        if (this._skillType == 3 || this._skillType == 4) {
+            return "治疗";
+        }
+
+        return "";
+    },
+
+    hasSkill: function () {
+        return (!!this._skillId);
+    },
+
+    hasPassiveSkill: function () {
+        for (var key in this._passiveSkill) {
+            return true;
+        }
+
+        return false;
     },
 
     getCardFullUrl: function () {
@@ -309,16 +290,6 @@ var Card = Entity.extend({
 
         return (cardGrow.cur_exp + this._exp);
     },
-
-    getCardFullLvExp: function () {
-        cc.log("Card getCardFullLvExp");
-
-        // 读取卡牌升级配置表
-        var cardGrow = outputTables.card_grow.rows[this._maxLv];
-
-        return (cardGrow.cur_exp + this.getCardExp());
-    },
-
 
     getCardFullLvNeedExp: function () {
         cc.log("Card getCardFullLvNeedExp");
@@ -591,8 +562,6 @@ var Card = Entity.extend({
                 cc.log("train fail");
 
                 TipLayer.tip(data.msg);
-
-                //cb();
             }
         });
     },
@@ -610,7 +579,7 @@ var Card = Entity.extend({
     },
 
     isLeadCard: function (tableId) {
-        return tableId < 10000 || tableId == 30000;
+        return (tableId < 10000 || tableId == 30000);
     }
 });
 

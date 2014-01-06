@@ -103,11 +103,9 @@ var PlayerHeaderLabel = cc.Layer.extend({
     },
 
     update: function () {
-        cc.log("PlayerHeaderLabel update");
-
         var player = gameData.player;
 
-        if(player.isFullLv()) {
+        if (player.isFullLv()) {
             this._expProgress.setAllValue(0, 0);
         } else {
             this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));

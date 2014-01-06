@@ -76,7 +76,6 @@ var Player = Entity.extend({
         gameData.achievement.init();
         gameData.activity.init();
         gameData.speak.init();
-       // gameData.exchange.init();
         gameData.payment.init();
 
         cc.log(this);
@@ -175,13 +174,7 @@ var Player = Entity.extend({
     },
 
     isFullLv: function () {
-        cc.log("Player isFullLv");
-
-        if (this._lv == this._maxLv) {
-            return true;
-        }
-
-        return false;
+        return (this._lv >= this._maxLv);
     },
 
     _lvChangeEvent: function () {

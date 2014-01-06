@@ -448,7 +448,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       if player.lv < fun_limit?.pass_skillafresh 
         return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
 
-      consumeVal = passSkillConfig.CONSUME[type] * psIds.length
+      consumeVal = passSkillConfig.CONSUME[type]
 
       if player[_pros[type]] < consumeVal
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})

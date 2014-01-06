@@ -16,19 +16,42 @@ var GoldCard = (function(_super) {
         type: ''
     };
 
+    GoldCard.prototype.daysRemaining = function(dateString) {
+        var today = new Date(dateString || new Date().toDateString());
+        var validDate = new Date(this.validDate);
+        var days = (validDate - today)/(1000*60*60*24);
+        return days>=0 ? days+1 : 0;
+    };
+
+    GoldCard.prototype.setFlag = function() {
+        if (this.daysRemaining() <= 0) {
+            return;
+        }
+        var days = getDays(this.created);
+        this.set('flag', utility.mark(parseInt(this.flag), days).toString());
+    };
+
+    GoldCard.prototype.hasFlag = function() {
+        return utility.hasMark(parseInt(this.flag), getDays(this.created));
+    };
+
     GoldCard.prototype.toJson = function() {
         return {
             id: this.id,
-            orderId: this.orderId,
-            playerId: this.playerId,
             type: this.type,
-            flag: this.flag,
-            created: this.created,
-            validDate: this.validDate
+            remainingDays: this.daysRemaining(),
+            hasGot: this.hasFlag()
         };
     };
 
     return GoldCard;
 })(Entity);
+
+var getDays = function(created) {
+    var today = new Date(new Date().toDateString());
+    var cdata = new Date(created);
+    var days = (today - cdata)/(1000*60*60*24);
+    return days+1;
+};
 
 module.exports = GoldCard;

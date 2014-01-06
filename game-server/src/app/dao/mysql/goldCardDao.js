@@ -15,6 +15,50 @@ var GoldCardDao = (function(_super) {
   GoldCardDao.table = 'goldCard';
   GoldCardDao.domain = GoldCard;
 
+  GoldCardDao.getValidCards = function(playerId, cb) {
+    var today = new Date();
+    var sql = 'select * from goldCard where validDate >= ' + utility.dateFormat(today, 'yyyy-MM-dd');
+
+    dbClient.query(sql, [], function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when query goldCard]", sql, args);
+        logger.error(err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if ( !! res && res.length > 0) {
+        cb(null, res);
+      } else {
+        cb(null, []);
+      }
+    });
+  };
+
+  GoldCardDao.getByType = function(playerId, type, cb) {
+    var today = new Date();
+    var sql = "select * from goldCard where validDate >= " + utility.dateFormat(today, 'yyyy-MM-dd') + " and type = '" + type + "'";
+
+    dbClient.query(sql, [], function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when query goldCard]", sql, args);
+        logger.error(err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if ( !! res && res.length > 0) {
+        cb(null, res);
+      } else {
+        cb(null, []);
+      }
+    });
+  };
+
   return GoldCardDao;
 })(DaoBase);
 

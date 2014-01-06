@@ -335,7 +335,8 @@ var Player = (function(_super) {
         },
         levelReward: [],
         teachingStep: 0,
-        exchangeCards: []
+        exchangeCards: [],
+        goldCards: {}
     };
 
     Player.prototype.resetData = function() {
@@ -1113,6 +1114,24 @@ var Player = (function(_super) {
         return _.union(f, m);
     };
 
+    Player.prototype.addGoldCard = function(gc) {
+        this.goldCards[gc.type] = gc;
+    };
+
+    Player.prototype.addGoldCards = function(gcs) {
+        for (var i = 0; i < gcs.length; i++) {
+            this.addGoldCard(gcs[i]);
+        }
+    };
+
+    Player.prototype.getGoldCard = function() {
+        var gc = {};
+        for (var g in this.goldCards) {
+            gc[g] = this.goldCards[g].toString();
+        }
+        return gc;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1152,7 +1171,8 @@ var Player = (function(_super) {
             firstTime: this.hasFirstTime() ? this.firstTime : void 0,
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
-            exchangeCards: this.exchangeCards
+            exchangeCards: this.exchangeCards,
+            goldCards: this.getGoldCard()
         };
     };
 

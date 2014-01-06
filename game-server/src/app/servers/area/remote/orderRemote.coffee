@@ -73,23 +73,39 @@ Remote::add = (args, callback) ->
     player.increase('gold', (product.cash * 10 + product.gold) * times)
     player.save()
 
-
-    successMsg(@app, player)
+    addGoldCard @app, order.id, player, product, (err, ply) => successMsg(@app, ply)
     callback(null, {ok: true})
     updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS)
 
-addGoldCard = (app, orderId, player, productId) ->
+addGoldCard = (app, orderId, player, product, cb) ->
+  return cb(null, player) if not isGoldCard(product)
+
+  today = new Date()
+  validDate = new Date(today.getDate()+product.valid_days-1)
   app.get('dao').goldCard.create {
     data: {
       orderId: orderId,
       playerId: player.id,
-      type: productId
+      type: product.product_id,
+      created: utility.dateFormat(today, "yyyy-MM-dd"),
+      validDate: utility.dateFormat(validDate, "yyyy-MM-dd")
     }
   }, (err, res) ->
     if err
       logger.error('faild to create goldCard record: ', err)
 
     player.addGoldCard(res)
+    cb(null, player)
+
+isGoldCard = (product) ->
+  ids = [
+    'com.leasuregame.magpie.week.card.pay6',
+    'com.leasuregame.magpie.week.card.pay6'
+  ]
+  if product and product.product_id in ids
+    return true
+  else
+    return false
 
 updateOrderStatus = (app, tradeNo, status) ->
   app.get('dao').order.update {

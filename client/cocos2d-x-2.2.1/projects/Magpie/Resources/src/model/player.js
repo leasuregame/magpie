@@ -132,7 +132,8 @@ var Player = Entity.extend({
         gameData.shop.init({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
-            challengeBuyCount: data.dailyGift.challengeBuyCount
+            challengeBuyCount: data.dailyGift.challengeBuyCount,
+            expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
         cc.log(data.exchangeCards);

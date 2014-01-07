@@ -18,6 +18,7 @@ var Tournament = Entity.extend({
     _canGetReward: [],
     _notCanGetReward: [],
     _rankList: [],
+    _rankStats: {},
 
     init: function (data) {
         cc.log("Tournament init");
@@ -27,6 +28,7 @@ var Tournament = Entity.extend({
         this._canGetReward = [];
         this._notCanGetReward = [];
         this._rankList = [];
+        this._rankStats = {};
 
         this.update(data);
 
@@ -40,6 +42,7 @@ var Tournament = Entity.extend({
         this.set("count", data.challengeCount);
         this.set("canGetReward", data.canGetReward);
         this.set("notCanGetReward", data.notCanGetReward);
+        this.set("rankStats",data.rankStats);
 
         if (data.rankList) {
             this._rankList = [];

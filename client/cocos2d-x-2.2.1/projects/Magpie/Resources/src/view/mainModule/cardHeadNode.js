@@ -32,6 +32,10 @@ var CardHeadNode = cc.Node.extend({
         } else if (this._card) {
             star = this._card.get("star");
             url = this._card.get("url") + "_head" + (star > 2 ? star - 2 : 1);
+        } else {
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect61, this);
+            effect.setPosition(cc.p(51, 57));
+            this.addChild(effect, 1);
         }
 
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);

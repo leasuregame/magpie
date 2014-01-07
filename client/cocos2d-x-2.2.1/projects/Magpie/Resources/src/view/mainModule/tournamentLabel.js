@@ -83,6 +83,8 @@ var TournamentLabel = cc.Node.extend({
             this.addChild(rankingLabel);
         }
 
+        var ability = this._player.ability;
+
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
 
@@ -123,14 +125,15 @@ var TournamentLabel = cc.Node.extend({
                 this.addChild(functionItemMenu);
             }
 
+        } else {
+            ability = player.getAbility();
         }
 
         var abilityIcon = cc.Sprite.create(main_scene_image.icon341);
-        //abilityIcon.setColor(cc.c3b(56, 3, 5));
         abilityIcon.setPosition(cc.p(60, 130));
         this.addChild(abilityIcon);
 
-        var abilityLabel = cc.LabelTTF.create("10000", "STHeitiTC-Medium", 22);
+        var abilityLabel = cc.LabelTTF.create(ability, "STHeitiTC-Medium", 22);
         abilityLabel.setColor(cc.c3b(202, 255, 99));
         abilityLabel.setPosition(cc.p(130, 128));
         this.addChild(abilityLabel);

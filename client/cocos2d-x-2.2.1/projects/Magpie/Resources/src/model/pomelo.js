@@ -1514,7 +1514,8 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             var onclose = function (event) {
                 pomelo.emit('close', event);
                 cc.log('socket close: ', event);
-                pomelo.disconnect();
+
+                socket = null;
             };
             socket = new WebSocket(url);
             socket.binaryType = 'arraybuffer';
@@ -1525,6 +1526,9 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         pomelo.disconnect = function () {
+            cc.log("pomelo disconnect");
+            cc.log(socket);
+
             if (socket) {
                 if (socket.disconnect) socket.disconnect();
                 if (socket.close) socket.close();

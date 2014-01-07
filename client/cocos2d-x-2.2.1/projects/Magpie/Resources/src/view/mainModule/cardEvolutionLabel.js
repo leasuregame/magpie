@@ -201,7 +201,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._onClickNewCard,
             this
         );
-
+        newCardItem.setEnabled(false);
         newCardItem.setPosition(this._cardEvolutionLayerFit.newCardItemPoint);
         newCardItem.setScale(1.1);
 

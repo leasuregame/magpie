@@ -373,7 +373,7 @@ var Card = Entity.extend({
 
             var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
-            return (this._skillInc + skillHarmGrow * (this._skillLv + 1));
+            return (this._skillInc + skillHarmGrow * this._skillLv);
         }
 
         return 0;

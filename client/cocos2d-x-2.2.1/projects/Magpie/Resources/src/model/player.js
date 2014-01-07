@@ -132,7 +132,8 @@ var Player = Entity.extend({
         gameData.shop.init({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
-            challengeBuyCount: data.dailyGift.challengeBuyCount
+            challengeBuyCount: data.dailyGift.challengeBuyCount,
+            expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
         cc.log(data.exchangeCards);
@@ -158,6 +159,13 @@ var Player = Entity.extend({
                 this._power = this._maxPower;
             }
         }
+    },
+
+    correctionPower: function (power, powerTimestamp) {
+        gameData.clock.updateServerTime();
+
+        this.set("power", power);
+        this.set("powerTimestamp", powerTimestamp);
     },
 
     upgrade: function (data) {

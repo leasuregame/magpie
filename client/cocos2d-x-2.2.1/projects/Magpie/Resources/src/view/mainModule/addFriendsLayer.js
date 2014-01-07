@@ -354,7 +354,7 @@ var AddFriendsLayer = cc.Layer.extend({
         var text = this._nameEditBox.getText();
         cc.log("add friend's name: " + text);
 
-        if (text == "请输入好友名字") {
+        if (text == null || text == "") {
             TipLayer.tip("请先输入好友名字");
             return;
         }

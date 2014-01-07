@@ -130,11 +130,6 @@ var User = Entity.extend({
                 tbAdapter.loginResultHandler = function () {
                 };
 
-                cc.log(tbAdapter.TBIsLogined());
-                cc.log(tbAdapter.TBSessionID());
-                cc.log(tbAdapter.TBUserID());
-                cc.log(tbAdapter.TBNickName());
-
                 fn();
             };
 

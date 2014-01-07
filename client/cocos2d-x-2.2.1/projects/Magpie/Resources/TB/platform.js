@@ -53,11 +53,6 @@ tbAdapter.initDidFinishWithUpdateCodeHandler = function (code) {
 // 登录成功回调
 tbAdapter.loginResultHandler = function (isSuccess) {
     cc.log("tbAdapter loginResultHandler: " + isSuccess);
-
-    cc.log(tbAdapter.TBIsLogined());
-    cc.log(tbAdapter.TBSessionID());
-    cc.log(tbAdapter.TBUserID());
-    cc.log(tbAdapter.TBNickName());
 };
 
 // 退出登录

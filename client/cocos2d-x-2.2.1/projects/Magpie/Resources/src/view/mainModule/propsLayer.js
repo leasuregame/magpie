@@ -84,6 +84,10 @@ var PropsLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect74, this);
+        effect.setPosition(this._propsLayerFit.paymentItemPoint);
+        this.addChild(effect);
+
         var buyIcon = cc.Sprite.create(main_scene_image.icon303);
         buyIcon.setPosition(this._propsLayerFit.buyIconPoint);
         this.addChild(buyIcon);
@@ -215,7 +219,32 @@ var PropsLayer = cc.Layer.extend({
             cc.log(product);
 
             if (product.count <= 0) {
-                TipLayer.tip(product.tip);
+
+                if (id <= 2) {
+
+                    var tipVip = gameData.player.get("vip") + 1;
+
+                    tipVip = Math.max(tipVip, 1);
+                    tipVip = Math.min(tipVip, 12);
+
+                    if (id == 1) {
+                        if (gameData.shop.get("expCardBuyCount") <= 0) {
+                            GoPaymentLayer.pop({
+                                title: "经验元灵购买次数已用完",
+                                msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
+                            });
+                        }
+                    } else {
+                        if (gameData.shop.get("powerBuyCount") <= 0) {
+                            GoPaymentLayer.pop({
+                                title: "体力购买次数已用完",
+                                msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
+                            });
+                        }
+                    }
+                } else {
+                    TipLayer.tip(product.tip);
+                }
                 return;
             }
 

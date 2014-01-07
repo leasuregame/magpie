@@ -171,6 +171,7 @@
                 <file name="src/view/mainModule/systemMessageLayer.js"/>
                 <file name="src/view/mainModule/taskLayer.js"/>
                 <file name="src/view/mainModule/tenLotteryCardLayer.js"/>
+                <file name="src/view/mainModule/tournamentDetails.js"/>
                 <file name="src/view/mainModule/tournamentLayer.js"/>
                 <file name="src/view/mainModule/tournamentLabel.js"/>
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>

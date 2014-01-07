@@ -1038,12 +1038,14 @@ var Player = (function(_super) {
         var rank = {
             ranking: 0,
             canGetReward: [],
-            notCanGetReward: []
+            notCanGetReward: [],
+            stats: {}
         };
         if(this.rank) {
             rank.ranking = this.rank.ranking;
             rank.canGetReward = this.rank.rankingRewards();
             rank.notCanGetReward = this.rank.rewardsNotHave();
+            rank.stats = this.rank.stats();
         }
         return rank;
     };

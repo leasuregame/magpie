@@ -59,12 +59,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -73,6 +67,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -108,6 +108,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 
 var outputTables = {
     "achievement": {
@@ -1017,7 +1018,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
                 "url": 3
             },
@@ -1032,7 +1033,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
                 "url": 3
             },
@@ -1047,7 +1048,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
@@ -2325,10 +2326,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 141,
                 "hp": 410,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
                 "url": 49
             },
@@ -2340,10 +2341,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 192,
                 "hp": 560,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
                 "url": 49
             },
@@ -2355,10 +2356,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 262,
                 "hp": 720,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
                 "url": 49
             },
@@ -8839,7 +8840,8 @@ var outputTables = {
                 "power_buy_count": 1,
                 "challenge_count": 10,
                 "challenge_buy_count": 10,
-                "collect_count": 15
+                "collect_count": 15,
+                "exp_card_count": 30
             }
         }
     },
@@ -24690,52 +24692,167 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "ranking": 1,
-                "percent": 55
+                "percent": 155
             },
             "2": {
                 "id": 2,
-                "ranking": 11,
-                "percent": 50
+                "ranking": 2,
+                "percent": 150
             },
             "3": {
                 "id": 3,
-                "ranking": 51,
-                "percent": 45
+                "ranking": 3,
+                "percent": 145
             },
             "4": {
                 "id": 4,
-                "ranking": 101,
-                "percent": 40
+                "ranking": 4,
+                "percent": 140
             },
             "5": {
                 "id": 5,
-                "ranking": 201,
-                "percent": 35
+                "ranking": 5,
+                "percent": 135
             },
             "6": {
                 "id": 6,
-                "ranking": 501,
-                "percent": 30
+                "ranking": 6,
+                "percent": 130
             },
             "7": {
                 "id": 7,
-                "ranking": 1001,
-                "percent": 25
+                "ranking": 7,
+                "percent": 125
             },
             "8": {
                 "id": 8,
-                "ranking": 3001,
-                "percent": 20
+                "ranking": 8,
+                "percent": 120
             },
             "9": {
                 "id": 9,
-                "ranking": 5001,
-                "percent": 15
+                "ranking": 9,
+                "percent": 115
             },
             "10": {
                 "id": 10,
+                "ranking": 10,
+                "percent": 110
+            },
+            "11": {
+                "id": 11,
+                "ranking": 11,
+                "percent": 105
+            },
+            "12": {
+                "id": 12,
+                "ranking": 12,
+                "percent": 100
+            },
+            "13": {
+                "id": 13,
+                "ranking": 13,
+                "percent": 95
+            },
+            "14": {
+                "id": 14,
+                "ranking": 14,
+                "percent": 90
+            },
+            "15": {
+                "id": 15,
+                "ranking": 15,
+                "percent": 85
+            },
+            "16": {
+                "id": 16,
+                "ranking": 16,
+                "percent": 80
+            },
+            "17": {
+                "id": 17,
+                "ranking": 17,
+                "percent": 75
+            },
+            "18": {
+                "id": 18,
+                "ranking": 18,
+                "percent": 70
+            },
+            "19": {
+                "id": 19,
+                "ranking": 19,
+                "percent": 65
+            },
+            "20": {
+                "id": 20,
+                "ranking": 20,
+                "percent": 60
+            },
+            "21": {
+                "id": 21,
+                "ranking": 31,
+                "percent": 55
+            },
+            "22": {
+                "id": 22,
+                "ranking": 41,
+                "percent": 50
+            },
+            "23": {
+                "id": 23,
+                "ranking": 51,
+                "percent": 45
+            },
+            "24": {
+                "id": 24,
+                "ranking": 101,
+                "percent": 40
+            },
+            "25": {
+                "id": 25,
+                "ranking": 201,
+                "percent": 35
+            },
+            "26": {
+                "id": 26,
+                "ranking": 501,
+                "percent": 30
+            },
+            "27": {
+                "id": 27,
+                "ranking": 1001,
+                "percent": 20
+            },
+            "28": {
+                "id": 28,
+                "ranking": 2001,
+                "percent": 17
+            },
+            "29": {
+                "id": 29,
+                "ranking": 3001,
+                "percent": 14
+            },
+            "30": {
+                "id": 30,
+                "ranking": 4001,
+                "percent": 11
+            },
+            "31": {
+                "id": 31,
+                "ranking": 5001,
+                "percent": 8
+            },
+            "32": {
+                "id": 32,
+                "ranking": 8001,
+                "percent": 5
+            },
+            "33": {
+                "id": 33,
                 "ranking": 10001,
-                "percent": 10
+                "percent": 2
             }
         }
     },
@@ -24816,6 +24933,313 @@ var outputTables = {
                 "obtain_type": "cardCount",
                 "obtain": 1,
                 "isVisible": 0
+            }
+        }
+    },
+    "scope": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
+            },
+            "2": {
+                "id": 2,
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
+            },
+            "3": {
+                "id": 3,
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
+            },
+            "4": {
+                "id": 4,
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
+            },
+            "5": {
+                "id": 5,
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
+            },
+            "6": {
+                "id": 6,
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
+            },
+            "7": {
+                "id": 7,
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 8000,
+                "star4": 20000,
+                "star5": 50000
+            },
+            "2": {
+                "id": 2,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 100000
+            },
+            "3": {
+                "id": 3,
+                "star3": 22000,
+                "star4": 80000,
+                "star5": 180000
+            },
+            "4": {
+                "id": 4,
+                "star3": 35000,
+                "star4": 150000,
+                "star5": 300000
+            },
+            "5": {
+                "id": 5,
+                "star3": 50000,
+                "star4": 230000,
+                "star5": 500000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3_inc_min": 145,
+                "star3_inc_max": 150,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 155,
+                "star4_inc_max": 160,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 165,
+                "star5_inc_max": 170,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3_inc_min": 35,
+                "star3_inc_max": 40,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 45,
+                "star4_inc_max": 50,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 55,
+                "star5_inc_max": 60,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3_inc_min": 35,
+                "star3_inc_max": 40,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 45,
+                "star4_inc_max": 50,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 55,
+                "star5_inc_max": 60,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3_inc_min": 55,
+                "star3_inc_max": 60,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 65,
+                "star4_inc_max": 70,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 75,
+                "star5_inc_max": 80,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3_inc_min": 35,
+                "star3_inc_max": 40,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 45,
+                "star4_inc_max": 50,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 55,
+                "star5_inc_max": 60,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3_inc_min": 25,
+                "star3_inc_max": 30,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 40,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 45,
+                "star5_inc_max": 50,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "7": {
+                "id": 7,
+                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 3,
+                "scope": 7,
+                "star3_inc_min": 120,
+                "star3_inc_max": 125,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 130,
+                "star4_inc_max": 135,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 140,
+                "star5_inc_max": 145,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 2,
+                "star3_inc_min": 30,
+                "star3_inc_max": 35,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 40,
+                "star4_inc_max": 45,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 50,
+                "star5_inc_max": 55,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 3,
+                "star3_inc_min": 30,
+                "star3_inc_max": 35,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 40,
+                "star4_inc_max": 45,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 50,
+                "star5_inc_max": 55,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "10": {
+                "id": 10,
+                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 6,
+                "star3_inc_min": 25,
+                "star3_inc_max": 30,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 40,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 45,
+                "star5_inc_max": 50,
+                "star5_grow": 5,
+                "rate5": 40
             }
         }
     },
@@ -25063,313 +25487,6 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
-    "scope": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
-            },
-            "2": {
-                "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
-            },
-            "3": {
-                "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
-            },
-            "4": {
-                "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
-            },
-            "5": {
-                "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
-            },
-            "6": {
-                "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
-            },
-            "7": {
-                "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 8000,
-                "star4": 20000,
-                "star5": 50000
-            },
-            "2": {
-                "id": 2,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 100000
-            },
-            "3": {
-                "id": 3,
-                "star3": 22000,
-                "star4": 80000,
-                "star5": 180000
-            },
-            "4": {
-                "id": 4,
-                "star3": 35000,
-                "star4": 150000,
-                "star5": 300000
-            },
-            "5": {
-                "id": 5,
-                "star3": 50000,
-                "star4": 230000,
-                "star5": 500000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3_inc_min": 145,
-                "star3_inc_max": 150,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 155,
-                "star4_inc_max": 160,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 165,
-                "star5_inc_max": 170,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3_inc_min": 35,
-                "star3_inc_max": 40,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 45,
-                "star4_inc_max": 50,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 55,
-                "star5_inc_max": 60,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3_inc_min": 35,
-                "star3_inc_max": 40,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 45,
-                "star4_inc_max": 50,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 55,
-                "star5_inc_max": 60,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 4,
-                "star3_inc_min": 45,
-                "star3_inc_max": 50,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 55,
-                "star4_inc_max": 60,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 65,
-                "star5_inc_max": 70,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3_inc_min": 35,
-                "star3_inc_max": 40,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 45,
-                "star4_inc_max": 50,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 55,
-                "star5_inc_max": 60,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3_inc_min": 25,
-                "star3_inc_max": 30,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 35,
-                "star4_inc_max": 40,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 45,
-                "star5_inc_max": 50,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "7": {
-                "id": 7,
-                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 3,
-                "scope": 7,
-                "star3_inc_min": 45,
-                "star3_inc_max": 50,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 55,
-                "star4_inc_max": 60,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 65,
-                "star5_inc_max": 70,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 2,
-                "star3_inc_min": 30,
-                "star3_inc_max": 35,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 40,
-                "star4_inc_max": 45,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 50,
-                "star5_inc_max": 55,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 3,
-                "star3_inc_min": 30,
-                "star3_inc_max": 35,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 40,
-                "star4_inc_max": 45,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 50,
-                "star5_inc_max": 55,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "10": {
-                "id": 10,
-                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 6,
-                "star3_inc_min": 20,
-                "star3_inc_max": 25,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 30,
-                "star4_inc_max": 35,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 40,
-                "star5_inc_max": 45,
-                "star5_grow": 5,
-                "rate5": 40
             }
         }
     },
@@ -48202,7 +48319,7 @@ var outputTables = {
                 "fragments": 0,
                 "exp_card": 0,
                 "price": 18,
-                "true_price": 180
+                "true_price": 66
             },
             "2": {
                 "id": 2,
@@ -48213,7 +48330,7 @@ var outputTables = {
                 "fragments": 0,
                 "exp_card": 0,
                 "price": 58,
-                "true_price": 580
+                "true_price": 195
             },
             "3": {
                 "id": 3,
@@ -48224,7 +48341,7 @@ var outputTables = {
                 "fragments": 0,
                 "exp_card": 0,
                 "price": 88,
-                "true_price": 880
+                "true_price": 246
             },
             "4": {
                 "id": 4,
@@ -48235,7 +48352,7 @@ var outputTables = {
                 "fragments": 3,
                 "exp_card": 0,
                 "price": 188,
-                "true_price": 1880
+                "true_price": 569
             },
             "5": {
                 "id": 5,
@@ -48246,7 +48363,7 @@ var outputTables = {
                 "fragments": 3,
                 "exp_card": 0,
                 "price": 288,
-                "true_price": 2880
+                "true_price": 726
             },
             "6": {
                 "id": 6,
@@ -48257,7 +48374,7 @@ var outputTables = {
                 "fragments": 3,
                 "exp_card": 10,
                 "price": 388,
-                "true_price": 3880
+                "true_price": 1080
             },
             "7": {
                 "id": 7,
@@ -48268,7 +48385,7 @@ var outputTables = {
                 "fragments": 3,
                 "exp_card": 15,
                 "price": 488,
-                "true_price": 4880
+                "true_price": 1368
             },
             "8": {
                 "id": 8,
@@ -48279,7 +48396,7 @@ var outputTables = {
                 "fragments": 5,
                 "exp_card": 15,
                 "price": 588,
-                "true_price": 5880
+                "true_price": 1989
             },
             "9": {
                 "id": 9,
@@ -48290,7 +48407,7 @@ var outputTables = {
                 "fragments": 5,
                 "exp_card": 15,
                 "price": 688,
-                "true_price": 6880
+                "true_price": 2366
             },
             "10": {
                 "id": 10,
@@ -48301,7 +48418,7 @@ var outputTables = {
                 "fragments": 10,
                 "exp_card": 20,
                 "price": 788,
-                "true_price": 7880
+                "true_price": 2899
             },
             "11": {
                 "id": 11,
@@ -48312,7 +48429,7 @@ var outputTables = {
                 "fragments": 10,
                 "exp_card": 20,
                 "price": 888,
-                "true_price": 8880
+                "true_price": 3288
             },
             "12": {
                 "id": 12,
@@ -48323,7 +48440,7 @@ var outputTables = {
                 "fragments": 10,
                 "exp_card": 20,
                 "price": 999,
-                "true_price": 9990
+                "true_price": 3986
             }
         }
     },
@@ -48333,6 +48450,7 @@ var outputTables = {
             "0": {
                 "id": 0,
                 "lottery_free_count": 0,
+                "exp_card_count": 0,
                 "buy_power_count": 0,
                 "give_bless_count": 0,
                 "spirit_collect_count": 0,
@@ -48343,6 +48461,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
+                "exp_card_count": 10,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
                 "spirit_collect_count": 0,
@@ -48353,6 +48472,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "lottery_free_count": 2,
+                "exp_card_count": 20,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
                 "spirit_collect_count": 0,
@@ -48364,6 +48484,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "lottery_free_count": 3,
+                "exp_card_count": 30,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
                 "spirit_collect_count": 1,
@@ -48374,6 +48495,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "lottery_free_count": 4,
+                "exp_card_count": 40,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
                 "spirit_collect_count": 2,
@@ -48384,6 +48506,7 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "lottery_free_count": 5,
+                "exp_card_count": 50,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
                 "spirit_collect_count": 3,
@@ -48394,6 +48517,7 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "lottery_free_count": 6,
+                "exp_card_count": 60,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
                 "spirit_collect_count": 4,
@@ -48404,6 +48528,7 @@ var outputTables = {
             "7": {
                 "id": 7,
                 "lottery_free_count": 7,
+                "exp_card_count": 70,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
                 "spirit_collect_count": 5,
@@ -48414,6 +48539,7 @@ var outputTables = {
             "8": {
                 "id": 8,
                 "lottery_free_count": 8,
+                "exp_card_count": 80,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
                 "spirit_collect_count": 6,
@@ -48424,6 +48550,7 @@ var outputTables = {
             "9": {
                 "id": 9,
                 "lottery_free_count": 9,
+                "exp_card_count": 90,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
                 "spirit_collect_count": 7,
@@ -48434,6 +48561,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lottery_free_count": 10,
+                "exp_card_count": 100,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
                 "spirit_collect_count": 8,
@@ -48444,6 +48572,7 @@ var outputTables = {
             "11": {
                 "id": 11,
                 "lottery_free_count": 10,
+                "exp_card_count": 110,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
                 "spirit_collect_count": 9,
@@ -48454,6 +48583,7 @@ var outputTables = {
             "12": {
                 "id": 12,
                 "lottery_free_count": 10,
+                "exp_card_count": 120,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
                 "spirit_collect_count": 10,

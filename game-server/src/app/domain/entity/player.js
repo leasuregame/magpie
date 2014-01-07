@@ -50,6 +50,7 @@ var LOTTERY_FREE_COUNT = dgTabRow.lottery_free_count;
 var POWER_BUY_COUNT = dgTabRow.power_buy_count;
 var CHALLENGE_COUNT = dgTabRow.challenge_count;
 var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
+var EXP_CARD_COUNT = dgTabRow.exp_card_count;
 
 var defaultMark = function() {
     var i, result = [];
@@ -292,6 +293,7 @@ var Player = (function(_super) {
             powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
             challengeBuyCount: CHALLENGE_BUY_COUNT, //每日有奖竞技购买次数
+            expCardCount: EXP_CARD_COUNT,
             receivedBless: { // 接收的祝福
                 count: DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -366,6 +368,7 @@ var Player = (function(_super) {
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
             challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
+            expCardCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
                 givers: []
@@ -634,9 +637,6 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        if (!_.isNumber(power.value)) {
-            console.log('=========power value is wrong=========', power);
-        }
         this.set('power', power);
     };
 
@@ -1038,12 +1038,14 @@ var Player = (function(_super) {
         var rank = {
             ranking: 0,
             canGetReward: [],
-            notCanGetReward: []
+            notCanGetReward: [],
+            stats: {}
         };
         if(this.rank) {
             rank.ranking = this.rank.ranking;
             rank.canGetReward = this.rank.rankingRewards();
             rank.notCanGetReward = this.rank.rewardsNotHave();
+            rank.stats = this.rank.stats();
         }
         return rank;
     };
@@ -1108,7 +1110,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.lightUpCards = function() {
-        return this.cardBookMark.markPositions();
+        var f = this.cardBookFlag.markPositions();
+        var m = this.cardBookMark.markPositions(); 
+        return _.union(f, m);
     };
 
     Player.prototype.toJson = function() {
@@ -1303,6 +1307,7 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
     dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    dg.expCardCount += curVipInfo.exp_card_count - oldVipInfo.exp_card_count;
     player.dailyGift = dg;
 
     var sp = utility.deepCopy(player.spiritPool);

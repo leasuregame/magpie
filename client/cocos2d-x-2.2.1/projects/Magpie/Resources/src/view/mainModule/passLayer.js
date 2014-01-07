@@ -641,7 +641,6 @@ var PassLayer = cc.Layer.extend({
 
                 LazyLayer.closeCloudAll();
             }
-
         });
     },
 

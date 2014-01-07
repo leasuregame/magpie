@@ -99,9 +99,9 @@ Dialog.create = function (msg, cb) {
 
 
 Dialog.pop = function (msg, cb) {
-    var dialog = Dialog.create(msg, cb);
+    lz.scheduleOnce(function () {
+        var dialog = Dialog.create(msg, cb);
 
-    cc.Director.getInstance().getRunningScene().addChild(dialog, 10000);
-
-    return dialog;
+        cc.Director.getInstance().getRunningScene().addChild(dialog, 10000);
+    }, 0.01);
 };

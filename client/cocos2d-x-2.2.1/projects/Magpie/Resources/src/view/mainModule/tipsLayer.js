@@ -126,7 +126,9 @@ var TipsLayer = LazyLayer.extend({
         y = scrollViewHeight - 55 - 30 - 250 * 3;
         var description = lz.format("主要产出仙丹，仙丹可用来培养，提升卡牌的攻击力或生命值。", 28);
         this._addDescription(description, y, scrollViewLayer);
-
+        y -= description.length * 25;
+        var description = lz.format("排名越高，奖励越高，等级越高，奖励越高。", 28);
+        this._addDescription(description, y, scrollViewLayer);
         y -= description.length * 25;
         var description = lz.format("竞技场是你一展雄风的好地方。", 28);
         this._addDescription(description, y, scrollViewLayer);

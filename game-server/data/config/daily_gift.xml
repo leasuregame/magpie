@@ -8,6 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-12-20T02:01:27Z</Created>
+  <LastSaved>2014-01-07T07:56:57Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -15,8 +16,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7100</WindowHeight>
-  <WindowWidth>17020</WindowWidth>
+  <WindowHeight>6360</WindowHeight>
+  <WindowWidth>25680</WindowWidth>
   <WindowTopX>7660</WindowTopX>
   <WindowTopY>2400</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -26,15 +27,14 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="每日重置数据配置表">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:Width="116"/>
    <Column ss:Width="156"/>
@@ -49,6 +49,7 @@
     <Cell><Data ss:Type="String">每日有奖竞技次数</Data></Cell>
     <Cell><Data ss:Type="String">每日有奖竞技购买次数</Data></Cell>
     <Cell><Data ss:Type="String">每日灵气采集次数</Data></Cell>
+    <Cell><Data ss:Type="String">每日经验元灵购买次数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -58,6 +59,7 @@
     <Cell><Data ss:Type="String">challenge_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_buy_count</Data></Cell>
     <Cell><Data ss:Type="String">collect_count</Data></Cell>
+    <Cell><Data ss:Type="String">exp_card_count</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -67,17 +69,24 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -27,6 +27,8 @@ for (var key in login_scene_image) {
 // main scene res
 var main_scene_path = "res/main/";
 
+var effect_scene_path = "res/effect/";
+
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
 //    bg2: main_scene_path + "bg2.png",
@@ -181,9 +183,9 @@ var main_scene_image = {
     button17d: main_scene_path + "button17d.png",
     button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
-//    button19: main_scene_path + "button19.png",
-//    button19s: main_scene_path + "button19s.png",
-//    button20: main_scene_path + "button20.png",
+    button19: main_scene_path + "button19.png",
+    button19s: main_scene_path + "button19s.png",
+    button20: main_scene_path + "button20.png",
 //    button20s: main_scene_path + "button20s.png",
 //    button20d: main_scene_path + "button20d.png",
     button21: main_scene_path + "button21.png",
@@ -620,6 +622,12 @@ var main_scene_image = {
     icon333: main_scene_path + "icon333.png",
     icon334: main_scene_path + "icon334.png",
     icon335: main_scene_path + "icon335.png",
+    icon336: main_scene_path + "icon336.png",
+    icon337: main_scene_path + "icon337.png",
+    icon338: main_scene_path + "icon338.png",
+    icon339: main_scene_path + "icon339.png",
+    icon340: main_scene_path + "icon340.png",
+    icon341: main_scene_path + "icon341.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -752,6 +760,8 @@ var main_scene_image = {
     uiEffect70: "res/ccb/uiEffect70.ccbi",
     uiEffect71: "res/ccb/uiEffect71.ccbi",
     uiEffect72: "res/ccb/uiEffect72.ccbi",
+    uiEffect73: "res/ccb/uiEffect73.ccbi",
+    uiEffect74: "res/ccb/uiEffect74.ccbi",
 
 
     // 特效资源
@@ -965,6 +975,35 @@ var main_scene_image = {
     up104: "res/effect/uiEffect/up104.png",
 
 
+    //开场动画资源
+    startAnimationRes1_png: effect_scene_path + "startAnimation/" + "startAnimationRes1.png",
+    startAnimationRes1_plist: effect_scene_path + "startAnimation/" + "startAnimationRes1.plist",
+    startAnimationRes2_png: effect_scene_path + "startAnimation/" + "startAnimationRes2.png",
+    startAnimationRes2_plist: effect_scene_path + "startAnimation/" + "startAnimationRes2.plist",
+    startAnimationRes3_png: effect_scene_path + "startAnimation/" + "startAnimationRes3.png",
+    startAnimationRes3_plist: effect_scene_path + "startAnimation/" + "startAnimationRes3.plist",
+    startAnimationRes4_png: effect_scene_path + "startAnimation/" + "startAnimationRes4.png",
+    startAnimationRes4_plist: effect_scene_path + "startAnimation/" + "startAnimationRes4.plist",
+    s1: effect_scene_path + "startAnimation/" + "s1.png",
+    s2: effect_scene_path + "startAnimation/" + "s2.png",
+    s4: effect_scene_path + "startAnimation/" + "s4.png",
+    s6: effect_scene_path + "startAnimation/" + "s6.png",
+    s12: effect_scene_path + "startAnimation/" + "s12.png",
+    s14: effect_scene_path + "startAnimation/" + "s14.png",
+    s26: effect_scene_path + "startAnimation/" + "s26.png",
+    s27: effect_scene_path + "startAnimation/" + "s27.png",
+    s28: effect_scene_path + "startAnimation/" + "s28.png",
+    s29: effect_scene_path + "startAnimation/" + "s29.png",
+    s30: effect_scene_path + "startAnimation/" + "s30.png",
+    s37: effect_scene_path + "startAnimation/" + "s37.png",
+    s38: effect_scene_path + "startAnimation/" + "s38.png",
+    s53: effect_scene_path + "startAnimation/" + "s53.png",
+    s91: effect_scene_path + "startAnimation/" + "s91.png",
+    s96: effect_scene_path + "startAnimation/" + "s96.png",
+    s113: effect_scene_path + "startAnimation/" + "s113.png",
+    s129: effect_scene_path + "startAnimation/" + "s129.png",
+    s131: effect_scene_path + "startAnimation/" + "s131.png",
+
     // 新手特效
     tutorials1: "res/ccb/tutorials1.ccbi",
     tutorials2: "res/ccb/tutorials2.ccbi",
@@ -994,7 +1033,11 @@ var main_scene_image = {
     tutorials26: "res/ccb/tutorials26.ccbi",
     tutorials27: "res/ccb/tutorials27.ccbi",
     tutorials29: "res/ccb/tutorials29.ccbi",
-
+    tutorials30: "res/ccb/tutorials30.ccbi",
+    tutorials31: "res/ccb/tutorials31.ccbi",
+    tutorials32: "res/ccb/tutorials32.ccbi",
+    tutorials33: "res/ccb/tutorials33.ccbi",
+    tutorials34: "res/ccb/tutorials34.ccbi",
 
     // 动画
     startAnimation1: "res/ccb/startAnimation1.ccbi",
@@ -1061,6 +1104,7 @@ var main_scene_image = {
     startAnimation_boom_sound: "res/sound/startAnimationSound/startAnimation_boom_sound.wav",
     startAnimation_breaktree_sound: "res/sound/startAnimationSound/startAnimation_breaktree_sound.wav",
     startAnimation_ding_sound: "res/sound/startAnimationSound/startAnimation_ding_sound.wav",
+    startAnimation_drop_sound: "res/sound/startAnimationSound/startAnimation_drop_sound.wav",
     startAnimation_funny_sound: "res/sound/startAnimationSound/startAnimation_funny_sound.wav",
     startAnimation_insert_sound: "res/sound/startAnimationSound/startAnimation_insert_sound.wav",
     startAnimation_keep_sound: "res/sound/startAnimationSound/startAnimation_keep_sound.wav",
@@ -1072,6 +1116,7 @@ var main_scene_image = {
     startAnimation_shardow_sound: "res/sound/startAnimationSound/startAnimation_shardow_sound.wav",
     startAnimation_smalltree_sound: "res/sound/startAnimationSound/startAnimation_smalltree_sound.wav",
     startAnimation_treelight_sound: "res/sound/startAnimationSound/startAnimation_treelight_sound.wav",
+    startAnimation_wind_sound: "res/sound/startAnimationSound/startAnimation_wind_sound.wav",
     startAnimation_wordinsert_sound: "res/sound/startAnimationSound/startAnimation_wordinsert_sound.wav"
 };
 

@@ -42,7 +42,7 @@ var Rank = (function(_super) {
 
 	Rank.FIELDS = [
 		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'startCount', 'winCount', 
-		'loseCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
+		'loseCount', 'winStreakCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
 	];
 	Rank.DEFAULT_VALUES = {
 		ranking: 0,
@@ -69,6 +69,12 @@ var Rank = (function(_super) {
 				recentChallenger: this.recentChallenger
 			},
 			rankingRewards: this.rankingRewards()
+		};
+	};
+
+	Rank.prototype.stats = function() {
+		return {
+
 		};
 	};
 

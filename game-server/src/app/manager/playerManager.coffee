@@ -75,6 +75,7 @@ class Manager
             results.push {
               id: cache.id
               name: cache.name
+              ability: cache.ability
               cards: cache.activeCards().map (c) -> playerId: c.playerId, tableId: c.tableId, star: c.star
             }
           else 

@@ -27,6 +27,8 @@ for (var key in login_scene_image) {
 // main scene res
 var main_scene_path = "res/main/";
 
+var effect_scene_path = "res/effect/";
+
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
 //    bg2: main_scene_path + "bg2.png",
@@ -970,6 +972,17 @@ var main_scene_image = {
     up102: "res/effect/uiEffect/up102.png",
     up103: "res/effect/uiEffect/up103.png",
     up104: "res/effect/uiEffect/up104.png",
+
+
+    //开场动画资源
+    startAnimationRes1_png: effect_scene_path + "startAnimation/" + "startAnimationRes1.png",
+    startAnimationRes1_plist: effect_scene_path + "startAnimation/" + "startAnimationRes1.plist",
+    startAnimationRes2_png: effect_scene_path + "startAnimation/" + "startAnimationRes2.png",
+    startAnimationRes2_plist: effect_scene_path + "startAnimation/" + "startAnimationRes2.plist",
+    startAnimationRes3_png: effect_scene_path + "startAnimation/" + "startAnimationRes3.png",
+//    startAnimationRes3_plist: effect_scene_path + "startAnimation/" + "startAnimationRes3.plist",
+    startAnimationRes4_png: effect_scene_path + "startAnimation/" + "startAnimationRes4.png",
+    startAnimationRes4_plist: effect_scene_path + "startAnimation/" + "startAnimationRes4.plist",
 
 
     // 新手特效

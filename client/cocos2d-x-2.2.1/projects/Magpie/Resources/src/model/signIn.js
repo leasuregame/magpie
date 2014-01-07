@@ -129,7 +129,7 @@ var SignIn = Entity.extend({
         if (index == 0) {
             var nowDay = new Date().getDate();
             if (this._monthsMark[0]) {
-                return (this._monthsMark[0].count < nowDay);
+                return (this._monthsMark[0].count < nowDay - 1);
             }
         }
 

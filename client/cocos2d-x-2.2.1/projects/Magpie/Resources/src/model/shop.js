@@ -360,10 +360,12 @@ var Shop = Entity.extend({
                 count: 0,
                 tip: "",
                 timesTip: "",
-                maxBuyTimes: gameData.shop.get("powerBuyMaxCount")
+                maxBuyTimes: gameData.shop.get("powerBuyMaxCount"),
+                remainTimes: 0
             };
 
-            product.count = gameData.shop.get("powerBuyCount");
+            product.remainTimes = product.count = gameData.shop.get("powerBuyCount");
+
             if (product.count <= 0) {
                 product.tip = "体力购买次数已用完，VIP可购买更多";
                 product.count = 0;
@@ -396,10 +398,11 @@ var Shop = Entity.extend({
                 unit: "次",
                 count: 0,
                 tip: "",
-                maxBuyTimes: gameData.shop.get("challengeBuyMaxCount")
+                maxBuyTimes: gameData.shop.get("challengeBuyMaxCount"),
+                remainTimes: 0
             };
 
-            product.count = gameData.shop.get("challengeBuyCount");
+            product.remainTimes = product.count = gameData.shop.get("challengeBuyCount");
             if (product.count <= 0) {
                 product.tip = "有奖竞技购买次数已用完";
                 product.count = 0;

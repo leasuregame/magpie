@@ -17,14 +17,14 @@ var nameChanged = {
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "daily_gift": "每日重置数据配置表",
     "每日重置数据配置表": "daily_gift",
+    "first_card": "首抽卡牌配置表",
+    "首抽卡牌配置表": "first_card",
     "friends_config": "好友数量配置表",
     "好友数量配置表": "friends_config",
     "receive_bless_config": "接收祝福次数配置表",
     "接收祝福次数配置表": "receive_bless_config",
     "give_bless_config": "祝福次数配置表",
     "祝福次数配置表": "give_bless_config",
-    "first_card": "首抽卡牌配置表",
-    "首抽卡牌配置表": "first_card",
     "function_limit": "功能开放等级限制",
     "功能开放等级限制": "function_limit",
     "lv_limit": "等级限制表",
@@ -108,6 +108,8 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -1016,7 +1018,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
                 "url": 3
             },
@@ -1031,7 +1033,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
                 "url": 3
             },
@@ -1046,7 +1048,7 @@ var outputTables = {
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 801,
+                "effect_id": 805,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
@@ -2324,10 +2326,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 141,
                 "hp": 410,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
                 "url": 49
             },
@@ -2339,10 +2341,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 192,
                 "hp": 560,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
                 "url": 49
             },
@@ -2354,10 +2356,10 @@ var outputTables = {
                 "lv": 1,
                 "atk": 262,
                 "hp": 720,
-                "skill_name": "龙骨枪",
+                "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 805,
+                "effect_id": 801,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
                 "url": 49
             },
@@ -8843,6 +8845,16 @@ var outputTables = {
             }
         }
     },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,148,218,123,243]",
+                "star4": "[59,139]"
+            }
+        }
+    },
     "friends_config": {
         "colComment": {},
         "rows": {
@@ -8903,16 +8915,6 @@ var outputTables = {
             "71": {
                 "id": 71,
                 "count": 20
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[8,13,33,43,168,148,218,123,243]",
-                "star4": "[59,139]"
             }
         }
     },

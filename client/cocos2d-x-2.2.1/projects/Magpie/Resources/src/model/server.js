@@ -9,7 +9,7 @@
 
 
 // gate server config
-var GATE_SERVER_HOST = "115.29.175.156";
+var GATE_SERVER_HOST = "124.238.236.33";
 var GATE_SERVER_PORT = "3009";
 
 // connect timeout
@@ -272,14 +272,13 @@ var Server = Entity.extend({
                 cc.log("网络连接断开");
 
                 that.off();
-                that._closeAllWaitLayer();
 
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                if (tbAdapter && tbAdapter.TBLogout) {
-                    tbAdapter.TBLogout(0);
-                }
+                cc.Director.getInstance().replaceScene(cc.Scene.create());
+
+                that._closeAllWaitLayer();
 
                 if (that._disconnectStatus == DISCONNECT_KICK) {
                     that.kick();
@@ -349,9 +348,11 @@ var Server = Entity.extend({
     },
 
     kick: function () {
+        cc.log("Server kick");
+
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        Dialog.pop("异地登录...", function () {
+        Dialog.pop("异地登录", function () {
             MainScene.destroy();
             cc.Director.getInstance().replaceScene(LoginScene.create());
         });
@@ -362,7 +363,18 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        Dialog.pop("网络断开，点击重连...", function () {
+        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBIsLogined) {
+            if (!tbAdapter.TBIsLogined()) {
+                Dialog.pop("同步推链接已断开，点击重新登录", function () {
+                    MainScene.destroy();
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                });
+
+                return;
+            }
+        }
+
+        Dialog.pop("网络断开，点击重连", function () {
             gameData.user.login(function (type) {
                 cc.log("Server reConnect success");
 
@@ -370,14 +382,21 @@ var Server = Entity.extend({
                 cc.log("type: " + type);
                 cc.log("-----------------------------------------------------");
 
-                if (!type) {
+                if (type) {
+                    MainScene.destroy();
+
+                    if (type == 1) {
+                        cc.Director.getInstance().replaceScene(MainScene.getInstance());
+                    } else if (type == 2) {
+                        var loginScene = LoginScene.create();
+                        loginScene.switchLayer(NewPlayerLayer);
+                        cc.Director.getInstance().replaceScene(loginScene);
+                    }
+                } else {
                     Dialog.pop("重连失败，请重新登录", function () {
                         MainScene.destroy();
                         cc.Director.getInstance().replaceScene(LoginScene.create());
                     });
-                } else {
-                    MainScene.destroy();
-                    cc.Director.getInstance().replaceScene(MainScene.getInstance());
                 }
             });
         });

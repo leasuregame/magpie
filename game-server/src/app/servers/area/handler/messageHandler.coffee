@@ -377,7 +377,6 @@ Handler::accept = (msg, session, next) ->
 
   message = null
   player = null
-  friendExist = false
   async.waterfall [
     (cb) ->
       dao.message.fetchOne where: id: msgId, cb
@@ -403,20 +402,14 @@ Handler::accept = (msg, session, next) ->
       player = res
       if player.friends.length >= player.friendsCount
         return cb({code: 501, msg: '您的好友已达上限'})
-      else if (player.firends.filter (f) f.id is message.sender).length > 0
-        friendExist = true
-        cb()
       else
-        cb()
+        cb();
     (cb) ->
       playerManager.getPlayerInfo pid:message.sender, cb
     (res, cb) ->
       dao.friend.getFriends res.id, (err, senderFriends) ->
         if err
           return next(null, {code: err.code or 500, msg: err.msg or err})
-        else if (senderFriends.filter (f) -> f.id is playerId).length > 0
-          friendExist = true
-          cb()
         else if senderFriends.length >= res.friendsCount
           cb({code: 501, msg: '对方好友已达上限'})
         else
@@ -442,9 +435,6 @@ Handler::accept = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if friendExist
-      return next(null, {code: 200})
-
     newFriend = {
       id: sender.id
       name: sender.name
@@ -458,7 +448,7 @@ Handler::accept = (msg, session, next) ->
       lv: player.lv
       ability: player.ability
     }
-    
+
     next(null, {code: 200, msg: newFriend})
 
     player.addFriend newFriend

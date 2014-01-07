@@ -34,10 +34,10 @@ Handler::collect = (msg, session, next) ->
     spiritPollData = table.getTableItem('spirit_pool', player.spiritPool.lv);
     spirit_obtain = spiritPollData.spirit_obtain * times
     
-    # ### 每次采集都已一定的概率获得翻倍的灵气 ###
-    # if not isGold and utility.hitRate(spiritConfig.REWORD.RATE)
-    #   spirit_obtain += spiritPollData.spirit_obtain
-    #   isDouble = true
+    ### 每次采集都已一定的概率获得翻倍的灵气 ###
+    if not isGold and utility.hitRate(spiritConfig.REWORD.RATE)
+      spirit_obtain += spiritPollData.spirit_obtain
+      isDouble = true
 
     ### 消耗魔石，增加灵气产量 ###
     if isGold
@@ -48,7 +48,7 @@ Handler::collect = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: {
       spirit_obtain: spirit_obtain
-      # isDouble: isDouble
+      isDouble: isDouble
       spiritPool: player.spiritPool
     }})
 

@@ -351,9 +351,15 @@ var AddFriendsLayer = cc.Layer.extend({
     _onClickSearchFriend: function () {
         cc.log("AddFriendsLayer _onClickSearchFriend");
 
-        this._searchFriendItem.setEnabled(false);
         var text = this._nameEditBox.getText();
         cc.log("add friend's name: " + text);
+
+        if (text == "请输入好友名字") {
+            TipLayer.tip("请先输入好友名字");
+            return;
+        }
+
+        this._searchFriendItem.setEnabled(false);
 
         var that = this;
         gameData.friend.searchFriend(text, function (friend) {

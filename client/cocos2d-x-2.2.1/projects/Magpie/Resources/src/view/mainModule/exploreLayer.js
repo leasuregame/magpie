@@ -361,6 +361,7 @@ var ExploreLayer = cc.Layer.extend({
 
                     that._playAnimation();
                 } else {
+                    that.update();
                     that._unlock();
                 }
             }, this._getTaskId());
@@ -575,11 +576,11 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1, 0.92),
-            cc.ScaleTo.create(0.1, 1, 1.08),
-            cc.ScaleTo.create(0.3, 1, 1),
-            cc.ScaleTo.create(0.3, 1, 1.08),
-            cc.ScaleTo.create(0.1, 1, 1)
+            cc.ScaleTo.create(0.08, 1, 0.92),
+            cc.ScaleTo.create(0.08, 1, 1.08),
+            cc.ScaleTo.create(0.24, 1, 1),
+            cc.ScaleTo.create(0.24, 1, 1.08),
+            cc.ScaleTo.create(0.08, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
@@ -590,7 +591,6 @@ var ExploreLayer = cc.Layer.extend({
             cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
             cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
             cc.DelayTime.create(0.08)
-
         );
 
         var spiritRepeatAction = cc.Repeat.create(
@@ -603,11 +603,11 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1.1, 1.1),
-            cc.ScaleTo.create(0.1, 1, 1),
-            cc.ScaleTo.create(0.3, 0.4, 0.4),
-            cc.ScaleTo.create(0.3, 1, 1),
-            cc.ScaleTo.create(0.1, 1.1, 1.1)
+            cc.ScaleTo.create(0.08, 1.1, 1.1),
+            cc.ScaleTo.create(0.08, 1, 1),
+            cc.ScaleTo.create(0.24, 0.4, 0.4),
+            cc.ScaleTo.create(0.24, 1, 1),
+            cc.ScaleTo.create(0.08, 1.1, 1.1)
         );
 
         var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
@@ -615,10 +615,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
-            cc.MoveBy.create(0.3, cc.p(-40, 0)),
-            cc.MoveBy.create(0.3, cc.p(-40, 0)),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
+            cc.EaseSineIn.create(cc.MoveBy.create(0.16, cc.p(-6, 0))),
+            cc.MoveBy.create(0.24, cc.p(-40, 0)),
+            cc.MoveBy.create(0.24, cc.p(-40, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.08, cc.p(-6, 0)))
         );
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);

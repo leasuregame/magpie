@@ -152,6 +152,10 @@ var TournamentLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
+        var tipLabel = cc.LabelTTF.create("排名和等级越高，奖励越多", "STHeitiTC-Medium", 18);
+        tipLabel.setPosition(this._tournamentLayerFit.tipLabelPoint);
+        this.addChild(tipLabel);
+
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
 

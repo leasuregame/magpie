@@ -39,11 +39,9 @@ var CardHalfNode = cc.Node.extend({
         this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
         this.addChild(this._cardSprite);
 
-        // if (skillType) {
         this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
         this._iconSprite.setPosition(cc.p(40, -53));
         this.addChild(this._iconSprite);
-        //  }
 
         return true;
     },

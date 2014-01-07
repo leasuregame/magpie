@@ -10,6 +10,26 @@
 var NoticeLayer = cc.Layer.extend({
     _webLayer: null,
 
+    onEnter: function () {
+        cc.log("NoticeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("公告界面");
+    },
+
+    onExit: function () {
+        cc.log("NoticeLayer onExit");
+
+        this._super();
+
+        if (this._webLayer) {
+            this._webLayer.close();
+        }
+
+        lz.dc.endLogPageView("公告界面");
+    },
+
     init: function () {
         cc.log("NoticeLayer init");
 
@@ -41,6 +61,8 @@ var NoticeLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._webLayer.close();
+        this._webLayer = null;
+
         this.removeFromParent();
 
         LazyLayer.closeCloudAll();

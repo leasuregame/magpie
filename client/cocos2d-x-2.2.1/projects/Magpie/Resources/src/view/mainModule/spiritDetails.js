@@ -112,7 +112,11 @@ var SpiritDetails = LazyLayer.extend({
         this._lvLabel.setPosition(this._spiritDetailsFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
-        this._expLabel = cc.LabelTTF.create("灵气:    0 / 0", "STHeitiTC-Medium", 22);
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon317);
+        spiritIcon.setPosition(this._spiritDetailsFit.spiritIconPoint);
+        this.addChild(spiritIcon);
+
+        this._expLabel = cc.LabelTTF.create("灵气:  0 / 0", "STHeitiTC-Medium", 22);
         this._expLabel.setPosition(this._spiritDetailsFit.expLabelPoint);
         this.addChild(this._expLabel);
 
@@ -158,22 +162,14 @@ var SpiritDetails = LazyLayer.extend({
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
         this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
-        this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
+        this._expLabel.setString("灵气:  " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
     },
 
     ccbFnUpdate: function () {
         cc.log("SpiritDetails ccbFnUpdate");
 
-        var spirit = gameData.spirit;
-
-        this.ccbSpiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
-
-        this._upgradeItem.setEnabled(spirit.canUpgrade());
-
-        this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
-        this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
-        this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+        this.update();
     },
 
     ccbFnCloseCloud: function () {

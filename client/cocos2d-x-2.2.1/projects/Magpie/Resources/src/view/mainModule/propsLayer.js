@@ -84,6 +84,10 @@ var PropsLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect74, this);
+        effect.setPosition(this._propsLayerFit.paymentItemPoint);
+        this.addChild(effect);
+
         var buyIcon = cc.Sprite.create(main_scene_image.icon303);
         buyIcon.setPosition(this._propsLayerFit.buyIconPoint);
         this.addChild(buyIcon);

@@ -55,11 +55,11 @@ make inittables
 node ./bin/dao.js all production
 
 # kill a process tree
-kill -- -$( ps opgid= 17165 | tr -d ' ' )
+kill -- -$( ps opgid= 7256 | tr -d ' ' )
 
 cd game-server
 pkill -9 -f node
-make build
+make build && make convert-data
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server

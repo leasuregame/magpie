@@ -130,6 +130,9 @@ class Manager
       if task.id == 1
         firstWin = true # 第一小关第一次赢
         data.first_win = true
+        ### 第一次战斗胜利奖励5000仙币 ###
+        player.increase('money', 5000)
+        battleLog.rewards.money = 5000
 
     ### 每次战斗结束都有10%的概率获得5魔石 ###
     if utility.hitRate(taskRate.gold_obtain.rate)

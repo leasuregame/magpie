@@ -162,6 +162,9 @@ products =
       if err
         return next(null, {code: err.code or 500, msg: err.msg or err})
 
+      if player.dailyGift.expCardCount <= 0
+        return next(null, {code: 501, msg: '购买次数已经用完'})
+
       if _.keys(player.cards).length >= player.cardsCount
         return next(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
@@ -176,6 +179,7 @@ products =
           return next(null, err)
 
         player.decrease 'money', times * PRICE
+        player.updateGift 'expCardCount', player.dailyGift.expCardCount - times
         player.save()
         next(null, {code: 200, msg: {
           consume: {

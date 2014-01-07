@@ -134,7 +134,7 @@ var TournamentLabel = cc.Node.extend({
         this.addChild(abilityIcon);
 
         var abilityLabel = cc.LabelTTF.create(ability, "STHeitiTC-Medium", 22);
-        abilityLabel.setColor(cc.c3b(202, 255, 99));
+        //abilityLabel.setColor(cc.c3b(202, 255, 99));
         abilityLabel.setPosition(cc.p(130, 128));
         this.addChild(abilityLabel);
 

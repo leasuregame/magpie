@@ -331,9 +331,10 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(100, 920),
             "bgMusicItemPoint": cc.p(55, 762),
             "soundItemPoint": cc.p(55, 642),
-            "tipsItemPoint": cc.p(55, 522),
-            "QQGroupPoint": cc.p(55, 402),
-            "go2LoginItemPoint": cc.p(55, 282)
+            "noticeItemPoint": cc.p(55, 522),
+            "tipsItemPoint": cc.p(55, 402),
+            "QQGroupPoint": cc.p(55, 282),
+            "go2LoginItemPoint": cc.p(55, 162)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
@@ -1583,9 +1584,10 @@ var fit4Iphone5 = {
             "backItemPoint": cc.p(60, 1096),
             "bgMusicItemPoint": cc.p(15, 938),
             "soundItemPoint": cc.p(15, 818),
-            "tipsItemPoint": cc.p(15, 698),
-            "QQGroupPoint": cc.p(15, 578),
-            "go2LoginItemPoint": cc.p(15, 458)
+            "noticeItemPoint": cc.p(15, 698),
+            "tipsItemPoint": cc.p(15, 578),
+            "QQGroupPoint": cc.p(15, 458),
+            "go2LoginItemPoint": cc.p(15, 338)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),

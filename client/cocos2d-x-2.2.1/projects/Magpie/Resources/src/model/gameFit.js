@@ -333,9 +333,10 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(100, 920),
             "bgMusicItemPoint": cc.p(55, 762),
             "soundItemPoint": cc.p(55, 642),
-            "tipsItemPoint": cc.p(55, 522),
-            "QQGroupPoint": cc.p(55, 402),
-            "go2LoginItemPoint": cc.p(55, 282)
+            "noticeItemPoint": cc.p(55, 522),
+            "tipsItemPoint": cc.p(55, 402),
+            "QQGroupPoint": cc.p(55, 282),
+            "go2LoginItemPoint": cc.p(55, 162)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
@@ -1114,6 +1115,13 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(620, 612),
             "scrollViewPoint": cc.p(30, 172)
         },
+        "tournamentDetails": {
+            "bgSpritePoint": cc.p(363, 492),
+            "labelSpritePoint": cc.p(360, 707),
+            "titleLabelPoint": cc.p(360, 792),
+            "okItemPoint": cc.p(360, 187),
+            "closeItemPoint": cc.p(640, 842)
+        },
         "tournamentLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "playerLabelPoint": cc.p(40, 828),
@@ -1139,7 +1147,8 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(40, 110, 630, 670),
             "scrollViewSize": cc.size(630, 670),
             "scrollViewContentSizeWidth": 640,
-            "scrollViewPoint": cc.p(50, 110)
+            "scrollViewPoint": cc.p(50, 110),
+            "selectRect": cc.rect(0, 860, 640, 100)
         },
         "tournamentRankLayer": {
             "scrollViewHeight": 700,
@@ -1582,9 +1591,10 @@ var fit4Iphone5 = {
             "backItemPoint": cc.p(60, 1096),
             "bgMusicItemPoint": cc.p(15, 938),
             "soundItemPoint": cc.p(15, 818),
-            "tipsItemPoint": cc.p(15, 698),
-            "QQGroupPoint": cc.p(15, 578),
-            "go2LoginItemPoint": cc.p(15, 458)
+            "noticeItemPoint": cc.p(15, 698),
+            "tipsItemPoint": cc.p(15, 578),
+            "QQGroupPoint": cc.p(15, 458),
+            "go2LoginItemPoint": cc.p(15, 338)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
@@ -2366,6 +2376,13 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(620, 788),
             "scrollViewPoint": cc.p(-10, 172)
         },
+        "tournamentDetails": {
+            "bgSpritePoint": cc.p(323, 580),
+            "labelSpritePoint": cc.p(320, 795),
+            "titleLabelPoint": cc.p(320, 880),
+            "okItemPoint": cc.p(320, 275),
+            "closeItemPoint": cc.p(600, 930)
+        },
         "tournamentLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "playerLabelPoint": cc.p(0, 1004),
@@ -2391,7 +2408,8 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(40, 154, 621, 758),
             "scrollViewSize": cc.size(621, 758),
             "scrollViewContentSizeWidth": 640,
-            "scrollViewPoint": cc.p(10, 154)
+            "scrollViewPoint": cc.p(10, 154),
+            "selectRect": cc.rect(0, 1036, 640, 100)
         },
         "tournamentRankLayer": {
             "scrollViewHeight": 876,

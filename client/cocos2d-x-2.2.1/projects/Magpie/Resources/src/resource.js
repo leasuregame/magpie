@@ -27,6 +27,8 @@ for (var key in login_scene_image) {
 // main scene res
 var main_scene_path = "res/main/";
 
+var effect_scene_path = "res/effect/";
+
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
 //    bg2: main_scene_path + "bg2.png",
@@ -972,6 +974,35 @@ var main_scene_image = {
     up103: "res/effect/uiEffect/up103.png",
     up104: "res/effect/uiEffect/up104.png",
 
+
+    //开场动画资源
+    startAnimationRes1_png: effect_scene_path + "startAnimation/" + "startAnimationRes1.png",
+    startAnimationRes1_plist: effect_scene_path + "startAnimation/" + "startAnimationRes1.plist",
+    startAnimationRes2_png: effect_scene_path + "startAnimation/" + "startAnimationRes2.png",
+    startAnimationRes2_plist: effect_scene_path + "startAnimation/" + "startAnimationRes2.plist",
+    startAnimationRes3_png: effect_scene_path + "startAnimation/" + "startAnimationRes3.png",
+    startAnimationRes3_plist: effect_scene_path + "startAnimation/" + "startAnimationRes3.plist",
+    startAnimationRes4_png: effect_scene_path + "startAnimation/" + "startAnimationRes4.png",
+    startAnimationRes4_plist: effect_scene_path + "startAnimation/" + "startAnimationRes4.plist",
+    s1: effect_scene_path + "startAnimation/" + "s1.png",
+    s2: effect_scene_path + "startAnimation/" + "s2.png",
+    s4: effect_scene_path + "startAnimation/" + "s4.png",
+    s6: effect_scene_path + "startAnimation/" + "s6.png",
+    s12: effect_scene_path + "startAnimation/" + "s12.png",
+    s14: effect_scene_path + "startAnimation/" + "s14.png",
+    s26: effect_scene_path + "startAnimation/" + "s26.png",
+    s27: effect_scene_path + "startAnimation/" + "s27.png",
+    s28: effect_scene_path + "startAnimation/" + "s28.png",
+    s29: effect_scene_path + "startAnimation/" + "s29.png",
+    s30: effect_scene_path + "startAnimation/" + "s30.png",
+    s37: effect_scene_path + "startAnimation/" + "s37.png",
+    s38: effect_scene_path + "startAnimation/" + "s38.png",
+    s53: effect_scene_path + "startAnimation/" + "s53.png",
+    s91: effect_scene_path + "startAnimation/" + "s91.png",
+    s96: effect_scene_path + "startAnimation/" + "s96.png",
+    s113: effect_scene_path + "startAnimation/" + "s113.png",
+    s129: effect_scene_path + "startAnimation/" + "s129.png",
+    s131: effect_scene_path + "startAnimation/" + "s131.png",
 
     // 新手特效
     tutorials1: "res/ccb/tutorials1.ccbi",

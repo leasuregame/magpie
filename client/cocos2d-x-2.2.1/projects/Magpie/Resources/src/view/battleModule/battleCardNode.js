@@ -83,8 +83,7 @@ var BattleCardNode = cc.Node.extend({
             this._nowHp,
             this._hp
         );
-        this._hpProgress.setPosition(cc.p(0, -88));
-        this.addChild(this._hpProgress);
+        this.ccbProgressNode.addChild(this._hpProgress);
 
         this._spiritHpProgress = Progress.create(
             null,
@@ -92,8 +91,7 @@ var BattleCardNode = cc.Node.extend({
             0,
             Math.floor(this._hp / 2)
         );
-        this._spiritHpProgress.setPosition(cc.p(0, -88));
-        this.addChild(this._spiritHpProgress);
+        this.ccbProgressNode.addChild(this._spiritHpProgress);
 
         this.addChild(this._ccbNode);
 
@@ -121,14 +119,10 @@ var BattleCardNode = cc.Node.extend({
     },
 
     getSkillFn: function () {
-        this.setProgressVisible(false);
-
         return ("skill" + this._effectId);
     },
 
     getNormalAtkFn: function () {
-        this.setProgressVisible(false);
-
         return ("skill" + this._normalAtkId);
     },
 
@@ -254,8 +248,6 @@ var BattleCardNode = cc.Node.extend({
                 this._isDie = true;
 
                 this.runAnimations("die");
-
-                this.setProgressVisible(false);
 
                 if (this._spirit > 0) {
                     this.getParent().releaseSpirit(this._index, this._spirit);

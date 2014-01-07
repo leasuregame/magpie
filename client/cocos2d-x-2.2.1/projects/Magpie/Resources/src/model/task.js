@@ -245,7 +245,7 @@ var Task = Entity.extend({
 
                     player.sets({
                         power: msg.power.value,
-                        powerTimestamp: msg.power.time,
+                        powerTimestamp: msg.power.time
                     });
                 }
 

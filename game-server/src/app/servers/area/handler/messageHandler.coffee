@@ -403,7 +403,7 @@ Handler::accept = (msg, session, next) ->
       player = res
       if player.friends.length >= player.friendsCount
         return cb({code: 501, msg: '您的好友已达上限'})
-      else if (player.firends.filter (f) -> f.id is message.sender).length > 0
+      else if (player.friends.filter (f) -> f.id is message.sender).length > 0
         friendExist = true
         cb()
       else

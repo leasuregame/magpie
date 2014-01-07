@@ -755,6 +755,14 @@ Handler::exchangeCard = (msg, session, next) ->
       fragments: player.fragments
     }})
 
+    cardNmae = table.getTableItem('cards', card.tableId).name
+    msg = {
+      msg: player.name + '成功兑换到一张' + cardNmae + '的五星卡牌！！！'
+      type: 0
+    }
+    msgQueue.push(msg)
+
+
 setExchangedCard = (player, tid) ->
   newCards = []
   for id in player.exchangeCards

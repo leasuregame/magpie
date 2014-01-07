@@ -1098,7 +1098,7 @@ var main_scene_image = {
     uiEffect72: ccb_scene_path + "uiEffect72.ccbi",
     uiEffect73: ccb_scene_path + "uiEffect73.ccbi",
     uiEffect74: ccb_scene_path + "uiEffect74.ccbi",
-    uiEffect75: ccb_scene_path + "uiEffect75.ccbi",
+    
 
     //开场动画
     startAnimation1: ccb_scene_path + "startAnimation1.ccbi",
@@ -1109,10 +1109,13 @@ var main_scene_image = {
 
 
     //技能特效测试素材
-    
+    1: test_scene_path + "res/" + "1.png",
+    2: test_scene_path + "res/" + "2.png",
+
 
     //技能特效
-   
+    texiao1: test_scene_path + "ccb/" + "texiao1.ccbi",
+    texiao2: test_scene_path + "ccb/" + "texiao2.ccbi",
 
 };
 

@@ -58,7 +58,6 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      console.log 'rank info: ', player.rank
       if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
@@ -71,8 +70,7 @@ Handler::rankingList = (msg, session, next) ->
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
 
-      playerManager.rankingList _.keys(rankings), (err, players, ranks) ->
-        cb(err, players, ranks, rankings)
+      playerManager.rankingList _.keys(rankings), (err, players, ranks) -> cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
     if err
@@ -87,7 +85,8 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now() - start
+      time: Date.now() - start,
+      rankStats: r.stats
     }
     end = Date.now();
     console.log '**********get rankingList useTime = ',(end - start) / 1000
@@ -203,6 +202,11 @@ Handler::getRankingReward = (msg, session, next) ->
         msg: elixir: rewardData.elixir
       })
 
+Handler::rankStats = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  
+
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0
   
@@ -248,10 +252,10 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
-    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
+      ability: p.ability
       ranking: ranks[p.id]
       cards: if p.cards? then (p.cards.sort (x, y) -> x.star < y.star).map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]

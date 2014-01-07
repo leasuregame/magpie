@@ -4,7 +4,7 @@ user：root
 124.238.236.32 219.232.247.32   uqg3RgSqxFZEVSq8iHurksx9CHFUASJw
 124.238.236.33 219.232.247.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
 
-115.29.175.156
+ssh -l root 115.29.175.156
 
 然后登陆新浪的ssh命令式：
 
@@ -55,11 +55,11 @@ make inittables
 node ./bin/dao.js all production
 
 # kill a process tree
-kill -- -$( ps opgid= 17165 | tr -d ' ' )
+kill -- -$( ps opgid= 7256 | tr -d ' ' )
 
 cd game-server
 pkill -9 -f node
-make build
+make build && make convert-data
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server
@@ -79,4 +79,3 @@ test, 123
 
 服务器：水帘洞
 角色名称：杨翠阳
->>>>>>> origin/Client

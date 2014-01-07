@@ -183,12 +183,19 @@ var reachAchievement = function(player, id) {
 	sendMessage(player, id);
 };
 
+var onlyOneAchieved = function(achivement) {
+	return _.values(achivement).filter(function(a) {
+		return a.isAchieve;
+	}).length == 1;
+};
+
 var sendMessage = function(player, achId) {
 	if (messageService != null && typeof(messageService.pushByPid) != 'undefined') {
 		messageService.pushByPid(player.id, {
 			route: 'onAchieve',
 			msg: {
-				achieveId: achId
+				achieveId: achId,
+				fistTime: onlyOneAchieved(player.achievement) ? true : void 0
 			}
 		}, function(err, res) {
 			logger.info('push message(route: onAchieve):', err, res);

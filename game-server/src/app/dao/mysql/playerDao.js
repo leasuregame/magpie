@@ -151,7 +151,7 @@ var PlayerDao = (function(_super) {
 
         async.waterfall([
             function(callback) {
-                var sql = "select id,name,lineUp from player where id in (" + ids.toString() + ")";
+                var sql = "select id,name,lineUp,ability from player where id in (" + ids.toString() + ")";
                 dbClient.query(sql,[],function(err,plys){
                     players = plys;
                     callback();

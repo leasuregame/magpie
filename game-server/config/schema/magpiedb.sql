@@ -124,6 +124,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `startCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `winCount` INT(10) UNSIGNED DEFAULT '0',
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
+  `winStreakCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',

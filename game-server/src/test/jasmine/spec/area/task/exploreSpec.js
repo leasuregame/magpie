@@ -325,6 +325,8 @@ describe("Area Server", function() {
 								expect(data.msg.upgradeInfo.friendsCount).toEqual(20);
 							}
 
+
+
 							// doAjax('/player/' + passer.playerId, {}, function(res) {
 							// 	expect(res.data.lv).toEqual(data.msg.lv);
 							// 	expect(res.data.exp).toEqual(data.msg.exp);
@@ -394,6 +396,10 @@ var checkExploreResult = function(data, task, oldTask) {
 					progress: oldTask.progress,
 					mark: []
 				});
+			}
+
+			if (res.first_win) {
+				expect(res.money_obtain).toBeGreaterThan(5000);
 			}
 			break;
 		case 'box':

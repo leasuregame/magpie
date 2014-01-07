@@ -160,6 +160,13 @@ var Player = Entity.extend({
         }
     },
 
+    correctionPower: function (power, powerTimestamp) {
+        gameData.clock.updateServerTime();
+
+        this.set("power", power);
+        this.set("powerTimestamp", powerTimestamp);
+    },
+
     upgrade: function (data) {
         cc.log("Player upgrade");
 

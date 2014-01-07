@@ -61,10 +61,14 @@ var SkillUpgradeLabel = cc.Node.extend({
         cardItemBgSprite.setPosition(this._skillUpgradeLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
-        var skillPointIcon = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 22);
-        skillPointIcon.setColor(cc.c3b(255, 239, 131));
+        var skillPointIcon = cc.Sprite.create(main_scene_image.icon152);
         skillPointIcon.setPosition(this._skillUpgradeLabelFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
+
+        var skillPointIconLabel = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 22);
+        skillPointIconLabel.setColor(cc.c3b(255, 239, 131));
+        skillPointIconLabel.setPosition(this._skillUpgradeLabelFit.skillPointIconLabelPoint);
+        this.addChild(skillPointIconLabel);
 
         this._skillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));

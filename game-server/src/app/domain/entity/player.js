@@ -293,7 +293,7 @@ var Player = (function(_super) {
             powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
             challengeBuyCount: CHALLENGE_BUY_COUNT, //每日有奖竞技购买次数
-            expCartCount: EXP_CARD_COUNT,
+            expCardCount: EXP_CARD_COUNT,
             receivedBless: { // 接收的祝福
                 count: DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -368,7 +368,7 @@ var Player = (function(_super) {
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
             challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
-            expCartCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
+            expCardCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
                 givers: []

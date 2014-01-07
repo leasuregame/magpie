@@ -8,6 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-12-20T02:01:27Z</Created>
+  <LastSaved>2014-01-07T07:56:57Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -15,8 +16,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8080</WindowHeight>
-  <WindowWidth>21960</WindowWidth>
+  <WindowHeight>6360</WindowHeight>
+  <WindowWidth>25680</WindowWidth>
   <WindowTopX>7660</WindowTopX>
   <WindowTopY>2400</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -58,7 +59,7 @@
     <Cell><Data ss:Type="String">challenge_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_buy_count</Data></Cell>
     <Cell><Data ss:Type="String">collect_count</Data></Cell>
-    <Cell><Data ss:Type="String">exp_cart_count</Data></Cell>
+    <Cell><Data ss:Type="String">exp_card_count</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -73,13 +74,18 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>

@@ -132,7 +132,7 @@ class Manager
         data.first_win = true
         ### 第一次战斗胜利奖励5000仙币 ###
         player.increase('money', 5000)
-        battleLog.rewards.money = 5000
+        data.money_obtain += 5000
 
     ### 每次战斗结束都有10%的概率获得5魔石 ###
     if utility.hitRate(taskRate.gold_obtain.rate)
@@ -152,11 +152,9 @@ class Manager
   @countExploreResult: (player, data, taskId, chapterId, cb) ->
     taskData = table.getTableItem('task', taskId)
 
-    _.extend data, {
-      power_consume: taskData.power_consume
-      exp_obtain: taskData.exp_obtain
-      money_obtain: taskData.coins_obtain
-    }
+    data.power_consume += taskData.power_consume
+    data.exp_obtain += taskData.exp_obtain
+    data.money_obtain += taskData.coins_obtain
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)

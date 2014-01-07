@@ -165,6 +165,9 @@ products =
       if player.dailyGift.expCardCount <= 0
         return next(null, {code: 501, msg: '购买次数已经用完'})
 
+      if player.dailyGift.expCardCount < times
+        return next(null, {code: 501, msg: '超过购买次数上限'})
+
       if _.keys(player.cards).length >= player.cardsCount
         return next(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 

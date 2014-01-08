@@ -299,7 +299,6 @@ var CardTrainLabel = cc.Layer.extend({
                 } else {
                     this._hpLabel.runAction(spawnAction);
                 }
-
             }
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
@@ -407,20 +406,20 @@ var CardTrainLabel = cc.Layer.extend({
         this._leadCard.train(function (data) {
             cc.log(data);
 
-            if (this._effect != null) {
-                this._effect.removeFromParent();
-                this._effect = null;
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
             }
 
-            this._effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            this._effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
-            this._effect.animationManager.setCompletedAnimationCallback(this, function () {
-                if (this._effect) {
-                    this._effect.removeFromParent();
-                    this._effect = null;
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
+            that._effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                if (that._effect) {
+                    that._effect.removeFromParent();
+                    that._effect = null;
                 }
             });
-            that.addChild(this._effect, 10);
+            that.addChild(that._effect, 10);
             that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);

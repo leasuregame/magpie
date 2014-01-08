@@ -14,7 +14,7 @@
  * delete
  * */
 
-dbClient = require('pomelo').app.get('dbClient');
+var dbClient = require('pomelo').app.get('dbClient');
 var Card = require("../../domain/entity/card");
 //var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');

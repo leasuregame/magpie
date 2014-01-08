@@ -351,7 +351,6 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._evolutionRateLabel.setColor(cc.c3b(255, 255, 255));
             }
             this._cardCountLabel.setString(cardCount);
-
             this._evolutionItem.setEnabled(true);
         }
     },
@@ -360,6 +359,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         cc.log("CardEvolutionLayer _update: " + state);
 
         this._evolutionRateLabel.setColor(cc.c3b(255, 255, 255));
+        this._retinueCard = [];
 
         if (state == EVOLUTION_SUCCESS) {
             this._leadCardHalfNode.removeFromParent();
@@ -391,7 +391,8 @@ var CardEvolutionLabel = cc.Layer.extend({
             }
         } else {
             this._evolutionRateLabel.setString("");
-
+            this._cardCountLabel.setString("0");
+            this._evolutionItem.setEnabled(false);
         }
     },
 
@@ -449,6 +450,12 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var money = gameData.player.get("money");
+        if (money < this._leadCard.getEvolutionNeedMoney()) {
+            TipLayer.tip("仙币不足");
+            return;
+        }
+
         var cardIdList = [];
         var len = this._retinueCard.length;
         for (var i = 0; i < len; ++i) {
@@ -459,8 +466,7 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         var that = this;
         this._leadCard.evolution(function (state) {
-            cc.log(state);
-            that._retinueCard = [];
+            cc.log("state = " + state);
             if (state != EVOLUTION_ERROR) {
                 CardEvolutionLayer.pop({card: card, state: state});
             }

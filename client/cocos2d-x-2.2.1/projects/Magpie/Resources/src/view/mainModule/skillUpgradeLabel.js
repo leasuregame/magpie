@@ -32,6 +32,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _upgradeItem: null,
     _selectLeadCardIcon: null,
     _showUpgrade: false,
+    _effect: null,
 
     onEnter: function () {
         cc.log("SkillUpgradeLabel onEnter");
@@ -281,6 +282,11 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
@@ -332,12 +338,18 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect52, this);
-            effect.setPosition(that._skillUpgradeLabelFit.selectLeadCardItemPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
-                effect.removeFromParent();
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
+            }
+
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect52, this);
+            that._effect.setPosition(that._skillUpgradeLabelFit.selectLeadCardItemPoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                that._effect.removeFromParent();
+                that._effect = null;
             });
-            that.addChild(effect, 10);
+            that.addChild(that._effect, 10);
             that._showUpgrade = true;
             that.update();
         });

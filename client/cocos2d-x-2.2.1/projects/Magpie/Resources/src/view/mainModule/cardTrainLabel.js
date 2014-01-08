@@ -26,6 +26,7 @@ var CardTrainLabel = cc.Layer.extend({
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
     _showTrain: false,
+    _effect: null,
 
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
@@ -298,7 +299,6 @@ var CardTrainLabel = cc.Layer.extend({
                 } else {
                     this._hpLabel.runAction(spawnAction);
                 }
-
             }
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
@@ -339,6 +339,11 @@ var CardTrainLabel = cc.Layer.extend({
         cc.log("CardTrainLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -401,12 +406,20 @@ var CardTrainLabel = cc.Layer.extend({
         this._leadCard.train(function (data) {
             cc.log(data);
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
-                effect.removeFromParent();
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
+            }
+
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
+            that._effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                if (that._effect) {
+                    that._effect.removeFromParent();
+                    that._effect = null;
+                }
             });
-            that.addChild(effect, 10);
+            that.addChild(that._effect, 10);
             that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);

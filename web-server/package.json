@@ -10,6 +10,8 @@
     "jade": "*",
     "express-validator": "*",
     "js-beautify": "*",
-    "shortid": "~2.0.0"
+    "mysql": ">=2.0",
+    "shortid": "~2.0.0",
+    "async": "~0.2.9"
   }
 }

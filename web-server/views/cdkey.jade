@@ -4,7 +4,7 @@ block head
   script(type='text/javascript', src='/js/cdkey.js')
 
 block content
-  form.form-inline(role='form')
+  div.form-inline(role='form')
     div.form-group
       label.control-label 激活码前缀
       br
@@ -20,9 +20,11 @@ block content
     div.form-group
       label.control-label 生成个数
       input(type='number' class='form-control' id='keyQty' placeholder='生成个数')
-    //div.form-group
-  button(id='btnGetCdkey', type='submit' class='btn btn-default') 生成激活码
+    div.form-group
+      button(id='btnGetCdkey', class='btn btn-default') 生成激活码
 
   div.row
     dir.col-sm-12
-      div(id='cdkeyShow')
+      form.form-line(id='cdkeyShow', action='/admin/cdkey/generate', method='POST', role='form')
+        div(id='cdkeyShow')
+

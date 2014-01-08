@@ -17,27 +17,29 @@ Handler::valifyCdkey = (msg, session, next) ->
 	[keyPrefix, val] = cdkey.split('-')
 	async.waterfall [
 		(cb) =>
-			@app.get('dao').isAvalifyPlayer playerId, keyPrefix, cb
+			@app.get('dao').cdkey.isAvalifyPlayer playerId, keyPrefix, cb
 		(valified, cb) ->
 			if valified
 				return ({code: 501, msg: 'you have valify a cdkey, can not valify another one'})
-			cd()
+			cb()
 		(cb) => 
-			@app.get('dao').fetch where: key: cdkey, cb
+			@app.get('dao').cdkey.fetchOne where: code: cdkey, cb
 		(row, cb) =>
+			console.log 'roowowo=====', row
 			if row.activate is 1
 				return cb({code: 501, msg: 'a used cdkey'})
 			if row.endDate < new Date()
 				return cb({code: 501, msg: 'cdkey is expired'})
 
-			@app.get('dao').update {
+			@app.get('dao').cdkey.update {
 				data: activate: 1
-				where: key: cdkey
+				where: code: cdkey
 			}, cb
 		(updated, cb) =>
 			playerManager.getPlayerInfo pid: playerId, cb
-		(player) =>
+		(player, cb) =>
 			data = table.getTableItem('cdkey', keyPrefix)
+			console.log('-1-', data)
 			if not data
 				return cb({code: 501, msg: 'unvalid cdkey'})
 			updatePlayer(@app, player, data, cb)
@@ -51,6 +53,7 @@ Handler::valifyCdkey = (msg, session, next) ->
 validCdkey = (key) -> /^\S*-\S*$/.test(key)
 
 updatePlayer = (app, player, data, cb) ->
+	console.log 'update player', data
 	setIfExist = (attrs) ->
 		player.increase att, val for att, val of boxInfo when att in attrs
 		return
@@ -61,5 +64,5 @@ updatePlayer = (app, player, data, cb) ->
 		ids = cardIds.split(',').map (i) tableId: parseInt i
 		async.map ids, entityUtil.createCard, (err, cards) -> cb(err, data, cards)
 	else
-		cd null, data, []
+		cb null, data, []
 

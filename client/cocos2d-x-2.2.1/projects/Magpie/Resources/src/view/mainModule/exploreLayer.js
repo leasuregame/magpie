@@ -659,7 +659,7 @@ var ExploreLayer = cc.Layer.extend({
 
         cc.log(product);
 
-        if (product.count <= 0) {
+        if (product.remainTimes <= 0) {
             if (gameData.shop.get("powerBuyCount") <= 0) {
                 var tipVip = gameData.player.get("vip") + 1;
 

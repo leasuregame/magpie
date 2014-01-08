@@ -101,12 +101,12 @@ var Task = Entity.extend({
         cc.log("Task canExplore");
 
         if (gameData.player.get("power") < this._powerNeed) {
-            TipLayer.tip("体力不足");
+         //   TipLayer.tip("体力不足");
             return POWER_NO_ENOUGH;
         }
 
         if (gameData.cardList.isFull()) {
-            TipLayer.tip("卡牌已满，请先消耗");
+          //  TipLayer.tip("卡牌已满，请先消耗");
             return CARD_FULL;
         }
 

@@ -456,10 +456,10 @@ var TournamentLayer = cc.Layer.extend({
 
         cc.log(product);
 
-        if (product.count <= 0) {
-            TipLayer.tip(product.tip);
-            return;
-        }
+//        if (product.count <= 0) {
+//            TipLayer.tip(product.tip);
+//            return;
+//        }
 
         var that = this;
         AmountLayer.pop(

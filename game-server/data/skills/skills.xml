@@ -109,7 +109,7 @@
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="319"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="56" ss:Span="1"/>
    <Column ss:Index="5" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="55"/>
-   <Column ss:AutoFitWidth="0" ss:Width="145"/>
+   <Column ss:AutoFitWidth="0" ss:Width="62"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="105"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="99"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="68"/>
@@ -241,8 +241,8 @@
     <Cell ss:StyleID="s76"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s76"/>
-    <Cell ss:StyleID="s76"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="Number">60</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="Number">65</Data></Cell>
@@ -459,8 +459,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

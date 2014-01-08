@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var notice = require('./routes/notice');
 var version = require('./routes/version');
+var cdkey = require('./routes/cdkey');
 var http = require('http');
 var path = require('path');
 var filter = require('./util/filter');
@@ -47,6 +48,9 @@ app.delete('/admin/notice/:platform', filter.authorize, notice.delNotice);
 app.post('/admin/notice/:platform', filter.authorize, notice.saveNotice);
 app.get('/admin/version', filter.authorize, version.manage);
 app.post('/admin/version', filter.authorize, version.updateVersion);  
+app.get('/admin/cdkey', filter.authorize, cdkey.manage);
+app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
+app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);

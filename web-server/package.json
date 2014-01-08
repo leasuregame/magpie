@@ -9,6 +9,7 @@
     "express": "3.4.7",
     "jade": "*",
     "express-validator": "*",
-    "js-beautify": "*"
+    "js-beautify": "*",
+    "shortid": "~2.0.0"
   }
 }

@@ -327,7 +327,7 @@ var MainLayer = cc.Layer.extend({
         cc.log("MainLayer onTeaching");
 
         if (gameGuide.get("isFirstPassiveSkillAfresh")) {
-            this.set("isFirstPassiveSkillAfresh", false);
+            gameGuide.set("isFirstPassiveSkillAfresh", false);
             MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
         }
     },

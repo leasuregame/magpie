@@ -74,9 +74,9 @@ var Achievement = Entity.extend({
 
                         gameData.achievement.setAchieve(data.msg.achieveId);
 
-                        if(data.msg.firstTime) {
-                            MandatoryTeachingLayer.pop(FIRST_ACHIEVEMENT);
-                        }
+//                        if(data.msg.firstTime) {
+//                            MandatoryTeachingLayer.pop(FIRST_ACHIEVEMENT);
+//                        }
 
                         gameMark.updateAchievementMark(true);
                     });

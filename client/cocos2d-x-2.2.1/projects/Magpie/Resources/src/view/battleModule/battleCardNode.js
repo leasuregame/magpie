@@ -106,7 +106,7 @@ var BattleCardNode = cc.Node.extend({
         this._star = cardTable.star;
         this._skillId = this._skillId || cardTable.skill_id;
         this._normalAtkId = this._normalAtkId || cardTable.normal_atk_id || 1;
-        this._effectId = this._effectId || cardTable.effect_id;
+        this._effectId = this._effectId || cardTable.effect_id || 1;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 

@@ -38,6 +38,7 @@ var CardUpgradeLabel = cc.Layer.extend({
     _money: null,
     _getExp: 0,
     _needExp: 0,
+    _effect: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -363,10 +364,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._stopAllActions();
 
         var nowExp = exp;
-        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
-        upgradeEffect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
-        this.addChild(upgradeEffect, 10);
+        this._effect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
+        this._effect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._effect, 10);
 
+        var that = this;
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
 
@@ -422,9 +424,13 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 this.update();
 
-                upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-                upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                    upgradeEffect.removeFromParent();
+                that._effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                    if (that._effect) {
+                        that._effect.removeFromParent();
+                        that._effect = null;
+                    }
+
                     if (mandatoryTeachingLayer) {
                         if (mandatoryTeachingLayer.isTeaching()) {
                             mandatoryTeachingLayer.next();
@@ -442,6 +448,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {

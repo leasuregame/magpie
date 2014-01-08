@@ -13,6 +13,7 @@
 
 
 var MAX_VIP_LEVEL = 12;
+var MAX_REMAIN_TIMES = 10000;
 
 var Shop = Entity.extend({
     _useVipBoxList: [],
@@ -301,9 +302,9 @@ var Shop = Entity.extend({
 
             product.remainTimes = product.count = gameData.shop.get("expCardBuyCount");
 
-            if (product.count <= 0) {
+            if (product.remainTimes <= 0) {
                 product.tip = "经验元灵购买次数已用完，VIP可购买更多";
-                product.count = 0;
+                product.remainTimes = 0;
                 return product;
             }
 
@@ -336,7 +337,8 @@ var Shop = Entity.extend({
                 obtain: table.obtain,
                 unit: "仙币",
                 count: 0,
-                tip: ""
+                tip: "",
+                remainTimes: MAX_REMAIN_TIMES
             };
 
             var count;
@@ -379,9 +381,9 @@ var Shop = Entity.extend({
 
             product.remainTimes = product.count = gameData.shop.get("powerBuyCount");
 
-            if (product.count <= 0) {
+            if (product.remainTimes <= 0) {
                 product.tip = "体力购买次数已用完，VIP可购买更多";
-                product.count = 0;
+                product.remainTimes = 0;
             }
 
             var count;
@@ -447,7 +449,8 @@ var Shop = Entity.extend({
                 obtain: table.obtain,
                 unit: "个",
                 count: 0,
-                tip: ""
+                tip: "",
+                remainTimes: MAX_REMAIN_TIMES
             };
 
             var cardList = gameData.cardList;

@@ -26,6 +26,7 @@ var CardTrainLabel = cc.Layer.extend({
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
     _showTrain: false,
+    _effect: null,
 
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
@@ -340,6 +341,11 @@ var CardTrainLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
@@ -401,12 +407,20 @@ var CardTrainLabel = cc.Layer.extend({
         this._leadCard.train(function (data) {
             cc.log(data);
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
-                effect.removeFromParent();
+            if (this._effect != null) {
+                this._effect.removeFromParent();
+                this._effect = null;
+            }
+
+            this._effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
+            this._effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            this._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                if (this._effect) {
+                    this._effect.removeFromParent();
+                    this._effect = null;
+                }
             });
-            that.addChild(effect, 10);
+            that.addChild(this._effect, 10);
             that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);

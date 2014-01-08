@@ -42,7 +42,6 @@ var CardEvolutionLabel = cc.Layer.extend({
     _oldStarIcon: [],
     _newStarIcon: [],
 
-
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
 
@@ -90,7 +89,6 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         for (var i = 0; i < 2; ++i) {
             this._cardLvLabel[i] = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
-            this._cardLvLabel[i].setColor(cc.c3b(118, 238, 60));
             this._cardLvLabel[i].setPosition(-140 + i * 290, 82);
             this._resLabel.addChild(this._cardLvLabel[i]);
 
@@ -110,6 +108,15 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._cardPssSkillLabel[i].setPosition(-95 + i * 290, -82);
             this._resLabel.addChild(this._cardPssSkillLabel[i]);
 
+            if (i == 1) {
+                var color = cc.c3b(118, 238, 60);
+
+                this._cardLvLabel[i].setColor(color);
+                this._cardHpLabel[i].setColor(color);
+                this._cardAtkLabel[i].setColor(color);
+                this._cardSkillRateLabel[i].setColor(color);
+                this._cardPssSkillLabel[i].setColor(color);
+            }
         }
 
         var successBgIcon = cc.Sprite.create(main_scene_image.icon338);
@@ -120,7 +127,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         helpBgSprite.setPosition(this._cardEvolutionLayerFit.helpBgSpritePoint);
         this.addChild(helpBgSprite);
 
-        this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+        this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 24);
         this._evolutionRateLabel.setPosition(this._cardEvolutionLayerFit.evolutionRatePoint);
         this.addChild(this._evolutionRateLabel);
 
@@ -309,7 +316,6 @@ var CardEvolutionLabel = cc.Layer.extend({
             }
 
             if (star < 5) {
-
                 this._virtualCard = lz.clone(this._leadCard);
                 this._virtualCard.set("tableId", this._leadCard.get("tableId") + 1);
                 this._virtualCard.update();
@@ -384,7 +390,6 @@ var CardEvolutionLabel = cc.Layer.extend({
                     )
                 )
             );
-
 
             for (var i = 0; i < 5; i++) {
                 this._oldStarIcon[i].setVisible(false);

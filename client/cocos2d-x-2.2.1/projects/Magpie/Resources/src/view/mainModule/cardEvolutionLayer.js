@@ -30,7 +30,7 @@ var CardEvolutionLayer = LazyLayer.extend({
 
     init: function (data) {
 
-        cc.log("LotteryCardLayer init");
+        cc.log("CardEvolutionLayer init");
 
         if (!this._super()) return false;
 

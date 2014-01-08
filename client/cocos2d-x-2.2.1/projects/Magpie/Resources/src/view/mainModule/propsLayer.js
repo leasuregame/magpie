@@ -218,7 +218,7 @@ var PropsLayer = cc.Layer.extend({
 
             cc.log(product);
 
-            if (product.count <= 0) {
+            if (product.remainTimes <= 0) {
 
                 if (id <= 2) {
 
@@ -242,19 +242,23 @@ var PropsLayer = cc.Layer.extend({
                             });
                         }
                     }
-                } else {
-                    TipLayer.tip(product.tip);
                 }
-                return;
+               // return;
+            }  else {
+                var that = this;
+                AmountLayer.pop(
+                    function (count) {
+                        that._buyProduct(id, count);
+                    },
+                    product
+                );
             }
+//            if (product.count <= 0) {
+//                TipLayer.tip(product.tip);
+//                return;
+//            }
 
-            var that = this;
-            AmountLayer.pop(
-                function (count) {
-                    that._buyProduct(id, count);
-                },
-                product
-            );
+
         }
     },
 

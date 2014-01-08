@@ -223,7 +223,7 @@ var gameGoodsName = {
     "powerValue": {
         name: "体力",
         color: cc.c3b(255, 239, 131),
-        icon: gameGoodsIcon["powerValue"]
+        icon: gameGoodsIcon["power"]
     },
     "power": {
         name: "体力",

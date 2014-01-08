@@ -135,7 +135,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
         }
     },
 
-
     onTouchesEnded: function (touches, event) {
         cc.log("PlayerHeaderLabel onTouchesEnded");
 

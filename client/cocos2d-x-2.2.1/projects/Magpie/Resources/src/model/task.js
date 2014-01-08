@@ -243,10 +243,7 @@ var Task = Entity.extend({
                 if (msg) {
                     TipLayer.tip(msg.message);
 
-                    player.sets({
-                        power: msg.power.value,
-                        powerTimestamp: msg.power.time,
-                    });
+                    player.correctionPower(msg.power.value, msg.power.time);
                 }
 
                 cb(null);

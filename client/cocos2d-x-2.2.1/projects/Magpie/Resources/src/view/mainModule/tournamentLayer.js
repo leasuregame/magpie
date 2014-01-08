@@ -33,6 +33,9 @@ var TournamentLayer = cc.Layer.extend({
 
     _isFirstEnter: false,
 
+    _selectRect: null,
+    _isTouch: false,
+
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -57,10 +60,14 @@ var TournamentLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
+        this.setTouchEnabled(true);
+
         this._tournamentLayerFit = gameFit.mainScene.tournamentLayer;
 
         this._rankList = [];
         this._isFirstEnter = true;
+        this._selectRect = this._tournamentLayerFit.selectRect;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -144,6 +151,10 @@ var TournamentLayer = cc.Layer.extend({
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
+
+        var tipLabel = cc.LabelTTF.create("排名和等级越高，奖励越多", "STHeitiTC-Medium", 18);
+        tipLabel.setPosition(this._tournamentLayerFit.tipLabelPoint);
+        this.addChild(tipLabel);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -285,7 +296,7 @@ var TournamentLayer = cc.Layer.extend({
         var playerId = gameData.player.get("id");
         var index = 0;
 
-        var scrollViewHeight = len * 135 + 55;
+        var scrollViewHeight = len * 160 + 55;
         if (scrollViewHeight < this._tournamentLayerFit.scrollViewHeight) {
             scrollViewHeight = this._tournamentLayerFit.scrollViewHeight;
         }
@@ -297,7 +308,7 @@ var TournamentLayer = cc.Layer.extend({
 
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-         //   slideLabel[i].setVisible(!this._isFirstEnter);
+            //   slideLabel[i].setVisible(!this._isFirstEnter);
 
             if (playerId == this._rankList[i].playerId) {
                 index = Math.min(i + 1, len - 1);
@@ -305,7 +316,7 @@ var TournamentLayer = cc.Layer.extend({
 
             if (i == 10) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, scrollViewHeight - 135 * i - 15));
+                line.setPosition(cc.p(310, scrollViewHeight - 160 * i - 34));
                 slideLabel[i].addChild(line, 2);
             }
 
@@ -313,9 +324,9 @@ var TournamentLayer = cc.Layer.extend({
             slideLabel[i].addChild(tournamentPlayerLabel);
 
             if (i < 10) {
-                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1)));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 160 * (i + 1)));
             } else {
-                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 135 * (i + 1) - 55));
+                tournamentPlayerLabel.setPosition(cc.p(0, scrollViewHeight - 160 * (i + 1) - 55));
             }
 
             scrollViewLayer.addChild(slideLabel[i]);
@@ -329,24 +340,10 @@ var TournamentLayer = cc.Layer.extend({
 
         this.addChild(this._scrollView);
 
-        var offsetY = 0 - (len - 1 - index) * 135;
+        var offsetY = 0 - (len - 1 - index) * 160;
         if (index < 10) offsetY -= 55;
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
-
-//        if(this._isFirstEnter) {
-//            var slideLayer = SlideLayer.create(
-//                {
-//                    labels: slideLabel,
-//                    slideTime: 0.4,
-//                    timeTick: 0.05
-//                }
-//            );
-//
-//            slideLayer.showSlide();
-//            this._isFirstEnter = false;
-//        }
-
 
     },
 
@@ -507,8 +504,62 @@ var TournamentLayer = cc.Layer.extend({
             });
             this.addChild(effect, 10);
         }
-    }
+    },
 
+    _onClickTournamentDetails: function () {
+        cc.log("TournamentLayer _onClickRankDetails");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().getLayer().addChild(TournamentDetails.create(), 20);
+    },
+
+    /**
+     * callback when a touch event moved
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchBegan: function (touch, event) {
+        cc.log("TournamentLayer onTouchBegan");
+
+        var point = this.convertToNodeSpace(touch.getLocation());
+        if (cc.rectContainsPoint(this._selectRect, point)) {
+            this._isTouch = true;
+        }
+
+        return this._isTouch;
+    },
+
+    /**
+     * callback when a touch event finished
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchEnded: function (touch, event) {
+        cc.log("TournamentLayer onTouchEnded");
+
+        if (this._isTouch && touch != undefined) {
+            var point = this.convertToNodeSpace(touch.getLocation());
+            cc.log("point: " + point);
+
+            if (cc.rectContainsPoint(this._selectRect, point)) {
+                cc.log("TournamentLayer _onClickTournamentDetails");
+                this._isTouch = false;
+
+                this._onClickTournamentDetails();
+            }
+        }
+    },
+
+    /**
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchCancelled: function (touch, event) {
+        cc.log("TournamentLayer onTouchCancelled");
+
+        this._isTouch = false;
+    }
 });
 
 TournamentLayer.create = function () {

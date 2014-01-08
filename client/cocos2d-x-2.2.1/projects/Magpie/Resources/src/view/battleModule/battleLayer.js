@@ -428,7 +428,12 @@ var BatterLayer = cc.Layer.extend({
                 }
 
                 that.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
-                that[fn](battleStep);
+
+                if (that[fn]) {
+                    that[fn](battleStep);
+                } else {
+                    that.skill1(battleStep);
+                }
             };
 
             var addSubtitleNodeCb = function () {
@@ -459,7 +464,12 @@ var BatterLayer = cc.Layer.extend({
             fn = this._battleNode[attacker].getNormalAtkFn();
 
             this.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
-            this[fn](battleStep);
+
+            if (this[fn]) {
+                this[fn](battleStep);
+            } else {
+                this.skill1(battleStep);
+            }
         }
     },
 

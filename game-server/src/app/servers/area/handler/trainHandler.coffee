@@ -378,7 +378,7 @@ Handler::starUpgrade = (msg, session, next) ->
         # 获得五星卡成就
         if card.star is 5
           achieve.star5card(player)
-          cardNmae = table.getTableItem('cards', card.tableId).name
+          cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
             type: 0

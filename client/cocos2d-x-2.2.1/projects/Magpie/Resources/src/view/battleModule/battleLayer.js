@@ -197,6 +197,10 @@ var BatterLayer = cc.Layer.extend({
     tipHarm: function (index, value, isSkill, isCirt) {
         cc.log("BatterLayer tipHarm");
 
+        if (isCirt) {
+            this.shock();
+        }
+
         var name = "";
         var str = "";
 
@@ -457,6 +461,57 @@ var BatterLayer = cc.Layer.extend({
             this.setBattleNodeZOrder(ATK_NODE_Z_ORDER, attacker);
             this[fn](battleStep);
         }
+    },
+
+    shock: function () {
+        cc.log("BattleLayer shock");
+
+        var a0 = cc.MoveTo.create(
+            0.05,
+            cc.p(0, 0)
+        );
+
+        var flag1 = lz.random(0, 1) < 0.5;
+        var a1 = cc.MoveBy.create(
+            0.05,
+            cc.p(
+                flag1 ? lz.random(20, 25) : lz.random(0, 25),
+                flag1 ? lz.random(0, 25) : lz.random(20, 25)
+            )
+        );
+
+        var flag2 = lz.random(0, 1) < 0.5;
+        var a2 = cc.MoveBy.create(
+            0.05,
+            cc.p(
+                flag2 ? lz.random(20, 25) : lz.random(0, 25),
+                flag2 ? lz.random(0, 25) : lz.random(20, 25)
+            )
+        );
+
+        var flag3 = lz.random(0, 1) < 0.5;
+        var a3 = cc.MoveBy.create(
+            0.05,
+            cc.p(
+                flag3 ? lz.random(15, 20) : lz.random(0, 20),
+                flag3 ? lz.random(0, 20) : lz.random(15, 20)
+            )
+        );
+
+        var flag4 = lz.random(0, 1) < 0.5;
+        var a4 = cc.MoveBy.create(
+            0.05,
+            cc.p(
+                flag4 ? lz.random(10, 15) : lz.random(0, 15),
+                flag4 ? lz.random(0, 15) : lz.random(10, 15)
+            )
+        );
+
+        this.runAction(
+            cc.Sequence.create(
+                a1, a0.clone(), a2, a0.clone(), a3, a0.clone(), a4, a0
+            )
+        );
     },
 
     skill1: function (battleStep) {

@@ -140,6 +140,7 @@ Handler::sysMsg = (msg, session, next) ->
   content = msg.content
   options = msg.options or {}
   receiver = msg.playerId or SYSTEM
+
   dao.message.create data: {
     options: options
     sender: SYSTEM
@@ -151,7 +152,7 @@ Handler::sysMsg = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, null, {
+    sendMessage @app, msg.playerId, {
       route: 'onMessage'
       msg: res.toJson()
     }, '邮件发送成功', next
@@ -416,7 +417,7 @@ Handler::accept = (msg, session, next) ->
           return next(null, {code: err.code or 500, msg: err.msg or err})
         else if (senderFriends.filter (f) -> f.id is playerId).length > 0
           friendExist = true
-          cb()
+          cb(null, null)
         else if senderFriends.length >= res.friendsCount
           cb({code: 501, msg: '对方好友已达上限'})
         else

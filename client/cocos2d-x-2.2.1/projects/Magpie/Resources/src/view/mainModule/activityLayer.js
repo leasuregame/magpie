@@ -19,7 +19,8 @@ var ActivityLayer = cc.Layer.extend({
         SignInLayer,
         PowerRewardLayer,
         GoldRewardLayer,
-        RechargeLayer
+        RechargeLayer,
+        InvitationLayer
     ],
     _selectIcon: null,
     _mark: [],
@@ -63,7 +64,8 @@ var ActivityLayer = cc.Layer.extend({
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
 
-        for (var i = 0; i < 4; ++i) {
+        var len = this._layer.length;
+        for (var i = 0; i < len; ++i) {
             var url = "icon" + (261 + i);
 
             var item = cc.MenuItemImage.create(
@@ -84,7 +86,7 @@ var ActivityLayer = cc.Layer.extend({
             mainMenu.addChild(item);
         }
 
-        this._selectIcon = cc.Sprite.create(main_scene_image.icon265);
+        this._selectIcon = cc.Sprite.create(main_scene_image.icon19);
         this._selectIcon.setAnchorPoint(cc.p(0, 0));
         this._selectIcon.setPosition(this._activityLayerFit.itemBasePoint);
         this._selectIcon.setScale(0.9);
@@ -95,7 +97,7 @@ var ActivityLayer = cc.Layer.extend({
 
     _onClickLayer: function (index) {
         return function () {
-            cc.log("MainMenuLayer _onClickLayer: " + index);
+            cc.log("ActivityLayer _onClickLayer: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -105,7 +107,7 @@ var ActivityLayer = cc.Layer.extend({
     },
 
     switchLayer: function (runLayer) {
-        cc.log("MessageLayer switchMenu");
+        cc.log("ActivityLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
@@ -116,15 +118,13 @@ var ActivityLayer = cc.Layer.extend({
     },
 
     updateMark: function () {
-        cc.log("MessageLayer updateMark");
+        cc.log("ActivityLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());
         this._mark[1].setVisible(gameMark.getPowerRewardMark());
         this._mark[2].setVisible(gameMark.getGoldRewardMark());
         this._mark[3].setVisible(gameMark.getRechargeMark());
     }
-
-
 });
 
 

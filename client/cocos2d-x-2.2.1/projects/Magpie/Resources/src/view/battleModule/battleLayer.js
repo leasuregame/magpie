@@ -477,13 +477,13 @@ var BatterLayer = cc.Layer.extend({
         cc.log("BattleLayer shock");
 
         var a0 = cc.MoveTo.create(
-            0.05,
+            0.08,
             cc.p(0, 0)
         );
 
         var flag1 = lz.random(0, 1) < 0.5;
         var a1 = cc.MoveBy.create(
-            0.05,
+            0.08,
             cc.p(
                 flag1 ? lz.random(20, 25) : lz.random(0, 25),
                 flag1 ? lz.random(0, 25) : lz.random(20, 25)
@@ -492,7 +492,7 @@ var BatterLayer = cc.Layer.extend({
 
         var flag2 = lz.random(0, 1) < 0.5;
         var a2 = cc.MoveBy.create(
-            0.05,
+            0.08,
             cc.p(
                 flag2 ? lz.random(20, 25) : lz.random(0, 25),
                 flag2 ? lz.random(0, 25) : lz.random(20, 25)
@@ -501,7 +501,7 @@ var BatterLayer = cc.Layer.extend({
 
         var flag3 = lz.random(0, 1) < 0.5;
         var a3 = cc.MoveBy.create(
-            0.05,
+            0.08,
             cc.p(
                 flag3 ? lz.random(15, 20) : lz.random(0, 20),
                 flag3 ? lz.random(0, 20) : lz.random(15, 20)
@@ -510,7 +510,7 @@ var BatterLayer = cc.Layer.extend({
 
         var flag4 = lz.random(0, 1) < 0.5;
         var a4 = cc.MoveBy.create(
-            0.05,
+            0.08,
             cc.p(
                 flag4 ? lz.random(10, 15) : lz.random(0, 15),
                 flag4 ? lz.random(0, 15) : lz.random(10, 15)

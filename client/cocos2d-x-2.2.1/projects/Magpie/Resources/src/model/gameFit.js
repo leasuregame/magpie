@@ -899,6 +899,11 @@ var fit4Iphone4 = {
             "go2PaymentItemPoint": cc.p(360, 212),
             "btnTitlePoint": cc.p(360, 212)
         },
+        "invitationLayer": {
+            "iconSpritePoint": cc.p(360, 520),
+            "okItemPoint": cc.p(360, 220),
+            "editBoxPoint": cc.p(463, 438)
+        },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpriteContentSize": cc.size(520, 300),
@@ -2158,6 +2163,11 @@ var fit4Iphone5 = {
             "textOffsetY": 35,
             "go2PaymentItemPoint": cc.p(320, 220),
             "btnTitlePoint": cc.p(320, 220)
+        },
+        "invitationLayer": {
+            "iconSpritePoint": cc.p(320, 640),
+            "okItemPoint": cc.p(320, 220),
+            "editBoxPoint": cc.p(423, 558)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),

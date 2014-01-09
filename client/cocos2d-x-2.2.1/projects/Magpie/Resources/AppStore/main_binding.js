@@ -116,6 +116,7 @@ var appFiles = [
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
     'src/view/mainModule/signInLayer.js',
+    'src/view/mainModule/invitationLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',

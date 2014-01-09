@@ -60,10 +60,9 @@ var Level9BoxLayer = LazyLayer.extend({
         cc.log("Level9Box ccbFnShowBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
-
         GiftBagLayer.pop(this._data);
-
     }
 
 });

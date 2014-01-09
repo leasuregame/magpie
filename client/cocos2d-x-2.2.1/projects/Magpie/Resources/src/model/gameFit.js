@@ -911,8 +911,8 @@ var fit4Iphone4 = {
         },
         "invitationLayer": {
             "iconSpritePoint": cc.p(360, 520),
-            "okItemPoint": cc.p(360, 220),
-            "editBoxPoint": cc.p(463, 438)
+            "okItemPoint": cc.p(360, 280),
+            "editBoxPoint": cc.p(463, 433)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -2186,8 +2186,8 @@ var fit4Iphone5 = {
         },
         "invitationLayer": {
             "iconSpritePoint": cc.p(320, 640),
-            "okItemPoint": cc.p(320, 220),
-            "editBoxPoint": cc.p(423, 558)
+            "okItemPoint": cc.p(320, 330),
+            "editBoxPoint": cc.p(423, 553)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),

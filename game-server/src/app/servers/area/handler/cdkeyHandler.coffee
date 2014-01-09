@@ -60,9 +60,20 @@ Handler::verifyCdkey = (msg, session, next) ->
 
     player.addCards cards
     player.save()
-    next(null, {code: 200, msg: {data: data, cards: cards?.map (c)-> c.toJson?()}})
+    data = returnData(data)
+    data.cards = cards?.map (c)-> c.toJson?()
+    next(null, {code: 200, msg: data})
 
 validCdkey = (key) -> /^\S*-\S*$/.test(key)
+
+returnData = (data) ->
+  gold: data.gold if data.gold
+  energy: data.energy if data.energy
+  money: data.money if data.money
+  skillPoint: data.skillPoint if data.skillPoint
+  elixir: data.elixir if data.elixir
+  fragment: data.fragments if data.fragments
+  spirit: data.spirit if data.spirit
 
 updatePlayer = (app, player, data, cb) ->
   setIfExist = (attrs) ->
@@ -75,8 +86,25 @@ updatePlayer = (app, player, data, cb) ->
     player.incSpirit(data.spirit)
 
   if _.has data, 'card_ids'
-    ids = data.card_ids.split(',').map (i)-> tableId: parseInt(i), playerId: player.id
-    async.map ids, entityUtil.createCard, (err, cards) -> cb(err, data, player, cards)
+    ids = data.card_ids?.split(',') or []
+    lvs = data.card_lvs?.split(',') or []
+    qtys = data.card_qtys?.split(',') or []
+
+    rows = []
+    for id, i in ids
+      if qtys[i]? and qtys[i] > 1
+        count = parseInt(qtys[i])
+      else 
+        count = 1
+      
+      for j in [1..count]
+        rows.push 
+          tableId: parseInt(id),
+          lv: if lvs[i]? then parseInt(lvs[i]) else 1
+          playerId: player.id
+
+    console.log('-cards-', rows)
+    async.map rows, entityUtil.createCard, (err, cards) -> cb(err, data, player, cards)
   else
     cb null, data, player, []
 

@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7180</WindowHeight>
+  <WindowHeight>5300</WindowHeight>
   <WindowWidth>29020</WindowWidth>
-  <WindowTopX>4980</WindowTopX>
-  <WindowTopY>3480</WindowTopY>
+  <WindowTopX>4300</WindowTopX>
+  <WindowTopY>5840</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -76,8 +76,8 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">10,34</Data></Cell>
-    <Cell><Data ss:Type="String">5,10</Data></Cell>
-    <Cell><Data ss:Type="String">1,2</Data></Cell>
+    <Cell><Data ss:Type="String">2,5</Data></Cell>
+    <Cell><Data ss:Type="String">2,3</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -88,7 +88,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -86,9 +86,9 @@ updatePlayer = (app, player, data, cb) ->
     player.incSpirit(data.spirit)
 
   if _.has data, 'card_ids'
-    ids = data.card_ids?.split(',') or []
-    lvs = data.card_lvs?.split(',') or []
-    qtys = data.card_qtys?.split(',') or []
+    ids = data.card_ids?.toString().split(',') or []
+    lvs = data.card_lvs?.toString().split(',') or []
+    qtys = data.card_qtys?.toString().split(',') or []
 
     rows = []
     for id, i in ids

@@ -43,6 +43,20 @@ var addEvents = function(card) {
         card.recountHpAndAtk();
     });
 
+    card.on('tableId.change', function(id) {
+        if (id) {
+            var cardData = table.getTableItem('cards', id);
+            // 同步配置表中卡牌的星级到数据库
+            if (cardData) {
+                card.set('star', cardData.star);
+                if (cardData.star >= 3) {
+                    card.skill = table.getTableItem('skills', cardData.skill_id);
+                }
+                card.cardData = cardData;
+            }
+        }
+    });
+
     // card.on('skillPoint.change', function() {
     //     checkSkillLv(card);
     // });
@@ -101,7 +115,7 @@ var checkSkillLv = function(card) {
     var items, skillLv, i, el, sp = card.skillPoint;
     items = table.getTable('skill_upgrade').map(function(row) {
         return row['star' + card.star];
-    }).sort(function(x, y){
+    }).sort(function(x, y) {
         return x - y;
     });
 
@@ -154,7 +168,7 @@ var Card = (function(_super) {
         'lv',
         'exp',
         'skillLv',
-        'skillInc',
+        'factor',
         'skillPoint',
         'elixirHp',
         'elixirAtk',
@@ -167,7 +181,7 @@ var Card = (function(_super) {
         lv: 1,
         exp: 0,
         skillLv: 1,
-        skillInc: 0,
+        factor: 0,
         skillPoint: 0,
         elixirHp: 0,
         elixirAtk: 0,
@@ -184,7 +198,7 @@ var Card = (function(_super) {
             elixir_atk: 0
         },
         passiveSkills: [],
-        useCardsCounts:0
+        useCardsCounts: 0
     };
 
     Card.prototype.init = function() {
@@ -384,8 +398,19 @@ var Card = (function(_super) {
         return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
-    Card.prototype.resetSkillLv = function(){
+    Card.prototype.resetSkillLv = function() {
         checkSkillLv(this);
+    };
+
+    Card.prototype.getSkillInc = function() {
+        var max, min, skillInc = 0, star = this.star;
+        if (this.skill) {
+            max = this.skill['star'+star+'_inc_max'];
+            min = this.skill['star'+star+'_inc_min'];
+            skillInc = parseInt((max-min)*this.factor/1000) + min;
+        }
+        this.skillInc = skillInc;
+        return skillInc;
     };
 
     Card.prototype.toJson = function() {
@@ -397,8 +422,9 @@ var Card = (function(_super) {
             ability: this.ability(),
             lv: this.lv,
             exp: this.exp,
+            factor: this.factor,
             skillLv: this.star >= 3 ? this.skillLv : void 0,
-            skillInc: this.star >= 3 ? this.skillInc : void 0,
+            skillInc: this.star >= 3 ? this.getSkillInc() : void 0,
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,

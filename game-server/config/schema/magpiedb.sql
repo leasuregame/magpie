@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `lv` SMALLINT(5) UNSIGNED DEFAULT '1',
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
-  `skillInc` INT(5) UNSIGNED DEFAULT '0',
+  `factor` INT(5) UNSIGNED DEFAULT '0',
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
@@ -173,4 +173,13 @@ CREATE TABLE IF NOT EXISTS `tbOrder` (
   `status` INT(4),
   `created` DATETIME,
   PRIMARY KEY (`tradeNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `cdkey` (
+  `code` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
+  `playerId` INT(10) UNSIGNED,
+  `activate` SMALLINT(1) DEFAULT '0',
+  `startDate` DATE,
+  `endDate` DATE,
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

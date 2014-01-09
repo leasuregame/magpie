@@ -17,6 +17,8 @@ $(function() {
         url: '/admin/notice/' + platform,
         type: 'DELETE'
       }).success(function(data) {
+        console.log(data);
+        alert(data);
         if (data == 'ok') {
           tr.remove();
         }

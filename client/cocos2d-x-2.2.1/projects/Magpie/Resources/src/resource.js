@@ -316,7 +316,7 @@ var main_scene_image = {
     icon25: main_scene_path + "icon25.png",
     icon26: main_scene_path + "icon26.png",
     icon27: main_scene_path + "icon27.png",
-//    icon28: main_scene_path + "icon28.png",
+    icon28: main_scene_path + "icon28.png",
     icon29: main_scene_path + "icon29.png",
     icon30: main_scene_path + "icon30.png",
     icon31: main_scene_path + "icon31.png",

@@ -453,6 +453,16 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
+        "giftBagLayer": {
+            "bgSprite2Point": cc.p(360, 492),
+            "okItemPoint": cc.p(360, 232),
+            "buyItemPoint": cc.p(240, 232),
+            "cancelItemPoint": cc.p(480, 232),
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
+        },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,
             MAX_GOLD_OFFSET: 320,
@@ -1714,6 +1724,16 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(17, 138, 605, 880),
             "scrollViewSize": cc.size(605, 880),
             "scrollViewPoint": cc.p(17, 138)
+        },
+        "giftBagLayer": {
+            "bgSprite2Point": cc.p(320, 580),
+            "okItemPoint": cc.p(320, 320),
+            "buyItemPoint": cc.p(200, 320),
+            "cancelItemPoint": cc.p(440, 320),
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
         },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,

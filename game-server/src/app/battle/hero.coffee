@@ -38,7 +38,7 @@ class Hero extends Module
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 1
-    @skill_inc = attrs.skillInc
+    @skill_inc = attrs.skillInc or attrs.getSkillInc?()
     @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0

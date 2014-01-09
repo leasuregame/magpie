@@ -369,7 +369,7 @@ Handler::starUpgrade = (msg, session, next) ->
         card.increase('star')
         card.increase('tableId')
         card.resetSkillLv()
-        entityUtil.resetSkillIncForCard(card)
+        #entityUtil.resetSkillIncForCard(card)
 
         # 获得so lucky成就
         if card_count is 1

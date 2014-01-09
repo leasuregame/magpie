@@ -559,20 +559,25 @@ var random_lineup = function(cards) {
 var genSkillInc = function(card) {
   if (parseInt(card.star) < 3) {
     // console.log("card = ",card);
-    card.skillInc = 0;
+    // card.skillInc = 0;
+    card.factor = 0;
     return;
   }
-  var cdata, max, min, skill;
-  cdata = table.getTableItem('cards', card.tableId);
-  skill = cdata.skill_id_linktarget;
-  if (skill != null) {
-    min = skill["star" + card.star + "_inc_min"];
-    max = skill["star" + card.star + "_inc_max"];
-    card.skillInc = _.random(min, max);
-    //console.log("skillInc = ",card.skillInc);
-  } else {
-    throw new Error('can not file skill info of card: ' + card.tableId);
-  }
+  
+  card.factor = _.random(1, 1000);
+  return;
+
+  // var cdata, max, min, skill;
+  // cdata = table.getTableItem('cards', card.tableId);
+  // skill = cdata.skill_id_linktarget;
+  // if (skill != null) {
+  //   min = skill["star" + card.star + "_inc_min"];
+  //   max = skill["star" + card.star + "_inc_max"];
+  //   card.skillInc = _.random(min, max);
+  //   //console.log("skillInc = ",card.skillInc);
+  // } else {
+  //   throw new Error('can not file skill info of card: ' + card.tableId);
+  // }
 };
 
 var initPassiveSkill = function(card) {

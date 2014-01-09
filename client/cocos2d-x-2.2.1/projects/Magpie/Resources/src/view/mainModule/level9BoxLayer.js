@@ -51,7 +51,6 @@ var Level9BoxLayer = LazyLayer.extend({
         this.addChild(this._tipLabel);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg21);
-       // bgSprite.setContentSize(cc.size(550, 550));
         bgSprite.setPosition(this._level9BoxLayerFit.bgSpritePoint);
         this._tipLabel.addChild(bgSprite);
 
@@ -80,15 +79,13 @@ var Level9BoxLayer = LazyLayer.extend({
             scrollViewHeight = 480;
         }
 
-        var index = 0;
         var x = 140;
-
         for (var i = 0; i < len; i++) {
             var key = keys[i];
 
             if (rewardGoodsUrl[key] != undefined && this._reward[key] > 0) {
 
-                var y = scrollViewHeight - index * 120 - 60;
+                var y = scrollViewHeight - i * 120 - 60;
                 var goodName = lz.getNameByKey(key);
                 var goodIcon = rewardGoodsUrl[key];
 
@@ -110,8 +107,6 @@ var Level9BoxLayer = LazyLayer.extend({
                 countLabel.setAnchorPoint(cc.p(0, 0.5));
                 countLabel.setPosition(cc.p(x + 50, y - 20));
                 scrollViewLayer.addChild(countLabel);
-                index++;
-
             }
         }
 

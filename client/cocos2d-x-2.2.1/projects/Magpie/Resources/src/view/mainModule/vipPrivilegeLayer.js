@@ -14,6 +14,7 @@
 
 var vipPrivilegeDescription = {
     lottery_free_count: "每日免费寻宝次数",
+    exp_card_count: "每日经验元灵购买次数",
     friend_count: "好友上限",
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",
@@ -126,13 +127,13 @@ var VipPrivilegeLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 355;
+        var scrollViewHeight = len * 420;
         if (scrollViewHeight < this._vipPrivilegeLayerFit.scrollViewHeight) {
             scrollViewHeight = this._vipPrivilegeLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 355 - i * 355;
+            var y = scrollViewHeight - 420 - i * 420;
 
             var vipPrivilege = vipPrivilegeList[i];
 
@@ -144,14 +145,14 @@ var VipPrivilegeLayer = LazyLayer.extend({
             var bgSprite = cc.Sprite.create(bgSpriteUrl);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
-            bgSprite.setScaleY(1.15);
+            bgSprite.setScaleY(1.29);
             scrollViewLayer.addChild(bgSprite);
 
             var vipIcon = cc.Sprite.create(main_scene_image["vip" + vipPrivilege.id]);
-            vipIcon.setPosition(cc.p(250, y + 320));
+            vipIcon.setPosition(cc.p(250, y + 360));
             scrollViewLayer.addChild(vipIcon);
 
-            var offsetY = y + 280;
+            var offsetY = y + 315;
             for (var key in vipPrivilege) {
                 if (key == "description") {
                     var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);

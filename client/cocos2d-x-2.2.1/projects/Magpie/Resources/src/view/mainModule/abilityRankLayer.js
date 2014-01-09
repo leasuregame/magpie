@@ -122,7 +122,7 @@ var AbilityRankLayer = cc.Layer.extend({
             slideLabel[i].addChild(abilityIcon);
 
             var abilityLabel = cc.LabelTTF.create(this._abilityRankList[i].ability, "Arial", 35);
-            abilityLabel.setColor(cc.c3b(56, 3, 5));
+            abilityLabel.setColor(cc.c3b(123, 60, 54));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
             abilityLabel.setPosition(cc.p(465, y + 55));
             slideLabel[i].addChild(abilityLabel);

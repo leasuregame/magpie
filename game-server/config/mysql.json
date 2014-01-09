@@ -31,10 +31,10 @@
 			"user": "tb_leasuregame",
 			"password": "leasure405GAME"
 		},
-		"tb_db_userdb": {
+		"userdb": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
-			"database": "userdb",
+			"database": "tb_db_userdb",
 			"user": "tb_leasuregame",
 			"password": "leasure405GAME"
 		}

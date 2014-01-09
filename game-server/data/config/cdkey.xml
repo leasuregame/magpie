@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-01-08T10:30:45Z</Created>
-  <LastSaved>2014-01-08T10:41:00Z</LastSaved>
+  <LastSaved>2014-01-09T03:23:30Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -17,9 +17,9 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>7180</WindowHeight>
-  <WindowWidth>25140</WindowWidth>
-  <WindowTopX>9460</WindowTopX>
-  <WindowTopY>2460</WindowTopY>
+  <WindowWidth>29020</WindowWidth>
+  <WindowTopX>4980</WindowTopX>
+  <WindowTopY>3480</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -38,7 +38,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="激活码配置表">
-  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">激活码前缀</Data></Cell>
@@ -50,6 +50,7 @@
     <Cell><Data ss:Type="String">灵气</Data></Cell>
     <Cell><Data ss:Type="String">卡魂</Data></Cell>
     <Cell><Data ss:Type="String">卡牌</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌等级</Data></Cell>
     <Cell><Data ss:Type="String">卡牌张数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -61,8 +62,9 @@
     <Cell><Data ss:Type="String">elixir</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
     <Cell><Data ss:Type="String">fragments</Data></Cell>
-    <Cell><Data ss:Type="String">card_id</Data></Cell>
-    <Cell><Data ss:Type="String">card_qty</Data></Cell>
+    <Cell><Data ss:Type="String">card_ids</Data></Cell>
+    <Cell><Data ss:Type="String">card_lvs</Data></Cell>
+    <Cell><Data ss:Type="String">card_qtys</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">TB1-</Data></Cell>
@@ -73,8 +75,9 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="String">10,20</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">10,34</Data></Cell>
+    <Cell><Data ss:Type="String">5,10</Data></Cell>
+    <Cell><Data ss:Type="String">1,2</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -85,7 +88,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

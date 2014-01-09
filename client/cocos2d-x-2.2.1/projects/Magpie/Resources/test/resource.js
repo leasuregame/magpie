@@ -1111,11 +1111,25 @@ var main_scene_image = {
     //技能特效测试素材
     1: test_scene_path + "res/" + "1.png",
     2: test_scene_path + "res/" + "2.png",
+    3: test_scene_path + "res/" + "3.png",
+    4: test_scene_path + "res/" + "4.png",
+    5: test_scene_path + "res/" + "5.png",
+    6: test_scene_path + "res/" + "6.png",
+    7: test_scene_path + "res/" + "7.png",
+    8: test_scene_path + "res/" + "8.png",
+    9: test_scene_path + "res/" + "9.png",
+    10: test_scene_path + "res/" + "10.png",
+    11: test_scene_path + "res/" + "11.png",
 
 
     //技能特效
     texiao1: test_scene_path + "ccb/" + "texiao1.ccbi",
     texiao2: test_scene_path + "ccb/" + "texiao2.ccbi",
+    texiao3: test_scene_path + "ccb/" + "texiao3.ccbi",
+    texiao4: test_scene_path + "ccb/" + "texiao4.ccbi",
+    texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
+    texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
+    texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
 
 };
 

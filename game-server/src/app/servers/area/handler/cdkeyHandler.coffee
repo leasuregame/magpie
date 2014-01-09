@@ -20,10 +20,13 @@ Handler::verifyCdkey = (msg, session, next) ->
   cdkeyRow = null
   async.waterfall [
     (cb) => 
-      @app.get('dao').cdkey.fetchOne where: code: cdkey, cb
+      @app.get('dao').cdkey.fetchOne where: code: cdkey, (err, res) ->
+        if err and err.code is 404
+          return cb({code: 501, msg: '激活码不存在'})
+        else 
+          cb(err, res)
     
     (row, cb) =>
-      console.log('row', row, typeof row.endDate, row.endDate)
       if not row
         return cb({code: 501, msg: '激活码不存在'})
       if row.activate is 1
@@ -103,7 +106,6 @@ updatePlayer = (app, player, data, cb) ->
           lv: if lvs[i]? then parseInt(lvs[i]) else 1
           playerId: player.id
 
-    console.log('-cards-', rows)
     async.map rows, entityUtil.createCard, (err, cards) -> cb(err, data, player, cards)
   else
     cb null, data, player, []

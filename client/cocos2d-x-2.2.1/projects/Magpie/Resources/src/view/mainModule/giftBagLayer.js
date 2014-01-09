@@ -2,6 +2,47 @@
  * Created by lujunyu on 14-1-9.
  */
 
+var giftBagGoods = {
+    energy: {
+        name: "活力点",
+        url: "icon110"
+    },
+
+    money: {
+        name: "仙币",
+        url: "icon108"
+    },
+
+    skillPoint: {
+        name: "技能点",
+        url: "icon109"
+    },
+
+    elixir: {
+        name: "仙丹",
+        url: "icon107"
+    },
+
+    fragments: {
+        name: "卡魂",
+        url: "icon145"
+    },
+
+    exp_card: {
+        name: "经验元灵",
+        url: "icon146"
+    },
+
+    gold: {
+        name: "魔石",
+        url: "icon112"
+    },
+
+    cards: {
+        name: "cards"
+    }
+};
+
 var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
 
@@ -46,7 +87,7 @@ var GiftBagLayer = cc.Layer.extend({
 
         var total = 0;
         for (key in reward) {
-            if (vipBoxGoods[key] != undefined && reward[key] > 0) {
+            if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
                 total++;
             }
         }
@@ -58,38 +99,72 @@ var GiftBagLayer = cc.Layer.extend({
 
         var index = 0;
         var x = 140;
+        var cardMenu = cc.Menu.create();
+        cardMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(cardMenu);
+
         for (var i = 0; i < len; i++) {
             var key = keys[i];
 
-            if (vipBoxGoods[key] != undefined && reward[key] > 0) {
+            if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
 
-                var y = scrollViewHeight - index * 110 - 60;
-                var goods = vipBoxGoods[key];
-                var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setPosition(cc.p(x - 10, y));
-                scrollViewLayer.addChild(goodsSprite);
+                if (giftBagGoods[key].name == "cards") {
+                    var cards = reward[key];
+                    var cardsLen = cards.length;
+                    for (var j = 0; j < cardsLen; j++) {
+                        var y = scrollViewHeight - index * 110 - 60;
+                        var card = Card.create(cards[j]);
+                        var cardItem = CardHeadNode.getCardHeadItem(card);
+                        cardItem.setScale(0.82);
+                        cardItem.setPosition(cc.p(x - 10, y));
+                        cardMenu.addChild(cardItem);
 
-                var nameLabel = StrokeLabel.create(goods.name, "STHeitiTC-Medium", 25);
-                nameLabel.setColor(cc.c3b(255, 252, 175));
-                nameLabel.setAnchorPoint(cc.p(0, 0.5));
-                nameLabel.setPosition(cc.p(x + 50, y + 20));
-                scrollViewLayer.addChild(nameLabel);
+                        var nameLabel = StrokeLabel.create(card.get("name"), "STHeitiTC-Medium", 25);
+                        nameLabel.setColor(cc.c3b(255, 252, 175));
+                        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+                        nameLabel.setPosition(cc.p(x + 50, y + 20));
+                        scrollViewLayer.addChild(nameLabel);
 
-                var countBgIcon = cc.Sprite.create(main_scene_image.icon334);
-                countBgIcon.setPosition(cc.p(x + 170, y - 20));
-                scrollViewLayer.addChild(countBgIcon);
+                        var countBgIcon = cc.Sprite.create(main_scene_image.icon334);
+                        countBgIcon.setPosition(cc.p(x + 170, y - 20));
+                        scrollViewLayer.addChild(countBgIcon);
 
-                var countLabel = StrokeLabel.create("数量    " + reward[key], "STHeitiTC-Medium", 25);
-                countLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLabel.setPosition(cc.p(x + 50, y - 20));
-                scrollViewLayer.addChild(countLabel);
-                index++;
+                        var countLabel = StrokeLabel.create("数量    1", "STHeitiTC-Medium", 25);
+                        countLabel.setAnchorPoint(cc.p(0, 0.5));
+                        countLabel.setPosition(cc.p(x + 50, y - 20));
+                        scrollViewLayer.addChild(countLabel);
+                        index++;
 
+                    }
+
+                } else {
+                    var y = scrollViewHeight - index * 110 - 60;
+                    var goods = giftBagGoods[key];
+                    var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
+                    goodsSprite.setPosition(cc.p(x - 10, y));
+                    scrollViewLayer.addChild(goodsSprite);
+
+                    var nameLabel = StrokeLabel.create(goods.name, "STHeitiTC-Medium", 25);
+                    nameLabel.setColor(cc.c3b(255, 252, 175));
+                    nameLabel.setAnchorPoint(cc.p(0, 0.5));
+                    nameLabel.setPosition(cc.p(x + 50, y + 20));
+                    scrollViewLayer.addChild(nameLabel);
+
+                    var countBgIcon = cc.Sprite.create(main_scene_image.icon334);
+                    countBgIcon.setPosition(cc.p(x + 170, y - 20));
+                    scrollViewLayer.addChild(countBgIcon);
+
+                    var countLabel = StrokeLabel.create("数量    " + reward[key], "STHeitiTC-Medium", 25);
+                    countLabel.setAnchorPoint(cc.p(0, 0.5));
+                    countLabel.setPosition(cc.p(x + 50, y - 20));
+                    scrollViewLayer.addChild(countLabel);
+                    index++;
+                }
             }
         }
 
         var scrollView = cc.ScrollView.create(cc.size(500, 480), scrollViewLayer);
-        scrollView.setTouchPriority(-300);
+        scrollView.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         scrollView.setPosition(this._giftBagLayerFit.scrollViewPoint2);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
@@ -138,7 +213,6 @@ var GiftBagLayer = cc.Layer.extend({
         cancelItem.setVisible(type == BUY_GIFT_BAG);
 
         var menu = cc.Menu.create(okItem, buyItem, cancelItem);
-        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
 
@@ -162,5 +236,5 @@ GiftBagLayer.create = function (data) {
 GiftBagLayer.pop = function (data) {
     var giftBagLayer = GiftBagLayer.create(data);
 
-    MainScene.getInstance().addChild(giftBagLayer, 10);
+    MainScene.getInstance().addChild(giftBagLayer);
 }

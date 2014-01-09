@@ -85,10 +85,11 @@ var InvitationLayer = cc.Layer.extend({
             return;
         }
 
-        gameData.player.invite(function(data) {
+        gameData.player.invite(function (data) {
             cc.log(data);
-
-
+            GiftBagLayer.pop({
+                reward: data
+            });
         }, key);
     }
 });

@@ -11,39 +11,6 @@
  * vip layer
  * */
 
-
-var vipBoxGoods = {
-    energy: {
-        name: "活力点",
-        url: "icon110"
-    },
-
-    money: {
-        name: "仙币",
-        url: "icon108"
-    },
-
-    skillPoint: {
-        name: "技能点",
-        url: "icon109"
-    },
-
-    elixir: {
-        name: "仙丹",
-        url: "icon107"
-    },
-
-    fragments: {
-        name: "卡魂",
-        url: "icon145"
-    },
-
-    exp_card: {
-        name: "经验元灵",
-        url: "icon146"
-    }
-};
-
 var vipBoxUrl = {
     vip1: "icon276",
     vip2: "icon276",

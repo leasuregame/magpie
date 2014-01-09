@@ -141,6 +141,7 @@ var appFiles = [
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
+    'src/view/mainModule/giftBagLayer.js',
     'src/view/mainModule/goldLayer.js',
     'src/view/mainModule/goPaymentLayer.js',
     'src/view/mainModule/level9BoxLayer.js',

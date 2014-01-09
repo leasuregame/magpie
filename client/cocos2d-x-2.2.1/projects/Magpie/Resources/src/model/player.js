@@ -324,6 +324,18 @@ var Player = Entity.extend({
                 cc.log("invite success");
 
                 var msg = data.msg;
+                for (key in msg) {
+                    if (key == "cards") {
+                        var cards = msg[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            gameData.cardList.push(card);
+                        }
+                    } else {
+                        that.add(key, msg[key]);
+                    }
+                }
 
                 cb(msg);
             } else {

@@ -2,7 +2,12 @@ var shortid = require('shortid');
 var cdkeyDao = require('../util/cdkeyDao');
 
 exports.manage = function(req, res) {
-  res.render('cdkey');
+  cdkeyDao.query({}, function(err, rows) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.render('cdkey', {rows: rows});  
+  });  
 };
 
 exports.pregenerate = function(req, res) {
@@ -30,11 +35,11 @@ exports.pregenerate = function(req, res) {
   })
 
   cdkeyDao.insert(data, function(err, rows) {
+    console.log(err, rows);
   	if (err) {
-  		console.log(err);
-  		res.status(500).send('error to generate cdkeys');
+  		res.send({success: false, msg: err});
   	}
-  	res.send(JSON.stringify(rows));
+  	res.send({success: true, count: rows.length});
   });
 };
 

@@ -12,12 +12,12 @@ $(function() {
       },
       dataType: 'json'
     }).success(function(data) {
-      var html = '';
-      for (var i = 0; i < data.length; i++) {
-        html += '<div class="form-group"><input class="form-control-static" type="text" value="' + data[i] + '" name="'+ data[i] +'"></input></div>';
+      alert(data);
+      if (data.success) {
+        $('#msgInfo').removeClass('hidden').addClass('show alert-success').text('成功生成激活码！');
+      } else {
+        $('#msgInfo').removeClass('hidden').addClass('show alert-danger').text('错误:'+data.msg);
       }
-      html += '';
-      $('#cdkeyShow').html(html);
     }).error(function(data) {
       console.log('err', data);
     });

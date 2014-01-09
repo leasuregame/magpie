@@ -22,9 +22,25 @@ block content
       input(type='number' class='form-control' id='keyQty' placeholder='生成个数')
     div.form-group
       button(id='btnGetCdkey', class='btn btn-default') 生成激活码
-
+  div.alert.hidden(id='msgInfo', style='margin: 10px 50px')
+  hr
   div.row
-    dir.col-sm-12
-      form.form-line(id='cdkeyShow', action='/admin/cdkey/generate', method='POST', role='form')
-        div(id='cdkeyShow')
+    div.col-sm-12
+      table.table
+        thead
+          tr
+            th 激活码
+            th 开始日期
+            th 结束日期
+            th 是否已使用
+        tbody
+          - each row in rows
+            tr(class=row.activate?'success':'')
+              td #{row.code}
+              td #{row.startDate}
+              td #{row.endDate}
+              td #{row.activate}
+            
+
+        
 

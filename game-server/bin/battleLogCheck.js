@@ -70,38 +70,38 @@ module.exports.execute = function(battleLog) {
     console.log('伤害', dmage);
 
     // 检查 死亡人数的一致性
-
-    var death_man = 0;
-    _.each(dmage, function(val, key) {
-      k = parseInt(key);
-      if (k > 6 && (battleLog.cards[k].hp + val) <= 0) {
-        death_man++;
+    if (isWin) {
+      var death_man = 0;
+      _.each(dmage, function(val, key) {
+        k = parseInt(key);
+        if (k > 6 && (battleLog.cards[k].hp + val) <= 0) {
+          death_man++;
+        }
+      })
+      if (enemy_card_length == death_man) {
+        ok = true;
+      } else {
+        console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
       }
-    })
-    if (enemy_card_length == death_man) {
-      ok = true;
+      console.log('敌方死亡人数：', death_man);
+      console.log('敌方实际人数：', enemy_card_length);
     } else {
-      console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
-    }
-    console.log('敌方死亡人数：', death_man);
-    console.log('敌方实际人数：', enemy_card_length);
+      var death_man = 0;
+      _.each(dmage, function(val, key) {
+        k = parseInt(key);
+        if (k <= 6 && (battleLog.cards[k].hp + val) <= 0) {
+          death_man++;
+        }
+      })
 
-    var death_man = 0;
-    _.each(dmage, function(val, key) {
-      k = parseInt(key);
-      if (k <= 6 && (battleLog.cards[k].hp + val) <= 0) {
-        death_man++;
+      if (own_card_length == death_man) {
+        ok = true;
+      } else {
+        console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
       }
-    })
-
-    if (own_card_length == death_man) {
-      ok = true;
-    } else {
-      console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
+      console.log('我方死亡人数：', death_man);
+      console.log('我方实际人数：', own_card_length);
     }
-    console.log('我方死亡人数：', death_man);
-    console.log('我方实际人数：', own_card_length);
-
 
     return ok && stepFormatOk;
   }

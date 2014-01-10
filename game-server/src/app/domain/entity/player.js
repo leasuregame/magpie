@@ -1106,7 +1106,7 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = this.levelRewardMark.value;
+        var lr = utility.deepCopy(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 

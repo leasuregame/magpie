@@ -68,36 +68,36 @@ var VipPrivilegeLayer = LazyLayer.extend({
                 {
                     string: "您是",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: "VIP" + vip,
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 },
                 {
                     string: "再冲",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: nextVipCash,
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 },
                 {
                     string: "元即可享受",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: "VIP" + (vip + 1),
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 }
@@ -213,7 +213,6 @@ var VipPrivilegeLayer = LazyLayer.extend({
             vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
             vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
             scrollViewLayer.addChild(vipPrivilegeLabel);
-
         }
 
         var scrollView = cc.ScrollView.create(this._vipPrivilegeLayerFit.scrollViewSize, scrollViewLayer);

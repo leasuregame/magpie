@@ -280,6 +280,9 @@ var Server = Entity.extend({
 
                 that._closeAllWaitLayer();
 
+                gameData.sound.stopMusic();
+                gameData.sound.stopEffect();
+
                 if (that._disconnectStatus == DISCONNECT_KICK) {
                     that.kick();
                 } else {

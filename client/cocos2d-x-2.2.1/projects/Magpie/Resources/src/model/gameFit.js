@@ -1268,7 +1268,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(200, 792),
             "closeItemPoint": cc.p(605, 837),
             "scrollViewHeight": 600,
-            "scrollViewLayerRect": cc.rect(40, 172, 500, 600),
+            "scrollViewLayerRect": cc.rect(110, 172, 500, 600),
             "scrollViewSize": cc.size(500, 600),
             "scrollViewPoint": cc.p(110, 172)
         }
@@ -2544,7 +2544,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(160, 935),
             "closeItemPoint": cc.p(565, 980),
             "scrollViewHeight": 665,
-            "scrollViewLayerRect": cc.rect(0, 220, 640, 665),
+            "scrollViewLayerRect": cc.rect(70, 220, 500, 665),
             "scrollViewSize": cc.size(500, 665),
             "scrollViewPoint": cc.p(70, 220)
         }

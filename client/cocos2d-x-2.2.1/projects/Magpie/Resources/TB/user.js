@@ -79,7 +79,7 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version || "1.0.0"
+                    version: version || "1.1.0"
                 }, function (data) {
                     cc.log(data);
 

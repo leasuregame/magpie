@@ -69,7 +69,7 @@ Handler::rankingList = (msg, session, next) ->
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
-
+      console.log '=rankingList=', rankings
       playerManager.rankingList _.keys(rankings), (err, players, ranks) -> cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->

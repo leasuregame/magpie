@@ -26,15 +26,14 @@ var vipBoxUrl = {
     vip12: "icon281"
 };
 
-var LOOK_VIP_BOX = 1;
-var BUY_VIP_BOX = 2;
-
 var VipLayer = cc.Layer.extend({
     _vipLayerFit: null,
 
     _goldLabel: null,
     _moneyLabel: null,
     _scrollView: null,
+
+    _isFirstEnter: true,
 
     onEnter: function () {
         cc.log("VipLayer onEnter");
@@ -61,6 +60,7 @@ var VipLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._vipLayerFit = gameFit.mainScene.vipLayer;
+        this._isFirstEnter = true;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -143,7 +143,7 @@ var VipLayer = cc.Layer.extend({
 
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-            slideLabel[i].setVisible(false);
+            slideLabel[i].setVisible(!this._isFirstEnter);
 
             var menu = LazyMenu.create();
             menu.setPosition(cc.p(0, 0));
@@ -248,15 +248,17 @@ var VipLayer = cc.Layer.extend({
         offsetY = Math.min(this._scrollView.minContainerOffset().y + (index || 0) * 180, 0);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
 
-        var slideLayer = SlideLayer.create(
-            {
-                labels: slideLabel,
-                slideTime: 0.4,
-                timeTick: 0.05
-            }
-        );
-
-        slideLayer.showSlide();
+        if (this._isFirstEnter) {
+            this._isFirstEnter = false;
+            var slideLayer = SlideLayer.create(
+                {
+                    labels: slideLabel,
+                    slideTime: 0.4,
+                    timeTick: 0.05
+                }
+            );
+            slideLayer.showSlide();
+        }
     },
 
     _update: function () {

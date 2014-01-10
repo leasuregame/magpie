@@ -16,7 +16,7 @@ module.exports =
 
     if data.star >= 3
       data.passiveSkills = initPassiveSkill(data.star)
-      genSkillInc(data)
+      genFactorForCard(data)
 
     dao.card.create data: data, (err, card) ->
       if err
@@ -109,6 +109,9 @@ getCardIdsByStar = (stars, exceptIds = []) ->
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> (i%5 || 5) in stars
   items
+
+genFactorForCard = (card) ->
+  card.factor = _.random(1, 1000)
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)

@@ -122,42 +122,32 @@ var CardLibrary = Entity.extend({
         );
     },
 
-    _sort: function (a, b) {
-        var starA = a.card.get("star");
-        var starB = b.card.get("star");
-
-        var tableIdA = a.card.get("tableId");
-        var tableIdB = b.card.get("tableId");
-
-        if (starA != starB) {
-            return (starB - starA);
-        } else {
-            return tableIdA - tableIdB;
-        }
+    _sort1: function (a, b) {
+        return (a.card.get("tableId") - b.card.get("tableId"));
     },
 
     _sort2: function (a, b) {
+        var cardLibrary = gameData.cardLibrary;
 
-        var stateA = gameData.cardLibrary.getTypeById(a.id);
-        var stateB = gameData.cardLibrary.getTypeById(b.id);
-
-        var starA = a.card.get("star");
-        var starB = b.card.get("star");
+        var stateA = cardLibrary.getTypeById(a.id);
+        var stateB = cardLibrary.getTypeById(b.id);
 
         var tableIdA = a.card.get("tableId");
         var tableIdB = b.card.get("tableId");
 
-        if (stateA != stateB && (stateA == CARD_RECEIVE || stateB == CARD_RECEIVE)) {
-            return stateB - stateA;
-        } else if (starA != starB) {
-            return (starA - starB);
-        } else {
-            return tableIdA - tableIdB;
+        if (stateA == CARD_RECEIVE && stateB != CARD_RECEIVE) {
+            return -1;
         }
+
+        if (stateA != CARD_RECEIVE && stateB == CARD_RECEIVE) {
+            return 1;
+        }
+
+        return (tableIdA - tableIdB);
     },
 
     isSortByState: function (res) {
-        var sort = res ? this._sort2 : this._sort;
+        var sort = res ? this._sort2 : this._sort1;
         this._cardLibrary.sort(sort);
     },
 

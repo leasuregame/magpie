@@ -85,7 +85,6 @@ var SystemMessageLayer = cc.Layer.extend({
             scrollViewLayer.addChild(msgBgSprite);
 
             var msgLabel = cc.LabelTTF.create(systemMessageList[i].content, "STHeitiTC-Medium", 22);
-            msgLabel.setColor(cc.c3b(118, 238, 60));
             msgLabel.setAnchorPoint(cc.p(0, 0.5));
             msgLabel.setPosition(cc.p(20, y + 60));
             scrollViewLayer.addChild(msgLabel);

@@ -60,7 +60,7 @@ var InvitationLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon21,
+            main_scene_image.icon28,
             this._onClickOk,
             this
         );

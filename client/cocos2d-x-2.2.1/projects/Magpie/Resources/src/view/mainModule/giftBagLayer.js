@@ -183,6 +183,8 @@ var GiftBagLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon21,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 lazyLayer.removeFromParent();
                 if (cb) {
                     cb();
@@ -198,6 +200,8 @@ var GiftBagLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon163,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 lazyLayer.removeFromParent();
                 if (cb) {
                     cb();
@@ -213,6 +217,8 @@ var GiftBagLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon308,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 lazyLayer.removeFromParent();
             },
             this
@@ -227,7 +233,6 @@ var GiftBagLayer = cc.Layer.extend({
         return true;
 
     }
-
 });
 
 GiftBagLayer.create = function (data) {

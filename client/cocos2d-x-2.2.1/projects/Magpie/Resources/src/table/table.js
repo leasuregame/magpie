@@ -1,20 +1,10 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
+    "cdkey": "激活码配置表",
+    "激活码配置表": "cdkey",
     "daily_gift": "每日重置数据配置表",
     "每日重置数据配置表": "daily_gift",
     "first_card": "首抽卡牌配置表",
@@ -49,6 +39,18 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -108,6 +110,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 
 var outputTables = {
     "achievement": {
@@ -457,8323 +460,6 @@ var outputTables = {
             }
         }
     },
-    "card_grow": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "exp_need": 100,
-                "money_need": 110,
-                "cur_exp": 0
-            },
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 110,
-                "money_need": 115,
-                "cur_exp": 100
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 121,
-                "money_need": 132,
-                "cur_exp": 210
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 133,
-                "money_need": 152,
-                "cur_exp": 331
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 146,
-                "money_need": 175,
-                "cur_exp": 464
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 161,
-                "money_need": 201,
-                "cur_exp": 610
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 177,
-                "money_need": 231,
-                "cur_exp": 771
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 195,
-                "money_need": 266,
-                "cur_exp": 948
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 215,
-                "money_need": 306,
-                "cur_exp": 1143
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 237,
-                "money_need": 352,
-                "cur_exp": 1358
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 261,
-                "money_need": 405,
-                "cur_exp": 1595
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "exp_need": 287,
-                "money_need": 466,
-                "cur_exp": 1856
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "exp_need": 316,
-                "money_need": 536,
-                "cur_exp": 2143
-            },
-            "13": {
-                "id": 13,
-                "lv": 13,
-                "exp_need": 348,
-                "money_need": 616,
-                "cur_exp": 2459
-            },
-            "14": {
-                "id": 14,
-                "lv": 14,
-                "exp_need": 383,
-                "money_need": 708,
-                "cur_exp": 2807
-            },
-            "15": {
-                "id": 15,
-                "lv": 15,
-                "exp_need": 421,
-                "money_need": 814,
-                "cur_exp": 3190
-            },
-            "16": {
-                "id": 16,
-                "lv": 16,
-                "exp_need": 463,
-                "money_need": 936,
-                "cur_exp": 3611
-            },
-            "17": {
-                "id": 17,
-                "lv": 17,
-                "exp_need": 509,
-                "money_need": 1076,
-                "cur_exp": 4074
-            },
-            "18": {
-                "id": 18,
-                "lv": 18,
-                "exp_need": 560,
-                "money_need": 1237,
-                "cur_exp": 4583
-            },
-            "19": {
-                "id": 19,
-                "lv": 19,
-                "exp_need": 616,
-                "money_need": 1423,
-                "cur_exp": 5143
-            },
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "exp_need": 678,
-                "money_need": 1636,
-                "cur_exp": 5759
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "exp_need": 746,
-                "money_need": 1881,
-                "cur_exp": 6437
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "exp_need": 821,
-                "money_need": 2163,
-                "cur_exp": 7183
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "exp_need": 903,
-                "money_need": 2487,
-                "cur_exp": 8004
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "exp_need": 993,
-                "money_need": 2860,
-                "cur_exp": 8907
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "exp_need": 1092,
-                "money_need": 3289,
-                "cur_exp": 9900
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "exp_need": 1201,
-                "money_need": 3782,
-                "cur_exp": 10992
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "exp_need": 1321,
-                "money_need": 4349,
-                "cur_exp": 12193
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "exp_need": 1453,
-                "money_need": 5001,
-                "cur_exp": 13514
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "exp_need": 1598,
-                "money_need": 5751,
-                "cur_exp": 14967
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "exp_need": 1758,
-                "money_need": 6614,
-                "cur_exp": 16565
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "exp_need": 1934,
-                "money_need": 7606,
-                "cur_exp": 18323
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "exp_need": 2127,
-                "money_need": 8747,
-                "cur_exp": 20257
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "exp_need": 2340,
-                "money_need": 10059,
-                "cur_exp": 22384
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "exp_need": 2574,
-                "money_need": 11568,
-                "cur_exp": 24724
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "exp_need": 2831,
-                "money_need": 13303,
-                "cur_exp": 27298
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "exp_need": 3114,
-                "money_need": 15298,
-                "cur_exp": 30129
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "exp_need": 3425,
-                "money_need": 17593,
-                "cur_exp": 33243
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "exp_need": 3768,
-                "money_need": 20232,
-                "cur_exp": 36668
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "exp_need": 4145,
-                "money_need": 23267,
-                "cur_exp": 40436
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "exp_need": 4560,
-                "money_need": 26757,
-                "cur_exp": 44581
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "exp_need": 5016,
-                "money_need": 30771,
-                "cur_exp": 49141
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "exp_need": 5518,
-                "money_need": 35387,
-                "cur_exp": 54157
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "exp_need": 6070,
-                "money_need": 40695,
-                "cur_exp": 59675
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "exp_need": 6677,
-                "money_need": 46799,
-                "cur_exp": 65745
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "exp_need": 7345,
-                "money_need": 53819,
-                "cur_exp": 72422
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "exp_need": 8080,
-                "money_need": 61892,
-                "cur_exp": 79767
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "exp_need": 8888,
-                "money_need": 71176,
-                "cur_exp": 87847
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "exp_need": 9777,
-                "money_need": 81852,
-                "cur_exp": 96735
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "exp_need": 10755,
-                "money_need": 94130,
-                "cur_exp": 106512
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "exp_need": 11831,
-                "money_need": 108250,
-                "cur_exp": 117267
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "exp_need": 13014,
-                "money_need": 124488,
-                "cur_exp": 129098
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "exp_need": 14315,
-                "money_need": 143161,
-                "cur_exp": 142112
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "exp_need": 15747,
-                "money_need": 164635,
-                "cur_exp": 156427
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "exp_need": 17322,
-                "money_need": 189330,
-                "cur_exp": 172174
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "exp_need": 19054,
-                "money_need": 217730,
-                "cur_exp": 189496
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "exp_need": 20959,
-                "money_need": 250390,
-                "cur_exp": 208550
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "exp_need": 23055,
-                "money_need": 287949,
-                "cur_exp": 229509
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "exp_need": 25361,
-                "money_need": 331141,
-                "cur_exp": 252564
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "exp_need": 27897,
-                "money_need": 380812,
-                "cur_exp": 277925
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "exp_need": 30687,
-                "money_need": 437934,
-                "cur_exp": 305822
-            }
-        }
-    },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 10,
-                "star1": 200,
-                "star2": 500,
-                "star3": 1500,
-                "star4": 3000,
-                "star5": 7000
-            }
-        }
-    },
-    "cards": {
-        "colComment": {
-            "skill_id": {
-                "table": "技能配置表",
-                "key_index": "id",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "6": {
-                "id": 6,
-                "number": 2,
-                "name": "猪刚鬣·猪八戒",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 129,
-                "normal_atk_id": 3,
-                "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
-                "url": 2
-            },
-            "7": {
-                "id": 7,
-                "number": 2,
-                "name": "高庄主·猪八戒",
-                "star": 2,
-                "lv": 1,
-                "atk": 91,
-                "hp": 275,
-                "normal_atk_id": 3,
-                "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
-                "url": 2
-            },
-            "8": {
-                "id": 8,
-                "number": 2,
-                "name": "二师兄·猪八戒",
-                "star": 3,
-                "lv": 1,
-                "atk": 142,
-                "hp": 398,
-                "skill_name": "倒打一耙",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 800,
-                "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
-                "url": 2
-            },
-            "9": {
-                "id": 9,
-                "number": 2,
-                "name": "净坛使者·猪八戒",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 543,
-                "skill_name": "倒打一耙",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 800,
-                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
-                "url": 2
-            },
-            "10": {
-                "id": 10,
-                "number": 2,
-                "name": "天蓬元帅·猪八戒",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 713,
-                "skill_name": "倒打一耙",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 800,
-                "description": "那年，我管银河系。",
-                "url": 2
-            },
-            "11": {
-                "id": 11,
-                "number": 3,
-                "name": "流沙河·沙悟净",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 122,
-                "normal_atk_id": 3,
-                "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
-                "url": 3
-            },
-            "12": {
-                "id": 12,
-                "number": 3,
-                "name": "骷髅九·沙悟净",
-                "star": 2,
-                "lv": 1,
-                "atk": 97,
-                "hp": 246,
-                "normal_atk_id": 3,
-                "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
-                "url": 3
-            },
-            "13": {
-                "id": 13,
-                "number": 3,
-                "name": "沙和尚·沙悟净",
-                "star": 3,
-                "lv": 1,
-                "atk": 148,
-                "hp": 372,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 805,
-                "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
-                "url": 3
-            },
-            "14": {
-                "id": 14,
-                "number": 3,
-                "name": "卷帘大将·沙悟净",
-                "star": 4,
-                "lv": 1,
-                "atk": 202,
-                "hp": 518,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 805,
-                "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
-                "url": 3
-            },
-            "15": {
-                "id": 15,
-                "number": 3,
-                "name": "金身罗汉·沙悟净",
-                "star": 5,
-                "lv": 1,
-                "atk": 273,
-                "hp": 674,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 805,
-                "description": "我是要告诉人家，我失去的东西一定要拿回来！",
-                "url": 3
-            },
-            "31": {
-                "id": 31,
-                "number": 7,
-                "name": "天将·巨灵神",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 125,
-                "normal_atk_id": 2,
-                "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
-                "url": 7
-            },
-            "32": {
-                "id": 32,
-                "number": 7,
-                "name": "门卫·巨灵神",
-                "star": 2,
-                "lv": 1,
-                "atk": 101,
-                "hp": 251,
-                "normal_atk_id": 2,
-                "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
-                "url": 7
-            },
-            "33": {
-                "id": 33,
-                "number": 7,
-                "name": "搬山救民·巨灵神",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 371,
-                "skill_name": "雷霆之怒",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 401,
-                "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
-                "url": 7
-            },
-            "34": {
-                "id": 34,
-                "number": 7,
-                "name": "急先锋·巨灵神",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 519,
-                "skill_name": "雷霆之怒",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 401,
-                "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
-                "url": 7
-            },
-            "35": {
-                "id": 35,
-                "number": 7,
-                "name": "神斧·巨灵神",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 677,
-                "skill_name": "雷霆之怒",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 401,
-                "description": "斧头帮知道吧，那是我开创的。",
-                "url": 7
-            },
-            "41": {
-                "id": 41,
-                "number": 9,
-                "name": "冀州侯·黄飞虎",
-                "star": 1,
-                "lv": 1,
-                "atk": 43,
-                "hp": 113,
-                "normal_atk_id": 3,
-                "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
-                "url": 9
-            },
-            "42": {
-                "id": 42,
-                "number": 9,
-                "name": "夜奔·黄飞虎",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 244,
-                "normal_atk_id": 3,
-                "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
-                "url": 9
-            },
-            "43": {
-                "id": 43,
-                "number": 9,
-                "name": "复仇·黄飞虎",
-                "star": 3,
-                "lv": 1,
-                "atk": 156,
-                "hp": 371,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 802,
-                "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
-                "url": 9
-            },
-            "44": {
-                "id": 44,
-                "number": 9,
-                "name": "武成王·黄飞虎",
-                "star": 4,
-                "lv": 1,
-                "atk": 204,
-                "hp": 525,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 802,
-                "description": "我对这次的任命很满意，感谢姬总对我的信任！",
-                "url": 9
-            },
-            "45": {
-                "id": 45,
-                "number": 9,
-                "name": "仁圣大帝·黄飞虎",
-                "star": 5,
-                "lv": 1,
-                "atk": 278,
-                "hp": 680,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 802,
-                "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
-                "url": 9
-            },
-            "56": {
-                "id": 56,
-                "number": 12,
-                "name": "隐士·姜子牙",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 121,
-                "normal_atk_id": 1,
-                "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
-                "url": 12
-            },
-            "57": {
-                "id": 57,
-                "number": 12,
-                "name": "渔者·姜子牙",
-                "star": 2,
-                "lv": 1,
-                "atk": 115,
-                "hp": 260,
-                "normal_atk_id": 1,
-                "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
-                "url": 12
-            },
-            "58": {
-                "id": 58,
-                "number": 12,
-                "name": "占卜师·姜子牙",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 370,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 300,
-                "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
-                "url": 12
-            },
-            "59": {
-                "id": 59,
-                "number": 12,
-                "name": "尚父·姜子牙",
-                "star": 4,
-                "lv": 1,
-                "atk": 219,
-                "hp": 522,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 300,
-                "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
-                "url": 12
-            },
-            "60": {
-                "id": 60,
-                "number": 12,
-                "name": "齐祖·姜子牙",
-                "star": 5,
-                "lv": 1,
-                "atk": 285,
-                "hp": 677,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 300,
-                "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
-                "url": 12
-            },
-            "86": {
-                "id": 86,
-                "number": 18,
-                "name": "青城山·白素贞",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 131,
-                "normal_atk_id": 1,
-                "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
-                "url": 18
-            },
-            "87": {
-                "id": 87,
-                "number": 18,
-                "name": "断桥·白素贞",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 254,
-                "normal_atk_id": 1,
-                "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
-                "url": 18
-            },
-            "88": {
-                "id": 88,
-                "number": 18,
-                "name": "盗草·白素贞",
-                "star": 3,
-                "lv": 1,
-                "atk": 143,
-                "hp": 369,
-                "skill_name": "千年修",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
-                "url": 18
-            },
-            "89": {
-                "id": 89,
-                "number": 18,
-                "name": "水漫金山·白素贞",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 524,
-                "skill_name": "千年修",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "白素贞你住手吧，许仙真的不在珠海金山！",
-                "url": 18
-            },
-            "90": {
-                "id": 90,
-                "number": 18,
-                "name": "紫微星·白素贞",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 689,
-                "skill_name": "千年修",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
-                "url": 18
-            },
-            "91": {
-                "id": 91,
-                "number": 19,
-                "name": "青蛇·小青",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 126,
-                "normal_atk_id": 2,
-                "description": "我修行了一千年，孤独了一千年。",
-                "url": 19
-            },
-            "92": {
-                "id": 92,
-                "number": 19,
-                "name": "变身·小青",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 244,
-                "normal_atk_id": 2,
-                "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
-                "url": 19
-            },
-            "93": {
-                "id": 93,
-                "number": 19,
-                "name": "斗法海·小青",
-                "star": 3,
-                "lv": 1,
-                "atk": 152,
-                "hp": 372,
-                "skill_name": "黯然销魂",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 601,
-                "description": "法海你不懂爱，姐姐不要你，我也不会从。",
-                "url": 19
-            },
-            "94": {
-                "id": 94,
-                "number": 19,
-                "name": "烧塔·小青",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 515,
-                "skill_name": "黯然销魂",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 601,
-                "description": "法海，要么你跟我走，要么你放过我姐姐！",
-                "url": 19
-            },
-            "95": {
-                "id": 95,
-                "number": 19,
-                "name": "青蛇大仙·小青",
-                "star": 5,
-                "lv": 1,
-                "atk": 268,
-                "hp": 677,
-                "skill_name": "黯然销魂",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 601,
-                "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
-                "url": 19
-            },
-            "96": {
-                "id": 96,
-                "number": 20,
-                "name": "秀姑·何仙姑",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 118,
-                "normal_atk_id": 1,
-                "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
-                "url": 20
-            },
-            "97": {
-                "id": 97,
-                "number": 20,
-                "name": "辟谷·何仙姑",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 239,
-                "normal_atk_id": 1,
-                "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
-                "url": 20
-            },
-            "98": {
-                "id": 98,
-                "number": 20,
-                "name": "凌风驾云·何仙姑",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 370,
-                "skill_name": "莲花心经",
-                "skill_id": 10,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
-                "url": 20
-            },
-            "99": {
-                "id": 99,
-                "number": 20,
-                "name": "风凰台·何仙姑",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 522,
-                "skill_name": "莲花心经",
-                "skill_id": 10,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
-                "url": 20
-            },
-            "100": {
-                "id": 100,
-                "number": 20,
-                "name": "碧波仙子·何仙姑",
-                "star": 5,
-                "lv": 1,
-                "atk": 290,
-                "hp": 662,
-                "skill_name": "莲花心经",
-                "skill_id": 10,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
-                "url": 20
-            },
-            "106": {
-                "id": 106,
-                "number": 22,
-                "name": "神游·铁拐李",
-                "star": 1,
-                "lv": 1,
-                "atk": 56,
-                "hp": 137,
-                "normal_atk_id": 2,
-                "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
-                "url": 22
-            },
-            "107": {
-                "id": 107,
-                "number": 22,
-                "name": "借尸还魂·铁拐李",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 241,
-                "normal_atk_id": 2,
-                "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
-                "url": 22
-            },
-            "108": {
-                "id": 108,
-                "number": 22,
-                "name": "化龙·铁拐李",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 358,
-                "skill_name": "流星拐",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 700,
-                "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
-                "url": 22
-            },
-            "109": {
-                "id": 109,
-                "number": 22,
-                "name": "呼风唤雨·铁拐李",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 516,
-                "skill_name": "流星拐",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 700,
-                "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
-                "url": 22
-            },
-            "110": {
-                "id": 110,
-                "number": 22,
-                "name": "东华教主·铁拐李",
-                "star": 5,
-                "lv": 1,
-                "atk": 276,
-                "hp": 683,
-                "skill_name": "流星拐",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 700,
-                "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
-                "url": 22
-            },
-            "121": {
-                "id": 121,
-                "number": 25,
-                "name": "不羁·韩湘子",
-                "star": 1,
-                "lv": 1,
-                "atk": 41,
-                "hp": 130,
-                "normal_atk_id": 2,
-                "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
-                "url": 25
-            },
-            "122": {
-                "id": 122,
-                "number": 25,
-                "name": "天花引·韩湘子",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 275,
-                "normal_atk_id": 2,
-                "description": "我一辈子只写了这一曲，却流传了几辈子。",
-                "url": 25
-            },
-            "123": {
-                "id": 123,
-                "number": 25,
-                "name": "点化·韩湘子",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 390,
-                "skill_name": "天籁之音",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
-                "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。",
-                "url": 25
-            },
-            "124": {
-                "id": 124,
-                "number": 25,
-                "name": "箫中情·韩湘子",
-                "star": 4,
-                "lv": 1,
-                "atk": 179,
-                "hp": 556,
-                "skill_name": "天籁之音",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
-                "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！",
-                "url": 25
-            },
-            "125": {
-                "id": 125,
-                "number": 25,
-                "name": "尸解仙·韩湘子",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 702,
-                "skill_name": "天籁之音",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 400,
-                "description": "离开的那天，我的爱与肉身一起，在风中化去了。",
-                "url": 25
-            },
-            "136": {
-                "id": 136,
-                "number": 28,
-                "name": "女红·织女",
-                "star": 1,
-                "lv": 1,
-                "atk": 42,
-                "hp": 122,
-                "normal_atk_id": 1,
-                "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
-                "url": 28
-            },
-            "137": {
-                "id": 137,
-                "number": 28,
-                "name": "天浴·织女",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 262,
-                "normal_atk_id": 1,
-                "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
-                "url": 28
-            },
-            "138": {
-                "id": 138,
-                "number": 28,
-                "name": "天伦·织女",
-                "star": 3,
-                "lv": 1,
-                "atk": 132,
-                "hp": 382,
-                "skill_name": "鹊桥泪",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。",
-                "url": 28
-            },
-            "139": {
-                "id": 139,
-                "number": 28,
-                "name": "七仙姑·织女",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 552,
-                "skill_name": "鹊桥泪",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。",
-                "url": 28
-            },
-            "140": {
-                "id": 140,
-                "number": 28,
-                "name": "七星娘娘·织女",
-                "star": 5,
-                "lv": 1,
-                "atk": 242,
-                "hp": 712,
-                "skill_name": "鹊桥泪",
-                "skill_id": 7,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
-                "url": 28
-            },
-            "146": {
-                "id": 146,
-                "number": 30,
-                "name": "天书·鬼谷子",
-                "star": 1,
-                "lv": 1,
-                "atk": 46,
-                "hp": 133,
-                "normal_atk_id": 3,
-                "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
-                "url": 30
-            },
-            "147": {
-                "id": 147,
-                "number": 30,
-                "name": "纵横术·鬼谷子",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 262,
-                "normal_atk_id": 3,
-                "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
-                "url": 30
-            },
-            "148": {
-                "id": 148,
-                "number": 30,
-                "name": "鬼谷井·鬼谷子",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 385,
-                "skill_name": "鬼脚七",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 803,
-                "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
-                "url": 30
-            },
-            "149": {
-                "id": 149,
-                "number": 30,
-                "name": "斩草撒豆·鬼谷子",
-                "star": 4,
-                "lv": 1,
-                "atk": 188,
-                "hp": 556,
-                "skill_name": "鬼脚七",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 803,
-                "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
-                "url": 30
-            },
-            "150": {
-                "id": 150,
-                "number": 30,
-                "name": "玄微真人·鬼谷子",
-                "star": 5,
-                "lv": 1,
-                "atk": 244,
-                "hp": 721,
-                "skill_name": "鬼脚七",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 803,
-                "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
-                "url": 30
-            },
-            "151": {
-                "id": 151,
-                "number": 31,
-                "name": "生老病死·黑无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 131,
-                "normal_atk_id": 2,
-                "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？",
-                "url": 31
-            },
-            "152": {
-                "id": 152,
-                "number": 31,
-                "name": "爱别离·黑无常",
-                "star": 2,
-                "lv": 1,
-                "atk": 102,
-                "hp": 279,
-                "normal_atk_id": 2,
-                "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。",
-                "url": 31
-            },
-            "153": {
-                "id": 153,
-                "number": 31,
-                "name": "怨憎会·黑无常",
-                "star": 3,
-                "lv": 1,
-                "atk": 149,
-                "hp": 378,
-                "skill_name": "招魂蟠",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 403,
-                "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
-                "url": 31
-            },
-            "154": {
-                "id": 154,
-                "number": 31,
-                "name": "求不得·黑无常",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 549,
-                "skill_name": "招魂蟠",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 403,
-                "description": "巨龙巨龙你差两年，永永远远的差两年。",
-                "url": 31
-            },
-            "155": {
-                "id": 155,
-                "number": 31,
-                "name": "五阴盛·黑无常",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 719,
-                "skill_name": "招魂蟠",
-                "skill_id": 6,
-                "normal_atk_id": 2,
-                "effect_id": 403,
-                "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
-                "url": 31
-            },
-            "156": {
-                "id": 156,
-                "number": 32,
-                "name": "地狱道·白无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 126,
-                "normal_atk_id": 2,
-                "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
-                "url": 32
-            },
-            "157": {
-                "id": 157,
-                "number": 32,
-                "name": "恶鬼道·白无常",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 277,
-                "normal_atk_id": 2,
-                "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
-                "url": 32
-            },
-            "158": {
-                "id": 158,
-                "number": 32,
-                "name": "畜生道·白无常",
-                "star": 3,
-                "lv": 1,
-                "atk": 154,
-                "hp": 369,
-                "skill_name": "哭丧棒",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502,
-                "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
-                "url": 32
-            },
-            "159": {
-                "id": 159,
-                "number": 32,
-                "name": "阿修罗道·白无常",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 556,
-                "skill_name": "哭丧棒",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502,
-                "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
-                "url": 32
-            },
-            "160": {
-                "id": 160,
-                "number": 32,
-                "name": "人间道·白无常",
-                "star": 5,
-                "lv": 1,
-                "atk": 266,
-                "hp": 666,
-                "skill_name": "哭丧棒",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502,
-                "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
-                "url": 32
-            },
-            "166": {
-                "id": 166,
-                "number": 34,
-                "name": "士官·夜游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 122,
-                "normal_atk_id": 3,
-                "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
-                "url": 34
-            },
-            "167": {
-                "id": 167,
-                "number": 34,
-                "name": "中尉·夜游神",
-                "star": 2,
-                "lv": 1,
-                "atk": 115,
-                "hp": 246,
-                "normal_atk_id": 3,
-                "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
-                "url": 34
-            },
-            "168": {
-                "id": 168,
-                "number": 34,
-                "name": "少校·夜游神",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 373,
-                "skill_name": "流星击",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 804,
-                "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。",
-                "url": 34
-            },
-            "169": {
-                "id": 169,
-                "number": 34,
-                "name": "上校·夜游神",
-                "star": 4,
-                "lv": 1,
-                "atk": 223,
-                "hp": 515,
-                "skill_name": "流星击",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 804,
-                "description": "为啥那个唱歌的神仙升的比我快那么多!",
-                "url": 34
-            },
-            "170": {
-                "id": 170,
-                "number": 34,
-                "name": "大校·夜游神",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 668,
-                "skill_name": "流星击",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 804,
-                "description": "笑什么笑，是大校不是大笑，严肃点！",
-                "url": 34
-            },
-            "176": {
-                "id": 176,
-                "number": 36,
-                "name": "公主驾到·精卫",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 136,
-                "normal_atk_id": 1,
-                "description": "虽然咱们部落没多少人，但我也算是个公主呀！",
-                "url": 36
-            },
-            "177": {
-                "id": 177,
-                "number": 36,
-                "name": "海泳·精卫",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 258,
-                "normal_atk_id": 1,
-                "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。",
-                "url": 36
-            },
-            "178": {
-                "id": 178,
-                "number": 36,
-                "name": "东海遇·精卫",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 381,
-                "skill_name": "碧波滔天",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "不喜欢就是不喜欢，龙王太子又如何！",
-                "url": 36
-            },
-            "179": {
-                "id": 179,
-                "number": 36,
-                "name": "逼婚·精卫",
-                "star": 4,
-                "lv": 1,
-                "atk": 200,
-                "hp": 536,
-                "skill_name": "碧波滔天",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "再逼我就跳海，死了我也不放过你！",
-                "url": 36
-            },
-            "180": {
-                "id": 180,
-                "number": 36,
-                "name": "化鸟·精卫",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 721,
-                "skill_name": "碧波滔天",
-                "skill_id": 8,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。",
-                "url": 36
-            },
-            "186": {
-                "id": 186,
-                "number": 38,
-                "name": "箭客·后羿",
-                "star": 1,
-                "lv": 1,
-                "atk": 44,
-                "hp": 141,
-                "normal_atk_id": 2,
-                "description": "我喜欢射，我喜欢箭，我是箭客！",
-                "url": 38
-            },
-            "187": {
-                "id": 187,
-                "number": 38,
-                "name": "失嫦娥·后羿",
-                "star": 2,
-                "lv": 1,
-                "atk": 93,
-                "hp": 261,
-                "normal_atk_id": 2,
-                "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。",
-                "url": 38
-            },
-            "188": {
-                "id": 188,
-                "number": 38,
-                "name": "七弦·后羿",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 388,
-                "skill_name": "穿云箭",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 600,
-                "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。",
-                "url": 38
-            },
-            "189": {
-                "id": 189,
-                "number": 38,
-                "name": "射日·后羿",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 541,
-                "skill_name": "穿云箭",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 600,
-                "description": "唯有射下那九个太阳，才能压下我内心的怒火。",
-                "url": 38
-            },
-            "190": {
-                "id": 190,
-                "number": 38,
-                "name": "宗布神·后羿",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 729,
-                "skill_name": "穿云箭",
-                "skill_id": 3,
-                "normal_atk_id": 2,
-                "effect_id": 600,
-                "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……",
-                "url": 38
-            },
-            "191": {
-                "id": 191,
-                "number": 39,
-                "name": "郎才女貌·嫦娥",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 122,
-                "normal_atk_id": 2,
-                "description": "后羿是个神射手，嫁给他我很幸福，你懂的。",
-                "url": 39
-            },
-            "192": {
-                "id": 192,
-                "number": 39,
-                "name": "奔月·嫦娥",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 233,
-                "normal_atk_id": 2,
-                "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。",
-                "url": 39
-            },
-            "193": {
-                "id": 193,
-                "number": 39,
-                "name": "捣药·嫦娥",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 352,
-                "skill_name": "天音玄",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 701,
-                "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！",
-                "url": 39
-            },
-            "194": {
-                "id": 194,
-                "number": 39,
-                "name": "真爱·嫦娥",
-                "star": 4,
-                "lv": 1,
-                "atk": 212,
-                "hp": 502,
-                "skill_name": "天音玄",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 701,
-                "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。",
-                "url": 39
-            },
-            "195": {
-                "id": 195,
-                "number": 39,
-                "name": "月光女神·嫦娥",
-                "star": 5,
-                "lv": 1,
-                "atk": 290,
-                "hp": 647,
-                "skill_name": "天音玄",
-                "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 701,
-                "description": "想我的时候，打一盘Luna地图或是看看钱包。",
-                "url": 39
-            },
-            "211": {
-                "id": 211,
-                "number": 43,
-                "name": "错嫁·宓妃",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 121,
-                "normal_atk_id": 1,
-                "description": "嫁给河伯是我一生最大的错。",
-                "url": 43
-            },
-            "212": {
-                "id": 212,
-                "number": 43,
-                "name": "洛书·宓妃",
-                "star": 2,
-                "lv": 1,
-                "atk": 101,
-                "hp": 251,
-                "normal_atk_id": 1,
-                "description": "我献出洛书，只是想离开这个人。",
-                "url": 43
-            },
-            "213": {
-                "id": 213,
-                "number": 43,
-                "name": "真爱·宓妃",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 371,
-                "skill_name": "水乳之欢",
-                "skill_id": 9,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "第一次见到他的时候，我就记住了他的名字：后羿。",
-                "url": 43
-            },
-            "214": {
-                "id": 214,
-                "number": 43,
-                "name": "洛水三千·宓妃",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 521,
-                "skill_name": "水乳之欢",
-                "skill_id": 9,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。",
-                "url": 43
-            },
-            "215": {
-                "id": 215,
-                "number": 43,
-                "name": "洛神·宓妃",
-                "star": 5,
-                "lv": 1,
-                "atk": 271,
-                "hp": 671,
-                "skill_name": "水乳之欢",
-                "skill_id": 9,
-                "normal_atk_id": 1,
-                "effect_id": 301,
-                "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。",
-                "url": 43
-            },
-            "216": {
-                "id": 216,
-                "number": 44,
-                "name": "长生之道·张道陵",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 126,
-                "normal_atk_id": 2,
-                "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。",
-                "url": 44
-            },
-            "217": {
-                "id": 217,
-                "number": 44,
-                "name": "神医·张道陵",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 248,
-                "normal_atk_id": 2,
-                "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？",
-                "url": 44
-            },
-            "218": {
-                "id": 218,
-                "number": 44,
-                "name": "授术·张道陵",
-                "star": 3,
-                "lv": 1,
-                "atk": 158,
-                "hp": 374,
-                "skill_name": "无米之炊",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501,
-                "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
-                "url": 44
-            },
-            "219": {
-                "id": 219,
-                "number": 44,
-                "name": "五斗米·张道陵",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 531,
-                "skill_name": "无米之炊",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501,
-                "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
-                "url": 44
-            },
-            "220": {
-                "id": 220,
-                "number": 44,
-                "name": "天师·张道陵",
-                "star": 5,
-                "lv": 1,
-                "atk": 274,
-                "hp": 678,
-                "skill_name": "无米之炊",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501,
-                "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
-                "url": 44
-            },
-            "241": {
-                "id": 241,
-                "number": 49,
-                "name": "异人·哪吒",
-                "star": 1,
-                "lv": 1,
-                "atk": 46,
-                "hp": 140,
-                "normal_atk_id": 3,
-                "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
-                "url": 49
-            },
-            "242": {
-                "id": 242,
-                "number": 49,
-                "name": "小仙·哪吒",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 290,
-                "normal_atk_id": 3,
-                "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
-                "url": 49
-            },
-            "243": {
-                "id": 243,
-                "number": 49,
-                "name": "神臂·哪吒",
-                "star": 3,
-                "lv": 1,
-                "atk": 141,
-                "hp": 410,
-                "skill_name": "风火轮",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 801,
-                "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
-                "url": 49
-            },
-            "244": {
-                "id": 244,
-                "number": 49,
-                "name": "擒龙·哪吒",
-                "star": 4,
-                "lv": 1,
-                "atk": 192,
-                "hp": 560,
-                "skill_name": "风火轮",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 801,
-                "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
-                "url": 49
-            },
-            "245": {
-                "id": 245,
-                "number": 49,
-                "name": "不死·哪吒",
-                "star": 5,
-                "lv": 1,
-                "atk": 262,
-                "hp": 720,
-                "skill_name": "风火轮",
-                "skill_id": 1,
-                "normal_atk_id": 3,
-                "effect_id": 801,
-                "description": "那年开始，我忘记了很多事情，师父说，那就好。",
-                "url": 49
-            },
-            "246": {
-                "id": 246,
-                "number": 50,
-                "name": "灯芯·紫霞",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 136,
-                "normal_atk_id": 2,
-                "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
-                "url": 50
-            },
-            "247": {
-                "id": 247,
-                "number": 50,
-                "name": "盘丝大仙·紫霞",
-                "star": 2,
-                "lv": 1,
-                "atk": 91,
-                "hp": 290,
-                "normal_atk_id": 2,
-                "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
-                "url": 50
-            },
-            "248": {
-                "id": 248,
-                "number": 50,
-                "name": "紫青宝剑·紫霞",
-                "star": 3,
-                "lv": 1,
-                "atk": 141,
-                "hp": 410,
-                "skill_name": "月光宝盒",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 402,
-                "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
-                "url": 50
-            },
-            "249": {
-                "id": 249,
-                "number": 50,
-                "name": "月光宝盒·紫霞",
-                "star": 4,
-                "lv": 1,
-                "atk": 185,
-                "hp": 556,
-                "skill_name": "月光宝盒",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 402,
-                "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
-                "url": 50
-            },
-            "250": {
-                "id": 250,
-                "number": 50,
-                "name": "七色云彩·紫霞",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 725,
-                "skill_name": "月光宝盒",
-                "skill_id": 5,
-                "normal_atk_id": 2,
-                "effect_id": 402,
-                "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
-                "url": 50
-            },
-            "251": {
-                "id": 251,
-                "number": 51,
-                "name": "智慧·文曲星",
-                "star": 1,
-                "lv": 1,
-                "atk": 46,
-                "hp": 135,
-                "normal_atk_id": 2,
-                "description": "天生智商300多，这不是我的错。",
-                "url": 51
-            },
-            "252": {
-                "id": 252,
-                "number": 51,
-                "name": "凡尘·文曲星",
-                "star": 2,
-                "lv": 1,
-                "atk": 110,
-                "hp": 257,
-                "normal_atk_id": 2,
-                "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
-                "url": 51
-            },
-            "253": {
-                "id": 253,
-                "number": 51,
-                "name": "状元·文曲星",
-                "star": 3,
-                "lv": 1,
-                "atk": 152,
-                "hp": 382,
-                "skill_name": "慧眼诀",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500,
-                "description": "状元只是一个名分，真正的能力才是关键。",
-                "url": 51
-            },
-            "254": {
-                "id": 254,
-                "number": 51,
-                "name": "了然缘·文曲星",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 535,
-                "skill_name": "慧眼诀",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500,
-                "description": "有时候，我会看破仙尘，我不禁陷入了深深的沉思。",
-                "url": 51
-            },
-            "255": {
-                "id": 255,
-                "number": 51,
-                "name": "慧心三界·文曲星",
-                "star": 5,
-                "lv": 1,
-                "atk": 281,
-                "hp": 722,
-                "skill_name": "慧眼诀",
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500,
-                "description": "智慧的最高境界，是无知。",
-                "url": 51
-            },
-            "10000": {
-                "id": 10000,
-                "number": 10000,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10001": {
-                "id": 10001,
-                "number": 10001,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10002": {
-                "id": 10002,
-                "number": 10002,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10003": {
-                "id": 10003,
-                "number": 10003,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10004": {
-                "id": 10004,
-                "number": 10004,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10005": {
-                "id": 10005,
-                "number": 10005,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10006": {
-                "id": 10006,
-                "number": 10006,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10007": {
-                "id": 10007,
-                "number": 10007,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10008": {
-                "id": 10008,
-                "number": 10008,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10009": {
-                "id": 10009,
-                "number": 10009,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10010": {
-                "id": 10010,
-                "number": 10010,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10011": {
-                "id": 10011,
-                "number": 10011,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10012": {
-                "id": 10012,
-                "number": 10012,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10013": {
-                "id": 10013,
-                "number": 10013,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10014": {
-                "id": 10014,
-                "number": 10014,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10015": {
-                "id": 10015,
-                "number": 10015,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10016": {
-                "id": 10016,
-                "number": 10016,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10017": {
-                "id": 10017,
-                "number": 10017,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10018": {
-                "id": 10018,
-                "number": 10018,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10019": {
-                "id": 10019,
-                "number": 10019,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10020": {
-                "id": 10020,
-                "number": 10020,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10021": {
-                "id": 10021,
-                "number": 10021,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10022": {
-                "id": 10022,
-                "number": 10022,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10023": {
-                "id": 10023,
-                "number": 10023,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10024": {
-                "id": 10024,
-                "number": 10024,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10025": {
-                "id": 10025,
-                "number": 10025,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10026": {
-                "id": 10026,
-                "number": 10026,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10027": {
-                "id": 10027,
-                "number": 10027,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10028": {
-                "id": 10028,
-                "number": 10028,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10029": {
-                "id": 10029,
-                "number": 10029,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10030": {
-                "id": 10030,
-                "number": 10030,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10031": {
-                "id": 10031,
-                "number": 10031,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10032": {
-                "id": 10032,
-                "number": 10032,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10033": {
-                "id": 10033,
-                "number": 10033,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10034": {
-                "id": 10034,
-                "number": 10034,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10035": {
-                "id": 10035,
-                "number": 10035,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10036": {
-                "id": 10036,
-                "number": 10036,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10037": {
-                "id": 10037,
-                "number": 10037,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10038": {
-                "id": 10038,
-                "number": 10038,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10039": {
-                "id": 10039,
-                "number": 10039,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10040": {
-                "id": 10040,
-                "number": 10040,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10041": {
-                "id": 10041,
-                "number": 10041,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10042": {
-                "id": 10042,
-                "number": 10042,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10043": {
-                "id": 10043,
-                "number": 10043,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10044": {
-                "id": 10044,
-                "number": 10044,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10045": {
-                "id": 10045,
-                "number": 10045,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10046": {
-                "id": 10046,
-                "number": 10046,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10047": {
-                "id": 10047,
-                "number": 10047,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10048": {
-                "id": 10048,
-                "number": 10048,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10049": {
-                "id": 10049,
-                "number": 10049,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10050": {
-                "id": 10050,
-                "number": 10050,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10051": {
-                "id": 10051,
-                "number": 10051,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10052": {
-                "id": 10052,
-                "number": 10052,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10053": {
-                "id": 10053,
-                "number": 10053,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10054": {
-                "id": 10054,
-                "number": 10054,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10055": {
-                "id": 10055,
-                "number": 10055,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10056": {
-                "id": 10056,
-                "number": 10056,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10057": {
-                "id": 10057,
-                "number": 10057,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10058": {
-                "id": 10058,
-                "number": 10058,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10059": {
-                "id": 10059,
-                "number": 10059,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10060": {
-                "id": 10060,
-                "number": 10060,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10061": {
-                "id": 10061,
-                "number": 10061,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10062": {
-                "id": 10062,
-                "number": 10062,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10063": {
-                "id": 10063,
-                "number": 10063,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10064": {
-                "id": 10064,
-                "number": 10064,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10065": {
-                "id": 10065,
-                "number": 10065,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10066": {
-                "id": 10066,
-                "number": 10066,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10067": {
-                "id": 10067,
-                "number": 10067,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10068": {
-                "id": 10068,
-                "number": 10068,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10069": {
-                "id": 10069,
-                "number": 10069,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10070": {
-                "id": 10070,
-                "number": 10070,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10071": {
-                "id": 10071,
-                "number": 10071,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10072": {
-                "id": 10072,
-                "number": 10072,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10073": {
-                "id": 10073,
-                "number": 10073,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10074": {
-                "id": 10074,
-                "number": 10074,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10075": {
-                "id": 10075,
-                "number": 10075,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10076": {
-                "id": 10076,
-                "number": 10076,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10077": {
-                "id": 10077,
-                "number": 10077,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10078": {
-                "id": 10078,
-                "number": 10078,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10079": {
-                "id": 10079,
-                "number": 10079,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10080": {
-                "id": 10080,
-                "number": 10080,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10081": {
-                "id": 10081,
-                "number": 10081,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10082": {
-                "id": 10082,
-                "number": 10082,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10083": {
-                "id": 10083,
-                "number": 10083,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10084": {
-                "id": 10084,
-                "number": 10084,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10085": {
-                "id": 10085,
-                "number": 10085,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10086": {
-                "id": 10086,
-                "number": 10086,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10087": {
-                "id": 10087,
-                "number": 10087,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10088": {
-                "id": 10088,
-                "number": 10088,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10089": {
-                "id": 10089,
-                "number": 10089,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10090": {
-                "id": 10090,
-                "number": 10090,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10091": {
-                "id": 10091,
-                "number": 10091,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10092": {
-                "id": 10092,
-                "number": 10092,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10093": {
-                "id": 10093,
-                "number": 10093,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10094": {
-                "id": 10094,
-                "number": 10094,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10095": {
-                "id": 10095,
-                "number": 10095,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10096": {
-                "id": 10096,
-                "number": 10096,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10097": {
-                "id": 10097,
-                "number": 10097,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10098": {
-                "id": 10098,
-                "number": 10098,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10099": {
-                "id": 10099,
-                "number": 10099,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10100": {
-                "id": 10100,
-                "number": 10100,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10101": {
-                "id": 10101,
-                "number": 10101,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10102": {
-                "id": 10102,
-                "number": 10102,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10103": {
-                "id": 10103,
-                "number": 10103,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10104": {
-                "id": 10104,
-                "number": 10104,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10105": {
-                "id": 10105,
-                "number": 10105,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10106": {
-                "id": 10106,
-                "number": 10106,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10107": {
-                "id": 10107,
-                "number": 10107,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10108": {
-                "id": 10108,
-                "number": 10108,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10109": {
-                "id": 10109,
-                "number": 10109,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10110": {
-                "id": 10110,
-                "number": 10110,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10111": {
-                "id": 10111,
-                "number": 10111,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10112": {
-                "id": 10112,
-                "number": 10112,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10113": {
-                "id": 10113,
-                "number": 10113,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10114": {
-                "id": 10114,
-                "number": 10114,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10115": {
-                "id": 10115,
-                "number": 10115,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10116": {
-                "id": 10116,
-                "number": 10116,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10117": {
-                "id": 10117,
-                "number": 10117,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10118": {
-                "id": 10118,
-                "number": 10118,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10119": {
-                "id": 10119,
-                "number": 10119,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10120": {
-                "id": 10120,
-                "number": 10120,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10121": {
-                "id": 10121,
-                "number": 10121,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10122": {
-                "id": 10122,
-                "number": 10122,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10123": {
-                "id": 10123,
-                "number": 10123,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10124": {
-                "id": 10124,
-                "number": 10124,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10125": {
-                "id": 10125,
-                "number": 10125,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10126": {
-                "id": 10126,
-                "number": 10126,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10127": {
-                "id": 10127,
-                "number": 10127,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10128": {
-                "id": 10128,
-                "number": 10128,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10129": {
-                "id": 10129,
-                "number": 10129,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10130": {
-                "id": 10130,
-                "number": 10130,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10131": {
-                "id": 10131,
-                "number": 10131,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10132": {
-                "id": 10132,
-                "number": 10132,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10133": {
-                "id": 10133,
-                "number": 10133,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10134": {
-                "id": 10134,
-                "number": 10134,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10135": {
-                "id": 10135,
-                "number": 10135,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10136": {
-                "id": 10136,
-                "number": 10136,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10137": {
-                "id": 10137,
-                "number": 10137,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10138": {
-                "id": 10138,
-                "number": 10138,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10139": {
-                "id": 10139,
-                "number": 10139,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10140": {
-                "id": 10140,
-                "number": 10140,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10141": {
-                "id": 10141,
-                "number": 10141,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10142": {
-                "id": 10142,
-                "number": 10142,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10143": {
-                "id": 10143,
-                "number": 10143,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10144": {
-                "id": 10144,
-                "number": 10144,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10145": {
-                "id": 10145,
-                "number": 10145,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10146": {
-                "id": 10146,
-                "number": 10146,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10147": {
-                "id": 10147,
-                "number": 10147,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10148": {
-                "id": 10148,
-                "number": 10148,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10149": {
-                "id": 10149,
-                "number": 10149,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10150": {
-                "id": 10150,
-                "number": 10150,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10151": {
-                "id": 10151,
-                "number": 10151,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10152": {
-                "id": 10152,
-                "number": 10152,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10153": {
-                "id": 10153,
-                "number": 10153,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10154": {
-                "id": 10154,
-                "number": 10154,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10155": {
-                "id": 10155,
-                "number": 10155,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10156": {
-                "id": 10156,
-                "number": 10156,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10157": {
-                "id": 10157,
-                "number": 10157,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10158": {
-                "id": 10158,
-                "number": 10158,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10159": {
-                "id": 10159,
-                "number": 10159,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10160": {
-                "id": 10160,
-                "number": 10160,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10161": {
-                "id": 10161,
-                "number": 10161,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10162": {
-                "id": 10162,
-                "number": 10162,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10163": {
-                "id": 10163,
-                "number": 10163,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10164": {
-                "id": 10164,
-                "number": 10164,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10165": {
-                "id": 10165,
-                "number": 10165,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10166": {
-                "id": 10166,
-                "number": 10166,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10167": {
-                "id": 10167,
-                "number": 10167,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10168": {
-                "id": 10168,
-                "number": 10168,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10169": {
-                "id": 10169,
-                "number": 10169,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10170": {
-                "id": 10170,
-                "number": 10170,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10171": {
-                "id": 10171,
-                "number": 10171,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10172": {
-                "id": 10172,
-                "number": 10172,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10173": {
-                "id": 10173,
-                "number": 10173,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10174": {
-                "id": 10174,
-                "number": 10174,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10175": {
-                "id": 10175,
-                "number": 10175,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10176": {
-                "id": 10176,
-                "number": 10176,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10177": {
-                "id": 10177,
-                "number": 10177,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10178": {
-                "id": 10178,
-                "number": 10178,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10179": {
-                "id": 10179,
-                "number": 10179,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10180": {
-                "id": 10180,
-                "number": 10180,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10181": {
-                "id": 10181,
-                "number": 10181,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10182": {
-                "id": 10182,
-                "number": 10182,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10183": {
-                "id": 10183,
-                "number": 10183,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10184": {
-                "id": 10184,
-                "number": 10184,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10185": {
-                "id": 10185,
-                "number": 10185,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10186": {
-                "id": 10186,
-                "number": 10186,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10187": {
-                "id": 10187,
-                "number": 10187,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10188": {
-                "id": 10188,
-                "number": 10188,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10189": {
-                "id": 10189,
-                "number": 10189,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10190": {
-                "id": 10190,
-                "number": 10190,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10191": {
-                "id": 10191,
-                "number": 10191,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10192": {
-                "id": 10192,
-                "number": 10192,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10193": {
-                "id": 10193,
-                "number": 10193,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10194": {
-                "id": 10194,
-                "number": 10194,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10195": {
-                "id": 10195,
-                "number": 10195,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10196": {
-                "id": 10196,
-                "number": 10196,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10197": {
-                "id": 10197,
-                "number": 10197,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10198": {
-                "id": 10198,
-                "number": 10198,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10199": {
-                "id": 10199,
-                "number": 10199,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10200": {
-                "id": 10200,
-                "number": 10200,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10201": {
-                "id": 10201,
-                "number": 10201,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10202": {
-                "id": 10202,
-                "number": 10202,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10203": {
-                "id": 10203,
-                "number": 10203,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10204": {
-                "id": 10204,
-                "number": 10204,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10205": {
-                "id": 10205,
-                "number": 10205,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10206": {
-                "id": 10206,
-                "number": 10206,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10207": {
-                "id": 10207,
-                "number": 10207,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10208": {
-                "id": 10208,
-                "number": 10208,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10209": {
-                "id": 10209,
-                "number": 10209,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10210": {
-                "id": 10210,
-                "number": 10210,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10211": {
-                "id": 10211,
-                "number": 10211,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10212": {
-                "id": 10212,
-                "number": 10212,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10213": {
-                "id": 10213,
-                "number": 10213,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10214": {
-                "id": 10214,
-                "number": 10214,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10215": {
-                "id": 10215,
-                "number": 10215,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10216": {
-                "id": 10216,
-                "number": 10216,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10217": {
-                "id": 10217,
-                "number": 10217,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10218": {
-                "id": 10218,
-                "number": 10218,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10219": {
-                "id": 10219,
-                "number": 10219,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10220": {
-                "id": 10220,
-                "number": 10220,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10221": {
-                "id": 10221,
-                "number": 10221,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10222": {
-                "id": 10222,
-                "number": 10222,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10223": {
-                "id": 10223,
-                "number": 10223,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10224": {
-                "id": 10224,
-                "number": 10224,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10225": {
-                "id": 10225,
-                "number": 10225,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10226": {
-                "id": 10226,
-                "number": 10226,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10227": {
-                "id": 10227,
-                "number": 10227,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10228": {
-                "id": 10228,
-                "number": 10228,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10229": {
-                "id": 10229,
-                "number": 10229,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10230": {
-                "id": 10230,
-                "number": 10230,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10231": {
-                "id": 10231,
-                "number": 10231,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10232": {
-                "id": 10232,
-                "number": 10232,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10233": {
-                "id": 10233,
-                "number": 10233,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10234": {
-                "id": 10234,
-                "number": 10234,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10235": {
-                "id": 10235,
-                "number": 10235,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10236": {
-                "id": 10236,
-                "number": 10236,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10237": {
-                "id": 10237,
-                "number": 10237,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10238": {
-                "id": 10238,
-                "number": 10238,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10239": {
-                "id": 10239,
-                "number": 10239,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10240": {
-                "id": 10240,
-                "number": 10240,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10241": {
-                "id": 10241,
-                "number": 10241,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10242": {
-                "id": 10242,
-                "number": 10242,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10243": {
-                "id": 10243,
-                "number": 10243,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10244": {
-                "id": 10244,
-                "number": 10244,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10245": {
-                "id": 10245,
-                "number": 10245,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10246": {
-                "id": 10246,
-                "number": 10246,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10247": {
-                "id": 10247,
-                "number": 10247,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10248": {
-                "id": 10248,
-                "number": 10248,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10249": {
-                "id": 10249,
-                "number": 10249,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10250": {
-                "id": 10250,
-                "number": 10250,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10251": {
-                "id": 10251,
-                "number": 10251,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10252": {
-                "id": 10252,
-                "number": 10252,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10253": {
-                "id": 10253,
-                "number": 10253,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10254": {
-                "id": 10254,
-                "number": 10254,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10255": {
-                "id": 10255,
-                "number": 10255,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10256": {
-                "id": 10256,
-                "number": 10256,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10257": {
-                "id": 10257,
-                "number": 10257,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10258": {
-                "id": 10258,
-                "number": 10258,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10259": {
-                "id": 10259,
-                "number": 10259,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10260": {
-                "id": 10260,
-                "number": 10260,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10261": {
-                "id": 10261,
-                "number": 10261,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10262": {
-                "id": 10262,
-                "number": 10262,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10263": {
-                "id": 10263,
-                "number": 10263,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10264": {
-                "id": 10264,
-                "number": 10264,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10265": {
-                "id": 10265,
-                "number": 10265,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10266": {
-                "id": 10266,
-                "number": 10266,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10267": {
-                "id": 10267,
-                "number": 10267,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10268": {
-                "id": 10268,
-                "number": 10268,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10269": {
-                "id": 10269,
-                "number": 10269,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10270": {
-                "id": 10270,
-                "number": 10270,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10271": {
-                "id": 10271,
-                "number": 10271,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10272": {
-                "id": 10272,
-                "number": 10272,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10273": {
-                "id": 10273,
-                "number": 10273,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10274": {
-                "id": 10274,
-                "number": 10274,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10275": {
-                "id": 10275,
-                "number": 10275,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10276": {
-                "id": 10276,
-                "number": 10276,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10277": {
-                "id": 10277,
-                "number": 10277,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10278": {
-                "id": 10278,
-                "number": 10278,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10279": {
-                "id": 10279,
-                "number": 10279,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10280": {
-                "id": 10280,
-                "number": 10280,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10281": {
-                "id": 10281,
-                "number": 10281,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10282": {
-                "id": 10282,
-                "number": 10282,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10283": {
-                "id": 10283,
-                "number": 10283,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10284": {
-                "id": 10284,
-                "number": 10284,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10285": {
-                "id": 10285,
-                "number": 10285,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10286": {
-                "id": 10286,
-                "number": 10286,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10287": {
-                "id": 10287,
-                "number": 10287,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10288": {
-                "id": 10288,
-                "number": 10288,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10289": {
-                "id": 10289,
-                "number": 10289,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10290": {
-                "id": 10290,
-                "number": 10290,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10291": {
-                "id": 10291,
-                "number": 10291,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10292": {
-                "id": 10292,
-                "number": 10292,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10293": {
-                "id": 10293,
-                "number": 10293,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10294": {
-                "id": 10294,
-                "number": 10294,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10295": {
-                "id": 10295,
-                "number": 10295,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10296": {
-                "id": 10296,
-                "number": 10296,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10297": {
-                "id": 10297,
-                "number": 10297,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10298": {
-                "id": 10298,
-                "number": 10298,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10299": {
-                "id": 10299,
-                "number": 10299,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10300": {
-                "id": 10300,
-                "number": 10300,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10301": {
-                "id": 10301,
-                "number": 10301,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10302": {
-                "id": 10302,
-                "number": 10302,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10303": {
-                "id": 10303,
-                "number": 10303,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10304": {
-                "id": 10304,
-                "number": 10304,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10305": {
-                "id": 10305,
-                "number": 10305,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10306": {
-                "id": 10306,
-                "number": 10306,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10307": {
-                "id": 10307,
-                "number": 10307,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10308": {
-                "id": 10308,
-                "number": 10308,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10309": {
-                "id": 10309,
-                "number": 10309,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10310": {
-                "id": 10310,
-                "number": 10310,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10311": {
-                "id": 10311,
-                "number": 10311,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10312": {
-                "id": 10312,
-                "number": 10312,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10313": {
-                "id": 10313,
-                "number": 10313,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10314": {
-                "id": 10314,
-                "number": 10314,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10315": {
-                "id": 10315,
-                "number": 10315,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10316": {
-                "id": 10316,
-                "number": 10316,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10317": {
-                "id": 10317,
-                "number": 10317,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10318": {
-                "id": 10318,
-                "number": 10318,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10319": {
-                "id": 10319,
-                "number": 10319,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10320": {
-                "id": 10320,
-                "number": 10320,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10321": {
-                "id": 10321,
-                "number": 10321,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10322": {
-                "id": 10322,
-                "number": 10322,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10323": {
-                "id": 10323,
-                "number": 10323,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10324": {
-                "id": 10324,
-                "number": 10324,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10325": {
-                "id": 10325,
-                "number": 10325,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10326": {
-                "id": 10326,
-                "number": 10326,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10327": {
-                "id": 10327,
-                "number": 10327,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10328": {
-                "id": 10328,
-                "number": 10328,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10329": {
-                "id": 10329,
-                "number": 10329,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10330": {
-                "id": 10330,
-                "number": 10330,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10331": {
-                "id": 10331,
-                "number": 10331,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10332": {
-                "id": 10332,
-                "number": 10332,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10333": {
-                "id": 10333,
-                "number": 10333,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10334": {
-                "id": 10334,
-                "number": 10334,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10335": {
-                "id": 10335,
-                "number": 10335,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10336": {
-                "id": 10336,
-                "number": 10336,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10337": {
-                "id": 10337,
-                "number": 10337,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10338": {
-                "id": 10338,
-                "number": 10338,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10339": {
-                "id": 10339,
-                "number": 10339,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10340": {
-                "id": 10340,
-                "number": 10340,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10341": {
-                "id": 10341,
-                "number": 10341,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10342": {
-                "id": 10342,
-                "number": 10342,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10343": {
-                "id": 10343,
-                "number": 10343,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10344": {
-                "id": 10344,
-                "number": 10344,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10345": {
-                "id": 10345,
-                "number": 10345,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10346": {
-                "id": 10346,
-                "number": 10346,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10347": {
-                "id": 10347,
-                "number": 10347,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10348": {
-                "id": 10348,
-                "number": 10348,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10349": {
-                "id": 10349,
-                "number": 10349,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10350": {
-                "id": 10350,
-                "number": 10350,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10351": {
-                "id": 10351,
-                "number": 10351,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10352": {
-                "id": 10352,
-                "number": 10352,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10353": {
-                "id": 10353,
-                "number": 10353,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10354": {
-                "id": 10354,
-                "number": 10354,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10355": {
-                "id": 10355,
-                "number": 10355,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10356": {
-                "id": 10356,
-                "number": 10356,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10357": {
-                "id": 10357,
-                "number": 10357,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10358": {
-                "id": 10358,
-                "number": 10358,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10359": {
-                "id": 10359,
-                "number": 10359,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10360": {
-                "id": 10360,
-                "number": 10360,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10361": {
-                "id": 10361,
-                "number": 10361,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10362": {
-                "id": 10362,
-                "number": 10362,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10363": {
-                "id": 10363,
-                "number": 10363,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10364": {
-                "id": 10364,
-                "number": 10364,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10365": {
-                "id": 10365,
-                "number": 10365,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10366": {
-                "id": 10366,
-                "number": 10366,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10367": {
-                "id": 10367,
-                "number": 10367,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10368": {
-                "id": 10368,
-                "number": 10368,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10369": {
-                "id": 10369,
-                "number": 10369,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10370": {
-                "id": 10370,
-                "number": 10370,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10371": {
-                "id": 10371,
-                "number": 10371,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10372": {
-                "id": 10372,
-                "number": 10372,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10373": {
-                "id": 10373,
-                "number": 10373,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10374": {
-                "id": 10374,
-                "number": 10374,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10375": {
-                "id": 10375,
-                "number": 10375,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10376": {
-                "id": 10376,
-                "number": 10376,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10377": {
-                "id": 10377,
-                "number": 10377,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10378": {
-                "id": 10378,
-                "number": 10378,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10379": {
-                "id": 10379,
-                "number": 10379,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10380": {
-                "id": 10380,
-                "number": 10380,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10381": {
-                "id": 10381,
-                "number": 10381,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10382": {
-                "id": 10382,
-                "number": 10382,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10383": {
-                "id": 10383,
-                "number": 10383,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10384": {
-                "id": 10384,
-                "number": 10384,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10385": {
-                "id": 10385,
-                "number": 10385,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10386": {
-                "id": 10386,
-                "number": 10386,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10387": {
-                "id": 10387,
-                "number": 10387,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10388": {
-                "id": 10388,
-                "number": 10388,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10389": {
-                "id": 10389,
-                "number": 10389,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10390": {
-                "id": 10390,
-                "number": 10390,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10391": {
-                "id": 10391,
-                "number": 10391,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10392": {
-                "id": 10392,
-                "number": 10392,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10393": {
-                "id": 10393,
-                "number": 10393,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10394": {
-                "id": 10394,
-                "number": 10394,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10395": {
-                "id": 10395,
-                "number": 10395,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10396": {
-                "id": 10396,
-                "number": 10396,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10397": {
-                "id": 10397,
-                "number": 10397,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10398": {
-                "id": 10398,
-                "number": 10398,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10399": {
-                "id": 10399,
-                "number": 10399,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10400": {
-                "id": 10400,
-                "number": 10400,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10401": {
-                "id": 10401,
-                "number": 10401,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10402": {
-                "id": 10402,
-                "number": 10402,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10403": {
-                "id": 10403,
-                "number": 10403,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10404": {
-                "id": 10404,
-                "number": 10404,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10405": {
-                "id": 10405,
-                "number": 10405,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10406": {
-                "id": 10406,
-                "number": 10406,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10407": {
-                "id": 10407,
-                "number": 10407,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10408": {
-                "id": 10408,
-                "number": 10408,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10409": {
-                "id": 10409,
-                "number": 10409,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10410": {
-                "id": 10410,
-                "number": 10410,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10411": {
-                "id": 10411,
-                "number": 10411,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10412": {
-                "id": 10412,
-                "number": 10412,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10413": {
-                "id": 10413,
-                "number": 10413,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10414": {
-                "id": 10414,
-                "number": 10414,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10415": {
-                "id": 10415,
-                "number": 10415,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10416": {
-                "id": 10416,
-                "number": 10416,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10417": {
-                "id": 10417,
-                "number": 10417,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10418": {
-                "id": 10418,
-                "number": 10418,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10419": {
-                "id": 10419,
-                "number": 10419,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10420": {
-                "id": 10420,
-                "number": 10420,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10421": {
-                "id": 10421,
-                "number": 10421,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10422": {
-                "id": 10422,
-                "number": 10422,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10423": {
-                "id": 10423,
-                "number": 10423,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10424": {
-                "id": 10424,
-                "number": 10424,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10425": {
-                "id": 10425,
-                "number": 10425,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10426": {
-                "id": 10426,
-                "number": 10426,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10427": {
-                "id": 10427,
-                "number": 10427,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10428": {
-                "id": 10428,
-                "number": 10428,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10429": {
-                "id": 10429,
-                "number": 10429,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10430": {
-                "id": 10430,
-                "number": 10430,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10431": {
-                "id": 10431,
-                "number": 10431,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10432": {
-                "id": 10432,
-                "number": 10432,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10433": {
-                "id": 10433,
-                "number": 10433,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10434": {
-                "id": 10434,
-                "number": 10434,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10435": {
-                "id": 10435,
-                "number": 10435,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10436": {
-                "id": 10436,
-                "number": 10436,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10437": {
-                "id": 10437,
-                "number": 10437,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10438": {
-                "id": 10438,
-                "number": 10438,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10439": {
-                "id": 10439,
-                "number": 10439,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10440": {
-                "id": 10440,
-                "number": 10440,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10441": {
-                "id": 10441,
-                "number": 10441,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10442": {
-                "id": 10442,
-                "number": 10442,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10443": {
-                "id": 10443,
-                "number": 10443,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10444": {
-                "id": 10444,
-                "number": 10444,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10445": {
-                "id": 10445,
-                "number": 10445,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10446": {
-                "id": 10446,
-                "number": 10446,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10447": {
-                "id": 10447,
-                "number": 10447,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10448": {
-                "id": 10448,
-                "number": 10448,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10449": {
-                "id": 10449,
-                "number": 10449,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10450": {
-                "id": 10450,
-                "number": 10450,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10451": {
-                "id": 10451,
-                "number": 10451,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10452": {
-                "id": 10452,
-                "number": 10452,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10453": {
-                "id": 10453,
-                "number": 10453,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10454": {
-                "id": 10454,
-                "number": 10454,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10455": {
-                "id": 10455,
-                "number": 10455,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10456": {
-                "id": 10456,
-                "number": 10456,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10457": {
-                "id": 10457,
-                "number": 10457,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10458": {
-                "id": 10458,
-                "number": 10458,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10459": {
-                "id": 10459,
-                "number": 10459,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10460": {
-                "id": 10460,
-                "number": 10460,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10461": {
-                "id": 10461,
-                "number": 10461,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10462": {
-                "id": 10462,
-                "number": 10462,
-                "name": "灯笼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10463": {
-                "id": 10463,
-                "number": 10463,
-                "name": "龅牙兔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10464": {
-                "id": 10464,
-                "number": 10464,
-                "name": "乌龟精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10465": {
-                "id": 10465,
-                "number": 10465,
-                "name": "卖茶怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10466": {
-                "id": 10466,
-                "number": 10466,
-                "name": "白骨精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10467": {
-                "id": 10467,
-                "number": 10467,
-                "name": "蛤蟆怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10468": {
-                "id": 10468,
-                "number": 10468,
-                "name": "树精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10469": {
-                "id": 10469,
-                "number": 10469,
-                "name": "黑熊精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10470": {
-                "id": 10470,
-                "number": 10470,
-                "name": "狐狸精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10471": {
-                "id": 10471,
-                "number": 10471,
-                "name": "水晶魔灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10472": {
-                "id": 10472,
-                "number": 10472,
-                "name": "大脸猫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10473": {
-                "id": 10473,
-                "number": 10473,
-                "name": "野猪妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10474": {
-                "id": 10474,
-                "number": 10474,
-                "name": "猩猩巨魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10475": {
-                "id": 10475,
-                "number": 10475,
-                "name": "猴儿精",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10476": {
-                "id": 10476,
-                "number": 10476,
-                "name": "巨蟒怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10477": {
-                "id": 10477,
-                "number": 10477,
-                "name": "地狱小鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10478": {
-                "id": 10478,
-                "number": 10478,
-                "name": "狮子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10479": {
-                "id": 10479,
-                "number": 10479,
-                "name": "蚊子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10480": {
-                "id": 10480,
-                "number": 10480,
-                "name": "火焰怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10481": {
-                "id": 10481,
-                "number": 10481,
-                "name": "河童怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10482": {
-                "id": 10482,
-                "number": 10482,
-                "name": "独角兽",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10483": {
-                "id": 10483,
-                "number": 10483,
-                "name": "人鱼怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10484": {
-                "id": 10484,
-                "number": 10484,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10485": {
-                "id": 10485,
-                "number": 10485,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10486": {
-                "id": 10486,
-                "number": 10486,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10487": {
-                "id": 10487,
-                "number": 10487,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10488": {
-                "id": 10488,
-                "number": 10488,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10489": {
-                "id": 10489,
-                "number": 10489,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10490": {
-                "id": 10490,
-                "number": 10490,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10491": {
-                "id": 10491,
-                "number": 10491,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10492": {
-                "id": 10492,
-                "number": 10492,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10493": {
-                "id": 10493,
-                "number": 10493,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10494": {
-                "id": 10494,
-                "number": 10494,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10495": {
-                "id": 10495,
-                "number": 10495,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10496": {
-                "id": 10496,
-                "number": 10496,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10497": {
-                "id": 10497,
-                "number": 10497,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10498": {
-                "id": 10498,
-                "number": 10498,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10499": {
-                "id": 10499,
-                "number": 10499,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10500": {
-                "id": 10500,
-                "number": 10500,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20000": {
-                "id": 20000,
-                "number": 20000,
-                "name": "巨齿狼王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20001": {
-                "id": 20001,
-                "number": 20001,
-                "name": "双头牛怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20002": {
-                "id": 20002,
-                "number": 20002,
-                "name": "长矛鼠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20003": {
-                "id": 20003,
-                "number": 20003,
-                "name": "小狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20004": {
-                "id": 20004,
-                "number": 20004,
-                "name": "大狗怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20005": {
-                "id": 20005,
-                "number": 20005,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20006": {
-                "id": 20006,
-                "number": 20006,
-                "name": "火魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10033,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20007": {
-                "id": 20007,
-                "number": 20007,
-                "name": "独臂铲子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10034,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20008": {
-                "id": 20008,
-                "number": 20008,
-                "name": "黄袍老怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10035,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20009": {
-                "id": 20009,
-                "number": 20009,
-                "name": "金角大王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10036,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20010": {
-                "id": 20010,
-                "number": 20010,
-                "name": "银角大王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10037,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20011": {
-                "id": 20011,
-                "number": 20011,
-                "name": "长眉老怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10038,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20012": {
-                "id": 20012,
-                "number": 20012,
-                "name": "黑山巫妖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10039,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20013": {
-                "id": 20013,
-                "number": 20013,
-                "name": "半头魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10040,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20014": {
-                "id": 20014,
-                "number": 20014,
-                "name": "三条胳膊怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10041,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20015": {
-                "id": 20015,
-                "number": 20015,
-                "name": "巨斧怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10042,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20016": {
-                "id": 20016,
-                "number": 20016,
-                "name": "双刀怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10043,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20017": {
-                "id": 20017,
-                "number": 20017,
-                "name": "巨剑怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10044,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20018": {
-                "id": 20018,
-                "number": 20018,
-                "name": "弓箭怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10045,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20019": {
-                "id": 20019,
-                "number": 20019,
-                "name": "锤子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10046,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20020": {
-                "id": 20020,
-                "number": 20020,
-                "name": "石巨人",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10047,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30000": {
-                "id": 30000,
-                "number": 30000,
-                "name": "经验元灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 30000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30001": {
-                "id": 30001,
-                "number": 30001,
-                "name": "蝙蝠怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30002": {
-                "id": 30002,
-                "number": 30002,
-                "name": "火魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10033,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30003": {
-                "id": 30003,
-                "number": 30003,
-                "name": "金角大王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10036,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30004": {
-                "id": 30004,
-                "number": 30004,
-                "name": "银角大王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10037,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30005": {
-                "id": 30005,
-                "number": 30005,
-                "name": "半头魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10040,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30006": {
-                "id": 30006,
-                "number": 30006,
-                "name": "三条胳膊怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10041,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30007": {
-                "id": 30007,
-                "number": 30007,
-                "name": "双刀怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10043,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30008": {
-                "id": 30008,
-                "number": 30008,
-                "name": "巨剑怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10044,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30009": {
-                "id": 30009,
-                "number": 30009,
-                "name": "锤子怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10046,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30010": {
-                "id": 30010,
-                "number": 30010,
-                "name": "石巨人",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10047,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            }
-        }
-    },
-    "elixir": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "elixir": 20,
-                "atk": 1,
-                "hp": 2
-            }
-        }
-    },
-    "factors": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "base": 1.1,
-                "factor": 1
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "base": 1.099,
-                "factor": 1.1
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "base": 1.098,
-                "factor": 1.209
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "base": 1.097,
-                "factor": 1.327
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "base": 1.096,
-                "factor": 1.456
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "base": 1.095,
-                "factor": 1.596
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "base": 1.094,
-                "factor": 1.748
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "base": 1.093,
-                "factor": 1.912
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "base": 1.092,
-                "factor": 2.09
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "base": 1.091,
-                "factor": 2.282
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "base": 1.09,
-                "factor": 2.49
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "base": 1.089,
-                "factor": 2.714
-            },
-            "13": {
-                "id": 13,
-                "lv": 13,
-                "base": 1.088,
-                "factor": 2.956
-            },
-            "14": {
-                "id": 14,
-                "lv": 14,
-                "base": 1.087,
-                "factor": 3.216
-            },
-            "15": {
-                "id": 15,
-                "lv": 15,
-                "base": 1.086,
-                "factor": 3.496
-            },
-            "16": {
-                "id": 16,
-                "lv": 16,
-                "base": 1.085,
-                "factor": 3.797
-            },
-            "17": {
-                "id": 17,
-                "lv": 17,
-                "base": 1.084,
-                "factor": 4.12
-            },
-            "18": {
-                "id": 18,
-                "lv": 18,
-                "base": 1.083,
-                "factor": 4.466
-            },
-            "19": {
-                "id": 19,
-                "lv": 19,
-                "base": 1.082,
-                "factor": 4.837
-            },
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "base": 1.081,
-                "factor": 5.234
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "base": 1.08,
-                "factor": 5.658
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "base": 1.079,
-                "factor": 6.111
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "base": 1.078,
-                "factor": 6.594
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "base": 1.077,
-                "factor": 7.108
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "base": 1.076,
-                "factor": 7.655
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "base": 1.075,
-                "factor": 8.237
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "base": 1.074,
-                "factor": 8.855
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "base": 1.073,
-                "factor": 9.51
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "base": 1.072,
-                "factor": 10.204
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "base": 1.071,
-                "factor": 10.939
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "base": 1.07,
-                "factor": 11.716
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "base": 1.069,
-                "factor": 12.536
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "base": 1.068,
-                "factor": 13.401
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "base": 1.067,
-                "factor": 14.312
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "base": 1.066,
-                "factor": 15.271
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "base": 1.065,
-                "factor": 16.279
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "base": 1.064,
-                "factor": 17.337
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "base": 1.063,
-                "factor": 18.447
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "base": 1.062,
-                "factor": 19.609
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "base": 1.061,
-                "factor": 20.825
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "base": 1.06,
-                "factor": 22.095
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "base": 1.059,
-                "factor": 23.421
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "base": 1.058,
-                "factor": 24.803
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "base": 1.057,
-                "factor": 26.242
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "base": 1.05600000000001,
-                "factor": 27.738
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "base": 1.05500000000001,
-                "factor": 29.291
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "base": 1.05400000000001,
-                "factor": 30.902
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "base": 1.05300000000001,
-                "factor": 32.571
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "base": 1.05200000000001,
-                "factor": 34.297
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "base": 1.05100000000001,
-                "factor": 36.08
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "base": 1.05000000000001,
-                "factor": 37.92
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "base": 1.04900000000001,
-                "factor": 39.816
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "base": 1.04800000000001,
-                "factor": 41.767
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "base": 1.04700000000001,
-                "factor": 43.772
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "base": 1.04600000000001,
-                "factor": 45.829
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "base": 1.04500000000001,
-                "factor": 47.937
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "base": 1.04400000000001,
-                "factor": 50.094
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "base": 1.04300000000001,
-                "factor": 52.298
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "base": 1.04200000000001,
-                "factor": 54.547
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "base": 1.04100000000001,
-                "factor": 56.838
-            }
-        }
-    },
-    "star_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star": 1,
-                "money_need": 5000,
-                "rate_per_card": 7,
-                "max_num": 15
-            },
-            "2": {
-                "id": 2,
-                "star": 2,
-                "money_need": 10000,
-                "rate_per_card": 6,
-                "max_num": 17
-            },
-            "3": {
-                "id": 3,
-                "star": 3,
-                "money_need": 20000,
-                "rate_per_card": 5,
-                "max_num": 20
-            },
-            "4": {
-                "id": 4,
-                "star": 4,
-                "money_need": 50000,
-                "rate_per_card": 4,
-                "max_num": 25
-            }
-        }
-    },
     "player_upgrade_reward": {
         "colComment": {},
         "rows": {
@@ -8826,6 +512,20 @@ var outputTables = {
                 "id": 10,
                 "lv": 100,
                 "gold": 500
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 254,
+                "card_lvs": 20,
+                "card_qtys": 1
             }
         }
     },
@@ -23683,6 +15383,8323 @@ var outputTables = {
             }
         }
     },
+    "card_grow": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lv": 0,
+                "exp_need": 100,
+                "money_need": 110,
+                "cur_exp": 0
+            },
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 110,
+                "money_need": 115,
+                "cur_exp": 100
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 122,
+                "money_need": 133,
+                "cur_exp": 210
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 135,
+                "money_need": 154,
+                "cur_exp": 332
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 150,
+                "money_need": 178,
+                "cur_exp": 467
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 167,
+                "money_need": 206,
+                "cur_exp": 617
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 185,
+                "money_need": 238,
+                "cur_exp": 784
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 205,
+                "money_need": 275,
+                "cur_exp": 969
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 228,
+                "money_need": 318,
+                "cur_exp": 1174
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 253,
+                "money_need": 368,
+                "cur_exp": 1402
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 281,
+                "money_need": 426,
+                "cur_exp": 1655
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "exp_need": 312,
+                "money_need": 493,
+                "cur_exp": 1936
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "exp_need": 346,
+                "money_need": 570,
+                "cur_exp": 2248
+            },
+            "13": {
+                "id": 13,
+                "lv": 13,
+                "exp_need": 384,
+                "money_need": 659,
+                "cur_exp": 2594
+            },
+            "14": {
+                "id": 14,
+                "lv": 14,
+                "exp_need": 426,
+                "money_need": 762,
+                "cur_exp": 2978
+            },
+            "15": {
+                "id": 15,
+                "lv": 15,
+                "exp_need": 473,
+                "money_need": 882,
+                "cur_exp": 3404
+            },
+            "16": {
+                "id": 16,
+                "lv": 16,
+                "exp_need": 525,
+                "money_need": 1020,
+                "cur_exp": 3877
+            },
+            "17": {
+                "id": 17,
+                "lv": 17,
+                "exp_need": 583,
+                "money_need": 1180,
+                "cur_exp": 4402
+            },
+            "18": {
+                "id": 18,
+                "lv": 18,
+                "exp_need": 647,
+                "money_need": 1365,
+                "cur_exp": 4985
+            },
+            "19": {
+                "id": 19,
+                "lv": 19,
+                "exp_need": 718,
+                "money_need": 1579,
+                "cur_exp": 5632
+            },
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "exp_need": 797,
+                "money_need": 1827,
+                "cur_exp": 6350
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "exp_need": 885,
+                "money_need": 2114,
+                "cur_exp": 7147
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "exp_need": 982,
+                "money_need": 2446,
+                "cur_exp": 8032
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "exp_need": 1090,
+                "money_need": 2830,
+                "cur_exp": 9014
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "exp_need": 1210,
+                "money_need": 3274,
+                "cur_exp": 10104
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "exp_need": 1343,
+                "money_need": 3788,
+                "cur_exp": 11314
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "exp_need": 1491,
+                "money_need": 4383,
+                "cur_exp": 12657
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "exp_need": 1655,
+                "money_need": 5071,
+                "cur_exp": 14148
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "exp_need": 1837,
+                "money_need": 5867,
+                "cur_exp": 15803
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "exp_need": 2039,
+                "money_need": 6788,
+                "cur_exp": 17640
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "exp_need": 2263,
+                "money_need": 7854,
+                "cur_exp": 19679
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "exp_need": 2512,
+                "money_need": 9087,
+                "cur_exp": 21942
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "exp_need": 2788,
+                "money_need": 10514,
+                "cur_exp": 24454
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "exp_need": 3095,
+                "money_need": 12165,
+                "cur_exp": 27242
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "exp_need": 3435,
+                "money_need": 14075,
+                "cur_exp": 30337
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "exp_need": 3813,
+                "money_need": 16285,
+                "cur_exp": 33772
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "exp_need": 4232,
+                "money_need": 18842,
+                "cur_exp": 37585
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "exp_need": 4698,
+                "money_need": 21800,
+                "cur_exp": 41817
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "exp_need": 5215,
+                "money_need": 25223,
+                "cur_exp": 46515
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "exp_need": 5789,
+                "money_need": 29183,
+                "cur_exp": 51730
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "exp_need": 6426,
+                "money_need": 33765,
+                "cur_exp": 57519
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "exp_need": 7133,
+                "money_need": 39066,
+                "cur_exp": 63945
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "exp_need": 7918,
+                "money_need": 45199,
+                "cur_exp": 71078
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "exp_need": 8789,
+                "money_need": 52295,
+                "cur_exp": 78996
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "exp_need": 9756,
+                "money_need": 60505,
+                "cur_exp": 87785
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "exp_need": 10829,
+                "money_need": 70004,
+                "cur_exp": 97541
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "exp_need": 12020,
+                "money_need": 80995,
+                "cur_exp": 108370
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "exp_need": 13342,
+                "money_need": 93711,
+                "cur_exp": 120390
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "exp_need": 14810,
+                "money_need": 108424,
+                "cur_exp": 133732
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "exp_need": 16439,
+                "money_need": 125447,
+                "cur_exp": 148542
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "exp_need": 18247,
+                "money_need": 145142,
+                "cur_exp": 164981
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "exp_need": 20254,
+                "money_need": 167929,
+                "cur_exp": 183228
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "exp_need": 22482,
+                "money_need": 194294,
+                "cur_exp": 203482
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "exp_need": 24955,
+                "money_need": 224798,
+                "cur_exp": 225964
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "exp_need": 27700,
+                "money_need": 260091,
+                "cur_exp": 250919
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "exp_need": 30747,
+                "money_need": 300925,
+                "cur_exp": 278619
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "exp_need": 34129,
+                "money_need": 348170,
+                "cur_exp": 309366
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "exp_need": 37883,
+                "money_need": 402833,
+                "cur_exp": 343495
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "exp_need": 42050,
+                "money_need": 466078,
+                "cur_exp": 381378
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "exp_need": 46676,
+                "money_need": 539252,
+                "cur_exp": 423428
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "exp_need": 51810,
+                "money_need": 623915,
+                "cur_exp": 470104
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 200,
+                "star2": 500,
+                "star3": 1500,
+                "star4": 3000,
+                "star5": 7000
+            }
+        }
+    },
+    "cards": {
+        "colComment": {
+            "skill_id": {
+                "table": "技能配置表",
+                "key_index": "id",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "6": {
+                "id": 6,
+                "number": 2,
+                "name": "猪刚鬣·猪八戒",
+                "star": 1,
+                "lv": 1,
+                "atk": 45,
+                "hp": 129,
+                "normal_atk_id": 3,
+                "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
+                "url": 2
+            },
+            "7": {
+                "id": 7,
+                "number": 2,
+                "name": "高庄主·猪八戒",
+                "star": 2,
+                "lv": 1,
+                "atk": 91,
+                "hp": 275,
+                "normal_atk_id": 3,
+                "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
+                "url": 2
+            },
+            "8": {
+                "id": 8,
+                "number": 2,
+                "name": "二师兄·猪八戒",
+                "star": 3,
+                "lv": 1,
+                "atk": 142,
+                "hp": 398,
+                "skill_name": "倒打一耙",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 800,
+                "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
+                "url": 2
+            },
+            "9": {
+                "id": 9,
+                "number": 2,
+                "name": "净坛使者·猪八戒",
+                "star": 4,
+                "lv": 1,
+                "atk": 182,
+                "hp": 543,
+                "skill_name": "倒打一耙",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 800,
+                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
+                "url": 2
+            },
+            "10": {
+                "id": 10,
+                "number": 2,
+                "name": "天蓬元帅·猪八戒",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 713,
+                "skill_name": "倒打一耙",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 800,
+                "description": "那年，我管银河系。",
+                "url": 2
+            },
+            "11": {
+                "id": 11,
+                "number": 3,
+                "name": "流沙河·沙悟净",
+                "star": 1,
+                "lv": 1,
+                "atk": 51,
+                "hp": 122,
+                "normal_atk_id": 3,
+                "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
+                "url": 3
+            },
+            "12": {
+                "id": 12,
+                "number": 3,
+                "name": "骷髅九·沙悟净",
+                "star": 2,
+                "lv": 1,
+                "atk": 97,
+                "hp": 246,
+                "normal_atk_id": 3,
+                "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
+                "url": 3
+            },
+            "13": {
+                "id": 13,
+                "number": 3,
+                "name": "沙和尚·沙悟净",
+                "star": 3,
+                "lv": 1,
+                "atk": 148,
+                "hp": 372,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 805,
+                "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
+                "url": 3
+            },
+            "14": {
+                "id": 14,
+                "number": 3,
+                "name": "卷帘大将·沙悟净",
+                "star": 4,
+                "lv": 1,
+                "atk": 202,
+                "hp": 518,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 805,
+                "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
+                "url": 3
+            },
+            "15": {
+                "id": 15,
+                "number": 3,
+                "name": "金身罗汉·沙悟净",
+                "star": 5,
+                "lv": 1,
+                "atk": 273,
+                "hp": 674,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 805,
+                "description": "我是要告诉人家，我失去的东西一定要拿回来！",
+                "url": 3
+            },
+            "31": {
+                "id": 31,
+                "number": 7,
+                "name": "天将·巨灵神",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 125,
+                "normal_atk_id": 2,
+                "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
+                "url": 7
+            },
+            "32": {
+                "id": 32,
+                "number": 7,
+                "name": "门卫·巨灵神",
+                "star": 2,
+                "lv": 1,
+                "atk": 101,
+                "hp": 251,
+                "normal_atk_id": 2,
+                "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
+                "url": 7
+            },
+            "33": {
+                "id": 33,
+                "number": 7,
+                "name": "搬山救民·巨灵神",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 371,
+                "skill_name": "雷霆之怒",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 401,
+                "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
+                "url": 7
+            },
+            "34": {
+                "id": 34,
+                "number": 7,
+                "name": "急先锋·巨灵神",
+                "star": 4,
+                "lv": 1,
+                "atk": 205,
+                "hp": 519,
+                "skill_name": "雷霆之怒",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 401,
+                "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
+                "url": 7
+            },
+            "35": {
+                "id": 35,
+                "number": 7,
+                "name": "神斧·巨灵神",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 677,
+                "skill_name": "雷霆之怒",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 401,
+                "description": "斧头帮知道吧，那是我开创的。",
+                "url": 7
+            },
+            "41": {
+                "id": 41,
+                "number": 9,
+                "name": "冀州侯·黄飞虎",
+                "star": 1,
+                "lv": 1,
+                "atk": 43,
+                "hp": 113,
+                "normal_atk_id": 3,
+                "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
+                "url": 9
+            },
+            "42": {
+                "id": 42,
+                "number": 9,
+                "name": "夜奔·黄飞虎",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 244,
+                "normal_atk_id": 3,
+                "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
+                "url": 9
+            },
+            "43": {
+                "id": 43,
+                "number": 9,
+                "name": "复仇·黄飞虎",
+                "star": 3,
+                "lv": 1,
+                "atk": 156,
+                "hp": 371,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 802,
+                "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
+                "url": 9
+            },
+            "44": {
+                "id": 44,
+                "number": 9,
+                "name": "武成王·黄飞虎",
+                "star": 4,
+                "lv": 1,
+                "atk": 204,
+                "hp": 525,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 802,
+                "description": "我对这次的任命很满意，感谢姬总对我的信任！",
+                "url": 9
+            },
+            "45": {
+                "id": 45,
+                "number": 9,
+                "name": "仁圣大帝·黄飞虎",
+                "star": 5,
+                "lv": 1,
+                "atk": 278,
+                "hp": 680,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 802,
+                "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
+                "url": 9
+            },
+            "56": {
+                "id": 56,
+                "number": 12,
+                "name": "隐士·姜子牙",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 121,
+                "normal_atk_id": 1,
+                "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
+                "url": 12
+            },
+            "57": {
+                "id": 57,
+                "number": 12,
+                "name": "渔者·姜子牙",
+                "star": 2,
+                "lv": 1,
+                "atk": 115,
+                "hp": 260,
+                "normal_atk_id": 1,
+                "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
+                "url": 12
+            },
+            "58": {
+                "id": 58,
+                "number": 12,
+                "name": "占卜师·姜子牙",
+                "star": 3,
+                "lv": 1,
+                "atk": 162,
+                "hp": 370,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 300,
+                "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
+                "url": 12
+            },
+            "59": {
+                "id": 59,
+                "number": 12,
+                "name": "尚父·姜子牙",
+                "star": 4,
+                "lv": 1,
+                "atk": 219,
+                "hp": 522,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 300,
+                "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
+                "url": 12
+            },
+            "60": {
+                "id": 60,
+                "number": 12,
+                "name": "齐祖·姜子牙",
+                "star": 5,
+                "lv": 1,
+                "atk": 285,
+                "hp": 677,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 300,
+                "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
+                "url": 12
+            },
+            "86": {
+                "id": 86,
+                "number": 18,
+                "name": "青城山·白素贞",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 131,
+                "normal_atk_id": 1,
+                "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
+                "url": 18
+            },
+            "87": {
+                "id": 87,
+                "number": 18,
+                "name": "断桥·白素贞",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 254,
+                "normal_atk_id": 1,
+                "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
+                "url": 18
+            },
+            "88": {
+                "id": 88,
+                "number": 18,
+                "name": "盗草·白素贞",
+                "star": 3,
+                "lv": 1,
+                "atk": 143,
+                "hp": 369,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
+                "url": 18
+            },
+            "89": {
+                "id": 89,
+                "number": 18,
+                "name": "水漫金山·白素贞",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 524,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "白素贞你住手吧，许仙真的不在珠海金山！",
+                "url": 18
+            },
+            "90": {
+                "id": 90,
+                "number": 18,
+                "name": "紫微星·白素贞",
+                "star": 5,
+                "lv": 1,
+                "atk": 265,
+                "hp": 689,
+                "skill_name": "千年修",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
+                "url": 18
+            },
+            "91": {
+                "id": 91,
+                "number": 19,
+                "name": "青蛇·小青",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 126,
+                "normal_atk_id": 2,
+                "description": "我修行了一千年，孤独了一千年。",
+                "url": 19
+            },
+            "92": {
+                "id": 92,
+                "number": 19,
+                "name": "变身·小青",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 244,
+                "normal_atk_id": 2,
+                "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
+                "url": 19
+            },
+            "93": {
+                "id": 93,
+                "number": 19,
+                "name": "斗法海·小青",
+                "star": 3,
+                "lv": 1,
+                "atk": 152,
+                "hp": 372,
+                "skill_name": "黯然销魂",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 601,
+                "description": "法海你不懂爱，姐姐不要你，我也不会从。",
+                "url": 19
+            },
+            "94": {
+                "id": 94,
+                "number": 19,
+                "name": "烧塔·小青",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 515,
+                "skill_name": "黯然销魂",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 601,
+                "description": "法海，要么你跟我走，要么你放过我姐姐！",
+                "url": 19
+            },
+            "95": {
+                "id": 95,
+                "number": 19,
+                "name": "青蛇大仙·小青",
+                "star": 5,
+                "lv": 1,
+                "atk": 268,
+                "hp": 677,
+                "skill_name": "黯然销魂",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 601,
+                "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
+                "url": 19
+            },
+            "96": {
+                "id": 96,
+                "number": 20,
+                "name": "秀姑·何仙姑",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 118,
+                "normal_atk_id": 1,
+                "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
+                "url": 20
+            },
+            "97": {
+                "id": 97,
+                "number": 20,
+                "name": "辟谷·何仙姑",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 239,
+                "normal_atk_id": 1,
+                "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
+                "url": 20
+            },
+            "98": {
+                "id": 98,
+                "number": 20,
+                "name": "凌风驾云·何仙姑",
+                "star": 3,
+                "lv": 1,
+                "atk": 161,
+                "hp": 370,
+                "skill_name": "莲花心经",
+                "skill_id": 10,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
+                "url": 20
+            },
+            "99": {
+                "id": 99,
+                "number": 20,
+                "name": "风凰台·何仙姑",
+                "star": 4,
+                "lv": 1,
+                "atk": 221,
+                "hp": 522,
+                "skill_name": "莲花心经",
+                "skill_id": 10,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
+                "url": 20
+            },
+            "100": {
+                "id": 100,
+                "number": 20,
+                "name": "碧波仙子·何仙姑",
+                "star": 5,
+                "lv": 1,
+                "atk": 290,
+                "hp": 662,
+                "skill_name": "莲花心经",
+                "skill_id": 10,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
+                "url": 20
+            },
+            "106": {
+                "id": 106,
+                "number": 22,
+                "name": "神游·铁拐李",
+                "star": 1,
+                "lv": 1,
+                "atk": 56,
+                "hp": 137,
+                "normal_atk_id": 2,
+                "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
+                "url": 22
+            },
+            "107": {
+                "id": 107,
+                "number": 22,
+                "name": "借尸还魂·铁拐李",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 241,
+                "normal_atk_id": 2,
+                "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
+                "url": 22
+            },
+            "108": {
+                "id": 108,
+                "number": 22,
+                "name": "化龙·铁拐李",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 358,
+                "skill_name": "流星拐",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 700,
+                "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
+                "url": 22
+            },
+            "109": {
+                "id": 109,
+                "number": 22,
+                "name": "呼风唤雨·铁拐李",
+                "star": 4,
+                "lv": 1,
+                "atk": 221,
+                "hp": 516,
+                "skill_name": "流星拐",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 700,
+                "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
+                "url": 22
+            },
+            "110": {
+                "id": 110,
+                "number": 22,
+                "name": "东华教主·铁拐李",
+                "star": 5,
+                "lv": 1,
+                "atk": 276,
+                "hp": 683,
+                "skill_name": "流星拐",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 700,
+                "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
+                "url": 22
+            },
+            "121": {
+                "id": 121,
+                "number": 25,
+                "name": "不羁·韩湘子",
+                "star": 1,
+                "lv": 1,
+                "atk": 41,
+                "hp": 130,
+                "normal_atk_id": 2,
+                "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
+                "url": 25
+            },
+            "122": {
+                "id": 122,
+                "number": 25,
+                "name": "天花引·韩湘子",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 275,
+                "normal_atk_id": 2,
+                "description": "我一辈子只写了这一曲，却流传了几辈子。",
+                "url": 25
+            },
+            "123": {
+                "id": 123,
+                "number": 25,
+                "name": "点化·韩湘子",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 390,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
+                "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。",
+                "url": 25
+            },
+            "124": {
+                "id": 124,
+                "number": 25,
+                "name": "箫中情·韩湘子",
+                "star": 4,
+                "lv": 1,
+                "atk": 179,
+                "hp": 556,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
+                "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！",
+                "url": 25
+            },
+            "125": {
+                "id": 125,
+                "number": 25,
+                "name": "尸解仙·韩湘子",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 702,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 400,
+                "description": "离开的那天，我的爱与肉身一起，在风中化去了。",
+                "url": 25
+            },
+            "136": {
+                "id": 136,
+                "number": 28,
+                "name": "女红·织女",
+                "star": 1,
+                "lv": 1,
+                "atk": 42,
+                "hp": 122,
+                "normal_atk_id": 1,
+                "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
+                "url": 28
+            },
+            "137": {
+                "id": 137,
+                "number": 28,
+                "name": "天浴·织女",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 262,
+                "normal_atk_id": 1,
+                "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
+                "url": 28
+            },
+            "138": {
+                "id": 138,
+                "number": 28,
+                "name": "天伦·织女",
+                "star": 3,
+                "lv": 1,
+                "atk": 132,
+                "hp": 382,
+                "skill_name": "鹊桥泪",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。",
+                "url": 28
+            },
+            "139": {
+                "id": 139,
+                "number": 28,
+                "name": "七仙姑·织女",
+                "star": 4,
+                "lv": 1,
+                "atk": 182,
+                "hp": 552,
+                "skill_name": "鹊桥泪",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。",
+                "url": 28
+            },
+            "140": {
+                "id": 140,
+                "number": 28,
+                "name": "七星娘娘·织女",
+                "star": 5,
+                "lv": 1,
+                "atk": 242,
+                "hp": 712,
+                "skill_name": "鹊桥泪",
+                "skill_id": 7,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
+                "url": 28
+            },
+            "146": {
+                "id": 146,
+                "number": 30,
+                "name": "天书·鬼谷子",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 133,
+                "normal_atk_id": 3,
+                "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
+                "url": 30
+            },
+            "147": {
+                "id": 147,
+                "number": 30,
+                "name": "纵横术·鬼谷子",
+                "star": 2,
+                "lv": 1,
+                "atk": 95,
+                "hp": 262,
+                "normal_atk_id": 3,
+                "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
+                "url": 30
+            },
+            "148": {
+                "id": 148,
+                "number": 30,
+                "name": "鬼谷井·鬼谷子",
+                "star": 3,
+                "lv": 1,
+                "atk": 145,
+                "hp": 385,
+                "skill_name": "鬼脚七",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 803,
+                "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
+                "url": 30
+            },
+            "149": {
+                "id": 149,
+                "number": 30,
+                "name": "斩草撒豆·鬼谷子",
+                "star": 4,
+                "lv": 1,
+                "atk": 188,
+                "hp": 556,
+                "skill_name": "鬼脚七",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 803,
+                "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
+                "url": 30
+            },
+            "150": {
+                "id": 150,
+                "number": 30,
+                "name": "玄微真人·鬼谷子",
+                "star": 5,
+                "lv": 1,
+                "atk": 244,
+                "hp": 721,
+                "skill_name": "鬼脚七",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 803,
+                "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
+                "url": 30
+            },
+            "151": {
+                "id": 151,
+                "number": 31,
+                "name": "生老病死·黑无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 50,
+                "hp": 131,
+                "normal_atk_id": 2,
+                "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？",
+                "url": 31
+            },
+            "152": {
+                "id": 152,
+                "number": 31,
+                "name": "爱别离·黑无常",
+                "star": 2,
+                "lv": 1,
+                "atk": 102,
+                "hp": 279,
+                "normal_atk_id": 2,
+                "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。",
+                "url": 31
+            },
+            "153": {
+                "id": 153,
+                "number": 31,
+                "name": "怨憎会·黑无常",
+                "star": 3,
+                "lv": 1,
+                "atk": 149,
+                "hp": 378,
+                "skill_name": "招魂蟠",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 403,
+                "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
+                "url": 31
+            },
+            "154": {
+                "id": 154,
+                "number": 31,
+                "name": "求不得·黑无常",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 549,
+                "skill_name": "招魂蟠",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 403,
+                "description": "巨龙巨龙你差两年，永永远远的差两年。",
+                "url": 31
+            },
+            "155": {
+                "id": 155,
+                "number": 31,
+                "name": "五阴盛·黑无常",
+                "star": 5,
+                "lv": 1,
+                "atk": 265,
+                "hp": 719,
+                "skill_name": "招魂蟠",
+                "skill_id": 6,
+                "normal_atk_id": 2,
+                "effect_id": 403,
+                "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
+                "url": 31
+            },
+            "156": {
+                "id": 156,
+                "number": 32,
+                "name": "地狱道·白无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 126,
+                "normal_atk_id": 2,
+                "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
+                "url": 32
+            },
+            "157": {
+                "id": 157,
+                "number": 32,
+                "name": "恶鬼道·白无常",
+                "star": 2,
+                "lv": 1,
+                "atk": 105,
+                "hp": 277,
+                "normal_atk_id": 2,
+                "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
+                "url": 32
+            },
+            "158": {
+                "id": 158,
+                "number": 32,
+                "name": "畜生道·白无常",
+                "star": 3,
+                "lv": 1,
+                "atk": 154,
+                "hp": 369,
+                "skill_name": "哭丧棒",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
+                "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
+                "url": 32
+            },
+            "159": {
+                "id": 159,
+                "number": 32,
+                "name": "阿修罗道·白无常",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 556,
+                "skill_name": "哭丧棒",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
+                "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
+                "url": 32
+            },
+            "160": {
+                "id": 160,
+                "number": 32,
+                "name": "人间道·白无常",
+                "star": 5,
+                "lv": 1,
+                "atk": 266,
+                "hp": 666,
+                "skill_name": "哭丧棒",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
+                "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
+                "url": 32
+            },
+            "166": {
+                "id": 166,
+                "number": 34,
+                "name": "士官·夜游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 122,
+                "normal_atk_id": 3,
+                "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
+                "url": 34
+            },
+            "167": {
+                "id": 167,
+                "number": 34,
+                "name": "中尉·夜游神",
+                "star": 2,
+                "lv": 1,
+                "atk": 115,
+                "hp": 246,
+                "normal_atk_id": 3,
+                "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
+                "url": 34
+            },
+            "168": {
+                "id": 168,
+                "number": 34,
+                "name": "少校·夜游神",
+                "star": 3,
+                "lv": 1,
+                "atk": 162,
+                "hp": 373,
+                "skill_name": "流星击",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 804,
+                "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。",
+                "url": 34
+            },
+            "169": {
+                "id": 169,
+                "number": 34,
+                "name": "上校·夜游神",
+                "star": 4,
+                "lv": 1,
+                "atk": 223,
+                "hp": 515,
+                "skill_name": "流星击",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 804,
+                "description": "为啥那个唱歌的神仙升的比我快那么多!",
+                "url": 34
+            },
+            "170": {
+                "id": 170,
+                "number": 34,
+                "name": "大校·夜游神",
+                "star": 5,
+                "lv": 1,
+                "atk": 279,
+                "hp": 668,
+                "skill_name": "流星击",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 804,
+                "description": "笑什么笑，是大校不是大笑，严肃点！",
+                "url": 34
+            },
+            "176": {
+                "id": 176,
+                "number": 36,
+                "name": "公主驾到·精卫",
+                "star": 1,
+                "lv": 1,
+                "atk": 45,
+                "hp": 136,
+                "normal_atk_id": 1,
+                "description": "虽然咱们部落没多少人，但我也算是个公主呀！",
+                "url": 36
+            },
+            "177": {
+                "id": 177,
+                "number": 36,
+                "name": "海泳·精卫",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 258,
+                "normal_atk_id": 1,
+                "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。",
+                "url": 36
+            },
+            "178": {
+                "id": 178,
+                "number": 36,
+                "name": "东海遇·精卫",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 381,
+                "skill_name": "碧波滔天",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "不喜欢就是不喜欢，龙王太子又如何！",
+                "url": 36
+            },
+            "179": {
+                "id": 179,
+                "number": 36,
+                "name": "逼婚·精卫",
+                "star": 4,
+                "lv": 1,
+                "atk": 200,
+                "hp": 536,
+                "skill_name": "碧波滔天",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "再逼我就跳海，死了我也不放过你！",
+                "url": 36
+            },
+            "180": {
+                "id": 180,
+                "number": 36,
+                "name": "化鸟·精卫",
+                "star": 5,
+                "lv": 1,
+                "atk": 280,
+                "hp": 721,
+                "skill_name": "碧波滔天",
+                "skill_id": 8,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。",
+                "url": 36
+            },
+            "186": {
+                "id": 186,
+                "number": 38,
+                "name": "箭客·后羿",
+                "star": 1,
+                "lv": 1,
+                "atk": 44,
+                "hp": 141,
+                "normal_atk_id": 2,
+                "description": "我喜欢射，我喜欢箭，我是箭客！",
+                "url": 38
+            },
+            "187": {
+                "id": 187,
+                "number": 38,
+                "name": "失嫦娥·后羿",
+                "star": 2,
+                "lv": 1,
+                "atk": 93,
+                "hp": 261,
+                "normal_atk_id": 2,
+                "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。",
+                "url": 38
+            },
+            "188": {
+                "id": 188,
+                "number": 38,
+                "name": "七弦·后羿",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 388,
+                "skill_name": "穿云箭",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 600,
+                "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。",
+                "url": 38
+            },
+            "189": {
+                "id": 189,
+                "number": 38,
+                "name": "射日·后羿",
+                "star": 4,
+                "lv": 1,
+                "atk": 205,
+                "hp": 541,
+                "skill_name": "穿云箭",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 600,
+                "description": "唯有射下那九个太阳，才能压下我内心的怒火。",
+                "url": 38
+            },
+            "190": {
+                "id": 190,
+                "number": 38,
+                "name": "宗布神·后羿",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 729,
+                "skill_name": "穿云箭",
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 600,
+                "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……",
+                "url": 38
+            },
+            "191": {
+                "id": 191,
+                "number": 39,
+                "name": "郎才女貌·嫦娥",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 122,
+                "normal_atk_id": 2,
+                "description": "后羿是个神射手，嫁给他我很幸福，你懂的。",
+                "url": 39
+            },
+            "192": {
+                "id": 192,
+                "number": 39,
+                "name": "奔月·嫦娥",
+                "star": 2,
+                "lv": 1,
+                "atk": 105,
+                "hp": 233,
+                "normal_atk_id": 2,
+                "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。",
+                "url": 39
+            },
+            "193": {
+                "id": 193,
+                "number": 39,
+                "name": "捣药·嫦娥",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 352,
+                "skill_name": "天音玄",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 701,
+                "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！",
+                "url": 39
+            },
+            "194": {
+                "id": 194,
+                "number": 39,
+                "name": "真爱·嫦娥",
+                "star": 4,
+                "lv": 1,
+                "atk": 212,
+                "hp": 502,
+                "skill_name": "天音玄",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 701,
+                "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。",
+                "url": 39
+            },
+            "195": {
+                "id": 195,
+                "number": 39,
+                "name": "月光女神·嫦娥",
+                "star": 5,
+                "lv": 1,
+                "atk": 290,
+                "hp": 647,
+                "skill_name": "天音玄",
+                "skill_id": 4,
+                "normal_atk_id": 2,
+                "effect_id": 701,
+                "description": "想我的时候，打一盘Luna地图或是看看钱包。",
+                "url": 39
+            },
+            "211": {
+                "id": 211,
+                "number": 43,
+                "name": "错嫁·宓妃",
+                "star": 1,
+                "lv": 1,
+                "atk": 51,
+                "hp": 121,
+                "normal_atk_id": 1,
+                "description": "嫁给河伯是我一生最大的错。",
+                "url": 43
+            },
+            "212": {
+                "id": 212,
+                "number": 43,
+                "name": "洛书·宓妃",
+                "star": 2,
+                "lv": 1,
+                "atk": 101,
+                "hp": 251,
+                "normal_atk_id": 1,
+                "description": "我献出洛书，只是想离开这个人。",
+                "url": 43
+            },
+            "213": {
+                "id": 213,
+                "number": 43,
+                "name": "真爱·宓妃",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 371,
+                "skill_name": "水乳之欢",
+                "skill_id": 9,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "第一次见到他的时候，我就记住了他的名字：后羿。",
+                "url": 43
+            },
+            "214": {
+                "id": 214,
+                "number": 43,
+                "name": "洛水三千·宓妃",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 521,
+                "skill_name": "水乳之欢",
+                "skill_id": 9,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。",
+                "url": 43
+            },
+            "215": {
+                "id": 215,
+                "number": 43,
+                "name": "洛神·宓妃",
+                "star": 5,
+                "lv": 1,
+                "atk": 271,
+                "hp": 671,
+                "skill_name": "水乳之欢",
+                "skill_id": 9,
+                "normal_atk_id": 1,
+                "effect_id": 301,
+                "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。",
+                "url": 43
+            },
+            "216": {
+                "id": 216,
+                "number": 44,
+                "name": "长生之道·张道陵",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 126,
+                "normal_atk_id": 2,
+                "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。",
+                "url": 44
+            },
+            "217": {
+                "id": 217,
+                "number": 44,
+                "name": "神医·张道陵",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 248,
+                "normal_atk_id": 2,
+                "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？",
+                "url": 44
+            },
+            "218": {
+                "id": 218,
+                "number": 44,
+                "name": "授术·张道陵",
+                "star": 3,
+                "lv": 1,
+                "atk": 158,
+                "hp": 374,
+                "skill_name": "无米之炊",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
+                "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
+                "url": 44
+            },
+            "219": {
+                "id": 219,
+                "number": 44,
+                "name": "五斗米·张道陵",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 531,
+                "skill_name": "无米之炊",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
+                "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
+                "url": 44
+            },
+            "220": {
+                "id": 220,
+                "number": 44,
+                "name": "天师·张道陵",
+                "star": 5,
+                "lv": 1,
+                "atk": 274,
+                "hp": 678,
+                "skill_name": "无米之炊",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
+                "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
+                "url": 44
+            },
+            "241": {
+                "id": 241,
+                "number": 49,
+                "name": "异人·哪吒",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 140,
+                "normal_atk_id": 3,
+                "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
+                "url": 49
+            },
+            "242": {
+                "id": 242,
+                "number": 49,
+                "name": "小仙·哪吒",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 290,
+                "normal_atk_id": 3,
+                "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
+                "url": 49
+            },
+            "243": {
+                "id": 243,
+                "number": 49,
+                "name": "神臂·哪吒",
+                "star": 3,
+                "lv": 1,
+                "atk": 141,
+                "hp": 410,
+                "skill_name": "风火轮",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 801,
+                "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
+                "url": 49
+            },
+            "244": {
+                "id": 244,
+                "number": 49,
+                "name": "擒龙·哪吒",
+                "star": 4,
+                "lv": 1,
+                "atk": 192,
+                "hp": 560,
+                "skill_name": "风火轮",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 801,
+                "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
+                "url": 49
+            },
+            "245": {
+                "id": 245,
+                "number": 49,
+                "name": "不死·哪吒",
+                "star": 5,
+                "lv": 1,
+                "atk": 262,
+                "hp": 720,
+                "skill_name": "风火轮",
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 801,
+                "description": "那年开始，我忘记了很多事情，师父说，那就好。",
+                "url": 49
+            },
+            "246": {
+                "id": 246,
+                "number": 50,
+                "name": "灯芯·紫霞",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 136,
+                "normal_atk_id": 2,
+                "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
+                "url": 50
+            },
+            "247": {
+                "id": 247,
+                "number": 50,
+                "name": "盘丝大仙·紫霞",
+                "star": 2,
+                "lv": 1,
+                "atk": 91,
+                "hp": 290,
+                "normal_atk_id": 2,
+                "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
+                "url": 50
+            },
+            "248": {
+                "id": 248,
+                "number": 50,
+                "name": "紫青宝剑·紫霞",
+                "star": 3,
+                "lv": 1,
+                "atk": 141,
+                "hp": 410,
+                "skill_name": "月光宝盒",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 402,
+                "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
+                "url": 50
+            },
+            "249": {
+                "id": 249,
+                "number": 50,
+                "name": "月光宝盒·紫霞",
+                "star": 4,
+                "lv": 1,
+                "atk": 185,
+                "hp": 556,
+                "skill_name": "月光宝盒",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 402,
+                "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
+                "url": 50
+            },
+            "250": {
+                "id": 250,
+                "number": 50,
+                "name": "七色云彩·紫霞",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 725,
+                "skill_name": "月光宝盒",
+                "skill_id": 5,
+                "normal_atk_id": 2,
+                "effect_id": 402,
+                "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
+                "url": 50
+            },
+            "251": {
+                "id": 251,
+                "number": 51,
+                "name": "智慧·文曲星",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 135,
+                "normal_atk_id": 2,
+                "description": "天生智商300多，这不是我的错。",
+                "url": 51
+            },
+            "252": {
+                "id": 252,
+                "number": 51,
+                "name": "凡尘·文曲星",
+                "star": 2,
+                "lv": 1,
+                "atk": 110,
+                "hp": 257,
+                "normal_atk_id": 2,
+                "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
+                "url": 51
+            },
+            "253": {
+                "id": 253,
+                "number": 51,
+                "name": "状元·文曲星",
+                "star": 3,
+                "lv": 1,
+                "atk": 152,
+                "hp": 382,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
+                "description": "状元只是一个名分，真正的能力才是关键。",
+                "url": 51
+            },
+            "254": {
+                "id": 254,
+                "number": 51,
+                "name": "了然缘·文曲星",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 535,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
+                "description": "有时候，我会看破仙尘，我不禁陷入了深深的沉思。",
+                "url": 51
+            },
+            "255": {
+                "id": 255,
+                "number": 51,
+                "name": "慧心三界·文曲星",
+                "star": 5,
+                "lv": 1,
+                "atk": 281,
+                "hp": 722,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
+                "description": "智慧的最高境界，是无知。",
+                "url": 51
+            },
+            "10000": {
+                "id": 10000,
+                "number": 10000,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10001": {
+                "id": 10001,
+                "number": 10001,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10002": {
+                "id": 10002,
+                "number": 10002,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10003": {
+                "id": 10003,
+                "number": 10003,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10004": {
+                "id": 10004,
+                "number": 10004,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10005": {
+                "id": 10005,
+                "number": 10005,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10006": {
+                "id": 10006,
+                "number": 10006,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10007": {
+                "id": 10007,
+                "number": 10007,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10008": {
+                "id": 10008,
+                "number": 10008,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10009": {
+                "id": 10009,
+                "number": 10009,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10010": {
+                "id": 10010,
+                "number": 10010,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10011": {
+                "id": 10011,
+                "number": 10011,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10012": {
+                "id": 10012,
+                "number": 10012,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10013": {
+                "id": 10013,
+                "number": 10013,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10014": {
+                "id": 10014,
+                "number": 10014,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10015": {
+                "id": 10015,
+                "number": 10015,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10016": {
+                "id": 10016,
+                "number": 10016,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10017": {
+                "id": 10017,
+                "number": 10017,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10018": {
+                "id": 10018,
+                "number": 10018,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10019": {
+                "id": 10019,
+                "number": 10019,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10020": {
+                "id": 10020,
+                "number": 10020,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10021": {
+                "id": 10021,
+                "number": 10021,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10022": {
+                "id": 10022,
+                "number": 10022,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10023": {
+                "id": 10023,
+                "number": 10023,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10024": {
+                "id": 10024,
+                "number": 10024,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10025": {
+                "id": 10025,
+                "number": 10025,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10026": {
+                "id": 10026,
+                "number": 10026,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10027": {
+                "id": 10027,
+                "number": 10027,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10028": {
+                "id": 10028,
+                "number": 10028,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10029": {
+                "id": 10029,
+                "number": 10029,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10030": {
+                "id": 10030,
+                "number": 10030,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10031": {
+                "id": 10031,
+                "number": 10031,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10032": {
+                "id": 10032,
+                "number": 10032,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10033": {
+                "id": 10033,
+                "number": 10033,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10034": {
+                "id": 10034,
+                "number": 10034,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10035": {
+                "id": 10035,
+                "number": 10035,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10036": {
+                "id": 10036,
+                "number": 10036,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10037": {
+                "id": 10037,
+                "number": 10037,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10038": {
+                "id": 10038,
+                "number": 10038,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10039": {
+                "id": 10039,
+                "number": 10039,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10040": {
+                "id": 10040,
+                "number": 10040,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10041": {
+                "id": 10041,
+                "number": 10041,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10042": {
+                "id": 10042,
+                "number": 10042,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10043": {
+                "id": 10043,
+                "number": 10043,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10044": {
+                "id": 10044,
+                "number": 10044,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10045": {
+                "id": 10045,
+                "number": 10045,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10046": {
+                "id": 10046,
+                "number": 10046,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10047": {
+                "id": 10047,
+                "number": 10047,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10048": {
+                "id": 10048,
+                "number": 10048,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10049": {
+                "id": 10049,
+                "number": 10049,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10050": {
+                "id": 10050,
+                "number": 10050,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10051": {
+                "id": 10051,
+                "number": 10051,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10052": {
+                "id": 10052,
+                "number": 10052,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10053": {
+                "id": 10053,
+                "number": 10053,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10054": {
+                "id": 10054,
+                "number": 10054,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10055": {
+                "id": 10055,
+                "number": 10055,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10056": {
+                "id": 10056,
+                "number": 10056,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10057": {
+                "id": 10057,
+                "number": 10057,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10058": {
+                "id": 10058,
+                "number": 10058,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10059": {
+                "id": 10059,
+                "number": 10059,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10060": {
+                "id": 10060,
+                "number": 10060,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10061": {
+                "id": 10061,
+                "number": 10061,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10062": {
+                "id": 10062,
+                "number": 10062,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10063": {
+                "id": 10063,
+                "number": 10063,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10064": {
+                "id": 10064,
+                "number": 10064,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10065": {
+                "id": 10065,
+                "number": 10065,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10066": {
+                "id": 10066,
+                "number": 10066,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10067": {
+                "id": 10067,
+                "number": 10067,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10068": {
+                "id": 10068,
+                "number": 10068,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10069": {
+                "id": 10069,
+                "number": 10069,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10070": {
+                "id": 10070,
+                "number": 10070,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10071": {
+                "id": 10071,
+                "number": 10071,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10072": {
+                "id": 10072,
+                "number": 10072,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10073": {
+                "id": 10073,
+                "number": 10073,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10074": {
+                "id": 10074,
+                "number": 10074,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10075": {
+                "id": 10075,
+                "number": 10075,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10076": {
+                "id": 10076,
+                "number": 10076,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10077": {
+                "id": 10077,
+                "number": 10077,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10078": {
+                "id": 10078,
+                "number": 10078,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10079": {
+                "id": 10079,
+                "number": 10079,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10080": {
+                "id": 10080,
+                "number": 10080,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10081": {
+                "id": 10081,
+                "number": 10081,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10082": {
+                "id": 10082,
+                "number": 10082,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10083": {
+                "id": 10083,
+                "number": 10083,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10084": {
+                "id": 10084,
+                "number": 10084,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10085": {
+                "id": 10085,
+                "number": 10085,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10086": {
+                "id": 10086,
+                "number": 10086,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10087": {
+                "id": 10087,
+                "number": 10087,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10088": {
+                "id": 10088,
+                "number": 10088,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10089": {
+                "id": 10089,
+                "number": 10089,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10090": {
+                "id": 10090,
+                "number": 10090,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10091": {
+                "id": 10091,
+                "number": 10091,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10092": {
+                "id": 10092,
+                "number": 10092,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10093": {
+                "id": 10093,
+                "number": 10093,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10094": {
+                "id": 10094,
+                "number": 10094,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10095": {
+                "id": 10095,
+                "number": 10095,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10096": {
+                "id": 10096,
+                "number": 10096,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10097": {
+                "id": 10097,
+                "number": 10097,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10098": {
+                "id": 10098,
+                "number": 10098,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10099": {
+                "id": 10099,
+                "number": 10099,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10100": {
+                "id": 10100,
+                "number": 10100,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10101": {
+                "id": 10101,
+                "number": 10101,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10102": {
+                "id": 10102,
+                "number": 10102,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10103": {
+                "id": 10103,
+                "number": 10103,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10104": {
+                "id": 10104,
+                "number": 10104,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10105": {
+                "id": 10105,
+                "number": 10105,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10106": {
+                "id": 10106,
+                "number": 10106,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10107": {
+                "id": 10107,
+                "number": 10107,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10108": {
+                "id": 10108,
+                "number": 10108,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10109": {
+                "id": 10109,
+                "number": 10109,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10110": {
+                "id": 10110,
+                "number": 10110,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10111": {
+                "id": 10111,
+                "number": 10111,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10112": {
+                "id": 10112,
+                "number": 10112,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10113": {
+                "id": 10113,
+                "number": 10113,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10114": {
+                "id": 10114,
+                "number": 10114,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10115": {
+                "id": 10115,
+                "number": 10115,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10116": {
+                "id": 10116,
+                "number": 10116,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10117": {
+                "id": 10117,
+                "number": 10117,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10118": {
+                "id": 10118,
+                "number": 10118,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10119": {
+                "id": 10119,
+                "number": 10119,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10120": {
+                "id": 10120,
+                "number": 10120,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10121": {
+                "id": 10121,
+                "number": 10121,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10122": {
+                "id": 10122,
+                "number": 10122,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10123": {
+                "id": 10123,
+                "number": 10123,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10124": {
+                "id": 10124,
+                "number": 10124,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10125": {
+                "id": 10125,
+                "number": 10125,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10126": {
+                "id": 10126,
+                "number": 10126,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10127": {
+                "id": 10127,
+                "number": 10127,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10128": {
+                "id": 10128,
+                "number": 10128,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10129": {
+                "id": 10129,
+                "number": 10129,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10130": {
+                "id": 10130,
+                "number": 10130,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10131": {
+                "id": 10131,
+                "number": 10131,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10132": {
+                "id": 10132,
+                "number": 10132,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10133": {
+                "id": 10133,
+                "number": 10133,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10134": {
+                "id": 10134,
+                "number": 10134,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10135": {
+                "id": 10135,
+                "number": 10135,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10136": {
+                "id": 10136,
+                "number": 10136,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10137": {
+                "id": 10137,
+                "number": 10137,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10138": {
+                "id": 10138,
+                "number": 10138,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10139": {
+                "id": 10139,
+                "number": 10139,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10140": {
+                "id": 10140,
+                "number": 10140,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10141": {
+                "id": 10141,
+                "number": 10141,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10142": {
+                "id": 10142,
+                "number": 10142,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10143": {
+                "id": 10143,
+                "number": 10143,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10144": {
+                "id": 10144,
+                "number": 10144,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10145": {
+                "id": 10145,
+                "number": 10145,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10146": {
+                "id": 10146,
+                "number": 10146,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10147": {
+                "id": 10147,
+                "number": 10147,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10148": {
+                "id": 10148,
+                "number": 10148,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10149": {
+                "id": 10149,
+                "number": 10149,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10150": {
+                "id": 10150,
+                "number": 10150,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10151": {
+                "id": 10151,
+                "number": 10151,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10152": {
+                "id": 10152,
+                "number": 10152,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10153": {
+                "id": 10153,
+                "number": 10153,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10154": {
+                "id": 10154,
+                "number": 10154,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10155": {
+                "id": 10155,
+                "number": 10155,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10156": {
+                "id": 10156,
+                "number": 10156,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10157": {
+                "id": 10157,
+                "number": 10157,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10158": {
+                "id": 10158,
+                "number": 10158,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10159": {
+                "id": 10159,
+                "number": 10159,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10160": {
+                "id": 10160,
+                "number": 10160,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10161": {
+                "id": 10161,
+                "number": 10161,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10162": {
+                "id": 10162,
+                "number": 10162,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10163": {
+                "id": 10163,
+                "number": 10163,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10164": {
+                "id": 10164,
+                "number": 10164,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10165": {
+                "id": 10165,
+                "number": 10165,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10166": {
+                "id": 10166,
+                "number": 10166,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10167": {
+                "id": 10167,
+                "number": 10167,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10168": {
+                "id": 10168,
+                "number": 10168,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10169": {
+                "id": 10169,
+                "number": 10169,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10170": {
+                "id": 10170,
+                "number": 10170,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10171": {
+                "id": 10171,
+                "number": 10171,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10172": {
+                "id": 10172,
+                "number": 10172,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10173": {
+                "id": 10173,
+                "number": 10173,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10174": {
+                "id": 10174,
+                "number": 10174,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10175": {
+                "id": 10175,
+                "number": 10175,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10176": {
+                "id": 10176,
+                "number": 10176,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10177": {
+                "id": 10177,
+                "number": 10177,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10178": {
+                "id": 10178,
+                "number": 10178,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10179": {
+                "id": 10179,
+                "number": 10179,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10180": {
+                "id": 10180,
+                "number": 10180,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10181": {
+                "id": 10181,
+                "number": 10181,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10182": {
+                "id": 10182,
+                "number": 10182,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10183": {
+                "id": 10183,
+                "number": 10183,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10184": {
+                "id": 10184,
+                "number": 10184,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10185": {
+                "id": 10185,
+                "number": 10185,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10186": {
+                "id": 10186,
+                "number": 10186,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10187": {
+                "id": 10187,
+                "number": 10187,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10188": {
+                "id": 10188,
+                "number": 10188,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10189": {
+                "id": 10189,
+                "number": 10189,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10190": {
+                "id": 10190,
+                "number": 10190,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10191": {
+                "id": 10191,
+                "number": 10191,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10192": {
+                "id": 10192,
+                "number": 10192,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10193": {
+                "id": 10193,
+                "number": 10193,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10194": {
+                "id": 10194,
+                "number": 10194,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10195": {
+                "id": 10195,
+                "number": 10195,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10196": {
+                "id": 10196,
+                "number": 10196,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10197": {
+                "id": 10197,
+                "number": 10197,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10198": {
+                "id": 10198,
+                "number": 10198,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10199": {
+                "id": 10199,
+                "number": 10199,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10200": {
+                "id": 10200,
+                "number": 10200,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10201": {
+                "id": 10201,
+                "number": 10201,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10202": {
+                "id": 10202,
+                "number": 10202,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10203": {
+                "id": 10203,
+                "number": 10203,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10204": {
+                "id": 10204,
+                "number": 10204,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10205": {
+                "id": 10205,
+                "number": 10205,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10206": {
+                "id": 10206,
+                "number": 10206,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10207": {
+                "id": 10207,
+                "number": 10207,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10208": {
+                "id": 10208,
+                "number": 10208,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10209": {
+                "id": 10209,
+                "number": 10209,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10210": {
+                "id": 10210,
+                "number": 10210,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10211": {
+                "id": 10211,
+                "number": 10211,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10212": {
+                "id": 10212,
+                "number": 10212,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10213": {
+                "id": 10213,
+                "number": 10213,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10214": {
+                "id": 10214,
+                "number": 10214,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10215": {
+                "id": 10215,
+                "number": 10215,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10216": {
+                "id": 10216,
+                "number": 10216,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10217": {
+                "id": 10217,
+                "number": 10217,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10218": {
+                "id": 10218,
+                "number": 10218,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10219": {
+                "id": 10219,
+                "number": 10219,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10220": {
+                "id": 10220,
+                "number": 10220,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10221": {
+                "id": 10221,
+                "number": 10221,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10222": {
+                "id": 10222,
+                "number": 10222,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10223": {
+                "id": 10223,
+                "number": 10223,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10224": {
+                "id": 10224,
+                "number": 10224,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10225": {
+                "id": 10225,
+                "number": 10225,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10226": {
+                "id": 10226,
+                "number": 10226,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10227": {
+                "id": 10227,
+                "number": 10227,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10228": {
+                "id": 10228,
+                "number": 10228,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10229": {
+                "id": 10229,
+                "number": 10229,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10230": {
+                "id": 10230,
+                "number": 10230,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10231": {
+                "id": 10231,
+                "number": 10231,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10232": {
+                "id": 10232,
+                "number": 10232,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10233": {
+                "id": 10233,
+                "number": 10233,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10234": {
+                "id": 10234,
+                "number": 10234,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10235": {
+                "id": 10235,
+                "number": 10235,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10236": {
+                "id": 10236,
+                "number": 10236,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10237": {
+                "id": 10237,
+                "number": 10237,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10238": {
+                "id": 10238,
+                "number": 10238,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10239": {
+                "id": 10239,
+                "number": 10239,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10240": {
+                "id": 10240,
+                "number": 10240,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10241": {
+                "id": 10241,
+                "number": 10241,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10242": {
+                "id": 10242,
+                "number": 10242,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10243": {
+                "id": 10243,
+                "number": 10243,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10244": {
+                "id": 10244,
+                "number": 10244,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10245": {
+                "id": 10245,
+                "number": 10245,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10246": {
+                "id": 10246,
+                "number": 10246,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10247": {
+                "id": 10247,
+                "number": 10247,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10248": {
+                "id": 10248,
+                "number": 10248,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10249": {
+                "id": 10249,
+                "number": 10249,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10250": {
+                "id": 10250,
+                "number": 10250,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10251": {
+                "id": 10251,
+                "number": 10251,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10252": {
+                "id": 10252,
+                "number": 10252,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10253": {
+                "id": 10253,
+                "number": 10253,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10254": {
+                "id": 10254,
+                "number": 10254,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10255": {
+                "id": 10255,
+                "number": 10255,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10256": {
+                "id": 10256,
+                "number": 10256,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10257": {
+                "id": 10257,
+                "number": 10257,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10258": {
+                "id": 10258,
+                "number": 10258,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10259": {
+                "id": 10259,
+                "number": 10259,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10260": {
+                "id": 10260,
+                "number": 10260,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10261": {
+                "id": 10261,
+                "number": 10261,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10262": {
+                "id": 10262,
+                "number": 10262,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10263": {
+                "id": 10263,
+                "number": 10263,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10264": {
+                "id": 10264,
+                "number": 10264,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10265": {
+                "id": 10265,
+                "number": 10265,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10266": {
+                "id": 10266,
+                "number": 10266,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10267": {
+                "id": 10267,
+                "number": 10267,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10268": {
+                "id": 10268,
+                "number": 10268,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10269": {
+                "id": 10269,
+                "number": 10269,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10270": {
+                "id": 10270,
+                "number": 10270,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10271": {
+                "id": 10271,
+                "number": 10271,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10272": {
+                "id": 10272,
+                "number": 10272,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10273": {
+                "id": 10273,
+                "number": 10273,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10274": {
+                "id": 10274,
+                "number": 10274,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10275": {
+                "id": 10275,
+                "number": 10275,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10276": {
+                "id": 10276,
+                "number": 10276,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10277": {
+                "id": 10277,
+                "number": 10277,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10278": {
+                "id": 10278,
+                "number": 10278,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10279": {
+                "id": 10279,
+                "number": 10279,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10280": {
+                "id": 10280,
+                "number": 10280,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10281": {
+                "id": 10281,
+                "number": 10281,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10282": {
+                "id": 10282,
+                "number": 10282,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10283": {
+                "id": 10283,
+                "number": 10283,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10284": {
+                "id": 10284,
+                "number": 10284,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10285": {
+                "id": 10285,
+                "number": 10285,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10286": {
+                "id": 10286,
+                "number": 10286,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10287": {
+                "id": 10287,
+                "number": 10287,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10288": {
+                "id": 10288,
+                "number": 10288,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10289": {
+                "id": 10289,
+                "number": 10289,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10290": {
+                "id": 10290,
+                "number": 10290,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10291": {
+                "id": 10291,
+                "number": 10291,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10292": {
+                "id": 10292,
+                "number": 10292,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10293": {
+                "id": 10293,
+                "number": 10293,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10294": {
+                "id": 10294,
+                "number": 10294,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10295": {
+                "id": 10295,
+                "number": 10295,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10296": {
+                "id": 10296,
+                "number": 10296,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10297": {
+                "id": 10297,
+                "number": 10297,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10298": {
+                "id": 10298,
+                "number": 10298,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10299": {
+                "id": 10299,
+                "number": 10299,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10300": {
+                "id": 10300,
+                "number": 10300,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10301": {
+                "id": 10301,
+                "number": 10301,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10302": {
+                "id": 10302,
+                "number": 10302,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10303": {
+                "id": 10303,
+                "number": 10303,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10304": {
+                "id": 10304,
+                "number": 10304,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10305": {
+                "id": 10305,
+                "number": 10305,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10306": {
+                "id": 10306,
+                "number": 10306,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10307": {
+                "id": 10307,
+                "number": 10307,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10308": {
+                "id": 10308,
+                "number": 10308,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10309": {
+                "id": 10309,
+                "number": 10309,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10310": {
+                "id": 10310,
+                "number": 10310,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10311": {
+                "id": 10311,
+                "number": 10311,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10312": {
+                "id": 10312,
+                "number": 10312,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10313": {
+                "id": 10313,
+                "number": 10313,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10314": {
+                "id": 10314,
+                "number": 10314,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10315": {
+                "id": 10315,
+                "number": 10315,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10316": {
+                "id": 10316,
+                "number": 10316,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10317": {
+                "id": 10317,
+                "number": 10317,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10318": {
+                "id": 10318,
+                "number": 10318,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10319": {
+                "id": 10319,
+                "number": 10319,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10320": {
+                "id": 10320,
+                "number": 10320,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10321": {
+                "id": 10321,
+                "number": 10321,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10322": {
+                "id": 10322,
+                "number": 10322,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10323": {
+                "id": 10323,
+                "number": 10323,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10324": {
+                "id": 10324,
+                "number": 10324,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10325": {
+                "id": 10325,
+                "number": 10325,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10326": {
+                "id": 10326,
+                "number": 10326,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10327": {
+                "id": 10327,
+                "number": 10327,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10328": {
+                "id": 10328,
+                "number": 10328,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10329": {
+                "id": 10329,
+                "number": 10329,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10330": {
+                "id": 10330,
+                "number": 10330,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10331": {
+                "id": 10331,
+                "number": 10331,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10332": {
+                "id": 10332,
+                "number": 10332,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10333": {
+                "id": 10333,
+                "number": 10333,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10334": {
+                "id": 10334,
+                "number": 10334,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10335": {
+                "id": 10335,
+                "number": 10335,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10336": {
+                "id": 10336,
+                "number": 10336,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10337": {
+                "id": 10337,
+                "number": 10337,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10338": {
+                "id": 10338,
+                "number": 10338,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10339": {
+                "id": 10339,
+                "number": 10339,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10340": {
+                "id": 10340,
+                "number": 10340,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10341": {
+                "id": 10341,
+                "number": 10341,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10342": {
+                "id": 10342,
+                "number": 10342,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10343": {
+                "id": 10343,
+                "number": 10343,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10344": {
+                "id": 10344,
+                "number": 10344,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10345": {
+                "id": 10345,
+                "number": 10345,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10346": {
+                "id": 10346,
+                "number": 10346,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10347": {
+                "id": 10347,
+                "number": 10347,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10348": {
+                "id": 10348,
+                "number": 10348,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10349": {
+                "id": 10349,
+                "number": 10349,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10350": {
+                "id": 10350,
+                "number": 10350,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10351": {
+                "id": 10351,
+                "number": 10351,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10352": {
+                "id": 10352,
+                "number": 10352,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10353": {
+                "id": 10353,
+                "number": 10353,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10354": {
+                "id": 10354,
+                "number": 10354,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10355": {
+                "id": 10355,
+                "number": 10355,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10356": {
+                "id": 10356,
+                "number": 10356,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10357": {
+                "id": 10357,
+                "number": 10357,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10358": {
+                "id": 10358,
+                "number": 10358,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10359": {
+                "id": 10359,
+                "number": 10359,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10360": {
+                "id": 10360,
+                "number": 10360,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10361": {
+                "id": 10361,
+                "number": 10361,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10362": {
+                "id": 10362,
+                "number": 10362,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10363": {
+                "id": 10363,
+                "number": 10363,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10364": {
+                "id": 10364,
+                "number": 10364,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10365": {
+                "id": 10365,
+                "number": 10365,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10366": {
+                "id": 10366,
+                "number": 10366,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10367": {
+                "id": 10367,
+                "number": 10367,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10368": {
+                "id": 10368,
+                "number": 10368,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10369": {
+                "id": 10369,
+                "number": 10369,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10370": {
+                "id": 10370,
+                "number": 10370,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10371": {
+                "id": 10371,
+                "number": 10371,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10372": {
+                "id": 10372,
+                "number": 10372,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10373": {
+                "id": 10373,
+                "number": 10373,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10374": {
+                "id": 10374,
+                "number": 10374,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10375": {
+                "id": 10375,
+                "number": 10375,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10376": {
+                "id": 10376,
+                "number": 10376,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10377": {
+                "id": 10377,
+                "number": 10377,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10378": {
+                "id": 10378,
+                "number": 10378,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10379": {
+                "id": 10379,
+                "number": 10379,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10380": {
+                "id": 10380,
+                "number": 10380,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10381": {
+                "id": 10381,
+                "number": 10381,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10382": {
+                "id": 10382,
+                "number": 10382,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10383": {
+                "id": 10383,
+                "number": 10383,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10384": {
+                "id": 10384,
+                "number": 10384,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10385": {
+                "id": 10385,
+                "number": 10385,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10386": {
+                "id": 10386,
+                "number": 10386,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10387": {
+                "id": 10387,
+                "number": 10387,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10388": {
+                "id": 10388,
+                "number": 10388,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10389": {
+                "id": 10389,
+                "number": 10389,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10390": {
+                "id": 10390,
+                "number": 10390,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10391": {
+                "id": 10391,
+                "number": 10391,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10392": {
+                "id": 10392,
+                "number": 10392,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10393": {
+                "id": 10393,
+                "number": 10393,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10394": {
+                "id": 10394,
+                "number": 10394,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10395": {
+                "id": 10395,
+                "number": 10395,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10396": {
+                "id": 10396,
+                "number": 10396,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10397": {
+                "id": 10397,
+                "number": 10397,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10398": {
+                "id": 10398,
+                "number": 10398,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10399": {
+                "id": 10399,
+                "number": 10399,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10400": {
+                "id": 10400,
+                "number": 10400,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10401": {
+                "id": 10401,
+                "number": 10401,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10402": {
+                "id": 10402,
+                "number": 10402,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10403": {
+                "id": 10403,
+                "number": 10403,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10404": {
+                "id": 10404,
+                "number": 10404,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10405": {
+                "id": 10405,
+                "number": 10405,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10406": {
+                "id": 10406,
+                "number": 10406,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10407": {
+                "id": 10407,
+                "number": 10407,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10408": {
+                "id": 10408,
+                "number": 10408,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10409": {
+                "id": 10409,
+                "number": 10409,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10410": {
+                "id": 10410,
+                "number": 10410,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10411": {
+                "id": 10411,
+                "number": 10411,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10412": {
+                "id": 10412,
+                "number": 10412,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10413": {
+                "id": 10413,
+                "number": 10413,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10414": {
+                "id": 10414,
+                "number": 10414,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10415": {
+                "id": 10415,
+                "number": 10415,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10416": {
+                "id": 10416,
+                "number": 10416,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10417": {
+                "id": 10417,
+                "number": 10417,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10418": {
+                "id": 10418,
+                "number": 10418,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10419": {
+                "id": 10419,
+                "number": 10419,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10420": {
+                "id": 10420,
+                "number": 10420,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10421": {
+                "id": 10421,
+                "number": 10421,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10422": {
+                "id": 10422,
+                "number": 10422,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10423": {
+                "id": 10423,
+                "number": 10423,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10424": {
+                "id": 10424,
+                "number": 10424,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10425": {
+                "id": 10425,
+                "number": 10425,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10426": {
+                "id": 10426,
+                "number": 10426,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10427": {
+                "id": 10427,
+                "number": 10427,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10428": {
+                "id": 10428,
+                "number": 10428,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10429": {
+                "id": 10429,
+                "number": 10429,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10430": {
+                "id": 10430,
+                "number": 10430,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10431": {
+                "id": 10431,
+                "number": 10431,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10432": {
+                "id": 10432,
+                "number": 10432,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10433": {
+                "id": 10433,
+                "number": 10433,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10434": {
+                "id": 10434,
+                "number": 10434,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10435": {
+                "id": 10435,
+                "number": 10435,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10436": {
+                "id": 10436,
+                "number": 10436,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10437": {
+                "id": 10437,
+                "number": 10437,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10438": {
+                "id": 10438,
+                "number": 10438,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10439": {
+                "id": 10439,
+                "number": 10439,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10440": {
+                "id": 10440,
+                "number": 10440,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10441": {
+                "id": 10441,
+                "number": 10441,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10442": {
+                "id": 10442,
+                "number": 10442,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10443": {
+                "id": 10443,
+                "number": 10443,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10444": {
+                "id": 10444,
+                "number": 10444,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10445": {
+                "id": 10445,
+                "number": 10445,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10446": {
+                "id": 10446,
+                "number": 10446,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10447": {
+                "id": 10447,
+                "number": 10447,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10448": {
+                "id": 10448,
+                "number": 10448,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10449": {
+                "id": 10449,
+                "number": 10449,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10450": {
+                "id": 10450,
+                "number": 10450,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10451": {
+                "id": 10451,
+                "number": 10451,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10452": {
+                "id": 10452,
+                "number": 10452,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10453": {
+                "id": 10453,
+                "number": 10453,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10454": {
+                "id": 10454,
+                "number": 10454,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10455": {
+                "id": 10455,
+                "number": 10455,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10456": {
+                "id": 10456,
+                "number": 10456,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10457": {
+                "id": 10457,
+                "number": 10457,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10458": {
+                "id": 10458,
+                "number": 10458,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10459": {
+                "id": 10459,
+                "number": 10459,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10460": {
+                "id": 10460,
+                "number": 10460,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10461": {
+                "id": 10461,
+                "number": 10461,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10462": {
+                "id": 10462,
+                "number": 10462,
+                "name": "灯笼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10000,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10463": {
+                "id": 10463,
+                "number": 10463,
+                "name": "龅牙兔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10001,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10464": {
+                "id": 10464,
+                "number": 10464,
+                "name": "乌龟精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10002,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10465": {
+                "id": 10465,
+                "number": 10465,
+                "name": "卖茶怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10003,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10466": {
+                "id": 10466,
+                "number": 10466,
+                "name": "白骨精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10004,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10467": {
+                "id": 10467,
+                "number": 10467,
+                "name": "蛤蟆怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10005,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10468": {
+                "id": 10468,
+                "number": 10468,
+                "name": "树精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10006,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10469": {
+                "id": 10469,
+                "number": 10469,
+                "name": "黑熊精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10007,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10470": {
+                "id": 10470,
+                "number": 10470,
+                "name": "狐狸精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10008,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10471": {
+                "id": 10471,
+                "number": 10471,
+                "name": "水晶魔灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10009,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10472": {
+                "id": 10472,
+                "number": 10472,
+                "name": "大脸猫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10010,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10473": {
+                "id": 10473,
+                "number": 10473,
+                "name": "野猪妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10011,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10474": {
+                "id": 10474,
+                "number": 10474,
+                "name": "猩猩巨魔",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10012,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10475": {
+                "id": 10475,
+                "number": 10475,
+                "name": "猴儿精",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10013,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10476": {
+                "id": 10476,
+                "number": 10476,
+                "name": "巨蟒怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10014,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10477": {
+                "id": 10477,
+                "number": 10477,
+                "name": "地狱小鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10015,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10478": {
+                "id": 10478,
+                "number": 10478,
+                "name": "狮子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10016,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10479": {
+                "id": 10479,
+                "number": 10479,
+                "name": "蚊子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10017,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10480": {
+                "id": 10480,
+                "number": 10480,
+                "name": "火焰怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10018,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10481": {
+                "id": 10481,
+                "number": 10481,
+                "name": "河童怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10019,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10482": {
+                "id": 10482,
+                "number": 10482,
+                "name": "独角兽",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10020,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10483": {
+                "id": 10483,
+                "number": 10483,
+                "name": "人鱼怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10021,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10484": {
+                "id": 10484,
+                "number": 10484,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10485": {
+                "id": 10485,
+                "number": 10485,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10486": {
+                "id": 10486,
+                "number": 10486,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10487": {
+                "id": 10487,
+                "number": 10487,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10488": {
+                "id": 10488,
+                "number": 10488,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10489": {
+                "id": 10489,
+                "number": 10489,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10490": {
+                "id": 10490,
+                "number": 10490,
+                "name": "蟠桃怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10028,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10491": {
+                "id": 10491,
+                "number": 10491,
+                "name": "僵尸怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10029,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10492": {
+                "id": 10492,
+                "number": 10492,
+                "name": "宫灯怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10030,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10493": {
+                "id": 10493,
+                "number": 10493,
+                "name": "挂科怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10031,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10494": {
+                "id": 10494,
+                "number": 10494,
+                "name": "自习怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10032,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10495": {
+                "id": 10495,
+                "number": 10495,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10496": {
+                "id": 10496,
+                "number": 10496,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10497": {
+                "id": 10497,
+                "number": 10497,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10498": {
+                "id": 10498,
+                "number": 10498,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10499": {
+                "id": 10499,
+                "number": 10499,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10500": {
+                "id": 10500,
+                "number": 10500,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20000": {
+                "id": 20000,
+                "number": 20000,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20001": {
+                "id": 20001,
+                "number": 20001,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20002": {
+                "id": 20002,
+                "number": 20002,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20003": {
+                "id": 20003,
+                "number": 20003,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20004": {
+                "id": 20004,
+                "number": 20004,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20005": {
+                "id": 20005,
+                "number": 20005,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20006": {
+                "id": 20006,
+                "number": 20006,
+                "name": "火魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10033,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20007": {
+                "id": 20007,
+                "number": 20007,
+                "name": "独臂铲子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10034,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20008": {
+                "id": 20008,
+                "number": 20008,
+                "name": "黄袍老怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10035,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20009": {
+                "id": 20009,
+                "number": 20009,
+                "name": "金角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10036,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20010": {
+                "id": 20010,
+                "number": 20010,
+                "name": "银角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10037,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20011": {
+                "id": 20011,
+                "number": 20011,
+                "name": "长眉老怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10038,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20012": {
+                "id": 20012,
+                "number": 20012,
+                "name": "黑山巫妖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10039,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20013": {
+                "id": 20013,
+                "number": 20013,
+                "name": "半头魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10040,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20014": {
+                "id": 20014,
+                "number": 20014,
+                "name": "三条胳膊怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10041,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20015": {
+                "id": 20015,
+                "number": 20015,
+                "name": "巨斧怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10042,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20016": {
+                "id": 20016,
+                "number": 20016,
+                "name": "双刀怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10043,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20017": {
+                "id": 20017,
+                "number": 20017,
+                "name": "巨剑怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10044,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20018": {
+                "id": 20018,
+                "number": 20018,
+                "name": "弓箭怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10045,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20019": {
+                "id": 20019,
+                "number": 20019,
+                "name": "锤子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10046,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20020": {
+                "id": 20020,
+                "number": 20020,
+                "name": "石巨人",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10047,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30000": {
+                "id": 30000,
+                "number": 30000,
+                "name": "经验元灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 30000,
+                "description": "经验卡牌，不可进阶。主要作为卡牌升级所用。"
+            },
+            "30001": {
+                "id": 30001,
+                "number": 30001,
+                "name": "蝙蝠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10027,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30002": {
+                "id": 30002,
+                "number": 30002,
+                "name": "火魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10033,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30003": {
+                "id": 30003,
+                "number": 30003,
+                "name": "金角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10036,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30004": {
+                "id": 30004,
+                "number": 30004,
+                "name": "银角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10037,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30005": {
+                "id": 30005,
+                "number": 30005,
+                "name": "半头魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10040,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30006": {
+                "id": 30006,
+                "number": 30006,
+                "name": "三条胳膊怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10041,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30007": {
+                "id": 30007,
+                "number": 30007,
+                "name": "双刀怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10043,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30008": {
+                "id": 30008,
+                "number": 30008,
+                "name": "巨剑怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10044,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30009": {
+                "id": 30009,
+                "number": 30009,
+                "name": "锤子怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10046,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30010": {
+                "id": 30010,
+                "number": 30010,
+                "name": "石巨人",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10047,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            }
+        }
+    },
+    "elixir": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 20,
+                "atk": 1,
+                "hp": 2
+            }
+        }
+    },
+    "factors": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "base": 1.1,
+                "factor": 1
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "base": 1.099,
+                "factor": 1.1
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "base": 1.098,
+                "factor": 1.209
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "base": 1.097,
+                "factor": 1.327
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "base": 1.096,
+                "factor": 1.456
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "base": 1.095,
+                "factor": 1.596
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "base": 1.094,
+                "factor": 1.748
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "base": 1.093,
+                "factor": 1.912
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "base": 1.092,
+                "factor": 2.09
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "base": 1.091,
+                "factor": 2.282
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "base": 1.09,
+                "factor": 2.49
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "base": 1.089,
+                "factor": 2.714
+            },
+            "13": {
+                "id": 13,
+                "lv": 13,
+                "base": 1.088,
+                "factor": 2.956
+            },
+            "14": {
+                "id": 14,
+                "lv": 14,
+                "base": 1.087,
+                "factor": 3.216
+            },
+            "15": {
+                "id": 15,
+                "lv": 15,
+                "base": 1.086,
+                "factor": 3.496
+            },
+            "16": {
+                "id": 16,
+                "lv": 16,
+                "base": 1.085,
+                "factor": 3.797
+            },
+            "17": {
+                "id": 17,
+                "lv": 17,
+                "base": 1.084,
+                "factor": 4.12
+            },
+            "18": {
+                "id": 18,
+                "lv": 18,
+                "base": 1.083,
+                "factor": 4.466
+            },
+            "19": {
+                "id": 19,
+                "lv": 19,
+                "base": 1.082,
+                "factor": 4.837
+            },
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "base": 1.081,
+                "factor": 5.234
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "base": 1.08,
+                "factor": 5.658
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "base": 1.079,
+                "factor": 6.111
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "base": 1.078,
+                "factor": 6.594
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "base": 1.077,
+                "factor": 7.108
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "base": 1.076,
+                "factor": 7.655
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "base": 1.075,
+                "factor": 8.237
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "base": 1.074,
+                "factor": 8.855
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "base": 1.073,
+                "factor": 9.51
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "base": 1.072,
+                "factor": 10.204
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "base": 1.071,
+                "factor": 10.939
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "base": 1.07,
+                "factor": 11.716
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "base": 1.069,
+                "factor": 12.536
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "base": 1.068,
+                "factor": 13.401
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "base": 1.067,
+                "factor": 14.312
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "base": 1.066,
+                "factor": 15.271
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "base": 1.065,
+                "factor": 16.279
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "base": 1.064,
+                "factor": 17.337
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "base": 1.063,
+                "factor": 18.447
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "base": 1.062,
+                "factor": 19.609
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "base": 1.061,
+                "factor": 20.825
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "base": 1.06,
+                "factor": 22.095
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "base": 1.059,
+                "factor": 23.421
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "base": 1.058,
+                "factor": 24.803
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "base": 1.057,
+                "factor": 26.242
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "base": 1.05600000000001,
+                "factor": 27.738
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "base": 1.05500000000001,
+                "factor": 29.291
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "base": 1.05400000000001,
+                "factor": 30.902
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "base": 1.05300000000001,
+                "factor": 32.571
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "base": 1.05200000000001,
+                "factor": 34.297
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "base": 1.05100000000001,
+                "factor": 36.08
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "base": 1.05000000000001,
+                "factor": 37.92
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "base": 1.04900000000001,
+                "factor": 39.816
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "base": 1.04800000000001,
+                "factor": 41.767
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "base": 1.04700000000001,
+                "factor": 43.772
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "base": 1.04600000000001,
+                "factor": 45.829
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "base": 1.04500000000001,
+                "factor": 47.937
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "base": 1.04400000000001,
+                "factor": 50.094
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "base": 1.04300000000001,
+                "factor": 52.298
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "base": 1.04200000000001,
+                "factor": 54.547
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "base": 1.04100000000001,
+                "factor": 56.838
+            }
+        }
+    },
+    "star_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star": 1,
+                "money_need": 5000,
+                "rate_per_card": 7,
+                "max_num": 15
+            },
+            "2": {
+                "id": 2,
+                "star": 2,
+                "money_need": 10000,
+                "rate_per_card": 6,
+                "max_num": 17
+            },
+            "3": {
+                "id": 3,
+                "star": 3,
+                "money_need": 20000,
+                "rate_per_card": 5,
+                "max_num": 20
+            },
+            "4": {
+                "id": 4,
+                "star": 4,
+                "money_need": 50000,
+                "rate_per_card": 4,
+                "max_num": 25
+            }
+        }
+    },
     "rank": {
         "colComment": {},
         "rows": {
@@ -33674,7 +33691,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10002": {
                 "id": 10002,
@@ -33683,9 +33700,9 @@ var outputTables = {
                 "hp": 150,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10003": {
                 "id": 10003,
@@ -33694,9 +33711,9 @@ var outputTables = {
                 "hp": 155,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10004": {
                 "id": 10004,
@@ -33707,7 +33724,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10005": {
                 "id": 10005,
@@ -33716,9 +33733,9 @@ var outputTables = {
                 "hp": 155,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10006": {
                 "id": 10006,
@@ -33729,7 +33746,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10007": {
                 "id": 10007,
@@ -33738,9 +33755,9 @@ var outputTables = {
                 "hp": 160,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10008": {
                 "id": 10008,
@@ -33749,9 +33766,9 @@ var outputTables = {
                 "hp": 160,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10009": {
                 "id": 10009,
@@ -33760,9 +33777,9 @@ var outputTables = {
                 "hp": 170,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10010": {
                 "id": 10010,
@@ -33773,7 +33790,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10011": {
                 "id": 10011,
@@ -33784,7 +33801,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10012": {
                 "id": 10012,
@@ -33793,9 +33810,9 @@ var outputTables = {
                 "hp": 170,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10013": {
                 "id": 10013,
@@ -33804,9 +33821,9 @@ var outputTables = {
                 "hp": 175,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10014": {
                 "id": 10014,
@@ -33817,7 +33834,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10015": {
                 "id": 10015,
@@ -33826,9 +33843,9 @@ var outputTables = {
                 "hp": 175,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10016": {
                 "id": 10016,
@@ -33839,7 +33856,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10017": {
                 "id": 10017,
@@ -33848,9 +33865,9 @@ var outputTables = {
                 "hp": 230,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10018": {
                 "id": 10018,
@@ -33859,9 +33876,9 @@ var outputTables = {
                 "hp": 260,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10019": {
                 "id": 10019,
@@ -33870,9 +33887,9 @@ var outputTables = {
                 "hp": 260,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10020": {
                 "id": 10020,
@@ -33883,7 +33900,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10021": {
                 "id": 10021,
@@ -33894,7 +33911,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10022": {
                 "id": 10022,
@@ -33903,9 +33920,9 @@ var outputTables = {
                 "hp": 350,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10023": {
                 "id": 10023,
@@ -33914,9 +33931,9 @@ var outputTables = {
                 "hp": 350,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10024": {
                 "id": 10024,
@@ -33927,7 +33944,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10025": {
                 "id": 10025,
@@ -33936,9 +33953,9 @@ var outputTables = {
                 "hp": 409,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10026": {
                 "id": 10026,
@@ -33949,7 +33966,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10027": {
                 "id": 10027,
@@ -33958,9 +33975,9 @@ var outputTables = {
                 "hp": 409,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10028": {
                 "id": 10028,
@@ -33969,9 +33986,9 @@ var outputTables = {
                 "hp": 409,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10029": {
                 "id": 10029,
@@ -33980,9 +33997,9 @@ var outputTables = {
                 "hp": 409,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10030": {
                 "id": 10030,
@@ -33993,7 +34010,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10031": {
                 "id": 10031,
@@ -34004,7 +34021,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10032": {
                 "id": 10032,
@@ -34013,9 +34030,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10033": {
                 "id": 10033,
@@ -34024,9 +34041,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10034": {
                 "id": 10034,
@@ -34037,7 +34054,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10035": {
                 "id": 10035,
@@ -34046,9 +34063,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10036": {
                 "id": 10036,
@@ -34059,7 +34076,7 @@ var outputTables = {
                 "crit_rate": 0,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10037": {
                 "id": 10037,
@@ -34068,9 +34085,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10038": {
                 "id": 10038,
@@ -34079,9 +34096,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10039": {
                 "id": 10039,
@@ -34090,9 +34107,9 @@ var outputTables = {
                 "hp": 448,
                 "dodge_rate": 0,
                 "crit_rate": 0,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10040": {
                 "id": 10040,
@@ -34103,7 +34120,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10041": {
                 "id": 10041,
@@ -34114,7 +34131,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10042": {
                 "id": 10042,
@@ -34123,9 +34140,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10043": {
                 "id": 10043,
@@ -34134,9 +34151,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10044": {
                 "id": 10044,
@@ -34147,7 +34164,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10045": {
                 "id": 10045,
@@ -34156,9 +34173,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10046": {
                 "id": 10046,
@@ -34169,7 +34186,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10047": {
                 "id": 10047,
@@ -34178,9 +34195,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10048": {
                 "id": 10048,
@@ -34189,9 +34206,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10049": {
                 "id": 10049,
@@ -34200,9 +34217,9 @@ var outputTables = {
                 "hp": 491,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10050": {
                 "id": 10050,
@@ -34213,7 +34230,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10051": {
                 "id": 10051,
@@ -34224,7 +34241,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10052": {
                 "id": 10052,
@@ -34233,9 +34250,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10053": {
                 "id": 10053,
@@ -34244,9 +34261,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10054": {
                 "id": 10054,
@@ -34257,7 +34274,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10055": {
                 "id": 10055,
@@ -34266,9 +34283,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10056": {
                 "id": 10056,
@@ -34279,7 +34296,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10057": {
                 "id": 10057,
@@ -34288,9 +34305,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10058": {
                 "id": 10058,
@@ -34299,9 +34316,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10059": {
                 "id": 10059,
@@ -34310,9 +34327,9 @@ var outputTables = {
                 "hp": 538,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10060": {
                 "id": 10060,
@@ -34323,7 +34340,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10061": {
                 "id": 10061,
@@ -34334,7 +34351,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10062": {
                 "id": 10062,
@@ -34343,9 +34360,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10063": {
                 "id": 10063,
@@ -34354,9 +34371,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10064": {
                 "id": 10064,
@@ -34367,7 +34384,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10065": {
                 "id": 10065,
@@ -34376,9 +34393,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10066": {
                 "id": 10066,
@@ -34389,7 +34406,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10067": {
                 "id": 10067,
@@ -34398,9 +34415,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10068": {
                 "id": 10068,
@@ -34409,9 +34426,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10069": {
                 "id": 10069,
@@ -34420,9 +34437,9 @@ var outputTables = {
                 "hp": 590,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10070": {
                 "id": 10070,
@@ -34433,7 +34450,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10071": {
                 "id": 10071,
@@ -34444,7 +34461,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10072": {
                 "id": 10072,
@@ -34453,9 +34470,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10073": {
                 "id": 10073,
@@ -34464,9 +34481,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10074": {
                 "id": 10074,
@@ -34477,7 +34494,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10075": {
                 "id": 10075,
@@ -34486,9 +34503,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10076": {
                 "id": 10076,
@@ -34499,7 +34516,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10077": {
                 "id": 10077,
@@ -34508,9 +34525,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10078": {
                 "id": 10078,
@@ -34519,9 +34536,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10079": {
                 "id": 10079,
@@ -34530,9 +34547,9 @@ var outputTables = {
                 "hp": 645,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10080": {
                 "id": 10080,
@@ -34543,7 +34560,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10081": {
                 "id": 10081,
@@ -34554,7 +34571,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10082": {
                 "id": 10082,
@@ -34563,9 +34580,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10083": {
                 "id": 10083,
@@ -34574,9 +34591,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10084": {
                 "id": 10084,
@@ -34587,7 +34604,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10085": {
                 "id": 10085,
@@ -34596,9 +34613,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10086": {
                 "id": 10086,
@@ -34609,7 +34626,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10087": {
                 "id": 10087,
@@ -34618,9 +34635,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10088": {
                 "id": 10088,
@@ -34629,9 +34646,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10089": {
                 "id": 10089,
@@ -34640,9 +34657,9 @@ var outputTables = {
                 "hp": 706,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10090": {
                 "id": 10090,
@@ -34653,7 +34670,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10091": {
                 "id": 10091,
@@ -34664,7 +34681,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10092": {
                 "id": 10092,
@@ -34673,9 +34690,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10093": {
                 "id": 10093,
@@ -34684,9 +34701,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10094": {
                 "id": 10094,
@@ -34697,7 +34714,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10095": {
                 "id": 10095,
@@ -34706,9 +34723,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10096": {
                 "id": 10096,
@@ -34719,7 +34736,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10097": {
                 "id": 10097,
@@ -34728,9 +34745,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10098": {
                 "id": 10098,
@@ -34739,9 +34756,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10099": {
                 "id": 10099,
@@ -34750,9 +34767,9 @@ var outputTables = {
                 "hp": 770,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10100": {
                 "id": 10100,
@@ -34763,7 +34780,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10101": {
                 "id": 10101,
@@ -34774,7 +34791,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10102": {
                 "id": 10102,
@@ -34783,9 +34800,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10103": {
                 "id": 10103,
@@ -34794,9 +34811,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10104": {
                 "id": 10104,
@@ -34807,7 +34824,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10105": {
                 "id": 10105,
@@ -34816,9 +34833,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10106": {
                 "id": 10106,
@@ -34829,7 +34846,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10107": {
                 "id": 10107,
@@ -34838,9 +34855,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10108": {
                 "id": 10108,
@@ -34849,9 +34866,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10109": {
                 "id": 10109,
@@ -34860,9 +34877,9 @@ var outputTables = {
                 "hp": 841,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10110": {
                 "id": 10110,
@@ -34873,7 +34890,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10111": {
                 "id": 10111,
@@ -34884,7 +34901,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10112": {
                 "id": 10112,
@@ -34893,9 +34910,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10113": {
                 "id": 10113,
@@ -34904,9 +34921,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10114": {
                 "id": 10114,
@@ -34917,7 +34934,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10115": {
                 "id": 10115,
@@ -34926,9 +34943,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10116": {
                 "id": 10116,
@@ -34939,7 +34956,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10117": {
                 "id": 10117,
@@ -34948,9 +34965,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10118": {
                 "id": 10118,
@@ -34959,9 +34976,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10119": {
                 "id": 10119,
@@ -34970,9 +34987,9 @@ var outputTables = {
                 "hp": 916,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10120": {
                 "id": 10120,
@@ -34983,7 +35000,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10121": {
                 "id": 10121,
@@ -34994,7 +35011,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10122": {
                 "id": 10122,
@@ -35003,9 +35020,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10123": {
                 "id": 10123,
@@ -35014,9 +35031,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10124": {
                 "id": 10124,
@@ -35027,7 +35044,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10125": {
                 "id": 10125,
@@ -35036,9 +35053,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10126": {
                 "id": 10126,
@@ -35049,7 +35066,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10127": {
                 "id": 10127,
@@ -35058,9 +35075,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10128": {
                 "id": 10128,
@@ -35069,9 +35086,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10129": {
                 "id": 10129,
@@ -35080,9 +35097,9 @@ var outputTables = {
                 "hp": 998,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10130": {
                 "id": 10130,
@@ -35093,7 +35110,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10131": {
                 "id": 10131,
@@ -35104,7 +35121,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10132": {
                 "id": 10132,
@@ -35113,9 +35130,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10133": {
                 "id": 10133,
@@ -35124,9 +35141,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10134": {
                 "id": 10134,
@@ -35137,7 +35154,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10135": {
                 "id": 10135,
@@ -35146,9 +35163,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10136": {
                 "id": 10136,
@@ -35159,7 +35176,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10137": {
                 "id": 10137,
@@ -35168,9 +35185,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10138": {
                 "id": 10138,
@@ -35179,9 +35196,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10139": {
                 "id": 10139,
@@ -35190,9 +35207,9 @@ var outputTables = {
                 "hp": 1086,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10140": {
                 "id": 10140,
@@ -35203,7 +35220,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10141": {
                 "id": 10141,
@@ -35214,7 +35231,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10142": {
                 "id": 10142,
@@ -35223,9 +35240,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10143": {
                 "id": 10143,
@@ -35234,9 +35251,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10144": {
                 "id": 10144,
@@ -35247,7 +35264,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10145": {
                 "id": 10145,
@@ -35256,9 +35273,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10146": {
                 "id": 10146,
@@ -35269,7 +35286,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10147": {
                 "id": 10147,
@@ -35278,9 +35295,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10148": {
                 "id": 10148,
@@ -35289,9 +35306,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10149": {
                 "id": 10149,
@@ -35300,9 +35317,9 @@ var outputTables = {
                 "hp": 1181,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10150": {
                 "id": 10150,
@@ -35313,7 +35330,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10151": {
                 "id": 10151,
@@ -35324,7 +35341,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10152": {
                 "id": 10152,
@@ -35333,9 +35350,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10153": {
                 "id": 10153,
@@ -35344,9 +35361,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10154": {
                 "id": 10154,
@@ -35357,7 +35374,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10155": {
                 "id": 10155,
@@ -35366,9 +35383,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10156": {
                 "id": 10156,
@@ -35379,7 +35396,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10157": {
                 "id": 10157,
@@ -35388,9 +35405,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10158": {
                 "id": 10158,
@@ -35399,9 +35416,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10159": {
                 "id": 10159,
@@ -35410,9 +35427,9 @@ var outputTables = {
                 "hp": 1283,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10160": {
                 "id": 10160,
@@ -35423,7 +35440,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10161": {
                 "id": 10161,
@@ -35434,7 +35451,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10162": {
                 "id": 10162,
@@ -35443,9 +35460,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10163": {
                 "id": 10163,
@@ -35454,9 +35471,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10164": {
                 "id": 10164,
@@ -35467,7 +35484,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10165": {
                 "id": 10165,
@@ -35476,9 +35493,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10166": {
                 "id": 10166,
@@ -35489,7 +35506,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10167": {
                 "id": 10167,
@@ -35498,9 +35515,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10168": {
                 "id": 10168,
@@ -35509,9 +35526,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10169": {
                 "id": 10169,
@@ -35520,9 +35537,9 @@ var outputTables = {
                 "hp": 1391,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10170": {
                 "id": 10170,
@@ -35533,7 +35550,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10171": {
                 "id": 10171,
@@ -35544,7 +35561,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10172": {
                 "id": 10172,
@@ -35553,9 +35570,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10173": {
                 "id": 10173,
@@ -35564,9 +35581,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10174": {
                 "id": 10174,
@@ -35577,7 +35594,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10175": {
                 "id": 10175,
@@ -35586,9 +35603,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10176": {
                 "id": 10176,
@@ -35599,7 +35616,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10177": {
                 "id": 10177,
@@ -35608,9 +35625,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10178": {
                 "id": 10178,
@@ -35619,9 +35636,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10179": {
                 "id": 10179,
@@ -35630,9 +35647,9 @@ var outputTables = {
                 "hp": 1508,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10180": {
                 "id": 10180,
@@ -35643,7 +35660,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10181": {
                 "id": 10181,
@@ -35654,7 +35671,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10182": {
                 "id": 10182,
@@ -35663,9 +35680,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10183": {
                 "id": 10183,
@@ -35674,9 +35691,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10184": {
                 "id": 10184,
@@ -35687,7 +35704,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10185": {
                 "id": 10185,
@@ -35696,9 +35713,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10186": {
                 "id": 10186,
@@ -35709,7 +35726,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10187": {
                 "id": 10187,
@@ -35718,9 +35735,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10188": {
                 "id": 10188,
@@ -35729,9 +35746,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10189": {
                 "id": 10189,
@@ -35740,9 +35757,9 @@ var outputTables = {
                 "hp": 1634,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10190": {
                 "id": 10190,
@@ -35753,7 +35770,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10191": {
                 "id": 10191,
@@ -35764,7 +35781,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10192": {
                 "id": 10192,
@@ -35773,9 +35790,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10193": {
                 "id": 10193,
@@ -35784,9 +35801,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10194": {
                 "id": 10194,
@@ -35797,7 +35814,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10195": {
                 "id": 10195,
@@ -35806,9 +35823,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10196": {
                 "id": 10196,
@@ -35819,7 +35836,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10197": {
                 "id": 10197,
@@ -35828,9 +35845,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10198": {
                 "id": 10198,
@@ -35839,9 +35856,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10199": {
                 "id": 10199,
@@ -35850,9 +35867,9 @@ var outputTables = {
                 "hp": 1768,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10200": {
                 "id": 10200,
@@ -35863,7 +35880,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10201": {
                 "id": 10201,
@@ -35874,7 +35891,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10202": {
                 "id": 10202,
@@ -35883,9 +35900,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10203": {
                 "id": 10203,
@@ -35894,9 +35911,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10204": {
                 "id": 10204,
@@ -35907,7 +35924,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10205": {
                 "id": 10205,
@@ -35916,9 +35933,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10206": {
                 "id": 10206,
@@ -35929,7 +35946,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10207": {
                 "id": 10207,
@@ -35938,9 +35955,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10208": {
                 "id": 10208,
@@ -35949,9 +35966,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10209": {
                 "id": 10209,
@@ -35960,9 +35977,9 @@ var outputTables = {
                 "hp": 1911,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10210": {
                 "id": 10210,
@@ -35973,7 +35990,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10211": {
                 "id": 10211,
@@ -35984,7 +36001,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10212": {
                 "id": 10212,
@@ -35993,9 +36010,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10213": {
                 "id": 10213,
@@ -36004,9 +36021,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10214": {
                 "id": 10214,
@@ -36017,7 +36034,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10215": {
                 "id": 10215,
@@ -36026,9 +36043,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10216": {
                 "id": 10216,
@@ -36039,7 +36056,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10217": {
                 "id": 10217,
@@ -36048,9 +36065,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10218": {
                 "id": 10218,
@@ -36059,9 +36076,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10219": {
                 "id": 10219,
@@ -36070,9 +36087,9 @@ var outputTables = {
                 "hp": 2064,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10220": {
                 "id": 10220,
@@ -36083,7 +36100,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10221": {
                 "id": 10221,
@@ -36094,7 +36111,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10222": {
                 "id": 10222,
@@ -36103,9 +36120,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10223": {
                 "id": 10223,
@@ -36114,9 +36131,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10224": {
                 "id": 10224,
@@ -36127,7 +36144,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10225": {
                 "id": 10225,
@@ -36136,9 +36153,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10226": {
                 "id": 10226,
@@ -36149,7 +36166,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10227": {
                 "id": 10227,
@@ -36158,9 +36175,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10228": {
                 "id": 10228,
@@ -36169,9 +36186,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10229": {
                 "id": 10229,
@@ -36180,9 +36197,9 @@ var outputTables = {
                 "hp": 2227,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10230": {
                 "id": 10230,
@@ -36193,7 +36210,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10231": {
                 "id": 10231,
@@ -36204,7 +36221,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10232": {
                 "id": 10232,
@@ -36213,9 +36230,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10233": {
                 "id": 10233,
@@ -36224,9 +36241,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10234": {
                 "id": 10234,
@@ -36237,7 +36254,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10235": {
                 "id": 10235,
@@ -36246,9 +36263,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10236": {
                 "id": 10236,
@@ -36259,7 +36276,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10237": {
                 "id": 10237,
@@ -36268,9 +36285,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10238": {
                 "id": 10238,
@@ -36279,9 +36296,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10239": {
                 "id": 10239,
@@ -36290,9 +36307,9 @@ var outputTables = {
                 "hp": 2400,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10240": {
                 "id": 10240,
@@ -36303,7 +36320,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10241": {
                 "id": 10241,
@@ -36314,7 +36331,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10242": {
                 "id": 10242,
@@ -36323,9 +36340,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10243": {
                 "id": 10243,
@@ -36334,9 +36351,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10244": {
                 "id": 10244,
@@ -36347,7 +36364,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10245": {
                 "id": 10245,
@@ -36356,9 +36373,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10246": {
                 "id": 10246,
@@ -36369,7 +36386,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10247": {
                 "id": 10247,
@@ -36378,9 +36395,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10248": {
                 "id": 10248,
@@ -36389,9 +36406,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10249": {
                 "id": 10249,
@@ -36400,9 +36417,9 @@ var outputTables = {
                 "hp": 2585,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10250": {
                 "id": 10250,
@@ -36413,7 +36430,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10251": {
                 "id": 10251,
@@ -36424,7 +36441,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10252": {
                 "id": 10252,
@@ -36433,9 +36450,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10253": {
                 "id": 10253,
@@ -36444,9 +36461,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10254": {
                 "id": 10254,
@@ -36457,7 +36474,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10255": {
                 "id": 10255,
@@ -36466,9 +36483,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10256": {
                 "id": 10256,
@@ -36479,7 +36496,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10257": {
                 "id": 10257,
@@ -36488,9 +36505,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10258": {
                 "id": 10258,
@@ -36499,9 +36516,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10259": {
                 "id": 10259,
@@ -36510,9 +36527,9 @@ var outputTables = {
                 "hp": 2781,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10260": {
                 "id": 10260,
@@ -36523,7 +36540,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10261": {
                 "id": 10261,
@@ -36534,7 +36551,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10262": {
                 "id": 10262,
@@ -36543,9 +36560,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10263": {
                 "id": 10263,
@@ -36554,9 +36571,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10264": {
                 "id": 10264,
@@ -36567,7 +36584,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10265": {
                 "id": 10265,
@@ -36576,9 +36593,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10266": {
                 "id": 10266,
@@ -36589,7 +36606,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10267": {
                 "id": 10267,
@@ -36598,9 +36615,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10268": {
                 "id": 10268,
@@ -36609,9 +36626,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10269": {
                 "id": 10269,
@@ -36620,9 +36637,9 @@ var outputTables = {
                 "hp": 2990,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10270": {
                 "id": 10270,
@@ -36633,7 +36650,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10271": {
                 "id": 10271,
@@ -36644,7 +36661,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10272": {
                 "id": 10272,
@@ -36653,9 +36670,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10273": {
                 "id": 10273,
@@ -36664,9 +36681,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10274": {
                 "id": 10274,
@@ -36677,7 +36694,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10275": {
                 "id": 10275,
@@ -36686,9 +36703,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10276": {
                 "id": 10276,
@@ -36699,7 +36716,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10277": {
                 "id": 10277,
@@ -36708,9 +36725,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10278": {
                 "id": 10278,
@@ -36719,9 +36736,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10279": {
                 "id": 10279,
@@ -36730,9 +36747,9 @@ var outputTables = {
                 "hp": 3211,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10280": {
                 "id": 10280,
@@ -36743,7 +36760,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10281": {
                 "id": 10281,
@@ -36754,7 +36771,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10282": {
                 "id": 10282,
@@ -36763,9 +36780,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10283": {
                 "id": 10283,
@@ -36774,9 +36791,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10284": {
                 "id": 10284,
@@ -36787,7 +36804,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10285": {
                 "id": 10285,
@@ -36796,9 +36813,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10286": {
                 "id": 10286,
@@ -36809,7 +36826,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10287": {
                 "id": 10287,
@@ -36818,9 +36835,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10288": {
                 "id": 10288,
@@ -36829,9 +36846,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10289": {
                 "id": 10289,
@@ -36840,9 +36857,9 @@ var outputTables = {
                 "hp": 3445,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10290": {
                 "id": 10290,
@@ -36853,7 +36870,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10291": {
                 "id": 10291,
@@ -36864,7 +36881,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10292": {
                 "id": 10292,
@@ -36873,9 +36890,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10293": {
                 "id": 10293,
@@ -36884,9 +36901,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10294": {
                 "id": 10294,
@@ -36897,7 +36914,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10295": {
                 "id": 10295,
@@ -36906,9 +36923,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10296": {
                 "id": 10296,
@@ -36919,7 +36936,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10297": {
                 "id": 10297,
@@ -36928,9 +36945,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10298": {
                 "id": 10298,
@@ -36939,9 +36956,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10299": {
                 "id": 10299,
@@ -36950,9 +36967,9 @@ var outputTables = {
                 "hp": 3694,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10300": {
                 "id": 10300,
@@ -36963,7 +36980,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10301": {
                 "id": 10301,
@@ -36974,7 +36991,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10302": {
                 "id": 10302,
@@ -36983,9 +37000,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10303": {
                 "id": 10303,
@@ -36994,9 +37011,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10304": {
                 "id": 10304,
@@ -37007,7 +37024,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10305": {
                 "id": 10305,
@@ -37016,9 +37033,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10306": {
                 "id": 10306,
@@ -37029,7 +37046,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10307": {
                 "id": 10307,
@@ -37038,9 +37055,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10308": {
                 "id": 10308,
@@ -37049,9 +37066,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10309": {
                 "id": 10309,
@@ -37060,9 +37077,9 @@ var outputTables = {
                 "hp": 3956,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10310": {
                 "id": 10310,
@@ -37073,7 +37090,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10311": {
                 "id": 10311,
@@ -37084,7 +37101,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10312": {
                 "id": 10312,
@@ -37093,9 +37110,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10313": {
                 "id": 10313,
@@ -37104,9 +37121,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10314": {
                 "id": 10314,
@@ -37117,7 +37134,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10315": {
                 "id": 10315,
@@ -37126,9 +37143,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10316": {
                 "id": 10316,
@@ -37139,7 +37156,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10317": {
                 "id": 10317,
@@ -37148,9 +37165,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10318": {
                 "id": 10318,
@@ -37159,9 +37176,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10319": {
                 "id": 10319,
@@ -37170,9 +37187,9 @@ var outputTables = {
                 "hp": 4233,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10320": {
                 "id": 10320,
@@ -37183,7 +37200,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10321": {
                 "id": 10321,
@@ -37194,7 +37211,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10322": {
                 "id": 10322,
@@ -37203,9 +37220,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10323": {
                 "id": 10323,
@@ -37214,9 +37231,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10324": {
                 "id": 10324,
@@ -37227,7 +37244,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10325": {
                 "id": 10325,
@@ -37236,9 +37253,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10326": {
                 "id": 10326,
@@ -37249,7 +37266,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10327": {
                 "id": 10327,
@@ -37258,9 +37275,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10328": {
                 "id": 10328,
@@ -37269,9 +37286,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10329": {
                 "id": 10329,
@@ -37280,9 +37297,9 @@ var outputTables = {
                 "hp": 4525,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10330": {
                 "id": 10330,
@@ -37293,7 +37310,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10331": {
                 "id": 10331,
@@ -37304,7 +37321,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10332": {
                 "id": 10332,
@@ -37313,9 +37330,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10333": {
                 "id": 10333,
@@ -37324,9 +37341,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10334": {
                 "id": 10334,
@@ -37337,7 +37354,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10335": {
                 "id": 10335,
@@ -37346,9 +37363,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10336": {
                 "id": 10336,
@@ -37359,7 +37376,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10337": {
                 "id": 10337,
@@ -37368,9 +37385,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10338": {
                 "id": 10338,
@@ -37379,9 +37396,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10339": {
                 "id": 10339,
@@ -37390,9 +37407,9 @@ var outputTables = {
                 "hp": 4833,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10340": {
                 "id": 10340,
@@ -37403,7 +37420,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10341": {
                 "id": 10341,
@@ -37414,7 +37431,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10342": {
                 "id": 10342,
@@ -37423,9 +37440,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10343": {
                 "id": 10343,
@@ -37434,9 +37451,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10344": {
                 "id": 10344,
@@ -37447,7 +37464,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10345": {
                 "id": 10345,
@@ -37456,9 +37473,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10346": {
                 "id": 10346,
@@ -37469,7 +37486,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10347": {
                 "id": 10347,
@@ -37478,9 +37495,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10348": {
                 "id": 10348,
@@ -37489,9 +37506,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10349": {
                 "id": 10349,
@@ -37500,9 +37517,9 @@ var outputTables = {
                 "hp": 5157,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10350": {
                 "id": 10350,
@@ -37513,7 +37530,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10351": {
                 "id": 10351,
@@ -37524,7 +37541,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10352": {
                 "id": 10352,
@@ -37533,9 +37550,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10353": {
                 "id": 10353,
@@ -37544,9 +37561,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10354": {
                 "id": 10354,
@@ -37557,7 +37574,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10355": {
                 "id": 10355,
@@ -37566,9 +37583,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10356": {
                 "id": 10356,
@@ -37579,7 +37596,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10357": {
                 "id": 10357,
@@ -37588,9 +37605,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10358": {
                 "id": 10358,
@@ -37599,9 +37616,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10359": {
                 "id": 10359,
@@ -37610,9 +37627,9 @@ var outputTables = {
                 "hp": 5497,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10360": {
                 "id": 10360,
@@ -37623,7 +37640,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10361": {
                 "id": 10361,
@@ -37634,7 +37651,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10362": {
                 "id": 10362,
@@ -37643,9 +37660,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10363": {
                 "id": 10363,
@@ -37654,9 +37671,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10364": {
                 "id": 10364,
@@ -37667,7 +37684,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10365": {
                 "id": 10365,
@@ -37676,9 +37693,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10366": {
                 "id": 10366,
@@ -37689,7 +37706,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10367": {
                 "id": 10367,
@@ -37698,9 +37715,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10368": {
                 "id": 10368,
@@ -37709,9 +37726,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10369": {
                 "id": 10369,
@@ -37720,9 +37737,9 @@ var outputTables = {
                 "hp": 5855,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10370": {
                 "id": 10370,
@@ -37733,7 +37750,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10371": {
                 "id": 10371,
@@ -37744,7 +37761,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10372": {
                 "id": 10372,
@@ -37753,9 +37770,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10373": {
                 "id": 10373,
@@ -37764,9 +37781,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10374": {
                 "id": 10374,
@@ -37777,7 +37794,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10375": {
                 "id": 10375,
@@ -37786,9 +37803,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10376": {
                 "id": 10376,
@@ -37799,7 +37816,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10377": {
                 "id": 10377,
@@ -37808,9 +37825,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10378": {
                 "id": 10378,
@@ -37819,9 +37836,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10379": {
                 "id": 10379,
@@ -37830,9 +37847,9 @@ var outputTables = {
                 "hp": 6229,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10380": {
                 "id": 10380,
@@ -37843,7 +37860,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10381": {
                 "id": 10381,
@@ -37854,7 +37871,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10382": {
                 "id": 10382,
@@ -37863,9 +37880,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10383": {
                 "id": 10383,
@@ -37874,9 +37891,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10384": {
                 "id": 10384,
@@ -37887,7 +37904,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10385": {
                 "id": 10385,
@@ -37896,9 +37913,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10386": {
                 "id": 10386,
@@ -37909,7 +37926,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10387": {
                 "id": 10387,
@@ -37918,9 +37935,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10388": {
                 "id": 10388,
@@ -37929,9 +37946,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10389": {
                 "id": 10389,
@@ -37940,9 +37957,9 @@ var outputTables = {
                 "hp": 6621,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10390": {
                 "id": 10390,
@@ -37953,7 +37970,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10391": {
                 "id": 10391,
@@ -37964,7 +37981,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10392": {
                 "id": 10392,
@@ -37973,9 +37990,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10393": {
                 "id": 10393,
@@ -37984,9 +38001,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10394": {
                 "id": 10394,
@@ -37997,7 +38014,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10395": {
                 "id": 10395,
@@ -38006,9 +38023,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10396": {
                 "id": 10396,
@@ -38019,7 +38036,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10397": {
                 "id": 10397,
@@ -38028,9 +38045,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10398": {
                 "id": 10398,
@@ -38039,9 +38056,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10399": {
                 "id": 10399,
@@ -38050,9 +38067,9 @@ var outputTables = {
                 "hp": 7032,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10400": {
                 "id": 10400,
@@ -38063,7 +38080,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10401": {
                 "id": 10401,
@@ -38074,7 +38091,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10402": {
                 "id": 10402,
@@ -38083,9 +38100,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10403": {
                 "id": 10403,
@@ -38094,9 +38111,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10404": {
                 "id": 10404,
@@ -38107,7 +38124,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10405": {
                 "id": 10405,
@@ -38116,9 +38133,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10406": {
                 "id": 10406,
@@ -38129,7 +38146,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10407": {
                 "id": 10407,
@@ -38138,9 +38155,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10408": {
                 "id": 10408,
@@ -38149,9 +38166,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10409": {
                 "id": 10409,
@@ -38160,9 +38177,9 @@ var outputTables = {
                 "hp": 7461,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10410": {
                 "id": 10410,
@@ -38173,7 +38190,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10411": {
                 "id": 10411,
@@ -38184,7 +38201,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10412": {
                 "id": 10412,
@@ -38193,9 +38210,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10413": {
                 "id": 10413,
@@ -38204,9 +38221,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10414": {
                 "id": 10414,
@@ -38217,7 +38234,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10415": {
                 "id": 10415,
@@ -38226,9 +38243,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10416": {
                 "id": 10416,
@@ -38239,7 +38256,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10417": {
                 "id": 10417,
@@ -38248,9 +38265,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10418": {
                 "id": 10418,
@@ -38259,9 +38276,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10419": {
                 "id": 10419,
@@ -38270,9 +38287,9 @@ var outputTables = {
                 "hp": 7908,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10420": {
                 "id": 10420,
@@ -38283,7 +38300,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10421": {
                 "id": 10421,
@@ -38294,7 +38311,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10422": {
                 "id": 10422,
@@ -38303,9 +38320,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10423": {
                 "id": 10423,
@@ -38314,9 +38331,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10424": {
                 "id": 10424,
@@ -38327,7 +38344,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10425": {
                 "id": 10425,
@@ -38336,9 +38353,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10426": {
                 "id": 10426,
@@ -38349,7 +38366,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10427": {
                 "id": 10427,
@@ -38358,9 +38375,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10428": {
                 "id": 10428,
@@ -38369,9 +38386,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10429": {
                 "id": 10429,
@@ -38380,9 +38397,9 @@ var outputTables = {
                 "hp": 8375,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10430": {
                 "id": 10430,
@@ -38393,7 +38410,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10431": {
                 "id": 10431,
@@ -38404,7 +38421,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10432": {
                 "id": 10432,
@@ -38413,9 +38430,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10433": {
                 "id": 10433,
@@ -38424,9 +38441,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10434": {
                 "id": 10434,
@@ -38437,7 +38454,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10435": {
                 "id": 10435,
@@ -38446,9 +38463,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10436": {
                 "id": 10436,
@@ -38459,7 +38476,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10437": {
                 "id": 10437,
@@ -38468,9 +38485,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10438": {
                 "id": 10438,
@@ -38479,9 +38496,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10439": {
                 "id": 10439,
@@ -38490,9 +38507,9 @@ var outputTables = {
                 "hp": 8861,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10440": {
                 "id": 10440,
@@ -38503,7 +38520,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10441": {
                 "id": 10441,
@@ -38514,7 +38531,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10442": {
                 "id": 10442,
@@ -38523,9 +38540,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10443": {
                 "id": 10443,
@@ -38534,9 +38551,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10444": {
                 "id": 10444,
@@ -38547,7 +38564,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10445": {
                 "id": 10445,
@@ -38556,9 +38573,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10446": {
                 "id": 10446,
@@ -38569,7 +38586,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10447": {
                 "id": 10447,
@@ -38578,9 +38595,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10448": {
                 "id": 10448,
@@ -38589,9 +38606,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10449": {
                 "id": 10449,
@@ -38600,9 +38617,9 @@ var outputTables = {
                 "hp": 9365,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10450": {
                 "id": 10450,
@@ -38613,7 +38630,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10451": {
                 "id": 10451,
@@ -38624,7 +38641,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10452": {
                 "id": 10452,
@@ -38633,9 +38650,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10453": {
                 "id": 10453,
@@ -38644,9 +38661,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10454": {
                 "id": 10454,
@@ -38657,7 +38674,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10455": {
                 "id": 10455,
@@ -38666,9 +38683,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10456": {
                 "id": 10456,
@@ -38679,7 +38696,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10457": {
                 "id": 10457,
@@ -38688,9 +38705,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10458": {
                 "id": 10458,
@@ -38699,9 +38716,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10459": {
                 "id": 10459,
@@ -38710,9 +38727,9 @@ var outputTables = {
                 "hp": 9890,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10460": {
                 "id": 10460,
@@ -38723,7 +38740,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10461": {
                 "id": 10461,
@@ -38734,7 +38751,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10462": {
                 "id": 10462,
@@ -38743,9 +38760,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10463": {
                 "id": 10463,
@@ -38754,9 +38771,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10464": {
                 "id": 10464,
@@ -38767,7 +38784,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10465": {
                 "id": 10465,
@@ -38776,9 +38793,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10466": {
                 "id": 10466,
@@ -38789,7 +38806,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10467": {
                 "id": 10467,
@@ -38798,9 +38815,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10468": {
                 "id": 10468,
@@ -38809,9 +38826,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10469": {
                 "id": 10469,
@@ -38820,9 +38837,9 @@ var outputTables = {
                 "hp": 10434,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10470": {
                 "id": 10470,
@@ -38833,7 +38850,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10471": {
                 "id": 10471,
@@ -38844,7 +38861,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10472": {
                 "id": 10472,
@@ -38853,9 +38870,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10473": {
                 "id": 10473,
@@ -38864,9 +38881,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10474": {
                 "id": 10474,
@@ -38877,7 +38894,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10475": {
                 "id": 10475,
@@ -38886,9 +38903,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10476": {
                 "id": 10476,
@@ -38899,7 +38916,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10477": {
                 "id": 10477,
@@ -38908,9 +38925,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10478": {
                 "id": 10478,
@@ -38919,9 +38936,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10479": {
                 "id": 10479,
@@ -38930,9 +38947,9 @@ var outputTables = {
                 "hp": 10997,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10480": {
                 "id": 10480,
@@ -38943,7 +38960,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10481": {
                 "id": 10481,
@@ -38954,7 +38971,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10482": {
                 "id": 10482,
@@ -38963,9 +38980,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10483": {
                 "id": 10483,
@@ -38974,9 +38991,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10484": {
                 "id": 10484,
@@ -38987,7 +39004,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10485": {
                 "id": 10485,
@@ -38996,9 +39013,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10486": {
                 "id": 10486,
@@ -39009,7 +39026,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10487": {
                 "id": 10487,
@@ -39018,9 +39035,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10488": {
                 "id": 10488,
@@ -39029,9 +39046,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10489": {
                 "id": 10489,
@@ -39040,9 +39057,9 @@ var outputTables = {
                 "hp": 11580,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10490": {
                 "id": 10490,
@@ -39053,7 +39070,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "10491": {
                 "id": 10491,
@@ -39064,7 +39081,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "10492": {
                 "id": 10492,
@@ -39073,9 +39090,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "10493": {
                 "id": 10493,
@@ -39084,9 +39101,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "10494": {
                 "id": 10494,
@@ -39097,7 +39114,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "10495": {
                 "id": 10495,
@@ -39106,9 +39123,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "10496": {
                 "id": 10496,
@@ -39119,7 +39136,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "10497": {
                 "id": 10497,
@@ -39128,9 +39145,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "10498": {
                 "id": 10498,
@@ -39139,9 +39156,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "10499": {
                 "id": 10499,
@@ -39150,9 +39167,9 @@ var outputTables = {
                 "hp": 12182,
                 "dodge_rate": 5,
                 "crit_rate": 5,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "10500": {
                 "id": 10500,
@@ -39163,7 +39180,7 @@ var outputTables = {
                 "crit_rate": 5,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "20000": {
                 "id": 20000,
@@ -39182,7 +39199,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 1,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 800
             },
             "20002": {
                 "id": 20002,
@@ -39191,9 +39208,9 @@ var outputTables = {
                 "hp": 2553,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 401
+                "effect_id": 300
             },
             "20003": {
                 "id": 20003,
@@ -39202,9 +39219,9 @@ var outputTables = {
                 "hp": 3734,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 3,
+                "skill_id": 1,
                 "normal_atk_id": 3,
-                "effect_id": 500
+                "effect_id": 801
             },
             "20004": {
                 "id": 20004,
@@ -39215,7 +39232,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 4,
                 "normal_atk_id": 1,
-                "effect_id": 600
+                "effect_id": 700
             },
             "20005": {
                 "id": 20005,
@@ -39224,9 +39241,9 @@ var outputTables = {
                 "hp": 7940,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 5,
+                "skill_id": 9,
                 "normal_atk_id": 2,
-                "effect_id": 700
+                "effect_id": 301
             },
             "20006": {
                 "id": 20006,
@@ -39237,7 +39254,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 6,
                 "normal_atk_id": 3,
-                "effect_id": 800
+                "effect_id": 401
             },
             "20007": {
                 "id": 20007,
@@ -39246,9 +39263,9 @@ var outputTables = {
                 "hp": 14286,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 7,
+                "skill_id": 2,
                 "normal_atk_id": 1,
-                "effect_id": 301
+                "effect_id": 500
             },
             "20008": {
                 "id": 20008,
@@ -39257,9 +39274,9 @@ var outputTables = {
                 "hp": 17597,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 8,
+                "skill_id": 3,
                 "normal_atk_id": 2,
-                "effect_id": 701
+                "effect_id": 600
             },
             "20009": {
                 "id": 20009,
@@ -39268,9 +39285,9 @@ var outputTables = {
                 "hp": 19842,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 9,
+                "skill_id": 5,
                 "normal_atk_id": 3,
-                "effect_id": 801
+                "effect_id": 401
             },
             "20010": {
                 "id": 20010,
@@ -39281,7 +39298,7 @@ var outputTables = {
                 "crit_rate": 10,
                 "skill_id": 10,
                 "normal_atk_id": 1,
-                "effect_id": 300
+                "effect_id": 301
             },
             "20011": {
                 "id": 20011,
@@ -39291,8 +39308,8 @@ var outputTables = {
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
-                "normal_atk_id": 2,
-                "effect_id": 300
+                "normal_atk_id": 1,
+                "effect_id": 801
             },
             "20012": {
                 "id": 20012,
@@ -39301,9 +39318,9 @@ var outputTables = {
                 "hp": 32475,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 2,
-                "normal_atk_id": 3,
-                "effect_id": 401
+                "skill_id": 7,
+                "normal_atk_id": 2,
+                "effect_id": 300
             },
             "20013": {
                 "id": 20013,
@@ -39312,9 +39329,9 @@ var outputTables = {
                 "hp": 38506,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 3,
-                "normal_atk_id": 1,
-                "effect_id": 500
+                "skill_id": 1,
+                "normal_atk_id": 3,
+                "effect_id": 801
             },
             "20014": {
                 "id": 20014,
@@ -39324,8 +39341,8 @@ var outputTables = {
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4,
-                "normal_atk_id": 2,
-                "effect_id": 600
+                "normal_atk_id": 1,
+                "effect_id": 700
             },
             "20015": {
                 "id": 20015,
@@ -39334,9 +39351,9 @@ var outputTables = {
                 "hp": 53301,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 5,
-                "normal_atk_id": 3,
-                "effect_id": 700
+                "skill_id": 9,
+                "normal_atk_id": 2,
+                "effect_id": 301
             },
             "20016": {
                 "id": 20016,
@@ -39346,8 +39363,8 @@ var outputTables = {
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6,
-                "normal_atk_id": 1,
-                "effect_id": 800
+                "normal_atk_id": 3,
+                "effect_id": 401
             },
             "20017": {
                 "id": 20017,
@@ -39356,9 +39373,9 @@ var outputTables = {
                 "hp": 80256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 7,
-                "normal_atk_id": 2,
-                "effect_id": 301
+                "skill_id": 2,
+                "normal_atk_id": 1,
+                "effect_id": 500
             },
             "20018": {
                 "id": 20018,
@@ -39367,9 +39384,9 @@ var outputTables = {
                 "hp": 90256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 8,
-                "normal_atk_id": 3,
-                "effect_id": 701
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 600
             },
             "20019": {
                 "id": 20019,
@@ -39378,9 +39395,9 @@ var outputTables = {
                 "hp": 105623,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 9,
-                "normal_atk_id": 1,
-                "effect_id": 801
+                "skill_id": 5,
+                "normal_atk_id": 3,
+                "effect_id": 401
             },
             "20020": {
                 "id": 20020,
@@ -39390,8 +39407,8 @@ var outputTables = {
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10,
-                "normal_atk_id": 2,
-                "effect_id": 300
+                "normal_atk_id": 1,
+                "effect_id": 301
             },
             "30001": {
                 "id": 30001,
@@ -39400,7 +39417,7 @@ var outputTables = {
                 "hp": 7940,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "normal_atk_id": 1
+                "normal_atk_id": 2
             },
             "30002": {
                 "id": 30002,
@@ -39410,8 +39427,8 @@ var outputTables = {
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
-                "normal_atk_id": 1,
-                "effect_id": 401
+                "normal_atk_id": 3,
+                "effect_id": 801
             },
             "30003": {
                 "id": 30003,
@@ -39420,7 +39437,7 @@ var outputTables = {
                 "hp": 19842,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "normal_atk_id": 2
+                "normal_atk_id": 1
             },
             "30004": {
                 "id": 30004,
@@ -39429,9 +39446,9 @@ var outputTables = {
                 "hp": 19992,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 2,
+                "skill_id": 7,
                 "normal_atk_id": 2,
-                "effect_id": 600
+                "effect_id": 300
             },
             "30005": {
                 "id": 30005,
@@ -39449,9 +39466,9 @@ var outputTables = {
                 "hp": 38656,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 3,
-                "normal_atk_id": 3,
-                "effect_id": 800
+                "skill_id": 4,
+                "normal_atk_id": 1,
+                "effect_id": 700
             },
             "30007": {
                 "id": 30007,
@@ -39460,7 +39477,7 @@ var outputTables = {
                 "hp": 80256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "normal_atk_id": 1
+                "normal_atk_id": 2
             },
             "30008": {
                 "id": 30008,
@@ -39469,9 +39486,9 @@ var outputTables = {
                 "hp": 80416,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 4,
-                "normal_atk_id": 1,
-                "effect_id": 701
+                "skill_id": 2,
+                "normal_atk_id": 3,
+                "effect_id": 500
             },
             "30009": {
                 "id": 30009,
@@ -39480,7 +39497,7 @@ var outputTables = {
                 "hp": 105623,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "normal_atk_id": 2
+                "normal_atk_id": 1
             },
             "30010": {
                 "id": 30010,
@@ -39489,9 +39506,9 @@ var outputTables = {
                 "hp": 110185,
                 "dodge_rate": 10,
                 "crit_rate": 10,
-                "skill_id": 5,
+                "skill_id": 6,
                 "normal_atk_id": 2,
-                "effect_id": 300
+                "effect_id": 401
             }
         }
     },

@@ -4,6 +4,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
+util = require 'util'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -56,6 +57,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
   player = null
   uid = null
   async.waterfall [
+    (cb) ->
+      checkIsOpenServer cb
+
     (cb) ->
       ### 检查是否最新版本 ###
       checkVersion(app, msg, platform, cb)
@@ -162,3 +166,16 @@ checkVersion = (app, msg, platform, cb) ->
     cb()
   else 
     cb({code: 600, msg: '客户端版本不是最新'})
+
+checkIsOpenServer = (cb) ->
+  sharedConf = require '../../../../../shared/conf'
+  openTime = new Date(sharedConf.openServerTime)
+  now = new Date()
+  console.log(openTime, now)
+  if new Date() < openTime
+    cb({
+      code: 501, 
+      msg: util.format('%s点开服，敬请期待', openTime.getHours())
+    })
+  else 
+    cb()

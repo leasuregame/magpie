@@ -122,7 +122,7 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
+      rankManager.exchangeRankings player, target, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
         if err and not res
           return cb(err)
         else

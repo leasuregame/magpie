@@ -12,9 +12,8 @@ $(function() {
       },
       dataType: 'json'
     }).success(function(data) {
-      alert(data);
       if (data.success) {
-        $('#msgInfo').removeClass('hidden').addClass('show alert-success').text('成功生成激活码！');
+        $('#msgInfo').removeClass('hidden').addClass('show alert-success').text('成功生成激活码！请刷新界面');
       } else {
         $('#msgInfo').removeClass('hidden').addClass('show alert-danger').text('错误:'+data.msg);
       }

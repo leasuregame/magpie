@@ -38,8 +38,18 @@ var giftBagGoods = {
         url: "icon112"
     },
 
-    cards: {
-        name: "cards"
+    power: {
+        name: "体力",
+        url: "icon106"
+    },
+
+    powerValue: {
+        name: "体力",
+        url: "icon106"
+    },
+
+    cardArray: {
+        name: "cardArray"
     }
 };
 
@@ -105,10 +115,9 @@ var GiftBagLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var key = keys[i];
-
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
 
-                if (giftBagGoods[key].name == "cards") {
+                if (giftBagGoods[key].name == "cardArray") {
                     var cards = reward[key];
                     var cardsLen = cards.length;
                     for (var j = 0; j < cardsLen; j++) {
@@ -181,6 +190,9 @@ var GiftBagLayer = cc.Layer.extend({
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
                 lazyLayer.removeFromParent();
+                if (cb) {
+                    cb();
+                }
             },
             this
         );

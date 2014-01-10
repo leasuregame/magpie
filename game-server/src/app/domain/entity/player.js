@@ -1106,7 +1106,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        this.levelReward = this.levelRewardMark.value;
+        var lr = this.levelRewardMark.value;
+        this.set('levelReward', lr);
     };
 
     Player.prototype.lightUpCards = function() {

@@ -58,14 +58,16 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
+      console.log '-a-a-a-', player.id, player.rank?.recentChallenger
       if player.rank?.recentChallenger?.length > 0
+        console.log '-a-', player.name
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])
 
     (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
-      console.log 'rankingList: ', rankings
+      console.log 'rankingList: ', rankings, beatBackRankings
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK

@@ -352,8 +352,8 @@ lz.tipReward = function (reward) {
                         var cards = reward[key];
                         var len = cards.length;
                         for (var i = 0; i < len; i++) {
-                            var card = Card.create(cards[j]);
-                            TipLayer.tipNoBg(card.name + ": +1");
+                            var card = Card.create(cards[i]);
+                            TipLayer.tipNoBg(card.get("name") + ": +1");
                         }
                     } else {
                         TipLayer.tipNoBg(str.name + ": +" + reward[key]);

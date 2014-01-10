@@ -38,6 +38,11 @@ var giftBagGoods = {
         url: "icon112"
     },
 
+    power: {
+        name: "体力",
+        url: "icon106"
+    },
+
     powerValue: {
         name: "体力",
         url: "icon106"
@@ -110,7 +115,6 @@ var GiftBagLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var key = keys[i];
-
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
 
                 if (giftBagGoods[key].name == "cardArray") {

@@ -10,7 +10,8 @@
 
 var Level9BoxLayer = LazyLayer.extend({
     _level9BoxLayerFit: null,
-    _data: null,
+    _reward: null,
+    _cb: null,
 
     onEnter: function () {
         cc.log("Level9BoxLayer onEnter");
@@ -33,7 +34,8 @@ var Level9BoxLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._data = data;
+        this._reward = data.reward;
+        this._cb = data.cb || null;
 
         this._level9BoxLayerFit = gameFit.mainScene.level9BoxLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -60,9 +62,19 @@ var Level9BoxLayer = LazyLayer.extend({
         cc.log("Level9Box ccbFnShowBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        var that = this;
         this.removeFromParent();
 
-        GiftBagLayer.pop(this._data);
+        GiftBagLayer.pop({
+            reward: this._reward,
+            cb: function () {
+                lz.tipReward(that._reward);
+                if (that._cb) {
+                    that._cb();
+                }
+            }
+        });
+
 
     }
 

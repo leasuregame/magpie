@@ -285,6 +285,9 @@ var gameGoodsName = {
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)
+    },
+    "cardArray": {
+        color: cc.c3b(255, 239, 131)
     }
 };
 
@@ -345,7 +348,16 @@ lz.tipReward = function (reward) {
                 if (str.icon) {
                     TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {
-                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    if (key == "cardArray") {
+                        var cards = reward[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[j]);
+                            TipLayer.tipNoBg(card.name + ": +1");
+                        }
+                    } else {
+                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    }
                 }
             }
         })(key);

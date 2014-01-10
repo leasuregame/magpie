@@ -38,8 +38,13 @@ var giftBagGoods = {
         url: "icon112"
     },
 
-    cards: {
-        name: "cards"
+    powerValue: {
+        name: "体力",
+        url: "icon106"
+    },
+
+    cardArray: {
+        name: "cardArray"
     }
 };
 
@@ -108,7 +113,7 @@ var GiftBagLayer = cc.Layer.extend({
 
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
 
-                if (giftBagGoods[key].name == "cards") {
+                if (giftBagGoods[key].name == "cardArray") {
                     var cards = reward[key];
                     var cardsLen = cards.length;
                     for (var j = 0; j < cardsLen; j++) {
@@ -179,6 +184,9 @@ var GiftBagLayer = cc.Layer.extend({
             main_scene_image.icon21,
             function () {
                 lazyLayer.removeFromParent();
+                if (cb) {
+                    cb();
+                }
             },
             this
         );

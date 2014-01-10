@@ -325,7 +325,7 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
                 for (key in msg) {
-                    if (key == "cards") {
+                    if (key == "cardArray") {
                         var cards = msg[key];
                         var len = cards.length;
                         for (var i = 0; i < len; i++) {

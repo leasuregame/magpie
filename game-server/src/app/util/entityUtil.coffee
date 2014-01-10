@@ -77,8 +77,8 @@ module.exports =
       if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
-        filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
-        id = generateCardId star, if filtered.length > 0 then filtered else lightUpIds
+        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
+        id = generateCardId star, lightUpIds
         vstar = (id%5 || 5)
         id += star - vstar if star isnt vstar
     else

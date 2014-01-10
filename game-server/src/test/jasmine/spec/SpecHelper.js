@@ -275,11 +275,12 @@ var game = {
       });
     });
   },
-  login: function(name, pwd, areaId) {
+  login: function(name, pwd, areaId, version) {
     pomelo.request('connector.userHandler.login', {
       account: name,
       password: pwd,
-      areaId: areaId
+      areaId: areaId,
+      version: version || '1.0.0'
     }, function(data) {
       console.log(data);
     });

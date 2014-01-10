@@ -4,6 +4,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
+util = require 'util'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -56,6 +57,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
   player = null
   uid = null
   async.waterfall [
+    (cb) ->
+      checkIsOpenServer cb
+
     (cb) ->
       ### 检查是否最新版本 ###
       checkVersion(app, msg, platform, cb)
@@ -136,9 +140,42 @@ getLatestVersion = (app, platform) ->
   vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
   vdata[platform]?.version
 
+versionCompare = (stra, strb) ->
+  straArr = stra.split('.')
+  strbArr = strb.split('.')
+
+  maxLen = Math.max(straArr.length, strbArr.length)
+  for i in [0...maxLen]
+    sa = ~~straArr[i]
+    sb = ~~strbArr[i]
+    if sa > sb
+      result = 1 
+    else if sa < sb
+      result = -1 
+    else 
+      result = 0
+
+    if result isnt 0
+      return result
+  result
+
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  if version is getLatestVersion(app, platform)
+  console.log versionCompare(version, getLatestVersion(app, platform))
+  if versionCompare(version, getLatestVersion(app, platform)) >= 0
     cb()
   else 
     cb({code: 600, msg: '客户端版本不是最新'})
+
+checkIsOpenServer = (cb) ->
+  sharedConf = require '../../../../../shared/conf'
+  openTime = new Date(sharedConf.openServerTime)
+  now = new Date()
+  console.log(openTime, now)
+  if new Date() < openTime
+    cb({
+      code: 501, 
+      msg: util.format('%s点开服，敬请期待', openTime.getHours())
+    })
+  else 
+    cb()

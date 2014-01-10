@@ -138,7 +138,7 @@ getLatestVersion = (app, platform) ->
 
 versionCompare = (stra, strb) ->
   straArr = stra.split('.')
-  strbArr = stra.split('.')
+  strbArr = strb.split('.')
 
   maxLen = Math.max(straArr.length, strbArr.length)
   for i in [0...maxLen]
@@ -157,6 +157,7 @@ versionCompare = (stra, strb) ->
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
+  console.log versionCompare(version, getLatestVersion(app, platform))
   if versionCompare(version, getLatestVersion(app, platform)) >= 0
     cb()
   else 

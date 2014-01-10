@@ -16,7 +16,8 @@ Manager = module.exports =
       rankings = ranks.map (r)-> r.ranking
       cb(null,rankings)
 
-  exchangeRankings: (player, targetId, isWin, cb) ->
+  exchangeRankings: (player, target, isWin, cb) ->
+    targetId = target.id
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err
         return cb(err)
@@ -56,11 +57,13 @@ Manager = module.exports =
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
-      checkAchievement(player, challenger) if isWin
-      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
+      if isWin
+        checkAchievement(player, challenger)
+      else
+        checkAchievement(target, defender)
+      updateAll(player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
-
-updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
+updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
   
   jobs = [
     {
@@ -87,6 +90,15 @@ updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level
       where: {id: player.id}
       data: playerData
   } if not _.isEmpty(playerData)
+
+  targetData = target.getSaveData()
+  jobs.push {
+    type: 'update',
+    options: 
+      table: 'player',
+      where: {id: target.id}
+      data: targetData
+  } if not _.isEmpty(targetData)
 
   job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo, level9Box) 
 

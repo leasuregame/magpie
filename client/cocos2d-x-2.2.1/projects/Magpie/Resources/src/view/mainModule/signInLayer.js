@@ -376,7 +376,7 @@ var SignInLayer = cc.Layer.extend({
      * @param {event} event
      */
     onTouchesEnded: function (touches, event) {
-        cc.log("TaskLayer onTouchesEnded");
+        cc.log("SignInLayer onTouchesEnded");
 
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();

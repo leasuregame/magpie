@@ -122,7 +122,7 @@ var PassRankLayer = cc.Layer.extend({
             slideLabel[i].addChild(passIcon);
 
             var passLabel = cc.LabelTTF.create(this._passRankList[i].passLayer, "Arial", 35);
-            passLabel.setColor(cc.c3b(56, 3, 5));
+            passLabel.setColor(cc.c3b(123, 60, 54));
             passLabel.setAnchorPoint(cc.p(0, 0.5));
             passLabel.setPosition(cc.p(465, y + 55));
             slideLabel[i].addChild(passLabel);

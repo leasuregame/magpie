@@ -123,7 +123,7 @@ var LvRankLayer = cc.Layer.extend({
             slideLabel[i].addChild(lvIcon);
 
             var lvLabel = cc.LabelTTF.create(this._lvRankList[i].lv, "Arial", 35);
-            lvLabel.setColor(cc.c3b(56, 3, 5));
+            lvLabel.setColor(cc.c3b(123, 60, 54));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
             lvLabel.setPosition(cc.p(465, y + 55));
             slideLabel[i].addChild(lvLabel);

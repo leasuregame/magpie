@@ -453,6 +453,16 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
+        "giftBagLayer": {
+            "bgSprite2Point": cc.p(360, 492),
+            "okItemPoint": cc.p(360, 232),
+            "buyItemPoint": cc.p(240, 232),
+            "cancelItemPoint": cc.p(480, 232),
+            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
+            "scrollViewPoint2": cc.p(110, 262),
+            "topBgIconPoint": cc.p(368, 772),
+            "titleIconPoint": cc.p(360, 817)
+        },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,
             MAX_GOLD_OFFSET: 320,
@@ -582,8 +592,8 @@ var fit4Iphone4 = {
             "playerHeaderLabelPoint": cc.p(40, 802),
             "lineIconPoint": cc.p(40, 784),
             "abilityLabelIconPoint": cc.p(48, 591),
-            "abilityLabelPoint": cc.p(220, 608),
-            "rankingLabelPoint": cc.p(470, 608),
+            "abilityLabelPoint": cc.p(245, 609),
+            "rankingLabelPoint": cc.p(485, 609),
             "lineUpLabelPoint": cc.p(40, 712),
             "spiritLayerItemPoint": cc.p(360, 412),
             "lotteryLayerItemPoint": cc.p(165, 512),
@@ -898,6 +908,11 @@ var fit4Iphone4 = {
             "textOffsetY": 35,
             "go2PaymentItemPoint": cc.p(360, 212),
             "btnTitlePoint": cc.p(360, 212)
+        },
+        "invitationLayer": {
+            "iconSpritePoint": cc.p(360, 520),
+            "okItemPoint": cc.p(360, 280),
+            "editBoxPoint": cc.p(463, 433)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -1253,7 +1268,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(200, 792),
             "closeItemPoint": cc.p(605, 837),
             "scrollViewHeight": 600,
-            "scrollViewLayerRect": cc.rect(40, 172, 500, 600),
+            "scrollViewLayerRect": cc.rect(110, 172, 500, 600),
             "scrollViewSize": cc.size(500, 600),
             "scrollViewPoint": cc.p(110, 172)
         }
@@ -1710,6 +1725,16 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(605, 880),
             "scrollViewPoint": cc.p(17, 138)
         },
+        "giftBagLayer": {
+            "bgSprite2Point": cc.p(320, 580),
+            "okItemPoint": cc.p(320, 320),
+            "buyItemPoint": cc.p(200, 320),
+            "cancelItemPoint": cc.p(440, 320),
+            "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
+            "scrollViewPoint2": cc.p(70, 360),
+            "topBgIconPoint": cc.p(328, 860),
+            "titleIconPoint": cc.p(320, 905)
+        },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,
             MAX_GOLD_OFFSET: 280,
@@ -1840,8 +1865,8 @@ var fit4Iphone5 = {
             "playerHeaderLabelPoint": cc.p(0, 968),
             "lineIconPoint": cc.p(0, 950),
             "abilityLabelIconPoint": cc.p(8, 732),
-            "abilityLabelPoint": cc.p(180, 749),
-            "rankingLabelPoint": cc.p(430, 749),
+            "abilityLabelPoint": cc.p(205, 751),
+            "rankingLabelPoint": cc.p(440, 751),
             "lineUpLabelPoint": cc.p(0, 853),
             "spiritLayerItemPoint": cc.p(320, 500),
             "lotteryLayerItemPoint": cc.p(125, 653),
@@ -2158,6 +2183,11 @@ var fit4Iphone5 = {
             "textOffsetY": 35,
             "go2PaymentItemPoint": cc.p(320, 220),
             "btnTitlePoint": cc.p(320, 220)
+        },
+        "invitationLayer": {
+            "iconSpritePoint": cc.p(320, 640),
+            "okItemPoint": cc.p(320, 330),
+            "editBoxPoint": cc.p(423, 553)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -2514,7 +2544,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(160, 935),
             "closeItemPoint": cc.p(565, 980),
             "scrollViewHeight": 665,
-            "scrollViewLayerRect": cc.rect(0, 220, 640, 665),
+            "scrollViewLayerRect": cc.rect(70, 220, 500, 665),
             "scrollViewSize": cc.size(500, 665),
             "scrollViewPoint": cc.p(70, 220)
         }

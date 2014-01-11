@@ -24,7 +24,7 @@ exports.pregenerate = function(req, res) {
 
   uids = []
   for (var i = 0; i < qty; i++) {
-  	uids.push(prefix + shortid.generate());
+  	uids.push(prefix + shortid.generate().toUpperCase());
   }
   data = uids.map(function(id) {
   	return {

@@ -162,10 +162,8 @@ class Hero extends Module
       enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
-      _step.e.push _hp
-      # debug
-      _step['dhp'] = enemy.hp
-
+      _step.e.push realHp
+      
       console.log "#{enemy.idx} 加血 #{realHp}"
 
     @log _step

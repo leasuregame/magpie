@@ -58,7 +58,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
   uid = null
   async.waterfall [
     (cb) ->
-      checkIsOpenServer cb
+      checkIsOpenServer app, cb
 
     (cb) ->
       ### 检查是否最新版本 ###
@@ -167,9 +167,8 @@ checkVersion = (app, msg, platform, cb) ->
   else 
     cb({code: 600, msg: '客户端版本不是最新'})
 
-checkIsOpenServer = (cb) ->
-  sharedConf = require '../../../../../shared/conf'
-  openTime = new Date(sharedConf.openServerTime)
+checkIsOpenServer = (app, cb) ->
+  openTime = new Date(app.get('sharedConf').openServerTime)
   now = new Date()
   console.log(openTime, now)
   if new Date() < openTime

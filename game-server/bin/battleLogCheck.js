@@ -1,4 +1,31 @@
 var _ = require('underscore');
+var csv = require('csv');
+
+module.exports.checkLog = function() {
+  csv()
+    .from('./battleLog.csv', {
+      columns: true,
+      delimiter: ',',
+      escape: '"'
+    })
+    .transform(function(row, index, cb) {
+      console.log(row.id);
+      try {
+        module.exports.execute(JSON.parse(row.battleLog));
+      } catch (e){
+        console.log('error row data', row.id);
+      }
+    })
+    .on('error', function(error) {
+      console.log(error.message);
+    })
+    .on('close', function() {
+      console.log('');
+    })
+    .on('end', function(count) {
+      callback(null, count);
+    });
+};
 
 module.exports.execute = function(battleLog) {
   var isWin = battleLog.winner == 'own' ? true : false;
@@ -64,10 +91,11 @@ module.exports.execute = function(battleLog) {
           dmage[pos] = s.e[index];
         } else {
           dmage[pos] += s.e[index];
+          dmage[pos] = dmage[pos] > 0 ? 0 : dmage[pos];
         }
       })
     });
-    console.log('伤害', dmage);
+    //console.log('伤害', dmage);
 
     // 检查 死亡人数的一致性
     if (isWin) {
@@ -82,9 +110,12 @@ module.exports.execute = function(battleLog) {
         ok = true;
       } else {
         console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
+        console.log('敌方死亡人数：', death_man);
+        console.log('敌方实际人数：', enemy_card_length);
+        throw new Error('error');
       }
-      console.log('敌方死亡人数：', death_man);
-      console.log('敌方实际人数：', enemy_card_length);
+
+      
     } else {
       var death_man = 0;
       _.each(dmage, function(val, key) {
@@ -98,9 +129,10 @@ module.exports.execute = function(battleLog) {
         ok = true;
       } else {
         console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
-      }
-      console.log('我方死亡人数：', death_man);
-      console.log('我方实际人数：', own_card_length);
+        console.log('我方死亡人数：', death_man);
+        console.log('我方实际人数：', own_card_length);
+        throw new Error('error');
+      }      
     }
 
     return ok && stepFormatOk;
@@ -118,9 +150,11 @@ module.exports.execute = function(battleLog) {
   if (!rewards_ok) {
     console.log('战斗奖励不正确');
   }
-  console.log(keys_ok, cards_ok, steps_ok);
+  //console.log(keys_ok, cards_ok, steps_ok);
   return cards_ok && steps_ok;
 };
+
+exports.checkLog();
 
 var bls = [{
   "cards": {
@@ -411,7 +445,4 @@ var bls = [{
       "passiveSkills": []
     }]
   }
-}]
-bls.forEach(function(bl) {
-  exports.execute(bl);
-});
+}];

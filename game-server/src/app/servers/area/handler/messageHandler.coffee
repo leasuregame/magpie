@@ -393,7 +393,7 @@ Handler::accept = (msg, session, next) ->
         return cb({code: 501, msg: '消息类型不匹配'})
 
       if isFinalStatus(message.status)
-        return cb({code: 200, msg: '已处理'})
+        return cb({code: 501, msg: '已处理'})
 
       cb()
 
@@ -443,6 +443,9 @@ Handler::accept = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    if friendExist
+      return next(null, {code: 501, msg: '对方已经是你的好友'})
+
     newFriend = {
       id: sender.id
       name: sender.name
@@ -458,8 +461,6 @@ Handler::accept = (msg, session, next) ->
     }
     
     next(null, {code: 200, msg: newFriend})
-
-    return if friendExist
     
     player.addFriend newFriend
     playerManager.addFriendIfOnline sender.id, myInfo

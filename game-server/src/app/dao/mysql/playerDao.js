@@ -267,7 +267,7 @@ var PlayerDao = (function(_super) {
         //     LIMIT %d';
         var sql = 'SELECT id, name, lv, ability FROM `player` \
             WHERE id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `player` ) \
-            ORDER BY id LIMIT 10';
+            AND id not in (%s) ORDER BY id LIMIT %s';
 
         sql = util.format(sql, exceptIds.toString(), limit);
         dbClient.query(sql, [], function(err, res) {

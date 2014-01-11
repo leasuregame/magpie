@@ -310,8 +310,45 @@ var Player = Entity.extend({
         });
     },
 
+    invite: function (cb, key) {
+        cc.log("Player invitation: " + key);
+
+        var that = this;
+        lz.server.request("area.cdkeyHandler.verifyCdkey", {
+            cdkey: key
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("invite success");
+
+                var msg = data.msg;
+                for (key in msg) {
+                    if (key == "cardArray") {
+                        var cards = msg[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            gameData.cardList.push(card);
+                        }
+                    } else {
+                        that.add(key, msg[key]);
+                    }
+                }
+
+                cb(msg);
+            } else {
+                cc.log("invite fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     setStep: function (step) {
         cc.log("Player setStep: " + step);
+
         var that = this;
         lz.server.request("area.playerHandler.setStep", {
             step: step

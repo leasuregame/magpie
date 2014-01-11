@@ -128,8 +128,14 @@ var SignIn = Entity.extend({
 
         if (index == 0) {
             var nowDay = new Date().getDate();
+
+            var signIn = 0;
+            if(this.canSignIn(index)) {
+                signIn = 1;
+            }
+
             if (this._monthsMark[0]) {
-                return (this._monthsMark[0].count < nowDay - 1);
+                return (this._monthsMark[0].count < nowDay - signIn);
             }
         }
 

@@ -111,6 +111,7 @@
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
+                <file name="src/view/mainModule/invitationLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>
@@ -135,6 +136,7 @@
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>
+                <file name="src/view/mainModule/giftBagLayer.js"/>
                 <file name="src/view/mainModule/goldLayer.js"/>
                 <file name="src/view/mainModule/goPaymentLayer.js"/>
                 <file name="src/view/mainModule/level9BoxLayer.js"/>

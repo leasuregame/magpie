@@ -36,7 +36,7 @@ class Component
 
   afterStart: (cb) ->
     @timerId = setInterval onlineUserCounter.bind(null, @), @interval
-    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 30
+    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 60
     process.nextTick cb
 
   stop: (force, cb) ->

@@ -114,8 +114,9 @@ validSessionId = (uid, sid) ->
 checkDuplicatedLogin = (account, areaId, frontendId, user) ->
   if accountMap[account] and areaId is accountMap[account].areaId
     bss = app.get('backendSessionService')
+    console.log accountMap[account]
     bss.kickByUid accountMap[account].serverId, user.id + '*' + areaId, (err, res) -> 
-      console.log 'backendSessionService kick by uid: ', err, res
+      logger.error 'backendSessionService kick by uid: ', err, res if err
 
   user.lastLoginArea = areaId
   user.lastLoginTime = Date.now()

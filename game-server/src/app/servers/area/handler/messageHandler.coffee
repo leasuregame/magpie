@@ -612,7 +612,6 @@ Handler::receiveBless = (msg, session, next) ->
     next(null, {code: 200, msg: {energy: message.options.energy}})
 
 updateBlessCount = (playerId, friendId) ->
-  console.log 'receive bless: ', playerId, friendId
   dao.friend.updateFriendBlessCount playerId, friendId, (err, res) -> 
     if err or not res
       logger.error(err)

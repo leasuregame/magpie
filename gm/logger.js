@@ -62,6 +62,22 @@ log4js.configure({
             backups:4,
             reloadSecs:30,
             category:'daoBase'
+        },
+        {
+            type:'file',
+            filename:path.join(dirName,'msgPush.log'),
+            maxLogSize:1048576,
+            backups:4,
+            reloadSecs:30,
+            category:'msgPush'
+        },
+        {
+            type:'file',
+            filename:path.join(dirName,'reward.log'),
+            maxLogSize:1048576,
+            backups:4,
+            reloadSecs:30,
+            category:'reward'
         }
 
     ],

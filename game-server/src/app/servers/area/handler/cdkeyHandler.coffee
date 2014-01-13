@@ -64,7 +64,7 @@ Handler::verifyCdkey = (msg, session, next) ->
     player.addCards cards
     player.save()
     data = returnData(data)
-    data.cards = cards?.map (c)-> c.toJson?()
+    data.cardArray = cards?.map (c)-> c.toJson?()
     next(null, {code: 200, msg: data})
 
 validCdkey = (key) -> /^\S*-\S*$/.test(key)

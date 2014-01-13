@@ -364,8 +364,8 @@ Handler::starUpgrade = (msg, session, next) ->
       if utility.hitRate(totalRate)
         is_upgrade = true
       
+      player.decrease('money', money_consume)
       if is_upgrade
-        player.decrease('money', money_consume)
         card.increase('star')
         card.increase('tableId')
         card.resetSkillLv()
@@ -755,12 +755,13 @@ Handler::exchangeCard = (msg, session, next) ->
       fragments: player.fragments
     }})
 
-    cardNmae = table.getTableItem('cards', card.tableId).name
-    msg = {
-      msg: player.name + '成功兑换到一张' + cardNmae + '的五星卡牌！！！'
-      type: 0
-    }
-    msgQueue.push(msg)
+    if card.star is 5
+      cardNmae = table.getTableItem('cards', card.tableId).name
+      msg = {
+        msg: player.name + '成功兑换到一张' + cardNmae + '的五星卡牌！！！'
+        type: 0
+      }
+      msgQueue.push(msg)
 
 
 setExchangedCard = (player, tid) ->

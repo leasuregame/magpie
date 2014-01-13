@@ -443,9 +443,6 @@ Handler::accept = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if friendExist
-      return next(null, {code: 200})
-
     newFriend = {
       id: sender.id
       name: sender.name
@@ -462,6 +459,8 @@ Handler::accept = (msg, session, next) ->
     
     next(null, {code: 200, msg: newFriend})
 
+    return if friendExist
+    
     player.addFriend newFriend
     playerManager.addFriendIfOnline sender.id, myInfo
 

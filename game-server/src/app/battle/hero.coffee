@@ -27,12 +27,11 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
-    @hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
-    @atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
-    @init_atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
     @spirit_hp = attrs.incs?.spirit_hp or 0
     @spirit_atk = attrs.incs?.spirit_atk or 0
+    @init_hp = @hp = attrs.hp + @spirit_hp
+    @init_atk = @atk = attrs.atk + @spirit_atk
+
     @hp_only = attrs.hp
     @atk_only = attrs.atk
 
@@ -152,20 +151,21 @@ class Hero extends Module
     _step.t = 1 if isSpiritor
     
     _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
-    if @isCrit()
-      _hp *= @crit_factor
-
+    
     for enemy in enemys      
+      if @isCrit()
+        _hp *= @crit_factor
+
       ### 上下浮动15% ###
       _hp = floatUpOrDown(_hp)
       realHp = _.min([_hp, enemy.init_hp - enemy.hp])
+      realHp = 0 if realHp < 0
       enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
       _step.e.push _hp
       # debug
-      _step['dhp'] = enemy.hp
-
+      step['dhp'] = enemy.hp
       console.log "#{enemy.idx} 加血 #{realHp}"
 
     @log _step

@@ -14,6 +14,9 @@ logger = require('pomelo-logger').getLogger(__filename)
 class Manager
   @explore: (player, taskId, cb) ->
     task_id = taskId or player.task.id
+    if task_id >= 500
+      return cb({code: 501, msg: '已通关'})
+
     taskData = table.getTableItem('task', task_id)
 
     data = {
@@ -176,7 +179,7 @@ class Manager
           achieve.taskPartPassTo(player, chapterId)
 
         task.progress = 0
-        task.id += 1
+        task.id += 1 if task.id < 500
         task.hasWin = false       
 
         rew = table.getTableItem('task_through_reward', task.id-1)

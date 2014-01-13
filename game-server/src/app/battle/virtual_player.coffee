@@ -52,8 +52,8 @@ class VirtualPlayer extends Player
     for c in @heros
       cobj[c.idx] = {
         tableId: c.card_id
-        hp: c.hp
-        atk: c.atk
+        hp: c.init_hp
+        atk: c.init_atk
         boss: true if c.boss?
         skillId: c.skill_id if c.skill?
         normalAtkId: c.normal_atk_id

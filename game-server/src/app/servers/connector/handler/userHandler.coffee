@@ -172,7 +172,7 @@ checkIsOpenServer = (app, cb) ->
   if new Date() < openTime
     cb({
       code: 501, 
-      msg: util.format('%s-%s-%s %s点开服，敬请期待', openTime.getFullYear(), openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
+      msg: util.format('%s月%s日%s点开服，敬请期待', openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
     })
   else 
     cb()

@@ -1,7 +1,29 @@
 extends adminLayout
 
 block head
+  script(type='text/javascript', src='/js/bootstrap-paginator.js')
   script(type='text/javascript', src='/js/cdkey.js')
+  script.
+    $(function(){
+      $('#paginator').bootstrapPaginator({
+        currentPage: #{curPage},
+        totalPages: #{totalPages},
+        bootstrapMajorVersion: 3,
+        alignment: 'right',
+        size: 'normal',
+        pageUrl: function(type, page, current) {
+          return '/admin/cdkey?page=' + page;
+        }
+      });
+
+      $('.usedFilter').each(function(index, row) {
+        if (#{used} == parseInt(row.value)) {
+          row.checked = true;
+        } else {
+          row.checked = false;
+        }        
+      });
+    });
 
 block content
   div.form-inline(role='form')
@@ -30,9 +52,22 @@ block content
         thead
           tr
             th 激活码
+              strong(style='color:red') &nbsp;&nbsp;(总数:#{totalCount})
             th 开始日期
             th 结束日期
-            th 是否已使用
+            th(style='color: red')
+              div.radios
+                label
+                  input.usedFilter(type='radio', value='1', name='used' )
+                  已使用
+                &nbsp;&nbsp;
+                label
+                  input.usedFilter(type='radio', value='0', name='used' )
+                  未使用
+                &nbsp;&nbsp;
+                label
+                  input.usedFilter(type='radio', value='-1', name='used' )
+                  全部
         tbody
           - each row in rows
             tr(class=row.activate?'success':'')
@@ -40,7 +75,8 @@ block content
               td #{row.startDate}
               td #{row.endDate}
               td #{row.activate}
-            
-
+      div(style='float: right')
+        ul(id="paginator")
+      
         
 

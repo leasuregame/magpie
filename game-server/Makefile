@@ -68,7 +68,7 @@ runserver: build
 	./node_modules/.bin/pomelo start development
 
 debug: 
-	./node_modules/.bin/node-inspector --web-port=9090 &
+	./node_modules/.bin/node-inspector --web-port=9095 &
 
 restartserver: build
 	./node_modules/.bin/pomelo stop

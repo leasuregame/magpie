@@ -25,7 +25,7 @@ var RankDao = (function(_super) {
     };
 
     RankDao.getRankingsByPids = function(pids, cb) {
-        var sql = "select ranking from rank where id in (" + pids.toString() + ")";
+        var sql = "select ranking from rank where playerId in (" + pids.toString() + ")";
         dbClient.query(sql, [], cb);
     };
 
@@ -63,7 +63,6 @@ var RankDao = (function(_super) {
                 if (err) {
                     return cb(err);
                 }
-                console.log('init ranking : ', res);
                 if ( !! res && res.length > 0) {
                     RankDao.create({
                         data: {

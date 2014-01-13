@@ -37,7 +37,6 @@ Remote::createPlayer = (args, callback) ->
       
       ### 每天重置一次玩家的部分数据 ###
       player.resetData() if not player.isReset()
-      console.log 'cards : ', player.cards
       ### 缓存登陆的玩家信息 ###
       area.addPlayer player
       messageService.add(uid, serverId, player.id, player.name)

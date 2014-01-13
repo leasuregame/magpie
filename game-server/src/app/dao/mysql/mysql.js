@@ -30,7 +30,6 @@ NND = {
     },
 
     queues: function (sqlList, cb) {
-        console.log(sqlList);
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);

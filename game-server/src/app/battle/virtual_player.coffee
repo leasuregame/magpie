@@ -10,14 +10,11 @@ class VirtualPlayer extends Player
 
     if data.is_random? and data.is_random is 1
       lineUp = randomLineUp cards
-      console.log 'random lineup: ', lineUp
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
       lineUp = defaultLineUp cards
-      console.log 'default Line Up: ', lineUp
-    console.log 'data: ', data
-    
+      
     super(
       cards: cards
       lineUp: lineUp
@@ -52,8 +49,8 @@ class VirtualPlayer extends Player
     for c in @heros
       cobj[c.idx] = {
         tableId: c.card_id
-        hp: c.hp
-        atk: c.atk
+        hp: c.init_hp
+        atk: c.init_atk
         boss: true if c.boss?
         skillId: c.skill_id if c.skill?
         normalAtkId: c.normal_atk_id

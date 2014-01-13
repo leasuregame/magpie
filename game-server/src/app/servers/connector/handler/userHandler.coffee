@@ -58,7 +58,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
   uid = null
   async.waterfall [
     (cb) ->
-      checkIsOpenServer cb
+      checkIsOpenServer app, cb
 
     (cb) ->
       ### 检查是否最新版本 ###
@@ -130,7 +130,7 @@ authParams = (type, msg, app) ->
   for k in keyMap[type]?.keys
     args[k] = msg[k] if msg[k]?
 
-  args.fronendId = app.getServerId()
+  args.frontendId = app.getServerId()
   [args, keyMap[type]?.method]
 
 getLatestVersion = (app, platform) ->
@@ -161,17 +161,14 @@ versionCompare = (stra, strb) ->
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  console.log versionCompare(version, getLatestVersion(app, platform))
   if versionCompare(version, getLatestVersion(app, platform)) >= 0
     cb()
   else 
     cb({code: 600, msg: '客户端版本不是最新'})
 
-checkIsOpenServer = (cb) ->
-  sharedConf = require '../../../../../shared/conf'
-  openTime = new Date(sharedConf.openServerTime)
+checkIsOpenServer = (app, cb) ->
+  openTime = new Date(app.get('sharedConf').openServerTime)
   now = new Date()
-  console.log(openTime, now)
   if new Date() < openTime
     cb({
       code: 501, 

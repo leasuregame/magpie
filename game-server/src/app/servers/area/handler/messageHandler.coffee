@@ -393,7 +393,7 @@ Handler::accept = (msg, session, next) ->
         return cb({code: 501, msg: '消息类型不匹配'})
 
       if isFinalStatus(message.status)
-        return cb({code: 200, msg: '已处理'})
+        return cb({code: 501, msg: '已处理'})
 
       cb()
 
@@ -444,7 +444,7 @@ Handler::accept = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     if friendExist
-      return next(null, {code: 200})
+      return next(null, {code: 501, msg: '对方已经是你的好友'})
 
     newFriend = {
       id: sender.id
@@ -461,7 +461,7 @@ Handler::accept = (msg, session, next) ->
     }
     
     next(null, {code: 200, msg: newFriend})
-
+    
     player.addFriend newFriend
     playerManager.addFriendIfOnline sender.id, myInfo
 
@@ -612,7 +612,6 @@ Handler::receiveBless = (msg, session, next) ->
     next(null, {code: 200, msg: {energy: message.options.energy}})
 
 updateBlessCount = (playerId, friendId) ->
-  console.log 'receive bless: ', playerId, friendId
   dao.friend.updateFriendBlessCount playerId, friendId, (err, res) -> 
     if err or not res
       logger.error(err)

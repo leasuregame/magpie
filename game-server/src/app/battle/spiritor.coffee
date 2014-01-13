@@ -25,7 +25,6 @@ class Spiritor extends Module
       continue if not hero.skill or not hero.death()
 
       if @trigger()
-        console.log '元神攻击', @lv, @spirit_atk_pct
         hero.usingSkill(
           (res) -> 
             cb(hero)

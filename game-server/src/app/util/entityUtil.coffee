@@ -30,7 +30,7 @@ module.exports =
     ### 等级到达最高级后不加经验 ###
     if player.lv >= MAX_PLAYER_LV
       player.exp = 0
-      return
+      return cb(false)
 
     player.increase('exp', exp)
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv

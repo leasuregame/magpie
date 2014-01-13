@@ -12,6 +12,9 @@ var http = require('http');
 var path = require('path');
 var filter = require('./util/filter');
 var expressValidator = require('express-validator');
+var pushMessage = require('./routes/msgPush');
+var sendReward = require('./routes/reward');
+var flash = require('connect-flash');
 
 var app = express();
 
@@ -19,6 +22,7 @@ var app = express();
 app.set('port', process.env.PORT || 9090);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(flash());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -51,6 +55,8 @@ app.post('/admin/version', filter.authorize, version.updateVersion);
 app.get('/admin/cdkey', filter.authorize, cdkey.manage);
 app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
+pushMessage(app);
+sendReward(app);
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);

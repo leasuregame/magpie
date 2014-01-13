@@ -30,7 +30,8 @@ $(document).ready(function() {
     initServer(function() {
         initAreasList();
     });
-    $("#btnOk").click(function() {
+    $("#btnOk").click(function(e) {
+        e.preventDefault();
         submit();
     });
 });
@@ -140,9 +141,15 @@ function dealAll(id, mail, cb) {
         function(callback) {
             sendMail(mail, function(code) {
                 if (code == 200) {
+                    $('.alert').removeClass('hidden alert-danger');
+                    $('.alert').addClass('show alert-success');
+                    $('.alert').text('恭喜！消息发送成功!')
                     callback();
                 } else {
-                    cb('error');
+                    $('.alert').removeClass('hidden alert-success');
+                    $('.alert').addClass('show alert-danger');
+                    $('.alert').text('消息发送失败!');
+                    cb('error');                    
                 }
             })
         },

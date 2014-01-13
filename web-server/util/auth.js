@@ -1,5 +1,5 @@
 exports.checkUser = function(username, password, cb) {
-  if (username == 'admin' && password == '123456') {
+  if (username == 'admin' && password == 'leasuregame405:11') {
     cb(null, {
       user_id: 1
     });

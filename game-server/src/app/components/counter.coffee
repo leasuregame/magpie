@@ -47,7 +47,6 @@ class Component
 
 onlineUserCounter = (self) ->
   self.client.request 'areaInfo', {sid: self.app.getServerId()}, (err, data) ->
-    logger.info('count online users: ', err, data)
     self.app.get('dao').onlineUser.create data: {
       createTime: Date.now()
       qty: data.length

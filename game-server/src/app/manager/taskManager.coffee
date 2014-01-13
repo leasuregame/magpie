@@ -14,9 +14,6 @@ logger = require('pomelo-logger').getLogger(__filename)
 class Manager
   @explore: (player, taskId, cb) ->
     task_id = taskId or player.task.id
-    if task_id >= 500
-      return cb({code: 501, msg: '已通关'})
-
     taskData = table.getTableItem('task', task_id)
 
     data = {
@@ -164,30 +161,34 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
-      if taskId < 4
-        ### 十步之遥 成就奖励 ###
-        achieve.taskPoinTo(player)
+      if taskId is 500 and player.task.progress is taskData.points
+        ### 全部通关，do nothing ###
+      else
+        if taskId < 4
+          ### 十步之遥 成就奖励 ###
+          achieve.taskPoinTo(player)
 
-      task = utility.deepCopy(player.task)
-      task.progress += 1
-      if task.progress >= taskData.points
-        if taskId%10 is 0
-          ### 一大关结束，触发摸一摸功能 ###
-          data.momo = player.createMonoGift()
-          ### 通关成就 ###
-          achieve.taskChapterPassTo(player, chapterId)
-          achieve.taskPartPassTo(player, chapterId)
+        task = utility.deepCopy(player.task)
+        task.progress += 1
+        if task.progress >= taskData.points
+          if taskId%10 is 0
+            ### 一大关结束，触发摸一摸功能 ###
+            data.momo = player.createMonoGift()
+            ### 通关成就 ###
+            achieve.taskChapterPassTo(player, chapterId)
+            achieve.taskPartPassTo(player, chapterId)
 
-        task.progress = 0
-        task.id += 1 if task.id < 500
-        task.hasWin = false       
+          if task.id < 500
+            task.progress = 0
+            task.id += 1 
+            task.hasWin = false
 
-        rew = table.getTableItem('task_through_reward', task.id-1)
-        if not rew
-          logger.error('can not find throught reward by id', task.id-1)
-        data.through_reward = {money: rew?.money_obtain}
-        player.increase('money', rew?.money_obtain or 0)
-      player.set('task', task)
+          rew = table.getTableItem('task_through_reward', task.id-1)
+          if not rew
+            logger.error('can not find throught reward by id', task.id-1)
+          data.through_reward = {money: rew?.money_obtain}
+          player.increase('money', rew?.money_obtain or 0)
+        player.set('task', task)
 
     ### consume power first, then add exp
     because exp change will check if upgrade player level ###

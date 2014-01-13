@@ -165,7 +165,7 @@ class Hero extends Module
       _step.d.push enemy.idx
       _step.e.push _hp
       # debug
-      step['dhp'] = enemy.hp
+      _step['dhp'] = enemy.hp
       console.log "#{enemy.idx} 加血 #{realHp}"
 
     @log _step

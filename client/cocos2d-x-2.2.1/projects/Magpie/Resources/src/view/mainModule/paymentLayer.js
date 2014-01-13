@@ -73,6 +73,7 @@ var PaymentLayer = LazyLayer.extend({
             closeItem,
             vipPrivilegeItem
         );
+        menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 2);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -128,8 +129,10 @@ var PaymentLayer = LazyLayer.extend({
         var len = paymentTypeList.length;
 
         var scrollViewLayer = MarkLayer.create(this._paymentLayerFit.scrollViewLayerRect);
+        scrollViewLayer.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
+
         var menu = LazyMenu.create();
-        menu.setTouchPriority(-200);
+        menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
@@ -185,7 +188,7 @@ var PaymentLayer = LazyLayer.extend({
         }
 
         var scrollView = cc.ScrollView.create(this._paymentLayerFit.scrollViewSize, scrollViewLayer);
-        scrollView.setTouchPriority(-300);
+        scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 3);
         scrollView.setPosition(this._paymentLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();

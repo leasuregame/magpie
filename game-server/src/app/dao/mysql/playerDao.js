@@ -260,11 +260,14 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.random = function(playerId, exceptIds, limit, cb) {
         exceptIds.push(playerId);
-        var sql = 'SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 \
-            JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 \
-            WHERE r1.id not in (%s) and r1.id >= r2.id \
-            ORDER BY r1.id ASC \
-            LIMIT %d';
+        // var sql = 'SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 \
+        //     JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 \
+        //     WHERE r1.id not in (%s) and r1.id >= r2.id \
+        //     ORDER BY r1.id ASC \
+        //     LIMIT %d';
+        var sql = 'SELECT id, name, lv, ability FROM `player` \
+            WHERE id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `player` ) \
+            AND id not in (%s) ORDER BY id LIMIT %s';
 
         sql = util.format(sql, exceptIds.toString(), limit);
         dbClient.query(sql, [], function(err, res) {

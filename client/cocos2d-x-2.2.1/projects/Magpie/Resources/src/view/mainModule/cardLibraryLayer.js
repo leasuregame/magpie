@@ -148,7 +148,7 @@ var CardLibraryLayer = cc.Layer.extend({
             }
         }
 
-        for(; i < 250; i++) {
+        for (; i < 250; i++) {
             row = Math.floor(i / 4);
             index = i % 4;
             var cardLockIcon = cc.Sprite.create(main_scene_image.card_back);

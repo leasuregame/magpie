@@ -137,7 +137,6 @@ var PlayerDao = (function(_super) {
                 }
             });
             var end = Date.now();
-            console.log('get player details time: ', (end - start)/1000);
             return cb(null, players);
         });
 
@@ -182,7 +181,6 @@ var PlayerDao = (function(_super) {
                     p.cards = cards.filter(function(c){ return c.playerId == p.id});
                 });
             end = Date.now();
-            console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);
             return cb(null, players);
         });
     };
@@ -231,7 +229,6 @@ var PlayerDao = (function(_super) {
                 }, cb);
             },
             function(player, cb) {
-                console.log(player.lineUpObj());
                 var ids = _.values(player.lineUpObj());
                 if (!_.isEmpty(ids)) {
                     cardDao.fetchMany({

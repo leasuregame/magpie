@@ -70,7 +70,6 @@ Handler::entryForGM = (msg,session,next)->
     (cb)->
       if not areaId
         cb({code:404,msg:'找不到服务器'})
-     # console.log("areaId = ",areaId)
 
       return cb(null,areaId) for area in areas when areaId is area.id
 
@@ -83,7 +82,7 @@ Handler::entryForGM = (msg,session,next)->
   ],(err)->
     if err
       return next(null,{code:err.code or 500,msg:err.msg or err})
-    console.log("areaId = ",session.get('areaId'));
+
     next(null,{code:200,msg:'连接服务器成功'})
 
 onUserLeave = (app, session, reason) ->

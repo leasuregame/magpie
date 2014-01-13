@@ -21,7 +21,7 @@ class Service
 
 runCounter = (client) ->
   doCount = () ->
-    client.request 'loginsOnArea', null, (err, data) -> console.log err, data
-    client.request 'onlineUser', null, (err, data) -> console.log err, data
+    client.request 'loginsOnArea', null, (err, data) -> #console.log err, data
+    client.request 'onlineUser', null, (err, data) -> #console.log err, data
 
   setInterval doCount, 300000

@@ -55,7 +55,6 @@ class Component
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
-  console.log 'execute verify, ', items.length
   return if items.length is 0
 
   async.each items, (item, done) ->

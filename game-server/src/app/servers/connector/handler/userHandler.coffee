@@ -130,7 +130,7 @@ authParams = (type, msg, app) ->
   for k in keyMap[type]?.keys
     args[k] = msg[k] if msg[k]?
 
-  args.fronendId = app.getServerId()
+  args.frontendId = app.getServerId()
   [args, keyMap[type]?.method]
 
 getLatestVersion = (app, platform) ->
@@ -161,7 +161,6 @@ versionCompare = (stra, strb) ->
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  console.log versionCompare(version, getLatestVersion(app, platform))
   if versionCompare(version, getLatestVersion(app, platform)) >= 0
     cb()
   else 
@@ -170,7 +169,6 @@ checkVersion = (app, msg, platform, cb) ->
 checkIsOpenServer = (app, cb) ->
   openTime = new Date(app.get('sharedConf').openServerTime)
   now = new Date()
-  console.log(openTime, now)
   if new Date() < openTime
     cb({
       code: 501, 

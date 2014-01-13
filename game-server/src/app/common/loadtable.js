@@ -423,7 +423,6 @@ module.exports = function() {
   for (var i = 0; i < arguments.length; i++) {
     var file = arguments[i];
     var data = fs.readFileSync(file);
-    console.log('message', file);
     parser.parseString(data, function(err, result) {
       var sheets = result.Worksheet;
       for (var i = sheets.length - 1; i >= 0; i--) {

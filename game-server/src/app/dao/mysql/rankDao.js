@@ -63,7 +63,6 @@ var RankDao = (function(_super) {
                 if (err) {
                     return cb(err);
                 }
-                console.log('init ranking : ', res);
                 if ( !! res && res.length > 0) {
                     RankDao.create({
                         data: {

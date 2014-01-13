@@ -1,5 +1,6 @@
 Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
+Cache = require '../../../common/cache'
 app = require('pomelo').app
 dao = app.get('dao')
 request = require 'request'
@@ -8,7 +9,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 
 CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
 accountMap = {}
-sessionIdMap = {}
+sessionIdMap = new Cache()
 
 module.exports = 
   auth: (args, cb) ->
@@ -64,7 +65,7 @@ module.exports =
           statusCode = parseInt body
           if statusCode > 0 and statusCode is userId
             ### 记住已登录用户和session ###
-            sessionIdMap[userId] = sessionId
+            sessionIdMap.put userId, sessionId, 1000 * 60 * 60
             done(null, true)
           else if statusCode is -1
             done({code: 501, msg: '会话无效'})
@@ -104,7 +105,8 @@ module.exports =
       cb(null, user?.toJson())
 
 validSessionId = (uid, sid) ->
-  if uid.toString() in Object.keys(sessionIdMap) and sessionIdMap[uid] is sid
+  cacheSid = sessionIdMap.get(uid)
+  if cacheSid? and cacheSid is sid
     return true
   else
     return false
@@ -112,8 +114,9 @@ validSessionId = (uid, sid) ->
 checkDuplicatedLogin = (account, areaId, frontendId, user) ->
   if accountMap[account] and areaId is accountMap[account].areaId
     bss = app.get('backendSessionService')
+    console.log accountMap[account]
     bss.kickByUid accountMap[account].serverId, user.id + '*' + areaId, (err, res) -> 
-      console.log 'backendSessionService kick by uid: ', err, res
+      logger.error 'backendSessionService kick by uid: ', err, res if err
 
   user.lastLoginArea = areaId
   user.lastLoginTime = Date.now()

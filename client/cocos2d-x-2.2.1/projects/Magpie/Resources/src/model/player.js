@@ -76,7 +76,6 @@ var Player = Entity.extend({
         gameData.achievement.init();
         gameData.activity.init();
         gameData.speak.init();
-       // gameData.exchange.init();
         gameData.payment.init();
 
         cc.log(this);
@@ -133,7 +132,8 @@ var Player = Entity.extend({
         gameData.shop.init({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
-            challengeBuyCount: data.dailyGift.challengeBuyCount
+            challengeBuyCount: data.dailyGift.challengeBuyCount,
+            expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
         cc.log(data.exchangeCards);
@@ -161,6 +161,13 @@ var Player = Entity.extend({
         }
     },
 
+    correctionPower: function (power, powerTimestamp) {
+        gameData.clock.updateServerTime();
+
+        this.set("power", power);
+        this.set("powerTimestamp", powerTimestamp);
+    },
+
     upgrade: function (data) {
         cc.log("Player upgrade");
 
@@ -175,13 +182,7 @@ var Player = Entity.extend({
     },
 
     isFullLv: function () {
-        cc.log("Player isFullLv");
-
-        if (this._lv == this._maxLv) {
-            return true;
-        }
-
-        return false;
+        return (this._lv >= this._maxLv);
     },
 
     _lvChangeEvent: function () {
@@ -309,8 +310,45 @@ var Player = Entity.extend({
         });
     },
 
+    invite: function (cb, key) {
+        cc.log("Player invitation: " + key);
+
+        var that = this;
+        lz.server.request("area.cdkeyHandler.verifyCdkey", {
+            cdkey: key
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("invite success");
+
+                var msg = data.msg;
+                for (key in msg) {
+                    if (key == "cardArray") {
+                        var cards = msg[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            gameData.cardList.push(card);
+                        }
+                    } else {
+                        that.add(key, msg[key]);
+                    }
+                }
+
+                cb(msg);
+            } else {
+                cc.log("invite fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     setStep: function (step) {
         cc.log("Player setStep: " + step);
+
         var that = this;
         lz.server.request("area.playerHandler.setStep", {
             step: step

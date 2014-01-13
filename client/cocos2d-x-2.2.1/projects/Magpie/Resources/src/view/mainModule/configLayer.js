@@ -141,6 +141,26 @@ var ConfigLayer = cc.Layer.extend({
         cc.log(this.musicOpen);
         cc.log(this.soundOpen);
 
+        var noticeItem = cc.MenuItemImage.create(
+            main_scene_image.icon127,
+            main_scene_image.icon127,
+            this._onClickNotice,
+            this
+        );
+        noticeItem.setAnchorPoint(cc.p(0, 0));
+        noticeItem.setPosition(this._configLayerFit.noticeItemPoint);
+
+        var noticeItemTitle = StrokeLabel.create("公告", "STHeitiTC-Medium", 30);
+        noticeItemTitle.setAnchorPoint(cc.p(0, 0.5));
+        noticeItemTitle.setPosition(cc.p(40, 55));
+        noticeItem.addChild(noticeItemTitle);
+
+        var noticeIcon = cc.Sprite.create(main_scene_image.icon273);
+        noticeIcon.setAnchorPoint(cc.p(0, 0.5));
+        noticeIcon.setPosition(cc.p(518, 55));
+        noticeItem.addChild(noticeIcon);
+
+
         var tipsItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
@@ -197,6 +217,7 @@ var ConfigLayer = cc.Layer.extend({
         var menu = cc.Menu.create(
             bgMusicItem,
             soundItem,
+            noticeItem,
             tipsItem,
             QQGroup,
             go2LoginItem
@@ -236,6 +257,17 @@ var ConfigLayer = cc.Layer.extend({
         } else {
             gameData.sound.closeEffect();
         }
+    },
+
+    _onClickNotice: function () {
+        cc.log("ConfigLayer _onClickNotice");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+            NoticeLayer.pop();
+        }
+
     },
 
     _onClickTips: function () {

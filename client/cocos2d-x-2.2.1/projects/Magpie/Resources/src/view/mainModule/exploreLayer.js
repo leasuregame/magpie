@@ -576,11 +576,11 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1, 0.92),
-            cc.ScaleTo.create(0.1, 1, 1.08),
-            cc.ScaleTo.create(0.3, 1, 1),
-            cc.ScaleTo.create(0.3, 1, 1.08),
-            cc.ScaleTo.create(0.1, 1, 1)
+            cc.ScaleTo.create(0.08, 1, 0.92),
+            cc.ScaleTo.create(0.08, 1, 1.08),
+            cc.ScaleTo.create(0.24, 1, 1),
+            cc.ScaleTo.create(0.24, 1, 1.08),
+            cc.ScaleTo.create(0.08, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
@@ -591,7 +591,6 @@ var ExploreLayer = cc.Layer.extend({
             cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
             cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
             cc.DelayTime.create(0.08)
-
         );
 
         var spiritRepeatAction = cc.Repeat.create(
@@ -604,11 +603,11 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1.1, 1.1),
-            cc.ScaleTo.create(0.1, 1, 1),
-            cc.ScaleTo.create(0.3, 0.4, 0.4),
-            cc.ScaleTo.create(0.3, 1, 1),
-            cc.ScaleTo.create(0.1, 1.1, 1.1)
+            cc.ScaleTo.create(0.08, 1.1, 1.1),
+            cc.ScaleTo.create(0.08, 1, 1),
+            cc.ScaleTo.create(0.24, 0.4, 0.4),
+            cc.ScaleTo.create(0.24, 1, 1),
+            cc.ScaleTo.create(0.08, 1.1, 1.1)
         );
 
         var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
@@ -616,10 +615,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
-            cc.MoveBy.create(0.3, cc.p(-40, 0)),
-            cc.MoveBy.create(0.3, cc.p(-40, 0)),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
+            cc.EaseSineIn.create(cc.MoveBy.create(0.16, cc.p(-6, 0))),
+            cc.MoveBy.create(0.24, cc.p(-40, 0)),
+            cc.MoveBy.create(0.24, cc.p(-40, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.08, cc.p(-6, 0)))
         );
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
@@ -630,7 +629,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _showBox");
+        cc.log("ExploreLayer _showBox");
 
         var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
         boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
@@ -642,7 +641,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     ccbFnOpenBox: function () {
-        cc.log("TaskLayer ccbFnOpenBox");
+        cc.log("ExploreLayer ccbFnOpenBox");
 
         var that = this;
         var cb = function () {
@@ -653,14 +652,14 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _onBuyPower: function () {
-        cc.log("TournamentLayer _onClickBuyCount");
+        cc.log("ExploreLayer _onBuyPower");
 
         var id = 2;
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);
 
-        if (product.count <= 0) {
+        if (product.remainTimes <= 0) {
             if (gameData.shop.get("powerBuyCount") <= 0) {
                 var tipVip = gameData.player.get("vip") + 1;
 
@@ -686,7 +685,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _buyPower: function (id, count) {
-        cc.log("TournamentLayer _buyCount");
+        cc.log("ExploreLayer _buyCount");
 
         if (count > 0) {
             var that = this;
@@ -704,7 +703,7 @@ var ExploreLayer = cc.Layer.extend({
      * @param {event} event
      */
     onTouchesEnded: function (touches, event) {
-        cc.log("TaskLayer onTouchesEnded");
+        cc.log("ExploreLayer onTouchesEnded");
 
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();

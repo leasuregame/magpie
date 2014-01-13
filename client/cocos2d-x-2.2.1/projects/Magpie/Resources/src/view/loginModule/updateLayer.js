@@ -102,7 +102,9 @@ var UpdateLayer = cc.Layer.extend({
                 Dialog.pop("网络不给力，点击重试", cb);
                 break;
             case UPDATE_NO_NEW_VERSION_ERROR:
-                this.noNewVersionCallback();
+                lz.scheduleOnce(function () {
+                    that.noNewVersionCallback();
+                }, 0.01);
                 break;
             case UPDATE_UN_COMPRESS_ERROR:
                 Dialog.pop("解析文件出错，点击重试", cb);

@@ -41,15 +41,35 @@ var Exchange = Entity.extend({
         cc.log("Exchange updateList: " + ids);
 
         this._exchangeCardList = [];
-        for (var i = 0; i < ids.length; ++i) {
-            this._exchangeCardList.push({
-                id: i,
-                card: Card.create({
+        var len = ids.length;
+
+        for (var i = 0; i < len; ++i) {
+
+            var card = null;
+            if (ids[i] > 0) {
+                card = Card.create({
                     tableId: ids[i],
                     lv: 1,
                     skillLv: 1
-                })
-            })
+                });
+            }
+            this._exchangeCardList.push({
+                id: ids[i],
+                card: card
+            });
+        }
+
+    },
+
+    _changeExchangeCardId: function (id) {
+        cc.log("Exchange _changeExchangeCardId: " + id);
+
+        var len = this._exchangeCardList.length;
+        for (var i = 0; i < len; i++) {
+            if (this._exchangeCardList[i].id == id) {
+                this._exchangeCardList[i].id = -1 * id;
+                break;
+            }
         }
 
     },
@@ -142,11 +162,10 @@ var Exchange = Entity.extend({
                 }
 
                 gameData.player.add("fragment", -consume);
+                that._changeExchangeCardId(id);
 
                 var card = Card.create(msg.card);
-
                 gameData.cardList.push(card);
-
                 cb(card);
 
                 lz.dc.event("event_exchange_card", id);

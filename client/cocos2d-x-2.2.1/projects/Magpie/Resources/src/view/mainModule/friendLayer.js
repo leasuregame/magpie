@@ -23,6 +23,7 @@ var FriendLayer = cc.Layer.extend({
     _skyDialog: null,
     _scrollView: null,
     _friendItem: {},
+    _isFirstEnter: true,
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -47,6 +48,8 @@ var FriendLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._friendLayerFit = gameFit.mainScene.friendLayer;
+
+        this._isFirstEnter = true;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -219,7 +222,7 @@ var FriendLayer = cc.Layer.extend({
 
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-            slideLabel[i].setVisible(false);
+            slideLabel[i].setVisible(!this._isFirstEnter);
 
             var friendMenu = LazyMenu.create();
             friendMenu.setPosition(cc.p(0, 0));
@@ -322,15 +325,18 @@ var FriendLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
 
-        var slideLayer = SlideLayer.create(
-            {
-                labels: slideLabel,
-                slideTime: 0.4,
-                timeTick: 0.05
-            }
-        );
+        if (this._isFirstEnter) {
+            this._isFirstEnter = false;
+            var slideLayer = SlideLayer.create(
+                {
+                    labels: slideLabel,
+                    slideTime: 0.4,
+                    timeTick: 0.05
+                }
+            );
 
-        slideLayer.showSlide();
+            slideLayer.showSlide();
+        }
     },
 
     _onClickAddFriend: function () {

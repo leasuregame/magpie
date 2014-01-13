@@ -74,6 +74,51 @@ struct ProgressMessage
     AssetsManager* manager;
 };
 
+string getNewVersion(string version1, string version2)
+{
+    if(version1 == "")
+    {
+        return version2;
+    }
+    
+    if(version2 == "")
+    {
+        return version1;
+    }
+    
+    if(version1 == version2)
+    {
+        return version1;
+    }
+    
+    int len = 3;
+    int v1[len], v2[len];
+    
+    sscanf(version1.c_str(), "%d.%d.%d", &v1[0], &v1[1], &v1[2]);
+    sscanf(version2.c_str(), "%d.%d.%d", &v2[0], &v2[1], &v2[2]);
+    
+    CCLOG("===============================");
+    CCLOG("%s", version1.c_str());
+    CCLOG("%d--%d--%d", v1[0], v1[1], v1[2]);
+    CCLOG("===============================");
+    CCLOG("%s", version2.c_str());
+    CCLOG("%d--%d--%d", v2[0], v2[1], v2[2]);
+    CCLOG("===============================");
+    
+    for(int i = 0; i < len; ++i)
+    {
+        if(v1[i] != v2[i])
+        {
+            return (v1[i] > v2[i] ? version1 : version2);
+        }
+    }
+    
+    CCLOG("版本号相同");
+    
+    return version1;
+}
+
+
 // Implementation of AssetsManager
 
 AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* versionFileUrl/* =NULL */, const char* storagePath/* =NULL */)
@@ -165,8 +210,9 @@ bool AssetsManager::checkUpdate()
         return false;
     }
     
-    string recordedVersion = getVersion();
-    if (recordedVersion == _version)
+    string version = getVersion();
+    string recordedVersion = getNewVersion(version, _version);
+    if (recordedVersion == version)
     {
         sendErrorMessage(kNoNewVersion);
         CCLOG("there is not new version");
@@ -552,7 +598,7 @@ void AssetsManager::setVersionFileUrl(const char *versionFileUrl)
 
 string AssetsManager::getVersion()
 {
-    return CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, getAppVersion());
+    return getNewVersion(CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, ""), getAppVersion());
 }
 
 void AssetsManager::deleteVersion()

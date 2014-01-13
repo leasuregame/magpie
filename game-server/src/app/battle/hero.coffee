@@ -38,7 +38,7 @@ class Hero extends Module
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 1
-    @skill_inc = attrs.skillInc
+    @skill_inc = attrs.skillInc or attrs.getSkillInc?()
     @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0
@@ -142,9 +142,6 @@ class Hero extends Module
 
       _step.d.push _d
       _step.e.push -_dmg
-      # debug
-      _step['dhp'] = enemy.hp
-
       enemy.damage _dmg, @, _step
 
     @log _step
@@ -196,9 +193,6 @@ class Hero extends Module
       console.log "#{_hero.idx} 受到伤害 #{_dmg}"
 
       _hero.damage _dmg, @, _step
-      # debug
-      _step['dhp'] = _hero.hp
-
       @log _step
       callback _hero
     else
@@ -211,7 +205,10 @@ class Hero extends Module
     _value = @_checkDmgReduce(value, step)
 
     @hp -= _value
-
+    
+    # debug
+    step['dhp'] = @hp
+    
     # 检查，伤害反弹
     # @_checkRebound(enemy, value, step)
 

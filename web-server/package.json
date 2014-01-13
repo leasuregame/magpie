@@ -9,6 +9,9 @@
     "express": "3.4.7",
     "jade": "*",
     "express-validator": "*",
-    "js-beautify": "*"
+    "js-beautify": "*",
+    "mysql": ">=2.0",
+    "shortid": "~2.0.0",
+    "async": "~0.2.9"
   }
 }

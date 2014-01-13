@@ -25,6 +25,12 @@ var addEvents = function(rank) {
 		}
 	});
 
+	rank.on('winningStreak.change', function(count) {
+		if (rank.winStreakCount < count) {
+			rank.set('winStreakCount', count);
+		}
+	});
+
 	rank.emit('ranking.change', rank.ranking);
 }
 
@@ -42,7 +48,7 @@ var Rank = (function(_super) {
 
 	Rank.FIELDS = [
 		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'startCount', 'winCount', 
-		'loseCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
+		'loseCount', 'winStreakCount', 'winningStreak', 'recentChallenger', 'gotRewards', 'historyRanking'
 	];
 	Rank.DEFAULT_VALUES = {
 		ranking: 0,
@@ -50,6 +56,7 @@ var Rank = (function(_super) {
 		startCount: 0,
 		winCount: 0,
 		loseCount: 0,
+		winStreakCount: 0,
 		winningStreak: 0,
 		recentChallenger: [],
 		gotRewards: [],
@@ -69,6 +76,18 @@ var Rank = (function(_super) {
 				recentChallenger: this.recentChallenger
 			},
 			rankingRewards: this.rankingRewards()
+		};
+	};
+
+	Rank.prototype.stats = function() {
+		return {
+			historyRanking: this.historyRanking,
+			winStreakCount: this.winStreakCount,
+			challengeCount: this.startCount,
+			beChallengeCount: this.challengeCount - this.startCount,
+			winCount: this.winCount,
+			loseCount: this.loseCount,
+			avgWinRate: this.challengeCount > 0 ? (this.winCount/this.challengeCount*100).toFixed(1)+'%' : '0.0%'
 		};
 	};
 
@@ -92,6 +111,12 @@ var Rank = (function(_super) {
 	Rank.prototype.resetCount = function(name) {
 		if (['winCount', 'loseCount', 'winningStreak', 'challengeCount'].indexOf(name) > 0) {
 			this.set(name, 0);
+		}
+	};
+
+	Rank.prototype.setWinStreakCount = function() {
+		if (this.winStreakCount < this.winningStreak) {
+			this.set('winStreakCount', this.winningStreak);
 		}
 	};
 

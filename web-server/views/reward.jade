@@ -1,0 +1,59 @@
+extends adminLayout
+
+block head
+  script(type='text/javascript', src='/js/serverAPI.js')
+  script(type='text/javascript', src='/js/async.js')
+  script(type='text/javascript', src='/js/lib/build/build.js')
+  script.
+    require('boot');
+
+block content
+  h1 消息推送
+  hr
+  form.form-horizontal(role='form')
+    div.form-group
+      label.col-sm-2.control-label 服务器
+      div.col-sm-10
+        select.form-control(type='text', id="area" name='area' required)
+    div.form-group
+      label.col-sm-2.control-label 玩家
+      div.col-sm-10
+        input.form-control(type='text', id='playerName' name='type')
+    div.form-group
+      label.col-sm-2.control-label 魔石
+      div.col-sm-10
+        input.form-control(type='number', id='gold' name='type')
+    div.form-group
+      label.col-sm-2.control-label 仙币
+      div.col-sm-10
+        input.form-control(type='number', id='money' name='type')
+    div.form-group
+      label.col-sm-2.control-label 体力点
+      div.col-sm-10
+        input.form-control(type='number', id='power' name='type')
+    div.form-group
+      label.col-sm-2.control-label 灵气
+      div.col-sm-10
+        input.form-control(type='number', id='spirit' name='type')
+    div.form-group
+      label.col-sm-2.control-label 技能点
+      div.col-sm-10
+        input.form-control(type='number', id='skillPoint' name='type')
+    div.form-group
+      label.col-sm-2.control-label 仙丹
+      div.col-sm-10
+        input.form-control(type='number', id='elixir' name='type')
+
+    div.form-group
+      label.col-sm-2.control-label 内容
+      div.col-sm-10
+        textarea.form-control(rows=3, id='content' required)
+    
+    div.form-group
+      div.col-sm-10.col-sm-offset-2
+        button.btn.btn-primary.btn-lg(id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
+    div.form-group(id='msg-block')
+      div.col-sm-10.col-sm-offset-2
+        div.hidden.alert
+
+  script(type='text/javascript', src='/js/reward.js')

@@ -35,13 +35,13 @@ block content
         option TB2-
     div.form-group
       label.control-label 开始日期
-      input(type='date' class='form-control' id='startDate' placeholder='开始日期')
+      input(type='date' class='form-control' id='startDate' placeholder='开始日期' required)
     div.form-group
       label.control-label 结束日期
-      input(type='date' class='form-control' id='endDate' placeholder='结束日期')
+      input(type='date' class='form-control' id='endDate' placeholder='结束日期' required)
     div.form-group
       label.control-label 生成个数
-      input(type='number' class='form-control' id='keyQty' placeholder='生成个数')
+      input(type='number' class='form-control' id='keyQty' placeholder='生成个数' required)
     div.form-group
       button(id='btnGetCdkey', class='btn btn-default') 生成激活码
   div.alert.hidden(id='msgInfo', style='margin: 10px 50px')

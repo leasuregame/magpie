@@ -15,6 +15,7 @@ var expressValidator = require('express-validator');
 var pushMessage = require('./routes/msgPush');
 var sendReward = require('./routes/reward');
 var flash = require('connect-flash');
+var player = require('./routes/player');
 
 var app = express();
 
@@ -55,6 +56,7 @@ app.post('/admin/version', filter.authorize, version.updateVersion);
 app.get('/admin/cdkey', filter.authorize, cdkey.manage);
 app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
+app.get('/admin/playerId', filter.authorize, player.get);
 pushMessage(app);
 sendReward(app);
 

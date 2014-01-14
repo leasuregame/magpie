@@ -13,7 +13,8 @@ module.exports =
 	area: (session, msg, app, cb) ->
 		# session is the first arg of the rpc call
 		areas = app.get 'areaIdMap'
-		serverId = areas[session.get('areaId')]
+		console.log('=a=a=', session, '>>>>>>>',  msg)
+		serverId = areas[session.get('areaId') or '1']
 
 		if not serverId
 			cb(new Error('can not find server info for type: ' + msg.serverType))

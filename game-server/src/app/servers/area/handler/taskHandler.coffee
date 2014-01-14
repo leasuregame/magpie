@@ -162,7 +162,7 @@ Handler::passBarrier = (msg, session, next) ->
   player = null
   firstWin = false
   oldLayer = -10
-
+  console.log '爬塔：', playerId, layer
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -223,6 +223,7 @@ Handler::passBarrier = (msg, session, next) ->
 
     player.save()
 
+    console.log '-end 爬塔：'
     next(null, {code: 200, msg: {
       battleLog: bl, 
       upgradeInfo: upgradeInfo if upgradeInfo

@@ -542,6 +542,7 @@ Handler::giveBless = (msg, session, next) ->
 
         ply.dailyGift.receivedBless.count--
         ply.dailyGift.receivedBless.givers.push(playerId)
+        ply.updateGift 'receivedBless', ply.dailyGift.receivedBless
         ply.receiveBlessOnce()
         ply.save()
         cb()
@@ -578,7 +579,17 @@ Handler::receiveBless = (msg, session, next) ->
   msgId = msg.msgId
 
   message = null
+  player = null
   async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+
+    (ply, cb) ->
+      player = ply
+      if player.dailyGift.receivedBless.count <= 0
+        return cb({code: 501, msg: '今日可领祝福次数已用完'})
+      cb()
+
     (cb) ->
       dao.message.fetchOne where: id: msgId, cb
 
@@ -592,10 +603,9 @@ Handler::receiveBless = (msg, session, next) ->
       
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
-      
-      playerManager.getPlayerInfo pid: playerId, cb
+      cb()
 
-    (player, cb) ->
+    (cb) ->
       player.increase('energy', message.options.energy)
       player.save()
       cb()

@@ -64,9 +64,6 @@ afterCreatePlayer = (app, session, uid, areaId, player, next) ->
       session.set('playerName', player.name)
       session.on('closed', onUserLeave.bind(null, app))
       session.pushAll(cb)
-
-    (cb) ->
-      cb()
   ], (err) ->
     if err
       logger.error('创建玩家失败，' + err.stack)

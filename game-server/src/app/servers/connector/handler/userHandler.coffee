@@ -51,6 +51,7 @@ Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
 doLogin  = (type, app, msg, session, platform, next) ->
+  console.log '-login-1-', msg, session.get('playerId')
   areaId = msg.areaId
 
   user = null
@@ -70,6 +71,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
 
     (cb) =>
       [args, method] = authParams(type, msg, app)
+      console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
@@ -82,6 +84,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       user = res
       uid = user.id + '*' + areaId
       sessionService = app.get 'sessionService'
+      console.log '-login-3-', user.account
       sessionService.kick(uid,cb)
     (cb) =>
       # check whether has create player in the login area
@@ -95,6 +98,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
+      console.log '-login-4', player.name
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>
@@ -104,6 +108,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
         session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
+    console.log '-login-5-err-', err
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})

@@ -1,5 +1,6 @@
 dao = require('pomelo').app.get('dao')
 async = require('async')
+logger = require('pomelo-logger').getLogger(__filename)
 
 CHINESE_REG = /^[a-zA-Z0-9\u4e00-\u9fa5]{1,6}$/
 EMPTY_SPACE_REG = /\s+/g
@@ -28,7 +29,7 @@ Handler::createPlayer = (msg, session, next) ->
     serverId: @app.getServerId()
   }, (err, player) =>
     if err and err.code is 404
-      return next(null, {code: 501, msg: "玩家不存在"})
+      return next(null, {code: 501, msg: "玩家已存在"})
 
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -69,7 +70,7 @@ afterCreatePlayer = (app, session, uid, areaId, player, next) ->
   ], (err) ->
     if err
       logger.error('创建玩家失败，' + err.stack)
-      return next(null, {code: 500, msg: err.msg or ''})
+      return next(null, {code: 501, msg: '创建失败，请重新登录'})
 
     next(null, {code: 200, msg: {player: player}})
 

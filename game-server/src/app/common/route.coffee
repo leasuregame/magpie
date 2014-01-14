@@ -17,7 +17,7 @@ module.exports =
 		serverId = areas[session.get('areaId')]
 
 		if not serverId
-			cb(new Error('can not find server info for type: ' + msg.serverType))
+			cb(new Error('can not find server info for type: ' + msg.serverType, 'areaId:', session.get('areaId')))
 			return
 
 		cb(null, serverId)

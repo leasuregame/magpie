@@ -101,8 +101,8 @@ function submit() {
                 type: "get",
                 success: function(data) {
                     console.log(data);
-                    if (data.type == 'success') {
-                        mail['playerId'] = data.info;
+                    if (data.id) {
+                        mail['playerId'] = data.id;
                         dealAll(areaId, mail, function(err) {
                             if (err) {
                                 console.log("err = ", err);

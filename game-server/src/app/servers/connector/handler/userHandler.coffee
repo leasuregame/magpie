@@ -98,7 +98,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
-      console.log '-login-4', player.name
+      console.log '-login-4', player?.name
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>

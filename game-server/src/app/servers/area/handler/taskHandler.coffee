@@ -23,6 +23,8 @@ Handler = (@app) ->
 探索
 ###
 Handler::explore = (msg, session, next) ->
+  console.log '-exlore-', msg, session.get('playerId')
+
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null

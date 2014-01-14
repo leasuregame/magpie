@@ -35,7 +35,7 @@ NND = {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-            queues(client, true);
+            queues(client, false);
             var trans = client.startTransaction();
 
             function error(e, info) {

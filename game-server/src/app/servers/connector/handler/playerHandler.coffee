@@ -14,7 +14,6 @@ Handler::createPlayer = (msg, session, next) ->
   name = msg.name
   areaId = session.get('areaId') or msg.areaId
   userId = session.get('userId') or msg.userId
-  uid = session.uid
 
   if EMPTY_SPACE_REG.test(name)
     return next(null, {code: 501, msg: '角色名称不能包含空格'})
@@ -34,13 +33,13 @@ Handler::createPlayer = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    afterCreatePlayer(@app, session, uid, areaId, player, next)
+    afterCreatePlayer(@app, session, userId, areaId, player, next)
 
-afterCreatePlayer = (app, session, uid, areaId, player, next) ->
+afterCreatePlayer = (app, session, userId, areaId, player, next) ->
   async.waterfall [
     (cb) ->
       dao.user.fetchOne {
-        where: id: uid
+        where: id: userId
         sync: true
       }, cb
 
@@ -56,7 +55,7 @@ afterCreatePlayer = (app, session, uid, areaId, player, next) ->
       cb()
       
     (cb) ->
-      session.bind uid, cb
+      session.bind userId+'*'+areaId, cb
 
     (cb) =>
       session.set('playerId', player.id)

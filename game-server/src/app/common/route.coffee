@@ -13,7 +13,7 @@ module.exports =
 	area: (session, msg, app, cb) ->
 		# session is the first arg of the rpc call
 		areas = app.get 'areaIdMap'
-		console.log('=a=a=', session, '>>>>>>>',  msg)
+		console.log('=a=a=', session.get('areaId'), '>>>>>>>',  msg)
 		serverId = areas[session.get('areaId') or '1']
 
 		if not serverId

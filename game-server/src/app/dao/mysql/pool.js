@@ -25,7 +25,7 @@ createMysqlPool = function (app) {
         destroy: function (client) {
             return client.end();
         },
-        max: 10,
+        max: 30,
         idleTimeoutMillis: 30000,
         log: false
     });

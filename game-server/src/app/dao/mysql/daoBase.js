@@ -88,6 +88,7 @@ var DaoBase = (function() {
 
     options.data = data;
     var stm = sqlHelper.generateSql(ACTION.INSERT, options);
+    console.log('-create db-', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when create " + _this.table + "]", stm);
@@ -125,7 +126,9 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
+    console.log('-fetch many-', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
+      console.log('-result-', err, res);
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
         logger.error(err.stack);
@@ -153,6 +156,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.UPDATE, options);
+    console.log('-update db-', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when update " + _this.table + "s]", err.stack);

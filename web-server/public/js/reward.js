@@ -67,7 +67,7 @@ function submit() {
                     console.log("err = ", err);
                 } else {
                     $.ajax({
-                        url: 'logger4Reward?area=所有&data=' + JSON.stringify(mail),
+                        url: '/admin/logger4Reward?area=所有&data=' + JSON.stringify(mail),
                         type: "post"
                     });
                 }
@@ -89,13 +89,13 @@ function submit() {
                         }
                     }
                     $.ajax({
-                        url: 'logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
+                        url: '/admin/logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
                         type: "post"
                     });
                 }
             });
         } else { //指定玩家
-            var url = "/playerId?name=" + playerName + "&areaId=" + areaId;
+            var url = "/admin/playerId?name=" + playerName + "&areaId=" + areaId;
             $.ajax({
                 url: url,
                 type: "get",
@@ -116,7 +116,7 @@ function submit() {
                                     }
                                 }
                                 $.ajax({
-                                    url: 'logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
+                                    url: '/admin/logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
                                     type: "post"
                                 });
                             }

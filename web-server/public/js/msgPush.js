@@ -61,7 +61,7 @@ function submit() {
                     console.log("err = ", err);
                 } else {
                     $.ajax({
-                        url: 'logger4MsgPush?area=所有&msg=' + JSON.stringify(msg),
+                        url: '/admin/logger4MsgPush?area=所有&msg=' + JSON.stringify(msg),
                         type: "post"
                     });
                 }
@@ -81,7 +81,7 @@ function submit() {
                     }
                 }
                 $.ajax({
-                    url: 'logger4MsgPush?area=' + areaName + '&msg=' + JSON.stringify(msg),
+                    url: '/admin/logger4MsgPush?area=' + areaName + '&msg=' + JSON.stringify(msg),
                     type: "post"
                 });
             }

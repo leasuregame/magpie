@@ -30,6 +30,7 @@ Remote::createPlayer = (args, callback) ->
         }, cb
 
       (player, cb) ->
+        console.log '-create player result-', player.name 
         initPlayer player, cb
     ], (err, player) ->
       if err

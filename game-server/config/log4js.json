@@ -55,8 +55,8 @@
   }],
 
   "levels": {
-    "rpc-log": "ERROR",
-    "forward-log": "ERROR"
+    "rpc-log": "DEBUG",
+    "forward-log": "DEBUG"
   },
 
   "replaceConsole": true,

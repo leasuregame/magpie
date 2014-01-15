@@ -66,10 +66,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      session.set('areaId', areaId)
-      session.pushAll cb
-
-    (cb) =>
       [args, method] = authParams(type, msg, app)
       console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
@@ -80,17 +76,15 @@ doLogin  = (type, app, msg, session, platform, next) ->
         else 
           cb(null, u)
 
-    (res, cb) =>
-      user = res
-      uid = user.id + '*' + areaId
-      sessionService = app.get 'sessionService'
-      console.log '-login-3-', user.account, '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
-
-      sessionService.kick(uid,cb)
-    (cb) =>
+    (u, cb) =>
+      user = u
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id, 
+          serverId: app.getServerId()
+        }, (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -100,6 +94,8 @@ doLogin  = (type, app, msg, session, platform, next) ->
 
     (cb) =>
       console.log '-login-4', player?.name
+      uid = user.id + '*' + areaId
+      session.set('areaId', areaId)
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>

@@ -17,7 +17,7 @@ NND = {
 
     query: function (sql, args, cb) {
         return _pool.acquire(function (err, client) {
-            console.log('pool info:', _pool.getPoolSize(), _poll.availableObjectsCount(), _pool.waitingClientsCount());
+            console.log('pool info:', _pool.getPoolSize(), _pool.availableObjectsCount(), _pool.waitingClientsCount());
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;

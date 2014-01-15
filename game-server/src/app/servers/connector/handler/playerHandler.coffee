@@ -22,6 +22,7 @@ Handler::createPlayer = (msg, session, next) ->
   if not CHINESE_REG.test(name)
     return next(null, {code: 501, msg: '只能输入1-6位汉字、字母或数字'})
 
+  console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
     userId: userId
@@ -34,13 +35,13 @@ Handler::createPlayer = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    afterCreatePlayer(@app, session, uid, areaId, player, next)
+    afterCreatePlayer(@app, session, userId, areaId, player, next)
 
-afterCreatePlayer = (app, session, uid, areaId, player, next) ->
+afterCreatePlayer = (app, session, userId, areaId, player, next) ->
   async.waterfall [
     (cb) ->
       dao.user.fetchOne {
-        where: id: uid
+        where: id: userId
         sync: true
       }, cb
 
@@ -56,7 +57,7 @@ afterCreatePlayer = (app, session, uid, areaId, player, next) ->
       cb()
       
     (cb) ->
-      session.bind uid, cb
+      session.bind userId+'*'+areaId, cb
 
     (cb) =>
       session.set('playerId', player.id)

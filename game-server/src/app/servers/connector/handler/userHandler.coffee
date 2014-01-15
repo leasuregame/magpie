@@ -84,7 +84,8 @@ doLogin  = (type, app, msg, session, platform, next) ->
       user = res
       uid = user.id + '*' + areaId
       sessionService = app.get 'sessionService'
-      console.log '-login-3-', user.account
+      console.log '-login-3-', user.account, '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
+
       sessionService.kick(uid,cb)
     (cb) =>
       # check whether has create player in the login area

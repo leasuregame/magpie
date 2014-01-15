@@ -35,6 +35,7 @@ Handler = (@app) ->
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
   player = null
+  console.log '-ranking list-', playerId
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -84,6 +85,7 @@ Handler::rankingList = (msg, session, next) ->
       rankList: players,
       rankStats: r.stats
     }
+    console.log '-end ranking list-'
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -91,7 +93,7 @@ Handler::challenge = (msg, session, next) ->
   playerName = session.get('playerName')
   targetId = msg.targetId
   ranking = msg.ranking
-
+  console.log '-challenge-', playerId, targetId, ranking
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
@@ -130,6 +132,7 @@ Handler::challenge = (msg, session, next) ->
       if player.rank?.startCount is 1
         firstTime = true
 
+      console.log '-end challenge-'
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl

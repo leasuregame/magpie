@@ -28,6 +28,7 @@ exports.manage = function(req, res) {
         return res.status(500).send(err);
       }
       res.render('cdkey', {
+        menu: 'cdkey',
         hasPrevious: page==1?false:true,
         hasNext: parseInt(count/PAGE_COUNT)+1==page?false:true,
         used: used,

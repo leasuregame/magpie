@@ -30,6 +30,7 @@ Remote::createPlayer = (args, callback) ->
         }, cb
 
       (player, cb) ->
+        console.log '-create player result-', player.name 
         initPlayer player, cb
     ], (err, player) ->
       if err
@@ -42,8 +43,12 @@ Remote::createPlayer = (args, callback) ->
       messageService.add(uid, serverId, player.id, player.name)
       callback(null, player.toJson())
 
-Remote::getPlayerByUserId = (userId, serverId, callback) ->
+Remote::getPlayerByUserId = (args, callback) ->
+  userId = args.userId
+  serverId = args.serverId
+  
   dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
+    console.log '-get player bu user id-', err, player?.name
     if err and not player
       return callback {code: 501, msg: '找不到玩家'}
 

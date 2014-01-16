@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -104,7 +104,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>60</real>
+											<real>30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -132,7 +132,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>60</real>
+											<real>30</real>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -143,11 +143,11 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>6</real>
+											<real>12</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>420</real>
+											<real>390</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -215,7 +215,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>60</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -350,7 +350,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-60</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -378,7 +378,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-60</real>
+											<real>-30</real>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -389,11 +389,11 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>6</real>
+											<real>12</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-420</real>
+											<real>-390</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -461,7 +461,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-60</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1281,7 +1281,7 @@
 			<key>chainedSequenceId</key>
 			<integer>1</integer>
 			<key>length</key>
-			<real>6</real>
+			<real>12</real>
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
@@ -1291,7 +1291,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>168.32723999023438</real>
+			<real>89.050559997558594</real>
 			<key>sequenceId</key>
 			<integer>1</integer>
 			<key>soundChannel</key>

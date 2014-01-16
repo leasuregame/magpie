@@ -8,7 +8,6 @@ convert-data: build
 
 start: build convert-data
 	pomelo start production --daemon
-	cd ../gm && make runserver2
 	cd ../web-server && forever start app.js && cd ../game-server
 
 stop:

@@ -50,10 +50,9 @@ Handler::login = (msg, session, next) ->
 Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, platform, next) ->
-  console.log '-login-1-', msg, session.get('playerId')
+doLogin  = (type, app, msg, session, platform, next) ->  
+  console.log '-login-1-', 'sid=', session.id, msg, msg.account
   areaId = msg.areaId
-
   user = null
   player = null
   uid = null
@@ -67,8 +66,10 @@ doLogin  = (type, app, msg, session, platform, next) ->
 
     (cb) =>
       [args, method] = authParams(type, msg, app)
+      args.sid = session.id
       console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+        console.log '-after auth-', msg.account
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err

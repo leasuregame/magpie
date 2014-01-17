@@ -48,7 +48,7 @@ class Component
     @timerId = setInterval executeVerify.bind(null, @app, @app.get('verifyQueue')), @interval
     process.nextTick cb
 
-  stop: () ->
+  stop: (cd) ->
     clearInterval @timerId
     process.nextTick cb
 

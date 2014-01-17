@@ -1126,7 +1126,7 @@ var Player = (function(_super) {
     Player.prototype.getGoldCard = function() {
         var gc = {};
         for (var g in this.goldCards) {
-            gc[g] = this.goldCards[g].toString();
+            gc[g] = this.goldCards[g].toJson();
         }
         return gc;
     };

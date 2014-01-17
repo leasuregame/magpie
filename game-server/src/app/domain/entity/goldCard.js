@@ -18,9 +18,9 @@ var GoldCard = (function(_super) {
 
     GoldCard.prototype.daysRemaining = function(dateString) {
         var today = new Date(dateString || new Date().toDateString());
-        var validDate = new Date(this.validDate);
+        var validDate = new Date(utility.dateFormat(this.validDate, "yyyy-MM-dd"));
         var days = (validDate - today)/(1000*60*60*24);
-        return days>=0 ? days+1 : 0;
+        return days>=0 ? parseInt(days+1) : 0;
     };
 
     GoldCard.prototype.setFlag = function() {
@@ -49,7 +49,7 @@ var GoldCard = (function(_super) {
 
 var getDays = function(created) {
     var today = new Date(new Date().toDateString());
-    var cdata = new Date(created);
+    var cdata = new Date(utility.dateFormat(created, "yyyy-MM-dd"));
     var days = (today - cdata)/(1000*60*60*24);
     return days+1;
 };

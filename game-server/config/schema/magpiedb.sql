@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `goldCard` (
   `orderId` BIGINT(20) UNSIGNED NOT NULL,
   `orderNo` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `type` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
   `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
   `created` Date,
   `validDate` Date,

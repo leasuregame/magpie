@@ -1,6 +1,7 @@
 _ = require 'underscore'
 job = require '../../../dao/job'
 async = require 'async'
+table = require '../../../manager/table'
 
 module.exports = (app) ->
   new Handler(app)
@@ -9,7 +10,7 @@ Handler = (@app) ->
 
 Handler::checkBuyPermission = (msg, session, next) ->
   playerId = session.get('playerId')
-  product_id = msg.productId
+  product_id = msg.type
 
   async.waterfall [
     (cb) =>
@@ -17,15 +18,15 @@ Handler::checkBuyPermission = (msg, session, next) ->
 
     (player, cb) =>
       if _.has(player.goldCards, product_id) and player.goldCards[product_id].daysRemaining() > 0
-        return next(null, {code: 501, msg: '不能同时购买两个以上'})
+        return cb({code: 501, msg: '不能同时购买两个以上'})
       cb()
     
     (cb) =>
-      if @app.get('dao').goldCard.getByType playerId, product_id, cb
+      @app.get('dao').goldCard.getByType playerId, product_id, cb
 
     (cards, cb) =>
       if cards.length > 0
-        return next(null, {code: 501, msg: '不能同时购买两个以上'})
+        return cb({code: 501, msg: '不能同时购买两个以上'})
       cb()
   ], (err, res) ->
     if err
@@ -35,7 +36,7 @@ Handler::checkBuyPermission = (msg, session, next) ->
 
 Handler::getReward = (msg, session, next) ->
   playerId = session.get('playerId')
-  product_id = msg.productId
+  product_id = msg.type
 
   @app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err
@@ -48,10 +49,10 @@ Handler::getReward = (msg, session, next) ->
     if gc.daysRemaining() <= 0
       return next(null, {code: 501, msg: '已过期，不能领取'})
 
-    if gc.hasFlg()
+    if gc.hasFlag()
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    products = table.getTable('recharge').filter (dkkd, item) -> item.product_id is product_id
+    products = table.getTable('recharge').filter (id, item) -> item.product_id is product_id
     if products and products.length > 0
       product = products[0]
     else

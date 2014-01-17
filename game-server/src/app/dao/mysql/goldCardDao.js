@@ -17,7 +17,7 @@ var GoldCardDao = (function(_super) {
 
   GoldCardDao.getValidCards = function(playerId, cb) {
     var today = new Date();
-    var sql = 'select * from goldCard where validDate >= ' + utility.dateFormat(today, 'yyyy-MM-dd');
+    var sql = 'select * from goldCard where playerId = ' + playerId + ' and validDate >= ' + utility.dateFormat(today, 'yyyy-MM-dd');
 
     dbClient.query(sql, [], function(err, res) {
       if (err) {
@@ -30,7 +30,9 @@ var GoldCardDao = (function(_super) {
       }
 
       if ( !! res && res.length > 0) {
-        cb(null, res);
+        cb(null, res.map(function(r) {
+          return new GoldCardDao.domain(r);
+        }));
       } else {
         cb(null, []);
       }
@@ -39,7 +41,7 @@ var GoldCardDao = (function(_super) {
 
   GoldCardDao.getByType = function(playerId, type, cb) {
     var today = new Date();
-    var sql = "select * from goldCard where validDate >= " + utility.dateFormat(today, 'yyyy-MM-dd') + " and type = '" + type + "'";
+    var sql = "select * from goldCard where playerId = " + playerId + " and validDate >= " + utility.dateFormat(today, 'yyyy-MM-dd') + " and type = '" + type + "'";
 
     dbClient.query(sql, [], function(err, res) {
       if (err) {
@@ -52,7 +54,9 @@ var GoldCardDao = (function(_super) {
       }
 
       if ( !! res && res.length > 0) {
-        cb(null, res);
+        cb(null, res.map(function(r) {
+          return new GoldCardDao.domain(r);
+        }));
       } else {
         cb(null, []);
       }

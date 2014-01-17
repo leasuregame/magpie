@@ -8,6 +8,10 @@ ORDER_FINISHED_STATUS = 2000
 ORDER_ERROR_STATUS_1 = 3000
 ORDER_ERROR_STATUS_2 = 3010
 
+GOLDCARDMAP = 
+  'com.leasuregame.magpie.week.card.pay6': 'week'
+  'com.leasuregame.magpie.month.card.pay30': 'month'
+
 module.exports = (app) ->
   new Remote(app)
 
@@ -73,20 +77,21 @@ Remote::add = (args, callback) ->
     player.increase('gold', (product.cash * 10 + product.gold) * times)
     player.save()
 
-    addGoldCard @app, order.id, player, product, (err, ply) => successMsg(@app, ply)
+    addGoldCard @app, tradeNo, player, product, (err, ply) => successMsg(@app, ply)
     callback(null, {ok: true})
     updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS)
 
-addGoldCard = (app, orderId, player, product, cb) ->
+addGoldCard = (app, tradeNo, player, product, cb) ->
   return cb(null, player) if not isGoldCard(product)
 
   today = new Date()
-  validDate = new Date(today.getDate()+product.valid_days-1)
+  vd = new Date()
+  validDate = vd.setDate(today.getDate()+product.valid_days-1)
   app.get('dao').goldCard.create {
     data: {
-      orderId: orderId,
+      orderNo: tradeNo,
       playerId: player.id,
-      type: product.product_id,
+      type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
       validDate: utility.dateFormat(validDate, "yyyy-MM-dd")
     }
@@ -100,7 +105,7 @@ addGoldCard = (app, orderId, player, product, cb) ->
 isGoldCard = (product) ->
   ids = [
     'com.leasuregame.magpie.week.card.pay6',
-    'com.leasuregame.magpie.week.card.pay6'
+    'com.leasuregame.magpie.month.card.pay30'
   ]
   if product and product.product_id in ids
     return true
@@ -122,7 +127,8 @@ successMsg = (app, player) ->
     msg: {
       gold: player.gold,
       vip: player.vip,
-      cash: player.cash
+      cash: player.cash,
+      goldCards: player.getGoldCard()
     }
   }, (err, res) ->
     if err

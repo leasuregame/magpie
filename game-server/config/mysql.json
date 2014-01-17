@@ -26,14 +26,14 @@
 	"production": {
 		"1": {
 			"host": "124.238.236.33",
-			"port": "3306",
+			"port": "6033",
 			"database": "magpie_area_1",
 			"user": "dev",
 			"password": "1"
 		},
 		"userdb": {
 			"host": "124.238.236.33",
-			"port": "3306",
+			"port": "6033",
 			"database": "userdb",
 			"user": "dev",
 			"password": "1"

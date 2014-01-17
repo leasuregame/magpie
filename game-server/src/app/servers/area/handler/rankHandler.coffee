@@ -34,8 +34,8 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  start = Date.now()
   player = null
+  console.log '-ranking list-', playerId
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -58,20 +58,16 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      console.log '-a-a-a-', player.id, player.rank?.recentChallenger
       if player.rank?.recentChallenger?.length > 0
-        console.log '-a-', player.name
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])
 
     (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
-      console.log 'rankingList: ', rankings, beatBackRankings
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
-      console.log '=rankingList=', rankings
       playerManager.rankingList _.keys(rankings), (err, players, ranks) -> cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
@@ -87,11 +83,9 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now() - start,
       rankStats: r.stats
     }
-    end = Date.now();
-    console.log '**********get rankingList useTime = ',(end - start) / 1000
+    console.log '-end ranking list-'
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -99,7 +93,7 @@ Handler::challenge = (msg, session, next) ->
   playerName = session.get('playerName')
   targetId = msg.targetId
   ranking = msg.ranking
-
+  console.log '-challenge-', playerId, targetId, ranking
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
@@ -138,6 +132,7 @@ Handler::challenge = (msg, session, next) ->
       if player.rank?.startCount is 1
         firstTime = true
 
+      console.log '-end challenge-'
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl

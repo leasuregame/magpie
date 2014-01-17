@@ -1,5 +1,6 @@
 Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
+Cache = require '../../../common/cache'
 app = require('pomelo').app
 dao = app.get('dao')
 request = require 'request'
@@ -8,7 +9,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 
 CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
 accountMap = {}
-sessionIdMap = {}
+sessionIdMap = new Cache()
 
 module.exports = 
   auth: (args, cb) ->
@@ -16,6 +17,7 @@ module.exports =
     password = args.password
     areaId = args.areaId
     frontendId = args.frontendId
+    sid = args.sid
 
     dao.user.fetchOne {
       where: account: account
@@ -28,8 +30,8 @@ module.exports =
         return cb({code: 501, msg: '密码不正确'})
 
       
-      checkDuplicatedLogin(account, areaId, frontendId, user)
-      cb(null, user.toJson())
+      checkDuplicatedLogin areaId, frontendId, user, sid, (err, user)->
+        cb(null, user.toJson())
 
   register: (args, cb) ->
     account = args.account
@@ -50,6 +52,7 @@ module.exports =
     nickName = args.nickName
     areaId = args.areaId
     frontendId = args.frontendId
+    sid = args.sid
 
     async.waterfall [
       (done) ->
@@ -64,7 +67,7 @@ module.exports =
           statusCode = parseInt body
           if statusCode > 0 and statusCode is userId
             ### 记住已登录用户和session ###
-            sessionIdMap[userId] = sessionId
+            sessionIdMap.put userId, sessionId, 1000 * 60 * 60
             done(null, true)
           else if statusCode is -1
             done({code: 501, msg: '会话无效'})
@@ -88,35 +91,43 @@ module.exports =
             }, (e, u) ->
               if e and not u
                 logger.error('can not create user: ', userId, nickName)
-                done()
+                done({code: 501, msg: '登录失败，请重新登录'})
               else 
                 done(null, u)
           else if not err and user
             done(null, user)
           else 
-            done()      
+            done({code: 501, msg: '登录失败，请重新登录'})
+      (user, done) ->
+        checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
       if err
         logger.error(err)
         return cb(err)
 
-      checkDuplicatedLogin(nickName, areaId, frontendId, user)
+      console.log('check session: ', 'acountCount:',_.keys(accountMap).length, 'sessionCount:', sessionIdMap.size())
       cb(null, user?.toJson())
 
 validSessionId = (uid, sid) ->
-  if uid.toString() in Object.keys(sessionIdMap) and sessionIdMap[uid] is sid
+  cacheSid = sessionIdMap.get(uid)
+  if cacheSid? and cacheSid is sid
     return true
   else
     return false
 
-checkDuplicatedLogin = (account, areaId, frontendId, user) ->
-  if accountMap[account] and areaId is accountMap[account].areaId
-    bss = app.get('backendSessionService')
-    bss.kickByUid accountMap[account].serverId, user.id + '*' + areaId, (err, res) -> 
-      console.log 'backendSessionService kick by uid: ', err, res
-
+checkDuplicatedLogin = (areaId, frontendId, user, sid, done) ->
   user.lastLoginArea = areaId
   user.lastLoginTime = Date.now()
   user.loginCount += 1
   user.save()
-  accountMap[account] = {areaId: areaId, serverId: frontendId}
+
+  if accountMap[user.id] and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
+    bss = app.get('backendSessionService')
+    
+    bss.kickByUid accountMap[user.id].serverId, user.id + '*' + areaId, (err, res) -> 
+      console.log '-finished kick by uid-', user.id, accountMap[user.id]
+      accountMap[user.id] = {areaId: areaId, serverId: frontendId, sid: sid}
+      done(null, user)
+  else
+    accountMap[user.id] = {areaId: areaId, serverId: frontendId, sid: sid}
+    done(null, user)

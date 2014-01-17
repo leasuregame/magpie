@@ -54,7 +54,6 @@ Module.prototype.masterHandler = function(agent, msg, cb) {
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
 	if(!!cb && typeof cb === 'function') {
-		console.log('client handler: ', agent.get(module.exports.moduleId));
 		var data = agent.get(module.exports.moduleId);
 		if (data) {
 			cb(null, data[msg.sid]);

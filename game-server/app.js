@@ -12,6 +12,20 @@ var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
 var PlayerManager = require('./app/manager/playerManager');
+var fs = require('fs');
+var path = require('path');
+
+var watchSharedConf = function(app) {
+  var confpath = path.join(__dirname, '..', 'shared', 'conf.json')
+  function setSharedConf(app, confpath) { 
+    app.set('sharedConf', JSON.parse(
+      fs.readFileSync(confpath))
+    )
+  }
+  setSharedConf(app, confpath);
+  fs.watchFile(confpath, function(curr, prev) {setSharedConf(app, confpath)});
+}
+
 /**
  * Init app for client.
  */
@@ -75,6 +89,7 @@ app.configure('production|development', 'connector', function() {
     useProtobuf: true
   });
 
+  watchSharedConf(app);
   //app.filter(loginFilter());
 });
 
@@ -130,7 +145,7 @@ app.configure('production|development', 'area', function() {
   }});
 
   app.load(counter);
-  app.load(verifier);
+  //app.load(verifier);
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

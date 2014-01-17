@@ -44,7 +44,6 @@ Module.prototype.masterHandler = function(agent, msg, cb) {
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
 	if(!!cb && typeof cb === 'function') {
-		console.log('client handler: ', agent.get(module.exports.moduleId));
 		cb(null, agent.get(module.exports.moduleId)||{});
 	}
 };

@@ -27,18 +27,17 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
-    @hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
-    @atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
-    @init_atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
     @spirit_hp = attrs.incs?.spirit_hp or 0
     @spirit_atk = attrs.incs?.spirit_atk or 0
+    @init_hp = @hp = attrs.hp + @spirit_hp
+    @init_atk = @atk = attrs.atk + @spirit_atk
+
     @hp_only = attrs.hp
     @atk_only = attrs.atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 1
-    @skill_inc = attrs.skillInc
+    @skill_inc = attrs.skillInc or attrs.getSkillInc?()
     @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0
@@ -99,10 +98,7 @@ class Hero extends Module
     return callback() if @player.enemy.death()
 
     if not enemys or enemys.length is 0
-      console.log '技能攻击时，攻击的对方卡牌不能为空'
       return callback()
-
-    console.log @idx, '使用技能', @skill.name, @skill.type
 
     switch @skill.type
       when 'single_fight', 'aoe' 
@@ -126,25 +122,18 @@ class Hero extends Module
         # 闪避
         _step.d.push enemy.idx
         _step.e.push 0
-        console.log enemy.idx, '闪避'
         continue
       else if @isCrit()
         # 暴击
         _dmg = parseInt _dmg * @crit_factor
         _d = -enemy.idx # 负索引代表暴击
-        console.log enemy.idx, '暴击'
       else
         _d = enemy.idx
-
-      console.log "#{enemy.idx} 受到伤害 #{_dmg}"
       ### 上下浮动15% ###
       _dmg = floatUpOrDown(_dmg)
 
       _step.d.push _d
       _step.e.push -_dmg
-      # debug
-      _step['dhp'] = enemy.hp
-
       enemy.damage _dmg, @, _step
 
     @log _step
@@ -155,21 +144,19 @@ class Hero extends Module
     _step.t = 1 if isSpiritor
     
     _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
-    if @isCrit()
-      _hp *= @crit_factor
-
+    
     for enemy in enemys      
+      if @isCrit()
+        _hp *= @crit_factor
+
       ### 上下浮动15% ###
       _hp = floatUpOrDown(_hp)
       realHp = _.min([_hp, enemy.init_hp - enemy.hp])
+      realHp = 0 if realHp < 0
       enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
       _step.e.push _hp
-      # debug
-      _step['dhp'] = enemy.hp
-
-      console.log "#{enemy.idx} 加血 #{realHp}"
 
     @log _step
     callback enemys
@@ -193,16 +180,10 @@ class Hero extends Module
 
       _step = {a: @idx, d: [_d], e: [-_dmg], r: []}
 
-      console.log "#{_hero.idx} 受到伤害 #{_dmg}"
-
       _hero.damage _dmg, @, _step
-      # debug
-      _step['dhp'] = _hero.hp
-
       @log _step
       callback _hero
     else
-      console.log "普通攻击：找不到对方可攻击的卡牌"
       #throw new Error('Normal Attack Error: can not find target to be attacked.')
       callback()
 
@@ -211,25 +192,18 @@ class Hero extends Module
     _value = @_checkDmgReduce(value, step)
 
     @hp -= _value
-
+    
     # 检查，伤害反弹
     # @_checkRebound(enemy, value, step)
 
-    console.log "#{@idx} 死亡" if @death()
-    step['death'] = true if @death()
-
   damageOnly: (value) ->
     @hp -= value
-
-    console.log "#{@idx} 死亡" if @death()
-    #step['death'] = true if @death()
   
   _checkDmgReduce: (value, step) ->
     _value = @sp?.dmgReduce(value) or value
     if _value < value
       step.e.pop()
       step.e.push -_value
-      console.log '伤害减少了：', value - _value
 
     _value
 
@@ -238,7 +212,6 @@ class Hero extends Module
     if _val isnt 0
       enemy.damageOnly _val
       step.r.push -_val
-      console.log "伤害反弹给 #{enemy.idx}, #{_val}"
     else
       step.r.push null
 

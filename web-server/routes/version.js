@@ -25,7 +25,7 @@ exports.update = function(req, res) {
     return res.status(400).send('Bad version number');
   }
 
-  if (ver == helper.lastVersion()) {
+  if (helper.versionCompare(ver, helper.lastVersion())) {
     filename = vData[platform].lastFilename;
   }
 

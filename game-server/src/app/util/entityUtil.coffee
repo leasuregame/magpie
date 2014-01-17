@@ -16,7 +16,7 @@ module.exports =
 
     if data.star >= 3
       data.passiveSkills = initPassiveSkill(data.star)
-      genSkillInc(data)
+      genFactorForCard(data)
 
     dao.card.create data: data, (err, card) ->
       if err
@@ -30,7 +30,7 @@ module.exports =
     ### 等级到达最高级后不加经验 ###
     if player.lv >= MAX_PLAYER_LV
       player.exp = 0
-      return
+      return cb(false)
 
     player.increase('exp', exp)
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv
@@ -77,8 +77,8 @@ module.exports =
       if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
-        filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
-        id = generateCardId star, if filtered.length > 0 then filtered else lightUpIds
+        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
+        id = generateCardId star, lightUpIds
         vstar = (id%5 || 5)
         id += star - vstar if star isnt vstar
     else
@@ -109,6 +109,9 @@ getCardIdsByStar = (stars, exceptIds = []) ->
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> (i%5 || 5) in stars
   items
+
+genFactorForCard = (card) ->
+  card.factor = _.random(1, 1000)
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)

@@ -26,6 +26,7 @@ var CardTrainLabel = cc.Layer.extend({
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
     _showTrain: false,
+    _effect: null,
 
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
@@ -55,22 +56,30 @@ var CardTrainLabel = cc.Layer.extend({
         cardItemBgSprite.setPosition(this._cardTrainLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
-        var elixirIcon = cc.LabelTTF.create("仙丹:", "STHeitiTC-Medium", 20);
-        elixirIcon.setColor(cc.c3b(255, 239, 131));
-        elixirIcon.setAnchorPoint(cc.p(0, 0.5));
+        var elixirIcon = cc.Sprite.create(main_scene_image.icon151);
         elixirIcon.setPosition(this._cardTrainLabelFit.elixirIconPoint);
         this.addChild(elixirIcon);
+
+        var elixirIconLabel = cc.LabelTTF.create("仙丹:", "STHeitiTC-Medium", 20);
+        elixirIconLabel.setColor(cc.c3b(255, 239, 131));
+        elixirIconLabel.setAnchorPoint(cc.p(0, 0.5));
+        elixirIconLabel.setPosition(this._cardTrainLabelFit.elixirIconLabelPoint);
+        this.addChild(elixirIconLabel);
 
         this._elixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._elixirLabel.setAnchorPoint(cc.p(0, 0.5));
         this._elixirLabel.setPosition(this._cardTrainLabelFit.elixirLabelPoint);
         this.addChild(this._elixirLabel);
 
-        var needElixirIcon = cc.LabelTTF.create("消耗仙丹:", "STHeitiTC-Medium", 20);
-        needElixirIcon.setColor(cc.c3b(255, 239, 131));
-        needElixirIcon.setAnchorPoint(cc.p(0, 0.5));
+        var needElixirIcon = cc.Sprite.create(main_scene_image.icon151);
         needElixirIcon.setPosition(this._cardTrainLabelFit.needElixirIconPoint);
         this.addChild(needElixirIcon);
+
+        var needElixirIconLabel = cc.LabelTTF.create("消耗:", "STHeitiTC-Medium", 20);
+        needElixirIconLabel.setColor(cc.c3b(255, 239, 131));
+        needElixirIconLabel.setAnchorPoint(cc.p(0, 0.5));
+        needElixirIconLabel.setPosition(this._cardTrainLabelFit.needElixirIconLabelPoint);
+        this.addChild(needElixirIconLabel);
 
         this._needElixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._needElixirLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -290,7 +299,6 @@ var CardTrainLabel = cc.Layer.extend({
                 } else {
                     this._hpLabel.runAction(spawnAction);
                 }
-
             }
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
@@ -307,6 +315,14 @@ var CardTrainLabel = cc.Layer.extend({
                     this._hpAdditionLabel.setVisible(false);
                     this._atkAdditionLabel.setVisible(true);
                 }
+
+                if (mandatoryTeachingLayer) {
+                    if (mandatoryTeachingLayer.isTeaching()) {
+                        mandatoryTeachingLayer.clearAndSave();
+                        mandatoryTeachingLayer.next();
+                    }
+                }
+
             } else {
                 this._hpAdditionLabel.setVisible(false);
                 this._atkAdditionLabel.setVisible(false);
@@ -323,6 +339,11 @@ var CardTrainLabel = cc.Layer.extend({
         cc.log("CardTrainLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -385,12 +406,20 @@ var CardTrainLabel = cc.Layer.extend({
         this._leadCard.train(function (data) {
             cc.log(data);
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
-            effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
-                effect.removeFromParent();
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
+            }
+
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect49, this);
+            that._effect.setPosition(that._cardTrainLabelFit.selectLeadCardItemPoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                if (that._effect) {
+                    that._effect.removeFromParent();
+                    that._effect = null;
+                }
             });
-            that.addChild(effect, 10);
+            that.addChild(that._effect, 10);
             that._showTrain = true;
             that.update();
         }, this._trainCount, this._trainType);

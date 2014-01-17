@@ -12,9 +12,9 @@ var lz = lz || {};
 
 lz.platformConfig = {
     PLATFORM: "TB",
-    UPDATE_PACKAGE_URL: "http://115.29.175.156:9090/api/tb/update/",
-    UPDATE_VERSION_URL: "http://115.29.175.156:9090/api/tb/version",
-    GAME_NOTICE_URL: "http://115.29.175.156:9090/api/tb/notice"
+    UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
+    UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/tb/version",
+    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
 };
 
 var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;
@@ -53,11 +53,6 @@ tbAdapter.initDidFinishWithUpdateCodeHandler = function (code) {
 // 登录成功回调
 tbAdapter.loginResultHandler = function (isSuccess) {
     cc.log("tbAdapter loginResultHandler: " + isSuccess);
-
-    cc.log(tbAdapter.TBIsLogined());
-    cc.log(tbAdapter.TBSessionID());
-    cc.log(tbAdapter.TBUserID());
-    cc.log(tbAdapter.TBNickName());
 };
 
 // 退出登录

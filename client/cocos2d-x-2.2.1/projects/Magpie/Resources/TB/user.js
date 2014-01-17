@@ -63,9 +63,11 @@ var User = Entity.extend({
         var that = this;
 
         var fn = function () {
-            var updateLayer = UpdateLayer.create();
-            updateLayer.retain();
-            var version = updateLayer.getVersion();
+            if (typeof(UpdateLayer) != 'undefined') {
+                var updateLayer = UpdateLayer.create();
+                updateLayer.retain();
+                var version = updateLayer.getVersion();
+            }
 
             cc.log("=================================================");
             cc.log(version);
@@ -77,7 +79,7 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version
+                    version: version || "1.1.0"
                 }, function (data) {
                     cc.log(data);
 
@@ -110,6 +112,8 @@ var User = Entity.extend({
                     } else {
                         cc.log("login fail");
 
+                        tbAdapter.TBLogout(0);
+
                         cb(0);
 
                         TipLayer.tip(data.msg);
@@ -126,15 +130,10 @@ var User = Entity.extend({
                 tbAdapter.loginResultHandler = function () {
                 };
 
-                cc.log(tbAdapter.TBIsLogined());
-                cc.log(tbAdapter.TBSessionID());
-                cc.log(tbAdapter.TBUserID());
-                cc.log(tbAdapter.TBNickName());
-
                 fn();
             };
 
-            if(tbAdapter.TBLogin(0) != TB_PLATFORM_NO_ERROR) {
+            if (tbAdapter.TBLogin(0) != TB_PLATFORM_NO_ERROR) {
                 cb(0);
             }
         } else {

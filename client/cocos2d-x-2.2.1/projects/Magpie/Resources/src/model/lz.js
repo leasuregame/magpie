@@ -223,7 +223,7 @@ var gameGoodsName = {
     "powerValue": {
         name: "体力",
         color: cc.c3b(255, 239, 131),
-        icon: gameGoodsIcon["powerValue"]
+        icon: gameGoodsIcon["power"]
     },
     "power": {
         name: "体力",
@@ -285,6 +285,9 @@ var gameGoodsName = {
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)
+    },
+    "cardArray": {
+        color: cc.c3b(255, 239, 131)
     }
 };
 
@@ -345,7 +348,16 @@ lz.tipReward = function (reward) {
                 if (str.icon) {
                     TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {
-                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    if (key == "cardArray") {
+                        var cards = reward[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            TipLayer.tipNoBg(card.get("name") + ": +1");
+                        }
+                    } else {
+                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    }
                 }
             }
         })(key);
@@ -360,17 +372,9 @@ lz.getTimeStr = function (time) {
     cc.log("BattleMessageLayer _getTimeStr");
 
     var date = new Date(time);
-//    var today = new Date();
-//    var timeStr = "";
 
-    return (date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay() +
+    return (date.getFullYear() + " . " + (date.getMonth() + 1) + " . " + date.getDate() +
         "  " + date.getHours() + " : " + date.getMinutes());
-
-//    if (today.toDateString() === date.toDateString()) {
-//        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-//    } else {
-//        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-//    }
 };
 
 var MAX_LAST_NAME_COUNT = 250;

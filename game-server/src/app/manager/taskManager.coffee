@@ -79,9 +79,6 @@ class Manager
       player.setTaskMark(id)
 
     if chapterId? and player.hasTaskMark(chapterId)
-      console.log 'type of chapterId: ', typeof chapterId
-      console.log 'has wipe out chapter: ', 'chapterId = ' + chapterId, 'task=', JSON.stringify(player.task)
-      console.log JSON.stringify(player.taskMark)
       return cb({code: 501, msg: '已扫荡'})
 
     if chapterId? and not player.hasTaskMark(chapterId)
@@ -130,6 +127,9 @@ class Manager
       if task.id == 1
         firstWin = true # 第一小关第一次赢
         data.first_win = true
+        ### 第一次战斗胜利奖励5000仙币 ###
+        player.increase('money', 5000)
+        data.money_obtain += 5000
 
     ### 每次战斗结束都有10%的概率获得5魔石 ###
     if utility.hitRate(taskRate.gold_obtain.rate)
@@ -149,41 +149,43 @@ class Manager
   @countExploreResult: (player, data, taskId, chapterId, cb) ->
     taskData = table.getTableItem('task', taskId)
 
-    _.extend data, {
-      power_consume: taskData.power_consume
-      exp_obtain: taskData.exp_obtain
-      money_obtain: taskData.coins_obtain
-    }
+    data.power_consume += taskData.power_consume
+    data.exp_obtain += taskData.exp_obtain
+    data.money_obtain += taskData.coins_obtain
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
-      if taskId < 4
-        ### 十步之遥 成就奖励 ###
-        achieve.taskPoinTo(player)
+      if taskId is 500 and player.task.progress is taskData.points
+        ### 全部通关，do nothing ###
+      else
+        if taskId < 4
+          ### 十步之遥 成就奖励 ###
+          achieve.taskPoinTo(player)
 
-      task = utility.deepCopy(player.task)
-      task.progress += 1
-      if task.progress >= taskData.points
-        if taskId%10 is 0
-          ### 一大关结束，触发摸一摸功能 ###
-          data.momo = player.createMonoGift()
-          ### 通关成就 ###
-          achieve.taskChapterPassTo(player, chapterId)
-          achieve.taskPartPassTo(player, chapterId)
+        task = utility.deepCopy(player.task)
+        task.progress += 1
+        if task.progress >= taskData.points
+          if taskId%10 is 0
+            ### 一大关结束，触发摸一摸功能 ###
+            data.momo = player.createMonoGift()
+            ### 通关成就 ###
+            achieve.taskChapterPassTo(player, chapterId)
+            achieve.taskPartPassTo(player, chapterId)
 
-        task.progress = 0
-        task.id += 1
-        task.hasWin = false       
+          if task.id < 500
+            task.progress = 0
+            task.id += 1 
+            task.hasWin = false
 
-        rew = table.getTableItem('task_through_reward', task.id-1)
-        if not rew
-          logger.error('can not find throught reward by id', task.id-1)
-        data.through_reward = {money: rew?.money_obtain}
-        player.increase('money', rew?.money_obtain or 0)
-      player.set('task', task)
+          rew = table.getTableItem('task_through_reward', task.id-1)
+          if not rew
+            logger.error('can not find throught reward by id', task.id-1)
+          data.through_reward = {money: rew?.money_obtain}
+          player.increase('money', rew?.money_obtain or 0)
+        player.set('task', task)
 
     ### consume power first, then add exp
     because exp change will check if upgrade player level ###

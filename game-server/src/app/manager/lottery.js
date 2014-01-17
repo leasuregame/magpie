@@ -58,8 +58,6 @@ var gen_card_star = function (level, hCounts) {
     var rateObj = utility.deepCopy(cardConfig.STAR[levelMapping[level]]);
     var margins = cardConfig.HIGHT_DRAWCARD_MARGIN;
 
-    console.log('before count',rateObj);
-
     if (level == 2) { //高级抽卡特殊处理
 
         if (hCounts == cardConfig.MAX_HIGHT_DRAWCARD_COUNT) {
@@ -83,13 +81,9 @@ var gen_card_star = function (level, hCounts) {
                     break;
                 }
             }
-
-            console.log('hCounts =',hCounts, 'after count...', rateObj['3'],rateObj['4'],rateObj['5']);
         }
 
     }
-
-    console.log('after count',rateObj);
 
     return utility.randomValue(_.keys(rateObj), _.values(rateObj));
 };
@@ -107,7 +101,6 @@ var gen_card_fragment = function (level, rCounts, hCounts) {
 
     var margin = utility.deepCopy(cardConfig.FRAGMENT[level]);
     var counts = (level == 1) ? rCounts : hCounts;
-    console.log('counts',counts)
     counts = counts - margin.COUNTS;
     var rate = (counts <= 0 ) ? 0 : counts * margin.MARGIN;
     

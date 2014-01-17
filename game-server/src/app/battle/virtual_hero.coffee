@@ -29,8 +29,8 @@ class VirtualHero extends Hero
       atk_inc = if @boss.atk_inc then (@boss.atk_inc) else 0
       #hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
       hp_inc = if @boss.hp_inc then (@boss.hp_inc) else 0
-      @atk += parseInt(@atk * atk_inc / 100)
-      @hp += parseInt(@hp * hp_inc / 100)
+      @init_atk = @atk += parseInt(@atk * atk_inc / 100)
+      @init_hp = @hp += parseInt(@hp * hp_inc / 100)
 
     @star = 3
     @skill_id = card_config.skill_id

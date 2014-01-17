@@ -2,13 +2,21 @@ dispatcher = require '../../../common/dispatcher'
 areasInfo = require '../../../../config/area'
 async = require 'async'
 _ = require 'underscore'
+fs = require 'fs'
+path = require 'path'
 
-status = ['NEW', 'NORMAL', 'BUSY']#, 'MAINTENANCE']
+status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
 SERVER_STATUS = 
 	NEW: 10
 	NORMAL: 20
 	BUSY: 30
-	#MAINTENANCE: 40
+	MAINTENANCE: 40
+
+watchAreasInfo = ->
+	filepath = path.join(__dirname, '..', '..', '..', '..', 'config', 'area.json')
+	fs.watchFile filepath, (curr, prev) -> 
+		areasInfo = JSON.parse fs.readFileSync(filepath)
+watchAreasInfo()
 
 module.exports = (app) ->
 	new Handler(app)
@@ -28,7 +36,6 @@ Handler::queryEntry = (msg, session, next) ->
 	], (err, results) ->
 		if err
 			logger.error('get servers state faild. ', err)
-		console.log results
 		areas = results[0]
 		conns = results[1]
 
@@ -39,7 +46,6 @@ Handler::queryEntry = (msg, session, next) ->
 				host: connector.host, 
 				port: connector.clientPort,
 				servers: areasInfo.map (a) -> 
-					a.status = SERVER_STATUS.NEW #randomStatus()
 					a.logins = areas['area-server-'+a.id]
 					a
 			}

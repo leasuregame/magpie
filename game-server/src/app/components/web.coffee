@@ -23,7 +23,6 @@ class Component
         res.writeHead(404, 'Not Found')
         res.end()
     .listen(server.webPort, server.host)
-    console.log 'create web on http://'+server.host+':'+server.webPort
     process.nextTick cb
 
   afterStart: (cb) ->

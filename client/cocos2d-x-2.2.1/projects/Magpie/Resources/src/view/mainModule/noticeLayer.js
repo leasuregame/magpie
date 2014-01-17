@@ -10,6 +10,26 @@
 var NoticeLayer = cc.Layer.extend({
     _webLayer: null,
 
+    onEnter: function () {
+        cc.log("NoticeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("公告界面");
+    },
+
+    onExit: function () {
+        cc.log("NoticeLayer onExit");
+
+        this._super();
+
+        if (this._webLayer) {
+            this._webLayer.close();
+        }
+
+        lz.dc.endLogPageView("公告界面");
+    },
+
     init: function () {
         cc.log("NoticeLayer init");
 
@@ -19,11 +39,13 @@ var NoticeLayer = cc.Layer.extend({
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
-        var noticeEffect = cc.BuilderReader.load(main_scene_image.uiEffect69, this);
-        noticeEffect.setPosition(cc.p(320, 568));
+        var point = gameFit.GAME_MIDPOINT;
 
-        var url = "http://115.29.175.156:9090/api/app/notice";
-        this._webLayer = lz.WebLayer.create(url, cc.rect(0, 0, 320, 480));
+        var noticeEffect = cc.BuilderReader.load(main_scene_image.uiEffect69, this);
+        noticeEffect.setPosition(point);
+
+        var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
+        this._webLayer = lz.WebLayer.create(lz.platformConfig.GAME_NOTICE_URL, rect);
 
         noticeEffect.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this.addChild(noticeEffect);
@@ -39,6 +61,8 @@ var NoticeLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._webLayer.close();
+        this._webLayer = null;
+
         this.removeFromParent();
 
         LazyLayer.closeCloudAll();

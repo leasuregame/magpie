@@ -364,12 +364,12 @@ Handler::starUpgrade = (msg, session, next) ->
       if utility.hitRate(totalRate)
         is_upgrade = true
       
+      player.decrease('money', money_consume)
       if is_upgrade
-        player.decrease('money', money_consume)
         card.increase('star')
         card.increase('tableId')
         card.resetSkillLv()
-        entityUtil.resetSkillIncForCard(card)
+        #entityUtil.resetSkillIncForCard(card)
 
         # 获得so lucky成就
         if card_count is 1
@@ -378,7 +378,7 @@ Handler::starUpgrade = (msg, session, next) ->
         # 获得五星卡成就
         if card.star is 5
           achieve.star5card(player)
-          cardNmae = table.getTableItem('cards', card.tableId).name
+          cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
             type: 0
@@ -448,7 +448,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       if player.lv < fun_limit?.pass_skillafresh 
         return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
 
-      consumeVal = passSkillConfig.CONSUME[type] * psIds.length
+      consumeVal = passSkillConfig.CONSUME[type]
 
       if player[_pros[type]] < consumeVal
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
@@ -754,6 +754,15 @@ Handler::exchangeCard = (msg, session, next) ->
       card: card.toJson(),
       fragments: player.fragments
     }})
+
+    if card.star is 5
+      cardNmae = table.getTableItem('cards', card.tableId).name
+      msg = {
+        msg: player.name + '成功兑换到一张' + cardNmae + '的五星卡牌！！！'
+        type: 0
+      }
+      msgQueue.push(msg)
+
 
 setExchangedCard = (player, tid) ->
   newCards = []

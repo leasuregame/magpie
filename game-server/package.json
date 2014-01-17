@@ -6,7 +6,7 @@
         "pomelo": "0.7.1",
         "mysql": ">=2.0",
         "mysql-queues": "*",
-        "generic-pool": ">=1.0.9",
+        "generic-pool": "2.0.4",
         "underscore": "1.4.4",
         "underscore.string": "2.3.1",
         "sprintf-js": "*",
@@ -24,7 +24,8 @@
         "pomelo-admin": "*",
         "request": "2.27",
         "node-uuid": "1.4.1",
-        "coffee-script": ">=1.6.2"
+        "coffee-script": ">=1.6.2",
+        "csv": "*"
     },
     "devDependencies": {
         "underscore": "1.4.4",

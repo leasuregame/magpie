@@ -24,6 +24,7 @@ var AmountLayer = LazyLayer.extend({
     _consumeLabel: null,
     _tip: null,
     _maxBuyTimes: 0,
+    _remainTimes: 0,
 
     onEnter: function () {
         cc.log("AmountLayer onEnter");
@@ -47,6 +48,7 @@ var AmountLayer = LazyLayer.extend({
         this._maxCount = data.count || 0;
         this._tip = data.tip || "";
         this._maxBuyTimes = data.maxBuyTimes || 0;
+        this._remainTimes = data.remainTimes || 0;
         var title = "购买" + data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
@@ -66,7 +68,7 @@ var AmountLayer = LazyLayer.extend({
         if (this._maxBuyTimes > 0) {
             var point = this._amountLayerFit.titleLabelPoint;
             var size = titleLabel.getContentSize();
-            var halfTitle = "(" + this._maxCount + "/" + this._maxBuyTimes + ")";
+            var halfTitle = "(" + this._remainTimes + "/" + this._maxBuyTimes + ")";
             var halfTitleLabel = StrokeLabel.create(halfTitle, "STHeitiTC-Medium", 20);
             halfTitleLabel.setColor(cc.c3b(255, 252, 175));
             halfTitleLabel.setAnchorPoint(cc.p(0, 0));
@@ -182,11 +184,13 @@ var AmountLayer = LazyLayer.extend({
 
     update: function () {
         this._count = Math.max(this._count, 0);
+
         if (this._count > this._maxCount) {
             TipLayer.tip(this._tip);
+            
             this._count = this._maxCount;
         }
-        // this._count = Math.min(this._count, this._maxCount);
+
         this._countLabel.setString(this._count);
 
         var consume = this._price * this._count;

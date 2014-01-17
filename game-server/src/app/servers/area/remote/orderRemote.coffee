@@ -45,7 +45,7 @@ Remote::add = (args, callback) ->
         amount: amount
         paydes: paydes
         status: ORDER_INIT_STATUS
-        created: utility.dateFormat(new Date(), "yyyy-MM-dd")
+        created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
       }, cb
   ], (err, order) =>
     if err

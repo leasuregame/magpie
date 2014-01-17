@@ -34,7 +34,11 @@ Handler::entry = (msg, session, next) ->
     (res, cb) ->
       user = res
       if _.contains user.roles, areaId
-        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
+        @app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id,
+          serverId: @app.getServerId()
+        }, (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
 
@@ -70,7 +74,6 @@ Handler::entryForGM = (msg,session,next)->
     (cb)->
       if not areaId
         cb({code:404,msg:'找不到服务器'})
-     # console.log("areaId = ",areaId)
 
       return cb(null,areaId) for area in areas when areaId is area.id
 
@@ -83,7 +86,7 @@ Handler::entryForGM = (msg,session,next)->
   ],(err)->
     if err
       return next(null,{code:err.code or 500,msg:err.msg or err})
-    console.log("areaId = ",session.get('areaId'));
+
     next(null,{code:200,msg:'连接服务器成功'})
 
 onUserLeave = (app, session, reason) ->

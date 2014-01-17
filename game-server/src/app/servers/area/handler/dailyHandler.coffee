@@ -44,7 +44,7 @@ Handler::lottery = (msg, session, next) ->
 
     resource = randomReward()
     if resource.type is 'power'
-      player.resumePower(resource.value*times)
+      player.addPower(resource.value*times)
     else
       player.increase(resource.type, resource.value*times)
 

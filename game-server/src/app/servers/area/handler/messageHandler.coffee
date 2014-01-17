@@ -140,6 +140,7 @@ Handler::sysMsg = (msg, session, next) ->
   content = msg.content
   options = msg.options or {}
   receiver = msg.playerId or SYSTEM
+
   dao.message.create data: {
     options: options
     sender: SYSTEM
@@ -151,7 +152,7 @@ Handler::sysMsg = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, null, {
+    sendMessage @app, msg.playerId, {
       route: 'onMessage'
       msg: res.toJson()
     }, '邮件发送成功', next
@@ -392,7 +393,7 @@ Handler::accept = (msg, session, next) ->
         return cb({code: 501, msg: '消息类型不匹配'})
 
       if isFinalStatus(message.status)
-        return cb({code: 200, msg: '已处理'})
+        return cb({code: 501, msg: '已处理'})
 
       cb()
 
@@ -403,7 +404,7 @@ Handler::accept = (msg, session, next) ->
       player = res
       if player.friends.length >= player.friendsCount
         return cb({code: 501, msg: '您的好友已达上限'})
-      else if (player.firends.filter (f) f.id is message.sender).length > 0
+      else if (player.friends.filter (f) -> f.id is message.sender).length > 0
         friendExist = true
         cb()
       else
@@ -416,7 +417,7 @@ Handler::accept = (msg, session, next) ->
           return next(null, {code: err.code or 500, msg: err.msg or err})
         else if (senderFriends.filter (f) -> f.id is playerId).length > 0
           friendExist = true
-          cb()
+          cb(null, null)
         else if senderFriends.length >= res.friendsCount
           cb({code: 501, msg: '对方好友已达上限'})
         else
@@ -443,7 +444,7 @@ Handler::accept = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     if friendExist
-      return next(null, {code: 200})
+      return next(null, {code: 501, msg: '对方已经是你的好友'})
 
     newFriend = {
       id: sender.id
@@ -460,7 +461,7 @@ Handler::accept = (msg, session, next) ->
     }
     
     next(null, {code: 200, msg: newFriend})
-
+    
     player.addFriend newFriend
     playerManager.addFriendIfOnline sender.id, myInfo
 
@@ -541,6 +542,7 @@ Handler::giveBless = (msg, session, next) ->
 
         ply.dailyGift.receivedBless.count--
         ply.dailyGift.receivedBless.givers.push(playerId)
+        ply.updateGift 'receivedBless', ply.dailyGift.receivedBless
         ply.receiveBlessOnce()
         ply.save()
         cb()
@@ -577,7 +579,17 @@ Handler::receiveBless = (msg, session, next) ->
   msgId = msg.msgId
 
   message = null
+  player = null
   async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+
+    (ply, cb) ->
+      player = ply
+      if player.dailyGift.receivedBless.count <= 0
+        return cb({code: 501, msg: '今日可领祝福次数已用完'})
+      cb()
+
     (cb) ->
       dao.message.fetchOne where: id: msgId, cb
 
@@ -591,10 +603,9 @@ Handler::receiveBless = (msg, session, next) ->
       
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
-      
-      playerManager.getPlayerInfo pid: playerId, cb
+      cb()
 
-    (player, cb) ->
+    (cb) ->
       player.increase('energy', message.options.energy)
       player.save()
       cb()
@@ -611,7 +622,6 @@ Handler::receiveBless = (msg, session, next) ->
     next(null, {code: 200, msg: {energy: message.options.energy}})
 
 updateBlessCount = (playerId, friendId) ->
-  console.log 'receive bless: ', playerId, friendId
   dao.friend.updateFriendBlessCount playerId, friendId, (err, res) -> 
     if err or not res
       logger.error(err)

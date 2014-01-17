@@ -73,6 +73,11 @@ var Achievement = Entity.extend({
                         cc.log(data);
 
                         gameData.achievement.setAchieve(data.msg.achieveId);
+
+//                        if(data.msg.firstTime) {
+//                            MandatoryTeachingLayer.pop(FIRST_ACHIEVEMENT);
+//                        }
+
                         gameMark.updateAchievementMark(true);
                     });
 

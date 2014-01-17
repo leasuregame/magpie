@@ -3,6 +3,10 @@ job = require '../../../dao/job'
 async = require 'async'
 table = require '../../../manager/table'
 
+GOLDCARDMAP = 
+  'week': 'com.leasuregame.magpie.week.card.pay6'
+  'month': 'com.leasuregame.magpie.month.card.pay30'
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -10,7 +14,7 @@ Handler = (@app) ->
 
 Handler::checkBuyPermission = (msg, session, next) ->
   playerId = session.get('playerId')
-  product_id = msg.type
+  product_id = GOLDCARDMAP[msg.type]
 
   async.waterfall [
     (cb) =>
@@ -36,7 +40,7 @@ Handler::checkBuyPermission = (msg, session, next) ->
 
 Handler::getReward = (msg, session, next) ->
   playerId = session.get('playerId')
-  product_id = msg.type
+  product_id = GOLDCARDMAP[msg.type]
 
   @app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err

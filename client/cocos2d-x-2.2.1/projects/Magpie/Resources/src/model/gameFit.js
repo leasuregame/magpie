@@ -126,8 +126,8 @@ var fit4Iphone4 = {
         "activityLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headSpritePoint": cc.p(680, 960),
-            "turnRightIconPoint":cc.p(640, 885),
-            "turnLeftIconPoint":cc.p(80, 925),
+            "turnRightIconPoint": cc.p(640, 885),
+            "turnLeftIconPoint": cc.p(80, 925),
             "itemBasePoint": cc.p(65, 862),
             "itemOffsetX": 107,
             "scrollViewPoint": cc.p(90, 854)
@@ -688,6 +688,23 @@ var fit4Iphone4 = {
             "friendMessageIconPoint": cc.p(254, 912),
             "systemMessageIconPoint": cc.p(403, 912),
             "bgSpritePoint": cc.p(40, 106)
+        },
+        "newYearLayer": {
+            "bgSpritePoint": cc.p(48, 108),
+            "topSpritePoint": cc.p(360, 648),
+            "dailyGetIconPoint": cc.p(360, 565),
+            "lineIconPoint": cc.p(360, 455),
+            "tipIconPoint": cc.p(360, 430),
+            "arrowsIconPoint": cc.p(370, 290),
+            "moneyIconPoint": cc.p(360, 210),
+            "dailyGetItemPoint": cc.p(360, 494),
+            "giftItemsPoints": [
+                cc.p(140, 325),
+                cc.p(240, 230),
+                cc.p(350, 345),
+                cc.p(470, 235),
+                cc.p(590, 345)
+            ]
         },
         "noviceTeachingLayer": {
             "rectOrder": [
@@ -1405,8 +1422,8 @@ var fit4Iphone5 = {
         "activityLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headSpritePoint": cc.p(640, 1136),
-            "turnRightIconPoint":cc.p(600, 1061),
-            "turnLeftIconPoint":cc.p(40, 1101),
+            "turnRightIconPoint": cc.p(600, 1061),
+            "turnLeftIconPoint": cc.p(40, 1101),
             "itemBasePoint": cc.p(25, 1038),
             "itemOffsetX": 107,
             "scrollViewPoint": cc.p(50, 1030)
@@ -1970,6 +1987,23 @@ var fit4Iphone5 = {
             "friendMessageIconPoint": cc.p(214, 1085),
             "systemMessageIconPoint": cc.p(361, 1085),
             "bgSpritePoint": cc.p(0, 106)
+        },
+        "newYearLayer": {
+            "bgSpritePoint": cc.p(8, 108),
+            "topSpritePoint": cc.p(320, 828),
+            "dailyGetIconPoint": cc.p(320, 678),
+            "lineIconPoint": cc.p(320, 540),
+            "tipIconPoint": cc.p(320, 500),
+            "arrowsIconPoint": cc.p(330, 320),
+            "moneyIconPoint": cc.p(320, 240),
+            "dailyGetItemPoint": cc.p(320, 609),
+            "giftItemsPoints": [
+                cc.p(100, 355),
+                cc.p(200, 260),
+                cc.p(310, 375),
+                cc.p(430, 265),
+                cc.p(550, 375)
+            ]
         },
         "noviceTeachingLayer": {
             "rectOrder": [

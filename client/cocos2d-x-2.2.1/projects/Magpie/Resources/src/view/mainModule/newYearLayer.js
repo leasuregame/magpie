@@ -5,6 +5,7 @@
 var giftItemIcon = ["icon354", "icon355", "icon276", "icon277", "icon281"];
 
 var NewYearLayer = cc.Layer.extend({
+    _newYearLayerFit: null,
 
     _giftItems: [],
     _dailyGetItem: null,
@@ -29,33 +30,35 @@ var NewYearLayer = cc.Layer.extend({
 
         if (!this._super())  return false;
 
+        this._newYearLayerFit = gameFit.mainScene.newYearLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg23);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(8, 108));
+        bgSprite.setPosition(this._newYearLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var topSprite = cc.Sprite.create(main_scene_image.icon349);
-        topSprite.setPosition(cc.p(320, 828));
-        this.addChild(topSprite);
+        topSprite.setPosition(this._newYearLayerFit.topSpritePoint);
+        this.addChild(topSprite, 2);
 
         var dailyGetIcon = cc.Sprite.create(main_scene_image.icon351);
-        dailyGetIcon.setPosition(cc.p(320, 678));
+        dailyGetIcon.setPosition(this._newYearLayerFit.dailyGetIconPoint);
         this.addChild(dailyGetIcon);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon357);
-        lineIcon.setPosition(cc.p(320, 540));
+        lineIcon.setPosition(this._newYearLayerFit.lineIconPoint);
         this.addChild(lineIcon);
 
         var tipIcon = cc.Sprite.create(main_scene_image.icon350);
-        tipIcon.setPosition(cc.p(320, 500));
+        tipIcon.setPosition(this._newYearLayerFit.tipIconPoint);
         this.addChild(tipIcon);
 
         var arrowsIcon = cc.Sprite.create(main_scene_image.icon353);
-        arrowsIcon.setPosition(cc.p(330, 320));
+        arrowsIcon.setPosition(this._newYearLayerFit.arrowsIconPoint);
         this.addChild(arrowsIcon);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon352);
-        moneyIcon.setPosition(320, 240);
+        moneyIcon.setPosition(this._newYearLayerFit.moneyIconPoint);
         this.addChild(moneyIcon);
 
         var menu = cc.Menu.create();
@@ -71,16 +74,10 @@ var NewYearLayer = cc.Layer.extend({
             this
         );
 
-        this._dailyGetItem.setPosition(cc.p(320, 610));
+        this._dailyGetItem.setPosition(this._newYearLayerFit.dailyGetItemPoint);
         menu.addChild(this._dailyGetItem);
 
-        var point = [
-            cc.p(100, 355),
-            cc.p(200, 260),
-            cc.p(310, 375),
-            cc.p(430, 265),
-            cc.p(550, 375)
-        ];
+        var point = this._newYearLayerFit.giftItemsPoints;
 
         for (var i = 0; i < 5; i++) {
             var sprite = cc.Sprite.create(main_scene_image[giftItemIcon[i]]);

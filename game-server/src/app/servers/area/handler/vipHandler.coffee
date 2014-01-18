@@ -6,6 +6,41 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 _ = require 'underscore'
 
+GOLDCARDMAP = 
+  'com.leasuregame.magpie.week.card.pay6': 'week'
+  'com.leasuregame.magpie.month.card.pay30': 'month'
+
+addGoldCard = (app, tradeNo, player, product, cb) ->
+  return cb(null, player) if not isGoldCard(product)
+
+  today = new Date()
+  vd = new Date()
+  validDate = vd.setDate(today.getDate()+product.valid_days-1)
+  app.get('dao').goldCard.create {
+    data: {
+      orderNo: tradeNo,
+      playerId: player.id,
+      type: GOLDCARDMAP[product.product_id],
+      created: utility.dateFormat(today, "yyyy-MM-dd"),
+      validDate: utility.dateFormat(validDate, "yyyy-MM-dd")
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to create goldCard record: ', err)
+
+    player.addGoldCard(res)
+    cb(null, player)
+
+isGoldCard = (product) ->
+  ids = [
+    'com.leasuregame.magpie.week.card.pay6',
+    'com.leasuregame.magpie.month.card.pay30'
+  ]
+  if product and product.product_id in ids
+    return true
+  else
+    return false
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -15,17 +50,19 @@ Handler::buyVip = (msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
 
-  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+  playerManager.getPlayerInfo pid: playerId, (err, player) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     data = table.getTableItem('recharge', id)
-    player.increase('cash', data.cash)
-    player.increase('gold', (data.cash * 10) + data.gold)
-    player.save()
-    next(null, {code: 200, msg: {
-      vip: player.vip
-    }})
+    
+    addGoldCard @app, new Date().getTime().toString(), player, data, (err, res) ->
+      player.increase('cash', data.cash)
+      player.increase('gold', (data.cash * 10) + data.gold)
+      player.save()
+      next(null, {code: 200, msg: {
+        vip: player.vip
+      }})
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')

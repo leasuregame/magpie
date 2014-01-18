@@ -43,11 +43,13 @@ var Shop = Entity.extend({
 
             cc.log(msg.gold);
             cc.log(msg.cash);
+            cc.log(msg.goldCards);
 
             var player = gameData.player;
 
             player.set("gold", msg.gold);
             player.set("cash", msg.cash);
+            player.set("goldCards", msg.goldCards);
 
             var nowVip = msg.vip;
             var oldVip = player.get("vip");
@@ -80,7 +82,7 @@ var Shop = Entity.extend({
         this.set("useVipBoxList", data.useVipBoxList);
         this.set("powerBuyCount", data.powerBuyCount);
         this.set("challengeBuyCount", data.challengeBuyCount);
-        this.set("expCardBuyCount",data.expCardBuyCount);
+        this.set("expCardBuyCount", data.expCardBuyCount);
     },
 
     updateMaxCount: function () {
@@ -281,6 +283,40 @@ var Shop = Entity.extend({
         });
     },
 
+    getDailyReward: function (cb, type) {
+        cc.log("shop getDailyReward: ", type);
+
+        lz.server.request("area.cardHandler.getReward", {
+            type: type
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("getDailyReward fail");
+
+                var msg = data.msg;
+                var player = gameData.player;
+
+                player.set("gold", msg.gold);
+                player.set("goldCards", msg.goldCards);
+
+                var id = (type == "month") ? 0 : 1;
+                var paymentTypeList = gameData.shop.getPaymentTypeList();
+                var pCard = paymentTypeList[id];
+
+                lz.tipReward({"gold": pCard.daily_gold});
+
+                cb();
+            } else {
+                cc.log("getDailyReward fail");
+
+                TipLayer.tip(data.msg);
+                cb();
+            }
+
+        });
+    },
+
     ProductMaxCountHandle: {
         expCard: function (table) {
             var product = {
@@ -318,7 +354,7 @@ var Shop = Entity.extend({
                 if (count <= product.count) {
                     product.count = count;
                     product.tip = "仙币不足";
-                } else if(cardListCount <= product.count){
+                } else if (cardListCount <= product.count) {
                     product.count = cardListCount;
                     product.tip = "已达卡库容量上限，无法购买更多";
                 } else {
@@ -552,6 +588,17 @@ var Shop = Entity.extend({
 
     _cmp2: function (a, b) {
         return (a.id - b.id);
+    },
+
+    buyVip: function (product) {
+
+        cc.log("shop buyVip: ", product);
+
+        lz.server.request("area.vipHandler.buyVip", {
+            id: product.id
+        }, function (data) {
+            cc.log(data);
+        });
     }
 });
 

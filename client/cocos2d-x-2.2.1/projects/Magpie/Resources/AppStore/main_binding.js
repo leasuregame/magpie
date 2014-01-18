@@ -114,6 +114,7 @@ var appFiles = [
     'src/view/mainModule/addFriendsLayer.js',
     'src/view/mainModule/rechargeLayer.js',
     'src/view/mainModule/powerRewardLayer.js',
+    'src/view/mainModule/goldCardsLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',

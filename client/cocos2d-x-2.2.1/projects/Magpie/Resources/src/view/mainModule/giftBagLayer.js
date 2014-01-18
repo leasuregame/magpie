@@ -55,6 +55,7 @@ var giftBagGoods = {
 
 var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
+var GET_GIFT_BAG = 3;
 
 var GiftBagLayer = cc.Layer.extend({
 

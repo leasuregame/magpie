@@ -375,14 +375,47 @@ var Player = Entity.extend({
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            return goldCards.month;
+            if(goldCards.month) {
+                return goldCards.month.remainingDays || 0;
+            } else {
+                return 0;
+            }
+
         } else if (type == WEEK_CARD) {
-            return goldCards.week;
+            if(goldCards.week) {
+                return goldCards.week.remainingDays || 0;
+            } else {
+                return 0;
+            }
         } else {
             cc.log("类型出错！！！");
             return 0;
         }
+    },
+
+    isGotDaily: function(type) {
+        cc.log("Player isGotDaily: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if(goldCards.month) {
+                return goldCards.month.hasGot;
+            } else {
+                return 1;
+            }
+        } else if (type == WEEK_CARD) {
+            if(goldCards.week) {
+                return goldCards.week.hasGot;
+            } else {
+                return 1;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+
     }
+
 });
 
 

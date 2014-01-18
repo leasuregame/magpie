@@ -126,8 +126,11 @@ var fit4Iphone4 = {
         "activityLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headSpritePoint": cc.p(680, 960),
+            "turnRightIconPoint":cc.p(640, 885),
+            "turnLeftIconPoint":cc.p(80, 925),
             "itemBasePoint": cc.p(65, 862),
-            "itemOffsetX": 107
+            "itemOffsetX": 107,
+            "scrollViewPoint": cc.p(90, 854)
         },
         "addFriendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -462,6 +465,10 @@ var fit4Iphone4 = {
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
             "titleIconPoint": cc.p(360, 817)
+        },
+        "goldCardsLayer": {
+            "topIconPoint": cc.p(360, 760),
+            "nodePoints": [cc.p(360, 550), cc.p(360, 290)]
         },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,
@@ -1398,8 +1405,11 @@ var fit4Iphone5 = {
         "activityLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headSpritePoint": cc.p(640, 1136),
+            "turnRightIconPoint":cc.p(600, 1061),
+            "turnLeftIconPoint":cc.p(40, 1101),
             "itemBasePoint": cc.p(25, 1038),
-            "itemOffsetX": 107
+            "itemOffsetX": 107,
+            "scrollViewPoint": cc.p(50, 1030)
         },
         "addFriendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1734,6 +1744,10 @@ var fit4Iphone5 = {
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
             "titleIconPoint": cc.p(320, 905)
+        },
+        "goldCardsLayer": {
+            "topIconPoint": cc.p(320, 900),
+            "nodePoints": [cc.p(320, 640), cc.p(320, 330)]
         },
         "goldLayer": {
             MIN_GOLD_OFFSET: 30,

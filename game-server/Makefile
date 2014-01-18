@@ -63,7 +63,7 @@ test-api: build
 	node ./test/jasmine/app.js
 
 runserver: build
-	./node_modules/.bin/pomelo start development
+	pomelo start
 
 debug: 
 	./node_modules/.bin/node-inspector --web-port=9095 &

@@ -3,7 +3,7 @@ playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
-async = require 'async'
+async = require 'async' 
 _ = require 'underscore'
 
 GOLDCARDMAP = 
@@ -15,14 +15,14 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
 
   today = new Date()
   vd = new Date()
-  validDate = vd.setDate(today.getDate()+product.valid_days-1)
+  vd.setDate(today.getDate()+product.valid_days-1)
   app.get('dao').goldCard.create {
     data: {
       orderNo: tradeNo,
       playerId: player.id,
       type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
-      validDate: utility.dateFormat(validDate, "yyyy-MM-dd")
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
     }
   }, (err, res) ->
     if err

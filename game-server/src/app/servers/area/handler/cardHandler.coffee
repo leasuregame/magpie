@@ -14,19 +14,20 @@ Handler = (@app) ->
 
 Handler::checkBuyPermission = (msg, session, next) ->
   playerId = session.get('playerId')
-  product_id = GOLDCARDMAP[msg.type]
+  type = msg.type
+  product_id = GOLDCARDMAP[type]
 
   async.waterfall [
     (cb) =>
        @app.get('playerManager').getPlayerInfo pid: playerId, cb
 
     (player, cb) =>
-      if _.has(player.goldCards, product_id) and player.goldCards[product_id].daysRemaining() > 0
+      if _.has(player.goldCards, type) and player.goldCards[type].daysRemaining() > 0
         return cb({code: 501, msg: '不能同时购买两个以上'})
       cb()
     
     (cb) =>
-      @app.get('dao').goldCard.getByType playerId, product_id, cb
+      @app.get('dao').goldCard.getByType playerId, type, cb
 
     (cards, cb) =>
       if cards.length > 0
@@ -40,16 +41,17 @@ Handler::checkBuyPermission = (msg, session, next) ->
 
 Handler::getReward = (msg, session, next) ->
   playerId = session.get('playerId')
+  type = msg.type
   product_id = GOLDCARDMAP[msg.type]
 
   @app.get('playerManager').getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if not _.has(player.goldCards, product_id)
+    if not _.has(player.goldCards, type)
       return next(null, {code: 501, msg: '没有购买，不能领取'})
 
-    gc = player.goldCards[product_id]
+    gc = player.goldCards[type]
     if gc.daysRemaining() <= 0
       return next(null, {code: 501, msg: '已过期，不能领取'})
 

@@ -72,7 +72,7 @@ Handler::getReward = (msg, session, next) ->
       
       next(null, {code: 200, msg: {
         gold: player.gold,
-        goldCards: gc.toJson()
+        goldCards: player.getGoldCard()
       }})
 
 updateInfo = (player, gc, cb) ->

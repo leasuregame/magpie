@@ -114,6 +114,10 @@ var NewYearLayer = cc.Layer.extend({
             cc.log("NewYearLayer onClickGift: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var data = outputTables.new_year_rechage.rows[id];
+            GiftBagLayer.pop({reward: data});
+
         }
     }
 });

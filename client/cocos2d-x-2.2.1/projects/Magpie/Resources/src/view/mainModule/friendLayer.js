@@ -25,6 +25,8 @@ var FriendLayer = cc.Layer.extend({
     _friendItem: {},
     _isFirstEnter: true,
 
+    _scrollViewElement: [],
+
     onEnter: function () {
         cc.log("FriendLayer onEnter");
 
@@ -288,32 +290,43 @@ var FriendLayer = cc.Layer.extend({
 
             var point = cc.p(490, y + 63);
 
-            if (receiveCount > 0 && friendList[i].canReceive) {
-                var receiveBlessItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button10,
-                    main_scene_image.button10s,
-                    main_scene_image.icon123,
-                    this._onClickReceiveBless(id),
-                    this
-                );
-                receiveBlessItem.setPosition(point);
-                menu.addChild(receiveBlessItem);
-            } else {
-                var giveBlessItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
-                    main_scene_image.button9d,
-                    main_scene_image.icon124,
-                    this._onClickGiveBless(id),
-                    this
-                );
-                giveBlessItem.setPosition(point);
-                menu.addChild(giveBlessItem);
+            var receiveBlessItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon123,
+                this._onClickReceiveBless(id),
+                this
+            );
+            receiveBlessItem.setPosition(point);
+            menu.addChild(receiveBlessItem);
 
-                giveBlessItem.setEnabled(friendList[i].canGive);
+            var giveBlessItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.button9d,
+                main_scene_image.icon124,
+                this._onClickGiveBless(id),
+                this
+            );
+            giveBlessItem.setPosition(point);
+            menu.addChild(giveBlessItem);
+            giveBlessItem.setEnabled(friendList[i].canGive);
+
+            var canReceive = false;
+            if (receiveCount > 0 && friendList[i].canReceive) {
+                canReceive = true;
             }
+            receiveBlessItem.setVisible(canReceive);
+            giveBlessItem.setVisible(!canReceive);
 
             scrollViewLayer.addChild(slideLabel[i]);
+
+            this._scrollViewElement[id] = {
+                giveCountLabel: giveCountLabel,
+                receiveCountLabel: receiveCountLabel,
+                receiveBlessItem: receiveBlessItem,
+                giveBlessItem: giveBlessItem
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._friendLayerFit.scrollViewSize, scrollViewLayer);
@@ -337,6 +350,41 @@ var FriendLayer = cc.Layer.extend({
 
             slideLayer.showSlide();
         }
+    },
+
+    _update: function (id) {
+        cc.log("FriendLayer _update: " + id);
+
+        var friendList = gameData.friend.get("friendList");
+        var len = friendList.length;
+        var friend = null;
+
+        for (var i = 0; i < len; i++) {
+            if (friendList[i].id == id) {
+                friend = friendList[i];
+                break;
+            }
+        }
+
+        var giveCount = gameData.friend.get("giveCount");
+        var receiveCount = gameData.friend.get("receiveCount");
+
+        this._giveCountLabel.setString(giveCount);
+        this._receiveCountLabel.setString(receiveCount);
+        this._friendCountLabel.setString(len);
+        this._maxFriendCountLabel.setString(gameData.friend.get("maxFriendCount"));
+
+        var canReceive = false;
+        if (receiveCount > 0 && friend.canReceive) {
+            canReceive = true;
+        }
+
+        this._scrollViewElement[id].receiveBlessItem.setVisible(canReceive);
+        this._scrollViewElement[id].giveBlessItem.setVisible(!canReceive);
+        this._scrollViewElement[id].giveBlessItem.setEnabled(friend.canGive);
+        this._scrollViewElement[id].giveCountLabel.setString("送出祝福: " + friend.giveCount);
+        this._scrollViewElement[id].receiveCountLabel.setString("收到祝福: " + friend.receiveCount);
+
     },
 
     _onClickAddFriend: function () {
@@ -371,7 +419,7 @@ var FriendLayer = cc.Layer.extend({
             gameData.friend.giveBless(function (data) {
                 cc.log(data);
 
-                that.update();
+                that._update(id);
 
             }, id);
         }
@@ -388,7 +436,7 @@ var FriendLayer = cc.Layer.extend({
             gameData.friend.receiveBless(function (data) {
                 cc.log(data);
 
-                that.update();
+                that._update(id);
                 gameMark.updateFriendMark(false);
             }, id);
         }

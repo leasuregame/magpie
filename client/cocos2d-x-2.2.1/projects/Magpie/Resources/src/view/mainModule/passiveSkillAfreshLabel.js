@@ -542,7 +542,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         if (this._useType == USE_GOLD) {
             if (player.get("gold") < 20) {
-                TipLayer.tip("仙币不足");
+                TipLayer.tip("魔石不足");
 
                 return false;
             }
@@ -550,7 +550,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         if (this._useType == USE_MONEY) {
             if (player.get("money") < 2000) {
-                TipLayer.tip("魔石不足");
+                TipLayer.tip("仙币不足");
 
                 return false;
             }

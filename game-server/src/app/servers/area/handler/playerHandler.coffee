@@ -132,7 +132,7 @@ Handler::givePower = (msg, session, next) ->
         code: err.code or 501
         msg: err.msg or err
         }
-      )      
+      )
 
     star_hour = powerGiveStartHour cur_hour
     if hasGetPower(player, star_hour) 
@@ -196,7 +196,7 @@ canGetPower = (hour) ->
 powerGiveStartHour = (hour) ->
   for h in playerConfig.POWER_GIVE.hours
     for i in [0...playerConfig.POWER_GIVE.duration]
-      return h if h+i is hour
+      return h if h+i is hour or h is hour
 
 hasGetPower = (player, hour) ->
   hour? and _.contains player.dailyGift.powerGiven, hour

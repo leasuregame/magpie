@@ -32,8 +32,7 @@
         "jade": "*",
         "ejs": "*",
         "xunit-file": "*",
-        "webdriverjs": "*", 
-        "forever": "*",
+        "webdriverjs": "*",
         "elementtree": "*"
     }
 }

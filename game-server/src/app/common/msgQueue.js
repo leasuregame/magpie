@@ -71,8 +71,6 @@ msgQueue.push = function(msg) {
     if(queue.length > len4Queue) {
         msgQueue.pop()
     }
-
-    console.log('queue = ',queue);
 };
 
 msgQueue.pushMsg2LoopQueue = function(msg) {
@@ -127,7 +125,6 @@ msgQueue.send = function() {
         msg: m.msg,
         type: m.type
     };
-    console.log('***send*** time: ',Date.now(), 'msg: ',msg);
     queue.splice(0,1);
     app.get('messageService').pushMessage(msg,function(err,res){
         if(err) {

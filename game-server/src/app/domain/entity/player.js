@@ -650,7 +650,6 @@ var Player = (function(_super) {
         }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
-        console.log('power consume: ', value, power);
         this.updatePower(power);
         this.emit('power.consume', cVal);
     };
@@ -663,7 +662,6 @@ var Player = (function(_super) {
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
-        console.log('power resume: ', value, power);
         this.updatePower(power);
     };
 
@@ -676,15 +674,17 @@ var Player = (function(_super) {
         var power = _.clone(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('add power: ', value, power);
         this.updatePower(power);
     };
 
     Player.prototype.givePower = function(hour, value) {
+        if (!_.isNumber(hour) || !_.isNumber(value)) {
+            logger.error('can not give power with ', hour, value);
+            return;
+        }
         var power = utility.deepCopy(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('give power: ', value, power);
         this.updatePower(power);
 
         // 更新dailyGift的power
@@ -1106,7 +1106,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        this.levelReward = this.levelRewardMark.value;
+        var lr = utility.deepCopy(this.levelRewardMark.value);
+        this.set('levelReward', lr);
     };
 
     Player.prototype.lightUpCards = function() {
@@ -1240,7 +1241,6 @@ var checkLineUp = function(player) {
     var card_count = vals.filter(function(v) {
         return v !== -1;
     }).length;
-    console.log(obj, vals, card_count);
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {

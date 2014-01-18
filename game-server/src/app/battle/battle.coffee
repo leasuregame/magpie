@@ -39,8 +39,6 @@ class Battle extends Base
     battleLog.set('enemyId', @defender.id)
     battleLog.set('ownName', @attacker.name)
     battleLog.set('enemyName', @defender.name)
-    
-    console.log '    >>> 战斗开始 <<<    '
 
   execute: ->
     while not @isOver()
@@ -51,7 +49,6 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
     battleLog.set('round_num',@round.round_num - 1)
-    console.log '    >>> 战斗结束 <<<    '
 
 class Round extends Base
   init: ->
@@ -72,7 +69,6 @@ class Round extends Base
 
   start: ->
     @setShootCount()
-    console.log "*** 回合 #{@round_num} 开始 ***"
 
   execute: () ->
     count = 0
@@ -86,17 +82,9 @@ class Round extends Base
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-    #battleLog.addStep("*** 回合 #{@round_num} 结束 ***")
-    console.log "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base
   execute: () ->
-    # @attacker.attack (hero) ->
-    # @attacker.nextHero()
-
-    # @defender.attack (hero) ->
-    # @defender.nextHero()
-
     _attack = (atker, dfder) ->
       atker.attack (heros) ->
         return if not heros

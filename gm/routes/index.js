@@ -15,13 +15,14 @@ var Area = require('../models/area');
 
 var buyVip = require('./buyVip');
 var testVip = require('./testVip');
-
+var msgPush = require('./msgPush');
+var reward = require('./reward');
 
 var logger = require('../logger').logger('user');
 
-var routes = function (app) {
+var routes = function(app) {
 
-    app.get('/', function (req, res) {
+    app.get('/', function(req, res) {
 
         res.render('index', {
             title: '主页',
@@ -33,7 +34,7 @@ var routes = function (app) {
     });
 
     //登录
-    app.get('/login', function (req, res) {
+    app.get('/login', function(req, res) {
         res.render('login', {
             title: '登录',
             user: req.session.user,
@@ -43,7 +44,7 @@ var routes = function (app) {
         });
     });
 
-    app.post('/login', function (req, res) {
+    app.post('/login', function(req, res) {
 
         var url = Url.parse(req.url, true);
         var query = url.query;
@@ -56,7 +57,7 @@ var routes = function (app) {
             return res.redirect('/login');
         }
 
-        User.get(name, function (err, user) {
+        User.get(name, function(err, user) {
             if (!user) {
                 req.flash('error', '用户不存在');
                 logger.error("[login]" + name + "不存在");
@@ -80,7 +81,7 @@ var routes = function (app) {
     app.get('/reg', checkIsRootLogin);
 
     //添加用户
-    app.get('/reg', function (req, res) {
+    app.get('/reg', function(req, res) {
 
         res.render('reg', {
             title: '添加用户',
@@ -91,7 +92,7 @@ var routes = function (app) {
         });
     });
 
-    app.post('/reg', function (req, res) {
+    app.post('/reg', function(req, res) {
         var name = req.body.username;
         var password = req.body.password;
 
@@ -100,7 +101,7 @@ var routes = function (app) {
             return res.redirect('/reg');
         }
 
-        User.get(name, function (err, user) {
+        User.get(name, function(err, user) {
             if (user) {
                 req.flash('error', '用户已经存在');
                 return res.redirect('/reg');
@@ -110,7 +111,7 @@ var routes = function (app) {
                     password: password,
                     isRoot: 0
                 });
-                newUser.save(function (err) {
+                newUser.save(function(err) {
                     if (err) {
                         req.flash('error', err);
                         return res.redirect('/reg');
@@ -134,34 +135,13 @@ var routes = function (app) {
     explore(app);
     buyVip(app);
     testVip(app);
-
-
-    app.get('/reward', checkLogin);
-
-    //全服、个人补偿奖赏
-    app.get('/reward', function (req, res) {
-            res.render('reward', {
-                title: '补偿奖赏',
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
-    });
-
-    app.get('/notice', checkLogin);
-    app.get('/notice', function (req, res) {
-            res.render('notice', {
-                title: '公告',
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
-    });
+    msgPush(app);
+    reward(app);
 
     app.get('/dataTest', checkLogin);
 
     //数值平衡模拟测试
-    app.get('/dataTest', function (req, res) {
+    app.get('/dataTest', function(req, res) {
         res.render('dataTest', {
             title: '数值平衡测试',
             user: req.session.user,
@@ -169,7 +149,7 @@ var routes = function (app) {
             error: req.flash('error').toString()
         });
     });
-    app.post('/dataTest', function (req, res) {
+    app.post('/dataTest', function(req, res) {
 
     });
 

@@ -50,27 +50,26 @@ Handler::login = (msg, session, next) ->
 Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, platform, next) ->
+doLogin  = (type, app, msg, session, platform, next) ->  
+  console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
   areaId = msg.areaId
-
   user = null
   player = null
   uid = null
   async.waterfall [
     (cb) ->
-      checkIsOpenServer cb
+      checkIsOpenServer app, cb
 
     (cb) ->
       ### 检查是否最新版本 ###
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      session.set('areaId', areaId)
-      session.pushAll cb
-
-    (cb) =>
       [args, method] = authParams(type, msg, app)
+      args.sid = session.id
+      console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+        console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -78,15 +77,16 @@ doLogin  = (type, app, msg, session, platform, next) ->
         else 
           cb(null, u)
 
-    (res, cb) =>
-      user = res
-      uid = user.id + '*' + areaId
-      sessionService = app.get 'sessionService'
-      sessionService.kick(uid,cb)
-    (cb) =>
+    (u, cb) =>
+      user = u
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id, 
+          serverId: app.getServerId()
+        }, (err, res) ->
+          console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -95,6 +95,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
+      console.log '-login-4', player?.name
+      uid = user.id + '*' + areaId
+      session.set('areaId', areaId)
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>
@@ -104,6 +107,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
         session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
+    console.log '-login-5-err-', err
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
@@ -130,7 +134,7 @@ authParams = (type, msg, app) ->
   for k in keyMap[type]?.keys
     args[k] = msg[k] if msg[k]?
 
-  args.fronendId = app.getServerId()
+  args.frontendId = app.getServerId()
   [args, keyMap[type]?.method]
 
 getLatestVersion = (app, platform) ->
@@ -161,21 +165,18 @@ versionCompare = (stra, strb) ->
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  console.log versionCompare(version, getLatestVersion(app, platform))
   if versionCompare(version, getLatestVersion(app, platform)) >= 0
     cb()
   else 
     cb({code: 600, msg: '客户端版本不是最新'})
 
-checkIsOpenServer = (cb) ->
-  sharedConf = require '../../../../../shared/conf'
-  openTime = new Date(sharedConf.openServerTime)
+checkIsOpenServer = (app, cb) ->
+  openTime = new Date(app.get('sharedConf').openServerTime)
   now = new Date()
-  console.log(openTime, now)
   if new Date() < openTime
     cb({
       code: 501, 
-      msg: util.format('%s点开服，敬请期待', openTime.getHours())
+      msg: util.format('%s月%s日%s点开服，敬请期待', openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
     })
   else 
     cb()

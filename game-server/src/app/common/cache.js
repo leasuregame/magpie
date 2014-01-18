@@ -21,9 +21,10 @@ Cache = (function() {
       expire: expire
     };
 
+    var _this = this;
     if (!isNaN(expire)) {
       var timeout = setTimeout(function() {
-        this.del(key);
+        _this.del(key);
         if (typeof timeoutCallback === 'function') {
           timeoutCallback(key);
         }

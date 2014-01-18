@@ -219,8 +219,23 @@ var entryGame = function(account, areaId) {
 };
 
 
+var dologin = function() {
+  async.timesSeries(300, function(i, done) {
+    game.init(3010, function() {
+      console.log(i);
+      game.login('robotUser' + (i + 1), '1', 1, null, function() {
+        console.log('done');
+        done();
+      });
+    });
+  }, function(err) {
+    console.log('finished');
+  });
+};
+
+
 var game = {
-  init: function(port) {
+  init: function(port, callback) {
     pomelo.init({
       host: '127.0.0.1',
       port: port
@@ -273,9 +288,10 @@ var game = {
       pomelo.on('onPowerGiveEnd', function(data) {
         console.log('on power given', data);
       });
+      callback();
     });
   },
-  login: function(name, pwd, areaId, version) {
+  login: function(name, pwd, areaId, version, callback) {
     pomelo.request('connector.userHandler.login', {
       account: name,
       password: pwd,
@@ -283,6 +299,7 @@ var game = {
       version: version || '1.0.0'
     }, function(data) {
       console.log(data);
+      callback();
     });
   },
   request: function(route, args) {

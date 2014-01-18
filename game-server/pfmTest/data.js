@@ -83,7 +83,7 @@ Data.prototype.dataForRanking = function(callback){
         ranking: row.ranking
       };
 
-      var ids = _.range(parseInt(row.card_star), 250, 5);
+      var ids = [10,15,35,45,60,90,95,100,110,125,140,150];
       var cardData = {
         playerId: row.id,
         star: row.card_star,
@@ -166,20 +166,11 @@ var random_lineup = function(cards) {
 var genSkillInc = function(card) {
     if(parseInt(card.star) < 3) {
        // console.log("card = ",card);
-        card.skillInc = 0.0;
+        card.factor = 0.0;
         return;
     }
-    var cdata, max, min, skill;
-    cdata = table.getTableItem('cards', card.tableId);
-    skill = cdata.skill_id_linktarget;
-    if (skill != null) {
-        min = skill["star" + card.star + "_inc_min"] * 10;
-        max = skill["star" + card.star + "_inc_max"] * 10;
-        card.skillInc = _.random(min, max) / 10;
-        //console.log("skillInc = ",card.skillInc);
-    } else {
-        throw new Error('can not file skill info of card: ' + card.tableId);
-    }
+
+    card.factor = _.random(1,1000)
 };
 
 var initPassiveSkill = function(card) {

@@ -16,7 +16,6 @@ watchAreasInfo = ->
 	filepath = path.join(__dirname, '..', '..', '..', '..', 'config', 'area.json')
 	fs.watchFile filepath, (curr, prev) -> 
 		areasInfo = JSON.parse fs.readFileSync(filepath)
-		console.log areasInfo
 watchAreasInfo()
 
 module.exports = (app) ->
@@ -37,7 +36,6 @@ Handler::queryEntry = (msg, session, next) ->
 	], (err, results) ->
 		if err
 			logger.error('get servers state faild. ', err)
-		console.log results
 		areas = results[0]
 		conns = results[1]
 

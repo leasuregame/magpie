@@ -128,7 +128,7 @@ var DaoBase = (function() {
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
     console.log('-fetch many-', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
-      console.log('-result-', err, !!res);
+      //console.log('-result-', err, !!res);
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
         logger.error(err.stack);

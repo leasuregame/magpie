@@ -61,8 +61,7 @@ app.configure('production|development', function() {
   app.set('proxyConfig', {
     cacheMsg: true,
     interval: 30,
-    lazyConnection: true,
-    enableRpcLog: true
+    lazyConnection: true
   });
 
   // remote configures
@@ -75,6 +74,7 @@ app.configure('production|development', function() {
   app.route('area', routeUtil.area);
 
   app.filter(pomelo.filters.timeout());
+  app.rpcFilter(pomelo.rpcFilters.rpcLog())
 });
 
 
@@ -84,7 +84,7 @@ app.configure('production|development', 'connector', function() {
 
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
-    heartbeat: 3,
+    heartbeat: 30,
     useDict: true,
     useProtobuf: true
   });
@@ -95,7 +95,8 @@ app.configure('production|development', 'connector', function() {
 
 app.configure('production|development', 'gate', function(){
   app.set('connectorConfig', {
-    connector: pomelo.connectors.hybridconnector
+    connector: pomelo.connectors.hybridconnector,
+    heartbeat: 30
   });
 
   app.set('serverStateService', new ServerStateService(app));

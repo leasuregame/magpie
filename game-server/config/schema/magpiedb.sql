@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS `player` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
-  `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `pass` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
+  `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `dailyGift` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
@@ -42,8 +42,25 @@ CREATE TABLE IF NOT EXISTS `player` (
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
+  `activities` VARCHAR(1500) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for friend
+-- ----------------------------
+DROP TABLE IF EXISTS `goldCard`;
+CREATE TABLE IF NOT EXISTS `goldCard` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `orderId` BIGINT(20) UNSIGNED,
+  `orderNo` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `type` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
+  `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
+  `created` Date,
+  `validDate` Date,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------

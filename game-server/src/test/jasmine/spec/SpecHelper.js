@@ -237,7 +237,7 @@ var dologin = function() {
 var game = {
   init: function(port, callback) {
     pomelo.init({
-      host: '192.168.1.3',
+      host: '127.0.0.1',
       port: port
     }, function() {
       console.log('connect success!');

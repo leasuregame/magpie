@@ -1,6 +1,7 @@
 http = require 'http'
 url = require 'url'
 util = require 'util'
+logger = require('pomelo-logger').getLogger(__filename)
 
 APPKEY = 'o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo'
 
@@ -68,6 +69,7 @@ checkOrderResult = (app, req, res) ->
       productId: productId
     }, (err, orderRes) ->
       if err or not orderRes.ok
+        logger.error('add tb order faild: ', err, orderRes)
         res.write(JSON.stringify({status: 'error'}))
         return res.end()
       

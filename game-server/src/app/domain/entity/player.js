@@ -252,7 +252,8 @@ var Player = (function(_super) {
         'firstTime',
         'levelReward',
         'teachingStep',
-        'exchangeCards'
+        'exchangeCards',
+        'activities'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -301,7 +302,8 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: DEFAULT_GIVE_COUNT,
                 receivers: []
-            }
+            },
+            hasGotLoginReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -338,7 +340,8 @@ var Player = (function(_super) {
         levelReward: [],
         teachingStep: 0,
         exchangeCards: [],
-        goldCards: {}
+        goldCards: {},
+        activities: {}
     };
 
     Player.prototype.resetData = function() {
@@ -377,7 +380,8 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: realCount(this.lv, giveBlessTab) + vipPrivilege.give_bless_count,
                 receivers: []
-            }
+            },
+            hasGotLoginReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);

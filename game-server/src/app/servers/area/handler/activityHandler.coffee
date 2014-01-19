@@ -42,20 +42,28 @@ class Activity
       next(null, {code: 200})
 
   @recharge: (app, playerId, type, args, next) ->
-    if not args.id or not _.isNumber(args.id)
+    if not args or not args.id or not _.isNumber(args.id)
       return next(null, {code: 501, msg: '参数不正确'})
 
+    player = null
     async.waterfall [
       (cb) ->
         app.get('playerManager').getPlayerInfo pid: playerId, cb
 
-      (player, cb) ->
+      (res, cb) ->
+        player = res
+        app.get('dao').order.rechargeOnPeriod playerId, '2014-01-19', '2014-02-28', cb
+
+      (cash, cb) ->
         if hasGotRechargeReward(player.activities, args.id)
           return cb({code: 501, msg: '不能重复领取'})
 
         row = table.getTableItem('new_year_rechage', args.id)
         if not row
           return cb({code: 501, msg: '找不到礼包配置信息'})
+
+        if cash < row.cash
+          return cb({code: 501, msg: '充值金额不够，不能领取'})
 
         player.increase('money', row.money)
         player.increase('energy', row.energy)

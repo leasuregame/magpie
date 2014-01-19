@@ -7,7 +7,7 @@ convert-data: build
 	node ./bin/convertXmlToJson.js 
 
 start: build convert-data
-	pomelo start production --daemon
+	pomelo start -e production --daemon
 	cd ../web-server && forever start app.js && cd ../game-server
 
 stop:

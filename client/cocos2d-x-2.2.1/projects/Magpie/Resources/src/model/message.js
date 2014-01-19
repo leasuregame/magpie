@@ -144,6 +144,8 @@ var Message = Entity.extend({
                     lz.dc.event("event_friend_accept");
                 } else {
                     cc.log("accept fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {

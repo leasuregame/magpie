@@ -57,9 +57,9 @@ var GoldCardsLayer = cc.Layer.extend({
             bgIcon.setPosition(cc.p(0, 0));
             label.addChild(bgIcon);
 
-            var monthIcon = cc.Sprite.create(main_scene_image.icon346);
-            monthIcon.setPosition(cc.p(0, 70));
-            label.addChild(monthIcon);
+            var cardIcon = cc.Sprite.create(main_scene_image["icon" + (346 + i)]);
+            cardIcon.setPosition(cc.p(0, 70));
+            label.addChild(cardIcon);
 
             var tipNode = cc.Node.create();
             tipNode.setPosition(cc.p(0, 0));

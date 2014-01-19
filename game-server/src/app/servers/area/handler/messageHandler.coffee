@@ -169,20 +169,20 @@ Handler::handleSysMsg = (msg, session, next) ->
     (cb)->
       dao.message.fetchOne where: id: msgId, (err, message) ->
         if err
-          return next(null, {code: err.code or 500, msg: err.msg or err})
+          return cb({code: err.code or 500, msg: err.msg or err})
 
         else if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
-          return next(null, {code: 501, msg: '消息类型不匹配'})
+          return cb({code: 501, msg: '消息类型不匹配'})
 
         else if message.status is msgConfig.MESSAGESTATUS.HANDLED
-          return next(null, {code: 501, msg: '该邮件已领取过'})
+          return cb({code: 501, msg: '该邮件已领取过'})
 
         else
           cb(null,message)
     (message,cb)->
       dao.message.fetchOne where: {msgId: message.id,receiver: playerId},(err,res) ->
         if res isnt null
-          return next(null, {code: 501, msg: '该邮件已领取过'})
+          return cb({code: 501, msg: '该邮件已领取过'})
         else
           cb(null,message)
 
@@ -414,7 +414,7 @@ Handler::accept = (msg, session, next) ->
     (res, cb) ->
       dao.friend.getFriends res.id, (err, senderFriends) ->
         if err
-          return next(null, {code: err.code or 500, msg: err.msg or err})
+          return cb({code: err.code or 500, msg: err.msg or err})
         else if (senderFriends.filter (f) -> f.id is playerId).length > 0
           friendExist = true
           cb(null, null)

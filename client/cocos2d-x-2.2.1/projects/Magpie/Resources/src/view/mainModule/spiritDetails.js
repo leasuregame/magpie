@@ -23,6 +23,7 @@ var SpiritDetails = LazyLayer.extend({
     _skillHarmLabel: null,
     _upgradeItem: null,
     _ccbNode: null,
+    _showUpgrade: false,
 
     onEnter: function () {
         cc.log("SpiritDetails onEnter");
@@ -47,6 +48,7 @@ var SpiritDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._spiritDetailsFit = gameFit.mainScene.spiritDetails;
+        this._showUpgrade = false;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
@@ -164,6 +166,26 @@ var SpiritDetails = LazyLayer.extend({
         this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
         this._expLabel.setString("灵气:  " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+
+        if (this._showUpgrade) {
+            this._showUpgrade = false;
+            var moveByAction = cc.Sequence.create(
+                cc.MoveBy.create(0.1, cc.p(5, 0)),
+                cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                cc.MoveBy.create(0.1, cc.p(5, 0)),
+                cc.MoveBy.create(0.1, cc.p(-5, 0))
+            );
+            var scaleToAction = cc.Sequence.create(
+                cc.ScaleTo.create(0.1, 1.5),
+                cc.ScaleTo.create(0.1, 1),
+                cc.ScaleTo.create(0.1, 1.5),
+                cc.ScaleTo.create(0.1, 1)
+
+            );
+            var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+
+            this._passiveHarmLabel.runAction(spawnAction);
+        }
     },
 
     ccbFnUpdate: function () {
@@ -216,6 +238,7 @@ var SpiritDetails = LazyLayer.extend({
             cc.log(success);
 
             if (success) {
+                that._showUpgrade = true;
                 that._oldPassiveHarm = that._passiveHarmLabel.getString();
                 that._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             } else {

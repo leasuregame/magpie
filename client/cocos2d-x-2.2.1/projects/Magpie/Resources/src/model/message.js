@@ -143,6 +143,10 @@ var Message = Entity.extend({
                     cb();
                     lz.dc.event("event_friend_accept");
                 } else {
+                    TipLayer.tip(data.msg);
+                    message.status = ACCEPT_STATUS;
+                    cb();
+
                     cc.log("accept fail");
                     TipLayer.tip(data.msg);
                     cb();
@@ -277,7 +281,7 @@ var Message = Entity.extend({
         });
     },
 
-    setAsRead: function (id,cb) {
+    setAsRead: function (id, cb) {
 
         var len = this._friendMessage.length;
         var message = null;
@@ -294,9 +298,9 @@ var Message = Entity.extend({
             cc.log("pomelo websocket callback data:");
             cc.log(data);
             if (data.code == 200) {
-                 cc.log("setAsRead success");
-                 message.status = HANDLED_STATUS;
-                 cb();
+                cc.log("setAsRead success");
+                message.status = HANDLED_STATUS;
+                cb();
             } else {
                 cc.log("setAsRead fail");
             }

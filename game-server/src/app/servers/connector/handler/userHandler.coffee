@@ -50,10 +50,9 @@ Handler::login = (msg, session, next) ->
 Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, platform, next) ->
-  console.log '-login-1-', msg, session.get('playerId')
+doLogin  = (type, app, msg, session, platform, next) ->  
+  console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
   areaId = msg.areaId
-
   user = null
   player = null
   uid = null
@@ -66,13 +65,11 @@ doLogin  = (type, app, msg, session, platform, next) ->
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      session.set('areaId', areaId)
-      session.pushAll cb
-
-    (cb) =>
       [args, method] = authParams(type, msg, app)
+      args.sid = session.id
       console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+        console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -80,16 +77,16 @@ doLogin  = (type, app, msg, session, platform, next) ->
         else 
           cb(null, u)
 
-    (res, cb) =>
-      user = res
-      uid = user.id + '*' + areaId
-      sessionService = app.get 'sessionService'
-      console.log '-login-3-', user.account
-      sessionService.kick(uid,cb)
-    (cb) =>
+    (u, cb) =>
+      user = u
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id, 
+          serverId: app.getServerId()
+        }, (err, res) ->
+          console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -99,6 +96,8 @@ doLogin  = (type, app, msg, session, platform, next) ->
 
     (cb) =>
       console.log '-login-4', player?.name
+      uid = user.id + '*' + areaId
+      session.set('areaId', areaId)
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>

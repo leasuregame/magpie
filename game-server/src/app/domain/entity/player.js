@@ -678,6 +678,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.givePower = function(hour, value) {
+        if (!_.isNumber(hour) || !_.isNumber(value)) {
+            logger.error('can not give power with ', hour, value);
+            return;
+        }
         var power = utility.deepCopy(this.power);
         power.value += value;
         power.time = Date.now();

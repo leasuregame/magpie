@@ -17,13 +17,15 @@ NND = {
 
     query: function (sql, args, cb) {
         return _pool.acquire(function (err, client) {
+            console.log('pool info:', _pool.getPoolSize(), _pool.availableObjectsCount(), _pool.waitingClientsCount());
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-
+            console.log('acquire client for sql:', sql);
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
+                console.log('[sql execute]', err, res);
                 return cb(err, res);
             });
         });
@@ -35,6 +37,7 @@ NND = {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
+            console.log('acquire client for sql queues:', sql);
             queues(client, false);
             var trans = client.startTransaction();
 

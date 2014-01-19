@@ -34,7 +34,11 @@ Handler::entry = (msg, session, next) ->
     (res, cb) ->
       user = res
       if _.contains user.roles, areaId
-        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
+        @app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id,
+          serverId: @app.getServerId()
+        }, (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
 

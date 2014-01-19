@@ -103,7 +103,7 @@ var ActivityLayer = cc.Layer.extend({
 
             mainMenu.addChild(this._item[i]);
         }
-        scrollViewLayer.addChild(mainMenu);
+        scrollViewLayer.addChild(mainMenu, 2);
 
         this._selectIcon = cc.Sprite.create(main_scene_image.icon19);
         this._selectIcon.setAnchorPoint(cc.p(0, 0));
@@ -154,6 +154,7 @@ var ActivityLayer = cc.Layer.extend({
         cc.log("ActivityLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());
+        this._mark[1].setVisible(gameMark.getNewYearMark());
         this._mark[3].setVisible(gameMark.getPowerRewardMark());
         this._mark[4].setVisible(gameMark.getGoldRewardMark());
         this._mark[5].setVisible(gameMark.getRechargeMark());

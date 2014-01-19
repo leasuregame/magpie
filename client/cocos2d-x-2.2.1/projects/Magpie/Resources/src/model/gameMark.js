@@ -21,12 +21,13 @@ var gameMark = {
     _goldReward: false,
     _recharge: false,
     _lottery: false,
+    _newYearReward: false,
 
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
 
         if (!this._activity) {
-            this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() || this.getPowerRewardMark();
+            this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() || this.getPowerRewardMark() || this.getNewYearMark();
         }
 
         return this._activity;
@@ -195,7 +196,7 @@ var gameMark = {
             var len = keys.length;
             for (var i = 0; i < len; ++i) {
                 var key = keys[i];
-                var type = gameData.activity.getTypeById(goldRewards[key].id);
+                var type = gameData.activity.getStateById(TYPE_GOLD_REWARD, goldRewards[key].id);
                 if (type == GOLD_NO_RECEIVE) {
                     if (lv >= goldRewards[key].lv) {
                         mark = true;
@@ -298,6 +299,35 @@ var gameMark = {
     updateLotteryMark: function (mark) {
         cc.log("gameMark updateLotteryMark");
         this._lottery = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getNewYearMark: function () {
+        cc.log("gameMark getNewYearMark");
+
+        if (!this._newYearReward) {
+            var activity = gameData.activity;
+            if (activity.get("hasLoginReward")) {
+                this._newYearReward = true;
+            } else {
+                var table = outputTables.new_year_rechage.rows;
+                var keys = Object.keys(table);
+                var len = keys.length;
+                for (var id = 1; id <= len; id++) {
+                    if (activity.getStateById(TYPE_RECHARGE_REWARD, id) == RECHARGE_REWARD) {
+                        this._activity = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return this._activity;
+    },
+
+    updateNewYearMark: function (mark) {
+        cc.log("gameMark updateNewYearMark");
+        this._newYearReward = mark;
         MainScene.getInstance().updateMark();
     }
 

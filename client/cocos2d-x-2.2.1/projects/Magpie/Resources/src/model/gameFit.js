@@ -1991,7 +1991,7 @@ var fit4Iphone5 = {
         "newYearLayer": {
             "bgSpritePoint": cc.p(8, 108),
             "topSpritePoint": cc.p(320, 828),
-            "dailyGetIconPoint": cc.p(320, 678),
+            "dailyGetIconPoint": cc.p(327, 678),
             "lineIconPoint": cc.p(320, 540),
             "tipIconPoint": cc.p(320, 500),
             "arrowsIconPoint": cc.p(330, 320),

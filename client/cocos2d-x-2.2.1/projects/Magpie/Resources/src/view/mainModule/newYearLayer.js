@@ -66,8 +66,8 @@ var NewYearLayer = cc.Layer.extend({
         this.addChild(menu);
 
         this._dailyGetItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button10,
+            main_scene_image.button10s,
             main_scene_image.button9d,
             main_scene_image.icon123,
             this.onClickDailyReward,
@@ -98,12 +98,25 @@ var NewYearLayer = cc.Layer.extend({
 
     update: function () {
         cc.log("NewYearLayer update");
+
+        this._dailyGetItem.setEnabled(gameData.activity.get("hasLoginReward"));
     },
 
     onClickDailyReward: function () {
         cc.log("NewYearLayer onClickDailyReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+
+        gameData.activity.getNewYearReward(function () {
+            lz.tipReward({"gold": 20});
+            that.update();
+        }, {
+            type: RECEIVE_LOGIN_REWARD,
+            args: {}
+        });
+
 
     },
 
@@ -116,7 +129,32 @@ var NewYearLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var data = outputTables.new_year_rechage.rows[id];
-            GiftBagLayer.pop({reward: data});
+            var reward = {
+                "money": data.money,
+                "energy": data.energy,
+                "fragments": data.fragments
+            };
+            var test = gameData.activity.getStateById(TYPE_RECHARGE_REWARD, id);
+            cc.log(test);
+            var type = test ? GET_GIFT_BAG : SHOW_GIFT_BAG;
+            var cb = null;
+
+            if (type == GET_GIFT_BAG) {
+                cb = function () {
+                    gameData.activity.getNewYearReward(function () {
+                        lz.tipReward(reward);
+                    }, {
+                        type: RECEIVE_GIFT_REWARD,
+                        args: {id: id}
+                    });
+                };
+            }
+
+            GiftBagLayer.pop({
+                reward: reward,
+                type: type,
+                cb: cb
+            });
 
         }
     }

@@ -3,7 +3,9 @@ var path = require('path');
 var Data = require('../../bin/data');
 var _ = require('underscore');
 var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var app = pomelo.createApp({
+  base: path.join(__dirname, '..', '..')
+});
 
 var genDao = function(key) {
   app.set('env', process.argv[3] || 'development');

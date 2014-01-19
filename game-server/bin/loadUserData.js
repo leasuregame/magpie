@@ -3,7 +3,10 @@ var path = require('path');
 var Data = require('./data');
 var _ = require('underscore');
 var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var app = pomelo.createApp({
+  base: path.join(__dirname, '..')
+});
+
 
 app.set('env', process.argv[3] || 'development');
 //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');

@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS `player` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
-  `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `pass` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
+  `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `dailyGift` VARCHAR(2000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数

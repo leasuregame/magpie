@@ -51,7 +51,7 @@ Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
 doLogin  = (type, app, msg, session, platform, next) ->  
-  console.log '-login-1-', 'sid=', session.id, msg, msg.account
+  console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
   areaId = msg.areaId
   user = null
   player = null
@@ -69,7 +69,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       args.sid = session.id
       console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
-        console.log '-after auth-', msg.account
+        console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -86,6 +86,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
           userId: user.id, 
           serverId: app.getServerId()
         }, (err, res) ->
+          console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res

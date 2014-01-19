@@ -536,7 +536,7 @@ Handler::giveBless = (msg, session, next) ->
         if err
           return cb(err)
 
-        if ply.dailyGift.receivedBlessCount <= 0
+        if ply.dailyGift.receivedBless.count <= 0
           return cb({code: 501, msg: '今日对方接收祝福的次数已经达到上限'})
 
         ply.dailyGift.receivedBless.count--

@@ -200,10 +200,3 @@ CREATE TABLE IF NOT EXISTS `cdkey` (
   `endDate` DATE,
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('1', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('2', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('3', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('4', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('5', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('6', 100, 64800, 'tongbu', '', '', '2014-1-19');
-insert into tbOrder (tradeNo, playerId, amount, partner, paydes, status, created) values ('7', 100, 64800, 'tongbu', '', '', '2014-1-19');

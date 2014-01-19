@@ -18,15 +18,15 @@ Handler::get = (msg, session, next) ->
   if not Activity[type]
     return next(null, {code: 501, msg: '没有该类型奖励'})
 
-  Activity[type](playerId, type, args, next)
+  Activity[type](@app, playerId, type, args, next)
 
 
 class Activity
 
-  @login: (playerId, type, args, next) ->
+  @login: (app, playerId, type, args, next) ->
     async.waterfall [
-      (cb) =>
-        @app.get('playerManager').getPlayerInfo pid: playerId, cb
+      (cb) ->
+        app.get('playerManager').getPlayerInfo pid: playerId, cb
 
       (player, cb) ->
         if player.dailyGift.hasGotLoginReward
@@ -41,13 +41,13 @@ class Activity
         return next(null, {code: err.code or 501, msg: err.msg or err})
       next(null, {code: 200})
 
-  @recharge: (playerId, type, args, next) ->
+  @recharge: (app, playerId, type, args, next) ->
     if not args.id or not _.isNumber(args.id)
       return next(null, {code: 501, msg: '参数不正确'})
 
     async.waterfall [
-      (cb) =>
-        @app.get('playerManager').getPlayerInfo pid: playerId, cb
+      (cb) ->
+        app.get('playerManager').getPlayerInfo pid: playerId, cb
 
       (player, cb) ->
         if hasGotRechargeReward(player.activities, args.id)

@@ -279,8 +279,6 @@ var Server = Entity.extend({
                 that._closeAllWaitLayer();
 
                 gameData.gameEnd();
-                gameData.sound.stopMusic();
-                gameData.sound.stopEffect();
 
                 that.scheduleOnce(function () {
                     if (that._disconnectStatus == DISCONNECT_KICK) {

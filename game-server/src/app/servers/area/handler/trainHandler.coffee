@@ -145,24 +145,24 @@ Handler::luckyCard = (msg, session, next) ->
 
         if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
           grainFiveStarCard cards
+          player.setFirstTime('hightTenLuckCard', 0)
 
+        # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
+        frags = 0;
+        if level is HIGH_LUCKYCARD and times == 10
+            frags += 1
+            if utility.hitRate(1)
+              frags += 1    
+        totalFragment += frags
 
-        # # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
-        # frags = 0;
-        # if(level == 2 && times == 10) {
-        #     frags += 1;
-        #     if (utility.hitRate(1)) {
-        #         frags += 1;
-        #     }
-        #     return frags;
-        # }
-        
         cb(null, cards, --rfc, --hfc, --hdcc)
 
   grainFiveStarCard = (cards) ->
-    rd = _.random(0, cards.length)
-    cards[rd].tableId += 5 - cards[rd].star
-    cards[rd].star = 5
+    for card in cards
+      if card.star isnt 5
+        card.tableId += 5 - card.star
+        card.star = 5
+        break
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###

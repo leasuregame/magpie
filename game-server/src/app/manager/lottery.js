@@ -99,11 +99,12 @@ var gen_card_level = function (star) {
 
 var gen_card_fragment = function (level, times, rCounts, hCounts) {
     // 单次高级抽卡，每10次获得一个卡魂
+    var frags = 0;
     if(level == 2 && times == 1) {
-        if (hCounts%10) {
+        if (hCounts%10 == 0) {
             frags += 1;
         } 
-        return frags;       
+        return frags;
     }
 
     if (level == 2 && times == 10) {

@@ -103,7 +103,7 @@ var ActivityLayer = cc.Layer.extend({
 
             mainMenu.addChild(this._item[i]);
         }
-        scrollViewLayer.addChild(mainMenu, 2);
+        scrollViewLayer.addChild(mainMenu);
 
         this._selectIcon = cc.Sprite.create(main_scene_image.icon19);
         this._selectIcon.setAnchorPoint(cc.p(0, 0));

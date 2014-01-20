@@ -106,6 +106,9 @@ Handler::getReward = (msg, session, next) ->
       return next(null, {code: 501, msg: '没有购买，不能领取'})
 
     gc = player.goldCards[type]
+    if gc.status is 0
+      return next(null, {code: 501, msg: '不能领取'})
+
     if gc.daysRemaining() <= 0
       return next(null, {code: 501, msg: '已过期，不能领取'})
 

@@ -44,8 +44,8 @@ var AmountLayer = LazyLayer.extend({
         };
         this._price = data.price || 0;
         this._obtain = data.obtain || 0;
-        this._count = 1;
         this._maxCount = data.count || 0;
+        this._count = this._maxCount > 0 ? 1 : 0;
         this._tip = data.tip || "";
         this._maxBuyTimes = data.maxBuyTimes || 0;
         this._remainTimes = data.remainTimes || 0;
@@ -187,7 +187,7 @@ var AmountLayer = LazyLayer.extend({
 
         if (this._count > this._maxCount) {
             TipLayer.tip(this._tip);
-            
+
             this._count = this._maxCount;
         }
 

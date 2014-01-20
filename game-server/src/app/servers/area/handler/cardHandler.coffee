@@ -8,6 +8,10 @@ GOLDCARDMAP =
   'week': 'com.leasuregame.magpie.week.card.pay6'
   'month': 'com.leasuregame.magpie.month.card.pay30'
 
+GOLDCARDMAP_REVERT = 
+  'com.leasuregame.magpie.week.card.pay6': 'week'
+  'com.leasuregame.magpie.month.card.pay30': 'month'
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -43,10 +47,9 @@ Handler::checkBuyPermission = (msg, session, next) ->
 Handler::buyGoldCard = (msg, session, next) ->
   playerId = session.get('playerId')
   orderNo = msg.orderNo
-  type = msg.type
   productId = msg.productId
 
-  if not orderNo or not type or type not in _.keys(GOLDCARDMAP)
+  if not orderNo or not productId
     return next(null, {code: 501, msg: '参数不正确'})
 
   dao = @app.get('dao')
@@ -78,7 +81,7 @@ Handler::buyGoldCard = (msg, session, next) ->
           dao.goldCard.create data: {
             orderNo: orderNo,
             playerId: playerId,
-            type: type,
+            type: GOLDCARDMAP_REVERT[product.product_id],
             created: utility.dateFormat(today, "yyyy-MM-dd"),
             validDate: utility.dateFormat(vd, "yyyy-MM-dd")
           }, cb

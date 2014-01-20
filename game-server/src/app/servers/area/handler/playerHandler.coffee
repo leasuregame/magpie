@@ -169,7 +169,7 @@ Handler::getActivityInfo = (msg, session, next) ->
         canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
         levelReward: player.levelReward
         rechargeFlag: flag
-        hasLoginReward: hasLoginReward(app, player.dailyGift.hasGotLoginReward)
+        hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
       }
     })
 

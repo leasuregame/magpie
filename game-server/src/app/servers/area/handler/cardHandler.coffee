@@ -2,6 +2,7 @@ _ = require 'underscore'
 job = require '../../../dao/job'
 async = require 'async'
 table = require '../../../manager/table'
+utility = require '../../../common/utility'
 
 GOLDCARDMAP = 
   'week': 'com.leasuregame.magpie.week.card.pay6'
@@ -36,6 +37,35 @@ Handler::checkBuyPermission = (msg, session, next) ->
   ], (err, res) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200})
+
+Handler::buyGoldCard = (msg, session, next) ->
+  playerId = session.get('playerId')
+  orderNo = msg.orderNo
+  type = msg.type
+
+  if not orderNo or not type
+    return next(null, {code: 501, msg: '参数不正确'})
+
+  async.waterfall [
+    (cb) =>
+      @app.get('dao').order.fetchOne where: tradeNo: orderNo, (err, order) ->
+        if err and err.code is 404
+          cb()
+        else
+          cb({code: 200})
+
+    (cb) =>
+      @app.get('dao').order.create data: {
+        tradeNo: orderNo
+        playerId: playerId
+        status: 1000
+        created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
+      }, cb
+  ], (err, order) ->
+    if err
+      return next(null, {code: err.code or 501, msg: err.msg or ''})
 
     next(null, {code: 200})
 

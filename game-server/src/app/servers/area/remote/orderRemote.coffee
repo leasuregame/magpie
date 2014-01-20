@@ -54,6 +54,10 @@ Remote::add = (args, callback) ->
       }, cb
 
     (order, cb) =>
+      order.partner = partner
+      order.amount = amount
+      order.paydes = paydes
+
       times = 1
       if player.cash is 0
         ### 首冲获得三倍魔石 ###
@@ -62,20 +66,20 @@ Remote::add = (args, callback) ->
       product = table.getTableItem('recharge', productId)
       if not product
         logger.warn('找不到购买的对应产品, 产品id为', productId)
-        updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_1)
+        updateOrderStatus(@app, order, ORDER_ERROR_STATUS_1)
         return cb({ok: false, msg: '找不到购买的对应产品'})
 
       # 检查充值的金额是否正确
       if parseInt(amount) != product.cash*100
         logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', amount+'分,', 
           '产品实际金额为:', product.cash+'元', '产品id为:', productId)
-        updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_2)
+        updateOrderStatus(@app, order, ORDER_ERROR_STATUS_2)
         return cb({ok: false, msg: '充值的金额跟产品金额不匹配'})
       
       player.increase('cash', product.cash)
       player.increase('gold', (product.cash * 10 + product.gold) * times)
       player.save()
-      updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS, cb)
+      updateOrderStatus(@app, order, ORDER_FINISHED_STATUS, cb)
     
     (updated, cb) =>
       addGoldCard @app, tradeNo, player, product, cb
@@ -94,14 +98,14 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
 
   today = new Date()
   vd = new Date()
-  validDate = vd.setDate(today.getDate()+product.valid_days-1)
+  vd.setDate(today.getDate()+product.valid_days-1)
   app.get('dao').goldCard.create {
     data: {
       orderNo: tradeNo,
       playerId: player.id,
       type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
-      validDate: utility.dateFormat(validDate, "yyyy-MM-dd")
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
     }
   }, (err, res) ->
     if err
@@ -120,10 +124,15 @@ isGoldCard = (product) ->
   else
     return false
 
-updateOrderStatus = (app, tradeNo, status, cb) ->
+updateOrderStatus = (app, order, status, cb) ->
   app.get('dao').order.update {
-    data: status: status
-    where: tradeNo: tradeNo
+    data: {
+      partner: order.partner
+      amount: order.amount
+      paydes: order.paydes
+      status: status
+    }
+    where: tradeNo: order.tradeNo
   }, (err, res) ->
     if err
       logger.error('faild to udpate order status.', tradeNo, status)

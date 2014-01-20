@@ -250,7 +250,7 @@ getRechargeRewardFlag = (playerId, cb) ->
     if cash <= 0
       return cb(null, 0)
 
-    len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash < cash).length
+    len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
     return cb(null, Math.pow(2, len)-1)
 
 setCanGetFlag = (player, rflag) ->

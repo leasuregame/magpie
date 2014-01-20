@@ -335,7 +335,8 @@ var Player = (function(_super) {
         resetDate: '1970-1-1',
         firstTime: {
             lowLuckyCard: 1,
-            highLuckyCard: 1
+            highLuckyCard: 1,
+            hightTenLuckCard: 1
         },
         levelReward: [],
         teachingStep: 0,

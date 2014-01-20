@@ -111,6 +111,8 @@ module.exports =
 validSessionId = (uid, sid) ->
   cacheSid = sessionIdMap.get(uid)
   if cacheSid? and cacheSid is sid
+    ### 重置已登录用户session有效时间 ###
+    sessionIdMap.put uid, sid, 1000 * 60 * 60
     return true
   else
     return false

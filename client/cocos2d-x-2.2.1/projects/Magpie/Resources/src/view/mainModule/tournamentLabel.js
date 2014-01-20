@@ -84,10 +84,9 @@ var TournamentLabel = cc.Node.extend({
         }
 
         var ability = this._player.ability;
+        var functionItem = null;
 
         if (this._player.playerId != player.get("id")) {
-            var functionItem = null;
-
             if (this._player.type != CAN_DISPLAY) {
                 if (this._player.type == CAN_ADD_FRIEND) {
                     functionItem = cc.MenuItemImage.createWithIcon(
@@ -114,19 +113,28 @@ var TournamentLabel = cc.Node.extend({
                         this
                     );
                     var tipIcon = cc.Sprite.create(main_scene_image.icon288);
-                    tipIcon.setPosition(cc.p(530, 17));
+                    tipIcon.setScale(0.85);
+                    tipIcon.setPosition(cc.p(530, 24));
                     this.addChild(tipIcon);
                 }
-
-                functionItem.setPosition(cc.p(530, 57));
-
-                var functionItemMenu = LazyMenu.create(functionItem);
-                functionItemMenu.setPosition(cc.p(0, 0));
-                this.addChild(functionItemMenu);
             }
 
         } else {
             ability = player.getAbility();
+            functionItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon358,
+                this._onClickLineUp,
+                this
+            );
+        }
+
+        if (functionItem) {
+            functionItem.setPosition(cc.p(530, 62));
+            var functionItemMenu = LazyMenu.create(functionItem);
+            functionItemMenu.setPosition(cc.p(0, 0));
+            this.addChild(functionItemMenu);
         }
 
         var abilityIcon = cc.Sprite.create(main_scene_image.icon341);
@@ -168,6 +176,13 @@ var TournamentLabel = cc.Node.extend({
         this.addChild(turnRightSprite, 1);
 
         return true;
+    },
+
+    _onClickLineUp: function () {
+        cc.log("TournamentLabel _onClickLineUp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        LineUpLayer.pop();
     },
 
     _onClickPlayer: function () {

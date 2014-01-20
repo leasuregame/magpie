@@ -91,6 +91,7 @@ tbAdapter.buyGoodsSuccessWithOrderHandler = function (order) {
     cc.log("tbAdapter buyGoodsSuccessWithOrderHandler: " + order);
 
     gameData.payment._closeWaitLayer();
+    gameData.payment.buyGoodsSuccess(order);
 
     Dialog.pop("充值已成功，请稍候");
 };

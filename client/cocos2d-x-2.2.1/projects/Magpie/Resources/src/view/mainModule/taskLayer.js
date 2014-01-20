@@ -186,6 +186,10 @@ var TaskLayer = cc.Layer.extend({
 
         this._scrollView.setContentOffset(this._getScrollViewOffset());
 
+        var cloudEffect = cc.BuilderReader.load(main_scene_image.uiEffect75);
+        cloudEffect.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(cloudEffect);
+
         return true;
     },
 

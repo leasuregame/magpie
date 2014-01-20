@@ -1,6 +1,22 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
+    "new_year_rechage": "新年充值奖励",
+    "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "cdkey": "激活码配置表",
@@ -31,20 +47,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -61,6 +63,12 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -69,12 +77,6 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -121,7 +123,7 @@ var outputTables = {
                 "need": 50,
                 "name": "升级达人",
                 "desc": "角色等级达到50级",
-                "gold": 10,
+                "gold": 50,
                 "energy": 100
             },
             "2": {
@@ -139,7 +141,7 @@ var outputTables = {
                 "need": 50,
                 "name": "一半！",
                 "desc": "天道闯过50层",
-                "gold": 10,
+                "gold": 50,
                 "energy": 100
             },
             "4": {
@@ -148,7 +150,7 @@ var outputTables = {
                 "need": 100,
                 "name": "通关！",
                 "desc": "天道闯过100层",
-                "gold": 100,
+                "gold": 200,
                 "energy": 1000
             },
             "5": {
@@ -157,7 +159,7 @@ var outputTables = {
                 "need": 50,
                 "name": "小试牛刀",
                 "desc": "竞技获胜次数达到50场",
-                "gold": 10,
+                "gold": 50,
                 "energy": 100
             },
             "6": {
@@ -193,7 +195,7 @@ var outputTables = {
                 "need": 1,
                 "name": "霸气外射！",
                 "desc": "竞技场中以1敌5，战胜对方",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "10": {
@@ -202,7 +204,7 @@ var outputTables = {
                 "need": 20,
                 "name": "我们约会吧",
                 "desc": "拥有20个好友",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "11": {
@@ -211,7 +213,7 @@ var outputTables = {
                 "need": 500,
                 "name": "无私奉献",
                 "desc": "为好友送出祝福达到500次",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "12": {
@@ -229,7 +231,7 @@ var outputTables = {
                 "need": 1,
                 "name": "质的飞跃",
                 "desc": "获得1张5星卡",
-                "gold": 10,
+                "gold": 50,
                 "energy": 100
             },
             "14": {
@@ -256,7 +258,7 @@ var outputTables = {
                 "need": 1,
                 "name": "但求最好",
                 "desc": "拥有1个10%的被动属性",
-                "gold": 10,
+                "gold": 100,
                 "energy": 100
             },
             "17": {
@@ -310,7 +312,7 @@ var outputTables = {
                 "need": 10000,
                 "name": "孜孜不倦",
                 "desc": "累计消耗体力10000点",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "23": {
@@ -328,7 +330,7 @@ var outputTables = {
                 "need": 10000000,
                 "name": "不差钱",
                 "desc": "累计消耗仙币1000万",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "25": {
@@ -346,7 +348,7 @@ var outputTables = {
                 "need": 10,
                 "name": "十步之遥",
                 "desc": "修炼里探索总进度达到10",
-                "gold": 10,
+                "gold": 20,
                 "energy": 50
             },
             "27": {
@@ -355,7 +357,7 @@ var outputTables = {
                 "need": 1,
                 "name": "鬼门关之旅",
                 "desc": "通关鬼门关",
-                "gold": 10,
+                "gold": 20,
                 "energy": 50
             },
             "28": {
@@ -364,7 +366,7 @@ var outputTables = {
                 "need": 1,
                 "name": "天道首胜",
                 "desc": "在天道中获得第一场胜利",
-                "gold": 10,
+                "gold": 20,
                 "energy": 50
             },
             "29": {
@@ -373,7 +375,7 @@ var outputTables = {
                 "need": 1,
                 "name": "苦寒地狱",
                 "desc": "通关苦寒地狱篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "30": {
@@ -382,7 +384,7 @@ var outputTables = {
                 "need": 2,
                 "name": "凄凉人间",
                 "desc": "通关凄凉人间篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "31": {
@@ -391,7 +393,7 @@ var outputTables = {
                 "need": 3,
                 "name": "南天之门",
                 "desc": "通关南天之门篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "32": {
@@ -400,7 +402,7 @@ var outputTables = {
                 "need": 4,
                 "name": "西天取经",
                 "desc": "通关西天取经篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "33": {
@@ -409,7 +411,7 @@ var outputTables = {
                 "need": 5,
                 "name": "莲花加持",
                 "desc": "通关莲花加持篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "34": {
@@ -418,7 +420,7 @@ var outputTables = {
                 "need": 6,
                 "name": "千年之修",
                 "desc": "通关千年之修篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "35": {
@@ -427,7 +429,7 @@ var outputTables = {
                 "need": 7,
                 "name": "斩妖除魔",
                 "desc": "通关斩妖除魔篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "36": {
@@ -436,7 +438,7 @@ var outputTables = {
                 "need": 8,
                 "name": "降龙伏虎",
                 "desc": "通关降龙伏虎篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "37": {
@@ -445,7 +447,7 @@ var outputTables = {
                 "need": 9,
                 "name": "普度众生",
                 "desc": "通关普度众生篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
             },
             "38": {
@@ -454,351 +456,8 @@ var outputTables = {
                 "need": 10,
                 "name": "尊者之身",
                 "desc": "通关尊者之身篇章",
-                "gold": 10,
+                "gold": 20,
                 "energy": 100
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 20000,
-                "energy": 1000,
-                "card_ids": 254,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 500,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 10,
-                "collect_count": 15,
-                "exp_card_count": 30
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[8,13,33,43,168,148,218,123,243]",
-                "star4": "[59,139]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 20,
-                "lottery": 25,
-                "card5_position": 35,
-                "pass_skillafresh": 45
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 100000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 160000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 240000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 9999999,
-                "energy": 99999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 2000,
-                "energy": 100
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 1000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 2000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 3000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
             }
         }
     },
@@ -1240,11 +899,11 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "grow_per_lv": 10,
-                "star1": 200,
-                "star2": 500,
-                "star3": 1500,
-                "star4": 3000,
-                "star5": 7000
+                "star1": 500,
+                "star2": 800,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000
             }
         }
     },
@@ -9127,27 +8786,27 @@ var outputTables = {
                 "type": "power",
                 "value": 10,
                 "name": "体力",
-                "type_rate": 30,
+                "type_rate": 20,
                 "value_rate": 90,
-                "rate": 27
+                "rate": 18
             },
             "1": {
                 "id": 1,
                 "type": "power",
                 "value": 50,
                 "name": "体力",
-                "type_rate": 30,
+                "type_rate": 20,
                 "value_rate": 9,
-                "rate": 2.7
+                "rate": 1.8
             },
             "2": {
                 "id": 2,
                 "type": "power",
                 "value": 100,
                 "name": "体力",
-                "type_rate": 30,
+                "type_rate": 20,
                 "value_rate": 1,
-                "rate": 0.3
+                "rate": 0.2
             },
             "3": {
                 "id": 3,
@@ -9235,27 +8894,27 @@ var outputTables = {
                 "type": "energy",
                 "value": 50,
                 "name": "活力点",
-                "type_rate": 10,
+                "type_rate": 20,
                 "value_rate": 90,
-                "rate": 9
+                "rate": 18
             },
             "13": {
                 "id": 13,
                 "type": "energy",
                 "value": 100,
                 "name": "活力点",
-                "type_rate": 10,
+                "type_rate": 20,
                 "value_rate": 9,
-                "rate": 0.9
+                "rate": 1.8
             },
             "14": {
                 "id": 14,
                 "type": "energy",
                 "value": 5000,
                 "name": "活力点",
-                "type_rate": 10,
+                "type_rate": 20,
                 "value_rate": 1,
-                "rate": 0.1
+                "rate": 0.2
             },
             "15": {
                 "id": 15,
@@ -9301,6 +8960,389 @@ var outputTables = {
                 "type_rate": 10,
                 "value_rate": 1,
                 "rate": 0.1
+            }
+        }
+    },
+    "new_year_rechage": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
+            },
+            "3": {
+                "id": 3,
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
+            },
+            "4": {
+                "id": 4,
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
+            },
+            "5": {
+                "id": 5,
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 254,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lottery_count": 500,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 10,
+                "collect_count": 15,
+                "exp_card_count": 30
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,148,218,123,243]",
+                "star4": "[59,139]"
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "pass_skillafresh": 45
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 100000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 160000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 240000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 9999999,
+                "energy": 99999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 5000,
+                "energy": 200
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "skillPoint": 1000,
+                "elixir": 2000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "skillPoint": 2000,
+                "elixir": 5000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "skillPoint": 5000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "skillPoint": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 1000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
             }
         }
     },
@@ -24951,6 +24993,253 @@ var outputTables = {
             }
         }
     },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -25255,253 +25544,6 @@ var outputTables = {
                 "star5_inc_max": 58,
                 "star5_grow": 3,
                 "rate5": 40
-            }
-        }
-    },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -27351,802 +27393,802 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "exp": 40,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10000,
+                "elixir": 1000,
+                "skillPoint": 800,
+                "energy": 30
             },
             "2": {
                 "id": 2,
                 "exp": 44,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10100,
+                "elixir": 1020,
+                "skillPoint": 810,
+                "energy": 35
             },
             "3": {
                 "id": 3,
                 "exp": 48,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10200,
+                "elixir": 1040,
+                "skillPoint": 820,
+                "energy": 45
             },
             "4": {
                 "id": 4,
                 "exp": 53,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10300,
+                "elixir": 1060,
+                "skillPoint": 830,
+                "energy": 55
             },
             "5": {
                 "id": 5,
                 "exp": 58,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10400,
+                "elixir": 1080,
+                "skillPoint": 840,
+                "energy": 65
             },
             "6": {
                 "id": 6,
                 "exp": 64,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10500,
+                "elixir": 1100,
+                "skillPoint": 850,
+                "energy": 75
             },
             "7": {
                 "id": 7,
                 "exp": 70,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10600,
+                "elixir": 1120,
+                "skillPoint": 860,
+                "energy": 85
             },
             "8": {
                 "id": 8,
                 "exp": 77,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10700,
+                "elixir": 1140,
+                "skillPoint": 870,
+                "energy": 95
             },
             "9": {
                 "id": 9,
                 "exp": 85,
-                "money": 100,
-                "energy": 10,
-                "skillPoint": 10,
-                "elixir": 10
+                "money": 10800,
+                "elixir": 1160,
+                "skillPoint": 880,
+                "energy": 105
             },
             "10": {
                 "id": 10,
                 "exp": 94,
-                "money": 100,
-                "energy": 15,
-                "skillPoint": 50,
-                "elixir": 50
+                "money": 10900,
+                "elixir": 1180,
+                "skillPoint": 890,
+                "energy": 115
             },
             "11": {
                 "id": 11,
                 "exp": 103,
-                "money": 110,
-                "energy": 20,
-                "skillPoint": 60,
-                "elixir": 60
+                "money": 11000,
+                "elixir": 1200,
+                "skillPoint": 900,
+                "energy": 125
             },
             "12": {
                 "id": 12,
                 "exp": 113,
-                "money": 120,
-                "energy": 25,
-                "skillPoint": 70,
-                "elixir": 70
+                "money": 11100,
+                "elixir": 1220,
+                "skillPoint": 910,
+                "energy": 135
             },
             "13": {
                 "id": 13,
                 "exp": 124,
-                "money": 130,
-                "energy": 30,
-                "skillPoint": 80,
-                "elixir": 80
+                "money": 11200,
+                "elixir": 1240,
+                "skillPoint": 920,
+                "energy": 145
             },
             "14": {
                 "id": 14,
                 "exp": 136,
-                "money": 140,
-                "energy": 35,
-                "skillPoint": 90,
-                "elixir": 90
+                "money": 11300,
+                "elixir": 1260,
+                "skillPoint": 930,
+                "energy": 155
             },
             "15": {
                 "id": 15,
                 "exp": 150,
-                "money": 150,
-                "energy": 40,
-                "skillPoint": 100,
-                "elixir": 100
+                "money": 11400,
+                "elixir": 1280,
+                "skillPoint": 940,
+                "energy": 165
             },
             "16": {
                 "id": 16,
                 "exp": 165,
-                "money": 160,
-                "energy": 45,
-                "skillPoint": 110,
-                "elixir": 110
+                "money": 11500,
+                "elixir": 1300,
+                "skillPoint": 950,
+                "energy": 175
             },
             "17": {
                 "id": 17,
                 "exp": 182,
-                "money": 170,
-                "energy": 50,
-                "skillPoint": 120,
-                "elixir": 120
+                "money": 11600,
+                "elixir": 1320,
+                "skillPoint": 960,
+                "energy": 185
             },
             "18": {
                 "id": 18,
                 "exp": 200,
-                "money": 180,
-                "energy": 55,
-                "skillPoint": 130,
-                "elixir": 130
+                "money": 11700,
+                "elixir": 1340,
+                "skillPoint": 970,
+                "energy": 195
             },
             "19": {
                 "id": 19,
                 "exp": 220,
-                "money": 190,
-                "energy": 60,
-                "skillPoint": 140,
-                "elixir": 140
+                "money": 11800,
+                "elixir": 1360,
+                "skillPoint": 980,
+                "energy": 205
             },
             "20": {
                 "id": 20,
                 "exp": 242,
-                "money": 200,
-                "energy": 65,
-                "skillPoint": 150,
-                "elixir": 150
+                "money": 11900,
+                "elixir": 1380,
+                "skillPoint": 990,
+                "energy": 215
             },
             "21": {
                 "id": 21,
                 "exp": 266,
-                "money": 210,
-                "energy": 70,
-                "skillPoint": 160,
-                "elixir": 160
+                "money": 12000,
+                "elixir": 1400,
+                "skillPoint": 1000,
+                "energy": 225
             },
             "22": {
                 "id": 22,
                 "exp": 293,
-                "money": 220,
-                "energy": 75,
-                "skillPoint": 170,
-                "elixir": 170
+                "money": 12100,
+                "elixir": 1420,
+                "skillPoint": 1010,
+                "energy": 235
             },
             "23": {
                 "id": 23,
                 "exp": 322,
-                "money": 230,
-                "energy": 80,
-                "skillPoint": 180,
-                "elixir": 180
+                "money": 12200,
+                "elixir": 1440,
+                "skillPoint": 1020,
+                "energy": 245
             },
             "24": {
                 "id": 24,
                 "exp": 354,
-                "money": 240,
-                "energy": 85,
-                "skillPoint": 190,
-                "elixir": 190
+                "money": 12300,
+                "elixir": 1460,
+                "skillPoint": 1030,
+                "energy": 255
             },
             "25": {
                 "id": 25,
                 "exp": 389,
-                "money": 250,
-                "energy": 90,
-                "skillPoint": 200,
-                "elixir": 200
+                "money": 12400,
+                "elixir": 1480,
+                "skillPoint": 1040,
+                "energy": 265
             },
             "26": {
                 "id": 26,
                 "exp": 428,
-                "money": 260,
-                "energy": 95,
-                "skillPoint": 210,
-                "elixir": 210
+                "money": 12500,
+                "elixir": 1500,
+                "skillPoint": 1050,
+                "energy": 275
             },
             "27": {
                 "id": 27,
                 "exp": 471,
-                "money": 270,
-                "energy": 100,
-                "skillPoint": 220,
-                "elixir": 220
+                "money": 12600,
+                "elixir": 1520,
+                "skillPoint": 1060,
+                "energy": 285
             },
             "28": {
                 "id": 28,
                 "exp": 518,
-                "money": 280,
-                "energy": 105,
-                "skillPoint": 230,
-                "elixir": 230
+                "money": 12700,
+                "elixir": 1540,
+                "skillPoint": 1070,
+                "energy": 295
             },
             "29": {
                 "id": 29,
                 "exp": 570,
-                "money": 290,
-                "energy": 110,
-                "skillPoint": 240,
-                "elixir": 240
+                "money": 12800,
+                "elixir": 1560,
+                "skillPoint": 1080,
+                "energy": 305
             },
             "30": {
                 "id": 30,
                 "exp": 627,
-                "money": 300,
-                "energy": 115,
-                "skillPoint": 250,
-                "elixir": 250
+                "money": 12900,
+                "elixir": 1580,
+                "skillPoint": 1090,
+                "energy": 315
             },
             "31": {
                 "id": 31,
                 "exp": 690,
-                "money": 310,
-                "energy": 120,
-                "skillPoint": 260,
-                "elixir": 260
+                "money": 13000,
+                "elixir": 1600,
+                "skillPoint": 1100,
+                "energy": 325
             },
             "32": {
                 "id": 32,
                 "exp": 759,
-                "money": 320,
-                "energy": 125,
-                "skillPoint": 270,
-                "elixir": 270
+                "money": 13100,
+                "elixir": 1620,
+                "skillPoint": 1110,
+                "energy": 335
             },
             "33": {
                 "id": 33,
                 "exp": 835,
-                "money": 330,
-                "energy": 130,
-                "skillPoint": 280,
-                "elixir": 280
+                "money": 13200,
+                "elixir": 1640,
+                "skillPoint": 1120,
+                "energy": 345
             },
             "34": {
                 "id": 34,
                 "exp": 919,
-                "money": 340,
-                "energy": 135,
-                "skillPoint": 290,
-                "elixir": 290
+                "money": 13300,
+                "elixir": 1660,
+                "skillPoint": 1130,
+                "energy": 355
             },
             "35": {
                 "id": 35,
                 "exp": 1011,
-                "money": 350,
-                "energy": 140,
-                "skillPoint": 300,
-                "elixir": 300
+                "money": 13400,
+                "elixir": 1680,
+                "skillPoint": 1140,
+                "energy": 365
             },
             "36": {
                 "id": 36,
                 "exp": 1112,
-                "money": 360,
-                "energy": 145,
-                "skillPoint": 310,
-                "elixir": 310
+                "money": 13500,
+                "elixir": 1700,
+                "skillPoint": 1150,
+                "energy": 375
             },
             "37": {
                 "id": 37,
                 "exp": 1223,
-                "money": 370,
-                "energy": 150,
-                "skillPoint": 320,
-                "elixir": 320
+                "money": 13600,
+                "elixir": 1720,
+                "skillPoint": 1160,
+                "energy": 385
             },
             "38": {
                 "id": 38,
                 "exp": 1345,
-                "money": 380,
-                "energy": 155,
-                "skillPoint": 330,
-                "elixir": 330
+                "money": 13700,
+                "elixir": 1740,
+                "skillPoint": 1170,
+                "energy": 395
             },
             "39": {
                 "id": 39,
                 "exp": 1480,
-                "money": 390,
-                "energy": 160,
-                "skillPoint": 340,
-                "elixir": 340
+                "money": 13800,
+                "elixir": 1760,
+                "skillPoint": 1180,
+                "energy": 405
             },
             "40": {
                 "id": 40,
                 "exp": 1628,
-                "money": 400,
-                "energy": 165,
-                "skillPoint": 350,
-                "elixir": 350
+                "money": 13900,
+                "elixir": 1780,
+                "skillPoint": 1190,
+                "energy": 415
             },
             "41": {
                 "id": 41,
                 "exp": 1791,
-                "money": 410,
-                "energy": 170,
-                "skillPoint": 360,
-                "elixir": 360
+                "money": 14000,
+                "elixir": 1800,
+                "skillPoint": 1200,
+                "energy": 425
             },
             "42": {
                 "id": 42,
                 "exp": 1970,
-                "money": 420,
-                "energy": 175,
-                "skillPoint": 370,
-                "elixir": 370
+                "money": 14100,
+                "elixir": 1820,
+                "skillPoint": 1210,
+                "energy": 435
             },
             "43": {
                 "id": 43,
                 "exp": 2167,
-                "money": 430,
-                "energy": 180,
-                "skillPoint": 380,
-                "elixir": 380
+                "money": 14200,
+                "elixir": 1840,
+                "skillPoint": 1220,
+                "energy": 445
             },
             "44": {
                 "id": 44,
                 "exp": 2384,
-                "money": 440,
-                "energy": 185,
-                "skillPoint": 390,
-                "elixir": 390
+                "money": 14300,
+                "elixir": 1860,
+                "skillPoint": 1230,
+                "energy": 455
             },
             "45": {
                 "id": 45,
                 "exp": 2622,
-                "money": 450,
-                "energy": 190,
-                "skillPoint": 400,
-                "elixir": 400
+                "money": 14400,
+                "elixir": 1880,
+                "skillPoint": 1240,
+                "energy": 465
             },
             "46": {
                 "id": 46,
                 "exp": 2884,
-                "money": 460,
-                "energy": 195,
-                "skillPoint": 410,
-                "elixir": 410
+                "money": 14500,
+                "elixir": 1900,
+                "skillPoint": 1250,
+                "energy": 475
             },
             "47": {
                 "id": 47,
                 "exp": 3172,
-                "money": 470,
-                "energy": 200,
-                "skillPoint": 420,
-                "elixir": 420
+                "money": 14600,
+                "elixir": 1920,
+                "skillPoint": 1260,
+                "energy": 485
             },
             "48": {
                 "id": 48,
                 "exp": 3489,
-                "money": 480,
-                "energy": 205,
-                "skillPoint": 430,
-                "elixir": 430
+                "money": 14700,
+                "elixir": 1940,
+                "skillPoint": 1270,
+                "energy": 495
             },
             "49": {
                 "id": 49,
                 "exp": 3838,
-                "money": 490,
-                "energy": 210,
-                "skillPoint": 440,
-                "elixir": 440
+                "money": 14800,
+                "elixir": 1960,
+                "skillPoint": 1280,
+                "energy": 505
             },
             "50": {
                 "id": 50,
                 "exp": 4222,
-                "money": 500,
-                "energy": 215,
-                "skillPoint": 450,
-                "elixir": 450
+                "money": 14900,
+                "elixir": 1980,
+                "skillPoint": 1290,
+                "energy": 515
             },
             "51": {
                 "id": 51,
                 "exp": 4644,
-                "money": 510,
-                "energy": 220,
-                "skillPoint": 460,
-                "elixir": 460
+                "money": 15000,
+                "elixir": 2000,
+                "skillPoint": 1300,
+                "energy": 525
             },
             "52": {
                 "id": 52,
                 "exp": 5108,
-                "money": 520,
-                "energy": 225,
-                "skillPoint": 470,
-                "elixir": 470
+                "money": 15100,
+                "elixir": 2020,
+                "skillPoint": 1310,
+                "energy": 535
             },
             "53": {
                 "id": 53,
                 "exp": 5619,
-                "money": 530,
-                "energy": 230,
-                "skillPoint": 480,
-                "elixir": 480
+                "money": 15200,
+                "elixir": 2040,
+                "skillPoint": 1320,
+                "energy": 545
             },
             "54": {
                 "id": 54,
                 "exp": 6181,
-                "money": 540,
-                "energy": 235,
-                "skillPoint": 490,
-                "elixir": 490
+                "money": 15300,
+                "elixir": 2060,
+                "skillPoint": 1330,
+                "energy": 555
             },
             "55": {
                 "id": 55,
                 "exp": 6799,
-                "money": 550,
-                "energy": 240,
-                "skillPoint": 500,
-                "elixir": 500
+                "money": 15400,
+                "elixir": 2080,
+                "skillPoint": 1340,
+                "energy": 565
             },
             "56": {
                 "id": 56,
                 "exp": 7479,
-                "money": 560,
-                "energy": 245,
-                "skillPoint": 510,
-                "elixir": 510
+                "money": 15500,
+                "elixir": 2100,
+                "skillPoint": 1350,
+                "energy": 575
             },
             "57": {
                 "id": 57,
                 "exp": 8227,
-                "money": 570,
-                "energy": 250,
-                "skillPoint": 520,
-                "elixir": 520
+                "money": 15600,
+                "elixir": 2120,
+                "skillPoint": 1360,
+                "energy": 585
             },
             "58": {
                 "id": 58,
                 "exp": 9050,
-                "money": 580,
-                "energy": 255,
-                "skillPoint": 530,
-                "elixir": 530
+                "money": 15700,
+                "elixir": 2140,
+                "skillPoint": 1370,
+                "energy": 595
             },
             "59": {
                 "id": 59,
                 "exp": 9955,
-                "money": 590,
-                "energy": 260,
-                "skillPoint": 540,
-                "elixir": 540
+                "money": 15800,
+                "elixir": 2160,
+                "skillPoint": 1380,
+                "energy": 605
             },
             "60": {
                 "id": 60,
                 "exp": 10951,
-                "money": 600,
-                "energy": 265,
-                "skillPoint": 550,
-                "elixir": 550
+                "money": 15900,
+                "elixir": 2180,
+                "skillPoint": 1390,
+                "energy": 615
             },
             "61": {
                 "id": 61,
                 "exp": 12046,
-                "money": 610,
-                "energy": 270,
-                "skillPoint": 560,
-                "elixir": 560
+                "money": 16000,
+                "elixir": 2200,
+                "skillPoint": 1400,
+                "energy": 625
             },
             "62": {
                 "id": 62,
                 "exp": 13251,
-                "money": 620,
-                "energy": 275,
-                "skillPoint": 570,
-                "elixir": 570
+                "money": 16100,
+                "elixir": 2220,
+                "skillPoint": 1410,
+                "energy": 635
             },
             "63": {
                 "id": 63,
                 "exp": 14576,
-                "money": 630,
-                "energy": 280,
-                "skillPoint": 580,
-                "elixir": 580
+                "money": 16200,
+                "elixir": 2240,
+                "skillPoint": 1420,
+                "energy": 645
             },
             "64": {
                 "id": 64,
                 "exp": 16034,
-                "money": 640,
-                "energy": 285,
-                "skillPoint": 590,
-                "elixir": 590
+                "money": 16300,
+                "elixir": 2260,
+                "skillPoint": 1430,
+                "energy": 655
             },
             "65": {
                 "id": 65,
                 "exp": 17637,
-                "money": 650,
-                "energy": 290,
-                "skillPoint": 600,
-                "elixir": 600
+                "money": 16400,
+                "elixir": 2280,
+                "skillPoint": 1440,
+                "energy": 665
             },
             "66": {
                 "id": 66,
                 "exp": 19401,
-                "money": 660,
-                "energy": 295,
-                "skillPoint": 610,
-                "elixir": 610
+                "money": 16500,
+                "elixir": 2300,
+                "skillPoint": 1450,
+                "energy": 675
             },
             "67": {
                 "id": 67,
                 "exp": 21341,
-                "money": 670,
-                "energy": 300,
-                "skillPoint": 620,
-                "elixir": 620
+                "money": 16600,
+                "elixir": 2320,
+                "skillPoint": 1460,
+                "energy": 685
             },
             "68": {
                 "id": 68,
                 "exp": 23475,
-                "money": 680,
-                "energy": 305,
-                "skillPoint": 630,
-                "elixir": 630
+                "money": 16700,
+                "elixir": 2340,
+                "skillPoint": 1470,
+                "energy": 695
             },
             "69": {
                 "id": 69,
                 "exp": 25823,
-                "money": 690,
-                "energy": 310,
-                "skillPoint": 640,
-                "elixir": 640
+                "money": 16800,
+                "elixir": 2360,
+                "skillPoint": 1480,
+                "energy": 705
             },
             "70": {
                 "id": 70,
                 "exp": 28405,
-                "money": 700,
-                "energy": 315,
-                "skillPoint": 650,
-                "elixir": 650
+                "money": 16900,
+                "elixir": 2380,
+                "skillPoint": 1490,
+                "energy": 715
             },
             "71": {
                 "id": 71,
                 "exp": 31246,
-                "money": 710,
-                "energy": 320,
-                "skillPoint": 660,
-                "elixir": 660
+                "money": 17000,
+                "elixir": 2400,
+                "skillPoint": 1500,
+                "energy": 725
             },
             "72": {
                 "id": 72,
                 "exp": 34371,
-                "money": 720,
-                "energy": 325,
-                "skillPoint": 670,
-                "elixir": 670
+                "money": 17100,
+                "elixir": 2420,
+                "skillPoint": 1510,
+                "energy": 735
             },
             "73": {
                 "id": 73,
                 "exp": 37808,
-                "money": 730,
-                "energy": 330,
-                "skillPoint": 680,
-                "elixir": 680
+                "money": 17200,
+                "elixir": 2440,
+                "skillPoint": 1520,
+                "energy": 745
             },
             "74": {
                 "id": 74,
                 "exp": 41589,
-                "money": 740,
-                "energy": 335,
-                "skillPoint": 690,
-                "elixir": 690
+                "money": 17300,
+                "elixir": 2460,
+                "skillPoint": 1530,
+                "energy": 755
             },
             "75": {
                 "id": 75,
                 "exp": 45748,
-                "money": 750,
-                "energy": 340,
-                "skillPoint": 700,
-                "elixir": 700
+                "money": 17400,
+                "elixir": 2480,
+                "skillPoint": 1540,
+                "energy": 765
             },
             "76": {
                 "id": 76,
                 "exp": 50323,
-                "money": 760,
-                "energy": 345,
-                "skillPoint": 710,
-                "elixir": 710
+                "money": 17500,
+                "elixir": 2500,
+                "skillPoint": 1550,
+                "energy": 775
             },
             "77": {
                 "id": 77,
                 "exp": 55355,
-                "money": 770,
-                "energy": 350,
-                "skillPoint": 720,
-                "elixir": 720
+                "money": 17600,
+                "elixir": 2520,
+                "skillPoint": 1560,
+                "energy": 785
             },
             "78": {
                 "id": 78,
                 "exp": 60891,
-                "money": 780,
-                "energy": 355,
-                "skillPoint": 730,
-                "elixir": 730
+                "money": 17700,
+                "elixir": 2540,
+                "skillPoint": 1570,
+                "energy": 795
             },
             "79": {
                 "id": 79,
                 "exp": 66980,
-                "money": 790,
-                "energy": 360,
-                "skillPoint": 740,
-                "elixir": 740
+                "money": 17800,
+                "elixir": 2560,
+                "skillPoint": 1580,
+                "energy": 805
             },
             "80": {
                 "id": 80,
                 "exp": 73678,
-                "money": 800,
-                "energy": 365,
-                "skillPoint": 750,
-                "elixir": 750
+                "money": 17900,
+                "elixir": 2580,
+                "skillPoint": 1590,
+                "energy": 815
             },
             "81": {
                 "id": 81,
                 "exp": 81046,
-                "money": 810,
-                "energy": 370,
-                "skillPoint": 760,
-                "elixir": 760
+                "money": 18000,
+                "elixir": 2600,
+                "skillPoint": 1600,
+                "energy": 825
             },
             "82": {
                 "id": 82,
                 "exp": 89151,
-                "money": 820,
-                "energy": 375,
-                "skillPoint": 770,
-                "elixir": 770
+                "money": 18100,
+                "elixir": 2620,
+                "skillPoint": 1610,
+                "energy": 835
             },
             "83": {
                 "id": 83,
                 "exp": 98066,
-                "money": 830,
-                "energy": 380,
-                "skillPoint": 780,
-                "elixir": 780
+                "money": 18200,
+                "elixir": 2640,
+                "skillPoint": 1620,
+                "energy": 845
             },
             "84": {
                 "id": 84,
                 "exp": 107873,
-                "money": 840,
-                "energy": 385,
-                "skillPoint": 790,
-                "elixir": 790
+                "money": 18300,
+                "elixir": 2660,
+                "skillPoint": 1630,
+                "energy": 855
             },
             "85": {
                 "id": 85,
                 "exp": 118660,
-                "money": 850,
-                "energy": 390,
-                "skillPoint": 800,
-                "elixir": 800
+                "money": 18400,
+                "elixir": 2680,
+                "skillPoint": 1640,
+                "energy": 865
             },
             "86": {
                 "id": 86,
                 "exp": 130526,
-                "money": 860,
-                "energy": 395,
-                "skillPoint": 810,
-                "elixir": 810
+                "money": 18500,
+                "elixir": 2700,
+                "skillPoint": 1650,
+                "energy": 875
             },
             "87": {
                 "id": 87,
                 "exp": 143579,
-                "money": 870,
-                "energy": 400,
-                "skillPoint": 820,
-                "elixir": 820
+                "money": 18600,
+                "elixir": 2720,
+                "skillPoint": 1660,
+                "energy": 885
             },
             "88": {
                 "id": 88,
                 "exp": 157937,
-                "money": 880,
-                "energy": 405,
-                "skillPoint": 830,
-                "elixir": 830
+                "money": 18700,
+                "elixir": 2740,
+                "skillPoint": 1670,
+                "energy": 895
             },
             "89": {
                 "id": 89,
                 "exp": 173731,
-                "money": 890,
-                "energy": 410,
-                "skillPoint": 840,
-                "elixir": 840
+                "money": 18800,
+                "elixir": 2760,
+                "skillPoint": 1680,
+                "energy": 905
             },
             "90": {
                 "id": 90,
                 "exp": 191104,
-                "money": 900,
-                "energy": 415,
-                "skillPoint": 850,
-                "elixir": 850
+                "money": 18900,
+                "elixir": 2780,
+                "skillPoint": 1690,
+                "energy": 915
             },
             "91": {
                 "id": 91,
                 "exp": 210214,
-                "money": 910,
-                "energy": 420,
-                "skillPoint": 860,
-                "elixir": 860
+                "money": 19000,
+                "elixir": 2800,
+                "skillPoint": 1700,
+                "energy": 925
             },
             "92": {
                 "id": 92,
                 "exp": 231235,
-                "money": 920,
-                "energy": 425,
-                "skillPoint": 870,
-                "elixir": 870
+                "money": 19100,
+                "elixir": 2820,
+                "skillPoint": 1710,
+                "energy": 935
             },
             "93": {
                 "id": 93,
                 "exp": 254359,
-                "money": 930,
-                "energy": 430,
-                "skillPoint": 880,
-                "elixir": 880
+                "money": 19200,
+                "elixir": 2840,
+                "skillPoint": 1720,
+                "energy": 945
             },
             "94": {
                 "id": 94,
                 "exp": 279795,
-                "money": 940,
-                "energy": 435,
-                "skillPoint": 890,
-                "elixir": 890
+                "money": 19300,
+                "elixir": 2860,
+                "skillPoint": 1730,
+                "energy": 955
             },
             "95": {
                 "id": 95,
                 "exp": 307775,
-                "money": 950,
-                "energy": 440,
-                "skillPoint": 900,
-                "elixir": 900
+                "money": 19400,
+                "elixir": 2880,
+                "skillPoint": 1740,
+                "energy": 965
             },
             "96": {
                 "id": 96,
                 "exp": 338553,
-                "money": 960,
-                "energy": 445,
-                "skillPoint": 910,
-                "elixir": 910
+                "money": 19500,
+                "elixir": 2900,
+                "skillPoint": 1750,
+                "energy": 975
             },
             "97": {
                 "id": 97,
                 "exp": 372408,
-                "money": 970,
-                "energy": 450,
-                "skillPoint": 920,
-                "elixir": 920
+                "money": 19600,
+                "elixir": 2920,
+                "skillPoint": 1760,
+                "energy": 985
             },
             "98": {
                 "id": 98,
                 "exp": 409649,
-                "money": 980,
-                "energy": 455,
-                "skillPoint": 930,
-                "elixir": 930
+                "money": 19700,
+                "elixir": 2940,
+                "skillPoint": 1770,
+                "energy": 995
             },
             "99": {
                 "id": 99,
                 "exp": 450614,
-                "money": 990,
-                "energy": 460,
-                "skillPoint": 940,
-                "elixir": 940
+                "money": 19800,
+                "elixir": 2960,
+                "skillPoint": 1780,
+                "energy": 1005
             },
             "100": {
                 "id": 100,
                 "exp": 495675,
-                "money": 1000,
-                "energy": 465,
-                "skillPoint": 950,
-                "elixir": 950
+                "money": 19900,
+                "elixir": 2980,
+                "skillPoint": 1790,
+                "energy": 1015
             }
         }
     },
@@ -45981,2003 +46023,2003 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "money_obtain": 500
+                "money_obtain": 4000
             },
             "2": {
                 "id": 2,
-                "money_obtain": 505
+                "money_obtain": 4010
             },
             "3": {
                 "id": 3,
-                "money_obtain": 510
+                "money_obtain": 4020
             },
             "4": {
                 "id": 4,
-                "money_obtain": 515
+                "money_obtain": 4030
             },
             "5": {
                 "id": 5,
-                "money_obtain": 520
+                "money_obtain": 4040
             },
             "6": {
                 "id": 6,
-                "money_obtain": 525
+                "money_obtain": 4050
             },
             "7": {
                 "id": 7,
-                "money_obtain": 530
+                "money_obtain": 4060
             },
             "8": {
                 "id": 8,
-                "money_obtain": 535
+                "money_obtain": 4070
             },
             "9": {
                 "id": 9,
-                "money_obtain": 540
+                "money_obtain": 4080
             },
             "10": {
                 "id": 10,
-                "money_obtain": 545
+                "money_obtain": 4090
             },
             "11": {
                 "id": 11,
-                "money_obtain": 550
+                "money_obtain": 4100
             },
             "12": {
                 "id": 12,
-                "money_obtain": 555
+                "money_obtain": 4110
             },
             "13": {
                 "id": 13,
-                "money_obtain": 560
+                "money_obtain": 4120
             },
             "14": {
                 "id": 14,
-                "money_obtain": 565
+                "money_obtain": 4130
             },
             "15": {
                 "id": 15,
-                "money_obtain": 570
+                "money_obtain": 4140
             },
             "16": {
                 "id": 16,
-                "money_obtain": 575
+                "money_obtain": 4150
             },
             "17": {
                 "id": 17,
-                "money_obtain": 580
+                "money_obtain": 4160
             },
             "18": {
                 "id": 18,
-                "money_obtain": 585
+                "money_obtain": 4170
             },
             "19": {
                 "id": 19,
-                "money_obtain": 590
+                "money_obtain": 4180
             },
             "20": {
                 "id": 20,
-                "money_obtain": 595
+                "money_obtain": 4190
             },
             "21": {
                 "id": 21,
-                "money_obtain": 600
+                "money_obtain": 4200
             },
             "22": {
                 "id": 22,
-                "money_obtain": 605
+                "money_obtain": 4210
             },
             "23": {
                 "id": 23,
-                "money_obtain": 610
+                "money_obtain": 4220
             },
             "24": {
                 "id": 24,
-                "money_obtain": 615
+                "money_obtain": 4230
             },
             "25": {
                 "id": 25,
-                "money_obtain": 620
+                "money_obtain": 4240
             },
             "26": {
                 "id": 26,
-                "money_obtain": 625
+                "money_obtain": 4250
             },
             "27": {
                 "id": 27,
-                "money_obtain": 630
+                "money_obtain": 4260
             },
             "28": {
                 "id": 28,
-                "money_obtain": 635
+                "money_obtain": 4270
             },
             "29": {
                 "id": 29,
-                "money_obtain": 640
+                "money_obtain": 4280
             },
             "30": {
                 "id": 30,
-                "money_obtain": 645
+                "money_obtain": 4290
             },
             "31": {
                 "id": 31,
-                "money_obtain": 650
+                "money_obtain": 4300
             },
             "32": {
                 "id": 32,
-                "money_obtain": 655
+                "money_obtain": 4310
             },
             "33": {
                 "id": 33,
-                "money_obtain": 660
+                "money_obtain": 4320
             },
             "34": {
                 "id": 34,
-                "money_obtain": 665
+                "money_obtain": 4330
             },
             "35": {
                 "id": 35,
-                "money_obtain": 670
+                "money_obtain": 4340
             },
             "36": {
                 "id": 36,
-                "money_obtain": 675
+                "money_obtain": 4350
             },
             "37": {
                 "id": 37,
-                "money_obtain": 680
+                "money_obtain": 4360
             },
             "38": {
                 "id": 38,
-                "money_obtain": 685
+                "money_obtain": 4370
             },
             "39": {
                 "id": 39,
-                "money_obtain": 690
+                "money_obtain": 4380
             },
             "40": {
                 "id": 40,
-                "money_obtain": 695
+                "money_obtain": 4390
             },
             "41": {
                 "id": 41,
-                "money_obtain": 700
+                "money_obtain": 4400
             },
             "42": {
                 "id": 42,
-                "money_obtain": 705
+                "money_obtain": 4410
             },
             "43": {
                 "id": 43,
-                "money_obtain": 710
+                "money_obtain": 4420
             },
             "44": {
                 "id": 44,
-                "money_obtain": 715
+                "money_obtain": 4430
             },
             "45": {
                 "id": 45,
-                "money_obtain": 720
+                "money_obtain": 4440
             },
             "46": {
                 "id": 46,
-                "money_obtain": 725
+                "money_obtain": 4450
             },
             "47": {
                 "id": 47,
-                "money_obtain": 730
+                "money_obtain": 4460
             },
             "48": {
                 "id": 48,
-                "money_obtain": 735
+                "money_obtain": 4470
             },
             "49": {
                 "id": 49,
-                "money_obtain": 740
+                "money_obtain": 4480
             },
             "50": {
                 "id": 50,
-                "money_obtain": 745
+                "money_obtain": 4490
             },
             "51": {
                 "id": 51,
-                "money_obtain": 750
+                "money_obtain": 4500
             },
             "52": {
                 "id": 52,
-                "money_obtain": 755
+                "money_obtain": 4510
             },
             "53": {
                 "id": 53,
-                "money_obtain": 760
+                "money_obtain": 4520
             },
             "54": {
                 "id": 54,
-                "money_obtain": 765
+                "money_obtain": 4530
             },
             "55": {
                 "id": 55,
-                "money_obtain": 770
+                "money_obtain": 4540
             },
             "56": {
                 "id": 56,
-                "money_obtain": 775
+                "money_obtain": 4550
             },
             "57": {
                 "id": 57,
-                "money_obtain": 780
+                "money_obtain": 4560
             },
             "58": {
                 "id": 58,
-                "money_obtain": 785
+                "money_obtain": 4570
             },
             "59": {
                 "id": 59,
-                "money_obtain": 790
+                "money_obtain": 4580
             },
             "60": {
                 "id": 60,
-                "money_obtain": 795
+                "money_obtain": 4590
             },
             "61": {
                 "id": 61,
-                "money_obtain": 800
+                "money_obtain": 4600
             },
             "62": {
                 "id": 62,
-                "money_obtain": 805
+                "money_obtain": 4610
             },
             "63": {
                 "id": 63,
-                "money_obtain": 810
+                "money_obtain": 4620
             },
             "64": {
                 "id": 64,
-                "money_obtain": 815
+                "money_obtain": 4630
             },
             "65": {
                 "id": 65,
-                "money_obtain": 820
+                "money_obtain": 4640
             },
             "66": {
                 "id": 66,
-                "money_obtain": 825
+                "money_obtain": 4650
             },
             "67": {
                 "id": 67,
-                "money_obtain": 830
+                "money_obtain": 4660
             },
             "68": {
                 "id": 68,
-                "money_obtain": 835
+                "money_obtain": 4670
             },
             "69": {
                 "id": 69,
-                "money_obtain": 840
+                "money_obtain": 4680
             },
             "70": {
                 "id": 70,
-                "money_obtain": 845
+                "money_obtain": 4690
             },
             "71": {
                 "id": 71,
-                "money_obtain": 850
+                "money_obtain": 4700
             },
             "72": {
                 "id": 72,
-                "money_obtain": 855
+                "money_obtain": 4710
             },
             "73": {
                 "id": 73,
-                "money_obtain": 860
+                "money_obtain": 4720
             },
             "74": {
                 "id": 74,
-                "money_obtain": 865
+                "money_obtain": 4730
             },
             "75": {
                 "id": 75,
-                "money_obtain": 870
+                "money_obtain": 4740
             },
             "76": {
                 "id": 76,
-                "money_obtain": 875
+                "money_obtain": 4750
             },
             "77": {
                 "id": 77,
-                "money_obtain": 880
+                "money_obtain": 4760
             },
             "78": {
                 "id": 78,
-                "money_obtain": 885
+                "money_obtain": 4770
             },
             "79": {
                 "id": 79,
-                "money_obtain": 890
+                "money_obtain": 4780
             },
             "80": {
                 "id": 80,
-                "money_obtain": 895
+                "money_obtain": 4790
             },
             "81": {
                 "id": 81,
-                "money_obtain": 900
+                "money_obtain": 4800
             },
             "82": {
                 "id": 82,
-                "money_obtain": 905
+                "money_obtain": 4810
             },
             "83": {
                 "id": 83,
-                "money_obtain": 910
+                "money_obtain": 4820
             },
             "84": {
                 "id": 84,
-                "money_obtain": 915
+                "money_obtain": 4830
             },
             "85": {
                 "id": 85,
-                "money_obtain": 920
+                "money_obtain": 4840
             },
             "86": {
                 "id": 86,
-                "money_obtain": 925
+                "money_obtain": 4850
             },
             "87": {
                 "id": 87,
-                "money_obtain": 930
+                "money_obtain": 4860
             },
             "88": {
                 "id": 88,
-                "money_obtain": 935
+                "money_obtain": 4870
             },
             "89": {
                 "id": 89,
-                "money_obtain": 940
+                "money_obtain": 4880
             },
             "90": {
                 "id": 90,
-                "money_obtain": 945
+                "money_obtain": 4890
             },
             "91": {
                 "id": 91,
-                "money_obtain": 950
+                "money_obtain": 4900
             },
             "92": {
                 "id": 92,
-                "money_obtain": 955
+                "money_obtain": 4910
             },
             "93": {
                 "id": 93,
-                "money_obtain": 960
+                "money_obtain": 4920
             },
             "94": {
                 "id": 94,
-                "money_obtain": 965
+                "money_obtain": 4930
             },
             "95": {
                 "id": 95,
-                "money_obtain": 970
+                "money_obtain": 4940
             },
             "96": {
                 "id": 96,
-                "money_obtain": 975
+                "money_obtain": 4950
             },
             "97": {
                 "id": 97,
-                "money_obtain": 980
+                "money_obtain": 4960
             },
             "98": {
                 "id": 98,
-                "money_obtain": 985
+                "money_obtain": 4970
             },
             "99": {
                 "id": 99,
-                "money_obtain": 990
+                "money_obtain": 4980
             },
             "100": {
                 "id": 100,
-                "money_obtain": 995
+                "money_obtain": 4990
             },
             "101": {
                 "id": 101,
-                "money_obtain": 1000
+                "money_obtain": 5000
             },
             "102": {
                 "id": 102,
-                "money_obtain": 1005
+                "money_obtain": 5010
             },
             "103": {
                 "id": 103,
-                "money_obtain": 1010
+                "money_obtain": 5020
             },
             "104": {
                 "id": 104,
-                "money_obtain": 1015
+                "money_obtain": 5030
             },
             "105": {
                 "id": 105,
-                "money_obtain": 1020
+                "money_obtain": 5040
             },
             "106": {
                 "id": 106,
-                "money_obtain": 1025
+                "money_obtain": 5050
             },
             "107": {
                 "id": 107,
-                "money_obtain": 1030
+                "money_obtain": 5060
             },
             "108": {
                 "id": 108,
-                "money_obtain": 1035
+                "money_obtain": 5070
             },
             "109": {
                 "id": 109,
-                "money_obtain": 1040
+                "money_obtain": 5080
             },
             "110": {
                 "id": 110,
-                "money_obtain": 1045
+                "money_obtain": 5090
             },
             "111": {
                 "id": 111,
-                "money_obtain": 1050
+                "money_obtain": 5100
             },
             "112": {
                 "id": 112,
-                "money_obtain": 1055
+                "money_obtain": 5110
             },
             "113": {
                 "id": 113,
-                "money_obtain": 1060
+                "money_obtain": 5120
             },
             "114": {
                 "id": 114,
-                "money_obtain": 1065
+                "money_obtain": 5130
             },
             "115": {
                 "id": 115,
-                "money_obtain": 1070
+                "money_obtain": 5140
             },
             "116": {
                 "id": 116,
-                "money_obtain": 1075
+                "money_obtain": 5150
             },
             "117": {
                 "id": 117,
-                "money_obtain": 1080
+                "money_obtain": 5160
             },
             "118": {
                 "id": 118,
-                "money_obtain": 1085
+                "money_obtain": 5170
             },
             "119": {
                 "id": 119,
-                "money_obtain": 1090
+                "money_obtain": 5180
             },
             "120": {
                 "id": 120,
-                "money_obtain": 1095
+                "money_obtain": 5190
             },
             "121": {
                 "id": 121,
-                "money_obtain": 1100
+                "money_obtain": 5200
             },
             "122": {
                 "id": 122,
-                "money_obtain": 1105
+                "money_obtain": 5210
             },
             "123": {
                 "id": 123,
-                "money_obtain": 1110
+                "money_obtain": 5220
             },
             "124": {
                 "id": 124,
-                "money_obtain": 1115
+                "money_obtain": 5230
             },
             "125": {
                 "id": 125,
-                "money_obtain": 1120
+                "money_obtain": 5240
             },
             "126": {
                 "id": 126,
-                "money_obtain": 1125
+                "money_obtain": 5250
             },
             "127": {
                 "id": 127,
-                "money_obtain": 1130
+                "money_obtain": 5260
             },
             "128": {
                 "id": 128,
-                "money_obtain": 1135
+                "money_obtain": 5270
             },
             "129": {
                 "id": 129,
-                "money_obtain": 1140
+                "money_obtain": 5280
             },
             "130": {
                 "id": 130,
-                "money_obtain": 1145
+                "money_obtain": 5290
             },
             "131": {
                 "id": 131,
-                "money_obtain": 1150
+                "money_obtain": 5300
             },
             "132": {
                 "id": 132,
-                "money_obtain": 1155
+                "money_obtain": 5310
             },
             "133": {
                 "id": 133,
-                "money_obtain": 1160
+                "money_obtain": 5320
             },
             "134": {
                 "id": 134,
-                "money_obtain": 1165
+                "money_obtain": 5330
             },
             "135": {
                 "id": 135,
-                "money_obtain": 1170
+                "money_obtain": 5340
             },
             "136": {
                 "id": 136,
-                "money_obtain": 1175
+                "money_obtain": 5350
             },
             "137": {
                 "id": 137,
-                "money_obtain": 1180
+                "money_obtain": 5360
             },
             "138": {
                 "id": 138,
-                "money_obtain": 1185
+                "money_obtain": 5370
             },
             "139": {
                 "id": 139,
-                "money_obtain": 1190
+                "money_obtain": 5380
             },
             "140": {
                 "id": 140,
-                "money_obtain": 1195
+                "money_obtain": 5390
             },
             "141": {
                 "id": 141,
-                "money_obtain": 1200
+                "money_obtain": 5400
             },
             "142": {
                 "id": 142,
-                "money_obtain": 1205
+                "money_obtain": 5410
             },
             "143": {
                 "id": 143,
-                "money_obtain": 1210
+                "money_obtain": 5420
             },
             "144": {
                 "id": 144,
-                "money_obtain": 1215
+                "money_obtain": 5430
             },
             "145": {
                 "id": 145,
-                "money_obtain": 1220
+                "money_obtain": 5440
             },
             "146": {
                 "id": 146,
-                "money_obtain": 1225
+                "money_obtain": 5450
             },
             "147": {
                 "id": 147,
-                "money_obtain": 1230
+                "money_obtain": 5460
             },
             "148": {
                 "id": 148,
-                "money_obtain": 1235
+                "money_obtain": 5470
             },
             "149": {
                 "id": 149,
-                "money_obtain": 1240
+                "money_obtain": 5480
             },
             "150": {
                 "id": 150,
-                "money_obtain": 1245
+                "money_obtain": 5490
             },
             "151": {
                 "id": 151,
-                "money_obtain": 1250
+                "money_obtain": 5500
             },
             "152": {
                 "id": 152,
-                "money_obtain": 1255
+                "money_obtain": 5510
             },
             "153": {
                 "id": 153,
-                "money_obtain": 1260
+                "money_obtain": 5520
             },
             "154": {
                 "id": 154,
-                "money_obtain": 1265
+                "money_obtain": 5530
             },
             "155": {
                 "id": 155,
-                "money_obtain": 1270
+                "money_obtain": 5540
             },
             "156": {
                 "id": 156,
-                "money_obtain": 1275
+                "money_obtain": 5550
             },
             "157": {
                 "id": 157,
-                "money_obtain": 1280
+                "money_obtain": 5560
             },
             "158": {
                 "id": 158,
-                "money_obtain": 1285
+                "money_obtain": 5570
             },
             "159": {
                 "id": 159,
-                "money_obtain": 1290
+                "money_obtain": 5580
             },
             "160": {
                 "id": 160,
-                "money_obtain": 1295
+                "money_obtain": 5590
             },
             "161": {
                 "id": 161,
-                "money_obtain": 1300
+                "money_obtain": 5600
             },
             "162": {
                 "id": 162,
-                "money_obtain": 1305
+                "money_obtain": 5610
             },
             "163": {
                 "id": 163,
-                "money_obtain": 1310
+                "money_obtain": 5620
             },
             "164": {
                 "id": 164,
-                "money_obtain": 1315
+                "money_obtain": 5630
             },
             "165": {
                 "id": 165,
-                "money_obtain": 1320
+                "money_obtain": 5640
             },
             "166": {
                 "id": 166,
-                "money_obtain": 1325
+                "money_obtain": 5650
             },
             "167": {
                 "id": 167,
-                "money_obtain": 1330
+                "money_obtain": 5660
             },
             "168": {
                 "id": 168,
-                "money_obtain": 1335
+                "money_obtain": 5670
             },
             "169": {
                 "id": 169,
-                "money_obtain": 1340
+                "money_obtain": 5680
             },
             "170": {
                 "id": 170,
-                "money_obtain": 1345
+                "money_obtain": 5690
             },
             "171": {
                 "id": 171,
-                "money_obtain": 1350
+                "money_obtain": 5700
             },
             "172": {
                 "id": 172,
-                "money_obtain": 1355
+                "money_obtain": 5710
             },
             "173": {
                 "id": 173,
-                "money_obtain": 1360
+                "money_obtain": 5720
             },
             "174": {
                 "id": 174,
-                "money_obtain": 1365
+                "money_obtain": 5730
             },
             "175": {
                 "id": 175,
-                "money_obtain": 1370
+                "money_obtain": 5740
             },
             "176": {
                 "id": 176,
-                "money_obtain": 1375
+                "money_obtain": 5750
             },
             "177": {
                 "id": 177,
-                "money_obtain": 1380
+                "money_obtain": 5760
             },
             "178": {
                 "id": 178,
-                "money_obtain": 1385
+                "money_obtain": 5770
             },
             "179": {
                 "id": 179,
-                "money_obtain": 1390
+                "money_obtain": 5780
             },
             "180": {
                 "id": 180,
-                "money_obtain": 1395
+                "money_obtain": 5790
             },
             "181": {
                 "id": 181,
-                "money_obtain": 1400
+                "money_obtain": 5800
             },
             "182": {
                 "id": 182,
-                "money_obtain": 1405
+                "money_obtain": 5810
             },
             "183": {
                 "id": 183,
-                "money_obtain": 1410
+                "money_obtain": 5820
             },
             "184": {
                 "id": 184,
-                "money_obtain": 1415
+                "money_obtain": 5830
             },
             "185": {
                 "id": 185,
-                "money_obtain": 1420
+                "money_obtain": 5840
             },
             "186": {
                 "id": 186,
-                "money_obtain": 1425
+                "money_obtain": 5850
             },
             "187": {
                 "id": 187,
-                "money_obtain": 1430
+                "money_obtain": 5860
             },
             "188": {
                 "id": 188,
-                "money_obtain": 1435
+                "money_obtain": 5870
             },
             "189": {
                 "id": 189,
-                "money_obtain": 1440
+                "money_obtain": 5880
             },
             "190": {
                 "id": 190,
-                "money_obtain": 1445
+                "money_obtain": 5890
             },
             "191": {
                 "id": 191,
-                "money_obtain": 1450
+                "money_obtain": 5900
             },
             "192": {
                 "id": 192,
-                "money_obtain": 1455
+                "money_obtain": 5910
             },
             "193": {
                 "id": 193,
-                "money_obtain": 1460
+                "money_obtain": 5920
             },
             "194": {
                 "id": 194,
-                "money_obtain": 1465
+                "money_obtain": 5930
             },
             "195": {
                 "id": 195,
-                "money_obtain": 1470
+                "money_obtain": 5940
             },
             "196": {
                 "id": 196,
-                "money_obtain": 1475
+                "money_obtain": 5950
             },
             "197": {
                 "id": 197,
-                "money_obtain": 1480
+                "money_obtain": 5960
             },
             "198": {
                 "id": 198,
-                "money_obtain": 1485
+                "money_obtain": 5970
             },
             "199": {
                 "id": 199,
-                "money_obtain": 1490
+                "money_obtain": 5980
             },
             "200": {
                 "id": 200,
-                "money_obtain": 1495
+                "money_obtain": 5990
             },
             "201": {
                 "id": 201,
-                "money_obtain": 1500
+                "money_obtain": 6000
             },
             "202": {
                 "id": 202,
-                "money_obtain": 1505
+                "money_obtain": 6010
             },
             "203": {
                 "id": 203,
-                "money_obtain": 1510
+                "money_obtain": 6020
             },
             "204": {
                 "id": 204,
-                "money_obtain": 1515
+                "money_obtain": 6030
             },
             "205": {
                 "id": 205,
-                "money_obtain": 1520
+                "money_obtain": 6040
             },
             "206": {
                 "id": 206,
-                "money_obtain": 1525
+                "money_obtain": 6050
             },
             "207": {
                 "id": 207,
-                "money_obtain": 1530
+                "money_obtain": 6060
             },
             "208": {
                 "id": 208,
-                "money_obtain": 1535
+                "money_obtain": 6070
             },
             "209": {
                 "id": 209,
-                "money_obtain": 1540
+                "money_obtain": 6080
             },
             "210": {
                 "id": 210,
-                "money_obtain": 1545
+                "money_obtain": 6090
             },
             "211": {
                 "id": 211,
-                "money_obtain": 1550
+                "money_obtain": 6100
             },
             "212": {
                 "id": 212,
-                "money_obtain": 1555
+                "money_obtain": 6110
             },
             "213": {
                 "id": 213,
-                "money_obtain": 1560
+                "money_obtain": 6120
             },
             "214": {
                 "id": 214,
-                "money_obtain": 1565
+                "money_obtain": 6130
             },
             "215": {
                 "id": 215,
-                "money_obtain": 1570
+                "money_obtain": 6140
             },
             "216": {
                 "id": 216,
-                "money_obtain": 1575
+                "money_obtain": 6150
             },
             "217": {
                 "id": 217,
-                "money_obtain": 1580
+                "money_obtain": 6160
             },
             "218": {
                 "id": 218,
-                "money_obtain": 1585
+                "money_obtain": 6170
             },
             "219": {
                 "id": 219,
-                "money_obtain": 1590
+                "money_obtain": 6180
             },
             "220": {
                 "id": 220,
-                "money_obtain": 1595
+                "money_obtain": 6190
             },
             "221": {
                 "id": 221,
-                "money_obtain": 1600
+                "money_obtain": 6200
             },
             "222": {
                 "id": 222,
-                "money_obtain": 1605
+                "money_obtain": 6210
             },
             "223": {
                 "id": 223,
-                "money_obtain": 1610
+                "money_obtain": 6220
             },
             "224": {
                 "id": 224,
-                "money_obtain": 1615
+                "money_obtain": 6230
             },
             "225": {
                 "id": 225,
-                "money_obtain": 1620
+                "money_obtain": 6240
             },
             "226": {
                 "id": 226,
-                "money_obtain": 1625
+                "money_obtain": 6250
             },
             "227": {
                 "id": 227,
-                "money_obtain": 1630
+                "money_obtain": 6260
             },
             "228": {
                 "id": 228,
-                "money_obtain": 1635
+                "money_obtain": 6270
             },
             "229": {
                 "id": 229,
-                "money_obtain": 1640
+                "money_obtain": 6280
             },
             "230": {
                 "id": 230,
-                "money_obtain": 1645
+                "money_obtain": 6290
             },
             "231": {
                 "id": 231,
-                "money_obtain": 1650
+                "money_obtain": 6300
             },
             "232": {
                 "id": 232,
-                "money_obtain": 1655
+                "money_obtain": 6310
             },
             "233": {
                 "id": 233,
-                "money_obtain": 1660
+                "money_obtain": 6320
             },
             "234": {
                 "id": 234,
-                "money_obtain": 1665
+                "money_obtain": 6330
             },
             "235": {
                 "id": 235,
-                "money_obtain": 1670
+                "money_obtain": 6340
             },
             "236": {
                 "id": 236,
-                "money_obtain": 1675
+                "money_obtain": 6350
             },
             "237": {
                 "id": 237,
-                "money_obtain": 1680
+                "money_obtain": 6360
             },
             "238": {
                 "id": 238,
-                "money_obtain": 1685
+                "money_obtain": 6370
             },
             "239": {
                 "id": 239,
-                "money_obtain": 1690
+                "money_obtain": 6380
             },
             "240": {
                 "id": 240,
-                "money_obtain": 1695
+                "money_obtain": 6390
             },
             "241": {
                 "id": 241,
-                "money_obtain": 1700
+                "money_obtain": 6400
             },
             "242": {
                 "id": 242,
-                "money_obtain": 1705
+                "money_obtain": 6410
             },
             "243": {
                 "id": 243,
-                "money_obtain": 1710
+                "money_obtain": 6420
             },
             "244": {
                 "id": 244,
-                "money_obtain": 1715
+                "money_obtain": 6430
             },
             "245": {
                 "id": 245,
-                "money_obtain": 1720
+                "money_obtain": 6440
             },
             "246": {
                 "id": 246,
-                "money_obtain": 1725
+                "money_obtain": 6450
             },
             "247": {
                 "id": 247,
-                "money_obtain": 1730
+                "money_obtain": 6460
             },
             "248": {
                 "id": 248,
-                "money_obtain": 1735
+                "money_obtain": 6470
             },
             "249": {
                 "id": 249,
-                "money_obtain": 1740
+                "money_obtain": 6480
             },
             "250": {
                 "id": 250,
-                "money_obtain": 1745
+                "money_obtain": 6490
             },
             "251": {
                 "id": 251,
-                "money_obtain": 1750
+                "money_obtain": 6500
             },
             "252": {
                 "id": 252,
-                "money_obtain": 1755
+                "money_obtain": 6510
             },
             "253": {
                 "id": 253,
-                "money_obtain": 1760
+                "money_obtain": 6520
             },
             "254": {
                 "id": 254,
-                "money_obtain": 1765
+                "money_obtain": 6530
             },
             "255": {
                 "id": 255,
-                "money_obtain": 1770
+                "money_obtain": 6540
             },
             "256": {
                 "id": 256,
-                "money_obtain": 1775
+                "money_obtain": 6550
             },
             "257": {
                 "id": 257,
-                "money_obtain": 1780
+                "money_obtain": 6560
             },
             "258": {
                 "id": 258,
-                "money_obtain": 1785
+                "money_obtain": 6570
             },
             "259": {
                 "id": 259,
-                "money_obtain": 1790
+                "money_obtain": 6580
             },
             "260": {
                 "id": 260,
-                "money_obtain": 1795
+                "money_obtain": 6590
             },
             "261": {
                 "id": 261,
-                "money_obtain": 1800
+                "money_obtain": 6600
             },
             "262": {
                 "id": 262,
-                "money_obtain": 1805
+                "money_obtain": 6610
             },
             "263": {
                 "id": 263,
-                "money_obtain": 1810
+                "money_obtain": 6620
             },
             "264": {
                 "id": 264,
-                "money_obtain": 1815
+                "money_obtain": 6630
             },
             "265": {
                 "id": 265,
-                "money_obtain": 1820
+                "money_obtain": 6640
             },
             "266": {
                 "id": 266,
-                "money_obtain": 1825
+                "money_obtain": 6650
             },
             "267": {
                 "id": 267,
-                "money_obtain": 1830
+                "money_obtain": 6660
             },
             "268": {
                 "id": 268,
-                "money_obtain": 1835
+                "money_obtain": 6670
             },
             "269": {
                 "id": 269,
-                "money_obtain": 1840
+                "money_obtain": 6680
             },
             "270": {
                 "id": 270,
-                "money_obtain": 1845
+                "money_obtain": 6690
             },
             "271": {
                 "id": 271,
-                "money_obtain": 1850
+                "money_obtain": 6700
             },
             "272": {
                 "id": 272,
-                "money_obtain": 1855
+                "money_obtain": 6710
             },
             "273": {
                 "id": 273,
-                "money_obtain": 1860
+                "money_obtain": 6720
             },
             "274": {
                 "id": 274,
-                "money_obtain": 1865
+                "money_obtain": 6730
             },
             "275": {
                 "id": 275,
-                "money_obtain": 1870
+                "money_obtain": 6740
             },
             "276": {
                 "id": 276,
-                "money_obtain": 1875
+                "money_obtain": 6750
             },
             "277": {
                 "id": 277,
-                "money_obtain": 1880
+                "money_obtain": 6760
             },
             "278": {
                 "id": 278,
-                "money_obtain": 1885
+                "money_obtain": 6770
             },
             "279": {
                 "id": 279,
-                "money_obtain": 1890
+                "money_obtain": 6780
             },
             "280": {
                 "id": 280,
-                "money_obtain": 1895
+                "money_obtain": 6790
             },
             "281": {
                 "id": 281,
-                "money_obtain": 1900
+                "money_obtain": 6800
             },
             "282": {
                 "id": 282,
-                "money_obtain": 1905
+                "money_obtain": 6810
             },
             "283": {
                 "id": 283,
-                "money_obtain": 1910
+                "money_obtain": 6820
             },
             "284": {
                 "id": 284,
-                "money_obtain": 1915
+                "money_obtain": 6830
             },
             "285": {
                 "id": 285,
-                "money_obtain": 1920
+                "money_obtain": 6840
             },
             "286": {
                 "id": 286,
-                "money_obtain": 1925
+                "money_obtain": 6850
             },
             "287": {
                 "id": 287,
-                "money_obtain": 1930
+                "money_obtain": 6860
             },
             "288": {
                 "id": 288,
-                "money_obtain": 1935
+                "money_obtain": 6870
             },
             "289": {
                 "id": 289,
-                "money_obtain": 1940
+                "money_obtain": 6880
             },
             "290": {
                 "id": 290,
-                "money_obtain": 1945
+                "money_obtain": 6890
             },
             "291": {
                 "id": 291,
-                "money_obtain": 1950
+                "money_obtain": 6900
             },
             "292": {
                 "id": 292,
-                "money_obtain": 1955
+                "money_obtain": 6910
             },
             "293": {
                 "id": 293,
-                "money_obtain": 1960
+                "money_obtain": 6920
             },
             "294": {
                 "id": 294,
-                "money_obtain": 1965
+                "money_obtain": 6930
             },
             "295": {
                 "id": 295,
-                "money_obtain": 1970
+                "money_obtain": 6940
             },
             "296": {
                 "id": 296,
-                "money_obtain": 1975
+                "money_obtain": 6950
             },
             "297": {
                 "id": 297,
-                "money_obtain": 1980
+                "money_obtain": 6960
             },
             "298": {
                 "id": 298,
-                "money_obtain": 1985
+                "money_obtain": 6970
             },
             "299": {
                 "id": 299,
-                "money_obtain": 1990
+                "money_obtain": 6980
             },
             "300": {
                 "id": 300,
-                "money_obtain": 1995
+                "money_obtain": 6990
             },
             "301": {
                 "id": 301,
-                "money_obtain": 2000
+                "money_obtain": 7000
             },
             "302": {
                 "id": 302,
-                "money_obtain": 2005
+                "money_obtain": 7010
             },
             "303": {
                 "id": 303,
-                "money_obtain": 2010
+                "money_obtain": 7020
             },
             "304": {
                 "id": 304,
-                "money_obtain": 2015
+                "money_obtain": 7030
             },
             "305": {
                 "id": 305,
-                "money_obtain": 2020
+                "money_obtain": 7040
             },
             "306": {
                 "id": 306,
-                "money_obtain": 2025
+                "money_obtain": 7050
             },
             "307": {
                 "id": 307,
-                "money_obtain": 2030
+                "money_obtain": 7060
             },
             "308": {
                 "id": 308,
-                "money_obtain": 2035
+                "money_obtain": 7070
             },
             "309": {
                 "id": 309,
-                "money_obtain": 2040
+                "money_obtain": 7080
             },
             "310": {
                 "id": 310,
-                "money_obtain": 2045
+                "money_obtain": 7090
             },
             "311": {
                 "id": 311,
-                "money_obtain": 2050
+                "money_obtain": 7100
             },
             "312": {
                 "id": 312,
-                "money_obtain": 2055
+                "money_obtain": 7110
             },
             "313": {
                 "id": 313,
-                "money_obtain": 2060
+                "money_obtain": 7120
             },
             "314": {
                 "id": 314,
-                "money_obtain": 2065
+                "money_obtain": 7130
             },
             "315": {
                 "id": 315,
-                "money_obtain": 2070
+                "money_obtain": 7140
             },
             "316": {
                 "id": 316,
-                "money_obtain": 2075
+                "money_obtain": 7150
             },
             "317": {
                 "id": 317,
-                "money_obtain": 2080
+                "money_obtain": 7160
             },
             "318": {
                 "id": 318,
-                "money_obtain": 2085
+                "money_obtain": 7170
             },
             "319": {
                 "id": 319,
-                "money_obtain": 2090
+                "money_obtain": 7180
             },
             "320": {
                 "id": 320,
-                "money_obtain": 2095
+                "money_obtain": 7190
             },
             "321": {
                 "id": 321,
-                "money_obtain": 2100
+                "money_obtain": 7200
             },
             "322": {
                 "id": 322,
-                "money_obtain": 2105
+                "money_obtain": 7210
             },
             "323": {
                 "id": 323,
-                "money_obtain": 2110
+                "money_obtain": 7220
             },
             "324": {
                 "id": 324,
-                "money_obtain": 2115
+                "money_obtain": 7230
             },
             "325": {
                 "id": 325,
-                "money_obtain": 2120
+                "money_obtain": 7240
             },
             "326": {
                 "id": 326,
-                "money_obtain": 2125
+                "money_obtain": 7250
             },
             "327": {
                 "id": 327,
-                "money_obtain": 2130
+                "money_obtain": 7260
             },
             "328": {
                 "id": 328,
-                "money_obtain": 2135
+                "money_obtain": 7270
             },
             "329": {
                 "id": 329,
-                "money_obtain": 2140
+                "money_obtain": 7280
             },
             "330": {
                 "id": 330,
-                "money_obtain": 2145
+                "money_obtain": 7290
             },
             "331": {
                 "id": 331,
-                "money_obtain": 2150
+                "money_obtain": 7300
             },
             "332": {
                 "id": 332,
-                "money_obtain": 2155
+                "money_obtain": 7310
             },
             "333": {
                 "id": 333,
-                "money_obtain": 2160
+                "money_obtain": 7320
             },
             "334": {
                 "id": 334,
-                "money_obtain": 2165
+                "money_obtain": 7330
             },
             "335": {
                 "id": 335,
-                "money_obtain": 2170
+                "money_obtain": 7340
             },
             "336": {
                 "id": 336,
-                "money_obtain": 2175
+                "money_obtain": 7350
             },
             "337": {
                 "id": 337,
-                "money_obtain": 2180
+                "money_obtain": 7360
             },
             "338": {
                 "id": 338,
-                "money_obtain": 2185
+                "money_obtain": 7370
             },
             "339": {
                 "id": 339,
-                "money_obtain": 2190
+                "money_obtain": 7380
             },
             "340": {
                 "id": 340,
-                "money_obtain": 2195
+                "money_obtain": 7390
             },
             "341": {
                 "id": 341,
-                "money_obtain": 2200
+                "money_obtain": 7400
             },
             "342": {
                 "id": 342,
-                "money_obtain": 2205
+                "money_obtain": 7410
             },
             "343": {
                 "id": 343,
-                "money_obtain": 2210
+                "money_obtain": 7420
             },
             "344": {
                 "id": 344,
-                "money_obtain": 2215
+                "money_obtain": 7430
             },
             "345": {
                 "id": 345,
-                "money_obtain": 2220
+                "money_obtain": 7440
             },
             "346": {
                 "id": 346,
-                "money_obtain": 2225
+                "money_obtain": 7450
             },
             "347": {
                 "id": 347,
-                "money_obtain": 2230
+                "money_obtain": 7460
             },
             "348": {
                 "id": 348,
-                "money_obtain": 2235
+                "money_obtain": 7470
             },
             "349": {
                 "id": 349,
-                "money_obtain": 2240
+                "money_obtain": 7480
             },
             "350": {
                 "id": 350,
-                "money_obtain": 2245
+                "money_obtain": 7490
             },
             "351": {
                 "id": 351,
-                "money_obtain": 2250
+                "money_obtain": 7500
             },
             "352": {
                 "id": 352,
-                "money_obtain": 2255
+                "money_obtain": 7510
             },
             "353": {
                 "id": 353,
-                "money_obtain": 2260
+                "money_obtain": 7520
             },
             "354": {
                 "id": 354,
-                "money_obtain": 2265
+                "money_obtain": 7530
             },
             "355": {
                 "id": 355,
-                "money_obtain": 2270
+                "money_obtain": 7540
             },
             "356": {
                 "id": 356,
-                "money_obtain": 2275
+                "money_obtain": 7550
             },
             "357": {
                 "id": 357,
-                "money_obtain": 2280
+                "money_obtain": 7560
             },
             "358": {
                 "id": 358,
-                "money_obtain": 2285
+                "money_obtain": 7570
             },
             "359": {
                 "id": 359,
-                "money_obtain": 2290
+                "money_obtain": 7580
             },
             "360": {
                 "id": 360,
-                "money_obtain": 2295
+                "money_obtain": 7590
             },
             "361": {
                 "id": 361,
-                "money_obtain": 2300
+                "money_obtain": 7600
             },
             "362": {
                 "id": 362,
-                "money_obtain": 2305
+                "money_obtain": 7610
             },
             "363": {
                 "id": 363,
-                "money_obtain": 2310
+                "money_obtain": 7620
             },
             "364": {
                 "id": 364,
-                "money_obtain": 2315
+                "money_obtain": 7630
             },
             "365": {
                 "id": 365,
-                "money_obtain": 2320
+                "money_obtain": 7640
             },
             "366": {
                 "id": 366,
-                "money_obtain": 2325
+                "money_obtain": 7650
             },
             "367": {
                 "id": 367,
-                "money_obtain": 2330
+                "money_obtain": 7660
             },
             "368": {
                 "id": 368,
-                "money_obtain": 2335
+                "money_obtain": 7670
             },
             "369": {
                 "id": 369,
-                "money_obtain": 2340
+                "money_obtain": 7680
             },
             "370": {
                 "id": 370,
-                "money_obtain": 2345
+                "money_obtain": 7690
             },
             "371": {
                 "id": 371,
-                "money_obtain": 2350
+                "money_obtain": 7700
             },
             "372": {
                 "id": 372,
-                "money_obtain": 2355
+                "money_obtain": 7710
             },
             "373": {
                 "id": 373,
-                "money_obtain": 2360
+                "money_obtain": 7720
             },
             "374": {
                 "id": 374,
-                "money_obtain": 2365
+                "money_obtain": 7730
             },
             "375": {
                 "id": 375,
-                "money_obtain": 2370
+                "money_obtain": 7740
             },
             "376": {
                 "id": 376,
-                "money_obtain": 2375
+                "money_obtain": 7750
             },
             "377": {
                 "id": 377,
-                "money_obtain": 2380
+                "money_obtain": 7760
             },
             "378": {
                 "id": 378,
-                "money_obtain": 2385
+                "money_obtain": 7770
             },
             "379": {
                 "id": 379,
-                "money_obtain": 2390
+                "money_obtain": 7780
             },
             "380": {
                 "id": 380,
-                "money_obtain": 2395
+                "money_obtain": 7790
             },
             "381": {
                 "id": 381,
-                "money_obtain": 2400
+                "money_obtain": 7800
             },
             "382": {
                 "id": 382,
-                "money_obtain": 2405
+                "money_obtain": 7810
             },
             "383": {
                 "id": 383,
-                "money_obtain": 2410
+                "money_obtain": 7820
             },
             "384": {
                 "id": 384,
-                "money_obtain": 2415
+                "money_obtain": 7830
             },
             "385": {
                 "id": 385,
-                "money_obtain": 2420
+                "money_obtain": 7840
             },
             "386": {
                 "id": 386,
-                "money_obtain": 2425
+                "money_obtain": 7850
             },
             "387": {
                 "id": 387,
-                "money_obtain": 2430
+                "money_obtain": 7860
             },
             "388": {
                 "id": 388,
-                "money_obtain": 2435
+                "money_obtain": 7870
             },
             "389": {
                 "id": 389,
-                "money_obtain": 2440
+                "money_obtain": 7880
             },
             "390": {
                 "id": 390,
-                "money_obtain": 2445
+                "money_obtain": 7890
             },
             "391": {
                 "id": 391,
-                "money_obtain": 2450
+                "money_obtain": 7900
             },
             "392": {
                 "id": 392,
-                "money_obtain": 2455
+                "money_obtain": 7910
             },
             "393": {
                 "id": 393,
-                "money_obtain": 2460
+                "money_obtain": 7920
             },
             "394": {
                 "id": 394,
-                "money_obtain": 2465
+                "money_obtain": 7930
             },
             "395": {
                 "id": 395,
-                "money_obtain": 2470
+                "money_obtain": 7940
             },
             "396": {
                 "id": 396,
-                "money_obtain": 2475
+                "money_obtain": 7950
             },
             "397": {
                 "id": 397,
-                "money_obtain": 2480
+                "money_obtain": 7960
             },
             "398": {
                 "id": 398,
-                "money_obtain": 2485
+                "money_obtain": 7970
             },
             "399": {
                 "id": 399,
-                "money_obtain": 2490
+                "money_obtain": 7980
             },
             "400": {
                 "id": 400,
-                "money_obtain": 2495
+                "money_obtain": 7990
             },
             "401": {
                 "id": 401,
-                "money_obtain": 2500
+                "money_obtain": 8000
             },
             "402": {
                 "id": 402,
-                "money_obtain": 2505
+                "money_obtain": 8010
             },
             "403": {
                 "id": 403,
-                "money_obtain": 2510
+                "money_obtain": 8020
             },
             "404": {
                 "id": 404,
-                "money_obtain": 2515
+                "money_obtain": 8030
             },
             "405": {
                 "id": 405,
-                "money_obtain": 2520
+                "money_obtain": 8040
             },
             "406": {
                 "id": 406,
-                "money_obtain": 2525
+                "money_obtain": 8050
             },
             "407": {
                 "id": 407,
-                "money_obtain": 2530
+                "money_obtain": 8060
             },
             "408": {
                 "id": 408,
-                "money_obtain": 2535
+                "money_obtain": 8070
             },
             "409": {
                 "id": 409,
-                "money_obtain": 2540
+                "money_obtain": 8080
             },
             "410": {
                 "id": 410,
-                "money_obtain": 2545
+                "money_obtain": 8090
             },
             "411": {
                 "id": 411,
-                "money_obtain": 2550
+                "money_obtain": 8100
             },
             "412": {
                 "id": 412,
-                "money_obtain": 2555
+                "money_obtain": 8110
             },
             "413": {
                 "id": 413,
-                "money_obtain": 2560
+                "money_obtain": 8120
             },
             "414": {
                 "id": 414,
-                "money_obtain": 2565
+                "money_obtain": 8130
             },
             "415": {
                 "id": 415,
-                "money_obtain": 2570
+                "money_obtain": 8140
             },
             "416": {
                 "id": 416,
-                "money_obtain": 2575
+                "money_obtain": 8150
             },
             "417": {
                 "id": 417,
-                "money_obtain": 2580
+                "money_obtain": 8160
             },
             "418": {
                 "id": 418,
-                "money_obtain": 2585
+                "money_obtain": 8170
             },
             "419": {
                 "id": 419,
-                "money_obtain": 2590
+                "money_obtain": 8180
             },
             "420": {
                 "id": 420,
-                "money_obtain": 2595
+                "money_obtain": 8190
             },
             "421": {
                 "id": 421,
-                "money_obtain": 2600
+                "money_obtain": 8200
             },
             "422": {
                 "id": 422,
-                "money_obtain": 2605
+                "money_obtain": 8210
             },
             "423": {
                 "id": 423,
-                "money_obtain": 2610
+                "money_obtain": 8220
             },
             "424": {
                 "id": 424,
-                "money_obtain": 2615
+                "money_obtain": 8230
             },
             "425": {
                 "id": 425,
-                "money_obtain": 2620
+                "money_obtain": 8240
             },
             "426": {
                 "id": 426,
-                "money_obtain": 2625
+                "money_obtain": 8250
             },
             "427": {
                 "id": 427,
-                "money_obtain": 2630
+                "money_obtain": 8260
             },
             "428": {
                 "id": 428,
-                "money_obtain": 2635
+                "money_obtain": 8270
             },
             "429": {
                 "id": 429,
-                "money_obtain": 2640
+                "money_obtain": 8280
             },
             "430": {
                 "id": 430,
-                "money_obtain": 2645
+                "money_obtain": 8290
             },
             "431": {
                 "id": 431,
-                "money_obtain": 2650
+                "money_obtain": 8300
             },
             "432": {
                 "id": 432,
-                "money_obtain": 2655
+                "money_obtain": 8310
             },
             "433": {
                 "id": 433,
-                "money_obtain": 2660
+                "money_obtain": 8320
             },
             "434": {
                 "id": 434,
-                "money_obtain": 2665
+                "money_obtain": 8330
             },
             "435": {
                 "id": 435,
-                "money_obtain": 2670
+                "money_obtain": 8340
             },
             "436": {
                 "id": 436,
-                "money_obtain": 2675
+                "money_obtain": 8350
             },
             "437": {
                 "id": 437,
-                "money_obtain": 2680
+                "money_obtain": 8360
             },
             "438": {
                 "id": 438,
-                "money_obtain": 2685
+                "money_obtain": 8370
             },
             "439": {
                 "id": 439,
-                "money_obtain": 2690
+                "money_obtain": 8380
             },
             "440": {
                 "id": 440,
-                "money_obtain": 2695
+                "money_obtain": 8390
             },
             "441": {
                 "id": 441,
-                "money_obtain": 2700
+                "money_obtain": 8400
             },
             "442": {
                 "id": 442,
-                "money_obtain": 2705
+                "money_obtain": 8410
             },
             "443": {
                 "id": 443,
-                "money_obtain": 2710
+                "money_obtain": 8420
             },
             "444": {
                 "id": 444,
-                "money_obtain": 2715
+                "money_obtain": 8430
             },
             "445": {
                 "id": 445,
-                "money_obtain": 2720
+                "money_obtain": 8440
             },
             "446": {
                 "id": 446,
-                "money_obtain": 2725
+                "money_obtain": 8450
             },
             "447": {
                 "id": 447,
-                "money_obtain": 2730
+                "money_obtain": 8460
             },
             "448": {
                 "id": 448,
-                "money_obtain": 2735
+                "money_obtain": 8470
             },
             "449": {
                 "id": 449,
-                "money_obtain": 2740
+                "money_obtain": 8480
             },
             "450": {
                 "id": 450,
-                "money_obtain": 2745
+                "money_obtain": 8490
             },
             "451": {
                 "id": 451,
-                "money_obtain": 2750
+                "money_obtain": 8500
             },
             "452": {
                 "id": 452,
-                "money_obtain": 2755
+                "money_obtain": 8510
             },
             "453": {
                 "id": 453,
-                "money_obtain": 2760
+                "money_obtain": 8520
             },
             "454": {
                 "id": 454,
-                "money_obtain": 2765
+                "money_obtain": 8530
             },
             "455": {
                 "id": 455,
-                "money_obtain": 2770
+                "money_obtain": 8540
             },
             "456": {
                 "id": 456,
-                "money_obtain": 2775
+                "money_obtain": 8550
             },
             "457": {
                 "id": 457,
-                "money_obtain": 2780
+                "money_obtain": 8560
             },
             "458": {
                 "id": 458,
-                "money_obtain": 2785
+                "money_obtain": 8570
             },
             "459": {
                 "id": 459,
-                "money_obtain": 2790
+                "money_obtain": 8580
             },
             "460": {
                 "id": 460,
-                "money_obtain": 2795
+                "money_obtain": 8590
             },
             "461": {
                 "id": 461,
-                "money_obtain": 2800
+                "money_obtain": 8600
             },
             "462": {
                 "id": 462,
-                "money_obtain": 2805
+                "money_obtain": 8610
             },
             "463": {
                 "id": 463,
-                "money_obtain": 2810
+                "money_obtain": 8620
             },
             "464": {
                 "id": 464,
-                "money_obtain": 2815
+                "money_obtain": 8630
             },
             "465": {
                 "id": 465,
-                "money_obtain": 2820
+                "money_obtain": 8640
             },
             "466": {
                 "id": 466,
-                "money_obtain": 2825
+                "money_obtain": 8650
             },
             "467": {
                 "id": 467,
-                "money_obtain": 2830
+                "money_obtain": 8660
             },
             "468": {
                 "id": 468,
-                "money_obtain": 2835
+                "money_obtain": 8670
             },
             "469": {
                 "id": 469,
-                "money_obtain": 2840
+                "money_obtain": 8680
             },
             "470": {
                 "id": 470,
-                "money_obtain": 2845
+                "money_obtain": 8690
             },
             "471": {
                 "id": 471,
-                "money_obtain": 2850
+                "money_obtain": 8700
             },
             "472": {
                 "id": 472,
-                "money_obtain": 2855
+                "money_obtain": 8710
             },
             "473": {
                 "id": 473,
-                "money_obtain": 2860
+                "money_obtain": 8720
             },
             "474": {
                 "id": 474,
-                "money_obtain": 2865
+                "money_obtain": 8730
             },
             "475": {
                 "id": 475,
-                "money_obtain": 2870
+                "money_obtain": 8740
             },
             "476": {
                 "id": 476,
-                "money_obtain": 2875
+                "money_obtain": 8750
             },
             "477": {
                 "id": 477,
-                "money_obtain": 2880
+                "money_obtain": 8760
             },
             "478": {
                 "id": 478,
-                "money_obtain": 2885
+                "money_obtain": 8770
             },
             "479": {
                 "id": 479,
-                "money_obtain": 2890
+                "money_obtain": 8780
             },
             "480": {
                 "id": 480,
-                "money_obtain": 2895
+                "money_obtain": 8790
             },
             "481": {
                 "id": 481,
-                "money_obtain": 2900
+                "money_obtain": 8800
             },
             "482": {
                 "id": 482,
-                "money_obtain": 2905
+                "money_obtain": 8810
             },
             "483": {
                 "id": 483,
-                "money_obtain": 2910
+                "money_obtain": 8820
             },
             "484": {
                 "id": 484,
-                "money_obtain": 2915
+                "money_obtain": 8830
             },
             "485": {
                 "id": 485,
-                "money_obtain": 2920
+                "money_obtain": 8840
             },
             "486": {
                 "id": 486,
-                "money_obtain": 2925
+                "money_obtain": 8850
             },
             "487": {
                 "id": 487,
-                "money_obtain": 2930
+                "money_obtain": 8860
             },
             "488": {
                 "id": 488,
-                "money_obtain": 2935
+                "money_obtain": 8870
             },
             "489": {
                 "id": 489,
-                "money_obtain": 2940
+                "money_obtain": 8880
             },
             "490": {
                 "id": 490,
-                "money_obtain": 2945
+                "money_obtain": 8890
             },
             "491": {
                 "id": 491,
-                "money_obtain": 2950
+                "money_obtain": 8900
             },
             "492": {
                 "id": 492,
-                "money_obtain": 2955
+                "money_obtain": 8910
             },
             "493": {
                 "id": 493,
-                "money_obtain": 2960
+                "money_obtain": 8920
             },
             "494": {
                 "id": 494,
-                "money_obtain": 2965
+                "money_obtain": 8930
             },
             "495": {
                 "id": 495,
-                "money_obtain": 2970
+                "money_obtain": 8940
             },
             "496": {
                 "id": 496,
-                "money_obtain": 2975
+                "money_obtain": 8950
             },
             "497": {
                 "id": 497,
-                "money_obtain": 2980
+                "money_obtain": 8960
             },
             "498": {
                 "id": 498,
-                "money_obtain": 2985
+                "money_obtain": 8970
             },
             "499": {
                 "id": 499,
-                "money_obtain": 2990
+                "money_obtain": 8980
             },
             "500": {
                 "id": 500,
-                "money_obtain": 2995
+                "money_obtain": 8990
             }
         }
     },
@@ -47986,203 +48028,203 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "money_obtain": 750
+                "money_obtain": 6000
             },
             "2": {
                 "id": 2,
-                "money_obtain": 780
+                "money_obtain": 6050
             },
             "3": {
                 "id": 3,
-                "money_obtain": 810
+                "money_obtain": 6100
             },
             "4": {
                 "id": 4,
-                "money_obtain": 840
+                "money_obtain": 6150
             },
             "5": {
                 "id": 5,
-                "money_obtain": 870
+                "money_obtain": 6200
             },
             "6": {
                 "id": 6,
-                "money_obtain": 900
+                "money_obtain": 6250
             },
             "7": {
                 "id": 7,
-                "money_obtain": 930
+                "money_obtain": 6300
             },
             "8": {
                 "id": 8,
-                "money_obtain": 960
+                "money_obtain": 6350
             },
             "9": {
                 "id": 9,
-                "money_obtain": 990
+                "money_obtain": 6400
             },
             "10": {
                 "id": 10,
-                "money_obtain": 1020
+                "money_obtain": 6450
             },
             "11": {
                 "id": 11,
-                "money_obtain": 1050
+                "money_obtain": 6500
             },
             "12": {
                 "id": 12,
-                "money_obtain": 1080
+                "money_obtain": 6550
             },
             "13": {
                 "id": 13,
-                "money_obtain": 1110
+                "money_obtain": 6600
             },
             "14": {
                 "id": 14,
-                "money_obtain": 1140
+                "money_obtain": 6650
             },
             "15": {
                 "id": 15,
-                "money_obtain": 1170
+                "money_obtain": 6700
             },
             "16": {
                 "id": 16,
-                "money_obtain": 1200
+                "money_obtain": 6750
             },
             "17": {
                 "id": 17,
-                "money_obtain": 1230
+                "money_obtain": 6800
             },
             "18": {
                 "id": 18,
-                "money_obtain": 1260
+                "money_obtain": 6850
             },
             "19": {
                 "id": 19,
-                "money_obtain": 1290
+                "money_obtain": 6900
             },
             "20": {
                 "id": 20,
-                "money_obtain": 1320
+                "money_obtain": 6950
             },
             "21": {
                 "id": 21,
-                "money_obtain": 1350
+                "money_obtain": 7000
             },
             "22": {
                 "id": 22,
-                "money_obtain": 1380
+                "money_obtain": 7050
             },
             "23": {
                 "id": 23,
-                "money_obtain": 1410
+                "money_obtain": 7100
             },
             "24": {
                 "id": 24,
-                "money_obtain": 1440
+                "money_obtain": 7150
             },
             "25": {
                 "id": 25,
-                "money_obtain": 1470
+                "money_obtain": 7200
             },
             "26": {
                 "id": 26,
-                "money_obtain": 1500
+                "money_obtain": 7250
             },
             "27": {
                 "id": 27,
-                "money_obtain": 1530
+                "money_obtain": 7300
             },
             "28": {
                 "id": 28,
-                "money_obtain": 1560
+                "money_obtain": 7350
             },
             "29": {
                 "id": 29,
-                "money_obtain": 1590
+                "money_obtain": 7400
             },
             "30": {
                 "id": 30,
-                "money_obtain": 1620
+                "money_obtain": 7450
             },
             "31": {
                 "id": 31,
-                "money_obtain": 1650
+                "money_obtain": 7500
             },
             "32": {
                 "id": 32,
-                "money_obtain": 1680
+                "money_obtain": 7550
             },
             "33": {
                 "id": 33,
-                "money_obtain": 1710
+                "money_obtain": 7600
             },
             "34": {
                 "id": 34,
-                "money_obtain": 1740
+                "money_obtain": 7650
             },
             "35": {
                 "id": 35,
-                "money_obtain": 1770
+                "money_obtain": 7700
             },
             "36": {
                 "id": 36,
-                "money_obtain": 1800
+                "money_obtain": 7750
             },
             "37": {
                 "id": 37,
-                "money_obtain": 1830
+                "money_obtain": 7800
             },
             "38": {
                 "id": 38,
-                "money_obtain": 1860
+                "money_obtain": 7850
             },
             "39": {
                 "id": 39,
-                "money_obtain": 1890
+                "money_obtain": 7900
             },
             "40": {
                 "id": 40,
-                "money_obtain": 1920
+                "money_obtain": 7950
             },
             "41": {
                 "id": 41,
-                "money_obtain": 1950
+                "money_obtain": 8000
             },
             "42": {
                 "id": 42,
-                "money_obtain": 1980
+                "money_obtain": 8050
             },
             "43": {
                 "id": 43,
-                "money_obtain": 2010
+                "money_obtain": 8100
             },
             "44": {
                 "id": 44,
-                "money_obtain": 2040
+                "money_obtain": 8150
             },
             "45": {
                 "id": 45,
-                "money_obtain": 2070
+                "money_obtain": 8200
             },
             "46": {
                 "id": 46,
-                "money_obtain": 2100
+                "money_obtain": 8250
             },
             "47": {
                 "id": 47,
-                "money_obtain": 2130
+                "money_obtain": 8300
             },
             "48": {
                 "id": 48,
-                "money_obtain": 2160
+                "money_obtain": 8350
             },
             "49": {
                 "id": 49,
-                "money_obtain": 2190
+                "money_obtain": 8400
             },
             "50": {
                 "id": 50,
-                "money_obtain": 2220
+                "money_obtain": 8450
             }
         }
     },
@@ -48230,6 +48272,22 @@ var outputTables = {
                 "cash": 648,
                 "gold": 842,
                 "product_id": "com.leasuregame.magpie.pay648"
+            },
+            "8": {
+                "id": 8,
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.week.card.pay6",
+                "daily_gold": 60,
+                "valid_days": 7
+            },
+            "9": {
+                "id": 9,
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.month.card.pay30",
+                "daily_gold": 100,
+                "valid_days": 30
             }
         }
     },
@@ -48608,4 +48666,4 @@ var outputTables = {
             }
         }
     }
-};
+}

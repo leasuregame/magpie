@@ -82,6 +82,7 @@ var RechargeLayer = cc.Layer.extend({
     _onClickGo2Payment: function () {
         cc.log("RechargeLayer _onClickGo2Payment");
 
+        //gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         var shopLayer = ShopLayer.create();
         shopLayer._onClickVipLayer();
         MainScene.getInstance().switchTo(shopLayer);

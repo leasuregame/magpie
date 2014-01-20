@@ -138,8 +138,115 @@ var PaymentLayer = LazyLayer.extend({
 
         var scrollViewHeight = len * 110;
 
-        for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 110 - i * 110;
+        /*
+         * 周卡月卡
+         */
+
+        var y = scrollViewHeight;
+
+        var paymentsCards = ['月卡', '周卡'];
+        var isBought = false;
+        var i = 0;
+
+        for (; i < 2; i++) {
+            y -= 110;
+            var pCard = paymentTypeList[i];
+            var remainDays = gameData.player.getRemainDays(i);
+
+            var bgSprite = cc.Sprite.create(main_scene_image.icon175);
+            bgSprite.setAnchorPoint(cc.p(0, 0));
+            bgSprite.setPosition(cc.p(0, y));
+            scrollViewLayer.addChild(bgSprite);
+
+            var iconSprite = cc.Sprite.create(main_scene_image["icon" + (342 + i)]);
+            iconSprite.setPosition(cc.p(55, y + 52));
+            scrollViewLayer.addChild(iconSprite);
+
+            var nameLabel = StrokeLabel.create(paymentsCards[i] + ':', "STHeitiTC-Medium", 22);
+            nameLabel.setColor(cc.c3b(255, 244, 73));
+            nameLabel.setPosition(cc.p(132, y + 80));
+            scrollViewLayer.addChild(nameLabel);
+
+            var cashIcon = cc.Sprite.create(main_scene_image.icon173);
+            cashIcon.setPosition(cc.p(185, y + 80));
+            scrollViewLayer.addChild(cashIcon);
+
+            var priceLabel = StrokeLabel.create(pCard.cash, "STHeitiTC-Medium", 22);
+            priceLabel.setPosition(cc.p(220, y + 80));
+            scrollViewLayer.addChild(priceLabel);
+
+            var firstLabel = cc.LabelTTF.create("首次", "STHeitiTC-Medium", 20);
+            firstLabel.setAnchorPoint(cc.p(0, 0.5));
+            firstLabel.setPosition(cc.p(110, y + 52));
+            firstLabel.setVisible(remainDays <= 0);
+            scrollViewLayer.addChild(firstLabel);
+
+            var goldIcon1 = cc.Sprite.create(main_scene_image.icon148);
+            goldIcon1.setScale(0.7);
+            if (remainDays > 0) {
+                goldIcon1.setPosition(cc.p(235, y + 52));
+            } else {
+                goldIcon1.setPosition(cc.p(175, y + 52));
+            }
+            scrollViewLayer.addChild(goldIcon1);
+
+            var firstGetLabel = cc.LabelTTF.create(pCard.cash * 10 + pCard.gold, "STHeitiTC-Medium", 20);
+            firstGetLabel.setAnchorPoint(cc.p(0, 0.5));
+            firstGetLabel.setPosition(cc.p(200, y + 52));
+            firstGetLabel.setVisible(remainDays <= 0);
+            scrollViewLayer.addChild(firstGetLabel);
+
+            var dailyLabel = cc.LabelTTF.create("每日返还", "STHeitiTC-Medium", 20);
+            dailyLabel.setAnchorPoint(cc.p(0, 0.5));
+            dailyLabel.setPosition(cc.p(110, y + 24));
+            dailyLabel.setVisible(remainDays <= 0);
+            scrollViewLayer.addChild(dailyLabel);
+
+            var goldIcon2 = cc.Sprite.create(main_scene_image.icon148);
+            goldIcon2.setScale(0.7);
+            goldIcon2.setPosition(cc.p(215, y + 24));
+            goldIcon2.setVisible(remainDays <= 0);
+            scrollViewLayer.addChild(goldIcon2);
+
+            var dailyGetLabel = cc.LabelTTF.create(pCard.daily_gold, "STHeitiTC-Medium", 20);
+            dailyGetLabel.setAnchorPoint(cc.p(0, 0.5));
+            dailyGetLabel.setPosition(cc.p(240, y + 24));
+            dailyGetLabel.setVisible(remainDays <= 0);
+            scrollViewLayer.addChild(dailyGetLabel);
+
+            var tipLabel = cc.LabelTTF.create("每日可领取", "STHeitiTC-Medium", 20);
+            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setPosition(cc.p(110, y + 52));
+            tipLabel.setVisible(remainDays > 0);
+            scrollViewLayer.addChild(tipLabel);
+
+            var dayLabel = cc.LabelTTF.create(pCard.daily_gold + " x " + pCard.valid_days + "天", "STHeitiTC-Medium", 20);
+            dayLabel.setAnchorPoint(cc.p(0, 0.5));
+            dayLabel.setPosition(cc.p(255, y + 52));
+            dayLabel.setVisible(remainDays > 0);
+            scrollViewLayer.addChild(dayLabel);
+
+            var nextBuyLabel = cc.LabelTTF.create("距离下次购买：" + remainDays + "天", "STHeitiTC-Medium", 20);
+            nextBuyLabel.setAnchorPoint(cc.p(0, 0.5));
+            nextBuyLabel.setPosition(cc.p(110, y + 24));
+            nextBuyLabel.setVisible(remainDays > 0);
+            scrollViewLayer.addChild(nextBuyLabel);
+
+            var paymentItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button21,
+                main_scene_image.button21s,
+                main_scene_image.button21d,
+                main_scene_image.icon159,
+                this._onClickPayment(paymentTypeList[i]),
+                this
+            );
+            paymentItem.setPosition(cc.p(421, y + 50));
+            paymentItem.setEnabled(remainDays == 0);
+            menu.addChild(paymentItem);
+        }
+
+        for (; i < len; ++i) {
+            y -= 110;
 
             var bgSprite = cc.Sprite.create(main_scene_image.icon175);
             bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -227,7 +334,8 @@ var PaymentLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            gameData.payment.buy(product);
+            gameData.shop.buyVip(product);
+            //gameData.payment.buy(product);
         }
     }
 });

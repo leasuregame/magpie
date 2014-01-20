@@ -55,6 +55,7 @@ var giftBagGoods = {
 
 var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
+var GET_GIFT_BAG = 3;
 
 var GiftBagLayer = cc.Layer.extend({
 
@@ -199,6 +200,23 @@ var GiftBagLayer = cc.Layer.extend({
         okItem.setPosition(this._giftBagLayerFit.okItemPoint);
         okItem.setVisible(type == SHOW_GIFT_BAG);
 
+        var getItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button10,
+            main_scene_image.button10s,
+            main_scene_image.icon123,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                lazyLayer.removeFromParent();
+                if (cb) {
+                    cb();
+                }
+            },
+            this
+        );
+        getItem.setPosition(this._giftBagLayerFit.okItemPoint);
+        getItem.setVisible(type == GET_GIFT_BAG);
+
         var buyItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
@@ -230,7 +248,7 @@ var GiftBagLayer = cc.Layer.extend({
         cancelItem.setPosition(this._giftBagLayerFit.cancelItemPoint);
         cancelItem.setVisible(type == BUY_GIFT_BAG);
 
-        var menu = cc.Menu.create(okItem, buyItem, cancelItem);
+        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem);
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
 

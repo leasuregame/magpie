@@ -252,7 +252,8 @@ var Player = (function(_super) {
         'firstTime',
         'levelReward',
         'teachingStep',
-        'exchangeCards'
+        'exchangeCards',
+        'activities'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -301,7 +302,8 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: DEFAULT_GIVE_COUNT,
                 receivers: []
-            }
+            },
+            hasGotLoginReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -337,7 +339,9 @@ var Player = (function(_super) {
         },
         levelReward: [],
         teachingStep: 0,
-        exchangeCards: []
+        exchangeCards: [],
+        goldCards: {},
+        activities: {}
     };
 
     Player.prototype.resetData = function() {
@@ -376,7 +380,8 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: realCount(this.lv, giveBlessTab) + vipPrivilege.give_bless_count,
                 receivers: []
-            }
+            },
+            hasGotLoginReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1116,6 +1121,24 @@ var Player = (function(_super) {
         return _.union(f, m);
     };
 
+    Player.prototype.addGoldCard = function(gc) {
+        this.goldCards[gc.type] = gc;
+    };
+
+    Player.prototype.addGoldCards = function(gcs) {
+        for (var i = 0; i < gcs.length; i++) {
+            this.addGoldCard(gcs[i]);
+        }
+    };
+
+    Player.prototype.getGoldCard = function() {
+        var gc = {};
+        for (var g in this.goldCards) {
+            gc[g] = this.goldCards[g].toJson();
+        }
+        return gc;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1155,7 +1178,8 @@ var Player = (function(_super) {
             firstTime: this.hasFirstTime() ? this.firstTime : void 0,
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
-            exchangeCards: this.exchangeCards
+            exchangeCards: this.exchangeCards,
+            goldCards: this.getGoldCard()
         };
     };
 

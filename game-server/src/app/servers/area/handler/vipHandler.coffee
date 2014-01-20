@@ -33,7 +33,8 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
       playerId: player.id,
       type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
-      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd"),
+      status: 1
     }
   }, (err, res) ->
     if err

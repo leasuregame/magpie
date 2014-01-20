@@ -140,12 +140,12 @@ Handler::luckyCard = (msg, session, next) ->
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
         firstTen = 0
-        if typeof player.firstTime.hightTenLuckCard is 'undefined' or player.firstTime.hightTenLuckCard
+        if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
           firstTen = 1
 
         if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
           grainFiveStarCard cards
-          player.setFirstTime('hightTenLuckCard', 0)
+          player.setFirstTime('highTenLuckCard', 0)
 
         # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
         frags = 0;

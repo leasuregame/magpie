@@ -336,7 +336,7 @@ var Player = (function(_super) {
         firstTime: {
             lowLuckyCard: 1,
             highLuckyCard: 1,
-            hightTenLuckCard: 1
+            highTenLuckCard: 1
         },
         levelReward: [],
         teachingStep: 0,
@@ -1097,7 +1097,19 @@ var Player = (function(_super) {
                 return true;
             }
         }
+
+        if (typeof this.firstTime.highTenLuckCard == 'undefined') {
+            return true;
+        }
         return false;
+    };
+
+    Player.prototype.getFirstTime = function() {
+        return {
+            lowLuckyCard: this.firstTime.lowLuckyCard,
+            highLuckyCard: this.firstTime.highLuckyCard,
+            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard
+        };
     };
 
     Player.prototype.setFirstTime = function(name, val) {
@@ -1176,7 +1188,7 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.firstTime : void 0,
+            firstTime: this.hasFirstTime() ? this.getFirstTime() : void 0,
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,

@@ -44,26 +44,47 @@ Handler::buyGoldCard = (msg, session, next) ->
   playerId = session.get('playerId')
   orderNo = msg.orderNo
   type = msg.type
+  productId = msg.productId
 
-  if not orderNo or not type
+  if not orderNo or not type or type not in _.keys(GOLDCARDMAP)
     return next(null, {code: 501, msg: '参数不正确'})
 
+  dao = @app.get('dao')
   async.waterfall [
     (cb) =>
-      @app.get('dao').order.fetchOne where: tradeNo: orderNo, (err, order) ->
+      dao.order.fetchOne where: tradeNo: orderNo, (err, order) =>
         if err and err.code is 404
-          cb()
+          dao.order.create data: {
+            tradeNo: orderNo
+            playerId: playerId
+            status: 1000
+            created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
+          }, cb
+        
         else
-          cb({code: 200})
+          cb(null, order)      
 
-    (cb) =>
-      @app.get('dao').order.create data: {
-        tradeNo: orderNo
-        playerId: playerId
-        status: 1000
-        created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
-      }, cb
-  ], (err, order) ->
+    (order, cb) =>
+      dao.goldCard.fetchOne where: playerId: playerId, orderNo: orderNo, (err, gc) ->
+        if err and err.code is 404
+          product = table.getTableItem('recharge', productId)
+
+          if not product
+            return cb({code: 501, msg: '找不到月卡或周卡的配置信息'})
+
+          today = new Date()
+          vd = new Date()
+          vd.setDate(vd.getDate()+product.valid_days-1)
+          dao.goldCard.create data: {
+            orderNo: orderNo,
+            playerId: playerId,
+            type: type,
+            created: utility.dateFormat(today, "yyyy-MM-dd"),
+            validDate: utility.dateFormat(vd, "yyyy-MM-dd")
+          }, cb
+        else
+          cb(null, gc)
+  ], (err, goldcard) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or ''})
 

@@ -96,16 +96,36 @@ Remote::add = (args, callback) ->
 addGoldCard = (app, tradeNo, player, product, cb) ->
   return cb() if not isGoldCard(product)
 
+  app.get('dao').goldCard.fetchOne where: playerId: player.id, orderNo: tradeNo, (err, res) ->
+    if res
+      updateGoldCardStatus app, tradeNo, res, player, cb
+    else 
+      createNewGoldCard app, tradeNo, player, product, cb
+
+updateGoldCardStatus = (app, tradeNo, goldCard, player, cb) ->
+  app.get('dao').goldCard.update {
+    data: status: 1
+    where: playerId: player.id, orderNo: tradeNo
+  }, (err, res) ->
+    if err
+      logger.error('faild to update goldCard record: ', err)
+
+    goldCard.status = 1
+    player.addGoldCard goldCard
+    cb()
+
+createNewGoldCard = (app, tradeNo, player, product, cb) ->
   today = new Date()
   vd = new Date()
-  vd.setDate(today.getDate()+product.valid_days-1)
+  vd.setDate(vd.getDate()+product.valid_days-1)
   app.get('dao').goldCard.create {
     data: {
       orderNo: tradeNo,
       playerId: player.id,
       type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
-      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd"),
+      status: 1
     }
   }, (err, res) ->
     if err

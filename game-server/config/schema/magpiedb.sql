@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `goldCard` (
   `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
   `created` Date,
   `validDate` Date,
+  `status` INT(2) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

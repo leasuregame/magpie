@@ -141,7 +141,7 @@ var Pass = Entity.extend({
 
                 cc.log("firstWin: " + msg.firstWin);
 
-                if(msg.firstWin) {
+                if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
@@ -154,6 +154,8 @@ var Pass = Entity.extend({
                 cc.log("defiance fail");
 
                 TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },
@@ -166,7 +168,8 @@ var Pass = Entity.extend({
             type: "pass"
         }, function (data) {
             cc.log(data);
-
+            data.code = 1;
+            data.msg = "fail";
             if (data.code == 200) {
                 cc.log("wipeOut success");
 
@@ -206,7 +209,7 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
-                if(msg.firstWin) {
+                if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
@@ -221,6 +224,10 @@ var Pass = Entity.extend({
                 lz.dc.event("event_wipe_out_pass");
             } else {
                 cc.log("wipeOut fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },
@@ -248,6 +255,10 @@ var Pass = Entity.extend({
                 lz.dc.event("event_mystical");
             } else {
                 cc.log("mystical fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },

@@ -109,7 +109,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>40</real>
+													<real>60</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -137,7 +137,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>40</real>
+													<real>60</real>
 												</dict>
 												<dict>
 													<key>easing</key>
@@ -148,11 +148,11 @@
 													<key>name</key>
 													<string>rotation</string>
 													<key>time</key>
-													<real>9</real>
+													<real>6</real>
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>400</real>
+													<real>420</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -220,7 +220,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>40</real>
+										<real>60</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -355,7 +355,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-40</real>
+													<real>60</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -383,7 +383,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-40</real>
+													<real>60</real>
 												</dict>
 												<dict>
 													<key>easing</key>
@@ -394,11 +394,11 @@
 													<key>name</key>
 													<string>rotation</string>
 													<key>time</key>
-													<real>9</real>
+													<real>6</real>
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>-400</real>
+													<real>420</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -466,7 +466,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-40</real>
+										<real>60</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -842,6 +842,8 @@
 										<false/>
 									</dict>
 								</array>
+								<key>seqExpanded</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1147,6 +1149,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -1647,13 +1651,13 @@
 			<key>chainedSequenceId</key>
 			<integer>1</integer>
 			<key>length</key>
-			<real>9</real>
+			<real>6</real>
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>9</real>
+			<real>6</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

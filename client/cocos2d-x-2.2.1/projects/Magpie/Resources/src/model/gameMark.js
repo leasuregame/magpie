@@ -22,6 +22,7 @@ var gameMark = {
     _recharge: false,
     _lottery: false,
     _newYearReward: false,
+    _treasureHunt: false,
 
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
@@ -288,9 +289,13 @@ var gameMark = {
         cc.log("gameMark getLotteryMark");
 
         if (!this._lottery) {
-            var energy = gameData.player.get("energy");
-            if (energy >= LOTTERY_ENOUGH) {
-                this._lottery = true;
+            if(gameData.player.get("lv") > 20) {
+                this._lottery = false;
+            } else {
+                var energy = gameData.player.get("energy");
+                if (energy >= LOTTERY_ENOUGH) {
+                    this._lottery = true;
+                }
             }
         }
         return this._lottery;
@@ -315,19 +320,38 @@ var gameMark = {
                 var len = keys.length;
                 for (var id = 1; id <= len; id++) {
                     if (activity.getStateById(TYPE_RECHARGE_REWARD, id) == RECHARGE_REWARD) {
-                        this._activity = true;
+                        this._newYearReward = true;
                         break;
                     }
                 }
             }
         }
 
-        return this._activity;
+        return this._newYearReward;
     },
 
     updateNewYearMark: function (mark) {
         cc.log("gameMark updateNewYearMark");
         this._newYearReward = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getTreasureHuntMark: function () {
+        cc.log("gameMark getTreasureHuntMark");
+
+        if(!this._treasureHunt) {
+            var freeCount = gameData.treasureHunt.get("freeCount");
+            if(freeCount > 0) {
+                this._treasureHunt = true;
+            }
+        }
+
+        return this._treasureHunt;
+    },
+
+    updateTreasureHuntMark: function (mark) {
+        cc.log("gameMark updateTreasureHuntMark");
+        this._treasureHunt = mark;
         MainScene.getInstance().updateMark();
     }
 

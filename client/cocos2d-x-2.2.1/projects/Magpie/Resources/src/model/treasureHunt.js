@@ -72,6 +72,8 @@ var TreasureHunt = Entity.extend({
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
+                gameMark.updateTreasureHuntMark(false);
+
                 var str = {};
                 str[table.type] = table.value * times;
 

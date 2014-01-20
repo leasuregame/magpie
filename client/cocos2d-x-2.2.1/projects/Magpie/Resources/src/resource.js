@@ -32,8 +32,8 @@ var effect_scene_path = "res/effect/";
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
 //    bg2: main_scene_path + "bg2.png",
-    bg3: main_scene_path + "bg3.png",
-    bg4: main_scene_path + "bg4.png",
+//    bg3: main_scene_path + "bg3.png",
+//    bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
 //    bg7: main_scene_path + "bg7.png",
@@ -53,6 +53,16 @@ var main_scene_image = {
     bg21: main_scene_path + "bg21.png",
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
+
+
+    explore_bg_1: main_scene_path + "explore_bg_1.png",
+    explore_bg_2: main_scene_path + "explore_bg_2.png",
+    explore_bg_3: main_scene_path + "explore_bg_3.png",
+    explore_bg_4: main_scene_path + "explore_bg_4.png",
+    explore_bg_5: main_scene_path + "explore_bg_5.png",
+    explore_bg_6: main_scene_path + "explore_bg_6.png",
+    explore_bg_7: main_scene_path + "explore_bg_7.png",
+    explore_bg_8: main_scene_path + "explore_bg_8.png",
 
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
@@ -781,6 +791,9 @@ var main_scene_image = {
     uiEffect72: "res/ccb/uiEffect72.ccbi",
     uiEffect73: "res/ccb/uiEffect73.ccbi",
     uiEffect74: "res/ccb/uiEffect74.ccbi",
+    uiEffect75: "res/ccb/uiEffect75.ccbi",
+    uiEffect76: "res/ccb/uiEffect76.ccbi",
+    uiEffect77: "res/ccb/uiEffect77.ccbi",
 
 
     // 特效资源

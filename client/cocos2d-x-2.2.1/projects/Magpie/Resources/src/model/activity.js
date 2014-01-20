@@ -60,6 +60,14 @@ var Activity = Entity.extend({
                         gameMark.updatePowerRewardMark(false);
                     });
 
+                    lz.server.on("onNewYearReward", function (data) {
+                        cc.log("***** on onNewYearReward:");
+                        cc.log(data);
+
+                        that.updateRechargeFlag(data.msg.flag);
+                        gameMark.updateNewYearMark(true);
+                    });
+
                     gameMark.updateActivityMark(false);
 
                     lz.dc.event("event_activity");
@@ -68,9 +76,8 @@ var Activity = Entity.extend({
 
                     that.sync();
                 }
-            },
-            true
-        );
+
+        });
     },
 
     update: function (data) {
@@ -94,7 +101,12 @@ var Activity = Entity.extend({
             }
         }
 
-        var flag = data.rechargeFlag;
+        this.updateRechargeFlag(data.rechargeFlag);
+    },
+
+    updateRechargeFlag: function (flag) {
+        cc.log("Activity updateRechargeFlag: " + flag);
+
         for (var id = 1; id <= 5; id++) {
             var offset = (id - 1) % EACH_NUM_BIT;
 
@@ -104,7 +116,6 @@ var Activity = Entity.extend({
                 this._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD);
             }
         }
-
     },
 
     getPowerReward: function (cb) {

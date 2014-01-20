@@ -432,6 +432,12 @@ var FriendLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            var friend = gameData.friend;
+            if (friend.get("receiveCount") <= 0) {
+                TipLayer.tip("今天可领次数已用完");
+                this.update();
+            }
+
             var that = this;
             gameData.friend.receiveBless(function (data) {
                 cc.log(data);

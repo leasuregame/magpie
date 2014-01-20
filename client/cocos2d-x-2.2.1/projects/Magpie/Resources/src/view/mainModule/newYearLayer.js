@@ -9,6 +9,7 @@ var NewYearLayer = cc.Layer.extend({
 
     _giftItems: [],
     _dailyGetItem: null,
+    _giftEffect: [],
 
     onEnter: function () {
         cc.log("NewYearLayer onEnter");
@@ -31,6 +32,10 @@ var NewYearLayer = cc.Layer.extend({
         if (!this._super())  return false;
 
         this._newYearLayerFit = gameFit.mainScene.newYearLayer;
+
+        this._giftEffect = [];
+        this._giftItems = [];
+        this._dailyGetItem = null;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg23);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -63,7 +68,7 @@ var NewYearLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this._dailyGetItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
@@ -91,6 +96,7 @@ var NewYearLayer = cc.Layer.extend({
             }
             this._giftItems[i].setPosition(point[i]);
             menu.addChild(this._giftItems[i]);
+
         }
 
         return true;
@@ -100,6 +106,35 @@ var NewYearLayer = cc.Layer.extend({
         cc.log("NewYearLayer update");
 
         this._dailyGetItem.setEnabled(gameData.activity.get("hasLoginReward"));
+
+        var point = this._newYearLayerFit.giftItemsPoints;
+        var that = this;
+
+        for (var i = 0; i < 5; i++) {
+            (function (i) {
+                var state = gameData.activity.getStateById(TYPE_RECHARGE_REWARD, i + 1);
+                if (state == RECHARGE_REWARD) {
+                    if (!that._giftEffect[i]) {
+                        that._giftEffect[i] = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+                        that._giftEffect[i].setPosition(point[i]);
+
+                        if (i < 2) {
+                            that._giftEffect[i].setScale(0.5 + i * 0.1);
+                        } else {
+                            that._giftEffect[i].setScale(0.7);
+                        }
+
+                        that.addChild(that._giftEffect[i]);
+                    }
+                } else {
+                    if (that._giftEffect[i]) {
+                        that._giftEffect[i].removeFromParent();
+                        that._giftEffect[i] = null;
+                    }
+                }
+            })(i);
+        }
+
     },
 
     onClickDailyReward: function () {
@@ -134,15 +169,16 @@ var NewYearLayer = cc.Layer.extend({
                 "energy": data.energy,
                 "fragments": data.fragments
             };
-            var test = gameData.activity.getStateById(TYPE_RECHARGE_REWARD, id);
-            cc.log(test);
-            var type = test ? GET_GIFT_BAG : SHOW_GIFT_BAG;
+            var state = gameData.activity.getStateById(TYPE_RECHARGE_REWARD, id);
+            cc.log(state);
+            var type = state ? GET_GIFT_BAG : SHOW_GIFT_BAG;
             var cb = null;
 
             if (type == GET_GIFT_BAG) {
                 cb = function () {
                     gameData.activity.getNewYearReward(function () {
                         lz.tipReward(reward);
+                        that.update();
                     }, {
                         type: RECEIVE_GIFT_REWARD,
                         args: {id: id}

@@ -30,6 +30,7 @@ var LotteryLayer = cc.Layer.extend({
 
     _openTenLotteryItem: null,
     _closeTenLotteryItem: null,
+    _tenLotteryEffect: null,
     _privilegeIcon: null,
 
     onEnter: function () {
@@ -207,6 +208,10 @@ var LotteryLayer = cc.Layer.extend({
         this._closeTenLotteryItem.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
         menu.addChild(this._closeTenLotteryItem);
 
+//        this._tenLotteryEffect = cc.BuilderReader.load(main_scene_image.uiEffect76, this);
+//        this._tenLotteryEffect.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
+//        this.addChild(this._tenLotteryEffect);
+
         this._privilegeIcon = cc.Sprite.create(main_scene_image.icon319);
         this._privilegeIcon.setPosition(this._lotteryLayerFit.privilegeIconPoint);
         this.addChild(this._privilegeIcon);
@@ -270,12 +275,14 @@ var LotteryLayer = cc.Layer.extend({
 
         if (!isVisible) {
             this._openTenLotteryItem.setVisible(false);
-            this._closeTenLotteryItem.setVisible(false)
+            this._closeTenLotteryItem.setVisible(false);
+           // this._tenLotteryEffect.setVisible(false);
             this._privilegeIcon.setVisible(false);
         } else {
             this._closeTenLotteryItem.setVisible(this._times == 10);
             this._openTenLotteryItem.setVisible(this._times == 1);
             this._privilegeIcon.setVisible(true);
+           // this._tenLotteryEffect.setVisible(true);
         }
 
     },

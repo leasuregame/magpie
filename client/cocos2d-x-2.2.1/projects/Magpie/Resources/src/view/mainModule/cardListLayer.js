@@ -922,6 +922,8 @@ var CardListLayer = cc.Layer.extend({
         var len = selectCardList.length;
 
         if (len <= 0) {
+            TipLayer.tip("请选择出售卡牌");
+
             return;
         }
 

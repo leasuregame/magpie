@@ -375,14 +375,13 @@ var Player = Entity.extend({
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.remainingDays || 0;
             } else {
                 return 0;
             }
-
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.remainingDays || 0;
             } else {
                 return 0;
@@ -393,18 +392,18 @@ var Player = Entity.extend({
         }
     },
 
-    isGotDaily: function(type) {
+    isGotDaily: function (type) {
         cc.log("Player isGotDaily: " + type);
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.hasGot;
             } else {
                 return 1;
             }
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.hasGot;
             } else {
                 return 1;
@@ -415,18 +414,18 @@ var Player = Entity.extend({
         }
     },
 
-    goldCardsStatus: function(type) {
+    goldCardsStatus: function (type) {
         cc.log("Player goldCardsStatus: " + type);
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.status;
             } else {
                 return 0;
             }
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.status;
             } else {
                 return 0;
@@ -436,7 +435,6 @@ var Player = Entity.extend({
             return 0;
         }
     }
-
 });
 
 

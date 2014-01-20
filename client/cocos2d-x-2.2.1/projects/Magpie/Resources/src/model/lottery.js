@@ -18,6 +18,7 @@ var LOTTERY_BY_ENERGY = 0;
 var Lottery = Entity.extend({
     _freeLowLotteryCard: false,
     _freeHighLotteryCard: false,
+    _firstHighTenLuckCard: false,
     _lotteryCount: 0,
 
     init: function (data) {
@@ -34,6 +35,7 @@ var Lottery = Entity.extend({
         if (data) {
             this._freeLowLotteryCard = data.lowLuckyCard == 1;
             this._freeHighLotteryCard = data.highLuckyCard == 1;
+            this._firstHighTenLuckCard = data.highTenLuckCard == 1;
         }
     },
 
@@ -161,6 +163,10 @@ var Lottery = Entity.extend({
                 for (var i = 0; i < msg.cards.length; i++) {
                     cards[i] = Card.create(msg.cards[i]);
                     gameData.cardList.push(cards[i]);
+                }
+
+                if (type == LOTTERY_BY_GOLD && level == 2) {
+                    that.set("firstHighTenLuckCard", false);
                 }
 
                 var player = gameData.player;

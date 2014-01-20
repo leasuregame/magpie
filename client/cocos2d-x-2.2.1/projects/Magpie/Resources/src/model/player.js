@@ -413,7 +413,28 @@ var Player = Entity.extend({
             cc.log("类型出错！！！");
             return 0;
         }
+    },
 
+    goldCardsStatus: function(type) {
+        cc.log("Player goldCardsStatus: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if(goldCards.month) {
+                return goldCards.month.status;
+            } else {
+                return 0;
+            }
+        } else if (type == WEEK_CARD) {
+            if(goldCards.week) {
+                return goldCards.week.status;
+            } else {
+                return 0;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
     }
 
 });

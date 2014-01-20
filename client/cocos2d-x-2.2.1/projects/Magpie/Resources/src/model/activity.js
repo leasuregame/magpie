@@ -77,7 +77,7 @@ var Activity = Entity.extend({
                     that.sync();
                 }
 
-        });
+            }, true);
     },
 
     update: function (data) {

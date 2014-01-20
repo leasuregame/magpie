@@ -124,7 +124,7 @@ var TournamentLabel = cc.Node.extend({
             functionItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,
-                main_scene_image.icon24,
+                main_scene_image.icon358,
                 this._onClickLineUp,
                 this
             );

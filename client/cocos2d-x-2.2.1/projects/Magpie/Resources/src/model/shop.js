@@ -305,6 +305,7 @@ var Shop = Entity.extend({
                 var pCard = paymentTypeList[id];
 
                 lz.tipReward({"gold": pCard.daily_gold});
+                gameMark.updateGoldCardsMark(false);
 
                 cb();
             } else {
@@ -592,7 +593,8 @@ var Shop = Entity.extend({
 
     buyVip: function (product) {
 
-        cc.log("shop buyVip: ", product);
+        cc.log("shop buyVip: ");
+        cc.log(product);
 
         lz.server.request("area.vipHandler.buyVip", {
             id: product.id

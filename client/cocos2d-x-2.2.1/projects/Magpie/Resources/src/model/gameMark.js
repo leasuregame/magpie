@@ -23,12 +23,14 @@ var gameMark = {
     _lottery: false,
     _newYearReward: false,
     _treasureHunt: false,
+    _goldCards: false,
 
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
 
         if (!this._activity) {
-            this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() || this.getPowerRewardMark() || this.getNewYearMark();
+            this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
+                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark();
         }
 
         return this._activity;
@@ -288,14 +290,12 @@ var gameMark = {
     getLotteryMark: function () {
         cc.log("gameMark getLotteryMark");
 
-        if (!this._lottery) {
-            if(gameData.player.get("lv") > 20) {
-                this._lottery = false;
-            } else {
-                var energy = gameData.player.get("energy");
-                if (energy >= LOTTERY_ENOUGH) {
-                    this._lottery = true;
-                }
+        if (gameData.player.get("lv") > 20) {
+            this._lottery = false;
+        } else if (!this._lottery) {
+            var energy = gameData.player.get("energy");
+            if (energy >= LOTTERY_ENOUGH) {
+                this._lottery = true;
             }
         }
         return this._lottery;
@@ -333,15 +333,16 @@ var gameMark = {
     updateNewYearMark: function (mark) {
         cc.log("gameMark updateNewYearMark");
         this._newYearReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
     getTreasureHuntMark: function () {
         cc.log("gameMark getTreasureHuntMark");
 
-        if(!this._treasureHunt) {
+        if (!this._treasureHunt) {
             var freeCount = gameData.treasureHunt.get("freeCount");
-            if(freeCount > 0) {
+            if (freeCount > 0) {
                 this._treasureHunt = true;
             }
         }
@@ -352,6 +353,31 @@ var gameMark = {
     updateTreasureHuntMark: function (mark) {
         cc.log("gameMark updateTreasureHuntMark");
         this._treasureHunt = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getGoldCardsMark: function () {
+        cc.log("gameMark getGoldCardsMark");
+
+        if(!this._goldCards) {
+            for (var i = 0; i < 2; i++) {
+                var remainDays = gameData.player.getRemainDays(i);
+                var isGot = gameData.player.isGotDaily(i);
+                if(remainDays > 0 && !isGot) {
+                    this._goldCards = true;
+                    break;
+                }
+            }
+        }
+
+        return this._goldCards;
+    },
+
+    updateGoldCardsMark: function(mark) {
+        cc.log("gameMark updateGoldCardsMark");
+
+        this._goldCards = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }
 

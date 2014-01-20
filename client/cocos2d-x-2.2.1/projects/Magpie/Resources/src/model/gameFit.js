@@ -1156,8 +1156,8 @@ var fit4Iphone4 = {
         },
         "tournamentDetails": {
             "bgSpritePoint": cc.p(363, 492),
-            "labelSpritePoint": cc.p(360, 707),
-            "titleLabelPoint": cc.p(360, 792),
+            "labelSpritePoint": cc.p(360, 747),
+            "titleLabelPoint": cc.p(360, 812),
             "okItemPoint": cc.p(360, 187),
             "closeItemPoint": cc.p(640, 842)
         },
@@ -2456,8 +2456,8 @@ var fit4Iphone5 = {
         },
         "tournamentDetails": {
             "bgSpritePoint": cc.p(323, 580),
-            "labelSpritePoint": cc.p(320, 795),
-            "titleLabelPoint": cc.p(320, 880),
+            "labelSpritePoint": cc.p(320, 835),
+            "titleLabelPoint": cc.p(320, 900),
             "okItemPoint": cc.p(320, 275),
             "closeItemPoint": cc.p(600, 930)
         },

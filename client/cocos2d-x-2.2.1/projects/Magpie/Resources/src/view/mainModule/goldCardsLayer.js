@@ -95,19 +95,13 @@ var GoldCardsLayer = cc.Layer.extend({
             var dailyGotLabel = cc.LabelTTF.create("每日登陆可领取" + pCard.daily_gold, "STHeitiTC-Medium", 25);
             dailyGotLabel.setAnchorPoint(cc.p(0, 0.5));
             dailyGotLabel.setColor(cc.c3b(133, 37, 7));
-            dailyGotLabel.setPosition(cc.p(-150, 5));
+            dailyGotLabel.setPosition(cc.p(-115, 10));
             tipNode2.addChild(dailyGotLabel);
 
             var goldIcon3 = cc.Sprite.create(main_scene_image.icon148);
             goldIcon3.setScale(0.7);
-            goldIcon3.setPosition(cc.p(85 - i * 14, 5));
+            goldIcon3.setPosition(cc.p(120 - i * 14, 10));
             tipNode2.addChild(goldIcon3);
-
-            var dayLabel = cc.LabelTTF.create(" x " + pCard.valid_days + "天","STHeitiTC-Medium", 25);
-            dayLabel.setAnchorPoint(cc.p(0, 0.5));
-            dayLabel.setColor(cc.c3b(133, 37, 7));
-            dayLabel.setPosition(cc.p(95 - i * 14, 3));
-            tipNode2.addChild(dayLabel);
 
             var nextLabel = cc.LabelTTF.create("距离下次购买：" + remainDays + "天", "STHeitiTC-Medium", 20);
             nextLabel.setPosition(cc.p(0, -20));
@@ -150,18 +144,18 @@ var GoldCardsLayer = cc.Layer.extend({
         for (var i = 0; i < 2; i++) {
             var remainDays = gameData.player.getRemainDays(i);
             var isGot = gameData.player.isGotDaily(i);
+            var status = gameData.player.goldCardsStatus(i);
             this._tipLabel[i].setVisible(remainDays <= 0);
             this._nextBuyLabel[i].setVisible(remainDays > 0);
             this._paymentItem[i].setVisible(remainDays <= 0);
             this._gotItem[i].setVisible(remainDays > 0);
-            this._gotItem[i].setEnabled(!isGot);
+            this._gotItem[i].setEnabled(!isGot && status);
         }
     },
 
     _onClickGo2Payment: function () {
         cc.log("GoldCardsLayer _onClickGo2Payment");
 
-       // gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         var shopLayer = ShopLayer.create();
         shopLayer._onClickVipLayer();
         MainScene.getInstance().switchTo(shopLayer);

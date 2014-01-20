@@ -570,9 +570,9 @@
 						<key>displayName</key>
 						<string>up189</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbTenLotteryTip</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -631,6 +631,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

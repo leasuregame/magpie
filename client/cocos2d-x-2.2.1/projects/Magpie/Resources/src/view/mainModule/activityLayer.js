@@ -30,7 +30,6 @@ var ActivityLayer = cc.Layer.extend({
     _mark: [],
     _item: [],
     _scrollView: null,
-    _rect: cc.rect(0, 0, 0, 0),
 
     onEnter: function () {
         cc.log("ActivityLayer onEnter");
@@ -96,11 +95,13 @@ var ActivityLayer = cc.Layer.extend({
             this._item[i].setScale(0.9);
             this._item[i].setAnchorPoint(cc.p(0, 0));
             this._item[i].setPosition(cc.p(107 * i, 10));
-            this._mark[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-            this._mark[i].setPosition(cc.p(80, 80));
-            this._mark[i].setVisible(false);
-            this._item[i].addChild(this._mark[i]);
 
+            this._mark[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+            this._mark[i].setAnchorPoint(cc.p(0, 0));
+            this._mark[i].setPosition(cc.p(107 * i + 70, 80));
+            this._mark[i].setVisible(false);
+            //this._item[i].addChild(this._mark[i]);
+            scrollViewLayer.addChild(this._mark[i], 2);
             mainMenu.addChild(this._item[i]);
         }
         scrollViewLayer.addChild(mainMenu);
@@ -120,9 +121,6 @@ var ActivityLayer = cc.Layer.extend({
         this.addChild(this._scrollView, 10);
 
         this._scrollView.setContentSize(cc.size(len * 107, 106));
-
-        var point = this._activityLayerFit.scrollViewPoint;
-        this.rect = cc.rect(point.x, point.y, 500, 106);
 
         this.switchLayer(this._layer[0]);
         return true;
@@ -155,20 +153,10 @@ var ActivityLayer = cc.Layer.extend({
 
         this._mark[0].setVisible(gameMark.getSignInMark());
         this._mark[1].setVisible(gameMark.getNewYearMark());
+        this._mark[2].setVisible(gameMark.getGoldCardsMark());
         this._mark[3].setVisible(gameMark.getPowerRewardMark());
         this._mark[4].setVisible(gameMark.getGoldRewardMark());
         this._mark[5].setVisible(gameMark.getRechargeMark());
-    },
-
-    /**
-     * callback when a touch event moved
-     * @param {cc.Touch} touch
-     * @param {event} event
-     */
-    onTouchBegan: function (touch, event) {
-        cc.log("ActivityLayer onTouchBegan");
-
-        return (!cc.rectContainsPoint(this._rect, touch.getLocation()));
     }
 });
 

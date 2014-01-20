@@ -144,7 +144,7 @@ var PaymentLayer = LazyLayer.extend({
 
         var y = scrollViewHeight;
 
-        var paymentsCards = ['月卡','周卡'];
+        var paymentsCards = ['月卡', '周卡'];
         var isBought = false;
         var i = 0;
 
@@ -235,16 +235,17 @@ var PaymentLayer = LazyLayer.extend({
             var paymentItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button21,
                 main_scene_image.button21s,
+                main_scene_image.button21d,
                 main_scene_image.icon159,
                 this._onClickPayment(paymentTypeList[i]),
                 this
             );
             paymentItem.setPosition(cc.p(421, y + 50));
+            paymentItem.setEnabled(remainDays == 0);
             menu.addChild(paymentItem);
         }
 
         for (; i < len; ++i) {
-            //var y = scrollViewHeight - 110 - (i + 2) * 110;
             y -= 110;
 
             var bgSprite = cc.Sprite.create(main_scene_image.icon175);
@@ -333,7 +334,7 @@ var PaymentLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            gameData.shop.buyVip(product)
+            gameData.shop.buyVip(product);
             //gameData.payment.buy(product);
         }
     }

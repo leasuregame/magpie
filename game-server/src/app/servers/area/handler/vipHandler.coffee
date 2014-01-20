@@ -52,6 +52,39 @@ isGoldCard = (product) ->
   else
     return false
 
+noticeNewYearActivity = (app, player, cb) ->
+  startDate = new Date app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date app.get('sharedConf').newYearActivity.endDate
+  now = new Date()
+
+  console.log startDate, now, endDate
+  if startDate <= now < endDate
+    app.get('dao').order.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
+      return cb(err) if err
+      console.log '-a-', cash
+      if cash <= 0
+        return cb()
+
+      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
+      console.log '-b-', len, player.activities
+      if len > 0
+        flag = (Math.pow(2, len)-1)^(player.activities.recharge or 0)
+        sendNewYearMsg(app, player, flag) if flag > 0
+
+      return cb()
+  else
+    cb()
+
+sendNewYearMsg = (app, player, flag) ->
+  app.get('messageService').pushByPid player.id, {
+    route: 'onNewYearReward',
+    msg: {
+      flag: flag
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to send message to playerId ', playerId)
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -86,6 +119,7 @@ Handler::buyVip = (msg, session, next) ->
       vip: player.vip
     }})
 
+    noticeNewYearActivity @app, player, (err) ->
     @app.get('messageService').pushByPid player.id, {
       route: 'onVerifyResult',
       msg: {

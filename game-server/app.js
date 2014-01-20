@@ -74,7 +74,9 @@ app.configure('production|development', function() {
   app.route('area', routeUtil.area);
 
   app.filter(pomelo.filters.timeout());
-  app.rpcFilter(pomelo.rpcFilters.rpcLog())
+  app.rpcFilter(pomelo.rpcFilters.rpcLog());
+
+  watchSharedConf(app);
 });
 
 
@@ -88,8 +90,6 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
-
-  watchSharedConf(app);
   //app.filter(loginFilter());
 });
 

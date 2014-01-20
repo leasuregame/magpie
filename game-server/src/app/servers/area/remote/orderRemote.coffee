@@ -27,6 +27,7 @@ Remote::add = (args, callback) ->
   productId = args.productId
 
   player = null
+  product = null
   async.waterfall [
     (cb) =>
       @app.get('playerManager').getPlayerInfo pid: playerId, cb
@@ -51,38 +52,45 @@ Remote::add = (args, callback) ->
         status: ORDER_INIT_STATUS
         created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
       }, cb
-  ], (err, order) =>
+
+    (order, cb) =>
+      times = 1
+      if player.cash is 0
+        ### 首冲获得三倍魔石 ###
+        times = 3
+
+      product = table.getTableItem('recharge', productId)
+      if not product
+        logger.warn('找不到购买的对应产品, 产品id为', productId)
+        updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_1)
+        return cb({ok: false, msg: '找不到购买的对应产品'})
+
+      # 检查充值的金额是否正确
+      if parseInt(amount) != product.cash*100
+        logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', amount+'分,', 
+          '产品实际金额为:', product.cash+'元', '产品id为:', productId)
+        updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_2)
+        return cb({ok: false, msg: '充值的金额跟产品金额不匹配'})
+      
+      player.increase('cash', product.cash)
+      player.increase('gold', (product.cash * 10 + product.gold) * times)
+      player.save()
+      updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS, cb)
+    
+    (updated, cb) =>
+      addGoldCard @app, tradeNo, player, product, cb
+
+    (cb) =>
+      noticeNewYearActivity @app, player, cb
+  ], (err) =>
     if err
       return callback(null, err)
 
-    times = 1
-    if player.cash is 0
-      ### 首冲获得三倍魔石 ###
-      times = 3
-
-    product = table.getTableItem('recharge', productId)
-    if not product
-      logger.warn('找不到购买的对应产品, 产品id为', productId)
-      updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_1)
-      return callback(null, {ok: false, msg: '找不到购买的对应产品'})
-
-    # 检查充值的金额是否正确
-    if parseInt(amount) != product.cash*100
-      logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', amount+'分,', 
-        '产品实际金额为:', product.cash+'元', '产品id为:', productId)
-      updateOrderStatus(@app, tradeNo, ORDER_ERROR_STATUS_2)
-      return callback(null, {ok: false, msg: '充值的金额跟产品金额不匹配'})
-    
-    player.increase('cash', product.cash)
-    player.increase('gold', (product.cash * 10 + product.gold) * times)
-    player.save()
-
-    addGoldCard @app, tradeNo, player, product, (err, ply) => successMsg(@app, ply)
+    successMsg(@app, player)
     callback(null, {ok: true})
-    updateOrderStatus(@app, tradeNo, ORDER_FINISHED_STATUS)
 
 addGoldCard = (app, tradeNo, player, product, cb) ->
-  return cb(null, player) if not isGoldCard(product)
+  return cb() if not isGoldCard(product)
 
   today = new Date()
   vd = new Date()
@@ -100,7 +108,7 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
       logger.error('faild to create goldCard record: ', err)
 
     player.addGoldCard(res)
-    cb(null, player)
+    cb()
 
 isGoldCard = (product) ->
   ids = [
@@ -112,7 +120,7 @@ isGoldCard = (product) ->
   else
     return false
 
-updateOrderStatus = (app, tradeNo, status) ->
+updateOrderStatus = (app, tradeNo, status, cb) ->
   app.get('dao').order.update {
     data: status: status
     where: tradeNo: tradeNo
@@ -120,6 +128,41 @@ updateOrderStatus = (app, tradeNo, status) ->
     if err
       logger.error('faild to udpate order status.', tradeNo, status)
       logger.error(err)
+
+    cb(err, res) if typeof cb is 'function'
+
+noticeNewYearActivity = (app, player, cb) ->
+  startDate = new Date app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date app.get('sharedConf').newYearActivity.endDate
+  now = new Date()
+
+  console.log startDate, now, endDate
+  if startDate <= now < endDate
+    app.get('dao').order.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
+      return cb(err) if err
+      console.log '-a-', cash
+      if cash <= 0
+        return cb()
+
+      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
+      console.log '-b-', len, player.activities
+      if len > 0
+        flag = (Math.pow(2, len)-1)^(player.activities.recharge or 0)
+        sendNewYearMsg(app, player, flag)
+
+      return cb()
+  else
+    cb()
+
+sendNewYearMsg = (app, player, flag) ->
+  app.get('messageService').pushByPid player.id, {
+    route: 'onNewYearReward',
+    msg: {
+      flag: flag
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to send message to playerId ', playerId)
 
 successMsg = (app, player) ->
   app.get('messageService').pushByPid player.id, {

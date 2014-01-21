@@ -8,11 +8,15 @@ Handler = (@app) ->
 
 Handler::success = (msg, session, next) ->
   version = msg.version
-  fpath = msg.path
+  path1 = msg.path1
+  path2 = msg.path2
+  text = msg.text
 
   @app.get('dao').upgrade.create data: {
     version: version,
-    path: fpath,
+    path1: path1,
+    path2: path2,
+    text: text
     created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
   }, (err, res) ->
     if err

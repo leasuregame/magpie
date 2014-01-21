@@ -63,7 +63,7 @@ var getDays = function(created) {
         cdate = new Date(utility.dateFormat(created, "yyyy-MM-dd"));
     }    
     var days = (today - cdate)/(1000*60*60*24);
-    return days+1;
+    return parseInt(days+1);
 };
 
 module.exports = GoldCard;

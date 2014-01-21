@@ -16,11 +16,13 @@ var UpgradeDao = (function (_super) {
     var domain = function(attrs) {
         this.id = attrs.id;
         this.version = attrs.version;
-        this.path = attrs.path;
+        this.path1 = attrs.path1;
+        this.path2 = attrs.path2;
+        this.text = attrs.text;
     };
     domain.DEFAULT_VALUES = { };
 
-    domain.FIELDS = ['id', 'version', 'path'];
+    domain.FIELDS = ['id', 'version', 'path1', 'path2', 'text'];
     UpgradeDao.domain = domain;
 
     return UpgradeDao;

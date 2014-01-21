@@ -26,7 +26,7 @@ var TbOrderDao = (function(_super) {
 	domain.FIELDS = ['tradeNo', 'playerId', 'amount', 'partner', 'paydes', 'status', 'created'];
 	TbOrderDao.domain = domain;
 
-	TbOrderDao.rechargeOnPeriod = function(playerId, startDate, endDate) {
+	TbOrderDao.rechargeOnPeriod = function(playerId, startDate, endDate, cb) {
 		var sql = 'select sum(amount)/100 as cash from tbOrder where playerId = ? and created between ? and ?';
 		dbClient.query(sql, [playerId, startDate, endDate], function(err, res) {
 			if (err) {

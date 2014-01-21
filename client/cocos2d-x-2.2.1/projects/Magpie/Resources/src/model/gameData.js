@@ -62,9 +62,10 @@ var gameData = {
         this.speak = Speak.create();
         this.exchange = Exchange.create();
         this.activity = Activity.create();
-
     },
 
     gameEnd: function () {
+        if(this.clock) this.clock.unscheduleAllCallbacks();
+        if(this.player) this.player.unscheduleAllCallbacks();
     }
 };

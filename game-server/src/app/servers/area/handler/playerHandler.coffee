@@ -150,7 +150,7 @@ Handler::getActivityInfo = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (cb) ->
-      getRechargeRewardFlag playerIds, cb
+      getRechargeRewardFlag playerId, cb
   ], (err, results) ->
     if err
       return next(null, {
@@ -161,14 +161,15 @@ Handler::getActivityInfo = (msg, session, next) ->
 
     player = results[0]
     rechargeFlag = results[1]
-
+    flag = setCanGetFlag player, rechargeFlag
+    cur_hour = new Date().getHours()
     next(null, {
       code: 200,
       msg: {
         canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
         levelReward: player.levelReward
-        rechargeFlag: rechargeFlag
-        hasLoginReward: not player.dailyGift.hasGotLoginReward
+        rechargeFlag: flag
+        hasLoginReward: hasLoginReward(player.dailyGift.hasGotLoginReward)
       }
     })
 
@@ -241,7 +242,7 @@ checkFriendsStatus = (player, messages) ->
   friends
 
 getRechargeRewardFlag = (playerId, cb) ->
-  startDate = '2014-01-28'
+  startDate = '2014-01-19'
   endDate = '2014-02-28'
   dao.order.rechargeOnPeriod playerId, startDate, endDate, (err, cash) ->
     return cb(err) if err
@@ -249,5 +250,19 @@ getRechargeRewardFlag = (playerId, cb) ->
     if cash <= 0
       return cb(null, 0)
 
-    len = (table.getTable.filter (id, row) -> row.cash < cash).length
+    len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
     return cb(null, Math.pow(2, len)-1)
+
+setCanGetFlag = (player, rflag) ->
+  recharge = player.activities.recharge or 0
+  recharge ^ rflag
+
+hasLoginReward = (isGot) ->
+  startDate = new Date('2014-01-19')
+  endDate = new Date('2014-03-1')
+  now = new Date()
+
+  if startDate < now < endDate
+    return not isGot
+  else 
+    return false

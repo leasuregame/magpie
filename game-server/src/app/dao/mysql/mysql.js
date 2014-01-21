@@ -37,6 +37,7 @@ NND = {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
+
             console.log('acquire client for sql queues:', sql);
             queues(client, false);
             var trans = client.startTransaction();

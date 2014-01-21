@@ -169,6 +169,7 @@ var updateAchievement = function(player, method, got, useMax) {
 		});
 	// reset achievement of player
 	player.achievement = ach;
+	player.save()
 };
 
 var reachedAchievements = function(methodName, need) {

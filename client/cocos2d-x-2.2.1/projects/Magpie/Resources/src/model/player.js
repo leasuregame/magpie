@@ -380,7 +380,6 @@ var Player = Entity.extend({
             } else {
                 return 0;
             }
-
         } else if (type == WEEK_CARD) {
             if (goldCards.week) {
                 return goldCards.week.remainingDays || 0;
@@ -465,7 +464,6 @@ var Player = Entity.extend({
             }
         }
     }
-
 });
 
 

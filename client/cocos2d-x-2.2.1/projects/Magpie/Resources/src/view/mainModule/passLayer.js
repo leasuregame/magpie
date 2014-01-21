@@ -653,7 +653,11 @@ var PassLayer = cc.Layer.extend({
 
         var that = this;
         gameData.pass.mystical(function (battleLogId) {
-            that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            if (battleLogId) {
+                that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            } else {
+                LazyLayer.closeCloudLayer();
+            }
         });
     },
 
@@ -673,7 +677,7 @@ var PassLayer = cc.Layer.extend({
             var url = gameGuide.getExplainEffect("pass");
             var effect = cc.BuilderReader.load(main_scene_image[url], this);
             effect.setPosition(gameFit.gameGuide.effectPoint);
-            effect.animationManager.setCompletedAnimationCallback(this,function () {
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });
             this.addChild(effect, 10);

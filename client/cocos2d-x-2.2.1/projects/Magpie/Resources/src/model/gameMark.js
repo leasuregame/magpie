@@ -209,7 +209,6 @@ var gameMark = {
             }
         }
 
-        cc.log(mark);
         this._goldReward = mark;
         return mark;
     },

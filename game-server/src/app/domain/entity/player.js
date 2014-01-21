@@ -870,7 +870,7 @@ var Player = (function(_super) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
-        this.passMark.mark(layer);
+        this.passMark.setValue(this.pass.mark).mark(layer);
         pass.mark = this.passMark.value;
         this.pass = pass;
     };
@@ -880,10 +880,11 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        return this.passMark.hasMark(layer);
+        return this.passMark.setValue(this.pass.mark).hasMark(layer);
     };
 
     Player.prototype.canResetPassMark = function() {
+        this.passMark.setValue(this.pass.mark);
         for (var i = 1; i <= this.passLayer; i++) {
             if (this.passMark.hasMark(i)) {
                 return true;

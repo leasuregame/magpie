@@ -168,8 +168,7 @@ var Pass = Entity.extend({
             type: "pass"
         }, function (data) {
             cc.log(data);
-            data.code = 1;
-            data.msg = "fail";
+
             if (data.code == 200) {
                 cc.log("wipeOut success");
 

@@ -26,7 +26,7 @@ Handler = (@app) ->
 Handler::queryEntry = (msg, session, next) ->
 	connectors = @app.getServersByType 'connector'
 	if not connectors or connectors.length is 0
-		return next {code: 500, msg: 'no servers available'}
+		return next {code: 500, msg: '没有可用的服务器'}
 
 	async.parallel [
 		(cb) => 

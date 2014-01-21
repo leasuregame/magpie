@@ -18,6 +18,9 @@ var UPDATE_POWER_VALUE = 5;
 var OVER_NOVICE_STEP = 17;
 var LOTTERY_ENOUGH = 200;
 
+var MONTH_CARD = 0;
+var WEEK_CARD = 1;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _uid: "",           // 玩家唯一标识
@@ -38,6 +41,7 @@ var Player = Entity.extend({
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
     _rank: 0,
+    _goldCards: {},     //周卡月卡
     _maxTournamentCount: 0,
     _tournamentCount: 0,
 
@@ -116,6 +120,7 @@ var Player = Entity.extend({
         this.set("cash", data.cash);
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
+        this.set("goldCards", data.goldCards);
 
         gameData.clock.init(data.serverTime);
         gameData.cardList.init(data.cards, data.cardsCount);
@@ -363,6 +368,72 @@ var Player = Entity.extend({
                 TipLayer.tip(data.msg);
             }
         });
+    },
+
+    getRemainDays: function (type) {
+        cc.log("Player getRemainDays: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.remainingDays || 0;
+            } else {
+                return 0;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.remainingDays || 0;
+            } else {
+                return 0;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+    },
+
+    isGotDaily: function (type) {
+        cc.log("Player isGotDaily: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.hasGot;
+            } else {
+                return 1;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.hasGot;
+            } else {
+                return 1;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+    },
+
+    goldCardsStatus: function (type) {
+        cc.log("Player goldCardsStatus: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.status;
+            } else {
+                return 0;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.status;
+            } else {
+                return 0;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
     }
 });
 

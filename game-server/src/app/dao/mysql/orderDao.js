@@ -26,6 +26,27 @@ var TbOrderDao = (function(_super) {
 	domain.FIELDS = ['tradeNo', 'playerId', 'amount', 'partner', 'paydes', 'status', 'created'];
 	TbOrderDao.domain = domain;
 
+	TbOrderDao.rechargeOnPeriod = function(playerId, startDate, endDate, cb) {
+		var sql = 'select sum(amount)/100 as cash from tbOrder where playerId = ? and created between ? and ?';
+		dbClient.query(sql, [playerId, startDate, endDate], function(err, res) {
+			if (err) {
+				logger.error("[SQL ERROR, when query tborder]", sql, args);
+				logger.error(err.stack);
+				return cb({
+					code: err.code,
+					msg: err.message
+				});
+			}
+
+			if ( !! res && res.length > 0) {
+				cb(null, res[0].cash);
+			} else {
+				cb(null, 0);
+			}
+		});
+
+	};
+
 	return TbOrderDao;
 })(DaoBase);
 

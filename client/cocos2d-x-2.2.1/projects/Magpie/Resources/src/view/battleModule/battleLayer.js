@@ -476,50 +476,19 @@ var BatterLayer = cc.Layer.extend({
     shock: function () {
         cc.log("BattleLayer shock");
 
-        var a0 = cc.MoveTo.create(
-            0.08,
-            cc.p(0, 0)
-        );
-
-        var flag1 = lz.random(0, 1) < 0.5;
-        var a1 = cc.MoveBy.create(
-            0.08,
-            cc.p(
-                flag1 ? lz.random(20, 25) : lz.random(0, 25),
-                flag1 ? lz.random(0, 25) : lz.random(20, 25)
-            )
-        );
-
-        var flag2 = lz.random(0, 1) < 0.5;
-        var a2 = cc.MoveBy.create(
-            0.08,
-            cc.p(
-                flag2 ? lz.random(20, 25) : lz.random(0, 25),
-                flag2 ? lz.random(0, 25) : lz.random(20, 25)
-            )
-        );
-
-        var flag3 = lz.random(0, 1) < 0.5;
-        var a3 = cc.MoveBy.create(
-            0.08,
-            cc.p(
-                flag3 ? lz.random(15, 20) : lz.random(0, 20),
-                flag3 ? lz.random(0, 20) : lz.random(15, 20)
-            )
-        );
-
-        var flag4 = lz.random(0, 1) < 0.5;
-        var a4 = cc.MoveBy.create(
-            0.08,
-            cc.p(
-                flag4 ? lz.random(10, 15) : lz.random(0, 15),
-                flag4 ? lz.random(0, 15) : lz.random(10, 15)
-            )
-        );
+        var a0 = cc.RotateTo.create(0.03, 2);
+        var a1 = cc.RotateTo.create(0.06, -2);
+        var a2 = cc.RotateTo.create(0.06, 2);
+        var a3 = cc.RotateTo.create(0.06, -2);
+        var a4 = cc.RotateTo.create(0.06, 1.5);
+        var a5 = cc.RotateTo.create(0.06, -1.5);
+        var a6 = cc.RotateTo.create(0.06, 1);
+        var a7 = cc.RotateTo.create(0.06, -1);
+        var a8 = cc.RotateTo.create(0.06, 0);
 
         this.runAction(
             cc.Sequence.create(
-                a1, a0.clone(), a2, a0.clone(), a3, a0.clone(), a4, a0
+                a0, a1, a2, a3, a4, a5, a6, a7, a8
             )
         );
     },

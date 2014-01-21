@@ -3,8 +3,54 @@ playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
-async = require 'async'
+async = require 'async' 
 _ = require 'underscore'
+
+GOLDCARDMAP = 
+  'com.leasuregame.magpie.week.card.pay6': 'week'
+  'com.leasuregame.magpie.month.card.pay30': 'month'
+
+addOrder = (app, tradeNo, player, cash, cb) ->
+  app.get('dao').order.create data: {
+    playerId: player.id
+    tradeNo: tradeNo
+    partner: 'tongbu'
+    amount: cash * 100
+    paydes: ''
+    status: 2000
+    created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
+  }, cb
+
+addGoldCard = (app, tradeNo, player, product, cb) ->
+  return cb() if not isGoldCard(product)
+
+  today = new Date()
+  vd = new Date()
+  vd.setDate(today.getDate()+product.valid_days-1)
+  app.get('dao').goldCard.create {
+    data: {
+      orderNo: tradeNo,
+      playerId: player.id,
+      type: GOLDCARDMAP[product.product_id],
+      created: utility.dateFormat(today, "yyyy-MM-dd"),
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to create goldCard record: ', err)
+
+    player.addGoldCard(res)
+    cb()
+
+isGoldCard = (product) ->
+  ids = [
+    'com.leasuregame.magpie.week.card.pay6',
+    'com.leasuregame.magpie.month.card.pay30'
+  ]
+  if product and product.product_id in ids
+    return true
+  else
+    return false
 
 module.exports = (app) ->
   new Handler(app)
@@ -15,17 +61,42 @@ Handler::buyVip = (msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
 
-  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+  data = table.getTableItem('recharge', id)
+  tradeNo = new Date().getTime().toString()
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+
+    (res, cb) =>
+      player = res
+      addGoldCard @app, tradeNo, player, data, cb
+
+    (cb) =>
+      addOrder @app, tradeNo, player, data.cash, cb
+  ], (err) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    data = table.getTableItem('recharge', id)
     player.increase('cash', data.cash)
     player.increase('gold', (data.cash * 10) + data.gold)
     player.save()
     next(null, {code: 200, msg: {
       vip: player.vip
     }})
+
+    @app.get('messageService').pushByPid player.id, {
+      route: 'onVerifyResult',
+      msg: {
+        gold: player.gold,
+        vip: player.vip,
+        cash: player.cash,
+        goldCards: player.getGoldCard()
+      }
+    }, (err, res) ->
+      if err
+        logger.error('faild to send message to playerId ', playerId)
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')

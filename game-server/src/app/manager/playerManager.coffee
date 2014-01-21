@@ -25,6 +25,7 @@ class Manager
       sync: sync
     }, (err, player) ->
       if err isnt null
+        err.msg = '找不到玩家' if err.code is 404
         cb(err, null)
         return
       console.log 'get player from db:', player?.name

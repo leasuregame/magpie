@@ -42,8 +42,25 @@ CREATE TABLE IF NOT EXISTS `player` (
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
+  `activities` VARCHAR(1500) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for friend
+-- ----------------------------
+DROP TABLE IF EXISTS `goldCard`;
+CREATE TABLE IF NOT EXISTS `goldCard` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `orderId` BIGINT(20) UNSIGNED,
+  `orderNo` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `type` VARCHAR(128) COLLATE utf8_unicode_ci DEFAULT '',
+  `flag` VARCHAR(15) COLLATE utf8_unicode_ci DEFAULT '0',
+  `created` Date,
+  `validDate` Date,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------

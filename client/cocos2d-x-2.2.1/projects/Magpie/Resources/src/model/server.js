@@ -9,7 +9,7 @@
 
 
 // gate server config
-var GATE_SERVER_HOST = "115.29.12.178";
+var GATE_SERVER_HOST = "124.238.236.33";
 var GATE_SERVER_PORT = "3009";
 
 // connect timeout
@@ -279,8 +279,6 @@ var Server = Entity.extend({
                 that._closeAllWaitLayer();
 
                 gameData.gameEnd();
-                gameData.sound.stopMusic();
-                gameData.sound.stopEffect();
 
                 that.scheduleOnce(function () {
                     if (that._disconnectStatus == DISCONNECT_KICK) {

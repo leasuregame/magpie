@@ -26,7 +26,7 @@ var Payment = Entity.extend({
         var player = gameData.player;
 
         tbAdapter.TBUnipayForCoinWithOrder(
-            player.get("uid") + "-" + Date.now(),
+            product.id + "-" + player.get("uid") + "-" + Date.now(),
             product.cash,
             player.get("id") + ":" + user.get("area") + ":" + product.id
         );
@@ -46,6 +46,27 @@ var Payment = Entity.extend({
         if (this._waitLayer) {
             this._waitLayer.removeFromParent();
             this._waitLayer = null;
+        }
+    },
+
+    buyGoodsSuccess: function (order) {
+        cc.log("TB Payment buyGoodsSuccess: " + order);
+
+        var args = order.split("-");
+        var productId = parseInt(args[0]);
+
+        if (productId >= 8) {
+            lz.server.request("area.cardHandler.buyGoldCard", {
+                orderNo: order,
+                productId: productId
+            }, function (data) {
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("buyGoldCard success");
+                } else {
+                    cc.log("buyGoldCard fail");
+                }
+            }, true);
         }
     }
 });

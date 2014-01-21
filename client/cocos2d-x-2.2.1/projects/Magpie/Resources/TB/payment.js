@@ -10,15 +10,20 @@
 
 var Payment = Entity.extend({
     _waitLayer: null,
+    _cb: null,
 
     init: function () {
         cc.log("TB Payment init");
 
         this._waitLayer = null;
+        this._cb = null;
     },
 
-    buy: function (product) {
+    buy: function (args) {
         cc.log("TB Payment buy");
+
+        var product = args.product;
+        this._cb = args.cb;
 
         this._showWaitLayer();
 
@@ -55,7 +60,10 @@ var Payment = Entity.extend({
         var args = order.split("-");
         var productId = parseInt(args[0]);
 
-        if (productId >= 8) {
+        if(productId >= 8) {
+            gameData.player.resetGoldCards(9 - productId);
+            this._cb();
+
             lz.server.request("area.cardHandler.buyGoldCard", {
                 orderNo: order,
                 productId: productId

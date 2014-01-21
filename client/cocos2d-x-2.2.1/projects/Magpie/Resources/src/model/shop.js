@@ -591,15 +591,26 @@ var Shop = Entity.extend({
         return (a.id - b.id);
     },
 
-    buyVip: function (product) {
+    buyVip: function (args) {
 
         cc.log("shop buyVip: ");
-        cc.log(product);
+        cc.log(args);
+
+        var product = args.product;
 
         lz.server.request("area.vipHandler.buyVip", {
             id: product.id
         }, function (data) {
             cc.log(data);
+            if (data.code == 200) {
+                if(product.id >= 8) {
+                    gameData.player.resetGoldCards(9 - product.id);
+                }
+                if (args.cb) {
+                    args.cb();
+                }
+            }
+
         });
     }
 });

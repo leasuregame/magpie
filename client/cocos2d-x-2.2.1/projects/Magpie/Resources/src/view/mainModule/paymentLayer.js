@@ -14,11 +14,13 @@
 
 var PaymentLayer = LazyLayer.extend({
     _paymentLayerFit: null,
+    _scrollView: null,
 
     onEnter: function () {
         cc.log("PaymentLayer onEnter");
 
         this._super();
+        this.update();
 
         lz.dc.beginLogPageView("充值界面");
     },
@@ -37,6 +39,8 @@ var PaymentLayer = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._paymentLayerFit = gameFit.mainScene.paymentLayer;
+
+        this._scrollView = null;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._paymentLayerFit.bgLayerPoint);
@@ -123,6 +127,17 @@ var PaymentLayer = LazyLayer.extend({
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
             tipLabel.setPosition(this._paymentLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
+        }
+
+        return true;
+    },
+
+    update: function () {
+        cc.log("PaymentLayer update");
+
+        if (this._scrollView) {
+            this._scrollView.removeFromParent();
+            this._scrollView = null;
         }
 
         var paymentTypeList = gameData.shop.getPaymentTypeList();
@@ -294,17 +309,15 @@ var PaymentLayer = LazyLayer.extend({
 
         }
 
-        var scrollView = cc.ScrollView.create(this._paymentLayerFit.scrollViewSize, scrollViewLayer);
-        scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 3);
-        scrollView.setPosition(this._paymentLayerFit.scrollViewPoint);
-        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        scrollView.updateInset();
-        this.addChild(scrollView);
+        this._scrollView = cc.ScrollView.create(this._paymentLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 3);
+        this._scrollView.setPosition(this._paymentLayerFit.scrollViewPoint);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
 
-        scrollView.setContentSize(cc.size(500, scrollViewHeight));
-        scrollView.setContentOffset(scrollView.minContainerOffset());
-
-        return true;
+        this._scrollView.setContentSize(cc.size(500, scrollViewHeight));
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
     _onClickClose: function () {
@@ -329,13 +342,19 @@ var PaymentLayer = LazyLayer.extend({
     },
 
     _onClickPayment: function (product) {
+        var that = this;
         return function () {
             cc.log("PaymentLayer _onClickPayment: " + product);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            gameData.shop.buyVip(product);
-            //gameData.payment.buy(product);
+            var cb = function () {
+                that.update();
+            };
+
+            gameData.shop.buyVip({cb: cb, product: product});
+
+           // gameData.payment.buy({cb: cb, product: product});
         }
     }
 });

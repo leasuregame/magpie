@@ -375,14 +375,14 @@ var Player = Entity.extend({
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.remainingDays || 0;
             } else {
                 return 0;
             }
 
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.remainingDays || 0;
             } else {
                 return 0;
@@ -393,18 +393,18 @@ var Player = Entity.extend({
         }
     },
 
-    isGotDaily: function(type) {
+    isGotDaily: function (type) {
         cc.log("Player isGotDaily: " + type);
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.hasGot;
             } else {
                 return 1;
             }
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.hasGot;
             } else {
                 return 1;
@@ -415,18 +415,18 @@ var Player = Entity.extend({
         }
     },
 
-    goldCardsStatus: function(type) {
+    goldCardsStatus: function (type) {
         cc.log("Player goldCardsStatus: " + type);
 
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
-            if(goldCards.month) {
+            if (goldCards.month) {
                 return goldCards.month.status;
             } else {
                 return 0;
             }
         } else if (type == WEEK_CARD) {
-            if(goldCards.week) {
+            if (goldCards.week) {
                 return goldCards.week.status;
             } else {
                 return 0;
@@ -434,6 +434,35 @@ var Player = Entity.extend({
         } else {
             cc.log("类型出错！！！");
             return 0;
+        }
+    },
+
+    resetGoldCards: function (type) {
+        cc.log("Player resetGoldCards: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                goldCards.month.remainingDays = -1;
+            } else {
+                var card = lz.clone(goldCards);
+                card.month = {
+                    "remainingDays": -1
+                };
+
+                this.set("goldCards", card);
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                goldCards.week.remainingDays = -1;
+            } else {
+                var card = lz.clone(goldCards);
+                card.week = {
+                    "remainingDays": -1
+                };
+
+                this.set("goldCards", card);
+            }
         }
     }
 

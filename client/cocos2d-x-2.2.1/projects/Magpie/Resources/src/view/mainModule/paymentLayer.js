@@ -335,7 +335,7 @@ var PaymentLayer = LazyLayer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.shop.buyVip(product);
-            //gameData.payment.buy(product);
+//            gameData.payment.buy(product);
         }
     }
 });

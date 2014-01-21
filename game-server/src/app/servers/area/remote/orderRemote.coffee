@@ -176,18 +176,22 @@ noticeNewYearActivity = (app, player, cb) ->
       len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
       console.log '-b-', len, player.activities
       if len > 0
-        flag = (Math.pow(2, len)-1)^(player.activities.recharge or 0)
-        sendNewYearMsg(app, player, flag)
+        recharge = player.activities?.recharge or 0
+        flag = (Math.pow(2, len)-1)^recharge
+        sendNewYearMsg(app, player, flag, recharge)
 
       return cb()
   else
     cb()
 
-sendNewYearMsg = (app, player, flag) ->
+sendNewYearMsg = (app, player, flag, recharge) ->
   app.get('messageService').pushByPid player.id, {
     route: 'onNewYearReward',
     msg: {
-      flag: flag
+      flag: {
+        canGet: flag
+        hasGet: recharge
+      }
     }
   }, (err, res) ->
     if err

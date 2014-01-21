@@ -255,7 +255,10 @@ getRechargeRewardFlag = (app, playerId, cb) ->
 
 setCanGetFlag = (player, rflag) ->
   recharge = player.activities.recharge or 0
-  recharge ^ rflag
+  {
+    canGet: recharge ^ rflag
+    hasGet: recharge
+  }
 
 hasLoginReward = (app, isGot) ->
   startDate = new Date(app.get('sharedConf').newYearActivity.startDate)

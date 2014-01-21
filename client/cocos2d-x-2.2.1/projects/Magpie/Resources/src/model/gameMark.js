@@ -341,7 +341,8 @@ var gameMark = {
 
         if (!this._treasureHunt) {
             var freeCount = gameData.treasureHunt.get("freeCount");
-            if (freeCount > 0) {
+            var lv = gameData.player.get("lv");
+            if (freeCount > 0 && lv >= 25) {
                 this._treasureHunt = true;
             }
         }

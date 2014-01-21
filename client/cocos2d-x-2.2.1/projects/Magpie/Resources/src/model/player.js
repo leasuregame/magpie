@@ -367,7 +367,7 @@ var Player = Entity.extend({
 
                 TipLayer.tip(data.msg);
             }
-        });
+        }, true);
     },
 
     getRemainDays: function (type) {

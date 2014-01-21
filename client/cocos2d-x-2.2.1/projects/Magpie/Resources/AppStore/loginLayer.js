@@ -80,7 +80,6 @@ var LoginLayer = cc.Layer.extend({
         });
 
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
-        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(50);
         this._loginFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
 

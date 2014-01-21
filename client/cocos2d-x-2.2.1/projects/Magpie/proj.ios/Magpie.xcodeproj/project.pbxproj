@@ -2934,6 +2934,9 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
+					90F535061862EAC2008207BD = {
+						DevelopmentTeam = TJT2HAB95B;
+					};
 					A922753C1517C094001B78AA = {
 						DevelopmentTeam = TJT2HAB95B;
 						SystemCapabilities = {

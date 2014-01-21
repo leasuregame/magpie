@@ -145,6 +145,7 @@ var GoldCardsLayer = cc.Layer.extend({
             var remainDays = gameData.player.getRemainDays(i);
             var isGot = gameData.player.isGotDaily(i);
             var status = gameData.player.goldCardsStatus(i);
+
             this._tipLabel[i].setVisible(remainDays <= 0);
             this._nextBuyLabel[i].setVisible(remainDays > 0);
             this._paymentItem[i].setVisible(remainDays <= 0);

@@ -359,11 +359,13 @@ var gameMark = {
     getGoldCardsMark: function () {
         cc.log("gameMark getGoldCardsMark");
 
-        if(!this._goldCards) {
+        if (!this._goldCards) {
             for (var i = 0; i < 2; i++) {
                 var remainDays = gameData.player.getRemainDays(i);
                 var isGot = gameData.player.isGotDaily(i);
-                if(remainDays > 0 && !isGot) {
+                var status = gameData.player.goldCardsStatus(i);
+
+                if (remainDays > 0 && !isGot && status) {
                     this._goldCards = true;
                     break;
                 }
@@ -373,7 +375,7 @@ var gameMark = {
         return this._goldCards;
     },
 
-    updateGoldCardsMark: function(mark) {
+    updateGoldCardsMark: function (mark) {
         cc.log("gameMark updateGoldCardsMark");
 
         this._goldCards = mark;

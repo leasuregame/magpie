@@ -10,6 +10,7 @@ var NewYearLayer = cc.Layer.extend({
     _giftItems: [],
     _dailyGetItem: null,
     _giftEffect: [],
+    _flagIcon: [],
 
     onEnter: function () {
         cc.log("NewYearLayer onEnter");
@@ -35,6 +36,7 @@ var NewYearLayer = cc.Layer.extend({
 
         this._giftEffect = [];
         this._giftItems = [];
+        this._flagIcon = [];
         this._dailyGetItem = null;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg23);
@@ -97,6 +99,10 @@ var NewYearLayer = cc.Layer.extend({
             this._giftItems[i].setPosition(point[i]);
             menu.addChild(this._giftItems[i]);
 
+            this._flagIcon[i] = cc.Sprite.create(main_scene_image.icon138);
+            this._flagIcon[i].setPosition(point[i]);
+            this._flagIcon[i].setVisible(false);
+            this.addChild(this._flagIcon[i], 3);
         }
 
         return true;
@@ -130,6 +136,10 @@ var NewYearLayer = cc.Layer.extend({
                     if (that._giftEffect[i]) {
                         that._giftEffect[i].removeFromParent();
                         that._giftEffect[i] = null;
+                    }
+
+                    if (state == ALREADY_RECHARGE_REWARD) {
+                        that._flagIcon[i].setVisible(true);
                     }
                 }
             })(i);

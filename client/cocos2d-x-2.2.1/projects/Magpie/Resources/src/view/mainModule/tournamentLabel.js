@@ -92,7 +92,7 @@ var TournamentLabel = cc.Node.extend({
                     functionItem = cc.MenuItemImage.createWithIcon(
                         main_scene_image.button10,
                         main_scene_image.button10s,
-                        main_scene_image.icon120,
+                        main_scene_image.icon359,
                         this._onClickFunction,
                         this
                     );
@@ -142,7 +142,6 @@ var TournamentLabel = cc.Node.extend({
         this.addChild(abilityIcon);
 
         var abilityLabel = cc.LabelTTF.create(ability, "STHeitiTC-Medium", 22);
-        //abilityLabel.setColor(cc.c3b(202, 255, 99));
         abilityLabel.setPosition(cc.p(130, 128));
         this.addChild(abilityLabel);
 

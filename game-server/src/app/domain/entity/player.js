@@ -170,7 +170,8 @@ var addEvents = function(player) {
 };
 
 var correctPower = function(player) {
-    var interval, power, now, times = 1, resumePoint;
+    var interval, power, now, times = 1,
+        resumePoint;
 
     interval = playerConfig.POWER_RESUME.interval;
     power = player.power;
@@ -474,14 +475,14 @@ var Player = (function(_super) {
             logger.warn('can not increase spirit of player by value:', val);
             return;
         }
-        var spiritor = _.clone(this.spiritor);        
+        var spiritor = _.clone(this.spiritor);
         spiritor.spirit = spiritor.spirit + val;
         this.set('spiritor', spiritor);
     };
 
-    Player.prototype.canUpgradeSpiritor = function(){
+    Player.prototype.canUpgradeSpiritor = function() {
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
-        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+        if ( !! spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
             return true;
         }
         return false;
@@ -659,14 +660,29 @@ var Player = (function(_super) {
         this.emit('power.consume', cVal);
     };
 
-    Player.prototype.resumePower = function(value) {
+    Player.prototype.checkResumePower = function() {
+        var interval, now, power, resumePoint, times;
+        interval = playerConfig.POWER_RESUME.interval;
+        power = this.power;
+        now = Date.now();
+        times = 1;
+
+        if ((power.time + interval) <= now) {
+            times = parseInt((now - power.time) / interval);
+            resumePoint = playerConfig.POWER_RESUME.point;
+            this.resumePower(resumePoint * times, power.time + interval * times);
+            this.save();
+        }
+    };
+
+    Player.prototype.resumePower = function(value, time) {
         var max_power = getMaxPower(this.lv);
 
         if (typeof value == 'undefined' || this.power.value >= max_power) return;
 
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
-        power.time = Date.now();
+        power.time = time || Date.now();
         this.updatePower(power);
     };
 
@@ -1005,7 +1021,7 @@ var Player = (function(_super) {
         } else {
             si[key].flag = utility.mark(parseInt(si[key].flag), id);
         }
-        
+
         this.signIn = si;
     };
 
@@ -1033,7 +1049,7 @@ var Player = (function(_super) {
         var rank = {
             ranking: 0
         };
-        if(this.rank) {
+        if (this.rank) {
             rank.ranking = this.rank.ranking;
         }
         return rank;
@@ -1046,7 +1062,7 @@ var Player = (function(_super) {
             notCanGetReward: [],
             stats: {}
         };
-        if(this.rank) {
+        if (this.rank) {
             rank.ranking = this.rank.ranking;
             rank.canGetReward = this.rank.rankingRewards();
             rank.notCanGetReward = this.rank.rewardsNotHave();
@@ -1055,7 +1071,7 @@ var Player = (function(_super) {
         return rank;
     };
 
-    Player.prototype.getTask = function(){
+    Player.prototype.getTask = function() {
         return {
             id: this.task.id,
             progress: this.task.progress,
@@ -1080,7 +1096,7 @@ var Player = (function(_super) {
 
     Player.prototype.delFriend = function(fid) {
         var i, fri;
-        for(i = 0; i < this.friends.length; i++) {
+        for (i = 0; i < this.friends.length; i++) {
             fri = this.friends[i];
             if (fri.id == fid) {
                 this.friends.splice(i, 1);
@@ -1089,7 +1105,7 @@ var Player = (function(_super) {
         }
     };
 
-    Player.prototype.hasFirstTime = function(){
+    Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
             if (ft[key]) {
@@ -1117,7 +1133,7 @@ var Player = (function(_super) {
 
     Player.prototype.lightUpCards = function() {
         var f = this.cardBookFlag.markPositions();
-        var m = this.cardBookMark.markPositions(); 
+        var m = this.cardBookMark.markPositions();
         return _.union(f, m);
     };
 
@@ -1167,7 +1183,7 @@ var Player = (function(_super) {
             spiritor: this.getSpiritor(),
             spiritPool: utility.deepCopy(this.spiritPool),
             cards: _.values(this.cards)
-                .sort(function(x, y){
+                .sort(function(x, y) {
                     return y.createTime - x.createTime;
                 })
                 .map(function(card) {

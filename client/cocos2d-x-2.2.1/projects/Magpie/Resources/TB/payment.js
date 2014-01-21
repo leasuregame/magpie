@@ -53,9 +53,9 @@ var Payment = Entity.extend({
         cc.log("TB Payment buyGoodsSuccess: " + order);
 
         var args = order.split("-");
-        var productId = args[0];
+        var productId = parseInt(args[0]);
 
-        if(productId >= 8) {
+        if (productId >= 8) {
             lz.server.request("area.cardHandler.buyGoldCard", {
                 orderNo: order,
                 productId: productId

@@ -80,7 +80,8 @@ var ActivityLayer = cc.Layer.extend({
         var len = this._layer.length;
 
         var scrollViewLayer = cc.Layer.create();
-        var mainMenu = cc.Menu.create();
+        var mainMenu = LazyMenu.create();
+        mainMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         mainMenu.setPosition(cc.p(0, 0));
 
         for (var i = 0; i < len; ++i) {
@@ -100,7 +101,6 @@ var ActivityLayer = cc.Layer.extend({
             this._mark[i].setAnchorPoint(cc.p(0, 0));
             this._mark[i].setPosition(cc.p(107 * i + 70, 80));
             this._mark[i].setVisible(false);
-            //this._item[i].addChild(this._mark[i]);
             scrollViewLayer.addChild(this._mark[i], 2);
             mainMenu.addChild(this._item[i]);
         }

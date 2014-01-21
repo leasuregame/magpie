@@ -276,18 +276,17 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                cc.Director.getInstance().replaceScene(cc.Scene.create());
-
                 that._closeAllWaitLayer();
 
-                gameData.sound.stopMusic();
-                gameData.sound.stopEffect();
+                gameData.gameEnd();
 
-                if (that._disconnectStatus == DISCONNECT_KICK) {
-                    that.kick();
-                } else {
-                    that.reConnect();
-                }
+                that.scheduleOnce(function () {
+                    if (that._disconnectStatus == DISCONNECT_KICK) {
+                        that.kick();
+                    } else {
+                        that.reConnect();
+                    }
+                }, 0.5);
             });
 
             that.on("onKick", function () {
@@ -368,40 +367,32 @@ var Server = Entity.extend({
 
         if (typeof(tbAdapter) != "undefined" && tbAdapter.TBIsLogined) {
             if (!tbAdapter.TBIsLogined()) {
-                Dialog.pop("同步推链接已断开，点击重新登录", function () {
-                    MainScene.destroy();
-                    cc.Director.getInstance().replaceScene(LoginScene.create());
-                });
-
+                MainScene.destroy();
+                cc.Director.getInstance().replaceScene(LoginScene.create());
                 return;
             }
         }
 
-        Dialog.pop("网络断开，点击重连", function () {
-            gameData.user.login(function (type) {
-                cc.log("Server reConnect success");
+        gameData.user.login(function (type) {
+            cc.log("Server reConnect success");
 
-                cc.log("-----------------------------------------------------");
-                cc.log("type: " + type);
-                cc.log("-----------------------------------------------------");
+            cc.log("-----------------------------------------------------");
+            cc.log("type: " + type);
+            cc.log("-----------------------------------------------------");
 
-                if (type) {
-                    MainScene.destroy();
+            MainScene.destroy();
 
-                    if (type == 1) {
-                        cc.Director.getInstance().replaceScene(MainScene.getInstance());
-                    } else if (type == 2) {
-                        var loginScene = LoginScene.create();
-                        loginScene.switchLayer(NewPlayerLayer);
-                        cc.Director.getInstance().replaceScene(loginScene);
-                    }
-                } else {
-                    Dialog.pop("重连失败，请重新登录", function () {
-                        MainScene.destroy();
-                        cc.Director.getInstance().replaceScene(LoginScene.create());
-                    });
+            if (type) {
+                if (type == 1) {
+                    cc.Director.getInstance().replaceScene(MainScene.getInstance());
+                } else if (type == 2) {
+                    var loginScene = LoginScene.create();
+                    loginScene.switchLayer(NewPlayerLayer);
+                    cc.Director.getInstance().replaceScene(loginScene);
                 }
-            });
+            } else {
+                cc.Director.getInstance().replaceScene(LoginScene.create());
+            }
         });
     },
 

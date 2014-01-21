@@ -10,15 +10,21 @@ var GoldCard = (function(_super) {
         GoldCard.__super__.constructor.apply(this, arguments);
     }
 
-    GoldCard.FIELDS = ['id', 'orderId', 'orderNo', 'playerId', 'type', 'flag', 'created', 'validDate'];
+    GoldCard.FIELDS = ['id', 'orderId', 'orderNo', 'playerId', 'type', 'flag', 'created', 'validDate', 'status'];
     GoldCard.DEFAULT_VALUES = {
         flag: 0,
-        type: ''
+        type: '',
+        status: 0
     };
 
     GoldCard.prototype.daysRemaining = function(dateString) {
         var today = new Date(dateString || new Date().toDateString());
-        var validDate = new Date(utility.dateFormat(this.validDate, "yyyy-MM-dd"));
+        var validDate;
+        if (typeof this.validDate == 'string') {
+            validDate = new Date(this.validDate);
+        } else {
+            validDate = new Date(utility.dateFormat(this.validDate, "yyyy-MM-dd"));
+        }
         var days = (validDate - today)/(1000*60*60*24);
         return days>=0 ? parseInt(days+1) : 0;
     };
@@ -40,7 +46,8 @@ var GoldCard = (function(_super) {
             id: this.id,
             type: this.type,
             remainingDays: this.daysRemaining(),
-            hasGot: this.hasFlag()
+            hasGot: this.hasFlag(),
+            status: this.status
         };
     };
 
@@ -49,8 +56,13 @@ var GoldCard = (function(_super) {
 
 var getDays = function(created) {
     var today = new Date(new Date().toDateString());
-    var cdata = new Date(utility.dateFormat(created, "yyyy-MM-dd"));
-    var days = (today - cdata)/(1000*60*60*24);
+    var cdate;
+    if (typeof created == 'string') {
+        cdate = new Date(created);
+    } else {
+        cdate = new Date(utility.dateFormat(created, "yyyy-MM-dd"));
+    }    
+    var days = (today - cdate)/(1000*60*60*24);
     return days+1;
 };
 

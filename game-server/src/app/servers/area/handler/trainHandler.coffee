@@ -124,24 +124,45 @@ Handler::luckyCard = (msg, session, next) ->
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
       async.timesSeries times, (n, next) ->
-        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc++, hfc++, hdcc++, player.lightUpCards())
+        [card, consumeVal, fragment] = lottery.lottery(level, type, times, rfc++, hfc++, hdcc++, player.lightUpCards())
         totalConsume += consumeVal
         totalFragment += fragment
         
         ### 获得卡魂，重设卡魂抽卡次数 ###
-        if fragment 
+        if fragment
           if level is LOW_LUCKYCARD
             rfc = 1
-          else
-            hfc = 1
-        
+
         ### 抽到5星卡牌，高级抽卡次数变为0 ###
         if level is HIGH_LUCKYCARD and card.star is 5
           hdcc = 1
 
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
+        firstTen = 0
+        if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
+          firstTen = 1
+
+        if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
+          grainFiveStarCard cards
+          player.setFirstTime('highTenLuckCard', 0)
+
+        # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
+        frags = 0;
+        if level is HIGH_LUCKYCARD and times == 10
+            frags += 1
+            if utility.hitRate(1)
+              frags += 1    
+        totalFragment += frags
+
         cb(null, cards, --rfc, --hfc, --hdcc)
+
+  grainFiveStarCard = (cards) ->
+    for card in cards
+      if card.star isnt 5
+        card.tableId += 5 - card.star
+        card.star = 5
+        break
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###

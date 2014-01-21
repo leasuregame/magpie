@@ -59,7 +59,7 @@ var getLastVersion = function() {
 var updateVersions = function(data) {
   jdata = JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
 
-  var fields = ['version', 'lastVersion', 'filename', 'lastFilename'];
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
 
   var platform;
   for (platform in jdata) {

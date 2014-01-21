@@ -8,10 +8,14 @@
 
 var TYPE_GOLD_REWARD = "goldReward";
 var TYPE_RECHARGE_REWARD = "rechargeReward";
+
 var GOLD_RECEIVE = 1;
 var GOLD_NO_RECEIVE = 0;
-var RECHARGE_REWARD = 1;
+
 var NO_RECHARGE_REWARD = 0;
+var RECHARGE_REWARD = 1;
+var ALREADY_RECHARGE_REWARD = 2;
+
 var RECEIVE_LOGIN_REWARD = "login";
 var RECEIVE_GIFT_REWARD = "recharge";
 
@@ -107,13 +111,20 @@ var Activity = Entity.extend({
     updateRechargeFlag: function (flag) {
         cc.log("Activity updateRechargeFlag: " + flag);
 
+        var canGetFlag = flag.canGet;
+        var hasGetFlag = flag.hasGet;
+
         for (var id = 1; id <= 5; id++) {
             var offset = (id - 1) % EACH_NUM_BIT;
 
-            if ((flag >> offset & 1) == 1) {
-                this._changeStateById(TYPE_RECHARGE_REWARD, id, RECHARGE_REWARD);
+            if ((canGetFlag >> offset & 1) == 1) {
+                this._changeStateById(TYPE_RECHARGE_REWARD, id, RECHARGE_REWARD);   //有奖励未领取
             } else {
-                this._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD);
+                if((hasGetFlag >> offset & 1) == 1) {
+                    this._changeStateById(TYPE_RECHARGE_REWARD, id, ALREADY_RECHARGE_REWARD); //已领取
+                } else {
+                    this._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD); //没有奖励
+                }
             }
         }
     },
@@ -176,7 +187,7 @@ var Activity = Entity.extend({
                     var id = args.args.id;
                     var table = outputTables.new_year_rechage.rows[id];
 
-                    that._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD);
+                    that._changeStateById(TYPE_RECHARGE_REWARD, id, ALREADY_RECHARGE_REWARD);
 
                     gameData.player.adds({
                         energy: table.energy,

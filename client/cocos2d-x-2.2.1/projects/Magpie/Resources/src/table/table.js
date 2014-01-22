@@ -13,6 +13,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -45,8 +47,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -113,7 +113,7 @@ var nameChanged = {
     "vip特权": "vip_privilege"
 };
 
-var outputTables = {
+outputTables = {
     "achievement": {
         "colComment": {},
         "rows": {
@@ -264,36 +264,36 @@ var outputTables = {
             "17": {
                 "id": 17,
                 "method": "elixirTo",
-                "need": 100000,
+                "need": 10000000,
                 "name": "一大波仙丹",
-                "desc": "累计获得100000仙丹",
+                "desc": "累计获得1000万仙丹",
                 "gold": 50,
                 "energy": 500
             },
             "18": {
                 "id": 18,
                 "method": "energyTo",
-                "need": 100000,
+                "need": 10000000,
                 "name": "活力无限",
-                "desc": "累计获得100000活力点",
+                "desc": "累计获得1000万活力点",
                 "gold": 100,
                 "energy": 1000
             },
             "19": {
                 "id": 19,
                 "method": "luckyCardCount",
-                "need": 9999,
+                "need": 99999,
                 "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到9999",
+                "desc": "抽卡总次数达到99999",
                 "gold": 100,
                 "energy": 500
             },
             "20": {
                 "id": 20,
                 "method": "highLuckyCardCount",
-                "need": 8888,
+                "need": 88888,
                 "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到8888",
+                "desc": "高级抽卡总次数达到88888",
                 "gold": 100,
                 "energy": 1000
             },
@@ -327,18 +327,18 @@ var outputTables = {
             "24": {
                 "id": 24,
                 "method": "moneyConsume",
-                "need": 10000000,
+                "need": 90000000,
                 "name": "不差钱",
-                "desc": "累计消耗仙币1000万",
+                "desc": "累计消耗仙币9000万",
                 "gold": 20,
                 "energy": 100
             },
             "25": {
                 "id": 25,
                 "method": "goldConsume",
-                "need": 100000,
+                "need": 10000000,
                 "name": "挥金如土",
-                "desc": "累计消耗魔石100000",
+                "desc": "累计消耗魔石1000万",
                 "gold": 50,
                 "energy": 500
             },
@@ -8778,6 +8778,191 @@ var outputTables = {
             }
         }
     },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 90,
+                "rate": 18
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 9,
+                "rate": 1.8
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 500,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 90,
+                "rate": 13.5
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 9,
+                "rate": 1.35
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 20000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 90,
+                "rate": 9
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 500,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 9,
+                "rate": 0.9
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 90,
+                "rate": 9
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 5000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 9,
+                "rate": 0.9
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 20000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 90,
+                "rate": 18
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 500,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 9,
+                "rate": 1.8
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 2000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 90,
+                "rate": 13.5
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 9,
+                "rate": 1.35
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
     "new_year_rechage": {
         "colComment": {},
         "rows": {
@@ -9034,15 +9219,15 @@ var outputTables = {
         "rows": {
             "3": {
                 "id": 3,
-                "elixir_limit": 100000
+                "elixir_limit": 200000
             },
             "4": {
                 "id": 4,
-                "elixir_limit": 160000
+                "elixir_limit": 320000
             },
             "5": {
                 "id": 5,
-                "elixir_limit": 240000
+                "elixir_limit": 400000
             }
         }
     },
@@ -9052,12 +9237,12 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "money": 99999999,
-                "skillPoint": 9999999,
-                "energy": 99999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
                 "card_count_min": 35,
                 "card_count_limit": 100,
                 "power_value": 150,
-                "elixir": 999999
+                "elixir": 99999999
             }
         }
     },
@@ -9158,191 +9343,6 @@ var outputTables = {
             "passBattleLv": {
                 "id": "passBattleLv",
                 "value": 10
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 90,
-                "rate": 18
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 9,
-                "rate": 1.8
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 10,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 100,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 5000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 100,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 1000,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 100,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 10000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 50,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 90,
-                "rate": 18
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 100,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 9,
-                "rate": 1.8
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 1000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },
@@ -24749,167 +24749,167 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "ranking": 1,
-                "percent": 155
+                "percent": 95
             },
             "2": {
                 "id": 2,
                 "ranking": 2,
-                "percent": 150
+                "percent": 90
             },
             "3": {
                 "id": 3,
                 "ranking": 3,
-                "percent": 145
+                "percent": 85
             },
             "4": {
                 "id": 4,
                 "ranking": 4,
-                "percent": 140
+                "percent": 80
             },
             "5": {
                 "id": 5,
                 "ranking": 5,
-                "percent": 135
+                "percent": 75
             },
             "6": {
                 "id": 6,
                 "ranking": 6,
-                "percent": 130
+                "percent": 70
             },
             "7": {
                 "id": 7,
                 "ranking": 7,
-                "percent": 125
+                "percent": 65
             },
             "8": {
                 "id": 8,
                 "ranking": 8,
-                "percent": 120
+                "percent": 60
             },
             "9": {
                 "id": 9,
                 "ranking": 9,
-                "percent": 115
+                "percent": 55
             },
             "10": {
                 "id": 10,
                 "ranking": 10,
-                "percent": 110
+                "percent": 50
             },
             "11": {
                 "id": 11,
                 "ranking": 11,
-                "percent": 105
+                "percent": 45
             },
             "12": {
                 "id": 12,
                 "ranking": 12,
-                "percent": 100
+                "percent": 40
             },
             "13": {
                 "id": 13,
                 "ranking": 13,
-                "percent": 95
+                "percent": 35
             },
             "14": {
                 "id": 14,
                 "ranking": 14,
-                "percent": 90
+                "percent": 30
             },
             "15": {
                 "id": 15,
                 "ranking": 15,
-                "percent": 85
+                "percent": 25
             },
             "16": {
                 "id": 16,
                 "ranking": 16,
-                "percent": 80
+                "percent": 20
             },
             "17": {
                 "id": 17,
                 "ranking": 17,
-                "percent": 75
+                "percent": 60
             },
             "18": {
                 "id": 18,
                 "ranking": 18,
-                "percent": 70
+                "percent": 55
             },
             "19": {
                 "id": 19,
                 "ranking": 19,
-                "percent": 65
+                "percent": 50
             },
             "20": {
                 "id": 20,
                 "ranking": 20,
-                "percent": 60
+                "percent": 45
             },
             "21": {
                 "id": 21,
                 "ranking": 31,
-                "percent": 55
+                "percent": 41
             },
             "22": {
                 "id": 22,
                 "ranking": 41,
-                "percent": 50
+                "percent": 38
             },
             "23": {
                 "id": 23,
                 "ranking": 51,
-                "percent": 45
+                "percent": 33
             },
             "24": {
                 "id": 24,
                 "ranking": 101,
-                "percent": 40
+                "percent": 28
             },
             "25": {
                 "id": 25,
                 "ranking": 201,
-                "percent": 35
+                "percent": 25
             },
             "26": {
                 "id": 26,
                 "ranking": 501,
-                "percent": 30
+                "percent": 18
             },
             "27": {
                 "id": 27,
                 "ranking": 1001,
-                "percent": 20
+                "percent": 15
             },
             "28": {
                 "id": 28,
                 "ranking": 2001,
-                "percent": 17
+                "percent": 12
             },
             "29": {
                 "id": 29,
                 "ranking": 3001,
-                "percent": 14
+                "percent": 10
             },
             "30": {
                 "id": 30,
                 "ranking": 4001,
-                "percent": 11
+                "percent": 8
             },
             "31": {
                 "id": 31,
                 "ranking": 5001,
-                "percent": 8
+                "percent": 5
             },
             "32": {
                 "id": 32,
                 "ranking": 8001,
-                "percent": 5
+                "percent": 3
             },
             "33": {
                 "id": 33,
                 "ranking": 10001,
-                "percent": 2
+                "percent": 0
             }
         }
     },

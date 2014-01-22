@@ -101,8 +101,6 @@
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>
 
-                <file name="src/view/mainModule/effect.js"/>
-
                 <file name="src/view/mainModule/cocosBuilderClass.js"/>
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>

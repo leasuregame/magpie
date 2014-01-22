@@ -103,7 +103,7 @@ var GoldCardsLayer = cc.Layer.extend({
             goldIcon3.setPosition(cc.p(120 - i * 14, 10));
             tipNode2.addChild(goldIcon3);
 
-            var nextLabel = cc.LabelTTF.create("距离下次购买：" + remainDays + "天", "STHeitiTC-Medium", 20);
+            var nextLabel = cc.LabelTTF.create("距离下次购买：" + remainDays + "天", "STHeitiTC-Medium", 18);
             nextLabel.setPosition(cc.p(0, -20));
             nextLabel.setColor(cc.c3b(133, 37, 7));
             tipNode2.addChild(nextLabel);

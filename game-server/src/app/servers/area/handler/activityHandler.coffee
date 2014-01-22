@@ -52,7 +52,9 @@ class Activity
 
       (res, cb) ->
         player = res
-        app.get('dao').order.rechargeOnPeriod playerId, '2014-01-19', '2014-02-28', cb
+        startDate = app.get('sharedConf').newYearActivity.startDate
+        endDate = app.get('sharedConf').newYearActivity.endDate
+        app.get('dao').order.rechargeOnPeriod playerId, startDate, endDate, cb
 
       (cash, cb) ->
         if hasGotRechargeReward(player.activities, args.id)

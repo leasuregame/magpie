@@ -367,7 +367,7 @@ var Player = Entity.extend({
 
                 TipLayer.tip(data.msg);
             }
-        });
+        }, true);
     },
 
     getRemainDays: function (type) {
@@ -433,6 +433,35 @@ var Player = Entity.extend({
         } else {
             cc.log("类型出错！！！");
             return 0;
+        }
+    },
+
+    resetGoldCards: function (type) {
+        cc.log("Player resetGoldCards: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                goldCards.month.remainingDays = -1;
+            } else {
+                var card = lz.clone(goldCards);
+                card.month = {
+                    "remainingDays": -1
+                };
+
+                this.set("goldCards", card);
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                goldCards.week.remainingDays = -1;
+            } else {
+                var card = lz.clone(goldCards);
+                card.week = {
+                    "remainingDays": -1
+                };
+
+                this.set("goldCards", card);
+            }
         }
     }
 });

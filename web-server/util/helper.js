@@ -53,13 +53,14 @@ var getVersion = function(platform, cb) {
   }
 };
 
-var getLastVersion = function() {
-  return versionData().lastVersion;
+var getLastVersion = function(platform) {
+  var vData = versionData();
+  return vData[platform].lastVersion;
 };
 var updateVersions = function(data) {
   jdata = JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
 
-  var fields = ['version', 'lastVersion', 'filename', 'lastFilename'];
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
 
   var platform;
   for (platform in jdata) {

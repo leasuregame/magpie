@@ -149,9 +149,9 @@ Handler::getActivityInfo = (msg, session, next) ->
   async.parallel [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
-    (cb) ->
-      getRechargeRewardFlag playerId, cb
-  ], (err, results) ->
+    (cb) =>
+      getRechargeRewardFlag @app, playerId, cb
+  ], (err, results) =>
     if err
       return next(null, {
         code: err.code or 501
@@ -169,7 +169,7 @@ Handler::getActivityInfo = (msg, session, next) ->
         canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
         levelReward: player.levelReward
         rechargeFlag: flag
-        hasLoginReward: hasLoginReward(player.dailyGift.hasGotLoginReward)
+        hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
       }
     })
 
@@ -241,9 +241,9 @@ checkFriendsStatus = (player, messages) ->
     friends.push f
   friends
 
-getRechargeRewardFlag = (playerId, cb) ->
-  startDate = '2014-01-19'
-  endDate = '2014-02-28'
+getRechargeRewardFlag = (app, playerId, cb) ->
+  startDate = app.get('sharedConf').newYearActivity.startDate
+  endDate = app.get('sharedConf').newYearActivity.endDate
   dao.order.rechargeOnPeriod playerId, startDate, endDate, (err, cash) ->
     return cb(err) if err
 
@@ -255,14 +255,18 @@ getRechargeRewardFlag = (playerId, cb) ->
 
 setCanGetFlag = (player, rflag) ->
   recharge = player.activities.recharge or 0
-  recharge ^ rflag
+  {
+    canGet: recharge ^ rflag
+    hasGet: recharge
+  }
 
-hasLoginReward = (isGot) ->
-  startDate = new Date('2014-01-19')
-  endDate = new Date('2014-03-1')
+hasLoginReward = (app, isGot) ->
+  startDate = new Date(app.get('sharedConf').newYearActivity.startDate)
+  endDate = new Date(app.get('sharedConf').newYearActivity.endDate)
+  endDate.setDate(endDate.getDate()+1)
+
   now = new Date()
-
-  if startDate < now < endDate
+  if startDate <= now < endDate
     return not isGot
   else 
     return false

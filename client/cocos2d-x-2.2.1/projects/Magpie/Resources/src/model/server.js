@@ -409,7 +409,7 @@ var Server = Entity.extend({
     },
 
     isConnect: function () {
-        return (lz.pomelo.isConnect() && this._gameServerStatus == CONNECT_SUCCESS);
+        return (lz.pomelo.isConnect() && (this._gameServerStatus == CONNECT_SUCCESS || this._gateServerStatus == CONNECT_SUCCESS));
     },
 
     getRecommendArea: function () {

@@ -181,7 +181,7 @@ var NewYearLayer = cc.Layer.extend({
             };
             var state = gameData.activity.getStateById(TYPE_RECHARGE_REWARD, id);
             cc.log(state);
-            var type = state ? GET_GIFT_BAG : SHOW_GIFT_BAG;
+            var type = state == RECHARGE_REWARD ? GET_GIFT_BAG : SHOW_GIFT_BAG;
             var cb = null;
 
             if (type == GET_GIFT_BAG) {

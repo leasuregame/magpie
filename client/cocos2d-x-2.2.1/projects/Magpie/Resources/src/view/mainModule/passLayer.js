@@ -194,8 +194,8 @@ var PassLayer = cc.Layer.extend({
         this.addChild(towerBgSprite);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button10,
+            main_scene_image.button10s,
             main_scene_image.button9d,
             main_scene_image.icon15,
             this._onClickWipeOut,

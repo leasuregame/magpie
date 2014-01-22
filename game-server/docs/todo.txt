@@ -1,3 +1,5 @@
+删除好友时，要删除好友相关的消息
+
 cdkey end data check should be correct!
 
 2014-1-20

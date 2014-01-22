@@ -198,10 +198,6 @@ Handler::getRankingReward = (msg, session, next) ->
         code: 200, 
         msg: elixir: rewardData.elixir
       })
-
-Handler::rankStats = (msg, session, next) ->
-  playerId = session.get('playerId')
-
   
 
 isV587 = (bl) ->

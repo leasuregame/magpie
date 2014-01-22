@@ -25,11 +25,11 @@ exports.update = function(req, res) {
     return res.status(400).send('版本号格式错误');
   }
 
-  var lastVersion = helper.lastVersion(platform));
+  var lastVersion = helper.lastVersion(platform);
   if (!lastVersion) {
     return res.status(400).send('找不到上一版本号')
   }
-  if (helper.versionCompare(ver, ) {
+  if (helper.versionCompare(ver, lastVersion)) {
     filename = vData[platform].lastFilename;
   }
 

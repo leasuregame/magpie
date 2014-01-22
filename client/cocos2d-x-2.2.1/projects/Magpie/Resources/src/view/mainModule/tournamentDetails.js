@@ -48,15 +48,15 @@ var TournamentDetails = LazyLayer.extend({
         historyRanking.setPosition(cc.p(point.x + 100, point.y));
         this.addChild(historyRanking);
 
-        var winningStreak = cc.LabelTTF.create(rankStats["winningStreak"] || "0", "STHeitiTC-Medium", 25);
-        winningStreak.setAnchorPoint(cc.p(0, 0.5));
-        winningStreak.setPosition(cc.p(point.x + 100, point.y - 70));
-        this.addChild(winningStreak);
-
         var winStreakCount = cc.LabelTTF.create(rankStats["winStreakCount"] || "0", "STHeitiTC-Medium", 25);
         winStreakCount.setAnchorPoint(cc.p(0, 0.5));
-        winStreakCount.setPosition(cc.p(point.x + 100, point.y - 140));
+        winStreakCount.setPosition(cc.p(point.x + 100, point.y - 70));
         this.addChild(winStreakCount);
+
+        var winningStreak = cc.LabelTTF.create(rankStats["winningStreak"] || "0", "STHeitiTC-Medium", 25);
+        winningStreak.setAnchorPoint(cc.p(0, 0.5));
+        winningStreak.setPosition(cc.p(point.x + 100, point.y - 140));
+        this.addChild(winningStreak);
 
         var challengeCount = cc.LabelTTF.create(rankStats["challengeCount"] || "0", "STHeitiTC-Medium", 25);
         challengeCount.setAnchorPoint(cc.p(0, 0.5));

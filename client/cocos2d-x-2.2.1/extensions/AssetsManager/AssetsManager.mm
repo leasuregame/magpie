@@ -157,6 +157,9 @@ void AssetsManager::init()
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
     std::string appVersion = getAppVersion();
     
+    CCLOG("%s", oldAppVersion.c_str());
+    CCLOG("%s", appVersion.c_str());
+    
     if(oldAppVersion != appVersion) {
         CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_APP_VERSION, appVersion);
         
@@ -770,6 +773,9 @@ void AssetsManager::createStoragePath()
  */
 void AssetsManager::destroyStoragePath()
 {
+    // Delete recorded version codes.
+    deleteVersion();
+    
     // save to document folder
     std::string storagePath = _storagePath + "data/";
     NSString *path = [NSString stringWithUTF8String:storagePath.c_str()];

@@ -113,8 +113,13 @@ var Activity = Entity.extend({
     updateRechargeFlag: function (flag) {
         cc.log("Activity updateRechargeFlag: " + flag);
 
-        var canGetFlag = flag.canGet;
-        var hasGetFlag = flag.hasGet;
+        var canGetFlag = 0;
+        var hasGetFlag = 0;
+
+        if (flag) {
+            canGetFlag = flag.canGet;
+            hasGetFlag = flag.hasGet;
+        }
 
         for (var id = 1; id <= 5; id++) {
             var offset = (id - 1) % EACH_NUM_BIT;
@@ -122,7 +127,7 @@ var Activity = Entity.extend({
             if ((canGetFlag >> offset & 1) == 1) {
                 this._changeStateById(TYPE_RECHARGE_REWARD, id, RECHARGE_REWARD);   //有奖励未领取
             } else {
-                if((hasGetFlag >> offset & 1) == 1) {
+                if ((hasGetFlag >> offset & 1) == 1) {
                     this._changeStateById(TYPE_RECHARGE_REWARD, id, ALREADY_RECHARGE_REWARD); //已领取
                 } else {
                     this._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD); //没有奖励

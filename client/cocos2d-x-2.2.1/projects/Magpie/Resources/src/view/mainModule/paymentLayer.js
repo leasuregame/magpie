@@ -352,9 +352,7 @@ var PaymentLayer = LazyLayer.extend({
                 that.update();
             };
 
-            gameData.shop.buyVip({cb: cb, product: product});
-
-           // gameData.payment.buy({cb: cb, product: product});
+            gameData.payment.buy({cb: cb, product: product});
         }
     }
 });

@@ -193,6 +193,15 @@ var FriendMessageLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
             var element = this._scrollViewElement[id];
 
+            var friendList = gameData.friend.get("friendList");
+            var len = friendList.length;
+            var maxFriends = gameData.friend.get("maxFriendCount");
+
+            if(len >= maxFriends) {
+                TipLayer.tip("你的好友已达上限");
+                return;
+            }
+
             gameData.message.accept(function () {
                 gameMark.updateFriendMessageMark(false);
 

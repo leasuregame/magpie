@@ -232,16 +232,17 @@ void* assetsManagerDownloadAndUncompress(void *data)
     
     do
     {
-        if (self->_downloadedVersion != self->_version)
-        {
-            if (! self->downLoad()) break;
-            
-            // Record downloaded version.
-            AssetsManager::Message *msg1 = new AssetsManager::Message();
-            msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
-            msg1->obj = self;
-            self->_schedule->sendMessage(msg1);
-        }
+        //        if (self->_downloadedVersion != self->_version)
+        //        {
+        
+        if (! self->downLoad()) break;
+        
+        // Record downloaded version.
+        AssetsManager::Message *msg1 = new AssetsManager::Message();
+        msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
+        msg1->obj = self;
+        self->_schedule->sendMessage(msg1);
+        //        }
         
         // Uncompress zip file.
         if (! self->uncompress())
@@ -528,6 +529,8 @@ bool AssetsManager::downLoad()
         CCLOG("can not create file %s", outFileName.c_str());
         return false;
     }
+    
+    CCLOG("%s", _packageUrl.c_str());
     
     // Download pacakge
     CURLcode res;

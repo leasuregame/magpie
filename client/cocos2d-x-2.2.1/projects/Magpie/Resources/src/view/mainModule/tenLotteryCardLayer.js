@@ -81,6 +81,7 @@ var TenLotteryCardLayer = LazyLayer.extend({
         if (this._fragment) {
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint1);
+            ccbNode.controller.ccbFragment.setString("+" + this._fragment);
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             this.addChild(ccbNode, 1);
         }

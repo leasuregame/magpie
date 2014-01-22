@@ -50,7 +50,7 @@ var BattleLogPool = Entity.extend({
         cc.log("BattleLogPool pushBattleLog");
 
         battleLog.type = battleType || PVE_BATTLE_LOG;
-        battleLog.id = battleLog.id || 0;
+        battleLog.id = battleLog.id || 100000000;
 
         if (battleLog.ownId !== gameData.player.get("id")) {
             if (battleLog.winner == "own") {

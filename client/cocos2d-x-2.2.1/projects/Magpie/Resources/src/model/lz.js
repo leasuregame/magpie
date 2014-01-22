@@ -240,6 +240,11 @@ var gameGoodsName = {
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["fragment"]
     },
+    "fragments": {
+        name: "卡魂",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["fragment"]
+    },
     "energy": {
         name: "活力点",
         color: cc.c3b(255, 239, 131),

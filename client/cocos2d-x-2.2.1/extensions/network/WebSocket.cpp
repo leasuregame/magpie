@@ -168,8 +168,9 @@ void* WsThreadHelper::wsThreadEntryFunc(void* arg)
             break;
         }
     }
-    
-    _ws->onSubThreadEnded();
+
+//    NakoSung: WebSocket was destroyed by JSB_WebSocketDelegate::onClose and the function itself does nothing.
+//    _ws->onSubThreadEnded();
 
     return (void*)0;
 }

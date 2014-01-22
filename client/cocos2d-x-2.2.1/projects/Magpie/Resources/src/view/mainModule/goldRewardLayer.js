@@ -115,7 +115,7 @@ var GoldRewardLayer = cc.Layer.extend({
             goldIcon.setAnchorPoint(cc.p(0, 0));
             goldIcon.setPosition(cc.p(200, y + 25));
             scrollViewLayer.addChild(goldIcon);
-            var type = gameData.activity.getTypeById(goldRewards[key].id);
+            var type = gameData.activity.getStateById(TYPE_GOLD_REWARD,goldRewards[key].id);
             var btnGetReward = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,

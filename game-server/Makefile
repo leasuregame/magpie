@@ -8,12 +8,17 @@ convert-data: build
 
 start: build convert-data
 	pomelo start -e production --daemon
-	cd ../web-server && forever start app.js && cd ../game-server
 
 stop:
 	pomelo stop
 
 restart: stop start
+
+start-webserver:
+	cd ../web-server && forever start app.js && cd ../game-server
+
+stop-webserver:
+	cd ../web-server && forever stop app.js && cd ../game-server
 
 clean: 
 	rm -r ./app
@@ -63,7 +68,7 @@ test-api: build
 	node ./test/jasmine/app.js
 
 runserver: build
-	pomelo start
+	./node_modules/.bin/pomelo start -e development
 
 debug: 
 	./node_modules/.bin/node-inspector --web-port=9095 &

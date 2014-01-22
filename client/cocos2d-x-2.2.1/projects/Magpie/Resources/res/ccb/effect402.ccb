@@ -301,6 +301,96 @@
 										<string>Use regular file</string>
 									</array>
 								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>1</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>res/effect/effect/p48.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>1.0666667222976685</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>res/effect/effect/p51.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>1.1333333253860474</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>res/effect/effect/p50.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>1.2000000476837158</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>res/effect/effect/p49.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>1.2666666507720947</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>res/effect/effect/p48.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
 							</array>
 							<key>name</key>
 							<string>displayFrame</string>
@@ -350,7 +440,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.86666667461395264</real>
+									<real>1.2000000476837158</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -365,7 +455,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -408,7 +498,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -454,7 +544,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -610,7 +700,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -707,7 +797,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
+							<real>60</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -733,7 +823,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>50</integer>
+						<integer>100</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -753,7 +843,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
+							<real>30</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -764,8 +854,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>5</real>
+							<real>40</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -810,9 +900,9 @@
 						<array>
 							<array>
 								<real>1</real>
-								<real>0.83234566450119019</real>
-								<real>0.4732058048248291</real>
-								<real>0.23000000417232513</real>
+								<real>0.90074247121810913</real>
+								<real>0.67448616027832031</real>
+								<real>0.40000000596046448</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -904,7 +994,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p16.png</string>
+						<string>res/effect/effect/p104.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -941,7 +1031,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1048,7 +1138,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>20</real>
+						<real>40</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1064,7 +1154,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>20</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1073,7 +1163,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.80000001192092896</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -1084,7 +1174,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>40</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -1141,9 +1231,9 @@
 						<array>
 							<array>
 								<real>1</real>
-								<real>0.85928863286972046</real>
-								<real>0.5450282096862793</real>
-								<real>0.23000000417232513</real>
+								<real>0.90074247121810913</real>
+								<real>0.67448616027832031</real>
+								<real>0.5</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -1203,8 +1293,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
-							<real>5</real>
+							<real>80</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -1214,8 +1304,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>40</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -1235,7 +1325,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p16.png</string>
+						<string>res/effect/effect/p104.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -1320,13 +1410,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

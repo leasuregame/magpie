@@ -101,17 +101,17 @@
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>
 
-                <file name="src/view/mainModule/effect.js"/>
-
                 <file name="src/view/mainModule/cocosBuilderClass.js"/>
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
+                <file name="src/view/mainModule/goldCardsLayer.js"/>
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
                 <file name="src/view/mainModule/invitationLayer.js"/>
+                <file name="src/view/mainModule/newYearLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>

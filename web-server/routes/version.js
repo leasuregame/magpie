@@ -17,15 +17,19 @@ exports.update = function(req, res) {
   var platform = req.params.platform;
   var vData = helper.versionData();
   if (!platform in vData) {
-    return res.status(404).send('Not update for ' + platform);
+    return res.status(404).send('找不到版本信息'+platform);
   }
 
   var filename = vData[platform].filename;
   if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}$/.test(ver)) {
-    return res.status(400).send('Bad version number');
+    return res.status(400).send('版本号格式错误');
   }
 
-  if (helper.versionCompare(ver, helper.lastVersion())) {
+  var lastVersion = helper.lastVersion(platform));
+  if (!lastVersion) {
+    return res.status(400).send('找不到上一版本号')
+  }
+  if (helper.versionCompare(ver, ) {
     filename = vData[platform].lastFilename;
   }
 

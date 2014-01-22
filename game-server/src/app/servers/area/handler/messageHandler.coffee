@@ -571,9 +571,8 @@ Handler::receiveBless = (msg, session, next) ->
     (ply, cb) ->
       player = ply
       if player.dailyGift.receivedBless.count <= 0
-        return cb({code: 501, msg: '今日可领祝福次数已用完'})      
+        return cb({code: 501, msg: '今日可领祝福次数已用完'})
 
-    (cb) ->
       dao.message.fetchOne where: id: msgId, cb
 
     (res, cb) ->

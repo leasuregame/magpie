@@ -82,6 +82,15 @@ var LotteryLayer = cc.Layer.extend({
         );
         backItem.setPosition(this._lotteryLayerFit.backItemPoint);
 
+        var fragmentTipLayer = StrokeLabel.create("高级魔石十连抽必得卡魂","STHeitiTC-Medium", 20);
+        fragmentTipLayer.setPosition(this._lotteryLayerFit.fragmentTipLayerPoint);
+        this.addChild(fragmentTipLayer);
+
+        var fragmentTipIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentTipIcon.setPosition(this._lotteryLayerFit.fragmentTipIconPoint);
+        fragmentTipIcon.setScale(0.8);
+        this.addChild(fragmentTipIcon);
+
         this._lotteryLabel = cc.BuilderReader.load(main_scene_image.uiEffect6, this);
         this._lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
         this.addChild(this._lotteryLabel);

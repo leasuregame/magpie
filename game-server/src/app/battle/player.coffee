@@ -122,8 +122,8 @@ class Player extends Module
     cobj = {}
     cobj[c.idx] = {
       tableId: c.card_id
-      hp: c.hp
-      atk: c.atk
+      hp: c.init_hp
+      atk: c.init_atk
       spiritHp: c.spirit_hp
       spiritAtk: c.spirit_atk
     } for c in @heros

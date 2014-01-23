@@ -1547,7 +1547,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         pomelo.isConnect = function () {
-            return (socket && (socket.readyState == 1));
+            return (socket && socket.readyState != undefined && (socket.readyState == 1));
         };
 
         pomelo.request = function (route, msg, cb) {

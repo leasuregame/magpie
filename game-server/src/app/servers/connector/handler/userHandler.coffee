@@ -4,6 +4,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
+util = require 'util'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -49,24 +50,26 @@ Handler::login = (msg, session, next) ->
 Handler::loginTB = (msg, session, next) ->
   doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
 
-doLogin  = (type, app, msg, session, platform, next) ->
+doLogin  = (type, app, msg, session, platform, next) ->  
+  console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
   areaId = msg.areaId
-
   user = null
   player = null
   uid = null
   async.waterfall [
     (cb) ->
+      checkIsOpenServer app, cb
+
+    (cb) ->
       ### 检查是否最新版本 ###
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      session.set('areaId', areaId)
-      session.pushAll cb
-
-    (cb) =>
       [args, method] = authParams(type, msg, app)
+      args.sid = session.id
+      console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+        console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -74,15 +77,16 @@ doLogin  = (type, app, msg, session, platform, next) ->
         else 
           cb(null, u)
 
-    (res, cb) =>
-      user = res
-      uid = user.id + '*' + areaId
-      sessionService = app.get 'sessionService'
-      sessionService.kick(uid,cb)
-    (cb) =>
+    (u, cb) =>
+      user = u
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, {
+          areaId: areaId,
+          userId: user.id, 
+          serverId: app.getServerId()
+        }, (err, res) ->
+          console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -91,6 +95,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
+      console.log '-login-4', player?.name
+      uid = user.id + '*' + areaId
+      session.set('areaId', areaId)
       session.set('userId', user.id)
       session.bind(uid, cb)
     (cb) =>
@@ -100,6 +107,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
         session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
+    console.log '-login-5-err-', err
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
@@ -126,19 +134,53 @@ authParams = (type, msg, app) ->
   for k in keyMap[type]?.keys
     args[k] = msg[k] if msg[k]?
 
-  args.fronendId = app.getServerId()
+  args.frontendId = app.getServerId()
   [args, keyMap[type]?.method]
 
-getLatestVersion = (app, platform) ->
+getVersionData = (app, platform) ->
   if not platform
     platform = app.get('platform')
     
   vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
-  vdata[platform]?.version
+  vdata[platform]
+
+versionCompare = (stra, strb) ->
+  straArr = stra.split('.')
+  strbArr = strb.split('.')
+
+  maxLen = Math.max(straArr.length, strbArr.length)
+  for i in [0...maxLen]
+    sa = ~~straArr[i]
+    sb = ~~strbArr[i]
+    if sa > sb
+      result = 1 
+    else if sa < sb
+      result = -1 
+    else 
+      result = 0
+
+    if result isnt 0
+      return result
+  result
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  if version is getLatestVersion(app, platform)
+  vData = getVersionData(app, platform)
+  if versionCompare(version, vData.version) >= 0
     cb()
+  else
+    if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
+      cb({code: 501, msg: '版本过低，请及时更新'})
+    else 
+      cb({code: 600, msg: '客户端版本不是最新'})
+
+checkIsOpenServer = (app, cb) ->
+  openTime = new Date(app.get('sharedConf').openServerTime)
+  now = new Date()
+  if new Date() < openTime
+    cb({
+      code: 501, 
+      msg: util.format('%s月%s日%s点开服，敬请期待', openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
+    })
   else 
-    cb({code: 600, msg: '客户端版本不是最新'})
+    cb()

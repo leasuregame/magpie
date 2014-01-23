@@ -48,14 +48,13 @@ class Component
     @timerId = setInterval executeVerify.bind(null, @app, @app.get('verifyQueue')), @interval
     process.nextTick cb
 
-  stop: () ->
+  stop: (cd) ->
     clearInterval @timerId
     process.nextTick cb
 
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
-  console.log 'execute verify, ', items.length
   return if items.length is 0
 
   async.each items, (item, done) ->

@@ -15,11 +15,11 @@ INTERVALS =
   10000: 106
   7000: 83
   5000: 62
-  3000: 41
-  1000: 19
-  700: 14
-  300: 11
-  199: 5
+  3000: 26
+  1000: 15
+  700: 7
+  300: 3
+  199: 2
   1: 1
 
 STATUS_NORMAL = 0  # 正常状态，可查看 ###
@@ -34,8 +34,8 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  start = Date.now()
   player = null
+  console.log '-ranking list-', playerId
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -65,11 +65,9 @@ Handler::rankingList = (msg, session, next) ->
 
     (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
-      console.log 'rankingList: ', rankings
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
-
       playerManager.rankingList _.keys(rankings), (err, players, ranks) -> cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
@@ -85,11 +83,9 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now() - start,
       rankStats: r.stats
     }
-    end = Date.now();
-    console.log '**********get rankingList useTime = ',(end - start) / 1000
+    console.log '-end ranking list-'
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -97,7 +93,7 @@ Handler::challenge = (msg, session, next) ->
   playerName = session.get('playerName')
   targetId = msg.targetId
   ranking = msg.ranking
-
+  console.log '-challenge-', playerId, targetId, ranking
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
@@ -122,7 +118,7 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
+      rankManager.exchangeRankings player, target, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
         if err and not res
           return cb(err)
         else
@@ -136,6 +132,7 @@ Handler::challenge = (msg, session, next) ->
       if player.rank?.startCount is 1
         firstTime = true
 
+      console.log '-end challenge-'
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl
@@ -201,10 +198,6 @@ Handler::getRankingReward = (msg, session, next) ->
         code: 200, 
         msg: elixir: rewardData.elixir
       })
-
-Handler::rankStats = (msg, session, next) ->
-  playerId = session.get('playerId')
-
   
 
 isV587 = (bl) ->

@@ -77,7 +77,12 @@ var ExploreLayer = cc.Layer.extend({
 
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
-        var url = "bg" + (chapter % 2 == 0 ? 4 : 3);
+        var sid = (sectionId - 1) % 5 < 3 ? 1 : 0;
+        var id = (chapter * 2 - sid) % 8;
+        if (id == 0) {
+            id = 8;
+        }
+        var url = "explore_bg_" + id;
         for (var i = 0; i < 3; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image[url]);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
@@ -629,7 +634,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _showBox");
+        cc.log("ExploreLayer _showBox");
 
         var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
         boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
@@ -641,7 +646,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     ccbFnOpenBox: function () {
-        cc.log("TaskLayer ccbFnOpenBox");
+        cc.log("ExploreLayer ccbFnOpenBox");
 
         var that = this;
         var cb = function () {
@@ -652,7 +657,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _onBuyPower: function () {
-        cc.log("TaskLayer _onBuyPower");
+        cc.log("ExploreLayer _onBuyPower");
 
         var id = 2;
         var product = gameData.shop.getProduct(id);
@@ -685,7 +690,7 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _buyPower: function (id, count) {
-        cc.log("TournamentLayer _buyCount");
+        cc.log("ExploreLayer _buyCount");
 
         if (count > 0) {
             var that = this;
@@ -703,7 +708,7 @@ var ExploreLayer = cc.Layer.extend({
      * @param {event} event
      */
     onTouchesEnded: function (touches, event) {
-        cc.log("TaskLayer onTouchesEnded");
+        cc.log("ExploreLayer onTouchesEnded");
 
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();

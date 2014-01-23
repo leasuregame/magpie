@@ -83,6 +83,7 @@ var Rank = (function(_super) {
 		return {
 			historyRanking: this.historyRanking,
 			winStreakCount: this.winStreakCount,
+			winningStreak: this.winningStreak,
 			challengeCount: this.startCount,
 			beChallengeCount: this.challengeCount - this.startCount,
 			winCount: this.winCount,
@@ -95,7 +96,7 @@ var Rank = (function(_super) {
 		var rc = _.clone(this.recentChallenger);
 		var beatBackCount = table.getTableItem('ranking_list',1).beat_back_count
 		if (rc.length >= beatBackCount) {
-			rc = rc.splice(0,1);
+			rc.splice(0,1);
 		}
 		if (rc.indexOf(id) < 0) {
 			rc.push(id);

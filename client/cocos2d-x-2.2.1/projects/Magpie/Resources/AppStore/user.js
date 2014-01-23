@@ -109,7 +109,7 @@ var User = Entity.extend({
                 account: that._account,
                 password: that._password,
                 areaId: that._area,
-                version: version || "1.0.0"
+                version: version || "1.2.0"
             }, function (data) {
                 cc.log(data);
 

@@ -169,6 +169,7 @@ var updateAchievement = function(player, method, got, useMax) {
 		});
 	// reset achievement of player
 	player.achievement = ach;
+	player.save()
 };
 
 var reachedAchievements = function(methodName, need) {
@@ -195,7 +196,7 @@ var sendMessage = function(player, achId) {
 			route: 'onAchieve',
 			msg: {
 				achieveId: achId,
-				fistTime: onlyOneAchieved(player.achievement) ? true : void 0
+				firstTime: onlyOneAchieved(player.achievement) ? true : void 0
 			}
 		}, function(err, res) {
 			logger.info('push message(route: onAchieve):', err, res);

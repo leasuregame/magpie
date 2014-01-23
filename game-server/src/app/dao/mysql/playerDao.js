@@ -19,6 +19,7 @@ var Player = require("../../domain/entity/player");
 var cardDao = require("./cardDao");
 var rankDao = require("./rankDao");
 var friendDao = require('./friendDao');
+var goldCardDao = require('./goldCardDao');
 var async = require('async');
 var dbClient = require('pomelo').app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
@@ -40,7 +41,7 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.getPlayerInfo = function(options, cb) {
         var _this = this;
-        var player, cards, rank;
+        var player, cards, rank, friends;
         async.waterfall([
             function(callback) {
                 _this.fetchOne(options, callback);
@@ -71,8 +72,12 @@ var PlayerDao = (function(_super) {
             function(res, callback) {
                 rank = res;
                 friendDao.getFriends(player.id, callback);
+            },
+            function(res, callback) {
+                friends = res;
+                goldCardDao.getValidCards(player.id, callback);
             }
-        ], function(err, friends) {
+        ], function(err, goldCards) {
             if (err !== null) {
                 return cb(err, null);
             }
@@ -80,6 +85,7 @@ var PlayerDao = (function(_super) {
             player.addCards(cards);
             player.set('rank', rank);
             player.set('friends', friends);
+            player.addGoldCards(goldCards);
             return cb(null, player);
         });
     };
@@ -137,7 +143,6 @@ var PlayerDao = (function(_super) {
                 }
             });
             var end = Date.now();
-            console.log('get player details time: ', (end - start)/1000);
             return cb(null, players);
         });
 
@@ -182,7 +187,6 @@ var PlayerDao = (function(_super) {
                     p.cards = cards.filter(function(c){ return c.playerId == p.id});
                 });
             end = Date.now();
-            console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);
             return cb(null, players);
         });
     };
@@ -231,7 +235,6 @@ var PlayerDao = (function(_super) {
                 }, cb);
             },
             function(player, cb) {
-                console.log(player.lineUpObj());
                 var ids = _.values(player.lineUpObj());
                 if (!_.isEmpty(ids)) {
                     cardDao.fetchMany({
@@ -260,11 +263,14 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.random = function(playerId, exceptIds, limit, cb) {
         exceptIds.push(playerId);
-        var sql = 'SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 \
-            JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 \
-            WHERE r1.id not in (%s) and r1.id >= r2.id \
-            ORDER BY r1.id ASC \
-            LIMIT %d';
+        // var sql = 'SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 \
+        //     JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 \
+        //     WHERE r1.id not in (%s) and r1.id >= r2.id \
+        //     ORDER BY r1.id ASC \
+        //     LIMIT %d';
+        var sql = 'SELECT id, name, lv, ability FROM `player` \
+            WHERE id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `player` ) \
+            AND id not in (%s) ORDER BY id LIMIT %s';
 
         sql = util.format(sql, exceptIds.toString(), limit);
         dbClient.query(sql, [], function(err, res) {

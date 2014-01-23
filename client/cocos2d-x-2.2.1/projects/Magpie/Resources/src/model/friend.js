@@ -258,6 +258,7 @@ var Friend = Entity.extend({
                 cc.log("deleteFriend fail");
 
                 TipLayer.tip("删除失败");
+                cb();
             }
         });
     },
@@ -291,6 +292,8 @@ var Friend = Entity.extend({
                     lz.dc.event("event_give_bless");
                 } else {
                     cc.log("giveBless fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {
@@ -329,6 +332,8 @@ var Friend = Entity.extend({
                     lz.dc.event("event_receive_bless");
                 } else {
                     cc.log("receiveBless fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {

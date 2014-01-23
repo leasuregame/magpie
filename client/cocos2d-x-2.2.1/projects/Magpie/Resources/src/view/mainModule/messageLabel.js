@@ -81,4 +81,4 @@ MessageLabel.create = function () {
     }
 
     return null;
-}
+};

@@ -7,15 +7,18 @@ convert-data: build
 	node ./bin/convertXmlToJson.js 
 
 start: build convert-data
-	pomelo start production --daemon
-	cd ../gm && make runserver2
-	cd ../web-server && forever start app.js && cd ../game-server
+	pomelo start -e production --daemon
 
 stop:
 	pomelo stop
-	pkill -9 -f node 
 
 restart: stop start
+
+start-webserver:
+	cd ../web-server && forever start app.js && cd ../game-server
+
+stop-webserver:
+	cd ../web-server && forever stop app.js && cd ../game-server
 
 clean: 
 	rm -r ./app
@@ -65,10 +68,10 @@ test-api: build
 	node ./test/jasmine/app.js
 
 runserver: build
-	./node_modules/.bin/pomelo start development
+	./node_modules/.bin/pomelo start -e development
 
 debug: 
-	./node_modules/.bin/node-inspector --web-port=9090 &
+	./node_modules/.bin/node-inspector --web-port=9095 &
 
 restartserver: build
 	./node_modules/.bin/pomelo stop

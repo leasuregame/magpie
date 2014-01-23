@@ -240,6 +240,11 @@ var gameGoodsName = {
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["fragment"]
     },
+    "fragments": {
+        name: "卡魂",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["fragment"]
+    },
     "energy": {
         name: "活力点",
         color: cc.c3b(255, 239, 131),
@@ -284,6 +289,9 @@ var gameGoodsName = {
     },
     "cardsCount": {
         name: "卡库位置",
+        color: cc.c3b(255, 239, 131)
+    },
+    "cardArray": {
         color: cc.c3b(255, 239, 131)
     }
 };
@@ -345,7 +353,16 @@ lz.tipReward = function (reward) {
                 if (str.icon) {
                     TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
                 } else {
-                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    if (key == "cardArray") {
+                        var cards = reward[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            TipLayer.tipNoBg(card.get("name") + ": +1");
+                        }
+                    } else {
+                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                    }
                 }
             }
         })(key);

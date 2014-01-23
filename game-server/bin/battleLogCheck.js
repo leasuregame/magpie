@@ -1,4 +1,31 @@
 var _ = require('underscore');
+var csv = require('csv');
+
+module.exports.checkLog = function() {
+  csv()
+    .from('./battleLog.csv', {
+      columns: true,
+      delimiter: ',',
+      escape: '"'
+    })
+    .transform(function(row, index, cb) {
+      console.log(row.id);
+      try {
+        module.exports.execute(JSON.parse(row.battleLog));
+      } catch (e){
+        console.log('error row data', row.id);
+      }
+    })
+    .on('error', function(error) {
+      console.log(error.message);
+    })
+    .on('close', function() {
+      console.log('');
+    })
+    .on('end', function(count) {
+      callback(null, count);
+    });
+};
 
 module.exports.execute = function(battleLog) {
   var isWin = battleLog.winner == 'own' ? true : false;
@@ -37,6 +64,13 @@ module.exports.execute = function(battleLog) {
 
     var stepFormatOk = true;
     var dmage = {};
+    // for (var k in battleLog.cards) {
+    //   var c = battleLog.cards[k];
+    //   if (_.isObject(c)) {
+    //     dmage[k]['hp'] = c.hp  
+    //   }      
+    // }
+
     _.each(steps, function(s) {
       _.each(s.d, function(pos, index) {
         if (!_.isNumber(s.a) || !_.isNumber(pos)) {
@@ -57,44 +91,49 @@ module.exports.execute = function(battleLog) {
           dmage[pos] = s.e[index];
         } else {
           dmage[pos] += s.e[index];
+          dmage[pos] = dmage[pos] > 0 ? 0 : dmage[pos];
         }
       })
     });
-    console.log('伤害', dmage);
+    //console.log('伤害', dmage);
 
     // 检查 死亡人数的一致性
-    
-    var death_man = 0;
-    _.each(dmage, function(val, key) {
-      k = parseInt(key);
-      if (k > 6 && (battleLog.cards[k].hp + val) <= 0) {
-        death_man++;
+    if (isWin) {
+      var death_man = 0;
+      _.each(dmage, function(val, key) {
+        k = parseInt(key);
+        if (k > 6 && (battleLog.cards[k].hp + val) <= 0) {
+          death_man++;
+        }
+      })
+      if (enemy_card_length == death_man) {
+        ok = true;
+      } else {
+        console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
+        console.log('敌方死亡人数：', death_man);
+        console.log('敌方实际人数：', enemy_card_length);
+        throw new Error('error');
       }
-    })
-    if (enemy_card_length == death_man) {
-      ok = true;
-    } else {
-      console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
-    }
-    console.log('敌方死亡人数：', death_man);
-    console.log('敌方实际人数：', enemy_card_length);
-  
-    var death_man = 0;
-    _.each(dmage, function(val, key) {
-      k = parseInt(key);
-      if (k <= 6 && (battleLog.cards[k].hp + val) <= 0) {
-        death_man++;
-      }
-    })
 
-    if (own_card_length == death_man) {
-      ok = true;
+      
     } else {
-      console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
+      var death_man = 0;
+      _.each(dmage, function(val, key) {
+        k = parseInt(key);
+        if (k <= 6 && (battleLog.cards[k].hp + val) <= 0) {
+          death_man++;
+        }
+      })
+
+      if (own_card_length == death_man) {
+        ok = true;
+      } else {
+        console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
+        console.log('我方死亡人数：', death_man);
+        console.log('我方实际人数：', own_card_length);
+        throw new Error('error');
+      }      
     }
-    console.log('我方死亡人数：', death_man);
-    console.log('我方实际人数：', own_card_length);
-    
 
     return ok && stepFormatOk;
   }
@@ -111,196 +150,299 @@ module.exports.execute = function(battleLog) {
   if (!rewards_ok) {
     console.log('战斗奖励不正确');
   }
-  console.log(keys_ok, cards_ok, steps_ok);
+  //console.log(keys_ok, cards_ok, steps_ok);
   return cards_ok && steps_ok;
 };
 
-var bl = {
+exports.checkLog();
+
+var bls = [{
   "cards": {
     "1": {
-      "tableId": 13,
-      "hp": 409,
-      "atk": 162,
-      "spiritHp": 37,
-      "spiritAtk": 14
+      "tableId": 189,
+      "hp": 3923,
+      "atk": 1636,
+      "spiritHp": 356,
+      "spiritAtk": 135
     },
     "2": {
-      "tableId": 139,
-      "hp": 14700,
-      "atk": 4688,
-      "spiritHp": 1292,
-      "spiritAtk": 426
+      "tableId": 168,
+      "hp": 410,
+      "atk": 178,
+      "spiritHp": 37,
+      "spiritAtk": 16
+    },
+    "3": {
+      "tableId": 59,
+      "hp": 6790,
+      "atk": 4721,
+      "spiritHp": 611,
+      "spiritAtk": 256
+    },
+    "4": {
+      "tableId": 243,
+      "hp": 451,
+      "atk": 155,
+      "spiritHp": 41,
+      "spiritAtk": 14
     },
     "6": 2,
-    "7": {
-      "tableId": 168,
-      "hp": 1894,
-      "atk": 822,
-      "spiritHp": 90,
-      "spiritAtk": 39
+    "8": {
+      "tableId": 10026,
+      "hp": 409,
+      "atk": 163,
+      "normalAtkId": 3,
+      "spirit": 1
     },
     "9": {
-      "tableId": 218,
-      "hp": 3005,
-      "atk": 1269,
-      "spiritHp": 143,
-      "spiritAtk": 60
+      "tableId": 10026,
+      "hp": 409,
+      "atk": 163,
+      "normalAtkId": 3,
+      "spirit": 1
     },
     "10": {
-      "tableId": 248,
-      "hp": 2434,
-      "atk": 836,
-      "spiritHp": 115,
-      "spiritAtk": 39
+      "tableId": 10026,
+      "hp": 409,
+      "atk": 163,
+      "normalAtkId": 3,
+      "spirit": 1
     },
     "11": {
-      "tableId": 244,
-      "hp": 3675,
-      "atk": 1231,
-      "spiritHp": 171,
-      "spiritAtk": 58
-    },
-    "12": 1
+      "tableId": 10027,
+      "hp": 552,
+      "atk": 220,
+      "boss": true,
+      "skillId": 7,
+      "normalAtkId": 1,
+      "effectId": 300,
+      "spirit": 3
+    }
   },
-  "ownId": 31,
-  "enemyId": 15,
+  "ownId": 36,
   "ownName": "寒枫",
-  "enemyName": "无聊透顶",
   "winner": "own",
-  "round_num": 7,
+  "round_num": 2,
   "steps": [{
-    "a": -1,
-    "d": [7],
-    "e": [-254],
-    "dhp": 1894
+    "a": 1,
+    "d": [10],
+    "e": [-1554],
+    "dhp": -1145,
+    "death": true
   }, {
-    "a": 7,
-    "d": [1],
-    "e": [-721],
-    "death": true,
-    "dhp": -312
-  }, {
-    "a": -2,
+    "a": 8,
     "d": [2],
-    "e": [2648],
-    "dhp": 14700
+    "e": [-151],
+    "dhp": 259
+  }, {
+    "a": 2,
+    "d": [8],
+    "e": [-153],
+    "dhp": 256
   }, {
     "a": 9,
-    "d": [2],
-    "e": [-1194],
-    "dhp": 13506
+    "d": [3],
+    "e": [-179],
+    "dhp": 6611
   }, {
-    "a": 10,
-    "d": [2],
-    "e": [-715],
-    "dhp": 12791
+    "a": 3,
+    "d": [9],
+    "e": [-5170],
+    "dhp": -4761,
+    "death": true
   }, {
     "a": 11,
     "d": [2],
-    "e": [-1411],
-    "dhp": 11380
+    "e": [-205],
+    "dhp": 54
   }, {
-    "a": 2,
-    "d": [11],
-    "e": [-4505],
-    "death": true,
-    "dhp": -830
+    "a": 4,
+    "d": [8],
+    "e": [-158],
+    "dhp": 98
+  }, {
+    "a": 1,
+    "d": [8],
+    "e": [-1776],
+    "dhp": -1678,
+    "death": true
   }, {
     "a": -11,
-    "d": [2],
-    "e": [-1864],
-    "t": 1,
-    "dhp": 11380
-  }, {
-    "a": -7,
-    "d": [2],
-    "e": [-1317],
-    "dhp": 9516
-  }, {
-    "a": 9,
-    "d": [2],
-    "e": [-1156],
-    "dhp": 7043
-  }, {
-    "a": 10,
-    "d": [2],
-    "e": [-753],
-    "dhp": 6290
+    "d": [11],
+    "e": [295],
+    "dhp": 409
   }, {
     "a": -2,
+    "d": [11],
+    "e": [-256],
+    "dhp": 153
+  }, {
+    "a": -3,
     "d": [2],
-    "e": [2275],
-    "dhp": 8565
+    "e": [6788],
+    "dhp": 410
   }, {
-    "a": 7,
-    "d": [2],
-    "e": [-767],
-    "dhp": 7798
-  }, {
-    "a": 9,
-    "d": [2],
-    "e": [-1334],
-    "dhp": 6464
-  }, {
-    "a": -10,
-    "d": [7, 9],
-    "e": [305, 303],
-    "dhp": 3005
-  }, {
-    "a": 2,
-    "d": [7],
-    "e": [-4101],
-    "death": true,
-    "dhp": -2207
-  }, {
-    "a": -7,
-    "d": [2],
-    "e": [-1073],
-    "t": 1,
-    "dhp": 6464
-  }, {
-    "a": 9,
-    "d": [2],
-    "e": [-1293],
-    "dhp": 4098
-  }, {
-    "a": 10,
-    "d": [2],
-    "e": [-740],
-    "dhp": 3358
-  }, {
-    "a": 2,
-    "d": [10],
-    "e": [-5352],
-    "death": true,
-    "dhp": -2918
-  }, {
-    "a": 9,
-    "d": [2],
-    "e": [-1182],
-    "dhp": 2176
-  }, {
-    "a": -2,
-    "d": [2],
-    "e": [2645],
-    "dhp": 4821
-  }, {
-    "a": 9,
-    "d": [2],
-    "e": [-1239],
-    "dhp": 3582
-  }, {
-    "a": 2,
-    "d": [9],
-    "e": [-4989],
-    "death": true,
-    "dhp": -1984
+    "a": 4,
+    "d": [11],
+    "e": [-176],
+    "dhp": -23,
+    "death": true
   }],
   "rewards": {
-    "ranking_elixir": 0,
-    "exp": 9,
-    "money": 23,
-    "elixir": 232
+    "totalSpirit": 6,
+    "fragment": 0,
+    "cards": [{
+      "id": 658,
+      "tableId": 30000,
+      "hp": 10,
+      "atk": 5,
+      "ability": 10,
+      "lv": 1,
+      "exp": 0,
+      "skillPoint": 0,
+      "elixirHp": 0,
+      "elixirAtk": 0,
+      "passiveSkills": []
+    }]
   }
-}
-exports.execute(bl);
+}, {
+  "cards": {
+    "1": {
+      "tableId": 168,
+      "hp": 410,
+      "atk": 178,
+      "spiritHp": 37,
+      "spiritAtk": 16
+    },
+    "2": {
+      "tableId": 59,
+      "hp": 5111,
+      "atk": 2132,
+      "spiritHp": 462,
+      "spiritAtk": 193
+    },
+    "3": {
+      "tableId": 8,
+      "hp": 437,
+      "atk": 156,
+      "spiritHp": 39,
+      "spiritAtk": 14
+    },
+    "4": {
+      "tableId": 243,
+      "hp": 451,
+      "atk": 155,
+      "spiritHp": 41,
+      "spiritAtk": 14
+    },
+    "6": 2,
+    "8": {
+      "tableId": 10019,
+      "hp": 260,
+      "atk": 149,
+      "normalAtkId": 3
+    },
+    "9": {
+      "tableId": 10019,
+      "hp": 260,
+      "atk": 149,
+      "normalAtkId": 3
+    },
+    "10": {
+      "tableId": 10019,
+      "hp": 260,
+      "atk": 149,
+      "normalAtkId": 3
+    },
+    "11": {
+      "tableId": 10020,
+      "hp": 390,
+      "atk": 223,
+      "boss": true,
+      "skillId": 10,
+      "normalAtkId": 1,
+      "effectId": 301
+    }
+  },
+  "ownId": 36,
+  "ownName": "寒枫",
+  "winner": "own",
+  "round_num": 2,
+  "steps": [{
+    "a": -1,
+    "d": [10],
+    "e": [-278],
+    "dhp": -18,
+    "death": true
+  }, {
+    "a": 8,
+    "d": [2],
+    "e": [-153],
+    "dhp": 4958
+  }, {
+    "a": 2,
+    "d": [8],
+    "e": [-1816],
+    "dhp": -1556,
+    "death": true
+  }, {
+    "a": 9,
+    "d": [3],
+    "e": [-140],
+    "dhp": 297
+  }, {
+    "a": -3,
+    "d": [9],
+    "e": [-235],
+    "dhp": 25
+  }, {
+    "a": -11,
+    "d": [9, 11],
+    "e": [53, 54],
+    "dhp": 260
+  }, {
+    "a": 4,
+    "d": [11],
+    "e": [-149],
+    "dhp": 111
+  }, {
+    "a": 1,
+    "d": [11],
+    "e": [-176],
+    "dhp": -65,
+    "death": true
+  }, {
+    "a": 9,
+    "d": [3],
+    "e": [-159],
+    "dhp": 138
+  }, {
+    "a": -2,
+    "d": [3],
+    "e": [2852],
+    "dhp": 437
+  }, {
+    "a": 3,
+    "d": [9],
+    "e": [-164],
+    "dhp": -86,
+    "death": true
+  }],
+  "rewards": {
+    "fragment": 0,
+    "gold": 5,
+    "cards": [{
+      "id": 555,
+      "tableId": 30000,
+      "hp": 10,
+      "atk": 5,
+      "ability": 10,
+      "lv": 1,
+      "exp": 0,
+      "skillPoint": 0,
+      "elixirHp": 0,
+      "elixirAtk": 0,
+      "passiveSkills": []
+    }]
+  }
+}];

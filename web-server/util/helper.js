@@ -53,13 +53,14 @@ var getVersion = function(platform, cb) {
   }
 };
 
-var getLastVersion = function() {
-  return versionData().lastVersion;
+var getLastVersion = function(platform) {
+  var vData = versionData();
+  return vData[platform].lastVersion;
 };
 var updateVersions = function(data) {
   jdata = JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
 
-  var fields = ['version', 'lastVersion', 'filename', 'lastFilename'];
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
 
   var platform;
   for (platform in jdata) {
@@ -75,10 +76,35 @@ var updateVersions = function(data) {
   fs.writeFileSync(versionPath(), JSON.stringify(jdata));
 };
 
+var versionCompare = function( stra, strb ) {
+  var straArr = stra.split('.');
+  var strbArr = strb.split('.');
+  var maxLen = Math.max( straArr.length, strbArr.length );
+  var result, sa, sb;
+  for ( var i = 0; i < maxLen; i++ ) {
+    sa = ~~straArr[i];
+    sb = ~~strbArr[i];
+    if(sa > sb){
+      result = 1;
+    }
+    else if(sa < sb){
+      result = -1;
+    }
+    else {
+      result = 0;
+    }
+    if ( result !== 0 ) {
+      return result;
+    }
+  }
+  return result;
+}
+
 module.exports = {
   make_request_url: make_request_url,
   versionData: versionData,
   version: getVersion,
   lastVersion: getLastVersion,
-  updateVersions: updateVersions
+  updateVersions: updateVersions,
+  versionCompare: versionCompare
 };

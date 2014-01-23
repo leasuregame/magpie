@@ -156,6 +156,7 @@ var BattleEndLayer = cc.Layer.extend({
         if (fragment) {
             var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
+            fragmentEffect.controller.ccbFragment.setString("+" + fragment);
             this.addChild(fragmentEffect, 1);
 
             fragmentEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);

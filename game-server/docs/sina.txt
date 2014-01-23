@@ -5,6 +5,7 @@ user：root
 124.238.236.33 219.232.247.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
 
 ssh -l root 115.29.175.156
+ssh -l root 115.29.12.178
 
 然后登陆新浪的ssh命令式：
 
@@ -69,6 +70,9 @@ tail -n 2000 ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 http://124.238.236.33:7003
 test, 123
+
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-area-server-1.log
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-connector-server-1.log
 
 新浪服务器master：
 角色帐号：987123000

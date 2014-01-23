@@ -219,10 +219,31 @@ var entryGame = function(account, areaId) {
 };
 
 
+var dologin = function() {
+  async.timesSeries(300, function(i, done) {
+    game.init(3010, function() {
+      console.log(i);
+      game.login('robotUser' + (i + 1), '1', 1, null, function() {
+        console.log('done');
+        done();
+      });
+    });
+  }, function(err) {
+    console.log('finished');
+  });
+};
+
+
 var game = {
-  init: function(port) {
+  init: function(host, port, callback) {
+    if (!host) {
+      host = '127.0.0.1'
+    }
+    if (!port) {
+      port = 3010;
+    }
     pomelo.init({
-      host: '127.0.0.1',
+      host: host,
       port: port
     }, function() {
       console.log('connect success!');
@@ -266,6 +287,10 @@ var game = {
         console.log('onVerifyResult', data);
       });
 
+      pomelo.on('onNewYearReward', function(data) {
+        console.log('onNewYearReward', data);
+      });    
+      
       pomelo.on('onPowerGive', function(data) {
         console.log('on power given', data);
       });
@@ -273,15 +298,22 @@ var game = {
       pomelo.on('onPowerGiveEnd', function(data) {
         console.log('on power given', data);
       });
+      if (typeof callback == 'function') {
+        callback();
+      }
     });
   },
-  login: function(name, pwd, areaId) {
+  login: function(name, pwd, areaId, version, callback) {
     pomelo.request('connector.userHandler.login', {
       account: name,
       password: pwd,
-      areaId: areaId
+      areaId: areaId,
+      version: version || '1.0.0'
     }, function(data) {
       console.log(data);
+      if (typeof callback == 'function') {
+        callback();
+      }
     });
   },
   request: function(route, args) {

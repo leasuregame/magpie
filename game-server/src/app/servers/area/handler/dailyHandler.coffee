@@ -25,14 +25,13 @@ Handler::lottery = (msg, session, next) ->
     if player.dailyGift.lotteryCount <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
-    if player.gold < goldResume
-      return next(null, {code: 501, msg: '魔石不足'})
-
     if player.dailyGift.lotteryFreeCount > 0
       ### 免费抽奖次数减一 ###
       goldResume = 0
       player.updateGift 'lotteryFreeCount', player.dailyGift.lotteryFreeCount-1
     else
+      if player.gold < goldResume
+        return next(null, {code: 501, msg: '魔石不足'})
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
 
@@ -44,7 +43,7 @@ Handler::lottery = (msg, session, next) ->
 
     resource = randomReward()
     if resource.type is 'power'
-      player.resumePower(resource.value*times)
+      player.addPower(resource.value*times)
     else
       player.increase(resource.type, resource.value*times)
 

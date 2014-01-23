@@ -1,6 +1,7 @@
 http = require 'http'
 url = require 'url'
 util = require 'util'
+logger = require('pomelo-logger').getLogger(__filename)
 
 APPKEY = 'o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo'
 
@@ -22,7 +23,6 @@ class Component
         res.writeHead(404, 'Not Found')
         res.end()
     .listen(server.webPort, server.host)
-    console.log 'create web on http://'+server.host+':'+server.webPort
     process.nextTick cb
 
   afterStart: (cb) ->
@@ -34,7 +34,6 @@ class Component
 
 checkOrderResult = (app, req, res) ->
   params = url.parse(req.url, true).query
-  console.log '-a--a--a-', params
   # source, trade_no, amount, partner, paydes, debug, sign
   source = params.source
   trade_no = params.trade_no
@@ -55,7 +54,7 @@ checkOrderResult = (app, req, res) ->
     )
 
   res.writeHead(200, {'Content-type': 'application/json'})
-  console.log 'tems sign: ', tempsign
+  console.log tempsign, sign
   if tempsign is sign
     [playerId, areaId, productId] = paydes.split(':')
     session = 
@@ -70,8 +69,8 @@ checkOrderResult = (app, req, res) ->
       paydes: paydes
       productId: productId
     }, (err, orderRes) ->
-      console.log '-asdfasd-', err, orderRes
       if err or not orderRes.ok
+        logger.error('add tb order faild: ', err, orderRes)
         res.write(JSON.stringify({status: 'error'}))
         return res.end()
       

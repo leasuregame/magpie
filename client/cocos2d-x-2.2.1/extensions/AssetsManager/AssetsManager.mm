@@ -74,6 +74,51 @@ struct ProgressMessage
     AssetsManager* manager;
 };
 
+string getNewVersion(string version1, string version2)
+{
+    if(version1 == "")
+    {
+        return version2;
+    }
+    
+    if(version2 == "")
+    {
+        return version1;
+    }
+    
+    if(version1 == version2)
+    {
+        return version1;
+    }
+    
+    int len = 3;
+    int v1[len], v2[len];
+    
+    sscanf(version1.c_str(), "%d.%d.%d", &v1[0], &v1[1], &v1[2]);
+    sscanf(version2.c_str(), "%d.%d.%d", &v2[0], &v2[1], &v2[2]);
+    
+    CCLOG("===============================");
+    CCLOG("%s", version1.c_str());
+    CCLOG("%d--%d--%d", v1[0], v1[1], v1[2]);
+    CCLOG("===============================");
+    CCLOG("%s", version2.c_str());
+    CCLOG("%d--%d--%d", v2[0], v2[1], v2[2]);
+    CCLOG("===============================");
+    
+    for(int i = 0; i < len; ++i)
+    {
+        if(v1[i] != v2[i])
+        {
+            return (v1[i] > v2[i] ? version1 : version2);
+        }
+    }
+    
+    CCLOG("版本号相同");
+    
+    return version1;
+}
+
+
 // Implementation of AssetsManager
 
 AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* versionFileUrl/* =NULL */, const char* storagePath/* =NULL */)
@@ -111,6 +156,9 @@ void AssetsManager::init()
 {
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
     std::string appVersion = getAppVersion();
+    
+    CCLOG("%s", oldAppVersion.c_str());
+    CCLOG("%s", appVersion.c_str());
     
     if(oldAppVersion != appVersion) {
         CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_APP_VERSION, appVersion);
@@ -165,8 +213,9 @@ bool AssetsManager::checkUpdate()
         return false;
     }
     
-    string recordedVersion = getVersion();
-    if (recordedVersion == _version)
+    string version = getVersion();
+    string recordedVersion = getNewVersion(version, _version);
+    if (recordedVersion == version)
     {
         sendErrorMessage(kNoNewVersion);
         CCLOG("there is not new version");
@@ -186,16 +235,17 @@ void* assetsManagerDownloadAndUncompress(void *data)
     
     do
     {
-        if (self->_downloadedVersion != self->_version)
-        {
-            if (! self->downLoad()) break;
-            
-            // Record downloaded version.
-            AssetsManager::Message *msg1 = new AssetsManager::Message();
-            msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
-            msg1->obj = self;
-            self->_schedule->sendMessage(msg1);
-        }
+        //        if (self->_downloadedVersion != self->_version)
+        //        {
+        
+        if (! self->downLoad()) break;
+        
+        // Record downloaded version.
+        AssetsManager::Message *msg1 = new AssetsManager::Message();
+        msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
+        msg1->obj = self;
+        self->_schedule->sendMessage(msg1);
+        //        }
         
         // Uncompress zip file.
         if (! self->uncompress())
@@ -483,6 +533,8 @@ bool AssetsManager::downLoad()
         return false;
     }
     
+    CCLOG("%s", _packageUrl.c_str());
+    
     // Download pacakge
     CURLcode res;
     curl_easy_setopt(_curl, CURLOPT_URL, _packageUrl.c_str());
@@ -552,7 +604,7 @@ void AssetsManager::setVersionFileUrl(const char *versionFileUrl)
 
 string AssetsManager::getVersion()
 {
-    return CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, getAppVersion());
+    return getNewVersion(CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, ""), getAppVersion());
 }
 
 void AssetsManager::deleteVersion()
@@ -721,6 +773,9 @@ void AssetsManager::createStoragePath()
  */
 void AssetsManager::destroyStoragePath()
 {
+    // Delete recorded version codes.
+    deleteVersion();
+    
     // save to document folder
     std::string storagePath = _storagePath + "data/";
     NSString *path = [NSString stringWithUTF8String:storagePath.c_str()];

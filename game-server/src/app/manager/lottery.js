@@ -18,9 +18,9 @@ var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 
-var lottery = function (level, type, rFragments, hFragment, hCounts, lightUpIds) {
+var lottery = function (level, type, times, rFragments, hFragment, hCounts, lightUpIds) {
     var card = newCard(level, hCounts, lightUpIds);
-    var fragment = gen_card_fragment(level, rFragments, hFragment);
+    var fragment = gen_card_fragment(level, times, rFragments, hFragment);
     var consume_val = consume(level, type);
     //var pss = initPassiveSkill(card.star);
 
@@ -58,8 +58,6 @@ var gen_card_star = function (level, hCounts) {
     var rateObj = utility.deepCopy(cardConfig.STAR[levelMapping[level]]);
     var margins = cardConfig.HIGHT_DRAWCARD_MARGIN;
 
-    console.log('before count',rateObj);
-
     if (level == 2) { //高级抽卡特殊处理
 
         if (hCounts == cardConfig.MAX_HIGHT_DRAWCARD_COUNT) {
@@ -83,13 +81,9 @@ var gen_card_star = function (level, hCounts) {
                     break;
                 }
             }
-
-            console.log('hCounts =',hCounts, 'after count...', rateObj['3'],rateObj['4'],rateObj['5']);
         }
 
     }
-
-    console.log('after count',rateObj);
 
     return utility.randomValue(_.keys(rateObj), _.values(rateObj));
 };
@@ -103,11 +97,22 @@ var gen_card_level = function (star) {
     return utility.randomValue(_.keys(levelInitObj), _.values(levelInitObj));
 };
 
-var gen_card_fragment = function (level, rCounts, hCounts) {
+var gen_card_fragment = function (level, times, rCounts, hCounts) {
+    // 单次高级抽卡，每10次获得一个卡魂
+    var frags = 0;
+    if(level == 2 && times == 1) {
+        if (hCounts%10 == 0) {
+            frags += 1;
+        } 
+        return frags;
+    }
+
+    if (level == 2 && times == 10) {
+        return 0;
+    }
 
     var margin = utility.deepCopy(cardConfig.FRAGMENT[level]);
     var counts = (level == 1) ? rCounts : hCounts;
-    console.log('counts',counts)
     counts = counts - margin.COUNTS;
     var rate = (counts <= 0 ) ? 0 : counts * margin.MARGIN;
     

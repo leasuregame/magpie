@@ -921,6 +921,12 @@ var CardListLayer = cc.Layer.extend({
         var cardIdList = [];
         var len = selectCardList.length;
 
+        if (len <= 0) {
+            TipLayer.tip("请选择出售卡牌");
+
+            return;
+        }
+
         for (var i = 0; i < len; ++i) {
             cardIdList.push(selectCardList[i].get("id"));
         }

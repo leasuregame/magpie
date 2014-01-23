@@ -12,9 +12,9 @@ var lz = lz || {};
 
 lz.platformConfig = {
     PLATFORM: "TB",
-    UPDATE_PACKAGE_URL: "http://115.29.175.156:9090/api/tb/update/",
-    UPDATE_VERSION_URL: "http://115.29.175.156:9090/api/tb/version",
-    GAME_NOTICE_URL: "http://115.29.175.156:9090/api/tb/notice"
+    UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
+    UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/tb/version",
+    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
 };
 
 var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;
@@ -91,6 +91,7 @@ tbAdapter.buyGoodsSuccessWithOrderHandler = function (order) {
     cc.log("tbAdapter buyGoodsSuccessWithOrderHandler: " + order);
 
     gameData.payment._closeWaitLayer();
+    gameData.payment.buyGoodsSuccess(order);
 
     Dialog.pop("充值已成功，请稍候");
 };
@@ -137,6 +138,7 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败");
             break;
         case 3:
+            gameData.payment.buyGoodsSuccess(order);
             Dialog.pop("充值已成功，请稍候");
             break;
         default :

@@ -17,6 +17,10 @@ block content
               lable(for='app_lastVersion', class='col-sm-2 control-label') 上一版本
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='app_lastVersion', value='#{version.app.lastVersion}')
+            div(class='form-group')
+              lable(for='app_oldestVersion', class='col-sm-2 control-label') 最老版本
+              div(class='col-sm-4')
+                input(type='text', class='form-control', name='app_oldestVersion', value='#{version.app.oldestVersion}')
             hr
             div(class='form-group')
               lable(for='app_filename', class='col-sm-2 control-label') 部分更新包
@@ -46,6 +50,10 @@ block content
               lable(for='tb_lastVersion', class='col-sm-2 control-label') 上一版本
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='tb_lastVersion', value='#{version.tb.lastVersion}')
+            div(class='form-group')
+              lable(for='tb_oldestVersion', class='col-sm-2 control-label') 最老版本
+              div(class='col-sm-4')
+                input(type='text', class='form-control', name='tb_oldestVersion', value='#{version.tb.oldestVersion}')
             hr
             div(class='form-group')
               lable(for='tb_filename', class='col-sm-2 control-label') 部分更新包

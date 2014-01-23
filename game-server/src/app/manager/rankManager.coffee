@@ -16,7 +16,8 @@ Manager = module.exports =
       rankings = ranks.map (r)-> r.ranking
       cb(null,rankings)
 
-  exchangeRankings: (player, targetId, isWin, cb) ->
+  exchangeRankings: (player, target, isWin, cb) ->
+    targetId = target.id
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err
         return cb(err)
@@ -34,6 +35,10 @@ Manager = module.exports =
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
       upgradeInfo = null
       level9Box = null
+
+      if isWin
+        exchangeRanking(challenger, defender)
+
       if player.dailyGift.challengeCount > 0
         countRewards(player, challenger, isWin, rewards)
         entityUtil.upgradePlayer player, rewards.exp, (isUpgrade, box, rew) ->
@@ -47,7 +52,6 @@ Manager = module.exports =
             level9Box = box
 
       if isWin
-        exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
@@ -56,11 +60,13 @@ Manager = module.exports =
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
-      checkAchievement(player, challenger) if isWin
-      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
+      if isWin
+        checkAchievement(player, challenger)
+      else
+        checkAchievement(target, defender)
+      updateAll(player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
-
-updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
+updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
   
   jobs = [
     {
@@ -87,6 +93,15 @@ updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, level
       where: {id: player.id}
       data: playerData
   } if not _.isEmpty(playerData)
+
+  targetData = target.getSaveData()
+  jobs.push {
+    type: 'update',
+    options: 
+      table: 'player',
+      where: {id: target.id}
+      data: targetData
+  } if not _.isEmpty(targetData)
 
   job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo, level9Box) 
 
@@ -125,11 +140,11 @@ rewardPercent = (ranking) ->
   pct
 
 countRewards = (player, challenger, isWin, rewards) ->
+  percent = rewardPercent(challenger.ranking)
+  
   if isWin
-    percent = rewardPercent(challenger.ranking)
     _str = 'win_'
   else
-    percent = 0
     _str = 'lose_'
 
   rankData = table.getTableItem 'rank', player.lv

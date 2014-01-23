@@ -23,6 +23,8 @@ Handler = (@app) ->
 探索
 ###
 Handler::explore = (msg, session, next) ->
+  console.log '-exlore-', msg, session.get('playerId')
+
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
@@ -112,7 +114,7 @@ Handler::wipeOut = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   type = msg.type or 'task'
   chapterId = msg.chapterId
-  console.log 'wipe out:', msg
+
   if type is 'task' and chapterId? and (chapterId < 1 or chapterId > 50)
     return next(null, {code: 501, msg: "无效参数：#{chapterId}"})
 
@@ -127,7 +129,6 @@ Handler::wipeOut = (msg, session, next) ->
       taskManager.wipeOut player, type, chapterId, cb
   ], (err, player, rewards) ->
     if err
-      console.log 'wipe out error: ', err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     upgradeInfo = null
@@ -161,7 +162,7 @@ Handler::passBarrier = (msg, session, next) ->
   player = null
   firstWin = false
   oldLayer = -10
-
+  console.log '爬塔：', playerId, layer
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -222,6 +223,7 @@ Handler::passBarrier = (msg, session, next) ->
 
     player.save()
 
+    console.log '-end 爬塔：'
     next(null, {code: 200, msg: {
       battleLog: bl, 
       upgradeInfo: upgradeInfo if upgradeInfo
@@ -306,11 +308,11 @@ Handler::mysticalPass = (msg, session, next) ->
 
         player.increase('skillPoint', mpcData.skill_point)
         player.clearMysticalPass()        
-        player.incSpirit(bl.rewards.totalSpirit)
+        player.incSpirit(bl.rewards.totalSpirit) if bl.rewards?.totalSpirit > 0
         player.save()
 
       cb(null, bl)
-  ], (err, bl) ->
+  ], (err, bl) =>
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -318,6 +320,8 @@ Handler::mysticalPass = (msg, session, next) ->
       battleLog: bl
       hasMystical: player.hasMysticalPass()
     }})
+
+    saveBattleLog(@app, playerId, player?.pass?.mystical?.diff, 'pve_mystical', bl) if bl?
 
 countSpirit = (player, bl, type) ->
   totalSpirit = 0

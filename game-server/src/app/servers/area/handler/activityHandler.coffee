@@ -15,6 +15,15 @@ Handler::get = (msg, session, next) ->
   args = msg.args
   playerId = session.get('playerId')
 
+  startDate = new Date @app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date @app.get('sharedConf').newYearActivity.endDate
+  endDate.setDate(endDate.getDate()+1)
+  now = new Date()
+
+  console.log startDate,now,endDate
+  if startDate > now or now > endDate
+    return next(null, {code: 501, msg: '不在领取时间段'})
+
   if not Activity[type]
     return next(null, {code: 501, msg: '没有该类型奖励'})
 

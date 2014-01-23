@@ -108,46 +108,55 @@ describe("Area Server", function() {
             describe('when get message list', function() {
                 beforeEach(function() {
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 1, 
                         status: 1
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 1,
                         status: 1
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 1,
                         status: 1
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 1, 
                         status: 1
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 2, 
                         status: 5
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 2, 
                         status: 4
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 2,
                         status: 4
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 3,
                         status: 6
                     }, function() {});
                     doAjax('/message/add', {
+                        sender: 101,
                         receiver: arthur.playerId,
                         type: 3,
                         status: 6

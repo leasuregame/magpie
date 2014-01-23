@@ -289,13 +289,18 @@ Handler::deleteFriend = (msg, session, next) ->
       }, cb
 
     (cb) ->
+      type = msgConfig.MESSAGETYPE
+      condiction = " (sender=#{playerId} and receiver=#{friendId} and type in (#{type.MESSAGE}, #{type.ADDFRIEND}, #{type.BLESS})) 
+        or (sender=#{friendId} and receiver=#{playerId} and type in (#{type.MESSAGE}, #{type.ADDFRIEND}, #{type.BLESS})) "
+      dao.message.delete where: condiction, cb
+
+    (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
   ], (err, results) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    message = results[0]
-    player = results[1]
+    player = results[2]
     player.delFriend(friendId)
     playerManager.delFriendIfOnline friendId, playerId
 

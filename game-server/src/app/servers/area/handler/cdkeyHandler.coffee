@@ -31,7 +31,10 @@ Handler::verifyCdkey = (msg, session, next) ->
         return cb({code: 501, msg: '激活码不存在'})
       if row.activate is 1
         return cb({code: 501, msg: '激活码已使用过'})
-      if row.endDate < new Date()
+
+      ed = new Date(row.endDate.toDateString())
+      ed.setDate(ed.getDate()+1)
+      if ed < new Date()
         return cb({code: 501, msg: '激活码已过期'})
       cdkeyRow = row
       cb()

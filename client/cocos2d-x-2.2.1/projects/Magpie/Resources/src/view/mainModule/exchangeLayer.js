@@ -50,15 +50,6 @@ var ExchangeLayer = cc.Layer.extend({
         bgSprite.setPosition(this._exchangeLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._exchangeLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon246);
-        titleIcon.setPosition(this._exchangeLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._exchangeLayerFit.headLabelPoint);
         this.addChild(headLabel);
@@ -91,15 +82,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         updateItem.setPosition(this._exchangeLayerFit.updateItemPoint);
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._exchangeLayerFit.backItemPoint);
-
-        var menu = cc.Menu.create(backItem, updateItem);
+        var menu = cc.Menu.create(updateItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 

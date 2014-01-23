@@ -659,6 +659,8 @@ var main_scene_image = {
     icon357: main_scene_path + "icon357.png",
     icon358: main_scene_path + "icon358.png",
     icon359: main_scene_path + "icon359.png",
+    icon360: main_scene_path + "icon360.png",
+    icon361: main_scene_path + "icon361.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",

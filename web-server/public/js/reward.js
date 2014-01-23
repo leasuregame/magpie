@@ -22,7 +22,7 @@ function initAreasList() {
     servers.forEach(function(area) {
         inner += '<option value =' + area.id + '>' + area.name + '</option>';
     });
-    $("#area").append(inner);
+    $("#area").append(inner).prop("selectedIndex", -1);
 };
 
 
@@ -42,9 +42,24 @@ function submit() {
     var playerName = $("#playerName").val();
     var content = $("#content").val();
     var mail = {};
-
     mail['content'] = content;
     mail['options'] = options;
+
+    if (Number.isNaN(areaId)) {
+        return alert('请选址服务器');
+    }
+
+    if ((Number.isNaN(areaId) || areaId == ALL) && playerName != '') {
+        return alert('请指定玩家所在的具体服务器');
+    }
+
+    if (content == '') {
+        return alert('奖励消息内容不能为空');
+    }
+
+    if (Object.keys(options).length == 0) {
+        return alert('至少添一个奖励选项')
+    }
 
     if (areaId == ALL) { //全部服务器
         var len = servers.length;
@@ -122,6 +137,14 @@ function submit() {
                             }
                         });
                     }
+                },
+                error: function(data) {
+                    if (data.status == 404) {
+                        alert('找不到指定的玩家');
+                    } else {
+                        console.log(data.responseText);
+                        alert(data.responseText);
+                    }
                 }
             });
         }
@@ -190,6 +213,10 @@ function getData() {
 
     if ($("#elixir").val() != '') {
         data['elixir'] = parseInt($("#elixir").val());
+    }
+
+    if ($("#energy").val() != '') {
+        data['energy'] = parseInt($("#energy").val());
     }
 
     return data;

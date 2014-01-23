@@ -140,14 +140,26 @@ Handler::sysMsg = (msg, session, next) ->
   options = msg.options or {}
   receiver = msg.playerId or SYSTEM
 
-  dao.message.create data: {
-    options: options
-    sender: SYSTEM
-    receiver: receiver
-    content: content
-    type: msgConfig.MESSAGETYPE.SYSTEM
-    status: msgConfig.MESSAGESTATUS.UNHANDLED
-  }, (err, res) =>
+  async.waterfall [
+    (cb) ->
+      if receiver isnt SYSTEM
+        playerManager.getPlayerInfo pid: receiver, (err, res) ->
+          if err
+            return cb({code: 501, msg: '找不到指定玩家'})
+          else
+            cb()
+      else 
+        cb()
+    (cb) ->
+      dao.message.create data: {
+        options: options
+        sender: SYSTEM
+        receiver: receiver
+        content: content
+        type: msgConfig.MESSAGETYPE.SYSTEM
+        status: msgConfig.MESSAGESTATUS.UNHANDLED
+      }, cb
+  ], (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
@@ -163,6 +175,7 @@ Handler::handleSysMsg = (msg, session, next) ->
   incValues = (obj, data) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
+    obj.incSpirit(data.spirit) if _.has(data, 'spirit')
 
   async.waterfall [
     (cb)->

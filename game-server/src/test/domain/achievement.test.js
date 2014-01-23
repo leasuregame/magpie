@@ -1,4 +1,4 @@
-require('./setup');
+//require('./setup');
 var Player = require('../../app/domain/entity/player');
 var achieve = require('../../app/domain/achievement');
 var should = require('should');
@@ -6,6 +6,26 @@ var should = require('should');
 describe("Achievement Object", function() {
 
 	describe("Achievement tests", function() {
+		describe('当修改了成就达成的上限时', function() {
+			it('应该重设达成标记', function() {
+				var ply = new Player({
+					lv: 50,
+					achievement: {
+						'1': {
+							method: 'levelTo',
+							isAchieve: true,
+							isTake: true,
+							got: 50
+						}
+					}
+				});
+
+				ply.achievement.should.eql({});
+
+
+			});
+		});
+
 		describe("when player lv is 10", function() {
 			it('应该有升级成就，但还没有达到', function() {
 				var ply = new Player({

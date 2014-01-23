@@ -8,7 +8,10 @@
 
 
 var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var path = require('path');
+var app = pomelo.createApp({
+  base: path.join(__dirname, '..', '..')
+});
 var dao = require('../../app/dao').init('mysql');
 
 app.loadConfig('mysql', app.getBase() + '/config/mysql.json');

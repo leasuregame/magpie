@@ -741,9 +741,9 @@ var BatterLayer = cc.Layer.extend({
                     effect4_1.setPosition(attackerLocate);
                     that.addChild(effect4_1, EFFECT_Z_ORDER);
 
-                    var effect1NodeAnimationManager = effect1_1.animationManager;
+                    var effectNodeAnimationManager = effect4_1.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
-                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                    effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                         effect4_1.removeFromParent();
 
                         var effect4_2 = cc.BuilderReader.load(main_scene_image.effect4_2, that);
@@ -771,8 +771,8 @@ var BatterLayer = cc.Layer.extend({
                     effect4_1.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
-                                effect1NodeAnimationManager.getSequenceDuration(
-                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                effectNodeAnimationManager.getSequenceDuration(
+                                    effectNodeAnimationManager.getRunningSequenceName()
                                 ),
                                 targetLocate
                             )
@@ -811,9 +811,9 @@ var BatterLayer = cc.Layer.extend({
                     effect5_1.setPosition(attackerLocate);
                     that.addChild(effect5_1, EFFECT_Z_ORDER);
 
-                    var effect1NodeAnimationManager = effect1_1.animationManager;
+                    var effectNodeAnimationManager = effect5_1.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
-                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                    effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                         effect5_1.removeFromParent();
 
                         var effect5_2 = cc.BuilderReader.load(main_scene_image.effect5_2, that);
@@ -841,8 +841,8 @@ var BatterLayer = cc.Layer.extend({
                     effect5_1.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
-                                effect1NodeAnimationManager.getSequenceDuration(
-                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                effectNodeAnimationManager.getSequenceDuration(
+                                    effectNodeAnimationManager.getRunningSequenceName()
                                 ),
                                 targetLocate
                             )
@@ -881,9 +881,9 @@ var BatterLayer = cc.Layer.extend({
                     effect6_1.setPosition(attackerLocate);
                     that.addChild(effect6_1, EFFECT_Z_ORDER);
 
-                    var effect1NodeAnimationManager = effect1_1.animationManager;
+                    var effectNodeAnimationManager = effect6_1.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
-                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                    effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                         effect6_1.removeFromParent();
 
                         var effect6_2 = cc.BuilderReader.load(main_scene_image.effect6_2, that);
@@ -911,8 +911,8 @@ var BatterLayer = cc.Layer.extend({
                     effect6_1.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
-                                effect1NodeAnimationManager.getSequenceDuration(
-                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                effectNodeAnimationManager.getSequenceDuration(
+                                    effectNodeAnimationManager.getRunningSequenceName()
                                 ),
                                 targetLocate
                             )
@@ -951,9 +951,9 @@ var BatterLayer = cc.Layer.extend({
                     effect7_1.setPosition(attackerLocate);
                     that.addChild(effect7_1, EFFECT_Z_ORDER);
 
-                    var effect1NodeAnimationManager = effect1_1.animationManager;
+                    var effectNodeAnimationManager = effect7_1.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
-                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                    effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                         effect7_1.removeFromParent();
 
                         var effect7_2 = cc.BuilderReader.load(main_scene_image.effect7_2, that);
@@ -981,8 +981,8 @@ var BatterLayer = cc.Layer.extend({
                     effect7_1.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(
-                                effect1NodeAnimationManager.getSequenceDuration(
-                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                effectNodeAnimationManager.getSequenceDuration(
+                                    effectNodeAnimationManager.getRunningSequenceName()
                                 ),
                                 targetLocate
                             )

@@ -160,8 +160,9 @@ Handler::luckyCard = (msg, session, next) ->
         card = table.getTableItem('cards', ent.tableId)
         msg = {
           #route: 'onSystemMessage',
-          msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
-          type: 0
+          msg: player.name + '*幸运的召唤到了5星卡*' + card.name + '*',
+          type: 0,
+          validDuration: 10 / 60
         }
         #@app.get('messageService').pushMessage(msg)
         msgQueue.push(msg)
@@ -380,8 +381,9 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {
-            msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
-            type: 0
+            msg: player.name + '*成功的将*' + cardNmae + '*进阶为5星',
+            type: 0,
+            validDuration: 10 / 60
           }
           msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
@@ -758,8 +760,9 @@ Handler::exchangeCard = (msg, session, next) ->
     if card.star is 5
       cardNmae = table.getTableItem('cards', card.tableId).name
       msg = {
-        msg: player.name + '成功兑换到一张' + cardNmae + '的五星卡牌！！！'
-        type: 0
+        msg: player.name + '*成功兑换到一张*' + cardNmae + '*的五星卡牌',
+        type: 0,
+        validDuration: 10 / 60
       }
       msgQueue.push(msg)
 

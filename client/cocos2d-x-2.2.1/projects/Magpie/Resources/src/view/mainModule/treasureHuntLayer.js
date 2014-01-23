@@ -98,10 +98,29 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._goldLabel.setPosition(this._treasureHuntLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
+        var horizontalIcon1 = cc.Sprite.create(main_scene_image.icon362);
+        horizontalIcon1.setPosition(this._treasureHuntLayerFit.horizontalIcon1Point);
+        this.addChild(horizontalIcon1);
+
+        var horizontalIcon2 = cc.Sprite.create(main_scene_image.icon362);
+        horizontalIcon2.setRotation(180);
+        horizontalIcon2.setPosition(this._treasureHuntLayerFit.horizontalIcon2Point);
+        this.addChild(horizontalIcon2);
+
+        var verticalIcon1 = cc.Sprite.create(main_scene_image.icon363);
+        verticalIcon1.setPosition(this._treasureHuntLayerFit.verticalIcon1Point);
+        verticalIcon1.setScaleY(this._treasureHuntLayerFit.verticalIconScale);
+        this.addChild(verticalIcon1);
+
+        var verticalIcon2 = cc.Sprite.create(main_scene_image.icon363);
+        verticalIcon2.setPosition(this._treasureHuntLayerFit.verticalIcon2Point);
+        verticalIcon2.setScaleY(this._treasureHuntLayerFit.verticalIconScale);
+        this.addChild(verticalIcon2);
+
         for (var i = 0; i < MAX_TREASURE_HUNT_COUNT; ++i) {
             var point = this._locate[i];
 
-            var iconSprite = cc.Sprite.create(this._getIconUrl(table[i].type));
+            var iconSprite = cc.Sprite.create(main_scene_image["treasureHunt" + (i + 1)]);
             iconSprite.setPosition(cc.p(point.x + 1, point.y - 1));
             this.addChild(iconSprite, 2);
 
@@ -120,9 +139,9 @@ var TreasureHuntLayer = cc.Layer.extend({
         this.addChild(treasureHuntBg);
 
         this._treasureHuntItem = cc.MenuItemImage.create(
-            main_scene_image.button2,
-            main_scene_image.button2s,
-            main_scene_image.button2d,
+            main_scene_image.button36,
+            main_scene_image.button36s,
+            main_scene_image.button36d,
             this._onClickTreasureHunt,
             this
         );
@@ -132,29 +151,28 @@ var TreasureHuntLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._treasureHuntItem.setScale(1.3);
-        this._treasureHuntItem.runAction(cc.RepeatForever.create(
-            cc.Sequence.create(
-                cc.ScaleTo.create(1.5, 1.05, 1.05),
-                cc.ScaleTo.create(1.5, 1.3, 1.3)
-            )
-        ));
+        this._treasureHuntIcon = cc.Sprite.create(main_scene_image.icon255);
+        this._treasureHuntIcon.setPosition(this._treasureHuntLayerFit.treasureHuntIcon2Point);
+        this.addChild(this._treasureHuntIcon);
 
-        this._treasureHuntIcon1 = cc.Sprite.create(main_scene_image.icon254);
-        this._treasureHuntIcon1.setPosition(this._treasureHuntLayerFit.treasureHuntIcon1Point);
-        this.addChild(this._treasureHuntIcon1);
+        var labelIcon1 = cc.Sprite.create(main_scene_image.icon254);
+        labelIcon1.setPosition(this._treasureHuntLayerFit.labelIcon1Point);
+        this.addChild(labelIcon1);
 
-        this._treasureHuntIcon2 = cc.Sprite.create(main_scene_image.icon255);
-        this._treasureHuntIcon2.setPosition(this._treasureHuntLayerFit.treasureHuntIcon2Point);
-        this.addChild(this._treasureHuntIcon2);
+        var labelIcon2 = cc.Sprite.create(main_scene_image.icon254);
+        labelIcon2.setPosition(this._treasureHuntLayerFit.labelIcon2Point);
+        this.addChild(labelIcon2);
 
         this._freeCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        this._freeCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._freeCountLabel.setPosition(this._treasureHuntLayerFit.freeCountLabelPoint);
         this.addChild(this._freeCountLabel);
 
         this._countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        this._countLabel.setAnchorPoint(cc.p(0, 0.5));
         this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
+
 
         return true;
     },
@@ -169,41 +187,10 @@ var TreasureHuntLayer = cc.Layer.extend({
         var count = treasureHunt.get("count");
         var freeCount = treasureHunt.get("freeCount");
 
-        this._countLabel.setString(count);
-        this._freeCountLabel.setString(freeCount);
+        this._countLabel.setString("当前免费次数:  " + count);
+        this._freeCountLabel.setString("今天还可寻宝:  " + freeCount);
 
-        this._treasureHuntIcon1.setVisible(freeCount > 0);
-        this._treasureHuntIcon2.setVisible(freeCount <= 0);
-    },
-
-    _getIconUrl: function (type) {
-        var url = "";
-
-        switch (type) {
-            case "power":
-                url = main_scene_image.icon106;
-                break;
-            case "elixir":
-                url = main_scene_image.icon107;
-                break;
-            case "money":
-                url = main_scene_image.icon108;
-                break;
-            case "skillPoint":
-                url = main_scene_image.icon109;
-                break;
-            case "energy":
-                url = main_scene_image.icon110;
-                break;
-            case "spirit":
-                url = main_scene_image.icon111;
-                break;
-            case "gold":
-                url = main_scene_image.icon112;
-                break;
-        }
-
-        return url;
+        this._treasureHuntIcon.setVisible(freeCount <= 0);
     },
 
     _getRandomIndex: function () {

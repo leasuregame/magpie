@@ -403,11 +403,12 @@ var Card = (function(_super) {
     };
 
     Card.prototype.getSkillInc = function() {
-        var max, min, skillInc = 0, star = this.star;
+        var max, min, skillInc = 0,
+            star = this.star;
         if (this.skill) {
-            max = this.skill['star'+star+'_inc_max'];
-            min = this.skill['star'+star+'_inc_min'];
-            skillInc = parseInt((max-min)*this.factor/1000) + min;
+            max = this.skill['star' + star + '_inc_max'];
+            min = this.skill['star' + star + '_inc_min'];
+            skillInc = Math.round((max - min) * this.factor / 1000) + min;
         }
         this.skillInc = skillInc;
         return skillInc;

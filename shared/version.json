@@ -3,12 +3,14 @@
     "version": "1.0.0",
     "filename": "small.zip",
     "lastVersion": "1.0.0",
-    "lastFilename": "big.zip"
+    "lastFilename": "big.zip",
+    "oldestVersion": "1.0.0"
   },
   "tb": {
     "version": "1.0.0",
     "filename": "tb-big.zip",
     "lastVersion": "1.0.0",
-    "lastFilename": "tb-small.zip"
+    "lastFilename": "tb-small.zip",
+    "oldestVersion": "1.0.0"
   }
 }

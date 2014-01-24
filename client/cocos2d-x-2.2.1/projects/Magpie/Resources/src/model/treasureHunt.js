@@ -35,7 +35,7 @@ var TreasureHunt = Entity.extend({
             return false;
         }
 
-        if (this._freeCount <= 0 && gameData.player.get("gold") < 10) {
+        if (this._freeCount <= 0 && gameData.player.get("gold") < 20) {
             TipLayer.tip("魔石不足");
             return false;
         }
@@ -71,6 +71,8 @@ var TreasureHunt = Entity.extend({
 
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
+
+                gameMark.updateTreasureHuntMark(false);
 
                 var str = {};
                 str[table.type] = table.value * times;

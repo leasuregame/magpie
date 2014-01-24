@@ -152,7 +152,23 @@ var UpdateLayer = cc.Layer.extend({
     successCallback: function () {
         cc.log("UpdateLayer successCallback");
 
-        require("game.jsc");
+        require("testUpdate.js");
+
+        var version = this.getVersion();
+        var path1 = cc.FileUtils.getInstance().fullPathForFilename("testUpdate.js");
+        var path2 = cc.FileUtils.getInstance().fullPathForFilename("image/testUpdateImage.png");
+        var text = testUpdateText || null;
+
+        lz.server.request("connector.upgradeHandler.success", {
+            version: version,
+            path1: path1,
+            path2: path2,
+            text: text
+        }, function (data) {
+            cc.log(data);
+
+            require("game.jsc");
+        });
     },
 
     update: function () {

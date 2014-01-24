@@ -40,6 +40,7 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer onExit");
 
         this._super();
+        this.unscheduleAllCallbacks();
 
         lz.dc.endLogPageView("同步推登录界面");
     },

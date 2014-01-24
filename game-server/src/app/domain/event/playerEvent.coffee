@@ -17,17 +17,7 @@ exports.addEvents = (app, player) ->
       }, () ->
 
   player.on 'power.resume', ->
-    ply = player
-    interval = playerConfig.POWER_RESUME.interval
-    power = ply.power
-    now = Date.now()
-    times = 1
-
-    if (power.time + interval) <= now
-      times = parseInt (now - power.time)/interval
-      resumePoint = playerConfig.POWER_RESUME.point
-      ply.resumePower(resumePoint * times)
-      ply.save()
+    player.checkResumePower()
 
   player.on 'lineUp.change', ->
     player.updateAbility()

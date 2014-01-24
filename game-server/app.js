@@ -17,13 +17,15 @@ var path = require('path');
 
 var watchSharedConf = function(app) {
   var confpath = path.join(__dirname, '..', 'shared', 'conf.json')
-  function setSharedConf(app, confpath) { 
-    app.set('sharedConf', JSON.parse(
-      fs.readFileSync(confpath))
-    )
-  }
+
+    function setSharedConf(app, confpath) {
+      app.set('sharedConf', JSON.parse(
+        fs.readFileSync(confpath)))
+    }
   setSharedConf(app, confpath);
-  fs.watchFile(confpath, function(curr, prev) {setSharedConf(app, confpath)});
+  fs.watchFile(confpath, function(curr, prev) {
+    setSharedConf(app, confpath)
+  });
 }
 
 /**
@@ -41,10 +43,16 @@ app.configure('production|development', function() {
   var areaInfo = require('./app/modules/areaInfo');
   var onlineUser = require('./app/modules/onlineUser');
   var loginsOnArea = require('./app/modules/loginsOnArea');
-  if(typeof app.registerAdmin === 'function'){
-    app.registerAdmin(areaInfo, {app: app});
-    app.registerAdmin(onlineUser, {app: app});
-    app.registerAdmin(loginsOnArea, {app: app});
+  if (typeof app.registerAdmin === 'function') {
+    app.registerAdmin(areaInfo, {
+      app: app
+    });
+    app.registerAdmin(onlineUser, {
+      app: app
+    });
+    app.registerAdmin(loginsOnArea, {
+      app: app
+    });
   }
 
   //Set areasIdMap, a map from area id to serverId.
@@ -74,7 +82,9 @@ app.configure('production|development', function() {
   app.route('area', routeUtil.area);
 
   app.filter(pomelo.filters.timeout());
-  app.rpcFilter(pomelo.rpcFilters.rpcLog())
+  app.rpcFilter(pomelo.rpcFilters.rpcLog());
+
+  watchSharedConf(app);
 });
 
 
@@ -88,12 +98,10 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
-
-  watchSharedConf(app);
   //app.filter(loginFilter());
 });
 
-app.configure('production|development', 'gate', function(){
+app.configure('production|development', 'gate', function() {
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 30
@@ -110,19 +118,25 @@ app.configure('production|development', 'connector|auth', function() {
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 
-  app.use(sync, {sync: {
-    path: __dirname + '/app/dao/mysql/mapping/user',
-    dbclient: dbclient,
-    interval: 60000
-  }});
+  app.use(sync, {
+    sync: {
+      path: __dirname + '/app/dao/mysql/mapping/user',
+      dbclient: dbclient,
+      interval: 60000
+    }
+  });
 });
 
 app.configure('production|development', 'area', function() {
   app.set('messageService', new MessageService(app));
   app.set('playerManager', new PlayerManager(app));
 
-  area.init({app: app});
-  msgQueue.init({app: app});
+  area.init({
+    app: app
+  });
+  msgQueue.init({
+    app: app
+  });
   areaUtil.checkFlagFile(app);
   //app.filter(argsFilter());
 
@@ -139,11 +153,13 @@ app.configure('production|development', 'area', function() {
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 
-  app.use(sync, {sync: {
-    path: __dirname + '/app/dao/mysql/mapping/area',
-    dbclient: dbclient,
-    interval: 60000
-  }});
+  app.use(sync, {
+    sync: {
+      path: __dirname + '/app/dao/mysql/mapping/area',
+      dbclient: dbclient,
+      interval: 60000
+    }
+  });
 
   app.load(counter);
   //app.load(verifier);

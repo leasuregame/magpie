@@ -194,8 +194,8 @@ var PassLayer = cc.Layer.extend({
         this.addChild(towerBgSprite);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button10,
+            main_scene_image.button10s,
             main_scene_image.button9d,
             main_scene_image.icon15,
             this._onClickWipeOut,
@@ -653,7 +653,11 @@ var PassLayer = cc.Layer.extend({
 
         var that = this;
         gameData.pass.mystical(function (battleLogId) {
-            that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            if (battleLogId) {
+                that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            } else {
+                LazyLayer.closeCloudLayer();
+            }
         });
     },
 
@@ -673,7 +677,7 @@ var PassLayer = cc.Layer.extend({
             var url = gameGuide.getExplainEffect("pass");
             var effect = cc.BuilderReader.load(main_scene_image[url], this);
             effect.setPosition(gameFit.gameGuide.effectPoint);
-            effect.animationManager.setCompletedAnimationCallback(this,function () {
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });
             this.addChild(effect, 10);

@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var rankDetails = ["历史最高排名", "历史最高连胜", "累计挑战次数", "累计被挑战次数", "累计胜利次数", "累计战败次数", "平均胜率"];
+var rankDetails = ["历史最高排名", "历史最高连胜", "当前连胜", "累计挑战次数", "累计被挑战次数", "累计胜利次数", "累计战败次数", "平均胜率"];
 
 var TournamentDetails = LazyLayer.extend({
     _tournamentDetailsFit: null,
@@ -30,8 +30,8 @@ var TournamentDetails = LazyLayer.extend({
         this.addChild(bgSprite);
 
         var point = this._tournamentDetailsFit.labelSpritePoint;
-
-        for (var i = 0; i < 7; i++) {
+        var len = rankDetails.length;
+        for (var i = 0; i < len; i++) {
             var labelSprite = cc.Scale9Sprite.create(main_scene_image.icon155);
             labelSprite.setContentSize(cc.size(550, 60));
             labelSprite.setPosition(cc.p(point.x, point.y - 70 * i));
@@ -53,29 +53,34 @@ var TournamentDetails = LazyLayer.extend({
         winStreakCount.setPosition(cc.p(point.x + 100, point.y - 70));
         this.addChild(winStreakCount);
 
+        var winningStreak = cc.LabelTTF.create(rankStats["winningStreak"] || "0", "STHeitiTC-Medium", 25);
+        winningStreak.setAnchorPoint(cc.p(0, 0.5));
+        winningStreak.setPosition(cc.p(point.x + 100, point.y - 140));
+        this.addChild(winningStreak);
+
         var challengeCount = cc.LabelTTF.create(rankStats["challengeCount"] || "0", "STHeitiTC-Medium", 25);
         challengeCount.setAnchorPoint(cc.p(0, 0.5));
-        challengeCount.setPosition(cc.p(point.x + 100, point.y - 140));
+        challengeCount.setPosition(cc.p(point.x + 100, point.y - 210));
         this.addChild(challengeCount);
 
         var beChallengeCount = cc.LabelTTF.create(rankStats["beChallengeCount"] || "0", "STHeitiTC-Medium", 25);
         beChallengeCount.setAnchorPoint(cc.p(0, 0.5));
-        beChallengeCount.setPosition(cc.p(point.x + 100, point.y - 210));
+        beChallengeCount.setPosition(cc.p(point.x + 100, point.y - 280));
         this.addChild(beChallengeCount);
 
         var winCount = cc.LabelTTF.create(rankStats["winCount"] || "0", "STHeitiTC-Medium", 25);
         winCount.setAnchorPoint(cc.p(0, 0.5));
-        winCount.setPosition(cc.p(point.x + 100, point.y - 280));
+        winCount.setPosition(cc.p(point.x + 100, point.y - 350));
         this.addChild(winCount);
 
         var loseCount = cc.LabelTTF.create(rankStats["loseCount"] || "0", "STHeitiTC-Medium", 25);
         loseCount.setAnchorPoint(cc.p(0, 0.5));
-        loseCount.setPosition(cc.p(point.x + 100, point.y - 350));
+        loseCount.setPosition(cc.p(point.x + 100, point.y - 420));
         this.addChild(loseCount);
 
         var avgWinRate = cc.LabelTTF.create(rankStats["avgWinRate"] || "0", "STHeitiTC-Medium", 25);
         avgWinRate.setAnchorPoint(cc.p(0, 0.5));
-        avgWinRate.setPosition(cc.p(point.x + 100, point.y - 420));
+        avgWinRate.setPosition(cc.p(point.x + 100, point.y - 490));
         this.addChild(avgWinRate);
 
         var titleLabel = StrokeLabel.create("竞  技  信  息", "STHeitiTC-Medium", 30);

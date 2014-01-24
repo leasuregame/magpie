@@ -83,6 +83,7 @@ var Rank = (function(_super) {
 		return {
 			historyRanking: this.historyRanking,
 			winStreakCount: this.winStreakCount,
+			winningStreak: this.winningStreak,
 			challengeCount: this.startCount,
 			beChallengeCount: this.challengeCount - this.startCount,
 			winCount: this.winCount,

@@ -36,6 +36,7 @@ var MainLayer = cc.Layer.extend({
     _friendMark: null,
     _messageMark: null,
     _lotteryMark: null,
+    _treasureHuntMark: null,
 
     _treasureHuntGuide: null,
     _rankGuide: null,
@@ -128,6 +129,10 @@ var MainLayer = cc.Layer.extend({
         );
         treasureHuntLayerItem.setOffset(cc.p(-5, 5));
         treasureHuntLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+
+        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._treasureHuntMark.setPosition(cc.p(185, 80));
+        treasureHuntLayerItem.addChild(this._treasureHuntMark);
 
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -296,7 +301,7 @@ var MainLayer = cc.Layer.extend({
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
         this._lotteryMark.setVisible(gameMark.getLotteryMark());
-
+        this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
     },
 
     updateGuide: function () {
@@ -360,7 +365,7 @@ var MainLayer = cc.Layer.extend({
                 }
             }
 
-            if(index == 4) {
+            if (index == 4) {
                 var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
                 if (gameData.player.get("lv") < limitLv) {
                     TipLayer.tip(limitLv + "级开放");
@@ -368,9 +373,9 @@ var MainLayer = cc.Layer.extend({
                 }
             }
 
-            MainScene.getInstance().switchLayer(this._layer[index]);
-
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            MainScene.getInstance().switchLayer(this._layer[index]);
 
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();

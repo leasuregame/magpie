@@ -26,30 +26,28 @@ Handler = (@app) ->
 Handler::queryEntry = (msg, session, next) ->
 	connectors = @app.getServersByType 'connector'
 	if not connectors or connectors.length is 0
-		return next {code: 500, msg: 'no servers available'}
+		return next {code: 500, msg: '没有可用的服务器'}
 
-	async.parallel [
-		(cb) => 
-			@app.get('serverStateService').areaPlayerCount cb
-		(cb) =>
-			@app.get('serverStateService').connectCount cb
-	], (err, results) ->
-		if err
-			logger.error('get servers state faild. ', err)
-		areas = results[0]
-		conns = results[1]
+	# async.parallel [
+	# 	(cb) => 
+	# 		@app.get('serverStateService').areaPlayerCount cb
+	# 	(cb) =>
+	# 		@app.get('serverStateService').connectCount cb
+	# ], (err, results) ->
+	# 	if err
+	# 		logger.error('get servers state faild. ', err)
+	# 	areas = results[0]
+	# 	conns = results[1]
 
-		connector = dispatcher.randomDispatch(connectors)
-		next null, {
-			code: 200, 
-			msg: {
-				host: connector.host, 
-				port: connector.clientPort,
-				servers: areasInfo.map (a) -> 
-					a.logins = areas['area-server-'+a.id]
-					a
-			}
+	connector = dispatcher.randomDispatch(connectors)
+	next null, {
+		code: 200, 
+		msg: {
+			host: connector.host, 
+			port: connector.clientPort,
+			servers: areasInfo
 		}
+	}
 
 randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]

@@ -807,7 +807,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.0333333015441895</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -948,7 +948,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.0333333015441895</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1263,7 +1263,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.93333333730697632</real>
+											<real>1.1666666269302368</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1278,7 +1278,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.1000000238418579</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1318,7 +1318,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>1.1000000238418579</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -1484,7 +1484,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.93333333730697632</real>
+											<real>1.1666666269302368</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1499,7 +1499,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.1000000238418579</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1539,7 +1539,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>1.1000000238418579</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -1807,13 +1807,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1.1000000238418579</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1000000238418579</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

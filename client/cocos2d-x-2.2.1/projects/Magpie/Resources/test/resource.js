@@ -613,6 +613,7 @@ var main_scene_image = {
     p101: effect_scene_path + "effect/" + "p101.png",
     p102: effect_scene_path + "effect/" + "p102.png",
     p103: effect_scene_path + "effect/" + "p103.png",
+    p104: effect_scene_path + "effect/" + "p104.png",
     
     
 

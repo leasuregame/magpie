@@ -45,24 +45,6 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>res/effect/uiEffect/up193.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>0.066666670143604279</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
 										<string>res/effect/uiEffect/up194.png</string>
 										<string>Use regular file</string>
 									</array>
@@ -76,7 +58,7 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.13333334028720856</real>
+									<real>0.033333335071802139</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
@@ -94,30 +76,12 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.20000000298023224</real>
+									<real>0.066666670143604279</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
 									<array>
 										<string>res/effect/uiEffect/up196.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>0.26666668057441711</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
-										<string>res/effect/uiEffect/up197.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -155,7 +119,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -326,13 +290,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.3333333432674408</real>
+			<real>0.10000000149011612</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.10000000149011612</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

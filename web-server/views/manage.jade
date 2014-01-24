@@ -25,7 +25,7 @@ block content
             div(class='form-group')
               lable(for='app_filename', class='col-sm-2 control-label') 部分更新包
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_filename', value='#{version.app.filename}')
+                input(type='text', class='form-control', name='app_filename', value='#{version.app.filename}' required)
               lable(for='app_lastFilename', class='col-sm-2 control-label') 全部更新包
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='app_lastFilename', value='#{version.app.lastFilename}')

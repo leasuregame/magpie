@@ -40,52 +40,60 @@ function submit() {
     var areaId = parseInt($("#area").val());
     var msg = getMsg();
 
-    if (areaId == ALL) { //全部服务器
-        var len = servers.length;
-        var id = 0;
+    if (msg.msg == '') {
+        return alert('消息内容不能为空');
+    }
 
-        async.whilst(
-            function() {
-                return id < len;
-            },
-            function(cb) {
-                dealAll(servers[id].id, msg, function(err) {
-                    if (err)
-                        cb(err);
-                    id++;
-                    cb();
-                });
-            },
-            function(err) {
+    if (confirm('确定要发送此消息吗?')) {
+
+
+        if (areaId == ALL) { //全部服务器
+            var len = servers.length;
+            var id = 0;
+
+            async.whilst(
+                function() {
+                    return id < len;
+                },
+                function(cb) {
+                    dealAll(servers[id].id, msg, function(err) {
+                        if (err)
+                            cb(err);
+                        id++;
+                        cb();
+                    });
+                },
+                function(err) {
+                    if (err) {
+                        console.log("err = ", err);
+                    } else {
+                        $.ajax({
+                            url: '/admin/logger4MsgPush?area=所有&msg=' + JSON.stringify(msg),
+                            type: "post"
+                        });
+                    }
+                }
+            );
+        } else {
+            dealAll(areaId, msg, function(err) {
                 if (err) {
                     console.log("err = ", err);
                 } else {
+                    var areaName = null;
+                    for (key in servers) {
+                        var area = servers[key];
+                        if (area.id = areaId) {
+                            areaName = area.name;
+                            break;
+                        }
+                    }
                     $.ajax({
-                        url: '/admin/logger4MsgPush?area=所有&msg=' + JSON.stringify(msg),
+                        url: '/admin/logger4MsgPush?area=' + areaName + '&msg=' + JSON.stringify(msg),
                         type: "post"
                     });
                 }
-            }
-        );
-    } else {
-        dealAll(areaId, msg, function(err) {
-            if (err) {
-                console.log("err = ", err);
-            } else {
-                var areaName = null;
-                for (key in servers) {
-                    var area = servers[key];
-                    if (area.id = areaId) {
-                        areaName = area.name;
-                        break;
-                    }
-                }
-                $.ajax({
-                    url: '/admin/logger4MsgPush?area=' + areaName + '&msg=' + JSON.stringify(msg),
-                    type: "post"
-                });
-            }
-        });
+            });
+        }
     }
 
 };
@@ -102,7 +110,20 @@ function getMsg() {
     }
     console.log(msg);
     return msg;
-}
+};
+
+function showInfo(text, type) {
+    var rc = 'hidden alert-' + (type == 'success' ? type : 'danger');
+    var ac = 'show alert-' + type;
+
+    $('.alert').removeClass(rc);
+    $('.alert').addClass(ac);
+    $('.alert').text(text);
+
+    setTimeout(function() {
+        $('.alert').hide();
+    }, 5000);
+};
 
 function dealAll(id, msg, cb) {
     async.waterfall([
@@ -120,10 +141,9 @@ function dealAll(id, msg, cb) {
                     $('.alert').text('恭喜！消息发送成功!')
                     callback();
                 } else {
-                    $('.alert').removeClass('hidden alert-success');
-                    $('.alert').addClass('show alert-danger');
-                    $('.alert').text('消息发送失败!');
-                    cb('error');                    
+
+                    showInfo('消息发送失败!', 'danger');
+                    cb('error');
                 }
             })
         },

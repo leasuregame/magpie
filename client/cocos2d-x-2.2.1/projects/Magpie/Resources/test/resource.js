@@ -14,7 +14,7 @@ var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
     // bg2: main_scene_path + "bg2.png",
     // bg3: main_scene_path + "bg3.png",
-    bg4: main_scene_path + "bg4.png",
+    // bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
     // bg7: main_scene_path + "bg7.png",

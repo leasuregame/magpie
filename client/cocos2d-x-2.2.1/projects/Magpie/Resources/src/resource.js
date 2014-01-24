@@ -230,8 +230,9 @@ var main_scene_image = {
 //    button33: main_scene_path + "button33.png",
     button34: main_scene_path + "button34.png",
 //    button35: main_scene_path + "button35.png",
-//    button36: main_scene_path + "button36.png",
-//    button36s: main_scene_path + "button36s.png",
+    button36: main_scene_path + "button36.png",
+    button36s: main_scene_path + "button36s.png",
+    button36d: main_scene_path + "button36d.png",
     button37: main_scene_path + "button37.png",
     button37s: main_scene_path + "button37s.png",
     button38: main_scene_path + "button38.png",
@@ -659,6 +660,10 @@ var main_scene_image = {
     icon357: main_scene_path + "icon357.png",
     icon358: main_scene_path + "icon358.png",
     icon359: main_scene_path + "icon359.png",
+    icon360: main_scene_path + "icon360.png",
+    icon361: main_scene_path + "icon361.png",
+    icon362: main_scene_path + "icon362.png",
+    icon363: main_scene_path + "icon363.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -806,7 +811,8 @@ var main_scene_image = {
     uiEffect75: "res/ccb/uiEffect75.ccbi",
     uiEffect76: "res/ccb/uiEffect76.ccbi",
     uiEffect77: "res/ccb/uiEffect77.ccbi",
-
+    uiEffect79: "res/ccb/uiEffect79.ccbi",
+    uiEffect81: "res/ccb/uiEffect81.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -1212,6 +1218,10 @@ for (var taskId = 1; taskId <= 50; ++taskId) {
 
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
+}
+
+for (var treasureHuntId = 1; treasureHuntId <= 20; ++treasureHuntId) {
+    main_scene_image["treasureHunt" + treasureHuntId] = main_scene_path + "treasureHunt" + treasureHuntId + ".png";
 }
 
 //字体

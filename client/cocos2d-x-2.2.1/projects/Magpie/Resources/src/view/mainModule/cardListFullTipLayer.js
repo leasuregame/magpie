@@ -133,6 +133,8 @@ var CardListFullTipLayer = LazyLayer.extend({
 
     _onClickCancel: function() {
         cc.log("CardListFullTipLayer _onClickCancel");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.removeFromParent();
     },
 

@@ -84,6 +84,27 @@ var Friend = Entity.extend({
         );
     },
 
+    _sort: function (a, b) {
+        cc.log("friend _sort");
+
+        if (a.canReceive && !b.canReceive) {
+            return -1;
+        }
+
+        if (!a.canReceive && b.canReceive) {
+            return 1;
+        }
+
+        return a.id - b.id;
+    },
+
+    getFriendList: function () {
+        cc.log("friend getFriendLise");
+
+        this._friendList.sort(this._sort);
+        return this._friendList;
+    },
+
     _onBless: function (msg) {
         cc.log("friend _onBless");
 

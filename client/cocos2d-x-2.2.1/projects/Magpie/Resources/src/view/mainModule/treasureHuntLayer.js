@@ -174,14 +174,19 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
-        var id = 4;
+        var id1 = 4, id2 = 4;
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
-        effect.setPosition(this._locate[id]);
+        effect.setPosition(this._locate[id1]);
         effect.animationManager.setCompletedAnimationCallback(this, function () {
-            this._flashEffect(id - 1, id + 1);
             effect.removeFromParent();
         });
         this.addChild(effect, 4);
+
+        this.schedule(function () {
+            id1--;
+            id2++;
+            this._flashEffect(id1, id2);
+        }, 0.27, 9);
 
         return true;
     },
@@ -199,12 +204,13 @@ var TreasureHuntLayer = cc.Layer.extend({
         this.addChild(effect1, 4);
 
         if (id1 == id2) {
+           // this.unschedule(this._flashEffect);
             return;
         } else {
             var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
             effect2.setPosition(this._locate[id2]);
             effect2.animationManager.setCompletedAnimationCallback(this, function () {
-                this._flashEffect(id1 - 1, id2 + 1);
+                // this._flashEffect(id1 - 1, id2 + 1);
                 effect2.removeFromParent();
             });
             this.addChild(effect2, 4);

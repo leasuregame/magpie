@@ -135,10 +135,6 @@ var TreasureHuntLayer = cc.Layer.extend({
             this.addChild(valueLabel, 2);
         }
 
-//        this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
-//        this.addChild(this._selectFrame);
-//        this._selectFrame.setVisible(false);
-
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
         treasureHuntBg.setPosition(this._treasureHuntLayerFit.treasureHuntBgPoint);
         this.addChild(treasureHuntBg);
@@ -178,8 +174,41 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
+        var id = 4;
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
+        effect.setPosition(this._locate[id]);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            this._flashEffect(id - 1, id + 1);
+            effect.removeFromParent();
+        });
+        this.addChild(effect, 4);
 
         return true;
+    },
+
+    _flashEffect: function (a, b) {
+
+        var id1 = (a + 20) % 20;
+        var id2 = b;
+
+        var effect1 = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
+        effect1.setPosition(this._locate[id1]);
+        effect1.animationManager.setCompletedAnimationCallback(this, function () {
+            effect1.removeFromParent();
+        });
+        this.addChild(effect1, 4);
+
+        if (id1 == id2) {
+            return;
+        } else {
+            var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
+            effect2.setPosition(this._locate[id2]);
+            effect2.animationManager.setCompletedAnimationCallback(this, function () {
+                this._flashEffect(id1 - 1, id2 + 1);
+                effect2.removeFromParent();
+            });
+            this.addChild(effect2, 4);
+        }
     },
 
     update: function () {

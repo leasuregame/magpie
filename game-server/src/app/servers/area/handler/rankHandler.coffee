@@ -8,6 +8,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+Cache = require '../../../common/cache'
 
 rankingConfig = table.getTableItem('ranking_list',1)
 
@@ -27,6 +28,8 @@ STATUS_CHALLENGE = 1  # 可挑战状态 ###
 STATUS_COUNTER_ATTACK = 2  # 可反击状态 ###
 STATUS_DISPLAYE = 3  # 可显示状态，不显示查询按钮 ###
 
+BusyRankings = new Cache()
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -35,7 +38,6 @@ Handler = (@app) ->
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
   player = null
-  console.log '-ranking list-', playerId
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -85,7 +87,6 @@ Handler::rankingList = (msg, session, next) ->
       rankList: players,
       rankStats: r.stats
     }
-    console.log '-end ranking list-'
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -93,14 +94,23 @@ Handler::challenge = (msg, session, next) ->
   playerName = session.get('playerName')
   targetId = msg.targetId
   ranking = msg.ranking
-  console.log '-challenge-', playerId, targetId, ranking
-  if playerId is targetId
-   return next null,{code: 501, msg: '不能挑战自己'}
+
+  console.log '-------------------------------------', BusyRankings.all()
+  if BusyRankings.get(ranking)?
+    return next null, {code: 501, msg: '对方正在战斗中'}
+  BusyRankings.put(ranking, ranking, 10000)
 
   player = null
   target = null
   isWin = false
   async.waterfall [
+    (cb) ->
+      console.log '============================1'
+      console.log BusyRankings.all()
+      if playerId is targetId
+        return cb({code: 501, msg: '不能挑战自己'})
+      else
+        cb()
     (cb) ->
       playerManager.getPlayers [playerId, targetId], cb
 
@@ -126,14 +136,19 @@ Handler::challenge = (msg, session, next) ->
 
   ], (err, rewards, bl, upgradeInfo, level9Box) ->
       if err
+        BusyRankings.del(ranking)
         return next(null, {code: err.code, msg: err.msg or err.message})
+      console.log '============================2'
+      console.log BusyRankings.all()
 
       firstTime = false
       if player.rank?.startCount is 1
         firstTime = true
 
-      console.log '-end challenge-'
       bl.rewards = rewards
+      
+      BusyRankings.del(ranking)
+
       next(null, {code: 200, msg: {
         battleLog: bl
         upgradeInfo: upgradeInfo if upgradeInfo

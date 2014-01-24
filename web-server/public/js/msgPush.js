@@ -102,7 +102,20 @@ function getMsg() {
     }
     console.log(msg);
     return msg;
-}
+};
+
+function showInfo(text, type) {
+    var rc = 'hidden alert-' + (type=='success'?type:'danger');
+    var ac = 'show alert-' + type;
+
+    $('.alert').removeClass(rc);
+    $('.alert').addClass(ac);
+    $('.alert').text(text);
+
+    setTimeout(function() {
+        $('.alert').hide();
+    }, 5000);
+};
 
 function dealAll(id, msg, cb) {
     async.waterfall([
@@ -115,14 +128,10 @@ function dealAll(id, msg, cb) {
         function(callback) {
             sendMsg(msg, function(code) {
                 if (code == 200) {
-                    $('.alert').removeClass('hidden alert-danger');
-                    $('.alert').addClass('show alert-success');
-                    $('.alert').text('恭喜！消息发送成功!')
+                    showInfo('恭喜！消息发送成功!', 'success');
                     callback();
-                } else {
-                    $('.alert').removeClass('hidden alert-success');
-                    $('.alert').addClass('show alert-danger');
-                    $('.alert').text('消息发送失败!');
+                } else {                    
+                    showInfo('消息发送失败!', 'danger');
                     cb('error');                    
                 }
             })

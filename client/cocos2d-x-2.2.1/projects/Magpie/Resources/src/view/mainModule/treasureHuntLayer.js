@@ -98,6 +98,10 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._goldLabel.setPosition(this._treasureHuntLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect79, this);
+        bgEffect.setPosition(this._treasureHuntLayerFit.treasureHuntItemPoint);
+        this.addChild(bgEffect);
+
         var horizontalIcon1 = cc.Sprite.create(main_scene_image.icon362);
         horizontalIcon1.setPosition(this._treasureHuntLayerFit.horizontalIcon1Point);
         this.addChild(horizontalIcon1);

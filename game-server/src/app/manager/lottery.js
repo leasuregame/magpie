@@ -18,9 +18,9 @@ var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 
-var lottery = function (level, type, rFragments, hFragment, hCounts, lightUpIds) {
+var lottery = function (level, type, times, rFragments, hFragment, hCounts, lightUpIds) {
     var card = newCard(level, hCounts, lightUpIds);
-    var fragment = gen_card_fragment(level, rFragments, hFragment);
+    var fragment = gen_card_fragment(level, times, rFragments, hFragment);
     var consume_val = consume(level, type);
     //var pss = initPassiveSkill(card.star);
 
@@ -97,7 +97,19 @@ var gen_card_level = function (star) {
     return utility.randomValue(_.keys(levelInitObj), _.values(levelInitObj));
 };
 
-var gen_card_fragment = function (level, rCounts, hCounts) {
+var gen_card_fragment = function (level, times, rCounts, hCounts) {
+    // 单次高级抽卡，每10次获得一个卡魂
+    var frags = 0;
+    if(level == 2 && times == 1) {
+        if (hCounts%10 == 0) {
+            frags += 1;
+        } 
+        return frags;
+    }
+
+    if (level == 2 && times == 10) {
+        return 0;
+    }
 
     var margin = utility.deepCopy(cardConfig.FRAGMENT[level]);
     var counts = (level == 1) ? rCounts : hCounts;

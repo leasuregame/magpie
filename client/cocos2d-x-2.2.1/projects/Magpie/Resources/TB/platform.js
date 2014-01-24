@@ -138,6 +138,7 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败");
             break;
         case 3:
+            gameData.payment.buyGoodsSuccess(order);
             Dialog.pop("充值已成功，请稍候");
             break;
         default :

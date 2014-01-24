@@ -157,6 +157,9 @@ void AssetsManager::init()
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
     std::string appVersion = getAppVersion();
     
+    CCLOG("%s", oldAppVersion.c_str());
+    CCLOG("%s", appVersion.c_str());
+    
     if(oldAppVersion != appVersion) {
         CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_APP_VERSION, appVersion);
         
@@ -232,16 +235,17 @@ void* assetsManagerDownloadAndUncompress(void *data)
     
     do
     {
-        if (self->_downloadedVersion != self->_version)
-        {
-            if (! self->downLoad()) break;
-            
-            // Record downloaded version.
-            AssetsManager::Message *msg1 = new AssetsManager::Message();
-            msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
-            msg1->obj = self;
-            self->_schedule->sendMessage(msg1);
-        }
+        //        if (self->_downloadedVersion != self->_version)
+        //        {
+        
+        if (! self->downLoad()) break;
+        
+        // Record downloaded version.
+        AssetsManager::Message *msg1 = new AssetsManager::Message();
+        msg1->what = ASSETSMANAGER_MESSAGE_RECORD_DOWNLOADED_VERSION;
+        msg1->obj = self;
+        self->_schedule->sendMessage(msg1);
+        //        }
         
         // Uncompress zip file.
         if (! self->uncompress())
@@ -529,6 +533,8 @@ bool AssetsManager::downLoad()
         return false;
     }
     
+    CCLOG("%s", _packageUrl.c_str());
+    
     // Download pacakge
     CURLcode res;
     curl_easy_setopt(_curl, CURLOPT_URL, _packageUrl.c_str());
@@ -767,6 +773,9 @@ void AssetsManager::createStoragePath()
  */
 void AssetsManager::destroyStoragePath()
 {
+    // Delete recorded version codes.
+    deleteVersion();
+    
     // save to document folder
     std::string storagePath = _storagePath + "data/";
     NSString *path = [NSString stringWithUTF8String:storagePath.c_str()];

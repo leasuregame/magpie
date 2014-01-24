@@ -35,6 +35,10 @@ Manager = module.exports =
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
       upgradeInfo = null
       level9Box = null
+
+      if isWin
+        exchangeRanking(challenger, defender)
+
       if player.dailyGift.challengeCount > 0
         countRewards(player, challenger, isWin, rewards)
         entityUtil.upgradePlayer player, rewards.exp, (isUpgrade, box, rew) ->
@@ -48,7 +52,6 @@ Manager = module.exports =
             level9Box = box
 
       if isWin
-        exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
         challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
@@ -137,11 +140,11 @@ rewardPercent = (ranking) ->
   pct
 
 countRewards = (player, challenger, isWin, rewards) ->
+  percent = rewardPercent(challenger.ranking)
+  
   if isWin
-    percent = rewardPercent(challenger.ranking)
     _str = 'win_'
   else
-    percent = 0
     _str = 'lose_'
 
   rankData = table.getTableItem 'rank', player.lv

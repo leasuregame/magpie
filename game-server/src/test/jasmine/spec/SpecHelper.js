@@ -287,6 +287,10 @@ var game = {
         console.log('onVerifyResult', data);
       });
 
+      pomelo.on('onNewYearReward', function(data) {
+        console.log('onNewYearReward', data);
+      });    
+      
       pomelo.on('onPowerGive', function(data) {
         console.log('on power given', data);
       });

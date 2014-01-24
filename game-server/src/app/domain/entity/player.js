@@ -336,7 +336,8 @@ var Player = (function(_super) {
         resetDate: '1970-1-1',
         firstTime: {
             lowLuckyCard: 1,
-            highLuckyCard: 1
+            highLuckyCard: 1,
+            highTenLuckCard: 1
         },
         levelReward: [],
         teachingStep: 0,
@@ -879,7 +880,7 @@ var Player = (function(_super) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
-        this.passMark.mark(layer);
+        this.passMark.setValue(this.pass.mark).mark(layer);
         pass.mark = this.passMark.value;
         this.pass = pass;
     };
@@ -889,10 +890,11 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        return this.passMark.hasMark(layer);
+        return this.passMark.setValue(this.pass.mark).hasMark(layer);
     };
 
     Player.prototype.canResetPassMark = function() {
+        this.passMark.setValue(this.pass.mark);
         for (var i = 1; i <= this.passLayer; i++) {
             if (this.passMark.hasMark(i)) {
                 return true;
@@ -1112,7 +1114,19 @@ var Player = (function(_super) {
                 return true;
             }
         }
+
+        if (typeof this.firstTime.highTenLuckCard == 'undefined') {
+            return true;
+        }
         return false;
+    };
+
+    Player.prototype.getFirstTime = function() {
+        return {
+            lowLuckyCard: this.firstTime.lowLuckyCard,
+            highLuckyCard: this.firstTime.highLuckyCard,
+            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard
+        };
     };
 
     Player.prototype.setFirstTime = function(name, val) {
@@ -1191,7 +1205,7 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.firstTime : void 0,
+            firstTime: this.hasFirstTime() ? this.getFirstTime() : void 0,
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,

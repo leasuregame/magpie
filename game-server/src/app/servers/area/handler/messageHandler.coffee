@@ -289,13 +289,18 @@ Handler::deleteFriend = (msg, session, next) ->
       }, cb
 
     (cb) ->
+      type = msgConfig.MESSAGETYPE
+      condiction = " (sender=#{playerId} and receiver=#{friendId} and type in (#{type.MESSAGE}, #{type.ADDFRIEND}, #{type.BLESS})) 
+        or (sender=#{friendId} and receiver=#{playerId} and type in (#{type.MESSAGE}, #{type.ADDFRIEND}, #{type.BLESS})) "
+      dao.message.delete where: condiction, cb
+
+    (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
   ], (err, results) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    message = results[0]
-    player = results[1]
+    player = results[2]
     player.delFriend(friendId)
     playerManager.delFriendIfOnline friendId, playerId
 
@@ -532,21 +537,6 @@ Handler::giveBless = (msg, session, next) ->
       cb()
 
     (cb) ->
-      playerManager.getPlayerInfo {pid: friendId}, (err, ply) ->
-        if err
-          return cb(err)
-
-        if ply.dailyGift.receivedBless.count <= 0
-          return cb({code: 501, msg: '今日对方接收祝福的次数已经达到上限'})
-
-        ply.dailyGift.receivedBless.count--
-        ply.dailyGift.receivedBless.givers.push(playerId)
-        ply.updateGift 'receivedBless', ply.dailyGift.receivedBless
-        ply.receiveBlessOnce()
-        ply.save()
-        cb()
-
-    (cb) ->
       dao.message.create data: {
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
@@ -587,9 +577,7 @@ Handler::receiveBless = (msg, session, next) ->
       player = ply
       if player.dailyGift.receivedBless.count <= 0
         return cb({code: 501, msg: '今日可领祝福次数已用完'})
-      cb()
 
-    (cb) ->
       dao.message.fetchOne where: id: msgId, cb
 
     (res, cb) ->
@@ -605,6 +593,10 @@ Handler::receiveBless = (msg, session, next) ->
       cb()
 
     (cb) ->
+      player.dailyGift.receivedBless.count--
+      player.dailyGift.receivedBless.givers.push(playerId)
+      player.updateGift 'receivedBless', player.dailyGift.receivedBless
+      player.receiveBlessOnce()      
       player.increase('energy', message.options.energy)
       player.save()
       cb()

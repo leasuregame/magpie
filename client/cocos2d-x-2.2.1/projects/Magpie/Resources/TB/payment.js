@@ -57,10 +57,14 @@ var Payment = Entity.extend({
     buyGoodsSuccess: function (order) {
         cc.log("TB Payment buyGoodsSuccess: " + order);
 
+        if (!order) {
+            return;
+        }
+
         var args = order.split("-");
         var productId = parseInt(args[0]);
 
-        if(productId >= 8) {
+        if (productId >= 8) {
             gameData.player.resetGoldCards(9 - productId);
             this._cb();
 

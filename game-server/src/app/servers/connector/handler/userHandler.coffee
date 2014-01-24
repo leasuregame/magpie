@@ -137,12 +137,12 @@ authParams = (type, msg, app) ->
   args.frontendId = app.getServerId()
   [args, keyMap[type]?.method]
 
-getLatestVersion = (app, platform) ->
+getVersionData = (app, platform) ->
   if not platform
     platform = app.get('platform')
     
   vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
-  vdata[platform]?.version
+  vdata[platform]
 
 versionCompare = (stra, strb) ->
   straArr = stra.split('.')
@@ -165,10 +165,14 @@ versionCompare = (stra, strb) ->
 
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  if versionCompare(version, getLatestVersion(app, platform)) >= 0
+  vData = getVersionData(app, platform)
+  if versionCompare(version, vData.version) >= 0
     cb()
-  else 
-    cb({code: 600, msg: '客户端版本不是最新'})
+  else
+    if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
+      cb({code: 501, msg: '版本过低，请及时更新'})
+    else 
+      cb({code: 600, msg: '客户端版本不是最新'})
 
 checkIsOpenServer = (app, cb) ->
   openTime = new Date(app.get('sharedConf').openServerTime)

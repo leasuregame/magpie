@@ -308,11 +308,11 @@ Handler::mysticalPass = (msg, session, next) ->
 
         player.increase('skillPoint', mpcData.skill_point)
         player.clearMysticalPass()        
-        player.incSpirit(bl.rewards.totalSpirit)
+        player.incSpirit(bl.rewards.totalSpirit) if bl.rewards?.totalSpirit > 0
         player.save()
 
       cb(null, bl)
-  ], (err, bl) ->
+  ], (err, bl) =>
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -320,6 +320,8 @@ Handler::mysticalPass = (msg, session, next) ->
       battleLog: bl
       hasMystical: player.hasMysticalPass()
     }})
+
+    saveBattleLog(@app, playerId, player?.pass?.mystical?.diff, 'pve_mystical', bl) if bl?
 
 countSpirit = (player, bl, type) ->
   totalSpirit = 0

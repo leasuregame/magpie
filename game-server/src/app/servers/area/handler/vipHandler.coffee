@@ -33,7 +33,8 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
       playerId: player.id,
       type: GOLDCARDMAP[product.product_id],
       created: utility.dateFormat(today, "yyyy-MM-dd"),
-      validDate: utility.dateFormat(vd, "yyyy-MM-dd")
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd"),
+      status: 1
     }
   }, (err, res) ->
     if err
@@ -51,6 +52,43 @@ isGoldCard = (product) ->
     return true
   else
     return false
+
+noticeNewYearActivity = (app, player, cb) ->
+  startDate = new Date app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date app.get('sharedConf').newYearActivity.endDate
+  now = new Date()
+
+  console.log startDate, now, endDate
+  if startDate <= now < endDate
+    app.get('dao').order.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
+      return cb(err) if err
+      console.log '-a-', cash
+      if cash <= 0
+        return cb()
+
+      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
+      console.log '-b-', len, player.activities
+      if len > 0
+        recharge = player.activities.recharge or 0
+        flag = (Math.pow(2, len)-1)^recharge
+        sendNewYearMsg(app, player, flag, recharge) if flag > 0
+
+      return cb()
+  else
+    cb()
+
+sendNewYearMsg = (app, player, flag, recharge) ->
+  app.get('messageService').pushByPid player.id, {
+    route: 'onNewYearReward',
+    msg: {
+      flag: {
+        canGet: flag
+        hasGet: recharge
+      }
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to send message to playerId ', playerId)
 
 module.exports = (app) ->
   new Handler(app)
@@ -86,6 +124,7 @@ Handler::buyVip = (msg, session, next) ->
       vip: player.vip
     }})
 
+    noticeNewYearActivity @app, player, (err) ->
     @app.get('messageService').pushByPid player.id, {
       route: 'onVerifyResult',
       msg: {

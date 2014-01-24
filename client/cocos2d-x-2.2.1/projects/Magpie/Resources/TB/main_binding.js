@@ -106,8 +106,6 @@ var appFiles = [
     'src/view/startAnimationModule/startAnimationLayer.js',
     'src/view/startAnimationModule/startAnimationScene.js',
 
-    'src/view/mainModule/effect.js',
-
     'src/view/mainModule/cocosBuilderClass.js',
     'src/view/mainModule/abilityRankLayer.js',
     'src/view/mainModule/achievementLayer.js',

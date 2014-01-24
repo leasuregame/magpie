@@ -8,7 +8,7 @@ block head
     require('boot');
 
 block content
-  h1 消息推送
+  h1.text-center 奖励发放
   hr
   form.form-horizontal(role='form', action='#')
     div.form-group
@@ -19,41 +19,45 @@ block content
       label.col-sm-2.control-label 玩家
       div.col-sm-10
         input.form-control(type='text', id='playerName' name='type')
+    div.form-group
+      label.col-sm-2.control-label 标题
+      div.col-sm-10
+        input.form-control(type='text', id='title' name='type')
     fieldset
       legend 奖励选项，至少选填一种
       div.form-group
         label.col-sm-2.control-label 魔石
         div.col-sm-10
-          input.form-control(type='number', id='gold' name='type')
+          input.form-control.reward(type='number', id='gold' name='type')
       div.form-group
         label.col-sm-2.control-label 仙币
         div.col-sm-10
-          input.form-control(type='number', id='money' name='type')
+          input.form-control.reward(type='number', id='money' name='type')
       div.form-group
         label.col-sm-2.control-label 体力点
         div.col-sm-10
-          input.form-control(type='number', id='power' name='type')
+          input.form-control.reward(type='number', id='power' name='type')
       div.form-group
         label.col-sm-2.control-label 灵气
         div.col-sm-10
-          input.form-control(type='number', id='spirit' name='type')
+          input.form-control.reward(type='number', id='spirit' name='type')
       div.form-group
         label.col-sm-2.control-label 技能点
         div.col-sm-10
-          input.form-control(type='number', id='skillPoint' name='type')
+          input.form-control.reward(type='number', id='skillPoint' name='type')
       div.form-group
         label.col-sm-2.control-label 仙丹
         div.col-sm-10
-          input.form-control(type='number', id='elixir' name='type')
+          input.form-control.reward(type='number', id='elixir' name='type')
       div.form-group
         label.col-sm-2.control-label 活力点
         div.col-sm-10
-          input.form-control(type='number', id='energy' name='type')
+          input.form-control.reward(type='number', id='energy' name='type')
     hr
     div.form-group
       label.col-sm-2.control-label 内容
       div.col-sm-10
-        textarea.form-control(rows=3, id='content' required)
+        textarea.form-control(rows=3, id='content' required, disabled)
     
     div.form-group
       div.col-sm-10.col-sm-offset-2
@@ -70,10 +74,10 @@ block content
         div.modal-header
           button.close(type='button', data-dismiss='modal' aria-hidden='true') &times;
           h4.modal-title(id='actionConfirmModalLable') 确定要提交此信息吗？
-        div.modal-body
+        div.modal-body(id='modalContent')
 
         div.modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal') 关闭
-          button.btn.btn-primary(type='button') 确定
+          button.btn.btn-default(type='button', data-dismiss='modal') 取消
+          button.btn.btn-primary(type='button', id='btnSendMsg') 确定
 
   script(type='text/javascript', src='/js/reward.js')

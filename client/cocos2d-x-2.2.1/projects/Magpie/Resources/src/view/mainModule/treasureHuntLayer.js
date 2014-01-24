@@ -135,9 +135,9 @@ var TreasureHuntLayer = cc.Layer.extend({
             this.addChild(valueLabel, 2);
         }
 
-        this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
-        this.addChild(this._selectFrame);
-        this._selectFrame.setVisible(false);
+//        this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
+//        this.addChild(this._selectFrame);
+//        this._selectFrame.setVisible(false);
 
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
         treasureHuntBg.setPosition(this._treasureHuntLayerFit.treasureHuntBgPoint);
@@ -228,17 +228,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log(targetIndex);
         cc.log(this._slideCount);
 
-//        this._selectFrame.setPosition(this._locate[this._index]);
-//        this._selectFrame.setVisible(true);
-
-//        var effect = cc.BuilderReader.load(main_scene_image.uiEffect81, this);
-//        effect.setPosition(this._locate[this._index]);
-//        effect.animationManager.setCompletedAnimationCallback(this, function () {
-//            effect.removeFromParent();
-//        });
-
-        //this.addChild(this._selectEffect[this._nowSlideNum], 2);
-
         if (this._slideCount > 0) {
             this._playAStep();
         }
@@ -249,6 +238,16 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this.unschedule(this._playAStep);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect81, this);
+        effect.setPosition(this._locate[this._index]);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+        });
+
+        this._selectFrame = effect;
+
+        this.addChild(effect, 2);
+
         if (this._nowSlideNum >= this._slideCount) {
             this._end();
             return;
@@ -258,15 +257,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._nowSlideNum++;
         this._index = (this._index + 1) % MAX_TREASURE_HUNT_COUNT;
 
-        // this._selectFrame.setPosition(this._locate[this._index]);
-
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect81, this);
-        effect.setPosition(this._locate[this._index]);
-        effect.animationManager.setCompletedAnimationCallback(this, function () {
-            effect.removeFromParent();
-        });
-
-        this.addChild(effect, 2);
 
         this.schedule(this._playAStep, this._interval, 1);
 
@@ -283,26 +273,20 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log("TreasureHuntLayer _end");
 
         this.update();
-        this._selectFrame.setVisible(false);
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect35, this);
-        effect.setPosition(this._selectFrame.getPosition());
-        effect.animationManager.setCompletedAnimationCallback(this, function () {
-            effect.removeFromParent();
-            lz.tipReward(this._str);
-            this._treasureHuntItem.setEnabled(true);
 
+        this._selectFrame.animationManager.setCompletedAnimationCallback(this, function () {
+            this._selectFrame.removeFromParent();
+
+            var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect67, this);
+            effect2.setPosition(this._selectFrame.getPosition());
+            effect2.animationManager.setCompletedAnimationCallback(this, function () {
+                effect2.removeFromParent();
+                lz.tipReward(this._str);
+                this._treasureHuntItem.setEnabled(true);
+            });
+
+            this.addChild(effect2, 4);
         });
-
-        this.addChild(effect, 3);
-
-        var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect67, this);
-        effect2.setPosition(this._selectFrame.getPosition());
-        effect2.animationManager.setCompletedAnimationCallback(this, function () {
-            effect2.removeFromParent();
-        });
-
-        this.addChild(effect2, 4);
-
     },
 
     _onClickTreasureHunt: function () {

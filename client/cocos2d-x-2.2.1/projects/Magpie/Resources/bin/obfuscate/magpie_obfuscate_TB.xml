@@ -180,6 +180,7 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
+                <file name="src/view/mainModule/useCardsTipLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>

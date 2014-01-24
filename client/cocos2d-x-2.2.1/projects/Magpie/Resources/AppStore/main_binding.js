@@ -185,6 +185,7 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+    'src/view/mainModule/useCardsTipLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
     'src/view/mainModule/mainBgLayer.js',

@@ -114,7 +114,7 @@
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginBgLayer.js',
-           // 'TB/loginLayer.js',
+            // 'TB/loginLayer.js',
             'AppStore/loginLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
@@ -202,6 +202,7 @@
             'src/view/mainModule/tournamentRankLayer.js',
             'src/view/mainModule/tournamentTipLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
+            'src/view/mainModule/useCardsTipLabel.js',
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',
             'src/view/mainModule/mainBgLayer.js',

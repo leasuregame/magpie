@@ -106,7 +106,6 @@ module.exports =
         logger.error(err)
         return cb(err)
 
-      console.log('check session: ', 'acountCount:',_.keys(accountMap).length, 'sessionCount:', sessionIdMap.size())
       cb(null, user?.toJson())
 
 validSessionId = (uid, sid) ->

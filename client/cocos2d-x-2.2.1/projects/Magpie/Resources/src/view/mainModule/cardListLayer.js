@@ -870,8 +870,8 @@ var CardListLayer = cc.Layer.extend({
             var len = selectCardList.length;
             var isShowTip = false;
             for (var i = 0; i < len; i++) {
-                var tableId = selectCardList[i].get("tableId");
-                if (tableId % 5 == 0 || tableId % 5 == 4) {
+                var star = selectCardList[i].get("star");
+                if (star == 4 || star == 5) {
                     isShowTip = true;
                 }
             }
@@ -954,8 +954,8 @@ var CardListLayer = cc.Layer.extend({
 
         var isShowTip = false;
         for (var i = 0; i < len; ++i) {
-            var tableId = selectCardList[i].get("tableId");
-            if (tableId % 5 == 0 || tableId % 5 == 4) {
+            var star = selectCardList[i].get("star");
+            if (star == 4 || star == 5) {
                 isShowTip = true;
             }
             cardIdList.push(selectCardList[i].get("id"));

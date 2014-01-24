@@ -30,12 +30,9 @@ var TournamentLayer = cc.Layer.extend({
     _upgradeReward: null,
     _level9Box: null,
     _isFirstTournament: false,
-
     _isFirstEnter: false,
-
     _selectRect: null,
     _isTouch: false,
-
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -305,10 +302,8 @@ var TournamentLayer = cc.Layer.extend({
         var slideLabel = [];
 
         for (var i = 0; i < len; ++i) {
-
             slideLabel[i] = cc.Node.create();
             slideLabel[i].setPosition(cc.p(0, 0));
-            //   slideLabel[i].setVisible(!this._isFirstEnter);
 
             if (playerId == this._rankList[i].playerId) {
                 index = Math.min(i + 1, len - 1);
@@ -344,9 +339,7 @@ var TournamentLayer = cc.Layer.extend({
         if (index < 10) offsetY -= 55;
         offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
-
     },
-
 
     _getPlayer: function (id) {
         var len = this._rankList.length;
@@ -455,11 +448,6 @@ var TournamentLayer = cc.Layer.extend({
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);
-
-//        if (product.count <= 0) {
-//            TipLayer.tip(product.tip);
-//            return;
-//        }
 
         var that = this;
         AmountLayer.pop(

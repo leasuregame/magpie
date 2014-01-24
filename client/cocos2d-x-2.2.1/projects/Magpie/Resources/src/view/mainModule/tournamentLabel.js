@@ -59,6 +59,7 @@ var TournamentLabel = cc.Node.extend({
             myselfSprite.setPosition(cc.p(0, 0));
             this.addChild(myselfSprite);
         }
+
         var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
         nameIcon.setContentSize(cc.size(155, 35));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));

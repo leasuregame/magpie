@@ -323,7 +323,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon24,
             this._onClickLineUp,
-            this);
+            this
+        );
         lineUpItem.setPosition(this._cardListLayerFit.lineUpItemPoint);
 
         var sellItem = cc.MenuItemImage.createWithIcon(

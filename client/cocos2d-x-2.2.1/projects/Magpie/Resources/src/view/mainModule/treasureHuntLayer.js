@@ -32,6 +32,7 @@ var TreasureHuntLayer = cc.Layer.extend({
     _interval: 0,
     _str: {},
     _locate: [],
+    _selectEffect: [],
 
     onEnter: function () {
         cc.log("TreasureHuntLayer onEnter");
@@ -83,7 +84,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         backItem.setPosition(this._treasureHuntLayerFit.backItemPoint);
         var menu = cc.Menu.create(backItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        this.addChild(menu);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._treasureHuntLayerFit.headLabelPoint);
@@ -227,8 +228,16 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log(targetIndex);
         cc.log(this._slideCount);
 
-        this._selectFrame.setPosition(this._locate[this._index]);
-        this._selectFrame.setVisible(true);
+//        this._selectFrame.setPosition(this._locate[this._index]);
+//        this._selectFrame.setVisible(true);
+
+//        var effect = cc.BuilderReader.load(main_scene_image.uiEffect81, this);
+//        effect.setPosition(this._locate[this._index]);
+//        effect.animationManager.setCompletedAnimationCallback(this, function () {
+//            effect.removeFromParent();
+//        });
+
+        //this.addChild(this._selectEffect[this._nowSlideNum], 2);
 
         if (this._slideCount > 0) {
             this._playAStep();
@@ -245,10 +254,19 @@ var TreasureHuntLayer = cc.Layer.extend({
             return;
         }
 
+
         this._nowSlideNum++;
         this._index = (this._index + 1) % MAX_TREASURE_HUNT_COUNT;
 
-        this._selectFrame.setPosition(this._locate[this._index]);
+        // this._selectFrame.setPosition(this._locate[this._index]);
+
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect81, this);
+        effect.setPosition(this._locate[this._index]);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+        });
+
+        this.addChild(effect, 2);
 
         this.schedule(this._playAStep, this._interval, 1);
 
@@ -275,7 +293,7 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         });
 
-        this.addChild(effect);
+        this.addChild(effect, 3);
 
         var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect67, this);
         effect2.setPosition(this._selectFrame.getPosition());
@@ -283,7 +301,7 @@ var TreasureHuntLayer = cc.Layer.extend({
             effect2.removeFromParent();
         });
 
-        this.addChild(effect2, 3);
+        this.addChild(effect2, 4);
 
     },
 

@@ -186,7 +186,7 @@ var TreasureHuntLayer = cc.Layer.extend({
             id1--;
             id2++;
             this._flashEffect(id1, id2);
-        }, 0.27, 9);
+        }, 0.1, 9);
 
         return true;
     },

@@ -34,10 +34,26 @@ $(document).ready(function() {
         e.preventDefault();
         submit();
     });
+
+    function handlerRewardChange() {
+        var title = $('#title').val();
+
+        var items = $.map($('.reward'), function(el, i){
+            if ($(el).val() !== '')
+                return $(el).parent().prev().text() + ':' + $(el).val();
+            else
+                return '';
+        });
+        var textArr = items.filter(function(i) {return i != '';});
+        $('#content').val(title + ', ' + textArr.join(', '));
+    }
+
+    $('#title').change(handlerRewardChange);
+    $('.reward').change(handlerRewardChange);
 });
 
 function removeErrors() {
-    $('.form-group').removeClass('has-error');
+    $('.has-error').removeClass('has-error');
     $('.help-block').remove();
 }
 
@@ -47,6 +63,7 @@ function submit() {
     var options = getData();
     var areaId = parseInt($("#area").val());
     var playerName = $("#playerName").val();
+    var title = $('#title').val();
     var content = $("#content").val();
     var mail = {};
     mail['content'] = content;
@@ -65,9 +82,9 @@ function submit() {
         return;
     }
 
-    if (content == '') {
-        $('#content').closest('.form-group').addClass('has-error');
-        $('#content').parent().append('<span class="help-block">奖励消息内容不能为空</span>');
+    if (title == '') {
+        $('#title').closest('.form-group').addClass('has-error');
+        $('#title').parent().append('<span class="help-block">title is required</span>');
         return;
     }
 
@@ -76,98 +93,122 @@ function submit() {
         $('#energy').parent().append('<span class="help-block">至少添一个奖励选项</span>');
         return;
     }
-    if (confirm('确定要发送此消息吗?')) {
-        if (areaId == ALL) { //全部服务器
-            var len = servers.length;
-            var id = 0;
 
-            async.whilst(
-                function() {
-                    return id < len;
-                },
-                function(cb) {
-                    dealAll(servers[id].id, mail, function(err) {
-                        if (err)
-                            cb(err);
-                        id++;
-                        cb();
+    if (content == '') {
+        $('#content').closest('.form-group').addClass('has-error');
+        $('#content').parent().append('<span class="help-block">奖励消息内容不能为空</span>');
+        return;
+    }
+
+    function showModal() {
+        var cnt = '<p><strong>服务器：</strong>' + $('#area').find('option:selected').text() + '</p>'
+        cnt += '<p><strong>消息内容：</strong>'+content+'</p>';
+
+        $('#modalContent').html(cnt);
+        $('#actionConfirm').modal();
+    }
+
+    function hideModal() {
+        $('#actionConfirm').modal('hide');
+    }
+
+    showModal();
+    $('#btnSendMsg').click(function() {
+        hideModal();
+        doSubmit(options, areaId, playerName, mail);
+    });
+};
+
+function doSubmit(options, areaId, playerName, mail) {
+    if (areaId == ALL) { //全部服务器
+        var len = servers.length;
+        var id = 0;
+
+        async.whilst(
+            function() {
+                return id < len;
+            },
+            function(cb) {
+                dealAll(servers[id].id, mail, function(err) {
+                    if (err)
+                        cb(err);
+                    id++;
+                    cb();
+                });
+            },
+            function(err) {
+                if (err) {
+                    console.log("err = ", err);
+                } else {
+                    $.ajax({
+                        url: '/admin/logger4Reward?area=所有&data=' + JSON.stringify(mail),
+                        type: "post"
                     });
-                },
-                function(err) {
-                    if (err) {
-                        console.log("err = ", err);
-                    } else {
-                        $.ajax({
-                            url: '/admin/logger4Reward?area=所有&data=' + JSON.stringify(mail),
-                            type: "post"
+                }
+            }
+        );
+
+    } else { //指定服务器
+        if (playerName == '') {
+            dealAll(areaId, mail, function(err) {
+                if (err) {
+                    console.log("err = ", err);
+                } else {
+                    var areaName = null;
+                    for (key in servers) {
+                        var area = servers[key];
+                        if (area.id = areaId) {
+                            areaName = area.name;
+                            break;
+                        }
+                    }
+                    $.ajax({
+                        url: '/admin/logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
+                        type: "post"
+                    });
+                }
+            });
+        } else { //指定玩家
+            var url = "/admin/playerId?name=" + playerName + "&areaId=" + areaId;
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function(data) {
+                    console.log(data);
+                    if (data.id) {
+                        mail['playerId'] = data.id;
+                        dealAll(areaId, mail, function(err) {
+                            if (err) {
+                                console.log("err = ", err);
+                            } else {
+                                var areaName = null;
+                                for (key in servers) {
+                                    var area = servers[key];
+                                    if (area.id = areaId) {
+                                        areaName = area.name;
+                                        break;
+                                    }
+                                }
+                                $.ajax({
+                                    url: '/admin/logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
+                                    type: "post"
+                                });
+                            }
                         });
+                    }
+                },
+                error: function(data) {
+                    if (data.status == 404) {
+                        alert('找不到指定的玩家');
+                    } else {
+                        console.log(data.responseText);
+                        alert(data.responseText);
                     }
                 }
-            );
-
-        } else { //指定服务器
-            if (playerName == '') {
-                dealAll(areaId, mail, function(err) {
-                    if (err) {
-                        console.log("err = ", err);
-                    } else {
-                        var areaName = null;
-                        for (key in servers) {
-                            var area = servers[key];
-                            if (area.id = areaId) {
-                                areaName = area.name;
-                                break;
-                            }
-                        }
-                        $.ajax({
-                            url: '/admin/logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
-                            type: "post"
-                        });
-                    }
-                });
-            } else { //指定玩家
-                var url = "/admin/playerId?name=" + playerName + "&areaId=" + areaId;
-                $.ajax({
-                    url: url,
-                    type: "get",
-                    success: function(data) {
-                        console.log(data);
-                        if (data.id) {
-                            mail['playerId'] = data.id;
-                            dealAll(areaId, mail, function(err) {
-                                if (err) {
-                                    console.log("err = ", err);
-                                } else {
-                                    var areaName = null;
-                                    for (key in servers) {
-                                        var area = servers[key];
-                                        if (area.id = areaId) {
-                                            areaName = area.name;
-                                            break;
-                                        }
-                                    }
-                                    $.ajax({
-                                        url: '/admin/logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
-                                        type: "post"
-                                    });
-                                }
-                            });
-                        }
-                    },
-                    error: function(data) {
-                        if (data.status == 404) {
-                            alert('找不到指定的玩家');
-                        } else {
-                            console.log(data.responseText);
-                            alert(data.responseText);
-                        }
-                    }
-                });
-            }
+            });
         }
     }
 };
-
 
 function dealAll(id, mail, cb) {
     async.waterfall([
@@ -183,11 +224,23 @@ function dealAll(id, mail, cb) {
                     $('.alert').removeClass('hidden alert-danger');
                     $('.alert').addClass('show alert-success');
                     $('.alert #alertContent').text('恭喜！消息发送成功!')
+                    
+                    setTimeout(function(){
+                        $('.alert').removeClass('show');
+                        $('.alert').addClass('hidden');
+                    }, 5000);
+
                     callback();
                 } else {
                     $('.alert').removeClass('hidden alert-success');
                     $('.alert').addClass('show alert-danger');
                     $('.alert #alertContent').text('消息发送失败!');
+
+                    setTimeout(function(){
+                        $('.alert').removeClass('show');
+                        $('.alert').addClass('hidden');
+                    }, 5000);
+
                     cb('error');
                 }
             })

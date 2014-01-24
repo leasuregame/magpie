@@ -308,7 +308,7 @@ Handler::mysticalPass = (msg, session, next) ->
 
         player.increase('skillPoint', mpcData.skill_point)
         player.clearMysticalPass()        
-        player.incSpirit(bl.rewards.totalSpirit)
+        player.incSpirit(bl.rewards.totalSpirit) if bl.rewards?.totalSpirit > 0
         player.save()
 
       cb(null, bl)

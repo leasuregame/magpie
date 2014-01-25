@@ -579,7 +579,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 152),
             "privilegeIconPoint": cc.p(370, 207),
             "fragmentTipLayerPoint": cc.p(360, 800),
-            "fragmentTipIconPoint": cc.p(485, 800)
+            "fragmentTipIconPoint": cc.p(465, 800)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
@@ -1891,7 +1891,7 @@ var fit4Iphone5 = {
                 "tipLabelPoint": cc.p(320, 170),
                 "privilegeIconPoint": cc.p(330, 280),
                 "fragmentTipLayerPoint": cc.p(320, 970),
-                "fragmentTipIconPoint": cc.p(445, 970)
+                "fragmentTipIconPoint": cc.p(425, 970)
             },
             "lvRankLayer": {
                 "scrollViewHeight": 876,

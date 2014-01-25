@@ -54,7 +54,6 @@ checkOrderResult = (app, req, res) ->
     )
 
   res.writeHead(200, {'Content-type': 'application/json'})
-  console.log tempsign, sign
   if tempsign is sign
     [playerId, areaId, productId] = paydes.split(':')
     session = 

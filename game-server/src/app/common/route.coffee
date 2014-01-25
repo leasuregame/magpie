@@ -15,7 +15,6 @@ module.exports =
 		areas = app.get 'areaIdMap'
 		
 		serverId = areas[session.get('areaId')]
-		console.log 'area route', msg
 		if not serverId
 			serverId = areas[msg.args[0]?.areaId] if msg.service in ['authRemote', 'playerRemote']
 

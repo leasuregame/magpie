@@ -135,10 +135,6 @@ var TreasureHuntLayer = cc.Layer.extend({
             this.addChild(valueLabel, 2);
         }
 
-//        this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
-//        this.addChild(this._selectFrame);
-//        this._selectFrame.setVisible(false);
-
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
         treasureHuntBg.setPosition(this._treasureHuntLayerFit.treasureHuntBgPoint);
         this.addChild(treasureHuntBg);
@@ -178,7 +174,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
-
         return true;
     },
 
@@ -192,8 +187,8 @@ var TreasureHuntLayer = cc.Layer.extend({
         var count = treasureHunt.get("count");
         var freeCount = treasureHunt.get("freeCount");
 
-        this._countLabel.setString("当前免费次数:  " + count);
-        this._freeCountLabel.setString("今天还可寻宝:  " + freeCount);
+        this._countLabel.setString("今天还可寻宝:  " + count);
+        this._freeCountLabel.setString("当前免费次数:  " + freeCount);
 
         this._treasureHuntIcon.setVisible(freeCount <= 0);
     },

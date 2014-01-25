@@ -221,7 +221,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -381,7 +381,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>

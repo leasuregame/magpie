@@ -98,7 +98,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.10000000149011612</real>
+									<real>0.066666670143604279</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -242,7 +242,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.40000000596046448</real>
+									<real>0.3333333432674408</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -285,7 +285,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.40000000596046448</real>
+									<real>0.3333333432674408</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -434,7 +434,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.40000000596046448</real>
+									<real>0.3333333432674408</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -477,7 +477,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.40000000596046448</real>
+									<real>0.3333333432674408</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -680,7 +680,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>387.87078857421875</real>
+			<real>494.3665771484375</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

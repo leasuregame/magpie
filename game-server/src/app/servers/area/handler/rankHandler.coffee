@@ -97,7 +97,7 @@ Handler::challenge = (msg, session, next) ->
 
   if BusyRankings.get(ranking)?
     return next null, {code: 501, msg: '对方正在战斗中'}
-  BusyRankings.put(ranking, ranking, 10000)
+  BusyRankings.put(ranking, ranking, 5000)
 
   player = null
   target = null

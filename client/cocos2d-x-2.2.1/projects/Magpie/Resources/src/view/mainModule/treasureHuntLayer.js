@@ -174,47 +174,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
-        var id1 = 4, id2 = 4;
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
-        effect.setPosition(this._locate[id1]);
-        effect.animationManager.setCompletedAnimationCallback(this, function () {
-            effect.removeFromParent();
-        });
-        this.addChild(effect, 4);
-
-        this.schedule(function () {
-            id1--;
-            id2++;
-            this._flashEffect(id1, id2);
-        }, 0.12, 9);
-
         return true;
-    },
-
-    _flashEffect: function (a, b) {
-
-        var id1 = (a + 20) % 20;
-        var id2 = b;
-
-        var effect1 = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
-        effect1.setPosition(this._locate[id1]);
-        effect1.animationManager.setCompletedAnimationCallback(this, function () {
-            effect1.removeFromParent();
-        });
-        this.addChild(effect1, 4);
-
-        if (id1 == id2) {
-           // this.unschedule(this._flashEffect);
-            return;
-        } else {
-            var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect82, this);
-            effect2.setPosition(this._locate[id2]);
-            effect2.animationManager.setCompletedAnimationCallback(this, function () {
-                // this._flashEffect(id1 - 1, id2 + 1);
-                effect2.removeFromParent();
-            });
-            this.addChild(effect2, 4);
-        }
     },
 
     update: function () {
@@ -227,8 +187,8 @@ var TreasureHuntLayer = cc.Layer.extend({
         var count = treasureHunt.get("count");
         var freeCount = treasureHunt.get("freeCount");
 
-        this._countLabel.setString("当前免费次数:  " + count);
-        this._freeCountLabel.setString("今天还可寻宝:  " + freeCount);
+        this._countLabel.setString("今天还可寻宝:  " + count);
+        this._freeCountLabel.setString("当前免费次数:  " + freeCount);
 
         this._treasureHuntIcon.setVisible(freeCount <= 0);
     },

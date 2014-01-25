@@ -130,16 +130,32 @@ var checkIsReached_alpha = function(player, method, incVal, useMax) {
 var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
 	achs.forEach(function(ach) {
-		if ( (typeof player.achievement[ach.id] == 'undefined') || 
-			(typeof player.achievement[ach.id] != 'undefined' && !player.achievement[ach.id].isAchieve) ) {
+		if ( isAchieved(player, ach.id) ) {
 			reachAchievement(player, ach.id);
 		}
 	});
 	updateAchievement(player, method, need, useMax);
 };
 
+var isAchieved = function(player, id) {
+	return (typeof player.achievement[id] == 'undefined') || 
+				 (typeof player.achievement[id] != 'undefined' && !player.achievement[id].isAchieve);
+};
+
+var resetAchievementIfChange = function(ach) {	
+	_.each(ach, function(val, id) {
+		var d = table.getTableItem('achievement', id);
+		if (val.isAchieve && d && val.got < d.need) {
+			val.isAchieve = false;
+			val.isTake = false;
+		}
+	});
+};
+
 var updateAchievement = function(player, method, got, useMax) {
 	var ach = utility.deepCopy(player.achievement);
+	resetAchievementIfChange(ach);
+
 	var items = _.where(_.values(ach), {
 		method: method
 	});

@@ -224,7 +224,8 @@ var Message = Entity.extend({
                         money: msg.money,
                         power: msg.powerValue,
                         skillPoint: msg.skillPoint,
-                        elixir: msg.elixir
+                        elixir: msg.elixir,
+                        energy: msg.energy
                     });
 
                     gameData.spirit.add("exp", msg.spirit);

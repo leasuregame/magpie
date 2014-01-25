@@ -1105,17 +1105,6 @@ var BatterLayer = cc.Layer.extend({
         var that = this;
 
         this.ccbFnCallback = function () {
-            that.ccbFnCallback = function () {
-                targetNode.runAnimations(
-                    effect ? ("d_1_" + that._getDirection(target)) : "miss",
-                    0,
-                    that.nextStepCallback()
-                );
-
-                targetNode.update(effect);
-                that.tipHarm(target, effect, false, isCrit);
-            };
-
             var effect9 = cc.BuilderReader.load(main_scene_image.effect9, that);
             effect9.setPosition(targetLocate);
             that.addChild(effect9, EFFECT_Z_ORDER);
@@ -1125,6 +1114,15 @@ var BatterLayer = cc.Layer.extend({
                 effect9.removeFromParent();
                 nextStepCallback();
             });
+
+            targetNode.runAnimations(
+                effect ? ("d_1_" + that._getDirection(target)) : "miss",
+                0,
+                that.nextStepCallback()
+            );
+
+            targetNode.update(effect);
+            that.tipHarm(target, effect, false, isCrit);
         };
 
         var nextStepCallback1 = this.nextStepCallback();

@@ -41,6 +41,9 @@ Handler::explore = (msg, session, next) ->
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 
+      # 手动同一次体力值
+      player.checkResumePower()
+      
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>

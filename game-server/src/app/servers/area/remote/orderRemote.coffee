@@ -166,7 +166,6 @@ noticeNewYearActivity = (app, player, cb) ->
   endDate.setDate(endDate.getDate()+1)
   now = new Date()
 
-  console.log startDate, now, endDate
   if startDate <= now < endDate
     app.get('dao').order.rechargeOnPeriod player.id, app.get('sharedConf').newYearActivity.startDate, app.get('sharedConf').newYearActivity.endDate, (err, cash) ->
       return cb(err) if err

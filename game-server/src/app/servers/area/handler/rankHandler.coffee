@@ -95,18 +95,15 @@ Handler::challenge = (msg, session, next) ->
   targetId = msg.targetId
   ranking = msg.ranking
 
-  console.log '-------------------------------------', BusyRankings.all()
   if BusyRankings.get(ranking)?
     return next null, {code: 501, msg: '对方正在战斗中'}
-  BusyRankings.put(ranking, ranking, 10000)
+  BusyRankings.put(ranking, ranking, 5000)
 
   player = null
   target = null
   isWin = false
   async.waterfall [
     (cb) ->
-      console.log '============================1'
-      console.log BusyRankings.all()
       if playerId is targetId
         return cb({code: 501, msg: '不能挑战自己'})
       else
@@ -138,9 +135,7 @@ Handler::challenge = (msg, session, next) ->
       if err
         BusyRankings.del(ranking)
         return next(null, {code: err.code, msg: err.msg or err.message})
-      console.log '============================2'
-      console.log BusyRankings.all()
-
+        
       firstTime = false
       if player.rank?.startCount is 1
         firstTime = true

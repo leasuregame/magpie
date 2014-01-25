@@ -68,7 +68,6 @@ var gen_card_star = function (level, hCounts) {
             for(var i = margins.length - 1; i >= 0;i--) {
                 if(hCounts >= margins[i].COUNTS) {
                     var ms = margins[i];
-                   // console.log('ms =',ms);
                     var count = hCounts - ms.COUNTS;
                     var rate = ms.MARGIN * count;
                     rateObj['3'] = ms['3'] - rate;

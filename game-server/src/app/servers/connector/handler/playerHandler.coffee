@@ -21,7 +21,7 @@ Handler::createPlayer = (msg, session, next) ->
   if not CHINESE_REG.test(name)
     return next(null, {code: 501, msg: '只能输入1-6位汉字、字母或数字'})
 
-  console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
+  #console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
     userId: userId

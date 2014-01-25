@@ -65,7 +65,6 @@ module.exports =
             logger.error('faild to check tongbu session id', sessionId, userId)
 
           statusCode = parseInt body
-          console.log 'check session result: ', body, userId
           if statusCode > 0 and statusCode is userId
             ### 记住已登录用户和session ###
             sessionIdMap.put userId, sessionId, 1000 * 60 * 60
@@ -106,7 +105,6 @@ module.exports =
         logger.error(err)
         return cb(err)
 
-      console.log('check session: ', 'acountCount:',_.keys(accountMap).length, 'sessionCount:', sessionIdMap.size())
       cb(null, user?.toJson())
 
 validSessionId = (uid, sid) ->
@@ -128,7 +126,6 @@ checkDuplicatedLogin = (areaId, frontendId, user, sid, done) ->
     bss = app.get('backendSessionService')
     
     bss.kickByUid accountMap[user.id].serverId, user.id + '*' + areaId, (err, res) -> 
-      console.log '-finished kick by uid-', user.id, accountMap[user.id]
       accountMap[user.id] = {areaId: areaId, serverId: frontendId, sid: sid}
       done(null, user)
   else

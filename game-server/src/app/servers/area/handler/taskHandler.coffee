@@ -23,7 +23,6 @@ Handler = (@app) ->
 探索
 ###
 Handler::explore = (msg, session, next) ->
-  console.log '-exlore-', msg, session.get('playerId')
 
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
@@ -42,6 +41,9 @@ Handler::explore = (msg, session, next) ->
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 
+      # 手动同一次体力值
+      player.checkResumePower()
+      
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>
@@ -162,7 +164,7 @@ Handler::passBarrier = (msg, session, next) ->
   player = null
   firstWin = false
   oldLayer = -10
-  console.log '爬塔：', playerId, layer
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -223,7 +225,6 @@ Handler::passBarrier = (msg, session, next) ->
 
     player.save()
 
-    console.log '-end 爬塔：'
     next(null, {code: 200, msg: {
       battleLog: bl, 
       upgradeInfo: upgradeInfo if upgradeInfo

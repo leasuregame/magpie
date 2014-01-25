@@ -106,6 +106,7 @@ Handler::reSignIn = (msg, session, next) ->
     sdata = table.getTableItem('daily_signin_rewards', 1)
     player.decrease('gold', goldResume)
     player.increase('energy', sdata.energy)
+    player.increase('money', sdata.money)
     player.save()
     
     next(null, {

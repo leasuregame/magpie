@@ -63,7 +63,11 @@ var TreasureHunt = Entity.extend({
 
                 var times = msg.times;
 
-                gameData.player.add(table.type, table.value * times);
+                if (table.type == "spirit") {
+                    gameData.spirit.add("exp", table.value * times);
+                } else {
+                    gameData.player.add(table.type, table.value * times);
+                }
 
                 if (that._freeCount <= 0) {
                     gameData.player.add("gold", -goldResume);

@@ -47,7 +47,6 @@ var Activity = Entity.extend({
                 if (data.code == 200) {
                     cc.log("sync success");
 
-
                     that.update(data.msg);
 
                     lz.server.on("onPowerGive", function (data) {
@@ -80,7 +79,6 @@ var Activity = Entity.extend({
 
                     that.sync();
                 }
-
             },
             true
         );

@@ -1,3 +1,8 @@
+2014-1-25
+1. 已领取了某个好友的祝福次数不同步
+
+2014-1-22
+
 done 删除好友时，要删除好友相关的消息
 
 done cdkey end data check should be correct!

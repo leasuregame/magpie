@@ -271,12 +271,12 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this._selectFrame.animationManager.setCompletedAnimationCallback(this, function () {
             this._selectFrame.removeFromParent();
+            lz.tipReward(this._str);
 
             var effect2 = cc.BuilderReader.load(main_scene_image.uiEffect67, this);
             effect2.setPosition(this._selectFrame.getPosition());
             effect2.animationManager.setCompletedAnimationCallback(this, function () {
                 effect2.removeFromParent();
-                lz.tipReward(this._str);
                 this._treasureHuntItem.setEnabled(true);
             });
 
@@ -313,7 +313,7 @@ var TreasureHuntLayer = cc.Layer.extend({
 
                 that._treasureHuntItem.setEnabled(true);
             }
-        })
+        });
     },
 
     _onClickBack: function () {

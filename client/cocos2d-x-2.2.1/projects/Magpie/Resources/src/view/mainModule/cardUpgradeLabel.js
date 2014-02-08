@@ -486,6 +486,11 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();

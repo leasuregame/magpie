@@ -46,6 +46,7 @@ var SignIn = Entity.extend({
                 this._flag[i] = months[key].flag || 0;
             } else {
                 monthMark.mark = 0;
+                this._flag[i] = 0;
             }
 
             monthMark.count = 0;
@@ -130,7 +131,7 @@ var SignIn = Entity.extend({
             var nowDay = new Date().getDate();
 
             var signIn = 0;
-            if(this.canSignIn(index)) {
+            if (this.canSignIn(index)) {
                 signIn = 1;
             }
 
@@ -145,7 +146,7 @@ var SignIn = Entity.extend({
     canReceive: function (index, i) {
         cc.log("MonthLabel canReceive");
 
-        if (index == 0) {
+        if (this._flag[index]) {
             return ((this._flag[0] >> i & 1) != 1);
         }
 

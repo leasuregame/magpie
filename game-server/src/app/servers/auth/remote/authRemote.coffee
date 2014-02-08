@@ -63,6 +63,8 @@ module.exports =
         request.get url, (err, res, body) ->
           if err
             logger.error('faild to check tongbu session id', sessionId, userId)
+            logger.error(err, res, body)
+            return done(null, false)
 
           statusCode = parseInt body
           if statusCode > 0 and statusCode is userId

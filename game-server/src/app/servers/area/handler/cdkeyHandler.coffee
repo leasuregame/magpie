@@ -105,7 +105,7 @@ updatePlayer = (app, player, data, cb) ->
       
       for j in [1..count]
         rows.push 
-          tableId: parseInt(id),
+          tableId: parseInt(id)
           lv: if lvs[i]? then parseInt(lvs[i]) else 1
           playerId: player.id
 

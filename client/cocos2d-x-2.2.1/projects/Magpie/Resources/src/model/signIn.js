@@ -147,7 +147,7 @@ var SignIn = Entity.extend({
         cc.log("MonthLabel canReceive");
 
         if (this._flag[index]) {
-            return ((this._flag[0] >> i & 1) != 1);
+            return ((this._flag[index] >> i & 1) != 1);
         }
 
         return false;

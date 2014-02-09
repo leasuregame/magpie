@@ -233,8 +233,6 @@ var SignIn = Entity.extend({
             if (data.code == 200) {
                 cc.log("signIn success");
 
-                var msg = data.msg;
-
                 var table = outputTables.signIn_rewards.rows[id];
 
                 gameData.player.adds({
@@ -242,11 +240,10 @@ var SignIn = Entity.extend({
                     energy: table.energy,
                     skillPoint: table.skillPoint,
                     elixir: table.elixir,
+                    fragment: table.fragments,
                     gold: table.gold
                 });
-
                 gameData.spirit.add("exp", table.spirit);
-
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
                 that._flag[0] = that._flag[0] | (1 << (id - 1));
@@ -256,6 +253,7 @@ var SignIn = Entity.extend({
                     energy: table.energy,
                     skillPoint: table.skillPoint,
                     elixir: table.elixir,
+                    fragment: table.fragments,
                     gold: table.gold,
                     spirit: table.spirit,
                     freeCount: table.lottery_free_count

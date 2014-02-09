@@ -338,7 +338,8 @@ var Player = (function(_super) {
         firstTime: {
             lowLuckyCard: 1,
             highLuckyCard: 1,
-            highTenLuckCard: 1
+            highTenLuckCard: 1,
+            recharge: 0
         },
         levelReward: [],
         teachingStep: 0,
@@ -1125,6 +1126,10 @@ var Player = (function(_super) {
         if (typeof this.firstTime.highTenLuckCard == 'undefined') {
             return true;
         }
+
+        if (this.firstTime.recharge < 128) {
+            return true;
+        }
         return false;
     };
 
@@ -1132,7 +1137,8 @@ var Player = (function(_super) {
         return {
             lowLuckyCard: this.firstTime.lowLuckyCard,
             highLuckyCard: this.firstTime.highLuckyCard,
-            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard
+            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard,
+            recharge: this.firstTime.recharge ||  0
         };
     };
 
@@ -1197,6 +1203,21 @@ var Player = (function(_super) {
         }
         ir['star'+star] += val;
         this.initRate = ir;
+    };
+
+    Player.prototype.isRechargeFirstTime = function(productId) {
+        if (typeof productId != 'number') {
+            return false;
+        }
+        return utility.hasMark(this.firstTime.recharge || 0, productId);
+    };
+
+    Player.prototype.setRechargeFirstTime = function(productId) {
+        if (typeof productId == 'number') {
+            var ft = utility.deepCopy(this.firstTime);
+            ft.recharge = utility.mark(ft.recharge || 0, productId);
+            this.firstTime = ft;
+        }
     };
 
     Player.prototype.toJson = function() {

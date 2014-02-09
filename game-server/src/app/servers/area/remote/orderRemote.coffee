@@ -58,11 +58,6 @@ Remote::add = (args, callback) ->
       order.amount = amount
       order.paydes = paydes
 
-      times = 1
-      if player.cash is 0
-        ### 首冲获得三倍魔石 ###
-        times = 3
-
       product = table.getTableItem('recharge', productId)
       if not product
         logger.warn('找不到购买的对应产品, 产品id为', productId)
@@ -76,6 +71,14 @@ Remote::add = (args, callback) ->
         updateOrderStatus(@app, order, ORDER_ERROR_STATUS_2)
         return cb({ok: false, msg: '充值的金额跟产品金额不匹配'})
       
+      times = 1
+      ### 首冲获得相应倍数魔石 ###
+      if not player.isRechargeFirstTime(parseInt productId)
+        times = product.times
+        player.setRechargeFirstTime(parseInt productId)
+
+      console.log times, player.firstTime, productId, product
+
       player.increase('cash', product.cash)
       player.increase('gold', (product.cash * 10 + product.gold) * times)
       player.save()

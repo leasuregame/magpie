@@ -771,6 +771,8 @@ Handler::exchangeCard = (msg, session, next) ->
     player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
     setExchangedCard(player, tableId)
+    ### 增加5星卡牌成就 ###
+    achieve.star5card(player) if star is 5
 
     player.save()
     next(null, {code: 200, msg: {

@@ -322,6 +322,14 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
+Handler::starUpgradeInitRate = (msg, session, next) ->
+  playerId = session.get('playerId')
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
+
+    next(null, {code: 200, msg: initRate: player.initRate})
+
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   target = msg.target
@@ -367,31 +375,25 @@ Handler::starUpgrade = (msg, session, next) ->
         return cb({code: 501, msg: '仙币不足'})
 
       if card_count > starUpgradeConfig.max_num
-        return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
+        return cb({code: 501, msg: "最多消耗#{starUpgradeConfig.max_num}张卡牌"})
 
-      rate = 0
+      rate = player.initRate['star'+star] or 0
+      addRate = card_count * starUpgradeConfig.rate_per_card
+      totalRate = _.min([addRate + rate, 100])
 
-      if card.star is 4
-        if card.useCardsCounts < 6 and card.useCardsCounts >= 0
-          count = if (card.useCardsCounts + card_count <= 6) then card_count else 6 - card.useCardsCounts
-          card.increase('useCardsCounts' , count)
-          card_count -= count
-
-        if card.useCardsCounts > 5
-          rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
-          card.set('useCardsCounts',-1)
-
-      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
-
-      if utility.hitRate(totalRate)
-        is_upgrade = true
+      is_upgrade = !!utility.hitRate(totalRate)
+      if card.star is 4 
+        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 10)
+        card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)
       if is_upgrade
         card.increase('star')
         card.increase('tableId')
         card.resetSkillLv()
-        #entityUtil.resetSkillIncForCard(card)
+
+        ### 成功进阶，对应星级初始概率置为0 ###
+        player.setInitRate(star, 0)
 
         # 获得so lucky成就
         if card_count is 1
@@ -410,13 +412,14 @@ Handler::starUpgrade = (msg, session, next) ->
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
-        return cb null
-
-      cb null
+        cb null
+      else
+        player.incInitRate(star, parseInt addRate*0.5)
+        cb null
 
     (cb) ->
       ### 更新玩家战斗力值 ###
-      if player.isLineUpCard(card) 
+      if is_upgrade and player.isLineUpCard(card) 
         player.updateAbility()
 
       _jobs = []

@@ -254,7 +254,8 @@ var Player = (function(_super) {
         'levelReward',
         'teachingStep',
         'exchangeCards',
-        'activities'
+        'activities',
+        'initRate'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -343,7 +344,13 @@ var Player = (function(_super) {
         teachingStep: 0,
         exchangeCards: [],
         goldCards: {},
-        activities: {}
+        activities: {},
+        initRate: {
+            star1: 0,
+            star2: 0,
+            star3: 0,
+            star4: 0
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -1167,6 +1174,29 @@ var Player = (function(_super) {
             gc[g] = this.goldCards[g].toJson();
         }
         return gc;
+    };
+
+    Player.prototype.setInitRate = function(star, val) {
+        if (star > 1 || star > 4) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        ir['star'+star] = val;
+        this.initRate = ir;
+    };
+
+    Player.prototype.incInitRate = function(star, val) {
+        if (star > 1 || star > 4) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        if (typeof ir['star'+star] == 'undefined') {
+            ir['star'+star] = 0;
+        }
+        ir['star'+star] += val;
+        this.initRate = ir;
     };
 
     Player.prototype.toJson = function() {

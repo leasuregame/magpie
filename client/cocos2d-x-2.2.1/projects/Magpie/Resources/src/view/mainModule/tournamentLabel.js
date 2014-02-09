@@ -210,22 +210,12 @@ var TournamentLabel = cc.Node.extend({
                     LineUpDetail.pop(data);
                 }, this._player.playerId);
             } else {
-
                 var tournament = gameData.tournament;
                 var count = tournament.get("count");
 
-                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "_firstCountUsed") || 1;
-                isFirstCountUsed = parseInt(isFirstCountUsed);
-                if (count == 0 && isFirstCountUsed == 1) {
+                var isFirstCountUsed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "_firstCountUsed") || 1);
 
-                    sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 0);
-                    this._target.showTip();
-
-                } else {
-                    if (count != 0) {
-                        sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 1);
-                    }
-
+                var cb = function () {
                     gameData.tournament.defiance(function (data) {
                         cc.log(data);
 
@@ -239,13 +229,21 @@ var TournamentLabel = cc.Node.extend({
                             }
 
                             BattlePlayer.getInstance().play(data.battleLogId);
-
                         } else {
                             that._target.update();
                         }
-                    }, this._player.playerId, this._player.ranking);
+                    }, that._player.playerId, that._player.ranking);
+                };
 
+                if (count == 0 && isFirstCountUsed == 1) {
+                    sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 0);
+                    this._target.showTip(cb);
+                } else {
+                    if (count != 0) {
+                        sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 1);
+                    }
 
+                    cb();
                 }
             }
         }

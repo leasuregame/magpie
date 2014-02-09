@@ -369,7 +369,7 @@ var main_scene_image = {
     icon64: main_scene_path + "icon64.png",
     icon65: main_scene_path + "icon65.png",
     icon66: main_scene_path + "icon66.png",
-//    icon67: main_scene_path + "icon67.png",
+    icon67: main_scene_path + "icon67.png",
     icon68: main_scene_path + "icon68.png",
     icon69: main_scene_path + "icon69.png",
     icon70: main_scene_path + "icon70.png",

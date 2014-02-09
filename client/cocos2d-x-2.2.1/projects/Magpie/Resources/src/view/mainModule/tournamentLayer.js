@@ -471,12 +471,12 @@ var TournamentLayer = cc.Layer.extend({
         }
     },
 
-    showTip: function () {
+    showTip: function (cb) {
         cc.log("TournamentLayer showTip");
         var that = this;
         TournamentTipLayer.pop(function () {
             that._onClickBuyCount();
-        });
+        }, cb);
     },
 
     updateGuide: function () {

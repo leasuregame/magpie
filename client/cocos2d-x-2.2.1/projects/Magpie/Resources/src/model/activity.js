@@ -68,7 +68,7 @@ var Activity = Entity.extend({
                         cc.log(data);
 
                         that.updateRechargeFlag(data.msg.flag);
-                        gameMark.updateNewYearMark(true);
+                        gameMark.updateNewYearMark(false);
                     });
 
                     gameMark.updateActivityMark(false);
@@ -201,7 +201,7 @@ var Activity = Entity.extend({
                     });
                 }
 
-                gameMark.updateNewYearMark();
+                gameMark.updateNewYearMark(false);
                 cb();
 
             } else {

@@ -35,6 +35,8 @@ var BatterLayer = cc.Layer.extend({
     _chooseSpeedItem: [],
     _menu: null,
 
+    _playSpeed: 0,
+
     init: function (battleLog) {
         cc.log("BatterLayer init");
 
@@ -109,38 +111,22 @@ var BatterLayer = cc.Layer.extend({
         this._menu = cc.Menu.create(this._backItem);
         this.addChild(this._menu);
 
-        var table = outputTables.values.rows;
-        var times = [];
-        var len = Object.keys(table).length;
+        this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
 
-        for (var i = 0; i < len; ++i) {
-            var key = "playSpeedLv" + (i + 1);
-            if (table[key]) {
-                times.push(i + 1);
-            } else {
-                break;
-            }
-        }
+        for (var speed = 1; speed <= 3; ++speed) {
 
-        var timesLen = times.length;
-        var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
-
-        for (var j = 0; j < timesLen; ++j) {
-            var time = times[0];
-            if (j < timesLen - 1) {
-                time = times[j + 1];
-            }
-            this._chooseSpeedItem[j + 1] = cc.MenuItemImage.create(
-                main_scene_image["button" + (71 + j)],
-                main_scene_image["button" + (71 + j) + "s"],
-                this._onClickChangePlaySpeed(time),
+            this._chooseSpeedItem[speed] = cc.MenuItemImage.create(
+                main_scene_image["button" + (70 + speed)],
+                main_scene_image["button" + (70 + speed) + "s"],
+                this._onClickChangePlaySpeed,
                 this
             );
 
-            this._chooseSpeedItem[j + 1].setPosition(this._batterLayerFit.chooseSpeedItemPoint);
-            this._chooseSpeedItem[j + 1].setVisible(times[j] == playSpeedTimes);
+            this._chooseSpeedItem[speed].setPosition(this._batterLayerFit.chooseSpeedItemPoint);
+            this._chooseSpeedItem[speed].setVisible(speed == this._playSpeed);
 
-            this._menu.addChild(this._chooseSpeedItem[j + 1]);
+            this._menu.addChild(this._chooseSpeedItem[speed]);
+
         }
 
         this._battleLog.recover();
@@ -2701,42 +2687,51 @@ var BatterLayer = cc.Layer.extend({
             return;
         }
 
-        var table = outputTables.values.rows;
-        var needLv = table["passBattleLv"].value;
-        var needVip = table["passBattleVip"].value;
         var player = gameData.player;
 
-        if (player.get("lv") >= needLv && player.get("vip") >= needVip) {
+        if (player.get("lv") >= 10 && player.getRemainDays(MONTH_CARD) > 0) {
             this.end();
         } else {
-            TipLayer.tip("VIP" + needVip + "玩家" + needLv + "级开启");
+            TipLayer.tip("月卡玩家10级可跳过");
         }
     },
 
-    _onClickChangePlaySpeed: function (times) {
-        var that = this;
-        return function () {
-            cc.log("BattleLayer _onClickChangePlaySpeed: " + times);
+    _onClickChangePlaySpeed: function () {
+        cc.log("BattleLayer _onClickChangePlaySpeed");
 
-            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var table = outputTables.values.rows;
-            var needLv = table["playSpeedLv" + times].value;
+        this._playSpeed++;
 
-            if (gameData.player.get("lv") >= needLv) {
+        if (this._playSpeed > 3) {
+            this._playSpeed = 1;
+        }
 
-                cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[times]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", times);
-                that._chooseSpeedItem[times].setVisible(true);
+        var vip = gameData.player.get("vip");
+        var lv = gameData.player.get("lv");
 
-                var time = times - 1;
-                if (time < 1) {
-                    time = that._chooseSpeedItem.length - 1;
-                }
-                that._chooseSpeedItem[time].setVisible(false);
-
+        if (vip < 1) { //普通玩家
+            if (lv < 10) {
+                TipLayer.tip("vip1或10级开启");
+            } else if (this._playSpeed == 3) {
+                TipLayer.tip("vip2开启");
             } else {
-                TipLayer.tip(needLv + "级开启");
+                cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
+                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+
+                for (var i = 1; i <= 3; i++) {
+                    this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
+                }
+            }
+        } else { //vip玩家
+            if (this._playSpeed == 3 && vip < 2) {
+                TipLayer.tip("vip2开启");
+            } else {
+                cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
+                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                for (var i = 1; i <= 3; i++) {
+                    this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
+                }
             }
         }
     }

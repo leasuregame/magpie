@@ -196,7 +196,19 @@ var CardUpgradeLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["cardUpgrade"]);
+            },
+            this
+        );
+
+        helpItem.setPosition(this._cardUpgradeLabelFit.helpItemPoint);
+
         var menu = cc.Menu.create(
+            helpItem,
             selectLeadCardItem,
             this._upgradeItem,
             this._selectRetinueCardItem
@@ -485,6 +497,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         cc.log("CardUpgradeLabel _onClickSelectRetinueCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {

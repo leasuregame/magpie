@@ -65,7 +65,7 @@ var LotteryLayer = cc.Layer.extend({
         bgSprite.setPosition(this._lotteryLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var fragmentTipLayer = StrokeLabel.create("高级魔石十连抽必得卡魂","STHeitiTC-Medium", 20);
+        var fragmentTipLayer = StrokeLabel.create("高级十连抽必得卡魂","STHeitiTC-Medium", 20);
         fragmentTipLayer.setPosition(this._lotteryLayerFit.fragmentTipLayerPoint);
         this.addChild(fragmentTipLayer);
 

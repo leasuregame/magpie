@@ -80,6 +80,7 @@ var appFiles = [
     'src/model/gameData.js',
     'src/model/gameMark.js',
     'src/model/gameGuide.js',
+    'src/model/gameHelp.js',
 
     'src/controls/progress.js',
     'src/controls/lazyLayer.js',
@@ -141,6 +142,7 @@ var appFiles = [
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
+    'src/view/mainModule/gameHelpLabel.js',
     'src/view/mainModule/giftBagLayer.js',
     'src/view/mainModule/goldLayer.js',
     'src/view/mainModule/goPaymentLayer.js',

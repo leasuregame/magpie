@@ -220,8 +220,17 @@ var CardTrainLabel = cc.Layer.extend({
         );
         this._trainItem.setPosition(this._cardTrainLabelFit.trainItemPoint);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["cardTrain"]);
+            },
+            this
+        );
+        helpItem.setPosition(this._cardTrainLabelFit.helpItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._trainItem);
+        var menu = cc.Menu.create(selectLeadCardItem, this._trainItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

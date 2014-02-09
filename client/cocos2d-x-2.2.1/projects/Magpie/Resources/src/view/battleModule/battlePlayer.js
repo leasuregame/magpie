@@ -13,7 +13,7 @@
 
 
 var MAIN_PLAY_SPEED = 1;
-var BATTLE_PLAY_SPEEDS = [1, 1.3, 2.0];
+var BATTLE_PLAY_SPEEDS = [1, 1.3, 2.0, 3.0];
 
 var BattlePlayer = cc.Class.extend({
     _battleScene: null,

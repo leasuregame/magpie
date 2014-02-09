@@ -377,7 +377,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多消耗#{starUpgradeConfig.max_num}张卡牌"})
 
-      rate = player.initRate['star'+star] or 0
+      rate = player.initRate['star'+card.star] or 0
       addRate = card_count * starUpgradeConfig.rate_per_card
       totalRate = _.min([addRate + rate, 100])
 
@@ -388,12 +388,12 @@ Handler::starUpgrade = (msg, session, next) ->
       
       player.decrease('money', money_consume)
       if is_upgrade
+        ### 成功进阶，对应星级初始概率置为0 ###
+        player.setInitRate(card.star, 0)
+
         card.increase('star')
         card.increase('tableId')
-        card.resetSkillLv()
-
-        ### 成功进阶，对应星级初始概率置为0 ###
-        player.setInitRate(star, 0)
+        card.resetSkillLv()      
 
         # 获得so lucky成就
         if card_count is 1
@@ -414,7 +414,7 @@ Handler::starUpgrade = (msg, session, next) ->
           card.bornPassiveSkill()
         cb null
       else
-        player.incInitRate(star, parseInt addRate*0.5)
+        player.incInitRate(card.star, parseInt addRate*0.5)
         cb null
 
     (cb) ->

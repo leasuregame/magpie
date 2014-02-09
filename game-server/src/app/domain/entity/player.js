@@ -1177,7 +1177,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.setInitRate = function(star, val) {
-        if (star > 1 || star > 4) {
+        if (star < 1 || star > 4) {
             return;
         }
 
@@ -1187,7 +1187,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incInitRate = function(star, val) {
-        if (star > 1 || star > 4) {
+        if (star < 1 || star > 4) {
             return;
         }
 

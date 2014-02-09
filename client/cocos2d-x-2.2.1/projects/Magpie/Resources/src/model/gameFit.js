@@ -517,10 +517,12 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 559),
             "titleLabelPoint": cc.p(190, 830),
-            "nameLabelPoint": cc.p(220, 764),
-            "lvLabelPoint": cc.p(360, 764),
+            "nameLabelPoint": cc.p(260, 764),
+            "lvLabelPoint": cc.p(370, 764),
             "abilityLabelPoint": cc.p(500, 764),
-            "closeItemPoint": cc.p(363, 315)
+            "closeItemPoint": cc.p(363, 315),
+            "vipBgPoint": cc.p(160, 767),
+            "vipIconPoint": cc.p(155, 767)
         },
         "lineUpDetailsLayer": {
             "cardDetailsOffsetX": 40,
@@ -1834,10 +1836,12 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 647),
             "titleLabelPoint": cc.p(150, 918),
-            "nameLabelPoint": cc.p(180, 852),
-            "lvLabelPoint": cc.p(320, 852),
+            "nameLabelPoint": cc.p(220, 852),
+            "lvLabelPoint": cc.p(330, 852),
             "abilityLabelPoint": cc.p(460, 852),
-            "closeItemPoint": cc.p(323, 403)
+            "closeItemPoint": cc.p(323, 403),
+            "vipBgPoint": cc.p(120, 855),
+            "vipIconPoint": cc.p(115, 855)
         },
         "lineUpDetailsLayer": {
             "cardDetailsOffsetX": 0,

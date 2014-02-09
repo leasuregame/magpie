@@ -67,6 +67,16 @@ var LineUpDetail = LazyLayer.extend({
         titleLabel.setPosition(this._lineUpDetailFit.titleLabelPoint);
         this.addChild(titleLabel);
 
+        var vipBg = cc.Sprite.create(main_scene_image.icon366);
+        vipBg.setPosition(this._lineUpDetailFit.vipBgPoint);
+        this.addChild(vipBg);
+
+        var vipIcon = cc.Sprite.create(main_scene_image["vip" + (data.vip || 0)]);
+        vipIcon.setPosition(this._lineUpDetailFit.vipIconPoint);
+        vipIcon.setRotation(345);
+        vipIcon.setScale(0.8);
+        this.addChild(vipIcon);
+
         var nameLabel = cc.LabelTTF.create(data.name, "STHeitiTC-Medium", 20);
         //nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setPosition(this._lineUpDetailFit.nameLabelPoint);

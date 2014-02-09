@@ -17,15 +17,16 @@ lz.platformConfig = {
     GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
 };
 
-var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;
-var BUY_GOODS_SERVER_ERROR = 1;
-var BUY_GOODS_ORDER_EMPTY = 2;
-var BUY_GOODS_OTHER_ERROR = 3;
+var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;   // 余额不足
+var BUY_GOODS_SERVER_ERROR = 1;     // 服务器错误
+var BUY_GOODS_ORDER_EMPTY = 2;      // 订单号为空
+var BUY_GOODS_NETWORKING_ERROR = 3; // 网络不流畅
+var BUY_GOODS_OTHER_ERROR = 4;      // 其他错误
 
-var TB_PLATFORM_LEAVED_DEFAULT = 0;
-var TB_PLATFORM_LEAVED_FROM_LOGIN = 1;
-var TB_PLATFORM_LEAVED_FROM_USER_CENTER = 2;
-var TB_PLATFORM_LEAVED_FROM_USER_PAY = 3;
+var TB_PLATFORM_LEAVED_DEFAULT = 0;     // 离开未知平台
+var TB_PLATFORM_LEAVED_FROM_LOGIN = 1;  // 离开注册、登录页面
+var TB_PLATFORM_LEAVED_FROM_USER_CENTER = 2;    // 离开个人中心、游戏推荐、论坛页面
+var TB_PLATFORM_LEAVED_FROM_USER_PAY = 3;   // 离开充值页面（成功或者失败）
 
 var TB_PLATFORM_NO_APPID_ERROR = -105;    // 未设置AppID
 var TB_PLATFORM_NETWORKING_ERROR = -100;    // 网络不给力
@@ -101,10 +102,9 @@ tbAdapter.buyGoodsFailedHandler = function (order, error) {
     cc.log("tbAdapter buyGoodsFailedHandler: " + order);
     cc.log(error);
 
-    gameData.payment._closeWaitLayer();
-
     switch (error) {
         case BUY_GOODS_BALANCE_NOT_ENOUGH:
+            Dialog.pop("充值失败，余额不足");
             break;
         case BUY_GOODS_SERVER_ERROR:
             Dialog.pop("充值失败，服务器错误");
@@ -112,17 +112,24 @@ tbAdapter.buyGoodsFailedHandler = function (order, error) {
         case BUY_GOODS_ORDER_EMPTY:
             Dialog.pop("充值失败，订单号错误");
             break;
+        case BUY_GOODS_NETWORKING_ERROR:
+            tbAdapter.TBCheckOrder(order);
+            return;
         case BUY_GOODS_OTHER_ERROR:
             Dialog.pop("充值失败，未知错误");
             break;
         default:
             break;
     }
+
+    gameData.payment._closeWaitLayer();
 };
 
 // 查询订单成功回调
 tbAdapter.checkOrderResultHandler = function (order, status, amount) {
     cc.log("tbAdapter checkOrderResultHandler");
+    cc.log(order);
+    cc.log(status);
 
     gameData.payment._closeWaitLayer();
 
@@ -131,8 +138,10 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败，未知错误");
             break;
         case 0:
+            Dialog.pop("充值失败");
             break;
         case 1:
+            Dialog.pop("充值失败");
             break;
         case 2:
             Dialog.pop("充值失败");

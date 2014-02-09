@@ -28,7 +28,10 @@ TBAdapter * TBAdapter::TBAdapterInstance(){
     [TBCallbackHandler sharedHandler];
     return m_Instance;
 }
-
+void TBAdapter::TBSetSupportIOS7(bool isSupport){
+    [[TBPlatform defaultPlatform] TBSetSupportIOS7:isSupport];
+    [[TBPlatform defaultPlatform] TBSetSupportIOS7:YES];
+}
 void TBAdapter::TBExcuteCallback(const char *name, uint32_t argc, jsval *vp, jsval *retVal) {
     js_proxy_t* p = jsb_get_native_proxy(this);
     ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
@@ -146,7 +149,7 @@ int TBAdapter::TBEnterBBS(int tag){
 /************************以下函数需要开发根据实际应用自定义************************/
 void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
     jsval v[] = {
-        v[0] = UINT_TO_JSVAL(code)
+        v[0] = INT_TO_JSVAL(code)
     };
     this->TBExcuteCallback("initDidFinishWithUpdateCodeHandler", 1, v, NULL);
 }
@@ -166,7 +169,7 @@ void TBAdapter::TBLogoutHandle(){
 void TBAdapter::TBLeavedPlatformHandle(int closeType, const char *order){
     JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
     jsval v[] = {
-        v[0] = UINT_TO_JSVAL(closeType),
+        v[0] = INT_TO_JSVAL(closeType),
         v[1] = c_string_to_jsval(cx, order)
     };
     
@@ -174,7 +177,7 @@ void TBAdapter::TBLeavedPlatformHandle(int closeType, const char *order){
 }
 void TBAdapter::TBCheckUpdateFinished(int result){
     jsval v[] = {
-        v[0] = UINT_TO_JSVAL(result)
+        v[0] = INT_TO_JSVAL(result)
     };
     
     this->TBExcuteCallback("checkUpdateFinishedHandler", 1, v, NULL);
@@ -191,7 +194,7 @@ void TBAdapter::TBBuyGoodsFailed(const char *order,int error){
     JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
     jsval v[] = {
         v[0] = c_string_to_jsval(cx, order),
-        v[1] = UINT_TO_JSVAL(error)
+        v[1] = INT_TO_JSVAL(error)
     };
     
     this->TBExcuteCallback("buyGoodsFailedHandler", 2, v, NULL);
@@ -208,8 +211,8 @@ void TBAdapter::TBCheckOrderResultHandle(const char *order,int status,int amount
     JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
     jsval v[] = {
         v[0] = c_string_to_jsval(cx, order),
-        v[1] = UINT_TO_JSVAL(status),
-        v[2] = UINT_TO_JSVAL(amount)
+        v[1] = INT_TO_JSVAL(status),
+        v[2] = INT_TO_JSVAL(amount)
     };
     
     this->TBExcuteCallback("checkOrderResultHandler", 3, v, NULL);

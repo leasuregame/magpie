@@ -34,8 +34,8 @@
 - (int)TBLogin:(int) nFlag;
 
 /**
- @brief 获取当前登陆帐户的状态
- @result 登录帐户状态
+ @brief 获取当前登陆账户的状态
+ @result 登录账户状态
  */
 - (TB_LOGIN_STATE)getCurrentLoginState;
 
@@ -48,7 +48,7 @@
 - (int)TBLogout:(int) nFlag;
 
 /**
- @brief 切换帐号（logout+login），会注销当前登录的帐号。
+ @brief 切换账号（logout+login），会注销当前登录的账号。
  */
 - (void)TBSwitchAccount;
 
@@ -73,8 +73,8 @@
 - (NSString *)userID;
 
 /**
- @brief 获取登录帐户的信息
- @result 当前登录帐户的信息，包含用户ID，昵称等。
+ @brief 获取登录账户的信息
+ @result 当前登录账户的信息，包含用户ID，昵称等。
  @note 该接口在登录后立即返回
  */
 - (TBPlatformUserInfo *)TBGetMyInfo;

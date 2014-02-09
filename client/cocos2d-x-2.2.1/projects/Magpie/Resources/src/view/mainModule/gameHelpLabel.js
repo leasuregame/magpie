@@ -9,27 +9,31 @@ var GameHelpLabel = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
+
         var title = arg.title;
         var descriptions = arg.descriptions;
 
-        var lazyLayer = LazyLayer.create();
-        lazyLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(lazyLayer);
+        var node = cc.Node.create();
+        node.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(node);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(510, 530));
         bgSprite.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(bgSprite);
+        node.addChild(bgSprite);
 
         var titleLabel = cc.LabelTTF.create(title, "STHeitiTC-Medium", 35);
         titleLabel.setColor(cc.c3b(255, 232, 75));
         titleLabel.setPosition(0, 215);
-        lazyLayer.addChild(titleLabel);
+        node.addChild(titleLabel);
 
         var msgBgIcon = cc.Scale9Sprite.create(main_scene_image.icon175);
         msgBgIcon.setPosition(cc.p(0, 10));
         msgBgIcon.setContentSize(cc.size(460, 330));
-        lazyLayer.addChild(msgBgIcon);
+        node.addChild(msgBgIcon);
 
         var len = descriptions.length;
         var y = 145;
@@ -40,7 +44,7 @@ var GameHelpLabel = LazyLayer.extend({
                 var itemText = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 22);
                 itemText.setAnchorPoint(cc.p(0, 0.5));
                 itemText.setPosition(cc.p(-210, y - j * 30));
-                lazyLayer.addChild(itemText);
+                node.addChild(itemText);
             }
             y -= description.length * 35;
         }
@@ -56,7 +60,7 @@ var GameHelpLabel = LazyLayer.extend({
 
         var menu = cc.Menu.create(closeItem);
         menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
+        node.addChild(menu);
 
         return true;
     },

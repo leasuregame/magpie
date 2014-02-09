@@ -196,7 +196,19 @@ var CardUpgradeLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["cardUpgrade"]);
+            },
+            this
+        );
+
+        helpItem.setPosition(this._cardUpgradeLabelFit.helpItemPoint);
+
         var menu = cc.Menu.create(
+            helpItem,
             selectLeadCardItem,
             this._upgradeItem,
             this._selectRetinueCardItem

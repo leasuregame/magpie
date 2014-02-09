@@ -75,6 +75,7 @@
                 <file name="src/model/gameData.js"/>
                 <file name="src/model/gameMark.js"/>
                 <file name="src/model/gameGuide.js"/>
+                <file name="src/model/gameHelp.js"/>
 
                 <file name="src/controls/progress.js"/>
                 <file name="src/controls/lazyLayer.js"/>
@@ -136,6 +137,7 @@
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>
+                <file name="src/view/mainModule/gameHelpLabel.js"/>
                 <file name="src/view/mainModule/giftBagLayer.js"/>
                 <file name="src/view/mainModule/goldLayer.js"/>
                 <file name="src/view/mainModule/goPaymentLayer.js"/>

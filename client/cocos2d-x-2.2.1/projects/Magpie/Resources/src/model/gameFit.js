@@ -245,7 +245,8 @@ var fit4Iphone4 = {
             "successBgIconPoint": cc.p(360, 617),
             "evolutionRatePoint": cc.p(360, 602),
             "starPoint": cc.p(360, 682),
-            "newCardItemPoint": cc.p(505, 617)
+            "newCardItemPoint": cc.p(505, 617),
+            "helpItemPoint": cc.p(80, 670)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -309,7 +310,8 @@ var fit4Iphone4 = {
             "selectLeadCardItemPoint": cc.p(360, 597),
             "trainItemPoint": cc.p(360, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
-            "leadCardHalfNodePoint": cc.p(360, 597)
+            "leadCardHalfNodePoint": cc.p(360, 597),
+            "helpItemPoint": cc.p(80, 670)
         },
         "cardUpgradeLabel": {
             "cardItemBgSpritePoint": cc.p(365, 512),
@@ -327,7 +329,8 @@ var fit4Iphone4 = {
             "msgBgIconPoint": cc.p(360, 515),
             "tipPoint": cc.p(360, 515),
             "okItemPoint": cc.p(270, 429),
-            "closeItemPoint": cc.p(450, 429)
+            "closeItemPoint": cc.p(450, 429),
+            "helpItemPoint": cc.p(80, 670)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -762,7 +765,8 @@ var fit4Iphone4 = {
             "stopItemPoint": cc.p(360, 182),
             "leadCardHeadNodePoint": cc.p(137, 582),
             "tipLabelPoint": cc.p(227, 45),
-            "effectPoint": cc.p(360, 523)
+            "effectPoint": cc.p(360, 523),
+            "helpItemPoint": cc.p(80, 670)
         },
         "passLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -997,7 +1001,8 @@ var fit4Iphone4 = {
             "upgradeItemPoint": cc.p(360, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
-            "effectPoint": cc.p(360, 422)
+            "effectPoint": cc.p(360, 422),
+            "helpItemPoint": cc.p(80, 670)
 
         },
         "spiritDetails": {
@@ -1558,7 +1563,8 @@ var fit4Iphone5 = {
             "successBgIconPoint": cc.p(320, 710),
             "evolutionRatePoint": cc.p(320, 695),
             "starPoint": cc.p(320, 770),
-            "newCardItemPoint": cc.p(465, 710)
+            "newCardItemPoint": cc.p(465, 710),
+            "helpItemPoint": cc.p(50, 810)
         },
         "cardLibraryLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1622,7 +1628,8 @@ var fit4Iphone5 = {
             "selectLeadCardItemPoint": cc.p(320, 690),
             "trainItemPoint": cc.p(320, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
-            "leadCardHalfNodePoint": cc.p(320, 690)
+            "leadCardHalfNodePoint": cc.p(320, 690),
+            "helpItemPoint": cc.p(50, 810)
         },
         "cardUpgradeLabel": {
             "cardItemBgSpritePoint": cc.p(325, 610),
@@ -1640,7 +1647,8 @@ var fit4Iphone5 = {
             "msgBgIconPoint": cc.p(320, 608),
             "tipPoint": cc.p(320, 608),
             "okItemPoint": cc.p(230, 522),
-            "closeItemPoint": cc.p(410, 522)
+            "closeItemPoint": cc.p(410, 522),
+            "helpItemPoint": cc.p(50, 810)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2077,7 +2085,8 @@ var fit4Iphone5 = {
             "stopItemPoint": cc.p(320, 197),
             "leadCardHeadNodePoint": cc.p(97, 670),
             "tipLabelPoint": cc.p(227, 25),
-            "effectPoint": cc.p(320, 563)
+            "effectPoint": cc.p(320, 563),
+            "helpItemPoint": cc.p(50, 810)
         },
         "passLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2312,7 +2321,8 @@ var fit4Iphone5 = {
             "upgradeItemPoint": cc.p(320, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
-            "effectPoint": cc.p(320, 445)
+            "effectPoint": cc.p(320, 445),
+            "helpItemPoint": cc.p(50, 810)
 
         },
         "spiritDetails": {

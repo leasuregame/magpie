@@ -111,19 +111,6 @@ var BatterLayer = cc.Layer.extend({
         this._menu = cc.Menu.create(this._backItem);
         this.addChild(this._menu);
 
-        var table = outputTables.values.rows;
-        var times = [];
-        var len = Object.keys(table).length;
-
-        for (var i = 0; i < len; ++i) {
-            var key = "playSpeedLv" + (i + 1);
-            if (table[key]) {
-                times.push(i + 1);
-            } else {
-                break;
-            }
-        }
-
         this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
 
         for (var speed = 1; speed <= 3; ++speed) {

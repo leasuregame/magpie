@@ -371,12 +371,23 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._cancelItem.setPosition(this._passiveSkillAfreshLabelFit.cancelItemPoint);
         this._cancelItem.setVisible(false);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
+            },
+            this
+        );
+        helpItem.setPosition(this._passiveSkillAfreshLabelFit.helpItemPoint);
+
         var menu = cc.Menu.create(
             selectLeadCardItem,
             this._afreshItem,
             this._repeatAfreshItem,
             this._startItem,
-            this._cancelItem
+            this._cancelItem,
+            helpItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);

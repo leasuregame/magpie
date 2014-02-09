@@ -172,7 +172,17 @@ var SkillUpgradeLabel = cc.Node.extend({
         );
         this._upgradeItem.setPosition(this._skillUpgradeLabelFit.upgradeItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem);
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["skillUpgrade"]);
+            },
+            this
+        );
+        helpItem.setPosition(this._skillUpgradeLabelFit.helpItemPoint);
+
+        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

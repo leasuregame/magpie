@@ -35,7 +35,7 @@ var main_scene_image = {
 //    bg3: main_scene_path + "bg3.png",
 //    bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
-    bg6: main_scene_path + "bg6.png",
+//    bg6: main_scene_path + "bg6.png",
 //    bg7: main_scene_path + "bg7.png",
     bg8: main_scene_path + "bg8.png",
     bg9: main_scene_path + "bg9.png",
@@ -138,10 +138,19 @@ var main_scene_image = {
     card_frame4: main_scene_path + "card_frame4.png",
     card_frame5: main_scene_path + "card_frame5.png",
 
-    card_icon0: main_scene_path + "card_icon0.png",
-    card_icon1: main_scene_path + "card_icon1.png",
-    card_icon2: main_scene_path + "card_icon2.png",
-    card_icon3: main_scene_path + "card_icon3.png",
+    card_icon_1_0: main_scene_path + "card_icon_1_0.png",
+    card_icon_1_1: main_scene_path + "card_icon_1_1.png",
+    card_icon_1_2: main_scene_path + "card_icon_1_2.png",
+    card_icon_1_3: main_scene_path + "card_icon_1_3.png",
+    card_icon_1_4: main_scene_path + "card_icon_1_4.png",
+    card_icon_1_5: main_scene_path + "card_icon_1_5.png",
+
+    card_icon_2_0: main_scene_path + "card_icon_2_0.png",
+    card_icon_2_1: main_scene_path + "card_icon_2_1.png",
+    card_icon_2_2: main_scene_path + "card_icon_2_2.png",
+    card_icon_2_3: main_scene_path + "card_icon_2_3.png",
+    card_icon_2_4: main_scene_path + "card_icon_2_4.png",
+    card_icon_2_5: main_scene_path + "card_icon_2_5.png",
 
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -230,8 +239,9 @@ var main_scene_image = {
 //    button33: main_scene_path + "button33.png",
     button34: main_scene_path + "button34.png",
 //    button35: main_scene_path + "button35.png",
-//    button36: main_scene_path + "button36.png",
-//    button36s: main_scene_path + "button36s.png",
+    button36: main_scene_path + "button36.png",
+    button36s: main_scene_path + "button36s.png",
+    button36d: main_scene_path + "button36d.png",
     button37: main_scene_path + "button37.png",
     button37s: main_scene_path + "button37s.png",
     button38: main_scene_path + "button38.png",
@@ -241,8 +251,8 @@ var main_scene_image = {
     button40: main_scene_path + "button40.png",
     button40s: main_scene_path + "button40s.png",
     button40d: main_scene_path + "button40d.png",
-//    button41: main_scene_path + "button41.png",
-//    button41s: main_scene_path + "button41s.png",
+    button41: main_scene_path + "button41.png",
+    button41s: main_scene_path + "button41s.png",
 //    button42: main_scene_path + "button42.png",
     button43: main_scene_path + "button43.png",
 //    button44: main_scene_path + "button44.png",
@@ -301,6 +311,8 @@ var main_scene_image = {
     button71s: main_scene_path + "button71s.png",
     button72: main_scene_path + "button72.png",
     button72s: main_scene_path + "button72s.png",
+    button73: main_scene_path + "button73.png",
+    button73s: main_scene_path + "button73s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -361,14 +373,14 @@ var main_scene_image = {
     icon57: main_scene_path + "icon57.png",
     icon58: main_scene_path + "icon58.png",
     icon59: main_scene_path + "icon59.png",
-    //   icon60: main_scene_path + "icon60.png",
+    icon60: main_scene_path + "icon60.png",
     icon61: main_scene_path + "icon61.png",
-//    icon62: main_scene_path + "icon62.png",
+    icon62: main_scene_path + "icon62.png",
     icon63: main_scene_path + "icon63.png",
     icon64: main_scene_path + "icon64.png",
     icon65: main_scene_path + "icon65.png",
     icon66: main_scene_path + "icon66.png",
-//    icon67: main_scene_path + "icon67.png",
+    icon67: main_scene_path + "icon67.png",
     icon68: main_scene_path + "icon68.png",
     icon69: main_scene_path + "icon69.png",
     icon70: main_scene_path + "icon70.png",
@@ -596,10 +608,10 @@ var main_scene_image = {
     icon294: main_scene_path + "icon294.png",
     icon295: main_scene_path + "icon295.png",
     icon296: main_scene_path + "icon296.png",
-    icon297: main_scene_path + "icon297.png",
-    icon298: main_scene_path + "icon298.png",
-    icon299: main_scene_path + "icon299.png",
-    icon300: main_scene_path + "icon300.png",
+//    icon297: main_scene_path + "icon297.png",
+//    icon298: main_scene_path + "icon298.png",
+//    icon299: main_scene_path + "icon299.png",
+//    icon300: main_scene_path + "icon300.png",
 //    icon301: main_scene_path + "icon301.png",
     icon302: main_scene_path + "icon302.png",
     icon303: main_scene_path + "icon303.png",
@@ -659,6 +671,12 @@ var main_scene_image = {
     icon357: main_scene_path + "icon357.png",
     icon358: main_scene_path + "icon358.png",
     icon359: main_scene_path + "icon359.png",
+    icon360: main_scene_path + "icon360.png",
+    icon361: main_scene_path + "icon361.png",
+    icon362: main_scene_path + "icon362.png",
+    icon363: main_scene_path + "icon363.png",
+    icon364: main_scene_path + "icon364.png",
+    icon365: main_scene_path + "icon365.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -806,7 +824,9 @@ var main_scene_image = {
     uiEffect75: "res/ccb/uiEffect75.ccbi",
     uiEffect76: "res/ccb/uiEffect76.ccbi",
     uiEffect77: "res/ccb/uiEffect77.ccbi",
-
+    uiEffect79: "res/ccb/uiEffect79.ccbi",
+    uiEffect81: "res/ccb/uiEffect81.ccbi",
+    uiEffect82: "res/ccb/uiEffect82.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -1212,6 +1232,10 @@ for (var taskId = 1; taskId <= 50; ++taskId) {
 
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
+}
+
+for (var treasureHuntId = 1; treasureHuntId <= 20; ++treasureHuntId) {
+    main_scene_image["treasureHunt" + treasureHuntId] = main_scene_path + "treasureHunt" + treasureHuntId + ".png";
 }
 
 //字体

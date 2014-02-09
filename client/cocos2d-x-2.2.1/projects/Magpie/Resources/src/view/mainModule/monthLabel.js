@@ -51,11 +51,13 @@ var MonthLabel = cc.Node.extend({
             var flag = monthMark.mark >> i & 1;
             var point = cc.p(39 + i % 7 * 72, 327 - Math.floor(i / 7) * 72);
             var url = "icon186";
-            var color = cc.c3b(112,100,70);
+            var color = cc.c3b(112, 100, 70);
+
             if (i < nowDay && this._index == 0) {
                 url = "icon305";
                 color = cc.c3b(147, 97, 61);
             }
+
             var label = cc.Sprite.create(main_scene_image[url]);
             label.setPosition(point);
             this.addChild(label);
@@ -89,41 +91,33 @@ var MonthLabel = cc.Node.extend({
         var that = this;
 
         for (var i = 0; i < monthMark.days; ++i) {
-            (function(i){
+            (function (i) {
                 var flag = monthMark.mark >> i & 1;
+                var point = that._dayLabel[i].getPosition();
 
                 if (flag) {
-
                     if (i + 1 == nowDay && that._signInEffect) {
                         that._signInEffect.removeFromParent();
                         that._signInEffect = null;
                     }
 
                     if (!that._hookList[i].isVisible() && !that._effect[i]) {
-
                         that._effect[i] = cc.BuilderReader.load(main_scene_image.uiEffect63, this);
-                        var point = that._hookList[i].getPosition();
                         that._effect[i].setPosition(point);
-
-                        var hook = that._hookList[i];
-                        that._effect[i].animationManager.setCompletedAnimationCallback(this, function () {
-                            cc.log(i);
-                            that._effect[i].removeFromParent();
-                            that._effect[i] = null;
-                            hook.setVisible(true);
-                        });
-
                         that.addChild(that._effect[i]);
 
+                        that._effect[i].animationManager.setCompletedAnimationCallback(this, function () {
+                            that._effect[i].removeFromParent();
+                            that._effect[i] = null;
+                            that._hookList[i].setVisible(true);
+                        });
                     } else {
                         that._hookList[i].setVisible(true);
                     }
-
                 } else {
                     that._hookList[i].setVisible(false);
 
                     if (that._index == 0) {
-                        var point = that._dayLabel[i].getPosition();
                         if (i + 1 == nowDay && !that._signInEffect) {
                             that._signInEffect = cc.BuilderReader.load(main_scene_image.uiEffect60, this);
                             that._signInEffect.setPosition(point);
@@ -132,7 +126,6 @@ var MonthLabel = cc.Node.extend({
                     }
                 }
             })(i);
-
         }
     }
 });

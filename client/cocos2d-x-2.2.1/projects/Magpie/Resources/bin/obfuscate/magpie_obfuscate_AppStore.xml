@@ -75,6 +75,7 @@
                 <file name="src/model/gameData.js"/>
                 <file name="src/model/gameMark.js"/>
                 <file name="src/model/gameGuide.js"/>
+                <file name="src/model/gameHelp.js"/>
 
                 <file name="src/controls/progress.js"/>
                 <file name="src/controls/lazyLayer.js"/>
@@ -136,6 +137,7 @@
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>
+                <file name="src/view/mainModule/gameHelpLabel.js"/>
                 <file name="src/view/mainModule/giftBagLayer.js"/>
                 <file name="src/view/mainModule/goldLayer.js"/>
                 <file name="src/view/mainModule/goPaymentLayer.js"/>
@@ -170,6 +172,7 @@
                 <file name="src/view/mainModule/spiritSideNode.js"/>
                 <file name="src/view/mainModule/starLabel.js"/>
                 <file name="src/view/mainModule/strengthenLayer.js"/>
+                <file name="src/view/mainModule/summonLayer.js"/>
                 <file name="src/view/mainModule/systemMessageLayer.js"/>
                 <file name="src/view/mainModule/taskLayer.js"/>
                 <file name="src/view/mainModule/tenLotteryCardLayer.js"/>
@@ -179,6 +182,7 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
+                <file name="src/view/mainModule/useCardsTipLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>

@@ -93,6 +93,7 @@ var User = Entity.extend({
                         var player = msg.player;
 
                         if (player) {
+                            gameMark.init();
                             gameData.gameInit();
                             gameData.player.init(msg.player);
 
@@ -155,6 +156,7 @@ var User = Entity.extend({
 
                 var msg = data.msg;
 
+                gameMark.init();
                 gameData.gameInit();
                 gameData.player.init(msg.player);
 

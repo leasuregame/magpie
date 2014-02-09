@@ -323,7 +323,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon24,
             this._onClickLineUp,
-            this);
+            this
+        );
         lineUpItem.setPosition(this._cardListLayerFit.lineUpItemPoint);
 
         var sellItem = cc.MenuItemImage.createWithIcon(
@@ -864,7 +865,32 @@ var CardListLayer = cc.Layer.extend({
             }
         }
 
-        this._cb(this._getSelectCardList());
+        var selectCardList = this._getSelectCardList();
+
+        if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
+            var len = selectCardList.length;
+            var isShowTip = false;
+            for (var i = 0; i < len; i++) {
+                var star = selectCardList[i].get("star");
+                if (star == 4 || star == 5) {
+                    isShowTip = true;
+                }
+            }
+
+            var that = this;
+            var cb = function () {
+                that._cb(selectCardList);
+            };
+
+            if (isShowTip) {
+                UseCardsTipLabel.pop(cb);
+            } else {
+                cb();
+            }
+
+        } else {
+            this._cb(selectCardList);
+        }
     },
 
     _onClickBuyCount: function () {
@@ -927,13 +953,27 @@ var CardListLayer = cc.Layer.extend({
             return;
         }
 
+        var isShowTip = false;
         for (var i = 0; i < len; ++i) {
+            var star = selectCardList[i].get("star");
+            if (star == 4 || star == 5) {
+                isShowTip = true;
+            }
             cardIdList.push(selectCardList[i].get("id"));
         }
 
-        gameData.cardList.sell(function () {
-            MainScene.getInstance().switchTo(CardListLayer.create());
-        }, cardIdList);
+        var cb = function () {
+            gameData.cardList.sell(function () {
+                MainScene.getInstance().switchTo(CardListLayer.create());
+            }, cardIdList);
+        };
+
+        if (isShowTip) {
+            UseCardsTipLabel.pop(cb);
+        } else {
+            cb();
+        }
+
     },
 
     _onClickChangeLineUp: function () {

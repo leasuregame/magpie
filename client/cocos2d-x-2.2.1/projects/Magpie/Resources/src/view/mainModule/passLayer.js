@@ -163,7 +163,7 @@ var PassLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
         this._locate(this._top);
 
-        var tipLabel = cc.Sprite.create(main_scene_image.bg6);
+        var tipLabel = cc.Sprite.create(main_scene_image.icon60);
         tipLabel.setAnchorPoint(cc.p(0, 0));
         tipLabel.setPosition(this._passLayerFit.tipLabelPoint);
         this.addChild(tipLabel, 1);
@@ -172,6 +172,10 @@ var PassLayer = cc.Layer.extend({
         skillPointIcon.setAnchorPoint(cc.p(0, 0.5));
         skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
+
+        var topIcon = cc.Sprite.create(main_scene_image.icon62);
+        topIcon.setPosition(this._passLayerFit.topIconPoint);
+        this.addChild(topIcon);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -193,6 +197,15 @@ var PassLayer = cc.Layer.extend({
         towerBgSprite.setPosition(this._passLayerFit.towerBgSpritePoint);
         this.addChild(towerBgSprite);
 
+        var lineUpItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon24,
+            this._onClickLineUp,
+            this
+        );
+        lineUpItem.setPosition(this._passLayerFit.lineUpItemPoint);
+
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
             main_scene_image.button10s,
@@ -213,7 +226,7 @@ var PassLayer = cc.Layer.extend({
         );
         this._resetItem.setPosition(this._passLayerFit.resetItemPoint);
 
-        var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
+        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -389,7 +402,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _showWipeOutReward");
 
         var layer = LazyLayer.create();
-        this.addChild(layer);
+        this.addChild(layer, 5);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
@@ -659,6 +672,13 @@ var PassLayer = cc.Layer.extend({
                 LazyLayer.closeCloudLayer();
             }
         });
+    },
+
+    _onClickLineUp: function () {
+        cc.log("TournamentLabel _onClickLineUp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        LineUpLayer.pop();
     },
 
     _onClickReset: function () {

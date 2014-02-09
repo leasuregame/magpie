@@ -36,6 +36,9 @@
  */
 - (int)TBEnterAppBBS:(int)nFlag;
 
-
+/**
+ *  进入短信箱
+ */
+- (void)TBEnterMessageBox;
 
 @end

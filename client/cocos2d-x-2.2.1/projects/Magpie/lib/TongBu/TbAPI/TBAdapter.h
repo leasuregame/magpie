@@ -38,6 +38,10 @@ public:
     virtual ~TBAdapter(){};
     /*获取该类单例*/
     static TBAdapter* TBAdapterInstance();
+    /*
+     * 设置是否支持iOS7，只有使用iPhoneSDK 7.0编译工程时打开此选项
+     */
+    void TBSetSupportIOS7(bool isSupport);
     /* 初始化平台
      * appid：应用ID，由后台获取
      * orientation：平台初始方向

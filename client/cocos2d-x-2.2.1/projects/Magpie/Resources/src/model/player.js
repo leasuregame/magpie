@@ -442,25 +442,23 @@ var Player = Entity.extend({
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
             if (goldCards.month) {
-                goldCards.month.remainingDays = -1;
+                if(goldCards.month.remainingDays == 0) {
+                    goldCards.month.remainingDays = -1;
+                }
             } else {
-                var card = lz.clone(goldCards);
-                card.month = {
+                goldCards.month = {
                     "remainingDays": -1
                 };
-
-                this.set("goldCards", card);
             }
         } else if (type == WEEK_CARD) {
             if (goldCards.week) {
-                goldCards.week.remainingDays = -1;
+                if(goldCards.week.remainingDays == 0) {
+                    goldCards.week.remainingDays = -1;
+                }
             } else {
-                var card = lz.clone(goldCards);
-                card.week = {
+                goldCards.week = {
                     "remainingDays": -1
                 };
-
-                this.set("goldCards", card);
             }
         }
     }

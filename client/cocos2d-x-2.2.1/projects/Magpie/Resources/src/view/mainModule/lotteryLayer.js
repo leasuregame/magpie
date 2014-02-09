@@ -65,24 +65,7 @@ var LotteryLayer = cc.Layer.extend({
         bgSprite.setPosition(this._lotteryLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._lotteryLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon241);
-        titleIcon.setPosition(this._lotteryLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._lotteryLayerFit.backItemPoint);
-
-        var fragmentTipLayer = StrokeLabel.create("高级魔石十连抽必得卡魂","STHeitiTC-Medium", 20);
+        var fragmentTipLayer = StrokeLabel.create("高级十连抽必得卡魂","STHeitiTC-Medium", 20);
         fragmentTipLayer.setPosition(this._lotteryLayerFit.fragmentTipLayerPoint);
         this.addChild(fragmentTipLayer);
 
@@ -136,16 +119,7 @@ var LotteryLayer = cc.Layer.extend({
         this._fragmentLabel.setPosition(this._lotteryLayerFit.fragmentLabelPoint);
         this.addChild(this._fragmentLabel);
 
-        var exchangeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button21,
-            main_scene_image.button21s,
-            main_scene_image.icon244,
-            this._onClickExchange,
-            this
-        );
-        exchangeItem.setPosition(this._lotteryLayerFit.exchangeItemPoint);
-
-        var menu = cc.Menu.create(backItem, exchangeItem);
+        var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

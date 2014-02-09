@@ -47,7 +47,6 @@ var Activity = Entity.extend({
                 if (data.code == 200) {
                     cc.log("sync success");
 
-
                     that.update(data.msg);
 
                     lz.server.on("onPowerGive", function (data) {
@@ -69,7 +68,7 @@ var Activity = Entity.extend({
                         cc.log(data);
 
                         that.updateRechargeFlag(data.msg.flag);
-                        gameMark.updateNewYearMark(true);
+                        gameMark.updateNewYearMark(false);
                     });
 
                     gameMark.updateActivityMark(false);
@@ -80,7 +79,6 @@ var Activity = Entity.extend({
 
                     that.sync();
                 }
-
             },
             true
         );
@@ -203,7 +201,7 @@ var Activity = Entity.extend({
                     });
                 }
 
-                gameMark.updateNewYearMark();
+                gameMark.updateNewYearMark(false);
                 cb();
 
             } else {

@@ -49,7 +49,11 @@ var Shop = Entity.extend({
 
             player.set("gold", msg.gold);
             player.set("cash", msg.cash);
-            player.set("goldCards", msg.goldCards);
+
+            if (msg.goldCards) {
+                player.set("goldCards", msg.goldCards);
+                gameMark.updateGoldCardsMark(true);
+            }
 
             var nowVip = msg.vip;
             var oldVip = player.get("vip");

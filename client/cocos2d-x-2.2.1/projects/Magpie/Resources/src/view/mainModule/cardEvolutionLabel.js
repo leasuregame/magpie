@@ -232,7 +232,18 @@ var CardEvolutionLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardEvolutionLayerFit.selectRetinueCardItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, newCardItem, this._selectRetinueCardItem, this._evolutionItem);
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            function () {
+                GameHelpLabel.pop(gameHelp["cardEvolution"]);
+            },
+            this
+        );
+
+        helpItem.setPosition(this._cardEvolutionLayerFit.helpItemPoint);
+
+        var menu = cc.Menu.create(selectLeadCardItem, newCardItem, this._selectRetinueCardItem, this._evolutionItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

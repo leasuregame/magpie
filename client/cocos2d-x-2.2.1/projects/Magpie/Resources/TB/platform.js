@@ -102,10 +102,9 @@ tbAdapter.buyGoodsFailedHandler = function (order, error) {
     cc.log("tbAdapter buyGoodsFailedHandler: " + order);
     cc.log(error);
 
-    gameData.payment._closeWaitLayer();
-
     switch (error) {
         case BUY_GOODS_BALANCE_NOT_ENOUGH:
+            Dialog.pop("充值失败，余额不足");
             break;
         case BUY_GOODS_SERVER_ERROR:
             Dialog.pop("充值失败，服务器错误");
@@ -114,19 +113,23 @@ tbAdapter.buyGoodsFailedHandler = function (order, error) {
             Dialog.pop("充值失败，订单号错误");
             break;
         case BUY_GOODS_NETWORKING_ERROR:
-            Dialog.pop("充值失败，网络不流畅");
-            break;
+            tbAdapter.TBCheckOrder(order);
+            return;
         case BUY_GOODS_OTHER_ERROR:
             Dialog.pop("充值失败，未知错误");
             break;
         default:
             break;
     }
+
+    gameData.payment._closeWaitLayer();
 };
 
 // 查询订单成功回调
 tbAdapter.checkOrderResultHandler = function (order, status, amount) {
     cc.log("tbAdapter checkOrderResultHandler");
+    cc.log(order);
+    cc.log(status);
 
     gameData.payment._closeWaitLayer();
 
@@ -135,8 +138,10 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败，未知错误");
             break;
         case 0:
+            Dialog.pop("充值失败");
             break;
         case 1:
+            Dialog.pop("充值失败");
             break;
         case 2:
             Dialog.pop("充值失败");

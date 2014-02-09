@@ -5,7 +5,7 @@
 //  Created by YLo. on 13-6-4.
 //  Copyright (c) 2013年 ios_team. All rights reserved.
 //
-//  Version:3.0.1
+//  Version:3.1
 
 #import <Foundation/Foundation.h>
 #import "TBPlatformAPIResponse.h"
@@ -22,6 +22,11 @@
  @brief 获取SDK的版本号
  */
 + (NSString *)version;
+
+/**
+ @brief 设置是否支持iOS7，只有使用iPhoneSDK 7.0编译工程时打开此选项
+ */
+- (void)TBSetSupportIOS7:(BOOL)isSupport;
 
 /**
  *	平台初始化方法
@@ -89,10 +94,18 @@ isContinueWhenCheckUpdateFailed:(BOOL)isAccept;
  @brief 获取用户信息，需登录
  */
 - (TBPlatformUserInfo *)getUserInfo;
+
 /**
  @brief 获取appId，需要预先设置
  */
 - (int)appId;
+
+/**
+ *  处理打开程序的URL
+ *
+ *  @param url 打开的url
+ */
+- (void)handleOpenURL:(NSURL *)url;
 
 #pragma mark -
 #pragma mark Version Update
@@ -113,10 +126,10 @@ isContinueWhenCheckUpdateFailed:(BOOL)isAccept;
 
 
 typedef enum  _TB_APP_UPDATE_RESULT {
-	TB_APP_UPDATE_NO_NEW_VERSION = 0,                    /**< 没有新版本 */
-	TB_APP_UPDATE_UPDATE_CANCEL_BY_USER = 1,            /**< 用户取消下载更新 */
-	TB_APP_UPDATE_NEW_VERSION_DOWNLOAD_FAIL = 2,       /**< 下载新版本失败 */
-	TB_APP_UPDATE_CHECK_NEW_VERSION_FAIL = 3,         /**< 检测新版本失败 */
+    TB_APP_UPDATE_NO_NEW_VERSION            = 0,       /* 没有新版本 */
+    TB_APP_UPDATE_UPDATE_CANCEL_BY_USER     = 1,       /* 用户取消下载更新 */
+    TB_APP_UPDATE_NEW_VERSION_DOWNLOAD_FAIL = 2,       /* 下载新版本失败 */
+    TB_APP_UPDATE_CHECK_NEW_VERSION_FAIL    = 3,       /* 检测新版本失败 */
 }	TB_APP_UPDATE_RESULT;
 /**
  @brief TBAppVersionUpdate的回调函数

@@ -13,8 +13,8 @@
 #pragma mark PayAndRecharge Interface
 
 /**
- @brief 进行虚拟币充值或商品购买（需登录，同步后台记录充值帐号记录）
- @param orderSerial     合作商订单号，必须保证唯一，双方对帐的唯一标记
+ @brief 进行虚拟币充值或商品购买（需登录，同步后台记录充值账号记录）
+ @param orderSerial     合作商订单号，必须保证唯一，双方对账的唯一标记
  @param needPayRMB      需要支付的金额，单位：元（大于0，否则进入自选金额界面）
  @param payDescription 支付描述，发送支付成功通知时，返回给开发者
  @param delegate         回调对象，见TBBuyGoodsProtocol协议
@@ -27,7 +27,7 @@
 
 /**
  @brief 进行充值。该接口直接进入Web页充值，无回调，开发者可以使用TBCheckPaySuccess:delegate:接口进行订单查询
- @param orderSerial     合作商订单号，必须保证唯一，双方对帐的唯一标记
+ @param orderSerial     合作商订单号，必须保证唯一，双方对账的唯一标记
  @param payDescription  支付描述，发送支付成功通知时，返回给开发者
  @result 错误码
  */
@@ -54,7 +54,7 @@ typedef enum {
     kBuyGoodsBalanceNotEnough,  /*余额不足*/
     kBuyGoodsServerError,       /*服务器错误*/
     kBuyGoodsOrderEmpty,        /*订单号为空*/
-    kBuyGoodsNetworkingError,   /*网络不流畅（有可能已经购买成功但客户端已超时）*/
+    kBuyGoodsNetworkingError,   /*网络不流畅（有可能已经购买成功但客户端已超时,建议进行订单查询）*/
     kBuyGoodsOtherError,        /*其他错误*/
 }TB_BUYGOODS_ERROR;
 @optional
@@ -99,11 +99,14 @@ typedef enum {
  *                  order:订单号
  *                  amount:充值金额 （单位：分）
  *                  status:状态 （-1：其它错误（包括选定金额后未进入第三方充值页或服务器返回异常）
-                                  0：待支付  1：充值中  2：失败  3：成功）
+                                  0：待支付（已经创建第三方充值订单，但未支付）
+                                  1：充值中（用户支付成功，正在通知开发者服务器，未收到处理结果）
+                                  2：失败
+                                  3：成功（通知开发者服务器并收到处理成功结果，充值完毕））
  */
 - (void)TBCheckOrderSuccessWithResult:(NSDictionary *)dict;
 /**
- *  @brief 查询订单失败
+ *  @brief 查询订单失败（网络不通畅，或服务器返回错误）
  */
 - (void)TBCheckOrderDidFailed:(NSString*)order;
 

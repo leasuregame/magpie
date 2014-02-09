@@ -196,8 +196,8 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.57874751091003418</real>
-										<real>0.3215198814868927</real>
+										<real>0.83540719747543335</real>
+										<real>0.51738673448562622</real>
 										<real>0.0</real>
 										<real>0.50999999046325684</real>
 									</array>
@@ -217,8 +217,8 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.57874751091003418</real>
-										<real>0.3215198814868927</real>
+										<real>0.82898575067520142</real>
+										<real>0.51325875520706177</real>
 										<real>0.0</real>
 										<real>0.5</real>
 									</array>
@@ -294,6 +294,8 @@
 								<string>res/effect/effect/p104.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

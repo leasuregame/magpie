@@ -27,6 +27,37 @@ var passiveSkillDescription = {
     dmg_reduce: "减伤"
 };
 
+// 卡牌下标
+var skillIconMap = {
+    1: {
+        0: "card_icon_1_0",
+        1: "card_icon_1_1",
+        2: "card_icon_1_2",
+        3: "card_icon_1_2",
+        4: "card_icon_1_3",
+        5: "card_icon_1_4",
+        6: "card_icon_1_4",
+        7: "card_icon_1_5",
+        8: "card_icon_1_5",
+        9: "card_icon_1_5",
+        10: "card_icon_1_5"
+    },
+
+    2: {
+        0: "card_icon_2_0",
+        1: "card_icon_2_1",
+        2: "card_icon_2_2",
+        3: "card_icon_2_2",
+        4: "card_icon_2_3",
+        5: "card_icon_2_4",
+        6: "card_icon_2_4",
+        7: "card_icon_2_5",
+        8: "card_icon_2_5",
+        9: "card_icon_2_5",
+        10: "card_icon_2_5"
+    }
+};
+
 var Card = Entity.extend({
     _id: 0,                 // 数据库对应ID
     _tableId: 0,            // 数据表对应ID
@@ -248,6 +279,12 @@ var Card = Entity.extend({
         }
 
         return urlList;
+    },
+
+    getCardIcon: function (type) {
+        type = type != 2 ? 1 : 2;
+
+        return (skillIconMap[type][this._skillId] || skillIconMap[type][0]);
     },
 
     addExp: function (exp) {

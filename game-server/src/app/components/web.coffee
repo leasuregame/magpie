@@ -52,7 +52,7 @@ checkOrderResult = (app, req, res) ->
       'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&key=%s',
       source, trade_no, amount, partner, paydes, debug, APPKEY
     )
-
+  console.log 'sign:', tempsign, sign
   res.writeHead(200, {'Content-type': 'application/json'})
   if tempsign is sign
     [playerId, areaId, productId] = paydes.split(':')

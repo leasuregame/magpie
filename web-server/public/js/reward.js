@@ -145,18 +145,9 @@ function doSubmit(options, areaId, playerName, mail) {
                         url: '/admin/logger4Reward?area=所有&data=' + JSON.stringify(mail),
                         type: "post"
                     });
-                },
-                function(err) {
-                    if (err) {
-                        console.log("err = ", err);
-                    } else {
-                        $.ajax({
-                            url: '/admin/logger4Reward?area=所有&data=' + JSON.stringify(mail),
-                            type: "post"
-                        });
-                    }
                 }
-            );
+            }
+        );
 
         } else { //指定服务器
             if (playerName == '') {

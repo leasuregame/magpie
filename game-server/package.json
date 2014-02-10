@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "dependencies": {
-    "pomelo": "0.8.3",
+    "pomelo": "0.8.6",
     "mysql": "~2.0.1",
     "mysql-queues": "*",
     "generic-pool": "2.0.4",

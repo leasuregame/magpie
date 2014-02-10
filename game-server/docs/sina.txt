@@ -1,3 +1,5 @@
+TB01890600
+
 user：root
 电信 网通 密码：
 124.238.236.30 219.232.247.30   URT7d8cJ4wMukArWMqWxjraxheErqL2i
@@ -71,8 +73,9 @@ http://124.238.236.33:3003
 http://124.238.236.33:7003
 test, 123
 
-scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-area-server-1.log
-scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-connector-server-1.log
+copy file from remote server:
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-connector-server-1.log ~/connector.log
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-area-server-1.log ~/area.log
 
 新浪服务器master：
 角色帐号：987123000

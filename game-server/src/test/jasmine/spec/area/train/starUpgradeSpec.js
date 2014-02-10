@@ -128,12 +128,12 @@ describe("Area Server", function() {
 			});
 
 			describe("when card's tableId is 10000", function() {
-				beforeEach(function(){
+				beforeEach(function() {
 					doAjax('/update/card/' + 6, {
 						tableId: 10000
-					}, function(){
+					}, function() {
 						loginWith('2', '1', 1);
-					});					
+					});
 				});
 
 				it('should can not upgrade star of card', function() {
@@ -221,89 +221,201 @@ describe("Area Server", function() {
 
 				it('should can not upgrade star of card', function() {
 					request('area.trainHandler.starUpgrade', {
-						target: 200,
-						sources: [
-							201,
-							202,
-							203,
-							204,
-							205,
-							206,
-							207,
-							208,
-							209,
-							210,
-							211,
-							212,
-							213,
-							214,
-							215,
-							216,
-							217,
-							218,
-							219,
-							220,
-							221
-						]
-					},
-					function(data) {
-						expect(data.code).toEqual(501);
-						expect(data.msg).toEqual('最多只能消耗20张卡牌来进行升级');
-						console.log(data);
-					});
+							target: 200,
+							sources: [
+								201,
+								202,
+								203,
+								204,
+								205,
+								206,
+								207,
+								208,
+								209,
+								210,
+								211,
+								212,
+								213,
+								214,
+								215,
+								216,
+								217,
+								218,
+								219,
+								220,
+								221
+							]
+						},
+						function(data) {
+							expect(data.code).toEqual(501);
+							expect(data.msg).toEqual('最多消耗20张卡牌');
+							console.log(data);
+						});
 				});
 			});
 
-			describe("when 100 percent upgrade star of card", function(){
-				beforeEach(function(){
+			describe("when 100 percent upgrade star of card", function() {
+				beforeEach(function() {
 					loginWith('arthur', '1', 1);
 				});
 
-				it('should can upgrade star of card', function(){
+				it('should can upgrade star of card', function() {
 					request('area.trainHandler.starUpgrade', {
-						target: 200,
-						sources: [
-							201,
-							202,
-							203,
-							204,
-							205,
-							206,
-							207,
-							208,
-							209,
-							210,
-							211,
-							212,
-							213,
-							214,
-							215,
-							216,
-							217,
-							218,
-							219,
-							220
-						]
-					},
-					function(data) {
-						expect(data.code).toEqual(200);
-						expect(data.msg.upgrade).toEqual(true);
-						expect(_.pick(data.msg.card, 
-							'id', 'tableId', 
-							'lv', 'exp', 'skillLv', 
-							'skillPoint')
-						).toEqual({
-							id: 200,
-							tableId: 4,
-							lv: 50,
-							exp: 100,
-							skillLv: 1,
-							skillPoint: 30000
+							target: 200,
+							sources: [
+								201,
+								202,
+								203,
+								204,
+								205,
+								206,
+								207,
+								208,
+								209,
+								210,
+								211,
+								212,
+								213,
+								214,
+								215,
+								216,
+								217,
+								218,
+								219,
+								220
+							]
+						},
+						function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg.upgrade).toEqual(true);
+							expect(_.pick(data.msg.card,
+								'id', 'tableId',
+								'lv', 'exp', 'skillLv',
+								'skillPoint')).toEqual({
+								id: 200,
+								tableId: 194,
+								lv: 50,
+								exp: 100,
+								skillLv: 1,
+								skillPoint: 30000
+							});
 						});
-					});
 				});
 			});
 
+			describe('升阶操作后，星级对应初始概率的变化', function() {
+				beforeEach(function() {
+					loginWith('arthur', '1', 1);
+				});
+
+				it('升阶成功或者失败，初始概率的变化都应该正确', function() {
+
+					// 第一次升阶 1张素材卡牌
+					request('area.trainHandler.starUpgrade', {
+						target: 260,
+						sources: [261]
+					}, function(data) {
+						console.log(data);
+
+						expect(data.code).toEqual(200);
+						expect(_.pick(data.msg.card,
+							'id', 'tableId',
+							'lv', 'exp', 'skillLv',
+							'skillPoint')).toEqual({
+							id: 260,
+							tableId: 94,
+							lv: 55,
+							exp: 100,
+							skillLv: 3,
+							skillPoint: 30000
+						});
+
+						doAjax('/player/100', {}, function(res) {
+
+							expInitRate = {
+								star1: 0,
+								star2: 0,
+								star3: 0,
+								star4: 2
+							};
+							expect(JSON.parse(res.data.initRate)).toEqual(expInitRate);
+						});
+					});
+
+					// 第二次升阶 9张素材卡牌
+					request('area.trainHandler.starUpgrade', {
+						target: 260,
+						sources: [262, 263, 264, 265, 267, 268, 269, 270, 271]
+					}, function(data) {
+						console.log(data);
+
+						expect(data.code).toEqual(200);
+						expect(_.pick(data.msg.card,
+							'id', 'tableId',
+							'lv', 'exp', 'skillLv',
+							'skillPoint')).toEqual({
+							id: 260,
+							tableId: 94,
+							lv: 55,
+							exp: 100,
+							skillLv: 3,
+							skillPoint: 30000
+						});
+
+						doAjax('/player/100', {}, function(res) {
+							expInitRate = {
+								star1: 0,
+								star2: 0,
+								star3: 0,
+								star4: 20
+							};
+							expect(JSON.parse(res.data.initRate)).toEqual(expInitRate);
+						});
+					});
+
+					// 第三次升阶 9张素材卡牌，概率位56%
+					request('area.trainHandler.starUpgrade', {
+						target: 260,
+						sources: [272, 273, 274, 275, 277, 278, 279, 280, 281]
+					}, function(data) {
+						console.log(data);
+
+						expect(data.code).toEqual(200);
+						
+						var cardData = {
+							id: 260,
+							tableId: 94,
+							lv: 55,
+							exp: 100,
+							skillLv: 3,
+							skillPoint: 30000
+						};
+						if (data.msg.upgrade) {
+							cardData.tableId = 95;
+							cardData.skillLv = 1;
+						}
+						expect(_.pick(data.msg.card,
+							'id', 'tableId',
+							'lv', 'exp', 'skillLv',
+							'skillPoint')).toEqual(cardData);
+
+						doAjax('/player/100', {}, function(res) {
+							var expInitRate = {
+								star1: 0,
+								star2: 0,
+								star3: 0,
+								star4: 38
+							};
+							if (data.msg.upgrade) {
+								expInitRate.star4 = 0;
+							}
+							expect(JSON.parse(res.data.initRate)).toEqual(expInitRate);
+						});
+					});
+
+				});
+
+			});
 		});
 	});
 });

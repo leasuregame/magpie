@@ -95,47 +95,47 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-Handler::buyVip = (msg, session, next) ->
-  playerId = session.get('playerId')
-  id = msg.id
+# Handler::buyVip = (msg, session, next) ->
+#   playerId = session.get('playerId')
+#   id = msg.id
 
-  data = table.getTableItem('recharge', id)
-  tradeNo = new Date().getTime().toString()
+#   data = table.getTableItem('recharge', id)
+#   tradeNo = new Date().getTime().toString()
 
-  player = null
-  async.waterfall [
-    (cb) ->
-      playerManager.getPlayerInfo pid: playerId, cb
+#   player = null
+#   async.waterfall [
+#     (cb) ->
+#       playerManager.getPlayerInfo pid: playerId, cb
 
-    (res, cb) =>
-      player = res
-      addGoldCard @app, tradeNo, player, data, cb
+#     (res, cb) =>
+#       player = res
+#       addGoldCard @app, tradeNo, player, data, cb
 
-    (cb) =>
-      addOrder @app, tradeNo, player, data.cash, cb
-  ], (err) =>
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+#     (cb) =>
+#       addOrder @app, tradeNo, player, data.cash, cb
+#   ], (err) =>
+#     if err
+#       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    player.increase('cash', data.cash)
-    player.increase('gold', (data.cash * 10) + data.gold)
-    player.save()
-    next(null, {code: 200, msg: {
-      vip: player.vip
-    }})
+#     player.increase('cash', data.cash)
+#     player.increase('gold', (data.cash * 10) + data.gold)
+#     player.save()
+#     next(null, {code: 200, msg: {
+#       vip: player.vip
+#     }})
 
-    noticeNewYearActivity @app, player, (err) ->
-    @app.get('messageService').pushByPid player.id, {
-      route: 'onVerifyResult',
-      msg: {
-        gold: player.gold,
-        vip: player.vip,
-        cash: player.cash,
-        goldCards: player.getGoldCard()
-      }
-    }, (err, res) ->
-      if err
-        logger.error('faild to send message to playerId ', playerId)
+#     noticeNewYearActivity @app, player, (err) ->
+#     @app.get('messageService').pushByPid player.id, {
+#       route: 'onVerifyResult',
+#       msg: {
+#         gold: player.gold,
+#         vip: player.vip,
+#         cash: player.cash,
+#         goldCards: player.getGoldCard()
+#       }
+#     }, (err, res) ->
+#       if err
+#         logger.error('faild to send message to playerId ', playerId)
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')

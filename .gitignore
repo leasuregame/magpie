@@ -30,3 +30,4 @@ game-server/config/powerGivenFlag-*.json
 web-server/data/*.html
 shared/version.json
 gm/config/mysql.json
+shared/version.json

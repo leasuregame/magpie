@@ -205,7 +205,8 @@ successMsg = (app, player) ->
       gold: player.gold,
       vip: player.vip,
       cash: player.cash,
-      goldCards: player.getGoldCard()
+      goldCards: player.getGoldCard(),
+      recharge: player.firstTime.recharge or 0
     }
   }, (err, res) ->
     if err

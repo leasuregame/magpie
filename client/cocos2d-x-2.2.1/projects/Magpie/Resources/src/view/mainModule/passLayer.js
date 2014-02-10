@@ -566,26 +566,47 @@ var PassLayer = cc.Layer.extend({
     _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
 
+        this.ccbFnCallback = function () {
+            cc.log("PassLayer ccbFnCallback");
+
+            this._element[1].passItem.setEnabled(false);
+            this._locate(2, 0.05);
+
+            var index = 2;
+            this.schedule(function () {
+                this._element[index].passItem.setEnabled(false);
+                this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
+
+                index += 1;
+
+                if (index > this._top) {
+                    ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+                    ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                        this._spirit.setVisible(true);
+                        ccbNode.removeFromParent();
+
+                        LazyLayer.closeCloudAll();
+                        this._showWipeOutReward(reward);
+                    });
+
+                    return;
+                }
+
+                this._locate(index, 0.05);
+            }, 0.05, this._top - 2);
+        };
+
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect83, this);
+        ccbNode.setPosition(cc.pAdd(gameFit.GAME_ZERO_POINT, cc.p(230, 200)));
+        this.addChild(ccbNode);
+
+        this._spirit.setVisible(false);
+
         this._locate(1);
+    },
 
-        this._element[1].passItem.setEnabled(false);
-
-        this._spiritWalk(2, 0.5, 50, 1);
-        var index = 2;
-        this.schedule(function () {
-            this._element[index].passItem.setEnabled(false);
-            this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
-
-            index += 1;
-
-            if (index > this._top) {
-                LazyLayer.closeCloudAll();
-                this._showWipeOutReward(reward);
-                return;
-            }
-
-            this._spiritWalk(index, 0.5, 50, 1);
-        }, 0.6, this._top - 2);
+    ccbFnCallback: function () {
+        cc.log("PassLayer ccbFnCallback null");
     },
 
     _onClickDefiance: function (id) {
@@ -621,8 +642,6 @@ var PassLayer = cc.Layer.extend({
                     that._isFirstPassWin = data.isFirstPassWin || false;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
-
-
                 } else {
                     that.update();
 

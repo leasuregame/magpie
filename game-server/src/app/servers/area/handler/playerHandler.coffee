@@ -233,7 +233,7 @@ checkFriendsStatus = (player, messages) ->
     f.canGive = true
 
     matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.UNHANDLED
-    if _.contains(player.dailyGift.receivedBless.givers, f.id) and matches.length > 0
+    if matches.length > 0
       f.canReceive = true
       f.msgId = matches[0].id
 

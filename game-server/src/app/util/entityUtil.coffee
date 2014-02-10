@@ -89,6 +89,13 @@ module.exports =
   randomCardIds: (stars, num) ->
     utility.randArrayItems getCardIdsByStar(stars), num
 
+removeTableId = (ids) ->
+  exceptIds = []
+  ids.filter (i) ->
+    if i%5 is 0
+      exceptIds
+
+
 generateCardId = (star, tableIds, exceptIds) ->
   ### exceptIds 为排除的id ###
   if not tableIds

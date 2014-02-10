@@ -176,7 +176,7 @@ noticeNewYearActivity = (app, player, cb) ->
       if len > 0
         recharge = player.activities?.recharge or 0
         flag = (Math.pow(2, len)-1)^recharge
-        sendNewYearMsg(app, player, flag, recharge)
+        sendNewYearMsg(app, player, flag, recharge) if flag > 0
 
       return cb()
   else

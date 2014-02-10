@@ -224,8 +224,10 @@ todayPeriod = () ->
   [start, end]
 
 checkFriendsStatus = (player, messages) ->
-  friends = []
-  for f in player.friends
+  if player.friends?.length is 0
+    return []
+
+  player.friends.map (f) ->
     f = utility.deepCopy f
     f.canReceive = false
     f.canGive = true
@@ -238,8 +240,7 @@ checkFriendsStatus = (player, messages) ->
     if _.contains(player.dailyGift.gaveBless.receivers, f.id)
       f.canGive = false
 
-    friends.push f
-  friends
+    return f
 
 getRechargeRewardFlag = (app, playerId, cb) ->
   startDate = app.get('sharedConf').newYearActivity.startDate

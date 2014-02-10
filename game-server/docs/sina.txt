@@ -65,7 +65,7 @@ make build && make convert-data
 cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server
 
-tail -f ./logs/node-log-area-server-1.log
+tail -f ./logs/node-log-tb-notice-server-1.log
 tail -n 2000 ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 http://124.238.236.33:7003
@@ -83,3 +83,12 @@ scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-connector-serv
 
 服务器：水帘洞
 角色名称：杨翠阳
+
+[2014-02-10 14:19:29.086] [INFO] console - [sql connection error]:  { [Error: Connection lost: The server closed the connection.] fatal: true, code: 'PROTOCOL_CONNECTION_LOST' }
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/alidata1/magpie/game-server/node_modules/mysql/lib/protocol/Protocol.js:78:13)
+    at Socket.onend (stream.js:79:10)
+    at Socket.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+

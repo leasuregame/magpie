@@ -110,6 +110,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._menu = cc.Menu.create(this._backItem);
         this.addChild(this._menu);
+        this._menu.setVisible(false);
 
         this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
 

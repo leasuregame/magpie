@@ -6,7 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var rankDetails = ["历史最高排名", "历史最高连胜", "当前连胜", "累计挑战次数", "累计被挑战次数", "累计胜利次数", "累计战败次数", "平均胜率"];
+
 
 var TournamentDetails = LazyLayer.extend({
     _tournamentDetailsFit: null,
@@ -128,10 +130,20 @@ var TournamentDetails = LazyLayer.extend({
 TournamentDetails.create = function () {
     cc.log("RankDetails create");
 
-    var ref = new TournamentDetails();
-    if (ref && ref.init()) {
-        return ref;
+    var ret = new TournamentDetails();
+
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;
+};
+
+
+TournamentDetails.pop = function () {
+    var tournamentDetails = TournamentDetails.create();
+
+    MainScene.getInstance().getLayer().addChild(tournamentDetails, 10);
+
+    return tournamentDetails;
 };

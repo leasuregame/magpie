@@ -14,13 +14,13 @@ var TournamentDetails = LazyLayer.extend({
     _menu: null,
 
 
-    init: function () {
-        cc.log("RankDetails init");
+    init: function (arg) {
+        cc.log("TournamentDetails init");
 
         if (!this._super()) return false;
 
         this._tournamentDetailsFit = gameFit.mainScene.tournamentDetails;
-        var rankStats = gameData.tournament.get("rankStats");
+        var rankStats = arg || gameData.tournament.get("rankStats");
 
         cc.log(rankStats);
 
@@ -114,7 +114,7 @@ var TournamentDetails = LazyLayer.extend({
     },
 
     _onClickClose: function () {
-        cc.log("RankDetails _onClickClose");
+        cc.log("TournamentDetails _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -125,13 +125,21 @@ var TournamentDetails = LazyLayer.extend({
 
 });
 
-TournamentDetails.create = function () {
-    cc.log("RankDetails create");
+TournamentDetails.create = function (arg) {
+    cc.log("TournamentDetails create");
 
     var ref = new TournamentDetails();
-    if (ref && ref.init()) {
+    if (ref && ref.init(arg)) {
         return ref;
     }
 
     return null;
+};
+
+TournamentDetails.pop = function (arg) {
+    cc.log("TournamentDetails pop");
+
+    var tournamentDetails = TournamentDetails.create(arg);
+    MainScene.getInstance().getLayer().addChild(tournamentDetails, 10);
+
 };

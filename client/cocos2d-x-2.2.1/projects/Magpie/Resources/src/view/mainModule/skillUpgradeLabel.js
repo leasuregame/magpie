@@ -175,9 +175,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
-            function () {
-                GameHelpLabel.pop(gameHelp["skillUpgrade"]);
-            },
+            this._onClickHelp,
             this
         );
         helpItem.setPosition(this._skillUpgradeLabelFit.helpItemPoint);
@@ -363,6 +361,12 @@ var SkillUpgradeLabel = cc.Node.extend({
             that._showUpgrade = true;
             that.update();
         });
+    },
+
+    _onClickHelp: function() {
+        cc.log("SkillUpgradeLabel _onClickHelp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        GameHelpLabel.pop(gameHelp["skillUpgrade"]);
     }
 });
 

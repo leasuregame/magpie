@@ -223,9 +223,7 @@ var CardTrainLabel = cc.Layer.extend({
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
-            function () {
-                GameHelpLabel.pop(gameHelp["cardTrain"]);
-            },
+            this._onClickHelp,
             this
         );
         helpItem.setPosition(this._cardTrainLabelFit.helpItemPoint);
@@ -480,6 +478,12 @@ var CardTrainLabel = cc.Layer.extend({
         this._trainTenItem.setEnabled(false);
 
         this.update();
+    },
+
+    _onClickHelp: function() {
+        cc.log("CardTrainLabel _onClickHelp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        GameHelpLabel.pop(gameHelp["cardTrain"]);
     }
 });
 

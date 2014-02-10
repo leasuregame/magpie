@@ -374,9 +374,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
-            function () {
-                GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
-            },
+            this._onClickHelp,
             this
         );
         helpItem.setPosition(this._passiveSkillAfreshLabelFit.helpItemPoint);
@@ -871,6 +869,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.unschedule(this._setTip);
 
         this._tipLabel.setString("魔石洗炼获得金色属性概率提升100倍");
+    },
+
+    _onClickHelp: function() {
+        cc.log("PassiveSkillAfreshLabel _onClickHelp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
     }
 });
 

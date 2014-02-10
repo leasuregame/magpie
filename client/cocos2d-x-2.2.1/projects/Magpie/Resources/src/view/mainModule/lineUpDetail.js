@@ -78,17 +78,14 @@ var LineUpDetail = LazyLayer.extend({
         this.addChild(vipIcon);
 
         var nameLabel = cc.LabelTTF.create(data.name, "STHeitiTC-Medium", 20);
-        //nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setPosition(this._lineUpDetailFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create("等级: " + data.lv, "STHeitiTC-Medium", 20);
-        //lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setPosition(this._lineUpDetailFit.lvLabelPoint);
         this.addChild(lvLabel);
 
         var abilityLabel = cc.LabelTTF.create("战斗力: " + data.ability, "STHeitiTC-Medium", 20);
-        //abilityLabel.setColor(cc.c3b(255, 239, 131));
         abilityLabel.setPosition(this._lineUpDetailFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
@@ -123,16 +120,24 @@ var LineUpDetail = LazyLayer.extend({
             }
         }
 
-        var closeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon36,
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button37,
+            main_scene_image.button37s,
             this._onClickClose,
             this
         );
         closeItem.setPosition(this._lineUpDetailFit.closeItemPoint);
 
-        this._menu = cc.Menu.create(closeItem);
+        var recordItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon367,
+            this._onClickRecord(data.rankStats),
+            this
+        );
+        recordItem.setPosition(this._lineUpDetailFit.recordItemPoint);
+
+        this._menu = cc.Menu.create(closeItem,recordItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
@@ -146,6 +151,15 @@ var LineUpDetail = LazyLayer.extend({
 
         this._menu.setEnabled(false);
         this.removeFromParent();
+    },
+
+    _onClickRecord:function(data) {
+        return function() {
+            cc.log("LineUpDetail _onClickOk");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            TournamentDetails.pop(data);
+        }
     },
 
     _onClickCard: function () {

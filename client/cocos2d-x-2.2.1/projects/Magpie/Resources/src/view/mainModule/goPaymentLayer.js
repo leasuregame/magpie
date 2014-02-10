@@ -20,6 +20,10 @@ var GoPaymentLayer = LazyLayer.extend({
 
         this._goPaymentLayerFit = gameFit.mainScene.goPaymentLayer;
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
+
         var title = data.title;
         var msg = data.msg;
 

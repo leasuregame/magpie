@@ -281,8 +281,13 @@ var SignInLayer = cc.Layer.extend({
             cc.log(count);
 
             if (monthMark.count >= count) {
-                this._elementList[i].rewardIcon.setVisible(visible);
-                this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                if(this._index == 0) {
+                    this._elementList[i].rewardIcon.setVisible(false);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                } else {
+                    this._elementList[i].rewardIcon.setVisible(visible);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                }
             } else {
                 this._elementList[i].rewardIcon.setVisible(true);
                 this._elementList[i].alreadyRewardIcon.setVisible(false);

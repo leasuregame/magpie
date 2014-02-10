@@ -15,23 +15,27 @@ var UseCardsTipLabel = LazyLayer.extend({
             this._cb = cb;
         }
 
-        var lazyLayer = LazyLayer.create();
-        lazyLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(lazyLayer);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
+
+        var node = cc.Node.create();
+        node.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(node);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 250));
         bgSprite.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(bgSprite);
+        node.addChild(bgSprite);
 
         var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
         msgBgIcon.setPosition(cc.p(0, 30));
         msgBgIcon.setScaleX(0.9);
-        lazyLayer.addChild(msgBgIcon);
+        node.addChild(msgBgIcon);
 
         var tipLabel = cc.LabelTTF.create("所选中卡牌中有4/5星卡，确定继续么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
-        lazyLayer.addChild(tipLabel);
+        node.addChild(tipLabel);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -53,7 +57,7 @@ var UseCardsTipLabel = LazyLayer.extend({
 
         var menu = cc.Menu.create(cancelItem, continueItem);
         menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
+        node.addChild(menu);
 
         return true;
     },
@@ -93,6 +97,7 @@ UseCardsTipLabel.create = function (cb) {
 
 UseCardsTipLabel.pop = function (cb) {
     cc.log("UseCardsTipLabel pop");
+
     var useCardsTipLabel = UseCardsTipLabel.create(cb);
 
     MainScene.getInstance().getLayer().addChild(useCardsTipLabel, 10);

@@ -34,17 +34,17 @@ var TournamentTipLayer = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._tournamentTipLayerFit = gameFit.mainScene.tournamentTipLayer;
-
         this._cb1 = cb1;
         this._cb2 = cb2;
 
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 250));
         bgSprite.setPosition(this._tournamentTipLayerFit.bgSpritePoint);
-        lazyLayer.addChild(bgSprite);
+        this.addChild(bgSprite);
 
         var y = this._tournamentTipLayerFit.offsetPointY;
 
@@ -53,7 +53,7 @@ var TournamentTipLayer = LazyLayer.extend({
             var itemText = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 22);
             itemText.setAnchorPoint(cc.p(0, 0));
             itemText.setPosition(cc.p(this._tournamentTipLayerFit.offsetPointX, y - i * 30));
-            lazyLayer.addChild(itemText);
+            this.addChild(itemText);
         }
 
         var buyItem = cc.MenuItemImage.createWithIcon(
@@ -76,7 +76,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
         var menu = cc.Menu.create(buyItem, closeItem);
         menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
+        this.addChild(menu);
 
         return true;
 

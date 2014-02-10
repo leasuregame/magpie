@@ -22,9 +22,12 @@ var TournamentDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._tournamentDetailsFit = gameFit.mainScene.tournamentDetails;
+
         var rankStats = arg || gameData.tournament.get("rankStats");
 
-        cc.log(rankStats);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 720));

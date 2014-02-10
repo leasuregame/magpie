@@ -1118,7 +1118,7 @@ var Player = (function(_super) {
     Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
-            if (ft[key]) {
+            if (ft[key] == 1) {
                 return true;
             }
         }

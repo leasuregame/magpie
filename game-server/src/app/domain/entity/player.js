@@ -974,9 +974,14 @@ var Player = (function(_super) {
                 flag: 0
             };
         }
-
+        if(utility.hasMark(si[key].mark, new Date().getDate())) {
+            return false;
+        }
+            
+        
         si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
+        return true;
     };
 
     Player.prototype.signFirstUnsignDay = function() {

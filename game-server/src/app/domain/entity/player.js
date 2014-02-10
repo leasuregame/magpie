@@ -1127,7 +1127,7 @@ var Player = (function(_super) {
             return true;
         }
 
-        if (this.firstTime.recharge < 128) {
+        if (typeof this.firstTime.recharge == 'undefined' || this.firstTime.recharge < 128) {
             return true;
         }
         return false;

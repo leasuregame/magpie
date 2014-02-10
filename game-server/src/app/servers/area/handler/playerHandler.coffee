@@ -113,6 +113,8 @@ Handler::getLineUpInfo = (msg, session, next) ->
       name: player.name
       lv: player.lv
       ability: player.getAbility()
+      vip: player.vip
+      rankStats: player.rankStats or {}
     }})
 
 Handler::givePower = (msg, session, next) -> 

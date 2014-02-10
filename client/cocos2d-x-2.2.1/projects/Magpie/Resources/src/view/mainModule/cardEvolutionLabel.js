@@ -235,9 +235,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
-            function () {
-                GameHelpLabel.pop(gameHelp["cardEvolution"]);
-            },
+            this._onClickHelp,
             this
         );
 
@@ -494,9 +492,17 @@ var CardEvolutionLabel = cc.Layer.extend({
 
     _onClickNewCard: function () {
         cc.log("CardEvolutionLayer _onClickNewCard");
-        CardDetails.pop(this._virtualCard);
-    }
 
+        CardDetails.pop(this._virtualCard);
+    },
+
+    _onClickHelp: function () {
+        cc.log("CardEvolutionLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["cardEvolution"]);
+    }
 });
 
 

@@ -41,7 +41,26 @@ var versionPath = function() {
 }
 
 var versionData = function() {
-  return JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
+  var fpath = versionPath();
+  if (!fs.existsSync(fpath)) {
+    return {
+      app: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
+      },
+      tb: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
+      }
+    }
+  }
+  return JSON.parse(fs.readFileSync(fpath, 'utf8'));
 };
 
 var getVersion = function(platform, cb) {
@@ -58,7 +77,7 @@ var getLastVersion = function(platform) {
   return vData[platform].lastVersion;
 };
 var updateVersions = function(data) {
-  jdata = JSON.parse(fs.readFileSync(versionPath(), 'utf8'));
+  jdata = versionData();
 
   var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
 

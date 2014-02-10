@@ -38,13 +38,15 @@ $(document).ready(function() {
     function handlerRewardChange() {
         var title = $('#title').val();
 
-        var items = $.map($('.reward'), function(el, i){
+        var items = $.map($('.reward'), function(el, i) {
             if ($(el).val() !== '')
                 return $(el).parent().prev().text() + ':' + $(el).val();
             else
                 return '';
         });
-        var textArr = items.filter(function(i) {return i != '';});
+        var textArr = items.filter(function(i) {
+            return i != '';
+        });
         $('#content').val(title + ', ' + textArr.join(', '));
     }
 
@@ -103,7 +105,7 @@ function submit() {
 
     function showModal() {
         var cnt = '<p><strong>服务器：</strong>' + $('#area').find('option:selected').text() + '</p>'
-        cnt += '<p><strong>消息内容：</strong>'+content+'</p>';
+        cnt += '<p><strong>消息内容：</strong>' + content + '</p>';
 
         $('#modalContent').html(cnt);
         $('#actionConfirm').modal();
@@ -149,65 +151,64 @@ function doSubmit(options, areaId, playerName, mail) {
             }
         );
 
-        } else { //指定服务器
-            if (playerName == '') {
-                dealAll(areaId, mail, function(err) {
-                    if (err) {
-                        console.log("err = ", err);
-                    } else {
-                        var areaName = null;
-                        for (key in servers) {
-                            var area = servers[key];
-                            if (area.id = areaId) {
-                                areaName = area.name;
-                                break;
-                            }
+    } else { //指定服务器
+        if (playerName == '') {
+            dealAll(areaId, mail, function(err) {
+                if (err) {
+                    console.log("err = ", err);
+                } else {
+                    var areaName = null;
+                    for (key in servers) {
+                        var area = servers[key];
+                        if (area.id = areaId) {
+                            areaName = area.name;
+                            break;
                         }
-                        $.ajax({
-                            url: '/admin/logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
-                            type: "post"
+                    }
+                    $.ajax({
+                        url: '/admin/logger4Reward?area=' + areaName + '&data=' + JSON.stringify(mail),
+                        type: "post"
+                    });
+                }
+            });
+        } else { //指定玩家
+            var url = "/admin/playerId?name=" + playerName + "&areaId=" + areaId;
+            $.ajax({
+                url: url,
+                type: "get",
+                success: function(data) {
+                    console.log(data);
+                    if (data.id) {
+                        mail['playerId'] = data.id;
+                        dealAll(areaId, mail, function(err) {
+                            if (err) {
+                                console.log("err = ", err);
+                            } else {
+                                var areaName = null;
+                                for (key in servers) {
+                                    var area = servers[key];
+                                    if (area.id = areaId) {
+                                        areaName = area.name;
+                                        break;
+                                    }
+                                }
+                                $.ajax({
+                                    url: '/admin/logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
+                                    type: "post"
+                                });
+                            }
                         });
                     }
-                });
-            } else { //指定玩家
-                var url = "/admin/playerId?name=" + playerName + "&areaId=" + areaId;
-                $.ajax({
-                    url: url,
-                    type: "get",
-                    success: function(data) {
-                        console.log(data);
-                        if (data.id) {
-                            mail['playerId'] = data.id;
-                            dealAll(areaId, mail, function(err) {
-                                if (err) {
-                                    console.log("err = ", err);
-                                } else {
-                                    var areaName = null;
-                                    for (key in servers) {
-                                        var area = servers[key];
-                                        if (area.id = areaId) {
-                                            areaName = area.name;
-                                            break;
-                                        }
-                                    }
-                                    $.ajax({
-                                        url: '/admin/logger4Reward?area=' + areaName + '&player=' + playerName + '&data=' + JSON.stringify(mail),
-                                        type: "post"
-                                    });
-                                }
-                            });
-                        }
-                    },
-                    error: function(data) {
-                        if (data.status == 404) {
-                            alert('找不到指定的玩家');
-                        } else {
-                            console.log(data.responseText);
-                            alert(data.responseText);
-                        }
+                },
+                error: function(data) {
+                    if (data.status == 404) {
+                        alert('找不到指定的玩家');
+                    } else {
+                        console.log(data.responseText);
+                        alert(data.responseText);
                     }
-                });
-            }
+                }
+            });
         }
     }
 };
@@ -226,8 +227,8 @@ function dealAll(id, mail, cb) {
                     $('.alert').removeClass('hidden alert-danger');
                     $('.alert').addClass('show alert-success');
                     $('.alert #alertContent').text('恭喜！消息发送成功!')
-                    
-                    setTimeout(function(){
+
+                    setTimeout(function() {
                         $('.alert').removeClass('show');
                         $('.alert').addClass('hidden');
                     }, 5000);
@@ -238,7 +239,7 @@ function dealAll(id, mail, cb) {
                     $('.alert').addClass('show alert-danger');
                     $('.alert #alertContent').text('消息发送失败!');
 
-                    setTimeout(function(){
+                    setTimeout(function() {
                         $('.alert').removeClass('show');
                         $('.alert').addClass('hidden');
                     }, 5000);

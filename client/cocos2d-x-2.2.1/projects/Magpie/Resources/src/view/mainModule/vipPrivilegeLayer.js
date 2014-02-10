@@ -154,38 +154,20 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
             var offsetY = y + 315;
             for (var key in vipPrivilege) {
-                if (key == "description") {
-                    var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
-                    vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeIcon);
+                var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+                vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+                scrollViewLayer.addChild(vipPrivilegeIcon);
 
-                    var vipPrivilegeLabel = cc.LabelTTF.create(
-                        vipPrivilege[key],
-                        "STHeitiTC-Medium",
-                        20
-                    );
+                var vipPrivilegeLabel = cc.LabelTTF.create(
+                    (vipPrivilegeDescription[key] || "") + " + " + vipPrivilege[key],
+                    "STHeitiTC-Medium",
+                    20
+                );
+                vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+                vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+                scrollViewLayer.addChild(vipPrivilegeLabel);
 
-                    vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
-                    vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeLabel);
-
-                    offsetY -= 35;
-                } else if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
-                    var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
-                    vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeIcon);
-
-                    var vipPrivilegeLabel = cc.LabelTTF.create(
-                        vipPrivilegeDescription[key] + " + " + vipPrivilege[key],
-                        "STHeitiTC-Medium",
-                        20
-                    );
-                    vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
-                    vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeLabel);
-
-                    offsetY -= 35;
-                }
+                offsetY -= 35;
             }
 
             var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
@@ -198,7 +180,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     fontSize: 20
                 },
                 {
-                    string: "VIP" + (12 - i),
+                    string: "VIP" + (MAX_VIP_LEVEL - i),
                     fontName: "STHeitiTC-Medium",
                     fontSize: 20,
                     isStroke: true,
@@ -239,8 +221,6 @@ var VipPrivilegeLayer = LazyLayer.extend({
         parent.addChild(paymentLayer, 1);
 
         this.removeFromParent();
-
-
     }
 });
 

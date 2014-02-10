@@ -634,7 +634,9 @@ var CardUpgradeLabel = cc.Layer.extend({
 
     _onClickHelp: function() {
         cc.log("CardUpgradeLabel _onClickHelp");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         GameHelpLabel.pop(gameHelp["cardUpgrade"]);
     }
 });

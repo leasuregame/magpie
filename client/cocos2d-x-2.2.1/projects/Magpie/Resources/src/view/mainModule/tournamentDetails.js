@@ -6,7 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var rankDetails = ["历史最高排名", "历史最高连胜", "当前连胜", "累计挑战次数", "累计被挑战次数", "累计胜利次数", "累计战败次数", "平均胜率"];
+
 
 var TournamentDetails = LazyLayer.extend({
     _tournamentDetailsFit: null,
@@ -20,9 +22,12 @@ var TournamentDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._tournamentDetailsFit = gameFit.mainScene.tournamentDetails;
+
         var rankStats = arg || gameData.tournament.get("rankStats");
 
-        cc.log(rankStats);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 720));
@@ -128,18 +133,19 @@ var TournamentDetails = LazyLayer.extend({
 TournamentDetails.create = function (arg) {
     cc.log("TournamentDetails create");
 
-    var ref = new TournamentDetails();
-    if (ref && ref.init(arg)) {
-        return ref;
+    var ret = new TournamentDetails();
+
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;
 };
 
-TournamentDetails.pop = function (arg) {
-    cc.log("TournamentDetails pop");
+TournamentDetails.pop = function () {
+    var tournamentDetails = TournamentDetails.create();
 
-    var tournamentDetails = TournamentDetails.create(arg);
     MainScene.getInstance().getLayer().addChild(tournamentDetails, 10);
 
+    return tournamentDetails;
 };

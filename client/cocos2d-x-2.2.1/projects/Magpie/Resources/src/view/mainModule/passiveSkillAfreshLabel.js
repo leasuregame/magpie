@@ -871,9 +871,11 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._tipLabel.setString("魔石洗炼获得金色属性概率提升100倍");
     },
 
-    _onClickHelp: function() {
+    _onClickHelp: function () {
         cc.log("PassiveSkillAfreshLabel _onClickHelp");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
     }
 });

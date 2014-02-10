@@ -41,10 +41,10 @@ var LineUpDetailsLayer = cc.Layer.extend({
         cc.log("LineUpDetailsLayer init");
         if (!this._super()) return false;
 
-        this._lineUpDetailsLayerFit = gameFit.mainScene.lineUpDetailsLayer;
-
         this.setTouchEnabled(true);
 
+        this._lineUpDetailsLayerFit = gameFit.mainScene.lineUpDetailsLayer;
+        
         cardList = cardList || [];
 
         this._index = index;

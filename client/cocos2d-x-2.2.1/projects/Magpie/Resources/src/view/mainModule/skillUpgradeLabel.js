@@ -365,7 +365,9 @@ var SkillUpgradeLabel = cc.Node.extend({
 
     _onClickHelp: function() {
         cc.log("SkillUpgradeLabel _onClickHelp");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         GameHelpLabel.pop(gameHelp["skillUpgrade"]);
     }
 });

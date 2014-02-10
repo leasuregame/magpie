@@ -492,15 +492,17 @@ var CardEvolutionLabel = cc.Layer.extend({
 
     _onClickNewCard: function () {
         cc.log("CardEvolutionLayer _onClickNewCard");
+
         CardDetails.pop(this._virtualCard);
     },
 
-    _onClickHelp: function() {
+    _onClickHelp: function () {
         cc.log("CardEvolutionLayer _onClickHelp");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         GameHelpLabel.pop(gameHelp["cardEvolution"]);
     }
-
 });
 
 

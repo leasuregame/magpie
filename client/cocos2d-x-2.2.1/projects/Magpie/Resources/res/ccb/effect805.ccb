@@ -3798,7 +3798,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.43333333730697632</real>
+									<real>0.46666666865348816</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -3813,7 +3813,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.5</real>
+									<real>0.53333336114883423</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -3859,7 +3859,7 @@
 						<key>value</key>
 						<array>
 							<real>1280</real>
-							<real>2272</real>
+							<real>2270</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3933,7 +3933,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>50</integer>
+						<integer>30</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3942,8 +3942,8 @@
 						<string>Blendmode</string>
 						<key>value</key>
 						<array>
-							<integer>1</integer>
-							<integer>1</integer>
+							<integer>770</integer>
+							<integer>771</integer>
 						</array>
 					</dict>
 				</array>

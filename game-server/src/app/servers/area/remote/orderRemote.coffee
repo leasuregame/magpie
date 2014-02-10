@@ -73,7 +73,7 @@ Remote::add = (args, callback) ->
       
       times = 1
       ### 首冲获得相应倍数魔石 ###
-      if not player.isRechargeFirstTime(parseInt productId)
+      if player.isRechargeFirstTime(parseInt productId)
         times = product.times
         player.setRechargeFirstTime(parseInt productId)
 
@@ -205,7 +205,8 @@ successMsg = (app, player) ->
       gold: player.gold,
       vip: player.vip,
       cash: player.cash,
-      goldCards: player.getGoldCard()
+      goldCards: player.getGoldCard(),
+      recharge: player.firstTime.recharge or 0
     }
   }, (err, res) ->
     if err

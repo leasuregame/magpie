@@ -1206,10 +1206,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isRechargeFirstTime = function(productId) {
-        if (typeof productId != 'number') {
+        if (typeof productId != 'number' || productId > 7) {
             return false;
         }
-        return utility.hasMark(this.firstTime.recharge || 0, productId);
+        return !utility.hasMark(this.firstTime.recharge || 0, productId);
     };
 
     Player.prototype.setRechargeFirstTime = function(productId) {

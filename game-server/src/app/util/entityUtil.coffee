@@ -78,6 +78,7 @@ module.exports =
         id = generateCardId star, null, lightUpIds
       else
         #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
+        lightUpIds = filterTableId lightUpIds if star is 5
         id = generateCardId star, lightUpIds
         vstar = (id%5 || 5)
         id += star - vstar if star isnt vstar
@@ -89,12 +90,14 @@ module.exports =
   randomCardIds: (stars, num) ->
     utility.randArrayItems getCardIdsByStar(stars), num
 
-removeTableId = (ids) ->
+filterTableId = (ids) ->
   exceptIds = []
-  ids.filter (i) ->
+  ids.forEach (i) ->
     if i%5 is 0
-      exceptIds
-
+      s = i-4
+      exceptIds = exceptIds.concat [s..i]
+  
+  ids.filter (i) -> i not in exceptIds
 
 generateCardId = (star, tableIds, exceptIds) ->
   ### exceptIds 为排除的id ###

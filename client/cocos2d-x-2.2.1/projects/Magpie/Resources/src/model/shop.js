@@ -55,6 +55,10 @@ var Shop = Entity.extend({
                 gameMark.updateGoldCardsMark(true);
             }
 
+            if (msg.recharge) {
+                player.set("recharge", msg.recharge);
+            }
+
             var nowVip = msg.vip;
             var oldVip = player.get("vip");
 

@@ -42,6 +42,7 @@ var Player = Entity.extend({
     _cash: 0,           // 付费
     _rank: 0,
     _goldCards: {},     //周卡月卡
+    _recharge: 127,       //充值记录标记
     _maxTournamentCount: 0,
     _tournamentCount: 0,
 
@@ -121,6 +122,12 @@ var Player = Entity.extend({
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
         this.set("goldCards", data.goldCards);
+
+        if (data.firstTime) {
+            this.set("recharge", data.firstTime.recharge);
+        } else {
+            this._recharge = 127;
+        }
 
         gameData.clock.init(data.serverTime);
         gameData.cardList.init(data.cards, data.cardsCount);
@@ -442,7 +449,7 @@ var Player = Entity.extend({
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
             if (goldCards.month) {
-                if(goldCards.month.remainingDays == 0) {
+                if (goldCards.month.remainingDays == 0) {
                     goldCards.month.remainingDays = -1;
                 }
             } else {
@@ -452,7 +459,7 @@ var Player = Entity.extend({
             }
         } else if (type == WEEK_CARD) {
             if (goldCards.week) {
-                if(goldCards.week.remainingDays == 0) {
+                if (goldCards.week.remainingDays == 0) {
                     goldCards.week.remainingDays = -1;
                 }
             } else {
@@ -461,6 +468,14 @@ var Player = Entity.extend({
                 };
             }
         }
+    },
+
+    isFirstPayment: function (id) {
+        cc.log("Player isFirstPayment: " + id);
+
+        var offset = (id - 1) % EACH_NUM_BIT;
+        var mark = this._recharge;
+        return !((mark >> offset & 1) == 1);
     }
 });
 

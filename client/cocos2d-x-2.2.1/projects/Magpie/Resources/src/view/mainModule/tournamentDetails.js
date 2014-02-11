@@ -135,15 +135,15 @@ TournamentDetails.create = function (arg) {
 
     var ret = new TournamentDetails();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(arg)) {
         return ret;
     }
 
     return null;
 };
 
-TournamentDetails.pop = function () {
-    var tournamentDetails = TournamentDetails.create();
+TournamentDetails.pop = function (arg) {
+    var tournamentDetails = TournamentDetails.create(arg);
 
     MainScene.getInstance().getLayer().addChild(tournamentDetails, 10);
 

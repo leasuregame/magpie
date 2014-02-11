@@ -356,7 +356,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         var cardCount = this._retinueCard.length;
 
         if (cardCount > 0) {
-            var rate = this._leadCard.getPreCardRate() * cardCount;
+            var rate = this._leadCard.getPreCardRate() * cardCount + gameData.player.getEvolutionRate(star);
             rate = Math.min(rate, 100);
 
             this._evolutionRateLabel.setString(rate + "%");

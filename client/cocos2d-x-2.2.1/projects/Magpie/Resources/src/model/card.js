@@ -551,6 +551,11 @@ var Card = Entity.extend({
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);
+
+                if (msg.initRate) {
+                    gameData.player.set("evolutionRate", msg.initRate);
+                }
+
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
                 cb(result);
 

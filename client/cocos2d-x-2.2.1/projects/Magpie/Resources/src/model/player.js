@@ -41,8 +41,9 @@ var Player = Entity.extend({
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
     _rank: 0,
-    _goldCards: {},     // 周卡月卡
-    _recharge: 127,     // 充值记录标记
+    _goldCards: {},     //周卡月卡
+    _recharge: 0,     //充值记录标记
+    _evolutionRate: {}, //星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
     _ability: 0,        // 战斗力
@@ -71,8 +72,11 @@ var Player = Entity.extend({
         this.on("energyChange", this._energyChangeEvent);
         this.on("vipChange", this._vipChangeEvent);
 
+        this._evolutionRate = {};
+
         this._load();
         this.update(data);
+        this.sync();
 
         gameData.cardLibrary.init();
         gameData.friend.init();
@@ -97,6 +101,35 @@ var Player = Entity.extend({
         this._maxMoney = resourceLimitTable.money;
         this._skillPoint = resourceLimitTable.skillPoint;
         this._maxEnergy = resourceLimitTable.energy;
+    },
+
+    sync: function () {
+        cc.log("Player sync");
+
+        var that = this;
+        lz.server.request(
+            "area.trainHandler.starUpgradeInitRate",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("Player sync success");
+
+                    var msg = data.msg;
+
+                    that.set("evolutionRate", msg.initRate);
+
+                    lz.dc.event("event_order_list");
+                } else {
+                    cc.log("Player sync fail");
+
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     update: function (data) {
@@ -125,7 +158,7 @@ var Player = Entity.extend({
         if (data.firstTime) {
             this.set("recharge", data.firstTime.recharge);
         } else {
-            this._recharge = 127;
+            this.set("recharge", 127);
         }
 
         gameData.clock.init(data.serverTime);
@@ -491,6 +524,16 @@ var Player = Entity.extend({
         var offset = (id - 1) % EACH_NUM_BIT;
         var mark = this._recharge;
         return !((mark >> offset & 1) == 1);
+    },
+
+    getEvolutionRate: function (star) {
+        cc.log("Player getEvolutionRate: " + star);
+
+        var rate = this._evolutionRate;
+        if (rate) {
+            return rate["star" + star] || 0;
+        }
+        return 0;
     }
 });
 

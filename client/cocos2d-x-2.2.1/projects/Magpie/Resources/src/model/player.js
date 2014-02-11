@@ -41,10 +41,11 @@ var Player = Entity.extend({
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
     _rank: 0,
-    _goldCards: {},     //周卡月卡
-    _recharge: 127,       //充值记录标记
+    _goldCards: {},     // 周卡月卡
+    _recharge: 127,     // 充值记录标记
     _maxTournamentCount: 0,
     _tournamentCount: 0,
+    _ability: 0,        // 战斗力
 
     _maxLv: 0,          // 最大等级
     _maxPower: 0,       // 最大体力
@@ -82,8 +83,6 @@ var Player = Entity.extend({
         gameData.activity.init();
         gameData.speak.init();
         gameData.payment.init();
-
-        cc.log(this);
 
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
 
@@ -150,6 +149,30 @@ var Player = Entity.extend({
         gameData.lottery.init(data.firstTime);
         cc.log(data.exchangeCards);
         gameData.exchange.init(data.exchangeCards)
+
+        this.set("ability", this.getAbility());
+    },
+
+    getAbility: function () {
+        var lineUpCardList = gameData.lineUp.getLineUpCardList();
+        var len = lineUpCardList.length;
+        var ability = gameData.spirit.get("ability");
+
+        for (var i = 0; i < len; ++i) {
+            ability += lineUpCardList[i].get("ability");
+        }
+
+        return ability;
+    },
+
+    checkAbility: function () {
+        var ability = this.getAbility();
+
+        if (ability != this._ability) {
+            TipLayer.tipAbility(ability > this._ability);
+        }
+
+        this._ability = ability;
     },
 
     updatePower: function () {
@@ -229,18 +252,6 @@ var Player = Entity.extend({
     _vipChangeEvent: function () {
         cc.log("Player _vipChangeEvent");
         gameData.shop.updateMaxCount();
-    },
-
-    getAbility: function () {
-        var lineUpCardList = gameData.lineUp.getLineUpCardList();
-        var len = lineUpCardList.length;
-        var ability = gameData.spirit.get("ability");
-
-        for (var i = 0; i < len; ++i) {
-            ability += lineUpCardList[i].get("ability");
-        }
-
-        return ability;
     },
 
     sendMessage: function (cb, playerId, msg) {

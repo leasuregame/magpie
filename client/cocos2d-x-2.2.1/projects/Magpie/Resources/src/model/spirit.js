@@ -28,11 +28,11 @@ var Spirit = Entity.extend({
         this.off();
         this.on("lvChange", this._lvChangeEven);
 
-        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
+        this.set("maxLv", outputTables.lv_limit.rows[1].spirit_lv_limit);
 
         this.update(data);
 
-        cc.log(this);
+        this.on("ability", this._abilityChangeEven);
 
         return true;
     },
@@ -56,6 +56,12 @@ var Spirit = Entity.extend({
         this._passiveHarm = table.hp_inc;
         this._skillHarm = table.spirit_atk_pct;
         this._rate = table.rate;
+    },
+
+    _abilityChangeEven: function () {
+        cc.log("Spirit _abilityChangeEven");
+
+        gameData.player.checkAbility();
     },
 
     getSpiritUrl: function () {

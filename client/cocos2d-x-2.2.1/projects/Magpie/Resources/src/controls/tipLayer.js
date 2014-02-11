@@ -12,6 +12,8 @@
  * */
 
 
+var TIP_LAYER_Z_ORDER = 10000;
+
 var TipLayer = {
     _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
@@ -26,7 +28,7 @@ var TipLayer = {
 
         var label = cc.Node.create();
         label.setPosition(gameFit.controls.tipLayer.labelPoint);
-        cc.Director.getInstance().getRunningScene().addChild(label, 10000);
+        cc.Director.getInstance().getRunningScene().addChild(label, TIP_LAYER_Z_ORDER);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);
@@ -79,7 +81,15 @@ var TipLayer = {
         effect.animationManager.setCompletedAnimationCallback(this, function () {
             effect.removeFromParent();
         });
-        
-        cc.Director.getInstance().getRunningScene().addChild(effect, 10000);
+
+        cc.Director.getInstance().getRunningScene().addChild(effect, TIP_LAYER_Z_ORDER);
+    },
+
+    tipAbility: function (isUp) {
+        var animation = "animation_" + (isUp ? 1 : 2);
+
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect80, this);
+        ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration(animation, 0);
+        cc.Director.getInstance().getRunningScene().addChild(ccbNode, TIP_LAYER_Z_ORDER);
     }
 };

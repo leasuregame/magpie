@@ -74,7 +74,7 @@ var Card = Entity.extend({
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
-    _kind: 0,
+    _kind: 0,               // 卡牌类型
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
@@ -100,6 +100,9 @@ var Card = Entity.extend({
         this._passiveSkill = {};
 
         this.update(data);
+
+        this.off();
+        this.on("ability", this._abilityChangeEvent);
 
         this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 
@@ -234,6 +237,12 @@ var Card = Entity.extend({
 
         this._hp = this._initHp + elixirHp + psHp;
         this._atk = this._initAtk + elixirAtk + psAtk;
+    },
+
+    _abilityChangeEvent: function () {
+        log("Card _abilityChangeEvent");
+
+        gameData.player.checkAbility();
     },
 
     setNewCardMark: function (mark) {

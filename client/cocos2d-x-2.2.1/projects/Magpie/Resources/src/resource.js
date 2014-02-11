@@ -828,6 +828,7 @@ var main_scene_image = {
     uiEffect77: "res/ccb/uiEffect77.ccbi",
     uiEffect78: "res/ccb/uiEffect78.ccbi",
     uiEffect79: "res/ccb/uiEffect79.ccbi",
+    uiEffect80: "res/ccb/uiEffect80.ccbi",
     uiEffect81: "res/ccb/uiEffect81.ccbi",
     uiEffect82: "res/ccb/uiEffect82.ccbi",
     uiEffect83: "res/ccb/uiEffect83.ccbi",

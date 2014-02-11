@@ -725,9 +725,9 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbLabel</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -803,6 +803,8 @@
 								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -825,7 +827,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -840,7 +842,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>30</real>
+							<real>9.6774196624755859</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1004,9 +1006,9 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.22307419776916504</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.80000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

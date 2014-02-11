@@ -32,7 +32,7 @@ var Spirit = Entity.extend({
 
         this.update(data);
 
-        this.on("ability", this._abilityChangeEven);
+        this.on("abilityChange", this._abilityChangeEven);
 
         return true;
     },

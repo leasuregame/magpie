@@ -85,11 +85,15 @@ var TipLayer = {
         cc.Director.getInstance().getRunningScene().addChild(effect, TIP_LAYER_Z_ORDER);
     },
 
-    tipAbility: function (isUp) {
-        var animation = "animation_" + (isUp ? 1 : 2);
+    tipAbility: function (isUp, value) {
+        if (value) {
+            var animation = "animation_" + (isUp ? 1 : 2);
 
-        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect80, this);
-        ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration(animation, 0);
-        cc.Director.getInstance().getRunningScene().addChild(ccbNode, TIP_LAYER_Z_ORDER);
+            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect80, this);
+            ccbNode.setPosition(gameFit.GAME_MIDPOINT);
+            ccbNode.controller.ccbLabel.setString(value);
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration(animation, 0);
+            cc.Director.getInstance().getRunningScene().addChild(ccbNode, TIP_LAYER_Z_ORDER);
+        }
     }
 };

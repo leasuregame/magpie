@@ -26,7 +26,7 @@ var LineUp = Entity.extend({
         this.update(data);
 
         this.off();
-        this.on("lineUp", this._lineUpChangeEvent);
+        this.on("lineUpChange", this._lineUpChangeEvent);
 
         return true;
     },

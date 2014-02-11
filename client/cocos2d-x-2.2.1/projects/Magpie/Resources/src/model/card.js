@@ -102,7 +102,7 @@ var Card = Entity.extend({
         this.update(data);
 
         this.off();
-        this.on("ability", this._abilityChangeEvent);
+        this.on("abilityChange", this._abilityChangeEvent);
 
         this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 

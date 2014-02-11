@@ -147,8 +147,7 @@ var Player = Entity.extend({
             expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
-        cc.log(data.exchangeCards);
-        gameData.exchange.init(data.exchangeCards)
+        gameData.exchange.init(data.exchangeCards);
 
         this.set("ability", this.getAbility());
     },
@@ -166,11 +165,16 @@ var Player = Entity.extend({
     },
 
     checkAbility: function () {
+        cc.log("Player checkAbility");
+
         var ability = this.getAbility();
 
         if (ability != this._ability) {
-            TipLayer.tipAbility(ability > this._ability);
+            TipLayer.tipAbility(ability > this._ability, ability);
         }
+
+        cc.log(this._ability);
+        cc.log(ability);
 
         this._ability = ability;
     },

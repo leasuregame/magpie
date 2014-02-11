@@ -201,6 +201,7 @@
                 <file name="src/view/battleModule/battleScene.js"/>
                 <file name="src/view/battleModule/battleSpiritNode.js"/>
                 <file name="src/view/battleModule/cloudLayer.js"/>
+                <file name="src/view/battleModule/fragmentLayer.js"/>
                 <file name="src/view/battleModule/skillFactory.js"/>
 
                 <file name="main_binding.js"/>

@@ -223,6 +223,7 @@
             'src/view/battleModule/battleScene.js',
             'src/view/battleModule/battleSpiritNode.js',
             'src/view/battleModule/cloudLayer.js',
+            'src/view/battleModule/fragmentLayer.js',
             'src/view/battleModule/skillFactory.js'
         ]
     };

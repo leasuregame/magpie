@@ -674,7 +674,8 @@ var CardListLayer = cc.Layer.extend({
         countLabel.setPosition(this._cardListLayerFit.countLabelPoint);
         this.addChild(countLabel);
 
-        var rateLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        var initRate = gameData.player.getEvolutionRate(leadCardStar);
+        var rateLabel = cc.LabelTTF.create(initRate, "STHeitiTC-Medium", 25);
         rateLabel.setPosition(this._cardListLayerFit.rateLabelPoint);
         this.addChild(rateLabel);
 
@@ -683,7 +684,7 @@ var CardListLayer = cc.Layer.extend({
 
             var selectList = this._getSelectCardList();
             var len = selectList.length;
-            var rate = len * this._otherData.leadCard.getPreCardRate();
+            var rate = len * this._otherData.leadCard.getPreCardRate() + initRate;
 
             if (rate >= 100) {
                 rate = 100;
@@ -699,6 +700,7 @@ var CardListLayer = cc.Layer.extend({
 
             countLabel.setString(len);
             rateLabel.setString(rate + "%");
+
         };
 
         this._selectCallback();

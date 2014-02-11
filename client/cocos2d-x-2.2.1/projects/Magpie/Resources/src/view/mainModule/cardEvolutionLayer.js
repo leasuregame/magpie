@@ -79,14 +79,11 @@ var CardEvolutionLayer = LazyLayer.extend({
         var url = this._card.get("url");
         var star = this._card.get("star");
         var index = star > 2 ? star - 2 : 1;
-        var skillType = this._card.get("skillType");
-        if (skillType > 3) {
-            skillType = 3;
-        }
+
         var controller = this._evolutionEffect.controller;
 
         controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        controller["ccbCardIcon"].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+        controller["ccbCardIcon"].setTexture(lz.getTexture(main_scene_image[this._card.getCardIcon()]));
     },
 
     ccbFnChangeCardFrame: function() {

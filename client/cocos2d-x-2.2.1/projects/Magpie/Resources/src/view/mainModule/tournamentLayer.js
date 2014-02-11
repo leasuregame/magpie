@@ -499,7 +499,7 @@ var TournamentLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().getLayer().addChild(TournamentDetails.create(), 20);
+        TournamentDetails.pop();
     },
 
     /**

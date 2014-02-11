@@ -63,15 +63,10 @@ var TenLotteryCardLayer = LazyLayer.extend({
             var url = card.get("url");
             var star = card.get("star");
             var index = star > 2 ? star - 2 : 1;
-            var skillType = card.get("skillType");
 
-            if (skillType > 3) {
-                skillType = 3;
-            }
-
-            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
             this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image[card.getCardIcon()]));
         }
     },
 

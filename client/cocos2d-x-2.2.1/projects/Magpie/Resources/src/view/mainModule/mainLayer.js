@@ -17,7 +17,7 @@ var MainLayer = cc.Layer.extend({
 
     _layer: [
         SpiritPoolLayer,
-            SummonLayer,
+        SummonLayer,
         TreasureHuntLayer,
         StrengthenLayer,
         EvolutionLayer,
@@ -267,7 +267,7 @@ var MainLayer = cc.Layer.extend({
 
             that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
-            var ability = gameData.player.getAbility();
+            var ability = gameData.player.get("ability");
             var ranking = gameData.tournament.get("ranking");
 
             abilityLabel.setString(ability);

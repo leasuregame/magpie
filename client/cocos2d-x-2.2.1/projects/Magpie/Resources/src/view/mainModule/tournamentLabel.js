@@ -121,7 +121,8 @@ var TournamentLabel = cc.Node.extend({
             }
 
         } else {
-            ability = player.getAbility();
+            ability = player.get("ability");
+            
             functionItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,

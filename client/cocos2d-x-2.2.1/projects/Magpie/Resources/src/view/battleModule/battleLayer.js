@@ -110,6 +110,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._menu = cc.Menu.create(this._backItem);
         this.addChild(this._menu);
+        this._menu.setVisible(false);
 
         this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
 
@@ -2712,9 +2713,9 @@ var BatterLayer = cc.Layer.extend({
 
         if (vip < 1) { //普通玩家
             if (lv < 10) {
-                TipLayer.tip("vip1或10级开启");
+                TipLayer.tip("vip1或10级开启2倍速");
             } else if (this._playSpeed == 3) {
-                TipLayer.tip("vip2开启");
+                TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
                 sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
@@ -2725,17 +2726,17 @@ var BatterLayer = cc.Layer.extend({
             }
         } else { //vip玩家
             if (this._playSpeed == 3 && vip < 2) {
-                TipLayer.tip("vip2开启");
+                TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
                 sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
                 }
             }
         }
     }
-
 });
 
 

@@ -42,11 +42,11 @@ var Player = Entity.extend({
     _cash: 0,           // 付费
     _rank: 0,
     _goldCards: {},     //周卡月卡
-    _recharge: 127,     //充值记录标记
+    _recharge: 0,     //充值记录标记
     _evolutionRate: {}, //星级进阶概率
-
     _maxTournamentCount: 0,
     _tournamentCount: 0,
+    _ability: 0,        // 战斗力
 
     _maxLv: 0,          // 最大等级
     _maxPower: 0,       // 最大体力
@@ -88,10 +88,8 @@ var Player = Entity.extend({
         gameData.speak.init();
         gameData.payment.init();
 
-        cc.log(this);
-
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
-0
+
         return true;
     },
 
@@ -105,7 +103,7 @@ var Player = Entity.extend({
         this._maxEnergy = resourceLimitTable.energy;
     },
 
-    sync: function() {
+    sync: function () {
         cc.log("Player sync");
 
         var that = this;
@@ -121,7 +119,7 @@ var Player = Entity.extend({
 
                     var msg = data.msg;
 
-                    that.set("evolutionRate",msg.initRate);
+                    that.set("evolutionRate", msg.initRate);
 
                     lz.dc.event("event_order_list");
                 } else {
@@ -160,7 +158,7 @@ var Player = Entity.extend({
         if (data.firstTime) {
             this.set("recharge", data.firstTime.recharge);
         } else {
-            this._recharge = 127;
+            this.set("recharge", 127);
         }
 
         gameData.clock.init(data.serverTime);
@@ -182,8 +180,36 @@ var Player = Entity.extend({
             expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
-        cc.log(data.exchangeCards);
-        gameData.exchange.init(data.exchangeCards)
+        gameData.exchange.init(data.exchangeCards);
+
+        this.set("ability", this.getAbility());
+    },
+
+    getAbility: function () {
+        var lineUpCardList = gameData.lineUp.getLineUpCardList();
+        var len = lineUpCardList.length;
+        var ability = gameData.spirit.get("ability");
+
+        for (var i = 0; i < len; ++i) {
+            ability += lineUpCardList[i].get("ability");
+        }
+
+        return ability;
+    },
+
+    checkAbility: function () {
+        cc.log("Player checkAbility");
+
+        var ability = this.getAbility();
+
+        if (ability != this._ability) {
+            TipLayer.tipAbility(ability > this._ability, ability);
+        }
+
+        cc.log(this._ability);
+        cc.log(ability);
+
+        this._ability = ability;
     },
 
     updatePower: function () {
@@ -263,18 +289,6 @@ var Player = Entity.extend({
     _vipChangeEvent: function () {
         cc.log("Player _vipChangeEvent");
         gameData.shop.updateMaxCount();
-    },
-
-    getAbility: function () {
-        var lineUpCardList = gameData.lineUp.getLineUpCardList();
-        var len = lineUpCardList.length;
-        var ability = gameData.spirit.get("ability");
-
-        for (var i = 0; i < len; ++i) {
-            ability += lineUpCardList[i].get("ability");
-        }
-
-        return ability;
     },
 
     sendMessage: function (cb, playerId, msg) {
@@ -512,11 +526,11 @@ var Player = Entity.extend({
         return !((mark >> offset & 1) == 1);
     },
 
-    getEvolutionRate: function(star) {
+    getEvolutionRate: function (star) {
         cc.log("Player getEvolutionRate: " + star);
 
         var rate = this._evolutionRate;
-        if(rate) {
+        if (rate) {
             return rate["star" + star] || 0;
         }
         return 0;

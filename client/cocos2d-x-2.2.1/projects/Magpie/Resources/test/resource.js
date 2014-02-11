@@ -16,7 +16,7 @@ var main_scene_image = {
     // bg3: main_scene_path + "bg3.png",
     // bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
-    bg6: main_scene_path + "bg6.png",
+    // bg6: main_scene_path + "bg6.png",
     // bg7: main_scene_path + "bg7.png",
     bg8: main_scene_path + "bg8.png",
     bg9: main_scene_path + "bg9.png",
@@ -102,9 +102,9 @@ var main_scene_image = {
     card_frame4: main_scene_path + "card_frame4.png",
     card_frame5: main_scene_path + "card_frame5.png",
 
-    card_icon1: main_scene_path + "card_icon1.png",
-    card_icon2: main_scene_path + "card_icon2.png",
-    card_icon3: main_scene_path + "card_icon3.png",
+    // card_icon1: main_scene_path + "card_icon1.png",
+    // card_icon2: main_scene_path + "card_icon2.png",
+    // card_icon3: main_scene_path + "card_icon3.png",
 
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -1147,6 +1147,7 @@ var main_scene_image = {
     texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
     texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
     texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
+    texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
 
 };
 

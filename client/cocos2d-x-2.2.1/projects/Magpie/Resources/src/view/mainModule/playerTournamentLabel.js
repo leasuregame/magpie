@@ -75,7 +75,7 @@ var PlayerTournamentLabel = cc.Layer.extend({
         this._expLabel.setString("经验：" + this._player.get("exp"));
         this._tournamentCountLabel.setString("每天有奖挑战次数：" + this._player.get("tournamentCount"));
         this._rankLabel.setString("排名：" + this._player.get("rank"));
-        this._abilityLabel.setString("战斗力：" + this._player.getAbility());
+        this._abilityLabel.setString("战斗力：" + this._player.get("ability"));
     },
 
     onTouchesBegan: function (touches, event) {

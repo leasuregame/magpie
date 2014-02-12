@@ -160,6 +160,7 @@ class Manager
     if taskId is player.task.id
       if taskId is 500 and player.task.progress is taskData.points
         ### 全部通关，do nothing ###
+        return cb(null, data)
       else
         if taskId < 4
           ### 十步之遥 成就奖励 ###

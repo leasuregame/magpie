@@ -540,7 +540,7 @@ Handler::giveBless = (msg, session, next) ->
   if friendId is playerId 
     return next(null, {code: 501, msg: '不能给自己送祝福'})
 
-  ENERGY = 5
+  ENERGY = 10
   player = null
   async.waterfall [
     (cb) ->

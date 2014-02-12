@@ -3,6 +3,8 @@ players = require '../../manager/playerCache'
 timer = require './timer'
 areaUtil = require('../../util/areaUtil')
 logger = require('pomelo-logger').getLogger(__filename)
+_ = require 'underscore'
+
 Area = module.exports
 
 Area.init = (opts) ->
@@ -21,6 +23,9 @@ Area.removePlayer = (playerId) ->
     if err
       logger.error 'faild to persist player data.' + err
 
+  _player.removeAllListeners()
+  _.each _player.cards, (c) -> c.removeAllListeners()
+  _player.rank?.removeAllListeners()
   players.del playerId
 
 Area.getPlayer = (playerId) ->

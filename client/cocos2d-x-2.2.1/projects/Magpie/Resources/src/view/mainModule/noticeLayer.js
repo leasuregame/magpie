@@ -82,6 +82,6 @@ NoticeLayer.create = function () {
 NoticeLayer.pop = function () {
     lz.scheduleOnce(function () {
         var noticeLayer = NoticeLayer.create();
-        MainScene.getInstance().addChild(noticeLayer, 10);
+        cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10);
     }, 0.01);
 };

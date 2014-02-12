@@ -139,6 +139,7 @@ var appFiles = [
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
     'src/view/mainModule/exploreLayer.js',
+    'src/view/mainModule/extractTipLabel.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',

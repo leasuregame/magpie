@@ -172,6 +172,17 @@ var SkillUpgradeLabel = cc.Node.extend({
         );
         this._upgradeItem.setPosition(this._skillUpgradeLabelFit.upgradeItemPoint);
 
+        this._extractItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon368,
+            this._onClickExtract,
+            this
+        );
+
+        this._extractItem.setPosition(this._skillUpgradeLabelFit.extractItemPoint);
+
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
@@ -180,7 +191,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         );
         helpItem.setPosition(this._skillUpgradeLabelFit.helpItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem, helpItem);
+        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem, this._extractItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -220,6 +231,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             );
 
             this._upgradeItem.setEnabled(false);
+            this._extractItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
@@ -282,6 +294,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._helpLabel.setVisible(true);
 
             this._upgradeItem.setEnabled(true);
+            this._extractItem.setEnabled(true);
         }
     },
 
@@ -363,7 +376,37 @@ var SkillUpgradeLabel = cc.Node.extend({
         });
     },
 
-    _onClickHelp: function() {
+    _onClickExtract: function () {
+        cc.log("SkillUpgradeLabel _onClickExtract");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+//        if (this._leadCard.get("skillPoint") == 0) {
+//            TipLayer.tip("该卡没有可提取的技能点");
+//            return;
+//        }
+//
+//        if (gameData.player.get("gold") < 200) {
+//            TipLayer.tip("魔石不足");
+//            return;
+//        }
+//
+//        var that = this;
+//        var cb = function() {
+//            this._leadCard.extract(function () {
+//                that.update();
+//            }, EXTRACT_SKILL_POINT);
+//        };
+
+        ExtractTipLabel.pop({
+            // cb:cb,
+            type: EXTRACT_SKILL_POINT,
+            num: 10000
+        });
+
+    },
+
+    _onClickHelp: function () {
         cc.log("SkillUpgradeLabel _onClickHelp");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);

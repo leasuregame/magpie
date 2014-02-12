@@ -19,6 +19,9 @@ var EVOLUTION_SUCCESS = 1;
 var EVOLUTION_FAIL = 0;
 var EVOLUTION_ERROR = -1;
 
+var EXTRACT_ELIXIR = 0;
+var EXTRACT_SKILL_POINT = 1;
+
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",
@@ -240,7 +243,7 @@ var Card = Entity.extend({
     },
 
     _abilityChangeEvent: function () {
-        log("Card _abilityChangeEvent");
+        cc.log("Card _abilityChangeEvent");
 
         gameData.player.checkAbility();
     },
@@ -403,10 +406,14 @@ var Card = Entity.extend({
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
-            return skillUpgradeTable["star" + this._star];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows;
+            var totalSKillPoint = 0;
+            for (var i = 1; i <= this._skillLv; i++) {
+                totalSKillPoint += skillUpgradeTable[i];
+            }
+            return totalSKillPoint - this._skillPoint;
         }
-
+0
         return 0;
     },
 
@@ -614,6 +621,37 @@ var Card = Entity.extend({
 
                 TipLayer.tip(data.msg);
             }
+        });
+    },
+
+    getElixir: function () {
+        return this._elixirAtk + this._elixirHp;
+    },
+
+    extract: function (cb, type) {
+        cc.log("Card extract: ", +this._id);
+
+        var that = this;
+        lz.server.request("area.trainHandler.extract", {
+            cardId: this._id,
+            type: type
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("extract success");
+
+                var msg = data.msg;
+                gameData.player.add("gold", -200);
+
+                cb();
+
+                lz.dc.event("event_card_extract", "type:" + type);
+            } else {
+                cc.log("extract fail");
+
+                TipLayer.tip(data.msg);
+            }
+
         });
     },
 

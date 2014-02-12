@@ -312,7 +312,7 @@ var orderBy = function(fields, orderby, limit, cb) {
 };
 
 function sort(a, b) {
-    return a - b
+    return a - b;
 };
 
 function getLineUpIds(lineUp){

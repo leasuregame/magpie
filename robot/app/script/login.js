@@ -14,7 +14,7 @@ var areaStat = require(cwd + '/app/script/statistic').areaStat;
 var util = require('util');
 
 if (typeof Object.create !== 'function') {
-  Object.create = function (o) {
+  Object.create = function(o) {
     function F() {}
     F.prototype = o;
     return new F();
@@ -44,17 +44,16 @@ var heartbeatTimeoutId = null;
 var handshakeCallback = null;
 
 var handshakeBuffer = {
-  'sys':{
+  'sys': {
     type: JS_WS_CLIENT_TYPE,
     version: JS_WS_CLIENT_VERSION
   },
-  'user':{
-  }
+  'user': {}
 };
 
 var initCallback = null;
 
-pomelo.init = function(params, cb){
+pomelo.init = function(params, cb) {
   pomelo.params = params;
   params.debug = true;
   initCallback = cb;
@@ -62,21 +61,21 @@ pomelo.init = function(params, cb){
   var port = params.port;
 
   var url = 'ws://' + host;
-  if(port) {
-    url +=  ':' + port;
+  if (port) {
+    url += ':' + port;
   }
 
   if (!params.type) {
     console.log('init websocket');
     handshakeBuffer.user = params.user;
     handshakeCallback = params.handshakeCallback;
-    this.initWebSocket(url,cb);
+    this.initWebSocket(url, cb);
   }
 };
 
-pomelo.initWebSocket = function(url,cb){
+pomelo.initWebSocket = function(url, cb) {
   console.log(url);
-  var onopen = function(event){
+  var onopen = function(event) {
     console.log('[pomeloclient.init] websocket connected!');
     var obj = Package.encode(Package.TYPE_HANDSHAKE, Protocol.strencode(JSON.stringify(handshakeBuffer)));
     send(obj);
@@ -84,17 +83,17 @@ pomelo.initWebSocket = function(url,cb){
   var onmessage = function(event) {
     processPackage(Package.decode(event.data), cb);
     // new package arrived, update the heartbeat timeout
-    if(heartbeatTimeout) {
+    if (heartbeatTimeout) {
       nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
     }
   };
   var onerror = function(event) {
     pomelo.emit('io-error', event);
-    console.log('socket error %j ',event);
+    console.log('socket error %j ', event);
   };
-  var onclose = function(event){
-    pomelo.emit('close',event);
-    console.log('socket close %j ',event);
+  var onclose = function(event) {
+    pomelo.emit('close', event);
+    console.log('socket close %j ', event);
   };
   socket = new WebSocket(url);
   socket.binaryType = 'arraybuffer';
@@ -105,18 +104,18 @@ pomelo.initWebSocket = function(url,cb){
 };
 
 pomelo.disconnect = function() {
-  if(socket) {
-    if(socket.disconnect) socket.disconnect();
-    if(socket.close) socket.close();
+  if (socket) {
+    if (socket.disconnect) socket.disconnect();
+    if (socket.close) socket.close();
     console.log('disconnect');
     socket = null;
   }
 
-  if(heartbeatId) {
+  if (heartbeatId) {
     clearTimeout(heartbeatId);
     heartbeatId = null;
   }
-  if(heartbeatTimeoutId) {
+  if (heartbeatTimeoutId) {
     clearTimeout(heartbeatTimeoutId);
     heartbeatTimeoutId = null;
   }
@@ -125,7 +124,7 @@ pomelo.disconnect = function() {
 pomelo.request = function(route, msg, cb) {
   msg = msg || {};
   route = route || msg.route;
-  if(!route) {
+  if (!route) {
     console.log('fail to send request without route.');
     return;
   }
@@ -146,15 +145,15 @@ var sendMessage = function(reqId, route, msg) {
   var type = reqId ? Message.TYPE_REQUEST : Message.TYPE_NOTIFY;
 
   //compress message by protobuf
-  var protos = !!pomelo.data.protos?pomelo.data.protos.client:{};
-  if(!!protos[route]){
+  var protos = !! pomelo.data.protos ? pomelo.data.protos.client : {};
+  if ( !! protos[route]) {
     msg = protobuf.encode(route, msg);
-  }else{
+  } else {
     msg = Protocol.strencode(JSON.stringify(msg));
   }
 
   var compressRoute = 0;
-  if(pomelo.dict && pomelo.dict[route]){
+  if (pomelo.dict && pomelo.dict[route]) {
     route = pomelo.dict[route];
     compressRoute = 1;
   }
@@ -181,9 +180,12 @@ var send = function(packet){
 };
 */
 
-var send = function(packet){
-  if (!!socket) {
-    socket.send(packet.buffer || packet, {binary: true, mask: true});
+var send = function(packet) {
+  if ( !! socket) {
+    socket.send(packet.buffer || packet, {
+      binary: true,
+      mask: true
+    });
   }
 };
 
@@ -192,12 +194,12 @@ var handler = {};
 
 var heartbeat = function(data) {
   var obj = Package.encode(Package.TYPE_HEARTBEAT);
-  if(heartbeatTimeoutId) {
+  if (heartbeatTimeoutId) {
     clearTimeout(heartbeatTimeoutId);
     heartbeatTimeoutId = null;
   }
 
-  if(heartbeatId) {
+  if (heartbeatId) {
     // already in a heartbeat interval
     return;
   }
@@ -213,7 +215,7 @@ var heartbeat = function(data) {
 
 var heartbeatTimeoutCb = function() {
   var gap = nextHeartbeatTimeout - Date.now();
-  if(gap > gapThreshold) {
+  if (gap > gapThreshold) {
     heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, gap);
   } else {
     console.error('server heartbeat timeout');
@@ -222,14 +224,14 @@ var heartbeatTimeoutCb = function() {
   }
 };
 
-var handshake = function(data){
+var handshake = function(data) {
   data = JSON.parse(Protocol.strdecode(data));
-  if(data.code === RES_OLD_CLIENT) {
+  if (data.code === RES_OLD_CLIENT) {
     pomelo.emit('error', 'client version not fullfill');
     return;
   }
 
-  if(data.code !== RES_OK) {
+  if (data.code !== RES_OK) {
     pomelo.emit('error', 'handshake fail');
     return;
   }
@@ -238,20 +240,20 @@ var handshake = function(data){
 
   var obj = Package.encode(Package.TYPE_HANDSHAKE_ACK);
   send(obj);
-  if(initCallback) {
+  if (initCallback) {
     initCallback(socket);
     initCallback = null;
   }
 };
 
-var onData = function(data){
+var onData = function(data) {
   //probuff decode
   var msg = Message.decode(data);
 
-  if(msg.id > 0){
+  if (msg.id > 0) {
     msg.route = routeMap[msg.id];
     delete routeMap[msg.id];
-    if(!msg.route){
+    if (!msg.route) {
       return;
     }
   }
@@ -270,12 +272,12 @@ handlers[Package.TYPE_HEARTBEAT] = heartbeat;
 handlers[Package.TYPE_DATA] = onData;
 handlers[Package.TYPE_KICK] = onKick;
 
-var processPackage = function(msg){
+var processPackage = function(msg) {
   handlers[msg.type](msg.body);
 };
 
 var processMessage = function(pomelo, msg) {
-  if(!msg || !msg.id) {
+  if (!msg || !msg.id) {
     // server push message
     // console.error('processMessage error!!!');
     pomelo.emit(msg.route, msg.body);
@@ -286,7 +288,7 @@ var processMessage = function(pomelo, msg) {
   var cb = callbacks[msg.id];
 
   delete callbacks[msg.id];
-  if(typeof cb !== 'function') {
+  if (typeof cb !== 'function') {
     return;
   }
 
@@ -295,42 +297,42 @@ var processMessage = function(pomelo, msg) {
 };
 
 var processMessageBatch = function(pomelo, msgs) {
-  for(var i=0, l=msgs.length; i<l; i++) {
+  for (var i = 0, l = msgs.length; i < l; i++) {
     processMessage(pomelo, msgs[i]);
   }
 };
 
-var deCompose = function(msg){
-  var protos = !!pomelo.data.protos ? pomelo.data.protos.server : {};
+var deCompose = function(msg) {
+  var protos = !! pomelo.data.protos ? pomelo.data.protos.server : {};
   var abbrs = pomelo.data.abbrs;
   var route = msg.route;
 
   try {
     //Decompose route from dict
-    if(msg.compressRoute) {
-      if(!abbrs[route]){
+    if (msg.compressRoute) {
+      if (!abbrs[route]) {
         console.error('illegal msg!');
         return {};
       }
 
       route = msg.route = abbrs[route];
     }
-    if(!!protos[route]){
+    if ( !! protos[route]) {
       return protobuf.decode(route, msg.body);
-    }else{
+    } else {
       return JSON.parse(Protocol.strdecode(msg.body));
     }
-  } catch(ex) {
+  } catch (ex) {
     console.error('route, body = ' + route + ", " + msg.body);
   }
 
   return msg;
 };
 
-var handshakeInit = function(data){
-  if(data.sys && data.sys.heartbeat) {
-    heartbeatInterval = data.sys.heartbeat * 1000;   // heartbeat interval
-    heartbeatTimeout = heartbeatInterval * 2;        // max heartbeat timeout
+var handshakeInit = function(data) {
+  if (data.sys && data.sys.heartbeat) {
+    heartbeatInterval = data.sys.heartbeat * 1000; // heartbeat interval
+    heartbeatTimeout = heartbeatInterval * 2; // max heartbeat timeout
   } else {
     heartbeatInterval = 0;
     heartbeatTimeout = 0;
@@ -338,14 +340,14 @@ var handshakeInit = function(data){
 
   initData(data);
 
-  if(typeof handshakeCallback === 'function') {
+  if (typeof handshakeCallback === 'function') {
     handshakeCallback(data.user);
   }
 };
 
 //Initilize data used in pomelo client
 var initData = function(data) {
-  if(!data || !data.sys) {
+  if (!data || !data.sys) {
     return;
   }
   pomelo.data = pomelo.data || {};
@@ -353,23 +355,26 @@ var initData = function(data) {
   var protos = data.sys.protos;
 
   //Init compress dict
-  if(!!dict){
+  if ( !! dict) {
     pomelo.data.dict = dict;
     pomelo.data.abbrs = {};
 
-    for(var route in dict){
+    for (var route in dict) {
       pomelo.data.abbrs[dict[route]] = route;
     }
   }
 
   //Init protobuf protos
-  if(!!protos){
+  if ( !! protos) {
     pomelo.data.protos = {
-      server : protos.server || {},
-      client : protos.client || {}
+      server: protos.server || {},
+      client: protos.client || {}
     };
-    if(!!protobuf){
-      protobuf.init({encoderProtos: protos.client, decoderProtos: protos.server});
+    if ( !! protobuf) {
+      protobuf.init({
+        encoderProtos: protos.client,
+        decoderProtos: protos.server
+      });
     }
   }
 };
@@ -381,77 +386,85 @@ var DirectionNum = 8;
 
 
 var ActFlagType = {
-	EXPLORE: 0,
-	LOGIN: 1,
-	PASS: 2
+  EXPLORE: 0,
+  LOGIN: 1,
+  PASS: 2
 };
 
 var monitor = function(type, name, reqId) {
-	if (typeof actor !== 'undefined') {
-		//console.log('add monitor: ', actor.id);
-		actor.emit(type, name, reqId);
-	} else {
-		//console.log('not actor.....');
-		console.error(Array.prototype.slice.call(arguments, 0));
-	}
+  if (typeof actor !== 'undefined') {
+    //console.log('add monitor: ', actor.id);
+    actor.emit(type, name, reqId);
+  } else {
+    //console.log('not actor.....');
+    console.error(Array.prototype.slice.call(arguments, 0));
+  }
 };
 
 var offset = (typeof actor !== 'undefined') ? actor.id + 1 : 30;
 
-pomelo.init({
-	host: "127.0.0.1",
-	port: 3010,
-	log: true
-}, function() {
+var loginEvent = function() {
+  pomelo.init({
+    host: "127.0.0.1",
+    port: 3010,
+    log: true
+  }, function() {
 
-	monitor('incr', 'login');
-	monitor(START, 'login', ActFlagType.LOGIN);
-	pomelo.request('connector.userHandler.login', {
-		account: 'robotUser' + offset,
-		password: '1',
-		areaId: 1
-	}, function(data) {
-		monitor(END, 'login', ActFlagType.LOGIN);
-		console.log(data.code);
-    if (typeof data.msg == 'string') {
-      console.log(data.msg);
-    }
-    
-    console.log(data.msg.user.account + ' login succeed.');
-    var intervalTime = Math.floor(Math.random()*3000 + 2000);
+    monitor('incr', 'login');
+    monitor(START, 'login', ActFlagType.LOGIN);
+    pomelo.request('connector.userHandler.login', {
+      account: 'robotUser' + offset,
+      password: '1',
+      areaId: 1
+    }, function(data) {
+      monitor(END, 'login', ActFlagType.LOGIN);
+      console.log(data.code);
+      if (typeof data.msg == 'string') {
+        console.log(data.msg);
+      }
 
-		setInterval(function() {
-			exploreEvent();
-		}, intervalTime);
+      console.log(data.msg.user.account + ' login succeed.');
+      var intervalTime = Math.floor(Math.random() * 10000 + 3000);
+      var intervalTime1 = Math.floor(Math.random() * 20000 + 5000);
 
-		// setInterval(function() {
-		// 	passEvent();
-		// }, 2000);
+      // pomelo.disconnect();
+      // loginEvent();
 
-	});
+      setInterval(function() {
+        exploreEvent();
+      }, intervalTime);
 
-});
+      setInterval(function() {
+      	passEvent();
+      }, intervalTime1);
+
+    });
+
+  });
+};
+
+loginEvent();
 
 var exploreEvent = function() {
-	monitor('incr', 'explore');
-	monitor(START, 'explore', ActFlagType.EXPLORE);
+  monitor('incr', 'explore');
+  monitor(START, 'explore', ActFlagType.EXPLORE);
 
-	pomelo.request('area.taskHandler.explore', {}, function(data) {
-		monitor(END, 'explore', ActFlagType.EXPLORE);
-		if (data.code != 200) {
+  pomelo.request('area.taskHandler.explore', {}, function(data) {
+    monitor(END, 'explore', ActFlagType.EXPLORE);
+    if (data.code != 200) {
       console.log('explore： ', data.code);
       console.log('explore result: ', data.msg);
     }
-	});
+  });
 };
 
 var passEvent = function() {
-	monitor('incr', 'passBarrier');
-	monitor(START, 'passBarrier', ActFlagType.PASS);
+  monitor('incr', 'passBarrier');
+  monitor(START, 'passBarrier', ActFlagType.PASS);
 
-	pomelo.request('area.taskHandler.passBarrier', {}, function(data) {
-		monitor(END, 'passBarrier', ActFlagType.PASS);
-		//console.log('passBarrier ', data.code);
-		//console.log('passBarrier result: ', data.msg);
-	});
+  pomelo.request('area.taskHandler.passBarrier', {}, function(data) {
+    monitor(END, 'passBarrier', ActFlagType.PASS);
+    //console.log('passBarrier ', data.code);
+    //console.log('passBarrier result: ', data.msg);
+  });
 };

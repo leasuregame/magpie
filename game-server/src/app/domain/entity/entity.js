@@ -26,7 +26,11 @@ var Entity = (function(_super) {
         this.tracked = [];
 
         _.defaults(attributes, utility.deepCopy(this.constructor.DEFAULT_VALUES));
-        this.track(Object.keys(attributes));
+        
+        var self =  this;
+        Object.keys(attributes).forEach(function(key) {
+            self.track(key);
+        });
         this.set(attributes);
 
         if (typeof(this.init) === "function") {
@@ -39,18 +43,14 @@ var Entity = (function(_super) {
     Entity.FIELDS = [];
     Entity.DEFAULT_VALUES = {};
 
-    Entity.prototype.track = function(keys) {
-        var _this = this;
-        _.each(keys, function(key) {
-            _this.tracked.push(key);
-            _this.__defineGetter__(key, function() {
-                return _this.get(key);
-            });
-            return _this.__defineSetter__(key, function(val) {
-                return _this.set(key, val);
-            });
+    Entity.prototype.track = function(key) {
+        this.tracked.push(key);
+        this.__defineGetter__(key, function() {
+            return this.get(key);
         });
-        return this;
+        this.__defineSetter__(key, function(val) {
+            return this.set(key, val);
+        });
     };
 
     Entity.prototype.set = function() {
@@ -74,7 +74,7 @@ var Entity = (function(_super) {
 
             // add to tracked
             if (_this.tracked.indexOf(k) < 0) {
-                _this.track([k]);
+                _this.track(k);
             }
 
             // if value is object string, convert to object

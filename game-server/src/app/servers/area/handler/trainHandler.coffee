@@ -25,10 +25,55 @@ HIGH_LUCKYCARD = 2
 ELIXIR_TYPE_HP = 0
 ELIXIR_TYPE_ATK = 1
 
+EXTRACT_TYPE_ELIXIR = 0
+EXTRACT_TYPE_SKILLPOINT = 1
+DEFAULT_EXTRACT_CONSOME = 200
+
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
+
+Handler::extract = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardId = msg.cardId
+  type = msg.type
+
+  if not cardId or type not in [EXTRACT_TYPE_ELIXIR, EXTRACT_TYPE_SKILLPOINT]
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    consume = table.getTableItem('values', 'extractConsumeGold') or DEFAULT_EXTRACT_CONSOME
+    if player.gold < consume
+      return next(null, {code: 501, msg: '魔石不足'})
+
+    card = player.getCard(cardId)
+    if not card
+      return next(null, {code: 501, msg: '找不到该卡牌'})
+
+    if type is EXTRACT_TYPE_ELIXIR
+      extVal = card.elixirHp + card.elixirAtk
+      if extVal is 0
+        return next(null, {code: 501, msg: '该卡没有可提取的仙丹'})
+      else 
+        card.set('elixirHp', 0)
+        card.set('elixirAtk', 0)
+        player.increase('elixir', extVal)
+        player.decrease('gold', consume)
+        return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})
+
+    if type is EXTRACT_TYPE_SKILLPOINT
+      if card.skillPoint is 0
+        return next(null, {code: 501, msg: '该卡没有可提取的技能点'})
+      else
+        card.set('skillPoint', 0)
+        card.resetSkillLv()
+        player.increase('skillPoint', card.skillPoint)
+        player.decrease('gold', consume)
+        return next(null, {code: 200, msg: {card: card.toJson(), skillPoint: player.skillPoint}})
 
 ###
 强化

@@ -21,6 +21,8 @@ var LOTTERY_ENOUGH = 200;
 var MONTH_CARD = 0;
 var WEEK_CARD = 1;
 
+var POWER_NOTIFICATION_KEY = 1;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _uid: "",           // 玩家唯一标识
@@ -71,6 +73,7 @@ var Player = Entity.extend({
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
         this.on("vipChange", this._vipChangeEvent);
+        this.on("powerChange", this._powerChangeEven);
 
         this._evolutionRate = {};
 
@@ -220,17 +223,20 @@ var Player = Entity.extend({
         var serverTime = gameData.clock.get("time");
 
         var interval = serverTime - this._powerTimestamp;
+        var power = this._power;
 
         if (interval > 0) {
             var times = Math.floor(interval / UPDATE_POWER_TIME);
 
-            this._power += UPDATE_POWER_VALUE * times;
+            power += UPDATE_POWER_VALUE * times;
             this._powerTimestamp += times * UPDATE_POWER_TIME;
 
-            if (this._power > this._maxPower) {
-                this._power = this._maxPower;
+            if (power > this._maxPower) {
+                power = this._maxPower;
             }
         }
+
+        this.set("power", power);
     },
 
     correctionPower: function (power, powerTimestamp) {
@@ -279,6 +285,7 @@ var Player = Entity.extend({
 
     _energyChangeEvent: function () {
         cc.log("Player _energyChangeEvent");
+
         if (this._energy >= LOTTERY_ENOUGH) {
             gameMark.updateLotteryMark(true);
         } else {
@@ -288,7 +295,20 @@ var Player = Entity.extend({
 
     _vipChangeEvent: function () {
         cc.log("Player _vipChangeEvent");
+
         gameData.shop.updateMaxCount();
+    },
+
+    _powerChangeEven: function () {
+        cc.log("Player _powerChangeEven");
+
+        lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
+
+        if (this._power < this._maxPower) {
+            var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
+
+            lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+        }
     },
 
     sendMessage: function (cb, playerId, msg) {

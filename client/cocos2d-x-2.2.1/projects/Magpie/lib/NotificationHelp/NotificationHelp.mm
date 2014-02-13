@@ -1,0 +1,184 @@
+//
+//  Notification.cpp
+//  Magpie
+//
+//  Created by lCeve on 14-2-12.
+//
+//
+
+#include "NotificationHelp.h"
+#include "cocos2d.h"
+
+void NotificationHelp::start()
+{
+    CCLOG("NotificationHelp init");
+    
+    // 把角标数字清0
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    // 删除所有定时通知
+    NotificationHelp::remove();
+}
+
+void NotificationHelp::end()
+{
+    CCLOG("NotificationHelp end");
+    
+    // 设置每天11:00定时通知
+    UILocalNotification * powerNotification1 = [[UILocalNotification alloc] init];
+    if (powerNotification1 != nil)
+    {
+        CCLOG("11:00");
+        
+        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat : @"HH:mm:ss"];
+        powerNotification1.fireDate = [formatter dateFromString : @"11:00:00"];
+        powerNotification1.timeZone = [NSTimeZone defaultTimeZone];
+        powerNotification1.repeatInterval = NSDayCalendarUnit;
+        powerNotification1.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力值了。"];
+        powerNotification1.soundName = UILocalNotificationDefaultSoundName;
+        powerNotification1.applicationIconBadgeNumber = 1;
+        [[UIApplication sharedApplication] scheduleLocalNotification : powerNotification1];
+        [powerNotification1 release];
+    }
+    
+    // 设置每天17:00定时通知
+    UILocalNotification * powerNotification2 = [[UILocalNotification alloc] init];
+    if (powerNotification2 != nil)
+    {
+        CCLOG("17:00");
+        
+        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat : @"HH:mm:ss"];
+        powerNotification2.fireDate = [formatter dateFromString : @"17:00:00"];
+        powerNotification2.timeZone = [NSTimeZone defaultTimeZone];
+        powerNotification2.repeatInterval = NSDayCalendarUnit;
+        powerNotification2.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力值了。"];
+        powerNotification2.soundName = UILocalNotificationDefaultSoundName;
+        powerNotification2.applicationIconBadgeNumber = 1;
+        [[UIApplication sharedApplication] scheduleLocalNotification : powerNotification2];
+        [powerNotification2 release];
+    }
+    
+    // 设置每3.5天通知一次
+    UILocalNotification * notification = [[UILocalNotification alloc] init];
+    if (notification != nil)
+    {
+        NSDate * time = [NSDate date];
+        NSCalendar * calendar = [NSCalendar currentCalendar];
+        NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        NSDateComponents * dateComponent = [calendar components : unitFlags fromDate : time];
+        
+        int year = [dateComponent year];
+        int month = [dateComponent month];
+        int day = [dateComponent day];
+        int hour = [dateComponent hour];
+        int minute = [dateComponent minute];
+        int second = [dateComponent second];
+        
+//        CCLOG("year is: %d", year);
+//        CCLOG("month is: %d", month);
+//        CCLOG("day is: %d", day);
+//        CCLOG("hour is: %d", hour);
+//        CCLOG("minute is: %d", minute);
+//        CCLOG("second is: %d", second);
+        
+        int timeInterval = 3.5 * 24 * 60 * 60;
+        if(hour >= 9 && hour < 21)
+        {
+            timeInterval += (21 - hour - 1) * 60 * 60;
+            timeInterval += (60 - minute - 1) * 60;
+            timeInterval += 60 - second;
+        }
+        else
+        {
+            if(hour < 9)
+            {
+                hour += 24;
+            }
+            
+            timeInterval += (33 - hour - 1) * 60 * 60;
+            timeInterval += (60 - minute - 1) * 60;
+            timeInterval += 60 - second;
+        }
+        
+        time = [time dateByAddingTimeInterval : timeInterval];
+        
+        calendar = [NSCalendar currentCalendar];
+        unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        dateComponent = [calendar components : unitFlags fromDate : time];
+        
+        year = [dateComponent year];
+        month = [dateComponent month];
+        day = [dateComponent day];
+        hour = [dateComponent hour];
+        minute = [dateComponent minute];
+        second = [dateComponent second];
+        
+//        CCLOG("year is: %d", year);
+//        CCLOG("month is: %d", month);
+//        CCLOG("day is: %d", day);
+//        CCLOG("hour is: %d", hour);
+//        CCLOG("minute is: %d", minute);
+//        CCLOG("second is: %d", second);
+        
+        notification.fireDate = time;
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.repeatInterval = NSWeekCalendarUnit;
+        notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，你已经好久没登陆游戏了。"];
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.applicationIconBadgeNumber = 1;
+        [[UIApplication sharedApplication] scheduleLocalNotification : notification];
+        [notification release];
+    }
+}
+
+void NotificationHelp::push(const char * msg, const int timeInterval, const int key)
+{
+    CCLOG("NotificationHelp push %s %d %d", msg, timeInterval, key);
+    
+    UILocalNotification * notification=[[UILocalNotification alloc] init];
+    
+    if (notification != nil) {
+        NSDate * now = [NSDate date];
+        notification.fireDate=[now dateByAddingTimeInterval : timeInterval];
+        notification.timeZone=[NSTimeZone defaultTimeZone];
+        notification.alertBody=[NSString stringWithUTF8String : msg];
+        notification.soundName= UILocalNotificationDefaultSoundName;
+        notification.applicationIconBadgeNumber = 1;
+        
+        //add key
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys : [NSNumber numberWithInt : key], @"key", nil];
+        [notification setUserInfo : userInfo];
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        [notification release];
+    }
+}
+
+void NotificationHelp::remove()
+{
+    CCLOG("NotificationHelp remove");
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+
+void NotificationHelp::remove(const int key)
+{
+    CCLOG("NotificationHelp remove %d", key);
+    
+    NSArray * narry=[[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    int len = [narry count];
+    for (int i = 0; i < len; ++i)
+    {
+        UILocalNotification * notification = [narry objectAtIndex : i];
+        NSDictionary * userInfo = notification.userInfo;
+        NSNumber * nNumber = [userInfo objectForKey : @"key"];
+        int _key=[nNumber intValue];
+        
+        if (_key == key) {
+            [[UIApplication sharedApplication] cancelLocalNotification : notification];
+        }
+    }
+}

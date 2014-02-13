@@ -137,21 +137,36 @@ void NotificationHelp::push(const char * msg, const int timeInterval, const int 
 {
     CCLOG("NotificationHelp push %s %d %d", msg, timeInterval, key);
     
-    UILocalNotification * notification=[[UILocalNotification alloc] init];
+    UILocalNotification * notification = [[UILocalNotification alloc] init];
     
     if (notification != nil) {
-        NSDate * now = [NSDate date];
-        notification.fireDate=[now dateByAddingTimeInterval : timeInterval];
-        notification.timeZone=[NSTimeZone defaultTimeZone];
-        notification.alertBody=[NSString stringWithUTF8String : msg];
-        notification.soundName= UILocalNotificationDefaultSoundName;
+        NSDate * time = [NSDate dateWithTimeIntervalSinceNow : timeInterval];
+        NSCalendar * calendar = [NSCalendar currentCalendar];
+        NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        NSDateComponents * dateComponent = [calendar components : unitFlags fromDate : time];
+        int hour = [dateComponent hour];
+        
+        CCLOG("hour is: %d", hour);
+        
+        // 00:00 ~ 09:00 不通知
+        if(hour < 9)
+        {
+            return;
+        }
+        
+        CCLOG("push");
+        
+        notification.fireDate = time;
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.alertBody = [NSString stringWithUTF8String : msg];
+        notification.soundName = UILocalNotificationDefaultSoundName;
         notification.applicationIconBadgeNumber = 1;
         
         //add key
         NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys : [NSNumber numberWithInt : key], @"key", nil];
         [notification setUserInfo : userInfo];
         
-        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        [[UIApplication sharedApplication] scheduleLocalNotification : notification];
         [notification release];
     }
 }

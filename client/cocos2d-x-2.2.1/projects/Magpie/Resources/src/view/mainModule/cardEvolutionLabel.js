@@ -300,8 +300,12 @@ var CardEvolutionLabel = cc.Layer.extend({
 
             this._resLabel.setVisible(true);
 
+            var star = this._leadCard.get("star");
+            var num = (star < 3) ? 0 : star - 2;
+            this._cardPssSkillLabel[0].setString(num);
+
             var needMoney = this._leadCard.getEvolutionNeedMoney();
-            this._evolutionRateLabel.setString("0%");
+            this._evolutionRateLabel.setString(gameData.player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._moneyLabel.setString(needMoney);
 
@@ -316,9 +320,6 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._cardAtkLabel[0].setString(this._leadCard.get("atk"));
             this._cardSkillRateLabel[0].setString(this._leadCard.get("skillRate") + "%");
 
-            var star = this._leadCard.get("star");
-            var num = (star < 3) ? 0 : star - 2;
-            this._cardPssSkillLabel[0].setString(num);
 
             for (var i = 0; i < star; i++) {
                 this._oldStarIcon[i].setVisible(true);
@@ -404,7 +405,8 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._oldStarIcon[i].setVisible(false);
             }
         } else {
-            this._evolutionRateLabel.setString("");
+            var star = this._leadCard.get("star");
+            this._evolutionRateLabel.setString(gameData.player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._evolutionItem.setEnabled(false);
         }

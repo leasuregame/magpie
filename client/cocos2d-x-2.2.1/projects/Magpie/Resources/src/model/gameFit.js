@@ -309,7 +309,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectLeadCardItemPoint": cc.p(360, 597),
-            "trainItemPoint": cc.p(360, 182),
+            "trainItemPoint": cc.p(260, 182),
+            "extractItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
             "helpItemPoint": cc.p(80, 670)
@@ -668,11 +669,11 @@ var fit4Iphone4 = {
                 "1": [
                     cc.p(93, 54), cc.p(555, 512), cc.p(254, 756),
                     cc.p(360, 597), cc.p(360, 732), cc.p(603, 840),
-                    cc.p(360, 292), cc.p(360, 182)
+                    cc.p(360, 292), cc.p(260, 182)
                 ],
                 "2": [
                     cc.p(93, 54), cc.p(555, 322), cc.p(360, 597),
-                    cc.p(360, 732), cc.p(603, 840), cc.p(360, 182)
+                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
                 ],
                 "3": [
                     cc.p(555, 322), cc.p(254, 756), cc.p(191, 636),
@@ -1002,7 +1003,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectLeadCardItemPoint": cc.p(360, 597),
-            "upgradeItemPoint": cc.p(360, 182),
+            "upgradeItemPoint": cc.p(260, 182),
+            "extractItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
             "effectPoint": cc.p(360, 422),
@@ -1631,7 +1633,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectLeadCardItemPoint": cc.p(320, 690),
-            "trainItemPoint": cc.p(320, 197),
+            "trainItemPoint": cc.p(220, 197),
+            "extractItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "helpItemPoint": cc.p(50, 810)
@@ -1990,11 +1993,11 @@ var fit4Iphone5 = {
                 "1": [
                     cc.p(53, 54), cc.p(515, 653), cc.p(214, 897),
                     cc.p(320, 690), cc.p(320, 886), cc.p(563, 1012),
-                    cc.p(320, 307), cc.p(320, 197)
+                    cc.p(320, 307), cc.p(220, 197)
                 ],
                 "2": [
                     cc.p(53, 54), cc.p(515, 357), cc.p(320, 690),
-                    cc.p(320, 886), cc.p(563, 1012), cc.p(320, 197)
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
                 ],
                 "3": [
                     cc.p(515, 357), cc.p(214, 897), cc.p(151, 724),
@@ -2326,7 +2329,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectLeadCardItemPoint": cc.p(320, 690),
-            "upgradeItemPoint": cc.p(320, 197),
+            "upgradeItemPoint": cc.p(220, 197),
+            "extractItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "effectPoint": cc.p(320, 445),

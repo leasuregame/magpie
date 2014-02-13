@@ -113,6 +113,8 @@ Handler::getLineUpInfo = (msg, session, next) ->
       name: player.name
       lv: player.lv
       ability: player.getAbility()
+      vip: player.vip
+      rankStats: player.rankStats or {}
     }})
 
 Handler::givePower = (msg, session, next) -> 
@@ -224,22 +226,23 @@ todayPeriod = () ->
   [start, end]
 
 checkFriendsStatus = (player, messages) ->
-  friends = []
-  for f in player.friends
+  if player.friends?.length is 0
+    return []
+
+  player.friends.map (f) ->
     f = utility.deepCopy f
     f.canReceive = false
     f.canGive = true
 
     matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.UNHANDLED
-    if _.contains(player.dailyGift.receivedBless.givers, f.id) and matches.length > 0
+    if matches.length > 0
       f.canReceive = true
       f.msgId = matches[0].id
 
     if _.contains(player.dailyGift.gaveBless.receivers, f.id)
       f.canGive = false
 
-    friends.push f
-  friends
+    return f
 
 getRechargeRewardFlag = (app, playerId, cb) ->
   startDate = app.get('sharedConf').newYearActivity.startDate

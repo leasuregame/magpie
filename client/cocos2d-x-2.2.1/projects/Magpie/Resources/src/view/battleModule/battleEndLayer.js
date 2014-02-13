@@ -17,6 +17,8 @@ var BattleEndLayer = cc.Layer.extend({
 
     _battleLog: null,
     _ccbNode: null,
+    _canClick: false,
+
     init: function (battleLog) {
         cc.log("BattleEndLayer init");
 
@@ -25,6 +27,7 @@ var BattleEndLayer = cc.Layer.extend({
         this._battleEndLayerFit = gameFit.battleScene.battleEndLayer;
 
         this._battleLog = battleLog;
+        this._canClick = false;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 100), 640, 1136);
         bgLayer.setPosition(this._battleEndLayerFit.bgLayerPoint);
@@ -154,19 +157,23 @@ var BattleEndLayer = cc.Layer.extend({
         var fragment = this._battleLog.get("reward").fragment;
 
         if (fragment) {
-            var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
-            fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
-            fragmentEffect.controller.ccbFragment.setString("+" + fragment);
-            this.addChild(fragmentEffect, 1);
+            this.scheduleOnce(function () {
+                FragmentLayer.pop(fragment);
+                this._canClick = true;
+            }, 1.5);
 
-            fragmentEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-
+        } else {
+            this._canClick = true;
         }
 
     },
 
     end: function () {
         cc.log("BattleEndLayer end");
+
+        if (!this._canClick) {
+            return;
+        }
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -176,12 +183,20 @@ var BattleEndLayer = cc.Layer.extend({
     replay: function () {
         cc.log("BattleEndLayer replay");
 
+        if (!this._canClick) {
+            return;
+        }
+
         BattlePlayer.getInstance().next();
         BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
     },
 
     _onClickGoStrengthenLayer: function () {
         cc.log("BattleEndLayer _onClickGoStrengthenLayer");
+
+        if (!this._canClick) {
+            return;
+        }
 
         if (this._battleLog.get("isFirstTournament")) {
             this._battleLog.set("isFirstTournament", false);
@@ -190,7 +205,6 @@ var BattleEndLayer = cc.Layer.extend({
         }
 
         BattlePlayer.getInstance().end(StrengthenLayer);
-
     }
 });
 

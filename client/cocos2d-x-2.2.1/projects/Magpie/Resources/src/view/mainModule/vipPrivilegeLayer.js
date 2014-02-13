@@ -154,15 +154,32 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
             var offsetY = y + 315;
             for (var key in vipPrivilege) {
+
+                if (vipPrivilege[key] <= 0 || key == "id") {
+                    continue;
+                }
+
                 var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
                 vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
                 scrollViewLayer.addChild(vipPrivilegeIcon);
 
-                var vipPrivilegeLabel = cc.LabelTTF.create(
-                    (vipPrivilegeDescription[key] || "") + " + " + vipPrivilege[key],
-                    "STHeitiTC-Medium",
-                    20
-                );
+                var vipPrivilegeLabel = null;
+
+                if(key == "description") {
+                    vipPrivilegeLabel = cc.LabelTTF.create(
+                        vipPrivilege[key],
+                        "STHeitiTC-Medium",
+                        20
+                    );
+                } else {
+                    vipPrivilegeLabel = cc.LabelTTF.create(
+                        (vipPrivilegeDescription[key]) + " + " + vipPrivilege[key],
+                        "STHeitiTC-Medium",
+                        20
+                    );
+                }
+
+
                 vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
                 vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
                 scrollViewLayer.addChild(vipPrivilegeLabel);

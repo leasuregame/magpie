@@ -60,6 +60,10 @@ var BattlePlayer = cc.Class.extend({
             MainScene.getInstance().switchLayer(goLayer);
             LazyLayer.closeCloudAll();
         }
+    },
+
+    getScene: function () {
+        return this._battleScene;
     }
 });
 

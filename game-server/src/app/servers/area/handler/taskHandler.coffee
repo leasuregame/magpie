@@ -23,7 +23,6 @@ Handler = (@app) ->
 探索
 ###
 Handler::explore = (msg, session, next) ->
-  console.log '-exlore-', msg, session.get('playerId')
 
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
@@ -42,6 +41,9 @@ Handler::explore = (msg, session, next) ->
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 
+      # 手动同一次体力值
+      player.checkResumePower()
+      
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>
@@ -162,7 +164,7 @@ Handler::passBarrier = (msg, session, next) ->
   player = null
   firstWin = false
   oldLayer = -10
-  console.log '爬塔：', playerId, layer
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -223,7 +225,6 @@ Handler::passBarrier = (msg, session, next) ->
 
     player.save()
 
-    console.log '-end 爬塔：'
     next(null, {code: 200, msg: {
       battleLog: bl, 
       upgradeInfo: upgradeInfo if upgradeInfo
@@ -358,17 +359,23 @@ updatePlayer = (player, rewards, layer) ->
   player.save()
 
 checkFragment = (battleLog, player, chapterId) ->  
+  cid = parseInt(chapterId)
+  scope = chapterScope cid
   if(
-    player.task.hasFragment != parseInt(chapterId) and 
-    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    player.task.hasFragment not in scope and 
+    ( utility.hitRate(taskRate.fragment_rate) or cid%5 is 0 )
     )
     battleLog.rewards.fragment = 1
     task = utility.deepCopy(player.task)
-    task.hasFragment = parseInt(chapterId)
+    task.hasFragment = cid
     player.set('task', task)
     player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
+
+chapterScope = (cid) ->
+  p = (Math.ceil cid/5)*5
+  [p-4..p]
 
 saveBattleLog = (app, pid, eid, type, bl) ->
   app.get('dao').battleLog.create {

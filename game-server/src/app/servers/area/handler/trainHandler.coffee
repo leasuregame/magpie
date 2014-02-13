@@ -25,10 +25,58 @@ HIGH_LUCKYCARD = 2
 ELIXIR_TYPE_HP = 0
 ELIXIR_TYPE_ATK = 1
 
+EXTRACT_TYPE_ELIXIR = 0
+EXTRACT_TYPE_SKILLPOINT = 1
+DEFAULT_EXTRACT_CONSOME = 200
+
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
+
+Handler::extract = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardId = msg.cardId
+  type = msg.type
+
+  if not cardId or type not in [EXTRACT_TYPE_ELIXIR, EXTRACT_TYPE_SKILLPOINT]
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    consume = table.getTableItem('values', 'extractConsumeGold') or DEFAULT_EXTRACT_CONSOME
+    if player.gold < consume
+      return next(null, {code: 501, msg: '魔石不足'})
+
+    card = player.getCard(cardId)
+    if not card
+      return next(null, {code: 501, msg: '找不到该卡牌'})
+
+    if type is EXTRACT_TYPE_ELIXIR
+      extVal = card.elixirHp + card.elixirAtk
+      if extVal is 0
+        return next(null, {code: 501, msg: '该卡没有可提取的仙丹'})
+      else 
+        card.set('elixirHp', 0)
+        card.set('elixirAtk', 0)
+        player.increase('elixir', extVal)
+        player.decrease('gold', consume)
+        return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})
+
+    if type is EXTRACT_TYPE_SKILLPOINT
+      extVal = card.skillPoint
+      if extVal is 0
+        return next(null, {code: 501, msg: '该卡没有可提取的技能点'})
+      else
+        card.set('skillPoint', 0)
+        card.resetSkillLv()
+        player.increase('skillPoint', extVal)
+        player.decrease('gold', consume)
+        return next(null, {code: 200, msg: {card: card.toJson(), skillPoint: player.skillPoint}})
+
+    next(null, {code: 501, msg: '提取不成功'})
 
 ###
 强化
@@ -144,7 +192,7 @@ Handler::luckyCard = (msg, session, next) ->
           firstTen = 1
 
         if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
-          grainFiveStarCard cards
+          grainFiveStarCard cards, player
           player.setFirstTime('highTenLuckCard', 0)
 
         # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
@@ -157,12 +205,16 @@ Handler::luckyCard = (msg, session, next) ->
 
         cb(null, cards, --rfc, --hfc, --hdcc)
 
-  grainFiveStarCard = (cards) ->
+  grainFiveStarCard = (cards, player) ->
+    lids = player.lightUpCards()
     for card in cards
-      if card.star isnt 5
-        card.tableId += 5 - card.star
+      tid = card.tableId + 5 - card.star
+      if card.star isnt 5 and tid not in lids
+        card.tableId = tid
         card.star = 5
         break
+
+    return
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###
@@ -322,6 +374,14 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
+Handler::starUpgradeInitRate = (msg, session, next) ->
+  playerId = session.get('playerId')
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
+
+    next(null, {code: 200, msg: initRate: player.initRate})
+
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   target = msg.target
@@ -366,32 +426,27 @@ Handler::starUpgrade = (msg, session, next) ->
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
 
-      if card_count > starUpgradeConfig.max_num
-        return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
+      rate = player.initRate['star'+card.star] or 0
+      max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
+      if card_count > max_num
+        return cb({code: 501, msg: "最多消耗#{max_num}张卡牌"})
 
-      rate = 0
+      addRate = card_count * starUpgradeConfig.rate_per_card
+      totalRate = _.min([addRate + rate, 100])
 
-      if card.star is 4
-        if card.useCardsCounts < 6 and card.useCardsCounts >= 0
-          count = if (card.useCardsCounts + card_count <= 6) then card_count else 6 - card.useCardsCounts
-          card.increase('useCardsCounts' , count)
-          card_count -= count
-
-        if card.useCardsCounts > 5
-          rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
-          card.set('useCardsCounts',-1)
-
-      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
-
-      if utility.hitRate(totalRate)
-        is_upgrade = true
+      is_upgrade = !!utility.hitRate(totalRate)
+      if card.star is 4 
+        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 10)
+        card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)
       if is_upgrade
+        ### 成功进阶，对应星级初始概率置为0 ###
+        player.setInitRate(card.star, 0)
+
         card.increase('star')
         card.increase('tableId')
-        card.resetSkillLv()
-        #entityUtil.resetSkillIncForCard(card)
+        card.resetSkillLv()      
 
         # 获得so lucky成就
         if card_count is 1
@@ -410,13 +465,14 @@ Handler::starUpgrade = (msg, session, next) ->
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
-        return cb null
-
-      cb null
+        cb null
+      else
+        player.incInitRate(card.star, parseInt addRate*0.5)
+        cb null
 
     (cb) ->
       ### 更新玩家战斗力值 ###
-      if player.isLineUpCard(card) 
+      if is_upgrade and player.isLineUpCard(card) 
         player.updateAbility()
 
       _jobs = []
@@ -452,7 +508,7 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
+    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -578,17 +634,17 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '找不到卡牌'})
 
     if card.star < 3
-      return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
+      return next(null, {code: 501, msg: '3星以下的卡牌不能使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
     if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
-      return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
+      return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
-      return next(null, {code: 501, msg: "已达当前可吞噬数量上限，请提升角色等级"})
+      return next(null, {code: 501, msg: "已达可吞噬上限，请提升角色等级"})
 
     # can_use_elixir = player.canUseElixir(cardId)
     # if can_use_elixir < elixir
@@ -771,6 +827,8 @@ Handler::exchangeCard = (msg, session, next) ->
     player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
     setExchangedCard(player, tableId)
+    ### 增加5星卡牌成就 ###
+    achieve.star5card(player) if star is 5
 
     player.save()
     next(null, {code: 200, msg: {

@@ -16,7 +16,6 @@ class Manager
 
   getPlayerInfo: (params, cb) ->
     _player = @getPlayerFromCache(params.pid)
-    console.log 'get player from cache: ', _player?.name
     return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
@@ -28,7 +27,6 @@ class Manager
         err.msg = '找不到玩家' if err.code is 404
         cb(err, null)
         return
-      console.log 'get player from db:', player?.name
       cb(null, player)
 
   getPlayerFromCache: (id) ->

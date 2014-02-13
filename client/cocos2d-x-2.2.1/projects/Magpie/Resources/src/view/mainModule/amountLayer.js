@@ -25,6 +25,8 @@ var AmountLayer = LazyLayer.extend({
     _tip: null,
     _maxBuyTimes: 0,
     _remainTimes: 0,
+    _consume_inc: 0,
+    _consume_max: 0,
 
     onEnter: function () {
         cc.log("AmountLayer onEnter");
@@ -49,6 +51,8 @@ var AmountLayer = LazyLayer.extend({
         this._tip = data.tip || "";
         this._maxBuyTimes = data.maxBuyTimes || 0;
         this._remainTimes = data.remainTimes || 0;
+        this._consume_inc = data.consume_inc || 0;
+        this._consume_max = data.consume_max || 0;
         var title = "购买" + data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
@@ -193,7 +197,21 @@ var AmountLayer = LazyLayer.extend({
 
         this._countLabel.setString(this._count);
 
-        var consume = this._price * this._count;
+        var consume = 0;
+        if (this._consume_inc != 0) {
+            var usedCount = this._maxBuyTimes - this._remainTimes;
+            for (var i = 1; i <= this._count; i++) {
+                var tmpConsume = this._price + usedCount * this._consume_inc;
+                if (tmpConsume > this._consume_max) {
+                    tmpConsume = this._consume_max;
+                }
+                consume += tmpConsume;
+                usedCount++;
+            }
+        } else {
+            consume = this._price * this._count;
+        }
+
         this._consumeLabel.setString(consume);
 
         var obtain = this._obtain * this._count;

@@ -20,7 +20,6 @@ Handler::get = (msg, session, next) ->
   endDate.setDate(endDate.getDate()+1)
   now = new Date()
 
-  console.log startDate,now,endDate
   if startDate > now or now > endDate
     return next(null, {code: 501, msg: '不在领取时间段'})
 

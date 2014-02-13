@@ -426,10 +426,11 @@ Handler::starUpgrade = (msg, session, next) ->
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
 
-      if card_count > starUpgradeConfig.max_num
-        return cb({code: 501, msg: "最多消耗#{starUpgradeConfig.max_num}张卡牌"})
-
       rate = player.initRate['star'+card.star] or 0
+      max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
+      if card_count > max_num
+        return cb({code: 501, msg: "最多消耗#{max_num}张卡牌"})
+
       addRate = card_count * starUpgradeConfig.rate_per_card
       totalRate = _.min([addRate + rate, 100])
 
@@ -507,7 +508,7 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
+    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

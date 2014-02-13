@@ -88,10 +88,15 @@ products =
         POWER_BUY_COUNT = table.getTableItem('daily_gift', 1).power_buy_count
         vipPrivilege = table.getTableItem('vip_privilege', player.vip);
         totalCount = POWER_BUY_COUNT + vipPrivilege.buy_power_count
-        curCount = totalCount - player.dailyGift.powerBuyCount
+        curCount = totalCount - player.dailyGift.powerBuyCount + 1
 
-        gold = product.consume + product.consume_inc * curCount * times
-        totalGold = _.min([gold, product.consume_max])
+        curCounts = [curCount..curCount+times-1]
+        totalGold = 0
+        curCounts.forEach (c) -> 
+          g = product.consume + product.consume_inc * (c-1)
+          g = _.min([g, product.consume_max])
+          totalGold += g
+
         if player.gold < totalGold
           return cb {code: 501, msg: "魔石不足"}
         

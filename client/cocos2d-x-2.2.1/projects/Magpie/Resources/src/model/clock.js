@@ -19,6 +19,7 @@ var Clock = Entity.extend({
     _alarmClock: {},
     _index: 0,
     _time: 0,
+    _localTime: 0,
 
     init: function (time) {
         cc.log("Clock init");
@@ -26,13 +27,16 @@ var Clock = Entity.extend({
         this._alarmClock = {};
         this._index = 0;
         this._time = time || Date.now();
+        this._localTime = Date.now();
 
         this.schedule(this.updateLocalTime, UPDATE_LOCAL_TIME_INTERVAL);
         this.schedule(this.updateServerTime, UPDATE_SERVER_TIME_INTERVAL);
     },
 
     updateLocalTime: function () {
-        this._time += UPDATE_LOCAL_TIME_INTERVAL * 1000;
+        var now = Date.now();
+        this._time += (now - this._localTime);
+        this._localTime = now;
 
         this._judge();
     },

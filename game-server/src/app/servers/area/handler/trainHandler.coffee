@@ -46,7 +46,7 @@ Handler::extract = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    consume = table.getTableItem('values', 'extractConsumeGold') or DEFAULT_EXTRACT_CONSOME
+    consume = table.getTableItem('values', 'extractConsumeGold')?.value or DEFAULT_EXTRACT_CONSOME
     if player.gold < consume
       return next(null, {code: 501, msg: '魔石不足'})
 

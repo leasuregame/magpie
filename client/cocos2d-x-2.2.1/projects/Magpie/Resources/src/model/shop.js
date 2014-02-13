@@ -424,7 +424,9 @@ var Shop = Entity.extend({
                 tip: "",
                 timesTip: "",
                 maxBuyTimes: gameData.shop.get("powerBuyMaxCount"),
-                remainTimes: 0
+                remainTimes: 0,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
             product.remainTimes = product.count = gameData.shop.get("powerBuyCount");

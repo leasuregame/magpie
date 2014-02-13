@@ -359,17 +359,23 @@ updatePlayer = (player, rewards, layer) ->
   player.save()
 
 checkFragment = (battleLog, player, chapterId) ->  
+  cid = parseInt(chapterId)
+  scope = chapterScope cid
   if(
-    player.task.hasFragment != parseInt(chapterId) and 
-    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    player.task.hasFragment not in scope and 
+    ( utility.hitRate(taskRate.fragment_rate) or cid%5 is 0 )
     )
     battleLog.rewards.fragment = 1
     task = utility.deepCopy(player.task)
-    task.hasFragment = parseInt(chapterId)
+    task.hasFragment = cid
     player.set('task', task)
     player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
+
+chapterScope = (cid) ->
+  p = (Math.ceil cid/5)*5
+  [p-4..p]
 
 saveBattleLog = (app, pid, eid, type, bl) ->
   app.get('dao').battleLog.create {

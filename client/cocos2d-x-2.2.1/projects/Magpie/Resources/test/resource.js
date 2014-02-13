@@ -1115,6 +1115,17 @@ var main_scene_image = {
     uiEffect72: ccb_scene_path + "uiEffect72.ccbi",
     uiEffect73: ccb_scene_path + "uiEffect73.ccbi",
     uiEffect74: ccb_scene_path + "uiEffect74.ccbi",
+    uiEffect75: ccb_scene_path + "uiEffect75.ccbi",
+    uiEffect76: ccb_scene_path + "uiEffect76.ccbi",
+    uiEffect77: ccb_scene_path + "uiEffect77.ccbi",
+    uiEffect78: ccb_scene_path + "uiEffect78.ccbi",
+    uiEffect79: ccb_scene_path + "uiEffect79.ccbi",
+    uiEffect80: ccb_scene_path + "uiEffect80.ccbi",
+    uiEffect81: ccb_scene_path + "uiEffect81.ccbi",
+    uiEffect82: ccb_scene_path + "uiEffect82.ccbi",
+    uiEffect83: ccb_scene_path + "uiEffect83.ccbi",
+    uiEffect84: ccb_scene_path + "uiEffect84.ccbi",
+    uiEffect85: ccb_scene_path + "uiEffect85.ccbi",
     
 
     //开场动画

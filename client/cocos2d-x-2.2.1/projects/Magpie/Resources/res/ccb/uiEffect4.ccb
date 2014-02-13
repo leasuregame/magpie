@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -266,7 +266,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>200</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -576,8 +576,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -590,7 +590,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>60</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -619,7 +619,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -878,8 +878,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -892,7 +892,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-60</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -921,7 +921,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1704,8 +1704,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>10</real>
-									<real>10</real>
+									<real>3.5</real>
+									<real>3.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1718,7 +1718,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2184,8 +2184,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>13</real>
-									<real>13</real>
+									<real>3.5</real>
+									<real>3.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2198,7 +2198,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2388,7 +2388,7 @@
 				<array>
 					<dict>
 						<key>baseValue</key>
-						<integer>1</integer>
+						<false/>
 						<key>name</key>
 						<string>visible</string>
 						<key>type</key>
@@ -2751,7 +2751,7 @@
 				<array>
 					<dict>
 						<key>baseValue</key>
-						<integer>1</integer>
+						<false/>
 						<key>name</key>
 						<string>visible</string>
 						<key>type</key>

@@ -449,27 +449,29 @@ var CardTrainLabel = cc.Layer.extend({
         cc.log("CardTrainLabel _onClickExtract");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//
-//        if (this._leadCard.getElixir() == 0) {
-//            TipLayer.tip("该卡没有可提取的仙丹");
-//            return;
-//        }
-//
-//        if (gameData.player.get("gold") < 200) {
-//            TipLayer.tip("魔石不足");
-//            return;
-//        }
-//
-//        var that = this;
-//
-//        this._leadCard.extract(function () {
-//            that.update();
-//        }, EXTRACT_ELIXIR);
+
+        if (this._leadCard.getElixir() == 0) {
+            TipLayer.tip("该卡没有可提取的仙丹");
+            return;
+        }
+
+        if (gameData.player.get("gold") < 200) {
+            TipLayer.tip("魔石不足");
+            return;
+        }
+
+        var that = this;
+
+        var cb = function() {
+            that._leadCard.extract(function () {
+                that.update();
+            }, EXTRACT_ELIXIR);
+        };
 
         ExtractTipLabel.pop({
-            // cb:cb,
+            cb:cb,
             type: EXTRACT_ELIXIR,
-            num: 10000
+            num: this._leadCard.getElixir()
         });
     },
 

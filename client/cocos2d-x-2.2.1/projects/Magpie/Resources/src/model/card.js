@@ -409,11 +409,10 @@ var Card = Entity.extend({
             var skillUpgradeTable = outputTables.skill_upgrade.rows;
             var totalSKillPoint = 0;
             for (var i = 1; i <= this._skillLv; i++) {
-                totalSKillPoint += skillUpgradeTable[i];
+                totalSKillPoint += skillUpgradeTable[i]["star" + this._star];
             }
             return totalSKillPoint - this._skillPoint;
         }
-0
         return 0;
     },
 
@@ -452,6 +451,7 @@ var Card = Entity.extend({
                 });
 
                 gameData.player.add("skillPoint", -msg.skillPoint);
+                that.add("skillPoint", msg.skillPoint);
 
                 cb();
 
@@ -642,6 +642,23 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
                 gameData.player.add("gold", -200);
+
+                that.update(msg.card);
+
+                if (msg.elixir) {
+                    var oldElixir = gameData.player.get("elixir");
+                    gameData.player.set("elixir", msg.elixir);
+                    lz.tipReward({
+                        "elixir": msg.elixir - oldElixir
+                    });
+
+                } else if (msg.skillPoint) {
+                    var oldSkillPoint = gameData.player.get("skillPoint");
+                    gameData.player.set("skillPoint", msg.skillPoint);
+                    lz.tipReward({
+                        "skillPoint": msg.skillPoint - oldSkillPoint
+                    });
+                }
 
                 cb();
 

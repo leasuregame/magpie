@@ -381,27 +381,27 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-//        if (this._leadCard.get("skillPoint") == 0) {
-//            TipLayer.tip("该卡没有可提取的技能点");
-//            return;
-//        }
-//
-//        if (gameData.player.get("gold") < 200) {
-//            TipLayer.tip("魔石不足");
-//            return;
-//        }
-//
-//        var that = this;
-//        var cb = function() {
-//            this._leadCard.extract(function () {
-//                that.update();
-//            }, EXTRACT_SKILL_POINT);
-//        };
+        if (this._leadCard.get("skillPoint") == 0) {
+            TipLayer.tip("该卡没有可提取的技能点");
+            return;
+        }
+
+        if (gameData.player.get("gold") < 200) {
+            TipLayer.tip("魔石不足");
+            return;
+        }
+
+        var that = this;
+        var cb = function() {
+            that._leadCard.extract(function () {
+                that.update();
+            }, EXTRACT_SKILL_POINT);
+        };
 
         ExtractTipLabel.pop({
-            // cb:cb,
+            cb:cb,
             type: EXTRACT_SKILL_POINT,
-            num: 10000
+            num: this._leadCard.get("skillPoint")
         });
 
     },

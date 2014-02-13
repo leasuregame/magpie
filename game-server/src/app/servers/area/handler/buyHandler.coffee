@@ -16,8 +16,8 @@ Handler::buyProduct = (msg, session, next)->
   times = if msg.times? then msg.times else 1
 
   product = table.getTableItem('product',productId)
-  if(products[product.method])
-    products[product.method](playerId,product,times,next)
+  if product and products[product.method]
+    products[product.method](playerId, product,times, next)
   else
     next null, {
       code: 501,
@@ -39,19 +39,19 @@ products =
            playerManager.getPlayerInfo {pid:playerId}, cb
          (res, cb) ->
 
-           player = res
-           if player.gold < gold
-             cb {code: 501, msg: "魔石不足"}
+          player = res
+          if player.gold < gold
+            cb {code: 501, msg: "魔石不足"}
 
-           else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
-             cb {code: 501, msg: "超过仙币上限"}
+          else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
+            cb {code: 501, msg: "超过仙币上限"}
 
-           else
-             if player.money + money > RESOURE_LIMIT.money
-               money = RESOURE_LIMIT.money - player.money
-             player.increase 'money', money
-             player.decrease 'gold', gold
-             cb()
+          else
+            if player.money + money > RESOURE_LIMIT.money
+              money = RESOURE_LIMIT.money - player.money
+            player.increase 'money', money
+            player.decrease 'gold', gold
+            cb()
 
       ],(err) ->
         if err
@@ -72,8 +72,6 @@ products =
     player = null
     powerValue = times * product.obtain
 
-    gold = times * product.consume
-
     async.waterfall [
       (cb) ->
         playerManager.getPlayerInfo {pid:playerId}, cb
@@ -82,19 +80,30 @@ products =
         player = res
 
         if player.dailyGift.powerBuyCount <= 0
-          cb {code: 501, msg: "体力购买次数已用完，VIP可购买更多"}
+          return cb {code: 501, msg: "体力购买次数已用完，VIP可购买更多"}
 
-        else if player.dailyGift.powerBuyCount < times
-          cb {code: 501, msg: "所剩购买次数不足"}
+        if player.dailyGift.powerBuyCount < times
+          return cb {code: 501, msg: "所剩购买次数不足"}
 
-        else if player.gold < gold
-          cb {code: 501, msg: "魔石不足"}
+        POWER_BUY_COUNT = table.getTableItem('daily_gift', 1).power_buy_count
+        vipPrivilege = table.getTableItem('vip_privilege', player.vip);
+        totalCount = POWER_BUY_COUNT + vipPrivilege.buy_power_count
+        curCount = totalCount - player.dailyGift.powerBuyCount + 1
 
-        else
-          player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - times
-          player.addPower powerValue
-          player.decrease 'gold', gold
-          cb()
+        curCounts = [curCount..curCount+times-1]
+        totalGold = 0
+        curCounts.forEach (c) -> 
+          g = product.consume + product.consume_inc * (c-1)
+          g = _.min([g, product.consume_max])
+          totalGold += g
+
+        if player.gold < totalGold
+          return cb {code: 501, msg: "魔石不足"}
+        
+        player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - times
+        player.addPower powerValue
+        player.decrease 'gold', totalGold
+        cb()
 
     ],(err) ->
       if err

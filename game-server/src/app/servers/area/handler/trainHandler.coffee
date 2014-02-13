@@ -66,14 +66,17 @@ Handler::extract = (msg, session, next) ->
         return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})
 
     if type is EXTRACT_TYPE_SKILLPOINT
-      if card.skillPoint is 0
+      extVal = card.skillPoint
+      if extVal is 0
         return next(null, {code: 501, msg: '该卡没有可提取的技能点'})
       else
         card.set('skillPoint', 0)
         card.resetSkillLv()
-        player.increase('skillPoint', card.skillPoint)
+        player.increase('skillPoint', extVal)
         player.decrease('gold', consume)
         return next(null, {code: 200, msg: {card: card.toJson(), skillPoint: player.skillPoint}})
+
+    next(null, {code: 501, msg: '提取不成功'})
 
 ###
 强化
@@ -423,10 +426,11 @@ Handler::starUpgrade = (msg, session, next) ->
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
 
-      if card_count > starUpgradeConfig.max_num
-        return cb({code: 501, msg: "最多消耗#{starUpgradeConfig.max_num}张卡牌"})
-
       rate = player.initRate['star'+card.star] or 0
+      max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
+      if card_count > max_num
+        return cb({code: 501, msg: "最多消耗#{max_num}张卡牌"})
+
       addRate = card_count * starUpgradeConfig.rate_per_card
       totalRate = _.min([addRate + rate, 100])
 
@@ -504,7 +508,7 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson()}})
+    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -630,17 +634,17 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '找不到卡牌'})
 
     if card.star < 3
-      return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
+      return next(null, {code: 501, msg: '3星以下的卡牌不能使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
     if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
-      return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
+      return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
-      return next(null, {code: 501, msg: "已达当前可吞噬数量上限，请提升角色等级"})
+      return next(null, {code: 501, msg: "已达可吞噬上限，请提升角色等级"})
 
     # can_use_elixir = player.canUseElixir(cardId)
     # if can_use_elixir < elixir

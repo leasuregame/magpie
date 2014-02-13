@@ -231,7 +231,7 @@ var PlayerDao = (function(_super) {
             function(cb) {
                 _this.fetchOne({
                     where: {id: playerId},
-                    fields: ['id', 'lineUp', 'spiritor']
+                    fields: ['id', 'lineUp', 'spiritor', 'vip']
                 }, cb);
             },
             function(player, cb) {
@@ -250,6 +250,32 @@ var PlayerDao = (function(_super) {
                     logger.warn('line up cards is empty')
                     cb(null, player, []);
                 }
+            },
+            function(player, cards, cb) {
+                rankDao.fetchOne({
+                    where: {playerId: player.id}
+                }, function(err, r) {
+                    if (err) {
+                        if (err.code == 404) {
+                            player.rankStats = {
+                                avgWinRate: "0.0%",
+                                beChallengeCount: 0,
+                                challengeCount: 0,
+                                historyRanking: 0,
+                                loseCount: 0,
+                                winCount: 0,
+                                winStreakCount: 0,
+                                winningStreak: 0
+                            };
+                            cb(null, player, cards);
+                        } else {
+                            cb(err);    
+                        }                        
+                    } else {
+                        player.rankStats = r.stats();
+                        cb(null, player, cards);
+                    }
+                });
             }
         ], function (err, player, cards) {
             if (err) {
@@ -312,7 +338,7 @@ var orderBy = function(fields, orderby, limit, cb) {
 };
 
 function sort(a, b) {
-    return a - b
+    return a - b;
 };
 
 function getLineUpIds(lineUp){

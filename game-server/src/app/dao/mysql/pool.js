@@ -20,6 +20,9 @@ createMysqlPool = function (app) {
                 database: mysqlConfig.database,
                 insecureAuth: true     
             });
+            client.on('close', function(err) {
+                console.log('[sql connection close]: ', err);
+            })
             client.on('error', function(err) {
                 console.log('[sql connection error]: ', err);
             });

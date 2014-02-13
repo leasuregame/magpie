@@ -67,7 +67,7 @@ var RankDao = (function(_super) {
                     RankDao.create({
                         data: {
                             playerId: pid,
-                            ranking: res[0].next_ranking
+                            ranking: res[0].next_ranking || 1
                         }
                     }, function(err, rank) {
                         if (err) {

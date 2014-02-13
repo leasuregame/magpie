@@ -14,7 +14,6 @@ Handler::createPlayer = (msg, session, next) ->
   name = msg.name
   areaId = session.get('areaId') or msg.areaId
   userId = session.get('userId') or msg.userId
-  uid = session.uid
 
   if EMPTY_SPACE_REG.test(name)
     return next(null, {code: 501, msg: '角色名称不能包含空格'})
@@ -22,7 +21,7 @@ Handler::createPlayer = (msg, session, next) ->
   if not CHINESE_REG.test(name)
     return next(null, {code: 501, msg: '只能输入1-6位汉字、字母或数字'})
 
-  console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
+  #console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
     userId: userId

@@ -254,7 +254,8 @@ var Player = (function(_super) {
         'levelReward',
         'teachingStep',
         'exchangeCards',
-        'activities'
+        'activities',
+        'initRate'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -337,13 +338,20 @@ var Player = (function(_super) {
         firstTime: {
             lowLuckyCard: 1,
             highLuckyCard: 1,
-            highTenLuckCard: 1
+            highTenLuckCard: 1,
+            recharge: 0
         },
         levelReward: [],
         teachingStep: 0,
         exchangeCards: [],
         goldCards: {},
-        activities: {}
+        activities: {},
+        initRate: {
+            star1: 0,
+            star2: 0,
+            star3: 0,
+            star4: 0
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -966,9 +974,14 @@ var Player = (function(_super) {
                 flag: 0
             };
         }
-
+        if(utility.hasMark(si[key].mark, new Date().getDate())) {
+            return false;
+        }
+            
+        
         si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
+        return true;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
@@ -1110,12 +1123,16 @@ var Player = (function(_super) {
     Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
-            if (ft[key]) {
+            if (ft[key] == 1) {
                 return true;
             }
         }
 
         if (typeof this.firstTime.highTenLuckCard == 'undefined') {
+            return true;
+        }
+
+        if (typeof this.firstTime.recharge == 'undefined' || this.firstTime.recharge < 128) {
             return true;
         }
         return false;
@@ -1125,7 +1142,8 @@ var Player = (function(_super) {
         return {
             lowLuckyCard: this.firstTime.lowLuckyCard,
             highLuckyCard: this.firstTime.highLuckyCard,
-            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard
+            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard,
+            recharge: this.firstTime.recharge ||  0
         };
     };
 
@@ -1167,6 +1185,44 @@ var Player = (function(_super) {
             gc[g] = this.goldCards[g].toJson();
         }
         return gc;
+    };
+
+    Player.prototype.setInitRate = function(star, val) {
+        if (star < 1 || star > 4) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        ir['star'+star] = val;
+        this.initRate = ir;
+    };
+
+    Player.prototype.incInitRate = function(star, val) {
+        if (star < 1 || star > 4) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        if (typeof ir['star'+star] == 'undefined') {
+            ir['star'+star] = 0;
+        }
+        ir['star'+star] += val;
+        this.initRate = ir;
+    };
+
+    Player.prototype.isRechargeFirstTime = function(productId) {
+        if (typeof productId != 'number' || productId > 7) {
+            return false;
+        }
+        return !utility.hasMark(this.firstTime.recharge || 0, productId);
+    };
+
+    Player.prototype.setRechargeFirstTime = function(productId) {
+        if (typeof productId == 'number') {
+            var ft = utility.deepCopy(this.firstTime);
+            ft.recharge = utility.mark(ft.recharge || 0, productId);
+            this.firstTime = ft;
+        }
     };
 
     Player.prototype.toJson = function() {

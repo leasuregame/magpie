@@ -33,7 +33,8 @@ var ExtractTipLabel = LazyLayer.extend({
         msgBgIcon.setScaleX(0.9);
         node.addChild(msgBgIcon);
 
-        var tipLabel1 = cc.LabelTTF.create("是否确定花费200", "STHeitiTC-Medium", 25);
+        var needGold = outputTables.values.rows["extractConsumeGold"].value;
+        var tipLabel1 = cc.LabelTTF.create("是否确定花费" + needGold, "STHeitiTC-Medium", 25);
         tipLabel1.setPosition(cc.p(-80, 50));
         node.addChild(tipLabel1);
 

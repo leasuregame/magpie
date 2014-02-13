@@ -505,7 +505,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if (!cardList[key].canUpgradeSkill()) {
+            if(cardList[key].get("star") < 2) {
                 this._excludeList.push(key);
             }
         }

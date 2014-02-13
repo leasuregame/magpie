@@ -293,7 +293,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
 
-            this._upgradeItem.setEnabled(true);
+            this._upgradeItem.setEnabled(this._leadCard.canUpgradeSkill());
             this._extractItem.setEnabled(true);
         }
     },
@@ -386,7 +386,8 @@ var SkillUpgradeLabel = cc.Node.extend({
             return;
         }
 
-        if (gameData.player.get("gold") < 200) {
+        var needGold = outputTables.values.rows["extractConsumeGold"].value;
+        if (gameData.player.get("gold") < needGold) {
             TipLayer.tip("魔石不足");
             return;
         }

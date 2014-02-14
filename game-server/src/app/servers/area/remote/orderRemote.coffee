@@ -28,6 +28,7 @@ Remote::add = (args, callback) ->
 
   player = null
   product = null
+  isFirstRechage = false
   async.waterfall [
     (cb) =>
       @app.get('playerManager').getPlayerInfo pid: playerId, cb
@@ -79,6 +80,9 @@ Remote::add = (args, callback) ->
 
       console.log times, player.firstTime, productId, product
 
+      if player.cash is 0
+        isFirstRechage = true
+
       player.increase('cash', product.cash)
       player.increase('gold', (product.cash * 10 + product.gold) * times)
       player.save()
@@ -93,7 +97,7 @@ Remote::add = (args, callback) ->
     if err
       return callback(null, err)
 
-    successMsg(@app, player)
+    successMsg(@app, player, isFirstRechage)
     callback(null, {ok: true})
 
 addGoldCard = (app, tradeNo, player, product, cb) ->
@@ -198,7 +202,7 @@ sendNewYearMsg = (app, player, flag, recharge) ->
     if err
       logger.error('faild to send message to playerId ', playerId)
 
-successMsg = (app, player) ->
+successMsg = (app, player, isFirstRechage) ->
   app.get('messageService').pushByPid player.id, {
     route: 'onVerifyResult',
     msg: {
@@ -206,7 +210,8 @@ successMsg = (app, player) ->
       vip: player.vip,
       cash: player.cash,
       goldCards: player.getGoldCard(),
-      recharge: player.firstTime.recharge or 0
+      recharge: player.firstTime.recharge or 0,
+      firstRechargeBox: 1 if isFirstRechage
     }
   }, (err, res) ->
     if err

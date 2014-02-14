@@ -25,8 +25,8 @@ var TreasureHunt = Entity.extend({
     update: function (data) {
         cc.log("TreasureHunt update");
 
-        this._count = data.count;
-        this._freeCount = data.freeCount;
+        this.set("count", data.count);
+        this.set("freeCount", data.freeCount);
     },
 
     canTreasureHunt: function () {

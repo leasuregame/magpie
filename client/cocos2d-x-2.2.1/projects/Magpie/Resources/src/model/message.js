@@ -32,13 +32,6 @@ var Message = Entity.extend({
     init: function () {
         cc.log("Message init");
 
-        lz.server.on("onSystemMessage", function (data) {
-            cc.log("***** on system message:");
-            cc.log(data);
-
-            MainScene.getInstance().changeMessage(data.msg);
-        });
-
         this.sync();
 
         return true;
@@ -71,14 +64,7 @@ var Message = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
-
-                    lz.server.on("onMessage", function (data) {
-                        cc.log("***** on message:");
-                        cc.log(data);
-
-                        gameData.message.push(data.msg);
-
-                    });
+                    that.setListener();
 
                     gameMark.updateMessageMark(false);
 
@@ -91,6 +77,26 @@ var Message = Entity.extend({
             },
             true
         );
+    },
+
+    setListener: function () {
+        cc.log("Message setListener");
+
+        var that = this;
+
+        lz.server.on("onSystemMessage", function (data) {
+            cc.log("***** on system message:");
+            cc.log(data);
+
+            MainScene.getInstance().changeMessage(data.msg);
+        });
+
+        lz.server.on("onMessage", function (data) {
+            cc.log("***** on message:");
+            cc.log(data);
+
+            that.push(data.msg);
+        });
     },
 
     push: function (msg) {

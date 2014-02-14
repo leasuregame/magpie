@@ -253,28 +253,22 @@ var MainLayer = cc.Layer.extend({
         this.addChild(this._spiritLayerItem);
 
         var isVisible = false;
-        var that = this;
-        this.scheduleOnce(function () {
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
 
-            var spirit = gameData.spirit;
-            var spiritPool = gameData.spiritPool;
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
 
-            if (spirit.canUpgrade()) {
-                isVisible = true;
-            } else if (spiritPool.get("collectCount") > 0) {
-                isVisible = true;
-            }
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
-            that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
+        var ability = gameData.player.get("ability");
+        var ranking = gameData.tournament.get("ranking");
 
-            var ability = gameData.player.get("ability");
-            var ranking = gameData.tournament.get("ranking");
-
-            abilityLabel.setString(ability);
-            rankingLabel.setString(ranking);
-
-        }, 0.1);
-
+        abilityLabel.setString(ability);
+        rankingLabel.setString(ranking);
 
         return true;
     },

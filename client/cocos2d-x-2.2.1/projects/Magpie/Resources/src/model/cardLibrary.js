@@ -100,14 +100,7 @@ var CardLibrary = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg.cardBook);
-
-                    lz.server.on("onLightUpCard", function (data) {
-                        cc.log("***** on message:");
-                        cc.log(data);
-
-                        that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
-                        gameMark.updateCardLibraryMark(true);
-                    });
+                    that.setListener();
 
                     gameMark.updateCardLibraryMark(false);
 
@@ -120,6 +113,20 @@ var CardLibrary = Entity.extend({
             },
             true
         );
+    },
+
+    setListener: function () {
+        cc.log("CardLibrary setListener");
+
+        var that = this;
+
+        lz.server.on("onLightUpCard", function (data) {
+            cc.log("***** on message:");
+            cc.log(data);
+
+            that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
+            gameMark.updateCardLibraryMark(true);
+        });
     },
 
     _sort1: function (a, b) {

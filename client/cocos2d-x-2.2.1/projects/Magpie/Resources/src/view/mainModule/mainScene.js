@@ -59,8 +59,6 @@ var MainScene = cc.Scene.extend({
         } else {
             this.switchLayer(MainLayer);
         }
-
-        this.retain();
     },
 
     changeMessage: function (msg) {
@@ -77,7 +75,6 @@ var MainScene = cc.Scene.extend({
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
-
     },
 
     updateGuide: function () {
@@ -113,6 +110,8 @@ var MainScene = cc.Scene.extend({
         this.addChild(this._nowLayer);
 
         this._mainMenuLayer.update();
+
+        this.updateMark();
     }
 });
 
@@ -124,9 +123,11 @@ var MainScene = cc.Scene.extend({
     var _mainScene = null;
 
     MainScene.getInstance = function () {
+        cc.log("MainScene getInstance");
+
         if (_mainScene == null) {
             _mainScene = new MainScene();
-            _mainScene.init();
+            _mainScene.retain();
         }
 
         return _mainScene;

@@ -37,7 +37,7 @@ var gameData = {
     exchange: null,
     activity: null,
 
-    gameInit: function () {
+    gameStart: function (player) {
         cc.log("gameData init");
 
         this.clock = Clock.create();
@@ -62,10 +62,20 @@ var gameData = {
         this.speak = Speak.create();
         this.exchange = Exchange.create();
         this.activity = Activity.create();
+
+        gameMark.init();
+
+        this.player.init(player, function () {
+            cc.log("replace to MainScene");
+
+            var mainScene = MainScene.getInstance();
+            mainScene.init();
+            cc.Director.getInstance().replaceScene(mainScene);
+        });
     },
 
     gameEnd: function () {
-        if(this.clock) this.clock.unscheduleAllCallbacks();
-        if(this.player) this.player.unscheduleAllCallbacks();
+        if (this.clock) this.clock.unscheduleAllCallbacks();
+        if (this.player) this.player.unscheduleAllCallbacks();
     }
 };

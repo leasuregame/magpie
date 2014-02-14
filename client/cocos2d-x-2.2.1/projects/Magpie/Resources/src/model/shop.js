@@ -35,6 +35,21 @@ var Shop = Entity.extend({
         this.update(data);
         this.updateMaxCount();
 
+        this.setListener();
+    },
+
+    update: function (data) {
+        cc.log("Shop update");
+
+        this.set("useVipBoxList", data.useVipBoxList);
+        this.set("powerBuyCount", data.powerBuyCount);
+        this.set("challengeBuyCount", data.challengeBuyCount);
+        this.set("expCardBuyCount", data.expCardBuyCount);
+    },
+
+    setListener: function () {
+        cc.log("Shop setListener");
+
         lz.server.on("onVerifyResult", function (data) {
             cc.log("***** on verify result:");
             cc.log(data);
@@ -85,15 +100,6 @@ var Shop = Entity.extend({
 
             }
         });
-    },
-
-    update: function (data) {
-        cc.log("Shop update");
-
-        this.set("useVipBoxList", data.useVipBoxList);
-        this.set("powerBuyCount", data.powerBuyCount);
-        this.set("challengeBuyCount", data.challengeBuyCount);
-        this.set("expCardBuyCount", data.expCardBuyCount);
     },
 
     updateMaxCount: function () {

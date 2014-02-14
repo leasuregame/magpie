@@ -12,6 +12,8 @@
  * */
 
 
+var UPDATE_RANK_TIME_INTERVAL = 300;
+
 var Rank = Entity.extend({
     _abilityRankList: [],
     _lvRankList: [],
@@ -20,7 +22,11 @@ var Rank = Entity.extend({
     init: function () {
         cc.log("Rank init");
 
+        this.unscheduleAllCallbacks();
+
         this.sync();
+
+        this.schedule(this.sync, UPDATE_RANK_TIME_INTERVAL);
 
         return true;
     },

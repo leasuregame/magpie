@@ -44,7 +44,7 @@ var Player = Entity.extend({
     _cash: 0,           // 付费
     _rank: 0,
     _goldCards: {},     //周卡月卡
-    _recharge: 0,     //充值记录标记
+    _recharge: 0,       //充值记录标记
     _evolutionRate: {}, //星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
@@ -59,23 +59,19 @@ var Player = Entity.extend({
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
-    init: function (data) {
+    init: function (data, cb) {
         cc.log("Player init");
 
-        MAX_LINE_UP_CARD = 3;
+        this.unscheduleAllCallbacks();
 
-        cc.log("teachingStep = " + data.teachingStep);
-        if (data.teachingStep != null) {
-            this.set("noviceTeachStep", data.teachingStep);
-        }
+        MAX_LINE_UP_CARD = 3;
+        this._evolutionRate = {};
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
         this.on("vipChange", this._vipChangeEvent);
         this.on("powerChange", this._powerChangeEven);
-
-        this._evolutionRate = {};
 
         this._load();
         this.update(data);
@@ -93,6 +89,12 @@ var Player = Entity.extend({
 
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
 
+        this.setListener();
+
+        if (cb) {
+            cb();
+        }
+
         return true;
     },
 
@@ -104,6 +106,62 @@ var Player = Entity.extend({
         this._maxMoney = resourceLimitTable.money;
         this._skillPoint = resourceLimitTable.skillPoint;
         this._maxEnergy = resourceLimitTable.energy;
+    },
+
+    update: function (data) {
+        cc.log("Player update");
+
+        this.set("noviceTeachStep", data.teachingStep);
+        this.set("id", data.id);
+        this.set("uid", data.uniqueId);
+        this.set("createTime", data.createTime);
+        this.set("userId", data.userId);
+        this.set("areaId", data.areaId);
+        this.set("name", data.name);
+        this.set("exp", data.exp);
+        this.set("gold", data.gold);
+        this.set("money", data.money);
+        this.set("elixir", data.elixir);
+        this.set("fragment", data.fragments);
+        this.set("skillPoint", data.skillPoint);
+        this.set("cash", data.cash);
+        this.set("power", data.power.value);
+        this.set("powerTimestamp", data.power.time);
+        this.set("goldCards", data.goldCards);
+        this.set("vip", data.vip);
+
+        if (data.firstTime) {
+            this.set("recharge", data.firstTime.recharge);
+        } else {
+            this.set("recharge", 127);
+        }
+
+        // 需要调用gameMark
+        this.set("lv", data.lv);
+        this.set("energy", data.energy);
+
+        gameData.clock.init(data.serverTime);
+        gameData.cardList.init(data.cards, data.cardsCount);
+        gameData.lineUp.init(data.lineUp);
+        gameData.task.init(data.task);
+        gameData.pass.init(data.pass);
+        gameData.spirit.init(data.spiritor);
+        gameData.spiritPool.init(data.spiritPool);
+        gameData.tournament.init(data.rank);
+        gameData.treasureHunt.init({
+            count: data.dailyGift.lotteryCount,
+            freeCount: data.dailyGift.lotteryFreeCount
+        });
+        gameData.shop.init({
+            useVipBoxList: data.vipBox,
+            powerBuyCount: data.dailyGift.powerBuyCount,
+            challengeBuyCount: data.dailyGift.challengeBuyCount,
+            expCardBuyCount: data.dailyGift.expCardCount
+        });
+        gameData.lottery.init(data.firstTime);
+        gameData.exchange.init(data.exchangeCards);
+
+        this.set("ability", this.getAbility());
     },
 
     sync: function () {
@@ -135,57 +193,31 @@ var Player = Entity.extend({
         );
     },
 
-    update: function (data) {
-        cc.log("Player update");
+    setListener: function () {
+        cc.log("Player setListener");
 
-        this.set("id", data.id);
-        this.set("uid", data.uniqueId);
-        this.set("createTime", data.createTime);
-        this.set("userId", data.userId);
-        this.set("areaId", data.areaId);
-        this.set("vip", data.vip);
-        this.set("name", data.name);
-        this.set("lv", data.lv);
-        this.set("exp", data.exp);
-        this.set("gold", data.gold);
-        this.set("money", data.money);
-        this.set("elixir", data.elixir);
-        this.set("fragment", data.fragments);
-        this.set("skillPoint", data.skillPoint);
-        this.set("energy", data.energy);
-        this.set("cash", data.cash);
-        this.set("power", data.power.value);
-        this.set("powerTimestamp", data.power.time);
-        this.set("goldCards", data.goldCards);
+        lz.server.on("onResetData", function (data) {
+            cc.log("***** on reset data:");
+            cc.log(data);
 
-        if (data.firstTime) {
-            this.set("recharge", data.firstTime.recharge);
-        } else {
-            this.set("recharge", 127);
-        }
+            var msg = data.msg;
 
-        gameData.clock.init(data.serverTime);
-        gameData.cardList.init(data.cards, data.cardsCount);
-        gameData.lineUp.init(data.lineUp);
-        gameData.task.init(data.task);
-        gameData.pass.init(data.pass);
-        gameData.spirit.init(data.spiritor);
-        gameData.spiritPool.init(data.spiritPool);
-        gameData.tournament.init(data.rank);
-        gameData.treasureHunt.init({
-            count: data.dailyGift.lotteryCount,
-            freeCount: data.dailyGift.lotteryFreeCount
+            gameData.task.update(msg.task);
+            gameData.pass.update(msg.pass);
+            gameData.spiritPool.update(msg.spiritPool);
+            gameData.friend.update({
+                "maxFriendCount": msg.friendsCount
+            });
+            gameData.treasureHunt.update({
+                count: msg.dailyGift.lotteryCount,
+                freeCount: msg.dailyGift.lotteryFreeCount
+            });
+            gameData.shop.update({
+                powerBuyCount: msg.dailyGift.powerBuyCount,
+                challengeBuyCount: msg.dailyGift.challengeBuyCount,
+                expCardBuyCount: msg.dailyGift.expCardCount
+            });
         });
-        gameData.shop.init({
-            useVipBoxList: data.vipBox,
-            powerBuyCount: data.dailyGift.powerBuyCount,
-            challengeBuyCount: data.dailyGift.challengeBuyCount,
-            expCardBuyCount: data.dailyGift.expCardCount
-        });
-        gameData.lottery.init(data.firstTime);
-        gameData.exchange.init(data.exchangeCards);
-
-        this.set("ability", this.getAbility());
     },
 
     getAbility: function () {
@@ -302,12 +334,14 @@ var Player = Entity.extend({
     _powerChangeEven: function () {
         cc.log("Player _powerChangeEven");
 
-        lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
+        if (lz.NotificationHelp) {
+            lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
 
-        if (this._power < this._maxPower) {
-            var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
+            if (this._power < this._maxPower) {
+                var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
 
-            lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+                lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+            }
         }
     },
 

@@ -13,7 +13,7 @@
 
 
 var Event = cc.Class.extend({
-    _callback: [],
+    _callback: {},
 
     on: function (event, fn) {
         this._callbacks = this._callbacks || {};

@@ -36,6 +36,7 @@ var gameData = {
     speak: null,
     exchange: null,
     activity: null,
+    greeting: null,
 
     gameStart: function (player) {
         cc.log("gameData init");
@@ -62,6 +63,7 @@ var gameData = {
         this.speak = Speak.create();
         this.exchange = Exchange.create();
         this.activity = Activity.create();
+        this.greeting = Greeting.create();
 
         gameMark.init();
 

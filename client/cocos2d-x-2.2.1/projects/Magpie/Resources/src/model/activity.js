@@ -69,6 +69,7 @@ var Activity = Entity.extend({
             "area.playerHandler.getActivityInfo",
             {},
             function (data) {
+                cc.log("pomelo websocket callback data:");
                 cc.log(data);
                 if (data.code == 200) {
                     cc.log("sync success");

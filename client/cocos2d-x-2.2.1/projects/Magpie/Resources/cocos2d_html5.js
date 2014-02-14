@@ -87,6 +87,7 @@
             'src/model/achievement.js',
             'src/model/exchange.js',
             'src/model/activity.js',
+            'src/model/greeting.js',
 
             'TB/payment.js',
 
@@ -164,6 +165,7 @@
             'src/view/mainModule/giftBagLayer.js',
             'src/view/mainModule/goldLayer.js',
             'src/view/mainModule/goPaymentLayer.js',
+            'src/view/mainModule/greetingLabel.js',
             'src/view/mainModule/level9BoxLayer.js',
             'src/view/mainModule/lineUpDetail.js',
             'src/view/mainModule/lineUpDetailsLayer.js',
@@ -189,6 +191,7 @@
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
+            'src/view/mainModule/speakerLayer.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',
             'src/view/mainModule/spiritPoolLayer.js',

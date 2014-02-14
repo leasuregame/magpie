@@ -270,6 +270,8 @@ var MainLayer = cc.Layer.extend({
         abilityLabel.setString(ability);
         rankingLabel.setString(ranking);
 
+        this.addChild(GreetingLabel.getInstance(), 5);
+
         return true;
     },
 

@@ -65,6 +65,7 @@
                 <file name="src/model/achievement.js"/>
                 <file name="src/model/exchange.js"/>
                 <file name="src/model/activity.js"/>
+                <file name="src/model/greeting.js"/>
 
                 <file name="TB/payment.js"/>
 
@@ -167,6 +168,7 @@
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>
+                <file name="src/view/mainModule/speakerLayer.js"/>
                 <file name="src/view/mainModule/spiritDetails.js"/>
                 <file name="src/view/mainModule/spiritNode.js"/>
                 <file name="src/view/mainModule/spiritPoolLayer.js"/>

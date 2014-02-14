@@ -37,18 +37,19 @@ module.exports =
 
     isUpgrade = false
     level9Box = null
-    rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
+    rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0, power: 0
     while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.decrease 'exp', upgradeInfo.exp
-      player.addPower upgradeInfo.power? or 0
+      
       updateFriendCount(player)
 
       rewards.money += upgradeInfo.money
       rewards.energy += upgradeInfo.energy
       rewards.skillPoint += upgradeInfo.skillPoint
       rewards.elixir += upgradeInfo.elixir
+      rewards.power += upgradeInfo.power
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
       if player.lv is 9
@@ -67,6 +68,7 @@ module.exports =
       player.increase('energy', rewards.energy)
       player.increase('skillPoint', rewards.skillPoint)
       player.increase('elixir', rewards.elixir)
+      player.addPower rewards.power
 
     if player.lv is MAX_PLAYER_LV
       player.exp = 0

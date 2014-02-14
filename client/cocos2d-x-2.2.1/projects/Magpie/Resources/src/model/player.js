@@ -21,6 +21,8 @@ var LOTTERY_ENOUGH = 200;
 var MONTH_CARD = 0;
 var WEEK_CARD = 1;
 
+var POWER_NOTIFICATION_KEY = 1;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _uid: "",           // 玩家唯一标识
@@ -42,8 +44,11 @@ var Player = Entity.extend({
     _cash: 0,           // 付费
     _rank: 0,
     _goldCards: {},     //周卡月卡
+    _recharge: 0,       //充值记录标记
+    _evolutionRate: {}, //星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
+    _ability: 0,        // 战斗力
 
     _maxLv: 0,          // 最大等级
     _maxPower: 0,       // 最大体力
@@ -54,23 +59,23 @@ var Player = Entity.extend({
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
-    init: function (data) {
+    init: function (data, cb) {
         cc.log("Player init");
 
-        MAX_LINE_UP_CARD = 3;
+        this.unscheduleAllCallbacks();
 
-        cc.log("teachingStep = " + data.teachingStep);
-        if (data.teachingStep != null) {
-            this.set("noviceTeachStep", data.teachingStep);
-        }
+        MAX_LINE_UP_CARD = 3;
+        this._evolutionRate = {};
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
         this.on("vipChange", this._vipChangeEvent);
+        this.on("powerChange", this._powerChangeEven);
 
         this._load();
         this.update(data);
+        this.sync();
 
         gameData.cardLibrary.init();
         gameData.friend.init();
@@ -81,10 +86,15 @@ var Player = Entity.extend({
         gameData.activity.init();
         gameData.speak.init();
         gameData.payment.init();
-
-        cc.log(this);
+        gameData.greeting.init();
 
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
+
+        this.setListener();
+
+        if (cb) {
+            cb();
+        }
 
         return true;
     },
@@ -102,25 +112,34 @@ var Player = Entity.extend({
     update: function (data) {
         cc.log("Player update");
 
+        this.set("noviceTeachStep", data.teachingStep);
         this.set("id", data.id);
         this.set("uid", data.uniqueId);
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
-        this.set("vip", data.vip);
         this.set("name", data.name);
-        this.set("lv", data.lv);
         this.set("exp", data.exp);
         this.set("gold", data.gold);
         this.set("money", data.money);
         this.set("elixir", data.elixir);
         this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
-        this.set("energy", data.energy);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
         this.set("goldCards", data.goldCards);
+        this.set("vip", data.vip);
+
+        if (data.firstTime) {
+            this.set("recharge", data.firstTime.recharge);
+        } else {
+            this.set("recharge", 127);
+        }
+
+        // 需要调用gameMark
+        this.set("lv", data.lv);
+        this.set("energy", data.energy);
 
         gameData.clock.init(data.serverTime);
         gameData.cardList.init(data.cards, data.cardsCount);
@@ -141,8 +160,92 @@ var Player = Entity.extend({
             expCardBuyCount: data.dailyGift.expCardCount
         });
         gameData.lottery.init(data.firstTime);
-        cc.log(data.exchangeCards);
-        gameData.exchange.init(data.exchangeCards)
+        gameData.exchange.init(data.exchangeCards);
+
+        this.set("ability", this.getAbility());
+    },
+
+    sync: function () {
+        cc.log("Player sync");
+
+        var that = this;
+        lz.server.request(
+            "area.trainHandler.starUpgradeInitRate",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("Player sync success");
+
+                    var msg = data.msg;
+
+                    that.set("evolutionRate", msg.initRate);
+
+                    lz.dc.event("event_order_list");
+                } else {
+                    cc.log("Player sync fail");
+
+                    that.sync();
+                }
+            },
+            true
+        );
+    },
+
+    setListener: function () {
+        cc.log("Player setListener");
+
+        lz.server.on("onResetData", function (data) {
+            cc.log("***** on reset data:");
+            cc.log(data);
+
+            var msg = data.msg;
+
+            gameData.task.update(msg.task);
+            gameData.pass.update(msg.pass);
+            gameData.spiritPool.update(msg.spiritPool);
+            gameData.friend.update({
+                "maxFriendCount": msg.friendsCount
+            });
+            gameData.treasureHunt.update({
+                count: msg.dailyGift.lotteryCount,
+                freeCount: msg.dailyGift.lotteryFreeCount
+            });
+            gameData.shop.update({
+                powerBuyCount: msg.dailyGift.powerBuyCount,
+                challengeBuyCount: msg.dailyGift.challengeBuyCount,
+                expCardBuyCount: msg.dailyGift.expCardCount
+            });
+        });
+    },
+
+    getAbility: function () {
+        var lineUpCardList = gameData.lineUp.getLineUpCardList();
+        var len = lineUpCardList.length;
+        var ability = gameData.spirit.get("ability");
+
+        for (var i = 0; i < len; ++i) {
+            ability += lineUpCardList[i].get("ability");
+        }
+
+        return ability;
+    },
+
+    checkAbility: function () {
+        cc.log("Player checkAbility");
+
+        var ability = this.getAbility();
+
+        if (ability != this._ability) {
+            TipLayer.tipAbility(ability > this._ability, ability);
+        }
+
+        cc.log(this._ability);
+        cc.log(ability);
+
+        this._ability = ability;
     },
 
     updatePower: function () {
@@ -153,17 +256,20 @@ var Player = Entity.extend({
         var serverTime = gameData.clock.get("time");
 
         var interval = serverTime - this._powerTimestamp;
+        var power = this._power;
 
         if (interval > 0) {
             var times = Math.floor(interval / UPDATE_POWER_TIME);
 
-            this._power += UPDATE_POWER_VALUE * times;
+            power += UPDATE_POWER_VALUE * times;
             this._powerTimestamp += times * UPDATE_POWER_TIME;
 
-            if (this._power > this._maxPower) {
-                this._power = this._maxPower;
+            if (power > this._maxPower) {
+                power = this._maxPower;
             }
         }
+
+        this.set("power", power);
     },
 
     correctionPower: function (power, powerTimestamp) {
@@ -212,6 +318,7 @@ var Player = Entity.extend({
 
     _energyChangeEvent: function () {
         cc.log("Player _energyChangeEvent");
+
         if (this._energy >= LOTTERY_ENOUGH) {
             gameMark.updateLotteryMark(true);
         } else {
@@ -221,19 +328,22 @@ var Player = Entity.extend({
 
     _vipChangeEvent: function () {
         cc.log("Player _vipChangeEvent");
+
         gameData.shop.updateMaxCount();
     },
 
-    getAbility: function () {
-        var lineUpCardList = gameData.lineUp.getLineUpCardList();
-        var len = lineUpCardList.length;
-        var ability = gameData.spirit.get("ability");
+    _powerChangeEven: function () {
+        cc.log("Player _powerChangeEven");
 
-        for (var i = 0; i < len; ++i) {
-            ability += lineUpCardList[i].get("ability");
+        if (lz.NotificationHelp) {
+            lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
+
+            if (this._power < this._maxPower) {
+                var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
+
+                lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+            }
         }
-
-        return ability;
     },
 
     sendMessage: function (cb, playerId, msg) {
@@ -442,7 +552,7 @@ var Player = Entity.extend({
         var goldCards = this.get("goldCards");
         if (type == MONTH_CARD) {
             if (goldCards.month) {
-                if(goldCards.month.remainingDays == 0) {
+                if (goldCards.month.remainingDays == 0) {
                     goldCards.month.remainingDays = -1;
                 }
             } else {
@@ -452,7 +562,7 @@ var Player = Entity.extend({
             }
         } else if (type == WEEK_CARD) {
             if (goldCards.week) {
-                if(goldCards.week.remainingDays == 0) {
+                if (goldCards.week.remainingDays == 0) {
                     goldCards.week.remainingDays = -1;
                 }
             } else {
@@ -461,6 +571,24 @@ var Player = Entity.extend({
                 };
             }
         }
+    },
+
+    isFirstPayment: function (id) {
+        cc.log("Player isFirstPayment: " + id);
+
+        var offset = (id - 1) % EACH_NUM_BIT;
+        var mark = this._recharge;
+        return !((mark >> offset & 1) == 1);
+    },
+
+    getEvolutionRate: function (star) {
+        cc.log("Player getEvolutionRate: " + star);
+
+        var rate = this._evolutionRate;
+        if (rate) {
+            return rate["star" + star] || 0;
+        }
+        return 0;
     }
 });
 

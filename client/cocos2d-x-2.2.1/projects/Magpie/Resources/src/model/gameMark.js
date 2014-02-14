@@ -43,7 +43,6 @@ var gameMark = {
         this._newYearReward = false;
         this._treasureHunt = false;
         this._goldCards = false;
-
     },
 
     getActivityMark: function () {

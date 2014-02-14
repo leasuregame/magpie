@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var TYPE_GOLD_REWARD = "goldReward";
 var TYPE_RECHARGE_REWARD = "rechargeReward";
 
@@ -36,54 +37,6 @@ var Activity = Entity.extend({
         return true;
     },
 
-    sync: function () {
-        cc.log("Activity sync");
-        var that = this;
-        lz.server.request(
-            "area.playerHandler.getActivityInfo",
-            {},
-            function (data) {
-                cc.log(data);
-                if (data.code == 200) {
-                    cc.log("sync success");
-
-                    that.update(data.msg);
-
-                    lz.server.on("onPowerGive", function (data) {
-                        cc.log("***** on powerGive:");
-                        cc.log(data);
-
-                        gameMark.updatePowerRewardMark(true);
-                    });
-
-                    lz.server.on("onPowerGiveEnd", function (data) {
-                        cc.log("***** on PowerGiveEnd:");
-                        cc.log(data);
-
-                        gameMark.updatePowerRewardMark(false);
-                    });
-
-                    lz.server.on("onNewYearReward", function (data) {
-                        cc.log("***** on onNewYearReward:");
-                        cc.log(data);
-
-                        that.updateRechargeFlag(data.msg.flag);
-                        gameMark.updateNewYearMark(false);
-                    });
-
-                    gameMark.updateActivityMark(false);
-
-                    lz.dc.event("event_activity");
-                } else {
-                    cc.log("sync fail");
-
-                    that.sync();
-                }
-            },
-            true
-        );
-    },
-
     update: function (data) {
         cc.log("Activity update: " + data);
 
@@ -106,6 +59,63 @@ var Activity = Entity.extend({
         }
 
         this.updateRechargeFlag(data.rechargeFlag);
+    },
+
+    sync: function () {
+        cc.log("Activity sync");
+
+        var that = this;
+        lz.server.request(
+            "area.playerHandler.getActivityInfo",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("sync success");
+
+                    that.update(data.msg);
+                    that.setListener();
+
+                    gameMark.updateActivityMark(false);
+
+                    lz.dc.event("event_activity");
+                } else {
+                    cc.log("sync fail");
+
+                    that.sync();
+                }
+            },
+            true
+        );
+    },
+
+    setListener: function () {
+        cc.log("Activity setListener");
+
+        var that = this;
+
+        lz.server.on("onPowerGive", function (data) {
+            cc.log("***** on powerGive:");
+            cc.log(data);
+
+            gameMark.updatePowerRewardMark(true);
+        });
+
+        lz.server.on("onPowerGiveEnd", function (data) {
+            cc.log("***** on PowerGiveEnd:");
+            cc.log(data);
+
+            gameMark.updatePowerRewardMark(false);
+        });
+
+        lz.server.on("onNewYearReward", function (data) {
+            cc.log("***** on onNewYearReward:");
+            cc.log(data);
+
+            that.updateRechargeFlag(data.msg.flag);
+            gameMark.updateNewYearMark(false);
+        });
     },
 
     updateRechargeFlag: function (flag) {
@@ -220,7 +230,6 @@ var Activity = Entity.extend({
         } else {
             cc.log("类型出错！！！");
         }
-
     },
 
     getStateById: function (type, id) {
@@ -233,7 +242,6 @@ var Activity = Entity.extend({
             return null;
         }
     }
-
 });
 
 Activity.create = function () {

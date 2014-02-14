@@ -34,33 +34,92 @@ $(document).ready(function() {
         e.preventDefault();
         submit();
     });
+
+    function handlerRewardChange() {
+        var title = $('#title').val();
+
+        var items = $.map($('.reward'), function(el, i){
+            if ($(el).val() !== '')
+                return $(el).parent().prev().text() + ':' + $(el).val();
+            else
+                return '';
+        });
+        var textArr = items.filter(function(i) {return i != '';});
+        $('#content').val(title + ', ' + textArr.join(', '));
+    }
+
+    $('#title').change(handlerRewardChange);
+    $('.reward').change(handlerRewardChange);
 });
 
+function removeErrors() {
+    $('.has-error').removeClass('has-error');
+    $('.help-block').remove();
+}
+
 function submit() {
+    removeErrors();
+
     var options = getData();
     var areaId = parseInt($("#area").val());
     var playerName = $("#playerName").val();
+    var title = $('#title').val();
     var content = $("#content").val();
     var mail = {};
     mail['content'] = content;
     mail['options'] = options;
 
+    //$('#actionConfirm').modal();
     if (Number.isNaN(areaId)) {
-        return alert('请选址服务器');
+        $('#area').closest('.form-group').addClass('has-error');
+        $('#area').parent().append('<span class="help-block">请选择服务器</span>');
+        return;
     }
 
     if ((Number.isNaN(areaId) || areaId == ALL) && playerName != '') {
-        return alert('请指定玩家所在的具体服务器');
+        $('#area').closest('.form-group').addClass('has-error');
+        $('#area').parent().append('<span class="help-block">必须指定玩家所在的具体服务器</span>');
+        return;
     }
 
-    if (content == '') {
-        return alert('奖励消息内容不能为空');
+    if (title == '') {
+        $('#title').closest('.form-group').addClass('has-error');
+        $('#title').parent().append('<span class="help-block">title is required</span>');
+        return;
     }
 
     if (Object.keys(options).length == 0) {
-        return alert('至少添一个奖励选项')
+        $('#energy').closest('fieldset').addClass('has-error');
+        $('#energy').parent().append('<span class="help-block">至少添一个奖励选项</span>');
+        return;
     }
 
+    if (content == '') {
+        $('#content').closest('.form-group').addClass('has-error');
+        $('#content').parent().append('<span class="help-block">奖励消息内容不能为空</span>');
+        return;
+    }
+
+    function showModal() {
+        var cnt = '<p><strong>服务器：</strong>' + $('#area').find('option:selected').text() + '</p>'
+        cnt += '<p><strong>消息内容：</strong>'+content+'</p>';
+
+        $('#modalContent').html(cnt);
+        $('#actionConfirm').modal();
+    }
+
+    function hideModal() {
+        $('#actionConfirm').modal('hide');
+    }
+
+    showModal();
+    $('#btnSendMsg').click(function() {
+        hideModal();
+        doSubmit(options, areaId, playerName, mail);
+    });
+};
+
+function doSubmit(options, areaId, playerName, mail) {
     if (areaId == ALL) { //全部服务器
         var len = servers.length;
         var id = 0;
@@ -149,9 +208,7 @@ function submit() {
             });
         }
     }
-
 };
-
 
 function dealAll(id, mail, cb) {
     async.waterfall([
@@ -166,13 +223,25 @@ function dealAll(id, mail, cb) {
                 if (code == 200) {
                     $('.alert').removeClass('hidden alert-danger');
                     $('.alert').addClass('show alert-success');
-                    $('.alert').text('恭喜！消息发送成功!')
+                    $('.alert #alertContent').text('恭喜！消息发送成功!')
+                    
+                    setTimeout(function(){
+                        $('.alert').removeClass('show');
+                        $('.alert').addClass('hidden');
+                    }, 5000);
+
                     callback();
                 } else {
                     $('.alert').removeClass('hidden alert-success');
                     $('.alert').addClass('show alert-danger');
-                    $('.alert').text('消息发送失败!');
-                    cb('error');                    
+                    $('.alert #alertContent').text('消息发送失败!');
+
+                    setTimeout(function(){
+                        $('.alert').removeClass('show');
+                        $('.alert').addClass('hidden');
+                    }, 5000);
+
+                    cb('error');
                 }
             })
         },

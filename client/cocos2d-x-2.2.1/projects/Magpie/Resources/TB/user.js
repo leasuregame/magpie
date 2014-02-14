@@ -93,13 +93,10 @@ var User = Entity.extend({
                         var player = msg.player;
 
                         if (player) {
-                            gameMark.init();
-                            gameData.gameInit();
-                            gameData.player.init(msg.player);
-
-                            cb(1);
+                            gameData.gameStart(player);
+                            cb();
                         } else {
-                            cb(2);
+                            cb(1);
                         }
 
                         lz.dc.event("event_login", that._area);
@@ -115,7 +112,7 @@ var User = Entity.extend({
 
                         tbAdapter.TBLogout(0);
 
-                        cb(0);
+                        cb();
 
                         TipLayer.tip(data.msg);
                     }
@@ -156,9 +153,7 @@ var User = Entity.extend({
 
                 var msg = data.msg;
 
-                gameMark.init();
-                gameData.gameInit();
-                gameData.player.init(msg.player);
+                gameData.gameStart(msg.player);
 
                 cb();
 

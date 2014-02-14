@@ -35,6 +35,21 @@ var Shop = Entity.extend({
         this.update(data);
         this.updateMaxCount();
 
+        this.setListener();
+    },
+
+    update: function (data) {
+        cc.log("Shop update");
+
+        this.set("useVipBoxList", data.useVipBoxList);
+        this.set("powerBuyCount", data.powerBuyCount);
+        this.set("challengeBuyCount", data.challengeBuyCount);
+        this.set("expCardBuyCount", data.expCardBuyCount);
+    },
+
+    setListener: function () {
+        cc.log("Shop setListener");
+
         lz.server.on("onVerifyResult", function (data) {
             cc.log("***** on verify result:");
             cc.log(data);
@@ -53,6 +68,10 @@ var Shop = Entity.extend({
             if (msg.goldCards) {
                 player.set("goldCards", msg.goldCards);
                 gameMark.updateGoldCardsMark(true);
+            }
+
+            if (msg.recharge) {
+                player.set("recharge", msg.recharge);
             }
 
             var nowVip = msg.vip;
@@ -81,15 +100,6 @@ var Shop = Entity.extend({
 
             }
         });
-    },
-
-    update: function (data) {
-        cc.log("Shop update");
-
-        this.set("useVipBoxList", data.useVipBoxList);
-        this.set("powerBuyCount", data.powerBuyCount);
-        this.set("challengeBuyCount", data.challengeBuyCount);
-        this.set("expCardBuyCount", data.expCardBuyCount);
     },
 
     updateMaxCount: function () {
@@ -420,7 +430,9 @@ var Shop = Entity.extend({
                 tip: "",
                 timesTip: "",
                 maxBuyTimes: gameData.shop.get("powerBuyMaxCount"),
-                remainTimes: 0
+                remainTimes: 0,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
             product.remainTimes = product.count = gameData.shop.get("powerBuyCount");

@@ -521,6 +521,18 @@
 		90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
 		90A846BB1872C04600582139 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
+		90B0B5AD18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
+		90B0B5AE18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
+		90B0B5AF18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
+		90B0B5B018ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
+		90B0B5B118ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */; };
+		90B0B5B218ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */; };
+		90B0B5B318ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */; };
+		90B0B5B418ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */; };
+		90B0B5B518ACA1BF00F24482 /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */; };
+		90B0B5B618ACA1BF00F24482 /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */; };
+		90B0B5B718ACA1BF00F24482 /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */; };
+		90B0B5B818ACA1BF00F24482 /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */; };
 		90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095A18716DB600E27689 /* loginLayer.js */; };
 		90C1A0201871722F00CBC6FF /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
 		90C1A0211871722F00CBC6FF /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095C18716DB600E27689 /* payment.js */; };
@@ -1561,6 +1573,11 @@
 		909187FE18A726D80023312A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		909D73B618754C1C009D69C4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		909D73B718754C1C009D69C4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_NotificationHelp.cpp; sourceTree = "<group>"; };
+		90B0B5A918ACA1BF00F24482 /* js_bindings_NotificationHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_NotificationHelp.hpp; sourceTree = "<group>"; };
+		90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_NotificationHelp_api.js; sourceTree = "<group>"; };
+		90B0B5AB18ACA1BF00F24482 /* NotificationHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationHelp.h; sourceTree = "<group>"; };
+		90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NotificationHelp.mm; sourceTree = "<group>"; };
 		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212BD18704B5B00671D28 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
 		90C212BE18704B5B00671D28 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
@@ -2653,6 +2670,18 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		90B0B5A718ACA1BF00F24482 /* NotificationHelp */ = {
+			isa = PBXGroup;
+			children = (
+				90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */,
+				90B0B5A918ACA1BF00F24482 /* js_bindings_NotificationHelp.hpp */,
+				90B0B5AA18ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js */,
+				90B0B5AB18ACA1BF00F24482 /* NotificationHelp.h */,
+				90B0B5AC18ACA1BF00F24482 /* NotificationHelp.mm */,
+			);
+			path = NotificationHelp;
+			sourceTree = "<group>";
+		};
 		90C212BB18704B5B00671D28 /* TongBu */ = {
 			isa = PBXGroup;
 			children = (
@@ -2678,6 +2707,7 @@
 		90C441C21859A2AB000C5D75 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90B0B5A718ACA1BF00F24482 /* NotificationHelp */,
 				909D73B518754C1C009D69C4 /* Reachability */,
 				90C212BB18704B5B00671D28 /* TongBu */,
 				90F9F23118680B4C001821D5 /* WebLayer */,
@@ -3354,6 +3384,7 @@
 				902B08281858C475003A2A49 /* spine-cocos2dx.cpp in Sources */,
 				902B08291858C475003A2A49 /* jsb_opengl_functions.cpp in Sources */,
 				902B082A1858C475003A2A49 /* jsb_opengl_manual.cpp in Sources */,
+				90B0B5B318ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */,
 				902B082B1858C475003A2A49 /* jsb_cocos2dx_studio_manual.cpp in Sources */,
 				902B082C1858C475003A2A49 /* jsb_opengl_registration.cpp in Sources */,
 				902B082D1858C475003A2A49 /* js_bindings_opengl.cpp in Sources */,
@@ -3366,6 +3397,7 @@
 				902B08341858C475003A2A49 /* jsb_deprecated.js in Sources */,
 				902B08351858C475003A2A49 /* CCActionFrame.cpp in Sources */,
 				902B08361858C475003A2A49 /* CCActionFrameEasing.cpp in Sources */,
+				90B0B5B718ACA1BF00F24482 /* NotificationHelp.mm in Sources */,
 				902B08371858C475003A2A49 /* CCActionManager.cpp in Sources */,
 				902B08381858C475003A2A49 /* CCActionNode.cpp in Sources */,
 				902B08391858C475003A2A49 /* CCActionObject.cpp in Sources */,
@@ -3398,6 +3430,7 @@
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
 				909D73BA18754C1C009D69C4 /* Reachability.m in Sources */,
 				902B08521858C475003A2A49 /* CCInputDelegate.cpp in Sources */,
+				90B0B5AF18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */,
 				902B08531858C475003A2A49 /* UIRootWidget.cpp in Sources */,
 				902B08541858C475003A2A49 /* UILayout.cpp in Sources */,
 				902B08551858C475003A2A49 /* UIWidget.cpp in Sources */,
@@ -3586,6 +3619,7 @@
 				90F535A81862EAC2008207BD /* CCBone.cpp in Sources */,
 				90F535AA1862EAC2008207BD /* CCDatas.cpp in Sources */,
 				90F535AB1862EAC2008207BD /* CCBatchNode.cpp in Sources */,
+				90B0B5AE18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */,
 				909D73B918754C1C009D69C4 /* Reachability.m in Sources */,
 				90F535AC1862EAC2008207BD /* CCDecorativeDisplay.cpp in Sources */,
 				90F535AD1862EAC2008207BD /* CCDisplayFactory.cpp in Sources */,
@@ -3629,6 +3663,8 @@
 				90F535D51862EAC2008207BD /* UITextField.cpp in Sources */,
 				90F535D61862EAC2008207BD /* CSContentJsonDictionary.cpp in Sources */,
 				90F535D71862EAC2008207BD /* DictionaryHelper.cpp in Sources */,
+				90B0B5B618ACA1BF00F24482 /* NotificationHelp.mm in Sources */,
+				90B0B5B218ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */,
 				90F535D81862EAC2008207BD /* json_reader.cpp in Sources */,
 				90F535D91862EAC2008207BD /* json_value.cpp in Sources */,
 				90F535DA1862EAC2008207BD /* json_writer.cpp in Sources */,
@@ -3678,6 +3714,7 @@
 				90F536431862EB3C008207BD /* cpPolyShape.c in Sources */,
 				90F536441862EB3C008207BD /* cpShape.c in Sources */,
 				90F536451862EB3C008207BD /* cpSpace.c in Sources */,
+				90B0B5B418ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */,
 				90F536461862EB3C008207BD /* cpSpaceComponent.c in Sources */,
 				90F536471862EB3C008207BD /* cpSpaceHash.c in Sources */,
 				90F536481862EB3C008207BD /* cpSpaceQuery.c in Sources */,
@@ -3697,6 +3734,7 @@
 				90F536571862EB3C008207BD /* CCBSequence.cpp in Sources */,
 				90F536581862EB3C008207BD /* CCBSequenceProperty.cpp in Sources */,
 				90F536591862EB3C008207BD /* CCBValue.cpp in Sources */,
+				90B0B5B818ACA1BF00F24482 /* NotificationHelp.mm in Sources */,
 				90F5365A1862EB3C008207BD /* CCControlButtonLoader.cpp in Sources */,
 				90F5365B1862EB3C008207BD /* CCControlLoader.cpp in Sources */,
 				90F5365C1862EB3C008207BD /* CCData.cpp in Sources */,
@@ -3829,6 +3867,7 @@
 				90F536DF1862EB3C008207BD /* UILabelBMFont.cpp in Sources */,
 				90F536E11862EB3C008207BD /* UILoadingBar.cpp in Sources */,
 				90F536E21862EB3C008207BD /* UISlider.cpp in Sources */,
+				90B0B5B018ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */,
 				90F536E31862EB3C008207BD /* UISwitch.cpp in Sources */,
 				90F536E41862EB3C008207BD /* UITextField.cpp in Sources */,
 				90F536E51862EB3C008207BD /* CSContentJsonDictionary.cpp in Sources */,
@@ -3864,9 +3903,11 @@
 				15A3D3901682F0B6002FB0C5 /* cpDampedSpring.c in Sources */,
 				15A3D3911682F0B6002FB0C5 /* cpGearJoint.c in Sources */,
 				15A3D3921682F0B6002FB0C5 /* cpGrooveJoint.c in Sources */,
+				90B0B5B118ACA1BF00F24482 /* js_bindings_NotificationHelp_api.js in Sources */,
 				15A3D3931682F0B6002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D3941682F0B6002FB0C5 /* cpPivotJoint.c in Sources */,
 				3EC20B8118331CB000F2C4D6 /* jsb_cocos2dx_studio_auto_api.js in Sources */,
+				90B0B5B518ACA1BF00F24482 /* NotificationHelp.mm in Sources */,
 				15A3D3951682F0B6002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D3961682F0B6002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				15A3D3971682F0B6002FB0C5 /* cpSimpleMotor.c in Sources */,
@@ -3919,6 +3960,7 @@
 				3EC20B7B18331C9000F2C4D6 /* UILayoutParameter.cpp in Sources */,
 				15A3D53C1682F1A5002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
 				15A3D53D1682F1A5002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
+				90B0B5AD18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */,
 				15A3D53E1682F1A5002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15A3D53F1682F1A5002FB0C5 /* CCControl.cpp in Sources */,
 				15A3D5401682F1A5002FB0C5 /* CCControlButton.cpp in Sources */,

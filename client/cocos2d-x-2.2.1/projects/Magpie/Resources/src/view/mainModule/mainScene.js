@@ -18,6 +18,7 @@ var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
     _mainMenuLayer: null,
+    _speakerLayer: null,
 
     onEnter: function () {
         cc.log("MainScene onEnter");
@@ -53,24 +54,26 @@ var MainScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
+        this._speakerLayer = SpeakerLayer.create();
+        this.addChild(this._speakerLayer, 8);
+
         noviceTeachingLayer = NoviceTeachingLayer.create();
         if (noviceTeachingLayer.isNoviceTeaching()) {
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
-
-            if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-                NoticeLayer.pop();
-            }
         }
-
-        this.retain();
     },
 
     changeMessage: function (msg) {
         cc.log("MainScene changeMessage");
 
         this._mainBgLayer.changeMessage(msg);
+    },
+
+    speaker: function (msg) {
+        cc.log("MainScene speaker");
+        this._speakerLayer.push(msg);
     },
 
     getLayer: function () {
@@ -81,7 +84,6 @@ var MainScene = cc.Scene.extend({
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
-
     },
 
     updateGuide: function () {
@@ -117,6 +119,8 @@ var MainScene = cc.Scene.extend({
         this.addChild(this._nowLayer);
 
         this._mainMenuLayer.update();
+
+        this.updateMark();
     }
 });
 
@@ -128,9 +132,11 @@ var MainScene = cc.Scene.extend({
     var _mainScene = null;
 
     MainScene.getInstance = function () {
+        cc.log("MainScene getInstance");
+
         if (_mainScene == null) {
             _mainScene = new MainScene();
-            _mainScene.init();
+            _mainScene.retain();
         }
 
         return _mainScene;

@@ -65,6 +65,7 @@
                 <file name="src/model/achievement.js"/>
                 <file name="src/model/exchange.js"/>
                 <file name="src/model/activity.js"/>
+                <file name="src/model/greeting.js"/>
 
                 <file name="AppStore/payment.js"/>
 
@@ -134,6 +135,7 @@
                 <file name="src/view/mainModule/evolutionLayer.js"/>
                 <file name="src/view/mainModule/exchangeLayer.js"/>
                 <file name="src/view/mainModule/exploreLayer.js"/>
+                <file name="src/view/mainModule/extractTipLabel.js"/>
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>
@@ -166,6 +168,7 @@
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>
+                <file name="src/view/mainModule/speakerLayer.js"/>
                 <file name="src/view/mainModule/spiritDetails.js"/>
                 <file name="src/view/mainModule/spiritNode.js"/>
                 <file name="src/view/mainModule/spiritPoolLayer.js"/>
@@ -201,6 +204,7 @@
                 <file name="src/view/battleModule/battleScene.js"/>
                 <file name="src/view/battleModule/battleSpiritNode.js"/>
                 <file name="src/view/battleModule/cloudLayer.js"/>
+                <file name="src/view/battleModule/fragmentLayer.js"/>
                 <file name="src/view/battleModule/skillFactory.js"/>
 
                 <file name="main_binding.js"/>

@@ -17,7 +17,7 @@ var MainLayer = cc.Layer.extend({
 
     _layer: [
         SpiritPoolLayer,
-            SummonLayer,
+        SummonLayer,
         TreasureHuntLayer,
         StrengthenLayer,
         EvolutionLayer,
@@ -253,28 +253,24 @@ var MainLayer = cc.Layer.extend({
         this.addChild(this._spiritLayerItem);
 
         var isVisible = false;
-        var that = this;
-        this.scheduleOnce(function () {
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
 
-            var spirit = gameData.spirit;
-            var spiritPool = gameData.spiritPool;
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
 
-            if (spirit.canUpgrade()) {
-                isVisible = true;
-            } else if (spiritPool.get("collectCount") > 0) {
-                isVisible = true;
-            }
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
-            that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
+        var ability = gameData.player.get("ability");
+        var ranking = gameData.tournament.get("ranking");
 
-            var ability = gameData.player.getAbility();
-            var ranking = gameData.tournament.get("ranking");
+        abilityLabel.setString(ability);
+        rankingLabel.setString(ranking);
 
-            abilityLabel.setString(ability);
-            rankingLabel.setString(ranking);
-
-        }, 0.1);
-
+        this.addChild(GreetingLabel.getInstance(), 5);
 
         return true;
     },

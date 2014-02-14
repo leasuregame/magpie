@@ -299,7 +299,8 @@ var PaymentLayer = LazyLayer.extend({
 
             var url = (i == 2) ? "icon365" : "icon364";
             var tipIcon = cc.Sprite.create(main_scene_image[url]);
-            tipIcon.setPosition(cc.p(40,y + 90));
+            tipIcon.setPosition(cc.p(40, y + 90));
+            tipIcon.setVisible(gameData.player.isFirstPayment(paymentTypeList[i].id));
             scrollViewLayer.addChild(tipIcon);
 
             var paymentItem = cc.MenuItemImage.createWithIcon(

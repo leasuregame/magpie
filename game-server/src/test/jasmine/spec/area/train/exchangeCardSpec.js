@@ -48,7 +48,7 @@ describe("Area Server", function() {
                       'id', 'tableId', 'hp', 'atk', 'ability',
                       'lv', 'exp', 'skillLv', 'skillInc',
                       'skillPoint', 'elixirHp', 'elixirAtk',
-                      'passiveSkills'
+                      'passiveSkills', 'factor'
                     ]);
 
                     expect(data.msg.card.tableId).toEqual(id);
@@ -56,7 +56,10 @@ describe("Area Server", function() {
 
                     doAjax('/player/' + user1.playerId, {}, function(res) {
                       expect(data.msg.fragments).toEqual(res.data.fragments);
-                      expect(data.msg.fragments).toEqual(40 - (star == 4 ? 15 : 40));
+                      expect(data.msg.fragments).toEqual(40 - (star == 4 ? 10 : 30));
+                      if (star==5) {
+                        expect((data.msg.achivements)).toEqual({})
+                      }
                     });
                   }
                 }
@@ -72,7 +75,9 @@ describe("Area Server", function() {
         // }
 
         doTest(9);
-
+        doTest(10);
+        doTest(94);
+        doTest(95);
       });
 
 

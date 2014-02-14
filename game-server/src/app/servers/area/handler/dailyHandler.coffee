@@ -44,6 +44,8 @@ Handler::lottery = (msg, session, next) ->
     resource = randomReward()
     if resource.type is 'power'
       player.addPower(resource.value*times)
+    else if resource.type is 'spirit'
+      player.incSpirit(resource.value*times)
     else
       player.increase(resource.type, resource.value*times)
 
@@ -73,7 +75,9 @@ Handler::signIn = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sdata = table.getTableItem('daily_signin_rewards', 1)
-    player.signToday()
+    if not player.signToday()
+      return next(null, {code: 501, msg: '不能重复签到'})
+      
     player.increase('money', sdata.money)
     player.increase('energy', sdata.energy)
     player.save()
@@ -106,6 +110,7 @@ Handler::reSignIn = (msg, session, next) ->
     sdata = table.getTableItem('daily_signin_rewards', 1)
     player.decrease('gold', goldResume)
     player.increase('energy', sdata.energy)
+    player.increase('money', sdata.money)
     player.save()
     
     next(null, {

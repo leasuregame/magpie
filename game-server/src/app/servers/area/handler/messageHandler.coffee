@@ -436,7 +436,14 @@ Handler::accept = (msg, session, next) ->
           friendExist = true
           cb(null, null)
         else if senderFriends.length >= res.friendsCount
-          cb({code: 501, msg: '对方好友已达上限'})
+          dao.message.update {
+            where: id: msgId
+            data: status: msgConfig.MESSAGESTATUS.REJECT
+          }, (err, res) ->
+            if err
+              cb(err)
+            else
+              cb({code: 501, msg: '对方好友已达上限'})
         else
           dao.friend.create {
             data:
@@ -533,7 +540,7 @@ Handler::giveBless = (msg, session, next) ->
   if friendId is playerId 
     return next(null, {code: 501, msg: '不能给自己送祝福'})
 
-  ENERGY = 5
+  ENERGY = 10
   player = null
   async.waterfall [
     (cb) ->

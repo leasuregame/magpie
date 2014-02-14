@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
   `activities` VARCHAR(1500) DEFAULT '',
+  `initRate` VARCHAR(100) DEFAULT '{}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

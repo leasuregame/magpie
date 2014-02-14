@@ -20,7 +20,7 @@ describe("Area Server", function() {
             };
 
             var power = 0;
-            var gold = 130;
+            var gold = 320;
 
             describe('购买成功',function() {
 
@@ -31,11 +31,12 @@ describe("Area Server", function() {
                             time: Date.now(),
                             value: 0
                         }),
-                        gold: 130,
+                        gold: 320,
+                        cash: 3856,
+                        vip: 7
                     },function(){
 
                     });
-
                 });
 
                 beforeEach(function() {
@@ -44,28 +45,42 @@ describe("Area Server", function() {
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
+                        console.log('第' + time + '次购买');
                         request('area.buyHandler.buyProduct',{id:2,times: 1},function(data) {
                             console.log(data);
-                            expect(data.code).toEqual(200);
-                            power += BUY_POWER.power;
-                            gold -= BUY_POWER.gold;
-                            expect(50).toEqual(data.msg.power);
-                            expect(data.msg.consume).toEqual({
-                                "key": "gold",
-                                "value": gold
-                            });
-                            doAjax('/player/113',{},function(msg) {
-                                player = msg.data;
-                                console.log(player);
-                                expect(power).toEqual(JSON.parse(player.power).value);
-                                expect(gold).toEqual(player.gold);
-                            });
+                            if (data.code == 200) {
+                                expect(data.code).toEqual(200);
+                                power += BUY_POWER.power;
+                                goldConsume = BUY_POWER.gold + 10*(time-1);
+                                if (goldConsume > 60) {
+                                    goldConsume = 60;
+                                }
+                                gold -= goldConsume;
+                                
+                                expect(50).toEqual(data.msg.power);
+                                expect(data.msg.consume).toEqual({
+                                    "key": "gold",
+                                    "value": gold
+                                });
+                                doAjax('/player/113',{},function(msg) {
+                                    player = msg.data;
+                                    console.log(player);
+                                    expect(power).toEqual(JSON.parse(player.power).value);
+                                    expect(gold).toEqual(player.gold);
+                                });
+                            } else {
+                                expect(data).toEqual({
+                                    code: 501,
+                                    msg: '魔石不足'
+                                });
+                            }
+                            
 
                         })
                     })
                 };
 
-                for(var i = 1;i <= 1;i++) {
+                for(var i = 1;i <= 8;i++) {
                     (function(i) {
                         buyPower(i);
                     })(i);

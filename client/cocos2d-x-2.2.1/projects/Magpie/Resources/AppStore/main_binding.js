@@ -70,6 +70,7 @@ var appFiles = [
     'src/model/achievement.js',
     'src/model/exchange.js',
     'src/model/activity.js',
+    'src/model/greeting.js',
 
     'payment.js',
 
@@ -139,6 +140,7 @@ var appFiles = [
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
     'src/view/mainModule/exploreLayer.js',
+    'src/view/mainModule/extractTipLabel.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
@@ -171,6 +173,7 @@ var appFiles = [
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/speakerLayer.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
     'src/view/mainModule/spiritPoolLayer.js',
@@ -206,6 +209,7 @@ var appFiles = [
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/cloudLayer.js',
+    'src/view/battleModule/fragmentLayer.js',
     'src/view/battleModule/skillFactory.js'
 ];
 

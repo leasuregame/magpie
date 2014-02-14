@@ -149,9 +149,17 @@ class Manager
   @countExploreResult: (player, data, taskId, chapterId, cb) ->
     taskData = table.getTableItem('task', taskId)
 
+    times = 1
+    isDouble = false
+    # 暴击仙币和经验翻倍
+    if utility.hitRate 10
+      times = 2
+      isDouble = true
+
     data.power_consume += taskData.power_consume
-    data.exp_obtain += taskData.exp_obtain
-    data.money_obtain += taskData.coins_obtain
+    data.exp_obtain += taskData.exp_obtain * times
+    data.money_obtain += taskData.coins_obtain * times
+    data.isDouble = isDouble
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)

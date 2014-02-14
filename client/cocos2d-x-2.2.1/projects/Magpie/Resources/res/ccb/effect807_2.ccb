@@ -3785,7 +3785,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.43333333730697632</real>
+											<real>0.36666667461395264</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -3800,7 +3800,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.60000002384185791</real>
+											<real>0.53333336114883423</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -3843,7 +3843,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.43333333730697632</real>
+											<real>0.36666667461395264</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -3861,7 +3861,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.60000002384185791</real>
+											<real>0.53333336114883423</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -5338,8 +5338,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -5391,7 +5389,80 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.36666667461395264</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect2_2.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.53333336114883423</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect2_2.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.69999998807907104</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect2_2.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.89999997615814209</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect2_2.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

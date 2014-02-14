@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>40</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -9110,8 +9110,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>1.2000000476837158</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -9124,7 +9124,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>40</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -14075,7 +14075,7 @@
 			<key>length</key>
 			<real>0.3333333432674408</real>
 			<key>name</key>
-			<string>a_10_o_1</string>
+			<string>a_10_1</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -14109,11 +14109,11 @@
 			<key>length</key>
 			<real>0.26666668057441711</real>
 			<key>name</key>
-			<string>a_10_o_2</string>
+			<string>a_10_2</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.26666668057441711</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -14143,7 +14143,7 @@
 			<key>length</key>
 			<real>0.3333333432674408</real>
 			<key>name</key>
-			<string>a_10_o_3</string>
+			<string>a_10_3</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>

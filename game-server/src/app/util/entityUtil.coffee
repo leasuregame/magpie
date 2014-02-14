@@ -42,6 +42,7 @@ module.exports =
       isUpgrade = true
       player.increase 'lv'
       player.decrease 'exp', upgradeInfo.exp
+      player.addPower upgradeInfo.power? or 0
       updateFriendCount(player)
 
       rewards.money += upgradeInfo.money

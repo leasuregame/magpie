@@ -412,6 +412,16 @@ var Player = (function(_super) {
         this.resetDate = utility.shortDateString();
     };
 
+    Player.prototype.dailyData = function() {
+        return {
+            dailyGift: this.dailyGift,
+            pass: this.pass,
+            task: this.task,
+            spiritPool: this.spiritPool,
+            friendsCount: this.friendsCount
+        };
+    };
+
     Player.prototype.isReset = function() {
         return this.resetDate === utility.shortDateString();
     };

@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -200,7 +200,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string>ccbGoodsIcon</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -274,7 +274,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string>ccbGoodsIcon</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -336,7 +336,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string>ccbGoodsIcon</string>
+								<string></string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -467,7 +467,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>ccbGoodsLabel</string>
+						<string></string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -542,7 +542,7 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+5000</string>
+								<string></string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -632,6 +632,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -671,6 +673,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

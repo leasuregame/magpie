@@ -87,6 +87,7 @@ var Player = Entity.extend({
         gameData.activity.init();
         gameData.speak.init();
         gameData.payment.init();
+        gameData.greeting.init();
 
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
 

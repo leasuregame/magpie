@@ -70,6 +70,7 @@ var appFiles = [
     'src/model/achievement.js',
     'src/model/exchange.js',
     'src/model/activity.js',
+    'src/model/greeting.js',
 
     'payment.js',
 
@@ -172,6 +173,7 @@ var appFiles = [
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/speakerLayer.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
     'src/view/mainModule/spiritPoolLayer.js',

@@ -275,6 +275,8 @@ var MainLayer = cc.Layer.extend({
 
         }, 0.1);
 
+        //var testLabel = GreetingLabel.create();
+        this.addChild(GreetingLabel.getInstance(), 5);
 
         return true;
     },

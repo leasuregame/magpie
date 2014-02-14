@@ -1011,6 +1011,11 @@ var fit4Iphone4 = {
             "helpItemPoint": cc.p(80, 670)
 
         },
+        "speakerLayer": {
+            "msgBgLabelPoint": cc.p(380, 800),
+            "speakerIconPoint": cc.p(140, 800),
+            "speakerPoint": cc.p(190, 800)
+        },
         "spiritDetails": {
             "bgLayerPoint": cc.p(40, 0),
             "spiritNodeBgSpritePoint": cc.p(360, 554),
@@ -2336,6 +2341,11 @@ var fit4Iphone5 = {
             "effectPoint": cc.p(320, 445),
             "helpItemPoint": cc.p(50, 810)
 
+        },
+        "speakerLayer": {
+            "msgBgLabelPoint": cc.p(340, 1010),
+            "speakerIconPoint": cc.p(100, 1010),
+            "speakerPoint": cc.p(150, 1010)
         },
         "spiritDetails": {
             "bgLayerPoint": cc.p(0, 0),

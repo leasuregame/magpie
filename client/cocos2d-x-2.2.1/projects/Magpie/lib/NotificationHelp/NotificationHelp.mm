@@ -61,75 +61,52 @@ void NotificationHelp::end()
     }
     
     // 设置每3.5天通知一次
-    UILocalNotification * notification = [[UILocalNotification alloc] init];
-    if (notification != nil)
+    NSDate * time = [NSDate date];
+    NSCalendar * calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents * dateComponent = [calendar components : unitFlags fromDate : time];
+    
+    int hour = [dateComponent hour];
+    int minute = [dateComponent minute];
+    int second = [dateComponent second];
+    
+    int timeInterval = 0;
+    if(hour >= 9 && hour < 21)
     {
-        NSDate * time = [NSDate date];
-        NSCalendar * calendar = [NSCalendar currentCalendar];
-        NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-        NSDateComponents * dateComponent = [calendar components : unitFlags fromDate : time];
-        
-        int year = [dateComponent year];
-        int month = [dateComponent month];
-        int day = [dateComponent day];
-        int hour = [dateComponent hour];
-        int minute = [dateComponent minute];
-        int second = [dateComponent second];
-        
-//        CCLOG("year is: %d", year);
-//        CCLOG("month is: %d", month);
-//        CCLOG("day is: %d", day);
-//        CCLOG("hour is: %d", hour);
-//        CCLOG("minute is: %d", minute);
-//        CCLOG("second is: %d", second);
-        
-        int timeInterval = 3.5 * 24 * 60 * 60;
-        if(hour >= 9 && hour < 21)
+        timeInterval += (21 - hour - 1) * 60 * 60;
+        timeInterval += (60 - minute - 1) * 60;
+        timeInterval += 60 - second;
+    }
+    else
+    {
+        if(hour < 9)
         {
-            timeInterval += (21 - hour - 1) * 60 * 60;
-            timeInterval += (60 - minute - 1) * 60;
-            timeInterval += 60 - second;
+            hour += 24;
         }
-        else
+        
+        timeInterval += (33 - hour - 1) * 60 * 60;
+        timeInterval += (60 - minute - 1) * 60;
+        timeInterval += 60 - second;
+    }
+    
+    for (int i = 0; i < 2; ++i)
+    {
+        UILocalNotification * notification = [[UILocalNotification alloc] init];
+        if (notification != nil)
         {
-            if(hour < 9)
-            {
-                hour += 24;
-            }
+            timeInterval += 3.5 * 24 * 60 * 60;
             
-            timeInterval += (33 - hour - 1) * 60 * 60;
-            timeInterval += (60 - minute - 1) * 60;
-            timeInterval += 60 - second;
+            CCLOG("%d----%d", i, timeInterval);
+            
+            notification.fireDate = [time dateByAddingTimeInterval : timeInterval];
+            notification.timeZone = [NSTimeZone defaultTimeZone];
+            notification.repeatInterval = NSWeekCalendarUnit;
+            notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，你已经好久没登陆游戏了。"];
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            notification.applicationIconBadgeNumber = 1;
+            [[UIApplication sharedApplication] scheduleLocalNotification : notification];
+            [notification release];
         }
-        
-        time = [time dateByAddingTimeInterval : timeInterval];
-        
-        calendar = [NSCalendar currentCalendar];
-        unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-        dateComponent = [calendar components : unitFlags fromDate : time];
-        
-        year = [dateComponent year];
-        month = [dateComponent month];
-        day = [dateComponent day];
-        hour = [dateComponent hour];
-        minute = [dateComponent minute];
-        second = [dateComponent second];
-        
-//        CCLOG("year is: %d", year);
-//        CCLOG("month is: %d", month);
-//        CCLOG("day is: %d", day);
-//        CCLOG("hour is: %d", hour);
-//        CCLOG("minute is: %d", minute);
-//        CCLOG("second is: %d", second);
-        
-        notification.fireDate = time;
-        notification.timeZone = [NSTimeZone defaultTimeZone];
-        notification.repeatInterval = NSWeekCalendarUnit;
-        notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，你已经好久没登陆游戏了。"];
-        notification.soundName = UILocalNotificationDefaultSoundName;
-        notification.applicationIconBadgeNumber = 1;
-        [[UIApplication sharedApplication] scheduleLocalNotification : notification];
-        [notification release];
     }
 }
 

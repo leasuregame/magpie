@@ -325,8 +325,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>31.104005813598633</real>
-									<real>-24.192005157470703</real>
+									<real>-27.648006439208984</real>
+									<real>15.552002906799316</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -389,7 +389,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -688,8 +688,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-46.656009674072266</real>
-									<real>-29.376007080078125</real>
+									<real>25.920005798339844</real>
+									<real>15.552002906799316</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -752,7 +752,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1051,7 +1051,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-90</real>
+									<real>10</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -1107,7 +1107,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1401,8 +1401,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.7000000476837158</real>
-							<real>1.7000000476837158</real>
+							<real>1.8999999761581421</real>
+							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1434,7 +1434,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1509,7 +1509,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1909,7 +1909,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2082,7 +2082,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.0333333015441895</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -2093,13 +2110,13 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.36303591728210449</real>
 			<key>position</key>
-			<real>2</real>
+			<real>1.0333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>408.32723999023438</real>
+			<real>201.59269714355469</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

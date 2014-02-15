@@ -148,6 +148,7 @@ var appFiles = [
     'src/view/mainModule/giftBagLayer.js',
     'src/view/mainModule/goldLayer.js',
     'src/view/mainModule/goPaymentLayer.js',
+    'src/view/mainModule/greetingLabel.js',
     'src/view/mainModule/level9BoxLayer.js',
     'src/view/mainModule/lineUpDetail.js',
     'src/view/mainModule/lineUpDetailsLayer.js',

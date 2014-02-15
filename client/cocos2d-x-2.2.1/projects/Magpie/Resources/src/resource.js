@@ -714,6 +714,9 @@ var main_scene_image = {
     effect300_2: "res/ccb/effect300_2.ccbi",
     effect301_1: "res/ccb/effect301_1.ccbi",
     effect301_2: "res/ccb/effect301_2.ccbi",
+    effect302_1: "res/ccb/effect302_1.ccbi",
+    effect302_2: "res/ccb/effect302_2.ccbi",
+    effect302_3: "res/ccb/effect302_3.ccbi",
 
     effect400_1: "res/ccb/effect400_1.ccbi",
     effect400_2: "res/ccb/effect400_2.ccbi",
@@ -721,11 +724,18 @@ var main_scene_image = {
     effect401_2: "res/ccb/effect401_2.ccbi",
     effect402: "res/ccb/effect402.ccbi",
     effect403: "res/ccb/effect403.ccbi",
+    effect404_1: "res/ccb/effect404_1.ccbi",
+    effect404_2: "res/ccb/effect404_2.ccbi",
+    effect405_1: "res/ccb/effect405_1.ccbi",
+    effect405_2: "res/ccb/effect405_2.ccbi",
+    effect405_3: "res/ccb/effect405_3.ccbi",
 
     effect500_1: "res/ccb/effect500_1.ccbi",
     effect500_2: "res/ccb/effect500_2.ccbi",
     effect501: "res/ccb/effect501.ccbi",
     effect502: "res/ccb/effect502.ccbi",
+    effect503_1: "res/ccb/effect503_1.ccbi",
+    effect503_2: "res/ccb/effect503_2.ccbi",
 
     effect600_1: "res/ccb/effect600_1.ccbi",
     effect600_2: "res/ccb/effect600_2.ccbi",
@@ -736,6 +746,9 @@ var main_scene_image = {
     effect700_2: "res/ccb/effect700_2.ccbi",
     effect701_1: "res/ccb/effect701_1.ccbi",
     effect701_2: "res/ccb/effect701_2.ccbi",
+    effect702_1: "res/ccb/effect702_1.ccbi",
+    effect702_2: "res/ccb/effect702_2.ccbi",
+    effect702_3: "res/ccb/effect702_3.ccbi",
 
     effect800: "res/ccb/effect800.ccbi",
     effect801: "res/ccb/effect801.ccbi",
@@ -743,6 +756,9 @@ var main_scene_image = {
     effect803: "res/ccb/effect803.ccbi",
     effect804: "res/ccb/effect804.ccbi",
     effect805: "res/ccb/effect805.ccbi",
+    effect806: "res/ccb/effect806.ccbi",
+    effect807_1: "res/ccb/effect807_1.ccbi",
+    effect807_2: "res/ccb/effect807_2.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",

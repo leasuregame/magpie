@@ -95,7 +95,7 @@ var FriendDao = (function(_super) {
             when playerId = %(playerId)s and friendId = %(friendId)s then \
                 %(type)sCount + 1 \
             else \
-                receiveCount \
+                %(type)sCount \
             end, \
             friend%(type)sCount = case \
             when playerId = %(friendId)s and friendId = %(playerId)s then \

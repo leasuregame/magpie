@@ -169,7 +169,7 @@ describe("Area Server", function() {
               }),
               resetDate: '' + now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate()
             }, function(err, res) {
-              loginWith('arthur', '1', 1);
+              loginWith('1', '1', 1);
             });
           });
 

@@ -87,6 +87,8 @@ CREATE TABLE IF NOT EXISTS `friend` (
   `friendId` INT(10) UNSIGNED NOT NULL,
   `giveCount` INT(10) UNSIGNED DEFAULT '0',
   `receiveCount` INT(10) UNSIGNED DEFAULT '0',
+  `friendGiveCount` INT(10) UNSIGNED DEFAULT '0',
+  `friendReceiveCount` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`playerId`, `friendId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

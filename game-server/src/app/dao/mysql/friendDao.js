@@ -92,7 +92,7 @@ var FriendDao = (function(_super) {
                 receiveCount \
             end \
             where (playerId = %(playerId)s and friendId = %(friendId)s) \
-            or (playerId = %(friendId)s and friendId = %(playerId)s)'
+            or (playerId = %(friendId)s and friendId = %(playerId)s)';
 
         var sql = sprintf(format, {playerId: playerId, friendId: friendId});
         return dbClient.query(sql, [], function(err, res) {

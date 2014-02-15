@@ -28,14 +28,14 @@
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
 			"database": "app_db_area_1",
-			"user": "tb_leasuregame",
+			"user": "app_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"userdb": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
 			"database": "app_db_userdb",
-			"user": "tb_leasuregame",
+			"user": "app_leasuregame",
 			"password": "leasure405GAME"
 		}
 	}

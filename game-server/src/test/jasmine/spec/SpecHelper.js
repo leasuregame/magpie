@@ -298,6 +298,15 @@ var game = {
       pomelo.on('onPowerGiveEnd', function(data) {
         console.log('on power given', data);
       });
+
+      pomelo.on('onGreeting', function(data) {
+        console.log('on Greeting', data);
+      });
+
+      pomelo.on('onResetData', function(data) {
+        console.log('on onResetData', data);
+      });
+      
       if (typeof callback == 'function') {
         callback();
       }

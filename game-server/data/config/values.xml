@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8340</WindowHeight>
-  <WindowWidth>25040</WindowWidth>
-  <WindowTopX>14700</WindowTopX>
-  <WindowTopY>5760</WindowTopY>
+  <WindowHeight>10120</WindowHeight>
+  <WindowWidth>24820</WindowWidth>
+  <WindowTopX>9660</WindowTopX>
+  <WindowTopY>5180</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -27,25 +27,27 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="零碎的值配置表">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="175"/>
    <Column ss:AutoFitWidth="0" ss:Width="121"/>
+   <Column ss:AutoFitWidth="0" ss:Width="361"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">键</Data></Cell>
     <Cell><Data ss:Type="String">值</Data></Cell>
+    <Cell><Data ss:Type="String">描述</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">value</Data></Cell>
+    <Cell><Data ss:Type="String">desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">reflashExcCardsMoney</Data></Cell>
@@ -70,6 +72,12 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">extractConsumeGold</Data></Cell>
     <Cell><Data ss:Type="Number">200</Data></Cell>
+    <Cell><Data ss:Type="String">提取仙丹或技能点消耗的元宝数量</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">greetingConsumeGold</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">每次喊话话费的金额</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -82,11 +90,11 @@
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>8</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -110,6 +118,12 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

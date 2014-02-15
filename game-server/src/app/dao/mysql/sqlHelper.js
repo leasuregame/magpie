@@ -85,7 +85,6 @@ var sqlHelper = {
         if (arguments.length == 1) {
             fields = table.fields || ''
             where = table.where;
-            limit = table.limit;
             orderby = table.orderby || '';
             limit = table.limit || -1;
             table = table.table;

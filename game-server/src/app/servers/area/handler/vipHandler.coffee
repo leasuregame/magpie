@@ -2,6 +2,7 @@ dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async' 
 _ = require 'underscore'
@@ -164,6 +165,26 @@ Handler::buyVipBox = (msg, session, next) ->
 
       openVipBox(player, boxInfo, next)
 
+Handler::firstRechargeBox = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if player.cash <= 0
+      return next(null, {code: 501, msg: '无权限领取该礼包'})
+
+    boxInfo = table.getTableItem('first_recharge_box', 1)
+    if not boxInfo
+      return next(null, {code: 501, msg: '找不到该礼包信息'})
+
+    if player.firstTime.frb is 0
+      return next(null, {code: 501, msg: '已领取'})
+
+    openFirstRechargeBox player, boxInfo, next
+
+
 checkResourceLimit = (player, boxInfo, cb) ->
   resLimit = table.getTableItem('resource_limit', 1)
   maxValue = (keys) ->
@@ -191,12 +212,12 @@ genMsg = (keys) ->
 
   return text[0...-1] + '已经达到上限，不能购买'
 
-openVipBox = (player, boxInfo, next) ->
-  setIfExist = (attrs) ->
-    player.increase att, val for att, val of boxInfo when att in attrs
-    return
+setIfExist = (player, boxInfo, attrs) ->
+  player.increase att, val for att, val of boxInfo when att in attrs
+  return
 
-  setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
+openVipBox = (player, boxInfo, next) ->
+  setIfExist player, boxInfo, ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
 
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id
@@ -210,4 +231,26 @@ openVipBox = (player, boxInfo, next) ->
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
   else
     next(null, {code: 200, msg: {card: {}, cardIds: []}})
+
+openFirstRechargeBox = (player, boxInfo, next) ->
+  setIfExist player, boxInfo, ['energy', 'money', 'skillPoint', 'elixir']
+  player.incSpirit boxInfo.spirit if _.has boxInfo, 'spirit'
+  player.addPower boxInfo.power if _.has boxInfo, 'power'
+  player.setFirstTime 'frb', 0
+  player.save()
+
+  if _.has boxInfo, 'card_id'
+    cardData = 
+      tableId: boxInfo.card_id
+      lv: boxInfo.card_lv
+      playerId: player.id
+
+    entityUtil.createCard cardData, (err, card) ->
+      if err
+        return next null, {code: err.code or 500, msg: err.msg or err}
+
+      next null, {code: 200, msg: {card: card.toJson()}}
+  else
+    next null, {code: 200}
+
 

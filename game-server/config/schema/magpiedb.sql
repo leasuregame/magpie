@@ -49,7 +49,20 @@ CREATE TABLE IF NOT EXISTS `player` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for friend
+-- Table structure for greeting
+-- ----------------------------
+DROP TABLE IF EXISTS `greeting`;
+CREATE TABLE IF NOT EXISTS `greeting` (
+  `id` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED,
+  `playerName` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
+  `content` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `created` DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for goldCard
 -- ----------------------------
 DROP TABLE IF EXISTS `goldCard`;
 CREATE TABLE IF NOT EXISTS `goldCard` (

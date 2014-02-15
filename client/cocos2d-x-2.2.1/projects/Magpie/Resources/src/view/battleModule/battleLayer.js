@@ -30,6 +30,7 @@ var BatterLayer = cc.Layer.extend({
     _tipNode: null,
     _spiritNode: null,
     _locate: null,
+    _battleMidpoint: null,
     _lineUpMidpoint: null,
     _isPlayback: false,
     _backItem: null,
@@ -51,8 +52,8 @@ var BatterLayer = cc.Layer.extend({
         this._isPlayback = battleLog.get("isPlayback");
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
+        this._battleMidpoint = this._batterLayerFit.battleMidpoint;
         this._lineUpMidpoint = this._batterLayerFit.lineUpMidpoint;
-
         this._chooseSpeedItem = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._batterLayerFit.bgSpriteRect);
@@ -1637,7 +1638,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var effect404_1 = cc.BuilderReader.load(main_scene_image.effect404_1, this);
-            effect404_1.setPosition(that.battleMidpoint);
+            effect404_1.setPosition(that._battleMidpoint);
             this.addChild(effect404_1, EFFECT_Z_ORDER);
 
             var nextStepCallback = this.nextStepCallback();
@@ -1683,7 +1684,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -1736,7 +1737,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var effect405_1 = cc.BuilderReader.load(main_scene_image.effect405_1, this);
-            effect405_1.setPosition(that.battleMidpoint);
+            effect405_1.setPosition(that._battleMidpoint);
             this.addChild(effect405_1, EFFECT_Z_ORDER);
 
             var nextStepCallback1 = this.nextStepCallback();
@@ -1792,7 +1793,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -1844,7 +1845,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var effect500_1 = cc.BuilderReader.load(main_scene_image.effect500_1, this);
-            effect500_1.setPosition(that.battleMidpoint);
+            effect500_1.setPosition(that._battleMidpoint);
             this.addChild(effect500_1, EFFECT_Z_ORDER);
 
             if (that._getDirection(attacker) == "e") {
@@ -1894,7 +1895,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -1975,9 +1976,9 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
         var attackerNode = this._battleNode[attacker];
 
-        this.ccbFnCallback = function () {
-            var that = this;
+        var that = this;
 
+        this.ccbFnCallback = function () {
             var isFirst = true;
             that.ccbFnCallback = function () {
                 if (!isFirst) {
@@ -2065,7 +2066,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -2107,7 +2108,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var effect503_1 = cc.BuilderReader.load(main_scene_image.effect503_1, this);
-            effect503_1.setPosition(that.battleMidpoint);
+            effect503_1.setPosition(that._battleMidpoint);
             this.addChild(effect503_1, EFFECT_Z_ORDER);
 
             if (that._getDirection(attacker) == "e") {
@@ -2171,7 +2172,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -2223,7 +2224,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var effect600_1 = cc.BuilderReader.load(main_scene_image.effect600_1, this);
-            effect600_1.setPosition(that.battleMidpoint);
+            effect600_1.setPosition(that._battleMidpoint);
             this.addChild(effect600_1, EFFECT_Z_ORDER);
 
             if (that._getDirection(attacker) == "e") {
@@ -2273,7 +2274,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -2287,9 +2288,9 @@ var BatterLayer = cc.Layer.extend({
         var attackerLocate = this._locate[attacker];
         var attackerNode = this._battleNode[attacker];
 
-        this.ccbFnCallback = function () {
-            var that = this;
+        var that = this;
 
+        this.ccbFnCallback = function () {
             var isFirst = true;
             that.ccbFnCallback = function () {
                 if (!isFirst) {
@@ -2387,7 +2388,7 @@ var BatterLayer = cc.Layer.extend({
             );
 
             attackerNode.runAction(
-                cc.MoveTo.create(time, that.battleMidpoint)
+                cc.MoveTo.create(time, that._battleMidpoint)
             );
         };
 
@@ -2576,7 +2577,7 @@ var BatterLayer = cc.Layer.extend({
                     var effect = battleStep.getEffect();
                     var isCrit = battleStep.isCrit();
 
-                    var effect702_1 = cc.BuilderReader.load(main_scene_image.effect1_1, that);
+                    var effect702_1 = cc.BuilderReader.load(main_scene_image.effect702_1, that);
                     effect702_1.setPosition(attackerLocate);
                     that.addChild(effect702_1, EFFECT_Z_ORDER);
 

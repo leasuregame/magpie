@@ -201,9 +201,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.99999600648880005</real>
 										<real>1</real>
-										<real>1</real>
+										<real>0.82220619916915894</real>
+										<real>0.53529024124145508</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -299,6 +299,8 @@
 								<string>res/effect/effect/p106.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -484,8 +486,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5</real>
-									<real>2.5</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -498,7 +500,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>20</real>
+								<real>8</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -527,7 +529,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -738,8 +740,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5</real>
-									<real>2.5</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -752,7 +754,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-6</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -781,7 +783,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -992,8 +994,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5</real>
-									<real>2.5</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1006,7 +1008,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-6</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1035,7 +1037,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1246,8 +1248,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5</real>
-									<real>2.5</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1260,7 +1262,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>20</real>
+								<real>8</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1289,7 +1291,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1460,8 +1462,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5</real>
-									<real>2.5</real>
+									<real>1.3600000143051147</real>
+									<real>1.3600000143051147</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1493,7 +1495,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>194</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1656,7 +1658,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1666666269302368</real>
+			<real>0.20000000298023224</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

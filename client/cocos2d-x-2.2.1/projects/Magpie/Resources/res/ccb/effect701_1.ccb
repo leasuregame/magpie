@@ -156,7 +156,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>30</real>
+											<real>60</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>30</real>
+								<real>60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -347,7 +347,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-30</real>
+											<real>-60</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -403,7 +403,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-30</real>
+								<real>-60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -559,8 +559,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

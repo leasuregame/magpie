@@ -42,7 +42,7 @@ var MarkLayer = cc.Layer.extend({
         var node = this;
         var mainScene = MainScene.getInstance();
 
-        while (node != mainScene) {
+        while (node && node != mainScene) {
             if (!node.isVisible()) {
                 return false;
             }

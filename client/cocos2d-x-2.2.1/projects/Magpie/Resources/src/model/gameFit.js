@@ -629,7 +629,8 @@ var fit4Iphone4 = {
             "friendLayerItemPoint": cc.p(521, 157),
             "otherItemPoint": cc.p(628, 157),
             "messageItemPoint": cc.p(628, 157),
-            "configLayerItemPoint": cc.p(618, 608)
+            "configLayerItemPoint": cc.p(618, 608),
+            "greetingLabelItemPoint": cc.p(100, 610)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -1017,9 +1018,9 @@ var fit4Iphone4 = {
 
         },
         "speakerLayer": {
-            "msgBgLabelPoint": cc.p(380, 800),
-            "speakerIconPoint": cc.p(140, 800),
-            "speakerPoint": cc.p(190, 800)
+            "msgBgLabelPoint": cc.p(380, 870),
+            "speakerIconPoint": cc.p(140, 870),
+            "speakerPoint": cc.p(190, 870)
         },
         "spiritDetails": {
             "bgLayerPoint": cc.p(40, 0),
@@ -1287,6 +1288,22 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 512),
             "paymentItemPoint": cc.p(260, 432),
             "closeItemPoint": cc.p(460, 432)
+        },
+        "greetingLabel": {
+            "bgSpriteSize": cc.size(540, 660),
+            "bgSpritePoint": cc.p(360, 450),
+            "titleIconPoint": cc.p(360, 780),
+            "msgBgIconPoint": cc.p(110, 700),
+            "speakerIconPoint": cc.p(150, 700),
+            "msgEditBoxPoint": cc.p(345, 700),
+            "sendItemPoint": cc.p(560, 700),
+            "scrollViewLayerRect": cc.rect(94, 190, 500, 590),
+            "scrollViewBgLayerSize": cc.size(500, 480),
+            "scrollViewBgLayerPoint": cc.p(360, 400),
+            "scrollViewSize": cc.size(500, 470),
+            "scrollViewPoint": cc.p(110, 165),
+            "scrollViewHeight": 470,
+            "closeItemPoint": cc.p(605, 760)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1963,7 +1980,8 @@ var fit4Iphone5 = {
             "friendLayerItemPoint": cc.p(481, 167),
             "otherItemPoint": cc.p(588, 167),
             "messageItemPoint": cc.p(588, 167),
-            "configLayerItemPoint": cc.p(578, 749)
+            "configLayerItemPoint": cc.p(578, 749),
+            "greetingLabelItemPoint": cc.p(60, 751)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(0, 0),
@@ -2624,6 +2642,22 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 600),
             "paymentItemPoint": cc.p(220, 520),
             "closeItemPoint": cc.p(420, 520)
+        },
+        "greetingLabel": {
+            "bgSpriteSize": cc.size(540, 780),
+            "bgSpritePoint": cc.p(320, 550),
+            "titleIconPoint": cc.p(320, 930),
+            "msgBgIconPoint": cc.p(70, 850),
+            "speakerIconPoint": cc.p(110, 850),
+            "msgEditBoxPoint": cc.p(305, 850),
+            "sendItemPoint": cc.p(520, 850),
+            "scrollViewLayerRect": cc.rect(54, 190, 500, 590),
+            "scrollViewBgLayerSize": cc.size(500, 600),
+            "scrollViewBgLayerPoint": cc.p(320, 500),
+            "scrollViewSize": cc.size(500, 590),
+            "scrollViewPoint": cc.p(70, 205),
+            "scrollViewHeight": 590,
+            "closeItemPoint": cc.p(565, 918)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),

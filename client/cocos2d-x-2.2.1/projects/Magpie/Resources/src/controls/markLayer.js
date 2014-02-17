@@ -39,6 +39,17 @@ var MarkLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("MarkLayer onTouchBegan");
 
+        var node = this;
+        var mainScene = MainScene.getInstance();
+
+        while (node != mainScene) {
+            if (!node.isVisible()) {
+                return false;
+            }
+
+            node = node.getParent();
+        }
+
         return (!cc.rectContainsPoint(this._rect, touch.getLocation()));
     }
 });

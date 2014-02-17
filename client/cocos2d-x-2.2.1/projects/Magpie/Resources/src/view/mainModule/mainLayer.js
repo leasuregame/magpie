@@ -231,6 +231,15 @@ var MainLayer = cc.Layer.extend({
 
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
+        var greetingLabelItem = cc.MenuItemImage.create(
+            main_scene_image.button3,
+            main_scene_image.button3s,
+            this._onClickGreeting,
+            this
+        );
+
+        greetingLabelItem.setPosition(this._mainLayerFit.greetingLabelItemPoint);
+
         var menu = cc.Menu.create(
             lotteryLayerItem,
             treasureHuntLayerItem,
@@ -242,7 +251,8 @@ var MainLayer = cc.Layer.extend({
             achievementLayerItem,
             friendLayerItem,
             messageItem,
-            configLayerItem
+            configLayerItem,
+            greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -269,8 +279,6 @@ var MainLayer = cc.Layer.extend({
 
         abilityLabel.setString(ability);
         rankingLabel.setString(ranking);
-
-//        this.addChild(GreetingLabel.getInstance(), 5);
 
         return true;
     },
@@ -333,9 +341,21 @@ var MainLayer = cc.Layer.extend({
         }
     },
 
+    _onClickGreeting: function () {
+        cc.log("MainLayer _onClickGreeting");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var greetingLabel = GreetingLabel.getInstance();
+        if (greetingLabel.getParent()) {
+            greetingLabel.removeFromParent();
+        }
+        this.addChild(greetingLabel, 2);
+    },
+
     _onClickLayer: function (index) {
         return function () {
-            cc.log("MainMenuLayer _onClickLayer: " + index);
+            cc.log("MainLayer _onClickLayer: " + index);
 
             if (index == 1) {
                 if (this._lotteryGuide) {

@@ -36,6 +36,11 @@ exports.addEvents = (app, player) ->
       player.resetData()
       player.save()
 
+      app.get('messageService').pushMessage {
+        route: 'onResetData', 
+        msg: player.dailyData()
+      }, () ->
+
   player.emit('lineUp.change')
 
   return

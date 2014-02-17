@@ -28,8 +28,6 @@ Handler::buyProduct = (msg, session, next)->
 products =
 
   money: (playerId, product, times, next) ->
-
-
       player = null
       money = times * product.obtain
       gold = times * product.consume
@@ -90,13 +88,7 @@ products =
         totalCount = POWER_BUY_COUNT + vipPrivilege.buy_power_count
         curCount = totalCount - player.dailyGift.powerBuyCount + 1
 
-        curCounts = [curCount..curCount+times-1]
-        totalGold = 0
-        curCounts.forEach (c) -> 
-          g = product.consume + product.consume_inc * (c-1)
-          g = _.min([g, product.consume_max])
-          totalGold += g
-
+        totalGold = countTotalGold curCount, product, times
         if player.gold < totalGold
           return cb {code: 501, msg: "魔石不足"}
         
@@ -125,7 +117,6 @@ products =
     player = null
 
     buyCount = product.obtain * times
-    gold = product.consume * times
 
     async.waterfall [
       (cb) ->
@@ -134,19 +125,22 @@ products =
 
         player = res
         if player.dailyGift.challengeBuyCount <= 0
-          cb {code: 501, msg: "购买次数已经用完"}
+          return cb {code: 501, msg: "购买次数已经用完"}
 
-        else if player.dailyGift.challengeBuyCount < times
-          cb {code: 501, msg: "超过购买次数上限"}
+        if player.dailyGift.challengeBuyCount < times
+          return cb {code: 501, msg: "超过购买次数上限"}
 
-        else if player.gold < gold
-          cb  {code: 501, msg: "魔石不足"}
+        totalCount = table.getTableItem('daily_gift', 1).challenge_buy_count
+        curCount = totalCount - player.dailyGift.challengeBuyCount + 1
+        totalGold = countTotalGold curCount, product, times
 
-        else
-          player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - times
-          player.updateGift 'challengeCount' , player.dailyGift.challengeCount + buyCount
-          player.decrease 'gold', gold
-          cb()
+        if player.gold < totalGold
+          return cb {code: 501, msg: "魔石不足"}
+
+        player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - times
+        player.updateGift 'challengeCount' , player.dailyGift.challengeCount + buyCount
+        player.decrease 'gold', totalGold
+        cb()
 
     ],(err) ->
       if err
@@ -203,7 +197,6 @@ products =
         }})
 
   cardCount: (playerId, product, times, next) ->
-    consume = product.consume*times
     obtain = product.obtain*times
 
     playerManager.getPlayerInfo pid: playerId, (err, player) ->
@@ -213,10 +206,13 @@ products =
       if player.cardsCount >= RESOURE_LIMIT.card_count_limit or player.cardsCount + times > RESOURE_LIMIT.card_count_limit
         return next(null, {code: 501, msg: "卡牌容量已经达到最大值"})
 
-      if player.gold < product.consume*times
+      curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
+      totalGold = countTotalGold curCount, product, times
+      console.log '-b-', totalGold
+      if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
 
-      player.decrease(product.consume_type, consume)
+      player.decrease(product.consume_type, totalGold)
       player.increase('cardsCount', obtain)
       player.save()
 
@@ -227,3 +223,10 @@ products =
           cardsCount: player.cardsCount
       })
 
+countTotalGold = (curCount, product, times) ->
+  curCounts = [curCount..curCount+times-1]
+  console.log '-a-', curCount, curCounts, times
+  curCounts.reduce (preVal,curVal) -> 
+    g = product.consume + product.consume_inc * (curVal-1)
+    preVal + _.min([g, product.consume_max])
+  , 0

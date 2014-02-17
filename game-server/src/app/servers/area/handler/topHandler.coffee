@@ -40,6 +40,3 @@ Handler::orderList = (msg, session, next) ->
 				pass: results[2]
 			}
 		})
-
-Handler::playerPass = (msg, session, next) ->
-	

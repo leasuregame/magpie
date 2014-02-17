@@ -13,7 +13,7 @@ describe("Area Server", function() {
             beforeAll(function() {
                 doAjax('/loaddata/csv', {}, function() {
                     doAjax('/update/player/' + 114 ,{
-                        gold: 200
+                        gold: 1000
                     },function(){});
                 });
 
@@ -26,7 +26,7 @@ describe("Area Server", function() {
 
             var challengeCount = 10;
             var challengeBuyCount = 10;
-            var gold = 200;
+            var gold = 1000;
 
             describe('购买失败', function() {
                 beforeEach(function() {
@@ -51,12 +51,17 @@ describe("Area Server", function() {
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
+                        console.log('第' + time + '次购买');
                         request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
                             challengeCount++;
                             challengeBuyCount--;
-                            gold -= BUY_CHALLENGECOUNT.gold;
+
+                            var consumeGold = BUY_CHALLENGECOUNT.gold + (time-1) * 10
+                            if (consumeGold > 60) consumeGold = 60;
+
+                            gold -= consumeGold;
                             expect(data.msg.challengeCount).toEqual(challengeCount);
                             expect(data.msg.consume).toEqual({
                                 "key": "gold",

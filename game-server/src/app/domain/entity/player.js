@@ -339,6 +339,7 @@ var Player = (function(_super) {
             lowLuckyCard: 1,
             highLuckyCard: 1,
             highTenLuckCard: 1,
+            frb: 1, // 首次充值礼包是否领取标记
             recharge: 0
         },
         levelReward: [],
@@ -410,6 +411,16 @@ var Player = (function(_super) {
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.dailyData = function() {
+        return {
+            dailyGift: this.dailyGift,
+            pass: this.pass,
+            task: this.task,
+            spiritPool: this.spiritPool,
+            friendsCount: this.friendsCount
+        };
     };
 
     Player.prototype.isReset = function() {
@@ -1139,11 +1150,17 @@ var Player = (function(_super) {
     };
 
     Player.prototype.getFirstTime = function() {
+        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb
+        if (this.cash <= 0) {
+            frb = 0;
+        }
+
         return {
             lowLuckyCard: this.firstTime.lowLuckyCard,
             highLuckyCard: this.firstTime.highLuckyCard,
             highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard,
-            recharge: this.firstTime.recharge ||  0
+            recharge: this.firstTime.recharge || 0,
+            firstRechargeBox: frb
         };
     };
 

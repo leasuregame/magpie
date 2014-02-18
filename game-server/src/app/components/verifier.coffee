@@ -77,8 +77,9 @@ executeVerify = (app, queue) ->
 
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
-          updatePlayer(app, item, body)
+          return updatePlayer(app, item, body, done)
         else if body.status is 21005
+          #收据服务器当前不可用
           item.doing = false
           updateBuyRecord(app, item.id, {status: body.status})
         else 
@@ -144,41 +145,6 @@ updatePlayer = (app, buyRecord, receiptResult) ->
       return
 
     successMsg(app, player, isFirstRechage)
-    
-noticeNewYearActivity = (app, player, cb) ->
-  startDate = new Date app.get('sharedConf').newYearActivity.startDate
-  endDate = new Date app.get('sharedConf').newYearActivity.endDate
-  endDate.setDate(endDate.getDate()+1)
-  now = new Date()
-
-  if startDate <= now < endDate
-    app.get('dao').order.rechargeOnPeriod player.id, app.get('sharedConf').newYearActivity.startDate, app.get('sharedConf').newYearActivity.endDate, (err, cash) ->
-      return cb(err) if err
-      if cash <= 0
-        return cb()
-
-      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
-      if len > 0
-        recharge = player.activities?.recharge or 0
-        flag = (Math.pow(2, len)-1)^recharge
-        sendNewYearMsg(app, player, flag, recharge) if flag > 0
-
-      return cb()
-  else
-    cb()
-
-sendNewYearMsg = (app, player, flag, recharge) ->
-  app.get('messageService').pushByPid player.id, {
-    route: 'onNewYearReward',
-    msg: {
-      flag: {
-        canGet: flag
-        hasGet: recharge
-      }
-    }
-  }, (err, res) ->
-    if err
-      logger.error('faild to send message to playerId ', playerId)
 
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)
@@ -235,10 +201,42 @@ updateBuyRecord = (app, id, data, cb) ->
   app.get('dao').buyRecord.update {
     where: id: id
     data: data
+  }, cb
+
+noticeNewYearActivity = (app, player, cb) ->
+  startDate = new Date app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date app.get('sharedConf').newYearActivity.endDate
+  endDate.setDate(endDate.getDate()+1)
+  now = new Date()
+
+  if startDate <= now < endDate
+    app.get('dao').order.rechargeOnPeriod player.id, app.get('sharedConf').newYearActivity.startDate, app.get('sharedConf').newYearActivity.endDate, (err, cash) ->
+      return cb(err) if err
+      if cash <= 0
+        return cb()
+
+      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
+      if len > 0
+        recharge = player.activities?.recharge or 0
+        flag = (Math.pow(2, len)-1)^recharge
+        sendNewYearMsg(app, player, flag, recharge) if flag > 0
+
+      return cb()
+  else
+    cb()
+
+sendNewYearMsg = (app, player, flag, recharge) ->
+  app.get('messageService').pushByPid player.id, {
+    route: 'onNewYearReward',
+    msg: {
+      flag: {
+        canGet: flag
+        hasGet: recharge
+      }
+    }
   }, (err, res) ->
     if err
-      logger.error('faild to update buy record.', err)
-    cb(err, res)
+      logger.error('faild to send message to playerId ', playerId)
 
 successMsg = (app, player, isFirstRechage) ->
   app.get('messageService').pushByPid player.id, {

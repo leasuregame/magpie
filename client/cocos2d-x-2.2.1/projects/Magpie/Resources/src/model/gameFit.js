@@ -1304,7 +1304,8 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(500, 470),
             "scrollViewPoint": cc.p(110, 165),
             "scrollViewHeight": 470,
-            "closeItemPoint": cc.p(605, 760)
+            "closeItemPoint": cc.p(605, 760),
+            "speakerNumPoint": cc.p(127, 711)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -2659,7 +2660,8 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(500, 590),
             "scrollViewPoint": cc.p(70, 205),
             "scrollViewHeight": 590,
-            "closeItemPoint": cc.p(565, 918)
+            "closeItemPoint": cc.p(565, 918),
+            "speakerNumPoint": cc.p(87, 861)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),

@@ -49,6 +49,14 @@ var GreetingLabel = LazyLayer.extend({
         speakerIcon.setScale(0.6);
         this.addChild(speakerIcon);
 
+        var speakerNumIcon = cc.Sprite.create(main_scene_image.icon373);
+        speakerNumIcon.setPosition(this._greetingLabelFit.speakerNumPoint);
+        this.addChild(speakerNumIcon);
+
+        this._speakerNumLabel = cc.LabelTTF.create(50, "STHeitiTC-Medium", 20);
+        this._speakerNumLabel.setPosition(this._greetingLabelFit.speakerNumPoint);
+        this.addChild(this._speakerNumLabel);
+
         this._msgEditBox = cc.EditBox.create(cc.size(325, 48), cc.Scale9Sprite.create(main_scene_image.edit));
         this._msgEditBox.setPosition(this._greetingLabelFit.msgEditBoxPoint);
         this._msgEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
@@ -75,7 +83,7 @@ var GreetingLabel = LazyLayer.extend({
 
         closeItem.setPosition(this._greetingLabelFit.closeItemPoint);
 
-        var menu = LazyMenu.create(sendItem,closeItem);
+        var menu = LazyMenu.create(sendItem, closeItem);
         menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -98,7 +106,7 @@ var GreetingLabel = LazyLayer.extend({
         return true;
     },
 
-    insertMessages: function() {
+    insertMessages: function () {
         cc.log("GreetingLabel insertMessages");
         var msgList = gameData.greeting.getMsgList();
         var len = msgList.length;
@@ -202,7 +210,7 @@ var GreetingLabel = LazyLayer.extend({
         }, text);
     },
 
-    _onClickClose: function() {
+    _onClickClose: function () {
         cc.log("GreetingLabel _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);

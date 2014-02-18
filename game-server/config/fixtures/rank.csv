@@ -1,7 +1,7 @@
-id;createTime;playerId;ranking;recentChallenger
-2;0;101;20000;[]
-1;0;100;20001;[]
-4;0;2;20002;[]
-5;0;1;20003;[]
+id;createTime;playerId;ranking;recentChallenger;;
+2;0;101;19;[];;
+1;0;100;15;[];;
+4;0;2;14;[];;
+5;0;1;20;[];;
 3;0;3;10002;[10000,10001,10002]
 6;0;4;10003;[1,2,3]

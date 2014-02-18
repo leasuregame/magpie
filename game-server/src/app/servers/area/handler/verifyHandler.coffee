@@ -13,8 +13,8 @@ Handler = (@app) ->
 # 返回的验证信息：
 # https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW1
 Handler::appStore = (msg, session, next) ->
-	# for test
-	return vitualBuy(@app, msg, session, next) if msg.id?
+	# #for test
+	# return vitualBuy(@app, msg, session, next) if msg.id?
 
 	playerId = session.get('playerId')
 	receipt = msg.receipt

@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡次数
   `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
-  `firstTime` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `firstTime` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
@@ -87,6 +87,8 @@ CREATE TABLE IF NOT EXISTS `friend` (
   `friendId` INT(10) UNSIGNED NOT NULL,
   `giveCount` INT(10) UNSIGNED DEFAULT '0',
   `receiveCount` INT(10) UNSIGNED DEFAULT '0',
+  `friendGiveCount` INT(10) UNSIGNED DEFAULT '0',
+  `friendReceiveCount` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`playerId`, `friendId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

@@ -705,12 +705,21 @@ var main_scene_image = {
     effect4_2: "res/ccb/effect4_2.ccbi",
     effect5_1: "res/ccb/effect5_1.ccbi",
     effect5_2: "res/ccb/effect5_2.ccbi",
+    effect5_3: "res/ccb/effect5_3.ccbi",
     effect6_1: "res/ccb/effect6_1.ccbi",
     effect6_2: "res/ccb/effect6_2.ccbi",
     effect7_1: "res/ccb/effect7_1.ccbi",
     effect7_2: "res/ccb/effect7_2.ccbi",
     effect8: "res/ccb/effect8.ccbi",
     effect9: "res/ccb/effect9.ccbi",
+    effect10_1: "res/ccb/effect10_1.ccbi",
+    effect10_2: "res/ccb/effect10_2.ccbi",
+    effect10_3: "res/ccb/effect10_3.ccbi",
+    effect11_1: "res/ccb/effect11_1.ccbi",
+    effect11_2: "res/ccb/effect11_2.ccbi",
+    effect11_3: "res/ccb/effect11_3.ccbi",
+    effect12_1: "res/ccb/effect12_1.ccbi",
+    effect12_2: "res/ccb/effect12_2.ccbi",
 
     effect300_1: "res/ccb/effect300_1.ccbi",
     effect300_2: "res/ccb/effect300_2.ccbi",
@@ -1233,7 +1242,7 @@ var main_scene_res = [
 ];
 
 var cardResIdList = [
-    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+    2, 3, 5, 7, 8, 9, 10, 12, 13, 16, 18, 19, 20, 22, 25, 28, 29, 30, 31, 32, 33, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {

@@ -5,8 +5,7 @@ var MessageService = require('./app/service/messageService');
 var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
-var argsFilter = require('./app/servers/area/filter/argsFilter');
-var loginFilter = require('./app/servers/connector/filter/loginFilter');
+var cdFilter = require('./app/servers/area/filter/cdFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
@@ -85,6 +84,10 @@ app.configure('production|development', function() {
   app.rpcFilter(pomelo.rpcFilters.rpcLog());
 
   watchSharedConf(app);
+
+  app.set('errorHandler', function(err, msg, resp, session, opts, cb){
+    cb(err, resp, opts);
+  });
 });
 
 
@@ -98,7 +101,6 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
-  //app.filter(loginFilter());
 });
 
 app.configure('production|development', 'gate', function() {
@@ -138,7 +140,7 @@ app.configure('production|development', 'area', function() {
     app: app
   });
   areaUtil.checkFlagFile(app);
-  //app.filter(argsFilter());
+  app.before(cdFilter());
 
   var areaId = app.get('curServer').area;
   var mysqlConfig = require(app.getBase() + '/config/mysql.json');

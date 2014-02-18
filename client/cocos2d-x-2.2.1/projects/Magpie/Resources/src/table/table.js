@@ -33,6 +33,8 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_price": "卡牌价格配置表",
@@ -45,8 +47,6 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -856,6 +856,191 @@ var outputTables = {
             }
         }
     },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 500,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 3000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 20000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 200,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 500,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 3000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 20000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 500,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 2000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
     "card_grow": {
         "colComment": {},
         "rows": {
@@ -1460,7 +1645,7 @@ var outputTables = {
                 "hp": 182,
                 "normal_atk_id": 10,
                 "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
-                "url": 8
+                "url": 5
             },
             "22": {
                 "id": 22,
@@ -1472,7 +1657,7 @@ var outputTables = {
                 "hp": 378,
                 "normal_atk_id": 10,
                 "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
-                "url": 8
+                "url": 5
             },
             "23": {
                 "id": 23,
@@ -1487,7 +1672,7 @@ var outputTables = {
                 "normal_atk_id": 10,
                 "effect_id": 302,
                 "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
-                "url": 8
+                "url": 5
             },
             "24": {
                 "id": 24,
@@ -1502,7 +1687,7 @@ var outputTables = {
                 "normal_atk_id": 10,
                 "effect_id": 302,
                 "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
-                "url": 8
+                "url": 5
             },
             "25": {
                 "id": 25,
@@ -1517,7 +1702,7 @@ var outputTables = {
                 "normal_atk_id": 10,
                 "effect_id": 302,
                 "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
-                "url": 8
+                "url": 5
             },
             "31": {
                 "id": 31,
@@ -1598,7 +1783,7 @@ var outputTables = {
                 "hp": 185,
                 "normal_atk_id": 11,
                 "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
-                "url": 10
+                "url": 8
             },
             "37": {
                 "id": 37,
@@ -1610,7 +1795,7 @@ var outputTables = {
                 "hp": 377,
                 "normal_atk_id": 11,
                 "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
-                "url": 10
+                "url": 8
             },
             "38": {
                 "id": 38,
@@ -1625,7 +1810,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 503,
                 "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
-                "url": 10
+                "url": 8
             },
             "39": {
                 "id": 39,
@@ -1640,7 +1825,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 503,
                 "description": "虽然我长个正太样儿，却有颗大叔的心。",
-                "url": 10
+                "url": 8
             },
             "40": {
                 "id": 40,
@@ -1655,7 +1840,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 503,
                 "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
-                "url": 10
+                "url": 8
             },
             "41": {
                 "id": 41,
@@ -1736,7 +1921,7 @@ var outputTables = {
                 "hp": 181,
                 "normal_atk_id": 11,
                 "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
-                "url": 14
+                "url": 10
             },
             "47": {
                 "id": 47,
@@ -1748,7 +1933,7 @@ var outputTables = {
                 "hp": 371,
                 "normal_atk_id": 11,
                 "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
-                "url": 14
+                "url": 10
             },
             "48": {
                 "id": 48,
@@ -1763,7 +1948,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 404,
                 "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
-                "url": 14
+                "url": 10
             },
             "49": {
                 "id": 49,
@@ -1778,7 +1963,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 404,
                 "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
-                "url": 14
+                "url": 10
             },
             "50": {
                 "id": 50,
@@ -1793,7 +1978,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 404,
                 "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
-                "url": 14
+                "url": 10
             },
             "56": {
                 "id": 56,
@@ -1874,7 +2059,7 @@ var outputTables = {
                 "hp": 198,
                 "normal_atk_id": 11,
                 "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
-                "url": 16
+                "url": 13
             },
             "62": {
                 "id": 62,
@@ -1886,7 +2071,7 @@ var outputTables = {
                 "hp": 394,
                 "normal_atk_id": 11,
                 "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
-                "url": 16
+                "url": 13
             },
             "63": {
                 "id": 63,
@@ -1901,7 +2086,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 405,
                 "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
-                "url": 16
+                "url": 13
             },
             "64": {
                 "id": 64,
@@ -1916,7 +2101,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 405,
                 "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
-                "url": 16
+                "url": 13
             },
             "65": {
                 "id": 65,
@@ -1931,7 +2116,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 405,
                 "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
-                "url": 16
+                "url": 13
             },
             "76": {
                 "id": 76,
@@ -1943,7 +2128,7 @@ var outputTables = {
                 "hp": 182,
                 "normal_atk_id": 11,
                 "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
-                "url": 19
+                "url": 16
             },
             "77": {
                 "id": 77,
@@ -1955,7 +2140,7 @@ var outputTables = {
                 "hp": 375,
                 "normal_atk_id": 11,
                 "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
-                "url": 19
+                "url": 16
             },
             "78": {
                 "id": 78,
@@ -1970,7 +2155,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 702,
                 "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
-                "url": 19
+                "url": 16
             },
             "79": {
                 "id": 79,
@@ -1985,7 +2170,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 702,
                 "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
-                "url": 19
+                "url": 16
             },
             "80": {
                 "id": 80,
@@ -2000,7 +2185,7 @@ var outputTables = {
                 "normal_atk_id": 11,
                 "effect_id": 702,
                 "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
-                "url": 19
+                "url": 16
             },
             "86": {
                 "id": 86,
@@ -2426,7 +2611,7 @@ var outputTables = {
                 "hp": 187,
                 "normal_atk_id": 12,
                 "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
-                "url": 25
+                "url": 29
             },
             "142": {
                 "id": 142,
@@ -2438,7 +2623,7 @@ var outputTables = {
                 "hp": 400,
                 "normal_atk_id": 12,
                 "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
-                "url": 25
+                "url": 29
             },
             "143": {
                 "id": 143,
@@ -2453,7 +2638,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 806,
                 "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。",
-                "url": 25
+                "url": 29
             },
             "144": {
                 "id": 144,
@@ -2468,7 +2653,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 806,
                 "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？",
-                "url": 25
+                "url": 29
             },
             "145": {
                 "id": 145,
@@ -2483,7 +2668,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 806,
                 "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。",
-                "url": 25
+                "url": 29
             },
             "146": {
                 "id": 146,
@@ -2702,7 +2887,7 @@ var outputTables = {
                 "hp": 190,
                 "normal_atk_id": 12,
                 "description": "我怎么也是个有编制的神，可不是临时工。",
-                "url": 34
+                "url": 33
             },
             "162": {
                 "id": 162,
@@ -2714,7 +2899,7 @@ var outputTables = {
                 "hp": 371,
                 "normal_atk_id": 12,
                 "description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
-                "url": 34
+                "url": 33
             },
             "163": {
                 "id": 163,
@@ -2729,7 +2914,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 807,
                 "description": "这次能提拔，多亏巨灵神他们给我指了条路。",
-                "url": 34
+                "url": 33
             },
             "164": {
                 "id": 164,
@@ -2744,7 +2929,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 807,
                 "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！",
-                "url": 34
+                "url": 33
             },
             "165": {
                 "id": 165,
@@ -2759,7 +2944,7 @@ var outputTables = {
                 "normal_atk_id": 12,
                 "effect_id": 807,
                 "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。",
-                "url": 34
+                "url": 33
             },
             "166": {
                 "id": 166,
@@ -9654,191 +9839,6 @@ var outputTables = {
                 "rate_per_card": 4,
                 "max_num": 25,
                 "no_work_count": 10
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 500,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 3000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 20000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 200,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 500,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 3000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 20000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 100,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 500,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 2000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },

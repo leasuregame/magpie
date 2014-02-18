@@ -455,6 +455,28 @@ lz.replaceStr = function (str) {
     return str;
 };
 
+lz.checkPoint = function (point) {
+    cc.log("lz checkPoint");
+
+    var x = point.x;
+    var y = point.y;
+    var gameView = gameFit.GAME_VIEW;
+
+    var minX = gameView.x;
+    var maxX = minX + gameView.width;
+
+    var minY = gameView.y;
+    var maxY = minY + gameView.height;
+
+    x = Math.max(minX, x);
+    x = Math.min(maxX, x);
+
+    y = Math.max(minY, y);
+    y = Math.min(maxY, y);
+
+    return cc.p(x, y)
+};
+
 
 /*
  * 数组去重

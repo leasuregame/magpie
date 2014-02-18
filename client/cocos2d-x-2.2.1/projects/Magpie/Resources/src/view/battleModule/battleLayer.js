@@ -1457,11 +1457,16 @@ var BatterLayer = cc.Layer.extend({
                                 nextStepCallback1();
                             });
 
-                            var gameMidpointX = gameFit.GAME_MIDPOINT.x;
+                            var x = (attackerLocate.x + targetLocate.x) / 2;
+                            var y = (attackerLocate.y + targetLocate.y) / 2;
+                            var point = lz.checkPoint(cc.p(lz.random(x - 100, x + 100), y));
+
+                            cc.log(point.x);
+                            cc.log(point.y);
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 80, gameMidpointX + 80), (attackerLocate.y + targetLocate.y) / 2),
+                                point,
                                 targetLocate
                             ];
 
@@ -3119,11 +3124,13 @@ var BatterLayer = cc.Layer.extend({
                                 nextStepCallback1();
                             });
 
-                            var gameMidpointX = gameFit.GAME_MIDPOINT.x;
+                            var x = (attackerLocate.x + targetLocate.x) / 2;
+                            var y = (attackerLocate.y + targetLocate.y) / 2;
+                            var point = lz.checkPoint(cc.p(lz.random(x - 200, x + 200), y));
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 300, gameMidpointX + 300), (attackerLocate.y + targetLocate.y) / 2),
+                                point,
                                 targetLocate
                             ];
 

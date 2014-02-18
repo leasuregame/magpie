@@ -7,8 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>junyu lu</LastAuthor>
+  <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-02-18T10:08:51Z</Created>
+  <LastSaved>2014-02-18T02:47:59Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,7 +21,7 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>14520</WindowHeight>
-  <WindowWidth>32220</WindowWidth>
+  <WindowWidth>37420</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -37,7 +38,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="道具配置表">
-  <Table ss:ExpandedColumnCount="12" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="124"/>
    <Column ss:AutoFitWidth="0" ss:Width="109"/>
@@ -45,6 +46,9 @@
    <Column ss:AutoFitWidth="0" ss:Width="108"/>
    <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="124"/>
    <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="166"/>
+   <Column ss:Width="108"/>
+   <Column ss:Width="124"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">排序</Data></Cell>
@@ -58,6 +62,8 @@
     <Cell><Data ss:Type="String">是否显示在商城界面</Data></Cell>
     <Cell><Data ss:Type="String">每次消耗增量</Data></Cell>
     <Cell><Data ss:Type="String">每次消耗最大值</Data></Cell>
+    <Cell><Data ss:Type="String">可打折的数量</Data></Cell>
+    <Cell><Data ss:Type="String">折扣</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -72,6 +78,8 @@
     <Cell><Data ss:Type="String">isVisible</Data></Cell>
     <Cell><Data ss:Type="String">consume_inc</Data></Cell>
     <Cell><Data ss:Type="String">consume_max</Data></Cell>
+    <Cell><Data ss:Type="String">discount_num</Data></Cell>
+    <Cell><Data ss:Type="String">discount</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -110,6 +118,8 @@
     <Cell><Data ss:Type="String">speaker</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -157,6 +167,8 @@
     <Cell><Data ss:Type="String">challengeCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
@@ -168,11 +180,7 @@
     <Cell><Data ss:Type="String">cardCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="Number">60</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="11"><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
   </Table>
@@ -188,7 +196,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <RangeSelection>R5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

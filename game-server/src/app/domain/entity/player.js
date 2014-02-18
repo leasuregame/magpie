@@ -255,7 +255,8 @@ var Player = (function(_super) {
         'teachingStep',
         'exchangeCards',
         'activities',
-        'initRate'
+        'initRate',
+        'speaker'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -352,7 +353,8 @@ var Player = (function(_super) {
             star2: 0,
             star3: 0,
             star4: 0
-        }
+        },
+        speaker: 0
     };
 
     Player.prototype.resetData = function() {

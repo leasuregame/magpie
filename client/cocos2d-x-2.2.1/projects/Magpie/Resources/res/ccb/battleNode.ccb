@@ -8931,8 +8931,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>1.0499999523162842</real>
+									<real>1.0499999523162842</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -8945,7 +8945,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-3.3333320617675781</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -9712,7 +9712,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>56.25</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -14824,7 +14824,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.033333335071802139</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -14837,7 +14854,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666667461395264</real>
+			<real>0.033333335071802139</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

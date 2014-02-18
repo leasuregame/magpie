@@ -185,7 +185,7 @@ var Shop = Entity.extend({
             }
         }
 
-        productList.sort(this._cmp2);
+        productList.sort(this._cmp3);
 
         return productList;
     },
@@ -535,7 +535,40 @@ var Shop = Entity.extend({
             }
 
             return product;
+        },
 
+        speaker: function (table) {
+            var product = {
+                name: table.name,
+                consumeType: table.consume_type,
+                price: table.consume,
+                obtain: table.obtain,
+                unit: "喇叭",
+                count: 0,
+                tip: "",
+                remainTimes: MAX_REMAIN_TIMES,
+                discount_num: table.discount_num,
+                discount: table.discount
+            };
+
+            var player = gameData.player;
+
+            var count = Math.floor(player.get("gold") / product.price);
+
+            if (count >= table.discount_num) {
+                count = Math.floor(player.get("gold") / (product.price * table.discount * 0.1));
+            }
+
+            if (count <= 0) {
+                product.tip = "魔石不足";
+                product.count = 0;
+                return product;
+            } else {
+                product.count = count;
+                product.tip = "魔石不足";
+            }
+
+            return product;
         }
 
     },
@@ -599,6 +632,15 @@ var Shop = Entity.extend({
             return {
                 cardsCount: times
             }
+        },
+
+        speaker: function (msg, times) {
+            gameData.player.set("speaker", msg.speaker);
+            gameData.player.set(msg.consume.key, msg.consume.value);
+
+            return {
+                speaker: times
+            }
         }
     },
 
@@ -608,8 +650,11 @@ var Shop = Entity.extend({
 
     _cmp2: function (a, b) {
         return (a.id - b.id);
-    }
+    },
 
+    _cmp3: function (a, b) {
+        return (a.order - b.order);
+    }
 });
 
 

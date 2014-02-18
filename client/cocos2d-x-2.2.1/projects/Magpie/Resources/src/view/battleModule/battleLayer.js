@@ -1521,7 +1521,7 @@ var BatterLayer = cc.Layer.extend({
                 time: 1,
                 fn: function () {
                     var effect12_1 = cc.BuilderReader.load(main_scene_image.effect12_1, that);
-                    effect12_1.setPosition(targetLocate);
+                    effect12_1.setPosition(attackerLocate);
                     that.addChild(effect12_1, EFFECT_Z_ORDER);
 
                     if (that._getDirection(attacker) == "e") {

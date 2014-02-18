@@ -1461,7 +1461,7 @@ var BatterLayer = cc.Layer.extend({
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 300, gameMidpointX + 300), (attackerLocate.y + targetLocate.y) / 2),
+                                cc.p(lz.random(gameMidpointX - 150, gameMidpointX + 150), (attackerLocate.y + targetLocate.y) / 2),
                                 targetLocate
                             ];
 

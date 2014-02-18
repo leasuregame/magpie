@@ -1236,7 +1236,7 @@ var main_scene_res = [
 ];
 
 var cardResIdList = [
-    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+    2, 3, 5, 7, 8, 9, 10, 12, 13, 16, 18, 19, 20, 22, 25, 28, 29, 30, 31, 32, 33, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {

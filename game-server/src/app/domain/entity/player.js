@@ -1136,7 +1136,7 @@ var Player = (function(_super) {
     Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
-            if (ft[key] == 1) {
+            if (ft[key]) {
                 return true;
             }
         }
@@ -1152,9 +1152,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.getFirstTime = function() {
-        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb
+        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb;
+        // frb = 1 为可领取状态
         if (this.cash <= 0) {
-            frb = 0;
+            frb = 0; // 不可领取状态
+        }
+
+        if (this.cash > 0 && frb == 0) {
+            frb = 2; // 已领取状态
         }
 
         return {
@@ -1280,7 +1285,7 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.getFirstTime() : void 0,
+            firstTime: this.getFirstTime(),
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,

@@ -1,7 +1,16 @@
 extends adminLayout
 
 block content
-  
+  div.jumbotron
+    h1 版本用户分布
+    div.row
+      - each count in counts
+        a(href='/admin/version/details/#{count.version}')
+          div.vblock.col-sm-3
+            div.version-header #{count.version}
+            div.version-body.text-center #{count.num}
+            div.version-footer 点击查看详情
+
   div.jumbotron
     h1 游戏 Web API
       small.pull-right 115.29.175.156:9090

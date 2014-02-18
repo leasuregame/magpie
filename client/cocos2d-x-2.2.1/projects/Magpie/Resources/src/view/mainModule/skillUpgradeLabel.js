@@ -298,6 +298,89 @@ var SkillUpgradeLabel = cc.Node.extend({
         }
     },
 
+    _extract: function () {
+        cc.log("CardTrainLabel _extract");
+
+        if(this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+        this._extractEffect = cc.BuilderReader.load(main_scene_image.uiEffect85, this);
+        var animationManager = this._extractEffect.animationManager;
+        animationManager.runAnimationsForSequenceNamedTweenDuration(this._skillUpgradeLabelFit.extractEffectUrl, 0);
+        this._effectTime = animationManager.getSequenceDuration(
+            animationManager.getRunningSequenceName()
+        );
+        var date = new Date();
+        this._startTime = date.getTime();
+        this._extractEffect.setPosition(this._skillUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._extractEffect, 10);
+    },
+
+    ccbFnExtract: function () {
+        cc.log("CardTrainLabel ccbFnExtract");
+
+        var date = new Date();
+        var useTime = this._effectTime - (date.getTime() - this._startTime) / 1000;
+        var nowSkillPoint = this._dummyCard.get("skillPoint");
+        var tmpTime = useTime / 0.05;
+        var tmpSkillPoint = nowSkillPoint / tmpTime;
+
+        var fn = function () {
+
+            if (nowSkillPoint < tmpSkillPoint) {
+                tmpSkillPoint = nowSkillPoint;
+            }
+
+            nowSkillPoint -= tmpSkillPoint;
+
+            var skillPoint = gameData.player.get("skillPoint") - nowSkillPoint;
+            this._skillPointLabel.setString(Math.round(skillPoint));
+
+            if (nowSkillPoint <= 0) {
+                this._skillPointLabel.setString(gameData.player.get("skillPoint"));
+
+                this._skillLvLabel.setString(this._dummyCard.get("skillLv"));
+                this._skillHarmLabel.setString(this._dummyCard.get("skillHarm") + "%");
+
+                this._nextSkillLvLabel.setString(this._leadCard.get("skillLv"));
+                this._nextSkillHarmLabel.setString(this._leadCard.get("skillHarm") + "%");
+
+                this._arrowLabel1.setVisible(true);
+                this._arrowLabel2.setVisible(true);
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._nextSkillLvLabel.runAction(spawnAction.clone());
+                this._nextSkillHarmLabel.runAction(spawnAction.clone());
+                this._upgradeItem.setEnabled(true);
+
+                this.unschedule(fn);
+                if (this._extractEffect != null) {
+                    this._extractEffect.removeFromParent();
+                    this._extractEffect = null;
+                }
+
+            }
+
+        };
+
+        this.schedule(fn, 0.05);
+    },
+
     _onClickSelectLeadCard: function () {
         cc.log("SkillUpgradeLabel _onClickSelectLeadCard");
 
@@ -307,6 +390,12 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._effect.removeFromParent();
             this._effect = null;
         }
+
+        if (this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -393,9 +482,11 @@ var SkillUpgradeLabel = cc.Node.extend({
         }
 
         var that = this;
+        this._dummyCard = lz.clone(that._leadCard);
+
         var cb = function() {
             that._leadCard.extract(function () {
-                that.update();
+                that._extract();
             }, EXTRACT_SKILL_POINT);
         };
 

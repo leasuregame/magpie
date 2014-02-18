@@ -221,7 +221,18 @@ var SpiritPoolLayer = cc.Layer.extend({
 
             this.scheduleOnce(function () {
                 spirit.removeFromParent();
-                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
+                if(this._reward.isDouble) {
+                    var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect86, this);
+                    rewardEffect.controller.ccbSpiritLabel.setString("+" + this._reward.spirit_obtain);
+                    rewardEffect.setPosition(gameFit.GAME_MIDPOINT);
+                    this.addChild(rewardEffect);
+                    rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                        rewardEffect.removeFromParent();
+                    });
+                } else {
+                    TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
+                }
+
                 this.update();
 
                 if (noviceTeachingLayer.isNoviceTeaching()) {

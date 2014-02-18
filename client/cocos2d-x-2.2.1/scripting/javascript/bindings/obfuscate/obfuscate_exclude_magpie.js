@@ -209,3 +209,5 @@ CSSProperties.prototype.ccbAreaNameLabel;
 CSSProperties.prototype.ccbFnPlayMusic;
 CSSProperties.prototype.ccbTenLotteryTip;
 CSSProperties.prototype.ccbFragment;
+CSSProperties.prototype.ccbFnExtract;
+CSSProperties.prototype.ccbSpiritLabel;

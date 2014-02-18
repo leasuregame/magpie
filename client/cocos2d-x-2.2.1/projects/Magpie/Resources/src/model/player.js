@@ -49,6 +49,7 @@ var Player = Entity.extend({
     _maxTournamentCount: 0,
     _tournamentCount: 0,
     _ability: 0,        // 战斗力
+    _speaker: 0,        // 喇叭数量
 
     _maxLv: 0,          // 最大等级
     _maxPower: 0,       // 最大体力
@@ -130,6 +131,12 @@ var Player = Entity.extend({
         this.set("powerTimestamp", data.power.time);
         this.set("goldCards", data.goldCards);
         this.set("vip", data.vip);
+
+        if (data.speaker) {
+            this.set("speaker", data.speaker);
+        } else {
+            this.set("speaker", 0);
+        }
 
         if (data.firstTime) {
             this.set("recharge", data.firstTime.recharge);

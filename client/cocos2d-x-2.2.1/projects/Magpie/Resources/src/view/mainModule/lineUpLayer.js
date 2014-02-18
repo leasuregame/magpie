@@ -68,17 +68,14 @@ var LineUpLayer = LazyLayer.extend({
         var player = gameData.player;
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 20);
-        //nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setPosition(this._lineUpLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create("等级: " + player.get("lv"), "STHeitiTC-Medium", 20);
-        //lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setPosition(this._lineUpLayerFit.lvLabelPoint);
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.getAbility(), "STHeitiTC-Medium", 20);
-        //abilityLabel.setColor(cc.c3b(255, 239, 131));
+        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.get("ability"), "STHeitiTC-Medium", 20);
         abilityLabel.setPosition(this._lineUpLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 

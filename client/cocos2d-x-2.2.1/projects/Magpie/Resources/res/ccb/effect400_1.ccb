@@ -197,8 +197,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5999999046325684</real>
-									<real>2.5999999046325684</real>
+									<real>2.5499999523162842</real>
+									<real>2.5499999523162842</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -211,7 +211,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>300</real>
+								<real>285</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -240,7 +240,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>13</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -252,6 +252,17 @@
 									<integer>0</integer>
 									<integer>242</integer>
 									<integer>255</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>1</integer>
+									<integer>1</integer>
 								</array>
 							</dict>
 						</array>
@@ -428,8 +439,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.5999999046325684</real>
-									<real>2.5999999046325684</real>
+									<real>2.5499999523162842</real>
+									<real>2.5499999523162842</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -442,7 +453,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-300</real>
+								<real>-285</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -471,7 +482,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>13</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -480,9 +491,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>184</integer>
+									<integer>115</integer>
 									<integer>253</integer>
-									<integer>254</integer>
+									<integer>255</integer>
 								</array>
 							</dict>
 							<dict>
@@ -631,7 +642,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.56666666269302368</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -644,11 +672,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.66666668653488159</real>
+			<real>0.63333332538604736</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>512</real>
+			<real>415.44802856445312</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

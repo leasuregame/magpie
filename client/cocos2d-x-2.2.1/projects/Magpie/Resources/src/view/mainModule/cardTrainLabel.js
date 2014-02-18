@@ -200,7 +200,6 @@ var CardTrainLabel = cc.Layer.extend({
         helpMenu.setPosition(cc.p(0, 0));
         this._helpLabel.addChild(helpMenu);
 
-
         var selectLeadCardItem = cc.MenuItemImage.create(
             main_scene_image.card_frame1,
             main_scene_image.card_frame_s,
@@ -220,8 +219,26 @@ var CardTrainLabel = cc.Layer.extend({
         );
         this._trainItem.setPosition(this._cardTrainLabelFit.trainItemPoint);
 
+        this._extractItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon368,
+            this._onClickExtract,
+            this
+        );
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._trainItem);
+        this._extractItem.setPosition(this._cardTrainLabelFit.extractItemPoint);
+
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+        helpItem.setPosition(this._cardTrainLabelFit.helpItemPoint);
+
+        var menu = cc.Menu.create(selectLeadCardItem, this._trainItem, this._extractItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -267,6 +284,7 @@ var CardTrainLabel = cc.Layer.extend({
             );
 
             this._trainItem.setEnabled(false);
+            this._extractItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
@@ -327,12 +345,100 @@ var CardTrainLabel = cc.Layer.extend({
                 this._hpAdditionLabel.setVisible(false);
                 this._atkAdditionLabel.setVisible(false);
                 this._trainItem.setEnabled(false);
+                this._extractItem.setEnabled(false);
             }
 
             this._trainItem.setEnabled(true);
+            this._extractItem.setEnabled(true);
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
         }
+    },
+
+    _extract: function () {
+        cc.log("CardTrainLabel _extract");
+
+        if(this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+        this._extractEffect = cc.BuilderReader.load(main_scene_image.uiEffect84, this);
+        var animationManager = this._extractEffect.animationManager;
+        animationManager.runAnimationsForSequenceNamedTweenDuration(this._cardTrainLabelFit.extractEffectUrl, 0);
+        this._effectTime = animationManager.getSequenceDuration(
+            animationManager.getRunningSequenceName()
+        );
+        var date = new Date();
+        this._startTime = date.getTime();
+        this._extractEffect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._extractEffect, 10);
+    },
+
+    ccbFnExtract: function () {
+        cc.log("CardTrainLabel ccbFnExtract");
+
+        var date = new Date();
+        var useTime = this._effectTime - (date.getTime() - this._startTime) / 1000;
+        var nowElixir = this._dummyCard.getElixir();
+        var tmpTime = useTime / 0.05;
+        var tmpElixir = nowElixir / tmpTime;
+
+        var nowHp = this._dummyCard.get("hp");
+        var nowAtk = this._dummyCard.get("atk");
+
+        var tmpHp = (this._dummyCard.get("hp") - this._leadCard.get("hp")) / tmpTime;
+        var tmpAtk = (this._dummyCard.get("atk") - this._leadCard.get("atk")) / tmpTime;
+
+        this._hpAdditionLabel.setString("");
+        this._atkAdditionLabel.setString("");
+
+        var fn = function () {
+
+            if (nowElixir < tmpElixir) {
+                tmpElixir = nowElixir;
+            }
+
+            nowElixir -= tmpElixir;
+            nowHp -= tmpHp;
+            nowAtk -= tmpAtk;
+
+            var elixir = gameData.player.get("elixir") - nowElixir;
+            this._elixirLabel.setString(Math.round(elixir));
+            this._hpLabel.setString(Math.round(nowHp));
+            this._atkLabel.setString(Math.round(nowAtk));
+
+            if (nowElixir <= 0) {
+                this._elixirLabel.setString(gameData.player.get("elixir"));
+                this._hpLabel.setString(this._leadCard.get("hp"));
+                this._atkLabel.setString(this._leadCard.get("atk"));
+                this.unschedule(fn);
+                if (this._extractEffect != null) {
+                    this._extractEffect.removeFromParent();
+                    this._extractEffect = null;
+                }
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._hpLabel.runAction(spawnAction.clone());
+                this._atkLabel.runAction(spawnAction.clone());
+            }
+
+        };
+
+        this.schedule(fn, 0.05);
     },
 
     _onClickSelectLeadCard: function () {
@@ -343,6 +449,11 @@ var CardTrainLabel = cc.Layer.extend({
         if (this._effect != null) {
             this._effect.removeFromParent();
             this._effect = null;
+        }
+
+        if(this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
         }
 
         if (mandatoryTeachingLayer) {
@@ -425,6 +536,38 @@ var CardTrainLabel = cc.Layer.extend({
         }, this._trainCount, this._trainType);
     },
 
+    _onClickExtract: function () {
+        cc.log("CardTrainLabel _onClickExtract");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._leadCard.getElixir() == 0) {
+            TipLayer.tip("该卡没有可提取的仙丹");
+            return;
+        }
+
+        var needGold = outputTables.values.rows["extractConsumeGold"].value;
+        if (gameData.player.get("gold") < needGold) {
+            TipLayer.tip("魔石不足");
+            return;
+        }
+
+        var that = this;
+        this._dummyCard = lz.clone(that._leadCard);
+
+        var cb = function () {
+            that._leadCard.extract(function () {
+                that._extract();
+            }, EXTRACT_ELIXIR);
+        };
+
+        ExtractTipLabel.pop({
+            cb: cb,
+            type: EXTRACT_ELIXIR,
+            num: this._leadCard.getElixir()
+        });
+    },
+
     _onClickTrainHp: function () {
         cc.log("CardTrainLabel _onClickTrainHp");
 
@@ -471,6 +614,14 @@ var CardTrainLabel = cc.Layer.extend({
         this._trainTenItem.setEnabled(false);
 
         this.update();
+    },
+
+    _onClickHelp: function () {
+        cc.log("CardTrainLabel _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["cardTrain"]);
     }
 });
 

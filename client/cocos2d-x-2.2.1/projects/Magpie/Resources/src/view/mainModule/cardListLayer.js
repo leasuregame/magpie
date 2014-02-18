@@ -323,7 +323,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon24,
             this._onClickLineUp,
-            this);
+            this
+        );
         lineUpItem.setPosition(this._cardListLayerFit.lineUpItemPoint);
 
         var sellItem = cc.MenuItemImage.createWithIcon(
@@ -504,7 +505,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if (!cardList[key].canUpgradeSkill()) {
+            if(cardList[key].get("star") < 2) {
                 this._excludeList.push(key);
             }
         }
@@ -673,7 +674,8 @@ var CardListLayer = cc.Layer.extend({
         countLabel.setPosition(this._cardListLayerFit.countLabelPoint);
         this.addChild(countLabel);
 
-        var rateLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        var initRate = gameData.player.getEvolutionRate(leadCardStar);
+        var rateLabel = cc.LabelTTF.create(initRate, "STHeitiTC-Medium", 25);
         rateLabel.setPosition(this._cardListLayerFit.rateLabelPoint);
         this.addChild(rateLabel);
 
@@ -682,7 +684,7 @@ var CardListLayer = cc.Layer.extend({
 
             var selectList = this._getSelectCardList();
             var len = selectList.length;
-            var rate = len * this._otherData.leadCard.getPreCardRate();
+            var rate = len * this._otherData.leadCard.getPreCardRate() + initRate;
 
             if (rate >= 100) {
                 rate = 100;
@@ -698,6 +700,7 @@ var CardListLayer = cc.Layer.extend({
 
             countLabel.setString(len);
             rateLabel.setString(rate + "%");
+
         };
 
         this._selectCallback();
@@ -864,7 +867,32 @@ var CardListLayer = cc.Layer.extend({
             }
         }
 
-        this._cb(this._getSelectCardList());
+        var selectCardList = this._getSelectCardList();
+
+        if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
+            var len = selectCardList.length;
+            var isShowTip = false;
+            for (var i = 0; i < len; i++) {
+                var star = selectCardList[i].get("star");
+                if (star == 4 || star == 5) {
+                    isShowTip = true;
+                }
+            }
+
+            var that = this;
+            var cb = function () {
+                that._cb(selectCardList);
+            };
+
+            if (isShowTip) {
+                UseCardsTipLabel.pop(cb);
+            } else {
+                cb();
+            }
+
+        } else {
+            this._cb(selectCardList);
+        }
     },
 
     _onClickBuyCount: function () {
@@ -927,13 +955,27 @@ var CardListLayer = cc.Layer.extend({
             return;
         }
 
+        var isShowTip = false;
         for (var i = 0; i < len; ++i) {
+            var star = selectCardList[i].get("star");
+            if (star == 4 || star == 5) {
+                isShowTip = true;
+            }
             cardIdList.push(selectCardList[i].get("id"));
         }
 
-        gameData.cardList.sell(function () {
-            MainScene.getInstance().switchTo(CardListLayer.create());
-        }, cardIdList);
+        var cb = function () {
+            gameData.cardList.sell(function () {
+                MainScene.getInstance().switchTo(CardListLayer.create());
+            }, cardIdList);
+        };
+
+        if (isShowTip) {
+            UseCardsTipLabel.pop(cb);
+        } else {
+            cb();
+        }
+
     },
 
     _onClickChangeLineUp: function () {

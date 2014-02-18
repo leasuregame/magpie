@@ -123,17 +123,17 @@ var User = Entity.extend({
                     var player = msg.player;
 
                     if (player) {
-                        gameData.gameInit();
-                        gameData.player.init(msg.player);
-
-                        cb(1);
+                        gameData.gameStart(msg.player);
+                        cb();
                     } else {
-                        cb(2);
+                        cb(1);
                     }
 
                     lz.dc.event("event_login", that._area);
                 } else if (data.code == 600) {
                     cc.log("login fail go to updateLayer");
+
+                    cb();
 
                     Dialog.pop("您的版本需要更新", function () {
                         cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
@@ -142,7 +142,7 @@ var User = Entity.extend({
                 } else {
                     cc.log("login fail");
 
-                    cb(0);
+                    cb();
 
                     TipLayer.tip(data.msg);
                 }
@@ -195,8 +195,7 @@ var User = Entity.extend({
 
                 var msg = data.msg;
 
-                gameData.gameInit();
-                gameData.player.init(msg.player);
+                gameData.gameStart(msg.player);
 
                 cb();
 

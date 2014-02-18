@@ -69,7 +69,6 @@ var LotteryCardLayer = LazyLayer.extend({
             this._canClick = true;
         });
 
-
         return true;
     },
 
@@ -131,6 +130,7 @@ var LotteryCardLayer = LazyLayer.extend({
                 this._cb();
             }
         }
+
         return true;
     }
 });

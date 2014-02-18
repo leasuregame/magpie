@@ -240,7 +240,6 @@ var SignInLayer = cc.Layer.extend({
                 alreadyRewardIcon: alreadyRewardIcon,
                 rewardLabel: rewardLabel
             };
-
         }
 
         return true;
@@ -267,31 +266,39 @@ var SignInLayer = cc.Layer.extend({
 
         this._signInCountLabel.setString(monthMark.count);
 
-        if (this._index != 0) {
-            for (var i = 0; i < 5; ++i) {
+        var table = outputTables.signIn_rewards;
 
-                this._elementList[i].readyRewardItem.setVisible(false);
-                this._elementList[i].rewardIcon.setVisible(true);
-                this._elementList[i].alreadyRewardIcon.setVisible(false);
-                this._elementList[i].rewardItem.setVisible(true);
+        cc.log(monthMark.count);
 
-            }
-        } else {
-            for (var i = 0; i < 5; ++i) {
+        for (var i = 0; i < 5; ++i) {
+            var visible = signIn.canReceive(this._index, i);
 
-                var visible = signIn.canReceive(this._index, i);
-                this._elementList[i].rewardIcon.setVisible(visible);
-                this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+            cc.log(visible);
 
-                var table = outputTables.signIn_rewards.rows[i + 1];
-                var count = table.count != -1 ? table.count : monthMark.days;
+            var row = table.rows[i + 1];
+            var count = row.count != -1 ? row.count : monthMark.days;
 
-                if (monthMark.count >= count) {
-                    this._elementList[i].readyRewardItem.setVisible(visible);
+            cc.log(count);
+
+            if (monthMark.count >= count) {
+                if(this._index == 0) {
                     this._elementList[i].rewardIcon.setVisible(false);
                     this._elementList[i].alreadyRewardIcon.setVisible(!visible);
-                    this._elementList[i].rewardItem.setVisible(!visible);
+                } else {
+                    this._elementList[i].rewardIcon.setVisible(visible);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
                 }
+            } else {
+                this._elementList[i].rewardIcon.setVisible(true);
+                this._elementList[i].alreadyRewardIcon.setVisible(false);
+            }
+
+            if (this._index == 0 && monthMark.count >= count) {
+                this._elementList[i].rewardItem.setVisible(!visible);
+                this._elementList[i].readyRewardItem.setVisible(visible);
+            } else {
+                this._elementList[i].rewardItem.setVisible(true);
+                this._elementList[i].readyRewardItem.setVisible(false);
             }
         }
     },
@@ -369,7 +376,6 @@ var SignInLayer = cc.Layer.extend({
         }
     },
 
-
     /**
      * when a touch finished
      * @param {cc.Touch} touches
@@ -390,7 +396,7 @@ var SignInLayer = cc.Layer.extend({
         } else if (beganOffset.x - endOffset.x < -80) {
             this._index = MAX_SIGN_IN_HISTORY + Math.ceil(endOffset.x / 510) - 1;
         }
-        cc.log("index = " + this._index);
+
         this.update();
     },
 

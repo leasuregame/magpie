@@ -132,50 +132,64 @@ var AchievementLayer = cc.Layer.extend({
             this._scrollViewElement[id] = {};
 
             var isReceiverIcon = cc.Sprite.create(main_scene_image.icon212);
-            isReceiverIcon.setPosition(cc.p(510, y + 60));
+            isReceiverIcon.setPosition(cc.p(535, y + 88));
             slideLabel[i].addChild(isReceiverIcon);
+
+            var receiverItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon123,
+                this._onClickReceiver(achievement[i].id),
+                this
+            );
+            receiverItem.setPosition(cc.p(510, y + 60));
+            menu.addChild(receiverItem);
+
+            this._scrollViewElement[id].isReceiverIcon = isReceiverIcon;
+            this._scrollViewElement[id].receiverItem = receiverItem;
+
+
+            var rewardLabel = cc.Node.create();
+            slideLabel[i].addChild(rewardLabel);
+
+            var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+            goldIcon.setPosition(cc.p(410, y + 50));
+            rewardLabel.addChild(goldIcon);
+
+            var goldLabel = cc.LabelTTF.create(achievement[i].gold, "Arial", 25);
+            goldLabel.setColor(cc.c3b(56, 3, 5));
+            goldLabel.setAnchorPoint(cc.p(0, 0.5));
+            goldLabel.setPosition(cc.p(430, y + 50));
+            rewardLabel.addChild(goldLabel);
+
+            var energyIcon = cc.Sprite.create(main_scene_image.icon154);
+            energyIcon.setPosition(cc.p(510, y + 50));
+            rewardLabel.addChild(energyIcon);
+
+            var energyLabel = cc.LabelTTF.create(achievement[i].energy, "Arial", 25);
+            energyLabel.setColor(cc.c3b(56, 3, 5));
+            energyLabel.setAnchorPoint(cc.p(0, 0.5));
+            energyLabel.setPosition(cc.p(530, y + 50));
+            rewardLabel.addChild(energyLabel);
+
+            this._scrollViewElement[id].rewardLabel = rewardLabel;
 
             if (!isReceiver) {
                 isReceiverIcon.setVisible(false);
-
                 if (isAchieve) {
-                    var receiverItem = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button10,
-                        main_scene_image.button10s,
-                        main_scene_image.icon123,
-                        this._onClickReceiver(achievement[i].id),
-                        this
-                    );
-                    receiverItem.setPosition(cc.p(510, y + 60));
-                    menu.addChild(receiverItem);
-
-                    this._scrollViewElement[id].isReceiverIcon = isReceiverIcon;
-                    this._scrollViewElement[id].receiverItem = receiverItem;
+                    receiverItem.setVisible(true);
+                    rewardLabel.setVisible(false);
                 } else {
-                    var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-                    goldIcon.setPosition(cc.p(410, y + 50));
-                    slideLabel[i].addChild(goldIcon);
-
-                    var goldLabel = cc.LabelTTF.create(achievement[i].gold, "Arial", 25);
-                    goldLabel.setColor(cc.c3b(56, 3, 5));
-                    goldLabel.setAnchorPoint(cc.p(0, 0.5));
-                    goldLabel.setPosition(cc.p(430, y + 50));
-                    slideLabel[i].addChild(goldLabel);
-
-                    var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-                    energyIcon.setPosition(cc.p(510, y + 50));
-                    slideLabel[i].addChild(energyIcon);
-
-                    var energyLabel = cc.LabelTTF.create(achievement[i].energy, "Arial", 25);
-                    energyLabel.setColor(cc.c3b(56, 3, 5));
-                    energyLabel.setAnchorPoint(cc.p(0, 0.5));
-                    energyLabel.setPosition(cc.p(530, y + 50));
-                    slideLabel[i].addChild(energyLabel);
+                    receiverItem.setVisible(false);
+                    rewardLabel.setVisible(true);
                 }
+            } else {
+                receiverItem.setVisible(false);
             }
 
             scrollViewLayer.addChild(slideLabel[i]);
         }
+
 
         var scrollView = cc.ScrollView.create(this._achievementLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setPosition(this._achievementLayerFit.scrollViewPoint);
@@ -210,6 +224,8 @@ var AchievementLayer = cc.Layer.extend({
                 cc.log(data);
 
                 that._scrollViewElement[id].receiverItem.setVisible(false);
+
+                that._scrollViewElement[id].rewardLabel.setVisible(true);
 
                 var isReceiverIcon = that._scrollViewElement[id].isReceiverIcon;
                 isReceiverIcon.setVisible(true);

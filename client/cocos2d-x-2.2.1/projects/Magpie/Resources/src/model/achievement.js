@@ -67,19 +67,7 @@ var Achievement = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
-
-                    lz.server.on("onAchieve", function (data) {
-                        cc.log("***** on achieve:");
-                        cc.log(data);
-
-                        gameData.achievement.setAchieve(data.msg.achieveId);
-
-//                        if(data.msg.firstTime) {
-//                            MandatoryTeachingLayer.pop(FIRST_ACHIEVEMENT);
-//                        }
-
-                        gameMark.updateAchievementMark(true);
-                    });
+                    that.setListener();
 
                     gameMark.updateAchievementMark(false);
 
@@ -94,6 +82,20 @@ var Achievement = Entity.extend({
             },
             true
         );
+    },
+
+    setListener: function () {
+        cc.log("Achievement setListener");
+
+        var that = this;
+
+        lz.server.on("onAchieve", function (data) {
+            cc.log("***** on achieve:");
+            cc.log(data);
+
+            that.setAchieve(data.msg.achieveId);
+            gameMark.updateAchievementMark(true);
+        });
     },
 
     getAchievementList: function () {

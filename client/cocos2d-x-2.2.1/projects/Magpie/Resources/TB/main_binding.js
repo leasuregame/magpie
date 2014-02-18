@@ -70,6 +70,7 @@ var appFiles = [
     'src/model/achievement.js',
     'src/model/exchange.js',
     'src/model/activity.js',
+    'src/model/greeting.js',
 
     'payment.js',
 
@@ -80,6 +81,7 @@ var appFiles = [
     'src/model/gameData.js',
     'src/model/gameMark.js',
     'src/model/gameGuide.js',
+    'src/model/gameHelp.js',
 
     'src/controls/progress.js',
     'src/controls/lazyLayer.js',
@@ -138,12 +140,15 @@ var appFiles = [
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
     'src/view/mainModule/exploreLayer.js',
+    'src/view/mainModule/extractTipLabel.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
+    'src/view/mainModule/gameHelpLabel.js',
     'src/view/mainModule/giftBagLayer.js',
     'src/view/mainModule/goldLayer.js',
     'src/view/mainModule/goPaymentLayer.js',
+    'src/view/mainModule/greetingLabel.js',
     'src/view/mainModule/level9BoxLayer.js',
     'src/view/mainModule/lineUpDetail.js',
     'src/view/mainModule/lineUpDetailsLayer.js',
@@ -169,12 +174,14 @@ var appFiles = [
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/speakerLayer.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
     'src/view/mainModule/spiritPoolLayer.js',
     'src/view/mainModule/spiritSideNode.js',
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
+    'src/view/mainModule/summonLayer.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tenLotteryCardLayer.js',
@@ -184,6 +191,7 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+    'src/view/mainModule/useCardsTipLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
     'src/view/mainModule/mainBgLayer.js',
@@ -202,6 +210,7 @@ var appFiles = [
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/cloudLayer.js',
+    'src/view/battleModule/fragmentLayer.js',
     'src/view/battleModule/skillFactory.js'
 ];
 

@@ -52,7 +52,8 @@ app.get('/admin/notice/:platform', filter.authorize, notice.getNotice);
 app.delete('/admin/notice/:platform', filter.authorize, notice.delNotice);
 app.post('/admin/notice/:platform', filter.authorize, notice.saveNotice);
 app.get('/admin/version', filter.authorize, version.manage);
-app.post('/admin/version', filter.authorize, version.updateVersion);  
+app.post('/admin/version', filter.authorize, version.updateVersion);
+app.get('/admin/version/details/:version', filter.authorize, version.versionDetails)
 app.get('/admin/cdkey', filter.authorize, cdkey.manage);
 app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);

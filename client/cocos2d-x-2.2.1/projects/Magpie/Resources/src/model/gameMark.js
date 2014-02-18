@@ -25,6 +25,26 @@ var gameMark = {
     _treasureHunt: false,
     _goldCards: false,
 
+    init: function () {
+        cc.log("gameMark init");
+
+        this._activity = false;
+        this._achievement = false;
+        this._cardLibrary = false;
+        this._friend = false;
+        this._message = false;
+        this._friendMessage = false;
+        this._systemMessage = false;
+        this._signIn = false;
+        this._powerReward = false;
+        this._goldReward = false;
+        this._recharge = false;
+        this._lottery = false;
+        this._newYearReward = false;
+        this._treasureHunt = false;
+        this._goldCards = false;
+    },
+
     getActivityMark: function () {
         cc.log("gameMark getActivityMark");
 

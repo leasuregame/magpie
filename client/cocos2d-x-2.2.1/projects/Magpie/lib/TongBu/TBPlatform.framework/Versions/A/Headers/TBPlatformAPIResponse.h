@@ -23,7 +23,7 @@
 typedef enum _TB_LOGIN_STATE
 {
 	TB_LOGIN_STATE_NOT_LOGIN = 0,  	//未登录		
-	TB_LOGIN_STATE_NORMAL_LOGIN,     //普通帐号登陆
+	TB_LOGIN_STATE_NORMAL_LOGIN,     //普通账号登陆
 }TB_LOGIN_STATE;
 
 /**

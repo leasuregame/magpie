@@ -17,7 +17,7 @@ var MainLayer = cc.Layer.extend({
 
     _layer: [
         SpiritPoolLayer,
-        LotteryLayer,
+        SummonLayer,
         TreasureHuntLayer,
         StrengthenLayer,
         EvolutionLayer,
@@ -231,6 +231,15 @@ var MainLayer = cc.Layer.extend({
 
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
+        var greetingLabelItem = cc.MenuItemImage.create(
+            main_scene_image.button3,
+            main_scene_image.button3s,
+            this._onClickGreeting,
+            this
+        );
+
+        greetingLabelItem.setPosition(this._mainLayerFit.greetingLabelItemPoint);
+
         var menu = cc.Menu.create(
             lotteryLayerItem,
             treasureHuntLayerItem,
@@ -242,7 +251,8 @@ var MainLayer = cc.Layer.extend({
             achievementLayerItem,
             friendLayerItem,
             messageItem,
-            configLayerItem
+            configLayerItem,
+            greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -253,28 +263,22 @@ var MainLayer = cc.Layer.extend({
         this.addChild(this._spiritLayerItem);
 
         var isVisible = false;
-        var that = this;
-        this.scheduleOnce(function () {
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
 
-            var spirit = gameData.spirit;
-            var spiritPool = gameData.spiritPool;
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
 
-            if (spirit.canUpgrade()) {
-                isVisible = true;
-            } else if (spiritPool.get("collectCount") > 0) {
-                isVisible = true;
-            }
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
-            that._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
+        var ability = gameData.player.get("ability");
+        var ranking = gameData.tournament.get("ranking");
 
-            var ability = gameData.player.getAbility();
-            var ranking = gameData.tournament.get("ranking");
-
-            abilityLabel.setString(ability);
-            rankingLabel.setString(ranking);
-
-        }, 0.1);
-
+        abilityLabel.setString(ability);
+        rankingLabel.setString(ranking);
 
         return true;
     },
@@ -337,9 +341,21 @@ var MainLayer = cc.Layer.extend({
         }
     },
 
+    _onClickGreeting: function () {
+        cc.log("MainLayer _onClickGreeting");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var greetingLabel = GreetingLabel.getInstance();
+        if (greetingLabel.getParent()) {
+            greetingLabel.removeFromParent();
+        }
+        this.addChild(greetingLabel, 2);
+    },
+
     _onClickLayer: function (index) {
         return function () {
-            cc.log("MainMenuLayer _onClickLayer: " + index);
+            cc.log("MainLayer _onClickLayer: " + index);
 
             if (index == 1) {
                 if (this._lotteryGuide) {

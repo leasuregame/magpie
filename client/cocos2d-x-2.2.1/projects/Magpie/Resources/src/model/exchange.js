@@ -30,13 +30,6 @@ var Exchange = Entity.extend({
         this._updateList(ids);
     },
 
-    _load: function () {
-        cc.log("Exchange _load");
-        var list = [10, 14, 45, 34];
-        this._updateList(list);
-
-    },
-
     _updateList: function (ids) {
         cc.log("Exchange updateList: " + ids);
 

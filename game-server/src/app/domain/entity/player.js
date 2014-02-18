@@ -24,6 +24,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
+var cardConfig = require('../../../config/data/card');
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
@@ -559,16 +560,27 @@ var Player = (function(_super) {
 
     Player.prototype.getAbility = function() {
         var ability = 0;
+        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        var hp_pct = spiritorData.hp_inc;
+        var atk_pct = spiritorData.atk_inc;
+
         this.activeCards().forEach(function(card) {
             var _a = card.ability();
+
+            // 计算元神增加的战斗力
+            var _hp = parseInt(card.init_hp/ae.hp*hp_pct/100);
+            var _atk = parseInt(card.init_atk/ae.atk*atk_pct/100);
+            
+            console.log('-a-', _a, _hp, _atk);
             if (!_.isNaN(_a)) {
-                ability += card.ability();
+                ability += _a + _hp + _atk;
             }
         });
         // 元神加成的战斗力
-        if (this.spiritor.lv > 0) {
-            ability += this.spiritor.lv * SPIRITOR_PER_LV;
-        }
+        // if (this.spiritor.lv > 0) {
+        //     ability += this.spiritor.lv * SPIRITOR_PER_LV;
+        // }
 
         this.set('ability', ability);
         return ability;
@@ -587,8 +599,8 @@ var Player = (function(_super) {
 
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            var cardConfig = cardTable.getItem(card.id);
-            var series = cardConfig.group.toString().split(',');
+            var cdata = cardTable.getItem(card.id);
+            var series = cdata.group.toString().split(',');
             var seriesCards = cardTable.filter(function(id, item) {
                 return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
             });
@@ -1136,7 +1148,7 @@ var Player = (function(_super) {
     Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
-            if (ft[key] == 1) {
+            if (ft[key]) {
                 return true;
             }
         }
@@ -1152,9 +1164,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.getFirstTime = function() {
-        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb
+        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb;
+        // frb = 1 为可领取状态
         if (this.cash <= 0) {
-            frb = 0;
+            frb = 0; // 不可领取状态
+        }
+
+        if (this.cash > 0 && frb == 0) {
+            frb = 2; // 已领取状态
         }
 
         return {
@@ -1280,7 +1297,7 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.getFirstTime() : void 0,
+            firstTime: this.getFirstTime(),
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,

@@ -19,6 +19,7 @@
 #include "js_bindings_IAPHelp.hpp"
 #include "js_cocos2dx_autogen_extension.hpp"
 #include "js_bindings_WebLayer.hpp"
+#include "js_bindings_NotificationHelp.hpp"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -73,6 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
     sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);
+    sc->addRegisterCallback(register_all_js_bindings_NotificationHelp);
 
     sc->start();
     

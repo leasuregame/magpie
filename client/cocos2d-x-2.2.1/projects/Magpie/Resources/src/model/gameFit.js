@@ -318,7 +318,8 @@ var fit4Iphone4 = {
             "extractItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
-            "helpItemPoint": cc.p(80, 670)
+            "helpItemPoint": cc.p(80, 670),
+            "extractEffectUrl": "animation_1"
         },
         "cardUpgradeLabel": {
             "cardItemBgSpritePoint": cc.p(365, 512),
@@ -1014,8 +1015,8 @@ var fit4Iphone4 = {
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
             "effectPoint": cc.p(360, 422),
-            "helpItemPoint": cc.p(80, 670)
-
+            "helpItemPoint": cc.p(80, 670),
+            "extractEffectUrl": "animation_1"
         },
         "speakerLayer": {
             "msgBgLabelPoint": cc.p(380, 870),
@@ -1669,7 +1670,8 @@ var fit4Iphone5 = {
             "extractItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
-            "helpItemPoint": cc.p(50, 810)
+            "helpItemPoint": cc.p(50, 810),
+            "extractEffectUrl": "animation_2"
         },
         "cardUpgradeLabel": {
             "cardItemBgSpritePoint": cc.p(325, 610),
@@ -2367,8 +2369,8 @@ var fit4Iphone5 = {
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "effectPoint": cc.p(320, 445),
-            "helpItemPoint": cc.p(50, 810)
-
+            "helpItemPoint": cc.p(50, 810),
+            "extractEffectUrl": "animation_2"
         },
         "speakerLayer": {
             "msgBgLabelPoint": cc.p(340, 1010),

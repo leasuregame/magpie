@@ -1,18 +1,6 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -26,7 +14,7 @@ var nameChanged = {
     "friends_config": "好友数量配置表",
     "好友数量配置表": "friends_config",
     "receive_bless_config": "接收祝福次数配置表",
-    "接收祝福次数配′置表": "receive_bless_config",
+    "接收祝福次数配置表": "receive_bless_config",
     "give_bless_config": "祝福次数配置表",
     "祝福次数配置表": "give_bless_config",
     "function_limit": "功能开放等级限制",
@@ -45,6 +33,18 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -103,6 +103,8 @@ var nameChanged = {
     "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
     "recharge": "充值类型",
     "充值类型": "recharge",
     "vip": "vip等级配置表",
@@ -112,6 +114,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -460,435 +463,828 @@ var outputTables = {
             }
         }
     },
+    "new_year_rechage": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
+            },
+            "3": {
+                "id": 3,
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
+            },
+            "4": {
+                "id": 4,
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
+            },
+            "5": {
+                "id": 5,
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 254,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lottery_count": 50,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 10,
+                "collect_count": 15,
+                "exp_card_count": 30
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,148,218,123,243]",
+                "star4": "[59,139]"
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "pass_skillafresh": 45
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 200000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 320000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 400000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 99999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 5000,
+                "energy": 200
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "skillPoint": 1000,
+                "elixir": 2000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "skillPoint": 2000,
+                "elixir": 5000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "skillPoint": 5000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "skillPoint": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 1000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            }
+        }
+    },
     "card_grow": {
         "colComment": {},
         "rows": {
             "0": {
                 "id": 0,
                 "lv": 0,
-                "exp_need": 100,
-                "money_need": 110,
+                "exp_need": 110,
+                "money_need": 115,
                 "cur_exp": 0
             },
             "1": {
                 "id": 1,
                 "lv": 1,
-                "exp_need": 110,
-                "money_need": 115,
-                "cur_exp": 100
+                "exp_need": 125,
+                "money_need": 135,
+                "cur_exp": 110
             },
             "2": {
                 "id": 2,
                 "lv": 2,
-                "exp_need": 122,
-                "money_need": 133,
-                "cur_exp": 210
+                "exp_need": 143,
+                "money_need": 159,
+                "cur_exp": 235
             },
             "3": {
                 "id": 3,
                 "lv": 3,
-                "exp_need": 135,
-                "money_need": 154,
-                "cur_exp": 332
+                "exp_need": 163,
+                "money_need": 187,
+                "cur_exp": 378
             },
             "4": {
                 "id": 4,
                 "lv": 4,
-                "exp_need": 150,
-                "money_need": 178,
-                "cur_exp": 467
+                "exp_need": 186,
+                "money_need": 220,
+                "cur_exp": 541
             },
             "5": {
                 "id": 5,
                 "lv": 5,
-                "exp_need": 167,
-                "money_need": 206,
-                "cur_exp": 617
+                "exp_need": 212,
+                "money_need": 259,
+                "cur_exp": 727
             },
             "6": {
                 "id": 6,
                 "lv": 6,
-                "exp_need": 185,
-                "money_need": 238,
-                "cur_exp": 784
+                "exp_need": 242,
+                "money_need": 304,
+                "cur_exp": 939
             },
             "7": {
                 "id": 7,
                 "lv": 7,
-                "exp_need": 205,
-                "money_need": 275,
-                "cur_exp": 969
+                "exp_need": 276,
+                "money_need": 357,
+                "cur_exp": 1181
             },
             "8": {
                 "id": 8,
                 "lv": 8,
-                "exp_need": 228,
-                "money_need": 318,
-                "cur_exp": 1174
+                "exp_need": 315,
+                "money_need": 419,
+                "cur_exp": 1457
             },
             "9": {
                 "id": 9,
                 "lv": 9,
-                "exp_need": 253,
-                "money_need": 368,
-                "cur_exp": 1402
+                "exp_need": 359,
+                "money_need": 492,
+                "cur_exp": 1772
             },
             "10": {
                 "id": 10,
                 "lv": 10,
-                "exp_need": 281,
-                "money_need": 426,
-                "cur_exp": 1655
+                "exp_need": 409,
+                "money_need": 578,
+                "cur_exp": 2131
             },
             "11": {
                 "id": 11,
                 "lv": 11,
-                "exp_need": 312,
-                "money_need": 493,
-                "cur_exp": 1936
+                "exp_need": 466,
+                "money_need": 679,
+                "cur_exp": 2540
             },
             "12": {
                 "id": 12,
                 "lv": 12,
-                "exp_need": 346,
-                "money_need": 570,
-                "cur_exp": 2248
+                "exp_need": 531,
+                "money_need": 798,
+                "cur_exp": 3006
             },
             "13": {
                 "id": 13,
                 "lv": 13,
-                "exp_need": 384,
-                "money_need": 659,
-                "cur_exp": 2594
+                "exp_need": 605,
+                "money_need": 938,
+                "cur_exp": 3537
             },
             "14": {
                 "id": 14,
                 "lv": 14,
-                "exp_need": 426,
-                "money_need": 762,
-                "cur_exp": 2978
+                "exp_need": 690,
+                "money_need": 1102,
+                "cur_exp": 4142
             },
             "15": {
                 "id": 15,
                 "lv": 15,
-                "exp_need": 473,
-                "money_need": 882,
-                "cur_exp": 3404
+                "exp_need": 787,
+                "money_need": 1295,
+                "cur_exp": 4832
             },
             "16": {
                 "id": 16,
                 "lv": 16,
-                "exp_need": 525,
-                "money_need": 1020,
-                "cur_exp": 3877
+                "exp_need": 897,
+                "money_need": 1522,
+                "cur_exp": 5619
             },
             "17": {
                 "id": 17,
                 "lv": 17,
-                "exp_need": 583,
-                "money_need": 1180,
-                "cur_exp": 4402
+                "exp_need": 1023,
+                "money_need": 1788,
+                "cur_exp": 6516
             },
             "18": {
                 "id": 18,
                 "lv": 18,
-                "exp_need": 647,
-                "money_need": 1365,
-                "cur_exp": 4985
+                "exp_need": 1166,
+                "money_need": 2101,
+                "cur_exp": 7539
             },
             "19": {
                 "id": 19,
                 "lv": 19,
-                "exp_need": 718,
-                "money_need": 1579,
-                "cur_exp": 5632
+                "exp_need": 1329,
+                "money_need": 2469,
+                "cur_exp": 8705
             },
             "20": {
                 "id": 20,
                 "lv": 20,
-                "exp_need": 797,
-                "money_need": 1827,
-                "cur_exp": 6350
+                "exp_need": 1515,
+                "money_need": 2901,
+                "cur_exp": 10034
             },
             "21": {
                 "id": 21,
                 "lv": 21,
-                "exp_need": 885,
-                "money_need": 2114,
-                "cur_exp": 7147
+                "exp_need": 1727,
+                "money_need": 3409,
+                "cur_exp": 11549
             },
             "22": {
                 "id": 22,
                 "lv": 22,
-                "exp_need": 982,
-                "money_need": 2446,
-                "cur_exp": 8032
+                "exp_need": 1969,
+                "money_need": 4006,
+                "cur_exp": 13276
             },
             "23": {
                 "id": 23,
                 "lv": 23,
-                "exp_need": 1090,
-                "money_need": 2830,
-                "cur_exp": 9014
+                "exp_need": 2245,
+                "money_need": 4707,
+                "cur_exp": 15245
             },
             "24": {
                 "id": 24,
                 "lv": 24,
-                "exp_need": 1210,
-                "money_need": 3274,
-                "cur_exp": 10104
+                "exp_need": 2559,
+                "money_need": 5531,
+                "cur_exp": 17490
             },
             "25": {
                 "id": 25,
                 "lv": 25,
-                "exp_need": 1343,
-                "money_need": 3788,
-                "cur_exp": 11314
+                "exp_need": 2917,
+                "money_need": 6499,
+                "cur_exp": 20049
             },
             "26": {
                 "id": 26,
                 "lv": 26,
-                "exp_need": 1491,
-                "money_need": 4383,
-                "cur_exp": 12657
+                "exp_need": 3325,
+                "money_need": 7636,
+                "cur_exp": 22966
             },
             "27": {
                 "id": 27,
                 "lv": 27,
-                "exp_need": 1655,
-                "money_need": 5071,
-                "cur_exp": 14148
+                "exp_need": 3791,
+                "money_need": 8972,
+                "cur_exp": 26291
             },
             "28": {
                 "id": 28,
                 "lv": 28,
-                "exp_need": 1837,
-                "money_need": 5867,
-                "cur_exp": 15803
+                "exp_need": 4322,
+                "money_need": 10542,
+                "cur_exp": 30082
             },
             "29": {
                 "id": 29,
                 "lv": 29,
-                "exp_need": 2039,
-                "money_need": 6788,
-                "cur_exp": 17640
+                "exp_need": 4927,
+                "money_need": 12387,
+                "cur_exp": 34404
             },
             "30": {
                 "id": 30,
                 "lv": 30,
-                "exp_need": 2263,
-                "money_need": 7854,
-                "cur_exp": 19679
+                "exp_need": 5617,
+                "money_need": 14555,
+                "cur_exp": 39331
             },
             "31": {
                 "id": 31,
                 "lv": 31,
-                "exp_need": 2512,
-                "money_need": 9087,
-                "cur_exp": 21942
+                "exp_need": 6403,
+                "money_need": 17102,
+                "cur_exp": 44948
             },
             "32": {
                 "id": 32,
                 "lv": 32,
-                "exp_need": 2788,
-                "money_need": 10514,
-                "cur_exp": 24454
+                "exp_need": 7299,
+                "money_need": 20095,
+                "cur_exp": 51351
             },
             "33": {
                 "id": 33,
                 "lv": 33,
-                "exp_need": 3095,
-                "money_need": 12165,
-                "cur_exp": 27242
+                "exp_need": 8321,
+                "money_need": 23612,
+                "cur_exp": 58650
             },
             "34": {
                 "id": 34,
                 "lv": 34,
-                "exp_need": 3435,
-                "money_need": 14075,
-                "cur_exp": 30337
+                "exp_need": 9486,
+                "money_need": 27744,
+                "cur_exp": 66971
             },
             "35": {
                 "id": 35,
                 "lv": 35,
-                "exp_need": 3813,
-                "money_need": 16285,
-                "cur_exp": 33772
+                "exp_need": 10814,
+                "money_need": 32599,
+                "cur_exp": 76457
             },
             "36": {
                 "id": 36,
                 "lv": 36,
-                "exp_need": 4232,
-                "money_need": 18842,
-                "cur_exp": 37585
+                "exp_need": 12328,
+                "money_need": 38304,
+                "cur_exp": 87271
             },
             "37": {
                 "id": 37,
                 "lv": 37,
-                "exp_need": 4698,
-                "money_need": 21800,
-                "cur_exp": 41817
+                "exp_need": 14054,
+                "money_need": 45007,
+                "cur_exp": 99599
             },
             "38": {
                 "id": 38,
                 "lv": 38,
-                "exp_need": 5215,
-                "money_need": 25223,
-                "cur_exp": 46515
+                "exp_need": 16022,
+                "money_need": 52883,
+                "cur_exp": 113653
             },
             "39": {
                 "id": 39,
                 "lv": 39,
-                "exp_need": 5789,
-                "money_need": 29183,
-                "cur_exp": 51730
+                "exp_need": 18265,
+                "money_need": 62138,
+                "cur_exp": 129675
             },
             "40": {
                 "id": 40,
                 "lv": 40,
-                "exp_need": 6426,
-                "money_need": 33765,
-                "cur_exp": 57519
+                "exp_need": 20822,
+                "money_need": 73012,
+                "cur_exp": 147940
             },
             "41": {
                 "id": 41,
                 "lv": 41,
-                "exp_need": 7133,
-                "money_need": 39066,
-                "cur_exp": 63945
+                "exp_need": 23737,
+                "money_need": 85789,
+                "cur_exp": 168762
             },
             "42": {
                 "id": 42,
                 "lv": 42,
-                "exp_need": 7918,
-                "money_need": 45199,
-                "cur_exp": 71078
+                "exp_need": 27060,
+                "money_need": 100802,
+                "cur_exp": 192499
             },
             "43": {
                 "id": 43,
                 "lv": 43,
-                "exp_need": 8789,
-                "money_need": 52295,
-                "cur_exp": 78996
+                "exp_need": 30848,
+                "money_need": 118442,
+                "cur_exp": 219559
             },
             "44": {
                 "id": 44,
                 "lv": 44,
-                "exp_need": 9756,
-                "money_need": 60505,
-                "cur_exp": 87785
+                "exp_need": 35167,
+                "money_need": 139169,
+                "cur_exp": 250407
             },
             "45": {
                 "id": 45,
                 "lv": 45,
-                "exp_need": 10829,
-                "money_need": 70004,
-                "cur_exp": 97541
+                "exp_need": 40090,
+                "money_need": 163524,
+                "cur_exp": 285574
             },
             "46": {
                 "id": 46,
                 "lv": 46,
-                "exp_need": 12020,
-                "money_need": 80995,
-                "cur_exp": 108370
+                "exp_need": 45703,
+                "money_need": 192141,
+                "cur_exp": 325664
             },
             "47": {
                 "id": 47,
                 "lv": 47,
-                "exp_need": 13342,
-                "money_need": 93711,
-                "cur_exp": 120390
+                "exp_need": 52101,
+                "money_need": 225766,
+                "cur_exp": 371367
             },
             "48": {
                 "id": 48,
                 "lv": 48,
-                "exp_need": 14810,
-                "money_need": 108424,
-                "cur_exp": 133732
+                "exp_need": 59395,
+                "money_need": 265275,
+                "cur_exp": 423468
             },
             "49": {
                 "id": 49,
                 "lv": 49,
-                "exp_need": 16439,
-                "money_need": 125447,
-                "cur_exp": 148542
+                "exp_need": 67710,
+                "money_need": 311698,
+                "cur_exp": 482863
             },
             "50": {
                 "id": 50,
                 "lv": 50,
-                "exp_need": 18247,
-                "money_need": 145142,
-                "cur_exp": 164981
+                "exp_need": 77189,
+                "money_need": 366245,
+                "cur_exp": 550573
             },
             "51": {
                 "id": 51,
                 "lv": 51,
-                "exp_need": 20254,
-                "money_need": 167929,
-                "cur_exp": 183228
+                "exp_need": 87995,
+                "money_need": 430338,
+                "cur_exp": 627762
             },
             "52": {
                 "id": 52,
                 "lv": 52,
-                "exp_need": 22482,
-                "money_need": 194294,
-                "cur_exp": 203482
+                "exp_need": 100314,
+                "money_need": 505647,
+                "cur_exp": 715757
             },
             "53": {
                 "id": 53,
                 "lv": 53,
-                "exp_need": 24955,
-                "money_need": 224798,
-                "cur_exp": 225964
+                "exp_need": 114358,
+                "money_need": 594135,
+                "cur_exp": 816071
             },
             "54": {
                 "id": 54,
                 "lv": 54,
-                "exp_need": 27700,
-                "money_need": 260091,
-                "cur_exp": 250919
+                "exp_need": 130368,
+                "money_need": 698109,
+                "cur_exp": 930429
             },
             "55": {
                 "id": 55,
                 "lv": 55,
-                "exp_need": 30747,
-                "money_need": 300925,
-                "cur_exp": 278619
+                "exp_need": 148620,
+                "money_need": 820278,
+                "cur_exp": 1060797
             },
             "56": {
                 "id": 56,
                 "lv": 56,
-                "exp_need": 34129,
-                "money_need": 348170,
-                "cur_exp": 309366
+                "exp_need": 169427,
+                "money_need": 963827,
+                "cur_exp": 1209417
             },
             "57": {
                 "id": 57,
                 "lv": 57,
-                "exp_need": 37883,
-                "money_need": 402833,
-                "cur_exp": 343495
+                "exp_need": 193147,
+                "money_need": 1132497,
+                "cur_exp": 1378844
             },
             "58": {
                 "id": 58,
                 "lv": 58,
-                "exp_need": 42050,
-                "money_need": 466078,
-                "cur_exp": 381378
+                "exp_need": 220188,
+                "money_need": 1330684,
+                "cur_exp": 1571991
             },
             "59": {
                 "id": 59,
                 "lv": 59,
-                "exp_need": 46676,
-                "money_need": 539252,
-                "cur_exp": 423428
+                "exp_need": 251014,
+                "money_need": 1563554,
+                "cur_exp": 1792179
             },
             "60": {
                 "id": 60,
                 "lv": 60,
-                "exp_need": 51810,
-                "money_need": 623915,
-                "cur_exp": 470104
+                "exp_need": 286156,
+                "money_need": 1837176,
+                "cur_exp": 2043193
             }
         }
     },
@@ -923,7 +1319,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 45,
-                "hp": 129,
+                "hp": 196,
                 "normal_atk_id": 8,
                 "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
                 "url": 2
@@ -935,7 +1331,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 91,
-                "hp": 275,
+                "hp": 418,
                 "normal_atk_id": 8,
                 "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
                 "url": 2
@@ -947,7 +1343,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 142,
-                "hp": 398,
+                "hp": 605,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -962,7 +1358,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 182,
-                "hp": 543,
+                "hp": 825,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -977,7 +1373,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 255,
-                "hp": 713,
+                "hp": 1084,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -992,7 +1388,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 51,
-                "hp": 122,
+                "hp": 185,
                 "normal_atk_id": 9,
                 "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
                 "url": 3
@@ -1004,7 +1400,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 97,
-                "hp": 246,
+                "hp": 374,
                 "normal_atk_id": 9,
                 "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
                 "url": 3
@@ -1016,7 +1412,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 148,
-                "hp": 372,
+                "hp": 565,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1031,7 +1427,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 202,
-                "hp": 518,
+                "hp": 787,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1046,13 +1442,82 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 273,
-                "hp": 674,
+                "hp": 1024,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
                 "effect_id": 805,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
+            },
+            "21": {
+                "id": 21,
+                "number": 5,
+                "name": "唐僧·金蝉子",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 182,
+                "normal_atk_id": 10,
+                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
+                "url": 8
+            },
+            "22": {
+                "id": 22,
+                "number": 5,
+                "name": "普渡众佛·金蝉子",
+                "star": 2,
+                "lv": 1,
+                "atk": 99,
+                "hp": 378,
+                "normal_atk_id": 10,
+                "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
+                "url": 8
+            },
+            "23": {
+                "id": 23,
+                "number": 5,
+                "name": "燃灯道人·金蝉子",
+                "star": 3,
+                "lv": 1,
+                "atk": 148,
+                "hp": 573,
+                "skill_name": "万字佛经",
+                "skill_id": 10,
+                "normal_atk_id": 10,
+                "effect_id": 302,
+                "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
+                "url": 8
+            },
+            "24": {
+                "id": 24,
+                "number": 5,
+                "name": "功德佛·金蝉子",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 793,
+                "skill_name": "万字佛经",
+                "skill_id": 10,
+                "normal_atk_id": 10,
+                "effect_id": 302,
+                "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
+                "url": 8
+            },
+            "25": {
+                "id": 25,
+                "number": 5,
+                "name": "真身·金蝉子",
+                "star": 5,
+                "lv": 1,
+                "atk": 272,
+                "hp": 1028,
+                "skill_name": "万字佛经",
+                "skill_id": 10,
+                "normal_atk_id": 10,
+                "effect_id": 302,
+                "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
+                "url": 8
             },
             "31": {
                 "id": 31,
@@ -1061,7 +1526,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 53,
-                "hp": 125,
+                "hp": 190,
                 "normal_atk_id": 2,
                 "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
                 "url": 7
@@ -1073,7 +1538,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 101,
-                "hp": 251,
+                "hp": 382,
                 "normal_atk_id": 2,
                 "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
                 "url": 7
@@ -1085,7 +1550,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 151,
-                "hp": 371,
+                "hp": 564,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1100,7 +1565,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 205,
-                "hp": 519,
+                "hp": 789,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1115,13 +1580,82 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 277,
-                "hp": 677,
+                "hp": 1029,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
                 "effect_id": 401,
                 "description": "斧头帮知道吧，那是我开创的。",
                 "url": 7
+            },
+            "36": {
+                "id": 36,
+                "number": 8,
+                "name": "神二代·红孩儿",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 185,
+                "normal_atk_id": 11,
+                "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
+                "url": 10
+            },
+            "37": {
+                "id": 37,
+                "number": 8,
+                "name": "火云洞·红孩儿",
+                "star": 2,
+                "lv": 1,
+                "atk": 100,
+                "hp": 377,
+                "normal_atk_id": 11,
+                "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
+                "url": 10
+            },
+            "38": {
+                "id": 38,
+                "number": 8,
+                "name": "三味真火·红孩儿",
+                "star": 3,
+                "lv": 1,
+                "atk": 145,
+                "hp": 572,
+                "skill_name": "三味真火",
+                "skill_id": 2,
+                "normal_atk_id": 11,
+                "effect_id": 503,
+                "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
+                "url": 10
+            },
+            "39": {
+                "id": 39,
+                "number": 8,
+                "name": "圣婴大王·红孩儿",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 789,
+                "skill_name": "三味真火",
+                "skill_id": 2,
+                "normal_atk_id": 11,
+                "effect_id": 503,
+                "description": "虽然我长个正太样儿，却有颗大叔的心。",
+                "url": 10
+            },
+            "40": {
+                "id": 40,
+                "number": 8,
+                "name": "善财童子·红孩儿",
+                "star": 5,
+                "lv": 1,
+                "atk": 273,
+                "hp": 1020,
+                "skill_name": "三味真火",
+                "skill_id": 2,
+                "normal_atk_id": 11,
+                "effect_id": 503,
+                "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
+                "url": 10
             },
             "41": {
                 "id": 41,
@@ -1130,7 +1664,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 43,
-                "hp": 113,
+                "hp": 172,
                 "normal_atk_id": 3,
                 "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
                 "url": 9
@@ -1142,7 +1676,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 106,
-                "hp": 244,
+                "hp": 371,
                 "normal_atk_id": 3,
                 "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
                 "url": 9
@@ -1154,7 +1688,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 156,
-                "hp": 371,
+                "hp": 564,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -1169,7 +1703,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 204,
-                "hp": 525,
+                "hp": 798,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -1184,13 +1718,82 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 278,
-                "hp": 680,
+                "hp": 1034,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
                 "effect_id": 802,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
                 "url": 9
+            },
+            "46": {
+                "id": 46,
+                "number": 10,
+                "name": "阿哥·雷震子",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 181,
+                "normal_atk_id": 11,
+                "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
+                "url": 14
+            },
+            "47": {
+                "id": 47,
+                "number": 10,
+                "name": "羽人·雷震子",
+                "star": 2,
+                "lv": 1,
+                "atk": 103,
+                "hp": 371,
+                "normal_atk_id": 11,
+                "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
+                "url": 14
+            },
+            "48": {
+                "id": 48,
+                "number": 10,
+                "name": "救父·雷震子",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 567,
+                "skill_name": "轰天雷",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 404,
+                "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
+                "url": 14
+            },
+            "49": {
+                "id": 49,
+                "number": 10,
+                "name": "出五关·雷震子",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 789,
+                "skill_name": "轰天雷",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 404,
+                "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
+                "url": 14
+            },
+            "50": {
+                "id": 50,
+                "number": 10,
+                "name": "金刚·雷震子",
+                "star": 5,
+                "lv": 1,
+                "atk": 281,
+                "hp": 990,
+                "skill_name": "轰天雷",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 404,
+                "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
+                "url": 14
             },
             "56": {
                 "id": 56,
@@ -1199,7 +1802,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 60,
-                "hp": 121,
+                "hp": 184,
                 "normal_atk_id": 1,
                 "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
                 "url": 12
@@ -1211,7 +1814,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 115,
-                "hp": 260,
+                "hp": 395,
                 "normal_atk_id": 1,
                 "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
                 "url": 12
@@ -1223,7 +1826,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 162,
-                "hp": 370,
+                "hp": 562,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -1238,7 +1841,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 219,
-                "hp": 522,
+                "hp": 793,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -1253,13 +1856,151 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 285,
-                "hp": 677,
+                "hp": 1029,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
                 "effect_id": 300,
                 "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
                 "url": 12
+            },
+            "61": {
+                "id": 61,
+                "number": 13,
+                "name": "总兵·李靖",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 198,
+                "normal_atk_id": 11,
+                "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
+                "url": 16
+            },
+            "62": {
+                "id": 62,
+                "number": 13,
+                "name": "人父·李靖",
+                "star": 2,
+                "lv": 1,
+                "atk": 113,
+                "hp": 394,
+                "normal_atk_id": 11,
+                "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
+                "url": 16
+            },
+            "63": {
+                "id": 63,
+                "number": 13,
+                "name": "降魔大元帅·李靖",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 578,
+                "skill_name": "塔锁封禁",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 405,
+                "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
+                "url": 16
+            },
+            "64": {
+                "id": 64,
+                "number": 13,
+                "name": "保卫天庭·李靖",
+                "star": 4,
+                "lv": 1,
+                "atk": 219,
+                "hp": 804,
+                "skill_name": "塔锁封禁",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 405,
+                "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
+                "url": 16
+            },
+            "65": {
+                "id": 65,
+                "number": 13,
+                "name": "托塔天王·李靖",
+                "star": 5,
+                "lv": 1,
+                "atk": 288,
+                "hp": 1034,
+                "skill_name": "塔锁封禁",
+                "skill_id": 6,
+                "normal_atk_id": 11,
+                "effect_id": 405,
+                "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
+                "url": 16
+            },
+            "76": {
+                "id": 76,
+                "number": 16,
+                "name": "瞬移·土行孙",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 182,
+                "normal_atk_id": 11,
+                "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
+                "url": 19
+            },
+            "77": {
+                "id": 77,
+                "number": 16,
+                "name": "遁神·土行孙",
+                "star": 2,
+                "lv": 1,
+                "atk": 103,
+                "hp": 375,
+                "normal_atk_id": 11,
+                "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
+                "url": 19
+            },
+            "78": {
+                "id": 78,
+                "number": 16,
+                "name": "捆仙绳·土行孙",
+                "star": 3,
+                "lv": 1,
+                "atk": 156,
+                "hp": 578,
+                "skill_name": "土遁飞剑",
+                "skill_id": 4,
+                "normal_atk_id": 11,
+                "effect_id": 702,
+                "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
+                "url": 19
+            },
+            "79": {
+                "id": 79,
+                "number": 16,
+                "name": "地行仙·土行孙",
+                "star": 4,
+                "lv": 1,
+                "atk": 210,
+                "hp": 790,
+                "skill_name": "土遁飞剑",
+                "skill_id": 4,
+                "normal_atk_id": 11,
+                "effect_id": 702,
+                "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
+                "url": 19
+            },
+            "80": {
+                "id": 80,
+                "number": 16,
+                "name": "土府星君·土行孙",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 1035,
+                "skill_name": "土遁飞剑",
+                "skill_id": 4,
+                "normal_atk_id": 11,
+                "effect_id": 702,
+                "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
+                "url": 19
             },
             "86": {
                 "id": 86,
@@ -1268,7 +2009,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 55,
-                "hp": 131,
+                "hp": 199,
                 "normal_atk_id": 4,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
                 "url": 18
@@ -1280,7 +2021,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 106,
-                "hp": 254,
+                "hp": 386,
                 "normal_atk_id": 4,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
                 "url": 18
@@ -1292,7 +2033,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 143,
-                "hp": 369,
+                "hp": 561,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -1307,7 +2048,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 206,
-                "hp": 524,
+                "hp": 796,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -1322,7 +2063,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 265,
-                "hp": 689,
+                "hp": 1047,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -1337,7 +2078,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 53,
-                "hp": 126,
+                "hp": 192,
                 "normal_atk_id": 5,
                 "description": "我修行了一千年，孤独了一千年。",
                 "url": 19
@@ -1349,7 +2090,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 106,
-                "hp": 244,
+                "hp": 371,
                 "normal_atk_id": 5,
                 "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
                 "url": 19
@@ -1361,7 +2102,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 152,
-                "hp": 372,
+                "hp": 565,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -1376,7 +2117,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 203,
-                "hp": 515,
+                "hp": 783,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -1391,7 +2132,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 268,
-                "hp": 677,
+                "hp": 1029,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -1406,7 +2147,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 60,
-                "hp": 118,
+                "hp": 179,
                 "normal_atk_id": 6,
                 "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
                 "url": 20
@@ -1418,7 +2159,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 111,
-                "hp": 239,
+                "hp": 363,
                 "normal_atk_id": 6,
                 "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
                 "url": 20
@@ -1430,7 +2171,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 161,
-                "hp": 370,
+                "hp": 562,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -1445,7 +2186,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 221,
-                "hp": 522,
+                "hp": 793,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -1460,7 +2201,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 290,
-                "hp": 662,
+                "hp": 1006,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -1475,7 +2216,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 56,
-                "hp": 137,
+                "hp": 208,
                 "normal_atk_id": 7,
                 "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
                 "url": 22
@@ -1487,7 +2228,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 111,
-                "hp": 241,
+                "hp": 366,
                 "normal_atk_id": 7,
                 "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
                 "url": 22
@@ -1499,7 +2240,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 159,
-                "hp": 358,
+                "hp": 544,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -1514,7 +2255,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 221,
-                "hp": 516,
+                "hp": 784,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -1529,7 +2270,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 276,
-                "hp": 683,
+                "hp": 1038,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -1544,7 +2285,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 41,
-                "hp": 130,
+                "hp": 198,
                 "normal_atk_id": 2,
                 "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
                 "url": 25
@@ -1556,7 +2297,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 92,
-                "hp": 275,
+                "hp": 418,
                 "normal_atk_id": 2,
                 "description": "我一辈子只写了这一曲，却流传了几辈子。",
                 "url": 25
@@ -1568,7 +2309,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 144,
-                "hp": 390,
+                "hp": 593,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -1583,7 +2324,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 179,
-                "hp": 556,
+                "hp": 845,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -1598,7 +2339,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 255,
-                "hp": 702,
+                "hp": 1067,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -1613,7 +2354,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 42,
-                "hp": 122,
+                "hp": 185,
                 "normal_atk_id": 1,
                 "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
                 "url": 28
@@ -1625,7 +2366,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 92,
-                "hp": 262,
+                "hp": 398,
                 "normal_atk_id": 1,
                 "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
                 "url": 28
@@ -1637,7 +2378,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 132,
-                "hp": 382,
+                "hp": 581,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -1652,7 +2393,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 182,
-                "hp": 552,
+                "hp": 839,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -1667,13 +2408,82 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 242,
-                "hp": 712,
+                "hp": 1082,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
                 "effect_id": 301,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
                 "url": 28
+            },
+            "141": {
+                "id": 141,
+                "number": 29,
+                "name": "决斗·吴刚",
+                "star": 1,
+                "lv": 1,
+                "atk": 33,
+                "hp": 187,
+                "normal_atk_id": 12,
+                "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
+                "url": 25
+            },
+            "142": {
+                "id": 142,
+                "number": 29,
+                "name": "刺配·吴刚",
+                "star": 2,
+                "lv": 1,
+                "atk": 83,
+                "hp": 400,
+                "normal_atk_id": 12,
+                "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
+                "url": 25
+            },
+            "143": {
+                "id": 143,
+                "number": 29,
+                "name": "樵夫·吴刚",
+                "star": 3,
+                "lv": 1,
+                "atk": 133,
+                "hp": 582,
+                "skill_name": "半月斩",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 806,
+                "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。",
+                "url": 25
+            },
+            "144": {
+                "id": 144,
+                "number": 29,
+                "name": "逆袭·吴刚",
+                "star": 4,
+                "lv": 1,
+                "atk": 183,
+                "hp": 841,
+                "skill_name": "半月斩",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 806,
+                "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？",
+                "url": 25
+            },
+            "145": {
+                "id": 145,
+                "number": 29,
+                "name": "桂花仙·吴刚",
+                "star": 5,
+                "lv": 1,
+                "atk": 243,
+                "hp": 1069,
+                "skill_name": "半月斩",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 806,
+                "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。",
+                "url": 25
             },
             "146": {
                 "id": 146,
@@ -1682,7 +2492,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 46,
-                "hp": 133,
+                "hp": 202,
                 "normal_atk_id": 8,
                 "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
                 "url": 30
@@ -1694,7 +2504,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 95,
-                "hp": 262,
+                "hp": 398,
                 "normal_atk_id": 8,
                 "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
                 "url": 30
@@ -1706,7 +2516,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 145,
-                "hp": 385,
+                "hp": 585,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1721,7 +2531,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 188,
-                "hp": 556,
+                "hp": 845,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1736,7 +2546,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 244,
-                "hp": 721,
+                "hp": 1096,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1751,7 +2561,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 50,
-                "hp": 131,
+                "hp": 199,
                 "normal_atk_id": 5,
                 "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？",
                 "url": 31
@@ -1763,7 +2573,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 102,
-                "hp": 279,
+                "hp": 424,
                 "normal_atk_id": 5,
                 "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。",
                 "url": 31
@@ -1775,7 +2585,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 149,
-                "hp": 378,
+                "hp": 575,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -1790,7 +2600,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 201,
-                "hp": 549,
+                "hp": 834,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -1805,7 +2615,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 265,
-                "hp": 719,
+                "hp": 1093,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -1820,7 +2630,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 53,
-                "hp": 126,
+                "hp": 192,
                 "normal_atk_id": 7,
                 "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
                 "url": 32
@@ -1832,7 +2642,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 105,
-                "hp": 277,
+                "hp": 421,
                 "normal_atk_id": 7,
                 "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
                 "url": 32
@@ -1844,7 +2654,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 154,
-                "hp": 369,
+                "hp": 561,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -1859,7 +2669,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 206,
-                "hp": 556,
+                "hp": 845,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -1874,13 +2684,82 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 266,
-                "hp": 666,
+                "hp": 1012,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
                 "effect_id": 502,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
                 "url": 32
+            },
+            "161": {
+                "id": 161,
+                "number": 33,
+                "name": "科员·日游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 190,
+                "normal_atk_id": 12,
+                "description": "我怎么也是个有编制的神，可不是临时工。",
+                "url": 34
+            },
+            "162": {
+                "id": 162,
+                "number": 33,
+                "name": "副科长·日游神",
+                "star": 2,
+                "lv": 1,
+                "atk": 112,
+                "hp": 371,
+                "normal_atk_id": 12,
+                "description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
+                "url": 34
+            },
+            "163": {
+                "id": 163,
+                "number": 33,
+                "name": "科长·日游神",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 568,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 807,
+                "description": "这次能提拔，多亏巨灵神他们给我指了条路。",
+                "url": 34
+            },
+            "164": {
+                "id": 164,
+                "number": 33,
+                "name": "副处长·日游神",
+                "star": 4,
+                "lv": 1,
+                "atk": 222,
+                "hp": 789,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 807,
+                "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！",
+                "url": 34
+            },
+            "165": {
+                "id": 165,
+                "number": 33,
+                "name": "处长·日游神",
+                "star": 5,
+                "lv": 1,
+                "atk": 268,
+                "hp": 1017,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "normal_atk_id": 12,
+                "effect_id": 807,
+                "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。",
+                "url": 34
             },
             "166": {
                 "id": 166,
@@ -1889,7 +2768,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 60,
-                "hp": 122,
+                "hp": 185,
                 "normal_atk_id": 9,
                 "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
                 "url": 34
@@ -1901,7 +2780,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 115,
-                "hp": 246,
+                "hp": 374,
                 "normal_atk_id": 9,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
                 "url": 34
@@ -1913,7 +2792,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 162,
-                "hp": 373,
+                "hp": 567,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1928,7 +2807,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 223,
-                "hp": 515,
+                "hp": 783,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1943,7 +2822,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 279,
-                "hp": 668,
+                "hp": 1015,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1958,7 +2837,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 45,
-                "hp": 136,
+                "hp": 207,
                 "normal_atk_id": 4,
                 "description": "虽然咱们部落没多少人，但我也算是个公主呀！",
                 "url": 36
@@ -1970,7 +2849,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 106,
-                "hp": 258,
+                "hp": 392,
                 "normal_atk_id": 4,
                 "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。",
                 "url": 36
@@ -1982,7 +2861,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 151,
-                "hp": 381,
+                "hp": 579,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -1997,7 +2876,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 200,
-                "hp": 536,
+                "hp": 815,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2012,7 +2891,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 280,
-                "hp": 721,
+                "hp": 1096,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2027,7 +2906,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 44,
-                "hp": 141,
+                "hp": 214,
                 "normal_atk_id": 2,
                 "description": "我喜欢射，我喜欢箭，我是箭客！",
                 "url": 38
@@ -2039,7 +2918,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 93,
-                "hp": 261,
+                "hp": 397,
                 "normal_atk_id": 2,
                 "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。",
                 "url": 38
@@ -2051,7 +2930,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 144,
-                "hp": 388,
+                "hp": 590,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -2066,7 +2945,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 205,
-                "hp": 541,
+                "hp": 822,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -2081,7 +2960,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 277,
-                "hp": 729,
+                "hp": 1108,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -2096,7 +2975,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 62,
-                "hp": 122,
+                "hp": 185,
                 "normal_atk_id": 5,
                 "description": "后羿是个神射手，嫁给他我很幸福，你懂的。",
                 "url": 39
@@ -2108,7 +2987,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 105,
-                "hp": 233,
+                "hp": 354,
                 "normal_atk_id": 5,
                 "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。",
                 "url": 39
@@ -2120,7 +2999,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 159,
-                "hp": 352,
+                "hp": 535,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -2135,7 +3014,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 212,
-                "hp": 502,
+                "hp": 763,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -2150,7 +3029,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 290,
-                "hp": 647,
+                "hp": 983,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -2165,7 +3044,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 51,
-                "hp": 121,
+                "hp": 184,
                 "normal_atk_id": 6,
                 "description": "嫁给河伯是我一生最大的错。",
                 "url": 43
@@ -2177,7 +3056,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 101,
-                "hp": 251,
+                "hp": 382,
                 "normal_atk_id": 6,
                 "description": "我献出洛书，只是想离开这个人。",
                 "url": 43
@@ -2189,7 +3068,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 151,
-                "hp": 371,
+                "hp": 564,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -2204,7 +3083,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 201,
-                "hp": 521,
+                "hp": 792,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -2219,7 +3098,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 271,
-                "hp": 671,
+                "hp": 1020,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -2234,7 +3113,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 49,
-                "hp": 126,
+                "hp": 192,
                 "normal_atk_id": 7,
                 "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。",
                 "url": 44
@@ -2246,7 +3125,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 106,
-                "hp": 248,
+                "hp": 377,
                 "normal_atk_id": 7,
                 "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？",
                 "url": 44
@@ -2258,7 +3137,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 158,
-                "hp": 374,
+                "hp": 568,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -2273,7 +3152,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 203,
-                "hp": 531,
+                "hp": 807,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -2288,7 +3167,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 274,
-                "hp": 678,
+                "hp": 1031,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -2303,7 +3182,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 46,
-                "hp": 140,
+                "hp": 213,
                 "normal_atk_id": 3,
                 "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
                 "url": 49
@@ -2315,7 +3194,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 92,
-                "hp": 290,
+                "hp": 441,
                 "normal_atk_id": 3,
                 "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
                 "url": 49
@@ -2327,7 +3206,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 141,
-                "hp": 410,
+                "hp": 623,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2342,7 +3221,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 192,
-                "hp": 560,
+                "hp": 851,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2357,7 +3236,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 262,
-                "hp": 720,
+                "hp": 1094,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2372,7 +3251,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 55,
-                "hp": 136,
+                "hp": 207,
                 "normal_atk_id": 2,
                 "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
                 "url": 50
@@ -2384,7 +3263,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 91,
-                "hp": 290,
+                "hp": 441,
                 "normal_atk_id": 2,
                 "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
                 "url": 50
@@ -2396,7 +3275,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 141,
-                "hp": 410,
+                "hp": 623,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -2411,7 +3290,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 185,
-                "hp": 556,
+                "hp": 845,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -2426,7 +3305,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 255,
-                "hp": 725,
+                "hp": 1102,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -2441,7 +3320,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 46,
-                "hp": 135,
+                "hp": 205,
                 "normal_atk_id": 5,
                 "description": "天生智商300多，这不是我的错。",
                 "url": 51
@@ -2453,7 +3332,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 110,
-                "hp": 257,
+                "hp": 391,
                 "normal_atk_id": 5,
                 "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
                 "url": 51
@@ -2465,7 +3344,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 152,
-                "hp": 382,
+                "hp": 581,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -2480,7 +3359,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 201,
-                "hp": 535,
+                "hp": 813,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -2495,7 +3374,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 281,
-                "hp": 722,
+                "hp": 1097,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -8778,393 +9657,6 @@ var outputTables = {
             }
         }
     },
-    "new_year_rechage": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 66,
-                "money": 20000,
-                "energy": 100,
-                "fragments": 2
-            },
-            "2": {
-                "id": 2,
-                "cash": 266,
-                "money": 50000,
-                "energy": 200,
-                "fragments": 3
-            },
-            "3": {
-                "id": 3,
-                "cash": 566,
-                "money": 80000,
-                "energy": 300,
-                "fragments": 5
-            },
-            "4": {
-                "id": 4,
-                "cash": 999,
-                "money": 100000,
-                "energy": 800,
-                "fragments": 8
-            },
-            "5": {
-                "id": 5,
-                "cash": 1888,
-                "money": 200000,
-                "energy": 1000,
-                "fragments": 12
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 20000,
-                "energy": 1000,
-                "card_ids": 254,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 50,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 10,
-                "collect_count": 15,
-                "exp_card_count": 30
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[8,13,33,43,168,148,218,123,243]",
-                "star4": "[59,139]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 20,
-                "lottery": 25,
-                "card5_position": 35,
-                "pass_skillafresh": 45
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 200000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 320000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 400000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 99999999,
-                "energy": 99999999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 99999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 5000,
-                "energy": 200
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 30000,
-                "energy": 1000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 50000,
-                "energy": 2000,
-                "skillPoint": 1000,
-                "elixir": 2000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 100000,
-                "energy": 3000,
-                "skillPoint": 2000,
-                "elixir": 5000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 120000,
-                "energy": 5000,
-                "skillPoint": 5000,
-                "elixir": 12000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 200000,
-                "energy": 8000,
-                "skillPoint": 8000,
-                "elixir": 20000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
-            },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
-                "value": 200
-            }
-        }
-    },
     "treasure_hunt": {
         "colComment": {},
         "rows": {
@@ -9174,8 +9666,8 @@ var outputTables = {
                 "value": 10,
                 "name": "体力",
                 "type_rate": 20,
-                "value_rate": 90,
-                "rate": 18
+                "value_rate": 85,
+                "rate": 17
             },
             "1": {
                 "id": 1,
@@ -9183,8 +9675,8 @@ var outputTables = {
                 "value": 50,
                 "name": "体力",
                 "type_rate": 20,
-                "value_rate": 9,
-                "rate": 1.8
+                "value_rate": 14,
+                "rate": 2.8
             },
             "2": {
                 "id": 2,
@@ -9201,17 +9693,17 @@ var outputTables = {
                 "value": 500,
                 "name": "仙丹",
                 "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
+                "value_rate": 85,
+                "rate": 12.75
             },
             "4": {
                 "id": 4,
                 "type": "elixir",
-                "value": 5000,
+                "value": 3000,
                 "name": "仙丹",
                 "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
+                "value_rate": 14,
+                "rate": 2.1
             },
             "5": {
                 "id": 5,
@@ -9225,25 +9717,25 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "type": "spirit",
-                "value": 100,
+                "value": 50,
                 "name": "灵气",
                 "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
+                "value_rate": 85,
+                "rate": 8.5
             },
             "7": {
                 "id": 7,
                 "type": "spirit",
-                "value": 500,
+                "value": 200,
                 "name": "灵气",
                 "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
+                "value_rate": 14,
+                "rate": 1.4
             },
             "8": {
                 "id": 8,
                 "type": "spirit",
-                "value": 1000,
+                "value": 500,
                 "name": "灵气",
                 "type_rate": 10,
                 "value_rate": 1,
@@ -9255,17 +9747,17 @@ var outputTables = {
                 "value": 500,
                 "name": "技能点",
                 "type_rate": 10,
-                "value_rate": 90,
-                "rate": 9
+                "value_rate": 85,
+                "rate": 8.5
             },
             "10": {
                 "id": 10,
                 "type": "skillPoint",
-                "value": 5000,
+                "value": 3000,
                 "name": "技能点",
                 "type_rate": 10,
-                "value_rate": 9,
-                "rate": 0.9
+                "value_rate": 14,
+                "rate": 1.4
             },
             "11": {
                 "id": 11,
@@ -9282,8 +9774,8 @@ var outputTables = {
                 "value": 100,
                 "name": "活力点",
                 "type_rate": 20,
-                "value_rate": 90,
-                "rate": 18
+                "value_rate": 85,
+                "rate": 17
             },
             "13": {
                 "id": 13,
@@ -9291,8 +9783,8 @@ var outputTables = {
                 "value": 500,
                 "name": "活力点",
                 "type_rate": 20,
-                "value_rate": 9,
-                "rate": 1.8
+                "value_rate": 14,
+                "rate": 2.8
             },
             "14": {
                 "id": 14,
@@ -9309,8 +9801,8 @@ var outputTables = {
                 "value": 2000,
                 "name": "仙币",
                 "type_rate": 15,
-                "value_rate": 90,
-                "rate": 13.5
+                "value_rate": 85,
+                "rate": 12.75
             },
             "16": {
                 "id": 16,
@@ -9318,8 +9810,8 @@ var outputTables = {
                 "value": 10000,
                 "name": "仙币",
                 "type_rate": 15,
-                "value_rate": 9,
-                "rate": 1.35
+                "value_rate": 14,
+                "rate": 2.1
             },
             "17": {
                 "id": 17,
@@ -23753,960 +24245,960 @@ var outputTables = {
                 "lv": 5,
                 "win_exp": 1,
                 "win_money": 10,
-                "win_elixir": 100,
+                "win_elixir": 70,
                 "lose_exp": 1,
                 "lose_money": 5,
-                "lose_elixir": 50
+                "lose_elixir": 35
             },
             "6": {
                 "id": 6,
                 "lv": 6,
                 "win_exp": 2,
                 "win_money": 11,
-                "win_elixir": 110,
+                "win_elixir": 75,
                 "lose_exp": 1,
                 "lose_money": 6,
-                "lose_elixir": 55
+                "lose_elixir": 38
             },
             "7": {
                 "id": 7,
                 "lv": 7,
                 "win_exp": 3,
                 "win_money": 12,
-                "win_elixir": 120,
+                "win_elixir": 80,
                 "lose_exp": 2,
                 "lose_money": 6,
-                "lose_elixir": 60
+                "lose_elixir": 40
             },
             "8": {
                 "id": 8,
                 "lv": 8,
                 "win_exp": 4,
                 "win_money": 13,
-                "win_elixir": 130,
+                "win_elixir": 85,
                 "lose_exp": 2,
                 "lose_money": 7,
-                "lose_elixir": 65
+                "lose_elixir": 43
             },
             "9": {
                 "id": 9,
                 "lv": 9,
                 "win_exp": 5,
                 "win_money": 14,
-                "win_elixir": 140,
+                "win_elixir": 90,
                 "lose_exp": 3,
                 "lose_money": 7,
-                "lose_elixir": 70
+                "lose_elixir": 45
             },
             "10": {
                 "id": 10,
                 "lv": 10,
                 "win_exp": 6,
                 "win_money": 15,
-                "win_elixir": 150,
+                "win_elixir": 95,
                 "lose_exp": 3,
                 "lose_money": 8,
-                "lose_elixir": 75
+                "lose_elixir": 48
             },
             "11": {
                 "id": 11,
                 "lv": 11,
                 "win_exp": 7,
                 "win_money": 16,
-                "win_elixir": 160,
+                "win_elixir": 100,
                 "lose_exp": 4,
                 "lose_money": 8,
-                "lose_elixir": 80
+                "lose_elixir": 50
             },
             "12": {
                 "id": 12,
                 "lv": 12,
                 "win_exp": 8,
                 "win_money": 17,
-                "win_elixir": 170,
+                "win_elixir": 105,
                 "lose_exp": 4,
                 "lose_money": 9,
-                "lose_elixir": 85
+                "lose_elixir": 53
             },
             "13": {
                 "id": 13,
                 "lv": 13,
                 "win_exp": 9,
                 "win_money": 18,
-                "win_elixir": 180,
+                "win_elixir": 110,
                 "lose_exp": 5,
                 "lose_money": 9,
-                "lose_elixir": 90
+                "lose_elixir": 55
             },
             "14": {
                 "id": 14,
                 "lv": 14,
                 "win_exp": 10,
                 "win_money": 19,
-                "win_elixir": 190,
+                "win_elixir": 115,
                 "lose_exp": 5,
                 "lose_money": 10,
-                "lose_elixir": 95
+                "lose_elixir": 58
             },
             "15": {
                 "id": 15,
                 "lv": 15,
                 "win_exp": 11,
                 "win_money": 20,
-                "win_elixir": 200,
+                "win_elixir": 120,
                 "lose_exp": 6,
                 "lose_money": 10,
-                "lose_elixir": 100
+                "lose_elixir": 60
             },
             "16": {
                 "id": 16,
                 "lv": 16,
                 "win_exp": 12,
                 "win_money": 21,
-                "win_elixir": 210,
+                "win_elixir": 125,
                 "lose_exp": 6,
                 "lose_money": 11,
-                "lose_elixir": 105
+                "lose_elixir": 63
             },
             "17": {
                 "id": 17,
                 "lv": 17,
                 "win_exp": 13,
                 "win_money": 22,
-                "win_elixir": 220,
+                "win_elixir": 130,
                 "lose_exp": 7,
                 "lose_money": 11,
-                "lose_elixir": 110
+                "lose_elixir": 65
             },
             "18": {
                 "id": 18,
                 "lv": 18,
                 "win_exp": 14,
                 "win_money": 23,
-                "win_elixir": 230,
+                "win_elixir": 135,
                 "lose_exp": 7,
                 "lose_money": 12,
-                "lose_elixir": 115
+                "lose_elixir": 68
             },
             "19": {
                 "id": 19,
                 "lv": 19,
                 "win_exp": 15,
                 "win_money": 24,
-                "win_elixir": 240,
+                "win_elixir": 140,
                 "lose_exp": 8,
                 "lose_money": 12,
-                "lose_elixir": 120
+                "lose_elixir": 70
             },
             "20": {
                 "id": 20,
                 "lv": 20,
                 "win_exp": 16,
                 "win_money": 25,
-                "win_elixir": 250,
+                "win_elixir": 145,
                 "lose_exp": 8,
                 "lose_money": 13,
-                "lose_elixir": 125
+                "lose_elixir": 73
             },
             "21": {
                 "id": 21,
                 "lv": 21,
                 "win_exp": 17,
                 "win_money": 26,
-                "win_elixir": 260,
+                "win_elixir": 150,
                 "lose_exp": 9,
                 "lose_money": 13,
-                "lose_elixir": 130
+                "lose_elixir": 75
             },
             "22": {
                 "id": 22,
                 "lv": 22,
                 "win_exp": 18,
                 "win_money": 27,
-                "win_elixir": 270,
+                "win_elixir": 155,
                 "lose_exp": 9,
                 "lose_money": 14,
-                "lose_elixir": 135
+                "lose_elixir": 78
             },
             "23": {
                 "id": 23,
                 "lv": 23,
                 "win_exp": 19,
                 "win_money": 28,
-                "win_elixir": 280,
+                "win_elixir": 160,
                 "lose_exp": 10,
                 "lose_money": 14,
-                "lose_elixir": 140
+                "lose_elixir": 80
             },
             "24": {
                 "id": 24,
                 "lv": 24,
                 "win_exp": 20,
                 "win_money": 29,
-                "win_elixir": 290,
+                "win_elixir": 165,
                 "lose_exp": 10,
                 "lose_money": 15,
-                "lose_elixir": 145
+                "lose_elixir": 83
             },
             "25": {
                 "id": 25,
                 "lv": 25,
                 "win_exp": 21,
                 "win_money": 30,
-                "win_elixir": 300,
+                "win_elixir": 170,
                 "lose_exp": 11,
                 "lose_money": 15,
-                "lose_elixir": 150
+                "lose_elixir": 85
             },
             "26": {
                 "id": 26,
                 "lv": 26,
                 "win_exp": 22,
                 "win_money": 31,
-                "win_elixir": 310,
+                "win_elixir": 175,
                 "lose_exp": 11,
                 "lose_money": 16,
-                "lose_elixir": 155
+                "lose_elixir": 88
             },
             "27": {
                 "id": 27,
                 "lv": 27,
                 "win_exp": 23,
                 "win_money": 32,
-                "win_elixir": 320,
+                "win_elixir": 180,
                 "lose_exp": 12,
                 "lose_money": 16,
-                "lose_elixir": 160
+                "lose_elixir": 90
             },
             "28": {
                 "id": 28,
                 "lv": 28,
                 "win_exp": 24,
                 "win_money": 33,
-                "win_elixir": 330,
+                "win_elixir": 185,
                 "lose_exp": 12,
                 "lose_money": 17,
-                "lose_elixir": 165
+                "lose_elixir": 93
             },
             "29": {
                 "id": 29,
                 "lv": 29,
                 "win_exp": 25,
                 "win_money": 34,
-                "win_elixir": 340,
+                "win_elixir": 190,
                 "lose_exp": 13,
                 "lose_money": 17,
-                "lose_elixir": 170
+                "lose_elixir": 95
             },
             "30": {
                 "id": 30,
                 "lv": 30,
                 "win_exp": 26,
                 "win_money": 35,
-                "win_elixir": 350,
+                "win_elixir": 195,
                 "lose_exp": 13,
                 "lose_money": 18,
-                "lose_elixir": 175
+                "lose_elixir": 98
             },
             "31": {
                 "id": 31,
                 "lv": 31,
                 "win_exp": 27,
                 "win_money": 36,
-                "win_elixir": 360,
+                "win_elixir": 200,
                 "lose_exp": 14,
                 "lose_money": 18,
-                "lose_elixir": 180
+                "lose_elixir": 100
             },
             "32": {
                 "id": 32,
                 "lv": 32,
                 "win_exp": 28,
                 "win_money": 37,
-                "win_elixir": 370,
+                "win_elixir": 205,
                 "lose_exp": 14,
                 "lose_money": 19,
-                "lose_elixir": 185
+                "lose_elixir": 103
             },
             "33": {
                 "id": 33,
                 "lv": 33,
                 "win_exp": 29,
                 "win_money": 38,
-                "win_elixir": 380,
+                "win_elixir": 210,
                 "lose_exp": 15,
                 "lose_money": 19,
-                "lose_elixir": 190
+                "lose_elixir": 105
             },
             "34": {
                 "id": 34,
                 "lv": 34,
                 "win_exp": 30,
                 "win_money": 39,
-                "win_elixir": 390,
+                "win_elixir": 215,
                 "lose_exp": 15,
                 "lose_money": 20,
-                "lose_elixir": 195
+                "lose_elixir": 108
             },
             "35": {
                 "id": 35,
                 "lv": 35,
                 "win_exp": 31,
                 "win_money": 40,
-                "win_elixir": 400,
+                "win_elixir": 220,
                 "lose_exp": 16,
                 "lose_money": 20,
-                "lose_elixir": 200
+                "lose_elixir": 110
             },
             "36": {
                 "id": 36,
                 "lv": 36,
                 "win_exp": 32,
                 "win_money": 41,
-                "win_elixir": 410,
+                "win_elixir": 225,
                 "lose_exp": 16,
                 "lose_money": 21,
-                "lose_elixir": 205
+                "lose_elixir": 113
             },
             "37": {
                 "id": 37,
                 "lv": 37,
                 "win_exp": 33,
                 "win_money": 42,
-                "win_elixir": 420,
+                "win_elixir": 230,
                 "lose_exp": 17,
                 "lose_money": 21,
-                "lose_elixir": 210
+                "lose_elixir": 115
             },
             "38": {
                 "id": 38,
                 "lv": 38,
                 "win_exp": 34,
                 "win_money": 43,
-                "win_elixir": 430,
+                "win_elixir": 235,
                 "lose_exp": 17,
                 "lose_money": 22,
-                "lose_elixir": 215
+                "lose_elixir": 118
             },
             "39": {
                 "id": 39,
                 "lv": 39,
                 "win_exp": 35,
                 "win_money": 44,
-                "win_elixir": 440,
+                "win_elixir": 240,
                 "lose_exp": 18,
                 "lose_money": 22,
-                "lose_elixir": 220
+                "lose_elixir": 120
             },
             "40": {
                 "id": 40,
                 "lv": 40,
                 "win_exp": 36,
                 "win_money": 45,
-                "win_elixir": 450,
+                "win_elixir": 245,
                 "lose_exp": 18,
                 "lose_money": 23,
-                "lose_elixir": 225
+                "lose_elixir": 123
             },
             "41": {
                 "id": 41,
                 "lv": 41,
                 "win_exp": 37,
                 "win_money": 46,
-                "win_elixir": 460,
+                "win_elixir": 250,
                 "lose_exp": 19,
                 "lose_money": 23,
-                "lose_elixir": 230
+                "lose_elixir": 125
             },
             "42": {
                 "id": 42,
                 "lv": 42,
                 "win_exp": 38,
                 "win_money": 47,
-                "win_elixir": 470,
+                "win_elixir": 255,
                 "lose_exp": 19,
                 "lose_money": 24,
-                "lose_elixir": 235
+                "lose_elixir": 128
             },
             "43": {
                 "id": 43,
                 "lv": 43,
                 "win_exp": 39,
                 "win_money": 48,
-                "win_elixir": 480,
+                "win_elixir": 260,
                 "lose_exp": 20,
                 "lose_money": 24,
-                "lose_elixir": 240
+                "lose_elixir": 130
             },
             "44": {
                 "id": 44,
                 "lv": 44,
                 "win_exp": 40,
                 "win_money": 49,
-                "win_elixir": 490,
+                "win_elixir": 265,
                 "lose_exp": 20,
                 "lose_money": 25,
-                "lose_elixir": 245
+                "lose_elixir": 133
             },
             "45": {
                 "id": 45,
                 "lv": 45,
                 "win_exp": 41,
                 "win_money": 50,
-                "win_elixir": 500,
+                "win_elixir": 270,
                 "lose_exp": 21,
                 "lose_money": 25,
-                "lose_elixir": 250
+                "lose_elixir": 135
             },
             "46": {
                 "id": 46,
                 "lv": 46,
                 "win_exp": 42,
                 "win_money": 51,
-                "win_elixir": 510,
+                "win_elixir": 275,
                 "lose_exp": 21,
                 "lose_money": 26,
-                "lose_elixir": 255
+                "lose_elixir": 138
             },
             "47": {
                 "id": 47,
                 "lv": 47,
                 "win_exp": 43,
                 "win_money": 52,
-                "win_elixir": 520,
+                "win_elixir": 280,
                 "lose_exp": 22,
                 "lose_money": 26,
-                "lose_elixir": 260
+                "lose_elixir": 140
             },
             "48": {
                 "id": 48,
                 "lv": 48,
                 "win_exp": 44,
                 "win_money": 53,
-                "win_elixir": 530,
+                "win_elixir": 285,
                 "lose_exp": 22,
                 "lose_money": 27,
-                "lose_elixir": 265
+                "lose_elixir": 143
             },
             "49": {
                 "id": 49,
                 "lv": 49,
                 "win_exp": 45,
                 "win_money": 54,
-                "win_elixir": 540,
+                "win_elixir": 290,
                 "lose_exp": 23,
                 "lose_money": 27,
-                "lose_elixir": 270
+                "lose_elixir": 145
             },
             "50": {
                 "id": 50,
                 "lv": 50,
                 "win_exp": 46,
                 "win_money": 55,
-                "win_elixir": 550,
+                "win_elixir": 295,
                 "lose_exp": 23,
                 "lose_money": 28,
-                "lose_elixir": 275
+                "lose_elixir": 148
             },
             "51": {
                 "id": 51,
                 "lv": 51,
                 "win_exp": 47,
                 "win_money": 56,
-                "win_elixir": 560,
+                "win_elixir": 300,
                 "lose_exp": 24,
                 "lose_money": 28,
-                "lose_elixir": 280
+                "lose_elixir": 150
             },
             "52": {
                 "id": 52,
                 "lv": 52,
                 "win_exp": 48,
                 "win_money": 57,
-                "win_elixir": 570,
+                "win_elixir": 305,
                 "lose_exp": 24,
                 "lose_money": 29,
-                "lose_elixir": 285
+                "lose_elixir": 153
             },
             "53": {
                 "id": 53,
                 "lv": 53,
                 "win_exp": 49,
                 "win_money": 58,
-                "win_elixir": 580,
+                "win_elixir": 310,
                 "lose_exp": 25,
                 "lose_money": 29,
-                "lose_elixir": 290
+                "lose_elixir": 155
             },
             "54": {
                 "id": 54,
                 "lv": 54,
                 "win_exp": 50,
                 "win_money": 59,
-                "win_elixir": 590,
+                "win_elixir": 315,
                 "lose_exp": 25,
                 "lose_money": 30,
-                "lose_elixir": 295
+                "lose_elixir": 158
             },
             "55": {
                 "id": 55,
                 "lv": 55,
                 "win_exp": 51,
                 "win_money": 60,
-                "win_elixir": 600,
+                "win_elixir": 320,
                 "lose_exp": 26,
                 "lose_money": 30,
-                "lose_elixir": 300
+                "lose_elixir": 160
             },
             "56": {
                 "id": 56,
                 "lv": 56,
                 "win_exp": 52,
                 "win_money": 61,
-                "win_elixir": 610,
+                "win_elixir": 325,
                 "lose_exp": 26,
                 "lose_money": 31,
-                "lose_elixir": 305
+                "lose_elixir": 163
             },
             "57": {
                 "id": 57,
                 "lv": 57,
                 "win_exp": 53,
                 "win_money": 62,
-                "win_elixir": 620,
+                "win_elixir": 330,
                 "lose_exp": 27,
                 "lose_money": 31,
-                "lose_elixir": 310
+                "lose_elixir": 165
             },
             "58": {
                 "id": 58,
                 "lv": 58,
                 "win_exp": 54,
                 "win_money": 63,
-                "win_elixir": 630,
+                "win_elixir": 335,
                 "lose_exp": 27,
                 "lose_money": 32,
-                "lose_elixir": 315
+                "lose_elixir": 168
             },
             "59": {
                 "id": 59,
                 "lv": 59,
                 "win_exp": 55,
                 "win_money": 64,
-                "win_elixir": 640,
+                "win_elixir": 340,
                 "lose_exp": 28,
                 "lose_money": 32,
-                "lose_elixir": 320
+                "lose_elixir": 170
             },
             "60": {
                 "id": 60,
                 "lv": 60,
                 "win_exp": 56,
                 "win_money": 65,
-                "win_elixir": 650,
+                "win_elixir": 345,
                 "lose_exp": 28,
                 "lose_money": 33,
-                "lose_elixir": 325
+                "lose_elixir": 173
             },
             "61": {
                 "id": 61,
                 "lv": 61,
                 "win_exp": 57,
                 "win_money": 66,
-                "win_elixir": 660,
+                "win_elixir": 350,
                 "lose_exp": 29,
                 "lose_money": 33,
-                "lose_elixir": 330
+                "lose_elixir": 175
             },
             "62": {
                 "id": 62,
                 "lv": 62,
                 "win_exp": 58,
                 "win_money": 67,
-                "win_elixir": 670,
+                "win_elixir": 355,
                 "lose_exp": 29,
                 "lose_money": 34,
-                "lose_elixir": 335
+                "lose_elixir": 178
             },
             "63": {
                 "id": 63,
                 "lv": 63,
                 "win_exp": 59,
                 "win_money": 68,
-                "win_elixir": 680,
+                "win_elixir": 360,
                 "lose_exp": 30,
                 "lose_money": 34,
-                "lose_elixir": 340
+                "lose_elixir": 180
             },
             "64": {
                 "id": 64,
                 "lv": 64,
                 "win_exp": 60,
                 "win_money": 69,
-                "win_elixir": 690,
+                "win_elixir": 365,
                 "lose_exp": 30,
                 "lose_money": 35,
-                "lose_elixir": 345
+                "lose_elixir": 183
             },
             "65": {
                 "id": 65,
                 "lv": 65,
                 "win_exp": 61,
                 "win_money": 70,
-                "win_elixir": 700,
+                "win_elixir": 370,
                 "lose_exp": 31,
                 "lose_money": 35,
-                "lose_elixir": 350
+                "lose_elixir": 185
             },
             "66": {
                 "id": 66,
                 "lv": 66,
                 "win_exp": 62,
                 "win_money": 71,
-                "win_elixir": 710,
+                "win_elixir": 375,
                 "lose_exp": 31,
                 "lose_money": 36,
-                "lose_elixir": 355
+                "lose_elixir": 188
             },
             "67": {
                 "id": 67,
                 "lv": 67,
                 "win_exp": 63,
                 "win_money": 72,
-                "win_elixir": 720,
+                "win_elixir": 380,
                 "lose_exp": 32,
                 "lose_money": 36,
-                "lose_elixir": 360
+                "lose_elixir": 190
             },
             "68": {
                 "id": 68,
                 "lv": 68,
                 "win_exp": 64,
                 "win_money": 73,
-                "win_elixir": 730,
+                "win_elixir": 385,
                 "lose_exp": 32,
                 "lose_money": 37,
-                "lose_elixir": 365
+                "lose_elixir": 193
             },
             "69": {
                 "id": 69,
                 "lv": 69,
                 "win_exp": 65,
                 "win_money": 74,
-                "win_elixir": 740,
+                "win_elixir": 390,
                 "lose_exp": 33,
                 "lose_money": 37,
-                "lose_elixir": 370
+                "lose_elixir": 195
             },
             "70": {
                 "id": 70,
                 "lv": 70,
                 "win_exp": 66,
                 "win_money": 75,
-                "win_elixir": 750,
+                "win_elixir": 395,
                 "lose_exp": 33,
                 "lose_money": 38,
-                "lose_elixir": 375
+                "lose_elixir": 198
             },
             "71": {
                 "id": 71,
                 "lv": 71,
                 "win_exp": 67,
                 "win_money": 76,
-                "win_elixir": 760,
+                "win_elixir": 400,
                 "lose_exp": 34,
                 "lose_money": 38,
-                "lose_elixir": 380
+                "lose_elixir": 200
             },
             "72": {
                 "id": 72,
                 "lv": 72,
                 "win_exp": 68,
                 "win_money": 77,
-                "win_elixir": 770,
+                "win_elixir": 405,
                 "lose_exp": 34,
                 "lose_money": 39,
-                "lose_elixir": 385
+                "lose_elixir": 203
             },
             "73": {
                 "id": 73,
                 "lv": 73,
                 "win_exp": 69,
                 "win_money": 78,
-                "win_elixir": 780,
+                "win_elixir": 410,
                 "lose_exp": 35,
                 "lose_money": 39,
-                "lose_elixir": 390
+                "lose_elixir": 205
             },
             "74": {
                 "id": 74,
                 "lv": 74,
                 "win_exp": 70,
                 "win_money": 79,
-                "win_elixir": 790,
+                "win_elixir": 415,
                 "lose_exp": 35,
                 "lose_money": 40,
-                "lose_elixir": 395
+                "lose_elixir": 208
             },
             "75": {
                 "id": 75,
                 "lv": 75,
                 "win_exp": 71,
                 "win_money": 80,
-                "win_elixir": 800,
+                "win_elixir": 420,
                 "lose_exp": 36,
                 "lose_money": 40,
-                "lose_elixir": 400
+                "lose_elixir": 210
             },
             "76": {
                 "id": 76,
                 "lv": 76,
                 "win_exp": 72,
                 "win_money": 81,
-                "win_elixir": 810,
+                "win_elixir": 425,
                 "lose_exp": 36,
                 "lose_money": 41,
-                "lose_elixir": 405
+                "lose_elixir": 213
             },
             "77": {
                 "id": 77,
                 "lv": 77,
                 "win_exp": 73,
                 "win_money": 82,
-                "win_elixir": 820,
+                "win_elixir": 430,
                 "lose_exp": 37,
                 "lose_money": 41,
-                "lose_elixir": 410
+                "lose_elixir": 215
             },
             "78": {
                 "id": 78,
                 "lv": 78,
                 "win_exp": 74,
                 "win_money": 83,
-                "win_elixir": 830,
+                "win_elixir": 435,
                 "lose_exp": 37,
                 "lose_money": 42,
-                "lose_elixir": 415
+                "lose_elixir": 218
             },
             "79": {
                 "id": 79,
                 "lv": 79,
                 "win_exp": 75,
                 "win_money": 84,
-                "win_elixir": 840,
+                "win_elixir": 440,
                 "lose_exp": 38,
                 "lose_money": 42,
-                "lose_elixir": 420
+                "lose_elixir": 220
             },
             "80": {
                 "id": 80,
                 "lv": 80,
                 "win_exp": 76,
                 "win_money": 85,
-                "win_elixir": 850,
+                "win_elixir": 445,
                 "lose_exp": 38,
                 "lose_money": 43,
-                "lose_elixir": 425
+                "lose_elixir": 223
             },
             "81": {
                 "id": 81,
                 "lv": 81,
                 "win_exp": 77,
                 "win_money": 86,
-                "win_elixir": 860,
+                "win_elixir": 450,
                 "lose_exp": 39,
                 "lose_money": 43,
-                "lose_elixir": 430
+                "lose_elixir": 225
             },
             "82": {
                 "id": 82,
                 "lv": 82,
                 "win_exp": 78,
                 "win_money": 87,
-                "win_elixir": 870,
+                "win_elixir": 455,
                 "lose_exp": 39,
                 "lose_money": 44,
-                "lose_elixir": 435
+                "lose_elixir": 228
             },
             "83": {
                 "id": 83,
                 "lv": 83,
                 "win_exp": 79,
                 "win_money": 88,
-                "win_elixir": 880,
+                "win_elixir": 460,
                 "lose_exp": 40,
                 "lose_money": 44,
-                "lose_elixir": 440
+                "lose_elixir": 230
             },
             "84": {
                 "id": 84,
                 "lv": 84,
                 "win_exp": 80,
                 "win_money": 89,
-                "win_elixir": 890,
+                "win_elixir": 465,
                 "lose_exp": 40,
                 "lose_money": 45,
-                "lose_elixir": 445
+                "lose_elixir": 233
             },
             "85": {
                 "id": 85,
                 "lv": 85,
                 "win_exp": 81,
                 "win_money": 90,
-                "win_elixir": 900,
+                "win_elixir": 470,
                 "lose_exp": 41,
                 "lose_money": 45,
-                "lose_elixir": 450
+                "lose_elixir": 235
             },
             "86": {
                 "id": 86,
                 "lv": 86,
                 "win_exp": 82,
                 "win_money": 91,
-                "win_elixir": 910,
+                "win_elixir": 475,
                 "lose_exp": 41,
                 "lose_money": 46,
-                "lose_elixir": 455
+                "lose_elixir": 238
             },
             "87": {
                 "id": 87,
                 "lv": 87,
                 "win_exp": 83,
                 "win_money": 92,
-                "win_elixir": 920,
+                "win_elixir": 480,
                 "lose_exp": 42,
                 "lose_money": 46,
-                "lose_elixir": 460
+                "lose_elixir": 240
             },
             "88": {
                 "id": 88,
                 "lv": 88,
                 "win_exp": 84,
                 "win_money": 93,
-                "win_elixir": 930,
+                "win_elixir": 485,
                 "lose_exp": 42,
                 "lose_money": 47,
-                "lose_elixir": 465
+                "lose_elixir": 243
             },
             "89": {
                 "id": 89,
                 "lv": 89,
                 "win_exp": 85,
                 "win_money": 94,
-                "win_elixir": 940,
+                "win_elixir": 490,
                 "lose_exp": 43,
                 "lose_money": 47,
-                "lose_elixir": 470
+                "lose_elixir": 245
             },
             "90": {
                 "id": 90,
                 "lv": 90,
                 "win_exp": 86,
                 "win_money": 95,
-                "win_elixir": 950,
+                "win_elixir": 495,
                 "lose_exp": 43,
                 "lose_money": 48,
-                "lose_elixir": 475
+                "lose_elixir": 248
             },
             "91": {
                 "id": 91,
                 "lv": 91,
                 "win_exp": 87,
                 "win_money": 96,
-                "win_elixir": 960,
+                "win_elixir": 500,
                 "lose_exp": 44,
                 "lose_money": 48,
-                "lose_elixir": 480
+                "lose_elixir": 250
             },
             "92": {
                 "id": 92,
                 "lv": 92,
                 "win_exp": 88,
                 "win_money": 97,
-                "win_elixir": 970,
+                "win_elixir": 505,
                 "lose_exp": 44,
                 "lose_money": 49,
-                "lose_elixir": 485
+                "lose_elixir": 253
             },
             "93": {
                 "id": 93,
                 "lv": 93,
                 "win_exp": 89,
                 "win_money": 98,
-                "win_elixir": 980,
+                "win_elixir": 510,
                 "lose_exp": 45,
                 "lose_money": 49,
-                "lose_elixir": 490
+                "lose_elixir": 255
             },
             "94": {
                 "id": 94,
                 "lv": 94,
                 "win_exp": 90,
                 "win_money": 99,
-                "win_elixir": 990,
+                "win_elixir": 515,
                 "lose_exp": 45,
                 "lose_money": 50,
-                "lose_elixir": 495
+                "lose_elixir": 258
             },
             "95": {
                 "id": 95,
                 "lv": 95,
                 "win_exp": 91,
                 "win_money": 100,
-                "win_elixir": 1000,
+                "win_elixir": 520,
                 "lose_exp": 46,
                 "lose_money": 50,
-                "lose_elixir": 500
+                "lose_elixir": 260
             },
             "96": {
                 "id": 96,
                 "lv": 96,
                 "win_exp": 92,
                 "win_money": 101,
-                "win_elixir": 1010,
+                "win_elixir": 525,
                 "lose_exp": 46,
                 "lose_money": 51,
-                "lose_elixir": 505
+                "lose_elixir": 263
             },
             "97": {
                 "id": 97,
                 "lv": 97,
                 "win_exp": 93,
                 "win_money": 102,
-                "win_elixir": 1020,
+                "win_elixir": 530,
                 "lose_exp": 47,
                 "lose_money": 51,
-                "lose_elixir": 510
+                "lose_elixir": 265
             },
             "98": {
                 "id": 98,
                 "lv": 98,
                 "win_exp": 94,
                 "win_money": 103,
-                "win_elixir": 1030,
+                "win_elixir": 535,
                 "lose_exp": 47,
                 "lose_money": 52,
-                "lose_elixir": 515
+                "lose_elixir": 268
             },
             "99": {
                 "id": 99,
                 "lv": 99,
                 "win_exp": 95,
                 "win_money": 104,
-                "win_elixir": 1040,
+                "win_elixir": 540,
                 "lose_exp": 48,
                 "lose_money": 52,
-                "lose_elixir": 520
+                "lose_elixir": 270
             },
             "100": {
                 "id": 100,
                 "lv": 100,
                 "win_exp": 96,
                 "win_money": 105,
-                "win_elixir": 1050,
+                "win_elixir": 545,
                 "lose_exp": 48,
                 "lose_money": 53,
-                "lose_elixir": 525
+                "lose_elixir": 273
             }
         }
     },
@@ -24803,77 +25295,77 @@ var outputTables = {
             "11": {
                 "id": 11,
                 "ranking": 11,
-                "percent": 45
+                "percent": 48
             },
             "12": {
                 "id": 12,
                 "ranking": 12,
-                "percent": 40
+                "percent": 46
             },
             "13": {
                 "id": 13,
                 "ranking": 13,
-                "percent": 35
+                "percent": 44
             },
             "14": {
                 "id": 14,
                 "ranking": 14,
-                "percent": 30
+                "percent": 42
             },
             "15": {
                 "id": 15,
                 "ranking": 15,
-                "percent": 25
+                "percent": 40
             },
             "16": {
                 "id": 16,
                 "ranking": 16,
-                "percent": 20
+                "percent": 38
             },
             "17": {
                 "id": 17,
                 "ranking": 17,
-                "percent": 60
+                "percent": 36
             },
             "18": {
                 "id": 18,
                 "ranking": 18,
-                "percent": 55
+                "percent": 34
             },
             "19": {
                 "id": 19,
                 "ranking": 19,
-                "percent": 50
+                "percent": 32
             },
             "20": {
                 "id": 20,
                 "ranking": 20,
-                "percent": 45
+                "percent": 30
             },
             "21": {
                 "id": 21,
                 "ranking": 31,
-                "percent": 41
+                "percent": 28
             },
             "22": {
                 "id": 22,
                 "ranking": 41,
-                "percent": 38
+                "percent": 26
             },
             "23": {
                 "id": 23,
                 "ranking": 51,
-                "percent": 33
+                "percent": 24
             },
             "24": {
                 "id": 24,
                 "ranking": 101,
-                "percent": 28
+                "percent": 22
             },
             "25": {
                 "id": 25,
                 "ranking": 201,
-                "percent": 25
+                "percent": 20
             },
             "26": {
                 "id": 26,
@@ -24883,37 +25375,37 @@ var outputTables = {
             "27": {
                 "id": 27,
                 "ranking": 1001,
-                "percent": 15
+                "percent": 16
             },
             "28": {
                 "id": 28,
                 "ranking": 2001,
-                "percent": 12
+                "percent": 14
             },
             "29": {
                 "id": 29,
                 "ranking": 3001,
-                "percent": 10
+                "percent": 12
             },
             "30": {
                 "id": 30,
                 "ranking": 4001,
-                "percent": 8
+                "percent": 10
             },
             "31": {
                 "id": 31,
                 "ranking": 5001,
-                "percent": 5
+                "percent": 8
             },
             "32": {
                 "id": 32,
                 "ranking": 8001,
-                "percent": 3
+                "percent": 6
             },
             "33": {
                 "id": 33,
                 "ranking": 10001,
-                "percent": 0
+                "percent": 4
             }
         }
     },
@@ -24922,9 +25414,10 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
+                "order": 1,
                 "method": "expCard",
                 "name": "经验元灵",
-                "disc": "经验元灵1张，蕴含800点卡牌经验。",
+                "disc": "经验元灵1张，含800点卡牌经验。",
                 "consume_type": "money",
                 "consume": 2500,
                 "obtain_type": "card",
@@ -24933,9 +25426,10 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
+                "order": 2,
                 "method": "power",
                 "name": "体力",
-                "disc": "50点体力。每日最多买1次。VIP除外。",
+                "disc": "50点体力。首次购买仅20魔石。",
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "power",
@@ -24946,6 +25440,7 @@ var outputTables = {
             },
             "3": {
                 "id": 3,
+                "order": 4,
                 "method": "money",
                 "name": "一小袋仙币",
                 "disc": "1000仙币，额外赠送200仙币。",
@@ -24957,6 +25452,7 @@ var outputTables = {
             },
             "4": {
                 "id": 4,
+                "order": 5,
                 "method": "money",
                 "name": "一袋仙币",
                 "disc": "5000仙币，额外赠送2500仙币。",
@@ -24968,6 +25464,7 @@ var outputTables = {
             },
             "5": {
                 "id": 5,
+                "order": 6,
                 "method": "money",
                 "name": "一大袋仙币",
                 "disc": "10000仙币，额外赠送8000仙币。",
@@ -24979,23 +25476,43 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
+                "order": 7,
                 "method": "challengeCount",
                 "name": "有奖竞技次数",
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "challengeCount",
                 "obtain": 1,
-                "isVisible": 0
+                "isVisible": 0,
+                "consume_inc": 10,
+                "consume_max": 60
             },
             "7": {
                 "id": 7,
+                "order": 8,
                 "method": "cardCount",
                 "name": "卡库位置",
                 "consume_type": "gold",
                 "consume": 10,
                 "obtain_type": "cardCount",
                 "obtain": 1,
-                "isVisible": 0
+                "isVisible": 0,
+                "consume_inc": 5,
+                "consume_max": 60
+            },
+            "8": {
+                "id": 8,
+                "order": 3,
+                "method": "speaker",
+                "name": "喇叭",
+                "disc": "一次性购买10个以上，打8折。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "speaker",
+                "obtain": 1,
+                "isVisible": 1,
+                "discount_num": 10,
+                "discount": 8
             }
         }
     },
@@ -25145,16 +25662,16 @@ var outputTables = {
                 "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 2,
-                "star3_inc_min": 65,
-                "star3_inc_max": 68,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
                 "star3_grow": 3,
                 "rate3": 30,
-                "star4_inc_min": 70,
-                "star4_inc_max": 73,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
                 "star4_grow": 3,
                 "rate4": 35,
-                "star5_inc_min": 75,
-                "star5_inc_max": 78,
+                "star5_inc_min": 85,
+                "star5_inc_max": 88,
                 "star5_grow": 3,
                 "rate5": 40
             },
@@ -25163,16 +25680,16 @@ var outputTables = {
                 "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 3,
-                "star3_inc_min": 65,
-                "star3_inc_max": 68,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
                 "star3_grow": 3,
                 "rate3": 30,
-                "star4_inc_min": 70,
-                "star4_inc_max": 73,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
                 "star4_grow": 3,
                 "rate4": 35,
-                "star5_inc_min": 75,
-                "star5_inc_max": 78,
+                "star5_inc_min": 85,
+                "star5_inc_max": 88,
                 "star5_grow": 3,
                 "rate5": 40
             },
@@ -25200,6 +25717,25 @@ var outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 2,
+                "star3_inc_min": 80,
+                "star3_inc_max": 83,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 85,
+                "star4_inc_max": 88,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 90,
+                "star5_inc_max": 93,
+                "star5_grow": 3,
+                "rate5": 40
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
                 "star3_inc_min": 70,
                 "star3_inc_max": 73,
                 "star3_grow": 3,
@@ -25213,12 +25749,65 @@ var outputTables = {
                 "star5_grow": 3,
                 "rate5": 40
             },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
+            "7": {
+                "id": 7,
+                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 3,
+                "scope": 7,
+                "star3_inc_min": 135,
+                "star3_inc_max": 140,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 145,
+                "star4_inc_max": 150,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 155,
+                "star5_inc_max": 160,
+                "star5_grow": 5,
+                "rate5": 40
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 2,
+                "star3_inc_min": 70,
+                "star3_inc_max": 73,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 75,
+                "star4_inc_max": 78,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 80,
+                "star5_inc_max": 83,
+                "star5_grow": 3,
+                "rate5": 40
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 3,
+                "star3_inc_min": 70,
+                "star3_inc_max": 73,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 75,
+                "star4_inc_max": 78,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 80,
+                "star5_inc_max": 83,
+                "star5_grow": 3,
+                "rate5": 40
+            },
+            "10": {
+                "id": 10,
+                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的攻击力。",
+                "type": 4,
+                "scope": 6,
                 "star3_inc_min": 50,
                 "star3_inc_max": 53,
                 "star3_grow": 3,
@@ -25229,78 +25818,6 @@ var outputTables = {
                 "rate4": 35,
                 "star5_inc_min": 60,
                 "star5_inc_max": 63,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "7": {
-                "id": 7,
-                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 3,
-                "scope": 7,
-                "star3_inc_min": 130,
-                "star3_inc_max": 135,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 140,
-                "star4_inc_max": 145,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 150,
-                "star5_inc_max": 155,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 2,
-                "star3_inc_min": 55,
-                "star3_inc_max": 58,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 60,
-                "star4_inc_max": 63,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 65,
-                "star5_inc_max": 68,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 3,
-                "star3_inc_min": 55,
-                "star3_inc_max": 58,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 60,
-                "star4_inc_max": 63,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 65,
-                "star5_inc_max": 68,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "10": {
-                "id": 10,
-                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 6,
-                "star3_inc_min": 45,
-                "star3_inc_max": 48,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 50,
-                "star4_inc_max": 53,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 55,
-                "star5_inc_max": 58,
                 "star5_grow": 3,
                 "rate5": 40
             }
@@ -27402,7 +27919,8 @@ var outputTables = {
                 "money": 10000,
                 "elixir": 1000,
                 "skillPoint": 800,
-                "energy": 30
+                "energy": 30,
+                "power": 10
             },
             "2": {
                 "id": 2,
@@ -27410,7 +27928,8 @@ var outputTables = {
                 "money": 10100,
                 "elixir": 1020,
                 "skillPoint": 810,
-                "energy": 35
+                "energy": 35,
+                "power": 10
             },
             "3": {
                 "id": 3,
@@ -27418,7 +27937,8 @@ var outputTables = {
                 "money": 10200,
                 "elixir": 1040,
                 "skillPoint": 820,
-                "energy": 45
+                "energy": 45,
+                "power": 10
             },
             "4": {
                 "id": 4,
@@ -27426,7 +27946,8 @@ var outputTables = {
                 "money": 10300,
                 "elixir": 1060,
                 "skillPoint": 830,
-                "energy": 55
+                "energy": 55,
+                "power": 10
             },
             "5": {
                 "id": 5,
@@ -27434,7 +27955,8 @@ var outputTables = {
                 "money": 10400,
                 "elixir": 1080,
                 "skillPoint": 840,
-                "energy": 65
+                "energy": 65,
+                "power": 10
             },
             "6": {
                 "id": 6,
@@ -27442,7 +27964,8 @@ var outputTables = {
                 "money": 10500,
                 "elixir": 1100,
                 "skillPoint": 850,
-                "energy": 75
+                "energy": 75,
+                "power": 10
             },
             "7": {
                 "id": 7,
@@ -27450,7 +27973,8 @@ var outputTables = {
                 "money": 10600,
                 "elixir": 1120,
                 "skillPoint": 860,
-                "energy": 85
+                "energy": 85,
+                "power": 10
             },
             "8": {
                 "id": 8,
@@ -27458,7 +27982,8 @@ var outputTables = {
                 "money": 10700,
                 "elixir": 1140,
                 "skillPoint": 870,
-                "energy": 95
+                "energy": 95,
+                "power": 10
             },
             "9": {
                 "id": 9,
@@ -27466,7 +27991,8 @@ var outputTables = {
                 "money": 10800,
                 "elixir": 1160,
                 "skillPoint": 880,
-                "energy": 105
+                "energy": 105,
+                "power": 10
             },
             "10": {
                 "id": 10,
@@ -27474,727 +28000,818 @@ var outputTables = {
                 "money": 10900,
                 "elixir": 1180,
                 "skillPoint": 890,
-                "energy": 115
+                "energy": 115,
+                "power": 10
             },
             "11": {
                 "id": 11,
-                "exp": 111,
+                "exp": 112,
                 "money": 11000,
                 "elixir": 1200,
                 "skillPoint": 900,
-                "energy": 125
+                "energy": 125,
+                "power": 20
             },
             "12": {
                 "id": 12,
-                "exp": 123,
+                "exp": 125,
                 "money": 11100,
                 "elixir": 1220,
                 "skillPoint": 910,
-                "energy": 135
+                "energy": 135,
+                "power": 20
             },
             "13": {
                 "id": 13,
-                "exp": 136,
+                "exp": 139,
                 "money": 11200,
                 "elixir": 1240,
                 "skillPoint": 920,
-                "energy": 145
+                "energy": 145,
+                "power": 20
             },
             "14": {
                 "id": 14,
-                "exp": 150,
+                "exp": 155,
                 "money": 11300,
                 "elixir": 1260,
                 "skillPoint": 930,
-                "energy": 155
+                "energy": 155,
+                "power": 20
             },
             "15": {
                 "id": 15,
-                "exp": 166,
+                "exp": 173,
                 "money": 11400,
                 "elixir": 1280,
                 "skillPoint": 940,
-                "energy": 165
+                "energy": 165,
+                "power": 20
             },
             "16": {
                 "id": 16,
-                "exp": 184,
+                "exp": 193,
                 "money": 11500,
                 "elixir": 1300,
                 "skillPoint": 950,
-                "energy": 175
+                "energy": 175,
+                "power": 20
             },
             "17": {
                 "id": 17,
-                "exp": 204,
+                "exp": 215,
                 "money": 11600,
                 "elixir": 1320,
                 "skillPoint": 960,
-                "energy": 185
+                "energy": 185,
+                "power": 20
             },
             "18": {
                 "id": 18,
-                "exp": 226,
+                "exp": 240,
                 "money": 11700,
                 "elixir": 1340,
                 "skillPoint": 970,
-                "energy": 195
+                "energy": 195,
+                "power": 20
             },
             "19": {
                 "id": 19,
-                "exp": 250,
+                "exp": 268,
                 "money": 11800,
                 "elixir": 1360,
                 "skillPoint": 980,
-                "energy": 205
+                "energy": 205,
+                "power": 20
             },
             "20": {
                 "id": 20,
-                "exp": 277,
+                "exp": 299,
                 "money": 11900,
                 "elixir": 1380,
                 "skillPoint": 990,
-                "energy": 215
+                "energy": 215,
+                "power": 20
             },
             "21": {
                 "id": 21,
-                "exp": 306,
+                "exp": 333,
                 "money": 12000,
                 "elixir": 1400,
                 "skillPoint": 1000,
-                "energy": 225
+                "energy": 225,
+                "power": 30
             },
             "22": {
                 "id": 22,
-                "exp": 338,
+                "exp": 371,
                 "money": 12100,
                 "elixir": 1420,
                 "skillPoint": 1010,
-                "energy": 235
+                "energy": 235,
+                "power": 30
             },
             "23": {
                 "id": 23,
-                "exp": 374,
+                "exp": 414,
                 "money": 12200,
                 "elixir": 1440,
                 "skillPoint": 1020,
-                "energy": 245
+                "energy": 245,
+                "power": 30
             },
             "24": {
                 "id": 24,
-                "exp": 414,
+                "exp": 462,
                 "money": 12300,
                 "elixir": 1460,
                 "skillPoint": 1030,
-                "energy": 255
+                "energy": 255,
+                "power": 30
             },
             "25": {
                 "id": 25,
-                "exp": 458,
+                "exp": 515,
                 "money": 12400,
                 "elixir": 1480,
                 "skillPoint": 1040,
-                "energy": 265
+                "energy": 265,
+                "power": 30
             },
             "26": {
                 "id": 26,
-                "exp": 507,
+                "exp": 574,
                 "money": 12500,
                 "elixir": 1500,
                 "skillPoint": 1050,
-                "energy": 275
+                "energy": 275,
+                "power": 30
             },
             "27": {
                 "id": 27,
-                "exp": 561,
+                "exp": 640,
                 "money": 12600,
                 "elixir": 1520,
                 "skillPoint": 1060,
-                "energy": 285
+                "energy": 285,
+                "power": 30
             },
             "28": {
                 "id": 28,
-                "exp": 620,
+                "exp": 714,
                 "money": 12700,
                 "elixir": 1540,
                 "skillPoint": 1070,
-                "energy": 295
+                "energy": 295,
+                "power": 30
             },
             "29": {
                 "id": 29,
-                "exp": 686,
+                "exp": 796,
                 "money": 12800,
                 "elixir": 1560,
                 "skillPoint": 1080,
-                "energy": 305
+                "energy": 305,
+                "power": 30
             },
             "30": {
                 "id": 30,
-                "exp": 759,
+                "exp": 888,
                 "money": 12900,
                 "elixir": 1580,
                 "skillPoint": 1090,
-                "energy": 315
+                "energy": 315,
+                "power": 30
             },
             "31": {
                 "id": 31,
-                "exp": 839,
+                "exp": 990,
                 "money": 13000,
                 "elixir": 1600,
                 "skillPoint": 1100,
-                "energy": 325
+                "energy": 325,
+                "power": 40
             },
             "32": {
                 "id": 32,
-                "exp": 928,
+                "exp": 1104,
                 "money": 13100,
                 "elixir": 1620,
                 "skillPoint": 1110,
-                "energy": 335
+                "energy": 335,
+                "power": 40
             },
             "33": {
                 "id": 33,
-                "exp": 1026,
+                "exp": 1231,
                 "money": 13200,
                 "elixir": 1640,
                 "skillPoint": 1120,
-                "energy": 345
+                "energy": 345,
+                "power": 40
             },
             "34": {
                 "id": 34,
-                "exp": 1135,
+                "exp": 1373,
                 "money": 13300,
                 "elixir": 1660,
                 "skillPoint": 1130,
-                "energy": 355
+                "energy": 355,
+                "power": 40
             },
             "35": {
                 "id": 35,
-                "exp": 1255,
+                "exp": 1531,
                 "money": 13400,
                 "elixir": 1680,
                 "skillPoint": 1140,
-                "energy": 365
+                "energy": 365,
+                "power": 40
             },
             "36": {
                 "id": 36,
-                "exp": 1388,
+                "exp": 1707,
                 "money": 13500,
                 "elixir": 1700,
                 "skillPoint": 1150,
-                "energy": 375
+                "energy": 375,
+                "power": 40
             },
             "37": {
                 "id": 37,
-                "exp": 1535,
+                "exp": 1903,
                 "money": 13600,
                 "elixir": 1720,
                 "skillPoint": 1160,
-                "energy": 385
+                "energy": 385,
+                "power": 40
             },
             "38": {
                 "id": 38,
-                "exp": 1698,
+                "exp": 2122,
                 "money": 13700,
                 "elixir": 1740,
                 "skillPoint": 1170,
-                "energy": 395
+                "energy": 395,
+                "power": 40
             },
             "39": {
                 "id": 39,
-                "exp": 1878,
+                "exp": 2366,
                 "money": 13800,
                 "elixir": 1760,
                 "skillPoint": 1180,
-                "energy": 405
+                "energy": 405,
+                "power": 40
             },
             "40": {
                 "id": 40,
-                "exp": 2077,
+                "exp": 2638,
                 "money": 13900,
                 "elixir": 1780,
                 "skillPoint": 1190,
-                "energy": 415
+                "energy": 415,
+                "power": 40
             },
             "41": {
                 "id": 41,
-                "exp": 2297,
+                "exp": 2941,
                 "money": 14000,
                 "elixir": 1800,
                 "skillPoint": 1200,
-                "energy": 425
+                "energy": 425,
+                "power": 50
             },
             "42": {
                 "id": 42,
-                "exp": 2540,
+                "exp": 3279,
                 "money": 14100,
                 "elixir": 1820,
                 "skillPoint": 1210,
-                "energy": 435
+                "energy": 435,
+                "power": 50
             },
             "43": {
                 "id": 43,
-                "exp": 2809,
+                "exp": 3656,
                 "money": 14200,
                 "elixir": 1840,
                 "skillPoint": 1220,
-                "energy": 445
+                "energy": 445,
+                "power": 50
             },
             "44": {
                 "id": 44,
-                "exp": 3107,
+                "exp": 4076,
                 "money": 14300,
                 "elixir": 1860,
                 "skillPoint": 1230,
-                "energy": 455
+                "energy": 455,
+                "power": 50
             },
             "45": {
                 "id": 45,
-                "exp": 3436,
+                "exp": 4545,
                 "money": 14400,
                 "elixir": 1880,
                 "skillPoint": 1240,
-                "energy": 465
+                "energy": 465,
+                "power": 50
             },
             "46": {
                 "id": 46,
-                "exp": 3800,
+                "exp": 5068,
                 "money": 14500,
                 "elixir": 1900,
                 "skillPoint": 1250,
-                "energy": 475
+                "energy": 475,
+                "power": 50
             },
             "47": {
                 "id": 47,
-                "exp": 4203,
+                "exp": 5651,
                 "money": 14600,
                 "elixir": 1920,
                 "skillPoint": 1260,
-                "energy": 485
+                "energy": 485,
+                "power": 50
             },
             "48": {
                 "id": 48,
-                "exp": 4649,
+                "exp": 6301,
                 "money": 14700,
                 "elixir": 1940,
                 "skillPoint": 1270,
-                "energy": 495
+                "energy": 495,
+                "power": 50
             },
             "49": {
                 "id": 49,
-                "exp": 5142,
+                "exp": 7026,
                 "money": 14800,
                 "elixir": 1960,
                 "skillPoint": 1280,
-                "energy": 505
+                "energy": 505,
+                "power": 50
             },
             "50": {
                 "id": 50,
-                "exp": 5687,
+                "exp": 7834,
                 "money": 14900,
                 "elixir": 1980,
                 "skillPoint": 1290,
-                "energy": 515
+                "energy": 515,
+                "power": 50
             },
             "51": {
                 "id": 51,
-                "exp": 6290,
+                "exp": 8735,
                 "money": 15000,
                 "elixir": 2000,
                 "skillPoint": 1300,
-                "energy": 525
+                "energy": 525,
+                "power": 60
             },
             "52": {
                 "id": 52,
-                "exp": 6957,
+                "exp": 9740,
                 "money": 15100,
                 "elixir": 2020,
                 "skillPoint": 1310,
-                "energy": 535
+                "energy": 535,
+                "power": 60
             },
             "53": {
                 "id": 53,
-                "exp": 7694,
+                "exp": 10860,
                 "money": 15200,
                 "elixir": 2040,
                 "skillPoint": 1320,
-                "energy": 545
+                "energy": 545,
+                "power": 60
             },
             "54": {
                 "id": 54,
-                "exp": 8510,
+                "exp": 12109,
                 "money": 15300,
                 "elixir": 2060,
                 "skillPoint": 1330,
-                "energy": 555
+                "energy": 555,
+                "power": 60
             },
             "55": {
                 "id": 55,
-                "exp": 9412,
+                "exp": 13502,
                 "money": 15400,
                 "elixir": 2080,
                 "skillPoint": 1340,
-                "energy": 565
+                "energy": 565,
+                "power": 60
             },
             "56": {
                 "id": 56,
-                "exp": 10410,
+                "exp": 15055,
                 "money": 15500,
                 "elixir": 2100,
                 "skillPoint": 1350,
-                "energy": 575
+                "energy": 575,
+                "power": 60
             },
             "57": {
                 "id": 57,
-                "exp": 11513,
+                "exp": 16786,
                 "money": 15600,
                 "elixir": 2120,
                 "skillPoint": 1360,
-                "energy": 585
+                "energy": 585,
+                "power": 60
             },
             "58": {
                 "id": 58,
-                "exp": 12733,
+                "exp": 18716,
                 "money": 15700,
                 "elixir": 2140,
                 "skillPoint": 1370,
-                "energy": 595
+                "energy": 595,
+                "power": 60
             },
             "59": {
                 "id": 59,
-                "exp": 14083,
+                "exp": 20868,
                 "money": 15800,
                 "elixir": 2160,
                 "skillPoint": 1380,
-                "energy": 605
+                "energy": 605,
+                "power": 60
             },
             "60": {
                 "id": 60,
-                "exp": 15576,
+                "exp": 23268,
                 "money": 15900,
                 "elixir": 2180,
                 "skillPoint": 1390,
-                "energy": 615
+                "energy": 615,
+                "power": 60
             },
             "61": {
                 "id": 61,
-                "exp": 17227,
+                "exp": 25944,
                 "money": 16000,
                 "elixir": 2200,
                 "skillPoint": 1400,
-                "energy": 625
+                "energy": 625,
+                "power": 70
             },
             "62": {
                 "id": 62,
-                "exp": 19053,
+                "exp": 28928,
                 "money": 16100,
                 "elixir": 2220,
                 "skillPoint": 1410,
-                "energy": 635
+                "energy": 635,
+                "power": 70
             },
             "63": {
                 "id": 63,
-                "exp": 21073,
+                "exp": 32255,
                 "money": 16200,
                 "elixir": 2240,
                 "skillPoint": 1420,
-                "energy": 645
+                "energy": 645,
+                "power": 70
             },
             "64": {
                 "id": 64,
-                "exp": 23307,
+                "exp": 35964,
                 "money": 16300,
                 "elixir": 2260,
                 "skillPoint": 1430,
-                "energy": 655
+                "energy": 655,
+                "power": 70
             },
             "65": {
                 "id": 65,
-                "exp": 25778,
+                "exp": 40100,
                 "money": 16400,
                 "elixir": 2280,
                 "skillPoint": 1440,
-                "energy": 665
+                "energy": 665,
+                "power": 70
             },
             "66": {
                 "id": 66,
-                "exp": 28510,
+                "exp": 44712,
                 "money": 16500,
                 "elixir": 2300,
                 "skillPoint": 1450,
-                "energy": 675
+                "energy": 675,
+                "power": 70
             },
             "67": {
                 "id": 67,
-                "exp": 31532,
+                "exp": 49854,
                 "money": 16600,
                 "elixir": 2320,
                 "skillPoint": 1460,
-                "energy": 685
+                "energy": 685,
+                "power": 70
             },
             "68": {
                 "id": 68,
-                "exp": 34874,
+                "exp": 55587,
                 "money": 16700,
                 "elixir": 2340,
                 "skillPoint": 1470,
-                "energy": 695
+                "energy": 695,
+                "power": 70
             },
             "69": {
                 "id": 69,
-                "exp": 38571,
+                "exp": 61980,
                 "money": 16800,
                 "elixir": 2360,
                 "skillPoint": 1480,
-                "energy": 705
+                "energy": 705,
+                "power": 70
             },
             "70": {
                 "id": 70,
-                "exp": 42660,
+                "exp": 69108,
                 "money": 16900,
                 "elixir": 2380,
                 "skillPoint": 1490,
-                "energy": 715
+                "energy": 715,
+                "power": 70
             },
             "71": {
                 "id": 71,
-                "exp": 47182,
+                "exp": 77055,
                 "money": 17000,
                 "elixir": 2400,
                 "skillPoint": 1500,
-                "energy": 725
+                "energy": 725,
+                "power": 80
             },
             "72": {
                 "id": 72,
-                "exp": 52183,
+                "exp": 85916,
                 "money": 17100,
                 "elixir": 2420,
                 "skillPoint": 1510,
-                "energy": 735
+                "energy": 735,
+                "power": 80
             },
             "73": {
                 "id": 73,
-                "exp": 57714,
+                "exp": 95796,
                 "money": 17200,
                 "elixir": 2440,
                 "skillPoint": 1520,
-                "energy": 745
+                "energy": 745,
+                "power": 80
             },
             "74": {
                 "id": 74,
-                "exp": 63832,
+                "exp": 106813,
                 "money": 17300,
                 "elixir": 2460,
                 "skillPoint": 1530,
-                "energy": 755
+                "energy": 755,
+                "power": 80
             },
             "75": {
                 "id": 75,
-                "exp": 70598,
+                "exp": 119096,
                 "money": 17400,
                 "elixir": 2480,
                 "skillPoint": 1540,
-                "energy": 765
+                "energy": 765,
+                "power": 80
             },
             "76": {
                 "id": 76,
-                "exp": 78081,
+                "exp": 132792,
                 "money": 17500,
                 "elixir": 2500,
                 "skillPoint": 1550,
-                "energy": 775
+                "energy": 775,
+                "power": 80
             },
             "77": {
                 "id": 77,
-                "exp": 86358,
+                "exp": 148063,
                 "money": 17600,
                 "elixir": 2520,
                 "skillPoint": 1560,
-                "energy": 785
+                "energy": 785,
+                "power": 80
             },
             "78": {
                 "id": 78,
-                "exp": 95512,
+                "exp": 165090,
                 "money": 17700,
                 "elixir": 2540,
                 "skillPoint": 1570,
-                "energy": 795
+                "energy": 795,
+                "power": 80
             },
             "79": {
                 "id": 79,
-                "exp": 105636,
+                "exp": 184075,
                 "money": 17800,
                 "elixir": 2560,
                 "skillPoint": 1580,
-                "energy": 805
+                "energy": 805,
+                "power": 80
             },
             "80": {
                 "id": 80,
-                "exp": 116833,
+                "exp": 205244,
                 "money": 17900,
                 "elixir": 2580,
                 "skillPoint": 1590,
-                "energy": 815
+                "energy": 815,
+                "power": 80
             },
             "81": {
                 "id": 81,
-                "exp": 129217,
+                "exp": 228847,
                 "money": 18000,
                 "elixir": 2600,
                 "skillPoint": 1600,
-                "energy": 825
+                "energy": 825,
+                "power": 90
             },
             "82": {
                 "id": 82,
-                "exp": 142914,
+                "exp": 255164,
                 "money": 18100,
                 "elixir": 2620,
                 "skillPoint": 1610,
-                "energy": 835
+                "energy": 835,
+                "power": 90
             },
             "83": {
                 "id": 83,
-                "exp": 158063,
+                "exp": 284508,
                 "money": 18200,
                 "elixir": 2640,
                 "skillPoint": 1620,
-                "energy": 845
+                "energy": 845,
+                "power": 90
             },
             "84": {
                 "id": 84,
-                "exp": 174818,
+                "exp": 317226,
                 "money": 18300,
                 "elixir": 2660,
                 "skillPoint": 1630,
-                "energy": 855
+                "energy": 855,
+                "power": 90
             },
             "85": {
                 "id": 85,
-                "exp": 193349,
+                "exp": 353707,
                 "money": 18400,
                 "elixir": 2680,
                 "skillPoint": 1640,
-                "energy": 865
+                "energy": 865,
+                "power": 90
             },
             "86": {
                 "id": 86,
-                "exp": 213844,
+                "exp": 394383,
                 "money": 18500,
                 "elixir": 2700,
                 "skillPoint": 1650,
-                "energy": 875
+                "energy": 875,
+                "power": 90
             },
             "87": {
                 "id": 87,
-                "exp": 236511,
+                "exp": 439737,
                 "money": 18600,
                 "elixir": 2720,
                 "skillPoint": 1660,
-                "energy": 885
+                "energy": 885,
+                "power": 90
             },
             "88": {
                 "id": 88,
-                "exp": 261581,
+                "exp": 490307,
                 "money": 18700,
                 "elixir": 2740,
                 "skillPoint": 1670,
-                "energy": 895
+                "energy": 895,
+                "power": 90
             },
             "89": {
                 "id": 89,
-                "exp": 289309,
+                "exp": 546692,
                 "money": 18800,
                 "elixir": 2760,
                 "skillPoint": 1680,
-                "energy": 905
+                "energy": 905,
+                "power": 90
             },
             "90": {
                 "id": 90,
-                "exp": 319976,
+                "exp": 609562,
                 "money": 18900,
                 "elixir": 2780,
                 "skillPoint": 1690,
-                "energy": 915
+                "energy": 915,
+                "power": 90
             },
             "91": {
                 "id": 91,
-                "exp": 353893,
+                "exp": 679662,
                 "money": 19000,
                 "elixir": 2800,
                 "skillPoint": 1700,
-                "energy": 925
+                "energy": 925,
+                "power": 100
             },
             "92": {
                 "id": 92,
-                "exp": 391406,
+                "exp": 757823,
                 "money": 19100,
                 "elixir": 2820,
                 "skillPoint": 1710,
-                "energy": 935
+                "energy": 935,
+                "power": 100
             },
             "93": {
                 "id": 93,
-                "exp": 432895,
+                "exp": 844973,
                 "money": 19200,
                 "elixir": 2840,
                 "skillPoint": 1720,
-                "energy": 945
+                "energy": 945,
+                "power": 100
             },
             "94": {
                 "id": 94,
-                "exp": 478782,
+                "exp": 942145,
                 "money": 19300,
                 "elixir": 2860,
                 "skillPoint": 1730,
-                "energy": 955
+                "energy": 955,
+                "power": 100
             },
             "95": {
                 "id": 95,
-                "exp": 529533,
+                "exp": 1050492,
                 "money": 19400,
                 "elixir": 2880,
                 "skillPoint": 1740,
-                "energy": 965
+                "energy": 965,
+                "power": 100
             },
             "96": {
                 "id": 96,
-                "exp": 585663,
+                "exp": 1171299,
                 "money": 19500,
                 "elixir": 2900,
                 "skillPoint": 1750,
-                "energy": 975
+                "energy": 975,
+                "power": 100
             },
             "97": {
                 "id": 97,
-                "exp": 647743,
+                "exp": 1305998,
                 "money": 19600,
                 "elixir": 2920,
                 "skillPoint": 1760,
-                "energy": 985
+                "energy": 985,
+                "power": 100
             },
             "98": {
                 "id": 98,
-                "exp": 716404,
+                "exp": 1456188,
                 "money": 19700,
                 "elixir": 2940,
                 "skillPoint": 1770,
-                "energy": 995
+                "energy": 995,
+                "power": 100
             },
             "99": {
                 "id": 99,
-                "exp": 792343,
+                "exp": 1623650,
                 "money": 19800,
                 "elixir": 2960,
                 "skillPoint": 1780,
-                "energy": 1005
+                "energy": 1005,
+                "power": 100
             },
             "100": {
                 "id": 100,
-                "exp": 876331,
+                "exp": 1810370,
                 "money": 19900,
                 "elixir": 2980,
                 "skillPoint": 1790,
-                "energy": 1015
+                "energy": 1015,
+                "power": 100
             }
         }
     },
@@ -28216,7 +28833,7 @@ var outputTables = {
                 "points": 3,
                 "power_consume": 5,
                 "exp_obtain": 3,
-                "coins_obtain": 30,
+                "coins_obtain": 80,
                 "description": "一声长叹，后羿的心中充满愤懑。自嫦娥撇下他独自奔月之后，他一直都买不起像样的房，现在还住茅屋，而且还是小产权。"
             },
             "2": {
@@ -28227,7 +28844,7 @@ var outputTables = {
                 "points": 4,
                 "power_consume": 5,
                 "exp_obtain": 4,
-                "coins_obtain": 40,
+                "coins_obtain": 88,
                 "description": "嚓，嚓，吴刚劈砍桂树的声音有节奏的穿过宫墙，敲打着嫦娥寂寞的心房。她忍不住的问自己：这样的坚持是否还有意义？"
             },
             "3": {
@@ -28238,7 +28855,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 5,
-                "coins_obtain": 50,
+                "coins_obtain": 96,
                 "description": "作为后羿的兄弟，我不能做那种事情，绝对不能！吴刚望着面前的篝火，平静的从烤架上撕下了一条兔腿。"
             },
             "4": {
@@ -28249,7 +28866,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 5,
-                "coins_obtain": 50,
+                "coins_obtain": 104,
                 "description": "沙僧问八戒，二师兄，大师兄为什么对女人一点兴趣都没有呢？二师兄你告诉我嘛。八戒瞪了他一眼说，早压断了。"
             },
             "5": {
@@ -28260,7 +28877,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 6,
-                "coins_obtain": 50,
+                "coins_obtain": 112,
                 "description": "没有人知道，当年女娲娘娘补天所用的最后一块石头，其实并不是石头，而是她自己的心。"
             },
             "6": {
@@ -28271,7 +28888,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 6,
-                "coins_obtain": 50,
+                "coins_obtain": 120,
                 "description": "每次当何仙姑和吕洞宾在一起遨游的时候，没有人知道铁拐李与张果老的痛。"
             },
             "7": {
@@ -28282,7 +28899,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 7,
-                "coins_obtain": 50,
+                "coins_obtain": 128,
                 "description": "其实天上的神仙和人间百姓一样，都需要买房，买不起的那就租，租不起的那就睡南天门去。"
             },
             "8": {
@@ -28293,7 +28910,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 7,
-                "coins_obtain": 50,
+                "coins_obtain": 136,
                 "description": "自从月老发现人间开始流行一对多或多对一或多对多这种男女关系之后，他不知道自己该如何搭线了，最近他在考虑退休的事。"
             },
             "9": {
@@ -28304,7 +28921,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 7,
-                "coins_obtain": 50,
+                "coins_obtain": 144,
                 "description": "跟随牛郎多年的那头牛，是头公牛，不过可以产奶。"
             },
             "10": {
@@ -28315,7 +28932,7 @@ var outputTables = {
                 "points": 5,
                 "power_consume": 5,
                 "exp_obtain": 7,
-                "coins_obtain": 50,
+                "coins_obtain": 152,
                 "description": "织女其实并不恨王母，她总觉得两人在一起呢，容易事儿多，时间长了会影响夫妻感情，所以还是保持一定距离比较好。"
             },
             "11": {
@@ -28326,7 +28943,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 9,
-                "coins_obtain": 60,
+                "coins_obtain": 160,
                 "description": "最近水质污染比较严重，几个龙王总觉得这样下去龙体迟早会烂掉。所以他们打算申请集体搬到天上的银河去。"
             },
             "12": {
@@ -28337,7 +28954,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 9,
-                "coins_obtain": 60,
+                "coins_obtain": 168,
                 "description": "很多神仙都劝二郎神说现在世道变了，神仙也流行找小三了，你也找一个吧。二郎神淡淡一笑说不必了，我有哮天犬了。"
             },
             "13": {
@@ -28348,7 +28965,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 9,
-                "coins_obtain": 60,
+                "coins_obtain": 176,
                 "description": "很多人都痛恨妲己。其实，她不过是找了一个有权有势的高官，仅此而已。怎么，难道你们竟然会觉得这种情况不正常么。"
             },
             "14": {
@@ -28359,7 +28976,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 9,
-                "coins_obtain": 60,
+                "coins_obtain": 184,
                 "description": "在哮天犬的眼里，每个神仙都是一条母狗，除了二郎神。"
             },
             "15": {
@@ -28370,7 +28987,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 9,
-                "coins_obtain": 60,
+                "coins_obtain": 192,
                 "description": "悟空当年取经功德圆满之后，他就返回了花果山，和沙僧一起合伙开了一家绿色天然饮品店，生意一直很好。"
             },
             "16": {
@@ -28381,7 +28998,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 10,
-                "coins_obtain": 60,
+                "coins_obtain": 200,
                 "description": "玉帝其实是一个非常豪迈的帝，晚上睡不着的时候，他总会约上如来和菩萨，来到嫦娥住的地方，几个人花前月下，引吭高歌。"
             },
             "17": {
@@ -28392,7 +29009,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 10,
-                "coins_obtain": 60,
+                "coins_obtain": 208,
                 "description": "仙界每年都会举行一次峰会，讨论关于修仙之道相关事宜。会议由西天如来发起，观音菩萨一般不参加，她说没啥意思。"
             },
             "18": {
@@ -28403,7 +29020,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 10,
-                "coins_obtain": 60,
+                "coins_obtain": 216,
                 "description": "雷震子的翅膀其实是可以拔下来的。"
             },
             "19": {
@@ -28414,7 +29031,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 11,
-                "coins_obtain": 60,
+                "coins_obtain": 224,
                 "description": "土行孙的土遁术后来被玉帝一道禁令收回去了，因为他总喜欢半夜到处乱遁。"
             },
             "20": {
@@ -28425,7 +29042,7 @@ var outputTables = {
                 "points": 6,
                 "power_consume": 5,
                 "exp_obtain": 11,
-                "coins_obtain": 60,
+                "coins_obtain": 232,
                 "description": "黑白无常其实是阎王的私生子，他们是一对双胞胎。"
             },
             "21": {
@@ -28433,10 +29050,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 1,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 7,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 240,
                 "description": "真正的地狱其实不是十八层，而是上下两层，复式的。"
             },
             "22": {
@@ -28444,10 +29061,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 2,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 7,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 248,
                 "description": "花果山常年供奉着一颗晶龙珠，那是紫霞仙子的一滴眼泪。"
             },
             "23": {
@@ -28455,10 +29072,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 3,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 7,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 256,
                 "description": "猪八戒的真神不是猪，是驴。"
             },
             "24": {
@@ -28466,10 +29083,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 4,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 7,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 264,
                 "description": "西天取经，每一次遇到妖怪，悟空都忍不住的想要呐喊，如来，我就XXX了，你能不要这样一次一只怪一次一只怪的折磨我么。"
             },
             "25": {
@@ -28477,10 +29094,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 5,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 7,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 272,
                 "description": "流沙河盛产金沙，质地优良，晶莹剔透。据说这是由昔日唐僧师徒四人取经途中留下来的大便风干而成。"
             },
             "26": {
@@ -28488,10 +29105,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 6,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 8,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 280,
                 "description": "七夕没有鹊，更没有桥，连个船都没有，牛郎都是游过去的。因为很远，所以到那边打个招呼基本上就得往回游了。"
             },
             "27": {
@@ -28499,10 +29116,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 7,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 8,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 288,
                 "description": "作为仙界唯一的无头勇士，唯一与黄帝单挑过的纯爷们真汉子，一个永不止息的战神，他是凡人心中真正的守护神。"
             },
             "28": {
@@ -28510,10 +29127,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 8,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 8,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 296,
                 "description": "红孩儿其实不是个小孩，按年龄来看，他比牛魔王大个三岁左右。他之所以长成那样是因为他就是那个样子。"
             },
             "29": {
@@ -28521,10 +29138,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 9,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 8,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 304,
                 "description": "铁扇公主的那把扇子其实并没有藏到嘴里，而是藏到女人最深的那个地方，这是牛魔王亲口说的。"
             },
             "30": {
@@ -28532,10 +29149,10 @@ var outputTables = {
                 "chapter_id": "噬心峰",
                 "section_id": 10,
                 "section_name": "噬心峰",
-                "points": 6,
+                "points": 8,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 312,
                 "description": "十八罗汉中，有一名女罗汉。"
             },
             "31": {
@@ -28543,10 +29160,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 1,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 9,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 320,
                 "description": "土地公是仙界最富裕的神仙，他掌管着整个仙界的土地审批大权。在地价疯长的这年头，有了地，你就有了幸福。"
             },
             "32": {
@@ -28554,10 +29171,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 2,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 9,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 328,
                 "description": "哮天犬原本是有生育能力的，后来跟着二郎神参与沉香劈山救母这件事的时候，被沉香一斧头劈掉了狗蛋，从此变为一只阉狗。"
             },
             "33": {
@@ -28565,10 +29182,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 3,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 9,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 336,
                 "description": "昔日取经路过女儿国，三藏和女儿国的女王其实种下了幸福的果子。瓜熟落地之后，发现是个男孩，女王为之取名唐伯虎。"
             },
             "34": {
@@ -28576,10 +29193,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 4,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 9,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 344,
                 "description": "凌霄大殿主体建筑主要是大理石，它的地板则以花岗岩为主。卧室则铺以通体的瓷砖，主要是玉帝喜欢亮亮的那种感觉。"
             },
             "35": {
@@ -28587,10 +29204,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 5,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 9,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 352,
                 "description": "常年守在南天门附近的两个天兵，一个叫阳骏，一个叫刘胜，他们的感情极深。"
             },
             "36": {
@@ -28598,10 +29215,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 6,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 10,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 360,
                 "description": "其实天上的神仙大多都羡慕人间生活。因为在天上就算有权也没有太多可发挥的空间，而在人间，那就完全不一样了。"
             },
             "37": {
@@ -28609,10 +29226,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 7,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 10,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 368,
                 "description": "很多神仙都想把哮天犬煮了吃，甚至包括玉帝，不过每次看到二郎神与哮天犬在一起的那种感觉，他们又没有胃口了，不敢吃。"
             },
             "38": {
@@ -28620,10 +29237,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 8,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 10,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 376,
                 "description": "铁拐李其实并不是拐子，他这么搞，主要是为了追求一个造型。说白了，主要就是给何仙姑看的。"
             },
             "39": {
@@ -28631,10 +29248,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 9,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 10,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 384,
                 "description": "张果老之所以总是倒骑着驴，是因为那驴的眼睛长在屁股上。"
             },
             "40": {
@@ -28642,10 +29259,10 @@ var outputTables = {
                 "chapter_id": "绝情池",
                 "section_id": 10,
                 "section_name": "绝情池",
-                "points": 6,
+                "points": 10,
                 "power_consume": 5,
                 "exp_obtain": 12,
-                "coins_obtain": 60,
+                "coins_obtain": 392,
                 "description": "其实许多神仙都对嫦娥有想法，但极少有人敢去尝试，据说是因为嫦娥的玉兔特别狠，只要看到棍状物，啊呜一口就咬掉了。"
             },
             "41": {
@@ -28653,10 +29270,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 1,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 11,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 400,
                 "description": "巨灵神以体型巨大儿闻名仙界，大家送了他一个友善的绰号，奥特曼。"
             },
             "42": {
@@ -28664,10 +29281,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 2,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 11,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 408,
                 "description": "盘古当年开天辟地的时候，他用了三年六个月十五天八小时二十五分三十六秒。我们可以想象，盘古爷劈的有多么辛苦。"
             },
             "43": {
@@ -28675,10 +29292,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 3,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 11,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 416,
                 "description": "白素贞变形为白蛇的时候，许多人都说大概有十多米长。但真正长度其实是八百六十七米，法海整整量了两天两夜。"
             },
             "44": {
@@ -28686,10 +29303,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 4,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 11,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 424,
                 "description": "相对于白蛇的这个长度，小青就短了很多，她只有不到一米。不过这个法海倒是没有量过。"
             },
             "45": {
@@ -28697,10 +29314,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 5,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 11,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 432,
                 "description": "其实白素贞被压在雷锋塔下的日子并没有那么糟糕，每周法海都会找个时间叫上许仙和小青，四个人在塔顶热闹那么一回。"
             },
             "46": {
@@ -28708,10 +29325,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 6,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 12,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 440,
                 "description": "混沌之初，女娲娘娘造人的时候，她其实捏了两个男泥人，一个女泥人。这也是当今许多男子娶不到媳妇的根本原因。"
             },
             "47": {
@@ -28719,10 +29336,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 7,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 12,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 448,
                 "description": "求子峰，其实是当年盘古爷掉落在凡间的斧柄碎片。男人们都希望能够祈得盘古爷那怕一丝丝的雄风，让老婆满意以及满足。"
             },
             "48": {
@@ -28730,10 +29347,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 8,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 12,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 456,
                 "description": "金箍棒最早是大禹手中的武器，是昔日大禹治水横扫妖魔鬼怪的利器。只是后来不知怎么的居然到了大圣的手中。"
             },
             "49": {
@@ -28741,10 +29358,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 9,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 12,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 464,
                 "description": "嫦娥思念后羿，但更多的是忍不住的经常想起天蓬元帅来，想着想着就忍不住会浑身发烫。她不知道是为什么。"
             },
             "50": {
@@ -28752,10 +29369,10 @@ var outputTables = {
                 "chapter_id": "哭丧岩",
                 "section_id": 10,
                 "section_name": "哭丧岩",
-                "points": 7,
+                "points": 12,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 472,
                 "description": "当八戒结束取经回到高老庄的时候，他悲哀的发现高老庄在未经他同意的情况下，已经被强行拆除。"
             },
             "51": {
@@ -28763,10 +29380,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 1,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 13,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 480,
                 "description": "沙僧结束取经之后，他惊讶的发现，他秃了了数百年的脑袋，又重新长出了乌黑粗硬卷曲的毛发来。"
             },
             "52": {
@@ -28774,10 +29391,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 2,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 13,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 488,
                 "description": "玉帝和王母其实在结婚后第二天就离婚了，这是仙界一个公开的秘密。"
             },
             "53": {
@@ -28785,10 +29402,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 3,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 13,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 496,
                 "description": "大部分时间里，其实太上老君不是在炼丹，而是在烤地瓜。对于人间这一美味，老君非常喜欢。"
             },
             "54": {
@@ -28796,10 +29413,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 4,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 13,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 504,
                 "description": "八仙从来就没有过海的行为，事实上他们几乎都没有到过海边。因为他们把个人中，有七个人先天怕水，看到水波就头晕恶心。"
             },
             "55": {
@@ -28807,10 +29424,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 5,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 13,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 512,
                 "description": "神仙从来不吃早餐，也不吃午餐，也不吃晚餐，不过他们吃宵夜。"
             },
             "56": {
@@ -28818,10 +29435,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 6,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 14,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 520,
                 "description": "观音菩萨的那个圣水瓶，产地源于人间，具体地址是景德镇。"
             },
             "57": {
@@ -28829,10 +29446,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 7,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 14,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 528,
                 "description": "仙界中第二号人物，其实是太白金星，这个专门传布玉帝命令的老头。这老头是个正派人。"
             },
             "58": {
@@ -28840,10 +29457,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 8,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 14,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 536,
                 "description": "菩提老祖的元神并不是葡萄。那只是星爷电影中的一个桥段。"
             },
             "59": {
@@ -28851,10 +29468,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 9,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 14,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 544,
                 "description": "夸父当年为何一定要去追日，累死累活的最后还是没有追上。玉帝曾召集众仙讨论过这个问题，最后结果是不知道。"
             },
             "60": {
@@ -28862,10 +29479,10 @@ var outputTables = {
                 "chapter_id": "杏花村",
                 "section_id": 10,
                 "section_name": "杏花村",
-                "points": 7,
+                "points": 14,
                 "power_consume": 5,
                 "exp_obtain": 21,
-                "coins_obtain": 70,
+                "coins_obtain": 552,
                 "description": "跟随着南极仙翁的那只仙鹤，最开始是母的，后来变成了公的，再后来又变成了母的，据说这是跟着仙翁的阶段性喜好来变的。"
             },
             "61": {
@@ -28873,10 +29490,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 1,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 15,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 560,
                 "description": "天庭也需要供电的，也需要照明的，但因为电母的电压最近一直不稳，所以老跳闸。这让玉帝一直很不爽。"
             },
             "62": {
@@ -28884,10 +29501,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 2,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 15,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 568,
                 "description": "雷公是个好男人，电母脾气很暴，动不动就用电锥子扎他，但任凭电母怎么扎，扎的多用力，雷公哼都不哼一声。"
             },
             "63": {
@@ -28895,10 +29512,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 3,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 15,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 576,
                 "description": "人参果其实并不是果实，严格来说它也是神仙。但毫无疑问，它可以算作天庭最惨的仙了，因为它生来就是被吃的。"
             },
             "64": {
@@ -28906,10 +29523,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 4,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 15,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 584,
                 "description": "七仙女作为天庭最为耀眼的璀璨舞者，她们很寂寞，她们一直渴望能够有自己的另一半。但是，唉……说什么好呢？"
             },
             "65": {
@@ -28917,10 +29534,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 5,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 15,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 592,
                 "description": "据野史记载，刘彦昌在三圣母被压到华山下之后，到处找女人睡觉。所以，我认为，三圣母在感情这件事上，严重看走了眼。"
             },
             "66": {
@@ -28928,10 +29545,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 6,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 16,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 600,
                 "description": "宝莲灯之所以有无穷的威力，是因为灯芯是如来门下弟子青霞仙子的化身。我又不禁的想起了紫霞，想起了至尊宝，唉……"
             },
             "67": {
@@ -28939,10 +29556,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 7,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 16,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 608,
                 "description": "仙史记载，狐狸精其实是托塔李天王的情人。从实际情况来看，这应该是真的。"
             },
             "68": {
@@ -28950,10 +29567,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 8,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 16,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 616,
                 "description": "仙史记载，悟空上任弼马温这一段时间内，天庭总共失去了九万八千六百七十二匹天马，最后仅剩下了两匹马驹子。骇人听闻。"
             },
             "69": {
@@ -28961,10 +29578,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 9,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 16,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 624,
                 "description": "阎罗王最大的癖好，就是吃刚刚来到阴间的灵魂，尤其是青壮年男女的灵魂。天上地下，这家伙大概是最狠的了。"
             },
             "70": {
@@ -28972,10 +29589,10 @@ var outputTables = {
                 "chapter_id": "窦娥冢",
                 "section_id": 10,
                 "section_name": "窦娥冢",
-                "points": 8,
+                "points": 16,
                 "power_consume": 5,
                 "exp_obtain": 32,
-                "coins_obtain": 80,
+                "coins_obtain": 632,
                 "description": "作为阎王身边的得力鬼将，牛头继承了阎王喜吃的特性，他喜欢吃和牛相关的任何东西，牛筋，牛皮，牛毛，牛鞭，牛粪，等等。"
             },
             "71": {
@@ -28983,10 +29600,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 1,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 17,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 640,
                 "description": "作为阎王身边的得力鬼将，马面并没有继承阎王喜吃的特性，但却创立了另外一种个性，他喜欢被人骑。"
             },
             "72": {
@@ -28994,10 +29611,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 2,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 17,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 648,
                 "description": "从鬼门关距离阎罗殿，大概是十公里的距离。打车的话也就是个起步价。"
             },
             "73": {
@@ -29005,10 +29622,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 3,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 17,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 656,
                 "description": "很多人都以为南天门下去就是人间，其实不然。南天门和鬼门关是直通的。"
             },
             "74": {
@@ -29016,10 +29633,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 4,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 17,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 664,
                 "description": "关于人间百姓生活房价过高的这个问题，玉帝和众仙有过专门的讨论，大家最后一致认为，它会稳定的越来越高。"
             },
             "75": {
@@ -29027,10 +29644,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 5,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 17,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 672,
                 "description": "姜子牙现在基本不怎么垂钓了，他现在改用渔网了。"
             },
             "76": {
@@ -29038,10 +29655,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 6,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 18,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 680,
                 "description": "很多人可能不知道，吕洞宾有一个很著名的徒孙，叫王重阳，他获得过首届华山论剑的冠军。"
             },
             "77": {
@@ -29049,10 +29666,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 7,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 18,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 688,
                 "description": "作为游走于天地的降龙尊者，济公羡煞了众神仙。主要是因为他到地面吃喝嫖赌啥都可以干，而且玉帝还不怪他，爽爆了。"
             },
             "78": {
@@ -29060,10 +29677,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 8,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 18,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 696,
                 "description": "冷面判官作为地狱的行刑官，他无论在鬼界还是仙界都是一个风云人物，主要是因为他长的非常俊秀，像陈冠希。"
             },
             "79": {
@@ -29071,10 +29688,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 9,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 18,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 704,
                 "description": "三藏西天取经遇到了很多妖怪，但唯一一个并不是真正想吃他的只有狐狸精，因为狐狸姐姐相信真爱，渴望真爱，拥抱真爱。"
             },
             "80": {
@@ -29082,10 +29699,10 @@ var outputTables = {
                 "chapter_id": "柳风堂",
                 "section_id": 10,
                 "section_name": "柳风堂",
-                "points": 10,
+                "points": 18,
                 "power_consume": 5,
                 "exp_obtain": 50,
-                "coins_obtain": 100,
+                "coins_obtain": 712,
                 "description": "十八罗汉中，最猛的是沉思罗汉，因为他永远都在闭目沉思，从没睁开过眼睛。甚至连如来都在怀疑他究竟是在修行还是睡觉。"
             },
             "81": {
@@ -29093,10 +29710,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 1,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 19,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 720,
                 "description": "千里眼作为神仙中看的最远的大仙，他一直都觉得很累，也一直觉得有些尴尬，他觉得他看到的有些太多了。"
             },
             "82": {
@@ -29104,10 +29721,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 2,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 19,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 728,
                 "description": "最近嫦娥发现广寒宫的玉兔日益减少，与此同时，她发现吴刚的嘴巴上总是沾着一些兔毛……"
             },
             "83": {
@@ -29115,10 +29732,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 3,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 19,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 736,
                 "description": "每个进入鬼门关的灵魂，都要喝下孟婆的孟婆汤，这样他才能彻底了断人间的恩爱情仇，心平气和的到地狱去死。"
             },
             "84": {
@@ -29126,10 +29743,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 4,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 19,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 744,
                 "description": "太阳神与火神这两哥们经常会闹矛盾，主要的争执焦点就在于，谁的火更热更猛更牛逼。"
             },
             "85": {
@@ -29137,10 +29754,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 5,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 19,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 752,
                 "description": "土行孙既是惧留孙大仙的徒弟，同时也是他的私生子。当然，这个没人知道是正常的，大家都知道了，那不就出事了么。"
             },
             "86": {
@@ -29148,10 +29765,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 6,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 20,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 760,
                 "description": "根据玉帝统计，仙界岁数最大的不是老寿星南极仙翁，而是守蟠桃园的那个神仙婆婆。"
             },
             "87": {
@@ -29159,10 +29776,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 7,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 20,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 768,
                 "description": "众仙一致认为每次宴席吃的最多的就是二郎神了，因为他带着哮天犬。这只狗的饭量毫无疑问是逆天的。"
             },
             "88": {
@@ -29170,10 +29787,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 8,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 20,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 776,
                 "description": "哮天犬不像普通狗一样，到处撒尿留记号。因为它的下体已经被沉香一斧劈坏了，所以它彻底丧失了这个功能。"
             },
             "89": {
@@ -29181,10 +29798,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 9,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 20,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 784,
                 "description": "悟空有七十二般变化，如来比他多十倍。但如来却很羡慕悟空，因为悟空可以随便变，而他却不能。"
             },
             "90": {
@@ -29192,10 +29809,10 @@ var outputTables = {
                 "chapter_id": "陶然居",
                 "section_id": 10,
                 "section_name": "陶然居",
-                "points": 12,
+                "points": 20,
                 "power_consume": 5,
                 "exp_obtain": 60,
-                "coins_obtain": 120,
+                "coins_obtain": 792,
                 "description": "观音菩萨圣水瓶里的水其实很新鲜，菩萨每天早晨起床后都会换上新鲜的自来水，所以是可以喝的。"
             },
             "91": {
@@ -29203,10 +29820,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 1,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 21,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 800,
                 "description": "最近十八罗汉中的长腿罗汉被辞退了。他在本届神仙田径大赛中用力过猛，造成小腿粉碎性骨折，所以不可能再随意变长了。"
             },
             "92": {
@@ -29214,10 +29831,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 2,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 21,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 808,
                 "description": "如来最近招了一名新罗汉，叫高音罗汉。他的特点是声音高，可直通九霄云外天地三界。如来觉得他很牛逼。"
             },
             "93": {
@@ -29225,10 +29842,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 3,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 21,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 816,
                 "description": "玉帝最近打算对七仙女进行扩招。他感觉人有点太少了，跳舞的时候氛围不够浓烈。他跟王母商量后，决定再找四十二个。"
             },
             "94": {
@@ -29236,10 +29853,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 4,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 21,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 824,
                 "description": "蟠桃园最近发生了一件奇怪的事情，所有的桃子都有两个核，双核的。王母一直在怀疑，这桃子难道也有什么奸情么。"
             },
             "95": {
@@ -29247,10 +29864,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 5,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 21,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 832,
                 "description": "关于至尊宝和紫霞仙子的故事，其实是有另外一个结局：他们成功的走进了婚姻的殿堂，并生有一子，取名为至尊宝宝。"
             },
             "96": {
@@ -29258,10 +29875,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 6,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 22,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 840,
                 "description": "牛魔王一直怀疑铁扇公主与至尊宝有奸情，其实那不叫奸情，那是光明正大的真爱。"
             },
             "97": {
@@ -29269,10 +29886,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 7,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 22,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 848,
                 "description": "红孩儿和东海三太子是结义兄弟，感情一直很深。当年哪吒抽三太子的龙筋时，红孩儿亲眼看着他被一根筋一根筋的抽死。"
             },
             "98": {
@@ -29280,10 +29897,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 8,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 22,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 856,
                 "description": "许多神仙对嫦娥的祖籍身世一直很感兴趣，平日私下里也聊这个话题。按照玉帝的说法，嫦娥祖籍应该是黑龙江哈尔滨。"
             },
             "99": {
@@ -29291,10 +29908,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 9,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 22,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 864,
                 "description": "赤脚大仙的脚气比较重。自从上次在凌霄殿当场将二郎神熏晕之后，玉帝就很少让他上朝了。"
             },
             "100": {
@@ -29302,10 +29919,10 @@ var outputTables = {
                 "chapter_id": "忘情河",
                 "section_id": 10,
                 "section_name": "忘情河",
-                "points": 14,
+                "points": 22,
                 "power_consume": 5,
                 "exp_obtain": 70,
-                "coins_obtain": 140,
+                "coins_obtain": 872,
                 "description": "陪着三藏走西天的那匹白龙马，其实是母马，这个三藏是知道的。三藏还给她起了另外一个名字，叫阿梅。"
             },
             "101": {
@@ -29313,10 +29930,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 1,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 23,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 880,
                 "description": "原本牛郎织女相会，王母是给安排了鹊桥的。但是后来发现牛郎有恐高症，所以就只能把鹊桥给撤了。"
             },
             "102": {
@@ -29324,10 +29941,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 2,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 23,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 888,
                 "description": "神仙其实对人间文化都挺有兴趣的，比如玉帝喜欢唐诗，王母喜欢宋词，七仙女喜欢元曲，二郎神喜欢金瓶梅。"
             },
             "103": {
@@ -29335,10 +29952,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 3,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 23,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 896,
                 "description": "天上也会闹干旱的，没有水气，就算雷公电母再努力，那也没得下。最近银河的水位明显低了很多。"
             },
             "104": {
@@ -29346,10 +29963,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 4,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 23,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 904,
                 "description": "天庭其实是有集市的，和人间许多村镇一样，都是每个月的初一和十五这两天。"
             },
             "105": {
@@ -29357,10 +29974,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 5,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 23,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 912,
                 "description": "天庭集市卖的最好的是织女的织锦绸缎，而织锦中最受欢迎的首推纯棉底裤。因为神仙都没见过，看着新鲜。"
             },
             "106": {
@@ -29368,10 +29985,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 6,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 24,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 920,
                 "description": "虾兵蟹将其实不是一个统称，而是两个小神仙的名称。是双胞胎，虽然无论从哪个角度看，虾和蟹都不可能成为兄弟。"
             },
             "107": {
@@ -29379,10 +29996,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 7,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 24,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 928,
                 "description": "花果山的水果是不喷农药的，所以口感非常好，味道堪比王母后院的蟠桃。"
             },
             "108": {
@@ -29390,10 +30007,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 8,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 24,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 936,
                 "description": "高老庄被强拆之后，八戒在另外一个地方新建了一所宅院，门匾上写着“强拆死全家”。"
             },
             "109": {
@@ -29401,10 +30018,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 9,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 24,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 944,
                 "description": "沙僧住的地方和八戒的新宅院离的很近。经常晚上没事的时候他们两个会凑一起喝个小酒，慨叹当年西天取经的不容易。"
             },
             "110": {
@@ -29412,10 +30029,10 @@ var outputTables = {
                 "chapter_id": "南天门",
                 "section_id": 10,
                 "section_name": "南天门",
-                "points": 15,
+                "points": 24,
                 "power_consume": 5,
                 "exp_obtain": 75,
-                "coins_obtain": 150,
+                "coins_obtain": 952,
                 "description": "如果让悟空重新选择，就算在五指山下再压上五百年，他也不会跟唐僧去取经。他说，太XX的折腾人了。"
             },
             "111": {
@@ -29423,10 +30040,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 1,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 25,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 960,
                 "description": "由于终年累月的坐在蒲团上进行修行，很多神仙都坐骨增生。"
             },
             "112": {
@@ -29434,10 +30051,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 2,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 25,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 968,
                 "description": "每年仙界都会举行一次仙法大会，旨在检验各路神仙这一年来的修仙成果。上一年的冠军是，哮天犬。"
             },
             "113": {
@@ -29445,10 +30062,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 3,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 25,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 976,
                 "description": "神仙不同与凡人，都是耳聪目明之仙，有个什么动静能很快感觉到。所以后来玉帝定了一条新的天规：晚上尽量不要声音太大。"
             },
             "114": {
@@ -29456,10 +30073,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 4,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 25,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 984,
                 "description": "黑白无常最近迷上了一个很有意思的游戏，叫捉迷藏。每天晚饭后，他们都会拉上阎王他们玩上一把。"
             },
             "115": {
@@ -29467,10 +30084,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 5,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 25,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 992,
                 "description": "很多人都认为阎罗王是包拯的化身。其实阎王自己很清楚，他和包拯连毛的关系都没有，他甚至都没有听说过这个人。"
             },
             "116": {
@@ -29478,10 +30095,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 6,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 26,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 1000,
                 "description": "三界神仙中，最黑的是阎罗王，最白的是牡丹仙子，最黄的，大家一致认为是二郎神。"
             },
             "117": {
@@ -29489,10 +30106,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 7,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 26,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 1008,
                 "description": "许多人可能不知道，其实阎王是有家室的人，他的妻子叫黑玫瑰。是一个比阎罗王更黑的温柔女子，黑的发亮。"
             },
             "118": {
@@ -29500,10 +30117,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 8,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 26,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 1016,
                 "description": "玉帝很喜欢音乐，其本人也是一个很有音乐天赋的。最近他迷上了民族风，口头禅经常是：哟，哟，切克闹。"
             },
             "119": {
@@ -29511,10 +30128,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 9,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 26,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 1024,
                 "description": "和日游神相比，夜游神总是比较烦躁。因为在夜里巡游的时候，他经常遇到许多打野战的散仙，弄的他很尴尬。"
             },
             "120": {
@@ -29522,10 +30139,10 @@ var outputTables = {
                 "chapter_id": "凌霄殿",
                 "section_id": 10,
                 "section_name": "凌霄殿",
-                "points": 16,
+                "points": 26,
                 "power_consume": 5,
                 "exp_obtain": 80,
-                "coins_obtain": 160,
+                "coins_obtain": 1032,
                 "description": "为了整顿仙风，玉帝今日发布了禁肖令。所有神仙夜里无事一律不能出来，有事也不能随便出来，那些打野战的，该消停了。"
             },
             "121": {
@@ -29533,10 +30150,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 1,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 27,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1040,
                 "description": "每年春秋两个季节，玉帝都会组织众仙进行集体旅游，他认为这有助于更好的修行。今年他初步打算去一个叫东莞的地方。"
             },
             "122": {
@@ -29544,10 +30161,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 2,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 27,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1048,
                 "description": "贪污受贿不仅仅是人间的一个正常情况，在仙界也是如此。作为玉帝身边的红人，太白金星家中堆满了各路神仙送来的Q币。"
             },
             "123": {
@@ -29555,10 +30172,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 3,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 27,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1056,
                 "description": "托塔天王李靖最近离婚了，这在仙界引起了不小的震撼。按李天王自己的说法，是不行了腻了没感觉了必须换一个了。"
             },
             "124": {
@@ -29566,10 +30183,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 4,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 27,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1064,
                 "description": "最近仙界的违章建筑特别多，为了彻底消除这一现象，玉帝任命巨灵神为拆迁队队长，只要发现违章建筑，往死里拆。"
             },
             "125": {
@@ -29577,10 +30194,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 5,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 27,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1072,
                 "description": "二郎神一直很屌，许多散仙一直在不停的上访，希望告倒这个仙界恶霸，但总是到不了玉帝跟前就被压了下去。唉……"
             },
             "126": {
@@ -29588,10 +30205,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 6,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 28,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1080,
                 "description": "作为玉帝最宠爱的仙界勇士，二郎神飞扬跋扈到了极致。他的口头禅是：告啊，接着告啊，老子上面有人你知道不？"
             },
             "127": {
@@ -29599,10 +30216,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 7,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 28,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1088,
                 "description": "地狱万千恶鬼中，最厉害的大概就属黑罗刹了。他就相当于监狱中的黑老大。就连阎罗王，都得让着他三分。"
             },
             "128": {
@@ -29610,10 +30227,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 8,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 28,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1096,
                 "description": "黄泉路是进入鬼门关之后的一条路，很远，很荒凉。当你走到这条路上的时候，你只有一种感觉，那就是，绝望。"
             },
             "129": {
@@ -29621,10 +30238,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 9,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 28,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1104,
                 "description": "许多人都会好奇那碗让人忘掉来世今生的孟婆汤到底是什么味道，按照阎王的说法，跟河南烩面馆的胡辣汤味道差不多。"
             },
             "130": {
@@ -29632,10 +30249,10 @@ var outputTables = {
                 "chapter_id": "冷月宫",
                 "section_id": 10,
                 "section_name": "冷月宫",
-                "points": 17,
+                "points": 28,
                 "power_consume": 5,
                 "exp_obtain": 85,
-                "coins_obtain": 170,
+                "coins_obtain": 1112,
                 "description": "相传孟婆就是那位哭倒万里长城的孟姜女。此传闻不知是真是假，但有一点是真的，孟婆不是老婆婆，而是一位绝色美人。"
             },
             "131": {
@@ -29643,10 +30260,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 1,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 29,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1120,
                 "description": "玉帝最近晚上老是失眠，就算好不容易睡着了也是梦多，盗汗。作为仙界最高领袖，其实他的压力也是蛮大的。"
             },
             "132": {
@@ -29654,10 +30271,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 2,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 29,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1128,
                 "description": "前几天南天门突然莫名其妙的倒塌了，这直接切断了仙界与地狱之间的通道，目前还在抢修，倒塌原因不明。"
             },
             "133": {
@@ -29665,10 +30282,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 3,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 29,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1136,
                 "description": "其实不光二郎神养宠物，其他许多神仙也会养，比如太上老君最近就养了一条藏獒。"
             },
             "134": {
@@ -29676,10 +30293,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 4,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 29,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1144,
                 "description": "凌霄宝殿没有我们想象中的那么开阔，甚至可以说面积挺小的，满打满算大概也就九十平。之所以搞这么小据说是玉帝的意思。"
             },
             "135": {
@@ -29687,10 +30304,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 5,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 29,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1152,
                 "description": "因为最近的水质污染过于严重，河神直接染病，不治而亡。"
             },
             "136": {
@@ -29698,10 +30315,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 6,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 30,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1160,
                 "description": "绝大多数神仙下凡之后，最喜欢做的一件事是足疗。只有赤脚大仙除外，因为他的脚气神仙都受不了，更何况凡人。"
             },
             "137": {
@@ -29709,10 +30326,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 7,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 30,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1168,
                 "description": "哮天犬最近怀上了。二郎神一直很紧张，他自己也不确定这是不是和他有关。"
             },
             "138": {
@@ -29720,10 +30337,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 8,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 30,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1176,
                 "description": "太上老君的炼丹炉近日突然发生了爆炸，老君被严重烧伤当场疼的嗷嗷直叫。后经过调查，是炼丹炉质量有问题。"
             },
             "139": {
@@ -29731,10 +30348,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 9,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 30,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1184,
                 "description": "对于近来人间流行的各种拼爹事件，神仙们也经常在一起讨论。他们一致认为，这种爹，应及早让阎王收了他。"
             },
             "140": {
@@ -29742,10 +30359,10 @@ var outputTables = {
                 "chapter_id": "蟠桃园",
                 "section_id": 10,
                 "section_name": "蟠桃园",
-                "points": 18,
+                "points": 30,
                 "power_consume": 5,
                 "exp_obtain": 90,
-                "coins_obtain": 180,
+                "coins_obtain": 1192,
                 "description": "玉帝一直不太相信人间的地沟油有那么大的危害，他特地让文曲星下凡体验了一回，结果文曲星差点拉肚子拉死在人间。"
             },
             "141": {
@@ -29753,10 +30370,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 1,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 31,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1200,
                 "description": "关于人间房价一直过高的这个事儿，玉帝隔三差五的就着急众仙进行讨论，但每次结果都很一致，那就是，绝逼不会降下来的。"
             },
             "142": {
@@ -29764,10 +30381,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 2,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 31,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1208,
                 "description": "牛郎闲来无事就在银河边上开辟了一块地，专门种各种蔬菜，豆角，西红柿，黄瓜，辣椒，等等。他把这个叫做：菜篮子工程。"
             },
             "143": {
@@ -29775,10 +30392,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 3,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 31,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1216,
                 "description": "太乙真人常年居住在火焰山脚下，他希望能够早日炼成火云掌，在来年的仙界法术大赛中一展身手。"
             },
             "144": {
@@ -29786,10 +30403,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 4,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 31,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1224,
                 "description": "红孩儿的三味真火是他的成名绝技。不过虽然练就了这法术，不过他的脑子也被烧坏了，所以他脑子有问题。"
             },
             "145": {
@@ -29797,10 +30414,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 5,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 31,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1232,
                 "description": "白骨精并非我们想象中的那么阴森恐怖，恰恰相反，无论身材还是相貌，她们甚至堪比嫦娥。"
             },
             "146": {
@@ -29808,10 +30425,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 6,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 32,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1240,
                 "description": "一千个人的眼中有一千个汉姆雷特。一千个神仙的眼中有一千个嫦娥。"
             },
             "147": {
@@ -29819,10 +30436,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 7,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 32,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1248,
                 "description": "按照商纣王的说法，妲己人美，活儿更好。只是不知道纣王说的这个活儿更好是啥意思，不明白。"
             },
             "148": {
@@ -29830,10 +30447,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 8,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 32,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1256,
                 "description": "土地公是所有神仙中最矮的，据说身高不到一尺。一千个土地公叠起来，刚好到巨灵神的裤裆。"
             },
             "149": {
@@ -29841,10 +30458,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 9,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 32,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1264,
                 "description": "如来一直希望能够到凡间走一走，实际体验一下凡人的生活。但这很难实现，因为他官太大了。"
             },
             "150": {
@@ -29852,10 +30469,10 @@ var outputTables = {
                 "chapter_id": "王母峰",
                 "section_id": 10,
                 "section_name": "王母峰",
-                "points": 19,
+                "points": 32,
                 "power_consume": 5,
                 "exp_obtain": 95,
-                "coins_obtain": 190,
+                "coins_obtain": 1272,
                 "description": "八戒刚刚新建起来的宅子又被强行拆掉了。八戒有些绝望了，老子跟随唐三藏西天取经那么辛苦，自己造个宅子也不行么。"
             },
             "151": {
@@ -29863,10 +30480,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 1,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 33,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1280,
                 "description": "土行孙近日将举行大婚，迎娶七仙女中最小的那位，也是最漂亮的。仙子说了，她就喜欢这种畸形的，看着就特刺激。"
             },
             "152": {
@@ -29874,10 +30491,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 2,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 33,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1288,
                 "description": "黑山老妖其实没有我们想象中的那么坏，也不是个什么阴阳人。他其实是一个道行高深的真正的大神，特点是下体很硬。"
             },
             "153": {
@@ -29885,10 +30502,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 3,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 33,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1296,
                 "description": "并非所有的神仙出行都是脚踏七色云彩，云彩作为仙界最高档次的出行工具，那都是经过佛祖加持的。"
             },
             "154": {
@@ -29896,10 +30513,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 4,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 33,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1304,
                 "description": "降龙和伏虎其实不是两个神仙，而是一个神仙，一个同时长着龙头和虎头的怪仙。"
             },
             "155": {
@@ -29907,10 +30524,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 5,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 33,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1312,
                 "description": "许多人都认为阎罗王是地狱的老大，但实际上，泰山神东岳大帝才是冥界的真正主宰，最高之神。"
             },
             "156": {
@@ -29918,10 +30535,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 6,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 34,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1320,
                 "description": "阎罗殿设有五宫十殿三十六王，每个人各司其职，共同协助阎王掌管整个鬼界。"
             },
             "157": {
@@ -29929,10 +30546,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 7,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 34,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1328,
                 "description": "人生在世，最好不要随意杀生，否则等你到了地狱的时候，所有被你杀过的牲畜都会轮番折磨你，让你苦不堪言。"
             },
             "158": {
@@ -29940,10 +30557,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 8,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 34,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1336,
                 "description": "轮回转世的时间其实很长，按照人间时间来算，一个人从生到死再到生，这样一个轮回大概需要上亿年。"
             },
             "159": {
@@ -29951,10 +30568,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 9,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 34,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1344,
                 "description": "许多人都以为天上的十八罗汉就是少林寺的十八罗汉，这完全就是两个概念。"
             },
             "160": {
@@ -29962,10 +30579,10 @@ var outputTables = {
                 "chapter_id": "流沙河",
                 "section_id": 10,
                 "section_name": "流沙河",
-                "points": 20,
+                "points": 34,
                 "power_consume": 5,
                 "exp_obtain": 100,
-                "coins_obtain": 200,
+                "coins_obtain": 1352,
                 "description": "仙界五大战神之中，大地战神法术最高，而北极战神则最为睿智。"
             },
             "161": {
@@ -29973,10 +30590,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 1,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 35,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1360,
                 "description": "北斗星君其实不是一个人，而是七个神仙，北斗七星中，每一颗星都是一位大仙。"
             },
             "162": {
@@ -29984,10 +30601,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 2,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 35,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1368,
                 "description": "关于八仙中曹国舅的名字来历，玉帝是这么说的，他是一个叫曹国的人的舅舅。"
             },
             "163": {
@@ -29995,10 +30612,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 3,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 35,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1376,
                 "description": "其实盘古爷当年开天辟地的时候，并非一蹴而就。而是劈了很久很久才将混沌天地劈开，很辛苦。"
             },
             "164": {
@@ -30006,10 +30623,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 4,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 35,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1384,
                 "description": "天聋地哑附在万物，生育万物，是天父和地母，可以说是万物赖以生存繁衍之根本。在仙界地位极高。"
             },
             "165": {
@@ -30017,10 +30634,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 5,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 35,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1392,
                 "description": "九头鸟原本是一只神鸟，后来因为听说魂气可以让自己羽毛更漂亮，便逐渐由神格沦落为收人魂气的妖鸟。都是美丽惹的祸。"
             },
             "166": {
@@ -30028,10 +30645,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 6,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 36,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1400,
                 "description": "通天教主可以算是仙界中最为特殊的一位大仙，他辈分极高，法术极强，且又亦正亦邪。玉帝拿他很头疼，不知道该怎么办。"
             },
             "167": {
@@ -30039,10 +30656,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 7,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 36,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1408,
                 "description": "月老真的老了，最近经常在搭线的时候手一哆嗦就搞错了。这导致人间许多男子在洞房完了之后才发现女的不是自己媳妇。"
             },
             "168": {
@@ -30050,10 +30667,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 8,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 36,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1416,
                 "description": "神仙崇尚清心寡欲，无欲而修。所以在仙界是禁止吃肉的。唯独巨灵神除外，他说，不让我吃肉，我宁愿现在就下地狱。"
             },
             "169": {
@@ -30061,10 +30678,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 9,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 36,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1424,
                 "description": "因为气候干旱，蟠桃园里的桃子发育不良。迫不得已，王母将每年一次的蟠桃盛会改为每一万年一次。"
             },
             "170": {
@@ -30072,10 +30689,10 @@ var outputTables = {
                 "chapter_id": "五指山",
                 "section_id": 10,
                 "section_name": "五指山",
-                "points": 21,
+                "points": 36,
                 "power_consume": 5,
                 "exp_obtain": 105,
-                "coins_obtain": 210,
+                "coins_obtain": 1432,
                 "description": "传闻二郎神的哮天犬与南极仙翁的那只仙鹤有染，双方一见钟情，惺惺相惜，情不自禁。祝它们能够白头偕老。"
             },
             "171": {
@@ -30083,10 +30700,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 1,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 37,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1440,
                 "description": "在饮食方面，神仙各自喜好不同。南华大仙喜食蔬菜，战神刑天喜使水果，二郎神喜食臊子面，玉帝喜食四川火锅。"
             },
             "172": {
@@ -30094,10 +30711,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 2,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 37,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1448,
                 "description": "在修行方面，每个神仙的方式不同。最具特色的是赤脚大仙，他的修行方式是抠脚丫子，一边扣一边闻。"
             },
             "173": {
@@ -30105,10 +30722,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 3,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 37,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1456,
                 "description": "白虎神君作为四大守护神兽之一，最近显得有些烦躁。因为他脑袋上的那个王字也不知道什么时候被谁给扣掉了。"
             },
             "174": {
@@ -30116,10 +30733,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 4,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 37,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1464,
                 "description": "鹿角大仙化身为一只梅花鹿下凡体察民生的时候，不小心被一群猎手逮住，割掉了双角。这让他痛不欲生。"
             },
             "175": {
@@ -30127,10 +30744,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 5,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 37,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1472,
                 "description": "凡间百姓有钱人越来越多，对貂绒需求量越来越大，为了防止仙貂绝种，玉帝今日下令，所有仙貂，永远不能出现在凡间。"
             },
             "176": {
@@ -30138,10 +30755,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 6,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 38,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1480,
                 "description": "玉帝总共有三处行宫，一处是凌霄殿，一处是琼华宫，还有一处是用来度假的，在蓬莱。"
             },
             "177": {
@@ -30149,10 +30766,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 7,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 38,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1488,
                 "description": "其实蓬莱原本属于蓬莱仙子的，但是后来这地方被玉帝看上了，所以仙子只好搬出去。领导的话必须要听，不管你是人还是神。"
             },
             "178": {
@@ -30160,10 +30777,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 8,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 38,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1496,
                 "description": "修行之余，神仙们一般也会组织一些娱乐活动，比如足球，篮球，乒乓球，手球，橄榄球，网球，台球，高尔夫，等等。"
             },
             "179": {
@@ -30171,10 +30788,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 9,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 38,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1504,
                 "description": "托塔天王最喜欢的课外活动是，做仰卧起坐。李天王对自己的体型非常看重。尤其是腹肌这一块，他总是希望能够再雕刻雕刻。"
             },
             "180": {
@@ -30182,10 +30799,10 @@ var outputTables = {
                 "chapter_id": "女儿国",
                 "section_id": 10,
                 "section_name": "女儿国",
-                "points": 22,
+                "points": 38,
                 "power_consume": 5,
                 "exp_obtain": 110,
-                "coins_obtain": 220,
+                "coins_obtain": 1512,
                 "description": "三圣母最近打算再婚了。这一次，二郎神不打算再把亲妹子压在华山下了，他也想通了，这玩意也就那么个事，不需要太较真。"
             },
             "181": {
@@ -30193,10 +30810,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 1,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 39,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1520,
                 "description": "地狱判官钟馗最近向阎王提出，他不想晚上一个人睡，理由是他怕鬼。阎王愣了半天，不知道该如何回答他。"
             },
             "182": {
@@ -30204,10 +30821,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 2,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 39,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1528,
                 "description": "铁拐李很喜欢画画，尤喜画裸女图，只不过每次那女的看起来都很像何仙姑。这让吕洞宾很不爽，你这是把老子完全忽略了么。"
             },
             "183": {
@@ -30215,10 +30832,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 3,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 39,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1536,
                 "description": "关于人间主要的娱乐活动，玉帝召集众仙经过慎重讨论，得出如下结论：第一是足球，第二是篮球，第三是嫖娼。"
             },
             "184": {
@@ -30226,10 +30843,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 4,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 39,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1544,
                 "description": "无花大仙是仙界最为特殊的一位大仙，因为他只有下半身，而且平日里都是保持全裸状态。玉帝一直怀疑他是露阴癖。"
             },
             "185": {
@@ -30237,10 +30854,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 5,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 39,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1552,
                 "description": "玉帝一直人为八仙中的吕洞宾和韩湘子感觉总有点怪怪的，最近，吕与韩高调宣布出柜的消息验证了他的这种感觉。"
             },
             "186": {
@@ -30248,10 +30865,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 6,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 40,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1560,
                 "description": "几乎仙界所有的仙女都对吴刚常年劈砍桂树所练出来的雄健体魄充满了兴趣，她们都希望能够亲手摸一摸，甚至包括王母在内。"
             },
             "187": {
@@ -30259,10 +30876,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 7,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 40,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1568,
                 "description": "邓婵玉当初下嫁给土行孙，这完全就是姜子牙的主意，如此一个大美人跟着这么一个孙子，白瞎了。"
             },
             "188": {
@@ -30270,10 +30887,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 8,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 40,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1576,
                 "description": "西王母和王母既不是一个神仙，也不是姐妹，他们之间完全没有联系，而且西王母是的男的。"
             },
             "189": {
@@ -30281,10 +30898,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 9,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 40,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1584,
                 "description": "玉兔看着吴刚面前冒着青烟的烧烤架，它忍不住的留下了眼泪，再这么吃下去，广寒宫的兔子就完蛋了。"
             },
             "190": {
@@ -30292,10 +30909,10 @@ var outputTables = {
                 "chapter_id": "曲女城",
                 "section_id": 10,
                 "section_name": "曲女城",
-                "points": 23,
+                "points": 40,
                 "power_consume": 5,
                 "exp_obtain": 115,
-                "coins_obtain": 230,
+                "coins_obtain": 1592,
                 "description": "作为神仙中出了名的医仙，牡丹仙子每天她都会下凡人间，广施恩泽，救苦救难。她是百姓心中真正的菩萨。"
             },
             "191": {
@@ -30303,10 +30920,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 1,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 41,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1600,
                 "description": "百花仙子穿的衣服是由一百朵玫瑰花织成的，织的天衣无缝。二郎神盯了八百多年，还是没有发现漏点。"
             },
             "192": {
@@ -30314,10 +30931,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 2,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 41,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1608,
                 "description": "百花仙子和花神是两个神仙，花神几乎和百花仙子一样的年轻貌美，但事实上花神是百花仙子她妈。"
             },
             "193": {
@@ -30325,10 +30942,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 3,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 41,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1616,
                 "description": "很多人不知道，其实神仙中是有床神的，而且地位很高。所以，如果床上生活有问题的，大家可以拜一拜。"
             },
             "194": {
@@ -30336,10 +30953,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 4,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 41,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1624,
                 "description": "宓妃是仙女当中另一位绝色佳人，其美貌程度不亚于嫦娥。据说后羿当年经常在梦中与宓妃爱爱。我们由此想象宓妃之美。"
             },
             "195": {
@@ -30347,10 +30964,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 5,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 41,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1632,
                 "description": "精卫平均一天可以往大海里填三十颗石子，龙王算过，照这个速度，它要想填平大海，大概需要八亿亿亿亿亿年零九个月。"
             },
             "196": {
@@ -30358,10 +30975,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 6,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 42,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1640,
                 "description": "大禹治水，功德无量，流芳百世。但很多人可能不知道，其实大禹不会游泳，而且很怕水，简直怕的要命。"
             },
             "197": {
@@ -30369,10 +30986,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 7,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 42,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1648,
                 "description": "最近天庭扩招，来了很多新人。附近餐馆都是人满为患，很多神仙甚至不得不下凡去用餐。所以玉帝决定盖一个食堂。"
             },
             "198": {
@@ -30380,10 +30997,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 8,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 42,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1656,
                 "description": "最近龟神有些烦，因饭量日益增加，再加上头部吸收营养能力过强，导致他的龟头越来越大。现在晚上睡觉都缩不回去了。"
             },
             "199": {
@@ -30391,10 +31008,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 9,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 42,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1664,
                 "description": "神仙中对于男欢女爱之事最上瘾的大概莫过于巫山神女了，基本上只要有机会她就会巫山云雨一把。搞过的都说她活儿很不错。"
             },
             "200": {
@@ -30402,10 +31019,10 @@ var outputTables = {
                 "chapter_id": "天竺寺",
                 "section_id": 10,
                 "section_name": "天竺寺",
-                "points": 24,
+                "points": 42,
                 "power_consume": 5,
                 "exp_obtain": 120,
-                "coins_obtain": 240,
+                "coins_obtain": 1672,
                 "description": "孟姜女当年的一哭，不仅哭倒了万里长城，也哭碎了玉帝的心。这是他唯一一次动过凡心，不过这个事王母是不知道的。"
             },
             "201": {
@@ -30413,10 +31030,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 1,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 43,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1680,
                 "description": "玉帝最近打算恢复八戒天蓬元帅的职位。少了这么一个喜欢调戏妇女的元帅，玉帝总觉得生活变得枯燥了很多。"
             },
             "202": {
@@ -30424,10 +31041,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 2,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 43,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1688,
                 "description": "人间空气污染指数的上升，直接影响了仙界的空气质量，南天门最近空气的PM指数已经达到了800多，属重度雾霾。"
             },
             "203": {
@@ -30435,10 +31052,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 3,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 43,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1696,
                 "description": "近日新造的各大仙宫陆续出现了漏水现象，玉帝已下令彻查此事，严格控制房屋质量，确保神仙的基本生活品质。"
             },
             "204": {
@@ -30446,10 +31063,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 4,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 43,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1704,
                 "description": "许多神仙都非常喜欢人间的足球这项运动。最近这一届世界杯他们打算化身成球迷前往巴西到现场去看一看。"
             },
             "205": {
@@ -30457,10 +31074,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 5,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 43,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1712,
                 "description": "对于人间流行天杀的这个称呼，玉帝很不喜欢，感觉气氛不太对，所以他打算把这三个字永久删除掉。"
             },
             "206": {
@@ -30468,10 +31085,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 6,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 44,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1720,
                 "description": "前些日子二郎神发现哮天犬长了个痔疮，这让他有些惴惴不安，他不知道这是不是和他有关系。"
             },
             "207": {
@@ -30479,10 +31096,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 7,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 44,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1728,
                 "description": "天庭今日发布了堪称有史以来最为严厉的一道新规：为了保证纯洁性，任何神仙不得潜规则仙女，谁潜，就干谁。"
             },
             "208": {
@@ -30490,10 +31107,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 8,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 44,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1736,
                 "description": "王母娘娘心系三界，她经常督促各路神仙，多到人间去走一走看一看，体验下百姓疾苦，真相往往都是在基层。"
             },
             "209": {
@@ -30501,10 +31118,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 9,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 44,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1744,
                 "description": "身为一代鬼王，修罗王一直想争阎罗王这个位子，众鬼纷纷提醒阎王爷要留神。阎王淡淡一笑说没事老子早就干腻了。"
             },
             "210": {
@@ -30512,10 +31129,10 @@ var outputTables = {
                 "chapter_id": "圣女峰",
                 "section_id": 10,
                 "section_name": "圣女峰",
-                "points": 25,
+                "points": 44,
                 "power_consume": 5,
                 "exp_obtain": 125,
-                "coins_obtain": 250,
+                "coins_obtain": 1752,
                 "description": "地狱里是可以看到阳光的，每天中午，阎王都会带着众鬼将在森罗大殿晒晒太阳，聊聊天，整体氛围是很温馨的。"
             },
             "211": {
@@ -30523,10 +31140,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 1,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 45,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1760,
                 "description": "第二界廉政大会在天庭召开。会上玉帝作出了重要指示，他希望各神仙能够认真学习，研究部署，贯彻落实，并拥有大局观。"
             },
             "212": {
@@ -30534,10 +31151,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 2,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 45,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1768,
                 "description": "近日召开的全体神仙扩大性精神会议上，观音菩萨首次提出，建立神仙党员制度，凡表现优秀的神仙，均有机会成为党员。"
             },
             "213": {
@@ -30545,10 +31162,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 3,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 45,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1776,
                 "description": "前几天土行孙与猪八戒，赤脚大仙，蓬莱大仙，太上老君，他们五个因感情深厚决定义结金兰，并号称五虎上将。"
             },
             "214": {
@@ -30556,10 +31173,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 4,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 45,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1784,
                 "description": "作为仙界首位医术高超的仙女，牡丹仙子首创中医针灸概念，以针运气，以针养气，成功的解除了众多神仙的风湿之痛。"
             },
             "215": {
@@ -30567,10 +31184,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 5,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 45,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1792,
                 "description": "越来越多的神仙沦为了房奴，高额的房贷让他们喘不过起来，他们甚至觉得他们和地上的凡人没什么区别。"
             },
             "216": {
@@ -30578,10 +31195,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 6,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 46,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1800,
                 "description": "最近仙界房地产市场泡沫越来越大，玉帝指示各部门，没事的时候大家研究一下，务必保障众神仙的基本生活品质。"
             },
             "217": {
@@ -30589,10 +31206,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 7,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 46,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1808,
                 "description": "南天童子昨晚跳楼自尽，魂飞魄散。他成为了第一个因还不起房贷而自杀的神仙。据说他那套两居室已经还了九千多年了。"
             },
             "218": {
@@ -30600,10 +31217,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 8,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 46,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1816,
                 "description": "九天杀童最近喜欢上了人间的烧烤，尤其最喜欢吃一种叫鸡肾的东西，没事的时候他就溜下凡间，烤个几千串吃一吃。"
             },
             "219": {
@@ -30611,10 +31228,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 9,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 46,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1824,
                 "description": "最近玉帝新换了一名御厨，叫欧阳卵。他非常擅长做又麻又辣的菜。玉帝最近口味比较重，所以他很喜欢这个欧阳卵。"
             },
             "220": {
@@ -30622,10 +31239,10 @@ var outputTables = {
                 "chapter_id": "空灵泉",
                 "section_id": 10,
                 "section_name": "空灵泉",
-                "points": 26,
+                "points": 46,
                 "power_consume": 5,
                 "exp_obtain": 130,
-                "coins_obtain": 260,
+                "coins_obtain": 1832,
                 "description": "吴刚打算这几天向玉帝申请下凡一趟，看看他的兄弟后羿。老这么让他守着，孤男寡女的，也不是那么个事。"
             },
             "221": {
@@ -30633,10 +31250,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 1,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 47,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1840,
                 "description": "后羿打算结婚了，他感觉就这么和嫦娥耗下去也不是个事，再说一个在天上，一个在地下，想要复合估计是没戏了。"
             },
             "222": {
@@ -30644,10 +31261,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 2,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 47,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1848,
                 "description": "听到后羿在凡间打算结婚的消息，嫦娥哭了整整三天三夜，无论如何，她对后羿是真心的。"
             },
             "223": {
@@ -30655,10 +31272,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 3,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 47,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1856,
                 "description": "听到后羿在凡间打算结婚的消息后，吴刚一直在想，这是不是意味着他可以做点什么了。"
             },
             "224": {
@@ -30666,10 +31283,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 4,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 47,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1864,
                 "description": "仙界前些日子好多神仙都患上了禽流感，大家纷纷把目光对准了二郎神的哮天犬，大家都觉得是时候该对这畜生做点什么了。"
             },
             "225": {
@@ -30677,10 +31294,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 5,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 47,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1872,
                 "description": "其实大多数神仙过的都比较清贫，神仙也分好多种，有强有弱，有好有坏，有富有穷。这和人间基本上是差不多的。"
             },
             "226": {
@@ -30688,10 +31305,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 6,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 48,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1880,
                 "description": "第七届神仙田径大赛圆满结束，第三名是土行孙，第二名是九华仙子，第一名是哮天犬。"
             },
             "227": {
@@ -30699,10 +31316,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 7,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 48,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1888,
                 "description": "神仙当中不乏众多球迷，其中北斗七星君是皇马球迷，牛魔王和铁扇公主最喜欢梅西，而玉帝则是奥尼尔最忠实的粉丝。"
             },
             "228": {
@@ -30710,10 +31327,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 8,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 48,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1896,
                 "description": "七仙女分别是：红衣仙女、素衣仙女、青衣仙女、皂衣仙女、紫衣仙女、黄衣仙女、绿衣仙女。她们其实并不是玉帝的女儿。"
             },
             "229": {
@@ -30721,10 +31338,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 9,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 48,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1904,
                 "description": "太华山的赤精子最近和九宫山的普贤真人干上了，这两个八竿子打不着边的神仙也能干起来，说明神仙也过的越来越浮躁了。"
             },
             "230": {
@@ -30732,10 +31349,10 @@ var outputTables = {
                 "chapter_id": "莲花池",
                 "section_id": 10,
                 "section_name": "莲花池",
-                "points": 27,
+                "points": 48,
                 "power_consume": 5,
                 "exp_obtain": 135,
-                "coins_obtain": 270,
+                "coins_obtain": 1912,
                 "description": "第十七届青歌大赛成功落幕，巨灵神以一首充满深情的《让我们一次爱个够》勇夺桂冠。玉帝点评说唱出陕北民歌味儿了。"
             },
             "231": {
@@ -30743,10 +31360,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 1,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 49,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1920,
                 "description": "因为仙流量过大，天庭最近打算在南天门对面新建一道北天门，以此来缓解交通压力。"
             },
             "232": {
@@ -30754,10 +31371,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 2,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 49,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1928,
                 "description": "人间到天庭的距离其实不算太远，悟空踩着云彩，大概要飞半个小时，这样比照下来，差不多相当于要坐半个月飞机的时间。"
             },
             "233": {
@@ -30765,10 +31382,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 3,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 49,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1936,
                 "description": "不要羡慕神仙，做个凡人没什么不好的，仙有仙的苦楚，而人有人的幸福。各自都有各自的活法。"
             },
             "234": {
@@ -30776,10 +31393,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 4,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 49,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1944,
                 "description": "正在外地旅游的悟空听到了一个不幸的消息，他花果山的饮品店和猪八戒的高老庄一样，也被强行拆掉了。"
             },
             "235": {
@@ -30787,10 +31404,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 5,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 49,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1952,
                 "description": "羊角大仙近日喜得贵子，大仙为其取名为，羊羊羊。"
             },
             "236": {
@@ -30798,10 +31415,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 6,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 50,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1960,
                 "description": "玉帝最近打算废除禁止神仙恋爱的这条规定。他看不到这一条规定有任何意义，人可以相爱，神为什么就不可以。"
             },
             "237": {
@@ -30809,10 +31426,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 7,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 50,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1968,
                 "description": "作为仙界的乐官，五音大仙最近创作了一首叫做《干！干！干！》的歌曲。此歌节奏明快，旋律优美，深得众仙的喜爱。"
             },
             "238": {
@@ -30820,10 +31437,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 8,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 50,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1976,
                 "description": "作为仙界最具艺术才华的仙子，文曲星最近创作了一首叫做《你们都去死吧！》的诗词，该诗以感情强烈而迅速风靡仙界。"
             },
             "239": {
@@ -30831,10 +31448,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 9,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 50,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1984,
                 "description": "因为舞姿过于出色，七仙女中的青衣仙子近日被王母娘娘授以樱桃小丸子的一级大仙封号。"
             },
             "240": {
@@ -30842,10 +31459,10 @@ var outputTables = {
                 "chapter_id": "极乐界",
                 "section_id": 10,
                 "section_name": "极乐界",
-                "points": 28,
+                "points": 50,
                 "power_consume": 5,
                 "exp_obtain": 140,
-                "coins_obtain": 280,
+                "coins_obtain": 1992,
                 "description": "牛郎家的那头牛最近早产，生下了两头小牛犊，牛郎为其命名为，牛丽丽和牛青青。"
             },
             "241": {
@@ -30853,10 +31470,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 1,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 51,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2000,
                 "description": "在近日召开的艺术指导会议上，文曲星指出，艺术不能脱离生活，要以贴近众仙日常情感为线索，坚定不移的走群众路线。"
             },
             "242": {
@@ -30864,10 +31481,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 2,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 51,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2008,
                 "description": "最近经常有神仙偷偷下凡去炒股，玉帝觉得很恼火，下令一旦发现这种神仙就地处决。他觉得股市这个东西摆明就是黑钱的。"
             },
             "243": {
@@ -30875,10 +31492,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 3,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 51,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2016,
                 "description": "下一届奥运会，王母打算亲临现场看一看，她很喜欢看游泳，尤其喜欢那个美国飞鱼菲尔普斯。"
             },
             "244": {
@@ -30886,10 +31503,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 4,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 51,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2024,
                 "description": "雷公最近想换个工作，天天打雷，天天打雷，快烦死了。"
             },
             "245": {
@@ -30897,10 +31514,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 5,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 51,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2032,
                 "description": "电母是仙界长的最丑的仙女，但也是最会保养的仙女。最近她打算再去呵护一下头发，做一个离子烫，拉个直板。"
             },
             "246": {
@@ -30908,10 +31525,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 6,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 52,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2040,
                 "description": "没有人知道法海的痛苦，也没有人能理解他对许仙的感情。当他看到白素贞和许仙在一起的那一刻，他的心，碎了。"
             },
             "247": {
@@ -30919,10 +31536,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 7,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 52,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2048,
                 "description": "唐僧师徒四人取经归来之后，最幸运的当属白龙马。因为只有他家的宅院没有被巨灵神强拆过。"
             },
             "248": {
@@ -30930,10 +31547,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 8,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 52,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2056,
                 "description": "因为经常性的熬夜，二郎神三只眼睛的近视度数高达三千多度，额头上的那只天眼基本上已经废掉了。"
             },
             "249": {
@@ -30941,10 +31558,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 9,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 52,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2064,
                 "description": "曾有神仙向玉帝提出在人间弄一个常驻办事处，玉帝听了忍不住哈哈大笑，笑完之后他说好这个提议不错，完了我们研究下。"
             },
             "250": {
@@ -30952,10 +31569,10 @@ var outputTables = {
                 "chapter_id": "苦难谷",
                 "section_id": 10,
                 "section_name": "苦难谷",
-                "points": 29,
+                "points": 52,
                 "power_consume": 5,
                 "exp_obtain": 145,
-                "coins_obtain": 290,
+                "coins_obtain": 2072,
                 "description": "因为刑罚过于残暴，地狱最近经常发生群鬼暴乱事件。对此，阎王对众刑官表示，再严厉一点，谁不服当场就废了他。"
             },
             "251": {
@@ -30963,10 +31580,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 1,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 53,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2080,
                 "description": "整个地狱，皮肤保养的最好的当属钟馗，这得益于他每天吸食灵魂。据统计他大概一天吸食九百多万个魂魄。"
             },
             "252": {
@@ -30974,10 +31591,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 2,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 53,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2088,
                 "description": "黄飞虎最近迷上了人体雕塑，他希望能够在不就的未来举办一次个人雕塑展，名字都想好了，叫：我的灵魂我的肉。"
             },
             "253": {
@@ -30985,10 +31602,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 3,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 53,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2096,
                 "description": "王母娘娘其实是一个京剧迷，她曾降入凡间化身普通戏子，师从京剧大师梅兰芳。不过这事只有玉帝知道。"
             },
             "254": {
@@ -30996,10 +31613,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 4,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 53,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2104,
                 "description": "由于进来环境污染严重，气候严重异常，东海经常是动不动的就刮台风。老龙王躺在龙宫里晃来晃去，一会就晕吐了。"
             },
             "255": {
@@ -31007,10 +31624,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 5,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 53,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2112,
                 "description": "花果山饮品店被拆除后，悟空潜心修行三十年，终于悟出了第七十三种仙术变化。他打算最近再搞一次大闹天宫。"
             },
             "256": {
@@ -31018,10 +31635,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 6,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 54,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2120,
                 "description": "因生活清贫，修行苦闷，许多神仙选择到凡间经商。玉帝知道后立刻发布一道天规：一旦发现官员经商，无须上报，直接弄死。"
             },
             "257": {
@@ -31029,10 +31646,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 7,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 54,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2128,
                 "description": "闻名三界的孟婆汤秘方近日曝光，众仙这才发现原来配方如此简单：大蒜，香菜，土豆，萝卜，外加一碗清水，仅此而已。"
             },
             "258": {
@@ -31040,10 +31657,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 8,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 54,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2136,
                 "description": "为了防止走光，众仙女在腾云驾雾的时候很少穿那种刻意飘的起来的迷你裙，一律改穿紧身包臀牛仔短裤了。"
             },
             "259": {
@@ -31051,10 +31668,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 9,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 54,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2144,
                 "description": "最近一届“女人我最美”大赛，南华仙子夺冠。评委主席李靖对她的评价是：肉质好皮肤白，整体给人相当强烈的蹂躏欲望。"
             },
             "260": {
@@ -31062,10 +31679,10 @@ var outputTables = {
                 "chapter_id": "盘丝洞",
                 "section_id": 10,
                 "section_name": "盘丝洞",
-                "points": 30,
+                "points": 54,
                 "power_consume": 5,
                 "exp_obtain": 150,
-                "coins_obtain": 300,
+                "coins_obtain": 2152,
                 "description": "最近一届“雄起，男人”大赛，吴刚不负众望，勇夺桂冠。评委主席嫦娥对他的评价是：整个下体一如既往的出色。"
             },
             "261": {
@@ -31073,10 +31690,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 1,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 55,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2160,
                 "description": "天庭所有仙女中玉帝最满意的是北极仙子。据玉帝的目测，她的三围是十八十八十八。玉帝说，我就喜欢这样的，越瘦越好。"
             },
             "262": {
@@ -31084,10 +31701,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 2,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 55,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2168,
                 "description": "最近传闻有一个内裤外穿的男子从人间竟然直接飞到了天庭。这件事让玉帝产生了深深的危机感，这让神仙以后还怎么混？"
             },
             "263": {
@@ -31095,10 +31712,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 3,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 55,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2176,
                 "description": "第二届经济扩大会议上，众仙一致通过了关于成立天庭自由贸易区的决议。会议特别强调，要按照人类经济特区的模式来搞。"
             },
             "264": {
@@ -31106,10 +31723,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 4,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 55,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2184,
                 "description": "针对老是有神仙不上早朝的这种现象，玉帝经过慎重考虑后，宣布：以后大伙都不用来上朝了。"
             },
             "265": {
@@ -31117,10 +31734,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 5,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 55,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2192,
                 "description": "仙女们没事的时候也喜欢八卦，比如吴刚的胸大肌好性感哦，巨灵神的臀大肌好性感哦，南天大仙的腿大肌好性感哦，等等。"
             },
             "266": {
@@ -31128,10 +31745,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 6,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 56,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2200,
                 "description": "在西天取经结束后，悟空已经把金箍棒还给了东海龙王，毕竟那玩意老塞在耳朵里，怪痒痒。"
             },
             "267": {
@@ -31139,10 +31756,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 7,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 56,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2208,
                 "description": "鬼界，人界，神界，其实除了这三界之外，还存在一界，虚空界，只有修行极深的大仙方可进入虚空界。普通小仙是没门的。"
             },
             "268": {
@@ -31150,10 +31767,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 8,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 56,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2216,
                 "description": "通灵仙女其实并不想当神仙，她觉得做神仙很枯燥，也很无趣。她最大的愿望是，下凡当一名服装设计师。"
             },
             "269": {
@@ -31161,10 +31778,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 9,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 56,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2224,
                 "description": "仙界最高的山，是五指山；最深的洞，是霄云洞；最高的树，是蟠桃树；最美的云，是王母脚下的七彩祥云。"
             },
             "270": {
@@ -31172,10 +31789,10 @@ var outputTables = {
                 "chapter_id": "斗战堂",
                 "section_id": 10,
                 "section_name": "斗战堂",
-                "points": 31,
+                "points": 56,
                 "power_consume": 5,
                 "exp_obtain": 155,
-                "coins_obtain": 310,
+                "coins_obtain": 2232,
                 "description": "近日太上老君成功炼制出了一种可以随意改变性别的丹药。不过为了防止引起三界大混乱，玉帝禁止他进行批量生产。"
             },
             "271": {
@@ -31183,10 +31800,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 1,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 57,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2240,
                 "description": "长安城最近发大水，死伤无数。玉皇大帝得知后亲临凡间，面对痛不欲生的人民，玉帝意味深长的说了一句：“这就叫报应！”"
             },
             "272": {
@@ -31194,10 +31811,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 2,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 57,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2248,
                 "description": "八戒和婵娥大婚的第二天早上，婵娥特地为八戒准备了早餐。但是八戒告诉他：“我不可以空腹吃早餐的！”"
             },
             "273": {
@@ -31205,10 +31822,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 3,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 57,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2256,
                 "description": "孙悟空当初之所以学火眼金睛，其实是为了看七仙女洗澡。"
             },
             "274": {
@@ -31216,10 +31833,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 4,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 57,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2264,
                 "description": "孙悟空自从取完西经之后以为自己不用再降妖除魔了，直到有一天他在电视上看到中国好嗓音的吴莫愁。"
             },
             "275": {
@@ -31227,10 +31844,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 5,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 57,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2272,
                 "description": "织女有奖问答环节：“水快冷猜一个英语\",答案揭晓：“西瓜”。"
             },
             "276": {
@@ -31238,10 +31855,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 6,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 58,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2280,
                 "description": "每个神仙都羡慕孙悟空有一根可长可短可粗可细的棒子。"
             },
             "277": {
@@ -31249,10 +31866,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 7,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 58,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2288,
                 "description": "那吒不仅会喷火，其实他也很爱喝水。"
             },
             "278": {
@@ -31260,10 +31877,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 8,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 58,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2296,
                 "description": "人们总误以为白蛇和青蛇是好姐妹，其实他们是好基友来的。"
             },
             "279": {
@@ -31271,10 +31888,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 9,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 58,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2304,
                 "description": "人们时常不解为什么雷震子鼻子比别人长。直到后来皮诺曹告诉我们：“说谎鼻子会变长哟”。"
             },
             "280": {
@@ -31282,10 +31899,10 @@ var outputTables = {
                 "chapter_id": "圣佛村",
                 "section_id": 10,
                 "section_name": "圣佛村",
-                "points": 32,
+                "points": 58,
                 "power_consume": 5,
                 "exp_obtain": 160,
-                "coins_obtain": 320,
+                "coins_obtain": 2312,
                 "description": "唐僧从来不吃肉，他最喜欢吃黑木耳。"
             },
             "281": {
@@ -31293,10 +31910,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 1,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 59,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2320,
                 "description": "白龙马自从在网上认识了韩国棒子团后，就把自己变成了中国金枪鱼。"
             },
             "282": {
@@ -31304,10 +31921,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 2,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 59,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2328,
                 "description": "天庭的蟠桃不仅有长命百岁的作用，还有清凉降火的功效，夏日必备好产品哟。"
             },
             "283": {
@@ -31315,10 +31932,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 3,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 59,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2336,
                 "description": "珠海乐之科技有限公司是当年托塔天王和天蓬元帅为了泡妹子而成立的俱乐部。"
             },
             "284": {
@@ -31326,10 +31943,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 4,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 59,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2344,
                 "description": "为什么神仙们喜欢留胡子，因为他们都拜关二哥。"
             },
             "285": {
@@ -31337,10 +31954,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 5,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 59,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2352,
                 "description": "话说在天庭找不到工作的人，都喜欢混入凡间当城管。"
             },
             "286": {
@@ -31348,10 +31965,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 6,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 60,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2360,
                 "description": "神仙买苹果从来不买一颗两颗，他们告诉凡人，买苹果要买4代五代。"
             },
             "287": {
@@ -31359,10 +31976,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 7,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 60,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2368,
                 "description": "王母娘娘发现现在的人类人人携带苹果，为了断绝这种现象，她创建了一个新的族群，叫魅族。"
             },
             "288": {
@@ -31370,10 +31987,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 8,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 60,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2376,
                 "description": "“我掌控你们的现在，你们嘲笑我的未来”我是玉皇大帝，我为自己带盐。"
             },
             "289": {
@@ -31381,10 +31998,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 9,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 60,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2384,
                 "description": "牛郎和织女在分开了千千万万年之后，牛郎终于铁杵磨成绣花针。"
             },
             "290": {
@@ -31392,10 +32009,10 @@ var outputTables = {
                 "chapter_id": "紫霞谷",
                 "section_id": 10,
                 "section_name": "紫霞谷",
-                "points": 33,
+                "points": 60,
                 "power_consume": 5,
                 "exp_obtain": 165,
-                "coins_obtain": 330,
+                "coins_obtain": 2392,
                 "description": "白骨精从小爱吃泡菜，因此悟空特别喜欢她，有一天白骨精问他：“为什么你那么喜欢我？”悟空告诉她：“因为你是棒子”。"
             },
             "291": {
@@ -31403,10 +32020,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 1,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 61,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2400,
                 "description": "玉帝的御厨决定下凡到人间学一学新的厨艺，最近玉帝喜欢上了川菜火锅。厨哥决定下凡到四川成都一行。"
             },
             "292": {
@@ -31414,10 +32031,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 2,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 61,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2408,
                 "description": "御厨到成都后，他发现这才是真正的人间天堂啊。不仅菜好吃，而且漂亮妹子多，一个个水格灵灵，嫩白嫩白，看着相当有感觉。"
             },
             "293": {
@@ -31425,10 +32042,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 3,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 61,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2416,
                 "description": "很少有神仙能够触觉到音乐对灵魂产生的那种撞击。赤脚大仙除外，每次他一边抠脚一边听着凤凰传奇的歌时，都会热泪盈眶。"
             },
             "294": {
@@ -31436,10 +32053,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 4,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 61,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2424,
                 "description": "人间奥特曼打小怪兽科幻电影的盛行，让玉帝意识到，神仙修行的步伐必须加快了，否则有朝一日很可能直接干到天庭来。"
             },
             "295": {
@@ -31447,10 +32064,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 5,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 61,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2432,
                 "description": "对于人间最近流行的小米手机，玉帝和王母其实都知道这个事情，也私底下试用过，用过之后他们的结论是，这玩意也能火？"
             },
             "296": {
@@ -31458,10 +32075,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 6,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 62,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2440,
                 "description": "观看《泰坦尼克号》，是牛郎和织女每年七夕的固定节目。只是每次快要看到杰克沉入大海时，两人都终于撑不住双双睡了过去。"
             },
             "297": {
@@ -31469,10 +32086,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 7,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 62,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2448,
                 "description": "为了看看自己在凡间究竟有多大的人气，玉帝来到凡间参加非诚勿扰。当他说出我是玉帝时，孟非看了他一眼说，你丫傻逼吧。"
             },
             "298": {
@@ -31480,10 +32097,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 8,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 62,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2456,
                 "description": "对于人间流行的女神这个称号，王母觉得有些不可思议，波大一点，皮肤白一点，腿细一点，穿的少一点，就可以叫女神了？"
             },
             "299": {
@@ -31491,10 +32108,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 9,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 62,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2464,
                 "description": "土地公近日对笑面罗汉提出了抗议，每次人间供奉的东西还没等人家走出寺庙，罗汉拿过来两口就吃掉，这神仙还要不要做了。"
             },
             "300": {
@@ -31502,10 +32119,10 @@ var outputTables = {
                 "chapter_id": "思念池",
                 "section_id": 10,
                 "section_name": "思念池",
-                "points": 34,
+                "points": 62,
                 "power_consume": 5,
                 "exp_obtain": 170,
-                "coins_obtain": 340,
+                "coins_obtain": 2472,
                 "description": "作为仙界真正的爱爱女神，洛神宓妃每年据说要下凡与男性爱爱上万次，平均每天三百多次。这就是她修仙的方式，羡煞旁人也。"
             },
             "301": {
@@ -31513,10 +32130,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 1,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 63,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2480,
                 "description": "最近染上烟瘾的神仙越来越多，这让玉帝很郁闷，什么时候神仙也沦落到凡人的地步了，神仙难道也就这么容易堕落么？"
             },
             "302": {
@@ -31524,10 +32141,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 2,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 63,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2488,
                 "description": "关于最近人间流行的各种车震门事件，众仙经过讨论后，一致认为，如果把车窗摇下来，体验上可能会更好一些。"
             },
             "303": {
@@ -31535,10 +32152,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 3,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 63,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2496,
                 "description": "针对人间有关慈善方面的情况，玉帝提议，封郭美美为至尊女神。理由是：她的出现，彻底颠覆了人们在特定领域的特定价值观。"
             },
             "304": {
@@ -31546,10 +32163,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 4,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 63,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2504,
                 "description": "人间有房姐，仙界同样也有。最近爆出东华仙人名下有三百多套房，玉帝知道这个消息后，直接晕了过去。"
             },
             "305": {
@@ -31557,10 +32174,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 5,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 63,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2512,
                 "description": "人间霸王李刚近日上天受封，鉴于他儿子独特的开创性的表现，玉帝决定封他为：少年之爹。"
             },
             "306": {
@@ -31568,10 +32185,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 6,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 64,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2520,
                 "description": "风流少年陈冠希近日上天受封，鉴于他在男女关系方面所作出的有益探索，玉帝决定封他为：妇女之友。"
             },
             "307": {
@@ -31579,10 +32196,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 7,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 64,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2528,
                 "description": "东海老龙王的长孙深海蛟龙，近日在游泳的时候因为没有穿救生衣，不慎被淹死。"
             },
             "308": {
@@ -31590,10 +32207,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 8,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 64,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2536,
                 "description": "在七仙女的倡导下，众仙最近也开始练瑜伽，以深化修行之道。但因为用力过猛，经常发生一些断胳膊断腿的事儿。"
             },
             "309": {
@@ -31601,10 +32218,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 9,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 64,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2544,
                 "description": "针对仙界最近不稳定的经济形势，财神组织召开了经济扩大会议，会议一致通过，今年务必要把仙界的GDP增幅控制在7%以下。"
             },
             "310": {
@@ -31612,10 +32229,10 @@ var outputTables = {
                 "chapter_id": "五华山",
                 "section_id": 10,
                 "section_name": "五华山",
-                "points": 35,
+                "points": 64,
                 "power_consume": 5,
                 "exp_obtain": 175,
-                "coins_obtain": 350,
+                "coins_obtain": 2552,
                 "description": "为了进一步刺激仙界经济的发展，财神决定再次增发三万亿Q币，以此来平衡市场相对紧张的供需关系。"
             },
             "311": {
@@ -31623,10 +32240,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 1,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 65,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2560,
                 "description": "马化腾近日入狱受罚，鉴于他在IT界一贯的坚定的卓有成效的垄断行为，阎王决定，放了他，让他返回人间，继续垄断下去。"
             },
             "312": {
@@ -31634,10 +32251,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 2,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 65,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2568,
                 "description": "许多神仙最近也都有了自己的微博帐号。有些还加了V。二郎神叫我与狗，巨灵神叫下体很硬，蓬莱仙女叫深不可测。"
             },
             "313": {
@@ -31645,10 +32262,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 3,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 65,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2576,
                 "description": "又到了一年一度的旅游季节，这一次，大家一致同意，到阿尔卑斯山去滑雪，体验雪花的柔美，享受尖叫的快感。"
             },
             "314": {
@@ -31656,10 +32273,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 4,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 65,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2584,
                 "description": "太乙真人下凡，要办签证。真人说我是神仙，签证官冷笑一声说那也得办。真人怒说我要送你下地狱。于是真人进了警察局。"
             },
             "315": {
@@ -31667,10 +32284,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 5,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 65,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2592,
                 "description": "羊角大仙近日又喜得了一贵子。思索良久，大仙为其取名为：羊驼。"
             },
             "316": {
@@ -31678,10 +32295,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 6,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 66,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2600,
                 "description": "最近仙界红白喜事不少，南天童子也因此苦不堪言，最近他给出的份子钱是他每个月薪水的16倍。"
             },
             "317": {
@@ -31689,10 +32306,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 7,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 66,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2608,
                 "description": "当织女听到牛郎出轨，而且还是跟巨灵神的消息后，她忍不住流下了震惊的泪水。"
             },
             "318": {
@@ -31700,10 +32317,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 8,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 66,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2616,
                 "description": "针对近日人间发生的海天盛筵事件，二郎神表示，将会仔细研究录像，进入深入的调查取证，必要时自会下凡进行处理。"
             },
             "319": {
@@ -31711,10 +32328,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 9,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 66,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2624,
                 "description": "如来和玉帝见面，口头禅就是，你被猴打过。老说老说，玉帝终于有一天忍不住爆发了，我就XXX了，我被猴打过又怎么了。"
             },
             "320": {
@@ -31722,10 +32339,10 @@ var outputTables = {
                 "chapter_id": "尘缘地",
                 "section_id": 10,
                 "section_name": "尘缘地",
-                "points": 36,
+                "points": 66,
                 "power_consume": 5,
                 "exp_obtain": 180,
-                "coins_obtain": 360,
+                "coins_obtain": 2632,
                 "description": "对于人间流行的民工讨薪难事件，众神仙一致决定，将诅咒系法术注入民工体内，使其可对欠薪者全家造成灭门伤害。"
             },
             "321": {
@@ -31733,10 +32350,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 1,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 67,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2640,
                 "description": "如果单纯只是为了修仙而修仙，那很容易走火入魔。灵宝真人闭关修仙二十年，最后修成了一傻子，整天只会喊好饿啊好饿。"
             },
             "322": {
@@ -31744,10 +32361,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 2,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 67,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2648,
                 "description": "关于人间垄断企业相关的争议，神仙们表达了一个基本的观点，那就是：垄断死全家。"
             },
             "323": {
@@ -31755,10 +32372,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 3,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 67,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2656,
                 "description": "最近不仅人间家庭暴力事件屡屡上演，就连仙界也是如此。牛魔王那么大一块头，被铁扇公主打的现在和七仙女差不多体型了。"
             },
             "324": {
@@ -31766,10 +32383,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 4,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 67,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2664,
                 "description": "对于人间潜规则这个行规，通灵大仙的观点是：潜的力度还不够，应该进一步加强，争取做到全民参潜的效应。"
             },
             "325": {
@@ -31777,10 +32394,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 5,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 67,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2672,
                 "description": "因为生活拮据，后羿不得不在晚上出来摆摊卖烧烤。不过很不幸，他的烧烤基本上都被城管给吃掉了。当然，白吃。"
             },
             "326": {
@@ -31788,10 +32405,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 6,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 68,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2680,
                 "description": "因为生活的太压抑，最近牛犊子仙人发布言论声称要炸南天门，炸凌霄殿，炸玉帝，炸王母。很快，他就被弄死了。"
             },
             "327": {
@@ -31799,10 +32416,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 7,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 68,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2688,
                 "description": "人间流行毒奶粉，仙界最近也开始流行。玉帝很迷惘，什么时候神仙也开始喝奶粉了。"
             },
             "328": {
@@ -31810,10 +32427,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 8,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 68,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2696,
                 "description": "道德真君是仙界中最没有道德素养的一个道德大仙。"
             },
             "329": {
@@ -31821,10 +32438,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 9,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 68,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2704,
                 "description": "仙界同样富豪众多，而且懂得享受。最近财神爷就下凡购置了一艘超级豪华游轮，没事的时候就从给天上下来玩一会。"
             },
             "330": {
@@ -31832,10 +32449,10 @@ var outputTables = {
                 "chapter_id": "了然原",
                 "section_id": 10,
                 "section_name": "了然原",
-                "points": 37,
+                "points": 68,
                 "power_consume": 5,
                 "exp_obtain": 185,
-                "coins_obtain": 370,
+                "coins_obtain": 2712,
                 "description": "后羿是仙界中公认的屌丝，二郎神是仙界公认的高富帅，而嫦娥，则是仙界中公认的可以进行深度开发的一个原始美人。"
             },
             "331": {
@@ -31843,10 +32460,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 1,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 69,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2720,
                 "description": "人类越来越牛逼，造出来的飞机飞的越来越高，也越来越快。这一定程度干扰了天庭的正常交通。"
             },
             "332": {
@@ -31854,10 +32471,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 2,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 69,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2728,
                 "description": "突然间，神仙开始流行纹身，雷公胸部纹了条龙，电母手臂纹了条凤，二郎神臀部纹了条狗，巨灵神腹部纹了条蚯蚓。"
             },
             "333": {
@@ -31865,10 +32482,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 3,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 69,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2736,
                 "description": "最近仙界掀起移民狂潮，许多神仙打算移民到西天菩萨那边，据说那里各方面条件都好。当然，这些神仙很快就被玉帝弄死了。"
             },
             "334": {
@@ -31876,10 +32493,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 4,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 69,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2744,
                 "description": "第七届中国好声音冠军鲁一发，演唱曲目《我不是黄蓉》，他撕心裂肺般的嗓音震的几位导师当场休克。他其实是巨灵的化身。"
             },
             "335": {
@@ -31887,10 +32504,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 5,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 69,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2752,
                 "description": "喜马拉雅之神最近打算搬家了，因为喜马拉山每年都在变暖，每年都在变矮，他无法忍受这一状况，但却又无可奈何。"
             },
             "336": {
@@ -31898,10 +32515,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 6,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 70,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2760,
                 "description": "玉帝最近打算改变一下星系的基本规则，让地球绕着月亮转一段时间，老是绕着太阳转，他看着头晕。"
             },
             "337": {
@@ -31909,10 +32526,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 7,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 70,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2768,
                 "description": "天界就神仙该不该吃肉这事请教如来，如来说，荤即是素，素即是荤，何必分清。众仙大喜说那就是可以吃？如来说不可以。"
             },
             "338": {
@@ -31920,10 +32537,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 8,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 70,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2776,
                 "description": "针对近日人间发生的领土争议，玉帝表示其他的我可以不管，但是，钓鱼岛一定是中国的，希望鬼子不要逼他触发天庭之怒。"
             },
             "339": {
@@ -31931,10 +32548,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 9,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 70,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2784,
                 "description": "在足球方面，玉帝对于亚洲近来风头正劲的恒大球队赞赏有加，他说，搞足球就得这么干，猛砸钱，狂砸钱，往死里砸钱。"
             },
             "340": {
@@ -31942,10 +32559,10 @@ var outputTables = {
                 "chapter_id": "那烂陀",
                 "section_id": 10,
                 "section_name": "那烂陀",
-                "points": 38,
+                "points": 70,
                 "power_consume": 5,
                 "exp_obtain": 190,
-                "coins_obtain": 380,
+                "coins_obtain": 2792,
                 "description": "财神手下火焰大仙近日携带近5亿的Q币潜逃至西方极乐世界。这一事件在仙界引起了极大的震动。玉帝批示，务必要彻查此事。"
             },
             "341": {
@@ -31953,10 +32570,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 1,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 71,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2800,
                 "description": "地狱高层最近发生了人事变动，大刑官钟馗被开除。原因是他调戏女鬼。这让阎罗王很恼火，你这TMD是有多饥渴。"
             },
             "342": {
@@ -31964,10 +32581,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 2,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 71,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2808,
                 "description": "仙界工资最高的是玉帝身边的红人太白金星，传闻他一年的工资达到8000多万Q币。"
             },
             "343": {
@@ -31975,10 +32592,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 3,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 71,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2816,
                 "description": "在神仙面前，马克思主义变成了浮云。事实上，当马克思上天之后，他也意识到了确实还存在这么一个纯粹的意识世界。"
             },
             "344": {
@@ -31986,10 +32603,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 4,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 71,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2824,
                 "description": "外星人确实存在，他们经常组团光临天庭，与众神仙讨论修仙之道。"
             },
             "345": {
@@ -31997,10 +32614,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 5,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 71,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2832,
                 "description": "关于宇宙本身是否有寿命这个话题，玉帝的观点是，就算有，宇宙也一定是比我先死。"
             },
             "346": {
@@ -32008,10 +32625,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 6,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 72,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2840,
                 "description": "人间最有手机游戏很火，但大部分都是三国武侠题材。对此玉帝觉得有些恼火，难道神仙的地位人间这些货色都比不上么。"
             },
             "347": {
@@ -32019,10 +32636,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 7,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 72,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2848,
                 "description": "灵异事件其实没那么玄乎，不过是一些还没有被黑白无常收走的孤魂野鬼而已，他们都是善良的鬼，没什么好怕的。"
             },
             "348": {
@@ -32030,10 +32647,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 8,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 72,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2856,
                 "description": "创新对于神仙来说同样重要。比如姜子牙将垂钓的修行方式改为拳击，而二郎神则采用了一种比较休闲的修仙方式，遛狗。"
             },
             "349": {
@@ -32041,10 +32658,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 9,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 72,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2864,
                 "description": "所有神仙中，普通话最差的当属南海仙人，因为他祖籍是海南黎族。他说的话，大家基本都是在猜，都听清楚那是不可能的了。"
             },
             "350": {
@@ -32052,10 +32669,10 @@ var outputTables = {
                 "chapter_id": "生死场",
                 "section_id": 10,
                 "section_name": "生死场",
-                "points": 39,
+                "points": 72,
                 "power_consume": 5,
                 "exp_obtain": 195,
-                "coins_obtain": 390,
+                "coins_obtain": 2872,
                 "description": "太白金星向玉帝建议，以后搞个签到制度，凡是不来上朝的，一律扣Q币。玉帝打了个呵欠说，算了吧，我自己都懒得上朝。"
             },
             "351": {
@@ -32063,10 +32680,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 1,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 73,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2880,
                 "description": "在今年仙界的“下基层，察民情”活动中，北天仙人荣获第一。因为他自从下到凡间之后，就再也没有回来，消失了。"
             },
             "352": {
@@ -32074,10 +32691,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 2,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 73,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2888,
                 "description": "每年七夕，法海都会坐在雷锋塔顶，点上一支香烟，45度角仰望星空，陷入沉思中，为什么许仙喜欢的是白素贞，而不是他。"
             },
             "353": {
@@ -32085,10 +32702,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 3,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 73,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2896,
                 "description": "作为仙界首富，财神赵公明的总资产已经达到了7800亿Q币，这相当于整个人间500年的总产值。"
             },
             "354": {
@@ -32096,10 +32713,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 4,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 73,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2904,
                 "description": "对于人间这些国家领导人，玉帝最欣赏的就是朝鲜金三胖，因为他觉得三胖最特别的地方就在于，他是如此的令人无语。"
             },
             "355": {
@@ -32107,10 +32724,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 5,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 73,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2912,
                 "description": "娱乐圈最近很混乱，二郎神一直蠢蠢欲动，他在想，都这样没有底线没有节操了，干脆让老子下去一次性全给潜了得了。"
             },
             "356": {
@@ -32118,10 +32735,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 6,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 74,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2920,
                 "description": "在观看完今年人间一年一度的世界模特大赛之后，玉帝主要的感受是，都穿那么紧的比基尼，勒的不疼么。"
             },
             "357": {
@@ -32129,10 +32746,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 7,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 74,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2928,
                 "description": "仙界最近很流行整容塑体这一套，毫无疑问，紫衣仙女是最为耀眼的一个。她的三围在整容后成功的变为1-250-1。"
             },
             "358": {
@@ -32140,10 +32757,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 8,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 74,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2936,
                 "description": "日游神最近从人间收集到了许多明星的不雅照。最近他打算在仙界办这样一个展览，名字都想好了，叫：丑陋的人性。"
             },
             "359": {
@@ -32151,10 +32768,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 9,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 74,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2944,
                 "description": "韩剧很热，韩流来袭，众仙女一整个夏天都在思密达中度过。她们尤其喜欢棒子们演戏时的那个噢？噢？的嘟嘴表情。"
             },
             "360": {
@@ -32162,10 +32779,10 @@ var outputTables = {
                 "chapter_id": "龙须地",
                 "section_id": 10,
                 "section_name": "龙须地",
-                "points": 40,
+                "points": 74,
                 "power_consume": 5,
                 "exp_obtain": 200,
-                "coins_obtain": 400,
+                "coins_obtain": 2952,
                 "description": "最近凡间的后羿又传来了消息，由于城管的介入，烧烤摊成功关闭。他思虑良久后，加入了城管组织。"
             },
             "361": {
@@ -32173,10 +32790,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 1,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 75,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 2960,
                 "description": "紫霞仙子不忍看着人间农村众多留守儿童和老人受苦，她将自己的全部法术倾注于人间，护佑这些孩子和老人的健康与快乐。"
             },
             "362": {
@@ -32184,10 +32801,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 2,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 75,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 2968,
                 "description": "二郎神最近出版了一本写真画册，名为《我与哮天犬》。该画册受到了众仙的热捧，因为大家都想知道他们是怎么搞的。"
             },
             "363": {
@@ -32195,10 +32812,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 3,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 75,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 2976,
                 "description": "其实神仙也是有男女之分的，只是这个性别区分度可能没有人间那么高，那么夸张。"
             },
             "364": {
@@ -32206,10 +32823,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 4,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 75,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 2984,
                 "description": "老龙王真的老了，不仅晕船，而且恐高，最近上天那一次，好几次差点从云彩上掉下来。他觉得他应该退休了。"
             },
             "365": {
@@ -32217,10 +32834,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 5,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 75,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 2992,
                 "description": "托塔李天王的那座塔，其实是用东海三太子的皮和筋做成的。"
             },
             "366": {
@@ -32228,10 +32845,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 6,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 76,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 3000,
                 "description": "白素贞并没有被压到雷锋塔下，而是一直住在雷峰塔的顶层，东南朝向，落地窗，全海景，堪称奢侈。"
             },
             "367": {
@@ -32239,10 +32856,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 7,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 76,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 3008,
                 "description": "周星驰很久不拍片了，这让众神仙非常遗憾，昔日的济癫，何时才能够回来呢？"
             },
             "368": {
@@ -32250,10 +32867,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 8,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 76,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 3016,
                 "description": "近日众仙列出了一份最喜欢吃的人间美食。排名前三的分别是山西臊子面，河北驴肉火烧，凉拌黄瓜。"
             },
             "369": {
@@ -32261,10 +32878,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 9,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 76,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 3024,
                 "description": "每年的中秋节，玉帝都会召集众仙前往月宫，大家一起坐在桂树下，吃着烤兔肉，喝着瑶池水，观看嫦娥的精彩演出。"
             },
             "370": {
@@ -32272,10 +32889,10 @@ var outputTables = {
                 "chapter_id": "南华峰",
                 "section_id": 10,
                 "section_name": "南华峰",
-                "points": 41,
+                "points": 76,
                 "power_consume": 5,
                 "exp_obtain": 205,
-                "coins_obtain": 410,
+                "coins_obtain": 3032,
                 "description": "最近仙界莫名其妙的多了许多妖魔鬼魂，玉帝怀疑阎罗王是不是有叛逆之心，想夺他的位子。"
             },
             "371": {
@@ -32283,10 +32900,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 1,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 77,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3040,
                 "description": "牛魔王最近喜得贵子，思虑良久，他最终为这个牛犊子起名为牛牪犇。"
             },
             "372": {
@@ -32294,10 +32911,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 2,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 77,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3048,
                 "description": "人间的后羿近日再传喜讯，他已经成功的结婚了。妻子叫丽丽。"
             },
             "373": {
@@ -32305,10 +32922,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 3,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 77,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3056,
                 "description": "后羿其实并不是他自己的真是名字，那只是一个代号。他真正的名字叫刘德龙。"
             },
             "374": {
@@ -32316,10 +32933,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 4,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 77,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3064,
                 "description": "在忍受了数百年的寂寞苦修后，法海的情愫终于爆发，近日，他高调宣布出柜。"
             },
             "375": {
@@ -32327,10 +32944,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 5,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 77,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3072,
                 "description": "张果老的驴最近产下一驹子，张老喜不胜喜，他为其取名为果果。大家都说果果长的很像张果老。"
             },
             "376": {
@@ -32338,10 +32955,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 6,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 78,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3080,
                 "description": "财神最近受到了玉帝的点名批评。因为他私自下凡在紫荆城中购置了76套四合院，直接使得紫荆城乱了套。"
             },
             "377": {
@@ -32349,10 +32966,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 7,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 78,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3088,
                 "description": "近日传闻雷公有了外遇，电母听到这个消息后，发了疯一样用电锥子戳雷公。若不是众仙阻拦及时，雷公一定被活活戳死。"
             },
             "378": {
@@ -32360,10 +32977,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 8,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 78,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3096,
                 "description": "玉帝最近很喜欢看《舌尖上的中国》这个栏目，他寻思着是不是找个时间组织众仙下凡一趟，按照节目上说的挨个尝一遍。"
             },
             "379": {
@@ -32371,10 +32988,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 9,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 78,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3104,
                 "description": "盘古爷自从开天辟地之后，他便一直在西天苍山沉睡。据说每过一亿年，盘古爷才会睁眼一次。"
             },
             "380": {
@@ -32382,10 +32999,10 @@ var outputTables = {
                 "chapter_id": "黑虎山",
                 "section_id": 10,
                 "section_name": "黑虎山",
-                "points": 42,
+                "points": 78,
                 "power_consume": 5,
                 "exp_obtain": 210,
-                "coins_obtain": 420,
+                "coins_obtain": 3112,
                 "description": "悟空被压在五指山下的时候，唐僧每天都在给他送饭。送了整整五百年的饭，而且每次都是蛋炒饭。悟空已经要吃吐了。"
             },
             "381": {
@@ -32393,10 +33010,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 1,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 79,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3120,
                 "description": "玉帝希望能够推选出一个仙界吉祥物，以此来代表仙界的正义与仁爱。最终大家选出的是王母蟠桃园中的小蝴蝶。"
             },
             "382": {
@@ -32404,10 +33021,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 2,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 79,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3128,
                 "description": "玉帝最近喜欢上了人间的一款叫《英雄联盟》游戏，没事的时候他总会拉上太白金星太上老君一起组队撸两把。"
             },
             "383": {
@@ -32415,10 +33032,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 3,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 79,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3136,
                 "description": "流沙河因为气候干旱，最近已经完全枯干。"
             },
             "384": {
@@ -32426,10 +33043,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 4,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 79,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3144,
                 "description": "南天门守卫最近发现了了一架F117隐形飞机经常在附近晃荡，经过一番激战，南天门守卫重伤。"
             },
             "385": {
@@ -32437,10 +33054,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 5,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 79,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3152,
                 "description": "南海龙宫的蟹黄大将最近在潜水时不幸发生意外，窒息身亡。"
             },
             "386": {
@@ -32448,10 +33065,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 6,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 80,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3160,
                 "description": "关于人间最近发生的法官集体嫖娼事件，众仙的意见是：没什么大惊小怪的，这只是他们的一次正常娱乐活动罢了。"
             },
             "387": {
@@ -32459,10 +33076,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 7,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 80,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3168,
                 "description": "南天仙女最近以你为减肥过度而昏厥数天，醒来以后变成了植物人。"
             },
             "388": {
@@ -32470,10 +33087,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 8,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 80,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3176,
                 "description": "为了更好的化身人间进行民情体察，土行孙打算去蓝翔技校学习一门在人间能真正用得上的技术。"
             },
             "389": {
@@ -32481,10 +33098,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 9,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 80,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3184,
                 "description": "洛神宓妃作为仙界爱爱女神，她从来没有觉得这有什么不妥，因为这原本就是她的修行方式。"
             },
             "390": {
@@ -32492,10 +33109,10 @@ var outputTables = {
                 "chapter_id": "妖风洞",
                 "section_id": 10,
                 "section_name": "妖风洞",
-                "points": 43,
+                "points": 80,
                 "power_consume": 5,
                 "exp_obtain": 215,
-                "coins_obtain": 430,
+                "coins_obtain": 3192,
                 "description": "西楚霸王归天之后，他被玉帝封为仁义武大帝。刘邦归天之后，阎罗王每天都会打上他半个小时。"
             },
             "391": {
@@ -32503,10 +33120,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 1,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 81,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3200,
                 "description": "因为吴刚吃的玉兔太多，嫦娥上诉到了玉帝那里。玉帝叹了口气说，你知道么，他吃的其实不是兔肉，是寂寞，是孤苦。"
             },
             "392": {
@@ -32514,10 +33131,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 2,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 81,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3208,
                 "description": "孙大圣身上的猴毛总共是三千七百六十五根，其实没有我们想象的那么多。他的毛是比较粗硬的那种类型。"
             },
             "393": {
@@ -32525,10 +33142,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 3,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 81,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3216,
                 "description": "筹备多年的北天门工程近日在仙界启动。仙界多年来堵塞的交通将获得有效缓解。"
             },
             "394": {
@@ -32536,10 +33153,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 4,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 81,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3224,
                 "description": "九头鸟因为最近屡犯天规，被处以砍头刑罚，最近被砍的只剩下一颗脑袋了。"
             },
             "395": {
@@ -32547,10 +33164,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 5,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 81,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3232,
                 "description": "夏之妺喜、商之妲己、周之褒姒以及春秋之骊姬，被称为古代四大妖姬。事实上，她们是四姐妹。"
             },
             "396": {
@@ -32558,10 +33175,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 6,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 82,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3240,
                 "description": "张果老的毛驴越来越老，渐渐的已经骑不动了，而小毛驴果果又没有完全长大，这让他很发愁，以后出行骑什么呢？"
             },
             "397": {
@@ -32569,10 +33186,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 7,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 82,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3248,
                 "description": "北海龙王很清楚，美人鱼其实不是上半身人下半身鱼，而是上半身鱼下半身人。"
             },
             "398": {
@@ -32580,10 +33197,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 8,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 82,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3256,
                 "description": "铁扇公主在牛魔王生日那天，下凡去找孙悟空玩去了。不过这是现在牛魔王还不知道。"
             },
             "399": {
@@ -32591,10 +33208,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 9,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 82,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3264,
                 "description": "哪吒的风火轮因为使用频率过高，所以已经被彻底烧坏了，现在基本上也就是当个旱冰鞋来穿。"
             },
             "400": {
@@ -32602,10 +33219,10 @@ var outputTables = {
                 "chapter_id": "大乘愚",
                 "section_id": 10,
                 "section_name": "大乘愚",
-                "points": 44,
+                "points": 82,
                 "power_consume": 5,
                 "exp_obtain": 220,
-                "coins_obtain": 440,
+                "coins_obtain": 3272,
                 "description": "由于人间台风频繁，造成损失过于严重。风神近日被玉帝免职，并打到地狱。"
             },
             "401": {
@@ -32613,10 +33230,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 1,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 83,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3280,
                 "description": "北斗七星君最近打算和七仙女结对子，不过这遭到了王母的反对，她意思是，这事儿啊，动静太大了啊，影响不太好啊。"
             },
             "402": {
@@ -32624,10 +33241,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 2,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 83,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3288,
                 "description": "人间百姓生活苦不堪言，摆不起摊，买不起房，很多人甚至吃不饱饭。玉帝用力吸了一口烟，忍不住陷入深深的沉思之中。"
             },
             "403": {
@@ -32635,10 +33252,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 3,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 83,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3296,
                 "description": "对于凡间里专家盛行的这个事，玉帝的观点是，应该把这事儿告诉阎王，让他在地狱里尽快一次性解决。"
             },
             "404": {
@@ -32646,10 +33263,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 4,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 83,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3304,
                 "description": "沙僧每次在喊大师兄、二师兄，师父被抓走了，心里都想着我的师弟呀，你在哪里。"
             },
             "405": {
@@ -32657,10 +33274,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 5,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 83,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3312,
                 "description": "当年女娲造人只是为了日后天漏了有人可以帮忙补上，而把人分为男女只是为了干活不累。"
             },
             "406": {
@@ -32668,10 +33285,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 6,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 84,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3320,
                 "description": "当年唐僧取经路上有那么多神仙或家属下界为妖，是因为天宫收入太低，他们想下海赚外快。"
             },
             "407": {
@@ -32679,10 +33296,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 7,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 84,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3328,
                 "description": "据说后羿射日的时候，其中一个偷偷给他塞了一大笔钱，所以最后的那个日被留了下来。"
             },
             "408": {
@@ -32690,10 +33307,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 8,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 84,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3336,
                 "description": "王母娘娘好客，每逢佳节，常常宴请各路神仙聚会吃蟠桃、喝茅台，随便收些礼物。"
             },
             "409": {
@@ -32701,10 +33318,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 9,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 84,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3344,
                 "description": "百花仙子对每种花都再熟悉不过了，不管是桃花荷花，还是牡丹兰花，抑或是菊花。"
             },
             "410": {
@@ -32712,10 +33329,10 @@ var outputTables = {
                 "chapter_id": "普陀寺",
                 "section_id": 10,
                 "section_name": "普陀寺",
-                "points": 45,
+                "points": 84,
                 "power_consume": 5,
                 "exp_obtain": 225,
-                "coins_obtain": 450,
+                "coins_obtain": 3352,
                 "description": "由于唐僧有恐高症，所以观音要求龙王三太子不能变成龙，只能变成马。"
             },
             "411": {
@@ -32723,10 +33340,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 1,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 85,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3360,
                 "description": "97号草的价格一升再升，唐僧压力特别大，所以他到处游说，想方设法想把他的宝贵坐骑白龙马给出售了。"
             },
             "412": {
@@ -32734,10 +33351,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 2,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 85,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3368,
                 "description": "唐僧他们去西天是为了上访，想让玉帝下台，所以一路上玉帝派了各路神仙装成妖魔鬼怪进行阻挠。"
             },
             "413": {
@@ -32745,10 +33362,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 3,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 85,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3376,
                 "description": "有小道消息称，愚公把花果山移走了，不过不知道移到了什么地方，这个可能是天庭机密吧，不宜对外公开。"
             },
             "414": {
@@ -32756,10 +33373,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 4,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 85,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3384,
                 "description": "猪八戒和高俅是一对好基友，猪八戒随唐僧去西天取经后，高俅趁机将高老庄强行占为己有，并改名为高老庄。"
             },
             "415": {
@@ -32767,10 +33384,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 5,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 85,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3392,
                 "description": "玉帝觉得天庭的市容市貌越来越差，所以他决定再组建一支城管部队，这次由二郎神担任队长，哮天犬担任副队长。"
             },
             "416": {
@@ -32778,10 +33395,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 6,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 86,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3400,
                 "description": "雷公是A型血，电母是B型血，所以每天晚上电母都睡的很香，而雷公则被蚊子叮的完全睡不着，这就是血型的魅力。"
             },
             "417": {
@@ -32789,10 +33406,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 7,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 86,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3408,
                 "description": "因为长年久坐龙椅，玉帝经常大腿发麻，医仙说他这是腰间盘突出，脊椎压住神经了，需要做手术动刀子才行。"
             },
             "418": {
@@ -32800,10 +33417,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 8,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 86,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3416,
                 "description": "由于憋了数百年了，能量过大。所以人间的后羿近日腰疼的厉害，医生说悠着点兄弟，别太猛了，肾快被你搞烂了。"
             },
             "419": {
@@ -32811,10 +33428,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 9,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 86,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3424,
                 "description": "一个月的时间，土行孙的身高由之前的0.5米暴增到1.7米，这让他喜极而泣。憋了数千年了，终于TMD开始正常发育了。"
             },
             "420": {
@@ -32822,10 +33439,10 @@ var outputTables = {
                 "chapter_id": "三界门",
                 "section_id": 10,
                 "section_name": "三界门",
-                "points": 46,
+                "points": 86,
                 "power_consume": 5,
                 "exp_obtain": 230,
-                "coins_obtain": 460,
+                "coins_obtain": 3432,
                 "description": "因为长的太高，巨灵神的膝盖终于不堪重负，他近日患上了严重的关节炎，医仙说他很有可能整个下体坏死。"
             },
             "421": {
@@ -32833,10 +33450,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 1,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 87,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3440,
                 "description": "由于气候反常，牡丹仙子的牡丹园里，所有花一眼之间全部变成了向日葵。仙子坐在园子里，忍不住流下了伤心的泪水。"
             },
             "422": {
@@ -32844,10 +33461,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 2,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 87,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3448,
                 "description": "菩提老祖被视为仙界里最没有节操的一个神仙，原因不详。"
             },
             "423": {
@@ -32855,10 +33472,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 3,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 87,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3456,
                 "description": "由于品性端庄，尔雅大方。嫦娥仙子最近被玉帝任命为天庭德育大队辅导员，专门负责神仙们的心理健康。"
             },
             "424": {
@@ -32866,10 +33483,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 4,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 87,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3464,
                 "description": "近日人间传出干露露和她娘以及她妹干毛毛三人共吃香蕉的照片，这让众仙大开眼界，连如来都忍不住赞了一句，真猛。"
             },
             "425": {
@@ -32877,10 +33494,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 5,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 87,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3472,
                 "description": "在近日的仙术结业考试中，托塔天王作弊被发现，玉帝雷霆震怒，剥脱他天王的称号，并没收了他的天塔神器。"
             },
             "426": {
@@ -32888,10 +33505,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 6,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 88,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3480,
                 "description": "云中子是仙界最擅炼器之人，番天印、捆仙绳、风火轮等大名鼎鼎的道具都曾被仿制过，他算得上是盗版的始祖。"
             },
             "427": {
@@ -32899,10 +33516,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 7,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 88,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3488,
                 "description": "生活的压力越来越大，仙界中的单身越来越多了，房子，车子，妻子都已经成为了他们生命中无法承受之重。"
             },
             "428": {
@@ -32910,10 +33527,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 8,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 88,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3496,
                 "description": "最近人间重走西天路的这个旅游路线很火。悟空看的又想哭又想笑，人的想法，他真的猜不透耶。"
             },
             "429": {
@@ -32921,10 +33538,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 9,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 88,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3504,
                 "description": "守望在奈何桥边的孟婆近日提出离职，看过了人间太多的生死悲欢与离合，她的内心已无法承受这份沉重。"
             },
             "430": {
@@ -32932,10 +33549,10 @@ var outputTables = {
                 "chapter_id": "七尘斋",
                 "section_id": 10,
                 "section_name": "七尘斋",
-                "points": 47,
+                "points": 88,
                 "power_consume": 5,
                 "exp_obtain": 235,
-                "coins_obtain": 470,
+                "coins_obtain": 3512,
                 "description": "泰森近日受邀上天参加第二届神仙拳击大赛，在被问到夺冠后的感触时，泰森微微一笑说，shit，so easy。"
             },
             "431": {
@@ -32943,10 +33560,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 1,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 89,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3520,
                 "description": "人类福音苍井空近日受邀上天做客，并在宴席上进行了现场演示。演示完毕后，众仙做了简单点评并对苍姐提出了更高的要求。"
             },
             "432": {
@@ -32954,10 +33571,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 2,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 89,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3528,
                 "description": "南极仙翁的那只仙鹤最近掉毛掉的很厉害，太上老君看过之后说，这是精气过盛所导致，它需要发泄。"
             },
             "433": {
@@ -32965,10 +33582,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 3,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 89,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3536,
                 "description": "哮天犬近日成功产下一小狗崽，而且还是公的。二郎神狂喜之余，为其取名为杨哮天。"
             },
             "434": {
@@ -32976,10 +33593,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 4,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 89,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3544,
                 "description": "济公其实并非什么降龙尊者，事实上连罗汉都不是，他其实是天界掌管雨的大神，俗称雨师。"
             },
             "435": {
@@ -32987,10 +33604,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 5,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 89,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3552,
                 "description": "仙界英文说的最好的是太乙真人，据说他已经过了专8了，托福雅思都是满分。"
             },
             "436": {
@@ -32998,10 +33615,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 6,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 90,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3560,
                 "description": "太乙真人是仙界英文说的最好的神仙，但最具语言天赋的却是嫦娥仙子。所有的人语，鸟语，她都懂。这都是寂寞的苦劳。"
             },
             "437": {
@@ -33009,10 +33626,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 7,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 90,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3568,
                 "description": "由于长年累月的战斗不息，刑天战神近日终于病倒了。太上老君说了，没别的，就是累的。"
             },
             "438": {
@@ -33020,10 +33637,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 8,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 90,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3576,
                 "description": "沉香当年劈山救母的时候，悟空其实是有帮助的，否则以沉香的力量，尚不足以劈开华山的。"
             },
             "439": {
@@ -33031,10 +33648,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 9,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 90,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3584,
                 "description": "有人说沉香当年劈山救母的斧头，就是盘古爷当年开天辟地的那把。这是真的。"
             },
             "440": {
@@ -33042,10 +33659,10 @@ var outputTables = {
                 "chapter_id": "众生琅",
                 "section_id": 10,
                 "section_name": "众生琅",
-                "points": 48,
+                "points": 90,
                 "power_consume": 5,
                 "exp_obtain": 240,
-                "coins_obtain": 480,
+                "coins_obtain": 3592,
                 "description": "人间传说中的四不像神兽，它的原型是天上的风神箕伯。虽长相奇特，人面鸟身，但作为蚩尤大帝的师弟，他的地位极其尊贵。"
             },
             "441": {
@@ -33053,10 +33670,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 1,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 91,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3600,
                 "description": "因为过度嗜酒，铁拐李得了肝硬化，并最终导致下半身彻底瘫痪。于是他告别了随他多年的铁拐，坐上了轮椅。"
             },
             "442": {
@@ -33064,10 +33681,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 2,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 91,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3608,
                 "description": "由于常年不和，八仙近日发布天庭通告：我们散伙了。"
             },
             "443": {
@@ -33075,10 +33692,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 3,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 91,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3616,
                 "description": "作为天蓬元帅，八戒当年是主管银河的，而且他性侵嫦娥也不是一次两次了。只不过凌霄殿那次不幸被玉帝看到了而已。"
             },
             "444": {
@@ -33086,10 +33703,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 4,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 91,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3624,
                 "description": "在砍了八万年的桂树之后，吴刚近日终于向玉帝提出，要下凡去疯狂的发泄。他说，我无法忍受这份煎熬了，我已经到极限了。"
             },
             "445": {
@@ -33097,10 +33714,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 5,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 91,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3632,
                 "description": "近日被批准下凡的吴刚传来了消息，一夜之间，他踏遍了人间的夜总会KTV按摩店，他让所有的姐妹们彻底虚脱。"
             },
             "446": {
@@ -33108,10 +33725,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 6,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 92,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3640,
                 "description": "对于吴刚近日在人间所取得的成绩，爱爱女神洛神宓妃大感震惊。她表示，等刚哥上来了一定要与他战个三天三夜。"
             },
             "447": {
@@ -33119,10 +33736,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 7,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 92,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3648,
                 "description": "仙界最近天气炎热，大家提议一起到银河系来个集体裸游，让嫦娥仙子为大家当场示范28个裸游动作。玉帝当场拍板表示赞成。"
             },
             "448": {
@@ -33130,10 +33747,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 8,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 92,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3656,
                 "description": "在近日举行的第27届天庭马拉松大赛中，北天仙童一头栽倒在终点线上，成为了仙界第一位牺牲在长跑线上的神仙。"
             },
             "449": {
@@ -33141,10 +33758,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 9,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 92,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3664,
                 "description": "神仙中QQ号码最多的是黑煞神，他最大的爱好就是注册QQ，每天没事就在那疯狂的注册号码。这一度导致腾讯的服务器崩溃。"
             },
             "450": {
@@ -33152,10 +33769,10 @@ var outputTables = {
                 "chapter_id": "万年羲",
                 "section_id": 10,
                 "section_name": "万年羲",
-                "points": 49,
+                "points": 92,
                 "power_consume": 5,
                 "exp_obtain": 245,
-                "coins_obtain": 490,
+                "coins_obtain": 3672,
                 "description": "神仙中QQ号码最牛的是二郎神，他的QQ号是：888，可以说是QQ号中的元老号，而且让如来佛开过光。不过最近被人盗了。"
             },
             "451": {
@@ -33163,10 +33780,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 1,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 93,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3680,
                 "description": "作为仙界块头最大也最丑的大神，巨灵神近日也有了自己的女神：地狱八婆，作为定情礼，巨灵神送了她一枚八百克拉的钻戒。"
             },
             "452": {
@@ -33174,10 +33791,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 2,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 93,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3688,
                 "description": "作为第一位拥有iphone手机的神仙，九天杀童一直没有告诉大家，其实这是乔布斯亲自送给他的见面礼物。"
             },
             "453": {
@@ -33185,10 +33802,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 3,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 93,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3696,
                 "description": "菩萨近日主持召开了一次天庭祈福大会，为苦难的人间百姓送去平安，送去健康，送去福分。人们啊，过的真的是太不容易了。"
             },
             "454": {
@@ -33196,10 +33813,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 4,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 93,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3704,
                 "description": "黄飞虎近日下凡后悲哀的发现，作为万兽之王，他的徒子徒孙已经濒临灭绝。于是他不禁的悲声大哭了整整一天一夜。"
             },
             "455": {
@@ -33207,10 +33824,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 5,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 93,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3712,
                 "description": "托塔天王最新打造的天塔十分的霸气威武，而且更重要的是，这塔是佛祖开过光的。"
             },
             "456": {
@@ -33218,10 +33835,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 6,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 94,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3720,
                 "description": "“没有人想操你的内在美，和一个男人讲内涵，不如直接告诉他你允许内射更有吸引力。”这是爱爱女神洛神宓妃的口头禅。"
             },
             "457": {
@@ -33229,10 +33846,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 7,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 94,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3728,
                 "description": "作为昔日佛祖修行过的地方，五华山成为凡间百姓心中的朝拜圣地，他们在山脚下三步一跪拜，祈求佛祖能够为他带来安宁。"
             },
             "458": {
@@ -33240,10 +33857,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 8,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 94,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3736,
                 "description": "由于地球板块运动过于剧烈，火焰山早在上个世纪就变成了汪洋大海。"
             },
             "459": {
@@ -33251,10 +33868,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 9,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 94,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3744,
                 "description": "许多人都在议论悟空铁扇公主以及牛魔王之间的关系，但这一切其实都是那么的荒唐无聊。铁扇公主爱的从来都是那头老牛。"
             },
             "460": {
@@ -33262,10 +33879,10 @@ var outputTables = {
                 "chapter_id": "玲珑痷",
                 "section_id": 10,
                 "section_name": "玲珑痷",
-                "points": 50,
+                "points": 94,
                 "power_consume": 5,
                 "exp_obtain": 250,
-                "coins_obtain": 500,
+                "coins_obtain": 3752,
                 "description": "想到人间众多受苦受难的孤儿，王母总会忍不住黯然伤神。她纵然可以降福与这些可怜的孩子，也无法改变人性的那份冷漠。"
             },
             "461": {
@@ -33273,10 +33890,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 1,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 95,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3760,
                 "description": "八戒抚摸着床边的九齿钉钯，充满感伤。五年前他就很难挥得动这神器了。其实无论是人还是神，终究都会有老去的那一天。"
             },
             "462": {
@@ -33284,10 +33901,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 2,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 95,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3768,
                 "description": "取经归来之后，唐僧师徒四人就各奔东西。只有在每年的八月十五，他们才会聚在花果山，把酒笑言，畅谈昔日西天取经之事。"
             },
             "463": {
@@ -33295,10 +33912,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 3,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 95,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3776,
                 "description": "天聋地哑两位大仙作为人间众生的天父和地母，其实他们既不聋也不哑，而且在仙界位极尊贵。"
             },
             "464": {
@@ -33306,10 +33923,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 4,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 95,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3784,
                 "description": "极光大仙的武器是一把激光刀。这刀是大仙最近下凡时从人民医院里拿走的，经过开光，这刀成为仙界最为锋利的神器。"
             },
             "465": {
@@ -33317,10 +33934,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 5,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 95,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3792,
                 "description": "人间总喜欢把寺庙里供奉的十八罗汉雕刻的面目狰狞，其实众罗汉皆是眉清目秀之人，尤其是笑面罗汉，长的很像布拉德皮特。"
             },
             "466": {
@@ -33328,10 +33945,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 6,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 96,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3800,
                 "description": "雷震子最近染上了毒瘾，每天都要吸几百公斤大麻。每次吸完之后，他都会仰天长啸，这真是太TM爽了，果然是飘飘欲仙啊。"
             },
             "467": {
@@ -33339,10 +33956,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 7,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 96,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3808,
                 "description": "没有人能够理解五音仙子对音乐的狂热。在她看来，好的音乐不仅仅是一种声音，更是发自灵魂深处的一种低语，一种回音。"
             },
             "468": {
@@ -33350,10 +33967,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 8,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 96,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3816,
                 "description": "当上海的法官们想拼命甩掉＂嫖客＂身份的时候，李双江梦鸽夫妇在竭力为孩子争取一个＂嫖客＂的名份! 人活着要知足。"
             },
             "469": {
@@ -33361,10 +33978,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 9,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 96,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3824,
                 "description": "哮天犬的狗崽，羊角大仙的羊羊羊，牛魔王的牛牪犇，因为关系一直很好，所以前些日子它们结为了盟兄弟。"
             },
             "470": {
@@ -33372,10 +33989,10 @@ var outputTables = {
                 "chapter_id": "相生殿",
                 "section_id": 10,
                 "section_name": "相生殿",
-                "points": 51,
+                "points": 96,
                 "power_consume": 5,
                 "exp_obtain": 255,
-                "coins_obtain": 510,
+                "coins_obtain": 3832,
                 "description": "因为同样的酷爱音乐，九天杀童与土行孙最近组成了一个乐队，叫“暴力火车”，主打民族风。"
             },
             "471": {
@@ -33383,10 +34000,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 1,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 97,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3840,
                 "description": "UFO近日途径南天门时与南天门神发生了纠纷，双方展开了一番激战，最后以南天门神一脚将UFO踩个稀巴烂而告终。"
             },
             "472": {
@@ -33394,10 +34011,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 2,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 97,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3848,
                 "description": "包二奶，找情人是道德问题，卖淫嫖娼就是违法行为。难道结账方式就真的这么重要么。天尊对人间的这些事越来越看不懂了。"
             },
             "473": {
@@ -33405,10 +34022,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 3,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 97,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3856,
                 "description": "为了更好的研究女性心理，吴刚与牛郎以及托塔李天王成立了一家专门的研究机构，名为“妇女之夜”。"
             },
             "474": {
@@ -33416,10 +34033,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 4,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 97,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3864,
                 "description": "洞庭仙人永远都无法忘记昔日在凡间与那帮难兄难弟走过的日子。苦难，能够让人铭记。"
             },
             "475": {
@@ -33427,10 +34044,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 5,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 97,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3872,
                 "description": "凡人问，为何我烦恼多。佛祖说，你没放下。凡人问怎样才能放下，佛祖说，修仙。凡人说可我修不成啊，佛祖说，那算了。"
             },
             "476": {
@@ -33438,10 +34055,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 6,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 98,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3880,
                 "description": "对于人间的艺术品，二郎神最欣赏的只有两个，一个是达芬奇的《蒙娜丽莎》。另外一个是动画片《黑猫警长》。"
             },
             "477": {
@@ -33449,10 +34066,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 7,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 98,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3888,
                 "description": "为什么神仙都能飘着走呢？一些人认为，神仙的鞋里有机关！所以他们管修仙也叫修鞋，联盟的人对此种说法表示很费解。"
             },
             "478": {
@@ -33460,10 +34077,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 8,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 98,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3896,
                 "description": "从前有座山，山里有座庙，庙里有台电脑，电脑前面做了一位程序猿，叫阿日隆~"
             },
             "479": {
@@ -33471,10 +34088,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 9,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 98,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3904,
                 "description": "孙悟空：“听说下界最近出现了一个新的战斗种族，叫程序猿？不知是不是从我大花果山跑出去的，战斗力跟俺比起来怎样？”"
             },
             "480": {
@@ -33482,10 +34099,10 @@ var outputTables = {
                 "chapter_id": "罗汉堂",
                 "section_id": 10,
                 "section_name": "罗汉堂",
-                "points": 52,
+                "points": 98,
                 "power_consume": 5,
                 "exp_obtain": 260,
-                "coins_obtain": 520,
+                "coins_obtain": 3912,
                 "description": "猪八戒：“最近怎么老有那么多人喊，要成为火影的男人，要成为海贼王的男人？脑残么，俺只要成为白富美的男人。"
             },
             "481": {
@@ -33493,10 +34110,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 1,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 99,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3920,
                 "description": "知道道教三观是哪三观么？人生观，世界观，价值观！"
             },
             "482": {
@@ -33504,10 +34121,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 2,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 99,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3928,
                 "description": "铁扇公主：“告诉你们多少次了，不要叫我牛夫人，叫我公主大人！”"
             },
             "483": {
@@ -33515,10 +34132,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 3,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 99,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3936,
                 "description": "近日人间对微博上的大V开始了严格的整顿。为了避免节外生枝，玉帝带领众仙集体封博，返回天庭。"
             },
             "484": {
@@ -33526,10 +34143,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 4,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 99,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3944,
                 "description": "华山老仙在近日登山的时候不慎从山顶一直滚到山脚，造成了全身粉碎性骨折。玉帝看了后叹了口气说，让阎王收了吧。"
             },
             "485": {
@@ -33537,10 +34154,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 5,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 99,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3952,
                 "description": "作为昔日在人间一起嫖过的炮友，吴刚与后羿之间有着一种我们常人难以理解的情感，他们是真兄弟。"
             },
             "486": {
@@ -33548,10 +34165,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 6,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 100,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3960,
                 "description": "没有人可以理解嫦娥独守广寒宫的那种寂寞与煎熬，甚至包括嫦娥自己，她也一直在问自己，这样的坚持还有意义吗？"
             },
             "487": {
@@ -33559,10 +34176,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 7,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 100,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3968,
                 "description": "最近二郎神跟巨灵神在讨论要不要灭了人间大学，重铸教育制度。理由是，上大学简直就是在浪费生命。"
             },
             "488": {
@@ -33570,10 +34187,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 8,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 100,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3976,
                 "description": "为了节约开支，财神最近制定了一条新规：神仙到人间出差，差旅费一律不能超过300Q币，否则不给报。"
             },
             "489": {
@@ -33581,10 +34198,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 9,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 100,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3984,
                 "description": "在连续通宵加班两周之后，木瓜道长终于猝死在了岗位上，这引起玉帝的高度重视，他随即颁布了新规：不准把人加班加死。"
             },
             "490": {
@@ -33592,10 +34209,10 @@ var outputTables = {
                 "chapter_id": "七仙居",
                 "section_id": 10,
                 "section_name": "七仙居",
-                "points": 53,
+                "points": 100,
                 "power_consume": 5,
                 "exp_obtain": 265,
-                "coins_obtain": 530,
+                "coins_obtain": 3992,
                 "description": "作为战斗力最高的大神，九天杀童的绝招是：玉石俱焚。所以玉帝经常跟众仙说别惹他，他的绝杀我们是惹不起的。"
             },
             "491": {
@@ -33603,10 +34220,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 1,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 101,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4000,
                 "description": "作为南天门的守护天神，哼哈二将数千年如一日，始终在忠心耿耿的看守着仙界大门。他们无愧于仙界劳模这个光荣称号。"
             },
             "492": {
@@ -33614,10 +34231,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 2,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 101,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4008,
                 "description": "近日西天菩萨全家来到天庭做客，玉帝以全羊宴进行款待。羊角大仙吃的泪流满面。"
             },
             "493": {
@@ -33625,10 +34242,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 3,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 101,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4016,
                 "description": "牛魔王最爱吃的东西，就是牛肉，尤其是爆炒牛肝。"
             },
             "494": {
@@ -33636,10 +34253,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 4,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 101,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4024,
                 "description": "在出嫁女儿猪小小的那一天，八戒哭成了泪人。他到现在才真正懂得了什么才是心痛的感觉。"
             },
             "495": {
@@ -33647,10 +34264,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 5,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 101,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4032,
                 "description": "有时候坐在花果山顶，看着身边众多的小猴儿嬉戏玩耍，不知道为什么，悟空总有一种寂寞萧索的感觉。也许他真的已经老了。"
             },
             "496": {
@@ -33658,10 +34275,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 6,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 102,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4040,
                 "description": "针对牛郎最近的出轨事件，众神仙一致的意见是，极度正常。对岸放着那么好的一个媳妇，一年才能见一次面，换谁都抓狂。"
             },
             "497": {
@@ -33669,10 +34286,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 7,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 102,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4048,
                 "description": "在人间的年轻作家中，二郎神最欣赏的是郭敬明和韩寒，他也一直幻想着这两个小青年有朝一日能够出柜。"
             },
             "498": {
@@ -33680,10 +34297,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 8,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 102,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4056,
                 "description": "作为最失败的房奴，海灵子近日跳海自尽。他那一套五十多平的单身公寓，迄今为止还了三万年的贷款，接下来还要还五万年。"
             },
             "499": {
@@ -33691,10 +34308,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 9,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 102,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4064,
                 "description": "看着窗外桂树下吴刚孤独的背影，嫦娥突然间产生了一丝的迷惘。两人这么多年来的苦苦坚持，到底有何意义呢？"
             },
             "500": {
@@ -33702,10 +34319,10 @@ var outputTables = {
                 "chapter_id": "封神山",
                 "section_id": 10,
                 "section_name": "封神山",
-                "points": 54,
+                "points": 102,
                 "power_consume": 5,
                 "exp_obtain": 270,
-                "coins_obtain": 540,
+                "coins_obtain": 4072,
                 "description": "神仙和人类一样，有生有死，有爱有恨，有高贵也有卑微，有欢笑也有泪水。他们和我们唯一的区别是，他们生活在天上。"
             }
         }
@@ -33842,8 +34459,8 @@ var outputTables = {
             "10011": {
                 "id": 10011,
                 "card_id": "野猪妖",
-                "atk": 110,
-                "hp": 170,
+                "atk": 200,
+                "hp": 520,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -33853,8 +34470,8 @@ var outputTables = {
             "10012": {
                 "id": 10012,
                 "card_id": "猩猩巨魔",
-                "atk": 110,
-                "hp": 170,
+                "atk": 235,
+                "hp": 555,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 7,
@@ -33864,8 +34481,8 @@ var outputTables = {
             "10013": {
                 "id": 10013,
                 "card_id": "猴儿精",
-                "atk": 115,
-                "hp": 175,
+                "atk": 270,
+                "hp": 575,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -33875,8 +34492,8 @@ var outputTables = {
             "10014": {
                 "id": 10014,
                 "card_id": "巨蟒怪",
-                "atk": 115,
-                "hp": 175,
+                "atk": 305,
+                "hp": 595,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 4,
@@ -33886,8 +34503,8 @@ var outputTables = {
             "10015": {
                 "id": 10015,
                 "card_id": "地狱小鬼",
-                "atk": 115,
-                "hp": 175,
+                "atk": 340,
+                "hp": 615,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 9,
@@ -33897,8 +34514,8 @@ var outputTables = {
             "10016": {
                 "id": 10016,
                 "card_id": "狮子怪",
-                "atk": 125,
-                "hp": 230,
+                "atk": 375,
+                "hp": 635,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 6,
@@ -33908,8 +34525,8 @@ var outputTables = {
             "10017": {
                 "id": 10017,
                 "card_id": "蚊子怪",
-                "atk": 125,
-                "hp": 230,
+                "atk": 410,
+                "hp": 655,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 2,
@@ -33919,8 +34536,8 @@ var outputTables = {
             "10018": {
                 "id": 10018,
                 "card_id": "火焰怪",
-                "atk": 149,
-                "hp": 260,
+                "atk": 445,
+                "hp": 675,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 3,
@@ -33930,8 +34547,8 @@ var outputTables = {
             "10019": {
                 "id": 10019,
                 "card_id": "河童怪",
-                "atk": 149,
-                "hp": 260,
+                "atk": 480,
+                "hp": 695,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 5,
@@ -33941,8 +34558,8 @@ var outputTables = {
             "10020": {
                 "id": 10020,
                 "card_id": "独角兽",
-                "atk": 149,
-                "hp": 260,
+                "atk": 515,
+                "hp": 715,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 10,
@@ -33952,8 +34569,8 @@ var outputTables = {
             "10021": {
                 "id": 10021,
                 "card_id": "人鱼怪",
-                "atk": 163,
-                "hp": 350,
+                "atk": 600,
+                "hp": 900,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -33963,8 +34580,8 @@ var outputTables = {
             "10022": {
                 "id": 10022,
                 "card_id": "巨齿狼王",
-                "atk": 163,
-                "hp": 350,
+                "atk": 600,
+                "hp": 1100,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 7,
@@ -33974,8 +34591,8 @@ var outputTables = {
             "10023": {
                 "id": 10023,
                 "card_id": "双头牛怪",
-                "atk": 163,
-                "hp": 350,
+                "atk": 600,
+                "hp": 1200,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -33985,8 +34602,8 @@ var outputTables = {
             "10024": {
                 "id": 10024,
                 "card_id": "长矛鼠怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1300,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 4,
@@ -33996,8 +34613,8 @@ var outputTables = {
             "10025": {
                 "id": 10025,
                 "card_id": "小狗怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1400,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 9,
@@ -34007,8 +34624,8 @@ var outputTables = {
             "10026": {
                 "id": 10026,
                 "card_id": "大狗怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1500,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 6,
@@ -34018,8 +34635,8 @@ var outputTables = {
             "10027": {
                 "id": 10027,
                 "card_id": "蝙蝠怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1500,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 2,
@@ -34029,8 +34646,8 @@ var outputTables = {
             "10028": {
                 "id": 10028,
                 "card_id": "蟠桃怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1500,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 3,
@@ -34040,8 +34657,8 @@ var outputTables = {
             "10029": {
                 "id": 10029,
                 "card_id": "僵尸怪",
-                "atk": 163,
-                "hp": 409,
+                "atk": 600,
+                "hp": 1500,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 5,
@@ -34051,8 +34668,8 @@ var outputTables = {
             "10030": {
                 "id": 10030,
                 "card_id": "宫灯怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 600,
+                "hp": 1500,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 10,
@@ -34062,8 +34679,8 @@ var outputTables = {
             "10031": {
                 "id": 10031,
                 "card_id": "挂科怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 700,
+                "hp": 1800,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -34073,8 +34690,8 @@ var outputTables = {
             "10032": {
                 "id": 10032,
                 "card_id": "自习怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 720,
+                "hp": 1840,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 7,
@@ -34084,8 +34701,8 @@ var outputTables = {
             "10033": {
                 "id": 10033,
                 "card_id": "灯笼怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 740,
+                "hp": 1880,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 1,
@@ -34095,8 +34712,8 @@ var outputTables = {
             "10034": {
                 "id": 10034,
                 "card_id": "龅牙兔",
-                "atk": 179,
-                "hp": 448,
+                "atk": 760,
+                "hp": 1920,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 4,
@@ -34106,8 +34723,8 @@ var outputTables = {
             "10035": {
                 "id": 10035,
                 "card_id": "乌龟精",
-                "atk": 179,
-                "hp": 448,
+                "atk": 780,
+                "hp": 1960,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 9,
@@ -34117,8 +34734,8 @@ var outputTables = {
             "10036": {
                 "id": 10036,
                 "card_id": "卖茶怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 800,
+                "hp": 2000,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 6,
@@ -34128,8 +34745,8 @@ var outputTables = {
             "10037": {
                 "id": 10037,
                 "card_id": "白骨精",
-                "atk": 179,
-                "hp": 448,
+                "atk": 820,
+                "hp": 2040,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 2,
@@ -34139,8 +34756,8 @@ var outputTables = {
             "10038": {
                 "id": 10038,
                 "card_id": "蛤蟆怪",
-                "atk": 179,
-                "hp": 448,
+                "atk": 840,
+                "hp": 2080,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 3,
@@ -34150,8 +34767,8 @@ var outputTables = {
             "10039": {
                 "id": 10039,
                 "card_id": "树精",
-                "atk": 179,
-                "hp": 448,
+                "atk": 860,
+                "hp": 2120,
                 "dodge_rate": 0,
                 "crit_rate": 0,
                 "skill_id": 5,
@@ -34161,8 +34778,8 @@ var outputTables = {
             "10040": {
                 "id": 10040,
                 "card_id": "黑熊精",
-                "atk": 196,
-                "hp": 491,
+                "atk": 890,
+                "hp": 2170,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34172,8 +34789,8 @@ var outputTables = {
             "10041": {
                 "id": 10041,
                 "card_id": "狐狸精",
-                "atk": 196,
-                "hp": 491,
+                "atk": 920,
+                "hp": 2220,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34183,8 +34800,8 @@ var outputTables = {
             "10042": {
                 "id": 10042,
                 "card_id": "水晶魔灵",
-                "atk": 196,
-                "hp": 491,
+                "atk": 950,
+                "hp": 2270,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34194,8 +34811,8 @@ var outputTables = {
             "10043": {
                 "id": 10043,
                 "card_id": "大脸猫妖",
-                "atk": 196,
-                "hp": 491,
+                "atk": 980,
+                "hp": 2310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34205,8 +34822,8 @@ var outputTables = {
             "10044": {
                 "id": 10044,
                 "card_id": "野猪妖",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1010,
+                "hp": 2360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34216,8 +34833,8 @@ var outputTables = {
             "10045": {
                 "id": 10045,
                 "card_id": "猩猩巨魔",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1040,
+                "hp": 2410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34227,8 +34844,8 @@ var outputTables = {
             "10046": {
                 "id": 10046,
                 "card_id": "猴儿精",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1070,
+                "hp": 2460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34238,8 +34855,8 @@ var outputTables = {
             "10047": {
                 "id": 10047,
                 "card_id": "巨蟒怪",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1100,
+                "hp": 2510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34249,8 +34866,8 @@ var outputTables = {
             "10048": {
                 "id": 10048,
                 "card_id": "地狱小鬼",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1130,
+                "hp": 2560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34260,8 +34877,8 @@ var outputTables = {
             "10049": {
                 "id": 10049,
                 "card_id": "狮子怪",
-                "atk": 196,
-                "hp": 491,
+                "atk": 1160,
+                "hp": 2610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34271,8 +34888,8 @@ var outputTables = {
             "10050": {
                 "id": 10050,
                 "card_id": "蚊子怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1190,
+                "hp": 2660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34282,8 +34899,8 @@ var outputTables = {
             "10051": {
                 "id": 10051,
                 "card_id": "火焰怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1220,
+                "hp": 2710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34293,8 +34910,8 @@ var outputTables = {
             "10052": {
                 "id": 10052,
                 "card_id": "河童怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1250,
+                "hp": 2760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34304,8 +34921,8 @@ var outputTables = {
             "10053": {
                 "id": 10053,
                 "card_id": "独角兽",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1280,
+                "hp": 2810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34315,8 +34932,8 @@ var outputTables = {
             "10054": {
                 "id": 10054,
                 "card_id": "人鱼怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1310,
+                "hp": 2860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34326,8 +34943,8 @@ var outputTables = {
             "10055": {
                 "id": 10055,
                 "card_id": "巨齿狼王",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1340,
+                "hp": 2910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34337,8 +34954,8 @@ var outputTables = {
             "10056": {
                 "id": 10056,
                 "card_id": "双头牛怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1370,
+                "hp": 2960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34348,8 +34965,8 @@ var outputTables = {
             "10057": {
                 "id": 10057,
                 "card_id": "长矛鼠怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1400,
+                "hp": 3010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34359,8 +34976,8 @@ var outputTables = {
             "10058": {
                 "id": 10058,
                 "card_id": "小狗怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1430,
+                "hp": 3060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34370,8 +34987,8 @@ var outputTables = {
             "10059": {
                 "id": 10059,
                 "card_id": "大狗怪",
-                "atk": 215,
-                "hp": 538,
+                "atk": 1460,
+                "hp": 3110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34381,8 +34998,8 @@ var outputTables = {
             "10060": {
                 "id": 10060,
                 "card_id": "蝙蝠怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1490,
+                "hp": 3160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34392,8 +35009,8 @@ var outputTables = {
             "10061": {
                 "id": 10061,
                 "card_id": "蟠桃怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1520,
+                "hp": 3210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34403,8 +35020,8 @@ var outputTables = {
             "10062": {
                 "id": 10062,
                 "card_id": "僵尸怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1550,
+                "hp": 3260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34414,8 +35031,8 @@ var outputTables = {
             "10063": {
                 "id": 10063,
                 "card_id": "宫灯怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1580,
+                "hp": 3310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34425,8 +35042,8 @@ var outputTables = {
             "10064": {
                 "id": 10064,
                 "card_id": "挂科怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1610,
+                "hp": 3360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34436,8 +35053,8 @@ var outputTables = {
             "10065": {
                 "id": 10065,
                 "card_id": "自习怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1640,
+                "hp": 3410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34447,8 +35064,8 @@ var outputTables = {
             "10066": {
                 "id": 10066,
                 "card_id": "灯笼怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1670,
+                "hp": 3460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34458,8 +35075,8 @@ var outputTables = {
             "10067": {
                 "id": 10067,
                 "card_id": "龅牙兔",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1700,
+                "hp": 3510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34469,8 +35086,8 @@ var outputTables = {
             "10068": {
                 "id": 10068,
                 "card_id": "乌龟精",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1730,
+                "hp": 3560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34480,8 +35097,8 @@ var outputTables = {
             "10069": {
                 "id": 10069,
                 "card_id": "卖茶怪",
-                "atk": 236,
-                "hp": 590,
+                "atk": 1760,
+                "hp": 3610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34491,8 +35108,8 @@ var outputTables = {
             "10070": {
                 "id": 10070,
                 "card_id": "白骨精",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1790,
+                "hp": 3660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34502,8 +35119,8 @@ var outputTables = {
             "10071": {
                 "id": 10071,
                 "card_id": "蛤蟆怪",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1820,
+                "hp": 3710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34513,8 +35130,8 @@ var outputTables = {
             "10072": {
                 "id": 10072,
                 "card_id": "树精",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1850,
+                "hp": 3760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34524,8 +35141,8 @@ var outputTables = {
             "10073": {
                 "id": 10073,
                 "card_id": "黑熊精",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1880,
+                "hp": 3810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34535,8 +35152,8 @@ var outputTables = {
             "10074": {
                 "id": 10074,
                 "card_id": "狐狸精",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1910,
+                "hp": 3860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34546,8 +35163,8 @@ var outputTables = {
             "10075": {
                 "id": 10075,
                 "card_id": "水晶魔灵",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1940,
+                "hp": 3910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34557,8 +35174,8 @@ var outputTables = {
             "10076": {
                 "id": 10076,
                 "card_id": "大脸猫妖",
-                "atk": 258,
-                "hp": 645,
+                "atk": 1970,
+                "hp": 3960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34568,8 +35185,8 @@ var outputTables = {
             "10077": {
                 "id": 10077,
                 "card_id": "野猪妖",
-                "atk": 258,
-                "hp": 645,
+                "atk": 2000,
+                "hp": 4010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34579,8 +35196,8 @@ var outputTables = {
             "10078": {
                 "id": 10078,
                 "card_id": "猩猩巨魔",
-                "atk": 258,
-                "hp": 645,
+                "atk": 2030,
+                "hp": 4060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34590,8 +35207,8 @@ var outputTables = {
             "10079": {
                 "id": 10079,
                 "card_id": "猴儿精",
-                "atk": 258,
-                "hp": 645,
+                "atk": 2060,
+                "hp": 4110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34601,8 +35218,8 @@ var outputTables = {
             "10080": {
                 "id": 10080,
                 "card_id": "巨蟒怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2090,
+                "hp": 4160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34612,8 +35229,8 @@ var outputTables = {
             "10081": {
                 "id": 10081,
                 "card_id": "地狱小鬼",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2120,
+                "hp": 4210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34623,8 +35240,8 @@ var outputTables = {
             "10082": {
                 "id": 10082,
                 "card_id": "狮子怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2150,
+                "hp": 4260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34634,8 +35251,8 @@ var outputTables = {
             "10083": {
                 "id": 10083,
                 "card_id": "蚊子怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2180,
+                "hp": 4310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34645,8 +35262,8 @@ var outputTables = {
             "10084": {
                 "id": 10084,
                 "card_id": "火焰怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2210,
+                "hp": 4360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34656,8 +35273,8 @@ var outputTables = {
             "10085": {
                 "id": 10085,
                 "card_id": "河童怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2240,
+                "hp": 4410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34667,8 +35284,8 @@ var outputTables = {
             "10086": {
                 "id": 10086,
                 "card_id": "独角兽",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2270,
+                "hp": 4460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34678,8 +35295,8 @@ var outputTables = {
             "10087": {
                 "id": 10087,
                 "card_id": "人鱼怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2300,
+                "hp": 4510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34689,8 +35306,8 @@ var outputTables = {
             "10088": {
                 "id": 10088,
                 "card_id": "巨齿狼王",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2330,
+                "hp": 4560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34700,8 +35317,8 @@ var outputTables = {
             "10089": {
                 "id": 10089,
                 "card_id": "双头牛怪",
-                "atk": 283,
-                "hp": 706,
+                "atk": 2360,
+                "hp": 4610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34711,8 +35328,8 @@ var outputTables = {
             "10090": {
                 "id": 10090,
                 "card_id": "长矛鼠怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2390,
+                "hp": 4660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34722,8 +35339,8 @@ var outputTables = {
             "10091": {
                 "id": 10091,
                 "card_id": "小狗怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2420,
+                "hp": 4710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34733,8 +35350,8 @@ var outputTables = {
             "10092": {
                 "id": 10092,
                 "card_id": "大狗怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2450,
+                "hp": 4760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34744,8 +35361,8 @@ var outputTables = {
             "10093": {
                 "id": 10093,
                 "card_id": "蝙蝠怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2480,
+                "hp": 4810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34755,8 +35372,8 @@ var outputTables = {
             "10094": {
                 "id": 10094,
                 "card_id": "蟠桃怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2510,
+                "hp": 4860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34766,8 +35383,8 @@ var outputTables = {
             "10095": {
                 "id": 10095,
                 "card_id": "僵尸怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2540,
+                "hp": 4910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34777,8 +35394,8 @@ var outputTables = {
             "10096": {
                 "id": 10096,
                 "card_id": "宫灯怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2570,
+                "hp": 4960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34788,8 +35405,8 @@ var outputTables = {
             "10097": {
                 "id": 10097,
                 "card_id": "挂科怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2600,
+                "hp": 5010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34799,8 +35416,8 @@ var outputTables = {
             "10098": {
                 "id": 10098,
                 "card_id": "自习怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2630,
+                "hp": 5060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34810,8 +35427,8 @@ var outputTables = {
             "10099": {
                 "id": 10099,
                 "card_id": "灯笼怪",
-                "atk": 309,
-                "hp": 770,
+                "atk": 2660,
+                "hp": 5110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34821,8 +35438,8 @@ var outputTables = {
             "10100": {
                 "id": 10100,
                 "card_id": "龅牙兔",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2690,
+                "hp": 5160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34832,8 +35449,8 @@ var outputTables = {
             "10101": {
                 "id": 10101,
                 "card_id": "乌龟精",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2720,
+                "hp": 5210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34843,8 +35460,8 @@ var outputTables = {
             "10102": {
                 "id": 10102,
                 "card_id": "卖茶怪",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2750,
+                "hp": 5260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34854,8 +35471,8 @@ var outputTables = {
             "10103": {
                 "id": 10103,
                 "card_id": "白骨精",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2780,
+                "hp": 5310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34865,8 +35482,8 @@ var outputTables = {
             "10104": {
                 "id": 10104,
                 "card_id": "蛤蟆怪",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2810,
+                "hp": 5360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34876,8 +35493,8 @@ var outputTables = {
             "10105": {
                 "id": 10105,
                 "card_id": "树精",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2840,
+                "hp": 5410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34887,8 +35504,8 @@ var outputTables = {
             "10106": {
                 "id": 10106,
                 "card_id": "黑熊精",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2870,
+                "hp": 5460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -34898,8 +35515,8 @@ var outputTables = {
             "10107": {
                 "id": 10107,
                 "card_id": "狐狸精",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2900,
+                "hp": 5510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -34909,8 +35526,8 @@ var outputTables = {
             "10108": {
                 "id": 10108,
                 "card_id": "水晶魔灵",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2930,
+                "hp": 5560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -34920,8 +35537,8 @@ var outputTables = {
             "10109": {
                 "id": 10109,
                 "card_id": "大脸猫妖",
-                "atk": 337,
-                "hp": 841,
+                "atk": 2960,
+                "hp": 5610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -34931,8 +35548,8 @@ var outputTables = {
             "10110": {
                 "id": 10110,
                 "card_id": "野猪妖",
-                "atk": 367,
-                "hp": 916,
+                "atk": 2990,
+                "hp": 5660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -34942,8 +35559,8 @@ var outputTables = {
             "10111": {
                 "id": 10111,
                 "card_id": "猩猩巨魔",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3020,
+                "hp": 5710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34953,8 +35570,8 @@ var outputTables = {
             "10112": {
                 "id": 10112,
                 "card_id": "猴儿精",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3050,
+                "hp": 5760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -34964,8 +35581,8 @@ var outputTables = {
             "10113": {
                 "id": 10113,
                 "card_id": "巨蟒怪",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3080,
+                "hp": 5810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -34975,8 +35592,8 @@ var outputTables = {
             "10114": {
                 "id": 10114,
                 "card_id": "地狱小鬼",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3110,
+                "hp": 5860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -34986,8 +35603,8 @@ var outputTables = {
             "10115": {
                 "id": 10115,
                 "card_id": "狮子怪",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3140,
+                "hp": 5910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -34997,8 +35614,8 @@ var outputTables = {
             "10116": {
                 "id": 10116,
                 "card_id": "蚊子怪",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3170,
+                "hp": 5960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35008,8 +35625,8 @@ var outputTables = {
             "10117": {
                 "id": 10117,
                 "card_id": "火焰怪",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3200,
+                "hp": 6010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35019,8 +35636,8 @@ var outputTables = {
             "10118": {
                 "id": 10118,
                 "card_id": "河童怪",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3230,
+                "hp": 6060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35030,8 +35647,8 @@ var outputTables = {
             "10119": {
                 "id": 10119,
                 "card_id": "独角兽",
-                "atk": 367,
-                "hp": 916,
+                "atk": 3260,
+                "hp": 6110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35041,8 +35658,8 @@ var outputTables = {
             "10120": {
                 "id": 10120,
                 "card_id": "人鱼怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3290,
+                "hp": 6160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35052,8 +35669,8 @@ var outputTables = {
             "10121": {
                 "id": 10121,
                 "card_id": "巨齿狼王",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3320,
+                "hp": 6210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35063,8 +35680,8 @@ var outputTables = {
             "10122": {
                 "id": 10122,
                 "card_id": "双头牛怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3350,
+                "hp": 6260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35074,8 +35691,8 @@ var outputTables = {
             "10123": {
                 "id": 10123,
                 "card_id": "长矛鼠怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3380,
+                "hp": 6310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35085,8 +35702,8 @@ var outputTables = {
             "10124": {
                 "id": 10124,
                 "card_id": "小狗怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3410,
+                "hp": 6360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35096,8 +35713,8 @@ var outputTables = {
             "10125": {
                 "id": 10125,
                 "card_id": "大狗怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3440,
+                "hp": 6410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35107,8 +35724,8 @@ var outputTables = {
             "10126": {
                 "id": 10126,
                 "card_id": "蝙蝠怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3470,
+                "hp": 6460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35118,8 +35735,8 @@ var outputTables = {
             "10127": {
                 "id": 10127,
                 "card_id": "蟠桃怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3500,
+                "hp": 6510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35129,8 +35746,8 @@ var outputTables = {
             "10128": {
                 "id": 10128,
                 "card_id": "僵尸怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3530,
+                "hp": 6560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35140,8 +35757,8 @@ var outputTables = {
             "10129": {
                 "id": 10129,
                 "card_id": "宫灯怪",
-                "atk": 400,
-                "hp": 998,
+                "atk": 3560,
+                "hp": 6610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35151,8 +35768,8 @@ var outputTables = {
             "10130": {
                 "id": 10130,
                 "card_id": "挂科怪",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3590,
+                "hp": 6660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35162,8 +35779,8 @@ var outputTables = {
             "10131": {
                 "id": 10131,
                 "card_id": "自习怪",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3620,
+                "hp": 6710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35173,8 +35790,8 @@ var outputTables = {
             "10132": {
                 "id": 10132,
                 "card_id": "灯笼怪",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3650,
+                "hp": 6760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35184,8 +35801,8 @@ var outputTables = {
             "10133": {
                 "id": 10133,
                 "card_id": "龅牙兔",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3680,
+                "hp": 6810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35195,8 +35812,8 @@ var outputTables = {
             "10134": {
                 "id": 10134,
                 "card_id": "乌龟精",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3710,
+                "hp": 6860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35206,8 +35823,8 @@ var outputTables = {
             "10135": {
                 "id": 10135,
                 "card_id": "卖茶怪",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3740,
+                "hp": 6910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35217,8 +35834,8 @@ var outputTables = {
             "10136": {
                 "id": 10136,
                 "card_id": "白骨精",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3770,
+                "hp": 6960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35228,8 +35845,8 @@ var outputTables = {
             "10137": {
                 "id": 10137,
                 "card_id": "蛤蟆怪",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3800,
+                "hp": 7010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35239,8 +35856,8 @@ var outputTables = {
             "10138": {
                 "id": 10138,
                 "card_id": "树精",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3830,
+                "hp": 7060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35250,8 +35867,8 @@ var outputTables = {
             "10139": {
                 "id": 10139,
                 "card_id": "黑熊精",
-                "atk": 435,
-                "hp": 1086,
+                "atk": 3860,
+                "hp": 7110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35261,8 +35878,8 @@ var outputTables = {
             "10140": {
                 "id": 10140,
                 "card_id": "狐狸精",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 3890,
+                "hp": 7160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35272,8 +35889,8 @@ var outputTables = {
             "10141": {
                 "id": 10141,
                 "card_id": "水晶魔灵",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 3920,
+                "hp": 7210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35283,8 +35900,8 @@ var outputTables = {
             "10142": {
                 "id": 10142,
                 "card_id": "大脸猫妖",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 3950,
+                "hp": 7260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35294,8 +35911,8 @@ var outputTables = {
             "10143": {
                 "id": 10143,
                 "card_id": "野猪妖",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 3980,
+                "hp": 7310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35305,8 +35922,8 @@ var outputTables = {
             "10144": {
                 "id": 10144,
                 "card_id": "猩猩巨魔",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4010,
+                "hp": 7360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35316,8 +35933,8 @@ var outputTables = {
             "10145": {
                 "id": 10145,
                 "card_id": "猴儿精",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4040,
+                "hp": 7410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35327,8 +35944,8 @@ var outputTables = {
             "10146": {
                 "id": 10146,
                 "card_id": "巨蟒怪",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4070,
+                "hp": 7460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35338,8 +35955,8 @@ var outputTables = {
             "10147": {
                 "id": 10147,
                 "card_id": "地狱小鬼",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4100,
+                "hp": 7510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35349,8 +35966,8 @@ var outputTables = {
             "10148": {
                 "id": 10148,
                 "card_id": "狮子怪",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4130,
+                "hp": 7560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35360,8 +35977,8 @@ var outputTables = {
             "10149": {
                 "id": 10149,
                 "card_id": "蚊子怪",
-                "atk": 473,
-                "hp": 1181,
+                "atk": 4160,
+                "hp": 7610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35371,8 +35988,8 @@ var outputTables = {
             "10150": {
                 "id": 10150,
                 "card_id": "火焰怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4190,
+                "hp": 7660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35382,8 +35999,8 @@ var outputTables = {
             "10151": {
                 "id": 10151,
                 "card_id": "河童怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4220,
+                "hp": 7710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35393,8 +36010,8 @@ var outputTables = {
             "10152": {
                 "id": 10152,
                 "card_id": "独角兽",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4250,
+                "hp": 7760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35404,8 +36021,8 @@ var outputTables = {
             "10153": {
                 "id": 10153,
                 "card_id": "人鱼怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4280,
+                "hp": 7810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35415,8 +36032,8 @@ var outputTables = {
             "10154": {
                 "id": 10154,
                 "card_id": "巨齿狼王",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4310,
+                "hp": 7860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35426,8 +36043,8 @@ var outputTables = {
             "10155": {
                 "id": 10155,
                 "card_id": "双头牛怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4340,
+                "hp": 7910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35437,8 +36054,8 @@ var outputTables = {
             "10156": {
                 "id": 10156,
                 "card_id": "长矛鼠怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4370,
+                "hp": 7960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35448,8 +36065,8 @@ var outputTables = {
             "10157": {
                 "id": 10157,
                 "card_id": "小狗怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4400,
+                "hp": 8010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35459,8 +36076,8 @@ var outputTables = {
             "10158": {
                 "id": 10158,
                 "card_id": "大狗怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4430,
+                "hp": 8060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35470,8 +36087,8 @@ var outputTables = {
             "10159": {
                 "id": 10159,
                 "card_id": "蝙蝠怪",
-                "atk": 513,
-                "hp": 1283,
+                "atk": 4460,
+                "hp": 8110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35481,8 +36098,8 @@ var outputTables = {
             "10160": {
                 "id": 10160,
                 "card_id": "蟠桃怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4490,
+                "hp": 8160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35492,8 +36109,8 @@ var outputTables = {
             "10161": {
                 "id": 10161,
                 "card_id": "僵尸怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4520,
+                "hp": 8210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35503,8 +36120,8 @@ var outputTables = {
             "10162": {
                 "id": 10162,
                 "card_id": "宫灯怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4550,
+                "hp": 8260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35514,8 +36131,8 @@ var outputTables = {
             "10163": {
                 "id": 10163,
                 "card_id": "挂科怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4580,
+                "hp": 8310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35525,8 +36142,8 @@ var outputTables = {
             "10164": {
                 "id": 10164,
                 "card_id": "自习怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4610,
+                "hp": 8360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35536,8 +36153,8 @@ var outputTables = {
             "10165": {
                 "id": 10165,
                 "card_id": "灯笼怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4640,
+                "hp": 8410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35547,8 +36164,8 @@ var outputTables = {
             "10166": {
                 "id": 10166,
                 "card_id": "龅牙兔",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4670,
+                "hp": 8460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35558,8 +36175,8 @@ var outputTables = {
             "10167": {
                 "id": 10167,
                 "card_id": "乌龟精",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4700,
+                "hp": 8510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35569,8 +36186,8 @@ var outputTables = {
             "10168": {
                 "id": 10168,
                 "card_id": "卖茶怪",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4730,
+                "hp": 8560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35580,8 +36197,8 @@ var outputTables = {
             "10169": {
                 "id": 10169,
                 "card_id": "白骨精",
-                "atk": 556,
-                "hp": 1391,
+                "atk": 4760,
+                "hp": 8610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35591,8 +36208,8 @@ var outputTables = {
             "10170": {
                 "id": 10170,
                 "card_id": "蛤蟆怪",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4790,
+                "hp": 8660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35602,8 +36219,8 @@ var outputTables = {
             "10171": {
                 "id": 10171,
                 "card_id": "树精",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4820,
+                "hp": 8710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35613,8 +36230,8 @@ var outputTables = {
             "10172": {
                 "id": 10172,
                 "card_id": "黑熊精",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4850,
+                "hp": 8760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35624,8 +36241,8 @@ var outputTables = {
             "10173": {
                 "id": 10173,
                 "card_id": "狐狸精",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4880,
+                "hp": 8810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35635,8 +36252,8 @@ var outputTables = {
             "10174": {
                 "id": 10174,
                 "card_id": "水晶魔灵",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4910,
+                "hp": 8860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35646,8 +36263,8 @@ var outputTables = {
             "10175": {
                 "id": 10175,
                 "card_id": "大脸猫妖",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4940,
+                "hp": 8910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35657,8 +36274,8 @@ var outputTables = {
             "10176": {
                 "id": 10176,
                 "card_id": "野猪妖",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 4970,
+                "hp": 8960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35668,8 +36285,8 @@ var outputTables = {
             "10177": {
                 "id": 10177,
                 "card_id": "猩猩巨魔",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 5000,
+                "hp": 9010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35679,8 +36296,8 @@ var outputTables = {
             "10178": {
                 "id": 10178,
                 "card_id": "猴儿精",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 5030,
+                "hp": 9060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35690,8 +36307,8 @@ var outputTables = {
             "10179": {
                 "id": 10179,
                 "card_id": "巨蟒怪",
-                "atk": 603,
-                "hp": 1508,
+                "atk": 5060,
+                "hp": 9110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35701,8 +36318,8 @@ var outputTables = {
             "10180": {
                 "id": 10180,
                 "card_id": "地狱小鬼",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5090,
+                "hp": 9160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35712,8 +36329,8 @@ var outputTables = {
             "10181": {
                 "id": 10181,
                 "card_id": "狮子怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5120,
+                "hp": 9210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35723,8 +36340,8 @@ var outputTables = {
             "10182": {
                 "id": 10182,
                 "card_id": "蚊子怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5150,
+                "hp": 9260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35734,8 +36351,8 @@ var outputTables = {
             "10183": {
                 "id": 10183,
                 "card_id": "火焰怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5180,
+                "hp": 9310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35745,8 +36362,8 @@ var outputTables = {
             "10184": {
                 "id": 10184,
                 "card_id": "河童怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5210,
+                "hp": 9360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35756,8 +36373,8 @@ var outputTables = {
             "10185": {
                 "id": 10185,
                 "card_id": "独角兽",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5240,
+                "hp": 9410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35767,8 +36384,8 @@ var outputTables = {
             "10186": {
                 "id": 10186,
                 "card_id": "人鱼怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5270,
+                "hp": 9460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35778,8 +36395,8 @@ var outputTables = {
             "10187": {
                 "id": 10187,
                 "card_id": "巨齿狼王",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5300,
+                "hp": 9510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35789,8 +36406,8 @@ var outputTables = {
             "10188": {
                 "id": 10188,
                 "card_id": "双头牛怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5330,
+                "hp": 9560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35800,8 +36417,8 @@ var outputTables = {
             "10189": {
                 "id": 10189,
                 "card_id": "长矛鼠怪",
-                "atk": 653,
-                "hp": 1634,
+                "atk": 5360,
+                "hp": 9610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35811,8 +36428,8 @@ var outputTables = {
             "10190": {
                 "id": 10190,
                 "card_id": "小狗怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5390,
+                "hp": 9660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35822,8 +36439,8 @@ var outputTables = {
             "10191": {
                 "id": 10191,
                 "card_id": "大狗怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5420,
+                "hp": 9710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35833,8 +36450,8 @@ var outputTables = {
             "10192": {
                 "id": 10192,
                 "card_id": "蝙蝠怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5450,
+                "hp": 9760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35844,8 +36461,8 @@ var outputTables = {
             "10193": {
                 "id": 10193,
                 "card_id": "蟠桃怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5480,
+                "hp": 9810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35855,8 +36472,8 @@ var outputTables = {
             "10194": {
                 "id": 10194,
                 "card_id": "僵尸怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5510,
+                "hp": 9860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35866,8 +36483,8 @@ var outputTables = {
             "10195": {
                 "id": 10195,
                 "card_id": "宫灯怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5540,
+                "hp": 9910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35877,8 +36494,8 @@ var outputTables = {
             "10196": {
                 "id": 10196,
                 "card_id": "挂科怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5570,
+                "hp": 9960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35888,8 +36505,8 @@ var outputTables = {
             "10197": {
                 "id": 10197,
                 "card_id": "自习怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5600,
+                "hp": 10010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -35899,8 +36516,8 @@ var outputTables = {
             "10198": {
                 "id": 10198,
                 "card_id": "灯笼怪",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5630,
+                "hp": 10060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -35910,8 +36527,8 @@ var outputTables = {
             "10199": {
                 "id": 10199,
                 "card_id": "龅牙兔",
-                "atk": 707,
-                "hp": 1768,
+                "atk": 5660,
+                "hp": 10110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -35921,8 +36538,8 @@ var outputTables = {
             "10200": {
                 "id": 10200,
                 "card_id": "乌龟精",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5690,
+                "hp": 10160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -35932,8 +36549,8 @@ var outputTables = {
             "10201": {
                 "id": 10201,
                 "card_id": "卖茶怪",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5720,
+                "hp": 10210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35943,8 +36560,8 @@ var outputTables = {
             "10202": {
                 "id": 10202,
                 "card_id": "白骨精",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5750,
+                "hp": 10260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -35954,8 +36571,8 @@ var outputTables = {
             "10203": {
                 "id": 10203,
                 "card_id": "蛤蟆怪",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5780,
+                "hp": 10310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -35965,8 +36582,8 @@ var outputTables = {
             "10204": {
                 "id": 10204,
                 "card_id": "树精",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5810,
+                "hp": 10360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -35976,8 +36593,8 @@ var outputTables = {
             "10205": {
                 "id": 10205,
                 "card_id": "黑熊精",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5840,
+                "hp": 10410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -35987,8 +36604,8 @@ var outputTables = {
             "10206": {
                 "id": 10206,
                 "card_id": "狐狸精",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5870,
+                "hp": 10460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -35998,8 +36615,8 @@ var outputTables = {
             "10207": {
                 "id": 10207,
                 "card_id": "水晶魔灵",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5900,
+                "hp": 10510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36009,8 +36626,8 @@ var outputTables = {
             "10208": {
                 "id": 10208,
                 "card_id": "大脸猫妖",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5930,
+                "hp": 10560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36020,8 +36637,8 @@ var outputTables = {
             "10209": {
                 "id": 10209,
                 "card_id": "野猪妖",
-                "atk": 765,
-                "hp": 1911,
+                "atk": 5960,
+                "hp": 10610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36031,8 +36648,8 @@ var outputTables = {
             "10210": {
                 "id": 10210,
                 "card_id": "猩猩巨魔",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 5990,
+                "hp": 10660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36042,8 +36659,8 @@ var outputTables = {
             "10211": {
                 "id": 10211,
                 "card_id": "猴儿精",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6020,
+                "hp": 10710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36053,8 +36670,8 @@ var outputTables = {
             "10212": {
                 "id": 10212,
                 "card_id": "巨蟒怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6050,
+                "hp": 10760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36064,8 +36681,8 @@ var outputTables = {
             "10213": {
                 "id": 10213,
                 "card_id": "地狱小鬼",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6080,
+                "hp": 10810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36075,8 +36692,8 @@ var outputTables = {
             "10214": {
                 "id": 10214,
                 "card_id": "狮子怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6110,
+                "hp": 10860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36086,8 +36703,8 @@ var outputTables = {
             "10215": {
                 "id": 10215,
                 "card_id": "蚊子怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6140,
+                "hp": 10910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36097,8 +36714,8 @@ var outputTables = {
             "10216": {
                 "id": 10216,
                 "card_id": "火焰怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6170,
+                "hp": 10960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36108,8 +36725,8 @@ var outputTables = {
             "10217": {
                 "id": 10217,
                 "card_id": "河童怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6200,
+                "hp": 11010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36119,8 +36736,8 @@ var outputTables = {
             "10218": {
                 "id": 10218,
                 "card_id": "独角兽",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6230,
+                "hp": 11060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36130,8 +36747,8 @@ var outputTables = {
             "10219": {
                 "id": 10219,
                 "card_id": "人鱼怪",
-                "atk": 826,
-                "hp": 2064,
+                "atk": 6260,
+                "hp": 11110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36141,8 +36758,8 @@ var outputTables = {
             "10220": {
                 "id": 10220,
                 "card_id": "巨齿狼王",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6290,
+                "hp": 11160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36152,8 +36769,8 @@ var outputTables = {
             "10221": {
                 "id": 10221,
                 "card_id": "双头牛怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6320,
+                "hp": 11210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36163,8 +36780,8 @@ var outputTables = {
             "10222": {
                 "id": 10222,
                 "card_id": "长矛鼠怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6350,
+                "hp": 11260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36174,8 +36791,8 @@ var outputTables = {
             "10223": {
                 "id": 10223,
                 "card_id": "小狗怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6380,
+                "hp": 11310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36185,8 +36802,8 @@ var outputTables = {
             "10224": {
                 "id": 10224,
                 "card_id": "大狗怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6410,
+                "hp": 11360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36196,8 +36813,8 @@ var outputTables = {
             "10225": {
                 "id": 10225,
                 "card_id": "蝙蝠怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6440,
+                "hp": 11410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36207,8 +36824,8 @@ var outputTables = {
             "10226": {
                 "id": 10226,
                 "card_id": "蟠桃怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6470,
+                "hp": 11460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36218,8 +36835,8 @@ var outputTables = {
             "10227": {
                 "id": 10227,
                 "card_id": "僵尸怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6500,
+                "hp": 11510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36229,8 +36846,8 @@ var outputTables = {
             "10228": {
                 "id": 10228,
                 "card_id": "宫灯怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6530,
+                "hp": 11560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36240,8 +36857,8 @@ var outputTables = {
             "10229": {
                 "id": 10229,
                 "card_id": "挂科怪",
-                "atk": 892,
-                "hp": 2227,
+                "atk": 6560,
+                "hp": 11610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36251,8 +36868,8 @@ var outputTables = {
             "10230": {
                 "id": 10230,
                 "card_id": "自习怪",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6590,
+                "hp": 11660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36262,8 +36879,8 @@ var outputTables = {
             "10231": {
                 "id": 10231,
                 "card_id": "灯笼怪",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6620,
+                "hp": 11710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36273,8 +36890,8 @@ var outputTables = {
             "10232": {
                 "id": 10232,
                 "card_id": "龅牙兔",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6650,
+                "hp": 11760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36284,8 +36901,8 @@ var outputTables = {
             "10233": {
                 "id": 10233,
                 "card_id": "乌龟精",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6680,
+                "hp": 11810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36295,8 +36912,8 @@ var outputTables = {
             "10234": {
                 "id": 10234,
                 "card_id": "卖茶怪",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6710,
+                "hp": 11860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36306,8 +36923,8 @@ var outputTables = {
             "10235": {
                 "id": 10235,
                 "card_id": "白骨精",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6740,
+                "hp": 11910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36317,8 +36934,8 @@ var outputTables = {
             "10236": {
                 "id": 10236,
                 "card_id": "蛤蟆怪",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6770,
+                "hp": 11960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36328,8 +36945,8 @@ var outputTables = {
             "10237": {
                 "id": 10237,
                 "card_id": "树精",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6800,
+                "hp": 12010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36339,8 +36956,8 @@ var outputTables = {
             "10238": {
                 "id": 10238,
                 "card_id": "黑熊精",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6830,
+                "hp": 12060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36350,8 +36967,8 @@ var outputTables = {
             "10239": {
                 "id": 10239,
                 "card_id": "狐狸精",
-                "atk": 961,
-                "hp": 2400,
+                "atk": 6860,
+                "hp": 12110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36361,8 +36978,8 @@ var outputTables = {
             "10240": {
                 "id": 10240,
                 "card_id": "水晶魔灵",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 6890,
+                "hp": 12160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36372,8 +36989,8 @@ var outputTables = {
             "10241": {
                 "id": 10241,
                 "card_id": "大脸猫妖",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 6920,
+                "hp": 12210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36383,8 +37000,8 @@ var outputTables = {
             "10242": {
                 "id": 10242,
                 "card_id": "野猪妖",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 6950,
+                "hp": 12260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36394,8 +37011,8 @@ var outputTables = {
             "10243": {
                 "id": 10243,
                 "card_id": "猩猩巨魔",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 6980,
+                "hp": 12310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36405,8 +37022,8 @@ var outputTables = {
             "10244": {
                 "id": 10244,
                 "card_id": "猴儿精",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7010,
+                "hp": 12360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36416,8 +37033,8 @@ var outputTables = {
             "10245": {
                 "id": 10245,
                 "card_id": "巨蟒怪",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7040,
+                "hp": 12410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36427,8 +37044,8 @@ var outputTables = {
             "10246": {
                 "id": 10246,
                 "card_id": "地狱小鬼",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7070,
+                "hp": 12460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36438,8 +37055,8 @@ var outputTables = {
             "10247": {
                 "id": 10247,
                 "card_id": "狮子怪",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7100,
+                "hp": 12510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36449,8 +37066,8 @@ var outputTables = {
             "10248": {
                 "id": 10248,
                 "card_id": "蚊子怪",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7130,
+                "hp": 12560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36460,8 +37077,8 @@ var outputTables = {
             "10249": {
                 "id": 10249,
                 "card_id": "火焰怪",
-                "atk": 1035,
-                "hp": 2585,
+                "atk": 7160,
+                "hp": 12610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36471,8 +37088,8 @@ var outputTables = {
             "10250": {
                 "id": 10250,
                 "card_id": "河童怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7190,
+                "hp": 12660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36482,8 +37099,8 @@ var outputTables = {
             "10251": {
                 "id": 10251,
                 "card_id": "独角兽",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7220,
+                "hp": 12710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36493,8 +37110,8 @@ var outputTables = {
             "10252": {
                 "id": 10252,
                 "card_id": "人鱼怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7250,
+                "hp": 12760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36504,8 +37121,8 @@ var outputTables = {
             "10253": {
                 "id": 10253,
                 "card_id": "巨齿狼王",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7280,
+                "hp": 12810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36515,8 +37132,8 @@ var outputTables = {
             "10254": {
                 "id": 10254,
                 "card_id": "双头牛怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7310,
+                "hp": 12860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36526,8 +37143,8 @@ var outputTables = {
             "10255": {
                 "id": 10255,
                 "card_id": "长矛鼠怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7340,
+                "hp": 12910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36537,8 +37154,8 @@ var outputTables = {
             "10256": {
                 "id": 10256,
                 "card_id": "小狗怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7370,
+                "hp": 12960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36548,8 +37165,8 @@ var outputTables = {
             "10257": {
                 "id": 10257,
                 "card_id": "大狗怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7400,
+                "hp": 13010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36559,8 +37176,8 @@ var outputTables = {
             "10258": {
                 "id": 10258,
                 "card_id": "蝙蝠怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7430,
+                "hp": 13060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36570,8 +37187,8 @@ var outputTables = {
             "10259": {
                 "id": 10259,
                 "card_id": "蟠桃怪",
-                "atk": 1113,
-                "hp": 2781,
+                "atk": 7460,
+                "hp": 13110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36581,8 +37198,8 @@ var outputTables = {
             "10260": {
                 "id": 10260,
                 "card_id": "僵尸怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7490,
+                "hp": 13160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36592,8 +37209,8 @@ var outputTables = {
             "10261": {
                 "id": 10261,
                 "card_id": "宫灯怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7520,
+                "hp": 13210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36603,8 +37220,8 @@ var outputTables = {
             "10262": {
                 "id": 10262,
                 "card_id": "挂科怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7550,
+                "hp": 13260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36614,8 +37231,8 @@ var outputTables = {
             "10263": {
                 "id": 10263,
                 "card_id": "自习怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7580,
+                "hp": 13310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36625,8 +37242,8 @@ var outputTables = {
             "10264": {
                 "id": 10264,
                 "card_id": "灯笼怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7610,
+                "hp": 13360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36636,8 +37253,8 @@ var outputTables = {
             "10265": {
                 "id": 10265,
                 "card_id": "龅牙兔",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7640,
+                "hp": 13410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36647,8 +37264,8 @@ var outputTables = {
             "10266": {
                 "id": 10266,
                 "card_id": "乌龟精",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7670,
+                "hp": 13460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36658,8 +37275,8 @@ var outputTables = {
             "10267": {
                 "id": 10267,
                 "card_id": "卖茶怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7700,
+                "hp": 13510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36669,8 +37286,8 @@ var outputTables = {
             "10268": {
                 "id": 10268,
                 "card_id": "白骨精",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7730,
+                "hp": 13560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36680,8 +37297,8 @@ var outputTables = {
             "10269": {
                 "id": 10269,
                 "card_id": "蛤蟆怪",
-                "atk": 1197,
-                "hp": 2990,
+                "atk": 7760,
+                "hp": 13610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36691,8 +37308,8 @@ var outputTables = {
             "10270": {
                 "id": 10270,
                 "card_id": "树精",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7790,
+                "hp": 13660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36702,8 +37319,8 @@ var outputTables = {
             "10271": {
                 "id": 10271,
                 "card_id": "黑熊精",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7820,
+                "hp": 13710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36713,8 +37330,8 @@ var outputTables = {
             "10272": {
                 "id": 10272,
                 "card_id": "狐狸精",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7850,
+                "hp": 13760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36724,8 +37341,8 @@ var outputTables = {
             "10273": {
                 "id": 10273,
                 "card_id": "水晶魔灵",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7880,
+                "hp": 13810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36735,8 +37352,8 @@ var outputTables = {
             "10274": {
                 "id": 10274,
                 "card_id": "大脸猫妖",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7910,
+                "hp": 13860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36746,8 +37363,8 @@ var outputTables = {
             "10275": {
                 "id": 10275,
                 "card_id": "野猪妖",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7940,
+                "hp": 13910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36757,8 +37374,8 @@ var outputTables = {
             "10276": {
                 "id": 10276,
                 "card_id": "猩猩巨魔",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 7970,
+                "hp": 13960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36768,8 +37385,8 @@ var outputTables = {
             "10277": {
                 "id": 10277,
                 "card_id": "猴儿精",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 8000,
+                "hp": 14010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36779,8 +37396,8 @@ var outputTables = {
             "10278": {
                 "id": 10278,
                 "card_id": "巨蟒怪",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 8030,
+                "hp": 14060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36790,8 +37407,8 @@ var outputTables = {
             "10279": {
                 "id": 10279,
                 "card_id": "地狱小鬼",
-                "atk": 1285,
-                "hp": 3211,
+                "atk": 8060,
+                "hp": 14110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36801,8 +37418,8 @@ var outputTables = {
             "10280": {
                 "id": 10280,
                 "card_id": "狮子怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8090,
+                "hp": 14160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36812,8 +37429,8 @@ var outputTables = {
             "10281": {
                 "id": 10281,
                 "card_id": "蚊子怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8120,
+                "hp": 14210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36823,8 +37440,8 @@ var outputTables = {
             "10282": {
                 "id": 10282,
                 "card_id": "火焰怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8150,
+                "hp": 14260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36834,8 +37451,8 @@ var outputTables = {
             "10283": {
                 "id": 10283,
                 "card_id": "河童怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8180,
+                "hp": 14310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36845,8 +37462,8 @@ var outputTables = {
             "10284": {
                 "id": 10284,
                 "card_id": "独角兽",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8210,
+                "hp": 14360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36856,8 +37473,8 @@ var outputTables = {
             "10285": {
                 "id": 10285,
                 "card_id": "人鱼怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8240,
+                "hp": 14410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36867,8 +37484,8 @@ var outputTables = {
             "10286": {
                 "id": 10286,
                 "card_id": "巨齿狼王",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8270,
+                "hp": 14460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36878,8 +37495,8 @@ var outputTables = {
             "10287": {
                 "id": 10287,
                 "card_id": "双头牛怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8300,
+                "hp": 14510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36889,8 +37506,8 @@ var outputTables = {
             "10288": {
                 "id": 10288,
                 "card_id": "长矛鼠怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8330,
+                "hp": 14560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -36900,8 +37517,8 @@ var outputTables = {
             "10289": {
                 "id": 10289,
                 "card_id": "小狗怪",
-                "atk": 1379,
-                "hp": 3445,
+                "atk": 8360,
+                "hp": 14610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -36911,8 +37528,8 @@ var outputTables = {
             "10290": {
                 "id": 10290,
                 "card_id": "大狗怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8390,
+                "hp": 14660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -36922,8 +37539,8 @@ var outputTables = {
             "10291": {
                 "id": 10291,
                 "card_id": "蝙蝠怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8420,
+                "hp": 14710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36933,8 +37550,8 @@ var outputTables = {
             "10292": {
                 "id": 10292,
                 "card_id": "蟠桃怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8450,
+                "hp": 14760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -36944,8 +37561,8 @@ var outputTables = {
             "10293": {
                 "id": 10293,
                 "card_id": "僵尸怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8480,
+                "hp": 14810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -36955,8 +37572,8 @@ var outputTables = {
             "10294": {
                 "id": 10294,
                 "card_id": "宫灯怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8510,
+                "hp": 14860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -36966,8 +37583,8 @@ var outputTables = {
             "10295": {
                 "id": 10295,
                 "card_id": "挂科怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8540,
+                "hp": 14910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -36977,8 +37594,8 @@ var outputTables = {
             "10296": {
                 "id": 10296,
                 "card_id": "自习怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8570,
+                "hp": 14960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -36988,8 +37605,8 @@ var outputTables = {
             "10297": {
                 "id": 10297,
                 "card_id": "灯笼怪",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8600,
+                "hp": 15010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -36999,8 +37616,8 @@ var outputTables = {
             "10298": {
                 "id": 10298,
                 "card_id": "龅牙兔",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8630,
+                "hp": 15060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37010,8 +37627,8 @@ var outputTables = {
             "10299": {
                 "id": 10299,
                 "card_id": "乌龟精",
-                "atk": 1478,
-                "hp": 3694,
+                "atk": 8660,
+                "hp": 15110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37021,8 +37638,8 @@ var outputTables = {
             "10300": {
                 "id": 10300,
                 "card_id": "卖茶怪",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8690,
+                "hp": 15160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37032,8 +37649,8 @@ var outputTables = {
             "10301": {
                 "id": 10301,
                 "card_id": "白骨精",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8720,
+                "hp": 15210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37043,8 +37660,8 @@ var outputTables = {
             "10302": {
                 "id": 10302,
                 "card_id": "蛤蟆怪",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8750,
+                "hp": 15260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37054,8 +37671,8 @@ var outputTables = {
             "10303": {
                 "id": 10303,
                 "card_id": "树精",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8780,
+                "hp": 15310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37065,8 +37682,8 @@ var outputTables = {
             "10304": {
                 "id": 10304,
                 "card_id": "黑熊精",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8810,
+                "hp": 15360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37076,8 +37693,8 @@ var outputTables = {
             "10305": {
                 "id": 10305,
                 "card_id": "狐狸精",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8840,
+                "hp": 15410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37087,8 +37704,8 @@ var outputTables = {
             "10306": {
                 "id": 10306,
                 "card_id": "水晶魔灵",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8870,
+                "hp": 15460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37098,8 +37715,8 @@ var outputTables = {
             "10307": {
                 "id": 10307,
                 "card_id": "大脸猫妖",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8900,
+                "hp": 15510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37109,8 +37726,8 @@ var outputTables = {
             "10308": {
                 "id": 10308,
                 "card_id": "野猪妖",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8930,
+                "hp": 15560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37120,8 +37737,8 @@ var outputTables = {
             "10309": {
                 "id": 10309,
                 "card_id": "猩猩巨魔",
-                "atk": 1583,
-                "hp": 3956,
+                "atk": 8960,
+                "hp": 15610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37131,8 +37748,8 @@ var outputTables = {
             "10310": {
                 "id": 10310,
                 "card_id": "猴儿精",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 8990,
+                "hp": 15660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37142,8 +37759,8 @@ var outputTables = {
             "10311": {
                 "id": 10311,
                 "card_id": "巨蟒怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9020,
+                "hp": 15710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37153,8 +37770,8 @@ var outputTables = {
             "10312": {
                 "id": 10312,
                 "card_id": "地狱小鬼",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9050,
+                "hp": 15760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37164,8 +37781,8 @@ var outputTables = {
             "10313": {
                 "id": 10313,
                 "card_id": "狮子怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9080,
+                "hp": 15810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37175,8 +37792,8 @@ var outputTables = {
             "10314": {
                 "id": 10314,
                 "card_id": "蚊子怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9110,
+                "hp": 15860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37186,8 +37803,8 @@ var outputTables = {
             "10315": {
                 "id": 10315,
                 "card_id": "火焰怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9140,
+                "hp": 15910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37197,8 +37814,8 @@ var outputTables = {
             "10316": {
                 "id": 10316,
                 "card_id": "河童怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9170,
+                "hp": 15960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37208,8 +37825,8 @@ var outputTables = {
             "10317": {
                 "id": 10317,
                 "card_id": "独角兽",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9200,
+                "hp": 16010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37219,8 +37836,8 @@ var outputTables = {
             "10318": {
                 "id": 10318,
                 "card_id": "人鱼怪",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9230,
+                "hp": 16060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37230,8 +37847,8 @@ var outputTables = {
             "10319": {
                 "id": 10319,
                 "card_id": "巨齿狼王",
-                "atk": 1694,
-                "hp": 4233,
+                "atk": 9260,
+                "hp": 16110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37241,8 +37858,8 @@ var outputTables = {
             "10320": {
                 "id": 10320,
                 "card_id": "双头牛怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9290,
+                "hp": 16160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37252,8 +37869,8 @@ var outputTables = {
             "10321": {
                 "id": 10321,
                 "card_id": "长矛鼠怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9320,
+                "hp": 16210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37263,8 +37880,8 @@ var outputTables = {
             "10322": {
                 "id": 10322,
                 "card_id": "小狗怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9350,
+                "hp": 16260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37274,8 +37891,8 @@ var outputTables = {
             "10323": {
                 "id": 10323,
                 "card_id": "大狗怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9380,
+                "hp": 16310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37285,8 +37902,8 @@ var outputTables = {
             "10324": {
                 "id": 10324,
                 "card_id": "蝙蝠怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9410,
+                "hp": 16360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37296,8 +37913,8 @@ var outputTables = {
             "10325": {
                 "id": 10325,
                 "card_id": "蟠桃怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9440,
+                "hp": 16410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37307,8 +37924,8 @@ var outputTables = {
             "10326": {
                 "id": 10326,
                 "card_id": "僵尸怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9470,
+                "hp": 16460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37318,8 +37935,8 @@ var outputTables = {
             "10327": {
                 "id": 10327,
                 "card_id": "宫灯怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9500,
+                "hp": 16510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37329,8 +37946,8 @@ var outputTables = {
             "10328": {
                 "id": 10328,
                 "card_id": "挂科怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9530,
+                "hp": 16560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37340,8 +37957,8 @@ var outputTables = {
             "10329": {
                 "id": 10329,
                 "card_id": "自习怪",
-                "atk": 1811,
-                "hp": 4525,
+                "atk": 9560,
+                "hp": 16610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37351,8 +37968,8 @@ var outputTables = {
             "10330": {
                 "id": 10330,
                 "card_id": "灯笼怪",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9590,
+                "hp": 16660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37362,8 +37979,8 @@ var outputTables = {
             "10331": {
                 "id": 10331,
                 "card_id": "龅牙兔",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9620,
+                "hp": 16710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37373,8 +37990,8 @@ var outputTables = {
             "10332": {
                 "id": 10332,
                 "card_id": "乌龟精",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9650,
+                "hp": 16760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37384,8 +38001,8 @@ var outputTables = {
             "10333": {
                 "id": 10333,
                 "card_id": "卖茶怪",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9680,
+                "hp": 16810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37395,8 +38012,8 @@ var outputTables = {
             "10334": {
                 "id": 10334,
                 "card_id": "白骨精",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9710,
+                "hp": 16860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37406,8 +38023,8 @@ var outputTables = {
             "10335": {
                 "id": 10335,
                 "card_id": "蛤蟆怪",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9740,
+                "hp": 16910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37417,8 +38034,8 @@ var outputTables = {
             "10336": {
                 "id": 10336,
                 "card_id": "树精",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9770,
+                "hp": 16960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37428,8 +38045,8 @@ var outputTables = {
             "10337": {
                 "id": 10337,
                 "card_id": "黑熊精",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9800,
+                "hp": 17010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37439,8 +38056,8 @@ var outputTables = {
             "10338": {
                 "id": 10338,
                 "card_id": "狐狸精",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9830,
+                "hp": 17060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37450,8 +38067,8 @@ var outputTables = {
             "10339": {
                 "id": 10339,
                 "card_id": "水晶魔灵",
-                "atk": 1934,
-                "hp": 4833,
+                "atk": 9860,
+                "hp": 17110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37461,8 +38078,8 @@ var outputTables = {
             "10340": {
                 "id": 10340,
                 "card_id": "大脸猫妖",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 9890,
+                "hp": 17160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37472,8 +38089,8 @@ var outputTables = {
             "10341": {
                 "id": 10341,
                 "card_id": "野猪妖",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 9920,
+                "hp": 17210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37483,8 +38100,8 @@ var outputTables = {
             "10342": {
                 "id": 10342,
                 "card_id": "猩猩巨魔",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 9950,
+                "hp": 17260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37494,8 +38111,8 @@ var outputTables = {
             "10343": {
                 "id": 10343,
                 "card_id": "猴儿精",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 9980,
+                "hp": 17310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37505,8 +38122,8 @@ var outputTables = {
             "10344": {
                 "id": 10344,
                 "card_id": "巨蟒怪",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10010,
+                "hp": 17360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37516,8 +38133,8 @@ var outputTables = {
             "10345": {
                 "id": 10345,
                 "card_id": "地狱小鬼",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10040,
+                "hp": 17410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37527,8 +38144,8 @@ var outputTables = {
             "10346": {
                 "id": 10346,
                 "card_id": "狮子怪",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10070,
+                "hp": 17460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37538,8 +38155,8 @@ var outputTables = {
             "10347": {
                 "id": 10347,
                 "card_id": "蚊子怪",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10100,
+                "hp": 17510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37549,8 +38166,8 @@ var outputTables = {
             "10348": {
                 "id": 10348,
                 "card_id": "火焰怪",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10130,
+                "hp": 17560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37560,8 +38177,8 @@ var outputTables = {
             "10349": {
                 "id": 10349,
                 "card_id": "河童怪",
-                "atk": 2064,
-                "hp": 5157,
+                "atk": 10160,
+                "hp": 17610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37571,8 +38188,8 @@ var outputTables = {
             "10350": {
                 "id": 10350,
                 "card_id": "独角兽",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10190,
+                "hp": 17660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37582,8 +38199,8 @@ var outputTables = {
             "10351": {
                 "id": 10351,
                 "card_id": "人鱼怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10220,
+                "hp": 17710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37593,8 +38210,8 @@ var outputTables = {
             "10352": {
                 "id": 10352,
                 "card_id": "巨齿狼王",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10250,
+                "hp": 17760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37604,8 +38221,8 @@ var outputTables = {
             "10353": {
                 "id": 10353,
                 "card_id": "双头牛怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10280,
+                "hp": 17810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37615,8 +38232,8 @@ var outputTables = {
             "10354": {
                 "id": 10354,
                 "card_id": "长矛鼠怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10310,
+                "hp": 17860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37626,8 +38243,8 @@ var outputTables = {
             "10355": {
                 "id": 10355,
                 "card_id": "小狗怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10340,
+                "hp": 17910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37637,8 +38254,8 @@ var outputTables = {
             "10356": {
                 "id": 10356,
                 "card_id": "大狗怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10370,
+                "hp": 17960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37648,8 +38265,8 @@ var outputTables = {
             "10357": {
                 "id": 10357,
                 "card_id": "蝙蝠怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10400,
+                "hp": 18010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37659,8 +38276,8 @@ var outputTables = {
             "10358": {
                 "id": 10358,
                 "card_id": "蟠桃怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10430,
+                "hp": 18060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37670,8 +38287,8 @@ var outputTables = {
             "10359": {
                 "id": 10359,
                 "card_id": "僵尸怪",
-                "atk": 2200,
-                "hp": 5497,
+                "atk": 10460,
+                "hp": 18110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37681,8 +38298,8 @@ var outputTables = {
             "10360": {
                 "id": 10360,
                 "card_id": "宫灯怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10490,
+                "hp": 18160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37692,8 +38309,8 @@ var outputTables = {
             "10361": {
                 "id": 10361,
                 "card_id": "挂科怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10520,
+                "hp": 18210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37703,8 +38320,8 @@ var outputTables = {
             "10362": {
                 "id": 10362,
                 "card_id": "自习怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10550,
+                "hp": 18260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37714,8 +38331,8 @@ var outputTables = {
             "10363": {
                 "id": 10363,
                 "card_id": "灯笼怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10580,
+                "hp": 18310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37725,8 +38342,8 @@ var outputTables = {
             "10364": {
                 "id": 10364,
                 "card_id": "龅牙兔",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10610,
+                "hp": 18360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37736,8 +38353,8 @@ var outputTables = {
             "10365": {
                 "id": 10365,
                 "card_id": "乌龟精",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10640,
+                "hp": 18410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37747,8 +38364,8 @@ var outputTables = {
             "10366": {
                 "id": 10366,
                 "card_id": "卖茶怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10670,
+                "hp": 18460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37758,8 +38375,8 @@ var outputTables = {
             "10367": {
                 "id": 10367,
                 "card_id": "白骨精",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10700,
+                "hp": 18510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37769,8 +38386,8 @@ var outputTables = {
             "10368": {
                 "id": 10368,
                 "card_id": "蛤蟆怪",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10730,
+                "hp": 18560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37780,8 +38397,8 @@ var outputTables = {
             "10369": {
                 "id": 10369,
                 "card_id": "树精",
-                "atk": 2343,
-                "hp": 5855,
+                "atk": 10760,
+                "hp": 18610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37791,8 +38408,8 @@ var outputTables = {
             "10370": {
                 "id": 10370,
                 "card_id": "黑熊精",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10790,
+                "hp": 18660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37802,8 +38419,8 @@ var outputTables = {
             "10371": {
                 "id": 10371,
                 "card_id": "狐狸精",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10820,
+                "hp": 18710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37813,8 +38430,8 @@ var outputTables = {
             "10372": {
                 "id": 10372,
                 "card_id": "水晶魔灵",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10850,
+                "hp": 18760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37824,8 +38441,8 @@ var outputTables = {
             "10373": {
                 "id": 10373,
                 "card_id": "大脸猫妖",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10880,
+                "hp": 18810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37835,8 +38452,8 @@ var outputTables = {
             "10374": {
                 "id": 10374,
                 "card_id": "野猪妖",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10910,
+                "hp": 18860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37846,8 +38463,8 @@ var outputTables = {
             "10375": {
                 "id": 10375,
                 "card_id": "猩猩巨魔",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10940,
+                "hp": 18910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37857,8 +38474,8 @@ var outputTables = {
             "10376": {
                 "id": 10376,
                 "card_id": "猴儿精",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 10970,
+                "hp": 18960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37868,8 +38485,8 @@ var outputTables = {
             "10377": {
                 "id": 10377,
                 "card_id": "巨蟒怪",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 11000,
+                "hp": 19010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37879,8 +38496,8 @@ var outputTables = {
             "10378": {
                 "id": 10378,
                 "card_id": "地狱小鬼",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 11030,
+                "hp": 19060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -37890,8 +38507,8 @@ var outputTables = {
             "10379": {
                 "id": 10379,
                 "card_id": "狮子怪",
-                "atk": 2493,
-                "hp": 6229,
+                "atk": 11060,
+                "hp": 19110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -37901,8 +38518,8 @@ var outputTables = {
             "10380": {
                 "id": 10380,
                 "card_id": "蚊子怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11090,
+                "hp": 19160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -37912,8 +38529,8 @@ var outputTables = {
             "10381": {
                 "id": 10381,
                 "card_id": "火焰怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11120,
+                "hp": 19210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37923,8 +38540,8 @@ var outputTables = {
             "10382": {
                 "id": 10382,
                 "card_id": "河童怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11150,
+                "hp": 19260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -37934,8 +38551,8 @@ var outputTables = {
             "10383": {
                 "id": 10383,
                 "card_id": "独角兽",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11180,
+                "hp": 19310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -37945,8 +38562,8 @@ var outputTables = {
             "10384": {
                 "id": 10384,
                 "card_id": "人鱼怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11210,
+                "hp": 19360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -37956,8 +38573,8 @@ var outputTables = {
             "10385": {
                 "id": 10385,
                 "card_id": "巨齿狼王",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11240,
+                "hp": 19410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -37967,8 +38584,8 @@ var outputTables = {
             "10386": {
                 "id": 10386,
                 "card_id": "双头牛怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11270,
+                "hp": 19460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -37978,8 +38595,8 @@ var outputTables = {
             "10387": {
                 "id": 10387,
                 "card_id": "长矛鼠怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11300,
+                "hp": 19510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -37989,8 +38606,8 @@ var outputTables = {
             "10388": {
                 "id": 10388,
                 "card_id": "小狗怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11330,
+                "hp": 19560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38000,8 +38617,8 @@ var outputTables = {
             "10389": {
                 "id": 10389,
                 "card_id": "大狗怪",
-                "atk": 2651,
-                "hp": 6621,
+                "atk": 11360,
+                "hp": 19610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38011,8 +38628,8 @@ var outputTables = {
             "10390": {
                 "id": 10390,
                 "card_id": "蝙蝠怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11390,
+                "hp": 19660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38022,8 +38639,8 @@ var outputTables = {
             "10391": {
                 "id": 10391,
                 "card_id": "蟠桃怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11420,
+                "hp": 19710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38033,8 +38650,8 @@ var outputTables = {
             "10392": {
                 "id": 10392,
                 "card_id": "僵尸怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11450,
+                "hp": 19760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38044,8 +38661,8 @@ var outputTables = {
             "10393": {
                 "id": 10393,
                 "card_id": "宫灯怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11480,
+                "hp": 19810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38055,8 +38672,8 @@ var outputTables = {
             "10394": {
                 "id": 10394,
                 "card_id": "挂科怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11510,
+                "hp": 19860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38066,8 +38683,8 @@ var outputTables = {
             "10395": {
                 "id": 10395,
                 "card_id": "自习怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11540,
+                "hp": 19910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38077,8 +38694,8 @@ var outputTables = {
             "10396": {
                 "id": 10396,
                 "card_id": "灯笼怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11570,
+                "hp": 19960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38088,8 +38705,8 @@ var outputTables = {
             "10397": {
                 "id": 10397,
                 "card_id": "龅牙兔",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11600,
+                "hp": 20010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38099,8 +38716,8 @@ var outputTables = {
             "10398": {
                 "id": 10398,
                 "card_id": "乌龟精",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11630,
+                "hp": 20060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38110,8 +38727,8 @@ var outputTables = {
             "10399": {
                 "id": 10399,
                 "card_id": "卖茶怪",
-                "atk": 2815,
-                "hp": 7032,
+                "atk": 11660,
+                "hp": 20110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38121,8 +38738,8 @@ var outputTables = {
             "10400": {
                 "id": 10400,
                 "card_id": "白骨精",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11690,
+                "hp": 20160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38132,8 +38749,8 @@ var outputTables = {
             "10401": {
                 "id": 10401,
                 "card_id": "蛤蟆怪",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11720,
+                "hp": 20210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38143,8 +38760,8 @@ var outputTables = {
             "10402": {
                 "id": 10402,
                 "card_id": "树精",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11750,
+                "hp": 20260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38154,8 +38771,8 @@ var outputTables = {
             "10403": {
                 "id": 10403,
                 "card_id": "黑熊精",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11780,
+                "hp": 20310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38165,8 +38782,8 @@ var outputTables = {
             "10404": {
                 "id": 10404,
                 "card_id": "狐狸精",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11810,
+                "hp": 20360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38176,8 +38793,8 @@ var outputTables = {
             "10405": {
                 "id": 10405,
                 "card_id": "水晶魔灵",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11840,
+                "hp": 20410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38187,8 +38804,8 @@ var outputTables = {
             "10406": {
                 "id": 10406,
                 "card_id": "大脸猫妖",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11870,
+                "hp": 20460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38198,8 +38815,8 @@ var outputTables = {
             "10407": {
                 "id": 10407,
                 "card_id": "野猪妖",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11900,
+                "hp": 20510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38209,8 +38826,8 @@ var outputTables = {
             "10408": {
                 "id": 10408,
                 "card_id": "猩猩巨魔",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11930,
+                "hp": 20560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38220,8 +38837,8 @@ var outputTables = {
             "10409": {
                 "id": 10409,
                 "card_id": "猴儿精",
-                "atk": 2987,
-                "hp": 7461,
+                "atk": 11960,
+                "hp": 20610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38231,8 +38848,8 @@ var outputTables = {
             "10410": {
                 "id": 10410,
                 "card_id": "巨蟒怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 11990,
+                "hp": 20660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38242,8 +38859,8 @@ var outputTables = {
             "10411": {
                 "id": 10411,
                 "card_id": "地狱小鬼",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12020,
+                "hp": 20710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38253,8 +38870,8 @@ var outputTables = {
             "10412": {
                 "id": 10412,
                 "card_id": "狮子怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12050,
+                "hp": 20760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38264,8 +38881,8 @@ var outputTables = {
             "10413": {
                 "id": 10413,
                 "card_id": "蚊子怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12080,
+                "hp": 20810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38275,8 +38892,8 @@ var outputTables = {
             "10414": {
                 "id": 10414,
                 "card_id": "火焰怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12110,
+                "hp": 20860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38286,8 +38903,8 @@ var outputTables = {
             "10415": {
                 "id": 10415,
                 "card_id": "河童怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12140,
+                "hp": 20910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38297,8 +38914,8 @@ var outputTables = {
             "10416": {
                 "id": 10416,
                 "card_id": "独角兽",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12170,
+                "hp": 20960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38308,8 +38925,8 @@ var outputTables = {
             "10417": {
                 "id": 10417,
                 "card_id": "人鱼怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12200,
+                "hp": 21010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38319,8 +38936,8 @@ var outputTables = {
             "10418": {
                 "id": 10418,
                 "card_id": "巨齿狼王",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12230,
+                "hp": 21060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38330,8 +38947,8 @@ var outputTables = {
             "10419": {
                 "id": 10419,
                 "card_id": "双头牛怪",
-                "atk": 3166,
-                "hp": 7908,
+                "atk": 12260,
+                "hp": 21110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38341,8 +38958,8 @@ var outputTables = {
             "10420": {
                 "id": 10420,
                 "card_id": "长矛鼠怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12290,
+                "hp": 21160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38352,8 +38969,8 @@ var outputTables = {
             "10421": {
                 "id": 10421,
                 "card_id": "小狗怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12320,
+                "hp": 21210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38363,8 +38980,8 @@ var outputTables = {
             "10422": {
                 "id": 10422,
                 "card_id": "大狗怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12350,
+                "hp": 21260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38374,8 +38991,8 @@ var outputTables = {
             "10423": {
                 "id": 10423,
                 "card_id": "蝙蝠怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12380,
+                "hp": 21310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38385,8 +39002,8 @@ var outputTables = {
             "10424": {
                 "id": 10424,
                 "card_id": "蟠桃怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12410,
+                "hp": 21360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38396,8 +39013,8 @@ var outputTables = {
             "10425": {
                 "id": 10425,
                 "card_id": "僵尸怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12440,
+                "hp": 21410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38407,8 +39024,8 @@ var outputTables = {
             "10426": {
                 "id": 10426,
                 "card_id": "宫灯怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12470,
+                "hp": 21460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38418,8 +39035,8 @@ var outputTables = {
             "10427": {
                 "id": 10427,
                 "card_id": "挂科怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12500,
+                "hp": 21510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38429,8 +39046,8 @@ var outputTables = {
             "10428": {
                 "id": 10428,
                 "card_id": "自习怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12530,
+                "hp": 21560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38440,8 +39057,8 @@ var outputTables = {
             "10429": {
                 "id": 10429,
                 "card_id": "灯笼怪",
-                "atk": 3353,
-                "hp": 8375,
+                "atk": 12560,
+                "hp": 21610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38451,8 +39068,8 @@ var outputTables = {
             "10430": {
                 "id": 10430,
                 "card_id": "龅牙兔",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12590,
+                "hp": 21660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38462,8 +39079,8 @@ var outputTables = {
             "10431": {
                 "id": 10431,
                 "card_id": "乌龟精",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12620,
+                "hp": 21710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38473,8 +39090,8 @@ var outputTables = {
             "10432": {
                 "id": 10432,
                 "card_id": "卖茶怪",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12650,
+                "hp": 21760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38484,8 +39101,8 @@ var outputTables = {
             "10433": {
                 "id": 10433,
                 "card_id": "白骨精",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12680,
+                "hp": 21810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38495,8 +39112,8 @@ var outputTables = {
             "10434": {
                 "id": 10434,
                 "card_id": "蛤蟆怪",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12710,
+                "hp": 21860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38506,8 +39123,8 @@ var outputTables = {
             "10435": {
                 "id": 10435,
                 "card_id": "树精",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12740,
+                "hp": 21910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38517,8 +39134,8 @@ var outputTables = {
             "10436": {
                 "id": 10436,
                 "card_id": "黑熊精",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12770,
+                "hp": 21960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38528,8 +39145,8 @@ var outputTables = {
             "10437": {
                 "id": 10437,
                 "card_id": "狐狸精",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12800,
+                "hp": 22010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38539,8 +39156,8 @@ var outputTables = {
             "10438": {
                 "id": 10438,
                 "card_id": "水晶魔灵",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12830,
+                "hp": 22060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38550,8 +39167,8 @@ var outputTables = {
             "10439": {
                 "id": 10439,
                 "card_id": "大脸猫妖",
-                "atk": 3548,
-                "hp": 8861,
+                "atk": 12860,
+                "hp": 22110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38561,8 +39178,8 @@ var outputTables = {
             "10440": {
                 "id": 10440,
                 "card_id": "野猪妖",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 12890,
+                "hp": 22160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38572,8 +39189,8 @@ var outputTables = {
             "10441": {
                 "id": 10441,
                 "card_id": "猩猩巨魔",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 12920,
+                "hp": 22210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38583,8 +39200,8 @@ var outputTables = {
             "10442": {
                 "id": 10442,
                 "card_id": "猴儿精",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 12950,
+                "hp": 22260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38594,8 +39211,8 @@ var outputTables = {
             "10443": {
                 "id": 10443,
                 "card_id": "巨蟒怪",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 12980,
+                "hp": 22310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38605,8 +39222,8 @@ var outputTables = {
             "10444": {
                 "id": 10444,
                 "card_id": "地狱小鬼",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13010,
+                "hp": 22360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38616,8 +39233,8 @@ var outputTables = {
             "10445": {
                 "id": 10445,
                 "card_id": "狮子怪",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13040,
+                "hp": 22410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38627,8 +39244,8 @@ var outputTables = {
             "10446": {
                 "id": 10446,
                 "card_id": "蚊子怪",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13070,
+                "hp": 22460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38638,8 +39255,8 @@ var outputTables = {
             "10447": {
                 "id": 10447,
                 "card_id": "火焰怪",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13100,
+                "hp": 22510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38649,8 +39266,8 @@ var outputTables = {
             "10448": {
                 "id": 10448,
                 "card_id": "河童怪",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13130,
+                "hp": 22560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38660,8 +39277,8 @@ var outputTables = {
             "10449": {
                 "id": 10449,
                 "card_id": "独角兽",
-                "atk": 3750,
-                "hp": 9365,
+                "atk": 13160,
+                "hp": 22610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38671,8 +39288,8 @@ var outputTables = {
             "10450": {
                 "id": 10450,
                 "card_id": "人鱼怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13190,
+                "hp": 22660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38682,8 +39299,8 @@ var outputTables = {
             "10451": {
                 "id": 10451,
                 "card_id": "巨齿狼王",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13220,
+                "hp": 22710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38693,8 +39310,8 @@ var outputTables = {
             "10452": {
                 "id": 10452,
                 "card_id": "双头牛怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13250,
+                "hp": 22760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38704,8 +39321,8 @@ var outputTables = {
             "10453": {
                 "id": 10453,
                 "card_id": "长矛鼠怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13280,
+                "hp": 22810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38715,8 +39332,8 @@ var outputTables = {
             "10454": {
                 "id": 10454,
                 "card_id": "小狗怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13310,
+                "hp": 22860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38726,8 +39343,8 @@ var outputTables = {
             "10455": {
                 "id": 10455,
                 "card_id": "大狗怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13340,
+                "hp": 22910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38737,8 +39354,8 @@ var outputTables = {
             "10456": {
                 "id": 10456,
                 "card_id": "蝙蝠怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13370,
+                "hp": 22960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38748,8 +39365,8 @@ var outputTables = {
             "10457": {
                 "id": 10457,
                 "card_id": "蟠桃怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13400,
+                "hp": 23010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38759,8 +39376,8 @@ var outputTables = {
             "10458": {
                 "id": 10458,
                 "card_id": "僵尸怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13430,
+                "hp": 23060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38770,8 +39387,8 @@ var outputTables = {
             "10459": {
                 "id": 10459,
                 "card_id": "宫灯怪",
-                "atk": 3960,
-                "hp": 9890,
+                "atk": 13460,
+                "hp": 23110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38781,8 +39398,8 @@ var outputTables = {
             "10460": {
                 "id": 10460,
                 "card_id": "挂科怪",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13490,
+                "hp": 23160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38792,8 +39409,8 @@ var outputTables = {
             "10461": {
                 "id": 10461,
                 "card_id": "自习怪",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13520,
+                "hp": 23210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38803,8 +39420,8 @@ var outputTables = {
             "10462": {
                 "id": 10462,
                 "card_id": "灯笼怪",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13550,
+                "hp": 23260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38814,8 +39431,8 @@ var outputTables = {
             "10463": {
                 "id": 10463,
                 "card_id": "龅牙兔",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13580,
+                "hp": 23310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38825,8 +39442,8 @@ var outputTables = {
             "10464": {
                 "id": 10464,
                 "card_id": "乌龟精",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13610,
+                "hp": 23360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38836,8 +39453,8 @@ var outputTables = {
             "10465": {
                 "id": 10465,
                 "card_id": "卖茶怪",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13640,
+                "hp": 23410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38847,8 +39464,8 @@ var outputTables = {
             "10466": {
                 "id": 10466,
                 "card_id": "白骨精",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13670,
+                "hp": 23460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38858,8 +39475,8 @@ var outputTables = {
             "10467": {
                 "id": 10467,
                 "card_id": "蛤蟆怪",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13700,
+                "hp": 23510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38869,8 +39486,8 @@ var outputTables = {
             "10468": {
                 "id": 10468,
                 "card_id": "树精",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13730,
+                "hp": 23560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38880,8 +39497,8 @@ var outputTables = {
             "10469": {
                 "id": 10469,
                 "card_id": "黑熊精",
-                "atk": 4178,
-                "hp": 10434,
+                "atk": 13760,
+                "hp": 23610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -38891,8 +39508,8 @@ var outputTables = {
             "10470": {
                 "id": 10470,
                 "card_id": "狐狸精",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13790,
+                "hp": 23660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -38902,8 +39519,8 @@ var outputTables = {
             "10471": {
                 "id": 10471,
                 "card_id": "水晶魔灵",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13820,
+                "hp": 23710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38913,8 +39530,8 @@ var outputTables = {
             "10472": {
                 "id": 10472,
                 "card_id": "大脸猫妖",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13850,
+                "hp": 23760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -38924,8 +39541,8 @@ var outputTables = {
             "10473": {
                 "id": 10473,
                 "card_id": "野猪妖",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13880,
+                "hp": 23810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -38935,8 +39552,8 @@ var outputTables = {
             "10474": {
                 "id": 10474,
                 "card_id": "猩猩巨魔",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13910,
+                "hp": 23860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -38946,8 +39563,8 @@ var outputTables = {
             "10475": {
                 "id": 10475,
                 "card_id": "猴儿精",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13940,
+                "hp": 23910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -38957,8 +39574,8 @@ var outputTables = {
             "10476": {
                 "id": 10476,
                 "card_id": "巨蟒怪",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 13970,
+                "hp": 23960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -38968,8 +39585,8 @@ var outputTables = {
             "10477": {
                 "id": 10477,
                 "card_id": "地狱小鬼",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 14000,
+                "hp": 24010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -38979,8 +39596,8 @@ var outputTables = {
             "10478": {
                 "id": 10478,
                 "card_id": "狮子怪",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 14030,
+                "hp": 24060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -38990,8 +39607,8 @@ var outputTables = {
             "10479": {
                 "id": 10479,
                 "card_id": "蚊子怪",
-                "atk": 4404,
-                "hp": 10997,
+                "atk": 14060,
+                "hp": 24110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -39001,8 +39618,8 @@ var outputTables = {
             "10480": {
                 "id": 10480,
                 "card_id": "火焰怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14090,
+                "hp": 24160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -39012,8 +39629,8 @@ var outputTables = {
             "10481": {
                 "id": 10481,
                 "card_id": "河童怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14120,
+                "hp": 24210,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -39023,8 +39640,8 @@ var outputTables = {
             "10482": {
                 "id": 10482,
                 "card_id": "独角兽",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14150,
+                "hp": 24260,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -39034,8 +39651,8 @@ var outputTables = {
             "10483": {
                 "id": 10483,
                 "card_id": "人鱼怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14180,
+                "hp": 24310,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -39045,8 +39662,8 @@ var outputTables = {
             "10484": {
                 "id": 10484,
                 "card_id": "巨齿狼王",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14210,
+                "hp": 24360,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -39056,8 +39673,8 @@ var outputTables = {
             "10485": {
                 "id": 10485,
                 "card_id": "双头牛怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14240,
+                "hp": 24410,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -39067,8 +39684,8 @@ var outputTables = {
             "10486": {
                 "id": 10486,
                 "card_id": "长矛鼠怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14270,
+                "hp": 24460,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -39078,8 +39695,8 @@ var outputTables = {
             "10487": {
                 "id": 10487,
                 "card_id": "小狗怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14300,
+                "hp": 24510,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -39089,8 +39706,8 @@ var outputTables = {
             "10488": {
                 "id": 10488,
                 "card_id": "大狗怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14330,
+                "hp": 24560,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -39100,8 +39717,8 @@ var outputTables = {
             "10489": {
                 "id": 10489,
                 "card_id": "蝙蝠怪",
-                "atk": 4637,
-                "hp": 11580,
+                "atk": 14360,
+                "hp": 24610,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -39111,8 +39728,8 @@ var outputTables = {
             "10490": {
                 "id": 10490,
                 "card_id": "蟠桃怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14390,
+                "hp": 24660,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -39122,8 +39739,8 @@ var outputTables = {
             "10491": {
                 "id": 10491,
                 "card_id": "僵尸怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14420,
+                "hp": 24710,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -39133,8 +39750,8 @@ var outputTables = {
             "10492": {
                 "id": 10492,
                 "card_id": "宫灯怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14450,
+                "hp": 24760,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 7,
@@ -39144,8 +39761,8 @@ var outputTables = {
             "10493": {
                 "id": 10493,
                 "card_id": "挂科怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14480,
+                "hp": 24810,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 1,
@@ -39155,8 +39772,8 @@ var outputTables = {
             "10494": {
                 "id": 10494,
                 "card_id": "自习怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14510,
+                "hp": 24860,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 4,
@@ -39166,8 +39783,8 @@ var outputTables = {
             "10495": {
                 "id": 10495,
                 "card_id": "巨齿狼王",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14540,
+                "hp": 24910,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 9,
@@ -39177,8 +39794,8 @@ var outputTables = {
             "10496": {
                 "id": 10496,
                 "card_id": "双头牛怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14570,
+                "hp": 24960,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 6,
@@ -39188,8 +39805,8 @@ var outputTables = {
             "10497": {
                 "id": 10497,
                 "card_id": "长矛鼠怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14600,
+                "hp": 25010,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 2,
@@ -39199,8 +39816,8 @@ var outputTables = {
             "10498": {
                 "id": 10498,
                 "card_id": "小狗怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14630,
+                "hp": 25060,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 3,
@@ -39210,8 +39827,8 @@ var outputTables = {
             "10499": {
                 "id": 10499,
                 "card_id": "大狗怪",
-                "atk": 4878,
-                "hp": 12182,
+                "atk": 14660,
+                "hp": 25110,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 5,
@@ -39221,8 +39838,8 @@ var outputTables = {
             "10500": {
                 "id": 10500,
                 "card_id": "蝙蝠怪",
-                "atk": 5200,
-                "hp": 14500,
+                "atk": 14690,
+                "hp": 25160,
                 "dodge_rate": 5,
                 "crit_rate": 5,
                 "skill_id": 10,
@@ -39240,8 +39857,8 @@ var outputTables = {
             "20001": {
                 "id": 20001,
                 "card_id": "双头牛怪",
-                "atk": 683,
-                "hp": 1706,
+                "atk": 714,
+                "hp": 1784,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
@@ -39251,8 +39868,8 @@ var outputTables = {
             "20002": {
                 "id": 20002,
                 "card_id": "长矛鼠怪",
-                "atk": 1022,
-                "hp": 2553,
+                "atk": 1116,
+                "hp": 2789,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7,
@@ -39262,8 +39879,8 @@ var outputTables = {
             "20003": {
                 "id": 20003,
                 "card_id": "小狗怪",
-                "atk": 1495,
-                "hp": 3734,
+                "atk": 1702,
+                "hp": 4251,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
@@ -39273,8 +39890,8 @@ var outputTables = {
             "20004": {
                 "id": 20004,
                 "card_id": "大狗怪",
-                "atk": 2135,
-                "hp": 5335,
+                "atk": 2529,
+                "hp": 6320,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4,
@@ -39284,8 +39901,8 @@ var outputTables = {
             "20005": {
                 "id": 20005,
                 "card_id": "蝙蝠怪",
-                "atk": 3177,
-                "hp": 7940,
+                "atk": 3910,
+                "hp": 9773,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 9,
@@ -39295,8 +39912,8 @@ var outputTables = {
             "20006": {
                 "id": 20006,
                 "card_id": "火魔王",
-                "atk": 4315,
-                "hp": 10777,
+                "atk": 5510,
+                "hp": 13761,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6,
@@ -39306,8 +39923,8 @@ var outputTables = {
             "20007": {
                 "id": 20007,
                 "card_id": "独臂铲子怪",
-                "atk": 5720,
-                "hp": 14286,
+                "atk": 7568,
+                "hp": 18901,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2,
@@ -39317,8 +39934,8 @@ var outputTables = {
             "20008": {
                 "id": 20008,
                 "card_id": "黄袍老怪",
-                "atk": 7046,
-                "hp": 17597,
+                "atk": 9648,
+                "hp": 24094,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 3,
@@ -39328,8 +39945,8 @@ var outputTables = {
             "20009": {
                 "id": 20009,
                 "card_id": "金角大王",
-                "atk": 7640,
-                "hp": 19842,
+                "atk": 10814,
+                "hp": 28084,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5,
@@ -39339,8 +39956,8 @@ var outputTables = {
             "20010": {
                 "id": 20010,
                 "card_id": "银角大王",
-                "atk": 8496,
-                "hp": 22064,
+                "atk": 12417,
+                "hp": 32247,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10,
@@ -39350,8 +39967,8 @@ var outputTables = {
             "20011": {
                 "id": 20011,
                 "card_id": "长眉老怪",
-                "atk": 10384,
-                "hp": 26972,
+                "atk": 15656,
+                "hp": 40666,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
@@ -39361,8 +39978,8 @@ var outputTables = {
             "20012": {
                 "id": 20012,
                 "card_id": "黑山巫妖",
-                "atk": 12502,
-                "hp": 32475,
+                "atk": 19426,
+                "hp": 50462,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7,
@@ -39372,8 +39989,8 @@ var outputTables = {
             "20013": {
                 "id": 20013,
                 "card_id": "半头魔王",
-                "atk": 14824,
-                "hp": 38506,
+                "atk": 23718,
+                "hp": 61610,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
@@ -39383,8 +40000,8 @@ var outputTables = {
             "20014": {
                 "id": 20014,
                 "card_id": "三条胳膊怪",
-                "atk": 16675,
-                "hp": 43313,
+                "atk": 27450,
+                "hp": 71301,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4,
@@ -39394,8 +40011,8 @@ var outputTables = {
             "20015": {
                 "id": 20015,
                 "card_id": "巨斧怪",
-                "atk": 25302,
-                "hp": 53301,
+                "atk": 32307,
+                "hp": 81000,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 9,
@@ -39405,8 +40022,8 @@ var outputTables = {
             "20016": {
                 "id": 20016,
                 "card_id": "双刀怪",
-                "atk": 31246,
-                "hp": 70256,
+                "atk": 38899,
+                "hp": 97528,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6,
@@ -39416,8 +40033,8 @@ var outputTables = {
             "20017": {
                 "id": 20017,
                 "card_id": "巨剑怪",
-                "atk": 37260,
-                "hp": 80256,
+                "atk": 46089,
+                "hp": 115552,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2,
@@ -39427,8 +40044,8 @@ var outputTables = {
             "20018": {
                 "id": 20018,
                 "card_id": "弓箭怪",
-                "atk": 42153,
-                "hp": 90256,
+                "atk": 52117,
+                "hp": 130667,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 3,
@@ -39438,8 +40055,8 @@ var outputTables = {
             "20019": {
                 "id": 20019,
                 "card_id": "锤子怪",
-                "atk": 48356,
-                "hp": 105623,
+                "atk": 58384,
+                "hp": 146383,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5,
@@ -39449,8 +40066,8 @@ var outputTables = {
             "20020": {
                 "id": 20020,
                 "card_id": "石巨人",
-                "atk": 50717,
-                "hp": 110185,
+                "atk": 60745,
+                "hp": 150945,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10,
@@ -39460,8 +40077,8 @@ var outputTables = {
             "30001": {
                 "id": 30001,
                 "card_id": "蝙蝠怪",
-                "atk": 3177,
-                "hp": 7940,
+                "atk": 3910,
+                "hp": 9773,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "normal_atk_id": 8
@@ -39469,8 +40086,8 @@ var outputTables = {
             "30002": {
                 "id": 30002,
                 "card_id": "火魔王",
-                "atk": 3327,
-                "hp": 8090,
+                "atk": 4060,
+                "hp": 9923,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1,
@@ -39480,8 +40097,8 @@ var outputTables = {
             "30003": {
                 "id": 30003,
                 "card_id": "金角大王",
-                "atk": 7640,
-                "hp": 19842,
+                "atk": 10814,
+                "hp": 28084,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "normal_atk_id": 9
@@ -39489,8 +40106,8 @@ var outputTables = {
             "30004": {
                 "id": 30004,
                 "card_id": "银角大王",
-                "atk": 7790,
-                "hp": 19992,
+                "atk": 10964,
+                "hp": 28234,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7,
@@ -39500,8 +40117,8 @@ var outputTables = {
             "30005": {
                 "id": 30005,
                 "card_id": "半头魔王",
-                "atk": 14824,
-                "hp": 38506,
+                "atk": 23718,
+                "hp": 61610,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "normal_atk_id": 6
@@ -39509,8 +40126,8 @@ var outputTables = {
             "30006": {
                 "id": 30006,
                 "card_id": "三条胳膊怪",
-                "atk": 15144,
-                "hp": 38656,
+                "atk": 24038,
+                "hp": 61760,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4,
@@ -39520,8 +40137,8 @@ var outputTables = {
             "30007": {
                 "id": 30007,
                 "card_id": "双刀怪",
-                "atk": 37260,
-                "hp": 80256,
+                "atk": 46089,
+                "hp": 115552,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "normal_atk_id": 2
@@ -39529,8 +40146,8 @@ var outputTables = {
             "30008": {
                 "id": 30008,
                 "card_id": "巨剑怪",
-                "atk": 37420,
-                "hp": 80416,
+                "atk": 46249,
+                "hp": 115712,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2,
@@ -39540,8 +40157,8 @@ var outputTables = {
             "30009": {
                 "id": 30009,
                 "card_id": "锤子怪",
-                "atk": 48356,
-                "hp": 105623,
+                "atk": 58384,
+                "hp": 146383,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "normal_atk_id": 7
@@ -39549,8 +40166,8 @@ var outputTables = {
             "30010": {
                 "id": 30010,
                 "card_id": "石巨人",
-                "atk": 50717,
-                "hp": 110185,
+                "atk": 60745,
+                "hp": 150945,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6,
@@ -48234,6 +48851,22 @@ var outputTables = {
             }
         }
     },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 194,
+                "card_lv": 20
+            }
+        }
+    },
     "recharge": {
         "colComment": {},
         "rows": {
@@ -48541,10 +49174,10 @@ var outputTables = {
                 "exp_card_count": 0,
                 "buy_power_count": 0,
                 "give_bless_count": 0,
-                "spirit_collect_count": 0,
                 "receive_bless_count": 0,
-                "friend_count": 0,
-                "challenge_count": 0
+                "spirit_collect_count": 0,
+                "challenge_count": 0,
+                "friend_count": 0
             },
             "1": {
                 "id": 1,
@@ -48552,10 +49185,10 @@ var outputTables = {
                 "exp_card_count": 10,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
-                "spirit_collect_count": 0,
                 "receive_bless_count": 0,
-                "friend_count": 0,
-                "challenge_count": 0
+                "spirit_collect_count": 0,
+                "challenge_count": 0,
+                "friend_count": 0
             },
             "2": {
                 "id": 2,
@@ -48563,11 +49196,10 @@ var outputTables = {
                 "exp_card_count": 20,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
+                "receive_bless_count": 1,
                 "spirit_collect_count": 0,
-                "receive_bless_count": 0,
-                "friend_count": 0,
                 "challenge_count": 0,
-                "description": "VIP2及以上，到达10级可跳过战斗"
+                "friend_count": 0
             },
             "3": {
                 "id": 3,
@@ -48575,10 +49207,10 @@ var outputTables = {
                 "exp_card_count": 30,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
+                "receive_bless_count": 2,
                 "spirit_collect_count": 1,
-                "receive_bless_count": 0,
-                "friend_count": 0,
-                "challenge_count": 0
+                "challenge_count": 5,
+                "friend_count": 0
             },
             "4": {
                 "id": 4,
@@ -48586,10 +49218,10 @@ var outputTables = {
                 "exp_card_count": 40,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
-                "spirit_collect_count": 2,
                 "receive_bless_count": 3,
-                "friend_count": 0,
-                "challenge_count": 0
+                "spirit_collect_count": 2,
+                "challenge_count": 10,
+                "friend_count": 5
             },
             "5": {
                 "id": 5,
@@ -48597,10 +49229,10 @@ var outputTables = {
                 "exp_card_count": 50,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
-                "spirit_collect_count": 3,
                 "receive_bless_count": 4,
-                "friend_count": 5,
-                "challenge_count": 0
+                "spirit_collect_count": 3,
+                "challenge_count": 15,
+                "friend_count": 10
             },
             "6": {
                 "id": 6,
@@ -48608,10 +49240,10 @@ var outputTables = {
                 "exp_card_count": 60,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
-                "spirit_collect_count": 4,
                 "receive_bless_count": 5,
-                "friend_count": 10,
-                "challenge_count": 1
+                "spirit_collect_count": 4,
+                "challenge_count": 20,
+                "friend_count": 15
             },
             "7": {
                 "id": 7,
@@ -48619,10 +49251,10 @@ var outputTables = {
                 "exp_card_count": 70,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
-                "spirit_collect_count": 5,
                 "receive_bless_count": 6,
-                "friend_count": 15,
-                "challenge_count": 2
+                "spirit_collect_count": 5,
+                "challenge_count": 25,
+                "friend_count": 20
             },
             "8": {
                 "id": 8,
@@ -48630,10 +49262,10 @@ var outputTables = {
                 "exp_card_count": 80,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
-                "spirit_collect_count": 6,
                 "receive_bless_count": 7,
-                "friend_count": 20,
-                "challenge_count": 3
+                "spirit_collect_count": 6,
+                "challenge_count": 30,
+                "friend_count": 25
             },
             "9": {
                 "id": 9,
@@ -48641,10 +49273,10 @@ var outputTables = {
                 "exp_card_count": 90,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
-                "spirit_collect_count": 7,
                 "receive_bless_count": 8,
-                "friend_count": 25,
-                "challenge_count": 4
+                "spirit_collect_count": 7,
+                "challenge_count": 35,
+                "friend_count": 30
             },
             "10": {
                 "id": 10,
@@ -48652,10 +49284,10 @@ var outputTables = {
                 "exp_card_count": 100,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
-                "spirit_collect_count": 8,
                 "receive_bless_count": 9,
-                "friend_count": 30,
-                "challenge_count": 5
+                "spirit_collect_count": 8,
+                "challenge_count": 40,
+                "friend_count": 35
             },
             "11": {
                 "id": 11,
@@ -48663,10 +49295,10 @@ var outputTables = {
                 "exp_card_count": 110,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
-                "spirit_collect_count": 9,
                 "receive_bless_count": 10,
-                "friend_count": 35,
-                "challenge_count": 6
+                "spirit_collect_count": 9,
+                "challenge_count": 45,
+                "friend_count": 40
             },
             "12": {
                 "id": 12,
@@ -48674,10 +49306,10 @@ var outputTables = {
                 "exp_card_count": 120,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
+                "receive_bless_count": 11,
                 "spirit_collect_count": 10,
-                "receive_bless_count": 10,
-                "friend_count": 40,
-                "challenge_count": 7
+                "challenge_count": 50,
+                "friend_count": 45
             }
         }
     }

@@ -355,6 +355,92 @@ var CardTrainLabel = cc.Layer.extend({
         }
     },
 
+    _extract: function () {
+        cc.log("CardTrainLabel _extract");
+
+        if(this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+        this._extractEffect = cc.BuilderReader.load(main_scene_image.uiEffect84, this);
+        var animationManager = this._extractEffect.animationManager;
+        animationManager.runAnimationsForSequenceNamedTweenDuration(this._cardTrainLabelFit.extractEffectUrl, 0);
+        this._effectTime = animationManager.getSequenceDuration(
+            animationManager.getRunningSequenceName()
+        );
+        var date = new Date();
+        this._startTime = date.getTime();
+        this._extractEffect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._extractEffect, 10);
+    },
+
+    ccbFnExtract: function () {
+        cc.log("CardTrainLabel ccbFnExtract");
+
+        var date = new Date();
+        var useTime = this._effectTime - (date.getTime() - this._startTime) / 1000;
+        var nowElixir = this._dummyCard.getElixir();
+        var tmpTime = useTime / 0.05;
+        var tmpElixir = nowElixir / tmpTime;
+
+        var nowHp = this._dummyCard.get("hp");
+        var nowAtk = this._dummyCard.get("atk");
+
+        var tmpHp = (this._dummyCard.get("hp") - this._leadCard.get("hp")) / tmpTime;
+        var tmpAtk = (this._dummyCard.get("atk") - this._leadCard.get("atk")) / tmpTime;
+
+        this._hpAdditionLabel.setString("");
+        this._atkAdditionLabel.setString("");
+
+        var fn = function () {
+
+            if (nowElixir < tmpElixir) {
+                tmpElixir = nowElixir;
+            }
+
+            nowElixir -= tmpElixir;
+            nowHp -= tmpHp;
+            nowAtk -= tmpAtk;
+
+            var elixir = gameData.player.get("elixir") - nowElixir;
+            this._elixirLabel.setString(Math.round(elixir));
+            this._hpLabel.setString(Math.round(nowHp));
+            this._atkLabel.setString(Math.round(nowAtk));
+
+            if (nowElixir <= 0) {
+                this._elixirLabel.setString(gameData.player.get("elixir"));
+                this._hpLabel.setString(this._leadCard.get("hp"));
+                this._atkLabel.setString(this._leadCard.get("atk"));
+                this.unschedule(fn);
+                if (this._extractEffect != null) {
+                    this._extractEffect.removeFromParent();
+                    this._extractEffect = null;
+                }
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._hpLabel.runAction(spawnAction.clone());
+                this._atkLabel.runAction(spawnAction.clone());
+            }
+
+        };
+
+        this.schedule(fn, 0.05);
+    },
+
     _onClickSelectLeadCard: function () {
         cc.log("CardTrainLabel _onClickSelectLeadCard");
 
@@ -363,6 +449,11 @@ var CardTrainLabel = cc.Layer.extend({
         if (this._effect != null) {
             this._effect.removeFromParent();
             this._effect = null;
+        }
+
+        if(this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
         }
 
         if (mandatoryTeachingLayer) {
@@ -462,15 +553,16 @@ var CardTrainLabel = cc.Layer.extend({
         }
 
         var that = this;
+        this._dummyCard = lz.clone(that._leadCard);
 
-        var cb = function() {
+        var cb = function () {
             that._leadCard.extract(function () {
-                that.update();
+                that._extract();
             }, EXTRACT_ELIXIR);
         };
 
         ExtractTipLabel.pop({
-            cb:cb,
+            cb: cb,
             type: EXTRACT_ELIXIR,
             num: this._leadCard.getElixir()
         });

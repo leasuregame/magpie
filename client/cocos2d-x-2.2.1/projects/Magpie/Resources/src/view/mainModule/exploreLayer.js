@@ -428,7 +428,11 @@ var ExploreLayer = cc.Layer.extend({
         if (this._reward) {
 
             if (this._reward.money && this._reward.exp) {
-                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                var url = "uiEffect48";
+                if(this._reward.isDouble) {
+                    url = "uiEffect87";
+                }
+                var rewardEffect = cc.BuilderReader.load(main_scene_image[url], this);
                 rewardEffect.controller.ccbMoneyLabel.setString("+" + this._reward.money);
                 rewardEffect.controller.ccbExpLabel.setString("+" + this._reward.exp);
                 rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);

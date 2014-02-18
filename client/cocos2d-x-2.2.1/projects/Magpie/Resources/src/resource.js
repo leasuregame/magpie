@@ -684,6 +684,8 @@ var main_scene_image = {
     icon370: main_scene_path + "icon370.png",
     icon371: main_scene_path + "icon371.png",
     icon372: main_scene_path + "icon372.png",
+    icon373: main_scene_path + "icon373.png",
+    icon374: main_scene_path + "icon374.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -703,12 +705,21 @@ var main_scene_image = {
     effect4_2: "res/ccb/effect4_2.ccbi",
     effect5_1: "res/ccb/effect5_1.ccbi",
     effect5_2: "res/ccb/effect5_2.ccbi",
+    effect5_3: "res/ccb/effect5_3.ccbi",
     effect6_1: "res/ccb/effect6_1.ccbi",
     effect6_2: "res/ccb/effect6_2.ccbi",
     effect7_1: "res/ccb/effect7_1.ccbi",
     effect7_2: "res/ccb/effect7_2.ccbi",
     effect8: "res/ccb/effect8.ccbi",
     effect9: "res/ccb/effect9.ccbi",
+    effect10_1: "res/ccb/effect10_1.ccbi",
+    effect10_2: "res/ccb/effect10_2.ccbi",
+    effect10_3: "res/ccb/effect10_3.ccbi",
+    effect11_1: "res/ccb/effect11_1.ccbi",
+    effect11_2: "res/ccb/effect11_2.ccbi",
+    effect11_3: "res/ccb/effect11_3.ccbi",
+    effect12_1: "res/ccb/effect12_1.ccbi",
+    effect12_2: "res/ccb/effect12_2.ccbi",
 
     effect300_1: "res/ccb/effect300_1.ccbi",
     effect300_2: "res/ccb/effect300_2.ccbi",
@@ -853,6 +864,10 @@ var main_scene_image = {
     uiEffect81: "res/ccb/uiEffect81.ccbi",
     uiEffect82: "res/ccb/uiEffect82.ccbi",
     uiEffect83: "res/ccb/uiEffect83.ccbi",
+    uiEffect84: "res/ccb/uiEffect84.ccbi",
+    uiEffect85: "res/ccb/uiEffect85.ccbi",
+    uiEffect86: "res/ccb/uiEffect86.ccbi",
+    uiEffect87: "res/ccb/uiEffect87.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -1227,7 +1242,7 @@ var main_scene_res = [
 ];
 
 var cardResIdList = [
-    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+    2, 3, 5, 7, 8, 9, 10, 12, 13, 16, 18, 19, 20, 22, 25, 28, 29, 30, 31, 32, 33, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {

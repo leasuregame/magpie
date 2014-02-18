@@ -171,7 +171,8 @@ var Task = Entity.extend({
                     power: msg.power_consume,
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    goldList: msg.momo
+                    goldList: msg.momo,
+                    isDouble: msg.isDouble || false
                 };
 
                 if (msg.task.id > that._id) {

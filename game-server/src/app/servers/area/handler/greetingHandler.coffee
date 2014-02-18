@@ -22,16 +22,14 @@ Handler::send = (msg, session, next) ->
     return next(null, {code: 501, msg: '内容过长，请重新输入'})
 
   player = null
-  consume = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
     (res, cb) ->
       player = res
-      consume = table.getTableItem('values', 'greetingConsumeGold')?.value or 20
-      if player.gold < consume
-        return cb({code: 501, msg: '魔石不足'})
+      if player.speaker <= 0
+        return cb({code: 501, msg: '喇叭不足'})
 
       dao.greeting.create {
         data: 
@@ -48,7 +46,7 @@ Handler::send = (msg, session, next) ->
       }, cb
 
     (gres, cb) ->
-      player.decrease 'gold', consume
+      player.decrease 'speaker', 1
       player.save()
       cb()
   ], (err) ->

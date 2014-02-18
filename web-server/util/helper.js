@@ -117,7 +117,7 @@ var versionCompare = function( stra, strb ) {
     }
   }
   return result;
-}
+};
 
 module.exports = {
   make_request_url: make_request_url,

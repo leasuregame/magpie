@@ -5,10 +5,14 @@
 var fs = require('fs');
 var path = require('path');
 var auth = require('../util/auth');
+var updateRecordDao = require('../util/updateRecordDao');
 
 exports.index = function(req, res) {
-  res.render('index', {
-    title: 'LeasureGame'
+  updateRecordDao.versionCounts(function(err, counts) {
+    res.render('index', {
+      title: 'LeasureGame',
+      counts: counts || []
+    });
   });
 };
 

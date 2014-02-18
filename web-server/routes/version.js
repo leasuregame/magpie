@@ -1,5 +1,12 @@
 var helper = require('../util/helper');
 var KSS_HOST = 'http://kss.ksyun.com';
+var updateRecordDao = require('../util/updateRecordDao');
+var async = require('async');
+var util = require('util');
+
+var localDateString = function(date) {
+  return util.format('%s-%s-%s', date.getFullYear(), date.getMonth() + 1, date.getDate());
+};
 
 exports.version = function(req, res) {
   var platform = req.params.platform;
@@ -46,4 +53,41 @@ exports.manage = function(req, res) {
 exports.updateVersion = function(req, res) {
   helper.updateVersions(req.body);
   res.redirect('/admin/version');
+};
+
+exports.versionDetails = function(req, res) {
+  var version = req.params.version;
+
+  async.parallel([
+    function(cb) {
+      updateRecordDao.period(version, cb);
+    },
+    function(cb) {
+      updateRecordDao.getByVersion(version, cb);
+    }, 
+    function(cb) {
+      updateRecordDao.versionCounts(cb);
+    }
+  ], function(err, results) {
+    if (err) {
+      return res.status(500).send('服务器出错');
+    }
+
+    var period = results[0][0];
+    var rows = results[1][0];
+    var counts = results[2][0];
+    console.log(counts);
+    res.render('versionDetails', {
+      maxDate: localDateString(period[0].maxDate),
+      minDate: localDateString(period[0].minDate),
+      counts: counts,
+      version: version,
+      rows: rows.map(function(r) {
+        return {
+          version: r.version,
+          created: localDateString(r.created)
+        };
+      })
+    });
+  });
 };

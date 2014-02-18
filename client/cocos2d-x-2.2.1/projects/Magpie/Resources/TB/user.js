@@ -103,6 +103,8 @@ var User = Entity.extend({
                     } else if (data.code == 600) {
                         cc.log("login fail go to updateLayer");
 
+                        cb();
+
                         Dialog.pop("您的版本需要更新", function () {
                             cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
                             updateLayer.update();

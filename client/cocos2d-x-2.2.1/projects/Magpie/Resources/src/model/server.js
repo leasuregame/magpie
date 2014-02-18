@@ -354,6 +354,10 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
+        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBLogout) {
+            tbAdapter.TBLogout(0);
+        }
+
         Dialog.pop("异地登录", function () {
             MainScene.destroy();
             cc.Director.getInstance().replaceScene(LoginScene.create());
@@ -383,15 +387,9 @@ var Server = Entity.extend({
             MainScene.destroy();
 
             if (type) {
-                if (type == 1) {
-                    cc.Director.getInstance().replaceScene(MainScene.getInstance());
-                } else if (type == 2) {
-                    var loginScene = LoginScene.create();
-                    loginScene.switchLayer(NewPlayerLayer);
-                    cc.Director.getInstance().replaceScene(loginScene);
-                }
-            } else {
-                cc.Director.getInstance().replaceScene(LoginScene.create());
+                var loginScene = LoginScene.create();
+                loginScene.switchLayer(NewPlayerLayer);
+                cc.Director.getInstance().replaceScene(loginScene);
             }
         });
     },

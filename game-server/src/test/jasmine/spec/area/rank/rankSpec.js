@@ -40,7 +40,7 @@ describe("Area Server", function() {
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 100,
-                        ranking: 20001
+                        ranking: 15
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -72,7 +72,7 @@ describe("Area Server", function() {
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 2,
-                        ranking: 20002
+                        ranking: 14
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);

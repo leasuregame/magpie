@@ -16,8 +16,8 @@ void NotificationHelp::start()
     // 把角标数字清0
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-    // 删除所有定时通知
-    NotificationHelp::remove();
+    // 删除key为DEFAULT_NOTIFICATION_KEY的通知
+    NotificationHelp::remove(DEFAULT_NOTIFICATION_KEY);
 }
 
 void NotificationHelp::end()
@@ -35,9 +35,14 @@ void NotificationHelp::end()
         powerNotification1.fireDate = [formatter dateFromString : @"11:00:00"];
         powerNotification1.timeZone = [NSTimeZone defaultTimeZone];
         powerNotification1.repeatInterval = NSDayCalendarUnit;
-        powerNotification1.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力值了。"];
+        powerNotification1.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力了。"];
         powerNotification1.soundName = UILocalNotificationDefaultSoundName;
         powerNotification1.applicationIconBadgeNumber = 1;
+        
+        //add key
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys : [NSNumber numberWithInt : DEFAULT_NOTIFICATION_KEY], @"key", nil];
+        [powerNotification1 setUserInfo : userInfo];
+        
         [[UIApplication sharedApplication] scheduleLocalNotification : powerNotification1];
         [powerNotification1 release];
     }
@@ -53,14 +58,19 @@ void NotificationHelp::end()
         powerNotification2.fireDate = [formatter dateFromString : @"17:00:00"];
         powerNotification2.timeZone = [NSTimeZone defaultTimeZone];
         powerNotification2.repeatInterval = NSDayCalendarUnit;
-        powerNotification2.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力值了。"];
+        powerNotification2.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力了。"];
         powerNotification2.soundName = UILocalNotificationDefaultSoundName;
         powerNotification2.applicationIconBadgeNumber = 1;
+        
+        //add key
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys : [NSNumber numberWithInt : DEFAULT_NOTIFICATION_KEY], @"key", nil];
+        [powerNotification2 setUserInfo : userInfo];
+        
         [[UIApplication sharedApplication] scheduleLocalNotification : powerNotification2];
         [powerNotification2 release];
     }
     
-    // 设置每3.5天通知一次
+    // 设置3.5天后的9:00或21:00通知一次
     NSDate * time = [NSDate date];
     NSCalendar * calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -101,9 +111,14 @@ void NotificationHelp::end()
             notification.fireDate = [time dateByAddingTimeInterval : timeInterval];
             notification.timeZone = [NSTimeZone defaultTimeZone];
             notification.repeatInterval = NSWeekCalendarUnit;
-            notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，你已经好久没登陆游戏了。"];
+            notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，已经好久没登陆游戏了。"];
             notification.soundName = UILocalNotificationDefaultSoundName;
             notification.applicationIconBadgeNumber = 1;
+            
+            //add key
+            NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys : [NSNumber numberWithInt : DEFAULT_NOTIFICATION_KEY], @"key", nil];
+            [notification setUserInfo : userInfo];
+            
             [[UIApplication sharedApplication] scheduleLocalNotification : notification];
             [notification release];
         }

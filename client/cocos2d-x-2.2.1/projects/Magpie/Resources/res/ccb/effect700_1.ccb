@@ -1171,8 +1171,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>rotation</string>
@@ -1196,7 +1198,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>360</real>
+									<real>250</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -1211,8 +1213,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>scale</string>
@@ -1303,7 +1307,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>360</real>
+						<real>250</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1405,8 +1409,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>rotation</string>
@@ -1430,7 +1436,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>360</real>
+									<real>250</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -1445,8 +1451,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>scale</string>
@@ -1537,7 +1545,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>360</real>
+						<real>250</real>
 					</dict>
 					<dict>
 						<key>name</key>

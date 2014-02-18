@@ -1461,7 +1461,7 @@ var BatterLayer = cc.Layer.extend({
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 150, gameMidpointX + 150), (attackerLocate.y + targetLocate.y) / 2),
+                                cc.p(lz.random(gameMidpointX - 80, gameMidpointX + 80), (attackerLocate.y + targetLocate.y) / 2),
                                 targetLocate
                             ];
 
@@ -2194,7 +2194,7 @@ var BatterLayer = cc.Layer.extend({
                 times: 1,
                 fn: function () {
                     var effect405_1 = cc.BuilderReader.load(main_scene_image.effect405_1, that);
-                    effect405_1.setPosition(that._battleMidpoint);
+                    effect405_1.setPosition(attackerLocate);
                     that.addChild(effect405_1, EFFECT_Z_ORDER);
 
                     var nextStepCallback1 = that.nextStepCallback();

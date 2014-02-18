@@ -3245,7 +3245,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect501_1.wav</string>
+							<string>res/sound/single_draw_card_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -3275,7 +3275,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.93333333730697632</real>
+			<real>0.76666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -63,15 +63,10 @@ var TenLotteryCardLayer = LazyLayer.extend({
             var url = card.get("url");
             var star = card.get("star");
             var index = star > 2 ? star - 2 : 1;
-            var skillType = card.get("skillType");
 
-            if (skillType > 3) {
-                skillType = 3;
-            }
-
-            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
             this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image[card.getCardIcon()]));
         }
     },
 
@@ -82,7 +77,7 @@ var TenLotteryCardLayer = LazyLayer.extend({
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint1);
             ccbNode.controller.ccbFragment.setString("+" + this._fragment);
-            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
             this.addChild(ccbNode, 1);
         }
     },

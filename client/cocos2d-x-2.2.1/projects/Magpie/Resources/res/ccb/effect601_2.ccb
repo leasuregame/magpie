@@ -684,8 +684,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-20</real>
-										<real>20</real>
+										<real>-30</real>
+										<real>30</real>
 									</array>
 								</dict>
 								<dict>
@@ -702,8 +702,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>20</real>
-										<real>-20</real>
+										<real>30</real>
+										<real>-30</real>
 									</array>
 								</dict>
 								<dict>
@@ -715,7 +715,25 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.36666667461395264</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>15</real>
+										<real>15</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>position</string>
+									<key>time</key>
+									<real>0.46666666865348816</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -1523,7 +1541,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>450</real>
+									<real>-450</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -1549,8 +1567,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>1.5</real>
-										<real>1.5</real>
+										<real>4</real>
+										<real>4</real>
 									</array>
 								</dict>
 								<dict>
@@ -1562,13 +1580,13 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.3333333432674408</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>3</real>
-										<real>3</real>
+										<real>2.5</real>
+										<real>2.5</real>
 									</array>
 								</dict>
 							</array>
@@ -1616,8 +1634,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
-							<real>3</real>
+							<real>2.5</real>
+							<real>2.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1630,7 +1648,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>450</real>
+						<real>-450</real>
 					</dict>
 					<dict>
 						<key>name</key>

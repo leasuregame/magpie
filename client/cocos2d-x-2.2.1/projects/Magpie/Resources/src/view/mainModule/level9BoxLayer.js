@@ -34,11 +34,16 @@ var Level9BoxLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._reward = data.reward;
-        this._cb = data.cb || null;
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._level9BoxLayerFit = gameFit.mainScene.level9BoxLayer;
-        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
+
+        this._reward = data.reward;
+        this._cb = data.cb || null;
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect55, this);
         this._ccbNode.setPosition(this._level9BoxLayerFit.bgSpritePoint);

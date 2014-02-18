@@ -20,17 +20,13 @@ var LotteryLayer = cc.Layer.extend({
     _energyLabel: null,
     _lotteryLabel: null,
     _times: 1,
-
     _goldLotteryIcon: [],
     _goldTenLotteryIcon: [],
     _goldLotteryLabel: [],
-
     _energyLotteryIcon: [],
     _energyTenLotteryIcon: [],
-
     _openTenLotteryItem: null,
     _closeTenLotteryItem: null,
-    _tenLotteryEffect: null,
     _privilegeIcon: null,
     _tenLotteryTip: null,
 
@@ -65,24 +61,7 @@ var LotteryLayer = cc.Layer.extend({
         bgSprite.setPosition(this._lotteryLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._lotteryLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon241);
-        titleIcon.setPosition(this._lotteryLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._lotteryLayerFit.backItemPoint);
-
-        var fragmentTipLayer = StrokeLabel.create("高级魔石十连抽必得卡魂","STHeitiTC-Medium", 20);
+        var fragmentTipLayer = StrokeLabel.create("高级十连抽必得卡魂", "STHeitiTC-Medium", 20);
         fragmentTipLayer.setPosition(this._lotteryLayerFit.fragmentTipLayerPoint);
         this.addChild(fragmentTipLayer);
 
@@ -136,16 +115,7 @@ var LotteryLayer = cc.Layer.extend({
         this._fragmentLabel.setPosition(this._lotteryLayerFit.fragmentLabelPoint);
         this.addChild(this._fragmentLabel);
 
-        var exchangeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button21,
-            main_scene_image.button21s,
-            main_scene_image.icon244,
-            this._onClickExchange,
-            this
-        );
-        exchangeItem.setPosition(this._lotteryLayerFit.exchangeItemPoint);
-
-        var menu = cc.Menu.create(backItem, exchangeItem);
+        var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -206,7 +176,6 @@ var LotteryLayer = cc.Layer.extend({
             this._onClickOpenTenLottery,
             this
         );
-
         this._openTenLotteryItem.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
         menu.addChild(this._openTenLotteryItem);
 
@@ -216,13 +185,16 @@ var LotteryLayer = cc.Layer.extend({
             this._onClickCloseTenLottery,
             this
         );
-
         this._closeTenLotteryItem.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
         menu.addChild(this._closeTenLotteryItem);
 
-//        this._tenLotteryEffect = cc.BuilderReader.load(main_scene_image.uiEffect76, this);
-//        this._tenLotteryEffect.setPosition(this._lotteryLayerFit.tenLotteryItemPoint);
-//        this.addChild(this._tenLotteryEffect);
+        var openTenLotteryEffect = cc.BuilderReader.load(main_scene_image.uiEffect76, this);
+        openTenLotteryEffect.setPosition(cc.p(74, 74));
+        this._openTenLotteryItem.addChild(openTenLotteryEffect);
+
+        var closeTenLotteryEffect = cc.BuilderReader.load(main_scene_image.uiEffect78, this);
+        closeTenLotteryEffect.setPosition(cc.p(74, 74));
+        this._closeTenLotteryItem.addChild(closeTenLotteryEffect);
 
         this._privilegeIcon = cc.Sprite.create(main_scene_image.icon319);
         this._privilegeIcon.setPosition(this._lotteryLayerFit.privilegeIconPoint);
@@ -290,15 +262,12 @@ var LotteryLayer = cc.Layer.extend({
         if (!isVisible) {
             this._openTenLotteryItem.setVisible(false);
             this._closeTenLotteryItem.setVisible(false);
-            // this._tenLotteryEffect.setVisible(false);
             this._privilegeIcon.setVisible(false);
         } else {
-            this._closeTenLotteryItem.setVisible(this._times == 10);
             this._openTenLotteryItem.setVisible(this._times == 1);
+            this._closeTenLotteryItem.setVisible(this._times == 10);
             this._privilegeIcon.setVisible(true);
-            // this._tenLotteryEffect.setVisible(true);
         }
-
     },
 
     ccbFnShowCard: function () {

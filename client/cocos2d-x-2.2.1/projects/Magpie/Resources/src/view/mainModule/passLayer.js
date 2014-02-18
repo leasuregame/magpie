@@ -163,7 +163,7 @@ var PassLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
         this._locate(this._top);
 
-        var tipLabel = cc.Sprite.create(main_scene_image.bg6);
+        var tipLabel = cc.Sprite.create(main_scene_image.icon60);
         tipLabel.setAnchorPoint(cc.p(0, 0));
         tipLabel.setPosition(this._passLayerFit.tipLabelPoint);
         this.addChild(tipLabel, 1);
@@ -172,6 +172,10 @@ var PassLayer = cc.Layer.extend({
         skillPointIcon.setAnchorPoint(cc.p(0, 0.5));
         skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
+
+        var topIcon = cc.Sprite.create(main_scene_image.icon62);
+        topIcon.setPosition(this._passLayerFit.topIconPoint);
+        this.addChild(topIcon);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -193,6 +197,15 @@ var PassLayer = cc.Layer.extend({
         towerBgSprite.setPosition(this._passLayerFit.towerBgSpritePoint);
         this.addChild(towerBgSprite);
 
+        var lineUpItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon24,
+            this._onClickLineUp,
+            this
+        );
+        lineUpItem.setPosition(this._passLayerFit.lineUpItemPoint);
+
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
             main_scene_image.button10s,
@@ -213,7 +226,7 @@ var PassLayer = cc.Layer.extend({
         );
         this._resetItem.setPosition(this._passLayerFit.resetItemPoint);
 
-        var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
+        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -389,7 +402,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _showWipeOutReward");
 
         var layer = LazyLayer.create();
-        this.addChild(layer);
+        this.addChild(layer, 5);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
@@ -553,26 +566,47 @@ var PassLayer = cc.Layer.extend({
     _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
 
+        this.ccbFnCallback = function () {
+            cc.log("PassLayer ccbFnCallback");
+
+            this._element[1].passItem.setEnabled(false);
+            this._locate(2, 0.05);
+
+            var index = 2;
+            this.schedule(function () {
+                this._element[index].passItem.setEnabled(false);
+                this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
+
+                index += 1;
+
+                if (index > this._top) {
+                    ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+                    ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                        this._spirit.setVisible(true);
+                        ccbNode.removeFromParent();
+
+                        LazyLayer.closeCloudAll();
+                        this._showWipeOutReward(reward);
+                    });
+
+                    return;
+                }
+
+                this._locate(index, 0.05);
+            }, 0.05, this._top - 2);
+        };
+
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect83, this);
+        ccbNode.setPosition(cc.pAdd(gameFit.GAME_ZERO_POINT, cc.p(230, 200)));
+        this.addChild(ccbNode);
+
+        this._spirit.setVisible(false);
+
         this._locate(1);
+    },
 
-        this._element[1].passItem.setEnabled(false);
-
-        this._spiritWalk(2, 0.5, 50, 1);
-        var index = 2;
-        this.schedule(function () {
-            this._element[index].passItem.setEnabled(false);
-            this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
-
-            index += 1;
-
-            if (index > this._top) {
-                LazyLayer.closeCloudAll();
-                this._showWipeOutReward(reward);
-                return;
-            }
-
-            this._spiritWalk(index, 0.5, 50, 1);
-        }, 0.6, this._top - 2);
+    ccbFnCallback: function () {
+        cc.log("PassLayer ccbFnCallback null");
     },
 
     _onClickDefiance: function (id) {
@@ -608,8 +642,6 @@ var PassLayer = cc.Layer.extend({
                     that._isFirstPassWin = data.isFirstPassWin || false;
 
                     that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
-
-
                 } else {
                     that.update();
 
@@ -659,6 +691,13 @@ var PassLayer = cc.Layer.extend({
                 LazyLayer.closeCloudLayer();
             }
         });
+    },
+
+    _onClickLineUp: function () {
+        cc.log("TournamentLabel _onClickLineUp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        LineUpLayer.pop();
     },
 
     _onClickReset: function () {

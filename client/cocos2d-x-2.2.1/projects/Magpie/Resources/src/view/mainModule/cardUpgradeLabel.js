@@ -196,7 +196,17 @@ var CardUpgradeLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._cardUpgradeLabelFit.helpItemPoint);
+
         var menu = cc.Menu.create(
+            helpItem,
             selectLeadCardItem,
             this._upgradeItem,
             this._selectRetinueCardItem
@@ -486,6 +496,11 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
@@ -593,7 +608,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 cardIdList.push(that._retinueCard[i].get("id"));
             }
 
-            var dummyCard = lz.clone(that._leadCard);
+                var dummyCard = lz.clone(that._leadCard);
 
             that._leadCard.upgrade(function (data) {
                 cc.log(data);
@@ -615,8 +630,14 @@ var CardUpgradeLabel = cc.Layer.extend({
         } else {
             next();
         }
+    },
 
+    _onClickHelp: function() {
+        cc.log("CardUpgradeLabel _onClickHelp");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["cardUpgrade"]);
     }
 });
 

@@ -18,14 +18,15 @@ var SPIRIT_ID = -1;
 
 var LineUp = Entity.extend({
     _lineUp: {},
-    _lineUpCount: 0,
+    _count: 0,
 
     init: function (data) {
         cc.log("LineUp init");
 
         this.update(data);
 
-        cc.log(this);
+        this.off();
+        this.on("lineUpChange", this._lineUpChangeEvent);
 
         return true;
     },
@@ -33,13 +34,23 @@ var LineUp = Entity.extend({
     update: function (data) {
         cc.log("LineUp update");
 
-        this._lineUp = {};
+        var lineUp = {};
+        var count = 0;
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             if (data[i] !== undefined) {
-                this._lineUpCount++;
-                this._lineUp[i] = data[i];
+                count++;
+                lineUp[i] = data[i];
             }
         }
+
+        this.set("lineUp", lineUp);
+        this.set("count", count);
+    },
+
+    _lineUpChangeEvent: function () {
+        cc.log("LineUp _lineUpChangeEvent");
+
+        gameData.player.checkAbility();
     },
 
     getLineUpCardList: function () {
@@ -92,9 +103,7 @@ var LineUp = Entity.extend({
         cc.log(lineUp);
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            cc.log(i);
             if (this._lineUp[i] != lineUp[i]) {
-                cc.log(i);
                 var that = this;
 
                 lz.server.request("area.trainHandler.changeLineUp", {

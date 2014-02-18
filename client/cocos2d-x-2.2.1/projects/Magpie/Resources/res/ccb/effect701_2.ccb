@@ -221,7 +221,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -324,9 +324,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>148</integer>
-									<integer>32</integer>
-									<integer>146</integer>
+									<integer>215</integer>
+									<integer>131</integer>
+									<integer>255</integer>
 								</array>
 							</dict>
 						</array>
@@ -370,7 +370,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -381,11 +381,11 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>150</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -778,9 +778,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>148</integer>
-									<integer>55</integer>
 									<integer>255</integer>
+									<integer>137</integer>
+									<integer>216</integer>
 								</array>
 							</dict>
 							<dict>
@@ -998,8 +998,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>8</real>
-							<real>3</real>
+							<real>20</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>

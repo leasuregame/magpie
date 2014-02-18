@@ -297,6 +297,12 @@ var PaymentLayer = LazyLayer.extend({
             otherGoldLabel.setPosition(cc.p(320, y + 50));
             scrollViewLayer.addChild(otherGoldLabel);
 
+            var url = (i == 2) ? "icon365" : "icon364";
+            var tipIcon = cc.Sprite.create(main_scene_image[url]);
+            tipIcon.setPosition(cc.p(40, y + 90));
+            tipIcon.setVisible(gameData.player.isFirstPayment(paymentTypeList[i].id));
+            scrollViewLayer.addChild(tipIcon);
+
             var paymentItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button21,
                 main_scene_image.button21s,

@@ -246,7 +246,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>20</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -402,7 +402,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>20</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -465,8 +465,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.8666667938232422</real>
-							<real>2.8666667938232422</real>
+							<real>3</real>
+							<real>3</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -479,7 +479,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-84</real>
+						<real>-90</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -597,7 +597,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.46666666865348816</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -620,7 +620,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect4_2.wav</string>
+							<string>res/sound/battle_sound_effect807_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

@@ -201,7 +201,8 @@ var gameGoodsIcon = {
     "skillPoint": "icon152",
     "spirit": "icon317",
     "exp_card": "icon316",
-    "exp": "icon318"
+    "exp": "icon318",
+    "speaker": "icon375"
 };
 
 var gameGoodsName = {
@@ -293,6 +294,11 @@ var gameGoodsName = {
     },
     "cardArray": {
         color: cc.c3b(255, 239, 131)
+    },
+    "speaker": {
+        name: "喇叭",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["speaker"]
     }
 };
 

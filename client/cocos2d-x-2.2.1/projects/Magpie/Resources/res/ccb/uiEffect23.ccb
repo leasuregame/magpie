@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -415,7 +415,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -838,7 +838,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1371,7 +1371,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1386,7 +1386,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-140</real>
+							<real>-100</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1837,7 +1837,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2879,7 +2879,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2889,7 +2889,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-500</real>
+							<real>-428</real>
 							<integer>0</integer>
 						</array>
 					</dict>

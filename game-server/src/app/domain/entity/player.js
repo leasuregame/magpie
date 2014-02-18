@@ -1284,7 +1284,8 @@ var Player = (function(_super) {
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,
-            goldCards: this.getGoldCard()
+            goldCards: this.getGoldCard(),
+            speaker: this.speaker
         };
     };
 

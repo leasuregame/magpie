@@ -3,6 +3,7 @@
  */
 
 var GreetingLabel = LazyLayer.extend({
+    _greetingLabelFit: null,
 
     _msgEditBox: null,
     _scrollView: null,
@@ -15,6 +16,8 @@ var GreetingLabel = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._greetingLabelFit = gameFit.mainScene.greetingLabel;
+
         this._msgEditBox = null;
         this._scrollView = null;
         this._scrollViewLayer = null;
@@ -26,31 +29,31 @@ var GreetingLabel = LazyLayer.extend({
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(540, 780));
-        bgSprite.setPosition(cc.p(320, 550));
+        bgSprite.setContentSize(this._greetingLabelFit.bgSpriteSize);
+        bgSprite.setPosition(this._greetingLabelFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon371);
-        titleIcon.setPosition(cc.p(320, 930));
+        titleIcon.setPosition(this._greetingLabelFit.titleIconPoint);
         this.addChild(titleIcon);
 
         var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
         msgBgIcon.setAnchorPoint(cc.p(0, 0.5));
-        msgBgIcon.setPosition(cc.p(70, 850));
+        msgBgIcon.setPosition(this._greetingLabelFit.msgBgIconPoint);
         msgBgIcon.setScaleY(0.5);
         msgBgIcon.setScaleX(0.8);
         this.addChild(msgBgIcon);
 
         var speakerIcon = cc.Sprite.create(main_scene_image.icon369);
-        speakerIcon.setPosition(cc.p(110, 850));
+        speakerIcon.setPosition(this._greetingLabelFit.speakerIconPoint);
         speakerIcon.setScale(0.6);
         this.addChild(speakerIcon);
 
         this._msgEditBox = cc.EditBox.create(cc.size(325, 48), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._msgEditBox.setPosition(cc.p(305, 850));
+        this._msgEditBox.setPosition(this._greetingLabelFit.msgEditBoxPoint);
         this._msgEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._msgEditBox.setDelegate(this);
-        this._msgEditBox.setFont("STHeitiTC-Medium", 35);
+        this._msgEditBox.setFont("STHeitiTC-Medium", 26);
         this._msgEditBox.setPlaceHolder("请输入信息");
         this.addChild(this._msgEditBox);
 
@@ -61,40 +64,48 @@ var GreetingLabel = LazyLayer.extend({
             this._onClickSend,
             this
         );
-        sendItem.setPosition(520, 850);
+        sendItem.setPosition(this._greetingLabelFit.sendItemPoint);
 
-        var menu = LazyMenu.create(sendItem);
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button37,
+            main_scene_image.button37s,
+            this._onClickClose,
+            this
+        );
+
+        closeItem.setPosition(this._greetingLabelFit.closeItemPoint);
+
+        var menu = LazyMenu.create(sendItem,closeItem);
         menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._scrollViewLayer = MarkLayer.create(cc.rect(54, 190, 600, 590));
+        this._scrollViewLayer = MarkLayer.create(this._greetingLabelFit.scrollViewLayerRect);
         this._scrollViewLayer.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
 
         var scrollViewBgLayer = cc.Scale9Sprite.create(main_scene_image.icon169);
-        scrollViewBgLayer.setContentSize(cc.size(500, 600));
-        scrollViewBgLayer.setPosition(cc.p(320, 500));
+        scrollViewBgLayer.setContentSize(this._greetingLabelFit.scrollViewBgLayerSize);
+        scrollViewBgLayer.setPosition(this._greetingLabelFit.scrollViewBgLayerPoint);
         this.addChild(scrollViewBgLayer);
 
-        this._scrollView = cc.ScrollView.create(cc.size(600, 590), this._scrollViewLayer);
-        this._scrollView.setPosition(cc.p(70, 205));
+        this._scrollView = cc.ScrollView.create(this._greetingLabelFit.scrollViewSize, this._scrollViewLayer);
+        this._scrollView.setPosition(this._greetingLabelFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        return true;
+    },
+
+    insertMessages: function() {
+        cc.log("GreetingLabel insertMessages");
         var msgList = gameData.greeting.getMsgList();
-        var len = 50;//msgList.length;
+        var len = msgList.length;
 
         for (var i = 0; i < len; i++) {
-            this.pushMsg({
-                time: 50 - i,
-                name: "玩家" + i,
-                content: "爱的勇气人评论吧乒乒乓乓噼噼啪啪劈劈啪啪"
-            });
+            this.pushMsg(msgList[i]);
         }
-
-        return true;
     },
 
     update: function () {
@@ -103,20 +114,19 @@ var GreetingLabel = LazyLayer.extend({
         this._msgList.sort(this._sort);
         var len = this._layer.length;
         var scrollViewHeight = len * 120;
-        if (scrollViewHeight < 590) {
-            scrollViewHeight = 590;
+        if (scrollViewHeight < this._greetingLabelFit.scrollViewHeight) {
+            scrollViewHeight = this._greetingLabelFit.scrollViewHeight;
         }
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 120 * i;
-            this._layer[this._msgList[i].id].setPosition(cc.p(0, y));
+            this._layer[this._msgList[i].id].setPosition(cc.p(55, y));
         }
-        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
     pushMsg: function (msg) {
         cc.log("GreetingLabel pushMsg");
-        cc.log(msg);
 
         var len = this._layer.length;
         var index = len;
@@ -129,7 +139,7 @@ var GreetingLabel = LazyLayer.extend({
             this._msgList[index] = {id: index};
         }
 
-        this._msgList[index].time = msg.time;
+        this._msgList[index].time = msg.created;
 
         var id = this._msgList[index].id;
 
@@ -138,16 +148,23 @@ var GreetingLabel = LazyLayer.extend({
             this._layer[id] = null;
         }
 
-
-
         this._layer[id] = cc.Layer.create();
         this._scrollViewLayer.addChild(this._layer[id]);
 
         var nameLabel = cc.LabelTTF.create(msg.name, "STHeitiTC-Medium", 25);
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(70, -40));
+        nameLabel.setPosition(cc.p(70, -35));
         nameLabel.setColor(cc.c3b(255, 239, 131));
         this._layer[id].addChild(nameLabel);
+
+        var size = nameLabel.getContentSize();
+        var date = new Date(msg.created);
+        var timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+        var timeLabel = cc.LabelTTF.create(timeStr, "STHeitiTC-Medium", 20);
+        timeLabel.setAnchorPoint(cc.p(0, 0.5));
+        timeLabel.setPosition(cc.p(size.width + 85, -38));
+        timeLabel.setColor(cc.c3b(255, 239, 131));
+        this._layer[id].addChild(timeLabel);
 
         var contentLabel = cc.LabelTTF.create(msg.content, "STHeitiTC-Medium", 22);
         contentLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -159,7 +176,6 @@ var GreetingLabel = LazyLayer.extend({
         this._layer[id].addChild(line);
 
         this.update();
-
     },
 
     _sort: function (a, b) {
@@ -168,6 +184,8 @@ var GreetingLabel = LazyLayer.extend({
 
     _onClickSend: function () {
         cc.log("GreetingLabel _onClickSend");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var text = this._msgEditBox.getText();
         cc.log("send msg text: " + text);
         if (text == null || text == "") {
@@ -179,9 +197,17 @@ var GreetingLabel = LazyLayer.extend({
         }
 
         var that = this;
-//        gameData.greeting.sendMsg(function () {
-//            that._msgEditBox.setText("");
-//        }, text);
+        gameData.greeting.sendMsg(function () {
+            that._msgEditBox.setText("");
+        }, text);
+    },
+
+    _onClickClose: function() {
+        cc.log("GreetingLabel _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.removeFromParent();
     }
 
 });
@@ -209,11 +235,17 @@ GreetingLabel.pop = function () {
 
     GreetingLabel.getInstance = function () {
         if (_greetingLabel == null) {
-            _greetingLabel = new GreetingLabel();
-            _greetingLabel.init();
+            _greetingLabel = GreetingLabel.create();
+            _greetingLabel.retain();
         }
 
         return _greetingLabel;
     };
 
+    GreetingLabel.destroy = function () {
+        if (_greetingLabel) {
+            _greetingLabel.release();
+            _greetingLabel = null;
+        }
+    };
 })();

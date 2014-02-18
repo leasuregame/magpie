@@ -148,6 +148,8 @@ var MainScene = cc.Scene.extend({
             _mainScene = null;
         }
 
+        GreetingLabel.destroy();
+
         gameData.sound.stopMusic();
     };
 })();

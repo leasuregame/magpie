@@ -143,6 +143,7 @@
                 <file name="src/view/mainModule/giftBagLayer.js"/>
                 <file name="src/view/mainModule/goldLayer.js"/>
                 <file name="src/view/mainModule/goPaymentLayer.js"/>
+                <file name="src/view/mainModule/greetingLabel.js"/>
                 <file name="src/view/mainModule/level9BoxLayer.js"/>
                 <file name="src/view/mainModule/lineUpDetail.js"/>
                 <file name="src/view/mainModule/lineUpDetailsLayer.js"/>

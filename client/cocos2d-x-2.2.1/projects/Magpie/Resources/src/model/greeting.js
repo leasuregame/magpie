@@ -12,6 +12,7 @@ var Greeting = Entity.extend({
         cc.log("Greeting init");
 
         this._msgList = [];
+        this.sync();
         return true;
     },
 
@@ -32,6 +33,7 @@ var Greeting = Entity.extend({
                         cc.log(data);
 
                         MainScene.getInstance().speaker(data.msg);
+                        GreetingLabel.getInstance().pushMsg(data.msg);
                         that._push(data.msg);
                     });
                 } else {
@@ -52,6 +54,7 @@ var Greeting = Entity.extend({
             function (data) {
                 if (data.code == 200) {
                     cc.log("send success");
+                    gameData.player.add("gold", -20);
                     cb();
                 } else {
                     cc.log("send fail");
@@ -62,7 +65,9 @@ var Greeting = Entity.extend({
     },
 
     update: function (data) {
+        cc.log("Greeting update");
         this._msgList = data;
+        GreetingLabel.getInstance().insertMessages();
     },
 
     _push: function (msg) {

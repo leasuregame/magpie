@@ -44,8 +44,8 @@ Handler::send = (msg, session, next) ->
     (greet, cb) =>
       @app.get('messageService').pushMessage {
         route: 'onGreeting'
-        msg: name: playerName, content: content
-      }, cb     
+        msg: name: playerName, content: content, created: new Date(greet.created).getTime?()
+      }, cb
 
     (gres, cb) ->
       player.decrease 'gold', consume
@@ -59,11 +59,11 @@ Handler::send = (msg, session, next) ->
 
 Handler::getLatest = (msg, session, next) ->
   dao.greeting.fetchMany {
-    limit: 10,
+    limit: 50,
     orderby: 'created DESC'
   }, (err, res) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
-
-    result = res.map (r) -> content: r.content, name: r.playerName
+    console.log res[0]
+    result = res.map (r) -> content: r.content, name: r.playerName, created: r.created.getTime?()
     next(null, {code: 200, msg: result})

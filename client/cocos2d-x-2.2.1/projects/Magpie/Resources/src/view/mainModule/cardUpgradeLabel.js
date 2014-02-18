@@ -608,7 +608,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 cardIdList.push(that._retinueCard[i].get("id"));
             }
 
-            var dummyCard = lz.clone(that._leadCard);
+                var dummyCard = lz.clone(that._leadCard);
 
             that._leadCard.upgrade(function (data) {
                 cc.log(data);

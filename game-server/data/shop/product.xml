@@ -7,8 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>junyu lu</LastAuthor>
-  <Created>2014-02-13T16:21:00Z</Created>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-02-18T10:08:51Z</Created>
+  <LastSaved>2014-02-18T02:47:59Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -19,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11280</WindowHeight>
-  <WindowWidth>36700</WindowWidth>
+  <WindowHeight>14520</WindowHeight>
+  <WindowWidth>37420</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -37,16 +38,20 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="道具配置表">
-  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="124"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="124"/>
    <Column ss:AutoFitWidth="0" ss:Width="109"/>
-   <Column ss:AutoFitWidth="0" ss:Width="451"/>
+   <Column ss:AutoFitWidth="0" ss:Width="240"/>
    <Column ss:AutoFitWidth="0" ss:Width="108"/>
-   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="124"/>
-   <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="166"/>
+   <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="124"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="166"/>
+   <Column ss:Width="108"/>
+   <Column ss:Width="124"/>
+   <Column ss:AutoFitWidth="0" ss:Width="106"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">排序</Data></Cell>
     <Cell><Data ss:Type="String">类型名称</Data></Cell>
     <Cell><Data ss:Type="String">显示名称</Data></Cell>
     <Cell><Data ss:Type="String">描述</Data></Cell>
@@ -57,9 +62,12 @@
     <Cell><Data ss:Type="String">是否显示在商城界面</Data></Cell>
     <Cell><Data ss:Type="String">每次消耗增量</Data></Cell>
     <Cell><Data ss:Type="String">每次消耗最大值</Data></Cell>
+    <Cell><Data ss:Type="String">可打折的数量</Data></Cell>
+    <Cell><Data ss:Type="String">折扣</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">order</Data></Cell>
     <Cell><Data ss:Type="String">method</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">disc</Data></Cell>
@@ -70,8 +78,11 @@
     <Cell><Data ss:Type="String">isVisible</Data></Cell>
     <Cell><Data ss:Type="String">consume_inc</Data></Cell>
     <Cell><Data ss:Type="String">consume_max</Data></Cell>
+    <Cell><Data ss:Type="String">discount_num</Data></Cell>
+    <Cell><Data ss:Type="String">discount</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">expCard</Data></Cell>
     <Cell><Data ss:Type="String">经验元灵</Data></Cell>
@@ -83,6 +94,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">power</Data></Cell>
     <Cell><Data ss:Type="String">体力</Data></Cell>
@@ -96,7 +108,22 @@
     <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">speaker</Data></Cell>
+    <Cell><Data ss:Type="String">喇叭</Data></Cell>
+    <Cell><Data ss:Type="String">一次性购买10个以上，打8折。</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">speaker</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">一小袋仙币</Data></Cell>
     <Cell><Data ss:Type="String">1000仙币，额外赠送200仙币。</Data></Cell>
@@ -108,6 +135,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">一袋仙币</Data></Cell>
     <Cell><Data ss:Type="String">5000仙币，额外赠送2500仙币。</Data></Cell>
@@ -119,6 +147,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">一大袋仙币</Data></Cell>
     <Cell><Data ss:Type="String">10000仙币，额外赠送8000仙币。</Data></Cell>
@@ -130,9 +159,10 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">challengeCount</Data></Cell>
     <Cell><Data ss:Type="String">有奖竞技次数</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">gold</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="String">challengeCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -142,14 +172,15 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">cardCount</Data></Cell>
     <Cell><Data ss:Type="String">卡库位置</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">gold</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">cardCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
   </Table>
@@ -164,8 +195,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <RangeSelection>R5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

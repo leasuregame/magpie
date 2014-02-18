@@ -8,9 +8,9 @@ Handler = (@app) ->
 
 Handler::success = (msg, session, next) ->
   version = msg.version
-  path1 = msg.path1
-  path2 = msg.path2
-  text = msg.text
+  path1 = msg.path1 or ''
+  path2 = msg.path2 or ''
+  text = msg.text or ''
 
   @app.get('dao').upgrade.create data: {
     version: version,

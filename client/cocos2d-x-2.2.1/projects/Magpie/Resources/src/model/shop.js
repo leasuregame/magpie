@@ -67,14 +67,14 @@ var Shop = Entity.extend({
 
             if (msg.goldCards) {
                 player.set("goldCards", msg.goldCards);
-                gameMark.updateGoldCardsMark(true);
+                gameMark.updateGoldCardsMark(false);
             }
 
             if (msg.recharge) {
                 player.set("recharge", msg.recharge);
             }
 
-            if(msg.firstRechargeBox) {
+            if (msg.firstRechargeBox) {
                 player.set("firstRechargeBox", msg.firstRechargeBox);
             }
 
@@ -453,13 +453,13 @@ var Shop = Entity.extend({
             var usedCount = product.maxBuyTimes - product.remainTimes;
             var consume = 0;
 
-            while(1){
+            while (1) {
                 var tmpConsume = product.price + usedCount * product.consume_inc;
                 if (tmpConsume > product.consume_max) {
                     tmpConsume = product.consume_max;
                 }
                 consume += tmpConsume;
-                if(gold < consume) {
+                if (gold < consume) {
                     break;
                 }
                 usedCount++;
@@ -508,13 +508,13 @@ var Shop = Entity.extend({
             var usedCount = product.maxBuyTimes - product.remainTimes;
             var consume = 0;
 
-            while(1){
+            while (1) {
                 var tmpConsume = product.price + usedCount * product.consume_inc;
                 if (tmpConsume > product.consume_max) {
                     tmpConsume = product.consume_max;
                 }
                 consume += tmpConsume;
-                if(gold < consume) {
+                if (gold < consume) {
                     break;
                 }
                 usedCount++;
@@ -571,13 +571,13 @@ var Shop = Entity.extend({
             var usedCount = product.maxBuyTimes - product.remainTimes;
             var consume = 0;
 
-            while(1){
+            while (1) {
                 var tmpConsume = product.price + usedCount * product.consume_inc;
                 if (tmpConsume > product.consume_max) {
                     tmpConsume = product.consume_max;
                 }
                 consume += tmpConsume;
-                if(gold < consume) {
+                if (gold < consume) {
                     break;
                 }
                 usedCount++;

@@ -88,10 +88,11 @@ var TipLayer = {
     tipAbility: function (value) {
         if (value) {
             var animation = "animation_" + (value > 0 ? 1 : 2);
+            var str = (value > 0 ? "+" : "") + value;
 
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect80, this);
             ccbNode.setPosition(gameFit.GAME_MIDPOINT);
-            ccbNode.controller.ccbLabel.setString(value);
+            ccbNode.controller.ccbLabel.setString(str);
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration(animation, 0);
             cc.Director.getInstance().getRunningScene().addChild(ccbNode, TIP_LAYER_Z_ORDER);
         }

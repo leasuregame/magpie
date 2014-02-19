@@ -25,6 +25,7 @@ Remote::add = (args, callback) ->
   amount = args.amount
   paydes = args.paydes
   productId = args.productId
+  tborderNo = args.tborderNo
 
   player = null
   product = null
@@ -47,6 +48,7 @@ Remote::add = (args, callback) ->
       @app.get('dao').order.create data: {
         playerId: playerId
         tradeNo: tradeNo
+        tborderNo: tborderNo
         partner: partner
         amount: amount
         paydes: paydes

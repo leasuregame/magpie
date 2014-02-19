@@ -201,6 +201,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
 
 CREATE TABLE IF NOT EXISTS `tbOrder` (
   `tradeNo` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
+  `tborderNo` VARCHAR(128), 
   `playerId` INT(10) UNSIGNED NOT NULL,
   `amount` INT(5) UNSIGNED,
   `partner` VARCHAR(128) COLLATE utf8_unicode_ci,

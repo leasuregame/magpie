@@ -68,6 +68,7 @@ checkOrderResult = (app, req, res) ->
       partner: partner
       paydes: paydes
       productId: productId
+      tborderNo: tborder
     }, (err, orderRes) ->
       if err or not orderRes.ok
         logger.error('add tb order faild: ', err, orderRes)

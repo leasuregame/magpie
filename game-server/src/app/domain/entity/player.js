@@ -572,7 +572,6 @@ var Player = (function(_super) {
             var _hp = parseInt(card.init_hp/ae.hp*hp_pct/100);
             var _atk = parseInt(card.init_atk/ae.atk*atk_pct/100);
             
-            console.log('-a-', _a, _hp, _atk);
             if (!_.isNaN(_a)) {
                 ability += _a + _hp + _atk;
             }

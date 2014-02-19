@@ -1316,7 +1316,7 @@ var elixirLimit = function(lv) {
     if (lv <= 50) {
         return 2000 * lv;
     } else {
-        return 2000 * 50 + 4000 * (lv - 50);
+        return 2000 * 50 + 8000 * (lv - 50);
     }
 };
 

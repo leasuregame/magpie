@@ -238,10 +238,13 @@ var Player = Entity.extend({
     getAbility: function () {
         var lineUpCardList = gameData.lineUp.getLineUpCardList();
         var len = lineUpCardList.length;
-        var ability = gameData.spirit.get("ability");
+        var ability = 0;
+        var card = null;
 
         for (var i = 0; i < len; ++i) {
-            ability += lineUpCardList[i].get("ability");
+            card = lineUpCardList[i];
+            ability += card.get("ability");
+            ability += (parseInt(card.get("initHp") / 2) + card.get("initAtk"));
         }
 
         return ability;

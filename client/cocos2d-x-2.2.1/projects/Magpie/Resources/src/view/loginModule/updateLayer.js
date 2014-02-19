@@ -154,13 +154,20 @@ var UpdateLayer = cc.Layer.extend({
 
         var version = this.getVersion();
 
-        lz.server.request("connector.upgradeHandler.success", {
-            version: version
-        }, function (data) {
-            cc.log(data);
+        lz.server.request(
+            "connector.upgradeHandler.success",
+            {
+                version: version
+            },
+            function (data) {
+                cc.log(data);
+            },
+            true
+        );
 
+        lz.scheduleOnce(function () {
             require("game.jsc");
-        });
+        }, 0.1);
     },
 
     update: function () {

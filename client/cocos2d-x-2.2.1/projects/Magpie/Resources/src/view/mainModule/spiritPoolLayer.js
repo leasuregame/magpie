@@ -190,7 +190,19 @@ var SpiritPoolLayer = cc.Layer.extend({
 
             if (this._reward.isDouble) {
                 spirit.setScale(1.5);
+
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect86, this);
+                rewardEffect.controller.ccbSpiritLabel.setString("+" + this._reward.spirit_obtain);
+                rewardEffect.setPosition(gameFit.GAME_MIDPOINT);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            } else {
+                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
             }
+
+            this.update();
 
             var point1 = this._spiritPoolLayerFit.spiritPoolItemPoint;
             var point2 = this._spiritPoolLayerFit.spiritIconPoint;
@@ -216,31 +228,15 @@ var SpiritPoolLayer = cc.Layer.extend({
                         cc.ScaleTo.create(0.5, 0.3, 0.3)
                     )
                 ),
-                cc.Hide.create()
+                cc.CallFunc.create(function () {
+                    spirit.removeFromParent();
+
+                    if (noviceTeachingLayer.isNoviceTeaching()) {
+                        noviceTeachingLayer.next();
+                    }
+                }, this)
             ));
-
-            this.scheduleOnce(function () {
-                spirit.removeFromParent();
-                if(this._reward.isDouble) {
-                    var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect86, this);
-                    rewardEffect.controller.ccbSpiritLabel.setString("+" + this._reward.spirit_obtain);
-                    rewardEffect.setPosition(gameFit.GAME_MIDPOINT);
-                    this.addChild(rewardEffect);
-                    rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                        rewardEffect.removeFromParent();
-                    });
-                } else {
-                    TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
-                }
-
-                this.update();
-
-                if (noviceTeachingLayer.isNoviceTeaching()) {
-                    noviceTeachingLayer.next();
-                }
-            }, 2);
         }
-
 
         LazyLayer.closeCloudLayer();
     },

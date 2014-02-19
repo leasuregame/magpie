@@ -42,7 +42,7 @@ var Tournament = Entity.extend({
         this.set("count", data.challengeCount);
         this.set("canGetReward", data.canGetReward);
         this.set("notCanGetReward", data.notCanGetReward);
-        this.set("rankStats",data.rankStats);
+        this.set("rankStats", data.rankStats);
 
         if (data.rankList) {
             this._rankList = [];
@@ -99,8 +99,6 @@ var Tournament = Entity.extend({
     sync: function (cb) {
         cc.log("Tournament sync");
 
-        var time0 = Date.now();
-
         var that = this;
         lz.server.request("area.rankHandler.rankingList", {}, function (data) {
             cc.log(data);
@@ -108,12 +106,7 @@ var Tournament = Entity.extend({
             if (data.code == 200) {
                 cc.log("Tournament sync success");
 
-                var time = Date.now() - time0;
-
                 var msg = data.msg;
-
-                var str = "总时间: " + time / 1000 + "秒，数据传输时间: " + (time - msg.rank.time) / 1000 + " 秒";
-//                TipLayer.tip(str);
 
                 that.update(msg.rank);
 
@@ -123,7 +116,7 @@ var Tournament = Entity.extend({
             } else {
                 cc.log("Tournament sync fail");
 
-                TipLayer.tip("刷新榜单失败");
+                TipLayer.tip(data.msg);
 
                 cb();
             }

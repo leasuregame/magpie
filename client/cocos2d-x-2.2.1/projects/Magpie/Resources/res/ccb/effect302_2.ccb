@@ -920,7 +920,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.1666666716337204</real>
+									<real>0.36666667461395264</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -935,7 +935,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>1.1666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -975,7 +975,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>1.1666666269302368</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -1018,7 +1018,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>1.1666666269302368</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>

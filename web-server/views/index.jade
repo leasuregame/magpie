@@ -2,7 +2,8 @@ extends adminLayout
 
 block content
   div.jumbotron
-    h1 版本用户分布 #{userNum}
+    h1 版本用户分布 
+      small 用户总数：#{userNum}
     div.row
       - each count in counts
         a(href='/admin/version/details/#{count.version}')

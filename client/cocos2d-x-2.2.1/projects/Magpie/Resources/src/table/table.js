@@ -13,8 +13,6 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -41,12 +39,14 @@ var nameChanged = {
     "仙丹培养限制表": "elixir_limit",
     "resource_limit": "资源限制表",
     "资源限制表": "resource_limit",
+    "values": "零碎的值配置表",
+    "零碎的值配置表": "values",
     "daily_signin_rewards": "每日签到奖励",
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "values": "零碎的值配置表",
-    "零碎的值配置表": "values",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -61,6 +61,8 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -69,8 +71,6 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "product": "道具配置表",
-    "道具配置表": "product",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
@@ -9264,191 +9264,6 @@ var outputTables = {
             }
         }
     },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 500,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 3000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 20000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 200,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 500,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 3000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 20000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 100,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 500,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 2000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            }
-        }
-    },
     "new_year_rechage": {
         "colComment": {},
         "rows": {
@@ -9732,6 +9547,41 @@ var outputTables = {
             }
         }
     },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 1000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            }
+        }
+    },
     "daily_signin_rewards": {
         "colComment": {},
         "rows": {
@@ -9807,38 +9657,188 @@ var outputTables = {
             }
         }
     },
-    "values": {
+    "treasure_hunt": {
         "colComment": {},
         "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
             },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
             },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
             },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 500,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
             },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 3000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
             },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 20000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
                 "value": 200,
-                "desc": "提取仙丹或技能点消耗的元宝数量"
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
             },
-            "greetingConsumeGold": {
-                "id": "greetingConsumeGold",
-                "value": 20,
-                "desc": "每次喊话话费的金额"
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 500,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 3000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 20000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 500,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 2000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
             }
         }
     },
@@ -25409,6 +25409,99 @@ var outputTables = {
             }
         }
     },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "经验元灵1张，含800点卡牌经验。",
+                "consume_type": "money",
+                "consume": 2500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 1
+            },
+            "2": {
+                "id": 2,
+                "method": "power",
+                "name": "体力",
+                "disc": "50点体力。首次购买仅20魔石。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1,
+                "consume_inc": 10,
+                "consume_max": 60
+            },
+            "3": {
+                "id": 3,
+                "method": "money",
+                "name": "一小袋仙币",
+                "disc": "1000仙币，额外赠送200仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 1200,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "method": "money",
+                "name": "一袋仙币",
+                "disc": "5000仙币，额外赠送2500仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 7500,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "method": "money",
+                "name": "一大袋仙币",
+                "disc": "10000仙币，额外赠送8000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 18000,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "7": {
+                "id": 7,
+                "method": "cardCount",
+                "name": "卡库位置",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "cardCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "8": {
+                "id": 8,
+                "method": "speaker",
+                "name": "喇叭",
+                "disc": "用于世界聊天，一次性买10个以上打8折。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "speaker",
+                "obtain": 1,
+                "isVisible": 1
+            }
+        }
+    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -25713,113 +25806,6 @@ var outputTables = {
                 "star5_inc_max": 63,
                 "star5_grow": 3,
                 "rate5": 40
-            }
-        }
-    },
-    "product": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "order": 1,
-                "method": "expCard",
-                "name": "经验元灵",
-                "disc": "经验元灵1张，含800点卡牌经验。",
-                "consume_type": "money",
-                "consume": 2500,
-                "obtain_type": "card",
-                "obtain": 1,
-                "isVisible": 1
-            },
-            "2": {
-                "id": 2,
-                "order": 2,
-                "method": "power",
-                "name": "体力",
-                "disc": "50点体力。首次购买仅20魔石。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50,
-                "isVisible": 1,
-                "consume_inc": 10,
-                "consume_max": 60
-            },
-            "3": {
-                "id": 3,
-                "order": 4,
-                "method": "money",
-                "name": "一小袋仙币",
-                "disc": "1000仙币，额外赠送200仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 1200,
-                "isVisible": 1
-            },
-            "4": {
-                "id": 4,
-                "order": 5,
-                "method": "money",
-                "name": "一袋仙币",
-                "disc": "5000仙币，额外赠送2500仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 7500,
-                "isVisible": 1
-            },
-            "5": {
-                "id": 5,
-                "order": 6,
-                "method": "money",
-                "name": "一大袋仙币",
-                "disc": "10000仙币，额外赠送8000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 18000,
-                "isVisible": 1
-            },
-            "6": {
-                "id": 6,
-                "order": 7,
-                "method": "challengeCount",
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "challengeCount",
-                "obtain": 1,
-                "isVisible": 0,
-                "consume_inc": 10,
-                "consume_max": 60
-            },
-            "7": {
-                "id": 7,
-                "order": 8,
-                "method": "cardCount",
-                "name": "卡库位置",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "cardCount",
-                "obtain": 1,
-                "isVisible": 0,
-                "consume_inc": 5,
-                "consume_max": 60
-            },
-            "8": {
-                "id": 8,
-                "order": 3,
-                "method": "speaker",
-                "name": "喇叭",
-                "disc": "一次性购买10个以上，打8折。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "speaker",
-                "obtain": 1,
-                "isVisible": 1,
-                "discount_num": 10,
-                "discount": 8
             }
         }
     },

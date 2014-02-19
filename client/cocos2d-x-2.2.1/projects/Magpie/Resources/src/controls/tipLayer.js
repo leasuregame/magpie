@@ -85,9 +85,9 @@ var TipLayer = {
         cc.Director.getInstance().getRunningScene().addChild(effect, TIP_LAYER_Z_ORDER);
     },
 
-    tipAbility: function (isUp, value) {
+    tipAbility: function (value) {
         if (value) {
-            var animation = "animation_" + (isUp ? 1 : 2);
+            var animation = "animation_" + (value > 0 ? 1 : 2);
 
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect80, this);
             ccbNode.setPosition(gameFit.GAME_MIDPOINT);

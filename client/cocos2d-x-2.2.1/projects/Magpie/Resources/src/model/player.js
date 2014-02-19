@@ -256,7 +256,7 @@ var Player = Entity.extend({
         var ability = this.getAbility();
 
         if (ability != this._ability) {
-            TipLayer.tipAbility(ability > this._ability, ability);
+            TipLayer.tipAbility(ability - this._ability);
         }
 
         cc.log(this._ability);

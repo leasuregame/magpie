@@ -2,13 +2,15 @@ extends adminLayout
 
 block content
   div.jumbotron
-    h1 版本用户分布
+    h1 版本用户分布 #{userNum}
     div.row
       - each count in counts
         a(href='/admin/version/details/#{count.version}')
           div.vblock.col-sm-3
             div.version-header #{count.version}
-            div.version-body.text-center #{count.num}
+            div.version-body
+              div.text-center.vnum #{count.num}
+              div.text-right.percent #{count.percent}%  
             div.version-footer 点击查看详情
 
   div.jumbotron

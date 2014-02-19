@@ -240,11 +240,12 @@ var Player = Entity.extend({
         var len = lineUpCardList.length;
         var ability = 0;
         var card = null;
+        var spiritPassiveHarm = gameData.spirit.get("passiveHarm") / 100;
 
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += (parseInt(card.get("initHp") / 2) + card.get("initAtk"));
+            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm) + parseInt(card.get("initAtk") * spiritPassiveHarm);
         }
 
         return ability;

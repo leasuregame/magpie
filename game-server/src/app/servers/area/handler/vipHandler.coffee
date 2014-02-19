@@ -59,16 +59,13 @@ noticeNewYearActivity = (app, player, cb) ->
   endDate = new Date app.get('sharedConf').newYearActivity.endDate
   now = new Date()
 
-  console.log startDate, now, endDate
   if startDate <= now < endDate
     app.get('dao').order.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
       return cb(err) if err
-      console.log '-a-', cash
       if cash <= 0
         return cb()
 
       len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
-      console.log '-b-', len, player.activities
       if len > 0
         recharge = player.activities.recharge or 0
         flag = (Math.pow(2, len)-1)^recharge

@@ -62,6 +62,6 @@ Handler::getLatest = (msg, session, next) ->
   }, (err, res) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
-    console.log res[0]
+
     result = res.map (r) -> content: r.content, name: r.playerName, created: r.created.getTime?()
     next(null, {code: 200, msg: result})

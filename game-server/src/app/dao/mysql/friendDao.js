@@ -41,7 +41,7 @@ var FriendDao = (function(_super) {
             join friend as f on p.id = f.playerId \
             where f.friendId = ?';
         var args = [playerId, playerId];
-        console.log(sql, args);
+
         return dbClient.query(sql, args, function(err, res) {
             if (err) {
                 logger.error("[SQL ERROR, when query friends]", sql, args);

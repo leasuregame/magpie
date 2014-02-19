@@ -78,8 +78,6 @@ Remote::add = (args, callback) ->
         times = product.times
         player.setRechargeFirstTime(parseInt productId)
 
-      console.log times, player.firstTime, productId, product
-
       if player.cash is 0
         isFirstRechage = true
 

@@ -1122,8 +1122,7 @@ var Player = (function(_super) {
 
         var spiritor = {
             lv: this.spiritor.lv,
-            spirit: this.spiritor.spirit,
-            ability: this.spiritor.lv * SPIRITOR_PER_LV
+            spirit: this.spiritor.spirit
         };
 
         return spiritor;
@@ -1277,7 +1276,7 @@ var Player = (function(_super) {
             money: this.money,
             gold: this.gold,
             lineUp: this.lineUpObj(),
-            ability: this.getAbility(),
+            //ability: this.getAbility(),
             task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),

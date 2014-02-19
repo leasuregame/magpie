@@ -58,6 +58,7 @@ var GreetingLabel = LazyLayer.extend({
         this.addChild(this._speakerNumLabel);
 
         this._msgEditBox = cc.EditBox.create(cc.size(325, 48), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._msgEditBox.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         this._msgEditBox.setPosition(this._greetingLabelFit.msgEditBoxPoint);
         this._msgEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._msgEditBox.setDelegate(this);

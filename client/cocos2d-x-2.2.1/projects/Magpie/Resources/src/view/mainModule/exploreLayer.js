@@ -436,10 +436,6 @@ var ExploreLayer = cc.Layer.extend({
                     var size = this._mapLabel[1].getContentSize();
                     var y = this._exploreLayerFit.mapLabelBasePoint.y + size.height * this._exploreLayerFit.mapLabelScaleY / 2;
                     point = cc.p(gameFit.GAME_MIDPOINT.x, y);
-
-                    var bgLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 150), size.width, size.height * this._exploreLayerFit.mapLabelScaleY);
-                    bgLayer.setPosition(this._exploreLayerFit.mapLabelBasePoint);
-                    this.addChild(bgLayer);
                 }
 
 
@@ -447,13 +443,15 @@ var ExploreLayer = cc.Layer.extend({
                 rewardEffect.controller.ccbMoneyLabel.setString("+" + this._reward.money);
                 rewardEffect.controller.ccbExpLabel.setString("+" + this._reward.exp);
                 rewardEffect.setPosition(point);
+
+                if (this._reward.isDouble) {
+                    rewardEffect.animationManager.runAnimationsForSequenceNamedTweenDuration(this._exploreLayerFit.rewardEffectUrl, 0);
+                }
+
                 this.addChild(rewardEffect);
 
                 rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
                     rewardEffect.removeFromParent();
-                    if (bgLayer) {
-                        bgLayer.removeFromParent();
-                    }
                 });
             }
 

@@ -368,7 +368,7 @@ var PaymentLayer = LazyLayer.extend({
         var that = this;
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         gameData.activity.getFirstRechargeBox(function (reward) {
-            TipLayer.tipWithIcon(reward);
+            lz.tipReward(reward);
             that.update();
         });
 

@@ -11,6 +11,12 @@ var GreetingLabel = LazyLayer.extend({
     _layer: [],
     _msgList: [],
 
+    onEnter: function () {
+        cc.log("GreetingLabel onEnter");
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("GreetingLabel init");
 
@@ -120,6 +126,7 @@ var GreetingLabel = LazyLayer.extend({
     update: function () {
         cc.log("GreetingLabel update");
 
+        this._speakerNumLabel.setString(gameData.player.get("speaker"));
         this._msgList.sort(this._sort);
         var len = this._layer.length;
         var scrollViewHeight = len * 120;
@@ -210,7 +217,7 @@ var GreetingLabel = LazyLayer.extend({
         var product = gameData.shop.getProduct(id);
         var that = this;
 
-        if(gameData.player.get("speaker") <= 0) {
+        if (gameData.player.get("speaker") <= 0) {
             AmountLayer.pop(
                 function (count) {
                     that._buySpeaker(id, count);
@@ -226,7 +233,7 @@ var GreetingLabel = LazyLayer.extend({
         }, text);
     },
 
-    _buySpeaker: function(id, count) {
+    _buySpeaker: function (id, count) {
         cc.log("GreetingLabel _buySpeaker");
 
         if (count > 0) {

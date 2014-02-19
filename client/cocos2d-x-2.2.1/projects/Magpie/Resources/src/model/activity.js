@@ -226,29 +226,34 @@ var Activity = Entity.extend({
         cc.log("Activity getFirstRechargeBox");
 
         lz.server.request("area.vipHandler.firstRechargeBox", {}, function (data) {
-                cc.log(data);
-                if (data.code == 200) {
-                    cc.log("firstRechargeBox success");
-                    var card = data.msg.card;
-                    gameData.cardList.push(card);
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("getFirstRechargeBox success");
+                var card = Card.create(data.msg.card);
+                gameData.cardList.push(card);
 
-                    var table = outputTables.first_recharge_box.rows[1];
-                    var reward = {
-                        "energy": table.energy,
-                        "money": table.money,
-                        "elixir": table.elixir,
-                        "skillPoint": table.skillPoint,
-                        "spirit": table.spirit,
-                        "power": table.power,
-                        "card": card
-                    };
+                var cards = [];
+                cards.push(data.msg.card);
 
-                    cb(reward);
+                var table = outputTables.first_recharge_box.rows[1];
+                var reward = {
+                    "energy": table.energy,
+                    "money": table.money,
+                    "elixir": table.elixir,
+                    "skillPoint": table.skillPoint,
+                    "spirit": table.spirit,
+                    "power": table.power,
+                    "cardArray": cards
+                };
 
-                } else {
-                    cc.log("firstRechargeBox fail");
-                    TipLayer.tip(data.msg);
-                }
+                gameData.player.set("firstRechargeBox", GOT_FIRST_RECHARGER_BOX);
+
+                cb(reward);
+
+            } else {
+                cc.log("getFirstRechargeBox fail");
+                TipLayer.tip(data.msg);
+            }
         });
     },
 

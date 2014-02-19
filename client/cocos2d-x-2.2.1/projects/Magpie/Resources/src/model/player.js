@@ -21,6 +21,10 @@ var LOTTERY_ENOUGH = 200;
 var MONTH_CARD = 0;
 var WEEK_CARD = 1;
 
+var NO_FIRST_RECHARGER_BOX = 0;
+var HAS_FIRST_RECHARGER_BOX = 1;
+var GOT_FIRST_RECHARGER_BOX = 2;
+
 var POWER_NOTIFICATION_KEY = 1;
 
 var Player = Entity.extend({
@@ -45,6 +49,7 @@ var Player = Entity.extend({
     _rank: 0,
     _goldCards: {},     //周卡月卡
     _recharge: 0,       //充值记录标记
+    _firstRechargeBox: 0,   //首充礼包标记
     _evolutionRate: {}, //星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
@@ -140,8 +145,10 @@ var Player = Entity.extend({
 
         if (data.firstTime) {
             this.set("recharge", data.firstTime.recharge);
+            this.set("firstRechargeBox", data.firstTime.firstRechargeBox)
         } else {
             this.set("recharge", 127);
+            this.set("firstRechargeBox", NO_FIRST_RECHARGER_BOX);
         }
 
         // 需要调用gameMark

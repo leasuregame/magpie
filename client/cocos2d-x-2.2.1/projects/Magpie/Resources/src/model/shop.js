@@ -74,6 +74,10 @@ var Shop = Entity.extend({
                 player.set("recharge", msg.recharge);
             }
 
+            if(msg.firstRechargeBox) {
+                player.set("firstRechargeBox", msg.firstRechargeBox);
+            }
+
             var nowVip = msg.vip;
             var oldVip = player.get("vip");
 
@@ -442,10 +446,26 @@ var Shop = Entity.extend({
                 product.remainTimes = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
-            count = Math.floor(player.get("gold") / product.price);
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
+
+            while(1){
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if(gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
@@ -470,7 +490,9 @@ var Shop = Entity.extend({
                 count: 0,
                 tip: "",
                 maxBuyTimes: gameData.shop.get("challengeBuyMaxCount"),
-                remainTimes: 0
+                remainTimes: 0,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
             product.remainTimes = product.count = gameData.shop.get("challengeBuyCount");
@@ -479,10 +501,26 @@ var Shop = Entity.extend({
                 product.count = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
-            count = Math.floor(player.get("gold") / product.price);
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
+
+            while(1){
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if(gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
@@ -506,21 +544,46 @@ var Shop = Entity.extend({
                 unit: "个",
                 count: 0,
                 tip: "",
-                remainTimes: MAX_REMAIN_TIMES
+                maxBuyTimes: 0,
+                remainTimes: MAX_REMAIN_TIMES,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
+
             var cardList = gameData.cardList;
-            product.count = outputTables.resource_limit.rows[1].card_count_limit - cardList.get("maxCount");
+            var cardTable = outputTables.resource_limit.rows[1];
+
+            product.count = cardTable.card_count_limit - cardList.get("maxCount");
+
+            product.maxBuyTimes = cardTable.card_count_limit - cardTable.card_count_min;
+            product.remainTimes = cardTable.card_count_limit - cardList.get("maxCount");
+
             if (product.count <= 0) {
                 product.tip = "已达到购买上限";
                 product.count = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
 
-            count = Math.floor(player.get("gold") / product.price);
+            while(1){
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if(gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;

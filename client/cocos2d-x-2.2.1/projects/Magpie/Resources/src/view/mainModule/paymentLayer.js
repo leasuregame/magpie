@@ -152,12 +152,48 @@ var PaymentLayer = LazyLayer.extend({
         scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 110;
+        var y = scrollViewHeight;
+
+        var firstPaymentState = gameData.player.get("firstRechargeBox");
+        if (firstPaymentState != GOT_FIRST_RECHARGER_BOX) {
+
+            scrollViewHeight += 230;
+
+            var firstPaymentIcon = cc.Sprite.create(main_scene_image.icon376);
+            firstPaymentIcon.setAnchorPoint(cc.p(0, 0));
+            firstPaymentIcon.setPosition(cc.p(-8, y));
+            scrollViewLayer.addChild(firstPaymentIcon);
+
+            var cardItem = CardHeadNode.getCardHeadItem(Card.create({
+                tableId: 194,
+                lv: 20,
+                skillLv: 1
+            }));
+
+            cardItem.setScale(0.6);
+            cardItem.setAnchorPoint(cc.p(0, 0));
+            cardItem.setPosition(cc.p(24, y + 101));
+            menu.addChild(cardItem);
+
+            var getRewardItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.button9d,
+                main_scene_image.icon123,
+                this._onClickGetReward,
+                this
+            );
+
+            getRewardItem.setPosition(cc.p(255, y + 44));
+            getRewardItem.setScale(0.7);
+            getRewardItem.setEnabled(firstPaymentState == HAS_FIRST_RECHARGER_BOX);
+            menu.addChild(getRewardItem);
+        }
+
 
         /*
          * 周卡月卡
          */
-
-        var y = scrollViewHeight;
 
         var paymentsCards = ['月卡', '周卡'];
         var isBought = false;
@@ -324,6 +360,18 @@ var PaymentLayer = LazyLayer.extend({
 
         this._scrollView.setContentSize(cc.size(500, scrollViewHeight));
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+    },
+
+    _onClickGetReward: function () {
+        cc.log("PaymentLayer _onClickGetReward");
+
+        var that = this;
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        gameData.activity.getFirstRechargeBox(function (reward) {
+            TipLayer.tipWithIcon(reward);
+            that.update();
+        });
+
     },
 
     _onClickClose: function () {

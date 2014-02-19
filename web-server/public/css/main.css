@@ -52,8 +52,8 @@
 
 .version-body {
   background: #85c744;
-  font-weight: 800;
-  font-size: 52px;
+  font-weight: bold;
+  
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   -webkit-box-sizing: border-box;
@@ -63,6 +63,18 @@
 }
 .vblock:hover .version-body{
   background: #78ba38;
+}
+
+.version-body .vnum {
+  font-size: 52px;
+  line-height: 60px
+}
+
+.version-body .percent {
+  font-size: 18px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  line-height: 20px
 }
 
 .version-footer {
@@ -78,4 +90,28 @@
 .vblock:hover .version-footer{
   background: #5f932c;
   color: #fff;
+}
+
+.version-header:before .version-header:after
+.version-body:before .version-header:after
+.version-footer:before .version-footer:after {
+  content: " ";
+  display: table;
+}
+
+.vblock .version-footer:after {
+  right: 0;
+  border-top: 6px solid rgba(0,0,0,0.35);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -1px;
+  width: 0;
+  height: 0;
+  margin-right: 16px;
+  border-top: 5px solid rgba(0,0,0,0.35);
+  border-right: 5px solid #eee;
+  border-bottom: 5px solid #eee;
+  border-left: 5px solid rgba(0,0,0,0.35);
+  border-top-left-radius: 1px;
 }

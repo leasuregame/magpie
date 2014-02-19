@@ -8,9 +8,10 @@ block content
           a(href='/admin/version/details/#{c.version}') #{c.version}
   
   div.text-right
+    span.label.label-success 用户总数：#{userNum}
+    &nbsp;&nbsp;&nbsp;&nbsp;
     span.label.label-default 最早更新时间：#{maxDate}  
-
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
     span.label.label-default 最晚更新时间：#{minDate}
     
 
@@ -18,9 +19,11 @@ block content
     thead
       tr
         th 版本号
+        th 数量
         th 升级日期
     tbody
       - each row in rows
         tr
           td.ntc-name #{row.version}
+          td #{row.num}
           td.ntc-platform #{row.created}

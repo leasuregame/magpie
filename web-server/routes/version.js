@@ -5,7 +5,8 @@ var async = require('async');
 var util = require('util');
 
 var localDateString = function(date) {
-  return util.format('%s-%s-%s', date.getFullYear(), date.getMonth() + 1, date.getDate());
+  return util.format('%s-%s-%s %d:%d:%d', date.getFullYear(), date.getMonth() + 1, 
+    date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
 };
 
 exports.version = function(req, res) {
@@ -67,6 +68,9 @@ exports.versionDetails = function(req, res) {
     }, 
     function(cb) {
       updateRecordDao.versionCounts(cb);
+    },
+    function(cb) {
+      updateRecordDao.getUserCount(cb);
     }
   ], function(err, results) {
     if (err) {
@@ -76,16 +80,19 @@ exports.versionDetails = function(req, res) {
     var period = results[0][0];
     var rows = results[1][0];
     var counts = results[2][0];
+    var userNum = results[3][0];
     console.log(counts);
     res.render('versionDetails', {
       maxDate: localDateString(period[0].maxDate),
       minDate: localDateString(period[0].minDate),
       counts: counts,
       version: version,
+      userNum: userNum[0].num,
       rows: rows.map(function(r) {
         return {
           version: r.version,
-          created: localDateString(r.created)
+          created: localDateString(r.created).split(' ')[0],
+          num: r.num
         };
       })
     });

@@ -6,12 +6,31 @@ var fs = require('fs');
 var path = require('path');
 var auth = require('../util/auth');
 var updateRecordDao = require('../util/updateRecordDao');
+var async = require('async')
 
 exports.index = function(req, res) {
-  updateRecordDao.versionCounts(function(err, counts) {
+  async.parallel([
+    function(cb) {
+      updateRecordDao.versionCounts(cb);
+    }, 
+    function(cb) {
+      updateRecordDao.getUserCount(cb);
+    }
+  ], function(err, results) {
+    if (err) {
+      return res.status(500).send('服务器出错');
+    }
+    console.log('message: ', results);
+    var counts = results[0][0];
+    var userNum = results[1][0][0].num;
+    console.log(counts, userNum);
     res.render('index', {
       title: 'LeasureGame',
-      counts: counts || []
+      userNum: userNum,
+      counts: counts.map(function(c) {
+        c.percent = ((c.num/userNum)*100).toFixed(1);
+        return c;
+      })
     });
   });
 };

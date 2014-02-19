@@ -14,5 +14,9 @@ exports.period = function(version, cb) {
 exports.getByVersion = function(version, cb) {
   var args = [];
   args.push(version);
-  userDb.query("select `version`, `created` from upgradeVersion where `version` = ?", args, cb);
+  userDb.query("select `version`, date(created) as created, count(id) as num from upgradeVersion where `version` = ? group by date(created)", args, cb);
 };
+
+exports.getUserCount = function(cb) {
+  userDb.query('select count(*) as num from user', cb);
+}

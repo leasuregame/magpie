@@ -59,7 +59,7 @@ var SpeakerLayer = cc.Layer.extend({
 
         this._moveLen = 0;
         this._speaker = cc.LabelTTF.create(msg.name + ": ", "STHeitiTC-Medium", 26);
-        this._msg = cc.LabelTTF.create(msg.content, "STHeitiTC-Medium", 22);
+        this._msg = cc.LabelTTF.create(msg.content + " ", "STHeitiTC-Medium", 22);
 
         var point = this._speakerLayerFit.speakerPoint;
         this._speaker.setAnchorPoint(cc.p(0, 0.5));

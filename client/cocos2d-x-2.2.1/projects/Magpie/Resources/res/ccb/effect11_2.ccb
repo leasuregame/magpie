@@ -65,7 +65,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.5</real>
+											<real>0.83333331346511841</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -125,7 +125,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-360</real>
+								<real>-86.400001525878906</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -222,7 +222,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>30</real>
+								<real>80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -238,7 +238,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>30</integer>
+								<integer>200</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -247,7 +247,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.80000001192092896</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -412,6 +412,8 @@
 								<string>res/effect/effect/p18.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -543,17 +545,17 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.5</real>
+			<real>0.83333331346511841</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.20000000298023224</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>325.4691162109375</real>
+			<real>360.82022094726562</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

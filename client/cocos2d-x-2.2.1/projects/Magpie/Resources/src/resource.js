@@ -1192,7 +1192,7 @@ var main_scene_image = {
     battle_sound_effect801: "res/sound/battle_sound_effect801.wav",
     battle_sound_effect802_1: "res/sound/battle_sound_effect802_1.wav",
     battle_sound_effect802_2: "res/sound/battle_sound_effect802_2.wav",
-    battle_sound_effect803: "res/sound/battle_sound_effect803.wav",
+    //battle_sound_effect803: "res/sound/battle_sound_effect803.wav",
     battle_sound_effect804: "res/sound/battle_sound_effect804.wav",
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
     battle_sound_lose: "res/sound/battle_sound_lose.wav",

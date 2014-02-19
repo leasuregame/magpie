@@ -42,15 +42,16 @@ checkOrderResult = (app, req, res) ->
   paydes = params.paydes   # playerId:areaId:productId
   debug = params.debug
   sign = params.sign
+  tborder = params.tborder
 
   tempsign = md5 util.format(
-    'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&key=%s',
-    source, trade_no, amount, partner, paydes, APPKEY
+    'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&tborder=%s&key=%s',
+    source, trade_no, amount, partner, paydes, tborder, APPKEY
   )
   if debug
     tempsign = md5 util.format(
-      'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&key=%s',
-      source, trade_no, amount, partner, paydes, debug, APPKEY
+      'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
+      source, trade_no, amount, partner, paydes, debug, tborder, APPKEY
     )
   console.log tempsign, sign
   res.writeHead(200, {'Content-type': 'application/json'})

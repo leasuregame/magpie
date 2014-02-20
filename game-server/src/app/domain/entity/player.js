@@ -384,8 +384,8 @@ var Player = (function(_super) {
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
-            challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
-            challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
+            challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
+            challengeBuyCount: CHALLENGE_BUY_COUNT + vipPrivilege.challenge_buy_count, // 每日有奖竞技购买次数
             expCardCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
@@ -1451,7 +1451,7 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
-    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    dg.challengeBuyCount += curVipInfo.challenge_buy_count - oldVipInfo.challenge_buy_count;
     dg.expCardCount += curVipInfo.exp_card_count - oldVipInfo.exp_card_count;
     player.dailyGift = dg;
 
@@ -1471,7 +1471,7 @@ var executeVipPrivilege = function(player) {
     dg.powerBuyCount += pri.buy_power_count;
     dg.gaveBless.count += pri.give_bless_count;
     dg.receivedBless.count += pri.receive_bless_count;
-    dg.challengeCount += pri.challege_count;
+    dg.challengeBuyCount += pri.challenge_buy_count;
 
     player.dailyGift = dg;
 

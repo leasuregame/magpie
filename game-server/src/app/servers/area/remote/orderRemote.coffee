@@ -25,6 +25,7 @@ Remote::add = (args, callback) ->
   amount = args.amount
   paydes = args.paydes
   productId = args.productId
+  tborderNo = args.tborderNo
 
   player = null
   product = null
@@ -47,6 +48,7 @@ Remote::add = (args, callback) ->
       @app.get('dao').order.create data: {
         playerId: playerId
         tradeNo: tradeNo
+        tborderNo: tborderNo
         partner: partner
         amount: amount
         paydes: paydes
@@ -77,8 +79,6 @@ Remote::add = (args, callback) ->
       if player.isRechargeFirstTime(parseInt productId)
         times = product.times
         player.setRechargeFirstTime(parseInt productId)
-
-      console.log times, player.firstTime, productId, product
 
       if player.cash is 0
         isFirstRechage = true

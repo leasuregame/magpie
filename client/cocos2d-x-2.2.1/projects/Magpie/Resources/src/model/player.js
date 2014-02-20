@@ -232,6 +232,8 @@ var Player = Entity.extend({
                 challengeBuyCount: msg.dailyGift.challengeBuyCount,
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
+
+            MainScene.getInstance().updateMark();
         });
     },
 

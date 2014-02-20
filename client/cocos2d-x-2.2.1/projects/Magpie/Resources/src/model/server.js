@@ -8,10 +8,6 @@
  * */
 
 
-// gate server config
-var GATE_SERVER_HOST = "115.29.243.80";
-var GATE_SERVER_PORT = "3009";
-
 // connect timeout
 var CONNECT_TIMEOUT = 5;
 
@@ -133,8 +129,8 @@ var Server = Entity.extend({
         });
 
         lz.pomelo.init({
-            host: GATE_SERVER_HOST,
-            port: GATE_SERVER_PORT,
+            host: lz.platformConfig.GATE_SERVER_HOST,
+            port: lz.platformConfig.GATE_SERVER_PORT,
             user: {},
             handshakeCallback: function () {
             }
@@ -386,7 +382,7 @@ var Server = Entity.extend({
 
             MainScene.destroy();
 
-            switch(type) {
+            switch (type) {
                 case 0:
                     cc.Director.getInstance().replaceScene(LoginScene.create());
                     break;

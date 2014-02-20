@@ -14,16 +14,17 @@ var TbOrderDao = (function(_super) {
 	TbOrderDao.table = 'tbOrder';
 
 	var domain = function(attrs) {
-		this.tradeNo = attrs.tradeNo,
-		this.playerId = attrs.playerId,
-		this.amount = attrs.amount,
-		this.partner = attrs.partner,
-		this.paydes = attrs.paydes,
-		this.status = attrs.status,
-		this.created = attrs.created
+		this.tradeNo = attrs.tradeNo;
+		this.tborderNo = attrs.tborderNo;
+		this.playerId = attrs.playerId;
+		this.amount = attrs.amount;
+		this.partner = attrs.partner;
+		this.paydes = attrs.paydes;
+		this.status = attrs.status;
+		this.created = attrs.created;
 	};
 	domain.DEFAULT_VALUES = {};
-	domain.FIELDS = ['tradeNo', 'playerId', 'amount', 'partner', 'paydes', 'status', 'created'];
+	domain.FIELDS = ['tradeNo', 'tborderNo', 'playerId', 'amount', 'partner', 'paydes', 'status', 'created'];
 	TbOrderDao.domain = domain;
 
 	TbOrderDao.rechargeOnPeriod = function(playerId, startDate, endDate, cb) {

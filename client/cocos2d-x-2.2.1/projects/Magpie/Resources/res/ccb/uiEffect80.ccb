@@ -65,7 +65,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>15</real>
+										<real>25</real>
 										<real>100</real>
 									</array>
 								</dict>
@@ -891,8 +891,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -915,7 +913,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -929,8 +927,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
-							<real>100</real>
+							<real>25</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -972,6 +970,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1060,9 +1060,9 @@
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.1723639965057373</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.23333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

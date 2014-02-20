@@ -680,7 +680,7 @@ Handler::useElixir = (msg, session, next) ->
       result = {
         elixirHp: card.elixirHp,
         elixirAtk:card.elixirAtk,
-        ability: card.ability(),
+        ability: card.ability()
       }
 
       return next(null, {code: 200,msg:result})

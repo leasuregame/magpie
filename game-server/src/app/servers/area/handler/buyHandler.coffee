@@ -131,6 +131,8 @@ products =
           return cb {code: 501, msg: "超过购买次数上限"}
 
         totalCount = table.getTableItem('daily_gift', 1).challenge_buy_count
+        vipPrivilege = table.getTableItem('vip_privilege', player.vip);
+        totalCount += vipPrivilege.challenge_buy_count
         curCount = totalCount - player.dailyGift.challengeBuyCount + 1
         totalGold = countTotalGold curCount, product, times
 
@@ -208,7 +210,7 @@ products =
 
       curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
       totalGold = countTotalGold curCount, product, times
-      console.log '-b-', totalGold
+      
       if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
 
@@ -223,9 +225,40 @@ products =
           cardsCount: player.cardsCount
       })
 
+  speaker: (playerId, product, times, next) ->
+    obtain = product.obtain*times
+    totalGold = parseInt product.consume*times*discount(product, times)/10
+
+    playerManager.getPlayerInfo pid: playerId, (err, player) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or err})
+
+      if player.speaker + times > 999
+        return next(null, {code: 501, msg: '亲，您还有很多喇叭可用呢'})
+
+      if player.gold < totalGold
+        return next(null, {code: 501, msg: '魔石不足'})
+
+      player.decrease(product.consume_type, totalGold)
+      player.increase('speaker', obtain)
+      player.save()
+
+      next(null, {
+        code: 200
+        msg: 
+          consume: key: product.consume_type, value: player.gold
+          speaker: player.speaker
+      })
+
+discount = (product, times) ->
+  if typeof product.discount_num is 'undefined' or typeof product.discount is 'undefined' or product.discount_num > times
+    return 10
+
+  product.discount
+
 countTotalGold = (curCount, product, times) ->
   curCounts = [curCount..curCount+times-1]
-  console.log '-a-', curCount, curCounts, times
+  
   curCounts.reduce (preVal,curVal) -> 
     g = product.consume + product.consume_inc * (curVal-1)
     preVal + _.min([g, product.consume_max])

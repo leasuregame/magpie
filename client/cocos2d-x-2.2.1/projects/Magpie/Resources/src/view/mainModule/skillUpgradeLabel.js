@@ -475,12 +475,6 @@ var SkillUpgradeLabel = cc.Node.extend({
             return;
         }
 
-        var needGold = outputTables.values.rows["extractConsumeGold"].value;
-        if (gameData.player.get("gold") < needGold) {
-            TipLayer.tip("魔石不足");
-            return;
-        }
-
         var that = this;
         this._dummyCard = lz.clone(that._leadCard);
 

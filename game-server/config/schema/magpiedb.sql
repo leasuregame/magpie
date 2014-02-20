@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `exchangeCards` VARCHAR(50) DEFAULT '',
   `activities` VARCHAR(1500) DEFAULT '',
   `initRate` VARCHAR(100) DEFAULT '{}',
+  `speaker` INT(3) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -200,6 +201,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
 
 CREATE TABLE IF NOT EXISTS `tbOrder` (
   `tradeNo` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
+  `tborderNo` VARCHAR(128), 
   `playerId` INT(10) UNSIGNED NOT NULL,
   `amount` INT(5) UNSIGNED,
   `partner` VARCHAR(128) COLLATE utf8_unicode_ci,

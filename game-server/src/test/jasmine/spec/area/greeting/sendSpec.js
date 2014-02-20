@@ -39,10 +39,10 @@ describe("Area Server", function() {
         });
       });
 
-      describe('当魔石不足时', function(){
+      describe('当喇叭不足时', function(){
         beforeEach(function(){
           doAjax('/update/player/1', {
-            gold: 10
+            speaker: 0
           }, function(res) {
             loginWith('1', '1', 1);
           });
@@ -54,7 +54,7 @@ describe("Area Server", function() {
           }, function(data){
             expect(data).toEqual({
               code: 501, 
-              msg: '魔石不足'
+              msg: '喇叭不足'
             });
           });
         });
@@ -63,7 +63,7 @@ describe("Area Server", function() {
       describe('当喊话成功时', function(){
         beforeEach(function(){
           doAjax('/update/player/2', {
-            gold: 20
+            speaker: 5
           }, function(res) {
             loginWith('2', '1', 1);
           });
@@ -82,6 +82,10 @@ describe("Area Server", function() {
               expect(res.data.playerId).toEqual(2);
               expect(res.data.playerName).toEqual('Mike');
             });
+
+            doAjax('/player/2', function(res) {
+              expect(res.data.speaker).toEqual(4);
+            })
           });
         });
       });

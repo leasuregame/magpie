@@ -243,7 +243,6 @@ var PropsLayer = cc.Layer.extend({
                         }
                     }
                 }
-                // return;
             } else {
                 var that = this;
                 AmountLayer.pop(
@@ -253,12 +252,6 @@ var PropsLayer = cc.Layer.extend({
                     product
                 );
             }
-//            if (product.count <= 0) {
-//                TipLayer.tip(product.tip);
-//                return;
-//            }
-
-
         }
     },
 

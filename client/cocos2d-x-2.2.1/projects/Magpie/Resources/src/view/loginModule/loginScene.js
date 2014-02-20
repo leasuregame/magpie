@@ -25,6 +25,7 @@ var LoginScene = cc.Scene.extend({
             this.switchTo(this._toLayer);
         } else {
             this.switchLayer(LoginLayer);
+
             if (!lz.TARGET_PLATFORM_IS_BROWSER) {
                 NoticeLayer.pop();
             }

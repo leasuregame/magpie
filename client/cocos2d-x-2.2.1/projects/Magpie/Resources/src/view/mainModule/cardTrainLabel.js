@@ -220,8 +220,8 @@ var CardTrainLabel = cc.Layer.extend({
         this._trainItem.setPosition(this._cardTrainLabelFit.trainItemPoint);
 
         this._extractItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button11,
+            main_scene_image.button11s,
             main_scene_image.button9d,
             main_scene_image.icon368,
             this._onClickExtract,

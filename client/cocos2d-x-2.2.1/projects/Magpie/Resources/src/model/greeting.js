@@ -54,10 +54,11 @@ var Greeting = Entity.extend({
             function (data) {
                 if (data.code == 200) {
                     cc.log("send success");
-                    gameData.player.add("gold", -20);
+                    gameData.player.add("speaker", -1);
                     cb();
                 } else {
                     cc.log("send fail");
+                    TipLayer.tip(data.msg);
                     cb();
                 }
             }

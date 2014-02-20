@@ -65,7 +65,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.83333331346511841</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -146,6 +146,18 @@
 									<string>res/effect/effect/p119.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>242</integer>
+									<integer>162</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -183,7 +195,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.83333331346511841</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -226,7 +238,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.83333331346511841</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -470,13 +482,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.83333331346511841</real>
+			<real>0.66666668653488159</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.83333331346511841</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

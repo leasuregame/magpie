@@ -386,10 +386,19 @@ var Server = Entity.extend({
 
             MainScene.destroy();
 
-            if (type) {
-                var loginScene = LoginScene.create();
-                loginScene.switchLayer(NewPlayerLayer);
-                cc.Director.getInstance().replaceScene(loginScene);
+            switch(type) {
+                case 0:
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    var loginScene = LoginScene.create();
+                    loginScene.switchLayer(NewPlayerLayer);
+                    cc.Director.getInstance().replaceScene(loginScene);
+                    break;
+                case 3:
+                    break;
             }
         });
     },

@@ -47,7 +47,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
+										<real>25</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -65,7 +65,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
+										<real>15</real>
 										<real>100</real>
 									</array>
 								</dict>
@@ -189,8 +189,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>3</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -200,7 +202,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
+										<real>25</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -218,8 +220,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
-										<real>30</real>
+										<real>25</real>
+										<real>100</real>
 									</array>
 								</dict>
 							</array>
@@ -889,6 +891,8 @@
 								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -925,7 +929,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>15</real>
 							<real>100</real>
 							<integer>0</integer>
 						</array>

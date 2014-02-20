@@ -101,12 +101,10 @@ var Task = Entity.extend({
         cc.log("Task canExplore");
 
         if (gameData.player.get("power") < this._powerNeed) {
-         //   TipLayer.tip("体力不足");
             return POWER_NO_ENOUGH;
         }
 
         if (gameData.cardList.isFull()) {
-          //  TipLayer.tip("卡牌已满，请先消耗");
             return CARD_FULL;
         }
 
@@ -238,14 +236,24 @@ var Task = Entity.extend({
                 cb(cbData);
 
                 lz.dc.event("event_task", id);
-            } else {
+            } else if (data.code == 501) {
                 cc.log("explore fail");
 
                 if (msg) {
-                    TipLayer.tip(msg.message);
+                    if (msg.message) {
+                        TipLayer.tip(msg.message);
+                    }
 
-                    player.correctionPower(msg.power.value, msg.power.time);
+                    if (msg.power) {
+                        player.correctionPower(msg.power.value, msg.power.time);
+                    }
                 }
+
+                cb(null);
+            } else {
+                cc.log("explore fail");
+
+                TipLayer.tip(msg);
 
                 cb(null);
             }

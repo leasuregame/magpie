@@ -20,7 +20,6 @@ var Spirit = Entity.extend({
     _rate: 0,
     _passiveHarm: 0,
     _skillHarm: 0,
-    _ability: 0,
 
     init: function (data) {
         cc.log("Spirit init");
@@ -32,7 +31,7 @@ var Spirit = Entity.extend({
 
         this.update(data);
 
-        this.on("abilityChange", this._abilityChangeEven);
+        this.on("lvChange", this._abilityChangeEven);
 
         return true;
     },
@@ -44,7 +43,6 @@ var Spirit = Entity.extend({
 
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
-        this.set("ability", data.ability);
     },
 
     _lvChangeEven: function () {

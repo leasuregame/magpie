@@ -33,7 +33,7 @@ var UseCardsTipLabel = LazyLayer.extend({
         msgBgIcon.setScaleX(0.9);
         node.addChild(msgBgIcon);
 
-        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4/5星卡，确定继续么", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4或5星卡，确定继续么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         node.addChild(tipLabel);
 

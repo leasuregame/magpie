@@ -597,7 +597,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -612,7 +612,7 @@
 								<key>value</key>
 								<array>
 									<real>90</real>
-									<real>50</real>
+									<real>7.3529386520385742</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1235,7 +1235,7 @@
 								<key>value</key>
 								<array>
 									<real>90</real>
-									<real>20</real>
+									<real>-30</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1262,8 +1262,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.0</real>
+									<real>0.0</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3125,9 +3125,9 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.63654243946075439</real>
 			<key>position</key>
-			<real>3</real>
+			<real>1.6666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -3137,7 +3137,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.1666666716337204</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/explore_crit_spirit.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

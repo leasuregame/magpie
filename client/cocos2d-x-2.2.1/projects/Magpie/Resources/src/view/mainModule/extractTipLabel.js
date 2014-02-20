@@ -96,12 +96,18 @@ var ExtractTipLabel = LazyLayer.extend({
         cc.log("ExtractTipLabel _onClickContinue");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        this.removeFromParent();
+
+        var needGold = outputTables.values.rows["extractConsumeGold"].value;
+        if (gameData.player.get("gold") < needGold) {
+            TipLayer.tip("魔石不足");
+            return;
+        }
 
         if (this._cb) {
             this._cb();
         }
 
-        this.removeFromParent();
     }
 
 });

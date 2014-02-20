@@ -19,7 +19,7 @@ var vipPrivilegeDescription = {
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",
     receive_bless_count: "每日接受祝福次数",
-    challenge_count: "每日有奖竞技次数",
+    challenge_buy_count: "每日有奖竞技购买次数",
     spirit_collect_count: "每日灵气采集次数"
 };
 

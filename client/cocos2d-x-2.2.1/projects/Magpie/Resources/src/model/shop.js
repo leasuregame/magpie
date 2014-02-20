@@ -98,7 +98,7 @@ var Shop = Entity.extend({
                 });
                 gameData.shop.add("powerBuyCount", nowPrivilegeTable.buy_power_count - oldPrivilegeTable.buy_power_count);
                 gameData.shop.add("expCardBuyCount", nowPrivilegeTable.exp_card_count - oldPrivilegeTable.exp_card_count);
-                gameData.tournament.add("count", nowPrivilegeTable.challenge_count - oldPrivilegeTable.challenge_count);
+                gameData.tournament.add("count", nowPrivilegeTable.challenge_buy_count - oldPrivilegeTable.challenge_buy_count);
                 gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
                 gameData.spiritPool.set("maxCollectCount", outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[nowVip].spirit_collect_count);
 
@@ -115,7 +115,7 @@ var Shop = Entity.extend({
         var dailyGiftTable = outputTables.daily_gift.rows[1];
 
         this._powerBuyMaxCount = dailyGiftTable.power_buy_count + privilegeTable.buy_power_count;
-        this._challengeBuyMaxCount = dailyGiftTable.challenge_buy_count + privilegeTable.challenge_count;
+        this._challengeBuyMaxCount = dailyGiftTable.challenge_buy_count + privilegeTable.challenge_buy_count;
         this._expCardBuyMaxCount = dailyGiftTable.exp_card_count + privilegeTable.exp_card_count;
     },
 

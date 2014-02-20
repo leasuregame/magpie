@@ -131,6 +131,8 @@ products =
           return cb {code: 501, msg: "超过购买次数上限"}
 
         totalCount = table.getTableItem('daily_gift', 1).challenge_buy_count
+        vipPrivilege = table.getTableItem('vip_privilege', player.vip);
+        totalCount += vipPrivilege.challenge_buy_count
         curCount = totalCount - player.dailyGift.challengeBuyCount + 1
         totalGold = countTotalGold curCount, product, times
 

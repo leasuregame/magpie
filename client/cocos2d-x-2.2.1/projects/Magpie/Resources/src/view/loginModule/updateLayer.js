@@ -154,6 +154,8 @@ var UpdateLayer = cc.Layer.extend({
 
         var version = this.getVersion();
 
+        var path2 = cc.FileUtils.getInstance().fullPathForFilename("image/testUpdateImage.png");
+
         lz.server.request(
             "connector.upgradeHandler.success",
             {
@@ -166,7 +168,24 @@ var UpdateLayer = cc.Layer.extend({
         );
 
         lz.scheduleOnce(function () {
-            require("game.jsc");
+            var path = cc.FileUtils.getInstance().fullPathForFilename("game.jsc");
+
+            cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+            cc.log("game.jsc");
+            cc.log(path);
+            cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+            if (!path == "game.jsc") {
+                cc.log("require(\"game.jsc\")");
+                cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+                require("game.jsc");
+            } else {
+                cc.log("require(\"main_binding.js\")");
+                cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+                require("main_binding.js");
+            }
         }, 0.1);
     },
 

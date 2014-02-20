@@ -23,10 +23,12 @@ var AmountLayer = LazyLayer.extend({
     _countLabel: null,
     _consumeLabel: null,
     _tip: null,
-    _maxBuyTimes: 0,
-    _remainTimes: 0,
-    _consume_inc: 0,
-    _consume_max: 0,
+    _maxBuyTimes: 0,    //可购买最大次数
+    _remainTimes: 0,    //剩余购买次数
+    _consume_inc: 0,    //每次消耗增量
+    _consume_max: 0,    //每次消耗最大值
+    _discount_num: 100000000,   //可以打折数量
+    _discount: 10,       //打几折
 
     onEnter: function () {
         cc.log("AmountLayer onEnter");
@@ -53,6 +55,9 @@ var AmountLayer = LazyLayer.extend({
         this._remainTimes = data.remainTimes || 0;
         this._consume_inc = data.consume_inc || 0;
         this._consume_max = data.consume_max || 0;
+        this._discount_num = data.discount_num || 100000000;
+        this._discount = data.discount || 10;
+
         var title = "购买" + data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
@@ -208,6 +213,8 @@ var AmountLayer = LazyLayer.extend({
                 consume += tmpConsume;
                 usedCount++;
             }
+        } else if (this._count >= this._discount_num) {
+            consume = this._price * (this._discount / 10) * this._count;
         } else {
             consume = this._price * this._count;
         }

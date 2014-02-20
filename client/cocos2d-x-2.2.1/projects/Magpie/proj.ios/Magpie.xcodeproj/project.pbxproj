@@ -521,6 +521,7 @@
 		90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
 		90A846BB1872C04600582139 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
+		90A8D61F18B4691500EA6409 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909187FE18A726D80023312A /* AdSupport.framework */; };
 		90B0B5AD18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
 		90B0B5AE18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
 		90B0B5AF18ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B0B5A818ACA1BF00F24482 /* js_bindings_NotificationHelp.cpp */; };
@@ -1688,6 +1689,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A8D61F18B4691500EA6409 /* AdSupport.framework in Frameworks */,
 				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
 				90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */,
 				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,

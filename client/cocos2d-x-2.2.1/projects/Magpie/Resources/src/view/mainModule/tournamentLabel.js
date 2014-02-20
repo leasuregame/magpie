@@ -122,7 +122,7 @@ var TournamentLabel = cc.Node.extend({
 
         } else {
             ability = player.get("ability");
-            
+
             functionItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,
@@ -147,7 +147,6 @@ var TournamentLabel = cc.Node.extend({
         abilityLabel.setPosition(cc.p(130, 128));
         this.addChild(abilityLabel);
 
-
         var cardList = this._player.cardList;
         var scrollViewLayer = cc.Layer.create();
 
@@ -158,8 +157,8 @@ var TournamentLabel = cc.Node.extend({
             scrollViewLayer.addChild(cardHeadNode);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
-        scrollView.setContentSize(cc.size(378, 75.6));
+        var scrollView = cc.ScrollView.create(cc.size(226.8, 76), scrollViewLayer);
+        scrollView.setContentSize(cc.size(378, 76));
         scrollView.setPosition(cc.p(206, 20));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();

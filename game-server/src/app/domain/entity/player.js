@@ -24,6 +24,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
+var cardConfig = require('../../../config/data/card');
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
@@ -255,7 +256,8 @@ var Player = (function(_super) {
         'teachingStep',
         'exchangeCards',
         'activities',
-        'initRate'
+        'initRate',
+        'speaker'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -352,7 +354,8 @@ var Player = (function(_super) {
             star2: 0,
             star3: 0,
             star4: 0
-        }
+        },
+        speaker: 0
     };
 
     Player.prototype.resetData = function() {
@@ -381,8 +384,8 @@ var Player = (function(_super) {
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
-            challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
-            challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
+            challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
+            challengeBuyCount: CHALLENGE_BUY_COUNT + vipPrivilege.challenge_buy_count, // 每日有奖竞技购买次数
             expCardCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
@@ -557,16 +560,26 @@ var Player = (function(_super) {
 
     Player.prototype.getAbility = function() {
         var ability = 0;
+        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        var hp_pct = spiritorData.hp_inc;
+        var atk_pct = spiritorData.atk_inc;
+
         this.activeCards().forEach(function(card) {
             var _a = card.ability();
+
+            // 计算元神增加的战斗力
+            var _hp = parseInt(card.init_hp/ae.hp*hp_pct/100);
+            var _atk = parseInt(card.init_atk/ae.atk*atk_pct/100);
+            
             if (!_.isNaN(_a)) {
-                ability += card.ability();
+                ability += _a + _hp + _atk;
             }
         });
         // 元神加成的战斗力
-        if (this.spiritor.lv > 0) {
-            ability += this.spiritor.lv * SPIRITOR_PER_LV;
-        }
+        // if (this.spiritor.lv > 0) {
+        //     ability += this.spiritor.lv * SPIRITOR_PER_LV;
+        // }
 
         this.set('ability', ability);
         return ability;
@@ -585,8 +598,8 @@ var Player = (function(_super) {
 
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            var cardConfig = cardTable.getItem(card.id);
-            var series = cardConfig.group.toString().split(',');
+            var cdata = cardTable.getItem(card.id);
+            var series = cdata.group.toString().split(',');
             var seriesCards = cardTable.filter(function(id, item) {
                 return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
             });
@@ -1109,8 +1122,7 @@ var Player = (function(_super) {
 
         var spiritor = {
             lv: this.spiritor.lv,
-            spirit: this.spiritor.spirit,
-            ability: this.spiritor.lv * SPIRITOR_PER_LV
+            spirit: this.spiritor.spirit
         };
 
         return spiritor;
@@ -1134,7 +1146,7 @@ var Player = (function(_super) {
     Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
-            if (ft[key] == 1) {
+            if (ft[key]) {
                 return true;
             }
         }
@@ -1150,9 +1162,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.getFirstTime = function() {
-        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb
+        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb;
+        // frb = 1 为可领取状态
         if (this.cash <= 0) {
-            frb = 0;
+            frb = 0; // 不可领取状态
+        }
+
+        if (this.cash > 0 && frb == 0) {
+            frb = 2; // 已领取状态
         }
 
         return {
@@ -1259,7 +1276,7 @@ var Player = (function(_super) {
             money: this.money,
             gold: this.gold,
             lineUp: this.lineUpObj(),
-            ability: this.getAbility(),
+            //ability: this.getAbility(),
             task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
@@ -1278,11 +1295,12 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.getFirstTime() : void 0,
+            firstTime: this.getFirstTime(),
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,
-            goldCards: this.getGoldCard()
+            goldCards: this.getGoldCard(),
+            speaker: this.speaker
         };
     };
 
@@ -1298,7 +1316,7 @@ var elixirLimit = function(lv) {
     if (lv <= 50) {
         return 2000 * lv;
     } else {
-        return 2000 * 50 + 4000 * (lv - 50);
+        return 2000 * 50 + 8000 * (lv - 50);
     }
 };
 
@@ -1433,7 +1451,7 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
-    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    dg.challengeBuyCount += curVipInfo.challenge_buy_count - oldVipInfo.challenge_buy_count;
     dg.expCardCount += curVipInfo.exp_card_count - oldVipInfo.exp_card_count;
     player.dailyGift = dg;
 
@@ -1453,7 +1471,7 @@ var executeVipPrivilege = function(player) {
     dg.powerBuyCount += pri.buy_power_count;
     dg.gaveBless.count += pri.give_bless_count;
     dg.receivedBless.count += pri.receive_bless_count;
-    dg.challengeCount += pri.challege_count;
+    dg.challengeBuyCount += pri.challenge_buy_count;
 
     player.dailyGift = dg;
 

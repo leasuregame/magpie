@@ -79,7 +79,7 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version || "1.2.0"
+                    version: version || "1.3.0"
                 }, function (data) {
                     cc.log(data);
 
@@ -93,17 +93,17 @@ var User = Entity.extend({
                         var player = msg.player;
 
                         if (player) {
-                            gameData.gameStart(player);
-                            cb();
-                        } else {
                             cb(1);
+                            gameData.gameStart(player);
+                        } else {
+                            cb(2);
                         }
 
                         lz.dc.event("event_login", that._area);
                     } else if (data.code == 600) {
                         cc.log("login fail go to updateLayer");
 
-                        cb();
+                        cb(3);
 
                         Dialog.pop("您的版本需要更新", function () {
                             cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
@@ -114,7 +114,7 @@ var User = Entity.extend({
 
                         tbAdapter.TBLogout(0);
 
-                        cb();
+                        cb(0);
 
                         TipLayer.tip(data.msg);
                     }

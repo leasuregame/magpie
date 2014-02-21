@@ -173,8 +173,8 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._upgradeItem.setPosition(this._skillUpgradeLabelFit.upgradeItemPoint);
 
         this._extractItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button11,
+            main_scene_image.button11s,
             main_scene_image.button9d,
             main_scene_image.icon368,
             this._onClickExtract,
@@ -472,12 +472,6 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         if (this._leadCard.get("skillPoint") == 0) {
             TipLayer.tip("该卡没有可提取的技能点");
-            return;
-        }
-
-        var needGold = outputTables.values.rows["extractConsumeGold"].value;
-        if (gameData.player.get("gold") < needGold) {
-            TipLayer.tip("魔石不足");
             return;
         }
 

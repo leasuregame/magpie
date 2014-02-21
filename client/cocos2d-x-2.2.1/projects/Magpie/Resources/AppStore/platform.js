@@ -4,7 +4,7 @@
 
 
 /*
- * platform
+ * app platform
  * */
 
 
@@ -12,7 +12,9 @@ var lz = lz || {};
 
 lz.platformConfig = {
     PLATFORM: "AppStore",
-    UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/app/update/",
-    UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/app/version",
-    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/app/notice"
+    GATE_SERVER_HOST: "115.29.243.80",
+    GATE_SERVER_PORT: "3009",
+    UPDATE_PACKAGE_URL: "http://115.29.243.80:9090/api/app/update/",
+    UPDATE_VERSION_URL: "http://115.29.243.80:9090/api/app/version",
+    GAME_NOTICE_URL: "http://115.29.243.80:9090/api/app/notice"
 };

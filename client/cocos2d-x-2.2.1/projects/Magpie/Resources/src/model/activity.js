@@ -222,6 +222,41 @@ var Activity = Entity.extend({
         });
     },
 
+    getFirstRechargeBox: function (cb) {
+        cc.log("Activity getFirstRechargeBox");
+
+        lz.server.request("area.vipHandler.firstRechargeBox", {}, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("getFirstRechargeBox success");
+                var card = Card.create(data.msg.card);
+                gameData.cardList.push(card);
+
+                var cards = [];
+                cards.push(data.msg.card);
+
+                var table = outputTables.first_recharge_box.rows[1];
+                var reward = {
+                    "energy": table.energy,
+                    "money": table.money,
+                    "elixir": table.elixir,
+                    "skillPoint": table.skillPoint,
+                    "spirit": table.spirit,
+                    "power": table.power,
+                    "cardArray": cards
+                };
+
+                gameData.player.set("firstRechargeBox", GOT_FIRST_RECHARGER_BOX);
+
+                cb(reward);
+
+            } else {
+                cc.log("getFirstRechargeBox fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     _changeStateById: function (type, id, state) {
         if (type == TYPE_GOLD_REWARD) {
             this._goldReward[id] = state;

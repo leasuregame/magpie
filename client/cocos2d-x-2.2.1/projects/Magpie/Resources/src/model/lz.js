@@ -201,7 +201,8 @@ var gameGoodsIcon = {
     "skillPoint": "icon152",
     "spirit": "icon317",
     "exp_card": "icon316",
-    "exp": "icon318"
+    "exp": "icon318",
+    "speaker": "icon375"
 };
 
 var gameGoodsName = {
@@ -293,6 +294,11 @@ var gameGoodsName = {
     },
     "cardArray": {
         color: cc.c3b(255, 239, 131)
+    },
+    "speaker": {
+        name: "喇叭",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["speaker"]
     }
 };
 
@@ -453,6 +459,28 @@ lz.replaceStr = function (str) {
     }
 
     return str;
+};
+
+lz.checkPoint = function (point) {
+    cc.log("lz checkPoint");
+
+    var x = point.x;
+    var y = point.y;
+    var gameView = gameFit.GAME_VIEW;
+
+    var minX = gameView.x;
+    var maxX = minX + gameView.width;
+
+    var minY = gameView.y;
+    var maxY = minY + gameView.height;
+
+    x = Math.max(minX, x);
+    x = Math.min(maxX, x);
+
+    y = Math.max(minY, y);
+    y = Math.min(maxY, y);
+
+    return cc.p(x, y)
 };
 
 

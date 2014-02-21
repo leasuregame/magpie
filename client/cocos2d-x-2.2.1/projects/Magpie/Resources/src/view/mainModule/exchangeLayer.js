@@ -289,6 +289,11 @@ var ExchangeLayer = cc.Layer.extend({
                 return;
             }
 
+            if (gameData.cardList.isFull()) {
+                CardListFullTipLayer.pop();
+                return;
+            }
+
             var that = this;
             this._showTip(
                 star,

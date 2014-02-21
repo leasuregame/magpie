@@ -47,7 +47,7 @@ var NoticeLayer = cc.Layer.extend({
         var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
         this._webLayer = lz.WebLayer.create(lz.platformConfig.GAME_NOTICE_URL, rect);
 
-        noticeEffect.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        noticeEffect.controller.ccbMenu.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY - 1);
         this.addChild(noticeEffect);
 
         LazyLayer.showCloudAll();
@@ -82,6 +82,6 @@ NoticeLayer.create = function () {
 NoticeLayer.pop = function () {
     lz.scheduleOnce(function () {
         var noticeLayer = NoticeLayer.create();
-        cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10);
+        cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10001);
     }, 0.01);
 };

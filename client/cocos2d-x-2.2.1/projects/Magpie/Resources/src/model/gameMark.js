@@ -173,12 +173,19 @@ var gameMark = {
             if (signIn.canSignIn(0) == true) {
                 mark = true;
             } else {
-                for (var i = 0; i < 5; ++i) {
-                    if (signIn.canReceive(this.index, i) == true) {
-                        mark = true;
-                        break;
-                    }
+                var monthMark = signIn.getMonthMark(0);
+                if (monthMark) {
+                    var table = outputTables.signIn_rewards;
 
+                    for (var i = 0; i < 5; ++i) {
+                        var row = table.rows[i + 1];
+                        var count = row.count != -1 ? row.count : monthMark.days;
+
+                        if (monthMark.count >= count && signIn.canReceive(0, i) == true) {
+                            mark = true;
+                            break;
+                        }
+                    }
                 }
             }
         }

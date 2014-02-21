@@ -154,13 +154,39 @@ var UpdateLayer = cc.Layer.extend({
 
         var version = this.getVersion();
 
-        lz.server.request("connector.upgradeHandler.success", {
-            version: version
-        }, function (data) {
-            cc.log(data);
+        var path2 = cc.FileUtils.getInstance().fullPathForFilename("image/testUpdateImage.png");
 
-            require("game.jsc");
-        });
+        lz.server.request(
+            "connector.upgradeHandler.success",
+            {
+                version: version
+            },
+            function (data) {
+                cc.log(data);
+            },
+            true
+        );
+
+        lz.scheduleOnce(function () {
+            var path = cc.FileUtils.getInstance().fullPathForFilename("game.jsc");
+
+            cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+            cc.log("game.jsc");
+            cc.log(path);
+            cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+            if (!path == "game.jsc") {
+                cc.log("require(\"game.jsc\")");
+                cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+                require("game.jsc");
+            } else {
+                cc.log("require(\"main_binding.js\")");
+                cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
+
+                require("main_binding.js");
+            }
+        }, 0.1);
     },
 
     update: function () {

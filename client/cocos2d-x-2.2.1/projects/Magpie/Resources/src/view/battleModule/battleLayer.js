@@ -1457,11 +1457,16 @@ var BatterLayer = cc.Layer.extend({
                                 nextStepCallback1();
                             });
 
-                            var gameMidpointX = gameFit.GAME_MIDPOINT.x;
+                            var x = (attackerLocate.x + targetLocate.x) / 2;
+                            var y = (attackerLocate.y + targetLocate.y) / 2;
+                            var point = lz.checkPoint(cc.p(lz.random(x - 100, x + 100), y));
+
+                            cc.log(point.x);
+                            cc.log(point.y);
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 80, gameMidpointX + 80), (attackerLocate.y + targetLocate.y) / 2),
+                                point,
                                 targetLocate
                             ];
 
@@ -1516,7 +1521,7 @@ var BatterLayer = cc.Layer.extend({
                 time: 1,
                 fn: function () {
                     var effect12_1 = cc.BuilderReader.load(main_scene_image.effect12_1, that);
-                    effect12_1.setPosition(targetLocate);
+                    effect12_1.setPosition(attackerLocate);
                     that.addChild(effect12_1, EFFECT_Z_ORDER);
 
                     if (that._getDirection(attacker) == "e") {
@@ -1708,7 +1713,7 @@ var BatterLayer = cc.Layer.extend({
                 times: 1,
                 fn: function () {
                     that._battleNode[attacker].runAnimations(
-                        "a_4",
+                        "a_12",
                         0,
                         that.nextStepCallback()
                     );
@@ -1721,22 +1726,16 @@ var BatterLayer = cc.Layer.extend({
                     effect302_1.setPosition(attackerLocate);
                     that.addChild(effect302_1, EFFECT_Z_ORDER);
 
-                    var nextStepCallback1 = that.nextStepCallback();
+                    var nextStepCallback = that.nextStepCallback();
                     effect302_1.animationManager.setCompletedAnimationCallback(that, function () {
                         effect302_1.removeFromParent();
-                        nextStepCallback1();
+                        nextStepCallback();
                     });
-
-                    var effect302_3 = cc.BuilderReader.load(main_scene_image.effect302_3, that);
-                    effect302_3.setPosition(lineUpMidpoint[that._getDirection(attacker)]);
-                    that.addChild(effect302_3, EFFECT_Z_ORDER);
-
-                    var nextStepCallback2 = that.nextStepCallback();
-                    effect302_3.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect302_3.removeFromParent();
-                        nextStepCallback2();
-                    });
-
+                }
+            },
+            {
+                times: 1,
+                fn: function () {
                     battleStep.recover();
                     while (battleStep.hasNextTarget()) {
                         (function () {
@@ -1766,6 +1765,16 @@ var BatterLayer = cc.Layer.extend({
                             that.tipHarm(target, effect, true, isCrit);
                         })();
                     }
+
+                    var effect302_3 = cc.BuilderReader.load(main_scene_image.effect302_3, that);
+                    effect302_3.setPosition(lineUpMidpoint[that._getDirection(attacker)]);
+                    that.addChild(effect302_3, EFFECT_Z_ORDER);
+
+                    var nextStepCallback = that.nextStepCallback();
+                    effect302_3.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect302_3.removeFromParent();
+                        nextStepCallback();
+                    });
                 }
             }
         ];
@@ -3119,11 +3128,13 @@ var BatterLayer = cc.Layer.extend({
                                 nextStepCallback1();
                             });
 
-                            var gameMidpointX = gameFit.GAME_MIDPOINT.x;
+                            var x = (attackerLocate.x + targetLocate.x) / 2;
+                            var y = (attackerLocate.y + targetLocate.y) / 2;
+                            var point = lz.checkPoint(cc.p(lz.random(x - 200, x + 200), y));
 
                             var pointArray = [
                                 attackerLocate,
-                                cc.p(lz.random(gameMidpointX - 300, gameMidpointX + 300), (attackerLocate.y + targetLocate.y) / 2),
+                                point,
                                 targetLocate
                             ];
 

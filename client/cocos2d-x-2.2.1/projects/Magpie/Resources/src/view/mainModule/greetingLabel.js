@@ -11,6 +11,12 @@ var GreetingLabel = LazyLayer.extend({
     _layer: [],
     _msgList: [],
 
+    onEnter: function () {
+        cc.log("GreetingLabel onEnter");
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("GreetingLabel init");
 
@@ -53,11 +59,12 @@ var GreetingLabel = LazyLayer.extend({
         speakerNumIcon.setPosition(this._greetingLabelFit.speakerNumPoint);
         this.addChild(speakerNumIcon);
 
-        this._speakerNumLabel = cc.LabelTTF.create(50, "STHeitiTC-Medium", 20);
+        this._speakerNumLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._speakerNumLabel.setPosition(this._greetingLabelFit.speakerNumPoint);
         this.addChild(this._speakerNumLabel);
 
         this._msgEditBox = cc.EditBox.create(cc.size(325, 48), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._msgEditBox.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         this._msgEditBox.setPosition(this._greetingLabelFit.msgEditBoxPoint);
         this._msgEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._msgEditBox.setDelegate(this);
@@ -110,7 +117,7 @@ var GreetingLabel = LazyLayer.extend({
         cc.log("GreetingLabel insertMessages");
         var msgList = gameData.greeting.getMsgList();
         var len = msgList.length;
-
+        this._speakerNumLabel.setString(gameData.player.get("speaker"));
         for (var i = 0; i < len; i++) {
             this.pushMsg(msgList[i]);
         }
@@ -119,6 +126,7 @@ var GreetingLabel = LazyLayer.extend({
     update: function () {
         cc.log("GreetingLabel update");
 
+        this._speakerNumLabel.setString(gameData.player.get("speaker"));
         this._msgList.sort(this._sort);
         var len = this._layer.length;
         var scrollViewHeight = len * 120;
@@ -196,6 +204,7 @@ var GreetingLabel = LazyLayer.extend({
 
         var text = this._msgEditBox.getText();
         cc.log("send msg text: " + text);
+
         if (text == null || text == "") {
             TipLayer.tip("请输入信息");
             return;
@@ -204,10 +213,36 @@ var GreetingLabel = LazyLayer.extend({
             return;
         }
 
+        var id = 8;
+        var product = gameData.shop.getProduct(id);
         var that = this;
+
+        if (gameData.player.get("speaker") <= 0) {
+            AmountLayer.pop(
+                function (count) {
+                    that._buySpeaker(id, count);
+                },
+                product
+            );
+            return;
+        }
+
         gameData.greeting.sendMsg(function () {
             that._msgEditBox.setText("");
+            that._speakerNumLabel.setString(gameData.player.get("speaker"));
         }, text);
+    },
+
+    _buySpeaker: function (id, count) {
+        cc.log("GreetingLabel _buySpeaker");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that._speakerNumLabel.setString(gameData.player.get("speaker"));
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     _onClickClose: function () {

@@ -139,11 +139,11 @@ var Payment = Entity.extend({
         } else if (state == PAYMENT_PURCHASED) {
             cc.log("payment purchased");
 
-            if (product == "com.leasuregame.magpie.week.card.pay6") {
+            if (product == "com.leasuregame.magpie.week.card") {
                 gameData.player.resetGoldCards(WEEK_CARD);
             }
 
-            if (product == "com.leasuregame.magpie.month.card.pay30") {
+            if (product == "com.leasuregame.magpie.month.card") {
                 gameData.player.resetGoldCards(MONTH_CARD);
             }
 

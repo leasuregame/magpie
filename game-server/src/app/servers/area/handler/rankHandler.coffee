@@ -215,17 +215,25 @@ Handler::thisWeek = (msg, session, next) ->
 
   async.parallel [
     (cb) =>
-      @app.get('dao').elixirOfRank.thisWeekElixirRank, cb
+      @app.get('dao').elixirOfRank.thisWeekElixirRank cb
     (cb) =>
       @app.get('dao').elixirOfRank.fetchOne where: {
         playerId: playerId,
         week: utility.thisWeek()
-      }, cb
+      }, (err, res) ->
+        if err
+          cb()
+        else 
+          cb(null, res)
     (cb) =>
       @app.get('dao').elixirOfRank.fetchOne where: {
         playerId: playerId,
         week: utility.lastWeek()
-      }, cb
+      }, (err, res) ->
+        if err
+          cb()
+        else 
+          cb(null, res)
   ], (err, results) ->
     if err
       return next(null, msg: {code: 501, msg: err.message or err.msg})
@@ -237,15 +245,23 @@ Handler::thisWeek = (msg, session, next) ->
     next(null, {code: 200, msg:{
       elixirs: orderList, 
       thisWeek: 
-        ranking: thisWeekElixir.rowNumber
-        gold: rewardOfElixirRank(thisWeekElixir.rowNumber)
+        ranking: thisWeekElixir?.rowNumber
+        gold: rewardOfElixirRank(thisWeekElixir?.rowNumber)?
       lastWeek: 
-        ranking: lastWeekElixir.rowNumber
-        gold: rewardOfElixirRank(lastWeekElixir.rowNumber)
+        ranking: lastWeekElixir?.rowNumber
+        gold: rewardOfElixirRank(lastWeekElixir?.rowNumber)?
     }})
 
+Handler::lastWeek = (msg, session, next) ->
+  @app.get('dao').elixirOfRank.lastWeekElixirRank (err, res) ->
+    if err
+      return next(null, msg: {code: 501, msg: err.message or err.msg})
+
+    next(null, {code: 200, msg: elixirs: res})
+
 rewardOfElixirRank = (rowNumber) ->
-  100000
+  row = table.getTableItem('elixir_ranking_reward', rowNumber)
+  row?.money or null
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

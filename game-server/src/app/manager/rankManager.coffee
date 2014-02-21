@@ -87,7 +87,8 @@ updateElixir = (player, elixir) ->
       if not row
         dao.elixirOfRank.create data: {
           playerId: player.id
-          week: week, 
+          week: week
+          name: player.name
           elixir: elixir
         }, cb
       else 

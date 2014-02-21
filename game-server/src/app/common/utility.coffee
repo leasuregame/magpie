@@ -159,14 +159,14 @@ Utility =
   lastWeek: ->
     now = new Date()
     onejan = new Date(now.getFullYear(), 0, 1)
-    weekNumber = Math.ceil((((now-onejan)/86400000)+onejan.getDate()+1)/7)
+    weekNumber = Math.ceil((((now-onejan)/86400000)+onejan.getDate()+1)/7)-1
 
-    if weekNumber is 1
+    if weekNumber is 0
       lastYear = now.getFullYear()-1
-      star = new Date(lastYear, 0, 1)
-      end = new Date(lastYear, 12, 30)
+      start = new Date(lastYear, 0, 1)
+      end = new Date(lastYear, 12, 0)
       lastWeekNumber = Math.ceil((((end-start)/86400000)+start.getDate()+1)/7)
-      ''+()+52
+      ''+lastYear+lastWeekNumber
     else
       ''+now.getFullYear()+(if weekNumber<10 then '0'+weekNumber else weekNumber)
 

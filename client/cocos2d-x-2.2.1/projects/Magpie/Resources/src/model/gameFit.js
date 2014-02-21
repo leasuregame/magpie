@@ -10,6 +10,7 @@
 var fit4Iphone4 = {
     "GAME_MIDPOINT": cc.p(360, 480),
     "GAME_ZERO_POINT": cc.p(40, 0),
+    "GAME_VIEW": cc.rect(40, 0, 640, 960),
     "controls": {
         "tipLayer": {
             "labelPoint": cc.p(360, 550),
@@ -314,8 +315,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectLeadCardItemPoint": cc.p(360, 597),
-            "trainItemPoint": cc.p(260, 182),
-            "extractItemPoint": cc.p(460, 182),
+            "trainItemPoint": cc.p(460, 182),
+            "extractItemPoint": cc.p(260, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
             "helpItemPoint": cc.p(80, 670),
@@ -427,7 +428,8 @@ var fit4Iphone4 = {
             "passEffectPoint": cc.p(360, 578),
             "rewardEffectPoint": cc.p(360, 800),
             "lvIconPoint": cc.p(124, 709),
-            "playerLvLabelPoint": cc.p(75, 706)
+            "playerLvLabelPoint": cc.p(75, 706),
+            "rewardEffectUrl": "animation_1"
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -676,11 +678,11 @@ var fit4Iphone4 = {
                 "1": [
                     cc.p(93, 54), cc.p(555, 512), cc.p(254, 756),
                     cc.p(360, 597), cc.p(360, 732), cc.p(603, 840),
-                    cc.p(360, 292), cc.p(260, 182)
+                    cc.p(360, 292), cc.p(460, 182)
                 ],
                 "2": [
                     cc.p(93, 54), cc.p(555, 322), cc.p(360, 597),
-                    cc.p(360, 732), cc.p(603, 840), cc.p(260, 182)
+                    cc.p(360, 732), cc.p(603, 840), cc.p(460, 182)
                 ],
                 "3": [
                     cc.p(555, 322), cc.p(254, 756), cc.p(191, 636),
@@ -1010,8 +1012,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectLeadCardItemPoint": cc.p(360, 597),
-            "upgradeItemPoint": cc.p(260, 182),
-            "extractItemPoint": cc.p(460, 182),
+            "upgradeItemPoint": cc.p(460, 182),
+            "extractItemPoint": cc.p(260, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597),
             "effectPoint": cc.p(360, 422),
@@ -1298,7 +1300,7 @@ var fit4Iphone4 = {
             "speakerIconPoint": cc.p(150, 700),
             "msgEditBoxPoint": cc.p(345, 700),
             "sendItemPoint": cc.p(560, 700),
-            "scrollViewLayerRect": cc.rect(94, 190, 500, 590),
+            "scrollViewLayerRect": cc.rect(110, 165, 500, 470),
             "scrollViewBgLayerSize": cc.size(500, 480),
             "scrollViewBgLayerPoint": cc.p(360, 400),
             "scrollViewSize": cc.size(500, 470),
@@ -1358,6 +1360,7 @@ var fit4Iphone4 = {
 var fit4Iphone5 = {
     "GAME_MIDPOINT": cc.p(320, 568),
     "GAME_ZERO_POINT": cc.p(0, 0),
+    "GAME_VIEW": cc.rect(0, 0, 640, 1136),
     "controls": {
         "tipLayer": {
             "labelPoint": cc.p(320, 550),
@@ -1667,8 +1670,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectLeadCardItemPoint": cc.p(320, 690),
-            "trainItemPoint": cc.p(220, 197),
-            "extractItemPoint": cc.p(420, 197),
+            "trainItemPoint": cc.p(420, 197),
+            "extractItemPoint": cc.p(220, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "helpItemPoint": cc.p(50, 810),
@@ -1779,7 +1782,8 @@ var fit4Iphone5 = {
             "passEffectPoint": cc.p(320, 706),
             "rewardEffectPoint": cc.p(320, 900),
             "lvIconPoint": cc.p(84, 837),
-            "playerLvLabelPoint": cc.p(35, 834)
+            "playerLvLabelPoint": cc.p(35, 834),
+            "rewardEffectUrl":"animation_2"
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -2029,11 +2033,11 @@ var fit4Iphone5 = {
                 "1": [
                     cc.p(53, 54), cc.p(515, 653), cc.p(214, 897),
                     cc.p(320, 690), cc.p(320, 886), cc.p(563, 1012),
-                    cc.p(320, 307), cc.p(220, 197)
+                    cc.p(320, 307), cc.p(420, 197)
                 ],
                 "2": [
                     cc.p(53, 54), cc.p(515, 357), cc.p(320, 690),
-                    cc.p(320, 886), cc.p(563, 1012), cc.p(220, 197)
+                    cc.p(320, 886), cc.p(563, 1012), cc.p(420, 197)
                 ],
                 "3": [
                     cc.p(515, 357), cc.p(214, 897), cc.p(151, 724),
@@ -2365,8 +2369,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectLeadCardItemPoint": cc.p(320, 690),
-            "upgradeItemPoint": cc.p(220, 197),
-            "extractItemPoint": cc.p(420, 197),
+            "upgradeItemPoint": cc.p(420, 197),
+            "extractItemPoint": cc.p(220, 197),
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "effectPoint": cc.p(320, 445),
@@ -2654,7 +2658,7 @@ var fit4Iphone5 = {
             "speakerIconPoint": cc.p(110, 850),
             "msgEditBoxPoint": cc.p(305, 850),
             "sendItemPoint": cc.p(520, 850),
-            "scrollViewLayerRect": cc.rect(54, 190, 500, 590),
+            "scrollViewLayerRect": cc.rect(70, 205, 500, 590),
             "scrollViewBgLayerSize": cc.size(500, 600),
             "scrollViewBgLayerPoint": cc.p(320, 500),
             "scrollViewSize": cc.size(500, 590),

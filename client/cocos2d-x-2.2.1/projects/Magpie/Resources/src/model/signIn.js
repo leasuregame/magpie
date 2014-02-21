@@ -90,7 +90,7 @@ var SignIn = Entity.extend({
     },
 
     getMonthMark: function (index) {
-        cc.log("SignIn getMonth");
+        cc.log("SignIn getMonthMark");
 
         return this._monthsMark[index];
     },
@@ -150,7 +150,7 @@ var SignIn = Entity.extend({
             return ((this._flag[index] >> i & 1) != 1);
         }
 
-        return false;
+        return true;
     },
 
     signIn: function (cb) {

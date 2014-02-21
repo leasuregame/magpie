@@ -174,8 +174,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>0.0</real>
+							<real>360</real>
 						</array>
 					</dict>
 					<dict>
@@ -284,6 +284,8 @@
 						<string>res/effect/effect/p106.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -815,8 +817,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

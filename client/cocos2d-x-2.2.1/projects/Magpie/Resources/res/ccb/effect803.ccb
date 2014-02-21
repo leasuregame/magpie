@@ -4437,7 +4437,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4455,7 +4455,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4473,7 +4473,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4491,7 +4491,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4509,7 +4509,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4527,7 +4527,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>
@@ -4545,7 +4545,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>res/sound/battle_sound_effect803.wav</string>
+							<string>res/sound/battle_sound_effect700_1.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

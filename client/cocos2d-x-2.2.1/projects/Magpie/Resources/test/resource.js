@@ -1060,6 +1060,7 @@ var main_scene_image = {
     effect700_2: ccb_scene_path + "effect700_2.ccbi",
     effect701_1: ccb_scene_path + "effect701_1.ccbi",
     effect701_2: ccb_scene_path + "effect701_2.ccbi",
+    effect701_3: ccb_scene_path + "effect701_3.ccbi",
     effect702_1: ccb_scene_path + "effect702_1.ccbi",
     effect702_2: ccb_scene_path + "effect702_2.ccbi",
     effect702_3: ccb_scene_path + "effect702_3.ccbi",

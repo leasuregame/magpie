@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>20</real>
+								<real>14.40000057220459</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -241,7 +241,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>71</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -250,9 +250,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>117</integer>
-									<integer>213</integer>
 									<integer>255</integer>
+									<integer>170</integer>
+									<integer>71</integer>
 								</array>
 							</dict>
 							<dict>
@@ -403,7 +403,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-20</real>
+								<real>-14.40000057220459</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -432,7 +432,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>71</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -441,9 +441,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>117</integer>
-									<integer>213</integer>
 									<integer>255</integer>
+									<integer>164</integer>
+									<integer>53</integer>
 								</array>
 							</dict>
 							<dict>
@@ -495,8 +495,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1.3600000143051147</real>
+							<real>1.3600000143051147</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -626,7 +626,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>30</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -637,8 +637,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>5</real>
+							<real>15</real>
+							<real>8</real>
 						</array>
 					</dict>
 					<dict>
@@ -682,8 +682,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.0</real>
-								<real>0.99143940210342407</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
 								<real>1</real>
 								<real>1</real>
 							</array>
@@ -703,8 +703,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.46202266216278076</real>
-								<real>0.8382837176322937</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
 								<real>1</real>
 								<real>1</real>
 							</array>
@@ -777,9 +777,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p15.png</string>
+						<string>res/effect/effect/p128.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -961,9 +963,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>0</integer>
-									<integer>150</integer>
 									<integer>255</integer>
+									<integer>147</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1110,9 +1112,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>212</integer>
+									<integer>120</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1269,7 +1271,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -148,7 +148,7 @@ var LoginLayer = cc.Layer.extend({
         gameData.user.login(function (type) {
             cc.log(type);
 
-            if (type) {
+            if (type == 2) {
                 that.getParent().switchLayer(NewPlayerLayer);
             }
         });

@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>57</real>
+								<real>60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -241,7 +241,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>13</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -403,7 +403,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-57</real>
+								<real>-60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -432,7 +432,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>13</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -495,8 +495,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1800000667572021</real>
-							<real>1.1800000667572021</real>
+							<real>1.2000000476837158</real>
+							<real>1.2000000476837158</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -595,7 +595,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.56666666269302368</real>
+						<real>0.3333333432674408</real>
 						<key>type</key>
 						<integer>10</integer>
 						<key>value</key>
@@ -617,7 +617,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.63333332538604736</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

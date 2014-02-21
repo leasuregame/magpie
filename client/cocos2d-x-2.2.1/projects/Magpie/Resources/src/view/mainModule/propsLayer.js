@@ -11,7 +11,7 @@
  * props layer
  * */
 
-var productUrl = ["icon283", "icon284", "icon278", "icon279", "icon280"];
+var productUrl = ["icon283", "icon284", "icon374", "icon278", "icon279", "icon280"];
 
 var PropsLayer = cc.Layer.extend({
     _propsLayerFit: null,
@@ -243,8 +243,7 @@ var PropsLayer = cc.Layer.extend({
                         }
                     }
                 }
-               // return;
-            }  else {
+            } else {
                 var that = this;
                 AmountLayer.pop(
                     function (count) {
@@ -253,12 +252,6 @@ var PropsLayer = cc.Layer.extend({
                     product
                 );
             }
-//            if (product.count <= 0) {
-//                TipLayer.tip(product.tip);
-//                return;
-//            }
-
-
         }
     },
 

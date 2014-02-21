@@ -67,11 +67,15 @@ var Shop = Entity.extend({
 
             if (msg.goldCards) {
                 player.set("goldCards", msg.goldCards);
-                gameMark.updateGoldCardsMark(true);
+                gameMark.updateGoldCardsMark(false);
             }
 
             if (msg.recharge) {
                 player.set("recharge", msg.recharge);
+            }
+
+            if (msg.firstRechargeBox) {
+                player.set("firstRechargeBox", msg.firstRechargeBox);
             }
 
             var nowVip = msg.vip;
@@ -94,7 +98,7 @@ var Shop = Entity.extend({
                 });
                 gameData.shop.add("powerBuyCount", nowPrivilegeTable.buy_power_count - oldPrivilegeTable.buy_power_count);
                 gameData.shop.add("expCardBuyCount", nowPrivilegeTable.exp_card_count - oldPrivilegeTable.exp_card_count);
-                gameData.tournament.add("count", nowPrivilegeTable.challenge_count - oldPrivilegeTable.challenge_count);
+                gameData.tournament.add("count", nowPrivilegeTable.challenge_buy_count - oldPrivilegeTable.challenge_buy_count);
                 gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
                 gameData.spiritPool.set("maxCollectCount", outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[nowVip].spirit_collect_count);
 
@@ -111,7 +115,7 @@ var Shop = Entity.extend({
         var dailyGiftTable = outputTables.daily_gift.rows[1];
 
         this._powerBuyMaxCount = dailyGiftTable.power_buy_count + privilegeTable.buy_power_count;
-        this._challengeBuyMaxCount = dailyGiftTable.challenge_buy_count + privilegeTable.challenge_count;
+        this._challengeBuyMaxCount = dailyGiftTable.challenge_buy_count + privilegeTable.challenge_buy_count;
         this._expCardBuyMaxCount = dailyGiftTable.exp_card_count + privilegeTable.exp_card_count;
     },
 
@@ -185,7 +189,7 @@ var Shop = Entity.extend({
             }
         }
 
-        productList.sort(this._cmp2);
+        productList.sort(this._cmp3);
 
         return productList;
     },
@@ -442,10 +446,26 @@ var Shop = Entity.extend({
                 product.remainTimes = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
-            count = Math.floor(player.get("gold") / product.price);
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
+
+            while (1) {
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if (gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
@@ -470,7 +490,9 @@ var Shop = Entity.extend({
                 count: 0,
                 tip: "",
                 maxBuyTimes: gameData.shop.get("challengeBuyMaxCount"),
-                remainTimes: 0
+                remainTimes: 0,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
             product.remainTimes = product.count = gameData.shop.get("challengeBuyCount");
@@ -479,10 +501,26 @@ var Shop = Entity.extend({
                 product.count = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
-            count = Math.floor(player.get("gold") / product.price);
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
+
+            while (1) {
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if (gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
@@ -506,21 +544,46 @@ var Shop = Entity.extend({
                 unit: "个",
                 count: 0,
                 tip: "",
-                remainTimes: MAX_REMAIN_TIMES
+                maxBuyTimes: 0,
+                remainTimes: MAX_REMAIN_TIMES,
+                consume_inc: table.consume_inc,
+                consume_max: table.consume_max
             };
 
+
             var cardList = gameData.cardList;
-            product.count = outputTables.resource_limit.rows[1].card_count_limit - cardList.get("maxCount");
+            var cardTable = outputTables.resource_limit.rows[1];
+
+            product.count = cardTable.card_count_limit - cardList.get("maxCount");
+
+            product.maxBuyTimes = cardTable.card_count_limit - cardTable.card_count_min;
+            product.remainTimes = cardTable.card_count_limit - cardList.get("maxCount");
+
             if (product.count <= 0) {
                 product.tip = "已达到购买上限";
                 product.count = 0;
             }
 
-            var count;
+            var count = 0;
             var player = gameData.player;
+            var gold = player.get("gold");
 
+            var usedCount = product.maxBuyTimes - product.remainTimes;
+            var consume = 0;
 
-            count = Math.floor(player.get("gold") / product.price);
+            while (1) {
+                var tmpConsume = product.price + usedCount * product.consume_inc;
+                if (tmpConsume > product.consume_max) {
+                    tmpConsume = product.consume_max;
+                }
+                consume += tmpConsume;
+                if (gold < consume) {
+                    break;
+                }
+                usedCount++;
+                count++;
+            }
+
             if (count <= 0) {
                 product.tip = "魔石不足";
                 product.count = 0;
@@ -535,7 +598,40 @@ var Shop = Entity.extend({
             }
 
             return product;
+        },
 
+        speaker: function (table) {
+            var product = {
+                name: table.name,
+                consumeType: table.consume_type,
+                price: table.consume,
+                obtain: table.obtain,
+                unit: "喇叭",
+                count: 0,
+                tip: "",
+                remainTimes: MAX_REMAIN_TIMES,
+                discount_num: table.discount_num,
+                discount: table.discount
+            };
+
+            var player = gameData.player;
+
+            var count = Math.floor(player.get("gold") / product.price);
+
+            if (count >= table.discount_num) {
+                count = Math.floor(player.get("gold") / (product.price * table.discount * 0.1));
+            }
+
+            if (count <= 0) {
+                product.tip = "魔石不足";
+                product.count = 0;
+                return product;
+            } else {
+                product.count = count;
+                product.tip = "魔石不足";
+            }
+
+            return product;
         }
 
     },
@@ -599,6 +695,15 @@ var Shop = Entity.extend({
             return {
                 cardsCount: times
             }
+        },
+
+        speaker: function (msg, times) {
+            gameData.player.set("speaker", msg.speaker);
+            gameData.player.set(msg.consume.key, msg.consume.value);
+
+            return {
+                speaker: times
+            }
         }
     },
 
@@ -608,8 +713,11 @@ var Shop = Entity.extend({
 
     _cmp2: function (a, b) {
         return (a.id - b.id);
-    }
+    },
 
+    _cmp3: function (a, b) {
+        return (a.order - b.order);
+    }
 });
 
 

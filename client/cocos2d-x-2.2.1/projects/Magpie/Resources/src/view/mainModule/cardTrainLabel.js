@@ -220,8 +220,8 @@ var CardTrainLabel = cc.Layer.extend({
         this._trainItem.setPosition(this._cardTrainLabelFit.trainItemPoint);
 
         this._extractItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button11,
+            main_scene_image.button11s,
             main_scene_image.button9d,
             main_scene_image.icon368,
             this._onClickExtract,
@@ -543,12 +543,6 @@ var CardTrainLabel = cc.Layer.extend({
 
         if (this._leadCard.getElixir() == 0) {
             TipLayer.tip("该卡没有可提取的仙丹");
-            return;
-        }
-
-        var needGold = outputTables.values.rows["extractConsumeGold"].value;
-        if (gameData.player.get("gold") < needGold) {
-            TipLayer.tip("魔石不足");
             return;
         }
 

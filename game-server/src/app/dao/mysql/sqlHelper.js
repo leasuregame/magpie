@@ -123,6 +123,15 @@ var sqlHelper = {
 
     topPlayersSql: function(orderBy, limit) {
         return util.format("select * from player order by `%s` limit %s", orderBy, limit);
+    },
+
+    existsSql: function(table, where) {
+        var stm = Statement.where(where);
+        var sql =  util.format("select count(*) as exists from `%s` %s", table, stm.where);
+        return {
+            sql: sql,
+            args: stm.args
+        }
     }
 };
 
@@ -156,7 +165,8 @@ var FUNCTION_MAPPING = {
     'insert': sqlHelper.insertSql,
     'update': sqlHelper.updateSql,
     'select': sqlHelper.selectSql,
-    'delete': sqlHelper.deleteSql
+    'delete': sqlHelper.deleteSql, 
+    'exists': sqlHelper.existsSql
 };
 
 module.exports = sqlHelper;

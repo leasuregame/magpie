@@ -219,3 +219,12 @@ CREATE TABLE IF NOT EXISTS `cdkey` (
   `endDate` DATE,
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `elixirOfRank` (
+  `playerId` INT(10) UNSIGNED,
+  `week` INT(8),
+  `name` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `elixir` INT(10) UNSIGNED DEFAULT '0',
+  `got` SMALLINT(2) DEFAULT '0',
+  PRIMARY KEY(`playerId`, `week`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

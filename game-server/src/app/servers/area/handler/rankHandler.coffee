@@ -9,6 +9,7 @@ msgConfig = require '../../../../config/data/message'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 Cache = require '../../../common/cache'
+utility = require '../../../common/utility'
 
 rankingConfig = table.getTableItem('ranking_list',1)
 
@@ -209,6 +210,42 @@ Handler::getRankingReward = (msg, session, next) ->
         msg: elixir: rewardData.elixir
       })
   
+Handler::thisWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').elixirOfRank.thisWeekElixirRank, cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.fetchOne where: {
+        playerId: playerId,
+        week: utility.thisWeek()
+      }, cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.fetchOne where: {
+        playerId: playerId,
+        week: utility.lastWeek()
+      }, cb
+  ], (err, results) ->
+    if err
+      return next(null, msg: {code: 501, msg: err.message or err.msg})
+
+    orderList = results[0]
+    thisWeekElixir = results[1]
+    lastWeekElixir = results[2]
+
+    next(null, {code: 200, msg:{
+      elixirs: orderList, 
+      thisWeek: 
+        ranking: thisWeekElixir.rowNumber
+        gold: rewardOfElixirRank(thisWeekElixir.rowNumber)
+      lastWeek: 
+        ranking: lastWeekElixir.rowNumber
+        gold: rewardOfElixirRank(lastWeekElixir.rowNumber)
+    }})
+
+rewardOfElixirRank = (rowNumber) ->
+  100000
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

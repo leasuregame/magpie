@@ -10,8 +10,8 @@ SANBOX_URL = 'https://sandbox.itunes.apple.com/verifyReceipt'
 VERIFY_URL = 'https://buy.itunes.apple.com/verifyReceipt'
 
 GOLDCARDMAP = 
-  'com.leasuregame.magpie.week.card.pay6': 'week'
-  'com.leasuregame.magpie.month.card.pay30': 'month'
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
 
 # app receipt 验证返回状态码
 # 状态码 描述
@@ -189,8 +189,8 @@ createNewGoldCard = (app, orderId, player, product, cb) ->
 
 isGoldCard = (product) ->
   ids = [
-    'com.leasuregame.magpie.week.card.pay6',
-    'com.leasuregame.magpie.month.card.pay30'
+    'com.leasuregame.magpie.week.card',
+    'com.leasuregame.magpie.month.card'
   ]
   if product and product.product_id in ids
     return true

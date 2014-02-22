@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>14620</WindowHeight>
+  <WindowHeight>10860</WindowHeight>
   <WindowWidth>25600</WindowWidth>
-  <WindowTopX>11180</WindowTopX>
-  <WindowTopY>1280</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowTopX>6400</WindowTopX>
+  <WindowTopY>740</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -61,7 +60,7 @@
  <Worksheet ss:Name="竞技仙丹排行版奖励">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="52" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">排名</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">仙币奖励</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">活力点</Data></Cell>
@@ -69,15 +68,15 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">体力点</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">6级经验元灵数量</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">money</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">energy</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">elixir</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">power</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">expCard</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">exp_card</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">600000</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">10000</Data></Cell>
@@ -85,7 +84,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">200</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">594500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9850</Data></Cell>
@@ -93,7 +92,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">195</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">49</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">589000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9700</Data></Cell>
@@ -101,7 +100,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">190</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">48</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">583500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9550</Data></Cell>
@@ -109,7 +108,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">185</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">47</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">578000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9400</Data></Cell>
@@ -117,7 +116,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">180</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">46</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">572500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9250</Data></Cell>
@@ -125,7 +124,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">175</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">45</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">567000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">9100</Data></Cell>
@@ -133,7 +132,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">170</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">44</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">8</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">561500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8950</Data></Cell>
@@ -141,7 +140,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">165</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">43</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">9</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">556000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8800</Data></Cell>
@@ -149,7 +148,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">160</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">42</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">550500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8650</Data></Cell>
@@ -157,7 +156,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">155</Data></Cell>
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-1"><Data ss:Type="Number">41</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">545000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8500</Data></Cell>
@@ -165,7 +164,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">150</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">539500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8350</Data></Cell>
@@ -173,7 +172,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">145</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">13</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">534000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8200</Data></Cell>
@@ -181,7 +180,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">140</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">14</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">528500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">8050</Data></Cell>
@@ -189,7 +188,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">135</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">523000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7900</Data></Cell>
@@ -197,7 +196,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">130</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">16</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">517500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7750</Data></Cell>
@@ -205,7 +204,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">125</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">17</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">512000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7600</Data></Cell>
@@ -213,7 +212,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">120</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">18</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">506500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7450</Data></Cell>
@@ -221,7 +220,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">115</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">19</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">501000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7300</Data></Cell>
@@ -229,7 +228,7 @@
     <Cell ss:StyleID="s63" ss:Formula="=R[-1]C-5"><Data ss:Type="Number">110</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">495500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7150</Data></Cell>
@@ -237,7 +236,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">100</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">21</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">490000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">7000</Data></Cell>
@@ -245,7 +244,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">22</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">484500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6850</Data></Cell>
@@ -253,7 +252,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">23</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">479000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6700</Data></Cell>
@@ -261,7 +260,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">24</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">473500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6550</Data></Cell>
@@ -269,7 +268,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">468000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6400</Data></Cell>
@@ -277,7 +276,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">26</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">462500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6250</Data></Cell>
@@ -285,7 +284,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">27</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">457000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">6100</Data></Cell>
@@ -293,7 +292,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">28</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">451500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5950</Data></Cell>
@@ -301,7 +300,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">29</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">446000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5800</Data></Cell>
@@ -309,7 +308,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">440500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5650</Data></Cell>
@@ -317,7 +316,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">31</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">435000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5500</Data></Cell>
@@ -325,7 +324,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">32</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">429500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5350</Data></Cell>
@@ -333,7 +332,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">33</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">424000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5200</Data></Cell>
@@ -341,7 +340,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">34</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">418500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">5050</Data></Cell>
@@ -349,7 +348,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">35</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">413000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4900</Data></Cell>
@@ -357,7 +356,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">36</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">407500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4750</Data></Cell>
@@ -365,7 +364,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">37</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">402000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4600</Data></Cell>
@@ -373,7 +372,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">38</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">396500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4450</Data></Cell>
@@ -381,7 +380,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">39</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">391000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4300</Data></Cell>
@@ -389,7 +388,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">385500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-150"><Data ss:Type="Number">4150</Data></Cell>
@@ -397,7 +396,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">41</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">380000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">4100</Data></Cell>
@@ -405,7 +404,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">42</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">374500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">4050</Data></Cell>
@@ -413,7 +412,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">43</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">369000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">4000</Data></Cell>
@@ -421,7 +420,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">44</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">363500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3950</Data></Cell>
@@ -429,7 +428,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">45</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">358000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3900</Data></Cell>
@@ -437,7 +436,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">46</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">352500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3850</Data></Cell>
@@ -445,7 +444,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">47</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">347000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3800</Data></Cell>
@@ -453,7 +452,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">48</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">341500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3750</Data></Cell>
@@ -461,7 +460,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">49</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">336000</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3700</Data></Cell>
@@ -469,7 +468,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-5500"><Data ss:Type="Number">330500</Data></Cell>
     <Cell ss:StyleID="s62" ss:Formula="=R[-1]C-50"><Data ss:Type="Number">3650</Data></Cell>
@@ -479,12 +478,14 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -496,20 +497,20 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Width="117"/>
    <Column ss:Width="135"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">export_name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">竞技仙丹排行版奖励</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">elixir_ranking_reward</Data></Cell>
     <Cell ss:StyleID="s65"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

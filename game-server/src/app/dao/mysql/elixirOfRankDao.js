@@ -28,8 +28,26 @@ var ElixirOfRankDao = (function (_super) {
     domain.FIELDS = ['playerId', 'week', 'name', 'elixir', 'got'];
     ElixirOfRankDao.domain = domain;
 
-    ElixirOfRankDao.getRowNumber = function(cb) {
-        dbClient.query();
+    ElixirOfRankDao.getRank = function(playerId, week, cb) {
+        dbClient.query(
+            'select c.rank from ( ' +
+                'select @rank:=@rank+1 as rank, a.playerId from ( ' +
+                   'select e.playerId from elixirOfRank e where week = ? order by elixir DESC ' +
+                ') as a, (select @rank:=0) as b ' +
+            ') c where c.playerId = ?', 
+        [week, playerId], 
+        function(err, res) {
+            console.log(err, res);
+            if (err) {
+               return cb(err);
+            } 
+
+            if (!!res && res.length > 0) {
+                return cb(null, res[0].rank);
+            } else {
+                return cb(null);
+            }
+        });
     };
 
     ElixirOfRankDao.thisWeekElixirRank = function(cb) {
@@ -45,7 +63,8 @@ var ElixirOfRankDao = (function (_super) {
 
 module.exports = ElixirOfRankDao;
 
-SELECT t.*, 
-   @rownum := @rownum + 1 AS rowNumber
-FROM rank t order by t.ranking limit 1, 
-   (SELECT @rownum := 0) r
+//SELECT t.*, @rownum := @rownum + 1 AS rowNumber FROM (select * from rank r order by r.ranking) t, (SELECT @rownum := 0) A
+
+// set @rank=0; select a.rank from (select @rank:=@rank+1 as rank, playerId from elixirOfRank where week = 201407 order by elixir DESC) as a where a.playerId = 101
+
+// SET @rank=0; select a.* from (SELECT @rank:=@rank+1 AS rank, uid, name, feng FROM fengshu ORDER BY feng DESC) as a order by a.name;

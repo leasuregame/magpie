@@ -20,6 +20,7 @@ var Payment = Entity.extend({
     _paymentKey: "",
     _receiptList: null,
     _waitLayer: null,
+    _cb: null,
 
     init: function () {
         cc.log("AppStore Payment init");
@@ -81,11 +82,16 @@ var Payment = Entity.extend({
         this._save();
     },
 
-    buy: function (product) {
+    buy: function (args) {
         cc.log("AppStore Payment buy");
+
+        var product = args.product;
+        this._cb = args.cb;
 
         if (lz.IAPHelp) {
             this._showWaitLayer();
+
+            cc.log(product.product_id);
 
             lz.IAPHelp.buy(product.product_id, this, this._payCallback);
         }
@@ -123,6 +129,7 @@ var Payment = Entity.extend({
         cc.log("=============================================================");
 
         var state = paymentData.state;
+        var product = paymentData.product;
 
         if (state == PAYMENT_LOCK) {
             cc.log("payment lock");
@@ -131,6 +138,16 @@ var Payment = Entity.extend({
             this._closeWaitLayer();
         } else if (state == PAYMENT_PURCHASED) {
             cc.log("payment purchased");
+
+            if (product == "com.leasuregame.magpie.week.card") {
+                gameData.player.resetGoldCards(WEEK_CARD);
+            }
+
+            if (product == "com.leasuregame.magpie.month.card") {
+                gameData.player.resetGoldCards(MONTH_CARD);
+            }
+
+            this._cb();
 
             this._push(paymentData.receipt);
 

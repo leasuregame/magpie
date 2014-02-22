@@ -57,6 +57,9 @@ var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
 var GET_GIFT_BAG = 3;
 
+var TYPE_GIFT_REWARD = 1;
+var TYPE_LOOK_REWARD = 2;
+
 var GiftBagLayer = cc.Layer.extend({
 
     _giftBagLayerFit: null,
@@ -71,6 +74,7 @@ var GiftBagLayer = cc.Layer.extend({
         var reward = data.reward;
         var cb = data.cb || null;
         var type = data.type || SHOW_GIFT_BAG;
+        var titleType = data.titleType || TYPE_GIFT_REWARD;
 
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
@@ -87,7 +91,12 @@ var GiftBagLayer = cc.Layer.extend({
         topBgIcon.setPosition(this._giftBagLayerFit.topBgIconPoint);
         lazyLayer.addChild(topBgIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon333);
+        var url = "icon333";
+        if(titleType == TYPE_LOOK_REWARD) {
+            url = "icon388";
+        }
+
+        var titleIcon = cc.Sprite.create(main_scene_image[url]);
         titleIcon.setPosition(this._giftBagLayerFit.titleIconPoint);
         lazyLayer.addChild(titleIcon);
 

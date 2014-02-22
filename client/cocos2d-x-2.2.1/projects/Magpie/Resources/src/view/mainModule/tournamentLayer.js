@@ -193,6 +193,8 @@ var TournamentLayer = cc.Layer.extend({
         this._skyDialog.setLabel(label);
         this._skyDialog.setRect(this._tournamentLayerFit.skyDialogRect);
 
+        ElixirRankLayer.pop();
+
         return true;
     },
 

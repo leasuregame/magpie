@@ -39,7 +39,11 @@ var GreetingLabel = LazyLayer.extend({
         bgSprite.setPosition(this._greetingLabelFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon371);
+        var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
+        titleBgIcon.setPosition(this._greetingLabelFit.titleBgIconPoint);
+        this.addChild(titleBgIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon377);
         titleIcon.setPosition(this._greetingLabelFit.titleIconPoint);
         this.addChild(titleIcon);
 

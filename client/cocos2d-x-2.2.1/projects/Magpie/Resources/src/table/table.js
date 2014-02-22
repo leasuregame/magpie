@@ -48922,7 +48922,7 @@ var outputTables = {
                 "id": 8,
                 "cash": 6,
                 "gold": 6,
-                "product_id": "com.leasuregame.magpie.week.card.pay6",
+                "product_id": "com.leasuregame.magpie.week.card",
                 "daily_gold": 60,
                 "valid_days": 7,
                 "times": 1
@@ -48931,7 +48931,7 @@ var outputTables = {
                 "id": 9,
                 "cash": 30,
                 "gold": 33,
-                "product_id": "com.leasuregame.magpie.month.card.pay30",
+                "product_id": "com.leasuregame.magpie.month.card",
                 "daily_gold": 100,
                 "valid_days": 30,
                 "times": 1

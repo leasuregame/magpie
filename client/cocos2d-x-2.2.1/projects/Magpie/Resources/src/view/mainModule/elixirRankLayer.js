@@ -113,7 +113,7 @@ var ElixirRankLayer = cc.Layer.extend({
         this._rewardNode = cc.Node.create();
         this._rewardNode.setPosition(cc.p(0, 0));
         this._rewardNode.setVisible(false);
-        this.addChild(this._rewardNode);
+        this.addChild(this._rewardNode, 2);
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
         effect.setScale(0.7);
@@ -161,7 +161,7 @@ var ElixirRankLayer = cc.Layer.extend({
         var point = this._elixirRankLayerFit.labelBasePoint;
         for (var i = 0; i < 4; i++) {
             var x = point.x + 240 * (i % 2);
-            var y = point.y - 100 * parseInt(i / 2);
+            var y = point.y - 85 * parseInt(i / 2);
             var bgLabel = cc.Sprite.create(main_scene_image.icon175);
             bgLabel.setScaleX(0.4);
             bgLabel.setScaleY(0.4);
@@ -181,6 +181,46 @@ var ElixirRankLayer = cc.Layer.extend({
             this.addChild(label[i]);
         }
 
+        this._skyDialog = SkyDialog.create();
+        this.addChild(this._skyDialog, 10);
+
+        var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
+        skyLabel.setContentSize(this._elixirRankLayerFit.labelContentSize);
+
+        var detailItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon120,
+            this._onClickDetail,
+            this
+        );
+        detailItem.setPosition(this._elixirRankLayerFit.detailItemPoint);
+
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon119,
+            this._onClickSendMessage,
+            this
+        );
+        sendMessageItem.setPosition(this._elixirRankLayerFit.sendMessageItemPoint);
+
+        var addFriendItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon41,
+            this._onClickAddFriend,
+            this
+        );
+        addFriendItem.setPosition(this._elixirRankLayerFit.addFriendItemPoint);
+
+        var skyMenu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
+        skyMenu.setPosition(cc.p(0, 0));
+        skyLabel.addChild(skyMenu);
+
+        this._skyDialog.setLabel(skyLabel);
+        this._skyDialog.setRect(this._elixirRankLayerFit.skyDialogRect);
+
         return true;
     },
 
@@ -188,38 +228,41 @@ var ElixirRankLayer = cc.Layer.extend({
         cc.log("ElixirRankLayer update");
 
         var lastWeek = gameData.tournament.get("lastWeek");
-        var isGet = gameData.tournament.get("isGetElixirReward");
-        this._showRewardItem.setVisible(isGet);
-        this._rewardNode.setVisible(!isGet);
+        var isGet = gameData.tournament.isCanGetReward();
+        this._showRewardItem.setVisible(!isGet);
+        this._rewardNode.setVisible(isGet);
 
-        if(lastWeek) {
+        this._rankList = [];
+
+        if (lastWeek) {
             this._lastWeekRank.setString(lastWeek["rank"]);
             this._lastWeekElixir.setString(lastWeek["elixir"]);
         }
 
+        var point = this._elixirRankLayerFit.thisWeekItemPoint;
+        var point1 = this._elixirRankLayerFit.lastWeekItemPoint;
+
         if (this._selectType == TYPE_THIS_WEEK) {
-            var point = this._elixirRankLayerFit.thisWeekItemPoint;
-            point.y += 3;
-            this._thisWeekItem.setPosition(point);
+            this._thisWeekItem.setPosition(cc.p(point.x, point.y + 3));
+            this._lastWeekItem.setPosition(point1);
             this._thisWeekItem.setEnabled(false);
             this._lastWeekItem.setEnabled(true);
 
             var that = this;
             gameData.tournament.updateElixirRank(function (data) {
-                if(data.thisWeek) {
+                if (data.thisWeek) {
                     that._thisWeekRank.setString(data.thisWeek["rank"]);
                     that._thisWeekElixir.setString(data.thisWeek["elixir"]);
                 }
-                that._rankList = data.elixirs;
+                if (data.elixirs) {
+                    that._rankList = data.elixirs;
+                }
                 that._addRankScrollView();
             });
 
         } else {
-            var point = this._elixirRankLayerFit.lastWeekItemPoint;
-            if (this._selectType == TYPE_LAST_WEEK) {
-                point.y += 3;
-            }
-            this._lastWeekItem.setPosition(point);
+            this._thisWeekItem.setPosition(point);
+            this._lastWeekItem.setPosition(cc.p(point1.x, point1.y + 3));
             this._thisWeekItem.setEnabled(true);
             this._lastWeekItem.setEnabled(false);
             this._rankList = gameData.tournament.get("lastWeekElixirRank");
@@ -240,6 +283,8 @@ var ElixirRankLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
+        this._playerItem = [];
+
         var len = this._rankList.length;
         var scrollViewHeight = len * 75;
         if (scrollViewHeight < this._elixirRankLayerFit.scrollViewHeight) {
@@ -250,15 +295,25 @@ var ElixirRankLayer = cc.Layer.extend({
             var y = scrollViewHeight - 65 - 75 * i;
             var player = this._rankList[i];
 
-            var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button6,
-                main_scene_image.button6s,
-                this._onClickPlayer(i),
-                this
-            );
-            playerItem.setAnchorPoint(cc.p(0, 0));
-            playerItem.setPosition(cc.p(5, y));
-            menu.addChild(playerItem);
+            if (player.playerId == gameData.player.get("id")) {
+                var bgIcon = cc.Sprite.create(main_scene_image.icon382);
+                bgIcon.setAnchorPoint(cc.p(0, 0));
+                bgIcon.setPosition(cc.p(5, y));
+                scrollViewLayer.addChild(bgIcon);
+                this._playerItem[i] = bgIcon;
+            } else {
+                playerItem = cc.MenuItemImage.create(
+                    main_scene_image.button6,
+                    main_scene_image.button6s,
+                    this._onClickPlayer(i),
+                    this
+                );
+                playerItem.setAnchorPoint(cc.p(0, 0));
+                playerItem.setPosition(cc.p(5, y));
+                menu.addChild(playerItem);
+
+                this._playerItem[i] = playerItem;
+            }
 
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
@@ -320,12 +375,16 @@ var ElixirRankLayer = cc.Layer.extend({
         this.update();
     },
 
-    _onClickPlayer: function (id) {
+    _onClickPlayer: function (index) {
         var that = this;
         return function () {
-            cc.log("ElixirRankLayer _onClickPlayer: " + id);
+            cc.log("ElixirRankLayer _onClickPlayer: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            var point = this._playerItem[index].convertToWorldSpace(cc.p(268, 30));
+
+            that._selectId = index;
+            that._skyDialog.show(point);
         }
     },
 
@@ -333,13 +392,7 @@ var ElixirRankLayer = cc.Layer.extend({
         cc.log("ElixirRankLayer _onClickShowReward");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var reward = {
-            exp_card: 60,
-            elixir: 60000,
-            power: 200,
-            money: 600000,
-            energy: 10000
-        };
+        var reward = gameData.tournament.getThisWeekReward();
 
         GiftBagLayer.pop({
             reward: reward,
@@ -352,6 +405,30 @@ var ElixirRankLayer = cc.Layer.extend({
         cc.log("ElixirRankLayer _onClickGetReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (!gameData.tournament.isCanGetReward()) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
+
+        if (gameData.cardList.isFull()) {
+            CardListFullTipLayer.pop();
+            return;
+        }
+
+        var that = this;
+        gameData.tournament.getElixirRankReward(function (data) {
+            cc.log(data);
+            GiftBagLayer.pop({
+                reward: data,
+                type: GET_GIFT_BAG,
+                titleType: TYPE_LOOK_REWARD,
+                cb: function () {
+                    lz.tipReward(data);
+                    that.update()
+                }
+            });
+        });
     },
 
     _onClickClose: function () {
@@ -367,8 +444,53 @@ var ElixirRankLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         ElixirRankHelpLabel.pop();
-    }
+    },
 
+    _onClickDetail: function () {
+        cc.log("ElixirRankLayer _onClickDetail: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var player = this._rankList[this._selectId];
+
+        if (player) {
+            gameData.player.playerDetail(function (data) {
+                cc.log(data);
+
+                LineUpDetail.pop(data);
+            }, player.playerId);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickSendMessage: function () {
+        cc.log("ElixirRankLayer _onClickSendMessage: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var player = this._rankList[this._selectId];
+
+        if (player) {
+            SendMessageLayer.pop(player.playerId, player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickAddFriend: function () {
+        cc.log("ElixirRankLayer _onClickAddFriend: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var player = this._rankList[this._selectId];
+
+        if (player) {
+            gameData.friend.addFriend(player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    }
 });
 
 ElixirRankLayer.create = function () {

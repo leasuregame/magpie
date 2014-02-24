@@ -117,7 +117,7 @@ var Tournament = Entity.extend({
 
                 var msg = data.msg;
                 that.set("lastWeekElixirRank", msg.elixirs);
-                if(msg.lastWeek) {
+                if (msg.lastWeek) {
                     that.set("lastWeek", msg.lastWeek);
                 }
                 that.set("isGetElixirReward", msg.isGet);
@@ -126,9 +126,9 @@ var Tournament = Entity.extend({
             } else {
                 cc.log("Tournament sync fail");
 
-                TipLayer.tip(data.msg);
+                that.sync();
             }
-        });
+        }, true);
     },
 
     updateRankList: function (cb) {
@@ -170,7 +170,7 @@ var Tournament = Entity.extend({
                 var msg = data.msg;
 
                 that.set("thisWeekElixirRank", msg.elixirs);
-                if(msg.thisWeek) {
+                if (msg.thisWeek) {
                     that.set("thisWeek", msg.thisWeek);
                 }
 
@@ -200,25 +200,30 @@ var Tournament = Entity.extend({
                 var msg = data.msg;
 
                 var reward = {};
-                var cardIdList = msg.cardIds;
-                var len = cardIdList.length;
-                var cardData = msg.card;
 
-                reward["exp_card"] = msg.card;
+                if (msg.cardIds && msg.cardIds.length > 0) {
+                    var cardIdList = msg.cardIds;
+                    var len = cardIdList.length;
+                    var cardData = msg.card;
 
-                for (var i = 0; i < len; ++i) {
-                    cardData.id = cardIdList[i];
-                    var card = Card.create(cardData);
-                    gameData.cardList.push(card);
+                    reward["exp_card"] = len;
+
+                    for (var i = 0; i < len; ++i) {
+                        cardData.id = cardIdList[i];
+                        var card = Card.create(cardData);
+                        gameData.cardList.push(card);
+                    }
                 }
 
                 for (var key in msg) {
                     if (key != "card" && key != "cardIds") {
-                        gameData.player.add(key, msg[key]);
-                        reward[key] = msg[key];
+                        if (msg[key] > 0) {
+                            gameData.player.add(key, msg[key]);
+                            reward[key] = msg[key];
+                        }
                     }
                 }
-
+                that.set("isGetElixirReward", true);
                 cb(reward);
 
                 lz.dc.event("event_rank_list");
@@ -325,6 +330,34 @@ var Tournament = Entity.extend({
         } else {
             TipLayer.tip("领取奖励出错");
         }
+    },
+
+    getThisWeekReward: function () {
+        cc.log("Tournament showThisWeekReward");
+
+        if(!this._thisWeek) {
+            return null;
+        }
+
+        var rank = this._thisWeek.rank;
+        if (rank <= 50) {
+            var reward = outputTables.elixir_ranking_reward.rows[rank];
+            return reward;
+        } else {
+            var money = outputTables.elixir_ranking_reward.rows[50].money;
+            money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
+            return {money: money}
+        }
+    },
+
+    isCanGetReward: function () {
+        cc.log("Tournament isCanGetReward");
+
+        if (this._isGetElixirReward || !this._lastWeek) {
+            return false;
+        }
+
+        return true;
     }
 });
 

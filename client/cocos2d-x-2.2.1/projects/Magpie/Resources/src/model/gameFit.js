@@ -378,18 +378,23 @@ var fit4Iphone4 = {
             "rankBgIconSize": cc.size(600, 470),
             "thisWeekItemPoint": cc.p(160, 804),
             "lastWeekItemPoint": cc.p(310, 804),
-            "showRewardItemPoint": cc.p(520, 140),
+            "showRewardItemPoint": cc.p(520, 150),
             "closeItemPoint": cc.p(650, 879),
             "helpItemPoint": cc.p(620, 809),
             "effectPoint": cc.p(622, 202),
-            "getRewardItemPoint": cc.p(540, 140),
+            "getRewardItemPoint": cc.p(540, 150),
             "thisWeekIconPoint": cc.p(70, 280),
-            "lastWeekIconPoint": cc.p(70, 180),
+            "lastWeekIconPoint": cc.p(70, 195),
             "labelBasePoint": cc.p(70, 230),
             "scrollViewLayerRect": cc.rect(60, 325, 600, 450),
             "scrollViewSize": cc.size(600, 450),
             "scrollViewPoint": cc.p(60, 325),
-            "scrollViewHeight": 450
+            "scrollViewHeight": 450,
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 110, 640, 700),
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
@@ -515,7 +520,8 @@ var fit4Iphone4 = {
             "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
-            "titleIconPoint": cc.p(360, 817)
+            "titleIconPoint": cc.p(360, 817),
+            "tipLabelPoint": cc.p(360, 700)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(360, 760),
@@ -1773,18 +1779,23 @@ var fit4Iphone5 = {
             "rankBgIconSize": cc.size(600, 620),
             "thisWeekItemPoint": cc.p(120, 960),
             "lastWeekItemPoint": cc.p(270, 960),
-            "showRewardItemPoint": cc.p(480, 140),
+            "showRewardItemPoint": cc.p(480, 150),
             "closeItemPoint": cc.p(610, 1055),
             "helpItemPoint": cc.p(580, 975),
             "effectPoint": cc.p(542, 202),
-            "getRewardItemPoint": cc.p(480, 140),
+            "getRewardItemPoint": cc.p(480, 150),
             "thisWeekIconPoint": cc.p(30, 280),
-            "lastWeekIconPoint": cc.p(30, 180),
+            "lastWeekIconPoint": cc.p(30, 195),
             "labelBasePoint": cc.p(30, 230),
             "scrollViewLayerRect": cc.rect(20, 330, 600, 600),
             "scrollViewSize": cc.size(600, 600),
             "scrollViewPoint": cc.p(20, 330),
-            "scrollViewHeight": 600
+            "scrollViewHeight": 600,
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 700)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
@@ -1909,7 +1920,8 @@ var fit4Iphone5 = {
             "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
-            "titleIconPoint": cc.p(320, 905)
+            "titleIconPoint": cc.p(320, 905),
+            "tipLabelPoint": cc.p(320, 788)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(320, 900),

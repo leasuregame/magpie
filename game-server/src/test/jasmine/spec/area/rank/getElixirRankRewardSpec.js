@@ -61,11 +61,17 @@ describe("Area Server", function() {
         var before_player;
 
         beforeEach(function() {
-          doAjax('/player/100', function(res) {
-            before_player = res.data;
-            loginWith('arthur', '1', 1);
+          doAjax('/update/player/100', {
+            power: JSON.stringify({
+              time: new Date().getTime(),
+              value: 0
+            })
+          }, function() {
+            doAjax('/player/100', function(res) {
+              before_player = res.data;
+              loginWith('arthur', '1', 1);
+            });
           });
-          
         });
 
         it('可以领取', function() {
@@ -86,7 +92,7 @@ describe("Area Server", function() {
               expect(res.data.money).toEqual(before_player.money + data.msg.money);
               expect(res.data.energy).toEqual(before_player.energy + data.msg.energy);
               expect(res.data.elixir).toEqual(before_player.elixir + data.msg.elixir);
-              expect(JSON.parse(res.data.power)).toEqual(JOSN.parse(before_player.power) + data.msg.power);
+              expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value + data.msg.power);
 
             });
 

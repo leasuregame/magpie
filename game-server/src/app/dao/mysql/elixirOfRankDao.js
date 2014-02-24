@@ -30,22 +30,21 @@ var ElixirOfRankDao = (function (_super) {
 
     ElixirOfRankDao.getRank = function(playerId, week, cb) {
         dbClient.query(
-            'select c.rank from ( ' +
-                'select @rank:=@rank+1 as rank, a.playerId from ( ' +
-                   'select e.playerId from elixirOfRank e where week = ? order by elixir DESC ' +
+            'select c.rank, c.elixir from ( ' +
+                'select @rank:=@rank+1 as rank, a.* from ( ' +
+                   'select e.playerId, e.elixir from elixirOfRank e where week = ? order by elixir DESC ' +
                 ') as a, (select @rank:=0) as b ' +
             ') c where c.playerId = ?', 
         [week, playerId], 
         function(err, res) {
-            console.log(err, res);
             if (err) {
                return cb(err);
             } 
 
             if (!!res && res.length > 0) {
-                return cb(null, res[0].rank);
+                return cb(null, res[0]);
             } else {
-                return cb(null);
+                return cb(null, null);
             }
         });
     };

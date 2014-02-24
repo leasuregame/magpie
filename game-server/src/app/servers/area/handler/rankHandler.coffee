@@ -228,9 +228,7 @@ Handler::thisWeek = (msg, session, next) ->
 
     next(null, {code: 200, msg:{
       elixirs: orderList, 
-      thisWeek: 
-        ranking: thisWeekRank
-        money: rewardOfElixirRank(thisWeekRank)?.money
+      thisWeek: thisWeekRank
     }})
 
 Handler::lastWeek = (msg, session, next) ->
@@ -241,23 +239,31 @@ Handler::lastWeek = (msg, session, next) ->
       @app.get('dao').elixirOfRank.lastWeekElixirRank cb
     (cb) =>
       @app.get('dao').elixirOfRank.getRank playerId, utility.lastWeek(), cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.fetchOne {
+        fields: ['got']
+        where: playerId: playerId, week: utility.lastWeek()
+      }, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else
+          cb(null, res)
   ], (err, results) ->
     if err
       return next(null, msg: {code: 501, msg: err.message or err.msg})
 
     orderList = results[0]
     lastWeekRank = results[1]
+    got = results[2]?.got
     
     next(null, {code: 200, msg:{
       elixirs: orderList, 
-      lastWeek: 
-        ranking: lastWeekRank
-        money: rewardOfElixirRank(lastWeekRank)?.money
+      lastWeek: lastWeekRank,
+      isGet: !!got
     }})
 
 Handler::getElixirRankReward = (msg, session, next) ->
   playerId = session.get('playerId')
-  #rank = msg.rank
   week = utility.lastWeek()
   rank = null
   dao = @app.get('dao')
@@ -266,27 +272,28 @@ Handler::getElixirRankReward = (msg, session, next) ->
       dao.elixirOfRank.getRank playerId, week, cb
     (res, cb) ->
       rank = res
-      console.log '-a-', rank
       if not rank
         return cb({code: 501, msg: '上周不够努力，没奖励可领哦'})
       cb(null)
-    # (cb) ->    
-    #   dao.elixirOfRank.fetchOne where: {
-    #     playerId: playerId,
-    #     week: week
-    #   }, cb
-    # (eor, cb) ->
-    #   console.log '-b-', eor
-    #   if eor.got is 1
-    #     return cb({code: 501, msg: '不能重复领取'})
-    #   cb()
+    (cb) ->    
+      dao.elixirOfRank.fetchOne {
+        where: {
+          playerId: playerId,
+          week: week
+        },
+        fields: ['got']
+      }, cb
+    (eor, cb) ->
+      if eor?.got is 1
+        return cb({code: 501, msg: '不能重复领取'})
+      cb()
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
   ], (err, player) ->
     if err
       return next(null, msg: {code: 501, msg: err.message or err.msg})  
 
-    data = rewardOfRank(rank)
+    data = rewardOfRank(rank?.rank)
 
     entityUtil.getReward player, data, (err, cards) ->
       return next(null, msg: {code: 501, msg: err.message or err.msg}) if err

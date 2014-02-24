@@ -43,6 +43,8 @@ checkOrderResult = (app, req, res) ->
   debug = params.debug
   sign = params.sign
 
+  tborder = params.tborder
+  
   tempsign = md5 util.format(
     'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&key=%s',
     source, trade_no, amount, partner, paydes, APPKEY
@@ -52,6 +54,12 @@ checkOrderResult = (app, req, res) ->
       'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&key=%s',
       source, trade_no, amount, partner, paydes, debug, APPKEY
     )
+
+    if tborder
+      tempsign = md5 util.format(
+        'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
+        source, trade_no, amount, partner, paydes, debug, tborder, APPKEY
+      )
 
   res.writeHead(200, {'Content-type': 'application/json'})
   if tempsign is sign

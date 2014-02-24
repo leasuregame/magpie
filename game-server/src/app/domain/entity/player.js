@@ -966,9 +966,14 @@ var Player = (function(_super) {
                 flag: 0
             };
         }
-
+        if(utility.hasMark(si[key].mark, new Date().getDate())) {
+            return false;
+        }
+            
+        
         si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
+        return true;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
@@ -996,27 +1001,20 @@ var Player = (function(_super) {
     };
 
     Player.prototype.signDays = function() {
+        var i, days = 0;
         var key = singInKey();
-        var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
-            var _months = Object.keys(si);
-            if (_months.length >= 12) {
-                delete si[_months[0]];
+        if (!_.has(this.signIn, key)) {
+            return 0;
+        }
+
+        var mark = this.signIn[key].mark;
+        for (i = 1; i <= 31; i++) {
+            if (utility.hasMark(mark, i)) {
+                days += 1;
             }
-            si[key] = {
-                mark: 0,
-                flag: 0
-            };
         }
-        if(utility.hasMark(si[key].mark, new Date().getDate())) {
-            return false;
-        }
-            
-        
-        si[key].mark = utility.mark(si[key].mark, new Date().getDate());
-        this.signIn = si;
-        return true;
+        return days;
     };
 
     Player.prototype.setSignInFlag = function(id) {

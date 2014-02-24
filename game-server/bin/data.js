@@ -359,7 +359,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
               playerId: row.id,
               week: thisWeek(),
               name: row.playerName,
-              elixir: elixir - parseInt(row.id)
+              elixir: elixir + parseInt(row.id)
             }
           }, cb);
         },
@@ -369,7 +369,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
               playerId: row.id,
               week: lastWeek(),
               name: row.playerName,
-              elixir: elixir - parseInt(row.id) + _.random(1, 100)
+              elixir: elixir + parseInt(row.id) + _.random(1, 10000)
             }
           }, cb);
         }

@@ -13,10 +13,11 @@ var ElixirRankLayer = cc.Layer.extend({
     _thisWeekItem: null,
     _lastWeekItem: null,
     _selectType: TYPE_THIS_WEEK,
-    _thisWeekRank: 0,
-    _thisWeekElixir: 0,
-    _lastWeekRank: 0,
-    _lastWeekElixir: 0,
+    _thisWeekRank: null,
+    _thisWeekElixir: null,
+    _lastWeekRank: null,
+    _lastWeekElixir: null,
+    _rankList: [],
 
     onEnter: function () {
         cc.log("ElixirRankLayer onEnter");
@@ -33,6 +34,7 @@ var ElixirRankLayer = cc.Layer.extend({
         this._elixirRankLayerFit = gameFit.mainScene.elixirRankLayer;
 
         this._selectType = TYPE_THIS_WEEK;
+        this._rankList = [];
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -150,6 +152,11 @@ var ElixirRankLayer = cc.Layer.extend({
         this.addChild(lastWeekIcon);
 
         var text = ["排名: ", "仙丹: "];
+        this._thisWeekRank = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._thisWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._lastWeekRank = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._lastWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+
         var label = [this._thisWeekRank, this._thisWeekElixir, this._lastWeekRank, this._lastWeekElixir];
         var point = this._elixirRankLayerFit.labelBasePoint;
         for (var i = 0; i < 4; i++) {
@@ -169,7 +176,6 @@ var ElixirRankLayer = cc.Layer.extend({
             textLabel.setPosition(cc.p(x + 5, y + 5));
             this.addChild(textLabel);
 
-            label[i] = cc.LabelTTF.create("50000", "STHeitiTC-Medium", 26);
             label[i].setAnchorPoint(cc.p(0, 0));
             label[i].setPosition(cc.p(x + 70, y + 4));
             this.addChild(label[i]);
@@ -181,22 +187,45 @@ var ElixirRankLayer = cc.Layer.extend({
     update: function () {
         cc.log("ElixirRankLayer update");
 
-        this._thisWeekItem.setEnabled(this._selectType != TYPE_THIS_WEEK);
-        var point = this._elixirRankLayerFit.thisWeekItemPoint;
-        if(this._selectType == TYPE_THIS_WEEK) {
-            point.y += 3;
+        var lastWeek = gameData.tournament.get("lastWeek");
+        var isGet = gameData.tournament.get("isGetElixirReward");
+        this._showRewardItem.setVisible(isGet);
+        this._rewardNode.setVisible(!isGet);
+
+        if(lastWeek) {
+            this._lastWeekRank.setString(lastWeek["rank"]);
+            this._lastWeekElixir.setString(lastWeek["elixir"]);
         }
-        this._thisWeekItem.setPosition(point);
 
-        this._lastWeekItem.setEnabled(this._selectType != TYPE_LAST_WEEK);
-        var point = this._elixirRankLayerFit.lastWeekItemPoint;
-        if(this._selectType == TYPE_LAST_WEEK) {
+        if (this._selectType == TYPE_THIS_WEEK) {
+            var point = this._elixirRankLayerFit.thisWeekItemPoint;
             point.y += 3;
+            this._thisWeekItem.setPosition(point);
+            this._thisWeekItem.setEnabled(false);
+            this._lastWeekItem.setEnabled(true);
+
+            var that = this;
+            gameData.tournament.updateElixirRank(function (data) {
+                if(data.thisWeek) {
+                    that._thisWeekRank.setString(data.thisWeek["rank"]);
+                    that._thisWeekElixir.setString(data.thisWeek["elixir"]);
+                }
+                that._rankList = data.elixirs;
+                that._addRankScrollView();
+            });
+
+        } else {
+            var point = this._elixirRankLayerFit.lastWeekItemPoint;
+            if (this._selectType == TYPE_LAST_WEEK) {
+                point.y += 3;
+            }
+            this._lastWeekItem.setPosition(point);
+            this._thisWeekItem.setEnabled(true);
+            this._lastWeekItem.setEnabled(false);
+            this._rankList = gameData.tournament.get("lastWeekElixirRank");
+            this._addRankScrollView();
         }
-        this._lastWeekItem.setPosition(point);
 
-
-        this._addRankScrollView();
     },
 
     _addRankScrollView: function () {
@@ -211,14 +240,16 @@ var ElixirRankLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var len = 50;
+        var len = this._rankList.length;
         var scrollViewHeight = len * 75;
-        if(scrollViewHeight < this._elixirRankLayerFit.scrollViewHeight) {
+        if (scrollViewHeight < this._elixirRankLayerFit.scrollViewHeight) {
             scrollViewHeight = this._elixirRankLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 65 - 75 * i;
+            var player = this._rankList[i];
+
             var playerItem = cc.MenuItemImage.create(
                 main_scene_image.button6,
                 main_scene_image.button6s,
@@ -245,7 +276,7 @@ var ElixirRankLayer = cc.Layer.extend({
             nameIcon.setPosition(cc.p(105, y + 30));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = cc.LabelTTF.create("牛B玩家" + i, "STHeitiTC-Medium", 22);
+            var nameLabel = cc.LabelTTF.create(player.name, "STHeitiTC-Medium", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 28));
             scrollViewLayer.addChild(nameLabel);
@@ -255,7 +286,7 @@ var ElixirRankLayer = cc.Layer.extend({
             elixirIcon.setPosition(cc.p(410, y + 30));
             scrollViewLayer.addChild(elixirIcon);
 
-            var elixirLabel = cc.LabelTTF.create("50000", "STHeitiTC-Medium", 22);
+            var elixirLabel = cc.LabelTTF.create(player.elixir, "STHeitiTC-Medium", 22);
             elixirLabel.setColor(cc.c3b(123, 76, 65));
             elixirLabel.setAnchorPoint(cc.p(0, 0.5));
             elixirLabel.setPosition(cc.p(450, y + 25));
@@ -327,9 +358,8 @@ var ElixirRankLayer = cc.Layer.extend({
         cc.log("ElixirRankLayer _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        this.removeFromParent();
-//        MainScene.getInstance().switchLayer(TournamentLayer);
 
+        MainScene.getInstance().switchLayer(TournamentLayer);
     },
 
     _onClickHelp: function () {

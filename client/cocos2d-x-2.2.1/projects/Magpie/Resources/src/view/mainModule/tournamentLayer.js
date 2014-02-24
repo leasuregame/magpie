@@ -145,7 +145,16 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
-        var menu = cc.Menu.create(buyCountItem, this._rewardItem);
+        var rankItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickRank,
+            this
+        );
+
+        rankItem.setPosition(this._tournamentLayerFit.rankItemPoint);
+
+        var menu = cc.Menu.create(buyCountItem, this._rewardItem, rankItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -193,8 +202,6 @@ var TournamentLayer = cc.Layer.extend({
         this._skyDialog.setLabel(label);
         this._skyDialog.setRect(this._tournamentLayerFit.skyDialogRect);
 
-        ElixirRankLayer.pop();
-
         return true;
     },
 
@@ -240,7 +247,7 @@ var TournamentLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        gameData.tournament.sync(function () {
+        gameData.tournament.updateRankList(function () {
             cc.log("TournamentLayer update callback");
 
             that._addRankScrollView();
@@ -393,6 +400,14 @@ var TournamentLayer = cc.Layer.extend({
 
             that._updateRankRewardItem();
         });
+    },
+
+    _onClickRank: function () {
+        cc.log("TournamentLayer _onClickRank");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().switchLayer(ElixirRankLayer);
     },
 
     _onClickDetail: function () {

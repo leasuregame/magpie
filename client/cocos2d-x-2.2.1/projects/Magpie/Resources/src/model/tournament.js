@@ -19,6 +19,11 @@ var Tournament = Entity.extend({
     _notCanGetReward: [],
     _rankList: [],
     _rankStats: {},
+    _thisWeekElixirRank: [],
+    _lastWeekElixirRank: [],
+    _thisWeek: null,
+    _lastWeek: null,
+    _isGetElixirReward: false,
 
     init: function (data) {
         cc.log("Tournament init");
@@ -29,8 +34,12 @@ var Tournament = Entity.extend({
         this._notCanGetReward = [];
         this._rankList = [];
         this._rankStats = {};
+        this._thisWeekElixirRank = [];
+        this._lastWeekElixirRank = [];
+        this._isGetElixirReward = true;
 
         this.update(data);
+        this.sync();
 
         return true;
     },
@@ -96,29 +105,127 @@ var Tournament = Entity.extend({
         }
     },
 
-    sync: function (cb) {
+    sync: function () {
         cc.log("Tournament sync");
 
         var that = this;
-        lz.server.request("area.rankHandler.rankingList", {}, function (data) {
+        lz.server.request("area.rankHandler.lastWeek", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
                 cc.log("Tournament sync success");
 
                 var msg = data.msg;
-
-                that.update(msg.rank);
-
-                cb();
+                that.set("lastWeekElixirRank", msg.elixirs);
+                if(msg.lastWeek) {
+                    that.set("lastWeek", msg.lastWeek);
+                }
+                that.set("isGetElixirReward", msg.isGet);
 
                 lz.dc.event("event_rank_list");
             } else {
                 cc.log("Tournament sync fail");
 
                 TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    updateRankList: function (cb) {
+        cc.log("Tournament updateRankList");
+
+        var that = this;
+        lz.server.request("area.rankHandler.rankingList", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Tournament updateRankList success");
+
+                var msg = data.msg;
+
+                that.update(msg.rank);
+                cb();
+
+                lz.dc.event("event_rank_list");
+            } else {
+                cc.log("Tournament updateRankList fail");
+
+                TipLayer.tip(data.msg);
 
                 cb();
+            }
+        });
+    },
+
+    updateElixirRank: function (cb) {
+        cc.log("Tournament updateElixirRank");
+
+        var that = this;
+        lz.server.request("area.rankHandler.thisWeek", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Tournament updateElixirRank success");
+
+                var msg = data.msg;
+
+                that.set("thisWeekElixirRank", msg.elixirs);
+                if(msg.thisWeek) {
+                    that.set("thisWeek", msg.thisWeek);
+                }
+
+                cb(msg);
+
+                lz.dc.event("event_rank_list");
+            } else {
+                cc.log("Tournament updateElixirRank fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
+    getElixirRankReward: function (cb) {
+        cc.log("Tournament getElixirReward");
+
+        var that = this;
+        lz.server.request("area.rankHandler.getElixirRankReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Tournament getElixirReward success");
+
+                var msg = data.msg;
+
+                var reward = {};
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                reward["exp_card"] = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                for (var key in msg) {
+                    if (key != "card" && key != "cardIds") {
+                        gameData.player.add(key, msg[key]);
+                        reward[key] = msg[key];
+                    }
+                }
+
+                cb(reward);
+
+                lz.dc.event("event_rank_list");
+            } else {
+                cc.log("Tournament getElixirReward fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },

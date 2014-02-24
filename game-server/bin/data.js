@@ -358,6 +358,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
             data: {
               playerId: row.id,
               week: thisWeek(),
+              name: row.playerName,
               elixir: elixir - parseInt(row.id)
             }
           }, cb);
@@ -367,6 +368,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
             data: {
               playerId: row.id,
               week: lastWeek(),
+              name: row.playerName,
               elixir: elixir - parseInt(row.id) + _.random(1, 100)
             }
           }, cb);

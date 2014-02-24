@@ -9,8 +9,8 @@ ORDER_ERROR_STATUS_1 = 3000
 ORDER_ERROR_STATUS_2 = 3010
 
 GOLDCARDMAP = 
-  'com.leasuregame.magpie.week.card.pay6': 'week'
-  'com.leasuregame.magpie.month.card.pay30': 'month'
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
 
 module.exports = (app) ->
   new Remote(app)
@@ -143,8 +143,8 @@ createNewGoldCard = (app, tradeNo, player, product, cb) ->
 
 isGoldCard = (product) ->
   ids = [
-    'com.leasuregame.magpie.week.card.pay6',
-    'com.leasuregame.magpie.month.card.pay30'
+    'com.leasuregame.magpie.week.card',
+    'com.leasuregame.magpie.month.card'
   ]
   if product and product.product_id in ids
     return true

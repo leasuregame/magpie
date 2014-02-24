@@ -5,12 +5,12 @@ table = require '../../../manager/table'
 utility = require '../../../common/utility'
 
 GOLDCARDMAP = 
-  'week': 'com.leasuregame.magpie.week.card.pay6'
-  'month': 'com.leasuregame.magpie.month.card.pay30'
+  'week': 'com.leasuregame.magpie.week.card'
+  'month': 'com.leasuregame.magpie.month.card'
 
 GOLDCARDMAP_REVERT = 
-  'com.leasuregame.magpie.week.card.pay6': 'week'
-  'com.leasuregame.magpie.month.card.pay30': 'month'
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
 
 module.exports = (app) ->
   new Handler(app)

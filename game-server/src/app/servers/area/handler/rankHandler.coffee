@@ -202,7 +202,7 @@ Handler::getRankingReward = (msg, session, next) ->
       where: id: rank.id
     }, (err, res) -> 
       if err
-        return next(null, msg: {code: 501, msg: err.message or err.msg})
+        return next(null, {code: 501, msg: err.message or err.msg})
         
       player.increase('elixir', rewardData.elixir)
       player.save()
@@ -221,7 +221,7 @@ Handler::thisWeek = (msg, session, next) ->
       @app.get('dao').elixirOfRank.getRank playerId, utility.thisWeek(), cb
   ], (err, results) ->
     if err
-      return next(null, msg: {code: 501, msg: err.message or err.msg})
+      return next(null, {code: 501, msg: err.message or err.msg})
 
     orderList = results[0]
     thisWeekRank = results[1]
@@ -250,7 +250,7 @@ Handler::lastWeek = (msg, session, next) ->
           cb(null, res)
   ], (err, results) ->
     if err
-      return next(null, msg: {code: 501, msg: err.message or err.msg})
+      return next(null, {code: 501, msg: err.message or err.msg})
 
     orderList = results[0]
     lastWeekRank = results[1]
@@ -291,18 +291,18 @@ Handler::getElixirRankReward = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
   ], (err, player) ->
     if err
-      return next(null, msg: {code: 501, msg: err.message or err.msg})  
+      return next(null, {code: 501, msg: err.message or err.msg})  
 
     data = rewardOfRank(rank?.rank)
 
     entityUtil.getReward player, data, (err, cards) ->
-      return next(null, msg: {code: 501, msg: err.message or err.msg}) if err
+      return next(null, {code: 501, msg: err.message or err.msg}) if err
 
       dao.elixirOfRank.update {
         data: got: 1
         where: playerId: playerId, week: week
       }, (err, res) ->
-        return next(null, msg: {code: 501, msg: err.message or err.msg}) if err
+        return next(null, {code: 501, msg: err.message or err.msg}) if err
 
         results = _.extend {}, data, {
           card: cards[0] if cards.length > 0

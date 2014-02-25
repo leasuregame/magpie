@@ -378,7 +378,7 @@ var ElixirRankLayer = cc.Layer.extend({
             cc.log("ElixirRankLayer _onClickPlayer: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            var point = this._playerItem[index].convertToWorldSpace(cc.p(268, 30));
+            var point = this._playerItem[index].convertToWorldSpace(cc.p(268, 35));
 
             that._selectId = index;
             that._skyDialog.show(point);

@@ -551,6 +551,11 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
         },
+        "instancesLayer": {
+            "headIconPoint": cc.p(40, 874),
+            "taskLayerItemPoint": cc.p(111, 914),
+            "passLayerItemPoint": cc.p(254, 914)
+        },
         "lineUpDetail": {
             "locatePoints": {
                 1: cc.p(190, 642),
@@ -1950,6 +1955,11 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(10, 194, 740, 741),
             "scrollViewSize": cc.size(620, 780),
             "scrollViewPoint": cc.p(0, 160)
+        },
+        "instancesLayer": {
+            "headIconPoint": cc.p(0, 1050),
+            "taskLayerItemPoint": cc.p(71, 1090),
+            "passLayerItemPoint": cc.p(214, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {

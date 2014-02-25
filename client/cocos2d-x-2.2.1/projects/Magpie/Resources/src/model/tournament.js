@@ -117,12 +117,12 @@ var Tournament = Entity.extend({
 
                 var msg = data.msg;
                 that.set("lastWeekElixirRank", msg.elixirs);
+
                 if (msg.lastWeek) {
                     that.set("lastWeek", msg.lastWeek);
                 }
-                that.set("isGetElixirReward", msg.isGet);
 
-                lz.dc.event("event_rank_list");
+                that.set("isGetElixirReward", msg.isGet);
             } else {
                 cc.log("Tournament sync fail");
 
@@ -175,8 +175,6 @@ var Tournament = Entity.extend({
                 }
 
                 cb(msg);
-
-                lz.dc.event("event_rank_list");
             } else {
                 cc.log("Tournament updateElixirRank fail");
 
@@ -198,7 +196,6 @@ var Tournament = Entity.extend({
                 cc.log("Tournament getElixirReward success");
 
                 var msg = data.msg;
-
                 var reward = {};
 
                 if (msg.cardIds && msg.cardIds.length > 0) {
@@ -223,10 +220,9 @@ var Tournament = Entity.extend({
                         }
                     }
                 }
+
                 that.set("isGetElixirReward", true);
                 cb(reward);
-
-                lz.dc.event("event_rank_list");
             } else {
                 cc.log("Tournament getElixirReward fail");
 
@@ -335,7 +331,7 @@ var Tournament = Entity.extend({
     getThisWeekReward: function () {
         cc.log("Tournament showThisWeekReward");
 
-        if(!this._thisWeek) {
+        if (!this._thisWeek) {
             return null;
         }
 

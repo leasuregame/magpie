@@ -56,12 +56,15 @@ Handler::send = (msg, session, next) ->
     next(null, {code: 200})
 
 Handler::getLatest = (msg, session, next) ->
-  dao.greeting.fetchMany {
-    limit: 50,
-    orderby: 'created DESC'
-  }, (err, res) ->
+  dao.greeting.getLatest 50, (err, res) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
-    result = res.map (r) -> content: r.content, name: r.playerName, created: r.created.getTime?()
+    result = res.map (r) -> 
+      content: r.content, 
+      name: r.playerName, 
+      created: r.created.getTime?(),
+      playerId: r.playerId,
+      vip: r.vip
     next(null, {code: 200, msg: result})
+

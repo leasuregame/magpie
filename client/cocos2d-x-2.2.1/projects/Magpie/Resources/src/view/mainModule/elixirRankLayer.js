@@ -6,7 +6,6 @@ var TYPE_THIS_WEEK = 1;
 var TYPE_LAST_WEEK = 0;
 
 var ElixirRankLayer = cc.Layer.extend({
-
     _elixirRankLayerFit: null,
 
     _scrollView: null,
@@ -152,9 +151,9 @@ var ElixirRankLayer = cc.Layer.extend({
         this.addChild(lastWeekIcon);
 
         var text = ["排名: ", "仙丹: "];
-        this._thisWeekRank = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._thisWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
         this._thisWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
-        this._lastWeekRank = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._lastWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
         this._lastWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
 
         var label = [this._thisWeekRank, this._thisWeekElixir, this._lastWeekRank, this._lastWeekElixir];
@@ -259,7 +258,6 @@ var ElixirRankLayer = cc.Layer.extend({
                 }
                 that._addRankScrollView();
             });
-
         } else {
             this._thisWeekItem.setPosition(point);
             this._lastWeekItem.setPosition(cc.p(point1.x, point1.y + 3));
@@ -356,7 +354,6 @@ var ElixirRankLayer = cc.Layer.extend({
 
         this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
-
     },
 
     _onClickThisWeek: function () {

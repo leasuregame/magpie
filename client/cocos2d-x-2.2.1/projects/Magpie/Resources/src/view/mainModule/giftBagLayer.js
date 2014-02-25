@@ -61,7 +61,6 @@ var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
 
 var GiftBagLayer = cc.Layer.extend({
-
     _giftBagLayerFit: null,
 
     init: function (data) {
@@ -169,11 +168,16 @@ var GiftBagLayer = cc.Layer.extend({
         if (reward && Object.keys(reward).length > 0) {
             this._addRankScrollView(reward);
         } else {
-            var tipLabel = StrokeLabel.create("亲，没有奖励哦！", "STHeitiTC-Medium", 36);
-            tipLabel.setColor(cc.c3b(255, 255, 255));
-            tipLabel.setBgColor(cc.c3b(133, 60, 31));
-            tipLabel.setPosition(this._giftBagLayerFit.tipLabelPoint);
-            this.addChild(tipLabel);
+            var description = lz.format("亲，你的竞技仙丹数量为0，无法获得奖励哟。", 13);
+            var len = description.length;
+            var point = this._giftBagLayerFit.tipLabelPoint;
+            for (var i = 0; i < len; i++) {
+                var tipLabel = StrokeLabel.create(description[i], "STHeitiTC-Medium", 30);
+                tipLabel.setColor(cc.c3b(255, 255, 255));
+                tipLabel.setBgColor(cc.c3b(133, 60, 31));
+                tipLabel.setPosition(cc.p(point.x, point.y - i * 40));
+                this.addChild(tipLabel);
+            }
         }
 
         return true;
@@ -235,7 +239,6 @@ var GiftBagLayer = cc.Layer.extend({
                         countLabel.setPosition(cc.p(x + 50, y - 20));
                         scrollViewLayer.addChild(countLabel);
                         index++;
-
                     }
 
                 } else {
@@ -291,4 +294,4 @@ GiftBagLayer.pop = function (data) {
     var giftBagLayer = GiftBagLayer.create(data);
 
     MainScene.getInstance().addChild(giftBagLayer);
-}
+};

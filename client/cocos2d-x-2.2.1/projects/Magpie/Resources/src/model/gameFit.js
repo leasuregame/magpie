@@ -394,7 +394,7 @@ var fit4Iphone4 = {
             "detailItemPoint": cc.p(108, 240),
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
-            "skyDialogRect": cc.rect(40, 110, 640, 700),
+            "skyDialogRect": cc.rect(40, 110, 640, 700)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),

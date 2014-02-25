@@ -300,7 +300,7 @@ var ElixirRankLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(bgIcon);
                 this._playerItem[i] = bgIcon;
             } else {
-                playerItem = cc.MenuItemImage.create(
+                var playerItem = cc.MenuItemImage.create(
                     main_scene_image.button6,
                     main_scene_image.button6s,
                     this._onClickPlayer(i),
@@ -378,7 +378,7 @@ var ElixirRankLayer = cc.Layer.extend({
             cc.log("ElixirRankLayer _onClickPlayer: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            var point = this._playerItem[index].convertToWorldSpace(cc.p(268, 35));
+            var point = that._playerItem[index].convertToWorldSpace(cc.p(273, 35));
 
             that._selectId = index;
             that._skyDialog.show(point);

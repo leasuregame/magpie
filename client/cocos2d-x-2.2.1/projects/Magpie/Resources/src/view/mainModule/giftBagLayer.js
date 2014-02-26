@@ -212,6 +212,7 @@ var GiftBagLayer = cc.Layer.extend({
         for (var i = 0; i < len; i++) {
             var key = keys[i];
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
+
                 if (giftBagGoods[key].name == "cardArray") {
                     var cards = reward[key];
                     var cardsLen = cards.length;
@@ -239,6 +240,7 @@ var GiftBagLayer = cc.Layer.extend({
                         scrollViewLayer.addChild(countLabel);
                         index++;
                     }
+
                 } else {
                     var y = scrollViewHeight - index * 110 - 60;
                     var goods = giftBagGoods[key];
@@ -274,87 +276,16 @@ var GiftBagLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
-
-        var okItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon21,
-            function () {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-                lazyLayer.removeFromParent();
-                if (cb) {
-                    cb();
-                }
-            },
-            this
-        );
-        okItem.setPosition(this._giftBagLayerFit.okItemPoint);
-        okItem.setVisible(type == SHOW_GIFT_BAG);
-
-        var getItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button10,
-            main_scene_image.button10s,
-            main_scene_image.icon123,
-            function () {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-                lazyLayer.removeFromParent();
-                if (cb) {
-                    cb();
-                }
-            },
-            this
-        );
-        getItem.setPosition(this._giftBagLayerFit.okItemPoint);
-        getItem.setVisible(type == GET_GIFT_BAG);
-
-        var buyItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon163,
-            function () {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-                lazyLayer.removeFromParent();
-                if (cb) {
-                    cb();
-                }
-            },
-            this
-        );
-        buyItem.setPosition(this._giftBagLayerFit.buyItemPoint);
-        buyItem.setVisible(type == BUY_GIFT_BAG);
-
-        var cancelItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon308,
-            function () {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-                lazyLayer.removeFromParent();
-            },
-            this
-        );
-        cancelItem.setPosition(this._giftBagLayerFit.cancelItemPoint);
-        cancelItem.setVisible(type == BUY_GIFT_BAG);
-
-        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem);
-        menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
-
-        return true;
     }
 });
 
 GiftBagLayer.create = function (data) {
     cc.log("GiftBagLayer create");
 
-    var ret = new GiftBagLayer();
+    var ref = new GiftBagLayer();
 
-    if (ret && ret.init(data)) {
-        return ret;
+    if (ref && ref.init(data)) {
+        return ref;
     }
 
     return null;

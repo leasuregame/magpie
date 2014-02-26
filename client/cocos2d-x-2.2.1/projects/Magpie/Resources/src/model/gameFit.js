@@ -353,6 +353,49 @@ var fit4Iphone4 = {
             "QQGroupPoint": cc.p(55, 282),
             "go2LoginItemPoint": cc.p(55, 162)
         },
+        "elixirRankHelpLabel": {
+            "headIconPoint": cc.p(360, 934),
+            "bgSpriteSize": cc.size(650, 809),
+            "bgSpritePoint": cc.p(363, 100),
+            "titleBgIconPoint": cc.p(360, 904),
+            "titleIconPoint": cc.p(360, 912),
+            "rankBgIconPoint": cc.p(360, 525),
+            "rankBgIconSize": cc.size(600, 600),
+            "tipIconPoint": cc.p(358, 795),
+            "closeItemPoint": cc.p(650, 879),
+            "tipPoint": cc.p(360, 180),
+            "scrollViewLayerRect": cc.rect(60, 240, 600, 520),
+            "scrollViewSize": cc.size(600, 520),
+            "scrollViewPoint": cc.p(60, 240)
+        },
+        "elixirRankLayer": {
+            "headIconPoint": cc.p(360, 934),
+            "bgSpriteSize": cc.size(650, 809),
+            "bgSpritePoint": cc.p(363, 100),
+            "titleBgIconPoint": cc.p(360, 904),
+            "titleIconPoint": cc.p(360, 912),
+            "rankBgIconPoint": cc.p(360, 550),
+            "rankBgIconSize": cc.size(600, 470),
+            "thisWeekItemPoint": cc.p(160, 804),
+            "lastWeekItemPoint": cc.p(310, 804),
+            "showRewardItemPoint": cc.p(520, 150),
+            "closeItemPoint": cc.p(650, 879),
+            "helpItemPoint": cc.p(620, 809),
+            "effectPoint": cc.p(622, 202),
+            "getRewardItemPoint": cc.p(540, 150),
+            "thisWeekIconPoint": cc.p(70, 280),
+            "lastWeekIconPoint": cc.p(70, 195),
+            "labelBasePoint": cc.p(70, 230),
+            "scrollViewLayerRect": cc.rect(60, 325, 600, 450),
+            "scrollViewSize": cc.size(600, 450),
+            "scrollViewPoint": cc.p(60, 325),
+            "scrollViewHeight": 450,
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 110, 640, 700)
+        },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
             "bgSpritePoint": cc.p(40, 106),
@@ -477,7 +520,8 @@ var fit4Iphone4 = {
             "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
-            "titleIconPoint": cc.p(360, 817)
+            "titleIconPoint": cc.p(360, 817),
+            "tipLabelPoint": cc.p(360, 700)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(360, 760),
@@ -506,6 +550,11 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(10, 140, 740, 620),
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
+        },
+        "instancesLayer": {
+            "headIconPoint": cc.p(40, 874),
+            "taskLayerItemPoint": cc.p(111, 914),
+            "passLayerItemPoint": cc.p(254, 914)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1210,6 +1259,7 @@ var fit4Iphone4 = {
             "rewardLabelPoint": cc.p(360, 830),
             "buyCountItemPoint": cc.p(575, 927),
             "rewardItemPoint": cc.p(160, 830),
+            "rankItemPoint": cc.p(580, 830),
             "tipLabelPoint": cc.p(360, 792),
             "labelContentSize": cc.size(216, 300),
             "detailItemPoint": cc.p(108, 240),
@@ -1295,7 +1345,8 @@ var fit4Iphone4 = {
         "greetingLabel": {
             "bgSpriteSize": cc.size(540, 660),
             "bgSpritePoint": cc.p(360, 450),
-            "titleIconPoint": cc.p(360, 780),
+            "titleBgIconPoint": cc.p(360, 780),
+            "titleIconPoint": cc.p(360, 788),
             "msgBgIconPoint": cc.p(110, 700),
             "speakerIconPoint": cc.p(150, 700),
             "msgEditBoxPoint": cc.p(345, 700),
@@ -1708,6 +1759,49 @@ var fit4Iphone5 = {
             "QQGroupPoint": cc.p(15, 458),
             "go2LoginItemPoint": cc.p(15, 338)
         },
+        "elixirRankHelpLabel": {
+            "headIconPoint": cc.p(320, 1100),
+            "bgSpriteSize": cc.size(650, 985),
+            "bgSpritePoint": cc.p(323, 100),
+            "titleBgIconPoint": cc.p(320, 1080),
+            "titleIconPoint": cc.p(320, 1088),
+            "rankBgIconPoint": cc.p(320, 610),
+            "rankBgIconSize": cc.size(600, 750),
+            "tipIconPoint": cc.p(318, 952),
+            "closeItemPoint": cc.p(610, 1055),
+            "tipPoint": cc.p(320, 180),
+            "scrollViewLayerRect": cc.rect(20, 250, 600, 665),
+            "scrollViewSize": cc.size(600, 665),
+            "scrollViewPoint": cc.p(20, 250)
+        },
+        "elixirRankLayer": {
+            "headIconPoint": cc.p(320, 1100),
+            "bgSpriteSize": cc.size(650, 985),
+            "bgSpritePoint": cc.p(323, 100),
+            "titleBgIconPoint": cc.p(320, 1080),
+            "titleIconPoint": cc.p(320, 1088),
+            "rankBgIconPoint": cc.p(320, 630),
+            "rankBgIconSize": cc.size(600, 620),
+            "thisWeekItemPoint": cc.p(120, 960),
+            "lastWeekItemPoint": cc.p(270, 960),
+            "showRewardItemPoint": cc.p(480, 150),
+            "closeItemPoint": cc.p(610, 1055),
+            "helpItemPoint": cc.p(580, 975),
+            "effectPoint": cc.p(542, 202),
+            "getRewardItemPoint": cc.p(480, 150),
+            "thisWeekIconPoint": cc.p(30, 280),
+            "lastWeekIconPoint": cc.p(30, 195),
+            "labelBasePoint": cc.p(30, 230),
+            "scrollViewLayerRect": cc.rect(20, 330, 600, 600),
+            "scrollViewSize": cc.size(600, 600),
+            "scrollViewPoint": cc.p(20, 330),
+            "scrollViewHeight": 600,
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 750)
+        },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
             "bgSpritePoint": cc.p(0, 106),
@@ -1783,7 +1877,7 @@ var fit4Iphone5 = {
             "rewardEffectPoint": cc.p(320, 900),
             "lvIconPoint": cc.p(84, 837),
             "playerLvLabelPoint": cc.p(35, 834),
-            "rewardEffectUrl":"animation_2"
+            "rewardEffectUrl": "animation_2"
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1831,7 +1925,8 @@ var fit4Iphone5 = {
             "scrollViewLayerRect2": cc.rect(0, 360, 640, 480),
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
-            "titleIconPoint": cc.p(320, 905)
+            "titleIconPoint": cc.p(320, 905),
+            "tipLabelPoint": cc.p(320, 788)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(320, 900),
@@ -1860,6 +1955,11 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(10, 194, 740, 741),
             "scrollViewSize": cc.size(620, 780),
             "scrollViewPoint": cc.p(0, 160)
+        },
+        "instancesLayer": {
+            "headIconPoint": cc.p(0, 1050),
+            "taskLayerItemPoint": cc.p(71, 1090),
+            "passLayerItemPoint": cc.p(214, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -2568,6 +2668,7 @@ var fit4Iphone5 = {
             "rewardLabelPoint": cc.p(320, 988),
             "buyCountItemPoint": cc.p(535, 1103),
             "rewardItemPoint": cc.p(120, 988),
+            "rankItemPoint": cc.p(540, 988),
             "tipLabelPoint": cc.p(320, 940),
             "labelContentSize": cc.size(216, 300),
             "detailItemPoint": cc.p(108, 240),
@@ -2653,7 +2754,8 @@ var fit4Iphone5 = {
         "greetingLabel": {
             "bgSpriteSize": cc.size(540, 780),
             "bgSpritePoint": cc.p(320, 550),
-            "titleIconPoint": cc.p(320, 930),
+            "titleBgIconPoint": cc.p(320, 930),
+            "titleIconPoint": cc.p(320, 938),
             "msgBgIconPoint": cc.p(70, 850),
             "speakerIconPoint": cc.p(110, 850),
             "msgEditBoxPoint": cc.p(305, 850),

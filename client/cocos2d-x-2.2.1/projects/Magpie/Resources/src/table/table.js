@@ -1,8 +1,10 @@
 var nameChanged = {
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
@@ -43,8 +45,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -53,6 +53,8 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "elixir_ranking_reward": "竞技仙丹排行版奖励",
+    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -115,17 +117,350 @@ var nameChanged = {
     "vip特权": "vip_privilege"
 };
 var outputTables = {
-    "card_price": {
+    "achievement": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "grow_per_lv": 10,
-                "star1": 500,
-                "star2": 800,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 50,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 50,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 200,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 50,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingToOne",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第1",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "method": "v587",
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "竞技场中以1敌5，战胜对方",
+                "gold": 20,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 20,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 20,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 50,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardFullLevel",
+                "need": 1,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo10",
+                "need": 1,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 100,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 10000000,
+                "name": "一大波仙丹",
+                "desc": "累计获得1000万仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 10000000,
+                "name": "活力无限",
+                "desc": "累计获得1000万活力点",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 99999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到99999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 88888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到88888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "method": "soLucky",
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "用1张素材卡成功进阶该卡牌",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力1000万",
+                "gold": 50,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 90000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币9000万",
+                "gold": 50,
+                "energy": 500
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 10000000,
+                "name": "挥金如土",
+                "desc": "累计消耗魔石1000万",
+                "gold": 50,
+                "energy": 500
+            },
+            "26": {
+                "id": 26,
+                "method": "taskPoinTo",
+                "need": 10,
+                "name": "十步之遥",
+                "desc": "修炼里探索总进度达到10",
+                "gold": 20,
+                "energy": 50
+            },
+            "27": {
+                "id": 27,
+                "method": "taskChapterPassTo",
+                "need": 1,
+                "name": "鬼门关之旅",
+                "desc": "通关鬼门关",
+                "gold": 20,
+                "energy": 50
+            },
+            "28": {
+                "id": 28,
+                "method": "passFirstWin",
+                "need": 1,
+                "name": "天道首胜",
+                "desc": "在天道中获得第一场胜利",
+                "gold": 20,
+                "energy": 50
+            },
+            "29": {
+                "id": 29,
+                "method": "taskPartPassTo",
+                "need": 1,
+                "name": "苦寒地狱",
+                "desc": "通关苦寒地狱篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "30": {
+                "id": 30,
+                "method": "taskPartPassTo",
+                "need": 2,
+                "name": "凄凉人间",
+                "desc": "通关凄凉人间篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "31": {
+                "id": 31,
+                "method": "taskPartPassTo",
+                "need": 3,
+                "name": "南天之门",
+                "desc": "通关南天之门篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "32": {
+                "id": 32,
+                "method": "taskPartPassTo",
+                "need": 4,
+                "name": "西天取经",
+                "desc": "通关西天取经篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "33": {
+                "id": 33,
+                "method": "taskPartPassTo",
+                "need": 5,
+                "name": "莲花加持",
+                "desc": "通关莲花加持篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "34": {
+                "id": 34,
+                "method": "taskPartPassTo",
+                "need": 6,
+                "name": "千年之修",
+                "desc": "通关千年之修篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "35": {
+                "id": 35,
+                "method": "taskPartPassTo",
+                "need": 7,
+                "name": "斩妖除魔",
+                "desc": "通关斩妖除魔篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "36": {
+                "id": 36,
+                "method": "taskPartPassTo",
+                "need": 8,
+                "name": "降龙伏虎",
+                "desc": "通关降龙伏虎篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "37": {
+                "id": 37,
+                "method": "taskPartPassTo",
+                "need": 9,
+                "name": "普度众生",
+                "desc": "通关普度众生篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "38": {
+                "id": 38,
+                "method": "taskPartPassTo",
+                "need": 10,
+                "name": "尊者之身",
+                "desc": "通关尊者之身篇章",
+                "gold": 20,
+                "energy": 100
             }
         }
     },
@@ -558,6 +893,20 @@ var outputTables = {
                 "exp_need": 286156,
                 "money_need": 1837176,
                 "cur_exp": 2043193
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 500,
+                "star2": 800,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000
             }
         }
     },
@@ -9306,353 +9655,6 @@ var outputTables = {
                 "id": "greetingConsumeGold",
                 "value": 20,
                 "desc": "每次喊话话费的金额"
-            }
-        }
-    },
-    "achievement": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "method": "levelTo",
-                "need": 50,
-                "name": "升级达人",
-                "desc": "角色等级达到50级",
-                "gold": 50,
-                "energy": 100
-            },
-            "2": {
-                "id": 2,
-                "method": "levelTo",
-                "need": 90,
-                "name": "疯狂升级",
-                "desc": "角色等级达到90级",
-                "gold": 100,
-                "energy": 1000
-            },
-            "3": {
-                "id": 3,
-                "method": "passTo",
-                "need": 50,
-                "name": "一半！",
-                "desc": "天道闯过50层",
-                "gold": 50,
-                "energy": 100
-            },
-            "4": {
-                "id": 4,
-                "method": "passTo",
-                "need": 100,
-                "name": "通关！",
-                "desc": "天道闯过100层",
-                "gold": 200,
-                "energy": 1000
-            },
-            "5": {
-                "id": 5,
-                "method": "winCount",
-                "need": 50,
-                "name": "小试牛刀",
-                "desc": "竞技获胜次数达到50场",
-                "gold": 50,
-                "energy": 100
-            },
-            "6": {
-                "id": 6,
-                "method": "winCount",
-                "need": 5000,
-                "name": "已经超神了",
-                "desc": "竞技获胜次数达到5000场",
-                "gold": 100,
-                "energy": 1000
-            },
-            "7": {
-                "id": 7,
-                "method": "winningStreak",
-                "need": 50,
-                "name": "所向披靡",
-                "desc": "竞技最高连胜达到50次",
-                "gold": 100,
-                "energy": 1000
-            },
-            "8": {
-                "id": 8,
-                "method": "rankingToOne",
-                "need": 1,
-                "name": "寂寞",
-                "desc": "竞技排名达到第1",
-                "gold": 100,
-                "energy": 1000
-            },
-            "9": {
-                "id": 9,
-                "method": "v587",
-                "need": 1,
-                "name": "霸气外射！",
-                "desc": "竞技场中以1敌5，战胜对方",
-                "gold": 20,
-                "energy": 100
-            },
-            "10": {
-                "id": 10,
-                "method": "friends",
-                "need": 20,
-                "name": "我们约会吧",
-                "desc": "拥有20个好友",
-                "gold": 20,
-                "energy": 100
-            },
-            "11": {
-                "id": 11,
-                "method": "gaveBless",
-                "need": 500,
-                "name": "无私奉献",
-                "desc": "为好友送出祝福达到500次",
-                "gold": 20,
-                "energy": 100
-            },
-            "12": {
-                "id": 12,
-                "method": "receivedBless",
-                "need": 100,
-                "name": "爱是相互的",
-                "desc": "收到好友祝福次数达到100次",
-                "gold": 300,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "method": "star5card",
-                "need": 1,
-                "name": "质的飞跃",
-                "desc": "获得1张5星卡",
-                "gold": 50,
-                "energy": 100
-            },
-            "14": {
-                "id": 14,
-                "method": "star5cardFullLevel",
-                "need": 1,
-                "name": "这就是实力",
-                "desc": "将1张5星卡强化到满级",
-                "gold": 50,
-                "energy": 500
-            },
-            "15": {
-                "id": 15,
-                "method": "star5card",
-                "need": 5,
-                "name": "你就是神！",
-                "desc": "获得5张5星卡",
-                "gold": 100,
-                "energy": 1000
-            },
-            "16": {
-                "id": 16,
-                "method": "psTo10",
-                "need": 1,
-                "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
-                "gold": 100,
-                "energy": 100
-            },
-            "17": {
-                "id": 17,
-                "method": "elixirTo",
-                "need": 10000000,
-                "name": "一大波仙丹",
-                "desc": "累计获得1000万仙丹",
-                "gold": 50,
-                "energy": 500
-            },
-            "18": {
-                "id": 18,
-                "method": "energyTo",
-                "need": 10000000,
-                "name": "活力无限",
-                "desc": "累计获得1000万活力点",
-                "gold": 100,
-                "energy": 1000
-            },
-            "19": {
-                "id": 19,
-                "method": "luckyCardCount",
-                "need": 99999,
-                "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到99999",
-                "gold": 100,
-                "energy": 500
-            },
-            "20": {
-                "id": 20,
-                "method": "highLuckyCardCount",
-                "need": 88888,
-                "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到88888",
-                "gold": 100,
-                "energy": 1000
-            },
-            "21": {
-                "id": 21,
-                "method": "soLucky",
-                "need": 1,
-                "name": "买彩票去吧",
-                "desc": "用1张素材卡成功进阶该卡牌",
-                "gold": 50,
-                "energy": 100
-            },
-            "22": {
-                "id": 22,
-                "method": "powerConsume",
-                "need": 10000000,
-                "name": "孜孜不倦",
-                "desc": "累计消耗体力1000万",
-                "gold": 50,
-                "energy": 100
-            },
-            "23": {
-                "id": 23,
-                "method": "vip",
-                "need": 1,
-                "name": "我是VIP！",
-                "desc": "成为VIP用户",
-                "gold": 50,
-                "energy": 500
-            },
-            "24": {
-                "id": 24,
-                "method": "moneyConsume",
-                "need": 90000000,
-                "name": "不差钱",
-                "desc": "累计消耗仙币9000万",
-                "gold": 50,
-                "energy": 500
-            },
-            "25": {
-                "id": 25,
-                "method": "goldConsume",
-                "need": 10000000,
-                "name": "挥金如土",
-                "desc": "累计消耗魔石1000万",
-                "gold": 50,
-                "energy": 500
-            },
-            "26": {
-                "id": 26,
-                "method": "taskPoinTo",
-                "need": 10,
-                "name": "十步之遥",
-                "desc": "修炼里探索总进度达到10",
-                "gold": 20,
-                "energy": 50
-            },
-            "27": {
-                "id": 27,
-                "method": "taskChapterPassTo",
-                "need": 1,
-                "name": "鬼门关之旅",
-                "desc": "通关鬼门关",
-                "gold": 20,
-                "energy": 50
-            },
-            "28": {
-                "id": 28,
-                "method": "passFirstWin",
-                "need": 1,
-                "name": "天道首胜",
-                "desc": "在天道中获得第一场胜利",
-                "gold": 20,
-                "energy": 50
-            },
-            "29": {
-                "id": 29,
-                "method": "taskPartPassTo",
-                "need": 1,
-                "name": "苦寒地狱",
-                "desc": "通关苦寒地狱篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "30": {
-                "id": 30,
-                "method": "taskPartPassTo",
-                "need": 2,
-                "name": "凄凉人间",
-                "desc": "通关凄凉人间篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "31": {
-                "id": 31,
-                "method": "taskPartPassTo",
-                "need": 3,
-                "name": "南天之门",
-                "desc": "通关南天之门篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "32": {
-                "id": 32,
-                "method": "taskPartPassTo",
-                "need": 4,
-                "name": "西天取经",
-                "desc": "通关西天取经篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "33": {
-                "id": 33,
-                "method": "taskPartPassTo",
-                "need": 5,
-                "name": "莲花加持",
-                "desc": "通关莲花加持篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "34": {
-                "id": 34,
-                "method": "taskPartPassTo",
-                "need": 6,
-                "name": "千年之修",
-                "desc": "通关千年之修篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "35": {
-                "id": 35,
-                "method": "taskPartPassTo",
-                "need": 7,
-                "name": "斩妖除魔",
-                "desc": "通关斩妖除魔篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "36": {
-                "id": 36,
-                "method": "taskPartPassTo",
-                "need": 8,
-                "name": "降龙伏虎",
-                "desc": "通关降龙伏虎篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "37": {
-                "id": 37,
-                "method": "taskPartPassTo",
-                "need": 9,
-                "name": "普度众生",
-                "desc": "通关普度众生篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "38": {
-                "id": 38,
-                "method": "taskPartPassTo",
-                "need": 10,
-                "name": "尊者之身",
-                "desc": "通关尊者之身篇章",
-                "gold": 20,
-                "energy": 100
             }
         }
     },
@@ -24233,6 +24235,411 @@ var outputTables = {
             "249": {
                 "id": 249,
                 "last_name": "金"
+            }
+        }
+    },
+    "elixir_ranking_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 600000,
+                "energy": 10000,
+                "elixir": 60000,
+                "power": 200,
+                "exp_card": 50
+            },
+            "2": {
+                "id": 2,
+                "money": 594500,
+                "energy": 9850,
+                "elixir": 58880,
+                "power": 195,
+                "exp_card": 49
+            },
+            "3": {
+                "id": 3,
+                "money": 589000,
+                "energy": 9700,
+                "elixir": 57760,
+                "power": 190,
+                "exp_card": 48
+            },
+            "4": {
+                "id": 4,
+                "money": 583500,
+                "energy": 9550,
+                "elixir": 56640,
+                "power": 185,
+                "exp_card": 47
+            },
+            "5": {
+                "id": 5,
+                "money": 578000,
+                "energy": 9400,
+                "elixir": 55520,
+                "power": 180,
+                "exp_card": 46
+            },
+            "6": {
+                "id": 6,
+                "money": 572500,
+                "energy": 9250,
+                "elixir": 54400,
+                "power": 175,
+                "exp_card": 45
+            },
+            "7": {
+                "id": 7,
+                "money": 567000,
+                "energy": 9100,
+                "elixir": 53280,
+                "power": 170,
+                "exp_card": 44
+            },
+            "8": {
+                "id": 8,
+                "money": 561500,
+                "energy": 8950,
+                "elixir": 52160,
+                "power": 165,
+                "exp_card": 43
+            },
+            "9": {
+                "id": 9,
+                "money": 556000,
+                "energy": 8800,
+                "elixir": 51040,
+                "power": 160,
+                "exp_card": 42
+            },
+            "10": {
+                "id": 10,
+                "money": 550500,
+                "energy": 8650,
+                "elixir": 49920,
+                "power": 155,
+                "exp_card": 41
+            },
+            "11": {
+                "id": 11,
+                "money": 545000,
+                "energy": 8500,
+                "elixir": 48800,
+                "power": 150,
+                "exp_card": 0
+            },
+            "12": {
+                "id": 12,
+                "money": 539500,
+                "energy": 8350,
+                "elixir": 47680,
+                "power": 145,
+                "exp_card": 0
+            },
+            "13": {
+                "id": 13,
+                "money": 534000,
+                "energy": 8200,
+                "elixir": 46560,
+                "power": 140,
+                "exp_card": 0
+            },
+            "14": {
+                "id": 14,
+                "money": 528500,
+                "energy": 8050,
+                "elixir": 45440,
+                "power": 135,
+                "exp_card": 0
+            },
+            "15": {
+                "id": 15,
+                "money": 523000,
+                "energy": 7900,
+                "elixir": 44320,
+                "power": 130,
+                "exp_card": 0
+            },
+            "16": {
+                "id": 16,
+                "money": 517500,
+                "energy": 7750,
+                "elixir": 43200,
+                "power": 125,
+                "exp_card": 0
+            },
+            "17": {
+                "id": 17,
+                "money": 512000,
+                "energy": 7600,
+                "elixir": 42080,
+                "power": 120,
+                "exp_card": 0
+            },
+            "18": {
+                "id": 18,
+                "money": 506500,
+                "energy": 7450,
+                "elixir": 40960,
+                "power": 115,
+                "exp_card": 0
+            },
+            "19": {
+                "id": 19,
+                "money": 501000,
+                "energy": 7300,
+                "elixir": 39840,
+                "power": 110,
+                "exp_card": 0
+            },
+            "20": {
+                "id": 20,
+                "money": 495500,
+                "energy": 7150,
+                "elixir": 38720,
+                "power": 100,
+                "exp_card": 0
+            },
+            "21": {
+                "id": 21,
+                "money": 490000,
+                "energy": 7000,
+                "elixir": 37600,
+                "power": 0,
+                "exp_card": 0
+            },
+            "22": {
+                "id": 22,
+                "money": 484500,
+                "energy": 6850,
+                "elixir": 36480,
+                "power": 0,
+                "exp_card": 0
+            },
+            "23": {
+                "id": 23,
+                "money": 479000,
+                "energy": 6700,
+                "elixir": 35360,
+                "power": 0,
+                "exp_card": 0
+            },
+            "24": {
+                "id": 24,
+                "money": 473500,
+                "energy": 6550,
+                "elixir": 34240,
+                "power": 0,
+                "exp_card": 0
+            },
+            "25": {
+                "id": 25,
+                "money": 468000,
+                "energy": 6400,
+                "elixir": 33120,
+                "power": 0,
+                "exp_card": 0
+            },
+            "26": {
+                "id": 26,
+                "money": 462500,
+                "energy": 6250,
+                "elixir": 32000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "27": {
+                "id": 27,
+                "money": 457000,
+                "energy": 6100,
+                "elixir": 30880,
+                "power": 0,
+                "exp_card": 0
+            },
+            "28": {
+                "id": 28,
+                "money": 451500,
+                "energy": 5950,
+                "elixir": 29760,
+                "power": 0,
+                "exp_card": 0
+            },
+            "29": {
+                "id": 29,
+                "money": 446000,
+                "energy": 5800,
+                "elixir": 28640,
+                "power": 0,
+                "exp_card": 0
+            },
+            "30": {
+                "id": 30,
+                "money": 440500,
+                "energy": 5650,
+                "elixir": 27520,
+                "power": 0,
+                "exp_card": 0
+            },
+            "31": {
+                "id": 31,
+                "money": 435000,
+                "energy": 5500,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "32": {
+                "id": 32,
+                "money": 429500,
+                "energy": 5350,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "33": {
+                "id": 33,
+                "money": 424000,
+                "energy": 5200,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "34": {
+                "id": 34,
+                "money": 418500,
+                "energy": 5050,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "35": {
+                "id": 35,
+                "money": 413000,
+                "energy": 4900,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "36": {
+                "id": 36,
+                "money": 407500,
+                "energy": 4750,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "37": {
+                "id": 37,
+                "money": 402000,
+                "energy": 4600,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "38": {
+                "id": 38,
+                "money": 396500,
+                "energy": 4450,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "39": {
+                "id": 39,
+                "money": 391000,
+                "energy": 4300,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "40": {
+                "id": 40,
+                "money": 385500,
+                "energy": 4150,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "41": {
+                "id": 41,
+                "money": 380000,
+                "energy": 4100,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "42": {
+                "id": 42,
+                "money": 374500,
+                "energy": 4050,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "43": {
+                "id": 43,
+                "money": 369000,
+                "energy": 4000,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "44": {
+                "id": 44,
+                "money": 363500,
+                "energy": 3950,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "45": {
+                "id": 45,
+                "money": 358000,
+                "energy": 3900,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "46": {
+                "id": 46,
+                "money": 352500,
+                "energy": 3850,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "47": {
+                "id": 47,
+                "money": 347000,
+                "energy": 3800,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "48": {
+                "id": 48,
+                "money": 341500,
+                "energy": 3750,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "49": {
+                "id": 49,
+                "money": 336000,
+                "energy": 3700,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "50": {
+                "id": 50,
+                "money": 330500,
+                "energy": 3650,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
             }
         }
     },
@@ -49312,4 +49719,4 @@ var outputTables = {
             }
         }
     }
-}
+};

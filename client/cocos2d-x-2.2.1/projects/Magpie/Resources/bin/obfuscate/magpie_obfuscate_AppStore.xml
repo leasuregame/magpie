@@ -133,6 +133,8 @@
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
                 <file name="src/view/mainModule/configLayer.js"/>
+                <file name="src/view/mainModule/elixirRankHelpLabel.js"/>
+                <file name="src/view/mainModule/elixirRankLayer.js"/>
                 <file name="src/view/mainModule/evolutionLayer.js"/>
                 <file name="src/view/mainModule/exchangeLayer.js"/>
                 <file name="src/view/mainModule/exploreLayer.js"/>
@@ -145,6 +147,7 @@
                 <file name="src/view/mainModule/goldLayer.js"/>
                 <file name="src/view/mainModule/goPaymentLayer.js"/>
                 <file name="src/view/mainModule/greetingLabel.js"/>
+                <file name="src/view/mainModule/instancesLayer.js"/>
                 <file name="src/view/mainModule/level9BoxLayer.js"/>
                 <file name="src/view/mainModule/lineUpDetail.js"/>
                 <file name="src/view/mainModule/lineUpDetailsLayer.js"/>

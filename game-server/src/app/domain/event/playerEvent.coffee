@@ -36,7 +36,7 @@ exports.addEvents = (app, player) ->
       player.resetData()
       player.save()
 
-      app.get('messageService').pushMessage {
+      app.get('messageService').pushByPid player.id, {
         route: 'onResetData', 
         msg: player.dailyData()
       }, () ->

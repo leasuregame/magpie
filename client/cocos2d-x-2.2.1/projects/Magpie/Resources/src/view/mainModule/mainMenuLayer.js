@@ -20,7 +20,7 @@ var MainMenuLayer = cc.Layer.extend({
     _markSprite: null,
     _layer: [
         [MainLayer],
-        [TaskLayer, ExploreLayer],
+        [InstancesLayer, TaskLayer, ExploreLayer],
         [PassLayer],
         [TournamentLayer],
         [CardListLayer],

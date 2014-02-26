@@ -150,4 +150,24 @@ Utility =
         format = format.replace(RegExp.$1, if RegExp.$1.length is 1 then o[key] else ('00' + o[key]).substr(o[key].toString().length))
     return format
 
+  thisWeek: ->
+    now = new Date()
+    onejan = new Date(now.getFullYear(), 0, 1)
+    weekNumber = Math.ceil((((now-onejan)/86400000)+onejan.getDate()+1)/7)
+    ''+now.getFullYear()+(if weekNumber<10 then '0'+weekNumber else weekNumber)
+
+  lastWeek: ->
+    now = new Date()
+    onejan = new Date(now.getFullYear(), 0, 1)
+    weekNumber = Math.ceil((((now-onejan)/86400000)+onejan.getDate()+1)/7)-1
+
+    if weekNumber is 0
+      lastYear = now.getFullYear()-1
+      start = new Date(lastYear, 0, 1)
+      end = new Date(lastYear, 12, 0)
+      lastWeekNumber = Math.ceil((((end-start)/86400000)+start.getDate()+1)/7)
+      ''+lastYear+lastWeekNumber
+    else
+      ''+now.getFullYear()+(if weekNumber<10 then '0'+weekNumber else weekNumber)
+
 module.exports = Utility

@@ -78,7 +78,6 @@ var TipsLayer = LazyLayer.extend({
         var scrollViewHeight = 11 * 250;
 
         for (var i = 0; i < len; ++i) {
-
             var key = keys[i];
             var help = gameHelp[key];
 
@@ -104,7 +103,6 @@ var TipsLayer = LazyLayer.extend({
                 this._addDescription(description, yy, scrollViewLayer);
                 yy -= description.length * 25;
             }
-
         }
 
         scrollView.setContentSize(cc.size(580, scrollViewHeight));

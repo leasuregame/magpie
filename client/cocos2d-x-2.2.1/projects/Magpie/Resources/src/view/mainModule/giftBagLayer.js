@@ -57,6 +57,9 @@ var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
 var GET_GIFT_BAG = 3;
 
+var TYPE_GIFT_REWARD = 1;
+var TYPE_LOOK_REWARD = 2;
+
 var GiftBagLayer = cc.Layer.extend({
     _giftBagLayerFit: null,
 
@@ -70,25 +73,118 @@ var GiftBagLayer = cc.Layer.extend({
         var reward = data.reward;
         var cb = data.cb || null;
         var type = data.type || SHOW_GIFT_BAG;
-
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer);
+        var titleType = data.titleType || TYPE_GIFT_REWARD;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(bgLayer);
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg21);
         bgSprite.setPosition(this._giftBagLayerFit.bgSprite2Point);
-        lazyLayer.addChild(bgSprite);
+        this.addChild(bgSprite);
 
         var topBgIcon = cc.Sprite.create(main_scene_image.icon332);
         topBgIcon.setPosition(this._giftBagLayerFit.topBgIconPoint);
-        lazyLayer.addChild(topBgIcon);
+        this.addChild(topBgIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon333);
+        var url = "icon333";
+        if (titleType == TYPE_LOOK_REWARD) {
+            url = "icon388";
+        }
+
+        var titleIcon = cc.Sprite.create(main_scene_image[url]);
         titleIcon.setPosition(this._giftBagLayerFit.titleIconPoint);
-        lazyLayer.addChild(titleIcon);
+        this.addChild(titleIcon);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                this.removeFromParent();
+                if (cb) {
+                    cb();
+                }
+            },
+            this
+        );
+        okItem.setPosition(this._giftBagLayerFit.okItemPoint);
+        okItem.setVisible(type == SHOW_GIFT_BAG);
+
+        var getItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button10,
+            main_scene_image.button10s,
+            main_scene_image.icon123,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                this.removeFromParent();
+                if (cb) {
+                    cb();
+                }
+            },
+            this
+        );
+        getItem.setPosition(this._giftBagLayerFit.okItemPoint);
+        getItem.setVisible(type == GET_GIFT_BAG);
+
+        var buyItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon163,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                this.removeFromParent();
+                if (cb) {
+                    cb();
+                }
+            },
+            this
+        );
+        buyItem.setPosition(this._giftBagLayerFit.buyItemPoint);
+        buyItem.setVisible(type == BUY_GIFT_BAG);
+
+        var cancelItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon308,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                this.removeFromParent();
+            },
+            this
+        );
+        cancelItem.setPosition(this._giftBagLayerFit.cancelItemPoint);
+        cancelItem.setVisible(type == BUY_GIFT_BAG);
+
+        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        if (reward && Object.keys(reward).length > 0) {
+            this._addRankScrollView(reward);
+        } else {
+            var description = lz.format("亲，你的竞技仙丹数量为0，无法获得奖励哟。", 13);
+            var len = description.length;
+            var point = this._giftBagLayerFit.tipLabelPoint;
+            for (var i = 0; i < len; i++) {
+                var tipLabel = StrokeLabel.create(description[i], "STHeitiTC-Medium", 30);
+                tipLabel.setColor(cc.c3b(255, 255, 255));
+                tipLabel.setBgColor(cc.c3b(133, 60, 31));
+                tipLabel.setPosition(cc.p(point.x, point.y - i * 40));
+                this.addChild(tipLabel);
+            }
+        }
+
+        return true;
+    },
+
+    _addRankScrollView: function (reward) {
+        cc.log("GiftBagLayer _addRankScrollView");
 
         var keys = Object.keys(reward);
         var len = keys.length;
@@ -174,7 +270,7 @@ var GiftBagLayer = cc.Layer.extend({
         scrollView.setPosition(this._giftBagLayerFit.scrollViewPoint2);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
-        lazyLayer.addChild(scrollView);
+        this.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());

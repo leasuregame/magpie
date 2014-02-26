@@ -707,7 +707,7 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(TaskLayer);
+        MainScene.getInstance().switchLayer(InstancesLayer);
     },
 
     /**

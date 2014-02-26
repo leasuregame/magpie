@@ -228,7 +228,7 @@ var ElixirRankLayer = cc.Layer.extend({
 
         var lastWeek = gameData.tournament.get("lastWeek");
         var isGet = gameData.tournament.isCanGetReward();
-        this._showRewardItem.setVisible(!isGet);
+        this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
 
         this._rankList = [];

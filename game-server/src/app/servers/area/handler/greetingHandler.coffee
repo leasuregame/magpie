@@ -42,7 +42,12 @@ Handler::send = (msg, session, next) ->
     (greet, cb) =>
       @app.get('messageService').pushMessage {
         route: 'onGreeting'
-        msg: name: playerName, content: content, created: new Date(greet.created).getTime?()
+        msg: 
+          name: playerName 
+          content: content
+          created: new Date(greet.created).getTime?()
+          playerId: playerId
+          vip: player.vip
       }, cb
 
     (gres, cb) ->

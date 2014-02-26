@@ -82,15 +82,12 @@ deleteVersion : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::extension::AssetsManager*"
- * @param {const char*}
- * @param {const char*}
- * @param {const char*}
  * @param {target object}
  * @param {errorCallback}
  * @param {progressCallback}
  * @param {successCallback}
  */
-create : function () {},
+getInstance : function () {},
 
 /**
  * @method AssetsManager

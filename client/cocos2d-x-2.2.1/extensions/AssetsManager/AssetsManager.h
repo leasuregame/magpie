@@ -159,10 +159,9 @@ public:
     
     /* @brief To access within scripting environment
      */
-    static AssetsManager* create(
-                                 const char* packageUrl,
-                                 const char* versionFileUrl,
-                                 const char* storagePath,
+    static AssetsManager* assetsManager;
+    static AssetsManager* getInstance();
+    static AssetsManager* getInstance(
                                  jsval jsThisObj,
                                  jsval errorCallback,
                                  jsval progressCallback,

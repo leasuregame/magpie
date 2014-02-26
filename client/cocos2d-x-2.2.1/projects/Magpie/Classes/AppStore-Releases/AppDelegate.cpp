@@ -20,8 +20,10 @@
 #include "js_cocos2dx_autogen_extension.hpp"
 #include "js_bindings_WebLayer.hpp"
 #include "js_bindings_NotificationHelp.hpp"
+#include "AssetsManager.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 using namespace CocosDenshion;
 
 AppDelegate::AppDelegate()
@@ -77,6 +79,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_js_bindings_NotificationHelp);
 
     sc->start();
+    
+    AssetsManager::getInstance();
     
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);

@@ -78,6 +78,7 @@ var appFiles = [
     'src/model/battleLog.js',
     'src/model/battleStep.js',
 
+    'src/model/gameCombo.js',
     'src/model/gameData.js',
     'src/model/gameMark.js',
     'src/model/gameGuide.js',

@@ -58,7 +58,6 @@ var BUY_GIFT_BAG = 2;
 var GET_GIFT_BAG = 3;
 
 var GiftBagLayer = cc.Layer.extend({
-
     _giftBagLayerFit: null,
 
     init: function (data) {
@@ -117,7 +116,6 @@ var GiftBagLayer = cc.Layer.extend({
         for (var i = 0; i < len; i++) {
             var key = keys[i];
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
-
                 if (giftBagGoods[key].name == "cardArray") {
                     var cards = reward[key];
                     var cardsLen = cards.length;
@@ -144,9 +142,7 @@ var GiftBagLayer = cc.Layer.extend({
                         countLabel.setPosition(cc.p(x + 50, y - 20));
                         scrollViewLayer.addChild(countLabel);
                         index++;
-
                     }
-
                 } else {
                     var y = scrollViewHeight - index * 110 - 60;
                     var goods = giftBagGoods[key];
@@ -253,16 +249,16 @@ var GiftBagLayer = cc.Layer.extend({
         lazyLayer.addChild(menu);
 
         return true;
-
     }
 });
 
 GiftBagLayer.create = function (data) {
     cc.log("GiftBagLayer create");
 
-    var ref = new GiftBagLayer();
-    if (ref && ref.init(data)) {
-        return ref;
+    var ret = new GiftBagLayer();
+
+    if (ret && ret.init(data)) {
+        return ret;
     }
 
     return null;
@@ -272,4 +268,4 @@ GiftBagLayer.pop = function (data) {
     var giftBagLayer = GiftBagLayer.create(data);
 
     MainScene.getInstance().addChild(giftBagLayer);
-}
+};

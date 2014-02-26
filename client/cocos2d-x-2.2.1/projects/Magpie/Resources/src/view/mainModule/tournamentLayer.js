@@ -203,7 +203,9 @@ var TournamentLayer = cc.Layer.extend({
         var next = function () {
             cc.log("isFirstTournament: " + that._isFirstTournament);
             if (that._isFirstTournament) {
-                MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
+                MandatoryTeachingLayer.pop({
+                    progress: FIRST_TOURNAMENT
+                });
             }
         };
 

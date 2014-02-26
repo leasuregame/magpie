@@ -73,6 +73,7 @@
                 <file name="src/model/battleLog.js"/>
                 <file name="src/model/battleStep.js"/>
 
+                <file name="src/model/gameCombo.js"/>
                 <file name="src/model/gameData.js"/>
                 <file name="src/model/gameMark.js"/>
                 <file name="src/model/gameGuide.js"/>

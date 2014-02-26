@@ -15,13 +15,16 @@
 var MAIN_PLAY_SPEED = 1;
 var BATTLE_PLAY_SPEEDS = [1, 1.3, 2.0, 2.7];
 
-var BattlePlayer = cc.Class.extend({
+var BattlePlayer = Entity.extend({
     _battleScene: null,
+    _cb: null,
 
-    play: function (id, isPlayback) {
-        cc.log("BattlePlayer play");
+    play: function (args) {
+        cc.log("BattlePlayer play: " + args);
 
-        isPlayback = isPlayback || false;
+        this._cb = args.cb;
+        var id = args.id;
+        var isPlayback = args.isPlayback || false;
 
         var battleLog = BattleLog.create(id, isPlayback);
 
@@ -36,7 +39,6 @@ var BattlePlayer = cc.Class.extend({
         gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
 
         var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
-
         cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[playSpeedTimes]);
 
         return battleLog.isWin();
@@ -55,6 +57,13 @@ var BattlePlayer = cc.Class.extend({
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
         cc.Director.getInstance().popScene();
+
+        var cb = this._cb;
+        lz.scheduleOnce(function () {
+            if (cb) {
+                cb();
+            }
+        }, 0.1);
 
         if (goLayer) {
             MainScene.getInstance().switchLayer(goLayer);

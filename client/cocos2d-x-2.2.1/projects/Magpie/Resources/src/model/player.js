@@ -308,8 +308,6 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
-
-        gameGuide.updateGuide();
     },
 
     isFullLv: function () {

@@ -228,7 +228,9 @@ var TournamentLabel = cc.Node.extend({
                                 that._target._setFirstTournament(data.isFirstTournament);
                             }
 
-                            BattlePlayer.getInstance().play(data.battleLogId);
+                            BattlePlayer.getInstance().play({
+                                id: data.battleLogId
+                            });
                         } else {
                             that._target.update();
                         }

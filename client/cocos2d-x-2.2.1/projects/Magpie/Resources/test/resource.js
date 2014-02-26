@@ -514,10 +514,10 @@ var main_scene_image = {
     p2: effect_scene_path + "effect/" + "p2.png",
     p3: effect_scene_path + "effect/" + "p3.png",
     p4: effect_scene_path + "effect/" + "p4.png",
-    p5: effect_scene_path + "effect/" + "p5.png",
+    // p5: effect_scene_path + "effect/" + "p5.png",
     p6: effect_scene_path + "effect/" + "p6.png",
     p7: effect_scene_path + "effect/" + "p7.png",
-    p8: effect_scene_path + "effect/" + "p8.png",
+    // p8: effect_scene_path + "effect/" + "p8.png",
     p9: effect_scene_path + "effect/" + "p9.png",
     p10: effect_scene_path + "effect/" + "p10.png",
     p11: effect_scene_path + "effect/" + "p11.png",
@@ -591,7 +591,7 @@ var main_scene_image = {
     p79: effect_scene_path + "effect/" + "p79.png",
     p80: effect_scene_path + "effect/" + "p80.png",
     p81: effect_scene_path + "effect/" + "p81.png",
-    p82: effect_scene_path + "effect/" + "p82.png",
+    // p82: effect_scene_path + "effect/" + "p82.png",
     p83: effect_scene_path + "effect/" + "p83.png",
     p84: effect_scene_path + "effect/" + "p84.png",
     p85: effect_scene_path + "effect/" + "p85.png",
@@ -1181,6 +1181,11 @@ var main_scene_image = {
     9: test_scene_path + "res/" + "9.png",
     10: test_scene_path + "res/" + "10.png",
     11: test_scene_path + "res/" + "11.png",
+    29: test_scene_path + "res/" + "29.png",
+    50: test_scene_path + "res/" + "50.png",
+    70: test_scene_path + "res/" + "70.png",
+    76: test_scene_path + "res/" + "76.png",
+    83: test_scene_path + "res/" + "83.png",
 
 
     //技能特效
@@ -1191,7 +1196,10 @@ var main_scene_image = {
     texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
     texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
     texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
+    texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
+    texiao20: test_scene_path + "ccb/" + "texiao20.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
+    
 
 };
 

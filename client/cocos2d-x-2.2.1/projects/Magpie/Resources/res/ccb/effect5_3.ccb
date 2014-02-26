@@ -145,7 +145,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>25</real>
+									<real>40</real>
 									<real>10</real>
 								</array>
 							</dict>
@@ -156,8 +156,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>10</real>
-									<real>5</real>
+									<real>15</real>
+									<real>8</real>
 								</array>
 							</dict>
 							<dict>
@@ -486,8 +486,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.6600000858306885</real>
-									<real>1.6600000858306885</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -500,7 +500,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>8.8000001907348633</real>
+								<real>8.0000009536743164</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -529,7 +529,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>143</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -538,9 +538,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>146</integer>
-									<integer>187</integer>
-									<integer>189</integer>
+									<integer>201</integer>
+									<integer>176</integer>
+									<integer>144</integer>
 								</array>
 							</dict>
 							<dict>
@@ -740,8 +740,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.6600000858306885</real>
-									<real>1.6600000858306885</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -754,7 +754,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-6.6000003814697266</real>
+								<real>-6.0000004768371582</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -783,7 +783,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>143</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -792,9 +792,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>203</integer>
-									<integer>248</integer>
 									<integer>255</integer>
+									<integer>244</integer>
+									<integer>210</integer>
 								</array>
 							</dict>
 							<dict>
@@ -994,8 +994,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.6600000858306885</real>
-									<real>1.6600000858306885</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1008,7 +1008,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-6.6000003814697266</real>
+								<real>-6.0000004768371582</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1037,7 +1037,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>143</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1046,9 +1046,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>146</integer>
-									<integer>191</integer>
-									<integer>214</integer>
+									<integer>222</integer>
+									<integer>212</integer>
+									<integer>175</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1248,8 +1248,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.6600000858306885</real>
-									<real>1.6600000858306885</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1262,7 +1262,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>8.8000001907348633</real>
+								<real>8.0000009536743164</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1291,7 +1291,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>143</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1300,9 +1300,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>183</integer>
-									<integer>231</integer>
-									<integer>255</integer>
+									<integer>247</integer>
+									<integer>253</integer>
+									<integer>222</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1462,8 +1462,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.6600000858306885</real>
-									<real>1.6600000858306885</real>
+									<real>1.6000000238418579</real>
+									<real>1.6000000238418579</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1495,7 +1495,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>143</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1504,9 +1504,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>104</integer>
-									<integer>162</integer>
-									<integer>180</integer>
+									<integer>193</integer>
+									<integer>179</integer>
+									<integer>150</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1658,7 +1658,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.36666667461395264</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

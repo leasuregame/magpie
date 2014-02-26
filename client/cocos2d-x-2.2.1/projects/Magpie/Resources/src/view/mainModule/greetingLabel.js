@@ -262,11 +262,11 @@ var GreetingLabel = LazyLayer.extend({
         if (msg.vip > 0) {
             var vipLabel = cc.Sprite.create(main_scene_image["vip" + msg.vip]);
             vipLabel.setAnchorPoint(cc.p(0, 0.5));
-            vipLabel.setScale(0.9);
+            vipLabel.setScale(0.75);
             vipLabel.setPosition(cc.p(x, -35));
             this._layer[id].addChild(vipLabel);
 
-            x += vipLabel.getContentSize().width + 15;
+            x += vipLabel.getContentSize().width;
         }
 
         var date = new Date(msg.created);

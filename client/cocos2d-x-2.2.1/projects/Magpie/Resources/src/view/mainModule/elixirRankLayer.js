@@ -440,7 +440,8 @@ var ElixirRankLayer = cc.Layer.extend({
         cc.log("ElixirRankLayer _onClickHelp");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        ElixirRankHelpLabel.pop();
+
+        MainScene.getInstance().switchLayer(ElixirRankHelpLabel);
     },
 
     _onClickDetail: function () {
@@ -493,17 +494,11 @@ var ElixirRankLayer = cc.Layer.extend({
 ElixirRankLayer.create = function () {
     cc.log("ElixirRankLayer create");
 
-    var ref = new ElixirRankLayer();
-    if (ref && ref.init()) {
-        return ref;
+    var ret = new ElixirRankLayer();
+
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;
-};
-
-ElixirRankLayer.pop = function () {
-    cc.log("ElixirRankLayer pop");
-
-    var elixirRankLayer = ElixirRankLayer.create();
-    MainScene.getInstance().addChild(elixirRankLayer, 10);
 };

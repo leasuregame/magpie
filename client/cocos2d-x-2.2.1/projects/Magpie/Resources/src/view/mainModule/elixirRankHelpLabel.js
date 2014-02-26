@@ -3,7 +3,6 @@
  */
 
 var ElixirRankHelpLabel = LazyLayer.extend({
-
     _elixirRankHelpLabelFit: null,
 
     init: function () {
@@ -130,7 +129,6 @@ var ElixirRankHelpLabel = LazyLayer.extend({
             }
 
 
-
             if (reward.elixir && reward.elixir > 0) {
                 var elixirIcon = cc.Sprite.create(main_scene_image.icon151);
                 elixirIcon.setAnchorPoint(cc.p(0, 0.5));
@@ -187,23 +185,18 @@ var ElixirRankHelpLabel = LazyLayer.extend({
         cc.log("ElixirRankHelpLabel _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        this.removeFromParent();
+
+        MainScene.getInstance().switchLayer(ElixirRankLayer);
     }
 });
 
 ElixirRankHelpLabel.create = function () {
     cc.log("ElixirRankHelpLabel create");
 
-    var ref = new ElixirRankHelpLabel();
-    if (ref && ref.init()) {
-        return ref;
+    var ret = new ElixirRankHelpLabel();
+
+    if (ret && ret.init()) {
+        return ret;
     }
     return null
-};
-
-ElixirRankHelpLabel.pop = function () {
-    cc.log("ElixirRankHelpLabel pop");
-
-    var elixirRankHelpLabel = ElixirRankHelpLabel.create();
-    MainScene.getInstance().getLayer().addChild(elixirRankHelpLabel, 10);
 };

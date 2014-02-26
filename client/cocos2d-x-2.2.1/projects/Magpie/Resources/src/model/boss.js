@@ -26,8 +26,6 @@ var Boss = Entity.extend({
         });
     },
 
-    getBoss
-
     defiance: function (cb, id) {
         cc.log("Boss defiance");
 

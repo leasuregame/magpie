@@ -15,12 +15,12 @@
 var Tournament = Entity.extend({
     _ranking: 0,
     _count: 0,
-    _canGetReward: [],
-    _notCanGetReward: [],
-    _rankList: [],
-    _rankStats: {},
-    _thisWeekElixirRank: [],
-    _lastWeekElixirRank: [],
+    _canGetReward: null,
+    _notCanGetReward: null,
+    _rankList: null,
+    _rankStats: null,
+    _thisWeekElixirRank: null,
+    _lastWeekElixirRank: null,
     _thisWeek: null,
     _lastWeek: null,
     _isGetElixirReward: false,
@@ -241,7 +241,9 @@ var Tournament = Entity.extend({
         }, function (data) {
             cc.log(data);
 
-            if (data.code == 200) {
+            var code = data.code;
+
+            if (code == 200) {
                 cc.log("Tournament defiance success");
 
                 var msg = data.msg;
@@ -281,6 +283,10 @@ var Tournament = Entity.extend({
                 cb(cbData);
 
                 lz.dc.event("event_challenge");
+            } else if (code == 505) {
+                cc.log("Tournament defiance busy");
+
+                TipLayer.tip(data.msg);
             } else {
                 cc.log("Tournament defiance fail");
 
@@ -337,8 +343,7 @@ var Tournament = Entity.extend({
 
         var rank = this._thisWeek.rank;
         if (rank <= 50) {
-            var reward = outputTables.elixir_ranking_reward.rows[rank];
-            return reward;
+            return outputTables.elixir_ranking_reward.rows[rank];
         } else {
             var money = outputTables.elixir_ranking_reward.rows[50].money;
             money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
@@ -349,11 +354,7 @@ var Tournament = Entity.extend({
     isCanGetReward: function () {
         cc.log("Tournament isCanGetReward");
 
-        if (this._isGetElixirReward || !this._lastWeek) {
-            return false;
-        }
-
-        return true;
+        return (this._isGetElixirReward || !this._lastWeek);
     }
 });
 

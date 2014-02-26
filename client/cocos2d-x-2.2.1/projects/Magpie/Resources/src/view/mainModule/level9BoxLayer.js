@@ -81,7 +81,6 @@ var Level9BoxLayer = LazyLayer.extend({
             }
         });
     }
-
 });
 
 

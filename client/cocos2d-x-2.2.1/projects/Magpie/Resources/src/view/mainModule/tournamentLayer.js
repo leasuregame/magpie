@@ -21,16 +21,10 @@ var TournamentLayer = cc.Layer.extend({
     _rewardLabel: null,
     _rewardItem: null,
     _rewardEffect: null,
-    _menu: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
     _countLabel: null,
-    _abilityLabel: null,
-    _upgradeReward: null,
-    _level9Box: null,
-    _isFirstTournament: false,
-    _isFirstEnter: false,
     _selectRect: null,
     _isTouch: false,
 
@@ -39,7 +33,6 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
-        this.updateGuide();
 
         lz.dc.beginLogPageView("竞技界面");
     },
@@ -63,7 +56,6 @@ var TournamentLayer = cc.Layer.extend({
         this._tournamentLayerFit = gameFit.mainScene.tournamentLayer;
 
         this._rankList = [];
-        this._isFirstEnter = true;
         this._selectRect = this._tournamentLayerFit.selectRect;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -202,6 +194,8 @@ var TournamentLayer = cc.Layer.extend({
         this._skyDialog.setLabel(label);
         this._skyDialog.setRect(this._tournamentLayerFit.skyDialogRect);
 
+        this.updateGuide();
+
         return true;
     },
 
@@ -209,29 +203,6 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var that = this;
-        var next = function () {
-            cc.log("isFirstTournament: " + that._isFirstTournament);
-            if (that._isFirstTournament) {
-                MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
-            }
-        };
-
-        if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop({
-                reward: this._upgradeReward,
-                cb: function () {
-                    if (this._level9Box) {
-                        Level9BoxLayer.pop({reward: this._level9Box, cb: next});
-                        this._level9Box = null;
-                    } else {
-                        next();
-                    }
-                }
-            });
-            this._upgradeReward = null;
-        } else {
-            next();
-        }
 
         var player = gameData.player;
 
@@ -253,7 +224,6 @@ var TournamentLayer = cc.Layer.extend({
             that._addRankScrollView();
             that._updateRankRewardItem();
         });
-
     },
 
     _update: function () {
@@ -362,17 +332,65 @@ var TournamentLayer = cc.Layer.extend({
         return null;
     },
 
-    _setPlayerUpgradeReward: function (upgradeReward, level9Box) {
+    defiance: function (data) {
         cc.log("TournamentLayer _setPlayerUpgradeReward");
 
-        this._upgradeReward = upgradeReward || null;
-        this._level9Box = level9Box || null;
-    },
+        var battleLogId = data.battleLogId;
+        var upgradeReward = data.upgradeReward;
+        var level9Box = data.level9Box;
+        var isFirstTournament = data.isFirstTournament;
+        var next = function () {
+            gameCombo.next();
+        };
 
-    _setFirstTournament: function (isFirstTournament) {
-        cc.log("TournamentLayer _setFirstTournament");
-
-        this._isFirstTournament = isFirstTournament;
+        gameCombo.push([
+            function () {
+                if (battleLogId) {
+                    BattlePlayer.getInstance().play({
+                        cb: next,
+                        id: battleLogId
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (upgradeReward) {
+                    PlayerUpgradeLayer.pop({
+                        cb: next,
+                        reward: upgradeReward
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (level9Box) {
+                    Level9BoxLayer.pop({
+                        cb: next,
+                        reward: level9Box
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (isFirstTournament) {
+                    MandatoryTeachingLayer.pop({
+                        cb: next,
+                        progress: FIRST_TOURNAMENT
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (upgradeReward) {
+                    gameGuide.updateGuide();
+                }
+                next();
+            }
+        ]);
     },
 
     _onClickPlayer: function (id, point) {

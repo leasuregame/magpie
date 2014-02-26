@@ -219,19 +219,7 @@ var TournamentLabel = cc.Node.extend({
                     gameData.tournament.defiance(function (data) {
                         cc.log(data);
 
-                        if (data) {
-                            if (data.upgradeReward) {
-                                that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
-                            }
-
-                            if (data.isFirstTournament) {
-                                that._target._setFirstTournament(data.isFirstTournament);
-                            }
-
-                            BattlePlayer.getInstance().play(data.battleLogId);
-                        } else {
-                            that._target.update();
-                        }
+                        that._target.defiance(data);
                     }, that._player.playerId, that._player.ranking);
                 };
 

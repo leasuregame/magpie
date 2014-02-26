@@ -65,6 +65,8 @@ var gameData = {
         this.activity = Activity.create();
         this.greeting = Greeting.create();
 
+        gameCombo.reset();
+
         gameMark.init();
 
         this.player.init(player, function () {
@@ -77,6 +79,8 @@ var gameData = {
     },
 
     gameEnd: function () {
+        gameCombo.stop();
+
         if (this.clock) this.clock.unscheduleAllCallbacks();
         if (this.player) this.player.unscheduleAllCallbacks();
     }

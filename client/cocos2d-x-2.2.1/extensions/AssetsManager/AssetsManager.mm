@@ -71,7 +71,8 @@ struct ErrorMessage
 
 struct ProgressMessage
 {
-    int percent;
+    double totalToDownload;
+    double nowDownloaded;
     AssetsManager* manager;
 };
 
@@ -511,7 +512,8 @@ int assetsManagerProgressFunc(void *ptr, double totalToDownload, double nowDownl
     msg->what = ASSETSMANAGER_MESSAGE_PROGRESS;
     
     ProgressMessage *progressData = new ProgressMessage();
-    progressData->percent = (int)(nowDownloaded/totalToDownload*100);
+    progressData->totalToDownload = totalToDownload;
+    progressData->nowDownloaded = nowDownloaded;
     progressData->manager = manager;
     msg->obj = progressData;
     
@@ -702,7 +704,7 @@ void AssetsManager::Helper::update(float dt)
         case ASSETSMANAGER_MESSAGE_PROGRESS:
             if (((ProgressMessage*)msg->obj)->manager->_delegate)
             {
-                ((ProgressMessage*)msg->obj)->manager->_delegate->onProgress(((ProgressMessage*)msg->obj)->percent);
+                ((ProgressMessage*)msg->obj)->manager->_delegate->onProgress(((ProgressMessage*)msg->obj)->totalToDownload, ((ProgressMessage*)msg->obj)->nowDownloaded);
             }
             
             delete (ProgressMessage*)msg->obj;
@@ -859,7 +861,7 @@ AssetsManager* AssetsManager::getInstance(
             }
         }
         
-        virtual void onProgress(int percent)
+        virtual void onProgress(double totalToDownload, double nowDownloaded)
         {
             CCLOG("onProgress");
             
@@ -868,15 +870,18 @@ AssetsManager* AssetsManager::getInstance(
             
             if(!_progressCallback.isNullOrUndefined())
             {
-                jsval jsPercent = INT_TO_JSVAL(percent);
+                jsval v[] = {
+                    v[0] = DOUBLE_TO_JSVAL(totalToDownload),
+                    v[1] = DOUBLE_TO_JSVAL(nowDownloaded)
+                };
                 
                 if (_jsThisObj.isNullOrUndefined())
                 {
-                    JS_CallFunctionValue(cx, NULL, _progressCallback, 1, &jsPercent, &retval);
+                    JS_CallFunctionValue(cx, NULL, _progressCallback, 2, v, &retval);
                 }
                 else
                 {
-                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 1, &jsPercent, &retval);
+                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 2, v, &retval);
                 }
             }
         }

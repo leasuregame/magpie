@@ -19,6 +19,7 @@
 
 var PVE_BATTLE_LOG = 0;
 var PVP_BATTLE_LOG = 1;
+var BOSS_BATTLE_LOG = 2;
 
 var BattleLogPool = Entity.extend({
     _battleLogPool: {},

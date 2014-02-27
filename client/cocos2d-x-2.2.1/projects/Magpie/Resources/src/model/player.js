@@ -46,7 +46,6 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
-    _rank: 0,
     _goldCards: {},     //周卡月卡
     _recharge: 0,       //充值记录标记
     _firstRechargeBox: 0,   //首充礼包标记
@@ -62,6 +61,9 @@ var Player = Entity.extend({
     _maxSkillPoint: 0,  // 最大技能点
     _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
+
+    _honor: 0,          // 荣誉
+    _superHonor: 0,     // 精元
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 

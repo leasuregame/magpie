@@ -354,7 +354,7 @@ var Tournament = Entity.extend({
     isCanGetReward: function () {
         cc.log("Tournament isCanGetReward");
 
-        return (this._isGetElixirReward || !this._lastWeek);
+        return !(this._isGetElixirReward || !this._lastWeek);
     }
 });
 

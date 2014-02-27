@@ -26,20 +26,11 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 JSClass  *jsb_AssetsManager_class;
 JSObject *jsb_AssetsManager_prototype;
 
-JSBool js_cocos2dx_extension_AssetsManager_create(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_extension_AssetsManager_getInstance(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	if (argc == 7) {
-		const char* arg0;
-		const char* arg1;
-		const char* arg2;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
-        
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_create : Error processing arguments");
-		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::create(arg0, arg1, arg2, argv[3], argv[4], argv[5], argv[6]);
+    if (argc == 0) {
+		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::getInstance();
 		jsval jsret;
 		do {
             if (ret) {
@@ -52,7 +43,21 @@ JSBool js_cocos2dx_extension_AssetsManager_create(JSContext *cx, uint32_t argc, 
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_create : wrong number of arguments");
+	if (argc == 4) {
+		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::getInstance(argv[0], argv[1], argv[2], argv[3]);
+		jsval jsret;
+		do {
+            if (ret) {
+                js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::extension::AssetsManager>(cx, ret);
+                jsret = OBJECT_TO_JSVAL(proxy->obj);
+            } else {
+                jsret = JSVAL_NULL;
+            }
+        } while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_getInstance : wrong number of arguments");
 	return JS_FALSE;
 }
 
@@ -418,7 +423,7 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_extension_AssetsManager_create, 7, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getInstance", js_cocos2dx_extension_AssetsManager_getInstance, 7, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 

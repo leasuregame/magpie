@@ -13,8 +13,6 @@ var UPDATE_NETWORK_ERROR = 1;
 var UPDATE_NO_NEW_VERSION_ERROR = 2;
 var UPDATE_UN_COMPRESS_ERROR = 3;
 
-var UPDATE_DIR = "update_dir";
-
 var UPDATE_TIP_LIST = [
     "元神可以为你上阵卡牌提供巨额属性加成。",
     "卡牌星级不同，等级上限不同，基本属性不同。",
@@ -29,7 +27,7 @@ var UPDATE_TIP_LIST = [
     "VIP真不贵，VIP1只需要6块钱，不到一碗拉面的钱。",
     "每天中午和晚上，你都可以免费领取一次体力值。",
     "寻宝很刺激，因为一不小心，你就可能中大奖。",
-    "首次充值无论多少，你可获得3倍的魔石奖励，整整3倍哟，亲！",
+    "首次充值无论多少，你可获得最高2-3倍的魔石奖励哟，亲！",
     "级的卡牌，都可以提升星级，所有属性均可获得100%传承。",
     "元神通过吞噬灵气提升等级，等级越高，其提供的加成效果越猛。",
     "每张卡都有1-5个星级，但你同时只可上阵其中一张。",
@@ -42,6 +40,7 @@ var UPDATE_TIP_LIST = [
 var UpdateLayer = cc.Layer.extend({
     _updateLayerFit: null,
 
+    _assetsManager: null,
     _ccbNode: null,
     _updateProgress: null,
     _isJump: false,
@@ -69,10 +68,7 @@ var UpdateLayer = cc.Layer.extend({
         this._updateProgress.setPosition(this._updateLayerFit.updateProgressPoint);
         this.addChild(this._updateProgress);
 
-        this._assetsManager = cc.AssetsManager.create(
-            "",
-            lz.platformConfig.UPDATE_VERSION_URL,
-            UPDATE_DIR,
+        this._assetsManager = cc.AssetsManager.getInstance(
             this,
             this.errorCallback,
             this.progressCallback,
@@ -80,6 +76,9 @@ var UpdateLayer = cc.Layer.extend({
         );
 
         this._assetsManager.setPackageUrl(lz.platformConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
+        this._assetsManager.setVersionFileUrl(lz.platformConfig.UPDATE_VERSION_URL);
+
+        this._assetsManager.update();
 
         return true;
     },
@@ -88,11 +87,9 @@ var UpdateLayer = cc.Layer.extend({
         cc.log("UpdateLayer errorCallback: " + errorCode);
 
         var that = this;
-        var cb = (function () {
-            return function () {
-                that.update();
-            }
-        })();
+        var cb = function () {
+            this._assetsManager.update();
+        };
 
         switch (errorCode) {
             case UPDATE_CREATE_FILE_ERROR:
@@ -152,9 +149,7 @@ var UpdateLayer = cc.Layer.extend({
     successCallback: function () {
         cc.log("UpdateLayer successCallback");
 
-        var version = this.getVersion();
-
-        var path2 = cc.FileUtils.getInstance().fullPathForFilename("image/testUpdateImage.png");
+        var version = this._assetsManager.getVersion();
 
         lz.server.request(
             "connector.upgradeHandler.success",
@@ -175,7 +170,7 @@ var UpdateLayer = cc.Layer.extend({
             cc.log(path);
             cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
 
-            if (!path == "game.jsc") {
+            if (path != "game.jsc") {
                 cc.log("require(\"game.jsc\")");
                 cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
 
@@ -189,20 +184,10 @@ var UpdateLayer = cc.Layer.extend({
         }, 0.1);
     },
 
-    update: function () {
-        cc.log("UpdateLayer update");
-
-        this._assetsManager.update();
-    },
-
     noNewVersionCallback: function () {
         cc.log("UpdateLayer noNewVersionCallback");
 
         this.getParent().switchLayer(LoginLayer);
-    },
-
-    getVersion: function () {
-        return (this._assetsManager.getVersion() || "");
     }
 });
 

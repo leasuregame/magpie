@@ -47,6 +47,7 @@ using namespace std;
 
 NS_CC_EXT_BEGIN;
 
+#define UPDATE_DIR "update_dir"
 #define KEY_OF_APP_VERSION   "app-version-code"
 #define KEY_OF_VERSION   "current-version-code"
 #define KEY_OF_DOWNLOADED_VERSION    "downloaded-version-code"
@@ -134,8 +135,6 @@ AssetsManager::AssetsManager(const char* packageUrl/* =NULL */, const char* vers
 {
     this->setStoragePath(storagePath);
     _schedule = new Helper();
-    
-    init();
 }
 
 AssetsManager::~AssetsManager()
@@ -160,11 +159,14 @@ void AssetsManager::init()
     CCLOG("%s", oldAppVersion.c_str());
     CCLOG("%s", appVersion.c_str());
     
-    if(oldAppVersion != appVersion) {
+    if(oldAppVersion != appVersion)
+    {
         CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_APP_VERSION, appVersion);
         
         destroyStoragePath();
     }
+    
+    setSearchPath();
 }
 
 void AssetsManager::checkStoragePath()
@@ -485,13 +487,12 @@ void AssetsManager::setSearchPath()
     vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
     
-    std::string path = _storagePath + "data/";
-    
     // 修改资源搜索路径
     // 如果第一个搜索路径与当前更新的路径一样
     // 则不更新搜索路径
-    if(*iter != path) {
-        searchPaths.insert(iter, path);
+    if(*iter != _storagePath)
+    {
+        searchPaths.insert(iter, _storagePath);
         CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
     }
 }
@@ -659,7 +660,8 @@ void AssetsManager::Helper::sendMessage(Message *msg)
 {
     pthread_mutex_lock(&_messageQueueMutex);
     
-    if(_message != NULL) {
+    if(_message != NULL)
+    {
         delete _message;
         _message = NULL;
     }
@@ -685,7 +687,8 @@ void AssetsManager::Helper::update(float dt)
     pthread_mutex_unlock(&_messageQueueMutex);
     
     
-    switch (msg->what) {
+    switch (msg->what)
+    {
         case ASSETSMANAGER_MESSAGE_UPDATE_SUCCEED:
             handleUpdateSucceed(msg);
             
@@ -773,18 +776,25 @@ void AssetsManager::createStoragePath()
  */
 void AssetsManager::destroyStoragePath()
 {
+    CCLOG("-------------------------------------");
+    CCLOG("destroyStoragePath");
+    CCLOG("-------------------------------------");
+    
     // Delete recorded version codes.
     deleteVersion();
     
     // save to document folder
-    std::string storagePath = _storagePath + "data/";
+    std::string storagePath = _storagePath;
     NSString *path = [NSString stringWithUTF8String:storagePath.c_str()];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     // 如果存在删除
-    if([fileManager fileExistsAtPath:path]){
+    if([fileManager fileExistsAtPath:path])
+    {
         [fileManager removeItemAtPath:path error:nil];
     }
+    
+    createStoragePath();
 }
 
 /*
@@ -795,15 +805,26 @@ std::string AssetsManager::getAppVersion()
     return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] UTF8String];
 }
 
-AssetsManager* AssetsManager::create(
-                                     const char* packageUrl,
-                                     const char* versionFileUrl,
-                                     const char* storagePath,
+AssetsManager* AssetsManager::assetsManager = NULL;
+
+AssetsManager* AssetsManager::getInstance()
+{
+    if(assetsManager == NULL)
+    {
+        assetsManager = new AssetsManager("", "", UPDATE_DIR);
+        assetsManager->init();
+    }
+    
+    return assetsManager;
+}
+
+AssetsManager* AssetsManager::getInstance(
                                      jsval jsThisObj,
                                      jsval errorCallback,
                                      jsval progressCallback,
                                      jsval successCallback
-                                     ) {
+                                     )
+{
     class DelegateProtocolImpl : public AssetsManagerDelegateProtocol
     {
         public :
@@ -823,13 +844,16 @@ AssetsManager* AssetsManager::create(
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
-            if(!_errorCallback.isNullOrUndefined()) {
+            if(!_errorCallback.isNullOrUndefined())
+            {
                 jsval jsErrorCode = INT_TO_JSVAL(errorCode);
                 
-                if (_jsThisObj.isNullOrUndefined()) {
+                if (_jsThisObj.isNullOrUndefined())
+                {
                     JS_CallFunctionValue(cx, NULL, _errorCallback, 1, &jsErrorCode, &retval);
                 }
-                else {
+                else
+                {
                     JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _errorCallback, 1, &jsErrorCode, &retval);
                 }
             }
@@ -842,13 +866,16 @@ AssetsManager* AssetsManager::create(
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
-            if(!_progressCallback.isNullOrUndefined()) {
+            if(!_progressCallback.isNullOrUndefined())
+            {
                 jsval jsPercent = INT_TO_JSVAL(percent);
                 
-                if (_jsThisObj.isNullOrUndefined()) {
+                if (_jsThisObj.isNullOrUndefined())
+                {
                     JS_CallFunctionValue(cx, NULL, _progressCallback, 1, &jsPercent, &retval);
                 }
-                else {
+                else
+                {
                     JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 1, &jsPercent, &retval);
                 }
             }
@@ -861,11 +888,14 @@ AssetsManager* AssetsManager::create(
             JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
             jsval retval = JSVAL_NULL;
             
-            if(!_successCallback.isNullOrUndefined()) {
-                if (_jsThisObj.isNullOrUndefined()) {
+            if(!_successCallback.isNullOrUndefined())
+            {
+                if (_jsThisObj.isNullOrUndefined())
+                {
                     JS_CallFunctionValue(cx, NULL, _successCallback, 0, NULL, &retval);
                 }
-                else {
+                else
+                {
                     JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _successCallback, 0, NULL, &retval);
                 }
             }
@@ -878,10 +908,11 @@ AssetsManager* AssetsManager::create(
         jsval _successCallback;
     };
     
-    AssetsManager* manager = new AssetsManager(packageUrl, versionFileUrl, storagePath);
+    AssetsManager* manager = getInstance();
     DelegateProtocolImpl* delegate = new DelegateProtocolImpl(jsThisObj, errorCallback, progressCallback, successCallback);
     manager->setDelegate(delegate);
     manager->_shouldDeleteDelegateWhenExit = true;
+    
     return manager;
 }
 

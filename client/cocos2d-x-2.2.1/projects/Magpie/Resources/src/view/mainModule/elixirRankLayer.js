@@ -271,6 +271,7 @@ var ElixirRankLayer = cc.Layer.extend({
 
     _addRankScrollView: function () {
         cc.log("ElixirRankLayer _addRankScrollView");
+
         if (this._scrollView) {
             this._scrollView.removeFromParent();
             this._scrollView = null;

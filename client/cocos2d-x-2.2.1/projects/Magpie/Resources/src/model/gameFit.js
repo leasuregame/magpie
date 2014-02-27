@@ -194,6 +194,26 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
+        "bossListLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "cdTimeIconPoint": cc.p(360, 830),
+            "nextAttackLabelPoint": cc.p(280, 828),
+            "cdTimeLabelPoint": cc.p(380, 826),
+            "removeTimeItemPoint": cc.p(480, 828),
+            "bottomIconPoint": cc.p(40, 106),
+            "goodsBgLabelPoint": cc.p(80, 124),
+            "honorLabelPoint": cc.p(260, 172),
+            "superHonorLabelPoint": cc.p(260, 128),
+            "rewardItemPoint": cc.p(160, 830),
+            "rankItemPoint": cc.p(580, 830),
+            "exchangeItemPoint": cc.p(490, 114),
+            "scrollViewLayerRect": cc.rect(60, 240, 621, 548),
+            "scrollViewHeight": 540,
+            "scrollViewSize": cc.size(621, 548),
+            "scrollViewPoint": cc.p(60, 240)
+        },
         "cardDetails": {
             "bgLayerPoint": cc.p(40, 0),
             "headBgSpritePoint": cc.p(40, 905),
@@ -1599,6 +1619,26 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(17, 138, 605, 880),
             "scrollViewSize": cc.size(605, 880),
             "scrollViewPoint": cc.p(17, 138)
+        },
+        "bossListLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "cdTimeIconPoint": cc.p(320, 988),
+            "nextAttackLabelPoint": cc.p(240, 986),
+            "cdTimeLabelPoint": cc.p(340, 984),
+            "removeTimeItemPoint": cc.p(440, 986),
+            "bottomIconPoint": cc.p(0, 106),
+            "goodsBgLabelPoint": cc.p(40, 124),
+            "honorLabelPoint": cc.p(220, 172),
+            "superHonorLabelPoint": cc.p(220, 128),
+            "rewardItemPoint": cc.p(120, 988),
+            "rankItemPoint": cc.p(540, 988),
+            "exchangeItemPoint": cc.p(450, 114),
+            "scrollViewLayerRect": cc.rect(20, 245, 621, 690),
+            "scrollViewHeight": 690,
+            "scrollViewSize": cc.size(621, 690),
+            "scrollViewPoint": cc.p(20, 245)
         },
         "cardDetails": {
             "bgLayerPoint": cc.p(0, 0),

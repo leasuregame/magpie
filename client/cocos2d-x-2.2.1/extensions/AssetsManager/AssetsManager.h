@@ -237,7 +237,7 @@ public:
               AssetsManager will do some other thing after downloading, you should
               write code in onSuccess() after downloading. 
      */
-    virtual void onProgress(int percent) {};
+    virtual void onProgress(double totalToDownload, double nowDownloaded) {};
     /** @brief Call back function for success
      */
     virtual void onSuccess() {};

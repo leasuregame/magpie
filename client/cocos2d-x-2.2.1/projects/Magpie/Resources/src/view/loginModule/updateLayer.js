@@ -112,12 +112,18 @@ var UpdateLayer = cc.Layer.extend({
         }
     },
 
-    progressCallback: function (percent) {
+    progressCallback: function (totalToDownload, nowDownloaded) {
+        var percent = totalToDownload == 0 ? 0 : parseInt(nowDownloaded / totalToDownload * 100);
         percent = Math.min(percent, 100);
 
-        cc.log("UpdateLayer progressCallback: " + percent);
+        var totalSize = (totalToDownload / 1024 / 1024).toFixed(2);
+        var nowSize = (nowDownloaded / 1024 / 1024).toFixed(2);
 
-        this.ccbLabel.setString(percent + "%");
+        var str = "资源同步中:  " + percent + "%  (" + nowSize + "M/" + totalSize + "M)";
+
+        cc.log("UpdateLayer progressCallback: " + str);
+
+        this.ccbLabel.setString(str);
         this._updateProgress.setValue(percent);
 
         var x1 = -256;
@@ -125,7 +131,15 @@ var UpdateLayer = cc.Layer.extend({
         var x3 = 256;
         var y = this.ccbSprite.getPosition().y;
 
+        var animationManager = this._ccbNode.animationManager;
+
         if (percent < 90) {
+            this._isJump = false;
+
+            if (animationManager.getRunningSequenceName() != "animation_1") {
+                animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+            }
+
             var x = percent / 90 * (x2 - x1) + x1;
             this.ccbSprite.setPosition(cc.p(x, y));
         } else {
@@ -134,11 +148,11 @@ var UpdateLayer = cc.Layer.extend({
 
                 this.ccbSprite.setPosition(cc.p(x2, y));
 
-                this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
 
                 this.ccbSprite.runAction(
                     cc.MoveTo.create(
-                        this._ccbNode.animationManager.getSequenceDuration("animation_2"),
+                        animationManager.getSequenceDuration("animation_2"),
                         cc.p(x3, y)
                     )
                 );

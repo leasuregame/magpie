@@ -541,6 +541,11 @@ var ExploreLayer = cc.Layer.extend({
                         function () {
                             that.update(1);
 
+                            if (!money || !exp) {
+                                next();
+                                return;
+                            }
+
                             var action = cc.Spawn.create(
                                 cc.Sequence.create(
                                     cc.FadeIn.create(0.3),

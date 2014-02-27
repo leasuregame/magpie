@@ -257,7 +257,11 @@ var Player = (function(_super) {
         'exchangeCards',
         'activities',
         'initRate',
-        'speaker'
+        'speaker',
+        'honor',
+        'superHonor',
+        'kneelCount',
+        'cd'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -355,7 +359,13 @@ var Player = (function(_super) {
             star3: 0,
             star4: 0
         },
-        speaker: 0
+        speaker: 0,
+        honor: 0,
+        superHonor: 0,
+        kneelCount: 0,
+        cd: {
+            lastAtkTime: 0 // 上一次攻击boss的时间点
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -1259,6 +1269,12 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.getCD = function(){
+        var lastAtkTime = this.cd.lastAtkTime || 0;
+        var now = new Date().getTime();
+        
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1300,7 +1316,11 @@ var Player = (function(_super) {
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,
             goldCards: this.getGoldCard(),
-            speaker: this.speaker
+            speaker: this.speaker,
+            honor: this.honor,
+            superHonor: this.superHonor,
+            kneelCount: this.kneelCount,
+            cd: this.getCD()
         };
     };
 

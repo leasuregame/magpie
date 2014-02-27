@@ -45,6 +45,10 @@ CREATE TABLE IF NOT EXISTS `player` (
   `activities` VARCHAR(1500) DEFAULT '',
   `initRate` VARCHAR(100) DEFAULT '{}',
   `speaker` INT(3) DEFAULT '0',
+  `honor` INT(10) DEFAULT '0',
+  `superHonor` INT(10) DEFAULT '0',
+  `kneelCount` INT(5) DEFAULT '0',
+  `cd` VARCHAR(100) DEFAULT '{}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -1243,7 +1243,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1262,7 +1262,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>50</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1270,7 +1270,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.5</real>
+						<real>0.40000000596046448</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1278,7 +1278,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>40</integer>
+						<integer>30</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1287,8 +1287,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.80000001192092896</real>
-							<real>0.20000000298023224</real>
+							<real>0.5</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -1320,8 +1320,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
+							<real>0.0</real>
 							<real>180</real>
-							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -1401,9 +1401,9 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
+						<string>startRadius</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
@@ -1412,35 +1412,24 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>speed</string>
+						<string>endRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>150</real>
-							<real>20</real>
+							<real>180</real>
+							<real>60</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tangentialAccel</string>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>360</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>-100</real>
-							<real>20</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1452,8 +1441,6 @@
 						<string>res/effect/effect/p16.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

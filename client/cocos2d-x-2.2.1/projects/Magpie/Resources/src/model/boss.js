@@ -397,10 +397,12 @@ var Boss = Entity.extend({
         var cd = Math.max(0, this._cd - interval);
         this.set("cd", cd);
 
-        var len = this._bossList.length;
-        for (var i = 0; i < len; ++i) {
-            var boss = this._bossList[i];
-            boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+        if (this._bossList) {
+            var len = this._bossList.length;
+            for (var i = 0; i < len; ++i) {
+                var boss = this._bossList[i];
+                boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+            }
         }
     },
 

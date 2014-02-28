@@ -1272,7 +1272,8 @@ var Player = (function(_super) {
     Player.prototype.getCD = function(){
         var lastAtkTime = this.cd.lastAtkTime || 0;
         var now = new Date().getTime();
-        
+        var duration = lastAtkTime + 30*60*1000 - now;
+        return duration < 0 ? 0 : duration;
     };
 
     Player.prototype.toJson = function() {

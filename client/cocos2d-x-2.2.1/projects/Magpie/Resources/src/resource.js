@@ -54,6 +54,8 @@ var main_scene_image = {
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
 
+    boss_half: main_scene_path + "boss_half.png",
+
 
     explore_bg_1: main_scene_path + "explore_bg_1.png",
     explore_bg_2: main_scene_path + "explore_bg_2.png",

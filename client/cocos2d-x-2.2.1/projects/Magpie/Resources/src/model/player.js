@@ -179,7 +179,14 @@ var Player = Entity.extend({
         });
         gameData.lottery.init(data.firstTime);
         gameData.exchange.init(data.exchangeCards);
-        gameData.boss.init(data.bossInfo);
+        //测试数据
+        var bossInfo = {
+            cd: 180000,
+            kneelCount: 2,
+            canReceive: false
+        };
+        gameData.boss.init(bossInfo);
+       // gameData.boss.init(data.bossInfo);
 
         this.set("ability", this.getAbility());
     },

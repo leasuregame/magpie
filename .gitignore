@@ -12,6 +12,7 @@ client/nohup.out
 client/Resources.zip
 client/cocos2d-x-2.2.1/projects/Magpie/Resources/game
 client/cocos2d-x-2.2.1/projects/Magpie/Resources/res/test
+client/cocos2d-x-2.2.1/projects/MagpieTest
 fileLookup.plist
 table.json
 .idea

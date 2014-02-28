@@ -31,7 +31,8 @@ var Boss = (function (_super) {
     };
 
     Boss.prototype.timeLeft = function(){
-        var t = this.createTime + 12 * 60 * 60 * 1000 - new Date().getTime();
+        var bossData = table.getTableItem('boss', this.tableId);
+        var t = this.createTime + (bossData.live_time || 12) * 60 * 60 * 1000 - new Date().getTime();
         return t < 0 ? 0 : t;
     };
 

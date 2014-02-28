@@ -3,6 +3,7 @@
  */
 
 var STOP_TIME = -1000 * 3600 * 8;
+
 var BossListLayer = cc.Layer.extend({
     _BossListLayerFit: null,
 
@@ -38,9 +39,8 @@ var BossListLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._bossListLayerFit = gameFit.mainScene.bossListLayer;
-        var date = new Date();
-        date.setTime(STOP_TIME + 60 * 1000);
-        this._cbTime = date.getTime();
+
+        this._cbTime = gameData.boss.get("cd");
         this._timeLabel = [];
         this._timeList = [];
 
@@ -70,7 +70,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._cdTimeLabel = cc.LabelTTF.create(
             lz.getTimeStr({
-                time: this._cbTime
+                time: this._cbTime + STOP_TIME
             }),
             "STHeitiTC-Medium",
             22
@@ -145,7 +145,7 @@ var BossListLayer = cc.Layer.extend({
         this.addChild(menu);
 
         this._addScrollView();
-        this.schedule(this._updateCdTime, 1);
+        this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
     },
@@ -200,7 +200,7 @@ var BossListLayer = cc.Layer.extend({
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossTypeLabel = cc.LabelTTF.create("中级魔兽", "STHeitiTC-Medium", 26);
+            var bossTypeLabel = cc.LabelTTF.create("中级魔兽", "STHeitiTC-Medium", 24);
             bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
             bossTypeLabel.setPosition(cc.p(200, y + 31));
             scrollViewLayer.addChild(bossTypeLabel);
@@ -265,7 +265,7 @@ var BossListLayer = cc.Layer.extend({
 
     _updateCdTime: function () {
 
-        this._cbTime -= 1000;
+        this._cbTime = gameData.boss.get("cd") + STOP_TIME;
         if (this._cbTime >= STOP_TIME) {
             this._cdTimeLabel.setString(lz.getTimeStr({
                 time: this._cbTime
@@ -313,6 +313,8 @@ var BossListLayer = cc.Layer.extend({
             cc.log("BossListLayer _onClickBoss: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            MainScene.getInstance().switchLayer(BossLayer);
         }
     }
 

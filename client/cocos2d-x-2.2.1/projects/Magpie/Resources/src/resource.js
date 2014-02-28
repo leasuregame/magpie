@@ -54,6 +54,8 @@ var main_scene_image = {
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
 
+    boss_half: main_scene_path + "boss_half.png",
+
 
     explore_bg_1: main_scene_path + "explore_bg_1.png",
     explore_bg_2: main_scene_path + "explore_bg_2.png",
@@ -239,7 +241,8 @@ var main_scene_image = {
     button33: main_scene_path + "button33.png",
     button33s: main_scene_path + "button33s.png",
     button34: main_scene_path + "button34.png",
-//    button35: main_scene_path + "button35.png",
+    button35: main_scene_path + "button35.png",
+    button35s: main_scene_path + "button35s.png",
     button36: main_scene_path + "button36.png",
     button36s: main_scene_path + "button36s.png",
     button36d: main_scene_path + "button36d.png",
@@ -710,6 +713,12 @@ var main_scene_image = {
     icon395: main_scene_path + "icon395.png",
     icon396: main_scene_path + "icon396.png",
     icon397: main_scene_path + "icon397.png",
+    icon398: main_scene_path + "icon398.png",
+    icon399: main_scene_path + "icon399.png",
+    icon400: main_scene_path + "icon400.png",
+    icon401: main_scene_path + "icon401.png",
+    icon402: main_scene_path + "icon402.png",
+    icon403: main_scene_path + "icon403.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",

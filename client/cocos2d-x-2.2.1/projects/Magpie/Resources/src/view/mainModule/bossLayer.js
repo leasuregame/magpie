@@ -5,7 +5,7 @@
 var BossLayer = cc.Layer.extend({
     _bossLayerFit: null,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("BossLayer onEnter");
 
         this._super();
@@ -58,10 +58,11 @@ var BossLayer = cc.Layer.extend({
         bossCard.setPosition(this._bossLayerFit.bossCardPoint);
         this.addChild(bossCard);
 
-        var bossNameLabel = cc.LabelTTF.create("无敌大魔王", "STHeitiTC-Medium", 30);
+        var bossNameLabel = StrokeLabel.create("无敌大魔王", "STHeitiTC-Medium", 30);
         bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
         bossNameLabel.setPosition(this._bossLayerFit.bossNameLabelPoint);
         bossNameLabel.setColor(cc.c3b(252, 254, 143));
+        bossNameLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(bossNameLabel);
 
         var runAwayTimeLabel = cc.LabelTTF.create("逃跑时间: ", "STHeitiTC-Medium", 22);
@@ -74,10 +75,11 @@ var BossLayer = cc.Layer.extend({
         this._bossCdTimeLabel.setPosition(this._bossLayerFit.bossCdTimeLabelPoint);
         this.addChild(this._bossCdTimeLabel);
 
-        this._countLeftLabel = cc.LabelTTF.create("剩余攻击次数: 9次", "STHeitiTC-Medium", 25);
+        this._countLeftLabel = StrokeLabel.create("剩余攻击次数: 9次", "STHeitiTC-Medium", 25);
         this._countLeftLabel.setAnchorPoint(cc.p(0.5, 0));
         this._countLeftLabel.setPosition(this._bossLayerFit.countLeftLabelPoint);
-        this._countLeftLabel.setColor(cc.c3b(167, 28, 0));
+        this._countLeftLabel.setColor(cc.c3b(237, 69, 69));
+        this._countLeftLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(this._countLeftLabel);
 
         var inspireIcon = cc.Sprite.create(main_scene_image.icon399);
@@ -122,7 +124,9 @@ var BossLayer = cc.Layer.extend({
         goldIcon2.setPosition(this._bossLayerFit.goldIcon2Point);
         this._attackNode.addChild(goldIcon2);
 
-        var goldLabel = cc.LabelTTF.create("100", "STHeitiTC-Medium", 16);
+        var goldLabel = StrokeLabel.create("100", "STHeitiTC-Medium", 16);
+        goldLabel.setColor(cc.c3b(255, 255, 255));
+        goldLabel.setBgColor(cc.c3b(54, 7, 14));
         goldLabel.setAnchorPoint(cc.p(0, 0));
         goldLabel.setPosition(this._bossLayerFit.goldLabel2Point);
         this._attackNode.addChild(goldLabel);

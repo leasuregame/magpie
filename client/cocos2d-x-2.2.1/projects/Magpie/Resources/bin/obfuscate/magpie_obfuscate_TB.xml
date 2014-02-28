@@ -66,6 +66,7 @@
                 <file name="src/model/exchange.js"/>
                 <file name="src/model/activity.js"/>
                 <file name="src/model/greeting.js"/>
+                <file name="src/model/boss.js"/>
 
                 <file name="TB/payment.js"/>
 
@@ -108,6 +109,8 @@
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/bossLayer.js"/>
+                <file name="src/view/mainModule/bossListLayer.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldCardsLayer.js"/>

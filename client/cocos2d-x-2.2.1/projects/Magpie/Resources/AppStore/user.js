@@ -135,7 +135,7 @@ var User = Entity.extend({
 
                     cb(3);
 
-                    Dialog.pop("您的版本需要更新", function () {
+                    Dialog.pop(data.msg, function () {
                         if (typeof(UpdateLayer) != "undefined") {
                             cc.Director.getInstance().replaceScene(LoginScene.create(UpdateLayer));
                         } else {

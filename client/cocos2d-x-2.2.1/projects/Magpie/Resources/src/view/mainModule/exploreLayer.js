@@ -145,14 +145,16 @@ var ExploreLayer = cc.Layer.extend({
         );
         backItem.setPosition(this._exploreLayerFit.backItemPoint);
 
-        this._exploreItem = cc.MenuItemImage.create(
+        this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button1,
             main_scene_image.button1s,
             main_scene_image.button1d,
+            main_scene_image.icon403,
             this._onClickExplore,
             this
         );
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
+        this._exploreItem.setOffset(cc.p(0, 5));
 
 
         var menu = cc.Menu.create(backItem, this._exploreItem);
@@ -484,6 +486,7 @@ var ExploreLayer = cc.Layer.extend({
                     var upgradeReward = data.upgradeReward;
                     var level9Box = data.level9Box;
                     var throughReward = data.through_reward;
+                    var bossId = data.bossId;
                     var isWin = false;
 
                     var next = function () {
@@ -540,6 +543,11 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update(1);
+
+                            if (!money || !exp) {
+                                next();
+                                return;
+                            }
 
                             var action = cc.Spawn.create(
                                 cc.Sequence.create(
@@ -612,6 +620,15 @@ var ExploreLayer = cc.Layer.extend({
                             });
                         },
                         function () {
+                            if (bossId) {
+                                // 加入boss出现事件
+
+                                next();
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
                             if (toNext) {
                                 var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, that);
                                 passEffect.controller.ccbGoldLayer.setString(throughReward.money);
@@ -630,13 +647,18 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update();
-                            that._unlock();
 
-                            if (that._index > that._maxIndex) {
-                                that._onClickBack();
-                            }
+                            var interval = toNext ? 0.2 : 0.1;
 
-                            next();
+                            that.scheduleOnce(function () {
+                                that._unlock();
+
+                                if (that._index > that._maxIndex) {
+                                    that._onClickBack();
+                                }
+
+                                next();
+                            }, interval);
                         },
                         function () {
                             if (upgradeReward) {
@@ -707,7 +729,7 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(TaskLayer);
+        MainScene.getInstance().switchLayer(InstancesLayer);
     },
 
     /**

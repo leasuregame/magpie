@@ -89,6 +89,7 @@
             'src/model/exchange.js',
             'src/model/activity.js',
             'src/model/greeting.js',
+            'src/model/boss.js',
 
             'TB/payment.js',
 
@@ -131,6 +132,8 @@
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/addFriendsLayer.js',
+            'src/view/mainModule/bossLayer.js',
+            'src/view/mainModule/bossListLayer.js',
             'src/view/mainModule/rechargeLayer.js',
             'src/view/mainModule/powerRewardLayer.js',
             'src/view/mainModule/goldCardsLayer.js',

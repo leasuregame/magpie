@@ -90,7 +90,10 @@ var SystemMessageLayer = cc.Layer.extend({
             scrollViewLayer.addChild(msgLabel);
 
             var timeLabel = cc.LabelTTF.create(
-                lz.getTimeStr(systemMessageList[i].createTime),
+                lz.getTimeStr({
+                    time: systemMessageList[i].createTime,
+                    fmt: "yyyy.MM.dd hh:mm"
+                }),
                 "STHeitiTC-Medium",
                 16
             );

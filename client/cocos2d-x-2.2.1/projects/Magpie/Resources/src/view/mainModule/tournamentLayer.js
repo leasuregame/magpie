@@ -112,8 +112,8 @@ var TournamentLayer = cc.Layer.extend({
 
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
         rewardIcon.setPosition(this._tournamentLayerFit.rewardIconPoint);
-        this.addChild(rewardIcon);
         rewardIcon.setScaleX(2.5);
+        this.addChild(rewardIcon);
 
         this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._rewardLabel.setPosition(this._tournamentLayerFit.rewardLabelPoint);

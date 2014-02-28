@@ -379,13 +379,35 @@ lz.tipReward = function (reward) {
     }
 };
 
-lz.getTimeStr = function (time) {
+/*
+ * 设置时间格式
+ * time: 时间
+ * fmt: 格式
+ * */
+lz.getTimeStr = function (args) {
     cc.log("BattleMessageLayer _getTimeStr");
 
-    var date = new Date(time);
+    var date = (args && args.time) ? new Date(args.time) : new Date();
+    var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";
 
-    return (date.getFullYear() + " . " + (date.getMonth() + 1) + " . " + date.getDate() +
-        "  " + date.getHours() + " : " + date.getMinutes());
+    var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds() //秒
+    };
+
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+    return fmt;
 };
 
 var MAX_LAST_NAME_COUNT = 250;

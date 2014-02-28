@@ -269,8 +269,7 @@ var GreetingLabel = LazyLayer.extend({
             x += vipLabel.getContentSize().width;
         }
 
-        var date = new Date(msg.created);
-        var timeStr = date.getMonth() + " 月 " + date.getDay() + " 日 " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+        var timeStr = lz.getTimeStr({time: msg.created, fmt: "MM月dd日  hh:mm:ss"});
         var timeLabel = cc.LabelTTF.create(timeStr, "STHeitiTC-Medium", 20);
         timeLabel.setAnchorPoint(cc.p(0, 0.5));
         timeLabel.setPosition(cc.p(x, -38));

@@ -70,7 +70,7 @@ var FriendMessageLayer = cc.Layer.extend({
         this._scrollViewElement = {};
         var that = this;
         for (var i = 0; i < len; ++i) {
-            (function(i){
+            (function (i) {
                 var y = scrollViewHeight - 107 - 127 * i;
 
                 var id = that._friendMessageList[i].id;
@@ -88,7 +88,10 @@ var FriendMessageLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(msgLabel);
 
                 var timeLabel = cc.LabelTTF.create(
-                    lz.getTimeStr(that._friendMessageList[i].createTime),
+                    lz.getTimeStr({
+                        time: that._friendMessageList[i].createTime,
+                        fmt: "yyyy.MM.dd hh:mm"
+                    }),
                     "STHeitiTC-Medium",
                     16
                 );
@@ -197,7 +200,7 @@ var FriendMessageLayer = cc.Layer.extend({
             var len = friendList.length;
             var maxFriends = gameData.friend.get("maxFriendCount");
 
-            if(len >= maxFriends) {
+            if (len >= maxFriends) {
                 TipLayer.tip("你的好友已达上限");
                 return;
             }

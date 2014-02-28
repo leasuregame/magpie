@@ -1186,6 +1186,9 @@ var main_scene_image = {
     70: test_scene_path + "res/" + "70.png",
     76: test_scene_path + "res/" + "76.png",
     83: test_scene_path + "res/" + "83.png",
+    92: test_scene_path + "res/" + "92.png",
+    93: test_scene_path + "res/" + "93.png",
+
 
 
     //技能特效
@@ -1198,8 +1201,9 @@ var main_scene_image = {
     texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
     texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
     texiao20: test_scene_path + "ccb/" + "texiao20.ccbi",
+    texiao21: test_scene_path + "ccb/" + "texiao21.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
-    
+    texiao24: test_scene_path + "ccb/" + "texiao24.ccbi",
 
 };
 

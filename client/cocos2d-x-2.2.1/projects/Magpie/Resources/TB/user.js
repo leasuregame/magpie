@@ -63,10 +63,10 @@ var User = Entity.extend({
         var that = this;
 
         var fn = function () {
-            if (typeof(UpdateLayer) != 'undefined') {
-                var updateLayer = UpdateLayer.create();
-                updateLayer.retain();
-                var version = updateLayer.getVersion();
+            var version = "1.3.0";
+
+            if (typeof(cc.AssetsManager) != "undefined") {
+                version = cc.AssetsManager.getInstance().getVersion();
             }
 
             cc.log("=================================================");
@@ -79,7 +79,7 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version || "1.3.0"
+                    version: version
                 }, function (data) {
                     cc.log(data);
 
@@ -105,9 +105,12 @@ var User = Entity.extend({
 
                         cb(3);
 
-                        Dialog.pop("您的版本需要更新", function () {
-                            cc.Director.getInstance().replaceScene(LoginScene.create(updateLayer));
-                            updateLayer.update();
+                        Dialog.pop(data.msg, function () {
+                            if (typeof(UpdateLayer) != "undefined") {
+                                cc.Director.getInstance().replaceScene(LoginScene.create(UpdateLayer));
+                            } else {
+                                TipLayer.tip("找不到更新模块，请重新下载游戏");
+                            }
                         });
                     } else {
                         cc.log("login fail");

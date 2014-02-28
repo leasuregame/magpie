@@ -116,6 +116,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -9385,7 +9386,7 @@ var outputTables = {
                 "challenge_count": 10,
                 "challenge_buy_count": 5,
                 "collect_count": 15,
-                "exp_card_count": 30
+                "exp_card_count": 100
             }
         }
     },
@@ -49588,7 +49589,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
-                "exp_card_count": 10,
+                "exp_card_count": 50,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
                 "receive_bless_count": 0,
@@ -49599,7 +49600,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "lottery_free_count": 2,
-                "exp_card_count": 20,
+                "exp_card_count": 100,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
                 "receive_bless_count": 1,
@@ -49610,7 +49611,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "lottery_free_count": 3,
-                "exp_card_count": 30,
+                "exp_card_count": 150,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
                 "receive_bless_count": 2,
@@ -49621,7 +49622,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "lottery_free_count": 4,
-                "exp_card_count": 40,
+                "exp_card_count": 200,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
                 "receive_bless_count": 3,
@@ -49632,7 +49633,7 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "lottery_free_count": 5,
-                "exp_card_count": 50,
+                "exp_card_count": 250,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
                 "receive_bless_count": 4,
@@ -49643,7 +49644,7 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "lottery_free_count": 6,
-                "exp_card_count": 60,
+                "exp_card_count": 300,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
                 "receive_bless_count": 5,
@@ -49654,7 +49655,7 @@ var outputTables = {
             "7": {
                 "id": 7,
                 "lottery_free_count": 7,
-                "exp_card_count": 70,
+                "exp_card_count": 350,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
                 "receive_bless_count": 6,
@@ -49665,7 +49666,7 @@ var outputTables = {
             "8": {
                 "id": 8,
                 "lottery_free_count": 8,
-                "exp_card_count": 80,
+                "exp_card_count": 400,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
                 "receive_bless_count": 7,
@@ -49676,7 +49677,7 @@ var outputTables = {
             "9": {
                 "id": 9,
                 "lottery_free_count": 9,
-                "exp_card_count": 90,
+                "exp_card_count": 450,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
                 "receive_bless_count": 8,
@@ -49687,7 +49688,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lottery_free_count": 10,
-                "exp_card_count": 100,
+                "exp_card_count": 500,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
                 "receive_bless_count": 9,
@@ -49698,7 +49699,7 @@ var outputTables = {
             "11": {
                 "id": 11,
                 "lottery_free_count": 10,
-                "exp_card_count": 110,
+                "exp_card_count": 550,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
                 "receive_bless_count": 10,
@@ -49709,7 +49710,7 @@ var outputTables = {
             "12": {
                 "id": 12,
                 "lottery_free_count": 10,
-                "exp_card_count": 120,
+                "exp_card_count": 600,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
                 "receive_bless_count": 11,

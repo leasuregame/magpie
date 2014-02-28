@@ -71,6 +71,7 @@ var appFiles = [
     'src/model/exchange.js',
     'src/model/activity.js',
     'src/model/greeting.js',
+    'src/model/boss.js',
 
     'payment.js',
 

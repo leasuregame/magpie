@@ -1,6 +1,7 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
+var table = require('../../manager/table');
 
 var Boss = (function (_super) {
     utility.extends(Boss, _super);
@@ -16,24 +17,33 @@ var Boss = (function (_super) {
         'atkCount',
         'hp',
         'status',
-        'created'
+        'createTime'
     ];
 
     Boss.DEFAULT_VALUES = {
         atkCount: 0,
-        hp: 0,
         status: 1
     };
 
+    Boss.prototype.countLeft = function(){
+        var bossData = table.getTableItem('boss', this.tableId);
+        return _.max([bossData.atk_count - this.atkCount, 0]);
+    };
+
+    Boss.prototype.timeLeft = function(){
+        var t = this.createTime + 12 * 60 * 60 * 1000 - new Date().getTime();
+        return t < 0 ? 0 : t;
+    };
+
     Boss.prototype.toJson = function(){
+        
         return {
-            id: this.id,
+            bossId: this.id,
             playerId: this.playerId,
             tableId: this.tableId,
-            atkCount: this.atkCount,
-            hp: this.hp,
+            countLeft: this.countLeft(),
             status: this.status,
-            created: this.created
+            timeLeft: this.timeLeft()
         };
     };
 

@@ -3,7 +3,7 @@ var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
-var Boss = require("../../doamin/entity/boss");
+var Boss = require("../../domain/entity/boss");
 
 var BossDao = (function(_super) {
   utility.extends(BossDao, _super);

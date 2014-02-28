@@ -236,16 +236,16 @@ CREATE TABLE IF NOT EXISTS `elixirOfRank` (
   PRIMARY KEY(`playerId`, `week`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
------------------------------------------------------------
---Boss 相关表
------------------------------------------------------------
+-- ---------------------------------------------------------
+-- Boss 相关表
+-- ---------------------------------------------------------
 DROP TABLE IF EXISTS `boss`;
 CREATE TABLE IF NOT EXISTS `boss` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tableId` INT(10) NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `atkCount` INT(3),
-  `hp` INT(10),
+  `hp` VARCHAR(500),
   `status` SMALLINT(2) UNSIGNED DEFAULT '1',
   `createTime` BIGINT(20),
   PRIMARY KEY(`id`)

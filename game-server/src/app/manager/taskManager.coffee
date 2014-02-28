@@ -233,28 +233,61 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
-  @seekBoss: (data, player) ->
-    if not player.task.boss
-      player.task.boss = 
-        count: 0
-        found: false
+  @seekBoss: (data, player, cb) ->
+    player.incBossCount()
 
-    findBossRate = table.getTableItem('values', 'findBossRate')
-    if checkFindBoss(player.task.boss.count, findBossRate)
-      bossTypeBlueCard = table.getTableItem('values', 'bossTypeBlueCard')
-      bossTypePurpleCard = table.getTableItem('values', 'bossTypePurpleCard')
-      bossTypeGoldCard = table.getTableItem('values', 'bossTypeGoldCard')
+    findBossRate = table.getTableItem('values', 'findBossRate')?.value
+    if not player.task.boss.found and checkFindBoss(player.task.boss.count, findBossRate)
+      typeRates = table.getTable('boss_type_rate')
+      ids = typeRates.map (r) -> r.id
+      rates = typeRates.map (r) -> r.rate
+      type = utility.randomValue(ids, rates)
+      bossInfo = getBossInfo(type)
+      if not bossInfo
+        logger.error('找不到boss卡牌')
+        cb(null, data)
+      else
+        bossData = table.getTableItem('boss_card', bossInfo.boss_id)
+        dao.boss.create data: {
+          tableId: bossInfo.id
+          playerId: player.id
+          hp: lineUpToObj(bossInfo.formation)
+        }, (err, res) ->
+          if err
+            logger.error('创建Boss信息出错', err.stack)
+            cb(null, data)
+          else
+            data.find_boss = res.toJson()
+            data.find_boss.finder = player.name
+            data.find_boss.killer = null
+            player.setBossFound(true)
+            cb(null, data)
+    else
+      cb(null, data)
 
-      type = utility.randomValue([1,2,3], [bossTypeBlueCard, bossTypePurpleCard, bossTypeGoldCard])
-      tableId = getBossTableId(type)
-      dao.boss.create data: {
-        tableId: tableId
-        playerId: player.id
-        hp: 
-      }
+lineUpToObj = (lineUp) ->
+  _results = {}
+  if _.isString(lineUp) and lineUp isnt ''
+    lines = lineUp.split(',')
+    lines.forEach (l) ->
+      [pos, num] = l.split(':')
+      _results[positionConvert(pos)] = 
+        cardId: num
+        hp: table.getTableItem('boss_card', num).hp
 
-getBossTableId = (type) ->
-  type
+  _results
+
+positionConvert = (val) ->
+  order = ['00', '01', '02', '10', '11', '12']
+  order.indexOf(val) + 1
+
+getBossInfo = (type) ->
+  results = table.getTable('boss').filter (id, item) -> item.type is type
+  if results.length > 0
+    idx = _.random(0, results.length-1)
+    return results[idx]
+  else 
+    return null
 
 checkFindBoss = (count, findBossRate) ->
   return (count < 20 and utility.hitRate(findBossRate)) or count >= 20

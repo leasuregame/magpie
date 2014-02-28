@@ -7,8 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>junyu lu</Author>
-  <LastAuthor>junyu lu</LastAuthor>
+  <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-02-28T11:37:48Z</Created>
+  <LastSaved>2014-02-28T06:34:24Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -22,6 +23,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>2260</WindowTopX>
   <WindowTopY>6520</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -138,7 +140,7 @@
    <Interior/>
   </Style>
  </Styles>
- <Worksheet ss:Name="关卡怪物属性表">
+ <Worksheet ss:Name="Boss怪物卡牌配置表">
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="102" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25">
    <Column ss:AutoFitWidth="0" ss:Width="97" ss:Span="6"/>
@@ -876,7 +878,6 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -891,15 +892,17 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="160"/>
+   <Column ss:Width="75"/>
+   <Column ss:Width="63"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">关卡怪物属性表</Data></Cell>
-    <Cell><Data ss:Type="String">pass_card</Data></Cell>
-    <Cell><Data ss:Type="String">task_card</Data></Cell>
+    <Cell><Data ss:Type="String">Boss怪物卡牌配置表</Data></Cell>
+    <Cell><Data ss:Type="String">boss_card</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -909,11 +912,12 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>40</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

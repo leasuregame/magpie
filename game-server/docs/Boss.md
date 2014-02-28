@@ -75,7 +75,13 @@
 	
     	        …
 	            find_boss： {
-                	bossId: 34
+                	bossId: 1,
+                	finder: “嗜血狂人”,
+                	killer: null,
+	                countLeft: 5，
+    	            status： 2,
+        	        timeLeft: 600000， // boss剩余时间（毫秒数）
+            	    tableId： 2
             	}
        		}
     	}

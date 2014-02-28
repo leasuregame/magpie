@@ -182,6 +182,13 @@ var Task = Entity.extend({
 
                 that.update(msg.task);
 
+                if (msg.find_boss) {
+                    var boss = msg.find_boss;
+                    gameData.boss.push(boss);
+
+                    cbData.bossId = boss.bossId;
+                }
+
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
 
@@ -202,8 +209,9 @@ var Task = Entity.extend({
                 }
 
                 if (msg.through_reward) {
-                    cbData.through_reward = msg.through_reward;
                     player.add("money", msg.through_reward.money);
+
+                    cbData.through_reward = msg.through_reward;
                 }
 
                 cc.log("first_win: " + msg.first_win);

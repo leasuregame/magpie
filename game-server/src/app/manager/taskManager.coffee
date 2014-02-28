@@ -162,7 +162,7 @@ class Manager
     data.isDouble = isDouble
 
     # 更新玩家money
-    player.increase('money', taskData.coins_obtain)
+    player.increase('money', data.money_obtain)
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
@@ -198,10 +198,10 @@ class Manager
 
     ### consume power first, then add exp
     because exp change will check if upgrade player level ###
-    player.consumePower(taskData.power_consume)
+    player.consumePower(data.power_consume)
 
     ###  判断是否升级 ###
-    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, level9Box, rewards) ->
+    entityUtil.upgradePlayer player, data.exp_obtain, (isUpgrade, level9Box, rewards) ->
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv

@@ -283,7 +283,11 @@ var Player = (function(_super) {
             progress: 0,
             hasWin: false,
             mark: [],
-            hasFragment: -1
+            hasFragment: -1,
+            boss: {
+                count: 0,
+                found: false
+            }
         },
         passLayer: 0,
         pass: {

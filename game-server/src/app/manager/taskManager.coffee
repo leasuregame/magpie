@@ -25,6 +25,7 @@ class Manager
       open_box_card: null
       battle_log: null
       momo: null
+      find_boss: null
     }
 
     ### 检查是否体力充足 ###
@@ -232,6 +233,31 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
+  @seekBoss: (data, player) ->
+    if not player.task.boss
+      player.task.boss = 
+        count: 0
+        found: false
+
+    findBossRate = table.getTableItem('values', 'findBossRate')
+    if checkFindBoss(player.task.boss.count, findBossRate)
+      bossTypeBlueCard = table.getTableItem('values', 'bossTypeBlueCard')
+      bossTypePurpleCard = table.getTableItem('values', 'bossTypePurpleCard')
+      bossTypeGoldCard = table.getTableItem('values', 'bossTypeGoldCard')
+
+      type = utility.randomValue([1,2,3], [bossTypeBlueCard, bossTypePurpleCard, bossTypeGoldCard])
+      tableId = getBossTableId(type)
+      dao.boss.create data: {
+        tableId: tableId
+        playerId: player.id
+        hp: 
+      }
+
+getBossTableId = (type) ->
+  type
+
+checkFindBoss = (count, findBossRate) ->
+  return (count < 20 and utility.hitRate(findBossRate)) or count >= 20
 
 bornPassiveSkill = () ->
   born_rates = psConfig.BORN_RATES

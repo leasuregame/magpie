@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15260</WindowHeight>
+  <WindowHeight>11500</WindowHeight>
   <WindowWidth>25600</WindowWidth>
-  <WindowTopX>2680</WindowTopX>
-  <WindowTopY>2680</WindowTopY>
+  <WindowTopX>10400</WindowTopX>
+  <WindowTopY>1900</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -35,42 +35,40 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="工作表1">
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="6" ss:Width="116"/>
-   <Column ss:AutoFitWidth="0" ss:Width="183"/>
-   <Column ss:Index="9" ss:Width="108"/>
-   <Row>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="183"/>
+   <Column ss:Index="8" ss:Width="108"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">bossid</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
     <Cell><Data ss:Type="String">boss类型</Data></Cell>
     <Cell><Data ss:Type="String">血量</Data></Cell>
     <Cell><Data ss:Type="String">攻击力</Data></Cell>
-    <Cell><Data ss:Type="String">Boss技能Id</Data></Cell>
     <Cell><Data ss:Type="String">阵型</Data></Cell>
     <Cell><Data ss:Type="String">存活时间</Data></Cell>
     <Cell><Data ss:Type="String">可被攻击次数</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">type</Data></Cell>
     <Cell><Data ss:Type="String">hp</Data></Cell>
     <Cell><Data ss:Type="String">atk</Data></Cell>
-    <Cell><Data ss:Type="String">boss_skill_id</Data></Cell>
     <Cell><Data ss:Type="String">line_up</Data></Cell>
     <Cell><Data ss:Type="String">live_time</Data></Cell>
     <Cell><Data ss:Type="String">atk_count</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

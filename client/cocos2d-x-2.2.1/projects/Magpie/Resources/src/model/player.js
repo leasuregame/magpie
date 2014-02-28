@@ -138,6 +138,8 @@ var Player = Entity.extend({
         this.set("powerTimestamp", data.power.time);
         this.set("goldCards", data.goldCards);
         this.set("vip", data.vip);
+        this.set("honor", data.honor);
+        this.set("superHonor", data.superHonor);
 
         if (data.speaker) {
             this.set("speaker", data.speaker);
@@ -177,6 +179,7 @@ var Player = Entity.extend({
         });
         gameData.lottery.init(data.firstTime);
         gameData.exchange.init(data.exchangeCards);
+        gameData.boss.init(data.bossInfo);
 
         this.set("ability", this.getAbility());
     },

@@ -22,10 +22,10 @@ var Boss = Entity.extend({
     _cd: 0,                 // 下次攻击剩余时间
     _kneelCount: 0,         // 膜拜次数
     _canReceive: false,     // 奖励领取标记
-    _thisWeekRank: null,
-    _lastWeekRank: null,
-    _thisWeekReward: null,
-    _lastWeekReward: null,
+    _thisWeekRank: null,    // 本周排行
+    _lastWeekRank: null,    // 上周排行
+    _thisWeekReward: null,  // 本周奖励
+    _lastWeekReward: null,  // 上周奖励
 
     init: function (data) {
         cc.log("Boss init");
@@ -41,6 +41,10 @@ var Boss = Entity.extend({
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
+        this._thisWeekRank = null;
+        this._lastWeekRank = null;
+        this._thisWeekReward = null;
+        this._lastWeekReward = null;
 
         this.update(data);
 
@@ -152,18 +156,6 @@ var Boss = Entity.extend({
         });
     },
 
-    push: function (boss) {
-        cc.log("Boss push");
-
-        var index = this._getBossById(boss.bossId);
-
-        if (index != null) {
-            this._bossList[index] = boss;
-        } else {
-            this._bossList.unshift(boss);
-        }
-    },
-
     _getBossById: function (bossId) {
         cc.log("Boss _getBossById");
 
@@ -175,6 +167,18 @@ var Boss = Entity.extend({
         }
 
         return null;
+    },
+
+    push: function (boss) {
+        cc.log("Boss push");
+
+        var index = this._getBossById(boss.bossId);
+
+        if (index != null) {
+            this._bossList[index] = boss;
+        } else {
+            this._bossList.unshift(boss);
+        }
     },
 
     getBoss: function (bossId) {
@@ -388,17 +392,15 @@ var Boss = Entity.extend({
     },
 
     _updateCdAndBoss: function () {
-        var time = UPDATE_CD_TIME_INTERVAL * 1000;
+        var interval = UPDATE_CD_TIME_INTERVAL * 1000;
 
-        this._cd -= time;
-        this._cd = Math.max(0, this._cd);
+        var cd = Math.max(0, this._cd - interval);
+        this.set("cd", cd);
 
         var len = this._bossList.length;
         for (var i = 0; i < len; ++i) {
             var boss = this._bossList[i];
-
-            boss.timeLeft -= time;
-            boss.timeLeft = Math.max(0, boss.timeLeft);
+            boss.timeLeft = Math.max(0, boss.timeLeft - interval);
         }
     },
 

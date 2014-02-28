@@ -66,6 +66,7 @@
                 <file name="src/model/exchange.js"/>
                 <file name="src/model/activity.js"/>
                 <file name="src/model/greeting.js"/>
+                <file name="src/model/boss.js"/>
 
                 <file name="TB/payment.js"/>
 

@@ -248,6 +248,7 @@ CREATE TABLE IF NOT EXISTS `boss` (
   `hp` VARCHAR(500),
   `status` SMALLINT(2) UNSIGNED DEFAULT '1',
   `createTime` BIGINT(20),
+  `deathTime` BIGINT(20),
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

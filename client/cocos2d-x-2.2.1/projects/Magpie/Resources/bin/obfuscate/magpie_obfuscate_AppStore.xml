@@ -173,6 +173,7 @@
                 <file name="src/view/mainModule/propsLayer.js"/>
                 <file name="src/view/mainModule/rankLayer.js"/>
                 <file name="src/view/mainModule/readMessageLayer.js"/>
+                <file name="src/view/mainModule/removeCdTipLabel.js"/>
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>

@@ -194,6 +194,29 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
+        "bossLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "headLabelPoint": cc.p(40, 817),
+            "goldIconPoint": cc.p(400, 846),
+            "goldLabelPoint": cc.p(430, 844),
+            "bossNameLabelPoint": cc.p(360, 760),
+            "runAwayLabelPoint": cc.p(310, 730),
+            "bossCdTimeLabelPoint": cc.p(410, 730),
+            "cardFramePoint": cc.p(360, 500),
+            "bossCardPoint": cc.p(360, 500),
+            "countLeftLabelPoint": cc.p(360, 470),
+            "inspireIconPoint": cc.p(210, 350),
+            "additionBgLabelPoint": cc.p(410, 370),
+            "additionLabelPoint": cc.p(410, 385),
+            "attackCdTimeLabelPoint": cc.p(300, 150),
+            "cdTimeLabelPoint": cc.p(420, 148),
+            "addItemPoint": cc.p(300, 343),
+            "subItemPoint": cc.p(520, 343),
+            "backItemPoint": cc.p(100, 920),
+            "attackRecordItemPoint": cc.p(600, 846)
+        },
         "bossListLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headIconPoint": cc.p(40, 880),
@@ -1385,7 +1408,7 @@ var fit4Iphone4 = {
             "headLabelPoint": cc.p(40, 817),
             "goldIconPoint": cc.p(240, 846),
             "moneyIconPoint": cc.p(370, 846),
-            "goldLabelPoint": cc.p(280, 844),
+            "goldLabelPoint": cc.p(270, 844),
             "moneyLabelPoint": cc.p(395, 844),
             "paymentItemPoint": cc.p(600, 846),
             "buyIconPoint": cc.p(535, 841),
@@ -1619,6 +1642,16 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(17, 138, 605, 880),
             "scrollViewSize": cc.size(605, 880),
             "scrollViewPoint": cc.p(17, 138)
+        },
+        "bossLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "headLabelPoint": cc.p(0, 993),
+            "goldIconPoint": cc.p(360, 1022),
+            "goldLabelPoint": cc.p(390, 1020),
+            "backItemPoint": cc.p(60, 1096),
+            "attackRecordItemPoint": cc.p(560, 1022)
         },
         "bossListLayer": {
             "bgSpritePoint": cc.p(0, 106),

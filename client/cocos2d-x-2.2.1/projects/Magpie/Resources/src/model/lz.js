@@ -385,7 +385,6 @@ lz.tipReward = function (reward) {
  * fmt: 格式
  * */
 lz.getTimeStr = function (args) {
-    cc.log("BattleMessageLayer _getTimeStr");
 
     var date = (args && args.time) ? new Date(args.time) : new Date();
     var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";

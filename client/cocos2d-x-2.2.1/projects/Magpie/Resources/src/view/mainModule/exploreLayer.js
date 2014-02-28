@@ -145,14 +145,16 @@ var ExploreLayer = cc.Layer.extend({
         );
         backItem.setPosition(this._exploreLayerFit.backItemPoint);
 
-        this._exploreItem = cc.MenuItemImage.create(
+        this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button1,
             main_scene_image.button1s,
             main_scene_image.button1d,
+            main_scene_image.icon403,
             this._onClickExplore,
             this
         );
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
+        this._exploreItem.setOffset(cc.p(0, 5));
 
 
         var menu = cc.Menu.create(backItem, this._exploreItem);

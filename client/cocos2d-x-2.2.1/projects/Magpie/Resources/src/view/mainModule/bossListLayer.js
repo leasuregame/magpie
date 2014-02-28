@@ -313,6 +313,8 @@ var BossListLayer = cc.Layer.extend({
             cc.log("BossListLayer _onClickBoss: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            MainScene.getInstance().switchLayer(BossLayer);
         }
     }
 

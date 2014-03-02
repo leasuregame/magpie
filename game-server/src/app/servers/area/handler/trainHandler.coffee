@@ -334,12 +334,13 @@ Handler::skillUpgrade = (msg, session, next) ->
       upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
       sp_need = upgradeData['star'+card.star]
 
-      if player.skillPoint < sp_need
+      if player.skillPoint + card.skillPoint < sp_need
         return cb({code: 501, msg: '技能点不够，不能升级'})  
       
+      sp_need = sp_need - card.skillPoint
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need)
+      player.decrease('skillPoint', sp_need)  
       cb(null, player, card)
 
     (player, card, cb) ->

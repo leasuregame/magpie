@@ -415,10 +415,10 @@ var Card = (function(_super) {
     };
 
     Card.prototype.skillPointLeft = function() {
-        var lv = this.lv;
+        var skillLv = this.skillLv;
         var star = this.star;
         var total_sp = table.getTable('skill_upgrade').filter(function(id, item) {
-            return id < lv;
+            return id < skillLv;
         }).map(function(i) {
             return i['star' + star];
         }).reduce(function(x, y) {

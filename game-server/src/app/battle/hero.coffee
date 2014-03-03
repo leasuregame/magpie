@@ -148,6 +148,9 @@ class Hero extends Module
     for enemy in enemys      
       if @isCrit()
         _hp *= @crit_factor
+        _d = -enemy.idx
+      else
+        _d = enemy.idx
 
       ### 上下浮动15% ###
       _hp = floatUpOrDown(_hp)
@@ -155,7 +158,7 @@ class Hero extends Module
       realHp = 0 if realHp < 0
       enemy.damageOnly -realHp
 
-      _step.d.push enemy.idx
+      _step.d.push _d
       _step.e.push _hp
 
     @log _step

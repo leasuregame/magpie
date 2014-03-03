@@ -7,8 +7,7 @@
  */
 
 var pomelo = window.pomelo;
-var host = "";
-var host = "127.0.0.1";
+var host = "115.29.243.80";
 var servers = null;
 var port = null;
 

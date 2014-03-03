@@ -164,7 +164,7 @@ app.configure('production|development', 'area', function() {
   });
 
   app.load(counter);
-  //app.load(verifier);
+  app.load(verifier);
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

@@ -48,7 +48,8 @@ Handler::appStore = (msg, session, next) ->
     (record, cb) =>
       brecord = record
       if not record
-        product = table.getTableItem('recharge', productId)
+        products = table.getTable('recharge').filter (id, item) -> item.product_id is productId
+        product = products[0]
 
         dao.buyRecord.create data: {
           playerId: playerId
@@ -59,12 +60,13 @@ Handler::appStore = (msg, session, next) ->
         cb(null, record)
 
     (record, cb) =>
-      if productId not in ['com.leasuregame.magpie.week.card', 'com.leasuregame.magpie.week.card']
+      if productId not in Object.keys(GOLDCARDMAP_REVERT)
         return cb(null, record)
 
       dao.goldCard.fetchOne where: playerId: playerId, orderId: record.id, (err, gc) =>
         if err and err.code is 404
-          product = table.getTableItem('recharge', productId)
+          products = table.getTable('recharge').filter (id, item) -> item.product_id is productId
+          product = products[0]
 
           if not product
             return cb({code: 501, msg: '找不到月卡或周卡的配置信息'})

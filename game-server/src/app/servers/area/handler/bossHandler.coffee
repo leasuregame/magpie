@@ -33,8 +33,8 @@ Handler::bossList = (msg, session, next) ->
 
 checkBossStatus = (items, cb) ->
   console.log items
-  timeOutItems = items.filter((i) -> i.timeLeft <= 0)
-  ids = timeOutItems.map (i) -> i.bossId
+  timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
+  ids = timeOutItems.map (i) -> i.id
   console.log ids
   if ids.length is 0
     return cb(null, items)

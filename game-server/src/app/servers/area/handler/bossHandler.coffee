@@ -2,6 +2,7 @@ dao = require('pomelo').app.get('dao')
 _ = require 'underscore'
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
+utility = require('../../../common/utility')
 BOSS_STATUS = require('../../../../config/data/bossStatus').STATUS
 
 module.exports = (app) ->
@@ -11,6 +12,7 @@ Handler = (@app) ->
 
 Handler::bossList = (msg, session, next) ->
   playerId = session.get('playerId')
+  playerName = session.get('playerName')
 
   async.waterfall [
     (cb) ->
@@ -65,6 +67,16 @@ Handler::attack = (msg, session, next) ->
 
     (cb) ->
       fightManager.attackBoss player, boss, cb
+
+    (bl ,cb) ->
+      totalDamage = countDamage(bl)
+      countRewards(totalDamage, boss, bl, player)
+      noticeFriendReward(playerId, boss, bl.reward)
+      updateBoss(boos)
+      saveBattleLog(bl)
+      saveBossAttack(boss, totalDamage)
+      saveDamageOfRank(playerId, playerName, totalDamage)
+      cb(bl)
   ], (err, bl) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
@@ -72,7 +84,7 @@ Handler::attack = (msg, session, next) ->
     next(null, {
       code: 200
       msg: 
-        boss: {}
+        boss: boss.toJson()
         gold: player.gold
         damage: 0
         cd: player.getCD()
@@ -96,3 +108,52 @@ checkBossStatus = (items, cb) ->
     else
       timeOutItems.forEach (i) -> i.status = BOSS_STATUS.TIMEOUT
       cb(null, items)
+
+countDamage = (bl) ->
+  ds = []
+  bl.steps.forEach (s) ->
+    s.d.forEach (el, idx) -> ds.push s.e[idx] if parseInt(el) > 6 
+  
+  add = (x, y) -> x + y  
+  ds.reduce add, 0
+
+countRewards = (totalDamage, boss, bl, player) ->
+  bossInfo = table.getTableItem('boss', boss.tableId)
+  rewardInc = table.getTableItem('boss_type_rate', bossInfo.type)?.reward_inc or 0
+
+  money = parseInt totalDamage/1000*31*(100+rewardInc)/100
+  honor = parseInt totalDamage/2000*(100+rewardInc)/100
+  bl.reward = 
+    money: money
+    honor: honor
+
+  player.increase('money', money)
+  player.increase('honor', honor)
+
+
+noticeFriendReward = (playerId, boss, reward) ->
+  return if playerId is boss.playerId
+
+  friendReward = 
+    money: parseInt(reward.money*0.3)
+    honor: parseInt(reward.honor*0.3)
+
+  dao.bossFriendReward.create data: {
+    playerId: boss.playerId
+    friendId: playerId
+    money: friendReward.money
+    honor: friendReward.honor
+    created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')
+  }, (err, res) ->
+    if err
+      logger.error(err)
+
+    sendMessage(boss.playerId, friendReward)
+
+sendMessage = (playerId, reward) ->
+
+updateBoss = (boss) ->
+  boss.increase('atkCount')
+  # update boss hp
+  # update status
+  # update deathTime if runaway or death

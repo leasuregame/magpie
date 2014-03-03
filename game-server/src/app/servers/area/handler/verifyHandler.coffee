@@ -46,7 +46,6 @@ Handler::appStore = (msg, session, next) ->
         cb(null, null)
 
     (record, cb) =>
-      brecord = record
       if not record
         products = table.getTable('recharge').filter (id, item) -> item.product_id is productId
         product = products[0]
@@ -60,6 +59,7 @@ Handler::appStore = (msg, session, next) ->
         cb(null, record)
 
     (record, cb) =>
+      brecord = record
       if productId not in Object.keys(GOLDCARDMAP_REVERT)
         return cb(null, record)
 

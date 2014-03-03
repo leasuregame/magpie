@@ -424,7 +424,8 @@ var Card = (function(_super) {
         }).reduce(function(x, y) {
             return x + y;
         }, 0);
-        return this.skillPoint - total_sp;
+        var res = this.skillPoint - total_sp;
+        return res < 0 ? 0 : res;
     };
 
     Card.prototype.toJson = function() {

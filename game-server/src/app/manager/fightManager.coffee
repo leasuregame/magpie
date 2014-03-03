@@ -16,7 +16,7 @@ class Manager
     taskData.sectionId = sectionId
     
     playerEntity = null
-    async.waterfall([
+    async.waterfall [
       (cb) ->
         playerManager.getPlayerInfo {pid: pid, sync: false}, cb
       
@@ -30,13 +30,11 @@ class Manager
         battle.process()
 
         cb(null,  battleLog)
-      ],
-      (err, bl) ->
-        if err
-          return callback(err, null)
-        
-        callback(null, bl.reports())
-    )
+    ], (err, bl) ->
+      if err
+        return callback(err, null)
+      
+      callback(null, bl.reports())
 
   @pvp: (attEnt, defEnt, callback) ->
 
@@ -50,5 +48,14 @@ class Manager
     battle.process()
 
     callback null, battleLog.reports()
+
+  @attackBoss: (player, boss, callback) ->
+    attacker = new Player(player)
+    defender = new BossPlayer(boss)
+    battleLog.clear()
+    battle = new Battle(attacker, defender)
+    battle.process()
+
+    callback(null, battleLog.reports())
 
 module.exports = Manager

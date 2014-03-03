@@ -17,7 +17,8 @@ var Boss = (function (_super) {
         'atkCount',
         'hp',
         'status',
-        'createTime'
+        'createTime',
+        'deathTime'
     ];
 
     Boss.DEFAULT_VALUES = {
@@ -34,6 +35,20 @@ var Boss = (function (_super) {
         var bossData = table.getTableItem('boss', this.tableId);
         var t = this.createTime + (bossData.live_time || 12) * 60 * 60 * 1000 - new Date().getTime();
         return t < 0 ? 0 : t;
+    };
+
+    Boss.prototype.isDisappear = function(){
+        var bossData = table.getTableItem('boss', this.tableId);
+
+        var nature_disppear = this.createTime + (bossData.live_time + bossData.disappear_time) * 60 * 60 * 1000 < new Date().getTime();
+        if (nature_disppear) return true;
+
+        if (this.deathTime) {
+            var death_disppear = this.deathTime + bossData.disappear_time * 60 * 60 * 1000 < new Date().getTime();
+            return death_disppear;
+        } else {
+            return false;
+        }        
     };
 
     Boss.prototype.toJson = function(){

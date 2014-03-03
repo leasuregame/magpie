@@ -19,11 +19,10 @@ var BossDao = (function(_super) {
   BossDao.bossList = function(playerId, friendIds, cb) {
     var now = new Date().getTime();
     
-    var tmpl = 'select * from boss where playerId = %(playerId)s and status in (1,2) and createTime + 50400000 > %(now)s \
-      union \
-      select * from boss where playerId in (%(friendIds)s) and status = 2 and createTime + 50400000 >  %(now)s\
-      union \
-      select * from boss where playerId in (%(allIds)s) and status in (3,5) and deathTime + 7200000 > %(now)s';
+    var tmpl = 'select * from boss where \
+      (playerId = %(playerId)s and status in (1,2) and createTime + 50400000 > %(now)s) or \
+      (playerId in (%(friendIds)s) and status = 2 and createTime + 50400000 >  %(now)s) or \
+      (playerId in (%(allIds)s) and status in (3,5) and deathTime + 7200000 > %(now)s)';
    
     var sql = sprintf(tmpl, {
       playerId: playerId,

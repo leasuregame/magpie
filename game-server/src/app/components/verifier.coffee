@@ -137,8 +137,8 @@ updatePlayer = (app, buyRecord, receiptResult) ->
     (updateResult, cb) ->
       addGoldCard(app, buyRecord.id, player, product, cb)
 
-    (cb) ->
-      noticeNewYearActivity app, player, cb
+    # (cb) ->
+    #   noticeNewYearActivity app, player, cb
   ], (err) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)

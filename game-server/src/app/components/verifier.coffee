@@ -73,7 +73,7 @@ executeVerify = (app, queue) ->
       }, (err, res, body) ->
         if err
           logger.error('faild to verify app store receipt.', err)
-          return
+          return done()
 
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢

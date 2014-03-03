@@ -498,8 +498,6 @@
 		902B08F11858C571003A2A49 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DF1858C571003A2A49 /* Icon-80.png */; };
 		902B08F31858C571003A2A49 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 902B08E11858C571003A2A49 /* iTunesArtwork */; };
 		902B08F51858C666003A2A49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902B08F41858C666003A2A49 /* StoreKit.framework */; };
-		90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
-		90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		9058F5DA18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
 		9058F5DB18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
 		9058F5DC18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D618C4603400FD88DB /* libMobClickLibrary.a */; };
@@ -558,6 +556,10 @@
 		9058F63918C4645900FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63718C4645900FD88DB /* AppDelegate.cpp */; };
 		9058F63D18C4646200FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63B18C4646200FD88DB /* AppDelegate.cpp */; };
 		9058F64118C4646A00FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63F18C4646A00FD88DB /* AppDelegate.cpp */; };
+		9058F65318C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
+		9058F65418C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
+		9058F65518C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
+		9058F65618C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
 		9075096018716DB600E27689 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
 		9075096D187171BC00E27689 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096518716DBF00E27689 /* main_binding.js */; };
 		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
@@ -664,7 +666,6 @@
 		90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F51682F1A4002FB0C5 /* CCControlSwitch.cpp */; };
 		90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F71682F1A4002FB0C5 /* CCControlUtils.cpp */; };
 		90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4F91682F1A4002FB0C5 /* CCInvocation.cpp */; };
-		90F535611862EAC2008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FB1682F1A4002FB0C5 /* CCScale9Sprite.cpp */; };
 		90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D4FE1682F1A4002FB0C5 /* CCEditBox.cpp */; };
 		90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D5041682F1A4002FB0C5 /* CCEditBoxImplIOS.mm */; };
@@ -964,7 +965,6 @@
 		90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743717F0874400B9ACAE /* CCTweenFunction.cpp */; };
 		90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743917F0874400B9ACAE /* CCUtilMath.cpp */; };
 		90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743C17F0874400B9ACAE /* CCComAttribute.cpp */; };
-		90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90338EC3185AAAF600224717 /* AssetsManager.mm */; };
 		90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E743E17F0874400B9ACAE /* CCComAudio.cpp */; };
 		90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744017F0874400B9ACAE /* CCComController.cpp */; };
 		90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E744217F0874400B9ACAE /* CCComRender.cpp */; };
@@ -1553,8 +1553,6 @@
 		902B08E01858C571003A2A49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902B08E11858C571003A2A49 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		902B08F41858C666003A2A49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		90338EC3185AAAF600224717 /* AssetsManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AssetsManager.mm; sourceTree = "<group>"; };
-		90338EC4185AAAF600224717 /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsManager.h; sourceTree = "<group>"; };
 		9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
 		9058F5D518C4603400FD88DB /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
 		9058F5D618C4603400FD88DB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -1597,6 +1595,8 @@
 		9058F63C18C4646200FD88DB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9058F63F18C4646A00FD88DB /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		9058F64018C4646A00FD88DB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9058F65118C46A2A00FD88DB /* AssetsManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AssetsManager.mm; path = IOS/AssetsManager.mm; sourceTree = "<group>"; };
+		9058F65218C46A2A00FD88DB /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsManager.h; path = IOS/AssetsManager.h; sourceTree = "<group>"; };
 		9075095A18716DB600E27689 /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		9075095B18716DB600E27689 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
 		9075095C18716DB600E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
@@ -1994,7 +1994,7 @@
 		15A3D4A91682F1A4002FB0C5 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				90338EC2185AAAF600224717 /* AssetsManager */,
+				9058F64218C469C100FD88DB /* AssetsManager */,
 				1A5E740117F0874400B9ACAE /* CocoStudio */,
 				15A3D4AB1682F1A4002FB0C5 /* CCBReader */,
 				15A3D4E01682F1A4002FB0C5 /* cocos-ext.h */,
@@ -2604,15 +2604,6 @@
 			path = TB;
 			sourceTree = "<group>";
 		};
-		90338EC2185AAAF600224717 /* AssetsManager */ = {
-			isa = PBXGroup;
-			children = (
-				90338EC3185AAAF600224717 /* AssetsManager.mm */,
-				90338EC4185AAAF600224717 /* AssetsManager.h */,
-			);
-			path = AssetsManager;
-			sourceTree = "<group>";
-		};
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -2748,6 +2739,15 @@
 			);
 			name = "TB-Releases";
 			path = "IOS/TB-Releases";
+			sourceTree = "<group>";
+		};
+		9058F64218C469C100FD88DB /* AssetsManager */ = {
+			isa = PBXGroup;
+			children = (
+				9058F65118C46A2A00FD88DB /* AssetsManager.mm */,
+				9058F65218C46A2A00FD88DB /* AssetsManager.h */,
+			);
+			path = AssetsManager;
 			sourceTree = "<group>";
 		};
 		9075095918716DB600E27689 /* AppStore */ = {
@@ -3329,6 +3329,7 @@
 				902B07F71858C475003A2A49 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
 				902B07F81858C475003A2A49 /* CCControlSlider.cpp in Sources */,
 				902B07F91858C475003A2A49 /* CCControlStepper.cpp in Sources */,
+				9058F65518C46A2A00FD88DB /* AssetsManager.mm in Sources */,
 				902B07FA1858C475003A2A49 /* CCControlSwitch.cpp in Sources */,
 				902B07FB1858C475003A2A49 /* CCControlUtils.cpp in Sources */,
 				902B07FC1858C475003A2A49 /* CCInvocation.cpp in Sources */,
@@ -3417,7 +3418,6 @@
 				902B084C1858C475003A2A49 /* CCTweenFunction.cpp in Sources */,
 				902B084D1858C475003A2A49 /* CCUtilMath.cpp in Sources */,
 				902B084E1858C475003A2A49 /* CCComAttribute.cpp in Sources */,
-				90338EC6185AAAF600224717 /* AssetsManager.mm in Sources */,
 				902B084F1858C475003A2A49 /* CCComAudio.cpp in Sources */,
 				902B08501858C475003A2A49 /* CCComController.cpp in Sources */,
 				902B08511858C475003A2A49 /* CCComRender.cpp in Sources */,
@@ -3551,7 +3551,6 @@
 				90F5355E1862EAC2008207BD /* CCControlSwitch.cpp in Sources */,
 				90F5355F1862EAC2008207BD /* CCControlUtils.cpp in Sources */,
 				90F535601862EAC2008207BD /* CCInvocation.cpp in Sources */,
-				90F535611862EAC2008207BD /* AssetsManager.mm in Sources */,
 				90F535621862EAC2008207BD /* CCScale9Sprite.cpp in Sources */,
 				90F535631862EAC2008207BD /* CCEditBox.cpp in Sources */,
 				90F535641862EAC2008207BD /* CCEditBoxImplIOS.mm in Sources */,
@@ -3631,6 +3630,7 @@
 				90F535B81862EAC2008207BD /* CCComAttribute.cpp in Sources */,
 				90F535B91862EAC2008207BD /* CCComAudio.cpp in Sources */,
 				90F535BA1862EAC2008207BD /* CCComController.cpp in Sources */,
+				9058F65418C46A2A00FD88DB /* AssetsManager.mm in Sources */,
 				90F535BB1862EAC2008207BD /* CCComRender.cpp in Sources */,
 				90F535BC1862EAC2008207BD /* CCInputDelegate.cpp in Sources */,
 				90F535BD1862EAC2008207BD /* UIRootWidget.cpp in Sources */,
@@ -3837,7 +3837,7 @@
 				90F536C71862EB3C008207BD /* CCTweenFunction.cpp in Sources */,
 				90F536C81862EB3C008207BD /* CCUtilMath.cpp in Sources */,
 				90F536C91862EB3C008207BD /* CCComAttribute.cpp in Sources */,
-				90F536CA1862EB3C008207BD /* AssetsManager.mm in Sources */,
+				9058F65618C46A2A00FD88DB /* AssetsManager.mm in Sources */,
 				90F536CB1862EB3C008207BD /* CCComAudio.cpp in Sources */,
 				90F536CC1862EB3C008207BD /* CCComController.cpp in Sources */,
 				90F536CD1862EB3C008207BD /* CCComRender.cpp in Sources */,
@@ -3966,7 +3966,6 @@
 				15A3D5471682F1A5002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3D5481682F1A5002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3D5491682F1A5002FB0C5 /* CCInvocation.cpp in Sources */,
-				90338EC5185AAAF600224717 /* AssetsManager.mm in Sources */,
 				15A3D54A1682F1A5002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3D54B1682F1A5002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3D54D1682F1A5002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
@@ -4080,6 +4079,7 @@
 				1A5E74C417F0874400B9ACAE /* UICheckBox.cpp in Sources */,
 				1A5E74C517F0874400B9ACAE /* UIImageView.cpp in Sources */,
 				1A5E74C617F0874400B9ACAE /* UILabel.cpp in Sources */,
+				9058F65318C46A2A00FD88DB /* AssetsManager.mm in Sources */,
 				1A5E74C717F0874400B9ACAE /* UILabelAtlas.cpp in Sources */,
 				1A5E74C817F0874400B9ACAE /* UILabelBMFont.cpp in Sources */,
 				1A5E74C917F0874400B9ACAE /* UILoadingBar.cpp in Sources */,

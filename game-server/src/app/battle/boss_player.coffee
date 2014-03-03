@@ -10,7 +10,7 @@ class BossPlayer extends Player
     if not bossInfo
       throw new Error('can not find boss info for tableId: ', boss.tableId)
 
-    cards = parseCards bossInfo.card_ids
+    cards = parseCards bossInfo.card_ids, boss
     super {
       cards: cards
       lineUp: genLineUp cards, bossInfo.formation
@@ -41,7 +41,7 @@ class BossPlayer extends Player
     @matrix.reset()
 
 
-parseCards = (cardIds) ->
+parseCards = (cardIds, boss) ->
   cards = []
 
   realId = 1
@@ -49,6 +49,7 @@ parseCards = (cardIds) ->
     cards.push {
       id: realId++
       tableId: parseInt(tid)
+      hpInfo: boss.hp
     }
 
 genLineUp = (cards, formation) ->

@@ -142,17 +142,28 @@ var BossListLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, rankItem, this._exchangeItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
     },
 
-    update: function() {
+    update: function () {
         cc.log("BossListLayer update");
 
         this._addScrollView();
+
+        if (gameData.boss.get("canReceive")) {
+            if (this._effect) {
+                this._effect.removeFromParent();
+                this._effect = null;
+            }
+            this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+            this._effect.setScale(0.4);
+            this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
+            this.addChild(this._effect);
+        }
     },
 
     _addScrollView: function () {
@@ -207,7 +218,7 @@ var BossListLayer = cc.Layer.extend({
 
             var bossTypeLabel = cc.LabelTTF.create("中级魔兽", "STHeitiTC-Medium", 24);
             bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossTypeLabel.setPosition(cc.p(200, y + 31));
+            bossTypeLabel.setPosition(cc.p(200, y + 32));
             scrollViewLayer.addChild(bossTypeLabel);
 
             var date = new Date();
@@ -311,6 +322,8 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickRank");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        DamageRankLayer.pop();
     },
 
     _onClickExchange: function () {

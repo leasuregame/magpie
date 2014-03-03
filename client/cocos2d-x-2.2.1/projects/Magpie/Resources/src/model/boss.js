@@ -406,6 +406,24 @@ var Boss = Entity.extend({
         }
     },
 
+    canAddition: function (times) {
+
+        if (times < 0 || times > 5) {
+            return false;
+        }
+
+        if (this.needGold(times) > gameData.player.get("gold")) {
+            TipLayer.tip("魔石不足");
+            return false
+        }
+
+        return true;
+    },
+
+    needGold: function (times) {
+        return ((1 + times) * times / 2) * 20;
+    },
+
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
     },

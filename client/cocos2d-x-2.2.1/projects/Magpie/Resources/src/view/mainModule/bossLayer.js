@@ -4,6 +4,7 @@
 
 var BossLayer = cc.Layer.extend({
     _bossLayerFit: null,
+    _addition: 0,
 
     onEnter: function () {
         cc.log("BossLayer onEnter");
@@ -18,6 +19,8 @@ var BossLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._bossLayerFit = gameFit.mainScene.bossLayer;
+
+        this._addition = 0;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -92,7 +95,7 @@ var BossLayer = cc.Layer.extend({
         additionBgLabel.setPosition(this._bossLayerFit.additionBgLabelPoint);
         this.addChild(additionBgLabel);
 
-        this._additionLabel = cc.LabelTTF.create("攻击加成: 100%", "STHeitiTC-Medium", 20);
+        this._additionLabel = cc.LabelTTF.create("攻击加成: 0%", "STHeitiTC-Medium", 20);
         this._additionLabel.setAnchorPoint(cc.p(0.5, 0));
         this._additionLabel.setPosition(this._bossLayerFit.additionLabelPoint);
         this.addChild(this._additionLabel);
@@ -124,12 +127,12 @@ var BossLayer = cc.Layer.extend({
         goldIcon2.setPosition(this._bossLayerFit.goldIcon2Point);
         this._attackNode.addChild(goldIcon2);
 
-        var goldLabel = StrokeLabel.create("100", "STHeitiTC-Medium", 16);
-        goldLabel.setColor(cc.c3b(255, 255, 255));
-        goldLabel.setBgColor(cc.c3b(54, 7, 14));
-        goldLabel.setAnchorPoint(cc.p(0, 0));
-        goldLabel.setPosition(this._bossLayerFit.goldLabel2Point);
-        this._attackNode.addChild(goldLabel);
+        this._expendGoldLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 16);
+        this._expendGoldLabel.setColor(cc.c3b(255, 255, 255));
+        this._expendGoldLabel.setBgColor(cc.c3b(54, 7, 14));
+        this._expendGoldLabel.setAnchorPoint(cc.p(0, 0));
+        this._expendGoldLabel.setPosition(this._bossLayerFit.goldLabel2Point);
+        this._attackNode.addChild(this._expendGoldLabel);
 
         this._attackIcon = cc.Sprite.create(main_scene_image.icon402);
         this._attackIcon.setAnchorPoint(cc.p(0.5, 0));
@@ -211,6 +214,12 @@ var BossLayer = cc.Layer.extend({
         cc.log("BossLayer update");
 
         this._goldLabel.setString(gameData.player.get("gold"));
+        this._additionLabel.setString("攻击加成: " + this._addition * 20 + "%");
+
+        this._attackIcon.setVisible(this._addition == 0);
+        this._attackNode.setVisible(this._addition != 0);
+        this._expendGoldLabel.setString(gameData.boss.needGold(this._addition));
+
     },
 
     _onClickAdd: function () {
@@ -218,6 +227,10 @@ var BossLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (gameData.boss.canAddition(this._addition + 1)) {
+            this._addition++;
+            this.update();
+        }
     },
 
     _onClickSub: function () {
@@ -225,6 +238,10 @@ var BossLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (gameData.boss.canAddition(this._addition - 1)) {
+            this._addition--;
+            this.update();
+        }
     },
 
     _onClickAttack: function () {

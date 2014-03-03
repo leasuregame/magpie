@@ -159,6 +159,7 @@
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/tipsLayer.js',
             'src/view/mainModule/configLayer.js',
+            'src/view/mainModule/damageRankLayer.js',
             'src/view/mainModule/elixirRankHelpLabel.js',
             'src/view/mainModule/elixirRankLayer.js',
             'src/view/mainModule/evolutionLayer.js',

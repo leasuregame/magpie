@@ -183,7 +183,7 @@ var Player = Entity.extend({
         var bossInfo = {
             cd: 180000,
             kneelCount: 2,
-            canReceive: false
+            canReceive: true
         };
         gameData.boss.init(bossInfo);
        // gameData.boss.init(data.bossInfo);

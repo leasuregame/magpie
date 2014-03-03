@@ -1,33 +1,35 @@
 /**
- * Created by lujunyu on 14-2-21.
+ * Created by lujunyu on 14-3-3.
  */
+var TYPE_THIS_WEEK = 1;
+var TYPE_LAST_WEEK = 0;
 
-var ElixirRankLayer = cc.Layer.extend({
-    _elixirRankLayerFit: null,
+var DamageRankLayer = LazyLayer.extend({
+    _damageRankLayerFit: null,
 
     _scrollView: null,
     _thisWeekItem: null,
     _lastWeekItem: null,
     _selectType: TYPE_THIS_WEEK,
     _thisWeekRank: null,
-    _thisWeekElixir: null,
+    _thisWeekHonor: null,
     _lastWeekRank: null,
-    _lastWeekElixir: null,
+    _lastWeekHonor: null,
     _rankList: [],
 
     onEnter: function () {
-        cc.log("ElixirRankLayer onEnter");
+        cc.log("DamageRankLayer onEnter");
 
         this._super();
         this.update();
     },
 
     init: function () {
-        cc.log("ElixirRankLayer init");
+        cc.log("DamageRankLayer init");
 
         if (!this._super()) return false;
 
-        this._elixirRankLayerFit = gameFit.mainScene.elixirRankLayer;
+        this._damageRankLayerFit = gameFit.mainScene.damageRankLayer;
 
         this._selectType = TYPE_THIS_WEEK;
         this._rankList = [];
@@ -36,23 +38,23 @@ var ElixirRankLayer = cc.Layer.extend({
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon381);
-        headIcon.setPosition(this._elixirRankLayerFit.headIconPoint);
-        this.addChild(headIcon);
+        this._frameLayer = cc.Layer.create();
+        this._frameLayer.setPosition(this._damageRankLayerFit.frameLayerPoint);
+        this.addChild(this._frameLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(this._elixirRankLayerFit.bgSpriteSize);
+        bgSprite.setContentSize(cc.size(650, 809));
         bgSprite.setAnchorPoint(cc.p(0.5, 0));
-        bgSprite.setPosition(this._elixirRankLayerFit.bgSpritePoint);
-        this.addChild(bgSprite);
+        bgSprite.setPosition(cc.p(323, 100));
+        this._frameLayer.addChild(bgSprite);
 
         var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
-        titleBgIcon.setPosition(this._elixirRankLayerFit.titleBgIconPoint);
-        this.addChild(titleBgIcon);
+        titleBgIcon.setPosition(cc.p(320, 904));
+        this._frameLayer.addChild(titleBgIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon378);
-        titleIcon.setPosition(this._elixirRankLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon404);
+        titleIcon.setPosition(cc.p(320, 912));
+        this._frameLayer.addChild(titleIcon);
 
         this._thisWeekItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button29,
@@ -63,7 +65,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this
         );
 
-        this._thisWeekItem.setPosition(this._elixirRankLayerFit.thisWeekItemPoint);
+        this._thisWeekItem.setPosition(cc.p(120, 804));
 
         this._lastWeekItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button29,
@@ -73,7 +75,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this._onClickLastWeek,
             this
         );
-        this._lastWeekItem.setPosition(this._elixirRankLayerFit.lastWeekItemPoint);
+        this._lastWeekItem.setPosition(cc.p(270, 804));
 
         this._showRewardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button28,
@@ -83,7 +85,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this
         );
         this._showRewardItem.setAnchorPoint(cc.p(0, 0));
-        this._showRewardItem.setPosition(this._elixirRankLayerFit.showRewardItemPoint);
+        this._showRewardItem.setPosition(cc.p(480, 140));
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
@@ -91,7 +93,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(this._elixirRankLayerFit.closeItemPoint);
+        closeItem.setPosition(cc.p(610, 879));
 
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
@@ -100,20 +102,20 @@ var ElixirRankLayer = cc.Layer.extend({
             this
         );
 
-        helpItem.setPosition(this._elixirRankLayerFit.helpItemPoint);
+        helpItem.setPosition(cc.p(580, 809));
 
         var menu = cc.Menu.create(this._thisWeekItem, this._lastWeekItem, this._showRewardItem, closeItem, helpItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this._frameLayer.addChild(menu);
 
         this._rewardNode = cc.Node.create();
         this._rewardNode.setPosition(cc.p(0, 0));
         this._rewardNode.setVisible(false);
-        this.addChild(this._rewardNode, 2);
+        this._frameLayer.addChild(this._rewardNode, 2);
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
         effect.setScale(0.7);
-        effect.setPosition(this._elixirRankLayerFit.effectPoint);
+        effect.setPosition(cc.p(547, 202));
         this._rewardNode.addChild(effect);
 
         var rewardMenu = cc.Menu.create();
@@ -129,32 +131,32 @@ var ElixirRankLayer = cc.Layer.extend({
 
         getRewardItem.setScale(0.88);
         getRewardItem.setAnchorPoint(cc.p(0, 0));
-        getRewardItem.setPosition(this._elixirRankLayerFit.getRewardItemPoint);
+        getRewardItem.setPosition(cc.p(485, 150));
         rewardMenu.addChild(getRewardItem);
 
         var rankBgIcon = cc.Scale9Sprite.create(main_scene_image.icon169);
-        rankBgIcon.setPosition(this._elixirRankLayerFit.rankBgIconPoint);
-        rankBgIcon.setContentSize(this._elixirRankLayerFit.rankBgIconSize);
-        this.addChild(rankBgIcon);
+        rankBgIcon.setPosition(cc.p(320, 550));
+        rankBgIcon.setContentSize(cc.size(600, 470));
+        this._frameLayer.addChild(rankBgIcon);
 
         var thisWeekIcon = cc.Sprite.create(main_scene_image.icon385);
         thisWeekIcon.setAnchorPoint(cc.p(0, 0));
-        thisWeekIcon.setPosition(this._elixirRankLayerFit.thisWeekIconPoint);
-        this.addChild(thisWeekIcon);
+        thisWeekIcon.setPosition(cc.p(30, 280));
+        this._frameLayer.addChild(thisWeekIcon);
 
         var lastWeekIcon = cc.Sprite.create(main_scene_image.icon386);
         lastWeekIcon.setAnchorPoint(cc.p(0, 0));
-        lastWeekIcon.setPosition(this._elixirRankLayerFit.lastWeekIconPoint);
-        this.addChild(lastWeekIcon);
+        lastWeekIcon.setPosition(cc.p(30, 195));
+        this._frameLayer.addChild(lastWeekIcon);
 
-        var text = ["排名: ", "仙丹: "];
+        var text = ["排名: ", "荣誉: "];
         this._thisWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
-        this._thisWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._thisWeekHonor = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
         this._lastWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
-        this._lastWeekElixir = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._lastWeekHonor = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
 
-        var label = [this._thisWeekRank, this._thisWeekElixir, this._lastWeekRank, this._lastWeekElixir];
-        var point = this._elixirRankLayerFit.labelBasePoint;
+        var label = [this._thisWeekRank, this._thisWeekHonor, this._lastWeekRank, this._lastWeekHonor];
+        var point = cc.p(30, 230);
         for (var i = 0; i < 4; i++) {
             var x = point.x + 240 * (i % 2);
             var y = point.y - 85 * parseInt(i / 2);
@@ -163,25 +165,25 @@ var ElixirRankLayer = cc.Layer.extend({
             bgLabel.setScaleY(0.4);
             bgLabel.setAnchorPoint(cc.p(0, 0));
             bgLabel.setPosition(cc.p(x, y));
-            this.addChild(bgLabel);
+            this._frameLayer.addChild(bgLabel);
 
             var textLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 26);
             textLabel.setAnchorPoint(cc.p(0, 0));
             textLabel.setColor(cc.c3b(219, 166, 103));
             textLabel.setString(text[i % 2]);
             textLabel.setPosition(cc.p(x + 5, y + 5));
-            this.addChild(textLabel);
+            this._frameLayer.addChild(textLabel);
 
             label[i].setAnchorPoint(cc.p(0, 0));
             label[i].setPosition(cc.p(x + 70, y + 4));
-            this.addChild(label[i]);
+            this._frameLayer.addChild(label[i]);
         }
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        skyLabel.setContentSize(this._elixirRankLayerFit.labelContentSize);
+        skyLabel.setContentSize(cc.size(216, 300));
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -190,7 +192,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(this._elixirRankLayerFit.detailItemPoint);
+        detailItem.setPosition(cc.p(108, 240));
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -199,7 +201,7 @@ var ElixirRankLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(this._elixirRankLayerFit.sendMessageItemPoint);
+        sendMessageItem.setPosition(cc.p(108, 150));
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -208,23 +210,26 @@ var ElixirRankLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(this._elixirRankLayerFit.addFriendItemPoint);
+        addFriendItem.setPosition(cc.p(108, 60));
 
         var skyMenu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         skyMenu.setPosition(cc.p(0, 0));
         skyLabel.addChild(skyMenu);
 
         this._skyDialog.setLabel(skyLabel);
-        this._skyDialog.setRect(this._elixirRankLayerFit.skyDialogRect);
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 750));
 
         return true;
     },
 
     update: function () {
-        cc.log("ElixirRankLayer update");
+        cc.log("DamageRankLayer update");
 
-        var lastWeek = gameData.tournament.get("lastWeek");
-        var isGet = gameData.tournament.isCanGetReward();
+        var lastWeek = {
+            "rank": 10,
+            "honor": 10000
+        };//gameData.tournament.get("lastWeek");
+        var isGet = false;//gameData.tournament.isCanGetReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
 
@@ -232,11 +237,11 @@ var ElixirRankLayer = cc.Layer.extend({
 
         if (lastWeek) {
             this._lastWeekRank.setString(lastWeek["rank"]);
-            this._lastWeekElixir.setString(lastWeek["elixir"]);
+            this._lastWeekHonor.setString(lastWeek["honor"]);
         }
 
-        var point = this._elixirRankLayerFit.thisWeekItemPoint;
-        var point1 = this._elixirRankLayerFit.lastWeekItemPoint;
+        var point = cc.p(120, 804);
+        var point1 = cc.p(270, 804);
 
         if (this._selectType == TYPE_THIS_WEEK) {
             this._thisWeekItem.setPosition(cc.p(point.x, point.y + 3));
@@ -244,118 +249,155 @@ var ElixirRankLayer = cc.Layer.extend({
             this._thisWeekItem.setEnabled(false);
             this._lastWeekItem.setEnabled(true);
 
-            var that = this;
-            gameData.tournament.updateElixirRank(function (data) {
-                if (data.thisWeek) {
-                    that._thisWeekRank.setString(data.thisWeek["rank"]);
-                    that._thisWeekElixir.setString(data.thisWeek["elixir"]);
-                }
-                if (data.elixirs) {
-                    that._rankList = data.elixirs;
-                }
-                that._addRankScrollView();
-            });
+//            var that = this;
+//            gameData.tournament.updateElixirRank(function (data) {
+//                if (data.thisWeek) {
+//                    that._thisWeekRank.setString(data.thisWeek["rank"]);
+//                    that._thisWeekElixir.setString(data.thisWeek["elixir"]);
+//                }
+//                if (data.elixirs) {
+//                    that._rankList = data.elixirs;
+//                }
+//                that._addRankScrollView();
+//            });
         } else {
             this._thisWeekItem.setPosition(point);
             this._lastWeekItem.setPosition(cc.p(point1.x, point1.y + 3));
             this._thisWeekItem.setEnabled(true);
             this._lastWeekItem.setEnabled(false);
             this._rankList = gameData.tournament.get("lastWeekElixirRank");
-            this._addRankScrollView();
+            // this._addRankScrollView();
         }
 
+        this._addRankView();
     },
 
-    _addRankScrollView: function () {
-        cc.log("ElixirRankLayer _addRankScrollView");
+    _addRankView: function () {
+        cc.log("DamageRankLayer _addRankView");
 
-        if (this._scrollView) {
-            this._scrollView.removeFromParent();
-            this._scrollView = null;
+        if (this._rankView) {
+            this._rankView.removeFromParent();
+            this._rankView = null;
         }
 
-        var scrollViewLayer = MarkLayer.create(this._elixirRankLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
+        this._rankView = cc.Layer.create();
+        this._rankView.setPosition(cc.p(20, 325));
+        this._frameLayer.addChild(this._rankView);
+
+        var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
+        this._rankView.addChild(menu);
+
+        var kneelMenu = cc.Menu.create();
+        kneelMenu.setPosition(cc.p(0, 0));
+        this._rankView.addChild(kneelMenu);
 
         this._playerItem = [];
 
-        var len = this._rankList.length;
-        var scrollViewHeight = len * 75;
-        if (scrollViewHeight < this._elixirRankLayerFit.scrollViewHeight) {
-            scrollViewHeight = this._elixirRankLayerFit.scrollViewHeight;
+        var rankList = [];
+
+        for (var i = 0; i < 5; i++) {
+            rankList[i] = {
+                playerId: (1000 + i),
+                name: ("牛B的玩家" + i),
+                damage: 1000000 - i * 1000,
+                kneelCount: 1000 - i * 100
+            }
         }
 
+        var len = 5;
+
         for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 65 - 75 * i;
-            var player = this._rankList[i];
+            var y = 360 - 90 * i;
+            var player = rankList[i];//this._rankList[i];
 
             if (player.playerId == gameData.player.get("id")) {
-                var bgIcon = cc.Sprite.create(main_scene_image.icon382);
+                var bgIcon = cc.Sprite.create(main_scene_image.button18);
                 bgIcon.setAnchorPoint(cc.p(0, 0));
                 bgIcon.setPosition(cc.p(5, y));
-                scrollViewLayer.addChild(bgIcon);
-                this._playerItem[i] = bgIcon;
+                bgIcon.setScaleY(0.7);
+                this._rankView.addChild(bgIcon);
+
             } else {
                 var playerItem = cc.MenuItemImage.create(
-                    main_scene_image.button6,
-                    main_scene_image.button6s,
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
                     this._onClickPlayer(i),
                     this
                 );
                 playerItem.setAnchorPoint(cc.p(0, 0));
                 playerItem.setPosition(cc.p(5, y));
+                playerItem.setScaleY(0.7);
                 menu.addChild(playerItem);
-
                 this._playerItem[i] = playerItem;
             }
 
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
-                rankIcon.setPosition(cc.p(42, y + 30));
-                scrollViewLayer.addChild(rankIcon);
+                rankIcon.setPosition(cc.p(62, y + 45));
+                this._rankView.addChild(rankIcon);
             } else {
                 var rankLabel = StrokeLabel.create(i + 1, "Arial", 55);
-                rankLabel.setColor(cc.c3b(255, 252, 175));
-                rankLabel.setPosition(cc.p(42, y + 32));
-                scrollViewLayer.addChild(rankLabel);
+                rankLabel.setColor(cc.c3b(255, 255, 255));
+                rankLabel.setBgColor(cc.c3b(133, 60, 31));
+                rankLabel.setPosition(cc.p(62, y + 47));
+                this._rankView.addChild(rankLabel);
             }
 
-            var nameIcon = cc.Sprite.create(main_scene_image.icon383);
+            var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            nameIcon.setContentSize(cc.size(160, 30));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
-            nameIcon.setPosition(cc.p(105, y + 30));
-            scrollViewLayer.addChild(nameIcon);
+            nameIcon.setPosition(cc.p(105, y + 60));
+            this._rankView.addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(player.name, "STHeitiTC-Medium", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
-            nameLabel.setPosition(cc.p(115, y + 28));
-            scrollViewLayer.addChild(nameLabel);
+            nameLabel.setPosition(cc.p(125, y + 58));
+            this._rankView.addChild(nameLabel);
 
-            var elixirIcon = cc.Sprite.create(main_scene_image.icon151);
-            elixirIcon.setAnchorPoint(cc.p(0, 0.5));
-            elixirIcon.setPosition(cc.p(410, y + 30));
-            scrollViewLayer.addChild(elixirIcon);
+            var kneelLabel = cc.LabelTTF.create("被膜拜次数: ", "STHeitiTC-Medium", 20);
+            kneelLabel.setAnchorPoint(cc.p(0, 0.5));
+            kneelLabel.setPosition(cc.p(105, y + 25));
+            kneelLabel.setColor(cc.c3b(123, 76, 65));
+            this._rankView.addChild(kneelLabel);
 
-            var elixirLabel = cc.LabelTTF.create(player.elixir, "STHeitiTC-Medium", 22);
-            elixirLabel.setColor(cc.c3b(123, 76, 65));
-            elixirLabel.setAnchorPoint(cc.p(0, 0.5));
-            elixirLabel.setPosition(cc.p(450, y + 25));
-            scrollViewLayer.addChild(elixirLabel);
+            var kneelCountLabel = cc.LabelTTF.create(player.kneelCount, "STHeitiTC-Medium", 20);
+            kneelCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            kneelCountLabel.setPosition(cc.p(225, y + 24));
+            kneelCountLabel.setColor(cc.c3b(123, 76, 65));
+            this._rankView.addChild(kneelCountLabel);
+
+            var damageLabel = StrokeLabel.create("伤害: ", "Arial", 25);
+            damageLabel.setColor(cc.c3b(255, 255, 255));
+            damageLabel.setBgColor(cc.c3b(133, 60, 31));
+            damageLabel.setAnchorPoint(cc.p(0, 0.5));
+            damageLabel.setPosition(cc.p(310, y + 45));
+            this._rankView.addChild(damageLabel);
+
+            var damageCountLabel = cc.LabelTTF.create(player.damage, "STHeitiTC-Medium", 22);
+            damageCountLabel.setColor(cc.c3b(123, 76, 65));
+            damageCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            damageCountLabel.setPosition(cc.p(380, y + 42));
+            this._rankView.addChild(damageCountLabel);
+
+            var kneelItem = cc.MenuItemImage.create(
+                main_scene_image.button42,
+                main_scene_image.button42s,
+                main_scene_image.button42d,
+                this._onClickKneel(player.playerId),
+                this
+            );
+
+            kneelItem.setAnchorPoint(cc.p(0, 0.5));
+            kneelItem.setPosition(cc.p(500, y + 48));
+            kneelItem.setScale(0.9);
+
+            kneelMenu.addChild(kneelItem);
         }
-
-        this._scrollView = cc.ScrollView.create(this._elixirRankLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setPosition(this._elixirRankLayerFit.scrollViewPoint);
-        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._scrollView.updateInset();
-        this.addChild(this._scrollView);
-
-        this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
     _onClickThisWeek: function () {
-        cc.log("ElixirRankLayer _onClickThisWeek");
+        cc.log("DamageRankLayer _onClickThisWeek");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this._selectType = TYPE_THIS_WEEK;
@@ -363,7 +405,7 @@ var ElixirRankLayer = cc.Layer.extend({
     },
 
     _onClickLastWeek: function () {
-        cc.log("ElixirRankLayer _onClickLastWeek");
+        cc.log("DamageRankLayer _onClickLastWeek");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this._selectType = TYPE_LAST_WEEK;
@@ -373,10 +415,10 @@ var ElixirRankLayer = cc.Layer.extend({
     _onClickPlayer: function (index) {
         var that = this;
         return function () {
-            cc.log("ElixirRankLayer _onClickPlayer: " + index);
+            cc.log("DamageRankLayer _onClickPlayer: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            var point = that._playerItem[index].convertToWorldSpace(cc.p(273, 35));
+            var point = that._playerItem[index].convertToWorldSpace(cc.p(260, 60));
 
             that._selectId = index;
             that._skyDialog.show(point);
@@ -384,21 +426,21 @@ var ElixirRankLayer = cc.Layer.extend({
     },
 
     _onClickShowReward: function () {
-        cc.log("ElixirRankLayer _onClickShowReward");
+        cc.log("DamageRankLayer _onClickShowReward");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var reward = gameData.tournament.getThisWeekReward();
+        var reward = null;//gameData.tournament.getThisWeekReward();
 
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的竞技仙丹数量为0，无法获得奖励哟。"
+            tip: "亲，你的荣誉点为0，无法获得奖励哟。"
         });
 
     },
 
     _onClickGetReward: function () {
-        cc.log("ElixirRankLayer _onClickGetReward");
+        cc.log("DamageRankLayer _onClickGetReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -413,7 +455,7 @@ var ElixirRankLayer = cc.Layer.extend({
         }
 
         var that = this;
-        gameData.tournament.getElixirRankReward(function (data) {
+        gameData.tournament.getDamageRankReward(function (data) {
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
@@ -428,23 +470,23 @@ var ElixirRankLayer = cc.Layer.extend({
     },
 
     _onClickClose: function () {
-        cc.log("ElixirRankLayer _onClickClose");
+        cc.log("DamageRankLayer _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(TournamentLayer);
+        this.removeFromParent();
     },
 
     _onClickHelp: function () {
-        cc.log("ElixirRankLayer _onClickHelp");
+        cc.log("DamageRankLayer _onClickHelp");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(ElixirRankHelpLabel);
+        MainScene.getInstance().switchLayer(DamageRankHelpLabel);
     },
 
     _onClickDetail: function () {
-        cc.log("ElixirRankLayer _onClickDetail: " + this._selectId);
+        cc.log("DamageRankLayer _onClickDetail: " + this._selectId);
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -462,7 +504,7 @@ var ElixirRankLayer = cc.Layer.extend({
     },
 
     _onClickSendMessage: function () {
-        cc.log("ElixirRankLayer _onClickSendMessage: " + this._selectId);
+        cc.log("DamageRankLayer _onClickSendMessage: " + this._selectId);
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -476,7 +518,7 @@ var ElixirRankLayer = cc.Layer.extend({
     },
 
     _onClickAddFriend: function () {
-        cc.log("ElixirRankLayer _onClickAddFriend: " + this._selectId);
+        cc.log("DamageRankLayer _onClickAddFriend: " + this._selectId);
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -487,17 +529,35 @@ var ElixirRankLayer = cc.Layer.extend({
         } else {
             TipLayer.tip("找不到该玩家");
         }
+    },
+
+    _onClickKneel: function (id) {
+        var that = this;
+        return function () {
+            cc.log("DamageRankLayer _onClickKneel: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        }
     }
+
 });
 
-ElixirRankLayer.create = function () {
-    cc.log("ElixirRankLayer create");
+DamageRankLayer.create = function () {
+    cc.log("DamageRankLayer create");
 
-    var ret = new ElixirRankLayer();
+    var ref = new DamageRankLayer();
 
-    if (ret && ret.init()) {
-        return ret;
+    if (ref && ref.init()) {
+        return ref;
     }
 
     return null;
+};
+
+DamageRankLayer.pop = function () {
+    cc.log("DamageRankLayer pop");
+
+    var damageRankLayer = DamageRankLayer.create();
+
+    MainScene.getInstance().getLayer().addChild(damageRankLayer, 10);
 };

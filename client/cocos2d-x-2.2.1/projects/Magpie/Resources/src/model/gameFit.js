@@ -217,7 +217,7 @@ var fit4Iphone4 = {
             "attackItemPoint": cc.p(360, 220),
             "attackIconPoint": cc.p(360, 248),
             "goldIcon2Point": cc.p(345, 228),
-            "goldLabel2Point": cc.p(355, 230),
+            "goldLabel2Point": cc.p(358, 232),
             "attackIcon2Point": cc.p(360, 235),
             "removeCdTimeItemPoint": cc.p(500, 122),
             "backItemPoint": cc.p(100, 920),
@@ -233,8 +233,8 @@ var fit4Iphone4 = {
             "removeTimeItemPoint": cc.p(480, 828),
             "bottomIconPoint": cc.p(40, 106),
             "goodsBgLabelPoint": cc.p(80, 124),
-            "honorLabelPoint": cc.p(260, 172),
-            "superHonorLabelPoint": cc.p(260, 128),
+            "honorLabelPoint": cc.p(270, 172),
+            "superHonorLabelPoint": cc.p(270, 128),
             "rewardItemPoint": cc.p(160, 830),
             "rankItemPoint": cc.p(580, 830),
             "exchangeItemPoint": cc.p(490, 114),
@@ -401,6 +401,9 @@ var fit4Iphone4 = {
             "tipsItemPoint": cc.p(55, 402),
             "QQGroupPoint": cc.p(55, 282),
             "go2LoginItemPoint": cc.p(55, 162)
+        },
+        "damageRankLayer": {
+            "frameLayerPoint": cc.p(40, 0)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(360, 934),
@@ -1672,7 +1675,7 @@ var fit4Iphone5 = {
             "attackItemPoint": cc.p(320, 270),
             "attackIconPoint": cc.p(320, 298),
             "goldIcon2Point": cc.p(305, 278),
-            "goldLabel2Point": cc.p(315, 280),
+            "goldLabel2Point": cc.p(318, 282),
             "attackIcon2Point": cc.p(320, 285),
             "removeCdTimeItemPoint": cc.p(460, 152),
             "backItemPoint": cc.p(60, 1096),
@@ -1688,8 +1691,8 @@ var fit4Iphone5 = {
             "removeTimeItemPoint": cc.p(440, 986),
             "bottomIconPoint": cc.p(0, 106),
             "goodsBgLabelPoint": cc.p(40, 124),
-            "honorLabelPoint": cc.p(220, 172),
-            "superHonorLabelPoint": cc.p(220, 128),
+            "honorLabelPoint": cc.p(230, 172),
+            "superHonorLabelPoint": cc.p(230, 128),
             "rewardItemPoint": cc.p(120, 988),
             "rankItemPoint": cc.p(540, 988),
             "exchangeItemPoint": cc.p(450, 114),
@@ -1856,6 +1859,9 @@ var fit4Iphone5 = {
             "tipsItemPoint": cc.p(15, 578),
             "QQGroupPoint": cc.p(15, 458),
             "go2LoginItemPoint": cc.p(15, 338)
+        },
+        "damageRankLayer": {
+            "frameLayerPoint": cc.p(0, 98)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),

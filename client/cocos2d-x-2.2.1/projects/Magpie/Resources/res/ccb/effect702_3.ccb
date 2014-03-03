@@ -1013,7 +1013,7 @@
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>1</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1040,7 +1040,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.5</real>
+								<real>0.30000001192092896</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1057,7 +1057,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>0.5</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -1171,40 +1171,29 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>gravity</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>speed</string>
+								<string>startRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>80</real>
+									<real>40</real>
 									<real>20</real>
 								</array>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tangentialAccel</string>
+								<string>endRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
+									<real>120</real>
 									<real>20</real>
 								</array>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>radialAccel</string>
+								<string>rotatePerSecond</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -1222,8 +1211,6 @@
 								<string>res/effect/effect/p106.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

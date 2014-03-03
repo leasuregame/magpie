@@ -737,7 +737,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>120</real>
+								<real>88</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -766,7 +766,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1116,7 +1116,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-120</real>
+								<real>-88</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1145,7 +1145,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1207,8 +1207,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1.6666648387908936</real>
+							<real>-1.9999994039535522</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1235,8 +1235,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1.2777777910232544</real>
+							<real>1.2777777910232544</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1907,8 +1907,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>1.6666648387908936</real>
+									<real>-1.9999994039535522</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2439,7 +2439,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>157</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2581,7 +2581,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2597,7 +2597,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>50</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2606,8 +2606,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.75</real>
-							<real>0.25</real>
+							<real>0.69999998807907104</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -2771,6 +2771,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2929,7 +2931,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

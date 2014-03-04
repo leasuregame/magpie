@@ -53,6 +53,11 @@ CREATE TABLE IF NOT EXISTS `player` (
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- alter table player add column `honor` INT(10) DEFAULT '0';
+-- alter table player add column `superHonor` INT(10) DEFAULT '0';
+-- alter table player add column `kneelCount` INT(5) DEFAULT '0';
+-- alter table player add column `cd` VARCHAR(100) DEFAULT '{}';
+
 -- ----------------------------
 -- Table structure for greeting
 -- ----------------------------

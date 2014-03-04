@@ -16,6 +16,145 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+Handler::attackDetails = (msg, session, next) ->
+  bossId = msg.bossId
+
+  if not bossId
+    return next({code: 501, msg: '参数错误'})
+
+  dao.bossAttack.getByBossId where: {
+    bossId: bossId
+  }, (err, items) ->
+    if err
+      return next(null, {code: err.code or 501, msg: err.msg or err})
+
+    next(null, {code: 200, msg: items})
+
+Handler::lastWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').damageOfRank.lastWeekDamageRank cb
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, utility.lastWeek(), cb
+    (cb) =>
+      @app.get('dao').damageOfRank.fetchOne {
+        fields: ['got']
+        where: playerId: playerId, week: utility.lastWeek()
+      }, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else 
+          cb(null, res) 
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    damageList = results[0]
+    lastWeekRank = results[1]
+    got = results[2]?.got
+
+    next(null, {code: 200, msg: {
+      damageList: damageList
+      lastWeek: lastWeekRank
+      isGet: !!got
+    }})
+
+Handler::thisWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').damageOfRank.thisWeekDamageRank cb
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, utility.thisWekk(), cb
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    damageList = results[0]
+    thisWeekRank = results[1]
+
+    next(null, {code: 200, msg: {
+      damageList: damageList
+      thisWeek: thisWeekRank
+    }})
+
+Handler::getLastWeekReward = (msg, session, next) ->
+
+
+Handler::getFriendReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+    (player, cb) ->
+      dao.bossFriendReward.getReward playerId, (err, res) ->
+        if err or not res
+          return cb({
+            code: 501, 
+            msg: '没有奖励可领'
+          })
+        else 
+          cb(null, res, player)
+  ], (err, reward, player) ->
+    if err
+      return next(null, err)
+
+    player.increase 'money', reward.money
+    player.increase 'honor', reward.honor
+    player.save()
+    next(null, {
+      code: 200,
+      msg: {
+        money: reward.money
+        honor: reward.honor
+      }
+    })
+
+Handler::convertHonor = (msg, session, next) ->
+  playerId = session.get('playerId')
+  number = msg.number
+
+  if typeof number is 'undefined' or typeof number isnt 'number' or number < 0
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    if player.honor < number * 6000
+      return next(null, {code: 501, msg: '荣誉点不足'})
+
+    player.decrease 'honor', number * 6000
+    player.increase 'superHonor', number
+    player.save()
+
+    next(null, {code: {
+      superHonor: player.superHonor
+      honor: player.honor
+    }})
+
+Handler::removeTimer = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  removeCount = 1
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    gold_resume = 20 * removeCount
+    if player.gold < gold_resume
+      return next(null, {code: 501, msg: '魔石不足'})
+
+    player.decrease 'gold', gold_resume
+    player.removeCD()
+    player.save()
+
+    next(null, {code: 200})
+
 Handler::bossList = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')

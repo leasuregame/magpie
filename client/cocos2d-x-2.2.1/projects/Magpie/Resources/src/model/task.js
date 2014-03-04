@@ -300,7 +300,7 @@ var Task = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_wipe_out_task", id);
+                lz.dc.event("event_wipe_out_task", "" + id);
             } else {
                 cc.log("wipeOut fail");
 

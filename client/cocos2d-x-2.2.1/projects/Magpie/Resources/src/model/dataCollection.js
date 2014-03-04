@@ -64,5 +64,5 @@ lz.dc = {
     }
 };
 
-lz.dc.startWithAppKey("5279b97f56240b8276001106");
-lz.dc.setLogEnabled(true);
+lz.dc.startWithAppKey("5314371056240be15b216fc1");
+lz.dc.setLogEnabled(false);

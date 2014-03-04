@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-02-28T11:43:00Z</Created>
-  <LastSaved>2014-02-28T07:24:14Z</LastSaved>
+  <LastSaved>2014-03-04T09:42:15Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -24,7 +24,6 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -69,7 +68,7 @@
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">type</Data><Comment ss:Author="arthur wu"><Data><B
         xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">BOSS类型刷新概率|name|id</Font></B><Font html:Size="10"
+         html:Color="#000000">BOSS类型配置表|name|id</Font></B><Font html:Size="10"
         html:Color="#000000" xmlns="http://www.w3.org/TR/REC-html40">&#13;</Font></Data></Comment></Cell>
     <Cell><Data ss:Type="String">boss_id</Data></Cell>
     <Cell><Data ss:Type="String">card_ids</Data></Cell>
@@ -134,11 +133,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -227,12 +227,10 @@
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

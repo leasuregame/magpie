@@ -192,6 +192,7 @@ var BossLayer = cc.Layer.extend({
 
         this._removeCdTimeItem.setAnchorPoint(cc.p(0.5, 0));
         this._removeCdTimeItem.setPosition(this._bossLayerFit.removeCdTimeItemPoint);
+        this._removeCdTimeItem.setVisible(this._cdTime > 0);
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
@@ -240,6 +241,8 @@ var BossLayer = cc.Layer.extend({
         this._cdTimeLabel.setString(lz.getTimeStr({
             time: this._cdTime + STOP_TIME
         }));
+
+        this._removeCdTimeItem.setVisible(this._cdTime > 0);
     },
 
     _onClickAdd: function () {

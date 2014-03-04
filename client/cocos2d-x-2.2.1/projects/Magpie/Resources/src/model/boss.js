@@ -38,7 +38,7 @@ var Boss = Entity.extend({
         this.on("kneelCountChange", this._kneelCountChangeEvent);
         this.on("canReceiveChange", this._canReceiveChangeEvent);
 
-        this._bossList = null;
+        this._bossList = [];
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;

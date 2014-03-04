@@ -1284,6 +1284,12 @@ var Player = (function(_super) {
         return duration < 0 ? 0 : duration;
     };
 
+    Player.prototype.resetCD = function(){
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = new Date().getTime();
+        this.cd = cd;
+    };
+
     Player.prototype.incBossCount = function(){
         var task = utility.deepCopy(this.task);
         if (!task.boss) {

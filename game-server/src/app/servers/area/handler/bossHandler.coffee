@@ -83,7 +83,7 @@ Handler::attack = (msg, session, next) ->
     (bl ,cb) ->
       totalDamage = countDamage(bl)
       countRewards(totalDamage, boss, bl, player)
-      updateBoss(boss, bl, player)
+      updateBossAndPlayer(boss, bl, player)
       noticeFriendrewards(playerId, boss, bl.rewards)
       cb(null, bl)
     (bl, cb) ->
@@ -178,7 +178,7 @@ sendMessage = (playerId, rewards) ->
       logger.error(err)
 
 
-updateBoss = (boss, bl, player) ->
+updateBossAndPlayer = (boss, bl, player) ->
   if boss.atkCount is 0
     boss.set('status', BOSS_STATUS.AWAKE)
   boss.increase('atkCount')
@@ -206,6 +206,7 @@ updateBoss = (boss, bl, player) ->
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)
+  player.resetCD()
 
 saveBattleLog = (bl, player, boss, cb) ->
   dao.battleLog.create {

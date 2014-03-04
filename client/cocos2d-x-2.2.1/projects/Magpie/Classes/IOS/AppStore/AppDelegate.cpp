@@ -15,7 +15,6 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
-#include "js_bindings_AssetsManager.hpp"
 #include "js_bindings_IAPHelp.hpp"
 #include "js_cocos2dx_autogen_extension.hpp"
 #include "js_bindings_WebLayer.hpp"
@@ -72,7 +71,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
-    sc->addRegisterCallback(register_all_cocos2dx_extension_AssetsManager);
     sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
     sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);

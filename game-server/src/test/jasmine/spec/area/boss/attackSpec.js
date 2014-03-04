@@ -5,14 +5,14 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
-      
+
 
       describe('我的boss', function() {
-        var bossId;
-        var bossCreateTime = new Date().getTime();
 
         describe('沉睡的Boss', function() {
           var before_player;
+          var bossId;
+          var bossCreateTime = new Date().getTime();
 
           beforeEach(function() {
             doAjax('/player/100', function(res) {
@@ -56,6 +56,9 @@ describe("Area Server", function() {
             })
           });
         });
+  
+       
+        
 
       });
 

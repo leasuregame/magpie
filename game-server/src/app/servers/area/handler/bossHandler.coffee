@@ -23,7 +23,6 @@ Handler::bossList = (msg, session, next) ->
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
-
     (player, cb) ->
       ids = player.friends.map (f) -> f.id
       dao.boss.bossList playerId, ids, cb

@@ -29,11 +29,11 @@ class Hero extends Module
     @lv = attrs.lv
     @spirit_hp = attrs.incs?.spirit_hp or 0
     @spirit_atk = attrs.incs?.spirit_atk or 0
-    @init_hp = @hp = attrs.hp + @spirit_hp
-    @init_atk = @atk = attrs.atk + @spirit_atk
+    @init_hp = @hp = parseInt (attrs.hp + @spirit_hp)*(100+player.inc_scale)/100
+    @init_atk = @atk = parseInt (attrs.atk + @spirit_atk)*(100+player.inc_scale)/100
 
-    @hp_only = attrs.hp
-    @atk_only = attrs.atk
+    @hp_only = @hp
+    @atk_only = @atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 1
@@ -115,7 +115,7 @@ class Hero extends Module
     
     _len = enemys? and enemys.length or 0
     _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
-
+    
     for enemy in enemys
       
       if enemy.isDodge()

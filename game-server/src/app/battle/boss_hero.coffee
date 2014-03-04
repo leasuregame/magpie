@@ -14,7 +14,7 @@ class BossHero extends Hero
     if not card_config
       throw new Error('配置表错误，找不到怪物卡牌配置信息' + @card_id)
 
-    @init_atk = @atk = card_config.atk
+    @init_atk = @atk = card_config.atk    
     @init_hp = @hp = card_config.hp
 
     @star = 3
@@ -24,13 +24,12 @@ class BossHero extends Hero
       {name: 'dodge', value: card_config.dodge_rate}
     ]
 
-  getCards: ->
-    cobj = {}
-    for c in @heros
-      cobj[c.idx] = 
-        tableId: c.card_id
-        hp: c.init_hp
-        atk: c.init_atk
-    cobj
+  loadSkill: ->
+    return if not @skill_id
+
+    @skill_setting = tab.getTableItem('skills', @skill_id)
+    if @skill_setting
+      @skill_inc = @skill_setting.star3_inc_min
+      @skill = new Skill(@, @skill_setting)
 
 module.exports = BossHero

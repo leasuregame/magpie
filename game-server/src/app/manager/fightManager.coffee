@@ -3,6 +3,7 @@ Battle = require '../battle/battle'
 battleLog = require '../battle/battle_log'
 Player = require '../battle/player'
 VirtualPlayer = require '../battle/virtual_player'
+BossPlayer = require '../battle/boss_player'
 playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
 
@@ -49,8 +50,8 @@ class Manager
 
     callback null, battleLog.reports()
 
-  @attackBoss: (player, boss, callback) ->
-    attacker = new Player(player)
+  @attackBoss: (player, boss, incRate, callback) ->
+    attacker = new Player(player, incRate)
     defender = new BossPlayer(boss)
     battleLog.clear()
     battle = new Battle(attacker, defender)

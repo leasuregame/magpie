@@ -51,6 +51,12 @@ var Boss = (function (_super) {
         }        
     };
 
+    Boss.prototype.updateHp = function(key, hp) {
+        var hp_obj = utility.deepCopy(this.hp);
+        hp_obj[key].hp = hp;
+        this.hp = hp_obj;
+    };
+
     Boss.prototype.toJson = function(){
         
         return {

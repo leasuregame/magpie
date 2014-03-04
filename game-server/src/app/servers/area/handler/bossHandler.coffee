@@ -1,9 +1,15 @@
-dao = require('pomelo').app.get('dao')
+app = require('pomelo').app
+dao = app.get('dao')
 _ = require 'underscore'
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
+fightManager = require '../../../manager/fightManager'
 utility = require('../../../common/utility')
-BOSS_STATUS = require('../../../../config/data/bossStatus').STATUS
+table = require '../../../manager/table'
+job = require '../../../dao/job'
+BOSSCONFIG = require('../../../../config/data/bossStatus')
+BOSS_STATUS = BOSSCONFIG.STATUS
+logger = require('pomelo-logger').getLogger(__filename)
 
 module.exports = (app) ->
   new Handler(app)
@@ -20,7 +26,6 @@ Handler::bossList = (msg, session, next) ->
 
     (player, cb) ->
       ids = player.friends.map (f) -> f.id
-      #ids.push player.id
       dao.boss.bossList playerId, ids, cb
     (items, cb) ->
       checkBossStatus(items, cb)
@@ -40,21 +45,22 @@ Handler::attack = (msg, session, next) ->
 
   player = null
   boss = null
+  totalDamage = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
-
     (res, cb) ->
       player = res
       if player.getCD() > 0
         return cb({code: 501, msg: '不能攻击'})
       cb()
-
     (cb) ->
       dao.boss.fetchOne where: id: bossId, cb
     (res, cb) ->
       boss = res
-      if boss.playerId not in friendIds()
+      friendIds = player.friends.map (f) -> f.id
+      friendIds.push playerId
+      if boss.playerId not in friendIds
         return cb({code: 501, msg: '不能攻击陌生人的Boss哦'})
 
       if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() 
@@ -62,22 +68,37 @@ Handler::attack = (msg, session, next) ->
 
       if boss.playerId isnt playerId and boss.status is BOSS_STATUS.SLEEP
         return cb({code: 501, msg: 'Boss未苏醒'})
-
       cb()
-
     (cb) ->
-      fightManager.attackBoss player, boss, cb
+      if inspireCount > 5
+        inspireCount = 5
 
+      gold_resume = BOSSCONFIG.INSPIRE_GOLD * (1+inspireCount) * inspireCount / 2
+      if player.gold < gold_resume
+        return cb({code: 501, msg: '魔石不足'})
+
+      player.decrease('gold', gold_resume)
+      incRate = _.min [inspireCount * BOSSCONFIG.INSPIRE_PER_CARD, BOSSCONFIG.INSPIRE_MAX]
+      fightManager.attackBoss player, boss, incRate, cb
     (bl ,cb) ->
       totalDamage = countDamage(bl)
       countRewards(totalDamage, boss, bl, player)
-      noticeFriendReward(playerId, boss, bl.reward)
-      updateBoss(boos)
-      saveBattleLog(bl)
-      saveBossAttack(boss, totalDamage)
-      saveDamageOfRank(playerId, playerName, totalDamage)
-      cb(bl)
-  ], (err, bl) ->
+      updateBoss(boss, bl, player)
+      noticeFriendrewards(playerId, boss, bl.rewards)
+      cb(null, bl)
+    (bl, cb) ->
+      saveBattleLog bl, player, boss, (err, res) ->
+        if err
+          cb(err)
+        else
+          cb(null, bl, res)
+    (bl, blObj, cb) ->
+      dao.damageOfRank.fetchOne where: {
+        playerId: playerId,
+        week: utility.thisWeek()
+      }, (err, dorObj) ->
+        saveObjects(bl, boss, player, totalDamage, blObj.id, dorObj, cb)
+  ], (err, bl, totalDamage) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
@@ -86,7 +107,7 @@ Handler::attack = (msg, session, next) ->
       msg: 
         boss: boss.toJson()
         gold: player.gold
-        damage: 0
+        damage: totalDamage
         cd: player.getCD()
         battleLog: bl
     })
@@ -112,48 +133,150 @@ checkBossStatus = (items, cb) ->
 countDamage = (bl) ->
   ds = []
   bl.steps.forEach (s) ->
-    s.d.forEach (el, idx) -> ds.push s.e[idx] if parseInt(el) > 6 
-  
+    s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if parseInt(el) > 6
+
   add = (x, y) -> x + y  
   ds.reduce add, 0
 
 countRewards = (totalDamage, boss, bl, player) ->
   bossInfo = table.getTableItem('boss', boss.tableId)
-  rewardInc = table.getTableItem('boss_type_rate', bossInfo.type)?.reward_inc or 0
+  rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.rewards_inc or 0
 
-  money = parseInt totalDamage/1000*31*(100+rewardInc)/100
-  honor = parseInt totalDamage/2000*(100+rewardInc)/100
-  bl.reward = 
+  money = parseInt totalDamage/1000*31*(100+rewardsInc)/100
+  honor = parseInt totalDamage/2000*(100+rewardsInc)/100
+  bl.rewards = 
     money: money
     honor: honor
 
-  player.increase('money', money)
-  player.increase('honor', honor)
+  if boss.playerId is player.id
+    bl.rewards.friend = 
+      money: parseInt(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      honor: parseInt(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
 
-
-noticeFriendReward = (playerId, boss, reward) ->
+noticeFriendrewards = (playerId, boss, rewards) ->
   return if playerId is boss.playerId
-
-  friendReward = 
-    money: parseInt(reward.money*0.3)
-    honor: parseInt(reward.honor*0.3)
 
   dao.bossFriendReward.create data: {
     playerId: boss.playerId
     friendId: playerId
-    money: friendReward.money
-    honor: friendReward.honor
+    money: rewards.friend?.money
+    honor: rewards.friend?.honor
     created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')
   }, (err, res) ->
     if err
       logger.error(err)
 
-    sendMessage(boss.playerId, friendReward)
+    sendMessage(boss.playerId, rewards.friend)
 
-sendMessage = (playerId, reward) ->
+sendMessage = (playerId, rewards) ->
+  app.get('messageService').pushByPid playerId, {
+    route: 'onFriendHelp'
+    msg: {friendId: playerId}
+  }, (err, res) ->
+    if err
+      logger.error(err)
 
-updateBoss = (boss) ->
+
+updateBoss = (boss, bl, player) ->
+  if boss.atkCount is 0
+    boss.set('status', BOSS_STATUS.AWAKE)
   boss.increase('atkCount')
-  # update boss hp
-  # update status
-  # update deathTime if runaway or death
+
+  # update hp info
+  for k, v of bl.cards
+    c = boss.hp[k-6]
+    if k > 6 and c? and c.cardId is v.tableId
+      boss.updateHp(k-6, v.hp_left)
+
+  # update status and death time
+  maxCount = table.getTableItem('boss', boss.tableId)?.atk_count or 10
+  
+  isWin = bl.winner is 'own'
+  if isWin or boss.atkCount is maxCount
+    boss.set('status', if isWin then BOSS_STATUS.DEATH else BOSS_STATUS.RUNAWAY)
+    boss.set('deathTime', new Date().getTime())
+    # 奖励翻倍
+    bl.rewards.money *= 2
+    bl.rewards.honor *= 2
+    if bl.rewards.friend
+      bl.rewards.friend.money *= 2
+      bl.rewards.friend.honor *= 2
+
+  player.increase('money', bl.rewards.money)
+  player.increase('honor', bl.rewards.honor)
+
+saveBattleLog = (bl, player, boss, cb) ->
+  dao.battleLog.create {
+    data: 
+      type: 'boss'
+      own: player.id
+      enemy: boss.tableId
+      battleLog: JSON.stringify(bl)
+  }, cb
+
+saveObjects = (bl, boss, player, totalDamage, battleLogId, dorObj, cb) ->
+  bossAttackData = 
+    bossId: boss.id
+    playerId: player.id
+    damage: totalDamage
+    money: bl.rewards.money
+    honor: bl.rewards.honor
+    moneyAdd: bl.rewards.friend?.money
+    honorAdd: bl.rewards.friend?.honor
+    battleLogId: battleLogId
+
+  jobItems = [{
+    type: 'insert'
+    options: 
+      table: 'bossAttack'
+      data: bossAttackData
+  }]
+
+  if dorObj
+    jobItems.push {
+      type: 'update'
+      options: 
+        table: 'damageOfRank'
+        where: 
+          playerId: player.id
+          week: utility.thisWeek()
+        data: 
+          damage: dorObj.damage + totalDamage
+    }
+  else
+    jobItems.push {
+      type: 'insert'
+      options: 
+        table: 'damageOfRank'
+        data: 
+          playerId: player.id
+          week: utility.thisWeek()
+          name: player.name
+          damage: totalDamage
+    }
+
+  playerData = player.getSaveData()
+  jobItems.push {
+    type: 'update'
+    options:
+      table: 'player'
+      where: 
+        id: player.id
+      data: playerData
+  } if not _.isEmpty(playerData)
+
+  bossData = boss.getSaveData()
+  jobItems.push {
+    type: 'update'
+    options:
+      table: 'boss'
+      where: 
+        id: boss.id
+      data: bossData
+  } if not _.isEmpty(bossData)
+
+  job.multJobs jobItems, (err, ok) ->
+    if err and not ok
+      return cb(err)
+
+    cb(null, bl, totalDamage)

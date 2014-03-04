@@ -3,7 +3,6 @@ var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
-var Boss = require("../../doamin/entity/boss");
 
 var BossAttackDao = (function(_super) {
   utility.extends(BossAttackDao, _super);
@@ -27,7 +26,7 @@ var BossAttackDao = (function(_super) {
   };
   domain.DEFAULT_VALUES = {};
   domain.FIELDS = ['id', 'bossId', 'damage', 'playerId', 'money', 'honor', 'moneyAdd', 'honorAdd', 'battleLogId'];
-  BuyRecordDao.domain = domain;
+  BossAttackDao.domain = domain;
 
   return BossAttackDao;
 })(DaoBase);

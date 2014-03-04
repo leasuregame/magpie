@@ -272,7 +272,7 @@ lineUpToObj = (lineUp) ->
     lines.forEach (l) ->
       [pos, num] = l.split(':')
       _results[positionConvert(pos)] = 
-        cardId: num
+        cardId: parseInt(num)
         hp: table.getTableItem('boss_card', num).hp
 
   _results

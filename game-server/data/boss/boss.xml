@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -12,7 +11,7 @@
   <Created>2014-02-28T11:43:00Z</Created>
   <LastSaved>2014-02-28T07:24:14Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.00</Version>
+  <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
@@ -21,11 +20,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8115</WindowHeight>
+  <WindowHeight>8360</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
-  <WindowTopY>135</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowTopY>140</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -48,34 +47,30 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="BOSS属性配置表">
-  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="141" ss:Span="2"/>
-   <Column ss:Index="7" ss:Width="221.25"/>
-   <Column ss:Index="9" ss:Width="123.75"/>
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="9" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="141" ss:Span="1"/>
+   <Column ss:Index="6" ss:Width="221"/>
+   <Column ss:Index="8" ss:Width="124"/>
    <Column ss:AutoFitWidth="0" ss:Width="141"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">索引ID</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
-    <Cell><Data ss:Type="String">boss类型</Data><Comment ss:Author="gaobin"><ss:Data
-       xmlns="http://www.w3.org/TR/REC-html40">gaobin:&#10;这里就是类型ID，BOSS卡牌的品质类型</ss:Data></Comment></Cell>
-    <Cell><Data ss:Type="String">每次攻击奖励加成</Data></Cell>
+    <Cell><Data ss:Type="String">boss类型</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;这里就是类型ID，BOSS卡牌的品质类型</Data></Comment></Cell>
     <Cell><Data ss:Type="String">Boss卡牌Id</Data></Cell>
     <Cell><Data ss:Type="String">卡牌ID</Data></Cell>
     <Cell><Data ss:Type="String">阵型</Data></Cell>
     <Cell><Data ss:Type="String">存活时间</Data></Cell>
-    <Cell><Data ss:Type="String">消失时间</Data><Comment ss:Author="gaobin"><ss:Data
-       xmlns="http://www.w3.org/TR/REC-html40">gaobin:&#10;死亡后，或者逃走后存在的持续时间</ss:Data></Comment></Cell>
+    <Cell><Data ss:Type="String">消失时间</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;死亡后，或者逃走后存在的持续时间</Data></Comment></Cell>
     <Cell><Data ss:Type="String">最高可被攻击次数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">type</Data><Comment ss:Author="arthur wu"><ss:Data
-       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+    <Cell><Data ss:Type="String">type</Data><Comment ss:Author="arthur wu"><Data><B
+        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
          html:Color="#000000">BOSS类型刷新概率|name|id</Font></B><Font html:Size="10"
-        html:Color="#000000">&#13;</Font></ss:Data></Comment></Cell>
-    <Cell><Data ss:Type="String">reward_inc</Data></Cell>
+        html:Color="#000000" xmlns="http://www.w3.org/TR/REC-html40">&#13;</Font></Data></Comment></Cell>
     <Cell><Data ss:Type="String">boss_id</Data></Cell>
     <Cell><Data ss:Type="String">card_ids</Data></Cell>
     <Cell><Data ss:Type="String">formation</Data></Cell>
@@ -87,7 +82,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS1号</Data></Cell>
     <Cell><Data ss:Type="String">蓝卡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40000</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40003#40000#40003</Data></Cell>
     <Cell><Data ss:Type="String">01:40000,10:40003,12:40003</Data></Cell>
@@ -99,7 +93,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS2号</Data></Cell>
     <Cell><Data ss:Type="String">紫卡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40001</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40004#40001#40004</Data></Cell>
     <Cell><Data ss:Type="String">01:40001,10:40004,12:40004</Data></Cell>
@@ -111,7 +104,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS3号</Data></Cell>
     <Cell><Data ss:Type="String">金卡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">150</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40002</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40005#40002#40005</Data></Cell>
     <Cell><Data ss:Type="String">01:40002,10:40005,12:40005</Data></Cell>
@@ -141,48 +133,48 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>3</ActiveCol>
-     <RangeSelection>R1C4:R5C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="BOSS类型刷新概率">
+ <Worksheet ss:Name="BOSS类型配置表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="72" ss:DefaultRowHeight="20.25">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="104.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="104"/>
    <Column ss:Index="4" ss:Width="141"/>
-   <Row ss:AutoFitHeight="0" ss:Height="20.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell><Data ss:Type="String">类型ID</Data></Cell>
     <Cell><Data ss:Type="String">刷新概率</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
     <Cell><Data ss:Type="String">每次攻击奖励加成</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="20.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">rate</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">reward_inc</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="20.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="String">蓝卡</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="20.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="String">紫卡</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="20.0625">
+   <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="String">金卡</Data></Cell>
@@ -202,7 +194,7 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageBreakZoom>100</PageBreakZoom>
-   <Selected/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -212,14 +204,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:Width="140.25"/>
-   <Column ss:Width="123.75"/>
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Width="140"/>
+   <Column ss:Width="124"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
@@ -229,22 +220,23 @@
     <Cell><Data ss:Type="String">boss</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">BOSS类型刷新概率</Data></Cell>
+    <Cell><Data ss:Type="String">BOSS类型配置表</Data></Cell>
     <Cell><Data ss:Type="String">boss_type_rate</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

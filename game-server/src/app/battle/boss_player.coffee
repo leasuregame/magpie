@@ -7,6 +7,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 class BossPlayer extends Player
   init: (boss) ->
     bossInfo = table.getTableItem('boss', boss.tableId)
+
     if not bossInfo
       throw new Error('can not find boss info for tableId: ', boss.tableId)
 
@@ -16,6 +17,13 @@ class BossPlayer extends Player
       lineUp: genLineUp cards, bossInfo.formation
     }
     @is_monster = true
+    @updateCardsInfo(boss)
+
+  updateCardsInfo: (boss)->
+    for hero in @heros
+      idx = @matrix.positionToNumber(hero.pos)
+      if boss and boss.hp and boss.hp[idx+1]
+        hero.init_hp = hero.hp = boss.hp[idx+1].hp
 
   loadHeros: ->
     @heros = if @cards? then new Boss(c, @) for c in @cards else []
@@ -29,7 +37,7 @@ class BossPlayer extends Player
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, id] = item 
-        _h = _hero(id)      
+        _h = _hero(id)
 
         if _h
           @matrix.set(pos, _h)
@@ -40,6 +48,16 @@ class BossPlayer extends Player
     
     @matrix.reset()
 
+  getCards: ->
+    cobj = {}
+    for c in @heros
+      cobj[c.idx] = {
+        tableId: c.card_id
+        hp: c.init_hp
+        atk: c.init_atk
+        hp_left: c.hp
+      }
+    cobj
 
 parseCards = (cardIds, boss) ->
   cards = []
@@ -51,6 +69,7 @@ parseCards = (cardIds, boss) ->
       tableId: parseInt(tid)
       hpInfo: boss.hp
     }
+  cards
 
 genLineUp = (cards, formation) ->
   if formation is null or typeof formation is 'undefined'
@@ -65,6 +84,5 @@ genLineUp = (cards, formation) ->
     "#{pos}:#{_card_id}"
 
   arr.join(',')
-  cards
 
 module.exports = BossPlayer

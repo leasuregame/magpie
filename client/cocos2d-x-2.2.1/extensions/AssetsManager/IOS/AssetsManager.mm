@@ -154,6 +154,10 @@ AssetsManager::~AssetsManager()
 
 void AssetsManager::init()
 {
+    CCLOG("---------------------------------");
+    CCLOG("IOS AssetsManager");
+    CCLOG("---------------------------------");
+    
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
     std::string appVersion = getAppVersion();
     
@@ -617,7 +621,15 @@ void AssetsManager::deleteVersion()
 
 void AssetsManager::setDelegate(AssetsManagerDelegateProtocol *delegate)
 {
+    CCLOG("AssetsManager::setDelegate");
+    
+    if(_delegate) {
+        delete _delegate;
+    }
+    
     _delegate = delegate;
+    
+    this->_shouldDeleteDelegateWhenExit = true;
 }
 
 void AssetsManager::setConnectionTimeout(unsigned int timeout)
@@ -818,107 +830,6 @@ AssetsManager* AssetsManager::getInstance()
     }
     
     return assetsManager;
-}
-
-AssetsManager* AssetsManager::getInstance(
-                                     jsval jsThisObj,
-                                     jsval errorCallback,
-                                     jsval progressCallback,
-                                     jsval successCallback
-                                     )
-{
-    class DelegateProtocolImpl : public AssetsManagerDelegateProtocol
-    {
-        public :
-        DelegateProtocolImpl(jsval jsThisObj, jsval errorCallback, jsval progressCallback, jsval successCallback)
-        : _jsThisObj(jsThisObj)
-        , _errorCallback(errorCallback)
-        , _progressCallback(progressCallback)
-        , _successCallback(successCallback)
-        {
-            
-        }
-        
-        virtual void onError(AssetsManager::ErrorCode errorCode)
-        {
-            CCLOG("onError");
-            
-            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-            jsval retval = JSVAL_NULL;
-            
-            if(!_errorCallback.isNullOrUndefined())
-            {
-                jsval jsErrorCode = INT_TO_JSVAL(errorCode);
-                
-                if (_jsThisObj.isNullOrUndefined())
-                {
-                    JS_CallFunctionValue(cx, NULL, _errorCallback, 1, &jsErrorCode, &retval);
-                }
-                else
-                {
-                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _errorCallback, 1, &jsErrorCode, &retval);
-                }
-            }
-        }
-        
-        virtual void onProgress(double totalToDownload, double nowDownloaded)
-        {
-            CCLOG("onProgress");
-            
-            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-            jsval retval = JSVAL_NULL;
-            
-            if(!_progressCallback.isNullOrUndefined())
-            {
-                jsval v[] = {
-                    v[0] = DOUBLE_TO_JSVAL(totalToDownload),
-                    v[1] = DOUBLE_TO_JSVAL(nowDownloaded)
-                };
-                
-                if (_jsThisObj.isNullOrUndefined())
-                {
-                    JS_CallFunctionValue(cx, NULL, _progressCallback, 2, v, &retval);
-                }
-                else
-                {
-                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 2, v, &retval);
-                }
-            }
-        }
-        
-        virtual void onSuccess()
-        {
-            CCLOG("onSuccess");
-            
-            JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
-            jsval retval = JSVAL_NULL;
-            
-            if(!_successCallback.isNullOrUndefined())
-            {
-                if (_jsThisObj.isNullOrUndefined())
-                {
-                    JS_CallFunctionValue(cx, NULL, _successCallback, 0, NULL, &retval);
-                }
-                else
-                {
-                    JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _successCallback, 0, NULL, &retval);
-                }
-            }
-        }
-        
-        private :
-        jsval _jsThisObj;
-        jsval _errorCallback;
-        jsval _progressCallback;
-        jsval _successCallback;
-    };
-    
-    AssetsManager* manager = getInstance();
-    DelegateProtocolImpl* delegate = new DelegateProtocolImpl(jsThisObj, errorCallback, progressCallback, successCallback);
-    manager->setDelegate(delegate);
-    manager->_shouldDeleteDelegateWhenExit = true;
-    
-    return manager;
 }
 
 NS_CC_EXT_END;

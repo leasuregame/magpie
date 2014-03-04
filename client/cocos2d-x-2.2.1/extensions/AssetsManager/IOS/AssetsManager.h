@@ -28,7 +28,6 @@
 
 #include "cocos2d.h"
 #include "ExtensionMacros.h"
-#include "cocos2d_specifics.hpp"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT) && (CC_TARGET_PLATFORM != CC_PLATFORM_WP8)
 #include <string>
@@ -161,12 +160,6 @@ public:
      */
     static AssetsManager* assetsManager;
     static AssetsManager* getInstance();
-    static AssetsManager* getInstance(
-                                 jsval jsThisObj,
-                                 jsval errorCallback,
-                                 jsval progressCallback,
-                                 jsval successCallback
-    );
     
 protected:
     bool downLoad();

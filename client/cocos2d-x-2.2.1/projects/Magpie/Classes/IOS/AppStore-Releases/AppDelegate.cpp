@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
 #include "SimpleAudioEngine.h"
 #include "ScriptingCore.h"
 #include "generated/jsb_cocos2dx_auto.hpp"
@@ -19,7 +20,6 @@
 #include "js_cocos2dx_autogen_extension.hpp"
 #include "js_bindings_WebLayer.hpp"
 #include "js_bindings_NotificationHelp.hpp"
-#include "AssetsManager.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;

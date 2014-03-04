@@ -5,7 +5,7 @@
 var STOP_TIME = -1000 * 3600 * 8;
 
 var BossListLayer = cc.Layer.extend({
-    _BossListLayerFit: null,
+    _bossListLayerFit: null,
 
     _cdTime: null,
     _cdTimeLabel: null,
@@ -70,7 +70,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._cdTimeLabel = cc.LabelTTF.create(
             lz.getTimeStr({
-                time: this._cbTime + STOP_TIME
+                time: this._cdTime + STOP_TIME
             }),
             "STHeitiTC-Medium",
             22
@@ -152,8 +152,6 @@ var BossListLayer = cc.Layer.extend({
     update: function () {
         cc.log("BossListLayer update");
 
-        this._addScrollView();
-
         if (gameData.boss.get("canReceive")) {
             if (this._effect) {
                 this._effect.removeFromParent();
@@ -164,6 +162,11 @@ var BossListLayer = cc.Layer.extend({
             this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
             this.addChild(this._effect);
         }
+
+        var that = this;
+        gameData.boss.updateBossList(function () {
+            that._addScrollView();
+        });
     },
 
     _addScrollView: function () {
@@ -180,7 +183,8 @@ var BossListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var len = 20;
+        var bossList = gameData.boss.get("bossList");
+        var len = bossList.length;
         var scrollViewHeight = len * 140;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
@@ -189,6 +193,7 @@ var BossListLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 70 - 140 * i;
+            var boss = bossList[i];
 
             var bossItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
@@ -222,7 +227,7 @@ var BossListLayer = cc.Layer.extend({
             scrollViewLayer.addChild(bossTypeLabel);
 
             var date = new Date();
-            this._timeList[i] = date.setTime(STOP_TIME + i * 60 * 1000);
+            this._timeList[i] = date.setTime(STOP_TIME + boss.timeLeft);
 
             var runAwayTimeLabel = cc.LabelTTF.create("00:00:00", "STHeitiTC-Medium", 20);
             runAwayTimeLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -281,12 +286,10 @@ var BossListLayer = cc.Layer.extend({
 
     _updateCdTime: function () {
 
-        this._cdTime = gameData.boss.get("cd") + STOP_TIME;
-        if (this._cdTime >= STOP_TIME) {
-            this._cdTimeLabel.setString(lz.getTimeStr({
-                time: this._cdTime
-            }));
-        }
+        this._cdTime = gameData.boss.get("cd");
+        this._cdTimeLabel.setString(lz.getTimeStr({
+            time: this._cdTime + STOP_TIME
+        }));
 
         var len = this._timeList.length;
         for (var i = 0; i < len; i++) {

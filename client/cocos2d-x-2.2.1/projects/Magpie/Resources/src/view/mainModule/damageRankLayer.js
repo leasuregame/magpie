@@ -228,8 +228,8 @@ var DamageRankLayer = LazyLayer.extend({
         var lastWeek = {
             "rank": 10,
             "honor": 10000
-        };//gameData.tournament.get("lastWeek");
-        var isGet = false;//gameData.tournament.isCanGetReward();
+        };//gameData.boss.get("lastWeek");
+        var isGet = false;//gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
 
@@ -249,18 +249,18 @@ var DamageRankLayer = LazyLayer.extend({
             this._thisWeekItem.setEnabled(false);
             this._lastWeekItem.setEnabled(true);
 
-//            var that = this;
+            var that = this;
 //            gameData.boss.updateRank(function () {
 //                var thisWeekRank = gameData.boss.get("thisWeekRank");
-//                var thisWeekReward = gameData.boss.get("thisWeekReward");
-//                if (thisWeekReward) {
-//                    that._thisWeekRank.setString(thisWeekReward["rank"]);
-//                    that._thisWeekHonor.setString(thisWeekReward["honor"]);
+//                var thisWeek = gameData.boss.get("thisWeek");
+//                if (thisWeek) {
+//                    that._thisWeekRank.setString(thisWeek["rank"]);
+//                    that._thisWeekHonor.setString(thisWeek["honor"]);
 //                }
 //                if (thisWeekRank) {
 //                    that._rankList = thisWeekRank;
 //                }
-//                that._addRankScrollView();
+                that._addRankView();
 //            });
         } else {
             this._thisWeekItem.setPosition(point);
@@ -268,10 +268,8 @@ var DamageRankLayer = LazyLayer.extend({
             this._thisWeekItem.setEnabled(true);
             this._lastWeekItem.setEnabled(false);
 //            this._rankList = gameData.boss.get("lastWeekRank");
-            this._addRankScrollView();
+            this._addRankView();
         }
-
-        this._addRankView();
     },
 
     _addRankView: function () {
@@ -431,7 +429,7 @@ var DamageRankLayer = LazyLayer.extend({
         cc.log("DamageRankLayer _onClickShowReward");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var reward = null;//gameData.tournament.getThisWeekReward();
+        var reward = null;//gameData.boss.getThisWeekReward();
 
         GiftBagLayer.pop({
             reward: reward,
@@ -446,13 +444,8 @@ var DamageRankLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (!gameData.tournament.isCanGetReward()) {
+        if (!gameData.boss.isCanGetRankReward()) {
             TipLayer.tip("当前没有可领奖励");
-            return;
-        }
-
-        if (gameData.cardList.isFull()) {
-            CardListFullTipLayer.pop();
             return;
         }
 

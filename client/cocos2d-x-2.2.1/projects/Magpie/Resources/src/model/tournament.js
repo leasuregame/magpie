@@ -335,7 +335,7 @@ var Tournament = Entity.extend({
     },
 
     getThisWeekReward: function () {
-        cc.log("Tournament showThisWeekReward");
+        cc.log("Tournament getThisWeekReward");
 
         if (!this._thisWeek) {
             return null;

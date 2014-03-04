@@ -188,6 +188,23 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(260, 402),
             "closeItemPoint": cc.p(460, 402)
         },
+        "attackDetailsLayer": {
+            "bgSpriteSize": cc.size(650, 809),
+            "bgSpritePoint": cc.p(363, 100),
+            "titleBgIconPoint": cc.p(360, 904),
+            "titleIconPoint": cc.p(360, 912),
+            "detailsBgIconPoint": cc.p(60, 215),
+            "detailsBgIconSize": cc.size(600, 630),
+            "tipBgLabelPoint": cc.p(360, 180),
+            "tipLabelPoint": cc.p(375, 180),
+            "tipIconPoint": cc.p(190, 180),
+            "scrollViewLayerRect": cc.rect(60, 230, 600, 600),
+            "scrollViewSize": cc.size(600, 600),
+            "scrollViewPoint": cc.p(60, 230),
+            "scrollViewHeight": 600,
+            "closeItemPoint": cc.p(650, 879),
+            "skyDialogRect": cc.rect(40, 110, 640, 750)
+        },
         "battleMessageLayer": {
             "scrollViewHeight": 742,
             "scrollViewLayerRect": cc.rect(57, 119, 605, 742),
@@ -1645,6 +1662,23 @@ var fit4Iphone5 = {
             "subSubItemPoint": cc.p(120, 570),
             "okItemPoint": cc.p(220, 490),
             "closeItemPoint": cc.p(420, 490)
+        },
+        "attackDetailsLayer": {
+            "bgSpriteSize": cc.size(650, 985),
+            "bgSpritePoint": cc.p(323, 100),
+            "titleBgIconPoint": cc.p(320, 1080),
+            "titleIconPoint": cc.p(320, 1088),
+            "detailsBgIconPoint": cc.p(20, 215),
+            "detailsBgIconSize": cc.size(600, 780),
+            "tipBgLabelPoint": cc.p(320, 180),
+            "tipLabelPoint": cc.p(335, 180),
+            "tipIconPoint": cc.p(150, 180),
+            "scrollViewLayerRect": cc.rect(20, 230, 600, 750),
+            "scrollViewSize": cc.size(600, 750),
+            "scrollViewPoint": cc.p(20, 230),
+            "scrollViewHeight": 750,
+            "closeItemPoint": cc.p(610, 1055),
+            "skyDialogRect": cc.rect(40, 198, 640, 800)
         },
         "battleMessageLayer": {
             "scrollViewHeight": 880,

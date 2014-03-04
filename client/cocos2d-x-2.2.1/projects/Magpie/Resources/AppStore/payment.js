@@ -18,15 +18,17 @@ var JUDGE_INTERVAL = 300;
 
 var Payment = Entity.extend({
     _paymentKey: "",
-    _receiptList: null,
+    _orderList: null,
     _waitLayer: null,
     _cb: null,
 
     init: function () {
         cc.log("AppStore Payment init");
 
+        this.unscheduleAllCallbacks();
+
         this._paymentKey = gameData.player.get("uid") + "_payment_key";
-        this._receiptList = [];
+        this._orderList = [];
 
         this._load();
         this.schedule(this._judge, JUDGE_INTERVAL);
@@ -35,47 +37,47 @@ var Payment = Entity.extend({
     _load: function () {
         cc.log("AppStore Payment _load");
 
-        var receiptListJson = sys.localStorage.getItem(this._paymentKey);
+        var orderListJson = sys.localStorage.getItem(this._paymentKey);
 
-        if (receiptListJson) {
-            this._receiptList = JSON.parse(receiptListJson) || [];
+        if (orderListJson) {
+            this._orderList = JSON.parse(orderListJson) || [];
         }
     },
 
     _save: function () {
         cc.log("AppStore Payment _save");
 
-        sys.localStorage.setItem(this._paymentKey, JSON.stringify(this._receiptList));
+        sys.localStorage.setItem(this._paymentKey, JSON.stringify(this._orderList));
     },
 
     _judge: function () {
         cc.log("AppStore Payment _judge");
 
-        var len = this._receiptList.length;
+        var len = this._orderList.length;
 
         for (var i = 0; i < len; ++i) {
-            this._sendReceipt(this._receiptList[i]);
+            this._sendOrder(this._orderList[i]);
         }
     },
 
-    _push: function (receipt) {
+    _push: function (order) {
         cc.log("AppStore Payment _push");
 
-        this._receiptList.push(receipt);
+        this._orderList.push(order);
 
         this._save();
 
-        this._sendReceipt(receipt);
+        this._sendOrder(order);
     },
 
-    _pop: function (receipt) {
+    _pop: function (order) {
         cc.log("AppStore Payment _pop");
 
-        var len = this._receiptList.length;
+        var len = this._orderList.length;
 
         for (var i = len - 1; i >= 0; --i) {
-            if (this._receiptList[i] == receipt) {
-                this._receiptList.splice(i, 1);
+            if (this._orderList[i] == order) {
+                this._orderList.splice(i, 1);
             }
         }
 
@@ -97,23 +99,21 @@ var Payment = Entity.extend({
         }
     },
 
-    _sendReceipt: function (receipt) {
-        cc.log("AppStore Payment _sendReceipt");
+    _sendOrder: function (order) {
+        cc.log("AppStore Payment _sendOrder");
 
         var that = this;
-        lz.server.request("area.verifyHandler.appStore", {
-            receipt: receipt
-        }, function (data) {
+        lz.server.request("area.verifyHandler.appStore", order, function (data) {
             cc.log(data);
 
             var code = data.code;
 
             if (code == 200 || code == 600 || code == 501) {
-                cc.log("send receipt success");
+                cc.log("send order success");
 
-                that._pop(receipt);
+                that._pop(order);
             } else {
-                cc.log("send receipt fail");
+                cc.log("send order fail");
             }
         }, true);
     },
@@ -149,7 +149,10 @@ var Payment = Entity.extend({
 
             this._cb();
 
-            this._push(paymentData.receipt);
+            this._push({
+                productId: paymentData.product,
+                receipt: paymentData.receipt
+            });
 
             Dialog.pop("充值已成功，请稍候");
             this._closeWaitLayer();

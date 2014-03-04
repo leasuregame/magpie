@@ -5,6 +5,8 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
+      
+
       describe('我的boss', function() {
         var bossId;
         var bossCreateTime = new Date().getTime();

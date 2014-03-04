@@ -21,21 +21,26 @@ var BossDao = (function(_super) {
     
     var tmpl = 'select * from boss where \
       (playerId = %(playerId)s and status in (1,2) and createTime + 50400000 > %(now)s) or \
-      (playerId in (%(friendIds)s) and status = 2 and createTime + 50400000 >  %(now)s) or \
       (playerId in (%(allIds)s) and status in (3,5) and deathTime + 7200000 > %(now)s)';
    
     var sql = sprintf(tmpl, {
       playerId: playerId,
       now: now.toString(),
-      friendIds: friendIds.toString(),
       allIds: friendIds.concat([playerId]).toString()
     });
+
+    if (!!friendIds && friendIds.length > 0) {
+      sql += ' or ' + sprintf(
+        '(playerId in (%(friendIds)s) and status = 2 and createTime + 50400000 >  %(now)s)', 
+        { now: now.toString(), friendsId: friendIds.toString()}
+        )
+    }
 
     console.log(sql);
 
     dbClient.query(sql, function(err, res) {
       if (err) {
-        logger.error("[SQL ERROR, when fetch boss list " + BossDao.table + "]", stm);
+        logger.error("[SQL ERROR, when fetch boss list " + BossDao.table + "]");
         logger.error(err.stack);
         return cb({
           code: err.code,

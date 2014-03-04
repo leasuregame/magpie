@@ -55,7 +55,7 @@ class BossPlayer extends Player
         tableId: c.card_id
         hp: c.init_hp
         atk: c.init_atk
-        hp_left: c.hp
+        hp_left: if c.hp > 0 then c.hp else 0
       }
     cobj
 

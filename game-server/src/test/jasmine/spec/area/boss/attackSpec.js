@@ -5,12 +5,18 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
-      describe('我的boss', function(){
+      describe('我的boss', function() {
         var bossId;
         var bossCreateTime = new Date().getTime();
 
-        describe('沉睡的Boss', function(){
-          beforeEach(function(){
+        describe('沉睡的Boss', function() {
+          var before_player;
+
+          beforeEach(function() {
+            doAjax('/player/100', function(res) {
+              before_player = res.data;
+            });
+
             doAjax('/create/boss', {
               playerId: 100,
               tableId: 2,
@@ -23,24 +29,46 @@ describe("Area Server", function() {
             });
           });
 
-          it('可以攻击，并返回正确的结果', function(){
+          it('可以攻击，并返回正确的结果', function() {
             request('area.bossHandler.attack', {
               bossId: bossId
             }, function(data) {
               console.log('attak result: ', data);
-              expect(data).toEqual({});
+              expect(data.code).toEqual(200);
+              expect(data.msg.battleLog).toBeBattleLog();
+
+              hp_left = 0
+              _.each(data.msg.battleLog.cards, function(v, k) {
+                if (parseInt(k) > 6) {
+                  hp_left += v.hp_left;
+                }
+              });
+
+              expect(data.msg.damage).toEqual(80200000 - hp_left);
+
+              doAjax('/player/100', function(res) {
+                expect(res.data.gold).toEqual(data.msg.gold);
+                expect(res.data.money).toEqual(data.msg.battleLog.rewards.money + before_player.money);
+                expect(res.data.honor).toEqual(data.msg.battleLog.rewards.honor + before_player.honor);
+              });
             })
           });
         });
 
       });
 
-      describe('好友的boss', function(){
+      describe('好友的boss', function() {
         var bossId;
         var bossCreateTime = new Date().getTime();
 
-        describe('苏醒的Boss', function(){
-          beforeEach(function(){
+        describe('苏醒的Boss', function() {
+          var before_player;
+
+          beforeEach(function() {
+            doAjax('/player/100', function(res) {
+              before_player = res.data;
+            });
+
             doAjax('/create/boss', {
               playerId: 1,
               tableId: 2,
@@ -54,13 +82,30 @@ describe("Area Server", function() {
             });
           });
 
-          it('可以攻击，并返回正确的结果', function(){
+          it('可以攻击，并返回正确的结果', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
             }, function(data) {
               console.log('attak result: ', data);
-              expect(data).toEqual({});
+              expect(data.code).toEqual(200);
+              expect(data.msg.battleLog).toBeBattleLog();
+
+              hp_left = 0
+              _.each(data.msg.battleLog.cards, function(v, k) {
+                if (parseInt(k) > 6) {
+                  hp_left += v.hp_left;
+                }
+              });
+
+              expect(data.msg.damage).toEqual(79940219 + 60825 - hp_left);
+
+              doAjax('/player/100', function(res) {
+                expect(res.data.gold).toEqual(data.msg.gold);
+                expect(data.msg.gold).toEqual(before_player.gold - 120);
+                expect(res.data.money).toEqual(data.msg.battleLog.rewards.money + before_player.money);
+                expect(res.data.honor).toEqual(data.msg.battleLog.rewards.honor + before_player.honor);
+              });
             })
           });
         });

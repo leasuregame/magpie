@@ -132,8 +132,9 @@ checkBossStatus = (items, cb) ->
 
 countDamage = (bl) ->
   ds = []
-  bl.steps.forEach (s) ->
-    s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if parseInt(el) > 6
+  for k, v of bl.cards
+    if parseInt(k) > 6
+      ds.push v.hp - v.hp_left
 
   add = (x, y) -> x + y  
   ds.reduce add, 0
@@ -148,7 +149,7 @@ countRewards = (totalDamage, boss, bl, player) ->
     money: money
     honor: honor
 
-  if boss.playerId is player.id
+  if boss.playerId isnt player.id
     bl.rewards.friend = 
       money: parseInt(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
       honor: parseInt(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)

@@ -53,6 +53,8 @@ var CHALLENGE_COUNT = dgTabRow.challenge_count;
 var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
 var EXP_CARD_COUNT = dgTabRow.exp_card_count;
 
+var KNEELCOUNT_DEFAULT = 3
+
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
@@ -257,7 +259,11 @@ var Player = (function(_super) {
         'exchangeCards',
         'activities',
         'initRate',
-        'speaker'
+        'speaker',
+        'honor',
+        'superHonor',
+        'kneelCount',
+        'cd'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -279,7 +285,11 @@ var Player = (function(_super) {
             progress: 0,
             hasWin: false,
             mark: [],
-            hasFragment: -1
+            hasFragment: -1,
+            boss: {
+                count: 0,
+                found: false
+            }
         },
         passLayer: 0,
         pass: {
@@ -307,7 +317,8 @@ var Player = (function(_super) {
                 count: DEFAULT_GIVE_COUNT,
                 receivers: []
             },
-            hasGotLoginReward: 0
+            hasGotLoginReward: 0,
+            kneelCountLeft: KNEELCOUNT_DEFAULT
         },
         fragments: 0,
         energy: 0,
@@ -355,7 +366,13 @@ var Player = (function(_super) {
             star3: 0,
             star4: 0
         },
-        speaker: 0
+        speaker: 0,
+        honor: 0,
+        superHonor: 0,
+        kneelCount: 0,
+        cd: {
+            lastAtkTime: 0 // 上一次攻击boss的时间点
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -395,7 +412,8 @@ var Player = (function(_super) {
                 count: realCount(this.lv, giveBlessTab) + vipPrivilege.give_bless_count,
                 receivers: []
             },
-            hasGotLoginReward: 0
+            hasGotLoginReward: 0,
+            kneelCountLeft: KNEELCOUNT_DEFAULT
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1259,6 +1277,45 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.getCD = function(){
+        var lastAtkTime = this.cd.lastAtkTime || 0;
+        var now = new Date().getTime();
+        var duration = lastAtkTime + 30*60*1000 - now;
+        return duration < 0 ? 0 : duration;
+    };
+
+    Player.prototype.resetCD = function(){
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = new Date().getTime();
+        this.cd = cd;
+    };
+
+    Player.prototype.incBossCount = function(){
+        var task = utility.deepCopy(this.task);
+        if (!task.boss) {
+            task.boss = {
+                count: 0,
+                found: false
+            }
+        }
+
+        task.boss.count += 1;
+        this.task = task;
+    };
+
+    Player.prototype.setBossFound = function(val) {
+        var task = utility.deepCopy(this.task);
+        if (!task.boss) {
+            task.boss = {
+                count: 0,
+                found: false
+            }
+        }
+
+        task.boss.found = val;
+        this.task = task;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1300,7 +1357,15 @@ var Player = (function(_super) {
             cardsCount: this.cardsCount,
             exchangeCards: this.exchangeCards,
             goldCards: this.getGoldCard(),
-            speaker: this.speaker
+            speaker: this.speaker,
+            honor: this.honor,
+            superHonor: this.superHonor,
+            kneelCount: this.kneelCount,
+            bossInfo: {
+                cd: this.getCD(),
+                kneelCountLeft: this.dailyGift.kneelCountLeft || KNEELCOUNT_DEFAULT, 
+                canReceive: false,
+            }
         };
     };
 

@@ -3,8 +3,8 @@ _ = require 'underscore'
 
 Utility = 
   hitRate: (rate) ->
-    rate = rate * 100
     rate = parseInt(rate)
+    rate = rate * 100    
     if isNaN(rate) or rate < 1 and rate > 10000
       throw new Error("Invilid argument: can't pass #{rate} to int")
 

@@ -72,7 +72,7 @@ describe("Area Server", function() {
             doAjax('/create/boss', {
               playerId: 1,
               tableId: 2,
-              atkCount: 1,
+              atkCount: 9,
               status: 2,
               hp: '{"2":{"cardId":40001,"hp":79940219},"4":{"cardId":40004,"hp":0},"6":{"cardId":40004,"hp":60825}}',
               createTime: bossCreateTime

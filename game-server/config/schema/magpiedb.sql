@@ -246,6 +246,8 @@ CREATE TABLE IF NOT EXISTS `boss` (
   `tableId` INT(10) NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `atkCount` INT(3),
+  `finder` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `killer` VARCHAR(50) COLLATE utf8_unicode_ci,
   `hp` VARCHAR(500),
   `status` SMALLINT(2) UNSIGNED DEFAULT '1',
   `createTime` BIGINT(20),

@@ -251,6 +251,7 @@ class Manager
         dao.boss.create data: {
           tableId: bossInfo.id
           playerId: player.id
+          finder: player.name
           hp: lineUpToObj(bossInfo.formation)
         }, (err, res) ->
           if err

@@ -15,6 +15,8 @@ var Boss = (function (_super) {
         'tableId',
         'playerId',
         'atkCount',
+        'finder',
+        'killer', 
         'hp',
         'status',
         'createTime',
@@ -62,6 +64,8 @@ var Boss = (function (_super) {
         return {
             bossId: this.id,
             playerId: this.playerId,
+            finder: this.finder,
+            killer: this.killer,
             tableId: this.tableId,
             countLeft: this.countLeft(),
             status: this.status,

@@ -196,6 +196,7 @@ updateBoss = (boss, bl, player) ->
   if isWin or boss.atkCount is maxCount
     boss.set('status', if isWin then BOSS_STATUS.DEATH else BOSS_STATUS.RUNAWAY)
     boss.set('deathTime', new Date().getTime())
+    boss.set('killer', player.name)
     # 奖励翻倍
     bl.rewards.money *= 2
     bl.rewards.honor *= 2

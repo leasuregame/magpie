@@ -7,7 +7,7 @@ var STOP_TIME = -1000 * 3600 * 8;
 var BossListLayer = cc.Layer.extend({
     _BossListLayerFit: null,
 
-    _cbTime: null,
+    _cdTime: null,
     _cdTimeLabel: null,
     _removeTimeItem: null,
     _rewardItem: null,
@@ -40,7 +40,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._bossListLayerFit = gameFit.mainScene.bossListLayer;
 
-        this._cbTime = gameData.boss.get("cd");
+        this._cdTime = gameData.boss.get("cd");
         this._timeLabel = [];
         this._timeList = [];
 
@@ -281,10 +281,10 @@ var BossListLayer = cc.Layer.extend({
 
     _updateCdTime: function () {
 
-        this._cbTime = gameData.boss.get("cd") + STOP_TIME;
-        if (this._cbTime >= STOP_TIME) {
+        this._cdTime = gameData.boss.get("cd") + STOP_TIME;
+        if (this._cdTime >= STOP_TIME) {
             this._cdTimeLabel.setString(lz.getTimeStr({
-                time: this._cbTime
+                time: this._cdTime
             }));
         }
 

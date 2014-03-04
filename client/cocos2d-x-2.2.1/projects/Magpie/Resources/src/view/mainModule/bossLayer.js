@@ -4,7 +4,9 @@
 
 var BossLayer = cc.Layer.extend({
     _bossLayerFit: null,
+
     _addition: 0,
+    _cdTIme: 0,
 
     onEnter: function () {
         cc.log("BossLayer onEnter");
@@ -21,6 +23,7 @@ var BossLayer = cc.Layer.extend({
         this._bossLayerFit = gameFit.mainScene.bossLayer;
 
         this._addition = 0;
+        this._cdTime = gameData.boss.get("cd") + STOP_TIME;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -105,7 +108,14 @@ var BossLayer = cc.Layer.extend({
         attackCdTimeLabel.setPosition(this._bossLayerFit.attackCdTimeLabelPoint);
         this.addChild(attackCdTimeLabel);
 
-        this._cdTimeLabel = cc.LabelTTF.create("00: 00: 00", "STHeitiTC-Medium", 22);
+        this._cdTimeLabel = cc.LabelTTF.create(
+            lz.getTimeStr({
+                time: this._cbTime
+            }),
+            "STHeitiTC-Medium",
+            22
+        );
+
         this._cdTimeLabel.setAnchorPoint(cc.p(0.5, 0));
         this._cdTimeLabel.setPosition(this._bossLayerFit.cdTimeLabelPoint);
         this.addChild(this._cdTimeLabel);
@@ -207,6 +217,8 @@ var BossLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
+
         return true;
     },
 
@@ -220,6 +232,16 @@ var BossLayer = cc.Layer.extend({
         this._attackNode.setVisible(this._addition != 0);
         this._expendGoldLabel.setString(gameData.boss.needGold(this._addition));
 
+    },
+
+    _updateCdTime: function () {
+
+        this._cbTime = gameData.boss.get("cd") + STOP_TIME;
+        if (this._cbTime >= STOP_TIME) {
+            this._cdTimeLabel.setString(lz.getTimeStr({
+                time: this._cbTime
+            }));
+        }
     },
 
     _onClickAdd: function () {

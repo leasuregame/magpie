@@ -250,13 +250,15 @@ var DamageRankLayer = LazyLayer.extend({
             this._lastWeekItem.setEnabled(true);
 
 //            var that = this;
-//            gameData.tournament.updateElixirRank(function (data) {
-//                if (data.thisWeek) {
-//                    that._thisWeekRank.setString(data.thisWeek["rank"]);
-//                    that._thisWeekElixir.setString(data.thisWeek["elixir"]);
+//            gameData.boss.updateRank(function () {
+//                var thisWeekRank = gameData.boss.get("thisWeekRank");
+//                var thisWeekReward = gameData.boss.get("thisWeekReward");
+//                if (thisWeekReward) {
+//                    that._thisWeekRank.setString(thisWeekReward["rank"]);
+//                    that._thisWeekHonor.setString(thisWeekReward["honor"]);
 //                }
-//                if (data.elixirs) {
-//                    that._rankList = data.elixirs;
+//                if (thisWeekRank) {
+//                    that._rankList = thisWeekRank;
 //                }
 //                that._addRankScrollView();
 //            });
@@ -265,8 +267,8 @@ var DamageRankLayer = LazyLayer.extend({
             this._lastWeekItem.setPosition(cc.p(point1.x, point1.y + 3));
             this._thisWeekItem.setEnabled(true);
             this._lastWeekItem.setEnabled(false);
-            this._rankList = gameData.tournament.get("lastWeekElixirRank");
-            // this._addRankScrollView();
+//            this._rankList = gameData.boss.get("lastWeekRank");
+            this._addRankScrollView();
         }
 
         this._addRankView();

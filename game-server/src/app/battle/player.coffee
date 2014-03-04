@@ -32,7 +32,7 @@ defaultEntity =
   cards: []
 
 class Player extends Module
-  init: (entity) ->
+  init: (entity, inc_scale=0) ->
     entity ||= defaultEntity
     copyAttrs @, entity
     
@@ -42,6 +42,7 @@ class Player extends Module
     @matrix = new Matrix()
     @dead = false
     @is_monster = false
+    @inc_scale = inc_scale
     
     @loadHeros()
     @bindCards()

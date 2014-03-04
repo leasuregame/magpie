@@ -61,9 +61,3 @@ var ElixirOfRankDao = (function (_super) {
 })(DaoBase);
 
 module.exports = ElixirOfRankDao;
-
-//SELECT t.*, @rownum := @rownum + 1 AS rowNumber FROM (select * from rank r order by r.ranking) t, (SELECT @rownum := 0) A
-
-// set @rank=0; select a.rank from (select @rank:=@rank+1 as rank, playerId from elixirOfRank where week = 201407 order by elixir DESC) as a where a.playerId = 101
-
-// SET @rank=0; select a.* from (SELECT @rank:=@rank+1 AS rank, uid, name, feng FROM fengshu ORDER BY feng DESC) as a order by a.name;

@@ -25,6 +25,7 @@ class Manager
       open_box_card: null
       battle_log: null
       momo: null
+      find_boss: null
     }
 
     ### 检查是否体力充足 ###
@@ -162,7 +163,7 @@ class Manager
     data.isDouble = isDouble
 
     # 更新玩家money
-    player.increase('money', taskData.coins_obtain)
+    player.increase('money', data.money_obtain)
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
@@ -198,10 +199,10 @@ class Manager
 
     ### consume power first, then add exp
     because exp change will check if upgrade player level ###
-    player.consumePower(taskData.power_consume)
+    player.consumePower(data.power_consume)
 
     ###  判断是否升级 ###
-    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, level9Box, rewards) ->
+    entityUtil.upgradePlayer player, data.exp_obtain, (isUpgrade, level9Box, rewards) ->
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv
@@ -232,6 +233,65 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
+  @seekBoss: (data, player, cb) ->
+    player.incBossCount()
+
+    findBossRate = table.getTableItem('values', 'findBossRate')?.value
+    if not player.task.boss.found and checkFindBoss(player.task.boss.count, findBossRate)
+      typeRates = table.getTable('boss_type_rate')
+      ids = typeRates.map (r) -> r.id
+      rates = typeRates.map (r) -> r.rate
+      type = utility.randomValue(ids, rates)
+      bossInfo = getBossInfo(type)
+      if not bossInfo
+        logger.error('找不到boss卡牌')
+        cb(null, data)
+      else
+        bossData = table.getTableItem('boss_card', bossInfo.boss_id)
+        dao.boss.create data: {
+          tableId: bossInfo.id
+          playerId: player.id
+          finder: player.name
+          hp: lineUpToObj(bossInfo.formation)
+        }, (err, res) ->
+          if err
+            logger.error('创建Boss信息出错', err.stack)
+            cb(null, data)
+          else
+            data.find_boss = res.toJson()
+            data.find_boss.finder = player.name
+            data.find_boss.killer = null
+            player.setBossFound(true)
+            cb(null, data)
+    else
+      cb(null, data)
+
+lineUpToObj = (lineUp) ->
+  _results = {}
+  if _.isString(lineUp) and lineUp isnt ''
+    lines = lineUp.split(',')
+    lines.forEach (l) ->
+      [pos, num] = l.split(':')
+      _results[positionConvert(pos)] = 
+        cardId: parseInt(num)
+        hp: table.getTableItem('boss_card', num).hp
+
+  _results
+
+positionConvert = (val) ->
+  order = ['00', '01', '02', '10', '11', '12']
+  order.indexOf(val) + 1
+
+getBossInfo = (type) ->
+  results = table.getTable('boss').filter (id, item) -> item.type is type
+  if results.length > 0
+    idx = _.random(0, results.length-1)
+    return results[idx]
+  else 
+    return null
+
+checkFindBoss = (count, findBossRate) ->
+  return (count < 20 and utility.hitRate(findBossRate)) or count >= 20
 
 bornPassiveSkill = () ->
   born_rates = psConfig.BORN_RATES

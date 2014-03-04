@@ -151,8 +151,8 @@ Handler::getActivityInfo = (msg, session, next) ->
   async.parallel [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
-    (cb) =>
-      getRechargeRewardFlag @app, playerId, cb
+    # (cb) =>
+    #   getRechargeRewardFlag @app, playerId, cb
   ], (err, results) =>
     if err
       return next(null, {
@@ -162,15 +162,15 @@ Handler::getActivityInfo = (msg, session, next) ->
       )
 
     player = results[0]
-    rechargeFlag = results[1]
-    flag = setCanGetFlag player, rechargeFlag
+    # rechargeFlag = results[1]
+    # flag = setCanGetFlag player, rechargeFlag
     cur_hour = new Date().getHours()
     next(null, {
       code: 200,
       msg: {
         canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
         levelReward: player.levelReward
-        rechargeFlag: flag
+        # rechargeFlag: flag
         hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
       }
     })

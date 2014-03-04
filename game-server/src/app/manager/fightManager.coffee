@@ -3,6 +3,7 @@ Battle = require '../battle/battle'
 battleLog = require '../battle/battle_log'
 Player = require '../battle/player'
 VirtualPlayer = require '../battle/virtual_player'
+BossPlayer = require '../battle/boss_player'
 playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
 
@@ -16,7 +17,7 @@ class Manager
     taskData.sectionId = sectionId
     
     playerEntity = null
-    async.waterfall([
+    async.waterfall [
       (cb) ->
         playerManager.getPlayerInfo {pid: pid, sync: false}, cb
       
@@ -30,13 +31,11 @@ class Manager
         battle.process()
 
         cb(null,  battleLog)
-      ],
-      (err, bl) ->
-        if err
-          return callback(err, null)
-        
-        callback(null, bl.reports())
-    )
+    ], (err, bl) ->
+      if err
+        return callback(err, null)
+      
+      callback(null, bl.reports())
 
   @pvp: (attEnt, defEnt, callback) ->
 
@@ -50,5 +49,14 @@ class Manager
     battle.process()
 
     callback null, battleLog.reports()
+
+  @attackBoss: (player, boss, incRate, callback) ->
+    attacker = new Player(player, incRate)
+    defender = new BossPlayer(boss)
+    battleLog.clear()
+    battle = new Battle(attacker, defender)
+    battle.process()
+
+    callback(null, battleLog.reports())
 
 module.exports = Manager

@@ -215,6 +215,7 @@ var DaoBase = (function() {
   };
 
   DaoBase.exists = function(options, cb) {
+    var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.EXISTS, options);
 
@@ -228,7 +229,7 @@ var DaoBase = (function() {
       }
 
       if (!!res && res.length > 0) {
-        return cb(null, !!res[0].exists);
+        return cb(null, !!res[0].exist);
       } else {
         return cb(null, false);
       }

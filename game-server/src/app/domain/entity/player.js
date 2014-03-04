@@ -1364,7 +1364,7 @@ var Player = (function(_super) {
             bossInfo: {
                 cd: this.getCD(),
                 kneelCountLeft: this.dailyGift.kneelCountLeft || KNEELCOUNT_DEFAULT, 
-                canReceive: false,
+                canReceive: this.hasFriendReward || false,
             }
         };
     };

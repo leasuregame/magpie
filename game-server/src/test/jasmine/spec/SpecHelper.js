@@ -233,6 +233,31 @@ var dologin = function() {
   });
 };
 
+var thisWeek = function() {
+  var now, onejan, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7);
+  return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+};
+var lastWeek = function() {
+  var end, lastWeekNumber, lastYear, now, onejan, start, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7) - 1;
+  if (weekNumber === 0) {
+    lastYear = now.getFullYear() - 1;
+    start = new Date(lastYear, 0, 1);
+    end = new Date(lastYear, 12, 0);
+    lastWeekNumber = Math.ceil((((end - start) / 86400000) + start.getDate() + 1) / 7);
+    return '' + lastYear + lastWeekNumber;
+  } else {
+    return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+  }
+};
+
 
 var game = {
   init: function(host, port, callback) {
@@ -289,8 +314,8 @@ var game = {
 
       pomelo.on('onNewYearReward', function(data) {
         console.log('onNewYearReward', data);
-      });    
-      
+      });
+
       pomelo.on('onPowerGive', function(data) {
         console.log('on power given', data);
       });
@@ -310,7 +335,7 @@ var game = {
       pomelo.on('onFriendHelp', function(data) {
         console.log('on onFriendHelp', data);
       });
-      
+
       if (typeof callback == 'function') {
         callback();
       }

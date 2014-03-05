@@ -21,6 +21,9 @@ var string_to_sign = function(method, bucket, obj_key, expire) {
   var content_type = '';
   var canonicalized_kss_headers = '';
   var canonicalized_resource = util.format('/%s/%s', bucket, obj_key);
+  if (!obj_key) {
+    canonicalized_resource = '/'+bucket;
+  }
 
   return util.format("%s\n%s\n%s\n%d\n%s%s", method, content_md5,
     content_type, expire, canonicalized_kss_headers, canonicalized_resource);
@@ -36,9 +39,17 @@ var make_request_url = function(method, bucket, obj_key, server) {
   return request_url;
 };
 
+var make_bucket_get_url = function(method, bucket, filter, server) {
+  var expires = new Date().getTime() + 60000;
+  var request_url = util.format("%s/%s?AccessKeyId=%s&Expires=%s&Signature=%s&prefix=%s",
+    server, bucket, AccessKeyID, expires,
+    encodeURIComponent(hmac_sha1(AccessKeySecret, string_to_sign(method, bucket, null, expires))), filter);
+  return request_url;
+};
+
 var versionPath = function() {
   return path.join(__dirname, '..', '..', 'shared', 'version.json');
-}
+};
 
 var versionData = function() {
   var fpath = versionPath();
@@ -121,6 +132,7 @@ var versionCompare = function( stra, strb ) {
 
 module.exports = {
   make_request_url: make_request_url,
+  make_bucket_get_url: make_bucket_get_url,
   versionData: versionData,
   version: getVersion,
   lastVersion: getLastVersion,

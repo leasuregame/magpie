@@ -109,6 +109,7 @@
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/attackDetailsLayer.js"/>
                 <file name="src/view/mainModule/bossLayer.js"/>
                 <file name="src/view/mainModule/bossListLayer.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
@@ -136,6 +137,7 @@
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
                 <file name="src/view/mainModule/configLayer.js"/>
+                <file name="src/view/mainModule/damageRankLayer.js"/>
                 <file name="src/view/mainModule/elixirRankHelpLabel.js"/>
                 <file name="src/view/mainModule/elixirRankLayer.js"/>
                 <file name="src/view/mainModule/evolutionLayer.js"/>

@@ -229,7 +229,7 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -274,11 +274,12 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
 Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   var self = this;
   var filePath = path.join(this.fixtures_dir, '..', '..', 'robot.csv');
+  var elixir = 3000;
   console.log(filePath);
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -351,6 +352,26 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
 
             }, cb);
           });
+        },
+        function(cb) {
+          self.db.elixirOfRank.create({
+            data: {
+              playerId: row.id,
+              week: thisWeek(),
+              name: row.playerName,
+              elixir: elixir + parseInt(row.id)
+            }
+          }, cb);
+        },
+        function(cb) {
+          self.db.elixirOfRank.create({
+            data: {
+              playerId: row.id,
+              week: lastWeek(),
+              name: row.playerName,
+              elixir: elixir + parseInt(row.id) + _.random(1, 10000)
+            }
+          }, cb);
         }
       ], function(err, results) {
         console.log('result: ', err, results);
@@ -563,7 +584,7 @@ var genSkillInc = function(card) {
     card.factor = 0;
     return;
   }
-  
+
   card.factor = _.random(1, 1000);
   return;
 
@@ -602,4 +623,29 @@ var initPassiveSkill = function(card) {
   }
 
   card.passiveSkills = results;
+};
+
+var thisWeek = function() {
+  var now, onejan, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7);
+  return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+};
+var lastWeek = function() {
+  var end, lastWeekNumber, lastYear, now, onejan, start, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7) - 1;
+  if (weekNumber === 0) {
+    lastYear = now.getFullYear() - 1;
+    start = new Date(lastYear, 0, 1);
+    end = new Date(lastYear, 12, 0);
+    lastWeekNumber = Math.ceil((((end - start) / 86400000) + start.getDate() + 1) / 7);
+    return '' + lastYear + lastWeekNumber;
+  } else {
+    return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+  }
 };

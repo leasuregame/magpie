@@ -93,13 +93,12 @@ updateElixir = (player, elixir) ->
         }, cb
       else 
         dao.elixirOfRank.update {
-          data: elixir: row.elixir + elixir,
-          where: playerId: player.id, week: week
+          data: {elixir: row.elixir + elixir}
+          where: {playerId: player.id, week: week}
         }, cb
   ], (err, result) ->
     if err
       logger.error('update elixir of ranking error: ', err.stack)
-
 
 
 updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->

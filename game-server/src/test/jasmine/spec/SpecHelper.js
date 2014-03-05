@@ -306,6 +306,10 @@ var game = {
       pomelo.on('onResetData', function(data) {
         console.log('on onResetData', data);
       });
+
+      pomelo.on('onFriendHelp', function(data) {
+        console.log('on onFriendHelp', data);
+      });
       
       if (typeof callback == 'function') {
         callback();

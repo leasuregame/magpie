@@ -14,7 +14,6 @@ var BossListLayer = cc.Layer.extend({
     _exchangeItem: null,
     _scrollView: null,
     _timeLabel: null,
-    _timeList: null,
 
     onEnter: function () {
         cc.log("BossListLayer onEnter");
@@ -42,7 +41,6 @@ var BossListLayer = cc.Layer.extend({
 
         this._cdTime = gameData.boss.get("cd");
         this._timeLabel = [];
-        this._timeList = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -94,6 +92,16 @@ var BossListLayer = cc.Layer.extend({
         this._honorLabel.setAnchorPoint(cc.p(0, 0));
         this._honorLabel.setPosition(this._bossListLayerFit.honorLabelPoint);
         this.addChild(this._honorLabel);
+
+        this._canExchangeLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._canExchangeLabel.setAnchorPoint(cc.p(0, 0));
+        this._canExchangeLabel.setPosition(this._bossListLayerFit.canExchangeLabelPoint);
+        this.addChild(this._canExchangeLabel);
+
+        var superHonorIcon = cc.Sprite.create(main_scene_image.icon406);
+        superHonorIcon.setAnchorPoint(cc.p(0, 0));
+        superHonorIcon.setPosition(this._bossListLayerFit.superHonorIconPoint);
+        this.addChild(superHonorIcon);
 
         this._superHonorLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._superHonorLabel.setAnchorPoint(cc.p(0, 0));
@@ -153,9 +161,21 @@ var BossListLayer = cc.Layer.extend({
     update: function () {
         cc.log("BossListLayer update");
 
-        var player = gameData.player;
-        this._honorLabel.setString(player.get("honor"));
-        this._superHonorLabel.setString(player.get("superHonor"));
+        this._update();
+
+        var that = this;
+        gameData.boss.updateBossList(function () {
+            that._addScrollView();
+        });
+    },
+
+    _update: function () {
+        cc.log("BossListLayer _update");
+
+        var honor = gameData.player.get("honor");
+        this._honorLabel.setString(honor);
+        this._canExchangeLabel.setString(parseInt(honor / 6000));
+        this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
         if (gameData.boss.get("canReceive")) {
             if (this._effect) {
@@ -167,11 +187,6 @@ var BossListLayer = cc.Layer.extend({
             this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
             this.addChild(this._effect);
         }
-
-        var that = this;
-        gameData.boss.updateBossList(function () {
-            that._addScrollView();
-        });
     },
 
     _addScrollView: function () {
@@ -181,6 +196,8 @@ var BossListLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
             this._scrollView = null;
         }
+
+        this._timeLabel = [];
 
         var scrollViewLayer = MarkLayer.create(this._bossListLayerFit.scrollViewLayerRect);
 
@@ -274,13 +291,13 @@ var BossListLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(bossStatusIcon);
             }
 
-            if (boss.countLeft > 0) {
+            if (boss.status != BOSS_STATUS_DIE) {
                 var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
                 countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
                 countLeftLabel.setPosition(cc.p(420, y - 33));
                 countLeftLabel.setColor(cc.c3b(167, 28, 0));
                 scrollViewLayer.addChild(countLeftLabel);
-            } else if (boss.countLeft == 0) {
+            } else {
                 var killerIcon = cc.Sprite.create(main_scene_image.icon395);
                 killerIcon.setAnchorPoint(cc.p(0, 0.5));
                 killerIcon.setPosition(cc.p(390, y - 33));
@@ -333,7 +350,7 @@ var BossListLayer = cc.Layer.extend({
 
         var that = this;
         var cb = function () {
-            that.update();
+            that._update();
         };
 
         RemoveCdTipLabel.pop({cb: cb});
@@ -358,7 +375,20 @@ var BossListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-       // gameData.boss.convertHonor();
+        var product = gameData.boss.exchangeSuperHonor();
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                if (count > 0) {
+                    gameData.boss.convertHonor(function () {
+                        lz.tipReward({superHonor: count});
+                        that._update();
+                    }, count);
+                }
+            },
+            product
+        );
 
     },
 

@@ -5,12 +5,23 @@
 var AttackDetailsLayer = LazyLayer.extend({
     _attackDetailsLayerFit: null,
 
-    init: function () {
+    _bossId: null,
+
+    onEnter: function () {
+        cc.log("AttackDetailsLayer onEnter");
+
+        this._super();
+        this.update();
+    },
+
+    init: function (bossId) {
         cc.log("AttackDetailsLayer init");
 
         if (!this._super()) return false;
 
         this._attackDetailsLayerFit = gameFit.mainScene.attackDetailsLayer;
+
+        this._bossId = bossId;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -64,8 +75,6 @@ var AttackDetailsLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._addScrollView();
-
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
 
@@ -100,6 +109,7 @@ var AttackDetailsLayer = LazyLayer.extend({
         detailItem.setPosition(cc.p(108, 60));
 
         var skyMenu = cc.Menu.create(detailItem, sendMessageItem, playbackItem);
+        skyMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 2);
         skyMenu.setPosition(cc.p(0, 0));
         skyLabel.addChild(skyMenu);
 
@@ -107,6 +117,16 @@ var AttackDetailsLayer = LazyLayer.extend({
         this._skyDialog.setRect(this._attackDetailsLayerFit.skyDialogRect);
 
         return true;
+    },
+
+    update: function () {
+        cc.log("AttackDetailsLayer update");
+
+        var that = this;
+        gameData.boss.getBossDetails(function (detailsList) {
+            that._detailsList = detailsList;
+            that._addScrollView();
+        }, this._bossId);
     },
 
     _addScrollView: function () {
@@ -126,20 +146,6 @@ var AttackDetailsLayer = LazyLayer.extend({
         scrollViewLayer.addChild(menu);
 
         this._detailsItem = [];
-
-        this._detailsList = [];
-        for (var i = 0; i < 10; i++) {
-            this._detailsList[i] = {
-                playerId: 100 + i,
-                attacker: "攻击的玩家" + i,
-                damage: 10000 + i * 100,
-                money: 10000 + i * 1000,
-                honor: 10000 - i * 100,
-                money_add: 9000 - i * 1000,
-                honor_add: 900 - i * 10,
-                battleLogId: 23
-            }
-        }
 
         var len = this._detailsList.length;
         var scrollViewHeight = len * 150;
@@ -186,7 +192,7 @@ var AttackDetailsLayer = LazyLayer.extend({
             moneyIcon.setScale(0.9);
             scrollViewLayer.addChild(moneyIcon);
 
-            var moneyLabel = cc.LabelTTF.create(details.money, "STHeitiTC-Medium", 22);
+            var moneyLabel = cc.LabelTTF.create(details.money + "", "STHeitiTC-Medium", 22);
             moneyLabel.setAnchorPoint(cc.p(0, 0));
             moneyLabel.setPosition(cc.p(300, y + 5));
             scrollViewLayer.addChild(moneyLabel);
@@ -219,7 +225,7 @@ var AttackDetailsLayer = LazyLayer.extend({
             honorIcon.setScale(0.9);
             scrollViewLayer.addChild(honorIcon);
 
-            var honorLabel = cc.LabelTTF.create(details.honor, "STHeitiTC-Medium", 22);
+            var honorLabel = cc.LabelTTF.create(details.honor + "", "STHeitiTC-Medium", 22);
             honorLabel.setAnchorPoint(cc.p(0, 0));
             honorLabel.setPosition(cc.p(300, y - 40));
             scrollViewLayer.addChild(honorLabel);
@@ -285,6 +291,15 @@ var AttackDetailsLayer = LazyLayer.extend({
         cc.log("AttackDetailsLayer _onClickPlayback");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var details = this._detailsList[this._selectId];
+
+        if (details) {
+            gameData.message.playback(details.battleLogId);
+        } else {
+            TipLayer.tip("找不到该战报");
+        }
+
     },
 
     _onClickDetail: function () {
@@ -292,14 +307,14 @@ var AttackDetailsLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var player = this._detailsList[this._selectId];
+        var details = this._detailsList[this._selectId];
 
-        if (player) {
+        if (details) {
             gameData.player.playerDetail(function (data) {
                 cc.log(data);
 
                 LineUpDetail.pop(data);
-            }, player.playerId);
+            }, details.playerId);
         } else {
             TipLayer.tip("找不到该玩家");
         }
@@ -310,31 +325,31 @@ var AttackDetailsLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var player = this._detailsList[this._selectId];
+        var details = this._detailsList[this._selectId];
 
-        if (player) {
-            SendMessageLayer.pop(player.playerId, player.name);
+        if (details) {
+            SendMessageLayer.pop(details.playerId, details.attacker);
         } else {
             TipLayer.tip("找不到该玩家");
         }
     }
 });
 
-AttackDetailsLayer.create = function () {
+AttackDetailsLayer.create = function (bossId) {
     cc.log("AttackDetailsLayer create");
 
     var ref = new AttackDetailsLayer();
-    if (ref && ref.init()) {
+    if (ref && ref.init(bossId)) {
         return ref;
     }
 
     return null;
 };
 
-AttackDetailsLayer.pop = function () {
+AttackDetailsLayer.pop = function (bossId) {
     cc.log("AttackDetailsLayer pop");
 
-    var attackDetailsLayer = AttackDetailsLayer.create();
+    var attackDetailsLayer = AttackDetailsLayer.create(bossId);
 
     MainScene.getInstance().getLayer().addChild(attackDetailsLayer, 10);
 };

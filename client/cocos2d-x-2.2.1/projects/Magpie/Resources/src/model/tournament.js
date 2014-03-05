@@ -347,6 +347,7 @@ var Tournament = Entity.extend({
         } else {
             var money = outputTables.elixir_ranking_reward.rows[50].money;
             money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
+            money = Math.max(50000, money);
             return {money: money}
         }
     },

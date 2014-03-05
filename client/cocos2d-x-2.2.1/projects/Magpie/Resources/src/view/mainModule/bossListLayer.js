@@ -204,7 +204,7 @@ var BossListLayer = cc.Layer.extend({
                 main_scene_image.button15,
                 main_scene_image.button15s,
                 main_scene_image.button15d,
-                this._onClickBoss(i),
+                this._onClickBoss(boss.bossId),
                 this
             );
             bossItem.setAnchorPoint(cc.p(0, 0.5));
@@ -226,7 +226,9 @@ var BossListLayer = cc.Layer.extend({
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossTypeLabel = cc.LabelTTF.create("中级魔兽", "STHeitiTC-Medium", 24);
+            var bossId = outputTables.boss.rows[boss.tableId].boss_id;
+            var card = outputTables.cards.rows[bossId];
+            var bossTypeLabel = cc.LabelTTF.create(card.name, "STHeitiTC-Medium", 24);
             bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
             bossTypeLabel.setPosition(cc.p(200, y + 32));
             scrollViewLayer.addChild(bossTypeLabel);
@@ -355,6 +357,9 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickExchange");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+       // gameData.boss.convertHonor();
+
     },
 
     _onClickBoss: function (id) {
@@ -364,7 +369,8 @@ var BossListLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            MainScene.getInstance().switchLayer(BossLayer);
+            var bossLayer = BossLayer.create(id);
+            MainScene.getInstance().switchTo(bossLayer);
         }
     }
 

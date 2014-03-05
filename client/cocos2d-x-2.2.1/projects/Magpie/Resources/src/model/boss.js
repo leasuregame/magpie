@@ -117,7 +117,7 @@ var Boss = Entity.extend({
             if (data.code == 200) {
                 cc.log("Boss updateBossList success");
 
-                that.sets(data.msg);
+                that.set("bossList", data.msg);
 
                 cb();
             } else {
@@ -222,6 +222,12 @@ var Boss = Entity.extend({
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
 
+                var reward = msg.battleLog.reward;
+
+                for (var key in reward) {
+                    gameData.player.add(key, reward[key]);
+                }
+
                 cb(battleLogId);
             } else {
                 cc.log("Boss attack fail");
@@ -270,6 +276,7 @@ var Boss = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.adds(msg);
+                that._isGetReward = true;
 
                 cb(msg);
             } else {
@@ -326,7 +333,7 @@ var Boss = Entity.extend({
 
                 gameData.player.sets(msg);
 
-                cb(msg);
+                cb();
             } else {
                 cc.log("Boss convertHonor fail");
 
@@ -354,7 +361,7 @@ var Boss = Entity.extend({
 
                 that.set("cd", 0);
 
-                cb(msg);
+                cb();
             } else {
                 cc.log("Boss removeTimer fail");
 
@@ -404,7 +411,11 @@ var Boss = Entity.extend({
             var len = this._bossList.length;
             for (var i = 0; i < len; ++i) {
                 var boss = this._bossList[i];
-                boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_DIE) {
+                    boss.timeLeft = 0;
+                } else {
+                    boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+                }
             }
         }
     },

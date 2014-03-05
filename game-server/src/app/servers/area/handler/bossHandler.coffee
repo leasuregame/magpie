@@ -20,11 +20,9 @@ Handler::attackDetails = (msg, session, next) ->
   bossId = msg.bossId
 
   if not bossId
-    return next({code: 501, msg: '参数错误'})
+    return next(null, {code: 501, msg: '参数错误'})
 
-  dao.bossAttack.getByBossId where: {
-    bossId: bossId
-  }, (err, items) ->
+  dao.bossAttack.getByBossId bossId, (err, items) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
@@ -273,6 +271,8 @@ countDamage = (bl) ->
   for k, v of bl.cards
     if parseInt(k) > 6
       ds.push v.hp - v.hp_left
+
+    delete bl.cards[k] if v.hp is 0
 
   add = (x, y) -> x + y  
   ds.reduce add, 0

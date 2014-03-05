@@ -5,6 +5,7 @@ async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
 fightManager = require '../../../manager/fightManager'
 utility = require('../../../common/utility')
+entityUtil = require('../../../util/entityUtil')
 table = require '../../../manager/table'
 job = require '../../../dao/job'
 BOSSCONFIG = require('../../../../config/data/bossStatus')
@@ -66,7 +67,7 @@ Handler::thisWeek = (msg, session, next) ->
     (cb) =>
       @app.get('dao').damageOfRank.thisWeekDamageRank cb
     (cb) =>
-      @app.get('dao').damageOfRank.getRank playerId, utility.thisWekk(), cb
+      @app.get('dao').damageOfRank.getRank playerId, utility.thisWeek(), cb
   ], (err, results) ->
     if err
       return next(null, {code: 501, msg: err.message or err.msg})
@@ -80,7 +81,50 @@ Handler::thisWeek = (msg, session, next) ->
     }})
 
 Handler::getLastWeekReward = (msg, session, next) ->
+  playerId = session.get('playerId')
 
+  week = utility.lastWeek()
+  rank = null
+  player = null
+  reward = null
+  async.waterfall [
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, week, cb
+    (res, cb) ->
+      rank = res
+      if not rank
+        return cb({code: 501, msg: '上周不够努力，没奖励可领哦'})
+      cb(null)
+    (cb) =>
+      @app.get('dao').damageOfRank.fetchOne {
+        fields: ['got']
+        where: 
+          playerId: playerId,
+          week: week
+      }, cb
+    (dor, cb) ->
+      if dor.got is 1
+        return cb({code: 501, msg: '不能重复领取'})
+      cb(null)
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+    (res, cb) ->
+      player = res
+      console.log rank, rank.rank
+      reward = countDamageRewards(rank?.rank)
+      console.log reward
+      entityUtil.getReward player, reward, cb
+    (cards, cb) =>
+      @app.get('dao').damageOfRank.update {
+        data: got: 1
+        where: playerId: playerId, week: week
+      }, cb
+  ], (err, result) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    player.save()
+    next(null, {code: 200, msg: reward})
 
 Handler::getFriendReward = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -247,6 +291,18 @@ Handler::attack = (msg, session, next) ->
         cd: player.getCD()
         battleLog: bl
     })
+
+countDamageRewards = (rank) ->
+  row = table.getTableItem('boss_rank_reward', rank)
+  if row    
+    money: row.money
+    honor: row.honor
+    energy: row.energy
+  else 
+    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or 8000
+    honor = parseInt honor5*(1-Math.ceil((rank-5)/20)*0.003)
+    honor = 2000 if honor < 2000
+    honor: honor
 
 checkBossStatus = (items, cb) ->
   console.log items

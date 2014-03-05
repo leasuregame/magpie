@@ -366,21 +366,22 @@ var Shop = Entity.extend({
                 return product;
             }
 
+            product.tip = "已达购买次数上限，无法购买更多";
+
             var player = gameData.player;
             count = Math.floor(player.get("money") / product.price);
             if (count <= 0) {
                 product.tip = "仙币不足";
                 product.count = 0;
-                return product;
             } else {
                 if (count <= product.count) {
                     product.count = count;
                     product.tip = "仙币不足";
-                } else if (cardListCount <= product.count) {
+                }
+
+                if (cardListCount <= product.count) {
                     product.count = cardListCount;
                     product.tip = "已达卡库容量上限，无法购买更多";
-                } else {
-                    product.tip = "已达购买次数上限，无法购买更多";
                 }
             }
 

@@ -134,13 +134,23 @@ Handler::getFriendReward = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
     (player, cb) ->
       dao.bossFriendReward.getReward playerId, (err, res) ->
-        if err or not res
+        if err or not res or (res.money is null and res.honor is null)
           return cb({
             code: 501, 
             msg: '没有奖励可领'
           })
         else 
           cb(null, res, player)
+    (reward, player, cb) ->
+      if reward.money > 0 and reward.honor > 0
+        dao.bossFriendReward.update {
+          data: got: 1
+          where: playerId: playerId, got: 0
+        }, (err, res) ->
+          if err
+            cb(err)
+          else 
+            cb(null, reward, player)
   ], (err, reward, player) ->
     if err
       return next(null, err)

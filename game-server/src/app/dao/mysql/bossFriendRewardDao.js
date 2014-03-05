@@ -26,6 +26,28 @@ var BossFriendRewardDao = (function(_super) {
   domain.FIELDS = ['id', 'friendId', 'playerId', 'money', 'got', 'honor', 'created'];
   BossFriendRewardDao.domain = domain;
 
+  BossFriendRewardDao.getReward = function(playerId, cb) {
+    var sql = "select sum(money) as money, sum(honor) as honor from bossFriendReward \
+      where playerId = ? and got = 0";
+
+    dbClient.query(sql, [playerId], function(err, res) {
+      if (err) {
+        logger.error('[SQL ERROR] when get reward from bossFriendReward by playerId ' + playerId);
+        cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        cb(null, res[0]);
+      } else {
+        cb(null, null);
+      }
+
+    });
+  };
+
   return BossFriendRewardDao;
 })(DaoBase);
 

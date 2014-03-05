@@ -5,7 +5,12 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
-
+      afterEach(function() {
+        doAjax('/clear/boss', function() {});
+        doAjax('/clear/bossAttack', function() {});
+        doAjax('/clear/damageOfRank', function() {});
+        doAjax('/clear/bossFriendReward', function() {});
+      });
 
       describe('我的boss', function() {
 
@@ -18,6 +23,12 @@ describe("Area Server", function() {
             doAjax('/player/100', function(res) {
               before_player = res.data;
             });
+
+            doAjax('/update/player/100', {
+              cd: JSON.stringify({
+                lastAtkTime: 0
+              })
+            }, function() {});
 
             doAjax('/create/boss', {
               playerId: 100,
@@ -53,12 +64,85 @@ describe("Area Server", function() {
                 expect(res.data.money).toEqual(data.msg.battleLog.rewards.money + before_player.money);
                 expect(res.data.honor).toEqual(data.msg.battleLog.rewards.honor + before_player.honor);
               });
+
+              // 检查攻击记录是否正确
+              var blId;
+              doAjax('/bossAttack/query', {
+                playerId: 100,
+                bossId: bossId
+              }, function(res) {
+                console.log(res);
+                expect(res.data.damage).toEqual(data.msg.damage);
+                expect(res.data.money).toEqual(data.msg.battleLog.rewards.money);
+                expect(res.data.honor).toEqual(data.msg.battleLog.rewards.honor);
+                expect(res.data.moneyAdd).toEqual(null);
+                expect(res.data.honorAdd).toEqual(null);
+                
+                blId = res.data.battleLogId;
+              });
+
+              // 检查battleLog是否正确
+              doAjax('/battleLog/' + blId, function(res){
+                expect(res.data.battleLog)
+              })
+
+            });
+          });
+        });
+
+        describe('苏醒的Boss', function(){
+          var before_player;
+          var bossId;
+          var bossCreateTime = new Date().getTime() - 60*60*1000;
+
+          beforeEach(function() {
+            doAjax('/player/100', function(res) {
+              before_player = res.data;
+            });
+
+            doAjax('/update/player/100', {
+              cd: JSON.stringify({
+                lastAtkTime: 0
+              })
+            }, function() {});
+
+            doAjax('/create/boss', {
+              playerId: 100,
+              tableId: 2,
+              atkCount: 1,
+              hp: '{"2":{"cardId":40001,"hp":79960000},"4":{"cardId":40004,"hp":80000},"6":{"cardId":40004,"hp":80000}}',
+              createTime: bossCreateTime
+            }, function(res) {
+              bossId = res.insertId;
+              loginWith('arthur', '1', 1);
+            });
+          });
+
+          it('可以攻击，并返回正确的结果', function() {
+            request('area.bossHandler.attack', {
+              bossId: bossId
+            }, function(data) {
+              console.log('attak result: ', data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.battleLog).toBeBattleLog();
+
+              hp_left = 0
+              _.each(data.msg.battleLog.cards, function(v, k) {
+                if (parseInt(k) > 6) {
+                  hp_left += v.hp_left;
+                }
+              });
+
+              expect(data.msg.damage).toEqual(80120000 - hp_left);
+
+              doAjax('/player/100', function(res) {
+                expect(res.data.gold).toEqual(data.msg.gold);
+                expect(res.data.money).toEqual(data.msg.battleLog.rewards.money + before_player.money);
+                expect(res.data.honor).toEqual(data.msg.battleLog.rewards.honor + before_player.honor);
+              });
             })
           });
         });
-  
-       
-        
 
       });
 
@@ -73,6 +157,12 @@ describe("Area Server", function() {
             doAjax('/player/100', function(res) {
               before_player = res.data;
             });
+
+            doAjax('/update/player/100', {
+              cd: JSON.stringify({
+                lastAtkTime: 0
+              })
+            }, function() {});
 
             doAjax('/create/boss', {
               playerId: 1,

@@ -1290,6 +1290,12 @@ var Player = (function(_super) {
         this.cd = cd;
     };
 
+    Player.prototype.removeCD = function(){
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = 0;
+        this.cd = cd;
+    };
+
     Player.prototype.incBossCount = function(){
         var task = utility.deepCopy(this.task);
         if (!task.boss) {

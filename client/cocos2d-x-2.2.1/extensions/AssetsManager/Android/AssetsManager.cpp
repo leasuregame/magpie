@@ -154,7 +154,7 @@ AssetsManager::~AssetsManager()
 void AssetsManager::init()
 {
     CCLOG("---------------------------------");
-    CCLOG("IOS AssetsManager");
+    CCLOG("Android AssetsManager");
     CCLOG("---------------------------------");
 
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
@@ -820,7 +820,7 @@ std::string AssetsManager::getAppVersion()
     // 待修改
 
 //    return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] UTF8String];
-    return "";
+    return "1.0.0";
 }
 
 AssetsManager* AssetsManager::assetsManager = NULL;

@@ -1,3 +1,4 @@
+BUILD_SETTINGS="$1"
 APPNAME="Magpie"
 
 # options
@@ -69,9 +70,13 @@ fi
 mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/res
 
-# copy Resources/* into assets' root
-cp -rf "$APP_ROOT"/Resources/* "$APP_ANDROID_ROOT"/assets
 
+# copy Resources into assets' root
+if [ "$BUILD_SETTINGS" = "debug" ] || [ "$BUILD_SETTINGS" = "Debug" ]; then
+	sh "$APP_ANDROID_ROOT"/cp_res_debug.sh "$DIR"
+else
+	sh "$APP_ANDROID_ROOT"/cp_res_release.sh "$DIR"
+fi
 
 # copy bindings/*.js into assets' root
 cp -f "$BINDINGS_JS_ROOT"/* "$APP_ANDROID_ROOT"/assets

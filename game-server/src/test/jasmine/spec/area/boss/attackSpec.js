@@ -83,8 +83,16 @@ describe("Area Server", function() {
 
               // 检查battleLog是否正确
               doAjax('/battleLog/' + blId, function(res){
-                expect(res.data.battleLog)
-              })
+                expect(res.data.battleLog).toEqual(JSON.stringify(data.msg.battleLog));
+              });
+
+              // 检查boss伤害排行信息
+              doAjax('/damageOfRank/query' {
+                playerId: 100,
+                week: 
+              }, function(res){
+
+              });
 
             });
           });

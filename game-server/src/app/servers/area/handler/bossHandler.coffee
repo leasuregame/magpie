@@ -342,6 +342,9 @@ updateBossAndPlayer = (boss, bl, player) ->
       bl.rewards.friend.money *= 2
       bl.rewards.friend.honor *= 2
 
+    # 修改boss发现标记为false
+    player.setBossFound(false)
+
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)
   player.resetCD()

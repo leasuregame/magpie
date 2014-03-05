@@ -184,7 +184,7 @@ Handler::convertHonor = (msg, session, next) ->
     player.increase 'superHonor', number
     player.save()
 
-    next(null, {code: {
+    next(null, {code: 200, msg: {
       superHonor: player.superHonor
       honor: player.honor
     }})

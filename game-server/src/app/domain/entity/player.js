@@ -1319,6 +1319,10 @@ var Player = (function(_super) {
         }
 
         task.boss.found = val;
+        if (!val) {
+            task.boss.count = 0;
+        }
+        
         this.task = task;
     };
 

@@ -15,7 +15,7 @@ class BossHero extends Hero
       throw new Error('配置表错误，找不到怪物卡牌配置信息' + @card_id)
 
     @init_atk = @atk = card_config.atk    
-    @init_hp = @hp = card_config.hp
+    @total_hp = @init_hp = @hp = card_config.hp
 
     @star = 3
     @skill_id = card_config.skill_id

@@ -20,11 +20,9 @@ Handler::attackDetails = (msg, session, next) ->
   bossId = msg.bossId
 
   if not bossId
-    return next({code: 501, msg: '参数错误'})
+    return next(null, {code: 501, msg: '参数错误'})
 
-  dao.bossAttack.getByBossId where: {
-    bossId: bossId
-  }, (err, items) ->
+  dao.bossAttack.getByBossId bossId, (err, items) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
@@ -274,6 +272,8 @@ countDamage = (bl) ->
     if parseInt(k) > 6
       ds.push v.hp - v.hp_left
 
+    delete bl.cards[k] if v.hp is 0
+
   add = (x, y) -> x + y  
   ds.reduce add, 0
 
@@ -341,6 +341,9 @@ updateBossAndPlayer = (boss, bl, player) ->
     if bl.rewards.friend
       bl.rewards.friend.money *= 2
       bl.rewards.friend.honor *= 2
+
+    # 修改boss发现标记为false
+    player.setBossFound(false)
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)

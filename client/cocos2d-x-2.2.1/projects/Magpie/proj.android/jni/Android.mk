@@ -7,9 +7,9 @@ LOCAL_MODULE := cocos2djs_shared
 LOCAL_MODULE_FILENAME := libcocos2djs
 
 LOCAL_SRC_FILES := magpie/main.cpp \
-                   ../../Classes/Android/AppDelegate.cpp
+                   ../../Classes/Android/Test/AppDelegate.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android/Test
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

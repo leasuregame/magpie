@@ -2,9 +2,6 @@
  * Created by lujunyu on 14-2-21.
  */
 
-var TYPE_THIS_WEEK = 1;
-var TYPE_LAST_WEEK = 0;
-
 var ElixirRankLayer = cc.Layer.extend({
     _elixirRankLayerFit: null,
 
@@ -394,7 +391,8 @@ var ElixirRankLayer = cc.Layer.extend({
 
         GiftBagLayer.pop({
             reward: reward,
-            titleType: TYPE_LOOK_REWARD
+            titleType: TYPE_LOOK_REWARD,
+            tip: "亲，你的竞技仙丹数量为0，无法获得奖励哟。"
         });
 
     },

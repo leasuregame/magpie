@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Javascript compress project" basedir="../../../../../" default="compile">
+<project name="Javascript compress project" basedir="../../../../../../" default="compile">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
              classpath="${basedir}/tools/closure-compiler/compiler.jar"/>
@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/TB-Releases/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/TB-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>
@@ -23,7 +23,7 @@
                 <file name="jsb_sys.js"/>
                 <file name="jsb_deprecated.js"/>
             </sources>
-            <sources dir="${basedir}/projects/Magpie/Res/">
+            <sources dir="${basedir}/projects/Magpie/Res_ios/">
                 <file name="src/resource.js"/>
 
                 <file name="src/table/table.js"/>
@@ -32,7 +32,7 @@
                 <file name="src/model/entity.js"/>
 
                 <file name="src/model/lz.js"/>
-                <file name="TB/platform.js"/>
+                <file name="IOS/TB/platform.js"/>
                 <file name="src/model/dataCollection.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
@@ -42,7 +42,7 @@
 
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="TB/user.js"/>
+                <file name="IOS/TB/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -68,7 +68,7 @@
                 <file name="src/model/greeting.js"/>
                 <file name="src/model/boss.js"/>
 
-                <file name="TB/payment.js"/>
+                <file name="IOS/TB/payment.js"/>
 
                 <file name="src/model/battleLogPool.js"/>
                 <file name="src/model/battleLog.js"/>
@@ -97,7 +97,7 @@
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="TB/loginLayer.js"/>
+                <file name="IOS/TB/loginLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>
@@ -109,6 +109,7 @@
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/attackDetailsLayer.js"/>
                 <file name="src/view/mainModule/bossLayer.js"/>
                 <file name="src/view/mainModule/bossListLayer.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
@@ -136,6 +137,7 @@
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
                 <file name="src/view/mainModule/configLayer.js"/>
+                <file name="src/view/mainModule/damageRankLayer.js"/>
                 <file name="src/view/mainModule/elixirRankHelpLabel.js"/>
                 <file name="src/view/mainModule/elixirRankLayer.js"/>
                 <file name="src/view/mainModule/evolutionLayer.js"/>
@@ -173,6 +175,7 @@
                 <file name="src/view/mainModule/propsLayer.js"/>
                 <file name="src/view/mainModule/rankLayer.js"/>
                 <file name="src/view/mainModule/readMessageLayer.js"/>
+                <file name="src/view/mainModule/removeCdTipLabel.js"/>
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>

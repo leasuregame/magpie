@@ -50,6 +50,16 @@ var giftBagGoods = {
 
     cardArray: {
         name: "cardArray"
+    },
+
+    honor: {
+        name: "荣誉",
+        url: "icon405"
+    },
+
+    superHonor: {
+        name: "精元",
+        url: "icon406"
     }
 };
 
@@ -74,6 +84,7 @@ var GiftBagLayer = cc.Layer.extend({
         var cb = data.cb || null;
         var type = data.type || SHOW_GIFT_BAG;
         var titleType = data.titleType || TYPE_GIFT_REWARD;
+        var tip = data.tip || "当前没有奖励哦！";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -168,7 +179,7 @@ var GiftBagLayer = cc.Layer.extend({
         if (reward && Object.keys(reward).length > 0) {
             this._addRankScrollView(reward);
         } else {
-            var description = lz.format("亲，你的竞技仙丹数量为0，无法获得奖励哟。", 13);
+            var description = lz.format(tip, 13);
             var len = description.length;
             var point = this._giftBagLayerFit.tipLabelPoint;
             for (var i = 0; i < len; i++) {

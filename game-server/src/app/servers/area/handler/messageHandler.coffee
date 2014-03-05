@@ -15,61 +15,6 @@ SYSTEM = -1
 ADD_FRIEND_MESSAGE = 1
 DELETE_FRIEND_MESSAGE = 2
 
-isFinalStatus = (status) ->
-  _.contains msgConfig.FINALSTATUS, status
-
-mergeMessages = (myMessages, systemMessages, blMessages, unhandledMessage) ->
-  mySystems = myMessages.filter (m) -> m.sender is -1
-  mySystems = mySystems.map (m) -> m.msgId
-
-  systemMessages.forEach (m) ->
-    if m.id not in mySystems
-      myMessages.push m
-
-  blMessages.concat(unhandledMessage).forEach (m) -> myMessages.push m
-  return myMessages
-
-changeGroupNameAndSort = (messages) ->
-  results = {}
-  for k, v of messages
-    continue if not msgConfig.TYPE_MAP[k]?
-    name = msgConfig.TYPE_MAP[k]
-    if typeof results[name] is 'undefined'
-      results[name] = v
-    else
-      results[name] = results[name].concat(v)
-
-  for n, items of results
-    items.sort (x, y) -> x.createTime < y.createTime
-    if n is 'system'
-      items.sort (x, y) -> x.status > y.status
-    else if n is 'friend'
-      copyItems = _.clone(items)
-      newItems = []
-      for i, j in items
-        if i? and i.status is msgConfig.MESSAGESTATUS.ASKING
-          _res = copyItems.splice(j, 1)
-          newItems = newItems.concat(_res)
-      newItems = newItems.concat(copyItems)
-      items = newItems
-
-    results[n] = items[0...20]
-
-  results
-
-sendMessage = (app, target, msg, data, next) ->
-  callback = (err, res) ->
-    if err
-      code = 500
-    else 
-      code = 200
-    next(null, {code: code, msg: data if data}) if next?
-
-  if target?
-    app.get('messageService').pushByPid target, msg, callback
-  else 
-    app.get('messageService').pushMessage msg, callback
-
 module.exports = (app) ->
   new Handler(app)
 
@@ -651,6 +596,57 @@ updateReceiveCount = (player, friendId) ->
         if f.id is friendId
           f.receiveCount += 1
 
+isFinalStatus = (status) ->
+  _.contains msgConfig.FINALSTATUS, status
 
+mergeMessages = (myMessages, systemMessages, blMessages, unhandledMessage) ->
+  mySystems = myMessages.filter (m) -> m.sender is -1
+  mySystems = mySystems.map (m) -> m.msgId
 
+  systemMessages.forEach (m) ->
+    if m.id not in mySystems
+      myMessages.push m
 
+  blMessages.concat(unhandledMessage).forEach (m) -> myMessages.push m
+  return myMessages
+
+changeGroupNameAndSort = (messages) ->
+  results = {}
+  for k, v of messages
+    continue if not msgConfig.TYPE_MAP[k]?
+    name = msgConfig.TYPE_MAP[k]
+    if typeof results[name] is 'undefined'
+      results[name] = v
+    else
+      results[name] = results[name].concat(v)
+
+  for n, items of results
+    items.sort (x, y) -> x.createTime < y.createTime
+    if n is 'system'
+      items.sort (x, y) -> x.status > y.status
+    else if n is 'friend'
+      copyItems = _.clone(items)
+      newItems = []
+      for i, j in items
+        if i? and i.status is msgConfig.MESSAGESTATUS.ASKING
+          _res = copyItems.splice(j, 1)
+          newItems = newItems.concat(_res)
+      newItems = newItems.concat(copyItems)
+      items = newItems
+
+    results[n] = items[0...20]
+
+  results
+
+sendMessage = (app, target, msg, data, next) ->
+  callback = (err, res) ->
+    if err
+      code = 500
+    else 
+      code = 200
+    next(null, {code: code, msg: data if data}) if next?
+
+  if target?
+    app.get('messageService').pushByPid target, msg, callback
+  else 
+    app.get('messageService').pushMessage msg, callback

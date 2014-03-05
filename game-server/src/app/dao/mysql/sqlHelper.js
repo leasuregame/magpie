@@ -81,7 +81,7 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     selectSql: function (table, where, limit) {
-        var orderby, fields;
+        var orderby, fields, where, limit;
         if (arguments.length == 1) {
             fields = table.fields || ''
             where = table.where;
@@ -125,9 +125,10 @@ var sqlHelper = {
         return util.format("select * from player order by `%s` limit %s", orderBy, limit);
     },
 
-    existsSql: function(table, where) {
-        var stm = Statement.where(where);
-        var sql =  util.format("select count(*) as exists from `%s` %s", table, stm.where);
+    existsSql: function(options) {
+        var stm = Statement.where(options.where);
+        var where = stm.where == '' ? '' : ' where ' + stm.where;
+        var sql =  util.format("select count(*) as exist from `%s` %s", options.table, where);
         return {
             sql: sql,
             args: stm.args

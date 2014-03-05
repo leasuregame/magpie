@@ -30,6 +30,15 @@ var GreetingDao = (function(_super) {
   GreetingDao.table = 'greeting';
   GreetingDao.domain = domain;
 
+  GreetingDao.getLatest = function(limit, cb) {
+    var sql = "select g.playerId, g.playerName, g.content, g.created, p.vip \
+      from greeting g \
+      left join player p on g.playerId = p.id \
+      order by g.created DESC \
+      limit ?";
+    dbClient.query(sql, [limit], cb);
+  };
+
   return GreetingDao;
 })(DaoBase);
 

@@ -5,9 +5,9 @@
 var STOP_TIME = -1000 * 3600 * 8;
 
 var BossListLayer = cc.Layer.extend({
-    _BossListLayerFit: null,
+    _bossListLayerFit: null,
 
-    _cbTime: null,
+    _cdTime: null,
     _cdTimeLabel: null,
     _removeTimeItem: null,
     _rewardItem: null,
@@ -40,7 +40,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._bossListLayerFit = gameFit.mainScene.bossListLayer;
 
-        this._cbTime = gameData.boss.get("cd");
+        this._cdTime = gameData.boss.get("cd");
         this._timeLabel = [];
         this._timeList = [];
 
@@ -70,7 +70,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._cdTimeLabel = cc.LabelTTF.create(
             lz.getTimeStr({
-                time: this._cbTime + STOP_TIME
+                time: this._cdTime + STOP_TIME
             }),
             "STHeitiTC-Medium",
             22
@@ -90,12 +90,12 @@ var BossListLayer = cc.Layer.extend({
         goodsBgLabel.setPosition(this._bossListLayerFit.goodsBgLabelPoint);
         this.addChild(goodsBgLabel);
 
-        this._honorLabel = cc.LabelTTF.create("100000", "STHeitiTC-Medium", 22);
+        this._honorLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._honorLabel.setAnchorPoint(cc.p(0, 0));
         this._honorLabel.setPosition(this._bossListLayerFit.honorLabelPoint);
         this.addChild(this._honorLabel);
 
-        this._superHonorLabel = cc.LabelTTF.create("100000", "STHeitiTC-Medium", 22);
+        this._superHonorLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._superHonorLabel.setAnchorPoint(cc.p(0, 0));
         this._superHonorLabel.setPosition(this._bossListLayerFit.superHonorLabelPoint);
         this.addChild(this._superHonorLabel);
@@ -108,6 +108,7 @@ var BossListLayer = cc.Layer.extend({
         );
 
         this._removeTimeItem.setPosition(this._bossListLayerFit.removeTimeItemPoint);
+        this._removeTimeItem.setVisible(this._cdTime > 0);
 
         var sprite = cc.Sprite.create(main_scene_image.icon281);
         this._rewardItem = cc.MenuItemLabel.create(
@@ -142,12 +143,35 @@ var BossListLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, rankItem, this._exchangeItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
-        this._addScrollView();
         this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
+    },
+
+    update: function () {
+        cc.log("BossListLayer update");
+
+        var player = gameData.player;
+        this._honorLabel.setString(player.get("honor"));
+        this._superHonorLabel.setString(player.get("superHonor"));
+
+        if (gameData.boss.get("canReceive")) {
+            if (this._effect) {
+                this._effect.removeFromParent();
+                this._effect = null;
+            }
+            this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+            this._effect.setScale(0.4);
+            this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
+            this.addChild(this._effect);
+        }
+
+        var that = this;
+        gameData.boss.updateBossList(function () {
+            that._addScrollView();
+        });
     },
 
     _addScrollView: function () {
@@ -164,7 +188,8 @@ var BossListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var len = 20;
+        var bossList = gameData.boss.get("bossList");
+        var len = bossList.length;
         var scrollViewHeight = len * 140;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
@@ -173,12 +198,13 @@ var BossListLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 70 - 140 * i;
+            var boss = bossList[i];
 
             var bossItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
                 main_scene_image.button15s,
                 main_scene_image.button15d,
-                this._onClickBoss(i),
+                this._onClickBoss(boss.bossId),
                 this
             );
             bossItem.setAnchorPoint(cc.p(0, 0.5));
@@ -200,15 +226,20 @@ var BossListLayer = cc.Layer.extend({
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossTypeLabel = cc.LabelTTF.create("中级魔兽", "STHeitiTC-Medium", 24);
+            var bossId = outputTables.boss.rows[boss.tableId].boss_id;
+            var card = outputTables.cards.rows[bossId];
+            var bossTypeLabel = cc.LabelTTF.create(card.name, "STHeitiTC-Medium", 24);
             bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossTypeLabel.setPosition(cc.p(200, y + 31));
+            bossTypeLabel.setPosition(cc.p(200, y + 32));
             scrollViewLayer.addChild(bossTypeLabel);
 
-            var date = new Date();
-            this._timeList[i] = date.setTime(STOP_TIME + i * 60 * 1000);
-
-            var runAwayTimeLabel = cc.LabelTTF.create("00:00:00", "STHeitiTC-Medium", 20);
+            var runAwayTimeLabel = cc.LabelTTF.create(
+                lz.getTimeStr({
+                    time: boss.timeLeft + STOP_TIME
+                }),
+                "STHeitiTC-Medium",
+                20
+            );
             runAwayTimeLabel.setAnchorPoint(cc.p(0, 0.5));
             runAwayTimeLabel.setPosition(cc.p(260, y - 3));
             runAwayTimeLabel.setColor(cc.c3b(121, 60, 56));
@@ -216,7 +247,7 @@ var BossListLayer = cc.Layer.extend({
 
             this._timeLabel[i] = runAwayTimeLabel;
 
-            var finderLabel = cc.LabelTTF.create("发现的玩家" + i, "STHeitiTC-Medium", 20);
+            var finderLabel = cc.LabelTTF.create(boss.finder, "STHeitiTC-Medium", 20);
             finderLabel.setAnchorPoint(cc.p(0, 0.5));
             finderLabel.setPosition(cc.p(240, y - 33));
             finderLabel.setColor(cc.c3b(121, 60, 56));
@@ -227,29 +258,41 @@ var BossListLayer = cc.Layer.extend({
             attackIcon.setPosition(cc.p(480, y + 15));
             scrollViewLayer.addChild(attackIcon);
 
-            var bossStatusIcon = cc.Sprite.create(main_scene_image["icon" + (396 + i % 2)]);
-            bossStatusIcon.setAnchorPoint(cc.p(0, 0.5));
-            bossStatusIcon.setPosition(cc.p(455, y + 30));
-            scrollViewLayer.addChild(bossStatusIcon);
+            var bossStatusIcon = null;
 
-            if (i % 2) {
-                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: 9次", "STHeitiTC-Medium", 20);
+            if (boss.status == BOSS_STATUS_FLEE) {
+                bossStatusIcon = cc.Sprite.create(main_scene_image["icon396"]);
+            }
+
+            if (boss.status == BOSS_STATUS_DIE) {
+                bossStatusIcon = cc.Sprite.create(main_scene_image["icon397"]);
+            }
+
+            if (bossStatusIcon) {
+                bossStatusIcon.setAnchorPoint(cc.p(0, 0.5));
+                bossStatusIcon.setPosition(cc.p(455, y + 30));
+                scrollViewLayer.addChild(bossStatusIcon);
+            }
+
+            if (boss.countLeft > 0) {
+                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
                 countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
                 countLeftLabel.setPosition(cc.p(420, y - 33));
                 countLeftLabel.setColor(cc.c3b(167, 28, 0));
                 scrollViewLayer.addChild(countLeftLabel);
-            } else {
+            } else if (boss.countLeft == 0) {
                 var killerIcon = cc.Sprite.create(main_scene_image.icon395);
                 killerIcon.setAnchorPoint(cc.p(0, 0.5));
                 killerIcon.setPosition(cc.p(390, y - 33));
                 scrollViewLayer.addChild(killerIcon);
 
-                var killerLabel = cc.LabelTTF.create("最后一击玩家", "STHeitiTC-Medium", 20);
+                var killerLabel = cc.LabelTTF.create(boss.killer, "STHeitiTC-Medium", 20);
                 killerLabel.setAnchorPoint(cc.p(0, 0.5));
                 killerLabel.setPosition(cc.p(470, y - 33));
                 killerLabel.setColor(cc.c3b(121, 60, 56));
                 scrollViewLayer.addChild(killerLabel);
             }
+
         }
 
         this._scrollView = cc.ScrollView.create(this._bossListLayerFit.scrollViewSize, scrollViewLayer);
@@ -265,21 +308,21 @@ var BossListLayer = cc.Layer.extend({
 
     _updateCdTime: function () {
 
-        this._cbTime = gameData.boss.get("cd") + STOP_TIME;
-        if (this._cbTime >= STOP_TIME) {
-            this._cdTimeLabel.setString(lz.getTimeStr({
-                time: this._cbTime
-            }));
-        }
+        this._cdTime = gameData.boss.get("cd");
+        this._cdTimeLabel.setString(lz.getTimeStr({
+            time: this._cdTime + STOP_TIME
+        }));
 
-        var len = this._timeList.length;
+        this._removeTimeItem.setVisible(this._cdTime > 0);
+
+        var bossList = gameData.boss.get("bossList");
+        var len = bossList.length;
         for (var i = 0; i < len; i++) {
-            this._timeList[i] -= 1000;
-            if (this._timeList[i] >= STOP_TIME) {
-                this._timeLabel[i].setString(lz.getTimeStr({
-                    time: this._timeList[i]
-                }));
-            }
+            var time = bossList[i].timeLeft;
+            this._timeLabel[i].setString(lz.getTimeStr({
+                time: time + STOP_TIME
+            }));
+
         }
     },
 
@@ -287,6 +330,13 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickRemoveTime");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+        var cb = function () {
+            that.update();
+        };
+
+        RemoveCdTipLabel.pop({cb: cb});
     },
 
     _onClickReward: function () {
@@ -299,12 +349,17 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickRank");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        DamageRankLayer.pop();
     },
 
     _onClickExchange: function () {
         cc.log("BossListLayer _onClickExchange");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+       // gameData.boss.convertHonor();
+
     },
 
     _onClickBoss: function (id) {
@@ -314,7 +369,8 @@ var BossListLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            MainScene.getInstance().switchLayer(BossLayer);
+            var bossLayer = BossLayer.create(id);
+            MainScene.getInstance().switchTo(bossLayer);
         }
     }
 

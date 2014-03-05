@@ -247,7 +247,7 @@ var BossLayer = cc.Layer.extend({
 
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
-        this._attackItem.setEnabled(boss.countLeft > 0);
+        this._attackItem.setEnabled(boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE);
 
     },
 

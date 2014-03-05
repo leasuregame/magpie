@@ -12,9 +12,9 @@ var DamageRankLayer = LazyLayer.extend({
     _lastWeekItem: null,
     _selectType: TYPE_THIS_WEEK,
     _thisWeekRank: null,
-    _thisWeekHonor: null,
+    _thisWeekDamage: null,
     _lastWeekRank: null,
-    _lastWeekHonor: null,
+    _lastWeekDamage: null,
     _rankList: [],
 
     onEnter: function () {
@@ -149,13 +149,13 @@ var DamageRankLayer = LazyLayer.extend({
         lastWeekIcon.setPosition(cc.p(30, 195));
         this._frameLayer.addChild(lastWeekIcon);
 
-        var text = ["排名: ", "荣誉: "];
+        var text = ["排名: ", "伤害: "];
         this._thisWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
-        this._thisWeekHonor = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._thisWeekDamage = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
         this._lastWeekRank = cc.LabelTTF.create("--", "STHeitiTC-Medium", 26);
-        this._lastWeekHonor = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
+        this._lastWeekDamage = cc.LabelTTF.create("0", "STHeitiTC-Medium", 26);
 
-        var label = [this._thisWeekRank, this._thisWeekHonor, this._lastWeekRank, this._lastWeekHonor];
+        var label = [this._thisWeekRank, this._thisWeekDamage, this._lastWeekRank, this._lastWeekDamage];
         var point = cc.p(30, 230);
         for (var i = 0; i < 4; i++) {
             var x = point.x + 240 * (i % 2);
@@ -225,10 +225,7 @@ var DamageRankLayer = LazyLayer.extend({
     update: function () {
         cc.log("DamageRankLayer update");
 
-        var lastWeek = {
-            "rank": 10,
-            "honor": 10000
-        };//gameData.boss.get("lastWeek");
+        var lastWeek = gameData.boss.get("lastWeek");
         var isGet = false;//gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
@@ -237,7 +234,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         if (lastWeek) {
             this._lastWeekRank.setString(lastWeek["rank"]);
-            this._lastWeekHonor.setString(lastWeek["honor"]);
+            this._lastWeekDamage.setString(lastWeek["damage"]);
         }
 
         var point = cc.p(120, 804);
@@ -250,24 +247,24 @@ var DamageRankLayer = LazyLayer.extend({
             this._lastWeekItem.setEnabled(true);
 
             var that = this;
-//            gameData.boss.updateRank(function () {
-//                var thisWeekRank = gameData.boss.get("thisWeekRank");
-//                var thisWeek = gameData.boss.get("thisWeek");
-//                if (thisWeek) {
-//                    that._thisWeekRank.setString(thisWeek["rank"]);
-//                    that._thisWeekHonor.setString(thisWeek["honor"]);
-//                }
-//                if (thisWeekRank) {
-//                    that._rankList = thisWeekRank;
-//                }
+            gameData.boss.updateRank(function () {
+                var thisWeekRank = gameData.boss.get("thisWeekRank");
+                var thisWeek = gameData.boss.get("thisWeek");
+                if (thisWeek) {
+                    that._thisWeekRank.setString(thisWeek["rank"]);
+                    that._thisWeekDamage.setString(thisWeek["damage"]);
+                }
+                if (thisWeekRank) {
+                    that._rankList = thisWeekRank;
+                }
                 that._addRankView();
-//            });
+            });
         } else {
             this._thisWeekItem.setPosition(point);
             this._lastWeekItem.setPosition(cc.p(point1.x, point1.y + 3));
             this._thisWeekItem.setEnabled(true);
             this._lastWeekItem.setEnabled(false);
-//            this._rankList = gameData.boss.get("lastWeekRank");
+            this._rankList = gameData.boss.get("lastWeekRank");
             this._addRankView();
         }
     },
@@ -290,26 +287,15 @@ var DamageRankLayer = LazyLayer.extend({
 
         var kneelMenu = cc.Menu.create();
         kneelMenu.setPosition(cc.p(0, 0));
-        this._rankView.addChild(kneelMenu);
+        this._rankView.addChild(kneelMenu, 2);
 
         this._playerItem = [];
 
-        var rankList = [];
-
-        for (var i = 0; i < 5; i++) {
-            rankList[i] = {
-                playerId: (1000 + i),
-                name: ("牛B的玩家" + i),
-                damage: 1000000 - i * 1000,
-                kneelCount: 1000 - i * 100
-            }
-        }
-
-        var len = 5;
+        var len = this._rankList.length;
 
         for (var i = 0; i < len; i++) {
             var y = 360 - 90 * i;
-            var player = rankList[i];//this._rankList[i];
+            var player = this._rankList[i];
 
             if (player.playerId == gameData.player.get("id")) {
                 var bgIcon = cc.Sprite.create(main_scene_image.button18);
@@ -361,7 +347,7 @@ var DamageRankLayer = LazyLayer.extend({
             kneelLabel.setColor(cc.c3b(123, 76, 65));
             this._rankView.addChild(kneelLabel);
 
-            var kneelCountLabel = cc.LabelTTF.create(player.kneelCount, "STHeitiTC-Medium", 20);
+            var kneelCountLabel = cc.LabelTTF.create(player.kneelCount + "", "STHeitiTC-Medium", 20);
             kneelCountLabel.setAnchorPoint(cc.p(0, 0.5));
             kneelCountLabel.setPosition(cc.p(225, y + 24));
             kneelCountLabel.setColor(cc.c3b(123, 76, 65));
@@ -434,7 +420,7 @@ var DamageRankLayer = LazyLayer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的荣誉点为0，无法获得奖励哟。"
+            tip: "亲，你的伤害值为0，无法获得奖励哟。"
         });
 
     },
@@ -532,6 +518,11 @@ var DamageRankLayer = LazyLayer.extend({
             cc.log("DamageRankLayer _onClickKneel: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            gameData.boss.kneel(function (reward) {
+                lz.tipReward(reward);
+                that.update();
+            }, id);
         }
     }
 

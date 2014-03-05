@@ -144,10 +144,15 @@ var BossListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._addScrollView();
         this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
+    },
+
+    update: function() {
+        cc.log("BossListLayer update");
+
+        this._addScrollView();
     },
 
     _addScrollView: function () {
@@ -287,6 +292,13 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickRemoveTime");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+        var cb = function () {
+            that.update();
+        };
+
+        RemoveCdTipLabel.pop({cb: cb});
     },
 
     _onClickReward: function () {

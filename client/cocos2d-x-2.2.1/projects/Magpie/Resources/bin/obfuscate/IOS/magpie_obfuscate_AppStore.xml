@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/AppStore-Releases/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/AppStore-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>
@@ -23,7 +23,7 @@
                 <file name="jsb_sys.js"/>
                 <file name="jsb_deprecated.js"/>
             </sources>
-            <sources dir="${basedir}/projects/Magpie/Res/">
+            <sources dir="${basedir}/projects/Magpie/Res_ios/">
                 <file name="src/resource.js"/>
 
                 <file name="src/table/table.js"/>
@@ -32,7 +32,7 @@
                 <file name="src/model/entity.js"/>
 
                 <file name="src/model/lz.js"/>
-                <file name="AppStore/platform.js"/>
+                <file name="IOS/AppStore/platform.js"/>
                 <file name="src/model/dataCollection.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
@@ -42,7 +42,7 @@
 
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="AppStore/user.js"/>
+                <file name="IOS/AppStore/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -68,7 +68,7 @@
                 <file name="src/model/greeting.js"/>
                 <file name="src/model/boss.js"/>
 
-                <file name="AppStore/payment.js"/>
+                <file name="IOS/AppStore/payment.js"/>
 
                 <file name="src/model/battleLogPool.js"/>
                 <file name="src/model/battleLog.js"/>
@@ -97,7 +97,7 @@
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="AppStore/loginLayer.js"/>
+                <file name="IOS/AppStore/loginLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>

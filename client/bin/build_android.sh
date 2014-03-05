@@ -35,7 +35,7 @@ function clear
 	echo "clear file"
 	if [ -d "$MAGPIE_RESOURCES_ANDROID_PATH" ]; then
 		echo "clear Res_android"
-		rm -R "MAGPIE_RESOURCES_ANDROID_PATH"
+		rm -R "$MAGPIE_RESOURCES_ANDROID_PATH"
 	fi
 }
 

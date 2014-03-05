@@ -5,6 +5,7 @@ BUILD_MODE="$2"
 COCOS2DX_ROOT="$DIR/../../.."
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
+BINDINGS_JS_ROOT="$APP_ROOT/../../scripting/javascript/bindings/js"
 
 function cp_res
 {
@@ -18,19 +19,22 @@ function cp_res
 
 function debug
 {
-	echo cp magpie src to debug android assets
-	
 	cp_res
+
+	echo "cp magpie src to debug android assets"
 
 	cp -rf "$APP_ROOT"/Resources/src "$APP_ANDROID_ROOT"/assets
 	cp -rf "$APP_ROOT"/Resources/Android/Test/* "$APP_ANDROID_ROOT"/assets
+
+	# copy bindings/*.js into assets' root
+	cp -f "$BINDINGS_JS_ROOT"/* "$APP_ANDROID_ROOT"/assets
 }
 
 function releases
 {
-	echo cp magpie src to releases android assets
-
 	cp_res
+
+	echo "cp magpie src to releases android assets"
 
 	cp -rf "$APP_ROOT"/Resources/game/Android/Test-Releases/* "$APP_ANDROID_ROOT"/assets
 }

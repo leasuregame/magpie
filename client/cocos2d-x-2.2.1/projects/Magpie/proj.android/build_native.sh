@@ -1,4 +1,5 @@
-BUILD_SETTINGS="$1"
+BUILD_TARGET="$1"
+BUILD_MODE="$2"
 APPNAME="Magpie"
 
 # options
@@ -70,12 +71,11 @@ fi
 mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/res
 
-
 # copy Resources into assets' root
-if [ "$BUILD_SETTINGS" = "debug" ] || [ "$BUILD_SETTINGS" = "Debug" ]; then
-	sh "$APP_ANDROID_ROOT"/cp_res_debug.sh "$DIR"
+if [ ! -n "$APP_ANDROID_ROOT/sh/$BUILD_TARGET_cp_res.sh" ]; then
+	sh "$APP_ANDROID_ROOT/sh/$BUILD_TARGET_cp_res.sh" "$DIR" "$BUILD_MODE"
 else
-	sh "$APP_ANDROID_ROOT"/cp_res_release.sh "$DIR"
+	echo "$APP_ANDROID_ROOT/sh/$BUILD_TARGET_cp_res.sh not exist"
 fi
 
 # copy bindings/*.js into assets' root

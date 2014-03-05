@@ -36,8 +36,6 @@ var BossDao = (function(_super) {
       });
     }
 
-    console.log(sql);
-
     dbClient.query(sql, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch boss list " + BossDao.table + "]");
@@ -57,6 +55,32 @@ var BossDao = (function(_super) {
         return cb(null, []);
       }
     }); 
+  };
+
+  BossDao.bossExists = function(playerId, cb) {
+    var now = new Date().getTime();
+
+    var tmpl = 'select count(id) as num from boss where \
+      playerId = %(playerId)s and (status in (1,2) and createTime + 50400000 > %(now)s) or \
+      (status in (3,5) and deathTime + 7200000 > %(now)s)';
+    var sql = sprintf(tmpl, {playerId: playerId, now: now});
+    dbClient.query(sql, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when fetch boss count by playerId " + playerId + "]");
+        logger.error(err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        cb(null, !!res[0].num);
+      } else {
+        cb(null, false);
+      }
+
+    });
   };
 
   return BossDao;

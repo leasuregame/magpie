@@ -10514,7 +10514,96 @@ JSBool js_cocos2dx_extension_AssetsManager_getInstance(JSContext *cx, uint32_t a
 		return JS_TRUE;
 	}
 	if (argc == 4) {
-		cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::getInstance(argv[0], argv[1], argv[2], argv[3]);
+        class DelegateProtocolImpl : public cocos2d::extension::AssetsManagerDelegateProtocol
+        {
+            public :
+            DelegateProtocolImpl(jsval jsThisObj, jsval errorCallback, jsval progressCallback, jsval successCallback)
+            : _jsThisObj(jsThisObj)
+            , _errorCallback(errorCallback)
+            , _progressCallback(progressCallback)
+            , _successCallback(successCallback)
+            {
+                
+            }
+            
+            virtual void onError(cocos2d::extension::AssetsManager::ErrorCode errorCode)
+            {
+                CCLOG("onError");
+                
+                JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+                jsval retval = JSVAL_NULL;
+                
+                if(!_errorCallback.isNullOrUndefined())
+                {
+                    jsval jsErrorCode = INT_TO_JSVAL(errorCode);
+                    
+                    if (_jsThisObj.isNullOrUndefined())
+                    {
+                        JS_CallFunctionValue(cx, NULL, _errorCallback, 1, &jsErrorCode, &retval);
+                    }
+                    else
+                    {
+                        JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _errorCallback, 1, &jsErrorCode, &retval);
+                    }
+                }
+            }
+            
+            virtual void onProgress(double totalToDownload, double nowDownloaded)
+            {
+                CCLOG("onProgress");
+                
+                JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+                jsval retval = JSVAL_NULL;
+                
+                if(!_progressCallback.isNullOrUndefined())
+                {
+                    jsval v[] = {
+                        v[0] = DOUBLE_TO_JSVAL(totalToDownload),
+                        v[1] = DOUBLE_TO_JSVAL(nowDownloaded)
+                    };
+                    
+                    if (_jsThisObj.isNullOrUndefined())
+                    {
+                        JS_CallFunctionValue(cx, NULL, _progressCallback, 2, v, &retval);
+                    }
+                    else
+                    {
+                        JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _progressCallback, 2, v, &retval);
+                    }
+                }
+            }
+            
+            virtual void onSuccess()
+            {
+                CCLOG("onSuccess");
+                
+                JSContext *cx = ScriptingCore::getInstance()->getGlobalContext();
+                jsval retval = JSVAL_NULL;
+                
+                if(!_successCallback.isNullOrUndefined())
+                {
+                    if (_jsThisObj.isNullOrUndefined())
+                    {
+                        JS_CallFunctionValue(cx, NULL, _successCallback, 0, NULL, &retval);
+                    }
+                    else
+                    {
+                        JS_CallFunctionValue(cx, JSVAL_TO_OBJECT(_jsThisObj), _successCallback, 0, NULL, &retval);
+                    }
+                }
+            }
+            
+            private :
+            jsval _jsThisObj;
+            jsval _errorCallback;
+            jsval _progressCallback;
+            jsval _successCallback;
+        };
+        
+        cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::getInstance();
+        DelegateProtocolImpl* delegate = new DelegateProtocolImpl(argv[0], argv[1], argv[2], argv[3]);
+        ret->setDelegate(delegate);
+        
 		jsval jsret;
 		do {
             if (ret) {
@@ -10893,7 +10982,7 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 	};
     
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("getInstance", js_cocos2dx_extension_AssetsManager_getInstance, 7, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getInstance", js_cocos2dx_extension_AssetsManager_getInstance, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
     

@@ -202,7 +202,9 @@ var gameGoodsIcon = {
     "spirit": "icon317",
     "exp_card": "icon316",
     "exp": "icon318",
-    "speaker": "icon375"
+    "speaker": "icon375",
+    "honor": "icon405",
+    "superHonor": "icon406"
 };
 
 var gameGoodsName = {
@@ -299,6 +301,16 @@ var gameGoodsName = {
         name: "喇叭",
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["speaker"]
+    },
+    "honor": {
+        name: "荣誉",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["honor"]
+    },
+    "superHonor": {
+        name: "精元",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["superHonor"]
     }
 };
 

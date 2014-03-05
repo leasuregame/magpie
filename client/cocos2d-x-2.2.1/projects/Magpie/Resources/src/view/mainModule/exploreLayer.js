@@ -646,19 +646,21 @@ var ExploreLayer = cc.Layer.extend({
                             }
                         },
                         function () {
-                            that.update();
-
-                            var interval = toNext ? 0.2 : 0.1;
-
-                            that.scheduleOnce(function () {
+                            if (that._index > that._maxIndex) {
                                 that._unlock();
-
-                                if (that._index > that._maxIndex) {
-                                    that._onClickBack();
-                                }
-
+                                that._onClickBack();
                                 next();
-                            }, interval);
+                            } else {
+                                that.update();
+
+                                that.scheduleOnce(function () {
+                                    next();
+
+                                    that.scheduleOnce(function () {
+                                        that._unlock();
+                                    }, 0.15);
+                                }, 0.2);
+                            }
                         },
                         function () {
                             if (upgradeReward) {

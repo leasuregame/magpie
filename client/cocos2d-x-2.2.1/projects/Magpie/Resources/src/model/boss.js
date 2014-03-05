@@ -22,10 +22,11 @@ var Boss = Entity.extend({
     _cd: 0,                 // 下次攻击剩余时间
     _kneelCount: 0,         // 膜拜次数
     _canReceive: false,     // 奖励领取标记
-    _thisWeekRank: null,    // 本周排行
-    _lastWeekRank: null,    // 上周排行
-    _thisWeekReward: null,  // 本周奖励
-    _lastWeekReward: null,  // 上周奖励
+    _thisWeekRank: null,    // 本周排行榜
+    _lastWeekRank: null,    // 上周排行榜
+    _thisWeek: null,        // 本周信息
+    _lastWeek: null,        // 上周信息
+    _isGetReward: null,    // 上周奖励是否已领
 
     init: function (data) {
         cc.log("Boss init");
@@ -37,14 +38,15 @@ var Boss = Entity.extend({
         this.on("kneelCountChange", this._kneelCountChangeEvent);
         this.on("canReceiveChange", this._canReceiveChangeEvent);
 
-        this._bossList = null;
+        this._bossList = [];
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
         this._thisWeekRank = null;
         this._lastWeekRank = null;
-        this._thisWeekReward = null;
-        this._lastWeekReward = null;
+        this._thisWeek = null;
+        this._lastWeek = null;
+        this._isGetReward = true;
 
         this.update(data);
 
@@ -81,7 +83,8 @@ var Boss = Entity.extend({
 
                 that.sets({
                     "lastWeekRank": msg.damageList,
-                    "lastWeekReward": msg.lastWeek
+                    "lastWeek": msg.lastWeek,
+                    "isGetReward": msg.isGet
                 });
             } else {
                 cc.log("Boss sync fail");
@@ -114,7 +117,7 @@ var Boss = Entity.extend({
             if (data.code == 200) {
                 cc.log("Boss updateBossList success");
 
-                that.sets(data.msg);
+                that.set("bossList", data.msg);
 
                 cb();
             } else {
@@ -142,7 +145,7 @@ var Boss = Entity.extend({
 
                 that.sets({
                     "thisWeekRank": msg.damageList,
-                    "thisWeekReward": msg.thisWeek
+                    "thisWeek": msg.thisWeek
                 });
 
                 cb();
@@ -219,6 +222,12 @@ var Boss = Entity.extend({
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
 
+                var reward = msg.battleLog.reward;
+
+                for (var key in reward) {
+                    gameData.player.add(key, reward[key]);
+                }
+
                 cb(battleLogId);
             } else {
                 cc.log("Boss attack fail");
@@ -267,6 +276,7 @@ var Boss = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.adds(msg);
+                that._isGetReward = true;
 
                 cb(msg);
             } else {
@@ -323,7 +333,7 @@ var Boss = Entity.extend({
 
                 gameData.player.sets(msg);
 
-                cb(msg);
+                cb();
             } else {
                 cc.log("Boss convertHonor fail");
 
@@ -351,7 +361,7 @@ var Boss = Entity.extend({
 
                 that.set("cd", 0);
 
-                cb(msg);
+                cb();
             } else {
                 cc.log("Boss removeTimer fail");
 
@@ -401,9 +411,31 @@ var Boss = Entity.extend({
             var len = this._bossList.length;
             for (var i = 0; i < len; ++i) {
                 var boss = this._bossList[i];
-                boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_DIE) {
+                    boss.timeLeft = 0;
+                } else {
+                    boss.timeLeft = Math.max(0, boss.timeLeft - interval);
+                }
             }
         }
+    },
+
+    canAddition: function (times) {
+
+        if (times < 0 || times > 5) {
+            return false;
+        }
+
+        if (this.needGold(times) > gameData.player.get("gold")) {
+            TipLayer.tip("魔石不足");
+            return false
+        }
+
+        return true;
+    },
+
+    needGold: function (times) {
+        return ((1 + times) * times / 2) * 20;
     },
 
     _cdChangeEvent: function () {
@@ -416,6 +448,29 @@ var Boss = Entity.extend({
 
     _canReceiveChangeEvent: function () {
         // 提示是否有奖励可以领取
+    },
+
+    getThisWeekReward: function () {
+        cc.log("Boss getThisWeekReward");
+
+//        if (!this._thisWeek) {
+//            return null;
+//        }
+
+//        var rank = this._thisWeek.rank;
+//        if (rank <= 50) {
+//            return outputTables.elixir_ranking_reward.rows[rank];
+//        } else {
+//            var money = outputTables.elixir_ranking_reward.rows[50].money;
+//            money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
+//            return {money: money}
+//        }
+    },
+
+    isCanGetRankReward: function () {
+        cc.log("Boss isCanGetRankReward");
+
+        return !(this._isGetReward || !this._lastWeek);
     }
 });
 

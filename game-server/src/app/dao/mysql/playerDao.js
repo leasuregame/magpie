@@ -20,6 +20,7 @@ var cardDao = require("./cardDao");
 var rankDao = require("./rankDao");
 var friendDao = require('./friendDao');
 var goldCardDao = require('./goldCardDao');
+var bossFriendRewardDao = require('./bossFriendRewardDao');
 var async = require('async');
 var dbClient = require('pomelo').app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
@@ -41,7 +42,7 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.getPlayerInfo = function(options, cb) {
         var _this = this;
-        var player, cards, rank, friends;
+        var player, cards, rank, friends, goldCards;
         async.waterfall([
             function(callback) {
                 _this.fetchOne(options, callback);
@@ -76,8 +77,17 @@ var PlayerDao = (function(_super) {
             function(res, callback) {
                 friends = res;
                 goldCardDao.getValidCards(player.id, callback);
+            },
+            function(res, callback) {
+                goldCards = res;
+                bossFriendRewardDao.exists({
+                    where: {
+                        playerId: player.id,
+                        got: 0
+                    }
+                }, callback);
             }
-        ], function(err, goldCards) {
+        ], function(err, hasFriendReward) {
             if (err !== null) {
                 return cb(err, null);
             }
@@ -86,6 +96,7 @@ var PlayerDao = (function(_super) {
             player.set('rank', rank);
             player.set('friends', friends);
             player.addGoldCards(goldCards);
+            player.hasFriendReward = hasFriendReward;
             return cb(null, player);
         });
     };

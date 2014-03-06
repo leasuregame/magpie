@@ -200,7 +200,6 @@ Handler::removeTimer = (msg, session, next) ->
       return next(null, {code: 501, msg: '没有可消除的CD'})
 
     gold_resume = player.removeTimerConsume()
-    console.log '-consume-', player.gold, gold_resume
     if player.gold < gold_resume
       return next(null, {code: 501, msg: '魔石不足'})
 
@@ -210,6 +209,53 @@ Handler::removeTimer = (msg, session, next) ->
     player.save()
 
     next(null, {code: 200})
+
+Handler::kneel = (msg, session, next) ->
+  playerId = session.get('playerId')
+  targetId = msg.playerId
+
+  if typeof targetId is 'undefined'
+    return next(null, {code: 501, msg: '请指定膜拜对象'})
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      dao.player.exists where: {
+        id: targetId
+      }, cb
+    (exist, cb) ->
+      if not exist
+        return cb({code: 501, msg: '膜拜对象不存在'})
+      playerManager.getPlayerInfo pid: playerId, cb
+    (res, cb) ->
+      player = res
+      if player.kneelCountLeft() <= 0
+        return cb({code: 501, msg: '膜拜次数已用完'})
+      cb(null)
+    (cb) ->
+      dao.damageOfRank.getRank targetId, utility.thisWeek(), cb
+    (rank, cb) ->
+      if not rank or rank.rank > 5
+        cb({code: 501, msg: '玩家没有上榜，不能膜拜'})
+      cb(null)
+    (cb) ->
+      player.increase 'energy', BOSSCONFIG.KNEEL_REWARD.ENERGY
+      player.addPower BOSSCONFIG.KNEEL_REWARD.POWER
+      player.updateGift 'kneelCountLeft', player.dailyGift.kneelCountLeft-1
+      player.save()
+      cb(null)
+    (cb) ->
+      dao.damageOfRank.updateKneelCount targetId, cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    next(null, {
+      code: 200,
+      msg: 
+        power: BOSSCONFIG.KNEEL_REWARD.POWER
+        energy: BOSSCONFIG.KNEEL_REWARD.ENERGY
+    })
 
 Handler::bossList = (msg, session, next) ->
   playerId = session.get('playerId')

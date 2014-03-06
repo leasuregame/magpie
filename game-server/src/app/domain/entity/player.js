@@ -318,7 +318,8 @@ var Player = (function(_super) {
                 receivers: []
             },
             hasGotLoginReward: 0,
-            kneelCountLeft: KNEELCOUNT_DEFAULT
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            rmTimerCount: 1
         },
         fragments: 0,
         energy: 0,
@@ -413,7 +414,8 @@ var Player = (function(_super) {
                 receivers: []
             },
             hasGotLoginReward: 0,
-            kneelCountLeft: KNEELCOUNT_DEFAULT
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            rmTimerCount: 1
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1324,6 +1326,24 @@ var Player = (function(_super) {
         }
         
         this.task = task;
+    };
+
+    Player.prototype.removeTimerConsume = function() {
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var consume = 20 * this.dailyGift.rmTimerCount;
+        return consume > 200 ? 200 : consume;
+    };
+
+    Player.prototype.incRmTimerCount = function(){
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var count = parseInt(this.dailyGift.rmTimerCount + 1);
+        this.updateGift('rmTimerCount', count);
     };
 
     Player.prototype.toJson = function() {

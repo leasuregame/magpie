@@ -30,7 +30,13 @@ describe("Area Server", function() {
 
 
       describe('当上周有奖励可领时', function() {
+        var before_player;
+
         beforeEach(function() {
+
+          doAjax('/player/100', function(res) {
+            before_player = res.data;
+          });
 
           doAjax('/create/damageOfRank', {
             playerId: 2,
@@ -83,6 +89,12 @@ describe("Area Server", function() {
       });
 =======
 
+          doAjax('/player/100', function(res) {
+            expect(res.data.honor).toEqual(before_player.honor + data.msg.honor);
+            expect(res.data.money).toEqual(before_player.money + data.msg.money);
+            expect(res.data.energy).toEqual(before_player.energy + data.msg.energy);
+          });
+
           request('area.bossHandler.getLastWeekReward', {}, function(data) {
             console.log(data);
             expect(data).toEqual({
@@ -95,7 +107,13 @@ describe("Area Server", function() {
       });
 
       describe('当上周有奖励可领时', function() {
+        var before_player;
+
         beforeEach(function() {
+
+          doAjax('/player/100', function(res) {
+            before_player = res.data;
+          });
 
           doAjax('/create/damageOfRank', {
             playerId: 2,
@@ -146,6 +164,12 @@ describe("Area Server", function() {
                 honor: 7976
               }
             });
+          });
+
+          doAjax('/player/100', function(res) {
+            expect(res.data.honor).toEqual(before_player.honor + data.msg.honor);
+            expect(res.data.money).toEqual(before_player.money);
+            expect(res.data.energy).toEqual(before_player.energy);
           });
 
           request('area.bossHandler.getLastWeekReward', {}, function(data) {

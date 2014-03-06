@@ -14,6 +14,89 @@ describe("Area Server", function() {
 
       describe('我的boss', function() {
 
+        describe('死亡的Boss', function() {
+
+          describe('生命值总和为0', function() {
+            var bossId;
+            var bossCreateTime = new Date().getTime();
+
+            beforeEach(function() {
+
+              doAjax('/update/player/100', {
+                cd: JSON.stringify({
+                  lastAtkTime: 0
+                })
+              }, function() {});
+
+              doAjax('/create/boss', {
+                playerId: 100,
+                tableId: 2,
+                atkCount: 5,
+                finder: 'Attacker',
+                hp: '{"2":{"cardId":40001,"hp":0},"4":{"cardId":40004,"hp":0},"6":{"cardId":40004,"hp":0}}',
+                createTime: bossCreateTime
+              }, function(res) {
+                bossId = res.insertId;
+                loginWith('arthur', '1', 1);
+              });
+            });
+
+            it('不能攻击死亡的Boss', function() {
+              request('area.bossHandler.attack', {
+                bossId: bossId
+              }, function(data) {
+                console.log(data);
+                expect(data).toEqual({
+                  code: 501,
+                  msg: 'Boss已结束'
+                });
+              });
+            });
+          });
+
+          describe('状态位死亡状态', function() {
+            var bossId;
+            var bossCreateTime = new Date().getTime();
+
+            beforeEach(function() {
+
+              doAjax('/update/player/100', {
+                cd: JSON.stringify({
+                  lastAtkTime: 0
+                })
+              }, function() {});
+
+              doAjax('/create/boss', {
+                playerId: 100,
+                tableId: 2,
+                atkCount: 5,
+                status: 5,
+                finder: 'Attacker',
+                hp: '{"2":{"cardId":40001,"hp":1111110},"4":{"cardId":40004,"hp":0},"6":{"cardId":40004,"hp":0}}',
+                createTime: bossCreateTime
+              }, function(res) {
+                bossId = res.insertId;
+                loginWith('arthur', '1', 1);
+              });
+            });
+
+            it('不能攻击死亡的Boss', function() {
+              request('area.bossHandler.attack', {
+                bossId: bossId
+              }, function(data) {
+                console.log(data);
+                expect(data).toEqual({
+                  code: 501,
+                  msg: 'Boss已结束'
+                });
+              });
+            });
+          });
+
+
+
+        });
+
         describe('沉睡的Boss', function() {
           var before_player;
           var bossId;
@@ -445,7 +528,7 @@ describe("Area Server", function() {
 
         describe('超时的boss', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 12*60*60*1000
+          var bossCreateTime = new Date().getTime() - 12 * 60 * 60 * 1000
 
           beforeEach(function() {
             doAjax('/update/player/100', {
@@ -468,7 +551,7 @@ describe("Area Server", function() {
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
@@ -484,7 +567,7 @@ describe("Area Server", function() {
 
         describe('逃走的boss', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 6*60*60*1000
+          var bossCreateTime = new Date().getTime() - 6 * 60 * 60 * 1000
 
           beforeEach(function() {
 
@@ -508,7 +591,7 @@ describe("Area Server", function() {
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
@@ -524,7 +607,7 @@ describe("Area Server", function() {
 
         describe('消失的boss', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 14*60*60*1000
+          var bossCreateTime = new Date().getTime() - 14 * 60 * 60 * 1000
 
           beforeEach(function() {
             doAjax('/update/player/100', {
@@ -547,7 +630,7 @@ describe("Area Server", function() {
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
@@ -563,7 +646,7 @@ describe("Area Server", function() {
 
         describe('陌生人的boss', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 5*60*60*1000
+          var bossCreateTime = new Date().getTime() - 5 * 60 * 60 * 1000
 
           beforeEach(function() {
             doAjax('/update/player/100', {
@@ -586,7 +669,7 @@ describe("Area Server", function() {
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
@@ -602,7 +685,7 @@ describe("Area Server", function() {
 
         describe('玩家在cd冷却时间内', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 5*60*60*1000
+          var bossCreateTime = new Date().getTime() - 5 * 60 * 60 * 1000
 
           beforeEach(function() {
 
@@ -615,20 +698,20 @@ describe("Area Server", function() {
               createTime: bossCreateTime
             }, function(res) {
               bossId = res.insertId;
-              
+
               doAjax('/update/player/100', {
                 cd: {
                   lastAtkTime: new Date().getTime() - 10 * 60 * 1000
                 }
-              }, function(){
+              }, function() {
                 loginWith('arthur', '1', 1);
               });
-              
+
             });
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 3
@@ -644,7 +727,7 @@ describe("Area Server", function() {
 
         describe('魔石不足', function() {
           var bossId;
-          var bossCreateTime = new Date().getTime() - 5*60*60*1000
+          var bossCreateTime = new Date().getTime() - 5 * 60 * 60 * 1000
 
           beforeEach(function() {
 
@@ -657,21 +740,21 @@ describe("Area Server", function() {
               createTime: bossCreateTime
             }, function(res) {
               bossId = res.insertId;
-              
+
               doAjax('/update/player/100', {
                 cd: {
                   lastAtkTime: 0
                 },
                 gold: 10
-              }, function(){
+              }, function() {
                 loginWith('arthur', '1', 1);
               });
-              
+
             });
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 5
@@ -688,11 +771,11 @@ describe("Area Server", function() {
       });
 
       describe('好友的boss', function() {
-        
-        describe('沉睡的Boss', function(){
+
+        describe('沉睡的Boss', function() {
 
           var bossId;
-          var bossCreateTime = new Date().getTime() - 5*60*60*1000
+          var bossCreateTime = new Date().getTime() - 5 * 60 * 60 * 1000
 
           beforeEach(function() {
 
@@ -705,20 +788,20 @@ describe("Area Server", function() {
               createTime: bossCreateTime
             }, function(res) {
               bossId = res.insertId;
-              
+
               doAjax('/update/player/100', {
                 cd: {
                   lastAtkTime: 0
                 }
-              }, function(){
+              }, function() {
                 loginWith('arthur', '1', 1);
               });
-              
+
             });
 
           });
 
-          it('不能攻击boss', function(){
+          it('不能攻击boss', function() {
             request('area.bossHandler.attack', {
               bossId: bossId,
               inspireCount: 0

@@ -253,7 +253,7 @@ Handler::attack = (msg, session, next) ->
       if boss.playerId not in friendIds
         return cb({code: 501, msg: '不能攻击陌生人的Boss哦'})
 
-      if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() 
+      if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() or boss.isDeath()
         return cb({code: 501, msg: 'Boss已结束'})
 
       if boss.playerId isnt playerId and boss.status is BOSS_STATUS.SLEEP

@@ -54,6 +54,10 @@ var DamageOfRankDao = (function(_super) {
         dbClient.query('select playerId, name, damage, kneelCount from damageOfRank where week = ? order by damage DESC limit 5', [utility.lastWeek()], cb)
     };
 
+    DamageOfRankDao.updateKneelCount = function(playerId, cb) {
+      dbClient.query('update damageOfRank set kneelCount = kneelCount + 1 where playerId = ? and week = ?', [playerId, utility.thisWeek()], cb);
+    };
+
   return DamageOfRankDao;
 })(DaoBase);
 

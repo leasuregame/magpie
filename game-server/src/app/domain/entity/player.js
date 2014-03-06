@@ -262,7 +262,6 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'kneelCount',
         'cd'
     ];
 
@@ -370,7 +369,6 @@ var Player = (function(_super) {
         speaker: 0,
         honor: 0,
         superHonor: 0,
-        kneelCount: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
         }
@@ -1346,6 +1344,13 @@ var Player = (function(_super) {
         this.updateGift('rmTimerCount', count);
     };
 
+    Player.prototype.kneelCountLeft = function() {
+        if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
+            this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
+        } 
+        return this.dailyGift.kneelCountLeft;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1390,10 +1395,9 @@ var Player = (function(_super) {
             speaker: this.speaker,
             honor: this.honor,
             superHonor: this.superHonor,
-            kneelCount: this.kneelCount,
             bossInfo: {
                 cd: this.getCD(),
-                kneelCountLeft: this.dailyGift.kneelCountLeft || KNEELCOUNT_DEFAULT, 
+                kneelCountLeft: this.kneelCountLeft(), 
                 canReceive: this.hasFriendReward || false,
             }
         };

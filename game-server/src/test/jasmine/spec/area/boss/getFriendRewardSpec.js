@@ -29,10 +29,14 @@ describe("Area Server", function() {
       });
 
       describe('当有好友奖励可领时', function() {
-        var bossId;
+        var bossId, before_player;
         var bossCreateTime = new Date().getTime() - 5 * 60 * 60 * 1000
 
         beforeEach(function() {
+
+          doAjax('/player/1', function(res) {
+            before_player = res.data;
+          });
 
           doAjax('/create/boss', {
             playerId: 1,
@@ -72,6 +76,11 @@ describe("Area Server", function() {
               console.log(data);
               expect(data.msg.money).toBeGreaterThan(1);
               expect(data.msg.honor).toBeGreaterThan(1);
+            });
+
+            doAjax('/player/1', function(res) {
+              expect(res.data.money).toEqual(before_player.money + data.msg.money);
+              expect(res.data.honor).toEqual(before_player.honor + data.msg.honor);
             });
 
             request('area.bossHandler.getFriendReward', {}, function(data) {

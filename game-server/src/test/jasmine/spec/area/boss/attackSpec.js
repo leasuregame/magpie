@@ -49,7 +49,7 @@ describe("Area Server", function() {
                 expect(data).toEqual({
                   code: 501,
                   msg: 'Boss已结束'
-                })
+                });
               });
             });
           });
@@ -88,7 +88,7 @@ describe("Area Server", function() {
                 expect(data).toEqual({
                   code: 501,
                   msg: 'Boss已结束'
-                })
+                });
               });
             });
           });

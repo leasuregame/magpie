@@ -192,17 +192,21 @@ Handler::convertHonor = (msg, session, next) ->
 Handler::removeTimer = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  removeCount = 1
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: 501, msg: err.message or err.msg})
 
-    gold_resume = 20 * removeCount
+    if player.getCD() is 0
+      return next(null, {code: 501, msg: '没有可消除的CD'})
+
+    gold_resume = player.removeTimerConsume()
+    console.log '-consume-', player.gold, gold_resume
     if player.gold < gold_resume
       return next(null, {code: 501, msg: '魔石不足'})
 
     player.decrease 'gold', gold_resume
     player.removeCD()
+    player.incRmTimerCount()
     player.save()
 
     next(null, {code: 200})

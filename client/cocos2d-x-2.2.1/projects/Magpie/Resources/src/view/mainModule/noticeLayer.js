@@ -80,8 +80,10 @@ NoticeLayer.create = function () {
 };
 
 NoticeLayer.pop = function () {
-    lz.scheduleOnce(function () {
-        var noticeLayer = NoticeLayer.create();
-        cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10001);
-    }, 0.01);
+    if (typeof(lz.WebLayer) != "undefined") {
+        lz.scheduleOnce(function () {
+            var noticeLayer = NoticeLayer.create();
+            cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10001);
+        }, 0.01);
+    }
 };

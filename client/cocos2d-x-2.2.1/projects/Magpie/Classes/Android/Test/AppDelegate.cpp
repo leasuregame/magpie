@@ -45,11 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
     
-    if (screenSize.height == 1136) {
-        pEGLView->setDesignResolutionSize(640, 1136, kResolutionNoBorder);
-    } else {
-        pEGLView->setDesignResolutionSize(720, 960, kResolutionNoBorder);
-    }
+    pEGLView->setDesignResolutionSize(640, 1136, kResolutionExactFit);
     
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 30);

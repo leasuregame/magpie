@@ -231,6 +231,10 @@ Handler::kneel = (msg, session, next) ->
       player = res
       if player.kneelCountLeft() <= 0
         return cb({code: 501, msg: '膜拜次数已用完'})
+
+      if player.hasKneel(targetId)
+        return cb({code: 501, msg: '不能重复膜拜'})
+        
       cb(null)
     (cb) ->
       dao.damageOfRank.getRank targetId, utility.thisWeek(), cb
@@ -242,6 +246,7 @@ Handler::kneel = (msg, session, next) ->
       player.increase 'energy', BOSSCONFIG.KNEEL_REWARD.ENERGY
       player.addPower BOSSCONFIG.KNEEL_REWARD.POWER
       player.updateGift 'kneelCountLeft', player.dailyGift.kneelCountLeft-1
+      player.addKneel targetId
       player.save()
       cb(null)
     (cb) ->

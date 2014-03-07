@@ -21,7 +21,7 @@ var BossListLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("Boss界面");
+        lz.um.beginLogPageView("Boss界面");
     },
 
     onExit: function () {
@@ -29,7 +29,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("Boss界面");
+        lz.um.endLogPageView("Boss界面");
     },
 
     init: function () {

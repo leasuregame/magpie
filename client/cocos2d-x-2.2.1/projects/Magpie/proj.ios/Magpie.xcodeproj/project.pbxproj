@@ -477,12 +477,6 @@
 		902B08F11858C571003A2A49 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DF1858C571003A2A49 /* Icon-80.png */; };
 		902B08F31858C571003A2A49 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 902B08E11858C571003A2A49 /* iTunesArtwork */; };
 		902B08F51858C666003A2A49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902B08F41858C666003A2A49 /* StoreKit.framework */; };
-		9058F5DA18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
-		9058F5DB18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
-		9058F5DC18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D618C4603400FD88DB /* libMobClickLibrary.a */; };
-		9058F5DD18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D618C4603400FD88DB /* libMobClickLibrary.a */; };
-		9058F5DE18C4603400FD88DB /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D918C4603400FD88DB /* MobClickCPP.mm */; };
-		9058F5DF18C4603400FD88DB /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D918C4603400FD88DB /* MobClickCPP.mm */; };
 		9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5E918C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5EA18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
@@ -551,6 +545,10 @@
 		90DE78D818C71ECE005A300F /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BD18C71D46005A300F /* payment.js */; };
 		90DE78D918C71ECE005A300F /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BE18C71D46005A300F /* platform.js */; };
 		90DE78DA18C71ECE005A300F /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BF18C71D46005A300F /* user.js */; };
+		90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
+		90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
+		90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
+		90F3932918C9C713002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
 		90F5350B1862EAC2008207BD /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		90F5350C1862EAC2008207BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		90F5350D1862EAC2008207BD /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -1521,12 +1519,6 @@
 		902B08E01858C571003A2A49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902B08E11858C571003A2A49 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		902B08F41858C666003A2A49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
-		9058F5D518C4603400FD88DB /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
-		9058F5D618C4603400FD88DB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		9058F5D718C4603400FD88DB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		9058F5D818C4603400FD88DB /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
-		9058F5D918C4603400FD88DB /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
 		9058F5E118C4609800FD88DB /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
 		9058F5E218C4609800FD88DB /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		9058F5E318C4609800FD88DB /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
@@ -1581,6 +1573,11 @@
 		90DE78BF18C71D46005A300F /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		90DE78C618C71D58005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90DE78C918C71D66005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
+		90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_MobClickCpp.cpp; sourceTree = "<group>"; };
+		90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_MobClickCpp.hpp; sourceTree = "<group>"; };
+		90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_MobClickCpp_api.js; sourceTree = "<group>"; };
+		90F3932218C9C712002EC9BC /* libMobClickCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickCpp.a; sourceTree = "<group>"; };
+		90F3932318C9C712002EC9BC /* MobClickCpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCpp.h; sourceTree = "<group>"; };
 		90F536191862EAC2008207BD /* Magpie-AppStore-Releases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore-Releases.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F537261862EB3C008207BD /* Magpie-TB-Releases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB-Releases.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A922753D1517C094001B78AA /* Magpie-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1633,14 +1630,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
 				909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				90F535DC1862EAC2008207BD /* libsqlite3.dylib in Frameworks */,
+				90F3932918C9C713002EC9BC /* libMobClickCpp.a in Frameworks */,
 				90F535DD1862EAC2008207BD /* libcocos2dx.a in Frameworks */,
-				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
 				90F535E01862EAC2008207BD /* libxml2.dylib in Frameworks */,
 				90F535E11862EAC2008207BD /* QuartzCore.framework in Frameworks */,
 				90F535E21862EAC2008207BD /* OpenGLES.framework in Frameworks */,
-				9058F5DD18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */,
 				90F535E31862EAC2008207BD /* OpenAL.framework in Frameworks */,
 				90F535E41862EAC2008207BD /* AudioToolbox.framework in Frameworks */,
 				90F535E51862EAC2008207BD /* AVFoundation.framework in Frameworks */,
@@ -1683,14 +1680,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
 				909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
+				90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
-				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
 				D454520A156E22B400887EB5 /* libxml2.dylib in Frameworks */,
 				A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */,
 				A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */,
-				9058F5DC18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */,
 				A92275461517C094001B78AA /* OpenAL.framework in Frameworks */,
 				A92275481517C094001B78AA /* AudioToolbox.framework in Frameworks */,
 				A922754A1517C094001B78AA /* AVFoundation.framework in Frameworks */,
@@ -2569,27 +2566,14 @@
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90F3931E18C9C712002EC9BC /* UM */,
 				9058F62118C460DA00FD88DB /* TongBu */,
 				9058F60918C460CD00FD88DB /* WebLayer */,
 				9058F60218C460C600FD88DB /* Reachability */,
 				9058F5F018C460BF00FD88DB /* NotificationHelp */,
 				9058F5E018C4609800FD88DB /* IAPHelp */,
-				9058F5D318C4603400FD88DB /* DataDollection */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		9058F5D318C4603400FD88DB /* DataDollection */ = {
-			isa = PBXGroup;
-			children = (
-				9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */,
-				9058F5D518C4603400FD88DB /* js_cocos2dx_autogen_extension.hpp */,
-				9058F5D618C4603400FD88DB /* libMobClickLibrary.a */,
-				9058F5D718C4603400FD88DB /* MobClick.h */,
-				9058F5D818C4603400FD88DB /* MobClickCPP.h */,
-				9058F5D918C4603400FD88DB /* MobClickCPP.mm */,
-			);
-			path = DataDollection;
 			sourceTree = "<group>";
 		};
 		9058F5E018C4609800FD88DB /* IAPHelp */ = {
@@ -2754,6 +2738,18 @@
 			);
 			name = "TB-Releases";
 			path = "../Resources/game/IOS/TB-Releases";
+			sourceTree = "<group>";
+		};
+		90F3931E18C9C712002EC9BC /* UM */ = {
+			isa = PBXGroup;
+			children = (
+				90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */,
+				90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */,
+				90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */,
+				90F3932218C9C712002EC9BC /* libMobClickCpp.a */,
+				90F3932318C9C712002EC9BC /* MobClickCpp.h */,
+			);
+			path = UM;
 			sourceTree = "<group>";
 		};
 		A92275321517C094001B78AA = {
@@ -3484,6 +3480,7 @@
 				90F535501862EAC2008207BD /* CCNodeLoaderLibrary.cpp in Sources */,
 				90F535511862EAC2008207BD /* CCParticleSystemQuadLoader.cpp in Sources */,
 				90F535521862EAC2008207BD /* UILayoutParameter.cpp in Sources */,
+				90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */,
 				90F535531862EAC2008207BD /* CCScale9SpriteLoader.cpp in Sources */,
 				90F535541862EAC2008207BD /* CCScrollViewLoader.cpp in Sources */,
 				90F535551862EAC2008207BD /* CCSpriteLoader.cpp in Sources */,
@@ -3600,13 +3597,11 @@
 				90F535CF1862EAC2008207BD /* UILabelBMFont.cpp in Sources */,
 				90F535D11862EAC2008207BD /* UILoadingBar.cpp in Sources */,
 				90F535D21862EAC2008207BD /* UISlider.cpp in Sources */,
-				9058F5DB18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				90F535D31862EAC2008207BD /* UISwitch.cpp in Sources */,
 				90F535D51862EAC2008207BD /* UITextField.cpp in Sources */,
 				90F535D61862EAC2008207BD /* CSContentJsonDictionary.cpp in Sources */,
 				90F535D71862EAC2008207BD /* DictionaryHelper.cpp in Sources */,
 				90F535D81862EAC2008207BD /* json_reader.cpp in Sources */,
-				9058F5DF18C4603400FD88DB /* MobClickCPP.mm in Sources */,
 				90F535D91862EAC2008207BD /* json_value.cpp in Sources */,
 				90F535DA1862EAC2008207BD /* json_writer.cpp in Sources */,
 			);
@@ -3846,7 +3841,6 @@
 				15A3D3951682F0B6002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D3961682F0B6002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				15A3D3971682F0B6002FB0C5 /* cpSimpleMotor.c in Sources */,
-				9058F5DA18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				15A3D3981682F0B6002FB0C5 /* cpSlideJoint.c in Sources */,
 				15A3D3991682F0B6002FB0C5 /* cpArbiter.c in Sources */,
 				15A3D39A1682F0B6002FB0C5 /* cpArray.c in Sources */,
@@ -3898,6 +3892,7 @@
 				15A3D53C1682F1A5002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
 				15A3D53D1682F1A5002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3D53E1682F1A5002FB0C5 /* CCSpriteLoader.cpp in Sources */,
+				90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */,
 				15A3D53F1682F1A5002FB0C5 /* CCControl.cpp in Sources */,
 				15A3D5401682F1A5002FB0C5 /* CCControlButton.cpp in Sources */,
 				15A3D5411682F1A5002FB0C5 /* CCControlColourPicker.cpp in Sources */,
@@ -3932,7 +3927,6 @@
 				1A40E7981727C102006D4861 /* AnimationState.cpp in Sources */,
 				1A40E7991727C102006D4861 /* AnimationStateData.cpp in Sources */,
 				1A40E79A1727C102006D4861 /* Atlas.cpp in Sources */,
-				9058F5DE18C4603400FD88DB /* MobClickCPP.mm in Sources */,
 				1A40E79B1727C102006D4861 /* AtlasAttachmentLoader.cpp in Sources */,
 				1A40E79C1727C102006D4861 /* Attachment.cpp in Sources */,
 				1A40E79D1727C102006D4861 /* AttachmentLoader.cpp in Sources */,
@@ -4161,6 +4155,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4196,7 +4191,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4214,6 +4209,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4246,7 +4242,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4423,6 +4419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4458,7 +4455,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4476,6 +4473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4508,7 +4506,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

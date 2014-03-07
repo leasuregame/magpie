@@ -26,7 +26,7 @@ var RankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("排行榜界面");
+        lz.um.beginLogPageView("排行榜界面");
     },
 
     onExit: function () {
@@ -34,7 +34,7 @@ var RankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("排行榜界面");
+        lz.um.endLogPageView("排行榜界面");
     },
 
     init: function () {

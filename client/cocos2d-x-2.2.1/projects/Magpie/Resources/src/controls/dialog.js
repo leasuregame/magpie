@@ -17,7 +17,7 @@ var Dialog = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("对话框");
+        lz.um.beginLogPageView("对话框");
     },
 
     onExit: function () {
@@ -25,7 +25,7 @@ var Dialog = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("对话框");
+        lz.um.endLogPageView("对话框");
     },
 
     init: function (msg, cb) {

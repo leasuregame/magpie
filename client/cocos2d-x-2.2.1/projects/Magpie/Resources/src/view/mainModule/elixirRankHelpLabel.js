@@ -35,6 +35,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
         this.addChild(titleIcon);
 
         var rankBgIcon = cc.Scale9Sprite.create(main_scene_image.icon169);
+        rankBgIcon.setAnchorPoint(cc.p(0, 0));
         rankBgIcon.setPosition(this._elixirRankHelpLabelFit.rankBgIconPoint);
         rankBgIcon.setContentSize(this._elixirRankHelpLabelFit.rankBgIconSize);
         this.addChild(rankBgIcon);
@@ -57,15 +58,29 @@ var ElixirRankHelpLabel = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var tipBgIcon = cc.Sprite.create(main_scene_image.icon175);
-        tipBgIcon.setPosition(this._elixirRankHelpLabelFit.tipPoint);
-        tipBgIcon.setScaleX(1.2);
-        tipBgIcon.setScaleY(0.4);
+        var tipBgIcon = cc.Scale9Sprite.create(main_scene_image.icon169);
+        tipBgIcon.setPosition(this._elixirRankHelpLabelFit.tipBgPoint);
+        tipBgIcon.setContentSize(this._elixirRankHelpLabelFit.tipBgSize);
         this.addChild(tipBgIcon);
 
-        var tipLabel = cc.LabelTTF.create("50名以外，排名越高，奖励越高", "STHeitiTC-Medium", 26)
-        tipLabel.setPosition(this._elixirRankHelpLabelFit.tipPoint);
-        this.addChild(tipLabel);
+        var tips = [
+            "1、该排行榜仅限通过竞技所获得的仙丹。",
+            "2、本周排名奖励，下周可领取，领取时间只存在一周。",
+            "3、未进榜者，会更加排名发放奖励，排名越高奖励越高。",
+            "4、本周没有参与竞技者，则没有奖励。"
+        ];
+
+        var len = tips.length;
+        var point = this._elixirRankHelpLabelFit.tipBasePoint;
+
+        for (var i = 0; i < len; i++) {
+            var y = point.y - 40 - 32 * i;
+            var tipLabel = cc.LabelTTF.create(tips[i], "STHeitiTC-Medium", 22);
+            tipLabel.setAnchorPoint(cc.p(0, 0));
+            tipLabel.setPosition(cc.p(point.x, y));
+            tipLabel.setColor(cc.c3b(255, 239, 197));
+            this.addChild(tipLabel);
+        }
 
         this._addRankScrollView();
 

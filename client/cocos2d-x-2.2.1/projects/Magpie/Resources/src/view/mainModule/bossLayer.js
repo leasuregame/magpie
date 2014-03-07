@@ -77,12 +77,23 @@ var BossLayer = cc.Layer.extend({
         bossNameLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(bossNameLabel);
 
-        var runAwayTimeLabel = cc.LabelTTF.create("逃跑时间: ", "STHeitiTC-Medium", 22);
+        var rewardAdditionLabel = StrokeLabel.create("奖励加成", "STHeitiTC-Medium", 22);
+        rewardAdditionLabel.setAnchorPoint(cc.p(0.5, 0));
+        rewardAdditionLabel.setPosition(this._bossLayerFit.rewardAdditionLabelPoint);
+        this.addChild(rewardAdditionLabel);
+
+        var rewardAddition = StrokeLabel.create("150%", "STHeitiTC-Medium", 22);
+        rewardAddition.setAnchorPoint(cc.p(0.5, 0));
+        rewardAddition.setColor(cc.c3b(193, 224, 109));
+        rewardAddition.setPosition(this._bossLayerFit.rewardAdditionPoint);
+        this.addChild(rewardAddition);
+
+        var runAwayTimeLabel = StrokeLabel.create("逃跑时间: ", "STHeitiTC-Medium", 22);
         runAwayTimeLabel.setAnchorPoint(cc.p(0.5, 0));
         runAwayTimeLabel.setPosition(this._bossLayerFit.runAwayLabelPoint);
         this.addChild(runAwayTimeLabel);
 
-        this._bossCdTimeLabel = cc.LabelTTF.create(
+        this._bossCdTimeLabel = StrokeLabel.create(
             lz.getTimeStr({
                 time: boss.timeLeft + STOP_TIME
             }),
@@ -96,14 +107,10 @@ var BossLayer = cc.Layer.extend({
         this._countLeftLabel = StrokeLabel.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 25);
         this._countLeftLabel.setAnchorPoint(cc.p(0.5, 0));
         this._countLeftLabel.setPosition(this._bossLayerFit.countLeftLabelPoint);
-        this._countLeftLabel.setColor(cc.c3b(237, 69, 69));
-        this._countLeftLabel.setBgColor(cc.c3b(54, 7, 14));
+        this._countLeftLabel.setColor(cc.c3b(255, 243, 163));
+        this._countLeftLabel.setBgColor(cc.c3b(120, 12, 42));
         this.addChild(this._countLeftLabel);
 
-        var inspireIcon = cc.Sprite.create(main_scene_image.icon399);
-        inspireIcon.setAnchorPoint(cc.p(0.5, 0));
-        inspireIcon.setPosition(this._bossLayerFit.inspireIconPoint);
-        this.addChild(inspireIcon);
 
         var additionBgLabel = cc.Sprite.create(main_scene_image.icon401);
         additionBgLabel.setAnchorPoint(cc.p(0.5, 0));
@@ -115,12 +122,12 @@ var BossLayer = cc.Layer.extend({
         this._additionLabel.setPosition(this._bossLayerFit.additionLabelPoint);
         this.addChild(this._additionLabel);
 
-        var attackCdTimeLabel = cc.LabelTTF.create("攻击冷却时间: ", "STHeitiTC-Medium", 22);
+        var attackCdTimeLabel = StrokeLabel.create("攻击冷却时间: ", "STHeitiTC-Medium", 22);
         attackCdTimeLabel.setAnchorPoint(cc.p(0.5, 0));
         attackCdTimeLabel.setPosition(this._bossLayerFit.attackCdTimeLabelPoint);
         this.addChild(attackCdTimeLabel);
 
-        this._cdTimeLabel = cc.LabelTTF.create(
+        this._cdTimeLabel = StrokeLabel.create(
             lz.getTimeStr({
                 time: this._cdTime + STOP_TIME
             }),
@@ -226,7 +233,16 @@ var BossLayer = cc.Layer.extend({
 
         attackRecordItem.setPosition(this._bossLayerFit.attackRecordItemPoint);
 
-        var menu = cc.Menu.create(addItem, subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem);
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._bossLayerFit.helpItemPoint);
+
+        var menu = cc.Menu.create(addItem, subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -354,6 +370,14 @@ var BossLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         AttackDetailsLayer.pop(this._bossId);
+    },
+
+    _onClickHelp: function () {
+        cc.log("BossLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        BossHelpLabel.pop();
     }
 
 });

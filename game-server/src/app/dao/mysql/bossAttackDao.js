@@ -28,6 +28,27 @@ var BossAttackDao = (function(_super) {
   domain.FIELDS = ['id', 'bossId', 'damage', 'playerId', 'money', 'honor', 'moneyAdd', 'honorAdd', 'battleLogId'];
   BossAttackDao.domain = domain;
 
+  BossAttackDao.getByBossId = function(bossId, cb) {
+    var sql = 'select b.playerId, p.name as attacker, b.damage, b.money, b.honor, b.moneyAdd, b.honorAdd, b.battleLogId from bossAttack b\
+      join player p on b.playerId = p.id \
+      where b.bossId = ' + bossId;
+    dbClient.query(sql, [], function(err, res) {
+      if (err) {
+        logger.error('[SQL ERROR] when query bossAttack by bossId ' + bossId);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        cb(null, res);
+      } else {
+        cb(null, []);
+      }
+    });
+  };
+
   return BossAttackDao;
 })(DaoBase);
 

@@ -377,6 +377,7 @@ var DamageRankLayer = LazyLayer.extend({
             kneelItem.setAnchorPoint(cc.p(0, 0.5));
             kneelItem.setPosition(cc.p(500, y + 48));
             kneelItem.setScale(0.9);
+            kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
 
             kneelMenu.addChild(kneelItem);
         }

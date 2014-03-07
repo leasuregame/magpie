@@ -11,6 +11,21 @@ describe("Area Server", function() {
 
       describe('我的Boss', function() {
 
+        describe('没有好友，没有boss时', function(){
+          beforeEach(function(){
+            loginWith('2', '1', 1);
+          });
+
+          it('返回空列表', function(){
+            request('area.bossHandler.bossList', {}, function(data) {
+              expect(data).toEqual({
+                code: 200,
+                msg: []
+              });
+            });
+          });
+
+        });
 
         describe('没有Boss时', function() {
           beforeEach(function() {

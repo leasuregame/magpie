@@ -1373,8 +1373,9 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
-        delete dailyGift.kneelCountLeft
-        delete dailyGift.kneelList
+        delete dailyGift.kneelCountLeft;
+        delete dailyGift.kneelList;
+        delete dailyGift.rmTimerCount;
         return dailyGift;
     };
 
@@ -1426,6 +1427,7 @@ var Player = (function(_super) {
                 cd: this.getCD(),
                 kneelCountLeft: this.kneelCountLeft(),
                 kneelList: this.dailyGift.kneelList || [],
+                rmTimerCount: this.dailyGift.rmTimerCount || 1,
                 canReceive: this.hasFriendReward || false,
             }
         };

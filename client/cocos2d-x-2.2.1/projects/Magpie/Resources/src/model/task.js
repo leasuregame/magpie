@@ -183,10 +183,7 @@ var Task = Entity.extend({
                 that.update(msg.task);
 
                 if (msg.find_boss) {
-                    var boss = msg.find_boss;
-                    gameData.boss.push(boss);
-
-                    cbData.bossId = boss.bossId;
+                    cbData.findBoss = msg.find_boss;
                 }
 
                 if (msg.upgradeInfo) {

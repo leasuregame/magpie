@@ -5,6 +5,7 @@ async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
 fightManager = require '../../../manager/fightManager'
 utility = require('../../../common/utility')
+entityUtil = require('../../../util/entityUtil')
 table = require '../../../manager/table'
 job = require '../../../dao/job'
 BOSSCONFIG = require('../../../../config/data/bossStatus')
@@ -16,6 +17,246 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+Handler::attackDetails = (msg, session, next) ->
+  bossId = msg.bossId
+
+  if not bossId
+    return next(null, {code: 501, msg: '参数错误'})
+
+  dao.bossAttack.getByBossId bossId, (err, items) ->
+    if err
+      return next(null, {code: err.code or 501, msg: err.msg or err})
+
+    next(null, {code: 200, msg: items})
+
+Handler::lastWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').damageOfRank.lastWeekDamageRank cb
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, utility.lastWeek(), cb
+    (cb) =>
+      @app.get('dao').damageOfRank.fetchOne {
+        fields: ['got']
+        where: playerId: playerId, week: utility.lastWeek()
+      }, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else 
+          cb(null, res) 
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    damageList = results[0]
+    lastWeekRank = results[1]
+    got = results[2]?.got
+
+    next(null, {code: 200, msg: {
+      damageList: damageList
+      lastWeek: lastWeekRank
+      isGet: !!got
+    }})
+
+Handler::thisWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').damageOfRank.thisWeekDamageRank cb
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, utility.thisWeek(), cb
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    damageList = results[0]
+    thisWeekRank = results[1]
+
+    next(null, {code: 200, msg: {
+      damageList: damageList
+      thisWeek: thisWeekRank
+    }})
+
+Handler::getLastWeekReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  week = utility.lastWeek()
+  rank = null
+  player = null
+  reward = null
+  async.waterfall [
+    (cb) =>
+      @app.get('dao').damageOfRank.getRank playerId, week, cb
+    (res, cb) ->
+      rank = res
+      if not rank
+        return cb({code: 501, msg: '上周不够努力，没奖励可领哦'})
+      cb(null)
+    (cb) =>
+      @app.get('dao').damageOfRank.fetchOne {
+        fields: ['got']
+        where: 
+          playerId: playerId,
+          week: week
+      }, cb
+    (dor, cb) ->
+      if dor.got is 1
+        return cb({code: 501, msg: '不能重复领取'})
+      cb(null)
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+    (res, cb) ->
+      player = res
+      console.log rank, rank.rank
+      reward = countDamageRewards(rank?.rank)
+      console.log reward
+      entityUtil.getReward player, reward, cb
+    (cards, cb) =>
+      @app.get('dao').damageOfRank.update {
+        data: got: 1
+        where: playerId: playerId, week: week
+      }, cb
+  ], (err, result) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    player.save()
+    next(null, {code: 200, msg: reward})
+
+Handler::getFriendReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+    (player, cb) ->
+      dao.bossFriendReward.getReward playerId, (err, res) ->
+        if err or not res or (res.money is null and res.honor is null)
+          return cb({
+            code: 501, 
+            msg: '没有奖励可领'
+          })
+        else 
+          cb(null, res, player)
+    (reward, player, cb) ->
+      if reward.money > 0 and reward.honor > 0
+        dao.bossFriendReward.update {
+          data: got: 1
+          where: playerId: playerId, got: 0
+        }, (err, res) ->
+          if err
+            cb(err)
+          else 
+            cb(null, reward, player)
+  ], (err, reward, player) ->
+    if err
+      return next(null, err)
+
+    player.increase 'money', reward.money
+    player.increase 'honor', reward.honor
+    player.save()
+    next(null, {
+      code: 200,
+      msg: {
+        money: reward.money
+        honor: reward.honor
+      }
+    })
+
+Handler::convertHonor = (msg, session, next) ->
+  playerId = session.get('playerId')
+  number = msg.number
+
+  if typeof number is 'undefined' or typeof number isnt 'number' or number < 0
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    if player.honor < number * 6000
+      return next(null, {code: 501, msg: '荣誉点不足'})
+
+    player.decrease 'honor', number * 6000
+    player.increase 'superHonor', number
+    player.save()
+
+    next(null, {code: 200, msg: {
+      superHonor: player.superHonor
+      honor: player.honor
+    }})
+
+Handler::removeTimer = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    if player.getCD() is 0
+      return next(null, {code: 501, msg: '没有可消除的CD'})
+
+    gold_resume = player.removeTimerConsume()
+    if player.gold < gold_resume
+      return next(null, {code: 501, msg: '魔石不足'})
+
+    player.decrease 'gold', gold_resume
+    player.removeCD()
+    player.incRmTimerCount()
+    player.save()
+
+    next(null, {code: 200})
+
+Handler::kneel = (msg, session, next) ->
+  playerId = session.get('playerId')
+  targetId = msg.playerId
+
+  if typeof targetId is 'undefined'
+    return next(null, {code: 501, msg: '请指定膜拜对象'})
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      dao.player.exists where: {
+        id: targetId
+      }, cb
+    (exist, cb) ->
+      if not exist
+        return cb({code: 501, msg: '膜拜对象不存在'})
+      playerManager.getPlayerInfo pid: playerId, cb
+    (res, cb) ->
+      player = res
+      if player.kneelCountLeft() <= 0
+        return cb({code: 501, msg: '膜拜次数已用完'})
+      cb(null)
+    (cb) ->
+      dao.damageOfRank.getRank targetId, utility.thisWeek(), cb
+    (rank, cb) ->
+      if not rank or rank.rank > 5
+        cb({code: 501, msg: '玩家没有上榜，不能膜拜'})
+      cb(null)
+    (cb) ->
+      player.increase 'energy', BOSSCONFIG.KNEEL_REWARD.ENERGY
+      player.addPower BOSSCONFIG.KNEEL_REWARD.POWER
+      player.updateGift 'kneelCountLeft', player.dailyGift.kneelCountLeft-1
+      player.save()
+      cb(null)
+    (cb) ->
+      dao.damageOfRank.updateKneelCount targetId, cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    next(null, {
+      code: 200,
+      msg: 
+        power: BOSSCONFIG.KNEEL_REWARD.POWER
+        energy: BOSSCONFIG.KNEEL_REWARD.ENERGY
+    })
+
 Handler::bossList = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
@@ -23,7 +264,6 @@ Handler::bossList = (msg, session, next) ->
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
-
     (player, cb) ->
       ids = player.friends.map (f) -> f.id
       dao.boss.bossList playerId, ids, cb
@@ -63,7 +303,7 @@ Handler::attack = (msg, session, next) ->
       if boss.playerId not in friendIds
         return cb({code: 501, msg: '不能攻击陌生人的Boss哦'})
 
-      if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() 
+      if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() or boss.isDeath()
         return cb({code: 501, msg: 'Boss已结束'})
 
       if boss.playerId isnt playerId and boss.status is BOSS_STATUS.SLEEP
@@ -112,6 +352,18 @@ Handler::attack = (msg, session, next) ->
         battleLog: bl
     })
 
+countDamageRewards = (rank) ->
+  row = table.getTableItem('boss_rank_reward', rank)
+  if row    
+    money: row.money
+    honor: row.honor
+    energy: row.energy
+  else 
+    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or 8000
+    honor = parseInt honor5*(1-Math.ceil((rank-5)/20)*0.003)
+    honor = 2000 if honor < 2000
+    honor: honor
+
 checkBossStatus = (items, cb) ->
   console.log items
   timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
@@ -135,6 +387,8 @@ countDamage = (bl) ->
   for k, v of bl.cards
     if parseInt(k) > 6
       ds.push v.hp - v.hp_left
+
+    delete bl.cards[k] if v.hp is 0
 
   add = (x, y) -> x + y  
   ds.reduce add, 0
@@ -203,6 +457,9 @@ updateBossAndPlayer = (boss, bl, player) ->
     if bl.rewards.friend
       bl.rewards.friend.money *= 2
       bl.rewards.friend.honor *= 2
+
+    # 修改boss发现标记为false
+    player.setBossFound(false)
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)

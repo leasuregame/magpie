@@ -106,7 +106,7 @@ module.exports =
     else 
       cb(null, [])
 
-setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments']) ->
+setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
   player.increase att, val for att, val of data when att in attrs and val > 0
   return
 

@@ -262,7 +262,6 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'kneelCount',
         'cd'
     ];
 
@@ -318,7 +317,8 @@ var Player = (function(_super) {
                 receivers: []
             },
             hasGotLoginReward: 0,
-            kneelCountLeft: KNEELCOUNT_DEFAULT
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            rmTimerCount: 1
         },
         fragments: 0,
         energy: 0,
@@ -369,7 +369,6 @@ var Player = (function(_super) {
         speaker: 0,
         honor: 0,
         superHonor: 0,
-        kneelCount: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
         }
@@ -413,7 +412,8 @@ var Player = (function(_super) {
                 receivers: []
             },
             hasGotLoginReward: 0,
-            kneelCountLeft: KNEELCOUNT_DEFAULT
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            rmTimerCount: 1
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1290,6 +1290,12 @@ var Player = (function(_super) {
         this.cd = cd;
     };
 
+    Player.prototype.removeCD = function(){
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = 0;
+        this.cd = cd;
+    };
+
     Player.prototype.incBossCount = function(){
         var task = utility.deepCopy(this.task);
         if (!task.boss) {
@@ -1313,7 +1319,36 @@ var Player = (function(_super) {
         }
 
         task.boss.found = val;
+        if (!val) {
+            task.boss.count = 0;
+        }
+        
         this.task = task;
+    };
+
+    Player.prototype.removeTimerConsume = function() {
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var consume = 20 * this.dailyGift.rmTimerCount;
+        return consume > 200 ? 200 : consume;
+    };
+
+    Player.prototype.incRmTimerCount = function(){
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var count = parseInt(this.dailyGift.rmTimerCount + 1);
+        this.updateGift('rmTimerCount', count);
+    };
+
+    Player.prototype.kneelCountLeft = function() {
+        if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
+            this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
+        } 
+        return this.dailyGift.kneelCountLeft;
     };
 
     Player.prototype.toJson = function() {
@@ -1360,10 +1395,9 @@ var Player = (function(_super) {
             speaker: this.speaker,
             honor: this.honor,
             superHonor: this.superHonor,
-            kneelCount: this.kneelCount,
             bossInfo: {
                 cd: this.getCD(),
-                kneelCountLeft: this.dailyGift.kneelCountLeft || KNEELCOUNT_DEFAULT, 
+                kneelCountLeft: this.kneelCountLeft(), 
                 canReceive: this.hasFriendReward || false,
             }
         };

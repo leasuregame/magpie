@@ -2,6 +2,7 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 var table = require('../../manager/table');
+var STATUS = require('../../../config/data/bossStatus').STATUS;
 
 var Boss = (function (_super) {
     utility.extends(Boss, _super);
@@ -50,7 +51,21 @@ var Boss = (function (_super) {
             return death_disppear;
         } else {
             return false;
-        }        
+        }
+    };
+
+    Boss.prototype.isDeath = function() {
+        var hp = this.hp;
+        var total_hp = 0;
+        if (_.isObject(hp)){            
+            _.values(hp).forEach(function(item) {
+                if (!_.isUndefined(item.hp) && item.hp > 0) {
+                    total_hp += item.hp;
+                }
+            });
+        }
+
+        return total_hp == 0 || this.status == STATUS.DEATH;
     };
 
     Boss.prototype.updateHp = function(key, hp) {

@@ -1,8 +1,16 @@
 var nameChanged = {
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss": "BOSS属性配置表",
+    "BOSS属性配置表": "boss",
+    "boss_card": "Boss怪物卡牌配置表",
+    "Boss怪物卡牌配置表": "boss_card",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
@@ -43,16 +51,16 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
+    "elixir_ranking_reward": "竞技仙丹排行版奖励",
+    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -115,17 +123,490 @@ var nameChanged = {
     "vip特权": "vip_privilege"
 };
 var outputTables = {
-    "card_price": {
+    "achievement": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "grow_per_lv": 10,
-                "star1": 500,
-                "star2": 800,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 50,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 50,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 200,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 50,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingToOne",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第1",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "method": "v587",
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "竞技场中以1敌5，战胜对方",
+                "gold": 20,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 20,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 20,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 50,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardFullLevel",
+                "need": 1,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo10",
+                "need": 1,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 100,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 10000000,
+                "name": "一大波仙丹",
+                "desc": "累计获得1000万仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 10000000,
+                "name": "活力无限",
+                "desc": "累计获得1000万活力点",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 99999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到99999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 88888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到88888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "method": "soLucky",
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "用1张素材卡成功进阶该卡牌",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力1000万",
+                "gold": 50,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 90000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币9000万",
+                "gold": 50,
+                "energy": 500
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 10000000,
+                "name": "挥金如土",
+                "desc": "累计消耗魔石1000万",
+                "gold": 50,
+                "energy": 500
+            },
+            "26": {
+                "id": 26,
+                "method": "taskPoinTo",
+                "need": 10,
+                "name": "十步之遥",
+                "desc": "修炼里探索总进度达到10",
+                "gold": 20,
+                "energy": 50
+            },
+            "27": {
+                "id": 27,
+                "method": "taskChapterPassTo",
+                "need": 1,
+                "name": "鬼门关之旅",
+                "desc": "通关鬼门关",
+                "gold": 20,
+                "energy": 50
+            },
+            "28": {
+                "id": 28,
+                "method": "passFirstWin",
+                "need": 1,
+                "name": "天道首胜",
+                "desc": "在天道中获得第一场胜利",
+                "gold": 20,
+                "energy": 50
+            },
+            "29": {
+                "id": 29,
+                "method": "taskPartPassTo",
+                "need": 1,
+                "name": "苦寒地狱",
+                "desc": "通关苦寒地狱篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "30": {
+                "id": 30,
+                "method": "taskPartPassTo",
+                "need": 2,
+                "name": "凄凉人间",
+                "desc": "通关凄凉人间篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "31": {
+                "id": 31,
+                "method": "taskPartPassTo",
+                "need": 3,
+                "name": "南天之门",
+                "desc": "通关南天之门篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "32": {
+                "id": 32,
+                "method": "taskPartPassTo",
+                "need": 4,
+                "name": "西天取经",
+                "desc": "通关西天取经篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "33": {
+                "id": 33,
+                "method": "taskPartPassTo",
+                "need": 5,
+                "name": "莲花加持",
+                "desc": "通关莲花加持篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "34": {
+                "id": 34,
+                "method": "taskPartPassTo",
+                "need": 6,
+                "name": "千年之修",
+                "desc": "通关千年之修篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "35": {
+                "id": 35,
+                "method": "taskPartPassTo",
+                "need": 7,
+                "name": "斩妖除魔",
+                "desc": "通关斩妖除魔篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "36": {
+                "id": 36,
+                "method": "taskPartPassTo",
+                "need": 8,
+                "name": "降龙伏虎",
+                "desc": "通关降龙伏虎篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "37": {
+                "id": 37,
+                "method": "taskPartPassTo",
+                "need": 9,
+                "name": "普度众生",
+                "desc": "通关普度众生篇章",
+                "gold": 20,
+                "energy": 100
+            },
+            "38": {
+                "id": 38,
+                "method": "taskPartPassTo",
+                "need": 10,
+                "name": "尊者之身",
+                "desc": "通关尊者之身篇章",
+                "gold": 20,
+                "energy": 100
+            }
+        }
+    },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 60,
+                "name": "蓝卡",
+                "reward_inc": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 25,
+                "name": "紫卡",
+                "reward_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150
+            }
+        }
+    },
+    "boss": {
+        "colComment": {
+            "type": {
+                "table": "BOSS类型配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "BOSS1号",
+                "type": "蓝卡",
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "01:40000,10:40003,12:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "BOSS2号",
+                "type": "紫卡",
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "01:40001,10:40004,12:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "BOSS3号",
+                "type": "金卡",
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "01:40002,10:40005,12:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "BOSS1号",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "BOSS2号",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "BOSS3号",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "normal_atk_id": 3
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "normal_atk_id": 8
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 0,
+                "normal_atk_id": 7
             }
         }
     },
@@ -558,6 +1039,20 @@ var outputTables = {
                 "exp_need": 286156,
                 "money_need": 1837176,
                 "cur_exp": 2043193
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 500,
+                "star2": 800,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000
             }
         }
     },
@@ -2649,8 +3144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10001": {
                 "id": 10001,
@@ -2660,8 +3154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10002": {
                 "id": 10002,
@@ -2671,8 +3164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10003": {
                 "id": 10003,
@@ -2682,8 +3174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10004": {
                 "id": 10004,
@@ -2693,8 +3184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10005": {
                 "id": 10005,
@@ -2704,8 +3194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10006": {
                 "id": 10006,
@@ -2715,8 +3204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10007": {
                 "id": 10007,
@@ -2726,8 +3214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10008": {
                 "id": 10008,
@@ -2737,8 +3224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10009": {
                 "id": 10009,
@@ -2748,8 +3234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10010": {
                 "id": 10010,
@@ -2759,8 +3244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10011": {
                 "id": 10011,
@@ -2770,8 +3254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10012": {
                 "id": 10012,
@@ -2781,8 +3264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10013": {
                 "id": 10013,
@@ -2792,8 +3274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10014": {
                 "id": 10014,
@@ -2803,8 +3284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10015": {
                 "id": 10015,
@@ -2814,8 +3294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10016": {
                 "id": 10016,
@@ -2825,8 +3304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10017": {
                 "id": 10017,
@@ -2836,8 +3314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10018": {
                 "id": 10018,
@@ -2847,8 +3324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10019": {
                 "id": 10019,
@@ -2858,8 +3334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10020": {
                 "id": 10020,
@@ -2869,8 +3344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10021": {
                 "id": 10021,
@@ -2880,8 +3354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10022": {
                 "id": 10022,
@@ -2891,8 +3364,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10023": {
                 "id": 10023,
@@ -2902,8 +3374,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10024": {
                 "id": 10024,
@@ -2913,8 +3384,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10025": {
                 "id": 10025,
@@ -2924,8 +3394,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10026": {
                 "id": 10026,
@@ -2935,8 +3404,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10027": {
                 "id": 10027,
@@ -2946,8 +3414,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10028": {
                 "id": 10028,
@@ -2957,8 +3424,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10029": {
                 "id": 10029,
@@ -2968,8 +3434,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10030": {
                 "id": 10030,
@@ -2979,8 +3444,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10031": {
                 "id": 10031,
@@ -2990,8 +3454,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10032": {
                 "id": 10032,
@@ -3001,8 +3464,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10033": {
                 "id": 10033,
@@ -3012,8 +3474,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10034": {
                 "id": 10034,
@@ -3023,8 +3484,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10035": {
                 "id": 10035,
@@ -3034,8 +3494,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10036": {
                 "id": 10036,
@@ -3045,8 +3504,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10037": {
                 "id": 10037,
@@ -3056,8 +3514,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10038": {
                 "id": 10038,
@@ -3067,8 +3524,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10039": {
                 "id": 10039,
@@ -3078,8 +3534,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10040": {
                 "id": 10040,
@@ -3089,8 +3544,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10041": {
                 "id": 10041,
@@ -3100,8 +3554,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10042": {
                 "id": 10042,
@@ -3111,8 +3564,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10043": {
                 "id": 10043,
@@ -3122,8 +3574,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10044": {
                 "id": 10044,
@@ -3133,8 +3584,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10045": {
                 "id": 10045,
@@ -3144,8 +3594,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10046": {
                 "id": 10046,
@@ -3155,8 +3604,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10047": {
                 "id": 10047,
@@ -3166,8 +3614,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10048": {
                 "id": 10048,
@@ -3177,8 +3624,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10049": {
                 "id": 10049,
@@ -3188,8 +3634,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10050": {
                 "id": 10050,
@@ -3199,8 +3644,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10051": {
                 "id": 10051,
@@ -3210,8 +3654,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10052": {
                 "id": 10052,
@@ -3221,8 +3664,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10053": {
                 "id": 10053,
@@ -3232,8 +3674,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10054": {
                 "id": 10054,
@@ -3243,8 +3684,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10055": {
                 "id": 10055,
@@ -3254,8 +3694,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10056": {
                 "id": 10056,
@@ -3265,8 +3704,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10057": {
                 "id": 10057,
@@ -3276,8 +3714,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10058": {
                 "id": 10058,
@@ -3287,8 +3724,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10059": {
                 "id": 10059,
@@ -3298,8 +3734,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10060": {
                 "id": 10060,
@@ -3309,8 +3744,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10061": {
                 "id": 10061,
@@ -3320,8 +3754,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10062": {
                 "id": 10062,
@@ -3331,8 +3764,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10063": {
                 "id": 10063,
@@ -3342,8 +3774,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10064": {
                 "id": 10064,
@@ -3353,8 +3784,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10065": {
                 "id": 10065,
@@ -3364,8 +3794,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10066": {
                 "id": 10066,
@@ -3375,8 +3804,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10067": {
                 "id": 10067,
@@ -3386,8 +3814,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10068": {
                 "id": 10068,
@@ -3397,8 +3824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10069": {
                 "id": 10069,
@@ -3408,8 +3834,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10070": {
                 "id": 10070,
@@ -3419,8 +3844,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10071": {
                 "id": 10071,
@@ -3430,8 +3854,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10072": {
                 "id": 10072,
@@ -3441,8 +3864,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10073": {
                 "id": 10073,
@@ -3452,8 +3874,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10074": {
                 "id": 10074,
@@ -3463,8 +3884,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10075": {
                 "id": 10075,
@@ -3474,8 +3894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10076": {
                 "id": 10076,
@@ -3485,8 +3904,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10077": {
                 "id": 10077,
@@ -3496,8 +3914,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10078": {
                 "id": 10078,
@@ -3507,8 +3924,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10079": {
                 "id": 10079,
@@ -3518,8 +3934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10080": {
                 "id": 10080,
@@ -3529,8 +3944,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10081": {
                 "id": 10081,
@@ -3540,8 +3954,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10082": {
                 "id": 10082,
@@ -3551,8 +3964,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10083": {
                 "id": 10083,
@@ -3562,8 +3974,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10084": {
                 "id": 10084,
@@ -3573,8 +3984,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10085": {
                 "id": 10085,
@@ -3584,8 +3994,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10086": {
                 "id": 10086,
@@ -3595,8 +4004,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10087": {
                 "id": 10087,
@@ -3606,8 +4014,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10088": {
                 "id": 10088,
@@ -3617,8 +4024,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10089": {
                 "id": 10089,
@@ -3628,8 +4034,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10090": {
                 "id": 10090,
@@ -3639,8 +4044,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10091": {
                 "id": 10091,
@@ -3650,8 +4054,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10092": {
                 "id": 10092,
@@ -3661,8 +4064,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10093": {
                 "id": 10093,
@@ -3672,8 +4074,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10094": {
                 "id": 10094,
@@ -3683,8 +4084,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10095": {
                 "id": 10095,
@@ -3694,8 +4094,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10096": {
                 "id": 10096,
@@ -3705,8 +4104,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10097": {
                 "id": 10097,
@@ -3716,8 +4114,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10098": {
                 "id": 10098,
@@ -3727,8 +4124,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10099": {
                 "id": 10099,
@@ -3738,8 +4134,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10100": {
                 "id": 10100,
@@ -3749,8 +4144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10101": {
                 "id": 10101,
@@ -3760,8 +4154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10102": {
                 "id": 10102,
@@ -3771,8 +4164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10103": {
                 "id": 10103,
@@ -3782,8 +4174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10104": {
                 "id": 10104,
@@ -3793,8 +4184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10105": {
                 "id": 10105,
@@ -3804,8 +4194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10106": {
                 "id": 10106,
@@ -3815,8 +4204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10107": {
                 "id": 10107,
@@ -3826,8 +4214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10108": {
                 "id": 10108,
@@ -3837,8 +4224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10109": {
                 "id": 10109,
@@ -3848,8 +4234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10110": {
                 "id": 10110,
@@ -3859,8 +4244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10111": {
                 "id": 10111,
@@ -3870,8 +4254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10112": {
                 "id": 10112,
@@ -3881,8 +4264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10113": {
                 "id": 10113,
@@ -3892,8 +4274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10114": {
                 "id": 10114,
@@ -3903,8 +4284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10115": {
                 "id": 10115,
@@ -3914,8 +4294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10116": {
                 "id": 10116,
@@ -3925,8 +4304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10117": {
                 "id": 10117,
@@ -3936,8 +4314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10118": {
                 "id": 10118,
@@ -3947,8 +4324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10119": {
                 "id": 10119,
@@ -3958,8 +4334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10120": {
                 "id": 10120,
@@ -3969,8 +4344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10121": {
                 "id": 10121,
@@ -3980,8 +4354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10122": {
                 "id": 10122,
@@ -3991,8 +4364,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10123": {
                 "id": 10123,
@@ -4002,8 +4374,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10124": {
                 "id": 10124,
@@ -4013,8 +4384,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10125": {
                 "id": 10125,
@@ -4024,8 +4394,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10126": {
                 "id": 10126,
@@ -4035,8 +4404,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10127": {
                 "id": 10127,
@@ -4046,8 +4414,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10128": {
                 "id": 10128,
@@ -4057,8 +4424,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10129": {
                 "id": 10129,
@@ -4068,8 +4434,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10130": {
                 "id": 10130,
@@ -4079,8 +4444,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10131": {
                 "id": 10131,
@@ -4090,8 +4454,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10132": {
                 "id": 10132,
@@ -4101,8 +4464,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10133": {
                 "id": 10133,
@@ -4112,8 +4474,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10134": {
                 "id": 10134,
@@ -4123,8 +4484,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10135": {
                 "id": 10135,
@@ -4134,8 +4494,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10136": {
                 "id": 10136,
@@ -4145,8 +4504,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10137": {
                 "id": 10137,
@@ -4156,8 +4514,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10138": {
                 "id": 10138,
@@ -4167,8 +4524,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10139": {
                 "id": 10139,
@@ -4178,8 +4534,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10140": {
                 "id": 10140,
@@ -4189,8 +4544,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10141": {
                 "id": 10141,
@@ -4200,8 +4554,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10142": {
                 "id": 10142,
@@ -4211,8 +4564,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10143": {
                 "id": 10143,
@@ -4222,8 +4574,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10144": {
                 "id": 10144,
@@ -4233,8 +4584,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10145": {
                 "id": 10145,
@@ -4244,8 +4594,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10146": {
                 "id": 10146,
@@ -4255,8 +4604,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10147": {
                 "id": 10147,
@@ -4266,8 +4614,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10148": {
                 "id": 10148,
@@ -4277,8 +4624,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10149": {
                 "id": 10149,
@@ -4288,8 +4634,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10150": {
                 "id": 10150,
@@ -4299,8 +4644,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10151": {
                 "id": 10151,
@@ -4310,8 +4654,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10152": {
                 "id": 10152,
@@ -4321,8 +4664,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10153": {
                 "id": 10153,
@@ -4332,8 +4674,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10154": {
                 "id": 10154,
@@ -4343,8 +4684,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10155": {
                 "id": 10155,
@@ -4354,8 +4694,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10156": {
                 "id": 10156,
@@ -4365,8 +4704,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10157": {
                 "id": 10157,
@@ -4376,8 +4714,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10158": {
                 "id": 10158,
@@ -4387,8 +4724,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10159": {
                 "id": 10159,
@@ -4398,8 +4734,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10160": {
                 "id": 10160,
@@ -4409,8 +4744,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10161": {
                 "id": 10161,
@@ -4420,8 +4754,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10162": {
                 "id": 10162,
@@ -4431,8 +4764,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10163": {
                 "id": 10163,
@@ -4442,8 +4774,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10164": {
                 "id": 10164,
@@ -4453,8 +4784,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10165": {
                 "id": 10165,
@@ -4464,8 +4794,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10166": {
                 "id": 10166,
@@ -4475,8 +4804,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10167": {
                 "id": 10167,
@@ -4486,8 +4814,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10168": {
                 "id": 10168,
@@ -4497,8 +4824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10169": {
                 "id": 10169,
@@ -4508,8 +4834,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10170": {
                 "id": 10170,
@@ -4519,8 +4844,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10171": {
                 "id": 10171,
@@ -4530,8 +4854,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10172": {
                 "id": 10172,
@@ -4541,8 +4864,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10173": {
                 "id": 10173,
@@ -4552,8 +4874,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10174": {
                 "id": 10174,
@@ -4563,8 +4884,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10175": {
                 "id": 10175,
@@ -4574,8 +4894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10176": {
                 "id": 10176,
@@ -4585,8 +4904,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10177": {
                 "id": 10177,
@@ -4596,8 +4914,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10178": {
                 "id": 10178,
@@ -4607,8 +4924,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10179": {
                 "id": 10179,
@@ -4618,8 +4934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10180": {
                 "id": 10180,
@@ -4629,8 +4944,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10181": {
                 "id": 10181,
@@ -4640,8 +4954,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10182": {
                 "id": 10182,
@@ -4651,8 +4964,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10183": {
                 "id": 10183,
@@ -4662,8 +4974,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10184": {
                 "id": 10184,
@@ -4673,8 +4984,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10185": {
                 "id": 10185,
@@ -4684,8 +4994,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10186": {
                 "id": 10186,
@@ -4695,8 +5004,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10187": {
                 "id": 10187,
@@ -4706,8 +5014,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10188": {
                 "id": 10188,
@@ -4717,8 +5024,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10189": {
                 "id": 10189,
@@ -4728,8 +5034,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10190": {
                 "id": 10190,
@@ -4739,8 +5044,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10191": {
                 "id": 10191,
@@ -4750,8 +5054,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10192": {
                 "id": 10192,
@@ -4761,8 +5064,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10193": {
                 "id": 10193,
@@ -4772,8 +5074,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10194": {
                 "id": 10194,
@@ -4783,8 +5084,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10195": {
                 "id": 10195,
@@ -4794,8 +5094,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10196": {
                 "id": 10196,
@@ -4805,8 +5104,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10197": {
                 "id": 10197,
@@ -4816,8 +5114,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10198": {
                 "id": 10198,
@@ -4827,8 +5124,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10199": {
                 "id": 10199,
@@ -4838,8 +5134,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10200": {
                 "id": 10200,
@@ -4849,8 +5144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10201": {
                 "id": 10201,
@@ -4860,8 +5154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10202": {
                 "id": 10202,
@@ -4871,8 +5164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10203": {
                 "id": 10203,
@@ -4882,8 +5174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10204": {
                 "id": 10204,
@@ -4893,8 +5184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10205": {
                 "id": 10205,
@@ -4904,8 +5194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10206": {
                 "id": 10206,
@@ -4915,8 +5204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10207": {
                 "id": 10207,
@@ -4926,8 +5214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10208": {
                 "id": 10208,
@@ -4937,8 +5224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10209": {
                 "id": 10209,
@@ -4948,8 +5234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10210": {
                 "id": 10210,
@@ -4959,8 +5244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10211": {
                 "id": 10211,
@@ -4970,8 +5254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10212": {
                 "id": 10212,
@@ -4981,8 +5264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10213": {
                 "id": 10213,
@@ -4992,8 +5274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10214": {
                 "id": 10214,
@@ -5003,8 +5284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10215": {
                 "id": 10215,
@@ -5014,8 +5294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10216": {
                 "id": 10216,
@@ -5025,8 +5304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10217": {
                 "id": 10217,
@@ -5036,8 +5314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10218": {
                 "id": 10218,
@@ -5047,8 +5324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10219": {
                 "id": 10219,
@@ -5058,8 +5334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10220": {
                 "id": 10220,
@@ -5069,8 +5344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10221": {
                 "id": 10221,
@@ -5080,8 +5354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10222": {
                 "id": 10222,
@@ -5091,8 +5364,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10223": {
                 "id": 10223,
@@ -5102,8 +5374,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10224": {
                 "id": 10224,
@@ -5113,8 +5384,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10225": {
                 "id": 10225,
@@ -5124,8 +5394,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10226": {
                 "id": 10226,
@@ -5135,8 +5404,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10227": {
                 "id": 10227,
@@ -5146,8 +5414,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10228": {
                 "id": 10228,
@@ -5157,8 +5424,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10229": {
                 "id": 10229,
@@ -5168,8 +5434,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10230": {
                 "id": 10230,
@@ -5179,8 +5444,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10231": {
                 "id": 10231,
@@ -5190,8 +5454,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10232": {
                 "id": 10232,
@@ -5201,8 +5464,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10233": {
                 "id": 10233,
@@ -5212,8 +5474,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10234": {
                 "id": 10234,
@@ -5223,8 +5484,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10235": {
                 "id": 10235,
@@ -5234,8 +5494,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10236": {
                 "id": 10236,
@@ -5245,8 +5504,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10237": {
                 "id": 10237,
@@ -5256,8 +5514,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10238": {
                 "id": 10238,
@@ -5267,8 +5524,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10239": {
                 "id": 10239,
@@ -5278,8 +5534,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10240": {
                 "id": 10240,
@@ -5289,8 +5544,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10241": {
                 "id": 10241,
@@ -5300,8 +5554,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10242": {
                 "id": 10242,
@@ -5311,8 +5564,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10243": {
                 "id": 10243,
@@ -5322,8 +5574,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10244": {
                 "id": 10244,
@@ -5333,8 +5584,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10245": {
                 "id": 10245,
@@ -5344,8 +5594,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10246": {
                 "id": 10246,
@@ -5355,8 +5604,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10247": {
                 "id": 10247,
@@ -5366,8 +5614,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10248": {
                 "id": 10248,
@@ -5377,8 +5624,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10249": {
                 "id": 10249,
@@ -5388,8 +5634,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10250": {
                 "id": 10250,
@@ -5399,8 +5644,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10251": {
                 "id": 10251,
@@ -5410,8 +5654,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10252": {
                 "id": 10252,
@@ -5421,8 +5664,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10253": {
                 "id": 10253,
@@ -5432,8 +5674,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10254": {
                 "id": 10254,
@@ -5443,8 +5684,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10255": {
                 "id": 10255,
@@ -5454,8 +5694,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10256": {
                 "id": 10256,
@@ -5465,8 +5704,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10257": {
                 "id": 10257,
@@ -5476,8 +5714,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10258": {
                 "id": 10258,
@@ -5487,8 +5724,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10259": {
                 "id": 10259,
@@ -5498,8 +5734,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10260": {
                 "id": 10260,
@@ -5509,8 +5744,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10261": {
                 "id": 10261,
@@ -5520,8 +5754,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10262": {
                 "id": 10262,
@@ -5531,8 +5764,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10263": {
                 "id": 10263,
@@ -5542,8 +5774,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10264": {
                 "id": 10264,
@@ -5553,8 +5784,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10265": {
                 "id": 10265,
@@ -5564,8 +5794,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10266": {
                 "id": 10266,
@@ -5575,8 +5804,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10267": {
                 "id": 10267,
@@ -5586,8 +5814,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10268": {
                 "id": 10268,
@@ -5597,8 +5824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10269": {
                 "id": 10269,
@@ -5608,8 +5834,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10270": {
                 "id": 10270,
@@ -5619,8 +5844,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10271": {
                 "id": 10271,
@@ -5630,8 +5854,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10272": {
                 "id": 10272,
@@ -5641,8 +5864,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10273": {
                 "id": 10273,
@@ -5652,8 +5874,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10274": {
                 "id": 10274,
@@ -5663,8 +5884,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10275": {
                 "id": 10275,
@@ -5674,8 +5894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10276": {
                 "id": 10276,
@@ -5685,8 +5904,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10277": {
                 "id": 10277,
@@ -5696,8 +5914,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10278": {
                 "id": 10278,
@@ -5707,8 +5924,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10279": {
                 "id": 10279,
@@ -5718,8 +5934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10280": {
                 "id": 10280,
@@ -5729,8 +5944,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10281": {
                 "id": 10281,
@@ -5740,8 +5954,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10282": {
                 "id": 10282,
@@ -5751,8 +5964,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10283": {
                 "id": 10283,
@@ -5762,8 +5974,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10284": {
                 "id": 10284,
@@ -5773,8 +5984,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10285": {
                 "id": 10285,
@@ -5784,8 +5994,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10286": {
                 "id": 10286,
@@ -5795,8 +6004,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10287": {
                 "id": 10287,
@@ -5806,8 +6014,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10288": {
                 "id": 10288,
@@ -5817,8 +6024,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10289": {
                 "id": 10289,
@@ -5828,8 +6034,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10290": {
                 "id": 10290,
@@ -5839,8 +6044,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10291": {
                 "id": 10291,
@@ -5850,8 +6054,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10292": {
                 "id": 10292,
@@ -5861,8 +6064,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10293": {
                 "id": 10293,
@@ -5872,8 +6074,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10294": {
                 "id": 10294,
@@ -5883,8 +6084,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10295": {
                 "id": 10295,
@@ -5894,8 +6094,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10296": {
                 "id": 10296,
@@ -5905,8 +6104,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10297": {
                 "id": 10297,
@@ -5916,8 +6114,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10298": {
                 "id": 10298,
@@ -5927,8 +6124,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10299": {
                 "id": 10299,
@@ -5938,8 +6134,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10300": {
                 "id": 10300,
@@ -5949,8 +6144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10301": {
                 "id": 10301,
@@ -5960,8 +6154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10302": {
                 "id": 10302,
@@ -5971,8 +6164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10303": {
                 "id": 10303,
@@ -5982,8 +6174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10304": {
                 "id": 10304,
@@ -5993,8 +6184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10305": {
                 "id": 10305,
@@ -6004,8 +6194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10306": {
                 "id": 10306,
@@ -6015,8 +6204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10307": {
                 "id": 10307,
@@ -6026,8 +6214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10308": {
                 "id": 10308,
@@ -6037,8 +6224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10309": {
                 "id": 10309,
@@ -6048,8 +6234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10310": {
                 "id": 10310,
@@ -6059,8 +6244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10311": {
                 "id": 10311,
@@ -6070,8 +6254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10312": {
                 "id": 10312,
@@ -6081,8 +6264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10313": {
                 "id": 10313,
@@ -6092,8 +6274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10314": {
                 "id": 10314,
@@ -6103,8 +6284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10315": {
                 "id": 10315,
@@ -6114,8 +6294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10316": {
                 "id": 10316,
@@ -6125,8 +6304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10317": {
                 "id": 10317,
@@ -6136,8 +6314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10318": {
                 "id": 10318,
@@ -6147,8 +6324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10319": {
                 "id": 10319,
@@ -6158,8 +6334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10320": {
                 "id": 10320,
@@ -6169,8 +6344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10321": {
                 "id": 10321,
@@ -6180,8 +6354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10322": {
                 "id": 10322,
@@ -6191,8 +6364,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10323": {
                 "id": 10323,
@@ -6202,8 +6374,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10324": {
                 "id": 10324,
@@ -6213,8 +6384,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10325": {
                 "id": 10325,
@@ -6224,8 +6394,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10326": {
                 "id": 10326,
@@ -6235,8 +6404,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10327": {
                 "id": 10327,
@@ -6246,8 +6414,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10328": {
                 "id": 10328,
@@ -6257,8 +6424,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10329": {
                 "id": 10329,
@@ -6268,8 +6434,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10330": {
                 "id": 10330,
@@ -6279,8 +6444,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10331": {
                 "id": 10331,
@@ -6290,8 +6454,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10332": {
                 "id": 10332,
@@ -6301,8 +6464,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10333": {
                 "id": 10333,
@@ -6312,8 +6474,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10334": {
                 "id": 10334,
@@ -6323,8 +6484,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10335": {
                 "id": 10335,
@@ -6334,8 +6494,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10336": {
                 "id": 10336,
@@ -6345,8 +6504,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10337": {
                 "id": 10337,
@@ -6356,8 +6514,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10338": {
                 "id": 10338,
@@ -6367,8 +6524,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10339": {
                 "id": 10339,
@@ -6378,8 +6534,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10340": {
                 "id": 10340,
@@ -6389,8 +6544,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10341": {
                 "id": 10341,
@@ -6400,8 +6554,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10342": {
                 "id": 10342,
@@ -6411,8 +6564,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10343": {
                 "id": 10343,
@@ -6422,8 +6574,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10344": {
                 "id": 10344,
@@ -6433,8 +6584,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10345": {
                 "id": 10345,
@@ -6444,8 +6594,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10346": {
                 "id": 10346,
@@ -6455,8 +6604,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10347": {
                 "id": 10347,
@@ -6466,8 +6614,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10348": {
                 "id": 10348,
@@ -6477,8 +6624,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10349": {
                 "id": 10349,
@@ -6488,8 +6634,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10350": {
                 "id": 10350,
@@ -6499,8 +6644,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10351": {
                 "id": 10351,
@@ -6510,8 +6654,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10352": {
                 "id": 10352,
@@ -6521,8 +6664,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10353": {
                 "id": 10353,
@@ -6532,8 +6674,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10354": {
                 "id": 10354,
@@ -6543,8 +6684,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10355": {
                 "id": 10355,
@@ -6554,8 +6694,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10356": {
                 "id": 10356,
@@ -6565,8 +6704,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10357": {
                 "id": 10357,
@@ -6576,8 +6714,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10358": {
                 "id": 10358,
@@ -6587,8 +6724,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10359": {
                 "id": 10359,
@@ -6598,8 +6734,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10360": {
                 "id": 10360,
@@ -6609,8 +6744,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10361": {
                 "id": 10361,
@@ -6620,8 +6754,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10362": {
                 "id": 10362,
@@ -6631,8 +6764,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10363": {
                 "id": 10363,
@@ -6642,8 +6774,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10364": {
                 "id": 10364,
@@ -6653,8 +6784,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10365": {
                 "id": 10365,
@@ -6664,8 +6794,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10366": {
                 "id": 10366,
@@ -6675,8 +6804,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10367": {
                 "id": 10367,
@@ -6686,8 +6814,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10368": {
                 "id": 10368,
@@ -6697,8 +6824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10369": {
                 "id": 10369,
@@ -6708,8 +6834,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10370": {
                 "id": 10370,
@@ -6719,8 +6844,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10371": {
                 "id": 10371,
@@ -6730,8 +6854,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10372": {
                 "id": 10372,
@@ -6741,8 +6864,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10373": {
                 "id": 10373,
@@ -6752,8 +6874,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10374": {
                 "id": 10374,
@@ -6763,8 +6884,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10375": {
                 "id": 10375,
@@ -6774,8 +6894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10376": {
                 "id": 10376,
@@ -6785,8 +6904,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10377": {
                 "id": 10377,
@@ -6796,8 +6914,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10378": {
                 "id": 10378,
@@ -6807,8 +6924,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10379": {
                 "id": 10379,
@@ -6818,8 +6934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10380": {
                 "id": 10380,
@@ -6829,8 +6944,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10381": {
                 "id": 10381,
@@ -6840,8 +6954,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10382": {
                 "id": 10382,
@@ -6851,8 +6964,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10383": {
                 "id": 10383,
@@ -6862,8 +6974,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10384": {
                 "id": 10384,
@@ -6873,8 +6984,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10385": {
                 "id": 10385,
@@ -6884,8 +6994,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10386": {
                 "id": 10386,
@@ -6895,8 +7004,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10387": {
                 "id": 10387,
@@ -6906,8 +7014,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10388": {
                 "id": 10388,
@@ -6917,8 +7024,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10389": {
                 "id": 10389,
@@ -6928,8 +7034,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10390": {
                 "id": 10390,
@@ -6939,8 +7044,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10391": {
                 "id": 10391,
@@ -6950,8 +7054,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10392": {
                 "id": 10392,
@@ -6961,8 +7064,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10393": {
                 "id": 10393,
@@ -6972,8 +7074,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10394": {
                 "id": 10394,
@@ -6983,8 +7084,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10395": {
                 "id": 10395,
@@ -6994,8 +7094,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10396": {
                 "id": 10396,
@@ -7005,8 +7104,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10397": {
                 "id": 10397,
@@ -7016,8 +7114,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10398": {
                 "id": 10398,
@@ -7027,8 +7124,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10399": {
                 "id": 10399,
@@ -7038,8 +7134,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10400": {
                 "id": 10400,
@@ -7049,8 +7144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10401": {
                 "id": 10401,
@@ -7060,8 +7154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10402": {
                 "id": 10402,
@@ -7071,8 +7164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10403": {
                 "id": 10403,
@@ -7082,8 +7174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10404": {
                 "id": 10404,
@@ -7093,8 +7184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10405": {
                 "id": 10405,
@@ -7104,8 +7194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10406": {
                 "id": 10406,
@@ -7115,8 +7204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10407": {
                 "id": 10407,
@@ -7126,8 +7214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10408": {
                 "id": 10408,
@@ -7137,8 +7224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10409": {
                 "id": 10409,
@@ -7148,8 +7234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10410": {
                 "id": 10410,
@@ -7159,8 +7244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10411": {
                 "id": 10411,
@@ -7170,8 +7254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10412": {
                 "id": 10412,
@@ -7181,8 +7264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10413": {
                 "id": 10413,
@@ -7192,8 +7274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10414": {
                 "id": 10414,
@@ -7203,8 +7284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10415": {
                 "id": 10415,
@@ -7214,8 +7294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10416": {
                 "id": 10416,
@@ -7225,8 +7304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10417": {
                 "id": 10417,
@@ -7236,8 +7314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10418": {
                 "id": 10418,
@@ -7247,8 +7324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10419": {
                 "id": 10419,
@@ -7258,8 +7334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10420": {
                 "id": 10420,
@@ -7269,8 +7344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10421": {
                 "id": 10421,
@@ -7280,8 +7354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10422": {
                 "id": 10422,
@@ -7291,8 +7364,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10423": {
                 "id": 10423,
@@ -7302,8 +7374,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10424": {
                 "id": 10424,
@@ -7313,8 +7384,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10425": {
                 "id": 10425,
@@ -7324,8 +7394,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10426": {
                 "id": 10426,
@@ -7335,8 +7404,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10427": {
                 "id": 10427,
@@ -7346,8 +7414,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10428": {
                 "id": 10428,
@@ -7357,8 +7424,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10429": {
                 "id": 10429,
@@ -7368,8 +7434,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10430": {
                 "id": 10430,
@@ -7379,8 +7444,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10431": {
                 "id": 10431,
@@ -7390,8 +7454,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10432": {
                 "id": 10432,
@@ -7401,8 +7464,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10433": {
                 "id": 10433,
@@ -7412,8 +7474,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10434": {
                 "id": 10434,
@@ -7423,8 +7484,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10435": {
                 "id": 10435,
@@ -7434,8 +7494,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10436": {
                 "id": 10436,
@@ -7445,8 +7504,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10437": {
                 "id": 10437,
@@ -7456,8 +7514,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10438": {
                 "id": 10438,
@@ -7467,8 +7524,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10439": {
                 "id": 10439,
@@ -7478,8 +7534,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10440": {
                 "id": 10440,
@@ -7489,8 +7544,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10441": {
                 "id": 10441,
@@ -7500,8 +7554,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10442": {
                 "id": 10442,
@@ -7511,8 +7564,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10443": {
                 "id": 10443,
@@ -7522,8 +7574,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10444": {
                 "id": 10444,
@@ -7533,8 +7584,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10445": {
                 "id": 10445,
@@ -7544,8 +7594,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10446": {
                 "id": 10446,
@@ -7555,8 +7604,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10447": {
                 "id": 10447,
@@ -7566,8 +7614,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10448": {
                 "id": 10448,
@@ -7577,8 +7624,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10449": {
                 "id": 10449,
@@ -7588,8 +7634,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10450": {
                 "id": 10450,
@@ -7599,8 +7644,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10451": {
                 "id": 10451,
@@ -7610,8 +7654,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10452": {
                 "id": 10452,
@@ -7621,8 +7664,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10453": {
                 "id": 10453,
@@ -7632,8 +7674,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10454": {
                 "id": 10454,
@@ -7643,8 +7684,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10455": {
                 "id": 10455,
@@ -7654,8 +7694,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10456": {
                 "id": 10456,
@@ -7665,8 +7704,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10457": {
                 "id": 10457,
@@ -7676,8 +7714,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10458": {
                 "id": 10458,
@@ -7687,8 +7724,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10459": {
                 "id": 10459,
@@ -7698,8 +7734,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10460": {
                 "id": 10460,
@@ -7709,8 +7744,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10461": {
                 "id": 10461,
@@ -7720,8 +7754,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10462": {
                 "id": 10462,
@@ -7731,8 +7764,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10000,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10000
             },
             "10463": {
                 "id": 10463,
@@ -7742,8 +7774,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10001,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10001
             },
             "10464": {
                 "id": 10464,
@@ -7753,8 +7784,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10002,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10002
             },
             "10465": {
                 "id": 10465,
@@ -7764,8 +7794,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10003,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10003
             },
             "10466": {
                 "id": 10466,
@@ -7775,8 +7804,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10004,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10004
             },
             "10467": {
                 "id": 10467,
@@ -7786,8 +7814,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10005,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10005
             },
             "10468": {
                 "id": 10468,
@@ -7797,8 +7824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10006,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10006
             },
             "10469": {
                 "id": 10469,
@@ -7808,8 +7834,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10007,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10007
             },
             "10470": {
                 "id": 10470,
@@ -7819,8 +7844,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10008,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10008
             },
             "10471": {
                 "id": 10471,
@@ -7830,8 +7854,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10009,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10009
             },
             "10472": {
                 "id": 10472,
@@ -7841,8 +7864,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10010,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10010
             },
             "10473": {
                 "id": 10473,
@@ -7852,8 +7874,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10011,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10011
             },
             "10474": {
                 "id": 10474,
@@ -7863,8 +7884,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10012,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10012
             },
             "10475": {
                 "id": 10475,
@@ -7874,8 +7894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10013,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10013
             },
             "10476": {
                 "id": 10476,
@@ -7885,8 +7904,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10014,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10014
             },
             "10477": {
                 "id": 10477,
@@ -7896,8 +7914,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10015,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10015
             },
             "10478": {
                 "id": 10478,
@@ -7907,8 +7924,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10016,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10016
             },
             "10479": {
                 "id": 10479,
@@ -7918,8 +7934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10017,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10017
             },
             "10480": {
                 "id": 10480,
@@ -7929,8 +7944,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10018
             },
             "10481": {
                 "id": 10481,
@@ -7940,8 +7954,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10019
             },
             "10482": {
                 "id": 10482,
@@ -7951,8 +7964,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10020
             },
             "10483": {
                 "id": 10483,
@@ -7962,8 +7974,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10021
             },
             "10484": {
                 "id": 10484,
@@ -7973,8 +7984,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10485": {
                 "id": 10485,
@@ -7984,8 +7994,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10486": {
                 "id": 10486,
@@ -7995,8 +8004,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10487": {
                 "id": 10487,
@@ -8006,8 +8014,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10488": {
                 "id": 10488,
@@ -8017,8 +8024,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10489": {
                 "id": 10489,
@@ -8028,8 +8034,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "10490": {
                 "id": 10490,
@@ -8039,8 +8044,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10028
             },
             "10491": {
                 "id": 10491,
@@ -8050,8 +8054,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10029
             },
             "10492": {
                 "id": 10492,
@@ -8061,8 +8064,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10030
             },
             "10493": {
                 "id": 10493,
@@ -8072,8 +8074,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10031
             },
             "10494": {
                 "id": 10494,
@@ -8083,8 +8084,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10032
             },
             "10495": {
                 "id": 10495,
@@ -8094,8 +8094,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "10496": {
                 "id": 10496,
@@ -8105,8 +8104,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "10497": {
                 "id": 10497,
@@ -8116,8 +8114,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "10498": {
                 "id": 10498,
@@ -8127,8 +8124,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "10499": {
                 "id": 10499,
@@ -8138,8 +8134,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "10500": {
                 "id": 10500,
@@ -8149,8 +8144,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "20000": {
                 "id": 20000,
@@ -8160,8 +8154,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10022
             },
             "20001": {
                 "id": 20001,
@@ -8171,8 +8164,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10023
             },
             "20002": {
                 "id": 20002,
@@ -8182,8 +8174,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10024
             },
             "20003": {
                 "id": 20003,
@@ -8193,8 +8184,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10025
             },
             "20004": {
                 "id": 20004,
@@ -8204,8 +8194,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10026
             },
             "20005": {
                 "id": 20005,
@@ -8215,8 +8204,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "20006": {
                 "id": 20006,
@@ -8226,8 +8214,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10033,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10033
             },
             "20007": {
                 "id": 20007,
@@ -8237,8 +8224,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10034,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10034
             },
             "20008": {
                 "id": 20008,
@@ -8248,8 +8234,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10035,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10035
             },
             "20009": {
                 "id": 20009,
@@ -8259,8 +8244,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10036,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10036
             },
             "20010": {
                 "id": 20010,
@@ -8270,8 +8254,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10037,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10037
             },
             "20011": {
                 "id": 20011,
@@ -8281,8 +8264,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10038,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10038
             },
             "20012": {
                 "id": 20012,
@@ -8292,8 +8274,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10039,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10039
             },
             "20013": {
                 "id": 20013,
@@ -8303,8 +8284,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10040,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10040
             },
             "20014": {
                 "id": 20014,
@@ -8314,8 +8294,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10041,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10041
             },
             "20015": {
                 "id": 20015,
@@ -8325,8 +8304,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10042,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10042
             },
             "20016": {
                 "id": 20016,
@@ -8336,8 +8314,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10043,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10043
             },
             "20017": {
                 "id": 20017,
@@ -8347,8 +8324,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10044,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10044
             },
             "20018": {
                 "id": 20018,
@@ -8358,8 +8334,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10045,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10045
             },
             "20019": {
                 "id": 20019,
@@ -8369,8 +8344,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10046,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10046
             },
             "20020": {
                 "id": 20020,
@@ -8380,8 +8354,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10047,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10047
             },
             "30000": {
                 "id": 30000,
@@ -8402,8 +8375,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10027
             },
             "30002": {
                 "id": 30002,
@@ -8413,8 +8385,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10033,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10033
             },
             "30003": {
                 "id": 30003,
@@ -8424,8 +8395,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10036,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10036
             },
             "30004": {
                 "id": 30004,
@@ -8435,8 +8405,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10037,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10037
             },
             "30005": {
                 "id": 30005,
@@ -8446,8 +8415,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10040,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10040
             },
             "30006": {
                 "id": 30006,
@@ -8457,8 +8425,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10041,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10041
             },
             "30007": {
                 "id": 30007,
@@ -8468,8 +8435,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10043,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10043
             },
             "30008": {
                 "id": 30008,
@@ -8479,8 +8445,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10044,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10044
             },
             "30009": {
                 "id": 30009,
@@ -8490,8 +8455,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10046,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10046
             },
             "30010": {
                 "id": 30010,
@@ -8501,8 +8465,67 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10047,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+                "url": 10047
+            },
+            "40000": {
+                "id": 40000,
+                "number": 40000,
+                "name": "BOSS1号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10044
+            },
+            "40001": {
+                "id": 40001,
+                "number": 40001,
+                "name": "BOSS2号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10046
+            },
+            "40002": {
+                "id": 40002,
+                "number": 40002,
+                "name": "BOSS3号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10047
+            },
+            "40003": {
+                "id": 40003,
+                "number": 40003,
+                "name": "小怪1号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10036
+            },
+            "40004": {
+                "id": 40004,
+                "number": 40004,
+                "name": "小怪2号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10037
+            },
+            "40005": {
+                "id": 40005,
+                "number": 40005,
+                "name": "小怪3号",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10040
             }
         }
     },
@@ -9036,7 +9059,7 @@ var outputTables = {
                 "challenge_count": 10,
                 "challenge_buy_count": 5,
                 "collect_count": 15,
-                "exp_card_count": 30
+                "exp_card_count": 100
             }
         }
     },
@@ -9306,538 +9329,26 @@ var outputTables = {
                 "id": "greetingConsumeGold",
                 "value": 20,
                 "desc": "每次喊话话费的金额"
-            }
-        }
-    },
-    "achievement": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "method": "levelTo",
-                "need": 50,
-                "name": "升级达人",
-                "desc": "角色等级达到50级",
-                "gold": 50,
-                "energy": 100
             },
-            "2": {
-                "id": 2,
-                "method": "levelTo",
-                "need": 90,
-                "name": "疯狂升级",
-                "desc": "角色等级达到90级",
-                "gold": 100,
-                "energy": 1000
+            "findBossRate": {
+                "id": "findBossRate",
+                "value": 5,
+                "desc": "每次探索发现boss的概率"
             },
-            "3": {
-                "id": 3,
-                "method": "passTo",
-                "need": 50,
-                "name": "一半！",
-                "desc": "天道闯过50层",
-                "gold": 50,
-                "energy": 100
+            "bossTypeBlueCard": {
+                "id": "bossTypeBlueCard",
+                "value": 60,
+                "desc": "蓝卡boss随机的概率"
             },
-            "4": {
-                "id": 4,
-                "method": "passTo",
-                "need": 100,
-                "name": "通关！",
-                "desc": "天道闯过100层",
-                "gold": 200,
-                "energy": 1000
+            "bossTypePurpleCard": {
+                "id": "bossTypePurpleCard",
+                "value": 25,
+                "desc": "紫卡boss随机的概率"
             },
-            "5": {
-                "id": 5,
-                "method": "winCount",
-                "need": 50,
-                "name": "小试牛刀",
-                "desc": "竞技获胜次数达到50场",
-                "gold": 50,
-                "energy": 100
-            },
-            "6": {
-                "id": 6,
-                "method": "winCount",
-                "need": 5000,
-                "name": "已经超神了",
-                "desc": "竞技获胜次数达到5000场",
-                "gold": 100,
-                "energy": 1000
-            },
-            "7": {
-                "id": 7,
-                "method": "winningStreak",
-                "need": 50,
-                "name": "所向披靡",
-                "desc": "竞技最高连胜达到50次",
-                "gold": 100,
-                "energy": 1000
-            },
-            "8": {
-                "id": 8,
-                "method": "rankingToOne",
-                "need": 1,
-                "name": "寂寞",
-                "desc": "竞技排名达到第1",
-                "gold": 100,
-                "energy": 1000
-            },
-            "9": {
-                "id": 9,
-                "method": "v587",
-                "need": 1,
-                "name": "霸气外射！",
-                "desc": "竞技场中以1敌5，战胜对方",
-                "gold": 20,
-                "energy": 100
-            },
-            "10": {
-                "id": 10,
-                "method": "friends",
-                "need": 20,
-                "name": "我们约会吧",
-                "desc": "拥有20个好友",
-                "gold": 20,
-                "energy": 100
-            },
-            "11": {
-                "id": 11,
-                "method": "gaveBless",
-                "need": 500,
-                "name": "无私奉献",
-                "desc": "为好友送出祝福达到500次",
-                "gold": 20,
-                "energy": 100
-            },
-            "12": {
-                "id": 12,
-                "method": "receivedBless",
-                "need": 100,
-                "name": "爱是相互的",
-                "desc": "收到好友祝福次数达到100次",
-                "gold": 300,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "method": "star5card",
-                "need": 1,
-                "name": "质的飞跃",
-                "desc": "获得1张5星卡",
-                "gold": 50,
-                "energy": 100
-            },
-            "14": {
-                "id": 14,
-                "method": "star5cardFullLevel",
-                "need": 1,
-                "name": "这就是实力",
-                "desc": "将1张5星卡强化到满级",
-                "gold": 50,
-                "energy": 500
-            },
-            "15": {
-                "id": 15,
-                "method": "star5card",
-                "need": 5,
-                "name": "你就是神！",
-                "desc": "获得5张5星卡",
-                "gold": 100,
-                "energy": 1000
-            },
-            "16": {
-                "id": 16,
-                "method": "psTo10",
-                "need": 1,
-                "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
-                "gold": 100,
-                "energy": 100
-            },
-            "17": {
-                "id": 17,
-                "method": "elixirTo",
-                "need": 10000000,
-                "name": "一大波仙丹",
-                "desc": "累计获得1000万仙丹",
-                "gold": 50,
-                "energy": 500
-            },
-            "18": {
-                "id": 18,
-                "method": "energyTo",
-                "need": 10000000,
-                "name": "活力无限",
-                "desc": "累计获得1000万活力点",
-                "gold": 100,
-                "energy": 1000
-            },
-            "19": {
-                "id": 19,
-                "method": "luckyCardCount",
-                "need": 99999,
-                "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到99999",
-                "gold": 100,
-                "energy": 500
-            },
-            "20": {
-                "id": 20,
-                "method": "highLuckyCardCount",
-                "need": 88888,
-                "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到88888",
-                "gold": 100,
-                "energy": 1000
-            },
-            "21": {
-                "id": 21,
-                "method": "soLucky",
-                "need": 1,
-                "name": "买彩票去吧",
-                "desc": "用1张素材卡成功进阶该卡牌",
-                "gold": 50,
-                "energy": 100
-            },
-            "22": {
-                "id": 22,
-                "method": "powerConsume",
-                "need": 10000000,
-                "name": "孜孜不倦",
-                "desc": "累计消耗体力1000万",
-                "gold": 50,
-                "energy": 100
-            },
-            "23": {
-                "id": 23,
-                "method": "vip",
-                "need": 1,
-                "name": "我是VIP！",
-                "desc": "成为VIP用户",
-                "gold": 50,
-                "energy": 500
-            },
-            "24": {
-                "id": 24,
-                "method": "moneyConsume",
-                "need": 90000000,
-                "name": "不差钱",
-                "desc": "累计消耗仙币9000万",
-                "gold": 50,
-                "energy": 500
-            },
-            "25": {
-                "id": 25,
-                "method": "goldConsume",
-                "need": 10000000,
-                "name": "挥金如土",
-                "desc": "累计消耗魔石1000万",
-                "gold": 50,
-                "energy": 500
-            },
-            "26": {
-                "id": 26,
-                "method": "taskPoinTo",
-                "need": 10,
-                "name": "十步之遥",
-                "desc": "修炼里探索总进度达到10",
-                "gold": 20,
-                "energy": 50
-            },
-            "27": {
-                "id": 27,
-                "method": "taskChapterPassTo",
-                "need": 1,
-                "name": "鬼门关之旅",
-                "desc": "通关鬼门关",
-                "gold": 20,
-                "energy": 50
-            },
-            "28": {
-                "id": 28,
-                "method": "passFirstWin",
-                "need": 1,
-                "name": "天道首胜",
-                "desc": "在天道中获得第一场胜利",
-                "gold": 20,
-                "energy": 50
-            },
-            "29": {
-                "id": 29,
-                "method": "taskPartPassTo",
-                "need": 1,
-                "name": "苦寒地狱",
-                "desc": "通关苦寒地狱篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "30": {
-                "id": 30,
-                "method": "taskPartPassTo",
-                "need": 2,
-                "name": "凄凉人间",
-                "desc": "通关凄凉人间篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "31": {
-                "id": 31,
-                "method": "taskPartPassTo",
-                "need": 3,
-                "name": "南天之门",
-                "desc": "通关南天之门篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "32": {
-                "id": 32,
-                "method": "taskPartPassTo",
-                "need": 4,
-                "name": "西天取经",
-                "desc": "通关西天取经篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "33": {
-                "id": 33,
-                "method": "taskPartPassTo",
-                "need": 5,
-                "name": "莲花加持",
-                "desc": "通关莲花加持篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "34": {
-                "id": 34,
-                "method": "taskPartPassTo",
-                "need": 6,
-                "name": "千年之修",
-                "desc": "通关千年之修篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "35": {
-                "id": 35,
-                "method": "taskPartPassTo",
-                "need": 7,
-                "name": "斩妖除魔",
-                "desc": "通关斩妖除魔篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "36": {
-                "id": 36,
-                "method": "taskPartPassTo",
-                "need": 8,
-                "name": "降龙伏虎",
-                "desc": "通关降龙伏虎篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "37": {
-                "id": 37,
-                "method": "taskPartPassTo",
-                "need": 9,
-                "name": "普度众生",
-                "desc": "通关普度众生篇章",
-                "gold": 20,
-                "energy": 100
-            },
-            "38": {
-                "id": 38,
-                "method": "taskPartPassTo",
-                "need": 10,
-                "name": "尊者之身",
-                "desc": "通关尊者之身篇章",
-                "gold": 20,
-                "energy": 100
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 500,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 3000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 20000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 200,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 500,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 3000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 20000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 100,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 500,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 2000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
+            "bossTypeGoldCard": {
+                "id": "bossTypeGoldCard",
+                "value": 15,
+                "desc": "金卡boss随机的概率"
             }
         }
     },
@@ -24233,6 +23744,596 @@ var outputTables = {
             "249": {
                 "id": 249,
                 "last_name": "金"
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 500,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 3000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 20000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 200,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 500,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 3000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 20000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 500,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 2000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
+    "elixir_ranking_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 600000,
+                "energy": 10000,
+                "elixir": 60000,
+                "power": 200,
+                "exp_card": 50
+            },
+            "2": {
+                "id": 2,
+                "money": 594500,
+                "energy": 9850,
+                "elixir": 58880,
+                "power": 195,
+                "exp_card": 49
+            },
+            "3": {
+                "id": 3,
+                "money": 589000,
+                "energy": 9700,
+                "elixir": 57760,
+                "power": 190,
+                "exp_card": 48
+            },
+            "4": {
+                "id": 4,
+                "money": 583500,
+                "energy": 9550,
+                "elixir": 56640,
+                "power": 185,
+                "exp_card": 47
+            },
+            "5": {
+                "id": 5,
+                "money": 578000,
+                "energy": 9400,
+                "elixir": 55520,
+                "power": 180,
+                "exp_card": 46
+            },
+            "6": {
+                "id": 6,
+                "money": 572500,
+                "energy": 9250,
+                "elixir": 54400,
+                "power": 175,
+                "exp_card": 45
+            },
+            "7": {
+                "id": 7,
+                "money": 567000,
+                "energy": 9100,
+                "elixir": 53280,
+                "power": 170,
+                "exp_card": 44
+            },
+            "8": {
+                "id": 8,
+                "money": 561500,
+                "energy": 8950,
+                "elixir": 52160,
+                "power": 165,
+                "exp_card": 43
+            },
+            "9": {
+                "id": 9,
+                "money": 556000,
+                "energy": 8800,
+                "elixir": 51040,
+                "power": 160,
+                "exp_card": 42
+            },
+            "10": {
+                "id": 10,
+                "money": 550500,
+                "energy": 8650,
+                "elixir": 49920,
+                "power": 155,
+                "exp_card": 41
+            },
+            "11": {
+                "id": 11,
+                "money": 545000,
+                "energy": 8500,
+                "elixir": 48800,
+                "power": 150,
+                "exp_card": 0
+            },
+            "12": {
+                "id": 12,
+                "money": 539500,
+                "energy": 8350,
+                "elixir": 47680,
+                "power": 145,
+                "exp_card": 0
+            },
+            "13": {
+                "id": 13,
+                "money": 534000,
+                "energy": 8200,
+                "elixir": 46560,
+                "power": 140,
+                "exp_card": 0
+            },
+            "14": {
+                "id": 14,
+                "money": 528500,
+                "energy": 8050,
+                "elixir": 45440,
+                "power": 135,
+                "exp_card": 0
+            },
+            "15": {
+                "id": 15,
+                "money": 523000,
+                "energy": 7900,
+                "elixir": 44320,
+                "power": 130,
+                "exp_card": 0
+            },
+            "16": {
+                "id": 16,
+                "money": 517500,
+                "energy": 7750,
+                "elixir": 43200,
+                "power": 125,
+                "exp_card": 0
+            },
+            "17": {
+                "id": 17,
+                "money": 512000,
+                "energy": 7600,
+                "elixir": 42080,
+                "power": 120,
+                "exp_card": 0
+            },
+            "18": {
+                "id": 18,
+                "money": 506500,
+                "energy": 7450,
+                "elixir": 40960,
+                "power": 115,
+                "exp_card": 0
+            },
+            "19": {
+                "id": 19,
+                "money": 501000,
+                "energy": 7300,
+                "elixir": 39840,
+                "power": 110,
+                "exp_card": 0
+            },
+            "20": {
+                "id": 20,
+                "money": 495500,
+                "energy": 7150,
+                "elixir": 38720,
+                "power": 100,
+                "exp_card": 0
+            },
+            "21": {
+                "id": 21,
+                "money": 490000,
+                "energy": 7000,
+                "elixir": 37600,
+                "power": 0,
+                "exp_card": 0
+            },
+            "22": {
+                "id": 22,
+                "money": 484500,
+                "energy": 6850,
+                "elixir": 36480,
+                "power": 0,
+                "exp_card": 0
+            },
+            "23": {
+                "id": 23,
+                "money": 479000,
+                "energy": 6700,
+                "elixir": 35360,
+                "power": 0,
+                "exp_card": 0
+            },
+            "24": {
+                "id": 24,
+                "money": 473500,
+                "energy": 6550,
+                "elixir": 34240,
+                "power": 0,
+                "exp_card": 0
+            },
+            "25": {
+                "id": 25,
+                "money": 468000,
+                "energy": 6400,
+                "elixir": 33120,
+                "power": 0,
+                "exp_card": 0
+            },
+            "26": {
+                "id": 26,
+                "money": 462500,
+                "energy": 6250,
+                "elixir": 32000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "27": {
+                "id": 27,
+                "money": 457000,
+                "energy": 6100,
+                "elixir": 30880,
+                "power": 0,
+                "exp_card": 0
+            },
+            "28": {
+                "id": 28,
+                "money": 451500,
+                "energy": 5950,
+                "elixir": 29760,
+                "power": 0,
+                "exp_card": 0
+            },
+            "29": {
+                "id": 29,
+                "money": 446000,
+                "energy": 5800,
+                "elixir": 28640,
+                "power": 0,
+                "exp_card": 0
+            },
+            "30": {
+                "id": 30,
+                "money": 440500,
+                "energy": 5650,
+                "elixir": 27520,
+                "power": 0,
+                "exp_card": 0
+            },
+            "31": {
+                "id": 31,
+                "money": 435000,
+                "energy": 5500,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "32": {
+                "id": 32,
+                "money": 429500,
+                "energy": 5350,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "33": {
+                "id": 33,
+                "money": 424000,
+                "energy": 5200,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "34": {
+                "id": 34,
+                "money": 418500,
+                "energy": 5050,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "35": {
+                "id": 35,
+                "money": 413000,
+                "energy": 4900,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "36": {
+                "id": 36,
+                "money": 407500,
+                "energy": 4750,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "37": {
+                "id": 37,
+                "money": 402000,
+                "energy": 4600,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "38": {
+                "id": 38,
+                "money": 396500,
+                "energy": 4450,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "39": {
+                "id": 39,
+                "money": 391000,
+                "energy": 4300,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "40": {
+                "id": 40,
+                "money": 385500,
+                "energy": 4150,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "41": {
+                "id": 41,
+                "money": 380000,
+                "energy": 4100,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "42": {
+                "id": 42,
+                "money": 374500,
+                "energy": 4050,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "43": {
+                "id": 43,
+                "money": 369000,
+                "energy": 4000,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "44": {
+                "id": 44,
+                "money": 363500,
+                "energy": 3950,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "45": {
+                "id": 45,
+                "money": 358000,
+                "energy": 3900,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "46": {
+                "id": 46,
+                "money": 352500,
+                "energy": 3850,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "47": {
+                "id": 47,
+                "money": 347000,
+                "energy": 3800,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "48": {
+                "id": 48,
+                "money": 341500,
+                "energy": 3750,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "49": {
+                "id": 49,
+                "money": 336000,
+                "energy": 3700,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
+            },
+            "50": {
+                "id": 50,
+                "money": 330500,
+                "energy": 3650,
+                "elixir": 0,
+                "power": 0,
+                "exp_card": 0
             }
         }
     },
@@ -49181,7 +49282,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
-                "exp_card_count": 10,
+                "exp_card_count": 50,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
                 "receive_bless_count": 0,
@@ -49192,7 +49293,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "lottery_free_count": 2,
-                "exp_card_count": 20,
+                "exp_card_count": 100,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
                 "receive_bless_count": 1,
@@ -49203,7 +49304,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "lottery_free_count": 3,
-                "exp_card_count": 30,
+                "exp_card_count": 150,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
                 "receive_bless_count": 2,
@@ -49214,7 +49315,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "lottery_free_count": 4,
-                "exp_card_count": 40,
+                "exp_card_count": 200,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
                 "receive_bless_count": 3,
@@ -49225,7 +49326,7 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "lottery_free_count": 5,
-                "exp_card_count": 50,
+                "exp_card_count": 250,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
                 "receive_bless_count": 4,
@@ -49236,7 +49337,7 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "lottery_free_count": 6,
-                "exp_card_count": 60,
+                "exp_card_count": 300,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
                 "receive_bless_count": 5,
@@ -49247,7 +49348,7 @@ var outputTables = {
             "7": {
                 "id": 7,
                 "lottery_free_count": 7,
-                "exp_card_count": 70,
+                "exp_card_count": 350,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
                 "receive_bless_count": 6,
@@ -49258,7 +49359,7 @@ var outputTables = {
             "8": {
                 "id": 8,
                 "lottery_free_count": 8,
-                "exp_card_count": 80,
+                "exp_card_count": 400,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
                 "receive_bless_count": 7,
@@ -49269,7 +49370,7 @@ var outputTables = {
             "9": {
                 "id": 9,
                 "lottery_free_count": 9,
-                "exp_card_count": 90,
+                "exp_card_count": 450,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
                 "receive_bless_count": 8,
@@ -49280,7 +49381,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lottery_free_count": 10,
-                "exp_card_count": 100,
+                "exp_card_count": 500,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
                 "receive_bless_count": 9,
@@ -49291,7 +49392,7 @@ var outputTables = {
             "11": {
                 "id": 11,
                 "lottery_free_count": 10,
-                "exp_card_count": 110,
+                "exp_card_count": 550,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
                 "receive_bless_count": 10,
@@ -49302,7 +49403,7 @@ var outputTables = {
             "12": {
                 "id": 12,
                 "lottery_free_count": 10,
-                "exp_card_count": 120,
+                "exp_card_count": 600,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
                 "receive_bless_count": 11,

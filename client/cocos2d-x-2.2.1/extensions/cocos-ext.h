@@ -37,6 +37,16 @@
 #include "GUI/CCScrollView/CCTableView.h"
 #include "GUI/CCEditBox/CCEditBox.h"
 
+// ios
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "AssetsManager/IOS/AssetsManager.h"
+#endif
+
+// android
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "AssetsManager/Android/AssetsManager.h"
+#endif
+
 #include "network/HttpRequest.h"
 #include "network/HttpResponse.h"
 #include "network/HttpClient.h"

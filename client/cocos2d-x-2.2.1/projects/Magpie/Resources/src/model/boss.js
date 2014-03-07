@@ -376,7 +376,7 @@ var Boss = Entity.extend({
         cc.log("Boss kneel");
 
         var that = this;
-        lz.server.request("area.bossHandler.removeTimer", {
+        lz.server.request("area.bossHandler.kneel", {
             playerId: playerId
         }, function (data) {
             cc.log(data);
@@ -390,7 +390,7 @@ var Boss = Entity.extend({
                     gameData.player.add(key, msg[key]);
                 }
 
-                this.add("kneelCount", -1);
+                that.add("kneelCount", -1);
 
                 cb(msg);
             } else {
@@ -473,6 +473,10 @@ var Boss = Entity.extend({
         cc.log("Boss isCanGetRankReward");
 
         return !(this._isGetReward || !this._lastWeek);
+    },
+
+    isCanKneel: function (playerId) {
+        return this._kneelCount > 0;
     },
 
     exchangeSuperHonor: function () {

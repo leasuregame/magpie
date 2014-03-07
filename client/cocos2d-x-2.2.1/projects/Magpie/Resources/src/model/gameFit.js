@@ -425,6 +425,9 @@ var fit4Iphone4 = {
             "QQGroupPoint": cc.p(55, 282),
             "go2LoginItemPoint": cc.p(55, 162)
         },
+        "damageRankHelpLabel": {
+            "frameLayerPoint": cc.p(40, 0)
+        },
         "damageRankLayer": {
             "frameLayerPoint": cc.p(40, 0)
         },
@@ -1907,6 +1910,9 @@ var fit4Iphone5 = {
             "tipsItemPoint": cc.p(15, 578),
             "QQGroupPoint": cc.p(15, 458),
             "go2LoginItemPoint": cc.p(15, 338)
+        },
+        "damageRankHelpLabel": {
+            "frameLayerPoint": cc.p(0, 98)
         },
         "damageRankLayer": {
             "frameLayerPoint": cc.p(0, 98)

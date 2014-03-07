@@ -101,6 +101,7 @@ public:
 
     bool executeFunctionWithObjectData(CCNode *self, const char *name, JSObject *obj);
     JSBool executeFunctionWithOwner(jsval owner, const char *name, uint32_t argc = 0, jsval* vp = NULL, jsval* retVal = NULL);
+    JSBool executeCallbackWithOwner(void* owner, const char *name, uint32_t argc = 0, jsval* vp = NULL, jsval* retVal = NULL);
 
     void executeJSFunctionWithThisObj(jsval thisObj, jsval callback, uint32_t argc = 0, jsval* vp = NULL, jsval* retVal = NULL);
 

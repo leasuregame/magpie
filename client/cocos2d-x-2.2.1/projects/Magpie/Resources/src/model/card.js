@@ -385,7 +385,7 @@ var Card = Entity.extend({
                     money: msg.money_consume
                 });
 
-                lz.dc.event("event_card_upgrade", that._lv);
+                lz.um.event("event_card_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 
@@ -455,7 +455,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_skill_upgrade", that._skillLv);
+                lz.um.event("event_card_skill_upgrade", that._skillLv);
             } else {
                 cc.log("upgradeSkill fail");
 
@@ -500,7 +500,7 @@ var Card = Entity.extend({
 
                 cb(true);
 
-                lz.dc.event("event_card_passive_skill_afresh", type);
+                lz.um.event("event_card_passive_skill_afresh", type);
             } else {
                 cc.log("passSkillAfresh fail");
 
@@ -575,7 +575,7 @@ var Card = Entity.extend({
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
                 cb(result);
 
-                lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
+                lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
                 cc.log("evolution fail");
 
@@ -615,7 +615,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_train", "type:" + trainType + " count:" + trainCount);
+                lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
                 cc.log("train fail");
 
@@ -662,7 +662,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_extract", "type:" + type);
+                lz.um.event("event_card_extract", "type:" + type);
             } else {
                 cc.log("extract fail");
 

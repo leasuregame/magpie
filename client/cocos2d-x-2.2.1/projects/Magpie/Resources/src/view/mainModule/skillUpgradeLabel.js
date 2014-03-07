@@ -40,7 +40,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("技能升级界面");
+        lz.um.beginLogPageView("技能升级界面");
     },
 
     onExit: function () {
@@ -48,7 +48,7 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("技能升级界面");
+        lz.um.endLogPageView("技能升级界面");
     },
 
     init: function () {

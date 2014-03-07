@@ -32,7 +32,7 @@ var LineUpDetail = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("查看其他玩家阵型界面");
+        lz.um.beginLogPageView("查看其他玩家阵型界面");
     },
 
     onExit: function () {
@@ -40,7 +40,7 @@ var LineUpDetail = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("查看其他玩家阵型界面");
+        lz.um.endLogPageView("查看其他玩家阵型界面");
     },
 
     init: function (data) {

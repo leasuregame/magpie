@@ -111,6 +111,9 @@ void AppDelegate::applicationDidEnterBackground()
     CCDirector::sharedDirector()->stopAnimation();
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->pauseAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationDidEnterBackground");
 }
 
 // this function will be called when the app is active again
@@ -119,4 +122,7 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->startAnimation();
     SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->resumeAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationWillEnterForeground");
 }

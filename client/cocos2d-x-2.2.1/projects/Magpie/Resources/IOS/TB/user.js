@@ -99,7 +99,7 @@ var User = Entity.extend({
                             cb(2);
                         }
 
-                        lz.dc.event("event_login", that._area);
+                        lz.um.event("event_login", that._area);
                     } else if (data.code == 600) {
                         cc.log("login fail go to updateLayer");
 
@@ -162,7 +162,7 @@ var User = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_create_player", that._area);
+                lz.um.event("event_create_player", that._area);
             } else {
                 cc.log("createPlayer fail");
 

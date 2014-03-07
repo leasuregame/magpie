@@ -57,7 +57,7 @@ var Rank = Entity.extend({
 
                     that.update(msg);
 
-                    lz.dc.event("event_order_list");
+                    lz.um.event("event_order_list");
                 } else {
                     cc.log("rank sync fail");
 

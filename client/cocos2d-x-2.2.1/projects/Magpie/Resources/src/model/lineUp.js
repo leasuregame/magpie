@@ -120,7 +120,7 @@ var LineUp = Entity.extend({
 
                         cb(true);
 
-                        lz.dc.event("event_lineup");
+                        lz.um.event("event_lineup");
                     } else {
                         cc.log("changeLineUp fail");
 

@@ -226,7 +226,7 @@ var DamageRankLayer = LazyLayer.extend({
         cc.log("DamageRankLayer update");
 
         var lastWeek = gameData.boss.get("lastWeek");
-        var isGet = false;//gameData.boss.isCanGetRankReward();
+        var isGet = gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
 
@@ -416,7 +416,7 @@ var DamageRankLayer = LazyLayer.extend({
         cc.log("DamageRankLayer _onClickShowReward");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var reward = null;//gameData.boss.getThisWeekReward();
+        var reward = gameData.boss.getThisWeekReward();
 
         GiftBagLayer.pop({
             reward: reward,
@@ -437,7 +437,7 @@ var DamageRankLayer = LazyLayer.extend({
         }
 
         var that = this;
-        gameData.tournament.getDamageRankReward(function (data) {
+        gameData.boss.getLastWeekReward(function (data) {
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
@@ -445,7 +445,7 @@ var DamageRankLayer = LazyLayer.extend({
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);
-                    that.update()
+                    that.update();
                 }
             });
         });
@@ -464,7 +464,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(DamageRankHelpLabel);
+        DamageRankHelpLabel.pop();
     },
 
     _onClickDetail: function () {

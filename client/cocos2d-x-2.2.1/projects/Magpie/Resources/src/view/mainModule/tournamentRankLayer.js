@@ -25,7 +25,7 @@ var TournamentRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("竞技场排行榜界面");
+        lz.um.beginLogPageView("竞技场排行榜界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var TournamentRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("竞技场排行榜界面");
+        lz.um.endLogPageView("竞技场排行榜界面");
     },
 
     init: function () {

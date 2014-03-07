@@ -17,7 +17,7 @@
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
 #include "js_bindings_IAPHelp.hpp"
-#include "js_cocos2dx_autogen_extension.hpp"
+#include "js_bindings_MobClickCpp.hpp"
 #include "js_bindings_WebLayer.hpp"
 #include "js_bindings_NotificationHelp.hpp"
 
@@ -72,7 +72,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
     sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
-    sc->addRegisterCallback(register_all_js_cocos2dx_autogen_extension);
+    sc->addRegisterCallback(register_all_js_bindings_MobClickCpp);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);
     sc->addRegisterCallback(register_all_js_bindings_NotificationHelp);
     
@@ -113,6 +113,9 @@ void AppDelegate::applicationDidEnterBackground()
     CCDirector::sharedDirector()->stopAnimation();
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->pauseAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationDidEnterBackground");
 }
 
 // this function will be called when the app is active again
@@ -121,4 +124,7 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->startAnimation();
     SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->resumeAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationWillEnterForeground");
 }

@@ -33,7 +33,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("探索界面");
+        lz.um.beginLogPageView("探索界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("探索界面");
+        lz.um.endLogPageView("探索界面");
     },
 
     init: function (sectionId) {
@@ -486,7 +486,7 @@ var ExploreLayer = cc.Layer.extend({
                     var upgradeReward = data.upgradeReward;
                     var level9Box = data.level9Box;
                     var throughReward = data.through_reward;
-                    var bossId = data.bossId;
+                    var findBoss = data.findBoss;
                     var isWin = false;
 
                     var next = function () {
@@ -620,10 +620,16 @@ var ExploreLayer = cc.Layer.extend({
                             });
                         },
                         function () {
-                            if (bossId) {
+                            if (findBoss) {
                                 // 加入boss出现事件
+                                var bossEffect = cc.BuilderReader.load(main_scene_image.uiEffect89, that);
+                                bossEffect.setPosition(gameFit.GAME_MIDPOINT);
+                                that.addChild(bossEffect);
 
-                                next();
+                                bossEffect.animationManager.setCompletedAnimationCallback(that, function () {
+                                    bossEffect.removeFromParent();
+                                    next();
+                                });
                             } else {
                                 next();
                             }

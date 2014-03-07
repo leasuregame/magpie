@@ -21,7 +21,7 @@ var BossListLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("Boss界面");
+        lz.um.beginLogPageView("Boss界面");
     },
 
     onExit: function () {
@@ -29,7 +29,7 @@ var BossListLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("Boss界面");
+        lz.um.endLogPageView("Boss界面");
     },
 
     init: function () {
@@ -128,6 +128,11 @@ var BossListLayer = cc.Layer.extend({
         this._rewardItem.setScale(0.5);
         this._rewardItem.setPosition(this._bossListLayerFit.rewardItemPoint);
 
+        this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+        this._effect.setScale(0.4);
+        this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
+        this.addChild(this._effect);
+
         var rankItem = cc.MenuItemImage.create(
             main_scene_image.button7,
             main_scene_image.button7s,
@@ -186,16 +191,9 @@ var BossListLayer = cc.Layer.extend({
         this._canExchangeLabel.setString(parseInt(honor / 6000));
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
-        if (gameData.boss.get("canReceive")) {
-            if (this._effect) {
-                this._effect.removeFromParent();
-                this._effect = null;
-            }
-            this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
-            this._effect.setScale(0.4);
-            this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
-            this.addChild(this._effect);
-        }
+        var isCanReceive = gameData.boss.get("canReceive");
+        this._rewardItem.setEnabled(isCanReceive);
+        this._effect.setVisible(isCanReceive);
     },
 
     _addScrollView: function () {
@@ -359,7 +357,9 @@ var BossListLayer = cc.Layer.extend({
 
         var that = this;
         var cb = function () {
-            that._update();
+            gameData.boss.removeTimer(function () {
+                that.update();
+            });
         };
 
         RemoveCdTipLabel.pop({cb: cb});
@@ -369,6 +369,20 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+        gameData.boss.getFriendHelpReward(function (data) {
+            cc.log(data);
+            GiftBagLayer.pop({
+                reward: data,
+                type: GET_GIFT_BAG,
+                titleType: TYPE_LOOK_REWARD,
+                cb: function () {
+                    lz.tipReward(data);
+                    that.update();
+                }
+            });
+        });
     },
 
     _onClickRank: function () {

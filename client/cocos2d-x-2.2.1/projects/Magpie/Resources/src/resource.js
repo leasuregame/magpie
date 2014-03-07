@@ -907,6 +907,8 @@ var main_scene_image = {
     uiEffect85: "res/ccb/uiEffect85.ccbi",
     uiEffect86: "res/ccb/uiEffect86.ccbi",
     uiEffect87: "res/ccb/uiEffect87.ccbi",
+    uiEffect88: "res/ccb/uiEffect88.ccbi",
+    uiEffect89: "res/ccb/uiEffect89.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -990,7 +992,7 @@ var main_scene_image = {
     p79: "res/effect/effect/p79.png",
     p80: "res/effect/effect/p80.png",
     p81: "res/effect/effect/p81.png",
-    p82: "res/effect/effect/p82.png",
+   // p82: "res/effect/effect/p82.png",
     p83: "res/effect/effect/p83.png",
     p84: "res/effect/effect/p84.png",
     p85: "res/effect/effect/p85.png",

@@ -108,7 +108,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.40000000596046448</real>
+							<real>0.60000002384185791</real>
 							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
@@ -137,7 +137,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>190</real>
+							<real>150</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -183,7 +183,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>50</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -334,9 +334,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p8.png</string>
+						<string>res/effect/effect/p28.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -818,6 +820,18 @@
 						<string>Byte</string>
 						<key>value</key>
 						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>255</integer>
+							<integer>242</integer>
+							<integer>201</integer>
+						</array>
 					</dict>
 					<dict>
 						<key>name</key>

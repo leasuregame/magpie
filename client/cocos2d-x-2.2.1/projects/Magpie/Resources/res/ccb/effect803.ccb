@@ -512,6 +512,18 @@
 								<key>value</key>
 								<integer>0</integer>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>212</integer>
+									<integer>252</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -1071,6 +1083,18 @@
 								<key>value</key>
 								<integer>0</integer>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>209</integer>
+									<integer>248</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -1629,6 +1653,18 @@
 								<string>Byte</string>
 								<key>value</key>
 								<integer>0</integer>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>199</integer>
+									<integer>250</integer>
+								</array>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -2190,6 +2226,18 @@
 								<string>Byte</string>
 								<key>value</key>
 								<integer>0</integer>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>211</integer>
+									<integer>248</integer>
+								</array>
 							</dict>
 						</array>
 						<key>seqExpanded</key>

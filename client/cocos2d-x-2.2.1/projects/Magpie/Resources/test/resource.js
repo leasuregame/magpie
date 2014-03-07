@@ -1179,7 +1179,7 @@ var main_scene_image = {
     7: test_scene_path + "res/" + "7.png",
     8: test_scene_path + "res/" + "8.png",
     9: test_scene_path + "res/" + "9.png",
-    10: test_scene_path + "res/" + "10.png",
+   
     11: test_scene_path + "res/" + "11.png",
     29: test_scene_path + "res/" + "29.png",
     50: test_scene_path + "res/" + "50.png",

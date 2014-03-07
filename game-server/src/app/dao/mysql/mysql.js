@@ -25,7 +25,7 @@ NND = {
             console.log('query: ', !!client, sql, args);
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
-                console.log('===========query result===========', err, !!res);
+                console.log('===========query result===========', err, res, sql);
                 return cb(err, res);
             });
         });

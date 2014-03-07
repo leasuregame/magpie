@@ -54,8 +54,8 @@
             'src/model/entity.js',
 
             'src/model/lz.js',
-            'AppStore/platform.js',
-            'src/model/dataCollection.js',
+            'src/model/um.js',
+            'IOS/AppStore/platform.js',
             'src/model/pomelo.js',
             'src/model/server.js',
 

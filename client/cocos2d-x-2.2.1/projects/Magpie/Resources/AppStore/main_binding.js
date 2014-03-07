@@ -37,8 +37,8 @@ var appFiles = [
     'src/model/entity.js',
 
     'src/model/lz.js',
+    'src/model/um.js',
     'platform.js',
-    'src/model/dataCollection.js',
     'src/model/pomelo.js',
     'src/model/server.js',
 

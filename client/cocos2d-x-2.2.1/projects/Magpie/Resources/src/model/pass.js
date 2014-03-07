@@ -149,7 +149,7 @@ var Pass = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_pass", id);
+                lz.um.event("event_pass", id);
             } else {
                 cc.log("defiance fail");
 
@@ -220,7 +220,7 @@ var Pass = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_wipe_out_pass");
+                lz.um.event("event_wipe_out_pass");
             } else {
                 cc.log("wipeOut fail");
 
@@ -251,7 +251,7 @@ var Pass = Entity.extend({
 
                 cb(battleLogId);
 
-                lz.dc.event("event_mystical");
+                lz.um.event("event_mystical");
             } else {
                 cc.log("mystical fail");
 
@@ -285,7 +285,7 @@ var Pass = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_reset_pass");
+                lz.um.event("event_reset_pass");
             } else {
                 cc.log("reset fail");
 

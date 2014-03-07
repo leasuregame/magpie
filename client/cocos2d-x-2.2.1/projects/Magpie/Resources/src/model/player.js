@@ -197,7 +197,7 @@ var Player = Entity.extend({
 
                     that.set("evolutionRate", msg.initRate);
 
-                    lz.dc.event("event_order_list");
+                    lz.um.event("event_order_list");
                 } else {
                     cc.log("Player sync fail");
 
@@ -355,7 +355,7 @@ var Player = Entity.extend({
     _powerChangeEven: function () {
         cc.log("Player _powerChangeEven");
 
-        if (lz.NotificationHelp) {
+        if (typeof(lz.NotificationHelp) != "undefined") {
             lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
 
             if (this._power < this._maxPower) {
@@ -382,7 +382,7 @@ var Player = Entity.extend({
 
                 cb("success");
 
-                lz.dc.event("event_send_message");
+                lz.um.event("event_send_message");
             } else {
                 cc.log("sendMessage fail");
 
@@ -410,7 +410,7 @@ var Player = Entity.extend({
 
                 cb(battleLogId);
 
-                lz.dc.event("event_fight");
+                lz.um.event("event_fight");
             } else {
                 cc.log("learn fail");
 
@@ -436,7 +436,7 @@ var Player = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_get_player_detail");
+                lz.um.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
 

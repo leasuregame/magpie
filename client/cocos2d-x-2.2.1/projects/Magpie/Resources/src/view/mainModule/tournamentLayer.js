@@ -41,7 +41,7 @@ var TournamentLayer = cc.Layer.extend({
         this.update();
         this.updateGuide();
 
-        lz.dc.beginLogPageView("竞技界面");
+        lz.um.beginLogPageView("竞技界面");
     },
 
     onExit: function () {
@@ -49,7 +49,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("竞技界面");
+        lz.um.endLogPageView("竞技界面");
     },
 
     init: function () {

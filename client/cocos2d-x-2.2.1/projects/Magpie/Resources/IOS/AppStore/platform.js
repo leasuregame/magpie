@@ -1,0 +1,51 @@
+/**
+ * Created by lcc3536 on 13-12-30.
+ */
+
+
+/*
+ * app platform
+ * */
+
+
+var lz = lz || {};
+
+lz.platformConfig = {
+    PLATFORM: "AppStore",
+    GATE_SERVER_HOST: "124.238.236.33",
+    GATE_SERVER_PORT: "3009",
+    UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",
+    UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/app/version",
+    GAME_NOTICE_URL: "http://124.238.236.33:9090/api/app/notice"
+};
+
+var UM_APP_KEY = "5314371056240be15b216fc1";
+
+// 程序到后台时调用
+cc.Application.getInstance().jsApplicationDidEnterBackground = function () {
+    cc.log("*************************************************************");
+    cc.log("cc.Application.getInstance().jsApplicationDidEnterBackground");
+    cc.log("*************************************************************");
+
+    if (typeof(lz.NotificationHelp) != "undefined") {
+        lz.NotificationHelp.end();
+    }
+
+    lz.un.applicationDidEnterBackground();
+};
+
+// 程序回复运行时调用
+cc.Application.getInstance().jsApplicationWillEnterForeground = function () {
+    cc.log("*************************************************************");
+    cc.log("cc.Application.getInstance().jsApplicationWillEnterForeground");
+    cc.log("*************************************************************");
+
+    if (typeof(lz.NotificationHelp) != "undefined") {
+        lz.NotificationHelp.start();
+    }
+
+    lz.um.applicationWillEnterForeground();
+};
+
+lz.um.startWithAppKey(UM_APP_KEY);
+lz.um.setLogEnabled(true);

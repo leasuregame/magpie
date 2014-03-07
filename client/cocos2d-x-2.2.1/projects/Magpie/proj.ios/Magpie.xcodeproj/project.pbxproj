@@ -130,16 +130,11 @@
 		1A40E7B11727C3DB006D4861 /* jsb_opengl_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7AC1727C3DB006D4861 /* jsb_opengl_manual.cpp */; };
 		1A40E7B21727C3DB006D4861 /* jsb_opengl_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7AE1727C3DB006D4861 /* jsb_opengl_registration.cpp */; };
 		1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7B31727C427006D4861 /* js_bindings_opengl.cpp */; };
-		1A4B644916EE23A70025FE93 /* jsb_cocos2dx_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644316EE23A70025FE93 /* jsb_cocos2dx_auto_api.js */; };
 		1A4B644A16EE23A70025FE93 /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644416EE23A70025FE93 /* jsb_cocos2dx_auto.cpp */; };
-		1A4B644B16EE23A70025FE93 /* jsb_cocos2dx_extension_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644616EE23A70025FE93 /* jsb_cocos2dx_extension_auto_api.js */; };
 		1A4B644C16EE23A70025FE93 /* jsb_cocos2dx_extension_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644716EE23A70025FE93 /* jsb_cocos2dx_extension_auto.cpp */; };
 		1A4B644F16EE23B30025FE93 /* jsb_cocos2dx_extension_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644D16EE23B30025FE93 /* jsb_cocos2dx_extension_manual.cpp */; };
-		1A4B645116EE24900025FE93 /* jsb_cocos2d_extension.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B645016EE24900025FE93 /* jsb_cocos2d_extension.js */; };
-		1A4B645316EE24980025FE93 /* main.debug.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B645216EE24980025FE93 /* main.debug.js */; };
 		1A4B645416EE24A80025FE93 /* jsb_cocos2d_extension.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A4B645016EE24900025FE93 /* jsb_cocos2d_extension.js */; };
 		1A4B645516EE24A80025FE93 /* main.debug.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A4B645216EE24980025FE93 /* main.debug.js */; };
-		1A5E73FF17F086FB00B9ACAE /* jsb_deprecated.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E73FE17F086FB00B9ACAE /* jsb_deprecated.js */; };
 		1A5E740017F0870800B9ACAE /* jsb_deprecated.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E73FE17F086FB00B9ACAE /* jsb_deprecated.js */; };
 		1A5E749917F0874400B9ACAE /* CCActionFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E740317F0874400B9ACAE /* CCActionFrame.cpp */; };
 		1A5E749A17F0874400B9ACAE /* CCActionFrameEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E740517F0874400B9ACAE /* CCActionFrameEasing.cpp */; };
@@ -205,9 +200,6 @@
 		1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A96A4E9174A32C5008653A9 /* XMLHTTPRequest.cpp */; };
 		1A96A4F1174A3369008653A9 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A96A4ED174A3369008653A9 /* HttpClient.cpp */; };
 		1A96A4F3174A3432008653A9 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A96A4F2174A3432008653A9 /* libcurl.a */; };
-		1AA51AE816F71BA3000FDF05 /* jsb_chipmunk_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE516F71BA3000FDF05 /* jsb_chipmunk_constants.js */; };
-		1AA51AE916F71BA3000FDF05 /* jsb_cocos2d_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE616F71BA3000FDF05 /* jsb_cocos2d_constants.js */; };
-		1AA51AEA16F71BA3000FDF05 /* jsb_opengl_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE716F71BA3000FDF05 /* jsb_opengl_constants.js */; };
 		1AA51AEB16F71C3D000FDF05 /* jsb_chipmunk_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 1AA51AE516F71BA3000FDF05 /* jsb_chipmunk_constants.js */; };
 		1AA51AEC16F71C3D000FDF05 /* jsb_cocos2d_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 1AA51AE616F71BA3000FDF05 /* jsb_cocos2d_constants.js */; };
 		1AA51AED16F71C3D000FDF05 /* jsb_opengl_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 1AA51AE716F71BA3000FDF05 /* jsb_opengl_constants.js */; };
@@ -223,12 +215,9 @@
 		3EC20B7518331C7B00F2C4D6 /* UIListViewEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7318331C7B00F2C4D6 /* UIListViewEx.cpp */; };
 		3EC20B7A18331C9000F2C4D6 /* UILayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7618331C9000F2C4D6 /* UILayout.cpp */; };
 		3EC20B7B18331C9000F2C4D6 /* UILayoutParameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7818331C9000F2C4D6 /* UILayoutParameter.cpp */; };
-		3EC20B7D18331CA200F2C4D6 /* jsb_cocos2d_studio.js in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
-		3EC20B8118331CB000F2C4D6 /* jsb_cocos2dx_studio_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7E18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto_api.js */; };
 		3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7F18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp */; };
 		3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */; };
 		3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
-		9024377B1875734A00CF670C /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 902437781875732800CF670C /* game.jsc */; };
 		902B07A61858C475003A2A49 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		902B07A71858C475003A2A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		902B07A81858C475003A2A49 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -251,7 +240,6 @@
 		902B07BA1858C475003A2A49 /* cpGrooveJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D3661682F0B5002FB0C5 /* cpGrooveJoint.c */; };
 		902B07BB1858C475003A2A49 /* cpPinJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D3671682F0B5002FB0C5 /* cpPinJoint.c */; };
 		902B07BC1858C475003A2A49 /* cpPivotJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D3681682F0B5002FB0C5 /* cpPivotJoint.c */; };
-		902B07BD1858C475003A2A49 /* jsb_cocos2dx_studio_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7E18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto_api.js */; };
 		902B07BE1858C475003A2A49 /* cpRatchetJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D3691682F0B5002FB0C5 /* cpRatchetJoint.c */; };
 		902B07BF1858C475003A2A49 /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D36A1682F0B5002FB0C5 /* cpRotaryLimitJoint.c */; };
 		902B07C01858C475003A2A49 /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D36B1682F0B5002FB0C5 /* cpSimpleMotor.c */; };
@@ -328,17 +316,10 @@
 		902B08071858C475003A2A49 /* js_bindings_system_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A2758031698032000504026 /* js_bindings_system_registration.cpp */; };
 		902B08081858C475003A2A49 /* LocalStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F5F5169AC91400C4B13A /* LocalStorage.cpp */; };
 		902B08091858C475003A2A49 /* LocalStorageAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A82F5F7169AC91400C4B13A /* LocalStorageAndroid.cpp */; };
-		902B080A1858C475003A2A49 /* jsb_cocos2dx_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644316EE23A70025FE93 /* jsb_cocos2dx_auto_api.js */; };
 		902B080B1858C475003A2A49 /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644416EE23A70025FE93 /* jsb_cocos2dx_auto.cpp */; };
-		902B080C1858C475003A2A49 /* jsb_cocos2dx_extension_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644616EE23A70025FE93 /* jsb_cocos2dx_extension_auto_api.js */; };
 		902B080D1858C475003A2A49 /* jsb_cocos2dx_studio_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7F18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp */; };
 		902B080E1858C475003A2A49 /* jsb_cocos2dx_extension_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644716EE23A70025FE93 /* jsb_cocos2dx_extension_auto.cpp */; };
 		902B080F1858C475003A2A49 /* jsb_cocos2dx_extension_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B644D16EE23B30025FE93 /* jsb_cocos2dx_extension_manual.cpp */; };
-		902B08101858C475003A2A49 /* jsb_cocos2d_extension.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B645016EE24900025FE93 /* jsb_cocos2d_extension.js */; };
-		902B08111858C475003A2A49 /* main.debug.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B645216EE24980025FE93 /* main.debug.js */; };
-		902B08121858C475003A2A49 /* jsb_chipmunk_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE516F71BA3000FDF05 /* jsb_chipmunk_constants.js */; };
-		902B08131858C475003A2A49 /* jsb_cocos2d_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE616F71BA3000FDF05 /* jsb_cocos2d_constants.js */; };
-		902B08141858C475003A2A49 /* jsb_opengl_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 1AA51AE716F71BA3000FDF05 /* jsb_opengl_constants.js */; };
 		902B08151858C475003A2A49 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7701727C102006D4861 /* Animation.cpp */; };
 		902B08161858C475003A2A49 /* AnimationState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7721727C102006D4861 /* AnimationState.cpp */; };
 		902B08171858C475003A2A49 /* AnimationStateData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A40E7741727C102006D4861 /* AnimationStateData.cpp */; };
@@ -370,7 +351,6 @@
 		902B08311858C475003A2A49 /* CCSkeletonAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8700E175E0759005D39BF /* CCSkeletonAnimation.cpp */; };
 		902B08321858C475003A2A49 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB87012175E0768005D39BF /* WebSocket.cpp */; };
 		902B08331858C475003A2A49 /* jsb_websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB87015175E0773005D39BF /* jsb_websocket.cpp */; };
-		902B08341858C475003A2A49 /* jsb_deprecated.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E73FE17F086FB00B9ACAE /* jsb_deprecated.js */; };
 		902B08351858C475003A2A49 /* CCActionFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E740317F0874400B9ACAE /* CCActionFrame.cpp */; };
 		902B08361858C475003A2A49 /* CCActionFrameEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E740517F0874400B9ACAE /* CCActionFrameEasing.cpp */; };
 		902B08371858C475003A2A49 /* CCActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E740717F0874400B9ACAE /* CCActionManager.cpp */; };
@@ -381,7 +361,6 @@
 		902B083C1858C475003A2A49 /* CCTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741317F0874400B9ACAE /* CCTween.cpp */; };
 		902B083D1858C475003A2A49 /* CCArmature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741517F0874400B9ACAE /* CCArmature.cpp */; };
 		902B083E1858C475003A2A49 /* CCBone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741717F0874400B9ACAE /* CCBone.cpp */; };
-		902B083F1858C475003A2A49 /* jsb_cocos2d_studio.js in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
 		902B08401858C475003A2A49 /* CCDatas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741A17F0874400B9ACAE /* CCDatas.cpp */; };
 		902B08411858C475003A2A49 /* CCBatchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741D17F0874400B9ACAE /* CCBatchNode.cpp */; };
 		902B08421858C475003A2A49 /* CCDecorativeDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E741F17F0874400B9ACAE /* CCDecorativeDisplay.cpp */; };
@@ -498,28 +477,16 @@
 		902B08F11858C571003A2A49 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DF1858C571003A2A49 /* Icon-80.png */; };
 		902B08F31858C571003A2A49 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 902B08E11858C571003A2A49 /* iTunesArtwork */; };
 		902B08F51858C666003A2A49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902B08F41858C666003A2A49 /* StoreKit.framework */; };
-		9058F5DA18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
-		9058F5DB18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */; };
-		9058F5DC18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D618C4603400FD88DB /* libMobClickLibrary.a */; };
-		9058F5DD18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D618C4603400FD88DB /* libMobClickLibrary.a */; };
-		9058F5DE18C4603400FD88DB /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D918C4603400FD88DB /* MobClickCPP.mm */; };
-		9058F5DF18C4603400FD88DB /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5D918C4603400FD88DB /* MobClickCPP.mm */; };
 		9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5E918C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5EA18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
 		9058F5EB18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
 		9058F5EC18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */; };
 		9058F5ED18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */; };
-		9058F5EE18C4609800FD88DB /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E718C4609800FD88DB /* js_bindings_IAPHelp_api.js */; };
-		9058F5EF18C4609800FD88DB /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E718C4609800FD88DB /* js_bindings_IAPHelp_api.js */; };
 		9058F5F618C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
 		9058F5F718C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
 		9058F5F818C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
 		9058F5F918C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
-		9058F5FA18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F318C460BF00FD88DB /* js_bindings_NotificationHelp_api.js */; };
-		9058F5FB18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F318C460BF00FD88DB /* js_bindings_NotificationHelp_api.js */; };
-		9058F5FC18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F318C460BF00FD88DB /* js_bindings_NotificationHelp_api.js */; };
-		9058F5FD18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F318C460BF00FD88DB /* js_bindings_NotificationHelp_api.js */; };
 		9058F5FE18C460BF00FD88DB /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F518C460BF00FD88DB /* NotificationHelp.mm */; };
 		9058F5FF18C460BF00FD88DB /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F518C460BF00FD88DB /* NotificationHelp.mm */; };
 		9058F60018C460BF00FD88DB /* NotificationHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F518C460BF00FD88DB /* NotificationHelp.mm */; };
@@ -532,10 +499,6 @@
 		9058F61218C460CD00FD88DB /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60A18C460CD00FD88DB /* js_bindings_WebLayer.cpp */; };
 		9058F61318C460CD00FD88DB /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60A18C460CD00FD88DB /* js_bindings_WebLayer.cpp */; };
 		9058F61418C460CD00FD88DB /* js_bindings_WebLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60A18C460CD00FD88DB /* js_bindings_WebLayer.cpp */; };
-		9058F61518C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60C18C460CD00FD88DB /* js_bindings_WebLayer_api.js */; };
-		9058F61618C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60C18C460CD00FD88DB /* js_bindings_WebLayer_api.js */; };
-		9058F61718C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60C18C460CD00FD88DB /* js_bindings_WebLayer_api.js */; };
-		9058F61818C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60C18C460CD00FD88DB /* js_bindings_WebLayer_api.js */; };
 		9058F61918C460CD00FD88DB /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60E18C460CD00FD88DB /* WebLayer.mm */; };
 		9058F61A18C460CD00FD88DB /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60E18C460CD00FD88DB /* WebLayer.mm */; };
 		9058F61B18C460CD00FD88DB /* WebLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F60E18C460CD00FD88DB /* WebLayer.mm */; };
@@ -560,27 +523,32 @@
 		9058F65418C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
 		9058F65518C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
 		9058F65618C46A2A00FD88DB /* AssetsManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F65118C46A2A00FD88DB /* AssetsManager.mm */; };
-		9075096018716DB600E27689 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
-		9075096D187171BC00E27689 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096518716DBF00E27689 /* main_binding.js */; };
-		9075096E187171BC00E27689 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096618716DBF00E27689 /* payment.js */; };
-		9075096F187171BC00E27689 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096718716DBF00E27689 /* platform.js */; };
-		90750970187171BC00E27689 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075096818716DBF00E27689 /* user.js */; };
 		909187FF18A726D80023312A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909187FE18A726D80023312A /* AdSupport.framework */; };
 		909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
-		90A846B618726FB800582139 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90C1A02518726F6E00CBC6FF /* loginLayer.js */; };
 		90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
 		90A846BB1872C04600582139 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
 		90A8D61F18B4691500EA6409 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909187FE18A726D80023312A /* AdSupport.framework */; };
-		90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095A18716DB600E27689 /* loginLayer.js */; };
-		90C1A0201871722F00CBC6FF /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095B18716DB600E27689 /* main_binding.js */; };
-		90C1A0211871722F00CBC6FF /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095C18716DB600E27689 /* payment.js */; };
-		90C1A0221871722F00CBC6FF /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095D18716DB600E27689 /* platform.js */; };
-		90C1A0231871722F00CBC6FF /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9075095E18716DB600E27689 /* user.js */; };
 		90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CC1870701E00671D28 /* SystemConfiguration.framework */; };
 		90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
 		90C212D11870702D00671D28 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
+		90DE78C718C71D58005A300F /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78C618C71D58005A300F /* game.jsc */; };
+		90DE78CA18C71D66005A300F /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78C918C71D66005A300F /* game.jsc */; };
+		90DE78CB18C71DB6005A300F /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78B018C71D3A005A300F /* loginLayer.js */; };
+		90DE78CC18C71DB6005A300F /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78B118C71D3A005A300F /* main_binding.js */; };
+		90DE78CD18C71DB6005A300F /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78B218C71D3A005A300F /* payment.js */; };
+		90DE78CE18C71DB6005A300F /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78B318C71D3A005A300F /* platform.js */; };
+		90DE78CF18C71DB6005A300F /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78B418C71D3A005A300F /* user.js */; };
+		90DE78D618C71ECE005A300F /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BB18C71D46005A300F /* loginLayer.js */; };
+		90DE78D718C71ECE005A300F /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BC18C71D46005A300F /* main_binding.js */; };
+		90DE78D818C71ECE005A300F /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BD18C71D46005A300F /* payment.js */; };
+		90DE78D918C71ECE005A300F /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BE18C71D46005A300F /* platform.js */; };
+		90DE78DA18C71ECE005A300F /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BF18C71D46005A300F /* user.js */; };
+		90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
+		90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
+		90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
+		90F3932918C9C713002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
 		90F5350B1862EAC2008207BD /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		90F5350C1862EAC2008207BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		90F5350D1862EAC2008207BD /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -1032,7 +1000,6 @@
 		90F537201862EB3C008207BD /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DA1858C571003A2A49 /* Icon-50.png */; };
 		90F537211862EB3C008207BD /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08D51858C571003A2A49 /* Icon-120.png */; };
 		90F537221862EB3C008207BD /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E749117F0874400B9ACAE /* sconscript */; };
-		90F5375C1862F594008207BD /* game.jsc in Resources */ = {isa = PBXBuildFile; fileRef = 90F5375B1862F594008207BD /* game.jsc */; };
 		90F5375D186303E2008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		90F5375E186303E3008207BD /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
@@ -1514,7 +1481,6 @@
 		3EC20B8018331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_cocos2dx_studio_auto.hpp; sourceTree = "<group>"; };
 		3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocos2dx_studio_manual.cpp; sourceTree = "<group>"; };
 		3EC20B8418331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocos2dx_studio_manual.h; sourceTree = "<group>"; };
-		902437781875732800CF670C /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		902B08A81858C475003A2A49 /* Magpie-TB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902B08AB1858C569003A2A49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		902B08AC1858C569003A2A49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -1553,12 +1519,6 @@
 		902B08E01858C571003A2A49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902B08E11858C571003A2A49 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		902B08F41858C666003A2A49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
-		9058F5D518C4603400FD88DB /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
-		9058F5D618C4603400FD88DB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		9058F5D718C4603400FD88DB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		9058F5D818C4603400FD88DB /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
-		9058F5D918C4603400FD88DB /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
 		9058F5E118C4609800FD88DB /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
 		9058F5E218C4609800FD88DB /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		9058F5E318C4609800FD88DB /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
@@ -1597,23 +1557,29 @@
 		9058F64018C4646A00FD88DB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9058F65118C46A2A00FD88DB /* AssetsManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AssetsManager.mm; path = IOS/AssetsManager.mm; sourceTree = "<group>"; };
 		9058F65218C46A2A00FD88DB /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsManager.h; path = IOS/AssetsManager.h; sourceTree = "<group>"; };
-		9075095A18716DB600E27689 /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
-		9075095B18716DB600E27689 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
-		9075095C18716DB600E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
-		9075095D18716DB600E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
-		9075095E18716DB600E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
-		9075096518716DBF00E27689 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
-		9075096618716DBF00E27689 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
-		9075096718716DBF00E27689 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
-		9075096818716DBF00E27689 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		909187FE18A726D80023312A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		90C1A02518726F6E00CBC6FF /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
 		90C212CC1870701E00671D28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		90C212CE1870702600671D28 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		90C212D01870702D00671D28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		90DE78B018C71D3A005A300F /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
+		90DE78B118C71D3A005A300F /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
+		90DE78B218C71D3A005A300F /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		90DE78B318C71D3A005A300F /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
+		90DE78B418C71D3A005A300F /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		90DE78BB18C71D46005A300F /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
+		90DE78BC18C71D46005A300F /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
+		90DE78BD18C71D46005A300F /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		90DE78BE18C71D46005A300F /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
+		90DE78BF18C71D46005A300F /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		90DE78C618C71D58005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
+		90DE78C918C71D66005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
+		90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_MobClickCpp.cpp; sourceTree = "<group>"; };
+		90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_MobClickCpp.hpp; sourceTree = "<group>"; };
+		90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_MobClickCpp_api.js; sourceTree = "<group>"; };
+		90F3932218C9C712002EC9BC /* libMobClickCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickCpp.a; sourceTree = "<group>"; };
+		90F3932318C9C712002EC9BC /* MobClickCpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCpp.h; sourceTree = "<group>"; };
 		90F536191862EAC2008207BD /* Magpie-AppStore-Releases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore-Releases.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F537261862EB3C008207BD /* Magpie-TB-Releases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB-Releases.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		90F5375B1862F594008207BD /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* Magpie-AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275431517C094001B78AA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1664,14 +1630,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
 				909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				90F535DC1862EAC2008207BD /* libsqlite3.dylib in Frameworks */,
+				90F3932918C9C713002EC9BC /* libMobClickCpp.a in Frameworks */,
 				90F535DD1862EAC2008207BD /* libcocos2dx.a in Frameworks */,
-				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
 				90F535E01862EAC2008207BD /* libxml2.dylib in Frameworks */,
 				90F535E11862EAC2008207BD /* QuartzCore.framework in Frameworks */,
 				90F535E21862EAC2008207BD /* OpenGLES.framework in Frameworks */,
-				9058F5DD18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */,
 				90F535E31862EAC2008207BD /* OpenAL.framework in Frameworks */,
 				90F535E41862EAC2008207BD /* AudioToolbox.framework in Frameworks */,
 				90F535E51862EAC2008207BD /* AVFoundation.framework in Frameworks */,
@@ -1714,14 +1680,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
 				909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
+				90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */,
 				15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */,
-				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
 				D454520A156E22B400887EB5 /* libxml2.dylib in Frameworks */,
 				A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */,
 				A92275441517C094001B78AA /* OpenGLES.framework in Frameworks */,
-				9058F5DC18C4603400FD88DB /* libMobClickLibrary.a in Frameworks */,
 				A92275461517C094001B78AA /* OpenAL.framework in Frameworks */,
 				A92275481517C094001B78AA /* AudioToolbox.framework in Frameworks */,
 				A922754A1517C094001B78AA /* AVFoundation.framework in Frameworks */,
@@ -1740,9 +1706,10 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9075096418716DBF00E27689 /* TB */,
-				9075095918716DB600E27689 /* AppStore */,
-				90F5374E1862F579008207BD /* game */,
+				90DE78C818C71D66005A300F /* TB-Releases */,
+				90DE78C518C71D58005A300F /* AppStore-Releases */,
+				90DE78BA18C71D46005A300F /* TB */,
+				90DE78AF18C71D3A005A300F /* AppStore */,
 				1AE4B40216D1FECD003C6D1C /* src */,
 				1AE4B40116D1FECD003C6D1C /* res */,
 			);
@@ -2546,14 +2513,6 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		902437761875732800CF670C /* TB-Releases */ = {
-			isa = PBXGroup;
-			children = (
-				902437781875732800CF670C /* game.jsc */,
-			);
-			path = "TB-Releases";
-			sourceTree = "<group>";
-		};
 		902B08AA1858C569003A2A49 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2607,27 +2566,14 @@
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				90F3931E18C9C712002EC9BC /* UM */,
 				9058F62118C460DA00FD88DB /* TongBu */,
 				9058F60918C460CD00FD88DB /* WebLayer */,
 				9058F60218C460C600FD88DB /* Reachability */,
 				9058F5F018C460BF00FD88DB /* NotificationHelp */,
 				9058F5E018C4609800FD88DB /* IAPHelp */,
-				9058F5D318C4603400FD88DB /* DataDollection */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		9058F5D318C4603400FD88DB /* DataDollection */ = {
-			isa = PBXGroup;
-			children = (
-				9058F5D418C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp */,
-				9058F5D518C4603400FD88DB /* js_cocos2dx_autogen_extension.hpp */,
-				9058F5D618C4603400FD88DB /* libMobClickLibrary.a */,
-				9058F5D718C4603400FD88DB /* MobClick.h */,
-				9058F5D818C4603400FD88DB /* MobClickCPP.h */,
-				9058F5D918C4603400FD88DB /* MobClickCPP.mm */,
-			);
-			path = DataDollection;
 			sourceTree = "<group>";
 		};
 		9058F5E018C4609800FD88DB /* IAPHelp */ = {
@@ -2750,48 +2696,60 @@
 			path = AssetsManager;
 			sourceTree = "<group>";
 		};
-		9075095918716DB600E27689 /* AppStore */ = {
+		90DE78AF18C71D3A005A300F /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
-				9075095A18716DB600E27689 /* loginLayer.js */,
-				9075095B18716DB600E27689 /* main_binding.js */,
-				9075095C18716DB600E27689 /* payment.js */,
-				9075095D18716DB600E27689 /* platform.js */,
-				9075095E18716DB600E27689 /* user.js */,
+				90DE78B018C71D3A005A300F /* loginLayer.js */,
+				90DE78B118C71D3A005A300F /* main_binding.js */,
+				90DE78B218C71D3A005A300F /* payment.js */,
+				90DE78B318C71D3A005A300F /* platform.js */,
+				90DE78B418C71D3A005A300F /* user.js */,
 			);
 			name = AppStore;
-			path = ../Resources/AppStore;
+			path = ../Resources/IOS/AppStore;
 			sourceTree = "<group>";
 		};
-		9075096418716DBF00E27689 /* TB */ = {
+		90DE78BA18C71D46005A300F /* TB */ = {
 			isa = PBXGroup;
 			children = (
-				90C1A02518726F6E00CBC6FF /* loginLayer.js */,
-				9075096518716DBF00E27689 /* main_binding.js */,
-				9075096618716DBF00E27689 /* payment.js */,
-				9075096718716DBF00E27689 /* platform.js */,
-				9075096818716DBF00E27689 /* user.js */,
+				90DE78BB18C71D46005A300F /* loginLayer.js */,
+				90DE78BC18C71D46005A300F /* main_binding.js */,
+				90DE78BD18C71D46005A300F /* payment.js */,
+				90DE78BE18C71D46005A300F /* platform.js */,
+				90DE78BF18C71D46005A300F /* user.js */,
 			);
 			name = TB;
-			path = ../Resources/TB;
+			path = ../Resources/IOS/TB;
 			sourceTree = "<group>";
 		};
-		90F5374E1862F579008207BD /* game */ = {
+		90DE78C518C71D58005A300F /* AppStore-Releases */ = {
 			isa = PBXGroup;
 			children = (
-				902437761875732800CF670C /* TB-Releases */,
-				90F5375A1862F594008207BD /* AppStore-Releases */,
+				90DE78C618C71D58005A300F /* game.jsc */,
 			);
-			name = game;
-			path = ../Resources/game;
+			name = "AppStore-Releases";
+			path = "../Resources/game/IOS/AppStore-Releases";
 			sourceTree = "<group>";
 		};
-		90F5375A1862F594008207BD /* AppStore-Releases */ = {
+		90DE78C818C71D66005A300F /* TB-Releases */ = {
 			isa = PBXGroup;
 			children = (
-				90F5375B1862F594008207BD /* game.jsc */,
+				90DE78C918C71D66005A300F /* game.jsc */,
 			);
-			path = "AppStore-Releases";
+			name = "TB-Releases";
+			path = "../Resources/game/IOS/TB-Releases";
+			sourceTree = "<group>";
+		};
+		90F3931E18C9C712002EC9BC /* UM */ = {
+			isa = PBXGroup;
+			children = (
+				90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */,
+				90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */,
+				90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */,
+				90F3932218C9C712002EC9BC /* libMobClickCpp.a */,
+				90F3932318C9C712002EC9BC /* MobClickCpp.h */,
+			);
+			path = UM;
 			sourceTree = "<group>";
 		};
 		A92275321517C094001B78AA = {
@@ -3015,12 +2973,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A846B618726FB800582139 /* loginLayer.js in Resources */,
-				9075096D187171BC00E27689 /* main_binding.js in Resources */,
-				9075096E187171BC00E27689 /* payment.js in Resources */,
+				90DE78D618C71ECE005A300F /* loginLayer.js in Resources */,
+				90DE78D718C71ECE005A300F /* main_binding.js in Resources */,
+				90DE78D818C71ECE005A300F /* payment.js in Resources */,
+				90DE78D918C71ECE005A300F /* platform.js in Resources */,
+				90DE78DA18C71ECE005A300F /* user.js in Resources */,
 				9058F63018C460DA00FD88DB /* TBPlatformResource.bundle in Resources */,
-				9075096F187171BC00E27689 /* platform.js in Resources */,
-				90750970187171BC00E27689 /* user.js in Resources */,
 				902B08811858C475003A2A49 /* jsb_cocos2d_studio.js in Resources */,
 				902B08E41858C571003A2A49 /* Default@2x.png in Resources */,
 				902B08831858C475003A2A49 /* jsb_deprecated.js in Resources */,
@@ -3075,9 +3033,9 @@
 				90F535FB1862EAC2008207BD /* Icon-76.png in Resources */,
 				90F535FD1862EAC2008207BD /* Icon-152.png in Resources */,
 				90F536021862EAC2008207BD /* Icon-40.png in Resources */,
-				90F5375C1862F594008207BD /* game.jsc in Resources */,
 				90F536051862EAC2008207BD /* README in Resources */,
 				90F536061862EAC2008207BD /* Icon-144.png in Resources */,
+				90DE78C718C71D58005A300F /* game.jsc in Resources */,
 				90F536071862EAC2008207BD /* CMakeLists.txt in Resources */,
 				90F5360A1862EAC2008207BD /* json_internalarray.inl in Resources */,
 				90F5375D186303E2008207BD /* res in Resources */,
@@ -3099,7 +3057,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9024377B1875734A00CF670C /* game.jsc in Resources */,
 				90F536FD1862EB3C008207BD /* Default@2x.png in Resources */,
 				90F537001862EB3C008207BD /* Icon-114.png in Resources */,
 				90F537021862EB3C008207BD /* Icon-57.png in Resources */,
@@ -3120,6 +3077,7 @@
 				90F5371B1862EB3C008207BD /* Default-568h@2x.png in Resources */,
 				90F5371C1862EB3C008207BD /* Icon-29.png in Resources */,
 				90F5371D1862EB3C008207BD /* Icon-100.png in Resources */,
+				90DE78CA18C71D66005A300F /* game.jsc in Resources */,
 				90F5371E1862EB3C008207BD /* iTunesArtwork in Resources */,
 				90F5371F1862EB3C008207BD /* Icon-80.png in Resources */,
 				90F537201862EB3C008207BD /* Icon-50.png in Resources */,
@@ -3132,11 +3090,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90C1A01F1871722F00CBC6FF /* loginLayer.js in Resources */,
-				90C1A0201871722F00CBC6FF /* main_binding.js in Resources */,
-				90C1A0211871722F00CBC6FF /* payment.js in Resources */,
-				90C1A0221871722F00CBC6FF /* platform.js in Resources */,
-				90C1A0231871722F00CBC6FF /* user.js in Resources */,
+				90DE78CB18C71DB6005A300F /* loginLayer.js in Resources */,
+				90DE78CC18C71DB6005A300F /* main_binding.js in Resources */,
+				90DE78CD18C71DB6005A300F /* payment.js in Resources */,
+				90DE78CE18C71DB6005A300F /* platform.js in Resources */,
+				90DE78CF18C71DB6005A300F /* user.js in Resources */,
 				3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */,
 				902B08BF1858C569003A2A49 /* Default@2x.png in Resources */,
 				1A5E740017F0870800B9ACAE /* jsb_deprecated.js in Resources */,
@@ -3264,7 +3222,6 @@
 				902B07BA1858C475003A2A49 /* cpGrooveJoint.c in Sources */,
 				902B07BB1858C475003A2A49 /* cpPinJoint.c in Sources */,
 				902B07BC1858C475003A2A49 /* cpPivotJoint.c in Sources */,
-				902B07BD1858C475003A2A49 /* jsb_cocos2dx_studio_auto_api.js in Sources */,
 				902B07BE1858C475003A2A49 /* cpRatchetJoint.c in Sources */,
 				902B07BF1858C475003A2A49 /* cpRotaryLimitJoint.c in Sources */,
 				902B07C01858C475003A2A49 /* cpSimpleMotor.c in Sources */,
@@ -3290,7 +3247,6 @@
 				902B07D21858C475003A2A49 /* cpSweep1D.c in Sources */,
 				902B07D31858C475003A2A49 /* cpVect.c in Sources */,
 				902B07D41858C475003A2A49 /* CDAudioManager.m in Sources */,
-				9058F61718C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */,
 				902B07D51858C475003A2A49 /* CDOpenALSupport.m in Sources */,
 				902B07D61858C475003A2A49 /* CocosDenshion.m in Sources */,
 				902B07D71858C475003A2A49 /* SimpleAudioEngine.mm in Sources */,
@@ -3347,17 +3303,10 @@
 				902B08071858C475003A2A49 /* js_bindings_system_registration.cpp in Sources */,
 				902B08081858C475003A2A49 /* LocalStorage.cpp in Sources */,
 				902B08091858C475003A2A49 /* LocalStorageAndroid.cpp in Sources */,
-				902B080A1858C475003A2A49 /* jsb_cocos2dx_auto_api.js in Sources */,
 				902B080B1858C475003A2A49 /* jsb_cocos2dx_auto.cpp in Sources */,
-				902B080C1858C475003A2A49 /* jsb_cocos2dx_extension_auto_api.js in Sources */,
 				902B080D1858C475003A2A49 /* jsb_cocos2dx_studio_auto.cpp in Sources */,
 				902B080E1858C475003A2A49 /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				902B080F1858C475003A2A49 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
-				902B08101858C475003A2A49 /* jsb_cocos2d_extension.js in Sources */,
-				902B08111858C475003A2A49 /* main.debug.js in Sources */,
-				902B08121858C475003A2A49 /* jsb_chipmunk_constants.js in Sources */,
-				902B08131858C475003A2A49 /* jsb_cocos2d_constants.js in Sources */,
-				902B08141858C475003A2A49 /* jsb_opengl_constants.js in Sources */,
 				902B08151858C475003A2A49 /* Animation.cpp in Sources */,
 				902B08161858C475003A2A49 /* AnimationState.cpp in Sources */,
 				902B08171858C475003A2A49 /* AnimationStateData.cpp in Sources */,
@@ -3390,7 +3339,6 @@
 				902B08311858C475003A2A49 /* CCSkeletonAnimation.cpp in Sources */,
 				902B08321858C475003A2A49 /* WebSocket.cpp in Sources */,
 				902B08331858C475003A2A49 /* jsb_websocket.cpp in Sources */,
-				902B08341858C475003A2A49 /* jsb_deprecated.js in Sources */,
 				902B08351858C475003A2A49 /* CCActionFrame.cpp in Sources */,
 				902B08361858C475003A2A49 /* CCActionFrameEasing.cpp in Sources */,
 				902B08371858C475003A2A49 /* CCActionManager.cpp in Sources */,
@@ -3401,7 +3349,6 @@
 				902B083C1858C475003A2A49 /* CCTween.cpp in Sources */,
 				902B083D1858C475003A2A49 /* CCArmature.cpp in Sources */,
 				902B083E1858C475003A2A49 /* CCBone.cpp in Sources */,
-				902B083F1858C475003A2A49 /* jsb_cocos2d_studio.js in Sources */,
 				9058F5F818C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */,
 				902B08401858C475003A2A49 /* CCDatas.cpp in Sources */,
 				902B08411858C475003A2A49 /* CCBatchNode.cpp in Sources */,
@@ -3447,7 +3394,6 @@
 				902B08681858C475003A2A49 /* CSContentJsonDictionary.cpp in Sources */,
 				902B08691858C475003A2A49 /* DictionaryHelper.cpp in Sources */,
 				9058F60018C460BF00FD88DB /* NotificationHelp.mm in Sources */,
-				9058F5FC18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */,
 				902B086A1858C475003A2A49 /* json_reader.cpp in Sources */,
 				902B086B1858C475003A2A49 /* json_value.cpp in Sources */,
 				902B086C1858C475003A2A49 /* json_writer.cpp in Sources */,
@@ -3465,7 +3411,6 @@
 				90F5350E1862EAC2008207BD /* UIListViewEx.cpp in Sources */,
 				90F5350F1862EAC2008207BD /* cocos2d_specifics.cpp in Sources */,
 				90F535101862EAC2008207BD /* cocosjs_manual_conversions.cpp in Sources */,
-				9058F61618C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */,
 				90F535111862EAC2008207BD /* js_bindings_ccbreader.cpp in Sources */,
 				90F535121862EAC2008207BD /* js_bindings_chipmunk_auto_classes.cpp in Sources */,
 				90F535131862EAC2008207BD /* js_bindings_chipmunk_functions.cpp in Sources */,
@@ -3501,7 +3446,6 @@
 				90F535301862EAC2008207BD /* cpSpace.c in Sources */,
 				90F535311862EAC2008207BD /* cpSpaceComponent.c in Sources */,
 				90F535321862EAC2008207BD /* cpSpaceHash.c in Sources */,
-				9058F5EF18C4609800FD88DB /* js_bindings_IAPHelp_api.js in Sources */,
 				90F535331862EAC2008207BD /* cpSpaceQuery.c in Sources */,
 				90F535341862EAC2008207BD /* cpSpaceStep.c in Sources */,
 				90F535351862EAC2008207BD /* cpSpatialIndex.c in Sources */,
@@ -3536,6 +3480,7 @@
 				90F535501862EAC2008207BD /* CCNodeLoaderLibrary.cpp in Sources */,
 				90F535511862EAC2008207BD /* CCParticleSystemQuadLoader.cpp in Sources */,
 				90F535521862EAC2008207BD /* UILayoutParameter.cpp in Sources */,
+				90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */,
 				90F535531862EAC2008207BD /* CCScale9SpriteLoader.cpp in Sources */,
 				90F535541862EAC2008207BD /* CCScrollViewLoader.cpp in Sources */,
 				90F535551862EAC2008207BD /* CCSpriteLoader.cpp in Sources */,
@@ -3576,7 +3521,6 @@
 				90F535801862EAC2008207BD /* AtlasAttachmentLoader.cpp in Sources */,
 				9058F5FF18C460BF00FD88DB /* NotificationHelp.mm in Sources */,
 				90F535811862EAC2008207BD /* Attachment.cpp in Sources */,
-				9058F5FB18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */,
 				90F535821862EAC2008207BD /* AttachmentLoader.cpp in Sources */,
 				90F535831862EAC2008207BD /* Bone.cpp in Sources */,
 				90F535841862EAC2008207BD /* BoneData.cpp in Sources */,
@@ -3653,13 +3597,11 @@
 				90F535CF1862EAC2008207BD /* UILabelBMFont.cpp in Sources */,
 				90F535D11862EAC2008207BD /* UILoadingBar.cpp in Sources */,
 				90F535D21862EAC2008207BD /* UISlider.cpp in Sources */,
-				9058F5DB18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				90F535D31862EAC2008207BD /* UISwitch.cpp in Sources */,
 				90F535D51862EAC2008207BD /* UITextField.cpp in Sources */,
 				90F535D61862EAC2008207BD /* CSContentJsonDictionary.cpp in Sources */,
 				90F535D71862EAC2008207BD /* DictionaryHelper.cpp in Sources */,
 				90F535D81862EAC2008207BD /* json_reader.cpp in Sources */,
-				9058F5DF18C4603400FD88DB /* MobClickCPP.mm in Sources */,
 				90F535D91862EAC2008207BD /* json_value.cpp in Sources */,
 				90F535DA1862EAC2008207BD /* json_writer.cpp in Sources */,
 			);
@@ -3768,7 +3710,6 @@
 				90F5367E1862EB3C008207BD /* CCTableViewCell.cpp in Sources */,
 				90F5367F1862EB3C008207BD /* CCPhysicsDebugNode.cpp in Sources */,
 				90F536801862EB3C008207BD /* CCPhysicsSprite.cpp in Sources */,
-				9058F5FD18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */,
 				90F536811862EB3C008207BD /* js_bindings_system_functions.cpp in Sources */,
 				90F536821862EB3C008207BD /* js_bindings_system_registration.cpp in Sources */,
 				90F536831862EB3C008207BD /* LocalStorage.cpp in Sources */,
@@ -3819,7 +3760,6 @@
 				90F536B61862EB3C008207BD /* CCProcessBase.cpp in Sources */,
 				90F536B71862EB3C008207BD /* CCTween.cpp in Sources */,
 				90F536B81862EB3C008207BD /* CCArmature.cpp in Sources */,
-				9058F61818C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */,
 				90F536B91862EB3C008207BD /* CCBone.cpp in Sources */,
 				90F536BB1862EB3C008207BD /* CCDatas.cpp in Sources */,
 				90F536BC1862EB3C008207BD /* CCBatchNode.cpp in Sources */,
@@ -3898,11 +3838,9 @@
 				15A3D3921682F0B6002FB0C5 /* cpGrooveJoint.c in Sources */,
 				15A3D3931682F0B6002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D3941682F0B6002FB0C5 /* cpPivotJoint.c in Sources */,
-				3EC20B8118331CB000F2C4D6 /* jsb_cocos2dx_studio_auto_api.js in Sources */,
 				15A3D3951682F0B6002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D3961682F0B6002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				15A3D3971682F0B6002FB0C5 /* cpSimpleMotor.c in Sources */,
-				9058F5DA18C4603400FD88DB /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				15A3D3981682F0B6002FB0C5 /* cpSlideJoint.c in Sources */,
 				15A3D3991682F0B6002FB0C5 /* cpArbiter.c in Sources */,
 				15A3D39A1682F0B6002FB0C5 /* cpArray.c in Sources */,
@@ -3954,6 +3892,7 @@
 				15A3D53C1682F1A5002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
 				15A3D53D1682F1A5002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3D53E1682F1A5002FB0C5 /* CCSpriteLoader.cpp in Sources */,
+				90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */,
 				15A3D53F1682F1A5002FB0C5 /* CCControl.cpp in Sources */,
 				15A3D5401682F1A5002FB0C5 /* CCControlButton.cpp in Sources */,
 				15A3D5411682F1A5002FB0C5 /* CCControlColourPicker.cpp in Sources */,
@@ -3980,22 +3919,14 @@
 				1A82F5F8169AC91400C4B13A /* LocalStorage.cpp in Sources */,
 				9058F61D18C460CD00FD88DB /* WebLayerOC.m in Sources */,
 				1A82F5F9169AC91400C4B13A /* LocalStorageAndroid.cpp in Sources */,
-				1A4B644916EE23A70025FE93 /* jsb_cocos2dx_auto_api.js in Sources */,
 				1A4B644A16EE23A70025FE93 /* jsb_cocos2dx_auto.cpp in Sources */,
-				1A4B644B16EE23A70025FE93 /* jsb_cocos2dx_extension_auto_api.js in Sources */,
 				3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */,
 				1A4B644C16EE23A70025FE93 /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				1A4B644F16EE23B30025FE93 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
-				1A4B645116EE24900025FE93 /* jsb_cocos2d_extension.js in Sources */,
-				1A4B645316EE24980025FE93 /* main.debug.js in Sources */,
-				1AA51AE816F71BA3000FDF05 /* jsb_chipmunk_constants.js in Sources */,
-				1AA51AE916F71BA3000FDF05 /* jsb_cocos2d_constants.js in Sources */,
-				1AA51AEA16F71BA3000FDF05 /* jsb_opengl_constants.js in Sources */,
 				1A40E7971727C102006D4861 /* Animation.cpp in Sources */,
 				1A40E7981727C102006D4861 /* AnimationState.cpp in Sources */,
 				1A40E7991727C102006D4861 /* AnimationStateData.cpp in Sources */,
 				1A40E79A1727C102006D4861 /* Atlas.cpp in Sources */,
-				9058F5DE18C4603400FD88DB /* MobClickCPP.mm in Sources */,
 				1A40E79B1727C102006D4861 /* AtlasAttachmentLoader.cpp in Sources */,
 				1A40E79C1727C102006D4861 /* Attachment.cpp in Sources */,
 				1A40E79D1727C102006D4861 /* AttachmentLoader.cpp in Sources */,
@@ -4014,10 +3945,8 @@
 				1A40E7A91727C102006D4861 /* spine-cocos2dx.cpp in Sources */,
 				9058F61918C460CD00FD88DB /* WebLayer.mm in Sources */,
 				1A40E7B01727C3DB006D4861 /* jsb_opengl_functions.cpp in Sources */,
-				9058F5FA18C460BF00FD88DB /* js_bindings_NotificationHelp_api.js in Sources */,
 				1A40E7B11727C3DB006D4861 /* jsb_opengl_manual.cpp in Sources */,
 				3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */,
-				9058F61518C460CD00FD88DB /* js_bindings_WebLayer_api.js in Sources */,
 				9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */,
 				1A40E7B21727C3DB006D4861 /* jsb_opengl_registration.cpp in Sources */,
 				1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */,
@@ -4027,7 +3956,6 @@
 				1AB87011175E0759005D39BF /* CCSkeletonAnimation.cpp in Sources */,
 				1AB87014175E0768005D39BF /* WebSocket.cpp in Sources */,
 				1AB87017175E0773005D39BF /* jsb_websocket.cpp in Sources */,
-				1A5E73FF17F086FB00B9ACAE /* jsb_deprecated.js in Sources */,
 				9058F5FE18C460BF00FD88DB /* NotificationHelp.mm in Sources */,
 				1A5E749917F0874400B9ACAE /* CCActionFrame.cpp in Sources */,
 				1A5E749A17F0874400B9ACAE /* CCActionFrameEasing.cpp in Sources */,
@@ -4039,7 +3967,6 @@
 				1A5E74A017F0874400B9ACAE /* CCTween.cpp in Sources */,
 				1A5E74A117F0874400B9ACAE /* CCArmature.cpp in Sources */,
 				1A5E74A217F0874400B9ACAE /* CCBone.cpp in Sources */,
-				3EC20B7D18331CA200F2C4D6 /* jsb_cocos2d_studio.js in Sources */,
 				1A5E74A317F0874400B9ACAE /* CCDatas.cpp in Sources */,
 				1A5E74A417F0874400B9ACAE /* CCBatchNode.cpp in Sources */,
 				1A5E74A517F0874400B9ACAE /* CCDecorativeDisplay.cpp in Sources */,
@@ -4048,7 +3975,6 @@
 				1A5E74A817F0874400B9ACAE /* CCSkin.cpp in Sources */,
 				1A5E74A917F0874400B9ACAE /* CCColliderDetector.cpp in Sources */,
 				1A5E74AA17F0874400B9ACAE /* CCArmatureDataManager.cpp in Sources */,
-				9058F5EE18C4609800FD88DB /* js_bindings_IAPHelp_api.js in Sources */,
 				1A5E74AB17F0874400B9ACAE /* CCArmatureDefine.cpp in Sources */,
 				1A5E74AC17F0874400B9ACAE /* CCDataReaderHelper.cpp in Sources */,
 				1A5E74AD17F0874400B9ACAE /* CCSpriteFrameCacheHelper.cpp in Sources */,
@@ -4063,7 +3989,6 @@
 				1A5E74B517F0874400B9ACAE /* CCInputDelegate.cpp in Sources */,
 				1A5E74B617F0874400B9ACAE /* UIRootWidget.cpp in Sources */,
 				9058F5F618C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */,
-				9075096018716DB600E27689 /* main_binding.js in Sources */,
 				3EC20B7A18331C9000F2C4D6 /* UILayout.cpp in Sources */,
 				1A5E74B717F0874400B9ACAE /* UIWidget.cpp in Sources */,
 				1A5E74BA17F0874400B9ACAE /* UILayoutDefine.cpp in Sources */,
@@ -4230,6 +4155,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4265,7 +4191,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4283,6 +4209,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4315,7 +4242,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4492,6 +4419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4527,7 +4455,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4545,6 +4473,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4577,7 +4506,7 @@
 					"$(SRCROOT)/../../../scripting/javascript/spidermonkey-ios/lib",
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
-					"$(SRCROOT)/lib/DataDollection",
+					"$(SRCROOT)/lib/UM",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

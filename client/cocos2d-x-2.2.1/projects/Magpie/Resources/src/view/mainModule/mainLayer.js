@@ -52,7 +52,7 @@ var MainLayer = cc.Layer.extend({
         this.updateGuide();
         this.onTeaching();
 
-        lz.dc.beginLogPageView("主界面");
+        lz.um.beginLogPageView("主界面");
     },
 
     onExit: function () {
@@ -60,7 +60,7 @@ var MainLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("主界面");
+        lz.um.endLogPageView("主界面");
     },
 
     init: function () {

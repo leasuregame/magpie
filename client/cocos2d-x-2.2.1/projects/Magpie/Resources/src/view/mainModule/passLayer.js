@@ -39,7 +39,7 @@ var PassLayer = cc.Layer.extend({
         this.update();
         this.updateGuide();
 
-        lz.dc.beginLogPageView("天道界面");
+        lz.um.beginLogPageView("天道界面");
     },
 
     onExit: function () {
@@ -47,7 +47,7 @@ var PassLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("天道界面");
+        lz.um.endLogPageView("天道界面");
     },
 
     init: function () {

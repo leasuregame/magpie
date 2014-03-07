@@ -33,7 +33,7 @@ var TaskLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("修炼界面");
+        lz.um.beginLogPageView("修炼界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("修炼界面");
+        lz.um.endLogPageView("修炼界面");
     },
 
     init: function () {

@@ -15,7 +15,7 @@ var NoticeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("公告界面");
+        lz.um.beginLogPageView("公告界面");
     },
 
     onExit: function () {
@@ -27,7 +27,7 @@ var NoticeLayer = cc.Layer.extend({
             this._webLayer.close();
         }
 
-        lz.dc.endLogPageView("公告界面");
+        lz.um.endLogPageView("公告界面");
     },
 
     init: function () {

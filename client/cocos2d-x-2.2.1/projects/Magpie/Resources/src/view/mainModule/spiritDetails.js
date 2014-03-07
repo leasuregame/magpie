@@ -31,7 +31,7 @@ var SpiritDetails = LazyLayer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("元神界面");
+        lz.um.beginLogPageView("元神界面");
     },
 
     onExit: function () {
@@ -39,7 +39,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("元神界面");
+        lz.um.endLogPageView("元神界面");
     },
 
     init: function () {

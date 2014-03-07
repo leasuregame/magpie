@@ -109,6 +109,14 @@ var Tournament = Entity.extend({
                 var msg = data.msg;
 
                 that.update(msg.rank);
+                
+                cb();
+
+                lz.um.event("event_rank_list");
+            } else {
+                cc.log("Tournament updateRankList fail");
+
+                TipLayer.tip(data.msg);
 
                 cb();
 
@@ -172,7 +180,11 @@ var Tournament = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_challenge");
+                lz.um.event("event_challenge");
+            } else if (code == 505) {
+                cc.log("Tournament defiance busy");
+
+                TipLayer.tip(data.msg);
             } else {
                 cc.log("Tournament defiance fail");
 
@@ -208,7 +220,7 @@ var Tournament = Entity.extend({
                         elixir: msg.elixir
                     });
 
-                    lz.dc.event("event_ranking_reward", ranking);
+                    lz.um.event("event_ranking_reward", ranking);
                 } else {
                     cc.log("Tournament receive fail");
 

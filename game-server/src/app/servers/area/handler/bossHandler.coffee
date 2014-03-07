@@ -285,8 +285,8 @@ Handler::bossList = (msg, session, next) ->
 
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
-  ((group.mine?.sort (x, y) -> x - y > 0) or [])
-  .concat((group.friend?.sort (x, y) -> x -y > 0) or [])
+  ((group.mine?.sort (x, y) -> x.status - y.status > 0) or [])
+  .concat((group.friend?.sort (x, y) -> x.status - y.status > 0) or [])
 
 Handler::attack = (msg, session, next) ->
   playerId = session.get('playerId')

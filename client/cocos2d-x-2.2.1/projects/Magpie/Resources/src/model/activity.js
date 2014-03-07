@@ -246,6 +246,12 @@ var Activity = Entity.extend({
                     "cardArray": cards
                 };
 
+                for (var key in reward) {
+                    if (key != "cardArray") {
+                        gameData.player.add(key, reward[key]);
+                    }
+                }
+
                 gameData.player.set("firstRechargeBox", GOT_FIRST_RECHARGER_BOX);
 
                 cb(reward);

@@ -22,7 +22,7 @@ var LoginScene = cc.Scene.extend({
         this._super();
 
         if (this._toLayer) {
-            this.switchTo(this._toLayer);
+            this.switchLayer(this._toLayer);
         } else {
             this.switchLayer(LoginLayer);
 

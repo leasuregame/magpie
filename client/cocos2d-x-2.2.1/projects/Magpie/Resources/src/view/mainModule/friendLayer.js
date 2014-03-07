@@ -503,7 +503,9 @@ var FriendLayer = cc.Layer.extend({
 
         var that = this;
         gameData.player.fight(function (battleLogId) {
-            BattlePlayer.getInstance().play(battleLogId);
+            BattlePlayer.getInstance().play({
+                id: battleLogId
+            });
         }, this._selectFriend);
     },
 

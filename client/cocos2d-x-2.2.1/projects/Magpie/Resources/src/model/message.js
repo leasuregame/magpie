@@ -259,7 +259,10 @@ var Message = Entity.extend({
         cc.log(battleLogPool.getBattleLogById(id));
 
         if (battleLogPool.getBattleLogById(id)) {
-            BattlePlayer.getInstance().play(id, true);
+            BattlePlayer.getInstance().play({
+                id: id,
+                isPlayback: true
+            });
             return;
         }
 
@@ -277,7 +280,10 @@ var Message = Entity.extend({
 
                 var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
-                BattlePlayer.getInstance().play(battleLogId, true);
+                BattlePlayer.getInstance().play({
+                    id: battleLogId,
+                    isPlayback: true
+                });
 
                 lz.dc.event("event_battle_play_back");
             } else {

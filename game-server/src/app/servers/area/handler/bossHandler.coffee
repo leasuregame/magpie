@@ -465,12 +465,34 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
       bl.rewards.friend.honor *= 2
 
     # 修改boss发现标记为false
-    player.setBossFound(false)
+    resetBossFound player, boss
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)
   player.decrease('gold', gold_resume)
   player.resetCD()
+
+resetBossFound = (player, boss)->
+  if player.id is boss.playerId
+    player.setBossFound(false)
+  else
+    dao.player.fetchOne {
+      where: id: boss.playerId
+      fields: ['task']
+    }, (err, obj) ->
+      if err
+        logger.error('get player info error: ' + err.stack)
+        return
+
+      obj.setBossFound(false)
+      dao.player.update {
+        where: id: obj.id
+        data: task: obj.task
+      }, (err, res) ->
+        if err
+          logger.error('update player error: ', err.stack)
+
+        playerManager.updatePlayerBossFoundIfOnline obj.id
 
 saveBattleLog = (bl, player, boss, cb) ->
   dao.battleLog.create {

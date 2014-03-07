@@ -16,14 +16,16 @@ NND = {
      */
 
     query: function (sql, args, cb) {
+        //console.log('start qeury: ', sql, args);
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-            
+            console.log('query: ', !!client, sql, args);
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
+                console.log('===========query result===========', err, !!res);
                 return cb(err, res);
             });
         });

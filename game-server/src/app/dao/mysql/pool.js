@@ -17,8 +17,8 @@ createMysqlPool = function (app) {
                 user: mysqlConfig.user,
                 port: mysqlConfig.port,
                 password: mysqlConfig.password,
-                database: mysqlConfig.database,
-                insecureAuth: true     
+                database: mysqlConfig.database
+                //, insecureAuth: true     
             });
             client.on('close', function(err) {
                 console.log('[sql connection close]: ', err);
@@ -31,9 +31,9 @@ createMysqlPool = function (app) {
         destroy: function (client) {
             return client.end();
         },
-        max: 30,
+        max: 10,
         idleTimeoutMillis: 30000,
-        log: false
+        log: true
     });
 };
 

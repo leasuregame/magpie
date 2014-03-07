@@ -280,7 +280,7 @@ Handler::bossList = (msg, session, next) ->
 
     next(null, {
       code: 200,
-      msg: sortBossList(results.map (r) -> r.toJson())
+      msg: sortBossList(results.map (r) -> r.toJson(), playerId)
     })
 
 sortBossList = (items, playerId) ->

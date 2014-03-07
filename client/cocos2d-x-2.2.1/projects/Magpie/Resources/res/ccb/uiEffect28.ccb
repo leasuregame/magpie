@@ -1147,7 +1147,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1194,8 +1194,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
 							<real>10</real>
+							<real>5</real>
 						</array>
 					</dict>
 					<dict>
@@ -1337,6 +1337,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

@@ -56,6 +56,7 @@ class BossPlayer extends Player
         hp: c.init_hp
         atk: c.init_atk
         hp_left: if c.hp > 0 then c.hp else 0
+        total_hp: c.total_hp
       }
     cobj
 

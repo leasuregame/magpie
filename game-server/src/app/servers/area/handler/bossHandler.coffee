@@ -280,8 +280,13 @@ Handler::bossList = (msg, session, next) ->
 
     next(null, {
       code: 200,
-      msg: results.map (r) -> r.toJson()
+      msg: sortBossList(results.map((r) -> r.toJson()), playerId)
     })
+
+sortBossList = (items, playerId) ->
+  group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
+  ((group.mine?.sort (x, y) -> x.status - y.status > 0) or [])
+  .concat((group.friend?.sort (x, y) -> x.status - y.status > 0) or [])
 
 Handler::attack = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -475,24 +480,24 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
 resetBossFound = (player, boss)->
   if player.id is boss.playerId
     player.setBossFound(false)
-  else
-    dao.player.fetchOne {
-      where: id: boss.playerId
-      fields: ['task']
-    }, (err, obj) ->
-      if err
-        logger.error('get player info error: ' + err.stack)
-        return
+  # else
+  #   dao.player.fetchOne {
+  #     where: id: boss.playerId
+  #     fields: ['task']
+  #   }, (err, obj) ->
+  #     if err
+  #       logger.error('get player info error: ' + err.stack)
+  #       return
 
-      obj.setBossFound(false)
-      dao.player.update {
-        where: id: obj.id
-        data: task: obj.task
-      }, (err, res) ->
-        if err
-          logger.error('update player error: ', err.stack)
+  #     obj.setBossFound(false)
+  #     dao.player.update {
+  #       where: id: obj.id
+  #       data: task: obj.task
+  #     }, (err, res) ->
+  #       if err
+  #         logger.error('update player error: ', err.stack)
 
-        playerManager.updatePlayerBossFoundIfOnline obj.id
+  #       playerManager.updatePlayerBossFoundIfOnline obj.id
 
 saveBattleLog = (bl, player, boss, cb) ->
   dao.battleLog.create {

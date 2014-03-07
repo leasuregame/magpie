@@ -25,7 +25,7 @@ class Manager
       open_box_card: null
       battle_log: null
       momo: null
-      find_boss: null
+      find_boss: false
     }
 
     ### 检查是否体力充足 ###
@@ -258,9 +258,9 @@ class Manager
             logger.error('创建Boss信息出错', err.stack)
             cb(null, data)
           else
-            data.find_boss = res.toJson()
-            data.find_boss.finder = player.name
-            data.find_boss.killer = null
+            data.find_boss = true
+            # data.find_boss.finder = player.name
+            # data.find_boss.killer = null
             player.setBossFound(true)
             cb(null, data)
     else

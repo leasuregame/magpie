@@ -33,7 +33,7 @@ createMysqlPool = function (app) {
         },
         max: 30,
         idleTimeoutMillis: 30000,
-        log: true
+        log: false
     });
 };
 

@@ -33,8 +33,8 @@ var RemoveCdTipLabel = LazyLayer.extend({
         msgBgIcon.setScaleX(0.9);
         node.addChild(msgBgIcon);
 
-        //var needGold = outputTables.values.rows["extractConsumeGold"].value;
-        var tipLabel1 = cc.LabelTTF.create("是否确定花费" + 20, "STHeitiTC-Medium", 25);
+        var needGold = gameData.boss.removeCdNeedGold();
+        var tipLabel1 = cc.LabelTTF.create("是否确定花费" + needGold, "STHeitiTC-Medium", 25);
         tipLabel1.setPosition(cc.p(-80, 30));
         node.addChild(tipLabel1);
 
@@ -87,7 +87,7 @@ var RemoveCdTipLabel = LazyLayer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.removeFromParent();
 
-        var needGold = outputTables.values.rows["extractConsumeGold"].value;
+        var needGold = gameData.boss.removeCdNeedGold();
         if (gameData.player.get("gold") < needGold) {
             TipLayer.tip("魔石不足");
             return;

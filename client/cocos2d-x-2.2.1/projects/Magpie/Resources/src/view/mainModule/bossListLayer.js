@@ -357,7 +357,9 @@ var BossListLayer = cc.Layer.extend({
 
         var that = this;
         var cb = function () {
-            that._update();
+            gameData.boss.removeTimer(function () {
+                that.update();
+            });
         };
 
         RemoveCdTipLabel.pop({cb: cb});

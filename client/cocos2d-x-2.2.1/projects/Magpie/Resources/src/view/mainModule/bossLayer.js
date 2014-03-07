@@ -314,32 +314,23 @@ var BossLayer = cc.Layer.extend({
 
         var that = this;
 
-        var next = function () {
+        if (this._cdTime > 0) {
+            TipLayer.tip("CD冷却时间未到");
+            return;
+        }
 
-            var cb = function () {
-                that._addition = 0;
-                that.update();
-            };
-
-            gameData.boss.attack(function (battleLogId) {
-                BattlePlayer.getInstance().play({
-                    cb: cb,
-                    id: battleLogId
-                });
-            }, that._bossId, that._addition);
+        var cb = function () {
+            that._addition = 0;
+            that.update();
         };
 
-        if (this._cdTime > 0) {
-            var cb = function () {
-                gameData.boss.removeTimer(function () {
-                    that.update();
-                    next();
-                });
-            };
-            RemoveCdTipLabel.pop({cb: cb});
-        } else {
-            next();
-        }
+        gameData.boss.attack(function (battleLogId) {
+            BattlePlayer.getInstance().play({
+                cb: cb,
+                id: battleLogId
+            });
+        }, this._bossId, this._addition);
+
     },
 
     _onClickRemoveCdTime: function () {

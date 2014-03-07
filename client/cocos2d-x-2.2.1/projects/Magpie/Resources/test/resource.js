@@ -514,10 +514,10 @@ var main_scene_image = {
     p2: effect_scene_path + "effect/" + "p2.png",
     p3: effect_scene_path + "effect/" + "p3.png",
     p4: effect_scene_path + "effect/" + "p4.png",
-    p5: effect_scene_path + "effect/" + "p5.png",
+    // p5: effect_scene_path + "effect/" + "p5.png",
     p6: effect_scene_path + "effect/" + "p6.png",
     p7: effect_scene_path + "effect/" + "p7.png",
-    p8: effect_scene_path + "effect/" + "p8.png",
+    // p8: effect_scene_path + "effect/" + "p8.png",
     p9: effect_scene_path + "effect/" + "p9.png",
     p10: effect_scene_path + "effect/" + "p10.png",
     p11: effect_scene_path + "effect/" + "p11.png",
@@ -591,7 +591,7 @@ var main_scene_image = {
     p79: effect_scene_path + "effect/" + "p79.png",
     p80: effect_scene_path + "effect/" + "p80.png",
     p81: effect_scene_path + "effect/" + "p81.png",
-    p82: effect_scene_path + "effect/" + "p82.png",
+    // p82: effect_scene_path + "effect/" + "p82.png",
     p83: effect_scene_path + "effect/" + "p83.png",
     p84: effect_scene_path + "effect/" + "p84.png",
     p85: effect_scene_path + "effect/" + "p85.png",
@@ -1060,6 +1060,7 @@ var main_scene_image = {
     effect700_2: ccb_scene_path + "effect700_2.ccbi",
     effect701_1: ccb_scene_path + "effect701_1.ccbi",
     effect701_2: ccb_scene_path + "effect701_2.ccbi",
+    effect701_3: ccb_scene_path + "effect701_3.ccbi",
     effect702_1: ccb_scene_path + "effect702_1.ccbi",
     effect702_2: ccb_scene_path + "effect702_2.ccbi",
     effect702_3: ccb_scene_path + "effect702_3.ccbi",
@@ -1178,8 +1179,16 @@ var main_scene_image = {
     7: test_scene_path + "res/" + "7.png",
     8: test_scene_path + "res/" + "8.png",
     9: test_scene_path + "res/" + "9.png",
-    10: test_scene_path + "res/" + "10.png",
+   
     11: test_scene_path + "res/" + "11.png",
+    29: test_scene_path + "res/" + "29.png",
+    50: test_scene_path + "res/" + "50.png",
+    70: test_scene_path + "res/" + "70.png",
+    76: test_scene_path + "res/" + "76.png",
+    83: test_scene_path + "res/" + "83.png",
+    92: test_scene_path + "res/" + "92.png",
+    93: test_scene_path + "res/" + "93.png",
+
 
 
     //技能特效
@@ -1190,7 +1199,11 @@ var main_scene_image = {
     texiao5: test_scene_path + "ccb/" + "texiao5.ccbi",
     texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
     texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
+    texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
+    texiao20: test_scene_path + "ccb/" + "texiao20.ccbi",
+    texiao21: test_scene_path + "ccb/" + "texiao21.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
+    texiao24: test_scene_path + "ccb/" + "texiao24.ccbi",
 
 };
 

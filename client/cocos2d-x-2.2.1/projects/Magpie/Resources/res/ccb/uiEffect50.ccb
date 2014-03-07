@@ -466,7 +466,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>50</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -482,7 +482,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>50</integer>
+						<integer>30</integer>
 					</dict>
 					<dict>
 						<key>name</key>

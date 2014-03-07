@@ -318,6 +318,7 @@ var Player = (function(_super) {
             },
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
             rmTimerCount: 1
         },
         fragments: 0,
@@ -413,6 +414,7 @@ var Player = (function(_super) {
             },
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
             rmTimerCount: 1
         };
 
@@ -587,9 +589,9 @@ var Player = (function(_super) {
             var _a = card.ability();
 
             // 计算元神增加的战斗力
-            var _hp = parseInt(card.init_hp/ae.hp*hp_pct/100);
-            var _atk = parseInt(card.init_atk/ae.atk*atk_pct/100);
-            
+            var _hp = parseInt(card.init_hp / ae.hp * hp_pct / 100);
+            var _atk = parseInt(card.init_atk / ae.atk * atk_pct / 100);
+
             if (!_.isNaN(_a)) {
                 ability += _a + _hp + _atk;
             }
@@ -1019,8 +1021,8 @@ var Player = (function(_super) {
         if(utility.hasMark(si[key].mark, new Date().getDate())) {
             return false;
         }
-            
-        
+
+
         si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
         return true;
@@ -1245,7 +1247,7 @@ var Player = (function(_super) {
         }
 
         var ir = utility.deepCopy(this.initRate);
-        ir['star'+star] = val;
+        ir['star' + star] = val;
         this.initRate = ir;
     };
 
@@ -1255,10 +1257,10 @@ var Player = (function(_super) {
         }
 
         var ir = utility.deepCopy(this.initRate);
-        if (typeof ir['star'+star] == 'undefined') {
-            ir['star'+star] = 0;
+        if (typeof ir['star' + star] == 'undefined') {
+            ir['star' + star] = 0;
         }
-        ir['star'+star] += val;
+        ir['star' + star] += val;
         this.initRate = ir;
     };
 
@@ -1277,26 +1279,26 @@ var Player = (function(_super) {
         }
     };
 
-    Player.prototype.getCD = function(){
+    Player.prototype.getCD = function() {
         var lastAtkTime = this.cd.lastAtkTime || 0;
         var now = new Date().getTime();
-        var duration = lastAtkTime + 30*60*1000 - now;
+        var duration = lastAtkTime + 30 * 60 * 1000 - now;
         return duration < 0 ? 0 : duration;
     };
 
-    Player.prototype.resetCD = function(){
+    Player.prototype.resetCD = function() {
         var cd = utility.deepCopy(this.cd);
         cd.lastAtkTime = new Date().getTime();
         this.cd = cd;
     };
 
-    Player.prototype.removeCD = function(){
+    Player.prototype.removeCD = function() {
         var cd = utility.deepCopy(this.cd);
         cd.lastAtkTime = 0;
         this.cd = cd;
     };
 
-    Player.prototype.incBossCount = function(){
+    Player.prototype.incBossCount = function() {
         var task = utility.deepCopy(this.task);
         if (!task.boss) {
             task.boss = {
@@ -1322,7 +1324,7 @@ var Player = (function(_super) {
         if (!val) {
             task.boss.count = 0;
         }
-        
+
         this.task = task;
     };
 
@@ -1335,7 +1337,7 @@ var Player = (function(_super) {
         return consume > 200 ? 200 : consume;
     };
 
-    Player.prototype.incRmTimerCount = function(){
+    Player.prototype.incRmTimerCount = function() {
         if (typeof this.dailyGift.rmTimerCount == 'undefined') {
             this.updateGift('rmTimerCount', 1);
         }
@@ -1347,8 +1349,34 @@ var Player = (function(_super) {
     Player.prototype.kneelCountLeft = function() {
         if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
             this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
-        } 
+        }
         return this.dailyGift.kneelCountLeft;
+    };
+
+    Player.prototype.hasKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', []);
+            return false;
+        }
+        return this.dailyGift.kneelList.indexOf(pid) > -1;
+    };
+
+    Player.prototype.addKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', [pid]);
+        } else {
+            var dg = utility.deepCopy(this.dailyGift);
+            dg.kneelList.push(pid);
+            this.dailyGift = dg;
+        }
+    };
+
+    Player.prototype.getDailyGift = function() {
+        var dailyGift = utility.deepCopy(this.dailyGift);
+        delete dailyGift.kneelCountLeft;
+        delete dailyGift.kneelList;
+        delete dailyGift.rmTimerCount;
+        return dailyGift;
     };
 
     Player.prototype.toJson = function() {
@@ -1371,7 +1399,7 @@ var Player = (function(_super) {
             //ability: this.getAbility(),
             task: this.getTask(),
             pass: this.getPass(),
-            dailyGift: utility.deepCopy(this.dailyGift),
+            dailyGift: this.getDailyGift(),
             skillPoint: this.skillPoint,
             energy: this.energy,
             fragments: this.fragments,
@@ -1397,7 +1425,9 @@ var Player = (function(_super) {
             superHonor: this.superHonor,
             bossInfo: {
                 cd: this.getCD(),
-                kneelCountLeft: this.kneelCountLeft(), 
+                kneelCountLeft: this.kneelCountLeft(),
+                kneelList: this.dailyGift.kneelList || [],
+                rmTimerCount: this.dailyGift.rmTimerCount || 1,
                 canReceive: this.hasFriendReward || false,
             }
         };

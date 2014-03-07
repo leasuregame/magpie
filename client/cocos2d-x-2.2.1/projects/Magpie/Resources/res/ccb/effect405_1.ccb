@@ -40,7 +40,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.0</real>
+									<real>0.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -87,6 +87,26 @@
 									<array>
 										<real>0.80000001192092896</real>
 										<real>0.80000001192092896</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>opt</key>
+										<real>2</real>
+										<key>type</key>
+										<integer>2</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.20000000298023224</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
+										<real>1.7599999904632568</real>
+										<real>1.7599999904632568</real>
 									</array>
 								</dict>
 								<dict>

@@ -197,7 +197,7 @@ var AttackDetailsLayer = LazyLayer.extend({
             moneyLabel.setPosition(cc.p(300, y + 5));
             scrollViewLayer.addChild(moneyLabel);
 
-            if (details.money_add && details.money_add > 0) {
+            if (details.moneyAdd && details.moneyAdd > 0) {
                 var x = 300 + moneyLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
@@ -205,13 +205,13 @@ var AttackDetailsLayer = LazyLayer.extend({
                 leftBracket.setPosition(cc.p(x - 5, y + 5));
                 scrollViewLayer.addChild(leftBracket);
 
-                var money_add = cc.LabelTTF.create("贡献" + details.money_add, "STHeitiTC-Medium", 22);
-                money_add.setAnchorPoint(cc.p(0, 0));
-                money_add.setPosition(cc.p(x + 15, y + 5));
-                money_add.setColor(cc.c3b(193, 224, 109));
-                scrollViewLayer.addChild(money_add);
+                var moneyAdd = cc.LabelTTF.create("贡献" + details.moneyAdd, "STHeitiTC-Medium", 22);
+                moneyAdd.setAnchorPoint(cc.p(0, 0));
+                moneyAdd.setPosition(cc.p(x + 15, y + 5));
+                moneyAdd.setColor(cc.c3b(193, 224, 109));
+                scrollViewLayer.addChild(moneyAdd);
 
-                x += money_add.getContentSize().width + 15;
+                x += moneyAdd.getContentSize().width + 15;
 
                 var rightBracket = cc.LabelTTF.create("）", "STHeitiTC-Medium", 22);
                 rightBracket.setAnchorPoint(cc.p(0, 0));
@@ -230,7 +230,7 @@ var AttackDetailsLayer = LazyLayer.extend({
             honorLabel.setPosition(cc.p(300, y - 40));
             scrollViewLayer.addChild(honorLabel);
 
-            if (details.honor_add && details.honor_add > 0) {
+            if (details.honorAdd && details.honorAdd > 0) {
                 var x = 300 + honorLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
@@ -238,13 +238,13 @@ var AttackDetailsLayer = LazyLayer.extend({
                 leftBracket.setPosition(cc.p(x - 5, y - 40));
                 scrollViewLayer.addChild(leftBracket);
 
-                var honor_add = cc.LabelTTF.create("贡献" + details.honor_add, "STHeitiTC-Medium", 22);
-                honor_add.setAnchorPoint(cc.p(0, 0));
-                honor_add.setPosition(cc.p(x + 15, y - 40));
-                honor_add.setColor(cc.c3b(193, 224, 109));
-                scrollViewLayer.addChild(honor_add);
+                var honorAdd = cc.LabelTTF.create("贡献" + details.honorAdd, "STHeitiTC-Medium", 22);
+                honorAdd.setAnchorPoint(cc.p(0, 0));
+                honorAdd.setPosition(cc.p(x + 15, y - 40));
+                honorAdd.setColor(cc.c3b(193, 224, 109));
+                scrollViewLayer.addChild(honorAdd);
 
-                x += honor_add.getContentSize().width + 15;
+                x += honorAdd.getContentSize().width + 15;
 
                 var rightBracket = cc.LabelTTF.create("）", "STHeitiTC-Medium", 22);
                 rightBracket.setAnchorPoint(cc.p(0, 0));

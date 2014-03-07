@@ -20,7 +20,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8360</WindowHeight>
+  <WindowHeight>6500</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
@@ -66,10 +66,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">type</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">BOSS类型配置表|name|id</Font></B><Font html:Size="10"
-        html:Color="#000000" xmlns="http://www.w3.org/TR/REC-html40">&#13;</Font></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">type</Data></Cell>
     <Cell><Data ss:Type="String">boss_id</Data></Cell>
     <Cell><Data ss:Type="String">card_ids</Data></Cell>
     <Cell><Data ss:Type="String">formation</Data></Cell>
@@ -80,7 +77,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS1号</Data></Cell>
-    <Cell><Data ss:Type="String">蓝卡</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40000</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40003#40000#40003</Data></Cell>
     <Cell><Data ss:Type="String">01:40000,10:40003,12:40003</Data></Cell>
@@ -91,7 +88,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS2号</Data></Cell>
-    <Cell><Data ss:Type="String">紫卡</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40001</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40004#40001#40004</Data></Cell>
     <Cell><Data ss:Type="String">01:40001,10:40004,12:40004</Data></Cell>
@@ -102,7 +99,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS3号</Data></Cell>
-    <Cell><Data ss:Type="String">金卡</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">40002</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">40005#40002#40005</Data></Cell>
     <Cell><Data ss:Type="String">01:40002,10:40005,12:40005</Data></Cell>

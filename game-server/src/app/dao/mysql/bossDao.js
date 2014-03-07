@@ -36,7 +36,7 @@ var BossDao = (function(_super) {
       });
     }
 
-    dbClient.query(sql, function(err, res) {
+    dbClient.query(sql, [], function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch boss list " + BossDao.table + "]");
         logger.error(err.stack);
@@ -64,7 +64,7 @@ var BossDao = (function(_super) {
       playerId = %(playerId)s and (status in (1,2) and createTime + 50400000 > %(now)s) or \
       (status in (3,5) and deathTime + 7200000 > %(now)s)';
     var sql = sprintf(tmpl, {playerId: playerId, now: now});
-    dbClient.query(sql, function(err, res) {
+    dbClient.query(sql, [], function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch boss count by playerId " + playerId + "]");
         logger.error(err.stack);

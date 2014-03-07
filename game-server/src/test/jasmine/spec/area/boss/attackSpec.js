@@ -134,14 +134,19 @@ describe("Area Server", function() {
               expect(data.code).toEqual(200);
               expect(data.msg.battleLog).toBeBattleLog();
 
-              hp_left = 0
-              _.each(data.msg.battleLog.cards, function(v, k) {
-                if (parseInt(k) > 6) {
-                  hp_left += v.hp_left;
-                }
+              damages = []
+              data.msg.battleLog.steps.forEach(function(s) {
+                s.d.forEach(function(el, idx) {
+                  if (parseInt(el) > 6) {
+                    damages.push(Math.abs(s.e[idx]));
+                  }
+                });
               });
+              total_damage = damages.reduce(function(x, y) {
+                return x+y;
+              }, 0)
 
-              expect(data.msg.damage).toEqual(80200000 - hp_left);
+              expect(data.msg.damage).toEqual(total_damage);
 
               // 检查boss信息是否正确
               expect(data.msg.boss.finder).toEqual('Attacker');
@@ -242,7 +247,19 @@ describe("Area Server", function() {
                 }
               });
 
-              expect(data.msg.damage).toEqual(80120000 - hp_left);
+              damages = []
+              data.msg.battleLog.steps.forEach(function(s) {
+                s.d.forEach(function(el, idx) {
+                  if (parseInt(el) > 6) {
+                    damages.push(Math.abs(s.e[idx]));
+                  }
+                });
+              });
+              total_damage = damages.reduce(function(x, y) {
+                return x+y;
+              }, 0)
+
+              expect(data.msg.damage).toEqual(total_damage);
 
               // 检查boss信息是否正确
               expect(data.msg.boss.finder).toEqual('Attacker');
@@ -336,14 +353,19 @@ describe("Area Server", function() {
               expect(data.code).toEqual(200);
               expect(data.msg.battleLog).toBeBattleLog();
 
-              hp_left = 0
-              _.each(data.msg.battleLog.cards, function(v, k) {
-                if (parseInt(k) > 6) {
-                  hp_left += v.hp_left;
-                }
+              damages = []
+              data.msg.battleLog.steps.forEach(function(s) {
+                s.d.forEach(function(el, idx) {
+                  if (parseInt(el) > 6) {
+                    damages.push(Math.abs(s.e[idx]));
+                  }
+                });
               });
+              total_damage = damages.reduce(function(x, y) {
+                return x+y;
+              }, 0)
 
-              expect(data.msg.damage).toEqual(80120000 - hp_left);
+              expect(data.msg.damage).toEqual(total_damage);
 
               // 检查boss信息是否正确
               expect(data.msg.boss.finder).toEqual('Attacker');
@@ -450,14 +472,19 @@ describe("Area Server", function() {
               expect(data.msg.battleLog).toBeBattleLog();
               expect(data.msg.battleLog.winner).toEqual('own');
 
-              hp_left = 0
-              _.each(data.msg.battleLog.cards, function(v, k) {
-                if (parseInt(k) > 6) {
-                  hp_left += v.hp_left;
-                }
+              damages = []
+              data.msg.battleLog.steps.forEach(function(s) {
+                s.d.forEach(function(el, idx) {
+                  if (parseInt(el) > 6) {
+                    damages.push(Math.abs(s.e[idx]));
+                  }
+                });
               });
+              total_damage = damages.reduce(function(x, y) {
+                return x+y;
+              }, 0)
 
-              expect(data.msg.damage).toEqual(3000 - hp_left);
+              expect(data.msg.damage).toEqual(total_damage);
 
               // 检查boss信息是否正确
               expect(data.msg.boss.finder).toEqual('Attacker');
@@ -857,14 +884,19 @@ describe("Area Server", function() {
               expect(data.code).toEqual(200);
               expect(data.msg.battleLog).toBeBattleLog();
 
-              hp_left = 0
-              _.each(data.msg.battleLog.cards, function(v, k) {
-                if (parseInt(k) > 6) {
-                  hp_left += v.hp_left;
-                }
+              damages = []
+              data.msg.battleLog.steps.forEach(function(s) {
+                s.d.forEach(function(el, idx) {
+                  if (parseInt(el) > 6) {
+                    damages.push(Math.abs(s.e[idx]));
+                  }
+                });
               });
+              total_damage = damages.reduce(function(x, y) {
+                return x+y;
+              }, 0)
 
-              expect(data.msg.damage).toEqual(79940219 + 60825 - hp_left);
+              expect(data.msg.damage).toEqual(total_damage);
 
               doAjax('/player/100', function(res) {
                 expect(res.data.gold).toEqual(data.msg.gold);

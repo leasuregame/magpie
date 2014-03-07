@@ -152,8 +152,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>4</real>
-							<real>4</real>
+							<real>3.1999998092651367</real>
+							<real>3.1999998092651367</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -185,7 +185,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>102</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -267,7 +267,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -286,7 +286,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>20</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -302,7 +302,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>20</integer>
+						<integer>30</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -333,8 +333,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>8</real>
-							<real>3</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -425,9 +425,9 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
+						<string>startRadius</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
@@ -436,29 +436,18 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>speed</string>
+						<string>endRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>20</real>
+							<real>120</real>
+							<real>40</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tangentialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>60</real>
-							<real>30</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -476,6 +465,8 @@
 						<string>res/effect/uiEffect/up18.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -564,7 +555,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.83333331346511841</real>
+			<real>0.20000000298023224</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

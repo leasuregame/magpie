@@ -68,8 +68,8 @@ var BossLayer = cc.Layer.extend({
         bossCard.setPosition(this._bossLayerFit.bossCardPoint);
         this.addChild(bossCard);
 
-        var bossId = outputTables.boss.rows[boss.tableId].boss_id;
-        var card = outputTables.cards.rows[bossId];
+        var bossTable = outputTables.boss.rows[boss.tableId];
+        var card = outputTables.cards.rows[bossTable.boss_id];
         var bossNameLabel = StrokeLabel.create(card.name, "STHeitiTC-Medium", 30);
         bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
         bossNameLabel.setPosition(this._bossLayerFit.bossNameLabelPoint);
@@ -82,7 +82,8 @@ var BossLayer = cc.Layer.extend({
         rewardAdditionLabel.setPosition(this._bossLayerFit.rewardAdditionLabelPoint);
         this.addChild(rewardAdditionLabel);
 
-        var rewardAddition = StrokeLabel.create("150%", "STHeitiTC-Medium", 22);
+        var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
+        var rewardAddition = StrokeLabel.create(addition + "%", "STHeitiTC-Medium", 22);
         rewardAddition.setAnchorPoint(cc.p(0.5, 0));
         rewardAddition.setColor(cc.c3b(193, 224, 109));
         rewardAddition.setPosition(this._bossLayerFit.rewardAdditionPoint);
@@ -259,7 +260,7 @@ var BossLayer = cc.Layer.extend({
 
         this._attackIcon.setVisible(this._addition == 0);
         this._attackNode.setVisible(this._addition != 0);
-        this._expendGoldLabel.setString(gameData.boss.needGold(this._addition));
+        this._expendGoldLabel.setString(gameData.boss.additionNeedGold(this._addition));
 
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
@@ -313,32 +314,23 @@ var BossLayer = cc.Layer.extend({
 
         var that = this;
 
-        var next = function () {
+        if (this._cdTime > 0) {
+            TipLayer.tip("CD冷却时间未到");
+            return;
+        }
 
-            var cb = function () {
-                that._addition = 0;
-                that.update();
-            };
-
-            gameData.boss.attack(function (battleLogId) {
-                BattlePlayer.getInstance().play({
-                    cb: cb,
-                    id: battleLogId
-                });
-            }, that._bossId, that._addition);
+        var cb = function () {
+            that._addition = 0;
+            that.update();
         };
 
-        if (this._cdTime > 0) {
-            var cb = function () {
-                gameData.boss.removeTimer(function () {
-                    that.update();
-                    next();
-                });
-            };
-            RemoveCdTipLabel.pop({cb: cb});
-        } else {
-            next();
-        }
+        gameData.boss.attack(function (battleLogId) {
+            BattlePlayer.getInstance().play({
+                cb: cb,
+                id: battleLogId
+            });
+        }, this._bossId, this._addition);
+
     },
 
     _onClickRemoveCdTime: function () {

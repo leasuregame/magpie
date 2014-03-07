@@ -5,30 +5,34 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
-      describe('参数不正确，膜拜对象不存在，玩家没上榜', function(){
+      describe('参数不正确，膜拜对象不存在，玩家没上榜', function() {
 
-        beforeEach(function(){
+        beforeEach(function() {
           loginWith('arthur', '1', 1);
         });
 
-        it('不能膜拜', function(){
+        it('不能膜拜', function() {
           request('area.bossHandler.kneel', {}, function(data) {
             expect(data).toEqual({
-              code: 501, 
+              code: 501,
               msg: '请指定膜拜对象'
             });
           });
 
-          request('area.bossHandler.kneel', {playerId: 1000000}, function(data) {
+          request('area.bossHandler.kneel', {
+            playerId: 1000000
+          }, function(data) {
             expect(data).toEqual({
-              code: 501, 
+              code: 501,
               msg: '膜拜对象不存在'
             });
           });
 
-          request('area.bossHandler.kneel', {playerId: 2}, function(data) {
+          request('area.bossHandler.kneel', {
+            playerId: 2
+          }, function(data) {
             expect(data).toEqual({
-              code: 501, 
+              code: 501,
               msg: '玩家没有上榜，不能膜拜'
             });
           });
@@ -37,13 +41,13 @@ describe("Area Server", function() {
 
       });
 
-      describe('膜拜次数已用完', function(){
-        beforeEach(function(){
+      describe('膜拜次数已用完', function() {
+        beforeEach(function() {
           doAjax('/create/damageOfRank', {
             playerId: 3,
             damage: 10000,
             week: thisWeek()
-          }, function(){});
+          }, function() {});
 
           doAjax('/update/player/100', {
             dailyGift: {
@@ -54,33 +58,41 @@ describe("Area Server", function() {
           });
         });
 
-        it('不能膜拜', function(){
-          request('area.bossHandler.kneel', {playerId: 3}, function(data) {
+        it('不能膜拜', function() {
+          request('area.bossHandler.kneel', {
+            playerId: 3
+          }, function(data) {
             expect(data).toEqual({
-              code: 501, 
+              code: 501,
               msg: '膜拜次数已用完'
             });
           });
         });
       });
 
-      describe('膜拜上榜玩家', function(){
+      describe('膜拜上榜玩家', function() {
         var before_player;
 
-        beforeEach(function(){
+        beforeEach(function() {
 
           doAjax('/create/damageOfRank', {
             playerId: 4,
             damage: 10000,
             week: thisWeek()
-          }, function(){});
+          }, function() {});
+
+          doAjax('/create/damageOfRank', {
+            playerId: 100,
+            damage: 1000,
+            week: thisWeek()
+          }, function() {});
 
           doAjax('/update/player/100', {
             dailyGift: {
-              kneelCountLeft: 1
+              kneelCountLeft: 3
             }
           }, function(res) {
-            
+
           });
 
           doAjax('/player/100', function(res) {
@@ -90,10 +102,12 @@ describe("Area Server", function() {
 
         });
 
-        it('可以膜拜，并返回正确结果', function(){
-          request('area.bossHandler.kneel', {playerId: 4}, function(data) {
+        it('可以膜拜，并返回正确结果', function() {
+          request('area.bossHandler.kneel', {
+            playerId: 4
+          }, function(data) {
             expect(data).toEqual({
-              code: 200, 
+              code: 200,
               msg: {
                 energy: 75,
                 power: 15
@@ -101,9 +115,10 @@ describe("Area Server", function() {
             });
 
             doAjax('/player/100', function(res) {
-              expect(res.data.energy).toEqual(before_player.energy+data.msg.energy);
+              expect(res.data.energy).toEqual(before_player.energy + data.msg.energy);
               expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value + data.msg.power);
-              expect(JSON.parse(res.data.dailyGift).kneelCountLeft).toEqual(0);
+              expect(JSON.parse(res.data.dailyGift).kneelCountLeft).toEqual(2);
+              expect(JSON.parse(res.data.dailyGift).kneelList).toEqual([4]);
             });
 
             doAjax('/damageOfRank/query', {
@@ -115,6 +130,36 @@ describe("Area Server", function() {
             });
 
           });
+
+          request('area.bossHandler.kneel', {
+            playerId: 4
+          }, function(data) {
+            expect(data).toEqual({
+              code: 501,
+              msg: '不能重复膜拜'
+            });
+          });
+
+          request('area.bossHandler.kneel', {
+            playerId: 100
+          }, function(data) {
+            expect(data).toEqual({
+              code: 200,
+              msg: {
+                energy: 75,
+                power: 15
+              }
+            });
+
+            doAjax('/player/100', function(res) {
+              // expect(res.data.energy).toEqual(before_player.energy + data.msg.energy);
+              // expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value + data.msg.power);
+              expect(JSON.parse(res.data.dailyGift).kneelCountLeft).toEqual(1);
+              expect(JSON.parse(res.data.dailyGift).kneelList).toEqual([4, 100]);
+            });
+
+          });
+
         });
 
       });

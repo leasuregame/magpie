@@ -28,7 +28,7 @@ var CdkeyDao = (function(_super) {
 
   CdkeyDao.isAvalifyPlayer = function (playerId, prefix, cb) {
     var sql = "select `code` from cdkey where playerId="+playerId+" and `code` like \'"+prefix+"-%\'";
-    dbClient.query(sql, function(err, res) {
+    dbClient.query(sql,function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when query cdkey]", sql);
         logger.error(err.stack);

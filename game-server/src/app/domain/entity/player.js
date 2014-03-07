@@ -318,6 +318,7 @@ var Player = (function(_super) {
             },
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
             rmTimerCount: 1
         },
         fragments: 0,
@@ -413,6 +414,7 @@ var Player = (function(_super) {
             },
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
             rmTimerCount: 1
         };
 
@@ -1349,6 +1351,24 @@ var Player = (function(_super) {
             this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
         } 
         return this.dailyGift.kneelCountLeft;
+    };
+
+    Player.prototype.hasKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', []);
+            return false;
+        }
+        return this.dailyGift.kneelList.indexOf(pid) > -1;
+    };
+
+    Player.prototype.addKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', [pid]);
+        } else {
+            var dg = utility.deepCopy(this.dailyGift);
+            dg.kneelList.push(pid);
+            this.dailyGift = dg;
+        }
     };
 
     Player.prototype.toJson = function() {

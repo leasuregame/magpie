@@ -91,7 +91,7 @@
             'src/model/greeting.js',
             'src/model/boss.js',
 
-            'TB/payment.js',
+            'IOS/AppStore/payment.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -133,6 +133,7 @@
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/addFriendsLayer.js',
             'src/view/mainModule/attackDetailsLayer.js',
+            'src/view/mainModule/bossHelpLabel.js',
             'src/view/mainModule/bossLayer.js',
             'src/view/mainModule/bossListLayer.js',
             'src/view/mainModule/rechargeLayer.js',

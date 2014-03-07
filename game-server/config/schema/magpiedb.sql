@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `player` (
   `speaker` INT(3) DEFAULT '0',
   `honor` INT(10) DEFAULT '0',
   `superHonor` INT(10) DEFAULT '0',
-  `kneelCount` INT(5) DEFAULT '0',
   `cd` VARCHAR(100) DEFAULT '{}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)

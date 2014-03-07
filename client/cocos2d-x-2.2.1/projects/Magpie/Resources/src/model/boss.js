@@ -42,8 +42,8 @@ var Boss = Entity.extend({
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
-        this._thisWeekRank = null;
-        this._lastWeekRank = null;
+        this._thisWeekRank = [];
+        this._lastWeekRank = [];
         this._thisWeek = null;
         this._lastWeek = null;
         this._isGetReward = true;
@@ -131,7 +131,7 @@ var Boss = Entity.extend({
     },
 
     updateRank: function (cb) {
-        cc.log("Boss updateBossList");
+        cc.log("Boss updateRank");
 
         var that = this;
         lz.server.request("area.bossHandler.thisWeek", {
@@ -222,10 +222,10 @@ var Boss = Entity.extend({
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
 
-                var reward = msg.battleLog.reward;
+                var rewards = msg.battleLog.rewards;
 
-                for (var key in reward) {
-                    gameData.player.add(key, reward[key]);
+                for (var key in rewards) {
+                    gameData.player.add(key, rewards[key]);
                 }
 
                 cb(battleLogId);
@@ -376,7 +376,7 @@ var Boss = Entity.extend({
         cc.log("Boss kneel");
 
         var that = this;
-        lz.server.request("area.bossHandler.removeTimer", {
+        lz.server.request("area.bossHandler.kneel", {
             playerId: playerId
         }, function (data) {
             cc.log(data);
@@ -386,9 +386,11 @@ var Boss = Entity.extend({
 
                 var msg = data.msg;
 
-                gameData.player.sets(msg);
+                for (var key in msg) {
+                    gameData.player.add(key, msg[key]);
+                }
 
-                this.add("kneelCount", -1);
+                that.add("kneelCount", -1);
 
                 cb(msg);
             } else {
@@ -471,6 +473,39 @@ var Boss = Entity.extend({
         cc.log("Boss isCanGetRankReward");
 
         return !(this._isGetReward || !this._lastWeek);
+    },
+
+    isCanKneel: function (playerId) {
+        return this._kneelCount > 0;
+    },
+
+    exchangeSuperHonor: function () {
+        var product = {
+            name: "兑换精元",
+            consumeType: "honor",
+            price: 6000,
+            obtain: 1,
+            unit: "精元",
+            count: 0,
+            tip: "",
+            remainTimes: MAX_REMAIN_TIMES
+        };
+
+        var count;
+        var player = gameData.player;
+
+        count = product.count = parseInt(player.get("honor") / product.price);
+
+        if (count <= 0) {
+            product.tip = "荣誉不足";
+            product.count = 0;
+            return product;
+        } else {
+            product.count = Math.min(product.count, count);
+            product.tip = "荣誉不足";
+        }
+
+        return product;
     }
 });
 

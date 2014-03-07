@@ -264,7 +264,12 @@ class Manager
             player.setBossFound(true)
             cb(null, data)
     else
-      cb(null, data)
+      dao.boss.bossExists player.id, (err, exists) ->
+        if not exists
+          player.setBossFound(false)
+        
+        console.log 'boss exists: ', err, exists
+        cb(null, data)
 
 lineUpToObj = (lineUp) ->
   _results = {}

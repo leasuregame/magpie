@@ -114,6 +114,8 @@ var appFiles = [
     'src/view/mainModule/abilityRankLayer.js',
     'src/view/mainModule/achievementLayer.js',
     'src/view/mainModule/addFriendsLayer.js',
+    'src/view/mainModule/attackDetailsLayer.js',
+    'src/view/mainModule/bossHelpLabel.js',
     'src/view/mainModule/bossLayer.js',
     'src/view/mainModule/bossListLayer.js',
     'src/view/mainModule/rechargeLayer.js',
@@ -141,6 +143,7 @@ var appFiles = [
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/tipsLayer.js',
     'src/view/mainModule/configLayer.js',
+    'src/view/mainModule/damageRankLayer.js',
     'src/view/mainModule/elixirRankHelpLabel.js',
     'src/view/mainModule/elixirRankLayer.js',
     'src/view/mainModule/evolutionLayer.js',
@@ -178,6 +181,7 @@ var appFiles = [
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/readMessageLayer.js',
+    'src/view/mainModule/removeCdTipLabel.js',
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
@@ -229,7 +233,7 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 
 var director = cc.Director.getInstance();
-director.setDisplayStats(false);
+director.setDisplayStats(true);
 
 // set FPS. the default value is 1.0/60 if you don't call this
 director.setAnimationInterval(1.0 / 30);

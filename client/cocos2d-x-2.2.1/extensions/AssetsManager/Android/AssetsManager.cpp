@@ -820,7 +820,7 @@ std::string AssetsManager::getAppVersion()
     // 待修改
 
 //    return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] UTF8String];
-    return "1.0.0";
+    return "1.3.0";
 }
 
 AssetsManager* AssetsManager::assetsManager = NULL;

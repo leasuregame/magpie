@@ -286,6 +286,7 @@ Handler::attack = (msg, session, next) ->
   player = null
   boss = null
   totalDamage = 0
+  gold_resume = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
@@ -317,13 +318,12 @@ Handler::attack = (msg, session, next) ->
       if player.gold < gold_resume
         return cb({code: 501, msg: '魔石不足'})
 
-      player.decrease('gold', gold_resume)
       incRate = _.min [inspireCount * BOSSCONFIG.INSPIRE_PER_CARD, BOSSCONFIG.INSPIRE_MAX]
       fightManager.attackBoss player, boss, incRate, cb
     (bl ,cb) ->
       totalDamage = countDamage(bl)
       countRewards(totalDamage, boss, bl, player)
-      updateBossAndPlayer(boss, bl, player)
+      updateBossAndPlayer(boss, bl, player, gold_resume)
       noticeFriendrewards(playerId, boss, bl.rewards)
       cb(null, bl)
     (bl, cb) ->
@@ -384,13 +384,14 @@ checkBossStatus = (items, cb) ->
 
 countDamage = (bl) ->
   ds = []
-  for k, v of bl.cards
-    if parseInt(k) > 6
-      ds.push v.hp - v.hp_left
+  bl.steps.forEach (s) ->
+    s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if parseInt(el) > 6
 
+  # 删除死亡的boss卡牌
+  for k, v of bl.cards
     delete bl.cards[k] if v.hp is 0
 
-  add = (x, y) -> x + y  
+  add = (x, y) -> x + y
   ds.reduce add, 0
 
 countRewards = (totalDamage, boss, bl, player) ->
@@ -432,7 +433,7 @@ sendMessage = (playerId, rewards) ->
       logger.error(err)
 
 
-updateBossAndPlayer = (boss, bl, player) ->
+updateBossAndPlayer = (boss, bl, player, gold_resume) ->
   if boss.atkCount is 0
     boss.set('status', BOSS_STATUS.AWAKE)
   boss.increase('atkCount')
@@ -463,6 +464,7 @@ updateBossAndPlayer = (boss, bl, player) ->
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)
+  player.decrease('gold', gold_resume)
   player.resetCD()
 
 saveBattleLog = (bl, player, boss, cb) ->

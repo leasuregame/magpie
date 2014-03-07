@@ -16,6 +16,7 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
+#include "js_bindings_MobClickCpp.hpp"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -63,6 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
+    sc->addRegisterCallback(register_all_js_bindings_MobClickCpp);
     
     sc->start();
     
@@ -101,6 +103,9 @@ void AppDelegate::applicationDidEnterBackground()
     CCDirector::sharedDirector()->stopAnimation();
     SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->pauseAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationDidEnterBackground");
 }
 
 // this function will be called when the app is active again
@@ -109,4 +114,7 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->startAnimation();
     SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     SimpleAudioEngine::sharedEngine()->resumeAllEffects();
+    
+    // 回调js同名函数
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationWillEnterForeground");
 }

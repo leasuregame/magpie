@@ -7,9 +7,13 @@ LOCAL_MODULE := cocos2djs_shared
 LOCAL_MODULE_FILENAME := libcocos2djs
 
 LOCAL_SRC_FILES := magpie/main.cpp \
+					../lib/UM/MobClickCpp.cpp \
+                   ../lib/UM/js_bindings_MobClickCpp.cpp \
                    ../../Classes/Android/Test/AppDelegate.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android/Test
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android/Test \
+					$(LOCAL_PATH)/../../../../cocos2dx/platform/android/jni \
+					$(LOCAL_PATH)/../lib/UM
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

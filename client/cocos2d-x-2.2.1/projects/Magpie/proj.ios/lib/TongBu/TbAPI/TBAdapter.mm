@@ -33,9 +33,7 @@ void TBAdapter::TBSetSupportIOS7(bool isSupport){
     [[TBPlatform defaultPlatform] TBSetSupportIOS7:YES];
 }
 void TBAdapter::TBExcuteCallback(const char *name, uint32_t argc, jsval *vp, jsval *retVal) {
-    js_proxy_t* p = jsb_get_native_proxy(this);
-    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
-                                                           name, argc, vp, retVal);
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, name, argc, vp, retVal);
 };
 /* 初始化平台
  * appid：应用ID，由后台获取

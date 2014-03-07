@@ -194,7 +194,7 @@ var Server = Entity.extend({
 
                     that._closeAllWaitLayer();
 
-                    lz.dc.event("event_query_entry");
+                    lz.um.event("event_query_entry");
                 } else {
                     that.scheduleOnce(function () {
                         that.connectGateServer(cb);

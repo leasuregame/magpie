@@ -25,7 +25,7 @@ var ConfigLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("设置界面");
+        lz.um.beginLogPageView("设置界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var ConfigLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("设置界面");
+        lz.um.endLogPageView("设置界面");
     },
 
     init: function () {

@@ -31,7 +31,7 @@ var LoginScene = cc.Scene.extend({
             }
         }
 
-        lz.dc.beginLogPageView("登录场景");
+        lz.um.beginLogPageView("登录场景");
     },
 
     onExit: function () {
@@ -39,7 +39,7 @@ var LoginScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("登录场景");
+        lz.um.endLogPageView("登录场景");
     },
 
     init: function (toLayer) {

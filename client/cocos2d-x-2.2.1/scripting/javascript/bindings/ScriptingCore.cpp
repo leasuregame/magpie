@@ -917,6 +917,13 @@ JSBool ScriptingCore::executeFunctionWithOwner(jsval owner, const char *name, ui
     return bRet;
 }
 
+JSBool ScriptingCore::executeCallbackWithOwner(void* obj, const char *name, uint32_t argc /* = 0 */, jsval *vp /* = NULL */, jsval* retVal /* = NULL */)
+{
+    js_proxy_t* p = jsb_get_native_proxy(obj);
+    
+    return executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj), name, argc, vp, retVal);
+}
+
 int ScriptingCore::executeAccelerometerEvent(CCLayer *pLayer, CCAcceleration *pAccelerationValue) {
 
     jsval value = ccacceleration_to_jsval(this->getGlobalContext(), *pAccelerationValue);

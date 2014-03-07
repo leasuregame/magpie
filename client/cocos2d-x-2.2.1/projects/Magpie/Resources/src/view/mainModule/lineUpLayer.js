@@ -31,7 +31,7 @@ var LineUpLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("调整阵型界面");
+        lz.um.beginLogPageView("调整阵型界面");
     },
 
     onExit: function () {
@@ -39,7 +39,7 @@ var LineUpLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("调整阵型界面");
+        lz.um.endLogPageView("调整阵型界面");
     },
 
     init: function () {

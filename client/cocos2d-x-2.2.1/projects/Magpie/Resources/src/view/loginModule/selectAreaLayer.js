@@ -22,7 +22,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("选区界面");
+        lz.um.beginLogPageView("选区界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("选区界面");
+        lz.um.endLogPageView("选区界面");
     },
 
     init: function (areaList) {

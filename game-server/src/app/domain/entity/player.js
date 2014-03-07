@@ -1373,9 +1373,9 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
-        delete dailyGfit.kneelCountLeft
+        delete dailyGift.kneelCountLeft
         delete dailyGift.kneelList
-        return dailyGfit;
+        return dailyGift;
     };
 
     Player.prototype.toJson = function() {
@@ -1425,7 +1425,7 @@ var Player = (function(_super) {
             bossInfo: {
                 cd: this.getCD(),
                 kneelCountLeft: this.kneelCountLeft(),
-                kneelList: this.dailyGfit.kneelList || [],
+                kneelList: this.dailyGift.kneelList || [],
                 canReceive: this.hasFriendReward || false,
             }
         };

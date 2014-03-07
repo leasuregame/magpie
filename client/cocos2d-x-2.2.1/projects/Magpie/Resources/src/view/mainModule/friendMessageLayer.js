@@ -26,7 +26,7 @@ var FriendMessageLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("好友消息界面");
+        lz.um.beginLogPageView("好友消息界面");
     },
 
     onExit: function () {
@@ -34,7 +34,7 @@ var FriendMessageLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("好友消息界面");
+        lz.um.endLogPageView("好友消息界面");
     },
 
     init: function () {

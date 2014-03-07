@@ -12,14 +12,14 @@ var SummonLayer = cc.Layer.extend({
         cc.log("SummonLayer onEnter");
 
         this._super();
-        lz.dc.beginLogPageView("召唤界面");
+        lz.um.beginLogPageView("召唤界面");
     },
 
     onExit: function () {
         cc.log("SummonLayer onExit");
 
         this._super();
-        lz.dc.endLogPageView("召唤界面");
+        lz.um.endLogPageView("召唤界面");
     },
 
     init: function () {

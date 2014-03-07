@@ -23,7 +23,7 @@ var ShopLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("商城界面");
+        lz.um.beginLogPageView("商城界面");
     },
 
     onExit: function () {
@@ -31,7 +31,7 @@ var ShopLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("商城界面");
+        lz.um.endLogPageView("商城界面");
     },
 
     init: function () {

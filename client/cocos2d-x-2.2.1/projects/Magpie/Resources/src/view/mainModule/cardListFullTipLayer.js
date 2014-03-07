@@ -15,7 +15,7 @@ var CardListFullTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("卡库满提示界面");
+        lz.um.beginLogPageView("卡库满提示界面");
     },
 
     onExit: function () {
@@ -23,7 +23,7 @@ var CardListFullTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡库满提示界面");
+        lz.um.endLogPageView("卡库满提示界面");
     },
 
     init: function () {

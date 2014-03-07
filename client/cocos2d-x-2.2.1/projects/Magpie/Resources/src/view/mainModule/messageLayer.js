@@ -27,7 +27,7 @@ var MessageLayer = cc.Layer.extend({
         this._super();
         this.updateMark();
 
-        lz.dc.beginLogPageView("消息界面");
+        lz.um.beginLogPageView("消息界面");
     },
 
     onExit: function () {
@@ -35,7 +35,7 @@ var MessageLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("消息界面");
+        lz.um.endLogPageView("消息界面");
     },
 
     init: function () {

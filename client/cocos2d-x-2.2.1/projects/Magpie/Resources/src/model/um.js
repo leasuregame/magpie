@@ -7,8 +7,7 @@
  * data collection
  * */
 
-
-lz.dc = {
+lz.um = {
     setAppVersion: function (str) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER && typeof(um) != "undefined") {
             um.MobClickCPP.setAppVersion.apply(um.MobClickCPP, arguments);
@@ -33,15 +32,21 @@ lz.dc = {
         }
     },
 
-    setLogSendInterval: function (second) {
+    applicationDidEnterBackground: function() {
         if (!lz.TARGET_PLATFORM_IS_BROWSER && typeof(um) != "undefined") {
-            um.MobClickCPP.setLogSendInterval.apply(um.MobClickCPP, arguments);
+            um.MobClickCPP.applicationDidEnterBackground.apply(um.MobClickCPP, arguments);
         }
     },
 
-    logPageView: function (pageName, second) {
+    applicationWillEnterForeground: function() {
         if (!lz.TARGET_PLATFORM_IS_BROWSER && typeof(um) != "undefined") {
-            um.MobClickCPP.logPageView.apply(um.MobClickCPP, arguments);
+            um.MobClickCPP.applicationWillEnterForeground.apply(um.MobClickCPP, arguments);
+        }
+    },
+
+    end: function() {
+        if (!lz.TARGET_PLATFORM_IS_BROWSER && typeof(um) != "undefined") {
+            um.MobClickCPP.end.apply(um.MobClickCPP, arguments);
         }
     },
 
@@ -63,6 +68,3 @@ lz.dc = {
         }
     }
 };
-
-lz.dc.startWithAppKey("5314371056240be15b216fc1");
-lz.dc.setLogEnabled(false);

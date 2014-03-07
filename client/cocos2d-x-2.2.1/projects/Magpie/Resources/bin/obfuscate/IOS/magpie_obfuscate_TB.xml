@@ -32,8 +32,8 @@
                 <file name="src/model/entity.js"/>
 
                 <file name="src/model/lz.js"/>
+                <file name="src/model/um.js"/>
                 <file name="IOS/TB/platform.js"/>
-                <file name="src/model/dataCollection.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
 

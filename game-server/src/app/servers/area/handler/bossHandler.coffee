@@ -177,10 +177,10 @@ Handler::convertHonor = (msg, session, next) ->
     if err
       return next(null, {code: 501, msg: err.message or err.msg})
 
-    if player.honor < number * 6000
+    if player.honor < number * BOSSCONFIG.HONOR_TO_SUPER
       return next(null, {code: 501, msg: '荣誉点不足'})
 
-    player.decrease 'honor', number * 6000
+    player.decrease 'honor', number * BOSSCONFIG.HONOR_TO_SUPER
     player.increase 'superHonor', number
     player.save()
 
@@ -369,9 +369,9 @@ countDamageRewards = (rank) ->
     honor: row.honor
     energy: row.energy
   else 
-    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or 8000
-    honor = parseInt honor5*(1-Math.ceil((rank-5)/20)*0.003)
-    honor = 2000 if honor < 2000
+    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or BOSSCONFIG.REWARD_COUNT.BASE_VALUE
+    honor = parseInt honor5*(1-Math.ceil((rank-5)/BOSSCONFIG.REWARD_COUNT.DURACTION)*BOSSCONFIG.REWARD_COUNT.FACTOR)
+    honor = BOSSCONFIG.REWARD_COUNT.MIN if honor < BOSSCONFIG.REWARD_COUNT.MIN
     honor: honor
 
 checkBossStatus = (items, cb) ->
@@ -408,16 +408,16 @@ countRewards = (totalDamage, boss, bl, player) ->
   bossInfo = table.getTableItem('boss', boss.tableId)
   rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.rewards_inc or 0
 
-  money = parseInt totalDamage/1000*31*(100+rewardsInc)/100
-  honor = parseInt totalDamage/2000*(100+rewardsInc)/100
+  money = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_MONEY.DAMAGE*BOSSCONFIG.DAMAGE_TO_MONEY.MONEY*(100+rewardsInc)/100
+  honor = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_HONOR.DAMAGE*BOSSCONFIG.DAMAGE_TO_HONOR.HONOR*(100+rewardsInc)/100
   bl.rewards = 
     money: money
     honor: honor
 
   if boss.playerId isnt player.id
     bl.rewards.friend = 
-      money: parseInt(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
-      honor: parseInt(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      money: Math.ceil(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      honor: Math.ceil(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
 
 noticeFriendrewards = (playerId, boss, rewards) ->
   return if playerId is boss.playerId

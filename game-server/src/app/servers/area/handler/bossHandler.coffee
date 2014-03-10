@@ -208,7 +208,9 @@ Handler::removeTimer = (msg, session, next) ->
     player.incRmTimerCount()
     player.save()
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {
+      gold: player.gold
+    }})
 
 Handler::kneel = (msg, session, next) ->
   playerId = session.get('playerId')

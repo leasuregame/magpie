@@ -30,6 +30,10 @@ var string_to_sign = function(method, bucket, obj_key, expire) {
 };
 
 var make_request_url = function(method, bucket, obj_key, server) {
+  if (!server) {
+    server = HOST;
+  }
+
   var expires = new Date().getTime() + 60000;
   var attach_url = '&response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3Bfilename%3Dlatest.zip';
   var file_name = '';
@@ -40,6 +44,10 @@ var make_request_url = function(method, bucket, obj_key, server) {
 };
 
 var make_bucket_get_url = function(method, bucket, filter, server) {
+  if (!server) {
+    server = HOST;
+  }
+
   var expires = new Date().getTime() + 60000;
   var request_url = util.format("%s/%s?AccessKeyId=%s&Expires=%s&Signature=%s&prefix=%s",
     server, bucket, AccessKeyID, expires,

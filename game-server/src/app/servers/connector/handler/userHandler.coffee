@@ -172,7 +172,7 @@ checkVersion = (app, msg, platform, cb) ->
     if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
       cb({code: 501, msg: '版本过低，请及时更新'})
     else 
-      cb({code: 600, msg: '您的版本需要更新（大小3.13M）'})
+      cb({code: 600, msg: '您的版本需要更新（3.13M）'})
 
 checkIsOpenServer = (app, cb) ->
   openTime = new Date(app.get('sharedConf').openServerTime)

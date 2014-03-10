@@ -54,6 +54,8 @@ var Boss = Entity.extend({
 
         this.update(data);
 
+        this.sync();
+
         this.schedule(this._updateCdAndBoss, UPDATE_CD_TIME_INTERVAL);
 
         this.setListener();
@@ -467,10 +469,11 @@ var Boss = Entity.extend({
         }
 
         var rank = this._thisWeek.rank;
+
         if (rank <= 5) {
             return outputTables.boss_rank_reward.rows[rank];
         } else {
-            var honor = outputTables.boss_rank_reward.rows[50].honor;
+            var honor = outputTables.boss_rank_reward.rows[5].honor;
             honor -= parseInt(Math.ceil((rank - 5) / 20) * 0.003 * honor);
             honor = Math.max(2000, honor);
             return {honor: honor}

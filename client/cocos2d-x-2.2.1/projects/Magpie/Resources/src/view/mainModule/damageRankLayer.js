@@ -370,7 +370,7 @@ var DamageRankLayer = LazyLayer.extend({
             this._rankView.addChild(damageLabel);
 
             var damageCountLabel = cc.LabelTTF.create(player.damage, "STHeitiTC-Medium", 22);
-            damageCountLabel.setColor(cc.c3b(123, 76, 65));
+            damageCountLabel.setColor(cc.c3b(108, 41, 41));
             damageCountLabel.setAnchorPoint(cc.p(0, 0.5));
             damageCountLabel.setPosition(cc.p(380, y + 42));
             this._rankView.addChild(damageCountLabel);

@@ -347,7 +347,7 @@ var ElixirRankLayer = cc.Layer.extend({
             scrollViewLayer.addChild(elixirIcon);
 
             var elixirLabel = cc.LabelTTF.create(player.elixir, "STHeitiTC-Medium", 22);
-            elixirLabel.setColor(cc.c3b(123, 76, 65));
+            elixirLabel.setColor(cc.c3b(108, 41, 41));
             elixirLabel.setAnchorPoint(cc.p(0, 0.5));
             elixirLabel.setPosition(cc.p(450, y + 25));
             scrollViewLayer.addChild(elixirLabel);

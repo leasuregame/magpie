@@ -56,10 +56,8 @@ var BossListLayer = cc.Layer.extend({
         titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon35);
+        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon412);
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);
-        cdTimeIcon.setScaleX(2.5);
-        cdTimeIcon.setScaleY(1.2);
         this.addChild(cdTimeIcon);
 
         var nextAttackLabel = cc.LabelTTF.create("下次攻击 ", "STHeitiTC-Medium", 22);
@@ -125,11 +123,11 @@ var BossListLayer = cc.Layer.extend({
             this
         );
 
-        this._rewardItem.setScale(0.5);
+        this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._bossListLayerFit.rewardItemPoint);
 
         this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
-        this._effect.setScale(0.4);
+        this._effect.setScale(0.48);
         this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
         this.addChild(this._effect);
 
@@ -192,7 +190,6 @@ var BossListLayer = cc.Layer.extend({
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
         var isCanReceive = gameData.boss.get("canReceive");
-        this._rewardItem.setEnabled(isCanReceive);
         this._effect.setVisible(isCanReceive);
     },
 
@@ -369,6 +366,12 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var isCanReceive = gameData.boss.get("canReceive");
+        if(!isCanReceive) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
 
         var that = this;
         gameData.boss.getFriendHelpReward(function (data) {

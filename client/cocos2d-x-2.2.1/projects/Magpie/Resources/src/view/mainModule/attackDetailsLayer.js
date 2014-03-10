@@ -307,7 +307,6 @@ var AttackDetailsLayer = LazyLayer.extend({
         } else {
             TipLayer.tip("找不到该战报");
         }
-
     },
 
     _onClickDetail: function () {

@@ -909,6 +909,7 @@ var main_scene_image = {
     uiEffect87: "res/ccb/uiEffect87.ccbi",
     uiEffect88: "res/ccb/uiEffect88.ccbi",
     uiEffect89: "res/ccb/uiEffect89.ccbi",
+    uiEffect90: "res/ccb/uiEffect90.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

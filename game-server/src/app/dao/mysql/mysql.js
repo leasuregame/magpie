@@ -16,6 +16,11 @@ NND = {
      */
 
     query: function (sql, args, cb) {
+        if (typeof args == 'function') {
+            cb = args;
+            args = [];
+        }
+
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);

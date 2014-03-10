@@ -56,7 +56,7 @@ var make_bucket_get_url = function(method, bucket, filter, server) {
 };
 
 var versionPath = function() {
-  return path.join(__dirname, '..', '..', 'shared', 'version.json');
+  return path.join(__dirname, 'version.json');
 };
 
 var versionData = function() {

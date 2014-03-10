@@ -188,21 +188,23 @@ checkIsOpenServer = (app, cb) ->
   else 
     cb()
 
-
 update_file_size = {}
 getUpdateSize = (version, vData, cb) ->
-  if update_file_size[version]
-    return cb({code: 600, msg: "您的版本需要更新(#{sizeFormat(update_file_size[version])})"})
-
   filename = vData.filename
   if versionHandler.versionCompare(version, vData.lastVersion)
     filename = vData.lastFilename
 
+  key = vData.version+filename
+  console.log update_file_size
+  if update_file_size[key]
+    return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
+  console.log update_file_size  
+
   request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
     try
       size = JSON.parse(require('xml2json').toJson(res.body)).ListBucketResult.Contents.Size
-      update_file_size[version] = size
-      return cb({code: 600, msg: "您的版本需要更新(#{sizeFormat(update_file_size[version])})"})
+      update_file_size[key] = sizeFormat size
+      return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
     catch error
       cb({code: 600, msg: '您的版本需要新'})
 

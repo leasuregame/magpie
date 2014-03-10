@@ -219,6 +219,13 @@ var DamageRankLayer = LazyLayer.extend({
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(cc.rect(40, 198, 640, 750));
 
+        this._tipLabel = StrokeLabel.create("当前没有排名信息", "STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(cc.p(320, 620));
+        this._tipLabel.setVisible(false);
+        this._frameLayer.addChild(this._tipLabel);
+
         return true;
     },
 
@@ -292,6 +299,8 @@ var DamageRankLayer = LazyLayer.extend({
         this._playerItem = [];
 
         var len = this._rankList.length;
+
+        this._tipLabel.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
             var y = 360 - 90 * i;

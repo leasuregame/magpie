@@ -203,7 +203,8 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(60, 230),
             "scrollViewHeight": 600,
             "closeItemPoint": cc.p(650, 879),
-            "skyDialogRect": cc.rect(40, 110, 640, 750)
+            "skyDialogRect": cc.rect(40, 110, 640, 750),
+            "tipLabel1Point": cc.p(360, 620)
         },
         "battleMessageLayer": {
             "scrollViewHeight": 742,
@@ -474,7 +475,8 @@ var fit4Iphone4 = {
             "detailItemPoint": cc.p(108, 240),
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
-            "skyDialogRect": cc.rect(40, 110, 640, 700)
+            "skyDialogRect": cc.rect(40, 110, 640, 700),
+            "tipLabelPoint": cc.p(360, 620)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 819),
@@ -1689,7 +1691,8 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(20, 230),
             "scrollViewHeight": 750,
             "closeItemPoint": cc.p(610, 1055),
-            "skyDialogRect": cc.rect(40, 198, 640, 800)
+            "skyDialogRect": cc.rect(40, 198, 640, 800),
+            "tipLabel1Point": cc.p(320, 720)
         },
         "battleMessageLayer": {
             "scrollViewHeight": 880,
@@ -1960,7 +1963,8 @@ var fit4Iphone5 = {
             "detailItemPoint": cc.p(108, 240),
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
-            "skyDialogRect": cc.rect(40, 198, 640, 750)
+            "skyDialogRect": cc.rect(40, 198, 640, 750),
+            "tipLabelPoint": cc.p(320, 720)
         },
         "evolutionLayer": {
             "bgSpriteRect1": cc.rect(0, 0, 640, 995),

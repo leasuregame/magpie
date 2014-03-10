@@ -217,6 +217,13 @@ var ElixirRankLayer = cc.Layer.extend({
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(this._elixirRankLayerFit.skyDialogRect);
 
+        this._tipLabel = StrokeLabel.create("当前没有排名信息","STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(this._elixirRankLayerFit.tipLabelPoint);
+        this._tipLabel.setVisible(false);
+        this.addChild(this._tipLabel);
+
         return true;
     },
 
@@ -286,6 +293,8 @@ var ElixirRankLayer = cc.Layer.extend({
         if (scrollViewHeight < this._elixirRankLayerFit.scrollViewHeight) {
             scrollViewHeight = this._elixirRankLayerFit.scrollViewHeight;
         }
+
+        this._tipLabel.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 65 - 75 * i;

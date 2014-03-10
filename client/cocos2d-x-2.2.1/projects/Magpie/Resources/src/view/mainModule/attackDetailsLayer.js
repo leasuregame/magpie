@@ -116,6 +116,13 @@ var AttackDetailsLayer = LazyLayer.extend({
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(this._attackDetailsLayerFit.skyDialogRect);
 
+        this._tipLabel = StrokeLabel.create("当前没有记录信息", "STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(this._attackDetailsLayerFit.tipLabel1Point);
+        this._tipLabel.setVisible(false);
+        this.addChild(this._tipLabel);
+
         return true;
     },
 
@@ -149,10 +156,11 @@ var AttackDetailsLayer = LazyLayer.extend({
 
         var len = this._detailsList.length;
         var scrollViewHeight = len * 150;
-
         if (scrollViewHeight < this._attackDetailsLayerFit.scrollViewHeight) {
             scrollViewHeight = this._attackDetailsLayerFit.scrollViewHeight;
         }
+
+        this._tipLabel.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 90 - 150 * i;

@@ -54,12 +54,12 @@ var giftBagGoods = {
 
     honor: {
         name: "荣誉",
-        url: "icon405"
+        url: "icon410"
     },
 
     superHonor: {
         name: "精元",
-        url: "icon406"
+        url: "icon411"
     }
 };
 

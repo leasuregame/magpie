@@ -5,6 +5,8 @@ _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
 util = require 'util'
+versionHandler = require '../../../../../shared/version_helper'
+request = require 'request'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -172,7 +174,8 @@ checkVersion = (app, msg, platform, cb) ->
     if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
       cb({code: 501, msg: '版本过低，请及时更新'})
     else 
-      cb({code: 600, msg: '您的版本需要更新（3.13M）'})
+      getUpdateSize version, vData, cb
+      #cb({code: 600, msg: '您的版本需要更新（3.13M）'})
 
 checkIsOpenServer = (app, cb) ->
   openTime = new Date(app.get('sharedConf').openServerTime)
@@ -184,3 +187,37 @@ checkIsOpenServer = (app, cb) ->
     })
   else 
     cb()
+
+
+update_file_size = {}
+getUpdateSize = (version, vData, cb) ->
+  if update_file_size[version]
+    return cb({code: 600, msg: "您的版本需要更新(#{sizeFormat(update_file_size[version])})"})
+
+  filename = vData.filename
+  if versionHandler.versionCompare(version, vData.lastVersion)
+    filename = vData.lastFilename
+
+  request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
+    try
+      size = JSON.parse(require('xml2json').toJson(res.body)).ListBucketResult.Contents.Size
+      update_file_size[version] = size
+      return cb({code: 600, msg: "您的版本需要更新(#{sizeFormat(update_file_size[version])})"})
+    catch error
+      cb({code: 600, msg: '您的版本需要新'})
+
+sizeFormat = (size) ->
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'KB'
+
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'MB'
+
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'GB'
+
+  return size
+

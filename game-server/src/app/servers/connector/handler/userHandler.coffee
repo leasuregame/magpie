@@ -219,5 +219,5 @@ sizeFormat = (size) ->
   if size < 1024
     return size.toFixed(1)+'GB'
 
-  return size
+  return size + 'b'
 

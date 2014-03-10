@@ -107,7 +107,7 @@ var MainMenuLayer = cc.Layer.extend({
         if (gameGuide.get("passGuide") && !this._passGuide) {
             this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._passGuide.setRotation(180);
-            this._passGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+            this._passGuide.setPosition(cc.p(basePoint.x + offsetX, basePoint.y));
             this.addChild(this._passGuide);
         }
 

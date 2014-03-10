@@ -17,7 +17,7 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("星级进阶卡牌界面");
+        lz.um.beginLogPageView("星级进阶卡牌界面");
     },
 
     onExit: function () {
@@ -25,7 +25,7 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("星级进阶卡牌界面");
+        lz.um.endLogPageView("星级进阶卡牌界面");
     },
 
     init: function (data) {

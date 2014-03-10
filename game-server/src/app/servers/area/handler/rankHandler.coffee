@@ -9,6 +9,8 @@ msgConfig = require '../../../../config/data/message'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 Cache = require '../../../common/cache'
+utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 
 rankingConfig = table.getTableItem('ranking_list',1)
 
@@ -200,7 +202,7 @@ Handler::getRankingReward = (msg, session, next) ->
       where: id: rank.id
     }, (err, res) -> 
       if err
-        return next(null, msg: {code: 501, msg: err.message or err.msg})
+        return next(null, {code: 501, msg: err.message or err.msg})
         
       player.increase('elixir', rewardData.elixir)
       player.save()
@@ -209,6 +211,122 @@ Handler::getRankingReward = (msg, session, next) ->
         msg: elixir: rewardData.elixir
       })
   
+Handler::thisWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').elixirOfRank.thisWeekElixirRank cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.getRank playerId, utility.thisWeek(), cb
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    orderList = results[0]
+    thisWeekRank = results[1]
+
+    next(null, {code: 200, msg:{
+      elixirs: orderList, 
+      thisWeek: thisWeekRank
+    }})
+
+Handler::lastWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').elixirOfRank.lastWeekElixirRank cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.getRank playerId, utility.lastWeek(), cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.fetchOne {
+        fields: ['got']
+        where: playerId: playerId, week: utility.lastWeek()
+      }, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else
+          cb(null, res)
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    orderList = results[0]
+    lastWeekRank = results[1]
+    got = results[2]?.got
+    
+    next(null, {code: 200, msg:{
+      elixirs: orderList, 
+      lastWeek: lastWeekRank,
+      isGet: !!got
+    }})
+
+Handler::getElixirRankReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+  week = utility.lastWeek()
+  rank = null
+  dao = @app.get('dao')
+  async.waterfall [
+    (cb) ->
+      dao.elixirOfRank.getRank playerId, week, cb
+    (res, cb) ->
+      rank = res
+      if not rank
+        return cb({code: 501, msg: '上周不够努力，没奖励可领哦'})
+      cb(null)
+    (cb) ->    
+      dao.elixirOfRank.fetchOne {
+        where: {
+          playerId: playerId,
+          week: week
+        },
+        fields: ['got']
+      }, cb
+    (eor, cb) ->
+      if eor?.got is 1
+        return cb({code: 501, msg: '不能重复领取'})
+      cb()
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+  ], (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})  
+
+    data = rewardOfRank(rank?.rank)
+
+    entityUtil.getReward player, data, (err, cards) ->
+      return next(null, {code: 501, msg: err.message or err.msg}) if err
+
+      dao.elixirOfRank.update {
+        data: got: 1
+        where: playerId: playerId, week: week
+      }, (err, res) ->
+        return next(null, {code: 501, msg: err.message or err.msg}) if err
+
+        results = _.extend {}, data, {
+          card: cards[0] if cards.length > 0
+          cardIds: cards.map (c) -> c.id
+        }
+        delete results.exp_card
+        delete results.id
+        player.save()
+        next(null, {code: 200, msg: results})
+
+rewardOfElixirRank = (rank) ->
+  return if not rank
+  rewardOfRank(rank)
+
+rewardOfRank = (rank) ->
+  row = table.getTableItem('elixir_ranking_reward', rank)
+  if row
+    row
+  else 
+    money50 = table.getTableItem('elixir_ranking_reward', 50)?.money or 0
+    money = parseInt money50*(1-Math.ceil((rank-50)/20)*0.003)
+    if money < 50000
+      money = 50000
+    money: money
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

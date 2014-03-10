@@ -24,7 +24,7 @@ var SystemMessageLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("系统消息界面");
+        lz.um.beginLogPageView("系统消息界面");
     },
 
     onExit: function () {
@@ -32,7 +32,7 @@ var SystemMessageLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("系统消息界面");
+        lz.um.endLogPageView("系统消息界面");
     },
 
     init: function () {
@@ -90,7 +90,10 @@ var SystemMessageLayer = cc.Layer.extend({
             scrollViewLayer.addChild(msgLabel);
 
             var timeLabel = cc.LabelTTF.create(
-                lz.getTimeStr(systemMessageList[i].createTime),
+                lz.getTimeStr({
+                    time: systemMessageList[i].createTime,
+                    fmt: "yyyy.MM.dd hh:mm"
+                }),
                 "STHeitiTC-Medium",
                 16
             );

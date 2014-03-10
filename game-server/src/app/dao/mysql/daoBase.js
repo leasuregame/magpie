@@ -10,7 +10,8 @@ var ACTION = {
   INSERT: 'insert',
   UPDATE: 'update',
   DELETE: 'delete',
-  SELECT: 'select'
+  SELECT: 'select',
+  EXISTS: 'exists'
 };
 
 var addSyncEvent = function(syncKey, entity, cb) {
@@ -125,7 +126,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
-
+    //console.log('fetchMnay: ', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
@@ -209,6 +210,28 @@ var DaoBase = (function() {
         }));
       } else {
         return cb(null, []);
+      }
+    });
+  };
+
+  DaoBase.exists = function(options, cb) {
+    var _this = this;
+    options.table = options.table || this.table;
+    var stm = sqlHelper.generateSql(ACTION.EXISTS, options);
+
+    return dbClient.query(stm.sql, stm.args, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when query " + _this.table + "s]", err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        return cb(null, !!res[0].exist);
+      } else {
+        return cb(null, false);
       }
     });
   };

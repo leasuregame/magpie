@@ -182,6 +182,10 @@ var Task = Entity.extend({
 
                 that.update(msg.task);
 
+                if (msg.find_boss) {
+                    cbData.findBoss = msg.find_boss;
+                }
+
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
 
@@ -202,8 +206,9 @@ var Task = Entity.extend({
                 }
 
                 if (msg.through_reward) {
-                    cbData.through_reward = msg.through_reward;
                     player.add("money", msg.through_reward.money);
+
+                    cbData.through_reward = msg.through_reward;
                 }
 
                 cc.log("first_win: " + msg.first_win);
@@ -235,7 +240,7 @@ var Task = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_task", id);
+                lz.um.event("event_task", id);
             } else if (data.code == 501) {
                 cc.log("explore fail");
 
@@ -292,7 +297,7 @@ var Task = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_wipe_out_task", id);
+                lz.um.event("event_wipe_out_task", "" + id);
             } else {
                 cc.log("wipeOut fail");
 
@@ -315,7 +320,7 @@ var Task = Entity.extend({
 
                 gameData.player.add("gold", gold);
 
-                lz.dc.event("event_momo", gold);
+                lz.um.event("event_momo", gold);
             } else {
                 cc.log("obtainGold fail");
 

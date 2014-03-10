@@ -46,7 +46,8 @@ Handler::explore = (msg, session, next) ->
       
       taskManager.explore player, taskId, cb
 
-    (data, chapterId, sectionId, cb) =>
+    (data, chapterId, sectionId, cb) =>     
+
       if data.result is 'fight'
         taskManager.fightToMonster(
           {pid: player.id, tableId: taskId, table: 'task_config'}
@@ -78,6 +79,10 @@ Handler::explore = (msg, session, next) ->
             taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
         taskManager.countExploreResult player, data, taskId, chapterId, cb
+
+    (data, cb) ->
+      # 寻找boss，1~20次探索必然出现一个boss
+      taskManager.seekBoss(data, player, cb)
   ], (err, data) =>
     if err
       if err.code is 501

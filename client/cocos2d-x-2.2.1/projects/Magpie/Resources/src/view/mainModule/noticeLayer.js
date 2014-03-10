@@ -15,7 +15,7 @@ var NoticeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("公告界面");
+        lz.um.beginLogPageView("公告界面");
     },
 
     onExit: function () {
@@ -27,7 +27,7 @@ var NoticeLayer = cc.Layer.extend({
             this._webLayer.close();
         }
 
-        lz.dc.endLogPageView("公告界面");
+        lz.um.endLogPageView("公告界面");
     },
 
     init: function () {
@@ -80,8 +80,10 @@ NoticeLayer.create = function () {
 };
 
 NoticeLayer.pop = function () {
-    lz.scheduleOnce(function () {
-        var noticeLayer = NoticeLayer.create();
-        cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10001);
-    }, 0.01);
+    if (typeof(lz.WebLayer) != "undefined") {
+        lz.scheduleOnce(function () {
+            var noticeLayer = NoticeLayer.create();
+            cc.Director.getInstance().getRunningScene().addChild(noticeLayer, 10001);
+        }, 0.01);
+    }
 };

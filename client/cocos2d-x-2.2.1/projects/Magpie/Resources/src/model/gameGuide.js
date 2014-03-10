@@ -68,10 +68,11 @@ var gameGuide = {
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
         var lv = gameData.player.get("lv");
+
         for (var i = 1; i <= 7; i++) {
             var guide = FUNCTION_OPEN[i];
-            if (lv == table[guide.tableName]) {
 
+            if (lv == table[guide.tableName]) {
                 var point = gameFit.gameGuide.effectPoint;
                 var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect58, this);
                 tipEffect.controller.ccbTipLabel.setString(guide.tip);

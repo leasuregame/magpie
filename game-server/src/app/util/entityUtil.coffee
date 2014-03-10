@@ -1,4 +1,5 @@
 dao = require('pomelo').app.get('dao')
+playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
 cardConfig = require '../../config/data/card'
 playerConfig = require '../../config/data/player'
@@ -92,6 +93,22 @@ module.exports =
 
   randomCardIds: (stars, num) ->
     utility.randArrayItems getCardIdsByStar(stars), num
+
+  getReward: (player, data, cb) ->
+    setIfExist(player, data)
+
+    if typeof data.spirit != 'undefined' and data.spirit > 0
+      player.incSpirit(data.spirit)
+    if typeof data.power != 'undefined' and data.power > 0
+      player.addPower(data.power)
+    if typeof data.exp_card != 'undefined' and data.exp_card > 0
+      playerManager.addExpCardFor player, data.exp_card, cb
+    else 
+      cb(null, [])
+
+setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
+  player.increase att, val for att, val of data when att in attrs and val > 0
+  return
 
 filterTableId = (ids) ->
   exceptIds = []

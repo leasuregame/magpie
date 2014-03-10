@@ -31,7 +31,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("VIP特权界面");
+        lz.um.beginLogPageView("VIP特权界面");
     },
 
     onExit: function () {
@@ -39,7 +39,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("VIP特权界面");
+        lz.um.endLogPageView("VIP特权界面");
     },
 
     init: function () {

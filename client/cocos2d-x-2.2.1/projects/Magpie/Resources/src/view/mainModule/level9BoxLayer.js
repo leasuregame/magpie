@@ -18,7 +18,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("九级礼包界面");
+        lz.um.beginLogPageView("九级礼包界面");
     },
 
     onExit: function () {
@@ -26,7 +26,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("九级礼包界面");
+        lz.um.endLogPageView("九级礼包界面");
     },
 
     init: function (data) {
@@ -81,7 +81,6 @@ var Level9BoxLayer = LazyLayer.extend({
             }
         });
     }
-
 });
 
 

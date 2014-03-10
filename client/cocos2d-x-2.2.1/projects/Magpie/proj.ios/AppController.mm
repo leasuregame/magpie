@@ -7,8 +7,6 @@
 
 #import "RootViewController.h"
 
-#include "NotificationHelp.h"
-
 @implementation AppController
 
 #pragma mark -
@@ -66,8 +64,6 @@ static AppDelegate s_sharedApplication;
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
     cocos2d::CCDirector::sharedDirector()->pause();
-    
-    NotificationHelp::end();
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -75,8 +71,6 @@ static AppDelegate s_sharedApplication;
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     cocos2d::CCDirector::sharedDirector()->resume();
-    
-    NotificationHelp::start();
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

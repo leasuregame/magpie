@@ -52,7 +52,7 @@ var MainLayer = cc.Layer.extend({
         this.updateGuide();
         this.onTeaching();
 
-        lz.dc.beginLogPageView("主界面");
+        lz.um.beginLogPageView("主界面");
     },
 
     onExit: function () {
@@ -60,7 +60,7 @@ var MainLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("主界面");
+        lz.um.endLogPageView("主界面");
     },
 
     init: function () {
@@ -329,7 +329,6 @@ var MainLayer = cc.Layer.extend({
             this._lotteryGuide.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
             this.addChild(this._lotteryGuide);
         }
-
     },
 
     onTeaching: function () {
@@ -337,7 +336,9 @@ var MainLayer = cc.Layer.extend({
 
         if (gameGuide.get("isFirstPassiveSkillAfresh")) {
             gameGuide.set("isFirstPassiveSkillAfresh", false);
-            MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
+            MandatoryTeachingLayer.pop({
+                progress: FIRST_PASSIVE_SKILL_AFRESH
+            });
         }
     },
 

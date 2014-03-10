@@ -33,7 +33,7 @@ var FriendLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("好友界面");
+        lz.um.beginLogPageView("好友界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var FriendLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("好友界面");
+        lz.um.endLogPageView("好友界面");
     },
 
     init: function () {
@@ -503,7 +503,9 @@ var FriendLayer = cc.Layer.extend({
 
         var that = this;
         gameData.player.fight(function (battleLogId) {
-            BattlePlayer.getInstance().play(battleLogId);
+            BattlePlayer.getInstance().play({
+                id: battleLogId
+            });
         }, this._selectFriend);
     },
 

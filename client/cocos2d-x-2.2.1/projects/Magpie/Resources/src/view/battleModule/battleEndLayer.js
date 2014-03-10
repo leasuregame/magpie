@@ -161,11 +161,9 @@ var BattleEndLayer = cc.Layer.extend({
                 FragmentLayer.pop(fragment);
                 this._canClick = true;
             }, 1.5);
-
         } else {
             this._canClick = true;
         }
-
     },
 
     end: function () {
@@ -188,7 +186,10 @@ var BattleEndLayer = cc.Layer.extend({
         }
 
         BattlePlayer.getInstance().next();
-        BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
+        BattlePlayer.getInstance().play({
+            id: this._battleLog.get("id"),
+            isPlayback: true
+        });
     },
 
     _onClickGoStrengthenLayer: function () {

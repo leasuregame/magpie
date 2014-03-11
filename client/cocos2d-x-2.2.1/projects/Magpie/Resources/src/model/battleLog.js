@@ -57,6 +57,7 @@ var BattleLog = Entity.extend({
         if (battleLog.isFirstTournament) {
             this.set("isFirstTournament", true);
         }
+        
         var player = gameData.player;
         var spirit = gameData.spirit;
         var cardList = gameData.cardList;

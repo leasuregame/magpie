@@ -734,6 +734,9 @@ var main_scene_image = {
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",
     tipNode: "res/ccb/tipNode.ccbi",
+    bossNode20000: "res/ccb/bossNode20000.ccbi",
+    bossNode20001: "res/ccb/bossNode20001.ccbi",
+//    bossNode20002: "res/ccb/bossNode20002.ccbi",
 
     effect1_1: "res/ccb/effect1_1.ccbi",
     effect1_2: "res/ccb/effect1_2.ccbi",
@@ -796,6 +799,7 @@ var main_scene_image = {
     effect700_2: "res/ccb/effect700_2.ccbi",
     effect701_1: "res/ccb/effect701_1.ccbi",
     effect701_2: "res/ccb/effect701_2.ccbi",
+    effect701_3: "res/ccb/effect701_3.ccbi",
     effect702_1: "res/ccb/effect702_1.ccbi",
     effect702_2: "res/ccb/effect702_2.ccbi",
     effect702_3: "res/ccb/effect702_3.ccbi",
@@ -809,6 +813,25 @@ var main_scene_image = {
     effect806: "res/ccb/effect806.ccbi",
     effect807_1: "res/ccb/effect807_1.ccbi",
     effect807_2: "res/ccb/effect807_2.ccbi",
+
+    effect1001_1: "res/ccb/effect1001_1.ccbi",
+    effect1001_2: "res/ccb/effect1001_2.ccbi",
+    effect1001_3: "res/ccb/effect1001_3.ccbi",
+
+    effect1002_1: "res/ccb/effect1002_1.ccbi",
+    effect1002_2: "res/ccb/effect1002_2.ccbi",
+
+    effect1003_1: "res/ccb/effect1003_1.ccbi",
+    effect1003_2: "res/ccb/effect1003_2.ccbi",
+
+    effect1800_1: "res/ccb/effect1800_1.ccbi",
+    effect1800_2: "res/ccb/effect1800_2.ccbi",
+    effect1800_3: "res/ccb/effect1800_3.ccbi",
+    effect1800_4: "res/ccb/effect1800_4.ccbi",
+
+    effect1801_1: "res/ccb/effect1801_1.ccbi",
+    effect1802_2: "res/ccb/effect1802_2.ccbi",
+    effect1803_3: "res/ccb/effect1803_3.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -993,7 +1016,7 @@ var main_scene_image = {
     p79: "res/effect/effect/p79.png",
     p80: "res/effect/effect/p80.png",
     p81: "res/effect/effect/p81.png",
-   // p82: "res/effect/effect/p82.png",
+    // p82: "res/effect/effect/p82.png",
     p83: "res/effect/effect/p83.png",
     p84: "res/effect/effect/p84.png",
     p85: "res/effect/effect/p85.png",

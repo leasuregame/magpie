@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>50</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -9232,8 +9232,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.1000000238418579</real>
-											<real>1.1000000238418579</real>
+											<real>1.059999942779541</real>
+											<real>1.059999942779541</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -9246,7 +9246,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>4.1666665077209473</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -13635,7 +13635,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>5</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -16767,7 +16767,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>-44</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -22159,8 +22159,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.1000000238418579</real>
-											<real>1.1000000238418579</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -24755,7 +24755,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -24801,7 +24801,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>32.000003814697266</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -24830,7 +24830,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>178</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -24910,7 +24910,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.5</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -24923,7 +24940,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -26355,8 +26372,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -26372,7 +26389,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

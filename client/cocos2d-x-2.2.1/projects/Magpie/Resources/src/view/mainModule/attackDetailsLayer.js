@@ -157,15 +157,22 @@ var AttackDetailsLayer = LazyLayer.extend({
             var y = scrollViewHeight - 90 - 150 * i;
             var details = this._detailsList[i];
 
-            var detailsItem = cc.MenuItemImage.create(
-                main_scene_image.button44,
-                main_scene_image.button44s,
-                this._onClickDetails(i),
-                this
-            );
-            detailsItem.setAnchorPoint(cc.p(0, 0));
-            detailsItem.setPosition(cc.p(10, y));
-            menu.addChild(detailsItem);
+            if (details.playerId != gameData.player.get("id")) {
+                var detailsItem = cc.MenuItemImage.create(
+                    main_scene_image.button44,
+                    main_scene_image.button44s,
+                    this._onClickDetails(i),
+                    this
+                );
+                detailsItem.setAnchorPoint(cc.p(0, 0));
+                detailsItem.setPosition(cc.p(10, y));
+                menu.addChild(detailsItem);
+            } else {
+                var detailsIcon = cc.Sprite.create(main_scene_image.button44);
+                detailsIcon.setAnchorPoint(cc.p(0, 0));
+                detailsIcon.setPosition(cc.p(10, y));
+                scrollViewLayer.addChild(detailsIcon);
+            }
 
             this._detailsItem[i] = detailsItem;
 

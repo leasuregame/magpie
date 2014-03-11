@@ -230,7 +230,7 @@ var BossListLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 78 - 136 * i;
-            var boss = bossList[0];
+            var boss = bossList[i];
             var bossItem = null;
 
             if (boss.finder == gameData.player.get("name")) {

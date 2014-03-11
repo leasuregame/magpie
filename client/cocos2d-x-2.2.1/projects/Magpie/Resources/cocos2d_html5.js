@@ -133,6 +133,7 @@
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/addFriendsLayer.js',
             'src/view/mainModule/attackDetailsLayer.js',
+            'src/view/mainModule/bossAppearLabel.js',
             'src/view/mainModule/bossHelpLabel.js',
             'src/view/mainModule/bossLayer.js',
             'src/view/mainModule/bossListLayer.js',

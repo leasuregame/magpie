@@ -56,11 +56,13 @@ var BossListLayer = cc.Layer.extend({
         titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon35);
+        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon412);
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);
-        cdTimeIcon.setScaleX(2.5);
-        cdTimeIcon.setScaleY(1.2);
         this.addChild(cdTimeIcon);
+
+        var tipLabel = cc.LabelTTF.create("最后一次攻击，奖励翻倍", "STHeitiTC-Medium", 18);
+        tipLabel.setPosition(this._bossListLayerFit.tipLabelPoint);
+        this.addChild(tipLabel);
 
         var nextAttackLabel = cc.LabelTTF.create("下次攻击 ", "STHeitiTC-Medium", 22);
         nextAttackLabel.setPosition(this._bossListLayerFit.nextAttackLabelPoint);
@@ -125,11 +127,11 @@ var BossListLayer = cc.Layer.extend({
             this
         );
 
-        this._rewardItem.setScale(0.5);
+        this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._bossListLayerFit.rewardItemPoint);
 
         this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
-        this._effect.setScale(0.4);
+        this._effect.setScale(0.48);
         this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
         this.addChild(this._effect);
 
@@ -167,6 +169,11 @@ var BossListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
+        this._tipIcon = cc.Sprite.create(main_scene_image.icon413);
+        this._tipIcon.setPosition(this._bossListLayerFit.tipIconPoint);
+        this._tipIcon.setVisible(false);
+        this.addChild(this._tipIcon);
+
         this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
@@ -192,7 +199,6 @@ var BossListLayer = cc.Layer.extend({
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
         var isCanReceive = gameData.boss.get("canReceive");
-        this._rewardItem.setEnabled(isCanReceive);
         this._effect.setVisible(isCanReceive);
     },
 
@@ -214,26 +220,42 @@ var BossListLayer = cc.Layer.extend({
 
         var bossList = gameData.boss.get("bossList");
         var len = bossList.length;
-        var scrollViewHeight = len * 140;
+        var scrollViewHeight = len * 135;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
             scrollViewHeight = this._bossListLayerFit.scrollViewHeight;
         }
 
-        for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 70 - 140 * i;
-            var boss = bossList[i];
+        this._tipIcon.setVisible(len == 0);
 
-            var bossItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                main_scene_image.button15d,
-                this._onClickBoss(boss.bossId),
-                this
-            );
-            bossItem.setAnchorPoint(cc.p(0, 0.5));
-            bossItem.setPosition(cc.p(25, y));
-            menu.addChild(bossItem);
+        for (var i = 0; i < len; i++) {
+            var y = scrollViewHeight - 78 - 136 * i;
+            var boss = bossList[i];
+            var bossItem = null;
+
+            if (boss.finder == gameData.player.get("name")) {
+                bossItem = cc.MenuItemImage.create(
+                    main_scene_image.button45,
+                    main_scene_image.button45s,
+                    main_scene_image.button15d,
+                    this._onClickBoss(boss.bossId),
+                    this
+                );
+            } else {
+                bossItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    main_scene_image.button15d,
+                    this._onClickBoss(boss.bossId),
+                    this
+                );
+            }
+
+            if (bossItem) {
+                bossItem.setAnchorPoint(cc.p(0, 0.5));
+                bossItem.setPosition(cc.p(25, y));
+                menu.addChild(bossItem);
+            }
 
             var bossIcon = CardHeadNode.create(Card.create({
                 tableId: 194,
@@ -369,6 +391,12 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer _onClickReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var isCanReceive = gameData.boss.get("canReceive");
+        if (!isCanReceive) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
 
         var that = this;
         gameData.boss.getFriendHelpReward(function (data) {

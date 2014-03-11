@@ -110,9 +110,8 @@ var TournamentLayer = cc.Layer.extend({
         this._elixirLabel.setPosition(this._tournamentLayerFit.elixirLabelPoint);
         this.addChild(this._elixirLabel);
 
-        var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
+        var rewardIcon = cc.Sprite.create(main_scene_image.icon412);
         rewardIcon.setPosition(this._tournamentLayerFit.rewardIconPoint);
-        rewardIcon.setScaleX(2.5);
         this.addChild(rewardIcon);
 
         this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
@@ -127,14 +126,14 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(this._tournamentLayerFit.buyCountItemPoint);
 
-        this._rewardItem = cc.MenuItemImage.create(
-            main_scene_image.button17,
-            main_scene_image.button17s,
-            main_scene_image.button17d,
+        var sprite = cc.Sprite.create(main_scene_image.icon281);
+        this._rewardItem = cc.MenuItemLabel.create(
+            sprite,
             this._onClickRankReward,
             this
         );
 
+        this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var rankItem = cc.MenuItemImage.create(
@@ -245,18 +244,17 @@ var TournamentLayer = cc.Layer.extend({
         if (reward) {
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
-            this._rewardItem.setEnabled(reward.canReceive);
 
             if (reward.canReceive) {
                 if (!this._rewardEffect) {
-                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+                    this._rewardEffect.setScale(0.48);
                     this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
                     this.addChild(this._rewardEffect, 1);
                 }
             }
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
-            this._rewardItem.setEnabled(false);
         }
     },
 
@@ -407,16 +405,32 @@ var TournamentLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var reward = gameData.tournament.getLastRankReward();
+        if (!reward.canReceive) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
+
         var that = this;
+
         gameData.tournament.receive(function (reward) {
-            lz.tipReward(reward);
 
-            if (that._rewardEffect) {
-                that._rewardEffect.removeFromParent();
-                that._rewardEffect = null;
-            }
+            GiftBagLayer.pop({
+                reward: reward,
+                type: GET_GIFT_BAG,
+                titleType: TYPE_LOOK_REWARD,
+                cb: function () {
+                    lz.tipReward(reward);
 
-            that._updateRankRewardItem();
+                    if (that._rewardEffect) {
+                        that._rewardEffect.removeFromParent();
+                        that._rewardEffect = null;
+                    }
+
+                    that._updateRankRewardItem();
+                }
+            });
+
         });
     },
 

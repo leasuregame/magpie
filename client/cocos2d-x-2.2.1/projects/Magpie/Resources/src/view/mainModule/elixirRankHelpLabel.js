@@ -125,7 +125,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
 
                 var moneyLabel = cc.LabelTTF.create(reward.money, "STHeitiTC-Medium", 22);
                 moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-                moneyLabel.setColor(cc.c3b(123, 76, 65));
+                moneyLabel.setColor(cc.c3b(108, 41, 41));
                 moneyLabel.setPosition(cc.p(135, y + 28));
                 scrollViewLayer.addChild(moneyLabel);
             }
@@ -138,7 +138,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
 
                 var energyLabel = cc.LabelTTF.create(reward.energy, "STHeitiTC-Medium", 22);
                 energyLabel.setAnchorPoint(cc.p(0, 0.5));
-                energyLabel.setColor(cc.c3b(123, 76, 65));
+                energyLabel.setColor(cc.c3b(108, 41, 41));
                 energyLabel.setPosition(cc.p(253, y + 28));
                 scrollViewLayer.addChild(energyLabel);
             }
@@ -152,7 +152,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
 
                 var elixirLabel = cc.LabelTTF.create(reward.elixir, "STHeitiTC-Medium", 22);
                 elixirLabel.setAnchorPoint(cc.p(0, 0.5));
-                elixirLabel.setColor(cc.c3b(123, 76, 65));
+                elixirLabel.setColor(cc.c3b(108, 41, 41));
                 elixirLabel.setPosition(cc.p(362, y + 28));
                 scrollViewLayer.addChild(elixirLabel);
             }
@@ -165,7 +165,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
 
                 var powerLabel = cc.LabelTTF.create(reward.power, "STHeitiTC-Medium", 22);
                 powerLabel.setAnchorPoint(cc.p(0, 0.5));
-                powerLabel.setColor(cc.c3b(123, 76, 65));
+                powerLabel.setColor(cc.c3b(108, 41, 41));
                 powerLabel.setPosition(cc.p(463, y + 28));
                 scrollViewLayer.addChild(powerLabel);
             }
@@ -178,7 +178,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
 
                 var expCardLabel = cc.LabelTTF.create(reward.exp_card, "STHeitiTC-Medium", 22);
                 expCardLabel.setAnchorPoint(cc.p(0, 0.5));
-                expCardLabel.setColor(cc.c3b(123, 76, 65));
+                expCardLabel.setColor(cc.c3b(108, 41, 41));
                 expCardLabel.setPosition(cc.p(550, y + 28));
                 scrollViewLayer.addChild(expCardLabel);
             }

@@ -126,6 +126,18 @@ Handler::getLastWeekReward = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: reward})
 
+Handler::friendRewardList = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  dao.bossFriendReward.rewardList playerId, (err, items) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    next(null, {
+      code: 200,
+      msg: items
+    })
+
 Handler::getFriendReward = (msg, session, next) ->
   playerId = session.get('playerId')
 
@@ -153,7 +165,7 @@ Handler::getFriendReward = (msg, session, next) ->
             cb(null, reward, player)
   ], (err, reward, player) ->
     if err
-      return next(null, err)
+      return next(null, {code: 501, msg: err.message or err.msg})
 
     player.increase 'money', reward.money
     player.increase 'honor', reward.honor
@@ -177,10 +189,10 @@ Handler::convertHonor = (msg, session, next) ->
     if err
       return next(null, {code: 501, msg: err.message or err.msg})
 
-    if player.honor < number * 6000
+    if player.honor < number * BOSSCONFIG.HONOR_TO_SUPER
       return next(null, {code: 501, msg: '荣誉点不足'})
 
-    player.decrease 'honor', number * 6000
+    player.decrease 'honor', number * BOSSCONFIG.HONOR_TO_SUPER
     player.increase 'superHonor', number
     player.save()
 
@@ -208,7 +220,9 @@ Handler::removeTimer = (msg, session, next) ->
     player.incRmTimerCount()
     player.save()
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {
+      gold: player.gold
+    }})
 
 Handler::kneel = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -280,8 +294,13 @@ Handler::bossList = (msg, session, next) ->
 
     next(null, {
       code: 200,
-      msg: results.map (r) -> r.toJson()
+      msg: sortBossList(results.map((r) -> r.toJson()), playerId)
     })
+
+sortBossList = (items, playerId) ->
+  group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
+  ((group.mine?.sort (x, y) -> x.status - y.status > 0) or [])
+  .concat((group.friend?.sort (x, y) -> x.status - y.status > 0) or [])
 
 Handler::attack = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -364,9 +383,9 @@ countDamageRewards = (rank) ->
     honor: row.honor
     energy: row.energy
   else 
-    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or 8000
-    honor = parseInt honor5*(1-Math.ceil((rank-5)/20)*0.003)
-    honor = 2000 if honor < 2000
+    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or BOSSCONFIG.REWARD_COUNT.BASE_VALUE
+    honor = parseInt honor5*(1-Math.ceil((rank-5)/BOSSCONFIG.REWARD_COUNT.DURACTION)*BOSSCONFIG.REWARD_COUNT.FACTOR)
+    honor = BOSSCONFIG.REWARD_COUNT.MIN if honor < BOSSCONFIG.REWARD_COUNT.MIN
     honor: honor
 
 checkBossStatus = (items, cb) ->
@@ -403,23 +422,23 @@ countRewards = (totalDamage, boss, bl, player) ->
   bossInfo = table.getTableItem('boss', boss.tableId)
   rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.rewards_inc or 0
 
-  money = parseInt totalDamage/1000*31*(100+rewardsInc)/100
-  honor = parseInt totalDamage/2000*(100+rewardsInc)/100
+  money = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_MONEY.DAMAGE*BOSSCONFIG.DAMAGE_TO_MONEY.MONEY*(100+rewardsInc)/100
+  honor = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_HONOR.DAMAGE*BOSSCONFIG.DAMAGE_TO_HONOR.HONOR*(100+rewardsInc)/100
   bl.rewards = 
     money: money
     honor: honor
 
   if boss.playerId isnt player.id
     bl.rewards.friend = 
-      money: parseInt(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
-      honor: parseInt(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      money: Math.ceil(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      honor: Math.ceil(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
 
 noticeFriendrewards = (playerId, boss, rewards) ->
   return if playerId is boss.playerId
 
   dao.bossFriendReward.create data: {
     playerId: boss.playerId
-    friendId: playerId
+    friendName: playerId
     money: rewards.friend?.money
     honor: rewards.friend?.honor
     created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')
@@ -447,7 +466,7 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
   for k, v of bl.cards
     c = boss.hp[k-6]
     if k > 6 and c? and c.cardId is v.tableId
-      boss.updateHp(k-6, v.hp_left)
+      boss.updateHp(k-6, v.hpLeft)
 
   # update status and death time
   maxCount = table.getTableItem('boss', boss.tableId)?.atk_count or 10
@@ -465,12 +484,34 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
       bl.rewards.friend.honor *= 2
 
     # 修改boss发现标记为false
-    player.setBossFound(false)
+    resetBossFound player, boss
 
   player.increase('money', bl.rewards.money)
   player.increase('honor', bl.rewards.honor)
   player.decrease('gold', gold_resume)
   player.resetCD()
+
+resetBossFound = (player, boss)->
+  if player.id is boss.playerId
+    player.setBossFound(false)
+  # else
+  #   dao.player.fetchOne {
+  #     where: id: boss.playerId
+  #     fields: ['task']
+  #   }, (err, obj) ->
+  #     if err
+  #       logger.error('get player info error: ' + err.stack)
+  #       return
+
+  #     obj.setBossFound(false)
+  #     dao.player.update {
+  #       where: id: obj.id
+  #       data: task: obj.task
+  #     }, (err, res) ->
+  #       if err
+  #         logger.error('update player error: ', err.stack)
+
+  #       playerManager.updatePlayerBossFoundIfOnline obj.id
 
 saveBattleLog = (bl, player, boss, cb) ->
   dao.battleLog.create {

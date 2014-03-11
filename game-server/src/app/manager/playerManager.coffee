@@ -121,4 +121,8 @@ class Manager
     ply = @getPlayerFromCache pid
     ply.delFriend fid if ply
 
+  updatePlayerBossFoundIfOnline: (pid) ->
+    ply = @getPlayerFromCache pid
+    ply.setBossFound(false) if ply
+
 module.exports = Manager

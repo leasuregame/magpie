@@ -37,7 +37,7 @@ var fit4Iphone4 = {
             "goStrengthenLayerItemPoint": cc.p(0, -360),
             "fragmentEffectPoint": cc.p(360, 200)
         },
-        "batterLayer": {
+        "battleLayer": {
             "bgSpriteRect": cc.rect(0, 88, 640, 960),
             "bgSpritePoint": cc.p(40, 0),
             "ownNamePoint": cc.p(100, 452),
@@ -1521,7 +1521,7 @@ var fit4Iphone5 = {
             "goStrengthenLayerItemPoint": cc.p(0, -360),
             "fragmentEffectPoint": cc.p(320, 270)
         },
-        "batterLayer": {
+        "battleLayer": {
             "bgSpriteRect": cc.rect(0, 0, 640, 1136),
             "bgSpritePoint": cc.p(0, 0),
             "ownNamePoint": cc.p(60, 490),

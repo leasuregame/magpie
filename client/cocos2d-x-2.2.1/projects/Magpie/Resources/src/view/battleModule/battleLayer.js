@@ -24,14 +24,15 @@ var BATTLE_SHOCK_TAG = 234590;
 var DAMAGE_LOWER_LIMIT = 0.80;
 var DAMAGE_UPPER_LIMIT = 1.20;
 
-var BatterLayer = cc.Layer.extend({
-    _batterLayerFit: null,
+var BattleLayer = cc.Layer.extend({
+    _battleLayerFit: null,
 
     _skillStep: null,
     _index: 0,
     _isEnd: false,
     _counter: 0,
     _battleLog: null,
+    _type: PVE_BATTLE_LOG,
     _battleNode: null,
     _tipNode: null,
     _spiritNode: null,
@@ -45,26 +46,27 @@ var BatterLayer = cc.Layer.extend({
     _playSpeed: 0,
 
     init: function (battleLog) {
-        cc.log("BatterLayer init");
+        cc.log("BattleLayer init");
 
         if (!this._super()) return false;
 
-        this._batterLayerFit = gameFit.battleScene.batterLayer;
+        this._battleLayerFit = gameFit.battleScene.battleLayer;
 
         this._skillStep = {};
         this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
-        this._isPlayback = battleLog.get("isPlayback");
+        this._type = this._battleLog.get("type");
+        this._isPlayback = this._battleLog.get("isPlayback");
         this._spiritNode = [];
-        this._locate = this._batterLayerFit.locatePoints;
-        this._battleMidpoint = this._batterLayerFit.battleMidpoint;
-        this._lineUpMidpoint = this._batterLayerFit.lineUpMidpoint;
+        this._locate = this._battleLayerFit.locatePoints;
+        this._battleMidpoint = this._battleLayerFit.battleMidpoint;
+        this._lineUpMidpoint = this._battleLayerFit.lineUpMidpoint;
         this._chooseSpeedItem = [];
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._batterLayerFit.bgSpriteRect);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._battleLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
+        bgSprite.setPosition(this._battleLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var battleNode = this._battleLog.get("card");
@@ -115,7 +117,7 @@ var BatterLayer = cc.Layer.extend({
                 this
             );
         }
-        this._backItem.setPosition(this._batterLayerFit.backItemPoint);
+        this._backItem.setPosition(this._battleLayerFit.backItemPoint);
 
         this._menu = cc.Menu.create(this._backItem);
         this.addChild(this._menu);
@@ -132,7 +134,7 @@ var BatterLayer = cc.Layer.extend({
                 this
             );
 
-            this._chooseSpeedItem[speed].setPosition(this._batterLayerFit.chooseSpeedItemPoint);
+            this._chooseSpeedItem[speed].setPosition(this._battleLayerFit.chooseSpeedItemPoint);
             this._chooseSpeedItem[speed].setVisible(speed == this._playSpeed);
 
             this._menu.addChild(this._chooseSpeedItem[speed]);
@@ -145,26 +147,23 @@ var BatterLayer = cc.Layer.extend({
     },
 
     play: function () {
-        cc.log("BatterLayer play");
+        cc.log("BattleLayer play");
 
-        for (var key in this._battleNode) {
-            if (this._battleNode[key] != undefined) {
-                var index = parseInt(key);
+        var that = this;
 
-                this._battleNode[key].setVisible(true);
-                this._tipNode[key].setVisible(true);
-
-                if (this._getDirection(index) === "o") {
-                    this._battleNode[key].runAnimations("beg", 0, this.began());
-                }
-            }
+        if (this._type == BOSS_BATTLE_LOG) {
+            this.bossCeremony(function () {
+                that.ownCeremony(this.began());
+            })
+        } else {
+            this.ownCeremony(this.began());
         }
 
         this._menu.setVisible(true);
     },
 
     end: function () {
-        cc.log("BatterLayer end");
+        cc.log("BattleLayer end");
 
         this._isEnd = true;
 
@@ -177,7 +176,7 @@ var BatterLayer = cc.Layer.extend({
     },
 
     tip: function (key, name, str) {
-        cc.log("BatterLayer tip");
+        cc.log("BattleLayer tip");
 
         var tipNode = this._tipNode[key];
 
@@ -191,7 +190,7 @@ var BatterLayer = cc.Layer.extend({
     },
 
     tipHarm: function (index, value, isSkill, isCirt) {
-        cc.log("BatterLayer tipHarm");
+        cc.log("BattleLayer tipHarm");
 
         if (isCirt) {
             this.shock();
@@ -235,6 +234,42 @@ var BatterLayer = cc.Layer.extend({
         return (index < 7 ? "o" : "e");
     },
 
+    ownCeremony: function (cb) {
+        cc.log("BattleLayer ownCeremony");
+
+        for (var key in this._battleNode) {
+            if (this._battleNode[key] != undefined) {
+                var index = parseInt(key);
+
+                this._battleNode[key].setVisible(true);
+                this._tipNode[key].setVisible(true);
+
+                if (this._getDirection(index) === "o") {
+                    this._battleNode[key].runAnimations("beg", 0, cb);
+                }
+            }
+        }
+    },
+
+    bossCeremony: function (cb) {
+        cc.log("BattleLayer bossCeremony");
+
+        for (var key in this._battleNode) {
+            if (this._battleNode[key] != undefined) {
+                var index = parseInt(key);
+
+                if (this._getDirection(index) === "e") {
+                    this._battleNode[key].setVisible(true);
+                    this._tipNode[key].setVisible(true);
+                }
+
+                if (this._battleNode[key].isBossCard && this._battleNode[key].isBossCard()) {
+                    this._battleNode[key].runAnimations("beg", 0, cb);
+                }
+            }
+        }
+    },
+
     began: function () {
         this._counter += 1;
 
@@ -244,7 +279,7 @@ var BatterLayer = cc.Layer.extend({
 
             if (that._counter == 0) {
                 var battleEffect8Node = cc.BuilderReader.load(main_scene_image.battleEffect8, that);
-                battleEffect8Node.setPosition(that._batterLayerFit.vsNodePoint);
+                battleEffect8Node.setPosition(that._battleLayerFit.vsNodePoint);
                 that.addChild(battleEffect8Node, EFFECT_Z_ORDER);
 
                 battleEffect8Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -432,7 +467,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var addSubtitleNodeCb = function () {
-                ccbNode.setPosition(that._batterLayerFit[that._getDirection(attacker) + "SubtitleNode"]);
+                ccbNode.setPosition(that._battleLayerFit[that._getDirection(attacker) + "SubtitleNode"]);
                 that.addChild(ccbNode, SUBTITLE_Z_ORDER);
 
                 ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
@@ -2689,7 +2724,7 @@ var BatterLayer = cc.Layer.extend({
                     });
 
                     var effect503_2 = cc.BuilderReader.load(main_scene_image.effect503_2, that);
-                    effect503_2.setPosition(that._batterLayerFit[that._getDirection(attacker, true) + "SubtitleNode"]);
+                    effect503_2.setPosition(that._battleLayerFit[that._getDirection(attacker, true) + "SubtitleNode"]);
                     that.addChild(effect503_2, EFFECT_Z_ORDER);
 
                     if (that._getDirection(attacker) == "e") {
@@ -4455,7 +4490,7 @@ var BatterLayer = cc.Layer.extend({
     },
 
     releaseSpirit: function (index, count) {
-        cc.log("BatterLayer releaseSpirit");
+        cc.log("BattleLayer releaseSpirit");
 
         for (var i = 0; i < count; ++i) {
             this._addSpirit(index);
@@ -4463,7 +4498,7 @@ var BatterLayer = cc.Layer.extend({
     },
 
     _collectSpirit: function () {
-        cc.log("BatterLayer _collectSpirit");
+        cc.log("BattleLayer _collectSpirit");
 
         var len = this._spiritNode.length;
 
@@ -4592,8 +4627,8 @@ var BatterLayer = cc.Layer.extend({
 });
 
 
-BatterLayer.create = function (battleLog) {
-    var ret = new BatterLayer();
+BattleLayer.create = function (battleLog) {
+    var ret = new BattleLayer();
 
     if (ret && ret.init(battleLog)) {
         return ret;

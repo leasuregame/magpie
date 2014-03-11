@@ -375,20 +375,21 @@ var DamageRankLayer = LazyLayer.extend({
             damageCountLabel.setPosition(cc.p(380, y + 42));
             this._rankView.addChild(damageCountLabel);
 
-            var kneelItem = cc.MenuItemImage.create(
-                main_scene_image.button42,
-                main_scene_image.button42s,
-                main_scene_image.button42d,
-                this._onClickKneel(player.playerId),
-                this
-            );
+            if (this._selectType == TYPE_THIS_WEEK) {
+                var kneelItem = cc.MenuItemImage.create(
+                    main_scene_image.button42,
+                    main_scene_image.button42s,
+                    main_scene_image.button42d,
+                    this._onClickKneel(player.playerId),
+                    this
+                );
 
-            kneelItem.setAnchorPoint(cc.p(0, 0.5));
-            kneelItem.setPosition(cc.p(480, y + 48));
-            kneelItem.setScale(0.9);
-            kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
-
-            kneelMenu.addChild(kneelItem);
+                kneelItem.setAnchorPoint(cc.p(0, 0.5));
+                kneelItem.setPosition(cc.p(480, y + 48));
+                kneelItem.setScale(0.9);
+                kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
+                kneelMenu.addChild(kneelItem);
+            }
         }
     },
 

@@ -320,6 +320,8 @@ var main_scene_image = {
     button73s: main_scene_path + "button73s.png",
     button74: main_scene_path + "button74.png",
     button74s: main_scene_path + "button74s.png",
+    button75: main_scene_path + "button75.png",
+    button75s: main_scene_path + "button75s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",

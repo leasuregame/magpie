@@ -604,7 +604,8 @@ var fit4Iphone4 = {
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
             "titleIconPoint": cc.p(360, 817),
-            "tipLabelPoint": cc.p(360, 700)
+            "tipLabelPoint": cc.p(360, 700),
+            "closeItemPoint": cc.p(630, 817)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(360, 760),
@@ -2092,7 +2093,8 @@ var fit4Iphone5 = {
             "scrollViewPoint2": cc.p(70, 360),
             "topBgIconPoint": cc.p(328, 860),
             "titleIconPoint": cc.p(320, 905),
-            "tipLabelPoint": cc.p(320, 788)
+            "tipLabelPoint": cc.p(320, 788),
+            "closeItemPoint": cc.p(590, 905)
         },
         "goldCardsLayer": {
             "topIconPoint": cc.p(320, 900),

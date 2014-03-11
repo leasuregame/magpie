@@ -259,8 +259,6 @@ class Manager
             cb(null, data)
           else
             data.find_boss = true
-            # data.find_boss.finder = player.name
-            # data.find_boss.killer = null
             player.setBossFound(true)
             cb(null, data)
     else

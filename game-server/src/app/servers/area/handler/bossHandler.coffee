@@ -126,6 +126,18 @@ Handler::getLastWeekReward = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: reward})
 
+Handler::friendRewardList = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  dao.bossFriendReward.rewardList playerId, (err, items) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    next(null, {
+      code: 200,
+      msg: items
+    })
+
 Handler::getFriendReward = (msg, session, next) ->
   playerId = session.get('playerId')
 
@@ -153,7 +165,7 @@ Handler::getFriendReward = (msg, session, next) ->
             cb(null, reward, player)
   ], (err, reward, player) ->
     if err
-      return next(null, err)
+      return next(null, {code: 501, msg: err.message or err.msg})
 
     player.increase 'money', reward.money
     player.increase 'honor', reward.honor
@@ -208,7 +220,9 @@ Handler::removeTimer = (msg, session, next) ->
     player.incRmTimerCount()
     player.save()
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {
+      gold: player.gold
+    }})
 
 Handler::kneel = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -424,7 +438,7 @@ noticeFriendrewards = (playerId, boss, rewards) ->
 
   dao.bossFriendReward.create data: {
     playerId: boss.playerId
-    friendId: playerId
+    friendName: playerId
     money: rewards.friend?.money
     honor: rewards.friend?.honor
     created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')
@@ -452,7 +466,7 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
   for k, v of bl.cards
     c = boss.hp[k-6]
     if k > 6 and c? and c.cardId is v.tableId
-      boss.updateHp(k-6, v.hp_left)
+      boss.updateHp(k-6, v.hpLeft)
 
   # update status and death time
   maxCount = table.getTableItem('boss', boss.tableId)?.atk_count or 10

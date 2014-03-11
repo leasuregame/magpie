@@ -1,14 +1,6 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "boss_type_rate": "BOSS类型配置表",
-    "BOSS类型配置表": "boss_type_rate",
-    "boss": "BOSS属性配置表",
-    "BOSS属性配置表": "boss",
-    "boss_card": "Boss怪物卡牌配置表",
-    "Boss怪物卡牌配置表": "boss_card",
-    "boss_rank_reward": "伤害排行榜奖励配置表",
-    "伤害排行榜奖励配置表": "boss_rank_reward",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_price": "卡牌价格配置表",
@@ -21,6 +13,16 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss": "BOSS属性配置表",
+    "BOSS属性配置表": "boss",
+    "boss_card": "Boss怪物卡牌配置表",
+    "Boss怪物卡牌配置表": "boss_card",
+    "boss_rank_reward": "伤害排行榜奖励配置表",
+    "伤害排行榜奖励配置表": "boss_rank_reward",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -53,8 +55,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
     "非法字符串": "illegal_str",
     "first_name": "名",
@@ -73,12 +73,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -87,6 +81,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -124,6 +124,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -469,174 +470,6 @@ var outputTables = {
                 "desc": "通关尊者之身篇章",
                 "gold": 20,
                 "energy": 100
-            }
-        }
-    },
-    "boss_type_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 60,
-                "name": "蓝卡",
-                "reward_inc": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 25,
-                "name": "紫卡",
-                "reward_inc": 50
-            },
-            "3": {
-                "id": 3,
-                "rate": 15,
-                "name": "金卡",
-                "reward_inc": 150
-            }
-        }
-    },
-    "boss": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "BOSS1号",
-                "type": 1,
-                "boss_id": 40000,
-                "card_ids": "40003#40000#40003",
-                "formation": "01:40000,10:40003,12:40003",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "2": {
-                "id": 2,
-                "name": "BOSS2号",
-                "type": 2,
-                "boss_id": 40001,
-                "card_ids": "40004#40001#40004",
-                "formation": "01:40001,10:40004,12:40004",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "3": {
-                "id": 3,
-                "name": "BOSS3号",
-                "type": 3,
-                "boss_id": 40002,
-                "card_ids": "40005#40002#40005",
-                "formation": "01:40002,10:40005,12:40005",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            }
-        }
-    },
-    "boss_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "40000": {
-                "id": 40000,
-                "card_id": "BOSS1号",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
-            },
-            "40001": {
-                "id": 40001,
-                "card_id": "BOSS2号",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
-            },
-            "40002": {
-                "id": 40002,
-                "card_id": "BOSS3号",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
-            },
-            "40003": {
-                "id": 40003,
-                "card_id": "小怪1号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "normal_atk_id": 3
-            },
-            "40004": {
-                "id": 40004,
-                "card_id": "小怪2号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "normal_atk_id": 8
-            },
-            "40005": {
-                "id": 40005,
-                "card_id": "小怪3号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 0,
-                "normal_atk_id": 7
-            }
-        }
-    },
-    "boss_rank_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "honor": 12000,
-                "money": 500000,
-                "energy": 8000
-            },
-            "2": {
-                "id": 2,
-                "honor": 11000,
-                "money": 400000,
-                "energy": 7000
-            },
-            "3": {
-                "id": 3,
-                "honor": 10000,
-                "money": 300000,
-                "energy": 6000
-            },
-            "4": {
-                "id": 4,
-                "honor": 9000,
-                "money": 200000,
-                "energy": 5000
-            },
-            "5": {
-                "id": 5,
-                "honor": 8000,
-                "money": 100000,
-                "energy": 4000
             }
         }
     },
@@ -3174,6 +3007,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 1,
                 "url": 10000
             },
             "10001": {
@@ -3184,6 +3018,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10001
             },
             "10002": {
@@ -3194,6 +3031,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10002
             },
             "10003": {
@@ -3204,6 +3044,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10003
             },
             "10004": {
@@ -3214,6 +3057,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10004
             },
             "10005": {
@@ -3224,6 +3070,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10005
             },
             "10006": {
@@ -3234,6 +3083,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10006
             },
             "10007": {
@@ -3244,6 +3096,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10007
             },
             "10008": {
@@ -3254,6 +3109,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10008
             },
             "10009": {
@@ -3264,6 +3122,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10009
             },
             "10010": {
@@ -3274,6 +3135,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10010
             },
             "10011": {
@@ -3284,6 +3148,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10011
             },
             "10012": {
@@ -3294,6 +3161,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10012
             },
             "10013": {
@@ -3304,6 +3174,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10013
             },
             "10014": {
@@ -3314,6 +3187,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10014
             },
             "10015": {
@@ -3324,6 +3200,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10015
             },
             "10016": {
@@ -3334,6 +3213,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10016
             },
             "10017": {
@@ -3344,6 +3226,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10017
             },
             "10018": {
@@ -3354,6 +3239,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10018
             },
             "10019": {
@@ -3364,6 +3252,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10019
             },
             "10020": {
@@ -3374,6 +3265,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10020
             },
             "10021": {
@@ -3384,6 +3278,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10021
             },
             "10022": {
@@ -3394,6 +3291,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10022
             },
             "10023": {
@@ -3404,6 +3304,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10023
             },
             "10024": {
@@ -3414,6 +3317,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10024
             },
             "10025": {
@@ -3424,6 +3330,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10025
             },
             "10026": {
@@ -3434,6 +3343,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10026
             },
             "10027": {
@@ -3444,6 +3356,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10027
             },
             "10028": {
@@ -3454,6 +3369,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10028
             },
             "10029": {
@@ -3464,6 +3382,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10029
             },
             "10030": {
@@ -3474,6 +3395,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10030
             },
             "10031": {
@@ -3484,6 +3408,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10031
             },
             "10032": {
@@ -3494,6 +3421,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10032
             },
             "10033": {
@@ -3504,6 +3434,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10000
             },
             "10034": {
@@ -3514,6 +3447,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10001
             },
             "10035": {
@@ -3524,6 +3460,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10002
             },
             "10036": {
@@ -3534,6 +3473,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10003
             },
             "10037": {
@@ -3544,6 +3486,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10004
             },
             "10038": {
@@ -3554,6 +3499,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10005
             },
             "10039": {
@@ -3564,6 +3512,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10006
             },
             "10040": {
@@ -3574,6 +3525,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10007
             },
             "10041": {
@@ -3584,6 +3538,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10008
             },
             "10042": {
@@ -3594,6 +3551,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10009
             },
             "10043": {
@@ -3604,6 +3564,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10010
             },
             "10044": {
@@ -3614,6 +3577,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10011
             },
             "10045": {
@@ -3624,6 +3590,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10012
             },
             "10046": {
@@ -3634,6 +3603,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10013
             },
             "10047": {
@@ -3644,6 +3616,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10014
             },
             "10048": {
@@ -3654,6 +3629,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10015
             },
             "10049": {
@@ -3664,6 +3642,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10016
             },
             "10050": {
@@ -3674,6 +3655,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10017
             },
             "10051": {
@@ -3684,6 +3668,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10018
             },
             "10052": {
@@ -3694,6 +3681,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10019
             },
             "10053": {
@@ -3704,6 +3694,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10020
             },
             "10054": {
@@ -3714,6 +3707,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10021
             },
             "10055": {
@@ -3724,6 +3720,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10022
             },
             "10056": {
@@ -3734,6 +3733,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10023
             },
             "10057": {
@@ -3744,6 +3746,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10024
             },
             "10058": {
@@ -3754,6 +3759,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10025
             },
             "10059": {
@@ -3764,6 +3772,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10026
             },
             "10060": {
@@ -3774,6 +3785,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10027
             },
             "10061": {
@@ -3784,6 +3798,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10028
             },
             "10062": {
@@ -3794,6 +3811,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10029
             },
             "10063": {
@@ -3804,6 +3824,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10030
             },
             "10064": {
@@ -3814,6 +3837,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10031
             },
             "10065": {
@@ -3824,6 +3850,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10032
             },
             "10066": {
@@ -3834,6 +3863,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10000
             },
             "10067": {
@@ -3844,6 +3876,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10001
             },
             "10068": {
@@ -3854,6 +3889,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10002
             },
             "10069": {
@@ -3864,6 +3902,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10003
             },
             "10070": {
@@ -3874,6 +3915,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10004
             },
             "10071": {
@@ -3884,6 +3928,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10005
             },
             "10072": {
@@ -3894,6 +3941,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10006
             },
             "10073": {
@@ -3904,6 +3954,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10007
             },
             "10074": {
@@ -3914,6 +3967,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10008
             },
             "10075": {
@@ -3924,6 +3980,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10009
             },
             "10076": {
@@ -3934,6 +3993,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10010
             },
             "10077": {
@@ -3944,6 +4006,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10011
             },
             "10078": {
@@ -3954,6 +4019,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10012
             },
             "10079": {
@@ -3964,6 +4032,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10013
             },
             "10080": {
@@ -3974,6 +4045,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10014
             },
             "10081": {
@@ -3984,6 +4058,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10015
             },
             "10082": {
@@ -3994,6 +4071,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10016
             },
             "10083": {
@@ -4004,6 +4084,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10017
             },
             "10084": {
@@ -4014,6 +4097,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10018
             },
             "10085": {
@@ -4024,6 +4110,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10019
             },
             "10086": {
@@ -4034,6 +4123,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10020
             },
             "10087": {
@@ -4044,6 +4136,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10021
             },
             "10088": {
@@ -4054,6 +4149,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10022
             },
             "10089": {
@@ -4064,6 +4162,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10023
             },
             "10090": {
@@ -4074,6 +4175,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10024
             },
             "10091": {
@@ -4084,6 +4188,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10025
             },
             "10092": {
@@ -4094,6 +4201,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10026
             },
             "10093": {
@@ -4104,6 +4214,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10027
             },
             "10094": {
@@ -4114,6 +4227,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10028
             },
             "10095": {
@@ -4124,6 +4240,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10029
             },
             "10096": {
@@ -4134,6 +4253,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10030
             },
             "10097": {
@@ -4144,6 +4266,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10031
             },
             "10098": {
@@ -4154,6 +4279,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10032
             },
             "10099": {
@@ -4164,6 +4292,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10000
             },
             "10100": {
@@ -4174,6 +4305,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10001
             },
             "10101": {
@@ -4184,6 +4318,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10002
             },
             "10102": {
@@ -4194,6 +4331,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10003
             },
             "10103": {
@@ -4204,6 +4344,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10004
             },
             "10104": {
@@ -4214,6 +4357,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10005
             },
             "10105": {
@@ -4224,6 +4370,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10006
             },
             "10106": {
@@ -4234,6 +4383,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10007
             },
             "10107": {
@@ -4244,6 +4396,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10008
             },
             "10108": {
@@ -4254,6 +4409,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10009
             },
             "10109": {
@@ -4264,6 +4422,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10010
             },
             "10110": {
@@ -4274,6 +4435,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10011
             },
             "10111": {
@@ -4284,6 +4448,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10012
             },
             "10112": {
@@ -4294,6 +4461,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10013
             },
             "10113": {
@@ -4304,6 +4474,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10014
             },
             "10114": {
@@ -4314,6 +4487,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10015
             },
             "10115": {
@@ -4324,6 +4500,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10016
             },
             "10116": {
@@ -4334,6 +4513,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10017
             },
             "10117": {
@@ -4344,6 +4526,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10018
             },
             "10118": {
@@ -4354,6 +4539,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10019
             },
             "10119": {
@@ -4364,6 +4552,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10020
             },
             "10120": {
@@ -4374,6 +4565,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10021
             },
             "10121": {
@@ -4384,6 +4578,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10022
             },
             "10122": {
@@ -4394,6 +4591,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10023
             },
             "10123": {
@@ -4404,6 +4604,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10024
             },
             "10124": {
@@ -4414,6 +4617,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10025
             },
             "10125": {
@@ -4424,6 +4630,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10026
             },
             "10126": {
@@ -4434,6 +4643,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10027
             },
             "10127": {
@@ -4444,6 +4656,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10028
             },
             "10128": {
@@ -4454,6 +4669,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10029
             },
             "10129": {
@@ -4464,6 +4682,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10030
             },
             "10130": {
@@ -4474,6 +4695,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10031
             },
             "10131": {
@@ -4484,6 +4708,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10032
             },
             "10132": {
@@ -4494,6 +4721,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10000
             },
             "10133": {
@@ -4504,6 +4734,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10001
             },
             "10134": {
@@ -4514,6 +4747,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10002
             },
             "10135": {
@@ -4524,6 +4760,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10003
             },
             "10136": {
@@ -4534,6 +4773,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10004
             },
             "10137": {
@@ -4544,6 +4786,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10005
             },
             "10138": {
@@ -4554,6 +4799,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10006
             },
             "10139": {
@@ -4564,6 +4812,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10007
             },
             "10140": {
@@ -4574,6 +4825,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10008
             },
             "10141": {
@@ -4584,6 +4838,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10009
             },
             "10142": {
@@ -4594,6 +4851,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10010
             },
             "10143": {
@@ -4604,6 +4864,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10011
             },
             "10144": {
@@ -4614,6 +4877,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10012
             },
             "10145": {
@@ -4624,6 +4890,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10013
             },
             "10146": {
@@ -4634,6 +4903,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10014
             },
             "10147": {
@@ -4644,6 +4916,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10015
             },
             "10148": {
@@ -4654,6 +4929,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10016
             },
             "10149": {
@@ -4664,6 +4942,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10017
             },
             "10150": {
@@ -4674,6 +4955,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10018
             },
             "10151": {
@@ -4684,6 +4968,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10019
             },
             "10152": {
@@ -4694,6 +4981,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10020
             },
             "10153": {
@@ -4704,6 +4994,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10021
             },
             "10154": {
@@ -4714,6 +5007,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10022
             },
             "10155": {
@@ -4724,6 +5020,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10023
             },
             "10156": {
@@ -4734,6 +5033,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10024
             },
             "10157": {
@@ -4744,6 +5046,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10025
             },
             "10158": {
@@ -4754,6 +5059,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10026
             },
             "10159": {
@@ -4764,6 +5072,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10027
             },
             "10160": {
@@ -4774,6 +5085,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10028
             },
             "10161": {
@@ -4784,6 +5098,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10029
             },
             "10162": {
@@ -4794,6 +5111,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10030
             },
             "10163": {
@@ -4804,6 +5124,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10031
             },
             "10164": {
@@ -4814,6 +5137,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10032
             },
             "10165": {
@@ -4824,6 +5150,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10000
             },
             "10166": {
@@ -4834,6 +5163,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10001
             },
             "10167": {
@@ -4844,6 +5176,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10002
             },
             "10168": {
@@ -4854,6 +5189,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10003
             },
             "10169": {
@@ -4864,6 +5202,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10004
             },
             "10170": {
@@ -4874,6 +5215,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10005
             },
             "10171": {
@@ -4884,6 +5228,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10006
             },
             "10172": {
@@ -4894,6 +5241,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10007
             },
             "10173": {
@@ -4904,6 +5254,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10008
             },
             "10174": {
@@ -4914,6 +5267,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10009
             },
             "10175": {
@@ -4924,6 +5280,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10010
             },
             "10176": {
@@ -4934,6 +5293,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10011
             },
             "10177": {
@@ -4944,6 +5306,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10012
             },
             "10178": {
@@ -4954,6 +5319,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10013
             },
             "10179": {
@@ -4964,6 +5332,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10014
             },
             "10180": {
@@ -4974,6 +5345,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10015
             },
             "10181": {
@@ -4984,6 +5358,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10016
             },
             "10182": {
@@ -4994,6 +5371,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10017
             },
             "10183": {
@@ -5004,6 +5384,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10018
             },
             "10184": {
@@ -5014,6 +5397,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10019
             },
             "10185": {
@@ -5024,6 +5410,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10020
             },
             "10186": {
@@ -5034,6 +5423,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10021
             },
             "10187": {
@@ -5044,6 +5436,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10022
             },
             "10188": {
@@ -5054,6 +5449,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10023
             },
             "10189": {
@@ -5064,6 +5462,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10024
             },
             "10190": {
@@ -5074,6 +5475,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10025
             },
             "10191": {
@@ -5084,6 +5488,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10026
             },
             "10192": {
@@ -5094,6 +5501,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10027
             },
             "10193": {
@@ -5104,6 +5514,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10028
             },
             "10194": {
@@ -5114,6 +5527,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10029
             },
             "10195": {
@@ -5124,6 +5540,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10030
             },
             "10196": {
@@ -5134,6 +5553,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10031
             },
             "10197": {
@@ -5144,6 +5566,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10032
             },
             "10198": {
@@ -5154,6 +5579,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10000
             },
             "10199": {
@@ -5164,6 +5592,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10001
             },
             "10200": {
@@ -5174,6 +5605,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10002
             },
             "10201": {
@@ -5184,6 +5618,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10003
             },
             "10202": {
@@ -5194,6 +5631,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10004
             },
             "10203": {
@@ -5204,6 +5644,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10005
             },
             "10204": {
@@ -5214,6 +5657,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10006
             },
             "10205": {
@@ -5224,6 +5670,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10007
             },
             "10206": {
@@ -5234,6 +5683,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10008
             },
             "10207": {
@@ -5244,6 +5696,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10009
             },
             "10208": {
@@ -5254,6 +5709,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10010
             },
             "10209": {
@@ -5264,6 +5722,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10011
             },
             "10210": {
@@ -5274,6 +5735,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10012
             },
             "10211": {
@@ -5284,6 +5748,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10013
             },
             "10212": {
@@ -5294,6 +5761,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10014
             },
             "10213": {
@@ -5304,6 +5774,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10015
             },
             "10214": {
@@ -5314,6 +5787,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10016
             },
             "10215": {
@@ -5324,6 +5800,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10017
             },
             "10216": {
@@ -5334,6 +5813,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10018
             },
             "10217": {
@@ -5344,6 +5826,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10019
             },
             "10218": {
@@ -5354,6 +5839,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10020
             },
             "10219": {
@@ -5364,6 +5852,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10021
             },
             "10220": {
@@ -5374,6 +5865,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10022
             },
             "10221": {
@@ -5384,6 +5878,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10023
             },
             "10222": {
@@ -5394,6 +5891,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10024
             },
             "10223": {
@@ -5404,6 +5904,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10025
             },
             "10224": {
@@ -5414,6 +5917,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10026
             },
             "10225": {
@@ -5424,6 +5930,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10027
             },
             "10226": {
@@ -5434,6 +5943,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10028
             },
             "10227": {
@@ -5444,6 +5956,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10029
             },
             "10228": {
@@ -5454,6 +5969,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10030
             },
             "10229": {
@@ -5464,6 +5982,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10031
             },
             "10230": {
@@ -5474,6 +5995,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10032
             },
             "10231": {
@@ -5484,6 +6008,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10000
             },
             "10232": {
@@ -5494,6 +6021,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10001
             },
             "10233": {
@@ -5504,6 +6034,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10002
             },
             "10234": {
@@ -5514,6 +6047,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10003
             },
             "10235": {
@@ -5524,6 +6060,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10004
             },
             "10236": {
@@ -5534,6 +6073,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10005
             },
             "10237": {
@@ -5544,6 +6086,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10006
             },
             "10238": {
@@ -5554,6 +6099,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10007
             },
             "10239": {
@@ -5564,6 +6112,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10008
             },
             "10240": {
@@ -5574,6 +6125,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10009
             },
             "10241": {
@@ -5584,6 +6138,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10010
             },
             "10242": {
@@ -5594,6 +6151,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10011
             },
             "10243": {
@@ -5604,6 +6164,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10012
             },
             "10244": {
@@ -5614,6 +6177,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10013
             },
             "10245": {
@@ -5624,6 +6190,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10014
             },
             "10246": {
@@ -5634,6 +6203,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10015
             },
             "10247": {
@@ -5644,6 +6216,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10016
             },
             "10248": {
@@ -5654,6 +6229,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10017
             },
             "10249": {
@@ -5664,6 +6242,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10018
             },
             "10250": {
@@ -5674,6 +6255,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10019
             },
             "10251": {
@@ -5684,6 +6268,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10020
             },
             "10252": {
@@ -5694,6 +6281,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10021
             },
             "10253": {
@@ -5704,6 +6294,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10022
             },
             "10254": {
@@ -5714,6 +6307,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10023
             },
             "10255": {
@@ -5724,6 +6320,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10024
             },
             "10256": {
@@ -5734,6 +6333,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10025
             },
             "10257": {
@@ -5744,6 +6346,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10026
             },
             "10258": {
@@ -5754,6 +6359,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10027
             },
             "10259": {
@@ -5764,6 +6372,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10028
             },
             "10260": {
@@ -5774,6 +6385,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10029
             },
             "10261": {
@@ -5784,6 +6398,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10030
             },
             "10262": {
@@ -5794,6 +6411,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10031
             },
             "10263": {
@@ -5804,6 +6424,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10032
             },
             "10264": {
@@ -5814,6 +6437,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10000
             },
             "10265": {
@@ -5824,6 +6450,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10001
             },
             "10266": {
@@ -5834,6 +6463,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10002
             },
             "10267": {
@@ -5844,6 +6476,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10003
             },
             "10268": {
@@ -5854,6 +6489,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10004
             },
             "10269": {
@@ -5864,6 +6502,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10005
             },
             "10270": {
@@ -5874,6 +6515,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10006
             },
             "10271": {
@@ -5884,6 +6528,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10007
             },
             "10272": {
@@ -5894,6 +6541,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10008
             },
             "10273": {
@@ -5904,6 +6554,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10009
             },
             "10274": {
@@ -5914,6 +6567,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10010
             },
             "10275": {
@@ -5924,6 +6580,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10011
             },
             "10276": {
@@ -5934,6 +6593,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10012
             },
             "10277": {
@@ -5944,6 +6606,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10013
             },
             "10278": {
@@ -5954,6 +6619,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10014
             },
             "10279": {
@@ -5964,6 +6632,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10015
             },
             "10280": {
@@ -5974,6 +6645,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10016
             },
             "10281": {
@@ -5984,6 +6658,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10017
             },
             "10282": {
@@ -5994,6 +6671,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10018
             },
             "10283": {
@@ -6004,6 +6684,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10019
             },
             "10284": {
@@ -6014,6 +6697,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10020
             },
             "10285": {
@@ -6024,6 +6710,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10021
             },
             "10286": {
@@ -6034,6 +6723,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10022
             },
             "10287": {
@@ -6044,6 +6736,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10023
             },
             "10288": {
@@ -6054,6 +6749,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10024
             },
             "10289": {
@@ -6064,6 +6762,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10025
             },
             "10290": {
@@ -6074,6 +6775,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10026
             },
             "10291": {
@@ -6084,6 +6788,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10027
             },
             "10292": {
@@ -6094,6 +6801,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10028
             },
             "10293": {
@@ -6104,6 +6814,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10029
             },
             "10294": {
@@ -6114,6 +6827,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10030
             },
             "10295": {
@@ -6124,6 +6840,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10031
             },
             "10296": {
@@ -6134,6 +6853,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10032
             },
             "10297": {
@@ -6144,6 +6866,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10000
             },
             "10298": {
@@ -6154,6 +6879,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10001
             },
             "10299": {
@@ -6164,6 +6892,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10002
             },
             "10300": {
@@ -6174,6 +6905,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10003
             },
             "10301": {
@@ -6184,6 +6918,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10004
             },
             "10302": {
@@ -6194,6 +6931,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10005
             },
             "10303": {
@@ -6204,6 +6944,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10006
             },
             "10304": {
@@ -6214,6 +6957,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10007
             },
             "10305": {
@@ -6224,6 +6970,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10008
             },
             "10306": {
@@ -6234,6 +6983,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10009
             },
             "10307": {
@@ -6244,6 +6996,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10010
             },
             "10308": {
@@ -6254,6 +7009,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10011
             },
             "10309": {
@@ -6264,6 +7022,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10012
             },
             "10310": {
@@ -6274,6 +7035,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10013
             },
             "10311": {
@@ -6284,6 +7048,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10014
             },
             "10312": {
@@ -6294,6 +7061,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10015
             },
             "10313": {
@@ -6304,6 +7074,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10016
             },
             "10314": {
@@ -6314,6 +7087,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10017
             },
             "10315": {
@@ -6324,6 +7100,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10018
             },
             "10316": {
@@ -6334,6 +7113,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10019
             },
             "10317": {
@@ -6344,6 +7126,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10020
             },
             "10318": {
@@ -6354,6 +7139,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10021
             },
             "10319": {
@@ -6364,6 +7152,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10022
             },
             "10320": {
@@ -6374,6 +7165,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10023
             },
             "10321": {
@@ -6384,6 +7178,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10024
             },
             "10322": {
@@ -6394,6 +7191,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10025
             },
             "10323": {
@@ -6404,6 +7204,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10026
             },
             "10324": {
@@ -6414,6 +7217,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10027
             },
             "10325": {
@@ -6424,6 +7230,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10028
             },
             "10326": {
@@ -6434,6 +7243,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10029
             },
             "10327": {
@@ -6444,6 +7256,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10030
             },
             "10328": {
@@ -6454,6 +7269,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10031
             },
             "10329": {
@@ -6464,6 +7282,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10032
             },
             "10330": {
@@ -6474,6 +7295,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10000
             },
             "10331": {
@@ -6484,6 +7308,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10001
             },
             "10332": {
@@ -6494,6 +7321,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10002
             },
             "10333": {
@@ -6504,6 +7334,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10003
             },
             "10334": {
@@ -6514,6 +7347,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10004
             },
             "10335": {
@@ -6524,6 +7360,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10005
             },
             "10336": {
@@ -6534,6 +7373,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10006
             },
             "10337": {
@@ -6544,6 +7386,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10007
             },
             "10338": {
@@ -6554,6 +7399,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10008
             },
             "10339": {
@@ -6564,6 +7412,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10009
             },
             "10340": {
@@ -6574,6 +7425,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10010
             },
             "10341": {
@@ -6584,6 +7438,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10011
             },
             "10342": {
@@ -6594,6 +7451,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10012
             },
             "10343": {
@@ -6604,6 +7464,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10013
             },
             "10344": {
@@ -6614,6 +7477,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10014
             },
             "10345": {
@@ -6624,6 +7490,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10015
             },
             "10346": {
@@ -6634,6 +7503,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10016
             },
             "10347": {
@@ -6644,6 +7516,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10017
             },
             "10348": {
@@ -6654,6 +7529,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10018
             },
             "10349": {
@@ -6664,6 +7542,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10019
             },
             "10350": {
@@ -6674,6 +7555,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10020
             },
             "10351": {
@@ -6684,6 +7568,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10021
             },
             "10352": {
@@ -6694,6 +7581,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10022
             },
             "10353": {
@@ -6704,6 +7594,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10023
             },
             "10354": {
@@ -6714,6 +7607,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10024
             },
             "10355": {
@@ -6724,6 +7620,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10025
             },
             "10356": {
@@ -6734,6 +7633,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10026
             },
             "10357": {
@@ -6744,6 +7646,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10027
             },
             "10358": {
@@ -6754,6 +7659,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10028
             },
             "10359": {
@@ -6764,6 +7672,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10029
             },
             "10360": {
@@ -6774,6 +7685,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10030
             },
             "10361": {
@@ -6784,6 +7698,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10031
             },
             "10362": {
@@ -6794,6 +7711,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10032
             },
             "10363": {
@@ -6804,6 +7724,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10000
             },
             "10364": {
@@ -6814,6 +7737,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10001
             },
             "10365": {
@@ -6824,6 +7750,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10002
             },
             "10366": {
@@ -6834,6 +7763,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10003
             },
             "10367": {
@@ -6844,6 +7776,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10004
             },
             "10368": {
@@ -6854,6 +7789,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10005
             },
             "10369": {
@@ -6864,6 +7802,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10006
             },
             "10370": {
@@ -6874,6 +7815,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10007
             },
             "10371": {
@@ -6884,6 +7828,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10008
             },
             "10372": {
@@ -6894,6 +7841,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10009
             },
             "10373": {
@@ -6904,6 +7854,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10010
             },
             "10374": {
@@ -6914,6 +7867,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10011
             },
             "10375": {
@@ -6924,6 +7880,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10012
             },
             "10376": {
@@ -6934,6 +7893,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10013
             },
             "10377": {
@@ -6944,6 +7906,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10014
             },
             "10378": {
@@ -6954,6 +7919,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10015
             },
             "10379": {
@@ -6964,6 +7932,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10016
             },
             "10380": {
@@ -6974,6 +7945,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10017
             },
             "10381": {
@@ -6984,6 +7958,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10018
             },
             "10382": {
@@ -6994,6 +7971,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10019
             },
             "10383": {
@@ -7004,6 +7984,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10020
             },
             "10384": {
@@ -7014,6 +7997,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10021
             },
             "10385": {
@@ -7024,6 +8010,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10022
             },
             "10386": {
@@ -7034,6 +8023,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10023
             },
             "10387": {
@@ -7044,6 +8036,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10024
             },
             "10388": {
@@ -7054,6 +8049,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10025
             },
             "10389": {
@@ -7064,6 +8062,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10026
             },
             "10390": {
@@ -7074,6 +8075,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10027
             },
             "10391": {
@@ -7084,6 +8088,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10028
             },
             "10392": {
@@ -7094,6 +8101,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10029
             },
             "10393": {
@@ -7104,6 +8114,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10030
             },
             "10394": {
@@ -7114,6 +8127,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10031
             },
             "10395": {
@@ -7124,6 +8140,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10032
             },
             "10396": {
@@ -7134,6 +8153,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10000
             },
             "10397": {
@@ -7144,6 +8166,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10001
             },
             "10398": {
@@ -7154,6 +8179,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10002
             },
             "10399": {
@@ -7164,6 +8192,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10003
             },
             "10400": {
@@ -7174,6 +8205,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10004
             },
             "10401": {
@@ -7184,6 +8218,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10005
             },
             "10402": {
@@ -7194,6 +8231,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10006
             },
             "10403": {
@@ -7204,6 +8244,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10007
             },
             "10404": {
@@ -7214,6 +8257,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10008
             },
             "10405": {
@@ -7224,6 +8270,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10009
             },
             "10406": {
@@ -7234,6 +8283,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10010
             },
             "10407": {
@@ -7244,6 +8296,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10011
             },
             "10408": {
@@ -7254,6 +8309,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10012
             },
             "10409": {
@@ -7264,6 +8322,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10013
             },
             "10410": {
@@ -7274,6 +8335,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10014
             },
             "10411": {
@@ -7284,6 +8348,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10015
             },
             "10412": {
@@ -7294,6 +8361,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10016
             },
             "10413": {
@@ -7304,6 +8374,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10017
             },
             "10414": {
@@ -7314,6 +8387,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10018
             },
             "10415": {
@@ -7324,6 +8400,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10019
             },
             "10416": {
@@ -7334,6 +8413,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10020
             },
             "10417": {
@@ -7344,6 +8426,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10021
             },
             "10418": {
@@ -7354,6 +8439,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10022
             },
             "10419": {
@@ -7364,6 +8452,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10023
             },
             "10420": {
@@ -7374,6 +8465,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10024
             },
             "10421": {
@@ -7384,6 +8478,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10025
             },
             "10422": {
@@ -7394,6 +8491,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10026
             },
             "10423": {
@@ -7404,6 +8504,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10027
             },
             "10424": {
@@ -7414,6 +8517,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10028
             },
             "10425": {
@@ -7424,6 +8530,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10029
             },
             "10426": {
@@ -7434,6 +8543,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10030
             },
             "10427": {
@@ -7444,6 +8556,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10031
             },
             "10428": {
@@ -7454,6 +8569,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10032
             },
             "10429": {
@@ -7464,6 +8582,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10000
             },
             "10430": {
@@ -7474,6 +8595,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10001
             },
             "10431": {
@@ -7484,6 +8608,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10002
             },
             "10432": {
@@ -7494,6 +8621,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10003
             },
             "10433": {
@@ -7504,6 +8634,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10004
             },
             "10434": {
@@ -7514,6 +8647,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10005
             },
             "10435": {
@@ -7524,6 +8660,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10006
             },
             "10436": {
@@ -7534,6 +8673,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10007
             },
             "10437": {
@@ -7544,6 +8686,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10008
             },
             "10438": {
@@ -7554,6 +8699,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10009
             },
             "10439": {
@@ -7564,6 +8712,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10010
             },
             "10440": {
@@ -7574,6 +8725,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10011
             },
             "10441": {
@@ -7584,6 +8738,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10012
             },
             "10442": {
@@ -7594,6 +8751,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10013
             },
             "10443": {
@@ -7604,6 +8764,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10014
             },
             "10444": {
@@ -7614,6 +8777,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10015
             },
             "10445": {
@@ -7624,6 +8790,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10016
             },
             "10446": {
@@ -7634,6 +8803,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10017
             },
             "10447": {
@@ -7644,6 +8816,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10018
             },
             "10448": {
@@ -7654,6 +8829,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10019
             },
             "10449": {
@@ -7664,6 +8842,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10020
             },
             "10450": {
@@ -7674,6 +8855,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10021
             },
             "10451": {
@@ -7684,6 +8868,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10022
             },
             "10452": {
@@ -7694,6 +8881,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10023
             },
             "10453": {
@@ -7704,6 +8894,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10024
             },
             "10454": {
@@ -7714,6 +8907,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10025
             },
             "10455": {
@@ -7724,6 +8920,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10026
             },
             "10456": {
@@ -7734,6 +8933,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10027
             },
             "10457": {
@@ -7744,6 +8946,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10028
             },
             "10458": {
@@ -7754,6 +8959,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10029
             },
             "10459": {
@@ -7764,6 +8972,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10030
             },
             "10460": {
@@ -7774,6 +8985,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10031
             },
             "10461": {
@@ -7784,6 +8998,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10032
             },
             "10462": {
@@ -7794,6 +9011,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10000
             },
             "10463": {
@@ -7804,6 +9024,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10001
             },
             "10464": {
@@ -7814,6 +9037,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10002
             },
             "10465": {
@@ -7824,6 +9050,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10003
             },
             "10466": {
@@ -7834,6 +9063,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10004
             },
             "10467": {
@@ -7844,6 +9076,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10005
             },
             "10468": {
@@ -7854,6 +9089,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10006
             },
             "10469": {
@@ -7864,6 +9102,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10007
             },
             "10470": {
@@ -7874,6 +9115,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10008
             },
             "10471": {
@@ -7884,6 +9128,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 804,
                 "url": 10009
             },
             "10472": {
@@ -7894,6 +9141,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10010
             },
             "10473": {
@@ -7904,6 +9154,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 805,
                 "url": 10011
             },
             "10474": {
@@ -7914,6 +9167,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10012
             },
             "10475": {
@@ -7924,6 +9180,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10013
             },
             "10476": {
@@ -7934,6 +9193,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10014
             },
             "10477": {
@@ -7944,6 +9206,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 502,
                 "url": 10015
             },
             "10478": {
@@ -7954,6 +9219,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10016
             },
             "10479": {
@@ -7964,6 +9232,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10017
             },
             "10480": {
@@ -7974,6 +9245,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10018
             },
             "10481": {
@@ -7984,6 +9258,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10019
             },
             "10482": {
@@ -7994,6 +9271,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10020
             },
             "10483": {
@@ -8004,6 +9284,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10021
             },
             "10484": {
@@ -8014,6 +9297,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10022
             },
             "10485": {
@@ -8024,6 +9310,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10023
             },
             "10486": {
@@ -8034,6 +9323,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10024
             },
             "10487": {
@@ -8044,6 +9336,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10025
             },
             "10488": {
@@ -8054,6 +9349,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10026
             },
             "10489": {
@@ -8064,6 +9362,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10027
             },
             "10490": {
@@ -8074,6 +9375,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10028
             },
             "10491": {
@@ -8084,6 +9388,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10029
             },
             "10492": {
@@ -8094,6 +9401,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10030
             },
             "10493": {
@@ -8104,6 +9414,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10031
             },
             "10494": {
@@ -8114,6 +9427,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10032
             },
             "10495": {
@@ -8124,6 +9440,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10022
             },
             "10496": {
@@ -8134,6 +9453,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10023
             },
             "10497": {
@@ -8144,6 +9466,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10024
             },
             "10498": {
@@ -8154,6 +9479,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10025
             },
             "10499": {
@@ -8164,6 +9492,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10026
             },
             "10500": {
@@ -8174,6 +9505,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10027
             },
             "20000": {
@@ -8194,6 +9528,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 800,
                 "url": 10023
             },
             "20002": {
@@ -8204,6 +9541,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10024
             },
             "20003": {
@@ -8214,6 +9554,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 801,
                 "url": 10025
             },
             "20004": {
@@ -8224,6 +9567,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 700,
                 "url": 10026
             },
             "20005": {
@@ -8234,6 +9580,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10027
             },
             "20006": {
@@ -8244,6 +9593,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 400,
                 "url": 10033
             },
             "20007": {
@@ -8254,6 +9606,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 500,
                 "url": 10034
             },
             "20008": {
@@ -8264,6 +9619,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 600,
                 "url": 10035
             },
             "20009": {
@@ -8274,6 +9632,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 401,
                 "url": 10036
             },
             "20010": {
@@ -8284,6 +9645,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10037
             },
             "20011": {
@@ -8294,6 +9658,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 8,
+                "effect_id": 802,
                 "url": 10038
             },
             "20012": {
@@ -8304,6 +9671,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 4,
+                "effect_id": 300,
                 "url": 10039
             },
             "20013": {
@@ -8314,6 +9684,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 9,
+                "effect_id": 803,
                 "url": 10040
             },
             "20014": {
@@ -8324,6 +9697,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 5,
+                "effect_id": 701,
                 "url": 10041
             },
             "20015": {
@@ -8334,6 +9710,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 9,
+                "normal_atk_id": 6,
+                "effect_id": 301,
                 "url": 10042
             },
             "20016": {
@@ -8344,6 +9723,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 7,
+                "effect_id": 402,
                 "url": 10043
             },
             "20017": {
@@ -8354,6 +9736,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 2,
+                "effect_id": 501,
                 "url": 10044
             },
             "20018": {
@@ -8364,6 +9749,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 3,
+                "normal_atk_id": 5,
+                "effect_id": 601,
                 "url": 10045
             },
             "20019": {
@@ -8374,6 +9762,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 5,
+                "normal_atk_id": 7,
+                "effect_id": 403,
                 "url": 10046
             },
             "20020": {
@@ -8384,6 +9775,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 10,
+                "normal_atk_id": 4,
+                "effect_id": 301,
                 "url": 10047
             },
             "30000": {
@@ -8394,8 +9788,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 30000,
-                "description": "经验卡牌，不可进阶。主要作为卡牌升级所用。"
+                "url": 30000
             },
             "30001": {
                 "id": 30001,
@@ -8405,6 +9798,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 8,
                 "url": 10027
             },
             "30002": {
@@ -8415,6 +9809,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 4,
+                "effect_id": 801,
                 "url": 10033
             },
             "30003": {
@@ -8425,6 +9822,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 9,
                 "url": 10036
             },
             "30004": {
@@ -8435,6 +9833,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 7,
+                "normal_atk_id": 5,
+                "effect_id": 300,
                 "url": 10037
             },
             "30005": {
@@ -8445,6 +9846,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 6,
                 "url": 10040
             },
             "30006": {
@@ -8455,6 +9857,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 4,
+                "normal_atk_id": 7,
+                "effect_id": 700,
                 "url": 10041
             },
             "30007": {
@@ -8465,6 +9870,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 2,
                 "url": 10043
             },
             "30008": {
@@ -8475,6 +9881,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 2,
+                "normal_atk_id": 5,
+                "effect_id": 500,
                 "url": 10044
             },
             "30009": {
@@ -8485,6 +9894,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "normal_atk_id": 7,
                 "url": 10046
             },
             "30010": {
@@ -8495,37 +9905,52 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 6,
+                "normal_atk_id": 4,
+                "effect_id": 401,
                 "url": 10047
             },
             "40000": {
                 "id": 40000,
                 "number": 40000,
-                "name": "BOSS1号",
+                "name": "九阴罗刹",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10044
+                "skill_name": "碧海袭卷",
+                "skill_id": 1,
+                "normal_atk_id": 1001,
+                "effect_id": 1800,
+                "url": 20000
             },
             "40001": {
                 "id": 40001,
                 "number": 40001,
-                "name": "BOSS2号",
+                "name": "赤炎星君",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10046
+                "skill_name": "万魁拳",
+                "skill_id": 1,
+                "normal_atk_id": 1002,
+                "effect_id": 1801,
+                "url": 20001
             },
             "40002": {
                 "id": 40002,
                 "number": 40002,
-                "name": "BOSS3号",
+                "name": "金身冥王",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10047
+                "skill_name": "神降天怒",
+                "skill_id": 4,
+                "normal_atk_id": 1003,
+                "effect_id": 1700,
+                "url": 20002
             },
             "40003": {
                 "id": 40003,
@@ -8535,7 +9960,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10036
+                "normal_atk_id": 3,
+                "url": 10048
             },
             "40004": {
                 "id": 40004,
@@ -8545,7 +9971,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10037
+                "normal_atk_id": 8,
+                "url": 10049
             },
             "40005": {
                 "id": 40005,
@@ -8555,7 +9982,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10040
+                "normal_atk_id": 7,
+                "url": 10050
             }
         }
     },
@@ -8969,6 +10397,347 @@ var outputTables = {
             }
         }
     },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 60,
+                "name": "蓝卡",
+                "reward_inc": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 25,
+                "name": "紫卡",
+                "reward_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150
+            }
+        }
+    },
+    "boss": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "九阴罗刹",
+                "type": 1,
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "01:40000,10:40003,12:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "赤炎星君",
+                "type": 2,
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "01:40001,10:40004,12:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "金身冥王",
+                "type": 3,
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "01:40002,10:40005,12:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "九阴罗刹",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "赤炎星君",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "金身冥王",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            }
+        }
+    },
+    "boss_rank_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "honor": 12000,
+                "money": 500000,
+                "energy": 8000
+            },
+            "2": {
+                "id": 2,
+                "honor": 11000,
+                "money": 400000,
+                "energy": 7000
+            },
+            "3": {
+                "id": 3,
+                "honor": 10000,
+                "money": 300000,
+                "energy": 6000
+            },
+            "4": {
+                "id": 4,
+                "honor": 9000,
+                "money": 200000,
+                "energy": 5000
+            },
+            "5": {
+                "id": 5,
+                "honor": 8000,
+                "money": 100000,
+                "energy": 4000
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 500,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 3000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 20000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 200,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 500,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 85,
+                "rate": 8.5
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 3000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 14,
+                "rate": 1.4
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 20000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 100,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 85,
+                "rate": 17
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 500,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 14,
+                "rate": 2.8
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力点",
+                "type_rate": 20,
+                "value_rate": 1,
+                "rate": 0.2
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 2000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 85,
+                "rate": 12.75
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 14,
+                "rate": 2.1
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 100000,
+                "name": "仙币",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "魔石",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
     "new_year_rechage": {
         "colComment": {},
         "rows": {
@@ -9379,191 +11148,6 @@ var outputTables = {
                 "id": "bossTypeGoldCard",
                 "value": 15,
                 "desc": "金卡boss随机的概率"
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 500,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 3000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 20000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 200,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 500,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 85,
-                "rate": 8.5
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 3000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 14,
-                "rate": 1.4
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 20000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 100,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 85,
-                "rate": 17
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 500,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 14,
-                "rate": 2.8
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力点",
-                "type_rate": 20,
-                "value_rate": 1,
-                "rate": 0.2
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 2000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 85,
-                "rate": 12.75
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 14,
-                "rate": 2.1
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 100000,
-                "name": "仙币",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "魔石",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },
@@ -25646,253 +27230,6 @@ var outputTables = {
             }
         }
     },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -26197,6 +27534,253 @@ var outputTables = {
                 "star5_inc_max": 63,
                 "star5_grow": 3,
                 "rate5": 40
+            }
+        }
+    },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -34473,8 +36057,7 @@ var outputTables = {
                 "atk": 50,
                 "hp": 113,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "normal_atk_id": 1
+                "crit_rate": 0
             },
             "10001": {
                 "id": 10001,
@@ -34482,10 +36065,7 @@ var outputTables = {
                 "atk": 80,
                 "hp": 130,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 0
             },
             "10002": {
                 "id": 10002,
@@ -34493,10 +36073,7 @@ var outputTables = {
                 "atk": 90,
                 "hp": 150,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 0
             },
             "10003": {
                 "id": 10003,
@@ -34504,10 +36081,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 0
             },
             "10004": {
                 "id": 10004,
@@ -34515,10 +36089,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 0
             },
             "10005": {
                 "id": 10005,
@@ -34526,10 +36097,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10006": {
                 "id": 10006,
@@ -34537,10 +36105,7 @@ var outputTables = {
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 0
             },
             "10007": {
                 "id": 10007,
@@ -34548,10 +36113,7 @@ var outputTables = {
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 0
             },
             "10008": {
                 "id": 10008,
@@ -34559,10 +36121,7 @@ var outputTables = {
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 0
             },
             "10009": {
                 "id": 10009,
@@ -34570,10 +36129,7 @@ var outputTables = {
                 "atk": 110,
                 "hp": 170,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 0
             },
             "10010": {
                 "id": 10010,
@@ -34581,10 +36137,7 @@ var outputTables = {
                 "atk": 110,
                 "hp": 170,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10011": {
                 "id": 10011,
@@ -34592,10 +36145,7 @@ var outputTables = {
                 "atk": 200,
                 "hp": 520,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 0
             },
             "10012": {
                 "id": 10012,
@@ -34603,10 +36153,7 @@ var outputTables = {
                 "atk": 235,
                 "hp": 555,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 0
             },
             "10013": {
                 "id": 10013,
@@ -34614,10 +36161,7 @@ var outputTables = {
                 "atk": 270,
                 "hp": 575,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 0
             },
             "10014": {
                 "id": 10014,
@@ -34625,10 +36169,7 @@ var outputTables = {
                 "atk": 305,
                 "hp": 595,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 0
             },
             "10015": {
                 "id": 10015,
@@ -34636,10 +36177,7 @@ var outputTables = {
                 "atk": 340,
                 "hp": 615,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10016": {
                 "id": 10016,
@@ -34647,10 +36185,7 @@ var outputTables = {
                 "atk": 375,
                 "hp": 635,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 0
             },
             "10017": {
                 "id": 10017,
@@ -34658,10 +36193,7 @@ var outputTables = {
                 "atk": 410,
                 "hp": 655,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 0
             },
             "10018": {
                 "id": 10018,
@@ -34669,10 +36201,7 @@ var outputTables = {
                 "atk": 445,
                 "hp": 675,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 0
             },
             "10019": {
                 "id": 10019,
@@ -34680,10 +36209,7 @@ var outputTables = {
                 "atk": 480,
                 "hp": 695,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 0
             },
             "10020": {
                 "id": 10020,
@@ -34691,10 +36217,7 @@ var outputTables = {
                 "atk": 515,
                 "hp": 715,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10021": {
                 "id": 10021,
@@ -34702,10 +36225,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 900,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 0
             },
             "10022": {
                 "id": 10022,
@@ -34713,10 +36233,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1100,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 0
             },
             "10023": {
                 "id": 10023,
@@ -34724,10 +36241,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1200,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 0
             },
             "10024": {
                 "id": 10024,
@@ -34735,10 +36249,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1300,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 0
             },
             "10025": {
                 "id": 10025,
@@ -34746,10 +36257,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1400,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10026": {
                 "id": 10026,
@@ -34757,10 +36265,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 0
             },
             "10027": {
                 "id": 10027,
@@ -34768,10 +36273,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 0
             },
             "10028": {
                 "id": 10028,
@@ -34779,10 +36281,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 0
             },
             "10029": {
                 "id": 10029,
@@ -34790,10 +36289,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 0
             },
             "10030": {
                 "id": 10030,
@@ -34801,10 +36297,7 @@ var outputTables = {
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10031": {
                 "id": 10031,
@@ -34812,10 +36305,7 @@ var outputTables = {
                 "atk": 700,
                 "hp": 1800,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 0
             },
             "10032": {
                 "id": 10032,
@@ -34823,10 +36313,7 @@ var outputTables = {
                 "atk": 720,
                 "hp": 1840,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 0
             },
             "10033": {
                 "id": 10033,
@@ -34834,10 +36321,7 @@ var outputTables = {
                 "atk": 740,
                 "hp": 1880,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 0
             },
             "10034": {
                 "id": 10034,
@@ -34845,10 +36329,7 @@ var outputTables = {
                 "atk": 760,
                 "hp": 1920,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 0
             },
             "10035": {
                 "id": 10035,
@@ -34856,10 +36337,7 @@ var outputTables = {
                 "atk": 780,
                 "hp": 1960,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 0
             },
             "10036": {
                 "id": 10036,
@@ -34867,10 +36345,7 @@ var outputTables = {
                 "atk": 800,
                 "hp": 2000,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 0
             },
             "10037": {
                 "id": 10037,
@@ -34878,10 +36353,7 @@ var outputTables = {
                 "atk": 820,
                 "hp": 2040,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 0
             },
             "10038": {
                 "id": 10038,
@@ -34889,10 +36361,7 @@ var outputTables = {
                 "atk": 840,
                 "hp": 2080,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 0
             },
             "10039": {
                 "id": 10039,
@@ -34900,10 +36369,7 @@ var outputTables = {
                 "atk": 860,
                 "hp": 2120,
                 "dodge_rate": 0,
-                "crit_rate": 0,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 0
             },
             "10040": {
                 "id": 10040,
@@ -34911,10 +36377,7 @@ var outputTables = {
                 "atk": 890,
                 "hp": 2170,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10041": {
                 "id": 10041,
@@ -34922,10 +36385,7 @@ var outputTables = {
                 "atk": 920,
                 "hp": 2220,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10042": {
                 "id": 10042,
@@ -34933,10 +36393,7 @@ var outputTables = {
                 "atk": 950,
                 "hp": 2270,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10043": {
                 "id": 10043,
@@ -34944,10 +36401,7 @@ var outputTables = {
                 "atk": 980,
                 "hp": 2310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10044": {
                 "id": 10044,
@@ -34955,10 +36409,7 @@ var outputTables = {
                 "atk": 1010,
                 "hp": 2360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10045": {
                 "id": 10045,
@@ -34966,10 +36417,7 @@ var outputTables = {
                 "atk": 1040,
                 "hp": 2410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10046": {
                 "id": 10046,
@@ -34977,10 +36425,7 @@ var outputTables = {
                 "atk": 1070,
                 "hp": 2460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10047": {
                 "id": 10047,
@@ -34988,10 +36433,7 @@ var outputTables = {
                 "atk": 1100,
                 "hp": 2510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10048": {
                 "id": 10048,
@@ -34999,10 +36441,7 @@ var outputTables = {
                 "atk": 1130,
                 "hp": 2560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10049": {
                 "id": 10049,
@@ -35010,10 +36449,7 @@ var outputTables = {
                 "atk": 1160,
                 "hp": 2610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10050": {
                 "id": 10050,
@@ -35021,10 +36457,7 @@ var outputTables = {
                 "atk": 1190,
                 "hp": 2660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10051": {
                 "id": 10051,
@@ -35032,10 +36465,7 @@ var outputTables = {
                 "atk": 1220,
                 "hp": 2710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10052": {
                 "id": 10052,
@@ -35043,10 +36473,7 @@ var outputTables = {
                 "atk": 1250,
                 "hp": 2760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10053": {
                 "id": 10053,
@@ -35054,10 +36481,7 @@ var outputTables = {
                 "atk": 1280,
                 "hp": 2810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10054": {
                 "id": 10054,
@@ -35065,10 +36489,7 @@ var outputTables = {
                 "atk": 1310,
                 "hp": 2860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10055": {
                 "id": 10055,
@@ -35076,10 +36497,7 @@ var outputTables = {
                 "atk": 1340,
                 "hp": 2910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10056": {
                 "id": 10056,
@@ -35087,10 +36505,7 @@ var outputTables = {
                 "atk": 1370,
                 "hp": 2960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10057": {
                 "id": 10057,
@@ -35098,10 +36513,7 @@ var outputTables = {
                 "atk": 1400,
                 "hp": 3010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10058": {
                 "id": 10058,
@@ -35109,10 +36521,7 @@ var outputTables = {
                 "atk": 1430,
                 "hp": 3060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10059": {
                 "id": 10059,
@@ -35120,10 +36529,7 @@ var outputTables = {
                 "atk": 1460,
                 "hp": 3110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10060": {
                 "id": 10060,
@@ -35131,10 +36537,7 @@ var outputTables = {
                 "atk": 1490,
                 "hp": 3160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10061": {
                 "id": 10061,
@@ -35142,10 +36545,7 @@ var outputTables = {
                 "atk": 1520,
                 "hp": 3210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10062": {
                 "id": 10062,
@@ -35153,10 +36553,7 @@ var outputTables = {
                 "atk": 1550,
                 "hp": 3260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10063": {
                 "id": 10063,
@@ -35164,10 +36561,7 @@ var outputTables = {
                 "atk": 1580,
                 "hp": 3310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10064": {
                 "id": 10064,
@@ -35175,10 +36569,7 @@ var outputTables = {
                 "atk": 1610,
                 "hp": 3360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10065": {
                 "id": 10065,
@@ -35186,10 +36577,7 @@ var outputTables = {
                 "atk": 1640,
                 "hp": 3410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10066": {
                 "id": 10066,
@@ -35197,10 +36585,7 @@ var outputTables = {
                 "atk": 1670,
                 "hp": 3460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10067": {
                 "id": 10067,
@@ -35208,10 +36593,7 @@ var outputTables = {
                 "atk": 1700,
                 "hp": 3510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10068": {
                 "id": 10068,
@@ -35219,10 +36601,7 @@ var outputTables = {
                 "atk": 1730,
                 "hp": 3560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10069": {
                 "id": 10069,
@@ -35230,10 +36609,7 @@ var outputTables = {
                 "atk": 1760,
                 "hp": 3610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10070": {
                 "id": 10070,
@@ -35241,10 +36617,7 @@ var outputTables = {
                 "atk": 1790,
                 "hp": 3660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10071": {
                 "id": 10071,
@@ -35252,10 +36625,7 @@ var outputTables = {
                 "atk": 1820,
                 "hp": 3710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10072": {
                 "id": 10072,
@@ -35263,10 +36633,7 @@ var outputTables = {
                 "atk": 1850,
                 "hp": 3760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10073": {
                 "id": 10073,
@@ -35274,10 +36641,7 @@ var outputTables = {
                 "atk": 1880,
                 "hp": 3810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10074": {
                 "id": 10074,
@@ -35285,10 +36649,7 @@ var outputTables = {
                 "atk": 1910,
                 "hp": 3860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10075": {
                 "id": 10075,
@@ -35296,10 +36657,7 @@ var outputTables = {
                 "atk": 1940,
                 "hp": 3910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10076": {
                 "id": 10076,
@@ -35307,10 +36665,7 @@ var outputTables = {
                 "atk": 1970,
                 "hp": 3960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10077": {
                 "id": 10077,
@@ -35318,10 +36673,7 @@ var outputTables = {
                 "atk": 2000,
                 "hp": 4010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10078": {
                 "id": 10078,
@@ -35329,10 +36681,7 @@ var outputTables = {
                 "atk": 2030,
                 "hp": 4060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10079": {
                 "id": 10079,
@@ -35340,10 +36689,7 @@ var outputTables = {
                 "atk": 2060,
                 "hp": 4110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10080": {
                 "id": 10080,
@@ -35351,10 +36697,7 @@ var outputTables = {
                 "atk": 2090,
                 "hp": 4160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10081": {
                 "id": 10081,
@@ -35362,10 +36705,7 @@ var outputTables = {
                 "atk": 2120,
                 "hp": 4210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10082": {
                 "id": 10082,
@@ -35373,10 +36713,7 @@ var outputTables = {
                 "atk": 2150,
                 "hp": 4260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10083": {
                 "id": 10083,
@@ -35384,10 +36721,7 @@ var outputTables = {
                 "atk": 2180,
                 "hp": 4310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10084": {
                 "id": 10084,
@@ -35395,10 +36729,7 @@ var outputTables = {
                 "atk": 2210,
                 "hp": 4360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10085": {
                 "id": 10085,
@@ -35406,10 +36737,7 @@ var outputTables = {
                 "atk": 2240,
                 "hp": 4410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10086": {
                 "id": 10086,
@@ -35417,10 +36745,7 @@ var outputTables = {
                 "atk": 2270,
                 "hp": 4460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10087": {
                 "id": 10087,
@@ -35428,10 +36753,7 @@ var outputTables = {
                 "atk": 2300,
                 "hp": 4510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10088": {
                 "id": 10088,
@@ -35439,10 +36761,7 @@ var outputTables = {
                 "atk": 2330,
                 "hp": 4560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10089": {
                 "id": 10089,
@@ -35450,10 +36769,7 @@ var outputTables = {
                 "atk": 2360,
                 "hp": 4610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10090": {
                 "id": 10090,
@@ -35461,10 +36777,7 @@ var outputTables = {
                 "atk": 2390,
                 "hp": 4660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10091": {
                 "id": 10091,
@@ -35472,10 +36785,7 @@ var outputTables = {
                 "atk": 2420,
                 "hp": 4710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10092": {
                 "id": 10092,
@@ -35483,10 +36793,7 @@ var outputTables = {
                 "atk": 2450,
                 "hp": 4760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10093": {
                 "id": 10093,
@@ -35494,10 +36801,7 @@ var outputTables = {
                 "atk": 2480,
                 "hp": 4810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10094": {
                 "id": 10094,
@@ -35505,10 +36809,7 @@ var outputTables = {
                 "atk": 2510,
                 "hp": 4860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10095": {
                 "id": 10095,
@@ -35516,10 +36817,7 @@ var outputTables = {
                 "atk": 2540,
                 "hp": 4910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10096": {
                 "id": 10096,
@@ -35527,10 +36825,7 @@ var outputTables = {
                 "atk": 2570,
                 "hp": 4960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10097": {
                 "id": 10097,
@@ -35538,10 +36833,7 @@ var outputTables = {
                 "atk": 2600,
                 "hp": 5010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10098": {
                 "id": 10098,
@@ -35549,10 +36841,7 @@ var outputTables = {
                 "atk": 2630,
                 "hp": 5060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10099": {
                 "id": 10099,
@@ -35560,10 +36849,7 @@ var outputTables = {
                 "atk": 2660,
                 "hp": 5110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10100": {
                 "id": 10100,
@@ -35571,10 +36857,7 @@ var outputTables = {
                 "atk": 2690,
                 "hp": 5160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10101": {
                 "id": 10101,
@@ -35582,10 +36865,7 @@ var outputTables = {
                 "atk": 2720,
                 "hp": 5210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10102": {
                 "id": 10102,
@@ -35593,10 +36873,7 @@ var outputTables = {
                 "atk": 2750,
                 "hp": 5260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10103": {
                 "id": 10103,
@@ -35604,10 +36881,7 @@ var outputTables = {
                 "atk": 2780,
                 "hp": 5310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10104": {
                 "id": 10104,
@@ -35615,10 +36889,7 @@ var outputTables = {
                 "atk": 2810,
                 "hp": 5360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10105": {
                 "id": 10105,
@@ -35626,10 +36897,7 @@ var outputTables = {
                 "atk": 2840,
                 "hp": 5410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10106": {
                 "id": 10106,
@@ -35637,10 +36905,7 @@ var outputTables = {
                 "atk": 2870,
                 "hp": 5460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10107": {
                 "id": 10107,
@@ -35648,10 +36913,7 @@ var outputTables = {
                 "atk": 2900,
                 "hp": 5510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10108": {
                 "id": 10108,
@@ -35659,10 +36921,7 @@ var outputTables = {
                 "atk": 2930,
                 "hp": 5560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10109": {
                 "id": 10109,
@@ -35670,10 +36929,7 @@ var outputTables = {
                 "atk": 2960,
                 "hp": 5610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10110": {
                 "id": 10110,
@@ -35681,10 +36937,7 @@ var outputTables = {
                 "atk": 2990,
                 "hp": 5660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10111": {
                 "id": 10111,
@@ -35692,10 +36945,7 @@ var outputTables = {
                 "atk": 3020,
                 "hp": 5710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10112": {
                 "id": 10112,
@@ -35703,10 +36953,7 @@ var outputTables = {
                 "atk": 3050,
                 "hp": 5760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10113": {
                 "id": 10113,
@@ -35714,10 +36961,7 @@ var outputTables = {
                 "atk": 3080,
                 "hp": 5810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10114": {
                 "id": 10114,
@@ -35725,10 +36969,7 @@ var outputTables = {
                 "atk": 3110,
                 "hp": 5860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10115": {
                 "id": 10115,
@@ -35736,10 +36977,7 @@ var outputTables = {
                 "atk": 3140,
                 "hp": 5910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10116": {
                 "id": 10116,
@@ -35747,10 +36985,7 @@ var outputTables = {
                 "atk": 3170,
                 "hp": 5960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10117": {
                 "id": 10117,
@@ -35758,10 +36993,7 @@ var outputTables = {
                 "atk": 3200,
                 "hp": 6010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10118": {
                 "id": 10118,
@@ -35769,10 +37001,7 @@ var outputTables = {
                 "atk": 3230,
                 "hp": 6060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10119": {
                 "id": 10119,
@@ -35780,10 +37009,7 @@ var outputTables = {
                 "atk": 3260,
                 "hp": 6110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10120": {
                 "id": 10120,
@@ -35791,10 +37017,7 @@ var outputTables = {
                 "atk": 3290,
                 "hp": 6160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10121": {
                 "id": 10121,
@@ -35802,10 +37025,7 @@ var outputTables = {
                 "atk": 3320,
                 "hp": 6210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10122": {
                 "id": 10122,
@@ -35813,10 +37033,7 @@ var outputTables = {
                 "atk": 3350,
                 "hp": 6260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10123": {
                 "id": 10123,
@@ -35824,10 +37041,7 @@ var outputTables = {
                 "atk": 3380,
                 "hp": 6310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10124": {
                 "id": 10124,
@@ -35835,10 +37049,7 @@ var outputTables = {
                 "atk": 3410,
                 "hp": 6360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10125": {
                 "id": 10125,
@@ -35846,10 +37057,7 @@ var outputTables = {
                 "atk": 3440,
                 "hp": 6410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10126": {
                 "id": 10126,
@@ -35857,10 +37065,7 @@ var outputTables = {
                 "atk": 3470,
                 "hp": 6460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10127": {
                 "id": 10127,
@@ -35868,10 +37073,7 @@ var outputTables = {
                 "atk": 3500,
                 "hp": 6510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10128": {
                 "id": 10128,
@@ -35879,10 +37081,7 @@ var outputTables = {
                 "atk": 3530,
                 "hp": 6560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10129": {
                 "id": 10129,
@@ -35890,10 +37089,7 @@ var outputTables = {
                 "atk": 3560,
                 "hp": 6610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10130": {
                 "id": 10130,
@@ -35901,10 +37097,7 @@ var outputTables = {
                 "atk": 3590,
                 "hp": 6660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10131": {
                 "id": 10131,
@@ -35912,10 +37105,7 @@ var outputTables = {
                 "atk": 3620,
                 "hp": 6710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10132": {
                 "id": 10132,
@@ -35923,10 +37113,7 @@ var outputTables = {
                 "atk": 3650,
                 "hp": 6760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10133": {
                 "id": 10133,
@@ -35934,10 +37121,7 @@ var outputTables = {
                 "atk": 3680,
                 "hp": 6810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10134": {
                 "id": 10134,
@@ -35945,10 +37129,7 @@ var outputTables = {
                 "atk": 3710,
                 "hp": 6860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10135": {
                 "id": 10135,
@@ -35956,10 +37137,7 @@ var outputTables = {
                 "atk": 3740,
                 "hp": 6910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10136": {
                 "id": 10136,
@@ -35967,10 +37145,7 @@ var outputTables = {
                 "atk": 3770,
                 "hp": 6960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10137": {
                 "id": 10137,
@@ -35978,10 +37153,7 @@ var outputTables = {
                 "atk": 3800,
                 "hp": 7010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10138": {
                 "id": 10138,
@@ -35989,10 +37161,7 @@ var outputTables = {
                 "atk": 3830,
                 "hp": 7060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10139": {
                 "id": 10139,
@@ -36000,10 +37169,7 @@ var outputTables = {
                 "atk": 3860,
                 "hp": 7110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10140": {
                 "id": 10140,
@@ -36011,10 +37177,7 @@ var outputTables = {
                 "atk": 3890,
                 "hp": 7160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10141": {
                 "id": 10141,
@@ -36022,10 +37185,7 @@ var outputTables = {
                 "atk": 3920,
                 "hp": 7210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10142": {
                 "id": 10142,
@@ -36033,10 +37193,7 @@ var outputTables = {
                 "atk": 3950,
                 "hp": 7260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10143": {
                 "id": 10143,
@@ -36044,10 +37201,7 @@ var outputTables = {
                 "atk": 3980,
                 "hp": 7310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10144": {
                 "id": 10144,
@@ -36055,10 +37209,7 @@ var outputTables = {
                 "atk": 4010,
                 "hp": 7360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10145": {
                 "id": 10145,
@@ -36066,10 +37217,7 @@ var outputTables = {
                 "atk": 4040,
                 "hp": 7410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10146": {
                 "id": 10146,
@@ -36077,10 +37225,7 @@ var outputTables = {
                 "atk": 4070,
                 "hp": 7460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10147": {
                 "id": 10147,
@@ -36088,10 +37233,7 @@ var outputTables = {
                 "atk": 4100,
                 "hp": 7510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10148": {
                 "id": 10148,
@@ -36099,10 +37241,7 @@ var outputTables = {
                 "atk": 4130,
                 "hp": 7560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10149": {
                 "id": 10149,
@@ -36110,10 +37249,7 @@ var outputTables = {
                 "atk": 4160,
                 "hp": 7610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10150": {
                 "id": 10150,
@@ -36121,10 +37257,7 @@ var outputTables = {
                 "atk": 4190,
                 "hp": 7660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10151": {
                 "id": 10151,
@@ -36132,10 +37265,7 @@ var outputTables = {
                 "atk": 4220,
                 "hp": 7710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10152": {
                 "id": 10152,
@@ -36143,10 +37273,7 @@ var outputTables = {
                 "atk": 4250,
                 "hp": 7760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10153": {
                 "id": 10153,
@@ -36154,10 +37281,7 @@ var outputTables = {
                 "atk": 4280,
                 "hp": 7810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10154": {
                 "id": 10154,
@@ -36165,10 +37289,7 @@ var outputTables = {
                 "atk": 4310,
                 "hp": 7860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10155": {
                 "id": 10155,
@@ -36176,10 +37297,7 @@ var outputTables = {
                 "atk": 4340,
                 "hp": 7910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10156": {
                 "id": 10156,
@@ -36187,10 +37305,7 @@ var outputTables = {
                 "atk": 4370,
                 "hp": 7960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10157": {
                 "id": 10157,
@@ -36198,10 +37313,7 @@ var outputTables = {
                 "atk": 4400,
                 "hp": 8010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10158": {
                 "id": 10158,
@@ -36209,10 +37321,7 @@ var outputTables = {
                 "atk": 4430,
                 "hp": 8060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10159": {
                 "id": 10159,
@@ -36220,10 +37329,7 @@ var outputTables = {
                 "atk": 4460,
                 "hp": 8110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10160": {
                 "id": 10160,
@@ -36231,10 +37337,7 @@ var outputTables = {
                 "atk": 4490,
                 "hp": 8160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10161": {
                 "id": 10161,
@@ -36242,10 +37345,7 @@ var outputTables = {
                 "atk": 4520,
                 "hp": 8210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10162": {
                 "id": 10162,
@@ -36253,10 +37353,7 @@ var outputTables = {
                 "atk": 4550,
                 "hp": 8260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10163": {
                 "id": 10163,
@@ -36264,10 +37361,7 @@ var outputTables = {
                 "atk": 4580,
                 "hp": 8310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10164": {
                 "id": 10164,
@@ -36275,10 +37369,7 @@ var outputTables = {
                 "atk": 4610,
                 "hp": 8360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10165": {
                 "id": 10165,
@@ -36286,10 +37377,7 @@ var outputTables = {
                 "atk": 4640,
                 "hp": 8410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10166": {
                 "id": 10166,
@@ -36297,10 +37385,7 @@ var outputTables = {
                 "atk": 4670,
                 "hp": 8460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10167": {
                 "id": 10167,
@@ -36308,10 +37393,7 @@ var outputTables = {
                 "atk": 4700,
                 "hp": 8510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10168": {
                 "id": 10168,
@@ -36319,10 +37401,7 @@ var outputTables = {
                 "atk": 4730,
                 "hp": 8560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10169": {
                 "id": 10169,
@@ -36330,10 +37409,7 @@ var outputTables = {
                 "atk": 4760,
                 "hp": 8610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10170": {
                 "id": 10170,
@@ -36341,10 +37417,7 @@ var outputTables = {
                 "atk": 4790,
                 "hp": 8660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10171": {
                 "id": 10171,
@@ -36352,10 +37425,7 @@ var outputTables = {
                 "atk": 4820,
                 "hp": 8710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10172": {
                 "id": 10172,
@@ -36363,10 +37433,7 @@ var outputTables = {
                 "atk": 4850,
                 "hp": 8760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10173": {
                 "id": 10173,
@@ -36374,10 +37441,7 @@ var outputTables = {
                 "atk": 4880,
                 "hp": 8810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10174": {
                 "id": 10174,
@@ -36385,10 +37449,7 @@ var outputTables = {
                 "atk": 4910,
                 "hp": 8860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10175": {
                 "id": 10175,
@@ -36396,10 +37457,7 @@ var outputTables = {
                 "atk": 4940,
                 "hp": 8910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10176": {
                 "id": 10176,
@@ -36407,10 +37465,7 @@ var outputTables = {
                 "atk": 4970,
                 "hp": 8960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10177": {
                 "id": 10177,
@@ -36418,10 +37473,7 @@ var outputTables = {
                 "atk": 5000,
                 "hp": 9010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10178": {
                 "id": 10178,
@@ -36429,10 +37481,7 @@ var outputTables = {
                 "atk": 5030,
                 "hp": 9060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10179": {
                 "id": 10179,
@@ -36440,10 +37489,7 @@ var outputTables = {
                 "atk": 5060,
                 "hp": 9110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10180": {
                 "id": 10180,
@@ -36451,10 +37497,7 @@ var outputTables = {
                 "atk": 5090,
                 "hp": 9160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10181": {
                 "id": 10181,
@@ -36462,10 +37505,7 @@ var outputTables = {
                 "atk": 5120,
                 "hp": 9210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10182": {
                 "id": 10182,
@@ -36473,10 +37513,7 @@ var outputTables = {
                 "atk": 5150,
                 "hp": 9260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10183": {
                 "id": 10183,
@@ -36484,10 +37521,7 @@ var outputTables = {
                 "atk": 5180,
                 "hp": 9310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10184": {
                 "id": 10184,
@@ -36495,10 +37529,7 @@ var outputTables = {
                 "atk": 5210,
                 "hp": 9360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10185": {
                 "id": 10185,
@@ -36506,10 +37537,7 @@ var outputTables = {
                 "atk": 5240,
                 "hp": 9410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10186": {
                 "id": 10186,
@@ -36517,10 +37545,7 @@ var outputTables = {
                 "atk": 5270,
                 "hp": 9460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10187": {
                 "id": 10187,
@@ -36528,10 +37553,7 @@ var outputTables = {
                 "atk": 5300,
                 "hp": 9510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10188": {
                 "id": 10188,
@@ -36539,10 +37561,7 @@ var outputTables = {
                 "atk": 5330,
                 "hp": 9560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10189": {
                 "id": 10189,
@@ -36550,10 +37569,7 @@ var outputTables = {
                 "atk": 5360,
                 "hp": 9610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10190": {
                 "id": 10190,
@@ -36561,10 +37577,7 @@ var outputTables = {
                 "atk": 5390,
                 "hp": 9660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10191": {
                 "id": 10191,
@@ -36572,10 +37585,7 @@ var outputTables = {
                 "atk": 5420,
                 "hp": 9710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10192": {
                 "id": 10192,
@@ -36583,10 +37593,7 @@ var outputTables = {
                 "atk": 5450,
                 "hp": 9760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10193": {
                 "id": 10193,
@@ -36594,10 +37601,7 @@ var outputTables = {
                 "atk": 5480,
                 "hp": 9810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10194": {
                 "id": 10194,
@@ -36605,10 +37609,7 @@ var outputTables = {
                 "atk": 5510,
                 "hp": 9860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10195": {
                 "id": 10195,
@@ -36616,10 +37617,7 @@ var outputTables = {
                 "atk": 5540,
                 "hp": 9910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10196": {
                 "id": 10196,
@@ -36627,10 +37625,7 @@ var outputTables = {
                 "atk": 5570,
                 "hp": 9960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10197": {
                 "id": 10197,
@@ -36638,10 +37633,7 @@ var outputTables = {
                 "atk": 5600,
                 "hp": 10010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10198": {
                 "id": 10198,
@@ -36649,10 +37641,7 @@ var outputTables = {
                 "atk": 5630,
                 "hp": 10060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10199": {
                 "id": 10199,
@@ -36660,10 +37649,7 @@ var outputTables = {
                 "atk": 5660,
                 "hp": 10110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10200": {
                 "id": 10200,
@@ -36671,10 +37657,7 @@ var outputTables = {
                 "atk": 5690,
                 "hp": 10160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10201": {
                 "id": 10201,
@@ -36682,10 +37665,7 @@ var outputTables = {
                 "atk": 5720,
                 "hp": 10210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10202": {
                 "id": 10202,
@@ -36693,10 +37673,7 @@ var outputTables = {
                 "atk": 5750,
                 "hp": 10260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10203": {
                 "id": 10203,
@@ -36704,10 +37681,7 @@ var outputTables = {
                 "atk": 5780,
                 "hp": 10310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10204": {
                 "id": 10204,
@@ -36715,10 +37689,7 @@ var outputTables = {
                 "atk": 5810,
                 "hp": 10360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10205": {
                 "id": 10205,
@@ -36726,10 +37697,7 @@ var outputTables = {
                 "atk": 5840,
                 "hp": 10410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10206": {
                 "id": 10206,
@@ -36737,10 +37705,7 @@ var outputTables = {
                 "atk": 5870,
                 "hp": 10460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10207": {
                 "id": 10207,
@@ -36748,10 +37713,7 @@ var outputTables = {
                 "atk": 5900,
                 "hp": 10510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10208": {
                 "id": 10208,
@@ -36759,10 +37721,7 @@ var outputTables = {
                 "atk": 5930,
                 "hp": 10560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10209": {
                 "id": 10209,
@@ -36770,10 +37729,7 @@ var outputTables = {
                 "atk": 5960,
                 "hp": 10610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10210": {
                 "id": 10210,
@@ -36781,10 +37737,7 @@ var outputTables = {
                 "atk": 5990,
                 "hp": 10660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10211": {
                 "id": 10211,
@@ -36792,10 +37745,7 @@ var outputTables = {
                 "atk": 6020,
                 "hp": 10710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10212": {
                 "id": 10212,
@@ -36803,10 +37753,7 @@ var outputTables = {
                 "atk": 6050,
                 "hp": 10760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10213": {
                 "id": 10213,
@@ -36814,10 +37761,7 @@ var outputTables = {
                 "atk": 6080,
                 "hp": 10810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10214": {
                 "id": 10214,
@@ -36825,10 +37769,7 @@ var outputTables = {
                 "atk": 6110,
                 "hp": 10860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10215": {
                 "id": 10215,
@@ -36836,10 +37777,7 @@ var outputTables = {
                 "atk": 6140,
                 "hp": 10910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10216": {
                 "id": 10216,
@@ -36847,10 +37785,7 @@ var outputTables = {
                 "atk": 6170,
                 "hp": 10960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10217": {
                 "id": 10217,
@@ -36858,10 +37793,7 @@ var outputTables = {
                 "atk": 6200,
                 "hp": 11010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10218": {
                 "id": 10218,
@@ -36869,10 +37801,7 @@ var outputTables = {
                 "atk": 6230,
                 "hp": 11060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10219": {
                 "id": 10219,
@@ -36880,10 +37809,7 @@ var outputTables = {
                 "atk": 6260,
                 "hp": 11110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10220": {
                 "id": 10220,
@@ -36891,10 +37817,7 @@ var outputTables = {
                 "atk": 6290,
                 "hp": 11160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10221": {
                 "id": 10221,
@@ -36902,10 +37825,7 @@ var outputTables = {
                 "atk": 6320,
                 "hp": 11210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10222": {
                 "id": 10222,
@@ -36913,10 +37833,7 @@ var outputTables = {
                 "atk": 6350,
                 "hp": 11260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10223": {
                 "id": 10223,
@@ -36924,10 +37841,7 @@ var outputTables = {
                 "atk": 6380,
                 "hp": 11310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10224": {
                 "id": 10224,
@@ -36935,10 +37849,7 @@ var outputTables = {
                 "atk": 6410,
                 "hp": 11360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10225": {
                 "id": 10225,
@@ -36946,10 +37857,7 @@ var outputTables = {
                 "atk": 6440,
                 "hp": 11410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10226": {
                 "id": 10226,
@@ -36957,10 +37865,7 @@ var outputTables = {
                 "atk": 6470,
                 "hp": 11460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10227": {
                 "id": 10227,
@@ -36968,10 +37873,7 @@ var outputTables = {
                 "atk": 6500,
                 "hp": 11510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10228": {
                 "id": 10228,
@@ -36979,10 +37881,7 @@ var outputTables = {
                 "atk": 6530,
                 "hp": 11560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10229": {
                 "id": 10229,
@@ -36990,10 +37889,7 @@ var outputTables = {
                 "atk": 6560,
                 "hp": 11610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10230": {
                 "id": 10230,
@@ -37001,10 +37897,7 @@ var outputTables = {
                 "atk": 6590,
                 "hp": 11660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10231": {
                 "id": 10231,
@@ -37012,10 +37905,7 @@ var outputTables = {
                 "atk": 6620,
                 "hp": 11710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10232": {
                 "id": 10232,
@@ -37023,10 +37913,7 @@ var outputTables = {
                 "atk": 6650,
                 "hp": 11760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10233": {
                 "id": 10233,
@@ -37034,10 +37921,7 @@ var outputTables = {
                 "atk": 6680,
                 "hp": 11810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10234": {
                 "id": 10234,
@@ -37045,10 +37929,7 @@ var outputTables = {
                 "atk": 6710,
                 "hp": 11860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10235": {
                 "id": 10235,
@@ -37056,10 +37937,7 @@ var outputTables = {
                 "atk": 6740,
                 "hp": 11910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10236": {
                 "id": 10236,
@@ -37067,10 +37945,7 @@ var outputTables = {
                 "atk": 6770,
                 "hp": 11960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10237": {
                 "id": 10237,
@@ -37078,10 +37953,7 @@ var outputTables = {
                 "atk": 6800,
                 "hp": 12010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10238": {
                 "id": 10238,
@@ -37089,10 +37961,7 @@ var outputTables = {
                 "atk": 6830,
                 "hp": 12060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10239": {
                 "id": 10239,
@@ -37100,10 +37969,7 @@ var outputTables = {
                 "atk": 6860,
                 "hp": 12110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10240": {
                 "id": 10240,
@@ -37111,10 +37977,7 @@ var outputTables = {
                 "atk": 6890,
                 "hp": 12160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10241": {
                 "id": 10241,
@@ -37122,10 +37985,7 @@ var outputTables = {
                 "atk": 6920,
                 "hp": 12210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10242": {
                 "id": 10242,
@@ -37133,10 +37993,7 @@ var outputTables = {
                 "atk": 6950,
                 "hp": 12260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10243": {
                 "id": 10243,
@@ -37144,10 +38001,7 @@ var outputTables = {
                 "atk": 6980,
                 "hp": 12310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10244": {
                 "id": 10244,
@@ -37155,10 +38009,7 @@ var outputTables = {
                 "atk": 7010,
                 "hp": 12360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10245": {
                 "id": 10245,
@@ -37166,10 +38017,7 @@ var outputTables = {
                 "atk": 7040,
                 "hp": 12410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10246": {
                 "id": 10246,
@@ -37177,10 +38025,7 @@ var outputTables = {
                 "atk": 7070,
                 "hp": 12460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10247": {
                 "id": 10247,
@@ -37188,10 +38033,7 @@ var outputTables = {
                 "atk": 7100,
                 "hp": 12510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10248": {
                 "id": 10248,
@@ -37199,10 +38041,7 @@ var outputTables = {
                 "atk": 7130,
                 "hp": 12560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10249": {
                 "id": 10249,
@@ -37210,10 +38049,7 @@ var outputTables = {
                 "atk": 7160,
                 "hp": 12610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10250": {
                 "id": 10250,
@@ -37221,10 +38057,7 @@ var outputTables = {
                 "atk": 7190,
                 "hp": 12660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10251": {
                 "id": 10251,
@@ -37232,10 +38065,7 @@ var outputTables = {
                 "atk": 7220,
                 "hp": 12710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10252": {
                 "id": 10252,
@@ -37243,10 +38073,7 @@ var outputTables = {
                 "atk": 7250,
                 "hp": 12760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10253": {
                 "id": 10253,
@@ -37254,10 +38081,7 @@ var outputTables = {
                 "atk": 7280,
                 "hp": 12810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10254": {
                 "id": 10254,
@@ -37265,10 +38089,7 @@ var outputTables = {
                 "atk": 7310,
                 "hp": 12860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10255": {
                 "id": 10255,
@@ -37276,10 +38097,7 @@ var outputTables = {
                 "atk": 7340,
                 "hp": 12910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10256": {
                 "id": 10256,
@@ -37287,10 +38105,7 @@ var outputTables = {
                 "atk": 7370,
                 "hp": 12960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10257": {
                 "id": 10257,
@@ -37298,10 +38113,7 @@ var outputTables = {
                 "atk": 7400,
                 "hp": 13010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10258": {
                 "id": 10258,
@@ -37309,10 +38121,7 @@ var outputTables = {
                 "atk": 7430,
                 "hp": 13060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10259": {
                 "id": 10259,
@@ -37320,10 +38129,7 @@ var outputTables = {
                 "atk": 7460,
                 "hp": 13110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10260": {
                 "id": 10260,
@@ -37331,10 +38137,7 @@ var outputTables = {
                 "atk": 7490,
                 "hp": 13160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10261": {
                 "id": 10261,
@@ -37342,10 +38145,7 @@ var outputTables = {
                 "atk": 7520,
                 "hp": 13210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10262": {
                 "id": 10262,
@@ -37353,10 +38153,7 @@ var outputTables = {
                 "atk": 7550,
                 "hp": 13260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10263": {
                 "id": 10263,
@@ -37364,10 +38161,7 @@ var outputTables = {
                 "atk": 7580,
                 "hp": 13310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10264": {
                 "id": 10264,
@@ -37375,10 +38169,7 @@ var outputTables = {
                 "atk": 7610,
                 "hp": 13360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10265": {
                 "id": 10265,
@@ -37386,10 +38177,7 @@ var outputTables = {
                 "atk": 7640,
                 "hp": 13410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10266": {
                 "id": 10266,
@@ -37397,10 +38185,7 @@ var outputTables = {
                 "atk": 7670,
                 "hp": 13460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10267": {
                 "id": 10267,
@@ -37408,10 +38193,7 @@ var outputTables = {
                 "atk": 7700,
                 "hp": 13510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10268": {
                 "id": 10268,
@@ -37419,10 +38201,7 @@ var outputTables = {
                 "atk": 7730,
                 "hp": 13560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10269": {
                 "id": 10269,
@@ -37430,10 +38209,7 @@ var outputTables = {
                 "atk": 7760,
                 "hp": 13610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10270": {
                 "id": 10270,
@@ -37441,10 +38217,7 @@ var outputTables = {
                 "atk": 7790,
                 "hp": 13660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10271": {
                 "id": 10271,
@@ -37452,10 +38225,7 @@ var outputTables = {
                 "atk": 7820,
                 "hp": 13710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10272": {
                 "id": 10272,
@@ -37463,10 +38233,7 @@ var outputTables = {
                 "atk": 7850,
                 "hp": 13760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10273": {
                 "id": 10273,
@@ -37474,10 +38241,7 @@ var outputTables = {
                 "atk": 7880,
                 "hp": 13810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10274": {
                 "id": 10274,
@@ -37485,10 +38249,7 @@ var outputTables = {
                 "atk": 7910,
                 "hp": 13860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10275": {
                 "id": 10275,
@@ -37496,10 +38257,7 @@ var outputTables = {
                 "atk": 7940,
                 "hp": 13910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10276": {
                 "id": 10276,
@@ -37507,10 +38265,7 @@ var outputTables = {
                 "atk": 7970,
                 "hp": 13960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10277": {
                 "id": 10277,
@@ -37518,10 +38273,7 @@ var outputTables = {
                 "atk": 8000,
                 "hp": 14010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10278": {
                 "id": 10278,
@@ -37529,10 +38281,7 @@ var outputTables = {
                 "atk": 8030,
                 "hp": 14060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10279": {
                 "id": 10279,
@@ -37540,10 +38289,7 @@ var outputTables = {
                 "atk": 8060,
                 "hp": 14110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10280": {
                 "id": 10280,
@@ -37551,10 +38297,7 @@ var outputTables = {
                 "atk": 8090,
                 "hp": 14160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10281": {
                 "id": 10281,
@@ -37562,10 +38305,7 @@ var outputTables = {
                 "atk": 8120,
                 "hp": 14210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10282": {
                 "id": 10282,
@@ -37573,10 +38313,7 @@ var outputTables = {
                 "atk": 8150,
                 "hp": 14260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10283": {
                 "id": 10283,
@@ -37584,10 +38321,7 @@ var outputTables = {
                 "atk": 8180,
                 "hp": 14310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10284": {
                 "id": 10284,
@@ -37595,10 +38329,7 @@ var outputTables = {
                 "atk": 8210,
                 "hp": 14360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10285": {
                 "id": 10285,
@@ -37606,10 +38337,7 @@ var outputTables = {
                 "atk": 8240,
                 "hp": 14410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10286": {
                 "id": 10286,
@@ -37617,10 +38345,7 @@ var outputTables = {
                 "atk": 8270,
                 "hp": 14460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10287": {
                 "id": 10287,
@@ -37628,10 +38353,7 @@ var outputTables = {
                 "atk": 8300,
                 "hp": 14510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10288": {
                 "id": 10288,
@@ -37639,10 +38361,7 @@ var outputTables = {
                 "atk": 8330,
                 "hp": 14560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10289": {
                 "id": 10289,
@@ -37650,10 +38369,7 @@ var outputTables = {
                 "atk": 8360,
                 "hp": 14610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10290": {
                 "id": 10290,
@@ -37661,10 +38377,7 @@ var outputTables = {
                 "atk": 8390,
                 "hp": 14660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10291": {
                 "id": 10291,
@@ -37672,10 +38385,7 @@ var outputTables = {
                 "atk": 8420,
                 "hp": 14710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10292": {
                 "id": 10292,
@@ -37683,10 +38393,7 @@ var outputTables = {
                 "atk": 8450,
                 "hp": 14760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10293": {
                 "id": 10293,
@@ -37694,10 +38401,7 @@ var outputTables = {
                 "atk": 8480,
                 "hp": 14810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10294": {
                 "id": 10294,
@@ -37705,10 +38409,7 @@ var outputTables = {
                 "atk": 8510,
                 "hp": 14860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10295": {
                 "id": 10295,
@@ -37716,10 +38417,7 @@ var outputTables = {
                 "atk": 8540,
                 "hp": 14910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10296": {
                 "id": 10296,
@@ -37727,10 +38425,7 @@ var outputTables = {
                 "atk": 8570,
                 "hp": 14960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10297": {
                 "id": 10297,
@@ -37738,10 +38433,7 @@ var outputTables = {
                 "atk": 8600,
                 "hp": 15010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10298": {
                 "id": 10298,
@@ -37749,10 +38441,7 @@ var outputTables = {
                 "atk": 8630,
                 "hp": 15060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10299": {
                 "id": 10299,
@@ -37760,10 +38449,7 @@ var outputTables = {
                 "atk": 8660,
                 "hp": 15110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10300": {
                 "id": 10300,
@@ -37771,10 +38457,7 @@ var outputTables = {
                 "atk": 8690,
                 "hp": 15160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10301": {
                 "id": 10301,
@@ -37782,10 +38465,7 @@ var outputTables = {
                 "atk": 8720,
                 "hp": 15210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10302": {
                 "id": 10302,
@@ -37793,10 +38473,7 @@ var outputTables = {
                 "atk": 8750,
                 "hp": 15260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10303": {
                 "id": 10303,
@@ -37804,10 +38481,7 @@ var outputTables = {
                 "atk": 8780,
                 "hp": 15310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10304": {
                 "id": 10304,
@@ -37815,10 +38489,7 @@ var outputTables = {
                 "atk": 8810,
                 "hp": 15360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10305": {
                 "id": 10305,
@@ -37826,10 +38497,7 @@ var outputTables = {
                 "atk": 8840,
                 "hp": 15410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10306": {
                 "id": 10306,
@@ -37837,10 +38505,7 @@ var outputTables = {
                 "atk": 8870,
                 "hp": 15460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10307": {
                 "id": 10307,
@@ -37848,10 +38513,7 @@ var outputTables = {
                 "atk": 8900,
                 "hp": 15510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10308": {
                 "id": 10308,
@@ -37859,10 +38521,7 @@ var outputTables = {
                 "atk": 8930,
                 "hp": 15560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10309": {
                 "id": 10309,
@@ -37870,10 +38529,7 @@ var outputTables = {
                 "atk": 8960,
                 "hp": 15610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10310": {
                 "id": 10310,
@@ -37881,10 +38537,7 @@ var outputTables = {
                 "atk": 8990,
                 "hp": 15660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10311": {
                 "id": 10311,
@@ -37892,10 +38545,7 @@ var outputTables = {
                 "atk": 9020,
                 "hp": 15710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10312": {
                 "id": 10312,
@@ -37903,10 +38553,7 @@ var outputTables = {
                 "atk": 9050,
                 "hp": 15760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10313": {
                 "id": 10313,
@@ -37914,10 +38561,7 @@ var outputTables = {
                 "atk": 9080,
                 "hp": 15810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10314": {
                 "id": 10314,
@@ -37925,10 +38569,7 @@ var outputTables = {
                 "atk": 9110,
                 "hp": 15860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10315": {
                 "id": 10315,
@@ -37936,10 +38577,7 @@ var outputTables = {
                 "atk": 9140,
                 "hp": 15910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10316": {
                 "id": 10316,
@@ -37947,10 +38585,7 @@ var outputTables = {
                 "atk": 9170,
                 "hp": 15960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10317": {
                 "id": 10317,
@@ -37958,10 +38593,7 @@ var outputTables = {
                 "atk": 9200,
                 "hp": 16010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10318": {
                 "id": 10318,
@@ -37969,10 +38601,7 @@ var outputTables = {
                 "atk": 9230,
                 "hp": 16060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10319": {
                 "id": 10319,
@@ -37980,10 +38609,7 @@ var outputTables = {
                 "atk": 9260,
                 "hp": 16110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10320": {
                 "id": 10320,
@@ -37991,10 +38617,7 @@ var outputTables = {
                 "atk": 9290,
                 "hp": 16160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10321": {
                 "id": 10321,
@@ -38002,10 +38625,7 @@ var outputTables = {
                 "atk": 9320,
                 "hp": 16210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10322": {
                 "id": 10322,
@@ -38013,10 +38633,7 @@ var outputTables = {
                 "atk": 9350,
                 "hp": 16260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10323": {
                 "id": 10323,
@@ -38024,10 +38641,7 @@ var outputTables = {
                 "atk": 9380,
                 "hp": 16310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10324": {
                 "id": 10324,
@@ -38035,10 +38649,7 @@ var outputTables = {
                 "atk": 9410,
                 "hp": 16360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10325": {
                 "id": 10325,
@@ -38046,10 +38657,7 @@ var outputTables = {
                 "atk": 9440,
                 "hp": 16410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10326": {
                 "id": 10326,
@@ -38057,10 +38665,7 @@ var outputTables = {
                 "atk": 9470,
                 "hp": 16460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10327": {
                 "id": 10327,
@@ -38068,10 +38673,7 @@ var outputTables = {
                 "atk": 9500,
                 "hp": 16510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10328": {
                 "id": 10328,
@@ -38079,10 +38681,7 @@ var outputTables = {
                 "atk": 9530,
                 "hp": 16560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10329": {
                 "id": 10329,
@@ -38090,10 +38689,7 @@ var outputTables = {
                 "atk": 9560,
                 "hp": 16610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10330": {
                 "id": 10330,
@@ -38101,10 +38697,7 @@ var outputTables = {
                 "atk": 9590,
                 "hp": 16660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10331": {
                 "id": 10331,
@@ -38112,10 +38705,7 @@ var outputTables = {
                 "atk": 9620,
                 "hp": 16710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10332": {
                 "id": 10332,
@@ -38123,10 +38713,7 @@ var outputTables = {
                 "atk": 9650,
                 "hp": 16760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10333": {
                 "id": 10333,
@@ -38134,10 +38721,7 @@ var outputTables = {
                 "atk": 9680,
                 "hp": 16810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10334": {
                 "id": 10334,
@@ -38145,10 +38729,7 @@ var outputTables = {
                 "atk": 9710,
                 "hp": 16860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10335": {
                 "id": 10335,
@@ -38156,10 +38737,7 @@ var outputTables = {
                 "atk": 9740,
                 "hp": 16910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10336": {
                 "id": 10336,
@@ -38167,10 +38745,7 @@ var outputTables = {
                 "atk": 9770,
                 "hp": 16960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10337": {
                 "id": 10337,
@@ -38178,10 +38753,7 @@ var outputTables = {
                 "atk": 9800,
                 "hp": 17010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10338": {
                 "id": 10338,
@@ -38189,10 +38761,7 @@ var outputTables = {
                 "atk": 9830,
                 "hp": 17060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10339": {
                 "id": 10339,
@@ -38200,10 +38769,7 @@ var outputTables = {
                 "atk": 9860,
                 "hp": 17110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10340": {
                 "id": 10340,
@@ -38211,10 +38777,7 @@ var outputTables = {
                 "atk": 9890,
                 "hp": 17160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10341": {
                 "id": 10341,
@@ -38222,10 +38785,7 @@ var outputTables = {
                 "atk": 9920,
                 "hp": 17210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10342": {
                 "id": 10342,
@@ -38233,10 +38793,7 @@ var outputTables = {
                 "atk": 9950,
                 "hp": 17260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10343": {
                 "id": 10343,
@@ -38244,10 +38801,7 @@ var outputTables = {
                 "atk": 9980,
                 "hp": 17310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10344": {
                 "id": 10344,
@@ -38255,10 +38809,7 @@ var outputTables = {
                 "atk": 10010,
                 "hp": 17360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10345": {
                 "id": 10345,
@@ -38266,10 +38817,7 @@ var outputTables = {
                 "atk": 10040,
                 "hp": 17410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10346": {
                 "id": 10346,
@@ -38277,10 +38825,7 @@ var outputTables = {
                 "atk": 10070,
                 "hp": 17460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10347": {
                 "id": 10347,
@@ -38288,10 +38833,7 @@ var outputTables = {
                 "atk": 10100,
                 "hp": 17510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10348": {
                 "id": 10348,
@@ -38299,10 +38841,7 @@ var outputTables = {
                 "atk": 10130,
                 "hp": 17560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10349": {
                 "id": 10349,
@@ -38310,10 +38849,7 @@ var outputTables = {
                 "atk": 10160,
                 "hp": 17610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10350": {
                 "id": 10350,
@@ -38321,10 +38857,7 @@ var outputTables = {
                 "atk": 10190,
                 "hp": 17660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10351": {
                 "id": 10351,
@@ -38332,10 +38865,7 @@ var outputTables = {
                 "atk": 10220,
                 "hp": 17710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10352": {
                 "id": 10352,
@@ -38343,10 +38873,7 @@ var outputTables = {
                 "atk": 10250,
                 "hp": 17760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10353": {
                 "id": 10353,
@@ -38354,10 +38881,7 @@ var outputTables = {
                 "atk": 10280,
                 "hp": 17810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10354": {
                 "id": 10354,
@@ -38365,10 +38889,7 @@ var outputTables = {
                 "atk": 10310,
                 "hp": 17860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10355": {
                 "id": 10355,
@@ -38376,10 +38897,7 @@ var outputTables = {
                 "atk": 10340,
                 "hp": 17910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10356": {
                 "id": 10356,
@@ -38387,10 +38905,7 @@ var outputTables = {
                 "atk": 10370,
                 "hp": 17960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10357": {
                 "id": 10357,
@@ -38398,10 +38913,7 @@ var outputTables = {
                 "atk": 10400,
                 "hp": 18010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10358": {
                 "id": 10358,
@@ -38409,10 +38921,7 @@ var outputTables = {
                 "atk": 10430,
                 "hp": 18060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10359": {
                 "id": 10359,
@@ -38420,10 +38929,7 @@ var outputTables = {
                 "atk": 10460,
                 "hp": 18110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10360": {
                 "id": 10360,
@@ -38431,10 +38937,7 @@ var outputTables = {
                 "atk": 10490,
                 "hp": 18160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10361": {
                 "id": 10361,
@@ -38442,10 +38945,7 @@ var outputTables = {
                 "atk": 10520,
                 "hp": 18210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10362": {
                 "id": 10362,
@@ -38453,10 +38953,7 @@ var outputTables = {
                 "atk": 10550,
                 "hp": 18260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10363": {
                 "id": 10363,
@@ -38464,10 +38961,7 @@ var outputTables = {
                 "atk": 10580,
                 "hp": 18310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10364": {
                 "id": 10364,
@@ -38475,10 +38969,7 @@ var outputTables = {
                 "atk": 10610,
                 "hp": 18360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10365": {
                 "id": 10365,
@@ -38486,10 +38977,7 @@ var outputTables = {
                 "atk": 10640,
                 "hp": 18410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10366": {
                 "id": 10366,
@@ -38497,10 +38985,7 @@ var outputTables = {
                 "atk": 10670,
                 "hp": 18460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10367": {
                 "id": 10367,
@@ -38508,10 +38993,7 @@ var outputTables = {
                 "atk": 10700,
                 "hp": 18510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10368": {
                 "id": 10368,
@@ -38519,10 +39001,7 @@ var outputTables = {
                 "atk": 10730,
                 "hp": 18560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10369": {
                 "id": 10369,
@@ -38530,10 +39009,7 @@ var outputTables = {
                 "atk": 10760,
                 "hp": 18610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10370": {
                 "id": 10370,
@@ -38541,10 +39017,7 @@ var outputTables = {
                 "atk": 10790,
                 "hp": 18660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10371": {
                 "id": 10371,
@@ -38552,10 +39025,7 @@ var outputTables = {
                 "atk": 10820,
                 "hp": 18710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10372": {
                 "id": 10372,
@@ -38563,10 +39033,7 @@ var outputTables = {
                 "atk": 10850,
                 "hp": 18760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10373": {
                 "id": 10373,
@@ -38574,10 +39041,7 @@ var outputTables = {
                 "atk": 10880,
                 "hp": 18810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10374": {
                 "id": 10374,
@@ -38585,10 +39049,7 @@ var outputTables = {
                 "atk": 10910,
                 "hp": 18860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10375": {
                 "id": 10375,
@@ -38596,10 +39057,7 @@ var outputTables = {
                 "atk": 10940,
                 "hp": 18910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10376": {
                 "id": 10376,
@@ -38607,10 +39065,7 @@ var outputTables = {
                 "atk": 10970,
                 "hp": 18960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10377": {
                 "id": 10377,
@@ -38618,10 +39073,7 @@ var outputTables = {
                 "atk": 11000,
                 "hp": 19010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10378": {
                 "id": 10378,
@@ -38629,10 +39081,7 @@ var outputTables = {
                 "atk": 11030,
                 "hp": 19060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10379": {
                 "id": 10379,
@@ -38640,10 +39089,7 @@ var outputTables = {
                 "atk": 11060,
                 "hp": 19110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10380": {
                 "id": 10380,
@@ -38651,10 +39097,7 @@ var outputTables = {
                 "atk": 11090,
                 "hp": 19160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10381": {
                 "id": 10381,
@@ -38662,10 +39105,7 @@ var outputTables = {
                 "atk": 11120,
                 "hp": 19210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10382": {
                 "id": 10382,
@@ -38673,10 +39113,7 @@ var outputTables = {
                 "atk": 11150,
                 "hp": 19260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10383": {
                 "id": 10383,
@@ -38684,10 +39121,7 @@ var outputTables = {
                 "atk": 11180,
                 "hp": 19310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10384": {
                 "id": 10384,
@@ -38695,10 +39129,7 @@ var outputTables = {
                 "atk": 11210,
                 "hp": 19360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10385": {
                 "id": 10385,
@@ -38706,10 +39137,7 @@ var outputTables = {
                 "atk": 11240,
                 "hp": 19410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10386": {
                 "id": 10386,
@@ -38717,10 +39145,7 @@ var outputTables = {
                 "atk": 11270,
                 "hp": 19460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10387": {
                 "id": 10387,
@@ -38728,10 +39153,7 @@ var outputTables = {
                 "atk": 11300,
                 "hp": 19510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10388": {
                 "id": 10388,
@@ -38739,10 +39161,7 @@ var outputTables = {
                 "atk": 11330,
                 "hp": 19560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10389": {
                 "id": 10389,
@@ -38750,10 +39169,7 @@ var outputTables = {
                 "atk": 11360,
                 "hp": 19610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10390": {
                 "id": 10390,
@@ -38761,10 +39177,7 @@ var outputTables = {
                 "atk": 11390,
                 "hp": 19660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10391": {
                 "id": 10391,
@@ -38772,10 +39185,7 @@ var outputTables = {
                 "atk": 11420,
                 "hp": 19710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10392": {
                 "id": 10392,
@@ -38783,10 +39193,7 @@ var outputTables = {
                 "atk": 11450,
                 "hp": 19760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10393": {
                 "id": 10393,
@@ -38794,10 +39201,7 @@ var outputTables = {
                 "atk": 11480,
                 "hp": 19810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10394": {
                 "id": 10394,
@@ -38805,10 +39209,7 @@ var outputTables = {
                 "atk": 11510,
                 "hp": 19860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10395": {
                 "id": 10395,
@@ -38816,10 +39217,7 @@ var outputTables = {
                 "atk": 11540,
                 "hp": 19910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10396": {
                 "id": 10396,
@@ -38827,10 +39225,7 @@ var outputTables = {
                 "atk": 11570,
                 "hp": 19960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10397": {
                 "id": 10397,
@@ -38838,10 +39233,7 @@ var outputTables = {
                 "atk": 11600,
                 "hp": 20010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10398": {
                 "id": 10398,
@@ -38849,10 +39241,7 @@ var outputTables = {
                 "atk": 11630,
                 "hp": 20060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10399": {
                 "id": 10399,
@@ -38860,10 +39249,7 @@ var outputTables = {
                 "atk": 11660,
                 "hp": 20110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10400": {
                 "id": 10400,
@@ -38871,10 +39257,7 @@ var outputTables = {
                 "atk": 11690,
                 "hp": 20160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10401": {
                 "id": 10401,
@@ -38882,10 +39265,7 @@ var outputTables = {
                 "atk": 11720,
                 "hp": 20210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10402": {
                 "id": 10402,
@@ -38893,10 +39273,7 @@ var outputTables = {
                 "atk": 11750,
                 "hp": 20260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10403": {
                 "id": 10403,
@@ -38904,10 +39281,7 @@ var outputTables = {
                 "atk": 11780,
                 "hp": 20310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10404": {
                 "id": 10404,
@@ -38915,10 +39289,7 @@ var outputTables = {
                 "atk": 11810,
                 "hp": 20360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10405": {
                 "id": 10405,
@@ -38926,10 +39297,7 @@ var outputTables = {
                 "atk": 11840,
                 "hp": 20410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10406": {
                 "id": 10406,
@@ -38937,10 +39305,7 @@ var outputTables = {
                 "atk": 11870,
                 "hp": 20460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10407": {
                 "id": 10407,
@@ -38948,10 +39313,7 @@ var outputTables = {
                 "atk": 11900,
                 "hp": 20510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10408": {
                 "id": 10408,
@@ -38959,10 +39321,7 @@ var outputTables = {
                 "atk": 11930,
                 "hp": 20560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10409": {
                 "id": 10409,
@@ -38970,10 +39329,7 @@ var outputTables = {
                 "atk": 11960,
                 "hp": 20610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10410": {
                 "id": 10410,
@@ -38981,10 +39337,7 @@ var outputTables = {
                 "atk": 11990,
                 "hp": 20660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10411": {
                 "id": 10411,
@@ -38992,10 +39345,7 @@ var outputTables = {
                 "atk": 12020,
                 "hp": 20710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10412": {
                 "id": 10412,
@@ -39003,10 +39353,7 @@ var outputTables = {
                 "atk": 12050,
                 "hp": 20760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10413": {
                 "id": 10413,
@@ -39014,10 +39361,7 @@ var outputTables = {
                 "atk": 12080,
                 "hp": 20810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10414": {
                 "id": 10414,
@@ -39025,10 +39369,7 @@ var outputTables = {
                 "atk": 12110,
                 "hp": 20860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10415": {
                 "id": 10415,
@@ -39036,10 +39377,7 @@ var outputTables = {
                 "atk": 12140,
                 "hp": 20910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10416": {
                 "id": 10416,
@@ -39047,10 +39385,7 @@ var outputTables = {
                 "atk": 12170,
                 "hp": 20960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10417": {
                 "id": 10417,
@@ -39058,10 +39393,7 @@ var outputTables = {
                 "atk": 12200,
                 "hp": 21010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10418": {
                 "id": 10418,
@@ -39069,10 +39401,7 @@ var outputTables = {
                 "atk": 12230,
                 "hp": 21060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10419": {
                 "id": 10419,
@@ -39080,10 +39409,7 @@ var outputTables = {
                 "atk": 12260,
                 "hp": 21110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10420": {
                 "id": 10420,
@@ -39091,10 +39417,7 @@ var outputTables = {
                 "atk": 12290,
                 "hp": 21160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10421": {
                 "id": 10421,
@@ -39102,10 +39425,7 @@ var outputTables = {
                 "atk": 12320,
                 "hp": 21210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10422": {
                 "id": 10422,
@@ -39113,10 +39433,7 @@ var outputTables = {
                 "atk": 12350,
                 "hp": 21260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10423": {
                 "id": 10423,
@@ -39124,10 +39441,7 @@ var outputTables = {
                 "atk": 12380,
                 "hp": 21310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10424": {
                 "id": 10424,
@@ -39135,10 +39449,7 @@ var outputTables = {
                 "atk": 12410,
                 "hp": 21360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10425": {
                 "id": 10425,
@@ -39146,10 +39457,7 @@ var outputTables = {
                 "atk": 12440,
                 "hp": 21410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10426": {
                 "id": 10426,
@@ -39157,10 +39465,7 @@ var outputTables = {
                 "atk": 12470,
                 "hp": 21460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10427": {
                 "id": 10427,
@@ -39168,10 +39473,7 @@ var outputTables = {
                 "atk": 12500,
                 "hp": 21510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10428": {
                 "id": 10428,
@@ -39179,10 +39481,7 @@ var outputTables = {
                 "atk": 12530,
                 "hp": 21560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10429": {
                 "id": 10429,
@@ -39190,10 +39489,7 @@ var outputTables = {
                 "atk": 12560,
                 "hp": 21610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10430": {
                 "id": 10430,
@@ -39201,10 +39497,7 @@ var outputTables = {
                 "atk": 12590,
                 "hp": 21660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10431": {
                 "id": 10431,
@@ -39212,10 +39505,7 @@ var outputTables = {
                 "atk": 12620,
                 "hp": 21710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10432": {
                 "id": 10432,
@@ -39223,10 +39513,7 @@ var outputTables = {
                 "atk": 12650,
                 "hp": 21760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10433": {
                 "id": 10433,
@@ -39234,10 +39521,7 @@ var outputTables = {
                 "atk": 12680,
                 "hp": 21810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10434": {
                 "id": 10434,
@@ -39245,10 +39529,7 @@ var outputTables = {
                 "atk": 12710,
                 "hp": 21860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10435": {
                 "id": 10435,
@@ -39256,10 +39537,7 @@ var outputTables = {
                 "atk": 12740,
                 "hp": 21910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10436": {
                 "id": 10436,
@@ -39267,10 +39545,7 @@ var outputTables = {
                 "atk": 12770,
                 "hp": 21960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10437": {
                 "id": 10437,
@@ -39278,10 +39553,7 @@ var outputTables = {
                 "atk": 12800,
                 "hp": 22010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10438": {
                 "id": 10438,
@@ -39289,10 +39561,7 @@ var outputTables = {
                 "atk": 12830,
                 "hp": 22060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10439": {
                 "id": 10439,
@@ -39300,10 +39569,7 @@ var outputTables = {
                 "atk": 12860,
                 "hp": 22110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10440": {
                 "id": 10440,
@@ -39311,10 +39577,7 @@ var outputTables = {
                 "atk": 12890,
                 "hp": 22160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10441": {
                 "id": 10441,
@@ -39322,10 +39585,7 @@ var outputTables = {
                 "atk": 12920,
                 "hp": 22210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10442": {
                 "id": 10442,
@@ -39333,10 +39593,7 @@ var outputTables = {
                 "atk": 12950,
                 "hp": 22260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10443": {
                 "id": 10443,
@@ -39344,10 +39601,7 @@ var outputTables = {
                 "atk": 12980,
                 "hp": 22310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10444": {
                 "id": 10444,
@@ -39355,10 +39609,7 @@ var outputTables = {
                 "atk": 13010,
                 "hp": 22360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10445": {
                 "id": 10445,
@@ -39366,10 +39617,7 @@ var outputTables = {
                 "atk": 13040,
                 "hp": 22410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10446": {
                 "id": 10446,
@@ -39377,10 +39625,7 @@ var outputTables = {
                 "atk": 13070,
                 "hp": 22460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10447": {
                 "id": 10447,
@@ -39388,10 +39633,7 @@ var outputTables = {
                 "atk": 13100,
                 "hp": 22510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10448": {
                 "id": 10448,
@@ -39399,10 +39641,7 @@ var outputTables = {
                 "atk": 13130,
                 "hp": 22560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10449": {
                 "id": 10449,
@@ -39410,10 +39649,7 @@ var outputTables = {
                 "atk": 13160,
                 "hp": 22610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10450": {
                 "id": 10450,
@@ -39421,10 +39657,7 @@ var outputTables = {
                 "atk": 13190,
                 "hp": 22660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10451": {
                 "id": 10451,
@@ -39432,10 +39665,7 @@ var outputTables = {
                 "atk": 13220,
                 "hp": 22710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10452": {
                 "id": 10452,
@@ -39443,10 +39673,7 @@ var outputTables = {
                 "atk": 13250,
                 "hp": 22760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10453": {
                 "id": 10453,
@@ -39454,10 +39681,7 @@ var outputTables = {
                 "atk": 13280,
                 "hp": 22810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10454": {
                 "id": 10454,
@@ -39465,10 +39689,7 @@ var outputTables = {
                 "atk": 13310,
                 "hp": 22860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10455": {
                 "id": 10455,
@@ -39476,10 +39697,7 @@ var outputTables = {
                 "atk": 13340,
                 "hp": 22910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10456": {
                 "id": 10456,
@@ -39487,10 +39705,7 @@ var outputTables = {
                 "atk": 13370,
                 "hp": 22960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10457": {
                 "id": 10457,
@@ -39498,10 +39713,7 @@ var outputTables = {
                 "atk": 13400,
                 "hp": 23010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10458": {
                 "id": 10458,
@@ -39509,10 +39721,7 @@ var outputTables = {
                 "atk": 13430,
                 "hp": 23060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10459": {
                 "id": 10459,
@@ -39520,10 +39729,7 @@ var outputTables = {
                 "atk": 13460,
                 "hp": 23110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10460": {
                 "id": 10460,
@@ -39531,10 +39737,7 @@ var outputTables = {
                 "atk": 13490,
                 "hp": 23160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10461": {
                 "id": 10461,
@@ -39542,10 +39745,7 @@ var outputTables = {
                 "atk": 13520,
                 "hp": 23210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10462": {
                 "id": 10462,
@@ -39553,10 +39753,7 @@ var outputTables = {
                 "atk": 13550,
                 "hp": 23260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10463": {
                 "id": 10463,
@@ -39564,10 +39761,7 @@ var outputTables = {
                 "atk": 13580,
                 "hp": 23310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10464": {
                 "id": 10464,
@@ -39575,10 +39769,7 @@ var outputTables = {
                 "atk": 13610,
                 "hp": 23360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10465": {
                 "id": 10465,
@@ -39586,10 +39777,7 @@ var outputTables = {
                 "atk": 13640,
                 "hp": 23410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10466": {
                 "id": 10466,
@@ -39597,10 +39785,7 @@ var outputTables = {
                 "atk": 13670,
                 "hp": 23460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10467": {
                 "id": 10467,
@@ -39608,10 +39793,7 @@ var outputTables = {
                 "atk": 13700,
                 "hp": 23510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10468": {
                 "id": 10468,
@@ -39619,10 +39801,7 @@ var outputTables = {
                 "atk": 13730,
                 "hp": 23560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10469": {
                 "id": 10469,
@@ -39630,10 +39809,7 @@ var outputTables = {
                 "atk": 13760,
                 "hp": 23610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10470": {
                 "id": 10470,
@@ -39641,10 +39817,7 @@ var outputTables = {
                 "atk": 13790,
                 "hp": 23660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10471": {
                 "id": 10471,
@@ -39652,10 +39825,7 @@ var outputTables = {
                 "atk": 13820,
                 "hp": 23710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 804
+                "crit_rate": 5
             },
             "10472": {
                 "id": 10472,
@@ -39663,10 +39833,7 @@ var outputTables = {
                 "atk": 13850,
                 "hp": 23760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10473": {
                 "id": 10473,
@@ -39674,10 +39841,7 @@ var outputTables = {
                 "atk": 13880,
                 "hp": 23810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 805
+                "crit_rate": 5
             },
             "10474": {
                 "id": 10474,
@@ -39685,10 +39849,7 @@ var outputTables = {
                 "atk": 13910,
                 "hp": 23860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10475": {
                 "id": 10475,
@@ -39696,10 +39857,7 @@ var outputTables = {
                 "atk": 13940,
                 "hp": 23910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10476": {
                 "id": 10476,
@@ -39707,10 +39865,7 @@ var outputTables = {
                 "atk": 13970,
                 "hp": 23960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10477": {
                 "id": 10477,
@@ -39718,10 +39873,7 @@ var outputTables = {
                 "atk": 14000,
                 "hp": 24010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 502
+                "crit_rate": 5
             },
             "10478": {
                 "id": 10478,
@@ -39729,10 +39881,7 @@ var outputTables = {
                 "atk": 14030,
                 "hp": 24060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10479": {
                 "id": 10479,
@@ -39740,10 +39889,7 @@ var outputTables = {
                 "atk": 14060,
                 "hp": 24110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10480": {
                 "id": 10480,
@@ -39751,10 +39897,7 @@ var outputTables = {
                 "atk": 14090,
                 "hp": 24160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10481": {
                 "id": 10481,
@@ -39762,10 +39905,7 @@ var outputTables = {
                 "atk": 14120,
                 "hp": 24210,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 5
             },
             "10482": {
                 "id": 10482,
@@ -39773,10 +39913,7 @@ var outputTables = {
                 "atk": 14150,
                 "hp": 24260,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10483": {
                 "id": 10483,
@@ -39784,10 +39921,7 @@ var outputTables = {
                 "atk": 14180,
                 "hp": 24310,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 5
             },
             "10484": {
                 "id": 10484,
@@ -39795,10 +39929,7 @@ var outputTables = {
                 "atk": 14210,
                 "hp": 24360,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 5
             },
             "10485": {
                 "id": 10485,
@@ -39806,10 +39937,7 @@ var outputTables = {
                 "atk": 14240,
                 "hp": 24410,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10486": {
                 "id": 10486,
@@ -39817,10 +39945,7 @@ var outputTables = {
                 "atk": 14270,
                 "hp": 24460,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 5
             },
             "10487": {
                 "id": 10487,
@@ -39828,10 +39953,7 @@ var outputTables = {
                 "atk": 14300,
                 "hp": 24510,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 5
             },
             "10488": {
                 "id": 10488,
@@ -39839,10 +39961,7 @@ var outputTables = {
                 "atk": 14330,
                 "hp": 24560,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 5
             },
             "10489": {
                 "id": 10489,
@@ -39850,10 +39969,7 @@ var outputTables = {
                 "atk": 14360,
                 "hp": 24610,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 5
             },
             "10490": {
                 "id": 10490,
@@ -39861,10 +39977,7 @@ var outputTables = {
                 "atk": 14390,
                 "hp": 24660,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10491": {
                 "id": 10491,
@@ -39872,10 +39985,7 @@ var outputTables = {
                 "atk": 14420,
                 "hp": 24710,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 5
             },
             "10492": {
                 "id": 10492,
@@ -39883,10 +39993,7 @@ var outputTables = {
                 "atk": 14450,
                 "hp": 24760,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 5
             },
             "10493": {
                 "id": 10493,
@@ -39894,10 +40001,7 @@ var outputTables = {
                 "atk": 14480,
                 "hp": 24810,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 5
             },
             "10494": {
                 "id": 10494,
@@ -39905,10 +40009,7 @@ var outputTables = {
                 "atk": 14510,
                 "hp": 24860,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 5
             },
             "10495": {
                 "id": 10495,
@@ -39916,10 +40017,7 @@ var outputTables = {
                 "atk": 14540,
                 "hp": 24910,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "10496": {
                 "id": 10496,
@@ -39927,10 +40025,7 @@ var outputTables = {
                 "atk": 14570,
                 "hp": 24960,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 5
             },
             "10497": {
                 "id": 10497,
@@ -39938,10 +40033,7 @@ var outputTables = {
                 "atk": 14600,
                 "hp": 25010,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 5
             },
             "10498": {
                 "id": 10498,
@@ -39949,10 +40041,7 @@ var outputTables = {
                 "atk": 14630,
                 "hp": 25060,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 5
             },
             "10499": {
                 "id": 10499,
@@ -39960,10 +40049,7 @@ var outputTables = {
                 "atk": 14660,
                 "hp": 25110,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 5
             },
             "10500": {
                 "id": 10500,
@@ -39971,10 +40057,7 @@ var outputTables = {
                 "atk": 14690,
                 "hp": 25160,
                 "dodge_rate": 5,
-                "crit_rate": 5,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 5
             },
             "20000": {
                 "id": 20000,
@@ -39990,10 +40073,7 @@ var outputTables = {
                 "atk": 714,
                 "hp": 1784,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 800
+                "crit_rate": 10
             },
             "20002": {
                 "id": 20002,
@@ -40001,10 +40081,7 @@ var outputTables = {
                 "atk": 1116,
                 "hp": 2789,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 10
             },
             "20003": {
                 "id": 20003,
@@ -40012,10 +40089,7 @@ var outputTables = {
                 "atk": 1702,
                 "hp": 4251,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 801
+                "crit_rate": 10
             },
             "20004": {
                 "id": 20004,
@@ -40023,10 +40097,7 @@ var outputTables = {
                 "atk": 2529,
                 "hp": 6320,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 700
+                "crit_rate": 10
             },
             "20005": {
                 "id": 20005,
@@ -40034,10 +40105,7 @@ var outputTables = {
                 "atk": 3910,
                 "hp": 9773,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 10
             },
             "20006": {
                 "id": 20006,
@@ -40045,10 +40113,7 @@ var outputTables = {
                 "atk": 5510,
                 "hp": 13761,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 400
+                "crit_rate": 10
             },
             "20007": {
                 "id": 20007,
@@ -40056,10 +40121,7 @@ var outputTables = {
                 "atk": 7568,
                 "hp": 18901,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 500
+                "crit_rate": 10
             },
             "20008": {
                 "id": 20008,
@@ -40067,10 +40129,7 @@ var outputTables = {
                 "atk": 9648,
                 "hp": 24094,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 600
+                "crit_rate": 10
             },
             "20009": {
                 "id": 20009,
@@ -40078,10 +40137,7 @@ var outputTables = {
                 "atk": 10814,
                 "hp": 28084,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 401
+                "crit_rate": 10
             },
             "20010": {
                 "id": 20010,
@@ -40089,10 +40145,7 @@ var outputTables = {
                 "atk": 12417,
                 "hp": 32247,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 10
             },
             "20011": {
                 "id": 20011,
@@ -40100,10 +40153,7 @@ var outputTables = {
                 "atk": 15656,
                 "hp": 40666,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 1,
-                "normal_atk_id": 8,
-                "effect_id": 802
+                "crit_rate": 10
             },
             "20012": {
                 "id": 20012,
@@ -40111,10 +40161,7 @@ var outputTables = {
                 "atk": 19426,
                 "hp": 50462,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 7,
-                "normal_atk_id": 4,
-                "effect_id": 300
+                "crit_rate": 10
             },
             "20013": {
                 "id": 20013,
@@ -40122,10 +40169,7 @@ var outputTables = {
                 "atk": 23718,
                 "hp": 61610,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 1,
-                "normal_atk_id": 9,
-                "effect_id": 803
+                "crit_rate": 10
             },
             "20014": {
                 "id": 20014,
@@ -40133,10 +40177,7 @@ var outputTables = {
                 "atk": 27450,
                 "hp": 71301,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 4,
-                "normal_atk_id": 5,
-                "effect_id": 701
+                "crit_rate": 10
             },
             "20015": {
                 "id": 20015,
@@ -40144,10 +40185,7 @@ var outputTables = {
                 "atk": 32307,
                 "hp": 81000,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 9,
-                "normal_atk_id": 6,
-                "effect_id": 301
+                "crit_rate": 10
             },
             "20016": {
                 "id": 20016,
@@ -40155,10 +40193,7 @@ var outputTables = {
                 "atk": 38899,
                 "hp": 97528,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 6,
-                "normal_atk_id": 7,
-                "effect_id": 402
+                "crit_rate": 10
             },
             "20017": {
                 "id": 20017,
@@ -40166,10 +40201,7 @@ var outputTables = {
                 "atk": 46089,
                 "hp": 115552,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 2,
-                "normal_atk_id": 2,
-                "effect_id": 501
+                "crit_rate": 10
             },
             "20018": {
                 "id": 20018,
@@ -40177,10 +40209,7 @@ var outputTables = {
                 "atk": 52117,
                 "hp": 130667,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 3,
-                "normal_atk_id": 5,
-                "effect_id": 601
+                "crit_rate": 10
             },
             "20019": {
                 "id": 20019,
@@ -40188,10 +40217,7 @@ var outputTables = {
                 "atk": 58384,
                 "hp": 146383,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 5,
-                "normal_atk_id": 7,
-                "effect_id": 403
+                "crit_rate": 10
             },
             "20020": {
                 "id": 20020,
@@ -40199,10 +40225,7 @@ var outputTables = {
                 "atk": 60745,
                 "hp": 150945,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 10,
-                "normal_atk_id": 4,
-                "effect_id": 301
+                "crit_rate": 10
             },
             "30001": {
                 "id": 30001,
@@ -40210,8 +40233,7 @@ var outputTables = {
                 "atk": 3910,
                 "hp": 9773,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "normal_atk_id": 8
+                "crit_rate": 10
             },
             "30002": {
                 "id": 30002,
@@ -40219,10 +40241,7 @@ var outputTables = {
                 "atk": 4060,
                 "hp": 9923,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 1,
-                "normal_atk_id": 4,
-                "effect_id": 801
+                "crit_rate": 10
             },
             "30003": {
                 "id": 30003,
@@ -40230,8 +40249,7 @@ var outputTables = {
                 "atk": 10814,
                 "hp": 28084,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "normal_atk_id": 9
+                "crit_rate": 10
             },
             "30004": {
                 "id": 30004,
@@ -40239,10 +40257,7 @@ var outputTables = {
                 "atk": 10964,
                 "hp": 28234,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 7,
-                "normal_atk_id": 5,
-                "effect_id": 300
+                "crit_rate": 10
             },
             "30005": {
                 "id": 30005,
@@ -40250,8 +40265,7 @@ var outputTables = {
                 "atk": 23718,
                 "hp": 61610,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "normal_atk_id": 6
+                "crit_rate": 10
             },
             "30006": {
                 "id": 30006,
@@ -40259,10 +40273,7 @@ var outputTables = {
                 "atk": 24038,
                 "hp": 61760,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 4,
-                "normal_atk_id": 7,
-                "effect_id": 700
+                "crit_rate": 10
             },
             "30007": {
                 "id": 30007,
@@ -40270,8 +40281,7 @@ var outputTables = {
                 "atk": 46089,
                 "hp": 115552,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "normal_atk_id": 2
+                "crit_rate": 10
             },
             "30008": {
                 "id": 30008,
@@ -40279,10 +40289,7 @@ var outputTables = {
                 "atk": 46249,
                 "hp": 115712,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 2,
-                "normal_atk_id": 5,
-                "effect_id": 500
+                "crit_rate": 10
             },
             "30009": {
                 "id": 30009,
@@ -40290,8 +40297,7 @@ var outputTables = {
                 "atk": 58384,
                 "hp": 146383,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "normal_atk_id": 7
+                "crit_rate": 10
             },
             "30010": {
                 "id": 30010,
@@ -40299,10 +40305,7 @@ var outputTables = {
                 "atk": 60745,
                 "hp": 150945,
                 "dodge_rate": 10,
-                "crit_rate": 10,
-                "skill_id": 6,
-                "normal_atk_id": 4,
-                "effect_id": 401
+                "crit_rate": 10
             }
         }
     },
@@ -49443,4 +49446,4 @@ var outputTables = {
             }
         }
     }
-}
+};

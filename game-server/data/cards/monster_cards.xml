@@ -18,10 +18,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6180</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>600</WindowTopX>
-  <WindowTopY>1360</WindowTopY>
+  <WindowHeight>8620</WindowHeight>
+  <WindowWidth>28120</WindowWidth>
+  <WindowTopX>2380</WindowTopX>
+  <WindowTopY>2080</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -7103,9 +7103,9 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">碧海袭卷</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="Number">800</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10044</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="Number">1001</Data></Cell>
+    <Cell><Data ss:Type="Number">1800</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">20000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40001</Data></Cell>
@@ -7117,9 +7117,9 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">万魁拳</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="Number">803</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10046</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="Number">1002</Data></Cell>
+    <Cell><Data ss:Type="Number">1801</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">20001</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40002</Data></Cell>
@@ -7131,9 +7131,9 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">神降天怒</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">700</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10047</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="Number">1003</Data></Cell>
+    <Cell><Data ss:Type="Number">1700</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">20002</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40003</Data></Cell>
@@ -7145,7 +7145,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10036</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10048</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40004</Data></Cell>
@@ -7157,7 +7157,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s76"/>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10037</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10049</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40005</Data></Cell>
@@ -7169,7 +7169,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s76"/>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10040</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10050</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"/>
@@ -7211,7 +7211,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>2</SplitHorizontal>
-   <TopRowBottomPane>527</TopRowBottomPane>
+   <TopRowBottomPane>526</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -7229,7 +7229,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>537</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

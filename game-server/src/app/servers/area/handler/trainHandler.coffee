@@ -463,7 +463,7 @@ Handler::starUpgrade = (msg, session, next) ->
             type: 0,
             validDuration: 10 / 60
           }
-          msgQueue.push(msg);
+          msgQueue.push(msg)
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()

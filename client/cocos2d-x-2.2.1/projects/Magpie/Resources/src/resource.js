@@ -260,7 +260,8 @@ var main_scene_image = {
     button43: main_scene_path + "button43.png",
     button44: main_scene_path + "button44.png",
     button44s: main_scene_path + "button44s.png",
-//    button45: main_scene_path + "button45.png",
+    button45: main_scene_path + "button45.png",
+    button45s: main_scene_path + "button45s.png",
     button46: main_scene_path + "button46.png",
     button46s: main_scene_path + "button46s.png",
     button47: main_scene_path + "button47.png",
@@ -317,6 +318,8 @@ var main_scene_image = {
     button72s: main_scene_path + "button72s.png",
     button73: main_scene_path + "button73.png",
     button73s: main_scene_path + "button73s.png",
+    button74: main_scene_path + "button74.png",
+    button74s: main_scene_path + "button74s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -728,6 +731,7 @@ var main_scene_image = {
     icon410: main_scene_path + "icon410.png",
     icon411: main_scene_path + "icon411.png",
     icon412: main_scene_path + "icon412.png",
+    icon413: main_scene_path + "icon413.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",

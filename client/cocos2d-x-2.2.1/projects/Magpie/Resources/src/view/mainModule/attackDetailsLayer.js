@@ -79,16 +79,7 @@ var AttackDetailsLayer = LazyLayer.extend({
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        skyLabel.setContentSize(cc.size(216, 300));
-
-        var playbackItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon409,
-            this._onClickPlayback,
-            this
-        );
-        playbackItem.setPosition(cc.p(108, 240));
+        skyLabel.setContentSize(cc.size(216, 200));
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -108,7 +99,7 @@ var AttackDetailsLayer = LazyLayer.extend({
         );
         detailItem.setPosition(cc.p(108, 60));
 
-        var skyMenu = cc.Menu.create(detailItem, sendMessageItem, playbackItem);
+        var skyMenu = cc.Menu.create(detailItem, sendMessageItem);
         skyMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 2);
         skyMenu.setPosition(cc.p(0, 0));
         skyLabel.addChild(skyMenu);
@@ -259,6 +250,16 @@ var AttackDetailsLayer = LazyLayer.extend({
                 rightBracket.setPosition(cc.p(x, y - 40));
                 scrollViewLayer.addChild(rightBracket);
             }
+
+            var playbackItem = cc.MenuItemImage.create(
+                main_scene_image.button74,
+                main_scene_image.button74s,
+                this._onClickPlayback(i),
+                this
+            );
+            playbackItem.setPosition(cc.p(540, y - 10));
+            playbackItem.setScale(0.8);
+            menu.addChild(playbackItem);
         }
 
         this._scrollView = cc.ScrollView.create(this._attackDetailsLayerFit.scrollViewSize, scrollViewLayer);
@@ -295,17 +296,20 @@ var AttackDetailsLayer = LazyLayer.extend({
         this.removeFromParent();
     },
 
-    _onClickPlayback: function () {
-        cc.log("AttackDetailsLayer _onClickPlayback");
+    _onClickPlayback: function (index) {
+        var that = this;
+        return function () {
+            cc.log("AttackDetailsLayer _onClickPlayback: " + index);
 
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var details = this._detailsList[this._selectId];
+            var details = that._detailsList[index];
 
-        if (details) {
-            gameData.message.playback(details.battleLogId);
-        } else {
-            TipLayer.tip("找不到该战报");
+            if (details) {
+                gameData.message.playback(details.battleLogId);
+            } else {
+                TipLayer.tip("找不到该战报");
+            }
         }
     },
 

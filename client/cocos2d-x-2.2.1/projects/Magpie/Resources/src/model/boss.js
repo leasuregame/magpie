@@ -124,6 +124,7 @@ var Boss = Entity.extend({
                 cc.log("Boss updateBossList success");
 
                 that.set("bossList", data.msg);
+                that._updateCdAndBoss();
 
                 cb();
             } else {
@@ -227,12 +228,6 @@ var Boss = Entity.extend({
                 that.set("cd", msg.cd);
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
-
-                var rewards = msg.battleLog.rewards;
-
-                for (var key in rewards) {
-                    gameData.player.add(key, rewards[key]);
-                }
 
                 cb(battleLogId);
             } else {

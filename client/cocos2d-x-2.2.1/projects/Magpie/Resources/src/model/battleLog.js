@@ -54,9 +54,10 @@ var BattleLog = Entity.extend({
             this._reward = {};
         }
 
-       if (battleLog.isFirstTournament) {
+        if (battleLog.isFirstTournament) {
             this.set("isFirstTournament", true);
-       }
+        }
+        
         var player = gameData.player;
         var spirit = gameData.spirit;
         var cardList = gameData.cardList;
@@ -65,6 +66,9 @@ var BattleLog = Entity.extend({
             for (var key in this._reward) {
                 if (this._reward[key]) {
                     switch (key) {
+                        case "power" :
+                            player.add("power", this._reward[key]);
+                            break;
                         case "money" :
                             player.add("money", this._reward[key]);
                             break;
@@ -80,8 +84,17 @@ var BattleLog = Entity.extend({
                         case "energy" :
                             player.add("energy", this._reward[key]);
                             break;
+                        case "honor" :
+                            player.add("honor", this._reward[key]);
+                            break;
+                        case "superHonor" :
+                            player.add("superHonor", this._reward[key]);
+                            break;
                         case "skillPoint" :
                             player.add("skillPoint", this._reward[key]);
+                            break;
+                        case "speaker" :
+                            player.add("speaker", this._reward[key]);
                             break;
                         case "totalSpirit" :
                             spirit.add("exp", this._reward[key]);

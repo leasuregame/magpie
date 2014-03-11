@@ -624,7 +624,7 @@ var ExploreLayer = cc.Layer.extend({
                                 // 加入boss出现事件
                                 var bossEffect = cc.BuilderReader.load(main_scene_image.uiEffect89, that);
                                 bossEffect.setPosition(gameFit.GAME_MIDPOINT);
-                                that.addChild(bossEffect);
+                                that.addChild(bossEffect, 2);
 
                                 bossEffect.animationManager.setCompletedAnimationCallback(that, function () {
                                     bossEffect.removeFromParent();

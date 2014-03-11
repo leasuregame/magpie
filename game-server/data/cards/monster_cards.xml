@@ -18,7 +18,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9940</WindowHeight>
+  <WindowHeight>6180</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>600</WindowTopX>
   <WindowTopY>1360</WindowTopY>
@@ -37,8 +37,7 @@
   <Style ss:ID="s62" ss:Name="常规_怪物卡牌配置表">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -54,8 +53,7 @@
   <Style ss:ID="s64" ss:Name="常规_神仙卡牌配置表_1">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -63,8 +61,7 @@
   <Style ss:ID="s65">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -72,8 +69,7 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -81,8 +77,7 @@
   <Style ss:ID="s68" ss:Parent="s64">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -95,8 +90,7 @@
   <Style ss:ID="s71">
    <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -108,8 +102,7 @@
    <Interior/>
   </Style>
   <Style ss:ID="s74" ss:Parent="s62">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
   </Style>
   <Style ss:ID="s75">
@@ -129,16 +122,14 @@
   </Style>
   <Style ss:ID="s78">
    <Alignment ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
   <Style ss:ID="s79">
    <Alignment ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="怪物卡牌配置表">
@@ -7105,12 +7096,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40000</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40000</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">BOSS1号</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">九阴罗刹</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">碧海袭卷</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="Number">800</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10044</Data></Cell>
@@ -7118,12 +7110,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40001</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40001</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">BOSS2号</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">赤炎星君</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s76"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">万魁拳</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="Number">803</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10046</Data></Cell>
@@ -7131,12 +7124,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40002</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40002</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">BOSS3号</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">金身冥王</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s76"><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">神降天怒</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">700</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="Number">10047</Data></Cell>
@@ -7217,7 +7211,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>2</SplitHorizontal>
-   <TopRowBottomPane>2</TopRowBottomPane>
+   <TopRowBottomPane>527</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -7234,7 +7228,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>537</ActiveRow>
      <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>

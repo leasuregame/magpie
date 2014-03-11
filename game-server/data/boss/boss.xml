@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-02-28T11:43:00Z</Created>
-  <LastSaved>2014-03-04T09:42:15Z</LastSaved>
+  <LastSaved>2014-03-11T11:06:58Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6500</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>12960</WindowHeight>
+  <WindowWidth>31280</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -44,68 +44,75 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s64">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="BOSS属性配置表">
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="141" ss:Span="1"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:AutoFitWidth="0" ss:Width="103"/>
+   <Column ss:AutoFitWidth="0" ss:Width="141" ss:Span="1"/>
    <Column ss:Index="6" ss:Width="221"/>
    <Column ss:Index="8" ss:Width="124"/>
    <Column ss:AutoFitWidth="0" ss:Width="141"/>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">索引ID</Data></Cell>
-    <Cell><Data ss:Type="String">名称</Data></Cell>
-    <Cell><Data ss:Type="String">boss类型</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;这里就是类型ID，BOSS卡牌的品质类型</Data></Comment></Cell>
-    <Cell><Data ss:Type="String">Boss卡牌Id</Data></Cell>
-    <Cell><Data ss:Type="String">卡牌ID</Data></Cell>
-    <Cell><Data ss:Type="String">阵型</Data></Cell>
-    <Cell><Data ss:Type="String">存活时间</Data></Cell>
-    <Cell><Data ss:Type="String">消失时间</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;死亡后，或者逃走后存在的持续时间</Data></Comment></Cell>
-    <Cell><Data ss:Type="String">最高可被攻击次数</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">索引ID</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss类型</Data><Comment
+      ss:Author="gaobin"><Data>gaobin:&#10;这里就是类型ID，BOSS卡牌的品质类型</Data></Comment></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Boss卡牌Id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">卡牌ID</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">阵型</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">存活时间</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">消失时间</Data><Comment
+      ss:Author="gaobin"><Data>gaobin:&#10;死亡后，或者逃走后存在的持续时间</Data></Comment></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">最高可被攻击次数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">type</Data></Cell>
-    <Cell><Data ss:Type="String">boss_id</Data></Cell>
-    <Cell><Data ss:Type="String">card_ids</Data></Cell>
-    <Cell><Data ss:Type="String">formation</Data></Cell>
-    <Cell><Data ss:Type="String">live_time</Data></Cell>
-    <Cell><Data ss:Type="String">disappear_time</Data></Cell>
-    <Cell><Data ss:Type="String">atk_count</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">type</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss_id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">card_ids</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">formation</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">live_time</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">disappear_time</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">atk_count</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS1号</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">40000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">40003#40000#40003</Data></Cell>
-    <Cell><Data ss:Type="String">01:40000,10:40003,12:40003</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS2号</Data></Cell>
+    <Cell><Data ss:Type="String">九阴罗刹</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">40000</Data></Cell>
+    <Cell><Data ss:Type="String">40003#40000#40003</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">01:40000,10:40003,12:40003</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">40001</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">40004#40001#40004</Data></Cell>
-    <Cell><Data ss:Type="String">01:40001,10:40004,12:40004</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">BOSS3号</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">赤炎星君</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">40001</Data></Cell>
+    <Cell><Data ss:Type="String">40004#40001#40004</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">01:40001,10:40004,12:40004</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">40002</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">40005#40002#40005</Data></Cell>
-    <Cell><Data ss:Type="String">01:40002,10:40005,12:40005</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="String">金身冥王</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">40002</Data></Cell>
+    <Cell><Data ss:Type="String">40005#40002#40005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">01:40002,10:40005,12:40005</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:Index="7" ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"/>
@@ -134,8 +141,9 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R3C2:R5C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

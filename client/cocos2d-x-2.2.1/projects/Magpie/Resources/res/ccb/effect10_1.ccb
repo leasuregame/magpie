@@ -152,8 +152,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3.1999998092651367</real>
-							<real>3.1999998092651367</real>
+							<real>2.7999999523162842</real>
+							<real>2.7999999523162842</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -185,7 +185,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>102</integer>
+						<integer>153</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -311,7 +311,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.40000000596046448</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -322,8 +322,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
-							<real>8</real>
+							<real>20</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -441,8 +441,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
-							<real>40</real>
+							<real>100</real>
+							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -465,8 +465,6 @@
 						<string>res/effect/uiEffect/up18.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -555,7 +553,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.20000000298023224</real>
+			<real>0.13333334028720856</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

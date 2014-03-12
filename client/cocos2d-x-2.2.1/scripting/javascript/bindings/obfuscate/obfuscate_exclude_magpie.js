@@ -192,6 +192,7 @@ CSSProperties.prototype.ccbCardSprite;
 CSSProperties.prototype.ccbIconSprite;
 CSSProperties.prototype.ccbProgressNode;
 CSSProperties.prototype.ccbFnCallback;
+CSSProperties.prototype.ccbNode;
 CSSProperties.prototype.ccbCard;
 CSSProperties.prototype.ccbLabel;
 CSSProperties.prototype.ccbLabel0;

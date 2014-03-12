@@ -99,7 +99,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -115,7 +115,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>50</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -136,7 +136,7 @@
 						<key>value</key>
 						<array>
 							<real>20</real>
-							<real>10</real>
+							<real>15</real>
 						</array>
 					</dict>
 					<dict>
@@ -243,8 +243,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>20</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -254,8 +254,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
-							<real>40</real>
+							<real>100</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -417,8 +417,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>2.5</real>
-										<real>2.5</real>
+										<real>2</real>
+										<real>2</real>
 									</array>
 								</dict>
 								<dict>
@@ -435,8 +435,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>3.5</real>
-										<real>3.5</real>
+										<real>3</real>
+										<real>3</real>
 									</array>
 								</dict>
 							</array>
@@ -484,8 +484,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.6333332061767578</real>
-							<real>2.6333332061767578</real>
+							<real>2.3333332538604736</real>
+							<real>2.3333332538604736</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -498,7 +498,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>10.5</real>
+						<real>15</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -527,7 +527,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>221</integer>
+						<integer>170</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -692,8 +692,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>2.5</real>
-										<real>2.5</real>
+										<real>2</real>
+										<real>2</real>
 									</array>
 								</dict>
 								<dict>
@@ -710,8 +710,8 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>3.5</real>
-										<real>3.5</real>
+										<real>3</real>
+										<real>3</real>
 									</array>
 								</dict>
 							</array>
@@ -759,8 +759,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.6333332061767578</real>
-							<real>2.6333332061767578</real>
+							<real>2.3333332538604736</real>
+							<real>2.3333332538604736</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -773,7 +773,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-10.5</real>
+						<real>-15</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -802,7 +802,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>221</integer>
+						<integer>170</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -905,7 +905,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.20000000298023224</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -918,7 +935,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.23333333432674408</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

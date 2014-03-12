@@ -248,7 +248,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>26</real>
+								<real>22</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -277,7 +277,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>89</integer>
+								<integer>115</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -439,7 +439,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-13</real>
+								<real>-11</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -468,7 +468,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>89</integer>
+								<integer>115</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -531,8 +531,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.69999998807907104</real>
-							<real>0.69999998807907104</real>
+							<real>0.73333334922790527</real>
+							<real>0.73333334922790527</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -687,7 +687,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-13</real>
+								<real>-11</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -716,7 +716,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>119</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -878,7 +878,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>13</real>
+								<real>11</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -907,7 +907,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>119</integer>
+								<integer>153</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1243,8 +1243,6 @@
 						<string>res/effect/uiEffect/up41.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1328,7 +1326,23 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.3333333432674408</real>
+						<real>0.066666670143604279</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.36666667461395264</real>
 						<key>type</key>
 						<integer>10</integer>
 						<key>value</key>
@@ -1350,7 +1364,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.43333333730697632</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

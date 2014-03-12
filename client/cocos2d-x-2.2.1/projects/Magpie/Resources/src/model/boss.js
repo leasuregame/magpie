@@ -320,6 +320,28 @@ var Boss = Entity.extend({
         });
     },
 
+    showFriendHelpRewardList: function(cb) {
+        cc.log("Boss showFriendHelpRewardList");
+
+        var that = this;
+        lz.server.request("area.bossHandler.friendRewardList", {
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Boss showFriendHelpRewardList success");
+
+                cb(data.msg);
+            } else {
+                cc.log("Boss showFriendHelpRewardList fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
     convertHonor: function (cb, number) {
         cc.log("Boss convertHonor");
 

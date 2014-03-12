@@ -114,6 +114,7 @@
                 <file name="src/view/mainModule/bossHelpLabel.js"/>
                 <file name="src/view/mainModule/bossLayer.js"/>
                 <file name="src/view/mainModule/bossListLayer.js"/>
+                <file name="src/view/mainModule/bossRewardLabel.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldCardsLayer.js"/>

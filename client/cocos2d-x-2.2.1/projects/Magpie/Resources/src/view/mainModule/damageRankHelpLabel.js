@@ -3,21 +3,18 @@
  */
 
 var DamageRankHelpLabel = LazyLayer.extend({
-    _damageRankHelpLabelFit: null,
 
     init: function () {
         cc.log("DamageRankHelpLabel init");
 
         if (!this._super()) return false;
 
-        this._damageRankHelpLabelFit = gameFit.mainScene.damageRankHelpLabel;
-
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
         this._frameLayer = cc.Layer.create();
-        this._frameLayer.setPosition(this._damageRankHelpLabelFit.frameLayerPoint);
+        this._frameLayer.setPosition(gameFit.GAME_BOTTOM_LEFT_POINT);
         this.addChild(this._frameLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);

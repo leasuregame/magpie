@@ -399,16 +399,18 @@ var BossListLayer = cc.Layer.extend({
         }
 
         var that = this;
-        gameData.boss.getFriendHelpReward(function (data) {
-            cc.log(data);
-            GiftBagLayer.pop({
-                reward: data,
-                type: GET_GIFT_BAG,
-                titleType: TYPE_LOOK_REWARD,
-                cb: function () {
-                    lz.tipReward(data);
-                    that.update();
-                }
+
+        var cb = function () {
+            gameData.boss.getFriendHelpReward(function (reward) {
+                lz.tipReward(reward);
+                that.update();
+            })
+        };
+
+        gameData.boss.showFriendHelpRewardList(function (data) {
+            BossRewardLabel.pop({
+                data: data,
+                cb: cb
             });
         });
     },

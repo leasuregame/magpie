@@ -350,7 +350,7 @@ Handler::attack = (msg, session, next) ->
       if inspireCount > 5
         inspireCount = 5
 
-      gold_resume = BOSSCONFIG.INSPIRE_GOLD * (1+inspireCount) * inspireCount / 2
+      gold_resume = BOSSCONFIG.INSPIRE_GOLD * inspireCount
       if player.gold < gold_resume
         return cb({code: 501, msg: '魔石不足'})
 
@@ -360,7 +360,7 @@ Handler::attack = (msg, session, next) ->
       totalDamage = countDamage(bl)
       countRewards(totalDamage, boss, bl, player)
       updateBossAndPlayer(boss, bl, player, gold_resume)
-      noticeFriendrewards(playerId, boss, bl.rewards)
+      noticeFriendrewards(player, boss, bl.rewards)
       cb(null, bl)
     (bl, cb) ->
       saveBattleLog bl, player, boss, (err, res) ->
@@ -445,12 +445,12 @@ countRewards = (totalDamage, boss, bl, player) ->
       money: Math.ceil(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
       honor: Math.ceil(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
 
-noticeFriendrewards = (playerId, boss, rewards) ->
-  return if playerId is boss.playerId
+noticeFriendrewards = (player, boss, rewards) ->
+  return if player.id is boss.playerId
 
   dao.bossFriendReward.create data: {
     playerId: boss.playerId
-    friendName: playerId
+    friendName: player.name
     money: rewards.friend?.money
     honor: rewards.friend?.honor
     created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')

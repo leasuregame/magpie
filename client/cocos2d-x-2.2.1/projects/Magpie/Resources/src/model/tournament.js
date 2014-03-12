@@ -278,7 +278,7 @@ var Tournament = Entity.extend({
                     msg.battleLog.isFirstTournament = msg.firstTime;
                 }
 
-                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(cbData);
 

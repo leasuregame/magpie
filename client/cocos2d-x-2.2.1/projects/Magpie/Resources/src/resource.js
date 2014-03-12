@@ -735,6 +735,12 @@ var main_scene_image = {
     icon412: main_scene_path + "icon412.png",
     icon413: main_scene_path + "icon413.png",
 
+    card20000_head1: main_scene_path + "card20000_head1.png",
+    card20000_skill: main_scene_path + "card20000_skill.png",
+    card20001_head2: main_scene_path + "card20001_head2.png",
+    card20001_skill: main_scene_path + "card20001_skill.png",
+    card20002_head3: main_scene_path + "card20002_head3.png",
+    card20002_skill: main_scene_path + "card20002_skill.png",
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
     card30000_full1: main_scene_path + "card30000_full1.png",
@@ -1285,7 +1291,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
-for (var cardId = 10000; cardId <= 10047; ++cardId) {
+for (var cardId = 10000; cardId <= 10050; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }
 

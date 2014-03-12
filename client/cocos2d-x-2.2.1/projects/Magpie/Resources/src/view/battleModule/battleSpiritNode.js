@@ -16,6 +16,7 @@ var BattleSpiritNode = cc.Node.extend({
     _index: 0,
     _ccbNode: null,
     _animationManager: null,
+    _cb: null,
 
     init: function (spiritLv, index) {
         cc.log("BattleSpiritNode init");
@@ -63,11 +64,18 @@ var BattleSpiritNode = cc.Node.extend({
         cc.log("BattleSpiritNode runAnimations: " + name);
 
         if (this._animationManager.getRunningSequenceName()) {
-            this._cb();
+            if (this._cb) {
+                this._cb();
+            }
         }
 
         tweenDuration = tweenDuration || 0;
-        this._cb = cb || function () {
+
+        this._cb = function () {
+            if (cb) {
+                cb();
+                cb = null;
+            }
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);

@@ -557,7 +557,7 @@ var PassLayer = cc.Layer.extend({
                 return;
             }
 
-            LazyLayer.showCloudLayer();
+            LazyLayer.showCloudAll();
 
             var that = this;
             gameData.pass.defiance(function (data) {
@@ -595,7 +595,7 @@ var PassLayer = cc.Layer.extend({
                             }
                         },
                         function () {
-                            LazyLayer.closeCloudLayer();
+                            LazyLayer.closeCloudAll();
                             next();
                         },
                         function () {
@@ -638,7 +638,7 @@ var PassLayer = cc.Layer.extend({
                 } else {
                     that.update();
 
-                    LazyLayer.closeCloudLayer();
+                    LazyLayer.closeCloudAll();
                 }
             }, id);
         }

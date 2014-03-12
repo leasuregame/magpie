@@ -229,7 +229,7 @@ var Boss = Entity.extend({
                 that.push(msg.boss);
                 that.set("cd", msg.cd);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
             } else {

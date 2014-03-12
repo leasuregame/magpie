@@ -153,10 +153,10 @@ var BattleLayer = cc.Layer.extend({
 
         if (this._type == BOSS_BATTLE_LOG) {
             this.bossCeremony(function () {
-                that.ownCeremony(this.began());
+                that.ownCeremony();
             })
         } else {
-            this.ownCeremony(this.began());
+            this.ownCeremony();
         }
 
         this._menu.setVisible(true);
@@ -234,7 +234,7 @@ var BattleLayer = cc.Layer.extend({
         return (index < 7 ? "o" : "e");
     },
 
-    ownCeremony: function (cb) {
+    ownCeremony: function () {
         cc.log("BattleLayer ownCeremony");
 
         for (var key in this._battleNode) {
@@ -245,7 +245,7 @@ var BattleLayer = cc.Layer.extend({
                 this._tipNode[key].setVisible(true);
 
                 if (this._getDirection(index) === "o") {
-                    this._battleNode[key].runAnimations("beg", 0, cb);
+                    this._battleNode[key].runAnimations("beg", 0, this.began());
                 }
             }
         }
@@ -3133,6 +3133,9 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect701_2, EFFECT_Z_ORDER);
 
                             var effectNodeAnimationManager = effect701_2.animationManager;
+
+                            cc.log(effectNodeAnimationManager);
+
                             var nextStepCallback1 = that.nextStepCallback();
                             effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                                 effect701_2.removeFromParent();
@@ -3158,6 +3161,8 @@ var BattleLayer = cc.Layer.extend({
 
                                 nextStepCallback1();
                             });
+
+                            cc.log(effectNodeAnimationManager.getRunningSequenceName());
 
                             effect701_2.runAction(
                                 cc.EaseSineIn.create(

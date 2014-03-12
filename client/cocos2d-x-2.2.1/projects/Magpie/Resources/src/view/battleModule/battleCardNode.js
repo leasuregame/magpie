@@ -277,6 +277,8 @@ var BattleCardNode = cc.Node.extend({
     },
 
     isBossCard: function () {
+        cc.log(this._tableId);
+
         return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });

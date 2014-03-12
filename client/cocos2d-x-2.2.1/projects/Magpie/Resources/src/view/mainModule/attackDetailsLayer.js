@@ -79,16 +79,7 @@ var AttackDetailsLayer = LazyLayer.extend({
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        skyLabel.setContentSize(cc.size(216, 300));
-
-        var playbackItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon409,
-            this._onClickPlayback,
-            this
-        );
-        playbackItem.setPosition(cc.p(108, 240));
+        skyLabel.setContentSize(cc.size(216, 200));
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -108,13 +99,20 @@ var AttackDetailsLayer = LazyLayer.extend({
         );
         detailItem.setPosition(cc.p(108, 60));
 
-        var skyMenu = cc.Menu.create(detailItem, sendMessageItem, playbackItem);
+        var skyMenu = cc.Menu.create(detailItem, sendMessageItem);
         skyMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 2);
         skyMenu.setPosition(cc.p(0, 0));
         skyLabel.addChild(skyMenu);
 
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(this._attackDetailsLayerFit.skyDialogRect);
+
+        this._tipLabel = StrokeLabel.create("当前没有记录信息", "STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(this._attackDetailsLayerFit.tipLabel1Point);
+        this._tipLabel.setVisible(false);
+        this.addChild(this._tipLabel);
 
         return true;
     },
@@ -149,24 +147,32 @@ var AttackDetailsLayer = LazyLayer.extend({
 
         var len = this._detailsList.length;
         var scrollViewHeight = len * 150;
-
         if (scrollViewHeight < this._attackDetailsLayerFit.scrollViewHeight) {
             scrollViewHeight = this._attackDetailsLayerFit.scrollViewHeight;
         }
+
+        this._tipLabel.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 90 - 150 * i;
             var details = this._detailsList[i];
 
-            var detailsItem = cc.MenuItemImage.create(
-                main_scene_image.button44,
-                main_scene_image.button44s,
-                this._onClickDetails(i),
-                this
-            );
-            detailsItem.setAnchorPoint(cc.p(0, 0));
-            detailsItem.setPosition(cc.p(10, y));
-            menu.addChild(detailsItem);
+            if (details.playerId != gameData.player.get("id")) {
+                var detailsItem = cc.MenuItemImage.create(
+                    main_scene_image.button44,
+                    main_scene_image.button44s,
+                    this._onClickDetails(i),
+                    this
+                );
+                detailsItem.setAnchorPoint(cc.p(0, 0));
+                detailsItem.setPosition(cc.p(10, y));
+                menu.addChild(detailsItem);
+            } else {
+                var detailsIcon = cc.Sprite.create(main_scene_image.button44);
+                detailsIcon.setAnchorPoint(cc.p(0, 0));
+                detailsIcon.setPosition(cc.p(10, y));
+                scrollViewLayer.addChild(detailsIcon);
+            }
 
             this._detailsItem[i] = detailsItem;
 
@@ -188,17 +194,17 @@ var AttackDetailsLayer = LazyLayer.extend({
 
             var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
             moneyIcon.setAnchorPoint(cc.p(0, 0));
-            moneyIcon.setPosition(cc.p(250, y - 5));
+            moneyIcon.setPosition(cc.p(220, y - 5));
             moneyIcon.setScale(0.9);
             scrollViewLayer.addChild(moneyIcon);
 
             var moneyLabel = cc.LabelTTF.create(details.money + "", "STHeitiTC-Medium", 22);
             moneyLabel.setAnchorPoint(cc.p(0, 0));
-            moneyLabel.setPosition(cc.p(300, y + 5));
+            moneyLabel.setPosition(cc.p(270, y + 5));
             scrollViewLayer.addChild(moneyLabel);
 
             if (details.moneyAdd && details.moneyAdd > 0) {
-                var x = 300 + moneyLabel.getContentSize().width;
+                var x = 270 + moneyLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
                 leftBracket.setAnchorPoint(cc.p(0, 0));
@@ -221,17 +227,17 @@ var AttackDetailsLayer = LazyLayer.extend({
 
             var honorIcon = cc.Sprite.create(main_scene_image.icon405);
             honorIcon.setAnchorPoint(cc.p(0, 0));
-            honorIcon.setPosition(cc.p(250, y - 48));
+            honorIcon.setPosition(cc.p(220, y - 48));
             honorIcon.setScale(0.9);
             scrollViewLayer.addChild(honorIcon);
 
             var honorLabel = cc.LabelTTF.create(details.honor + "", "STHeitiTC-Medium", 22);
             honorLabel.setAnchorPoint(cc.p(0, 0));
-            honorLabel.setPosition(cc.p(300, y - 40));
+            honorLabel.setPosition(cc.p(270, y - 40));
             scrollViewLayer.addChild(honorLabel);
 
             if (details.honorAdd && details.honorAdd > 0) {
-                var x = 300 + honorLabel.getContentSize().width;
+                var x = 270 + honorLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
                 leftBracket.setAnchorPoint(cc.p(0, 0));
@@ -251,6 +257,16 @@ var AttackDetailsLayer = LazyLayer.extend({
                 rightBracket.setPosition(cc.p(x, y - 40));
                 scrollViewLayer.addChild(rightBracket);
             }
+
+            var playbackItem = cc.MenuItemImage.create(
+                main_scene_image.button74,
+                main_scene_image.button74s,
+                this._onClickPlayback(i),
+                this
+            );
+            playbackItem.setPosition(cc.p(540, y - 10));
+            playbackItem.setScale(0.8);
+            menu.addChild(playbackItem);
         }
 
         this._scrollView = cc.ScrollView.create(this._attackDetailsLayerFit.scrollViewSize, scrollViewLayer);
@@ -287,19 +303,21 @@ var AttackDetailsLayer = LazyLayer.extend({
         this.removeFromParent();
     },
 
-    _onClickPlayback: function () {
-        cc.log("AttackDetailsLayer _onClickPlayback");
+    _onClickPlayback: function (index) {
+        var that = this;
+        return function () {
+            cc.log("AttackDetailsLayer _onClickPlayback: " + index);
 
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var details = this._detailsList[this._selectId];
+            var details = that._detailsList[index];
 
-        if (details) {
-            gameData.message.playback(details.battleLogId);
-        } else {
-            TipLayer.tip("找不到该战报");
+            if (details) {
+                gameData.message.playback(details.battleLogId);
+            } else {
+                TipLayer.tip("找不到该战报");
+            }
         }
-
     },
 
     _onClickDetail: function () {

@@ -5,7 +5,6 @@ var TYPE_THIS_WEEK = 1;
 var TYPE_LAST_WEEK = 0;
 
 var DamageRankLayer = LazyLayer.extend({
-    _damageRankLayerFit: null,
 
     _scrollView: null,
     _thisWeekItem: null,
@@ -29,8 +28,6 @@ var DamageRankLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._damageRankLayerFit = gameFit.mainScene.damageRankLayer;
-
         this._selectType = TYPE_THIS_WEEK;
         this._rankList = [];
 
@@ -39,7 +36,7 @@ var DamageRankLayer = LazyLayer.extend({
         this.addChild(bgLayer);
 
         this._frameLayer = cc.Layer.create();
-        this._frameLayer.setPosition(this._damageRankLayerFit.frameLayerPoint);
+        this._frameLayer.setPosition(gameFit.GAME_BOTTOM_LEFT_POINT);
         this.addChild(this._frameLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
@@ -219,6 +216,13 @@ var DamageRankLayer = LazyLayer.extend({
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(cc.rect(40, 198, 640, 750));
 
+        this._tipLabel = StrokeLabel.create("当前没有排名信息", "STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(cc.p(320, 620));
+        this._tipLabel.setVisible(false);
+        this._frameLayer.addChild(this._tipLabel);
+
         return true;
     },
 
@@ -293,6 +297,8 @@ var DamageRankLayer = LazyLayer.extend({
 
         var len = this._rankList.length;
 
+        this._tipLabel.setVisible(len == 0);
+
         for (var i = 0; i < len; i++) {
             var y = 360 - 90 * i;
             var player = this._rankList[i];
@@ -361,25 +367,26 @@ var DamageRankLayer = LazyLayer.extend({
             this._rankView.addChild(damageLabel);
 
             var damageCountLabel = cc.LabelTTF.create(player.damage, "STHeitiTC-Medium", 22);
-            damageCountLabel.setColor(cc.c3b(123, 76, 65));
+            damageCountLabel.setColor(cc.c3b(108, 41, 41));
             damageCountLabel.setAnchorPoint(cc.p(0, 0.5));
             damageCountLabel.setPosition(cc.p(380, y + 42));
             this._rankView.addChild(damageCountLabel);
 
-            var kneelItem = cc.MenuItemImage.create(
-                main_scene_image.button42,
-                main_scene_image.button42s,
-                main_scene_image.button42d,
-                this._onClickKneel(player.playerId),
-                this
-            );
+            if (this._selectType == TYPE_THIS_WEEK) {
+                var kneelItem = cc.MenuItemImage.create(
+                    main_scene_image.button42,
+                    main_scene_image.button42s,
+                    main_scene_image.button42d,
+                    this._onClickKneel(player.playerId),
+                    this
+                );
 
-            kneelItem.setAnchorPoint(cc.p(0, 0.5));
-            kneelItem.setPosition(cc.p(500, y + 48));
-            kneelItem.setScale(0.9);
-            kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
-
-            kneelMenu.addChild(kneelItem);
+                kneelItem.setAnchorPoint(cc.p(0, 0.5));
+                kneelItem.setPosition(cc.p(480, y + 48));
+                kneelItem.setScale(0.9);
+                kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
+                kneelMenu.addChild(kneelItem);
+            }
         }
     },
 

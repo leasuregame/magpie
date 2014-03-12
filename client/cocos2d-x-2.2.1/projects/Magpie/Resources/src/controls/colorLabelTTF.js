@@ -61,7 +61,7 @@ var ColorLabelTTF = cc.Node.extend({
     setAnchorPoint: function (anchor) {
         cc.log("ColorLabelTTF setAnchorPoint: " + anchor);
 
-        var children = this.getChildren()
+        var children = this.getChildren();
         var len = children.length;
 
         for (var i = 0; i < len; ++i) {

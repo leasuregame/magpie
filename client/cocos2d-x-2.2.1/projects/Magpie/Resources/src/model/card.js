@@ -23,8 +23,8 @@ var EXTRACT_ELIXIR = 0;
 var EXTRACT_SKILL_POINT = 1;
 
 var BOSS_CARD_TABLE_ID = {
-    begin: 20000,
-    end: 20002
+    begin: 40000,
+    end: 40002
 };
 
 var passiveSkillDescription = {

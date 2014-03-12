@@ -148,8 +148,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1177,7 +1177,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.8999999761581421</real>
+									<real>2</real>
 									<real>3.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
@@ -1421,7 +1421,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>-3</real>
+									<real>2</real>
 									<real>3</real>
 									<false/>
 									<integer>0</integer>
@@ -1632,7 +1632,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>-2</real>
+									<real>3</real>
 									<real>3</real>
 									<false/>
 									<integer>0</integer>
@@ -2264,8 +2264,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>6</real>
-									<real>6</real>
+									<real>7</real>
+									<real>7</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2323,8 +2323,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -2483,7 +2481,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2508,8 +2506,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>6</real>
-									<real>6</real>
+									<real>11.40000057220459</real>
+									<real>11.40000057220459</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2541,7 +2539,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>120</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3506,8 +3504,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -3523,7 +3521,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.2333333492279053</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

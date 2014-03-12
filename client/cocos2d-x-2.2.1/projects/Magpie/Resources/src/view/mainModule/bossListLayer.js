@@ -220,7 +220,7 @@ var BossListLayer = cc.Layer.extend({
 
         var bossList = gameData.boss.get("bossList");
         var len = bossList.length;
-        var scrollViewHeight = len * 135;
+        var scrollViewHeight = len * 136;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
             scrollViewHeight = this._bossListLayerFit.scrollViewHeight;
@@ -229,7 +229,7 @@ var BossListLayer = cc.Layer.extend({
         this._tipIcon.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 78 - 136 * i;
+            var y = scrollViewHeight - 68 - 136 * i;
             var boss = bossList[i];
             var bossItem = null;
 

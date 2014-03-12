@@ -2829,8 +2829,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>20</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -2847,7 +2847,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.80000001192092896</real>
+						<real>0.5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2864,8 +2864,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>0.25</real>
+							<real>0.80000001192092896</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -2886,8 +2886,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -2932,15 +2932,15 @@
 						<array>
 							<array>
 								<real>0.0</real>
-								<real>0.99143940210342407</real>
-								<real>1</real>
+								<real>0.82860362529754639</real>
+								<real>0.84358042478561401</real>
 								<real>1</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.24546507000923157</real>
+								<real>0.24547171592712402</real>
+								<real>0.2454681396484375</real>
+								<real>0.51999998092651367</real>
 							</array>
 						</array>
 					</dict>

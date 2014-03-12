@@ -145,7 +145,7 @@ var Pass = Entity.extend({
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
-                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(cbData);
 
@@ -247,7 +247,7 @@ var Pass = Entity.extend({
                     hasMystical: msg.hasMystical || false
                 });
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
 

@@ -32,7 +32,7 @@ lz.platformConfig = {
                 lz.NotificationHelp.end();
             }
 
-            lz.un.applicationDidEnterBackground();
+            lz.um.applicationDidEnterBackground();
         };
 
         // 程序回复运行时调用

@@ -570,17 +570,20 @@ var BattleLayer = cc.Layer.extend({
     _damageAssessed: function (t, n) {
         cc.log("BattleLayer damageAssessed");
 
+        var k = t > 0 ? 1 : -1;
+        t = Math.abs(t);
         var damage = [];
         var index = 0;
 
         while (t > 0) {
-            if (n > 0) {
-                damage[index] = lz.random(Math.ceil(t / n * DAMAGE_LOWER_LIMIT), Math.floor(t / n * DAMAGE_UPPER_LIMIT));
+            if (n > 1) {
+                damage[index] = lz.randomInt(Math.ceil(t / n * DAMAGE_LOWER_LIMIT), Math.floor(t / n * DAMAGE_UPPER_LIMIT));
             } else {
                 damage[index] = t;
             }
 
             t -= damage[index];
+            damage[index] *= k;
             n -= 1;
             index += 1;
         }
@@ -4074,20 +4077,15 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    battleStep.recover();
-                    while (battleStep.hasNextTarget()) {
-                        (function () {
-                            var effect1002_2 = cc.BuilderReader.load(main_scene_image.effect1002_2, that);
-                            effect1002_2.setPosition(targetLocate);
-                            that.addChild(effect1002_2, EFFECT_Z_ORDER);
+                    var effect1002_2 = cc.BuilderReader.load(main_scene_image.effect1002_2, that);
+                    effect1002_2.setPosition(targetLocate);
+                    that.addChild(effect1002_2, EFFECT_Z_ORDER);
 
-                            var nextStepCallback = that.nextStepCallback();
-                            effect1002_2.animationManager.setCompletedAnimationCallback(that, function () {
-                                effect1002_2.removeFromParent();
-                                nextStepCallback();
-                            });
-                        })();
-                    }
+                    var nextStepCallback = that.nextStepCallback();
+                    effect1002_2.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect1002_2.removeFromParent();
+                        nextStepCallback();
+                    });
                 }
             },
             {

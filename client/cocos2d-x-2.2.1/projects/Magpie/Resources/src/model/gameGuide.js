@@ -64,6 +64,7 @@ var gameGuide = {
     _card5Guide: false,
     _isFirstPassiveSkillAfresh: false,
     _lotteryGuide: false,
+    _bossGuide: false,
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
@@ -104,6 +105,11 @@ var gameGuide = {
             this.set("lotteryGuide", true);
             MainScene.getInstance().updateGuide();
         }
+    },
+
+    updateBossGuide: function () {
+        this.set("bossGuide", true);
+        MainScene.getInstance().updateGuide();
     },
 
     getExplainEffect: function (name) {

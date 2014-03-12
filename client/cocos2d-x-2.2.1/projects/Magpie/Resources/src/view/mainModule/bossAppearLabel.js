@@ -14,6 +14,7 @@ var BossAppearLabel = LazyLayer.extend({
         this.addChild(bossEffect);
 
         bossEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            gameGuide.updateBossGuide();
             this.removeFromParent();
             cb();
         });

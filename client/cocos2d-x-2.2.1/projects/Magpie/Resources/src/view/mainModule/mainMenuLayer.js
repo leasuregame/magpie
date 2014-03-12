@@ -29,6 +29,7 @@ var MainMenuLayer = cc.Layer.extend({
 
     _passGuide: null,
     _tournamentGuide: null,
+    _bossGuide: null,
 
     onEnter: function () {
         this._super();
@@ -111,6 +112,13 @@ var MainMenuLayer = cc.Layer.extend({
             this.addChild(this._passGuide);
         }
 
+        if(gameGuide.get("bossGuide") && !this._bossGuide) {
+            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect91);
+            this._bossGuide.setRotation(180);
+            this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+            this.addChild(this._bossGuide);
+        }
+
         if (gameGuide.get("tournamentGuide") && !this._tournamentGuide) {
             this._tournamentGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._tournamentGuide.setRotation(180);
@@ -123,11 +131,19 @@ var MainMenuLayer = cc.Layer.extend({
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
-            if (index == 2) {
+            if (index == 1) {
                 if (this._passGuide) {
                     this._passGuide.removeFromParent();
                     this._passGuide = null;
                     gameGuide.set("passGuide", false);
+                }
+            }
+
+            if(index == 2) {
+                if (this._bossGuide) {
+                    this._bossGuide.removeFromParent();
+                    this._bossGuide = null;
+                    gameGuide.set("bossGuide", false);
                 }
             }
 

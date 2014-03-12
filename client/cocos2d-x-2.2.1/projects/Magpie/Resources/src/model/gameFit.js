@@ -10,6 +10,7 @@
 var fit4Iphone4 = {
     "GAME_MIDPOINT": cc.p(360, 480),
     "GAME_ZERO_POINT": cc.p(40, 0),
+    "GAME_BOTTOM_LEFT_POINT": cc.p(40, 0),
     "GAME_VIEW": cc.rect(40, 0, 640, 960),
     "controls": {
         "tipLayer": {
@@ -248,7 +249,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "cdTimeIconPoint": cc.p(360, 830),
-            "tipLabelPoint": cc.p(360, 790),
+            "tipLabelPoint": cc.p(360, 780),
             "nextAttackLabelPoint": cc.p(280, 828),
             "cdTimeLabelPoint": cc.p(380, 826),
             "removeTimeItemPoint": cc.p(480, 828),
@@ -261,9 +262,9 @@ var fit4Iphone4 = {
             "rewardItemPoint": cc.p(160, 830),
             "rankItemPoint": cc.p(580, 830),
             "exchangeItemPoint": cc.p(490, 114),
-            "scrollViewLayerRect": cc.rect(60, 230, 621, 548),
-            "scrollViewHeight": 548,
-            "scrollViewSize": cc.size(621, 548),
+            "scrollViewLayerRect": cc.rect(60, 230, 621, 538),
+            "scrollViewHeight": 538,
+            "scrollViewSize": cc.size(621, 538),
             "scrollViewPoint": cc.p(60, 230),
             "helpItemPoint": cc.p(620, 920),
             "tipIconPoint": cc.p(360, 500)
@@ -426,12 +427,6 @@ var fit4Iphone4 = {
             "tipsItemPoint": cc.p(55, 402),
             "QQGroupPoint": cc.p(55, 282),
             "go2LoginItemPoint": cc.p(55, 162)
-        },
-        "damageRankHelpLabel": {
-            "frameLayerPoint": cc.p(40, 0)
-        },
-        "damageRankLayer": {
-            "frameLayerPoint": cc.p(40, 0)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(360, 934),
@@ -1495,6 +1490,7 @@ var fit4Iphone4 = {
 var fit4Iphone5 = {
     "GAME_MIDPOINT": cc.p(320, 568),
     "GAME_ZERO_POINT": cc.p(0, 0),
+    "GAME_BOTTOM_LEFT_POINT": cc.p(0, 98),
     "GAME_VIEW": cc.rect(0, 0, 640, 1136),
     "controls": {
         "tipLayer": {
@@ -1916,12 +1912,6 @@ var fit4Iphone5 = {
             "tipsItemPoint": cc.p(15, 578),
             "QQGroupPoint": cc.p(15, 458),
             "go2LoginItemPoint": cc.p(15, 338)
-        },
-        "damageRankHelpLabel": {
-            "frameLayerPoint": cc.p(0, 98)
-        },
-        "damageRankLayer": {
-            "frameLayerPoint": cc.p(0, 98)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),

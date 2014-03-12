@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>57</integer>
+	<integer>49</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -10958,8 +10958,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.0099999904632568</real>
-											<real>1.0099999904632568</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -15290,8 +15290,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.0199999809265137</real>
-											<real>1.0199999809265137</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -17908,7 +17908,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-6</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -20497,7 +20497,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>4</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -26031,7 +26031,7 @@
 												<key>type</key>
 												<string>Byte</string>
 												<key>value</key>
-												<integer>67</integer>
+												<integer>0</integer>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -26669,8 +26669,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.95999997854232788</real>
-							<real>0.95999997854232788</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -28305,7 +28305,7 @@
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
-		<integer>2</integer>
+		<integer>0</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -29789,7 +29789,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>49</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
@@ -29801,7 +29801,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>393.68539428710938</real>
+			<real>181.81039428710938</real>
 			<key>sequenceId</key>
 			<integer>49</integer>
 			<key>soundChannel</key>
@@ -30050,9 +30050,9 @@
 			<key>name</key>
 			<string>a_1700</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.71208453178405762</real>
 			<key>position</key>
-			<real>0.033333335071802139</real>
+			<real>2.6666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -191,7 +191,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>213</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -309,7 +309,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>213</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -439,7 +439,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>213</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -514,8 +514,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.0833333730697632</real>
-							<real>1.0833333730697632</real>
+							<real>1.5</real>
+							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -741,7 +741,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -870,7 +870,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1011,7 +1011,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1107,8 +1107,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.5</real>
+							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1194,7 +1194,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1301,8 +1301,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>15</real>
+							<real>15</real>
 						</array>
 					</dict>
 					<dict>
@@ -1420,8 +1420,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
-							<real>60</real>
+							<real>100</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -1624,7 +1624,7 @@
 						<key>value</key>
 						<array>
 							<real>15</real>
-							<real>8</real>
+							<real>15</real>
 						</array>
 					</dict>
 					<dict>
@@ -1742,8 +1742,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
-							<real>60</real>
+							<real>100</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -1873,7 +1873,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.033333335071802139</real>
+			<real>0.89999997615814209</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

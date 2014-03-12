@@ -129,13 +129,25 @@ Handler::getLastWeekReward = (msg, session, next) ->
 Handler::friendRewardList = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  dao.bossFriendReward.rewardList playerId, (err, items) ->
+  async.parallel [
+    (cb) ->
+      dao.bossFriendReward.rewardList playerId, cb
+    (cb) ->
+      dao.bossFriendReward.getReward playerId, cb
+  ], (err, results) ->
     if err
-      return next(null, {code: 501, msg: err.message or err.msg})
+      return next(null, {code: 501, msg: err.message or err.msg})    
+
+    items = results[0]
+    reward = results[1]
 
     next(null, {
       code: 200,
-      msg: items
+      msg: 
+        rewardList: items
+        total:
+          money: reward?.money or 0
+          honor: reward?.honor or 0
     })
 
 Handler::getFriendReward = (msg, session, next) ->

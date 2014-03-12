@@ -129,13 +129,25 @@ Handler::getLastWeekReward = (msg, session, next) ->
 Handler::friendRewardList = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  dao.bossFriendReward.rewardList playerId, (err, items) ->
+  async.parallel [
+    (cb) ->
+      dao.bossFriendReward.rewardList playerId, cb
+    (cb) ->
+      dao.bossFriendReward.getReward playerId, cb
+  ], (err, results) ->
     if err
-      return next(null, {code: 501, msg: err.message or err.msg})
+      return next(null, {code: 501, msg: err.message or err.msg})    
+
+    items = results[0]
+    reward = results[1]
 
     next(null, {
       code: 200,
-      msg: items
+      msg: 
+        rewardList: items
+        total:
+          money: reward?.money or 0
+          honor: reward?.honor or 0
     })
 
 Handler::getFriendReward = (msg, session, next) ->
@@ -338,7 +350,7 @@ Handler::attack = (msg, session, next) ->
       if inspireCount > 5
         inspireCount = 5
 
-      gold_resume = BOSSCONFIG.INSPIRE_GOLD * (1+inspireCount) * inspireCount / 2
+      gold_resume = BOSSCONFIG.INSPIRE_GOLD * inspireCount
       if player.gold < gold_resume
         return cb({code: 501, msg: '魔石不足'})
 
@@ -348,7 +360,7 @@ Handler::attack = (msg, session, next) ->
       totalDamage = countDamage(bl)
       countRewards(totalDamage, boss, bl, player)
       updateBossAndPlayer(boss, bl, player, gold_resume)
-      noticeFriendrewards(playerId, boss, bl.rewards)
+      noticeFriendrewards(player, boss, bl.rewards)
       cb(null, bl)
     (bl, cb) ->
       saveBattleLog bl, player, boss, (err, res) ->
@@ -433,12 +445,12 @@ countRewards = (totalDamage, boss, bl, player) ->
       money: Math.ceil(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
       honor: Math.ceil(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
 
-noticeFriendrewards = (playerId, boss, rewards) ->
-  return if playerId is boss.playerId
+noticeFriendrewards = (player, boss, rewards) ->
+  return if player.id is boss.playerId
 
   dao.bossFriendReward.create data: {
     playerId: boss.playerId
-    friendName: playerId
+    friendName: player.name
     money: rewards.friend?.money
     honor: rewards.friend?.honor
     created: utility.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss')

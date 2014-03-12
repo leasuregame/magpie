@@ -10,41 +10,51 @@ describe("Area Server", function() {
           loginWith('1', '1', 1);
         });
 
-        it('返回空列表', function(){
+        it('返回空列表', function() {
           request('area.bossHandler.friendRewardList', {}, function(data) {
             expect(data).toEqual({
               code: 200,
-              msg: []
+              msg: {
+                rewardList: [],
+                total: {
+                  honor: 0,
+                  money: 0
+                }
+              }
             });
           });
         });
 
       });
 
-      describe('有好友协助奖励时', function(){
-        beforeEach(function(){
+      describe('有好友协助奖励时', function() {
+        beforeEach(function() {
           doAjax('/create/bossFriendReward', {
             playerId: 100,
-            friendName: 'Mike', 
+            friendName: 'Mike',
             honor: 10,
             money: 1000,
             got: 0
-          }, function(){
+          }, function() {
             loginWith('arthur', '1', 1);
           });
         });
 
-        it('返回正确列表', function(){
+        it('返回正确列表', function() {
           request('area.bossHandler.friendRewardList', {}, function(data) {
             expect(data).toEqual({
               code: 200,
-              msg: [
-                {
+              msg: {
+                rewardList: [{
                   name: 'Mike',
                   money: 1000,
                   honor: 10
+                }],
+                total: {
+                  money: 1000,
+                  honor: 10
                 }
-              ]
+              }
             });
           });
         });

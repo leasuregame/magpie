@@ -20,13 +20,15 @@ var UPDATE_CD_TIME_INTERVAL = 1;    // cd和boss剩余时间更新间隔
 var Boss = Entity.extend({
     _bossList: null,        // boss列表
     _cd: 0,                 // 下次攻击剩余时间
+    _kneelList: null,       // 已膜拜列表
     _kneelCount: 0,         // 膜拜次数
     _canReceive: false,     // 奖励领取标记
+    _rmTimerCount: 0,       // 消除cd次数
     _thisWeekRank: null,    // 本周排行榜
     _lastWeekRank: null,    // 上周排行榜
     _thisWeek: null,        // 本周信息
     _lastWeek: null,        // 上周信息
-    _isGetReward: null,    // 上周奖励是否已领
+    _isGetReward: null,     // 上周奖励是否已领
 
     init: function (data) {
         cc.log("Boss init");
@@ -42,13 +44,17 @@ var Boss = Entity.extend({
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
+        this._rmTimerCount = 0;
         this._thisWeekRank = [];
         this._lastWeekRank = [];
+        this._kneelList = [];
         this._thisWeek = null;
         this._lastWeek = null;
         this._isGetReward = true;
 
         this.update(data);
+
+        this.sync();
 
         this.schedule(this._updateCdAndBoss, UPDATE_CD_TIME_INTERVAL);
 
@@ -63,8 +69,10 @@ var Boss = Entity.extend({
         if (data) {
             this.sets({
                 "cd": data.cd,
-                "kneelCount": data.kneelCount,
-                "canReceive": data.canReceive
+                "kneelCount": data.kneelCountLeft,
+                "kneelList": data.kneelList,
+                "canReceive": data.canReceive,
+                "rmTimerCount": data.rmTimerCount
             })
         }
     },
@@ -118,6 +126,7 @@ var Boss = Entity.extend({
                 cc.log("Boss updateBossList success");
 
                 that.set("bossList", data.msg);
+                that._updateCdAndBoss();
 
                 cb();
             } else {
@@ -222,12 +231,6 @@ var Boss = Entity.extend({
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
 
-                var rewards = msg.battleLog.rewards;
-
-                for (var key in rewards) {
-                    gameData.player.add(key, rewards[key]);
-                }
-
                 cb(battleLogId);
             } else {
                 cc.log("Boss attack fail");
@@ -276,7 +279,7 @@ var Boss = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.adds(msg);
-                that._isGetReward = true;
+                that.set("isGetReward", true);
 
                 cb(msg);
             } else {
@@ -360,6 +363,7 @@ var Boss = Entity.extend({
                 gameData.player.sets(msg);
 
                 that.set("cd", 0);
+                that.add("rmTimerCount", 1);
 
                 cb();
             } else {
@@ -391,6 +395,7 @@ var Boss = Entity.extend({
                 }
 
                 that.add("kneelCount", -1);
+                that._kneelList.push(playerId);
 
                 cb(msg);
             } else {
@@ -428,7 +433,7 @@ var Boss = Entity.extend({
             return false;
         }
 
-        if (this.needGold(times) > gameData.player.get("gold")) {
+        if (this.additionNeedGold(times) > gameData.player.get("gold")) {
             TipLayer.tip("魔石不足");
             return false
         }
@@ -436,8 +441,12 @@ var Boss = Entity.extend({
         return true;
     },
 
-    needGold: function (times) {
+    additionNeedGold: function (times) {
         return ((1 + times) * times / 2) * 20;
+    },
+
+    removeCdNeedGold: function () {
+        return Math.min(200, this._rmTimerCount * 20);
     },
 
     _cdChangeEvent: function () {
@@ -455,18 +464,20 @@ var Boss = Entity.extend({
     getThisWeekReward: function () {
         cc.log("Boss getThisWeekReward");
 
-//        if (!this._thisWeek) {
-//            return null;
-//        }
+        if (!this._thisWeek) {
+            return null;
+        }
 
-//        var rank = this._thisWeek.rank;
-//        if (rank <= 50) {
-//            return outputTables.elixir_ranking_reward.rows[rank];
-//        } else {
-//            var money = outputTables.elixir_ranking_reward.rows[50].money;
-//            money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
-//            return {money: money}
-//        }
+        var rank = this._thisWeek.rank;
+
+        if (rank <= 5) {
+            return outputTables.boss_rank_reward.rows[rank];
+        } else {
+            var honor = outputTables.boss_rank_reward.rows[5].honor;
+            honor -= parseInt(Math.ceil((rank - 5) / 20) * 0.003 * honor);
+            honor = Math.max(2000, honor);
+            return {honor: honor}
+        }
     },
 
     isCanGetRankReward: function () {
@@ -476,6 +487,15 @@ var Boss = Entity.extend({
     },
 
     isCanKneel: function (playerId) {
+
+        var len = this._kneelList.length;
+
+        for (var i = 0; i < len; i++) {
+            if (playerId == this._kneelList[i]) {
+                return false;
+            }
+        }
+
         return this._kneelCount > 0;
     },
 

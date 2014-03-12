@@ -54,18 +54,19 @@ var giftBagGoods = {
 
     honor: {
         name: "荣誉",
-        url: "icon405"
+        url: "icon410"
     },
 
     superHonor: {
         name: "精元",
-        url: "icon406"
+        url: "icon411"
     }
 };
 
 var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
 var GET_GIFT_BAG = 3;
+var SHOW_GIFT_BAG_NO_CLOSE = 4;
 
 var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
@@ -122,7 +123,7 @@ var GiftBagLayer = cc.Layer.extend({
             this
         );
         okItem.setPosition(this._giftBagLayerFit.okItemPoint);
-        okItem.setVisible(type == SHOW_GIFT_BAG);
+        okItem.setVisible(type == SHOW_GIFT_BAG || type == SHOW_GIFT_BAG_NO_CLOSE);
 
         var getItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
@@ -138,7 +139,7 @@ var GiftBagLayer = cc.Layer.extend({
             },
             this
         );
-        getItem.setPosition(this._giftBagLayerFit.okItemPoint);
+        getItem.setPosition(this._giftBagLayerFit.buyItemPoint);
         getItem.setVisible(type == GET_GIFT_BAG);
 
         var buyItem = cc.MenuItemImage.createWithIcon(
@@ -161,7 +162,7 @@ var GiftBagLayer = cc.Layer.extend({
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon308,
+            main_scene_image.icon36,
             function () {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -170,9 +171,22 @@ var GiftBagLayer = cc.Layer.extend({
             this
         );
         cancelItem.setPosition(this._giftBagLayerFit.cancelItemPoint);
-        cancelItem.setVisible(type == BUY_GIFT_BAG);
+        cancelItem.setVisible(type != SHOW_GIFT_BAG && type != SHOW_GIFT_BAG_NO_CLOSE);
 
-        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem);
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button75,
+            main_scene_image.button75s,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                this.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(this._giftBagLayerFit.closeItemPoint);
+        closeItem.setVisible(type != SHOW_GIFT_BAG_NO_CLOSE);
+
+        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem, closeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

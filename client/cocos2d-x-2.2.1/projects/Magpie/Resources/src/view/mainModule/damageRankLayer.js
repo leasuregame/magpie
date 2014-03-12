@@ -219,6 +219,13 @@ var DamageRankLayer = LazyLayer.extend({
         this._skyDialog.setLabel(skyLabel);
         this._skyDialog.setRect(cc.rect(40, 198, 640, 750));
 
+        this._tipLabel = StrokeLabel.create("当前没有排名信息", "STHeitiTC-Medium", 25);
+        this._tipLabel.setColor(cc.c3b(255, 243, 163));
+        this._tipLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._tipLabel.setPosition(cc.p(320, 620));
+        this._tipLabel.setVisible(false);
+        this._frameLayer.addChild(this._tipLabel);
+
         return true;
     },
 
@@ -226,7 +233,7 @@ var DamageRankLayer = LazyLayer.extend({
         cc.log("DamageRankLayer update");
 
         var lastWeek = gameData.boss.get("lastWeek");
-        var isGet = false;//gameData.boss.isCanGetRankReward();
+        var isGet = gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
 
@@ -292,6 +299,8 @@ var DamageRankLayer = LazyLayer.extend({
         this._playerItem = [];
 
         var len = this._rankList.length;
+
+        this._tipLabel.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
             var y = 360 - 90 * i;
@@ -361,25 +370,26 @@ var DamageRankLayer = LazyLayer.extend({
             this._rankView.addChild(damageLabel);
 
             var damageCountLabel = cc.LabelTTF.create(player.damage, "STHeitiTC-Medium", 22);
-            damageCountLabel.setColor(cc.c3b(123, 76, 65));
+            damageCountLabel.setColor(cc.c3b(108, 41, 41));
             damageCountLabel.setAnchorPoint(cc.p(0, 0.5));
             damageCountLabel.setPosition(cc.p(380, y + 42));
             this._rankView.addChild(damageCountLabel);
 
-            var kneelItem = cc.MenuItemImage.create(
-                main_scene_image.button42,
-                main_scene_image.button42s,
-                main_scene_image.button42d,
-                this._onClickKneel(player.playerId),
-                this
-            );
+            if (this._selectType == TYPE_THIS_WEEK) {
+                var kneelItem = cc.MenuItemImage.create(
+                    main_scene_image.button42,
+                    main_scene_image.button42s,
+                    main_scene_image.button42d,
+                    this._onClickKneel(player.playerId),
+                    this
+                );
 
-            kneelItem.setAnchorPoint(cc.p(0, 0.5));
-            kneelItem.setPosition(cc.p(500, y + 48));
-            kneelItem.setScale(0.9);
-            kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
-
-            kneelMenu.addChild(kneelItem);
+                kneelItem.setAnchorPoint(cc.p(0, 0.5));
+                kneelItem.setPosition(cc.p(480, y + 48));
+                kneelItem.setScale(0.9);
+                kneelItem.setEnabled(gameData.boss.isCanKneel(player.playerId));
+                kneelMenu.addChild(kneelItem);
+            }
         }
     },
 
@@ -416,7 +426,7 @@ var DamageRankLayer = LazyLayer.extend({
         cc.log("DamageRankLayer _onClickShowReward");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var reward = null;//gameData.boss.getThisWeekReward();
+        var reward = gameData.boss.getThisWeekReward();
 
         GiftBagLayer.pop({
             reward: reward,
@@ -437,7 +447,7 @@ var DamageRankLayer = LazyLayer.extend({
         }
 
         var that = this;
-        gameData.tournament.getDamageRankReward(function (data) {
+        gameData.boss.getLastWeekReward(function (data) {
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
@@ -445,7 +455,7 @@ var DamageRankLayer = LazyLayer.extend({
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);
-                    that.update()
+                    that.update();
                 }
             });
         });
@@ -464,7 +474,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        MainScene.getInstance().switchLayer(DamageRankHelpLabel);
+        DamageRankHelpLabel.pop();
     },
 
     _onClickDetail: function () {

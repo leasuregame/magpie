@@ -69,7 +69,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-360</real>
+											<real>-270</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -100,8 +100,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.51328355073928833</real>
-									<real>0.50282353162765503</real>
+									<real>0.49964398145675659</real>
+									<real>0.47333607077598572</real>
 								</array>
 							</dict>
 							<dict>
@@ -125,7 +125,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-360</real>
+								<real>-270</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -203,7 +203,7 @@
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>1</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -212,8 +212,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>40</real>
-									<real>40</real>
+									<real>20</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -230,7 +230,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.5</real>
+								<real>0.80000001192092896</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -238,7 +238,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>200</integer>
+								<integer>80</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -247,7 +247,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>0.30000001192092896</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -258,7 +258,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
+									<real>70</real>
 									<real>10</real>
 								</array>
 							</dict>
@@ -314,9 +314,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.46202266216278076</real>
-										<real>0.8382837176322937</real>
 										<real>1</real>
+										<real>0.64672333002090454</real>
+										<real>0.22424036264419556</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -361,18 +361,7 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>gravity</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>speed</string>
+								<string>startRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -383,7 +372,7 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tangentialAccel</string>
+								<string>endRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -394,7 +383,7 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>radialAccel</string>
+								<string>rotatePerSecond</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -409,7 +398,7 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>res/effect/effect/p18.png</string>
+								<string>res/effect/effect/p128.png</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>

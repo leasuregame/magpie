@@ -22,7 +22,7 @@ var AchievementLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("成就界面");
+        lz.um.beginLogPageView("成就界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var AchievementLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("成就界面");
+        lz.um.endLogPageView("成就界面");
     },
 
     init: function () {

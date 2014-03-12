@@ -68,25 +68,50 @@ var BossLayer = cc.Layer.extend({
         bossCard.setPosition(this._bossLayerFit.bossCardPoint);
         this.addChild(bossCard);
 
-        var bossId = outputTables.boss.rows[boss.tableId].boss_id;
-        var card = outputTables.cards.rows[bossId];
-        var bossNameLabel = StrokeLabel.create(card.name, "STHeitiTC-Medium", 30);
-        bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
-        bossNameLabel.setPosition(this._bossLayerFit.bossNameLabelPoint);
+        var bossTable = outputTables.boss.rows[boss.tableId];
+        var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
+        var point = this._bossLayerFit.bossNameLabelPoint;
+
+        if (addition > 0) {
+            var rewardAdditionLabel = ColorLabelTTF.create(
+                {
+                    string: "（奖励加成",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true
+                },
+                {
+                    string: addition + "%",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true,
+                    color: cc.c3b(117, 255, 57)
+                },
+                {
+                    string: "）",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true
+                }
+            );
+            rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
+            rewardAdditionLabel.setPosition(cc.p(gameFit.GAME_MIDPOINT.x, point.y + 5));
+            this.addChild(rewardAdditionLabel);
+        }
+
+        var card = outputTables.cards.rows[bossTable.boss_id];
+
+        var bossNameLabel = StrokeLabel.create(card.name, "STHeitiTC-Medium", 35);
+        if (addition > 0) {
+            bossNameLabel.setAnchorPoint(cc.p(1, 0));
+        } else {
+            bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
+        }
+
+        bossNameLabel.setPosition(point);
         bossNameLabel.setColor(cc.c3b(252, 254, 143));
         bossNameLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(bossNameLabel);
-
-        var rewardAdditionLabel = StrokeLabel.create("奖励加成", "STHeitiTC-Medium", 22);
-        rewardAdditionLabel.setAnchorPoint(cc.p(0.5, 0));
-        rewardAdditionLabel.setPosition(this._bossLayerFit.rewardAdditionLabelPoint);
-        this.addChild(rewardAdditionLabel);
-
-        var rewardAddition = StrokeLabel.create("150%", "STHeitiTC-Medium", 22);
-        rewardAddition.setAnchorPoint(cc.p(0.5, 0));
-        rewardAddition.setColor(cc.c3b(193, 224, 109));
-        rewardAddition.setPosition(this._bossLayerFit.rewardAdditionPoint);
-        this.addChild(rewardAddition);
 
         var runAwayTimeLabel = StrokeLabel.create("逃跑时间: ", "STHeitiTC-Medium", 22);
         runAwayTimeLabel.setAnchorPoint(cc.p(0.5, 0));
@@ -107,8 +132,8 @@ var BossLayer = cc.Layer.extend({
         this._countLeftLabel = StrokeLabel.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 25);
         this._countLeftLabel.setAnchorPoint(cc.p(0.5, 0));
         this._countLeftLabel.setPosition(this._bossLayerFit.countLeftLabelPoint);
-        this._countLeftLabel.setColor(cc.c3b(255, 243, 163));
-        this._countLeftLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._countLeftLabel.setColor(cc.c3b(255, 88, 88));
+        this._countLeftLabel.setBgColor(cc.c3b(94, 11, 11));
         this.addChild(this._countLeftLabel);
 
 
@@ -259,7 +284,7 @@ var BossLayer = cc.Layer.extend({
 
         this._attackIcon.setVisible(this._addition == 0);
         this._attackNode.setVisible(this._addition != 0);
-        this._expendGoldLabel.setString(gameData.boss.needGold(this._addition));
+        this._expendGoldLabel.setString(gameData.boss.additionNeedGold(this._addition));
 
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
@@ -313,32 +338,23 @@ var BossLayer = cc.Layer.extend({
 
         var that = this;
 
-        var next = function () {
+        if (this._cdTime > 0) {
+            TipLayer.tip("CD冷却时间未到");
+            return;
+        }
 
-            var cb = function () {
-                that._addition = 0;
-                that.update();
-            };
-
-            gameData.boss.attack(function (battleLogId) {
-                BattlePlayer.getInstance().play({
-                    cb: cb,
-                    id: battleLogId
-                });
-            }, that._bossId, that._addition);
+        var cb = function () {
+            that._addition = 0;
+            that.update();
         };
 
-        if (this._cdTime > 0) {
-            var cb = function () {
-                gameData.boss.removeTimer(function () {
-                    that.update();
-                    next();
-                });
-            };
-            RemoveCdTipLabel.pop({cb: cb});
-        } else {
-            next();
-        }
+        gameData.boss.attack(function (battleLogId) {
+            BattlePlayer.getInstance().play({
+                cb: cb,
+                id: battleLogId
+            });
+        }, this._bossId, this._addition);
+
     },
 
     _onClickRemoveCdTime: function () {

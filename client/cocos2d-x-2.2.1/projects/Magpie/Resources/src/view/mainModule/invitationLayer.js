@@ -20,7 +20,7 @@ var InvitationLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("激活码兑换界面");
+        lz.um.beginLogPageView("激活码兑换界面");
     },
 
     onExit: function () {
@@ -28,7 +28,7 @@ var InvitationLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("激活码兑换界面");
+        lz.um.endLogPageView("激活码兑换界面");
     },
 
     init: function () {

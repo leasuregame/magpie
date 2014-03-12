@@ -36,7 +36,7 @@ var ActivityLayer = cc.Layer.extend({
         this._super();
         this.updateMark();
 
-        lz.dc.beginLogPageView("活动界面");
+        lz.um.beginLogPageView("活动界面");
     },
 
     onExit: function () {
@@ -44,7 +44,7 @@ var ActivityLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("活动界面");
+        lz.um.endLogPageView("活动界面");
     },
 
     init: function () {

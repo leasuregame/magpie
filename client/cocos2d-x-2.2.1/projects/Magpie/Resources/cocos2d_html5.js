@@ -54,8 +54,8 @@
             'src/model/entity.js',
 
             'src/model/lz.js',
+            'src/model/um.js',
             'IOS/AppStore/platform.js',
-            'src/model/dataCollection.js',
             'src/model/pomelo.js',
             'src/model/server.js',
 
@@ -133,6 +133,7 @@
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/addFriendsLayer.js',
             'src/view/mainModule/attackDetailsLayer.js',
+            'src/view/mainModule/bossAppearLabel.js',
             'src/view/mainModule/bossHelpLabel.js',
             'src/view/mainModule/bossLayer.js',
             'src/view/mainModule/bossListLayer.js',
@@ -161,6 +162,7 @@
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/tipsLayer.js',
             'src/view/mainModule/configLayer.js',
+            'src/view/mainModule/damageRankHelpLabel.js',
             'src/view/mainModule/damageRankLayer.js',
             'src/view/mainModule/elixirRankHelpLabel.js',
             'src/view/mainModule/elixirRankLayer.js',

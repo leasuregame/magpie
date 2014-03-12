@@ -28,7 +28,7 @@ var CardLibraryLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡库界面");
+        lz.um.beginLogPageView("卡库界面");
     },
 
     onExit: function () {
@@ -36,7 +36,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡库界面");
+        lz.um.endLogPageView("卡库界面");
     },
 
 

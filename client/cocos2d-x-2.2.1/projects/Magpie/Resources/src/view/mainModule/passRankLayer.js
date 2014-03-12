@@ -25,7 +25,7 @@ var PassRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("天道排行榜界面");
+        lz.um.beginLogPageView("天道排行榜界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var PassRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("天道排行榜界面");
+        lz.um.endLogPageView("天道排行榜界面");
     },
 
     init: function () {

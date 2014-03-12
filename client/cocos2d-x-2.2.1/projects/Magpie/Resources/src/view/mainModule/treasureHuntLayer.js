@@ -40,7 +40,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("寻宝界面");
+        lz.um.beginLogPageView("寻宝界面");
     },
 
     onExit: function () {
@@ -48,7 +48,7 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("寻宝界面");
+        lz.um.endLogPageView("寻宝界面");
     },
 
     init: function () {

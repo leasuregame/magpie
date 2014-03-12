@@ -15,7 +15,7 @@ var TipsLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("帮助界面");
+        lz.um.beginLogPageView("帮助界面");
     },
 
     onExit: function () {
@@ -23,7 +23,7 @@ var TipsLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("帮助界面");
+        lz.um.endLogPageView("帮助界面");
     },
 
     init: function () {

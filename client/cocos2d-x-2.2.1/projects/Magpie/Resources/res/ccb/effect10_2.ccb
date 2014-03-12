@@ -125,7 +125,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>54.000003814697266</real>
+								<real>90</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -212,8 +212,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
-									<real>30</real>
+									<real>20</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -247,7 +247,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>0.60000002384185791</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -414,6 +414,8 @@
 						</array>
 						<key>selected</key>
 						<true/>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -549,11 +551,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>347.94802856445312</real>
+			<real>429.6474609375</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

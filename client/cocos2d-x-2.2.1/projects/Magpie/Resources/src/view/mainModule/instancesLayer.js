@@ -8,10 +8,10 @@ var InstancesLayer = cc.Layer.extend({
     _taskLayerItem: null,
     _passLayerItem: null,
 
-    init: function() {
+    init: function () {
         cc.log("InstancesLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this._instancesLayerFit = gameFit.mainScene.instancesLayer;
 
@@ -31,14 +31,25 @@ var InstancesLayer = cc.Layer.extend({
         this._taskLayerItem.setPosition(this._instancesLayerFit.taskLayerItemPoint);
         this._taskLayerItem.setOffset(cc.p(-6, -5));
 
-        this._passLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
-            main_scene_image.icon390,
-            this._onClickPassLayer,
-            this
-        );
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
+            this._passLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon390,
+                this._onClickPassLayer,
+                this
+            );
+        } else {
+            this._passLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23,
+                main_scene_image.button23s,
+                main_scene_image.button23d,
+                main_scene_image.icon390,
+                this._onClickPassLayer,
+                this
+            );
+        }
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
@@ -72,6 +83,12 @@ var InstancesLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var limitLv = outputTables.function_limit.rows[1].pass;
+        if (gameData.player.get("lv") < limitLv) {
+            TipLayer.tip(limitLv + "级开放");
+            return;
+        }
+
         this._taskLayerItem.setEnabled(true);
         this._passLayerItem.setEnabled(false);
 
@@ -90,11 +107,11 @@ var InstancesLayer = cc.Layer.extend({
     }
 });
 
-InstancesLayer.create = function() {
+InstancesLayer.create = function () {
     cc.log("InstancesLayer create");
 
     var ref = new InstancesLayer();
-    if(ref && ref.init()) {
+    if (ref && ref.init()) {
         return ref;
     }
 

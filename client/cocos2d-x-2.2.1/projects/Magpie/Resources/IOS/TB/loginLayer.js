@@ -33,7 +33,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("同步推登录界面");
+        lz.um.beginLogPageView("同步推登录界面");
     },
 
     onExit: function () {
@@ -42,7 +42,7 @@ var LoginLayer = cc.Layer.extend({
         this._super();
         this.unscheduleAllCallbacks();
 
-        lz.dc.endLogPageView("同步推登录界面");
+        lz.um.endLogPageView("同步推登录界面");
     },
 
     init: function () {

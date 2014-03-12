@@ -249,7 +249,7 @@ var Shop = Entity.extend({
                     cards: table.exp_card || 0
                 });
 
-                lz.dc.event("event_buy_vip_box", id);
+                lz.um.event("event_buy_vip_box", id);
             } else {
                 cc.log("buyVipBox fail");
 
@@ -295,7 +295,7 @@ var Shop = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_buy_product", id)
+                lz.um.event("event_buy_product", id)
             } else {
                 cc.log("buyProduct fail");
 
@@ -342,7 +342,7 @@ var Shop = Entity.extend({
     ProductMaxCountHandle: {
         expCard: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,
@@ -390,7 +390,7 @@ var Shop = Entity.extend({
 
         money: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,
@@ -426,7 +426,7 @@ var Shop = Entity.extend({
 
         power: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,
@@ -483,7 +483,7 @@ var Shop = Entity.extend({
 
         challengeCount: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,
@@ -538,7 +538,7 @@ var Shop = Entity.extend({
         },
         cardCount: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,
@@ -603,7 +603,7 @@ var Shop = Entity.extend({
 
         speaker: function (table) {
             var product = {
-                name: table.name,
+                name: "购买" + table.name,
                 consumeType: table.consume_type,
                 price: table.consume,
                 obtain: table.obtain,

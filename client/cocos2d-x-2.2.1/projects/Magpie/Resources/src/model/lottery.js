@@ -132,7 +132,7 @@ var Lottery = Entity.extend({
                     fragment: msg.fragment
                 });
 
-                lz.dc.event("event_lottery", "type:" + type + " level:" + level);
+                lz.um.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
 
@@ -185,7 +185,7 @@ var Lottery = Entity.extend({
                     fragment: msg.fragment
                 });
 
-                lz.dc.event("event_lottery", "type:" + type + " level:" + level);
+                lz.um.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
 

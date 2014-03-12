@@ -22,6 +22,11 @@ var EVOLUTION_ERROR = -1;
 var EXTRACT_ELIXIR = 0;
 var EXTRACT_SKILL_POINT = 1;
 
+var BOSS_CARD_TABLE_ID = {
+    begin: 40000,
+    end: 40002
+};
+
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",
@@ -385,7 +390,7 @@ var Card = Entity.extend({
                     money: msg.money_consume
                 });
 
-                lz.dc.event("event_card_upgrade", that._lv);
+                lz.um.event("event_card_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 
@@ -455,7 +460,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_skill_upgrade", that._skillLv);
+                lz.um.event("event_card_skill_upgrade", that._skillLv);
             } else {
                 cc.log("upgradeSkill fail");
 
@@ -500,7 +505,7 @@ var Card = Entity.extend({
 
                 cb(true);
 
-                lz.dc.event("event_card_passive_skill_afresh", type);
+                lz.um.event("event_card_passive_skill_afresh", type);
             } else {
                 cc.log("passSkillAfresh fail");
 
@@ -575,7 +580,7 @@ var Card = Entity.extend({
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
                 cb(result);
 
-                lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
+                lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
                 cc.log("evolution fail");
 
@@ -615,7 +620,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_train", "type:" + trainType + " count:" + trainCount);
+                lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
                 cc.log("train fail");
 
@@ -662,7 +667,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_extract", "type:" + type);
+                lz.um.event("event_card_extract", "type:" + type);
             } else {
                 cc.log("extract fail");
 
@@ -684,8 +689,12 @@ var Card = Entity.extend({
         return price;
     },
 
-    isLeadCard: function (tableId) {
-        return (tableId < 10000 || tableId == 30000);
+    isLeadCard: function () {
+        return (this._tableId < 10000 || this._tableId == 30000);
+    },
+
+    isBossCard: function () {
+        return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });
 

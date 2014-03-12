@@ -17,7 +17,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("竞技提示界面");
+        lz.um.beginLogPageView("竞技提示界面");
     },
 
     onExit: function () {
@@ -25,7 +25,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("竞技提示界面");
+        lz.um.endLogPageView("竞技提示界面");
     },
 
     init: function (cb1, cb2) {

@@ -101,7 +101,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -141,7 +141,7 @@
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>1</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -299,9 +299,9 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>gravity</string>
+								<string>startRadius</string>
 								<key>type</key>
-								<string>Point</string>
+								<string>FloatVar</string>
 								<key>value</key>
 								<array>
 									<real>0.0</real>
@@ -310,29 +310,18 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>speed</string>
+								<string>endRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>110</real>
+									<real>100</real>
 									<real>20</real>
 								</array>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tangentialAccel</string>
-								<key>type</key>
-								<string>FloatVar</string>
-								<key>value</key>
-								<array>
-									<real>60</real>
-									<real>20</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>radialAccel</string>
+								<string>rotatePerSecond</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -795,7 +784,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -879,7 +868,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>0.5</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -891,7 +880,7 @@
 								<key>value</key>
 								<array>
 									<real>20</real>
-									<real>10</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -901,8 +890,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>10</real>
-									<real>5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -999,7 +988,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>40</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -1009,8 +998,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>180</real>
-									<real>80</real>
+									<real>140</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -1168,7 +1157,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.63333332538604736</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

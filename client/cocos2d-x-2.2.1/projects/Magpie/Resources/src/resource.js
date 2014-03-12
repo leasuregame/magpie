@@ -734,6 +734,7 @@ var main_scene_image = {
     icon411: main_scene_path + "icon411.png",
     icon412: main_scene_path + "icon412.png",
     icon413: main_scene_path + "icon413.png",
+    icon414: main_scene_path + "icon414.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -951,6 +952,8 @@ var main_scene_image = {
     uiEffect88: "res/ccb/uiEffect88.ccbi",
     uiEffect89: "res/ccb/uiEffect89.ccbi",
     uiEffect90: "res/ccb/uiEffect90.ccbi",
+    uiEffect91: "res/ccb/uiEffect91.ccbi",
+    uiEffect92: "res/ccb/uiEffect92.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

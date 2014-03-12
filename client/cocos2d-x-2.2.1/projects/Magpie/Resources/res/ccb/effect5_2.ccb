@@ -75,7 +75,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -131,7 +131,7 @@
 						<key>value</key>
 						<array>
 							<real>30</real>
-							<real>10</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -233,29 +233,7 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>speed</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>150</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tangentialAccel</string>
+						<string>startRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -266,7 +244,18 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>radialAccel</string>
+						<string>endRadius</string>
+						<key>type</key>
+						<string>FloatVar</string>
+						<key>value</key>
+						<array>
+							<real>100</real>
+							<real>30</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -364,7 +353,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>20</real>
+									<real>30</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -457,8 +446,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.6000000238418579</real>
-							<real>1.6000000238418579</real>
+							<real>2.5</real>
+							<real>2.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -471,7 +460,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>2</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -500,7 +489,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>230</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -509,9 +498,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>107</integer>
-							<integer>102</integer>
-							<integer>77</integer>
+							<integer>141</integer>
+							<integer>136</integer>
+							<integer>114</integer>
 						</array>
 					</dict>
 					<dict>
@@ -606,7 +595,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-20</real>
+									<real>-30</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -699,8 +688,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.6000000238418579</real>
-							<real>1.6000000238418579</real>
+							<real>2.5</real>
+							<real>2.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -713,7 +702,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-2</real>
+						<real>-30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -742,7 +731,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>230</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -751,9 +740,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>95</integer>
-							<integer>85</integer>
-							<integer>69</integer>
+							<integer>137</integer>
+							<integer>125</integer>
+							<integer>111</integer>
 						</array>
 					</dict>
 					<dict>
@@ -858,7 +847,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.066666670143604279</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

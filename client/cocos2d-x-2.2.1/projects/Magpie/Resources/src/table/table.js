@@ -1,46 +1,6 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "boss_type_rate": "BOSS类型配置表",
-    "BOSS类型配置表": "boss_type_rate",
-    "boss": "BOSS属性配置表",
-    "BOSS属性配置表": "boss",
-    "boss_card": "Boss怪物卡牌配置表",
-    "Boss怪物卡牌配置表": "boss_card",
-    "boss_rank_reward": "伤害排行榜奖励配置表",
-    "伤害排行榜奖励配置表": "boss_rank_reward",
-    "new_year_rechage": "新年充值奖励",
-    "新年充值奖励": "new_year_rechage",
-    "player_upgrade_reward": "玩家升级阶段奖励配置表",
-    "玩家升级阶段奖励配置表": "player_upgrade_reward",
-    "cdkey": "激活码配置表",
-    "激活码配置表": "cdkey",
-    "daily_gift": "每日重置数据配置表",
-    "每日重置数据配置表": "daily_gift",
-    "first_card": "首抽卡牌配置表",
-    "首抽卡牌配置表": "first_card",
-    "friends_config": "好友数量配置表",
-    "好友数量配置表": "friends_config",
-    "receive_bless_config": "接收祝福次数配置表",
-    "接收祝福次数配置表": "receive_bless_config",
-    "give_bless_config": "祝福次数配置表",
-    "祝福次数配置表": "give_bless_config",
-    "function_limit": "功能开放等级限制",
-    "功能开放等级限制": "function_limit",
-    "lv_limit": "等级限制表",
-    "等级限制表": "lv_limit",
-    "card_lv_limit": "卡牌等级限制表",
-    "卡牌等级限制表": "card_lv_limit",
-    "elixir_limit": "仙丹培养限制表",
-    "仙丹培养限制表": "elixir_limit",
-    "resource_limit": "资源限制表",
-    "资源限制表": "resource_limit",
-    "daily_signin_rewards": "每日签到奖励",
-    "每日签到奖励": "daily_signin_rewards",
-    "signIn_rewards": "连续签到奖励",
-    "连续签到奖励": "signIn_rewards",
-    "values": "零碎的值配置表",
-    "零碎的值配置表": "values",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_price": "卡牌价格配置表",
@@ -73,12 +33,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -87,6 +41,56 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "new_year_rechage": "新年充值奖励",
+    "新年充值奖励": "new_year_rechage",
+    "player_upgrade_reward": "玩家升级阶段奖励配置表",
+    "玩家升级阶段奖励配置表": "player_upgrade_reward",
+    "cdkey": "激活码配置表",
+    "激活码配置表": "cdkey",
+    "daily_gift": "每日重置数据配置表",
+    "每日重置数据配置表": "daily_gift",
+    "first_card": "首抽卡牌配置表",
+    "首抽卡牌配置表": "first_card",
+    "friends_config": "好友数量配置表",
+    "好友数量配置表": "friends_config",
+    "receive_bless_config": "接收祝福次数配置表",
+    "接收祝福次数配置表": "receive_bless_config",
+    "give_bless_config": "祝福次数配置表",
+    "祝福次数配置表": "give_bless_config",
+    "function_limit": "功能开放等级限制",
+    "功能开放等级限制": "function_limit",
+    "lv_limit": "等级限制表",
+    "等级限制表": "lv_limit",
+    "card_lv_limit": "卡牌等级限制表",
+    "卡牌等级限制表": "card_lv_limit",
+    "elixir_limit": "仙丹培养限制表",
+    "仙丹培养限制表": "elixir_limit",
+    "resource_limit": "资源限制表",
+    "资源限制表": "resource_limit",
+    "daily_signin_rewards": "每日签到奖励",
+    "每日签到奖励": "daily_signin_rewards",
+    "signIn_rewards": "连续签到奖励",
+    "连续签到奖励": "signIn_rewards",
+    "values": "零碎的值配置表",
+    "零碎的值配置表": "values",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss": "BOSS属性配置表",
+    "BOSS属性配置表": "boss",
+    "boss_card": "Boss怪物卡牌配置表",
+    "Boss怪物卡牌配置表": "boss_card",
+    "boss_rank_reward": "伤害排行榜奖励配置表",
+    "伤害排行榜奖励配置表": "boss_rank_reward",
+    "recharge": "充值类型",
+    "充值类型": "recharge",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
+    "vip": "vip等级配置表",
+    "vip等级配置表": "vip",
+    "vip_box": "vip礼包赠品",
+    "vip礼包赠品": "vip_box",
+    "vip_privilege": "vip特权",
+    "vip特权": "vip_privilege",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -113,16 +117,12 @@ var nameChanged = {
     "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
-    "recharge": "充值类型",
-    "充值类型": "recharge",
-    "vip": "vip等级配置表",
-    "vip等级配置表": "vip",
-    "vip_box": "vip礼包赠品",
-    "vip礼包赠品": "vip_box",
-    "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege"
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak"
 };
 
 var outputTables = {
@@ -470,575 +470,6 @@ var outputTables = {
                 "desc": "通关尊者之身篇章",
                 "gold": 20,
                 "energy": 100
-            }
-        }
-    },
-    "boss_type_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 60,
-                "name": "蓝卡",
-                "reward_inc": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 25,
-                "name": "紫卡",
-                "reward_inc": 50
-            },
-            "3": {
-                "id": 3,
-                "rate": 15,
-                "name": "金卡",
-                "reward_inc": 150
-            }
-        }
-    },
-    "boss": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "九阴罗刹",
-                "type": 1,
-                "boss_id": 40000,
-                "card_ids": "40003#40000#40003",
-                "formation": "01:40000,10:40003,12:40003",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "2": {
-                "id": 2,
-                "name": "赤炎星君",
-                "type": 2,
-                "boss_id": 40001,
-                "card_ids": "40004#40001#40004",
-                "formation": "01:40001,10:40004,12:40004",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "3": {
-                "id": 3,
-                "name": "金身冥王",
-                "type": 3,
-                "boss_id": 40002,
-                "card_ids": "40005#40002#40005",
-                "formation": "01:40002,10:40005,12:40005",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            }
-        }
-    },
-    "boss_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "40000": {
-                "id": 40000,
-                "card_id": "九阴罗刹",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40001": {
-                "id": 40001,
-                "card_id": "赤炎星君",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40002": {
-                "id": 40002,
-                "card_id": "金身冥王",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40003": {
-                "id": 40003,
-                "card_id": "小怪1号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            },
-            "40004": {
-                "id": 40004,
-                "card_id": "小怪2号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            },
-            "40005": {
-                "id": 40005,
-                "card_id": "小怪3号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            }
-        }
-    },
-    "boss_rank_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "honor": 12000,
-                "money": 500000,
-                "energy": 8000
-            },
-            "2": {
-                "id": 2,
-                "honor": 11000,
-                "money": 400000,
-                "energy": 7000
-            },
-            "3": {
-                "id": 3,
-                "honor": 10000,
-                "money": 300000,
-                "energy": 6000
-            },
-            "4": {
-                "id": 4,
-                "honor": 9000,
-                "money": 200000,
-                "energy": 5000
-            },
-            "5": {
-                "id": 5,
-                "honor": 8000,
-                "money": 100000,
-                "energy": 4000
-            }
-        }
-    },
-    "new_year_rechage": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 66,
-                "money": 20000,
-                "energy": 100,
-                "fragments": 2
-            },
-            "2": {
-                "id": 2,
-                "cash": 266,
-                "money": 50000,
-                "energy": 200,
-                "fragments": 3
-            },
-            "3": {
-                "id": 3,
-                "cash": 566,
-                "money": 80000,
-                "energy": 300,
-                "fragments": 5
-            },
-            "4": {
-                "id": 4,
-                "cash": 999,
-                "money": 100000,
-                "energy": 800,
-                "fragments": 8
-            },
-            "5": {
-                "id": 5,
-                "cash": 1888,
-                "money": 200000,
-                "energy": 1000,
-                "fragments": 12
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 20000,
-                "energy": 1000,
-                "card_ids": 254,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 50,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 5,
-                "collect_count": 15,
-                "exp_card_count": 100
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[8,13,33,43,168,148,218,123,243]",
-                "star4": "[59,139]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 20,
-                "lottery": 25,
-                "card5_position": 35,
-                "pass_skillafresh": 45
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 200000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 320000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 400000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 99999999,
-                "energy": 99999999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 99999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 5000,
-                "energy": 200
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 30000,
-                "energy": 1000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 50000,
-                "energy": 2000,
-                "skillPoint": 1000,
-                "elixir": 2000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 100000,
-                "energy": 3000,
-                "skillPoint": 2000,
-                "elixir": 5000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 120000,
-                "energy": 5000,
-                "skillPoint": 5000,
-                "elixir": 12000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 200000,
-                "energy": 8000,
-                "skillPoint": 8000,
-                "elixir": 20000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
-            },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
-                "value": 200,
-                "desc": "提取仙丹或技能点消耗的元宝数量"
-            },
-            "greetingConsumeGold": {
-                "id": "greetingConsumeGold",
-                "value": 20,
-                "desc": "每次喊话话费的金额"
-            },
-            "findBossRate": {
-                "id": "findBossRate",
-                "value": 5,
-                "desc": "每次探索发现boss的概率"
-            },
-            "bossTypeBlueCard": {
-                "id": "bossTypeBlueCard",
-                "value": 60,
-                "desc": "蓝卡boss随机的概率"
-            },
-            "bossTypePurpleCard": {
-                "id": "bossTypePurpleCard",
-                "value": 25,
-                "desc": "紫卡boss随机的概率"
-            },
-            "bossTypeGoldCard": {
-                "id": "bossTypeGoldCard",
-                "value": 15,
-                "desc": "金卡boss随机的概率"
             }
         }
     },
@@ -3571,7 +3002,7 @@ var outputTables = {
             "10000": {
                 "id": 10000,
                 "number": 10000,
-                "name": "灯笼怪",
+                "name": "灯笼怪1",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3582,7 +3013,7 @@ var outputTables = {
             "10001": {
                 "id": 10001,
                 "number": 10001,
-                "name": "龅牙兔",
+                "name": "龅牙兔2",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3595,7 +3026,7 @@ var outputTables = {
             "10002": {
                 "id": 10002,
                 "number": 10002,
-                "name": "乌龟精",
+                "name": "乌龟精3",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3608,7 +3039,7 @@ var outputTables = {
             "10003": {
                 "id": 10003,
                 "number": 10003,
-                "name": "卖茶怪",
+                "name": "卖茶怪4",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3621,7 +3052,7 @@ var outputTables = {
             "10004": {
                 "id": 10004,
                 "number": 10004,
-                "name": "白骨精",
+                "name": "白骨精5",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3634,7 +3065,7 @@ var outputTables = {
             "10005": {
                 "id": 10005,
                 "number": 10005,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪6",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3647,7 +3078,7 @@ var outputTables = {
             "10006": {
                 "id": 10006,
                 "number": 10006,
-                "name": "树精",
+                "name": "树精7",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3660,7 +3091,7 @@ var outputTables = {
             "10007": {
                 "id": 10007,
                 "number": 10007,
-                "name": "黑熊精",
+                "name": "黑熊精8",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3673,7 +3104,7 @@ var outputTables = {
             "10008": {
                 "id": 10008,
                 "number": 10008,
-                "name": "狐狸精",
+                "name": "狐狸精9",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3686,7 +3117,7 @@ var outputTables = {
             "10009": {
                 "id": 10009,
                 "number": 10009,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵10",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3699,7 +3130,7 @@ var outputTables = {
             "10010": {
                 "id": 10010,
                 "number": 10010,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖11",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3712,7 +3143,7 @@ var outputTables = {
             "10011": {
                 "id": 10011,
                 "number": 10011,
-                "name": "野猪妖",
+                "name": "野猪妖12",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3725,7 +3156,7 @@ var outputTables = {
             "10012": {
                 "id": 10012,
                 "number": 10012,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔13",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3738,7 +3169,7 @@ var outputTables = {
             "10013": {
                 "id": 10013,
                 "number": 10013,
-                "name": "猴儿精",
+                "name": "猴儿精14",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3751,7 +3182,7 @@ var outputTables = {
             "10014": {
                 "id": 10014,
                 "number": 10014,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪15",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3764,7 +3195,7 @@ var outputTables = {
             "10015": {
                 "id": 10015,
                 "number": 10015,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼16",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3777,7 +3208,7 @@ var outputTables = {
             "10016": {
                 "id": 10016,
                 "number": 10016,
-                "name": "狮子怪",
+                "name": "狮子怪17",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3790,7 +3221,7 @@ var outputTables = {
             "10017": {
                 "id": 10017,
                 "number": 10017,
-                "name": "蚊子怪",
+                "name": "蚊子怪18",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3803,7 +3234,7 @@ var outputTables = {
             "10018": {
                 "id": 10018,
                 "number": 10018,
-                "name": "火焰怪",
+                "name": "火焰怪19",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3816,7 +3247,7 @@ var outputTables = {
             "10019": {
                 "id": 10019,
                 "number": 10019,
-                "name": "河童怪",
+                "name": "河童怪20",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3829,7 +3260,7 @@ var outputTables = {
             "10020": {
                 "id": 10020,
                 "number": 10020,
-                "name": "独角兽",
+                "name": "独角兽21",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3842,7 +3273,7 @@ var outputTables = {
             "10021": {
                 "id": 10021,
                 "number": 10021,
-                "name": "人鱼怪",
+                "name": "人鱼怪22",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3855,7 +3286,7 @@ var outputTables = {
             "10022": {
                 "id": 10022,
                 "number": 10022,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王23",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3868,7 +3299,7 @@ var outputTables = {
             "10023": {
                 "id": 10023,
                 "number": 10023,
-                "name": "双头牛怪",
+                "name": "双头牛怪24",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3881,7 +3312,7 @@ var outputTables = {
             "10024": {
                 "id": 10024,
                 "number": 10024,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪25",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3894,7 +3325,7 @@ var outputTables = {
             "10025": {
                 "id": 10025,
                 "number": 10025,
-                "name": "小狗怪",
+                "name": "小狗怪26",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3907,7 +3338,7 @@ var outputTables = {
             "10026": {
                 "id": 10026,
                 "number": 10026,
-                "name": "大狗怪",
+                "name": "大狗怪27",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3920,7 +3351,7 @@ var outputTables = {
             "10027": {
                 "id": 10027,
                 "number": 10027,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪28",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3933,7 +3364,7 @@ var outputTables = {
             "10028": {
                 "id": 10028,
                 "number": 10028,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪29",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3946,7 +3377,7 @@ var outputTables = {
             "10029": {
                 "id": 10029,
                 "number": 10029,
-                "name": "僵尸怪",
+                "name": "僵尸怪30",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3959,7 +3390,7 @@ var outputTables = {
             "10030": {
                 "id": 10030,
                 "number": 10030,
-                "name": "宫灯怪",
+                "name": "宫灯怪31",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3972,7 +3403,7 @@ var outputTables = {
             "10031": {
                 "id": 10031,
                 "number": 10031,
-                "name": "挂科怪",
+                "name": "挂科怪32",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3985,7 +3416,7 @@ var outputTables = {
             "10032": {
                 "id": 10032,
                 "number": 10032,
-                "name": "自习怪",
+                "name": "自习怪33",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -3998,7 +3429,7 @@ var outputTables = {
             "10033": {
                 "id": 10033,
                 "number": 10033,
-                "name": "灯笼怪",
+                "name": "灯笼怪34",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4011,7 +3442,7 @@ var outputTables = {
             "10034": {
                 "id": 10034,
                 "number": 10034,
-                "name": "龅牙兔",
+                "name": "龅牙兔35",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4024,7 +3455,7 @@ var outputTables = {
             "10035": {
                 "id": 10035,
                 "number": 10035,
-                "name": "乌龟精",
+                "name": "乌龟精36",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4037,7 +3468,7 @@ var outputTables = {
             "10036": {
                 "id": 10036,
                 "number": 10036,
-                "name": "卖茶怪",
+                "name": "卖茶怪37",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4050,7 +3481,7 @@ var outputTables = {
             "10037": {
                 "id": 10037,
                 "number": 10037,
-                "name": "白骨精",
+                "name": "白骨精38",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4063,7 +3494,7 @@ var outputTables = {
             "10038": {
                 "id": 10038,
                 "number": 10038,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪39",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4076,7 +3507,7 @@ var outputTables = {
             "10039": {
                 "id": 10039,
                 "number": 10039,
-                "name": "树精",
+                "name": "树精40",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4089,7 +3520,7 @@ var outputTables = {
             "10040": {
                 "id": 10040,
                 "number": 10040,
-                "name": "黑熊精",
+                "name": "黑熊精41",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4102,7 +3533,7 @@ var outputTables = {
             "10041": {
                 "id": 10041,
                 "number": 10041,
-                "name": "狐狸精",
+                "name": "狐狸精42",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4115,7 +3546,7 @@ var outputTables = {
             "10042": {
                 "id": 10042,
                 "number": 10042,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵43",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4128,7 +3559,7 @@ var outputTables = {
             "10043": {
                 "id": 10043,
                 "number": 10043,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖44",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4141,7 +3572,7 @@ var outputTables = {
             "10044": {
                 "id": 10044,
                 "number": 10044,
-                "name": "野猪妖",
+                "name": "野猪妖45",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4154,7 +3585,7 @@ var outputTables = {
             "10045": {
                 "id": 10045,
                 "number": 10045,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔46",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4167,7 +3598,7 @@ var outputTables = {
             "10046": {
                 "id": 10046,
                 "number": 10046,
-                "name": "猴儿精",
+                "name": "猴儿精47",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4180,7 +3611,7 @@ var outputTables = {
             "10047": {
                 "id": 10047,
                 "number": 10047,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪48",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4193,7 +3624,7 @@ var outputTables = {
             "10048": {
                 "id": 10048,
                 "number": 10048,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼49",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4206,7 +3637,7 @@ var outputTables = {
             "10049": {
                 "id": 10049,
                 "number": 10049,
-                "name": "狮子怪",
+                "name": "狮子怪50",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4219,7 +3650,7 @@ var outputTables = {
             "10050": {
                 "id": 10050,
                 "number": 10050,
-                "name": "蚊子怪",
+                "name": "蚊子怪51",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4232,7 +3663,7 @@ var outputTables = {
             "10051": {
                 "id": 10051,
                 "number": 10051,
-                "name": "火焰怪",
+                "name": "火焰怪52",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4245,7 +3676,7 @@ var outputTables = {
             "10052": {
                 "id": 10052,
                 "number": 10052,
-                "name": "河童怪",
+                "name": "河童怪53",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4258,7 +3689,7 @@ var outputTables = {
             "10053": {
                 "id": 10053,
                 "number": 10053,
-                "name": "独角兽",
+                "name": "独角兽54",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4271,7 +3702,7 @@ var outputTables = {
             "10054": {
                 "id": 10054,
                 "number": 10054,
-                "name": "人鱼怪",
+                "name": "人鱼怪55",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4284,7 +3715,7 @@ var outputTables = {
             "10055": {
                 "id": 10055,
                 "number": 10055,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王56",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4297,7 +3728,7 @@ var outputTables = {
             "10056": {
                 "id": 10056,
                 "number": 10056,
-                "name": "双头牛怪",
+                "name": "双头牛怪57",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4310,7 +3741,7 @@ var outputTables = {
             "10057": {
                 "id": 10057,
                 "number": 10057,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪58",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4323,7 +3754,7 @@ var outputTables = {
             "10058": {
                 "id": 10058,
                 "number": 10058,
-                "name": "小狗怪",
+                "name": "小狗怪59",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4336,7 +3767,7 @@ var outputTables = {
             "10059": {
                 "id": 10059,
                 "number": 10059,
-                "name": "大狗怪",
+                "name": "大狗怪60",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4349,7 +3780,7 @@ var outputTables = {
             "10060": {
                 "id": 10060,
                 "number": 10060,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪61",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4362,7 +3793,7 @@ var outputTables = {
             "10061": {
                 "id": 10061,
                 "number": 10061,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪62",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4375,7 +3806,7 @@ var outputTables = {
             "10062": {
                 "id": 10062,
                 "number": 10062,
-                "name": "僵尸怪",
+                "name": "僵尸怪63",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4388,7 +3819,7 @@ var outputTables = {
             "10063": {
                 "id": 10063,
                 "number": 10063,
-                "name": "宫灯怪",
+                "name": "宫灯怪64",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4401,7 +3832,7 @@ var outputTables = {
             "10064": {
                 "id": 10064,
                 "number": 10064,
-                "name": "挂科怪",
+                "name": "挂科怪65",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4414,7 +3845,7 @@ var outputTables = {
             "10065": {
                 "id": 10065,
                 "number": 10065,
-                "name": "自习怪",
+                "name": "自习怪66",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4427,7 +3858,7 @@ var outputTables = {
             "10066": {
                 "id": 10066,
                 "number": 10066,
-                "name": "灯笼怪",
+                "name": "灯笼怪67",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4440,7 +3871,7 @@ var outputTables = {
             "10067": {
                 "id": 10067,
                 "number": 10067,
-                "name": "龅牙兔",
+                "name": "龅牙兔68",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4453,7 +3884,7 @@ var outputTables = {
             "10068": {
                 "id": 10068,
                 "number": 10068,
-                "name": "乌龟精",
+                "name": "乌龟精69",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4466,7 +3897,7 @@ var outputTables = {
             "10069": {
                 "id": 10069,
                 "number": 10069,
-                "name": "卖茶怪",
+                "name": "卖茶怪70",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4479,7 +3910,7 @@ var outputTables = {
             "10070": {
                 "id": 10070,
                 "number": 10070,
-                "name": "白骨精",
+                "name": "白骨精71",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4492,7 +3923,7 @@ var outputTables = {
             "10071": {
                 "id": 10071,
                 "number": 10071,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪72",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4505,7 +3936,7 @@ var outputTables = {
             "10072": {
                 "id": 10072,
                 "number": 10072,
-                "name": "树精",
+                "name": "树精73",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4518,7 +3949,7 @@ var outputTables = {
             "10073": {
                 "id": 10073,
                 "number": 10073,
-                "name": "黑熊精",
+                "name": "黑熊精74",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4531,7 +3962,7 @@ var outputTables = {
             "10074": {
                 "id": 10074,
                 "number": 10074,
-                "name": "狐狸精",
+                "name": "狐狸精75",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4544,7 +3975,7 @@ var outputTables = {
             "10075": {
                 "id": 10075,
                 "number": 10075,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵76",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4557,7 +3988,7 @@ var outputTables = {
             "10076": {
                 "id": 10076,
                 "number": 10076,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖77",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4570,7 +4001,7 @@ var outputTables = {
             "10077": {
                 "id": 10077,
                 "number": 10077,
-                "name": "野猪妖",
+                "name": "野猪妖78",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4583,7 +4014,7 @@ var outputTables = {
             "10078": {
                 "id": 10078,
                 "number": 10078,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔79",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4596,7 +4027,7 @@ var outputTables = {
             "10079": {
                 "id": 10079,
                 "number": 10079,
-                "name": "猴儿精",
+                "name": "猴儿精80",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4609,7 +4040,7 @@ var outputTables = {
             "10080": {
                 "id": 10080,
                 "number": 10080,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪81",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4622,7 +4053,7 @@ var outputTables = {
             "10081": {
                 "id": 10081,
                 "number": 10081,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼82",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4635,7 +4066,7 @@ var outputTables = {
             "10082": {
                 "id": 10082,
                 "number": 10082,
-                "name": "狮子怪",
+                "name": "狮子怪83",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4648,7 +4079,7 @@ var outputTables = {
             "10083": {
                 "id": 10083,
                 "number": 10083,
-                "name": "蚊子怪",
+                "name": "蚊子怪84",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4661,7 +4092,7 @@ var outputTables = {
             "10084": {
                 "id": 10084,
                 "number": 10084,
-                "name": "火焰怪",
+                "name": "火焰怪85",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4674,7 +4105,7 @@ var outputTables = {
             "10085": {
                 "id": 10085,
                 "number": 10085,
-                "name": "河童怪",
+                "name": "河童怪86",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4687,7 +4118,7 @@ var outputTables = {
             "10086": {
                 "id": 10086,
                 "number": 10086,
-                "name": "独角兽",
+                "name": "独角兽87",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4700,7 +4131,7 @@ var outputTables = {
             "10087": {
                 "id": 10087,
                 "number": 10087,
-                "name": "人鱼怪",
+                "name": "人鱼怪88",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4713,7 +4144,7 @@ var outputTables = {
             "10088": {
                 "id": 10088,
                 "number": 10088,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王89",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4726,7 +4157,7 @@ var outputTables = {
             "10089": {
                 "id": 10089,
                 "number": 10089,
-                "name": "双头牛怪",
+                "name": "双头牛怪90",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4739,7 +4170,7 @@ var outputTables = {
             "10090": {
                 "id": 10090,
                 "number": 10090,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪91",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4752,7 +4183,7 @@ var outputTables = {
             "10091": {
                 "id": 10091,
                 "number": 10091,
-                "name": "小狗怪",
+                "name": "小狗怪92",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4765,7 +4196,7 @@ var outputTables = {
             "10092": {
                 "id": 10092,
                 "number": 10092,
-                "name": "大狗怪",
+                "name": "大狗怪93",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4778,7 +4209,7 @@ var outputTables = {
             "10093": {
                 "id": 10093,
                 "number": 10093,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪94",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4791,7 +4222,7 @@ var outputTables = {
             "10094": {
                 "id": 10094,
                 "number": 10094,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪95",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4804,7 +4235,7 @@ var outputTables = {
             "10095": {
                 "id": 10095,
                 "number": 10095,
-                "name": "僵尸怪",
+                "name": "僵尸怪96",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4817,7 +4248,7 @@ var outputTables = {
             "10096": {
                 "id": 10096,
                 "number": 10096,
-                "name": "宫灯怪",
+                "name": "宫灯怪97",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4830,7 +4261,7 @@ var outputTables = {
             "10097": {
                 "id": 10097,
                 "number": 10097,
-                "name": "挂科怪",
+                "name": "挂科怪98",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4843,7 +4274,7 @@ var outputTables = {
             "10098": {
                 "id": 10098,
                 "number": 10098,
-                "name": "自习怪",
+                "name": "自习怪99",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4856,7 +4287,7 @@ var outputTables = {
             "10099": {
                 "id": 10099,
                 "number": 10099,
-                "name": "灯笼怪",
+                "name": "灯笼怪100",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4869,7 +4300,7 @@ var outputTables = {
             "10100": {
                 "id": 10100,
                 "number": 10100,
-                "name": "龅牙兔",
+                "name": "龅牙兔101",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4882,7 +4313,7 @@ var outputTables = {
             "10101": {
                 "id": 10101,
                 "number": 10101,
-                "name": "乌龟精",
+                "name": "乌龟精102",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4895,7 +4326,7 @@ var outputTables = {
             "10102": {
                 "id": 10102,
                 "number": 10102,
-                "name": "卖茶怪",
+                "name": "卖茶怪103",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4908,7 +4339,7 @@ var outputTables = {
             "10103": {
                 "id": 10103,
                 "number": 10103,
-                "name": "白骨精",
+                "name": "白骨精104",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4921,7 +4352,7 @@ var outputTables = {
             "10104": {
                 "id": 10104,
                 "number": 10104,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪105",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4934,7 +4365,7 @@ var outputTables = {
             "10105": {
                 "id": 10105,
                 "number": 10105,
-                "name": "树精",
+                "name": "树精106",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4947,7 +4378,7 @@ var outputTables = {
             "10106": {
                 "id": 10106,
                 "number": 10106,
-                "name": "黑熊精",
+                "name": "黑熊精107",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4960,7 +4391,7 @@ var outputTables = {
             "10107": {
                 "id": 10107,
                 "number": 10107,
-                "name": "狐狸精",
+                "name": "狐狸精108",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4973,7 +4404,7 @@ var outputTables = {
             "10108": {
                 "id": 10108,
                 "number": 10108,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵109",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4986,7 +4417,7 @@ var outputTables = {
             "10109": {
                 "id": 10109,
                 "number": 10109,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖110",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -4999,7 +4430,7 @@ var outputTables = {
             "10110": {
                 "id": 10110,
                 "number": 10110,
-                "name": "野猪妖",
+                "name": "野猪妖111",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5012,7 +4443,7 @@ var outputTables = {
             "10111": {
                 "id": 10111,
                 "number": 10111,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔112",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5025,7 +4456,7 @@ var outputTables = {
             "10112": {
                 "id": 10112,
                 "number": 10112,
-                "name": "猴儿精",
+                "name": "猴儿精113",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5038,7 +4469,7 @@ var outputTables = {
             "10113": {
                 "id": 10113,
                 "number": 10113,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪114",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5051,7 +4482,7 @@ var outputTables = {
             "10114": {
                 "id": 10114,
                 "number": 10114,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼115",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5064,7 +4495,7 @@ var outputTables = {
             "10115": {
                 "id": 10115,
                 "number": 10115,
-                "name": "狮子怪",
+                "name": "狮子怪116",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5077,7 +4508,7 @@ var outputTables = {
             "10116": {
                 "id": 10116,
                 "number": 10116,
-                "name": "蚊子怪",
+                "name": "蚊子怪117",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5090,7 +4521,7 @@ var outputTables = {
             "10117": {
                 "id": 10117,
                 "number": 10117,
-                "name": "火焰怪",
+                "name": "火焰怪118",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5103,7 +4534,7 @@ var outputTables = {
             "10118": {
                 "id": 10118,
                 "number": 10118,
-                "name": "河童怪",
+                "name": "河童怪119",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5116,7 +4547,7 @@ var outputTables = {
             "10119": {
                 "id": 10119,
                 "number": 10119,
-                "name": "独角兽",
+                "name": "独角兽120",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5129,7 +4560,7 @@ var outputTables = {
             "10120": {
                 "id": 10120,
                 "number": 10120,
-                "name": "人鱼怪",
+                "name": "人鱼怪121",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5142,7 +4573,7 @@ var outputTables = {
             "10121": {
                 "id": 10121,
                 "number": 10121,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王122",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5155,7 +4586,7 @@ var outputTables = {
             "10122": {
                 "id": 10122,
                 "number": 10122,
-                "name": "双头牛怪",
+                "name": "双头牛怪123",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5168,7 +4599,7 @@ var outputTables = {
             "10123": {
                 "id": 10123,
                 "number": 10123,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪124",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5181,7 +4612,7 @@ var outputTables = {
             "10124": {
                 "id": 10124,
                 "number": 10124,
-                "name": "小狗怪",
+                "name": "小狗怪125",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5194,7 +4625,7 @@ var outputTables = {
             "10125": {
                 "id": 10125,
                 "number": 10125,
-                "name": "大狗怪",
+                "name": "大狗怪126",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5207,7 +4638,7 @@ var outputTables = {
             "10126": {
                 "id": 10126,
                 "number": 10126,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪127",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5220,7 +4651,7 @@ var outputTables = {
             "10127": {
                 "id": 10127,
                 "number": 10127,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪128",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5233,7 +4664,7 @@ var outputTables = {
             "10128": {
                 "id": 10128,
                 "number": 10128,
-                "name": "僵尸怪",
+                "name": "僵尸怪129",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5246,7 +4677,7 @@ var outputTables = {
             "10129": {
                 "id": 10129,
                 "number": 10129,
-                "name": "宫灯怪",
+                "name": "宫灯怪130",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5259,7 +4690,7 @@ var outputTables = {
             "10130": {
                 "id": 10130,
                 "number": 10130,
-                "name": "挂科怪",
+                "name": "挂科怪131",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5272,7 +4703,7 @@ var outputTables = {
             "10131": {
                 "id": 10131,
                 "number": 10131,
-                "name": "自习怪",
+                "name": "自习怪132",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5285,7 +4716,7 @@ var outputTables = {
             "10132": {
                 "id": 10132,
                 "number": 10132,
-                "name": "灯笼怪",
+                "name": "灯笼怪133",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5298,7 +4729,7 @@ var outputTables = {
             "10133": {
                 "id": 10133,
                 "number": 10133,
-                "name": "龅牙兔",
+                "name": "龅牙兔134",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5311,7 +4742,7 @@ var outputTables = {
             "10134": {
                 "id": 10134,
                 "number": 10134,
-                "name": "乌龟精",
+                "name": "乌龟精135",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5324,7 +4755,7 @@ var outputTables = {
             "10135": {
                 "id": 10135,
                 "number": 10135,
-                "name": "卖茶怪",
+                "name": "卖茶怪136",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5337,7 +4768,7 @@ var outputTables = {
             "10136": {
                 "id": 10136,
                 "number": 10136,
-                "name": "白骨精",
+                "name": "白骨精137",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5350,7 +4781,7 @@ var outputTables = {
             "10137": {
                 "id": 10137,
                 "number": 10137,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪138",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5363,7 +4794,7 @@ var outputTables = {
             "10138": {
                 "id": 10138,
                 "number": 10138,
-                "name": "树精",
+                "name": "树精139",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5376,7 +4807,7 @@ var outputTables = {
             "10139": {
                 "id": 10139,
                 "number": 10139,
-                "name": "黑熊精",
+                "name": "黑熊精140",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5389,7 +4820,7 @@ var outputTables = {
             "10140": {
                 "id": 10140,
                 "number": 10140,
-                "name": "狐狸精",
+                "name": "狐狸精141",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5402,7 +4833,7 @@ var outputTables = {
             "10141": {
                 "id": 10141,
                 "number": 10141,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵142",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5415,7 +4846,7 @@ var outputTables = {
             "10142": {
                 "id": 10142,
                 "number": 10142,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖143",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5428,7 +4859,7 @@ var outputTables = {
             "10143": {
                 "id": 10143,
                 "number": 10143,
-                "name": "野猪妖",
+                "name": "野猪妖144",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5441,7 +4872,7 @@ var outputTables = {
             "10144": {
                 "id": 10144,
                 "number": 10144,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔145",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5454,7 +4885,7 @@ var outputTables = {
             "10145": {
                 "id": 10145,
                 "number": 10145,
-                "name": "猴儿精",
+                "name": "猴儿精146",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5467,7 +4898,7 @@ var outputTables = {
             "10146": {
                 "id": 10146,
                 "number": 10146,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪147",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5480,7 +4911,7 @@ var outputTables = {
             "10147": {
                 "id": 10147,
                 "number": 10147,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼148",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5493,7 +4924,7 @@ var outputTables = {
             "10148": {
                 "id": 10148,
                 "number": 10148,
-                "name": "狮子怪",
+                "name": "狮子怪149",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5506,7 +4937,7 @@ var outputTables = {
             "10149": {
                 "id": 10149,
                 "number": 10149,
-                "name": "蚊子怪",
+                "name": "蚊子怪150",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5519,7 +4950,7 @@ var outputTables = {
             "10150": {
                 "id": 10150,
                 "number": 10150,
-                "name": "火焰怪",
+                "name": "火焰怪151",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5532,7 +4963,7 @@ var outputTables = {
             "10151": {
                 "id": 10151,
                 "number": 10151,
-                "name": "河童怪",
+                "name": "河童怪152",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5545,7 +4976,7 @@ var outputTables = {
             "10152": {
                 "id": 10152,
                 "number": 10152,
-                "name": "独角兽",
+                "name": "独角兽153",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5558,7 +4989,7 @@ var outputTables = {
             "10153": {
                 "id": 10153,
                 "number": 10153,
-                "name": "人鱼怪",
+                "name": "人鱼怪154",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5571,7 +5002,7 @@ var outputTables = {
             "10154": {
                 "id": 10154,
                 "number": 10154,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王155",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5584,7 +5015,7 @@ var outputTables = {
             "10155": {
                 "id": 10155,
                 "number": 10155,
-                "name": "双头牛怪",
+                "name": "双头牛怪156",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5597,7 +5028,7 @@ var outputTables = {
             "10156": {
                 "id": 10156,
                 "number": 10156,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪157",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5610,7 +5041,7 @@ var outputTables = {
             "10157": {
                 "id": 10157,
                 "number": 10157,
-                "name": "小狗怪",
+                "name": "小狗怪158",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5623,7 +5054,7 @@ var outputTables = {
             "10158": {
                 "id": 10158,
                 "number": 10158,
-                "name": "大狗怪",
+                "name": "大狗怪159",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5636,7 +5067,7 @@ var outputTables = {
             "10159": {
                 "id": 10159,
                 "number": 10159,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪160",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5649,7 +5080,7 @@ var outputTables = {
             "10160": {
                 "id": 10160,
                 "number": 10160,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪161",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5662,7 +5093,7 @@ var outputTables = {
             "10161": {
                 "id": 10161,
                 "number": 10161,
-                "name": "僵尸怪",
+                "name": "僵尸怪162",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5675,7 +5106,7 @@ var outputTables = {
             "10162": {
                 "id": 10162,
                 "number": 10162,
-                "name": "宫灯怪",
+                "name": "宫灯怪163",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5688,7 +5119,7 @@ var outputTables = {
             "10163": {
                 "id": 10163,
                 "number": 10163,
-                "name": "挂科怪",
+                "name": "挂科怪164",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5701,7 +5132,7 @@ var outputTables = {
             "10164": {
                 "id": 10164,
                 "number": 10164,
-                "name": "自习怪",
+                "name": "自习怪165",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5714,7 +5145,7 @@ var outputTables = {
             "10165": {
                 "id": 10165,
                 "number": 10165,
-                "name": "灯笼怪",
+                "name": "灯笼怪166",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5727,7 +5158,7 @@ var outputTables = {
             "10166": {
                 "id": 10166,
                 "number": 10166,
-                "name": "龅牙兔",
+                "name": "龅牙兔167",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5740,7 +5171,7 @@ var outputTables = {
             "10167": {
                 "id": 10167,
                 "number": 10167,
-                "name": "乌龟精",
+                "name": "乌龟精168",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5753,7 +5184,7 @@ var outputTables = {
             "10168": {
                 "id": 10168,
                 "number": 10168,
-                "name": "卖茶怪",
+                "name": "卖茶怪169",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5766,7 +5197,7 @@ var outputTables = {
             "10169": {
                 "id": 10169,
                 "number": 10169,
-                "name": "白骨精",
+                "name": "白骨精170",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5779,7 +5210,7 @@ var outputTables = {
             "10170": {
                 "id": 10170,
                 "number": 10170,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪171",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5792,7 +5223,7 @@ var outputTables = {
             "10171": {
                 "id": 10171,
                 "number": 10171,
-                "name": "树精",
+                "name": "树精172",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5805,7 +5236,7 @@ var outputTables = {
             "10172": {
                 "id": 10172,
                 "number": 10172,
-                "name": "黑熊精",
+                "name": "黑熊精173",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5818,7 +5249,7 @@ var outputTables = {
             "10173": {
                 "id": 10173,
                 "number": 10173,
-                "name": "狐狸精",
+                "name": "狐狸精174",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5831,7 +5262,7 @@ var outputTables = {
             "10174": {
                 "id": 10174,
                 "number": 10174,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵175",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5844,7 +5275,7 @@ var outputTables = {
             "10175": {
                 "id": 10175,
                 "number": 10175,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖176",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5857,7 +5288,7 @@ var outputTables = {
             "10176": {
                 "id": 10176,
                 "number": 10176,
-                "name": "野猪妖",
+                "name": "野猪妖177",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5870,7 +5301,7 @@ var outputTables = {
             "10177": {
                 "id": 10177,
                 "number": 10177,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔178",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5883,7 +5314,7 @@ var outputTables = {
             "10178": {
                 "id": 10178,
                 "number": 10178,
-                "name": "猴儿精",
+                "name": "猴儿精179",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5896,7 +5327,7 @@ var outputTables = {
             "10179": {
                 "id": 10179,
                 "number": 10179,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪180",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5909,7 +5340,7 @@ var outputTables = {
             "10180": {
                 "id": 10180,
                 "number": 10180,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼181",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5922,7 +5353,7 @@ var outputTables = {
             "10181": {
                 "id": 10181,
                 "number": 10181,
-                "name": "狮子怪",
+                "name": "狮子怪182",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5935,7 +5366,7 @@ var outputTables = {
             "10182": {
                 "id": 10182,
                 "number": 10182,
-                "name": "蚊子怪",
+                "name": "蚊子怪183",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5948,7 +5379,7 @@ var outputTables = {
             "10183": {
                 "id": 10183,
                 "number": 10183,
-                "name": "火焰怪",
+                "name": "火焰怪184",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5961,7 +5392,7 @@ var outputTables = {
             "10184": {
                 "id": 10184,
                 "number": 10184,
-                "name": "河童怪",
+                "name": "河童怪185",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5974,7 +5405,7 @@ var outputTables = {
             "10185": {
                 "id": 10185,
                 "number": 10185,
-                "name": "独角兽",
+                "name": "独角兽186",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -5987,7 +5418,7 @@ var outputTables = {
             "10186": {
                 "id": 10186,
                 "number": 10186,
-                "name": "人鱼怪",
+                "name": "人鱼怪187",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6000,7 +5431,7 @@ var outputTables = {
             "10187": {
                 "id": 10187,
                 "number": 10187,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王188",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6013,7 +5444,7 @@ var outputTables = {
             "10188": {
                 "id": 10188,
                 "number": 10188,
-                "name": "双头牛怪",
+                "name": "双头牛怪189",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6026,7 +5457,7 @@ var outputTables = {
             "10189": {
                 "id": 10189,
                 "number": 10189,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪190",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6039,7 +5470,7 @@ var outputTables = {
             "10190": {
                 "id": 10190,
                 "number": 10190,
-                "name": "小狗怪",
+                "name": "小狗怪191",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6052,7 +5483,7 @@ var outputTables = {
             "10191": {
                 "id": 10191,
                 "number": 10191,
-                "name": "大狗怪",
+                "name": "大狗怪192",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6065,7 +5496,7 @@ var outputTables = {
             "10192": {
                 "id": 10192,
                 "number": 10192,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪193",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6078,7 +5509,7 @@ var outputTables = {
             "10193": {
                 "id": 10193,
                 "number": 10193,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪194",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6091,7 +5522,7 @@ var outputTables = {
             "10194": {
                 "id": 10194,
                 "number": 10194,
-                "name": "僵尸怪",
+                "name": "僵尸怪195",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6104,7 +5535,7 @@ var outputTables = {
             "10195": {
                 "id": 10195,
                 "number": 10195,
-                "name": "宫灯怪",
+                "name": "宫灯怪196",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6117,7 +5548,7 @@ var outputTables = {
             "10196": {
                 "id": 10196,
                 "number": 10196,
-                "name": "挂科怪",
+                "name": "挂科怪197",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6130,7 +5561,7 @@ var outputTables = {
             "10197": {
                 "id": 10197,
                 "number": 10197,
-                "name": "自习怪",
+                "name": "自习怪198",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6143,7 +5574,7 @@ var outputTables = {
             "10198": {
                 "id": 10198,
                 "number": 10198,
-                "name": "灯笼怪",
+                "name": "灯笼怪199",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6156,7 +5587,7 @@ var outputTables = {
             "10199": {
                 "id": 10199,
                 "number": 10199,
-                "name": "龅牙兔",
+                "name": "龅牙兔200",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6169,7 +5600,7 @@ var outputTables = {
             "10200": {
                 "id": 10200,
                 "number": 10200,
-                "name": "乌龟精",
+                "name": "乌龟精201",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6182,7 +5613,7 @@ var outputTables = {
             "10201": {
                 "id": 10201,
                 "number": 10201,
-                "name": "卖茶怪",
+                "name": "卖茶怪202",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6195,7 +5626,7 @@ var outputTables = {
             "10202": {
                 "id": 10202,
                 "number": 10202,
-                "name": "白骨精",
+                "name": "白骨精203",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6208,7 +5639,7 @@ var outputTables = {
             "10203": {
                 "id": 10203,
                 "number": 10203,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪204",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6221,7 +5652,7 @@ var outputTables = {
             "10204": {
                 "id": 10204,
                 "number": 10204,
-                "name": "树精",
+                "name": "树精205",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6234,7 +5665,7 @@ var outputTables = {
             "10205": {
                 "id": 10205,
                 "number": 10205,
-                "name": "黑熊精",
+                "name": "黑熊精206",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6247,7 +5678,7 @@ var outputTables = {
             "10206": {
                 "id": 10206,
                 "number": 10206,
-                "name": "狐狸精",
+                "name": "狐狸精207",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6260,7 +5691,7 @@ var outputTables = {
             "10207": {
                 "id": 10207,
                 "number": 10207,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵208",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6273,7 +5704,7 @@ var outputTables = {
             "10208": {
                 "id": 10208,
                 "number": 10208,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖209",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6286,7 +5717,7 @@ var outputTables = {
             "10209": {
                 "id": 10209,
                 "number": 10209,
-                "name": "野猪妖",
+                "name": "野猪妖210",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6299,7 +5730,7 @@ var outputTables = {
             "10210": {
                 "id": 10210,
                 "number": 10210,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔211",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6312,7 +5743,7 @@ var outputTables = {
             "10211": {
                 "id": 10211,
                 "number": 10211,
-                "name": "猴儿精",
+                "name": "猴儿精212",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6325,7 +5756,7 @@ var outputTables = {
             "10212": {
                 "id": 10212,
                 "number": 10212,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪213",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6338,7 +5769,7 @@ var outputTables = {
             "10213": {
                 "id": 10213,
                 "number": 10213,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼214",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6351,7 +5782,7 @@ var outputTables = {
             "10214": {
                 "id": 10214,
                 "number": 10214,
-                "name": "狮子怪",
+                "name": "狮子怪215",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6364,7 +5795,7 @@ var outputTables = {
             "10215": {
                 "id": 10215,
                 "number": 10215,
-                "name": "蚊子怪",
+                "name": "蚊子怪216",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6377,7 +5808,7 @@ var outputTables = {
             "10216": {
                 "id": 10216,
                 "number": 10216,
-                "name": "火焰怪",
+                "name": "火焰怪217",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6390,7 +5821,7 @@ var outputTables = {
             "10217": {
                 "id": 10217,
                 "number": 10217,
-                "name": "河童怪",
+                "name": "河童怪218",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6403,7 +5834,7 @@ var outputTables = {
             "10218": {
                 "id": 10218,
                 "number": 10218,
-                "name": "独角兽",
+                "name": "独角兽219",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6416,7 +5847,7 @@ var outputTables = {
             "10219": {
                 "id": 10219,
                 "number": 10219,
-                "name": "人鱼怪",
+                "name": "人鱼怪220",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6429,7 +5860,7 @@ var outputTables = {
             "10220": {
                 "id": 10220,
                 "number": 10220,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王221",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6442,7 +5873,7 @@ var outputTables = {
             "10221": {
                 "id": 10221,
                 "number": 10221,
-                "name": "双头牛怪",
+                "name": "双头牛怪222",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6455,7 +5886,7 @@ var outputTables = {
             "10222": {
                 "id": 10222,
                 "number": 10222,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪223",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6468,7 +5899,7 @@ var outputTables = {
             "10223": {
                 "id": 10223,
                 "number": 10223,
-                "name": "小狗怪",
+                "name": "小狗怪224",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6481,7 +5912,7 @@ var outputTables = {
             "10224": {
                 "id": 10224,
                 "number": 10224,
-                "name": "大狗怪",
+                "name": "大狗怪225",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6494,7 +5925,7 @@ var outputTables = {
             "10225": {
                 "id": 10225,
                 "number": 10225,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪226",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6507,7 +5938,7 @@ var outputTables = {
             "10226": {
                 "id": 10226,
                 "number": 10226,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪227",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6520,7 +5951,7 @@ var outputTables = {
             "10227": {
                 "id": 10227,
                 "number": 10227,
-                "name": "僵尸怪",
+                "name": "僵尸怪228",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6533,7 +5964,7 @@ var outputTables = {
             "10228": {
                 "id": 10228,
                 "number": 10228,
-                "name": "宫灯怪",
+                "name": "宫灯怪229",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6546,7 +5977,7 @@ var outputTables = {
             "10229": {
                 "id": 10229,
                 "number": 10229,
-                "name": "挂科怪",
+                "name": "挂科怪230",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6559,7 +5990,7 @@ var outputTables = {
             "10230": {
                 "id": 10230,
                 "number": 10230,
-                "name": "自习怪",
+                "name": "自习怪231",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6572,7 +6003,7 @@ var outputTables = {
             "10231": {
                 "id": 10231,
                 "number": 10231,
-                "name": "灯笼怪",
+                "name": "灯笼怪232",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6585,7 +6016,7 @@ var outputTables = {
             "10232": {
                 "id": 10232,
                 "number": 10232,
-                "name": "龅牙兔",
+                "name": "龅牙兔233",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6598,7 +6029,7 @@ var outputTables = {
             "10233": {
                 "id": 10233,
                 "number": 10233,
-                "name": "乌龟精",
+                "name": "乌龟精234",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6611,7 +6042,7 @@ var outputTables = {
             "10234": {
                 "id": 10234,
                 "number": 10234,
-                "name": "卖茶怪",
+                "name": "卖茶怪235",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6624,7 +6055,7 @@ var outputTables = {
             "10235": {
                 "id": 10235,
                 "number": 10235,
-                "name": "白骨精",
+                "name": "白骨精236",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6637,7 +6068,7 @@ var outputTables = {
             "10236": {
                 "id": 10236,
                 "number": 10236,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪237",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6650,7 +6081,7 @@ var outputTables = {
             "10237": {
                 "id": 10237,
                 "number": 10237,
-                "name": "树精",
+                "name": "树精238",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6663,7 +6094,7 @@ var outputTables = {
             "10238": {
                 "id": 10238,
                 "number": 10238,
-                "name": "黑熊精",
+                "name": "黑熊精239",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6676,7 +6107,7 @@ var outputTables = {
             "10239": {
                 "id": 10239,
                 "number": 10239,
-                "name": "狐狸精",
+                "name": "狐狸精240",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6689,7 +6120,7 @@ var outputTables = {
             "10240": {
                 "id": 10240,
                 "number": 10240,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵241",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6702,7 +6133,7 @@ var outputTables = {
             "10241": {
                 "id": 10241,
                 "number": 10241,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖242",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6715,7 +6146,7 @@ var outputTables = {
             "10242": {
                 "id": 10242,
                 "number": 10242,
-                "name": "野猪妖",
+                "name": "野猪妖243",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6728,7 +6159,7 @@ var outputTables = {
             "10243": {
                 "id": 10243,
                 "number": 10243,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔244",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6741,7 +6172,7 @@ var outputTables = {
             "10244": {
                 "id": 10244,
                 "number": 10244,
-                "name": "猴儿精",
+                "name": "猴儿精245",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6754,7 +6185,7 @@ var outputTables = {
             "10245": {
                 "id": 10245,
                 "number": 10245,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪246",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6767,7 +6198,7 @@ var outputTables = {
             "10246": {
                 "id": 10246,
                 "number": 10246,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼247",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6780,7 +6211,7 @@ var outputTables = {
             "10247": {
                 "id": 10247,
                 "number": 10247,
-                "name": "狮子怪",
+                "name": "狮子怪248",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6793,7 +6224,7 @@ var outputTables = {
             "10248": {
                 "id": 10248,
                 "number": 10248,
-                "name": "蚊子怪",
+                "name": "蚊子怪249",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6806,7 +6237,7 @@ var outputTables = {
             "10249": {
                 "id": 10249,
                 "number": 10249,
-                "name": "火焰怪",
+                "name": "火焰怪250",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6819,7 +6250,7 @@ var outputTables = {
             "10250": {
                 "id": 10250,
                 "number": 10250,
-                "name": "河童怪",
+                "name": "河童怪251",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6832,7 +6263,7 @@ var outputTables = {
             "10251": {
                 "id": 10251,
                 "number": 10251,
-                "name": "独角兽",
+                "name": "独角兽252",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6845,7 +6276,7 @@ var outputTables = {
             "10252": {
                 "id": 10252,
                 "number": 10252,
-                "name": "人鱼怪",
+                "name": "人鱼怪253",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6858,7 +6289,7 @@ var outputTables = {
             "10253": {
                 "id": 10253,
                 "number": 10253,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王254",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6871,7 +6302,7 @@ var outputTables = {
             "10254": {
                 "id": 10254,
                 "number": 10254,
-                "name": "双头牛怪",
+                "name": "双头牛怪255",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6884,7 +6315,7 @@ var outputTables = {
             "10255": {
                 "id": 10255,
                 "number": 10255,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪256",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6897,7 +6328,7 @@ var outputTables = {
             "10256": {
                 "id": 10256,
                 "number": 10256,
-                "name": "小狗怪",
+                "name": "小狗怪257",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6910,7 +6341,7 @@ var outputTables = {
             "10257": {
                 "id": 10257,
                 "number": 10257,
-                "name": "大狗怪",
+                "name": "大狗怪258",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6923,7 +6354,7 @@ var outputTables = {
             "10258": {
                 "id": 10258,
                 "number": 10258,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪259",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6936,7 +6367,7 @@ var outputTables = {
             "10259": {
                 "id": 10259,
                 "number": 10259,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪260",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6949,7 +6380,7 @@ var outputTables = {
             "10260": {
                 "id": 10260,
                 "number": 10260,
-                "name": "僵尸怪",
+                "name": "僵尸怪261",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6962,7 +6393,7 @@ var outputTables = {
             "10261": {
                 "id": 10261,
                 "number": 10261,
-                "name": "宫灯怪",
+                "name": "宫灯怪262",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6975,7 +6406,7 @@ var outputTables = {
             "10262": {
                 "id": 10262,
                 "number": 10262,
-                "name": "挂科怪",
+                "name": "挂科怪263",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -6988,7 +6419,7 @@ var outputTables = {
             "10263": {
                 "id": 10263,
                 "number": 10263,
-                "name": "自习怪",
+                "name": "自习怪264",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7001,7 +6432,7 @@ var outputTables = {
             "10264": {
                 "id": 10264,
                 "number": 10264,
-                "name": "灯笼怪",
+                "name": "灯笼怪265",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7014,7 +6445,7 @@ var outputTables = {
             "10265": {
                 "id": 10265,
                 "number": 10265,
-                "name": "龅牙兔",
+                "name": "龅牙兔266",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7027,7 +6458,7 @@ var outputTables = {
             "10266": {
                 "id": 10266,
                 "number": 10266,
-                "name": "乌龟精",
+                "name": "乌龟精267",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7040,7 +6471,7 @@ var outputTables = {
             "10267": {
                 "id": 10267,
                 "number": 10267,
-                "name": "卖茶怪",
+                "name": "卖茶怪268",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7053,7 +6484,7 @@ var outputTables = {
             "10268": {
                 "id": 10268,
                 "number": 10268,
-                "name": "白骨精",
+                "name": "白骨精269",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7066,7 +6497,7 @@ var outputTables = {
             "10269": {
                 "id": 10269,
                 "number": 10269,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪270",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7079,7 +6510,7 @@ var outputTables = {
             "10270": {
                 "id": 10270,
                 "number": 10270,
-                "name": "树精",
+                "name": "树精271",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7092,7 +6523,7 @@ var outputTables = {
             "10271": {
                 "id": 10271,
                 "number": 10271,
-                "name": "黑熊精",
+                "name": "黑熊精272",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7105,7 +6536,7 @@ var outputTables = {
             "10272": {
                 "id": 10272,
                 "number": 10272,
-                "name": "狐狸精",
+                "name": "狐狸精273",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7118,7 +6549,7 @@ var outputTables = {
             "10273": {
                 "id": 10273,
                 "number": 10273,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵274",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7131,7 +6562,7 @@ var outputTables = {
             "10274": {
                 "id": 10274,
                 "number": 10274,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖275",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7144,7 +6575,7 @@ var outputTables = {
             "10275": {
                 "id": 10275,
                 "number": 10275,
-                "name": "野猪妖",
+                "name": "野猪妖276",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7157,7 +6588,7 @@ var outputTables = {
             "10276": {
                 "id": 10276,
                 "number": 10276,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔277",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7170,7 +6601,7 @@ var outputTables = {
             "10277": {
                 "id": 10277,
                 "number": 10277,
-                "name": "猴儿精",
+                "name": "猴儿精278",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7183,7 +6614,7 @@ var outputTables = {
             "10278": {
                 "id": 10278,
                 "number": 10278,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪279",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7196,7 +6627,7 @@ var outputTables = {
             "10279": {
                 "id": 10279,
                 "number": 10279,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼280",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7209,7 +6640,7 @@ var outputTables = {
             "10280": {
                 "id": 10280,
                 "number": 10280,
-                "name": "狮子怪",
+                "name": "狮子怪281",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7222,7 +6653,7 @@ var outputTables = {
             "10281": {
                 "id": 10281,
                 "number": 10281,
-                "name": "蚊子怪",
+                "name": "蚊子怪282",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7235,7 +6666,7 @@ var outputTables = {
             "10282": {
                 "id": 10282,
                 "number": 10282,
-                "name": "火焰怪",
+                "name": "火焰怪283",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7248,7 +6679,7 @@ var outputTables = {
             "10283": {
                 "id": 10283,
                 "number": 10283,
-                "name": "河童怪",
+                "name": "河童怪284",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7261,7 +6692,7 @@ var outputTables = {
             "10284": {
                 "id": 10284,
                 "number": 10284,
-                "name": "独角兽",
+                "name": "独角兽285",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7274,7 +6705,7 @@ var outputTables = {
             "10285": {
                 "id": 10285,
                 "number": 10285,
-                "name": "人鱼怪",
+                "name": "人鱼怪286",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7287,7 +6718,7 @@ var outputTables = {
             "10286": {
                 "id": 10286,
                 "number": 10286,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王287",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7300,7 +6731,7 @@ var outputTables = {
             "10287": {
                 "id": 10287,
                 "number": 10287,
-                "name": "双头牛怪",
+                "name": "双头牛怪288",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7313,7 +6744,7 @@ var outputTables = {
             "10288": {
                 "id": 10288,
                 "number": 10288,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪289",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7326,7 +6757,7 @@ var outputTables = {
             "10289": {
                 "id": 10289,
                 "number": 10289,
-                "name": "小狗怪",
+                "name": "小狗怪290",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7339,7 +6770,7 @@ var outputTables = {
             "10290": {
                 "id": 10290,
                 "number": 10290,
-                "name": "大狗怪",
+                "name": "大狗怪291",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7352,7 +6783,7 @@ var outputTables = {
             "10291": {
                 "id": 10291,
                 "number": 10291,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪292",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7365,7 +6796,7 @@ var outputTables = {
             "10292": {
                 "id": 10292,
                 "number": 10292,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪293",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7378,7 +6809,7 @@ var outputTables = {
             "10293": {
                 "id": 10293,
                 "number": 10293,
-                "name": "僵尸怪",
+                "name": "僵尸怪294",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7391,7 +6822,7 @@ var outputTables = {
             "10294": {
                 "id": 10294,
                 "number": 10294,
-                "name": "宫灯怪",
+                "name": "宫灯怪295",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7404,7 +6835,7 @@ var outputTables = {
             "10295": {
                 "id": 10295,
                 "number": 10295,
-                "name": "挂科怪",
+                "name": "挂科怪296",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7417,7 +6848,7 @@ var outputTables = {
             "10296": {
                 "id": 10296,
                 "number": 10296,
-                "name": "自习怪",
+                "name": "自习怪297",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7430,7 +6861,7 @@ var outputTables = {
             "10297": {
                 "id": 10297,
                 "number": 10297,
-                "name": "灯笼怪",
+                "name": "灯笼怪298",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7443,7 +6874,7 @@ var outputTables = {
             "10298": {
                 "id": 10298,
                 "number": 10298,
-                "name": "龅牙兔",
+                "name": "龅牙兔299",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7456,7 +6887,7 @@ var outputTables = {
             "10299": {
                 "id": 10299,
                 "number": 10299,
-                "name": "乌龟精",
+                "name": "乌龟精300",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7469,7 +6900,7 @@ var outputTables = {
             "10300": {
                 "id": 10300,
                 "number": 10300,
-                "name": "卖茶怪",
+                "name": "卖茶怪301",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7482,7 +6913,7 @@ var outputTables = {
             "10301": {
                 "id": 10301,
                 "number": 10301,
-                "name": "白骨精",
+                "name": "白骨精302",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7495,7 +6926,7 @@ var outputTables = {
             "10302": {
                 "id": 10302,
                 "number": 10302,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪303",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7508,7 +6939,7 @@ var outputTables = {
             "10303": {
                 "id": 10303,
                 "number": 10303,
-                "name": "树精",
+                "name": "树精304",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7521,7 +6952,7 @@ var outputTables = {
             "10304": {
                 "id": 10304,
                 "number": 10304,
-                "name": "黑熊精",
+                "name": "黑熊精305",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7534,7 +6965,7 @@ var outputTables = {
             "10305": {
                 "id": 10305,
                 "number": 10305,
-                "name": "狐狸精",
+                "name": "狐狸精306",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7547,7 +6978,7 @@ var outputTables = {
             "10306": {
                 "id": 10306,
                 "number": 10306,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵307",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7560,7 +6991,7 @@ var outputTables = {
             "10307": {
                 "id": 10307,
                 "number": 10307,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖308",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7573,7 +7004,7 @@ var outputTables = {
             "10308": {
                 "id": 10308,
                 "number": 10308,
-                "name": "野猪妖",
+                "name": "野猪妖309",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7586,7 +7017,7 @@ var outputTables = {
             "10309": {
                 "id": 10309,
                 "number": 10309,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔310",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7599,7 +7030,7 @@ var outputTables = {
             "10310": {
                 "id": 10310,
                 "number": 10310,
-                "name": "猴儿精",
+                "name": "猴儿精311",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7612,7 +7043,7 @@ var outputTables = {
             "10311": {
                 "id": 10311,
                 "number": 10311,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪312",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7625,7 +7056,7 @@ var outputTables = {
             "10312": {
                 "id": 10312,
                 "number": 10312,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼313",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7638,7 +7069,7 @@ var outputTables = {
             "10313": {
                 "id": 10313,
                 "number": 10313,
-                "name": "狮子怪",
+                "name": "狮子怪314",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7651,7 +7082,7 @@ var outputTables = {
             "10314": {
                 "id": 10314,
                 "number": 10314,
-                "name": "蚊子怪",
+                "name": "蚊子怪315",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7664,7 +7095,7 @@ var outputTables = {
             "10315": {
                 "id": 10315,
                 "number": 10315,
-                "name": "火焰怪",
+                "name": "火焰怪316",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7677,7 +7108,7 @@ var outputTables = {
             "10316": {
                 "id": 10316,
                 "number": 10316,
-                "name": "河童怪",
+                "name": "河童怪317",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7690,7 +7121,7 @@ var outputTables = {
             "10317": {
                 "id": 10317,
                 "number": 10317,
-                "name": "独角兽",
+                "name": "独角兽318",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7703,7 +7134,7 @@ var outputTables = {
             "10318": {
                 "id": 10318,
                 "number": 10318,
-                "name": "人鱼怪",
+                "name": "人鱼怪319",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7716,7 +7147,7 @@ var outputTables = {
             "10319": {
                 "id": 10319,
                 "number": 10319,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王320",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7729,7 +7160,7 @@ var outputTables = {
             "10320": {
                 "id": 10320,
                 "number": 10320,
-                "name": "双头牛怪",
+                "name": "双头牛怪321",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7742,7 +7173,7 @@ var outputTables = {
             "10321": {
                 "id": 10321,
                 "number": 10321,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪322",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7755,7 +7186,7 @@ var outputTables = {
             "10322": {
                 "id": 10322,
                 "number": 10322,
-                "name": "小狗怪",
+                "name": "小狗怪323",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7768,7 +7199,7 @@ var outputTables = {
             "10323": {
                 "id": 10323,
                 "number": 10323,
-                "name": "大狗怪",
+                "name": "大狗怪324",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7781,7 +7212,7 @@ var outputTables = {
             "10324": {
                 "id": 10324,
                 "number": 10324,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪325",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7794,7 +7225,7 @@ var outputTables = {
             "10325": {
                 "id": 10325,
                 "number": 10325,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪326",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7807,7 +7238,7 @@ var outputTables = {
             "10326": {
                 "id": 10326,
                 "number": 10326,
-                "name": "僵尸怪",
+                "name": "僵尸怪327",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7820,7 +7251,7 @@ var outputTables = {
             "10327": {
                 "id": 10327,
                 "number": 10327,
-                "name": "宫灯怪",
+                "name": "宫灯怪328",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7833,7 +7264,7 @@ var outputTables = {
             "10328": {
                 "id": 10328,
                 "number": 10328,
-                "name": "挂科怪",
+                "name": "挂科怪329",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7846,7 +7277,7 @@ var outputTables = {
             "10329": {
                 "id": 10329,
                 "number": 10329,
-                "name": "自习怪",
+                "name": "自习怪330",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7859,7 +7290,7 @@ var outputTables = {
             "10330": {
                 "id": 10330,
                 "number": 10330,
-                "name": "灯笼怪",
+                "name": "灯笼怪331",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7872,7 +7303,7 @@ var outputTables = {
             "10331": {
                 "id": 10331,
                 "number": 10331,
-                "name": "龅牙兔",
+                "name": "龅牙兔332",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7885,7 +7316,7 @@ var outputTables = {
             "10332": {
                 "id": 10332,
                 "number": 10332,
-                "name": "乌龟精",
+                "name": "乌龟精333",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7898,7 +7329,7 @@ var outputTables = {
             "10333": {
                 "id": 10333,
                 "number": 10333,
-                "name": "卖茶怪",
+                "name": "卖茶怪334",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7911,7 +7342,7 @@ var outputTables = {
             "10334": {
                 "id": 10334,
                 "number": 10334,
-                "name": "白骨精",
+                "name": "白骨精335",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7924,7 +7355,7 @@ var outputTables = {
             "10335": {
                 "id": 10335,
                 "number": 10335,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪336",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7937,7 +7368,7 @@ var outputTables = {
             "10336": {
                 "id": 10336,
                 "number": 10336,
-                "name": "树精",
+                "name": "树精337",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7950,7 +7381,7 @@ var outputTables = {
             "10337": {
                 "id": 10337,
                 "number": 10337,
-                "name": "黑熊精",
+                "name": "黑熊精338",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7963,7 +7394,7 @@ var outputTables = {
             "10338": {
                 "id": 10338,
                 "number": 10338,
-                "name": "狐狸精",
+                "name": "狐狸精339",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7976,7 +7407,7 @@ var outputTables = {
             "10339": {
                 "id": 10339,
                 "number": 10339,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵340",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -7989,7 +7420,7 @@ var outputTables = {
             "10340": {
                 "id": 10340,
                 "number": 10340,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖341",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8002,7 +7433,7 @@ var outputTables = {
             "10341": {
                 "id": 10341,
                 "number": 10341,
-                "name": "野猪妖",
+                "name": "野猪妖342",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8015,7 +7446,7 @@ var outputTables = {
             "10342": {
                 "id": 10342,
                 "number": 10342,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔343",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8028,7 +7459,7 @@ var outputTables = {
             "10343": {
                 "id": 10343,
                 "number": 10343,
-                "name": "猴儿精",
+                "name": "猴儿精344",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8041,7 +7472,7 @@ var outputTables = {
             "10344": {
                 "id": 10344,
                 "number": 10344,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪345",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8054,7 +7485,7 @@ var outputTables = {
             "10345": {
                 "id": 10345,
                 "number": 10345,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼346",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8067,7 +7498,7 @@ var outputTables = {
             "10346": {
                 "id": 10346,
                 "number": 10346,
-                "name": "狮子怪",
+                "name": "狮子怪347",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8080,7 +7511,7 @@ var outputTables = {
             "10347": {
                 "id": 10347,
                 "number": 10347,
-                "name": "蚊子怪",
+                "name": "蚊子怪348",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8093,7 +7524,7 @@ var outputTables = {
             "10348": {
                 "id": 10348,
                 "number": 10348,
-                "name": "火焰怪",
+                "name": "火焰怪349",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8106,7 +7537,7 @@ var outputTables = {
             "10349": {
                 "id": 10349,
                 "number": 10349,
-                "name": "河童怪",
+                "name": "河童怪350",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8119,7 +7550,7 @@ var outputTables = {
             "10350": {
                 "id": 10350,
                 "number": 10350,
-                "name": "独角兽",
+                "name": "独角兽351",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8132,7 +7563,7 @@ var outputTables = {
             "10351": {
                 "id": 10351,
                 "number": 10351,
-                "name": "人鱼怪",
+                "name": "人鱼怪352",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8145,7 +7576,7 @@ var outputTables = {
             "10352": {
                 "id": 10352,
                 "number": 10352,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王353",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8158,7 +7589,7 @@ var outputTables = {
             "10353": {
                 "id": 10353,
                 "number": 10353,
-                "name": "双头牛怪",
+                "name": "双头牛怪354",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8171,7 +7602,7 @@ var outputTables = {
             "10354": {
                 "id": 10354,
                 "number": 10354,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪355",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8184,7 +7615,7 @@ var outputTables = {
             "10355": {
                 "id": 10355,
                 "number": 10355,
-                "name": "小狗怪",
+                "name": "小狗怪356",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8197,7 +7628,7 @@ var outputTables = {
             "10356": {
                 "id": 10356,
                 "number": 10356,
-                "name": "大狗怪",
+                "name": "大狗怪357",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8210,7 +7641,7 @@ var outputTables = {
             "10357": {
                 "id": 10357,
                 "number": 10357,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪358",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8223,7 +7654,7 @@ var outputTables = {
             "10358": {
                 "id": 10358,
                 "number": 10358,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪359",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8236,7 +7667,7 @@ var outputTables = {
             "10359": {
                 "id": 10359,
                 "number": 10359,
-                "name": "僵尸怪",
+                "name": "僵尸怪360",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8249,7 +7680,7 @@ var outputTables = {
             "10360": {
                 "id": 10360,
                 "number": 10360,
-                "name": "宫灯怪",
+                "name": "宫灯怪361",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8262,7 +7693,7 @@ var outputTables = {
             "10361": {
                 "id": 10361,
                 "number": 10361,
-                "name": "挂科怪",
+                "name": "挂科怪362",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8275,7 +7706,7 @@ var outputTables = {
             "10362": {
                 "id": 10362,
                 "number": 10362,
-                "name": "自习怪",
+                "name": "自习怪363",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8288,7 +7719,7 @@ var outputTables = {
             "10363": {
                 "id": 10363,
                 "number": 10363,
-                "name": "灯笼怪",
+                "name": "灯笼怪364",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8301,7 +7732,7 @@ var outputTables = {
             "10364": {
                 "id": 10364,
                 "number": 10364,
-                "name": "龅牙兔",
+                "name": "龅牙兔365",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8314,7 +7745,7 @@ var outputTables = {
             "10365": {
                 "id": 10365,
                 "number": 10365,
-                "name": "乌龟精",
+                "name": "乌龟精366",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8327,7 +7758,7 @@ var outputTables = {
             "10366": {
                 "id": 10366,
                 "number": 10366,
-                "name": "卖茶怪",
+                "name": "卖茶怪367",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8340,7 +7771,7 @@ var outputTables = {
             "10367": {
                 "id": 10367,
                 "number": 10367,
-                "name": "白骨精",
+                "name": "白骨精368",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8353,7 +7784,7 @@ var outputTables = {
             "10368": {
                 "id": 10368,
                 "number": 10368,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪369",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8366,7 +7797,7 @@ var outputTables = {
             "10369": {
                 "id": 10369,
                 "number": 10369,
-                "name": "树精",
+                "name": "树精370",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8379,7 +7810,7 @@ var outputTables = {
             "10370": {
                 "id": 10370,
                 "number": 10370,
-                "name": "黑熊精",
+                "name": "黑熊精371",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8392,7 +7823,7 @@ var outputTables = {
             "10371": {
                 "id": 10371,
                 "number": 10371,
-                "name": "狐狸精",
+                "name": "狐狸精372",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8405,7 +7836,7 @@ var outputTables = {
             "10372": {
                 "id": 10372,
                 "number": 10372,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵373",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8418,7 +7849,7 @@ var outputTables = {
             "10373": {
                 "id": 10373,
                 "number": 10373,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖374",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8431,7 +7862,7 @@ var outputTables = {
             "10374": {
                 "id": 10374,
                 "number": 10374,
-                "name": "野猪妖",
+                "name": "野猪妖375",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8444,7 +7875,7 @@ var outputTables = {
             "10375": {
                 "id": 10375,
                 "number": 10375,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔376",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8457,7 +7888,7 @@ var outputTables = {
             "10376": {
                 "id": 10376,
                 "number": 10376,
-                "name": "猴儿精",
+                "name": "猴儿精377",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8470,7 +7901,7 @@ var outputTables = {
             "10377": {
                 "id": 10377,
                 "number": 10377,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪378",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8483,7 +7914,7 @@ var outputTables = {
             "10378": {
                 "id": 10378,
                 "number": 10378,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼379",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8496,7 +7927,7 @@ var outputTables = {
             "10379": {
                 "id": 10379,
                 "number": 10379,
-                "name": "狮子怪",
+                "name": "狮子怪380",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8509,7 +7940,7 @@ var outputTables = {
             "10380": {
                 "id": 10380,
                 "number": 10380,
-                "name": "蚊子怪",
+                "name": "蚊子怪381",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8522,7 +7953,7 @@ var outputTables = {
             "10381": {
                 "id": 10381,
                 "number": 10381,
-                "name": "火焰怪",
+                "name": "火焰怪382",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8535,7 +7966,7 @@ var outputTables = {
             "10382": {
                 "id": 10382,
                 "number": 10382,
-                "name": "河童怪",
+                "name": "河童怪383",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8548,7 +7979,7 @@ var outputTables = {
             "10383": {
                 "id": 10383,
                 "number": 10383,
-                "name": "独角兽",
+                "name": "独角兽384",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8561,7 +7992,7 @@ var outputTables = {
             "10384": {
                 "id": 10384,
                 "number": 10384,
-                "name": "人鱼怪",
+                "name": "人鱼怪385",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8574,7 +8005,7 @@ var outputTables = {
             "10385": {
                 "id": 10385,
                 "number": 10385,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王386",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8587,7 +8018,7 @@ var outputTables = {
             "10386": {
                 "id": 10386,
                 "number": 10386,
-                "name": "双头牛怪",
+                "name": "双头牛怪387",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8600,7 +8031,7 @@ var outputTables = {
             "10387": {
                 "id": 10387,
                 "number": 10387,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪388",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8613,7 +8044,7 @@ var outputTables = {
             "10388": {
                 "id": 10388,
                 "number": 10388,
-                "name": "小狗怪",
+                "name": "小狗怪389",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8626,7 +8057,7 @@ var outputTables = {
             "10389": {
                 "id": 10389,
                 "number": 10389,
-                "name": "大狗怪",
+                "name": "大狗怪390",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8639,7 +8070,7 @@ var outputTables = {
             "10390": {
                 "id": 10390,
                 "number": 10390,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪391",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8652,7 +8083,7 @@ var outputTables = {
             "10391": {
                 "id": 10391,
                 "number": 10391,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪392",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8665,7 +8096,7 @@ var outputTables = {
             "10392": {
                 "id": 10392,
                 "number": 10392,
-                "name": "僵尸怪",
+                "name": "僵尸怪393",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8678,7 +8109,7 @@ var outputTables = {
             "10393": {
                 "id": 10393,
                 "number": 10393,
-                "name": "宫灯怪",
+                "name": "宫灯怪394",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8691,7 +8122,7 @@ var outputTables = {
             "10394": {
                 "id": 10394,
                 "number": 10394,
-                "name": "挂科怪",
+                "name": "挂科怪395",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8704,7 +8135,7 @@ var outputTables = {
             "10395": {
                 "id": 10395,
                 "number": 10395,
-                "name": "自习怪",
+                "name": "自习怪396",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8717,7 +8148,7 @@ var outputTables = {
             "10396": {
                 "id": 10396,
                 "number": 10396,
-                "name": "灯笼怪",
+                "name": "灯笼怪397",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8730,7 +8161,7 @@ var outputTables = {
             "10397": {
                 "id": 10397,
                 "number": 10397,
-                "name": "龅牙兔",
+                "name": "龅牙兔398",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8743,7 +8174,7 @@ var outputTables = {
             "10398": {
                 "id": 10398,
                 "number": 10398,
-                "name": "乌龟精",
+                "name": "乌龟精399",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8756,7 +8187,7 @@ var outputTables = {
             "10399": {
                 "id": 10399,
                 "number": 10399,
-                "name": "卖茶怪",
+                "name": "卖茶怪400",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8769,7 +8200,7 @@ var outputTables = {
             "10400": {
                 "id": 10400,
                 "number": 10400,
-                "name": "白骨精",
+                "name": "白骨精401",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8782,7 +8213,7 @@ var outputTables = {
             "10401": {
                 "id": 10401,
                 "number": 10401,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪402",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8795,7 +8226,7 @@ var outputTables = {
             "10402": {
                 "id": 10402,
                 "number": 10402,
-                "name": "树精",
+                "name": "树精403",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8808,7 +8239,7 @@ var outputTables = {
             "10403": {
                 "id": 10403,
                 "number": 10403,
-                "name": "黑熊精",
+                "name": "黑熊精404",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8821,7 +8252,7 @@ var outputTables = {
             "10404": {
                 "id": 10404,
                 "number": 10404,
-                "name": "狐狸精",
+                "name": "狐狸精405",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8834,7 +8265,7 @@ var outputTables = {
             "10405": {
                 "id": 10405,
                 "number": 10405,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵406",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8847,7 +8278,7 @@ var outputTables = {
             "10406": {
                 "id": 10406,
                 "number": 10406,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖407",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8860,7 +8291,7 @@ var outputTables = {
             "10407": {
                 "id": 10407,
                 "number": 10407,
-                "name": "野猪妖",
+                "name": "野猪妖408",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8873,7 +8304,7 @@ var outputTables = {
             "10408": {
                 "id": 10408,
                 "number": 10408,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔409",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8886,7 +8317,7 @@ var outputTables = {
             "10409": {
                 "id": 10409,
                 "number": 10409,
-                "name": "猴儿精",
+                "name": "猴儿精410",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8899,7 +8330,7 @@ var outputTables = {
             "10410": {
                 "id": 10410,
                 "number": 10410,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪411",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8912,7 +8343,7 @@ var outputTables = {
             "10411": {
                 "id": 10411,
                 "number": 10411,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼412",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8925,7 +8356,7 @@ var outputTables = {
             "10412": {
                 "id": 10412,
                 "number": 10412,
-                "name": "狮子怪",
+                "name": "狮子怪413",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8938,7 +8369,7 @@ var outputTables = {
             "10413": {
                 "id": 10413,
                 "number": 10413,
-                "name": "蚊子怪",
+                "name": "蚊子怪414",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8951,7 +8382,7 @@ var outputTables = {
             "10414": {
                 "id": 10414,
                 "number": 10414,
-                "name": "火焰怪",
+                "name": "火焰怪415",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8964,7 +8395,7 @@ var outputTables = {
             "10415": {
                 "id": 10415,
                 "number": 10415,
-                "name": "河童怪",
+                "name": "河童怪416",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8977,7 +8408,7 @@ var outputTables = {
             "10416": {
                 "id": 10416,
                 "number": 10416,
-                "name": "独角兽",
+                "name": "独角兽417",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8990,7 +8421,7 @@ var outputTables = {
             "10417": {
                 "id": 10417,
                 "number": 10417,
-                "name": "人鱼怪",
+                "name": "人鱼怪418",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9003,7 +8434,7 @@ var outputTables = {
             "10418": {
                 "id": 10418,
                 "number": 10418,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王419",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9016,7 +8447,7 @@ var outputTables = {
             "10419": {
                 "id": 10419,
                 "number": 10419,
-                "name": "双头牛怪",
+                "name": "双头牛怪420",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9029,7 +8460,7 @@ var outputTables = {
             "10420": {
                 "id": 10420,
                 "number": 10420,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪421",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9042,7 +8473,7 @@ var outputTables = {
             "10421": {
                 "id": 10421,
                 "number": 10421,
-                "name": "小狗怪",
+                "name": "小狗怪422",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9055,7 +8486,7 @@ var outputTables = {
             "10422": {
                 "id": 10422,
                 "number": 10422,
-                "name": "大狗怪",
+                "name": "大狗怪423",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9068,7 +8499,7 @@ var outputTables = {
             "10423": {
                 "id": 10423,
                 "number": 10423,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪424",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9081,7 +8512,7 @@ var outputTables = {
             "10424": {
                 "id": 10424,
                 "number": 10424,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪425",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9094,7 +8525,7 @@ var outputTables = {
             "10425": {
                 "id": 10425,
                 "number": 10425,
-                "name": "僵尸怪",
+                "name": "僵尸怪426",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9107,7 +8538,7 @@ var outputTables = {
             "10426": {
                 "id": 10426,
                 "number": 10426,
-                "name": "宫灯怪",
+                "name": "宫灯怪427",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9120,7 +8551,7 @@ var outputTables = {
             "10427": {
                 "id": 10427,
                 "number": 10427,
-                "name": "挂科怪",
+                "name": "挂科怪428",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9133,7 +8564,7 @@ var outputTables = {
             "10428": {
                 "id": 10428,
                 "number": 10428,
-                "name": "自习怪",
+                "name": "自习怪429",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9146,7 +8577,7 @@ var outputTables = {
             "10429": {
                 "id": 10429,
                 "number": 10429,
-                "name": "灯笼怪",
+                "name": "灯笼怪430",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9159,7 +8590,7 @@ var outputTables = {
             "10430": {
                 "id": 10430,
                 "number": 10430,
-                "name": "龅牙兔",
+                "name": "龅牙兔431",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9172,7 +8603,7 @@ var outputTables = {
             "10431": {
                 "id": 10431,
                 "number": 10431,
-                "name": "乌龟精",
+                "name": "乌龟精432",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9185,7 +8616,7 @@ var outputTables = {
             "10432": {
                 "id": 10432,
                 "number": 10432,
-                "name": "卖茶怪",
+                "name": "卖茶怪433",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9198,7 +8629,7 @@ var outputTables = {
             "10433": {
                 "id": 10433,
                 "number": 10433,
-                "name": "白骨精",
+                "name": "白骨精434",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9211,7 +8642,7 @@ var outputTables = {
             "10434": {
                 "id": 10434,
                 "number": 10434,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪435",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9224,7 +8655,7 @@ var outputTables = {
             "10435": {
                 "id": 10435,
                 "number": 10435,
-                "name": "树精",
+                "name": "树精436",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9237,7 +8668,7 @@ var outputTables = {
             "10436": {
                 "id": 10436,
                 "number": 10436,
-                "name": "黑熊精",
+                "name": "黑熊精437",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9250,7 +8681,7 @@ var outputTables = {
             "10437": {
                 "id": 10437,
                 "number": 10437,
-                "name": "狐狸精",
+                "name": "狐狸精438",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9263,7 +8694,7 @@ var outputTables = {
             "10438": {
                 "id": 10438,
                 "number": 10438,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵439",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9276,7 +8707,7 @@ var outputTables = {
             "10439": {
                 "id": 10439,
                 "number": 10439,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖440",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9289,7 +8720,7 @@ var outputTables = {
             "10440": {
                 "id": 10440,
                 "number": 10440,
-                "name": "野猪妖",
+                "name": "野猪妖441",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9302,7 +8733,7 @@ var outputTables = {
             "10441": {
                 "id": 10441,
                 "number": 10441,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔442",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9315,7 +8746,7 @@ var outputTables = {
             "10442": {
                 "id": 10442,
                 "number": 10442,
-                "name": "猴儿精",
+                "name": "猴儿精443",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9328,7 +8759,7 @@ var outputTables = {
             "10443": {
                 "id": 10443,
                 "number": 10443,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪444",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9341,7 +8772,7 @@ var outputTables = {
             "10444": {
                 "id": 10444,
                 "number": 10444,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼445",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9354,7 +8785,7 @@ var outputTables = {
             "10445": {
                 "id": 10445,
                 "number": 10445,
-                "name": "狮子怪",
+                "name": "狮子怪446",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9367,7 +8798,7 @@ var outputTables = {
             "10446": {
                 "id": 10446,
                 "number": 10446,
-                "name": "蚊子怪",
+                "name": "蚊子怪447",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9380,7 +8811,7 @@ var outputTables = {
             "10447": {
                 "id": 10447,
                 "number": 10447,
-                "name": "火焰怪",
+                "name": "火焰怪448",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9393,7 +8824,7 @@ var outputTables = {
             "10448": {
                 "id": 10448,
                 "number": 10448,
-                "name": "河童怪",
+                "name": "河童怪449",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9406,7 +8837,7 @@ var outputTables = {
             "10449": {
                 "id": 10449,
                 "number": 10449,
-                "name": "独角兽",
+                "name": "独角兽450",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9419,7 +8850,7 @@ var outputTables = {
             "10450": {
                 "id": 10450,
                 "number": 10450,
-                "name": "人鱼怪",
+                "name": "人鱼怪451",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9432,7 +8863,7 @@ var outputTables = {
             "10451": {
                 "id": 10451,
                 "number": 10451,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王452",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9445,7 +8876,7 @@ var outputTables = {
             "10452": {
                 "id": 10452,
                 "number": 10452,
-                "name": "双头牛怪",
+                "name": "双头牛怪453",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9458,7 +8889,7 @@ var outputTables = {
             "10453": {
                 "id": 10453,
                 "number": 10453,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪454",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9471,7 +8902,7 @@ var outputTables = {
             "10454": {
                 "id": 10454,
                 "number": 10454,
-                "name": "小狗怪",
+                "name": "小狗怪455",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9484,7 +8915,7 @@ var outputTables = {
             "10455": {
                 "id": 10455,
                 "number": 10455,
-                "name": "大狗怪",
+                "name": "大狗怪456",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9497,7 +8928,7 @@ var outputTables = {
             "10456": {
                 "id": 10456,
                 "number": 10456,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪457",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9510,7 +8941,7 @@ var outputTables = {
             "10457": {
                 "id": 10457,
                 "number": 10457,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪458",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9523,7 +8954,7 @@ var outputTables = {
             "10458": {
                 "id": 10458,
                 "number": 10458,
-                "name": "僵尸怪",
+                "name": "僵尸怪459",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9536,7 +8967,7 @@ var outputTables = {
             "10459": {
                 "id": 10459,
                 "number": 10459,
-                "name": "宫灯怪",
+                "name": "宫灯怪460",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9549,7 +8980,7 @@ var outputTables = {
             "10460": {
                 "id": 10460,
                 "number": 10460,
-                "name": "挂科怪",
+                "name": "挂科怪461",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9562,7 +8993,7 @@ var outputTables = {
             "10461": {
                 "id": 10461,
                 "number": 10461,
-                "name": "自习怪",
+                "name": "自习怪462",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9575,7 +9006,7 @@ var outputTables = {
             "10462": {
                 "id": 10462,
                 "number": 10462,
-                "name": "灯笼怪",
+                "name": "灯笼怪463",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9588,7 +9019,7 @@ var outputTables = {
             "10463": {
                 "id": 10463,
                 "number": 10463,
-                "name": "龅牙兔",
+                "name": "龅牙兔464",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9601,7 +9032,7 @@ var outputTables = {
             "10464": {
                 "id": 10464,
                 "number": 10464,
-                "name": "乌龟精",
+                "name": "乌龟精465",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9614,7 +9045,7 @@ var outputTables = {
             "10465": {
                 "id": 10465,
                 "number": 10465,
-                "name": "卖茶怪",
+                "name": "卖茶怪466",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9627,7 +9058,7 @@ var outputTables = {
             "10466": {
                 "id": 10466,
                 "number": 10466,
-                "name": "白骨精",
+                "name": "白骨精467",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9640,7 +9071,7 @@ var outputTables = {
             "10467": {
                 "id": 10467,
                 "number": 10467,
-                "name": "蛤蟆怪",
+                "name": "蛤蟆怪468",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9653,7 +9084,7 @@ var outputTables = {
             "10468": {
                 "id": 10468,
                 "number": 10468,
-                "name": "树精",
+                "name": "树精469",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9666,7 +9097,7 @@ var outputTables = {
             "10469": {
                 "id": 10469,
                 "number": 10469,
-                "name": "黑熊精",
+                "name": "黑熊精470",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9679,7 +9110,7 @@ var outputTables = {
             "10470": {
                 "id": 10470,
                 "number": 10470,
-                "name": "狐狸精",
+                "name": "狐狸精471",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9692,7 +9123,7 @@ var outputTables = {
             "10471": {
                 "id": 10471,
                 "number": 10471,
-                "name": "水晶魔灵",
+                "name": "水晶魔灵472",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9705,7 +9136,7 @@ var outputTables = {
             "10472": {
                 "id": 10472,
                 "number": 10472,
-                "name": "大脸猫妖",
+                "name": "大脸猫妖473",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9718,7 +9149,7 @@ var outputTables = {
             "10473": {
                 "id": 10473,
                 "number": 10473,
-                "name": "野猪妖",
+                "name": "野猪妖474",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9731,7 +9162,7 @@ var outputTables = {
             "10474": {
                 "id": 10474,
                 "number": 10474,
-                "name": "猩猩巨魔",
+                "name": "猩猩巨魔475",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9744,7 +9175,7 @@ var outputTables = {
             "10475": {
                 "id": 10475,
                 "number": 10475,
-                "name": "猴儿精",
+                "name": "猴儿精476",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9757,7 +9188,7 @@ var outputTables = {
             "10476": {
                 "id": 10476,
                 "number": 10476,
-                "name": "巨蟒怪",
+                "name": "巨蟒怪477",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9770,7 +9201,7 @@ var outputTables = {
             "10477": {
                 "id": 10477,
                 "number": 10477,
-                "name": "地狱小鬼",
+                "name": "地狱小鬼478",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9783,7 +9214,7 @@ var outputTables = {
             "10478": {
                 "id": 10478,
                 "number": 10478,
-                "name": "狮子怪",
+                "name": "狮子怪479",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9796,7 +9227,7 @@ var outputTables = {
             "10479": {
                 "id": 10479,
                 "number": 10479,
-                "name": "蚊子怪",
+                "name": "蚊子怪480",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9809,7 +9240,7 @@ var outputTables = {
             "10480": {
                 "id": 10480,
                 "number": 10480,
-                "name": "火焰怪",
+                "name": "火焰怪481",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9822,7 +9253,7 @@ var outputTables = {
             "10481": {
                 "id": 10481,
                 "number": 10481,
-                "name": "河童怪",
+                "name": "河童怪482",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9835,7 +9266,7 @@ var outputTables = {
             "10482": {
                 "id": 10482,
                 "number": 10482,
-                "name": "独角兽",
+                "name": "独角兽483",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9848,7 +9279,7 @@ var outputTables = {
             "10483": {
                 "id": 10483,
                 "number": 10483,
-                "name": "人鱼怪",
+                "name": "人鱼怪484",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9861,7 +9292,7 @@ var outputTables = {
             "10484": {
                 "id": 10484,
                 "number": 10484,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王485",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9874,7 +9305,7 @@ var outputTables = {
             "10485": {
                 "id": 10485,
                 "number": 10485,
-                "name": "双头牛怪",
+                "name": "双头牛怪486",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9887,7 +9318,7 @@ var outputTables = {
             "10486": {
                 "id": 10486,
                 "number": 10486,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪487",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9900,7 +9331,7 @@ var outputTables = {
             "10487": {
                 "id": 10487,
                 "number": 10487,
-                "name": "小狗怪",
+                "name": "小狗怪488",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9913,7 +9344,7 @@ var outputTables = {
             "10488": {
                 "id": 10488,
                 "number": 10488,
-                "name": "大狗怪",
+                "name": "大狗怪489",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9926,7 +9357,7 @@ var outputTables = {
             "10489": {
                 "id": 10489,
                 "number": 10489,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪490",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9939,7 +9370,7 @@ var outputTables = {
             "10490": {
                 "id": 10490,
                 "number": 10490,
-                "name": "蟠桃怪",
+                "name": "蟠桃怪491",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9952,7 +9383,7 @@ var outputTables = {
             "10491": {
                 "id": 10491,
                 "number": 10491,
-                "name": "僵尸怪",
+                "name": "僵尸怪492",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9965,7 +9396,7 @@ var outputTables = {
             "10492": {
                 "id": 10492,
                 "number": 10492,
-                "name": "宫灯怪",
+                "name": "宫灯怪493",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9978,7 +9409,7 @@ var outputTables = {
             "10493": {
                 "id": 10493,
                 "number": 10493,
-                "name": "挂科怪",
+                "name": "挂科怪494",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -9991,7 +9422,7 @@ var outputTables = {
             "10494": {
                 "id": 10494,
                 "number": 10494,
-                "name": "自习怪",
+                "name": "自习怪495",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10004,7 +9435,7 @@ var outputTables = {
             "10495": {
                 "id": 10495,
                 "number": 10495,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王496",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10017,7 +9448,7 @@ var outputTables = {
             "10496": {
                 "id": 10496,
                 "number": 10496,
-                "name": "双头牛怪",
+                "name": "双头牛怪497",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10030,7 +9461,7 @@ var outputTables = {
             "10497": {
                 "id": 10497,
                 "number": 10497,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪498",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10043,7 +9474,7 @@ var outputTables = {
             "10498": {
                 "id": 10498,
                 "number": 10498,
-                "name": "小狗怪",
+                "name": "小狗怪499",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10056,7 +9487,7 @@ var outputTables = {
             "10499": {
                 "id": 10499,
                 "number": 10499,
-                "name": "大狗怪",
+                "name": "大狗怪500",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10069,7 +9500,7 @@ var outputTables = {
             "10500": {
                 "id": 10500,
                 "number": 10500,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪501",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10082,7 +9513,7 @@ var outputTables = {
             "20000": {
                 "id": 20000,
                 "number": 20000,
-                "name": "巨齿狼王",
+                "name": "巨齿狼王502",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10092,7 +9523,7 @@ var outputTables = {
             "20001": {
                 "id": 20001,
                 "number": 20001,
-                "name": "双头牛怪",
+                "name": "双头牛怪503",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10105,7 +9536,7 @@ var outputTables = {
             "20002": {
                 "id": 20002,
                 "number": 20002,
-                "name": "长矛鼠怪",
+                "name": "长矛鼠怪504",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10118,7 +9549,7 @@ var outputTables = {
             "20003": {
                 "id": 20003,
                 "number": 20003,
-                "name": "小狗怪",
+                "name": "小狗怪505",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10131,7 +9562,7 @@ var outputTables = {
             "20004": {
                 "id": 20004,
                 "number": 20004,
-                "name": "大狗怪",
+                "name": "大狗怪506",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10144,7 +9575,7 @@ var outputTables = {
             "20005": {
                 "id": 20005,
                 "number": 20005,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪507",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10157,7 +9588,7 @@ var outputTables = {
             "20006": {
                 "id": 20006,
                 "number": 20006,
-                "name": "火魔王",
+                "name": "火魔王508",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10170,7 +9601,7 @@ var outputTables = {
             "20007": {
                 "id": 20007,
                 "number": 20007,
-                "name": "独臂铲子怪",
+                "name": "独臂铲子怪509",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10183,7 +9614,7 @@ var outputTables = {
             "20008": {
                 "id": 20008,
                 "number": 20008,
-                "name": "黄袍老怪",
+                "name": "黄袍老怪510",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10196,7 +9627,7 @@ var outputTables = {
             "20009": {
                 "id": 20009,
                 "number": 20009,
-                "name": "金角大王",
+                "name": "金角大王511",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10209,7 +9640,7 @@ var outputTables = {
             "20010": {
                 "id": 20010,
                 "number": 20010,
-                "name": "银角大王",
+                "name": "银角大王512",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10222,7 +9653,7 @@ var outputTables = {
             "20011": {
                 "id": 20011,
                 "number": 20011,
-                "name": "长眉老怪",
+                "name": "长眉老怪513",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10235,7 +9666,7 @@ var outputTables = {
             "20012": {
                 "id": 20012,
                 "number": 20012,
-                "name": "黑山巫妖",
+                "name": "黑山巫妖514",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10248,7 +9679,7 @@ var outputTables = {
             "20013": {
                 "id": 20013,
                 "number": 20013,
-                "name": "半头魔王",
+                "name": "半头魔王515",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10261,7 +9692,7 @@ var outputTables = {
             "20014": {
                 "id": 20014,
                 "number": 20014,
-                "name": "三条胳膊怪",
+                "name": "三条胳膊怪516",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10274,7 +9705,7 @@ var outputTables = {
             "20015": {
                 "id": 20015,
                 "number": 20015,
-                "name": "巨斧怪",
+                "name": "巨斧怪517",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10287,7 +9718,7 @@ var outputTables = {
             "20016": {
                 "id": 20016,
                 "number": 20016,
-                "name": "双刀怪",
+                "name": "双刀怪518",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10300,7 +9731,7 @@ var outputTables = {
             "20017": {
                 "id": 20017,
                 "number": 20017,
-                "name": "巨剑怪",
+                "name": "巨剑怪519",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10313,7 +9744,7 @@ var outputTables = {
             "20018": {
                 "id": 20018,
                 "number": 20018,
-                "name": "弓箭怪",
+                "name": "弓箭怪520",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10326,7 +9757,7 @@ var outputTables = {
             "20019": {
                 "id": 20019,
                 "number": 20019,
-                "name": "锤子怪",
+                "name": "锤子怪521",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10339,7 +9770,7 @@ var outputTables = {
             "20020": {
                 "id": 20020,
                 "number": 20020,
-                "name": "石巨人",
+                "name": "石巨人522",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10362,7 +9793,7 @@ var outputTables = {
             "30001": {
                 "id": 30001,
                 "number": 30001,
-                "name": "蝙蝠怪",
+                "name": "蝙蝠怪523",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10373,7 +9804,7 @@ var outputTables = {
             "30002": {
                 "id": 30002,
                 "number": 30002,
-                "name": "火魔王",
+                "name": "火魔王524",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10386,7 +9817,7 @@ var outputTables = {
             "30003": {
                 "id": 30003,
                 "number": 30003,
-                "name": "金角大王",
+                "name": "金角大王525",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10397,7 +9828,7 @@ var outputTables = {
             "30004": {
                 "id": 30004,
                 "number": 30004,
-                "name": "银角大王",
+                "name": "银角大王526",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10410,7 +9841,7 @@ var outputTables = {
             "30005": {
                 "id": 30005,
                 "number": 30005,
-                "name": "半头魔王",
+                "name": "半头魔王527",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10421,7 +9852,7 @@ var outputTables = {
             "30006": {
                 "id": 30006,
                 "number": 30006,
-                "name": "三条胳膊怪",
+                "name": "三条胳膊怪528",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10434,7 +9865,7 @@ var outputTables = {
             "30007": {
                 "id": 30007,
                 "number": 30007,
-                "name": "双刀怪",
+                "name": "双刀怪529",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10445,7 +9876,7 @@ var outputTables = {
             "30008": {
                 "id": 30008,
                 "number": 30008,
-                "name": "巨剑怪",
+                "name": "巨剑怪530",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10458,7 +9889,7 @@ var outputTables = {
             "30009": {
                 "id": 30009,
                 "number": 30009,
-                "name": "锤子怪",
+                "name": "锤子怪531",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -10469,7 +9900,7 @@ var outputTables = {
             "30010": {
                 "id": 30010,
                 "number": 30010,
-                "name": "石巨人",
+                "name": "石巨人532",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -27230,253 +26661,6 @@ var outputTables = {
             }
         }
     },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -27781,6 +26965,1037 @@ var outputTables = {
                 "star5_inc_max": 63,
                 "star5_grow": 3,
                 "rate5": 40
+            }
+        }
+    },
+    "new_year_rechage": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
+            },
+            "3": {
+                "id": 3,
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
+            },
+            "4": {
+                "id": 4,
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
+            },
+            "5": {
+                "id": 5,
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 254,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lottery_count": 50,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 5,
+                "collect_count": 15,
+                "exp_card_count": 100
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,148,218,123,243]",
+                "star4": "[59,139]"
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "pass_skillafresh": 45
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 200000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 320000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 400000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 99999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 5000,
+                "energy": 200
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "skillPoint": 1000,
+                "elixir": 2000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "skillPoint": 2000,
+                "elixir": 5000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "skillPoint": 5000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "skillPoint": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 1000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            },
+            "findBossRate": {
+                "id": "findBossRate",
+                "value": 5,
+                "desc": "每次探索发现boss的概率"
+            },
+            "bossTypeBlueCard": {
+                "id": "bossTypeBlueCard",
+                "value": 60,
+                "desc": "蓝卡boss随机的概率"
+            },
+            "bossTypePurpleCard": {
+                "id": "bossTypePurpleCard",
+                "value": 25,
+                "desc": "紫卡boss随机的概率"
+            },
+            "bossTypeGoldCard": {
+                "id": "bossTypeGoldCard",
+                "value": 15,
+                "desc": "金卡boss随机的概率"
+            }
+        }
+    },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 60,
+                "name": "蓝卡",
+                "reward_inc": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 25,
+                "name": "紫卡",
+                "reward_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150
+            }
+        }
+    },
+    "boss": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "九阴罗刹",
+                "type": 1,
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "01:40000,10:40003,12:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "赤炎星君",
+                "type": 2,
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "01:40001,10:40004,12:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "金身冥王",
+                "type": 3,
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "01:40002,10:40005,12:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "九阴罗刹",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "赤炎星君",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "金身冥王",
+                "atk": 1000000,
+                "hp": 80000000,
+                "dodge_rate": 0,
+                "crit_rate": 30
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10
+            }
+        }
+    },
+    "boss_rank_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "honor": 12000,
+                "money": 500000,
+                "energy": 8000
+            },
+            "2": {
+                "id": 2,
+                "honor": 11000,
+                "money": 400000,
+                "energy": 7000
+            },
+            "3": {
+                "id": 3,
+                "honor": 10000,
+                "money": 300000,
+                "energy": 6000
+            },
+            "4": {
+                "id": 4,
+                "honor": 9000,
+                "money": 200000,
+                "energy": 5000
+            },
+            "5": {
+                "id": 5,
+                "honor": 8000,
+                "money": 100000,
+                "energy": 4000
+            }
+        }
+    },
+    "recharge": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.pay6",
+                "times": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.pay30",
+                "times": 2
+            },
+            "3": {
+                "id": 3,
+                "cash": 68,
+                "gold": 76,
+                "product_id": "com.leasuregame.magpie.pay68",
+                "times": 2
+            },
+            "4": {
+                "id": 4,
+                "cash": 128,
+                "gold": 146,
+                "product_id": "com.leasuregame.magpie.pay128",
+                "times": 2
+            },
+            "5": {
+                "id": 5,
+                "cash": 198,
+                "gold": 232,
+                "product_id": "com.leasuregame.magpie.pay198",
+                "times": 2
+            },
+            "6": {
+                "id": 6,
+                "cash": 328,
+                "gold": 403,
+                "product_id": "com.leasuregame.magpie.pay328",
+                "times": 2
+            },
+            "7": {
+                "id": 7,
+                "cash": 648,
+                "gold": 842,
+                "product_id": "com.leasuregame.magpie.pay648",
+                "times": 3
+            },
+            "8": {
+                "id": 8,
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.week.card",
+                "daily_gold": 60,
+                "valid_days": 7,
+                "times": 1
+            },
+            "9": {
+                "id": 9,
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.month.card",
+                "daily_gold": 100,
+                "valid_days": 30,
+                "times": 1
+            }
+        }
+    },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 194,
+                "card_lv": 20
+            }
+        }
+    },
+    "vip": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "name": "Vip1",
+                "cash": 6,
+                "total_cash": 6
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "name": "Vip2",
+                "cash": 50,
+                "total_cash": 56
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "name": "Vip3",
+                "cash": 100,
+                "total_cash": 156
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "name": "Vip4",
+                "cash": 200,
+                "total_cash": 356
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "name": "Vip5",
+                "cash": 500,
+                "total_cash": 856
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "name": "Vip6",
+                "cash": 1000,
+                "total_cash": 1856
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "name": "Vip7",
+                "cash": 2000,
+                "total_cash": 3856
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "name": "Vip8",
+                "cash": 5000,
+                "total_cash": 8856
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "name": "Vip9",
+                "cash": 8000,
+                "total_cash": 16856
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "name": "Vip10",
+                "cash": 10000,
+                "total_cash": 26856
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "name": "Vip11",
+                "cash": 20000,
+                "total_cash": 46856
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "name": "Vip12",
+                "cash": 50000,
+                "total_cash": 96856
+            }
+        }
+    },
+    "vip_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 500,
+                "money": 100000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card": 0,
+                "price": 18,
+                "true_price": 66
+            },
+            "2": {
+                "id": 2,
+                "energy": 600,
+                "money": 120000,
+                "skillPoint": 1000,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card": 0,
+                "price": 58,
+                "true_price": 195
+            },
+            "3": {
+                "id": 3,
+                "energy": 700,
+                "money": 150000,
+                "skillPoint": 1100,
+                "elixir": 2000,
+                "fragments": 0,
+                "exp_card": 0,
+                "price": 88,
+                "true_price": 246
+            },
+            "4": {
+                "id": 4,
+                "energy": 800,
+                "money": 200000,
+                "skillPoint": 1200,
+                "elixir": 3000,
+                "fragments": 3,
+                "exp_card": 0,
+                "price": 188,
+                "true_price": 569
+            },
+            "5": {
+                "id": 5,
+                "energy": 900,
+                "money": 250000,
+                "skillPoint": 2000,
+                "elixir": 4000,
+                "fragments": 3,
+                "exp_card": 0,
+                "price": 288,
+                "true_price": 726
+            },
+            "6": {
+                "id": 6,
+                "energy": 1000,
+                "money": 300000,
+                "skillPoint": 2100,
+                "elixir": 5000,
+                "fragments": 3,
+                "exp_card": 10,
+                "price": 388,
+                "true_price": 1080
+            },
+            "7": {
+                "id": 7,
+                "energy": 1100,
+                "money": 350000,
+                "skillPoint": 2200,
+                "elixir": 6000,
+                "fragments": 3,
+                "exp_card": 15,
+                "price": 488,
+                "true_price": 1368
+            },
+            "8": {
+                "id": 8,
+                "energy": 1200,
+                "money": 400000,
+                "skillPoint": 5000,
+                "elixir": 10000,
+                "fragments": 5,
+                "exp_card": 15,
+                "price": 588,
+                "true_price": 1989
+            },
+            "9": {
+                "id": 9,
+                "energy": 1300,
+                "money": 450000,
+                "skillPoint": 5100,
+                "elixir": 11000,
+                "fragments": 5,
+                "exp_card": 15,
+                "price": 688,
+                "true_price": 2366
+            },
+            "10": {
+                "id": 10,
+                "energy": 1400,
+                "money": 500000,
+                "skillPoint": 10000,
+                "elixir": 12000,
+                "fragments": 10,
+                "exp_card": 20,
+                "price": 788,
+                "true_price": 2899
+            },
+            "11": {
+                "id": 11,
+                "energy": 1500,
+                "money": 550000,
+                "skillPoint": 11000,
+                "elixir": 15000,
+                "fragments": 10,
+                "exp_card": 20,
+                "price": 888,
+                "true_price": 3288
+            },
+            "12": {
+                "id": 12,
+                "energy": 1600,
+                "money": 600000,
+                "skillPoint": 15000,
+                "elixir": 20000,
+                "fragments": 10,
+                "exp_card": 20,
+                "price": 999,
+                "true_price": 3986
+            }
+        }
+    },
+    "vip_privilege": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lottery_free_count": 0,
+                "exp_card_count": 0,
+                "buy_power_count": 0,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "1": {
+                "id": 1,
+                "lottery_free_count": 1,
+                "exp_card_count": 50,
+                "buy_power_count": 1,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "2": {
+                "id": 2,
+                "lottery_free_count": 2,
+                "exp_card_count": 100,
+                "buy_power_count": 2,
+                "give_bless_count": 1,
+                "receive_bless_count": 1,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "3": {
+                "id": 3,
+                "lottery_free_count": 3,
+                "exp_card_count": 150,
+                "buy_power_count": 3,
+                "give_bless_count": 2,
+                "receive_bless_count": 2,
+                "spirit_collect_count": 1,
+                "challenge_buy_count": 5,
+                "friend_count": 0
+            },
+            "4": {
+                "id": 4,
+                "lottery_free_count": 4,
+                "exp_card_count": 200,
+                "buy_power_count": 4,
+                "give_bless_count": 3,
+                "receive_bless_count": 3,
+                "spirit_collect_count": 2,
+                "challenge_buy_count": 10,
+                "friend_count": 5
+            },
+            "5": {
+                "id": 5,
+                "lottery_free_count": 5,
+                "exp_card_count": 250,
+                "buy_power_count": 5,
+                "give_bless_count": 4,
+                "receive_bless_count": 4,
+                "spirit_collect_count": 3,
+                "challenge_buy_count": 15,
+                "friend_count": 10
+            },
+            "6": {
+                "id": 6,
+                "lottery_free_count": 6,
+                "exp_card_count": 300,
+                "buy_power_count": 6,
+                "give_bless_count": 5,
+                "receive_bless_count": 5,
+                "spirit_collect_count": 4,
+                "challenge_buy_count": 20,
+                "friend_count": 15
+            },
+            "7": {
+                "id": 7,
+                "lottery_free_count": 7,
+                "exp_card_count": 350,
+                "buy_power_count": 7,
+                "give_bless_count": 6,
+                "receive_bless_count": 6,
+                "spirit_collect_count": 5,
+                "challenge_buy_count": 25,
+                "friend_count": 20
+            },
+            "8": {
+                "id": 8,
+                "lottery_free_count": 8,
+                "exp_card_count": 400,
+                "buy_power_count": 8,
+                "give_bless_count": 7,
+                "receive_bless_count": 7,
+                "spirit_collect_count": 6,
+                "challenge_buy_count": 30,
+                "friend_count": 25
+            },
+            "9": {
+                "id": 9,
+                "lottery_free_count": 9,
+                "exp_card_count": 450,
+                "buy_power_count": 9,
+                "give_bless_count": 8,
+                "receive_bless_count": 8,
+                "spirit_collect_count": 7,
+                "challenge_buy_count": 35,
+                "friend_count": 30
+            },
+            "10": {
+                "id": 10,
+                "lottery_free_count": 10,
+                "exp_card_count": 500,
+                "buy_power_count": 10,
+                "give_bless_count": 9,
+                "receive_bless_count": 9,
+                "spirit_collect_count": 8,
+                "challenge_buy_count": 40,
+                "friend_count": 35
+            },
+            "11": {
+                "id": 11,
+                "lottery_free_count": 10,
+                "exp_card_count": 550,
+                "buy_power_count": 11,
+                "give_bless_count": 10,
+                "receive_bless_count": 10,
+                "spirit_collect_count": 9,
+                "challenge_buy_count": 45,
+                "friend_count": 40
+            },
+            "12": {
+                "id": 12,
+                "lottery_free_count": 10,
+                "exp_card_count": 600,
+                "buy_power_count": 12,
+                "give_bless_count": 11,
+                "receive_bless_count": 11,
+                "spirit_collect_count": 10,
+                "challenge_buy_count": 50,
+                "friend_count": 45
             }
         }
     },
@@ -36053,7 +36268,7 @@ var outputTables = {
         "rows": {
             "10000": {
                 "id": 10000,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪1",
                 "atk": 50,
                 "hp": 113,
                 "dodge_rate": 0,
@@ -36061,7 +36276,7 @@ var outputTables = {
             },
             "10001": {
                 "id": 10001,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔2",
                 "atk": 80,
                 "hp": 130,
                 "dodge_rate": 0,
@@ -36069,7 +36284,7 @@ var outputTables = {
             },
             "10002": {
                 "id": 10002,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精3",
                 "atk": 90,
                 "hp": 150,
                 "dodge_rate": 0,
@@ -36077,7 +36292,7 @@ var outputTables = {
             },
             "10003": {
                 "id": 10003,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪4",
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
@@ -36085,7 +36300,7 @@ var outputTables = {
             },
             "10004": {
                 "id": 10004,
-                "card_id": "白骨精",
+                "card_id": "白骨精5",
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
@@ -36093,7 +36308,7 @@ var outputTables = {
             },
             "10005": {
                 "id": 10005,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪6",
                 "atk": 95,
                 "hp": 155,
                 "dodge_rate": 0,
@@ -36101,7 +36316,7 @@ var outputTables = {
             },
             "10006": {
                 "id": 10006,
-                "card_id": "树精",
+                "card_id": "树精7",
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
@@ -36109,7 +36324,7 @@ var outputTables = {
             },
             "10007": {
                 "id": 10007,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精8",
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
@@ -36117,7 +36332,7 @@ var outputTables = {
             },
             "10008": {
                 "id": 10008,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精9",
                 "atk": 100,
                 "hp": 160,
                 "dodge_rate": 0,
@@ -36125,7 +36340,7 @@ var outputTables = {
             },
             "10009": {
                 "id": 10009,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵10",
                 "atk": 110,
                 "hp": 170,
                 "dodge_rate": 0,
@@ -36133,7 +36348,7 @@ var outputTables = {
             },
             "10010": {
                 "id": 10010,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖11",
                 "atk": 110,
                 "hp": 170,
                 "dodge_rate": 0,
@@ -36141,7 +36356,7 @@ var outputTables = {
             },
             "10011": {
                 "id": 10011,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖12",
                 "atk": 200,
                 "hp": 520,
                 "dodge_rate": 0,
@@ -36149,7 +36364,7 @@ var outputTables = {
             },
             "10012": {
                 "id": 10012,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔13",
                 "atk": 235,
                 "hp": 555,
                 "dodge_rate": 0,
@@ -36157,7 +36372,7 @@ var outputTables = {
             },
             "10013": {
                 "id": 10013,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精14",
                 "atk": 270,
                 "hp": 575,
                 "dodge_rate": 0,
@@ -36165,7 +36380,7 @@ var outputTables = {
             },
             "10014": {
                 "id": 10014,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪15",
                 "atk": 305,
                 "hp": 595,
                 "dodge_rate": 0,
@@ -36173,7 +36388,7 @@ var outputTables = {
             },
             "10015": {
                 "id": 10015,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼16",
                 "atk": 340,
                 "hp": 615,
                 "dodge_rate": 0,
@@ -36181,7 +36396,7 @@ var outputTables = {
             },
             "10016": {
                 "id": 10016,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪17",
                 "atk": 375,
                 "hp": 635,
                 "dodge_rate": 0,
@@ -36189,7 +36404,7 @@ var outputTables = {
             },
             "10017": {
                 "id": 10017,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪18",
                 "atk": 410,
                 "hp": 655,
                 "dodge_rate": 0,
@@ -36197,7 +36412,7 @@ var outputTables = {
             },
             "10018": {
                 "id": 10018,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪19",
                 "atk": 445,
                 "hp": 675,
                 "dodge_rate": 0,
@@ -36205,7 +36420,7 @@ var outputTables = {
             },
             "10019": {
                 "id": 10019,
-                "card_id": "河童怪",
+                "card_id": "河童怪20",
                 "atk": 480,
                 "hp": 695,
                 "dodge_rate": 0,
@@ -36213,7 +36428,7 @@ var outputTables = {
             },
             "10020": {
                 "id": 10020,
-                "card_id": "独角兽",
+                "card_id": "独角兽21",
                 "atk": 515,
                 "hp": 715,
                 "dodge_rate": 0,
@@ -36221,7 +36436,7 @@ var outputTables = {
             },
             "10021": {
                 "id": 10021,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪22",
                 "atk": 600,
                 "hp": 900,
                 "dodge_rate": 0,
@@ -36229,7 +36444,7 @@ var outputTables = {
             },
             "10022": {
                 "id": 10022,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王23",
                 "atk": 600,
                 "hp": 1100,
                 "dodge_rate": 0,
@@ -36237,7 +36452,7 @@ var outputTables = {
             },
             "10023": {
                 "id": 10023,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪24",
                 "atk": 600,
                 "hp": 1200,
                 "dodge_rate": 0,
@@ -36245,7 +36460,7 @@ var outputTables = {
             },
             "10024": {
                 "id": 10024,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪25",
                 "atk": 600,
                 "hp": 1300,
                 "dodge_rate": 0,
@@ -36253,7 +36468,7 @@ var outputTables = {
             },
             "10025": {
                 "id": 10025,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪26",
                 "atk": 600,
                 "hp": 1400,
                 "dodge_rate": 0,
@@ -36261,7 +36476,7 @@ var outputTables = {
             },
             "10026": {
                 "id": 10026,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪27",
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
@@ -36269,7 +36484,7 @@ var outputTables = {
             },
             "10027": {
                 "id": 10027,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪28",
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
@@ -36277,7 +36492,7 @@ var outputTables = {
             },
             "10028": {
                 "id": 10028,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪29",
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
@@ -36285,7 +36500,7 @@ var outputTables = {
             },
             "10029": {
                 "id": 10029,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪30",
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
@@ -36293,7 +36508,7 @@ var outputTables = {
             },
             "10030": {
                 "id": 10030,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪31",
                 "atk": 600,
                 "hp": 1500,
                 "dodge_rate": 0,
@@ -36301,7 +36516,7 @@ var outputTables = {
             },
             "10031": {
                 "id": 10031,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪32",
                 "atk": 700,
                 "hp": 1800,
                 "dodge_rate": 0,
@@ -36309,7 +36524,7 @@ var outputTables = {
             },
             "10032": {
                 "id": 10032,
-                "card_id": "自习怪",
+                "card_id": "自习怪33",
                 "atk": 720,
                 "hp": 1840,
                 "dodge_rate": 0,
@@ -36317,7 +36532,7 @@ var outputTables = {
             },
             "10033": {
                 "id": 10033,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪34",
                 "atk": 740,
                 "hp": 1880,
                 "dodge_rate": 0,
@@ -36325,7 +36540,7 @@ var outputTables = {
             },
             "10034": {
                 "id": 10034,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔35",
                 "atk": 760,
                 "hp": 1920,
                 "dodge_rate": 0,
@@ -36333,7 +36548,7 @@ var outputTables = {
             },
             "10035": {
                 "id": 10035,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精36",
                 "atk": 780,
                 "hp": 1960,
                 "dodge_rate": 0,
@@ -36341,7 +36556,7 @@ var outputTables = {
             },
             "10036": {
                 "id": 10036,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪37",
                 "atk": 800,
                 "hp": 2000,
                 "dodge_rate": 0,
@@ -36349,7 +36564,7 @@ var outputTables = {
             },
             "10037": {
                 "id": 10037,
-                "card_id": "白骨精",
+                "card_id": "白骨精38",
                 "atk": 820,
                 "hp": 2040,
                 "dodge_rate": 0,
@@ -36357,7 +36572,7 @@ var outputTables = {
             },
             "10038": {
                 "id": 10038,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪39",
                 "atk": 840,
                 "hp": 2080,
                 "dodge_rate": 0,
@@ -36365,7 +36580,7 @@ var outputTables = {
             },
             "10039": {
                 "id": 10039,
-                "card_id": "树精",
+                "card_id": "树精40",
                 "atk": 860,
                 "hp": 2120,
                 "dodge_rate": 0,
@@ -36373,7 +36588,7 @@ var outputTables = {
             },
             "10040": {
                 "id": 10040,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精41",
                 "atk": 890,
                 "hp": 2170,
                 "dodge_rate": 5,
@@ -36381,7 +36596,7 @@ var outputTables = {
             },
             "10041": {
                 "id": 10041,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精42",
                 "atk": 920,
                 "hp": 2220,
                 "dodge_rate": 5,
@@ -36389,7 +36604,7 @@ var outputTables = {
             },
             "10042": {
                 "id": 10042,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵43",
                 "atk": 950,
                 "hp": 2270,
                 "dodge_rate": 5,
@@ -36397,7 +36612,7 @@ var outputTables = {
             },
             "10043": {
                 "id": 10043,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖44",
                 "atk": 980,
                 "hp": 2310,
                 "dodge_rate": 5,
@@ -36405,7 +36620,7 @@ var outputTables = {
             },
             "10044": {
                 "id": 10044,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖45",
                 "atk": 1010,
                 "hp": 2360,
                 "dodge_rate": 5,
@@ -36413,7 +36628,7 @@ var outputTables = {
             },
             "10045": {
                 "id": 10045,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔46",
                 "atk": 1040,
                 "hp": 2410,
                 "dodge_rate": 5,
@@ -36421,7 +36636,7 @@ var outputTables = {
             },
             "10046": {
                 "id": 10046,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精47",
                 "atk": 1070,
                 "hp": 2460,
                 "dodge_rate": 5,
@@ -36429,7 +36644,7 @@ var outputTables = {
             },
             "10047": {
                 "id": 10047,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪48",
                 "atk": 1100,
                 "hp": 2510,
                 "dodge_rate": 5,
@@ -36437,7 +36652,7 @@ var outputTables = {
             },
             "10048": {
                 "id": 10048,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼49",
                 "atk": 1130,
                 "hp": 2560,
                 "dodge_rate": 5,
@@ -36445,7 +36660,7 @@ var outputTables = {
             },
             "10049": {
                 "id": 10049,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪50",
                 "atk": 1160,
                 "hp": 2610,
                 "dodge_rate": 5,
@@ -36453,7 +36668,7 @@ var outputTables = {
             },
             "10050": {
                 "id": 10050,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪51",
                 "atk": 1190,
                 "hp": 2660,
                 "dodge_rate": 5,
@@ -36461,7 +36676,7 @@ var outputTables = {
             },
             "10051": {
                 "id": 10051,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪52",
                 "atk": 1220,
                 "hp": 2710,
                 "dodge_rate": 5,
@@ -36469,7 +36684,7 @@ var outputTables = {
             },
             "10052": {
                 "id": 10052,
-                "card_id": "河童怪",
+                "card_id": "河童怪53",
                 "atk": 1250,
                 "hp": 2760,
                 "dodge_rate": 5,
@@ -36477,7 +36692,7 @@ var outputTables = {
             },
             "10053": {
                 "id": 10053,
-                "card_id": "独角兽",
+                "card_id": "独角兽54",
                 "atk": 1280,
                 "hp": 2810,
                 "dodge_rate": 5,
@@ -36485,7 +36700,7 @@ var outputTables = {
             },
             "10054": {
                 "id": 10054,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪55",
                 "atk": 1310,
                 "hp": 2860,
                 "dodge_rate": 5,
@@ -36493,7 +36708,7 @@ var outputTables = {
             },
             "10055": {
                 "id": 10055,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王56",
                 "atk": 1340,
                 "hp": 2910,
                 "dodge_rate": 5,
@@ -36501,7 +36716,7 @@ var outputTables = {
             },
             "10056": {
                 "id": 10056,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪57",
                 "atk": 1370,
                 "hp": 2960,
                 "dodge_rate": 5,
@@ -36509,7 +36724,7 @@ var outputTables = {
             },
             "10057": {
                 "id": 10057,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪58",
                 "atk": 1400,
                 "hp": 3010,
                 "dodge_rate": 5,
@@ -36517,7 +36732,7 @@ var outputTables = {
             },
             "10058": {
                 "id": 10058,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪59",
                 "atk": 1430,
                 "hp": 3060,
                 "dodge_rate": 5,
@@ -36525,7 +36740,7 @@ var outputTables = {
             },
             "10059": {
                 "id": 10059,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪60",
                 "atk": 1460,
                 "hp": 3110,
                 "dodge_rate": 5,
@@ -36533,7 +36748,7 @@ var outputTables = {
             },
             "10060": {
                 "id": 10060,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪61",
                 "atk": 1490,
                 "hp": 3160,
                 "dodge_rate": 5,
@@ -36541,7 +36756,7 @@ var outputTables = {
             },
             "10061": {
                 "id": 10061,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪62",
                 "atk": 1520,
                 "hp": 3210,
                 "dodge_rate": 5,
@@ -36549,7 +36764,7 @@ var outputTables = {
             },
             "10062": {
                 "id": 10062,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪63",
                 "atk": 1550,
                 "hp": 3260,
                 "dodge_rate": 5,
@@ -36557,7 +36772,7 @@ var outputTables = {
             },
             "10063": {
                 "id": 10063,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪64",
                 "atk": 1580,
                 "hp": 3310,
                 "dodge_rate": 5,
@@ -36565,7 +36780,7 @@ var outputTables = {
             },
             "10064": {
                 "id": 10064,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪65",
                 "atk": 1610,
                 "hp": 3360,
                 "dodge_rate": 5,
@@ -36573,7 +36788,7 @@ var outputTables = {
             },
             "10065": {
                 "id": 10065,
-                "card_id": "自习怪",
+                "card_id": "自习怪66",
                 "atk": 1640,
                 "hp": 3410,
                 "dodge_rate": 5,
@@ -36581,7 +36796,7 @@ var outputTables = {
             },
             "10066": {
                 "id": 10066,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪67",
                 "atk": 1670,
                 "hp": 3460,
                 "dodge_rate": 5,
@@ -36589,7 +36804,7 @@ var outputTables = {
             },
             "10067": {
                 "id": 10067,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔68",
                 "atk": 1700,
                 "hp": 3510,
                 "dodge_rate": 5,
@@ -36597,7 +36812,7 @@ var outputTables = {
             },
             "10068": {
                 "id": 10068,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精69",
                 "atk": 1730,
                 "hp": 3560,
                 "dodge_rate": 5,
@@ -36605,7 +36820,7 @@ var outputTables = {
             },
             "10069": {
                 "id": 10069,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪70",
                 "atk": 1760,
                 "hp": 3610,
                 "dodge_rate": 5,
@@ -36613,7 +36828,7 @@ var outputTables = {
             },
             "10070": {
                 "id": 10070,
-                "card_id": "白骨精",
+                "card_id": "白骨精71",
                 "atk": 1790,
                 "hp": 3660,
                 "dodge_rate": 5,
@@ -36621,7 +36836,7 @@ var outputTables = {
             },
             "10071": {
                 "id": 10071,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪72",
                 "atk": 1820,
                 "hp": 3710,
                 "dodge_rate": 5,
@@ -36629,7 +36844,7 @@ var outputTables = {
             },
             "10072": {
                 "id": 10072,
-                "card_id": "树精",
+                "card_id": "树精73",
                 "atk": 1850,
                 "hp": 3760,
                 "dodge_rate": 5,
@@ -36637,7 +36852,7 @@ var outputTables = {
             },
             "10073": {
                 "id": 10073,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精74",
                 "atk": 1880,
                 "hp": 3810,
                 "dodge_rate": 5,
@@ -36645,7 +36860,7 @@ var outputTables = {
             },
             "10074": {
                 "id": 10074,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精75",
                 "atk": 1910,
                 "hp": 3860,
                 "dodge_rate": 5,
@@ -36653,7 +36868,7 @@ var outputTables = {
             },
             "10075": {
                 "id": 10075,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵76",
                 "atk": 1940,
                 "hp": 3910,
                 "dodge_rate": 5,
@@ -36661,7 +36876,7 @@ var outputTables = {
             },
             "10076": {
                 "id": 10076,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖77",
                 "atk": 1970,
                 "hp": 3960,
                 "dodge_rate": 5,
@@ -36669,7 +36884,7 @@ var outputTables = {
             },
             "10077": {
                 "id": 10077,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖78",
                 "atk": 2000,
                 "hp": 4010,
                 "dodge_rate": 5,
@@ -36677,7 +36892,7 @@ var outputTables = {
             },
             "10078": {
                 "id": 10078,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔79",
                 "atk": 2030,
                 "hp": 4060,
                 "dodge_rate": 5,
@@ -36685,7 +36900,7 @@ var outputTables = {
             },
             "10079": {
                 "id": 10079,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精80",
                 "atk": 2060,
                 "hp": 4110,
                 "dodge_rate": 5,
@@ -36693,7 +36908,7 @@ var outputTables = {
             },
             "10080": {
                 "id": 10080,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪81",
                 "atk": 2090,
                 "hp": 4160,
                 "dodge_rate": 5,
@@ -36701,7 +36916,7 @@ var outputTables = {
             },
             "10081": {
                 "id": 10081,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼82",
                 "atk": 2120,
                 "hp": 4210,
                 "dodge_rate": 5,
@@ -36709,7 +36924,7 @@ var outputTables = {
             },
             "10082": {
                 "id": 10082,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪83",
                 "atk": 2150,
                 "hp": 4260,
                 "dodge_rate": 5,
@@ -36717,7 +36932,7 @@ var outputTables = {
             },
             "10083": {
                 "id": 10083,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪84",
                 "atk": 2180,
                 "hp": 4310,
                 "dodge_rate": 5,
@@ -36725,7 +36940,7 @@ var outputTables = {
             },
             "10084": {
                 "id": 10084,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪85",
                 "atk": 2210,
                 "hp": 4360,
                 "dodge_rate": 5,
@@ -36733,7 +36948,7 @@ var outputTables = {
             },
             "10085": {
                 "id": 10085,
-                "card_id": "河童怪",
+                "card_id": "河童怪86",
                 "atk": 2240,
                 "hp": 4410,
                 "dodge_rate": 5,
@@ -36741,7 +36956,7 @@ var outputTables = {
             },
             "10086": {
                 "id": 10086,
-                "card_id": "独角兽",
+                "card_id": "独角兽87",
                 "atk": 2270,
                 "hp": 4460,
                 "dodge_rate": 5,
@@ -36749,7 +36964,7 @@ var outputTables = {
             },
             "10087": {
                 "id": 10087,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪88",
                 "atk": 2300,
                 "hp": 4510,
                 "dodge_rate": 5,
@@ -36757,7 +36972,7 @@ var outputTables = {
             },
             "10088": {
                 "id": 10088,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王89",
                 "atk": 2330,
                 "hp": 4560,
                 "dodge_rate": 5,
@@ -36765,7 +36980,7 @@ var outputTables = {
             },
             "10089": {
                 "id": 10089,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪90",
                 "atk": 2360,
                 "hp": 4610,
                 "dodge_rate": 5,
@@ -36773,7 +36988,7 @@ var outputTables = {
             },
             "10090": {
                 "id": 10090,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪91",
                 "atk": 2390,
                 "hp": 4660,
                 "dodge_rate": 5,
@@ -36781,7 +36996,7 @@ var outputTables = {
             },
             "10091": {
                 "id": 10091,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪92",
                 "atk": 2420,
                 "hp": 4710,
                 "dodge_rate": 5,
@@ -36789,7 +37004,7 @@ var outputTables = {
             },
             "10092": {
                 "id": 10092,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪93",
                 "atk": 2450,
                 "hp": 4760,
                 "dodge_rate": 5,
@@ -36797,7 +37012,7 @@ var outputTables = {
             },
             "10093": {
                 "id": 10093,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪94",
                 "atk": 2480,
                 "hp": 4810,
                 "dodge_rate": 5,
@@ -36805,7 +37020,7 @@ var outputTables = {
             },
             "10094": {
                 "id": 10094,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪95",
                 "atk": 2510,
                 "hp": 4860,
                 "dodge_rate": 5,
@@ -36813,7 +37028,7 @@ var outputTables = {
             },
             "10095": {
                 "id": 10095,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪96",
                 "atk": 2540,
                 "hp": 4910,
                 "dodge_rate": 5,
@@ -36821,7 +37036,7 @@ var outputTables = {
             },
             "10096": {
                 "id": 10096,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪97",
                 "atk": 2570,
                 "hp": 4960,
                 "dodge_rate": 5,
@@ -36829,7 +37044,7 @@ var outputTables = {
             },
             "10097": {
                 "id": 10097,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪98",
                 "atk": 2600,
                 "hp": 5010,
                 "dodge_rate": 5,
@@ -36837,7 +37052,7 @@ var outputTables = {
             },
             "10098": {
                 "id": 10098,
-                "card_id": "自习怪",
+                "card_id": "自习怪99",
                 "atk": 2630,
                 "hp": 5060,
                 "dodge_rate": 5,
@@ -36845,7 +37060,7 @@ var outputTables = {
             },
             "10099": {
                 "id": 10099,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪100",
                 "atk": 2660,
                 "hp": 5110,
                 "dodge_rate": 5,
@@ -36853,7 +37068,7 @@ var outputTables = {
             },
             "10100": {
                 "id": 10100,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔101",
                 "atk": 2690,
                 "hp": 5160,
                 "dodge_rate": 5,
@@ -36861,7 +37076,7 @@ var outputTables = {
             },
             "10101": {
                 "id": 10101,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精102",
                 "atk": 2720,
                 "hp": 5210,
                 "dodge_rate": 5,
@@ -36869,7 +37084,7 @@ var outputTables = {
             },
             "10102": {
                 "id": 10102,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪103",
                 "atk": 2750,
                 "hp": 5260,
                 "dodge_rate": 5,
@@ -36877,7 +37092,7 @@ var outputTables = {
             },
             "10103": {
                 "id": 10103,
-                "card_id": "白骨精",
+                "card_id": "白骨精104",
                 "atk": 2780,
                 "hp": 5310,
                 "dodge_rate": 5,
@@ -36885,7 +37100,7 @@ var outputTables = {
             },
             "10104": {
                 "id": 10104,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪105",
                 "atk": 2810,
                 "hp": 5360,
                 "dodge_rate": 5,
@@ -36893,7 +37108,7 @@ var outputTables = {
             },
             "10105": {
                 "id": 10105,
-                "card_id": "树精",
+                "card_id": "树精106",
                 "atk": 2840,
                 "hp": 5410,
                 "dodge_rate": 5,
@@ -36901,7 +37116,7 @@ var outputTables = {
             },
             "10106": {
                 "id": 10106,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精107",
                 "atk": 2870,
                 "hp": 5460,
                 "dodge_rate": 5,
@@ -36909,7 +37124,7 @@ var outputTables = {
             },
             "10107": {
                 "id": 10107,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精108",
                 "atk": 2900,
                 "hp": 5510,
                 "dodge_rate": 5,
@@ -36917,7 +37132,7 @@ var outputTables = {
             },
             "10108": {
                 "id": 10108,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵109",
                 "atk": 2930,
                 "hp": 5560,
                 "dodge_rate": 5,
@@ -36925,7 +37140,7 @@ var outputTables = {
             },
             "10109": {
                 "id": 10109,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖110",
                 "atk": 2960,
                 "hp": 5610,
                 "dodge_rate": 5,
@@ -36933,7 +37148,7 @@ var outputTables = {
             },
             "10110": {
                 "id": 10110,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖111",
                 "atk": 2990,
                 "hp": 5660,
                 "dodge_rate": 5,
@@ -36941,7 +37156,7 @@ var outputTables = {
             },
             "10111": {
                 "id": 10111,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔112",
                 "atk": 3020,
                 "hp": 5710,
                 "dodge_rate": 5,
@@ -36949,7 +37164,7 @@ var outputTables = {
             },
             "10112": {
                 "id": 10112,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精113",
                 "atk": 3050,
                 "hp": 5760,
                 "dodge_rate": 5,
@@ -36957,7 +37172,7 @@ var outputTables = {
             },
             "10113": {
                 "id": 10113,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪114",
                 "atk": 3080,
                 "hp": 5810,
                 "dodge_rate": 5,
@@ -36965,7 +37180,7 @@ var outputTables = {
             },
             "10114": {
                 "id": 10114,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼115",
                 "atk": 3110,
                 "hp": 5860,
                 "dodge_rate": 5,
@@ -36973,7 +37188,7 @@ var outputTables = {
             },
             "10115": {
                 "id": 10115,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪116",
                 "atk": 3140,
                 "hp": 5910,
                 "dodge_rate": 5,
@@ -36981,7 +37196,7 @@ var outputTables = {
             },
             "10116": {
                 "id": 10116,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪117",
                 "atk": 3170,
                 "hp": 5960,
                 "dodge_rate": 5,
@@ -36989,7 +37204,7 @@ var outputTables = {
             },
             "10117": {
                 "id": 10117,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪118",
                 "atk": 3200,
                 "hp": 6010,
                 "dodge_rate": 5,
@@ -36997,7 +37212,7 @@ var outputTables = {
             },
             "10118": {
                 "id": 10118,
-                "card_id": "河童怪",
+                "card_id": "河童怪119",
                 "atk": 3230,
                 "hp": 6060,
                 "dodge_rate": 5,
@@ -37005,7 +37220,7 @@ var outputTables = {
             },
             "10119": {
                 "id": 10119,
-                "card_id": "独角兽",
+                "card_id": "独角兽120",
                 "atk": 3260,
                 "hp": 6110,
                 "dodge_rate": 5,
@@ -37013,7 +37228,7 @@ var outputTables = {
             },
             "10120": {
                 "id": 10120,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪121",
                 "atk": 3290,
                 "hp": 6160,
                 "dodge_rate": 5,
@@ -37021,7 +37236,7 @@ var outputTables = {
             },
             "10121": {
                 "id": 10121,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王122",
                 "atk": 3320,
                 "hp": 6210,
                 "dodge_rate": 5,
@@ -37029,7 +37244,7 @@ var outputTables = {
             },
             "10122": {
                 "id": 10122,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪123",
                 "atk": 3350,
                 "hp": 6260,
                 "dodge_rate": 5,
@@ -37037,7 +37252,7 @@ var outputTables = {
             },
             "10123": {
                 "id": 10123,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪124",
                 "atk": 3380,
                 "hp": 6310,
                 "dodge_rate": 5,
@@ -37045,7 +37260,7 @@ var outputTables = {
             },
             "10124": {
                 "id": 10124,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪125",
                 "atk": 3410,
                 "hp": 6360,
                 "dodge_rate": 5,
@@ -37053,7 +37268,7 @@ var outputTables = {
             },
             "10125": {
                 "id": 10125,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪126",
                 "atk": 3440,
                 "hp": 6410,
                 "dodge_rate": 5,
@@ -37061,7 +37276,7 @@ var outputTables = {
             },
             "10126": {
                 "id": 10126,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪127",
                 "atk": 3470,
                 "hp": 6460,
                 "dodge_rate": 5,
@@ -37069,7 +37284,7 @@ var outputTables = {
             },
             "10127": {
                 "id": 10127,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪128",
                 "atk": 3500,
                 "hp": 6510,
                 "dodge_rate": 5,
@@ -37077,7 +37292,7 @@ var outputTables = {
             },
             "10128": {
                 "id": 10128,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪129",
                 "atk": 3530,
                 "hp": 6560,
                 "dodge_rate": 5,
@@ -37085,7 +37300,7 @@ var outputTables = {
             },
             "10129": {
                 "id": 10129,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪130",
                 "atk": 3560,
                 "hp": 6610,
                 "dodge_rate": 5,
@@ -37093,7 +37308,7 @@ var outputTables = {
             },
             "10130": {
                 "id": 10130,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪131",
                 "atk": 3590,
                 "hp": 6660,
                 "dodge_rate": 5,
@@ -37101,7 +37316,7 @@ var outputTables = {
             },
             "10131": {
                 "id": 10131,
-                "card_id": "自习怪",
+                "card_id": "自习怪132",
                 "atk": 3620,
                 "hp": 6710,
                 "dodge_rate": 5,
@@ -37109,7 +37324,7 @@ var outputTables = {
             },
             "10132": {
                 "id": 10132,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪133",
                 "atk": 3650,
                 "hp": 6760,
                 "dodge_rate": 5,
@@ -37117,7 +37332,7 @@ var outputTables = {
             },
             "10133": {
                 "id": 10133,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔134",
                 "atk": 3680,
                 "hp": 6810,
                 "dodge_rate": 5,
@@ -37125,7 +37340,7 @@ var outputTables = {
             },
             "10134": {
                 "id": 10134,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精135",
                 "atk": 3710,
                 "hp": 6860,
                 "dodge_rate": 5,
@@ -37133,7 +37348,7 @@ var outputTables = {
             },
             "10135": {
                 "id": 10135,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪136",
                 "atk": 3740,
                 "hp": 6910,
                 "dodge_rate": 5,
@@ -37141,7 +37356,7 @@ var outputTables = {
             },
             "10136": {
                 "id": 10136,
-                "card_id": "白骨精",
+                "card_id": "白骨精137",
                 "atk": 3770,
                 "hp": 6960,
                 "dodge_rate": 5,
@@ -37149,7 +37364,7 @@ var outputTables = {
             },
             "10137": {
                 "id": 10137,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪138",
                 "atk": 3800,
                 "hp": 7010,
                 "dodge_rate": 5,
@@ -37157,7 +37372,7 @@ var outputTables = {
             },
             "10138": {
                 "id": 10138,
-                "card_id": "树精",
+                "card_id": "树精139",
                 "atk": 3830,
                 "hp": 7060,
                 "dodge_rate": 5,
@@ -37165,7 +37380,7 @@ var outputTables = {
             },
             "10139": {
                 "id": 10139,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精140",
                 "atk": 3860,
                 "hp": 7110,
                 "dodge_rate": 5,
@@ -37173,7 +37388,7 @@ var outputTables = {
             },
             "10140": {
                 "id": 10140,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精141",
                 "atk": 3890,
                 "hp": 7160,
                 "dodge_rate": 5,
@@ -37181,7 +37396,7 @@ var outputTables = {
             },
             "10141": {
                 "id": 10141,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵142",
                 "atk": 3920,
                 "hp": 7210,
                 "dodge_rate": 5,
@@ -37189,7 +37404,7 @@ var outputTables = {
             },
             "10142": {
                 "id": 10142,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖143",
                 "atk": 3950,
                 "hp": 7260,
                 "dodge_rate": 5,
@@ -37197,7 +37412,7 @@ var outputTables = {
             },
             "10143": {
                 "id": 10143,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖144",
                 "atk": 3980,
                 "hp": 7310,
                 "dodge_rate": 5,
@@ -37205,7 +37420,7 @@ var outputTables = {
             },
             "10144": {
                 "id": 10144,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔145",
                 "atk": 4010,
                 "hp": 7360,
                 "dodge_rate": 5,
@@ -37213,7 +37428,7 @@ var outputTables = {
             },
             "10145": {
                 "id": 10145,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精146",
                 "atk": 4040,
                 "hp": 7410,
                 "dodge_rate": 5,
@@ -37221,7 +37436,7 @@ var outputTables = {
             },
             "10146": {
                 "id": 10146,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪147",
                 "atk": 4070,
                 "hp": 7460,
                 "dodge_rate": 5,
@@ -37229,7 +37444,7 @@ var outputTables = {
             },
             "10147": {
                 "id": 10147,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼148",
                 "atk": 4100,
                 "hp": 7510,
                 "dodge_rate": 5,
@@ -37237,7 +37452,7 @@ var outputTables = {
             },
             "10148": {
                 "id": 10148,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪149",
                 "atk": 4130,
                 "hp": 7560,
                 "dodge_rate": 5,
@@ -37245,7 +37460,7 @@ var outputTables = {
             },
             "10149": {
                 "id": 10149,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪150",
                 "atk": 4160,
                 "hp": 7610,
                 "dodge_rate": 5,
@@ -37253,7 +37468,7 @@ var outputTables = {
             },
             "10150": {
                 "id": 10150,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪151",
                 "atk": 4190,
                 "hp": 7660,
                 "dodge_rate": 5,
@@ -37261,7 +37476,7 @@ var outputTables = {
             },
             "10151": {
                 "id": 10151,
-                "card_id": "河童怪",
+                "card_id": "河童怪152",
                 "atk": 4220,
                 "hp": 7710,
                 "dodge_rate": 5,
@@ -37269,7 +37484,7 @@ var outputTables = {
             },
             "10152": {
                 "id": 10152,
-                "card_id": "独角兽",
+                "card_id": "独角兽153",
                 "atk": 4250,
                 "hp": 7760,
                 "dodge_rate": 5,
@@ -37277,7 +37492,7 @@ var outputTables = {
             },
             "10153": {
                 "id": 10153,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪154",
                 "atk": 4280,
                 "hp": 7810,
                 "dodge_rate": 5,
@@ -37285,7 +37500,7 @@ var outputTables = {
             },
             "10154": {
                 "id": 10154,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王155",
                 "atk": 4310,
                 "hp": 7860,
                 "dodge_rate": 5,
@@ -37293,7 +37508,7 @@ var outputTables = {
             },
             "10155": {
                 "id": 10155,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪156",
                 "atk": 4340,
                 "hp": 7910,
                 "dodge_rate": 5,
@@ -37301,7 +37516,7 @@ var outputTables = {
             },
             "10156": {
                 "id": 10156,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪157",
                 "atk": 4370,
                 "hp": 7960,
                 "dodge_rate": 5,
@@ -37309,7 +37524,7 @@ var outputTables = {
             },
             "10157": {
                 "id": 10157,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪158",
                 "atk": 4400,
                 "hp": 8010,
                 "dodge_rate": 5,
@@ -37317,7 +37532,7 @@ var outputTables = {
             },
             "10158": {
                 "id": 10158,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪159",
                 "atk": 4430,
                 "hp": 8060,
                 "dodge_rate": 5,
@@ -37325,7 +37540,7 @@ var outputTables = {
             },
             "10159": {
                 "id": 10159,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪160",
                 "atk": 4460,
                 "hp": 8110,
                 "dodge_rate": 5,
@@ -37333,7 +37548,7 @@ var outputTables = {
             },
             "10160": {
                 "id": 10160,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪161",
                 "atk": 4490,
                 "hp": 8160,
                 "dodge_rate": 5,
@@ -37341,7 +37556,7 @@ var outputTables = {
             },
             "10161": {
                 "id": 10161,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪162",
                 "atk": 4520,
                 "hp": 8210,
                 "dodge_rate": 5,
@@ -37349,7 +37564,7 @@ var outputTables = {
             },
             "10162": {
                 "id": 10162,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪163",
                 "atk": 4550,
                 "hp": 8260,
                 "dodge_rate": 5,
@@ -37357,7 +37572,7 @@ var outputTables = {
             },
             "10163": {
                 "id": 10163,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪164",
                 "atk": 4580,
                 "hp": 8310,
                 "dodge_rate": 5,
@@ -37365,7 +37580,7 @@ var outputTables = {
             },
             "10164": {
                 "id": 10164,
-                "card_id": "自习怪",
+                "card_id": "自习怪165",
                 "atk": 4610,
                 "hp": 8360,
                 "dodge_rate": 5,
@@ -37373,7 +37588,7 @@ var outputTables = {
             },
             "10165": {
                 "id": 10165,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪166",
                 "atk": 4640,
                 "hp": 8410,
                 "dodge_rate": 5,
@@ -37381,7 +37596,7 @@ var outputTables = {
             },
             "10166": {
                 "id": 10166,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔167",
                 "atk": 4670,
                 "hp": 8460,
                 "dodge_rate": 5,
@@ -37389,7 +37604,7 @@ var outputTables = {
             },
             "10167": {
                 "id": 10167,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精168",
                 "atk": 4700,
                 "hp": 8510,
                 "dodge_rate": 5,
@@ -37397,7 +37612,7 @@ var outputTables = {
             },
             "10168": {
                 "id": 10168,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪169",
                 "atk": 4730,
                 "hp": 8560,
                 "dodge_rate": 5,
@@ -37405,7 +37620,7 @@ var outputTables = {
             },
             "10169": {
                 "id": 10169,
-                "card_id": "白骨精",
+                "card_id": "白骨精170",
                 "atk": 4760,
                 "hp": 8610,
                 "dodge_rate": 5,
@@ -37413,7 +37628,7 @@ var outputTables = {
             },
             "10170": {
                 "id": 10170,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪171",
                 "atk": 4790,
                 "hp": 8660,
                 "dodge_rate": 5,
@@ -37421,7 +37636,7 @@ var outputTables = {
             },
             "10171": {
                 "id": 10171,
-                "card_id": "树精",
+                "card_id": "树精172",
                 "atk": 4820,
                 "hp": 8710,
                 "dodge_rate": 5,
@@ -37429,7 +37644,7 @@ var outputTables = {
             },
             "10172": {
                 "id": 10172,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精173",
                 "atk": 4850,
                 "hp": 8760,
                 "dodge_rate": 5,
@@ -37437,7 +37652,7 @@ var outputTables = {
             },
             "10173": {
                 "id": 10173,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精174",
                 "atk": 4880,
                 "hp": 8810,
                 "dodge_rate": 5,
@@ -37445,7 +37660,7 @@ var outputTables = {
             },
             "10174": {
                 "id": 10174,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵175",
                 "atk": 4910,
                 "hp": 8860,
                 "dodge_rate": 5,
@@ -37453,7 +37668,7 @@ var outputTables = {
             },
             "10175": {
                 "id": 10175,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖176",
                 "atk": 4940,
                 "hp": 8910,
                 "dodge_rate": 5,
@@ -37461,7 +37676,7 @@ var outputTables = {
             },
             "10176": {
                 "id": 10176,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖177",
                 "atk": 4970,
                 "hp": 8960,
                 "dodge_rate": 5,
@@ -37469,7 +37684,7 @@ var outputTables = {
             },
             "10177": {
                 "id": 10177,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔178",
                 "atk": 5000,
                 "hp": 9010,
                 "dodge_rate": 5,
@@ -37477,7 +37692,7 @@ var outputTables = {
             },
             "10178": {
                 "id": 10178,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精179",
                 "atk": 5030,
                 "hp": 9060,
                 "dodge_rate": 5,
@@ -37485,7 +37700,7 @@ var outputTables = {
             },
             "10179": {
                 "id": 10179,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪180",
                 "atk": 5060,
                 "hp": 9110,
                 "dodge_rate": 5,
@@ -37493,7 +37708,7 @@ var outputTables = {
             },
             "10180": {
                 "id": 10180,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼181",
                 "atk": 5090,
                 "hp": 9160,
                 "dodge_rate": 5,
@@ -37501,7 +37716,7 @@ var outputTables = {
             },
             "10181": {
                 "id": 10181,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪182",
                 "atk": 5120,
                 "hp": 9210,
                 "dodge_rate": 5,
@@ -37509,7 +37724,7 @@ var outputTables = {
             },
             "10182": {
                 "id": 10182,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪183",
                 "atk": 5150,
                 "hp": 9260,
                 "dodge_rate": 5,
@@ -37517,7 +37732,7 @@ var outputTables = {
             },
             "10183": {
                 "id": 10183,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪184",
                 "atk": 5180,
                 "hp": 9310,
                 "dodge_rate": 5,
@@ -37525,7 +37740,7 @@ var outputTables = {
             },
             "10184": {
                 "id": 10184,
-                "card_id": "河童怪",
+                "card_id": "河童怪185",
                 "atk": 5210,
                 "hp": 9360,
                 "dodge_rate": 5,
@@ -37533,7 +37748,7 @@ var outputTables = {
             },
             "10185": {
                 "id": 10185,
-                "card_id": "独角兽",
+                "card_id": "独角兽186",
                 "atk": 5240,
                 "hp": 9410,
                 "dodge_rate": 5,
@@ -37541,7 +37756,7 @@ var outputTables = {
             },
             "10186": {
                 "id": 10186,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪187",
                 "atk": 5270,
                 "hp": 9460,
                 "dodge_rate": 5,
@@ -37549,7 +37764,7 @@ var outputTables = {
             },
             "10187": {
                 "id": 10187,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王188",
                 "atk": 5300,
                 "hp": 9510,
                 "dodge_rate": 5,
@@ -37557,7 +37772,7 @@ var outputTables = {
             },
             "10188": {
                 "id": 10188,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪189",
                 "atk": 5330,
                 "hp": 9560,
                 "dodge_rate": 5,
@@ -37565,7 +37780,7 @@ var outputTables = {
             },
             "10189": {
                 "id": 10189,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪190",
                 "atk": 5360,
                 "hp": 9610,
                 "dodge_rate": 5,
@@ -37573,7 +37788,7 @@ var outputTables = {
             },
             "10190": {
                 "id": 10190,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪191",
                 "atk": 5390,
                 "hp": 9660,
                 "dodge_rate": 5,
@@ -37581,7 +37796,7 @@ var outputTables = {
             },
             "10191": {
                 "id": 10191,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪192",
                 "atk": 5420,
                 "hp": 9710,
                 "dodge_rate": 5,
@@ -37589,7 +37804,7 @@ var outputTables = {
             },
             "10192": {
                 "id": 10192,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪193",
                 "atk": 5450,
                 "hp": 9760,
                 "dodge_rate": 5,
@@ -37597,7 +37812,7 @@ var outputTables = {
             },
             "10193": {
                 "id": 10193,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪194",
                 "atk": 5480,
                 "hp": 9810,
                 "dodge_rate": 5,
@@ -37605,7 +37820,7 @@ var outputTables = {
             },
             "10194": {
                 "id": 10194,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪195",
                 "atk": 5510,
                 "hp": 9860,
                 "dodge_rate": 5,
@@ -37613,7 +37828,7 @@ var outputTables = {
             },
             "10195": {
                 "id": 10195,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪196",
                 "atk": 5540,
                 "hp": 9910,
                 "dodge_rate": 5,
@@ -37621,7 +37836,7 @@ var outputTables = {
             },
             "10196": {
                 "id": 10196,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪197",
                 "atk": 5570,
                 "hp": 9960,
                 "dodge_rate": 5,
@@ -37629,7 +37844,7 @@ var outputTables = {
             },
             "10197": {
                 "id": 10197,
-                "card_id": "自习怪",
+                "card_id": "自习怪198",
                 "atk": 5600,
                 "hp": 10010,
                 "dodge_rate": 5,
@@ -37637,7 +37852,7 @@ var outputTables = {
             },
             "10198": {
                 "id": 10198,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪199",
                 "atk": 5630,
                 "hp": 10060,
                 "dodge_rate": 5,
@@ -37645,7 +37860,7 @@ var outputTables = {
             },
             "10199": {
                 "id": 10199,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔200",
                 "atk": 5660,
                 "hp": 10110,
                 "dodge_rate": 5,
@@ -37653,7 +37868,7 @@ var outputTables = {
             },
             "10200": {
                 "id": 10200,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精201",
                 "atk": 5690,
                 "hp": 10160,
                 "dodge_rate": 5,
@@ -37661,7 +37876,7 @@ var outputTables = {
             },
             "10201": {
                 "id": 10201,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪202",
                 "atk": 5720,
                 "hp": 10210,
                 "dodge_rate": 5,
@@ -37669,7 +37884,7 @@ var outputTables = {
             },
             "10202": {
                 "id": 10202,
-                "card_id": "白骨精",
+                "card_id": "白骨精203",
                 "atk": 5750,
                 "hp": 10260,
                 "dodge_rate": 5,
@@ -37677,7 +37892,7 @@ var outputTables = {
             },
             "10203": {
                 "id": 10203,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪204",
                 "atk": 5780,
                 "hp": 10310,
                 "dodge_rate": 5,
@@ -37685,7 +37900,7 @@ var outputTables = {
             },
             "10204": {
                 "id": 10204,
-                "card_id": "树精",
+                "card_id": "树精205",
                 "atk": 5810,
                 "hp": 10360,
                 "dodge_rate": 5,
@@ -37693,7 +37908,7 @@ var outputTables = {
             },
             "10205": {
                 "id": 10205,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精206",
                 "atk": 5840,
                 "hp": 10410,
                 "dodge_rate": 5,
@@ -37701,7 +37916,7 @@ var outputTables = {
             },
             "10206": {
                 "id": 10206,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精207",
                 "atk": 5870,
                 "hp": 10460,
                 "dodge_rate": 5,
@@ -37709,7 +37924,7 @@ var outputTables = {
             },
             "10207": {
                 "id": 10207,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵208",
                 "atk": 5900,
                 "hp": 10510,
                 "dodge_rate": 5,
@@ -37717,7 +37932,7 @@ var outputTables = {
             },
             "10208": {
                 "id": 10208,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖209",
                 "atk": 5930,
                 "hp": 10560,
                 "dodge_rate": 5,
@@ -37725,7 +37940,7 @@ var outputTables = {
             },
             "10209": {
                 "id": 10209,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖210",
                 "atk": 5960,
                 "hp": 10610,
                 "dodge_rate": 5,
@@ -37733,7 +37948,7 @@ var outputTables = {
             },
             "10210": {
                 "id": 10210,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔211",
                 "atk": 5990,
                 "hp": 10660,
                 "dodge_rate": 5,
@@ -37741,7 +37956,7 @@ var outputTables = {
             },
             "10211": {
                 "id": 10211,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精212",
                 "atk": 6020,
                 "hp": 10710,
                 "dodge_rate": 5,
@@ -37749,7 +37964,7 @@ var outputTables = {
             },
             "10212": {
                 "id": 10212,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪213",
                 "atk": 6050,
                 "hp": 10760,
                 "dodge_rate": 5,
@@ -37757,7 +37972,7 @@ var outputTables = {
             },
             "10213": {
                 "id": 10213,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼214",
                 "atk": 6080,
                 "hp": 10810,
                 "dodge_rate": 5,
@@ -37765,7 +37980,7 @@ var outputTables = {
             },
             "10214": {
                 "id": 10214,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪215",
                 "atk": 6110,
                 "hp": 10860,
                 "dodge_rate": 5,
@@ -37773,7 +37988,7 @@ var outputTables = {
             },
             "10215": {
                 "id": 10215,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪216",
                 "atk": 6140,
                 "hp": 10910,
                 "dodge_rate": 5,
@@ -37781,7 +37996,7 @@ var outputTables = {
             },
             "10216": {
                 "id": 10216,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪217",
                 "atk": 6170,
                 "hp": 10960,
                 "dodge_rate": 5,
@@ -37789,7 +38004,7 @@ var outputTables = {
             },
             "10217": {
                 "id": 10217,
-                "card_id": "河童怪",
+                "card_id": "河童怪218",
                 "atk": 6200,
                 "hp": 11010,
                 "dodge_rate": 5,
@@ -37797,7 +38012,7 @@ var outputTables = {
             },
             "10218": {
                 "id": 10218,
-                "card_id": "独角兽",
+                "card_id": "独角兽219",
                 "atk": 6230,
                 "hp": 11060,
                 "dodge_rate": 5,
@@ -37805,7 +38020,7 @@ var outputTables = {
             },
             "10219": {
                 "id": 10219,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪220",
                 "atk": 6260,
                 "hp": 11110,
                 "dodge_rate": 5,
@@ -37813,7 +38028,7 @@ var outputTables = {
             },
             "10220": {
                 "id": 10220,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王221",
                 "atk": 6290,
                 "hp": 11160,
                 "dodge_rate": 5,
@@ -37821,7 +38036,7 @@ var outputTables = {
             },
             "10221": {
                 "id": 10221,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪222",
                 "atk": 6320,
                 "hp": 11210,
                 "dodge_rate": 5,
@@ -37829,7 +38044,7 @@ var outputTables = {
             },
             "10222": {
                 "id": 10222,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪223",
                 "atk": 6350,
                 "hp": 11260,
                 "dodge_rate": 5,
@@ -37837,7 +38052,7 @@ var outputTables = {
             },
             "10223": {
                 "id": 10223,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪224",
                 "atk": 6380,
                 "hp": 11310,
                 "dodge_rate": 5,
@@ -37845,7 +38060,7 @@ var outputTables = {
             },
             "10224": {
                 "id": 10224,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪225",
                 "atk": 6410,
                 "hp": 11360,
                 "dodge_rate": 5,
@@ -37853,7 +38068,7 @@ var outputTables = {
             },
             "10225": {
                 "id": 10225,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪226",
                 "atk": 6440,
                 "hp": 11410,
                 "dodge_rate": 5,
@@ -37861,7 +38076,7 @@ var outputTables = {
             },
             "10226": {
                 "id": 10226,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪227",
                 "atk": 6470,
                 "hp": 11460,
                 "dodge_rate": 5,
@@ -37869,7 +38084,7 @@ var outputTables = {
             },
             "10227": {
                 "id": 10227,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪228",
                 "atk": 6500,
                 "hp": 11510,
                 "dodge_rate": 5,
@@ -37877,7 +38092,7 @@ var outputTables = {
             },
             "10228": {
                 "id": 10228,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪229",
                 "atk": 6530,
                 "hp": 11560,
                 "dodge_rate": 5,
@@ -37885,7 +38100,7 @@ var outputTables = {
             },
             "10229": {
                 "id": 10229,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪230",
                 "atk": 6560,
                 "hp": 11610,
                 "dodge_rate": 5,
@@ -37893,7 +38108,7 @@ var outputTables = {
             },
             "10230": {
                 "id": 10230,
-                "card_id": "自习怪",
+                "card_id": "自习怪231",
                 "atk": 6590,
                 "hp": 11660,
                 "dodge_rate": 5,
@@ -37901,7 +38116,7 @@ var outputTables = {
             },
             "10231": {
                 "id": 10231,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪232",
                 "atk": 6620,
                 "hp": 11710,
                 "dodge_rate": 5,
@@ -37909,7 +38124,7 @@ var outputTables = {
             },
             "10232": {
                 "id": 10232,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔233",
                 "atk": 6650,
                 "hp": 11760,
                 "dodge_rate": 5,
@@ -37917,7 +38132,7 @@ var outputTables = {
             },
             "10233": {
                 "id": 10233,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精234",
                 "atk": 6680,
                 "hp": 11810,
                 "dodge_rate": 5,
@@ -37925,7 +38140,7 @@ var outputTables = {
             },
             "10234": {
                 "id": 10234,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪235",
                 "atk": 6710,
                 "hp": 11860,
                 "dodge_rate": 5,
@@ -37933,7 +38148,7 @@ var outputTables = {
             },
             "10235": {
                 "id": 10235,
-                "card_id": "白骨精",
+                "card_id": "白骨精236",
                 "atk": 6740,
                 "hp": 11910,
                 "dodge_rate": 5,
@@ -37941,7 +38156,7 @@ var outputTables = {
             },
             "10236": {
                 "id": 10236,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪237",
                 "atk": 6770,
                 "hp": 11960,
                 "dodge_rate": 5,
@@ -37949,7 +38164,7 @@ var outputTables = {
             },
             "10237": {
                 "id": 10237,
-                "card_id": "树精",
+                "card_id": "树精238",
                 "atk": 6800,
                 "hp": 12010,
                 "dodge_rate": 5,
@@ -37957,7 +38172,7 @@ var outputTables = {
             },
             "10238": {
                 "id": 10238,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精239",
                 "atk": 6830,
                 "hp": 12060,
                 "dodge_rate": 5,
@@ -37965,7 +38180,7 @@ var outputTables = {
             },
             "10239": {
                 "id": 10239,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精240",
                 "atk": 6860,
                 "hp": 12110,
                 "dodge_rate": 5,
@@ -37973,7 +38188,7 @@ var outputTables = {
             },
             "10240": {
                 "id": 10240,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵241",
                 "atk": 6890,
                 "hp": 12160,
                 "dodge_rate": 5,
@@ -37981,7 +38196,7 @@ var outputTables = {
             },
             "10241": {
                 "id": 10241,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖242",
                 "atk": 6920,
                 "hp": 12210,
                 "dodge_rate": 5,
@@ -37989,7 +38204,7 @@ var outputTables = {
             },
             "10242": {
                 "id": 10242,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖243",
                 "atk": 6950,
                 "hp": 12260,
                 "dodge_rate": 5,
@@ -37997,7 +38212,7 @@ var outputTables = {
             },
             "10243": {
                 "id": 10243,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔244",
                 "atk": 6980,
                 "hp": 12310,
                 "dodge_rate": 5,
@@ -38005,7 +38220,7 @@ var outputTables = {
             },
             "10244": {
                 "id": 10244,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精245",
                 "atk": 7010,
                 "hp": 12360,
                 "dodge_rate": 5,
@@ -38013,7 +38228,7 @@ var outputTables = {
             },
             "10245": {
                 "id": 10245,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪246",
                 "atk": 7040,
                 "hp": 12410,
                 "dodge_rate": 5,
@@ -38021,7 +38236,7 @@ var outputTables = {
             },
             "10246": {
                 "id": 10246,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼247",
                 "atk": 7070,
                 "hp": 12460,
                 "dodge_rate": 5,
@@ -38029,7 +38244,7 @@ var outputTables = {
             },
             "10247": {
                 "id": 10247,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪248",
                 "atk": 7100,
                 "hp": 12510,
                 "dodge_rate": 5,
@@ -38037,7 +38252,7 @@ var outputTables = {
             },
             "10248": {
                 "id": 10248,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪249",
                 "atk": 7130,
                 "hp": 12560,
                 "dodge_rate": 5,
@@ -38045,7 +38260,7 @@ var outputTables = {
             },
             "10249": {
                 "id": 10249,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪250",
                 "atk": 7160,
                 "hp": 12610,
                 "dodge_rate": 5,
@@ -38053,7 +38268,7 @@ var outputTables = {
             },
             "10250": {
                 "id": 10250,
-                "card_id": "河童怪",
+                "card_id": "河童怪251",
                 "atk": 7190,
                 "hp": 12660,
                 "dodge_rate": 5,
@@ -38061,7 +38276,7 @@ var outputTables = {
             },
             "10251": {
                 "id": 10251,
-                "card_id": "独角兽",
+                "card_id": "独角兽252",
                 "atk": 7220,
                 "hp": 12710,
                 "dodge_rate": 5,
@@ -38069,7 +38284,7 @@ var outputTables = {
             },
             "10252": {
                 "id": 10252,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪253",
                 "atk": 7250,
                 "hp": 12760,
                 "dodge_rate": 5,
@@ -38077,7 +38292,7 @@ var outputTables = {
             },
             "10253": {
                 "id": 10253,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王254",
                 "atk": 7280,
                 "hp": 12810,
                 "dodge_rate": 5,
@@ -38085,7 +38300,7 @@ var outputTables = {
             },
             "10254": {
                 "id": 10254,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪255",
                 "atk": 7310,
                 "hp": 12860,
                 "dodge_rate": 5,
@@ -38093,7 +38308,7 @@ var outputTables = {
             },
             "10255": {
                 "id": 10255,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪256",
                 "atk": 7340,
                 "hp": 12910,
                 "dodge_rate": 5,
@@ -38101,7 +38316,7 @@ var outputTables = {
             },
             "10256": {
                 "id": 10256,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪257",
                 "atk": 7370,
                 "hp": 12960,
                 "dodge_rate": 5,
@@ -38109,7 +38324,7 @@ var outputTables = {
             },
             "10257": {
                 "id": 10257,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪258",
                 "atk": 7400,
                 "hp": 13010,
                 "dodge_rate": 5,
@@ -38117,7 +38332,7 @@ var outputTables = {
             },
             "10258": {
                 "id": 10258,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪259",
                 "atk": 7430,
                 "hp": 13060,
                 "dodge_rate": 5,
@@ -38125,7 +38340,7 @@ var outputTables = {
             },
             "10259": {
                 "id": 10259,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪260",
                 "atk": 7460,
                 "hp": 13110,
                 "dodge_rate": 5,
@@ -38133,7 +38348,7 @@ var outputTables = {
             },
             "10260": {
                 "id": 10260,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪261",
                 "atk": 7490,
                 "hp": 13160,
                 "dodge_rate": 5,
@@ -38141,7 +38356,7 @@ var outputTables = {
             },
             "10261": {
                 "id": 10261,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪262",
                 "atk": 7520,
                 "hp": 13210,
                 "dodge_rate": 5,
@@ -38149,7 +38364,7 @@ var outputTables = {
             },
             "10262": {
                 "id": 10262,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪263",
                 "atk": 7550,
                 "hp": 13260,
                 "dodge_rate": 5,
@@ -38157,7 +38372,7 @@ var outputTables = {
             },
             "10263": {
                 "id": 10263,
-                "card_id": "自习怪",
+                "card_id": "自习怪264",
                 "atk": 7580,
                 "hp": 13310,
                 "dodge_rate": 5,
@@ -38165,7 +38380,7 @@ var outputTables = {
             },
             "10264": {
                 "id": 10264,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪265",
                 "atk": 7610,
                 "hp": 13360,
                 "dodge_rate": 5,
@@ -38173,7 +38388,7 @@ var outputTables = {
             },
             "10265": {
                 "id": 10265,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔266",
                 "atk": 7640,
                 "hp": 13410,
                 "dodge_rate": 5,
@@ -38181,7 +38396,7 @@ var outputTables = {
             },
             "10266": {
                 "id": 10266,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精267",
                 "atk": 7670,
                 "hp": 13460,
                 "dodge_rate": 5,
@@ -38189,7 +38404,7 @@ var outputTables = {
             },
             "10267": {
                 "id": 10267,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪268",
                 "atk": 7700,
                 "hp": 13510,
                 "dodge_rate": 5,
@@ -38197,7 +38412,7 @@ var outputTables = {
             },
             "10268": {
                 "id": 10268,
-                "card_id": "白骨精",
+                "card_id": "白骨精269",
                 "atk": 7730,
                 "hp": 13560,
                 "dodge_rate": 5,
@@ -38205,7 +38420,7 @@ var outputTables = {
             },
             "10269": {
                 "id": 10269,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪270",
                 "atk": 7760,
                 "hp": 13610,
                 "dodge_rate": 5,
@@ -38213,7 +38428,7 @@ var outputTables = {
             },
             "10270": {
                 "id": 10270,
-                "card_id": "树精",
+                "card_id": "树精271",
                 "atk": 7790,
                 "hp": 13660,
                 "dodge_rate": 5,
@@ -38221,7 +38436,7 @@ var outputTables = {
             },
             "10271": {
                 "id": 10271,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精272",
                 "atk": 7820,
                 "hp": 13710,
                 "dodge_rate": 5,
@@ -38229,7 +38444,7 @@ var outputTables = {
             },
             "10272": {
                 "id": 10272,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精273",
                 "atk": 7850,
                 "hp": 13760,
                 "dodge_rate": 5,
@@ -38237,7 +38452,7 @@ var outputTables = {
             },
             "10273": {
                 "id": 10273,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵274",
                 "atk": 7880,
                 "hp": 13810,
                 "dodge_rate": 5,
@@ -38245,7 +38460,7 @@ var outputTables = {
             },
             "10274": {
                 "id": 10274,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖275",
                 "atk": 7910,
                 "hp": 13860,
                 "dodge_rate": 5,
@@ -38253,7 +38468,7 @@ var outputTables = {
             },
             "10275": {
                 "id": 10275,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖276",
                 "atk": 7940,
                 "hp": 13910,
                 "dodge_rate": 5,
@@ -38261,7 +38476,7 @@ var outputTables = {
             },
             "10276": {
                 "id": 10276,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔277",
                 "atk": 7970,
                 "hp": 13960,
                 "dodge_rate": 5,
@@ -38269,7 +38484,7 @@ var outputTables = {
             },
             "10277": {
                 "id": 10277,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精278",
                 "atk": 8000,
                 "hp": 14010,
                 "dodge_rate": 5,
@@ -38277,7 +38492,7 @@ var outputTables = {
             },
             "10278": {
                 "id": 10278,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪279",
                 "atk": 8030,
                 "hp": 14060,
                 "dodge_rate": 5,
@@ -38285,7 +38500,7 @@ var outputTables = {
             },
             "10279": {
                 "id": 10279,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼280",
                 "atk": 8060,
                 "hp": 14110,
                 "dodge_rate": 5,
@@ -38293,7 +38508,7 @@ var outputTables = {
             },
             "10280": {
                 "id": 10280,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪281",
                 "atk": 8090,
                 "hp": 14160,
                 "dodge_rate": 5,
@@ -38301,7 +38516,7 @@ var outputTables = {
             },
             "10281": {
                 "id": 10281,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪282",
                 "atk": 8120,
                 "hp": 14210,
                 "dodge_rate": 5,
@@ -38309,7 +38524,7 @@ var outputTables = {
             },
             "10282": {
                 "id": 10282,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪283",
                 "atk": 8150,
                 "hp": 14260,
                 "dodge_rate": 5,
@@ -38317,7 +38532,7 @@ var outputTables = {
             },
             "10283": {
                 "id": 10283,
-                "card_id": "河童怪",
+                "card_id": "河童怪284",
                 "atk": 8180,
                 "hp": 14310,
                 "dodge_rate": 5,
@@ -38325,7 +38540,7 @@ var outputTables = {
             },
             "10284": {
                 "id": 10284,
-                "card_id": "独角兽",
+                "card_id": "独角兽285",
                 "atk": 8210,
                 "hp": 14360,
                 "dodge_rate": 5,
@@ -38333,7 +38548,7 @@ var outputTables = {
             },
             "10285": {
                 "id": 10285,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪286",
                 "atk": 8240,
                 "hp": 14410,
                 "dodge_rate": 5,
@@ -38341,7 +38556,7 @@ var outputTables = {
             },
             "10286": {
                 "id": 10286,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王287",
                 "atk": 8270,
                 "hp": 14460,
                 "dodge_rate": 5,
@@ -38349,7 +38564,7 @@ var outputTables = {
             },
             "10287": {
                 "id": 10287,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪288",
                 "atk": 8300,
                 "hp": 14510,
                 "dodge_rate": 5,
@@ -38357,7 +38572,7 @@ var outputTables = {
             },
             "10288": {
                 "id": 10288,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪289",
                 "atk": 8330,
                 "hp": 14560,
                 "dodge_rate": 5,
@@ -38365,7 +38580,7 @@ var outputTables = {
             },
             "10289": {
                 "id": 10289,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪290",
                 "atk": 8360,
                 "hp": 14610,
                 "dodge_rate": 5,
@@ -38373,7 +38588,7 @@ var outputTables = {
             },
             "10290": {
                 "id": 10290,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪291",
                 "atk": 8390,
                 "hp": 14660,
                 "dodge_rate": 5,
@@ -38381,7 +38596,7 @@ var outputTables = {
             },
             "10291": {
                 "id": 10291,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪292",
                 "atk": 8420,
                 "hp": 14710,
                 "dodge_rate": 5,
@@ -38389,7 +38604,7 @@ var outputTables = {
             },
             "10292": {
                 "id": 10292,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪293",
                 "atk": 8450,
                 "hp": 14760,
                 "dodge_rate": 5,
@@ -38397,7 +38612,7 @@ var outputTables = {
             },
             "10293": {
                 "id": 10293,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪294",
                 "atk": 8480,
                 "hp": 14810,
                 "dodge_rate": 5,
@@ -38405,7 +38620,7 @@ var outputTables = {
             },
             "10294": {
                 "id": 10294,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪295",
                 "atk": 8510,
                 "hp": 14860,
                 "dodge_rate": 5,
@@ -38413,7 +38628,7 @@ var outputTables = {
             },
             "10295": {
                 "id": 10295,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪296",
                 "atk": 8540,
                 "hp": 14910,
                 "dodge_rate": 5,
@@ -38421,7 +38636,7 @@ var outputTables = {
             },
             "10296": {
                 "id": 10296,
-                "card_id": "自习怪",
+                "card_id": "自习怪297",
                 "atk": 8570,
                 "hp": 14960,
                 "dodge_rate": 5,
@@ -38429,7 +38644,7 @@ var outputTables = {
             },
             "10297": {
                 "id": 10297,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪298",
                 "atk": 8600,
                 "hp": 15010,
                 "dodge_rate": 5,
@@ -38437,7 +38652,7 @@ var outputTables = {
             },
             "10298": {
                 "id": 10298,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔299",
                 "atk": 8630,
                 "hp": 15060,
                 "dodge_rate": 5,
@@ -38445,7 +38660,7 @@ var outputTables = {
             },
             "10299": {
                 "id": 10299,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精300",
                 "atk": 8660,
                 "hp": 15110,
                 "dodge_rate": 5,
@@ -38453,7 +38668,7 @@ var outputTables = {
             },
             "10300": {
                 "id": 10300,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪301",
                 "atk": 8690,
                 "hp": 15160,
                 "dodge_rate": 5,
@@ -38461,7 +38676,7 @@ var outputTables = {
             },
             "10301": {
                 "id": 10301,
-                "card_id": "白骨精",
+                "card_id": "白骨精302",
                 "atk": 8720,
                 "hp": 15210,
                 "dodge_rate": 5,
@@ -38469,7 +38684,7 @@ var outputTables = {
             },
             "10302": {
                 "id": 10302,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪303",
                 "atk": 8750,
                 "hp": 15260,
                 "dodge_rate": 5,
@@ -38477,7 +38692,7 @@ var outputTables = {
             },
             "10303": {
                 "id": 10303,
-                "card_id": "树精",
+                "card_id": "树精304",
                 "atk": 8780,
                 "hp": 15310,
                 "dodge_rate": 5,
@@ -38485,7 +38700,7 @@ var outputTables = {
             },
             "10304": {
                 "id": 10304,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精305",
                 "atk": 8810,
                 "hp": 15360,
                 "dodge_rate": 5,
@@ -38493,7 +38708,7 @@ var outputTables = {
             },
             "10305": {
                 "id": 10305,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精306",
                 "atk": 8840,
                 "hp": 15410,
                 "dodge_rate": 5,
@@ -38501,7 +38716,7 @@ var outputTables = {
             },
             "10306": {
                 "id": 10306,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵307",
                 "atk": 8870,
                 "hp": 15460,
                 "dodge_rate": 5,
@@ -38509,7 +38724,7 @@ var outputTables = {
             },
             "10307": {
                 "id": 10307,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖308",
                 "atk": 8900,
                 "hp": 15510,
                 "dodge_rate": 5,
@@ -38517,7 +38732,7 @@ var outputTables = {
             },
             "10308": {
                 "id": 10308,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖309",
                 "atk": 8930,
                 "hp": 15560,
                 "dodge_rate": 5,
@@ -38525,7 +38740,7 @@ var outputTables = {
             },
             "10309": {
                 "id": 10309,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔310",
                 "atk": 8960,
                 "hp": 15610,
                 "dodge_rate": 5,
@@ -38533,7 +38748,7 @@ var outputTables = {
             },
             "10310": {
                 "id": 10310,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精311",
                 "atk": 8990,
                 "hp": 15660,
                 "dodge_rate": 5,
@@ -38541,7 +38756,7 @@ var outputTables = {
             },
             "10311": {
                 "id": 10311,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪312",
                 "atk": 9020,
                 "hp": 15710,
                 "dodge_rate": 5,
@@ -38549,7 +38764,7 @@ var outputTables = {
             },
             "10312": {
                 "id": 10312,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼313",
                 "atk": 9050,
                 "hp": 15760,
                 "dodge_rate": 5,
@@ -38557,7 +38772,7 @@ var outputTables = {
             },
             "10313": {
                 "id": 10313,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪314",
                 "atk": 9080,
                 "hp": 15810,
                 "dodge_rate": 5,
@@ -38565,7 +38780,7 @@ var outputTables = {
             },
             "10314": {
                 "id": 10314,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪315",
                 "atk": 9110,
                 "hp": 15860,
                 "dodge_rate": 5,
@@ -38573,7 +38788,7 @@ var outputTables = {
             },
             "10315": {
                 "id": 10315,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪316",
                 "atk": 9140,
                 "hp": 15910,
                 "dodge_rate": 5,
@@ -38581,7 +38796,7 @@ var outputTables = {
             },
             "10316": {
                 "id": 10316,
-                "card_id": "河童怪",
+                "card_id": "河童怪317",
                 "atk": 9170,
                 "hp": 15960,
                 "dodge_rate": 5,
@@ -38589,7 +38804,7 @@ var outputTables = {
             },
             "10317": {
                 "id": 10317,
-                "card_id": "独角兽",
+                "card_id": "独角兽318",
                 "atk": 9200,
                 "hp": 16010,
                 "dodge_rate": 5,
@@ -38597,7 +38812,7 @@ var outputTables = {
             },
             "10318": {
                 "id": 10318,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪319",
                 "atk": 9230,
                 "hp": 16060,
                 "dodge_rate": 5,
@@ -38605,7 +38820,7 @@ var outputTables = {
             },
             "10319": {
                 "id": 10319,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王320",
                 "atk": 9260,
                 "hp": 16110,
                 "dodge_rate": 5,
@@ -38613,7 +38828,7 @@ var outputTables = {
             },
             "10320": {
                 "id": 10320,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪321",
                 "atk": 9290,
                 "hp": 16160,
                 "dodge_rate": 5,
@@ -38621,7 +38836,7 @@ var outputTables = {
             },
             "10321": {
                 "id": 10321,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪322",
                 "atk": 9320,
                 "hp": 16210,
                 "dodge_rate": 5,
@@ -38629,7 +38844,7 @@ var outputTables = {
             },
             "10322": {
                 "id": 10322,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪323",
                 "atk": 9350,
                 "hp": 16260,
                 "dodge_rate": 5,
@@ -38637,7 +38852,7 @@ var outputTables = {
             },
             "10323": {
                 "id": 10323,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪324",
                 "atk": 9380,
                 "hp": 16310,
                 "dodge_rate": 5,
@@ -38645,7 +38860,7 @@ var outputTables = {
             },
             "10324": {
                 "id": 10324,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪325",
                 "atk": 9410,
                 "hp": 16360,
                 "dodge_rate": 5,
@@ -38653,7 +38868,7 @@ var outputTables = {
             },
             "10325": {
                 "id": 10325,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪326",
                 "atk": 9440,
                 "hp": 16410,
                 "dodge_rate": 5,
@@ -38661,7 +38876,7 @@ var outputTables = {
             },
             "10326": {
                 "id": 10326,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪327",
                 "atk": 9470,
                 "hp": 16460,
                 "dodge_rate": 5,
@@ -38669,7 +38884,7 @@ var outputTables = {
             },
             "10327": {
                 "id": 10327,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪328",
                 "atk": 9500,
                 "hp": 16510,
                 "dodge_rate": 5,
@@ -38677,7 +38892,7 @@ var outputTables = {
             },
             "10328": {
                 "id": 10328,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪329",
                 "atk": 9530,
                 "hp": 16560,
                 "dodge_rate": 5,
@@ -38685,7 +38900,7 @@ var outputTables = {
             },
             "10329": {
                 "id": 10329,
-                "card_id": "自习怪",
+                "card_id": "自习怪330",
                 "atk": 9560,
                 "hp": 16610,
                 "dodge_rate": 5,
@@ -38693,7 +38908,7 @@ var outputTables = {
             },
             "10330": {
                 "id": 10330,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪331",
                 "atk": 9590,
                 "hp": 16660,
                 "dodge_rate": 5,
@@ -38701,7 +38916,7 @@ var outputTables = {
             },
             "10331": {
                 "id": 10331,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔332",
                 "atk": 9620,
                 "hp": 16710,
                 "dodge_rate": 5,
@@ -38709,7 +38924,7 @@ var outputTables = {
             },
             "10332": {
                 "id": 10332,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精333",
                 "atk": 9650,
                 "hp": 16760,
                 "dodge_rate": 5,
@@ -38717,7 +38932,7 @@ var outputTables = {
             },
             "10333": {
                 "id": 10333,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪334",
                 "atk": 9680,
                 "hp": 16810,
                 "dodge_rate": 5,
@@ -38725,7 +38940,7 @@ var outputTables = {
             },
             "10334": {
                 "id": 10334,
-                "card_id": "白骨精",
+                "card_id": "白骨精335",
                 "atk": 9710,
                 "hp": 16860,
                 "dodge_rate": 5,
@@ -38733,7 +38948,7 @@ var outputTables = {
             },
             "10335": {
                 "id": 10335,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪336",
                 "atk": 9740,
                 "hp": 16910,
                 "dodge_rate": 5,
@@ -38741,7 +38956,7 @@ var outputTables = {
             },
             "10336": {
                 "id": 10336,
-                "card_id": "树精",
+                "card_id": "树精337",
                 "atk": 9770,
                 "hp": 16960,
                 "dodge_rate": 5,
@@ -38749,7 +38964,7 @@ var outputTables = {
             },
             "10337": {
                 "id": 10337,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精338",
                 "atk": 9800,
                 "hp": 17010,
                 "dodge_rate": 5,
@@ -38757,7 +38972,7 @@ var outputTables = {
             },
             "10338": {
                 "id": 10338,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精339",
                 "atk": 9830,
                 "hp": 17060,
                 "dodge_rate": 5,
@@ -38765,7 +38980,7 @@ var outputTables = {
             },
             "10339": {
                 "id": 10339,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵340",
                 "atk": 9860,
                 "hp": 17110,
                 "dodge_rate": 5,
@@ -38773,7 +38988,7 @@ var outputTables = {
             },
             "10340": {
                 "id": 10340,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖341",
                 "atk": 9890,
                 "hp": 17160,
                 "dodge_rate": 5,
@@ -38781,7 +38996,7 @@ var outputTables = {
             },
             "10341": {
                 "id": 10341,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖342",
                 "atk": 9920,
                 "hp": 17210,
                 "dodge_rate": 5,
@@ -38789,7 +39004,7 @@ var outputTables = {
             },
             "10342": {
                 "id": 10342,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔343",
                 "atk": 9950,
                 "hp": 17260,
                 "dodge_rate": 5,
@@ -38797,7 +39012,7 @@ var outputTables = {
             },
             "10343": {
                 "id": 10343,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精344",
                 "atk": 9980,
                 "hp": 17310,
                 "dodge_rate": 5,
@@ -38805,7 +39020,7 @@ var outputTables = {
             },
             "10344": {
                 "id": 10344,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪345",
                 "atk": 10010,
                 "hp": 17360,
                 "dodge_rate": 5,
@@ -38813,7 +39028,7 @@ var outputTables = {
             },
             "10345": {
                 "id": 10345,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼346",
                 "atk": 10040,
                 "hp": 17410,
                 "dodge_rate": 5,
@@ -38821,7 +39036,7 @@ var outputTables = {
             },
             "10346": {
                 "id": 10346,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪347",
                 "atk": 10070,
                 "hp": 17460,
                 "dodge_rate": 5,
@@ -38829,7 +39044,7 @@ var outputTables = {
             },
             "10347": {
                 "id": 10347,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪348",
                 "atk": 10100,
                 "hp": 17510,
                 "dodge_rate": 5,
@@ -38837,7 +39052,7 @@ var outputTables = {
             },
             "10348": {
                 "id": 10348,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪349",
                 "atk": 10130,
                 "hp": 17560,
                 "dodge_rate": 5,
@@ -38845,7 +39060,7 @@ var outputTables = {
             },
             "10349": {
                 "id": 10349,
-                "card_id": "河童怪",
+                "card_id": "河童怪350",
                 "atk": 10160,
                 "hp": 17610,
                 "dodge_rate": 5,
@@ -38853,7 +39068,7 @@ var outputTables = {
             },
             "10350": {
                 "id": 10350,
-                "card_id": "独角兽",
+                "card_id": "独角兽351",
                 "atk": 10190,
                 "hp": 17660,
                 "dodge_rate": 5,
@@ -38861,7 +39076,7 @@ var outputTables = {
             },
             "10351": {
                 "id": 10351,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪352",
                 "atk": 10220,
                 "hp": 17710,
                 "dodge_rate": 5,
@@ -38869,7 +39084,7 @@ var outputTables = {
             },
             "10352": {
                 "id": 10352,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王353",
                 "atk": 10250,
                 "hp": 17760,
                 "dodge_rate": 5,
@@ -38877,7 +39092,7 @@ var outputTables = {
             },
             "10353": {
                 "id": 10353,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪354",
                 "atk": 10280,
                 "hp": 17810,
                 "dodge_rate": 5,
@@ -38885,7 +39100,7 @@ var outputTables = {
             },
             "10354": {
                 "id": 10354,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪355",
                 "atk": 10310,
                 "hp": 17860,
                 "dodge_rate": 5,
@@ -38893,7 +39108,7 @@ var outputTables = {
             },
             "10355": {
                 "id": 10355,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪356",
                 "atk": 10340,
                 "hp": 17910,
                 "dodge_rate": 5,
@@ -38901,7 +39116,7 @@ var outputTables = {
             },
             "10356": {
                 "id": 10356,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪357",
                 "atk": 10370,
                 "hp": 17960,
                 "dodge_rate": 5,
@@ -38909,7 +39124,7 @@ var outputTables = {
             },
             "10357": {
                 "id": 10357,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪358",
                 "atk": 10400,
                 "hp": 18010,
                 "dodge_rate": 5,
@@ -38917,7 +39132,7 @@ var outputTables = {
             },
             "10358": {
                 "id": 10358,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪359",
                 "atk": 10430,
                 "hp": 18060,
                 "dodge_rate": 5,
@@ -38925,7 +39140,7 @@ var outputTables = {
             },
             "10359": {
                 "id": 10359,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪360",
                 "atk": 10460,
                 "hp": 18110,
                 "dodge_rate": 5,
@@ -38933,7 +39148,7 @@ var outputTables = {
             },
             "10360": {
                 "id": 10360,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪361",
                 "atk": 10490,
                 "hp": 18160,
                 "dodge_rate": 5,
@@ -38941,7 +39156,7 @@ var outputTables = {
             },
             "10361": {
                 "id": 10361,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪362",
                 "atk": 10520,
                 "hp": 18210,
                 "dodge_rate": 5,
@@ -38949,7 +39164,7 @@ var outputTables = {
             },
             "10362": {
                 "id": 10362,
-                "card_id": "自习怪",
+                "card_id": "自习怪363",
                 "atk": 10550,
                 "hp": 18260,
                 "dodge_rate": 5,
@@ -38957,7 +39172,7 @@ var outputTables = {
             },
             "10363": {
                 "id": 10363,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪364",
                 "atk": 10580,
                 "hp": 18310,
                 "dodge_rate": 5,
@@ -38965,7 +39180,7 @@ var outputTables = {
             },
             "10364": {
                 "id": 10364,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔365",
                 "atk": 10610,
                 "hp": 18360,
                 "dodge_rate": 5,
@@ -38973,7 +39188,7 @@ var outputTables = {
             },
             "10365": {
                 "id": 10365,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精366",
                 "atk": 10640,
                 "hp": 18410,
                 "dodge_rate": 5,
@@ -38981,7 +39196,7 @@ var outputTables = {
             },
             "10366": {
                 "id": 10366,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪367",
                 "atk": 10670,
                 "hp": 18460,
                 "dodge_rate": 5,
@@ -38989,7 +39204,7 @@ var outputTables = {
             },
             "10367": {
                 "id": 10367,
-                "card_id": "白骨精",
+                "card_id": "白骨精368",
                 "atk": 10700,
                 "hp": 18510,
                 "dodge_rate": 5,
@@ -38997,7 +39212,7 @@ var outputTables = {
             },
             "10368": {
                 "id": 10368,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪369",
                 "atk": 10730,
                 "hp": 18560,
                 "dodge_rate": 5,
@@ -39005,7 +39220,7 @@ var outputTables = {
             },
             "10369": {
                 "id": 10369,
-                "card_id": "树精",
+                "card_id": "树精370",
                 "atk": 10760,
                 "hp": 18610,
                 "dodge_rate": 5,
@@ -39013,7 +39228,7 @@ var outputTables = {
             },
             "10370": {
                 "id": 10370,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精371",
                 "atk": 10790,
                 "hp": 18660,
                 "dodge_rate": 5,
@@ -39021,7 +39236,7 @@ var outputTables = {
             },
             "10371": {
                 "id": 10371,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精372",
                 "atk": 10820,
                 "hp": 18710,
                 "dodge_rate": 5,
@@ -39029,7 +39244,7 @@ var outputTables = {
             },
             "10372": {
                 "id": 10372,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵373",
                 "atk": 10850,
                 "hp": 18760,
                 "dodge_rate": 5,
@@ -39037,7 +39252,7 @@ var outputTables = {
             },
             "10373": {
                 "id": 10373,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖374",
                 "atk": 10880,
                 "hp": 18810,
                 "dodge_rate": 5,
@@ -39045,7 +39260,7 @@ var outputTables = {
             },
             "10374": {
                 "id": 10374,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖375",
                 "atk": 10910,
                 "hp": 18860,
                 "dodge_rate": 5,
@@ -39053,7 +39268,7 @@ var outputTables = {
             },
             "10375": {
                 "id": 10375,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔376",
                 "atk": 10940,
                 "hp": 18910,
                 "dodge_rate": 5,
@@ -39061,7 +39276,7 @@ var outputTables = {
             },
             "10376": {
                 "id": 10376,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精377",
                 "atk": 10970,
                 "hp": 18960,
                 "dodge_rate": 5,
@@ -39069,7 +39284,7 @@ var outputTables = {
             },
             "10377": {
                 "id": 10377,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪378",
                 "atk": 11000,
                 "hp": 19010,
                 "dodge_rate": 5,
@@ -39077,7 +39292,7 @@ var outputTables = {
             },
             "10378": {
                 "id": 10378,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼379",
                 "atk": 11030,
                 "hp": 19060,
                 "dodge_rate": 5,
@@ -39085,7 +39300,7 @@ var outputTables = {
             },
             "10379": {
                 "id": 10379,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪380",
                 "atk": 11060,
                 "hp": 19110,
                 "dodge_rate": 5,
@@ -39093,7 +39308,7 @@ var outputTables = {
             },
             "10380": {
                 "id": 10380,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪381",
                 "atk": 11090,
                 "hp": 19160,
                 "dodge_rate": 5,
@@ -39101,7 +39316,7 @@ var outputTables = {
             },
             "10381": {
                 "id": 10381,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪382",
                 "atk": 11120,
                 "hp": 19210,
                 "dodge_rate": 5,
@@ -39109,7 +39324,7 @@ var outputTables = {
             },
             "10382": {
                 "id": 10382,
-                "card_id": "河童怪",
+                "card_id": "河童怪383",
                 "atk": 11150,
                 "hp": 19260,
                 "dodge_rate": 5,
@@ -39117,7 +39332,7 @@ var outputTables = {
             },
             "10383": {
                 "id": 10383,
-                "card_id": "独角兽",
+                "card_id": "独角兽384",
                 "atk": 11180,
                 "hp": 19310,
                 "dodge_rate": 5,
@@ -39125,7 +39340,7 @@ var outputTables = {
             },
             "10384": {
                 "id": 10384,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪385",
                 "atk": 11210,
                 "hp": 19360,
                 "dodge_rate": 5,
@@ -39133,7 +39348,7 @@ var outputTables = {
             },
             "10385": {
                 "id": 10385,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王386",
                 "atk": 11240,
                 "hp": 19410,
                 "dodge_rate": 5,
@@ -39141,7 +39356,7 @@ var outputTables = {
             },
             "10386": {
                 "id": 10386,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪387",
                 "atk": 11270,
                 "hp": 19460,
                 "dodge_rate": 5,
@@ -39149,7 +39364,7 @@ var outputTables = {
             },
             "10387": {
                 "id": 10387,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪388",
                 "atk": 11300,
                 "hp": 19510,
                 "dodge_rate": 5,
@@ -39157,7 +39372,7 @@ var outputTables = {
             },
             "10388": {
                 "id": 10388,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪389",
                 "atk": 11330,
                 "hp": 19560,
                 "dodge_rate": 5,
@@ -39165,7 +39380,7 @@ var outputTables = {
             },
             "10389": {
                 "id": 10389,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪390",
                 "atk": 11360,
                 "hp": 19610,
                 "dodge_rate": 5,
@@ -39173,7 +39388,7 @@ var outputTables = {
             },
             "10390": {
                 "id": 10390,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪391",
                 "atk": 11390,
                 "hp": 19660,
                 "dodge_rate": 5,
@@ -39181,7 +39396,7 @@ var outputTables = {
             },
             "10391": {
                 "id": 10391,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪392",
                 "atk": 11420,
                 "hp": 19710,
                 "dodge_rate": 5,
@@ -39189,7 +39404,7 @@ var outputTables = {
             },
             "10392": {
                 "id": 10392,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪393",
                 "atk": 11450,
                 "hp": 19760,
                 "dodge_rate": 5,
@@ -39197,7 +39412,7 @@ var outputTables = {
             },
             "10393": {
                 "id": 10393,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪394",
                 "atk": 11480,
                 "hp": 19810,
                 "dodge_rate": 5,
@@ -39205,7 +39420,7 @@ var outputTables = {
             },
             "10394": {
                 "id": 10394,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪395",
                 "atk": 11510,
                 "hp": 19860,
                 "dodge_rate": 5,
@@ -39213,7 +39428,7 @@ var outputTables = {
             },
             "10395": {
                 "id": 10395,
-                "card_id": "自习怪",
+                "card_id": "自习怪396",
                 "atk": 11540,
                 "hp": 19910,
                 "dodge_rate": 5,
@@ -39221,7 +39436,7 @@ var outputTables = {
             },
             "10396": {
                 "id": 10396,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪397",
                 "atk": 11570,
                 "hp": 19960,
                 "dodge_rate": 5,
@@ -39229,7 +39444,7 @@ var outputTables = {
             },
             "10397": {
                 "id": 10397,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔398",
                 "atk": 11600,
                 "hp": 20010,
                 "dodge_rate": 5,
@@ -39237,7 +39452,7 @@ var outputTables = {
             },
             "10398": {
                 "id": 10398,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精399",
                 "atk": 11630,
                 "hp": 20060,
                 "dodge_rate": 5,
@@ -39245,7 +39460,7 @@ var outputTables = {
             },
             "10399": {
                 "id": 10399,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪400",
                 "atk": 11660,
                 "hp": 20110,
                 "dodge_rate": 5,
@@ -39253,7 +39468,7 @@ var outputTables = {
             },
             "10400": {
                 "id": 10400,
-                "card_id": "白骨精",
+                "card_id": "白骨精401",
                 "atk": 11690,
                 "hp": 20160,
                 "dodge_rate": 5,
@@ -39261,7 +39476,7 @@ var outputTables = {
             },
             "10401": {
                 "id": 10401,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪402",
                 "atk": 11720,
                 "hp": 20210,
                 "dodge_rate": 5,
@@ -39269,7 +39484,7 @@ var outputTables = {
             },
             "10402": {
                 "id": 10402,
-                "card_id": "树精",
+                "card_id": "树精403",
                 "atk": 11750,
                 "hp": 20260,
                 "dodge_rate": 5,
@@ -39277,7 +39492,7 @@ var outputTables = {
             },
             "10403": {
                 "id": 10403,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精404",
                 "atk": 11780,
                 "hp": 20310,
                 "dodge_rate": 5,
@@ -39285,7 +39500,7 @@ var outputTables = {
             },
             "10404": {
                 "id": 10404,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精405",
                 "atk": 11810,
                 "hp": 20360,
                 "dodge_rate": 5,
@@ -39293,7 +39508,7 @@ var outputTables = {
             },
             "10405": {
                 "id": 10405,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵406",
                 "atk": 11840,
                 "hp": 20410,
                 "dodge_rate": 5,
@@ -39301,7 +39516,7 @@ var outputTables = {
             },
             "10406": {
                 "id": 10406,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖407",
                 "atk": 11870,
                 "hp": 20460,
                 "dodge_rate": 5,
@@ -39309,7 +39524,7 @@ var outputTables = {
             },
             "10407": {
                 "id": 10407,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖408",
                 "atk": 11900,
                 "hp": 20510,
                 "dodge_rate": 5,
@@ -39317,7 +39532,7 @@ var outputTables = {
             },
             "10408": {
                 "id": 10408,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔409",
                 "atk": 11930,
                 "hp": 20560,
                 "dodge_rate": 5,
@@ -39325,7 +39540,7 @@ var outputTables = {
             },
             "10409": {
                 "id": 10409,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精410",
                 "atk": 11960,
                 "hp": 20610,
                 "dodge_rate": 5,
@@ -39333,7 +39548,7 @@ var outputTables = {
             },
             "10410": {
                 "id": 10410,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪411",
                 "atk": 11990,
                 "hp": 20660,
                 "dodge_rate": 5,
@@ -39341,7 +39556,7 @@ var outputTables = {
             },
             "10411": {
                 "id": 10411,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼412",
                 "atk": 12020,
                 "hp": 20710,
                 "dodge_rate": 5,
@@ -39349,7 +39564,7 @@ var outputTables = {
             },
             "10412": {
                 "id": 10412,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪413",
                 "atk": 12050,
                 "hp": 20760,
                 "dodge_rate": 5,
@@ -39357,7 +39572,7 @@ var outputTables = {
             },
             "10413": {
                 "id": 10413,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪414",
                 "atk": 12080,
                 "hp": 20810,
                 "dodge_rate": 5,
@@ -39365,7 +39580,7 @@ var outputTables = {
             },
             "10414": {
                 "id": 10414,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪415",
                 "atk": 12110,
                 "hp": 20860,
                 "dodge_rate": 5,
@@ -39373,7 +39588,7 @@ var outputTables = {
             },
             "10415": {
                 "id": 10415,
-                "card_id": "河童怪",
+                "card_id": "河童怪416",
                 "atk": 12140,
                 "hp": 20910,
                 "dodge_rate": 5,
@@ -39381,7 +39596,7 @@ var outputTables = {
             },
             "10416": {
                 "id": 10416,
-                "card_id": "独角兽",
+                "card_id": "独角兽417",
                 "atk": 12170,
                 "hp": 20960,
                 "dodge_rate": 5,
@@ -39389,7 +39604,7 @@ var outputTables = {
             },
             "10417": {
                 "id": 10417,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪418",
                 "atk": 12200,
                 "hp": 21010,
                 "dodge_rate": 5,
@@ -39397,7 +39612,7 @@ var outputTables = {
             },
             "10418": {
                 "id": 10418,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王419",
                 "atk": 12230,
                 "hp": 21060,
                 "dodge_rate": 5,
@@ -39405,7 +39620,7 @@ var outputTables = {
             },
             "10419": {
                 "id": 10419,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪420",
                 "atk": 12260,
                 "hp": 21110,
                 "dodge_rate": 5,
@@ -39413,7 +39628,7 @@ var outputTables = {
             },
             "10420": {
                 "id": 10420,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪421",
                 "atk": 12290,
                 "hp": 21160,
                 "dodge_rate": 5,
@@ -39421,7 +39636,7 @@ var outputTables = {
             },
             "10421": {
                 "id": 10421,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪422",
                 "atk": 12320,
                 "hp": 21210,
                 "dodge_rate": 5,
@@ -39429,7 +39644,7 @@ var outputTables = {
             },
             "10422": {
                 "id": 10422,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪423",
                 "atk": 12350,
                 "hp": 21260,
                 "dodge_rate": 5,
@@ -39437,7 +39652,7 @@ var outputTables = {
             },
             "10423": {
                 "id": 10423,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪424",
                 "atk": 12380,
                 "hp": 21310,
                 "dodge_rate": 5,
@@ -39445,7 +39660,7 @@ var outputTables = {
             },
             "10424": {
                 "id": 10424,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪425",
                 "atk": 12410,
                 "hp": 21360,
                 "dodge_rate": 5,
@@ -39453,7 +39668,7 @@ var outputTables = {
             },
             "10425": {
                 "id": 10425,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪426",
                 "atk": 12440,
                 "hp": 21410,
                 "dodge_rate": 5,
@@ -39461,7 +39676,7 @@ var outputTables = {
             },
             "10426": {
                 "id": 10426,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪427",
                 "atk": 12470,
                 "hp": 21460,
                 "dodge_rate": 5,
@@ -39469,7 +39684,7 @@ var outputTables = {
             },
             "10427": {
                 "id": 10427,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪428",
                 "atk": 12500,
                 "hp": 21510,
                 "dodge_rate": 5,
@@ -39477,7 +39692,7 @@ var outputTables = {
             },
             "10428": {
                 "id": 10428,
-                "card_id": "自习怪",
+                "card_id": "自习怪429",
                 "atk": 12530,
                 "hp": 21560,
                 "dodge_rate": 5,
@@ -39485,7 +39700,7 @@ var outputTables = {
             },
             "10429": {
                 "id": 10429,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪430",
                 "atk": 12560,
                 "hp": 21610,
                 "dodge_rate": 5,
@@ -39493,7 +39708,7 @@ var outputTables = {
             },
             "10430": {
                 "id": 10430,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔431",
                 "atk": 12590,
                 "hp": 21660,
                 "dodge_rate": 5,
@@ -39501,7 +39716,7 @@ var outputTables = {
             },
             "10431": {
                 "id": 10431,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精432",
                 "atk": 12620,
                 "hp": 21710,
                 "dodge_rate": 5,
@@ -39509,7 +39724,7 @@ var outputTables = {
             },
             "10432": {
                 "id": 10432,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪433",
                 "atk": 12650,
                 "hp": 21760,
                 "dodge_rate": 5,
@@ -39517,7 +39732,7 @@ var outputTables = {
             },
             "10433": {
                 "id": 10433,
-                "card_id": "白骨精",
+                "card_id": "白骨精434",
                 "atk": 12680,
                 "hp": 21810,
                 "dodge_rate": 5,
@@ -39525,7 +39740,7 @@ var outputTables = {
             },
             "10434": {
                 "id": 10434,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪435",
                 "atk": 12710,
                 "hp": 21860,
                 "dodge_rate": 5,
@@ -39533,7 +39748,7 @@ var outputTables = {
             },
             "10435": {
                 "id": 10435,
-                "card_id": "树精",
+                "card_id": "树精436",
                 "atk": 12740,
                 "hp": 21910,
                 "dodge_rate": 5,
@@ -39541,7 +39756,7 @@ var outputTables = {
             },
             "10436": {
                 "id": 10436,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精437",
                 "atk": 12770,
                 "hp": 21960,
                 "dodge_rate": 5,
@@ -39549,7 +39764,7 @@ var outputTables = {
             },
             "10437": {
                 "id": 10437,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精438",
                 "atk": 12800,
                 "hp": 22010,
                 "dodge_rate": 5,
@@ -39557,7 +39772,7 @@ var outputTables = {
             },
             "10438": {
                 "id": 10438,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵439",
                 "atk": 12830,
                 "hp": 22060,
                 "dodge_rate": 5,
@@ -39565,7 +39780,7 @@ var outputTables = {
             },
             "10439": {
                 "id": 10439,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖440",
                 "atk": 12860,
                 "hp": 22110,
                 "dodge_rate": 5,
@@ -39573,7 +39788,7 @@ var outputTables = {
             },
             "10440": {
                 "id": 10440,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖441",
                 "atk": 12890,
                 "hp": 22160,
                 "dodge_rate": 5,
@@ -39581,7 +39796,7 @@ var outputTables = {
             },
             "10441": {
                 "id": 10441,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔442",
                 "atk": 12920,
                 "hp": 22210,
                 "dodge_rate": 5,
@@ -39589,7 +39804,7 @@ var outputTables = {
             },
             "10442": {
                 "id": 10442,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精443",
                 "atk": 12950,
                 "hp": 22260,
                 "dodge_rate": 5,
@@ -39597,7 +39812,7 @@ var outputTables = {
             },
             "10443": {
                 "id": 10443,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪444",
                 "atk": 12980,
                 "hp": 22310,
                 "dodge_rate": 5,
@@ -39605,7 +39820,7 @@ var outputTables = {
             },
             "10444": {
                 "id": 10444,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼445",
                 "atk": 13010,
                 "hp": 22360,
                 "dodge_rate": 5,
@@ -39613,7 +39828,7 @@ var outputTables = {
             },
             "10445": {
                 "id": 10445,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪446",
                 "atk": 13040,
                 "hp": 22410,
                 "dodge_rate": 5,
@@ -39621,7 +39836,7 @@ var outputTables = {
             },
             "10446": {
                 "id": 10446,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪447",
                 "atk": 13070,
                 "hp": 22460,
                 "dodge_rate": 5,
@@ -39629,7 +39844,7 @@ var outputTables = {
             },
             "10447": {
                 "id": 10447,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪448",
                 "atk": 13100,
                 "hp": 22510,
                 "dodge_rate": 5,
@@ -39637,7 +39852,7 @@ var outputTables = {
             },
             "10448": {
                 "id": 10448,
-                "card_id": "河童怪",
+                "card_id": "河童怪449",
                 "atk": 13130,
                 "hp": 22560,
                 "dodge_rate": 5,
@@ -39645,7 +39860,7 @@ var outputTables = {
             },
             "10449": {
                 "id": 10449,
-                "card_id": "独角兽",
+                "card_id": "独角兽450",
                 "atk": 13160,
                 "hp": 22610,
                 "dodge_rate": 5,
@@ -39653,7 +39868,7 @@ var outputTables = {
             },
             "10450": {
                 "id": 10450,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪451",
                 "atk": 13190,
                 "hp": 22660,
                 "dodge_rate": 5,
@@ -39661,7 +39876,7 @@ var outputTables = {
             },
             "10451": {
                 "id": 10451,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王452",
                 "atk": 13220,
                 "hp": 22710,
                 "dodge_rate": 5,
@@ -39669,7 +39884,7 @@ var outputTables = {
             },
             "10452": {
                 "id": 10452,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪453",
                 "atk": 13250,
                 "hp": 22760,
                 "dodge_rate": 5,
@@ -39677,7 +39892,7 @@ var outputTables = {
             },
             "10453": {
                 "id": 10453,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪454",
                 "atk": 13280,
                 "hp": 22810,
                 "dodge_rate": 5,
@@ -39685,7 +39900,7 @@ var outputTables = {
             },
             "10454": {
                 "id": 10454,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪455",
                 "atk": 13310,
                 "hp": 22860,
                 "dodge_rate": 5,
@@ -39693,7 +39908,7 @@ var outputTables = {
             },
             "10455": {
                 "id": 10455,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪456",
                 "atk": 13340,
                 "hp": 22910,
                 "dodge_rate": 5,
@@ -39701,7 +39916,7 @@ var outputTables = {
             },
             "10456": {
                 "id": 10456,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪457",
                 "atk": 13370,
                 "hp": 22960,
                 "dodge_rate": 5,
@@ -39709,7 +39924,7 @@ var outputTables = {
             },
             "10457": {
                 "id": 10457,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪458",
                 "atk": 13400,
                 "hp": 23010,
                 "dodge_rate": 5,
@@ -39717,7 +39932,7 @@ var outputTables = {
             },
             "10458": {
                 "id": 10458,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪459",
                 "atk": 13430,
                 "hp": 23060,
                 "dodge_rate": 5,
@@ -39725,7 +39940,7 @@ var outputTables = {
             },
             "10459": {
                 "id": 10459,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪460",
                 "atk": 13460,
                 "hp": 23110,
                 "dodge_rate": 5,
@@ -39733,7 +39948,7 @@ var outputTables = {
             },
             "10460": {
                 "id": 10460,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪461",
                 "atk": 13490,
                 "hp": 23160,
                 "dodge_rate": 5,
@@ -39741,7 +39956,7 @@ var outputTables = {
             },
             "10461": {
                 "id": 10461,
-                "card_id": "自习怪",
+                "card_id": "自习怪462",
                 "atk": 13520,
                 "hp": 23210,
                 "dodge_rate": 5,
@@ -39749,7 +39964,7 @@ var outputTables = {
             },
             "10462": {
                 "id": 10462,
-                "card_id": "灯笼怪",
+                "card_id": "灯笼怪463",
                 "atk": 13550,
                 "hp": 23260,
                 "dodge_rate": 5,
@@ -39757,7 +39972,7 @@ var outputTables = {
             },
             "10463": {
                 "id": 10463,
-                "card_id": "龅牙兔",
+                "card_id": "龅牙兔464",
                 "atk": 13580,
                 "hp": 23310,
                 "dodge_rate": 5,
@@ -39765,7 +39980,7 @@ var outputTables = {
             },
             "10464": {
                 "id": 10464,
-                "card_id": "乌龟精",
+                "card_id": "乌龟精465",
                 "atk": 13610,
                 "hp": 23360,
                 "dodge_rate": 5,
@@ -39773,7 +39988,7 @@ var outputTables = {
             },
             "10465": {
                 "id": 10465,
-                "card_id": "卖茶怪",
+                "card_id": "卖茶怪466",
                 "atk": 13640,
                 "hp": 23410,
                 "dodge_rate": 5,
@@ -39781,7 +39996,7 @@ var outputTables = {
             },
             "10466": {
                 "id": 10466,
-                "card_id": "白骨精",
+                "card_id": "白骨精467",
                 "atk": 13670,
                 "hp": 23460,
                 "dodge_rate": 5,
@@ -39789,7 +40004,7 @@ var outputTables = {
             },
             "10467": {
                 "id": 10467,
-                "card_id": "蛤蟆怪",
+                "card_id": "蛤蟆怪468",
                 "atk": 13700,
                 "hp": 23510,
                 "dodge_rate": 5,
@@ -39797,7 +40012,7 @@ var outputTables = {
             },
             "10468": {
                 "id": 10468,
-                "card_id": "树精",
+                "card_id": "树精469",
                 "atk": 13730,
                 "hp": 23560,
                 "dodge_rate": 5,
@@ -39805,7 +40020,7 @@ var outputTables = {
             },
             "10469": {
                 "id": 10469,
-                "card_id": "黑熊精",
+                "card_id": "黑熊精470",
                 "atk": 13760,
                 "hp": 23610,
                 "dodge_rate": 5,
@@ -39813,7 +40028,7 @@ var outputTables = {
             },
             "10470": {
                 "id": 10470,
-                "card_id": "狐狸精",
+                "card_id": "狐狸精471",
                 "atk": 13790,
                 "hp": 23660,
                 "dodge_rate": 5,
@@ -39821,7 +40036,7 @@ var outputTables = {
             },
             "10471": {
                 "id": 10471,
-                "card_id": "水晶魔灵",
+                "card_id": "水晶魔灵472",
                 "atk": 13820,
                 "hp": 23710,
                 "dodge_rate": 5,
@@ -39829,7 +40044,7 @@ var outputTables = {
             },
             "10472": {
                 "id": 10472,
-                "card_id": "大脸猫妖",
+                "card_id": "大脸猫妖473",
                 "atk": 13850,
                 "hp": 23760,
                 "dodge_rate": 5,
@@ -39837,7 +40052,7 @@ var outputTables = {
             },
             "10473": {
                 "id": 10473,
-                "card_id": "野猪妖",
+                "card_id": "野猪妖474",
                 "atk": 13880,
                 "hp": 23810,
                 "dodge_rate": 5,
@@ -39845,7 +40060,7 @@ var outputTables = {
             },
             "10474": {
                 "id": 10474,
-                "card_id": "猩猩巨魔",
+                "card_id": "猩猩巨魔475",
                 "atk": 13910,
                 "hp": 23860,
                 "dodge_rate": 5,
@@ -39853,7 +40068,7 @@ var outputTables = {
             },
             "10475": {
                 "id": 10475,
-                "card_id": "猴儿精",
+                "card_id": "猴儿精476",
                 "atk": 13940,
                 "hp": 23910,
                 "dodge_rate": 5,
@@ -39861,7 +40076,7 @@ var outputTables = {
             },
             "10476": {
                 "id": 10476,
-                "card_id": "巨蟒怪",
+                "card_id": "巨蟒怪477",
                 "atk": 13970,
                 "hp": 23960,
                 "dodge_rate": 5,
@@ -39869,7 +40084,7 @@ var outputTables = {
             },
             "10477": {
                 "id": 10477,
-                "card_id": "地狱小鬼",
+                "card_id": "地狱小鬼478",
                 "atk": 14000,
                 "hp": 24010,
                 "dodge_rate": 5,
@@ -39877,7 +40092,7 @@ var outputTables = {
             },
             "10478": {
                 "id": 10478,
-                "card_id": "狮子怪",
+                "card_id": "狮子怪479",
                 "atk": 14030,
                 "hp": 24060,
                 "dodge_rate": 5,
@@ -39885,7 +40100,7 @@ var outputTables = {
             },
             "10479": {
                 "id": 10479,
-                "card_id": "蚊子怪",
+                "card_id": "蚊子怪480",
                 "atk": 14060,
                 "hp": 24110,
                 "dodge_rate": 5,
@@ -39893,7 +40108,7 @@ var outputTables = {
             },
             "10480": {
                 "id": 10480,
-                "card_id": "火焰怪",
+                "card_id": "火焰怪481",
                 "atk": 14090,
                 "hp": 24160,
                 "dodge_rate": 5,
@@ -39901,7 +40116,7 @@ var outputTables = {
             },
             "10481": {
                 "id": 10481,
-                "card_id": "河童怪",
+                "card_id": "河童怪482",
                 "atk": 14120,
                 "hp": 24210,
                 "dodge_rate": 5,
@@ -39909,7 +40124,7 @@ var outputTables = {
             },
             "10482": {
                 "id": 10482,
-                "card_id": "独角兽",
+                "card_id": "独角兽483",
                 "atk": 14150,
                 "hp": 24260,
                 "dodge_rate": 5,
@@ -39917,7 +40132,7 @@ var outputTables = {
             },
             "10483": {
                 "id": 10483,
-                "card_id": "人鱼怪",
+                "card_id": "人鱼怪484",
                 "atk": 14180,
                 "hp": 24310,
                 "dodge_rate": 5,
@@ -39925,7 +40140,7 @@ var outputTables = {
             },
             "10484": {
                 "id": 10484,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王485",
                 "atk": 14210,
                 "hp": 24360,
                 "dodge_rate": 5,
@@ -39933,7 +40148,7 @@ var outputTables = {
             },
             "10485": {
                 "id": 10485,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪486",
                 "atk": 14240,
                 "hp": 24410,
                 "dodge_rate": 5,
@@ -39941,7 +40156,7 @@ var outputTables = {
             },
             "10486": {
                 "id": 10486,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪487",
                 "atk": 14270,
                 "hp": 24460,
                 "dodge_rate": 5,
@@ -39949,7 +40164,7 @@ var outputTables = {
             },
             "10487": {
                 "id": 10487,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪488",
                 "atk": 14300,
                 "hp": 24510,
                 "dodge_rate": 5,
@@ -39957,7 +40172,7 @@ var outputTables = {
             },
             "10488": {
                 "id": 10488,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪489",
                 "atk": 14330,
                 "hp": 24560,
                 "dodge_rate": 5,
@@ -39965,7 +40180,7 @@ var outputTables = {
             },
             "10489": {
                 "id": 10489,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪490",
                 "atk": 14360,
                 "hp": 24610,
                 "dodge_rate": 5,
@@ -39973,7 +40188,7 @@ var outputTables = {
             },
             "10490": {
                 "id": 10490,
-                "card_id": "蟠桃怪",
+                "card_id": "蟠桃怪491",
                 "atk": 14390,
                 "hp": 24660,
                 "dodge_rate": 5,
@@ -39981,7 +40196,7 @@ var outputTables = {
             },
             "10491": {
                 "id": 10491,
-                "card_id": "僵尸怪",
+                "card_id": "僵尸怪492",
                 "atk": 14420,
                 "hp": 24710,
                 "dodge_rate": 5,
@@ -39989,7 +40204,7 @@ var outputTables = {
             },
             "10492": {
                 "id": 10492,
-                "card_id": "宫灯怪",
+                "card_id": "宫灯怪493",
                 "atk": 14450,
                 "hp": 24760,
                 "dodge_rate": 5,
@@ -39997,7 +40212,7 @@ var outputTables = {
             },
             "10493": {
                 "id": 10493,
-                "card_id": "挂科怪",
+                "card_id": "挂科怪494",
                 "atk": 14480,
                 "hp": 24810,
                 "dodge_rate": 5,
@@ -40005,7 +40220,7 @@ var outputTables = {
             },
             "10494": {
                 "id": 10494,
-                "card_id": "自习怪",
+                "card_id": "自习怪495",
                 "atk": 14510,
                 "hp": 24860,
                 "dodge_rate": 5,
@@ -40013,7 +40228,7 @@ var outputTables = {
             },
             "10495": {
                 "id": 10495,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王496",
                 "atk": 14540,
                 "hp": 24910,
                 "dodge_rate": 5,
@@ -40021,7 +40236,7 @@ var outputTables = {
             },
             "10496": {
                 "id": 10496,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪497",
                 "atk": 14570,
                 "hp": 24960,
                 "dodge_rate": 5,
@@ -40029,7 +40244,7 @@ var outputTables = {
             },
             "10497": {
                 "id": 10497,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪498",
                 "atk": 14600,
                 "hp": 25010,
                 "dodge_rate": 5,
@@ -40037,7 +40252,7 @@ var outputTables = {
             },
             "10498": {
                 "id": 10498,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪499",
                 "atk": 14630,
                 "hp": 25060,
                 "dodge_rate": 5,
@@ -40045,7 +40260,7 @@ var outputTables = {
             },
             "10499": {
                 "id": 10499,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪500",
                 "atk": 14660,
                 "hp": 25110,
                 "dodge_rate": 5,
@@ -40053,7 +40268,7 @@ var outputTables = {
             },
             "10500": {
                 "id": 10500,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪501",
                 "atk": 14690,
                 "hp": 25160,
                 "dodge_rate": 5,
@@ -40061,7 +40276,7 @@ var outputTables = {
             },
             "20000": {
                 "id": 20000,
-                "card_id": "巨齿狼王",
+                "card_id": "巨齿狼王502",
                 "atk": 446,
                 "hp": 1113,
                 "dodge_rate": 10,
@@ -40069,7 +40284,7 @@ var outputTables = {
             },
             "20001": {
                 "id": 20001,
-                "card_id": "双头牛怪",
+                "card_id": "双头牛怪503",
                 "atk": 714,
                 "hp": 1784,
                 "dodge_rate": 10,
@@ -40077,7 +40292,7 @@ var outputTables = {
             },
             "20002": {
                 "id": 20002,
-                "card_id": "长矛鼠怪",
+                "card_id": "长矛鼠怪504",
                 "atk": 1116,
                 "hp": 2789,
                 "dodge_rate": 10,
@@ -40085,7 +40300,7 @@ var outputTables = {
             },
             "20003": {
                 "id": 20003,
-                "card_id": "小狗怪",
+                "card_id": "小狗怪505",
                 "atk": 1702,
                 "hp": 4251,
                 "dodge_rate": 10,
@@ -40093,7 +40308,7 @@ var outputTables = {
             },
             "20004": {
                 "id": 20004,
-                "card_id": "大狗怪",
+                "card_id": "大狗怪506",
                 "atk": 2529,
                 "hp": 6320,
                 "dodge_rate": 10,
@@ -40101,7 +40316,7 @@ var outputTables = {
             },
             "20005": {
                 "id": 20005,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪507",
                 "atk": 3910,
                 "hp": 9773,
                 "dodge_rate": 10,
@@ -40109,7 +40324,7 @@ var outputTables = {
             },
             "20006": {
                 "id": 20006,
-                "card_id": "火魔王",
+                "card_id": "火魔王508",
                 "atk": 5510,
                 "hp": 13761,
                 "dodge_rate": 10,
@@ -40117,7 +40332,7 @@ var outputTables = {
             },
             "20007": {
                 "id": 20007,
-                "card_id": "独臂铲子怪",
+                "card_id": "独臂铲子怪509",
                 "atk": 7568,
                 "hp": 18901,
                 "dodge_rate": 10,
@@ -40125,7 +40340,7 @@ var outputTables = {
             },
             "20008": {
                 "id": 20008,
-                "card_id": "黄袍老怪",
+                "card_id": "黄袍老怪510",
                 "atk": 9648,
                 "hp": 24094,
                 "dodge_rate": 10,
@@ -40133,7 +40348,7 @@ var outputTables = {
             },
             "20009": {
                 "id": 20009,
-                "card_id": "金角大王",
+                "card_id": "金角大王511",
                 "atk": 10814,
                 "hp": 28084,
                 "dodge_rate": 10,
@@ -40141,7 +40356,7 @@ var outputTables = {
             },
             "20010": {
                 "id": 20010,
-                "card_id": "银角大王",
+                "card_id": "银角大王512",
                 "atk": 12417,
                 "hp": 32247,
                 "dodge_rate": 10,
@@ -40149,7 +40364,7 @@ var outputTables = {
             },
             "20011": {
                 "id": 20011,
-                "card_id": "长眉老怪",
+                "card_id": "长眉老怪513",
                 "atk": 15656,
                 "hp": 40666,
                 "dodge_rate": 10,
@@ -40157,7 +40372,7 @@ var outputTables = {
             },
             "20012": {
                 "id": 20012,
-                "card_id": "黑山巫妖",
+                "card_id": "黑山巫妖514",
                 "atk": 19426,
                 "hp": 50462,
                 "dodge_rate": 10,
@@ -40165,7 +40380,7 @@ var outputTables = {
             },
             "20013": {
                 "id": 20013,
-                "card_id": "半头魔王",
+                "card_id": "半头魔王515",
                 "atk": 23718,
                 "hp": 61610,
                 "dodge_rate": 10,
@@ -40173,7 +40388,7 @@ var outputTables = {
             },
             "20014": {
                 "id": 20014,
-                "card_id": "三条胳膊怪",
+                "card_id": "三条胳膊怪516",
                 "atk": 27450,
                 "hp": 71301,
                 "dodge_rate": 10,
@@ -40181,7 +40396,7 @@ var outputTables = {
             },
             "20015": {
                 "id": 20015,
-                "card_id": "巨斧怪",
+                "card_id": "巨斧怪517",
                 "atk": 32307,
                 "hp": 81000,
                 "dodge_rate": 10,
@@ -40189,7 +40404,7 @@ var outputTables = {
             },
             "20016": {
                 "id": 20016,
-                "card_id": "双刀怪",
+                "card_id": "双刀怪518",
                 "atk": 38899,
                 "hp": 97528,
                 "dodge_rate": 10,
@@ -40197,7 +40412,7 @@ var outputTables = {
             },
             "20017": {
                 "id": 20017,
-                "card_id": "巨剑怪",
+                "card_id": "巨剑怪519",
                 "atk": 46089,
                 "hp": 115552,
                 "dodge_rate": 10,
@@ -40205,7 +40420,7 @@ var outputTables = {
             },
             "20018": {
                 "id": 20018,
-                "card_id": "弓箭怪",
+                "card_id": "弓箭怪520",
                 "atk": 52117,
                 "hp": 130667,
                 "dodge_rate": 10,
@@ -40213,7 +40428,7 @@ var outputTables = {
             },
             "20019": {
                 "id": 20019,
-                "card_id": "锤子怪",
+                "card_id": "锤子怪521",
                 "atk": 58384,
                 "hp": 146383,
                 "dodge_rate": 10,
@@ -40221,7 +40436,7 @@ var outputTables = {
             },
             "20020": {
                 "id": 20020,
-                "card_id": "石巨人",
+                "card_id": "石巨人522",
                 "atk": 60745,
                 "hp": 150945,
                 "dodge_rate": 10,
@@ -40229,7 +40444,7 @@ var outputTables = {
             },
             "30001": {
                 "id": 30001,
-                "card_id": "蝙蝠怪",
+                "card_id": "蝙蝠怪523",
                 "atk": 3910,
                 "hp": 9773,
                 "dodge_rate": 10,
@@ -40237,7 +40452,7 @@ var outputTables = {
             },
             "30002": {
                 "id": 30002,
-                "card_id": "火魔王",
+                "card_id": "火魔王524",
                 "atk": 4060,
                 "hp": 9923,
                 "dodge_rate": 10,
@@ -40245,7 +40460,7 @@ var outputTables = {
             },
             "30003": {
                 "id": 30003,
-                "card_id": "金角大王",
+                "card_id": "金角大王525",
                 "atk": 10814,
                 "hp": 28084,
                 "dodge_rate": 10,
@@ -40253,7 +40468,7 @@ var outputTables = {
             },
             "30004": {
                 "id": 30004,
-                "card_id": "银角大王",
+                "card_id": "银角大王526",
                 "atk": 10964,
                 "hp": 28234,
                 "dodge_rate": 10,
@@ -40261,7 +40476,7 @@ var outputTables = {
             },
             "30005": {
                 "id": 30005,
-                "card_id": "半头魔王",
+                "card_id": "半头魔王527",
                 "atk": 23718,
                 "hp": 61610,
                 "dodge_rate": 10,
@@ -40269,7 +40484,7 @@ var outputTables = {
             },
             "30006": {
                 "id": 30006,
-                "card_id": "三条胳膊怪",
+                "card_id": "三条胳膊怪528",
                 "atk": 24038,
                 "hp": 61760,
                 "dodge_rate": 10,
@@ -40277,7 +40492,7 @@ var outputTables = {
             },
             "30007": {
                 "id": 30007,
-                "card_id": "双刀怪",
+                "card_id": "双刀怪529",
                 "atk": 46089,
                 "hp": 115552,
                 "dodge_rate": 10,
@@ -40285,7 +40500,7 @@ var outputTables = {
             },
             "30008": {
                 "id": 30008,
-                "card_id": "巨剑怪",
+                "card_id": "巨剑怪530",
                 "atk": 46249,
                 "hp": 115712,
                 "dodge_rate": 10,
@@ -40293,7 +40508,7 @@ var outputTables = {
             },
             "30009": {
                 "id": 30009,
-                "card_id": "锤子怪",
+                "card_id": "锤子怪531",
                 "atk": 58384,
                 "hp": 146383,
                 "dodge_rate": 10,
@@ -40301,7 +40516,7 @@ var outputTables = {
             },
             "30010": {
                 "id": 30010,
-                "card_id": "石巨人",
+                "card_id": "石巨人532",
                 "atk": 60745,
                 "hp": 150945,
                 "dodge_rate": 10,
@@ -48984,465 +49199,250 @@ var outputTables = {
             }
         }
     },
-    "first_recharge_box": {
+    "passFailSpiritSpeak": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 194,
-                "card_lv": 20
-            }
-        }
-    },
-    "recharge": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.pay6",
-                "times": 2
+                "text": "总结下，为啥我们没打过？"
             },
             "2": {
                 "id": 2,
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.pay30",
-                "times": 2
+                "text": "没事，反正又不是只有我们打不过。"
             },
             "3": {
                 "id": 3,
-                "cash": 68,
-                "gold": 76,
-                "product_id": "com.leasuregame.magpie.pay68",
-                "times": 2
+                "text": "我们是不是该提升下能力再来打？"
             },
             "4": {
                 "id": 4,
-                "cash": 128,
-                "gold": 146,
-                "product_id": "com.leasuregame.magpie.pay128",
-                "times": 2
+                "text": "胜败乃常事，不要气馁。"
             },
             "5": {
                 "id": 5,
-                "cash": 198,
-                "gold": 232,
-                "product_id": "com.leasuregame.magpie.pay198",
-                "times": 2
-            },
-            "6": {
-                "id": 6,
-                "cash": 328,
-                "gold": 403,
-                "product_id": "com.leasuregame.magpie.pay328",
-                "times": 2
-            },
-            "7": {
-                "id": 7,
-                "cash": 648,
-                "gold": 842,
-                "product_id": "com.leasuregame.magpie.pay648",
-                "times": 3
-            },
-            "8": {
-                "id": 8,
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.week.card",
-                "daily_gold": 60,
-                "valid_days": 7,
-                "times": 1
-            },
-            "9": {
-                "id": 9,
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.month.card",
-                "daily_gold": 100,
-                "valid_days": 30,
-                "times": 1
+                "text": "注意休息，实在打不过就改天吧。"
             }
         }
     },
-    "vip": {
+    "passWinSpiritSpeak": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "lv": 1,
-                "name": "Vip1",
-                "cash": 6,
-                "total_cash": 6
+                "text": "OK，下一层，让我们继续。"
             },
             "2": {
                 "id": 2,
-                "lv": 2,
-                "name": "Vip2",
-                "cash": 50,
-                "total_cash": 56
+                "text": "你是最猛的，没有之一。"
             },
             "3": {
                 "id": 3,
-                "lv": 3,
-                "name": "Vip3",
-                "cash": 100,
-                "total_cash": 156
+                "text": "无压力，让我们继续下一层。"
             },
             "4": {
                 "id": 4,
-                "lv": 4,
-                "name": "Vip4",
-                "cash": 200,
-                "total_cash": 356
+                "text": "这太简单了，我简直感受不到挑战的存在。"
             },
             "5": {
                 "id": 5,
-                "lv": 5,
-                "name": "Vip5",
-                "cash": 500,
-                "total_cash": 856
+                "text": "老天，来点真正的挑战吧。"
             },
             "6": {
                 "id": 6,
-                "lv": 6,
-                "name": "Vip6",
-                "cash": 1000,
-                "total_cash": 1856
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
             },
             "7": {
                 "id": 7,
-                "lv": 7,
-                "name": "Vip7",
-                "cash": 2000,
-                "total_cash": 3856
+                "text": "胜利总是来的这么突然，唉……"
             },
             "8": {
                 "id": 8,
-                "lv": 8,
-                "name": "Vip8",
-                "cash": 5000,
-                "total_cash": 8856
+                "text": "求败，求败，但求一败啊……"
             },
             "9": {
                 "id": 9,
-                "lv": 9,
-                "name": "Vip9",
-                "cash": 8000,
-                "total_cash": 16856
+                "text": "没难度，没挑战，无压力。"
             },
             "10": {
                 "id": 10,
-                "lv": 10,
-                "name": "Vip10",
-                "cash": 10000,
-                "total_cash": 26856
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "name": "Vip11",
-                "cash": 20000,
-                "total_cash": 46856
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "name": "Vip12",
-                "cash": 50000,
-                "total_cash": 96856
+                "text": "注意保持姿势，不要停，继续。"
             }
         }
     },
-    "vip_box": {
+    "spiritSpeak": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "energy": 500,
-                "money": 100000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "fragments": 0,
-                "exp_card": 0,
-                "price": 18,
-                "true_price": 66
+                "text": "我是小精灵，我不是元神，也不是宠物……"
             },
             "2": {
                 "id": 2,
-                "energy": 600,
-                "money": 120000,
-                "skillPoint": 1000,
-                "elixir": 0,
-                "fragments": 0,
-                "exp_card": 0,
-                "price": 58,
-                "true_price": 195
+                "text": "我到底是公的还是母的啊，费解。"
             },
             "3": {
                 "id": 3,
-                "energy": 700,
-                "money": 150000,
-                "skillPoint": 1100,
-                "elixir": 2000,
-                "fragments": 0,
-                "exp_card": 0,
-                "price": 88,
-                "true_price": 246
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
             },
             "4": {
                 "id": 4,
-                "energy": 800,
-                "money": 200000,
-                "skillPoint": 1200,
-                "elixir": 3000,
-                "fragments": 3,
-                "exp_card": 0,
-                "price": 188,
-                "true_price": 569
+                "text": "嗨，吃饭了没。"
             },
             "5": {
                 "id": 5,
-                "energy": 900,
-                "money": 250000,
-                "skillPoint": 2000,
-                "elixir": 4000,
-                "fragments": 3,
-                "exp_card": 0,
-                "price": 288,
-                "true_price": 726
+                "text": "海，我真的猜不透你耶……"
             },
             "6": {
                 "id": 6,
-                "energy": 1000,
-                "money": 300000,
-                "skillPoint": 2100,
-                "elixir": 5000,
-                "fragments": 3,
-                "exp_card": 10,
-                "price": 388,
-                "true_price": 1080
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
             },
             "7": {
                 "id": 7,
-                "energy": 1100,
-                "money": 350000,
-                "skillPoint": 2200,
-                "elixir": 6000,
-                "fragments": 3,
-                "exp_card": 15,
-                "price": 488,
-                "true_price": 1368
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
             },
             "8": {
                 "id": 8,
-                "energy": 1200,
-                "money": 400000,
-                "skillPoint": 5000,
-                "elixir": 10000,
-                "fragments": 5,
-                "exp_card": 15,
-                "price": 588,
-                "true_price": 1989
+                "text": "有时候想想，活着也真累，唉……"
             },
             "9": {
                 "id": 9,
-                "energy": 1300,
-                "money": 450000,
-                "skillPoint": 5100,
-                "elixir": 11000,
-                "fragments": 5,
-                "exp_card": 15,
-                "price": 688,
-                "true_price": 2366
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
             },
             "10": {
                 "id": 10,
-                "energy": 1400,
-                "money": 500000,
-                "skillPoint": 10000,
-                "elixir": 12000,
-                "fragments": 10,
-                "exp_card": 20,
-                "price": 788,
-                "true_price": 2899
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
             },
             "11": {
                 "id": 11,
-                "energy": 1500,
-                "money": 550000,
-                "skillPoint": 11000,
-                "elixir": 15000,
-                "fragments": 10,
-                "exp_card": 20,
-                "price": 888,
-                "true_price": 3288
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
             },
             "12": {
                 "id": 12,
-                "energy": 1600,
-                "money": 600000,
-                "skillPoint": 15000,
-                "elixir": 20000,
-                "fragments": 10,
-                "exp_card": 20,
-                "price": 999,
-                "true_price": 3986
-            }
-        }
-    },
-    "vip_privilege": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lottery_free_count": 0,
-                "exp_card_count": 0,
-                "buy_power_count": 0,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
+                "text": "尽量不要熬夜，海，很伤身体的。"
             },
-            "1": {
-                "id": 1,
-                "lottery_free_count": 1,
-                "exp_card_count": 50,
-                "buy_power_count": 1,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
             },
-            "2": {
-                "id": 2,
-                "lottery_free_count": 2,
-                "exp_card_count": 100,
-                "buy_power_count": 2,
-                "give_bless_count": 1,
-                "receive_bless_count": 1,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
             },
-            "3": {
-                "id": 3,
-                "lottery_free_count": 3,
-                "exp_card_count": 150,
-                "buy_power_count": 3,
-                "give_bless_count": 2,
-                "receive_bless_count": 2,
-                "spirit_collect_count": 1,
-                "challenge_buy_count": 5,
-                "friend_count": 0
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
             },
-            "4": {
-                "id": 4,
-                "lottery_free_count": 4,
-                "exp_card_count": 200,
-                "buy_power_count": 4,
-                "give_bless_count": 3,
-                "receive_bless_count": 3,
-                "spirit_collect_count": 2,
-                "challenge_buy_count": 10,
-                "friend_count": 5
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
             },
-            "5": {
-                "id": 5,
-                "lottery_free_count": 5,
-                "exp_card_count": 250,
-                "buy_power_count": 5,
-                "give_bless_count": 4,
-                "receive_bless_count": 4,
-                "spirit_collect_count": 3,
-                "challenge_buy_count": 15,
-                "friend_count": 10
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
             },
-            "6": {
-                "id": 6,
-                "lottery_free_count": 6,
-                "exp_card_count": 300,
-                "buy_power_count": 6,
-                "give_bless_count": 5,
-                "receive_bless_count": 5,
-                "spirit_collect_count": 4,
-                "challenge_buy_count": 20,
-                "friend_count": 15
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
             },
-            "7": {
-                "id": 7,
-                "lottery_free_count": 7,
-                "exp_card_count": 350,
-                "buy_power_count": 7,
-                "give_bless_count": 6,
-                "receive_bless_count": 6,
-                "spirit_collect_count": 5,
-                "challenge_buy_count": 25,
-                "friend_count": 20
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
             },
-            "8": {
-                "id": 8,
-                "lottery_free_count": 8,
-                "exp_card_count": 400,
-                "buy_power_count": 8,
-                "give_bless_count": 7,
-                "receive_bless_count": 7,
-                "spirit_collect_count": 6,
-                "challenge_buy_count": 30,
-                "friend_count": 25
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
             },
-            "9": {
-                "id": 9,
-                "lottery_free_count": 9,
-                "exp_card_count": 450,
-                "buy_power_count": 9,
-                "give_bless_count": 8,
-                "receive_bless_count": 8,
-                "spirit_collect_count": 7,
-                "challenge_buy_count": 35,
-                "friend_count": 30
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
             },
-            "10": {
-                "id": 10,
-                "lottery_free_count": 10,
-                "exp_card_count": 500,
-                "buy_power_count": 10,
-                "give_bless_count": 9,
-                "receive_bless_count": 9,
-                "spirit_collect_count": 8,
-                "challenge_buy_count": 40,
-                "friend_count": 35
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
             },
-            "11": {
-                "id": 11,
-                "lottery_free_count": 10,
-                "exp_card_count": 550,
-                "buy_power_count": 11,
-                "give_bless_count": 10,
-                "receive_bless_count": 10,
-                "spirit_collect_count": 9,
-                "challenge_buy_count": 45,
-                "friend_count": 40
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
             },
-            "12": {
-                "id": 12,
-                "lottery_free_count": 10,
-                "exp_card_count": 600,
-                "buy_power_count": 12,
-                "give_bless_count": 11,
-                "receive_bless_count": 11,
-                "spirit_collect_count": 10,
-                "challenge_buy_count": 50,
-                "friend_count": 45
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     }

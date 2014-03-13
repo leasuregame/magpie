@@ -417,7 +417,7 @@ var TournamentLayer = cc.Layer.extend({
 
             GiftBagLayer.pop({
                 reward: reward,
-                type: GET_GIFT_BAG,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(reward);
@@ -612,6 +612,7 @@ var TournamentLayer = cc.Layer.extend({
         this._isTouch = false;
     }
 });
+
 
 TournamentLayer.create = function () {
     var res = new TournamentLayer();

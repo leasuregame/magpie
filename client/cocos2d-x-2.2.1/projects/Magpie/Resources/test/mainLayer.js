@@ -23,15 +23,18 @@ var MainLayer = cc.Layer.extend({
 
         cc.BuilderReader.setResourcePath("../");
 
-        // var bgSprite = cc.Sprite.create(main_scene_image.testBg);
-        // bgSprite.setPosition(cc.p(360, 568));
-        // this.addChild(bgSprite);
-
-        this._urlEditBox = cc.EditBox.create(cc.size(300, 40), cc.Scale9Sprite.create(main_scene_image.edit2));
-        this._urlEditBox.setPosition(cc.p(200, 1100));
+        this._urlEditBox = cc.EditBox.create(cc.size(200, 40), cc.Scale9Sprite.create(main_scene_image.edit2));
+        this._urlEditBox.setPosition(cc.p(150, 1100));
         this._urlEditBox.setDelegate(this);
         this._urlEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this.addChild(this._urlEditBox);
+        this.addChild(this._urlEditBox, 10);
+
+        this._speedEditBox = cc.EditBox.create(cc.size(200, 40), cc.Scale9Sprite.create(main_scene_image.edit2));
+        this._speedEditBox.setPosition(cc.p(370, 1100));
+        this._speedEditBox.setDelegate(this);
+        this._speedEditBox.setFontColor(cc.c3b(200, 0, 250));
+        this.addChild(this._speedEditBox, 10);
+        this._speedEditBox.setText("1.3");
 
         var okItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -39,11 +42,11 @@ var MainLayer = cc.Layer.extend({
             this._onClickTest,
             this
         );
-        okItem.setPosition(cc.p(480, 1100));
+        okItem.setPosition(cc.p(600, 1100));
 
         this._menu = cc.Menu.create(okItem);
         this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
+        this.addChild(this._menu, 10);
 
         return true;
     },
@@ -61,6 +64,9 @@ var MainLayer = cc.Layer.extend({
         this._clearEffect();
 
         var url = this._urlEditBox.getText();
+        var speed = parseFloat(this._speedEditBox.getText()) || 1;
+
+        cc.Director.getInstance().getScheduler().setTimeScale(speed);
 
         if (main_scene_image[url]) {
             cc.log("加入特效");

@@ -57,18 +57,17 @@ var BossLayer = cc.Layer.extend({
         this._goldLabel.setPosition(this._bossLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
-        var cardFrame = cc.Sprite.create(main_scene_image.card_frame1);
-        cardFrame.setAnchorPoint(cc.p(0.5, 0));
-        cardFrame.setScale(1.5);
-        cardFrame.setPosition(this._bossLayerFit.cardFramePoint);
-        this.addChild(cardFrame);
-
-        var bossCard = cc.Sprite.create(main_scene_image.boss_half);
-        bossCard.setAnchorPoint(cc.p(0.5, 0));
-        bossCard.setPosition(this._bossLayerFit.bossCardPoint);
-        this.addChild(bossCard);
-
         var bossTable = outputTables.boss.rows[boss.tableId];
+        var bossCard = Card.create({
+            tableId: bossTable.boss_id,
+            lv: 1,
+            skillLv: 1
+        });
+
+        var bossCardHalfNode = CardHalfNode.create(bossCard);
+        bossCardHalfNode.setPosition(this._bossLayerFit.bossCardPoint);
+        this.addChild(bossCardHalfNode);
+
         var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
         var point = this._bossLayerFit.bossNameLabelPoint;
 
@@ -135,7 +134,6 @@ var BossLayer = cc.Layer.extend({
         this._countLeftLabel.setColor(cc.c3b(255, 88, 88));
         this._countLeftLabel.setBgColor(cc.c3b(94, 11, 11));
         this.addChild(this._countLeftLabel);
-
 
         var additionBgLabel = cc.Sprite.create(main_scene_image.icon401);
         additionBgLabel.setAnchorPoint(cc.p(0.5, 0));

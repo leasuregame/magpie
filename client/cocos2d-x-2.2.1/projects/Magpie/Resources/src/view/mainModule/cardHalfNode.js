@@ -30,7 +30,7 @@ var CardHalfNode = cc.Node.extend({
         var index = star > 2 ? star - 2 : 1;
 
         if (this._card.isBossCard()) {
-            var ccbNode = cc.BuilderReader.load(main_scene_image[this._url], this);
+            var ccbNode = cc.BuilderReader.load(main_scene_image[url], this);
             this.addChild(ccbNode);
 
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("def", 0);

@@ -16,14 +16,14 @@ var BossFriendRewardDao = (function(_super) {
   var domain = function(attrs) {
     this.id = attrs.id;
     this.playerId = attrs.playerId;
-    this.friendId = attrs.friendId;
+    this.friendName = attrs.friendName;
     this.money = attrs.money;
     this.honor = attrs.week;
     this.created = attrs.created;
     this.got = attrs.got; 
   };
   domain.DEFAULT_VALUES = {};
-  domain.FIELDS = ['id', 'friendId', 'playerId', 'money', 'got', 'honor', 'created'];
+  domain.FIELDS = ['id', 'friendName', 'playerId', 'money', 'got', 'honor', 'created'];
   BossFriendRewardDao.domain = domain;
 
   BossFriendRewardDao.getReward = function(playerId, cb) {
@@ -45,6 +45,31 @@ var BossFriendRewardDao = (function(_super) {
         cb(null, null);
       }
 
+    });
+  };
+
+  BossFriendRewardDao.rewardList = function(playerId, cb) {
+    var sql = "select friendName as name, money, honor \
+      from bossFriendReward \
+      where playerId = ? and got = 0 \
+      order by created DESC \
+      limit 50";
+
+    dbClient.query(sql, [playerId], function(err, res) {
+      if (err) {
+        logger.error('[SQL ERROR] when get friend reward list by player id ' + playerId);
+        logger.error(err.stack);
+        cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        cb(null, res);
+      } else {
+        cb(null, []);
+      }
     });
   };
 

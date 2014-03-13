@@ -232,6 +232,11 @@ var BossListLayer = cc.Layer.extend({
             var y = scrollViewHeight - 68 - 136 * i;
             var boss = bossList[i];
             var bossItem = null;
+            var bossCard = Card.create({
+                tableId: outputTables.boss.rows[boss.tableId].boss_id,
+                lv: 1,
+                skillLv: 1
+            });
 
             if (boss.finder == gameData.player.get("name")) {
                 bossItem = cc.MenuItemImage.create(
@@ -257,27 +262,20 @@ var BossListLayer = cc.Layer.extend({
                 menu.addChild(bossItem);
             }
 
-            var bossIcon = CardHeadNode.create(Card.create({
-                tableId: 194,
-                lv: 1,
-                skillLv: 1
-            }));
-
-            bossIcon.setAnchorPoint(cc.p(0, 0.5));
-            bossIcon.setPosition(cc.p(45, y));
-            scrollViewLayer.addChild(bossIcon);
+            var bossHeadNode = CardHeadNode.create(bossCard);
+            bossHeadNode.setAnchorPoint(cc.p(0, 0.5));
+            bossHeadNode.setPosition(cc.p(45, y));
+            scrollViewLayer.addChild(bossHeadNode);
 
             var msgBgIcon = cc.Sprite.create(main_scene_image.icon393);
             msgBgIcon.setAnchorPoint(cc.p(0, 0.5));
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossId = outputTables.boss.rows[boss.tableId].boss_id;
-            var card = outputTables.cards.rows[bossId];
-            var bossTypeLabel = cc.LabelTTF.create(card.name, "STHeitiTC-Medium", 24);
-            bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossTypeLabel.setPosition(cc.p(200, y + 32));
-            scrollViewLayer.addChild(bossTypeLabel);
+            var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
+            bossNameLabel.setAnchorPoint(cc.p(0, 0.5));
+            bossNameLabel.setPosition(cc.p(200, y + 32));
+            scrollViewLayer.addChild(bossNameLabel);
 
             var runAwayTimeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({

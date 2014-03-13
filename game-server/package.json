@@ -11,6 +11,7 @@
     "underscore.string": "2.3.1",
     "sprintf-js": "*",
     "xml2js": "0.1.14",
+    "xml2json": "*",
     "memcached": "0.2.2",
     "node-uuid": "1.4.1",
     "async": ">=0.0.1",

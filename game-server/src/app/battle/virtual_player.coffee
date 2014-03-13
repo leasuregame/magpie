@@ -52,9 +52,6 @@ class VirtualPlayer extends Player
         hp: c.init_hp
         atk: c.init_atk
         boss: true if c.boss?
-        skillId: c.skill_id if c.skill?
-        normalAtkId: c.normal_atk_id
-        effectId: c.effect_id if c.skill?
       }
     cobj
 

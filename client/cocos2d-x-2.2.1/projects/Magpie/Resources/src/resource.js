@@ -736,6 +736,12 @@ var main_scene_image = {
     icon413: main_scene_path + "icon413.png",
     icon414: main_scene_path + "icon414.png",
 
+    card20000_head1: main_scene_path + "card20000_head1.png",
+    card20000_skill: main_scene_path + "card20000_skill.png",
+    card20001_head2: main_scene_path + "card20001_head2.png",
+    card20001_skill: main_scene_path + "card20001_skill.png",
+    card20002_head3: main_scene_path + "card20002_head3.png",
+    card20002_skill: main_scene_path + "card20002_skill.png",
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
     card30000_full1: main_scene_path + "card30000_full1.png",
@@ -744,9 +750,9 @@ var main_scene_image = {
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",
     tipNode: "res/ccb/tipNode.ccbi",
-    bossNode20000: "res/ccb/bossNode20000.ccbi",
-    bossNode20001: "res/ccb/bossNode20001.ccbi",
-//    bossNode20002: "res/ccb/bossNode20002.ccbi",
+    card20000: "res/ccb/card20000.ccbi",
+    card20001: "res/ccb/card20001.ccbi",
+    card20002: "res/ccb/card20002.ccbi",
 
     effect1_1: "res/ccb/effect1_1.ccbi",
     effect1_2: "res/ccb/effect1_2.ccbi",
@@ -834,14 +840,17 @@ var main_scene_image = {
     effect1003_1: "res/ccb/effect1003_1.ccbi",
     effect1003_2: "res/ccb/effect1003_2.ccbi",
 
+    effect1700_1: "res/ccb/effect1700_1.ccbi",
+    effect1700_2: "res/ccb/effect1700_2.ccbi",
+
     effect1800_1: "res/ccb/effect1800_1.ccbi",
     effect1800_2: "res/ccb/effect1800_2.ccbi",
     effect1800_3: "res/ccb/effect1800_3.ccbi",
     effect1800_4: "res/ccb/effect1800_4.ccbi",
 
     effect1801_1: "res/ccb/effect1801_1.ccbi",
-    effect1802_2: "res/ccb/effect1802_2.ccbi",
-    effect1803_3: "res/ccb/effect1803_3.ccbi",
+    effect1801_2: "res/ccb/effect1801_2.ccbi",
+    effect1801_3: "res/ccb/effect1801_3.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -1285,7 +1294,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
-for (var cardId = 10000; cardId <= 10047; ++cardId) {
+for (var cardId = 10000; cardId <= 10050; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }
 

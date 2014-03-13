@@ -4158,7 +4158,7 @@ var BattleLayer = cc.Layer.extend({
                 times: 1,
                 fn: function () {
                     that._battleNode[attacker].runAnimations(
-                        "a_6",
+                        "a_1003",
                         0,
                         that.nextStepCallback()
                     );
@@ -4405,7 +4405,7 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect1800_3, EFFECT_Z_ORDER);
 
                             var nextStepCallback2 = that.nextStepCallback();
-                            effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                            effect1800_3.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect1800_3.removeFromParent();
                                 nextStepCallback2();
                             });
@@ -4419,7 +4419,7 @@ var BattleLayer = cc.Layer.extend({
                                 )
                             );
 
-                            effect1800_2.controller.ccbNode.setRotation(lz.getAngle(attackerLocate, targetLocate));
+                            effect1800_2.setRotation(lz.getAngle(attackerLocate, targetLocate));
                             effect1800_2.runAction(action.clone());
                             effect1800_3.runAction(action);
                         })();

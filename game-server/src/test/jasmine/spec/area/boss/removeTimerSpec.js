@@ -79,7 +79,8 @@ describe("Area Server", function() {
               },
               cd: {
                 lastAtkTime: new Date().getTime()
-              }
+              },
+              resetDate: shortDateString()
             }, function(res) {
               loginWith('arthur', '1', 1);
             });

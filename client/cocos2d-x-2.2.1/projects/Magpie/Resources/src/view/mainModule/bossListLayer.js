@@ -20,6 +20,8 @@ var BossListLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+        this.updateGuide();
+        this._updateMark();
 
         lz.um.beginLogPageView("Boss界面");
     },
@@ -28,6 +30,7 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer onExit");
 
         this._super();
+        this._updateMark();
 
         lz.um.endLogPageView("Boss界面");
     },
@@ -188,6 +191,14 @@ var BossListLayer = cc.Layer.extend({
         gameData.boss.updateBossList(function () {
             that._addScrollView();
         });
+
+
+    },
+
+    _updateMark: function() {
+        cc.log("BossListLayer _updateMark");
+
+        gameMark.setBossMark(false);
     },
 
     _update: function () {
@@ -458,6 +469,21 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         BossHelpLabel.pop();
+    },
+
+    updateGuide: function () {
+        cc.log("BossListLayer updateGuide");
+
+        if (gameGuide.get("bossExplain")) {
+            gameGuide.set("bossExplain", false);
+            var url = gameGuide.getExplainEffect("boss");
+            var effect = cc.BuilderReader.load(main_scene_image[url], this);
+            effect.setPosition(gameFit.gameGuide.effectPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect, 10);
+        }
     }
 
 });

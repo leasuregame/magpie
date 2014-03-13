@@ -432,7 +432,7 @@ countDamage = (bl) ->
 
 countRewards = (totalDamage, boss, bl, player) ->
   bossInfo = table.getTableItem('boss', boss.tableId)
-  rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.rewards_inc or 0
+  rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.reward_inc or 0
 
   money = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_MONEY.DAMAGE*BOSSCONFIG.DAMAGE_TO_MONEY.MONEY*(100+rewardsInc)/100
   honor = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_HONOR.DAMAGE*BOSSCONFIG.DAMAGE_TO_HONOR.HONOR*(100+rewardsInc)/100

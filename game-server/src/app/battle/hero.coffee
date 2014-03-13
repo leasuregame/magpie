@@ -27,8 +27,8 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @spirit_hp = parseInt attrs.incs?.spirit_hp(100+player.inc_scale)/100 or 0
-    @spirit_atk = parseInt attrs.incs?.spirit_atk(100+player.inc_scale)/100 or 0
+    @spirit_hp = parseInt attrs.incs?.spirit_hp*(100+player.inc_scale)/100 or 0
+    @spirit_atk = parseInt attrs.incs?.spirit_atk*(100+player.inc_scale)/100 or 0
     @init_hp = @hp = parseInt (attrs.hp + @spirit_hp)*(100+player.inc_scale)/100
     @init_atk = @atk = parseInt (attrs.atk + @spirit_atk)*(100+player.inc_scale)/100
 

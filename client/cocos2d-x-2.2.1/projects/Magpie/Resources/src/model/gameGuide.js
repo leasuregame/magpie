@@ -16,7 +16,8 @@ var FUNCTION_OPEN = {
     "2": {
         "tableName": "pass",
         "tip": "天道已开启，现在可参与。",
-        "name": "passGuide"
+        "name": "instancesGuide",
+        "childName": "passGuide"
     },
     "3": {
         "tableName": "card3_position",
@@ -57,6 +58,7 @@ var EXPLAIN = {
 var gameGuide = {
     _tournamentGuide: false,
     _passGuide: false,
+    _instancesGuide: false,
     _treasureHuntGuide: false,
     _rankGuide: false,
     _card3Guide: false,
@@ -83,6 +85,10 @@ var gameGuide = {
                 });
 
                 this.set(guide.name, true);
+
+                if (guide.childName) {
+                    this.set(guide.childName, true);
+                }
 
                 if (EXPLAIN[guide.tableName]) {
                     this.set(guide.tableName + "Explain", true);

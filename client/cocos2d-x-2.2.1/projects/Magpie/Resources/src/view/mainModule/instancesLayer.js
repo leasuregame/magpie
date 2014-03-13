@@ -7,6 +7,12 @@ var InstancesLayer = cc.Layer.extend({
 
     _taskLayerItem: null,
     _passLayerItem: null,
+    _passGuide: null,
+
+    onEnter: function () {
+        this._super();
+        this.updateGuide();
+    },
 
     init: function () {
         cc.log("InstancesLayer init");
@@ -67,6 +73,16 @@ var InstancesLayer = cc.Layer.extend({
         return true;
     },
 
+    updateGuide: function () {
+        cc.log("InstancesLayer updateGuide");
+
+        if (gameGuide.get("passGuide") && !this._passGuide) {
+            this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._passGuide.setPosition(this._instancesLayerFit.passLayerItemPoint);
+            this.addChild(this._passGuide, 2);
+        }
+    },
+
     _onClickTaskLayer: function () {
         cc.log("ShopLayer _onClickVipLayer");
 
@@ -87,6 +103,12 @@ var InstancesLayer = cc.Layer.extend({
         if (gameData.player.get("lv") < limitLv) {
             TipLayer.tip(limitLv + "级开放");
             return;
+        }
+
+        if (this._passGuide) {
+            this._passGuide.removeFromParent();
+            this._passGuide = null;
+            gameGuide.set("passGuide", false);
         }
 
         this._taskLayerItem.setEnabled(true);

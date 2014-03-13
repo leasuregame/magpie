@@ -27,7 +27,7 @@ var MainMenuLayer = cc.Layer.extend({
         [ShopLayer]
     ],
 
-    _passGuide: null,
+    _instancesGuide: null,
     _tournamentGuide: null,
     _bossGuide: null,
 
@@ -105,16 +105,15 @@ var MainMenuLayer = cc.Layer.extend({
         var basePoint = this._mainMenuLayerFit.itemBasePoint;
         var offsetX = this._mainMenuLayerFit.itemOffsetX;
 
-        if (gameGuide.get("passGuide") && !this._passGuide) {
-            this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._passGuide.setRotation(180);
-            this._passGuide.setPosition(cc.p(basePoint.x + offsetX, basePoint.y));
-            this.addChild(this._passGuide);
+        if (gameGuide.get("instancesGuide") && !this._instancesGuide) {
+            this._instancesGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._instancesGuide.setRotation(180);
+            this._instancesGuide.setPosition(cc.p(basePoint.x + offsetX, basePoint.y));
+            this.addChild(this._instancesGuide);
         }
 
-        if(gameGuide.get("bossGuide") && !this._bossGuide) {
+        if (gameGuide.get("bossGuide") && !this._bossGuide) {
             this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect91);
-            this._bossGuide.setRotation(180);
             this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
             this.addChild(this._bossGuide);
         }
@@ -132,14 +131,20 @@ var MainMenuLayer = cc.Layer.extend({
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
             if (index == 1) {
-                if (this._passGuide) {
-                    this._passGuide.removeFromParent();
-                    this._passGuide = null;
-                    gameGuide.set("passGuide", false);
+                if (this._instancesGuide) {
+                    this._instancesGuide.removeFromParent();
+                    this._instancesGuide = null;
+                    gameGuide.set("instancesGuide", false);
                 }
             }
 
-            if(index == 2) {
+            if (index == 2) {
+                var limitLv = outputTables.function_limit.rows[1].boss;
+                if (gameData.player.get("lv") < limitLv) {
+                    TipLayer.tip(limitLv + "级开放");
+                    return;
+                }
+
                 if (this._bossGuide) {
                     this._bossGuide.removeFromParent();
                     this._bossGuide = null;

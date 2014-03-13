@@ -2,6 +2,8 @@ Hero = require './hero'
 Skill = require './skill'
 tab = require '../manager/table'
 
+DEFAULT_SKILL_ID = 1
+
 class BossHero extends Hero
   init: (data, player) ->
     @hpInfo = data.hpInfo
@@ -10,18 +12,18 @@ class BossHero extends Hero
     super data, player
 
   loadCardInfo: ->
-    card_config = tab.getTableItem('boss_card', @card_id)
-    if not card_config
+    boss_config = tab.getTableItem('boss_card', @card_id)
+    if not boss_config
       throw new Error('配置表错误，找不到怪物卡牌配置信息' + @card_id)
 
-    @init_atk = @atk = card_config.atk    
-    @total_hp = @init_hp = @hp = card_config.hp
+    @init_atk = @atk = boss_config.atk    
+    @total_hp = @init_hp = @hp = boss_config.hp
 
     @star = 3
-    @skill_id = card_config.skill_id
+    @skill_id = boss_config.card_id_linktarget?.skill_id or DEFAULT_SKILL_ID
     @sp_value = [
-      {name: 'crit', value: card_config.crit_rate},
-      {name: 'dodge', value: card_config.dodge_rate}
+      {name: 'crit', value: boss_config.crit_rate},
+      {name: 'dodge', value: boss_config.dodge_rate}
     ]
 
   loadSkill: ->

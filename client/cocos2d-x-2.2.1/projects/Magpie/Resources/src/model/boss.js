@@ -320,7 +320,7 @@ var Boss = Entity.extend({
         });
     },
 
-    showFriendHelpRewardList: function(cb) {
+    showFriendHelpRewardList: function (cb) {
         cc.log("Boss showFriendHelpRewardList");
 
         var that = this;
@@ -473,6 +473,9 @@ var Boss = Entity.extend({
 
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
+        if (this.get("cd") == 0) {
+            gameMark.setBossMark(true);
+        }
     },
 
     _kneelCountChangeEvent: function () {

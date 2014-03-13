@@ -55,7 +55,7 @@ class Manager
     battle = new Battle(attacker, defender)
     battle.process()
 
-    res = bl.reports()
+    res = battleLog.reports()
     res.type = BATTLELOG_TYPE.PVP
     callback(null, res)
 
@@ -66,7 +66,7 @@ class Manager
     battle = new Battle(attacker, defender)
     battle.process()
 
-    res = bl.reports()
+    res = battleLog.reports()
     res.type = BATTLELOG_TYPE.BOSS
     callback(null, res)
 

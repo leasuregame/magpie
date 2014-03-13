@@ -242,8 +242,9 @@ var BossListLayer = cc.Layer.extend({
             var y = scrollViewHeight - 68 - 136 * i;
             var boss = bossList[i];
             var bossItem = null;
+            var bossTable = outputTables.boss.rows[boss.tableId];
             var bossCard = Card.create({
-                tableId: outputTables.boss.rows[boss.tableId].boss_id,
+                tableId: bossTable.boss_id,
                 lv: 1,
                 skillLv: 1
             });
@@ -284,8 +285,37 @@ var BossListLayer = cc.Layer.extend({
 
             var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
             bossNameLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossNameLabel.setPosition(cc.p(200, y + 32));
+            bossNameLabel.setPosition(cc.p(197, y + 32));
             scrollViewLayer.addChild(bossNameLabel);
+
+            var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
+
+            if (addition > 0) {
+                var rewardAdditionLabel = ColorLabelTTF.create(
+                    {
+                        string: "（奖励加成",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true
+                    },
+                    {
+                        string: addition + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true,
+                        color: cc.c3b(117, 255, 57)
+                    },
+                    {
+                        string: "）",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true
+                    }
+                );
+                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+                rewardAdditionLabel.setPosition(cc.p(320, y + 32));
+                scrollViewLayer.addChild(rewardAdditionLabel);
+            }
 
             var runAwayTimeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({

@@ -290,12 +290,15 @@ Handler::kneel = (msg, session, next) ->
 
 Handler::bossList = (msg, session, next) ->
   playerId = session.get('playerId')
-  playerName = session.get('playerName')
 
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
     (player, cb) ->
+      boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
+      if player.lv < boss_limit_level
+        return cb({code: 501, msg: "#{boss_limit_level}级开放"})
+
       ids = player.friends.map (f) -> f.id
       dao.boss.bossList playerId, ids, cb
     (items, cb) ->
@@ -304,6 +307,7 @@ Handler::bossList = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
+    console.log 'boss count: ', results.length
     next(null, {
       code: 200,
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
@@ -311,8 +315,10 @@ Handler::bossList = (msg, session, next) ->
 
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
-  ((group.mine?.sort (x, y) -> x.status - y.status > 0) or [])
-  .concat((group.friend?.sort (x, y) -> x.status - y.status > 0) or [])
+  
+  mine = (group.mine?.sort (x, y) -> x.status - y.status > 0) or []
+  friend = (group.friend?.sort (x, y) -> x.status - y.status > 0) or []
+  mine.concat friend
 
 Handler::attack = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -401,10 +407,9 @@ countDamageRewards = (rank) ->
     honor: honor
 
 checkBossStatus = (items, cb) ->
-  console.log items
   timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
   ids = timeOutItems.map (i) -> i.id
-  console.log ids
+
   if ids.length is 0
     return cb(null, items)
 

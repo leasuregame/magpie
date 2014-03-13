@@ -194,17 +194,17 @@ var AttackDetailsLayer = LazyLayer.extend({
 
             var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
             moneyIcon.setAnchorPoint(cc.p(0, 0));
-            moneyIcon.setPosition(cc.p(250, y - 5));
+            moneyIcon.setPosition(cc.p(220, y - 5));
             moneyIcon.setScale(0.9);
             scrollViewLayer.addChild(moneyIcon);
 
             var moneyLabel = cc.LabelTTF.create(details.money + "", "STHeitiTC-Medium", 22);
             moneyLabel.setAnchorPoint(cc.p(0, 0));
-            moneyLabel.setPosition(cc.p(300, y + 5));
+            moneyLabel.setPosition(cc.p(270, y + 5));
             scrollViewLayer.addChild(moneyLabel);
 
             if (details.moneyAdd && details.moneyAdd > 0) {
-                var x = 300 + moneyLabel.getContentSize().width;
+                var x = 270 + moneyLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
                 leftBracket.setAnchorPoint(cc.p(0, 0));
@@ -227,17 +227,17 @@ var AttackDetailsLayer = LazyLayer.extend({
 
             var honorIcon = cc.Sprite.create(main_scene_image.icon405);
             honorIcon.setAnchorPoint(cc.p(0, 0));
-            honorIcon.setPosition(cc.p(250, y - 48));
+            honorIcon.setPosition(cc.p(220, y - 48));
             honorIcon.setScale(0.9);
             scrollViewLayer.addChild(honorIcon);
 
             var honorLabel = cc.LabelTTF.create(details.honor + "", "STHeitiTC-Medium", 22);
             honorLabel.setAnchorPoint(cc.p(0, 0));
-            honorLabel.setPosition(cc.p(300, y - 40));
+            honorLabel.setPosition(cc.p(270, y - 40));
             scrollViewLayer.addChild(honorLabel);
 
             if (details.honorAdd && details.honorAdd > 0) {
-                var x = 300 + honorLabel.getContentSize().width;
+                var x = 270 + honorLabel.getContentSize().width;
 
                 var leftBracket = cc.LabelTTF.create("（", "STHeitiTC-Medium", 22);
                 leftBracket.setAnchorPoint(cc.p(0, 0));

@@ -34,6 +34,7 @@ var BattleCardNode = cc.Node.extend({
     _animationManager: null,
     _hpProgress: null,
     _spiritHpProgress: null,
+    _cb: null,
 
     init: function (data, index) {
         cc.log("BattleCardNode init");
@@ -234,7 +235,12 @@ var BattleCardNode = cc.Node.extend({
         }
 
         tweenDuration = tweenDuration || 0;
-        this._cb = cb || function () {
+
+        this._cb = function () {
+            if (cb) {
+                cb();
+                cb = null;
+            }
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);

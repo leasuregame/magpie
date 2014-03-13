@@ -119,6 +119,7 @@ var appFiles = [
     'src/view/mainModule/bossHelpLabel.js',
     'src/view/mainModule/bossLayer.js',
     'src/view/mainModule/bossListLayer.js',
+    'src/view/mainModule/bossRewardLabel.js',
     'src/view/mainModule/rechargeLayer.js',
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldCardsLayer.js',

@@ -5,7 +5,6 @@ var TYPE_THIS_WEEK = 1;
 var TYPE_LAST_WEEK = 0;
 
 var DamageRankLayer = LazyLayer.extend({
-    _damageRankLayerFit: null,
 
     _scrollView: null,
     _thisWeekItem: null,
@@ -29,8 +28,6 @@ var DamageRankLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._damageRankLayerFit = gameFit.mainScene.damageRankLayer;
-
         this._selectType = TYPE_THIS_WEEK;
         this._rankList = [];
 
@@ -39,7 +36,7 @@ var DamageRankLayer = LazyLayer.extend({
         this.addChild(bgLayer);
 
         this._frameLayer = cc.Layer.create();
-        this._frameLayer.setPosition(this._damageRankLayerFit.frameLayerPoint);
+        this._frameLayer.setPosition(gameFit.GAME_BOTTOM_LEFT_POINT);
         this.addChild(this._frameLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);

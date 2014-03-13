@@ -125,7 +125,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>40</real>
+								<real>60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -266,7 +266,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-40</real>
+								<real>-60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -386,7 +386,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>100</real>
+								<real>80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -402,7 +402,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>200</integer>
+								<integer>80</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -715,7 +715,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

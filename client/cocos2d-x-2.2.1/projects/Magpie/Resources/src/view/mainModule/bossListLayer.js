@@ -220,7 +220,7 @@ var BossListLayer = cc.Layer.extend({
 
         var bossList = gameData.boss.get("bossList");
         var len = bossList.length;
-        var scrollViewHeight = len * 135;
+        var scrollViewHeight = len * 136;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
             scrollViewHeight = this._bossListLayerFit.scrollViewHeight;
@@ -229,9 +229,14 @@ var BossListLayer = cc.Layer.extend({
         this._tipIcon.setVisible(len == 0);
 
         for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 78 - 136 * i;
+            var y = scrollViewHeight - 68 - 136 * i;
             var boss = bossList[i];
             var bossItem = null;
+            var bossCard = Card.create({
+                tableId: outputTables.boss.rows[boss.tableId].boss_id,
+                lv: 1,
+                skillLv: 1
+            });
 
             if (boss.finder == gameData.player.get("name")) {
                 bossItem = cc.MenuItemImage.create(
@@ -257,27 +262,20 @@ var BossListLayer = cc.Layer.extend({
                 menu.addChild(bossItem);
             }
 
-            var bossIcon = CardHeadNode.create(Card.create({
-                tableId: 194,
-                lv: 1,
-                skillLv: 1
-            }));
-
-            bossIcon.setAnchorPoint(cc.p(0, 0.5));
-            bossIcon.setPosition(cc.p(45, y));
-            scrollViewLayer.addChild(bossIcon);
+            var bossHeadNode = CardHeadNode.create(bossCard);
+            bossHeadNode.setAnchorPoint(cc.p(0, 0.5));
+            bossHeadNode.setPosition(cc.p(45, y));
+            scrollViewLayer.addChild(bossHeadNode);
 
             var msgBgIcon = cc.Sprite.create(main_scene_image.icon393);
             msgBgIcon.setAnchorPoint(cc.p(0, 0.5));
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossId = outputTables.boss.rows[boss.tableId].boss_id;
-            var card = outputTables.cards.rows[bossId];
-            var bossTypeLabel = cc.LabelTTF.create(card.name, "STHeitiTC-Medium", 24);
-            bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossTypeLabel.setPosition(cc.p(200, y + 32));
-            scrollViewLayer.addChild(bossTypeLabel);
+            var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
+            bossNameLabel.setAnchorPoint(cc.p(0, 0.5));
+            bossNameLabel.setPosition(cc.p(200, y + 32));
+            scrollViewLayer.addChild(bossNameLabel);
 
             var runAwayTimeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
@@ -399,16 +397,18 @@ var BossListLayer = cc.Layer.extend({
         }
 
         var that = this;
-        gameData.boss.getFriendHelpReward(function (data) {
-            cc.log(data);
-            GiftBagLayer.pop({
-                reward: data,
-                type: GET_GIFT_BAG,
-                titleType: TYPE_LOOK_REWARD,
-                cb: function () {
-                    lz.tipReward(data);
-                    that.update();
-                }
+
+        var cb = function () {
+            gameData.boss.getFriendHelpReward(function (reward) {
+                lz.tipReward(reward);
+                that.update();
+            })
+        };
+
+        gameData.boss.showFriendHelpRewardList(function (data) {
+            BossRewardLabel.pop({
+                data: data,
+                cb: cb
             });
         });
     },

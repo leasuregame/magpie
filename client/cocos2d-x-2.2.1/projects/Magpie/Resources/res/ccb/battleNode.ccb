@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>49</integer>
+	<integer>50</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -19172,7 +19172,7 @@
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
-		<integer>2</integer>
+		<integer>0</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -19208,6 +19208,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -21003,7 +21005,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

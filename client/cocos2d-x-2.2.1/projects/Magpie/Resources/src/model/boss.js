@@ -229,7 +229,7 @@ var Boss = Entity.extend({
                 that.push(msg.boss);
                 that.set("cd", msg.cd);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
             } else {
@@ -312,6 +312,28 @@ var Boss = Entity.extend({
                 cb(msg);
             } else {
                 cc.log("Boss getFriendHelpReward fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
+    showFriendHelpRewardList: function(cb) {
+        cc.log("Boss showFriendHelpRewardList");
+
+        var that = this;
+        lz.server.request("area.bossHandler.friendRewardList", {
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Boss showFriendHelpRewardList success");
+
+                cb(data.msg);
+            } else {
+                cc.log("Boss showFriendHelpRewardList fail");
 
                 TipLayer.tip(data.msg);
 

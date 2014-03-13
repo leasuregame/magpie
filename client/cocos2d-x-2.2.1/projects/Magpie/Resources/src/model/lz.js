@@ -397,7 +397,6 @@ lz.tipReward = function (reward) {
  * fmt: 格式
  * */
 lz.getTimeStr = function (args) {
-
     var date = (args && args.time) ? new Date(args.time) : new Date();
     var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";
 
@@ -418,6 +417,7 @@ lz.getTimeStr = function (args) {
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
         }
     }
+
     return fmt;
 };
 

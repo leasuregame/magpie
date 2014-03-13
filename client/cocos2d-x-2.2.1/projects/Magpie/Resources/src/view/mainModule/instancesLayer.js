@@ -99,12 +99,6 @@ var InstancesLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var limitLv = outputTables.function_limit.rows[1].pass;
-        if (gameData.player.get("lv") < limitLv) {
-            TipLayer.tip(limitLv + "级开放");
-            return;
-        }
-
         if (this._passGuide) {
             this._passGuide.removeFromParent();
             this._passGuide = null;
@@ -121,6 +115,10 @@ var InstancesLayer = cc.Layer.extend({
         cc.log("InstancesLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
+        if (runLayer.canEnter && !runLayer.canEnter()) {
+            return;
+        }
+
         if (!(this._nowLayer instanceof runLayer)) {
             if (this._nowLayer != null) this.removeChild(this._nowLayer);
             this._nowLayer = runLayer.create();
@@ -128,6 +126,7 @@ var InstancesLayer = cc.Layer.extend({
         }
     }
 });
+
 
 InstancesLayer.create = function () {
     cc.log("InstancesLayer create");

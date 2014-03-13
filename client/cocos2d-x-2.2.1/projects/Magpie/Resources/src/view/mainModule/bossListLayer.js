@@ -195,7 +195,7 @@ var BossListLayer = cc.Layer.extend({
 
     },
 
-    _updateMark: function() {
+    _updateMark: function () {
         cc.log("BossListLayer _updateMark");
 
         gameMark.setBossMark(false);
@@ -485,8 +485,8 @@ var BossListLayer = cc.Layer.extend({
             this.addChild(effect, 10);
         }
     }
-
 });
+
 
 BossListLayer.create = function () {
     cc.log("BossListLayer create");
@@ -497,4 +497,17 @@ BossListLayer.create = function () {
         return ref;
     }
     return null;
+};
+
+BossListLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].boss;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("降魔" + limitLv + "级开放");
+
+    return false;
 };

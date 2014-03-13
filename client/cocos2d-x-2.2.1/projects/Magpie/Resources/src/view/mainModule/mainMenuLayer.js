@@ -152,12 +152,6 @@ var MainMenuLayer = cc.Layer.extend({
             }
 
             if (index == 2) {
-                var limitLv = outputTables.function_limit.rows[1].boss;
-                if (gameData.player.get("lv") < limitLv) {
-                    TipLayer.tip(limitLv + "级开放");
-                    return;
-                }
-
                 if (this._bossGuide) {
                     this._bossGuide.removeFromParent();
                     this._bossGuide = null;
@@ -188,8 +182,6 @@ var MainMenuLayer = cc.Layer.extend({
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
             }
-
-
         }
     }
 });

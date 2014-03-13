@@ -613,6 +613,7 @@ var TournamentLayer = cc.Layer.extend({
     }
 });
 
+
 TournamentLayer.create = function () {
     var res = new TournamentLayer();
 

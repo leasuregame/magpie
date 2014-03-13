@@ -136,7 +136,21 @@ var MainMenuLayer = cc.Layer.extend({
     updateMark: function () {
         cc.log("MainMenuLayer updateMark");
 
-        this._bossMark.setVisible(gameMark.getBossMark());
+        var mark = gameMark.getBossMark();
+
+        if (mark) {
+            var nowLayer = MainScene.getInstance().getLayer();
+            var len = this._layer[2].length;
+
+            for (var i = 0; i < len; ++i) {
+                if (nowLayer instanceof this._layer[2][i]) {
+                    gameMark.setBossMark(false);
+                    return;
+                }
+            }
+        }
+
+        this._bossMark.setVisible(mark);
     },
 
     _onClickLayer: function (index) {
@@ -152,12 +166,6 @@ var MainMenuLayer = cc.Layer.extend({
             }
 
             if (index == 2) {
-                var limitLv = outputTables.function_limit.rows[1].boss;
-                if (gameData.player.get("lv") < limitLv) {
-                    TipLayer.tip(limitLv + "级开放");
-                    return;
-                }
-
                 if (this._bossGuide) {
                     this._bossGuide.removeFromParent();
                     this._bossGuide = null;
@@ -188,8 +196,6 @@ var MainMenuLayer = cc.Layer.extend({
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
             }
-
-
         }
     }
 });

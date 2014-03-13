@@ -218,6 +218,13 @@ var entryGame = function(account, areaId) {
   });
 };
 
+var shortDateString = function() {
+  var now;
+
+  now = new Date();
+  return "" + (now.getFullYear()) + "-" + (now.getMonth() + 1) + "-" + (now.getDate());
+};
+
 
 var dologin = function() {
   async.timesSeries(300, function(i, done) {

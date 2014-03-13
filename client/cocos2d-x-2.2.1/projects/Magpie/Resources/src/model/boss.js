@@ -464,7 +464,7 @@ var Boss = Entity.extend({
     },
 
     additionNeedGold: function (times) {
-        return ((1 + times) * times / 2) * 20;
+        return times * 20;
     },
 
     removeCdNeedGold: function () {

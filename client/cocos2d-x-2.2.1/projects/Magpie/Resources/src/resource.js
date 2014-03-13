@@ -1269,7 +1269,6 @@ var main_scene_image = {
     boss2_plist: "res/effect/effect/boss2.plist",
     boss3_png: "res/effect/effect/boss3.png",
     boss3_plist: "res/effect/effect/boss3.plist"
-
 };
 
 var main_scene_res = [

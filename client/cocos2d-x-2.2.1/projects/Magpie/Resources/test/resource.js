@@ -540,7 +540,7 @@ var main_scene_image = {
     p28: effect_scene_path + "effect/" + "p28.png",
     p29: effect_scene_path + "effect/" + "p29.png",
     p30: effect_scene_path + "effect/" + "p30.png",
-    
+    p31: effect_scene_path + "effect/" + "p31.png",
     p32: effect_scene_path + "effect/" + "p32.png",
     p33: effect_scene_path + "effect/" + "p33.png",
     p34: effect_scene_path + "effect/" + "p34.png",
@@ -635,6 +635,8 @@ var main_scene_image = {
     p123: effect_scene_path + "effect/" + "p123.png",
     p124: effect_scene_path + "effect/" + "p124.png",
     p125: effect_scene_path + "effect/" + "p125.png",
+    boss3_png: effect_scene_path + "effect/" + "boss3.png",
+    boss3_plist: effect_scene_path + "effect/" + "boss3.plist",
 
     
     
@@ -839,6 +841,7 @@ var main_scene_image = {
    
     spiritNode: ccb_scene_path + "spiritNode.ccbi",
     battleNode: ccb_scene_path + "battleNode.ccbi",
+    card20002: ccb_scene_path + "card20002.ccbi",
 
 
    

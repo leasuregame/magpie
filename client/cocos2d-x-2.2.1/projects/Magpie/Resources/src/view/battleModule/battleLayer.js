@@ -1963,7 +1963,7 @@ var BattleLayer = cc.Layer.extend({
                             effect400_2.setPosition(targetLocate);
                             that.addChild(effect400_2, EFFECT_Z_ORDER);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect400_2.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -2126,7 +2126,7 @@ var BattleLayer = cc.Layer.extend({
                             effect402.setPosition(targetLocate);
                             that.addChild(effect402, EFFECT_Z_ORDER);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect402.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -2296,7 +2296,7 @@ var BattleLayer = cc.Layer.extend({
                             effect404_2.setPosition(targetLocate);
                             that.addChild(effect404_2, EFFECT_Z_ORDER - 1);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect404_2.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -2499,7 +2499,7 @@ var BattleLayer = cc.Layer.extend({
                             effect500_2.setPosition(targetLocate);
                             that.addChild(effect500_2, EFFECT_Z_ORDER - 1);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect500_2.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -2561,7 +2561,7 @@ var BattleLayer = cc.Layer.extend({
                             effect501.setPosition(targetLocate);
                             that.addChild(effect501, EFFECT_Z_ORDER);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect501.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -2674,7 +2674,7 @@ var BattleLayer = cc.Layer.extend({
                             effect502.setPosition(targetLocate);
                             that.addChild(effect502, EFFECT_Z_ORDER);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect502.setScale(BOSS_CARD_SCALE);
                             }
 
@@ -3029,7 +3029,7 @@ var BattleLayer = cc.Layer.extend({
                             effect601_2.setPosition(targetLocate);
                             that.addChild(effect601_2, EFFECT_Z_ORDER);
 
-                            if (that._type) {
+                            if (targetNode.isBossCard()) {
                                 effect601_2.setScale(BOSS_CARD_SCALE);
                             }
 

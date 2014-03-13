@@ -268,10 +268,10 @@ class Manager
             cb(null, data)
     else
       dao.boss.bossExists player.id, (err, exists) ->
-        if not exists
+        if not exists and player.task.boss.found
           player.setBossFound(false)
+          player.incBossCount()
         
-        console.log 'boss exists: ', err, exists
         cb(null, data)
 
 lineUpToObj = (lineUp) ->

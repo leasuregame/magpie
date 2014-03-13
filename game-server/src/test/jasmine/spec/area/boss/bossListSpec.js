@@ -67,7 +67,7 @@ describe("Area Server", function() {
               expect(boss.countLeft).toEqual(10);
               expect(boss.status).toEqual(1);
 
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('12.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(12);
 
             });
           });
@@ -100,7 +100,7 @@ describe("Area Server", function() {
               expect(boss.countLeft).toEqual(9);
               expect(boss.status).toEqual(2);
 
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('11.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(11);
 
             });
           });
@@ -194,7 +194,7 @@ describe("Area Server", function() {
               expect(boss.tableId).toEqual(1);
               expect(boss.countLeft).toEqual(0);
               expect(boss.status).toEqual(3);
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('6.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(6);
 
               doAjax('/boss/' + boss.bossId, {}, function(res) {
                 expect(res.data.status).toEqual(3);
@@ -258,7 +258,7 @@ describe("Area Server", function() {
               expect(boss.tableId).toEqual(1);
               expect(boss.countLeft).toEqual(1);
               expect(boss.status).toEqual(5);
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('6.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(6);
 
               doAjax('/boss/' + boss.bossId, {}, function(res) {
                 expect(res.data.status).toEqual(5);
@@ -361,7 +361,7 @@ describe("Area Server", function() {
               expect(boss.countLeft).toEqual(9);
               expect(boss.status).toEqual(2);
 
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('11.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(11);
 
             });
           });
@@ -455,7 +455,7 @@ describe("Area Server", function() {
               expect(boss.tableId).toEqual(1);
               expect(boss.countLeft).toEqual(0);
               expect(boss.status).toEqual(3);
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('6.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(6);
 
               doAjax('/boss/' + boss.bossId, {}, function(res) {
                 expect(res.data.status).toEqual(3);
@@ -519,7 +519,7 @@ describe("Area Server", function() {
               expect(boss.tableId).toEqual(1);
               expect(boss.countLeft).toEqual(1);
               expect(boss.status).toEqual(5);
-              expect((boss.timeLeft / 1000 / 60 / 60).toFixed(2)).toEqual('6.00');
+              expect(Math.round(boss.timeLeft / 1000 / 60 / 60)).toEqual(6);
 
               doAjax('/boss/' + boss.bossId, {}, function(res) {
                 expect(res.data.status).toEqual(5);

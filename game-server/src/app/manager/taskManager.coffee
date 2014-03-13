@@ -234,6 +234,11 @@ class Manager
 
         cb(null, card)
   @seekBoss: (data, player, cb) ->
+    ### boss等级限制判断 ###
+    boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
+    if player.lv < boss_limit_level
+      return cb(null, data)
+
     player.incBossCount()
 
     findBossRate = table.getTableItem('values', 'findBossRate')?.value

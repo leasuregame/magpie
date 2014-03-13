@@ -43,6 +43,10 @@ var BossLayer = cc.Layer.extend({
         titleIcon.setPosition(this._bossLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect3, this);
+        bgEffect.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(bgEffect);
+
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setAnchorPoint(cc.p(0, 0));
         headLabel.setPosition(this._bossLayerFit.headLabelPoint);
@@ -137,10 +141,11 @@ var BossLayer = cc.Layer.extend({
 
         var additionBgLabel = cc.Sprite.create(main_scene_image.icon401);
         additionBgLabel.setAnchorPoint(cc.p(0.5, 0));
+        additionBgLabel.setScaleX(1.2);
         additionBgLabel.setPosition(this._bossLayerFit.additionBgLabelPoint);
         this.addChild(additionBgLabel);
 
-        this._additionLabel = cc.LabelTTF.create("攻击加成: 0%", "STHeitiTC-Medium", 20);
+        this._additionLabel = cc.LabelTTF.create("攻击及生命加成: 0%", "STHeitiTC-Medium", 20);
         this._additionLabel.setAnchorPoint(cc.p(0.5, 0));
         this._additionLabel.setPosition(this._bossLayerFit.additionLabelPoint);
         this.addChild(this._additionLabel);
@@ -167,19 +172,18 @@ var BossLayer = cc.Layer.extend({
         this.addChild(this._attackNode, 2);
 
         var attackIcon = cc.Sprite.create(main_scene_image.icon400);
-        attackIcon.setScale(0.8);
         attackIcon.setAnchorPoint(cc.p(0.5, 0));
         attackIcon.setPosition(this._bossLayerFit.attackIconPoint);
         this._attackNode.addChild(attackIcon);
         this._attackNode.setVisible(false);
 
         var goldIcon2 = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon2.setScale(0.5);
+        goldIcon2.setScale(0.8);
         goldIcon2.setAnchorPoint(cc.p(0.5, 0));
         goldIcon2.setPosition(this._bossLayerFit.goldIcon2Point);
         this._attackNode.addChild(goldIcon2);
 
-        this._expendGoldLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 16);
+        this._expendGoldLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 20);
         this._expendGoldLabel.setColor(cc.c3b(255, 255, 255));
         this._expendGoldLabel.setBgColor(cc.c3b(54, 7, 14));
         this._expendGoldLabel.setAnchorPoint(cc.p(0, 0));
@@ -278,7 +282,7 @@ var BossLayer = cc.Layer.extend({
         cc.log("BossLayer update");
 
         this._goldLabel.setString(gameData.player.get("gold"));
-        this._additionLabel.setString("攻击加成: " + this._addition * 20 + "%");
+        this._additionLabel.setString("攻击及生命加成: " + this._addition * 20 + "%");
 
         this._attackIcon.setVisible(this._addition == 0);
         this._attackNode.setVisible(this._addition != 0);
@@ -315,6 +319,14 @@ var BossLayer = cc.Layer.extend({
         if (gameData.boss.canAddition(this._addition + 1)) {
             this._addition++;
             this.update();
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect92, this);
+            effect.setScale(0.8);
+            effect.setPosition(this._bossLayerFit.effectPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect);
         }
     },
 

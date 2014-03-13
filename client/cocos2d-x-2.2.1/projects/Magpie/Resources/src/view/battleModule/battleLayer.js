@@ -38,6 +38,7 @@ var BattleLayer = cc.Layer.extend({
     _battleNode: null,
     _spiritNode: null,
     _locate: null,
+    _lastTipOffset: null,
     _battleMidpoint: null,
     _lineUpMidpoint: null,
     _isPlayback: false,
@@ -170,11 +171,11 @@ var BattleLayer = cc.Layer.extend({
         BattlePlayer.getInstance().next();
     },
 
-    tip: function (key, name, str) {
+    tip: function (key, name, str, random) {
         cc.log("BattleLayer tip");
 
         var tipNode = cc.BuilderReader.load(main_scene_image.tipNode, this);
-        tipNode.setPosition(this._locate[key]);
+        tipNode.setPosition(this._getTipPoint(key, random));
         this.addChild(tipNode, TIP_Z_ORDER);
 
         if (tipNode) {
@@ -189,7 +190,7 @@ var BattleLayer = cc.Layer.extend({
         }
     },
 
-    tipHarm: function (index, value, isSkill, isCirt) {
+    tipHarm: function (index, value, isSkill, isCirt, random) {
         cc.log("BattleLayer tipHarm");
 
         if (isCirt) {
@@ -223,7 +224,47 @@ var BattleLayer = cc.Layer.extend({
             }
         }
 
-        this.tip(index, name, str);
+        this.tip(index, name, str, random);
+    },
+
+    _getTipPoint: function (key, random) {
+        var point0 = this._locate[key];
+
+        if (!random) {
+            return point0;
+        }
+
+        var x1 = point0.x - 40;
+        var x2 = point0.x + 40;
+        var y1 = point0.y - 85;
+        var y2 = point0.y + 40;
+
+        var lastTipPoint = cc.pAdd(point0, this._lastTipOffset || cc.p(0, 0));
+        var ly1 = lastTipPoint.y - 30;
+        var ly2 = lastTipPoint.y + 30;
+
+        var yAreaList = [];
+
+        if (ly1 > y1) {
+            yAreaList.push({
+                y1: y1,
+                y2: ly1
+            });
+        }
+
+        if (ly2 < y2) {
+            yAreaList.push({
+                y1: ly2,
+                y2: y2
+            })
+        }
+
+        var yArea = yAreaList[lz.randomInt(0, yAreaList.length)];
+
+        point = cc.p(lz.random(x1, x2), lz.random(yArea.y1, yArea.y2));
+        this._lastTipOffset = cc.pSub(point, point0);
+
+        return point;
     },
 
     _getDirection: function (index, isOther) {
@@ -1554,9 +1595,6 @@ var BattleLayer = cc.Layer.extend({
                             var x = (attackerLocate.x + targetLocate.x) / 2;
                             var y = (attackerLocate.y + targetLocate.y) / 2;
                             var point = lz.checkPoint(cc.p(lz.random(x - 100, x + 100), y));
-
-                            cc.log(point.x);
-                            cc.log(point.y);
 
                             var pointArray = [
                                 attackerLocate,
@@ -3164,9 +3202,6 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect701_2, EFFECT_Z_ORDER);
 
                             var effectNodeAnimationManager = effect701_2.animationManager;
-
-                            cc.log(effectNodeAnimationManager);
-
                             var nextStepCallback1 = that.nextStepCallback();
                             effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                                 effect701_2.removeFromParent();
@@ -3192,8 +3227,6 @@ var BattleLayer = cc.Layer.extend({
 
                                 nextStepCallback1();
                             });
-
-                            cc.log(effectNodeAnimationManager.getRunningSequenceName());
 
                             effect701_2.runAction(
                                 cc.EaseSineIn.create(
@@ -4135,7 +4168,7 @@ var BattleLayer = cc.Layer.extend({
                     var damage = damageList[index++];
 
                     targetNode.update(damage);
-                    that.tipHarm(target, damage, false, isCrit);
+                    that.tipHarm(target, damage, false, isCrit, true);
 
                     return 4;
                 }
@@ -4269,7 +4302,7 @@ var BattleLayer = cc.Layer.extend({
                 }
             },
             {
-                times: targetLen,
+                times: 1,
                 fn: function () {
                     that.startShock();
 
@@ -4296,7 +4329,7 @@ var BattleLayer = cc.Layer.extend({
                 }
             },
             {
-                times: 1,
+                times: targetLen,
                 fn: function () {
                     battleStep.recover();
                     while (battleStep.hasNextTarget()) {
@@ -4480,12 +4513,17 @@ var BattleLayer = cc.Layer.extend({
             },
             {
                 fn: function () {
-                    var point = cc.pAdd(attackerLocate, cc.p(index % 2 == 0 ? 100 : -100, 0));
+                    var isLeft = index % 2 != 0;
                     var damage = damageList[index++];
+                    var point = cc.pAdd(attackerLocate, cc.p(isLeft ? -100 : 100, 0));
 
                     var effect1801_2 = cc.BuilderReader.load(main_scene_image.effect1801_2, that);
                     effect1801_2.setPosition(point);
-                    that.addChild(effect1801_2, EFFECT_Z_ORDER);
+                    that.addChild(effect1801_2, EFFECT_Z_ORDER + 1);
+
+                    if (!isLeft) {
+                        effect1801_2.setScaleX(-1);
+                    }
 
                     var effectNodeAnimationManager = effect1801_2.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -4519,7 +4557,7 @@ var BattleLayer = cc.Layer.extend({
                         }
 
                         targetNode.update(damage);
-                        that.tipHarm(target, damage, true, isCrit);
+                        that.tipHarm(target, damage, true, isCrit, true);
 
                         nextStepCallback1();
                     });

@@ -455,7 +455,7 @@ var DamageRankLayer = LazyLayer.extend({
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
-                type: GET_GIFT_BAG,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);

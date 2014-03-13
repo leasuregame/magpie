@@ -323,10 +323,11 @@ var BossLayer = cc.Layer.extend({
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect92, this);
             effect.setScale(0.8);
             effect.setPosition(this._bossLayerFit.effectPoint);
+            this.addChild(effect);
+
             effect.animationManager.setCompletedAnimationCallback(this, function () {
                 effect.removeFromParent();
             });
-            this.addChild(effect);
         }
     },
 

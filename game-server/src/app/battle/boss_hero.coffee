@@ -2,8 +2,6 @@ Hero = require './hero'
 Skill = require './skill'
 tab = require '../manager/table'
 
-DEFAULT_SKILL_ID = 1
-
 class BossHero extends Hero
   init: (data, player) ->
     @hpInfo = data.hpInfo
@@ -20,7 +18,7 @@ class BossHero extends Hero
     @total_hp = @init_hp = @hp = boss_config.hp
 
     @star = 3
-    @skill_id = boss_config.card_id_linktarget?.skill_id or DEFAULT_SKILL_ID
+    @skill_id = boss_config.card_id_linktarget?.skill_id
     @sp_value = [
       {name: 'crit', value: boss_config.crit_rate},
       {name: 'dodge', value: boss_config.dodge_rate}

@@ -52,6 +52,9 @@ var EXPLAIN = {
     },
     "pass": {
         effect: "uiEffect72"
+    },
+    "boss": {
+        effect: "uiEffect94"
     }
 };
 
@@ -116,6 +119,22 @@ var gameGuide = {
     updateBossGuide: function () {
         this.set("bossGuide", true);
         MainScene.getInstance().updateGuide();
+
+        var uid = gameData.player.get("uid");
+        var isFirstMeetBoss = parseInt(sys.localStorage.getItem("meetBoss" + uid)) || 0;
+
+        if (!isFirstMeetBoss) {
+            var point = gameFit.gameGuide.effectPoint;
+            var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect93, this);
+            tipEffect.setPosition(point);
+            tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                tipEffect.removeFromParent();
+            });
+            MainScene.getInstance().getLayer().addChild(tipEffect, 10);
+
+            this.set("bossExplain", true);
+            sys.localStorage.setItem("meetBoss" + uid, 1);
+        }
     },
 
     getExplainEffect: function (name) {

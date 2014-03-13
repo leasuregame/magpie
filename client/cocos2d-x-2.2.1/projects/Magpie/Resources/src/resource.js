@@ -1260,7 +1260,15 @@ var main_scene_image = {
     startAnimation_pop_sound: "res/sound/startAnimationSound/startAnimation_pop_sound.wav",
     passive_skill_afresh: "res/sound/passive_skill_afresh.wav",
     click_building_sound: "res/sound/click_building_sound.wav",
-    click_gold_sound: "res/sound/click_gold_sound.wav"
+    click_gold_sound: "res/sound/click_gold_sound.wav",
+
+    // boss资源
+    boss1_png: "res/effect/effect/boss1.png",
+    boss1_plist: "res/effect/effect/boss1.plist",
+    boss2_png: "res/effect/effect/boss2.png",
+    boss2_plist: "res/effect/effect/boss2.plist",
+    boss3_png: "res/effect/effect/boss3.png",
+    boss3_plist: "res/effect/effect/boss3.plist"
 };
 
 var main_scene_res = [

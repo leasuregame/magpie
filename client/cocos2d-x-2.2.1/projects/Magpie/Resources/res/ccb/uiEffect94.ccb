@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -445,7 +445,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -656,7 +656,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -692,9 +692,13 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>你可以攻击自己与好友的魔神。荣誉奖励可以兑换精元！精元可是高星卡牌进阶的必备品哟！</string>
+								<string>你可以攻击自己与好友的魔神。
+荣誉奖励可以兑换精元！
+精元可是高星卡牌进阶的必备品哟！</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -795,7 +799,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1191,7 +1195,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5</real>
+			<real>1.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

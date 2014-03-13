@@ -118,7 +118,6 @@ var gameGuide = {
 
     updateBossGuide: function () {
         this.set("bossGuide", true);
-        MainScene.getInstance().updateGuide();
 
         var uid = gameData.player.get("uid");
         var isFirstMeetBoss = parseInt(sys.localStorage.getItem("meetBoss" + uid)) || 0;
@@ -131,6 +130,8 @@ var gameGuide = {
                 tipEffect.removeFromParent();
             });
             MainScene.getInstance().getLayer().addChild(tipEffect, 10);
+
+            MainScene.getInstance().updateGuide();
 
             this.set("bossExplain", true);
             sys.localStorage.setItem("meetBoss" + uid, 1);

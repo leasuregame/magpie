@@ -30,7 +30,6 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer onExit");
 
         this._super();
-        this._updateMark();
 
         lz.um.endLogPageView("Boss界面");
     },

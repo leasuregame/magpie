@@ -433,8 +433,10 @@ var Boss = Entity.extend({
     _updateCdAndBoss: function () {
         var interval = UPDATE_CD_TIME_INTERVAL * 1000;
 
-        var cd = Math.max(0, this._cd - interval);
-        this.set("cd", cd);
+        if (this._cd > 0) {
+            var cd = Math.max(0, this._cd - interval);
+            this.set("cd", cd);
+        }
 
         if (this._bossList) {
             var len = this._bossList.length;

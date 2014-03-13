@@ -286,7 +286,7 @@ var BossListLayer = cc.Layer.extend({
             );
             runAwayTimeLabel.setAnchorPoint(cc.p(0, 0.5));
             runAwayTimeLabel.setPosition(cc.p(260, y - 3));
-            runAwayTimeLabel.setColor(cc.c3b(121, 60, 56));
+            runAwayTimeLabel.setColor(cc.c3b(155, 31, 24));
             scrollViewLayer.addChild(runAwayTimeLabel);
 
             this._timeLabel[i] = runAwayTimeLabel;
@@ -294,7 +294,7 @@ var BossListLayer = cc.Layer.extend({
             var finderLabel = cc.LabelTTF.create(boss.finder, "STHeitiTC-Medium", 20);
             finderLabel.setAnchorPoint(cc.p(0, 0.5));
             finderLabel.setPosition(cc.p(240, y - 33));
-            finderLabel.setColor(cc.c3b(121, 60, 56));
+            finderLabel.setColor(cc.c3b(155, 31, 24));
             scrollViewLayer.addChild(finderLabel);
 
             var attackIcon = cc.Sprite.create(main_scene_image.icon391);
@@ -325,15 +325,12 @@ var BossListLayer = cc.Layer.extend({
                 countLeftLabel.setColor(cc.c3b(167, 28, 0));
                 scrollViewLayer.addChild(countLeftLabel);
             } else {
-                var killerIcon = cc.Sprite.create(main_scene_image.icon395);
-                killerIcon.setAnchorPoint(cc.p(0, 0.5));
-                killerIcon.setPosition(cc.p(390, y - 33));
-                scrollViewLayer.addChild(killerIcon);
 
-                var killerLabel = cc.LabelTTF.create(boss.killer, "STHeitiTC-Medium", 20);
-                killerLabel.setAnchorPoint(cc.p(0, 0.5));
-                killerLabel.setPosition(cc.p(470, y - 33));
-                killerLabel.setColor(cc.c3b(121, 60, 56));
+                var killerLabel = StrokeLabel.create("最后攻击：" + boss.killer, "STHeitiTC-Medium", 20);
+                killerLabel.setAnchorPoint(cc.p(0.5, 0.5));
+                killerLabel.setPosition(cc.p(500, y - 33));
+                killerLabel.setColor(cc.c3b(255, 255, 255));
+                killerLabel.setBgColor(cc.c3b(155, 31, 24));
                 scrollViewLayer.addChild(killerLabel);
             }
 

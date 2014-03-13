@@ -75,7 +75,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3.2999999523162842</real>
+											<real>4.3000001907348633</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -90,7 +90,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>4</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -281,7 +281,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3.2999999523162842</real>
+											<real>4.3000001907348633</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -296,7 +296,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>4</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -499,7 +499,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>3.2999999523162842</real>
+											<real>4.3000001907348633</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -514,7 +514,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>4</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -692,7 +692,9 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>只有降服当前魔神，之后的探索才可以触发新的魔神！丰厚的仙币和荣誉奖励等着你哟！</string>
+								<string>只有降服当前魔神,
+之后的探索才可以触发新的魔神！
+丰厚的仙币和荣誉奖励等着你哟！</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -731,7 +733,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>3.9000000953674316</real>
+											<real>4.9000000953674316</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -1185,17 +1187,17 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>4</real>
+			<real>5</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>238.41853332519531</real>
+			<real>194.47190856933594</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

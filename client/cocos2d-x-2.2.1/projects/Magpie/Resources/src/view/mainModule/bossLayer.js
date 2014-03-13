@@ -195,27 +195,27 @@ var BossLayer = cc.Layer.extend({
         this._attackIcon.setPosition(this._bossLayerFit.attackIcon2Point);
         this.addChild(this._attackIcon, 2);
 
-        var addItem = cc.MenuItemImage.create(
+        this._addItem = cc.MenuItemImage.create(
             main_scene_image.button16,
             main_scene_image.button16s,
             this._onClickAdd,
             this
         );
 
-        addItem.setAnchorPoint(cc.p(0.5, 0));
-        addItem.setScale(1.2);
-        addItem.setPosition(this._bossLayerFit.addItemPoint);
+        this._addItem.setAnchorPoint(cc.p(0.5, 0));
+        this._addItem.setScale(1.2);
+        this._addItem.setPosition(this._bossLayerFit.addItemPoint);
 
-        var subItem = cc.MenuItemImage.create(
+        this._subItem = cc.MenuItemImage.create(
             main_scene_image.button35,
             main_scene_image.button35s,
             this._onClickSub,
             this
         );
 
-        subItem.setAnchorPoint(cc.p(0.5, 0));
-        subItem.setScale(1.2);
-        subItem.setPosition(this._bossLayerFit.subItemPoint);
+        this._subItem.setAnchorPoint(cc.p(0.5, 0));
+        this._subItem.setScale(1.2);
+        this._subItem.setPosition(this._bossLayerFit.subItemPoint);
 
         this._attackItem = cc.MenuItemImage.create(
             main_scene_image.button1,
@@ -269,7 +269,7 @@ var BossLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._bossLayerFit.helpItemPoint);
 
-        var menu = cc.Menu.create(addItem, subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem, helpItem);
+        var menu = cc.Menu.create(this._addItem, this._subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -290,7 +290,11 @@ var BossLayer = cc.Layer.extend({
 
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
-        this._attackItem.setEnabled(boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE);
+
+        var isEnabled = boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE;
+        this._attackItem.setEnabled(isEnabled);
+        this._addItem.setEnabled(isEnabled);
+        this._subItem.setEnabled(isEnabled);
 
     },
 

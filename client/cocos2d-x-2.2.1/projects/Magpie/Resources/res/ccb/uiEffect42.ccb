@@ -44,7 +44,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>180</integer>
+									<integer>100</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -74,7 +74,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>180</integer>
+									<integer>100</integer>
 								</dict>
 							</array>
 							<key>name</key>
@@ -418,7 +418,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -443,8 +443,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.60000002384185791</real>
-							<real>0.20000000298023224</real>
+							<real>0.5</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -454,7 +454,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>25</real>
+							<real>20</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -476,8 +476,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>180</real>
-							<real>60</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -487,8 +487,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>20</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -562,8 +562,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>360</real>
-							<real>360</real>
+							<real>300</real>
+							<real>200</real>
 						</array>
 					</dict>
 					<dict>
@@ -584,8 +584,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>60</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -2734,7 +2734,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2983,8 +2983,6 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -3277,7 +3275,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>1.2000000476837158</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -3330,7 +3328,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.2666666507720947</real>
+			<real>1.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

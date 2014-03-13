@@ -117,23 +117,24 @@ var gameGuide = {
     },
 
     updateBossGuide: function () {
-        this.set("bossGuide", true);
 
         var uid = gameData.player.get("uid");
         var isFirstMeetBoss = parseInt(sys.localStorage.getItem("meetBoss" + uid)) || 0;
 
         if (!isFirstMeetBoss) {
+            this.set("bossGuide", true);
+            this.set("bossExplain", true);
+
             var point = gameFit.gameGuide.effectPoint;
             var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect93, this);
             tipEffect.setPosition(point);
             tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
                 tipEffect.removeFromParent();
             });
-            MainScene.getInstance().getLayer().addChild(tipEffect, 10);
 
+            MainScene.getInstance().getLayer().addChild(tipEffect, 10);
             MainScene.getInstance().updateGuide();
 
-            this.set("bossExplain", true);
             sys.localStorage.setItem("meetBoss" + uid, 1);
         }
     },

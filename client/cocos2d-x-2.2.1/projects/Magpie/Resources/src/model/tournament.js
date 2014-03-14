@@ -109,18 +109,18 @@ var Tournament = Entity.extend({
                 var msg = data.msg;
 
                 that.update(msg.rank);
-                
+
                 cb();
 
                 lz.um.event("event_rank_list");
-            } else {
+            } else if (data.code == 505) {
                 cc.log("Tournament updateRankList fail");
 
                 TipLayer.tip(data.msg);
 
                 cb();
 
-                lz.dc.event("event_rank_list");
+                lz.um.event("event_rank_list");
             } else {
                 cc.log("Tournament sync fail");
 

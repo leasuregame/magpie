@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Javascript compress project" basedir="../../../../../" default="compile">
+<project name="Javascript compress project" basedir="../../../../../../" default="compile">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
              classpath="${basedir}/tools/closure-compiler/compiler.jar"/>
@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/AppStore-Releases/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/TB-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>
@@ -33,7 +33,7 @@
 
                 <file name="src/model/lz.js"/>
                 <file name="src/model/um.js"/>
-                <file name="IOS/AppStore/platform.js"/>
+                <file name="IOS/TB/platform.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
 
@@ -42,7 +42,7 @@
 
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="AppStore/user.js"/>
+                <file name="TB/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -67,7 +67,7 @@
                 <file name="src/model/activity.js"/>
                 <file name="src/model/greeting.js"/>
 
-                <file name="AppStore/payment.js"/>
+                <file name="TB/payment.js"/>
 
                 <file name="src/model/battleLogPool.js"/>
                 <file name="src/model/battleLog.js"/>
@@ -95,7 +95,7 @@
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="AppStore/loginLayer.js"/>
+                <file name="TB/loginLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>

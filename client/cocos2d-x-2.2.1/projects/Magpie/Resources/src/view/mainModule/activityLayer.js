@@ -12,18 +12,16 @@
  * */
 
 
-var titleIcons = ["icon261", "icon356", "icon344", "icon262", "icon263", "icon265"];
+var titleIcons = ["icon261", "icon344", "icon262", "icon263"];
 
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
 
     _layer: [
         SignInLayer,
-        NewYearLayer,
         GoldCardsLayer,
         PowerRewardLayer,
-        GoldRewardLayer,
-        InvitationLayer
+        GoldRewardLayer
     ],
     _selectIcon: null,
     _mark: [],
@@ -119,7 +117,9 @@ var ActivityLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView, 10);
 
-        this._scrollView.setContentSize(cc.size(len * 107, 106));
+        var width = 107 * len;
+        width = Math.max(width, 540);
+        this._scrollView.setContentSize(cc.size(width, 106));
 
         this.switchLayer(this._layer[0]);
         return true;
@@ -151,11 +151,9 @@ var ActivityLayer = cc.Layer.extend({
         cc.log("ActivityLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());
-        this._mark[1].setVisible(gameMark.getNewYearMark());
-        this._mark[2].setVisible(gameMark.getGoldCardsMark());
-        this._mark[3].setVisible(gameMark.getPowerRewardMark());
-        this._mark[4].setVisible(gameMark.getGoldRewardMark());
-        this._mark[5].setVisible(gameMark.getRechargeMark());
+        this._mark[1].setVisible(gameMark.getGoldCardsMark());
+        this._mark[2].setVisible(gameMark.getPowerRewardMark());
+        this._mark[3].setVisible(gameMark.getGoldRewardMark());
     }
 });
 

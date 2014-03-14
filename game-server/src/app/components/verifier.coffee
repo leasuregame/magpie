@@ -59,12 +59,13 @@ class Component
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
+
+  console.log '-3-', items.map (i) -> [i.id, i.status]
+
   return if items.length is 0
 
-  async.each items, (item, done) ->
-    #return done() if item.doing
+  async.each items, (item, done) ->    
     tryCount = 0
-
     postReceipt = (reqUrl, receiptData) ->
       request.post {
         headers: 'content-type': 'application/json'
@@ -103,7 +104,7 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
     product = products[0]
   else
     throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
-    return
+    return done()
 
   isFirstRechage = false
   player = null
@@ -142,7 +143,7 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
   ], (err) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
-      return
+      return done()
 
     successMsg(app, player, isFirstRechage)
     done()

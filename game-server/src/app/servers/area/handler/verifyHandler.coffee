@@ -60,7 +60,11 @@ Handler::appStore = (msg, session, next) ->
         cb(null, record)
 
     (record, cb) =>
-      @app.get('verifyQueue').push(record) if record
+      if record
+        console.log '-1-', @app.get('verifyQueue').len()
+        @app.get('verifyQueue').push(record) 
+        console.log '-2-', @app.get('verifyQueue').len()
+
       if productId not in Object.keys(GOLDCARDMAP_REVERT)
         return cb(null, record)
 

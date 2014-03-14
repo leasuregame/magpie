@@ -82,16 +82,16 @@ executeVerify = (app, queue) ->
         else if body.status is 21005
           #收据服务器当前不可用
           item.doing = false
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, done)
         else 
           queue.del(item.id)
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, done)
 
         if body.status is 21007 and tryCount == 0
           tryCount += 1
           return postReceipt(SANBOX_URL, receiptData)
 
-        done()
+        #done()
 
     postReceipt(VERIFY_URL, item.receiptData)
   , (err) ->

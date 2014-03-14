@@ -143,7 +143,8 @@ class Hero extends Module
     _step = {a: -@idx, d: [], e: []}
     _step.t = 1 if isSpiritor
     
-    _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
+    ### 卡牌治疗效果按卡牌最大生命值来计算 ###
+    _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
     
     for enemy in enemys      
       if @isCrit()

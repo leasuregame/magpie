@@ -293,7 +293,7 @@ var BossListLayer = cc.Layer.extend({
             if (addition > 0) {
                 var rewardAdditionLabel = ColorLabelTTF.create(
                     {
-                        string: "（奖励加成",
+                        string: "奖励加成",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 18,
                         isStroke: true
@@ -304,16 +304,10 @@ var BossListLayer = cc.Layer.extend({
                         fontSize: 18,
                         isStroke: true,
                         color: cc.c3b(117, 255, 57)
-                    },
-                    {
-                        string: "）",
-                        fontName: "STHeitiTC-Medium",
-                        fontSize: 18,
-                        isStroke: true
                     }
                 );
                 rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
-                rewardAdditionLabel.setPosition(cc.p(320, y + 32));
+                rewardAdditionLabel.setPosition(cc.p(330, y + 32));
                 scrollViewLayer.addChild(rewardAdditionLabel);
             }
 

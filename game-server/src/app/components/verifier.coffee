@@ -97,7 +97,7 @@ executeVerify = (app, queue) ->
     if err
       logger.error('faild to verify app store reciept.', err)
 
-updatePlayer = (app, buyRecord, receiptResult) ->
+updatePlayer = (app, buyRecord, receiptResult, done) ->
   products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
@@ -145,6 +145,7 @@ updatePlayer = (app, buyRecord, receiptResult) ->
       return
 
     successMsg(app, player, isFirstRechage)
+    done()
 
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)

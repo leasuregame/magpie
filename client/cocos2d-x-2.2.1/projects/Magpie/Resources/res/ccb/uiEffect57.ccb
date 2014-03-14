@@ -469,7 +469,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>14.263565063476562</real>
+								<real>32.248058319091797</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -777,7 +777,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>45.529716491699219</real>
+								<real>27.284576416015625</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1029,6 +1029,36 @@
 											<integer>5</integer>
 											<key>value</key>
 											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.2666666507720947</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.4000000953674316</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>0</integer>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1554,6 +1584,36 @@
 											<key>value</key>
 											<integer>255</integer>
 										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.3333332538604736</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.4666666984558105</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>0</integer>
+										</dict>
 									</array>
 									<key>name</key>
 									<string>opacity</string>
@@ -1842,6 +1902,36 @@
 											<integer>5</integer>
 											<key>value</key>
 											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.3333332538604736</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>3.4666666984558105</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>0</integer>
 										</dict>
 									</array>
 									<key>name</key>
@@ -2351,8 +2441,6 @@
 						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2531,8 +2619,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -2723,6 +2811,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -2764,11 +2854,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.9666666984558105</real>
+			<real>2.9333333969116211</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>184.88623046875</real>
+			<real>281.39605712890625</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

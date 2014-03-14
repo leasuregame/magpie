@@ -88,7 +88,7 @@ Handler::appStore = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.message or err.msg or err})
 
-    @app.get('verifyQueue').push(brecord) if brecord
+    @app.get('verifyQueue').push(record) if record
     next(null, {code: 200})
     
     

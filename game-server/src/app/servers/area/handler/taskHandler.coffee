@@ -309,6 +309,9 @@ Handler::mysticalPass = (msg, session, next) ->
     (bl, cb) ->
       countSpirit(player, bl, 'PASS')
       if bl.winner is 'own'
+        ### 达成成就 ###
+        achieve.passPhaseTo(player, player.pass.mystical.diff)
+
         mpcData = table.getTableItem('mystical_pass_reward', player.pass.mystical.diff)
         
         bl.rewards.skillPoint = mpcData.skill_point

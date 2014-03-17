@@ -482,10 +482,18 @@ var Boss = Entity.extend({
 
     _kneelCountChangeEvent: function () {
         // 提示是否可以膜拜
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     _canReceiveChangeEvent: function () {
         // 提示是否有奖励可以领取
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     getThisWeekReward: function () {

@@ -137,14 +137,13 @@ var BossListLayer = cc.Layer.extend({
         this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
         this.addChild(this._effect);
 
-        var rankItem = cc.MenuItemImage.create(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            this._onClickRank,
-            this
-        );
+        var rankItemEffect = cc.BuilderReader.load(main_scene_image.uiEffect95, this);
+        rankItemEffect.setPosition(this._bossListLayerFit.rankItemPoint);
+        this.addChild(rankItemEffect);
 
-        rankItem.setPosition(this._bossListLayerFit.rankItemPoint);
+        this._kneelEffect = cc.BuilderReader.load(main_scene_image.uiEffect96, this);
+        this._kneelEffect.setPosition(this._bossListLayerFit.rankItemPoint);
+        this.addChild(this._kneelEffect);
 
         this._exchangeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -167,7 +166,7 @@ var BossListLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._bossListLayerFit.helpItemPoint);
 
-        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, rankItem, this._exchangeItem, helpItem);
+        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, this._exchangeItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -190,8 +189,6 @@ var BossListLayer = cc.Layer.extend({
         gameData.boss.updateBossList(function () {
             that._addScrollView();
         });
-
-
     },
 
     _updateMark: function () {
@@ -210,6 +207,9 @@ var BossListLayer = cc.Layer.extend({
 
         var isCanReceive = gameData.boss.get("canReceive");
         this._effect.setVisible(isCanReceive);
+
+        var kneelCount = gameData.boss.get("kneelCount");
+        this._kneelEffect.setVisible(kneelCount > 0);
     },
 
     _addScrollView: function () {
@@ -444,8 +444,8 @@ var BossListLayer = cc.Layer.extend({
         });
     },
 
-    _onClickRank: function () {
-        cc.log("BossListLayer _onClickRank");
+    ccbFnRank: function () {
+        cc.log("BossListLayer ccbFnRank");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

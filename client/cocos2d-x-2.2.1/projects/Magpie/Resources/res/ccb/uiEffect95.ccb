@@ -145,7 +145,7 @@
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>2</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -192,8 +192,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>ccbFnRank</string>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -403,7 +403,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.033333335071802139</real>
 			<key>position</key>
 			<real>5</real>
 			<key>resolution</key>

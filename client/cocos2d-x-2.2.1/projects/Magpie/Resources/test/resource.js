@@ -1197,6 +1197,8 @@ var main_scene_image = {
     50: test_scene_path + "res/" + "50.png",
     70: test_scene_path + "res/" + "70.png",
     76: test_scene_path + "res/" + "76.png",
+    80: test_scene_path + "res/" + "80.png",
+    82: test_scene_path + "res/" + "82.png",
     83: test_scene_path + "res/" + "83.png",
     92: test_scene_path + "res/" + "92.png",
     93: test_scene_path + "res/" + "93.png",
@@ -1217,6 +1219,7 @@ var main_scene_image = {
     texiao21: test_scene_path + "ccb/" + "texiao21.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
     texiao24: test_scene_path + "ccb/" + "texiao24.ccbi",
+    texiao28: test_scene_path + "ccb/" + "texiao28.ccbi",
 
 };
 

@@ -19,27 +19,33 @@ lz.platformConfig = {
     GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
 };
 
-// 程序到后台时调用
-cc.Application.getInstance().jsApplicationDidEnterBackground = function () {
-    cc.log("*************************************************************");
-    cc.log("cc.Application.getInstance().jsApplicationDidEnterBackground");
-    cc.log("*************************************************************");
 
-    if (typeof(lz.NotificationHelp) != "undefined") {
-        lz.NotificationHelp.end();
+(function () {
+    if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+        // 程序到后台时调用
+        cc.Application.getInstance().jsApplicationDidEnterBackground = function () {
+            cc.log("*************************************************************");
+            cc.log("cc.Application.getInstance().jsApplicationDidEnterBackground");
+            cc.log("*************************************************************");
+
+            if (typeof(lz.NotificationHelp) != "undefined") {
+                lz.NotificationHelp.end();
+            }
+        };
+
+        // 程序回复运行时调用
+        cc.Application.getInstance().jsApplicationWillEnterForeground = function () {
+            cc.log("*************************************************************");
+            cc.log("cc.Application.getInstance().jsApplicationWillEnterForeground");
+            cc.log("*************************************************************");
+
+            if (typeof(lz.NotificationHelp) != "undefined") {
+                lz.NotificationHelp.start();
+            }
+        };
     }
-};
+})();
 
-// 程序回复运行时调用
-cc.Application.getInstance().jsApplicationWillEnterForeground = function () {
-    cc.log("*************************************************************");
-    cc.log("cc.Application.getInstance().jsApplicationWillEnterForeground");
-    cc.log("*************************************************************");
-
-    if (typeof(lz.NotificationHelp) != "undefined") {
-        lz.NotificationHelp.start();
-    }
-};
 
 var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;   // 余额不足
 var BUY_GOODS_SERVER_ERROR = 1;     // 服务器错误

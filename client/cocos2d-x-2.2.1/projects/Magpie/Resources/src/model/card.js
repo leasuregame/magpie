@@ -22,6 +22,11 @@ var EVOLUTION_ERROR = -1;
 var EXTRACT_ELIXIR = 0;
 var EXTRACT_SKILL_POINT = 1;
 
+var BOSS_CARD_TABLE_ID = {
+    begin: 40000,
+    end: 40002
+};
+
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",
@@ -684,8 +689,12 @@ var Card = Entity.extend({
         return price;
     },
 
-    isLeadCard: function (tableId) {
-        return (tableId < 10000 || tableId == 30000);
+    isLeadCard: function () {
+        return (this._tableId < 10000 || this._tableId == 30000);
+    },
+
+    isBossCard: function () {
+        return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });
 

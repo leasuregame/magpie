@@ -16,7 +16,8 @@ var FUNCTION_OPEN = {
     "2": {
         "tableName": "pass",
         "tip": "天道已开启，现在可参与。",
-        "name": "passGuide"
+        "name": "instancesGuide",
+        "childName": "passGuide"
     },
     "3": {
         "tableName": "card3_position",
@@ -51,12 +52,16 @@ var EXPLAIN = {
     },
     "pass": {
         effect: "uiEffect72"
+    },
+    "boss": {
+        effect: "uiEffect94"
     }
 };
 
 var gameGuide = {
     _tournamentGuide: false,
     _passGuide: false,
+    _instancesGuide: false,
     _treasureHuntGuide: false,
     _rankGuide: false,
     _card3Guide: false,
@@ -64,6 +69,7 @@ var gameGuide = {
     _card5Guide: false,
     _isFirstPassiveSkillAfresh: false,
     _lotteryGuide: false,
+    _bossGuide: false,
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
@@ -82,6 +88,10 @@ var gameGuide = {
                 });
 
                 this.set(guide.name, true);
+
+                if (guide.childName) {
+                    this.set(guide.childName, true);
+                }
 
                 if (EXPLAIN[guide.tableName]) {
                     this.set(guide.tableName + "Explain", true);
@@ -103,6 +113,29 @@ var gameGuide = {
         if (gameData.lottery._freeLowLotteryCard || gameData.lottery._freeHighLotteryCard) {
             this.set("lotteryGuide", true);
             MainScene.getInstance().updateGuide();
+        }
+    },
+
+    updateBossGuide: function () {
+
+        var uid = gameData.player.get("uid");
+        var isFirstMeetBoss = parseInt(sys.localStorage.getItem("meetBoss" + uid)) || 0;
+
+        if (!isFirstMeetBoss) {
+            this.set("bossGuide", true);
+            this.set("bossExplain", true);
+
+            var point = gameFit.gameGuide.effectPoint;
+            var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect93, this);
+            tipEffect.setPosition(point);
+            tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                tipEffect.removeFromParent();
+            });
+
+            MainScene.getInstance().getLayer().addChild(tipEffect, 10);
+            MainScene.getInstance().updateGuide();
+
+            sys.localStorage.setItem("meetBoss" + uid, 1);
         }
     },
 

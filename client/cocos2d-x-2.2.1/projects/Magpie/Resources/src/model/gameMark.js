@@ -24,6 +24,7 @@ var gameMark = {
     _newYearReward: false,
     _treasureHunt: false,
     _goldCards: false,
+    _boss: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -43,6 +44,7 @@ var gameMark = {
         this._newYearReward = false;
         this._treasureHunt = false;
         this._goldCards = false;
+        this._boss = false;
     },
 
     getActivityMark: function () {
@@ -423,6 +425,19 @@ var gameMark = {
 
         this._goldCards = mark;
         this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getBossMark: function () {
+        cc.log("gameMark getBossMark");
+
+        return this._boss;
+    },
+
+    setBossMark: function (mark) {
+        cc.log("gameMark setBossMark");
+
+        this._boss = mark;
         MainScene.getInstance().updateMark();
     }
 };

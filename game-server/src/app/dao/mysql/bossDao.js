@@ -60,9 +60,10 @@ var BossDao = (function(_super) {
   BossDao.bossExists = function(playerId, cb) {
     var now = new Date().getTime();
 
+    // 获取状态位沉睡或苏醒的，未超时的boss（12小时以内）
     var tmpl = 'select count(id) as num from boss where \
-      playerId = %(playerId)s and (status in (1,2) and createTime + 50400000 > %(now)s) or \
-      (status in (3,5) and deathTime + 7200000 > %(now)s)';
+      playerId = %(playerId)s and (status in (1,2) and createTime + 43200000 > %(now)s)';
+      //or (status in (3,5) and deathTime + 7200000 > %(now)s)';
     var sql = sprintf(tmpl, {playerId: playerId, now: now});
     dbClient.query(sql, [], function(err, res) {
       if (err) {

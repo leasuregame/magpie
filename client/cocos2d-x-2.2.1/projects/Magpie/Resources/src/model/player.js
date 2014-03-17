@@ -46,10 +46,10 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
-    _goldCards: {},     //周卡月卡
-    _recharge: 0,       //充值记录标记
-    _firstRechargeBox: 0,   //首充礼包标记
-    _evolutionRate: {}, //星级进阶概率
+    _goldCards: {},     // 周卡月卡
+    _recharge: 0,       // 充值记录标记
+    _firstRechargeBox: 0,   // 首充礼包标记
+    _evolutionRate: {}, // 星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
     _ability: 0,        // 战斗力
@@ -409,7 +409,7 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
 

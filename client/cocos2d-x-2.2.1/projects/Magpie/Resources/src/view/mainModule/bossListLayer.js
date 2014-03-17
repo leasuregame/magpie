@@ -20,6 +20,8 @@ var BossListLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+        this.updateGuide();
+        this._updateMark();
 
         lz.um.beginLogPageView("Boss界面");
     },
@@ -56,11 +58,13 @@ var BossListLayer = cc.Layer.extend({
         titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon35);
+        var cdTimeIcon = cc.Sprite.create(main_scene_image.icon412);
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);
-        cdTimeIcon.setScaleX(2.5);
-        cdTimeIcon.setScaleY(1.2);
         this.addChild(cdTimeIcon);
+
+        var tipLabel = cc.LabelTTF.create("最后一次攻击，奖励翻倍", "STHeitiTC-Medium", 18);
+        tipLabel.setPosition(this._bossListLayerFit.tipLabelPoint);
+        this.addChild(tipLabel);
 
         var nextAttackLabel = cc.LabelTTF.create("下次攻击 ", "STHeitiTC-Medium", 22);
         nextAttackLabel.setPosition(this._bossListLayerFit.nextAttackLabelPoint);
@@ -125,11 +129,11 @@ var BossListLayer = cc.Layer.extend({
             this
         );
 
-        this._rewardItem.setScale(0.5);
+        this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._bossListLayerFit.rewardItemPoint);
 
         this._effect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
-        this._effect.setScale(0.4);
+        this._effect.setScale(0.48);
         this._effect.setPosition(this._bossListLayerFit.rewardItemPoint);
         this.addChild(this._effect);
 
@@ -167,6 +171,11 @@ var BossListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
+        this._tipIcon = cc.Sprite.create(main_scene_image.icon413);
+        this._tipIcon.setPosition(this._bossListLayerFit.tipIconPoint);
+        this._tipIcon.setVisible(false);
+        this.addChild(this._tipIcon);
+
         this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
 
         return true;
@@ -181,6 +190,14 @@ var BossListLayer = cc.Layer.extend({
         gameData.boss.updateBossList(function () {
             that._addScrollView();
         });
+
+
+    },
+
+    _updateMark: function () {
+        cc.log("BossListLayer _updateMark");
+
+        gameMark.setBossMark(false);
     },
 
     _update: function () {
@@ -192,7 +209,6 @@ var BossListLayer = cc.Layer.extend({
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
         var isCanReceive = gameData.boss.get("canReceive");
-        this._rewardItem.setEnabled(isCanReceive);
         this._effect.setVisible(isCanReceive);
     },
 
@@ -214,48 +230,92 @@ var BossListLayer = cc.Layer.extend({
 
         var bossList = gameData.boss.get("bossList");
         var len = bossList.length;
-        var scrollViewHeight = len * 140;
+        var scrollViewHeight = len * 136;
 
         if (scrollViewHeight < this._bossListLayerFit.scrollViewHeight) {
             scrollViewHeight = this._bossListLayerFit.scrollViewHeight;
         }
 
+        this._tipIcon.setVisible(len == 0);
+
         for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 70 - 140 * i;
+            var y = scrollViewHeight - 68 - 136 * i;
             var boss = bossList[i];
-
-            var bossItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                main_scene_image.button15d,
-                this._onClickBoss(boss.bossId),
-                this
-            );
-            bossItem.setAnchorPoint(cc.p(0, 0.5));
-            bossItem.setPosition(cc.p(25, y));
-            menu.addChild(bossItem);
-
-            var bossIcon = CardHeadNode.create(Card.create({
-                tableId: 194,
+            var bossItem = null;
+            var bossTable = outputTables.boss.rows[boss.tableId];
+            var bossCard = Card.create({
+                tableId: bossTable.boss_id,
                 lv: 1,
                 skillLv: 1
-            }));
+            });
 
-            bossIcon.setAnchorPoint(cc.p(0, 0.5));
-            bossIcon.setPosition(cc.p(45, y));
-            scrollViewLayer.addChild(bossIcon);
+            if (boss.finder == gameData.player.get("name")) {
+                bossItem = cc.MenuItemImage.create(
+                    main_scene_image.button45,
+                    main_scene_image.button45s,
+                    main_scene_image.button15d,
+                    this._onClickBoss(boss.bossId),
+                    this
+                );
+            } else {
+                bossItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    main_scene_image.button15d,
+                    this._onClickBoss(boss.bossId),
+                    this
+                );
+            }
+
+            if (bossItem) {
+                bossItem.setAnchorPoint(cc.p(0, 0.5));
+                bossItem.setPosition(cc.p(25, y));
+                menu.addChild(bossItem);
+            }
+
+            var bossHeadNode = CardHeadNode.create(bossCard);
+            bossHeadNode.setAnchorPoint(cc.p(0, 0.5));
+            bossHeadNode.setPosition(cc.p(45, y));
+            scrollViewLayer.addChild(bossHeadNode);
 
             var msgBgIcon = cc.Sprite.create(main_scene_image.icon393);
             msgBgIcon.setAnchorPoint(cc.p(0, 0.5));
             msgBgIcon.setPosition(cc.p(155, y));
             scrollViewLayer.addChild(msgBgIcon);
 
-            var bossId = outputTables.boss.rows[boss.tableId].boss_id;
-            var card = outputTables.cards.rows[bossId];
-            var bossTypeLabel = cc.LabelTTF.create(card.name, "STHeitiTC-Medium", 24);
-            bossTypeLabel.setAnchorPoint(cc.p(0, 0.5));
-            bossTypeLabel.setPosition(cc.p(200, y + 32));
-            scrollViewLayer.addChild(bossTypeLabel);
+            var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
+            bossNameLabel.setAnchorPoint(cc.p(0, 0.5));
+            bossNameLabel.setPosition(cc.p(197, y + 32));
+            scrollViewLayer.addChild(bossNameLabel);
+
+            var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
+
+            if (addition > 0) {
+                var rewardAdditionLabel = ColorLabelTTF.create(
+                    {
+                        string: "（奖励加成",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true
+                    },
+                    {
+                        string: addition + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true,
+                        color: cc.c3b(117, 255, 57)
+                    },
+                    {
+                        string: "）",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 18,
+                        isStroke: true
+                    }
+                );
+                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+                rewardAdditionLabel.setPosition(cc.p(320, y + 32));
+                scrollViewLayer.addChild(rewardAdditionLabel);
+            }
 
             var runAwayTimeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
@@ -266,7 +326,7 @@ var BossListLayer = cc.Layer.extend({
             );
             runAwayTimeLabel.setAnchorPoint(cc.p(0, 0.5));
             runAwayTimeLabel.setPosition(cc.p(260, y - 3));
-            runAwayTimeLabel.setColor(cc.c3b(121, 60, 56));
+            runAwayTimeLabel.setColor(cc.c3b(155, 31, 24));
             scrollViewLayer.addChild(runAwayTimeLabel);
 
             this._timeLabel[i] = runAwayTimeLabel;
@@ -274,7 +334,7 @@ var BossListLayer = cc.Layer.extend({
             var finderLabel = cc.LabelTTF.create(boss.finder, "STHeitiTC-Medium", 20);
             finderLabel.setAnchorPoint(cc.p(0, 0.5));
             finderLabel.setPosition(cc.p(240, y - 33));
-            finderLabel.setColor(cc.c3b(121, 60, 56));
+            finderLabel.setColor(cc.c3b(155, 31, 24));
             scrollViewLayer.addChild(finderLabel);
 
             var attackIcon = cc.Sprite.create(main_scene_image.icon391);
@@ -305,15 +365,12 @@ var BossListLayer = cc.Layer.extend({
                 countLeftLabel.setColor(cc.c3b(167, 28, 0));
                 scrollViewLayer.addChild(countLeftLabel);
             } else {
-                var killerIcon = cc.Sprite.create(main_scene_image.icon395);
-                killerIcon.setAnchorPoint(cc.p(0, 0.5));
-                killerIcon.setPosition(cc.p(390, y - 33));
-                scrollViewLayer.addChild(killerIcon);
 
-                var killerLabel = cc.LabelTTF.create(boss.killer, "STHeitiTC-Medium", 20);
-                killerLabel.setAnchorPoint(cc.p(0, 0.5));
-                killerLabel.setPosition(cc.p(470, y - 33));
-                killerLabel.setColor(cc.c3b(121, 60, 56));
+                var killerLabel = StrokeLabel.create("最后攻击：" + boss.killer, "STHeitiTC-Medium", 20);
+                killerLabel.setAnchorPoint(cc.p(0.5, 0.5));
+                killerLabel.setPosition(cc.p(500, y - 33));
+                killerLabel.setColor(cc.c3b(255, 255, 255));
+                killerLabel.setBgColor(cc.c3b(155, 31, 24));
                 scrollViewLayer.addChild(killerLabel);
             }
 
@@ -370,17 +427,25 @@ var BossListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var isCanReceive = gameData.boss.get("canReceive");
+        if (!isCanReceive) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
+
         var that = this;
-        gameData.boss.getFriendHelpReward(function (data) {
-            cc.log(data);
-            GiftBagLayer.pop({
-                reward: data,
-                type: GET_GIFT_BAG,
-                titleType: TYPE_LOOK_REWARD,
-                cb: function () {
-                    lz.tipReward(data);
-                    that.update();
-                }
+
+        var cb = function () {
+            gameData.boss.getFriendHelpReward(function (reward) {
+                lz.tipReward(reward);
+                that.update();
+            })
+        };
+
+        gameData.boss.showFriendHelpRewardList(function (data) {
+            BossRewardLabel.pop({
+                data: data,
+                cb: cb
             });
         });
     },
@@ -433,9 +498,24 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         BossHelpLabel.pop();
-    }
+    },
 
+    updateGuide: function () {
+        cc.log("BossListLayer updateGuide");
+
+        if (gameGuide.get("bossExplain")) {
+            gameGuide.set("bossExplain", false);
+            var url = gameGuide.getExplainEffect("boss");
+            var effect = cc.BuilderReader.load(main_scene_image[url], this);
+            effect.setPosition(gameFit.gameGuide.effectPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
+            this.addChild(effect, 10);
+        }
+    }
 });
+
 
 BossListLayer.create = function () {
     cc.log("BossListLayer create");
@@ -446,4 +526,17 @@ BossListLayer.create = function () {
         return ref;
     }
     return null;
+};
+
+BossListLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].boss;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("降魔" + limitLv + "级开放");
+
+    return false;
 };

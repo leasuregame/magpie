@@ -110,6 +110,7 @@ describe("Area Server", function() {
 					});
 				});
 
+
 				describe("when card's star is 5", function() {
 					it('should can not upgrade star of card', function() {
 						request(
@@ -298,6 +299,59 @@ describe("Area Server", function() {
 								exp: 100,
 								skillLv: 1,
 								skillPoint: 30000
+							});
+						});
+				});
+			});
+
+			describe("when 100 percent upgrade star of card(star 4)", function() {
+				beforeEach(function() {
+					loginWith('arthur', '1', 1);
+				});
+
+				it('should can upgrade star of card', function() {
+					request('area.trainHandler.starUpgrade', {
+							target: 290,
+							sources: [
+								291,
+								292,
+								293,
+								294,
+								295,
+								296,
+								297,
+								298,
+								299,
+								300,
+								301,
+								302,
+								303,
+								304,
+								305,
+								306,
+								307,
+								308,
+								309,
+								310
+							]
+						},
+						function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg.upgrade).toEqual(true);
+							expect(_.pick(data.msg.card,
+								'id', 'tableId',
+								'lv', 'exp', 'skillLv',
+								'skillPoint')).toEqual({
+								id: 290,
+								tableId: 95,
+								lv: 55,
+								exp: 100,
+								skillLv: 1,
+								skillPoint: 30000
+							});
+
+							doAjax('/player/100', function(res) {
+								
 							});
 						});
 				});

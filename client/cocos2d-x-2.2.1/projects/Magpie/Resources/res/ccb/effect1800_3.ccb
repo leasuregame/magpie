@@ -825,8 +825,6 @@
 						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

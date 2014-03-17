@@ -54,9 +54,6 @@ var main_scene_image = {
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
 
-    boss_half: main_scene_path + "boss_half.png",
-
-
     explore_bg_1: main_scene_path + "explore_bg_1.png",
     explore_bg_2: main_scene_path + "explore_bg_2.png",
     explore_bg_3: main_scene_path + "explore_bg_3.png",
@@ -260,7 +257,8 @@ var main_scene_image = {
     button43: main_scene_path + "button43.png",
     button44: main_scene_path + "button44.png",
     button44s: main_scene_path + "button44s.png",
-//    button45: main_scene_path + "button45.png",
+    button45: main_scene_path + "button45.png",
+    button45s: main_scene_path + "button45s.png",
     button46: main_scene_path + "button46.png",
     button46s: main_scene_path + "button46s.png",
     button47: main_scene_path + "button47.png",
@@ -317,6 +315,10 @@ var main_scene_image = {
     button72s: main_scene_path + "button72s.png",
     button73: main_scene_path + "button73.png",
     button73s: main_scene_path + "button73s.png",
+    button74: main_scene_path + "button74.png",
+    button74s: main_scene_path + "button74s.png",
+    button75: main_scene_path + "button75.png",
+    button75s: main_scene_path + "button75s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -725,7 +727,18 @@ var main_scene_image = {
     icon407: main_scene_path + "icon407.png",
     icon408: main_scene_path + "icon408.png",
     icon409: main_scene_path + "icon409.png",
+    icon410: main_scene_path + "icon410.png",
+    icon411: main_scene_path + "icon411.png",
+    icon412: main_scene_path + "icon412.png",
+    icon413: main_scene_path + "icon413.png",
+    icon414: main_scene_path + "icon414.png",
 
+    card20000_head1: main_scene_path + "card20000_head1.png",
+    card20000_skill: main_scene_path + "card20000_skill.png",
+    card20001_head2: main_scene_path + "card20001_head2.png",
+    card20001_skill: main_scene_path + "card20001_skill.png",
+    card20002_head3: main_scene_path + "card20002_head3.png",
+    card20002_skill: main_scene_path + "card20002_skill.png",
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
     card30000_full1: main_scene_path + "card30000_full1.png",
@@ -734,6 +747,9 @@ var main_scene_image = {
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",
     tipNode: "res/ccb/tipNode.ccbi",
+    card20000: "res/ccb/card20000.ccbi",
+    card20001: "res/ccb/card20001.ccbi",
+    card20002: "res/ccb/card20002.ccbi",
 
     effect1_1: "res/ccb/effect1_1.ccbi",
     effect1_2: "res/ccb/effect1_2.ccbi",
@@ -796,6 +812,7 @@ var main_scene_image = {
     effect700_2: "res/ccb/effect700_2.ccbi",
     effect701_1: "res/ccb/effect701_1.ccbi",
     effect701_2: "res/ccb/effect701_2.ccbi",
+    effect701_3: "res/ccb/effect701_3.ccbi",
     effect702_1: "res/ccb/effect702_1.ccbi",
     effect702_2: "res/ccb/effect702_2.ccbi",
     effect702_3: "res/ccb/effect702_3.ccbi",
@@ -809,6 +826,28 @@ var main_scene_image = {
     effect806: "res/ccb/effect806.ccbi",
     effect807_1: "res/ccb/effect807_1.ccbi",
     effect807_2: "res/ccb/effect807_2.ccbi",
+
+    effect1001_1: "res/ccb/effect1001_1.ccbi",
+    effect1001_2: "res/ccb/effect1001_2.ccbi",
+    effect1001_3: "res/ccb/effect1001_3.ccbi",
+
+    effect1002_1: "res/ccb/effect1002_1.ccbi",
+    effect1002_2: "res/ccb/effect1002_2.ccbi",
+
+    effect1003_1: "res/ccb/effect1003_1.ccbi",
+    effect1003_2: "res/ccb/effect1003_2.ccbi",
+
+    effect1700_1: "res/ccb/effect1700_1.ccbi",
+    effect1700_2: "res/ccb/effect1700_2.ccbi",
+
+    effect1800_1: "res/ccb/effect1800_1.ccbi",
+    effect1800_2: "res/ccb/effect1800_2.ccbi",
+    effect1800_3: "res/ccb/effect1800_3.ccbi",
+    effect1800_4: "res/ccb/effect1800_4.ccbi",
+
+    effect1801_1: "res/ccb/effect1801_1.ccbi",
+    effect1801_2: "res/ccb/effect1801_2.ccbi",
+    effect1801_3: "res/ccb/effect1801_3.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -909,6 +948,11 @@ var main_scene_image = {
     uiEffect87: "res/ccb/uiEffect87.ccbi",
     uiEffect88: "res/ccb/uiEffect88.ccbi",
     uiEffect89: "res/ccb/uiEffect89.ccbi",
+    uiEffect90: "res/ccb/uiEffect90.ccbi",
+    uiEffect91: "res/ccb/uiEffect91.ccbi",
+    uiEffect92: "res/ccb/uiEffect92.ccbi",
+    uiEffect93: "res/ccb/uiEffect93.ccbi",
+    uiEffect94: "res/ccb/uiEffect94.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -992,7 +1036,7 @@ var main_scene_image = {
     p79: "res/effect/effect/p79.png",
     p80: "res/effect/effect/p80.png",
     p81: "res/effect/effect/p81.png",
-   // p82: "res/effect/effect/p82.png",
+    // p82: "res/effect/effect/p82.png",
     p83: "res/effect/effect/p83.png",
     p84: "res/effect/effect/p84.png",
     p85: "res/effect/effect/p85.png",
@@ -1215,7 +1259,15 @@ var main_scene_image = {
     startAnimation_pop_sound: "res/sound/startAnimationSound/startAnimation_pop_sound.wav",
     passive_skill_afresh: "res/sound/passive_skill_afresh.wav",
     click_building_sound: "res/sound/click_building_sound.wav",
-    click_gold_sound: "res/sound/click_gold_sound.wav"
+    click_gold_sound: "res/sound/click_gold_sound.wav",
+
+    // boss资源
+    boss1_png: "res/effect/effect/boss1.png",
+    boss1_plist: "res/effect/effect/boss1.plist",
+    boss2_png: "res/effect/effect/boss2.png",
+    boss2_plist: "res/effect/effect/boss2.plist",
+    boss3_png: "res/effect/effect/boss3.png",
+    boss3_plist: "res/effect/effect/boss3.plist"
 };
 
 var main_scene_res = [
@@ -1249,7 +1301,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
-for (var cardId = 10000; cardId <= 10047; ++cardId) {
+for (var cardId = 10000; cardId <= 10050; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }
 

@@ -7,6 +7,11 @@ BossPlayer = require '../battle/boss_player'
 playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
 
+BATTLELOG_TYPE = 
+  PVE: 0
+  PVP: 1
+  BOSS: 2
+
 class Manager
   @pve: (args, callback) ->
     pid = args.pid
@@ -34,8 +39,10 @@ class Manager
     ], (err, bl) ->
       if err
         return callback(err, null)
-      
-      callback(null, bl.reports())
+
+      res = bl.reports()
+      res.type = BATTLELOG_TYPE.PVE
+      callback(null, res)
 
   @pvp: (attEnt, defEnt, callback) ->
 
@@ -48,7 +55,9 @@ class Manager
     battle = new Battle(attacker, defender)
     battle.process()
 
-    callback null, battleLog.reports()
+    res = battleLog.reports()
+    res.type = BATTLELOG_TYPE.PVP
+    callback(null, res)
 
   @attackBoss: (player, boss, incRate, callback) ->
     attacker = new Player(player, incRate)
@@ -57,6 +66,8 @@ class Manager
     battle = new Battle(attacker, defender)
     battle.process()
 
-    callback(null, battleLog.reports())
+    res = battleLog.reports()
+    res.type = BATTLELOG_TYPE.BOSS
+    callback(null, res)
 
 module.exports = Manager

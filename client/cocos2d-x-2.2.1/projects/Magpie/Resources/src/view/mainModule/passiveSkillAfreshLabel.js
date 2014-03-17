@@ -890,3 +890,16 @@ PassiveSkillAfreshLabel.create = function () {
 
     return null;
 };
+
+PassiveSkillAfreshLabel.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].pass_skillafresh;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("技能洗练" + limitLv + "级开放");
+
+    return false;
+};

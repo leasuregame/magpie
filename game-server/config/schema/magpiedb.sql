@@ -289,7 +289,7 @@ DROP TABLE IF EXISTS `bossFriendReward`;
 CREATE TABLE IF NOT EXISTS `bossFriendReward` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `friendId` INT(10) UNSIGNED,
+  `friendName` VARCHAR(50) COLLATE utf8_unicode_ci,
   `money` INT(10) DEFAULT '0',
   `honor` INT(5) DEFAULT '0',
   `got` SMALLINT(2) DEFAULT '0',

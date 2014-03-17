@@ -22,7 +22,10 @@ describe("Area Server", function() {
 
           request('area.bossHandler.removeTimer', {}, function(data) {
             expect(data).toEqual({
-              code: 200
+              code: 200,
+              msg: {
+                gold: 1080
+              }
             });
           });
 
@@ -64,45 +67,57 @@ describe("Area Server", function() {
 
       });
 
-      describe('消除CD', function() {
-        var totalGold = 500;
+      var totalGold = 500;
 
-        var doRemoveCD = function(i) {
-          describe('第' + i + '次消除CD', function() {
-            beforeEach(function() {
-              doAjax('/update/player/100', {
-                gold: 20*i > 200 ? 200 : 20*i,
-                dailyGift: {
-                  rmTimerCount: i
-                },
-                cd: {
-                  lastAtkTime: new Date().getTime()
-                }
-              }, function(res) {
-                loginWith('arthur', '1', 1);
-              });
-            });
-
-            it('执行正确，并扣除相应的魔石', function() {
-
-              request('area.bossHandler.removeTimer', {}, function(data) {
-                expect(data).toEqual({
-                  code: 200
-                });
-
-                doAjax('/player/100', function(res){
-                  expect(res.data.gold).toEqual(0);
-                })
-              });
-
+      var doRemoveCD = function(i) {
+        describe('第' + i + '次消除CD', function() {
+          beforeEach(function() {
+            doAjax('/update/player/100', {
+              gold: 20 * i > 200 ? 200 : 20 * i,
+              dailyGift: {
+                rmTimerCount: i
+              },
+              cd: {
+                lastAtkTime: new Date().getTime()
+              },
+              resetDate: shortDateString()
+            }, function(res) {
+              loginWith('arthur', '1', 1);
             });
           });
-        }
 
+          it('执行正确，并扣除相应的魔石', function() {
+
+            request('area.bossHandler.removeTimer', {}, function(data) {
+              expect(data).toEqual({
+                code: 200,
+                msg: {
+                  gold: 0
+                }
+              });
+
+              doAjax('/player/100', function(res) {
+                expect(res.data.gold).toEqual(0);
+              })
+            });
+
+          });
+        });
+      };
+
+      describe('消除CD', function() {
         doRemoveCD(1);
+      });
+      describe('消除CD', function() {
         doRemoveCD(2);
+      });
+      describe('消除CD', function() {
         doRemoveCD(3);
+      });
+      describe('消除CD', function() {
         doRemoveCD(6);
+      });
+      describe('消除CD', function() {
         doRemoveCD(30);
       });
 

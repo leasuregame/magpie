@@ -278,7 +278,7 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog);
 
                 BattlePlayer.getInstance().play({
                     id: battleLogId,

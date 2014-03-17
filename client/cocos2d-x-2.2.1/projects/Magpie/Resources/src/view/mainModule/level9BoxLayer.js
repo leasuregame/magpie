@@ -73,6 +73,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         GiftBagLayer.pop({
             reward: this._reward,
+            type: SHOW_GIFT_BAG_NO_CLOSE,
             cb: function () {
                 lz.tipReward(that._reward);
                 if (that._cb) {

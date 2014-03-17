@@ -110,9 +110,11 @@
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
                 <file name="src/view/mainModule/attackDetailsLayer.js"/>
+                <file name="src/view/mainModule/bossAppearLabel.js"/>
                 <file name="src/view/mainModule/bossHelpLabel.js"/>
                 <file name="src/view/mainModule/bossLayer.js"/>
                 <file name="src/view/mainModule/bossListLayer.js"/>
+                <file name="src/view/mainModule/bossRewardLabel.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldCardsLayer.js"/>

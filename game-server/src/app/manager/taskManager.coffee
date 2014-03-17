@@ -25,7 +25,7 @@ class Manager
       open_box_card: null
       battle_log: null
       momo: null
-      find_boss: null
+      find_boss: false
     }
 
     ### 检查是否体力充足 ###
@@ -234,6 +234,11 @@ class Manager
 
         cb(null, card)
   @seekBoss: (data, player, cb) ->
+    ### boss等级限制判断 ###
+    boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
+    if player.lv < boss_limit_level
+      return cb(null, data)
+
     player.incBossCount()
 
     findBossRate = table.getTableItem('values', 'findBossRate')?.value
@@ -258,9 +263,7 @@ class Manager
             logger.error('创建Boss信息出错', err.stack)
             cb(null, data)
           else
-            data.find_boss = res.toJson()
-            data.find_boss.finder = player.name
-            data.find_boss.killer = null
+            data.find_boss = true
             player.setBossFound(true)
             cb(null, data)
     else

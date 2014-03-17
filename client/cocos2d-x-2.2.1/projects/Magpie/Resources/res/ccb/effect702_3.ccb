@@ -774,7 +774,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -829,7 +829,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>15</real>
+											<real>30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -897,7 +897,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>15</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1069,7 +1069,7 @@
 								<key>value</key>
 								<array>
 									<real>15</real>
-									<real>5</real>
+									<real>15</real>
 								</array>
 							</dict>
 							<dict>
@@ -1079,8 +1079,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>8</real>
-									<real>5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -1176,8 +1176,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>40</real>
 									<real>20</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -1187,8 +1187,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>120</real>
-									<real>20</real>
+									<real>110</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -1236,7 +1236,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1291,7 +1291,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>15</real>
+											<real>30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1359,7 +1359,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>15</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1439,7 +1439,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1494,7 +1494,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1562,7 +1562,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1642,7 +1642,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1697,7 +1697,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1765,7 +1765,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1845,7 +1845,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1900,7 +1900,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1956,7 +1956,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>

@@ -54,6 +54,8 @@ var Boss = Entity.extend({
 
         this.update(data);
 
+        this.sync();
+
         this.schedule(this._updateCdAndBoss, UPDATE_CD_TIME_INTERVAL);
 
         this.setListener();
@@ -124,6 +126,7 @@ var Boss = Entity.extend({
                 cc.log("Boss updateBossList success");
 
                 that.set("bossList", data.msg);
+                that._updateCdAndBoss();
 
                 cb();
             } else {
@@ -226,13 +229,7 @@ var Boss = Entity.extend({
                 that.push(msg.boss);
                 that.set("cd", msg.cd);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, BOSS_BATTLE_LOG);
-
-                var rewards = msg.battleLog.rewards;
-
-                for (var key in rewards) {
-                    gameData.player.add(key, rewards[key]);
-                }
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
             } else {
@@ -315,6 +312,28 @@ var Boss = Entity.extend({
                 cb(msg);
             } else {
                 cc.log("Boss getFriendHelpReward fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
+    showFriendHelpRewardList: function (cb) {
+        cc.log("Boss showFriendHelpRewardList");
+
+        var that = this;
+        lz.server.request("area.bossHandler.friendRewardList", {
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Boss showFriendHelpRewardList success");
+
+                cb(data.msg);
+            } else {
+                cc.log("Boss showFriendHelpRewardList fail");
 
                 TipLayer.tip(data.msg);
 
@@ -414,8 +433,10 @@ var Boss = Entity.extend({
     _updateCdAndBoss: function () {
         var interval = UPDATE_CD_TIME_INTERVAL * 1000;
 
-        var cd = Math.max(0, this._cd - interval);
-        this.set("cd", cd);
+        if (this._cd > 0) {
+            var cd = Math.max(0, this._cd - interval);
+            this.set("cd", cd);
+        }
 
         if (this._bossList) {
             var len = this._bossList.length;
@@ -445,7 +466,7 @@ var Boss = Entity.extend({
     },
 
     additionNeedGold: function (times) {
-        return ((1 + times) * times / 2) * 20;
+        return times * 20;
     },
 
     removeCdNeedGold: function () {
@@ -454,6 +475,9 @@ var Boss = Entity.extend({
 
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
+        if (this.get("cd") == 0) {
+            gameMark.setBossMark(true);
+        }
     },
 
     _kneelCountChangeEvent: function () {
@@ -472,10 +496,11 @@ var Boss = Entity.extend({
         }
 
         var rank = this._thisWeek.rank;
+
         if (rank <= 5) {
             return outputTables.boss_rank_reward.rows[rank];
         } else {
-            var honor = outputTables.boss_rank_reward.rows[50].honor;
+            var honor = outputTables.boss_rank_reward.rows[5].honor;
             honor -= parseInt(Math.ceil((rank - 5) / 20) * 0.003 * honor);
             honor = Math.max(2000, honor);
             return {honor: honor}

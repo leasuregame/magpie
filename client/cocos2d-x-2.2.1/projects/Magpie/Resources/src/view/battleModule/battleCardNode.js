@@ -34,6 +34,7 @@ var BattleCardNode = cc.Node.extend({
     _animationManager: null,
     _hpProgress: null,
     _spiritHpProgress: null,
+    _cb: null,
 
     init: function (data, index) {
         cc.log("BattleCardNode init");
@@ -45,37 +46,37 @@ var BattleCardNode = cc.Node.extend({
 
         this._spiritHp = data.spiritHp || 0;
         this._spiritAtk = data.spiritAtk || 0;
-        this._maxHp = data.hp;
+        this._maxHp = data.totalHp || data.hp;
         this._hp = this._maxHp - this._spiritHp;
-        this._nowHp = this._hp;
+        this._nowHp = data.hp - this._spiritHp;
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
-        this._skillId = data.skillId || 0;
-        this._normalAtkId = data.normalAtkId || 0;
-        this._effectId = data.effectId || 0;
         this._isDie = false;
 
         this._load();
 
-        this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
-        var frameSpriteTexture;
-
-        if (this.isLeadCard(this._tableId)) {
-            frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+        if (this.isBossCard()) {
+            this._ccbNode = cc.BuilderReader.load(main_scene_image[this._url], this);
         } else {
-            frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
+            this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
+
+            var frameSpriteTexture;
+
+            if (this.isLeadCard()) {
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+            } else {
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
+            }
+
+            var num = this._star > 2 ? this._star - 2 : 1;
+            var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
+
+            var iconSpriteTexture = lz.getTexture(main_scene_image[this.getCardIcon()]);
+
+            this.ccbFrameSprite.setTexture(frameSpriteTexture);
+            this.ccbCardSprite.setTexture(cardSpriteTexture);
+            this.ccbIconSprite.setTexture(iconSpriteTexture);
         }
-
-        var num = this._star > 2 ? this._star - 2 : 1;
-        var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
-
-        var iconSpriteTexture = lz.getTexture(main_scene_image[this.getCardIcon()]);
-
-        this._animationManager = this._ccbNode.animationManager;
-
-        this.ccbFrameSprite.setTexture(frameSpriteTexture);
-        this.ccbCardSprite.setTexture(cardSpriteTexture);
-        this.ccbIconSprite.setTexture(iconSpriteTexture);
 
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
@@ -95,6 +96,8 @@ var BattleCardNode = cc.Node.extend({
 
         this.addChild(this._ccbNode);
 
+        this._animationManager = this._ccbNode.animationManager;
+
         return true;
     },
 
@@ -104,9 +107,9 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = this._skillId || cardTable.skill_id;
-        this._normalAtkId = this._normalAtkId || cardTable.normal_atk_id || 1;
-        this._effectId = this._effectId || cardTable.effect_id || 1;
+        this._skillId = cardTable.skill_id;
+        this._normalAtkId = cardTable.normal_atk_id || 1;
+        this._effectId = cardTable.effect_id || 1;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 
@@ -232,7 +235,12 @@ var BattleCardNode = cc.Node.extend({
         }
 
         tweenDuration = tweenDuration || 0;
-        this._cb = cb || function () {
+
+        this._cb = function () {
+            if (cb) {
+                cb();
+                cb = null;
+            }
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
@@ -270,8 +278,14 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
-    isLeadCard: function (tableId) {
-        return tableId < 10000 || tableId == 30000;
+    isLeadCard: function () {
+        return (this._tableId < 10000 || this._tableId == 30000);
+    },
+
+    isBossCard: function () {
+        cc.log(this._tableId);
+
+        return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });
 

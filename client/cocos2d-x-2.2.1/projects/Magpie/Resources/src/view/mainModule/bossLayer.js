@@ -43,6 +43,10 @@ var BossLayer = cc.Layer.extend({
         titleIcon.setPosition(this._bossLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect3, this);
+        bgEffect.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(bgEffect);
+
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setAnchorPoint(cc.p(0, 0));
         headLabel.setPosition(this._bossLayerFit.headLabelPoint);
@@ -57,37 +61,60 @@ var BossLayer = cc.Layer.extend({
         this._goldLabel.setPosition(this._bossLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
-        var cardFrame = cc.Sprite.create(main_scene_image.card_frame1);
-        cardFrame.setAnchorPoint(cc.p(0.5, 0));
-        cardFrame.setScale(1.5);
-        cardFrame.setPosition(this._bossLayerFit.cardFramePoint);
-        this.addChild(cardFrame);
-
-        var bossCard = cc.Sprite.create(main_scene_image.boss_half);
-        bossCard.setAnchorPoint(cc.p(0.5, 0));
-        bossCard.setPosition(this._bossLayerFit.bossCardPoint);
-        this.addChild(bossCard);
-
         var bossTable = outputTables.boss.rows[boss.tableId];
+        var bossCard = Card.create({
+            tableId: bossTable.boss_id,
+            lv: 1,
+            skillLv: 1
+        });
+
+        var bossCardHalfNode = CardHalfNode.create(bossCard);
+        bossCardHalfNode.setPosition(this._bossLayerFit.bossCardPoint);
+        this.addChild(bossCardHalfNode);
+
+        var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
+        var point = this._bossLayerFit.bossNameLabelPoint;
+
+        if (addition > 0) {
+            var rewardAdditionLabel = ColorLabelTTF.create(
+                {
+                    string: "（奖励加成",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true
+                },
+                {
+                    string: addition + "%",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true,
+                    color: cc.c3b(117, 255, 57)
+                },
+                {
+                    string: "）",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    isStroke: true
+                }
+            );
+            rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
+            rewardAdditionLabel.setPosition(cc.p(gameFit.GAME_MIDPOINT.x, point.y + 5));
+            this.addChild(rewardAdditionLabel);
+        }
+
         var card = outputTables.cards.rows[bossTable.boss_id];
-        var bossNameLabel = StrokeLabel.create(card.name, "STHeitiTC-Medium", 30);
-        bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
-        bossNameLabel.setPosition(this._bossLayerFit.bossNameLabelPoint);
+
+        var bossNameLabel = StrokeLabel.create(card.name, "STHeitiTC-Medium", 35);
+        if (addition > 0) {
+            bossNameLabel.setAnchorPoint(cc.p(1, 0));
+        } else {
+            bossNameLabel.setAnchorPoint(cc.p(0.5, 0));
+        }
+
+        bossNameLabel.setPosition(point);
         bossNameLabel.setColor(cc.c3b(252, 254, 143));
         bossNameLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(bossNameLabel);
-
-        var rewardAdditionLabel = StrokeLabel.create("奖励加成", "STHeitiTC-Medium", 22);
-        rewardAdditionLabel.setAnchorPoint(cc.p(0.5, 0));
-        rewardAdditionLabel.setPosition(this._bossLayerFit.rewardAdditionLabelPoint);
-        this.addChild(rewardAdditionLabel);
-
-        var addition = outputTables.boss_type_rate.rows[bossTable.type].reward_inc;
-        var rewardAddition = StrokeLabel.create(addition + "%", "STHeitiTC-Medium", 22);
-        rewardAddition.setAnchorPoint(cc.p(0.5, 0));
-        rewardAddition.setColor(cc.c3b(193, 224, 109));
-        rewardAddition.setPosition(this._bossLayerFit.rewardAdditionPoint);
-        this.addChild(rewardAddition);
 
         var runAwayTimeLabel = StrokeLabel.create("逃跑时间: ", "STHeitiTC-Medium", 22);
         runAwayTimeLabel.setAnchorPoint(cc.p(0.5, 0));
@@ -108,17 +135,17 @@ var BossLayer = cc.Layer.extend({
         this._countLeftLabel = StrokeLabel.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 25);
         this._countLeftLabel.setAnchorPoint(cc.p(0.5, 0));
         this._countLeftLabel.setPosition(this._bossLayerFit.countLeftLabelPoint);
-        this._countLeftLabel.setColor(cc.c3b(255, 243, 163));
-        this._countLeftLabel.setBgColor(cc.c3b(120, 12, 42));
+        this._countLeftLabel.setColor(cc.c3b(255, 88, 88));
+        this._countLeftLabel.setBgColor(cc.c3b(94, 11, 11));
         this.addChild(this._countLeftLabel);
-
 
         var additionBgLabel = cc.Sprite.create(main_scene_image.icon401);
         additionBgLabel.setAnchorPoint(cc.p(0.5, 0));
+        additionBgLabel.setScaleX(1.2);
         additionBgLabel.setPosition(this._bossLayerFit.additionBgLabelPoint);
         this.addChild(additionBgLabel);
 
-        this._additionLabel = cc.LabelTTF.create("攻击加成: 0%", "STHeitiTC-Medium", 20);
+        this._additionLabel = cc.LabelTTF.create("攻击及生命加成: 0%", "STHeitiTC-Medium", 20);
         this._additionLabel.setAnchorPoint(cc.p(0.5, 0));
         this._additionLabel.setPosition(this._bossLayerFit.additionLabelPoint);
         this.addChild(this._additionLabel);
@@ -145,19 +172,18 @@ var BossLayer = cc.Layer.extend({
         this.addChild(this._attackNode, 2);
 
         var attackIcon = cc.Sprite.create(main_scene_image.icon400);
-        attackIcon.setScale(0.8);
         attackIcon.setAnchorPoint(cc.p(0.5, 0));
         attackIcon.setPosition(this._bossLayerFit.attackIconPoint);
         this._attackNode.addChild(attackIcon);
         this._attackNode.setVisible(false);
 
         var goldIcon2 = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon2.setScale(0.5);
+        goldIcon2.setScale(0.8);
         goldIcon2.setAnchorPoint(cc.p(0.5, 0));
         goldIcon2.setPosition(this._bossLayerFit.goldIcon2Point);
         this._attackNode.addChild(goldIcon2);
 
-        this._expendGoldLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 16);
+        this._expendGoldLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 20);
         this._expendGoldLabel.setColor(cc.c3b(255, 255, 255));
         this._expendGoldLabel.setBgColor(cc.c3b(54, 7, 14));
         this._expendGoldLabel.setAnchorPoint(cc.p(0, 0));
@@ -169,27 +195,27 @@ var BossLayer = cc.Layer.extend({
         this._attackIcon.setPosition(this._bossLayerFit.attackIcon2Point);
         this.addChild(this._attackIcon, 2);
 
-        var addItem = cc.MenuItemImage.create(
+        this._addItem = cc.MenuItemImage.create(
             main_scene_image.button16,
             main_scene_image.button16s,
             this._onClickAdd,
             this
         );
 
-        addItem.setAnchorPoint(cc.p(0.5, 0));
-        addItem.setScale(1.2);
-        addItem.setPosition(this._bossLayerFit.addItemPoint);
+        this._addItem.setAnchorPoint(cc.p(0.5, 0));
+        this._addItem.setScale(1.2);
+        this._addItem.setPosition(this._bossLayerFit.addItemPoint);
 
-        var subItem = cc.MenuItemImage.create(
+        this._subItem = cc.MenuItemImage.create(
             main_scene_image.button35,
             main_scene_image.button35s,
             this._onClickSub,
             this
         );
 
-        subItem.setAnchorPoint(cc.p(0.5, 0));
-        subItem.setScale(1.2);
-        subItem.setPosition(this._bossLayerFit.subItemPoint);
+        this._subItem.setAnchorPoint(cc.p(0.5, 0));
+        this._subItem.setScale(1.2);
+        this._subItem.setPosition(this._bossLayerFit.subItemPoint);
 
         this._attackItem = cc.MenuItemImage.create(
             main_scene_image.button1,
@@ -243,7 +269,7 @@ var BossLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._bossLayerFit.helpItemPoint);
 
-        var menu = cc.Menu.create(addItem, subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem, helpItem);
+        var menu = cc.Menu.create(this._addItem, this._subItem, this._attackItem, this._removeCdTimeItem, backItem, attackRecordItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -256,7 +282,7 @@ var BossLayer = cc.Layer.extend({
         cc.log("BossLayer update");
 
         this._goldLabel.setString(gameData.player.get("gold"));
-        this._additionLabel.setString("攻击加成: " + this._addition * 20 + "%");
+        this._additionLabel.setString("攻击及生命加成: " + this._addition * 20 + "%");
 
         this._attackIcon.setVisible(this._addition == 0);
         this._attackNode.setVisible(this._addition != 0);
@@ -264,7 +290,11 @@ var BossLayer = cc.Layer.extend({
 
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
-        this._attackItem.setEnabled(boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE);
+
+        var isEnabled = boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE;
+        this._attackItem.setEnabled(isEnabled);
+        this._addItem.setEnabled(isEnabled);
+        this._subItem.setEnabled(isEnabled);
 
     },
 
@@ -293,6 +323,15 @@ var BossLayer = cc.Layer.extend({
         if (gameData.boss.canAddition(this._addition + 1)) {
             this._addition++;
             this.update();
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect92, this);
+            effect.setScale(0.8);
+            effect.setPosition(this._bossLayerFit.effectPoint);
+            this.addChild(effect);
+
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+            });
         }
     },
 

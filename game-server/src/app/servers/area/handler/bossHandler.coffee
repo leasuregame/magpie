@@ -110,9 +110,7 @@ Handler::getLastWeekReward = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
     (res, cb) ->
       player = res
-      console.log rank, rank.rank
       reward = countDamageRewards(rank?.rank)
-      console.log reward
       entityUtil.getReward player, reward, cb
     (cards, cb) =>
       @app.get('dao').damageOfRank.update {

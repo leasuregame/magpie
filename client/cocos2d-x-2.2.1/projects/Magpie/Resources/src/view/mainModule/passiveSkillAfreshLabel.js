@@ -478,19 +478,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 } else {
                     if (isAfresh) {
                         var valueLabel = passiveSkillLabel.valueLabel;
-                        var moveByAction = cc.Sequence.create(
-                            cc.MoveBy.create(0.1, cc.p(5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(-5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(-5, 0))
-                        );
-                        var scaleToAction = cc.Sequence.create(
-                            cc.ScaleTo.create(0.1, 1.5),
-                            cc.ScaleTo.create(0.1, 1),
-                            cc.ScaleTo.create(0.1, 1.5),
-                            cc.ScaleTo.create(0.1, 1)
-
-                        );
 
                         var callFunc = cc.CallFunc.create(function () {
                             gameData.sound.playEffect(main_scene_image.passive_skill_afresh, false);
@@ -498,8 +485,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
                         valueLabel.runAction(
                             cc.Sequence.create(
-                                cc.FadeIn.create(0.8),
-                                cc.Spawn.create(moveByAction, scaleToAction, callFunc)
+                                cc.Spawn.create(cc.FadeIn.create(0.8), callFunc)
                             )
                         );
                     }
@@ -834,7 +820,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._setTip();
 
-        this.schedule(this._repeatAfresh, 2);
+        this.schedule(this._repeatAfresh, 1);
         this.schedule(this._setTip, 1);
     },
 

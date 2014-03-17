@@ -197,8 +197,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.0499999523162842</real>
-									<real>2.0499999523162842</real>
+									<real>1.9499999284744263</real>
+									<real>1.9499999284744263</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -211,7 +211,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>135</real>
+								<real>105</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -240,7 +240,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>140</integer>
+								<integer>166</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -439,8 +439,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2.0499999523162842</real>
-									<real>2.0499999523162842</real>
+									<real>1.9499999284744263</real>
+									<real>1.9499999284744263</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -453,7 +453,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-135</real>
+								<real>-105</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -482,7 +482,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>140</integer>
+								<integer>166</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -669,8 +669,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
-							<real>20</real>
+							<real>50</real>
+							<real>40</real>
 						</array>
 					</dict>
 					<dict>
@@ -777,8 +777,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
-							<real>8</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -788,7 +788,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
+							<real>140</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -931,7 +931,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.23333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

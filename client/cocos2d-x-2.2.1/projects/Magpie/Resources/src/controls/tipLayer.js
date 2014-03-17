@@ -25,7 +25,7 @@ var TipLayer = {
         fontSize = fontSize || 30;
 
         var label = cc.Node.create();
-        label.setPosition(gameFit.controls.tipLayer.labelPoint);
+        label.setPosition(gameFit.GAME_MIDPOINT);
         cc.Director.getInstance().getRunningScene().addChild(label, TIP_LAYER_Z_ORDER);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);

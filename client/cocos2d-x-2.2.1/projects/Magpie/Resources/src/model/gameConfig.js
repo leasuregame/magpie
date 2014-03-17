@@ -12,22 +12,25 @@
  * */
 
 
-var GameConfig = Entity.extend({
-    _fps: 30,
+var gameConfig = {
+    _fps: 0,
 
-    init: function() {
+    init: function () {
+        cc.log("gameConfig init");
 
+        this.setFps(lz.load("gameConfigFps") || 30);
     },
 
-    _load: function() {
+    setFps: function (fps) {
+        cc.log("gameConfig setFps: " + fps);
 
-    },
+        if (fps > 0 && fps != this._fps) {
+            this._fps = fps;
 
-    _save: function() {
-
-    },
-
-    setFps: function() {
-
+            lz.save("gameConfigFps", this._fps);
+            director.setAnimationInterval(1.0 / this._fps);
+        }
     }
-});
+};
+
+gameConfig.init();

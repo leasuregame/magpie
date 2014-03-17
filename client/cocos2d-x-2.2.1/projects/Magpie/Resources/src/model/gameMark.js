@@ -8,7 +8,6 @@
 
 
 var gameMark = {
-
     _activity: false,
     _achievement: false,
     _cardLibrary: false,

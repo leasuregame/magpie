@@ -14,8 +14,7 @@ var fit4Iphone4 = {
     "GAME_VIEW": cc.rect(40, 0, 640, 960),
     "controls": {
         "tipLayer": {
-            "labelPoint": cc.p(360, 550),
-            "actionPoint": cc.p(360, 650)
+            "labelPoint": cc.p(360, 450)
         }
     },
     "gameFrame": {
@@ -1495,8 +1494,7 @@ var fit4Iphone5 = {
     "GAME_VIEW": cc.rect(0, 0, 640, 1136),
     "controls": {
         "tipLayer": {
-            "labelPoint": cc.p(320, 550),
-            "actionPoint": cc.p(320, 650)
+            "labelPoint": cc.p(320, 538)
         }
     },
 

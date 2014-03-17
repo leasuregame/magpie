@@ -112,7 +112,7 @@ var Card = Entity.extend({
         this.off();
         this.on("abilityChange", this._abilityChangeEvent);
 
-        this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
+        this._newCardMark = this._id && (lz.load("card_" + this._id + "_mark") || false);
 
         return true;
     },
@@ -255,7 +255,7 @@ var Card = Entity.extend({
 
     setNewCardMark: function (mark) {
         this._newCardMark = mark;
-        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
+        lz.save("card_" + this._id + "_mark", this._newCardMark);
     },
 
     getSkillType: function () {

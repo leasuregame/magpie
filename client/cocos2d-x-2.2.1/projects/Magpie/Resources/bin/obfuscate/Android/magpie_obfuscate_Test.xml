@@ -174,7 +174,6 @@
                 <file name="src/view/mainModule/paymentLayer.js"/>
                 <file name="src/view/mainModule/playerDetails.js"/>
                 <file name="src/view/mainModule/playerHeaderLabel.js"/>
-                <file name="src/view/mainModule/playerTournamentLabel.js"/>
                 <file name="src/view/mainModule/playerUpgradeLayer.js"/>
                 <file name="src/view/mainModule/propsLayer.js"/>
                 <file name="src/view/mainModule/rankLayer.js"/>

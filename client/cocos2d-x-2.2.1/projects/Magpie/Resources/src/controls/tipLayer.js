@@ -18,9 +18,7 @@ var TipLayer = {
     _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
-        if (!str) {
-            return;
-        }
+        if (!str) return;
 
         color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
@@ -51,8 +49,13 @@ var TipLayer = {
 
         label.runAction(
             cc.Sequence.create(
-                cc.MoveTo.create(1, gameFit.controls.tipLayer.actionPoint),
-                cc.FadeOut.create(0.2),
+                cc.Spawn.create(
+                    cc.MoveBy.create(1.5, cc.p(0, 170)),
+                    cc.Sequence.create(
+                        cc.DelayTime.create(1.2),
+                        cc.FadeOut.create(0.3)
+                    )
+                ),
                 cc.CallFunc.create(function () {
                     label.removeFromParent();
                 }, this)

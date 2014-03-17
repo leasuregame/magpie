@@ -645,8 +645,8 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
-      return next(null, {code: 501, msg: "已达可吞噬上限，请提升角色等级"})
+    # if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
+    #   return next(null, {code: 501, msg: "已达可吞噬上限，请提升角色等级"})
 
     # can_use_elixir = player.canUseElixir(cardId)
     # if can_use_elixir < elixir

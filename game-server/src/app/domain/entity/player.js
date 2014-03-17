@@ -165,9 +165,9 @@ var addEvents = function(player) {
                 break;
             }
         }
-        if (oldVip == 0 && player.vip > 0) {
-            achieve.vip(player);
-        }
+        // 达成vip成就
+        achieve.vipTo(player, player.vip);
+        
         recountVipPrivilege(player, oldVip);
     });
 };

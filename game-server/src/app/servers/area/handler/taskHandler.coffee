@@ -309,10 +309,20 @@ Handler::mysticalPass = (msg, session, next) ->
     (bl, cb) ->
       countSpirit(player, bl, 'PASS')
       if bl.winner is 'own'
-        mpcData = table.getTableItem('mystical_pass_config', player.pass.mystical.diff)
+        ### 达成成就 ###
+        achieve.passPhaseTo(player, player.pass.mystical.diff)
+
+        mpcData = table.getTableItem('mystical_pass_reward', player.pass.mystical.diff)
+        
         bl.rewards.skillPoint = mpcData.skill_point
+        bl.rewards.money = mpcData.money
+        bl.rewards.energy = mpcData.energy
+        bl.rewards.gold = mpcData.gold
 
         player.increase('skillPoint', mpcData.skill_point)
+        player.increase('money', mpcData.money)
+        player.increase('energy', mpcData.energy)
+        player.increase('gold', mpcData.gold)
         player.clearMysticalPass()        
         player.incSpirit(bl.rewards.totalSpirit) if bl.rewards?.totalSpirit > 0
         player.save()

@@ -212,3 +212,4 @@ CSSProperties.prototype.ccbTenLotteryTip;
 CSSProperties.prototype.ccbFragment;
 CSSProperties.prototype.ccbFnExtract;
 CSSProperties.prototype.ccbSpiritLabel;
+CSSProperties.prototype.ccbFnRank;

@@ -109,6 +109,7 @@
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/advancedTipsLabel.js"/>
                 <file name="src/view/mainModule/attackDetailsLayer.js"/>
                 <file name="src/view/mainModule/bossAppearLabel.js"/>
                 <file name="src/view/mainModule/bossHelpLabel.js"/>
@@ -200,7 +201,6 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
-                <file name="src/view/mainModule/useCardsTipLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>

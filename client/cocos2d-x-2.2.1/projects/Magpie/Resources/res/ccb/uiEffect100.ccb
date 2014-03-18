@@ -142,7 +142,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up225.png</string>
+							<string>res/effect/uiEffect/up224.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -153,11 +153,9 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>150</integer>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -248,7 +246,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

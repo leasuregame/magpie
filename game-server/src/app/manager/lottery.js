@@ -40,15 +40,6 @@ var freeLottery = function(level, eids) {
     return [card, 0, 0];
 };
 
-/*
- * 抽卡，传入参数抽卡种类
- * 1：普通抽卡
- * 2：高级抽卡
- * */
-var randomCardId = function (star) {
-    var len = tableIds.length;
-    return tableIds[_.random(0, len/5 - 1) * 5 + star - 1];
-};
 
 var gen_card_star = function (level, hCounts) {
     var levelMapping = {

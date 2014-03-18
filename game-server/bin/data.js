@@ -5,6 +5,7 @@ var async = require('async');
 var _ = require('underscore');
 var table = require('../app/manager/table');
 var cardConfig = require('../config/data/card');
+var MarkGroup = require('../app/common/markGroup');
 
 module.exports = function(db, dir) {
   return new Data(db, dir);
@@ -17,6 +18,120 @@ var Data = function(db, dir) {
   } else {
     this.fixtures_dir = path.join(__dirname, '..', 'config', 'fixtures/');
   }
+};
+
+Data.prototype.correctCardBook = function() {
+  var idTab = table.getTable('new_card_id_map');
+  
+  var playerDao = this.db.player;
+  var totalCount = 0,
+      finished = 0;
+  playerDao.fetchMany({}, function(err, players) {    
+    totalCount = players.length;
+
+    async.each(players, function(ply, done) {
+      var newIds = [];
+
+      var ids = ply.lightUpCards();
+      if (ids.length == 0) {
+        return done();
+      }
+      ids.forEach(function(id) {
+        var item = idTab.getItem(id);
+        if (item) {
+          newIds.push(item.new_id);
+        }
+      });
+
+      var mg = new MarkGroup([]);
+      newIds.forEach(function(id) {
+        mg.mark(id);
+      });
+
+      playerDao.update({
+        where: {id: ply.id},
+        data: {cardBook: {
+          mark: mg.value,
+          flag: mg.value
+        }}
+      }, function(err, res) {
+        if (err) {
+          console.log(err, res);  
+          done();
+        } else {
+          console.log('update card book for player id: ', ply.id);
+          finished += 1;
+          done();
+        }
+        
+      });
+
+    }, function(err) {
+      console.log('update player card book finished.');
+      console.log('totalCount: ', totalCount);
+      console.log('finished: ', finished);
+    });
+  });
+};
+
+Data.prototype.correctCardTableId = function() {
+  var idTab = table.getTable('new_card_id_map');
+  var cardDao = this.db['card'];
+  var updatedId = [];
+
+  cardDao.totalCount(function(err, count) {
+    console.log(err, count);
+    pageNum = 2
+    pages = Math.ceil(count / pageNum);
+    
+    fCount = 0
+    async.times(pages, function(page, next) {
+      var start = page * pageNum;
+
+      cardDao.selectForUpdate(' ' + start + ', ' + pageNum, function(err, cards) {
+        async.each(cards, function(card, done) {
+          console.log(card);
+          var item = idTab.getItem(card.tableId)
+          var newId;
+
+          if (item) {
+            newId = item.new_id;
+            cardDao.update({
+              where: {
+                id: card.id
+              },
+              data: {
+                tableId: newId
+              }
+            }, function(err, updateRes) {
+              if (err) {
+                console.log(err);
+                done();
+              } else {
+                console.log('update ' + card.tableId + ' to ' + newId);
+                fCount += 1;
+                updatedId.push(card.id);
+                console.log(fCount);
+                done()
+              }
+            });
+
+          } else {
+            done();
+          }
+        }, function(err) {
+          next(null);
+        });
+        
+      });
+
+    }, function(err, results) {
+      console.log('change tableId of card finished.');
+      console.log('total cards:', count);
+      console.log('finished:', fCount);
+      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {return x - y;})));
+    });
+  });
 };
 
 Data.prototype.resetRanking = function() {
@@ -66,9 +181,9 @@ Data.prototype.fixDuplicateRanking = function() {
         }
       }
     }
-    console.log(items.length, '====adsfadsfas');
+
     async.eachSeries(items, function(item, done) {
-      console.log('-a-a-', item.toJson());
+
       self.db['rank'].maxRanking(function(err, maxRanking) {
         console.log(err, maxRanking, item.id);
         self.db['rank'].update({

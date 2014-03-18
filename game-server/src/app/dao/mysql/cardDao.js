@@ -111,6 +111,34 @@ var CardDao = (function(_super) {
 		}}, cb);
 	};
 
+	CardDao.totalCount = function(cb) {
+		dbClient.query('select count(id) as num from card where tableId != 30000', function(err, res) {
+			if (err) {
+				console.log('[sql error] when select count form card', err);
+			}
+
+			if (!!res && res.length > 0) {
+				cb(null, res[0].num);
+			} else {
+				cb(null, 0);
+			}
+		});
+	};
+
+	CardDao.selectForUpdate = function(limit, cb) {
+		dbClient.query('select id, tableId from card where tableId != 30000 order by id limit ' + limit, function(err, res) {
+			if (err) {
+				console.log('[sql error]', err);
+			}
+
+			if (!!res && res.length > 0) {
+				cb(null, res);
+			} else {
+				cb(null, []);
+			}
+		});
+	}
+
 	return CardDao;
 })(DaoBase);
 

@@ -955,6 +955,14 @@ var main_scene_image = {
     uiEffect94: "res/ccb/uiEffect94.ccbi",
     uiEffect95: "res/ccb/uiEffect95.ccbi",
     uiEffect96: "res/ccb/uiEffect96.ccbi",
+    uiEffect97: "res/ccb/uiEffect97.ccbi",
+    uiEffect98: "res/ccb/uiEffect98.ccbi",
+    uiEffect99: "res/ccb/uiEffect99.ccbi",
+    uiEffect100: "res/ccb/uiEffect100.ccbi",
+    uiEffect101: "res/ccb/uiEffect101.ccbi",
+    uiEffect102: "res/ccb/uiEffect102.ccbi",
+    uiEffect103: "res/ccb/uiEffect103.ccbi",
+
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

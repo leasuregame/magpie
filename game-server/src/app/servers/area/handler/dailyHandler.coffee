@@ -74,10 +74,10 @@ Handler::signIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sdata = table.getTableItem('daily_signin_rewards', 1)
     if not player.signToday()
       return next(null, {code: 501, msg: '不能重复签到'})
-      
+    
+    sdata = table.getTableItem('daily_signin_rewards', 1)
     player.increase('money', sdata.money)
     player.increase('energy', sdata.energy)
     player.save()

@@ -89,6 +89,10 @@ var LineUpLayer = LazyLayer.extend({
             this.addChild(nodeBgSprite);
             this._nodeBgSprite[i] = nodeBgSprite;
 
+            var effect = cc.BuilderReader.load(main_scene_image["uiEffect" + (97 + i)], this);
+            effect.setPosition(point);
+            this.addChild(effect);
+
             var id = lineUp.getLineUpByIndex(i);
 
             if (id != undefined) {

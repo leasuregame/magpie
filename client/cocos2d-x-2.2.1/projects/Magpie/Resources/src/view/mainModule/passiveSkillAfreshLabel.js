@@ -20,6 +20,9 @@ var STOP_UNTIL_NULL = 0;
 var STOP_UNTIL_BLUE = 1;
 var STOP_UNTIL_YELLOW = 2;
 
+var USE_MONEY_CONSUME = 5000;
+var USE_GOLD_CONSUME = 200;
+
 var PassiveSkillAfreshLabel = cc.Layer.extend({
     _passiveSkillAfreshLabelFit: null,
 
@@ -172,7 +175,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
-        var moneyLabel = cc.LabelTTF.create("2000 / 次", "STHeitiTC-Medium", 20);
+        var moneyLabel = cc.LabelTTF.create(USE_MONEY_CONSUME + " / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
@@ -181,7 +184,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         goldIcon.setPosition(cc.p(325, 92));
         this._resLabel.addChild(goldIcon);
 
-        var goldLabel = cc.LabelTTF.create("20 / 次", "STHeitiTC-Medium", 20);
+        var goldLabel = cc.LabelTTF.create(USE_GOLD_CONSUME + " / 次", "STHeitiTC-Medium", 20);
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);
@@ -536,7 +539,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var player = gameData.player;
 
         if (this._useType == USE_GOLD) {
-            if (player.get("gold") < 20) {
+            if (player.get("gold") < USE_GOLD_CONSUME) {
                 TipLayer.tip("魔石不足");
 
                 return false;
@@ -544,7 +547,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         }
 
         if (this._useType == USE_MONEY) {
-            if (player.get("money") < 2000) {
+            if (player.get("money") < USE_MONEY_CONSUME) {
                 TipLayer.tip("仙币不足");
 
                 return false;

@@ -287,7 +287,7 @@ var Message = Entity.extend({
             } else {
                 cc.log("playback fail");
 
-                TipLayer.tip("战斗回放出错");
+                TipLayer.tip("找不到该战报");
             }
         });
     },

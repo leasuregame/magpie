@@ -233,6 +233,7 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
+        
   @seekBoss: (data, player, cb) ->
     ### boss等级限制判断 ###
     boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1

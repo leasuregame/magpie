@@ -222,6 +222,9 @@ class Hero extends Module
   log: (step)->
     if step.r? and not _.some step.r
       delete step.r
+
+    # 记录回合数
+    step.p = @player.round_num
     battleLog.addStep(step)
 
   death: ->

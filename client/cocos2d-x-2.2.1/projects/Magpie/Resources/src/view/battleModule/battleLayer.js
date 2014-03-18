@@ -99,7 +99,7 @@ var BattleLayer = cc.Layer.extend({
             }
         }
 
-        this._stepLabel = cc.LabelTTF.create("回合: 0 / " + BATTLE_MAX_STEP, "STHeitiTC-Medium", 20);
+        this._stepLabel = cc.LabelTTF.create("回合: 0 / " + BATTLE_MAX_STEP, "STHeitiTC-Medium", 24);
         this._stepLabel.setPosition(this._battleLayerFit.stepLabelPoint);
         this.addChild(this._stepLabel);
 

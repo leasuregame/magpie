@@ -19,6 +19,12 @@ var Data = function(db, dir) {
   }
 };
 
+Data.prototype.correctCardTableId = function() {
+  idTab = table.getTableItem('new_card_id_map');
+
+  this.db.card.
+};
+
 Data.prototype.resetRanking = function() {
   var self = this;
   this.db['rank'].orderByAbility(function(err, res) {
@@ -66,9 +72,9 @@ Data.prototype.fixDuplicateRanking = function() {
         }
       }
     }
-    console.log(items.length, '====adsfadsfas');
+
     async.eachSeries(items, function(item, done) {
-      console.log('-a-a-', item.toJson());
+
       self.db['rank'].maxRanking(function(err, maxRanking) {
         console.log(err, maxRanking, item.id);
         self.db['rank'].update({

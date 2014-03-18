@@ -12,7 +12,7 @@
  * */
 
 
-var gameConfig = {
+var gameConfig = new (Entity.extend({
     _fps: 0,
 
     init: function () {
@@ -28,9 +28,8 @@ var gameConfig = {
             this._fps = fps;
 
             lz.save("gameConfigFps", this._fps);
+
             cc.Director.getInstance().setAnimationInterval(1.0 / this._fps);
         }
     }
-};
-
-gameConfig.init();
+}));

@@ -30,6 +30,9 @@
 var director = cc.Director.getInstance();
 director.setDisplayStats(false);
 
+// set FPS. the default value is 1.0/60 if you don't call this
+gameConfig.init();
+
 // fit dev
 gameFitAdapter();
 

@@ -1032,7 +1032,7 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                MainScene.getInstance().switchLayer(MainLayer);
+                TipLayer.tip("阵容保存成功");
 
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();

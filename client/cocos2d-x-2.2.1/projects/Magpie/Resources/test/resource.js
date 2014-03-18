@@ -1171,6 +1171,7 @@ var main_scene_image = {
     uiEffect85: ccb_scene_path + "uiEffect85.ccbi",
     uiEffect91: ccb_scene_path + "uiEffect91.ccbi",
     uiEffect93: ccb_scene_path + "uiEffect93.ccbi",
+    uiEffect96: ccb_scene_path + "uiEffect96.ccbi",
     
 
     //开场动画

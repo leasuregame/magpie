@@ -128,6 +128,7 @@ var BattleLog = Entity.extend({
         cc.log("BattleLog getSpirit: " + id);
 
         var i;
+        
         if (id > 6) {
             for (i = 7; i <= 12; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
@@ -141,6 +142,8 @@ var BattleLog = Entity.extend({
                 }
             }
         }
+
+        return 0;
     },
 
     recover: function () {

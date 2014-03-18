@@ -1097,13 +1097,6 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.canUseElixir = function() {
-        if (this.lv >= 80) {
-            return Number.MAX_VALUE;
-        }
-        return elixirLimit(this.lv);
-    };
-
     Player.prototype.getRanking = function() {
         var rank = {
             ranking: 0

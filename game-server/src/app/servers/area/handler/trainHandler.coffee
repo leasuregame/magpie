@@ -461,7 +461,7 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {
-            msg: player.name + '*成功的将*' + cardNmae + '*进阶为5星',
+            msg: "#{player.name}*成功的将*#{cardNmae}*进阶为#{card.star}星",
             type: 0,
             validDuration: 10 / 60
           }
@@ -646,13 +646,6 @@ Handler::useElixir = (msg, session, next) ->
 
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
-
-    # if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
-    #   return next(null, {code: 501, msg: "已达可吞噬上限，请提升角色等级"})
-
-    # can_use_elixir = player.canUseElixir(cardId)
-    # if can_use_elixir < elixir
-    #   return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
@@ -860,7 +853,7 @@ setExchangedCard = (player, tid) ->
   player.set('exchangeCards', JSON.stringify(newCards))
 
 cardStar = (tableId) ->
-  tableId % 5 or 5
+  tableId % 20 or 20
 
 checkCardCount = (playerLv, cardIds) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length

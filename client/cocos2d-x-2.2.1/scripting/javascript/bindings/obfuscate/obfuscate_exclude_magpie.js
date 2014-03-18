@@ -213,3 +213,6 @@ CSSProperties.prototype.ccbFragment;
 CSSProperties.prototype.ccbFnExtract;
 CSSProperties.prototype.ccbSpiritLabel;
 CSSProperties.prototype.ccbFnRank;
+CSSProperties.prototype.ccbGoodsIcon1;
+CSSProperties.prototype.ccbGoodsIcon2;
+CSSProperties.prototype.ccbGoodsIcon3;

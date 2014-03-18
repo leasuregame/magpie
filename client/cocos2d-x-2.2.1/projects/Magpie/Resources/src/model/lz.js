@@ -376,7 +376,7 @@ lz.getRewardString = function (data) {
     var TIP_INTERVAL = 0.5 * 1000;
     var lastTimestamp = 0;
 
-    lz.tipReward = function (keyOrObj, count) {
+    lz.tipReward = function (keyOrObj, count, isDouble) {
         var reward = null;
 
         if (typeof (keyOrObj) === "string") {
@@ -394,7 +394,7 @@ lz.getRewardString = function (data) {
                     var str = lz.getGoodsNameByKey(key);
 
                     if (str.icon) {
-                        TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
+                        TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
                         if (key == "cardArray") {
                             var cards = reward[key];

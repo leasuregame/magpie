@@ -71,14 +71,28 @@ var TipLayer = {
         this._tip(false, str, color, fontName, fontSize);
     },
 
-    tipWithIcon: function (icon, str) {
-        cc.log("tipWithIcon: " + icon + " " + str);
+    tipWithIcon: function (icon, str, isDouble) {
+        cc.log("tipWithIcon: " + icon + " " + str + " " + isDouble);
 
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect66, this);
+        var url = "uiEffect66";
+        var texture = lz.getTexture(main_scene_image[icon]);
+
+        if(isDouble) {
+            url = "uiEffect86";
+        }
+
+        var effect = cc.BuilderReader.load(main_scene_image[url], this);
 
         var controller = effect.controller;
-        controller.ccbGoodsIcon.setTexture(lz.getTexture(main_scene_image[icon]));
         controller.ccbGoodsLabel.setString(str);
+
+        if(isDouble) {
+            controller.ccbGoodsIcon1.setTexture(texture);
+            controller.ccbGoodsIcon2.setTexture(texture);
+            controller.ccbGoodsIcon3.setTexture(texture);
+        } else {
+            controller.ccbGoodsIcon.setTexture(texture);
+        }
 
         effect.setPosition(gameFit.GAME_MIDPOINT);
         effect.animationManager.setCompletedAnimationCallback(this, function () {

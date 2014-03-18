@@ -16,7 +16,8 @@ var FUNCTION_OPEN = {
     "2": {
         "tableName": "pass",
         "tip": "天道已开启，现在可参与。",
-        "name": "passGuide"
+        "name": "instancesGuide",
+        "childName": "passGuide"
     },
     "3": {
         "tableName": "card3_position",
@@ -51,12 +52,16 @@ var EXPLAIN = {
     },
     "pass": {
         effect: "uiEffect72"
+    },
+    "boss": {
+        effect: "uiEffect94"
     }
 };
 
 var gameGuide = {
     _tournamentGuide: false,
     _passGuide: false,
+    _instancesGuide: false,
     _treasureHuntGuide: false,
     _rankGuide: false,
     _card3Guide: false,
@@ -84,6 +89,10 @@ var gameGuide = {
 
                 this.set(guide.name, true);
 
+                if (guide.childName) {
+                    this.set(guide.childName, true);
+                }
+
                 if (EXPLAIN[guide.tableName]) {
                     this.set(guide.tableName + "Explain", true);
                 }
@@ -108,8 +117,26 @@ var gameGuide = {
     },
 
     updateBossGuide: function () {
-        this.set("bossGuide", true);
-        MainScene.getInstance().updateGuide();
+
+        var uid = gameData.player.get("uid");
+        var isFirstMeetBoss = lz.load("meetBoss" + uid) || 0;
+
+        if (!isFirstMeetBoss) {
+            this.set("bossGuide", true);
+            this.set("bossExplain", true);
+
+            var point = gameFit.gameGuide.effectPoint;
+            var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect93, this);
+            tipEffect.setPosition(point);
+            tipEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                tipEffect.removeFromParent();
+            });
+
+            MainScene.getInstance().getLayer().addChild(tipEffect, 10);
+            MainScene.getInstance().updateGuide();
+
+            lz.save("meetBoss" + uid, 1);
+        }
     },
 
     getExplainEffect: function (name) {

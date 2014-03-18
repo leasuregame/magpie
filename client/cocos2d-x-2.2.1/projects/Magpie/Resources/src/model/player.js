@@ -409,7 +409,7 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
 

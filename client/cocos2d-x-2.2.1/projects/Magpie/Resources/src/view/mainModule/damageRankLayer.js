@@ -49,6 +49,11 @@ var DamageRankLayer = LazyLayer.extend({
         titleBgIcon.setPosition(cc.p(320, 904));
         this._frameLayer.addChild(titleBgIcon);
 
+        this._kneelLabel = cc.LabelTTF.create("每天可膜拜3次", "STHeitiTC-Medium", 20);
+        this._kneelLabel.setPosition(cc.p(320, 860));
+        this._kneelLabel.setColor(cc.c3b(255, 239, 182));
+        this._frameLayer.addChild(this._kneelLabel);
+
         var titleIcon = cc.Sprite.create(main_scene_image.icon404);
         titleIcon.setPosition(cc.p(320, 912));
         this._frameLayer.addChild(titleIcon);
@@ -233,6 +238,8 @@ var DamageRankLayer = LazyLayer.extend({
         var isGet = gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
+
+        this._kneelLabel.setVisible(this._selectType == TYPE_THIS_WEEK);
 
         this._rankList = [];
 
@@ -448,7 +455,7 @@ var DamageRankLayer = LazyLayer.extend({
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
-                type: GET_GIFT_BAG,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);

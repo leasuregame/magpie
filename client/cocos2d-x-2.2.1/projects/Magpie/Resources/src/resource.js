@@ -54,9 +54,6 @@ var main_scene_image = {
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
 
-    boss_half: main_scene_path + "boss_half.png",
-
-
     explore_bg_1: main_scene_path + "explore_bg_1.png",
     explore_bg_2: main_scene_path + "explore_bg_2.png",
     explore_bg_3: main_scene_path + "explore_bg_3.png",
@@ -954,6 +951,18 @@ var main_scene_image = {
     uiEffect90: "res/ccb/uiEffect90.ccbi",
     uiEffect91: "res/ccb/uiEffect91.ccbi",
     uiEffect92: "res/ccb/uiEffect92.ccbi",
+    uiEffect93: "res/ccb/uiEffect93.ccbi",
+    uiEffect94: "res/ccb/uiEffect94.ccbi",
+    uiEffect95: "res/ccb/uiEffect95.ccbi",
+    uiEffect96: "res/ccb/uiEffect96.ccbi",
+    uiEffect97: "res/ccb/uiEffect97.ccbi",
+    uiEffect98: "res/ccb/uiEffect98.ccbi",
+    uiEffect99: "res/ccb/uiEffect99.ccbi",
+    uiEffect100: "res/ccb/uiEffect100.ccbi",
+    uiEffect101: "res/ccb/uiEffect101.ccbi",
+    uiEffect102: "res/ccb/uiEffect102.ccbi",
+    uiEffect103: "res/ccb/uiEffect103.ccbi",
+
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -1260,7 +1269,15 @@ var main_scene_image = {
     startAnimation_pop_sound: "res/sound/startAnimationSound/startAnimation_pop_sound.wav",
     passive_skill_afresh: "res/sound/passive_skill_afresh.wav",
     click_building_sound: "res/sound/click_building_sound.wav",
-    click_gold_sound: "res/sound/click_gold_sound.wav"
+    click_gold_sound: "res/sound/click_gold_sound.wav",
+
+    // boss资源
+    boss1_png: "res/effect/effect/boss1.png",
+    boss1_plist: "res/effect/effect/boss1.plist",
+    boss2_png: "res/effect/effect/boss2.png",
+    boss2_plist: "res/effect/effect/boss2.plist",
+    boss3_png: "res/effect/effect/boss3.png",
+    boss3_plist: "res/effect/effect/boss3.plist"
 };
 
 var main_scene_res = [

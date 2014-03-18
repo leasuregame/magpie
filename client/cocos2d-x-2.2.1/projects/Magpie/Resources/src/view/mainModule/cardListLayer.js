@@ -505,7 +505,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if(cardList[key].get("star") < 2) {
+            if (cardList[key].get("star") < 2) {
                 this._excludeList.push(key);
             }
         }
@@ -885,7 +885,10 @@ var CardListLayer = cc.Layer.extend({
             };
 
             if (isShowTip) {
-                UseCardsTipLabel.pop(cb);
+                AdvancedTipsLabel.pop({
+                    type: TYPE_CARD_TIPS,
+                    cb: cb
+                });
             } else {
                 cb();
             }
@@ -971,7 +974,10 @@ var CardListLayer = cc.Layer.extend({
         };
 
         if (isShowTip) {
-            UseCardsTipLabel.pop(cb);
+            AdvancedTipsLabel.pop({
+                type: TYPE_CARD_TIPS,
+                cb: cb
+            });
         } else {
             cb();
         }
@@ -1026,7 +1032,7 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                MainScene.getInstance().switchLayer(MainLayer);
+                TipLayer.tip("阵容保存成功");
 
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();

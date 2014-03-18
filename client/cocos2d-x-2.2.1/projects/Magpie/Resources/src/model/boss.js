@@ -229,7 +229,7 @@ var Boss = Entity.extend({
                 that.push(msg.boss);
                 that.set("cd", msg.cd);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
             } else {
@@ -320,7 +320,7 @@ var Boss = Entity.extend({
         });
     },
 
-    showFriendHelpRewardList: function(cb) {
+    showFriendHelpRewardList: function (cb) {
         cc.log("Boss showFriendHelpRewardList");
 
         var that = this;
@@ -433,8 +433,10 @@ var Boss = Entity.extend({
     _updateCdAndBoss: function () {
         var interval = UPDATE_CD_TIME_INTERVAL * 1000;
 
-        var cd = Math.max(0, this._cd - interval);
-        this.set("cd", cd);
+        if (this._cd > 0) {
+            var cd = Math.max(0, this._cd - interval);
+            this.set("cd", cd);
+        }
 
         if (this._bossList) {
             var len = this._bossList.length;
@@ -464,7 +466,7 @@ var Boss = Entity.extend({
     },
 
     additionNeedGold: function (times) {
-        return ((1 + times) * times / 2) * 20;
+        return times * 20;
     },
 
     removeCdNeedGold: function () {
@@ -473,14 +475,25 @@ var Boss = Entity.extend({
 
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
+        if (this.get("cd") == 0) {
+            gameMark.setBossMark(true);
+        }
     },
 
     _kneelCountChangeEvent: function () {
         // 提示是否可以膜拜
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     _canReceiveChangeEvent: function () {
         // 提示是否有奖励可以领取
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     getThisWeekReward: function () {

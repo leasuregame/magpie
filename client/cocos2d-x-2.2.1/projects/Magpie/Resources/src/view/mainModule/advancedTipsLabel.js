@@ -2,17 +2,25 @@
  * Created by lujunyu on 14-1-24.
  */
 
-var UseCardsTipLabel = LazyLayer.extend({
+var TYPE_CARD_TIPS = 0;
+var TYPE_PASSIVE_SKILL_TIPS = 1;
+
+var AdvancedTipsLabel = LazyLayer.extend({
 
     _cb: null,
 
-    init: function (cb) {
-        cc.log("UseCardsTipLabel init");
+    _tips: {
+        0: "所选中卡牌中有4或5星卡，确定继续么",
+        1: "当前卡牌有金色属性，是否要继续洗练"
+    },
+
+    init: function (args) {
+        cc.log("AdvancedTipsLabel init");
 
         if (!this._super()) return false;
 
-        if (cb) {
-            this._cb = cb;
+        if (args.cb) {
+            this._cb = args.cb;
         }
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
@@ -30,10 +38,10 @@ var UseCardsTipLabel = LazyLayer.extend({
 
         var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
         msgBgIcon.setPosition(cc.p(0, 30));
-        msgBgIcon.setScaleX(0.9);
+        msgBgIcon.setScaleX(0.95);
         node.addChild(msgBgIcon);
 
-        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4或5星卡，确定继续么", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create(this._tips[args.type], "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         node.addChild(tipLabel);
 
@@ -63,42 +71,42 @@ var UseCardsTipLabel = LazyLayer.extend({
     },
 
     _onClickCancel: function () {
-        cc.log("UseCardsTipLabel _onClickCancel");
+        cc.log("AdvancedTipsLabel _onClickCancel");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.removeFromParent();
     },
 
     _onClickContinue: function () {
-        cc.log("UseCardsTipLabel _onClickContinue");
+        cc.log("AdvancedTipsLabel _onClickContinue");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.removeFromParent();
 
         if (this._cb) {
             this._cb();
         }
-
-        this.removeFromParent();
     }
 
 });
 
-UseCardsTipLabel.create = function (cb) {
-    cc.log("UseCardsTipLabel create");
+AdvancedTipsLabel.create = function (args) {
+    cc.log("AdvancedTipsLabel create");
 
-    var ref = new UseCardsTipLabel();
+    var ref = new AdvancedTipsLabel();
 
-    if (ref && ref.init(cb)) {
+    if (ref && ref.init(args)) {
         return ref;
     }
 
     return null;
 };
 
-UseCardsTipLabel.pop = function (cb) {
-    cc.log("UseCardsTipLabel pop");
+AdvancedTipsLabel.pop = function (args) {
+    cc.log("AdvancedTipsLabel pop");
 
-    var useCardsTipLabel = UseCardsTipLabel.create(cb);
+    var advancedTipsLabel = AdvancedTipsLabel.create(args);
 
-    MainScene.getInstance().getLayer().addChild(useCardsTipLabel, 10);
+    MainScene.getInstance().getLayer().addChild(advancedTipsLabel, 10);
 };

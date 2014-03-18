@@ -781,6 +781,7 @@ var PassLayer = cc.Layer.extend({
     }
 });
 
+
 PassLayer.create = function () {
     var ret = new PassLayer();
 

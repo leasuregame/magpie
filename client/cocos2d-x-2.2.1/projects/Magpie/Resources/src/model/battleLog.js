@@ -31,7 +31,11 @@ var BattleLog = Entity.extend({
     init: function (id, isPlayback) {
         cc.log("BattleLog init");
 
-        var battleLog = BattleLogPool.getInstance().getBattleLogById(id);
+        var battleLog = BattleLogPool.getInstance().get(id);
+
+        if (battleLog.enemyId === gameData.player.get("id")) {
+            battleLog.winner = battleLog.winner == "own" ? "enemy" : "own";
+        }
 
         this.set("id", battleLog.id);
         this.set("type", battleLog.type);
@@ -57,7 +61,7 @@ var BattleLog = Entity.extend({
         if (battleLog.isFirstTournament) {
             this.set("isFirstTournament", true);
         }
-        
+
         var player = gameData.player;
         var spirit = gameData.spirit;
         var cardList = gameData.cardList;

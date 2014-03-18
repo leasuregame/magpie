@@ -136,16 +136,18 @@ var TournamentLayer = cc.Layer.extend({
         this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
-        var rankItem = cc.MenuItemImage.create(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            this._onClickRank,
-            this
-        );
+//        var rankItem = cc.MenuItemImage.create(
+//            main_scene_image.button7,
+//            main_scene_image.button7s,
+//            this._onClickRank,
+//            this
+//        );
 
-        rankItem.setPosition(this._tournamentLayerFit.rankItemPoint);
+        var rankItemEffect = cc.BuilderReader.load(main_scene_image.uiEffect95, this);
+        rankItemEffect.setPosition(this._tournamentLayerFit.rankItemPoint);
+        this.addChild(rankItemEffect);
 
-        var menu = cc.Menu.create(buyCountItem, this._rewardItem, rankItem);
+        var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -417,7 +419,7 @@ var TournamentLayer = cc.Layer.extend({
 
             GiftBagLayer.pop({
                 reward: reward,
-                type: GET_GIFT_BAG,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(reward);
@@ -434,8 +436,8 @@ var TournamentLayer = cc.Layer.extend({
         });
     },
 
-    _onClickRank: function () {
-        cc.log("TournamentLayer _onClickRank");
+    ccbFnRank: function () {
+        cc.log("TournamentLayer ccbFnRank");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -612,6 +614,7 @@ var TournamentLayer = cc.Layer.extend({
         this._isTouch = false;
     }
 });
+
 
 TournamentLayer.create = function () {
     var res = new TournamentLayer();

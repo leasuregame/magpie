@@ -26,7 +26,7 @@ var ColorLabelTTF = cc.Node.extend({
             var fontName = arg.fontName || "STHeitiTC-Medium";
             var fontSize = arg.fontSize || 20;
             var isStroke = arg.isStroke || false;
-            var dimensions = arg.dimensions || cc.size(0, fontSize);
+            var dimensions = arg.dimensions || cc.size(0, 0);
             var alignment = arg.alignment || cc.TEXT_ALIGNMENT_LEFT;
 
             this.createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);

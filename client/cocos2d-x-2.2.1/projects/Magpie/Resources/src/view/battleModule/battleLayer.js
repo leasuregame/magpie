@@ -24,6 +24,8 @@ var BATTLE_SHOCK_TAG = 234590;
 var DAMAGE_LOWER_LIMIT = 0.80;
 var DAMAGE_UPPER_LIMIT = 1.20;
 
+var BOSS_CARD_SCALE = 1.5;
+
 var BattleLayer = cc.Layer.extend({
     _battleLayerFit: null,
 
@@ -34,9 +36,9 @@ var BattleLayer = cc.Layer.extend({
     _battleLog: null,
     _type: PVE_BATTLE_LOG,
     _battleNode: null,
-    _tipNode: null,
     _spiritNode: null,
     _locate: null,
+    _lastTipOffset: null,
     _battleMidpoint: null,
     _lineUpMidpoint: null,
     _isPlayback: false,
@@ -74,7 +76,6 @@ var BattleLayer = cc.Layer.extend({
         cc.log(battleNode);
 
         this._battleNode = {};
-        this._tipNode = {};
         for (var key in battleNode) {
             if (battleNode[key] != undefined) {
                 cc.log(battleNode[key]);
@@ -94,11 +95,6 @@ var BattleLayer = cc.Layer.extend({
                 this._battleNode[key].setPosition(locate);
                 this._battleNode[key].setVisible(false);
                 this.addChild(this._battleNode[key], NODE_Z_ORDER);
-
-                this._tipNode[key] = cc.BuilderReader.load(main_scene_image.tipNode, this);
-                this._tipNode[key].setPosition(locate);
-                this._tipNode[key].setVisible(false);
-                this.addChild(this._tipNode[key], TIP_Z_ORDER);
             }
         }
 
@@ -123,7 +119,7 @@ var BattleLayer = cc.Layer.extend({
         this.addChild(this._menu);
         this._menu.setVisible(false);
 
-        this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+        this._playSpeed = lz.load(gameData.player.get("uid") + "playSpeedTimes") || 1;
 
         for (var speed = 1; speed <= 3; ++speed) {
 
@@ -175,10 +171,12 @@ var BattleLayer = cc.Layer.extend({
         BattlePlayer.getInstance().next();
     },
 
-    tip: function (key, name, str) {
+    tip: function (key, name, str, random) {
         cc.log("BattleLayer tip");
 
-        var tipNode = this._tipNode[key];
+        var tipNode = cc.BuilderReader.load(main_scene_image.tipNode, this);
+        tipNode.setPosition(this._getTipPoint(key, random));
+        this.addChild(tipNode, TIP_Z_ORDER);
 
         if (tipNode) {
             if (str) {
@@ -186,10 +184,13 @@ var BattleLayer = cc.Layer.extend({
             }
 
             tipNode.animationManager.runAnimationsForSequenceNamedTweenDuration(name, 0);
+            tipNode.animationManager.setCompletedAnimationCallback(this, function () {
+                tipNode.removeFromParent();
+            });
         }
     },
 
-    tipHarm: function (index, value, isSkill, isCirt) {
+    tipHarm: function (index, value, isSkill, isCirt, random) {
         cc.log("BattleLayer tipHarm");
 
         if (isCirt) {
@@ -223,7 +224,47 @@ var BattleLayer = cc.Layer.extend({
             }
         }
 
-        this.tip(index, name, str);
+        this.tip(index, name, str, random);
+    },
+
+    _getTipPoint: function (key, random) {
+        var point0 = this._locate[key];
+
+        if (!random) {
+            return point0;
+        }
+
+        var x1 = point0.x - 40;
+        var x2 = point0.x + 40;
+        var y1 = point0.y - 85;
+        var y2 = point0.y + 40;
+
+        var lastTipPoint = cc.pAdd(point0, this._lastTipOffset || cc.p(0, 0));
+        var ly1 = lastTipPoint.y - 30;
+        var ly2 = lastTipPoint.y + 30;
+
+        var yAreaList = [];
+
+        if (ly1 > y1) {
+            yAreaList.push({
+                y1: y1,
+                y2: ly1
+            });
+        }
+
+        if (ly2 < y2) {
+            yAreaList.push({
+                y1: ly2,
+                y2: y2
+            })
+        }
+
+        var yArea = yAreaList[lz.randomInt(0, yAreaList.length)];
+
+        point = cc.p(lz.random(x1, x2), lz.random(yArea.y1, yArea.y2));
+        this._lastTipOffset = cc.pSub(point, point0);
+
+        return point;
     },
 
     _getDirection: function (index, isOther) {
@@ -242,7 +283,6 @@ var BattleLayer = cc.Layer.extend({
                 var index = parseInt(key);
 
                 this._battleNode[key].setVisible(true);
-                this._tipNode[key].setVisible(true);
 
                 if (this._getDirection(index) === "o") {
                     this._battleNode[key].runAnimations("beg", 0, this.began());
@@ -260,7 +300,6 @@ var BattleLayer = cc.Layer.extend({
 
                 if (this._getDirection(index) === "e") {
                     this._battleNode[key].setVisible(true);
-                    this._tipNode[key].setVisible(true);
                 }
 
                 if (this._battleNode[key].isBossCard && this._battleNode[key].isBossCard()) {
@@ -538,8 +577,10 @@ var BattleLayer = cc.Layer.extend({
         this.stopActionByTag(BATTLE_SHOCK_TAG);
 
         var action = cc.Sequence.create(
-            cc.MoveTo.create(0.06, cc.p(0, 5)),
-            cc.MoveTo.create(0.06, cc.p(0, -5)),
+            cc.MoveTo.create(0.06, cc.p(0, 7)),
+            cc.MoveTo.create(0.06, cc.p(0, -7)),
+            cc.MoveTo.create(0.06, cc.p(0, 3)),
+            cc.MoveTo.create(0.06, cc.p(0, -3)),
             cc.MoveTo.create(0.06, cc.p(0, 0))
         );
 
@@ -570,13 +611,13 @@ var BattleLayer = cc.Layer.extend({
     _damageAssessed: function (t, n) {
         cc.log("BattleLayer damageAssessed");
 
-        var k = t > 0 ? 1 : -1;
+        var k = t >= 0 ? 1 : -1;
         t = Math.abs(t);
         var damage = [];
         var index = 0;
 
-        while (t > 0) {
-            if (n > 1) {
+        while (n > 0) {
+            if (t > 0 && n > 1) {
                 damage[index] = lz.randomInt(Math.ceil(t / n * DAMAGE_LOWER_LIMIT), Math.floor(t / n * DAMAGE_UPPER_LIMIT));
             } else {
                 damage[index] = t;
@@ -1555,9 +1596,6 @@ var BattleLayer = cc.Layer.extend({
                             var y = (attackerLocate.y + targetLocate.y) / 2;
                             var point = lz.checkPoint(cc.p(lz.random(x - 100, x + 100), y));
 
-                            cc.log(point.x);
-                            cc.log(point.y);
-
                             var pointArray = [
                                 attackerLocate,
                                 point,
@@ -1925,6 +1963,10 @@ var BattleLayer = cc.Layer.extend({
                             effect400_2.setPosition(targetLocate);
                             that.addChild(effect400_2, EFFECT_Z_ORDER);
 
+                            if (targetNode.isBossCard()) {
+                                effect400_2.setScale(BOSS_CARD_SCALE);
+                            }
+
                             var nextStepCallback = that.nextStepCallback();
                             effect400_2.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect400_2.removeFromParent();
@@ -2083,6 +2125,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect402 = cc.BuilderReader.load(main_scene_image.effect402, that);
                             effect402.setPosition(targetLocate);
                             that.addChild(effect402, EFFECT_Z_ORDER);
+
+                            if (targetNode.isBossCard()) {
+                                effect402.setScale(BOSS_CARD_SCALE);
+                            }
 
                             var nextStepCallback = that.nextStepCallback();
                             effect402.animationManager.setCompletedAnimationCallback(that, function () {
@@ -2249,6 +2295,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect404_2 = cc.BuilderReader.load(main_scene_image.effect404_2, that);
                             effect404_2.setPosition(targetLocate);
                             that.addChild(effect404_2, EFFECT_Z_ORDER - 1);
+
+                            if (targetNode.isBossCard()) {
+                                effect404_2.setScale(BOSS_CARD_SCALE);
+                            }
 
                             var nextStepCallback = that.nextStepCallback();
                             effect404_2.animationManager.setCompletedAnimationCallback(that, function () {
@@ -2449,6 +2499,10 @@ var BattleLayer = cc.Layer.extend({
                             effect500_2.setPosition(targetLocate);
                             that.addChild(effect500_2, EFFECT_Z_ORDER - 1);
 
+                            if (targetNode.isBossCard()) {
+                                effect500_2.setScale(BOSS_CARD_SCALE);
+                            }
+
                             var nextStepCallback = that.nextStepCallback();
                             effect500_2.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect500_2.removeFromParent();
@@ -2506,6 +2560,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect501 = cc.BuilderReader.load(main_scene_image.effect501, that);
                             effect501.setPosition(targetLocate);
                             that.addChild(effect501, EFFECT_Z_ORDER);
+
+                            if (targetNode.isBossCard()) {
+                                effect501.setScale(BOSS_CARD_SCALE);
+                            }
 
                             var nextStepCallback = that.nextStepCallback();
                             effect501.animationManager.setCompletedAnimationCallback(that, function () {
@@ -2615,6 +2673,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect502 = cc.BuilderReader.load(main_scene_image.effect502, that);
                             effect502.setPosition(targetLocate);
                             that.addChild(effect502, EFFECT_Z_ORDER);
+
+                            if (targetNode.isBossCard()) {
+                                effect502.setScale(BOSS_CARD_SCALE);
+                            }
 
                             var nextStepCallback = that.nextStepCallback();
                             effect502.animationManager.setCompletedAnimationCallback(that, function () {
@@ -2967,6 +3029,10 @@ var BattleLayer = cc.Layer.extend({
                             effect601_2.setPosition(targetLocate);
                             that.addChild(effect601_2, EFFECT_Z_ORDER);
 
+                            if (targetNode.isBossCard()) {
+                                effect601_2.setScale(BOSS_CARD_SCALE);
+                            }
+
                             var nextStepCallback = that.nextStepCallback();
                             effect601_2.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect601_2.removeFromParent();
@@ -3136,9 +3202,6 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect701_2, EFFECT_Z_ORDER);
 
                             var effectNodeAnimationManager = effect701_2.animationManager;
-
-                            cc.log(effectNodeAnimationManager);
-
                             var nextStepCallback1 = that.nextStepCallback();
                             effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
                                 effect701_2.removeFromParent();
@@ -3164,8 +3227,6 @@ var BattleLayer = cc.Layer.extend({
 
                                 nextStepCallback1();
                             });
-
-                            cc.log(effectNodeAnimationManager.getRunningSequenceName());
 
                             effect701_2.runAction(
                                 cc.EaseSineIn.create(
@@ -4096,6 +4157,10 @@ var BattleLayer = cc.Layer.extend({
                         0,
                         that.nextStepCallback()
                     );
+
+                    if (effect == 0) {
+                        that.tipHarm(target, effect, false, isCrit);
+                    }
                 }
             },
             {
@@ -4103,7 +4168,7 @@ var BattleLayer = cc.Layer.extend({
                     var damage = damageList[index++];
 
                     targetNode.update(damage);
-                    that.tipHarm(target, damage, false, isCrit);
+                    that.tipHarm(target, damage, false, isCrit, true);
 
                     return 4;
                 }
@@ -4126,7 +4191,7 @@ var BattleLayer = cc.Layer.extend({
                 times: 1,
                 fn: function () {
                     that._battleNode[attacker].runAnimations(
-                        "a_6",
+                        "a_1003",
                         0,
                         that.nextStepCallback()
                     );
@@ -4231,12 +4296,16 @@ var BattleLayer = cc.Layer.extend({
                     effect1700_1.animationManager.setCompletedAnimationCallback(that, function () {
                         effect1700_1.removeFromParent();
                         nextStepCallback();
+
+                        that.stopShock();
                     });
                 }
             },
             {
-                times: targetLen,
+                times: 1,
                 fn: function () {
+                    that.startShock();
+
                     battleStep.recover();
                     while (battleStep.hasNextTarget()) {
                         (function () {
@@ -4260,7 +4329,7 @@ var BattleLayer = cc.Layer.extend({
                 }
             },
             {
-                times: 1,
+                times: targetLen,
                 fn: function () {
                     battleStep.recover();
                     while (battleStep.hasNextTarget()) {
@@ -4369,7 +4438,7 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect1800_3, EFFECT_Z_ORDER);
 
                             var nextStepCallback2 = that.nextStepCallback();
-                            effectNodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                            effect1800_3.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect1800_3.removeFromParent();
                                 nextStepCallback2();
                             });
@@ -4383,7 +4452,7 @@ var BattleLayer = cc.Layer.extend({
                                 )
                             );
 
-                            effect1800_2.controller.ccbNode.setRotation(lz.getAngle(attackerLocate, targetLocate));
+                            effect1800_2.setRotation(lz.getAngle(attackerLocate, targetLocate));
                             effect1800_2.runAction(action.clone());
                             effect1800_3.runAction(action);
                         })();
@@ -4444,12 +4513,17 @@ var BattleLayer = cc.Layer.extend({
             },
             {
                 fn: function () {
-                    var point = cc.pAdd(attackerLocate, cc.p(index % 2 == 0 ? 100 : -100, 0));
+                    var isLeft = index % 2 != 0;
                     var damage = damageList[index++];
+                    var point = cc.pAdd(attackerLocate, cc.p(isLeft ? -100 : 100, 0));
 
                     var effect1801_2 = cc.BuilderReader.load(main_scene_image.effect1801_2, that);
                     effect1801_2.setPosition(point);
-                    that.addChild(effect1801_2, EFFECT_Z_ORDER);
+                    that.addChild(effect1801_2, EFFECT_Z_ORDER + 1);
+
+                    if (!isLeft) {
+                        effect1801_2.setScaleX(-1);
+                    }
 
                     var effectNodeAnimationManager = effect1801_2.animationManager;
                     var nextStepCallback1 = that.nextStepCallback();
@@ -4474,10 +4548,16 @@ var BattleLayer = cc.Layer.extend({
                                 0,
                                 that.nextStepCallback()
                             );
+
+                            that.startShock();
+                        }
+
+                        if (index >= len) {
+                            that.stopShock();
                         }
 
                         targetNode.update(damage);
-                        that.tipHarm(target, damage, true, isCrit);
+                        that.tipHarm(target, damage, true, isCrit, true);
 
                         nextStepCallback1();
                     });
@@ -4661,7 +4741,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
@@ -4672,7 +4752,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);

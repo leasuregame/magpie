@@ -16,7 +16,6 @@ Remote::createPlayer = (args, callback) ->
   areaId = args.areaId
   serverId = args.serverId
   uid = userId + '*' + areaId
-  self = this
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
     if not err and player

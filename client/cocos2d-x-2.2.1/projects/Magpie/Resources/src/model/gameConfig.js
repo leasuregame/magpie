@@ -28,7 +28,7 @@ var gameConfig = {
             this._fps = fps;
 
             lz.save("gameConfigFps", this._fps);
-            director.setAnimationInterval(1.0 / this._fps);
+            cc.Director.getInstance().setAnimationInterval(1.0 / this._fps);
         }
     }
 };

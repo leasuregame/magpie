@@ -110,9 +110,7 @@ Handler::getLastWeekReward = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
     (res, cb) ->
       player = res
-      console.log rank, rank.rank
       reward = countDamageRewards(rank?.rank)
-      console.log reward
       entityUtil.getReward player, reward, cb
     (cards, cb) =>
       @app.get('dao').damageOfRank.update {
@@ -402,7 +400,8 @@ countDamageRewards = (rank) ->
     energy: row.energy
   else 
     honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or BOSSCONFIG.REWARD_COUNT.BASE_VALUE
-    honor = parseInt honor5*(1-Math.ceil((rank-5)/BOSSCONFIG.REWARD_COUNT.DURACTION)*BOSSCONFIG.REWARD_COUNT.FACTOR)
+    gap = table.getTableItem('values', 'damageOfRankHonorGap')?.value or 0
+    honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/BOSSCONFIG.REWARD_COUNT.DURACTION)*BOSSCONFIG.REWARD_COUNT.FACTOR)
     honor = BOSSCONFIG.REWARD_COUNT.MIN if honor < BOSSCONFIG.REWARD_COUNT.MIN
     honor: honor
 

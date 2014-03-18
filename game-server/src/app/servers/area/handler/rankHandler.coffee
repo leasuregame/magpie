@@ -322,8 +322,9 @@ rewardOfRank = (rank) ->
   if row
     row
   else 
-    money50 = table.getTableItem('elixir_ranking_reward', 50)?.money or 0
-    money = parseInt money50*(1-Math.ceil((rank-50)/20)*0.003)
+    money50 = table.getTableItem('elixir_ranking_reward', 50)?.money or 330500
+    gap = table.getTableItem('values', 'elixirOfRankMoneyGap')?.value or 0
+    money = parseInt (money50-gap)*(1-Math.ceil((rank-50)/20)*0.003)
     if money < 50000
       money = 50000
     money: money

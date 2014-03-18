@@ -30,7 +30,7 @@ Handler::get = (msg, session, next) ->
 
 
 class Activity
-
+  # 登陆奖励
   @login: (app, playerId, type, args, next) ->
     async.waterfall [
       (cb) ->
@@ -49,6 +49,7 @@ class Activity
         return next(null, {code: err.code or 501, msg: err.msg or err})
       next(null, {code: 200})
 
+  # 累计充值奖励
   @recharge: (app, playerId, type, args, next) ->
     if not args or not args.id or not _.isNumber(args.id)
       return next(null, {code: 501, msg: '参数不正确'})

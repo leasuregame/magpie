@@ -47,6 +47,17 @@ lz.platformConfig = {
 })();
 
 
+(function jsApplicationDidFinishLaunching() {
+    cc.log("*************************************************************");
+    cc.log("jsApplicationDidFinishLaunching");
+    cc.log("*************************************************************");
+
+    if (typeof(lz.NotificationHelp) != "undefined") {
+        lz.NotificationHelp.start();
+    }
+})();
+
+
 var BUY_GOODS_BALANCE_NOT_ENOUGH = 0;   // 余额不足
 var BUY_GOODS_SERVER_ERROR = 1;     // 服务器错误
 var BUY_GOODS_ORDER_EMPTY = 2;      // 订单号为空

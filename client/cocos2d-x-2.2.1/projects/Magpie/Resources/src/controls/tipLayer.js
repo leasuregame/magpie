@@ -18,16 +18,14 @@ var TipLayer = {
     _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
-        if (!str) {
-            return;
-        }
+        if (!str) return;
 
         color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
         fontSize = fontSize || 30;
 
         var label = cc.Node.create();
-        label.setPosition(gameFit.controls.tipLayer.labelPoint);
+        label.setPosition(gameFit.GAME_MIDPOINT);
         cc.Director.getInstance().getRunningScene().addChild(label, TIP_LAYER_Z_ORDER);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);
@@ -51,8 +49,13 @@ var TipLayer = {
 
         label.runAction(
             cc.Sequence.create(
-                cc.MoveTo.create(1, gameFit.controls.tipLayer.actionPoint),
-                cc.FadeOut.create(0.2),
+                cc.Spawn.create(
+                    cc.MoveBy.create(1.5, cc.p(0, 170)),
+                    cc.Sequence.create(
+                        cc.DelayTime.create(1.2),
+                        cc.FadeOut.create(0.3)
+                    )
+                ),
                 cc.CallFunc.create(function () {
                     label.removeFromParent();
                 }, this)

@@ -12,12 +12,6 @@ var fit4Iphone4 = {
     "GAME_ZERO_POINT": cc.p(40, 0),
     "GAME_BOTTOM_LEFT_POINT": cc.p(40, 0),
     "GAME_VIEW": cc.rect(40, 0, 640, 960),
-    "controls": {
-        "tipLayer": {
-            "labelPoint": cc.p(360, 550),
-            "actionPoint": cc.p(360, 650)
-        }
-    },
     "gameFrame": {
         "frame1Point": cc.p(0, 480),
         "frame2Point": cc.p(680, 480)
@@ -1491,13 +1485,6 @@ var fit4Iphone5 = {
     "GAME_ZERO_POINT": cc.p(0, 0),
     "GAME_BOTTOM_LEFT_POINT": cc.p(0, 98),
     "GAME_VIEW": cc.rect(0, 0, 640, 1136),
-    "controls": {
-        "tipLayer": {
-            "labelPoint": cc.p(320, 550),
-            "actionPoint": cc.p(320, 650)
-        }
-    },
-
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)

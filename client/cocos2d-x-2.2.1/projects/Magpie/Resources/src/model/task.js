@@ -221,7 +221,7 @@ var Task = Entity.extend({
                     msg.battle_log.rewards.money = msg.money_obtain;
                     msg.battle_log.rewards.exp = msg.exp_obtain;
 
-                    cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log);
+                    cbData.battleLogId = BattleLogPool.getInstance().put(msg.battle_log);
                 } else {
                     player.add("money", msg.money_obtain);
 

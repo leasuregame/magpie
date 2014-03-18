@@ -180,7 +180,6 @@ var appFiles = [
     'src/view/mainModule/paymentLayer.js',
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
-    'src/view/mainModule/playerTournamentLabel.js',
     'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/rankLayer.js',
@@ -237,9 +236,6 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 var director = cc.Director.getInstance();
 director.setDisplayStats(false);
-
-// set FPS. the default value is 1.0/60 if you don't call this
-director.setAnimationInterval(1.0 / 30);
 
 // fit dev
 gameFitAdapter();

@@ -199,7 +199,7 @@ var SpiritPoolLayer = cc.Layer.extend({
                     rewardEffect.removeFromParent();
                 });
             } else {
-                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
+                lz.tipReward("spirit", this._reward.spirit_obtain);
             }
 
             this.update();

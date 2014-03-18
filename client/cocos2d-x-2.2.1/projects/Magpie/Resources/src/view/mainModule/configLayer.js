@@ -48,7 +48,7 @@ var ConfigLayer = cc.Layer.extend({
 
         this._musicOpen = sound.isOpenMusic();
         this._soundOpen = sound.isOpenEffect();
-        var fps = GameConfig.getInstance().get("fps");
+        var fps = gameConfig.get("fps");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -381,7 +381,7 @@ var ConfigLayer = cc.Layer.extend({
             var point = that._framesItem[id].getPosition();
             that._framesSelect.setPosition(point);
 
-            GameConfig.getInstance().setFps(fpsList[id]);
+            gameConfig.setFps(fpsList[id]);
         }
     },
 

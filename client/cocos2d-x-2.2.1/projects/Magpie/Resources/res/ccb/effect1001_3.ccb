@@ -65,7 +65,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>1</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -101,7 +101,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -196,8 +196,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>150</real>
-									<real>10</real>
+									<real>120</real>
+									<real>80</real>
 								</array>
 							</dict>
 							<dict>
@@ -207,8 +207,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>80</real>
-									<real>10</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -219,7 +219,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>120</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -230,7 +230,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>180</real>
 								</array>
 							</dict>
 							<dict>
@@ -258,9 +258,9 @@
 										<real>1</real>
 									</array>
 									<array>
-										<real>0.0</real>
-										<real>0.0</real>
-										<real>0.0</real>
+										<real>0.016925718635320663</real>
+										<real>0.016926618292927742</real>
+										<real>0.016926134005188942</real>
 										<real>0.0</real>
 									</array>
 								</array>
@@ -274,9 +274,9 @@
 								<array>
 									<array>
 										<real>0.0</real>
-										<real>0.0</real>
-										<real>0.0</real>
-										<real>255</real>
+										<real>0.068252928555011749</real>
+										<real>0.023474507033824921</real>
+										<real>1</real>
 									</array>
 									<array>
 										<real>0.0</real>
@@ -315,7 +315,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>100</real>
+									<real>120</real>
 									<real>20</real>
 								</array>
 							</dict>
@@ -326,8 +326,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>20</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -748,7 +748,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>1</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -784,7 +784,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -851,7 +851,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.30000001192092896</real>
+								<real>0.40000000596046448</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1151,13 +1151,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.63333332538604736</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -478,19 +478,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 } else {
                     if (isAfresh) {
                         var valueLabel = passiveSkillLabel.valueLabel;
-                        var moveByAction = cc.Sequence.create(
-                            cc.MoveBy.create(0.1, cc.p(5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(-5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(5, 0)),
-                            cc.MoveBy.create(0.1, cc.p(-5, 0))
-                        );
-                        var scaleToAction = cc.Sequence.create(
-                            cc.ScaleTo.create(0.1, 1.5),
-                            cc.ScaleTo.create(0.1, 1),
-                            cc.ScaleTo.create(0.1, 1.5),
-                            cc.ScaleTo.create(0.1, 1)
-
-                        );
 
                         var callFunc = cc.CallFunc.create(function () {
                             gameData.sound.playEffect(main_scene_image.passive_skill_afresh, false);
@@ -498,8 +485,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
                         valueLabel.runAction(
                             cc.Sequence.create(
-                                cc.FadeIn.create(0.8),
-                                cc.Spawn.create(moveByAction, scaleToAction, callFunc)
+                                cc.Spawn.create(cc.FadeIn.create(0.8), callFunc)
                             )
                         );
                     }
@@ -798,7 +784,31 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             }
         }
 
-        this._afresh();
+        var passiveSkill = this._leadCard.get("passiveSkill");
+        var isTip = false;
+        var len = this._afreshIdList.length;
+
+        for (var i = 0; i < len; i++) {
+            var id = this._afreshIdList[i];
+            if (passiveSkill[id].value >= 8.0) {
+                isTip = true;
+                break;
+            }
+        }
+
+        var that = this;
+        var cb = function () {
+            that._afresh();
+        };
+
+        if (isTip) {
+            AdvancedTipsLabel.pop({
+                type: TYPE_PASSIVE_SKILL_TIPS,
+                cb: cb
+            });
+        } else {
+            cb();
+        }
     },
 
     _onClickRepeatAfresh: function () {
@@ -824,18 +834,42 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._resLabel.setVisible(true);
-        this._afreshItem.setVisible(false);
-        this._repeatAfreshItem.setVisible(false);
-        this._stopTypeLabel.setVisible(false);
-        this._startItem.setVisible(false);
-        this._cancelItem.setVisible(false);
-        this._shyLayer.setVisible(true);
+        var passiveSkill = this._leadCard.get("passiveSkill");
+        var isTip = false;
+        var len = this._afreshIdList.length;
 
-        this._setTip();
+        for (var i = 0; i < len; i++) {
+            var id = this._afreshIdList[i];
+            if (passiveSkill[id].value >= 8.0) {
+                isTip = true;
+                break;
+            }
+        }
 
-        this.schedule(this._repeatAfresh, 2);
-        this.schedule(this._setTip, 1);
+        var that = this;
+        var cb = function () {
+            that._resLabel.setVisible(true);
+            that._afreshItem.setVisible(false);
+            that._repeatAfreshItem.setVisible(false);
+            that._stopTypeLabel.setVisible(false);
+            that._startItem.setVisible(false);
+            that._cancelItem.setVisible(false);
+            that._shyLayer.setVisible(true);
+
+            that._setTip();
+
+            that.schedule(that._repeatAfresh, 1);
+            that.schedule(that._setTip, 1);
+        };
+
+        if (isTip) {
+            AdvancedTipsLabel.pop({
+                type: TYPE_PASSIVE_SKILL_TIPS,
+                cb: cb
+            });
+        } else {
+            cb();
+        }
     },
 
     _onClickCancel: function () {

@@ -430,6 +430,11 @@ var gameMark = {
     getBossMark: function () {
         cc.log("gameMark getBossMark");
 
+        var limitLv = outputTables.function_limit.rows[1].boss;
+        if (gameData.player.get("lv") < limitLv) {
+            return false;
+        }
+        
         return this._boss;
     },
 

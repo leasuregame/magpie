@@ -200,7 +200,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>ccbGoodsIcon1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -274,7 +274,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>ccbGoodsIcon2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -336,7 +336,7 @@
 								<key>displayName</key>
 								<string>up164</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>ccbGoodsIcon3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -467,7 +467,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>ccbSpiritLabel</string>
+						<string>ccbGoodsLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -712,7 +712,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.48298490047454834</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>1.5</real>
 			<key>resolution</key>

@@ -324,9 +324,9 @@ var Card = (function(_super) {
 
 
     Card.prototype.afreshPassiveSkill = function(type, ps) {
-        var born_rates = psConfig.BORN_RATES
-        var value_obj = psConfig.AFRESH[type]
-
+        var born_rates = psConfig.BORN_RATES;
+        var star = this.star >= 5 ? this.star : 5;
+        var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
 
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));

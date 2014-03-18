@@ -55,6 +55,7 @@ var fit4Iphone4 = {
                 "o": cc.p(360, 252),
                 "e": cc.p(360, 752)
             },
+            "stepLabelPoint": cc.p(360, 38),
             "battleMidpoint": cc.p(360, 502),
             "backItemPoint": cc.p(250, -450),
             "vsNodePoint": cc.p(360, 480),
@@ -1530,6 +1531,7 @@ var fit4Iphone5 = {
                 "o": cc.p(320, 280),
                 "e": cc.p(320, 900)
             },
+            "stepLabelPoint": cc.p(320, 38),
             "battleMidpoint": cc.p(320, 590),
             "backItemPoint": cc.p(225, -530),
             "vsNodePoint": cc.p(320, 568),

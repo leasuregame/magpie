@@ -42,10 +42,11 @@ var BattleLayer = cc.Layer.extend({
     _battleMidpoint: null,
     _lineUpMidpoint: null,
     _isPlayback: false,
+    _playSpeed: 0,
     _backItem: null,
     _chooseSpeedItem: null,
     _menu: null,
-    _playSpeed: 0,
+    _stepLabel: null,
 
     init: function (battleLog) {
         cc.log("BattleLayer init");
@@ -97,6 +98,10 @@ var BattleLayer = cc.Layer.extend({
                 this.addChild(this._battleNode[key], NODE_Z_ORDER);
             }
         }
+
+        this._stepLabel = cc.LabelTTF.create("回合: 0 / " + BATTLE_MAX_STEP, "STHeitiTC-Medium", 20);
+        this._stepLabel.setPosition(this._battleLayerFit.stepLabelPoint);
+        this.addChild(this._stepLabel);
 
         if (this._isPlayback) {
             this._backItem = cc.MenuItemImage.create(
@@ -479,8 +484,13 @@ var BattleLayer = cc.Layer.extend({
         cc.log("BattleLayer attack");
         cc.log(battleStep);
 
+        var step = battleStep.get("step");
         var attacker = battleStep.get("attacker");
         var fn = "";
+
+        if (step) {
+            this._stepLabel.setString("回合: " + step + " / " + BATTLE_MAX_STEP);
+        }
 
         if (battleStep.isSkill()) {
             fn = this._battleNode[attacker].getSkillFn();

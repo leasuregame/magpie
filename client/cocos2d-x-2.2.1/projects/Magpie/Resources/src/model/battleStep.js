@@ -12,13 +12,16 @@
  * */
 
 
+var BATTLE_MAX_STEP = 30;
+
 var BattleStep = Entity.extend({
+    _step: 0,
     _isSkill: false,
     _attacker: 0,
     _type: null,
-    _target: [],
-    _isCrit: [],
-    _effect: [],
+    _target: null,
+    _isCrit: null,
+    _effect: null,
     _targetLen: 0,
     _index: -1,
 
@@ -30,10 +33,11 @@ var BattleStep = Entity.extend({
         this._isCrit = [];
         this._effect = [];
 
+        this._step = battleStep.p;
         this._isSkill = battleStep.a < 0;
         this._attacker = Math.abs(battleStep.a);
 
-        this._type = battleStep.t || null
+        this._type = battleStep.t || null;
 
         this._targetLen = battleStep.d.length;
 

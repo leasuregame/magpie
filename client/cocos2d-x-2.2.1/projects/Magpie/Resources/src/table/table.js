@@ -1,6 +1,8 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "boss_find_rate": "BOSS出现概率",
+    "BOSS出现概率": "boss_find_rate",
     "boss_type_rate": "BOSS类型配置表",
     "BOSS类型配置表": "boss_type_rate",
     "boss": "BOSS属性配置表",
@@ -73,12 +75,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -87,6 +83,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -124,6 +126,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -469,6 +472,244 @@ var outputTables = {
                 "desc": "通关尊者之身篇章",
                 "gold": 20,
                 "energy": 100
+            },
+            "39": {
+                "id": 39,
+                "method": "vipTo",
+                "need": 1,
+                "name": "尊者VIP1",
+                "desc": "成为VIP1玩家",
+                "gold": 20,
+                "energy": 50
+            },
+            "40": {
+                "id": 40,
+                "method": "vipTo",
+                "need": 2,
+                "name": "尊者VIP2",
+                "desc": "成为VIP2玩家",
+                "gold": 30,
+                "energy": 100
+            },
+            "41": {
+                "id": 41,
+                "method": "vipTo",
+                "need": 3,
+                "name": "尊者VIP3",
+                "desc": "成为VIP3玩家",
+                "gold": 40,
+                "energy": 200
+            },
+            "42": {
+                "id": 42,
+                "method": "vipTo",
+                "need": 4,
+                "name": "尊者VIP4",
+                "desc": "成为VIP4玩家",
+                "gold": 50,
+                "energy": 300
+            },
+            "43": {
+                "id": 43,
+                "method": "vipTo",
+                "need": 5,
+                "name": "尊者VIP5",
+                "desc": "成为VIP5玩家",
+                "gold": 60,
+                "energy": 400
+            },
+            "44": {
+                "id": 44,
+                "method": "vipTo",
+                "need": 6,
+                "name": "尊者VIP6",
+                "desc": "成为VIP6玩家",
+                "gold": 70,
+                "energy": 500
+            },
+            "45": {
+                "id": 45,
+                "method": "vipTo",
+                "need": 7,
+                "name": "尊者VIP7",
+                "desc": "成为VIP7玩家",
+                "gold": 80,
+                "energy": 600
+            },
+            "46": {
+                "id": 46,
+                "method": "vipTo",
+                "need": 8,
+                "name": "尊者VIP8",
+                "desc": "成为VIP8玩家",
+                "gold": 90,
+                "energy": 700
+            },
+            "47": {
+                "id": 47,
+                "method": "vipTo",
+                "need": 9,
+                "name": "尊者VIP9",
+                "desc": "成为VIP9玩家",
+                "gold": 100,
+                "energy": 800
+            },
+            "48": {
+                "id": 48,
+                "method": "vipTo",
+                "need": 10,
+                "name": "尊者VIP10",
+                "desc": "成为VIP10玩家",
+                "gold": 200,
+                "energy": 900
+            },
+            "49": {
+                "id": 49,
+                "method": "vipTo",
+                "need": 11,
+                "name": "尊者VIP11",
+                "desc": "成为VIP11玩家",
+                "gold": 300,
+                "energy": 1000
+            },
+            "50": {
+                "id": 50,
+                "method": "vipTo",
+                "need": 12,
+                "name": "尊者VIP12",
+                "desc": "成为VIP12玩家",
+                "gold": 500,
+                "energy": 5000
+            },
+            "51": {
+                "id": 51,
+                "method": "passPhaseTo",
+                "need": 1,
+                "name": "降魔大王",
+                "desc": "通关天道里第1阶魔道",
+                "gold": 20,
+                "energy": 50
+            },
+            "52": {
+                "id": 52,
+                "method": "passPhaseTo",
+                "need": 2,
+                "name": "降魔使者",
+                "desc": "通关天道里第2阶魔道",
+                "gold": 30,
+                "energy": 100
+            },
+            "53": {
+                "id": 53,
+                "method": "passPhaseTo",
+                "need": 3,
+                "name": "降魔罗汉",
+                "desc": "通关天道里第3阶魔道",
+                "gold": 40,
+                "energy": 200
+            },
+            "54": {
+                "id": 54,
+                "method": "passPhaseTo",
+                "need": 4,
+                "name": "降魔神君",
+                "desc": "通关天道里第4阶魔道",
+                "gold": 50,
+                "energy": 300
+            },
+            "55": {
+                "id": 55,
+                "method": "passPhaseTo",
+                "need": 5,
+                "name": "降魔圣者",
+                "desc": "通关天道里第5阶魔道",
+                "gold": 60,
+                "energy": 400
+            }
+        }
+    },
+    "boss_find_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 0
+            },
+            "3": {
+                "id": 3,
+                "rate": 0
+            },
+            "4": {
+                "id": 4,
+                "rate": 0
+            },
+            "5": {
+                "id": 5,
+                "rate": 0
+            },
+            "6": {
+                "id": 6,
+                "rate": 0
+            },
+            "7": {
+                "id": 7,
+                "rate": 0
+            },
+            "8": {
+                "id": 8,
+                "rate": 0
+            },
+            "9": {
+                "id": 9,
+                "rate": 0
+            },
+            "10": {
+                "id": 10,
+                "rate": 0
+            },
+            "11": {
+                "id": 11,
+                "rate": 1
+            },
+            "12": {
+                "id": 12,
+                "rate": 1
+            },
+            "13": {
+                "id": 13,
+                "rate": 1
+            },
+            "14": {
+                "id": 14,
+                "rate": 1
+            },
+            "15": {
+                "id": 15,
+                "rate": 1
+            },
+            "16": {
+                "id": 16,
+                "rate": 5
+            },
+            "17": {
+                "id": 17,
+                "rate": 30
+            },
+            "18": {
+                "id": 18,
+                "rate": 40
+            },
+            "19": {
+                "id": 19,
+                "rate": 50
+            },
+            "20": {
+                "id": 20,
+                "rate": 100
             }
         }
     },
@@ -625,6 +866,10 @@ var outputTables = {
                 "honor": 8000,
                 "money": 100000,
                 "energy": 4000
+            },
+            "6": {
+                "id": 6,
+                "honor": 5000
             }
         }
     },
@@ -1057,6 +1302,76 @@ var outputTables = {
                 "exp_need": 286156,
                 "money_need": 1837176,
                 "cur_exp": 2043193
+            },
+            "61": {
+                "id": 61,
+                "lv": 61,
+                "exp_need": 326218,
+                "money_need": 2158682,
+                "cur_exp": 2329349
+            },
+            "62": {
+                "id": 62,
+                "lv": 62,
+                "exp_need": 371889,
+                "money_need": 2536451,
+                "cur_exp": 2655567
+            },
+            "63": {
+                "id": 63,
+                "lv": 63,
+                "exp_need": 423953,
+                "money_need": 2980330,
+                "cur_exp": 3027456
+            },
+            "64": {
+                "id": 64,
+                "lv": 64,
+                "exp_need": 483306,
+                "money_need": 3501888,
+                "cur_exp": 3451409
+            },
+            "65": {
+                "id": 65,
+                "lv": 65,
+                "exp_need": 550969,
+                "money_need": 4114718,
+                "cur_exp": 3934715
+            },
+            "66": {
+                "id": 66,
+                "lv": 66,
+                "exp_need": 628105,
+                "money_need": 4834794,
+                "cur_exp": 4485684
+            },
+            "67": {
+                "id": 67,
+                "lv": 67,
+                "exp_need": 716040,
+                "money_need": 5680883,
+                "cur_exp": 5113789
+            },
+            "68": {
+                "id": 68,
+                "lv": 68,
+                "exp_need": 816286,
+                "money_need": 6675038,
+                "cur_exp": 5829829
+            },
+            "69": {
+                "id": 69,
+                "lv": 69,
+                "exp_need": 930566,
+                "money_need": 7843170,
+                "cur_exp": 6646115
+            },
+            "70": {
+                "id": 70,
+                "lv": 70,
+                "exp_need": 1060845,
+                "money_need": 9215725,
+                "cur_exp": 7576681
             }
         }
     },
@@ -1070,7 +1385,9 @@ var outputTables = {
                 "star2": 800,
                 "star3": 5000,
                 "star4": 20000,
-                "star5": 200000
+                "star5": 200000,
+                "star6": 50000,
+                "star7": 100000
             }
         }
     },
@@ -10515,6 +10832,66 @@ var outputTables = {
                 "lv": 60,
                 "base": 1.04100000000001,
                 "factor": 56.838
+            },
+            "61": {
+                "id": 61,
+                "lv": 61,
+                "base": 1.04000000000001,
+                "factor": 59.168
+            },
+            "62": {
+                "id": 62,
+                "lv": 62,
+                "base": 1.03900000000001,
+                "factor": 61.535
+            },
+            "63": {
+                "id": 63,
+                "lv": 63,
+                "base": 1.03800000000001,
+                "factor": 63.935
+            },
+            "64": {
+                "id": 64,
+                "lv": 64,
+                "base": 1.03700000000001,
+                "factor": 66.365
+            },
+            "65": {
+                "id": 65,
+                "lv": 65,
+                "base": 1.03600000000001,
+                "factor": 68.821
+            },
+            "66": {
+                "id": 66,
+                "lv": 66,
+                "base": 1.03500000000001,
+                "factor": 71.299
+            },
+            "67": {
+                "id": 67,
+                "lv": 67,
+                "base": 1.03400000000001,
+                "factor": 73.794
+            },
+            "68": {
+                "id": 68,
+                "lv": 68,
+                "base": 1.03300000000001,
+                "factor": 76.303
+            },
+            "69": {
+                "id": 69,
+                "lv": 69,
+                "base": 1.03200000000001,
+                "factor": 78.821
+            },
+            "70": {
+                "id": 70,
+                "lv": 70,
+                "base": 1.03100000000001,
+                "factor": 81.343
             }
         }
     },
@@ -10525,30 +10902,44 @@ var outputTables = {
                 "id": 1,
                 "star": 1,
                 "money_need": 5000,
-                "rate_per_card": 7,
-                "max_num": 15
+                "rate_per_card": 10,
+                "max_num": 10
             },
             "2": {
                 "id": 2,
                 "star": 2,
                 "money_need": 10000,
-                "rate_per_card": 6,
-                "max_num": 17
+                "rate_per_card": 8,
+                "max_num": 13
             },
             "3": {
                 "id": 3,
                 "star": 3,
                 "money_need": 20000,
-                "rate_per_card": 5,
-                "max_num": 20
+                "rate_per_card": 7,
+                "max_num": 15
             },
             "4": {
                 "id": 4,
                 "star": 4,
                 "money_need": 50000,
-                "rate_per_card": 4,
-                "max_num": 25,
+                "rate_per_card": 6,
+                "max_num": 17,
                 "no_work_count": 10
+            },
+            "5": {
+                "id": 5,
+                "star": 5,
+                "money_need": 100000,
+                "rate_per_card": 35,
+                "max_num": 3
+            },
+            "6": {
+                "id": 6,
+                "star": 6,
+                "money_need": 200000,
+                "rate_per_card": 17,
+                "max_num": 6
             }
         }
     },
@@ -10762,8 +11153,8 @@ var outputTables = {
                 "ranking_list": 20,
                 "lottery": 25,
                 "card5_position": 35,
-                "pass_skillafresh": 45,
-                "boss": 1
+                "boss": 40,
+                "pass_skillafresh": 45
             }
         }
     },
@@ -10801,6 +11192,14 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "max_lv": 60
+            },
+            "6": {
+                "id": 6,
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
             }
         }
     },
@@ -10809,15 +11208,23 @@ var outputTables = {
         "rows": {
             "3": {
                 "id": 3,
-                "elixir_limit": 200000
+                "elixir_limit": 250000
             },
             "4": {
                 "id": 4,
-                "elixir_limit": 320000
+                "elixir_limit": 400000
             },
             "5": {
                 "id": 5,
-                "elixir_limit": 400000
+                "elixir_limit": 600000
+            },
+            "6": {
+                "id": 6,
+                "elixir_limit": 900000
+            },
+            "7": {
+                "id": 7,
+                "elixir_limit": 1200000
             }
         }
     },
@@ -10944,25 +11351,15 @@ var outputTables = {
                 "value": 20,
                 "desc": "每次喊话话费的金额"
             },
-            "findBossRate": {
-                "id": "findBossRate",
-                "value": 5,
-                "desc": "每次探索发现boss的概率"
+            "elixirOfRankMoneyGap": {
+                "id": "elixirOfRankMoneyGap",
+                "value": 130500,
+                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
             },
-            "bossTypeBlueCard": {
-                "id": "bossTypeBlueCard",
-                "value": 60,
-                "desc": "蓝卡boss随机的概率"
-            },
-            "bossTypePurpleCard": {
-                "id": "bossTypePurpleCard",
-                "value": 25,
-                "desc": "紫卡boss随机的概率"
-            },
-            "bossTypeGoldCard": {
-                "id": "bossTypeGoldCard",
-                "value": 15,
-                "desc": "金卡boss随机的概率"
+            "damageOfRankHonorGap": {
+                "id": "damageOfRankHonorGap",
+                "value": 3000,
+                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
             }
         }
     },
@@ -25948,6 +26345,10 @@ var outputTables = {
                 "elixir": 0,
                 "power": 0,
                 "exp_card": 0
+            },
+            "51": {
+                "id": 51,
+                "money": 200000
             }
         }
     },
@@ -27131,9 +27532,9 @@ var outputTables = {
                 "order": 1,
                 "method": "expCard",
                 "name": "经验元灵",
-                "disc": "经验元灵1张，含800点卡牌经验。",
+                "disc": "经验元灵1张，含2000点卡牌经验。",
                 "consume_type": "money",
-                "consume": 2500,
+                "consume": 6000,
                 "obtain_type": "card",
                 "obtain": 1,
                 "isVisible": 1
@@ -27157,11 +27558,11 @@ var outputTables = {
                 "order": 4,
                 "method": "money",
                 "name": "一小袋仙币",
-                "disc": "1000仙币，额外赠送200仙币。",
+                "disc": "1000仙币，额外赠送1000仙币。",
                 "consume_type": "gold",
                 "consume": 10,
                 "obtain_type": "money",
-                "obtain": 1200,
+                "obtain": 2000,
                 "isVisible": 1
             },
             "4": {
@@ -27169,11 +27570,11 @@ var outputTables = {
                 "order": 5,
                 "method": "money",
                 "name": "一袋仙币",
-                "disc": "5000仙币，额外赠送2500仙币。",
+                "disc": "5000仙币，额外赠送10000仙币。",
                 "consume_type": "gold",
                 "consume": 50,
                 "obtain_type": "money",
-                "obtain": 7500,
+                "obtain": 15000,
                 "isVisible": 1
             },
             "5": {
@@ -27181,11 +27582,11 @@ var outputTables = {
                 "order": 6,
                 "method": "money",
                 "name": "一大袋仙币",
-                "disc": "10000仙币，额外赠送8000仙币。",
+                "disc": "10000仙币，额外赠送35000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
                 "obtain_type": "money",
-                "obtain": 18000,
+                "obtain": 45000,
                 "isVisible": 1
             },
             "6": {
@@ -27227,6 +27628,323 @@ var outputTables = {
                 "isVisible": 1,
                 "discount_num": 10,
                 "discount": 8
+            }
+        }
+    },
+    "scope": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
+            },
+            "2": {
+                "id": 2,
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
+            },
+            "3": {
+                "id": 3,
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
+            },
+            "4": {
+                "id": 4,
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
+            },
+            "5": {
+                "id": 5,
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
+            },
+            "6": {
+                "id": 6,
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
+            },
+            "7": {
+                "id": 7,
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 8000,
+                "star4": 20000,
+                "star5": 50000,
+                "star6": 100000,
+                "star7": 200000
+            },
+            "2": {
+                "id": 2,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 100000,
+                "star6": 200000,
+                "star7": 450000
+            },
+            "3": {
+                "id": 3,
+                "star3": 22000,
+                "star4": 80000,
+                "star5": 180000,
+                "star6": 350000,
+                "star7": 600000
+            },
+            "4": {
+                "id": 4,
+                "star3": 35000,
+                "star4": 150000,
+                "star5": 300000,
+                "star6": 650000,
+                "star7": 1200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 50000,
+                "star4": 230000,
+                "star5": 500000,
+                "star6": 1000000,
+                "star7": 2100000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3_inc_min": 145,
+                "star3_inc_max": 150,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 155,
+                "star4_inc_max": 160,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": [165, 175, 185],
+                "star5_inc_max": [170, 180, 190],
+                "star5_grow": [5, 5, 5],
+                "rate5": [40, 45, 50]
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [85, 90, 95],
+                "star5_inc_max": [88, 93, 98],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [85, 90, 95],
+                "star5_inc_max": [88, 93, 98],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3_inc_min": 85,
+                "star3_inc_max": 88,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 90,
+                "star4_inc_max": 93,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [95, 100, 105],
+                "star5_inc_max": [98, 103, 108],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3_inc_min": 80,
+                "star3_inc_max": 83,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 85,
+                "star4_inc_max": 88,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [90, 95, 100],
+                "star5_inc_max": [93, 98, 103],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3_inc_min": 70,
+                "star3_inc_max": 73,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 75,
+                "star4_inc_max": 78,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [80, 85, 90],
+                "star5_inc_max": [83, 88, 93],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "7": {
+                "id": 7,
+                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 3,
+                "scope": 7,
+                "star3_inc_min": 30,
+                "star3_inc_max": 33,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 38,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [40, 45, 50],
+                "star5_inc_max": [43, 48, 53],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 2,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [20, 25, 30],
+                "star5_inc_max": [23, 28, 33],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 3,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [20, 25, 30],
+                "star5_inc_max": [23, 28, 33],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
+            },
+            "10": {
+                "id": 10,
+                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 6,
+                "star3_inc_min": 5,
+                "star3_inc_max": 8,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 5,
+                "star4_inc_max": 8,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": [10, 15, 20],
+                "star5_inc_max": [13, 18, 23],
+                "star5_grow": [3, 3, 3],
+                "rate5": [40, 45, 50]
             }
         }
     },
@@ -27474,313 +28192,6 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
-    "scope": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
-            },
-            "2": {
-                "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
-            },
-            "3": {
-                "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
-            },
-            "4": {
-                "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
-            },
-            "5": {
-                "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
-            },
-            "6": {
-                "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
-            },
-            "7": {
-                "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 8000,
-                "star4": 20000,
-                "star5": 50000
-            },
-            "2": {
-                "id": 2,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 100000
-            },
-            "3": {
-                "id": 3,
-                "star3": 22000,
-                "star4": 80000,
-                "star5": 180000
-            },
-            "4": {
-                "id": 4,
-                "star3": 35000,
-                "star4": 150000,
-                "star5": 300000
-            },
-            "5": {
-                "id": 5,
-                "star3": 50000,
-                "star4": 230000,
-                "star5": 500000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3_inc_min": 145,
-                "star3_inc_max": 150,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 155,
-                "star4_inc_max": 160,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 165,
-                "star5_inc_max": 170,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 4,
-                "star3_inc_min": 85,
-                "star3_inc_max": 88,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 90,
-                "star4_inc_max": 93,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 95,
-                "star5_inc_max": 98,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3_inc_min": 80,
-                "star3_inc_max": 83,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 85,
-                "star4_inc_max": 88,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 90,
-                "star5_inc_max": 93,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3_inc_min": 70,
-                "star3_inc_max": 73,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 75,
-                "star4_inc_max": 78,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 80,
-                "star5_inc_max": 83,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "7": {
-                "id": 7,
-                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 3,
-                "scope": 7,
-                "star3_inc_min": 135,
-                "star3_inc_max": 140,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 145,
-                "star4_inc_max": 150,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 155,
-                "star5_inc_max": 160,
-                "star5_grow": 5,
-                "rate5": 40
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 2,
-                "star3_inc_min": 70,
-                "star3_inc_max": 73,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 75,
-                "star4_inc_max": 78,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 80,
-                "star5_inc_max": 83,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 3,
-                "star3_inc_min": 70,
-                "star3_inc_max": 73,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 75,
-                "star4_inc_max": 78,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 80,
-                "star5_inc_max": 83,
-                "star5_grow": 3,
-                "rate5": 40
-            },
-            "10": {
-                "id": 10,
-                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的攻击力。",
-                "type": 4,
-                "scope": 6,
-                "star3_inc_min": 50,
-                "star3_inc_max": 53,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 55,
-                "star4_inc_max": 58,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 60,
-                "star5_inc_max": 63,
-                "star5_grow": 3,
-                "rate5": 40
             }
         }
     },
@@ -28203,7 +28614,6 @@ var outputTables = {
                 "layer_from": 1,
                 "layer_to": 30,
                 "rate": 10,
-                "skill_point": 1000,
                 "card_count": 5,
                 "cards": "30001#30001#30001#30001#30002",
                 "boss_id": 30002,
@@ -28218,7 +28628,6 @@ var outputTables = {
                 "layer_from": 31,
                 "layer_to": 50,
                 "rate": 10,
-                "skill_point": 2000,
                 "card_count": 5,
                 "cards": "30003#30003#30003#30003#30004",
                 "boss_id": 30004,
@@ -28233,7 +28642,6 @@ var outputTables = {
                 "layer_from": 51,
                 "layer_to": 70,
                 "rate": 10,
-                "skill_point": 3000,
                 "card_count": 5,
                 "cards": "30005#30005#30005#30005#30006",
                 "boss_id": 30006,
@@ -28248,7 +28656,6 @@ var outputTables = {
                 "layer_from": 71,
                 "layer_to": 90,
                 "rate": 10,
-                "skill_point": 4000,
                 "card_count": 5,
                 "cards": "30007#30007#30007#30007#30008",
                 "boss_id": 30008,
@@ -28263,7 +28670,6 @@ var outputTables = {
                 "layer_from": 91,
                 "layer_to": 100,
                 "rate": 10,
-                "skill_point": 5000,
                 "card_count": 5,
                 "cards": "30009#30009#30009#30009#30010",
                 "boss_id": 30010,
@@ -29651,7 +30057,7 @@ var outputTables = {
                 "money": 10200,
                 "elixir": 1040,
                 "skillPoint": 820,
-                "energy": 45,
+                "energy": 40,
                 "power": 10
             },
             "4": {
@@ -29660,7 +30066,7 @@ var outputTables = {
                 "money": 10300,
                 "elixir": 1060,
                 "skillPoint": 830,
-                "energy": 55,
+                "energy": 45,
                 "power": 10
             },
             "5": {
@@ -29669,7 +30075,7 @@ var outputTables = {
                 "money": 10400,
                 "elixir": 1080,
                 "skillPoint": 840,
-                "energy": 65,
+                "energy": 50,
                 "power": 10
             },
             "6": {
@@ -29678,7 +30084,7 @@ var outputTables = {
                 "money": 10500,
                 "elixir": 1100,
                 "skillPoint": 850,
-                "energy": 75,
+                "energy": 55,
                 "power": 10
             },
             "7": {
@@ -29687,7 +30093,7 @@ var outputTables = {
                 "money": 10600,
                 "elixir": 1120,
                 "skillPoint": 860,
-                "energy": 85,
+                "energy": 60,
                 "power": 10
             },
             "8": {
@@ -29696,7 +30102,7 @@ var outputTables = {
                 "money": 10700,
                 "elixir": 1140,
                 "skillPoint": 870,
-                "energy": 95,
+                "energy": 65,
                 "power": 10
             },
             "9": {
@@ -29705,7 +30111,7 @@ var outputTables = {
                 "money": 10800,
                 "elixir": 1160,
                 "skillPoint": 880,
-                "energy": 105,
+                "energy": 70,
                 "power": 10
             },
             "10": {
@@ -29714,7 +30120,7 @@ var outputTables = {
                 "money": 10900,
                 "elixir": 1180,
                 "skillPoint": 890,
-                "energy": 115,
+                "energy": 75,
                 "power": 10
             },
             "11": {
@@ -29723,7 +30129,7 @@ var outputTables = {
                 "money": 11000,
                 "elixir": 1200,
                 "skillPoint": 900,
-                "energy": 125,
+                "energy": 80,
                 "power": 20
             },
             "12": {
@@ -29732,7 +30138,7 @@ var outputTables = {
                 "money": 11100,
                 "elixir": 1220,
                 "skillPoint": 910,
-                "energy": 135,
+                "energy": 85,
                 "power": 20
             },
             "13": {
@@ -29741,7 +30147,7 @@ var outputTables = {
                 "money": 11200,
                 "elixir": 1240,
                 "skillPoint": 920,
-                "energy": 145,
+                "energy": 90,
                 "power": 20
             },
             "14": {
@@ -29750,7 +30156,7 @@ var outputTables = {
                 "money": 11300,
                 "elixir": 1260,
                 "skillPoint": 930,
-                "energy": 155,
+                "energy": 95,
                 "power": 20
             },
             "15": {
@@ -29759,7 +30165,7 @@ var outputTables = {
                 "money": 11400,
                 "elixir": 1280,
                 "skillPoint": 940,
-                "energy": 165,
+                "energy": 100,
                 "power": 20
             },
             "16": {
@@ -29768,7 +30174,7 @@ var outputTables = {
                 "money": 11500,
                 "elixir": 1300,
                 "skillPoint": 950,
-                "energy": 175,
+                "energy": 105,
                 "power": 20
             },
             "17": {
@@ -29777,7 +30183,7 @@ var outputTables = {
                 "money": 11600,
                 "elixir": 1320,
                 "skillPoint": 960,
-                "energy": 185,
+                "energy": 110,
                 "power": 20
             },
             "18": {
@@ -29786,7 +30192,7 @@ var outputTables = {
                 "money": 11700,
                 "elixir": 1340,
                 "skillPoint": 970,
-                "energy": 195,
+                "energy": 115,
                 "power": 20
             },
             "19": {
@@ -29795,7 +30201,7 @@ var outputTables = {
                 "money": 11800,
                 "elixir": 1360,
                 "skillPoint": 980,
-                "energy": 205,
+                "energy": 120,
                 "power": 20
             },
             "20": {
@@ -29804,7 +30210,7 @@ var outputTables = {
                 "money": 11900,
                 "elixir": 1380,
                 "skillPoint": 990,
-                "energy": 215,
+                "energy": 125,
                 "power": 20
             },
             "21": {
@@ -29813,7 +30219,7 @@ var outputTables = {
                 "money": 12000,
                 "elixir": 1400,
                 "skillPoint": 1000,
-                "energy": 225,
+                "energy": 130,
                 "power": 30
             },
             "22": {
@@ -29822,7 +30228,7 @@ var outputTables = {
                 "money": 12100,
                 "elixir": 1420,
                 "skillPoint": 1010,
-                "energy": 235,
+                "energy": 135,
                 "power": 30
             },
             "23": {
@@ -29831,7 +30237,7 @@ var outputTables = {
                 "money": 12200,
                 "elixir": 1440,
                 "skillPoint": 1020,
-                "energy": 245,
+                "energy": 140,
                 "power": 30
             },
             "24": {
@@ -29840,7 +30246,7 @@ var outputTables = {
                 "money": 12300,
                 "elixir": 1460,
                 "skillPoint": 1030,
-                "energy": 255,
+                "energy": 145,
                 "power": 30
             },
             "25": {
@@ -29849,7 +30255,7 @@ var outputTables = {
                 "money": 12400,
                 "elixir": 1480,
                 "skillPoint": 1040,
-                "energy": 265,
+                "energy": 150,
                 "power": 30
             },
             "26": {
@@ -29858,7 +30264,7 @@ var outputTables = {
                 "money": 12500,
                 "elixir": 1500,
                 "skillPoint": 1050,
-                "energy": 275,
+                "energy": 155,
                 "power": 30
             },
             "27": {
@@ -29867,7 +30273,7 @@ var outputTables = {
                 "money": 12600,
                 "elixir": 1520,
                 "skillPoint": 1060,
-                "energy": 285,
+                "energy": 160,
                 "power": 30
             },
             "28": {
@@ -29876,7 +30282,7 @@ var outputTables = {
                 "money": 12700,
                 "elixir": 1540,
                 "skillPoint": 1070,
-                "energy": 295,
+                "energy": 165,
                 "power": 30
             },
             "29": {
@@ -29885,7 +30291,7 @@ var outputTables = {
                 "money": 12800,
                 "elixir": 1560,
                 "skillPoint": 1080,
-                "energy": 305,
+                "energy": 170,
                 "power": 30
             },
             "30": {
@@ -29894,7 +30300,7 @@ var outputTables = {
                 "money": 12900,
                 "elixir": 1580,
                 "skillPoint": 1090,
-                "energy": 315,
+                "energy": 175,
                 "power": 30
             },
             "31": {
@@ -29903,7 +30309,7 @@ var outputTables = {
                 "money": 13000,
                 "elixir": 1600,
                 "skillPoint": 1100,
-                "energy": 325,
+                "energy": 180,
                 "power": 40
             },
             "32": {
@@ -29912,7 +30318,7 @@ var outputTables = {
                 "money": 13100,
                 "elixir": 1620,
                 "skillPoint": 1110,
-                "energy": 335,
+                "energy": 185,
                 "power": 40
             },
             "33": {
@@ -29921,7 +30327,7 @@ var outputTables = {
                 "money": 13200,
                 "elixir": 1640,
                 "skillPoint": 1120,
-                "energy": 345,
+                "energy": 190,
                 "power": 40
             },
             "34": {
@@ -29930,7 +30336,7 @@ var outputTables = {
                 "money": 13300,
                 "elixir": 1660,
                 "skillPoint": 1130,
-                "energy": 355,
+                "energy": 195,
                 "power": 40
             },
             "35": {
@@ -29939,7 +30345,7 @@ var outputTables = {
                 "money": 13400,
                 "elixir": 1680,
                 "skillPoint": 1140,
-                "energy": 365,
+                "energy": 200,
                 "power": 40
             },
             "36": {
@@ -29948,7 +30354,7 @@ var outputTables = {
                 "money": 13500,
                 "elixir": 1700,
                 "skillPoint": 1150,
-                "energy": 375,
+                "energy": 205,
                 "power": 40
             },
             "37": {
@@ -29957,7 +30363,7 @@ var outputTables = {
                 "money": 13600,
                 "elixir": 1720,
                 "skillPoint": 1160,
-                "energy": 385,
+                "energy": 210,
                 "power": 40
             },
             "38": {
@@ -29966,7 +30372,7 @@ var outputTables = {
                 "money": 13700,
                 "elixir": 1740,
                 "skillPoint": 1170,
-                "energy": 395,
+                "energy": 215,
                 "power": 40
             },
             "39": {
@@ -29975,7 +30381,7 @@ var outputTables = {
                 "money": 13800,
                 "elixir": 1760,
                 "skillPoint": 1180,
-                "energy": 405,
+                "energy": 220,
                 "power": 40
             },
             "40": {
@@ -29984,7 +30390,7 @@ var outputTables = {
                 "money": 13900,
                 "elixir": 1780,
                 "skillPoint": 1190,
-                "energy": 415,
+                "energy": 225,
                 "power": 40
             },
             "41": {
@@ -29993,7 +30399,7 @@ var outputTables = {
                 "money": 14000,
                 "elixir": 1800,
                 "skillPoint": 1200,
-                "energy": 425,
+                "energy": 230,
                 "power": 50
             },
             "42": {
@@ -30002,7 +30408,7 @@ var outputTables = {
                 "money": 14100,
                 "elixir": 1820,
                 "skillPoint": 1210,
-                "energy": 435,
+                "energy": 235,
                 "power": 50
             },
             "43": {
@@ -30011,7 +30417,7 @@ var outputTables = {
                 "money": 14200,
                 "elixir": 1840,
                 "skillPoint": 1220,
-                "energy": 445,
+                "energy": 240,
                 "power": 50
             },
             "44": {
@@ -30020,7 +30426,7 @@ var outputTables = {
                 "money": 14300,
                 "elixir": 1860,
                 "skillPoint": 1230,
-                "energy": 455,
+                "energy": 245,
                 "power": 50
             },
             "45": {
@@ -30029,7 +30435,7 @@ var outputTables = {
                 "money": 14400,
                 "elixir": 1880,
                 "skillPoint": 1240,
-                "energy": 465,
+                "energy": 250,
                 "power": 50
             },
             "46": {
@@ -30038,7 +30444,7 @@ var outputTables = {
                 "money": 14500,
                 "elixir": 1900,
                 "skillPoint": 1250,
-                "energy": 475,
+                "energy": 255,
                 "power": 50
             },
             "47": {
@@ -30047,7 +30453,7 @@ var outputTables = {
                 "money": 14600,
                 "elixir": 1920,
                 "skillPoint": 1260,
-                "energy": 485,
+                "energy": 260,
                 "power": 50
             },
             "48": {
@@ -30056,7 +30462,7 @@ var outputTables = {
                 "money": 14700,
                 "elixir": 1940,
                 "skillPoint": 1270,
-                "energy": 495,
+                "energy": 265,
                 "power": 50
             },
             "49": {
@@ -30065,7 +30471,7 @@ var outputTables = {
                 "money": 14800,
                 "elixir": 1960,
                 "skillPoint": 1280,
-                "energy": 505,
+                "energy": 270,
                 "power": 50
             },
             "50": {
@@ -30074,7 +30480,7 @@ var outputTables = {
                 "money": 14900,
                 "elixir": 1980,
                 "skillPoint": 1290,
-                "energy": 515,
+                "energy": 275,
                 "power": 50
             },
             "51": {
@@ -30083,7 +30489,7 @@ var outputTables = {
                 "money": 15000,
                 "elixir": 2000,
                 "skillPoint": 1300,
-                "energy": 525,
+                "energy": 280,
                 "power": 60
             },
             "52": {
@@ -30092,7 +30498,7 @@ var outputTables = {
                 "money": 15100,
                 "elixir": 2020,
                 "skillPoint": 1310,
-                "energy": 535,
+                "energy": 285,
                 "power": 60
             },
             "53": {
@@ -30101,7 +30507,7 @@ var outputTables = {
                 "money": 15200,
                 "elixir": 2040,
                 "skillPoint": 1320,
-                "energy": 545,
+                "energy": 290,
                 "power": 60
             },
             "54": {
@@ -30110,7 +30516,7 @@ var outputTables = {
                 "money": 15300,
                 "elixir": 2060,
                 "skillPoint": 1330,
-                "energy": 555,
+                "energy": 295,
                 "power": 60
             },
             "55": {
@@ -30119,7 +30525,7 @@ var outputTables = {
                 "money": 15400,
                 "elixir": 2080,
                 "skillPoint": 1340,
-                "energy": 565,
+                "energy": 300,
                 "power": 60
             },
             "56": {
@@ -30128,7 +30534,7 @@ var outputTables = {
                 "money": 15500,
                 "elixir": 2100,
                 "skillPoint": 1350,
-                "energy": 575,
+                "energy": 305,
                 "power": 60
             },
             "57": {
@@ -30137,7 +30543,7 @@ var outputTables = {
                 "money": 15600,
                 "elixir": 2120,
                 "skillPoint": 1360,
-                "energy": 585,
+                "energy": 310,
                 "power": 60
             },
             "58": {
@@ -30146,7 +30552,7 @@ var outputTables = {
                 "money": 15700,
                 "elixir": 2140,
                 "skillPoint": 1370,
-                "energy": 595,
+                "energy": 315,
                 "power": 60
             },
             "59": {
@@ -30155,7 +30561,7 @@ var outputTables = {
                 "money": 15800,
                 "elixir": 2160,
                 "skillPoint": 1380,
-                "energy": 605,
+                "energy": 320,
                 "power": 60
             },
             "60": {
@@ -30164,7 +30570,7 @@ var outputTables = {
                 "money": 15900,
                 "elixir": 2180,
                 "skillPoint": 1390,
-                "energy": 615,
+                "energy": 325,
                 "power": 60
             },
             "61": {
@@ -30173,7 +30579,7 @@ var outputTables = {
                 "money": 16000,
                 "elixir": 2200,
                 "skillPoint": 1400,
-                "energy": 625,
+                "energy": 330,
                 "power": 70
             },
             "62": {
@@ -30182,7 +30588,7 @@ var outputTables = {
                 "money": 16100,
                 "elixir": 2220,
                 "skillPoint": 1410,
-                "energy": 635,
+                "energy": 335,
                 "power": 70
             },
             "63": {
@@ -30191,7 +30597,7 @@ var outputTables = {
                 "money": 16200,
                 "elixir": 2240,
                 "skillPoint": 1420,
-                "energy": 645,
+                "energy": 340,
                 "power": 70
             },
             "64": {
@@ -30200,7 +30606,7 @@ var outputTables = {
                 "money": 16300,
                 "elixir": 2260,
                 "skillPoint": 1430,
-                "energy": 655,
+                "energy": 345,
                 "power": 70
             },
             "65": {
@@ -30209,7 +30615,7 @@ var outputTables = {
                 "money": 16400,
                 "elixir": 2280,
                 "skillPoint": 1440,
-                "energy": 665,
+                "energy": 350,
                 "power": 70
             },
             "66": {
@@ -30218,7 +30624,7 @@ var outputTables = {
                 "money": 16500,
                 "elixir": 2300,
                 "skillPoint": 1450,
-                "energy": 675,
+                "energy": 355,
                 "power": 70
             },
             "67": {
@@ -30227,7 +30633,7 @@ var outputTables = {
                 "money": 16600,
                 "elixir": 2320,
                 "skillPoint": 1460,
-                "energy": 685,
+                "energy": 360,
                 "power": 70
             },
             "68": {
@@ -30236,7 +30642,7 @@ var outputTables = {
                 "money": 16700,
                 "elixir": 2340,
                 "skillPoint": 1470,
-                "energy": 695,
+                "energy": 365,
                 "power": 70
             },
             "69": {
@@ -30245,7 +30651,7 @@ var outputTables = {
                 "money": 16800,
                 "elixir": 2360,
                 "skillPoint": 1480,
-                "energy": 705,
+                "energy": 370,
                 "power": 70
             },
             "70": {
@@ -30254,7 +30660,7 @@ var outputTables = {
                 "money": 16900,
                 "elixir": 2380,
                 "skillPoint": 1490,
-                "energy": 715,
+                "energy": 375,
                 "power": 70
             },
             "71": {
@@ -30263,7 +30669,7 @@ var outputTables = {
                 "money": 17000,
                 "elixir": 2400,
                 "skillPoint": 1500,
-                "energy": 725,
+                "energy": 380,
                 "power": 80
             },
             "72": {
@@ -30272,7 +30678,7 @@ var outputTables = {
                 "money": 17100,
                 "elixir": 2420,
                 "skillPoint": 1510,
-                "energy": 735,
+                "energy": 385,
                 "power": 80
             },
             "73": {
@@ -30281,7 +30687,7 @@ var outputTables = {
                 "money": 17200,
                 "elixir": 2440,
                 "skillPoint": 1520,
-                "energy": 745,
+                "energy": 390,
                 "power": 80
             },
             "74": {
@@ -30290,7 +30696,7 @@ var outputTables = {
                 "money": 17300,
                 "elixir": 2460,
                 "skillPoint": 1530,
-                "energy": 755,
+                "energy": 395,
                 "power": 80
             },
             "75": {
@@ -30299,7 +30705,7 @@ var outputTables = {
                 "money": 17400,
                 "elixir": 2480,
                 "skillPoint": 1540,
-                "energy": 765,
+                "energy": 400,
                 "power": 80
             },
             "76": {
@@ -30308,7 +30714,7 @@ var outputTables = {
                 "money": 17500,
                 "elixir": 2500,
                 "skillPoint": 1550,
-                "energy": 775,
+                "energy": 405,
                 "power": 80
             },
             "77": {
@@ -30317,7 +30723,7 @@ var outputTables = {
                 "money": 17600,
                 "elixir": 2520,
                 "skillPoint": 1560,
-                "energy": 785,
+                "energy": 410,
                 "power": 80
             },
             "78": {
@@ -30326,7 +30732,7 @@ var outputTables = {
                 "money": 17700,
                 "elixir": 2540,
                 "skillPoint": 1570,
-                "energy": 795,
+                "energy": 415,
                 "power": 80
             },
             "79": {
@@ -30335,7 +30741,7 @@ var outputTables = {
                 "money": 17800,
                 "elixir": 2560,
                 "skillPoint": 1580,
-                "energy": 805,
+                "energy": 420,
                 "power": 80
             },
             "80": {
@@ -30344,7 +30750,7 @@ var outputTables = {
                 "money": 17900,
                 "elixir": 2580,
                 "skillPoint": 1590,
-                "energy": 815,
+                "energy": 425,
                 "power": 80
             },
             "81": {
@@ -30353,7 +30759,7 @@ var outputTables = {
                 "money": 18000,
                 "elixir": 2600,
                 "skillPoint": 1600,
-                "energy": 825,
+                "energy": 430,
                 "power": 90
             },
             "82": {
@@ -30362,7 +30768,7 @@ var outputTables = {
                 "money": 18100,
                 "elixir": 2620,
                 "skillPoint": 1610,
-                "energy": 835,
+                "energy": 435,
                 "power": 90
             },
             "83": {
@@ -30371,7 +30777,7 @@ var outputTables = {
                 "money": 18200,
                 "elixir": 2640,
                 "skillPoint": 1620,
-                "energy": 845,
+                "energy": 440,
                 "power": 90
             },
             "84": {
@@ -30380,7 +30786,7 @@ var outputTables = {
                 "money": 18300,
                 "elixir": 2660,
                 "skillPoint": 1630,
-                "energy": 855,
+                "energy": 445,
                 "power": 90
             },
             "85": {
@@ -30389,7 +30795,7 @@ var outputTables = {
                 "money": 18400,
                 "elixir": 2680,
                 "skillPoint": 1640,
-                "energy": 865,
+                "energy": 450,
                 "power": 90
             },
             "86": {
@@ -30398,7 +30804,7 @@ var outputTables = {
                 "money": 18500,
                 "elixir": 2700,
                 "skillPoint": 1650,
-                "energy": 875,
+                "energy": 455,
                 "power": 90
             },
             "87": {
@@ -30407,7 +30813,7 @@ var outputTables = {
                 "money": 18600,
                 "elixir": 2720,
                 "skillPoint": 1660,
-                "energy": 885,
+                "energy": 460,
                 "power": 90
             },
             "88": {
@@ -30416,7 +30822,7 @@ var outputTables = {
                 "money": 18700,
                 "elixir": 2740,
                 "skillPoint": 1670,
-                "energy": 895,
+                "energy": 465,
                 "power": 90
             },
             "89": {
@@ -30425,7 +30831,7 @@ var outputTables = {
                 "money": 18800,
                 "elixir": 2760,
                 "skillPoint": 1680,
-                "energy": 905,
+                "energy": 470,
                 "power": 90
             },
             "90": {
@@ -30434,7 +30840,7 @@ var outputTables = {
                 "money": 18900,
                 "elixir": 2780,
                 "skillPoint": 1690,
-                "energy": 915,
+                "energy": 475,
                 "power": 90
             },
             "91": {
@@ -30443,7 +30849,7 @@ var outputTables = {
                 "money": 19000,
                 "elixir": 2800,
                 "skillPoint": 1700,
-                "energy": 925,
+                "energy": 480,
                 "power": 100
             },
             "92": {
@@ -30452,7 +30858,7 @@ var outputTables = {
                 "money": 19100,
                 "elixir": 2820,
                 "skillPoint": 1710,
-                "energy": 935,
+                "energy": 485,
                 "power": 100
             },
             "93": {
@@ -30461,7 +30867,7 @@ var outputTables = {
                 "money": 19200,
                 "elixir": 2840,
                 "skillPoint": 1720,
-                "energy": 945,
+                "energy": 490,
                 "power": 100
             },
             "94": {
@@ -30470,7 +30876,7 @@ var outputTables = {
                 "money": 19300,
                 "elixir": 2860,
                 "skillPoint": 1730,
-                "energy": 955,
+                "energy": 495,
                 "power": 100
             },
             "95": {
@@ -30479,7 +30885,7 @@ var outputTables = {
                 "money": 19400,
                 "elixir": 2880,
                 "skillPoint": 1740,
-                "energy": 965,
+                "energy": 500,
                 "power": 100
             },
             "96": {
@@ -30488,7 +30894,7 @@ var outputTables = {
                 "money": 19500,
                 "elixir": 2900,
                 "skillPoint": 1750,
-                "energy": 975,
+                "energy": 505,
                 "power": 100
             },
             "97": {
@@ -30497,7 +30903,7 @@ var outputTables = {
                 "money": 19600,
                 "elixir": 2920,
                 "skillPoint": 1760,
-                "energy": 985,
+                "energy": 510,
                 "power": 100
             },
             "98": {
@@ -30506,7 +30912,7 @@ var outputTables = {
                 "money": 19700,
                 "elixir": 2940,
                 "skillPoint": 1770,
-                "energy": 995,
+                "energy": 515,
                 "power": 100
             },
             "99": {
@@ -30515,7 +30921,7 @@ var outputTables = {
                 "money": 19800,
                 "elixir": 2960,
                 "skillPoint": 1780,
-                "energy": 1005,
+                "energy": 520,
                 "power": 100
             },
             "100": {
@@ -30524,7 +30930,7 @@ var outputTables = {
                 "money": 19900,
                 "elixir": 2980,
                 "skillPoint": 1790,
-                "energy": 1015,
+                "energy": 525,
                 "power": 100
             }
         }
@@ -31131,7 +31537,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 21,
                 "coins_obtain": 504,
-                "description": "八仙从来就没有过海的行为，事实上他们几乎都没有到过海边。因为他们把个人中，有七个人先天怕水，看到水波就头晕恶心。"
+                "description": "八仙从来就没有过海的行为，事实上他们几乎都没有到过海边。因为他们八个人中，有七个人先天怕水，看到水波就头晕恶心。"
             },
             "55": {
                 "id": 55,
@@ -34343,7 +34749,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 195,
                 "coins_obtain": 2840,
-                "description": "人间最有手机游戏很火，但大部分都是三国武侠题材。对此玉帝觉得有些恼火，难道神仙的地位人间这些货色都比不上么。"
+                "description": "人间最近手机游戏很火，但大部分都是三国武侠题材。对此玉帝觉得有些恼火，难道神仙的地位人间这些货色都比不上么。"
             },
             "347": {
                 "id": 347,
@@ -49166,133 +49572,133 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "energy": 500,
+                "energy": 5000,
                 "money": 100000,
                 "skillPoint": 0,
                 "elixir": 0,
-                "fragments": 0,
+                "fragments": 2,
                 "exp_card": 0,
                 "price": 18,
                 "true_price": 66
             },
             "2": {
                 "id": 2,
-                "energy": 600,
-                "money": 120000,
-                "skillPoint": 1000,
+                "energy": 5500,
+                "money": 150000,
+                "skillPoint": 5000,
                 "elixir": 0,
-                "fragments": 0,
+                "fragments": 3,
                 "exp_card": 0,
                 "price": 58,
                 "true_price": 195
             },
             "3": {
                 "id": 3,
-                "energy": 700,
-                "money": 150000,
-                "skillPoint": 1100,
-                "elixir": 2000,
-                "fragments": 0,
+                "energy": 6000,
+                "money": 200000,
+                "skillPoint": 10000,
+                "elixir": 5000,
+                "fragments": 4,
                 "exp_card": 0,
                 "price": 88,
                 "true_price": 246
             },
             "4": {
                 "id": 4,
-                "energy": 800,
-                "money": 200000,
-                "skillPoint": 1200,
-                "elixir": 3000,
-                "fragments": 3,
-                "exp_card": 0,
+                "energy": 6500,
+                "money": 250000,
+                "skillPoint": 15000,
+                "elixir": 10000,
+                "fragments": 5,
+                "exp_card": 50,
                 "price": 188,
                 "true_price": 569
             },
             "5": {
                 "id": 5,
-                "energy": 900,
-                "money": 250000,
-                "skillPoint": 2000,
-                "elixir": 4000,
-                "fragments": 3,
-                "exp_card": 0,
+                "energy": 7000,
+                "money": 300000,
+                "skillPoint": 20000,
+                "elixir": 15000,
+                "fragments": 6,
+                "exp_card": 60,
                 "price": 288,
                 "true_price": 726
             },
             "6": {
                 "id": 6,
-                "energy": 1000,
-                "money": 300000,
-                "skillPoint": 2100,
-                "elixir": 5000,
-                "fragments": 3,
-                "exp_card": 10,
+                "energy": 7500,
+                "money": 350000,
+                "skillPoint": 25000,
+                "elixir": 20000,
+                "fragments": 7,
+                "exp_card": 70,
                 "price": 388,
                 "true_price": 1080
             },
             "7": {
                 "id": 7,
-                "energy": 1100,
-                "money": 350000,
-                "skillPoint": 2200,
-                "elixir": 6000,
-                "fragments": 3,
-                "exp_card": 15,
+                "energy": 8000,
+                "money": 400000,
+                "skillPoint": 30000,
+                "elixir": 25000,
+                "fragments": 8,
+                "exp_card": 80,
                 "price": 488,
                 "true_price": 1368
             },
             "8": {
                 "id": 8,
-                "energy": 1200,
-                "money": 400000,
-                "skillPoint": 5000,
-                "elixir": 10000,
-                "fragments": 5,
-                "exp_card": 15,
+                "energy": 8500,
+                "money": 450000,
+                "skillPoint": 35000,
+                "elixir": 30000,
+                "fragments": 9,
+                "exp_card": 90,
                 "price": 588,
                 "true_price": 1989
             },
             "9": {
                 "id": 9,
-                "energy": 1300,
-                "money": 450000,
-                "skillPoint": 5100,
-                "elixir": 11000,
-                "fragments": 5,
-                "exp_card": 15,
+                "energy": 9000,
+                "money": 500000,
+                "skillPoint": 40000,
+                "elixir": 35000,
+                "fragments": 10,
+                "exp_card": 100,
                 "price": 688,
                 "true_price": 2366
             },
             "10": {
                 "id": 10,
-                "energy": 1400,
-                "money": 500000,
-                "skillPoint": 10000,
-                "elixir": 12000,
-                "fragments": 10,
-                "exp_card": 20,
+                "energy": 9500,
+                "money": 550000,
+                "skillPoint": 45000,
+                "elixir": 40000,
+                "fragments": 11,
+                "exp_card": 110,
                 "price": 788,
                 "true_price": 2899
             },
             "11": {
                 "id": 11,
-                "energy": 1500,
-                "money": 550000,
-                "skillPoint": 11000,
-                "elixir": 15000,
-                "fragments": 10,
-                "exp_card": 20,
+                "energy": 10000,
+                "money": 600000,
+                "skillPoint": 50000,
+                "elixir": 45000,
+                "fragments": 12,
+                "exp_card": 120,
                 "price": 888,
                 "true_price": 3288
             },
             "12": {
                 "id": 12,
-                "energy": 1600,
-                "money": 600000,
-                "skillPoint": 15000,
-                "elixir": 20000,
-                "fragments": 10,
-                "exp_card": 20,
+                "energy": 10500,
+                "money": 650000,
+                "skillPoint": 55000,
+                "elixir": 50000,
+                "fragments": 13,
+                "exp_card": 130,
                 "price": 999,
                 "true_price": 3986
             }
@@ -49315,7 +49721,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
-                "exp_card_count": 50,
+                "exp_card_count": 30,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
                 "receive_bless_count": 0,
@@ -49326,7 +49732,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "lottery_free_count": 2,
-                "exp_card_count": 100,
+                "exp_card_count": 60,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
                 "receive_bless_count": 1,
@@ -49337,7 +49743,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "lottery_free_count": 3,
-                "exp_card_count": 150,
+                "exp_card_count": 90,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
                 "receive_bless_count": 2,
@@ -49348,7 +49754,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "lottery_free_count": 4,
-                "exp_card_count": 200,
+                "exp_card_count": 120,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
                 "receive_bless_count": 3,
@@ -49359,7 +49765,7 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "lottery_free_count": 5,
-                "exp_card_count": 250,
+                "exp_card_count": 150,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
                 "receive_bless_count": 4,
@@ -49370,7 +49776,7 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "lottery_free_count": 6,
-                "exp_card_count": 300,
+                "exp_card_count": 180,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
                 "receive_bless_count": 5,
@@ -49381,7 +49787,7 @@ var outputTables = {
             "7": {
                 "id": 7,
                 "lottery_free_count": 7,
-                "exp_card_count": 350,
+                "exp_card_count": 210,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
                 "receive_bless_count": 6,
@@ -49392,7 +49798,7 @@ var outputTables = {
             "8": {
                 "id": 8,
                 "lottery_free_count": 8,
-                "exp_card_count": 400,
+                "exp_card_count": 240,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
                 "receive_bless_count": 7,
@@ -49403,7 +49809,7 @@ var outputTables = {
             "9": {
                 "id": 9,
                 "lottery_free_count": 9,
-                "exp_card_count": 450,
+                "exp_card_count": 270,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
                 "receive_bless_count": 8,
@@ -49414,7 +49820,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lottery_free_count": 10,
-                "exp_card_count": 500,
+                "exp_card_count": 300,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
                 "receive_bless_count": 9,
@@ -49424,8 +49830,8 @@ var outputTables = {
             },
             "11": {
                 "id": 11,
-                "lottery_free_count": 10,
-                "exp_card_count": 550,
+                "lottery_free_count": 11,
+                "exp_card_count": 330,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
                 "receive_bless_count": 10,
@@ -49435,8 +49841,8 @@ var outputTables = {
             },
             "12": {
                 "id": 12,
-                "lottery_free_count": 10,
-                "exp_card_count": 600,
+                "lottery_free_count": 12,
+                "exp_card_count": 360,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
                 "receive_bless_count": 11,

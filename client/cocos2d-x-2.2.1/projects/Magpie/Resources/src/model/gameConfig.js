@@ -12,7 +12,7 @@
  * */
 
 
-var gameConfig = {
+var GameConfig = Entity.extend({
     _fps: 0,
 
     init: function () {
@@ -31,6 +31,12 @@ var gameConfig = {
             cc.Director.getInstance().setAnimationInterval(1.0 / this._fps);
         }
     }
-};
+});
 
-gameConfig.init();
+
+/*
+ * 单例
+ * */
+GameConfig.getInstance = singleton(GameConfig);
+
+GameConfig.getInstance().init();

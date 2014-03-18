@@ -11,6 +11,7 @@
  * config layer
  * */
 
+var fpsList = [15, 30, 60];
 
 var ConfigLayer = cc.Layer.extend({
     _configLayerFit: null,
@@ -47,6 +48,7 @@ var ConfigLayer = cc.Layer.extend({
 
         this._musicOpen = sound.isOpenMusic();
         this._soundOpen = sound.isOpenEffect();
+        var fps = GameConfig.getInstance().get("fps");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -251,9 +253,16 @@ var ConfigLayer = cc.Layer.extend({
         framesSelectLabel3.setPosition(cc.p(530, 55));
         framesBgLabel.addChild(framesSelectLabel3);
 
+        var point;
+        for (var i = 0; i < 3; i++) {
+            if (fps == fpsList[i]) {
+                point = this._framesItem[i].getPosition();
+                break;
+            }
+        }
         this._framesSelect = cc.Sprite.create(main_scene_image.icon20);
         this._framesSelect.setAnchorPoint(cc.p(0, 0.5));
-        this._framesSelect.setPosition(cc.p(370, y));
+        this._framesSelect.setPosition(point);
         scrollViewLayer.addChild(this._framesSelect, 2);
         y -= 120;
 
@@ -371,6 +380,8 @@ var ConfigLayer = cc.Layer.extend({
 
             var point = that._framesItem[id].getPosition();
             that._framesSelect.setPosition(point);
+
+            GameConfig.getInstance().setFps(fpsList[id]);
         }
     },
 

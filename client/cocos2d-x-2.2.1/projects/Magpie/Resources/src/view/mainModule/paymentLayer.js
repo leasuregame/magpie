@@ -164,8 +164,10 @@ var PaymentLayer = LazyLayer.extend({
             firstPaymentIcon.setPosition(cc.p(-8, y));
             scrollViewLayer.addChild(firstPaymentIcon);
 
+            var tableId = outputTables.first_recharge_box.rows[1].card_id;
+
             var cardItem = CardHeadNode.getCardHeadItem(Card.create({
-                tableId: 194,
+                tableId: tableId,
                 lv: 20,
                 skillLv: 1
             }));

@@ -223,8 +223,7 @@ var appFiles = [
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/cloudLayer.js',
-    'src/view/battleModule/fragmentLayer.js',
-    'src/view/battleModule/skillFactory.js'
+    'src/view/battleModule/fragmentLayer.js'
 ];
 
 cc.dumpConfig();
@@ -236,6 +235,9 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 var director = cc.Director.getInstance();
 director.setDisplayStats(false);
+
+// set FPS. the default value is 1.0/60 if you don't call this
+gameConfig.init();
 
 // fit dev
 gameFitAdapter();

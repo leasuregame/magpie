@@ -41,6 +41,8 @@ var main = function() {
       quenues.push(gdata.resetRanking);
     case 'change-card-tableid': 
       quenues.push(gdata.correctCardTableId);
+    case 'change-card-book': 
+      quenues.push(gdata.correctCardBook);
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

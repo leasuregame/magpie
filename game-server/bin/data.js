@@ -24,8 +24,11 @@ Data.prototype.correctCardBook = function() {
   var idTab = table.getTable('new_card_id_map');
   
   var playerDao = this.db.player;
-
+  var totalCount = 0,
+      finished = 0;
   playerDao.fetchMany({}, function(err, players) {    
+    totalCount = players.length;
+
     async.each(players, function(ply, done) {
       var newIds = [];
 
@@ -47,13 +50,17 @@ Data.prototype.correctCardBook = function() {
 
       playerDao.update({
         where: {id: ply.id},
-        data: {cardBook: mg.value}
+        data: {cardBook: {
+          mark: mg.value,
+          flag: mg.value
+        }}
       }, function(err, res) {
         if (err) {
           console.log(err, res);  
           done();
         } else {
           console.log('update card book for player id: ', ply.id);
+          finished += 1;
           done();
         }
         
@@ -61,6 +68,8 @@ Data.prototype.correctCardBook = function() {
 
     }, function(err) {
       console.log('update player card book finished.');
+      console.log('totalCount: ', totalCount);
+      console.log('finished: ', finished);
     });
   });
 };

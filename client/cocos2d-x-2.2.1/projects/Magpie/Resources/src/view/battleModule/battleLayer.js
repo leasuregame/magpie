@@ -119,7 +119,7 @@ var BattleLayer = cc.Layer.extend({
         this.addChild(this._menu);
         this._menu.setVisible(false);
 
-        this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+        this._playSpeed = lz.load(gameData.player.get("uid") + "playSpeedTimes") || 1;
 
         for (var speed = 1; speed <= 3; ++speed) {
 
@@ -4741,7 +4741,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
@@ -4752,7 +4752,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);

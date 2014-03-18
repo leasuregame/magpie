@@ -205,6 +205,12 @@ var BossListLayer = cc.Layer.extend({
         this._canExchangeLabel.setString(parseInt(honor / 6000));
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
 
+        this.updateEffect();
+    },
+
+    updateEffect: function () {
+        cc.log("BossListLayer updateEffect");
+
         var isCanReceive = gameData.boss.get("canReceive");
         this._effect.setVisible(isCanReceive);
 

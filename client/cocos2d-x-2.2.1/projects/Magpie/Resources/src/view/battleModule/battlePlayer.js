@@ -38,7 +38,7 @@ var BattlePlayer = Entity.extend({
 
         gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
 
-        var playSpeedTimes = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+        var playSpeedTimes = lz.load(gameData.player.get("uid") + "playSpeedTimes") || 1;
         cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[playSpeedTimes]);
 
         return battleLog.isWin();

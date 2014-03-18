@@ -1171,6 +1171,7 @@ var main_scene_image = {
     uiEffect85: ccb_scene_path + "uiEffect85.ccbi",
     uiEffect91: ccb_scene_path + "uiEffect91.ccbi",
     uiEffect93: ccb_scene_path + "uiEffect93.ccbi",
+    uiEffect96: ccb_scene_path + "uiEffect96.ccbi",
     
 
     //开场动画
@@ -1193,10 +1194,15 @@ var main_scene_image = {
     9: test_scene_path + "res/" + "9.png",
    
     11: test_scene_path + "res/" + "11.png",
+    17: test_scene_path + "res/" + "17.png",
+    18: test_scene_path + "res/" + "18.png",
+    19: test_scene_path + "res/" + "19.png",
     29: test_scene_path + "res/" + "29.png",
     50: test_scene_path + "res/" + "50.png",
     70: test_scene_path + "res/" + "70.png",
     76: test_scene_path + "res/" + "76.png",
+    80: test_scene_path + "res/" + "80.png",
+    82: test_scene_path + "res/" + "82.png",
     83: test_scene_path + "res/" + "83.png",
     92: test_scene_path + "res/" + "92.png",
     93: test_scene_path + "res/" + "93.png",
@@ -1217,6 +1223,8 @@ var main_scene_image = {
     texiao21: test_scene_path + "ccb/" + "texiao21.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
     texiao24: test_scene_path + "ccb/" + "texiao24.ccbi",
+    texiao25: test_scene_path + "ccb/" + "texiao25.ccbi",
+    texiao28: test_scene_path + "ccb/" + "texiao28.ccbi",
 
 };
 

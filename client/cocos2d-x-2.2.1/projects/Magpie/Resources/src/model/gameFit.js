@@ -12,12 +12,6 @@ var fit4Iphone4 = {
     "GAME_ZERO_POINT": cc.p(40, 0),
     "GAME_BOTTOM_LEFT_POINT": cc.p(40, 0),
     "GAME_VIEW": cc.rect(40, 0, 640, 960),
-    "controls": {
-        "tipLayer": {
-            "labelPoint": cc.p(360, 550),
-            "actionPoint": cc.p(360, 650)
-        }
-    },
     "gameFrame": {
         "frame1Point": cc.p(0, 480),
         "frame2Point": cc.p(680, 480)
@@ -422,12 +416,10 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920),
-            "bgMusicItemPoint": cc.p(55, 762),
-            "soundItemPoint": cc.p(55, 642),
-            "noticeItemPoint": cc.p(55, 522),
-            "tipsItemPoint": cc.p(55, 402),
-            "QQGroupPoint": cc.p(55, 282),
-            "go2LoginItemPoint": cc.p(55, 162)
+            "scrollViewLayerRect": cc.rect(40, 115, 640, 755),
+            "scrollViewHeight": 755,
+            "scrollViewSize": cc.size(640, 755),
+            "scrollViewPoint": cc.p(40, 115)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(360, 934),
@@ -1493,13 +1485,6 @@ var fit4Iphone5 = {
     "GAME_ZERO_POINT": cc.p(0, 0),
     "GAME_BOTTOM_LEFT_POINT": cc.p(0, 98),
     "GAME_VIEW": cc.rect(0, 0, 640, 1136),
-    "controls": {
-        "tipLayer": {
-            "labelPoint": cc.p(320, 550),
-            "actionPoint": cc.p(320, 650)
-        }
-    },
-
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)
@@ -1908,12 +1893,10 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),
-            "bgMusicItemPoint": cc.p(15, 938),
-            "soundItemPoint": cc.p(15, 818),
-            "noticeItemPoint": cc.p(15, 698),
-            "tipsItemPoint": cc.p(15, 578),
-            "QQGroupPoint": cc.p(15, 458),
-            "go2LoginItemPoint": cc.p(15, 338)
+            "scrollViewLayerRect": cc.rect(0, 115, 640, 930),
+            "scrollViewHeight": 930,
+            "scrollViewSize": cc.size(640, 930),
+            "scrollViewPoint": cc.p(0, 115)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),

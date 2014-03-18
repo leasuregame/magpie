@@ -36,7 +36,7 @@ Handler::collect = (msg, session, next) ->
     
     ### 每次采集都已一定的概率获得翻倍的灵气 ###
     if utility.hitRate(spiritConfig.REWORD.RATE)
-      spirit_obtain += spiritPollData.spirit_obtain
+      spirit_obtain = spirit_obtain * 2
       isDouble = true
 
     ### 消耗魔石，增加灵气产量 ###

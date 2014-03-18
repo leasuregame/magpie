@@ -233,6 +233,7 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
+        
   @seekBoss: (data, player, cb) ->
     ### boss等级限制判断 ###
     boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
@@ -241,8 +242,7 @@ class Manager
 
     player.incBossCount()
 
-    findBossRate = table.getTableItem('values', 'findBossRate')?.value
-    if not player.task.boss.found and checkFindBoss(player.task.boss.count, findBossRate)
+    if not player.task.boss.found and checkFindBoss(player.task.boss.count)
       typeRates = table.getTable('boss_type_rate')
       ids = typeRates.map (r) -> r.id
       rates = typeRates.map (r) -> r.rate
@@ -268,10 +268,10 @@ class Manager
             cb(null, data)
     else
       dao.boss.bossExists player.id, (err, exists) ->
-        if not exists
+        if not exists and player.task.boss.found
           player.setBossFound(false)
+          player.incBossCount()
         
-        console.log 'boss exists: ', err, exists
         cb(null, data)
 
 lineUpToObj = (lineUp) ->
@@ -298,8 +298,9 @@ getBossInfo = (type) ->
   else 
     return null
 
-checkFindBoss = (count, findBossRate) ->
-  return (count < 20 and utility.hitRate(findBossRate)) or count >= 20
+checkFindBoss = (count) ->
+  rate = table.getTableItem('boss_find_rate', count)?.rate or 1
+  return utility.hitRate(rate)
 
 bornPassiveSkill = () ->
   born_rates = psConfig.BORN_RATES

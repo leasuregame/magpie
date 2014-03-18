@@ -165,9 +165,9 @@ var addEvents = function(player) {
                 break;
             }
         }
-        if (oldVip == 0 && player.vip > 0) {
-            achieve.vip(player);
-        }
+        // 达成vip成就
+        achieve.vipTo(player, player.vip);
+        
         recountVipPrivilege(player, oldVip);
     });
 };
@@ -1095,13 +1095,6 @@ var Player = (function(_super) {
 
     Player.prototype.receiveBlessOnce = function() {
         this.emit('receive.bless');
-    };
-
-    Player.prototype.canUseElixir = function() {
-        if (this.lv >= 80) {
-            return Number.MAX_VALUE;
-        }
-        return elixirLimit(this.lv);
     };
 
     Player.prototype.getRanking = function() {

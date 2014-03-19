@@ -62,6 +62,8 @@
             'src/model/singleton.js',
             'src/model/gameConfig.js',
 
+            'src/model/fit4Iphone4.js',
+            'src/model/fit4Iphone5.js',
             'src/model/gameFit.js',
             'src/model/clock.js',
             //'TB/user.js',

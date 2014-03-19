@@ -40,6 +40,8 @@
                 <file name="src/model/singleton.js"/>
                 <file name="src/model/gameConfig.js"/>
 
+                <file name="src/model/fit4Iphone4.js"/>
+                <file name="src/model/fit4Iphone5.js"/>
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
                 <file name="IOS/TB/user.js"/>

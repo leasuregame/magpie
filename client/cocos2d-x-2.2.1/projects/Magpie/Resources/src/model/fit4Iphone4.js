@@ -101,7 +101,7 @@ var fit4Iphone4 = {
     "mainScene": {
         "abilityRankLayer": {
             "scrollViewHeight": 700,
-            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 609, 700),
             "scrollViewSize": cc.size(609, 700),
             "scrollViewPoint": cc.p(54, 140),
             "labelContentSize": cc.size(216, 300),
@@ -116,7 +116,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920),
-            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 609, 700),
             "scrollViewSize": cc.size(609, 700),
             "scrollViewPoint": cc.p(54, 140)
         },
@@ -149,7 +149,7 @@ var fit4Iphone4 = {
             "friendCountLabelPoint": cc.p(550, 137),
             "maxFriendCountLabelPoint": cc.p(580, 137),
             "scrollViewHeight": 640,
-            "scrollViewLayerRect": cc.rect(40, 176, 640, 500),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 500),
             "scrollViewSize": cc.size(591, 500),
             "scrollViewPoint": cc.p(65, 176),
             "labelContentSize": cc.size(216, 240),
@@ -198,7 +198,7 @@ var fit4Iphone4 = {
         },
         "battleMessageLayer": {
             "scrollViewHeight": 742,
-            "scrollViewLayerRect": cc.rect(57, 119, 605, 742),
+            "scrollViewLayerRect": cc.rect(0, 0, 605, 742),
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
@@ -252,7 +252,7 @@ var fit4Iphone4 = {
             "rewardItemPoint": cc.p(160, 830),
             "rankItemPoint": cc.p(580, 830),
             "exchangeItemPoint": cc.p(490, 114),
-            "scrollViewLayerRect": cc.rect(60, 230, 621, 538),
+            "scrollViewLayerRect": cc.rect(0, 0, 621, 538),
             "scrollViewHeight": 538,
             "scrollViewSize": cc.size(621, 538),
             "scrollViewPoint": cc.p(60, 230),
@@ -329,7 +329,7 @@ var fit4Iphone4 = {
             "sortItemPoint": cc.p(80, 818),
             "selectIconPoint": cc.p(105, 818),
             "scrollViewHeight": 700,
-            "scrollViewLayerRect": cc.rect(40, 126, 640, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 700),
             "scrollViewSize": cc.size(640, 700),
             "scrollViewPoint": cc.p(40, 126),
             "backItemPoint": cc.p(100, 920)
@@ -348,7 +348,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "lineIconPoint": cc.p(360, 805),
             "scrollViewHeight": 620,
-            "scrollViewLayerRect": cc.rect(67, 178, 586, 620),
+            "scrollViewLayerRect": cc.rect(0, 0, 586, 620),
             "scrollViewSize": cc.size(586, 620),
             "scrollViewPoint": cc.p(67, 178),
             "sortItemPoint": cc.p(140, 142),
@@ -411,7 +411,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920),
-            "scrollViewLayerRect": cc.rect(40, 115, 640, 755),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 755),
             "scrollViewHeight": 755,
             "scrollViewSize": cc.size(640, 755),
             "scrollViewPoint": cc.p(40, 115)
@@ -429,7 +429,7 @@ var fit4Iphone4 = {
             "tipBgPoint": cc.p(360, 220),
             "tipBgSize": cc.size(600, 150),
             "tipBasePoint": cc.p(65, 295),
-            "scrollViewLayerRect": cc.rect(60, 315, 600, 445),
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 445),
             "scrollViewSize": cc.size(600, 445),
             "scrollViewPoint": cc.p(60, 315)
         },
@@ -451,7 +451,7 @@ var fit4Iphone4 = {
             "thisWeekIconPoint": cc.p(70, 280),
             "lastWeekIconPoint": cc.p(70, 195),
             "labelBasePoint": cc.p(70, 230),
-            "scrollViewLayerRect": cc.rect(60, 325, 600, 450),
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 450),
             "scrollViewSize": cc.size(600, 450),
             "scrollViewPoint": cc.p(60, 325),
             "scrollViewHeight": 450,
@@ -493,7 +493,7 @@ var fit4Iphone4 = {
             "fragmentIconPoint1": cc.p(295, 850),
             "fragmentIconPoint2": cc.p(535, 850),
             "scrollViewHeight": 605,
-            "scrollViewLayerRect": cc.rect(40, 163, 640, 605),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 605),
             "scrollViewSize": cc.size(640, 605),
             "scrollViewPoint": cc.p(40, 163),
             "bottomLabelPoint": cc.p(360, 136),
@@ -527,7 +527,7 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(100, 920),
             "exploreItemPoint": cc.p(360, 282),
             "scrollViewHeight": 569,
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 569),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 569),
             "descriptionLabelPoint": cc.p(200, 182),
             "scrollViewSize": cc.size(640, 569),
             "scrollViewContentSize": cc.size(6400, 569),
@@ -568,13 +568,13 @@ var fit4Iphone4 = {
             "okPoint": cc.p(260, 442),
             "cancelPoint": cc.p(460, 442),
             "scrollViewHeight": 580,
-            "scrollViewLayerRect": cc.rect(40, 176, 640, 580),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 580),
             "scrollViewSize": cc.size(640, 580),
             "scrollViewPoint": cc.p(65, 176)
         },
         "friendMessageLayer": {
             "scrollViewHeight": 742,
-            "scrollViewLayerRect": cc.rect(57, 119, 605, 742),
+            "scrollViewLayerRect": cc.rect(0, 0, 605, 742),
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
@@ -583,7 +583,7 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(360, 232),
             "buyItemPoint": cc.p(240, 232),
             "cancelItemPoint": cc.p(480, 232),
-            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
+            "scrollViewLayerRect2": cc.rect(150, 524, 640, 480),
             "scrollViewPoint2": cc.p(110, 262),
             "topBgIconPoint": cc.p(368, 772),
             "titleIconPoint": cc.p(360, 817),
@@ -614,7 +614,7 @@ var fit4Iphone4 = {
             "lineIconPoint": cc.p(40, 787),
             "headIconPoint": cc.p(40, 787),
             "scrollViewHeight": 620,
-            "scrollViewLayerRect": cc.rect(10, 140, 740, 620),
+            "scrollViewLayerRect": cc.rect(0, 0, 620, 620),
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
         },
@@ -715,7 +715,7 @@ var fit4Iphone4 = {
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
-            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 609, 700),
             "scrollViewSize": cc.size(609, 700),
             "scrollViewPoint": cc.p(54, 140),
             "labelContentSize": cc.size(216, 300),
@@ -905,7 +905,7 @@ var fit4Iphone4 = {
             "titleIconPoint": cc.p(360, 920),
             "mysticalItemPoint": cc.p(580, 540),
             "scrollViewHeight": 774,
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 774),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 774),
             "scrollViewSize": cc.size(640, 774),
             "scrollViewContentSize": cc.size(640, 18700),
             "scrollViewPoint": cc.p(40, 106),
@@ -933,7 +933,7 @@ var fit4Iphone4 = {
         },
         "passRankLayer": {
             "scrollViewHeight": 700,
-            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 609, 700),
             "scrollViewSize": cc.size(609, 700),
             "scrollViewPoint": cc.p(54, 140),
             "labelContentSize": cc.size(216, 300),
@@ -951,7 +951,7 @@ var fit4Iphone4 = {
             "tipIconPoint": cc.p(360, 842),
             "tipLabelPoint": cc.p(115, 752),
             "scrollViewHeight": 550,
-            "scrollViewLayerRect": cc.rect(107, 172, 500, 550),
+            "scrollViewLayerRect": cc.rect(0, 0, 500, 550),
             "scrollViewSize": cc.size(500, 550),
             "scrollViewPoint": cc.p(108, 172)
         },
@@ -1000,18 +1000,7 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(0, -180)
         },
         "level9BoxLayer": {
-            "bgSpritePoint": cc.p(360, 492),
-            "okItemPoint": cc.p(360, 232),
-            "boxGoodsPoints": {
-                money: cc.p(210, 662),
-                skillPoint: cc.p(430, 662),
-                energy: cc.p(210, 562),
-                power: cc.p(430, 562)
-            },
-            "scrollViewLayerRect2": cc.rect(40, 262, 640, 480),
-            "scrollViewPoint2": cc.p(110, 262),
-            "topBgIconPoint": cc.p(368, 772),
-            "titleIconPoint": cc.p(360, 817)
+            "bgSpritePoint": cc.p(360, 492)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
@@ -1036,7 +1025,7 @@ var fit4Iphone4 = {
             "paymentItemPoint": cc.p(600, 846),
             "buyIconPoint": cc.p(535, 841),
             "scrollViewHeight": 680,
-            "scrollViewLayerRect": cc.rect(40, 122, 640, 680),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 680),
             "scrollViewSize": cc.size(640, 680),
             "scrollViewPoint": cc.p(40, 122)
         },
@@ -1107,7 +1096,7 @@ var fit4Iphone4 = {
             "signInIconPoint": cc.p(560, 367),
             "remedySignInIconPoint": cc.p(435, 367),
             "scrollViewHeight": 366,
-            "scrollViewLayerRect": cc.rect(105, 402, 510, 366),
+            "scrollViewLayerRect": cc.rect(0, 0, 510, 366),
             "monthLabelOffsetX": 510,
             "scrollViewSize": cc.size(510, 366),
             "scrollViewPoint": cc.p(105, 402),
@@ -1213,7 +1202,7 @@ var fit4Iphone4 = {
         },
         "systemMessageLayer": {
             "scrollViewHeight": 742,
-            "scrollViewLayerRect": cc.rect(57, 119, 605, 742),
+            "scrollViewLayerRect": cc.rect(0, 0, 605, 742),
             "scrollViewSize": cc.size(605, 742),
             "scrollViewPoint": cc.p(57, 119)
         },
@@ -1284,7 +1273,7 @@ var fit4Iphone4 = {
             "turnLeftSpritePoint": cc.p(80, 462),
             "turnRightSpritePoint": cc.p(640, 462),
             "scrollViewHeight": 744,
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 744),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 744),
             "scrollViewSize": cc.size(640, 774),
             "scrollViewContentSize": cc.size(6400, 774),
             "scrollViewPoint": cc.p(40, 106),
@@ -1300,7 +1289,7 @@ var fit4Iphone4 = {
             "titlePoint": cc.p(360, 824),
             "closeItemPoint": cc.p(648, 844),
             "scrollViewHeight": 612,
-            "scrollViewLayerRect": cc.rect(10, 172, 620, 612),
+            "scrollViewLayerRect": cc.rect(0, 0, 620, 612),
             "scrollViewSize": cc.size(620, 612),
             "scrollViewPoint": cc.p(30, 172)
         },
@@ -1334,7 +1323,7 @@ var fit4Iphone4 = {
             "addFriendItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(40, 110, 640, 700),
             "scrollViewHeight": 670,
-            "scrollViewLayerRect": cc.rect(40, 110, 630, 670),
+            "scrollViewLayerRect": cc.rect(-10, 0, 630, 670),
             "scrollViewSize": cc.size(630, 670),
             "scrollViewContentSizeWidth": 640,
             "scrollViewPoint": cc.p(50, 110),
@@ -1342,7 +1331,7 @@ var fit4Iphone4 = {
         },
         "tournamentRankLayer": {
             "scrollViewHeight": 700,
-            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewLayerRect": cc.rect(0, 0, 609, 700),
             "scrollViewSize": cc.size(609, 700),
             "scrollViewPoint": cc.p(54, 140),
             "labelContentSize": cc.size(216, 300),
@@ -1418,7 +1407,7 @@ var fit4Iphone4 = {
             "speakerIconPoint": cc.p(150, 700),
             "msgEditBoxPoint": cc.p(345, 700),
             "sendItemPoint": cc.p(560, 700),
-            "scrollViewLayerRect": cc.rect(110, 165, 500, 470),
+            "scrollViewLayerRect": cc.rect(0, 0, 500, 470),
             "scrollViewBgLayerSize": cc.size(500, 480),
             "scrollViewBgLayerPoint": cc.p(360, 400),
             "scrollViewSize": cc.size(500, 470),
@@ -1437,7 +1426,7 @@ var fit4Iphone4 = {
             "paymentItemPoint": cc.p(600, 846),
             "buyIconPoint": cc.p(535, 841),
             "scrollViewHeight": 680,
-            "scrollViewLayerRect": cc.rect(40, 122, 640, 680),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 680),
             "scrollViewSize": cc.size(640, 680),
             "scrollViewPoint": cc.p(40, 122),
             "bgSprite2Point": cc.p(360, 492),
@@ -1468,7 +1457,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(200, 792),
             "closeItemPoint": cc.p(605, 837),
             "scrollViewHeight": 600,
-            "scrollViewLayerRect": cc.rect(110, 172, 500, 600),
+            "scrollViewLayerRect": cc.rect(0, 0, 500, 600),
             "scrollViewSize": cc.size(500, 600),
             "scrollViewPoint": cc.p(110, 172)
         }

@@ -42,9 +42,6 @@ var MarkLayer = cc.Layer.extend({
         var node = this;
         var mainScene = MainScene.getInstance();
 
-        cc.log("origin: ");
-        cc.log(this.getParent().convertToNodeSpace(this._rect.origin));
-
         while (node && node != mainScene) {
             if (!node.isVisible()) {
                 return false;
@@ -53,10 +50,8 @@ var MarkLayer = cc.Layer.extend({
             node = node.getParent();
         }
 
-        var point = this.getParent().convertToWorldSpace(this._rect.origin);
+        var point = this.getParent().convertToWorldSpace(cc.p(this._rect.x, this._rect.y));
         var rect = cc.rect(point.x, point.y, this._rect.width, this._rect.height);
-
-        cc.log(rect);
 
         return (!cc.rectContainsPoint(rect, touch.getLocation()));
     }

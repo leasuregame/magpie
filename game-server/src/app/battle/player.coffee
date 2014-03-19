@@ -12,12 +12,12 @@ copyAttrs = (self, ent) ->
   self.name = ent.name
   self.lv = ent.lv
   self.exp = ent.exp
-  self.lineUp = ent.lineUp
+  self.lineUp = _.clone(ent.lineUp)
   self.spiritor = if ent.spiritor? then new Spiritor(ent.spiritor) else null
   self.cards = ent.activeCards?() or ent.cards
 
   self.spiritorIdx = -1
-  _refs = if ent.lineUpObj? then ent.lineUpObj() else []
+  _refs = if ent.lineUpObj? then ent.lineUpObj()[0] else {}
   _.each _refs, (v, k) -> 
     if v is -1 
       self.spiritorIdx = parseInt(k)
@@ -27,7 +27,7 @@ defaultEntity =
   name: 'anyone'
   lv: 0
   exp: 0
-  lineUp: ''
+  lineUp: []
   spiritor: {lv: 1}
   cards: []
 
@@ -84,16 +84,17 @@ class Player extends Module
     @heros = if not _.isEmpty(@cards) then (new Hero(card, @) for card in @cards) else []
 
   bindCards: ->
-    if @lineUp? and @lineUp != ''
-      @parseLineUp().forEach (item) =>
-        [pos, id] = item 
-        
-        ### 元神 ###
+    if @lineUp and not _.isEmpty(@lineUp)
+      @matrix.clear()
+
+      lu = @lineUp.pop()
+      _.each lu, (id, pos) =>
         if parseInt(id) is -1
-          return
+          @spiritorIdx = parseInt(pos)
+          return 
 
         _h = _.findWhere @heros, id: parseInt(id)
-        if _h
+        if _h 
           @matrix.set(pos, _h)
         else
           logger.warn 'you have not such card with id is ' + id
@@ -132,7 +133,7 @@ class Player extends Module
     cobj
 
   death: ->
-    @aliveHeros().length is 0
+    @matrix.alive().length is 0
 
   currentHero: ->
     item = @matrix.current()

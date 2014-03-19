@@ -24,25 +24,25 @@ class VirtualPlayer extends Player
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
-  bindCards: ->
-    _hero = (id) =>
-      for h in @heros
-        return if h.id is parseInt(id) then h
-      null
+  # bindCards: ->
+  #   _hero = (id) =>
+  #     for h in @heros
+  #       return if h.id is parseInt(id) then h
+  #     null
     
-    if @lineUp? and @lineUp != ''
-      @parseLineUp().forEach (item) =>
-        [pos, id] = item 
-        _h = _hero(id)      
+  #   if @lineUp? and @lineUp != ''
+  #     @parseLineUp().forEach (item) =>
+  #       [pos, id] = item 
+  #       _h = _hero(id)      
 
-        if _h
-          @matrix.set(pos, _h)
-        else
-          logger.info 'you have not such card with id is ' + id
-    else
-      logger.warn 'there is not line up for player ' + @name
+  #       if _h
+  #         @matrix.set(pos, _h)
+  #       else
+  #         logger.info 'you have not such card with id is ' + id
+  #   else
+  #     logger.warn 'there is not line up for player ' + @name
     
-    @matrix.reset()
+  #   @matrix.reset()
 
   getCards: ->
     cobj = {}
@@ -92,30 +92,31 @@ randomLineUp = (cards) ->
     _res.push pos_copy[r]
     pos_copy.splice(r, 1)
 
-  lu = ''
+  lu = {}
   for i in [0...ids.length]
-    lu += "#{_res[i]}:#{ids[i]},"
+    lu[_res[i]] = ids[i]
 
-  lu[0...-1]
+  [lu]
 
 genLineUp = (cards, formation) ->
   if formation is null or typeof formation is 'undefined'
-    return ''
+    return []
 
   _cards = _.clone(cards)
-  arr = formation.split(',').map (item) =>
+  lu = {}
+  formation.split(',').forEach (item) =>
     [pos, _tableId] = item.split(':')
     _card = _.findWhere _cards, {tableId: parseInt(_tableId)}
     _cards.splice(_cards.indexOf(_card), 1)
     _card_id = _card.id
-    "#{pos}:#{_card_id}"
+    lu[pos] = _card_id
 
-  arr.join(',')
+  [lu]
 
 defaultLineUp = (cards) ->
-  lu = ''
+  lu = {}
   for c in cards
-    lu += "#{c.id}:#{c.id},"
-  lu[0...-1]
+    lu[c.id] = c.id
+  [lu]
 
 module.exports = VirtualPlayer

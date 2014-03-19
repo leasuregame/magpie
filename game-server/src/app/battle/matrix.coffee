@@ -109,14 +109,15 @@ class Matrix
     @
 
   set: (row, col, el) ->
-    if arguments.length == 2
+    console.log '-before set-', row, col, el, !!el
+    if not el
       el = col      
       if _.isString(row) and row.length == 2
         [row, col] = row 
-      else if _.isNumber(row)
-        [row, col] = @numberToPosition(row) 
+      else
+        [row, col] = @numberToPosition(parseInt row) 
 
-    el.pos = "#{row}#{col}" if _.isObject(el)  
+    el.pos = "#{row}#{col}" if _.isObject(el)
     @elements[row][col] = el
     @
 
@@ -125,6 +126,12 @@ class Matrix
       [row, col] = row
     @set(row, col, null)
     @
+
+  clear: ->
+    @elements = [
+      [null, null, null]
+      [null, null, null]
+    ]
 
   crosswaysFront: ->
     @row(0)

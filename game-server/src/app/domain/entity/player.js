@@ -786,7 +786,11 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updateLineUp = function(lineupObj, index) {
-        lu = utility.deepCopy(this.lineUp);
+        if (_.isNull(index) || _.isUndefined(index)) {
+            return this.set('lineUp', lineupObj);
+        }
+
+        var lu = _.clone(this.lineUp);
         if (index > lu.length) {
             throw new Error('can not update player lineUp with the index ' + index);
         }

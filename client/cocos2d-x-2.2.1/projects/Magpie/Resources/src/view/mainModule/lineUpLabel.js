@@ -11,10 +11,15 @@
  * line up label
  * */
 
+var MAX_LINEUP_LIST = 3;
+
+var lineUpIcon = ["icon416", "icon417", "icon417"];
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
+    _lineUpNode: null,
+    _index: 0,
 
     _card3Guide: null,
     _card4Guide: null,
@@ -33,8 +38,77 @@ var LineUpLabel = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchEnabled(true);
+
         this._cardList = gameData.cardList;
         this._lineUp = gameData.lineUp;
+        this._index = MAX_LINEUP_LIST - 1;
+        this._lineUpNode = [];
+
+        var lineUpCardList = this._lineUp.getLineUpCardList();
+
+        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
+
+            this._lineUpNode[i] = cc.Node.create();
+            this._lineUpNode[i].setPosition(cc.p(0, 0));
+            this.addChild(this._lineUpNode[i]);
+
+            var lineUpName = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
+            lineUpName.setAnchorPoint(cc.p(0.5, 0));
+            lineUpName.setPosition(cc.p(320, 63));
+            this._lineUpNode[i].addChild(lineUpName);
+
+            if (i != 0) {
+                var turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
+                turnLeftIcon.setScaleX(-1);
+                turnLeftIcon.setPosition(cc.p(20, 0));
+                this._lineUpNode[i].addChild(turnLeftIcon);
+            }
+
+            if (i != MAX_LINEUP_LIST - 1) {
+                var turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
+                turnRightIcon.setPosition(cc.p(620, 0));
+                this._lineUpNode[i].addChild(turnRightIcon);
+            }
+        }
+
+        var scrollViewLayer = MarkLayer.create(cc.rect(35, -54, 570, 158));
+
+        //var scrollViewLayer = cc.Layer.create();
+
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(menu, 1);
+
+        for (var i = 0; i < MAX_LINEUP_LIST * 5; ++i) {
+            var cardHeadItem = null;
+            var effect = null;
+            var x = 54 + i * 117;
+            if (i < MAX_LINE_UP_CARD) {
+                cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+
+                if (lineUpCardList[i]) {
+                    effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                    effect.setAnchorPoint(cc.p(0.5, 0));
+                    effect.setPosition(cc.p(x, 0));
+                    scrollViewLayer.addChild(effect, 2);
+                }
+
+            } else {
+                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
+            }
+            cardHeadItem.setAnchorPoint(cc.p(0.5, 0));
+            cardHeadItem.setPosition(cc.p(x, 0));
+            menu.addChild(cardHeadItem);
+        }
+
+        this._scrollView = cc.ScrollView.create(cc.size(570, 158), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(117 * MAX_LINEUP_LIST * 5, 158));
+        this._scrollView.setPosition(cc.p(35, -54));
+        this._scrollView.setBounceable(false);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
 
         return true;
     },
@@ -42,33 +116,16 @@ var LineUpLabel = cc.Layer.extend({
     update: function () {
         cc.log("LineUpLabel update");
 
-        this.removeAllChildren();
-
-        var lineUpCardList = this._lineUp.getLineUpCardList();
-
-        var menu = cc.Menu.create();
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
-
-        for (var i = 0; i < 5; ++i) {
-            var cardHeadItem = null;
-            var effect = null;
-            if (i < MAX_LINE_UP_CARD) {
-                cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
-
-                if (lineUpCardList[i]) {
-                    effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
-                    effect.setPosition(cc.p(79 + 122 * i, 0));
-                    this.addChild(effect, 2);
-                }
-
-            } else {
-                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
-            }
-            cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
-            menu.addChild(cardHeadItem);
-
+        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
+            this._lineUpNode[i].setVisible(false);
         }
+
+        this._lineUpNode[MAX_LINEUP_LIST - this._index - 1].setVisible(true);
+
+        var offset = this._scrollView.minContainerOffset();
+        offset.x += this._index * 585 + 15;
+
+        this._scrollView.setContentOffset(offset, true);
     },
 
     updateGuide: function () {
@@ -136,6 +193,43 @@ var LineUpLabel = cc.Layer.extend({
                 TipLayer.tip(table.card5_position + " 级开启");
             }
         }
+    },
+
+    /**
+     * when a touch finished
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesEnded: function (touches, event) {
+        cc.log("LineUpLabel onTouchesEnded");
+
+        this._scrollView.unscheduleAllCallbacks();
+        this._scrollView.stopAllActions();
+
+        var beganOffset = this._scrollView.minContainerOffset();
+        var endOffset = this._scrollView.getContentOffset();
+        beganOffset.x += this._index * 570;
+
+        var len = beganOffset.x - endOffset.x;
+        if (len !== 0) {
+            if (len > 80) {
+                this._index = MAX_LINEUP_LIST + Math.floor(endOffset.x / 570) - 1;
+            } else if (len < -80) {
+                this._index = MAX_LINEUP_LIST + Math.ceil(endOffset.x / 570) - 1;
+            }
+
+            this.update();
+        }
+    },
+
+    /**
+     * @param touch
+     * @param event
+     */
+    onTouchesCancelled: function (touch, event) {
+        cc.log("LineUpLabel onTouchesCancelled");
+
+        this.onTouchEnded(touch, event);
     }
 });
 

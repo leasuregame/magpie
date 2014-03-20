@@ -28,7 +28,8 @@ describe("Area Server", function() {
                 2: 4,
                 3: 3,
                 6: -1
-              }
+              },
+              index: 0
             },
             function(data) {
               console.log(data);
@@ -51,7 +52,8 @@ describe("Area Server", function() {
                 4: 2,
                 5: 1,
                 6: -1
-              }
+              },
+              index: 0
             },
             function(data) {
               console.log(data);
@@ -65,6 +67,8 @@ describe("Area Server", function() {
       });
 
       describe('when numbers of card are the same', function(){
+        
+        
         it('should can not change line up', function(){
           request(
             'area.trainHandler.changeLineUp', {
@@ -73,7 +77,8 @@ describe("Area Server", function() {
                 2: 4,
                 3: 3,
                 6: -1
-              }
+              }, 
+              index: 0
             },
             function(data) {
               console.log(data);

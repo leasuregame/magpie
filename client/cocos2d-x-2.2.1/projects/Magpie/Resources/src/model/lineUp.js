@@ -34,15 +34,27 @@ var LineUp = Entity.extend({
     update: function (data) {
         cc.log("LineUp update");
 
+        if (!data && !this._lineUpList) {
+            return;
+        }
+
         var lineUpList = [];
         var maxLineUp = this.getMaxLineUp();
 
+        cc.log(data);
+
         for (var i = 0; i < maxLineUp; ++i) {
-            var lineUp = (data ? data[i] : this._lineUpList[i].lineUp) || {};
-            var count = this.getPerLineUpCount(i);
+            var lineUp;
+            var count = 5;
+
+            if (data) {
+                lineUp = data[i];
+            } else if (this._lineUpList[i]) {
+                lineUp = this._lineUpList[i].lineUp;
+            }
 
             lineUpList[i] = {
-                lineUp: lineUp,
+                lineUp: lineUp || {6: -1},
                 count: count
             };
         }
@@ -76,6 +88,7 @@ var LineUp = Entity.extend({
         cc.log("LineUp getLineUpList");
 
         var lineUpList = [];
+        var lineUp, i, j;
 
         if (index != undefined) {
             lineUp = this._lineUpList[index];
@@ -102,24 +115,38 @@ var LineUp = Entity.extend({
         return lineUpList;
     },
 
+    getLineUp: function (index) {
+        cc.log("LineUp getLineUp");
+
+        return this._lineUpList[index];
+    },
+
     getLineUpCard: function (index, key) {
         cc.log("LineUp getLineUpCard");
         cc.log(index);
         cc.log(key);
 
-        return this._lineUpList[index][key];
+        return (this._lineUpList[index].lineUp)[key];
     },
 
-    isLineUpCard: function (index, cardId) {
-        cc.log("LineUp isLineUpCard");
+    getCardOfLineUp: function (cardId) {
+        cc.log("LineUp getCardOfLineUp");
 
-        for (var key in this._lineUp) {
-            if (this._lineUp[key] == cardId) {
-                return true;
+        var maxLineUp = this.getMaxLineUp();
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUp = this._lineUpList[i].lineUp;
+
+            cc.log(lineUp);
+
+            for (var key in lineUp) {
+                if (lineUp[key] == cardId) {
+                    return i;
+                }
             }
         }
 
-        return false;
+        return undefined;
     },
 
     getMaxLineUp: function () {

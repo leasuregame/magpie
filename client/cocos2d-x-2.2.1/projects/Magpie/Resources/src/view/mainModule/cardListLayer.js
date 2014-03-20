@@ -417,12 +417,21 @@ var CardListLayer = cc.Layer.extend({
             }
         };
 
-        var lineUp = gameData.lineUp.getLineUpList();
-        var len = lineUp.length;
+        var lineUp = gameData.lineUp;
+        var maxLineUp = lineUp.getMaxLineUp();
 
-        for (var i = 0; i < len; ++i) {
-            if (this._cardLabel[lineUp[i]] !== undefined) {
-                this._cardLabel[lineUp[i]].select();
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUpList = gameData.lineUp.getLineUpList(i);
+            var len = lineUpList.length;
+
+            for (var j = 0; j < len; ++j) {
+                if (this._cardLabel[lineUp[i]] !== undefined) {
+                    if (this._otherData.index == i) {
+                        this._cardLabel[lineUp[i]].select();
+                    } else {
+                        this._excludeList.push(lineUp[i]);
+                    }
+                }
             }
         }
     },
@@ -989,7 +998,8 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
+        var index = this._otherData.index;
+        var lineUp = lz.clone(gameData.lineUp.getLineUp(index));
         var cardList = this._getSelectCardList();
         var i, key, len = cardList.length;
 
@@ -1041,8 +1051,7 @@ var CardListLayer = cc.Layer.extend({
                 }
 
             }
-        }, lineUp);
-
+        }, lineUp, index);
     },
 
     _onClickLineUp: function () {
@@ -1087,18 +1096,23 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         }
-
     }
 });
 
 
-CardListLayer.create = function (selectType, cb, otherData) {
+CardListLayer.create = function (/* Multi arguments */) {
     var ret = new CardListLayer();
 
-    selectType = selectType || SELECT_TYPE_DEFAULT;
-    otherData = otherData || {};
-    cb = cb || function () {
-    };
+    var selectType = arguments[0] || SELECT_TYPE_DEFAULT;
+    var cb;
+    var otherData;
+
+    if (typeof(arguments[1]) == "function") {
+        cb = arguments[1];
+        otherData = arguments[2] || {};
+    } else {
+        otherData = arguments[1] || {};
+    }
 
     if (ret && ret.init(selectType, cb, otherData)) {
         return ret;

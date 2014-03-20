@@ -122,12 +122,19 @@ var CardList = Entity.extend({
             var bb = cardList[b];
             var len = typeList.length;
 
-            if (!lineUp.isLineUpCard(aa.get("id")) && lineUp.isLineUpCard(bb.get("id"))) {
-                return -1;
+            var aaLineUpIndex = lineUp.getCardOfLineUp(aa.get("id"));
+            var bbLineUpIndex = lineUp.getCardOfLineUp(bb.get("id"));
+
+            if (aaLineUpIndex == undefined) {
+                aaLineUpIndex = 100000000;
             }
 
-            if (lineUp.isLineUpCard(aa.get("id")) && !lineUp.isLineUpCard(bb.get("id"))) {
-                return 1;
+            if (bbLineUpIndex == undefined) {
+                aaLineUpIndex = 100000000;
+            }
+
+            if (aaLineUpIndex != bbLineUpIndex) {
+                return (aaLineUpIndex < bbLineUpIndex ? 1 : -1);
             }
 
             for (var i = 0; i < len; ++i) {
@@ -177,7 +184,7 @@ var CardList = Entity.extend({
                 that.deleteById(cardIdList);
 
                 gameData.player.add("money", msg.price);
-                
+
                 lz.tipReward("money", msg.price);
 
                 cb();

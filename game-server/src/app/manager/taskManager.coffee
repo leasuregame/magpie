@@ -137,7 +137,7 @@ class Manager
       player.increase('gold', taskRate.gold_obtain.value)
       battleLog.rewards.gold = taskRate.gold_obtain.value  
 
-    saveExpCardsInfo player.id, taskData.max_drop_card_number, firstWin, (err, results) ->
+    saveExpCardsInfo player.id, player.lv, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)
 
@@ -311,12 +311,11 @@ bornPassiveSkill = () ->
     value: parseFloat (value/100).toFixed(1)
   }
 
-saveExpCardsInfo = (playerId, count, firstWin, cb) ->
-  cd = taskRate.card_drop
+saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
   results = []
   async.times count
     , (n, callback) ->
-      lv = if firstWin then 15 else parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+      lv = if firstWin then 15 else parseInt genCardLv(playerLv)
       dao.card.createExpCard(
         data: {
           playerId: playerId,
@@ -324,5 +323,17 @@ saveExpCardsInfo = (playerId, count, firstWin, cb) ->
         }, callback
       )
     , cb
+
+genCardLv = (playerLv) ->
+  CD = taskRate.CARD_DROP
+  lvs = _.keys(CD).sort (x, y) -> parseInt(y) - parseInt(x)
+  
+  lv = lvs[0]
+  for l in lvs 
+    if playerLv >= l
+      lv = l
+      break
+
+  parseInt utility.randomValue _.keys(CD[lv]), _.values(CD[lv])
 
 module.exports = Manager

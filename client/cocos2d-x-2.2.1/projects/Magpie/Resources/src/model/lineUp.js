@@ -13,15 +13,18 @@
 
 
 var MAX_LINE_UP_SIZE = 6;
+var MAX_LINE_UP_CARD = 5;
 var SPIRIT_ID = -1;
 
 var LineUp = Entity.extend({
     _lineUpList: null,
+    _maxLineUp: 0,
 
     init: function (data) {
         cc.log("LineUp init");
 
         this._lineUpList = [];
+        this._maxLineUp = Object.keys(outputTables.card_lineup_limit.rows).length;
 
         this.update(data);
 
@@ -34,15 +37,36 @@ var LineUp = Entity.extend({
     update: function (data) {
         cc.log("LineUp update");
 
+        if (!data && !this._lineUpList) {
+            return;
+        }
+
         var lineUpList = [];
-        var maxLineUp = this.getMaxLineUp();
+        var maxLineUp = this._maxLineUp;
+        var lv = gameData.player.get("lv");
+
+        cc.log(data);
 
         for (var i = 0; i < maxLineUp; ++i) {
-            var lineUp = (data ? data[i] : this._lineUpList[i].lineUp) || {};
-            var count = this.getPerLineUpCount(i);
+            var lineUp;
+            if (data) {
+                lineUp = data[i];
+            } else if (this._lineUpList[i]) {
+                lineUp = this._lineUpList[i].lineUp;
+            }
+
+            var count = 0;
+            var lineUpLimit = outputTables.card_lineup_limit.rows[i];
+            for (var j = 1; j <= MAX_LINE_UP_CARD; ++j) {
+                if (lv >= lineUpLimit["card_" + j]) {
+                    count += 1;
+                } else {
+                    break;
+                }
+            }
 
             lineUpList[i] = {
-                lineUp: lineUp,
+                lineUp: lineUp || {6: -1},
                 count: count
             };
         }
@@ -76,6 +100,7 @@ var LineUp = Entity.extend({
         cc.log("LineUp getLineUpList");
 
         var lineUpList = [];
+        var lineUp, i, j;
 
         if (index != undefined) {
             lineUp = this._lineUpList[index];
@@ -86,7 +111,7 @@ var LineUp = Entity.extend({
                 }
             }
         } else {
-            var maxLineUp = this.getMaxLineUp();
+            var maxLineUp = this._maxLineUp;
 
             for (i = 0; i < maxLineUp; ++i) {
                 lineUp = this._lineUpList[i];
@@ -102,30 +127,38 @@ var LineUp = Entity.extend({
         return lineUpList;
     },
 
+    getLineUp: function (index) {
+        cc.log("LineUp getLineUp");
+
+        return this._lineUpList[index];
+    },
+
     getLineUpCard: function (index, key) {
         cc.log("LineUp getLineUpCard");
         cc.log(index);
         cc.log(key);
 
-        return this._lineUpList[index][key];
+        return (this._lineUpList[index].lineUp)[key];
     },
 
-    isLineUpCard: function (index, cardId) {
-        cc.log("LineUp isLineUpCard");
+    getCardOfLineUp: function (cardId) {
+        cc.log("LineUp getCardOfLineUp");
 
-        for (var key in this._lineUp) {
-            if (this._lineUp[key] == cardId) {
-                return true;
+        var maxLineUp = this._maxLineUp;
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUp = this._lineUpList[i].lineUp;
+
+            cc.log(lineUp);
+
+            for (var key in lineUp) {
+                if (lineUp[key] == cardId) {
+                    return i;
+                }
             }
         }
 
-        return false;
-    },
-
-    getMaxLineUp: function () {
-        cc.log("LineUp getMaxLineUp");
-
-        return 2;
+        return undefined;
     },
 
     getPerLineUpCount: function (index) {
@@ -152,7 +185,7 @@ var LineUp = Entity.extend({
                 }
             }
         } else {
-            var maxLineUp = this.getMaxLineUp();
+            var maxLineUp = this._maxLineUp;
 
             for (i = 0; i < maxLineUp; ++i) {
                 lineUp = this._lineUpList[i];

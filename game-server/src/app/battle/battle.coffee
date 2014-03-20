@@ -38,6 +38,9 @@ class Battle extends Base
     battleLog.set('ownName', @attacker.name)
     battleLog.set('enemyName', @defender.name)
 
+    battleLog.addCards @attacker.getCards()
+    battleLog.addCards @defender.getCards()
+
   execute: ->
     while not @isOver()
       @round.process()
@@ -47,8 +50,7 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
     battleLog.set('round_num',@round.round_num - 1)
-    cards = _.extend {}, @defender.getCards(), @attacker.getCards()
-    battleLog.set('cards', cards)
+    
 
 class Round extends Base
   init: ->
@@ -103,6 +105,10 @@ class Attack extends Base
     if @defender.shootCount > 0
       @defender.shootCount -= 1
       _attack( @defender, @attacker ) 
+
+  end: ->
+    @attacker.bindCards() if @attacker.death()
+    @defender.bindCards() if @defender.death()
 
 
     # if @attacker.shootCount > 0

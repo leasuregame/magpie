@@ -137,7 +137,6 @@ var LineUpLabel = cc.Layer.extend({
             this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
             this.addChild(this._card3Guide, 10);
         }
-
     },
 
     _onClickCard: function () {
@@ -163,7 +162,7 @@ var LineUpLabel = cc.Layer.extend({
             gameGuide.set("card3Guide", false);
         }
 
-        MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP));
+        MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));
 
         if (noviceTeachingLayer.isNoviceTeaching()) {
             noviceTeachingLayer.clearAndSave();

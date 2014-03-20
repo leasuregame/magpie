@@ -11,14 +11,14 @@
  * line up label
  * */
 
-var MAX_LINEUP_LIST = 3;
+var MAX_LINEUP_LIST = 2;
 
-var lineUpIcon = ["icon416", "icon417", "icon417"];
+var lineUpIcon = ["icon416", "icon417"];
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
-    _lineUpNode: null,
+    _lineUpName: null,
     _index: 0,
 
     _card3Guide: null,
@@ -43,38 +43,27 @@ var LineUpLabel = cc.Layer.extend({
         this._cardList = gameData.cardList;
         this._lineUp = gameData.lineUp;
         this._index = MAX_LINEUP_LIST - 1;
-        this._lineUpNode = [];
+        this._lineUpName = [];
+
+        this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
+        this._turnLeftIcon.setScaleX(-1);
+        this._turnLeftIcon.setPosition(cc.p(20, 0));
+        this.addChild(this._turnLeftIcon);
+
+        this._turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
+        this._turnRightIcon.setPosition(cc.p(620, 0));
+        this.addChild(this._turnRightIcon);
+
+        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
+            this._lineUpName[i] = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
+            this._lineUpName[i].setAnchorPoint(cc.p(0.5, 0));
+            this._lineUpName[i].setPosition(cc.p(320, 63));
+            this.addChild(this._lineUpName[i]);
+        }
 
         var lineUpCardList = this._lineUp.getLineUpCardList();
 
-        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
-
-            this._lineUpNode[i] = cc.Node.create();
-            this._lineUpNode[i].setPosition(cc.p(0, 0));
-            this.addChild(this._lineUpNode[i]);
-
-            var lineUpName = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
-            lineUpName.setAnchorPoint(cc.p(0.5, 0));
-            lineUpName.setPosition(cc.p(320, 63));
-            this._lineUpNode[i].addChild(lineUpName);
-
-            if (i != 0) {
-                var turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
-                turnLeftIcon.setScaleX(-1);
-                turnLeftIcon.setPosition(cc.p(20, 0));
-                this._lineUpNode[i].addChild(turnLeftIcon);
-            }
-
-            if (i != MAX_LINEUP_LIST - 1) {
-                var turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
-                turnRightIcon.setPosition(cc.p(620, 0));
-                this._lineUpNode[i].addChild(turnRightIcon);
-            }
-        }
-
         var scrollViewLayer = MarkLayer.create(cc.rect(35, -54, 570, 158));
-
-        //var scrollViewLayer = cc.Layer.create();
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
@@ -118,10 +107,13 @@ var LineUpLabel = cc.Layer.extend({
         cc.log("LineUpLabel update");
 
         for (var i = 0; i < MAX_LINEUP_LIST; i++) {
-            this._lineUpNode[i].setVisible(false);
+            this._lineUpName[i].setVisible(false);
         }
 
-        this._lineUpNode[MAX_LINEUP_LIST - this._index - 1].setVisible(true);
+        var id = MAX_LINEUP_LIST - this._index - 1;
+        this._lineUpName[id].setVisible(true);
+        this._turnLeftIcon.setVisible(id != 0);
+        this._turnRightIcon.setVisible(id != MAX_LINEUP_LIST - 1);
 
         var offset = this._scrollView.minContainerOffset();
         offset.x += this._index * 585 + 15;

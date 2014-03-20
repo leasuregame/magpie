@@ -103,10 +103,10 @@ var LineUp = Entity.extend({
         var lineUp, i, j;
 
         if (index != undefined) {
-            lineUp = this._lineUpList[index];
+            lineUp = this._lineUpList[index].lineUp;
 
-            for (j = 1; j < MAX_LINE_UP_SIZE; ++j) {
-                if (lineUp[j] != undefined && lineUp[i] >= 0) {
+            for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                if (lineUp[j] != undefined && lineUp[j] >= 0) {
                     lineUpList.push(lineUp[j]);
                 }
             }
@@ -114,10 +114,10 @@ var LineUp = Entity.extend({
             var maxLineUp = this._maxLineUp;
 
             for (i = 0; i < maxLineUp; ++i) {
-                lineUp = this._lineUpList[i];
+                lineUp = this._lineUpList[i].lineUp;
 
-                for (j = 1; j < MAX_LINE_UP_SIZE; ++j) {
-                    if (lineUp[j] != undefined && lineUp[i] >= 0) {
+                for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                    if (lineUp[j] != undefined && lineUp[j] >= 0) {
                         lineUpList.push(lineUp[j]);
                     }
                 }
@@ -130,7 +130,7 @@ var LineUp = Entity.extend({
     getLineUp: function (index) {
         cc.log("LineUp getLineUp");
 
-        return this._lineUpList[index];
+        return this._lineUpList[index].lineUp;
     },
 
     getLineUpCard: function (index, key) {
@@ -169,14 +169,15 @@ var LineUp = Entity.extend({
 
     changeLineUp: function (cb, data, index) {
         cc.log("LineUp changeLineUp");
-        cc.log("lineUp: " + data);
+        cc.log("lineUp: ");
+        cc.log(data);
         cc.log("index: " + index);
 
         var lineUp, i, j;
 
         var isChange = false;
         if (index != undefined) {
-            lineUp = this._lineUpList[index];
+            lineUp = this._lineUpList[index].lineUp;
 
             for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                 if (data[j] != lineUp[j]) {
@@ -188,7 +189,7 @@ var LineUp = Entity.extend({
             var maxLineUp = this._maxLineUp;
 
             for (i = 0; i < maxLineUp; ++i) {
-                lineUp = this._lineUpList[i];
+                lineUp = this._lineUpList[i].lineUp;
 
                 for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                     if (data[i][j] != lineUp[j]) {

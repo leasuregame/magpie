@@ -136,13 +136,6 @@ var TournamentLayer = cc.Layer.extend({
         this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
-//        var rankItem = cc.MenuItemImage.create(
-//            main_scene_image.button7,
-//            main_scene_image.button7s,
-//            this._onClickRank,
-//            this
-//        );
-
         var rankItemEffect = cc.BuilderReader.load(main_scene_image.uiEffect95, this);
         rankItemEffect.setPosition(this._tournamentLayerFit.rankItemPoint);
         this.addChild(rankItemEffect);

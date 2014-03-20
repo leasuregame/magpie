@@ -425,11 +425,13 @@ checkBossStatus = (items, cb) ->
 countDamage = (bl) ->
   ds = []
   bl.steps.forEach (s) ->
+    return if not _.isUndefined(s.go)
     s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if parseInt(el) > 6
 
   # 删除死亡的boss卡牌
-  for k, v of bl.cards
-    delete bl.cards[k] if v.hp is 0
+  for cards, i in bl.cards
+    for k, v of cards
+      delete bl.cards[i][k] if v.hp is 0
 
   add = (x, y) -> x + y
   ds.reduce add, 0

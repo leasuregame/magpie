@@ -2,6 +2,7 @@ Player = require './player'
 VHero = require './virtual_hero'
 _ = require 'underscore'
 logger = require('pomelo-logger').getLogger(__filename)
+battleLog = require './battle_log'
 
 class VirtualPlayer extends Player
   init: (data) ->
@@ -44,7 +45,7 @@ class VirtualPlayer extends Player
     
   #   @matrix.reset()
 
-  getCards: ->
+  setCards: ->
     cobj = {}
     for c in @heros
       cobj[c.idx] = {
@@ -54,6 +55,13 @@ class VirtualPlayer extends Player
         boss: true if c.boss?
       }
     cobj
+
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
 parseCards = (data) ->
   cards = []

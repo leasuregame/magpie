@@ -93,7 +93,7 @@ var LineUpLayer = LazyLayer.extend({
             effect.setPosition(point);
             this.addChild(effect);
 
-            var id = lineUp.getLineUpByIndex(i);
+            var id = lineUp.getLineUpCard(0, i);
 
             if (id != undefined) {
                 var node = null;

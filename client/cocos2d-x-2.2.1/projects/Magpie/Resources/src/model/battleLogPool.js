@@ -22,7 +22,7 @@ var PVP_BATTLE_LOG = 1;
 var BOSS_BATTLE_LOG = 2;
 
 var BattleLogPool = Entity.extend({
-    _battleLogPool: {},
+    _battleLogPool: null,
 
     init: function () {
         cc.log("BattleLogPool init");

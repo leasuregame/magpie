@@ -14,6 +14,7 @@ entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+_s = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
 
 LOTTERY_BY_GOLD = 1
@@ -685,29 +686,42 @@ Handler::useElixir = (msg, session, next) ->
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   lineupObj = msg.lineUp
+  index = msg.index
 
-  cids = _.values(lineupObj)
+  if not _.isUndefined(index) or not _.isNull(index)
+    lineupItems = [lineupObj]
+  else
+    lineupItems = lineupObj
+
+  cids = lineupItems.reduce(
+    (pre, cur) ->
+      pre.concat(_.values(cur))
+    , []
+  )
   if _.uniq(cids).length isnt cids.length
     return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
 
-  if -1 not in cids
+  if cids.filter((i) -> i is -1).length isnt lineupItems.length
     return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
-    tids = player.getCards(cids).map (i) -> i.tableId
-    nums = (
-      table.getTable('cards').filter (id, item) -> item.id in tids
-    ).map (item) -> item.number
-    if _.uniq(nums).length isnt nums.length
-      return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
+    for lineup in lineupItems
+      cardIds = _.values(lineup)
+      tids = player.getCards(cardIds).map (i) -> i.tableId
+      nums = (
+        table.getTable('cards').filter (id, item) -> item.id in tids
+      ).map (item) -> item.number
+      if _.uniq(nums).length isnt nums.length
+        return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
 
-    if not checkCardCount(player.lv, cids)
-      return next(null, {code: 501, msg: "当前等级只能上阵#{lineupCardCount(player.lv)}张卡牌"})
+    cardCount = lineupCardCount(player.lv)
+    if not checkCardCount(cids, cardCount)
+      return next(null, {code: 501, msg: "当前等级只能上阵#{cardCount}张卡牌"})
 
-    player.updateLineUp(lineupObj)
+    player.updateLineUp(lineupObj, index)
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
 
@@ -855,16 +869,16 @@ setExchangedCard = (player, tid) ->
 cardStar = (tableId) ->
   tableId % 20 or 20
 
-checkCardCount = (playerLv, cardIds) ->
+checkCardCount = (cardIds, cardCount) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length
-  if card_count > lineupCardCount(playerLv)
+  if card_count > cardCount
     return false
   else
     return true
 
 lineupCardCount = (plv) ->
-  fdata = table.getTableItem('function_limit', 1)
-  lvMap = {3: fdata.card3_position, 4: fdata.card4_position, 5: fdata.card5_position}
-  for qty, lv of lvMap
-    return qty - 1 if plv < lv
-  return 5
+  count = 0
+  table.getTable('card_lineup_limit').forEach (id, item) ->
+    for k, v of item
+      count += 1 if _s.startsWith(k, 'card_') and plv >= v
+  count

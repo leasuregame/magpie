@@ -277,7 +277,7 @@ var Player = (function(_super) {
         exp: 0,
         money: 10000,
         gold: 20,
-        lineUp: '12:-1',
+        lineUp: [{6:-1}],
         ability: 0,
         task: {
             id: 1,
@@ -609,26 +609,26 @@ var Player = (function(_super) {
         this.set('ability', this.getAbility());
     };
 
-    Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
-        var cards = _.values(this.cards).filter(function(id, c) {
-            return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-        });
-        var cardTable = table.getTable('cards');
+    // Player.prototype.activeGroupEffect = function() {
+    //     var cardIds = _.values(lineUpToObj(this.lineUp));
+    //     var cards = _.values(this.cards).filter(function(id, c) {
+    //         return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+    //     });
+    //     var cardTable = table.getTable('cards');
 
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
-            var cdata = cardTable.getItem(card.id);
-            var series = cdata.group.toString().split(',');
-            var seriesCards = cardTable.filter(function(id, item) {
-                return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-            });
+    //     for (var i = 0; i < cards.length; i++) {
+    //         var card = cards[i];
+    //         var cdata = cardTable.getItem(card.id);
+    //         var series = cdata.group.toString().split(',');
+    //         var seriesCards = cardTable.filter(function(id, item) {
+    //             return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+    //         });
 
-            if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-                card.activeGroupEffect();
-            }
-        }
-    };
+    //         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+    //             card.activeGroupEffect();
+    //         }
+    //     }
+    // };
 
     Player.prototype.isVip = function() {
         return this.vip > 0;
@@ -654,7 +654,13 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
+        var result = false;
+        if (_.isArray(this.lineUp)) {
+            this.lineUp.forEach(function(l) {
+                result = _.contains(_.values(l), card.id);
+            });
+        }
+        return result;
     };
 
     Player.prototype.hasCard = function(id) {
@@ -688,8 +694,14 @@ var Player = (function(_super) {
         return cards;
     };
 
+    Player.prototype.activeCardIds = function(){
+        return this.lineUp.reduce(function(pre, cur){
+            return pre.concat(_.values(cur));
+        }, []);
+    };
+
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
+        var cardIds = this.activeCardIds();
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
@@ -773,14 +785,24 @@ var Player = (function(_super) {
         this.dailyGift = dg;
     };
 
-    Player.prototype.updateLineUp = function(lineupObj) {
-        this.set('lineUp', objToLineUp(lineupObj));
-        checkLineUp(this);
+    Player.prototype.updateLineUp = function(lineupObj, index) {
+        if (_.isNull(index) || _.isUndefined(index)) {
+            return this.set('lineUp', lineupObj);
+        }
+
+        var lu = _.clone(this.lineUp);
+        if (index > lu.length) {
+            throw new Error('can not update player lineUp with the index ' + index);
+        }
+
+        lu[index] = lineupObj;
+        this.set('lineUp', lu);
+        //checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        checkLineUp(this);
-        return lineUpToObj(this.lineUp);
+        //checkLineUp(this);
+        return this.lineUp;
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {

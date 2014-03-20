@@ -45,11 +45,8 @@ class Manager
       callback(null, res)
 
   @pvp: (attEnt, defEnt, callback) ->
-
     attacker = new Player(attEnt)
-    attacker.setLineUp attEnt.get('lineUp')
     defender = new Player(defEnt)
-    defender.setLineUp defEnt.get('lineUp')
 
     battleLog.clear()
     battle = new Battle(attacker, defender)

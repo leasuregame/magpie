@@ -688,29 +688,40 @@ Handler::changeLineUp = (msg, session, next) ->
   lineupObj = msg.lineUp
   index = msg.index
 
-  if not _.isUndefined(index) or not _.isNull(index)
-    lineupItems = [lineupObj]
-  else
-    lineupItems = lineupObj
-
-  cids = lineupItems.reduce(
-    (pre, cur) ->
-      pre.concat(_.values(cur))
-    , []
-  )
-  if _.uniq(cids).length isnt cids.length
-    return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
-
-  if cids.filter((i) -> i is -1).length isnt lineupItems.length
-    return next(null, {code: 501, msg: '阵型中缺少元神信息'})
+  if (index? and (index not in [0, 1] or _.isArray(lineupObj))) or (_.isUndefined(index) and not _.isArray(lineupObj))
+    return next(null, {code: 501, msg: '参数错误'})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
+    lineupItems = _.clone(player.lineUp)
+    if not _.isUndefined(index)
+      lineupItems[index] = lineupObj
+    else
+      lineupItems = lineupObj
+
+    cids = lineupItems.reduce(
+      (pre, cur) ->
+        pre.concat(_.values(cur))
+      , []
+    )
+    cids_wo_spirit = cids.filter (i) -> i isnt -1
+    if _.uniq(cids_wo_spirit).length isnt cids_wo_spirit.length
+      return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
+
+    console.log cids, lineupItems
+    console.log cids.filter((i) -> i is -1).length, lineupItems.length
+    if cids.filter((i) -> i is -1).length isnt lineupItems.length
+      return next(null, {code: 501, msg: '阵型中缺少元神信息'})
+
     for lineup in lineupItems
       cardIds = _.values(lineup)
       tids = player.getCards(cardIds).map (i) -> i.tableId
+      console.log '-6-', cardIds, tids
+      if cardIds.length isnt (tids.length+1)
+        return next(null, {code: 501, msg: '上阵卡牌不存在'})
+
       nums = (
         table.getTable('cards').filter (id, item) -> item.id in tids
       ).map (item) -> item.number

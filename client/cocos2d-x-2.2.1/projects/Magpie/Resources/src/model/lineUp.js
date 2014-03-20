@@ -12,16 +12,16 @@
  * */
 
 
-var MAX_LINE_UP_CARD = 2;
 var MAX_LINE_UP_SIZE = 6;
 var SPIRIT_ID = -1;
 
 var LineUp = Entity.extend({
-    _lineUp: {},
-    _count: 0,
+    _lineUpList: null,
 
     init: function (data) {
         cc.log("LineUp init");
+
+        this._lineUpList = [];
 
         this.update(data);
 
@@ -34,17 +34,20 @@ var LineUp = Entity.extend({
     update: function (data) {
         cc.log("LineUp update");
 
-        var lineUp = {};
-        var count = 0;
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (data[i] !== undefined) {
-                count++;
-                lineUp[i] = data[i];
-            }
+        var lineUpList = [];
+        var maxLineUp = this.getMaxLineUp();
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUp = (data ? data[i] : this._lineUpList[i].lineUp) || {};
+            var count = this.getPerLineUpCount(i);
+
+            lineUpList[i] = {
+                lineUp: lineUp,
+                count: count
+            };
         }
 
-        this.set("lineUp", lineUp);
-        this.set("count", count);
+        this.set("lineUpList", lineUpList);
     },
 
     _lineUpChangeEvent: function () {
@@ -53,40 +56,61 @@ var LineUp = Entity.extend({
         gameData.player.checkAbility();
     },
 
-    getLineUpCardList: function () {
-        cc.log("LineUp getLineUpCardList");
+    getLineUpCardList: function (index) {
+        cc.log("LineUp getLineUpCardList: " + index);
 
         var lineUpCardList = [];
         var cardList = gameData.cardList;
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._lineUp[i] !== undefined && this._lineUp[i] >= 0) {
-                lineUpCardList.push(cardList.getCardByIndex(this._lineUp[i]));
-            }
+        var lineUpList = this.getLineUpList(index);
+        var len = lineUpList.length;
+
+        for (var i = 0; i < len; ++i) {
+            lineUpCardList.push(cardList.getCardByIndex(lineUpList[i]));
         }
 
         return lineUpCardList;
     },
 
-    getLineUpList: function () {
+    getLineUpList: function (index) {
         cc.log("LineUp getLineUpList");
 
         var lineUpList = [];
 
-        for (var key in this._lineUp) {
-            lineUpList.push(this._lineUp[key]);
+        if (index != undefined) {
+            lineUp = this._lineUpList[index];
+
+            for (j = 1; j < MAX_LINE_UP_SIZE; ++j) {
+                if (lineUp[j] != undefined && lineUp[i] >= 0) {
+                    lineUpList.push(lineUp[j]);
+                }
+            }
+        } else {
+            var maxLineUp = this.getMaxLineUp();
+
+            for (i = 0; i < maxLineUp; ++i) {
+                lineUp = this._lineUpList[i];
+
+                for (j = 1; j < MAX_LINE_UP_SIZE; ++j) {
+                    if (lineUp[j] != undefined && lineUp[i] >= 0) {
+                        lineUpList.push(lineUp[j]);
+                    }
+                }
+            }
         }
 
         return lineUpList;
     },
 
-    getLineUpByIndex: function (index) {
-        cc.log("LineUp getLineUpByIndex: " + index);
+    getLineUpCard: function (index, key) {
+        cc.log("LineUp getLineUpCard");
+        cc.log(index);
+        cc.log(key);
 
-        return this._lineUp[index];
+        return this._lineUpList[index][key];
     },
 
-    isLineUpCard: function (cardId) {
+    isLineUpCard: function (index, cardId) {
         cc.log("LineUp isLineUpCard");
 
         for (var key in this._lineUp) {
@@ -98,42 +122,84 @@ var LineUp = Entity.extend({
         return false;
     },
 
-    changeLineUp: function (cb, lineUp) {
+    getMaxLineUp: function () {
+        cc.log("LineUp getMaxLineUp");
+
+        return 2;
+    },
+
+    getPerLineUpCount: function (index) {
+        cc.log("LineUp getPerLineUpCount");
+
+        return this._lineUpList[index].count;
+    },
+
+    changeLineUp: function (cb, data, index) {
         cc.log("LineUp changeLineUp");
-        cc.log(lineUp);
+        cc.log("lineUp: " + data);
+        cc.log("index: " + index);
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._lineUp[i] != lineUp[i]) {
-                var that = this;
+        var lineUp, i, j;
 
-                lz.server.request("area.trainHandler.changeLineUp", {
-                    lineUp: lineUp
-                }, function (data) {
-                    cc.log(data);
+        var isChange = false;
+        if (index != undefined) {
+            lineUp = this._lineUpList[index];
 
-                    if (data.code == 200) {
-                        cc.log("changeLineUp success");
+            for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                if (data[j] != lineUp[j]) {
+                    isChange = true;
+                    break;
+                }
+            }
+        } else {
+            var maxLineUp = this.getMaxLineUp();
 
-                        var msg = data.msg;
+            for (i = 0; i < maxLineUp; ++i) {
+                lineUp = this._lineUpList[i];
 
-                        that.update(msg.lineUp);
-
-                        cb(true);
-
-                        lz.um.event("event_lineup");
-                    } else {
-                        cc.log("changeLineUp fail");
-
-                        TipLayer.tip(data.msg);
-
-                        cb(false);
+                for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                    if (data[i][j] != lineUp[j]) {
+                        isChange = true;
+                        break;
                     }
-                });
+                }
 
-                return;
+                if (isChange) {
+                    break;
+                }
             }
         }
-        cb(true);
+
+        if (!isChange) {
+            cb(true);
+            return;
+        }
+
+        var that = this;
+        lz.server.request("area.trainHandler.changeLineUp", {
+            lineUp: data,
+            index: index
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("changeLineUp success");
+
+                var msg = data.msg;
+
+                that.update(msg.lineUp);
+
+                cb(true);
+
+                lz.um.event("event_lineup");
+            } else {
+                cc.log("changeLineUp fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(false);
+            }
+        });
     }
 });
 

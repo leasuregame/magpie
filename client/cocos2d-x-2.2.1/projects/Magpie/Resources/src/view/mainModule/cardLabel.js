@@ -114,7 +114,7 @@ var CardLabel = cc.Node.extend({
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
         this._useLabel.setPosition(cc.p(410, 100));
         this.addChild(this._useLabel);
-        this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
+        this._useLabel.setVisible(gameData.lineUp.isLineUpCard(0, this._card.get("id")));
 
         this._hookBgLabel = cc.Sprite.create(main_scene_image.icon27);
         this._hookBgLabel.setPosition(cc.p(525, 62));

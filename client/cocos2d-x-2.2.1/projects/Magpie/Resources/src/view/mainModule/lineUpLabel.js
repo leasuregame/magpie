@@ -53,7 +53,7 @@ var LineUpLabel = cc.Layer.extend({
         for (var i = 0; i < 5; ++i) {
             var cardHeadItem = null;
             var effect = null;
-            if (i < MAX_LINE_UP_CARD) {
+            if (i < 5) {
                 cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
 
                 if (lineUpCardList[i]) {

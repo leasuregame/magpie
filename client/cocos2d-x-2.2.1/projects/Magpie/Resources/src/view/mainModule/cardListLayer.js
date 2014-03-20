@@ -393,7 +393,7 @@ var CardListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
-        this._maxSelectCount = MAX_LINE_UP_CARD;
+        this._maxSelectCount = 5;
 
         this._selectCallback = function () {
             cc.log("CardListLayer _initLineUp _selectCallback");

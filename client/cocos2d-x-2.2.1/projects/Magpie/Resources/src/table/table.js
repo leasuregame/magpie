@@ -11,12 +11,12 @@ var nameChanged = {
     "Boss怪物卡牌配置表": "boss_card",
     "boss_rank_reward": "伤害排行榜奖励配置表",
     "伤害排行榜奖励配置表": "boss_rank_reward",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_price": "卡牌价格配置表",
     "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
     "仙丹配置表": "elixir",
     "factors": "基础属性成长表",
@@ -25,14 +25,6 @@ var nameChanged = {
     "卡牌新旧配置表ID对应关系表": "new_card_id_map",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
-    "illegal_str": "非法字符串",
-    "非法字符串": "illegal_str",
-    "first_name": "名",
-    "名": "first_name",
-    "last_name": "姓",
-    "姓": "last_name",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -49,6 +41,8 @@ var nameChanged = {
     "接收祝福次数配置表": "receive_bless_config",
     "give_bless_config": "祝福次数配置表",
     "祝福次数配置表": "give_bless_config",
+    "card_lineup_limit": "卡槽开放等级配置表",
+    "卡槽开放等级配置表": "card_lineup_limit",
     "function_limit": "功能开放等级限制",
     "功能开放等级限制": "function_limit",
     "lv_limit": "等级限制表",
@@ -65,20 +59,14 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "scope": "卡牌范围表",
-    "卡牌范围表": "scope",
-    "skill_type": "技能类型表",
-    "技能类型表": "skill_type",
-    "skill_upgrade": "卡牌技能升级表",
-    "卡牌技能升级表": "skill_upgrade",
-    "skills": "技能配置表",
-    "技能配置表": "skills",
-    "product": "道具配置表",
-    "道具配置表": "product",
-    "spirit": "元神配置表",
-    "元神配置表": "spirit",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
+    "illegal_str": "非法字符串",
+    "非法字符串": "illegal_str",
+    "first_name": "名",
+    "名": "first_name",
+    "last_name": "姓",
+    "姓": "last_name",
     "elixir_ranking_reward": "竞技仙丹排行版奖励",
     "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
@@ -89,16 +77,32 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
+    "scope": "卡牌范围表",
+    "卡牌范围表": "scope",
+    "skill_type": "技能类型表",
+    "技能类型表": "skill_type",
+    "skill_upgrade": "卡牌技能升级表",
+    "卡牌技能升级表": "skill_upgrade",
+    "skills": "技能配置表",
+    "技能配置表": "skills",
+    "spirit": "元神配置表",
+    "元神配置表": "spirit",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
     "大章表": "chapter",
     "chapter_title": "总章表",
     "总章表": "chapter_title",
+    "mystical_pass_reward": "神秘关卡奖励配置表",
+    "神秘关卡奖励配置表": "mystical_pass_reward",
     "mystical_pass_config": "神秘关卡配置表",
     "神秘关卡配置表": "mystical_pass_config",
     "pass_config": "关卡卡牌配置表",
@@ -128,6 +132,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -871,6 +876,524 @@ var outputTables = {
             "6": {
                 "id": 6,
                 "honor": 5000
+            }
+        }
+    },
+    "card_grow": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lv": 0,
+                "exp_need": 110,
+                "money_need": 115,
+                "cur_exp": 0
+            },
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 125,
+                "money_need": 135,
+                "cur_exp": 110
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 143,
+                "money_need": 159,
+                "cur_exp": 235
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 163,
+                "money_need": 187,
+                "cur_exp": 378
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 186,
+                "money_need": 220,
+                "cur_exp": 541
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 212,
+                "money_need": 259,
+                "cur_exp": 727
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 242,
+                "money_need": 304,
+                "cur_exp": 939
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 276,
+                "money_need": 357,
+                "cur_exp": 1181
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 315,
+                "money_need": 419,
+                "cur_exp": 1457
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 359,
+                "money_need": 492,
+                "cur_exp": 1772
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 409,
+                "money_need": 578,
+                "cur_exp": 2131
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "exp_need": 466,
+                "money_need": 679,
+                "cur_exp": 2540
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "exp_need": 531,
+                "money_need": 798,
+                "cur_exp": 3006
+            },
+            "13": {
+                "id": 13,
+                "lv": 13,
+                "exp_need": 605,
+                "money_need": 938,
+                "cur_exp": 3537
+            },
+            "14": {
+                "id": 14,
+                "lv": 14,
+                "exp_need": 690,
+                "money_need": 1102,
+                "cur_exp": 4142
+            },
+            "15": {
+                "id": 15,
+                "lv": 15,
+                "exp_need": 787,
+                "money_need": 1295,
+                "cur_exp": 4832
+            },
+            "16": {
+                "id": 16,
+                "lv": 16,
+                "exp_need": 897,
+                "money_need": 1522,
+                "cur_exp": 5619
+            },
+            "17": {
+                "id": 17,
+                "lv": 17,
+                "exp_need": 1023,
+                "money_need": 1788,
+                "cur_exp": 6516
+            },
+            "18": {
+                "id": 18,
+                "lv": 18,
+                "exp_need": 1166,
+                "money_need": 2101,
+                "cur_exp": 7539
+            },
+            "19": {
+                "id": 19,
+                "lv": 19,
+                "exp_need": 1329,
+                "money_need": 2469,
+                "cur_exp": 8705
+            },
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "exp_need": 1515,
+                "money_need": 2901,
+                "cur_exp": 10034
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "exp_need": 1727,
+                "money_need": 3409,
+                "cur_exp": 11549
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "exp_need": 1969,
+                "money_need": 4006,
+                "cur_exp": 13276
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "exp_need": 2245,
+                "money_need": 4707,
+                "cur_exp": 15245
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "exp_need": 2559,
+                "money_need": 5531,
+                "cur_exp": 17490
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "exp_need": 2917,
+                "money_need": 6499,
+                "cur_exp": 20049
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "exp_need": 3325,
+                "money_need": 7636,
+                "cur_exp": 22966
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "exp_need": 3791,
+                "money_need": 8972,
+                "cur_exp": 26291
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "exp_need": 4322,
+                "money_need": 10542,
+                "cur_exp": 30082
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "exp_need": 4927,
+                "money_need": 12387,
+                "cur_exp": 34404
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "exp_need": 5617,
+                "money_need": 14555,
+                "cur_exp": 39331
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "exp_need": 6403,
+                "money_need": 17102,
+                "cur_exp": 44948
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "exp_need": 7299,
+                "money_need": 20095,
+                "cur_exp": 51351
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "exp_need": 8321,
+                "money_need": 23612,
+                "cur_exp": 58650
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "exp_need": 9486,
+                "money_need": 27744,
+                "cur_exp": 66971
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "exp_need": 10814,
+                "money_need": 32599,
+                "cur_exp": 76457
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "exp_need": 12328,
+                "money_need": 38304,
+                "cur_exp": 87271
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "exp_need": 14054,
+                "money_need": 45007,
+                "cur_exp": 99599
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "exp_need": 16022,
+                "money_need": 52883,
+                "cur_exp": 113653
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "exp_need": 18265,
+                "money_need": 62138,
+                "cur_exp": 129675
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "exp_need": 20822,
+                "money_need": 73012,
+                "cur_exp": 147940
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "exp_need": 23737,
+                "money_need": 85789,
+                "cur_exp": 168762
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "exp_need": 27060,
+                "money_need": 100802,
+                "cur_exp": 192499
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "exp_need": 30848,
+                "money_need": 118442,
+                "cur_exp": 219559
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "exp_need": 35167,
+                "money_need": 139169,
+                "cur_exp": 250407
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "exp_need": 40090,
+                "money_need": 163524,
+                "cur_exp": 285574
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "exp_need": 45703,
+                "money_need": 192141,
+                "cur_exp": 325664
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "exp_need": 52101,
+                "money_need": 225766,
+                "cur_exp": 371367
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "exp_need": 59395,
+                "money_need": 265275,
+                "cur_exp": 423468
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "exp_need": 67710,
+                "money_need": 311698,
+                "cur_exp": 482863
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "exp_need": 77189,
+                "money_need": 366245,
+                "cur_exp": 550573
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "exp_need": 87995,
+                "money_need": 430338,
+                "cur_exp": 627762
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "exp_need": 100314,
+                "money_need": 505647,
+                "cur_exp": 715757
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "exp_need": 114358,
+                "money_need": 594135,
+                "cur_exp": 816071
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "exp_need": 130368,
+                "money_need": 698109,
+                "cur_exp": 930429
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "exp_need": 148620,
+                "money_need": 820278,
+                "cur_exp": 1060797
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "exp_need": 169427,
+                "money_need": 963827,
+                "cur_exp": 1209417
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "exp_need": 193147,
+                "money_need": 1132497,
+                "cur_exp": 1378844
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "exp_need": 220188,
+                "money_need": 1330684,
+                "cur_exp": 1571991
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "exp_need": 251014,
+                "money_need": 1563554,
+                "cur_exp": 1792179
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "exp_need": 286156,
+                "money_need": 1837176,
+                "cur_exp": 2043193
+            },
+            "61": {
+                "id": 61,
+                "lv": 61,
+                "exp_need": 326218,
+                "money_need": 2158682,
+                "cur_exp": 2329349
+            },
+            "62": {
+                "id": 62,
+                "lv": 62,
+                "exp_need": 371889,
+                "money_need": 2536451,
+                "cur_exp": 2655567
+            },
+            "63": {
+                "id": 63,
+                "lv": 63,
+                "exp_need": 423953,
+                "money_need": 2980330,
+                "cur_exp": 3027456
+            },
+            "64": {
+                "id": 64,
+                "lv": 64,
+                "exp_need": 483306,
+                "money_need": 3501888,
+                "cur_exp": 3451409
+            },
+            "65": {
+                "id": 65,
+                "lv": 65,
+                "exp_need": 550969,
+                "money_need": 4114718,
+                "cur_exp": 3934715
+            },
+            "66": {
+                "id": 66,
+                "lv": 66,
+                "exp_need": 628105,
+                "money_need": 4834794,
+                "cur_exp": 4485684
+            },
+            "67": {
+                "id": 67,
+                "lv": 67,
+                "exp_need": 716040,
+                "money_need": 5680883,
+                "cur_exp": 5113789
+            },
+            "68": {
+                "id": 68,
+                "lv": 68,
+                "exp_need": 816286,
+                "money_need": 6675038,
+                "cur_exp": 5829829
+            },
+            "69": {
+                "id": 69,
+                "lv": 69,
+                "exp_need": 930566,
+                "money_need": 7843170,
+                "cur_exp": 6646115
+            },
+            "70": {
+                "id": 70,
+                "lv": 70,
+                "exp_need": 1060845,
+                "money_need": 9215725,
+                "cur_exp": 7576681
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 500,
+                "star2": 800,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000,
+                "star6": 50000,
+                "star7": 100000
             }
         }
     },
@@ -10993,524 +11516,6 @@ var outputTables = {
             }
         }
     },
-    "card_grow": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "exp_need": 110,
-                "money_need": 115,
-                "cur_exp": 0
-            },
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 125,
-                "money_need": 135,
-                "cur_exp": 110
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 143,
-                "money_need": 159,
-                "cur_exp": 235
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 163,
-                "money_need": 187,
-                "cur_exp": 378
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 186,
-                "money_need": 220,
-                "cur_exp": 541
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 212,
-                "money_need": 259,
-                "cur_exp": 727
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 242,
-                "money_need": 304,
-                "cur_exp": 939
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 276,
-                "money_need": 357,
-                "cur_exp": 1181
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 315,
-                "money_need": 419,
-                "cur_exp": 1457
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 359,
-                "money_need": 492,
-                "cur_exp": 1772
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 409,
-                "money_need": 578,
-                "cur_exp": 2131
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "exp_need": 466,
-                "money_need": 679,
-                "cur_exp": 2540
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "exp_need": 531,
-                "money_need": 798,
-                "cur_exp": 3006
-            },
-            "13": {
-                "id": 13,
-                "lv": 13,
-                "exp_need": 605,
-                "money_need": 938,
-                "cur_exp": 3537
-            },
-            "14": {
-                "id": 14,
-                "lv": 14,
-                "exp_need": 690,
-                "money_need": 1102,
-                "cur_exp": 4142
-            },
-            "15": {
-                "id": 15,
-                "lv": 15,
-                "exp_need": 787,
-                "money_need": 1295,
-                "cur_exp": 4832
-            },
-            "16": {
-                "id": 16,
-                "lv": 16,
-                "exp_need": 897,
-                "money_need": 1522,
-                "cur_exp": 5619
-            },
-            "17": {
-                "id": 17,
-                "lv": 17,
-                "exp_need": 1023,
-                "money_need": 1788,
-                "cur_exp": 6516
-            },
-            "18": {
-                "id": 18,
-                "lv": 18,
-                "exp_need": 1166,
-                "money_need": 2101,
-                "cur_exp": 7539
-            },
-            "19": {
-                "id": 19,
-                "lv": 19,
-                "exp_need": 1329,
-                "money_need": 2469,
-                "cur_exp": 8705
-            },
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "exp_need": 1515,
-                "money_need": 2901,
-                "cur_exp": 10034
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "exp_need": 1727,
-                "money_need": 3409,
-                "cur_exp": 11549
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "exp_need": 1969,
-                "money_need": 4006,
-                "cur_exp": 13276
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "exp_need": 2245,
-                "money_need": 4707,
-                "cur_exp": 15245
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "exp_need": 2559,
-                "money_need": 5531,
-                "cur_exp": 17490
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "exp_need": 2917,
-                "money_need": 6499,
-                "cur_exp": 20049
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "exp_need": 3325,
-                "money_need": 7636,
-                "cur_exp": 22966
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "exp_need": 3791,
-                "money_need": 8972,
-                "cur_exp": 26291
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "exp_need": 4322,
-                "money_need": 10542,
-                "cur_exp": 30082
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "exp_need": 4927,
-                "money_need": 12387,
-                "cur_exp": 34404
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "exp_need": 5617,
-                "money_need": 14555,
-                "cur_exp": 39331
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "exp_need": 6403,
-                "money_need": 17102,
-                "cur_exp": 44948
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "exp_need": 7299,
-                "money_need": 20095,
-                "cur_exp": 51351
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "exp_need": 8321,
-                "money_need": 23612,
-                "cur_exp": 58650
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "exp_need": 9486,
-                "money_need": 27744,
-                "cur_exp": 66971
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "exp_need": 10814,
-                "money_need": 32599,
-                "cur_exp": 76457
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "exp_need": 12328,
-                "money_need": 38304,
-                "cur_exp": 87271
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "exp_need": 14054,
-                "money_need": 45007,
-                "cur_exp": 99599
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "exp_need": 16022,
-                "money_need": 52883,
-                "cur_exp": 113653
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "exp_need": 18265,
-                "money_need": 62138,
-                "cur_exp": 129675
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "exp_need": 20822,
-                "money_need": 73012,
-                "cur_exp": 147940
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "exp_need": 23737,
-                "money_need": 85789,
-                "cur_exp": 168762
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "exp_need": 27060,
-                "money_need": 100802,
-                "cur_exp": 192499
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "exp_need": 30848,
-                "money_need": 118442,
-                "cur_exp": 219559
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "exp_need": 35167,
-                "money_need": 139169,
-                "cur_exp": 250407
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "exp_need": 40090,
-                "money_need": 163524,
-                "cur_exp": 285574
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "exp_need": 45703,
-                "money_need": 192141,
-                "cur_exp": 325664
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "exp_need": 52101,
-                "money_need": 225766,
-                "cur_exp": 371367
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "exp_need": 59395,
-                "money_need": 265275,
-                "cur_exp": 423468
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "exp_need": 67710,
-                "money_need": 311698,
-                "cur_exp": 482863
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "exp_need": 77189,
-                "money_need": 366245,
-                "cur_exp": 550573
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "exp_need": 87995,
-                "money_need": 430338,
-                "cur_exp": 627762
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "exp_need": 100314,
-                "money_need": 505647,
-                "cur_exp": 715757
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "exp_need": 114358,
-                "money_need": 594135,
-                "cur_exp": 816071
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "exp_need": 130368,
-                "money_need": 698109,
-                "cur_exp": 930429
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "exp_need": 148620,
-                "money_need": 820278,
-                "cur_exp": 1060797
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "exp_need": 169427,
-                "money_need": 963827,
-                "cur_exp": 1209417
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "exp_need": 193147,
-                "money_need": 1132497,
-                "cur_exp": 1378844
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "exp_need": 220188,
-                "money_need": 1330684,
-                "cur_exp": 1571991
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "exp_need": 251014,
-                "money_need": 1563554,
-                "cur_exp": 1792179
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "exp_need": 286156,
-                "money_need": 1837176,
-                "cur_exp": 2043193
-            },
-            "61": {
-                "id": 61,
-                "lv": 61,
-                "exp_need": 326218,
-                "money_need": 2158682,
-                "cur_exp": 2329349
-            },
-            "62": {
-                "id": 62,
-                "lv": 62,
-                "exp_need": 371889,
-                "money_need": 2536451,
-                "cur_exp": 2655567
-            },
-            "63": {
-                "id": 63,
-                "lv": 63,
-                "exp_need": 423953,
-                "money_need": 2980330,
-                "cur_exp": 3027456
-            },
-            "64": {
-                "id": 64,
-                "lv": 64,
-                "exp_need": 483306,
-                "money_need": 3501888,
-                "cur_exp": 3451409
-            },
-            "65": {
-                "id": 65,
-                "lv": 65,
-                "exp_need": 550969,
-                "money_need": 4114718,
-                "cur_exp": 3934715
-            },
-            "66": {
-                "id": 66,
-                "lv": 66,
-                "exp_need": 628105,
-                "money_need": 4834794,
-                "cur_exp": 4485684
-            },
-            "67": {
-                "id": 67,
-                "lv": 67,
-                "exp_need": 716040,
-                "money_need": 5680883,
-                "cur_exp": 5113789
-            },
-            "68": {
-                "id": 68,
-                "lv": 68,
-                "exp_need": 816286,
-                "money_need": 6675038,
-                "cur_exp": 5829829
-            },
-            "69": {
-                "id": 69,
-                "lv": 69,
-                "exp_need": 930566,
-                "money_need": 7843170,
-                "cur_exp": 6646115
-            },
-            "70": {
-                "id": 70,
-                "lv": 70,
-                "exp_need": 1060845,
-                "money_need": 9215725,
-                "cur_exp": 7576681
-            }
-        }
-    },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 10,
-                "star1": 500,
-                "star2": 800,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000,
-                "star6": 50000,
-                "star7": 100000
-            }
-        }
-    },
     "elixir": {
         "colComment": {},
         "rows": {
@@ -12597,6 +12602,447 @@ var outputTables = {
                 "money_need": 200000,
                 "rate_per_card": 17,
                 "max_num": 6
+            }
+        }
+    },
+    "new_year_rechage": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
+            },
+            "3": {
+                "id": 3,
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
+            },
+            "4": {
+                "id": 4,
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
+            },
+            "5": {
+                "id": 5,
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 1004,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lottery_count": 50,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 5,
+                "collect_count": 15,
+                "exp_card_count": 40
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[23,43,123,163,583,663,483,863,963]",
+                "star4": "[224,544]"
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "card_lineup_limit": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "card_1": 1,
+                "card_2": 1,
+                "card_3": 1,
+                "card_4": 12,
+                "card_5": 20
+            },
+            "1": {
+                "id": 1,
+                "card_1": 30,
+                "card_2": 35,
+                "card_3": 40,
+                "card_4": 40,
+                "card_5": 40
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "boss": 40,
+                "pass_skillafresh": 45
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            },
+            "6": {
+                "id": 6,
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 250000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 400000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 600000
+            },
+            "6": {
+                "id": 6,
+                "elixir_limit": 900000
+            },
+            "7": {
+                "id": 7,
+                "elixir_limit": 1200000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 99999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 5000,
+                "energy": 200
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "skillPoint": 1000,
+                "elixir": 2000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "skillPoint": 2000,
+                "elixir": 5000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "skillPoint": 5000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "skillPoint": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 1000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            },
+            "elixirOfRankMoneyGap": {
+                "id": "elixirOfRankMoneyGap",
+                "value": 130500,
+                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
+            },
+            "damageOfRankHonorGap": {
+                "id": "damageOfRankHonorGap",
+                "value": 3000,
+                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
             }
         }
     },
@@ -27180,1090 +27626,6 @@ var outputTables = {
             }
         }
     },
-    "new_year_rechage": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 66,
-                "money": 20000,
-                "energy": 100,
-                "fragments": 2
-            },
-            "2": {
-                "id": 2,
-                "cash": 266,
-                "money": 50000,
-                "energy": 200,
-                "fragments": 3
-            },
-            "3": {
-                "id": 3,
-                "cash": 566,
-                "money": 80000,
-                "energy": 300,
-                "fragments": 5
-            },
-            "4": {
-                "id": 4,
-                "cash": 999,
-                "money": 100000,
-                "energy": 800,
-                "fragments": 8
-            },
-            "5": {
-                "id": 5,
-                "cash": 1888,
-                "money": 200000,
-                "energy": 1000,
-                "fragments": 12
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 20000,
-                "energy": 1000,
-                "card_ids": 1004,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 50,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 5,
-                "collect_count": 15,
-                "exp_card_count": 100
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[23,43,123,163,583,663,483,863,963]",
-                "star4": "[224,544]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 20,
-                "lottery": 25,
-                "card5_position": 35,
-                "boss": 40,
-                "pass_skillafresh": 45
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            },
-            "6": {
-                "id": 6,
-                "max_lv": 65
-            },
-            "7": {
-                "id": 7,
-                "max_lv": 70
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 250000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 400000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 600000
-            },
-            "6": {
-                "id": 6,
-                "elixir_limit": 900000
-            },
-            "7": {
-                "id": 7,
-                "elixir_limit": 1200000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 99999999,
-                "energy": 99999999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 99999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 5000,
-                "energy": 200
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 30000,
-                "energy": 1000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 50000,
-                "energy": 2000,
-                "skillPoint": 1000,
-                "elixir": 2000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 100000,
-                "energy": 3000,
-                "skillPoint": 2000,
-                "elixir": 5000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 120000,
-                "energy": 5000,
-                "skillPoint": 5000,
-                "elixir": 12000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 200000,
-                "energy": 8000,
-                "skillPoint": 8000,
-                "elixir": 20000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
-            },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
-                "value": 200,
-                "desc": "提取仙丹或技能点消耗的元宝数量"
-            },
-            "greetingConsumeGold": {
-                "id": "greetingConsumeGold",
-                "value": 20,
-                "desc": "每次喊话话费的金额"
-            },
-            "elixirOfRankMoneyGap": {
-                "id": "elixirOfRankMoneyGap",
-                "value": 130500,
-                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
-            },
-            "damageOfRankHonorGap": {
-                "id": "damageOfRankHonorGap",
-                "value": 3000,
-                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
-            }
-        }
-    },
-    "scope": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
-            },
-            "2": {
-                "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
-            },
-            "3": {
-                "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
-            },
-            "4": {
-                "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
-            },
-            "5": {
-                "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
-            },
-            "6": {
-                "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
-            },
-            "7": {
-                "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 8000,
-                "star4": 20000,
-                "star5": 50000,
-                "star6": 100000,
-                "star7": 200000
-            },
-            "2": {
-                "id": 2,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 100000,
-                "star6": 200000,
-                "star7": 450000
-            },
-            "3": {
-                "id": 3,
-                "star3": 22000,
-                "star4": 80000,
-                "star5": 180000,
-                "star6": 350000,
-                "star7": 600000
-            },
-            "4": {
-                "id": 4,
-                "star3": 35000,
-                "star4": 150000,
-                "star5": 300000,
-                "star6": 650000,
-                "star7": 1200000
-            },
-            "5": {
-                "id": 5,
-                "star3": 50000,
-                "star4": 230000,
-                "star5": 500000,
-                "star6": 1000000,
-                "star7": 2100000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3_inc_min": 145,
-                "star3_inc_max": 150,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 155,
-                "star4_inc_max": 160,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 165,
-                "star5_inc_max": 170,
-                "star5_grow": 5,
-                "rate5": 40,
-                "star6_inc_min": 175,
-                "star6_inc_max": 180,
-                "star6_grow": 5,
-                "rate6": 45,
-                "star7_inc_min": 185,
-                "star7_inc_max": 190,
-                "star7_grow": 5,
-                "rate7": 50
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 90,
-                "star6_inc_max": 93,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 95,
-                "star7_inc_max": 98,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 90,
-                "star6_inc_max": 93,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 95,
-                "star7_inc_max": 98,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 4,
-                "star3_inc_min": 85,
-                "star3_inc_max": 88,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 90,
-                "star4_inc_max": 93,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 95,
-                "star5_inc_max": 98,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 100,
-                "star6_inc_max": 103,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 105,
-                "star7_inc_max": 108,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3_inc_min": 80,
-                "star3_inc_max": 83,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 85,
-                "star4_inc_max": 88,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 90,
-                "star5_inc_max": 93,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 95,
-                "star6_inc_max": 98,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 100,
-                "star7_inc_max": 103,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3_inc_min": 70,
-                "star3_inc_max": 73,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 75,
-                "star4_inc_max": 78,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 80,
-                "star5_inc_max": 83,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 85,
-                "star6_inc_max": 88,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 90,
-                "star7_inc_max": 93,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "7": {
-                "id": 7,
-                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 3,
-                "scope": 7,
-                "star3_inc_min": 30,
-                "star3_inc_max": 33,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 35,
-                "star4_inc_max": 38,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 40,
-                "star5_inc_max": 43,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 45,
-                "star6_inc_max": 48,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 50,
-                "star7_inc_max": 53,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 2,
-                "star3_inc_min": 10,
-                "star3_inc_max": 13,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 15,
-                "star4_inc_max": 18,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 20,
-                "star5_inc_max": 23,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 25,
-                "star6_inc_max": 28,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 30,
-                "star7_inc_max": 33,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 3,
-                "star3_inc_min": 10,
-                "star3_inc_max": 13,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 15,
-                "star4_inc_max": 18,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 20,
-                "star5_inc_max": 23,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 25,
-                "star6_inc_max": 28,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 30,
-                "star7_inc_max": 33,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "10": {
-                "id": 10,
-                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 6,
-                "star3_inc_min": 5,
-                "star3_inc_max": 8,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 5,
-                "star4_inc_max": 8,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 10,
-                "star5_inc_max": 13,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 15,
-                "star6_inc_max": 18,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 20,
-                "star7_inc_max": 23,
-                "star7_grow": 3,
-                "rate7": 50
-            }
-        }
-    },
-    "product": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "order": 1,
-                "method": "expCard",
-                "name": "经验元灵",
-                "disc": "经验元灵1张，含2000点卡牌经验。",
-                "consume_type": "money",
-                "consume": 8000,
-                "obtain_type": "card",
-                "obtain": 1,
-                "isVisible": 1
-            },
-            "2": {
-                "id": 2,
-                "order": 2,
-                "method": "power",
-                "name": "体力",
-                "disc": "50点体力。首次购买仅20魔石。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50,
-                "isVisible": 1,
-                "consume_inc": 10,
-                "consume_max": 60
-            },
-            "3": {
-                "id": 3,
-                "order": 4,
-                "method": "money",
-                "name": "一小袋仙币",
-                "disc": "1000仙币，额外赠送1000仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 2000,
-                "isVisible": 1
-            },
-            "4": {
-                "id": 4,
-                "order": 5,
-                "method": "money",
-                "name": "一袋仙币",
-                "disc": "5000仙币，额外赠送10000仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 15000,
-                "isVisible": 1
-            },
-            "5": {
-                "id": 5,
-                "order": 6,
-                "method": "money",
-                "name": "一大袋仙币",
-                "disc": "10000仙币，额外赠送35000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 45000,
-                "isVisible": 1
-            },
-            "6": {
-                "id": 6,
-                "order": 7,
-                "method": "challengeCount",
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "challengeCount",
-                "obtain": 1,
-                "isVisible": 0,
-                "consume_inc": 10,
-                "consume_max": 60
-            },
-            "7": {
-                "id": 7,
-                "order": 8,
-                "method": "cardCount",
-                "name": "卡库位置",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "cardCount",
-                "obtain": 1,
-                "isVisible": 0,
-                "consume_inc": 5,
-                "consume_max": 60
-            },
-            "8": {
-                "id": 8,
-                "order": 3,
-                "method": "speaker",
-                "name": "喇叭",
-                "disc": "用于世界聊天，一次性买10个以上打8折。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "speaker",
-                "obtain": 1,
-                "isVisible": 1,
-                "discount_num": 10,
-                "discount": 8
-            }
-        }
-    },
-    "spirit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "spirit_need": 900,
-                "hp_inc": 5,
-                "atk_inc": 5,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "spirit_need": 2160,
-                "hp_inc": 10,
-                "atk_inc": 10,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "spirit_need": 4620,
-                "hp_inc": 15,
-                "atk_inc": 15,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "spirit_need": 7680,
-                "hp_inc": 20,
-                "atk_inc": 20,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "spirit_need": 11340,
-                "hp_inc": 25,
-                "atk_inc": 25,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "spirit_need": 15600,
-                "hp_inc": 30,
-                "atk_inc": 30,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "spirit_need": 20460,
-                "hp_inc": 35,
-                "atk_inc": 35,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "spirit_need": 25920,
-                "hp_inc": 40,
-                "atk_inc": 40,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "spirit_need": 31980,
-                "hp_inc": 45,
-                "atk_inc": 45,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "spirit_need": 42000,
-                "hp_inc": 50,
-                "atk_inc": 50,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            }
-        }
-    },
-    "spirit_pool": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 225,
-                "spirit_obtain": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 450,
-                "spirit_obtain": 12
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 825,
-                "spirit_obtain": 14
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 1200,
-                "spirit_obtain": 16
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 1575,
-                "spirit_obtain": 18
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 1950,
-                "spirit_obtain": 20
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 2325,
-                "spirit_obtain": 22
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 2700,
-                "spirit_obtain": 24
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 3075,
-                "spirit_obtain": 26
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 3500,
-                "spirit_obtain": 28
-            }
-        }
-    },
     "elixir_ranking_reward": {
         "colComment": {},
         "rows": {
@@ -29845,6 +29207,113 @@ var outputTables = {
             }
         }
     },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "order": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "经验元灵1张，含1200点卡牌经验。",
+                "consume_type": "money",
+                "consume": 7500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 1
+            },
+            "2": {
+                "id": 2,
+                "order": 2,
+                "method": "power",
+                "name": "体力",
+                "disc": "50点体力。首次购买仅20魔石。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1,
+                "consume_inc": 10,
+                "consume_max": 60
+            },
+            "3": {
+                "id": 3,
+                "order": 4,
+                "method": "money",
+                "name": "一小袋仙币",
+                "disc": "1000仙币，额外赠送1000仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 2000,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "order": 5,
+                "method": "money",
+                "name": "一袋仙币",
+                "disc": "5000仙币，额外赠送10000仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 15000,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "order": 6,
+                "method": "money",
+                "name": "一大袋仙币",
+                "disc": "10000仙币，额外赠送35000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 45000,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "order": 7,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0,
+                "consume_inc": 10,
+                "consume_max": 60
+            },
+            "7": {
+                "id": 7,
+                "order": 8,
+                "method": "cardCount",
+                "name": "卡库位置",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "cardCount",
+                "obtain": 1,
+                "isVisible": 0,
+                "consume_inc": 5,
+                "consume_max": 60
+            },
+            "8": {
+                "id": 8,
+                "order": 3,
+                "method": "speaker",
+                "name": "喇叭",
+                "disc": "用于世界聊天，一次性买10个以上打8折。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "speaker",
+                "obtain": 1,
+                "isVisible": 1,
+                "discount_num": 10,
+                "discount": 8
+            }
+        }
+    },
     "passFailSpiritSpeak": {
         "colComment": {},
         "rows": {
@@ -30089,6 +29558,563 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
+    "scope": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
+            },
+            "2": {
+                "id": 2,
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
+            },
+            "3": {
+                "id": 3,
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
+            },
+            "4": {
+                "id": 4,
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
+            },
+            "5": {
+                "id": 5,
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
+            },
+            "6": {
+                "id": 6,
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
+            },
+            "7": {
+                "id": 7,
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 8000,
+                "star4": 20000,
+                "star5": 50000,
+                "star6": 100000,
+                "star7": 200000
+            },
+            "2": {
+                "id": 2,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 100000,
+                "star6": 200000,
+                "star7": 450000
+            },
+            "3": {
+                "id": 3,
+                "star3": 22000,
+                "star4": 80000,
+                "star5": 180000,
+                "star6": 350000,
+                "star7": 600000
+            },
+            "4": {
+                "id": 4,
+                "star3": 35000,
+                "star4": 150000,
+                "star5": 300000,
+                "star6": 650000,
+                "star7": 1200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 50000,
+                "star4": 230000,
+                "star5": 500000,
+                "star6": 1000000,
+                "star7": 2100000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3_inc_min": 145,
+                "star3_inc_max": 150,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 155,
+                "star4_inc_max": 160,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 165,
+                "star5_inc_max": 170,
+                "star5_grow": 5,
+                "rate5": 40,
+                "star6_inc_min": 175,
+                "star6_inc_max": 180,
+                "star6_grow": 5,
+                "rate6": 45,
+                "star7_inc_min": 185,
+                "star7_inc_max": 190,
+                "star7_grow": 5,
+                "rate7": 50
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 85,
+                "star5_inc_max": 88,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 90,
+                "star6_inc_max": 93,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 95,
+                "star7_inc_max": 98,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 85,
+                "star5_inc_max": 88,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 90,
+                "star6_inc_max": 93,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 95,
+                "star7_inc_max": 98,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3_inc_min": 85,
+                "star3_inc_max": 88,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 90,
+                "star4_inc_max": 93,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 95,
+                "star5_inc_max": 98,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 100,
+                "star6_inc_max": 103,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 105,
+                "star7_inc_max": 108,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3_inc_min": 80,
+                "star3_inc_max": 83,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 85,
+                "star4_inc_max": 88,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 90,
+                "star5_inc_max": 93,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 95,
+                "star6_inc_max": 98,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 100,
+                "star7_inc_max": 103,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3_inc_min": 70,
+                "star3_inc_max": 73,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 75,
+                "star4_inc_max": 78,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 80,
+                "star5_inc_max": 83,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 85,
+                "star6_inc_max": 88,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 90,
+                "star7_inc_max": 93,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "7": {
+                "id": 7,
+                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 3,
+                "scope": 7,
+                "star3_inc_min": 30,
+                "star3_inc_max": 33,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 38,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 40,
+                "star5_inc_max": 43,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 45,
+                "star6_inc_max": 48,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 50,
+                "star7_inc_max": 53,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 2,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 20,
+                "star5_inc_max": 23,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 25,
+                "star6_inc_max": 28,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 30,
+                "star7_inc_max": 33,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 3,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 20,
+                "star5_inc_max": 23,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 25,
+                "star6_inc_max": 28,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 30,
+                "star7_inc_max": 33,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "10": {
+                "id": 10,
+                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 6,
+                "star3_inc_min": 5,
+                "star3_inc_max": 8,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 5,
+                "star4_inc_max": 8,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 10,
+                "star5_inc_max": 13,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 15,
+                "star6_inc_max": 18,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 20,
+                "star7_inc_max": 23,
+                "star7_grow": 3,
+                "rate7": 50
+            }
+        }
+    },
+    "spirit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "spirit_need": 900,
+                "hp_inc": 5,
+                "atk_inc": 5,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "spirit_need": 2160,
+                "hp_inc": 10,
+                "atk_inc": 10,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "spirit_need": 4620,
+                "hp_inc": 15,
+                "atk_inc": 15,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "spirit_need": 7680,
+                "hp_inc": 20,
+                "atk_inc": 20,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "spirit_need": 11340,
+                "hp_inc": 25,
+                "atk_inc": 25,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "spirit_need": 15600,
+                "hp_inc": 30,
+                "atk_inc": 30,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "spirit_need": 20460,
+                "hp_inc": 35,
+                "atk_inc": 35,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "spirit_need": 25920,
+                "hp_inc": 40,
+                "atk_inc": 40,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "spirit_need": 31980,
+                "hp_inc": 45,
+                "atk_inc": 45,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "spirit_need": 42000,
+                "hp_inc": 50,
+                "atk_inc": 50,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            }
+        }
+    },
+    "spirit_pool": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 225,
+                "spirit_obtain": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 450,
+                "spirit_obtain": 12
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 825,
+                "spirit_obtain": 14
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 1200,
+                "spirit_obtain": 16
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 1575,
+                "spirit_obtain": 18
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 1950,
+                "spirit_obtain": 20
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 2325,
+                "spirit_obtain": 22
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 2700,
+                "spirit_obtain": 24
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 3075,
+                "spirit_obtain": 26
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 3500,
+                "spirit_obtain": 28
             }
         }
     },
@@ -30339,6 +30365,46 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "name": "尊者之身"
+            }
+        }
+    },
+    "mystical_pass_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "skill_point": 10000,
+                "money": 80000,
+                "energy": 1000,
+                "gold": 100
+            },
+            "2": {
+                "id": 2,
+                "skill_point": 20000,
+                "money": 90000,
+                "energy": 1500,
+                "gold": 150
+            },
+            "3": {
+                "id": 3,
+                "skill_point": 30000,
+                "money": 100000,
+                "energy": 2000,
+                "gold": 200
+            },
+            "4": {
+                "id": 4,
+                "skill_point": 40000,
+                "money": 110000,
+                "energy": 2500,
+                "gold": 250
+            },
+            "5": {
+                "id": 5,
+                "skill_point": 50000,
+                "money": 120000,
+                "energy": 3000,
+                "gold": 300
             }
         }
     },

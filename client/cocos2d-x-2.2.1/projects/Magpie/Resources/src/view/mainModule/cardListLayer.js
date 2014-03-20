@@ -418,7 +418,7 @@ var CardListLayer = cc.Layer.extend({
         };
 
         var lineUp = gameData.lineUp;
-        var maxLineUp = lineUp.getMaxLineUp();
+        var maxLineUp = lineUp.get("maxLineUp");
 
         for (var i = 0; i < maxLineUp; ++i) {
             var lineUpList = gameData.lineUp.getLineUpList(i);

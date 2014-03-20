@@ -109,7 +109,6 @@ class Matrix
     @
 
   set: (row, col, el) ->
-    console.log '-before set-', row, col, el, !!el
     if not el
       el = col      
       if _.isString(row) and row.length == 2
@@ -117,7 +116,7 @@ class Matrix
       else
         [row, col] = @numberToPosition(parseInt row) 
 
-    el.pos = "#{row}#{col}" if _.isObject(el)
+    el.setPos "#{row}#{col}" if _.isObject(el)
     @elements[row][col] = el
     @
 

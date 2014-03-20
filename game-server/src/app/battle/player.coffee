@@ -1,5 +1,6 @@
 Module = require '../common/module'
 Hero = require './hero'
+battleLog = require './battle_log'
 Spiritor = require './spiritor'
 Matrix = require './matrix'
 tab = require '../manager/table'
@@ -31,18 +32,22 @@ defaultEntity =
   spiritor: {lv: 1}
   cards: []
 
+DEFAULT_OPTIONS = 
+  inc_scale: 0
+  is_attacker: false
+
 class Player extends Module
-  init: (entity, inc_scale=0) ->
+  init: (entity, options = {}) ->
     entity ||= defaultEntity
     copyAttrs @, entity
+    _.extend @, _.defaults(options, DEFAULT_OPTIONS)
     
     @heros = []
     @enemy = null
-    @is_attacker = false
     @matrix = new Matrix()
     @dead = false
     @is_monster = false
-    @inc_scale = inc_scale
+    @cards_for_bl = {}
     
     @loadHeros()
     @bindCards()
@@ -74,11 +79,8 @@ class Player extends Module
         else 
           callback(enemyHeros)
 
-  setEnemy: (enm, is_attacker = false) ->
+  setEnemy: (enm) ->
     @enemy = enm
-    @is_attacker = is_attacker
-    @heros.forEach (h) =>
-      h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
     @heros = if not _.isEmpty(@cards) then (new Hero(card, @) for card in @cards) else []
@@ -87,7 +89,8 @@ class Player extends Module
     if @lineUp and not _.isEmpty(@lineUp)
       @matrix.clear()
 
-      lu = @lineUp.pop()
+      lu = @lineUp.shift()
+      console.log '-4-', lu
       _.each lu, (id, pos) =>
         if parseInt(id) is -1
           @spiritorIdx = parseInt(pos)
@@ -95,13 +98,16 @@ class Player extends Module
 
         _h = _.findWhere @heros, id: parseInt(id)
         if _h 
-          @matrix.set(pos, _h)
+
+          @matrix.set(pos-1, _h)
         else
           logger.warn 'you have not such card with id is ' + id
+
+      @matrix.reset()
+      @correctIdx(@is_attacker)
+      @setCards()
     else
       logger.warn 'there is not line up for player ' + @name
-    
-    @matrix.reset()
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -120,7 +126,7 @@ class Player extends Module
     @bindCards()
     @
 
-  getCards: ->
+  setCards: ->
     cobj = {}
     cobj[c.idx] = {
       tableId: c.card_id
@@ -128,9 +134,15 @@ class Player extends Module
       atk: c.init_atk
       spiritHp: c.spirit_hp
       spiritAtk: c.spirit_atk
-    } for c in @heros
+    } for c in @matrix.all()
+    
     cobj[if @is_attacker then @spiritorIdx else @spiritorIdx + 6] = @spiritor.lv
-    cobj
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
   death: ->
     @matrix.alive().length is 0
@@ -171,5 +183,9 @@ class Player extends Module
 
   setAttackCount: ->
     @attack_count = @aliveHeros().length
+
+  correctIdx: ->
+    for h in @matrix.all()
+      h.setIdx h.idx, @is_attacker
 
 exports = module.exports = Player

@@ -230,10 +230,11 @@ class Hero extends Module
   death: ->
     @hp <= 0
 
-  setIdx: (idx, atker)->
+  setIdx: (idx, atker) ->
     @idx = if atker then idx + 1 else idx + 7
 
   setPos: (pos) ->
     @pos = pos
+    @idx = @player.matrix.positionToNumber(pos)
 
 exports = module.exports = Hero

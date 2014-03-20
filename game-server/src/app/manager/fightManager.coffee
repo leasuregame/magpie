@@ -30,8 +30,8 @@ class Manager
         battleLog.clear()
         
         playerEntity = _playerEntity
-        attacker = new Player(playerEntity, is_attacker: true)
         defender = new VirtualPlayer(taskData)
+        attacker = new Player(playerEntity, is_attacker: true)
 
         battle = new Battle(attacker, defender)
         battle.process()
@@ -48,9 +48,9 @@ class Manager
   @pvp: (attEnt, defEnt, callback) ->
     battleLog.clear()
 
-    attacker = new Player(attEnt, is_attacker: true)
     defender = new Player(defEnt)
-
+    attacker = new Player(attEnt, is_attacker: true)
+    
     battle = new Battle(attacker, defender)
     battle.process()
 
@@ -61,11 +61,12 @@ class Manager
   @attackBoss: (player, boss, incRate, callback) ->
     battleLog.clear()
 
+    defender = new BossPlayer(boss)
     attacker = new Player(player, {
       inc_scale: incRate,
       is_attacker: true
     })
-    defender = new BossPlayer(boss)
+    
     battle = new Battle(attacker, defender)
     battle.process()
 

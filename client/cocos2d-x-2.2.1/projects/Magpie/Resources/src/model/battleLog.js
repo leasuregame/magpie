@@ -130,7 +130,7 @@ var BattleLog = Entity.extend({
 
         var i;
 
-        if (param === "o" || id < 7) {
+        if (param === "o" || param < 7) {
             for (i = 1; i < 7; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
@@ -138,7 +138,7 @@ var BattleLog = Entity.extend({
             }
         }
 
-        if (param === "e" || id > 6) {
+        if (param === "e" || param > 6) {
             for (i = 7; i <= 12; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;

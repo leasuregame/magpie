@@ -105,8 +105,7 @@ var BattleLayer = cc.Layer.extend({
                 if (typeof(battleNode[key]) == "number") {
                     this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
                     var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
-                    spiritFrame.setPosition(locate);
-                    this.addChild(spiritFrame);
+                    this._battleNode[key].addChild(spiritFrame, -1);
                 } else {
                     this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
@@ -319,7 +318,7 @@ var BattleLayer = cc.Layer.extend({
 
                     this._battleNode[i] = BattleSpiritNode.create(card[i], i);
                     var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
-                    this._battleNode[i].addChild(spiritFrame);
+                    this._battleNode[i].addChild(spiritFrame, -1);
                 } else {
                     this._battleNode[i] = BattleCardNode.create(card[i], i);
                 }
@@ -330,21 +329,9 @@ var BattleLayer = cc.Layer.extend({
             }
         }
 
+        var that = this;
         this.ceremony(faction, function () {
-            if (index) {
-                var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, this);
-                battleEffect1Node.setPosition(this._locate[index]);
-                this.addChild(battleEffect1Node, EFFECT_Z_ORDER);
-
-                battleEffect1Node.animationManager.setCompletedAnimationCallback(this, function () {
-                    battleEffect1Node.removeFromParent();
-                    this.nextStep();
-                });
-
-                this._battleNode[index].runAnimations("buf");
-            } else {
-                this.nextStep();
-            }
+            that.showSpiritAddition(index);
         })
     },
 
@@ -359,7 +346,7 @@ var BattleLayer = cc.Layer.extend({
                 count += 1;
 
                 this._battleNode[i].setVisible(true);
-                this._battleNode[key].runAnimations("beg", 0, function () {
+                this._battleNode[i].runAnimations("beg", 0, function () {
                     count -= 1;
 
                     if (count == 0) {
@@ -439,7 +426,7 @@ var BattleLayer = cc.Layer.extend({
         }
     },
 
-    showSpiritAddition: function () {
+    showSpiritAddition: function (index) {
         cc.log("BattleLayer showSpiritAddition");
 
         if (this._isEnd) {
@@ -447,31 +434,36 @@ var BattleLayer = cc.Layer.extend({
         }
 
         var that = this;
-        while (this._index <= 12) {
-            this._index += 1;
+        if (!index) {
+            while (this._index <= 12) {
+                if (this._battleNode[this._index] && (this._battleNode[this._index] instanceof BattleSpiritNode)) {
+                    index = this._index;
+                    this._index += 1;
+                    break;
+                }
 
-            var index = this._index - 1;
-            if (this._battleNode[index] && (this._battleNode[index] instanceof BattleSpiritNode)) {
-                (function () {
-                    var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, that);
-                    battleEffect1Node.setPosition(that._locate[index]);
-                    that.addChild(battleEffect1Node, EFFECT_Z_ORDER);
-
-                    var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
-                    battleEffect1Node.animationManager.setCompletedAnimationCallback(that, function () {
-                        battleEffect1Node.removeFromParent();
-                        showSpiritAdditionCallback();
-                    });
-
-                    that._battleNode[index].runAnimations(
-                        "buf",
-                        0,
-                        that.showSpiritAdditionCallback()
-                    );
-                })();
-
-                return;
+                this._index += 1;
             }
+        }
+
+        if (index) {
+            var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, that);
+            battleEffect1Node.setPosition(that._locate[index]);
+            that.addChild(battleEffect1Node, EFFECT_Z_ORDER);
+
+            var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
+            battleEffect1Node.animationManager.setCompletedAnimationCallback(that, function () {
+                battleEffect1Node.removeFromParent();
+                showSpiritAdditionCallback();
+            });
+
+            that._battleNode[index].runAnimations(
+                "buf",
+                0,
+                that.showSpiritAdditionCallback()
+            );
+
+            return;
         }
 
         this.nextStep();
@@ -591,7 +583,7 @@ var BattleLayer = cc.Layer.extend({
 
         if (this._battleNode[spiritId]) {
             var that = this;
-            this._battleNode[spiritId].runAnimations("det", 0, function () {
+            this._battleNode[spiritId].runAnimations("die", 0, function () {
                 that.join(refreshStep);
             });
         } else {

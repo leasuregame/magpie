@@ -26,17 +26,6 @@ var DAMAGE_UPPER_LIMIT = 1.20;
 
 var BOSS_CARD_SCALE = 1.5;
 
-var LINE_UP_CARD_LIMIT = {
-    o: {
-        start: 1,
-        end: 6
-    },
-    e: {
-        start: 7,
-        end: 12
-    }
-};
-
 var BattleLayer = cc.Layer.extend({
     _battleLayerFit: null,
 
@@ -576,19 +565,22 @@ var BattleLayer = cc.Layer.extend({
         }
     },
 
-    refreshStep: function (refreshStep) {
+    refreshStep: function (faction) {
         cc.log("BattleLayer refreshStep");
 
-        var spiritId = this._battleLog.getSpirit(refreshStep);
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var that = this;
 
-        if (this._battleNode[spiritId]) {
-            var that = this;
-            this._battleNode[spiritId].runAnimations("die", 0, function () {
-                that.join(refreshStep);
-            });
-        } else {
-            this.join(refreshStep);
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i] && (this._battleNode[i] instanceof BattleSpiritNode)) {
+                this._battleNode[i].runAnimations("die", 0, function () {
+                    that.join(faction);
+                });
+                return;
+            }
         }
+
+        this.join(faction);
     },
 
     battleStep: function (battleStep) {

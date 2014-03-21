@@ -679,6 +679,7 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 559),
             "titleLabelPoint": cc.p(190, 830),
+            "lineUpItemPoint": cc.p(160, 834),
             "nameLabelPoint": cc.p(220, 764),
             "lvLabelPoint": cc.p(360, 764),
             "abilityLabelPoint": cc.p(500, 764),

@@ -25,11 +25,13 @@ var LineUpLayer = LazyLayer.extend({
     _locate: null,
     _touchRect: null,
     _selectIndex: 0,
+    _index: 0,
 
     onEnter: function () {
         cc.log("LineUpLayer onEnter");
 
         this._super();
+        this.update();
 
         lz.um.beginLogPageView("调整阵型界面");
     },
@@ -51,6 +53,8 @@ var LineUpLayer = LazyLayer.extend({
 
         this._locate = this._lineUpLayerFit.locatePoints;
         this._touchRect = this._lineUpLayerFit.touchRect;
+        this._index = 0;
+        this._lineUpItem = [];
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 1136);
         bgLayer.setPosition(this._lineUpLayerFit.bgLayerPoint);
@@ -60,10 +64,27 @@ var LineUpLayer = LazyLayer.extend({
         bgSprite.setPosition(this._lineUpLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var titleLabel = cc.LabelTTF.create("查 看 阵 型", "STHeitiTC-Medium", 30);
-        titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(this._lineUpLayerFit.titleLabelPoint);
-        this.addChild(titleLabel);
+        var len = gameData.lineUp.get("maxLineUp");
+        var lineUpIcons = ["icon420", "icon421"];
+
+        var menu = cc.Menu.create();
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        var i;
+
+        for (i = 0; i < len; i++) {
+            this._lineUpItem[i] = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button76,
+                main_scene_image.button76s,
+                main_scene_image.button76d,
+                main_scene_image[lineUpIcons[i]],
+                this._onClickLineUp(i),
+                this
+            );
+
+            menu.addChild(this._lineUpItem[i]);
+        }
 
         var player = gameData.player;
 
@@ -79,9 +100,8 @@ var LineUpLayer = LazyLayer.extend({
         abilityLabel.setPosition(this._lineUpLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
-        var lineUp = gameData.lineUp;
-        var cardList = gameData.cardList;
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+
+        for (i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             var point = this._locate[i];
 
             var nodeBgSprite = cc.Sprite.create(main_scene_image.icon33);
@@ -93,23 +113,6 @@ var LineUpLayer = LazyLayer.extend({
             effect.setPosition(point);
             this.addChild(effect);
 
-            var id = lineUp.getLineUpCard(0, i);
-
-            if (id != undefined) {
-                var node = null;
-
-                if (id == -1) {
-                    node = SpiritNode.create();
-                } else {
-                    node = CardHalfNode.create(cardList.getCardByIndex(id));
-                }
-
-                node.setPosition(point);
-                this.addChild(node, 1);
-                this._node[i] = node;
-            } else {
-                this._node[i] = null;
-            }
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -128,6 +131,72 @@ var LineUpLayer = LazyLayer.extend({
         return true;
     },
 
+    update: function () {
+
+        var lineUp = gameData.lineUp;
+        var len = lineUp.get("maxLineUp");
+        var cardList = gameData.cardList;
+
+        var i;
+        var point = this._lineUpLayerFit.lineUpItemPoint;
+
+        for (i = 0; i < len; ++i) {
+            var x = point.x + i * 133;
+
+            if (this._index == i) {
+                this._lineUpItem[i].setPosition(cc.p(x, point.y - 13));
+                this._lineUpItem[i].setOffset(cc.p(0, 13));
+                this._lineUpItem[i].setEnabled(false);
+            } else {
+                var offsetPoint = this._lineUpItem[i].getOffset();
+                this._lineUpItem[i].setPosition(cc.p(x, point.y));
+                if (offsetPoint.y >= 13) {
+                    this._lineUpItem[i].setOffset(cc.p(0, -13));
+                }
+                this._lineUpItem[i].setEnabled(true);
+            }
+        }
+
+        for (i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            point = this._locate[i];
+            var id = lineUp.getLineUpCard(this._index, i);
+
+            if (this._node[i]) {
+                this._node[i].removeFromParent();
+                this._node[i] = null;
+            }
+
+            if (id != undefined) {
+                var node = null;
+
+                if (id == -1) {
+                    node = SpiritNode.create();
+                } else {
+                    node = CardHalfNode.create(cardList.getCardByIndex(id));
+                }
+
+                node.setPosition(point);
+                this.addChild(node, 1);
+                this._node[i] = node;
+            } else {
+                this._node[i] = null;
+            }
+        }
+    },
+
+    _onClickLineUp: function (index) {
+        var that = this;
+
+        return function () {
+            cc.log("LineUpLayer _onClickLineUp: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            that._index = index;
+            that.update();
+        }
+    },
+
     _onClickOk: function () {
         cc.log("LineUpLayer _onClickOk");
 
@@ -138,7 +207,7 @@ var LineUpLayer = LazyLayer.extend({
         var that = this;
         gameData.lineUp.changeLineUp(function (data) {
             that.removeFromParent();
-        }, this._getLineUpData());
+        }, this._getLineUpData(), this._index);
     },
 
     _onClickCard: function () {

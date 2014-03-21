@@ -319,6 +319,9 @@ var main_scene_image = {
     button74s: main_scene_path + "button74s.png",
     button75: main_scene_path + "button75.png",
     button75s: main_scene_path + "button75s.png",
+    button76: main_scene_path + "button76.png",
+    button76d: main_scene_path + "button76d.png",
+    button76s: main_scene_path + "button76s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -737,6 +740,8 @@ var main_scene_image = {
     icon417: main_scene_path + "icon417.png",
     icon418: main_scene_path + "icon418.png",
     icon419: main_scene_path + "icon419.png",
+    icon420: main_scene_path + "icon420.png",
+    icon421: main_scene_path + "icon421.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",

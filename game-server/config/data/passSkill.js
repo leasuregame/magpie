@@ -16,7 +16,7 @@ module.exports = {
     "hit": 12.5,          // 命中
 
     "dmg_reduce": 12.5,   // 减伤
-    "Disrupting": 12.5    // 破防
+    "disrupting": 12.5    // 破防
 
   },
   AFRESH: { // 洗炼被动技能得到的百分比的概率

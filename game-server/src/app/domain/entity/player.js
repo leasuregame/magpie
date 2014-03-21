@@ -596,10 +596,6 @@ var Player = (function(_super) {
                 ability += _a + _hp + _atk;
             }
         });
-        // 元神加成的战斗力
-        // if (this.spiritor.lv > 0) {
-        //     ability += this.spiritor.lv * SPIRITOR_PER_LV;
-        // }
 
         this.set('ability', ability);
         return ability;

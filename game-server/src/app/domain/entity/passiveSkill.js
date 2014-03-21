@@ -1,4 +1,4 @@
-var psConfig = require('../../../config/passSkill');
+var psConfig = require('../../../config/data/passSkill');
 var utility = require('../../common/utility');
 var _ = require('underscore');
 
@@ -12,8 +12,19 @@ var PassiveSkillGroup = function(attrs) {
 PassiveSkillGroup.prototype.toJson = function() {
   return {
     id: this.id,
-    items: this.items
+    items: this.items,
+    active: this.active
   };
+};
+
+PassiveSkillGroup.prototype.getItems = function(ids) {
+  if (!_.isArray(ids)) {
+    ids = [ids];
+  }
+
+  return this.items.filter(function(i) {
+    return ids.indexOf(i.id) > -1;
+  });
 };
 
 PassiveSkillGroup.prototype.create = function(star) {
@@ -22,10 +33,11 @@ PassiveSkillGroup.prototype.create = function(star) {
     return;
   }
 
-  var len = star - 2;
+  var len = star - 2 - this.items.length;
   for (var i = 0; i < len; i++) {
     this.born();
   }
+  return this;
 };
 
 PassiveSkillGroup.prototype.born = function() {
@@ -47,7 +59,7 @@ PassiveSkillGroup.prototype.born = function() {
   });
 };
 
-PassiveSkillGroup.prototype.afrash = function(type, star ps) {
+PassiveSkillGroup.prototype.afrash = function(type, star, ps) {
   var born_rates = psConfig.BORN_RATES;
   var star = star >= 5 ? this.star : 5;
   var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
@@ -73,3 +85,5 @@ PassiveSkillGroup.prototype.update = function(ps) {
     }
   }
 };
+
+module.exports = PassiveSkillGroup;

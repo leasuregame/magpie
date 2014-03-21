@@ -551,9 +551,16 @@ lz.load = function (key) {
     var str = sys.localStorage.getItem(key);
 
     if (str) {
-        var item = JSON.parse(str);
+        try {
+            var item = JSON.parse(str);
 
-        return item.data;
+            return item.data;
+        } catch (e) {
+            cc.log(str);
+            cc.log(e);
+
+            sys.localStorage.removeItem(key);
+        }
     }
 
     return undefined;

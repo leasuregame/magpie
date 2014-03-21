@@ -1,16 +1,23 @@
 module.exports = {
-  INIT_MAX: 4, // 出生卡牌被动技能最大值
+  INIT_MAX: 4.9, // 出生卡牌被动技能最大值
   MAX: 10, // 所有被动技能的最大值
   TYPE: {
     MONEY: 1,
     GOLD: 2
   },
   BORN_RATES: { // 卡牌出生时，随机到每个被动技能的概率
-    "atk_improve": 20,
-    "hp_improve": 20,
-    "crit": 20,
-    "dodge": 20,
-    "dmg_reduce": 20
+    "atk_improve": 12.5,  // 攻击
+    "hp_improve": 12.5,   // 生命
+    
+    "crit": 12.5,         // 暴击
+    "toughness": 12.5,    // 韧性
+    
+    "dodge": 12.5,        // 闪避
+    "hit": 12.5,          // 命中
+
+    "dmg_reduce": 12.5,   // 减伤
+    "Disrupting": 12.5    // 破防
+
   },
   AFRESH: { // 洗炼被动技能得到的百分比的概率
     TYPE: {

@@ -16,7 +16,7 @@ module.exports =
       data.star = data.tableId%5 or 5
 
     if data.star >= 3
-      data.passiveSkills = initPassiveSkill(data.star)
+      data.passiveSkills = initPassiveSkillGroup(data.star)
       genFactorForCard(data)
 
     dao.card.create data: data, (err, card) ->
@@ -187,3 +187,13 @@ initPassiveSkill = (star) ->
       value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
     )
   results
+
+initPassiveSkillGroup = (star) ->
+  list = []
+  for i in [1..3]
+    list.push {
+      id: i,
+      items: initPassiveSkill(star)
+      active: if i is 1 then true else false
+    }
+  list

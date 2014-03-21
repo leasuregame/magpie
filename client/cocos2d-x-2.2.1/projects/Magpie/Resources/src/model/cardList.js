@@ -125,13 +125,8 @@ var CardList = Entity.extend({
             var aaLineUpIndex = lineUp.getCardOfLineUp(aa.get("id"));
             var bbLineUpIndex = lineUp.getCardOfLineUp(bb.get("id"));
 
-            if (aaLineUpIndex == undefined) {
-                aaLineUpIndex = 100000000;
-            }
-
-            if (bbLineUpIndex == undefined) {
-                aaLineUpIndex = 100000000;
-            }
+            aaLineUpIndex = aaLineUpIndex != undefined ? aaLineUpIndex : 100000000;
+            bbLineUpIndex = bbLineUpIndex != undefined ? bbLineUpIndex : 100000000;
 
             if (aaLineUpIndex != bbLineUpIndex) {
                 return (aaLineUpIndex < bbLineUpIndex ? 1 : -1);

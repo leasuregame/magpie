@@ -11,14 +11,14 @@
  * line up label
  * */
 
-var MAX_LINEUP_LIST = 3;
+var MAX_LINEUP_LIST = 2;
 
-var lineUpIcon = ["icon416", "icon417", "icon417"];
+var lineUpIcon = ["icon416", "icon417"];
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
-    _lineUpNode: null,
+    _lineUpName: null,
     _index: 0,
 
     _card3Guide: null,
@@ -41,66 +41,59 @@ var LineUpLabel = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._cardList = gameData.cardList;
-        this._lineUp = gameData.lineUp;
-        this._index = MAX_LINEUP_LIST - 1;
-        this._lineUpNode = [];
+        this._index = 0;
+        this._lineUpName = [];
 
-        var lineUpCardList = this._lineUp.getLineUpCardList();
+        this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
+        this._turnLeftIcon.setScaleX(-1);
+        this._turnLeftIcon.setPosition(cc.p(20, 0));
+        this.addChild(this._turnLeftIcon);
 
-        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
+        this._turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
+        this._turnRightIcon.setPosition(cc.p(620, 0));
+        this.addChild(this._turnRightIcon);
 
-            this._lineUpNode[i] = cc.Node.create();
-            this._lineUpNode[i].setPosition(cc.p(0, 0));
-            this.addChild(this._lineUpNode[i]);
+        var lineUp = gameData.lineUp;
+        var len = lineUp.get("maxLineUp");
 
-            var lineUpName = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
-            lineUpName.setAnchorPoint(cc.p(0.5, 0));
-            lineUpName.setPosition(cc.p(320, 63));
-            this._lineUpNode[i].addChild(lineUpName);
-
-            if (i != 0) {
-                var turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
-                turnLeftIcon.setScaleX(-1);
-                turnLeftIcon.setPosition(cc.p(20, 0));
-                this._lineUpNode[i].addChild(turnLeftIcon);
-            }
-
-            if (i != MAX_LINEUP_LIST - 1) {
-                var turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
-                turnRightIcon.setPosition(cc.p(620, 0));
-                this._lineUpNode[i].addChild(turnRightIcon);
-            }
+        for (var i = 0; i < len; i++) {
+            this._lineUpName[i] = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
+            this._lineUpName[i].setAnchorPoint(cc.p(0.5, 0));
+            this._lineUpName[i].setPosition(cc.p(320, 63));
+            this.addChild(this._lineUpName[i]);
         }
 
         var scrollViewLayer = MarkLayer.create(cc.rect(35, -54, 570, 158));
-
-        //var scrollViewLayer = cc.Layer.create();
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        for (var i = 0; i < MAX_LINEUP_LIST * 5; ++i) {
-            var cardHeadItem = null;
-            var effect = null;
+        for (var i = 0; i < len; ++i) {
+            var cardList = lineUp.getLineUpCardList(i);
+            var count = lineUp.getPerLineUpCount(i);
 
-            var x = 54 + i * 117;
-            if (i < 5) {
-                cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+            for (var j = 0; j < MAX_LINE_UP_CARD; j++) {
+                var cardHeadItem = null;
+                var effect = null;
+                var x = 54 + (i * 5 + j) * 117;
+                if (j < count) {
+                    cardHeadItem = CardHeadNode.getCardHeadItem(cardList[j], this._onClickCard, this);
 
-                if (lineUpCardList[i]) {
-                    effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
-                    effect.setAnchorPoint(cc.p(0.5, 0));
-                    effect.setPosition(cc.p(x, 0));
-                    scrollViewLayer.addChild(effect, 2);
+                    if (cardList[j]) {
+                        effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                        effect.setAnchorPoint(cc.p(0.5, 0));
+                        effect.setPosition(cc.p(x, 0));
+                        scrollViewLayer.addChild(effect, 2);
+                    }
+
+                } else {
+                    cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
                 }
-
-            } else {
-                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
+                cardHeadItem.setAnchorPoint(cc.p(0.5, 0));
+                cardHeadItem.setPosition(cc.p(x, 0));
+                menu.addChild(cardHeadItem);
             }
-            cardHeadItem.setAnchorPoint(cc.p(0.5, 0));
-            cardHeadItem.setPosition(cc.p(x, 0));
-            menu.addChild(cardHeadItem);
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(570, 158), scrollViewLayer);
@@ -109,6 +102,7 @@ var LineUpLabel = cc.Layer.extend({
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
         this.addChild(this._scrollView);
 
         return true;
@@ -117,16 +111,22 @@ var LineUpLabel = cc.Layer.extend({
     update: function () {
         cc.log("LineUpLabel update");
 
-        for (var i = 0; i < MAX_LINEUP_LIST; i++) {
-            this._lineUpNode[i].setVisible(false);
+        var len = gameData.lineUp.get("maxLineUp");
+        for (var i = 0; i < len; i++) {
+            this._lineUpName[i].setVisible(false);
         }
 
-        this._lineUpNode[MAX_LINEUP_LIST - this._index - 1].setVisible(true);
+        cc.log(this._index);
+        this._lineUpName[this._index].setVisible(true);
+        this._turnLeftIcon.setVisible(this._index != 0);
+        this._turnRightIcon.setVisible(this._index != len - 1);
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
+    },
 
-        var offset = this._scrollView.minContainerOffset();
-        offset.x += this._index * 585 + 15;
+    _getScrollViewOffset: function () {
+        cc.log("LineUpLabel _getScrollViewOffset");
 
-        this._scrollView.setContentOffset(offset, true);
+        return cc.p(this._index * -585, 0);
     },
 
     updateGuide: function () {
@@ -206,20 +206,20 @@ var LineUpLabel = cc.Layer.extend({
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();
 
-        var beganOffset = this._scrollView.minContainerOffset();
+        var beganOffset = this._getScrollViewOffset();
         var endOffset = this._scrollView.getContentOffset();
-        beganOffset.x += this._index * 570;
-
         var len = beganOffset.x - endOffset.x;
+
         if (len !== 0) {
             if (len > 80) {
-                this._index = MAX_LINEUP_LIST + Math.floor(endOffset.x / 570) - 1;
+                this._index = 0 - Math.floor(endOffset.x / 640);
             } else if (len < -80) {
-                this._index = MAX_LINEUP_LIST + Math.ceil(endOffset.x / 570) - 1;
+                this._index = 0 - Math.ceil(endOffset.x / 640);
             }
 
             this.update();
         }
+
     },
 
     /**

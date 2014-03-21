@@ -71,10 +71,9 @@ var CardListLayer = cc.Layer.extend({
         this._cardListLayerFit = gameFit.mainScene.cardListLayer;
 
         this._cardLabel = {};
-        this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
-        this._otherData = otherData;
+        this._otherData = otherData || {};
         this._maxSelectCount = gameData.cardList.get("count");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -97,7 +96,7 @@ var CardListLayer = cc.Layer.extend({
         for (var key in cardList) {
             var card = cardList[key];
 
-            var cardLabel = CardLabel.create(this, card, selectType);
+            var cardLabel = CardLabel.create(this, card, selectType, this._otherData);
             cardLabel.setAnchorPoint(cc.p(0, 0));
             cardLabel.setPosition(cc.p(0, 0));
             cardLabel.setVisible(false);
@@ -393,7 +392,9 @@ var CardListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
-        this._maxSelectCount = 5;
+        var lineUp = gameData.lineUp;
+        var index = this._otherData.index;
+        this._maxSelectCount = lineUp.getPerLineUpCount(index);
 
         this._selectCallback = function () {
             cc.log("CardListLayer _initLineUp _selectCallback");
@@ -417,7 +418,6 @@ var CardListLayer = cc.Layer.extend({
             }
         };
 
-        var lineUp = gameData.lineUp;
         var maxLineUp = lineUp.get("maxLineUp");
 
         for (var i = 0; i < maxLineUp; ++i) {
@@ -425,11 +425,11 @@ var CardListLayer = cc.Layer.extend({
             var len = lineUpList.length;
 
             for (var j = 0; j < len; ++j) {
-                if (this._cardLabel[lineUp[i]] !== undefined) {
-                    if (this._otherData.index == i) {
-                        this._cardLabel[lineUp[i]].select();
+                if (this._cardLabel[lineUpList[j]] !== undefined) {
+                    if (index == i) {
+                        this._cardLabel[lineUpList[j]].select();
                     } else {
-                        this._excludeList.push(lineUp[i]);
+                        this._excludeList.push(lineUpList[j]);
                     }
                 }
             }

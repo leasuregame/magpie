@@ -181,7 +181,7 @@ var DamageRankLayer = LazyLayer.extend({
             this._frameLayer.addChild(label[i]);
         }
 
-        this._skyDialog = SkyDialog.create();
+        this._skyDialog = SkyDialog.create()
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
@@ -216,6 +216,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         var skyMenu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         skyMenu.setPosition(cc.p(0, 0));
+        skyMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         skyLabel.addChild(skyMenu);
 
         this._skyDialog.setLabel(skyLabel);

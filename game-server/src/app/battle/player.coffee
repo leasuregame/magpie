@@ -87,10 +87,11 @@ class Player extends Module
 
   bindCards: ->
     if @lineUp and not _.isEmpty(@lineUp)
-      @matrix.clear()
-
       lu = @lineUp.shift()
-      console.log '-4-', lu
+      if _.keys(lu).length is 1
+        return
+
+      @matrix.clear()
       _.each lu, (id, pos) =>
         if parseInt(id) is -1
           @spiritorIdx = parseInt(pos)

@@ -515,12 +515,40 @@ Handler::starUpgrade = (msg, session, next) ->
     player.popCards(sources)
     next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
 
+Handler::passSkillActive = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardId = msg.cardId
+  groupId = msg.groupId
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+    (player, cb) ->
+      card = player.getCard(cardId)
+      if not card
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      card.activeGroup(groupId)
+      cb(null, card)
+  ], (err, card) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
+
+    next(null, {code: 200, msg: {
+      ability: card.ability()
+      passiveSkills: card.passiveSkills
+    }})
+
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardId = msg.cardId
   psIds = msg.psIds or []
+  groupId = msg.groupId
   type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
+
+  if _.isUndefined(groupId) or psIds.length is 0
+    return next(null, {code: 501, msg: '参数错误'})
 
   consumeVal = 0
   async.waterfall [
@@ -538,12 +566,15 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
 
       card = player.getCard(cardId)
-      passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)
+      if not card
+        return cb({code: 501, msg: '找不到要洗练的卡牌'})
 
-      if _.isEmpty(passSkills)
+      psGroup = card.getPsGroup(groupId)
+      passSkills = psGroup.getItems(psIds)
+      if not psGroup or not passSkills
         return cb({code: 501, msg: '找不到被动属性'})
 
-      card.afreshPassiveSkill(type, ps) for ps in passSkills
+      card.afrash(type, groupId, psIds) 
       player.decrease(_pros[type], consumeVal)
       cb(null, player, card)
   ], (err, player, card) ->
@@ -553,10 +584,10 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     ### 更新玩家战斗力值 ###
     if player.isLineUpCard(card) 
       player.updateAbility()
-      
+    
     player.save()
     # 拥有了百分之10的被动属性成就
-    if (card.passiveSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
+    if (card.getPsGroup(groupId).getItems(psIds).filter (ps) -> parseInt(ps.value) >= 10).length > 0
       achieve.psTo10(player)
 
     result = {

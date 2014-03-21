@@ -47,11 +47,11 @@ var LineUpLabel = cc.Layer.extend({
         this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
         this._turnLeftIcon.setScaleX(-1);
         this._turnLeftIcon.setPosition(cc.p(20, 0));
-        this.addChild(this._turnLeftIcon);
+        this.addChild(this._turnLeftIcon, 2);
 
         this._turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
         this._turnRightIcon.setPosition(cc.p(620, 0));
-        this.addChild(this._turnRightIcon);
+        this.addChild(this._turnRightIcon, 2);
 
         var lineUp = gameData.lineUp;
         var len = lineUp.get("maxLineUp");
@@ -63,7 +63,7 @@ var LineUpLabel = cc.Layer.extend({
             this.addChild(this._lineUpName[i]);
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(35, -54, 570, 158));
+        var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 600, 165));
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
@@ -76,29 +76,28 @@ var LineUpLabel = cc.Layer.extend({
             for (var j = 0; j < MAX_LINE_UP_CARD; j++) {
                 var cardHeadItem = null;
                 var effect = null;
-                var x = 54 + (i * 5 + j) * 117;
+                var x = 69 + (i * 5 + j) * 117 + 20 * (i > 0 ? 1 : 0);
                 if (j < count) {
                     cardHeadItem = CardHeadNode.getCardHeadItem(cardList[j], this._onClickCard, this);
 
                     if (cardList[j]) {
                         effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
-                        effect.setAnchorPoint(cc.p(0.5, 0));
-                        effect.setPosition(cc.p(x, 0));
+                        effect.setPosition(cc.p(x, 60));
                         scrollViewLayer.addChild(effect, 2);
                     }
 
                 } else {
                     cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
                 }
-                cardHeadItem.setAnchorPoint(cc.p(0.5, 0));
-                cardHeadItem.setPosition(cc.p(x, 0));
+
+                cardHeadItem.setPosition(cc.p(x, 60));
                 menu.addChild(cardHeadItem);
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(570, 158), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(117 * MAX_LINEUP_LIST * 5, 158));
-        this._scrollView.setPosition(cc.p(35, -54));
+        this._scrollView = cc.ScrollView.create(cc.size(600, 165), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(600 * MAX_LINEUP_LIST, 165));
+        this._scrollView.setPosition(cc.p(20, -60));
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
@@ -120,13 +119,13 @@ var LineUpLabel = cc.Layer.extend({
         this._lineUpName[this._index].setVisible(true);
         this._turnLeftIcon.setVisible(this._index != 0);
         this._turnRightIcon.setVisible(this._index != len - 1);
-        this._scrollView.setContentOffset(this._getScrollViewOffset());
+        this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
     },
 
     _getScrollViewOffset: function () {
         cc.log("LineUpLabel _getScrollViewOffset");
 
-        return cc.p(this._index * -585, 0);
+        return cc.p(this._index * -600, 0);
     },
 
     updateGuide: function () {
@@ -211,10 +210,10 @@ var LineUpLabel = cc.Layer.extend({
         var len = beganOffset.x - endOffset.x;
 
         if (len !== 0) {
-            if (len > 80) {
-                this._index = 0 - Math.floor(endOffset.x / 640);
-            } else if (len < -80) {
-                this._index = 0 - Math.ceil(endOffset.x / 640);
+            if (len > 30) {
+                this._index = 0 - Math.floor(endOffset.x / 600);
+            } else if (len < -30) {
+                this._index = 0 - Math.ceil(endOffset.x / 600);
             }
 
             this.update();

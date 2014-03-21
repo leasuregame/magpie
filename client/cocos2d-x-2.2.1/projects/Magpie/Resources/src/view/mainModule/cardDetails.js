@@ -204,7 +204,9 @@ var CardDetails = LazyLayer.extend({
         passiveSkillIcon.setPosition(this._cardDetailsFit.passiveSkillIconPoint);
         this.addChild(passiveSkillIcon);
 
-        if (this._card.hasPassiveSkill()) {
+        var test = false;
+        //if (this._card.hasPassiveSkill()) {
+        if(test){
             var passiveSkill = this._card.get("passiveSkill");
             var x = this._cardDetailsFit.passiveSkillOffsetX;
 

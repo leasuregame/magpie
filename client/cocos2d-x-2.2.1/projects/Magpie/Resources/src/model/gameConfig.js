@@ -11,6 +11,7 @@
  * game config
  * */
 
+var FPS_LIST = [15, 30, 60];
 
 var gameConfig = new (Entity.extend({
     _fps: 0,
@@ -18,7 +19,17 @@ var gameConfig = new (Entity.extend({
     init: function () {
         cc.log("gameConfig init");
 
-        this.setFps(lz.load("gameConfigFps") || 30);
+        var fps = lz.load("gameConfigFps") || 30;
+
+        var len = FPS_LIST.length;
+        for (var i = 0; i < len; ++i) {
+            if (fps == FPS_LIST[i]) {
+                this.setFps(fps);
+                return;
+            }
+        }
+
+        this.setFps(30);
     },
 
     setFps: function (fps) {

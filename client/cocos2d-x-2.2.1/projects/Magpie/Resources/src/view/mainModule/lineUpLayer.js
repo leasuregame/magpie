@@ -55,6 +55,7 @@ var LineUpLayer = LazyLayer.extend({
         this._touchRect = this._lineUpLayerFit.touchRect;
         this._index = 0;
         this._lineUpItem = [];
+        this._lineUp = [];
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 1136);
         bgLayer.setPosition(this._lineUpLayerFit.bgLayerPoint);
@@ -128,19 +129,52 @@ var LineUpLayer = LazyLayer.extend({
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
+        this._addLineUp();
+
         return true;
+    },
+
+    _addLineUp: function () {
+        cc.log("LineUpLayer addLineUp");
+
+        var lineUp = gameData.lineUp;
+        var len = lineUp.get("maxLineUp");
+        var cardList = gameData.cardList;
+
+        for (var i = 0; i < len; ++i) {
+            var array = [];
+            for (var j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                var point = this._locate[j];
+                var id = lineUp.getLineUpCard(i, j);
+
+                if (id != undefined) {
+                    var node = null;
+
+                    if (id == -1) {
+                        node = SpiritNode.create();
+                    } else {
+                        node = CardHalfNode.create(cardList.getCardByIndex(id));
+                    }
+
+                    node.setPosition(point);
+                    this.addChild(node, 1);
+                    array[j] = node;
+                } else {
+                    array[j] = null;
+                }
+            }
+            this._lineUp[i] = array;
+        }
     },
 
     update: function () {
 
         var lineUp = gameData.lineUp;
         var len = lineUp.get("maxLineUp");
-        var cardList = gameData.cardList;
 
-        var i;
         var point = this._lineUpLayerFit.lineUpItemPoint;
 
-        for (i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var x = point.x + i * 133;
 
             if (this._index == i) {
@@ -155,31 +189,13 @@ var LineUpLayer = LazyLayer.extend({
                 }
                 this._lineUpItem[i].setEnabled(true);
             }
-        }
 
-        for (i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            point = this._locate[i];
-            var id = lineUp.getLineUpCard(this._index, i);
-
-            if (this._node[i]) {
-                this._node[i].removeFromParent();
-                this._node[i] = null;
-            }
-
-            if (id != undefined) {
-                var node = null;
-
-                if (id == -1) {
-                    node = SpiritNode.create();
-                } else {
-                    node = CardHalfNode.create(cardList.getCardByIndex(id));
+            var array = this._lineUp[i];
+            for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                var node = array[j];
+                if (node) {
+                    node.setVisible(i == this._index);
                 }
-
-                node.setPosition(point);
-                this.addChild(node, 1);
-                this._node[i] = node;
-            } else {
-                this._node[i] = null;
             }
         }
     },
@@ -207,7 +223,7 @@ var LineUpLayer = LazyLayer.extend({
         var that = this;
         gameData.lineUp.changeLineUp(function (data) {
             that.removeFromParent();
-        }, this._getLineUpData(), this._index);
+        }, this._getLineUpData());
     },
 
     _onClickCard: function () {
@@ -235,15 +251,24 @@ var LineUpLayer = LazyLayer.extend({
     _getLineUpData: function () {
         cc.log("LineUpLayer _getLineUpData");
 
-        var lineUp = {};
+        var len = gameData.lineUp.get("maxLineUp");
+        var data = [];
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._node[i] != null) {
-                lineUp[i] = this._node[i].getId();
+        for (var i = 0; i < len; ++i) {
+            var lineUp = {};
+            var node = this._lineUp[i];
+
+            for (var j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                if (node[j] != null) {
+                    lineUp[j] = node[j].getId();
+                }
             }
+
+            data[i] = lineUp;
         }
 
-        return lineUp;
+
+        return data;
     },
 
     /**
@@ -255,15 +280,17 @@ var LineUpLayer = LazyLayer.extend({
         cc.log("LineUpLayer onTouchBegan");
 
         var touchPoint = touch.getLocation();
+        var array = this._lineUp[this._index];
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             if (cc.rectContainsPoint(this._touchRect[i], touchPoint)) {
-                if (this._node[i] != null) {
+
+                if (array[i] != null) {
                     cc.log("touch card " + i);
 
                     this._selectNode = i;
-                    this._node[i].setZOrder(2);
-                    this._node[i].up();
+                    array[i].setZOrder(2);
+                    array[i].up();
 
                     this._beganPoint = touchPoint;
                     this._oldPoint = touchPoint;
@@ -284,9 +311,10 @@ var LineUpLayer = LazyLayer.extend({
      */
     onTouchMoved: function (touch, event) {
         cc.log("LineUpLayer onTouchMoved");
+        var array = this._lineUp[this._index];
 
         if (this._selectNode > 0) {
-            var node = this._node[this._selectNode];
+            var node = array[this._selectNode];
             var touchPoint = touch.getLocation();
             var nodePoint = node.getPosition();
 
@@ -323,16 +351,18 @@ var LineUpLayer = LazyLayer.extend({
     onTouchEnded: function (touch, event) {
         cc.log("LineUpLayer onTouchEnded");
 
+        var array = this._lineUp[this._index];
+
         if (this._selectNode > 0) {
             var index = this._selectNode;
 
             if (this._isClick) {
                 this.onTouchCancelled(touch, event);
-                if (this._node[index] && typeof(this._node[index]) == "object") {
+                if (array[index] && typeof(array[index]) == "object") {
                     var cardList = gameData.lineUp.getLineUpCardList();
                     for (var i = 0; i < cardList.length; i++) {
                         var card = cardList[i];
-                        if (card == this._node[index]._card) {
+                        if (card == array[index]._card) {
                             this._selectIndex = i + 1;
                             break;
                         }
@@ -344,18 +374,18 @@ var LineUpLayer = LazyLayer.extend({
                 return;
             }
 
-            var node = this._node[this._selectNode];
+            var node = array[this._selectNode];
             var point = node.getPosition();
 
             for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
                 if (cc.rectContainsPoint(this._touchRect[i], point)) {
-                    this._node[this._selectNode] = this._node[i];
-                    if (this._node[i] != null) {
-                        this._node[i].setPosition(this._locate[this._selectNode]);
+                    array[this._selectNode] = array[i];
+                    if (array[i] != null) {
+                        array[i].setPosition(this._locate[this._selectNode]);
                         this._setCard(this._selectNode);
                     }
 
-                    this._node[i] = node;
+                    array[i] = node;
                     if (node != null) {
                         node.setPosition(this._locate[i]);
                         node.setZOrder(1);
@@ -382,8 +412,9 @@ var LineUpLayer = LazyLayer.extend({
     onTouchCancelled: function (touch, event) {
         cc.log("LineUpLayer onTouchCancelled");
 
+        var array = this._lineUp[this._index];
         if (this._selectNode > 0) {
-            var node = this._node[this._selectNode];
+            var node = array[this._selectNode];
 
             node.setPosition(this._locate[this._selectNode]);
             node.setZOrder(1);

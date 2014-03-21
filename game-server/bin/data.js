@@ -20,13 +20,51 @@ var Data = function(db, dir) {
   }
 };
 
+Data.prototype.changeCardPassiveSkill = function() {
+  var cardDao = this.db.card;
+  var totalCount = 0, finished = 0;
+  cardDao.fetchMany({where: ' star in (3, 4, 5)'}, function(err, cards) {
+    
+    totalCount = cards.length;
+    async.each(cards, function(card, done) {
+      card.passiveSkills = [{
+        id: 1,
+        items: [],
+        active: true
+      },{
+        id: 2,
+        items: [],
+        active: false
+      }, {
+        id: 3,
+        items: [],
+        active: false
+      }];
+      card.bornPassiveSkill();
+      cardDao.update({
+        where: {
+          id: card.id
+        },
+        data: card.getSaveData()
+      }, function(err, res) {
+        finished += 1;
+        done();
+      });
+    }, function(err) {
+      console.log('change passiveSkill of cards finished');
+      console.log('total count: ', totalCount);
+      console.log('finised: ', finished);
+    });
+  });
+};
+
 Data.prototype.correctCardBook = function() {
   var idTab = table.getTable('new_card_id_map');
-  
+
   var playerDao = this.db.player;
   var totalCount = 0,
-      finished = 0;
-  playerDao.fetchMany({}, function(err, players) {    
+    finished = 0;
+  playerDao.fetchMany({}, function(err, players) {
     totalCount = players.length;
 
     async.each(players, function(ply, done) {
@@ -49,21 +87,25 @@ Data.prototype.correctCardBook = function() {
       });
 
       playerDao.update({
-        where: {id: ply.id},
-        data: {cardBook: {
-          mark: mg.value,
-          flag: mg.value
-        }}
+        where: {
+          id: ply.id
+        },
+        data: {
+          cardBook: {
+            mark: mg.value,
+            flag: mg.value
+          }
+        }
       }, function(err, res) {
         if (err) {
-          console.log(err, res);  
+          console.log(err, res);
           done();
         } else {
           console.log('update card book for player id: ', ply.id);
           finished += 1;
           done();
         }
-        
+
       });
 
     }, function(err) {
@@ -83,7 +125,7 @@ Data.prototype.correctCardTableId = function() {
     console.log(err, count);
     pageNum = 2
     pages = Math.ceil(count / pageNum);
-    
+
     fCount = 0
     async.times(pages, function(page, next) {
       var start = page * pageNum;
@@ -122,14 +164,16 @@ Data.prototype.correctCardTableId = function() {
         }, function(err) {
           next(null);
         });
-        
+
       });
 
     }, function(err, results) {
       console.log('change tableId of card finished.');
       console.log('total cards:', count);
       console.log('finished:', fCount);
-      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {return x - y;})));
+      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {
+        return x - y;
+      })));
     });
   });
 };

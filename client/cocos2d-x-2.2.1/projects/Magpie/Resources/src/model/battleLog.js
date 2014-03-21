@@ -15,6 +15,7 @@
 var BattleLog = Entity.extend({
     _id: 0,
     _type: PVE_BATTLE_LOG,
+    _lineUpList: null,
     _card: null,
     _ownId: 0,
     _ownName: null,
@@ -39,7 +40,7 @@ var BattleLog = Entity.extend({
 
         this.set("id", battleLog.id);
         this.set("type", battleLog.type);
-        this.set("card", battleLog.cards);
+        this.set("lineUpList", battleLog.cards);
         this.set("ownId", battleLog.ownId);
         this.set("ownName", battleLog.ownName);
         this.set("enemyId", battleLog.enemyId);
@@ -124,19 +125,21 @@ var BattleLog = Entity.extend({
         return (this._winner === "own");
     },
 
-    getSpirit: function (id) {
-        cc.log("BattleLog getSpirit: " + id);
+    getSpirit: function (param) {
+        cc.log("BattleLog getSpirit: " + param);
 
         var i;
 
-        if (id > 6) {
-            for (i = 7; i <= 12; ++i) {
+        if (param === "o" || id < 7) {
+            for (i = 1; i < 7; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }
             }
-        } else {
-            for (i = 1; i <= 6; ++i) {
+        }
+
+        if (param === "e" || id > 6) {
+            for (i = 7; i <= 12; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }
@@ -147,6 +150,7 @@ var BattleLog = Entity.extend({
     },
 
     recover: function () {
+        this._card = {};
         this._index = -1;
     },
 
@@ -160,6 +164,23 @@ var BattleLog = Entity.extend({
 
     getBattleStep: function () {
         cc.log("BattleLog getBattleStep: " + this._battleStep[this._index]);
+
+        var battleStep = this._battleStep[this._index];
+
+        if (battleStep.go != undefined) {
+            var lineUp = this._lineUpList[battleStep.go];
+            var refresh = "o";
+
+            for (var key in lineUp) {
+                if (parseInt(key) > 6) {
+                    refresh = "e";
+                }
+
+                this._card[key] = lineUp[key];
+            }
+
+            return refresh;
+        }
 
         return BattleStep.create(this._battleStep[this._index]);
     },

@@ -26,6 +26,17 @@ var DAMAGE_UPPER_LIMIT = 1.20;
 
 var BOSS_CARD_SCALE = 1.5;
 
+var LINE_UP_CARD_LIMIT = {
+    o: {
+        start: 1,
+        end: 6
+    },
+    e: {
+        start: 7,
+        end: 12
+    }
+};
+
 var BattleLayer = cc.Layer.extend({
     _battleLayerFit: null,
 
@@ -66,6 +77,13 @@ var BattleLayer = cc.Layer.extend({
         this._battleMidpoint = this._battleLayerFit.battleMidpoint;
         this._lineUpMidpoint = this._battleLayerFit.lineUpMidpoint;
         this._chooseSpeedItem = [];
+
+        this._battleLog.recover();
+        for (var i = 0; i < 2; ++i) {
+            if (this._battleLog.hasNextBattleStep()) {
+                this._battleLog.getBattleStep();
+            }
+        }
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._battleLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -141,8 +159,6 @@ var BattleLayer = cc.Layer.extend({
             this._menu.addChild(this._chooseSpeedItem[speed]);
 
         }
-
-        this._battleLog.recover();
 
         return true;
     },
@@ -278,6 +294,82 @@ var BattleLayer = cc.Layer.extend({
         }
 
         return (index < 7 ? "o" : "e");
+    },
+
+    join: function (faction) {
+        cc.log("BattleLayer join: " + faction);
+
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var card = this._battleLog.get("card");
+        var index = 0;
+
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i]) {
+                this._battleNode[i].removeFromParent();
+                delete this._battleNode[i];
+            }
+
+            if (card[i] != undefined) {
+                cc.log(card[i]);
+
+                var locate = this._locate[i];
+
+                if (typeof(card[i]) == "number") {
+                    index = i;
+
+                    this._battleNode[i] = BattleSpiritNode.create(card[i], i);
+                    var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
+                    this._battleNode[i].addChild(spiritFrame);
+                } else {
+                    this._battleNode[i] = BattleCardNode.create(card[i], i);
+                }
+
+                this._battleNode[i].setPosition(locate);
+                this._battleNode[i].setVisible(false);
+                this.addChild(this._battleNode[i], NODE_Z_ORDER);
+            }
+        }
+
+        this.ceremony(faction, function () {
+            if (index) {
+                var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, this);
+                battleEffect1Node.setPosition(this._locate[index]);
+                this.addChild(battleEffect1Node, EFFECT_Z_ORDER);
+
+                battleEffect1Node.animationManager.setCompletedAnimationCallback(this, function () {
+                    battleEffect1Node.removeFromParent();
+                    this.nextStep();
+                });
+
+                this._battleNode[index].runAnimations("buf");
+            } else {
+                this.nextStep();
+            }
+        })
+    },
+
+    ceremony: function (faction, cb) {
+        cc.log("BattleLayer ceremony");
+
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var count = 0;
+
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i] != undefined) {
+                count += 1;
+
+                this._battleNode[i].setVisible(true);
+                this._battleNode[key].runAnimations("beg", 0, function () {
+                    count -= 1;
+
+                    if (count == 0) {
+                        if (cb) {
+                            cb();
+                        }
+                    }
+                });
+            }
+        }
     },
 
     ownCeremony: function () {
@@ -477,12 +569,38 @@ var BattleLayer = cc.Layer.extend({
             return;
         }
 
+
         this.step(this._battleLog.getBattleStep());
     },
 
-    step: function (battleStep) {
-        cc.log("BattleLayer attack");
-        cc.log(battleStep);
+    step: function (step) {
+        cc.log("BattleLayer step");
+        cc.log(step);
+
+        if (typeof (step) == "string") {
+            this.refreshStep(step);
+        } else {
+            this.battleStep(step);
+        }
+    },
+
+    refreshStep: function (refreshStep) {
+        cc.log("BattleLayer refreshStep");
+
+        var spiritId = this._battleLog.getSpirit(refreshStep);
+
+        if (this._battleNode[spiritId]) {
+            var that = this;
+            this._battleNode[spiritId].runAnimations("det", 0, function () {
+                that.join(refreshStep);
+            });
+        } else {
+            this.join(refreshStep);
+        }
+    },
+
+    battleStep: function (battleStep) {
+        cc.log("BattleLayer battleStep");
 
         var step = battleStep.get("step");
         var attacker = battleStep.get("attacker");
@@ -4654,7 +4772,7 @@ var BattleLayer = cc.Layer.extend({
 
         if (this._battleLog.isWin()) {
             if (len) {
-                var index = this._battleLog.getSpirit(1);
+                var index = this._battleLog.getSpirit("o");
 
                 for (var i = 0; i < len; ++i) {
                     var spirit = this._spiritNode[i];

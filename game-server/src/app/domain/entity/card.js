@@ -353,8 +353,12 @@ var Card = (function(_super) {
     //产生被动技能
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
+        console.log('-1-');
+        var star = this.star;
         pss.forEach(function(group){
-            group = new PassiveSkillGroup(group).create().toJson();
+            console.log('-2-', this.star);
+            group = new PassiveSkillGroup(group).create(star).toJson();
+            console.log('-d-', group);
         });
         this.passiveSkills = pss;
 

@@ -443,7 +443,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             var passiveSkillCount = 0;
             var lockNum = 0;
-            var passiveSkill = this._leadCard.get("passiveSkill");
+            var passiveSkill = this._leadCard.getActivePassiveSkill();
             var maxValue = 0.0;
             this._afreshIdList = [];
             for (var key in passiveSkill) {
@@ -913,7 +913,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
+        PassiveSkillLabel.pop();
+       // GameHelpLabel.pop(gameHelp["passiveSkillAfresh"]);
     }
 });
 

@@ -11,6 +11,8 @@
  * line up details layer
  * */
 
+var LINEUP_TYPE_MYSELF = 0;
+var LINEUP_TYPE_OTHER = 1;
 
 var LineUpDetailsLayer = cc.Layer.extend({
     _lineUpDetailsLayerFit: null,
@@ -37,14 +39,15 @@ var LineUpDetailsLayer = cc.Layer.extend({
         lz.um.endLogPageView("上阵卡牌列表界面");
     },
 
-    init: function (cardList, index) {
-        cc.log("LineUpDetailsLayer init");
+    init: function (cardList, index, type) {
+        cc.log("LineUpDetailsLayer init: " + type);
+
         if (!this._super()) return false;
 
         this.setTouchEnabled(true);
 
         this._lineUpDetailsLayerFit = gameFit.mainScene.lineUpDetailsLayer;
-        
+
         cardList = cardList || [];
 
         this._index = index;
@@ -53,11 +56,18 @@ var LineUpDetailsLayer = cc.Layer.extend({
         var scrollViewLayer = cc.Layer.create();
         var scrollViewWidth = len * 640;
 
+        var that = this;
+
         for (var i = 0; i < len; ++i) {
-            var cardDetails = CardDetails.create(cardList[i]);
+            var cardDetails = CardDetails.create(cardList[i], function () {
+                that.removeFromParent();
+            });
             cardDetails.setPosition(cc.p(640 * i - this._lineUpDetailsLayerFit.cardDetailsOffsetX, 0));
             scrollViewLayer.addChild(cardDetails);
-            cardDetails.hideMenu();
+
+            if (type == LINEUP_TYPE_OTHER) {
+                cardDetails.hideMenu();
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._lineUpDetailsLayerFit.scrollViewSize, scrollViewLayer);
@@ -77,21 +87,6 @@ var LineUpDetailsLayer = cc.Layer.extend({
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnRightSprite.setPosition(this._lineUpDetailsLayerFit.turnRightSpritePoint);
         this.addChild(this._turnRightSprite);
-
-        var closeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon36,
-            this._onClickClose,
-            this
-        );
-        closeItem.setPosition(this._lineUpDetailsLayerFit.closeItemPoint);
-
-        this._menu = cc.Menu.create(closeItem);
-        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
 
         this._scrollView.setContentOffset(this._getScrollViewOffset());
 
@@ -139,30 +134,22 @@ var LineUpDetailsLayer = cc.Layer.extend({
 
             this.update();
         }
-    },
-
-    _onClickClose: function () {
-        cc.log("LineUpDetailsLayer update");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
     }
 });
 
 
-LineUpDetailsLayer.create = function (cardList, index) {
+LineUpDetailsLayer.create = function (cardList, index, type) {
     var ret = new LineUpDetailsLayer();
 
-    if (ret && ret.init(cardList, index)) {
+    if (ret && ret.init(cardList, index, type)) {
         return ret;
     }
 
     return null;
 };
 
-LineUpDetailsLayer.pop = function (cardList, index) {
-    var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList, index);
+LineUpDetailsLayer.pop = function (cardList, index, type) {
+    var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList, index, type);
 
     MainScene.getInstance().addChild(lineUpDetailsLayer, 10);
 

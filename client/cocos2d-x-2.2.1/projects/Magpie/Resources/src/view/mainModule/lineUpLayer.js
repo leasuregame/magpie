@@ -231,10 +231,10 @@ var LineUpLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var cardList = gameData.lineUp.getLineUpCardList();
+        var cardList = gameData.lineUp.getLineUpCardList(this._index);
 
         if (cardList.length > 0) {
-            LineUpDetailsLayer.pop(cardList, this._selectIndex);
+            LineUpDetailsLayer.pop(cardList, this._selectIndex, LINEUP_TYPE_MYSELF);
             this._selectIndex = 0;
         }
     },
@@ -359,7 +359,7 @@ var LineUpLayer = LazyLayer.extend({
             if (this._isClick) {
                 this.onTouchCancelled(touch, event);
                 if (array[index] && typeof(array[index]) == "object") {
-                    var cardList = gameData.lineUp.getLineUpCardList();
+                    var cardList = gameData.lineUp.getLineUpCardList(this._index);
                     for (var i = 0; i < cardList.length; i++) {
                         var card = cardList[i];
                         if (card == array[index]._card) {

@@ -146,7 +146,6 @@ var fit4Iphone5 = {
             "nameEditBoxSize": cc.size(538, 67),
             "nameEditBoxPoint": cc.p(310, 908),
             "searchFriendItemPoint": cc.p(580, 908),
-            "addFriendItemPoint": cc.p(560, 1017),
             "friendCountIconPoint": cc.p(525, 139),
             "slashIconPoint": cc.p(525, 137),
             "friendCountLabelPoint": cc.p(510, 137),
@@ -159,7 +158,6 @@ var fit4Iphone5 = {
             "detailItemPoint": cc.p(108, 170),
             "sendMessageItemPoint": cc.p(108, 80),
             "skyDialogRect": cc.rect(0, 198, 640, 788)
-
         },
         "amountLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -295,6 +293,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(210, 510),
             "tipDescriptionLabelPoint": cc.p(60, 470),
             "passiveSkillIconPoint": cc.p(60, 275),
+            "updatePassiveSKillItemPoint": cc.p(210, 275),
             "passiveSkillOffsetX": -130,
             "passiveSkillIconPointY": 225,
             "passiveSkillNameLabelPointY": 225,

@@ -66,6 +66,7 @@ var fit4Iphone4 = {
             MAX_CLOUD_POSITION_Y: 960
         }
     },
+
     "loginScene": {
         "loginBgLayer": {
             "bgEffectPoint": cc.p(360, 480)
@@ -157,7 +158,6 @@ var fit4Iphone4 = {
             "detailItemPoint": cc.p(108, 170),
             "sendMessageItemPoint": cc.p(108, 80),
             "skyDialogRect": cc.rect(40, 198, 640, 700)
-
         },
         "amountLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -293,6 +293,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(250, 392),
             "tipDescriptionLabelPoint": cc.p(100, 352),
             "passiveSkillIconPoint": cc.p(100, 212),
+            "updatePassiveSKillItemPoint": cc.p(250, 212),
             "passiveSkillOffsetX": -90,
             "passiveSkillIconPointY": 162,
             "passiveSkillNameLabelPointY": 162,

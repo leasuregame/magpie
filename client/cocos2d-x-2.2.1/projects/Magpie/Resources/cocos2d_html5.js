@@ -193,6 +193,7 @@
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
             'src/view/mainModule/monthLabel.js',
+            'src/view/mainModule/passiveSkillLabel.js',
             'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLayer.js',
             'src/view/mainModule/passRankLayer.js',

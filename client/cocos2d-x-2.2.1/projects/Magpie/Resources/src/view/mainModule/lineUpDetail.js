@@ -123,10 +123,11 @@ var LineUpDetail = LazyLayer.extend({
 
         for (i = 0; i < len; ++i) {
             var array = [];
+            var cards = [];
             for (var j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                 point = this._locate[j];
                 var cardData = lineUp[i][j];
-                cc.log(cardData);
+
                 if (cardData != undefined) {
                     var node = null;
 
@@ -135,7 +136,7 @@ var LineUpDetail = LazyLayer.extend({
                     } else {
                         var card = Card.create(cardData);
 
-                        this._cardList.push(card);
+                        cards.push(card);
                         node = CardHalfNode.create(card);
                     }
 
@@ -147,6 +148,7 @@ var LineUpDetail = LazyLayer.extend({
                 }
             }
             this._lineUp[i] = array;
+            this._cardList[i] = cards;
         }
 
         var closeItem = cc.MenuItemImage.create(
@@ -241,8 +243,9 @@ var LineUpDetail = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (this._cardList.length > 0) {
-            LineUpDetailsLayer.pop(this._cardList, this._selectIndex);
+        var cardList = this._cardList[this._index];
+        if (cardList.length > 0) {
+            LineUpDetailsLayer.pop(cardList, this._selectIndex, LINEUP_TYPE_OTHER);
             this._selectIndex = 0;
         }
     },
@@ -325,6 +328,7 @@ var LineUpDetail = LazyLayer.extend({
         cc.log("LineUpDetail onTouchEnded");
 
         var array = this._lineUp[this._index];
+        var cardList = this._cardList[this._index];
         var index = this._selectNode;
 
         if (this._selectNode > 0) {
@@ -333,8 +337,8 @@ var LineUpDetail = LazyLayer.extend({
             if (this._isClick) {
 
                 if (array[index] && typeof(array[index]) == "object") {
-                    for (var i = 0; i < this._cardList.length; i++) {
-                        var card = this._cardList[i];
+                    for (var i = 0; i < cardList.length; i++) {
+                        var card = cardList[i];
                         if (card == array[index]._card) {
                             this._selectIndex = i + 1;
                             break;

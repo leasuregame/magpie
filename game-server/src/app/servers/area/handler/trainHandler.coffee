@@ -537,7 +537,6 @@ Handler::passSkillActive = (msg, session, next) ->
     card.save()
     next(null, {code: 200, msg: {
       ability: card.ability()
-      passiveSkills: card.passiveSkills
     }})
 
 Handler::passSkillOpen = (msg, session, next) ->
@@ -573,7 +572,7 @@ Handler::passSkillOpen = (msg, session, next) ->
 
     next(null, {code: 200, msg: {
       gold: player.gold,
-      card: card.toJson()
+      passiveSkill: _.last(card.passiveSkills)
     }})
 
 

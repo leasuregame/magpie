@@ -23,25 +23,25 @@ describe("Area Server", function() {
           }, function(data) {
             console.log(data);
 
-            for (var i = 0; i < data.msg.passiveSkills.length; i++) {
-              var ps = data.msg.passiveSkills[i];
-              if (ps.id == gid) {
-                expect(ps.active).toEqual(true);
-              } else {
-                expect(ps.active).toEqual(false);
-              }
-            }
-
             doAjax('/card/100', function(res) {
-              expect(JSON.parse(res.data.passiveSkills)).toEqual(data.msg.passiveSkills);
+              var pass = JSON.parse(res.data.passiveSkills);
+
+              for (var i = 0; i < pass.length; i++) {
+                var ps = pass[i];
+                if (ps.id == gid) {
+                  expect(ps.active).toEqual(true);
+                } else {
+                  expect(ps.active).toEqual(false);
+                }
+              }
             });
           });
 
-          
+
 
         });
 
-        it('修改成功1', function(){
+        it('修改成功1', function() {
           var gid = 3;
           request('area.trainHandler.passSkillActive', {
             cardId: 100,
@@ -49,17 +49,17 @@ describe("Area Server", function() {
           }, function(data) {
             console.log(data);
 
-            for (var i = 0; i < data.msg.passiveSkills.length; i++) {
-              var ps = data.msg.passiveSkills[i];
-              if (ps.id == gid) {
-                expect(ps.active).toEqual(true);
-              } else {
-                expect(ps.active).toEqual(false);
-              }
-            }
-
             doAjax('/card/100', function(res) {
-              expect(JSON.parse(res.data.passiveSkills)).toEqual(data.msg.passiveSkills);
+              var pass = JSON.parse(res.data.passiveSkills);
+
+              for (var i = 0; i < pass.length; i++) {
+                var ps = pass[i];
+                if (ps.id == gid) {
+                  expect(ps.active).toEqual(true);
+                } else {
+                  expect(ps.active).toEqual(false);
+                }
+              }
             });
           });
         })

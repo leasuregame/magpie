@@ -22,7 +22,9 @@ describe("Area Server", function() {
           }, function(data) {
             console.log(data);
             expect(data.msg.gold).toEqual(39950);
-            expect(data.msg.card.passiveSkills.length).toEqual(4);
+            expect(data.msg.passiveSkill.id).toEqual(4);
+            expect(data.msg.passiveSkill.active).toEqual(false);
+            expect(data.msg.passiveSkill.items.length).toEqual(2);
           });
 
           doAjax('/card/100', function(res) {

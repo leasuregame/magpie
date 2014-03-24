@@ -26,24 +26,29 @@ class VirtualPlayer extends Player
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
   # bindCards: ->
-  #   _hero = (id) =>
-  #     for h in @heros
-  #       return if h.id is parseInt(id) then h
-  #     null
-    
-  #   if @lineUp? and @lineUp != ''
-  #     @parseLineUp().forEach (item) =>
-  #       [pos, id] = item 
-  #       _h = _hero(id)      
+  #   if @lineUp and not _.isEmpty(@lineUp)
+  #     lu = @lineUp.shift()
+  #     if _.keys(lu).length is 1
+  #       return
 
-  #       if _h
+  #     @matrix.clear()
+  #     _.each lu, (id, pos) =>
+  #       if parseInt(id) is -1
+  #         @spiritorIdx = parseInt(pos)
+  #         return 
+
+  #       _h = _.findWhere @heros, id: parseInt(id)
+  #       if _h 
+
   #         @matrix.set(pos, _h)
   #       else
-  #         logger.info 'you have not such card with id is ' + id
+  #         logger.warn 'you have not such card with id is ' + id
+
+  #     @matrix.reset()
+  #     @correctIdx(@is_attacker)
+  #     @setCards()
   #   else
   #     logger.warn 'there is not line up for player ' + @name
-    
-  #   @matrix.reset()
 
   setCards: ->
     cobj = {}
@@ -91,7 +96,7 @@ parseCards = (data) ->
 
 randomLineUp = (cards) ->
   ids = _.map cards, (c) -> c.id
-  pos = ['00', '01', '02', '10', '11', '12']
+  pos = [1,2,3,4,5,6]
   pos_copy = _.clone(pos)
 
   _res = []

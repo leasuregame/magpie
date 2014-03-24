@@ -2,6 +2,12 @@ var psConfig = require('../../../config/data/passSkill');
 var utility = require('../../common/utility');
 var _ = require('underscore');
 
+var LOCK = {
+  NULL: 0,
+  NAME: 1,
+  VALUE: 2,
+  BOTH: 3
+};
 
 var PassiveSkillGroup = function(attrs) {
   this.id = attrs.id;
@@ -25,6 +31,10 @@ PassiveSkillGroup.prototype.getItems = function(ids) {
   return this.items.filter(function(i) {
     return ids.indexOf(i.id) > -1;
   });
+};
+
+PassiveSkillGroup.prototype.getItem = function(id) {
+  return this.getItems([id])[0] || null;
 };
 
 PassiveSkillGroup.prototype.create = function(star) {
@@ -59,23 +69,38 @@ PassiveSkillGroup.prototype.born = function() {
   });
 };
 
-PassiveSkillGroup.prototype.afrash = function(type, star, ps) {
+PassiveSkillGroup.prototype.afrash = function(type, star, ps, lock) {
+  if (!ps) return;
+
   var born_rates = psConfig.BORN_RATES;
   var star = star >= 5 ? this.star : 5;
   var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
 
-  var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
-  var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
-  var _ref = valueScope.split('~'),
+  var name = ps.name, value = ps.value;
+  if (lock != LOCK.NAME) {
+    name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
+  }
+
+  if (lock != LOCK.VALUE) {
+    var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
+    var _ref = valueScope.split('~'),
       start = _ref[0],
       end = _ref[1];
-  var value = _.random(start * 100, end * 100);
+    value = _.random(start * 100, end * 100);
+    value = parseFloat((value / 100).toFixed(1));
+  }  
 
   var p = _.clone(ps);
-
   p.name = name;
-  p.value = parseFloat((value / 100).toFixed(1));
+  p.value = value;
   this.update(p);
+};
+
+PassiveSkillGroup.prototype.afrashGroup = function(type, star, psIds) {
+  var self = this;
+  psIds.forEach(function(id) {
+    self.afrash(type, star, self.getItem(id.id), id.lock);
+  });
 };
 
 PassiveSkillGroup.prototype.update = function(ps) {

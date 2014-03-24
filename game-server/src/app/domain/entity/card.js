@@ -224,9 +224,7 @@ var Card = (function(_super) {
 
     Card.prototype.afrash = function(type, groupId, psIds) {
         var group = this.getPsGroup(groupId);
-        group.getItems(psIds).forEach(function(ps) {
-            group.afrash(type, this.star, ps);
-        });
+        group.afrashGroup(type, this.star, psIds);
         this.updatePsGroup(group);
     };
 

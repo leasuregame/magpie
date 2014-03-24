@@ -539,6 +539,14 @@ Handler::passSkillActive = (msg, session, next) ->
       passiveSkills: card.passiveSkills
     }})
 
+checkPsIds = (ids) ->
+  return false if not _.isArray(ids) or ids.length is 0
+
+  for id in ids
+    return false if _.isUndefined(id.id) or _.isUndefined(id.lock)
+
+  return true
+
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardId = msg.cardId
@@ -547,9 +555,11 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
 
-  if _.isUndefined(groupId) or psIds.length is 0
+  if _.isUndefined(groupId) or not checkPsIds(psIds)
     return next(null, {code: 501, msg: '参数错误'})
 
+  ids = psIds.map (i) -> i.id
+  
   consumeVal = 0
   async.waterfall [
     (cb) ->
@@ -570,7 +580,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '找不到要洗练的卡牌'})
 
       psGroup = card.getPsGroup(groupId)
-      passSkills = psGroup.getItems(psIds)
+      passSkills = psGroup.getItems(ids)
       if not psGroup or not passSkills
         return cb({code: 501, msg: '找不到被动属性'})
 
@@ -587,7 +597,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     
     player.save()
     # 拥有了百分之10的被动属性成就
-    if (card.getPsGroup(groupId).getItems(psIds).filter (ps) -> parseInt(ps.value) >= 10).length > 0
+    if (card.getPsGroup(groupId).getItems(ids).filter (ps) -> parseInt(ps.value) >= 10).length > 0
       achieve.psTo10(player)
 
     result = {

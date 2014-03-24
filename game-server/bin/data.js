@@ -303,7 +303,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       }
       if (table == 'card') {
         genSkillInc(row);
-        initPassiveSkill(row);
+        initPassiveSkillGroup(row);
       }
       self.db[table].delete({
         where: where
@@ -501,7 +501,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
                 star: cards.ids[n] % 5 || 5
               };
               genSkillInc(cardData);
-              initPassiveSkill(cardData);
+              initPassiveSkillGroup(cardData);
 
               self.db.card.create({
                 data: cardData
@@ -626,7 +626,7 @@ Data.prototype.dataForRanking = function(callback) {
           async.times(row.card_count, function(n, next) {
             cardData.tableId = ids[_.random(0, ids.length - 1)];
             genSkillInc(cardData);
-            initPassiveSkill(cardData);
+            initPassiveSkillGroup(cardData);
             self.db.card.create({
               data: cardData
             }, next);
@@ -783,6 +783,46 @@ var initPassiveSkill = function(card) {
 
   card.passiveSkills = results;
 };
+
+
+var initPassiveSkills, initPassiveSkillGroup;
+
+initPassiveSkills = function(star) {
+  var count, end, i, index, results, start, _i, _ref;
+
+  count = star - 2;
+  results = [];
+  for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+    index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
+    _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
+    results.push({
+      id: i,
+      name: cardConfig.PASSIVESKILL.TYPE[index],
+      value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
+    });
+  }
+  return results;
+};
+
+initPassiveSkillGroup = function(card) {
+  var star = card.star;
+  if (star < 3) {
+    return card.passiveSkills = [];
+  }
+
+  var i, list, _i;
+
+  list = [];
+  for (i = _i = 1; _i <= 3; i = ++_i) {
+    list.push({
+      id: i,
+      items: initPassiveSkills(star),
+      active: i === 1 ? true : false
+    });
+  }
+  card.passiveSkills = list;
+};
+
 
 var thisWeek = function() {
   var now, onejan, weekNumber;

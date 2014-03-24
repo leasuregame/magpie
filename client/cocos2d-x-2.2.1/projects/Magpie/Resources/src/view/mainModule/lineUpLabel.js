@@ -25,6 +25,8 @@ var LineUpLabel = cc.Layer.extend({
     _card4Guide: null,
     _card5Guide: null,
 
+    _succorCardsGuide: null,
+
     onEnter: function () {
         cc.log("LineUpLabel onEnter");
 
@@ -43,6 +45,7 @@ var LineUpLabel = cc.Layer.extend({
         this._cardList = gameData.cardList;
         this._index = 0;
         this._lineUpName = [];
+        this._succorCardsGuide = [];
 
         this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
         this._turnLeftIcon.setScaleX(-1);
@@ -87,7 +90,7 @@ var LineUpLabel = cc.Layer.extend({
                     }
 
                 } else {
-                    cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
+                    cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(j), this);
                 }
 
                 cardHeadItem.setPosition(cc.p(x, 60));
@@ -115,11 +118,29 @@ var LineUpLabel = cc.Layer.extend({
             this._lineUpName[i].setVisible(false);
         }
 
-        cc.log(this._index);
         this._lineUpName[this._index].setVisible(true);
         this._turnLeftIcon.setVisible(this._index != 0);
         this._turnRightIcon.setVisible(this._index != len - 1);
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
+        if (this._card3Guide) {
+            this._card3Guide.setVisible(this._index == 0);
+        }
+
+        if (this._card4Guide) {
+            this._card4Guide.setVisible(this._index == 0);
+        }
+
+        if (this._card4Guide) {
+            this._card3Guide.setVisible(this._index == 0);
+        }
+
+        for (var i = 0; i < 5; i++) {
+            if (this._succorCardsGuide[i]) {
+                this._succorCardsGuide[i].setVisible(this._index == 1);
+            }
+        }
+
     },
 
     _getScrollViewOffset: function () {
@@ -134,16 +155,32 @@ var LineUpLabel = cc.Layer.extend({
         if (gameGuide.get("card5Guide") && !this._card5Guide) {
             this._card5Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card5Guide.setPosition(cc.p(79 + 122 * 4, 0));
+            this._card5Guide.setVisible(false);
             this.addChild(this._card5Guide, 10);
         } else if (gameGuide.get("card4Guide") && !this._card4Guide) {
             this._card4Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card4Guide.setPosition(cc.p(79 + 122 * 3, 0));
+            this._card4Guide.setVisible(false);
             this.addChild(this._card4Guide, 10);
         } else if (gameGuide.get("card3Guide") && !this._card3Guide) {
             this._card3Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
+            this._card3Guide.setVisible(false);
             this.addChild(this._card3Guide, 10);
         }
+
+        if (gameGuide.get("succorCardsGuide")) {
+            for (var i = 0; i < 5; i++) {
+                if (!this._succorCardsGuide[i]) {
+                    this._succorCardsGuide[i] = cc.BuilderReader.load(main_scene_image.uiEffect43);
+                    this._succorCardsGuide[i].setPosition(cc.p(79 + 122 * i, 0));
+                    this._succorCardsGuide[i].setVisible(false);
+                    this.addChild(this._succorCardsGuide[i], 10);
+                }
+            }
+        }
+
+        this.update();
     },
 
     _onClickCard: function () {
@@ -151,22 +188,32 @@ var LineUpLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (this._card5Guide) {
-            this._card5Guide.removeFromParent();
-            this._card5Guide = null;
-            gameGuide.set("card5Guide", false);
-        }
+        if (this._index == 0) {
+            if (this._card5Guide) {
+                this._card5Guide.removeFromParent();
+                this._card5Guide = null;
+                gameGuide.set("card5Guide", false);
+            }
 
-        if (this._card4Guide) {
-            this._card4Guide.removeFromParent();
-            this._card4Guide = null;
-            gameGuide.set("card4Guide", false);
-        }
+            if (this._card4Guide) {
+                this._card4Guide.removeFromParent();
+                this._card4Guide = null;
+                gameGuide.set("card4Guide", false);
+            }
 
-        if (this._card3Guide) {
-            this._card3Guide.removeFromParent();
-            this._card3Guide = null;
-            gameGuide.set("card3Guide", false);
+            if (this._card3Guide) {
+                this._card3Guide.removeFromParent();
+                this._card3Guide = null;
+                gameGuide.set("card3Guide", false);
+            }
+        } else {
+            for (var i = 0; i < 5; i++) {
+                if (this._succorCardsGuide[i]) {
+                    this._succorCardsGuide[i].removeFromParent();
+                    this._succorCardsGuide[i] = null;
+                }
+            }
+            gameGuide.set("succorCardsGuide", false);
         }
 
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));
@@ -178,19 +225,17 @@ var LineUpLabel = cc.Layer.extend({
     },
 
     _onClickLock: function (index) {
-        var table = outputTables.function_limit.rows[1];
+
+        var that = this;
 
         return function () {
             cc.log("LineUpLabel _onClickLock");
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            if (index == 2) {
-                TipLayer.tip(table.card3_position + " 级开启");
-            } else if (index == 3) {
-                TipLayer.tip(table.card4_position + " 级开启");
-            } else if (index == 4) {
-                TipLayer.tip(table.card5_position + " 级开启");
-            }
+
+            var table = outputTables.card_lineup_limit.rows[that._index];
+            TipLayer.tip(table["card_" + (index + 1)] + " 级开启");
+
         }
     },
 

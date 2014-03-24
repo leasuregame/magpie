@@ -180,7 +180,8 @@ var Card = (function(_super) {
         'elixirHp',
         'elixirAtk',
         'passiveSkills',
-        'useCardsCounts'
+        'useCardsCounts',
+        'psGroupCount'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -205,7 +206,8 @@ var Card = (function(_super) {
             elixir_atk: 0
         },
         passiveSkills: [],
-        useCardsCounts: 0
+        useCardsCounts: 0,
+        psGroupCount: 3
     };
 
     Card.prototype.init = function() {
@@ -220,6 +222,21 @@ var Card = (function(_super) {
             return new PassiveSkillGroup(group[0]);
         }
         return null;
+    };
+
+    Card.prototype.addPsGroup = function() {
+        this.increase('psGroupCount');
+        var groupId = 1 + _.max(this.passiveSkills.map(function(p) {
+            return p.id;
+        }));
+        this.passiveSkills.push({
+            id: groupId,
+            items: [],
+            active: false
+        });
+        var group = this.getPsGroup(groupId);
+        group.create(this.star);
+        this.updatePsGroup(group);
     };
 
     Card.prototype.afrash = function(type, groupId, psIds) {
@@ -351,12 +368,9 @@ var Card = (function(_super) {
     //产生被动技能
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
-        console.log('-1-');
         var star = this.star;
         pss.forEach(function(group){
-            console.log('-2-', this.star);
             group = new PassiveSkillGroup(group).create(star).toJson();
-            console.log('-d-', group);
         });
         this.passiveSkills = pss;
 

@@ -534,21 +534,46 @@ Handler::passSkillActive = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
+    card.save()
     next(null, {code: 200, msg: {
       ability: card.ability()
-      passiveSkills: card.passiveSkills
     }})
 
 Handler::passSkillOpen = (msg, session, next) ->
   playerId = session.get('playerId')
+  cardId = msg.cardId
 
-  defaultCount = 3
+  if _.isUndefined(cardId)
+    return next(null, {code: 501, msg: '缺少卡牌Id参数'})
+
+  default_count = 3
+  gold_per_card = 50
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
+    card = player.getCard(cardId)
+    if not card
+      return next(null, {code: 501, msg: '找不到卡牌'})
 
+    if card.psGroupCount >= 8
+      return next(null, {code: 501, msg: '分组数量已达最大值'})
 
+    if card.psGroupCount < default_count
+      card.psGroupCount = default_count
+
+    goldConsume = (card.psGroupCount - default_count + 1) * gold_per_card
+    if player.gold < goldConsume
+      return next(null, {code: 501, msg: '魔石不足'})
+
+    card.addPsGroup()
+    player.decrease 'gold', goldConsume
+    player.save()
+
+    next(null, {code: 200, msg: {
+      gold: player.gold,
+      passiveSkill: _.last(card.passiveSkills)
+    }})
 
 
 Handler::passSkillAfresh  = (msg, session, next) ->

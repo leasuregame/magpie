@@ -539,13 +539,17 @@ Handler::passSkillActive = (msg, session, next) ->
       passiveSkills: card.passiveSkills
     }})
 
-checkPsIds = (ids) ->
-  return false if not _.isArray(ids) or ids.length is 0
+Handler::passSkillOpen = (msg, session, next) ->
+  playerId = session.get('playerId')
 
-  for id in ids
-    return false if _.isUndefined(id.id) or _.isUndefined(id.lock)
+  defaultCount = 3
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
 
-  return true
+
+
+
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -606,6 +610,14 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     }
 
     next(null, {code: 200, msg: result})
+
+checkPsIds = (ids) ->
+  return false if not _.isArray(ids) or ids.length is 0
+
+  for id in ids
+    return false if _.isUndefined(id.id) or _.isUndefined(id.lock)
+
+  return true
 
 Handler::smeltElixir_is_discarded = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

@@ -24,7 +24,6 @@ var USE_MONEY_CONSUME = 5000;
 var USE_GOLD_CONSUME = 20;
 
 
-
 var PassiveSkillAfreshLabel = cc.Layer.extend({
     _passiveSkillAfreshLabelFit: null,
 
@@ -98,9 +97,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         resLabelBgSprite.setPosition(this._passiveSkillAfreshLabelFit.resLabelBgSpritePoint);
         this._resLabel.addChild(resLabelBgSprite);
 
-        var tipLabel = cc.LabelTTF.create("最高加成10.0%", "STHeitiTC-Medium", 18);
-        tipLabel.setPosition(cc.p(360, 349));
-        this._resLabel.addChild(tipLabel);
+        this._fullAttributeLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 18);
+        this._fullAttributeLabel.setPosition(cc.p(360, 349));
+        this._resLabel.addChild(this._fullAttributeLabel);
 
         this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 22);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
@@ -236,87 +235,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         yellowLabel.setAnchorPoint(cc.p(0, 0.5));
         yellowLabel.setPosition(cc.p(0, 96));
         this._stopTypeLabel.addChild(yellowLabel);
-
-        var stopUntilBlueIcon = ColorLabelTTF.create({
-            string: "出现",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "蓝色",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(105, 218, 255)
-        }, {
-            string: "属性以上停止洗炼 ",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "(",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "5.0%",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(105, 218, 255)
-        }, {
-            string: " - ",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "10.0%",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(255, 248, 69)
-        }, {
-            string: ")",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        });
-        stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
-        stopUntilBlueIcon.setPosition(cc.p(80, 178));
-        this._stopTypeLabel.addChild(stopUntilBlueIcon);
-
-        var stopUntilYellowIcon = ColorLabelTTF.create({
-            string: "出现",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "金色",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(255, 248, 69)
-        }, {
-            string: "属性以上停止洗炼 ",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "(",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "8.0%",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(255, 248, 69)
-        }, {
-            string: " - ",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        }, {
-            string: "10.0%",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20,
-            color: cc.c3b(255, 248, 69)
-        }, {
-            string: ")",
-            fontName: "STHeitiTC-Medium",
-            fontSize: 20
-        });
-
-        stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
-        stopUntilYellowIcon.setPosition(cc.p(80, 96));
-        this._stopTypeLabel.addChild(stopUntilYellowIcon);
 
         var stopTypeMenu = cc.Menu.create();
         stopTypeMenu.setPosition(cc.p(0, 0));
@@ -463,12 +381,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._lvLabel.setString("LV: " + this._leadCard.get("lv"));
             this._lvLabel.setVisible(true);
 
+            var star = this._leadCard.get("star");
+            var table = outputTables.passive_skill_config.rows[star];
+            this._fullAttributeLabel.setString("最高加成" + table.full_attribute.toFixed(1) + "%");
+
             var passiveSkillCount = 0;
             var lockNum = 0;
             var passiveSkill = this._leadCard.getPassiveSkillById(this._selectId);
-            cc.log(passiveSkill);
             var maxValue = 0.0;
             this._afreshIdList = [];
+
             for (var key in passiveSkill) {
                 var passiveSkillLabel = this._passiveSkillList[passiveSkillCount++];
                 var lock = passiveSkillLabel.lockStatue;
@@ -485,14 +407,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 if (value > maxValue) {
                     maxValue = value;
                 }
-                if (value == 10.0) {
-                    passiveSkillLabel.valueLabel.setString("     + " + value + "% (满)");
+
+                if (value == table.full_attribute) {
+                    passiveSkillLabel.valueLabel.setString("+ " + value + "% (满)");
                 } else {
                     passiveSkillLabel.valueLabel.setString("+ " + value + "%");
                 }
-                if (value >= 8.0) {
+
+                if (value >= table.yellow_attribute) {
                     passiveSkillLabel.valueLabel.setColor(cc.c3b(255, 248, 69));
-                } else if (value >= 5.0) {
+                } else if (value >= table.blue_attribute) {
                     passiveSkillLabel.valueLabel.setColor(cc.c3b(105, 218, 255));
                 } else {
                     passiveSkillLabel.valueLabel.setColor(cc.c3b(118, 238, 60));
@@ -555,6 +479,103 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._afreshItem.setEnabled(isEnabled);
         this._repeatAfreshItem.setEnabled(isEnabled);
         this._startItem.setEnabled(isEnabled && (this._stopType != STOP_UNTIL_NULL));
+    },
+
+    _updateStopLabel: function () {
+
+        if (this._stopUntilBlueIcon) {
+            this._stopUntilBlueIcon.removeFromParent();
+            this._stopUntilBlueIcon = null;
+        }
+
+        if (this._stopUntilYellowIcon) {
+            this._stopUntilYellowIcon.removeFromParent();
+            this._stopUntilYellowIcon = null;
+        }
+
+        var star = this._leadCard.get("star");
+        var table = outputTables.passive_skill_config.rows[star];
+
+        this._stopUntilBlueIcon = ColorLabelTTF.create({
+            string: "出现",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: "蓝色",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(105, 218, 255)
+        }, {
+            string: "属性以上停止洗炼 ",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: "(",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: table.blue_attribute.toFixed(1) + "%",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(105, 218, 255)
+        }, {
+            string: " - ",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: table.full_attribute.toFixed(1) + "%",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(255, 248, 69)
+        }, {
+            string: ")",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        });
+        this._stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
+        this._stopUntilBlueIcon.setPosition(cc.p(80, 178));
+        this._stopTypeLabel.addChild(this._stopUntilBlueIcon);
+
+        this._stopUntilYellowIcon = ColorLabelTTF.create({
+            string: "出现",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: "金色",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(255, 248, 69)
+        }, {
+            string: "属性以上停止洗炼 ",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: "(",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: table.yellow_attribute.toFixed(1) + "%",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(255, 248, 69)
+        }, {
+            string: " - ",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        }, {
+            string: table.full_attribute.toFixed(1) + "%",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20,
+            color: cc.c3b(255, 248, 69)
+        }, {
+            string: ")",
+            fontName: "STHeitiTC-Medium",
+            fontSize: 20
+        });
+
+        this._stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
+        this._stopUntilYellowIcon.setPosition(cc.p(80, 96));
+        this._stopTypeLabel.addChild(this._stopUntilYellowIcon);
     },
 
     _canAfresh: function () {
@@ -668,20 +689,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             }
         }
 
-        cc.log(maxValue);
-        cc.log(isCanAfresh);
+        var star = this._leadCard.get("star");
+        var table = outputTables.passive_skill_config.rows[star];
 
         if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
-                if (maxValue >= 8.0) {
+                if (maxValue >= table.yellow_attribute) {
                     TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
                     this._onClickStop();
-                } else if (maxValue >= 5.0) {
+                } else if (maxValue >= table.blue_attribute) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
                     this._onClickStop();
                 }
             } else if (this._stopType == STOP_UNTIL_YELLOW) {
-                if (maxValue >= 8.0) {
+                if (maxValue >= table.yellow_attribute) {
                     TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
                     this._onClickStop();
                 }
@@ -860,9 +881,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var isTip = false;
         var len = this._afreshIdList.length;
 
+        var star = this._leadCard.get("star");
+        var table = outputTables.passive_skill_config.rows[star];
+
         for (var i = 0; i < len; i++) {
             var id = this._afreshIdList[i].id;
-            if (passiveSkill[id].value >= 8.0) {
+            if (passiveSkill[id].value >= table.yellow_attribute) {
                 isTip = true;
                 break;
             }
@@ -892,6 +916,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             return;
         }
 
+        this._updateStopLabel();
+
         this._resLabel.setVisible(false);
         this._afreshItem.setVisible(false);
         this._repeatAfreshItem.setVisible(false);
@@ -910,9 +936,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var isTip = false;
         var len = this._afreshIdList.length;
 
+        var star = this._leadCard.get("star");
+        var table = outputTables.passive_skill_config.rows[star];
+
         for (var i = 0; i < len; i++) {
             var id = this._afreshIdList[i].id;
-            if (passiveSkill[id].value >= 8.0) {
+            if (passiveSkill[id].value >= table.yellow_attribute) {
                 isTip = true;
                 break;
             }

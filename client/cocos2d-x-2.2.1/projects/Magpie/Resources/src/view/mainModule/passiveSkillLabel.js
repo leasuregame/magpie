@@ -118,9 +118,23 @@ var PassiveSkillLabel = LazyLayer.extend({
             this._groupLayer.addChild(openIcon, 2);
 
             var items = passiveSkill.items;
-            var x = -160;
+            var x = -170;
             for (var kk in items) {
                 var item = items[kk];
+                var star = this._card.get("star");
+                var table = outputTables.passive_skill_config.rows[star];
+                var value = item.value.toFixed(1);
+                var str = "+ " + value + "%";
+                var color;
+
+                if (value >= table.yellow_attribute) {
+                    color = cc.c3b(255, 248, 69);
+                } else if (value >= table.blue_attribute) {
+                    color = cc.c3b(105, 218, 255);
+                } else {
+                    color = cc.c3b(118, 238, 60);
+                }
+
                 var skillLabel = ColorLabelTTF.create(
                     {
                         string: item.description + " ",
@@ -128,16 +142,16 @@ var PassiveSkillLabel = LazyLayer.extend({
                         fontSize: 22
                     },
                     {
-                        string: item.value.toFixed(1) + "%",
+                        string: str,
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
-                        color: cc.c3b(117, 255, 57)
+                        color: color
                     }
                 );
                 skillLabel.setPosition(cc.p(x, y));
                 this._groupLayer.addChild(skillLabel, 2);
 
-                x += 150;
+                x += 145;
             }
 
             if (passiveSkill.id == this._selectId) {

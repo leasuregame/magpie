@@ -43,24 +43,19 @@ PassiveSkillGroup.prototype.create = function(star) {
     return;
   }
 
-  var len = star - 2 - this.items.length;
-  for (var i = 0; i < len; i++) {
-    this.born();
+  var id = this.items.length,
+      len = star - 2 - this.items.length,
+      i;
+  for (i = id; i < len; i++) {
+    this.born(i);
   }
   return this;
 };
 
-PassiveSkillGroup.prototype.born = function() {
+PassiveSkillGroup.prototype.born = function(id) {
   var br = psConfig.BORN_RATES;
   var name = utility.randomValue(_.keys(br), _.values(br));
   var value = _.random(100, psConfig.INIT_MAX * 100);
-
-  var id = 0;
-  if (this.items.length > 0) {
-    id = _.max(this.items, function(i) {
-      return i.id;
-    }).id;
-  }
 
   this.items.push({
     id: id,

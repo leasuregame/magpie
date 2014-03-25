@@ -423,7 +423,15 @@ var Player = (function(_super) {
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
-            rmTimerCount: 1
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
+            }
         };
 
         var pass = utility.deepCopy(this.pass);

@@ -271,7 +271,7 @@ Handler::luckyCard = (msg, session, next) ->
     goldLuckyCardForFragment = player.dailyGift.goldLuckyCardForFragment
     if not goldLuckyCardForFragment.got and utility.hitRate rates[goldLuckyCardForFragment.count]
       totalFragment += 1
-      goldLuckyCardForFragment.got true
+      goldLuckyCardForFragment.got = true
       player.updateGift 'goldLuckyCardForFragment', goldLuckyCardForFragment
 
   async.waterfall [
@@ -307,7 +307,7 @@ Handler::luckyCard = (msg, session, next) ->
           player.set('highDrawCardCount', hdcc)
 
       first5GoldLuckyCardBy10(player, cards) if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
-      first3GoldLuckyCard(player) if times is not 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      first3GoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
       async.map cards, entityUtil.createCard, cb

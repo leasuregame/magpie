@@ -532,7 +532,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             fontName: "STHeitiTC-Medium",
             fontSize: 20
         });
-        this._stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
+
+        this._stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0));
         this._stopUntilBlueIcon.setPosition(cc.p(80, 178));
         this._stopTypeLabel.addChild(this._stopUntilBlueIcon);
 
@@ -572,8 +573,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             fontName: "STHeitiTC-Medium",
             fontSize: 20
         });
-
-        this._stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
+        this._stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0));
         this._stopUntilYellowIcon.setPosition(cc.p(80, 96));
         this._stopTypeLabel.addChild(this._stopUntilYellowIcon);
     },
@@ -899,7 +899,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         if (isTip) {
             AdvancedTipsLabel.pop({
-                type: TYPE_PASSIVE_SKILL_TIPS,
+                type: TYPE_PASSIVE_SKILL_AFRESH_TIPS,
                 cb: cb
             });
         } else {
@@ -965,7 +965,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         if (isTip) {
             AdvancedTipsLabel.pop({
-                type: TYPE_PASSIVE_SKILL_TIPS,
+                type: TYPE_PASSIVE_SKILL_AFRESH_TIPS,
                 cb: cb
             });
         } else {

@@ -23,7 +23,7 @@ var PassiveSkillLabel = LazyLayer.extend({
         this._card = args.card;
         this._cb = args.cb;
 
-        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        this.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
 
         this._selectId = args.id || this._card.getActivePassiveSkillId();
 
@@ -62,7 +62,7 @@ var PassiveSkillLabel = LazyLayer.extend({
         OKItem.setPosition(cc.p(0, -360));
 
         var menu = cc.Menu.create(OKItem);
-        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         this._frameLayer.addChild(menu);
 
@@ -85,7 +85,7 @@ var PassiveSkillLabel = LazyLayer.extend({
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
         this._groupLayer.addChild(menu);
 
         this._selectIcon = cc.Sprite.create(main_scene_image.icon422);
@@ -148,6 +148,7 @@ var PassiveSkillLabel = LazyLayer.extend({
                         color: color
                     }
                 );
+                skillLabel.setAnchorPoint(cc.p(0, 0));
                 skillLabel.setPosition(cc.p(x, y));
                 this._groupLayer.addChild(skillLabel, 2);
 
@@ -200,9 +201,17 @@ var PassiveSkillLabel = LazyLayer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        this._card.openPassiveSkill(function () {
-            that.update();
+        var cb = function () {
+            that._card.openPassiveSkill(function () {
+                that.update();
+            });
+        };
+
+        AdvancedTipsLabel.pop({
+            type: TYPE_PASSIVE_SKILL_OPEN_TIPS,
+            cb: cb
         });
+
     },
 
     _onClickGroup: function (id) {
@@ -237,5 +246,5 @@ PassiveSkillLabel.pop = function (args) {
     cc.log("PassiveSkillLabel pop");
 
     var passiveSkillLabel = PassiveSkillLabel.create(args);
-    cc.Director.getInstance().getRunningScene().addChild(passiveSkillLabel, 10);
+    cc.Director.getInstance().getRunningScene().addChild(passiveSkillLabel, 5);
 };

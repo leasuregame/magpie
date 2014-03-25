@@ -312,7 +312,7 @@ var BossListLayer = cc.Layer.extend({
                         color: cc.c3b(117, 255, 57)
                     }
                 );
-                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
                 rewardAdditionLabel.setPosition(cc.p(330, y + 32));
                 scrollViewLayer.addChild(rewardAdditionLabel);
             }
@@ -419,7 +419,10 @@ var BossListLayer = cc.Layer.extend({
             });
         };
 
-        RemoveCdTipLabel.pop({cb: cb});
+        AdvancedTipsLabel.pop({
+            type: TYPE_REMOVE_CD_TIPS,
+            cb: cb
+        });
     },
 
     _onClickReward: function () {

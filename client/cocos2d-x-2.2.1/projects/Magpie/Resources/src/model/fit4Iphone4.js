@@ -1459,7 +1459,7 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 88),
             "bgSpriteContentSize": cc.size(540, 720),
             "bgSpritePoint": cc.p(360, 492),
-            "tipLabelPoint": cc.p(200, 792),
+            "tipLabelPoint": cc.p(360, 792),
             "closeItemPoint": cc.p(605, 837),
             "scrollViewHeight": 600,
             "scrollViewLayerRect": cc.rect(0, 0, 500, 600),

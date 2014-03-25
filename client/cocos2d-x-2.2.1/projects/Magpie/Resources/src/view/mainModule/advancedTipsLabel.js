@@ -3,16 +3,20 @@
  */
 
 var TYPE_CARD_TIPS = 0;
-var TYPE_PASSIVE_SKILL_TIPS = 1;
+var TYPE_PASSIVE_SKILL_AFRESH_TIPS = 1;
+var TYPE_PASSIVE_SKILL_OPEN_TIPS = 2;
+var TYPE_REMOVE_CD_TIPS = 3;
+
+var spendFailTip = {
+    gold: "魔石不足",
+    money: "仙币不足"
+};
 
 var AdvancedTipsLabel = LazyLayer.extend({
 
     _cb: null,
-
-    _tips: {
-        0: "所选中卡牌中有4或5星卡，确定继续么",
-        1: "当前卡牌有金色属性，是否要继续洗练"
-    },
+    _spend: null,
+    _frameLayer: null,
 
     init: function (args) {
         cc.log("AdvancedTipsLabel init");
@@ -27,23 +31,19 @@ var AdvancedTipsLabel = LazyLayer.extend({
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
-        var node = cc.Node.create();
-        node.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(node);
+        this._frameLayer = cc.Node.create();
+        this._frameLayer.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(this._frameLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 250));
         bgSprite.setPosition(cc.p(0, 0));
-        node.addChild(bgSprite);
+        this._frameLayer.addChild(bgSprite);
 
         var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
         msgBgIcon.setPosition(cc.p(0, 30));
         msgBgIcon.setScaleX(0.95);
-        node.addChild(msgBgIcon);
-
-        var tipLabel = cc.LabelTTF.create(this._tips[args.type], "STHeitiTC-Medium", 25);
-        tipLabel.setPosition(cc.p(0, 30));
-        node.addChild(tipLabel);
+        this._frameLayer.addChild(msgBgIcon);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -65,15 +65,117 @@ var AdvancedTipsLabel = LazyLayer.extend({
 
         var menu = cc.Menu.create(cancelItem, continueItem);
         menu.setPosition(cc.p(0, 0));
-        node.addChild(menu);
+        this._frameLayer.addChild(menu);
+
+        if(args.type == TYPE_PASSIVE_SKILL_OPEN_TIPS) {
+            this.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
+            menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
+        }
+
+        this._initWithTipsType(args.type);
 
         return true;
+    },
+
+    _initWithTipsType: function (tipsType) {
+        switch (tipsType) {
+            case TYPE_CARD_TIPS:
+                this._initCardTips();
+                break;
+            case TYPE_PASSIVE_SKILL_AFRESH_TIPS:
+                this._initPassiveSkillAfreshTips();
+                break;
+            case TYPE_PASSIVE_SKILL_OPEN_TIPS:
+                this._initPassiveSKillOpenTips();
+                break;
+            case  TYPE_REMOVE_CD_TIPS:
+                this._initRemoveCdTips();
+                break;
+        }
+    },
+
+    _initCardTips: function () {
+        cc.log("AdvancedTipsLabel _initCardTips");
+
+        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4或5星卡，确定继续么", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
+    },
+
+    _initPassiveSkillAfreshTips: function () {
+        var tipLabel = cc.LabelTTF.create("当前卡牌有金色属性，是否要继续洗练", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
+    },
+
+    _initPassiveSKillOpenTips: function () {
+        cc.log("AdvancedTipsLabel _initPassiveSKillOpenTips");
+
+        var needGold = 50;
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                goodsName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "开启新的被动属性?",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "gold",
+            num: needGold
+        }
+    },
+
+    _initRemoveCdTips: function () {
+        cc.log("AdvancedTipsLabel _initRemoveCdTips");
+
+        var needGold = gameData.boss.removeCdNeedGold();
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                goodsName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "消除CD?",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "gold",
+            num: needGold
+        }
+
     },
 
     _onClickCancel: function () {
         cc.log("AdvancedTipsLabel _onClickCancel");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     },
 
@@ -84,9 +186,18 @@ var AdvancedTipsLabel = LazyLayer.extend({
 
         this.removeFromParent();
 
+        if (this._spend) {
+            var type = this._spend.type;
+            if (gameData.player.get(type) < this._spend.num) {
+                TipLayer.tip(spendFailTip[type]);
+                return;
+            }
+        }
+
         if (this._cb) {
             this._cb();
         }
+
     }
 
 });
@@ -108,5 +219,9 @@ AdvancedTipsLabel.pop = function (args) {
 
     var advancedTipsLabel = AdvancedTipsLabel.create(args);
 
-    MainScene.getInstance().getLayer().addChild(advancedTipsLabel, 10);
+    if (args.type != TYPE_PASSIVE_SKILL_OPEN_TIPS) {
+        MainScene.getInstance().getLayer().addChild(advancedTipsLabel, 10);
+    } else {
+        cc.Director.getInstance().getRunningScene().addChild(advancedTipsLabel, 10);
+    }
 };

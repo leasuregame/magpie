@@ -98,7 +98,7 @@ var BossLayer = cc.Layer.extend({
                 }
             );
             rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
-            rewardAdditionLabel.setPosition(cc.p(gameFit.GAME_MIDPOINT.x, point.y + 5));
+            rewardAdditionLabel.setPosition(cc.p(gameFit.GAME_MIDPOINT.x, point.y + 15));
             this.addChild(rewardAdditionLabel);
         }
 
@@ -384,7 +384,10 @@ var BossLayer = cc.Layer.extend({
             });
         };
 
-        RemoveCdTipLabel.pop({cb: cb});
+        AdvancedTipsLabel.pop({
+            type: TYPE_REMOVE_CD_TIPS,
+            cb: cb
+        });
     },
 
     _onClickBack: function () {

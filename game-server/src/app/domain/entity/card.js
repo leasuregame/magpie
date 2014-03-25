@@ -139,14 +139,6 @@ var checkSkillLv = function(card) {
     card.skillLv = skillLv;
 };
 
-var correctId = function(group) {
-
-    group.items.forEach(function(item, index) {
-        item.id = index;
-    });
-
-};
-
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -378,7 +370,7 @@ var Card = (function(_super) {
         var pss = _.clone(this.passiveSkills);
         var star = this.star;
         pss.forEach(function(group) {
-            group = correctId(new PassiveSkillGroup(group).create(star).toJson());
+            group = new PassiveSkillGroup(group).create(star).toJson();
         });
         this.passiveSkills = pss;
 

@@ -647,7 +647,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
 
     result = {
       ability: card.ability(),
-      passiveSkills: card.passiveSkills
+      passiveSkill: card.passiveSkills.filter((p) -> p.id is groupId)[0]
     }
 
     next(null, {code: 200, msg: result})

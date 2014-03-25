@@ -319,7 +319,15 @@ var Player = (function(_super) {
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
-            rmTimerCount: 1
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
+            }
         },
         fragments: 0,
         energy: 0,
@@ -444,6 +452,32 @@ var Player = (function(_super) {
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount
         };
+    };
+
+    Player.prototype.incGoldLuckyCard10 = function(){
+        var goldLuckyCard10 = this.dailyGift.goldLuckyCard10;
+        if (_.isUndefined(goldLuckyCard10)) {
+            goldLuckyCard10 = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCard10.count += 1;
+        this.updateGift('goldLuckyCard10', goldLuckyCard10);
+    };
+
+    Player.prototype.incGoldLuckyCardForFragment = function(){
+        var goldLuckyCardForFragment = this.dailyGift.goldLuckyCardForFragment;
+        if (_.isUndefined(goldLuckyCardForFragment)) {
+            goldLuckyCardForFragment = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCardForFragment.count += 1;
+        this.updateGift('goldLuckyCardForFragment', goldLuckyCardForFragment);
     };
 
     Player.prototype.isReset = function() {
@@ -1263,7 +1297,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incInitRate = function(star, val) {
-        if (star < 1 || star > 4) {
+        if (star < 1 || star > 6) {
             return;
         }
 

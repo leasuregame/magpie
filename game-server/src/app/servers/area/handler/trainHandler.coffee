@@ -241,6 +241,39 @@ Handler::luckyCard = (msg, session, next) ->
         #@app.get('messageService').pushMessage(msg)
         msgQueue.push(msg)
 
+  first5GoldLuckyCardBy10 = (player, cards) ->
+    ### 每天前5次魔石10连抽，必得一张5星卡 ###
+
+    rates = 
+      1: 25
+      2: 35
+      3: 45
+      4: 55
+      5: 100
+
+    player.incGoldLuckyCard10()
+    goldLuckyCard10 = player.dailyGift.goldLuckyCard10
+    if not goldLuckyCard10.got and utility.hitRate rates[goldLuckyCard10.count]
+      grainFiveStarCard(cards, player)
+      goldLuckyCard10.got = true
+      player.updateGift 'goldLuckyCard10', goldLuckyCard10
+
+
+  first3GoldLuckyCard = (player) ->
+    ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
+
+    rates = 
+      1: 50
+      2: 70
+      3: 100
+
+    player.incGoldLuckyCardForFragment()
+    goldLuckyCardForFragment = player.dailyGift.goldLuckyCardForFragment
+    if not goldLuckyCardForFragment.got and utility.hitRate rates[goldLuckyCardForFragment.count]
+      totalFragment += 1
+      goldLuckyCardForFragment.got true
+      player.updateGift 'goldLuckyCardForFragment', goldLuckyCardForFragment
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -272,6 +305,9 @@ Handler::luckyCard = (msg, session, next) ->
       else
           player.set('highFragmentCount', hfc)
           player.set('highDrawCardCount', hdcc)
+
+      first5GoldLuckyCardBy10(player, cards) if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      first3GoldLuckyCard(player) if times is not 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
       async.map cards, entityUtil.createCard, cb
@@ -411,7 +447,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.tableId >= 10000
         return cb({code: 501, msg: "该卡牌不可以进阶"})
 
-      if card.star is 5
+      if card.star is 7
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
       if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
@@ -523,7 +559,13 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
+    next(null, {code: 200, msg: {
+      upgrade: is_upgrade, 
+      card: card?.toJson(), 
+      initRate: player.initRate,
+      money: player.money,
+      superHonor: player.superHonor
+    }})
 
 Handler::passSkillActive = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -641,7 +683,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
 
     result = {
       ability: card.ability(),
-      passiveSkills: card.passiveSkills
+      passiveSkill: card.passiveSkills.filter((p) -> p.id is groupId)[0]
     }
 
     next(null, {code: 200, msg: result})

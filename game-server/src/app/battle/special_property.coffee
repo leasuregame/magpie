@@ -37,7 +37,7 @@ class SpecialProperty
   dmgReduce: (val, disrupting) ->
     return val if not @has('dmg_reduce') 
 
-    parseInt( val * ( 1 - (@get('dmg_reduce')-disrupting)/100 ) )
+    parseInt( val * ( 1 - (@get('dmg_reduce')-(disrupting||0))/100 ) )
 
   dmgRebound: (val) ->
     return 0 if not @has('dmg_rebound') 
@@ -46,7 +46,7 @@ class SpecialProperty
 
   _hit: (type, val) ->
     return false if not @has(type) 
-    utility.hitRate @get(type)-val
+    utility.hitRate @get(type)-(val||0)
 
 exports = module.exports = SpecialProperty
       

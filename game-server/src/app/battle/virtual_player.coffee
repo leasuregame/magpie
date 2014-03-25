@@ -91,7 +91,7 @@ parseCards = (data) ->
 
 randomLineUp = (cards) ->
   ids = _.map cards, (c) -> c.id
-  pos = ['00', '01', '02', '10', '11', '12']
+  pos = [1,2,3,4,5,6]
   pos_copy = _.clone(pos)
 
   _res = []

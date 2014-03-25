@@ -89,10 +89,10 @@ class Hero extends Module
     @state is STATE_ATTACKED
 
   isDodge: (enemy) ->
-    if @sp? then @sp.isDodge(enemy.sp.get('hit')) else false
+    if @sp? then @sp.isDodge(enemy.sp?.get('hit')) else false
 
   isCrit: (enemy) ->
-    if @sp? then @sp.isCrit(enemy.sp.get('toughness')) else false
+    if @sp? then @sp.isCrit(enemy.sp?.get('toughness')) else false
 
   usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
     return callback() if @player.enemy.death()
@@ -204,7 +204,7 @@ class Hero extends Module
     @hp -= value
   
   _checkDmgReduce: (enemy, value, step) ->
-    _value = @sp?.dmgReduce(value, enemy.sp.get('disrupting')) or value
+    _value = @sp?.dmgReduce(value, enemy.sp?.get('disrupting')) or value
     if _value < value
       step.e.pop()
       step.e.push -_value

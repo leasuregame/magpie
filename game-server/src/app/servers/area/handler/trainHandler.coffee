@@ -411,7 +411,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.tableId >= 10000
         return cb({code: 501, msg: "该卡牌不可以进阶"})
 
-      if card.star is 5
+      if card.star is 7
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
       if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
@@ -523,7 +523,13 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card?.toJson(), initRate: player.initRate}})
+    next(null, {code: 200, msg: {
+      upgrade: is_upgrade, 
+      card: card?.toJson(), 
+      initRate: player.initRate,
+      money: player.money,
+      superHonor: player.superHonor
+    }})
 
 Handler::passSkillActive = (msg, session, next) ->
   playerId = session.get('playerId')

@@ -324,8 +324,8 @@ var Card = (function(_super) {
                 var items = group[0].items;
 
                 var sum = items.filter(function(ps) {
-                    return should_inc_ps.indexOf(ps.name) > -1;
-                })
+                        return should_inc_ps.indexOf(ps.name) > -1;
+                    })
                     .map(function(ps) {
                         return ps.value * ae[ps.name];
                     })

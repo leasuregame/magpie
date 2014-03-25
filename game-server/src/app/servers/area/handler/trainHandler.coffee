@@ -420,8 +420,14 @@ Handler::starUpgrade = (msg, session, next) ->
       starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
       if not starUpgradeConfig
         return cb({code: 500, msg: "找不到卡牌进阶的配置信息"})
-      if _.isEmpty(player.getCards(sources))
+
+      sourceCards = player.getCards(sources)
+      if _.isEmpty(sourceCards)
         return cb({code: 501, msg: "找不到素材卡牌"})
+
+      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeConfig.source_card_star).length
+      if badCardsCount > 0
+        return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeConfig.source_card_star}星"})
 
       cb(null)
 
@@ -430,6 +436,9 @@ Handler::starUpgrade = (msg, session, next) ->
       
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
+
+      if starUpgradeConfig.super_honor > 0 and player.superHonor < starUpgradeConfig.super_honor
+        return cb({code: 501, msg: '精元不足'})
 
       rate = player.initRate['star'+card.star] or 0
       max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
@@ -445,6 +454,7 @@ Handler::starUpgrade = (msg, session, next) ->
         card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)
+      player.decrease('superHonor', starUpgradeConfig.super_honor) if starUpgradeConfig.super_honor > 0
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)

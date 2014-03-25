@@ -324,8 +324,8 @@ var Card = (function(_super) {
                 var items = group[0].items;
 
                 var sum = items.filter(function(ps) {
-                    return should_inc_ps.indexOf(ps.name) > -1;
-                })
+                        return should_inc_ps.indexOf(ps.name) > -1;
+                    })
                     .map(function(ps) {
                         return ps.value * ae[ps.name];
                     })
@@ -373,27 +373,6 @@ var Card = (function(_super) {
             group = new PassiveSkillGroup(group).create(star).toJson();
         });
         this.passiveSkills = pss;
-
-        // var born_rates = psConfig.BORN_RATES;
-        // var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
-        // var value = _.random(100, psConfig.INIT_MAX * 100);
-        // var id;
-        // if (this.passiveSkills.length == 0)
-        //     id = 0;
-        // else {
-        //     var maxId = 0;
-        //     this.passiveSkills.forEach(function(ps) {
-        //         if (ps.id > maxId)
-        //             maxId = ps.id;
-        //     });
-        //     id = maxId + 1;
-        // }
-        // var ps = {
-        //     id: id,
-        //     name: name,
-        //     value: parseFloat((value / 100).toFixed(1))
-        // };
-        // this.addPassiveSkill(ps);
     };
 
 

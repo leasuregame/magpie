@@ -789,7 +789,8 @@ var initPassiveSkills, initPassiveSkillGroup;
 
 initPassiveSkills = function(star) {
   var count, end, i, index, results, start, _i, _ref;
-
+  star = star > 5 ? 5 : star;
+  
   count = star - 2;
   results = [];
   for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {

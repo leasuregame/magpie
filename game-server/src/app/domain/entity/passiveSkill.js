@@ -65,10 +65,10 @@ PassiveSkillGroup.prototype.born = function(id) {
 };
 
 PassiveSkillGroup.prototype.afrash = function(type, star, ps, lock) {
-  if (!ps || _.isUndefined(lock)) return;
+  if (!ps || _.isUndefined(lock) || lock == LOCK.BOTH) return;
 
   var born_rates = psConfig.BORN_RATES;
-  var star = star >= 5 ? this.star : 5;
+  var star = star >= 5 ? star : 5;
   var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
 
   var name = ps.name, value = ps.value;

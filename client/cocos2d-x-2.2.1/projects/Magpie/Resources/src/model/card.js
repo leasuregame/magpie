@@ -507,7 +507,7 @@ var Card = Entity.extend({
 
     getActivePassiveSkill: function () {
         cc.log("Card getActivePassiveSkill");
-        cc.log(this._passiveSkill);
+
         for (var key in this._passiveSkill) {
             var passiveSkill = this._passiveSkill[key];
             if (passiveSkill.active) {
@@ -531,6 +531,16 @@ var Card = Entity.extend({
         return null;
     },
 
+    getPassiveSkillById: function (id) {
+        cc.log("Card getPassiveSkillById: " + id);
+
+        if(this._passiveSkill[id]) {
+            return this._passiveSkill[id].items;
+        }
+
+        return null;
+    },
+
     updateActivePassiveSkill: function (id) {
         cc.log("Card updateActivePassiveSkill: " + id);
 
@@ -544,14 +554,16 @@ var Card = Entity.extend({
         this._passiveSkill[id].active = true;
     },
 
-    afreshPassiveSkill: function (cb, afreshIdList, type) {
+    afreshPassiveSkill: function (cb, gid, afreshIdList, type) {
         cc.log("Card afreshPassiveSkill " + this._id);
+        cc.log(gid);
         cc.log(afreshIdList);
         cc.log(type);
 
         var that = this;
         lz.server.request("area.trainHandler.passSkillAfresh", {
             cardId: this._id,
+            groupId: gid,
             psIds: afreshIdList,
             type: type
         }, function (data) {
@@ -562,7 +574,8 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update(msg);
+                that.set("ability", msg.ability);
+                that._updatePassiveSkills(msg.passiveSkills);
 
                 if (type == USE_MONEY) {
                     gameData.player.add("money", -2000);

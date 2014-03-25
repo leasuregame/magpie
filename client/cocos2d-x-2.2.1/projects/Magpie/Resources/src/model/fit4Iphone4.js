@@ -887,6 +887,7 @@ var fit4Iphone4 = {
             "nameLabelPoint": cc.p(243, 654),
             "lvLabelPoint": cc.p(245, 620),
             "resLabelPoint": cc.p(133, 212),
+            "resLabelBgSpritePoint": cc.p(-60, 0),
             "basePointY": 308,
             "offsetPointY": 78,
             "stopTypeLabelPoint": cc.p(106, 292),

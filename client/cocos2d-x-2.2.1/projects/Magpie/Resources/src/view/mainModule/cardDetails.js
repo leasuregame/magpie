@@ -326,8 +326,12 @@ var CardDetails = LazyLayer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        var cb = function () {
-            that._updatePassiveSkill();
+        var cb = function (id) {
+            if (id != that._card.getActivePassiveSkillId()) {
+                that._card.activePassiveSkill(function () {
+                    that._updatePassiveSkill();
+                }, id);
+            }
         };
 
         PassiveSkillLabel.pop(

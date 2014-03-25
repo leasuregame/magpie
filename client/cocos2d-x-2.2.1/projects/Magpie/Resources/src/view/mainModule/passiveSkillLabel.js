@@ -25,7 +25,7 @@ var PassiveSkillLabel = LazyLayer.extend({
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        this._selectId = this._card.getActivePassiveSkillId();
+        this._selectId = args.id || this._card.getActivePassiveSkillId();
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -91,6 +91,10 @@ var PassiveSkillLabel = LazyLayer.extend({
         this._selectIcon = cc.Sprite.create(main_scene_image.icon422);
         this._groupLayer.addChild(this._selectIcon, 1);
 
+        this._selectIcon2 = cc.Sprite.create(main_scene_image.icon275);
+        this._selectIcon2.setPosition(cc.p(-236, 0));
+        this._groupLayer.addChild(this._selectIcon2, 3);
+
         var index = 0;
         var y = 320 - 38;
 
@@ -109,7 +113,7 @@ var PassiveSkillLabel = LazyLayer.extend({
             menu.addChild(groupItem);
             this._groupItems[passiveSkill.id] = groupItem;
 
-            var openIcon = cc.Sprite.create(main_scene_image.icon75);
+            var openIcon = cc.Sprite.create(main_scene_image.button25);
             openIcon.setPosition(cc.p(-236, y + 1));
             this._groupLayer.addChild(openIcon, 2);
 
@@ -124,7 +128,7 @@ var PassiveSkillLabel = LazyLayer.extend({
                         fontSize: 22
                     },
                     {
-                        string: item.value + "%",
+                        string: item.value.toFixed(1) + "%",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
                         color: cc.c3b(117, 255, 57)
@@ -136,8 +140,9 @@ var PassiveSkillLabel = LazyLayer.extend({
                 x += 150;
             }
 
-            if (passiveSkill.active) {
+            if (passiveSkill.id == this._selectId) {
                 this._selectIcon.setPosition(cc.p(0, y));
+                this._selectIcon2.setPosition(cc.p(-236, y + 1));
             }
 
             index++;
@@ -168,21 +173,11 @@ var PassiveSkillLabel = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (this._selectId == this._card.getActivePassiveSkillId()) {
-            this.removeFromParent();
-            return;
+        this.removeFromParent();
+
+        if (this._cb) {
+            this._cb(this._selectId);
         }
-
-        var that = this;
-
-        this._card.activePassiveSkill(function () {
-            that.removeFromParent();
-
-            if (that._cb) {
-                that._cb();
-            }
-
-        }, this._selectId);
     },
 
     _onClickLock: function () {
@@ -206,7 +201,9 @@ var PassiveSkillLabel = LazyLayer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             that._selectId = id;
-            that._selectIcon.setPosition(that._groupItems[id].getPosition());
+            var point = that._groupItems[id].getPosition();
+            that._selectIcon.setPosition(point);
+            that._selectIcon2.setPosition(cc.p(-236, point.y + 1));
         }
     }
 

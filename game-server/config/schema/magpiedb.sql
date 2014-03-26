@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,
-  `amount` INT(5) UNSIGNED,
+  `amount` INT(5) UNSIGNED DEFAULT '0',
   `isVerify` BOOLEAN DEFAULT '0',
   `status` INT(6),
   PRIMARY KEY (`id`)

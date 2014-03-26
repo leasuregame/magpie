@@ -27,9 +27,14 @@ Data.prototype.changeCardPassiveSkill = function() {
     
     totalCount = cards.length;
     async.each(cards, function(card, done) {
+      var ps = [];
+      if (card.passiveSkills.length > 0 && !card.passiveSkills[0].items) {
+        ps = card.passiveSkills;
+      }
+
       card.passiveSkills = [{
         id: 1,
-        items: [],
+        items: ps,
         active: true
       },{
         id: 2,

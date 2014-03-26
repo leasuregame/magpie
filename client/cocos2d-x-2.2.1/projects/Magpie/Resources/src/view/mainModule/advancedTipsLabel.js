@@ -6,10 +6,12 @@ var TYPE_CARD_TIPS = 0;
 var TYPE_PASSIVE_SKILL_AFRESH_TIPS = 1;
 var TYPE_PASSIVE_SKILL_OPEN_TIPS = 2;
 var TYPE_REMOVE_CD_TIPS = 3;
+var TYPE_EXCHANGE_CARD_TIPS = 4;
 
 var spendFailTip = {
     gold: "魔石不足",
-    money: "仙币不足"
+    money: "仙币不足",
+    fragment: "卡魂不足"
 };
 
 var AdvancedTipsLabel = LazyLayer.extend({
@@ -91,6 +93,9 @@ var AdvancedTipsLabel = LazyLayer.extend({
             case  TYPE_REMOVE_CD_TIPS:
                 this._initRemoveCdTips();
                 break;
+            case TYPE_EXCHANGE_CARD_TIPS:
+                this._initExchangeCardTips();
+                break;
         }
     },
 
@@ -169,6 +174,37 @@ var AdvancedTipsLabel = LazyLayer.extend({
             num: needGold
         }
 
+    },
+
+    _initExchangeCardTips: function() {
+        cc.log("AdvancedTipsLabel _initExchangeCardTips");
+
+        var needFragment = this._otherData.fragment;
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定消耗" + needFragment,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                goodsName: "fragment",
+                scale: 0.8
+            },
+            {
+                string: "兑换该卡牌",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "fragment",
+            num: needFragment
+        }
     },
 
     _onClickCancel: function () {

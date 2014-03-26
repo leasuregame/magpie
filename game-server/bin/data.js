@@ -41,6 +41,7 @@ Data.prototype.changeCardPassiveSkill = function() {
         active: false
       }];
       card.bornPassiveSkill();
+      card.psGroupCount = 3;
       cardDao.update({
         where: {
           id: card.id

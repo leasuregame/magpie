@@ -254,6 +254,7 @@ var Card = (function(_super) {
         }
 
         this.passiveSkills = pss;
+        this.psGroupCount = pss.length;
         this.emit('add.passiveSkill');
     };
 

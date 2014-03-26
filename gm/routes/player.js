@@ -126,7 +126,7 @@ var player = function (app) {
         var area = JSON.parse(query['area']);
         var data = JSON.parse(player);
 
-
+        console.log(player, data);
         var options = {
             where: {
                 name: data.name,

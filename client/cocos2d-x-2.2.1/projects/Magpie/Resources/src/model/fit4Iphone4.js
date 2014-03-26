@@ -268,7 +268,7 @@ var fit4Iphone4 = {
             "line2IconPoint": cc.p(360, 242),
             "line3IconPoint": cc.p(360, 112),
             "nameLabelPoint": cc.p(360, 932),
-            "starBasePoint": cc.p(420, 862),
+            "starBasePoint": cc.p(350, 862),
             "starOffsetX": 50,
             "lvBgSpritePoint": cc.p(530, 782),
             "hpBgSpritePoint": cc.p(530, 702),

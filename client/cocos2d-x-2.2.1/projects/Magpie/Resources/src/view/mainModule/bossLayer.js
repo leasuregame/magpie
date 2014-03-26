@@ -354,7 +354,7 @@ var BossLayer = cc.Layer.extend({
         var that = this;
 
         if (this._cdTime > 0) {
-            TipLayer.tip("CD冷却时间未到");
+            TipLayer.tip("CD未到");
             return;
         }
 

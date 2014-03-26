@@ -77,7 +77,6 @@ var CardDetails = LazyLayer.extend({
         nameLabel.setPosition(this._cardDetailsFit.nameLabelPoint);
         this.addChild(nameLabel);
 
-
         var star = this._card.get("star");
         for (var i = 0; i < MAX_CARD_STAR; ++i) {
             var starBgSprite = cc.Sprite.create(main_scene_image.star3);

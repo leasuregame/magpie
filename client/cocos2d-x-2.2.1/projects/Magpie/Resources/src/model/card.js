@@ -357,8 +357,8 @@ var Card = Entity.extend({
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
 
-        if(type == 1) {
-           type = (this._star > 5) ? (this._star - 5 + 2) : type;
+        if (type == 1) {
+            type = (this._star > 5) ? (this._star - 5 + 2) : type;
         }
 
         return (skillIconMap[type][this._skillId] || skillIconMap[type][0]);
@@ -720,7 +720,13 @@ var Card = Entity.extend({
     },
 
     getEvolutionNeedSuperHonor: function () {
+        cc.log("Card getEvolutionNeedSuperHonor");
 
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].super_honor;
+        }
+
+        return 0;
     },
 
     evolution: function (cb, cardIdList) {
@@ -740,6 +746,7 @@ var Card = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.add("money", -that.getEvolutionNeedMoney());
+                gameData.player.add("superHonor", -that.getEvolutionNeedSuperHonor());
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);

@@ -95,9 +95,9 @@ var card = function(app) {
             items: card.passiveSkills,
             active: true
         }, {
-            id: 2, items: [], active: false
+            id: 2, items: card.passiveSkills, active: false
         }, {
-            id: 3, items: [], active: false
+            id: 3, items: card.passiveSkills, active: false
         }];
         Card.create(card,function(err,result){
             if(err) {

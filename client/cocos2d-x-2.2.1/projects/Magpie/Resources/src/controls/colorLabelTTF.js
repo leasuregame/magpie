@@ -22,7 +22,7 @@ var ColorLabelTTF = cc.Node.extend({
             var arg = args[i];
             if (arg.goodsName) {
                 var scale = arg.scale || 1.0;
-                var spacing = arg.spacing || 5;
+                var spacing = arg.spacing || 2;
 
                 this.createIcon(arg.goodsName, scale, spacing);
             } else {

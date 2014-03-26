@@ -894,10 +894,7 @@ var CardListLayer = cc.Layer.extend({
             };
 
             if (isShowTip) {
-                AdvancedTipsLabel.pop({
-                    type: TYPE_CARD_TIPS,
-                    cb: cb
-                });
+                AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
             } else {
                 cb();
             }
@@ -983,10 +980,7 @@ var CardListLayer = cc.Layer.extend({
         };
 
         if (isShowTip) {
-            AdvancedTipsLabel.pop({
-                type: TYPE_CARD_TIPS,
-                cb: cb
-            });
+            AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
         } else {
             cb();
         }

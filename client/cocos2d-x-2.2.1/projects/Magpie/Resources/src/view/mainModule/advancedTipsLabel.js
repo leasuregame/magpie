@@ -17,15 +17,15 @@ var AdvancedTipsLabel = LazyLayer.extend({
     _cb: null,
     _spend: null,
     _frameLayer: null,
+    _otherData: null,
 
-    init: function (args) {
+    init: function (type, cb, otherData) {
         cc.log("AdvancedTipsLabel init");
 
         if (!this._super()) return false;
 
-        if (args.cb) {
-            this._cb = args.cb;
-        }
+        this._cb = cb;
+        this._otherData = otherData || {};
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -67,12 +67,12 @@ var AdvancedTipsLabel = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this._frameLayer.addChild(menu);
 
-        if(args.type == TYPE_PASSIVE_SKILL_OPEN_TIPS) {
+        if (type == TYPE_PASSIVE_SKILL_OPEN_TIPS) {
             this.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
             menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
         }
 
-        this._initWithTipsType(args.type);
+        this._initWithTipsType(type);
 
         return true;
     },
@@ -103,7 +103,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
     },
 
     _initPassiveSkillAfreshTips: function () {
-        var tipLabel = cc.LabelTTF.create("当前卡牌有金色属性，是否要继续洗练", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create("当前被动组合有金色属性，继续洗练么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
     },
@@ -111,7 +111,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
     _initPassiveSKillOpenTips: function () {
         cc.log("AdvancedTipsLabel _initPassiveSKillOpenTips");
 
-        var needGold = 50;
+        var needGold = this._otherData.card.getOpenPassiveSkillNeedGold();
 
         var tipsLabel = ColorLabelTTF.create(
             {
@@ -124,7 +124,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 scale: 0.7
             },
             {
-                string: "开启新的被动属性?",
+                string: "开启新的被动组合",
                 fontName: "STHeitiTC-Medium",
                 fontSize: 25
             }
@@ -155,7 +155,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 scale: 0.7
             },
             {
-                string: "消除CD?",
+                string: "消除CD",
                 fontName: "STHeitiTC-Medium",
                 fontSize: 25
             }
@@ -202,24 +202,24 @@ var AdvancedTipsLabel = LazyLayer.extend({
 
 });
 
-AdvancedTipsLabel.create = function (args) {
+AdvancedTipsLabel.create = function (type, cb, otherData) {
     cc.log("AdvancedTipsLabel create");
 
     var ref = new AdvancedTipsLabel();
 
-    if (ref && ref.init(args)) {
+    if (ref && ref.init(type, cb, otherData)) {
         return ref;
     }
 
     return null;
 };
 
-AdvancedTipsLabel.pop = function (args) {
+AdvancedTipsLabel.pop = function (type, cb, otherData) {
     cc.log("AdvancedTipsLabel pop");
 
-    var advancedTipsLabel = AdvancedTipsLabel.create(args);
+    var advancedTipsLabel = AdvancedTipsLabel.create(type, cb, otherData);
 
-    if (args.type != TYPE_PASSIVE_SKILL_OPEN_TIPS) {
+    if (type != TYPE_PASSIVE_SKILL_OPEN_TIPS) {
         MainScene.getInstance().getLayer().addChild(advancedTipsLabel, 10);
     } else {
         cc.Director.getInstance().getRunningScene().addChild(advancedTipsLabel, 10);

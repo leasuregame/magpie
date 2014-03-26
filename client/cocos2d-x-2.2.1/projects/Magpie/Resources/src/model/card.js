@@ -534,11 +534,15 @@ var Card = Entity.extend({
     getPassiveSkillById: function (id) {
         cc.log("Card getPassiveSkillById: " + id);
 
-        if(this._passiveSkill[id]) {
+        if (this._passiveSkill[id]) {
             return this._passiveSkill[id].items;
         }
 
         return null;
+    },
+
+    getOpenPassiveSkillNeedGold: function () {
+        return (Object.keys(this._passiveSkill).length - 2) * 50;
     },
 
     updateActivePassiveSkill: function (id) {
@@ -575,10 +579,10 @@ var Card = Entity.extend({
                 var msg = data.msg;
 
                 that.set("ability", msg.ability);
-                that._updatePassiveSkills(msg.passiveSkills);
+                that._updatePassiveSkill(msg.passiveSkill);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -2000);
+                    gameData.player.add("money", -5000);
                 } else if (type == USE_GOLD) {
                     gameData.player.add("gold", -20);
                 }

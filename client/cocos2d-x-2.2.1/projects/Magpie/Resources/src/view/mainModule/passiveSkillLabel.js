@@ -207,11 +207,7 @@ var PassiveSkillLabel = LazyLayer.extend({
             });
         };
 
-        AdvancedTipsLabel.pop({
-            type: TYPE_PASSIVE_SKILL_OPEN_TIPS,
-            cb: cb
-        });
-
+        AdvancedTipsLabel.pop(TYPE_PASSIVE_SKILL_OPEN_TIPS, cb, {card: this._card});
     },
 
     _onClickGroup: function (id) {

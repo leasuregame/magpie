@@ -640,6 +640,10 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._resLabel.setVisible(true);
 
+        this._resetPassiveSkillLabel();
+    },
+
+    _resetPassiveSkillLabel: function () {
         for (var i = 0; i < 3; ++i) {
             var passiveSkillLabel = this._passiveSkillList[i];
 
@@ -886,24 +890,18 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var id = this._afreshIdList[i].id;
-            if (passiveSkill[id].value >= table.yellow_attribute) {
-                isTip = true;
-                break;
+            if (this._afreshIdList[i].lock != LOCK_TYPE_VALUE) {
+                if (passiveSkill[id].value >= table.yellow_attribute) {
+                    isTip = true;
+                    break;
+                }
             }
         }
 
-        var that = this;
-        var cb = function () {
-            that._afresh();
-        };
-
         if (isTip) {
-            AdvancedTipsLabel.pop({
-                type: TYPE_PASSIVE_SKILL_AFRESH_TIPS,
-                cb: cb
-            });
+            AdvancedTipsLabel.pop(TYPE_PASSIVE_SKILL_AFRESH_TIPS, this._afresh);
         } else {
-            cb();
+            this._afresh();
         }
     },
 
@@ -941,9 +939,11 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         for (var i = 0; i < len; i++) {
             var id = this._afreshIdList[i].id;
-            if (passiveSkill[id].value >= table.yellow_attribute) {
-                isTip = true;
-                break;
+            if (this._afreshIdList[i].lock != LOCK_TYPE_VALUE) {
+                if (passiveSkill[id].value >= table.yellow_attribute) {
+                    isTip = true;
+                    break;
+                }
             }
         }
 
@@ -964,10 +964,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         };
 
         if (isTip) {
-            AdvancedTipsLabel.pop({
-                type: TYPE_PASSIVE_SKILL_AFRESH_TIPS,
-                cb: cb
-            });
+            AdvancedTipsLabel.pop(TYPE_PASSIVE_SKILL_AFRESH_TIPS, cb);
         } else {
             cb();
         }
@@ -1021,6 +1018,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             cc.log(id);
             if (id != that._selectId) {
                 that._selectId = id;
+                that._resetPassiveSkillLabel();
                 that.update();
             }
         };

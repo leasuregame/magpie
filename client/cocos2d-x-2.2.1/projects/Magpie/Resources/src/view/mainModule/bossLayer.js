@@ -378,15 +378,11 @@ var BossLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        var cb = function () {
+
+        AdvancedTipsLabel.pop(TYPE_REMOVE_CD_TIPS, function () {
             gameData.boss.removeTimer(function () {
                 that.update();
             });
-        };
-
-        AdvancedTipsLabel.pop({
-            type: TYPE_REMOVE_CD_TIPS,
-            cb: cb
         });
     },
 

@@ -90,6 +90,15 @@ var card = function(app) {
         var card = JSON.parse(query["card"]);
         logger.info("[add]" + JSON.stringify(card));
        // console.log(card);
+        card.passiveSkills = [{
+            id: 1,
+            items: card.passiveSkills,
+            active: true
+        }, {
+            id: 2, items: [], active: false
+        }, {
+            id: 3, items: [], active: false
+        }];
         Card.create(card,function(err,result){
             if(err) {
                if(err == 'tableIdError')   {

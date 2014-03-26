@@ -485,8 +485,8 @@ Handler::starUpgrade = (msg, session, next) ->
       totalRate = _.min([addRate + rate, 100])
 
       is_upgrade = !!utility.hitRate(totalRate)
-      if card.star is 4 
-        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 10)
+      if card.star >= 4 
+        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 0)
         card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)

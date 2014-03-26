@@ -3,6 +3,7 @@ Boss = require './boss_hero'
 _ = require 'underscore'
 table = require '../manager/table'
 logger = require('pomelo-logger').getLogger(__filename)
+battleLog = require './battle_log'
 
 class BossPlayer extends Player
   init: (boss) ->
@@ -28,7 +29,7 @@ class BossPlayer extends Player
   loadHeros: ->
     @heros = if @cards? then new Boss(c, @) for c in @cards else []
 
-  getCards: ->
+  setCards: ->
     cobj = {}
     for c in @heros
       cobj[c.idx] = {
@@ -39,6 +40,12 @@ class BossPlayer extends Player
         totalHp: c.total_hp
       }
     cobj
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
 parseCards = (cardIds, boss) ->
   cards = []

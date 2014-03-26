@@ -136,6 +136,8 @@ var main_scene_image = {
     card_frame3: main_scene_path + "card_frame3.png",
     card_frame4: main_scene_path + "card_frame4.png",
     card_frame5: main_scene_path + "card_frame5.png",
+    card_frame6: main_scene_path + "card_frame6.png",
+    card_frame7: main_scene_path + "card_frame7.png",
 
     card_icon_1_0: main_scene_path + "card_icon_1_0.png",
     card_icon_1_1: main_scene_path + "card_icon_1_1.png",
@@ -151,14 +153,28 @@ var main_scene_image = {
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
 
+    card_icon_3_1: main_scene_path + "card_icon_3_1.png",
+    card_icon_3_2: main_scene_path + "card_icon_3_2.png",
+    card_icon_3_3: main_scene_path + "card_icon_3_3.png",
+    card_icon_3_4: main_scene_path + "card_icon_3_4.png",
+    card_icon_3_5: main_scene_path + "card_icon_3_5.png",
+
+    card_icon_4_1: main_scene_path + "card_icon_4_1.png",
+    card_icon_4_2: main_scene_path + "card_icon_4_2.png",
+    card_icon_4_3: main_scene_path + "card_icon_4_3.png",
+    card_icon_4_4: main_scene_path + "card_icon_4_4.png",
+    card_icon_4_5: main_scene_path + "card_icon_4_5.png",
+
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
+    card_item_bg0: main_scene_path + "card_item_bg0.png",
+    card_item_bg0s: main_scene_path + "card_item_bg0s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
     card_item_bg2: main_scene_path + "card_item_bg2.png",
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
     card_item_bg6: main_scene_path + "card_item_bg6.png",
-    card_item_bg6s: main_scene_path + "card_item_bg6s.png",
+    card_item_bg7: main_scene_path + "card_item_bg7.png",
 
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
@@ -754,6 +770,7 @@ var main_scene_image = {
     icon423: main_scene_path + "icon423.png",
     icon424: main_scene_path + "icon424.png",
     icon425: main_scene_path + "icon425.png",
+    icon426: main_scene_path + "icon426.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",

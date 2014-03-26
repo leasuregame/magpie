@@ -41,6 +41,8 @@ var CardEvolutionLabel = cc.Layer.extend({
     _cardPssSkillLabel: [],
     _oldStarIcon: [],
     _newStarIcon: [],
+    _resBgIcon: [],
+    _resBgIcon2: [],
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -79,15 +81,19 @@ var CardEvolutionLabel = cc.Layer.extend({
         this._resLabel.setPosition(this._cardEvolutionLayerFit.resLabelPoint);
         this.addChild(this._resLabel);
 
-        var resBgIcon = cc.Sprite.create(main_scene_image.icon337);
-        resBgIcon.setPosition(cc.p(-145, 0));
-        this._resLabel.addChild(resBgIcon);
 
-        var resBgIcon2 = cc.Sprite.create(main_scene_image.icon337);
-        resBgIcon2.setPosition(cc.p(145, 0));
-        this._resLabel.addChild(resBgIcon2);
+        var icons = ["icon337", "icon426"];
 
         for (var i = 0; i < 2; ++i) {
+
+            this._resBgIcon[i] = cc.Sprite.create(main_scene_image[icons[i]]);
+            this._resBgIcon[i].setPosition(cc.p(-145, 0));
+            this._resLabel.addChild(this._resBgIcon[i]);
+
+            this._resBgIcon2[i] = cc.Sprite.create(main_scene_image[icons[i]]);
+            this._resBgIcon2[i].setPosition(cc.p(145, 0));
+            this._resLabel.addChild(this._resBgIcon2[i] );
+
             this._cardLvLabel[i] = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
             this._cardLvLabel[i].setPosition(-140 + i * 290, 82);
             this._resLabel.addChild(this._cardLvLabel[i]);
@@ -132,7 +138,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         this.addChild(this._evolutionRateLabel);
 
         var point = this._cardEvolutionLayerFit.starPoint;
-        for (var i = 0; i < 5; ++i) {
+        for (var i = 0; i < MAX_CARD_STAR; ++i) {
             var x = point.x - 240;
             var y = point.y - 30 * i;
             var starBgIcon = cc.Sprite.create(main_scene_image.icon339);
@@ -280,11 +286,13 @@ var CardEvolutionLabel = cc.Layer.extend({
                 )
             );
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < MAX_CARD_STAR; i++) {
                 this._oldStarIcon[i].setVisible(false);
                 this._newStarIcon[i].setVisible(false);
             }
 
+            this._resBgIcon2[0].setVisible(false);
+            this._resBgIcon2[1].setVisible(false);
             this._resLabel.setVisible(false);
             this._helpLabel.setVisible(false);
             this._evolutionRateLabel.setVisible(false);
@@ -301,8 +309,17 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._resLabel.setVisible(true);
 
             var star = this._leadCard.get("star");
-            var num = (star < 3) ? 0 : star - 2;
-            this._cardPssSkillLabel[0].setString(num);
+
+            var str1, str2;
+            if(star < 5) {
+                str1 = (star < 3) ? 0 : star - 2;
+                str2 = str1 + 1;
+            } else {
+                str1 = outputTables.passive_skill_config.rows[star].full_attribute;
+                str2 = outputTables.passive_skill_config.rows[Math.min(star + 1, MAX_CARD_STAR)].full_attribute;
+            }
+
+            this._cardPssSkillLabel[0].setString(str1);
 
             var needMoney = this._leadCard.getEvolutionNeedMoney();
             this._evolutionRateLabel.setString(gameData.player.getEvolutionRate(star) + "%");
@@ -325,7 +342,7 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._oldStarIcon[i].setVisible(true);
             }
 
-            if (star < 5) {
+            if (star < MAX_CARD_STAR) {
                 this._virtualCard = lz.clone(this._leadCard);
                 this._virtualCard.set("tableId", this._leadCard.get("tableId") + 1);
                 this._virtualCard.update();
@@ -334,7 +351,8 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._cardHpLabel[1].setString(this._virtualCard.get("hp"));
                 this._cardAtkLabel[1].setString(this._virtualCard.get("atk"));
                 this._cardSkillRateLabel[1].setString(this._virtualCard.get("skillRate") + "%");
-                this._cardPssSkillLabel[1].setString(num + 1);
+
+                this._cardPssSkillLabel[1].setString(str2);
 
                 for (var i = 0; i <= star; i++) {
                     this._newStarIcon[i].setVisible(true);
@@ -345,6 +363,11 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._newCard.setPosition(this._cardEvolutionLayerFit.newCardItemPoint);
                 this.addChild(this._newCard, 1);
             }
+
+            this._resBgIcon1[0].setVisible(star < 5);
+            this._resBgIcon1[1].setVisible(star < 5);
+            this._resBgIcon2[0].setVisible(star >= 5);
+            this._resBgIcon2[1].setVisible(star >= 5);
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);

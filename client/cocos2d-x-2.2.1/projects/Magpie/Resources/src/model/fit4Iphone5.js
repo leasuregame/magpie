@@ -318,7 +318,7 @@ var fit4Iphone5 = {
             "cardBgSpritePoint": cc.p(320, 569),
             "successBgIconPoint": cc.p(320, 710),
             "evolutionRatePoint": cc.p(320, 695),
-            "starPoint": cc.p(320, 770),
+            "starPoint": cc.p(320, 800),
             "newCardItemPoint": cc.p(465, 710),
             "helpItemPoint": cc.p(50, 810)
         },

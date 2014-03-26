@@ -69,9 +69,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) =>
       [args, method] = authParams(type, msg, app)
       args.sid = session.id
-      console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
-        console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -88,7 +86,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
           userId: user.id, 
           serverId: app.getServerId()
         }, (err, res) ->
-          console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -97,7 +94,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
-      console.log '-login-4', player?.name
       uid = user.id + '*' + areaId
       session.set('areaId', areaId)
       session.set('userId', user.id)
@@ -109,7 +105,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
         session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
-    console.log '-login-5-err-', err
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})

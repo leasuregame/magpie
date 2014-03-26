@@ -930,7 +930,7 @@ Handler::getCardBookEnergy = (msg, session, next) ->
 Handler::getExchangeCards = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  consumeVal = table.getTableItem('values', 'reflashExcCardsMoney')?.value || 1000
+  consumeVal = table.getTableItem('values', 'reflashExcCardsMoney')?.value || 5000
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})

@@ -153,17 +153,8 @@ var main_scene_image = {
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
 
-    card_icon_3_1: main_scene_path + "card_icon_3_1.png",
-    card_icon_3_2: main_scene_path + "card_icon_3_2.png",
-    card_icon_3_3: main_scene_path + "card_icon_3_3.png",
-    card_icon_3_4: main_scene_path + "card_icon_3_4.png",
-    card_icon_3_5: main_scene_path + "card_icon_3_5.png",
-
-    card_icon_4_1: main_scene_path + "card_icon_4_1.png",
-    card_icon_4_2: main_scene_path + "card_icon_4_2.png",
-    card_icon_4_3: main_scene_path + "card_icon_4_3.png",
-    card_icon_4_4: main_scene_path + "card_icon_4_4.png",
-    card_icon_4_5: main_scene_path + "card_icon_4_5.png",
+    card_subscript_6: main_scene_path + "card_subscript_6.png",
+    card_subscript_7: main_scene_path + "card_subscript_7.png",
 
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
     card_item_bg0: main_scene_path + "card_item_bg0.png",

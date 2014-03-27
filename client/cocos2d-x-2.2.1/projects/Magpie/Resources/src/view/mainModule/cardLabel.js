@@ -87,7 +87,7 @@ var CardLabel = cc.Node.extend({
             skillType = 3;
         }
 
-        var skillTypeIcon = cc.Sprite.create(main_scene_image[this._card.getCardIcon(2)]);
+        var skillTypeIcon = cc.Sprite.create(this._card.getCardIcon(2));
         skillTypeIcon.setAnchorPoint(cc.p(0, 0.5));
         skillTypeIcon.setPosition(cc.p(142, 100));
         this.addChild(skillTypeIcon);

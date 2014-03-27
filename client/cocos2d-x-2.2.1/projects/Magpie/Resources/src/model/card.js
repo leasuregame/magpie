@@ -58,7 +58,6 @@ var skillIconMap = {
         9: "card_icon_1_5",
         10: "card_icon_1_5"
     },
-
     2: {
         0: "card_icon_2_0",
         1: "card_icon_2_1",
@@ -71,34 +70,6 @@ var skillIconMap = {
         8: "card_icon_2_5",
         9: "card_icon_2_5",
         10: "card_icon_2_5"
-    },
-
-    3: {
-        0: "card_icon_1_0",
-        1: "card_icon_3_1",
-        2: "card_icon_3_2",
-        3: "card_icon_3_2",
-        4: "card_icon_3_3",
-        5: "card_icon_3_4",
-        6: "card_icon_3_4",
-        7: "card_icon_3_5",
-        8: "card_icon_3_5",
-        9: "card_icon_3_5",
-        10: "card_icon_3_5"
-    },
-
-    4: {
-        0: "card_icon_1_0",
-        1: "card_icon_4_1",
-        2: "card_icon_4_2",
-        3: "card_icon_4_2",
-        4: "card_icon_4_3",
-        5: "card_icon_4_4",
-        6: "card_icon_4_4",
-        7: "card_icon_4_5",
-        8: "card_icon_4_5",
-        9: "card_icon_4_5",
-        10: "card_icon_4_5"
     }
 };
 
@@ -357,11 +328,11 @@ var Card = Entity.extend({
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
 
-        if (type == 1) {
-            type = (this._star > 5) ? (this._star - 5 + 2) : type;
-        }
+        return main_scene_image[(skillIconMap[type][this._skillId] || skillIconMap[type][0])];
+    },
 
-        return (skillIconMap[type][this._skillId] || skillIconMap[type][0]);
+    getCardSubscript: function () {
+        return main_scene_image["card_subscript_" + this._star];
     },
 
     addExp: function (exp) {

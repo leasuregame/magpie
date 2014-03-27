@@ -183,7 +183,7 @@ var ExchangeLayer = cc.Layer.extend({
                 if (skillType > 3) {
                     skillType = 3;
                 }
-                var skillIcon = cc.Sprite.create(main_scene_image[card.getCardIcon(2)]);
+                var skillIcon = cc.Sprite.create(card.getCardIcon(2));
                 skillIcon.setPosition(cc.p(x - 72, y - 40));
                 this._label.addChild(skillIcon);
 

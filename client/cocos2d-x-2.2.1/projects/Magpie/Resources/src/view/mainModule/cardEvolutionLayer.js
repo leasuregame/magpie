@@ -83,7 +83,7 @@ var CardEvolutionLayer = LazyLayer.extend({
         var controller = this._evolutionEffect.controller;
 
         controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        controller["ccbCardIcon"].setTexture(lz.getTexture(main_scene_image[this._card.getCardIcon()]));
+        controller["ccbCardIcon"].setTexture(lz.getTexture(this._card.getCardIcon()));
     },
 
     ccbFnChangeCardFrame: function () {

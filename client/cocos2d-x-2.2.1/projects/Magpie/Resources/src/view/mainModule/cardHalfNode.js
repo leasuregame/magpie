@@ -41,9 +41,16 @@ var CardHalfNode = cc.Node.extend({
             this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
             this.addChild(this._cardSprite);
 
-            this._iconSprite = cc.Sprite.create(main_scene_image[this._card.getCardIcon()]);
+            this._iconSprite = cc.Sprite.create(this._card.getCardIcon());
             this._iconSprite.setPosition(cc.p(40, -53));
             this.addChild(this._iconSprite);
+
+            if (this._card.getCardSubscript()) {
+                var subscriptSprite = cc.Sprite.create(this._card.getCardSubscript());
+                subscriptSprite.setAnchorPoint(cc.p(0, 0));
+                subscriptSprite.setPosition(cc.p(-1.8, -2.3));
+                this._iconSprite.addChild(subscriptSprite);
+            }
         }
 
         return true;

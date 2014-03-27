@@ -216,6 +216,10 @@ var LotteryLayer = cc.Layer.extend({
         tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        this._tipsLabel = ColorLabelTTF.create();
+        this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
+        this.addChild(this._tipsLabel, 2);
+
         return true;
     },
 
@@ -278,18 +282,15 @@ var LotteryLayer = cc.Layer.extend({
     _updateTips: function () {
         cc.log("LotteryLayer _update");
 
-        if (this._tipsLabel) {
-            this._tipsLabel.removeFromParent();
-            this._tipsLabel = null;
-        }
-
         var lottery = gameData.lottery;
         var rate;
+
+        this._tipsLabel.setVisible(false);
 
         if (this._times == 1) {
             rate = lottery.getFragmentRate();
             if (rate > 0) {
-                this._tipsLabel = ColorLabelTTF.create(
+                this._tipsLabel.setLabel(
                     {
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
@@ -312,7 +313,7 @@ var LotteryLayer = cc.Layer.extend({
         } else {
             rate = lottery.getFiveStarCardRate();
             if (rate > 0) {
-                this._tipsLabel = ColorLabelTTF.create(
+                this._tipsLabel.setLabel(
                     {
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",

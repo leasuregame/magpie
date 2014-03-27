@@ -194,7 +194,7 @@ var BossListLayer = cc.Layer.extend({
     _updateMark: function () {
         cc.log("BossListLayer _updateMark");
 
-        gameMark.setBossMark(false);
+        gameMark.updateBossMark(false);
     },
 
     _update: function () {

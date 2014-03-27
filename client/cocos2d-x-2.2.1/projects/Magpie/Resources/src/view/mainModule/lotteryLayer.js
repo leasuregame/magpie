@@ -29,6 +29,7 @@ var LotteryLayer = cc.Layer.extend({
     _closeTenLotteryItem: null,
     _privilegeIcon: null,
     _tenLotteryTip: null,
+    _tenLotteryTip2: null,
 
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
@@ -76,6 +77,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(this._lotteryLabel);
 
         this._tenLotteryTip = this._lotteryLabel.controller.ccbTenLotteryTip;
+        this._tenLotteryTip2 = this._lotteryLabel.controller.ccbTenLotteryTip2;
 
         var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
         lotteryDescLabel1.setPosition(this._lotteryLayerFit.lotteryDescLabel1Point);
@@ -222,7 +224,9 @@ var LotteryLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._tenLotteryTip.setVisible(gameData.lottery.get("firstHighTenLuckCard"));
+        var isFirst = gameData.lottery.get("firstHighTenLuckCard");
+        this._tenLotteryTip.setVisible(isFirst);
+        this._tenLotteryTip2.setVisible(!isFirst);
 
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));

@@ -209,6 +209,7 @@ CSSProperties.prototype.ccbFnAccountLogin;
 CSSProperties.prototype.ccbAreaNameLabel;
 CSSProperties.prototype.ccbFnPlayMusic;
 CSSProperties.prototype.ccbTenLotteryTip;
+CSSProperties.prototype.ccbTenLotteryTip2;
 CSSProperties.prototype.ccbFragment;
 CSSProperties.prototype.ccbFnExtract;
 CSSProperties.prototype.ccbSpiritLabel;

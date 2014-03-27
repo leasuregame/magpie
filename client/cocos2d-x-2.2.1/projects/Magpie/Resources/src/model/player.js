@@ -176,7 +176,11 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount,
             expCardBuyCount: data.dailyGift.expCardCount
         });
-        gameData.lottery.init(data.firstTime);
+        gameData.lottery.init({
+            firstTime: data.firstTime,
+            goldLuckyCard10: data.dailyGift.goldLuckyCard10,
+            goldLuckyCardForFragment: data.dailyGift.goldLuckyCardForFragment
+        });
         gameData.exchange.init(data.exchangeCards);
         gameData.boss.init(data.bossInfo);
 

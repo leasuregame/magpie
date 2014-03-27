@@ -11,7 +11,6 @@
  * config layer
  * */
 
-var fpsList = [15, 30, 60];
 
 var ConfigLayer = cc.Layer.extend({
     _configLayerFit: null,
@@ -255,7 +254,7 @@ var ConfigLayer = cc.Layer.extend({
 
         var point;
         for (var i = 0; i < 3; i++) {
-            if (fps == fpsList[i]) {
+            if (fps == FPS_LIST[i]) {
                 point = this._framesItem[i].getPosition();
                 break;
             }
@@ -381,7 +380,7 @@ var ConfigLayer = cc.Layer.extend({
             var point = that._framesItem[id].getPosition();
             that._framesSelect.setPosition(point);
 
-            gameConfig.setFps(fpsList[id]);
+            gameConfig.setFps(FPS_LIST[id]);
         }
     },
 

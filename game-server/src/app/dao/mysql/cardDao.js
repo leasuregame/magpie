@@ -52,9 +52,6 @@ var CardDao = (function(_super) {
 			}
 
 			var card = results[0];
-			//var pss = results[1];
-
-			//card.addPassiveSkills(pss);
 			return cb(null, card);
 		});
 	};
@@ -75,26 +72,7 @@ var CardDao = (function(_super) {
 					return cb(null, []);
 				}
 
-				/*passiveSkillDao.fetchMany({
-					sync: options.sync,
-					where: ' cardId in (' + ids.toString() + ')'
-				}, function(err, pss) {
-					if (err) {
-						return cb(err);
-					}
-
-					cards.forEach(function(card) {
-						var _pss = _.where(pss, {
-							cardId: card.id
-						});
-						if (_pss !== null) {
-							card.addPassiveSkills(_pss);
-						}
-					});
-					return cb(null, cards);
-				});
-                */
-                return cb(null, cards);
+        return cb(null, cards);
 			}
 		]);
 	};

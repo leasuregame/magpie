@@ -146,7 +146,6 @@ var fit4Iphone5 = {
             "nameEditBoxSize": cc.size(538, 67),
             "nameEditBoxPoint": cc.p(310, 908),
             "searchFriendItemPoint": cc.p(580, 908),
-            "addFriendItemPoint": cc.p(560, 1017),
             "friendCountIconPoint": cc.p(525, 139),
             "slashIconPoint": cc.p(525, 137),
             "friendCountLabelPoint": cc.p(510, 137),
@@ -159,7 +158,6 @@ var fit4Iphone5 = {
             "detailItemPoint": cc.p(108, 170),
             "sendMessageItemPoint": cc.p(108, 80),
             "skyDialogRect": cc.rect(0, 198, 640, 788)
-
         },
         "amountLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -270,7 +268,7 @@ var fit4Iphone5 = {
             "line2IconPoint": cc.p(320, 320),
             "line3IconPoint": cc.p(320, 180),
             "nameLabelPoint": cc.p(320, 1108),
-            "starBasePoint": cc.p(380, 1020),
+            "starBasePoint": cc.p(310, 1020),
             "starOffsetX": 50,
             "lvBgSpritePoint": cc.p(490, 940),
             "hpBgSpritePoint": cc.p(490, 860),
@@ -295,6 +293,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(210, 510),
             "tipDescriptionLabelPoint": cc.p(60, 470),
             "passiveSkillIconPoint": cc.p(60, 275),
+            "updatePassiveSKillItemPoint": cc.p(210, 275),
             "passiveSkillOffsetX": -130,
             "passiveSkillIconPointY": 225,
             "passiveSkillNameLabelPointY": 225,
@@ -319,7 +318,7 @@ var fit4Iphone5 = {
             "cardBgSpritePoint": cc.p(320, 569),
             "successBgIconPoint": cc.p(320, 710),
             "evolutionRatePoint": cc.p(320, 695),
-            "starPoint": cc.p(320, 770),
+            "starPoint": cc.p(320, 800),
             "newCardItemPoint": cc.p(465, 710),
             "helpItemPoint": cc.p(50, 810)
         },
@@ -645,6 +644,7 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 647),
             "titleLabelPoint": cc.p(150, 918),
+            "lineUpItemPoint": cc.p(120, 922),
             "nameLabelPoint": cc.p(220, 852),
             "lvLabelPoint": cc.p(330, 852),
             "abilityLabelPoint": cc.p(460, 852),
@@ -681,6 +681,7 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 647),
             "titleLabelPoint": cc.p(150, 918),
+            "lineUpItemPoint": cc.p(120, 922),
             "nameLabelPoint": cc.p(180, 852),
             "lvLabelPoint": cc.p(320, 852),
             "abilityLabelPoint": cc.p(460, 852),
@@ -713,7 +714,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 170),
             "privilegeIconPoint": cc.p(330, 280),
             "fragmentTipLayerPoint": cc.p(320, 970),
-            "fragmentTipIconPoint": cc.p(425, 970)
+            "fragmentTipIconPoint": cc.p(425, 970),
+            "tipsLabelPoint": cc.p(493, 335)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,
@@ -888,6 +890,7 @@ var fit4Iphone5 = {
             "nameLabelPoint": cc.p(203, 742),
             "lvLabelPoint": cc.p(205, 708),
             "resLabelPoint": cc.p(93, 270),
+            "resLabelBgSpritePoint": cc.p(-60, 0),
             "basePointY": 308,
             "offsetPointY": 78,
             "stopTypeLabelPoint": cc.p(66, 380),
@@ -1460,7 +1463,7 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 88),
             "bgSpriteContentSize": cc.size(546, 830),
             "bgSpritePoint": cc.p(320, 580),
-            "tipLabelPoint": cc.p(160, 935),
+            "tipLabelPoint": cc.p(320, 935),
             "closeItemPoint": cc.p(565, 980),
             "scrollViewHeight": 665,
             "scrollViewLayerRect": cc.rect(0, 0, 500, 665),

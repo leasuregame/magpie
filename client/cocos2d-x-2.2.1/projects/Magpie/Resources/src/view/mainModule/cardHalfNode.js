@@ -27,7 +27,7 @@ var CardHalfNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? star - 2 : 1;
+        var index = star > 2 ? Math.min(star - 2, 3) : 1;
 
         if (this._card.isBossCard()) {
             var ccbNode = cc.BuilderReader.load(main_scene_image[url], this);

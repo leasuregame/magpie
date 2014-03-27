@@ -13,7 +13,7 @@
 
 
 var MAX_CARD_TABLE_ID = 1000;
-var MAX_CARD_STAR = 5;
+var MAX_CARD_STAR = 7;
 
 var EVOLUTION_SUCCESS = 1;
 var EVOLUTION_FAIL = 0;
@@ -21,6 +21,11 @@ var EVOLUTION_ERROR = -1;
 
 var EXTRACT_ELIXIR = 0;
 var EXTRACT_SKILL_POINT = 1;
+
+var LOCK_TYPE_DEFAULT = 0;
+var LOCK_TYPE_NAME = 1;
+var LOCK_TYPE_VALUE = 2;
+var LOCK_TYPE_BOTH = 3;
 
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
@@ -32,7 +37,10 @@ var passiveSkillDescription = {
     hp_improve: "生命",
     crit: "暴击",
     dodge: "闪避",
-    dmg_reduce: "减伤"
+    dmg_reduce: "减伤",
+    toughness: "韧性",
+    hit: "命中",
+    disrupting: "破防"
 };
 
 // 卡牌下标
@@ -63,6 +71,34 @@ var skillIconMap = {
         8: "card_icon_2_5",
         9: "card_icon_2_5",
         10: "card_icon_2_5"
+    },
+
+    3: {
+        0: "card_icon_1_0",
+        1: "card_icon_3_1",
+        2: "card_icon_3_2",
+        3: "card_icon_3_2",
+        4: "card_icon_3_3",
+        5: "card_icon_3_4",
+        6: "card_icon_3_4",
+        7: "card_icon_3_5",
+        8: "card_icon_3_5",
+        9: "card_icon_3_5",
+        10: "card_icon_3_5"
+    },
+
+    4: {
+        0: "card_icon_1_0",
+        1: "card_icon_4_1",
+        2: "card_icon_4_2",
+        3: "card_icon_4_2",
+        4: "card_icon_4_3",
+        5: "card_icon_4_4",
+        6: "card_icon_4_4",
+        7: "card_icon_4_5",
+        8: "card_icon_4_5",
+        9: "card_icon_4_5",
+        10: "card_icon_4_5"
     }
 };
 
@@ -133,7 +169,7 @@ var Card = Entity.extend({
             this.set("elixirAtk", data.elixirAtk);
             this.set("skillPoint", data.skillPoint);
 
-            this._updatePassiveSkill(data.passiveSkills);
+            this._updatePassiveSkills(data.passiveSkills);
         }
 
         this._loadCardTable();
@@ -141,18 +177,38 @@ var Card = Entity.extend({
         this._calculateAddition();
     },
 
-    _updatePassiveSkill: function (data) {
+    _updatePassiveSkills: function (data) {
         cc.log("Card _updatePassiveSkill");
+
+        cc.log(data);
 
         if (data) {
             var len = data.length;
             for (var i = 0; i < len; ++i) {
-                this._passiveSkill[data[i].id] = {
-                    id: data[i].id,
-                    name: data[i].name,
-                    value: data[i].value,
-                    description: passiveSkillDescription[data[i].name]
-                }
+                this._updatePassiveSkill(data[i]);
+            }
+        }
+    },
+
+    _updatePassiveSkill: function (passiveSkill) {
+        cc.log("Card _updatePassiveSkill: ");
+        cc.log(passiveSkill);
+
+        this._passiveSkill[passiveSkill.id] = {
+            id: passiveSkill.id,
+            active: passiveSkill.active,
+            items: {}
+        };
+
+        var items = passiveSkill.items;
+        var len = items.length;
+        for (var i = 0; i < len; ++i) {
+            var item = items[i];
+            this._passiveSkill[passiveSkill.id].items[item.id] = {
+                id: item.id,
+                name: item.name,
+                value: item.value,
+                description: passiveSkillDescription[item.name]
             }
         }
     },
@@ -287,7 +343,7 @@ var Card = Entity.extend({
     getCardFullUrl: function () {
         cc.log("Card getCardFullUrl");
 
-        var len = this._star - 3;
+        var len = Math.min(this._star - 3, 2);
 
         var urlList = [main_scene_image[this._url + "_full1"]];
 
@@ -300,6 +356,10 @@ var Card = Entity.extend({
 
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
+
+        if (type == 1) {
+            type = (this._star > 5) ? (this._star - 5 + 2) : type;
+        }
 
         return (skillIconMap[type][this._skillId] || skillIconMap[type][0]);
     },
@@ -477,14 +537,69 @@ var Card = Entity.extend({
         return (this._star > 2);
     },
 
-    afreshPassiveSkill: function (cb, afreshIdList, type) {
+    getActivePassiveSkill: function () {
+        cc.log("Card getActivePassiveSkill");
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                return passiveSkill.items;
+            }
+        }
+
+        return null;
+    },
+
+    getActivePassiveSkillId: function () {
+        cc.log("Card getActivePassiveSkillId");
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                return passiveSkill.id;
+            }
+        }
+
+        return null;
+    },
+
+    getPassiveSkillById: function (id) {
+        cc.log("Card getPassiveSkillById: " + id);
+
+        if (this._passiveSkill[id]) {
+            return this._passiveSkill[id].items;
+        }
+
+        return null;
+    },
+
+    getOpenPassiveSkillNeedGold: function () {
+        return (Object.keys(this._passiveSkill).length - 2) * 50;
+    },
+
+    updateActivePassiveSkill: function (id) {
+        cc.log("Card updateActivePassiveSkill: " + id);
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                passiveSkill.active = false;
+            }
+        }
+
+        this._passiveSkill[id].active = true;
+    },
+
+    afreshPassiveSkill: function (cb, gid, afreshIdList, type) {
         cc.log("Card afreshPassiveSkill " + this._id);
+        cc.log(gid);
         cc.log(afreshIdList);
         cc.log(type);
 
         var that = this;
         lz.server.request("area.trainHandler.passSkillAfresh", {
             cardId: this._id,
+            groupId: gid,
             psIds: afreshIdList,
             type: type
         }, function (data) {
@@ -495,10 +610,11 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update(msg);
+                that.set("ability", msg.ability);
+                that._updatePassiveSkill(msg.passiveSkill);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -2000);
+                    gameData.player.add("money", -5000);
                 } else if (type == USE_GOLD) {
                     gameData.player.add("gold", -20);
                 }
@@ -514,6 +630,57 @@ var Card = Entity.extend({
                 cb(false);
             }
         });
+    },
+
+    activePassiveSkill: function (cb, id) {
+        cc.log("Card activePassiveSkill: " + id);
+
+        var that = this;
+        lz.server.request("area.trainHandler.passSkillActive", {
+            cardId: this._id,
+            groupId: id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillActive success");
+
+                that.updateActivePassiveSkill(id);
+                that.set("ability", data.msg.ability);
+                cb();
+
+            } else {
+                cc.log("passSkillActive fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    openPassiveSkill: function (cb) {
+        cc.log("Card openPassiveSkill");
+
+        var that = this;
+        lz.server.request("area.trainHandler.passSkillOpen", {
+            cardId: this._id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillOpen success");
+                var msg = data.msg;
+
+                gameData.player.set("gold", msg.gold);
+                that._updatePassiveSkill(msg.passiveSkill);
+
+                cb();
+            } else {
+                cc.log("passSkillOpen fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+
     },
 
     canEvolution: function () {
@@ -552,6 +719,16 @@ var Card = Entity.extend({
         return 0;
     },
 
+    getEvolutionNeedSuperHonor: function () {
+        cc.log("Card getEvolutionNeedSuperHonor");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].super_honor;
+        }
+
+        return 0;
+    },
+
     evolution: function (cb, cardIdList) {
         cc.log("Card evolution " + this._id);
         cc.log(cardIdList);
@@ -569,6 +746,7 @@ var Card = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.add("money", -that.getEvolutionNeedMoney());
+                gameData.player.add("superHonor", -that.getEvolutionNeedSuperHonor());
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);

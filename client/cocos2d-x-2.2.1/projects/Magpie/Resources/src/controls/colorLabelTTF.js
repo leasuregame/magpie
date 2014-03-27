@@ -6,6 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var colorLabelIcons = {
+    "money": "icon149",
+    "gold": "icon148",
+    "power": "icon150",
+    "elixir": "icon151",
+    "fragment": "icon243",
+    "energy": "icon154",
+    "skillPoint": "icon152",
+    "spirit": "icon317",
+    "exp_card": "icon316",
+    "exp": "icon318",
+    "speaker": "icon375",
+    "honor": "icon405",
+    "superHonor": "icon406",
+    "star": "icon427"
+};
+
 var ColorLabelTTF = cc.Node.extend({
     _size: null,
 
@@ -16,21 +33,26 @@ var ColorLabelTTF = cc.Node.extend({
 
         this._size = cc.size(0, 0);
 
-        this._strLabel = cc.Node.create();
-        this.addChild(this._strLabel);
+        this.setAnchorPoint(cc.p(0.5, 0.5));
 
         for (var i = 0; i < args.length; i++) {
             var arg = args[i];
-            var string = arg.string;
-            var color = arg.color || cc.c3b(255, 255, 255);
-            var fontName = arg.fontName || "STHeitiTC-Medium";
-            var fontSize = arg.fontSize || 20;
-            var isStroke = arg.isStroke || false;
-            var dimensions = arg.dimensions || cc.size(0, 0);
-            var alignment = arg.alignment || cc.TEXT_ALIGNMENT_LEFT;
+            if (arg.iconName) {
+                var scale = arg.scale || 1.0;
+                var spacing = arg.spacing || 2;
 
-            this.createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
+                this._createIcon(arg.iconName, scale, spacing);
+            } else {
+                var string = arg.string;
+                var color = arg.color || cc.c3b(255, 255, 255);
+                var fontName = arg.fontName || "STHeitiTC-Medium";
+                var fontSize = arg.fontSize || 20;
+                var isStroke = arg.isStroke || false;
+                var dimensions = arg.dimensions || cc.size(0, 0);
+                var alignment = arg.alignment || cc.TEXT_ALIGNMENT_LEFT;
 
+                this._createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
+            }
         }
 
         this.setContentSize(this._size);
@@ -38,7 +60,7 @@ var ColorLabelTTF = cc.Node.extend({
         return true;
     },
 
-    createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
+    _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
         cc.log("ColorLabelTTF createLabel");
 
         var label = null;
@@ -58,16 +80,25 @@ var ColorLabelTTF = cc.Node.extend({
         this._size.height = Math.max(this._size.height, size.height);
     },
 
-    setAnchorPoint: function (anchor) {
-        cc.log("ColorLabelTTF setAnchorPoint: " + anchor);
+    _createIcon: function (iconName, scale, spacing) {
+        cc.log("IconLabel createIcon");
 
-        var children = this.getChildren();
-        var len = children.length;
-
-        for (var i = 0; i < len; ++i) {
-            children[i].setAnchorPoint(anchor);
+        if (!colorLabelIcons[iconName]) {
+            cc.log("图片资源不存在");
+            return;
         }
+
+        var icon = cc.Sprite.create(main_scene_image[colorLabelIcons[iconName]]);
+        icon.setAnchorPoint(cc.p(0, 0.5));
+        icon.setScale(scale);
+        icon.setPosition(cc.p(this._size.width + spacing, 0));
+        this.addChild(icon);
+
+        var size = icon.getContentSize();
+        this._size.width += size.width * scale + spacing * 2;
+        this._size.height = Math.max(this._size.height, size.height);
     }
+
 });
 
 ColorLabelTTF.create = function (/* Multi arguments */) {

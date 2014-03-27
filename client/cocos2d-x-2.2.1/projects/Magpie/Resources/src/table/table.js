@@ -1,30 +1,16 @@
 var nameChanged = {
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
-    "boss_find_rate": "BOSS出现概率",
-    "BOSS出现概率": "boss_find_rate",
-    "boss_type_rate": "BOSS类型配置表",
-    "BOSS类型配置表": "boss_type_rate",
     "boss": "BOSS属性配置表",
     "BOSS属性配置表": "boss",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss_find_rate": "BOSS出现概率",
+    "BOSS出现概率": "boss_find_rate",
     "boss_card": "Boss怪物卡牌配置表",
     "Boss怪物卡牌配置表": "boss_card",
     "boss_rank_reward": "伤害排行榜奖励配置表",
     "伤害排行榜奖励配置表": "boss_rank_reward",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "new_card_id_map": "卡牌新旧配置表ID对应关系表",
-    "卡牌新旧配置表ID对应关系表": "new_card_id_map",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
@@ -49,6 +35,8 @@ var nameChanged = {
     "等级限制表": "lv_limit",
     "card_lv_limit": "卡牌等级限制表",
     "卡牌等级限制表": "card_lv_limit",
+    "passive_skill_config": "被动洗练配置表",
+    "被动洗练配置表": "passive_skill_config",
     "elixir_limit": "仙丹培养限制表",
     "仙丹培养限制表": "elixir_limit",
     "resource_limit": "资源限制表",
@@ -59,6 +47,20 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "new_card_id_map": "卡牌新旧配置表ID对应关系表",
+    "卡牌新旧配置表ID对应关系表": "new_card_id_map",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -79,12 +81,6 @@ var nameChanged = {
     "竞技排名奖励加成系数": "ranking_reward_factor",
     "product": "道具配置表",
     "道具配置表": "product",
-    "passFailSpiritSpeak": "爬塔失败喊话配置表",
-    "爬塔失败喊话配置表": "passFailSpiritSpeak",
-    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
-    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
-    "spiritSpeak": "精灵喊话配置表",
-    "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -93,6 +89,12 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -132,8 +134,258 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
-
 var outputTables = {
+    "boss": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "九阴罗刹",
+                "type": 1,
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "2:40000,4:40003,6:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "赤炎星君",
+                "type": 2,
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "2:40001,4:40004,6:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "金身冥王",
+                "type": 3,
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "2:40002,4:40005,6:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 60,
+                "name": "蓝卡",
+                "reward_inc": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 25,
+                "name": "紫卡",
+                "reward_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150
+            }
+        }
+    },
+    "boss_find_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 0
+            },
+            "3": {
+                "id": 3,
+                "rate": 0
+            },
+            "4": {
+                "id": 4,
+                "rate": 0
+            },
+            "5": {
+                "id": 5,
+                "rate": 0
+            },
+            "6": {
+                "id": 6,
+                "rate": 0
+            },
+            "7": {
+                "id": 7,
+                "rate": 0
+            },
+            "8": {
+                "id": 8,
+                "rate": 0
+            },
+            "9": {
+                "id": 9,
+                "rate": 0
+            },
+            "10": {
+                "id": 10,
+                "rate": 0
+            },
+            "11": {
+                "id": 11,
+                "rate": 1
+            },
+            "12": {
+                "id": 12,
+                "rate": 1
+            },
+            "13": {
+                "id": 13,
+                "rate": 1
+            },
+            "14": {
+                "id": 14,
+                "rate": 1
+            },
+            "15": {
+                "id": 15,
+                "rate": 1
+            },
+            "16": {
+                "id": 16,
+                "rate": 5
+            },
+            "17": {
+                "id": 17,
+                "rate": 30
+            },
+            "18": {
+                "id": 18,
+                "rate": 40
+            },
+            "19": {
+                "id": 19,
+                "rate": 50
+            },
+            "20": {
+                "id": 20,
+                "rate": 100
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "九阴罗刹",
+                "atk": 1000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 0
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "赤炎星君",
+                "atk": 1500000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 0
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "金身冥王",
+                "atk": 2000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 0
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 0
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 0
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 20000,
+                "hp": 100000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 0
+            }
+        }
+    },
+    "boss_rank_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "honor": 12000,
+                "money": 500000,
+                "energy": 8000
+            },
+            "2": {
+                "id": 2,
+                "honor": 11000,
+                "money": 400000,
+                "energy": 7000
+            },
+            "3": {
+                "id": 3,
+                "honor": 10000,
+                "money": 300000,
+                "energy": 6000
+            },
+            "4": {
+                "id": 4,
+                "honor": 9000,
+                "money": 200000,
+                "energy": 5000
+            },
+            "5": {
+                "id": 5,
+                "honor": 8000,
+                "money": 100000,
+                "energy": 4000
+            },
+            "6": {
+                "id": 6,
+                "honor": 5000
+            }
+        }
+    },
     "achievement": {
         "colComment": {},
         "rows": {
@@ -634,248 +886,491 @@ var outputTables = {
             }
         }
     },
-    "boss_find_rate": {
+    "new_year_rechage": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "rate": 0
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
             },
             "2": {
                 "id": 2,
-                "rate": 0
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
             },
             "3": {
                 "id": 3,
-                "rate": 0
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
             },
             "4": {
                 "id": 4,
-                "rate": 0
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
             },
             "5": {
                 "id": 5,
-                "rate": 0
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
             },
             "6": {
                 "id": 6,
-                "rate": 0
+                "lv": 60,
+                "gold": 150
             },
             "7": {
                 "id": 7,
-                "rate": 0
+                "lv": 70,
+                "gold": 200
             },
             "8": {
                 "id": 8,
-                "rate": 0
+                "lv": 80,
+                "gold": 260
             },
             "9": {
                 "id": 9,
-                "rate": 0
+                "lv": 90,
+                "gold": 300
             },
             "10": {
                 "id": 10,
-                "rate": 0
-            },
-            "11": {
-                "id": 11,
-                "rate": 1
-            },
-            "12": {
-                "id": 12,
-                "rate": 1
-            },
-            "13": {
-                "id": 13,
-                "rate": 1
-            },
-            "14": {
-                "id": 14,
-                "rate": 1
-            },
-            "15": {
-                "id": 15,
-                "rate": 1
-            },
-            "16": {
-                "id": 16,
-                "rate": 5
-            },
-            "17": {
-                "id": 17,
-                "rate": 30
-            },
-            "18": {
-                "id": 18,
-                "rate": 40
-            },
-            "19": {
-                "id": 19,
-                "rate": 50
-            },
-            "20": {
-                "id": 20,
-                "rate": 100
+                "lv": 100,
+                "gold": 500
             }
         }
     },
-    "boss_type_rate": {
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 20000,
+                "energy": 1000,
+                "card_ids": 1004,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "rate": 60,
-                "name": "蓝卡",
-                "reward_inc": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 25,
-                "name": "紫卡",
-                "reward_inc": 50
-            },
-            "3": {
-                "id": 3,
-                "rate": 15,
-                "name": "金卡",
-                "reward_inc": 150
+                "lottery_count": 50,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 5,
+                "collect_count": 15,
+                "exp_card_count": 40
             }
         }
     },
-    "boss": {
+    "first_card": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "name": "九阴罗刹",
-                "type": 1,
-                "boss_id": 40000,
-                "card_ids": "40003#40000#40003",
-                "formation": "01:40000,10:40003,12:40003",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "2": {
-                "id": 2,
-                "name": "赤炎星君",
-                "type": 2,
-                "boss_id": 40001,
-                "card_ids": "40004#40001#40004",
-                "formation": "01:40001,10:40004,12:40004",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "3": {
-                "id": 3,
-                "name": "金身冥王",
-                "type": 3,
-                "boss_id": 40002,
-                "card_ids": "40005#40002#40005",
-                "formation": "01:40002,10:40005,12:40005",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
+                "star3": "[23,43,163,563,583,643,663,963]",
+                "star4": "[144,184,244,484,604,864,984]"
             }
         }
     },
-    "boss_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "40000": {
-                "id": 40000,
-                "card_id": "九阴罗刹",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40001": {
-                "id": 40001,
-                "card_id": "赤炎星君",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40002": {
-                "id": 40002,
-                "card_id": "金身冥王",
-                "atk": 1000000,
-                "hp": 80000000,
-                "dodge_rate": 0,
-                "crit_rate": 30
-            },
-            "40003": {
-                "id": 40003,
-                "card_id": "小怪1号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            },
-            "40004": {
-                "id": 40004,
-                "card_id": "小怪2号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            },
-            "40005": {
-                "id": 40005,
-                "card_id": "小怪3号",
-                "atk": 20000,
-                "hp": 100000,
-                "dodge_rate": 0,
-                "crit_rate": 10
-            }
-        }
-    },
-    "boss_rank_reward": {
+    "friends_config": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "honor": 12000,
-                "money": 500000,
-                "energy": 8000
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "card_lineup_limit": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "card_1": 1,
+                "card_2": 1,
+                "card_3": 1,
+                "card_4": 12,
+                "card_5": 20
+            },
+            "1": {
+                "id": 1,
+                "card_1": 30,
+                "card_2": 35,
+                "card_3": 40,
+                "card_4": 40,
+                "card_5": 40
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 20,
+                "lottery": 25,
+                "card5_position": 35,
+                "boss": 40,
+                "pass_skillafresh": 45
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
             },
             "2": {
                 "id": 2,
-                "honor": 11000,
-                "money": 400000,
-                "energy": 7000
+                "max_lv": 40
             },
             "3": {
                 "id": 3,
-                "honor": 10000,
-                "money": 300000,
-                "energy": 6000
+                "max_lv": 50
             },
             "4": {
                 "id": 4,
-                "honor": 9000,
-                "money": 200000,
-                "energy": 5000
+                "max_lv": 55
             },
             "5": {
                 "id": 5,
-                "honor": 8000,
-                "money": 100000,
-                "energy": 4000
+                "max_lv": 60
             },
             "6": {
                 "id": 6,
-                "honor": 5000
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
+            }
+        }
+    },
+    "passive_skill_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "2": {
+                "id": 2,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "3": {
+                "id": 3,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "4": {
+                "id": 4,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "5": {
+                "id": 5,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "6": {
+                "id": 6,
+                "blue_attribute": 5,
+                "yellow_attribute": 9,
+                "full_attribute": 11
+            },
+            "7": {
+                "id": 7,
+                "blue_attribute": 5,
+                "yellow_attribute": 10,
+                "full_attribute": 12
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 250000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 400000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 600000
+            },
+            "6": {
+                "id": 6,
+                "elixir_limit": 900000
+            },
+            "7": {
+                "id": 7,
+                "elixir_limit": 1200000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 99999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 8000,
+                "energy": 300
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "gold": 0,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "elixir": 2000,
+                "lottery_free_count": 2,
+                "gold": 50,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "elixir": 5000,
+                "lottery_free_count": 3,
+                "gold": 100,
+                "fragments": 2,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "gold": 100,
+                "fragments": 3,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "gold": 100,
+                "fragments": 5,
+                "spirit": 0,
+                "skillPoint": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 5000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            },
+            "elixirOfRankMoneyGap": {
+                "id": "elixirOfRankMoneyGap",
+                "value": 130500,
+                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
+            },
+            "damageOfRankHonorGap": {
+                "id": "damageOfRankHonorGap",
+                "value": 3000,
+                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
             }
         }
     },
@@ -1409,7 +1904,6 @@ var outputTables = {
         "rows": {
             "21": {
                 "id": 21,
-                "old_id": 6,
                 "number": 2,
                 "name": "猪刚鬣·猪八戒",
                 "star": 1,
@@ -1422,7 +1916,6 @@ var outputTables = {
             },
             "22": {
                 "id": 22,
-                "old_id": 7,
                 "number": 2,
                 "name": "高庄主·猪八戒",
                 "star": 2,
@@ -1435,7 +1928,6 @@ var outputTables = {
             },
             "23": {
                 "id": 23,
-                "old_id": 8,
                 "number": 2,
                 "name": "二师兄·猪八戒",
                 "star": 3,
@@ -1451,7 +1943,6 @@ var outputTables = {
             },
             "24": {
                 "id": 24,
-                "old_id": 9,
                 "number": 2,
                 "name": "净坛使者·猪八戒",
                 "star": 4,
@@ -1467,7 +1958,6 @@ var outputTables = {
             },
             "25": {
                 "id": 25,
-                "old_id": 10,
                 "number": 2,
                 "name": "天蓬元帅·猪八戒",
                 "star": 5,
@@ -1513,7 +2003,6 @@ var outputTables = {
             },
             "41": {
                 "id": 41,
-                "old_id": 11,
                 "number": 3,
                 "name": "流沙河·沙悟净",
                 "star": 1,
@@ -1526,7 +2015,6 @@ var outputTables = {
             },
             "42": {
                 "id": 42,
-                "old_id": 12,
                 "number": 3,
                 "name": "骷髅九·沙悟净",
                 "star": 2,
@@ -1539,7 +2027,6 @@ var outputTables = {
             },
             "43": {
                 "id": 43,
-                "old_id": 13,
                 "number": 3,
                 "name": "沙和尚·沙悟净",
                 "star": 3,
@@ -1555,7 +2042,6 @@ var outputTables = {
             },
             "44": {
                 "id": 44,
-                "old_id": 14,
                 "number": 3,
                 "name": "卷帘大将·沙悟净",
                 "star": 4,
@@ -1571,7 +2057,6 @@ var outputTables = {
             },
             "45": {
                 "id": 45,
-                "old_id": 15,
                 "number": 3,
                 "name": "金身罗汉·沙悟净",
                 "star": 5,
@@ -1617,7 +2102,6 @@ var outputTables = {
             },
             "81": {
                 "id": 81,
-                "old_id": 21,
                 "number": 5,
                 "name": "唐僧·金蝉子",
                 "star": 1,
@@ -1630,7 +2114,6 @@ var outputTables = {
             },
             "82": {
                 "id": 82,
-                "old_id": 22,
                 "number": 5,
                 "name": "普渡众佛·金蝉子",
                 "star": 2,
@@ -1643,7 +2126,6 @@ var outputTables = {
             },
             "83": {
                 "id": 83,
-                "old_id": 23,
                 "number": 5,
                 "name": "燃灯道人·金蝉子",
                 "star": 3,
@@ -1659,7 +2141,6 @@ var outputTables = {
             },
             "84": {
                 "id": 84,
-                "old_id": 24,
                 "number": 5,
                 "name": "功德佛·金蝉子",
                 "star": 4,
@@ -1675,7 +2156,6 @@ var outputTables = {
             },
             "85": {
                 "id": 85,
-                "old_id": 25,
                 "number": 5,
                 "name": "真身·金蝉子",
                 "star": 5,
@@ -1721,7 +2201,6 @@ var outputTables = {
             },
             "121": {
                 "id": 121,
-                "old_id": 31,
                 "number": 7,
                 "name": "天将·巨灵神",
                 "star": 1,
@@ -1734,7 +2213,6 @@ var outputTables = {
             },
             "122": {
                 "id": 122,
-                "old_id": 32,
                 "number": 7,
                 "name": "门卫·巨灵神",
                 "star": 2,
@@ -1747,7 +2225,6 @@ var outputTables = {
             },
             "123": {
                 "id": 123,
-                "old_id": 33,
                 "number": 7,
                 "name": "搬山救民·巨灵神",
                 "star": 3,
@@ -1763,7 +2240,6 @@ var outputTables = {
             },
             "124": {
                 "id": 124,
-                "old_id": 34,
                 "number": 7,
                 "name": "急先锋·巨灵神",
                 "star": 4,
@@ -1779,7 +2255,6 @@ var outputTables = {
             },
             "125": {
                 "id": 125,
-                "old_id": 35,
                 "number": 7,
                 "name": "神斧·巨灵神",
                 "star": 5,
@@ -1825,7 +2300,6 @@ var outputTables = {
             },
             "141": {
                 "id": 141,
-                "old_id": 36,
                 "number": 8,
                 "name": "神二代·红孩儿",
                 "star": 1,
@@ -1838,7 +2312,6 @@ var outputTables = {
             },
             "142": {
                 "id": 142,
-                "old_id": 37,
                 "number": 8,
                 "name": "火云洞·红孩儿",
                 "star": 2,
@@ -1851,7 +2324,6 @@ var outputTables = {
             },
             "143": {
                 "id": 143,
-                "old_id": 38,
                 "number": 8,
                 "name": "三味真火·红孩儿",
                 "star": 3,
@@ -1867,7 +2339,6 @@ var outputTables = {
             },
             "144": {
                 "id": 144,
-                "old_id": 39,
                 "number": 8,
                 "name": "圣婴大王·红孩儿",
                 "star": 4,
@@ -1883,7 +2354,6 @@ var outputTables = {
             },
             "145": {
                 "id": 145,
-                "old_id": 40,
                 "number": 8,
                 "name": "善财童子·红孩儿",
                 "star": 5,
@@ -1929,7 +2399,6 @@ var outputTables = {
             },
             "161": {
                 "id": 161,
-                "old_id": 41,
                 "number": 9,
                 "name": "冀州侯·黄飞虎",
                 "star": 1,
@@ -1942,7 +2411,6 @@ var outputTables = {
             },
             "162": {
                 "id": 162,
-                "old_id": 42,
                 "number": 9,
                 "name": "夜奔·黄飞虎",
                 "star": 2,
@@ -1955,7 +2423,6 @@ var outputTables = {
             },
             "163": {
                 "id": 163,
-                "old_id": 43,
                 "number": 9,
                 "name": "复仇·黄飞虎",
                 "star": 3,
@@ -1971,7 +2438,6 @@ var outputTables = {
             },
             "164": {
                 "id": 164,
-                "old_id": 44,
                 "number": 9,
                 "name": "武成王·黄飞虎",
                 "star": 4,
@@ -1987,7 +2453,6 @@ var outputTables = {
             },
             "165": {
                 "id": 165,
-                "old_id": 45,
                 "number": 9,
                 "name": "仁圣大帝·黄飞虎",
                 "star": 5,
@@ -2033,7 +2498,6 @@ var outputTables = {
             },
             "181": {
                 "id": 181,
-                "old_id": 46,
                 "number": 10,
                 "name": "阿哥·雷震子",
                 "star": 1,
@@ -2046,7 +2510,6 @@ var outputTables = {
             },
             "182": {
                 "id": 182,
-                "old_id": 47,
                 "number": 10,
                 "name": "羽人·雷震子",
                 "star": 2,
@@ -2059,7 +2522,6 @@ var outputTables = {
             },
             "183": {
                 "id": 183,
-                "old_id": 48,
                 "number": 10,
                 "name": "救父·雷震子",
                 "star": 3,
@@ -2075,7 +2537,6 @@ var outputTables = {
             },
             "184": {
                 "id": 184,
-                "old_id": 49,
                 "number": 10,
                 "name": "出五关·雷震子",
                 "star": 4,
@@ -2091,7 +2552,6 @@ var outputTables = {
             },
             "185": {
                 "id": 185,
-                "old_id": 50,
                 "number": 10,
                 "name": "金刚·雷震子",
                 "star": 5,
@@ -2137,7 +2597,6 @@ var outputTables = {
             },
             "221": {
                 "id": 221,
-                "old_id": 56,
                 "number": 12,
                 "name": "隐士·姜子牙",
                 "star": 1,
@@ -2150,7 +2609,6 @@ var outputTables = {
             },
             "222": {
                 "id": 222,
-                "old_id": 57,
                 "number": 12,
                 "name": "渔者·姜子牙",
                 "star": 2,
@@ -2163,7 +2621,6 @@ var outputTables = {
             },
             "223": {
                 "id": 223,
-                "old_id": 58,
                 "number": 12,
                 "name": "占卜师·姜子牙",
                 "star": 3,
@@ -2179,7 +2636,6 @@ var outputTables = {
             },
             "224": {
                 "id": 224,
-                "old_id": 59,
                 "number": 12,
                 "name": "尚父·姜子牙",
                 "star": 4,
@@ -2195,7 +2651,6 @@ var outputTables = {
             },
             "225": {
                 "id": 225,
-                "old_id": 60,
                 "number": 12,
                 "name": "齐祖·姜子牙",
                 "star": 5,
@@ -2241,7 +2696,6 @@ var outputTables = {
             },
             "241": {
                 "id": 241,
-                "old_id": 61,
                 "number": 13,
                 "name": "总兵·李靖",
                 "star": 1,
@@ -2254,7 +2708,6 @@ var outputTables = {
             },
             "242": {
                 "id": 242,
-                "old_id": 62,
                 "number": 13,
                 "name": "人父·李靖",
                 "star": 2,
@@ -2267,7 +2720,6 @@ var outputTables = {
             },
             "243": {
                 "id": 243,
-                "old_id": 63,
                 "number": 13,
                 "name": "降魔大元帅·李靖",
                 "star": 3,
@@ -2283,7 +2735,6 @@ var outputTables = {
             },
             "244": {
                 "id": 244,
-                "old_id": 64,
                 "number": 13,
                 "name": "保卫天庭·李靖",
                 "star": 4,
@@ -2299,7 +2750,6 @@ var outputTables = {
             },
             "245": {
                 "id": 245,
-                "old_id": 65,
                 "number": 13,
                 "name": "托塔天王·李靖",
                 "star": 5,
@@ -2345,7 +2795,6 @@ var outputTables = {
             },
             "301": {
                 "id": 301,
-                "old_id": 76,
                 "number": 16,
                 "name": "瞬移·土行孙",
                 "star": 1,
@@ -2358,7 +2807,6 @@ var outputTables = {
             },
             "302": {
                 "id": 302,
-                "old_id": 77,
                 "number": 16,
                 "name": "遁神·土行孙",
                 "star": 2,
@@ -2371,7 +2819,6 @@ var outputTables = {
             },
             "303": {
                 "id": 303,
-                "old_id": 78,
                 "number": 16,
                 "name": "捆仙绳·土行孙",
                 "star": 3,
@@ -2387,7 +2834,6 @@ var outputTables = {
             },
             "304": {
                 "id": 304,
-                "old_id": 79,
                 "number": 16,
                 "name": "地行仙·土行孙",
                 "star": 4,
@@ -2403,7 +2849,6 @@ var outputTables = {
             },
             "305": {
                 "id": 305,
-                "old_id": 80,
                 "number": 16,
                 "name": "土府星君·土行孙",
                 "star": 5,
@@ -2449,7 +2894,6 @@ var outputTables = {
             },
             "341": {
                 "id": 341,
-                "old_id": 86,
                 "number": 18,
                 "name": "青城山·白素贞",
                 "star": 1,
@@ -2462,7 +2906,6 @@ var outputTables = {
             },
             "342": {
                 "id": 342,
-                "old_id": 87,
                 "number": 18,
                 "name": "断桥·白素贞",
                 "star": 2,
@@ -2475,7 +2918,6 @@ var outputTables = {
             },
             "343": {
                 "id": 343,
-                "old_id": 88,
                 "number": 18,
                 "name": "盗草·白素贞",
                 "star": 3,
@@ -2491,7 +2933,6 @@ var outputTables = {
             },
             "344": {
                 "id": 344,
-                "old_id": 89,
                 "number": 18,
                 "name": "水漫金山·白素贞",
                 "star": 4,
@@ -2507,7 +2948,6 @@ var outputTables = {
             },
             "345": {
                 "id": 345,
-                "old_id": 90,
                 "number": 18,
                 "name": "紫微星·白素贞",
                 "star": 5,
@@ -2553,7 +2993,6 @@ var outputTables = {
             },
             "361": {
                 "id": 361,
-                "old_id": 91,
                 "number": 19,
                 "name": "青蛇·小青",
                 "star": 1,
@@ -2566,7 +3005,6 @@ var outputTables = {
             },
             "362": {
                 "id": 362,
-                "old_id": 92,
                 "number": 19,
                 "name": "变身·小青",
                 "star": 2,
@@ -2579,7 +3017,6 @@ var outputTables = {
             },
             "363": {
                 "id": 363,
-                "old_id": 93,
                 "number": 19,
                 "name": "斗法海·小青",
                 "star": 3,
@@ -2595,7 +3032,6 @@ var outputTables = {
             },
             "364": {
                 "id": 364,
-                "old_id": 94,
                 "number": 19,
                 "name": "烧塔·小青",
                 "star": 4,
@@ -2611,7 +3047,6 @@ var outputTables = {
             },
             "365": {
                 "id": 365,
-                "old_id": 95,
                 "number": 19,
                 "name": "青蛇大仙·小青",
                 "star": 5,
@@ -2657,7 +3092,6 @@ var outputTables = {
             },
             "381": {
                 "id": 381,
-                "old_id": 96,
                 "number": 20,
                 "name": "秀姑·何仙姑",
                 "star": 1,
@@ -2670,7 +3104,6 @@ var outputTables = {
             },
             "382": {
                 "id": 382,
-                "old_id": 97,
                 "number": 20,
                 "name": "辟谷·何仙姑",
                 "star": 2,
@@ -2683,7 +3116,6 @@ var outputTables = {
             },
             "383": {
                 "id": 383,
-                "old_id": 98,
                 "number": 20,
                 "name": "凌风驾云·何仙姑",
                 "star": 3,
@@ -2699,7 +3131,6 @@ var outputTables = {
             },
             "384": {
                 "id": 384,
-                "old_id": 99,
                 "number": 20,
                 "name": "风凰台·何仙姑",
                 "star": 4,
@@ -2715,7 +3146,6 @@ var outputTables = {
             },
             "385": {
                 "id": 385,
-                "old_id": 100,
                 "number": 20,
                 "name": "碧波仙子·何仙姑",
                 "star": 5,
@@ -2761,7 +3191,6 @@ var outputTables = {
             },
             "421": {
                 "id": 421,
-                "old_id": 106,
                 "number": 22,
                 "name": "神游·铁拐李",
                 "star": 1,
@@ -2774,7 +3203,6 @@ var outputTables = {
             },
             "422": {
                 "id": 422,
-                "old_id": 107,
                 "number": 22,
                 "name": "借尸还魂·铁拐李",
                 "star": 2,
@@ -2787,7 +3215,6 @@ var outputTables = {
             },
             "423": {
                 "id": 423,
-                "old_id": 108,
                 "number": 22,
                 "name": "化龙·铁拐李",
                 "star": 3,
@@ -2803,7 +3230,6 @@ var outputTables = {
             },
             "424": {
                 "id": 424,
-                "old_id": 109,
                 "number": 22,
                 "name": "呼风唤雨·铁拐李",
                 "star": 4,
@@ -2819,7 +3245,6 @@ var outputTables = {
             },
             "425": {
                 "id": 425,
-                "old_id": 110,
                 "number": 22,
                 "name": "东华教主·铁拐李",
                 "star": 5,
@@ -2865,7 +3290,6 @@ var outputTables = {
             },
             "481": {
                 "id": 481,
-                "old_id": 121,
                 "number": 25,
                 "name": "不羁·韩湘子",
                 "star": 1,
@@ -2878,7 +3302,6 @@ var outputTables = {
             },
             "482": {
                 "id": 482,
-                "old_id": 122,
                 "number": 25,
                 "name": "天花引·韩湘子",
                 "star": 2,
@@ -2891,7 +3314,6 @@ var outputTables = {
             },
             "483": {
                 "id": 483,
-                "old_id": 123,
                 "number": 25,
                 "name": "点化·韩湘子",
                 "star": 3,
@@ -2907,7 +3329,6 @@ var outputTables = {
             },
             "484": {
                 "id": 484,
-                "old_id": 124,
                 "number": 25,
                 "name": "箫中情·韩湘子",
                 "star": 4,
@@ -2923,7 +3344,6 @@ var outputTables = {
             },
             "485": {
                 "id": 485,
-                "old_id": 125,
                 "number": 25,
                 "name": "尸解仙·韩湘子",
                 "star": 5,
@@ -2969,7 +3389,6 @@ var outputTables = {
             },
             "541": {
                 "id": 541,
-                "old_id": 136,
                 "number": 28,
                 "name": "女红·织女",
                 "star": 1,
@@ -2982,7 +3401,6 @@ var outputTables = {
             },
             "542": {
                 "id": 542,
-                "old_id": 137,
                 "number": 28,
                 "name": "天浴·织女",
                 "star": 2,
@@ -2995,7 +3413,6 @@ var outputTables = {
             },
             "543": {
                 "id": 543,
-                "old_id": 138,
                 "number": 28,
                 "name": "天伦·织女",
                 "star": 3,
@@ -3011,7 +3428,6 @@ var outputTables = {
             },
             "544": {
                 "id": 544,
-                "old_id": 139,
                 "number": 28,
                 "name": "七仙姑·织女",
                 "star": 4,
@@ -3027,7 +3443,6 @@ var outputTables = {
             },
             "545": {
                 "id": 545,
-                "old_id": 140,
                 "number": 28,
                 "name": "七星娘娘·织女",
                 "star": 5,
@@ -3073,7 +3488,6 @@ var outputTables = {
             },
             "561": {
                 "id": 561,
-                "old_id": 141,
                 "number": 29,
                 "name": "决斗·吴刚",
                 "star": 1,
@@ -3086,7 +3500,6 @@ var outputTables = {
             },
             "562": {
                 "id": 562,
-                "old_id": 142,
                 "number": 29,
                 "name": "刺配·吴刚",
                 "star": 2,
@@ -3099,7 +3512,6 @@ var outputTables = {
             },
             "563": {
                 "id": 563,
-                "old_id": 143,
                 "number": 29,
                 "name": "樵夫·吴刚",
                 "star": 3,
@@ -3115,7 +3527,6 @@ var outputTables = {
             },
             "564": {
                 "id": 564,
-                "old_id": 144,
                 "number": 29,
                 "name": "逆袭·吴刚",
                 "star": 4,
@@ -3131,7 +3542,6 @@ var outputTables = {
             },
             "565": {
                 "id": 565,
-                "old_id": 145,
                 "number": 29,
                 "name": "桂花仙·吴刚",
                 "star": 5,
@@ -3177,7 +3587,6 @@ var outputTables = {
             },
             "581": {
                 "id": 581,
-                "old_id": 146,
                 "number": 30,
                 "name": "天书·鬼谷子",
                 "star": 1,
@@ -3190,7 +3599,6 @@ var outputTables = {
             },
             "582": {
                 "id": 582,
-                "old_id": 147,
                 "number": 30,
                 "name": "纵横术·鬼谷子",
                 "star": 2,
@@ -3203,7 +3611,6 @@ var outputTables = {
             },
             "583": {
                 "id": 583,
-                "old_id": 148,
                 "number": 30,
                 "name": "鬼谷井·鬼谷子",
                 "star": 3,
@@ -3219,7 +3626,6 @@ var outputTables = {
             },
             "584": {
                 "id": 584,
-                "old_id": 149,
                 "number": 30,
                 "name": "斩草撒豆·鬼谷子",
                 "star": 4,
@@ -3235,7 +3641,6 @@ var outputTables = {
             },
             "585": {
                 "id": 585,
-                "old_id": 150,
                 "number": 30,
                 "name": "玄微真人·鬼谷子",
                 "star": 5,
@@ -3281,7 +3686,6 @@ var outputTables = {
             },
             "601": {
                 "id": 601,
-                "old_id": 151,
                 "number": 31,
                 "name": "生老病死·黑无常",
                 "star": 1,
@@ -3294,7 +3698,6 @@ var outputTables = {
             },
             "602": {
                 "id": 602,
-                "old_id": 152,
                 "number": 31,
                 "name": "爱别离·黑无常",
                 "star": 2,
@@ -3307,7 +3710,6 @@ var outputTables = {
             },
             "603": {
                 "id": 603,
-                "old_id": 153,
                 "number": 31,
                 "name": "怨憎会·黑无常",
                 "star": 3,
@@ -3323,7 +3725,6 @@ var outputTables = {
             },
             "604": {
                 "id": 604,
-                "old_id": 154,
                 "number": 31,
                 "name": "求不得·黑无常",
                 "star": 4,
@@ -3339,7 +3740,6 @@ var outputTables = {
             },
             "605": {
                 "id": 605,
-                "old_id": 155,
                 "number": 31,
                 "name": "五阴盛·黑无常",
                 "star": 5,
@@ -3385,7 +3785,6 @@ var outputTables = {
             },
             "621": {
                 "id": 621,
-                "old_id": 156,
                 "number": 32,
                 "name": "地狱道·白无常",
                 "star": 1,
@@ -3398,7 +3797,6 @@ var outputTables = {
             },
             "622": {
                 "id": 622,
-                "old_id": 157,
                 "number": 32,
                 "name": "恶鬼道·白无常",
                 "star": 2,
@@ -3411,7 +3809,6 @@ var outputTables = {
             },
             "623": {
                 "id": 623,
-                "old_id": 158,
                 "number": 32,
                 "name": "畜生道·白无常",
                 "star": 3,
@@ -3427,7 +3824,6 @@ var outputTables = {
             },
             "624": {
                 "id": 624,
-                "old_id": 159,
                 "number": 32,
                 "name": "阿修罗道·白无常",
                 "star": 4,
@@ -3443,7 +3839,6 @@ var outputTables = {
             },
             "625": {
                 "id": 625,
-                "old_id": 160,
                 "number": 32,
                 "name": "人间道·白无常",
                 "star": 5,
@@ -3489,7 +3884,6 @@ var outputTables = {
             },
             "641": {
                 "id": 641,
-                "old_id": 161,
                 "number": 33,
                 "name": "科员·日游神",
                 "star": 1,
@@ -3502,7 +3896,6 @@ var outputTables = {
             },
             "642": {
                 "id": 642,
-                "old_id": 162,
                 "number": 33,
                 "name": "副科长·日游神",
                 "star": 2,
@@ -3515,7 +3908,6 @@ var outputTables = {
             },
             "643": {
                 "id": 643,
-                "old_id": 163,
                 "number": 33,
                 "name": "科长·日游神",
                 "star": 3,
@@ -3531,7 +3923,6 @@ var outputTables = {
             },
             "644": {
                 "id": 644,
-                "old_id": 164,
                 "number": 33,
                 "name": "副处长·日游神",
                 "star": 4,
@@ -3547,7 +3938,6 @@ var outputTables = {
             },
             "645": {
                 "id": 645,
-                "old_id": 165,
                 "number": 33,
                 "name": "处长·日游神",
                 "star": 5,
@@ -3593,7 +3983,6 @@ var outputTables = {
             },
             "661": {
                 "id": 661,
-                "old_id": 166,
                 "number": 34,
                 "name": "士官·夜游神",
                 "star": 1,
@@ -3606,7 +3995,6 @@ var outputTables = {
             },
             "662": {
                 "id": 662,
-                "old_id": 167,
                 "number": 34,
                 "name": "中尉·夜游神",
                 "star": 2,
@@ -3619,7 +4007,6 @@ var outputTables = {
             },
             "663": {
                 "id": 663,
-                "old_id": 168,
                 "number": 34,
                 "name": "少校·夜游神",
                 "star": 3,
@@ -3635,7 +4022,6 @@ var outputTables = {
             },
             "664": {
                 "id": 664,
-                "old_id": 169,
                 "number": 34,
                 "name": "上校·夜游神",
                 "star": 4,
@@ -3651,7 +4037,6 @@ var outputTables = {
             },
             "665": {
                 "id": 665,
-                "old_id": 170,
                 "number": 34,
                 "name": "大校·夜游神",
                 "star": 5,
@@ -3697,7 +4082,6 @@ var outputTables = {
             },
             "701": {
                 "id": 701,
-                "old_id": 176,
                 "number": 36,
                 "name": "公主驾到·精卫",
                 "star": 1,
@@ -3710,7 +4094,6 @@ var outputTables = {
             },
             "702": {
                 "id": 702,
-                "old_id": 177,
                 "number": 36,
                 "name": "海泳·精卫",
                 "star": 2,
@@ -3723,7 +4106,6 @@ var outputTables = {
             },
             "703": {
                 "id": 703,
-                "old_id": 178,
                 "number": 36,
                 "name": "东海遇·精卫",
                 "star": 3,
@@ -3739,7 +4121,6 @@ var outputTables = {
             },
             "704": {
                 "id": 704,
-                "old_id": 179,
                 "number": 36,
                 "name": "逼婚·精卫",
                 "star": 4,
@@ -3755,7 +4136,6 @@ var outputTables = {
             },
             "705": {
                 "id": 705,
-                "old_id": 180,
                 "number": 36,
                 "name": "化鸟·精卫",
                 "star": 5,
@@ -3801,7 +4181,6 @@ var outputTables = {
             },
             "741": {
                 "id": 741,
-                "old_id": 186,
                 "number": 38,
                 "name": "箭客·后羿",
                 "star": 1,
@@ -3814,7 +4193,6 @@ var outputTables = {
             },
             "742": {
                 "id": 742,
-                "old_id": 187,
                 "number": 38,
                 "name": "失嫦娥·后羿",
                 "star": 2,
@@ -3827,7 +4205,6 @@ var outputTables = {
             },
             "743": {
                 "id": 743,
-                "old_id": 188,
                 "number": 38,
                 "name": "七弦·后羿",
                 "star": 3,
@@ -3843,7 +4220,6 @@ var outputTables = {
             },
             "744": {
                 "id": 744,
-                "old_id": 189,
                 "number": 38,
                 "name": "射日·后羿",
                 "star": 4,
@@ -3859,7 +4235,6 @@ var outputTables = {
             },
             "745": {
                 "id": 745,
-                "old_id": 190,
                 "number": 38,
                 "name": "宗布神·后羿",
                 "star": 5,
@@ -3905,7 +4280,6 @@ var outputTables = {
             },
             "761": {
                 "id": 761,
-                "old_id": 191,
                 "number": 39,
                 "name": "郎才女貌·嫦娥",
                 "star": 1,
@@ -3918,7 +4292,6 @@ var outputTables = {
             },
             "762": {
                 "id": 762,
-                "old_id": 192,
                 "number": 39,
                 "name": "奔月·嫦娥",
                 "star": 2,
@@ -3931,7 +4304,6 @@ var outputTables = {
             },
             "763": {
                 "id": 763,
-                "old_id": 193,
                 "number": 39,
                 "name": "捣药·嫦娥",
                 "star": 3,
@@ -3947,7 +4319,6 @@ var outputTables = {
             },
             "764": {
                 "id": 764,
-                "old_id": 194,
                 "number": 39,
                 "name": "真爱·嫦娥",
                 "star": 4,
@@ -3963,7 +4334,6 @@ var outputTables = {
             },
             "765": {
                 "id": 765,
-                "old_id": 195,
                 "number": 39,
                 "name": "月光女神·嫦娥",
                 "star": 5,
@@ -4009,7 +4379,6 @@ var outputTables = {
             },
             "841": {
                 "id": 841,
-                "old_id": 211,
                 "number": 43,
                 "name": "错嫁·宓妃",
                 "star": 1,
@@ -4022,7 +4391,6 @@ var outputTables = {
             },
             "842": {
                 "id": 842,
-                "old_id": 212,
                 "number": 43,
                 "name": "洛书·宓妃",
                 "star": 2,
@@ -4035,7 +4403,6 @@ var outputTables = {
             },
             "843": {
                 "id": 843,
-                "old_id": 213,
                 "number": 43,
                 "name": "真爱·宓妃",
                 "star": 3,
@@ -4051,7 +4418,6 @@ var outputTables = {
             },
             "844": {
                 "id": 844,
-                "old_id": 214,
                 "number": 43,
                 "name": "洛水三千·宓妃",
                 "star": 4,
@@ -4067,7 +4433,6 @@ var outputTables = {
             },
             "845": {
                 "id": 845,
-                "old_id": 215,
                 "number": 43,
                 "name": "洛神·宓妃",
                 "star": 5,
@@ -4113,7 +4478,6 @@ var outputTables = {
             },
             "861": {
                 "id": 861,
-                "old_id": 216,
                 "number": 44,
                 "name": "长生之道·张道陵",
                 "star": 1,
@@ -4126,7 +4490,6 @@ var outputTables = {
             },
             "862": {
                 "id": 862,
-                "old_id": 217,
                 "number": 44,
                 "name": "神医·张道陵",
                 "star": 2,
@@ -4139,7 +4502,6 @@ var outputTables = {
             },
             "863": {
                 "id": 863,
-                "old_id": 218,
                 "number": 44,
                 "name": "授术·张道陵",
                 "star": 3,
@@ -4155,7 +4517,6 @@ var outputTables = {
             },
             "864": {
                 "id": 864,
-                "old_id": 219,
                 "number": 44,
                 "name": "五斗米·张道陵",
                 "star": 4,
@@ -4171,7 +4532,6 @@ var outputTables = {
             },
             "865": {
                 "id": 865,
-                "old_id": 220,
                 "number": 44,
                 "name": "天师·张道陵",
                 "star": 5,
@@ -4217,7 +4577,6 @@ var outputTables = {
             },
             "961": {
                 "id": 961,
-                "old_id": 241,
                 "number": 49,
                 "name": "异人·哪吒",
                 "star": 1,
@@ -4230,7 +4589,6 @@ var outputTables = {
             },
             "962": {
                 "id": 962,
-                "old_id": 242,
                 "number": 49,
                 "name": "小仙·哪吒",
                 "star": 2,
@@ -4243,7 +4601,6 @@ var outputTables = {
             },
             "963": {
                 "id": 963,
-                "old_id": 243,
                 "number": 49,
                 "name": "神臂·哪吒",
                 "star": 3,
@@ -4259,7 +4616,6 @@ var outputTables = {
             },
             "964": {
                 "id": 964,
-                "old_id": 244,
                 "number": 49,
                 "name": "擒龙·哪吒",
                 "star": 4,
@@ -4275,7 +4631,6 @@ var outputTables = {
             },
             "965": {
                 "id": 965,
-                "old_id": 245,
                 "number": 49,
                 "name": "不死·哪吒",
                 "star": 5,
@@ -4321,7 +4676,6 @@ var outputTables = {
             },
             "981": {
                 "id": 981,
-                "old_id": 246,
                 "number": 50,
                 "name": "灯芯·紫霞",
                 "star": 1,
@@ -4334,7 +4688,6 @@ var outputTables = {
             },
             "982": {
                 "id": 982,
-                "old_id": 247,
                 "number": 50,
                 "name": "盘丝大仙·紫霞",
                 "star": 2,
@@ -4347,7 +4700,6 @@ var outputTables = {
             },
             "983": {
                 "id": 983,
-                "old_id": 248,
                 "number": 50,
                 "name": "紫青宝剑·紫霞",
                 "star": 3,
@@ -4363,7 +4715,6 @@ var outputTables = {
             },
             "984": {
                 "id": 984,
-                "old_id": 249,
                 "number": 50,
                 "name": "月光宝盒·紫霞",
                 "star": 4,
@@ -4379,7 +4730,6 @@ var outputTables = {
             },
             "985": {
                 "id": 985,
-                "old_id": 250,
                 "number": 50,
                 "name": "七色云彩·紫霞",
                 "star": 5,
@@ -4425,7 +4775,6 @@ var outputTables = {
             },
             "1001": {
                 "id": 1001,
-                "old_id": 251,
                 "number": 51,
                 "name": "智慧·文曲星",
                 "star": 1,
@@ -4438,7 +4787,6 @@ var outputTables = {
             },
             "1002": {
                 "id": 1002,
-                "old_id": 252,
                 "number": 51,
                 "name": "凡尘·文曲星",
                 "star": 2,
@@ -4451,7 +4799,6 @@ var outputTables = {
             },
             "1003": {
                 "id": 1003,
-                "old_id": 253,
                 "number": 51,
                 "name": "状元·文曲星",
                 "star": 3,
@@ -4467,7 +4814,6 @@ var outputTables = {
             },
             "1004": {
                 "id": 1004,
-                "old_id": 254,
                 "number": 51,
                 "name": "了然缘·文曲星",
                 "star": 4,
@@ -4483,7 +4829,6 @@ var outputTables = {
             },
             "1005": {
                 "id": 1005,
-                "old_id": 255,
                 "number": 51,
                 "name": "慧心三界·文曲星",
                 "star": 5,
@@ -12563,486 +12908,59 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "star": 1,
+                "source_card_star": 1,
                 "money_need": 5000,
                 "rate_per_card": 10,
-                "max_num": 10
+                "max_num": 10,
+                "super_honor": 0
             },
             "2": {
                 "id": 2,
                 "star": 2,
+                "source_card_star": 2,
                 "money_need": 10000,
                 "rate_per_card": 8,
-                "max_num": 13
+                "max_num": 13,
+                "super_honor": 0
             },
             "3": {
                 "id": 3,
                 "star": 3,
+                "source_card_star": 3,
                 "money_need": 20000,
                 "rate_per_card": 7,
-                "max_num": 15
+                "max_num": 15,
+                "super_honor": 0
             },
             "4": {
                 "id": 4,
                 "star": 4,
+                "source_card_star": 4,
                 "money_need": 50000,
                 "rate_per_card": 6,
                 "max_num": 17,
-                "no_work_count": 10
+                "no_work_count": 10,
+                "super_honor": 2
             },
             "5": {
                 "id": 5,
                 "star": 5,
+                "source_card_star": 5,
                 "money_need": 100000,
                 "rate_per_card": 35,
-                "max_num": 3
+                "max_num": 3,
+                "no_work_count": 1,
+                "super_honor": 15
             },
             "6": {
                 "id": 6,
                 "star": 6,
+                "source_card_star": 5,
                 "money_need": 200000,
-                "rate_per_card": 17,
-                "max_num": 6
-            }
-        }
-    },
-    "new_year_rechage": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 66,
-                "money": 20000,
-                "energy": 100,
-                "fragments": 2
-            },
-            "2": {
-                "id": 2,
-                "cash": 266,
-                "money": 50000,
-                "energy": 200,
-                "fragments": 3
-            },
-            "3": {
-                "id": 3,
-                "cash": 566,
-                "money": 80000,
-                "energy": 300,
-                "fragments": 5
-            },
-            "4": {
-                "id": 4,
-                "cash": 999,
-                "money": 100000,
-                "energy": 800,
-                "fragments": 8
-            },
-            "5": {
-                "id": 5,
-                "cash": 1888,
-                "money": 200000,
-                "energy": 1000,
-                "fragments": 12
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 20000,
-                "energy": 1000,
-                "card_ids": 1004,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 50,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 5,
-                "collect_count": 15,
-                "exp_card_count": 40
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[23,43,123,163,583,663,483,863,963]",
-                "star4": "[224,544]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "card_lineup_limit": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "card_1": 1,
-                "card_2": 1,
-                "card_3": 1,
-                "card_4": 12,
-                "card_5": 20
-            },
-            "1": {
-                "id": 1,
-                "card_1": 30,
-                "card_2": 35,
-                "card_3": 40,
-                "card_4": 40,
-                "card_5": 40
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 20,
-                "lottery": 25,
-                "card5_position": 35,
-                "boss": 40,
-                "pass_skillafresh": 45
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            },
-            "6": {
-                "id": 6,
-                "max_lv": 65
-            },
-            "7": {
-                "id": 7,
-                "max_lv": 70
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 250000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 400000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 600000
-            },
-            "6": {
-                "id": 6,
-                "elixir_limit": 900000
-            },
-            "7": {
-                "id": 7,
-                "elixir_limit": 1200000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 99999999,
-                "energy": 99999999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 99999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 5000,
-                "energy": 200
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 30000,
-                "energy": 1000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 50000,
-                "energy": 2000,
-                "skillPoint": 1000,
-                "elixir": 2000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 100000,
-                "energy": 3000,
-                "skillPoint": 2000,
-                "elixir": 5000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 120000,
-                "energy": 5000,
-                "skillPoint": 5000,
-                "elixir": 12000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 200000,
-                "energy": 8000,
-                "skillPoint": 8000,
-                "elixir": 20000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 1000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
-            },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
-                "value": 200,
-                "desc": "提取仙丹或技能点消耗的元宝数量"
-            },
-            "greetingConsumeGold": {
-                "id": "greetingConsumeGold",
-                "value": 20,
-                "desc": "每次喊话话费的金额"
-            },
-            "elixirOfRankMoneyGap": {
-                "id": "elixirOfRankMoneyGap",
-                "value": 130500,
-                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
-            },
-            "damageOfRankHonorGap": {
-                "id": "damageOfRankHonorGap",
-                "value": 3000,
-                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
+                "rate_per_card": 15,
+                "max_num": 7,
+                "no_work_count": 3,
+                "super_honor": 40
             }
         }
     },
@@ -29314,253 +29232,6 @@ var outputTables = {
             }
         }
     },
-    "passFailSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "总结下，为啥我们没打过？"
-            },
-            "2": {
-                "id": 2,
-                "text": "没事，反正又不是只有我们打不过。"
-            },
-            "3": {
-                "id": 3,
-                "text": "我们是不是该提升下能力再来打？"
-            },
-            "4": {
-                "id": 4,
-                "text": "胜败乃常事，不要气馁。"
-            },
-            "5": {
-                "id": 5,
-                "text": "注意休息，实在打不过就改天吧。"
-            }
-        }
-    },
-    "passWinSpiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "OK，下一层，让我们继续。"
-            },
-            "2": {
-                "id": 2,
-                "text": "你是最猛的，没有之一。"
-            },
-            "3": {
-                "id": 3,
-                "text": "无压力，让我们继续下一层。"
-            },
-            "4": {
-                "id": 4,
-                "text": "这太简单了，我简直感受不到挑战的存在。"
-            },
-            "5": {
-                "id": 5,
-                "text": "老天，来点真正的挑战吧。"
-            },
-            "6": {
-                "id": 6,
-                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-            },
-            "7": {
-                "id": 7,
-                "text": "胜利总是来的这么突然，唉……"
-            },
-            "8": {
-                "id": 8,
-                "text": "求败，求败，但求一败啊……"
-            },
-            "9": {
-                "id": 9,
-                "text": "没难度，没挑战，无压力。"
-            },
-            "10": {
-                "id": 10,
-                "text": "注意保持姿势，不要停，继续。"
-            }
-        }
-    },
-    "spiritSpeak": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "text": "我是小精灵，我不是元神，也不是宠物……"
-            },
-            "2": {
-                "id": 2,
-                "text": "我到底是公的还是母的啊，费解。"
-            },
-            "3": {
-                "id": 3,
-                "text": "每一天，我都觉得，我自豪，我傲娇。"
-            },
-            "4": {
-                "id": 4,
-                "text": "嗨，吃饭了没。"
-            },
-            "5": {
-                "id": 5,
-                "text": "海，我真的猜不透你耶……"
-            },
-            "6": {
-                "id": 6,
-                "text": "人活得其实是一个心态，所以凡事随缘吧。"
-            },
-            "7": {
-                "id": 7,
-                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
-            },
-            "8": {
-                "id": 8,
-                "text": "有时候想想，活着也真累，唉……"
-            },
-            "9": {
-                "id": 9,
-                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-            },
-            "10": {
-                "id": 10,
-                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-            },
-            "11": {
-                "id": 11,
-                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
-            },
-            "12": {
-                "id": 12,
-                "text": "尽量不要熬夜，海，很伤身体的。"
-            },
-            "13": {
-                "id": 13,
-                "text": "我喜欢吃山西臊子面，超赞的味道。"
-            },
-            "14": {
-                "id": 14,
-                "text": "海，今天心情好么，祝你游戏愉快唷。"
-            },
-            "15": {
-                "id": 15,
-                "text": "我今天很郁闷。"
-            },
-            "16": {
-                "id": 16,
-                "text": "每次看到你出现，我都觉得很幸福。"
-            },
-            "17": {
-                "id": 17,
-                "text": "每次45度仰望星空，我都不禁陷入沉思……"
-            },
-            "18": {
-                "id": 18,
-                "text": "上班时间记得多看电影，这样可以调节心情。"
-            },
-            "19": {
-                "id": 19,
-                "text": "不要太在意钱，钱就是个蛋。"
-            },
-            "20": {
-                "id": 20,
-                "text": "如果遇到相爱之人，要珍惜之。"
-            },
-            "21": {
-                "id": 21,
-                "text": "嗨，你是干啥的啊，当官的么？"
-            },
-            "22": {
-                "id": 22,
-                "text": "嫦娥其实长的很丑，我亲眼见过。"
-            },
-            "23": {
-                "id": 23,
-                "text": "爱情是个什么东东，你能告诉我么。"
-            },
-            "24": {
-                "id": 24,
-                "text": "昨天我看到苍空井老师了，好激动。"
-            },
-            "25": {
-                "id": 25,
-                "text": "超级讨厌玉帝，讨厌死了。"
-            },
-            "26": {
-                "id": 26,
-                "text": "寂寞不是苦，是心灵的一种福音。"
-            },
-            "27": {
-                "id": 27,
-                "text": "我今天好像感冒了，咳咳……"
-            },
-            "28": {
-                "id": 28,
-                "text": "人间好玩么，很想去看一看。"
-            },
-            "29": {
-                "id": 29,
-                "text": "上天其实是没有好生之德的。"
-            },
-            "30": {
-                "id": 30,
-                "text": "最近仙界妖气好重啊，得多加小心。"
-            },
-            "31": {
-                "id": 31,
-                "text": "我刚看到玉帝王母在野战，好猛。"
-            },
-            "32": {
-                "id": 32,
-                "text": "这些日子，我总是空虚寂寞冷……"
-            },
-            "33": {
-                "id": 33,
-                "text": "为什么神仙就没有恋爱自由呢？"
-            },
-            "34": {
-                "id": 34,
-                "text": "我喜欢听民族风，接地气，你觉得呢？"
-            },
-            "35": {
-                "id": 35,
-                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-            },
-            "36": {
-                "id": 36,
-                "text": "工作只是生活的一部分，但不是全部。"
-            },
-            "37": {
-                "id": 37,
-                "text": "你玩这游戏花钱了没，可别被坑了。"
-            },
-            "38": {
-                "id": 38,
-                "text": "生命的真谛在于心灵的自由，好难哦。"
-            },
-            "39": {
-                "id": 39,
-                "text": "从来都没有真正的民主，仙界也是。"
-            },
-            "40": {
-                "id": 40,
-                "text": "昨晚天庭停电了。"
-            },
-            "41": {
-                "id": 41,
-                "text": "王母的蟠桃有敌敌畏，最好别吃。"
-            },
-            "42": {
-                "id": 42,
-                "text": "不知道为什么，今天我很想喝酒。"
-            },
-            "43": {
-                "id": 43,
-                "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -29955,6 +29626,253 @@ var outputTables = {
                 "star7_inc_max": 23,
                 "star7_grow": 3,
                 "rate7": 50
+            }
+        }
+    },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续。"
+            },
+            "2": {
+                "id": 2,
+                "text": "你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "我是小精灵，我不是元神，也不是宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，费解。"
+            },
+            "3": {
+                "id": 3,
+                "text": "每一天，我都觉得，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "嗨，吃饭了没。"
+            },
+            "5": {
+                "id": 5,
+                "text": "海，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，所以凡事随缘吧。"
+            },
+            "7": {
+                "id": 7,
+                "text": "作为仙界超级精灵，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "9": {
+                "id": 9,
+                "text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+            },
+            "10": {
+                "id": 10,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "11": {
+                "id": 11,
+                "text": "作为仙界超级精灵，我是有理想的小兽兽。"
+            },
+            "12": {
+                "id": 12,
+                "text": "尽量不要熬夜，海，很伤身体的。"
+            },
+            "13": {
+                "id": 13,
+                "text": "我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "14": {
+                "id": 14,
+                "text": "海，今天心情好么，祝你游戏愉快唷。"
+            },
+            "15": {
+                "id": 15,
+                "text": "我今天很郁闷。"
+            },
+            "16": {
+                "id": 16,
+                "text": "每次看到你出现，我都觉得很幸福。"
+            },
+            "17": {
+                "id": 17,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "18": {
+                "id": 18,
+                "text": "上班时间记得多看电影，这样可以调节心情。"
+            },
+            "19": {
+                "id": 19,
+                "text": "不要太在意钱，钱就是个蛋。"
+            },
+            "20": {
+                "id": 20,
+                "text": "如果遇到相爱之人，要珍惜之。"
+            },
+            "21": {
+                "id": 21,
+                "text": "嗨，你是干啥的啊，当官的么？"
+            },
+            "22": {
+                "id": 22,
+                "text": "嫦娥其实长的很丑，我亲眼见过。"
+            },
+            "23": {
+                "id": 23,
+                "text": "爱情是个什么东东，你能告诉我么。"
+            },
+            "24": {
+                "id": 24,
+                "text": "昨天我看到苍空井老师了，好激动。"
+            },
+            "25": {
+                "id": 25,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "26": {
+                "id": 26,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "27": {
+                "id": 27,
+                "text": "我今天好像感冒了，咳咳……"
+            },
+            "28": {
+                "id": 28,
+                "text": "人间好玩么，很想去看一看。"
+            },
+            "29": {
+                "id": 29,
+                "text": "上天其实是没有好生之德的。"
+            },
+            "30": {
+                "id": 30,
+                "text": "最近仙界妖气好重啊，得多加小心。"
+            },
+            "31": {
+                "id": 31,
+                "text": "我刚看到玉帝王母在野战，好猛。"
+            },
+            "32": {
+                "id": 32,
+                "text": "这些日子，我总是空虚寂寞冷……"
+            },
+            "33": {
+                "id": 33,
+                "text": "为什么神仙就没有恋爱自由呢？"
+            },
+            "34": {
+                "id": 34,
+                "text": "我喜欢听民族风，接地气，你觉得呢？"
+            },
+            "35": {
+                "id": 35,
+                "text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+            },
+            "36": {
+                "id": 36,
+                "text": "工作只是生活的一部分，但不是全部。"
+            },
+            "37": {
+                "id": 37,
+                "text": "你玩这游戏花钱了没，可别被坑了。"
+            },
+            "38": {
+                "id": 38,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "39": {
+                "id": 39,
+                "text": "从来都没有真正的民主，仙界也是。"
+            },
+            "40": {
+                "id": 40,
+                "text": "昨晚天庭停电了。"
+            },
+            "41": {
+                "id": 41,
+                "text": "王母的蟠桃有敌敌畏，最好别吃。"
+            },
+            "42": {
+                "id": 42,
+                "text": "不知道为什么，今天我很想喝酒。"
+            },
+            "43": {
+                "id": 43,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -51386,9 +51304,9 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
-                "energy": 5500,
+                "energy": 6000,
                 "money": 150000,
-                "skillPoint": 5000,
+                "skillPoint": 10000,
                 "elixir": 0,
                 "fragments": 3,
                 "exp_card": 0,
@@ -51397,21 +51315,21 @@ var outputTables = {
             },
             "3": {
                 "id": 3,
-                "energy": 6000,
+                "energy": 7000,
                 "money": 200000,
-                "skillPoint": 10000,
-                "elixir": 5000,
+                "skillPoint": 20000,
+                "elixir": 20000,
                 "fragments": 4,
-                "exp_card": 0,
+                "exp_card": 40,
                 "price": 88,
                 "true_price": 246
             },
             "4": {
                 "id": 4,
-                "energy": 6500,
+                "energy": 8000,
                 "money": 250000,
-                "skillPoint": 15000,
-                "elixir": 10000,
+                "skillPoint": 30000,
+                "elixir": 40000,
                 "fragments": 5,
                 "exp_card": 50,
                 "price": 188,
@@ -51419,10 +51337,10 @@ var outputTables = {
             },
             "5": {
                 "id": 5,
-                "energy": 7000,
+                "energy": 9000,
                 "money": 300000,
-                "skillPoint": 20000,
-                "elixir": 15000,
+                "skillPoint": 40000,
+                "elixir": 60000,
                 "fragments": 6,
                 "exp_card": 60,
                 "price": 288,
@@ -51430,10 +51348,10 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
-                "energy": 7500,
+                "energy": 10000,
                 "money": 350000,
-                "skillPoint": 25000,
-                "elixir": 20000,
+                "skillPoint": 50000,
+                "elixir": 80000,
                 "fragments": 7,
                 "exp_card": 70,
                 "price": 388,
@@ -51441,10 +51359,10 @@ var outputTables = {
             },
             "7": {
                 "id": 7,
-                "energy": 8000,
+                "energy": 11000,
                 "money": 400000,
-                "skillPoint": 30000,
-                "elixir": 25000,
+                "skillPoint": 60000,
+                "elixir": 100000,
                 "fragments": 8,
                 "exp_card": 80,
                 "price": 488,
@@ -51452,10 +51370,10 @@ var outputTables = {
             },
             "8": {
                 "id": 8,
-                "energy": 8500,
+                "energy": 12000,
                 "money": 450000,
-                "skillPoint": 35000,
-                "elixir": 30000,
+                "skillPoint": 70000,
+                "elixir": 120000,
                 "fragments": 9,
                 "exp_card": 90,
                 "price": 588,
@@ -51463,10 +51381,10 @@ var outputTables = {
             },
             "9": {
                 "id": 9,
-                "energy": 9000,
+                "energy": 13000,
                 "money": 500000,
-                "skillPoint": 40000,
-                "elixir": 35000,
+                "skillPoint": 80000,
+                "elixir": 140000,
                 "fragments": 10,
                 "exp_card": 100,
                 "price": 688,
@@ -51474,10 +51392,10 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "energy": 9500,
+                "energy": 14000,
                 "money": 550000,
-                "skillPoint": 45000,
-                "elixir": 40000,
+                "skillPoint": 90000,
+                "elixir": 160000,
                 "fragments": 11,
                 "exp_card": 110,
                 "price": 788,
@@ -51485,10 +51403,10 @@ var outputTables = {
             },
             "11": {
                 "id": 11,
-                "energy": 10000,
+                "energy": 15000,
                 "money": 600000,
-                "skillPoint": 50000,
-                "elixir": 45000,
+                "skillPoint": 100000,
+                "elixir": 180000,
                 "fragments": 12,
                 "exp_card": 120,
                 "price": 888,
@@ -51496,10 +51414,10 @@ var outputTables = {
             },
             "12": {
                 "id": 12,
-                "energy": 10500,
+                "energy": 16000,
                 "money": 650000,
-                "skillPoint": 55000,
-                "elixir": 50000,
+                "skillPoint": 110000,
+                "elixir": 200000,
                 "fragments": 13,
                 "exp_card": 130,
                 "price": 999,

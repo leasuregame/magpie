@@ -25,7 +25,7 @@ class Base
 
 class Battle extends Base
   init: ->
-    @attacker.setEnemy(@defender, true)
+    @attacker.setEnemy(@defender)
     @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
@@ -37,10 +37,7 @@ class Battle extends Base
     battleLog.set('enemyId', @defender.id)
     battleLog.set('ownName', @attacker.name)
     battleLog.set('enemyName', @defender.name)
-
-    battleLog.addCards @attacker.getCards()
-    battleLog.addCards @defender.getCards()
-
+    
   execute: ->
     while not @isOver()
       @round.process()

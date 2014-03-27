@@ -20,13 +20,57 @@ var Data = function(db, dir) {
   }
 };
 
+Data.prototype.changeCardPassiveSkill = function() {
+  var cardDao = this.db.card;
+  var totalCount = 0, finished = 0;
+  cardDao.fetchMany({where: ' star in (3, 4, 5)'}, function(err, cards) {
+    
+    totalCount = cards.length;
+    async.each(cards, function(card, done) {
+      var ps = [];
+      if (card.passiveSkills.length > 0 && !card.passiveSkills[0].items) {
+        ps = card.passiveSkills;
+      }
+
+      card.passiveSkills = [{
+        id: 1,
+        items: ps,
+        active: true
+      },{
+        id: 2,
+        items: [],
+        active: false
+      }, {
+        id: 3,
+        items: [],
+        active: false
+      }];
+      card.bornPassiveSkill();
+      card.psGroupCount = 3;
+      cardDao.update({
+        where: {
+          id: card.id
+        },
+        data: card.getSaveData()
+      }, function(err, res) {
+        finished += 1;
+        done();
+      });
+    }, function(err) {
+      console.log('change passiveSkill of cards finished');
+      console.log('total count: ', totalCount);
+      console.log('finised: ', finished);
+    });
+  });
+};
+
 Data.prototype.correctCardBook = function() {
   var idTab = table.getTable('new_card_id_map');
-  
+
   var playerDao = this.db.player;
   var totalCount = 0,
-      finished = 0;
-  playerDao.fetchMany({}, function(err, players) {    
+    finished = 0;
+  playerDao.fetchMany({}, function(err, players) {
     totalCount = players.length;
 
     async.each(players, function(ply, done) {
@@ -49,21 +93,25 @@ Data.prototype.correctCardBook = function() {
       });
 
       playerDao.update({
-        where: {id: ply.id},
-        data: {cardBook: {
-          mark: mg.value,
-          flag: mg.value
-        }}
+        where: {
+          id: ply.id
+        },
+        data: {
+          cardBook: {
+            mark: mg.value,
+            flag: mg.value
+          }
+        }
       }, function(err, res) {
         if (err) {
-          console.log(err, res);  
+          console.log(err, res);
           done();
         } else {
           console.log('update card book for player id: ', ply.id);
           finished += 1;
           done();
         }
-        
+
       });
 
     }, function(err) {
@@ -83,7 +131,7 @@ Data.prototype.correctCardTableId = function() {
     console.log(err, count);
     pageNum = 2
     pages = Math.ceil(count / pageNum);
-    
+
     fCount = 0
     async.times(pages, function(page, next) {
       var start = page * pageNum;
@@ -122,14 +170,16 @@ Data.prototype.correctCardTableId = function() {
         }, function(err) {
           next(null);
         });
-        
+
       });
 
     }, function(err, results) {
       console.log('change tableId of card finished.');
       console.log('total cards:', count);
       console.log('finished:', fCount);
-      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {return x - y;})));
+      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {
+        return x - y;
+      })));
     });
   });
 };
@@ -259,7 +309,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       }
       if (table == 'card') {
         genSkillInc(row);
-        initPassiveSkill(row);
+        initPassiveSkillGroup(row);
       }
       self.db[table].delete({
         where: where
@@ -457,7 +507,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
                 star: cards.ids[n] % 5 || 5
               };
               genSkillInc(cardData);
-              initPassiveSkill(cardData);
+              initPassiveSkillGroup(cardData);
 
               self.db.card.create({
                 data: cardData
@@ -582,7 +632,7 @@ Data.prototype.dataForRanking = function(callback) {
           async.times(row.card_count, function(n, next) {
             cardData.tableId = ids[_.random(0, ids.length - 1)];
             genSkillInc(cardData);
-            initPassiveSkill(cardData);
+            initPassiveSkillGroup(cardData);
             self.db.card.create({
               data: cardData
             }, next);
@@ -739,6 +789,47 @@ var initPassiveSkill = function(card) {
 
   card.passiveSkills = results;
 };
+
+
+var initPassiveSkills, initPassiveSkillGroup;
+
+initPassiveSkills = function(star) {
+  var count, end, i, index, results, start, _i, _ref;
+  star = star > 5 ? 5 : star;
+  
+  count = star - 2;
+  results = [];
+  for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+    index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
+    _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
+    results.push({
+      id: i,
+      name: cardConfig.PASSIVESKILL.TYPE[index],
+      value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
+    });
+  }
+  return results;
+};
+
+initPassiveSkillGroup = function(card) {
+  var star = card.star;
+  if (star < 3) {
+    return card.passiveSkills = [];
+  }
+
+  var i, list, _i;
+
+  list = [];
+  for (i = _i = 1; _i <= 3; i = ++_i) {
+    list.push({
+      id: i,
+      items: initPassiveSkills(star),
+      active: i === 1 ? true : false
+    });
+  }
+  card.passiveSkills = list;
+};
+
 
 var thisWeek = function() {
   var now, onejan, weekNumber;

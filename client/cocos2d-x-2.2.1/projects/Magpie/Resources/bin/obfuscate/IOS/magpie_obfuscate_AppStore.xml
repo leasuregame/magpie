@@ -170,6 +170,7 @@
                 <file name="src/view/mainModule/messageLabel.js"/>
                 <file name="src/view/mainModule/messageLayer.js"/>
                 <file name="src/view/mainModule/monthLabel.js"/>
+                <file name="src/view/mainModule/passiveSkillLabel.js"/>
                 <file name="src/view/mainModule/passiveSkillAfreshLabel.js"/>
                 <file name="src/view/mainModule/passLayer.js"/>
                 <file name="src/view/mainModule/passRankLayer.js"/>

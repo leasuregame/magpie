@@ -312,7 +312,7 @@ var BossListLayer = cc.Layer.extend({
                         color: cc.c3b(117, 255, 57)
                     }
                 );
-                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
                 rewardAdditionLabel.setPosition(cc.p(330, y + 32));
                 scrollViewLayer.addChild(rewardAdditionLabel);
             }
@@ -413,13 +413,12 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        var cb = function () {
+
+        AdvancedTipsLabel.pop(TYPE_REMOVE_CD_TIPS, function () {
             gameData.boss.removeTimer(function () {
                 that.update();
             });
-        };
-
-        RemoveCdTipLabel.pop({cb: cb});
+        });
     },
 
     _onClickReward: function () {

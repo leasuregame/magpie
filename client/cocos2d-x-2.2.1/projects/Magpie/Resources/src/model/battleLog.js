@@ -12,6 +12,17 @@
  * */
 
 
+var LINE_UP_CARD_LIMIT = {
+    o: {
+        start: 1,
+        end: 6
+    },
+    e: {
+        start: 7,
+        end: 12
+    }
+};
+
 var BattleLog = Entity.extend({
     _id: 0,
     _type: PVE_BATTLE_LOG,
@@ -169,17 +180,22 @@ var BattleLog = Entity.extend({
 
         if (battleStep.go != undefined) {
             var lineUp = this._lineUpList[battleStep.go];
-            var refresh = "o";
+            var faction = "o";
 
             for (var key in lineUp) {
                 if (parseInt(key) > 6) {
-                    refresh = "e";
+                    faction = "e";
+                    break;
                 }
-
-                this._card[key] = lineUp[key];
             }
 
-            return refresh;
+            var limit = LINE_UP_CARD_LIMIT[faction];
+
+            for (var i = limit.start; i <= limit.end; ++i) {
+                this._card[i] = lineUp[i];
+            }
+
+            return faction;
         }
 
         return BattleStep.create(this._battleStep[this._index]);

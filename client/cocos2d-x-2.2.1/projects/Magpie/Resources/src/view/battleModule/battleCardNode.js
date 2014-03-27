@@ -68,7 +68,7 @@ var BattleCardNode = cc.Node.extend({
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
             }
 
-            var num = this._star > 2 ? this._star - 2 : 1;
+            var num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
             var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
             var iconSpriteTexture = lz.getTexture(main_scene_image[this.getCardIcon()]);
@@ -139,6 +139,10 @@ var BattleCardNode = cc.Node.extend({
 
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
+
+        if(type == 1) {
+            type = (this._star > 5) ? (this._star - 5 + 2) : type;
+        }
 
         return (skillIconMap[type][this._skillId] || skillIconMap[type][0]);
     },

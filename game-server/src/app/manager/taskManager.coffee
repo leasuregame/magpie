@@ -213,26 +213,6 @@ class Manager
         data.level9Box = level9Box
 
       cb(null, data)
-
-  @createPassiveSkillForCard: (card, times, cb) ->
-    async.times times
-      , (n, next) ->
-        ps_data = require('../domain/entity/passiveSkill').born()
-        ps_data.cardId = card.id
-        dao.passiveSkill.create data: ps_data, (err, ps) ->
-          if err
-            logger.error 'faild to create passiveSkill, ', err
-            return next(err)
-
-          card.addPassiveSkill ps
-          next(null, ps)
-      , (err, pss) ->
-        if err
-          return cb(err) 
-
-        card.addPassiveSkills pss
-
-        cb(null, card)
         
   @seekBoss: (data, player, cb) ->
     ### boss等级限制判断 ###
@@ -301,15 +281,6 @@ getBossInfo = (type) ->
 checkFindBoss = (count) ->
   rate = table.getTableItem('boss_find_rate', count)?.rate or 1
   return utility.hitRate(rate)
-
-bornPassiveSkill = () ->
-  born_rates = psConfig.BORN_RATES
-  name = utility.randomValue _.key(born_rates), _.value(born_rates)
-  value = _.random(100, psConfig.INIT_MAX * 100)
-  return {
-    name: name
-    value: parseFloat (value/100).toFixed(1)
-  }
 
 saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
   results = []

@@ -104,7 +104,7 @@ var CardLabel = cc.Node.extend({
         lvLabel.setPosition(cc.p(180, 28));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), "STHeitiTC-Medium", 22);
+        var abilityLabel = cc.LabelTTF.create(this._card.get("ability") || 0, "STHeitiTC-Medium", 22);
         abilityLabel.setColor(cc.c3b(56, 3, 5));
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(cc.p(260, 28));

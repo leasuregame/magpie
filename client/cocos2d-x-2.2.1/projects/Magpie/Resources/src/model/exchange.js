@@ -109,6 +109,10 @@ var Exchange = Entity.extend({
         return true;
     },
 
+    getFragmentsNeed: function(star) {
+        return star == 4 ? EXCHANGE_STAR4_CARD : EXCHANGE_STAR5_CARD;
+    },
+
     getExchangeCards: function (cb) {
         cc.log("Exchange getExchangeCards");
 
@@ -122,7 +126,8 @@ var Exchange = Entity.extend({
                     cc.log("getExchangeCards success");
                     var ids = data.msg.ids;
                     that._updateList(ids);
-                    gameData.player.add("money", -1000);
+                    var needMoney = outputTables.values.rows["reflashExcCardsMoney"].value;
+                    gameData.player.add("money", -1 * needMoney);
                     cb();
                 } else {
                     cc.log("getExchangeCards fail");

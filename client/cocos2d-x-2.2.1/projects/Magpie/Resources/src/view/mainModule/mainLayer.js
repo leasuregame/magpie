@@ -81,7 +81,7 @@ var MainLayer = cc.Layer.extend({
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
-        this.addChild(playerHeaderLabel);
+        this.addChild(playerHeaderLabel, 2);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon285);
         lineIcon.setAnchorPoint(cc.p(0, 0));

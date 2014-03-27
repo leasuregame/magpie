@@ -35,6 +35,7 @@ var LotteryLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+        this._updateTips();
 
         lz.um.beginLogPageView("抽卡界面");
     },
@@ -270,6 +271,70 @@ var LotteryLayer = cc.Layer.extend({
         }
     },
 
+    _updateTips: function () {
+        cc.log("LotteryLayer _update");
+
+        if (this._tipsLabel) {
+            this._tipsLabel.removeFromParent();
+            this._tipsLabel = null;
+        }
+
+        var lottery = gameData.lottery;
+        var rate;
+
+        if (this._times == 1) {
+            rate = lottery.getFragmentRate();
+            if (rate > 0) {
+                this._tipsLabel = ColorLabelTTF.create(
+                    {
+                        string: rate + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        color: cc.c3b(117, 255, 57)
+                    },
+                    {
+                        string: "得",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22
+                    },
+                    {
+                        iconName: "fragment",
+                        scale: 0.7,
+                        spacing: -2
+                    }
+                );
+                this._tipsLabel.setVisible(true);
+            }
+        } else {
+            rate = lottery.getFiveStarCardRate();
+            if (rate > 0) {
+                this._tipsLabel = ColorLabelTTF.create(
+                    {
+                        string: rate + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        color: cc.c3b(117, 255, 57)
+                    },
+                    {
+                        string: "得5",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22
+                    },
+                    {
+                        iconName: "star",
+                        spacing: -8
+                    }
+                );
+                this._tipsLabel.setVisible(true);
+            }
+        }
+
+        if (this._tipsLabel) {
+            this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
+            this.addChild(this._tipsLabel, 2);
+        }
+    },
+
     ccbFnShowCard: function () {
         cc.log("LotteryLayer ccbFnShowCard");
 
@@ -301,6 +366,7 @@ var LotteryLayer = cc.Layer.extend({
             this._energyTenLotteryIcon[i].setVisible(true);
         }
         this._times = 10;
+        this._updateTips();
     },
 
     _onClickCloseTenLottery: function () {
@@ -317,6 +383,7 @@ var LotteryLayer = cc.Layer.extend({
             this._energyTenLotteryIcon[i].setVisible(false);
         }
         this._times = 1;
+        this._updateTips();
     },
 
     _onClickLottery: function (type, level) {
@@ -368,6 +435,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
+                    that._updateTips();
                     fn(data);
 
                 }, type, level);
@@ -376,6 +444,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
+                    that._updateTips();
                     fn(data);
 
                 }, type, level);

@@ -25,6 +25,8 @@ var LineUpLabel = cc.Layer.extend({
     _card4Guide: null,
     _card5Guide: null,
 
+    _succorCardsGuide: null,
+
     onEnter: function () {
         cc.log("LineUpLabel onEnter");
 
@@ -43,15 +45,16 @@ var LineUpLabel = cc.Layer.extend({
         this._cardList = gameData.cardList;
         this._index = 0;
         this._lineUpName = [];
+        this._succorCardsGuide = [];
 
         this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
         this._turnLeftIcon.setScaleX(-1);
         this._turnLeftIcon.setPosition(cc.p(20, 0));
-        this.addChild(this._turnLeftIcon);
+        this.addChild(this._turnLeftIcon, 2);
 
         this._turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
         this._turnRightIcon.setPosition(cc.p(620, 0));
-        this.addChild(this._turnRightIcon);
+        this.addChild(this._turnRightIcon, 2);
 
         var lineUp = gameData.lineUp;
         var len = lineUp.get("maxLineUp");
@@ -63,7 +66,7 @@ var LineUpLabel = cc.Layer.extend({
             this.addChild(this._lineUpName[i]);
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(35, -54, 570, 158));
+        var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 600, 165));
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
@@ -76,29 +79,28 @@ var LineUpLabel = cc.Layer.extend({
             for (var j = 0; j < MAX_LINE_UP_CARD; j++) {
                 var cardHeadItem = null;
                 var effect = null;
-                var x = 54 + (i * 5 + j) * 117;
+                var x = 69 + (i * 5 + j) * 117 + 20 * (i > 0 ? 1 : 0);
                 if (j < count) {
                     cardHeadItem = CardHeadNode.getCardHeadItem(cardList[j], this._onClickCard, this);
 
                     if (cardList[j]) {
                         effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
-                        effect.setAnchorPoint(cc.p(0.5, 0));
-                        effect.setPosition(cc.p(x, 0));
+                        effect.setPosition(cc.p(x, 60));
                         scrollViewLayer.addChild(effect, 2);
                     }
 
                 } else {
-                    cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
+                    cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(j), this);
                 }
-                cardHeadItem.setAnchorPoint(cc.p(0.5, 0));
-                cardHeadItem.setPosition(cc.p(x, 0));
+
+                cardHeadItem.setPosition(cc.p(x, 60));
                 menu.addChild(cardHeadItem);
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(570, 158), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(117 * MAX_LINEUP_LIST * 5, 158));
-        this._scrollView.setPosition(cc.p(35, -54));
+        this._scrollView = cc.ScrollView.create(cc.size(600, 165), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(600 * MAX_LINEUP_LIST, 165));
+        this._scrollView.setPosition(cc.p(20, -60));
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
@@ -116,17 +118,35 @@ var LineUpLabel = cc.Layer.extend({
             this._lineUpName[i].setVisible(false);
         }
 
-        cc.log(this._index);
         this._lineUpName[this._index].setVisible(true);
         this._turnLeftIcon.setVisible(this._index != 0);
         this._turnRightIcon.setVisible(this._index != len - 1);
-        this._scrollView.setContentOffset(this._getScrollViewOffset());
+        this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
+        if (this._card3Guide) {
+            this._card3Guide.setVisible(this._index == 0);
+        }
+
+        if (this._card4Guide) {
+            this._card4Guide.setVisible(this._index == 0);
+        }
+
+        if (this._card4Guide) {
+            this._card3Guide.setVisible(this._index == 0);
+        }
+
+        for (var i = 0; i < 5; i++) {
+            if (this._succorCardsGuide[i]) {
+                this._succorCardsGuide[i].setVisible(this._index == 1);
+            }
+        }
+
     },
 
     _getScrollViewOffset: function () {
         cc.log("LineUpLabel _getScrollViewOffset");
 
-        return cc.p(this._index * -585, 0);
+        return cc.p(this._index * -600, 0);
     },
 
     updateGuide: function () {
@@ -135,16 +155,32 @@ var LineUpLabel = cc.Layer.extend({
         if (gameGuide.get("card5Guide") && !this._card5Guide) {
             this._card5Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card5Guide.setPosition(cc.p(79 + 122 * 4, 0));
+            this._card5Guide.setVisible(false);
             this.addChild(this._card5Guide, 10);
         } else if (gameGuide.get("card4Guide") && !this._card4Guide) {
             this._card4Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card4Guide.setPosition(cc.p(79 + 122 * 3, 0));
+            this._card4Guide.setVisible(false);
             this.addChild(this._card4Guide, 10);
         } else if (gameGuide.get("card3Guide") && !this._card3Guide) {
             this._card3Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
+            this._card3Guide.setVisible(false);
             this.addChild(this._card3Guide, 10);
         }
+
+        if (gameGuide.get("succorCardsGuide")) {
+            for (var i = 0; i < 5; i++) {
+                if (!this._succorCardsGuide[i]) {
+                    this._succorCardsGuide[i] = cc.BuilderReader.load(main_scene_image.uiEffect43);
+                    this._succorCardsGuide[i].setPosition(cc.p(79 + 122 * i, 0));
+                    this._succorCardsGuide[i].setVisible(false);
+                    this.addChild(this._succorCardsGuide[i], 10);
+                }
+            }
+        }
+
+        this.update();
     },
 
     _onClickCard: function () {
@@ -152,22 +188,32 @@ var LineUpLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (this._card5Guide) {
-            this._card5Guide.removeFromParent();
-            this._card5Guide = null;
-            gameGuide.set("card5Guide", false);
-        }
+        if (this._index == 0) {
+            if (this._card5Guide) {
+                this._card5Guide.removeFromParent();
+                this._card5Guide = null;
+                gameGuide.set("card5Guide", false);
+            }
 
-        if (this._card4Guide) {
-            this._card4Guide.removeFromParent();
-            this._card4Guide = null;
-            gameGuide.set("card4Guide", false);
-        }
+            if (this._card4Guide) {
+                this._card4Guide.removeFromParent();
+                this._card4Guide = null;
+                gameGuide.set("card4Guide", false);
+            }
 
-        if (this._card3Guide) {
-            this._card3Guide.removeFromParent();
-            this._card3Guide = null;
-            gameGuide.set("card3Guide", false);
+            if (this._card3Guide) {
+                this._card3Guide.removeFromParent();
+                this._card3Guide = null;
+                gameGuide.set("card3Guide", false);
+            }
+        } else {
+            for (var i = 0; i < 5; i++) {
+                if (this._succorCardsGuide[i]) {
+                    this._succorCardsGuide[i].removeFromParent();
+                    this._succorCardsGuide[i] = null;
+                }
+            }
+            gameGuide.set("succorCardsGuide", false);
         }
 
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));
@@ -179,19 +225,17 @@ var LineUpLabel = cc.Layer.extend({
     },
 
     _onClickLock: function (index) {
-        var table = outputTables.function_limit.rows[1];
+
+        var that = this;
 
         return function () {
             cc.log("LineUpLabel _onClickLock");
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            if (index == 2) {
-                TipLayer.tip(table.card3_position + " 级开启");
-            } else if (index == 3) {
-                TipLayer.tip(table.card4_position + " 级开启");
-            } else if (index == 4) {
-                TipLayer.tip(table.card5_position + " 级开启");
-            }
+
+            var table = outputTables.card_lineup_limit.rows[that._index];
+            TipLayer.tip(table["card_" + (index + 1)] + " 级开启");
+
         }
     },
 
@@ -211,10 +255,10 @@ var LineUpLabel = cc.Layer.extend({
         var len = beganOffset.x - endOffset.x;
 
         if (len !== 0) {
-            if (len > 80) {
-                this._index = 0 - Math.floor(endOffset.x / 640);
-            } else if (len < -80) {
-                this._index = 0 - Math.ceil(endOffset.x / 640);
+            if (len > 30) {
+                this._index = 0 - Math.floor(endOffset.x / 600);
+            } else if (len < -30) {
+                this._index = 0 - Math.ceil(endOffset.x / 600);
             }
 
             this.update();

@@ -11,7 +11,7 @@ var RemoveCdTipLabel = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        if (args.cb) {
+        if (args && args.cb) {
             this._cb = args.cb;
         }
 
@@ -34,20 +34,26 @@ var RemoveCdTipLabel = LazyLayer.extend({
         node.addChild(msgBgIcon);
 
         var needGold = gameData.boss.removeCdNeedGold();
-        var tipLabel1 = cc.LabelTTF.create("是否确定花费" + needGold, "STHeitiTC-Medium", 25);
-        tipLabel1.setPosition(cc.p(-80, 30));
-        node.addChild(tipLabel1);
 
-        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setScale(0.7);
-        goldIcon.setPosition(cc.p(30, 30));
-        node.addChild(goldIcon);
-
-        var tipLabel2 = cc.LabelTTF.create("消除CD?", "STHeitiTC-Medium", 25);
-        tipLabel2.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel2.setPosition(cc.p(50, 30));
-        node.addChild(tipLabel2);
-
+        var testLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                goodsName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "消除CD?",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        testLabel.setPosition(cc.p(0, 30));
+        testLabel.setAnchorPoint(cc.p(0.5, 0));
+        node.addChild(testLabel);
 
         var oKItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,

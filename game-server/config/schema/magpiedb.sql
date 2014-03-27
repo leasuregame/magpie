@@ -135,8 +135,9 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
-  `passiveSkills` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
+  `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -202,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,
-  `amount` INT(5) UNSIGNED,
+  `amount` INT(5) UNSIGNED DEFAULT '0',
   `isVerify` BOOLEAN DEFAULT '0',
   `status` INT(6),
   PRIMARY KEY (`id`)

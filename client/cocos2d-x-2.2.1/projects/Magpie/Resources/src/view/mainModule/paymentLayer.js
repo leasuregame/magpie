@@ -124,7 +124,7 @@ var PaymentLayer = LazyLayer.extend({
                 }
             );
 
-            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setAnchorPoint(cc.p(0, 0));
             tipLabel.setPosition(this._paymentLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }

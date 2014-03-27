@@ -339,6 +339,9 @@ Handler::luckyCard = (msg, session, next) ->
         cards: (cardEnts.map (c) -> c.toJson()) if cardEnts.length > 1
         consume: totalConsume
         fragment: totalFragment
+
+        goldLuckyCard10: player.dailyGift.goldLuckyCard10 if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCard10.got
+        goldLuckyCardForFragment: player.dailyGift.goldLuckyCardForFragment if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCardForFragment.got
     })
 
 Handler::skillUpgrade = (msg, session, next) ->

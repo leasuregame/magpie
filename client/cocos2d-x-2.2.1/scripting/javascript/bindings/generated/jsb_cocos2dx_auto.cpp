@@ -51737,15 +51737,19 @@ JSBool js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::CCEGLViewProtocol* cobj = (cocos2d::CCEGLViewProtocol *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 3) {
+	if (argc == 5) {
 		double arg0;
 		double arg1;
-		ResolutionPolicy arg2;
+        double arg2;
+		double arg3;
+		ResolutionPolicy arg4;
 		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+        ok &= JS_ValueToNumber(cx, argv[2], &arg2);
+		ok &= JS_ValueToNumber(cx, argv[3], &arg3);
+		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->setDesignResolutionSize(arg0, arg1, arg2);
+		cobj->setDesignResolutionSize(arg0, arg1, arg2, arg3, arg4);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -51796,7 +51800,7 @@ void js_register_cocos2dx_CCEGLViewProtocol(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getVisibleOrigin", js_cocos2dx_CCEGLViewProtocol_getVisibleOrigin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setDesignResolutionSize", js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setDesignResolutionSize", js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVisibleSize", js_cocos2dx_CCEGLViewProtocol_getVisibleSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};

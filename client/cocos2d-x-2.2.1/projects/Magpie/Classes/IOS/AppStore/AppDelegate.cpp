@@ -50,9 +50,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
     
     if (screenSize.height == 1136) {
-        pEGLView->setDesignResolutionSize(640, 1136, kResolutionNoBorder);
+        pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionNoBorder);
     } else {
-        pEGLView->setDesignResolutionSize(720, 960, kResolutionNoBorder);
+        pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionNoBorder);
     }
     
     // set FPS. the default value is 1.0/60 if you don't call this
@@ -127,4 +127,117 @@ void AppDelegate::applicationWillEnterForeground()
     
     // 回调js同名函数
     ScriptingCore::getInstance()->executeCallbackWithOwner(this, "jsApplicationWillEnterForeground");
+}
+
+void AppDelegate::resolutionAdapter()
+{
+    CCLOG("AppDelegate resolutionAdapter");
+    
+    CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+    CCSize screenSize = pEGLView->getFrameSize();
+    
+    const CCSize resolutionSize1 = CCSize(640, 1136);
+    const CCSize resolutionSize2 = CCSize(720, 960);
+    const CCSize resolutionSize3 = CCSize(640, 960);
+    
+    const float screenSizeWHR = screenSize.width / screenSize.height;
+    const float resolutionSizeWHR1 = resolutionSize1.width / resolutionSize1.height;
+    const float resolutionSizeWHR2 = resolutionSize2.width / resolutionSize2.height;
+    const float resolutionSizeWHR3 = resolutionSize3.width / resolutionSize3.height;
+    
+    const float WHR_EPSILON = 0.02f;
+    
+    CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
+    
+    do
+    {
+        if (screenSize.equals(resolutionSize1))
+        {
+            // 640 * 1146分辨率不需要适配
+            break;
+        }
+        
+        if (screenSize.equals(resolutionSize2))
+        {
+            // 720 * 960分辨率不需要适配
+            break;
+        }
+        
+        if (screenSize.equals(resolutionSize3))
+        {
+            // 640 * 960
+            pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionNoBorder);
+            break;
+        }
+        
+        float gapWHR1 = fabsf(screenSizeWHR - resolutionSizeWHR1);
+        float gapWHR2 = fabsf(screenSizeWHR - resolutionSizeWHR2);
+        float gapWHR3 = fabsf(screenSizeWHR - resolutionSizeWHR3);
+        
+        if (gapWHR1 < WHR_EPSILON)
+        {
+            // 近似640 * 1146分辨率，使用kResolutionExactFit铺满屏幕
+            pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionExactFit);
+            break;
+        }
+        
+        if (gapWHR2 < WHR_EPSILON)
+        {
+            // 近似720 * 960分辨率，使用kResolutionExactFit铺满屏幕
+            pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionExactFit);
+            break;
+        }
+        
+        if (gapWHR3 < WHR_EPSILON)
+        {
+            // 近似640 * 960分辨率，使用kResolutionExactFit铺满屏幕
+            pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionExactFit);
+            break;
+        }
+
+        if (gapWHR1 <= gapWHR2 && gapWHR1 <= gapWHR3)
+        {
+            // 最接近640 * 1136分辨率，以640 * 1136分辨率处理
+            if (resolutionSizeWHR1 > screenSizeWHR)
+            {
+                pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionFixedWidth);
+            }
+            else
+            {
+                pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionFixedHeight);
+            }
+            
+            break;
+        }
+        
+        if (gapWHR2 <= gapWHR1 && gapWHR2 <= gapWHR3)
+        {
+            // 最接近720 * 960分辨率，以720 * 960分辨率处理
+            if (resolutionSizeWHR2 > screenSizeWHR)
+            {
+                pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionFixedWidth);
+            }
+            else
+            {
+                pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionFixedHeight);
+            }
+            
+            break;
+        }
+        
+        if (gapWHR3 <= gapWHR1 && gapWHR3 <= gapWHR2)
+        {
+            // 最接近640 * 960分辨率，以640 * 960分辨率处理
+            if (resolutionSizeWHR3 > screenSizeWHR)
+            {
+                pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionFixedWidth);
+            }
+            else
+            {
+                pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionFixedHeight);
+            }
+            
+            break;
+        }
+    } while(0);
 }

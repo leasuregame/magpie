@@ -817,6 +817,10 @@ initPassiveSkillGroup = function(card) {
     return card.passiveSkills = [];
   }
 
+  if (card.passiveSkills) {
+    return;
+  }
+
   var i, list, _i;
 
   list = [];

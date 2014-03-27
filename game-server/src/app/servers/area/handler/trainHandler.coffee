@@ -279,11 +279,7 @@ Handler::luckyCard = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (res, cb) ->
-      player = res
-
-      totalConsume = parseInt totalConsume*0.8 if times is 10
-      if player[typeMapping[type]] < totalConsume
-        return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
+      player = res     
 
       if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
         isFree = player.firstTime.lowLuckyCard
@@ -299,6 +295,9 @@ Handler::luckyCard = (msg, session, next) ->
       generateCard player, level, type, times, isFree, cb
 
     (cards, rfc, hfc, hdcc, cb) ->     
+      totalConsume = parseInt totalConsume*0.8 if times is 10
+      if player[typeMapping[type]] < totalConsume
+        return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
       if(level == LOW_LUCKYCARD)
           player.set('rowFragmentCount', rfc)

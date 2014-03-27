@@ -401,7 +401,7 @@ var TournamentLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var reward = gameData.tournament.getLastRankReward();
-        if (!reward) {
+        if (!reward || !reward.canReceive) {
             TipLayer.tip("当前没有可领奖励");
             return;
         }

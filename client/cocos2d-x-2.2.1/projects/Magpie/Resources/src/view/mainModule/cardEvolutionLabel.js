@@ -195,7 +195,7 @@ var CardEvolutionLabel = cc.Layer.extend({
                 fontSize: 22
             },
             {
-                goodsName: "superHonor",
+                iconName: "superHonor",
                 scale: 0.8
             }
         );

@@ -6,6 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var colorLabelIcons = {
+    "money": "icon149",
+    "gold": "icon148",
+    "power": "icon150",
+    "elixir": "icon151",
+    "fragment": "icon243",
+    "energy": "icon154",
+    "skillPoint": "icon152",
+    "spirit": "icon317",
+    "exp_card": "icon316",
+    "exp": "icon318",
+    "speaker": "icon375",
+    "honor": "icon405",
+    "superHonor": "icon406",
+    "star": "icon427"
+};
+
 var ColorLabelTTF = cc.Node.extend({
     _size: null,
 
@@ -20,11 +37,11 @@ var ColorLabelTTF = cc.Node.extend({
 
         for (var i = 0; i < args.length; i++) {
             var arg = args[i];
-            if (arg.goodsName) {
+            if (arg.iconName) {
                 var scale = arg.scale || 1.0;
                 var spacing = arg.spacing || 2;
 
-                this.createIcon(arg.goodsName, scale, spacing);
+                this._createIcon(arg.iconName, scale, spacing);
             } else {
                 var string = arg.string;
                 var color = arg.color || cc.c3b(255, 255, 255);
@@ -34,7 +51,7 @@ var ColorLabelTTF = cc.Node.extend({
                 var dimensions = arg.dimensions || cc.size(0, 0);
                 var alignment = arg.alignment || cc.TEXT_ALIGNMENT_LEFT;
 
-                this.createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
+                this._createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
             }
         }
 
@@ -43,7 +60,7 @@ var ColorLabelTTF = cc.Node.extend({
         return true;
     },
 
-    createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
+    _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
         cc.log("ColorLabelTTF createLabel");
 
         var label = null;
@@ -63,15 +80,15 @@ var ColorLabelTTF = cc.Node.extend({
         this._size.height = Math.max(this._size.height, size.height);
     },
 
-    createIcon: function (goodsName, scale, spacing) {
+    _createIcon: function (iconName, scale, spacing) {
         cc.log("IconLabel createIcon");
 
-        if (!gameGoodsIcon[goodsName]) {
+        if (!colorLabelIcons[iconName]) {
             cc.log("图片资源不存在");
             return;
         }
 
-        var icon = cc.Sprite.create(main_scene_image[gameGoodsIcon[goodsName]]);
+        var icon = cc.Sprite.create(main_scene_image[colorLabelIcons[iconName]]);
         icon.setAnchorPoint(cc.p(0, 0.5));
         icon.setScale(scale);
         icon.setPosition(cc.p(this._size.width + spacing, 0));

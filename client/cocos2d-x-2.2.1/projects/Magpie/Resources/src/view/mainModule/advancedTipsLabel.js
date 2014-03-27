@@ -125,7 +125,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 fontSize: 25
             },
             {
-                goodsName: "gold",
+                iconName: "gold",
                 scale: 0.7
             },
             {
@@ -156,11 +156,11 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 fontSize: 25
             },
             {
-                goodsName: "gold",
+                iconName: "gold",
                 scale: 0.7
             },
             {
-                string: "消除CD",
+                string: "消除冷却时间",
                 fontName: "STHeitiTC-Medium",
                 fontSize: 25
             }
@@ -188,7 +188,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 fontSize: 25
             },
             {
-                goodsName: "fragment",
+                iconName: "fragment",
                 scale: 0.8
             },
             {

@@ -135,7 +135,7 @@ var BossLayer = cc.Layer.extend({
         this._countLeftLabel = StrokeLabel.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 25);
         this._countLeftLabel.setAnchorPoint(cc.p(0.5, 0));
         this._countLeftLabel.setPosition(this._bossLayerFit.countLeftLabelPoint);
-        this._countLeftLabel.setColor(cc.c3b(255, 88, 88));
+        this._countLeftLabel.setColor(cc.c3b(255, 255, 255));
         this._countLeftLabel.setBgColor(cc.c3b(94, 11, 11));
         this.addChild(this._countLeftLabel);
 
@@ -354,7 +354,7 @@ var BossLayer = cc.Layer.extend({
         var that = this;
 
         if (this._cdTime > 0) {
-            TipLayer.tip("CD未到");
+            TipLayer.tip("冷却时间未到");
             return;
         }
 

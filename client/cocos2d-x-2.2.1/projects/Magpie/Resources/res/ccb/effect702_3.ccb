@@ -234,7 +234,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>200</integer>
+											<integer>100</integer>
 										</dict>
 										<dict>
 											<key>easing</key>

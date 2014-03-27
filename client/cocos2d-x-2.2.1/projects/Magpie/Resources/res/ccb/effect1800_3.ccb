@@ -191,9 +191,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.260517418384552</real>
-								<real>0.26052439212799072</real>
-								<real>0.26052063703536987</real>
+								<real>0.14193379878997803</real>
+								<real>0.14364421367645264</real>
+								<real>0.14367753267288208</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -459,9 +459,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.46202266216278076</real>
-								<real>0.8382837176322937</real>
-								<real>1</real>
+								<real>0.2980048656463623</real>
+								<real>0.49167454242706299</real>
+								<real>0.5597037672996521</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -557,6 +557,8 @@
 						<string>res/effect/uiEffect/up41.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -727,9 +729,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.57112699747085571</real>
-								<real>0.99130219221115112</real>
-								<real>0.91147470474243164</real>
+								<real>0.34693056344985962</real>
+								<real>0.56332093477249146</real>
+								<real>0.53181672096252441</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -913,7 +915,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

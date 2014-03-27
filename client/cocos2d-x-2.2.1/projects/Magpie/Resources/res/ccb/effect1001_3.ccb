@@ -168,7 +168,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.5</real>
+								<real>0.30000001192092896</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -252,15 +252,15 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.061664357781410217</real>
-										<real>0.60040414333343506</real>
-										<real>0.49514847993850708</real>
+										<real>0.0</real>
+										<real>0.29538488388061523</real>
+										<real>0.25219926238059998</real>
 										<real>1</real>
 									</array>
 									<array>
-										<real>0.016925718635320663</real>
-										<real>0.016926618292927742</real>
-										<real>0.016926134005188942</real>
+										<real>0.11095669120550156</real>
+										<real>0.11239808052778244</real>
+										<real>0.11242615431547165</real>
 										<real>0.0</real>
 									</array>
 								</array>
@@ -545,7 +545,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -733,7 +733,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>0.0</real>
+											<real>0.1666666716337204</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -843,7 +843,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>50</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -851,7 +851,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.40000000596046448</real>
+								<real>0.30000001192092896</real>
 							</dict>
 							<dict>
 								<key>name</key>

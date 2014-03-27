@@ -276,8 +276,10 @@ var Card = (function(_super) {
 
         hp += this.incs.elixir_hp;
         hp += this.incs.ps_hp;
+        hp += this.incs.spirit_hp;
         atk += this.incs.elixir_atk;
         atk += this.incs.ps_atk;
+        atk += this.incs.spirit_atk;
 
         this.hp = hp;
         this.atk = atk;

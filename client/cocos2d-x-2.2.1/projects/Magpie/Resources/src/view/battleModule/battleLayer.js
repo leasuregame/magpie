@@ -4514,6 +4514,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect = battleStep.getEffect();
                             var isCrit = battleStep.isCrit();
 
+                            var effect1800_3 = cc.BuilderReader.load(main_scene_image.effect1800_3, that);
+                            effect1800_3.setPosition(attackerLocate);
+                            that.addChild(effect1800_3, EFFECT_Z_ORDER);
+
                             var effect1800_2 = cc.BuilderReader.load(main_scene_image.effect1800_2, that);
                             effect1800_2.setPosition(attackerLocate);
                             that.addChild(effect1800_2, EFFECT_Z_ORDER);
@@ -4544,10 +4548,6 @@ var BattleLayer = cc.Layer.extend({
 
                                 nextStepCallback1();
                             });
-
-                            var effect1800_3 = cc.BuilderReader.load(main_scene_image.effect1800_3, that);
-                            effect1800_3.setPosition(attackerLocate);
-                            that.addChild(effect1800_3, EFFECT_Z_ORDER);
 
                             var nextStepCallback2 = that.nextStepCallback();
                             effect1800_3.animationManager.setCompletedAnimationCallback(that, function () {

@@ -49,11 +49,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
     
-    if (screenSize.height == 1136) {
-        pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionNoBorder);
-    } else {
-        pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionNoBorder);
-    }
+    this->resolutionAdapter();
     
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 30);
@@ -197,46 +193,22 @@ void AppDelegate::resolutionAdapter()
 
         if (gapWHR1 <= gapWHR2 && gapWHR1 <= gapWHR3)
         {
-            // 最接近640 * 1136分辨率，以640 * 1136分辨率处理
-            if (resolutionSizeWHR1 > screenSizeWHR)
-            {
-                pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionFixedWidth);
-            }
-            else
-            {
-                pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionFixedHeight);
-            }
-            
+            // 接近640 * 1136分辨率，以640 * 1136分辨率处理
+            pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionShowAll);
             break;
         }
         
         if (gapWHR2 <= gapWHR1 && gapWHR2 <= gapWHR3)
         {
-            // 最接近720 * 960分辨率，以720 * 960分辨率处理
-            if (resolutionSizeWHR2 > screenSizeWHR)
-            {
-                pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionFixedWidth);
-            }
-            else
-            {
-                pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionFixedHeight);
-            }
-            
+            // 接近720 * 960分辨率，以720 * 960分辨率处理
+            pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionShowAll);
             break;
         }
         
         if (gapWHR3 <= gapWHR1 && gapWHR3 <= gapWHR2)
         {
-            // 最接近640 * 960分辨率，以640 * 960分辨率处理
-            if (resolutionSizeWHR3 > screenSizeWHR)
-            {
-                pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionFixedWidth);
-            }
-            else
-            {
-                pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionFixedHeight);
-            }
-            
+            // 接近640 * 960分辨率，以640 * 960分辨率处理
+            pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionShowAll);
             break;
         }
     } while(0);

@@ -265,7 +265,7 @@ lineUpToObj = (lineUp) ->
   _results
 
 positionConvert = (val) ->
-  order = ['00', '01', '02', '10', '11', '12']
+  order = ['1', '2', '3', '4', '5', '6']
   order.indexOf(val) + 1
 
 getBossInfo = (type) ->

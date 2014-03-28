@@ -136,7 +136,16 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
         this._onSelectAllLowItem.setVisible(false);
 
-        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem);
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setScale(1.2);
+        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
+
+        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -335,16 +344,7 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var buyCountItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
-            this._onClickBuyCount,
-            this
-        );
-        buyCountItem.setScale(1.2);
-        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
-
-        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
+        var menu = cc.Menu.create(sellItem, lineUpItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },

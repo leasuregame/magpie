@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var colorLabelIcons = {
     "money": "icon149",
     "gold": "icon148",
@@ -26,19 +27,20 @@ var colorLabelIcons = {
 var ColorLabelTTF = cc.Node.extend({
     _size: null,
 
-    init: function () {
+    init: function (args) {
         cc.log("ColorLabelTTF init");
 
         if (!this._super()) return false;
 
         this.setAnchorPoint(cc.p(0.5, 0.5));
 
-        this.setLabel.apply(this, arguments);
+        this.setLabel.apply(this, args);
 
         return true;
     },
 
     setLabel: function () {
+        cc.log("ColorLabelTTF setLabel");
 
         this.removeAllChildren();
         this._size = cc.size(0, 0);
@@ -47,8 +49,9 @@ var ColorLabelTTF = cc.Node.extend({
     },
 
     addLabel: function (args) {
+        cc.log("ColorLabelTTF addLabel");
 
-        if (!args) {
+        if (arguments.length == 0) {
             return;
         }
 
@@ -86,6 +89,7 @@ var ColorLabelTTF = cc.Node.extend({
 
     _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
         cc.log("ColorLabelTTF createLabel");
+        cc.log(string, color, fontName, fontSize, isStroke, dimensions, alignment);
 
         var label = null;
         if (isStroke) {
@@ -108,7 +112,6 @@ var ColorLabelTTF = cc.Node.extend({
         cc.log("IconLabel createIcon");
 
         if (!colorLabelIcons[iconName]) {
-            cc.log("图片资源不存在");
             return;
         }
 
@@ -122,8 +125,8 @@ var ColorLabelTTF = cc.Node.extend({
         this._size.width += size.width * scale + spacing * 2;
         this._size.height = Math.max(this._size.height, size.height);
     }
-
 });
+
 
 ColorLabelTTF.create = function (/* Multi arguments */) {
     var ret = new ColorLabelTTF();

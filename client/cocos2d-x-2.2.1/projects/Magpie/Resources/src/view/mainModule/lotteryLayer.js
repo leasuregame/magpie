@@ -333,11 +333,6 @@ var LotteryLayer = cc.Layer.extend({
                 this._tipsLabel.setVisible(true);
             }
         }
-
-        if (this._tipsLabel) {
-            this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
-            this.addChild(this._tipsLabel, 2);
-        }
     },
 
     ccbFnShowCard: function () {

@@ -136,8 +136,10 @@ var ExchangeLayer = cc.Layer.extend({
     update: function () {
         cc.log("ExchangeLayer update");
 
-        this._fragmentLabel.setString(gameData.player.get("fragment"));
-        this._moneyLabel.setString(gameData.player.get("money"));
+        var player = gameData.player;
+
+        this._fragmentLabel.setString(player.get("fragment"));
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
     },
 
     _update: function () {

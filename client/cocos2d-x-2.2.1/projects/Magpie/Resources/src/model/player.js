@@ -601,9 +601,11 @@ var Player = Entity.extend({
         cc.log("Player getEvolutionRate: " + star);
 
         var rate = this._evolutionRate;
+
         if (rate) {
             return rate["star" + star] || 0;
         }
+
         return 0;
     }
 });

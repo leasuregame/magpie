@@ -788,7 +788,7 @@ var CardListLayer = cc.Layer.extend({
             }
 
             countLabel.setString(len);
-            moneyLabel.setString(money);
+            moneyLabel.setString(lz.getMoneyStr(money));
         };
 
         this._selectCallback();

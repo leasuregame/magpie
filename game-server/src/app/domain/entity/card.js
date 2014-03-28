@@ -450,8 +450,17 @@ var Card = (function(_super) {
     };
 
     Card.prototype.price = function() {
-        cfg = table.getTableItem('card_price', 1);
-        return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
+        var curLv = this.lv;
+        var cfg = table.getTableItem('card_price', 1);
+        var lv_money = table.getTable('card_grow').filter(function(id, item) {
+            return item.lv < curLv && item.lv != 0;
+        }).map(function(item) {
+            return item.money_need;
+        }).reduce(function(x, y){
+            return x + y;
+        }, 0);
+
+        return lv_money + (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
     Card.prototype.resetSkillLv = function() {

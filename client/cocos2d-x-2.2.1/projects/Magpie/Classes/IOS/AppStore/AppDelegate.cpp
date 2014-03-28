@@ -47,8 +47,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCSize screenSize = pEGLView->getFrameSize();
     
-    CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
-    
     this->resolutionAdapter();
     
     // set FPS. the default value is 1.0/60 if you don't call this

@@ -716,7 +716,8 @@ var fit4Iphone4 = {
             "privilegeIconPoint": cc.p(370, 207),
             "fragmentTipLayerPoint": cc.p(360, 800),
             "fragmentTipIconPoint": cc.p(465, 800),
-            "tipsLabelPoint": cc.p(533, 267)
+            "tipsLabelPoint": cc.p(533, 267),
+            "helpItemPoint": cc.p(640, 790)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,

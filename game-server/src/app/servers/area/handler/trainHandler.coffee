@@ -129,6 +129,7 @@ Handler::strengthen = (msg, session, next) ->
           where: " id in (#{sources.toString()}) "
       } if sources.length > 0 
 
+      results.ability = targetCard.ability()
       job.multJobs _jobs, (err, ok) ->
         if err and not ok
           return cb(err)

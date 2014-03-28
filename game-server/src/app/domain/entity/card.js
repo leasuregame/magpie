@@ -314,9 +314,9 @@ var Card = (function(_super) {
             _abi += ae.star[this.star] * this.skillLv;
         }
 
-        // 0.1%暴击率=10点战斗力
-        // 0.1%闪避率=10点战斗力
-        // 0.1%减伤率=10点战斗力
+        // 1%暴击率=80点战斗力
+        // 1%闪避率=80点战斗力
+        // 1%减伤率=80点战斗力
         var should_inc_ps = ['dmg_reduce', 'crit', 'dodge', 'toughness', 'hit', 'disrupting'];
         if (this.star >= 3) {
             var group = this.passiveSkills.filter(function(group) {

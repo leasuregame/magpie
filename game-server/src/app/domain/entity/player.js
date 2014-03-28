@@ -892,7 +892,6 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
-            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };

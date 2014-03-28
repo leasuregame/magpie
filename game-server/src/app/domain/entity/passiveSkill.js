@@ -44,7 +44,7 @@ PassiveSkillGroup.prototype.create = function(star) {
   }
 
   var id = this.items.length,
-      len = star - 2 - this.items.length,
+      len = star - 2,
       i;
   for (i = id; i < len; i++) {
     this.born(i);

@@ -42,6 +42,7 @@ var CardDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._cardDetailsFit = gameFit.mainScene.cardDetails;
 
         this._card = card;
@@ -280,7 +281,6 @@ var CardDetails = LazyLayer.extend({
             this._menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
             this._menu.setPosition(cc.p(0, 0));
             this.addChild(this._menu);
-
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -346,7 +346,6 @@ var CardDetails = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        //this._menu.setEnabled(false);
         this.removeFromParent();
 
         if (this._cb) {
@@ -373,4 +372,3 @@ CardDetails.pop = function (card, cb) {
 
     return cardDetails;
 };
-

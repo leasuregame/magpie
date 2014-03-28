@@ -220,6 +220,16 @@ var LotteryLayer = cc.Layer.extend({
         this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
         this.addChild(this._tipsLabel, 2);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._lotteryLayerFit.helpItemPoint);
+        menu.addChild(helpItem);
+
         return true;
     },
 
@@ -471,6 +481,14 @@ var LotteryLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
+    },
+
+    _onClickHelp: function () {
+        cc.log("LotteryLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["lottery"]);
     }
 });
 

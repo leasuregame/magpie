@@ -833,7 +833,10 @@ var Card = Entity.extend({
 
         var price = table["star" + this._star];
 
-        price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
+        var rows = outputTables.card_grow.rows;
+        for (var i = 1; i < this._lv; ++i) {
+            price += rows[i].money_need;
+        }
 
         return price;
     },

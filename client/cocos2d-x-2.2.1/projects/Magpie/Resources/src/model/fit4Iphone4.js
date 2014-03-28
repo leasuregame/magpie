@@ -646,7 +646,7 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 559),
             "titleLabelPoint": cc.p(190, 830),
-             "lineUpItemPoint": cc.p(160, 834),
+            "lineUpItemPoint": cc.p(160, 834),
             "nameLabelPoint": cc.p(260, 764),
             "lvLabelPoint": cc.p(370, 764),
             "abilityLabelPoint": cc.p(500, 764),
@@ -717,7 +717,8 @@ var fit4Iphone4 = {
             "privilegeIconPoint": cc.p(370, 207),
             "fragmentTipLayerPoint": cc.p(360, 800),
             "fragmentTipIconPoint": cc.p(465, 800),
-            "tipsLabelPoint": cc.p(533, 272)
+            "tipsLabelPoint": cc.p(533, 272),
+            "helpItemPoint": cc.p(640, 790)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,

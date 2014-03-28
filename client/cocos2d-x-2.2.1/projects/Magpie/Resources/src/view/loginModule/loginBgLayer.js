@@ -26,6 +26,15 @@ var LoginBgLayer = cc.Layer.extend({
         bgEffect.setPosition(this._loginBgLayerFit.bgEffectPoint);
         this.addChild(bgEffect);
 
+        var appVersionLabel = StrokeLabel.create(
+            cc.Application.getInstance().getAppVersion(),
+            "STHeitiTC-Medium",
+            25
+        );
+        appVersionLabel.setAnchorPoint(cc.p(1, 1));
+        appVersionLabel.setPosition(this._loginBgLayerFit.appVersionLabelPoint);
+        this.addChild(appVersionLabel);
+
         return true;
     }
 });

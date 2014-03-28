@@ -51572,6 +51572,23 @@ void js_register_cocos2dx_CCFileUtils(JSContext *cx, JSObject *global) {
 JSClass  *jsb_CCApplication_class;
 JSObject *jsb_CCApplication_prototype;
 
+JSBool js_cocos2dx_CCApplication_getAppVersion(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::CCApplication* cobj = (cocos2d::CCApplication *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getAppVersion();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+    
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_CCApplication_getTargetPlatform(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -51669,6 +51686,7 @@ void js_register_cocos2dx_CCApplication(JSContext *cx, JSObject *global) {
 	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
+        JS_FN("getAppVersion", js_cocos2dx_CCApplication_getAppVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTargetPlatform", js_cocos2dx_CCApplication_getTargetPlatform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAnimationInterval", js_cocos2dx_CCApplication_setAnimationInterval, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCurrentLanguage", js_cocos2dx_CCApplication_getCurrentLanguage, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

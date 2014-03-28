@@ -69,7 +69,8 @@ var fit4Iphone5 = {
 
     "loginScene": {
         "loginBgLayer": {
-            "bgEffectPoint": cc.p(320, 568)
+            "bgEffectPoint": cc.p(320, 568),
+            "appVersionLabelPoint": cc.p(620, 1116)
         },
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),

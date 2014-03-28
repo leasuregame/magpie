@@ -75,7 +75,7 @@ var TipsLayer = LazyLayer.extend({
 
         var keys = Object.keys(gameHelp);
         var len = keys.length;
-        var scrollViewHeight = 11 * 250;
+        var scrollViewHeight = len * 250;
 
         for (var i = 0; i < len; ++i) {
             var key = keys[i];

@@ -144,7 +144,7 @@ var MainMenuLayer = cc.Layer.extend({
 
             for (var i = 0; i < len; ++i) {
                 if (nowLayer instanceof this._layer[2][i]) {
-                    gameMark.setBossMark(false);
+                    gameMark.updateBossMark(false);
                     return;
                 }
             }

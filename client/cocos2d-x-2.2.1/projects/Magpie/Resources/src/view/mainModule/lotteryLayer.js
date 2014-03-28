@@ -29,6 +29,7 @@ var LotteryLayer = cc.Layer.extend({
     _closeTenLotteryItem: null,
     _privilegeIcon: null,
     _tenLotteryTip: null,
+    _tenLotteryTip2: null,
 
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
@@ -76,6 +77,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(this._lotteryLabel);
 
         this._tenLotteryTip = this._lotteryLabel.controller.ccbTenLotteryTip;
+        this._tenLotteryTip2 = this._lotteryLabel.controller.ccbTenLotteryTip2;
 
         var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
         lotteryDescLabel1.setPosition(this._lotteryLayerFit.lotteryDescLabel1Point);
@@ -214,6 +216,10 @@ var LotteryLayer = cc.Layer.extend({
         tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        this._tipsLabel = ColorLabelTTF.create();
+        this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
+        this.addChild(this._tipsLabel, 2);
+
         return true;
     },
 
@@ -222,7 +228,9 @@ var LotteryLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._tenLotteryTip.setVisible(gameData.lottery.get("firstHighTenLuckCard"));
+        var isFirst = gameData.lottery.get("firstHighTenLuckCard");
+        this._tenLotteryTip.setVisible(isFirst);
+        this._tenLotteryTip2.setVisible(!isFirst);
 
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));
@@ -274,18 +282,15 @@ var LotteryLayer = cc.Layer.extend({
     _updateTips: function () {
         cc.log("LotteryLayer _update");
 
-        if (this._tipsLabel) {
-            this._tipsLabel.removeFromParent();
-            this._tipsLabel = null;
-        }
-
         var lottery = gameData.lottery;
         var rate;
+
+        this._tipsLabel.setVisible(false);
 
         if (this._times == 1) {
             rate = lottery.getFragmentRate();
             if (rate > 0) {
-                this._tipsLabel = ColorLabelTTF.create(
+                this._tipsLabel.setLabel(
                     {
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
@@ -308,7 +313,7 @@ var LotteryLayer = cc.Layer.extend({
         } else {
             rate = lottery.getFiveStarCardRate();
             if (rate > 0) {
-                this._tipsLabel = ColorLabelTTF.create(
+                this._tipsLabel.setLabel(
                     {
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",

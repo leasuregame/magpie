@@ -898,8 +898,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             }
         }
 
+        var that = this;
+        var cb = function() {
+            that._afresh();
+        };
+
         if (isTip) {
-            AdvancedTipsLabel.pop(TYPE_PASSIVE_SKILL_AFRESH_TIPS, this._afresh);
+            AdvancedTipsLabel.pop(TYPE_PASSIVE_SKILL_AFRESH_TIPS, cb);
         } else {
             this._afresh();
         }

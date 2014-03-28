@@ -44,9 +44,9 @@ var Lottery = Entity.extend({
         cc.log("Lottery update");
 
         if (data.firstTime) {
-            this._freeLowLotteryCard = data.lowLuckyCard == 1;
-            this._freeHighLotteryCard = data.highLuckyCard == 1;
-            this._firstHighTenLuckCard = data.highTenLuckCard == 1;
+            this._freeLowLotteryCard = data.firstTime.lowLuckyCard == 1;
+            this._freeHighLotteryCard = data.firstTime.highLuckyCard == 1;
+            this._firstHighTenLuckCard = data.firstTime.highTenLuckCard == 1;
         }
 
         if (data.goldLuckyCard10) {

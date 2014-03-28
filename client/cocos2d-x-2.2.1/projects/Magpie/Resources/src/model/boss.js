@@ -476,7 +476,7 @@ var Boss = Entity.extend({
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
         if (this.get("cd") == 0) {
-            gameMark.setBossMark(true);
+            gameMark.updateBossMark(true);
         }
     },
 

@@ -26,16 +26,42 @@ var colorLabelIcons = {
 var ColorLabelTTF = cc.Node.extend({
     _size: null,
 
-    init: function (args) {
+    init: function () {
         cc.log("ColorLabelTTF init");
 
         if (!this._super()) return false;
 
-        this._size = cc.size(0, 0);
-
         this.setAnchorPoint(cc.p(0.5, 0.5));
 
-        for (var i = 0; i < args.length; i++) {
+        this.setLabel.apply(this, arguments);
+
+        return true;
+    },
+
+    setLabel: function () {
+
+        this.removeAllChildren();
+        this._size = cc.size(0, 0);
+
+        this.addLabel.apply(this, arguments);
+    },
+
+    addLabel: function (args) {
+
+        if (!args) {
+            return;
+        }
+
+        if (arguments.length > 1) {
+            args = Array.prototype.slice.call(arguments, 0);
+        }
+
+        if (!(args instanceof Array)) {
+            args = [args];
+        }
+
+        var len = args.length;
+        for (var i = 0; i < len; i++) {
             var arg = args[i];
             if (arg.iconName) {
                 var scale = arg.scale || 1.0;
@@ -56,8 +82,6 @@ var ColorLabelTTF = cc.Node.extend({
         }
 
         this.setContentSize(this._size);
-
-        return true;
     },
 
     _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {

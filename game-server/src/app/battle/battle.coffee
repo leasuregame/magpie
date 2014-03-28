@@ -47,7 +47,19 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
     battleLog.set('round_num',@round.round_num - 1)
+    # update boss hp remaining
+    updateBossInfo(battleLog, @defender)
     
+updateBossInfo = (bl, player) ->
+  return if not player.is_boss 
+
+  for cards in bl.cards
+    do (cards) ->
+      _.each cards, (card, pos) ->
+        if pos > 6
+          hero = _.findWhere player.heros, card_id: card.tableId
+          card.hpLeft = hero.hp
+  return
 
 class Round extends Base
   init: ->

@@ -67,6 +67,7 @@ var SHOW_GIFT_BAG = 1;
 var BUY_GIFT_BAG = 2;
 var GET_GIFT_BAG = 3;
 var SHOW_GIFT_BAG_NO_CLOSE = 4;
+var GET_GIFT_BAG_NO_CLOSE = 5;
 
 var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
@@ -139,8 +140,9 @@ var GiftBagLayer = LazyLayer.extend({
             },
             this
         );
-        getItem.setPosition(this._giftBagLayerFit.buyItemPoint);
-        getItem.setVisible(type == GET_GIFT_BAG);
+        var point = (type == GET_GIFT_BAG_NO_CLOSE) ? this._giftBagLayerFit.okItemPoint : this._giftBagLayerFit.buyItemPoint;
+        getItem.setPosition(point);
+        getItem.setVisible(type == GET_GIFT_BAG || type == GET_GIFT_BAG_NO_CLOSE);
 
         var buyItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -171,7 +173,7 @@ var GiftBagLayer = LazyLayer.extend({
             this
         );
         cancelItem.setPosition(this._giftBagLayerFit.cancelItemPoint);
-        cancelItem.setVisible(type != SHOW_GIFT_BAG && type != SHOW_GIFT_BAG_NO_CLOSE);
+        cancelItem.setVisible(type == BUY_GIFT_BAG || type == GET_GIFT_BAG);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button75,
@@ -184,7 +186,7 @@ var GiftBagLayer = LazyLayer.extend({
             this
         );
         closeItem.setPosition(this._giftBagLayerFit.closeItemPoint);
-        closeItem.setVisible(type != SHOW_GIFT_BAG_NO_CLOSE);
+        closeItem.setVisible(type != SHOW_GIFT_BAG_NO_CLOSE && type != GET_GIFT_BAG_NO_CLOSE);
 
         var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem, closeItem);
         menu.setPosition(cc.p(0, 0));
@@ -195,7 +197,7 @@ var GiftBagLayer = LazyLayer.extend({
         } else {
             var description = lz.format(tip, 13);
             var len = description.length;
-            var point = this._giftBagLayerFit.tipLabelPoint;
+            point = this._giftBagLayerFit.tipLabelPoint;
             for (var i = 0; i < len; i++) {
                 var tipLabel = StrokeLabel.create(description[i], "STHeitiTC-Medium", 30);
                 tipLabel.setColor(cc.c3b(255, 255, 255));

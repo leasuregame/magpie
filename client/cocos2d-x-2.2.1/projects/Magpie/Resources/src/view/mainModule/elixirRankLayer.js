@@ -426,7 +426,7 @@ var ElixirRankLayer = cc.Layer.extend({
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
-                type: SHOW_GIFT_BAG_NO_CLOSE,
+                type: GET_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);

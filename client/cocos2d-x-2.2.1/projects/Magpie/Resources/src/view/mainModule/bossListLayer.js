@@ -14,6 +14,7 @@ var BossListLayer = cc.Layer.extend({
     _exchangeItem: null,
     _scrollView: null,
     _timeLabel: null,
+    _rankItemMark: null,
 
     onEnter: function () {
         cc.log("BossListLayer onEnter");
@@ -141,9 +142,9 @@ var BossListLayer = cc.Layer.extend({
         rankItemEffect.setPosition(this._bossListLayerFit.rankItemPoint);
         this.addChild(rankItemEffect);
 
-        this._kneelEffect = cc.BuilderReader.load(main_scene_image.uiEffect96, this);
-        this._kneelEffect.setPosition(this._bossListLayerFit.rankItemPoint);
-        this.addChild(this._kneelEffect);
+        this._rankItemMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._rankItemMark.setPosition(cc.p(30, 30));
+        rankItemEffect.addChild(this._rankItemMark);
 
         this._exchangeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -197,6 +198,12 @@ var BossListLayer = cc.Layer.extend({
         gameMark.updateBossMark(false);
     },
 
+    updateMark: function () {
+        cc.log("BossListLayer updateMark");
+
+        this._rankItemMark.setVisible(gameMark.getBossListMark());
+    },
+
     _update: function () {
         cc.log("BossListLayer _update");
 
@@ -213,9 +220,6 @@ var BossListLayer = cc.Layer.extend({
 
         var isCanReceive = gameData.boss.get("canReceive");
         this._effect.setVisible(isCanReceive);
-
-        var kneelCount = gameData.boss.get("kneelCount");
-        this._kneelEffect.setVisible(kneelCount > 0);
     },
 
     _addScrollView: function () {

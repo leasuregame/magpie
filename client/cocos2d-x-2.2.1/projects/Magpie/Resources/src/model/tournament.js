@@ -222,6 +222,9 @@ var Tournament = Entity.extend({
                 }
 
                 that.set("isGetElixirReward", true);
+
+                gameMark.updateTournamentMark(false);
+
                 cb(reward);
             } else {
                 cc.log("Tournament getElixirReward fail");

@@ -281,6 +281,8 @@ var Boss = Entity.extend({
                 gameData.player.adds(msg);
                 that.set("isGetReward", true);
 
+                gameMark.updateBossListMark(false);
+
                 cb(msg);
             } else {
                 cc.log("Boss getLastWeekReward fail");
@@ -482,10 +484,9 @@ var Boss = Entity.extend({
 
     _kneelCountChangeEvent: function () {
         // 提示是否可以膜拜
-        var nowLayer = MainScene.getInstance().getLayer();
-        if (nowLayer instanceof BossListLayer) {
-            nowLayer.updateEffect();
-        }
+
+        gameMark.updateBossListMark(false);
+
     },
 
     _canReceiveChangeEvent: function () {

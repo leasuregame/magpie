@@ -27,6 +27,7 @@ var TournamentLayer = cc.Layer.extend({
     _countLabel: null,
     _selectRect: null,
     _isTouch: false,
+    _rankItemMark: false,
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -140,6 +141,10 @@ var TournamentLayer = cc.Layer.extend({
         rankItemEffect.setPosition(this._tournamentLayerFit.rankItemPoint);
         this.addChild(rankItemEffect);
 
+        this._rankItemMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._rankItemMark.setPosition(cc.p(30, 30));
+        rankItemEffect.addChild(this._rankItemMark);
+
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
@@ -227,6 +232,12 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rankingLabel.setString(tournament.get("ranking"));
         this._countLabel.setString(tournament.get("count"));
+    },
+
+    updateMark: function () {
+        cc.log("TournamentLayer updateMark");
+
+        this._rankItemMark.setVisible(gameMark.getTournamentMark());
     },
 
     _updateRankRewardItem: function () {

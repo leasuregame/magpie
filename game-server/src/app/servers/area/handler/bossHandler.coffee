@@ -333,7 +333,7 @@ Handler::attack = (msg, session, next) ->
     (res, cb) ->
       player = res
       if player.getCD() > 0
-        return cb({code: 501, msg: '不能攻击'})
+        return cb({code: 501, msg: '冷却时间未到'})
       cb()
     (cb) ->
       dao.boss.fetchOne where: id: bossId, cb

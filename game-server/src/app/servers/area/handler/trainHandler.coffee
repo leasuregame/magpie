@@ -279,11 +279,7 @@ Handler::luckyCard = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (res, cb) ->
-      player = res
-
-      totalConsume = parseInt totalConsume*0.8 if times is 10
-      if player[typeMapping[type]] < totalConsume
-        return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
+      player = res     
 
       if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
         isFree = player.firstTime.lowLuckyCard
@@ -299,6 +295,9 @@ Handler::luckyCard = (msg, session, next) ->
       generateCard player, level, type, times, isFree, cb
 
     (cards, rfc, hfc, hdcc, cb) ->     
+      totalConsume = parseInt totalConsume*0.8 if times is 10
+      if player[typeMapping[type]] < totalConsume
+        return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
       if(level == LOW_LUCKYCARD)
           player.set('rowFragmentCount', rfc)
@@ -339,6 +338,9 @@ Handler::luckyCard = (msg, session, next) ->
         cards: (cardEnts.map (c) -> c.toJson()) if cardEnts.length > 1
         consume: totalConsume
         fragment: totalFragment
+
+        goldLuckyCard10: player.dailyGift.goldLuckyCard10 if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCard10.got
+        goldLuckyCardForFragment: player.dailyGift.goldLuckyCardForFragment if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCardForFragment.got
     })
 
 Handler::skillUpgrade = (msg, session, next) ->

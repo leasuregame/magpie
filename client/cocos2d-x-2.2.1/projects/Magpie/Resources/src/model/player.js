@@ -297,7 +297,9 @@ var Player = Entity.extend({
             }
         }
 
-        this.set("power", power);
+        if (this._power != power) {
+            this.set("power", power);
+        }
     },
 
     correctionPower: function (power, powerTimestamp) {

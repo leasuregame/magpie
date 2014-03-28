@@ -520,7 +520,7 @@ var BattleLayer = cc.Layer.extend({
             that._counter -= 1;
 
             if (that._counter == 0) {
-                that.nextStep();
+                that.scheduleOnce(that.nextStep, 0.1);
             }
         }
     },
@@ -549,7 +549,6 @@ var BattleLayer = cc.Layer.extend({
             this.scheduleOnce(this._collectSpirit, 1.3);
             return;
         }
-
 
         this.step(this._battleLog.getBattleStep());
     },

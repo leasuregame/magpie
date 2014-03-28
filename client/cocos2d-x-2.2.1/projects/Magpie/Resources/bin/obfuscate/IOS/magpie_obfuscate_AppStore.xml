@@ -40,6 +40,8 @@
                 <file name="src/model/singleton.js"/>
                 <file name="src/model/gameConfig.js"/>
 
+                <file name="src/model/fit4Iphone4.js"/>
+                <file name="src/model/fit4Iphone5.js"/>
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
                 <file name="IOS/AppStore/user.js"/>
@@ -109,6 +111,7 @@
                 <file name="src/view/mainModule/abilityRankLayer.js"/>
                 <file name="src/view/mainModule/achievementLayer.js"/>
                 <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/advancedTipsLabel.js"/>
                 <file name="src/view/mainModule/attackDetailsLayer.js"/>
                 <file name="src/view/mainModule/bossAppearLabel.js"/>
                 <file name="src/view/mainModule/bossHelpLabel.js"/>
@@ -121,7 +124,6 @@
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
                 <file name="src/view/mainModule/invitationLayer.js"/>
-                <file name="src/view/mainModule/newYearLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>
@@ -168,13 +170,13 @@
                 <file name="src/view/mainModule/messageLabel.js"/>
                 <file name="src/view/mainModule/messageLayer.js"/>
                 <file name="src/view/mainModule/monthLabel.js"/>
+                <file name="src/view/mainModule/passiveSkillLabel.js"/>
                 <file name="src/view/mainModule/passiveSkillAfreshLabel.js"/>
                 <file name="src/view/mainModule/passLayer.js"/>
                 <file name="src/view/mainModule/passRankLayer.js"/>
                 <file name="src/view/mainModule/paymentLayer.js"/>
                 <file name="src/view/mainModule/playerDetails.js"/>
                 <file name="src/view/mainModule/playerHeaderLabel.js"/>
-                <file name="src/view/mainModule/playerTournamentLabel.js"/>
                 <file name="src/view/mainModule/playerUpgradeLayer.js"/>
                 <file name="src/view/mainModule/propsLayer.js"/>
                 <file name="src/view/mainModule/rankLayer.js"/>
@@ -200,7 +202,6 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
-                <file name="src/view/mainModule/useCardsTipLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>
@@ -220,7 +221,6 @@
                 <file name="src/view/battleModule/battleSpiritNode.js"/>
                 <file name="src/view/battleModule/cloudLayer.js"/>
                 <file name="src/view/battleModule/fragmentLayer.js"/>
-                <file name="src/view/battleModule/skillFactory.js"/>
 
                 <file name="main_binding.js"/>
             </sources>

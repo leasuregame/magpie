@@ -37,6 +37,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         if (!this._super()) return false;
 
         this.setTouchEnabled(true);
+        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
 
         var player = gameData.player;
 
@@ -125,21 +126,22 @@ var PlayerHeaderLabel = cc.Layer.extend({
         PlayerDetails.pop();
     },
 
-    onTouchesBegan: function (touches, event) {
+    onTouchBegan: function (touch, event) {
         cc.log("PlayerHeaderLabel onTouchesBegan");
 
-        var point = this.convertToNodeSpace(touches[0].getLocation());
+        var point = this.convertToNodeSpace(touch.getLocation());
 
         if (cc.rectContainsPoint(this._selectRect, point)) {
             this._isTouch = true;
+            this._onClickPlayerDetails();
         }
     },
 
-    onTouchesEnded: function (touches, event) {
+    onTouchEnded: function (touch, event) {
         cc.log("PlayerHeaderLabel onTouchesEnded");
 
-        if (this._isTouch && touches[0] != undefined) {
-            var point = this.convertToNodeSpace(touches[0].getLocation());
+        if (this._isTouch && touch != undefined) {
+            var point = this.convertToNodeSpace(touch.getLocation());
 
             if (cc.rectContainsPoint(this._selectRect, point)) {
                 cc.log("PlayerHeaderLabel _onClickPlayerDetails");
@@ -150,7 +152,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         }
     },
 
-    onTouchesCancelled: function (touches, event) {
+    onTouchCancelled: function (touch, event) {
         cc.log("PlayerHeaderLabel onTouchesCancelled");
 
         this._isTouch = false;

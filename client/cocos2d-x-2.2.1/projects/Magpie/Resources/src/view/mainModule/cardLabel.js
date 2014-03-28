@@ -22,14 +22,17 @@ var CardLabel = cc.Node.extend({
     _hookLabel: null,
     _hookBgLabel: null,
     _cardItem: null,
+    _otherData: null,
 
-    init: function (target, card, selectType) {
+    init: function (target, card, selectType, otherData) {
         cc.log("CardLabel init");
 
         if (!this._super()) return false;
 
         this._target = target;
         this._card = card;
+        this._otherData = otherData || {};
+        this._useLabel = [];
 
         this._cardItem = cc.MenuItemImage.create(
             main_scene_image.button15,
@@ -84,7 +87,7 @@ var CardLabel = cc.Node.extend({
             skillType = 3;
         }
 
-        var skillTypeIcon = cc.Sprite.create(main_scene_image[this._card.getCardIcon(2)]);
+        var skillTypeIcon = cc.Sprite.create(this._card.getCardIcon(2));
         skillTypeIcon.setAnchorPoint(cc.p(0, 0.5));
         skillTypeIcon.setPosition(cc.p(142, 100));
         this.addChild(skillTypeIcon);
@@ -101,7 +104,7 @@ var CardLabel = cc.Node.extend({
         lvLabel.setPosition(cc.p(180, 28));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), "STHeitiTC-Medium", 22);
+        var abilityLabel = cc.LabelTTF.create(this._card.get("ability") || 0, "STHeitiTC-Medium", 22);
         abilityLabel.setColor(cc.c3b(56, 3, 5));
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(cc.p(260, 28));
@@ -111,10 +114,18 @@ var CardLabel = cc.Node.extend({
         this._starLabel.setPosition(cc.p(142, 65));
         this.addChild(this._starLabel);
 
-        this._useLabel = cc.Sprite.create(main_scene_image.icon26);
-        this._useLabel.setPosition(cc.p(410, 100));
-        this.addChild(this._useLabel);
-        this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
+
+        var lineUp = gameData.lineUp;
+        var index = lineUp.getCardOfLineUp(this._card.get("id"));
+        var maxLineUp = lineUp.get("maxLineUp");
+        var lineUpIcons = ["icon418", "icon419"];
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            this._useLabel[i] = cc.Sprite.create(main_scene_image[lineUpIcons[i]]);
+            this._useLabel[i].setPosition(cc.p(410, 100));
+            this.addChild(this._useLabel[i]);
+            this._useLabel[i].setVisible(index == i);
+        }
 
         this._hookBgLabel = cc.Sprite.create(main_scene_image.icon27);
         this._hookBgLabel.setPosition(cc.p(525, 62));
@@ -270,7 +281,7 @@ var CardLabel = cc.Node.extend({
         this._isSelect = !this._isSelect;
         this._hookLabel.setVisible(this._isSelect);
         if (this._selectType == SELECT_TYPE_LINEUP) {
-            this._useLabel.setVisible(this._isSelect);
+            this._useLabel[this._otherData.index].setVisible(this._isSelect);
         }
 
         this._target.selectCallback(this._card.get("id"));
@@ -319,10 +330,10 @@ var CardLabel = cc.Node.extend({
 });
 
 
-CardLabel.create = function (target, card, selectType) {
+CardLabel.create = function (target, card, selectType, otherData) {
     var ret = new CardLabel();
 
-    if (ret && ret.init(target, card, selectType)) {
+    if (ret && ret.init(target, card, selectType, otherData)) {
         return ret;
     }
 

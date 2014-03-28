@@ -101,8 +101,8 @@ class Manager
     , (n, callback) =>
       @app.get('dao').card.createExpCard data: {
         playerId: player.id,
-        lv: 6,
-        exp: 29
+        lv: 7,
+        exp: 19
       }, callback
     , (err, cards) ->
       if err

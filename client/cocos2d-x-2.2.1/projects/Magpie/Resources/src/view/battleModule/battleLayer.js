@@ -42,10 +42,11 @@ var BattleLayer = cc.Layer.extend({
     _battleMidpoint: null,
     _lineUpMidpoint: null,
     _isPlayback: false,
+    _playSpeed: 0,
     _backItem: null,
     _chooseSpeedItem: null,
     _menu: null,
-    _playSpeed: 0,
+    _stepLabel: null,
 
     init: function (battleLog) {
         cc.log("BattleLayer init");
@@ -65,6 +66,13 @@ var BattleLayer = cc.Layer.extend({
         this._battleMidpoint = this._battleLayerFit.battleMidpoint;
         this._lineUpMidpoint = this._battleLayerFit.lineUpMidpoint;
         this._chooseSpeedItem = [];
+
+        this._battleLog.recover();
+        for (var i = 0; i < 2; ++i) {
+            if (this._battleLog.hasNextBattleStep()) {
+                this._battleLog.getBattleStep();
+            }
+        }
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._battleLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -86,8 +94,7 @@ var BattleLayer = cc.Layer.extend({
                 if (typeof(battleNode[key]) == "number") {
                     this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
                     var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
-                    spiritFrame.setPosition(locate);
-                    this.addChild(spiritFrame);
+                    this._battleNode[key].addChild(spiritFrame, -1);
                 } else {
                     this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
@@ -97,6 +104,10 @@ var BattleLayer = cc.Layer.extend({
                 this.addChild(this._battleNode[key], NODE_Z_ORDER);
             }
         }
+
+        this._stepLabel = cc.LabelTTF.create("回合: 0 / " + BATTLE_MAX_STEP, "STHeitiTC-Medium", 24);
+        this._stepLabel.setPosition(this._battleLayerFit.stepLabelPoint);
+        this.addChild(this._stepLabel);
 
         if (this._isPlayback) {
             this._backItem = cc.MenuItemImage.create(
@@ -119,7 +130,7 @@ var BattleLayer = cc.Layer.extend({
         this.addChild(this._menu);
         this._menu.setVisible(false);
 
-        this._playSpeed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "playSpeedTimes")) || 1;
+        this._playSpeed = lz.load(gameData.player.get("uid") + "playSpeedTimes") || 1;
 
         for (var speed = 1; speed <= 3; ++speed) {
 
@@ -136,8 +147,6 @@ var BattleLayer = cc.Layer.extend({
             this._menu.addChild(this._chooseSpeedItem[speed]);
 
         }
-
-        this._battleLog.recover();
 
         return true;
     },
@@ -275,6 +284,70 @@ var BattleLayer = cc.Layer.extend({
         return (index < 7 ? "o" : "e");
     },
 
+    join: function (faction) {
+        cc.log("BattleLayer join: " + faction);
+
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var card = this._battleLog.get("card");
+        var index = 0;
+
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i]) {
+                this._battleNode[i].removeFromParent();
+                delete this._battleNode[i];
+            }
+
+            if (card[i] != undefined) {
+                cc.log(card[i]);
+
+                var locate = this._locate[i];
+
+                if (typeof(card[i]) == "number") {
+                    index = i;
+
+                    this._battleNode[i] = BattleSpiritNode.create(card[i], i);
+                    var spiritFrame = cc.Sprite.create(main_scene_image.spirit_frame);
+                    this._battleNode[i].addChild(spiritFrame, -1);
+                } else {
+                    this._battleNode[i] = BattleCardNode.create(card[i], i);
+                }
+
+                this._battleNode[i].setPosition(locate);
+                this._battleNode[i].setVisible(false);
+                this.addChild(this._battleNode[i], NODE_Z_ORDER);
+            }
+        }
+
+        var that = this;
+        this.ceremony(faction, function () {
+            that.showSpiritAddition(index);
+        })
+    },
+
+    ceremony: function (faction, cb) {
+        cc.log("BattleLayer ceremony");
+
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var count = 0;
+
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i] != undefined) {
+                count += 1;
+
+                this._battleNode[i].setVisible(true);
+                this._battleNode[i].runAnimations("beg", 0, function () {
+                    count -= 1;
+
+                    if (count == 0) {
+                        if (cb) {
+                            cb();
+                        }
+                    }
+                });
+            }
+        }
+    },
+
     ownCeremony: function () {
         cc.log("BattleLayer ownCeremony");
 
@@ -342,7 +415,7 @@ var BattleLayer = cc.Layer.extend({
         }
     },
 
-    showSpiritAddition: function () {
+    showSpiritAddition: function (index) {
         cc.log("BattleLayer showSpiritAddition");
 
         if (this._isEnd) {
@@ -350,31 +423,36 @@ var BattleLayer = cc.Layer.extend({
         }
 
         var that = this;
-        while (this._index <= 12) {
-            this._index += 1;
+        if (!index) {
+            while (this._index <= 12) {
+                if (this._battleNode[this._index] && (this._battleNode[this._index] instanceof BattleSpiritNode)) {
+                    index = this._index;
+                    this._index += 1;
+                    break;
+                }
 
-            var index = this._index - 1;
-            if (this._battleNode[index] && (this._battleNode[index] instanceof BattleSpiritNode)) {
-                (function () {
-                    var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, that);
-                    battleEffect1Node.setPosition(that._locate[index]);
-                    that.addChild(battleEffect1Node, EFFECT_Z_ORDER);
-
-                    var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
-                    battleEffect1Node.animationManager.setCompletedAnimationCallback(that, function () {
-                        battleEffect1Node.removeFromParent();
-                        showSpiritAdditionCallback();
-                    });
-
-                    that._battleNode[index].runAnimations(
-                        "buf",
-                        0,
-                        that.showSpiritAdditionCallback()
-                    );
-                })();
-
-                return;
+                this._index += 1;
             }
+        }
+
+        if (index) {
+            var battleEffect1Node = cc.BuilderReader.load(main_scene_image.battleEffect1, that);
+            battleEffect1Node.setPosition(that._locate[index]);
+            that.addChild(battleEffect1Node, EFFECT_Z_ORDER);
+
+            var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
+            battleEffect1Node.animationManager.setCompletedAnimationCallback(that, function () {
+                battleEffect1Node.removeFromParent();
+                showSpiritAdditionCallback();
+            });
+
+            that._battleNode[index].runAnimations(
+                "buf",
+                0,
+                that.showSpiritAdditionCallback()
+            );
+
+            return;
         }
 
         this.nextStep();
@@ -472,15 +550,49 @@ var BattleLayer = cc.Layer.extend({
             return;
         }
 
+
         this.step(this._battleLog.getBattleStep());
     },
 
-    step: function (battleStep) {
-        cc.log("BattleLayer attack");
-        cc.log(battleStep);
+    step: function (step) {
+        cc.log("BattleLayer step");
+        cc.log(step);
 
+        if (typeof (step) == "string") {
+            this.refreshStep(step);
+        } else {
+            this.battleStep(step);
+        }
+    },
+
+    refreshStep: function (faction) {
+        cc.log("BattleLayer refreshStep");
+
+        var limit = LINE_UP_CARD_LIMIT[faction];
+        var that = this;
+
+        for (var i = limit.start; i <= limit.end; ++i) {
+            if (this._battleNode[i] && (this._battleNode[i] instanceof BattleSpiritNode)) {
+                this._battleNode[i].runAnimations("die", 0, function () {
+                    that.join(faction);
+                });
+                return;
+            }
+        }
+
+        this.join(faction);
+    },
+
+    battleStep: function (battleStep) {
+        cc.log("BattleLayer battleStep");
+
+        var step = battleStep.get("step");
         var attacker = battleStep.get("attacker");
         var fn = "";
+
+        if (step) {
+            this._stepLabel.setString("回合: " + step + " / " + BATTLE_MAX_STEP);
+        }
 
         if (battleStep.isSkill()) {
             fn = this._battleNode[attacker].getSkillFn();
@@ -4402,6 +4514,10 @@ var BattleLayer = cc.Layer.extend({
                             var effect = battleStep.getEffect();
                             var isCrit = battleStep.isCrit();
 
+                            var effect1800_3 = cc.BuilderReader.load(main_scene_image.effect1800_3, that);
+                            effect1800_3.setPosition(attackerLocate);
+                            that.addChild(effect1800_3, EFFECT_Z_ORDER);
+
                             var effect1800_2 = cc.BuilderReader.load(main_scene_image.effect1800_2, that);
                             effect1800_2.setPosition(attackerLocate);
                             that.addChild(effect1800_2, EFFECT_Z_ORDER);
@@ -4432,10 +4548,6 @@ var BattleLayer = cc.Layer.extend({
 
                                 nextStepCallback1();
                             });
-
-                            var effect1800_3 = cc.BuilderReader.load(main_scene_image.effect1800_3, that);
-                            effect1800_3.setPosition(attackerLocate);
-                            that.addChild(effect1800_3, EFFECT_Z_ORDER);
 
                             var nextStepCallback2 = that.nextStepCallback();
                             effect1800_3.animationManager.setCompletedAnimationCallback(that, function () {
@@ -4644,7 +4756,7 @@ var BattleLayer = cc.Layer.extend({
 
         if (this._battleLog.isWin()) {
             if (len) {
-                var index = this._battleLog.getSpirit(1);
+                var index = this._battleLog.getSpirit("o");
 
                 for (var i = 0; i < len; ++i) {
                     var spirit = this._spiritNode[i];
@@ -4741,7 +4853,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);
@@ -4752,7 +4864,7 @@ var BattleLayer = cc.Layer.extend({
                 TipLayer.tip("vip2开启3倍速");
             } else {
                 cc.Director.getInstance().getScheduler().setTimeScale(BATTLE_PLAY_SPEEDS[this._playSpeed]);
-                sys.localStorage.setItem(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
+                lz.save(gameData.player.get("uid") + "playSpeedTimes", this._playSpeed);
 
                 for (var i = 1; i <= 3; i++) {
                     this._chooseSpeedItem[i].setVisible(i == this._playSpeed);

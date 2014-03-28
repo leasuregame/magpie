@@ -3,6 +3,7 @@ Boss = require './boss_hero'
 _ = require 'underscore'
 table = require '../manager/table'
 logger = require('pomelo-logger').getLogger(__filename)
+battleLog = require './battle_log'
 
 class BossPlayer extends Player
   init: (boss) ->
@@ -27,28 +28,8 @@ class BossPlayer extends Player
 
   loadHeros: ->
     @heros = if @cards? then new Boss(c, @) for c in @cards else []
-  
-  bindCards: ->
-    _hero = (id) =>
-      for h in @heros
-        return if h.id is parseInt(id) then h
-      null
-    
-    if @lineUp? and @lineUp != ''
-      @parseLineUp().forEach (item) =>
-        [pos, id] = item 
-        _h = _hero(id)
 
-        if _h
-          @matrix.set(pos, _h)
-        else
-          logger.info 'you have not such card with id is ' + id
-    else
-      logger.warn 'there is not line up for player ' + @name
-    
-    @matrix.reset()
-
-  getCards: ->
+  setCards: ->
     cobj = {}
     for c in @heros
       cobj[c.idx] = {
@@ -59,6 +40,12 @@ class BossPlayer extends Player
         totalHp: c.total_hp
       }
     cobj
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
 parseCards = (cardIds, boss) ->
   cards = []
@@ -77,13 +64,14 @@ genLineUp = (cards, formation) ->
     return ''
 
   _cards = _.clone(cards)
-  arr = formation.split(',').map (item) =>
+  lu = {}
+  formation.split(',').forEach (item) =>
     [pos, _tableId] = item.split(':')
     _card = _.findWhere _cards, {tableId: parseInt(_tableId)}
     _cards.splice(_cards.indexOf(_card), 1)
     _card_id = _card.id
-    "#{pos}:#{_card_id}"
+    lu[pos] = _card_id
 
-  arr.join(',')
+  [lu]
 
 module.exports = BossPlayer

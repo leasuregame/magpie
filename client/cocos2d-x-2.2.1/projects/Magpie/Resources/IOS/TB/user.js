@@ -44,13 +44,13 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
+        this._area = lz.load("area") || 0;
     },
 
     _save: function () {
         cc.log("User _save");
 
-        sys.localStorage.setItem("area", this._area);
+        lz.save("area", this._area);
     },
 
     login: function (cb) {

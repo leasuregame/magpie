@@ -213,7 +213,7 @@ var TournamentLabel = cc.Node.extend({
                 var tournament = gameData.tournament;
                 var count = tournament.get("count");
 
-                var isFirstCountUsed = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "_firstCountUsed") || 1);
+                var isFirstCountUsed = lz.load(gameData.player.get("uid") + "_firstCountUsed") || 1;
 
                 var cb = function () {
                     gameData.tournament.defiance(function (data) {
@@ -224,11 +224,11 @@ var TournamentLabel = cc.Node.extend({
                 };
 
                 if (count == 0 && isFirstCountUsed == 1) {
-                    sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 0);
+                    lz.save(gameData.player.get("uid") + "_firstCountUsed", 0);
                     this._target.showTip(cb);
                 } else {
                     if (count != 0) {
-                        sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 1);
+                        lz.save(gameData.player.get("uid") + "_firstCountUsed", 1);
                     }
 
                     cb();

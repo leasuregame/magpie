@@ -20,7 +20,7 @@ class Filter
     next()
 
 limitRouteMap = {
-  'area.taskHandler.passBarrier': timeout: 3000, msg: '爬塔过于频繁，3秒后再试'
-  'area.taskHandler.explore': timeout: 2000, msg: '探索过于频繁'
-  'area.rankHandler.challenge': timeout: 3000, msg: '挑战过于频繁，请3秒钟后重试'
+  # 'area.taskHandler.passBarrier': timeout: 3000, msg: '爬塔过于频繁，3秒后再试'
+  # 'area.taskHandler.explore': timeout: 2000, msg: '探索过于频繁'
+  # 'area.rankHandler.challenge': timeout: 3000, msg: '挑战过于频繁，请3秒钟后重试'
 }

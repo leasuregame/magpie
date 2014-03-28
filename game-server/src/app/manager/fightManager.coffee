@@ -27,11 +27,12 @@ class Manager
         playerManager.getPlayerInfo {pid: pid, sync: false}, cb
       
       (_playerEntity, cb) ->
-        playerEntity = _playerEntity
-        attacker = new Player(playerEntity)
-        defender = new VirtualPlayer(taskData)
-
         battleLog.clear()
+        
+        playerEntity = _playerEntity
+        defender = new VirtualPlayer(taskData)
+        attacker = new Player(playerEntity, is_attacker: true)
+
         battle = new Battle(attacker, defender)
         battle.process()
 
@@ -45,13 +46,11 @@ class Manager
       callback(null, res)
 
   @pvp: (attEnt, defEnt, callback) ->
-
-    attacker = new Player(attEnt)
-    attacker.setLineUp attEnt.get('lineUp')
-    defender = new Player(defEnt)
-    defender.setLineUp defEnt.get('lineUp')
-
     battleLog.clear()
+
+    defender = new Player(defEnt)
+    attacker = new Player(attEnt, is_attacker: true)
+    
     battle = new Battle(attacker, defender)
     battle.process()
 
@@ -60,9 +59,14 @@ class Manager
     callback(null, res)
 
   @attackBoss: (player, boss, incRate, callback) ->
-    attacker = new Player(player, incRate)
-    defender = new BossPlayer(boss)
     battleLog.clear()
+
+    defender = new BossPlayer(boss)
+    attacker = new Player(player, {
+      inc_scale: incRate,
+      is_attacker: true
+    })
+    
     battle = new Battle(attacker, defender)
     battle.process()
 

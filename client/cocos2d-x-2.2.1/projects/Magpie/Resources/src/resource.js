@@ -54,9 +54,6 @@ var main_scene_image = {
     bg22: main_scene_path + "bg22.png",
     bg23: main_scene_path + "bg23.png",
 
-    boss_half: main_scene_path + "boss_half.png",
-
-
     explore_bg_1: main_scene_path + "explore_bg_1.png",
     explore_bg_2: main_scene_path + "explore_bg_2.png",
     explore_bg_3: main_scene_path + "explore_bg_3.png",
@@ -139,6 +136,8 @@ var main_scene_image = {
     card_frame3: main_scene_path + "card_frame3.png",
     card_frame4: main_scene_path + "card_frame4.png",
     card_frame5: main_scene_path + "card_frame5.png",
+    card_frame6: main_scene_path + "card_frame6.png",
+    card_frame7: main_scene_path + "card_frame7.png",
 
     card_icon_1_0: main_scene_path + "card_icon_1_0.png",
     card_icon_1_1: main_scene_path + "card_icon_1_1.png",
@@ -154,14 +153,19 @@ var main_scene_image = {
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
 
+    card_subscript_6: main_scene_path + "card_subscript_6.png",
+    card_subscript_7: main_scene_path + "card_subscript_7.png",
+
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
+    card_item_bg0: main_scene_path + "card_item_bg0.png",
+    card_item_bg0s: main_scene_path + "card_item_bg0s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
     card_item_bg2: main_scene_path + "card_item_bg2.png",
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
     card_item_bg6: main_scene_path + "card_item_bg6.png",
-    card_item_bg6s: main_scene_path + "card_item_bg6s.png",
+    card_item_bg7: main_scene_path + "card_item_bg7.png",
 
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
@@ -322,6 +326,17 @@ var main_scene_image = {
     button74s: main_scene_path + "button74s.png",
     button75: main_scene_path + "button75.png",
     button75s: main_scene_path + "button75s.png",
+    button76: main_scene_path + "button76.png",
+    button76d: main_scene_path + "button76d.png",
+    button76s: main_scene_path + "button76s.png",
+    button77: main_scene_path + "button77.png",
+    button77s: main_scene_path + "button77s.png",
+    button78: main_scene_path + "button78.png",
+    button78s: main_scene_path + "button78s.png",
+    button79: main_scene_path + "button79.png",
+    button79s: main_scene_path + "button79s.png",
+    button80: main_scene_path + "button80.png",
+    button80s: main_scene_path + "button80s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -735,6 +750,19 @@ var main_scene_image = {
     icon412: main_scene_path + "icon412.png",
     icon413: main_scene_path + "icon413.png",
     icon414: main_scene_path + "icon414.png",
+    icon415: main_scene_path + "icon415.png",
+    icon416: main_scene_path + "icon416.png",
+    icon417: main_scene_path + "icon417.png",
+    icon418: main_scene_path + "icon418.png",
+    icon419: main_scene_path + "icon419.png",
+    icon420: main_scene_path + "icon420.png",
+    icon421: main_scene_path + "icon421.png",
+    icon422: main_scene_path + "icon422.png",
+    icon423: main_scene_path + "icon423.png",
+    icon424: main_scene_path + "icon424.png",
+    icon425: main_scene_path + "icon425.png",
+    icon426: main_scene_path + "icon426.png",
+    icon427: main_scene_path + "icon427.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -958,6 +986,14 @@ var main_scene_image = {
     uiEffect94: "res/ccb/uiEffect94.ccbi",
     uiEffect95: "res/ccb/uiEffect95.ccbi",
     uiEffect96: "res/ccb/uiEffect96.ccbi",
+    uiEffect97: "res/ccb/uiEffect97.ccbi",
+    uiEffect98: "res/ccb/uiEffect98.ccbi",
+    uiEffect99: "res/ccb/uiEffect99.ccbi",
+    uiEffect100: "res/ccb/uiEffect100.ccbi",
+    uiEffect101: "res/ccb/uiEffect101.ccbi",
+    uiEffect102: "res/ccb/uiEffect102.ccbi",
+    uiEffect103: "res/ccb/uiEffect103.ccbi",
+
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

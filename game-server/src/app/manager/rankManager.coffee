@@ -8,6 +8,7 @@ entityUtil = require '../util/entityUtil'
 _ = require('underscore')
 async = require 'async'
 utility = require '../common/utility'
+logger = require('pomelo-logger').getLogger(__filename)
 
 Manager = module.exports = 
   getRank: (playerId, cb) ->

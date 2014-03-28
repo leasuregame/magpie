@@ -61,10 +61,8 @@ executeVerify = (app, queue) ->
   items = queue.needToProcess()
   return if items.length is 0
 
-  async.each items, (item, done) ->
-    #return done() if item.doing
+  async.each items, (item, done) ->    
     tryCount = 0
-
     postReceipt = (reqUrl, receiptData) ->
       request.post {
         headers: 'content-type': 'application/json'
@@ -81,10 +79,10 @@ executeVerify = (app, queue) ->
         else if body.status is 21005
           #收据服务器当前不可用
           item.doing = false
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, ()->)
         else 
           queue.del(item.id)
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, ()->)
 
         if body.status is 21007 and tryCount == 0
           tryCount += 1
@@ -97,13 +95,13 @@ executeVerify = (app, queue) ->
     if err
       logger.error('faild to verify app store reciept.', err)
 
-updatePlayer = (app, buyRecord, receiptResult) ->
+updatePlayer = (app, buyRecord, receiptResult, done) ->
   products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
   else
     throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
-    return
+    return done()
 
   isFirstRechage = false
   player = null
@@ -142,9 +140,10 @@ updatePlayer = (app, buyRecord, receiptResult) ->
   ], (err) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
-      return
+      return done()
 
     successMsg(app, player, isFirstRechage)
+    done()
 
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)

@@ -89,7 +89,7 @@ var DamageRankHelpLabel = LazyLayer.extend({
         this._frameLayer.addChild(tipIcon);
 
         var rewardList = outputTables.boss_rank_reward.rows;
-        var len = Object.keys(rewardList).length;
+        var len = Object.keys(rewardList).length - 1;
         var layerHeight = len * 75;
 
         for (var i = 0; i < len; i++) {

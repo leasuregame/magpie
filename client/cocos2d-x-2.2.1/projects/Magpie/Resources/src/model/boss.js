@@ -229,7 +229,7 @@ var Boss = Entity.extend({
                 that.push(msg.boss);
                 that.set("cd", msg.cd);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
             } else {
@@ -476,16 +476,24 @@ var Boss = Entity.extend({
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
         if (this.get("cd") == 0) {
-            gameMark.setBossMark(true);
+            gameMark.updateBossMark(true);
         }
     },
 
     _kneelCountChangeEvent: function () {
         // 提示是否可以膜拜
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     _canReceiveChangeEvent: function () {
         // 提示是否有奖励可以领取
+        var nowLayer = MainScene.getInstance().getLayer();
+        if (nowLayer instanceof BossListLayer) {
+            nowLayer.updateEffect();
+        }
     },
 
     getThisWeekReward: function () {
@@ -500,8 +508,8 @@ var Boss = Entity.extend({
         if (rank <= 5) {
             return outputTables.boss_rank_reward.rows[rank];
         } else {
-            var honor = outputTables.boss_rank_reward.rows[5].honor;
-            honor -= parseInt(Math.ceil((rank - 5) / 20) * 0.003 * honor);
+            var honor = outputTables.boss_rank_reward.rows[6].honor;
+            honor -= parseInt(Math.ceil((rank - 6) / 20) * 0.003 * honor);
             honor = Math.max(2000, honor);
             return {honor: honor}
         }

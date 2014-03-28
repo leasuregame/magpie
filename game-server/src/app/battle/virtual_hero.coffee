@@ -35,8 +35,11 @@ class VirtualHero extends Hero
     @star = 3
     @skill_id = card.skill_id
     @sp_value = [
-      {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
-      {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
+      active: true
+      items: [
+        {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
+        {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
+      ]
     ]
 
   loadSkill: ->

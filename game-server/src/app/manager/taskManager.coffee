@@ -137,7 +137,7 @@ class Manager
       player.increase('gold', taskRate.gold_obtain.value)
       battleLog.rewards.gold = taskRate.gold_obtain.value  
 
-    saveExpCardsInfo player.id, taskData.max_drop_card_number, firstWin, (err, results) ->
+    saveExpCardsInfo player.id, player.lv, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)
 
@@ -213,26 +213,7 @@ class Manager
         data.level9Box = level9Box
 
       cb(null, data)
-
-  @createPassiveSkillForCard: (card, times, cb) ->
-    async.times times
-      , (n, next) ->
-        ps_data = require('../domain/entity/passiveSkill').born()
-        ps_data.cardId = card.id
-        dao.passiveSkill.create data: ps_data, (err, ps) ->
-          if err
-            logger.error 'faild to create passiveSkill, ', err
-            return next(err)
-
-          card.addPassiveSkill ps
-          next(null, ps)
-      , (err, pss) ->
-        if err
-          return cb(err) 
-
-        card.addPassiveSkills pss
-
-        cb(null, card)
+        
   @seekBoss: (data, player, cb) ->
     ### boss等级限制判断 ###
     boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
@@ -241,8 +222,7 @@ class Manager
 
     player.incBossCount()
 
-    findBossRate = table.getTableItem('values', 'findBossRate')?.value
-    if not player.task.boss.found and checkFindBoss(player.task.boss.count, findBossRate)
+    if not player.task.boss.found and checkFindBoss(player.task.boss.count)
       typeRates = table.getTable('boss_type_rate')
       ids = typeRates.map (r) -> r.id
       rates = typeRates.map (r) -> r.rate
@@ -268,10 +248,10 @@ class Manager
             cb(null, data)
     else
       dao.boss.bossExists player.id, (err, exists) ->
-        if not exists
+        if not exists and player.task.boss.found
           player.setBossFound(false)
+          player.incBossCount()
         
-        console.log 'boss exists: ', err, exists
         cb(null, data)
 
 lineUpToObj = (lineUp) ->
@@ -298,24 +278,15 @@ getBossInfo = (type) ->
   else 
     return null
 
-checkFindBoss = (count, findBossRate) ->
-  return (count < 20 and utility.hitRate(findBossRate)) or count >= 20
+checkFindBoss = (count) ->
+  rate = table.getTableItem('boss_find_rate', count)?.rate or 1
+  return utility.hitRate(rate)
 
-bornPassiveSkill = () ->
-  born_rates = psConfig.BORN_RATES
-  name = utility.randomValue _.key(born_rates), _.value(born_rates)
-  value = _.random(100, psConfig.INIT_MAX * 100)
-  return {
-    name: name
-    value: parseFloat (value/100).toFixed(1)
-  }
-
-saveExpCardsInfo = (playerId, count, firstWin, cb) ->
-  cd = taskRate.card_drop
+saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
   results = []
   async.times count
     , (n, callback) ->
-      lv = if firstWin then 15 else parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+      lv = if firstWin then 15 else parseInt genCardLv(playerLv)
       dao.card.createExpCard(
         data: {
           playerId: playerId,
@@ -323,5 +294,17 @@ saveExpCardsInfo = (playerId, count, firstWin, cb) ->
         }, callback
       )
     , cb
+
+genCardLv = (playerLv) ->
+  CD = taskRate.CARD_DROP
+  lvs = _.keys(CD).sort (x, y) -> parseInt(y) - parseInt(x)
+  
+  lv = lvs[0]
+  for l in lvs 
+    if playerLv >= l
+      lv = l
+      break
+
+  parseInt utility.randomValue _.keys(CD[lv]), _.values(CD[lv])
 
 module.exports = Manager

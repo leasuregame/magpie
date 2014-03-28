@@ -2,9 +2,17 @@ _ = require 'underscore'
 utility = require '../common/utility'
 log = require('pomelo-logger').getLogger(__filename)
 
+passive_propertys = 
+  'atk_improve': 'atk'
+  'hp_improve': 'hp'
+
 class SpecialProperty
   constructor: (attrs) ->
-    @_attrs = attrs
+    @_attrs = []
+
+    for att in attrs 
+      if att.active
+        @_attrs = att.items
 
   takeEffect: (tag) ->
     for a in @_attrs
@@ -20,28 +28,25 @@ class SpecialProperty
     .map((i) -> i.value)
     .reduce(((x, y) -> x+y), 0)
 
-  isCrit: ->
-    @_hit('crit')
+  isCrit: (val) ->
+    @_hit('crit', val)
 
-  isDodge: ->
-    @_hit('dodge')
+  isDodge: (val) ->
+    @_hit('dodge', val)
 
-  dmgReduce: (val) ->
+  dmgReduce: (val, disrupting) ->
     return val if not @has('dmg_reduce') 
 
-    parseInt( val * ( 1 - @get('dmg_reduce')/100 ) )
+    parseInt( val * ( 1 - (@get('dmg_reduce')-(disrupting||0))/100 ) )
 
   dmgRebound: (val) ->
     return 0 if not @has('dmg_rebound') 
+
     parseInt( val * ( 1 - @get('dmg_rebound')/100 ) )
 
-  _hit: (type) ->
+  _hit: (type, val) ->
     return false if not @has(type) 
-    utility.hitRate @get(type)
-
-passive_propertys = 
-  'atk_improve': 'atk'
-  'hp_improve': 'hp'
+    utility.hitRate @get(type)-(val||0)
 
 exports = module.exports = SpecialProperty
       

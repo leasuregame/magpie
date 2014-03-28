@@ -21,7 +21,6 @@ Handler::createPlayer = (msg, session, next) ->
   if not CHINESE_REG.test(name)
     return next(null, {code: 501, msg: '只能输入1-6位汉字、字母或数字'})
 
-  #console.log 'create player:',  '<session settings>: ', session?.settings, session?.id, session?.uid, session?.frontendId
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
     userId: userId
@@ -31,6 +30,7 @@ Handler::createPlayer = (msg, session, next) ->
     if err and err.code is 404
       return next(null, {code: 501, msg: "玩家已存在"})
 
+    console.log err
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 

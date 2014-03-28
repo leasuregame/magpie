@@ -116,6 +116,14 @@ Achievement.taskPartPassTo = function(player, chapter) {
 	}	
 };
 
+Achievement.vipTo = function(player, vip) {
+	checkIsReached(player, 'vipTo', vip);
+};
+
+Achievement.passPhaseTo = function(player, phase) {
+	checkIsReached(player, 'passPhaseTo', phase);
+};
+
 var checkIsReached_alpha = function(player, method, incVal, useMax) {
 	var need = incVal;
 	var items = _.where(_.values(player.achievement), {

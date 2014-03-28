@@ -150,8 +150,10 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 var power = data.msg.powerValue;
-                TipLayer.tipWithIcon(lz.getGameGoodsIcon("power"), " +" + power);
+
                 gameData.player.add("power", power);
+
+                lz.tipReward("power", power);
 
                 lz.um.event("event_give_power");
                 cb();
@@ -168,9 +170,10 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tipWithIcon(lz.getGameGoodsIcon("gold"), " +" + data.msg.gold);
                 gameData.player.add("gold", data.msg.gold);
                 that._changeStateById(TYPE_GOLD_REWARD, id, GOLD_RECEIVE);
+
+                lz.tipReward("gold", data.msg.gold);
 
                 cb(true);
 

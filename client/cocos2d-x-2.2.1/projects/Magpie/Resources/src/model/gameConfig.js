@@ -8,18 +8,39 @@
 
 
 /*
- * 游戏配置
+ * game config
  * */
 
+var FPS_LIST = [15, 30, 60];
 
-var GAME_HORIZONTAL_LACUNA = 40;
-var GAME_VERTICAL_LACUNA = 88;
-var GAME_WIDTH = 640;
-var GAME_HEIGHT = 960;
-var GAME_MIDPOINT = cc.p(360, 568);
-var GAME_ZERO = cc.p(40, 88);
-var GAME_BG_POINT = cc.p(40, 194);
-var GAME_WIDTH_MIDPOINT = 360;
-var GAME_HEIGHT_MIDPOINT = 568;
+var gameConfig = new (Entity.extend({
+    _fps: 0,
 
-var GAME_COMBAT_SPEED = 1.0;
+    init: function () {
+        cc.log("gameConfig init");
+
+        var fps = lz.load("gameConfigFps") || 30;
+
+        var len = FPS_LIST.length;
+        for (var i = 0; i < len; ++i) {
+            if (fps == FPS_LIST[i]) {
+                this.setFps(fps);
+                return;
+            }
+        }
+
+        this.setFps(30);
+    },
+
+    setFps: function (fps) {
+        cc.log("gameConfig setFps: " + fps);
+
+        if (fps > 0 && fps != this._fps) {
+            this._fps = fps;
+
+            lz.save("gameConfigFps", this._fps);
+
+            cc.Director.getInstance().setAnimationInterval(1.0 / this._fps);
+        }
+    }
+}));

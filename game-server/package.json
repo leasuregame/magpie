@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "dependencies": {
-    "pomelo": "0.8.9",
+    "pomelo": "0.9.3",
     "mysql": "~2.0.1",
     "mysql-queues": "*",
     "generic-pool": "2.0.4",
@@ -21,7 +21,7 @@
     "request": "2.27",
     "coffee-script": "1.6.2",
     "csv": "*",
-    "pomelo-admin": "~0.2.9"
+    "pomelo-admin": "*"
   },
   "devDependencies": {
     "underscore": "1.4.4",

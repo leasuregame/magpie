@@ -165,9 +165,9 @@ var addEvents = function(player) {
                 break;
             }
         }
-        if (oldVip == 0 && player.vip > 0) {
-            achieve.vip(player);
-        }
+        // 达成vip成就
+        achieve.vipTo(player, player.vip);
+        
         recountVipPrivilege(player, oldVip);
     });
 };
@@ -277,7 +277,7 @@ var Player = (function(_super) {
         exp: 0,
         money: 10000,
         gold: 20,
-        lineUp: '12:-1',
+        lineUp: [{6:-1}],
         ability: 0,
         task: {
             id: 1,
@@ -319,7 +319,15 @@ var Player = (function(_super) {
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
-            rmTimerCount: 1
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
+            }
         },
         fragments: 0,
         energy: 0,
@@ -415,7 +423,15 @@ var Player = (function(_super) {
             hasGotLoginReward: 0,
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
-            rmTimerCount: 1
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
+            }
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -444,6 +460,32 @@ var Player = (function(_super) {
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount
         };
+    };
+
+    Player.prototype.incGoldLuckyCard10 = function(){
+        var goldLuckyCard10 = this.dailyGift.goldLuckyCard10;
+        if (_.isUndefined(goldLuckyCard10)) {
+            goldLuckyCard10 = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCard10.count += 1;
+        this.updateGift('goldLuckyCard10', goldLuckyCard10);
+    };
+
+    Player.prototype.incGoldLuckyCardForFragment = function(){
+        var goldLuckyCardForFragment = this.dailyGift.goldLuckyCardForFragment;
+        if (_.isUndefined(goldLuckyCardForFragment)) {
+            goldLuckyCardForFragment = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCardForFragment.count += 1;
+        this.updateGift('goldLuckyCardForFragment', goldLuckyCardForFragment);
     };
 
     Player.prototype.isReset = function() {
@@ -491,9 +533,7 @@ var Player = (function(_super) {
             logger.error('can not fine spirit config infi by level ' + this.spiritor.lv);
             return;
         }
-        var cards = this.activeCards();
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
+        this.activeCards().forEach(function(card) {
             var incs = {
                 spirit_hp: 0,
                 spirit_atk: 0
@@ -510,7 +550,7 @@ var Player = (function(_super) {
 
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
-        }
+        });
     };
 
     Player.prototype.incSpirit = function(val) {
@@ -596,10 +636,6 @@ var Player = (function(_super) {
                 ability += _a + _hp + _atk;
             }
         });
-        // 元神加成的战斗力
-        // if (this.spiritor.lv > 0) {
-        //     ability += this.spiritor.lv * SPIRITOR_PER_LV;
-        // }
 
         this.set('ability', ability);
         return ability;
@@ -609,26 +645,26 @@ var Player = (function(_super) {
         this.set('ability', this.getAbility());
     };
 
-    Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
-        var cards = _.values(this.cards).filter(function(id, c) {
-            return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-        });
-        var cardTable = table.getTable('cards');
+    // Player.prototype.activeGroupEffect = function() {
+    //     var cardIds = _.values(lineUpToObj(this.lineUp));
+    //     var cards = _.values(this.cards).filter(function(id, c) {
+    //         return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+    //     });
+    //     var cardTable = table.getTable('cards');
 
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
-            var cdata = cardTable.getItem(card.id);
-            var series = cdata.group.toString().split(',');
-            var seriesCards = cardTable.filter(function(id, item) {
-                return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-            });
+    //     for (var i = 0; i < cards.length; i++) {
+    //         var card = cards[i];
+    //         var cdata = cardTable.getItem(card.id);
+    //         var series = cdata.group.toString().split(',');
+    //         var seriesCards = cardTable.filter(function(id, item) {
+    //             return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+    //         });
 
-            if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-                card.activeGroupEffect();
-            }
-        }
-    };
+    //         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+    //             card.activeGroupEffect();
+    //         }
+    //     }
+    // };
 
     Player.prototype.isVip = function() {
         return this.vip > 0;
@@ -654,7 +690,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
+        return _.contains(this.activeCardIds(), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -688,8 +724,14 @@ var Player = (function(_super) {
         return cards;
     };
 
+    Player.prototype.activeCardIds = function(){
+        return this.lineUp.reduce(function(pre, cur){
+            return pre.concat(_.values(cur));
+        }, []);
+    };
+
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
+        var cardIds = this.activeCardIds();
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
@@ -773,14 +815,24 @@ var Player = (function(_super) {
         this.dailyGift = dg;
     };
 
-    Player.prototype.updateLineUp = function(lineupObj) {
-        this.set('lineUp', objToLineUp(lineupObj));
-        checkLineUp(this);
+    Player.prototype.updateLineUp = function(lineupObj, index) {
+        if (_.isNull(index) || _.isUndefined(index)) {
+            return this.set('lineUp', lineupObj);
+        }
+
+        var lu = _.clone(this.lineUp);
+        if (index > lu.length) {
+            throw new Error('can not update player lineUp with the index ' + index);
+        }
+
+        lu[index] = lineupObj;
+        this.set('lineUp', lu);
+        //checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        checkLineUp(this);
-        return lineUpToObj(this.lineUp);
+        //checkLineUp(this);
+        return this.lineUp;
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -1097,13 +1149,6 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.canUseElixir = function() {
-        if (this.lv >= 80) {
-            return Number.MAX_VALUE;
-        }
-        return elixirLimit(this.lv);
-    };
-
     Player.prototype.getRanking = function() {
         var rank = {
             ranking: 0
@@ -1242,7 +1287,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.setInitRate = function(star, val) {
-        if (star < 1 || star > 4) {
+        if (star < 1 || star > 6) {
             return;
         }
 
@@ -1252,7 +1297,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incInitRate = function(star, val) {
-        if (star < 1 || star > 4) {
+        if (star < 1 || star > 6) {
             return;
         }
 

@@ -8,7 +8,6 @@
 
 
 var gameMark = {
-
     _activity: false,
     _achievement: false,
     _cardLibrary: false,
@@ -439,8 +438,8 @@ var gameMark = {
         return this._boss;
     },
 
-    setBossMark: function (mark) {
-        cc.log("gameMark setBossMark");
+    updateBossMark: function (mark) {
+        cc.log("gameMark updateBossMark");
 
         this._boss = mark;
         MainScene.getInstance().updateMark();

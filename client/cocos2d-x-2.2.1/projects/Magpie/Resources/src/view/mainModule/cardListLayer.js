@@ -71,10 +71,9 @@ var CardListLayer = cc.Layer.extend({
         this._cardListLayerFit = gameFit.mainScene.cardListLayer;
 
         this._cardLabel = {};
-        this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
-        this._otherData = otherData;
+        this._otherData = otherData || {};
         this._maxSelectCount = gameData.cardList.get("count");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -97,7 +96,7 @@ var CardListLayer = cc.Layer.extend({
         for (var key in cardList) {
             var card = cardList[key];
 
-            var cardLabel = CardLabel.create(this, card, selectType);
+            var cardLabel = CardLabel.create(this, card, selectType, this._otherData);
             cardLabel.setAnchorPoint(cc.p(0, 0));
             cardLabel.setPosition(cc.p(0, 0));
             cardLabel.setVisible(false);
@@ -393,7 +392,9 @@ var CardListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
-        this._maxSelectCount = MAX_LINE_UP_CARD;
+        var lineUp = gameData.lineUp;
+        var index = this._otherData.index;
+        this._maxSelectCount = lineUp.getPerLineUpCount(index);
 
         this._selectCallback = function () {
             cc.log("CardListLayer _initLineUp _selectCallback");
@@ -417,12 +418,20 @@ var CardListLayer = cc.Layer.extend({
             }
         };
 
-        var lineUp = gameData.lineUp.getLineUpList();
-        var len = lineUp.length;
+        var maxLineUp = lineUp.get("maxLineUp");
 
-        for (var i = 0; i < len; ++i) {
-            if (this._cardLabel[lineUp[i]] !== undefined) {
-                this._cardLabel[lineUp[i]].select();
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUpList = gameData.lineUp.getLineUpList(i);
+            var len = lineUpList.length;
+
+            for (var j = 0; j < len; ++j) {
+                if (this._cardLabel[lineUpList[j]] !== undefined) {
+                    if (index == i) {
+                        this._cardLabel[lineUpList[j]].select();
+                    } else {
+                        this._excludeList.push(lineUpList[j]);
+                    }
+                }
             }
         }
     },
@@ -505,7 +514,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if(cardList[key].get("star") < 2) {
+            if (cardList[key].get("star") < 2) {
                 this._excludeList.push(key);
             }
         }
@@ -659,8 +668,10 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
         var leadCardStar = this._otherData.leadCard.get("star");
 
+        var useCardStar = Math.min(leadCardStar, 5);
+
         for (var key in cardList) {
-            if (cardList[key].get("star") != leadCardStar) {
+            if (cardList[key].get("star") != useCardStar) {
                 this._excludeList.push(key);
             }
         }
@@ -885,7 +896,7 @@ var CardListLayer = cc.Layer.extend({
             };
 
             if (isShowTip) {
-                UseCardsTipLabel.pop(cb);
+                AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
             } else {
                 cb();
             }
@@ -971,7 +982,7 @@ var CardListLayer = cc.Layer.extend({
         };
 
         if (isShowTip) {
-            UseCardsTipLabel.pop(cb);
+            AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
         } else {
             cb();
         }
@@ -983,7 +994,8 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
+        var index = this._otherData.index;
+        var lineUp = lz.clone(gameData.lineUp.getLineUp(index));
         var cardList = this._getSelectCardList();
         var i, key, len = cardList.length;
 
@@ -1026,7 +1038,7 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                MainScene.getInstance().switchLayer(MainLayer);
+                TipLayer.tip("阵容保存成功");
 
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();
@@ -1035,8 +1047,7 @@ var CardListLayer = cc.Layer.extend({
                 }
 
             }
-        }, lineUp);
-
+        }, lineUp, index);
     },
 
     _onClickLineUp: function () {
@@ -1081,18 +1092,23 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         }
-
     }
 });
 
 
-CardListLayer.create = function (selectType, cb, otherData) {
+CardListLayer.create = function (/* Multi arguments */) {
     var ret = new CardListLayer();
 
-    selectType = selectType || SELECT_TYPE_DEFAULT;
-    otherData = otherData || {};
-    cb = cb || function () {
-    };
+    var selectType = arguments[0] || SELECT_TYPE_DEFAULT;
+    var cb;
+    var otherData;
+
+    if (typeof(arguments[1]) == "function") {
+        cb = arguments[1];
+        otherData = arguments[2] || {};
+    } else {
+        otherData = arguments[1] || {};
+    }
 
     if (ret && ret.init(selectType, cb, otherData)) {
         return ret;

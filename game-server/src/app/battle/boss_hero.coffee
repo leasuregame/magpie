@@ -20,8 +20,12 @@ class BossHero extends Hero
     @star = 3
     @skill_id = boss_config.card_id_linktarget?.skill_id
     @sp_value = [
-      {name: 'crit', value: boss_config.crit_rate},
-      {name: 'dodge', value: boss_config.dodge_rate}
+      active: true
+      items: [
+        {name: 'crit', value: boss_config.crit_rate},
+        {name: 'dodge', value: boss_config.dodge_rate},
+        {name: 'hit', value: boss_config.hit_rate}
+      ]
     ]
 
   loadSkill: ->

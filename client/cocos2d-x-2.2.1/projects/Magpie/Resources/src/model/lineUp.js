@@ -12,16 +12,19 @@
  * */
 
 
-var MAX_LINE_UP_CARD = 2;
 var MAX_LINE_UP_SIZE = 6;
+var MAX_LINE_UP_CARD = 5;
 var SPIRIT_ID = -1;
 
 var LineUp = Entity.extend({
-    _lineUp: {},
-    _count: 0,
+    _lineUpList: null,
+    _maxLineUp: 0,
 
     init: function (data) {
         cc.log("LineUp init");
+
+        this._lineUpList = [];
+        this._maxLineUp = Object.keys(outputTables.card_lineup_limit.rows).length;
 
         this.update(data);
 
@@ -34,17 +37,41 @@ var LineUp = Entity.extend({
     update: function (data) {
         cc.log("LineUp update");
 
-        var lineUp = {};
-        var count = 0;
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (data[i] !== undefined) {
-                count++;
-                lineUp[i] = data[i];
-            }
+        if (!data && !this._lineUpList) {
+            return;
         }
 
-        this.set("lineUp", lineUp);
-        this.set("count", count);
+        var lineUpList = [];
+        var maxLineUp = this._maxLineUp;
+        var lv = gameData.player.get("lv");
+
+        cc.log(data);
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUp;
+            if (data) {
+                lineUp = data[i];
+            } else if (this._lineUpList[i]) {
+                lineUp = this._lineUpList[i].lineUp;
+            }
+
+            var count = 0;
+            var lineUpLimit = outputTables.card_lineup_limit.rows[i];
+            for (var j = 1; j <= MAX_LINE_UP_CARD; ++j) {
+                if (lv >= lineUpLimit["card_" + j]) {
+                    count += 1;
+                } else {
+                    break;
+                }
+            }
+
+            lineUpList[i] = {
+                lineUp: lineUp || {6: -1},
+                count: count
+            };
+        }
+
+        this.set("lineUpList", lineUpList);
     },
 
     _lineUpChangeEvent: function () {
@@ -53,87 +80,160 @@ var LineUp = Entity.extend({
         gameData.player.checkAbility();
     },
 
-    getLineUpCardList: function () {
-        cc.log("LineUp getLineUpCardList");
+    getLineUpCardList: function (index) {
+        cc.log("LineUp getLineUpCardList: " + index);
 
         var lineUpCardList = [];
         var cardList = gameData.cardList;
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._lineUp[i] !== undefined && this._lineUp[i] >= 0) {
-                lineUpCardList.push(cardList.getCardByIndex(this._lineUp[i]));
-            }
+        var lineUpList = this.getLineUpList(index);
+        var len = lineUpList.length;
+
+        for (var i = 0; i < len; ++i) {
+            lineUpCardList.push(cardList.getCardByIndex(lineUpList[i]));
         }
 
         return lineUpCardList;
     },
 
-    getLineUpList: function () {
+    getLineUpList: function (index) {
         cc.log("LineUp getLineUpList");
 
         var lineUpList = [];
+        var lineUp, i, j;
 
-        for (var key in this._lineUp) {
-            lineUpList.push(this._lineUp[key]);
+        if (index != undefined) {
+            lineUp = this._lineUpList[index].lineUp;
+
+            for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                if (lineUp[j] != undefined && lineUp[j] >= 0) {
+                    lineUpList.push(lineUp[j]);
+                }
+            }
+        } else {
+            var maxLineUp = this._maxLineUp;
+
+            for (i = 0; i < maxLineUp; ++i) {
+                lineUp = this._lineUpList[i].lineUp;
+
+                for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                    if (lineUp[j] != undefined && lineUp[j] >= 0) {
+                        lineUpList.push(lineUp[j]);
+                    }
+                }
+            }
         }
 
         return lineUpList;
     },
 
-    getLineUpByIndex: function (index) {
-        cc.log("LineUp getLineUpByIndex: " + index);
+    getLineUp: function (index) {
+        cc.log("LineUp getLineUp");
 
-        return this._lineUp[index];
+        return this._lineUpList[index].lineUp;
     },
 
-    isLineUpCard: function (cardId) {
-        cc.log("LineUp isLineUpCard");
+    getLineUpCard: function (index, key) {
+        cc.log("LineUp getLineUpCard");
+        cc.log(index);
+        cc.log(key);
 
-        for (var key in this._lineUp) {
-            if (this._lineUp[key] == cardId) {
-                return true;
+        return (this._lineUpList[index].lineUp)[key];
+    },
+
+    getCardOfLineUp: function (cardId) {
+        cc.log("LineUp getCardOfLineUp");
+
+        var maxLineUp = this._maxLineUp;
+
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUp = this._lineUpList[i].lineUp;
+
+            cc.log(lineUp);
+
+            for (var key in lineUp) {
+                if (lineUp[key] == cardId) {
+                    return i;
+                }
             }
         }
 
-        return false;
+        return undefined;
     },
 
-    changeLineUp: function (cb, lineUp) {
+    getPerLineUpCount: function (index) {
+        cc.log("LineUp getPerLineUpCount");
+
+        return this._lineUpList[index].count;
+    },
+
+    changeLineUp: function (cb, data, index) {
         cc.log("LineUp changeLineUp");
-        cc.log(lineUp);
+        cc.log("lineUp: ");
+        cc.log(data);
+        cc.log("index: " + index);
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._lineUp[i] != lineUp[i]) {
-                var that = this;
+        var lineUp, i, j;
 
-                lz.server.request("area.trainHandler.changeLineUp", {
-                    lineUp: lineUp
-                }, function (data) {
-                    cc.log(data);
+        var isChange = false;
+        if (index != undefined) {
+            lineUp = this._lineUpList[index].lineUp;
 
-                    if (data.code == 200) {
-                        cc.log("changeLineUp success");
+            for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                if (data[j] != lineUp[j]) {
+                    isChange = true;
+                    break;
+                }
+            }
+        } else {
+            var maxLineUp = this._maxLineUp;
 
-                        var msg = data.msg;
+            for (i = 0; i < maxLineUp; ++i) {
+                lineUp = this._lineUpList[i].lineUp;
 
-                        that.update(msg.lineUp);
-
-                        cb(true);
-
-                        lz.um.event("event_lineup");
-                    } else {
-                        cc.log("changeLineUp fail");
-
-                        TipLayer.tip(data.msg);
-
-                        cb(false);
+                for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
+                    if (data[i][j] != lineUp[j]) {
+                        isChange = true;
+                        break;
                     }
-                });
+                }
 
-                return;
+                if (isChange) {
+                    break;
+                }
             }
         }
-        cb(true);
+
+        if (!isChange) {
+            cb(true);
+            return;
+        }
+
+        var that = this;
+        lz.server.request("area.trainHandler.changeLineUp", {
+            lineUp: data,
+            index: index
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("changeLineUp success");
+
+                var msg = data.msg;
+
+                that.update(msg.lineUp);
+
+                cb(true);
+
+                lz.um.event("event_lineup");
+            } else {
+                cc.log("changeLineUp fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(false);
+            }
+        });
     }
 });
 

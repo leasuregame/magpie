@@ -19,7 +19,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11220</WindowHeight>
+  <WindowHeight>7460</WindowHeight>
   <WindowWidth>28920</WindowWidth>
   <WindowTopX>2380</WindowTopX>
   <WindowTopY>2080</WindowTopY>
@@ -130,7 +130,7 @@
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="79"/>
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="72"/>
    <Column ss:Width="69"/>
-   <Column ss:AutoFitWidth="0" ss:Width="77"/>
+   <Column ss:AutoFitWidth="0" ss:Width="398"/>
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="77"/>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="String">id</Data></Cell>
@@ -7080,7 +7080,8 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="9" ss:StyleID="s76"/>
-    <Cell ss:Index="13" ss:StyleID="s71"><Data ss:Type="Number">30000</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">经验卡牌，不可进阶，主要作为卡牌升级所用。</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">40000</Data></Cell>
@@ -7198,7 +7199,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>2</SplitHorizontal>
-   <TopRowBottomPane>518</TopRowBottomPane>
+   <TopRowBottomPane>501</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -7215,8 +7216,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>536</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>534</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

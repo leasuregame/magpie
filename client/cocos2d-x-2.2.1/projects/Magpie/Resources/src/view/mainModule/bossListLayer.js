@@ -194,7 +194,7 @@ var BossListLayer = cc.Layer.extend({
     _updateMark: function () {
         cc.log("BossListLayer _updateMark");
 
-        gameMark.setBossMark(false);
+        gameMark.updateBossMark(false);
     },
 
     _update: function () {
@@ -204,6 +204,12 @@ var BossListLayer = cc.Layer.extend({
         this._honorLabel.setString(honor);
         this._canExchangeLabel.setString(parseInt(honor / 6000));
         this._superHonorLabel.setString(gameData.player.get("superHonor"));
+
+        this.updateEffect();
+    },
+
+    updateEffect: function () {
+        cc.log("BossListLayer updateEffect");
 
         var isCanReceive = gameData.boss.get("canReceive");
         this._effect.setVisible(isCanReceive);
@@ -306,7 +312,7 @@ var BossListLayer = cc.Layer.extend({
                         color: cc.c3b(117, 255, 57)
                     }
                 );
-                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+                rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
                 rewardAdditionLabel.setPosition(cc.p(330, y + 32));
                 scrollViewLayer.addChild(rewardAdditionLabel);
             }
@@ -407,13 +413,12 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        var cb = function () {
+
+        AdvancedTipsLabel.pop(TYPE_REMOVE_CD_TIPS, function () {
             gameData.boss.removeTimer(function () {
                 that.update();
             });
-        };
-
-        RemoveCdTipLabel.pop({cb: cb});
+        });
     },
 
     _onClickReward: function () {

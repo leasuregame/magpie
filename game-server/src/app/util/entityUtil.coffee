@@ -16,7 +16,7 @@ module.exports =
       data.star = data.tableId%5 or 5
 
     if data.star >= 3
-      data.passiveSkills = initPassiveSkill(data.star)
+      data.passiveSkills = initPassiveSkillGroup(data.star)
       genFactorForCard(data)
 
     dao.card.create data: data, (err, card) ->
@@ -77,6 +77,9 @@ module.exports =
     cb(isUpgrade, level9Box, rewards)
 
   randomCardId: (star, lightUpIds) ->
+    ###
+      点亮7张卡牌后，概率随机到新卡和旧卡
+    ###
     if lightUpIds.length > cardConfig.LUCKY_CARD_LIMIT.COUNT
       if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
@@ -84,7 +87,7 @@ module.exports =
         #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
         lightUpIds = filterTableId lightUpIds if star is 5
         id = generateCardId star, lightUpIds
-        vstar = (id%5 || 5)
+        vstar = cardStar(id)
         id += star - vstar if star isnt vstar
     else
       id = generateCardId star
@@ -111,16 +114,22 @@ setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'g
   return
 
 filterTableId = (ids) ->
+  # 过滤掉5星卡牌及与其同一系列的所有卡牌
   exceptIds = []
   ids.forEach (i) ->
-    if i%5 is 0
+    if cardStar(i) is 5
       s = i-4
-      exceptIds = exceptIds.concat [s..i]
+      e = i+15
+      exceptIds = exceptIds.concat [s..e]
   
   ids.filter (i) -> i not in exceptIds
 
 generateCardId = (star, tableIds, exceptIds) ->
-  ### exceptIds 为排除的id ###
+  ### 
+  star: 卡牌星级
+  tableIds: 如果不为空，那么从tableIds中拿一张
+  exceptIds: 为排除的卡牌id 
+  ###
   if not tableIds
     if exceptIds?
       tableIds = getCardIdsByStar [star], exceptIds
@@ -132,13 +141,16 @@ generateCardId = (star, tableIds, exceptIds) ->
 
 getCardIdsByStar = (stars, exceptIds = []) ->
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 500 and parseInt(id) not in exceptIds and row.star in stars)
+  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 
   if items.length is 0 and exceptIds.length > 0
-    return exceptIds.filter (i) -> (i%5 || 5) in stars
+    return exceptIds.filter (i) -> cardStar(i) in stars
   items
+
+cardStar = (tid) ->
+  tid%20 || 20
 
 genFactorForCard = (card) ->
   card.factor = _.random(1, 1000)
@@ -175,3 +187,13 @@ initPassiveSkill = (star) ->
       value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
     )
   results
+
+initPassiveSkillGroup = (star) ->
+  list = []
+  for i in [1..3]
+    list.push {
+      id: i,
+      items: initPassiveSkill(star)
+      active: if i is 1 then true else false
+    }
+  list

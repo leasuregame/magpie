@@ -36,13 +36,6 @@ var Sound = Entity.extend({
         return true;
     },
 
-    _save: function () {
-        cc.log("Sound _save");
-
-        sys.localStorage.setItem(this._openMusicKey, this._openMusic);
-        sys.localStorage.setItem(this._openEffectKey, this._openEffect);
-    },
-
     isOpenMusic: function () {
         return (this._openMusic == SOUND_OPEN);
     },
@@ -73,16 +66,12 @@ var Sound = Entity.extend({
         this._openMusic = SOUND_OPEN;
         cc.AudioEngine.getInstance().setMusicVolume(MUSIC_VOLUME);
         this.playMusic();
-
-        this._save();
     },
 
     closeMusic: function () {
         this._openMusic = SOUND_CLOSE;
         cc.AudioEngine.getInstance().setMusicVolume(NO_VOLUME);
         this.stopMusic();
-
-        this._save();
     },
 
     playEffect: function (path, loop) {
@@ -100,15 +89,12 @@ var Sound = Entity.extend({
     openEffect: function () {
         this._openEffect = SOUND_OPEN;
         cc.AudioEngine.getInstance().setEffectsVolume(EFFECT_VOLUME);
-        this._save();
     },
 
     closeEffect: function () {
         this._openEffect = SOUND_CLOSE;
         cc.AudioEngine.getInstance().setEffectsVolume(NO_VOLUME);
         this.stopEffect();
-
-        this._save();
     }
 });
 

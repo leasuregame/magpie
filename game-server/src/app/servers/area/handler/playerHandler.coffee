@@ -105,9 +105,13 @@ Handler::getLineUpInfo = (msg, session, next) ->
         msg: err.msg or err
         }
       )
+    
+    lineUp = []
+    for lu in player.lineUp
+      i = {}
+      i[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of lu
+      lineUp.push i
 
-    lineUp = {}
-    lineUp[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of player.lineUpObj()
     next(null, {code: 200, msg: {
       lineUp: lineUp
       name: player.name

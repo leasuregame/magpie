@@ -278,7 +278,7 @@ var Tournament = Entity.extend({
                     msg.battleLog.isFirstTournament = msg.firstTime;
                 }
 
-                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
+                cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(cbData);
 
@@ -345,8 +345,8 @@ var Tournament = Entity.extend({
         if (rank <= 50) {
             return outputTables.elixir_ranking_reward.rows[rank];
         } else {
-            var money = outputTables.elixir_ranking_reward.rows[50].money;
-            money -= parseInt(Math.ceil((rank - 50) / 20) * 0.003 * money);
+            var money = outputTables.elixir_ranking_reward.rows[51].money;
+            money -= parseInt(Math.ceil((rank - 51) / 20) * 0.003 * money);
             money = Math.max(50000, money);
             return {money: money}
         }

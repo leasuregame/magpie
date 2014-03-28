@@ -41,6 +41,8 @@ var CardEvolutionLabel = cc.Layer.extend({
     _cardPssSkillLabel: [],
     _oldStarIcon: [],
     _newStarIcon: [],
+    _resBgIcon: [],
+    _resBgIcon2: [],
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -79,34 +81,38 @@ var CardEvolutionLabel = cc.Layer.extend({
         this._resLabel.setPosition(this._cardEvolutionLayerFit.resLabelPoint);
         this.addChild(this._resLabel);
 
-        var resBgIcon = cc.Sprite.create(main_scene_image.icon337);
-        resBgIcon.setPosition(cc.p(-145, 0));
-        this._resLabel.addChild(resBgIcon);
 
-        var resBgIcon2 = cc.Sprite.create(main_scene_image.icon337);
-        resBgIcon2.setPosition(cc.p(145, 0));
-        this._resLabel.addChild(resBgIcon2);
+        var icons = ["icon337", "icon426"];
 
         for (var i = 0; i < 2; ++i) {
+
+            this._resBgIcon[i] = cc.Sprite.create(main_scene_image[icons[i]]);
+            this._resBgIcon[i].setPosition(cc.p(-145, 0));
+            this._resLabel.addChild(this._resBgIcon[i]);
+
+            this._resBgIcon2[i] = cc.Sprite.create(main_scene_image[icons[i]]);
+            this._resBgIcon2[i].setPosition(cc.p(145, 0));
+            this._resLabel.addChild(this._resBgIcon2[i]);
+
             this._cardLvLabel[i] = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
             this._cardLvLabel[i].setPosition(-140 + i * 290, 82);
-            this._resLabel.addChild(this._cardLvLabel[i]);
+            this._resLabel.addChild(this._cardLvLabel[i], 1);
 
             this._cardHpLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
             this._cardHpLabel[i].setPosition(-140 + i * 290, 41);
-            this._resLabel.addChild(this._cardHpLabel[i]);
+            this._resLabel.addChild(this._cardHpLabel[i], 1);
 
             this._cardAtkLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
             this._cardAtkLabel[i].setPosition(-140 + i * 290, 0);
-            this._resLabel.addChild(this._cardAtkLabel[i]);
+            this._resLabel.addChild(this._cardAtkLabel[i], 1);
 
             this._cardSkillRateLabel[i] = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
             this._cardSkillRateLabel[i].setPosition(-95 + i * 290, -41);
-            this._resLabel.addChild(this._cardSkillRateLabel[i]);
+            this._resLabel.addChild(this._cardSkillRateLabel[i], 1);
 
             this._cardPssSkillLabel[i] = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
             this._cardPssSkillLabel[i].setPosition(-95 + i * 290, -82);
-            this._resLabel.addChild(this._cardPssSkillLabel[i]);
+            this._resLabel.addChild(this._cardPssSkillLabel[i], 1);
 
             if (i == 1) {
                 var color = cc.c3b(118, 238, 60);
@@ -132,7 +138,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         this.addChild(this._evolutionRateLabel);
 
         var point = this._cardEvolutionLayerFit.starPoint;
-        for (var i = 0; i < 5; ++i) {
+        for (var i = 0; i < MAX_CARD_STAR; ++i) {
             var x = point.x - 240;
             var y = point.y - 30 * i;
             var starBgIcon = cc.Sprite.create(main_scene_image.icon339);
@@ -143,7 +149,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._oldStarIcon[i].setScaleX(0.8);
             this._oldStarIcon[i].setScaleY(0.75);
             this._oldStarIcon[i].setPosition(cc.p(x, y));
-            this.addChild(this._oldStarIcon[i]);
+            this.addChild(this._oldStarIcon[i], 2);
 
             x = point.x + 240;
             var starBgIcon2 = cc.Sprite.create(main_scene_image.icon339);
@@ -154,18 +160,18 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._newStarIcon[i].setScaleX(0.8);
             this._newStarIcon[i].setScaleY(0.75);
             this._newStarIcon[i].setPosition(cc.p(x, y));
-            this.addChild(this._newStarIcon[i]);
+            this.addChild(this._newStarIcon[i], 2);
         }
 
         this._tipLabel = cc.Node.create();
         this._tipLabel.setPosition(this._cardEvolutionLayerFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
-        var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗同星级卡牌进行升星", "STHeitiTC-Medium", 22);
+        var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗素材卡和精元进行升星", "STHeitiTC-Medium", 22);
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
-        var tipLabel2 = cc.LabelTTF.create("进阶失败主卡保留，从卡消失", "STHeitiTC-Medium", 22);
+        var tipLabel2 = cc.LabelTTF.create("进阶失败主卡保留，素材卡和精元消失", "STHeitiTC-Medium", 22);
         tipLabel2.setPosition(cc.p(0, -20));
         this._tipLabel.addChild(tipLabel2);
 
@@ -175,22 +181,41 @@ var CardEvolutionLabel = cc.Layer.extend({
         this.addChild(this._helpLabel);
 
         var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
-        moneyIcon.setPosition(cc.p(-160, 0));
+        moneyIcon.setPosition(cc.p(-160, 20));
         this._helpLabel.addChild(moneyIcon);
 
         var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setPosition(cc.p(120, 0));
+        cardCountIcon.setPosition(cc.p(120, 20));
         this._helpLabel.addChild(cardCountIcon);
+
+        var superHonorIcon = ColorLabelTTF.create(
+            {
+                string: "消耗精元",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 22
+            },
+            {
+                iconName: "superHonor",
+                scale: 0.8
+            }
+        );
+        superHonorIcon.setPosition(cc.p(-40, 0));
+        this._helpLabel.addChild(superHonorIcon);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(-100, -2));
+        this._moneyLabel.setPosition(cc.p(-100, 18));
         this._helpLabel.addChild(this._moneyLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(180, -2));
+        this._cardCountLabel.setPosition(cc.p(180, 18));
         this._helpLabel.addChild(this._cardCountLabel);
+
+        this._superHonorLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
+        this._superHonorLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._superHonorLabel.setPosition(cc.p(25, -26));
+        this._helpLabel.addChild(this._superHonorLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
             main_scene_image.card_frame1,
@@ -280,7 +305,7 @@ var CardEvolutionLabel = cc.Layer.extend({
                 )
             );
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < MAX_CARD_STAR; i++) {
                 this._oldStarIcon[i].setVisible(false);
                 this._newStarIcon[i].setVisible(false);
             }
@@ -301,18 +326,37 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._resLabel.setVisible(true);
 
             var star = this._leadCard.get("star");
-            var num = (star < 3) ? 0 : star - 2;
-            this._cardPssSkillLabel[0].setString(num);
+
+            var str1, str2;
+            if (star < 5) {
+                str1 = (star < 3) ? 0 : star - 2;
+                str2 = str1 + 1;
+            } else {
+                str1 = outputTables.passive_skill_config.rows[star].full_attribute;
+                str2 = outputTables.passive_skill_config.rows[Math.min(star + 1, MAX_CARD_STAR)].full_attribute;
+            }
+
+            this._cardPssSkillLabel[0].setString(str1);
 
             var needMoney = this._leadCard.getEvolutionNeedMoney();
-            this._evolutionRateLabel.setString(gameData.player.getEvolutionRate(star) + "%");
+            var needSuperHonor = this._leadCard.getEvolutionNeedSuperHonor();
+            var player = gameData.player;
+
+            this._evolutionRateLabel.setString(player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._moneyLabel.setString(needMoney);
+            this._superHonorLabel.setString(needSuperHonor + "/" + player.get("superHonor"));
 
-            if (needMoney > gameData.player.get("money")) {
+            if (needMoney > player.get("money")) {
                 this._moneyLabel.setColor(cc.c3b(255, 40, 40));
             } else {
                 this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
+
+            if (needSuperHonor > player.get("superHonor")) {
+                this._superHonorLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._superHonorLabel.setColor(cc.c3b(255, 255, 255));
             }
 
             this._cardLvLabel[0].setString(this._leadCard.get("lv") + "/" + this._leadCard.get("maxLv"));
@@ -325,7 +369,7 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._oldStarIcon[i].setVisible(true);
             }
 
-            if (star < 5) {
+            if (star < MAX_CARD_STAR) {
                 this._virtualCard = lz.clone(this._leadCard);
                 this._virtualCard.set("tableId", this._leadCard.get("tableId") + 1);
                 this._virtualCard.update();
@@ -334,7 +378,8 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._cardHpLabel[1].setString(this._virtualCard.get("hp"));
                 this._cardAtkLabel[1].setString(this._virtualCard.get("atk"));
                 this._cardSkillRateLabel[1].setString(this._virtualCard.get("skillRate") + "%");
-                this._cardPssSkillLabel[1].setString(num + 1);
+
+                this._cardPssSkillLabel[1].setString(str2);
 
                 for (var i = 0; i <= star; i++) {
                     this._newStarIcon[i].setVisible(true);
@@ -345,6 +390,11 @@ var CardEvolutionLabel = cc.Layer.extend({
                 this._newCard.setPosition(this._cardEvolutionLayerFit.newCardItemPoint);
                 this.addChild(this._newCard, 1);
             }
+
+            this._resBgIcon[0].setVisible(star < 5);
+            this._resBgIcon2[0].setVisible(star < 5);
+            this._resBgIcon[1].setVisible(star >= 5);
+            this._resBgIcon2[1].setVisible(star >= 5);
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);
@@ -401,7 +451,7 @@ var CardEvolutionLabel = cc.Layer.extend({
                 )
             );
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < MAX_CARD_STAR; i++) {
                 this._oldStarIcon[i].setVisible(false);
             }
         } else {
@@ -467,8 +517,15 @@ var CardEvolutionLabel = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var money = gameData.player.get("money");
+        var superHonor = gameData.player.get("superHonor");
+
         if (money < this._leadCard.getEvolutionNeedMoney()) {
             TipLayer.tip("仙币不足");
+            return;
+        }
+
+        if (superHonor < this._leadCard.getEvolutionNeedSuperHonor()) {
+            TipLayer.tip("精元不足");
             return;
         }
 

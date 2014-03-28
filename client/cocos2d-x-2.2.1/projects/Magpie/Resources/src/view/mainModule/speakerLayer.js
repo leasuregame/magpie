@@ -77,9 +77,10 @@ var SpeakerLayer = cc.Layer.extend({
         this._msg.setTextureRect(cc.rect(0, 0, 0, this._msgSize.height));
 
         this._startX = 0;
-        this.schedule(this._firstStep, 1 / 30, 6);
+        var fps = gameConfig.get("fps");
+        this.schedule(this._firstStep, 1 / fps, 6);
 
-        this.schedule(this._secondStep, 1 / 30, (this._msgLen - this._showWidth) / MOVING_X, 1.2);
+        this.schedule(this._secondStep, 1 / fps, (this._msgLen - this._showWidth) / MOVING_X, 1.2);
         this.scheduleOnce(this._hiddenSpeaker, FADEOUT_TIME);
 
         this.addChild(this._speaker);
@@ -102,7 +103,7 @@ var SpeakerLayer = cc.Layer.extend({
         var msgSize = this._msg.getContentSize();
         this._msg.setTextureRect(cc.rect(this._startX, 0, this._showWidth, msgSize.height));
         this._startX += MOVING_X;
-        this.scheduleOnce(this._secondStep, 1 / 30);
+        this.scheduleOnce(this._secondStep, 1 / gameConfig.get("fps"));
     },
 
     _hiddenSpeaker: function () {

@@ -66,7 +66,7 @@ var TenLotteryCardLayer = LazyLayer.extend({
 
             this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
             this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(main_scene_image[card.getCardIcon()]));
+            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(card.getCardIcon()));
         }
     },
 

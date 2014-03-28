@@ -39,6 +39,12 @@ var main = function() {
       quenues.push(gdata.fixDuplicateRanking);
     case 'reset-ranking': 
       quenues.push(gdata.resetRanking);
+    case 'change-card-tableid': 
+      quenues.push(gdata.correctCardTableId);
+    case 'change-card-book': 
+      quenues.push(gdata.correctCardBook);
+    case 'change-card-ps': 
+      quenues.push(gdata.changeCardPassiveSkill);      
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

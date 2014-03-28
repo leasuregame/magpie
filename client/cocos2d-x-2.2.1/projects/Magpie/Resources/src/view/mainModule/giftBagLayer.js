@@ -71,7 +71,7 @@ var SHOW_GIFT_BAG_NO_CLOSE = 4;
 var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
 
-var GiftBagLayer = cc.Layer.extend({
+var GiftBagLayer = LazyLayer.extend({
     _giftBagLayerFit: null,
 
     init: function (data) {
@@ -319,5 +319,5 @@ GiftBagLayer.create = function (data) {
 GiftBagLayer.pop = function (data) {
     var giftBagLayer = GiftBagLayer.create(data);
 
-    MainScene.getInstance().addChild(giftBagLayer);
+    MainScene.getInstance().getLayer().addChild(giftBagLayer, 10);
 };

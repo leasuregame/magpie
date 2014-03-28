@@ -17,13 +17,15 @@ beforeEach(function() {
 
       var cards_ok = false;
       var enemy_card_length = own_card_length = 0;
-      _.each(battleLog.cards, function(val, id) {
-        if (id <= 6 && _.isObject(val)) {
-          own_card_length += 1;
-        }
-        if (id > 6 && _.isObject(val)) {
-          enemy_card_length += 1;
-        }
+      _.each(battleLog.cards, function(cards) {
+        _.each(cards, function(val, id) {
+          if (id <= 6 && _.isObject(val)) {
+            own_card_length += 1;
+          }
+          if (id > 6 && _.isObject(val)) {
+            enemy_card_length += 1;
+          }
+        });
       });
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
@@ -39,6 +41,9 @@ beforeEach(function() {
         var stepFormatOk = true;
         var dmage = {};
         _.each(steps, function(s) {
+          if (_.isUndefined(s.go)) {
+            return;
+          }
           _.each(s.d, function(pos, index) {
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
@@ -64,7 +69,7 @@ beforeEach(function() {
             if (k > 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
-          })
+          });
           if (enemy_card_length == death_man) {
             ok = true;
           } else {
@@ -79,7 +84,7 @@ beforeEach(function() {
             if (k <= 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
-          })
+          });
 
           if (own_card_length == death_man) {
             ok = true;

@@ -533,9 +533,7 @@ var Player = (function(_super) {
             logger.error('can not fine spirit config infi by level ' + this.spiritor.lv);
             return;
         }
-        var cards = this.activeCards();
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
+        this.activeCards().forEach(function(card) {
             var incs = {
                 spirit_hp: 0,
                 spirit_atk: 0
@@ -552,7 +550,7 @@ var Player = (function(_super) {
 
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
-        }
+        });
     };
 
     Player.prototype.incSpirit = function(val) {
@@ -692,13 +690,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        var result = false;
-        if (_.isArray(this.lineUp)) {
-            this.lineUp.forEach(function(l) {
-                result = _.contains(_.values(l), card.id);
-            });
-        }
-        return result;
+        return _.contains(this.activeCardIds(), card.id);
     };
 
     Player.prototype.hasCard = function(id) {

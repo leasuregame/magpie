@@ -8,7 +8,7 @@
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
-  <Created>2014-01-23T14:26:57Z</Created>
+  <Created>2014-03-27T17:58:48Z</Created>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -19,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10740</WindowHeight>
+  <WindowHeight>8120</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>360</WindowTopX>
-  <WindowTopY>1120</WindowTopY>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -35,15 +35,16 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom"/>
   </Style>
  </Styles>
@@ -54,517 +55,517 @@
    <Column ss:AutoFitWidth="0" ss:Width="136"/>
    <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="462"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">函数</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">参数</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">名称</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">描述</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">奖励魔石</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">奖励活力点</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">函数</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">参数</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">描述</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">奖励魔石</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">奖励活力点</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">method</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">need</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">desc</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">gold</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">energy</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">method</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">need</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">desc</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">gold</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">energy</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">levelTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">升级达人</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">角色等级达到50级</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">levelTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">升级达人</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">角色等级达到50级</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">levelTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">90</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">疯狂升级</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">角色等级达到90级</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">levelTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">疯狂升级</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">角色等级达到90级</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">一半！</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">天道闯过50层</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一半！</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">天道闯过50层</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关！</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">天道闯过100层</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">200</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关！</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">天道闯过100层</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">winCount</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">小试牛刀</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">竞技获胜次数达到50场</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">winCount</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">小试牛刀</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">竞技获胜次数达到50场</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">winCount</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">已经超神了</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">竞技获胜次数达到5000场</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">winCount</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">已经超神了</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">竞技获胜次数达到5000场</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">winningStreak</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">所向披靡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">竞技最高连胜达到50次</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">winningStreak</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">所向披靡</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">竞技最高连胜达到50次</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">rankingToOne</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">寂寞</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">竞技排名达到第1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">rankingToOne</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">寂寞</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">竞技排名达到第1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">v587</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">霸气外射！</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">竞技场中以1敌5，战胜对方</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">v587</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">霸气外射！</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">竞技场中以1敌5，战胜对方</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">friends</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">我们约会吧</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">拥有20个好友</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">friends</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">我们约会吧</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">拥有20个好友</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">gaveBless</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">无私奉献</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">为好友送出祝福达到500次</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">gaveBless</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">无私奉献</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">为好友送出祝福达到500次</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">receivedBless</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">爱是相互的</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">收到好友祝福次数达到100次</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">300</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">receivedBless</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">爱是相互的</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">收到好友祝福次数达到100次</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">13</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">star5card</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">质的飞跃</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">获得1张5星卡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">star5card</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">质的飞跃</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">获得1张5星卡</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">14</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">star5cardFullLevel</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">这就是实力</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">将1张5星卡强化到满级</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">star5cardFullLevel</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">这就是实力</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">将1张5星卡强化到满级</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">star5card</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">你就是神！</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">获得5张5星卡</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">star5card</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">你就是神！</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">获得5张5星卡</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">psTo10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">但求最好</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">拥有1个10%的被动属性</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">psTo10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">但求最好</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">拥有1个10%的被动属性</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">elixirTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">一大波仙丹</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">累计获得1000万仙丹</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">elixirTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10000000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一大波仙丹</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">累计获得1000万仙丹</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">energyTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">活力无限</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">累计获得1000万活力点</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">energyTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10000000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">活力无限</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">累计获得1000万活力点</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">luckyCardCount</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">99999</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">抽卡狂魔</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">抽卡总次数达到99999</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">luckyCardCount</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">99999</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">抽卡狂魔</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">抽卡总次数达到99999</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">highLuckyCardCount</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">88888</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">钱就是个屁</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">高级抽卡总次数达到88888</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">highLuckyCardCount</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">88888</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">钱就是个屁</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">高级抽卡总次数达到88888</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">soLucky</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">买彩票去吧</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">用1张素材卡成功进阶该卡牌</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">soLucky</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">买彩票去吧</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">用1张素材卡成功进阶该卡牌</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">powerConsume</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">孜孜不倦</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">累计消耗体力1000万</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">powerConsume</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10000000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">孜孜不倦</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">累计消耗体力1000万</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">24</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">moneyConsume</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">90000000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">不差钱</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">累计消耗仙币9000万</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">moneyConsume</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">90000000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">不差钱</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">累计消耗仙币9000万</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">goldConsume</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000000</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">挥金如土</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">累计消耗魔石1000万</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">goldConsume</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10000000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">挥金如土</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">累计消耗魔石1000万</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">26</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPoinTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">十步之遥</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">修炼里探索总进度达到10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">26</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPoinTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">十步之遥</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">修炼里探索总进度达到10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">27</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskChapterPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">鬼门关之旅</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关鬼门关</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">27</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskChapterPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">鬼门关之旅</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关鬼门关</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">28</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passFirstWin</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">天道首胜</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">在天道中获得第一场胜利</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">28</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passFirstWin</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">天道首胜</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">在天道中获得第一场胜利</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">29</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">苦寒地狱</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关苦寒地狱篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">苦寒地狱</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关苦寒地狱篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">凄凉人间</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关凄凉人间篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">凄凉人间</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关凄凉人间篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">31</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">南天之门</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关南天之门篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">31</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">南天之门</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关南天之门篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">32</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">西天取经</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关西天取经篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">32</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">西天取经</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关西天取经篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">33</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">莲花加持</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关莲花加持篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">33</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">莲花加持</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关莲花加持篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">34</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">千年之修</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关千年之修篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">34</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">千年之修</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关千年之修篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">斩妖除魔</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关斩妖除魔篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">斩妖除魔</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关斩妖除魔篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">36</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降龙伏虎</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关降龙伏虎篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">36</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降龙伏虎</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关降龙伏虎篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">37</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">普度众生</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关普度众生篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">37</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">普度众生</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关普度众生篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">38</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">taskPartPassTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者之身</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关尊者之身篇章</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">38</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">taskPartPassTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者之身</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关尊者之身篇章</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">39</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP1玩家</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP1玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP2玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP2玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">550</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">41</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP3玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">41</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP3玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">650</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">42</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP4玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">42</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP4玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">750</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">43</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP5玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">400</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">43</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP5玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">850</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">44</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP6玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">70</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">44</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP6玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">950</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP7玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">80</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">600</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP7玩家</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">350</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1050</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">46</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP8玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">90</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">700</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">46</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP8玩家</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">400</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1150</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">47</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP9玩家</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">800</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">47</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP9玩家</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">450</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1250</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">48</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP10玩家</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">200</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">900</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">48</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP10玩家</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1350</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">49</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP11</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP11玩家</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">300</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">49</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP11玩家</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">550</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1450</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vipTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">尊者VIP12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">成为VIP12玩家</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">vipTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">尊者VIP12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">成为VIP12玩家</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">600</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">51</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passPhaseTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降魔大王</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关天道里第1阶魔道</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">51</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passPhaseTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降魔大王</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关天道里第1阶魔道</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">52</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passPhaseTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降魔使者</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关天道里第2阶魔道</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+50"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">52</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passPhaseTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降魔使者</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关天道里第2阶魔道</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+500"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">53</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passPhaseTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降魔罗汉</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关天道里第3阶魔道</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">53</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passPhaseTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降魔罗汉</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关天道里第3阶魔道</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+500"><Data ss:Type="Number">1500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">54</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passPhaseTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降魔神君</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关天道里第4阶魔道</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">54</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passPhaseTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降魔神君</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关天道里第4阶魔道</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+500"><Data ss:Type="Number">2000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">passPhaseTo</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">降魔圣者</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">通关天道里第5阶魔道</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+10"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">400</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">passPhaseTo</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">降魔圣者</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">通关天道里第5阶魔道</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s66" ss:Formula="=R[-1]C+500"><Data ss:Type="Number">2500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -575,12 +576,11 @@
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>24</ActiveRow>
-     <RangeSelection>R25</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -591,8 +591,8 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">成就配置表</Data></Cell>

@@ -15,19 +15,13 @@
 var utility = require('../../common/utility');
 var MarkGroup = require('../../common/markGroup');
 var Entity = require('./entity');
-var playerConfig = require('../../../config/data/player');
-var msgConfig = require('../../../config/data/message');
-var spiritConfig = require('../../../config/data/spirit');
+var configData = require('../../../config/data');
 var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-var cardConfig = require('../../../config/data/card');
-var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
-var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
-var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
 
 var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
@@ -70,7 +64,7 @@ var NOW = function() {
 var addEvents = function(player) {
     // // 经验值改变，判断是否升级
     // player.on('exp.change', function(exp) {
-    //     if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
+    //     if (player.lv <= 0 || player.lv >= configData.player.MAX_PLAYER_LV) {
     //         return;
     //     }
 
@@ -133,7 +127,7 @@ var addEvents = function(player) {
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != configData.card.EXP_CARD_ID) {
             card.isNewLightUp = true;
             player.cardBookMark.mark(card.tableId);
             var cardBook = utility.deepCopy(player.cardBook);
@@ -176,13 +170,13 @@ var correctPower = function(player) {
     var interval, power, now, times = 1,
         resumePoint;
 
-    interval = playerConfig.POWER_RESUME.interval;
+    interval = configData.player.POWER_RESUME.interval;
     power = player.power;
     now = Date.now();
 
     if ((power.time + interval) <= now) {
         times = parseInt((now - power.time) / interval);
-        resumePoint = playerConfig.POWER_RESUME.point;
+        resumePoint = configData.player.POWER_RESUME.point;
         player.resumePower(resumePoint * times);
         player.save();
     }
@@ -335,12 +329,12 @@ var Player = (function(_super) {
         skillPoint: 0,
         spiritor: {
             lv: 1,
-            spirit: DEFAULT_SPIRIT
+            spirit: configData.spirit.DEFAULT_SPIRIT
         },
         spiritPool: {
             lv: 1,
             exp: 0,
-            collectCount: spiritConfig.MAX_COLLECT_COUNT
+            collectCount: configData.spirit.MAX_COLLECT_COUNT
         },
         signIn: {},
         achievement: {},
@@ -442,7 +436,7 @@ var Player = (function(_super) {
         task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
-        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
+        spiritPool.collectCount = configData.spirit.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
@@ -620,7 +614,7 @@ var Player = (function(_super) {
 
     Player.prototype.getAbility = function() {
         var ability = 0;
-        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var ae = configData.card.ABILIGY_EXCHANGE;
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
         var hp_pct = spiritorData.hp_inc;
         var atk_pct = spiritorData.atk_inc;
@@ -757,14 +751,14 @@ var Player = (function(_super) {
 
     Player.prototype.checkResumePower = function() {
         var interval, now, power, resumePoint, times;
-        interval = playerConfig.POWER_RESUME.interval;
+        interval = configData.player.POWER_RESUME.interval;
         power = this.power;
         now = Date.now();
         times = 1;
 
         if ((power.time + interval) <= now) {
             times = parseInt((now - power.time) / interval);
-            resumePoint = playerConfig.POWER_RESUME.point;
+            resumePoint = configData.player.POWER_RESUME.point;
             this.resumePower(resumePoint * times, power.time + interval * times);
             this.save();
         }
@@ -898,7 +892,6 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
-            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -1499,7 +1492,7 @@ var elixirLimit = function(lv) {
 //         return sp;
 //     }
 //     sp = utility.deepCopy(sp);
-//     sp.collectCount = spiritConfig.MAX_COLLECT_COUNT - sp.collectCount;
+//     sp.collectCount = configData.spirit.MAX_COLLECT_COUNT - sp.collectCount;
 //     return sp;
 // };
 
@@ -1508,8 +1501,8 @@ var elixirLimit = function(lv) {
 //         return dg;
 //     }
 //     dg = utility.deepCopy(dg);
-//     dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
-//     dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;
+//     dg.gaveBless.count = configData.message.MAX_GIVE_COUNT - dg.gaveBless.count;
+//     dg.receivedBless.count = configData.message.MAX_RECEIVE_COUNT - dg.receivedBless.count;
 //     dg.lotteryCount = DAILY_LOTTERY_COUNT - dg.lotteryCount;
 //     return dg;
 // };
@@ -1597,7 +1590,7 @@ var positionConvert = function(val) {
 
 var getMaxPower = function(lv) {
     // var max_power = 50;
-    // var powerLimit = playerConfig.POWER_LIMIT;
+    // var powerLimit = configData.player.POWER_LIMIT;
     // for (var lv in powerLimit) {
     //     if (this.lv <= parseInt(lv)) {
     //         max_power = powerLimit[lv];

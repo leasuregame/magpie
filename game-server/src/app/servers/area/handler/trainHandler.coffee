@@ -4,10 +4,7 @@ lottery = require '../../../manager/lottery'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
-passSkillConfig = require '../../../../config/data/passSkill'
-elixirConfig = require '../../../../config/data/elixir'
-starUpgradeConfig = require '../../../../config/data/starUpgrade'
-cardConfig = require '../../../../config/data/card'
+configData = require '../../../../config/data'
 utility = require '../../../common/utility'
 msgQueue = require '../../../common/msgQueue'
 entityUtil = require '../../../util/entityUtil'
@@ -132,6 +129,7 @@ Handler::strengthen = (msg, session, next) ->
           where: " id in (#{sources.toString()}) "
       } if sources.length > 0 
 
+      results.ability = targetCard.ability()
       job.multJobs _jobs, (err, ok) ->
         if err and not ok
           return cb(err)
@@ -435,7 +433,7 @@ Handler::starUpgrade = (msg, session, next) ->
   money_consume = 0
   card = null
   player = null
-  starUpgradeConfig = null
+  starUpgradeData = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -455,44 +453,44 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
         return cb({code: 501, msg: "未达到进阶等级"})
 
-      starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
-      if not starUpgradeConfig
+      starUpgradeData = table.getTableItem('star_upgrade', card.star)
+      if not starUpgradeData
         return cb({code: 500, msg: "找不到卡牌进阶的配置信息"})
 
       sourceCards = player.getCards(sources)
       if _.isEmpty(sourceCards)
         return cb({code: 501, msg: "找不到素材卡牌"})
 
-      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeConfig.source_card_star).length
+      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeData.source_card_star).length
       if badCardsCount > 0
-        return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeConfig.source_card_star}星"})
+        return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeData.source_card_star}星"})
 
       cb(null)
 
     (cb) =>
-      money_consume = starUpgradeConfig.money_need
+      money_consume = starUpgradeData.money_need
       
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
 
-      if starUpgradeConfig.super_honor > 0 and player.superHonor < starUpgradeConfig.super_honor
+      if starUpgradeData.super_honor > 0 and player.superHonor < starUpgradeData.super_honor
         return cb({code: 501, msg: '精元不足'})
 
       rate = player.initRate['star'+card.star] or 0
-      max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
+      max_num = Math.ceil (100 - rate)/starUpgradeData.rate_per_card
       if card_count > max_num
         return cb({code: 501, msg: "最多消耗#{max_num}张卡牌"})
 
-      addRate = card_count * starUpgradeConfig.rate_per_card
+      addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
 
       is_upgrade = !!utility.hitRate(totalRate)
       if card.star >= 4 
-        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 0)
+        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeData.no_work_count or 0)
         card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)
-      player.decrease('superHonor', starUpgradeConfig.super_honor) if starUpgradeConfig.super_honor > 0
+      player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
@@ -635,7 +633,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   cardId = msg.cardId
   psIds = msg.psIds or []
   groupId = msg.groupId
-  type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
+  type = if msg.type? then msg.type else configData.passSkill.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
 
   if _.isUndefined(groupId) or not checkPsIds(psIds)
@@ -653,7 +651,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       if player.lv < fun_limit?.pass_skillafresh 
         return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
 
-      consumeVal = passSkillConfig.CONSUME[type]
+      consumeVal = configData.passSkill.CONSUME[type]
 
       if player[_pros[type]] < consumeVal
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
@@ -716,8 +714,8 @@ Handler::smeltElixir_is_discarded = (msg, session, next) ->
 
       result = cards.map (c) ->
         _points = 0
-        if utility.hitRate(elixirConfig.smelt[c.star].rate)
-          _points += elixirConfig.smelt[c.star].value
+        if utility.hitRate(configData.elixir.smelt[c.star].rate)
+          _points += configData.elixir.smelt[c.star].value
 
         return _points
 
@@ -913,7 +911,7 @@ Handler::getCardBookEnergy = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId
 
-  ENERGY = cardConfig.LIGHT_UP_ENERGY[cardStar(tableId)]
+  ENERGY = configData.card.LIGHT_UP_ENERGY[cardStar(tableId)]
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
@@ -967,7 +965,7 @@ Handler::exchangeCard = (msg, session, next) ->
       if _.keys(player.cards).length >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
       
-      if player.fragments < cardConfig.CARD_EXCHANGE[star]
+      if player.fragments < configData.card.CARD_EXCHANGE[star]
         return cb({code: 501, msg: '卡牌碎片不足'})
 
       entityUtil.createCard {
@@ -978,7 +976,7 @@ Handler::exchangeCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
+    player.decrease('fragments', configData.card.CARD_EXCHANGE[star])
     player.addCard(card)
     setExchangedCard(player, tableId)
     ### 增加5星卡牌成就 ###

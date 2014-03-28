@@ -243,7 +243,6 @@ var LineUpLabel = cc.Layer.extend({
     },
 
     _onClickLock: function (index) {
-
         var that = this;
 
         return function () {
@@ -253,7 +252,6 @@ var LineUpLabel = cc.Layer.extend({
 
             var table = outputTables.card_lineup_limit.rows[that._index];
             TipLayer.tip(table["card_" + (index + 1)] + " 级开启");
-
         }
     },
 

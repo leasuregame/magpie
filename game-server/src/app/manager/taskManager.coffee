@@ -1,7 +1,5 @@
 table = require './table'
-taskRate = require '../../config/data/taskRate'
-psConfig = require '../../config/data/passSkill'
-spiritConfig = require '../../config/data/spirit'
+configData = require '../../config/data'
 utility = require '../common/utility'
 entityUtil = require '../util/entityUtil'
 dao = require('pomelo').app.get('dao')
@@ -34,7 +32,7 @@ class Manager
 
     data.result = utility.randomValue(
       ['fight','box', 'none'],
-      [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
+      [configData.taskRate.fight, configData.taskRate.precious_box, (100 - configData.taskRate.fight - configData.taskRate.precious_box)]
     )
 
     ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
@@ -94,7 +92,7 @@ class Manager
     cb(null, player, rewards)
 
   @openBox: (player, data, cb) ->
-    _obj = taskRate.open_box.star
+    _obj = configData.taskRate.open_box.star
 
     _rd_star = parseInt utility.randomValue(_.keys(_obj), _.values(_obj))
     _card_table_id = entityUtil.randomCardId(_rd_star, player.lightUpCards())
@@ -133,9 +131,9 @@ class Manager
         data.money_obtain += 5000
 
     ### 每次战斗结束都有10%的概率获得5魔石 ###
-    if utility.hitRate(taskRate.gold_obtain.rate)
-      player.increase('gold', taskRate.gold_obtain.value)
-      battleLog.rewards.gold = taskRate.gold_obtain.value  
+    if utility.hitRate(configData.taskRate.gold_obtain.rate)
+      player.increase('gold', configData.taskRate.gold_obtain.value)
+      battleLog.rewards.gold = configData.taskRate.gold_obtain.value  
 
     saveExpCardsInfo player.id, player.lv, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
@@ -296,7 +294,7 @@ saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
     , cb
 
 genCardLv = (playerLv) ->
-  CD = taskRate.CARD_DROP
+  CD = configData.taskRate.CARD_DROP
   lvs = _.keys(CD).sort (x, y) -> parseInt(y) - parseInt(x)
   
   lv = lvs[0]

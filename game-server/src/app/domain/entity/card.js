@@ -16,9 +16,8 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
-var cardConfig = require('../../../config/data/card');
+var configData = require('../../../config/data');
 var _ = require("underscore");
-var psConfig = require('../../../config/data/passSkill');
 var PassiveSkillGroup = require('./passiveSkill');
 var cardLvs = table.getTable('card_lv_limit');
 var GROUP_EFFECT_ATK = 1
@@ -304,7 +303,7 @@ var Card = (function(_super) {
     };
 
     Card.prototype.ability = function() {
-        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var ae = configData.card.ABILIGY_EXCHANGE;
 
         // 1点攻击力=1点战斗力
         // 2点生命值=1点战斗力
@@ -380,9 +379,9 @@ var Card = (function(_super) {
 
 
     Card.prototype.afreshPassiveSkill = function(type, ps) {
-        var born_rates = psConfig.BORN_RATES;
+        var born_rates = configData.passSkill.BORN_RATES;
         var star = this.star >= 5 ? this.star : 5;
-        var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
+        var value_obj = configData.passSkill.AFRESH.TYPE[type].STAR[star];
 
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));

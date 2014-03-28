@@ -1,6 +1,5 @@
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
-playerConfig = require '../../../../config/data/player'
 table = require '../../../manager/table'
 RESOURE_LIMIT = table.getTableItem('resource_limit', 1)
 

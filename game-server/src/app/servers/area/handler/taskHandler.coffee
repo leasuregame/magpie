@@ -2,12 +2,10 @@ playerManager = require('pomelo').app.get('playerManager')
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
-taskRate = require '../../../../config/data/taskRate'
+configData = require '../../../../config/data'
 async = require 'async'
 _ = require 'underscore'
 Card = require '../../../domain/entity/card'
-cardConfig = require '../../../../config/data/card'
-spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
@@ -345,11 +343,11 @@ countSpirit = (player, bl, type) ->
     return if k <= 6
     
     if v.boss?
-      v.spirit = spiritConfig.SPIRIT[type].BOSS
-      totalSpirit += spiritConfig.SPIRIT[type].BOSS
+      v.spirit = configData.spirit.SPIRIT[type].BOSS
+      totalSpirit += configData.spirit.SPIRIT[type].BOSS
     else
-      v.spirit = spiritConfig.SPIRIT[type].OTHER
-      totalSpirit += spiritConfig.SPIRIT[type].OTHER
+      v.spirit = configData.spirit.SPIRIT[type].OTHER
+      totalSpirit += configData.spirit.SPIRIT[type].OTHER
 
   bl.rewards.totalSpirit = totalSpirit if bl.winner is 'own'
 
@@ -378,7 +376,7 @@ checkFragment = (battleLog, player, chapterId) ->
   scope = chapterScope cid
   if(
     player.task.hasFragment not in scope and 
-    ( utility.hitRate(taskRate.fragment_rate) or cid%5 is 0 )
+    ( utility.hitRate(configData.taskRate.fragment_rate) or cid%5 is 0 )
     )
     battleLog.rewards.fragment = 1
     task = utility.deepCopy(player.task)

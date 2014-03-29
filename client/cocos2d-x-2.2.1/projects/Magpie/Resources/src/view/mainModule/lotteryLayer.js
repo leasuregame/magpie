@@ -305,7 +305,8 @@ var LotteryLayer = cc.Layer.extend({
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
-                        color: cc.c3b(117, 255, 57)
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
                     },
                     {
                         string: "得",
@@ -328,12 +329,19 @@ var LotteryLayer = cc.Layer.extend({
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
-                        color: cc.c3b(117, 255, 57)
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
                     },
                     {
-                        string: "得5",
+                        string: "得",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22
+                    },
+                    {
+                        string: "5",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        offset: cc.p(0, -2)
                     },
                     {
                         iconName: "star",

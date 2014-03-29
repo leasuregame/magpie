@@ -69,8 +69,9 @@ var ColorLabelTTF = cc.Node.extend({
             if (arg.iconName) {
                 var scale = arg.scale || 1.0;
                 var spacing = arg.spacing || 2;
+                var offset = arg.offset || cc.p(0, 0);
 
-                this._createIcon(arg.iconName, scale, spacing);
+                this._createIcon(arg.iconName, scale, spacing, offset);
             } else {
                 var string = arg.string;
                 var color = arg.color || cc.c3b(255, 255, 255);
@@ -79,15 +80,16 @@ var ColorLabelTTF = cc.Node.extend({
                 var isStroke = arg.isStroke || false;
                 var dimensions = arg.dimensions || cc.size(0, 0);
                 var alignment = arg.alignment || cc.TEXT_ALIGNMENT_LEFT;
+                var offset = arg.offset || cc.p(0, 0);
 
-                this._createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
+                this._createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment, offset);
             }
         }
 
         this.setContentSize(this._size);
     },
 
-    _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
+    _createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment, offset) {
         cc.log("ColorLabelTTF createLabel");
         cc.log(string, color, fontName, fontSize, isStroke, dimensions, alignment);
 
@@ -100,7 +102,7 @@ var ColorLabelTTF = cc.Node.extend({
 
         label.setColor(color);
         label.setAnchorPoint(cc.p(0, 0.5));
-        label.setPosition(cc.p(this._size.width, 0));
+        label.setPosition(cc.p(this._size.width + offset.x, offset.y));
         this.addChild(label);
 
         var size = label.getContentSize();
@@ -108,7 +110,7 @@ var ColorLabelTTF = cc.Node.extend({
         this._size.height = Math.max(this._size.height, size.height);
     },
 
-    _createIcon: function (iconName, scale, spacing) {
+    _createIcon: function (iconName, scale, spacing, offset) {
         cc.log("IconLabel createIcon");
 
         if (!colorLabelIcons[iconName]) {
@@ -118,7 +120,7 @@ var ColorLabelTTF = cc.Node.extend({
         var icon = cc.Sprite.create(main_scene_image[colorLabelIcons[iconName]]);
         icon.setAnchorPoint(cc.p(0, 0.5));
         icon.setScale(scale);
-        icon.setPosition(cc.p(this._size.width + spacing, 0));
+        icon.setPosition(cc.p(this._size.width + spacing + offset.x, offset.y));
         this.addChild(icon);
 
         var size = icon.getContentSize();

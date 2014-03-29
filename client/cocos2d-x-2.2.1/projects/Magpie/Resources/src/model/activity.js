@@ -247,6 +247,7 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 cc.log("getFirstRechargeBox success");
+
                 var card = Card.create(data.msg.card);
                 gameData.cardList.push(card);
 

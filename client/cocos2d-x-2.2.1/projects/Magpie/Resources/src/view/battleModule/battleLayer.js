@@ -101,7 +101,7 @@ var BattleLayer = cc.Layer.extend({
 
                 this._battleNode[key].setPosition(locate);
                 this._battleNode[key].setVisible(false);
-                this.addChild(this._battleNode[key], NODE_Z_ORDER);
+                this.addChild(this._battleNode[key], NODE_Z_ORDER + this._battleNode[key].isBossCard() ? 1 : 0);
             }
         }
 
@@ -314,7 +314,7 @@ var BattleLayer = cc.Layer.extend({
 
                 this._battleNode[i].setPosition(locate);
                 this._battleNode[i].setVisible(false);
-                this.addChild(this._battleNode[i], NODE_Z_ORDER);
+                this.addChild(this._battleNode[i], NODE_Z_ORDER + this._battleNode[key].isBossCard() ? 1 : 0);
             }
         }
 
@@ -504,10 +504,10 @@ var BattleLayer = cc.Layer.extend({
 
     setBattleNodeZOrder: function (z, index) {
         if (index != undefined) {
-            this._battleNode[index].setZOrder(z);
+            this._battleNode[index].setZOrder(z + this._battleNode[index].isBossCard() ? 1 : 0);
         } else {
             for (var key in this._battleNode) {
-                this._battleNode[key].setZOrder(z);
+                this._battleNode[key].setZOrder(z + this._battleNode[key].isBossCard() ? 1 : 0);
             }
         }
     },

@@ -66,7 +66,6 @@ var LineUpDetail = LazyLayer.extend({
         bgSprite.setPosition(this._lineUpDetailFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var len = data.lineUp.length;
         var lineUpIcons = ["icon420", "icon421"];
 
         var menu = cc.Menu.create();
@@ -75,7 +74,7 @@ var LineUpDetail = LazyLayer.extend({
 
         var i, point;
 
-        for (i = 0; i < len; i++) {
+        for (i = 0; i < 2; i++) {
             this._lineUpItem[i] = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button76,
                 main_scene_image.button76s,
@@ -111,7 +110,6 @@ var LineUpDetail = LazyLayer.extend({
         this.addChild(abilityLabel);
 
         this._cardList = [];
-        var lineUp = data.lineUp;
 
         for (i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             point = this._locate[i];
@@ -121,12 +119,13 @@ var LineUpDetail = LazyLayer.extend({
             this.addChild(nodeBgSprite);
         }
 
-        for (i = 0; i < len; ++i) {
+        for (i = 0; i < 2; ++i) {
             var array = [];
             var cards = [];
+            var lineUp = data.lineUp[i] || {6: -1};
             for (var j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                 point = this._locate[j];
-                var cardData = lineUp[i][j];
+                var cardData = lineUp[j];
 
                 if (cardData != undefined) {
                     var node = null;
@@ -178,9 +177,8 @@ var LineUpDetail = LazyLayer.extend({
     update: function () {
 
         var point = this._lineUpDetailFit.lineUpItemPoint;
-        var len = this._lineUpItem.length;
 
-        for (var i = 0; i < len; ++i) {
+        for (var i = 0; i < 2; ++i) {
             var x = point.x + i * 133;
 
             if (this._index == i) {

@@ -1418,7 +1418,7 @@ var fit4Iphone5 = {
             "speakerIconPoint": cc.p(110, 850),
             "msgEditBoxPoint": cc.p(305, 850),
             "sendItemPoint": cc.p(520, 850),
-            "scrollViewLayerRect": cc.rect(0, 0, 500, 590),
+            "scrollViewLayerRect": cc.rect(70, 205, 500, 590),
             "scrollViewBgLayerSize": cc.size(500, 600),
             "scrollViewBgLayerPoint": cc.p(320, 500),
             "scrollViewSize": cc.size(500, 590),

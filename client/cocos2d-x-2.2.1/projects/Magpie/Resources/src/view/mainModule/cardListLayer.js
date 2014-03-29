@@ -1038,14 +1038,13 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                TipLayer.tip("阵容保存成功");
-
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();
                     noviceTeachingLayer.next();
 
                 }
 
+                MainScene.getInstance().switchLayer(MainLayer);
             }
         }, lineUp, index);
     },

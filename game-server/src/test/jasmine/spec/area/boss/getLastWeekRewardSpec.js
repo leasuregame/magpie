@@ -84,10 +84,6 @@ describe("Area Server", function() {
               }
             });
           });
-<<<<<<< HEAD
-        });
-      });
-=======
 
           doAjax('/player/100', function(res) {
             expect(res.data.honor).toEqual(before_player.honor + data.msg.honor);
@@ -183,7 +179,6 @@ describe("Area Server", function() {
         });
       });
 
->>>>>>> 3795ba5f5d51dc42b536c333cf7ff8c66e7a23b4
     });
 
   });

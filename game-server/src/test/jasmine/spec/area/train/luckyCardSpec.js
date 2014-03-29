@@ -66,6 +66,9 @@ describe("Area Server", function() {
 
 					beforeAll(function() {
 						doAjax('/clear/card', {}, function() {});
+						doAjax('/update/player/' + arthur.playerId, {
+							cardsCount: 1000
+						}, function() {});
 					});
 
 					beforeEach(function() {

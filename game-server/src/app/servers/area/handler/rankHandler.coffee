@@ -5,7 +5,7 @@ fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
-msgConfig = require '../../../../config/data/message'
+configData = require '../../../../config/data'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 Cache = require '../../../common/cache'
@@ -405,8 +405,8 @@ saveBattleLog = (bl, playerName) ->
       sender: playerId
       receiver: targetId
       content: "#{playerName}挑战了你，" + result 
-      type: msgConfig.MESSAGETYPE.BATTLENOTICE
-      status: msgConfig.MESSAGESTATUS.NOTICE
+      type: configData.message.MESSAGETYPE.BATTLENOTICE
+      status: configData.message.MESSAGESTATUS.NOTICE
       options: {battleLogId: res.id}
     }, (err, message) ->
       if err

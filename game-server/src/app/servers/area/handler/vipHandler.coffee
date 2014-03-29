@@ -246,6 +246,7 @@ openFirstRechargeBox = (player, boxInfo, next) ->
       if err
         return next null, {code: err.code or 500, msg: err.msg or err}
 
+      player.addCard(card)
       next null, {code: 200, msg: {card: card.toJson()}}
   else
     next null, {code: 200}

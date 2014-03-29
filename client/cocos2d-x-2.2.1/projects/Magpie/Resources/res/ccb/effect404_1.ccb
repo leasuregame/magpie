@@ -219,7 +219,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -309,7 +309,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>128</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -560,7 +560,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -791,7 +791,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1022,7 +1022,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1297,7 +1297,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1528,7 +1528,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1759,7 +1759,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>128</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1842,7 +1842,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1950,8 +1950,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3.3333334922790527</real>
-									<real>3.3333334922790527</real>
+									<real>6</real>
+									<real>6</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1983,7 +1983,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2046,8 +2046,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>2</real>
+							<real>2</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2163,7 +2163,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2368,7 +2368,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.1666666716337204</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

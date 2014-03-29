@@ -273,8 +273,6 @@
 						<string>res/effect/effect/p106.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -298,7 +296,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>200</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -540,7 +538,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>200</integer>
 								</dict>
 								<dict>
 									<key>easing</key>

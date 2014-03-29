@@ -1339,6 +1339,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -2112,9 +2114,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.260517418384552</real>
-										<real>0.26052439212799072</real>
-										<real>0.26052063703536987</real>
+										<real>0.1186642125248909</real>
+										<real>0.12017255276441574</real>
+										<real>0.12020193785429001</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -2433,9 +2435,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.46202266216278076</real>
-										<real>0.8382837176322937</real>
-										<real>1</real>
+										<real>0.27525186538696289</real>
+										<real>0.4808809757232666</real>
+										<real>0.55931830406188965</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -2754,9 +2756,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.57112699747085571</real>
-										<real>0.99130219221115112</real>
-										<real>0.91147470474243164</real>
+										<real>0.3468455970287323</real>
+										<real>0.56319022178649902</real>
+										<real>0.53169268369674683</real>
 										<real>1</real>
 									</array>
 									<array>

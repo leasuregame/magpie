@@ -29,7 +29,7 @@ var LineUp = Entity.extend({
         this.update(data);
 
         this.off();
-        this.on("lineUpChange", this._lineUpChangeEvent);
+        this.on("lineUpListChange", this._lineUpListChangeEvent);
 
         return true;
     },
@@ -74,8 +74,8 @@ var LineUp = Entity.extend({
         this.set("lineUpList", lineUpList);
     },
 
-    _lineUpChangeEvent: function () {
-        cc.log("LineUp _lineUpChangeEvent");
+    _lineUpListChangeEvent: function () {
+        cc.log("LineUp _lineUpListChangeEvent");
 
         gameData.player.checkAbility();
     },

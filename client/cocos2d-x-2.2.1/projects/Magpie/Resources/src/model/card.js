@@ -133,7 +133,6 @@ var Card = Entity.extend({
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
-            this.set("ability", data.ability);
             this.set("skillLv", data.skillLv);
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
@@ -146,6 +145,10 @@ var Card = Entity.extend({
         this._loadCardTable();
         this._loadSkillTable();
         this._calculateAddition();
+
+        if (data) {
+            this.set("ability", data.ability);
+        }
     },
 
     _updatePassiveSkills: function (data) {

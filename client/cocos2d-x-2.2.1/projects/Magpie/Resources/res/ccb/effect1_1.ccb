@@ -101,8 +101,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -139,7 +137,7 @@
 													<key>name</key>
 													<string>rotation</string>
 													<key>time</key>
-													<real>0.26666668057441711</real>
+													<real>0.40000000596046448</real>
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
@@ -226,7 +224,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>150</integer>
+										<integer>100</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -372,7 +370,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>500</real>
+										<real>50</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -388,7 +386,7 @@
 										<key>type</key>
 										<string>Integer</string>
 										<key>value</key>
-										<integer>200</integer>
+										<integer>50</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -464,9 +462,9 @@
 										<key>value</key>
 										<array>
 											<array>
-												<real>0.33424890041351318</real>
-												<real>0.10251101106405258</real>
-												<real>0.32914695143699646</real>
+												<real>0.18283012509346008</real>
+												<real>0.0552801713347435</real>
+												<real>0.18000251054763794</real>
 												<real>1</real>
 											</array>
 											<array>
@@ -562,6 +560,8 @@
 										<string>res/effect/effect/p15.png</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -738,13 +738,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.26666668057441711</real>
+			<real>0.40000000596046448</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.26666668057441711</real>
+			<real>0.40000000596046448</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

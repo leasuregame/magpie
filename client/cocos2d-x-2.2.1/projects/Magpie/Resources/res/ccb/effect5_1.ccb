@@ -162,8 +162,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.88999998569488525</real>
-									<real>0.88999998569488525</real>
+									<real>0.9100000262260437</real>
+									<real>0.9100000262260437</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -176,7 +176,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>40.5</real>
+								<real>49.5</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -321,8 +321,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>50</real>
-									<real>10</real>
+									<real>40</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -475,8 +475,6 @@
 								<string>res/effect/effect/p104.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -586,8 +584,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
-									<real>10</real>
+									<real>20</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -740,6 +738,8 @@
 								<string>res/effect/effect/p106.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -875,7 +875,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

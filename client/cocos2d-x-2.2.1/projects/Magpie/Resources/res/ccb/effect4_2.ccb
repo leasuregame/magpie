@@ -2876,7 +2876,7 @@
 						<key>value</key>
 						<array>
 							<real>40</real>
-							<real>10</real>
+							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -3029,6 +3029,8 @@
 						<string>res/effect/uiEffect/up41.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

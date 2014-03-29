@@ -3040,6 +3040,7 @@ void js_register_cocos2dx_CCEGLView(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_CCEGLView_setIMEKeyboardState(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_CCEGLView_isOpenGLReady(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_CCEGLView_getFrameSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_CCEGLView_sharedOpenGLView(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_CCShaderCache_class;

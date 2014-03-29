@@ -192,8 +192,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>ccbFnUpdatePassiveSKill</string>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -317,6 +317,8 @@
 						<true/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -268,19 +268,11 @@ var CardDetails = LazyLayer.extend({
                 }
             }
 
-            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106,this);
-//            var updatePassiveSKillItem = cc.MenuItemImage.create(
-//                main_scene_image.button78,
-//                main_scene_image.button78s,
-//                this._onClickUpdatePassiveSKill,
-//                this
-//            );
+            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106, this);
             this._updatePassiveSkillEffect.setAnchorPoint(cc.p(0, 0.5));
             this._updatePassiveSkillEffect.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
+            this._updatePassiveSkillEffect.controller.ccbMenu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
 
-//            this._menu = cc.Menu.create(updatePassiveSKillItem);
-//            this._menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
-//            this._menu.setPosition(cc.p(0, 0));
             this.addChild(this._updatePassiveSkillEffect);
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);

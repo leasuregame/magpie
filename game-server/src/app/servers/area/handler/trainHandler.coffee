@@ -157,6 +157,7 @@ Handler::luckyCard = (msg, session, next) ->
   totalConsume = 0
   totalFragment = 0
   isFree = 0
+  star5For10 = false
 
   generateCard = (player, level, type, times, isFree, cb) ->
     if isFree and times is 1
@@ -183,6 +184,8 @@ Handler::luckyCard = (msg, session, next) ->
         ### 抽到5星卡牌，高级抽卡次数变为0 ###
         if level is HIGH_LUCKYCARD and card.star is 5
           hdcc = 1
+
+        star5For10 = true if times is 10 and card.star is 5
 
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
@@ -303,7 +306,7 @@ Handler::luckyCard = (msg, session, next) ->
           player.set('highFragmentCount', hfc)
           player.set('highDrawCardCount', hdcc)
 
-      first5GoldLuckyCardBy10(player, cards) if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      first5GoldLuckyCardBy10(player, cards) if not star5For10 and times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
       first3GoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards

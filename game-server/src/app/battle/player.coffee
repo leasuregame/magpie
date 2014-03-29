@@ -48,6 +48,7 @@ class Player extends Module
     @matrix = new Matrix()
     @dead = false
     @is_monster = false
+    @used_empty_lineUp = false
     @cards_for_bl = {}
     
     @loadHeros()
@@ -89,7 +90,8 @@ class Player extends Module
   bindCards: ->
     if @lineUp and not _.isEmpty(@lineUp)
       lu = @lineUp.shift()
-      if _.keys(lu).length is 1
+      
+      if _.keys(lu).length is 1 and @used_empty_lineUp
         return
 
       @matrix.clear()
@@ -108,6 +110,9 @@ class Player extends Module
       @matrix.reset()
       @correctIdx(@is_attacker)
       @setCards()
+
+      if _.keys(lu).length is 1
+        @used_empty_lineUp = true
     else
       logger.warn 'there is not line up for player ' + @name
 

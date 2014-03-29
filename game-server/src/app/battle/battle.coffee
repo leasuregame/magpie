@@ -47,7 +47,20 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
     battleLog.set('round_num',@round.round_num - 1)
+    # update boss hp remaining
+    updateBossInfo(@defender)
     
+updateBossInfo = (player) ->
+  return if not player.is_boss 
+
+  for cards in battleLog.get('cards')
+    do (cards) ->
+      _.each cards, (card, pos) ->
+        if pos > 6
+          hero = _.findWhere player.heros, id: card.id
+          card.hpLeft = hero.hp
+          delete card.id
+  return
 
 class Round extends Base
   init: ->
@@ -81,8 +94,14 @@ class Round extends Base
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-    
+
+DEFAULT_ORDER = 0
+REVERSE_ORDER = 1
+
 class Attack extends Base
+  init: ->
+    @order = DEFAULT_ORDER
+
   execute: () ->
     _attack = (atker, dfder) ->
       atker.attack (heros) ->
@@ -95,17 +114,40 @@ class Attack extends Base
 
       atker.nextHero()
 
-    if @attacker.shootCount > 0
-      @attacker.shootCount -= 1
-      _attack( @attacker, @defender ) 
+    if @order is DEFAULT_ORDER
 
-    if @defender.shootCount > 0
-      @defender.shootCount -= 1
-      _attack( @defender, @attacker ) 
+      if @attacker.shootCount > 0
+        @attacker.shootCount -= 1
+        _attack( @attacker, @defender ) 
+
+      if @defender.shootCount > 0
+        @defender.shootCount -= 1
+        _attack( @defender, @attacker ) 
+
+    else 
+    
+      if @defender.shootCount > 0
+        @defender.shootCount -= 1
+        _attack( @defender, @attacker ) 
+
+      if @attacker.shootCount > 0
+        @attacker.shootCount -= 1
+        _attack( @attacker, @defender )      
 
   end: ->
-    @attacker.bindCards() if @attacker.death()
-    @defender.bindCards() if @defender.death()
+    if @attacker.death()
+      @attacker.bindCards()
+      @attacker.shootCount = 0
+      @defender.shootCount = 0
+
+      @order = DEFAULT_ORDER
+
+    if @defender.death()
+      @defender.bindCards()
+      @attacker.shootCount = 0
+      @defender.shootCount = 0
+
+      @order = REVERSE_ORDER
 
 
     # if @attacker.shootCount > 0

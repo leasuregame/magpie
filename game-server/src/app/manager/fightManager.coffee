@@ -61,7 +61,7 @@ class Manager
   @attackBoss: (player, boss, incRate, callback) ->
     battleLog.clear()
 
-    defender = new BossPlayer(boss)
+    defender = new BossPlayer(boss, {is_boss: true})
     attacker = new Player(player, {
       inc_scale: incRate,
       is_attacker: true

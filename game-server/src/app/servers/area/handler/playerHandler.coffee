@@ -2,8 +2,7 @@ dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
 playerManager = require('pomelo').app.get('playerManager')
 utility = require '../../../common/utility'
-msgConfig = require '../../../../config/data/message'
-playerConfig = require '../../../../config/data/player'
+configData = require '../../../../config/data'
 async = require 'async'
 _ = require 'underscore'
 
@@ -76,7 +75,7 @@ Handler::getFriends = (msg, session, next) ->
 
     (cb) ->
       [start, end] = todayPeriod()
-      where = " receiver = #{playerId} and type = #{msgConfig.MESSAGETYPE.BLESS} and createTime between #{start.valueOf()} and #{end.valueOf()}"
+      where = " receiver = #{playerId} and type = #{configData.message.MESSAGETYPE.BLESS} and createTime between #{start.valueOf()} and #{end.valueOf()}"
       dao.message.fetchMany where: where, cb
   ], (err, results) ->
     if err
@@ -144,7 +143,7 @@ Handler::givePower = (msg, session, next) ->
     if hasGetPower(player, star_hour) 
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    point = playerConfig.POWER_GIVE.point
+    point = configData.player.POWER_GIVE.point
     player.givePower(star_hour, point)
     player.save()
     next(null, {code: 200, msg: {powerValue: point}})
@@ -208,14 +207,14 @@ Handler::getLevelReward = (msg, session, next) ->
 
 canGetPower = (hour) ->
   canGetHours = []
-  for h in playerConfig.POWER_GIVE.hours
-    for i in [0...playerConfig.POWER_GIVE.duration]
+  for h in configData.player.POWER_GIVE.hours
+    for i in [0...configData.player.POWER_GIVE.duration]
       canGetHours.push h+i 
   _.contains canGetHours, hour
 
 powerGiveStartHour = (hour) ->
-  for h in playerConfig.POWER_GIVE.hours
-    for i in [0...playerConfig.POWER_GIVE.duration]
+  for h in configData.player.POWER_GIVE.hours
+    for i in [0...configData.player.POWER_GIVE.duration]
       return h if h+i is hour or h is hour
 
 hasGetPower = (player, hour) ->
@@ -239,7 +238,7 @@ checkFriendsStatus = (player, messages) ->
     f.canReceive = false
     f.canGive = true
 
-    matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.UNHANDLED
+    matches = messages.filter (m) -> m.sender is f.id and m.status is configData.message.MESSAGESTATUS.UNHANDLED
     if matches.length > 0
       f.canReceive = true
       f.msgId = matches[0].id

@@ -1000,6 +1000,7 @@ var main_scene_image = {
     uiEffect101: "res/ccb/uiEffect101.ccbi",
     uiEffect102: "res/ccb/uiEffect102.ccbi",
     uiEffect103: "res/ccb/uiEffect103.ccbi",
+    uiEffect106: "res/ccb/uiEffect106.ccbi",
 
 
     // 特效资源

@@ -268,19 +268,20 @@ var CardDetails = LazyLayer.extend({
                 }
             }
 
-            var updatePassiveSKillItem = cc.MenuItemImage.create(
-                main_scene_image.button78,
-                main_scene_image.button78s,
-                this._onClickUpdatePassiveSKill,
-                this
-            );
-            updatePassiveSKillItem.setAnchorPoint(cc.p(0, 0.5));
-            updatePassiveSKillItem.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
+            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106,this);
+//            var updatePassiveSKillItem = cc.MenuItemImage.create(
+//                main_scene_image.button78,
+//                main_scene_image.button78s,
+//                this._onClickUpdatePassiveSKill,
+//                this
+//            );
+            this._updatePassiveSkillEffect.setAnchorPoint(cc.p(0, 0.5));
+            this._updatePassiveSkillEffect.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
 
-            this._menu = cc.Menu.create(updatePassiveSKillItem);
-            this._menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
-            this._menu.setPosition(cc.p(0, 0));
-            this.addChild(this._menu);
+//            this._menu = cc.Menu.create(updatePassiveSKillItem);
+//            this._menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
+//            this._menu.setPosition(cc.p(0, 0));
+            this.addChild(this._updatePassiveSkillEffect);
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -308,8 +309,8 @@ var CardDetails = LazyLayer.extend({
     hideMenu: function () {
         cc.log("CardDetails hideMenu");
 
-        if (this._menu) {
-            this._menu.setVisible(false);
+        if (this._updatePassiveSkillEffect) {
+            this._updatePassiveSkillEffect.setVisible(false);
         }
     },
 
@@ -319,8 +320,8 @@ var CardDetails = LazyLayer.extend({
         this._menu.setVisible(true);
     },
 
-    _onClickUpdatePassiveSKill: function () {
-        cc.log("CardDetails _onClickUpdatePassiveSKill");
+    ccbFnUpdatePassiveSKill: function () {
+        cc.log("CardDetails ccbFnUpdatePassiveSKill");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

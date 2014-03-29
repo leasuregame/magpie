@@ -6,7 +6,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 battleLog = require './battle_log'
 
 class BossPlayer extends Player
-  init: (boss) ->
+  init: (boss, options) ->
     bossInfo = table.getTableItem('boss', boss.tableId)
 
     if not bossInfo
@@ -16,7 +16,7 @@ class BossPlayer extends Player
     super {
       cards: cards
       lineUp: genLineUp cards, bossInfo.formation
-    }
+    }, options
     @is_monster = true
     @updateCardsInfo(boss)
 
@@ -33,6 +33,7 @@ class BossPlayer extends Player
     cobj = {}
     for c in @heros
       cobj[c.idx] = {
+        id: c.id
         tableId: c.card_id
         hp: c.init_hp
         atk: c.init_atk

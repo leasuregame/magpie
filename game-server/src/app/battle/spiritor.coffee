@@ -1,7 +1,6 @@
 Module = require '../common/module'
 Events = require '../common/events'
 table = require '../manager/table'
-spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
 
 class Spiritor extends Module

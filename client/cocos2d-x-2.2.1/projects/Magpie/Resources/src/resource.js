@@ -897,6 +897,15 @@ var main_scene_image = {
     battleEffect8: "res/ccb/battleEffect8.ccbi",
     battleEffect9: "res/ccb/battleEffect9.ccbi",
 
+    exploreEffect1: "res/ccb/exploreEffect1.ccbi",
+    exploreEffect2: "res/ccb/exploreEffect2.ccbi",
+    exploreEffect3: "res/ccb/exploreEffect3.ccbi",
+    exploreEffect4: "res/ccb/exploreEffect4.ccbi",
+    exploreEffect5: "res/ccb/exploreEffect5.ccbi",
+    exploreEffect6: "res/ccb/exploreEffect6.ccbi",
+    exploreEffect7: "res/ccb/exploreEffect7.ccbi",
+    exploreEffect8: "res/ccb/exploreEffect8.ccbi",
+
     uiEffect1: "res/ccb/uiEffect1.ccbi",
     uiEffect2: "res/ccb/uiEffect2.ccbi",
     uiEffect3: "res/ccb/uiEffect3.ccbi",

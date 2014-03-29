@@ -2,7 +2,7 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 var table = require('../../manager/table');
-var STATUS = require('../../../config/data/bossStatus').STATUS;
+var configData = require('../../../config/data');
 
 var Boss = (function (_super) {
     utility.extends(Boss, _super);
@@ -65,7 +65,7 @@ var Boss = (function (_super) {
             });
         }
 
-        return total_hp == 0 || this.status == STATUS.DEATH;
+        return total_hp == 0 || this.status == configData.bossStatus.STATUS.DEATH;
     };
 
     Boss.prototype.updateHp = function(key, hp) {

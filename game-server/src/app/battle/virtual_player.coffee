@@ -5,7 +5,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 battleLog = require './battle_log'
 
 class VirtualPlayer extends Player
-  init: (data) ->
+  init: (data, options) ->
     @data = data
     cards = parseCards data
 
@@ -16,10 +16,10 @@ class VirtualPlayer extends Player
     else
       lineUp = defaultLineUp cards
       
-    super(
+    super({
       cards: cards
       lineUp: lineUp
-    )
+    }, options)
     @is_monster = true
 
   loadHeros: ->

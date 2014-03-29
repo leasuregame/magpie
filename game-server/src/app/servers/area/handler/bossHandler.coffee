@@ -480,10 +480,12 @@ updateBossAndPlayer = (boss, bl, player, gold_resume) ->
   boss.increase('atkCount')
 
   # update hp info
-  for k, v of bl.cards
-    c = boss.hp[k-6]
-    if k > 6 and c? and c.cardId is v.tableId
-      boss.updateHp(k-6, v.hpLeft)
+  for cards in bl.cards
+    do (cards) ->
+      _.each cards, (v, k) ->
+        c = boss.hp[k-6]
+        if k > 6 and c? and c.cardId is v.tableId
+          boss.updateHp(k-6, v.hpLeft)
 
   # update status and death time
   maxCount = table.getTableItem('boss', boss.tableId)?.atk_count or 10

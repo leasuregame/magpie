@@ -35,6 +35,7 @@ defaultEntity =
 DEFAULT_OPTIONS = 
   inc_scale: 0
   is_attacker: false
+  is_boss: false
 
 class Player extends Module
   init: (entity, options = {}) ->

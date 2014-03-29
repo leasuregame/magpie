@@ -243,10 +243,10 @@ Handler::luckyCard = (msg, session, next) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
 
     rates = 
-      1: 25
-      2: 35
-      3: 45
-      4: 55
+      1: 15
+      2: 15
+      3: 30
+      4: 70
       5: 100
 
     player.incGoldLuckyCard10()

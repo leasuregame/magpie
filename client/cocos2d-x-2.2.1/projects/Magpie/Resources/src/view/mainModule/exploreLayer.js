@@ -594,7 +594,7 @@ var ExploreLayer = cc.Layer.extend({
 
                             if (isDouble) {
                                 url = "uiEffect87";
-                                var size = cc.size(640, 208 * that._exploreLayerFit.mapLabelScaleY);
+                                var size = cc.size(640, 208);
                                 var y = that._exploreLayerFit.mapLabelBasePoint.y + size.height * that._exploreLayerFit.mapLabelScaleY / 2;
                                 point = cc.p(gameFit.GAME_MIDPOINT.x, y);
                             }

@@ -564,8 +564,8 @@ var main_scene_image = {
     p52: effect_scene_path + "effect/" + "p52.png",
     p53: effect_scene_path + "effect/" + "p53.png",
     p54: effect_scene_path + "effect/" + "p54.png",
-    
-   
+    p55: effect_scene_path + "effect/" + "p55.png",
+    p56: effect_scene_path + "effect/" + "p56.png",
     p57: effect_scene_path + "effect/" + "p57.png",
     p58: effect_scene_path + "effect/" + "p58.png",
     p59: effect_scene_path + "effect/" + "p59.png",
@@ -636,7 +636,10 @@ var main_scene_image = {
     p124: effect_scene_path + "effect/" + "p124.png",
     p125: effect_scene_path + "effect/" + "p125.png",
     p147: effect_scene_path + "effect/" + "p147.png",
+    p149: effect_scene_path + "effect/" + "p149.png",
+    p150: effect_scene_path + "effect/" + "p150.png",
     p151: effect_scene_path + "effect/" + "p151.png",
+    
     boss2_png: effect_scene_path + "effect/" + "boss2.png",
     boss2_plist: effect_scene_path + "effect/" + "boss2.plist",
     boss3_png: effect_scene_path + "effect/" + "boss3.png",
@@ -1085,7 +1088,11 @@ var main_scene_image = {
     effect807_1: ccb_scene_path + "effect807_1.ccbi",
     effect807_2: ccb_scene_path + "effect807_2.ccbi",
     effect1001_3: ccb_scene_path + "effect1001_3.ccbi",
-    
+    effect1800_1: ccb_scene_path + "effect1800_1.ccbi",
+    effect1800_2: ccb_scene_path + "effect1800_2.ccbi",
+    effect1800_3: ccb_scene_path + "effect1800_3.ccbi",
+    effect1800_4: ccb_scene_path + "effect1800_4.ccbi",
+
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
     uiEffect3: ccb_scene_path + "uiEffect3.ccbi", 
@@ -1229,6 +1236,7 @@ var main_scene_image = {
     92: test_scene_path + "res/" + "92.png",
     93: test_scene_path + "res/" + "93.png",
     95: test_scene_path + "res/" + "95.png",
+    105: test_scene_path + "res/" + "105.png",
 
 
 

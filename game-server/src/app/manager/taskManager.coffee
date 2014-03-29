@@ -258,15 +258,11 @@ lineUpToObj = (lineUp) ->
     lines = lineUp.split(',')
     lines.forEach (l) ->
       [pos, num] = l.split(':')
-      _results[positionConvert(pos)] = 
+      _results[pos] = 
         cardId: parseInt(num)
         hp: table.getTableItem('boss_card', num).hp
 
   _results
-
-positionConvert = (val) ->
-  order = ['1', '2', '3', '4', '5', '6']
-  order.indexOf(val) + 1
 
 getBossInfo = (type) ->
   results = table.getTable('boss').filter (id, item) -> item.type is type

@@ -29,7 +29,6 @@ class BossPlayer extends Player
 
   loadHeros: ->
     @heros = if @cards? then new Boss(c, @) for c in @cards else []
-    @updateCardsInfo()
 
   setCards: ->
     cobj = {}

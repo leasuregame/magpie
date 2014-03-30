@@ -36,4 +36,9 @@ class BossHero extends Hero
       @skill_inc = @skill_setting.star3_inc_min
       @skill = new Skill(@, @skill_setting)
 
+  setPos: (pos) ->
+    super pos
+    ### 更新boss卡牌的剩余血量 ###
+    @init_hp = hpInfo[@idx+1]?.hp or @init_hp
+
 module.exports = BossHero

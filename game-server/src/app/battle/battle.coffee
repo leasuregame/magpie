@@ -58,7 +58,7 @@ updateBossInfo = (player) ->
       _.each cards, (card, pos) ->
         if pos > 6
           hero = _.findWhere player.heros, id: card.id
-          card.hpLeft = hero.hp
+          card.hpLeft = if hero.hp > 0 then hero.hp else 0
           delete card.id
   return
 

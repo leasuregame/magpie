@@ -24,11 +24,13 @@ copyAttrs = (self, ent) ->
       self.spiritorIdx = parseInt(k)
 
 filterEmptyLinuUp = (lineUp) ->
-  return if lineUp.length is 1
+  return lineUp if lineUp.length is 1
 
   l = lineUp[0]
   if _.isObject(l) and _.values(l).indexOf(-1) > -1
     lineUp = lineUp.splice 0, 1
+    return lineUp
+  return lineUp
 
 defaultEntity = 
   id: 0

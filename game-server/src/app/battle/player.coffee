@@ -27,7 +27,7 @@ filterEmptyLinuUp = (lineUp) ->
   return lineUp if lineUp.length is 1
 
   l = lineUp[0]
-  if _.isObject(l) and _.values(l).indexOf(-1) > -1
+  if _.isObject(l) and _.keys(l).length is 1 and _.values(l).indexOf(-1) > -1
     lineUp.splice 0, 1
     return lineUp
   return lineUp

@@ -39,6 +39,6 @@ class BossHero extends Hero
   setPos: (pos) ->
     super pos
     ### 更新boss卡牌的剩余血量 ###
-    @init_hp = hpInfo[@idx+1]?.hp or @init_hp
+    @init_hp = @hpInfo[@idx+1]?.hp or @init_hp
 
 module.exports = BossHero

@@ -25,31 +25,6 @@ class VirtualPlayer extends Player
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
-  # bindCards: ->
-  #   if @lineUp and not _.isEmpty(@lineUp)
-  #     lu = @lineUp.shift()
-  #     if _.keys(lu).length is 1
-  #       return
-
-  #     @matrix.clear()
-  #     _.each lu, (id, pos) =>
-  #       if parseInt(id) is -1
-  #         @spiritorIdx = parseInt(pos)
-  #         return 
-
-  #       _h = _.findWhere @heros, id: parseInt(id)
-  #       if _h 
-
-  #         @matrix.set(pos, _h)
-  #       else
-  #         logger.warn 'you have not such card with id is ' + id
-
-  #     @matrix.reset()
-  #     @correctIdx(@is_attacker)
-  #     @setCards()
-  #   else
-  #     logger.warn 'there is not line up for player ' + @name
-
   setCards: ->
     cobj = {}
     for c in @heros

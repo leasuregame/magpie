@@ -144,7 +144,6 @@ var CardLabel = cc.Node.extend({
 
     _initDefault: function () {
         cc.log("CardLabel _initDefault");
-
     },
 
     _initLineUp: function () {

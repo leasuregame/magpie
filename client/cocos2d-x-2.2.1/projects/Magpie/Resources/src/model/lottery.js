@@ -62,6 +62,10 @@ var Lottery = Entity.extend({
     getFiveStarCardRate: function () {
         var rates = [40, 50, 70, 80, 100];
 
+        if (this.get("firstHighTenLuckCard")) {
+            return 0;
+        }
+
         if (this._goldLuckyCard10) {
             if (this._goldLuckyCard10.got) {
                 return 0;

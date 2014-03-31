@@ -124,9 +124,10 @@ var PlayerDao = (function(_super) {
             function(callback) {
                 var cardIds = [];
                 players.forEach(function(p) {
-                    cardIds = _.union(cardIds, p.lineUp.reduce(function(pre, cur) {
-                        return pre.concat(_.values(cur));
-                    }, []));
+                    // cardIds = _.union(cardIds, p.lineUp.reduce(function(pre, cur) {
+                    //     return pre.concat(_.values(cur));
+                    // }, []));
+                    cardId = cardIds.concat(_.values(p.lineUp[0]) || []);
                 });
                 callback(null, cardIds);
             },

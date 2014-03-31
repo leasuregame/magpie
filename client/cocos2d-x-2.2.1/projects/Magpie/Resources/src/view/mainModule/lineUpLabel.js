@@ -12,8 +12,7 @@
  * */
 
 var MAX_LINEUP_LIST = 2;
-
-var lineUpIcon = ["icon416", "icon417"];
+var LINE_UP_INDEX = 0;
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
@@ -44,7 +43,7 @@ var LineUpLabel = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._cardList = gameData.cardList;
-        this._index = 0;
+        this._index = LINE_UP_INDEX;
         this._lineUpItem = [];
         this._succorCardsGuide = [];
         this._isClick = false;
@@ -145,6 +144,8 @@ var LineUpLabel = cc.Layer.extend({
                 this._succorCardsGuide[i].setVisible(this._index == 1);
             }
         }
+
+        LINE_UP_INDEX = this._index;
 
     },
 

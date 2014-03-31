@@ -22,6 +22,7 @@ var BossListLayer = cc.Layer.extend({
         this._super();
         this.update();
         this.updateGuide();
+        this.updateMark();
         this._updateMark();
 
         lz.um.beginLogPageView("Boss界面");

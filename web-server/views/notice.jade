@@ -15,10 +15,5 @@ html
       var spans = document.getElementsByTagName('span');
       var spanList = Array.prototype.slice.call(spans);
       spanList.forEach(function(s) {
-        var width = #{width};
-        var size = parseInt(width)/85;
-        if (size < 12) {
-          size = 12;
-        }
-        s.style.fontSize = size+'px';
+        s.style.fontSize = '#{size}';
       });

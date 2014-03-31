@@ -294,7 +294,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(250, 392),
             "tipDescriptionLabelPoint": cc.p(100, 352),
             "passiveSkillIconPoint": cc.p(100, 212),
-            "updatePassiveSKillItemPoint": cc.p(250, 212),
+            "updatePassiveSKillItemPoint": cc.p(270, 212),
             "passiveSkillOffsetX": -90,
             "passiveSkillIconPointY": 162,
             "passiveSkillNameLabelPointY": 162,

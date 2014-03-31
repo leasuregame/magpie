@@ -226,7 +226,7 @@ describe("Area Server", function() {
               atkCount: 1,
               status: 2,
               finder: 'Attacker',
-              hp: '{"2":{"cardId":40001,"hp":79960000},"4":{"cardId":40004,"hp":80000},"6":{"cardId":40004,"hp":80000}}',
+              hp: '{"2":{"cardId":40001,"hp":79960000},"4":{"cardId":40004,"hp":60145},"6":{"cardId":40004,"hp":45050}}',
               createTime: bossCreateTime
             }, function(res) {
               bossId = res.insertId;

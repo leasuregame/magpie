@@ -149,39 +149,4 @@ class Attack extends Base
 
       @order = REVERSE_ORDER
 
-
-    # if @attacker.shootCount > 0
-    #   @attacker.shootCount -= 1
-    #   @attacker.attack (hero) ->
-    #     if hero.death() and not hero.isAttacked()
-    #       @defender.shootCount -= 1
-
-    #     if @defender.shootCount > 0
-    #       @defender.shootCount -= 1
-    #       @defender.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           @attacker.shootCount -= 1
-
-
-    # self = this
-    # async.series [
-    #   (cb) ->
-    #     if self.attacker.shootCount > 0
-    #       self.attacker.shootCount -= 1
-    #       self.attacker.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           self.defender.shootCount -= 1
-            
-    #         self.attacker.nextHero()
-    #         cb(null)
-
-    #   (cb) ->
-    #     if self.defender.shootCount > 0
-    #       self.defender.shootCount -= 1
-    #       self.defender.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           self.attacker.shootCount -= 1
-    #         self.defender.nextHero()
-    # ]
-
 exports = module.exports = Battle

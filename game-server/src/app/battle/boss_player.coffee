@@ -7,6 +7,7 @@ battleLog = require './battle_log'
 
 class BossPlayer extends Player
   init: (boss, options) ->
+    @boss = boss
     bossInfo = table.getTableItem('boss', boss.tableId)
 
     if not bossInfo
@@ -17,10 +18,10 @@ class BossPlayer extends Player
       cards: cards
       lineUp: genLineUp cards, bossInfo.formation
     }, options
-    @is_monster = true
-    @updateCardsInfo(boss)
+    @is_monster = true    
 
-  updateCardsInfo: (boss)->
+  updateCardsInfo: ->
+    boss = @boss
     for hero in @heros
       idx = @matrix.positionToNumber(hero.pos)
       if boss and boss.hp and boss.hp[idx+1]

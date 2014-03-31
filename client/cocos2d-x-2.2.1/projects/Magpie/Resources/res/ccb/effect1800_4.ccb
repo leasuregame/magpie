@@ -1543,8 +1543,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3.0999999046325684</real>
+									<real>3.0999999046325684</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1557,7 +1557,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-60</real>
+								<real>-24</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1586,7 +1586,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>90</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1785,8 +1785,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3.0999999046325684</real>
+									<real>3.0999999046325684</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1799,7 +1799,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>60</real>
+								<real>24</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1828,7 +1828,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>90</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1934,7 +1934,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>80</real>
+								<real>150</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1950,7 +1950,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>150</integer>
+								<integer>200</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1971,7 +1971,7 @@
 								<key>value</key>
 								<array>
 									<real>100</real>
-									<real>10</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -1993,7 +1993,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>-90</real>
 								</array>
 							</dict>
 							<dict>
@@ -2004,7 +2004,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>90</real>
 								</array>
 							</dict>
 							<dict>
@@ -2124,6 +2124,8 @@
 								<string>res/effect/effect/p55.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -2790,7 +2792,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.60000002384185791</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -12,6 +12,7 @@ var lz = lz || {};
 
 lz.platformConfig = {
     PLATFORM: "TB",
+    VERSION: "1.4.0",
     GATE_SERVER_HOST: "115.29.12.178",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",

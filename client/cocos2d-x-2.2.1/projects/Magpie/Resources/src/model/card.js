@@ -730,6 +730,7 @@ var Card = Entity.extend({
                 }
 
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+
                 cb(result);
 
                 lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);

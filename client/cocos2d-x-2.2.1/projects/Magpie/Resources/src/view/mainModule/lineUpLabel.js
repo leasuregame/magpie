@@ -69,7 +69,7 @@ var LineUpLabel = cc.Layer.extend({
             );
 
             this._lineUpItem[i].setAnchorPoint(cc.p(0, 0));
-            this._lineUpItem[i].setPosition(cc.p(0 + i * 117, 60));
+            this._lineUpItem[i].setPosition(cc.p(0 + i * 114, 60));
             lineUpMenu.addChild(this._lineUpItem[i]);
         }
 
@@ -122,7 +122,13 @@ var LineUpLabel = cc.Layer.extend({
 
         var len = gameData.lineUp.get("maxLineUp");
         for (var i = 0; i < len; i++) {
-            this._lineUpItem[i].setEnabled(!(this._index == i));
+            if (this._index == i) {
+                this._lineUpItem[i].setEnabled(false);
+                this._lineUpItem[i].setZOrder(2);
+            } else {
+                this._lineUpItem[i].setEnabled(true);
+                this._lineUpItem[i].setZOrder(1);
+            }
         }
 
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);

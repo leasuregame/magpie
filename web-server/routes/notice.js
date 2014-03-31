@@ -29,9 +29,13 @@ exports.noticeList = function(req, res) {
 
 exports.notice = function(req, res) {
   var platform = req.params.platform;
+  var w = req.query.w;
+  var h = req.query.h;
+
   res.render('notice', {
     title: platform+'公告',
-    content: dataUtil.html(platform+'_notice')
+    content: dataUtil.html(platform+'_notice'),
+    width: w
   });
 };
 

@@ -41,7 +41,48 @@
 								<key>animatedProperties</key>
 								<dict>
 									<key>0</key>
-									<dict/>
+									<dict>
+										<key>rotation</key>
+										<dict>
+											<key>keyframes</key>
+											<array>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>1</integer>
+													</dict>
+													<key>name</key>
+													<string>rotation</string>
+													<key>time</key>
+													<real>0.0</real>
+													<key>type</key>
+													<integer>2</integer>
+													<key>value</key>
+													<real>0.0</real>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>1</integer>
+													</dict>
+													<key>name</key>
+													<string>rotation</string>
+													<key>time</key>
+													<real>0.40000000596046448</real>
+													<key>type</key>
+													<integer>2</integer>
+													<key>value</key>
+													<real>30</real>
+												</dict>
+											</array>
+											<key>name</key>
+											<string>rotation</string>
+											<key>type</key>
+											<integer>2</integer>
+										</dict>
+									</dict>
 								</dict>
 								<key>baseClass</key>
 								<string>CCSprite</string>
@@ -80,6 +121,16 @@
 											<false/>
 											<integer>0</integer>
 										</array>
+									</dict>
+									<dict>
+										<key>baseValue</key>
+										<real>0.0</real>
+										<key>name</key>
+										<string>rotation</string>
+										<key>type</key>
+										<string>Degrees</string>
+										<key>value</key>
+										<real>30</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -141,7 +192,7 @@
 													<key>type</key>
 													<integer>2</integer>
 													<key>value</key>
-													<real>180</real>
+													<real>-30</real>
 												</dict>
 											</array>
 											<key>name</key>
@@ -158,7 +209,7 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>p2</string>
+								<string>p69</string>
 								<key>memberVarAssignmentName</key>
 								<string></string>
 								<key>memberVarAssignmentType</key>
@@ -183,8 +234,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1</real>
-											<real>1</real>
+											<real>0.89999997615814209</real>
+											<real>0.89999997615814209</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -197,7 +248,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>180</real>
+										<real>-30</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -215,7 +266,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/effect/p2.png</string>
+											<string>res/effect/effect/p65.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -224,7 +275,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>100</integer>
+										<integer>50</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -462,9 +513,9 @@
 										<key>value</key>
 										<array>
 											<array>
-												<real>0.18283012509346008</real>
-												<real>0.0552801713347435</real>
-												<real>0.18000251054763794</real>
+												<real>0.54328489303588867</real>
+												<real>0.22242051362991333</real>
+												<real>0.53617173433303833</real>
 												<real>1</real>
 											</array>
 											<array>
@@ -560,8 +611,6 @@
 										<string>res/effect/effect/p15.png</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

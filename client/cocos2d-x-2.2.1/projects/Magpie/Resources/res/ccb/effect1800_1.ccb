@@ -99,7 +99,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>80</real>
+								<real>100</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -158,7 +158,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -169,7 +169,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -289,6 +289,8 @@
 								<string>res/effect/effect/p55.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -954,7 +956,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

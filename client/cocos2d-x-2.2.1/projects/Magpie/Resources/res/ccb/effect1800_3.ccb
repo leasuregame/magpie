@@ -286,7 +286,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/test/res/28.png</string>
+						<string>res/effect/effect/p55.png</string>
 					</dict>
 				</array>
 				<key>selected</key>
@@ -915,7 +915,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666666269302368</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

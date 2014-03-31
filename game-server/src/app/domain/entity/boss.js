@@ -70,7 +70,7 @@ var Boss = (function (_super) {
 
     Boss.prototype.updateHp = function(key, hp) {
         var hp_obj = utility.deepCopy(this.hp);
-        hp_obj[key].hp = hp;
+        hp_obj[key].hp = _.max([hp, 0]);
         this.hp = hp_obj;
     };
 

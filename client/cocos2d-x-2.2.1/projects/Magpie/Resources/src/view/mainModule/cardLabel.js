@@ -282,6 +282,13 @@ var CardLabel = cc.Node.extend({
         this._hookLabel.setVisible(this._isSelect);
         if (this._selectType == SELECT_TYPE_LINEUP) {
             this._useLabel[this._otherData.index].setVisible(this._isSelect);
+
+            this._card.setNewCardMark(false);
+
+            if (newCardMarkIcon) {
+                newCardMarkIcon.removeFromParent();
+                newCardMarkIcon = null;
+            }
         }
 
         this._target.selectCallback(this._card.get("id"));

@@ -42,8 +42,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     // turn on display FPS
     pDirector->setDisplayStats(false);
     
-    CCSize screenSize = pEGLView->getFrameSize();
-    
     this->resolutionAdapter();
     
     // set FPS. the default value is 1.0/60 if you don't call this
@@ -70,7 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    ScriptingCore::getInstance()->runScript("main_binding.js");
+    ScriptingCore::getInstance()->runScript("game.jsc");
        
     return true;
 }
@@ -141,21 +139,18 @@ void AppDelegate::resolutionAdapter()
     {
         if (screenSize.equals(resolutionSize1))
         {
-            CCLOG("1");
             // 640 * 1146分辨率不需要适配
             break;
         }
         
         if (screenSize.equals(resolutionSize2))
         {
-            CCLOG("2");
             // 720 * 960分辨率不需要适配
             break;
         }
         
         if (screenSize.equals(resolutionSize3))
         {
-            CCLOG("3");
             // 640 * 960
             pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionNoBorder);
             break;
@@ -167,7 +162,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR1 < WHR_EPSILON)
         {
-            CCLOG("4");
             // 近似640 * 1146分辨率，使用kResolutionExactFit铺满屏幕
             pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionExactFit);
             break;
@@ -175,7 +169,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR2 < WHR_EPSILON)
         {
-            CCLOG("5");
             // 近似720 * 960分辨率，使用kResolutionExactFit铺满屏幕
             pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionExactFit);
             break;
@@ -183,7 +176,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR3 < WHR_EPSILON)
         {
-            CCLOG("6");
             // 近似640 * 960分辨率，使用kResolutionExactFit铺满屏幕
             pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionExactFit);
             break;
@@ -191,7 +183,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR1 <= gapWHR2 && gapWHR1 <= gapWHR3)
         {
-            CCLOG("7");
             // 接近640 * 1136分辨率，以640 * 1136分辨率处理
             pEGLView->setDesignResolutionSize(0, 0, 640, 1136, kResolutionShowAll);
             break;
@@ -199,7 +190,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR2 <= gapWHR1 && gapWHR2 <= gapWHR3)
         {
-            CCLOG("8");
             // 接近720 * 960分辨率，以720 * 960分辨率处理
             pEGLView->setDesignResolutionSize(0, 0, 720, 960, kResolutionShowAll);
             break;
@@ -207,7 +197,6 @@ void AppDelegate::resolutionAdapter()
         
         if (gapWHR3 <= gapWHR1 && gapWHR3 <= gapWHR2)
         {
-            CCLOG("9");
             // 接近640 * 960分辨率，以640 * 960分辨率处理
             pEGLView->setDesignResolutionSize(40, 0, 640, 960, kResolutionShowAll);
             break;

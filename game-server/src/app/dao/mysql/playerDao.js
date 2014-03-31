@@ -103,7 +103,6 @@ var PlayerDao = (function(_super) {
     };
 
     PlayerDao.getPlayerDetails = function(ids, cb) {
-        var start = Date.now();
         var _this = this;
 
         var players = null;
@@ -126,7 +125,7 @@ var PlayerDao = (function(_super) {
                 players.forEach(function(p) {
                     cardIds = _.union(cardIds, p.lineUp.reduce(function(pre, cur) {
                         return pre.concat(_.values(cur));
-                    }, []));
+                    }, []));                    
                 });
                 callback(null, cardIds);
             },
@@ -161,15 +160,12 @@ var PlayerDao = (function(_super) {
                     p.set('rank', _ranks[0]);
                 }
             });
-            var end = Date.now();
             return cb(null, players);
         });
 
     };
 
     PlayerDao.getLineUpInfoByIds = function(ids, cb) {
-        var start = Date.now();
-        var end;
         var players = null;
         var cards = null;
 
@@ -207,7 +203,7 @@ var PlayerDao = (function(_super) {
                         return c.playerId == p.id
                     });
                 });
-            end = Date.now();
+
             return cb(null, players);
         });
     };
@@ -368,17 +364,11 @@ function sort(a, b) {
 };
 
 function getLineUpIds(lineUp) {
-    var ids = [];
-    if (_.isString(lineUp) && lineUp !== '') {
-        var lines = lineUp.split(',');
-        lines.forEach(function(l) {
-            var _ref = l.split(':'),
-                pos = _ref[0],
-                num = parseInt(_ref[1]);
-            ids.push(num)
-        });
-    };
-    return ids;
+    if (_.isString(lineUp)) {
+        var lineUp = JSON.parse(lineUp);
+        return _.values(lineUp[0] || []);
+    }
+    return [];
 };
 
 module.exports = PlayerDao;

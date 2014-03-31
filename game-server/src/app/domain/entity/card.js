@@ -40,7 +40,7 @@ var addEvents = function(card) {
 
     card.on('lv.change', function(lv) {
         countHpAtk(card);
-        card.recountHpAndAtk();
+        countPassiveSkills(card);
     });
 
     card.on('tableId.change', function(id) {
@@ -55,6 +55,8 @@ var addEvents = function(card) {
                 card.cardData = cardData;
             }
         }
+        countHpAtk(card);
+        countPassiveSkills(card);
     });
 
     // card.on('skillPoint.change', function() {
@@ -496,6 +498,9 @@ var Card = (function(_super) {
             tableId: this.tableId,
             hp: this.hp,
             atk: this.atk,
+            init_hp: this.init_hp,
+            init_atk: this.init_atk,
+            incs: this.incs,
             ability: this.ability(),
             lv: this.lv,
             exp: this.exp,

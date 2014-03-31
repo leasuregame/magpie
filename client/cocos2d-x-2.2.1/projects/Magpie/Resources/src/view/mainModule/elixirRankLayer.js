@@ -401,7 +401,7 @@ var ElixirRankLayer = cc.Layer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的竞技仙丹数量为0，无法获得奖励哟。"
+            tip: "亲，你本周的竞技仙丹数量为0，无法获得奖励哟。"
         });
 
     },

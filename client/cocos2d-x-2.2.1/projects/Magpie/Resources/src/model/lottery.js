@@ -175,7 +175,7 @@ var Lottery = Entity.extend({
                     player.add("fragment", msg.fragment);
                 }
 
-                if (level == 2) {
+                if (type == LOTTERY_BY_GOLD && level == 2) {
                     if (msg.goldLuckyCardForFragment) {
                         that.set("goldLuckyCardForFragment", msg.goldLuckyCardForFragment);
                     } else {
@@ -236,10 +236,12 @@ var Lottery = Entity.extend({
                     player.add("fragment", msg.fragment);
                 }
 
-                if (msg.goldLuckyCard10) {
-                    that.set("goldLuckyCard10", msg.goldLuckyCard10);
-                } else {
-                    that.set("goldLuckyCard10", {count: 3, got: true});
+                if (type == LOTTERY_BY_GOLD && level == 2) {
+                    if (msg.goldLuckyCard10) {
+                        that.set("goldLuckyCard10", msg.goldLuckyCard10);
+                    } else {
+                        that.set("goldLuckyCard10", {count: 3, got: true});
+                    }
                 }
 
                 cb({

@@ -436,7 +436,7 @@ var DamageRankLayer = LazyLayer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的伤害值为0，无法获得奖励哟。"
+            tip: "亲，你本周的伤害值为0，无法获得奖励哟。"
         });
 
     },
@@ -461,6 +461,7 @@ var DamageRankLayer = LazyLayer.extend({
                 cb: function () {
                     lz.tipReward(data);
                     that.update();
+                    that.getParent().update();
                 }
             });
         });

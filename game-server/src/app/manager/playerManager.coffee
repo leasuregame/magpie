@@ -70,8 +70,8 @@ class Manager
         leftIds = []
         for id in _ids 
           cache = @getPlayerFromCache(id)
-          cards = cache.getCards(_.values(cache.lineUp[0]) || [])
           if cache
+            cards = cache.getCards(_.values(cache.lineUp[0]) || [])
             results.push {
               id: cache.id
               name: cache.name

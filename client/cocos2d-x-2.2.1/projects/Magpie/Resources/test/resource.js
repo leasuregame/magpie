@@ -1224,6 +1224,8 @@ var main_scene_image = {
     20: test_scene_path + "res/" + "20.png",
     29: test_scene_path + "res/" + "29.png",
     37: test_scene_path + "res/" + "37.png",
+    40: test_scene_path + "res/" + "40.png",
+    48: test_scene_path + "res/" + "48.png",
     50: test_scene_path + "res/" + "50.png",
     53: test_scene_path + "res/" + "53.png",
     54: test_scene_path + "res/" + "54.png",

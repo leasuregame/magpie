@@ -81,7 +81,8 @@ var ExploreLayer = cc.Layer.extend({
         }
         var url = "exploreEffect" + id;
         for (var i = 0; i < 3; ++i) {
-            this._mapLabel[i] = cc.BuilderReader.load(main_scene_image[url], this);
+            this._mapLabel[i] = cc.Node.create();
+            this._mapLabel[i].addChild(cc.BuilderReader.load(main_scene_image[url], this));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);

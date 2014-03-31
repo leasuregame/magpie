@@ -813,6 +813,8 @@ var main_scene_image = {
     up219: effect_scene_path + "uiEffect/" + "up219.png",
     up220: effect_scene_path + "uiEffect/" + "up220.png",
     up221: effect_scene_path + "uiEffect/" + "up221.png",
+    bee_png: effect_scene_path + "uiEffect/" + "bee.png",
+    bee_plist: effect_scene_path + "uiEffect/" + "bee.plist",
    
 
    
@@ -1092,6 +1094,14 @@ var main_scene_image = {
     effect1800_2: ccb_scene_path + "effect1800_2.ccbi",
     effect1800_3: ccb_scene_path + "effect1800_3.ccbi",
     effect1800_4: ccb_scene_path + "effect1800_4.ccbi",
+    exploreEffect1: ccb_scene_path + "exploreEffect1.ccbi",
+    exploreEffect2: ccb_scene_path + "exploreEffect2.ccbi",
+    exploreEffect3: ccb_scene_path + "exploreEffect3.ccbi",
+    exploreEffect4: ccb_scene_path + "exploreEffect4.ccbi",
+    exploreEffect5: ccb_scene_path + "exploreEffect5.ccbi",
+    exploreEffect6: ccb_scene_path + "exploreEffect6.ccbi",
+    exploreEffect7: ccb_scene_path + "exploreEffect7.ccbi",
+    exploreEffect8: ccb_scene_path + "exploreEffect8.ccbi",
 
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 

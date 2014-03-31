@@ -182,7 +182,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>10</real>
+								<real>5</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -198,7 +198,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>10</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -207,7 +207,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>1</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -241,7 +241,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -252,7 +252,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -337,8 +337,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
 									<real>20</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -396,7 +396,7 @@
 								<key>value</key>
 								<array>
 									<real>110</real>
-									<real>5</real>
+									<real>15</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -448,7 +448,7 @@
 								<key>value</key>
 								<array>
 									<real>20</real>
-									<real>20</real>
+									<real>30</real>
 								</array>
 							</dict>
 							<dict>
@@ -457,7 +457,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>10</real>
+								<real>5</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -473,7 +473,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>10</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -482,7 +482,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
+									<real>1</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -516,7 +516,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -527,7 +527,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -612,8 +612,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
 									<real>20</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -1005,6 +1005,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -1044,8 +1046,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1079,7 +1079,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>length</key>
 			<real>4</real>
 			<key>name</key>

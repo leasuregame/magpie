@@ -113,9 +113,9 @@
 											<key>easing</key>
 											<dict>
 												<key>opt</key>
-												<real>2</real>
+												<real>0.30000001192092896</real>
 												<key>type</key>
-												<integer>3</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>position</string>
@@ -1451,8 +1451,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.87654322385787964</real>
-											<real>0.87654322385787964</real>
+											<real>0.60000002384185791</real>
+											<real>0.60000002384185791</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1497,7 +1497,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1572,7 +1572,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<true/>
+										<false/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1847,8 +1847,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>76.049369812011719</real>
-									<real>-1.4814835786819458</real>
+									<real>280</real>
+									<real>40</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2032,7 +2032,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.6666665077209473</real>
+			<real>6</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

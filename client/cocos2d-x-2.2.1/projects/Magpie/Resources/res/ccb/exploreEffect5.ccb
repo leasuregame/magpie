@@ -991,7 +991,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>5</real>
+											<real>4</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1006,7 +1006,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>6</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1049,7 +1049,7 @@
 											<key>name</key>
 											<string>position</string>
 											<key>time</key>
-											<real>6</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>3</integer>
 											<key>value</key>
@@ -1095,7 +1095,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>6</real>
+											<real>5</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -1319,8 +1319,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

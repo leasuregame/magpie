@@ -3,7 +3,7 @@ url = require 'url'
 util = require 'util'
 logger = require('pomelo-logger').getLogger(__filename)
 
-APPKEY = 'o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo'
+APPKEY = '#Wi7vFSpf3CZO0yJ#ti7FdSp3MCOm0y#'
 
 module.exports = (app, opts) ->
   return new Component(app, opts)

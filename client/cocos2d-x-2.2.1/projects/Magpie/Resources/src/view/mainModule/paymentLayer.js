@@ -124,7 +124,7 @@ var PaymentLayer = LazyLayer.extend({
                 }
             );
 
-            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setAnchorPoint(cc.p(0, 0));
             tipLabel.setPosition(this._paymentLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
@@ -164,9 +164,11 @@ var PaymentLayer = LazyLayer.extend({
             firstPaymentIcon.setPosition(cc.p(-8, y));
             scrollViewLayer.addChild(firstPaymentIcon);
 
+            var table = outputTables.first_recharge_box.rows[1];
+
             var cardItem = CardHeadNode.getCardHeadItem(Card.create({
-                tableId: 194,
-                lv: 20,
+                tableId: table.card_id,
+                lv: table.card_lv,
                 skillLv: 1
             }));
 

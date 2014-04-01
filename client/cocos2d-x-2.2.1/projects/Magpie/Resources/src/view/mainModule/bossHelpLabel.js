@@ -22,7 +22,7 @@ var BossHelpLabel = LazyLayer.extend({
         bgSprite.setPosition(cc.p(0, 0));
         layer.addChild(bgSprite);
 
-        var titleLabel = cc.LabelTTF.create("BOSS帮助", "STHeitiTC-Medium", 35);
+        var titleLabel = cc.LabelTTF.create("魔神攻略", "STHeitiTC-Medium", 35);
         titleLabel.setColor(cc.c3b(255, 232, 75));
         titleLabel.setPosition(0, 300);
         layer.addChild(titleLabel);
@@ -47,20 +47,19 @@ var BossHelpLabel = LazyLayer.extend({
         layer.addChild(menu);
 
         var tips = [
-            "1、探索有概率触发BOSS，当前BOSS只有消失后，下个",
-            "BOSS才可能被触发。",
-            "2、BOSS存活时间12小时，超时后会自动逃走。",
-            "3、BOSS最多可被攻击10次。10次之后，无论生死都会",
-            "消失。每次攻击后进入CD，你可以花费魔石消除CD。",
-            "4、奖励多少取决于你对BOSS以及附属小怪所造成的伤",
-            "害，伤害越高，奖励越高。",
-            "5、BOSS分为3个品质，由低到高依次为，蓝色，紫色，",
-            "金色。品质越高，每次攻击奖励加成越高。",
-            "6、攻击好友的BOSS，你可以获得100%的奖励，好友会",
-            "获得30%的协助奖励。好友必须对自己的BOSS发起首次",
-            "攻击后，才可以被协助。",
-            "7、奖励包括仙币与荣誉两种。累计一定数量的荣誉，",
-            "即可兑换精元，精元是高星级进阶的必须品。"
+            "1、探索有概率触发魔神，当前魔神消失后，魔神才可",
+            "能再次触发。",
+            "2、魔神存活时间12小时，超时后会自动逃走。",
+            "3、魔神最多可被攻击10次。最后一次攻击，奖励翻倍。",
+            "4、奖励多少取决于你对魔神及附属小怪所造成的伤害。",
+            "5、魔神分为3个品质，由低到高依次为，蓝色，紫色，",
+            "金色。品质越高，奖励越高。",
+            "6、攻击好友的魔神，你可以获得100%奖励，好友会获",
+            "得30%的贡献奖励。好友必须对自己的魔神发起首次攻",
+            "击后，才可以被协助。",
+            "7、奖励包括仙币与荣誉。荣誉可兑换精元，精元是4星",
+            "以上卡牌进阶的必需品。",
+            "8、每6000点荣誉可兑换一枚精元。"
         ];
 
         var len = tips.length;

@@ -248,7 +248,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>22</real>
+								<real>40</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -277,7 +277,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>115</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -439,7 +439,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-11</real>
+								<real>-20</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -468,7 +468,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>115</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -531,8 +531,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.73333334922790527</real>
-							<real>0.73333334922790527</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -687,7 +687,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-11</real>
+								<real>-20</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -716,7 +716,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>153</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -878,7 +878,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>11</real>
+								<real>20</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -907,7 +907,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>153</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1089,8 +1089,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>10</real>
+							<real>40</real>
+							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -1100,8 +1100,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1364,7 +1364,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.36666667461395264</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

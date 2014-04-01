@@ -47,7 +47,7 @@ var SelectAreaLayer = cc.Layer.extend({
         selectAreaFrame.setPosition(this._selectAreaLayerFit.selectAreaFramePoint);
         this.addChild(selectAreaFrame, 1);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(0, 28, 640, 400));
+        var scrollViewLayer = MarkLayer.create(cc.rect(-40, 0, 640, 400));
         var len = this._areaList.length;
 
         var scrollViewHeight = len * 70 + 10;

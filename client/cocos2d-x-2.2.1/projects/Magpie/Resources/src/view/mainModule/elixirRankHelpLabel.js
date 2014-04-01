@@ -94,7 +94,7 @@ var ElixirRankHelpLabel = LazyLayer.extend({
         scrollViewLayer.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
 
         var rewardList = outputTables.elixir_ranking_reward.rows;
-        var len = Object.keys(rewardList).length;
+        var len = Object.keys(rewardList).length - 1;
         var scrollViewHeight = len * 75;
 
         for (var i = 0; i < len; i++) {

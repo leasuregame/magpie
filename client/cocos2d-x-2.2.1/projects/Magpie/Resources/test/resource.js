@@ -514,10 +514,10 @@ var main_scene_image = {
     p2: effect_scene_path + "effect/" + "p2.png",
     p3: effect_scene_path + "effect/" + "p3.png",
     p4: effect_scene_path + "effect/" + "p4.png",
-    // p5: effect_scene_path + "effect/" + "p5.png",
+    p5: effect_scene_path + "effect/" + "p5.png",
     p6: effect_scene_path + "effect/" + "p6.png",
     p7: effect_scene_path + "effect/" + "p7.png",
-    // p8: effect_scene_path + "effect/" + "p8.png",
+    p8: effect_scene_path + "effect/" + "p8.png",
     p9: effect_scene_path + "effect/" + "p9.png",
     p10: effect_scene_path + "effect/" + "p10.png",
     p11: effect_scene_path + "effect/" + "p11.png",
@@ -540,7 +540,7 @@ var main_scene_image = {
     p28: effect_scene_path + "effect/" + "p28.png",
     p29: effect_scene_path + "effect/" + "p29.png",
     p30: effect_scene_path + "effect/" + "p30.png",
-    
+    p31: effect_scene_path + "effect/" + "p31.png",
     p32: effect_scene_path + "effect/" + "p32.png",
     p33: effect_scene_path + "effect/" + "p33.png",
     p34: effect_scene_path + "effect/" + "p34.png",
@@ -564,8 +564,8 @@ var main_scene_image = {
     p52: effect_scene_path + "effect/" + "p52.png",
     p53: effect_scene_path + "effect/" + "p53.png",
     p54: effect_scene_path + "effect/" + "p54.png",
-    
-   
+    p55: effect_scene_path + "effect/" + "p55.png",
+    p56: effect_scene_path + "effect/" + "p56.png",
     p57: effect_scene_path + "effect/" + "p57.png",
     p58: effect_scene_path + "effect/" + "p58.png",
     p59: effect_scene_path + "effect/" + "p59.png",
@@ -635,6 +635,15 @@ var main_scene_image = {
     p123: effect_scene_path + "effect/" + "p123.png",
     p124: effect_scene_path + "effect/" + "p124.png",
     p125: effect_scene_path + "effect/" + "p125.png",
+    p147: effect_scene_path + "effect/" + "p147.png",
+    p149: effect_scene_path + "effect/" + "p149.png",
+    p150: effect_scene_path + "effect/" + "p150.png",
+    p151: effect_scene_path + "effect/" + "p151.png",
+    
+    boss2_png: effect_scene_path + "effect/" + "boss2.png",
+    boss2_plist: effect_scene_path + "effect/" + "boss2.plist",
+    boss3_png: effect_scene_path + "effect/" + "boss3.png",
+    boss3_plist: effect_scene_path + "effect/" + "boss3.plist",
 
     
     
@@ -800,6 +809,12 @@ var main_scene_image = {
     up158: effect_scene_path + "uiEffect/" + "up158.png",
     up159: effect_scene_path + "uiEffect/" + "up159.png",
     up160: effect_scene_path + "uiEffect/" + "up160.png",
+    up218: effect_scene_path + "uiEffect/" + "up218.png",
+    up219: effect_scene_path + "uiEffect/" + "up219.png",
+    up220: effect_scene_path + "uiEffect/" + "up220.png",
+    up221: effect_scene_path + "uiEffect/" + "up221.png",
+    bee_png: effect_scene_path + "uiEffect/" + "bee.png",
+    bee_plist: effect_scene_path + "uiEffect/" + "bee.plist",
    
 
    
@@ -839,6 +854,7 @@ var main_scene_image = {
    
     spiritNode: ccb_scene_path + "spiritNode.ccbi",
     battleNode: ccb_scene_path + "battleNode.ccbi",
+    card20002: ccb_scene_path + "card20002.ccbi",
 
 
    
@@ -1073,7 +1089,20 @@ var main_scene_image = {
     effect806: ccb_scene_path + "effect806.ccbi",
     effect807_1: ccb_scene_path + "effect807_1.ccbi",
     effect807_2: ccb_scene_path + "effect807_2.ccbi",
-    
+    effect1001_3: ccb_scene_path + "effect1001_3.ccbi",
+    effect1800_1: ccb_scene_path + "effect1800_1.ccbi",
+    effect1800_2: ccb_scene_path + "effect1800_2.ccbi",
+    effect1800_3: ccb_scene_path + "effect1800_3.ccbi",
+    effect1800_4: ccb_scene_path + "effect1800_4.ccbi",
+    exploreEffect1: ccb_scene_path + "exploreEffect1.ccbi",
+    exploreEffect2: ccb_scene_path + "exploreEffect2.ccbi",
+    exploreEffect3: ccb_scene_path + "exploreEffect3.ccbi",
+    exploreEffect4: ccb_scene_path + "exploreEffect4.ccbi",
+    exploreEffect5: ccb_scene_path + "exploreEffect5.ccbi",
+    exploreEffect6: ccb_scene_path + "exploreEffect6.ccbi",
+    exploreEffect7: ccb_scene_path + "exploreEffect7.ccbi",
+    exploreEffect8: ccb_scene_path + "exploreEffect8.ccbi",
+
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
     uiEffect3: ccb_scene_path + "uiEffect3.ccbi", 
@@ -1159,6 +1188,9 @@ var main_scene_image = {
     uiEffect83: ccb_scene_path + "uiEffect83.ccbi",
     uiEffect84: ccb_scene_path + "uiEffect84.ccbi",
     uiEffect85: ccb_scene_path + "uiEffect85.ccbi",
+    uiEffect91: ccb_scene_path + "uiEffect91.ccbi",
+    uiEffect93: ccb_scene_path + "uiEffect93.ccbi",
+    uiEffect96: ccb_scene_path + "uiEffect96.ccbi",
     
 
     //开场动画
@@ -1179,15 +1211,44 @@ var main_scene_image = {
     7: test_scene_path + "res/" + "7.png",
     8: test_scene_path + "res/" + "8.png",
     9: test_scene_path + "res/" + "9.png",
-   
+    
     11: test_scene_path + "res/" + "11.png",
+    12: test_scene_path + "res/" + "12.png",
+    13: test_scene_path + "res/" + "13.png",
+    14: test_scene_path + "res/" + "14.png",
+    15: test_scene_path + "res/" + "15.png",
+    16: test_scene_path + "res/" + "16.png",
+    17: test_scene_path + "res/" + "17.png",
+    18: test_scene_path + "res/" + "18.png",
+    19: test_scene_path + "res/" + "19.png",
+    20: test_scene_path + "res/" + "20.png",
     29: test_scene_path + "res/" + "29.png",
+    37: test_scene_path + "res/" + "37.png",
+    40: test_scene_path + "res/" + "40.png",
+    48: test_scene_path + "res/" + "48.png",
     50: test_scene_path + "res/" + "50.png",
+    53: test_scene_path + "res/" + "53.png",
+    54: test_scene_path + "res/" + "54.png",
+    56: test_scene_path + "res/" + "56.png",
+    60: test_scene_path + "res/" + "60.png",
+    61: test_scene_path + "res/" + "61.png",
+    62: test_scene_path + "res/" + "62.png",
+    63: test_scene_path + "res/" + "63.png",
+    
+    65: test_scene_path + "res/" + "65.png",
+    66: test_scene_path + "res/" + "66.png",
     70: test_scene_path + "res/" + "70.png",
     76: test_scene_path + "res/" + "76.png",
+    80: test_scene_path + "res/" + "80.png",
+    82: test_scene_path + "res/" + "82.png",
     83: test_scene_path + "res/" + "83.png",
+    84: test_scene_path + "res/" + "84.png",
+    88: test_scene_path + "res/" + "88.png",
+    89: test_scene_path + "res/" + "89.png",
     92: test_scene_path + "res/" + "92.png",
     93: test_scene_path + "res/" + "93.png",
+    95: test_scene_path + "res/" + "95.png",
+    105: test_scene_path + "res/" + "105.png",
 
 
 
@@ -1200,10 +1261,18 @@ var main_scene_image = {
     texiao6: test_scene_path + "ccb/" + "texiao6.ccbi",
     texiao7: test_scene_path + "ccb/" + "texiao7.ccbi",
     texiao8: test_scene_path + "ccb/" + "texiao8.ccbi",
+    texiao12: test_scene_path + "ccb/" + "texiao12.ccbi",
+    texiao16: test_scene_path + "ccb/" + "texiao16.ccbi",
+    texiao17: test_scene_path + "ccb/" + "texiao17.ccbi",
+    texiao19: test_scene_path + "ccb/" + "texiao19.ccbi",
     texiao20: test_scene_path + "ccb/" + "texiao20.ccbi",
     texiao21: test_scene_path + "ccb/" + "texiao21.ccbi",
     texiao22: test_scene_path + "ccb/" + "texiao22.ccbi",
     texiao24: test_scene_path + "ccb/" + "texiao24.ccbi",
+    texiao25: test_scene_path + "ccb/" + "texiao25.ccbi",
+    texiao26: test_scene_path + "ccb/" + "texiao26.ccbi",
+    texiao27: test_scene_path + "ccb/" + "texiao27.ccbi",
+    texiao28: test_scene_path + "ccb/" + "texiao28.ccbi",
 
 };
 

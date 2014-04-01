@@ -545,6 +545,8 @@
 		90DE78D818C71ECE005A300F /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BD18C71D46005A300F /* payment.js */; };
 		90DE78D918C71ECE005A300F /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BE18C71D46005A300F /* platform.js */; };
 		90DE78DA18C71ECE005A300F /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BF18C71D46005A300F /* user.js */; };
+		90E99D3A18E9CE460054AD54 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
+		90E99D3B18E9CE4D0054AD54 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
@@ -1573,6 +1575,7 @@
 		90DE78BF18C71D46005A300F /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		90DE78C618C71D58005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90DE78C918C71D66005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
+		90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_MobClickCpp.cpp; sourceTree = "<group>"; };
 		90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_MobClickCpp.hpp; sourceTree = "<group>"; };
 		90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_MobClickCpp_api.js; sourceTree = "<group>"; };
@@ -1604,6 +1607,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E99D3B18E9CE4D0054AD54 /* libstdc++.6.dylib in Frameworks */,
 				909187FF18A726D80023312A /* AdSupport.framework in Frameworks */,
 				9058F62E18C460DA00FD88DB /* TBPlatform.framework in Frameworks */,
 				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
@@ -1654,6 +1658,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E99D3A18E9CE460054AD54 /* libstdc++.6.dylib in Frameworks */,
 				90A8D61F18B4691500EA6409 /* AdSupport.framework in Frameworks */,
 				9058F62F18C460DA00FD88DB /* TBPlatform.framework in Frameworks */,
 				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
@@ -2784,6 +2789,7 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */,
 				909187FE18A726D80023312A /* AdSupport.framework */,
 				90C212D01870702D00671D28 /* Security.framework */,
 				90C212CE1870702600671D28 /* MessageUI.framework */,
@@ -4049,6 +4055,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4103,6 +4110,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4261,6 +4269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4315,6 +4324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

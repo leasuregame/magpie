@@ -50,7 +50,10 @@ var MarkLayer = cc.Layer.extend({
             node = node.getParent();
         }
 
-        return (!cc.rectContainsPoint(this._rect, touch.getLocation()));
+        var point = this.getParent().convertToWorldSpace(cc.p(this._rect.x, this._rect.y));
+        var rect = cc.rect(point.x, point.y, this._rect.width, this._rect.height);
+
+        return (!cc.rectContainsPoint(rect, touch.getLocation()));
     }
 });
 

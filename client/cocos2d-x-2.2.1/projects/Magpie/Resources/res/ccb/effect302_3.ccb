@@ -99,7 +99,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>80</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -115,7 +115,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>80</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -146,8 +146,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>8</real>
-							<real>5</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -289,6 +289,8 @@
 						<string>res/effect/uiEffect/up18.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -367,7 +369,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>100</real>
+						<real>80</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -383,7 +385,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>80</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -403,7 +405,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
+							<real>50</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -414,8 +416,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -645,7 +647,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666667461395264</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

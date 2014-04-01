@@ -80,7 +80,7 @@ var GoldLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var isFirstGold = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "_firstGold")) || 0;
+        var isFirstGold = lz.load(gameData.player.get("uid") + "_firstGold") || 0;
         if (!isFirstGold) {
 
             this._tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect54, this);
@@ -88,7 +88,7 @@ var GoldLayer = LazyLayer.extend({
             this._tipEffect.setAnchorPoint(cc.p(0.5, 0.5));
             this.addChild(this._tipEffect);
 
-            sys.localStorage.setItem(gameData.player.get("uid") + "_firstGold", 1);
+            lz.save(gameData.player.get("uid") + "_firstGold", 1);
         }
 
         this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);

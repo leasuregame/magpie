@@ -44,13 +44,13 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
+        this._area = lz.load("area") || 0;
     },
 
     _save: function () {
         cc.log("User _save");
 
-        sys.localStorage.setItem("area", this._area);
+        lz.save("area", this._area);
     },
 
     login: function (cb) {
@@ -63,7 +63,7 @@ var User = Entity.extend({
         var that = this;
 
         var fn = function () {
-            var version = "1.3.0";
+            var version = lz.platformConfig.VERSION;
 
             if (typeof(cc.AssetsManager) != "undefined") {
                 version = cc.AssetsManager.getInstance().getVersion();

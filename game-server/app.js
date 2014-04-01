@@ -19,7 +19,8 @@ var watchSharedConf = function(app) {
 
   function setSharedConf(app, confpath) {
     app.set('sharedConf', JSON.parse(
-      fs.readFileSync(confpath)));
+      fs.readFileSync(confpath));
+    );
   };
 
   setSharedConf(app, confpath);

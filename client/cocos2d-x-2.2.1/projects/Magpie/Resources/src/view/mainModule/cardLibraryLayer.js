@@ -250,7 +250,6 @@ var CardLibraryLayer = cc.Layer.extend({
                         effect.removeFromParent();
                     });
                     lz.tipReward(data);
-                    // TipLayer.tipNoBg("活力点: +" + data);
 
                     gameMark.updateCardLibraryMark(false);
                 }, id);

@@ -12,7 +12,7 @@
  * */
 
 
-var MAX_CARD_TABLE_ID = 1000;
+var MAX_CARD_TABLE_ID = 2000;
 var MAX_CARD_STAR = 7;
 
 var EVOLUTION_SUCCESS = 1;

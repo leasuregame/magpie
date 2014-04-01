@@ -17,15 +17,36 @@ var path = require('path');
 var watchSharedConf = function(app) {
   var confpath = path.join(__dirname, '..', 'shared', 'conf.json')
 
-    function setSharedConf(app, confpath) {
-      app.set('sharedConf', JSON.parse(
-        fs.readFileSync(confpath)))
-    }
+  function setSharedConf(app, confpath) {
+    app.set('sharedConf', JSON.parse(
+      fs.readFileSync(confpath)));
+  };
+
   setSharedConf(app, confpath);
   fs.watchFile(confpath, function(curr, prev) {
-    setSharedConf(app, confpath)
+    setSharedConf(app, confpath);
   });
-}
+};
+
+var watchAreaServersInfo = function(app) {
+  var env = app.get('env');
+  var serverConfigPath = app.getBase() + '/config/servers.json');
+  
+  function setAreas(app, sPath) {
+    var servers = JSON.parse(fs.readFileSync(sPath));
+    var areas = servers[env].area;
+    var idMap = {};
+    for (var i = 0; i < areas.length; i++) {
+      var area = areas[i];
+      idMap[area.id] = area.area;
+    }
+    app.set('areaIdMap', idMap);
+  };
+  setAreas(app, serverConfigPath);
+  fs.watchFile(serverConfigPath, function(curr, prev) {
+    setAreas(app, serverConfigPath);
+  });
+};
 
 /**
  * Init app for client.
@@ -56,12 +77,7 @@ app.configure('production|development', function() {
 
   //Set areasIdMap, a map from area id to serverId.
   if (app.serverType !== 'master') {
-    var areas = app.get('servers').area;
-    var areaIdMap = {};
-    for (var id in areas) {
-      areaIdMap[areas[id].area] = areas[id].id;
-    }
-    app.set('areaIdMap', areaIdMap);
+    watchAreaServersInfo(app);
   }
 
   // proxy configures

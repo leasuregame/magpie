@@ -149,8 +149,6 @@ public:
      */
     void destroyStoragePath();
     
-    std::string getAppVersion();
-    
     /* downloadAndUncompress is the entry of a new thread 
      */
     friend void* assetsManagerDownloadAndUncompress(void*);

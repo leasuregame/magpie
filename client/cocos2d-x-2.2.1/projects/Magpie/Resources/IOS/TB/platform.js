@@ -13,6 +13,7 @@ var lz = lz || {};
 lz.platformConfig = {
     PLATFORM: "TB",
     VERSION: "1.4.0",
+    APP_ID: 131232,
     GATE_SERVER_HOST: "115.29.12.178",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
@@ -83,7 +84,7 @@ var TB_PLATFORM_NO_BBS = 1000; // 该游戏未配置论坛
 
 // 初始化同步推平台
 var tbAdapter = tb.TBAdapter.TBAdapterInstance();
-tbAdapter.TBInitPlatformWithAppID(131232, 1, false);
+tbAdapter.TBInitPlatformWithAppID(lz.platformConfig.APP_ID, 1, false);
 tbAdapter.TBSetAutoRotate(true);
 
 // 初始化平台完成回调

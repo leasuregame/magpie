@@ -93,13 +93,13 @@ var player = function (app) {
                     areaId: req.session.area.id
                 }
             };
-            Player.getPlayerInfo(player, function (err, Player) {
+            Player.getPlayerInfo(player, function (err, player) {
                 if (err) {
                     req.flash('error', '没有该玩家的信息');
                     return res.redirect('/playerLogin');
                 }
                 else {
-                    req.session.player = Player;
+                    req.session.player = player;
                     res.render('playerData', {
                         title: '玩家数据修改',
                         user: req.session.user,

@@ -59,8 +59,6 @@ var card = function(app) {
         var query = url.query;
 
         var data = JSON.parse(query['card']);
-        //var lineUp = query['lineUp'];
-        // console.log(lineUp);
         logger.info("[update]" + JSON.stringify(data));
         Card.update(data, function(err, cardName) {
             if (err) {
@@ -70,30 +68,11 @@ var card = function(app) {
                     info: err
                 });
             } else {
-
-                // Player.update({
-                //     where: {
-                //         id: data.playerId
-                //     },
-                //     data: {
-                //         lineUp: lineUp
-                //     }
-                // }, function(err, isOk) {
-                //     if (isOk) {
-                        logger.info("[update]" + "success");
-                        res.send({
-                            type: "success",
-                            info: cardName
-                        });
-                //     } else {
-                //         logger.error("[update]" + err);
-                //         res.send({
-                //             type: "fail",
-                //             info: err
-                //         });
-                //     }
-                // });
-
+                logger.info("[update]" + "success");
+                res.send({
+                    type: "success",
+                    info: cardName
+                });
             }
         });
     });
@@ -103,7 +82,6 @@ var card = function(app) {
         var query = url.query;
         var card = JSON.parse(query["card"]);
         logger.info("[add]" + JSON.stringify(card));
-        // console.log(card);
         card.passiveSkills = [{
             id: 1,
             items: card.passiveSkills,
@@ -133,7 +111,6 @@ var card = function(app) {
                     });
                 }
             } else {
-
                 logger.info("[add]" + "success");
                 res.send({
                     type: "success",
@@ -149,7 +126,6 @@ var card = function(app) {
         var query = url.query;
 
         var cardId = query["cardId"];
-        var lineUp = query['lineUp'];
         //  console.log(cardId);
         logger.info("[del]cardId = " + cardId);
         Card.delete(cardId, function(err, isOK) {
@@ -161,29 +137,12 @@ var card = function(app) {
                     info: err
                 });
             } else {
-                Player.update({
-                    where: {
-                        id: req.session.player.id
-                    },
-                    data: {
-                        lineUp: lineUp
-                    }
-                }, function(err, isOk) {
-                    if (isOk) {
-                        logger.info("[del] " + "success");
-                        res.send({
-                            type: "success",
-                            info: "删除成功"
-                        });
-                    } else {
-                        logger.error("[del]" + err);
-                        res.send({
-                            type: "fail",
-                            info: err
-                        });
-                    }
-                });
 
+                logger.info("[del] " + "success");
+                res.send({
+                    type: "success",
+                    info: "删除成功"
+                });
             }
         });
     });

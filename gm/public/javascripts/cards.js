@@ -351,13 +351,7 @@ function submitUpdate() {
 //提交删除
 function submitDel(id) {
 
-    //阵型处理
-    var pos = getPos(id);
-    if (pos != '') {
-        lineUp[pos - 1] = EMPTY;
-    }
-
-    var url = "/delCard?cardId=" + id + "&lineUp=" + getLineUp();
+    var url = "/delCard?cardId=" + id;
     $.ajax({
         url: url,
         type: "post",

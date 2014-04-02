@@ -67,6 +67,6 @@ filterServers = (areas, os, platform, version) ->
 	items.map (el, idx) -> 
 		id: el.id
 		name: el.name
-		index: idx
+		index: idx+1
 		status: el.status
 

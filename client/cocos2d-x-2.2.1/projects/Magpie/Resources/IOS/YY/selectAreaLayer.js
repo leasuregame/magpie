@@ -43,30 +43,30 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._areaList = areaList;
 
-        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect38, this);
-        selectAreaFrame.setPosition(this._selectAreaLayerFit.selectAreaFramePoint);
+        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect108, this);
+        selectAreaFrame.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(selectAreaFrame, 1);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(-40, 0, 640, 400));
+        var scrollViewLayer = MarkLayer.create(cc.rect(-40, 0, 640, 580));
         var len = this._areaList.length;
 
         var scrollViewHeight = len * 70 + 10;
-        if (scrollViewHeight < 400) {
-            scrollViewHeight = 400;
+        if (scrollViewHeight < 580) {
+            scrollViewHeight = 580;
         }
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var scrollView = cc.ScrollView.create(cc.size(640, 400), scrollViewLayer);
-        scrollView.setPosition(cc.p(-320, -300));
+        var scrollView = cc.ScrollView.create(cc.size(640, 580), scrollViewLayer);
+        scrollView.setPosition(cc.p(-320, -320));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         selectAreaFrame.controller.ccbAreaList.addChild(scrollView, 1);
 
         for (var i = len - 1; i >= 0; --i) {
-            var y = scrollViewHeight - (len - 1 - i) * 70 - 70;
+            var y = scrollViewHeight - (len - 1 - i) * 70 - 35;
 
             var areaItem = cc.MenuItemImage.create(
                 main_scene_image.up95,
@@ -75,6 +75,7 @@ var SelectAreaLayer = cc.Layer.extend({
                 this
             );
 
+            areaItem.setScaleX(0.9);
             areaItem.setPosition(cc.p(320, y));
 
             var area = this._areaList[i];

@@ -102,12 +102,12 @@ var appFiles = [
     'src/controls/slideLayer.js',
 
     'src/view/loginModule/loginScene.js',
-    'src/view/loginModule/loginBgLayer.js',
+    'loginBgLayer.js',
     'src/view/loginModule/updateLayer.js',
     'loginLayer.js',
-    'src/view/loginModule/newPlayerLayer.js',
+    'newPlayerLayer.js',
     'src/view/loginModule/registerLayer.js',
-    'src/view/loginModule/selectAreaLayer.js',
+    'selectAreaLayer.js',
 
     'src/view/startAnimationModule/startAnimationLayer.js',
     'src/view/startAnimationModule/startAnimationScene.js',

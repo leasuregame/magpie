@@ -383,7 +383,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need)
+      player.decrease('skillPoint', sp_need)  
       cb(null, player, card)
 
     (player, card, cb) ->

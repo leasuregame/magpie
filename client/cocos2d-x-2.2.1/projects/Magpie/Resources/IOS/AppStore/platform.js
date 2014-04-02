@@ -4,7 +4,7 @@
 
 
 /*
- * app platform
+ * AppStore platform
  * */
 
 

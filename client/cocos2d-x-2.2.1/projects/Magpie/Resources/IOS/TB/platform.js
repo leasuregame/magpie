@@ -11,6 +11,7 @@
 var lz = lz || {};
 
 lz.platformConfig = {
+    OS: "IOS",
     PLATFORM: "TB",
     VERSION: "1.4.0",
     APP_ID: 131232,

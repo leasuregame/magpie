@@ -78,7 +78,7 @@ returnData = (data) ->
   money: data.money if data.money
   skillPoint: data.skillPoint if data.skillPoint
   elixir: data.elixir if data.elixir
-  fragment: data.fragments if data.fragments
+  fragments: data.fragments if data.fragments
   spirit: data.spirit if data.spirit
 
 updatePlayer = (app, player, data, cb) ->

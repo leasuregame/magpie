@@ -4,15 +4,18 @@
 
 
 /*
- * app platform
+ * YY platform
  * */
 
 
 var lz = lz || {};
 
 lz.platformConfig = {
-    PLATFORM: "AppStore",
+    OS: "IOS",
+    PLATFORM: "YY",
     VERSION: "1.4.0",
+    APP_ID: "IYYDS",
+    APP_KEY: "OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf",
     GATE_SERVER_HOST: "124.238.236.33",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",

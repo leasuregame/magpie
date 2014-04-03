@@ -120,9 +120,9 @@
             'src/controls/slideLayer.js',
 
             'src/view/loginModule/loginScene.js',
-            'IOS/YY/loginBgLayer.js',
+            'src/view/loginModule/loginBgLayer.js',
             // 'TB/loginLayer.js',
-            'IOS/YY/loginLayer.js',
+            'IOS/AppStore/loginLayer.js',
             'IOS/YY/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
             'IOS/YY/selectAreaLayer.js',

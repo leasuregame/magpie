@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Magpie-91-Releases.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Magpie-91.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Magpie-AppStore-Releases.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,16 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Magpie-PP-Releases.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Magpie-PP.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Magpie-TB-Releases.xcscheme</key>
 		<dict>
@@ -24,10 +44,50 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>Magpie-YY-Releases.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>Magpie-YY.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>902B07A11858C475003A2A49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066003B18ED4A0300AAC9D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066012318ED4A2200AAC9D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066021A18ED4A2400AAC9D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066FC9B18ED110100AAC9D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066FDAC18ED111000AAC9D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9066FF4418ED4A0100AAC9D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

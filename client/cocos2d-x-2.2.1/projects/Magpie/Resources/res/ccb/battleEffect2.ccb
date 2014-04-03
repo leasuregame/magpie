@@ -784,8 +784,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>1.2000000476837158</real>
+							<real>0.89999997615814209</real>
+							<real>0.89999997615814209</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -817,7 +817,19 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>200</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>254</integer>
+							<integer>250</integer>
+							<integer>178</integer>
+						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -921,7 +933,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

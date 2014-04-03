@@ -8,8 +8,8 @@ async = require 'async'
 _ = require 'underscore'
 
 GOLDCARDMAP = 
-  'com.leasuregame.magpie.week.card.pay6': 'week'
-  'com.leasuregame.magpie.month.card.pay30': 'month'
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
 
 addOrder = (app, tradeNo, player, cash, cb) ->
   app.get('dao').order.create data: {
@@ -46,8 +46,8 @@ addGoldCard = (app, tradeNo, player, product, cb) ->
 
 isGoldCard = (product) ->
   ids = [
-    'com.leasuregame.magpie.week.card.pay6',
-    'com.leasuregame.magpie.month.card.pay30'
+    'com.leasuregame.magpie.week.card',
+    'com.leasuregame.magpie.month.card'
   ]
   if product and product.product_id in ids
     return true
@@ -246,6 +246,7 @@ openFirstRechargeBox = (player, boxInfo, next) ->
       if err
         return next null, {code: err.code or 500, msg: err.msg or err}
 
+      player.addCard(card)
       next null, {code: 200, msg: {card: card.toJson()}}
   else
     next null, {code: 200}

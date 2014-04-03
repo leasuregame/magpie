@@ -24,7 +24,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("注册界面");
+        lz.um.beginLogPageView("注册界面");
     },
 
     onExit: function () {
@@ -32,7 +32,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("注册界面");
+        lz.um.endLogPageView("注册界面");
     },
 
     init: function () {

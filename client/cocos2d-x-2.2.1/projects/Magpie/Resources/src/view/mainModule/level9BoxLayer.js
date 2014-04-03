@@ -18,7 +18,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("九级礼包界面");
+        lz.um.beginLogPageView("九级礼包界面");
     },
 
     onExit: function () {
@@ -26,7 +26,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("九级礼包界面");
+        lz.um.endLogPageView("九级礼包界面");
     },
 
     init: function (data) {
@@ -73,6 +73,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         GiftBagLayer.pop({
             reward: this._reward,
+            type: SHOW_GIFT_BAG_NO_CLOSE,
             cb: function () {
                 lz.tipReward(that._reward);
                 if (that._cb) {
@@ -81,7 +82,6 @@ var Level9BoxLayer = LazyLayer.extend({
             }
         });
     }
-
 });
 
 

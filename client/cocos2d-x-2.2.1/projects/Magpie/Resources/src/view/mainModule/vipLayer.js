@@ -43,7 +43,7 @@ var VipLayer = cc.Layer.extend({
 
         this.schedule(this._update, 1);
 
-        lz.dc.beginLogPageView("VIP礼包界面");
+        lz.um.beginLogPageView("VIP礼包界面");
     },
 
     onExit: function () {
@@ -51,7 +51,7 @@ var VipLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("VIP礼包界面");
+        lz.um.endLogPageView("VIP礼包界面");
     },
 
     init: function () {

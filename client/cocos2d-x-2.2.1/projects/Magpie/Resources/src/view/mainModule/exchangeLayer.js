@@ -25,7 +25,7 @@ var ExchangeLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡魂兑换界面");
+        lz.um.beginLogPageView("卡魂兑换界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡魂兑换界面");
+        lz.um.endLogPageView("卡魂兑换界面");
     },
 
     init: function () {

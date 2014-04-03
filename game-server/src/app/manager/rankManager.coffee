@@ -6,6 +6,9 @@ achieve = require('../domain/achievement')
 playerManager = app.get('playerManager')
 entityUtil = require '../util/entityUtil'
 _ = require('underscore')
+async = require 'async'
+utility = require '../common/utility'
+logger = require('pomelo-logger').getLogger(__filename)
 
 Manager = module.exports = 
   getRank: (playerId, cb) ->
@@ -64,8 +67,41 @@ Manager = module.exports =
         checkAchievement(player, challenger)
       else
         checkAchievement(target, defender)
-      updateAll(player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
       
+      updateElixir(player, rewards.elixir)
+      updateAll(player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb)
+
+updateElixir = (player, elixir) ->
+  week = utility.thisWeek()
+  async.waterfall [
+    (cb) ->
+      dao.elixirOfRank.fetchOne where: {
+        playerId: player.id
+        week: week
+      }, (err, res) ->
+        if err
+          cb(null, null)
+        else
+          cb(null, res)
+
+    (row, cb) ->
+      if not row
+        dao.elixirOfRank.create data: {
+          playerId: player.id
+          week: week
+          name: player.name
+          elixir: elixir
+        }, cb
+      else 
+        dao.elixirOfRank.update {
+          data: {elixir: row.elixir + elixir}
+          where: {playerId: player.id, week: week}
+        }, cb
+  ], (err, result) ->
+    if err
+      logger.error('update elixir of ranking error: ', err.stack)
+
+
 updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
   
   jobs = [

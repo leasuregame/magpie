@@ -24,6 +24,10 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::queryEntry = (msg, session, next) ->
+	os = msg.os or 'IOS'
+	platform = msg.platform or 'TB'
+	version = msg.version
+
 	connectors = @app.getServersByType 'connector'
 	if not connectors or connectors.length is 0
 		return next {code: 500, msg: '没有可用的服务器'}
@@ -45,9 +49,24 @@ Handler::queryEntry = (msg, session, next) ->
 		msg: {
 			host: connector.host, 
 			port: connector.clientPort,
-			servers: areasInfo
+			servers: filterServers(areasInfo, os, platform, version)
 		}
 	}
 
 randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]
+
+filterServers = (areas, os, platform, version) ->
+	items = areas.filter (area) -> os in area.os and platform in area.platform
+	if version
+		versionSpecifyItems = items.filter (i) -> version in i.version
+		if versionSpecifyItems.length > 0
+			items = versionSpecifyItems
+
+	items.sort (x, y) -> parseInt(x.id) - parseInt(y.id)
+	items.map (el, idx) -> 
+		id: el.id
+		name: el.name
+		index: idx+1
+		status: el.status
+

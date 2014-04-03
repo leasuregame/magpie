@@ -1,3 +1,5 @@
+BUILD_TARGET="$1"
+BUILD_MODE="$2"
 APPNAME="Magpie"
 
 # options
@@ -49,6 +51,7 @@ COCOS2DX_ROOT="$DIR/../../.."
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 BINDINGS_JS_ROOT="$APP_ROOT/../../scripting/javascript/bindings/js"
+CP_RES_SHELL_PATH="$APP_ANDROID_ROOT/sh/""$BUILD_TARGET""_cp_res.sh"
 
 echo
 echo "Paths"
@@ -69,18 +72,23 @@ fi
 mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/res
 
-# copy Resources/* into assets' root
-cp -rf "$APP_ROOT"/Resources/* "$APP_ANDROID_ROOT"/assets
-
-
-# copy bindings/*.js into assets' root
-cp -f "$BINDINGS_JS_ROOT"/* "$APP_ANDROID_ROOT"/assets
+# copy Resources into assets' root
+if [ -f "$CP_RES_SHELL_PATH" ]; then
+	sh "$CP_RES_SHELL_PATH" "$DIR" "$BUILD_MODE"
+else
+	echo "$CP_RES_SHELL_PATH not exist"
+fi
 
 echo "Using prebuilt externals"
 echo
 
 set -x
 
-"$NDK_ROOT"/ndk-build $PARALLEL_BUILD_FLAG -C "$APP_ANDROID_ROOT" $* \
+param=
+if [ "$1" = "clean" ]; then
+	param="clean"
+fi
+
+"$NDK_ROOT"/ndk-build $PARALLEL_BUILD_FLAG -C "$APP_ANDROID_ROOT" $param \
     "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt" \
     NDK_LOG=0 V=0

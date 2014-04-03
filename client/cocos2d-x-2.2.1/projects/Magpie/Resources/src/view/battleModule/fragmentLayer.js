@@ -3,7 +3,6 @@
  */
 
 var FragmentLayer = LazyLayer.extend({
-
     _canClick: false,
 
     init: function (fragment) {
@@ -24,7 +23,6 @@ var FragmentLayer = LazyLayer.extend({
         });
 
         return true;
-
     },
 
     onTouchBegan: function (touch, event) {
@@ -32,25 +30,28 @@ var FragmentLayer = LazyLayer.extend({
 
         if (this._canClick) {
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this.removeFromParent();
         }
 
         return true;
     }
-
 });
 
 FragmentLayer.create = function (fragment) {
+    var ret = new FragmentLayer();
 
-    var ref = new FragmentLayer();
-    if (ref && ref.init(fragment)) {
-        return ref;
+    if (ret && ret.init(fragment)) {
+        return ret;
     }
+
     return null;
 };
 
 FragmentLayer.pop = function (fragment) {
     var fragmentLayer = FragmentLayer.create(fragment);
+
     BattlePlayer.getInstance().getScene().addChild(fragmentLayer, 10);
+    
     return fragmentLayer;
 };

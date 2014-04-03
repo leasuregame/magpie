@@ -182,7 +182,7 @@ var CardList = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_sell", cardIdList.length);
+                lz.um.event("event_card_sell", cardIdList.length);
             } else {
                 cc.log("upgrade fail");
             }

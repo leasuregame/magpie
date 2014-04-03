@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-12-20T06:31:14Z</Created>
-  <LastSaved>2014-02-12T09:19:27Z</LastSaved>
+  <LastSaved>2014-02-28T03:38:07Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10120</WindowHeight>
-  <WindowWidth>24820</WindowWidth>
-  <WindowTopX>9660</WindowTopX>
-  <WindowTopY>5180</WindowTopY>
+  <WindowHeight>8080</WindowHeight>
+  <WindowWidth>27400</WindowWidth>
+  <WindowTopX>4500</WindowTopX>
+  <WindowTopY>1180</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -34,9 +34,9 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="零碎的值配置表">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:AutoFitWidth="0" ss:Width="175"/>
+   <Column ss:AutoFitWidth="0" ss:Width="240"/>
    <Column ss:AutoFitWidth="0" ss:Width="121"/>
    <Column ss:AutoFitWidth="0" ss:Width="361"/>
    <Row ss:AutoFitHeight="0">
@@ -51,7 +51,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">reflashExcCardsMoney</Data></Cell>
-    <Cell><Data ss:Type="Number">1000</Data></Cell>
+    <Cell><Data ss:Type="Number">5000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">playSpeedLv1</Data></Cell>
@@ -79,6 +79,16 @@
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="String">每次喊话话费的金额</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">elixirOfRankMoneyGap</Data></Cell>
+    <Cell><Data ss:Type="Number">130500</Data></Cell>
+    <Cell><Data ss:Type="String">竞技仙丹排名，入榜和不入榜的仙币差值</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">damageOfRankHonorGap</Data></Cell>
+    <Cell><Data ss:Type="Number">3000</Data></Cell>
+    <Cell><Data ss:Type="String">Boss伤害排行，入榜和不入榜的荣誉差值</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
@@ -93,8 +103,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

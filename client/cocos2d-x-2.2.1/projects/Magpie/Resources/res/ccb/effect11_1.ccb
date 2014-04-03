@@ -250,9 +250,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>117</integer>
-									<integer>213</integer>
 									<integer>255</integer>
+									<integer>222</integer>
+									<integer>178</integer>
 								</array>
 							</dict>
 							<dict>
@@ -441,9 +441,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>213</integer>
+									<integer>130</integer>
 								</array>
 							</dict>
 							<dict>

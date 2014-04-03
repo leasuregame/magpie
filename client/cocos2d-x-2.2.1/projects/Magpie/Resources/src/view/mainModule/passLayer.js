@@ -17,8 +17,6 @@ var PassLayer = cc.Layer.extend({
 
     _top: 0,
     _isWin: null,
-    _upgradeReward: null,
-    _level9Box: null,
     _spirit: null,
     _towerSprite: null,
     _topLabel: null,
@@ -27,19 +25,15 @@ var PassLayer = cc.Layer.extend({
     _resetItem: null,
     _mysticalItem: null,
     _scrollView: null,
-    _element: {},
-    _blackHoleSprite: [],
-    _isFirstPassWin: false,
+    _element: null,
     _scrollViewLayer: null,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
 
         this._super();
-        this.update();
-        this.updateGuide();
 
-        lz.dc.beginLogPageView("天道界面");
+        lz.um.beginLogPageView("天道界面");
     },
 
     onExit: function () {
@@ -47,7 +41,7 @@ var PassLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("天道界面");
+        lz.um.endLogPageView("天道界面");
     },
 
     init: function () {
@@ -70,15 +64,6 @@ var PassLayer = cc.Layer.extend({
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect28, this);
         ccbNode.setPosition(this._passLayerFit.ccbNodePoint);
         this.addChild(ccbNode);
-
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._passLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon17);
-        titleIcon.setPosition(this._passLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
 
         this._mysticalItem = cc.BuilderReader.load(main_scene_image.uiEffect1, this);
         this._mysticalItem.setPosition(this._passLayerFit.mysticalItemPoint);
@@ -154,7 +139,6 @@ var PassLayer = cc.Layer.extend({
         scrollViewLayer.addChild(this._spirit, 1);
 
         this._scrollViewLayer = scrollViewLayer;
-
         this._scrollView = cc.ScrollView.create(this._passLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setContentSize(this._passLayerFit.scrollViewContentSize);
         this._scrollView.setPosition(this._passLayerFit.scrollViewPoint);
@@ -230,40 +214,18 @@ var PassLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
+        this.update();
+        this.updateGuide();
+
         return true;
     },
 
     update: function () {
         cc.log("PassLayer update");
 
-        var that = this;
-        var next = function () {
-            cc.log("isFirstPassWin: " + that._isFirstPassWin);
-            if (that._isFirstPassWin) {
-                MandatoryTeachingLayer.pop(FIRST_PASS_WIN);
-            }
-        };
-
-        if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop({
-                reward: this._upgradeReward,
-                cb: function () {
-                    if (this._level9Box) {
-                        Level9BoxLayer.pop({reward: this._level9Box, cb: next});
-                        this._level9Box = null;
-                    } else {
-                        next();
-                    }
-                }
-            });
-            this._upgradeReward = null;
-        } else {
-            next();
-        }
-
         var pass = gameData.pass;
 
-        this._blackHoleRotate();
+        this._locate(this._top);
 
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
             var mark = pass.getMarkByIndex(i);
@@ -274,24 +236,6 @@ var PassLayer = cc.Layer.extend({
                 var color = mark ? cc.c3b(255, 255, 255) : cc.c3b(160, 160, 160);
                 this._element[i].ladderSprite.setColor(color);
             }
-        }
-
-        if (this._isWin != null) {
-            this._spirit.speak(this._isWin);
-
-            var top = pass.getTop();
-
-            if (top != this._top) {
-                this._locate(this._top);
-
-                this._top = top;
-
-                this._defianceAnimation();
-            } else {
-                LazyLayer.closeCloudLayer();
-            }
-
-            this._isWin = null;
         }
 
         this._wipeOutItem.setEnabled(pass.canWipeOut());
@@ -457,7 +401,7 @@ var PassLayer = cc.Layer.extend({
         layer.addChild(menu);
     },
 
-    _showWipeOutReward: function (reward) {
+    _showWipeOutReward: function (cb, reward) {
         cc.log("PassLayer _showWipeOutReward");
 
         var layer = LazyLayer.create();
@@ -486,6 +430,7 @@ var PassLayer = cc.Layer.extend({
                 rewardIcon.setPosition(cc.p(-70, offsetY - 10));
                 label.addChild(rewardIcon);
             }
+
             var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
             rewardLabel.setAnchorPoint(cc.p(0, 1));
@@ -500,7 +445,7 @@ var PassLayer = cc.Layer.extend({
             main_scene_image.icon21,
             function () {
                 layer.removeFromParent();
-                this.update();
+                cb();
             },
             this
         );
@@ -514,28 +459,11 @@ var PassLayer = cc.Layer.extend({
         bgSprite.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
     },
 
-    _blackHoleRotate: function () {
-        cc.log("PassLayer _blackHoleRotate");
-
-        var deltaAngleList = [10, 15, 20, 25, 30, 35];
-        var len = this._blackHoleSprite.length;
-
-        for (var i = 0; i < len; ++i) {
-            this._blackHoleSprite[i].stopAllActions();
-
-            this._blackHoleSprite[i].runAction(
-                cc.RepeatForever.create(
-                    cc.RotateBy.create(1, deltaAngleList[i])
-                )
-            );
-        }
-    },
-
-    _defianceAnimation: function () {
+    _defianceAnimation: function (cb) {
         cc.log("PassLayer _defianceAnimation");
 
         if (this._top > MAX_PASS_COUNT) {
-            LazyLayer.closeCloudLayer();
+            cb();
             return;
         }
 
@@ -546,8 +474,6 @@ var PassLayer = cc.Layer.extend({
         }, 2.5);
 
         this.scheduleOnce(function () {
-            LazyLayer.closeCloudLayer();
-
             var ccbNode;
             if (gameData.pass.isBossPass(this._top)) {
                 ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect20, this);
@@ -560,10 +486,12 @@ var PassLayer = cc.Layer.extend({
             ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
                 ccbNode.removeFromParent();
             });
+
+            cb();
         }, 3.5);
     },
 
-    _wipeOutAnimation: function (reward) {
+    _wipeOutAnimation: function (cb) {
         cc.log("PassLayer _wipeOutAnimation");
 
         this.ccbFnCallback = function () {
@@ -585,8 +513,7 @@ var PassLayer = cc.Layer.extend({
                         this._spirit.setVisible(true);
                         ccbNode.removeFromParent();
 
-                        LazyLayer.closeCloudAll();
-                        this._showWipeOutReward(reward);
+                        cb();
                     });
 
                     return;
@@ -630,22 +557,88 @@ var PassLayer = cc.Layer.extend({
                 return;
             }
 
-            LazyLayer.showCloudLayer();
+            LazyLayer.showCloudAll();
 
             var that = this;
             gameData.pass.defiance(function (data) {
                 cc.log(data);
 
                 if (data) {
-                    that._upgradeReward = data.upgradeReward || null;
-                    that._level9Box = data.level9Box || null;
-                    that._isFirstPassWin = data.isFirstPassWin || false;
+                    var battleLogId = data.battleLogId;
+                    var upgradeReward = data.upgradeReward || null;
+                    var level9Box = data.level9Box || null;
+                    var isFirstPassWin = data.isFirstPassWin || false;
+                    var isWin = false;
+                    var next = function () {
+                        gameCombo.next();
+                    };
 
-                    that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
+                    gameCombo.push([
+                        function () {
+                            isWin = BattlePlayer.getInstance().play({
+                                cb: next,
+                                id: battleLogId
+                            });
+                        },
+                        function () {
+                            that._spirit.speak(isWin);
+
+                            that.update();
+
+                            var top = gameData.pass.getTop();
+
+                            if (top != that._top) {
+                                that._top = top;
+                                that._defianceAnimation(next);
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            LazyLayer.closeCloudAll();
+                            next();
+                        },
+                        function () {
+                            if (upgradeReward) {
+                                PlayerUpgradeLayer.pop({
+                                    cb: next,
+                                    reward: upgradeReward
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            if (level9Box) {
+                                Level9BoxLayer.pop({
+                                    cb: next,
+                                    reward: level9Box
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            if (isFirstPassWin) {
+                                MandatoryTeachingLayer.pop({
+                                    cb: next,
+                                    progress: FIRST_PASS_WIN
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            if (upgradeReward) {
+                                gameGuide.updateGuide();
+                            }
+                            next();
+                        }
+                    ]);
                 } else {
                     that.update();
 
-                    LazyLayer.closeCloudLayer();
+                    LazyLayer.closeCloudAll();
                 }
             }, id);
         }
@@ -663,11 +656,52 @@ var PassLayer = cc.Layer.extend({
             cc.log(data);
 
             if (data) {
-                that._upgradeReward = data.upgradeReward || null;
-                that._level9Box = data.level9Box || null;
-                that._isFirstPassWin = data.isFirstPassWin || false;
+                var upgradeReward = data.upgradeReward || null;
+                var level9Box = data.level9Box || null;
 
-                that._wipeOutAnimation(data.reward);
+                var next = function () {
+                    gameCombo.next();
+                };
+
+                gameCombo.push([
+                    function () {
+                        that._wipeOutAnimation(next);
+                    },
+                    function () {
+                        that._showWipeOutReward(next, data.reward);
+                        LazyLayer.closeCloudAll();
+                    },
+                    function () {
+                        that.update();
+                        next();
+                    },
+                    function () {
+                        if (upgradeReward) {
+                            PlayerUpgradeLayer.pop({
+                                cb: next,
+                                reward: upgradeReward
+                            });
+                        } else {
+                            next();
+                        }
+                    },
+                    function () {
+                        if (level9Box) {
+                            Level9BoxLayer.pop({
+                                cb: next,
+                                reward: level9Box
+                            });
+                        } else {
+                            next();
+                        }
+                    },
+                    function () {
+                        if (upgradeReward) {
+                            gameGuide.updateGuide();
+                        }
+                        next();
+                    }
+                ]);
             } else {
                 that.update();
 
@@ -681,20 +715,43 @@ var PassLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_building_sound, false);
 
-        LazyLayer.showCloudLayer();
+        LazyLayer.showCloudAll();
 
         var that = this;
         gameData.pass.mystical(function (battleLogId) {
             if (battleLogId) {
-                that._isWin = BattlePlayer.getInstance().play(battleLogId);
+                var isWin = false;
+                var next = function () {
+                    gameCombo.next();
+                };
+
+                gameCombo.push([
+                    function () {
+                        isWin = BattlePlayer.getInstance().play({
+                            cb: next,
+                            id: battleLogId
+                        });
+                    },
+                    function () {
+                        that.update();
+
+                        if (isWin) {
+                            that._spirit.speak(isWin);
+                        }
+
+                        LazyLayer.closeCloudAll();
+                        next();
+                    }
+                ]);
             } else {
-                LazyLayer.closeCloudLayer();
+                LazyLayer.closeCloudAll();
             }
         });
     },
 
     _onClickLineUp: function () {
         cc.log("TournamentLabel _onClickLineUp");
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         LineUpLayer.pop();

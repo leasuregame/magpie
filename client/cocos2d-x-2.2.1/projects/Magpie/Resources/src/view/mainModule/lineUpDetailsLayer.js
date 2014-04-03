@@ -26,7 +26,7 @@ var LineUpDetailsLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("上阵卡牌列表界面");
+        lz.um.beginLogPageView("上阵卡牌列表界面");
     },
 
     onExit: function () {
@@ -34,7 +34,7 @@ var LineUpDetailsLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("上阵卡牌列表界面");
+        lz.um.endLogPageView("上阵卡牌列表界面");
     },
 
     init: function (cardList, index) {

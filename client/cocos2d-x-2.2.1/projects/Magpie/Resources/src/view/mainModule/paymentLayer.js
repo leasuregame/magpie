@@ -22,7 +22,7 @@ var PaymentLayer = LazyLayer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("充值界面");
+        lz.um.beginLogPageView("充值界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var PaymentLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("充值界面");
+        lz.um.endLogPageView("充值界面");
     },
 
     init: function () {

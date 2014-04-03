@@ -72,7 +72,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.20000000298023224</real>
+							<real>0.80000001192092896</real>
 							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
@@ -101,7 +101,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>600</real>
+							<real>200</real>
 							<real>30</real>
 						</array>
 					</dict>
@@ -147,7 +147,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>40</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -298,7 +298,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p8.png</string>
+						<string>res/effect/effect/p28.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -427,7 +427,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>60</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -438,8 +438,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>8</real>
-							<real>3</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -619,7 +619,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>200</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -634,7 +634,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>200</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -656,52 +656,6 @@
 							<string>opacity</string>
 							<key>type</key>
 							<integer>5</integer>
-						</dict>
-						<key>scale</key>
-						<dict>
-							<key>keyframes</key>
-							<array>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.0</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>7</real>
-										<real>1.5</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>2</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>7</real>
-										<real>1.6000000238418579</real>
-									</array>
-								</dict>
-							</array>
-							<key>name</key>
-							<string>scale</string>
-							<key>type</key>
-							<integer>4</integer>
 						</dict>
 					</dict>
 				</dict>
@@ -739,23 +693,18 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.0</real>
+							<real>0.30000001192092896</real>
 						</array>
 					</dict>
 					<dict>
-						<key>baseValue</key>
-						<array>
-							<real>7</real>
-							<real>1</real>
-						</array>
 						<key>name</key>
 						<string>scale</string>
 						<key>type</key>
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>7</real>
-							<real>1.6000000238418579</real>
+							<real>4</real>
+							<real>4</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -776,7 +725,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/effect/p5.png</string>
+							<string>res/effect/uiEffect/up117.png</string>
 						</array>
 					</dict>
 					<dict>

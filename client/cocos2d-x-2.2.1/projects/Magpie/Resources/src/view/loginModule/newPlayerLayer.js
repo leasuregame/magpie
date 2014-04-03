@@ -16,7 +16,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("创建新玩家界面");
+        lz.um.beginLogPageView("创建新玩家界面");
     },
 
     onExit: function () {
@@ -24,7 +24,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("创建新玩家界面");
+        lz.um.endLogPageView("创建新玩家界面");
     },
 
     init: function () {

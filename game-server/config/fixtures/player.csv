@@ -1,18 +1,18 @@
 id;userId;areaId;name;power;vip;lv;exp;money;gold;lineUp;ability;task;skillPoint;dailyGift;fragments;energy;elixir;spiritPool;spiritor;passLayer;pass
-1;1;1;Linc;"{""time"":0,""value"":30}";;64;300;1000000;1000;00:1,01:2,02:3,10:4,11:5,12:-1;;"{""id"":100,""progress"":2,""hasWin"":false,""mark"":[]}";100000;;;;;;;7;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
-2;2;1;Mike;"{""time"":0,""value"":40}";;64;400;10000;200;00:6,01:7,02:8,10:9,12:10,11:-1;;"{""id"":1,""progress"":2,""hasWin"":false,""mark"":[]}";0;;;;;;;1;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 10}"
+1;1;1;Linc;"{""time"":0,""value"":30}";;64;300;1000000;1000;"[{""1"": 1,""2"":2,""3"":3,""4"":4,""5"":5,""6"":-1}]";;"{""id"":100,""progress"":2,""hasWin"":false,""mark"":[]}";100000;;;;;;;7;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+2;2;1;Mike;"{""time"":0,""value"":40}";;64;400;10000;200;"[{""1"": 6,""2"":7,""3"":8,""4"":9,""5"":10,""6"":-1}]";;"{""id"":1,""progress"":2,""hasWin"":false,""mark"":[]}";0;;;;;;;1;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 10}"
 3;3;1;Marhon;"{""time"":0,""value"":41}";;11;410;10000;200;;;"{""id"":1,""progress"":2,""hasWin"":false,""mark"":[]}";0;;;;;;;1;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
-4;4;1;Arthur;"{""time"":0,""value"":42}";;11;420;10000;200;00:20,01:21,02:22,11:-1;;"{""id"":5,""progress"":2,""hasWin"":false,""mark"":[]}";0;;;;;;;5;"{ ""mark"" : [],  ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
-100;100;1;Attacker;"{""time"":0,""value"":43}";;64;1000;12000000;40000;00:100,01:101,02:102,10:103,11:104,12:-1;;"{""id"":1,""progress"":0,""hasWin"":false,""mark"":[]}";300000;;;150000;10000;;"{""lv"": 4, ""spirit"": 10}";24;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
-101;101;1;Defender;"{""time"":0,""value"":44}";;64;1121;21000000;21400;00:105,01:106,02:107,10:108,11:109,12:-1;;"{""id"":250,""progress"":2,""hasWin"":false,""mark"":[]}";32100;;;;;;"{""lv"": 4, ""spirit"": 10}";27;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
-102;102;1;Player power is not enough;"{""time"":0,""value"":0}";;40;1000;12000000;20000;00:100,01:101,02:102,10:103,11:104,12:-1;;"{""id"":250,""progress"":2,""hasWin"":false,""mark"":[]}";300000;;;;;;;25;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+4;4;1;Arthur;"{""time"":0,""value"":42}";;11;420;10000;200;"[{""1"": 20,""2"":21,""3"":22,""6"":-1}]";;"{""id"":5,""progress"":2,""hasWin"":false,""mark"":[]}";0;;;;;;;5;"{ ""mark"" : [],  ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+100;100;1;Attacker;"{""time"":0,""value"":43}";;64;1000;12000000;40000;"[{""1"": 100,""2"":101,""3"":102,""6"":-1},{""4"":103,""5"":104,""6"":-1}]";;"{""id"":1,""progress"":0,""hasWin"":false,""mark"":[]}";300000;;;150000;10000;;"{""lv"": 4, ""spirit"": 10}";24;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+101;101;1;Defender;"{""time"":0,""value"":44}";;64;1121;21000000;21400;"[{""1"": 105,""2"":106,""3"":107,""6"":-1},{""4"":108,""5"":109,""6"":-1}]";;"{""id"":250,""progress"":2,""hasWin"":false,""mark"":[]}";32100;;;;;;"{""lv"": 4, ""spirit"": 10}";27;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+102;102;1;Player power is not enough;"{""time"":0,""value"":0}";;40;1000;12000000;20000;"[{""1"": 100,""2"":101,""3"":102,""4"":103,""5"":104,""6"":-1}]";;"{""id"":250,""progress"":2,""hasWin"":false,""mark"":[]}";300000;;;;;;;25;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
 103;103;1;player for pass wipeOut;"{""time"":0,""value"":1}";;40;1500;100000;10000;;;;0;;;;;;;25;"{ ""mark"" : [],  ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
 104;104;1;user3;;;;;0;0;;;;;;;;;;;;
 105;105;1;user2;;;;;;;;;;;;;;;;;;
 106;106;1;没钱的家伙;;;10;;0;0;;;;;;;;;;;;
 107;107;1;user1;;;5;;;;;;;;;;;;;;;
 108;108;1;user5;;;;;;0;;;;;;;;;"{""lv"":1,""exp"":0,""collectCount"": 0}";;;
-110;110;1;Passer;"{""time"":0,""value"":50}";;10;100;10000000;100000;00:301,01:302,02:303,10:304,11:305,12:-1;;;;;;;;;;0;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
+110;110;1;Passer;"{""time"":0,""value"":50}";;10;100;10000000;100000;"[{""1"": 320,""2"":321,""3"":322,""4"":323,""5"":324,""6"":-1}]";;;;;;;;;;0;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
 111;111;1;没钱的VIP;;1;;;0;0;;;;;;;;;;;;
 112;112;1;buyMoney;;;;;0;200;;;;;;;;;;;;
 113;113;1;buyPower;;;;;0;130;;;;;;;;;;;;

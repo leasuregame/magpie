@@ -1,6 +1,6 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
-var msgConfig = require('../../../config/data/message');
+var configData = require('../../../config/data');
 var _ = require("underscore");
 var util = require('util');
 
@@ -36,7 +36,7 @@ var Message = (function(_super) {
             receiver: this.receiver,
             type: this.type,
             status: this.status,
-            options: (this.type == msgConfig.MESSAGETYPE.BATTLENOTICE || this.type == msgConfig.MESSAGETYPE.MESSAGE) ? this.options : void 0,
+            options: (this.type == configData.message.MESSAGETYPE.BATTLENOTICE || this.type == configData.message.MESSAGETYPE.MESSAGE) ? this.options : void 0,
             content: this.content,
             createTime: this.createTime
         }

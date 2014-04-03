@@ -25,7 +25,7 @@ var AbilityRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("战斗力排行榜界面");
+        lz.um.beginLogPageView("战斗力排行榜界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var AbilityRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("战斗力排行榜界面");
+        lz.um.endLogPageView("战斗力排行榜界面");
     },
 
     init: function () {

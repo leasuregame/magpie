@@ -55,7 +55,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>0.23333333432674408</real>
+									<real>0.30000001192092896</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -95,7 +95,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.23333333432674408</real>
+									<real>0.30000001192092896</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -131,7 +131,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.033333335071802139</real>
+											<real>0.10000000149011612</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -146,7 +146,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.23333333432674408</real>
+											<real>0.30000001192092896</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -288,7 +288,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -324,7 +324,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.033333335071802139</real>
+											<real>0.10000000149011612</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -339,7 +339,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.23333333432674408</real>
+											<real>0.30000001192092896</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -481,7 +481,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -529,7 +529,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -563,7 +563,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>26.666671752929688</real>
+						<real>-80</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -675,13 +675,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.23333333432674408</real>
+			<real>0.30000001192092896</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.10000000149011612</real>
+			<real>0.30000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

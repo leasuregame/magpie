@@ -27,13 +27,13 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @spirit_hp = attrs.incs?.spirit_hp or 0
-    @spirit_atk = attrs.incs?.spirit_atk or 0
-    @init_hp = @hp = attrs.hp + @spirit_hp
-    @init_atk = @atk = attrs.atk + @spirit_atk
+    @spirit_hp = parseInt attrs.incs?.spirit_hp*(100+player.inc_scale)/100 or 0
+    @spirit_atk = parseInt attrs.incs?.spirit_atk*(100+player.inc_scale)/100 or 0
+    @init_hp = @hp = parseInt (attrs.hp + @spirit_hp)*(100+player.inc_scale)/100
+    @init_atk = @atk = parseInt (attrs.atk + @spirit_atk)*(100+player.inc_scale)/100
 
-    @hp_only = attrs.hp
-    @atk_only = attrs.atk
+    @hp_only = @hp
+    @atk_only = @atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 1
@@ -88,11 +88,11 @@ class Hero extends Module
   isAttacked: ->
     @state is STATE_ATTACKED
 
-  isDodge: ->
-    if @sp? then @sp.isDodge() else false
+  isDodge: (enemy) ->
+    if @sp? then @sp.isDodge(enemy.sp?.get('hit')) else false
 
-  isCrit: ->
-    if @sp? then @sp.isCrit() else false
+  isCrit: (enemy) ->
+    if @sp? then @sp.isCrit(enemy.sp?.get('toughness')) else false
 
   usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
     return callback() if @player.enemy.death()
@@ -115,15 +115,15 @@ class Hero extends Module
     
     _len = enemys? and enemys.length or 0
     _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
-
+    
     for enemy in enemys
       
-      if enemy.isDodge()
+      if enemy.isDodge(@)
         # 闪避
         _step.d.push enemy.idx
         _step.e.push 0
         continue
-      else if @isCrit()
+      else if @isCrit(enemy)
         # 暴击
         _dmg = parseInt _dmg * @crit_factor
         _d = -enemy.idx # 负索引代表暴击
@@ -143,10 +143,11 @@ class Hero extends Module
     _step = {a: -@idx, d: [], e: []}
     _step.t = 1 if isSpiritor
     
-    _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
+    ### 卡牌治疗效果按卡牌最大生命值来计算 ###
+    _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
     
     for enemy in enemys      
-      if @isCrit()
+      if @isCrit(enemy)
         _hp *= @crit_factor
         _d = -enemy.idx
       else
@@ -172,9 +173,9 @@ class Hero extends Module
       
       _dmg = @atk
       _d = _hero.idx
-      if _hero.isDodge()
+      if _hero.isDodge(@)
         _dmg = 0
-      else if @isCrit()
+      else if @isCrit(_hero)
         # 暴击
         _dmg = parseInt _dmg * @crit_factor 
         _d = -_hero.idx # 负索引代表暴击
@@ -192,7 +193,7 @@ class Hero extends Module
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少
-    _value = @_checkDmgReduce(value, step)
+    _value = @_checkDmgReduce(enemy, value, step)
 
     @hp -= _value
     
@@ -202,8 +203,8 @@ class Hero extends Module
   damageOnly: (value) ->
     @hp -= value
   
-  _checkDmgReduce: (value, step) ->
-    _value = @sp?.dmgReduce(value) or value
+  _checkDmgReduce: (enemy, value, step) ->
+    _value = @sp?.dmgReduce(value, enemy.sp?.get('disrupting')) or value
     if _value < value
       step.e.pop()
       step.e.push -_value
@@ -221,15 +222,19 @@ class Hero extends Module
   log: (step)->
     if step.r? and not _.some step.r
       delete step.r
+
+    # 记录回合数
+    step.p = @player.round_num
     battleLog.addStep(step)
 
   death: ->
     @hp <= 0
 
-  setIdx: (idx, atker)->
+  setIdx: (idx, atker) ->
     @idx = if atker then idx + 1 else idx + 7
 
   setPos: (pos) ->
     @pos = pos
+    @idx = @player.matrix.positionToNumber(pos)
 
 exports = module.exports = Hero

@@ -1,5 +1,6 @@
 Module = require '../common/module'
 Hero = require './hero'
+battleLog = require './battle_log'
 Spiritor = require './spiritor'
 Matrix = require './matrix'
 tab = require '../manager/table'
@@ -12,36 +13,52 @@ copyAttrs = (self, ent) ->
   self.name = ent.name
   self.lv = ent.lv
   self.exp = ent.exp
-  self.lineUp = ent.lineUp
+  self.lineUp = filterEmptyLinuUp _.clone(ent.lineUp)
   self.spiritor = if ent.spiritor? then new Spiritor(ent.spiritor) else null
   self.cards = ent.activeCards?() or ent.cards
 
   self.spiritorIdx = -1
-  _refs = if ent.lineUpObj? then ent.lineUpObj() else []
+  _refs = if ent.lineUpObj? then ent.lineUpObj()[0] else {}
   _.each _refs, (v, k) -> 
     if v is -1 
       self.spiritorIdx = parseInt(k)
+
+filterEmptyLinuUp = (lineUp) ->
+  return lineUp if lineUp.length is 1
+
+  l = lineUp[0]
+  if _.isObject(l) and _.keys(l).length is 1 and _.values(l).indexOf(-1) > -1
+    lineUp.splice 0, 1
+    return lineUp
+  return lineUp
 
 defaultEntity = 
   id: 0
   name: 'anyone'
   lv: 0
   exp: 0
-  lineUp: ''
+  lineUp: []
   spiritor: {lv: 1}
   cards: []
 
+DEFAULT_OPTIONS = 
+  inc_scale: 0
+  is_attacker: false
+  is_boss: false
+
 class Player extends Module
-  init: (entity) ->
+  init: (entity, options = {}) ->
     entity ||= defaultEntity
     copyAttrs @, entity
+    _.extend @, _.defaults(options, DEFAULT_OPTIONS)
     
     @heros = []
     @enemy = null
-    @is_attacker = false
     @matrix = new Matrix()
     @dead = false
     @is_monster = false
+    @used_empty_lineUp = false
+    @cards_for_bl = {}
     
     @loadHeros()
     @bindCards()
@@ -73,33 +90,40 @@ class Player extends Module
         else 
           callback(enemyHeros)
 
-  setEnemy: (enm, is_attacker = false) ->
+  setEnemy: (enm) ->
     @enemy = enm
-    @is_attacker = is_attacker
-    @heros.forEach (h) =>
-      h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
     @heros = if not _.isEmpty(@cards) then (new Hero(card, @) for card in @cards) else []
 
   bindCards: ->
-    if @lineUp? and @lineUp != ''
-      @parseLineUp().forEach (item) =>
-        [pos, id] = item 
-        
-        ### 元神 ###
+    if @lineUp and not _.isEmpty(@lineUp)
+      lu = @lineUp.shift()
+      
+      if _.keys(lu).length is 1 and @used_empty_lineUp
+        return
+
+      @matrix.clear()
+      _.each lu, (id, pos) =>
         if parseInt(id) is -1
-          return
+          @spiritorIdx = parseInt(pos)
+          return 
 
         _h = _.findWhere @heros, id: parseInt(id)
-        if _h
-          @matrix.set(pos, _h)
+        if _h 
+
+          @matrix.set(pos-1, _h)
         else
           logger.warn 'you have not such card with id is ' + id
+
+      @matrix.reset()
+      @correctIdx(@is_attacker)
+      @setCards()
+
+      if _.keys(lu).length is 1
+        @used_empty_lineUp = true
     else
       logger.warn 'there is not line up for player ' + @name
-    
-    @matrix.reset()
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -118,7 +142,7 @@ class Player extends Module
     @bindCards()
     @
 
-  getCards: ->
+  setCards: ->
     cobj = {}
     cobj[c.idx] = {
       tableId: c.card_id
@@ -126,12 +150,18 @@ class Player extends Module
       atk: c.init_atk
       spiritHp: c.spirit_hp
       spiritAtk: c.spirit_atk
-    } for c in @heros
+    } for c in @matrix.all()
+    
     cobj[if @is_attacker then @spiritorIdx else @spiritorIdx + 6] = @spiritor.lv
-    cobj
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
   death: ->
-    @aliveHeros().length is 0
+    @matrix.alive().length is 0
 
   currentHero: ->
     item = @matrix.current()
@@ -169,5 +199,9 @@ class Player extends Module
 
   setAttackCount: ->
     @attack_count = @aliveHeros().length
+
+  correctIdx: ->
+    for h in @matrix.all()
+      h.setIdx h.idx, @is_attacker
 
 exports = module.exports = Player

@@ -25,21 +25,19 @@ class Base
 
 class Battle extends Base
   init: ->
-    @attacker.setEnemy(@defender, true)
+    @attacker.setEnemy(@defender)
     @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
   isOver: ->
     @attacker.death() or @defender.death() or @round.round_num >= 30
 
-  start: ->
-    cards = _.extend {}, @defender.getCards(), @attacker.getCards()
-    battleLog.set('cards', cards)
+  start: ->    
     battleLog.set('ownId', @attacker.id)
     battleLog.set('enemyId', @defender.id)
     battleLog.set('ownName', @attacker.name)
     battleLog.set('enemyName', @defender.name)
-
+    
   execute: ->
     while not @isOver()
       @round.process()
@@ -49,6 +47,20 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
     battleLog.set('round_num',@round.round_num - 1)
+    # update boss hp remaining
+    updateBossInfo(@defender)
+    
+updateBossInfo = (player) ->
+  return if not player.is_boss 
+
+  for cards in battleLog.get('cards')
+    do (cards) ->
+      _.each cards, (card, pos) ->
+        if pos > 6
+          hero = _.findWhere player.heros, id: card.id
+          card.hpLeft = if hero.hp > 0 then hero.hp else 0
+          delete card.id
+  return
 
 class Round extends Base
   init: ->
@@ -82,8 +94,14 @@ class Round extends Base
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-    
+
+DEFAULT_ORDER = 0
+REVERSE_ORDER = 1
+
 class Attack extends Base
+  init: ->
+    @order = DEFAULT_ORDER
+
   execute: () ->
     _attack = (atker, dfder) ->
       atker.attack (heros) ->
@@ -96,47 +114,39 @@ class Attack extends Base
 
       atker.nextHero()
 
-    if @attacker.shootCount > 0
-      @attacker.shootCount -= 1
-      _attack( @attacker, @defender ) 
+    if @order is DEFAULT_ORDER
 
-    if @defender.shootCount > 0
-      @defender.shootCount -= 1
-      _attack( @defender, @attacker ) 
+      if @attacker.shootCount > 0
+        @attacker.shootCount -= 1
+        _attack( @attacker, @defender ) 
 
+      if @defender.shootCount > 0
+        @defender.shootCount -= 1
+        _attack( @defender, @attacker ) 
 
-    # if @attacker.shootCount > 0
-    #   @attacker.shootCount -= 1
-    #   @attacker.attack (hero) ->
-    #     if hero.death() and not hero.isAttacked()
-    #       @defender.shootCount -= 1
+    else 
+    
+      if @defender.shootCount > 0
+        @defender.shootCount -= 1
+        _attack( @defender, @attacker ) 
 
-    #     if @defender.shootCount > 0
-    #       @defender.shootCount -= 1
-    #       @defender.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           @attacker.shootCount -= 1
+      if @attacker.shootCount > 0
+        @attacker.shootCount -= 1
+        _attack( @attacker, @defender )      
 
+  end: ->
+    if @attacker.death()
+      @attacker.bindCards()
+      @attacker.shootCount = 0
+      @defender.shootCount = 0
 
-    # self = this
-    # async.series [
-    #   (cb) ->
-    #     if self.attacker.shootCount > 0
-    #       self.attacker.shootCount -= 1
-    #       self.attacker.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           self.defender.shootCount -= 1
-            
-    #         self.attacker.nextHero()
-    #         cb(null)
+      @order = DEFAULT_ORDER
 
-    #   (cb) ->
-    #     if self.defender.shootCount > 0
-    #       self.defender.shootCount -= 1
-    #       self.defender.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           self.attacker.shootCount -= 1
-    #         self.defender.nextHero()
-    # ]
+    if @defender.death()
+      @defender.bindCards()
+      @attacker.shootCount = 0
+      @defender.shootCount = 0
+
+      @order = REVERSE_ORDER
 
 exports = module.exports = Battle

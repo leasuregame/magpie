@@ -47,6 +47,13 @@ block content
   div.alert.hidden(id='msgInfo', style='margin: 10px 50px')
   hr
   div.row
+    div.col-sm-6
+      div.input-group
+        input.form-control(id='queryText', type='text', placeholder='激活码/玩家名称/开始日期/结束日期')
+        span.input-group-btn
+          button.btn.btn-default(type='button', id='btnSearch') 搜索!
+  hr
+  div.row
     div.col-sm-12
       table.table
         thead

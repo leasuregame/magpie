@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -856,7 +856,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -907,7 +907,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-20</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -936,7 +936,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1268,7 +1268,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1282,8 +1282,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-10</real>
-							<real>150</real>
+							<real>0.0</real>
+							<real>250</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1319,7 +1319,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>37</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1348,7 +1348,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1514,7 +1514,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1551,8 +1551,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.5</real>
+							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1584,7 +1584,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1711,7 +1711,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1730,7 +1730,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1746,7 +1746,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>250</integer>
+						<integer>80</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1755,8 +1755,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>0.25</real>
+							<real>0.60000002384185791</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -1869,9 +1869,9 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
+						<string>startRadius</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
@@ -1880,29 +1880,18 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>speed</string>
+						<string>endRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>200</real>
-							<real>20</real>
+							<real>280</real>
+							<real>40</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tangentialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>360</real>
-							<real>30</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -2126,7 +2115,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>240</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2155,7 +2144,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2349,7 +2338,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-240</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2378,7 +2367,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2426,7 +2415,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3143,7 +3132,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3196,7 +3185,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -3430,7 +3419,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3444,8 +3433,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>56.200031280517578</real>
-									<real>64.656074523925781</real>
+									<real>-63</real>
+									<real>-72</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3481,7 +3470,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>90</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3510,7 +3499,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3767,7 +3756,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3781,8 +3770,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>56.200031280517578</real>
-									<real>64.656074523925781</real>
+									<real>63</real>
+									<real>72</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3818,7 +3807,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>90</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3847,7 +3836,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5443,7 +5432,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.6666667461395264</real>
+			<real>2.4666666984558105</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

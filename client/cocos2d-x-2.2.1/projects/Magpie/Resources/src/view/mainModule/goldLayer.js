@@ -37,7 +37,7 @@ var GoldLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("摸一摸界面");
+        lz.um.beginLogPageView("摸一摸界面");
     },
 
     onExit: function () {
@@ -45,7 +45,7 @@ var GoldLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("摸一摸界面");
+        lz.um.endLogPageView("摸一摸界面");
     },
 
     init: function (data) {

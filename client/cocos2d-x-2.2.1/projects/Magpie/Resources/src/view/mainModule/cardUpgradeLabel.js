@@ -46,7 +46,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡牌升级界面");
+        lz.um.beginLogPageView("卡牌升级界面");
     },
 
     onExit: function () {
@@ -54,7 +54,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡牌升级界面");
+        lz.um.endLogPageView("卡牌升级界面");
     },
 
     init: function () {

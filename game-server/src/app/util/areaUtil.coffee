@@ -1,14 +1,13 @@
 fs = require('fs')
 path = require('path')
-playerConfig = require('../../config/data/player')
-msgConfig = require('../../config/data/message')
+configData = require '../../config/data'
 utility = require('../common/utility')
 
 FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag')
 DEFAULT_FLAG = powerGiven: [], endPowerGiven: [], date: '1970-1-1'
 SYSTEM = -1
 
-DURATION = playerConfig.POWER_GIVE.duration
+flag_data = null
 
 module.exports = 
   doGivePower: (app, hour = new Date().getHours()) ->
@@ -38,13 +37,19 @@ module.exports =
     FLAG_FILE + "-#{serverId}.json"
 
   _readFlag: (app)->
-    JSON.parse(fs.readFileSync(@_filePath(app)))
+    if not flag_data
+      fpath = @_filePath(app)
+      flag_data = JSON.parse(fs.readFileSync(fpath))
+      fs.watchFile fpath, (curr, prev) ->
+        flag_data = JSON.parse(fs.readFileSync(fpath))
+
+    flag_data
 
   _writeFlag: (data, app)->
     fs.writeFileSync(@_filePath(app), data)
 
   _canGivePower: (app, hour = new Date().getHours()) ->
-    hours = playerConfig.POWER_GIVE.hours
+    hours = configData.player.POWER_GIVE.hours
     data = @_readFlag(app)
     if data.date isnt utility.shortDateString()
       data.date = utility.shortDateString()
@@ -52,6 +57,7 @@ module.exports =
       data.endPowerGiven = []
       @_writeFlag JSON.stringify(data), app
 
+    DURATION = configData.player.POWER_GIVE.duration
     last_hour = if hour < DURATION then (24 - DURATION + hour) else (hour - DURATION)
     start_give_power = hours.indexOf(hour) > -1 and data.powerGiven.indexOf(hour) < 0
     end_give_power = hours.indexOf(last_hour) > -1 and data.endPowerGiven.indexOf(hour) < 0
@@ -59,7 +65,7 @@ module.exports =
 
   _addSysMsg: (app, key) ->
     msgs = 
-      powerGiven: route: 'onPowerGive', msg: {powerValue: playerConfig.POWER_GIVE.point}
+      powerGiven: route: 'onPowerGive', msg: {powerValue: configData.player.POWER_GIVE.point}
       endPowerGiven: route: 'onPowerGiveEnd', msg: {}
 
     app.get('messageService').pushMessage {

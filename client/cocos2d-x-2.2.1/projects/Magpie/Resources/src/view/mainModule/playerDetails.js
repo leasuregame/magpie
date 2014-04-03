@@ -26,7 +26,7 @@ var PlayerDetails = LazyLayer.extend({
 
         this.schedule(this.update, 5);
 
-        lz.dc.beginLogPageView("玩家详细信息界面");
+        lz.um.beginLogPageView("玩家详细信息界面");
     },
 
     onExit: function () {
@@ -34,7 +34,7 @@ var PlayerDetails = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("玩家详细信息界面");
+        lz.um.endLogPageView("玩家详细信息界面");
     },
 
     init: function () {

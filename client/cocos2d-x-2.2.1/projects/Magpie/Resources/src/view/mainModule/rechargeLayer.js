@@ -15,7 +15,7 @@ var RechargeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("充值优惠界面");
+        lz.um.beginLogPageView("充值优惠界面");
     },
 
     onExit: function () {
@@ -23,7 +23,7 @@ var RechargeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("充值优惠界面");
+        lz.um.endLogPageView("充值优惠界面");
     },
 
     init: function () {

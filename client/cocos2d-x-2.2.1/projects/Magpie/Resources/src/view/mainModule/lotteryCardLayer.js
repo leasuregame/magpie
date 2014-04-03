@@ -22,7 +22,7 @@ var LotteryCardLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("抽卡获得卡牌界面");
+        lz.um.beginLogPageView("抽卡获得卡牌界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var LotteryCardLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("抽卡获得卡牌界面");
+        lz.um.endLogPageView("抽卡获得卡牌界面");
     },
 
     init: function (data) {

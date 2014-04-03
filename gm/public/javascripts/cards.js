@@ -39,6 +39,14 @@ var MaxLevelConfig = [
     {
         star: 5,
         maxLevel: 60
+    },
+    {
+        star: 6,
+        maxLevel: 65
+    },
+    {
+        star: 7,
+        maxLevel: 70
     }
 ];
 
@@ -150,6 +158,8 @@ function init() {
                 return;
             if (checkSkillLv() == false)
                 return;
+            if (checkLv() == false)
+                return;
             submitAdd();
         }
         else if (operate == OperateConfig.UPDATE) {
@@ -200,10 +210,10 @@ function checkTableId() {
     if (val == EXP_CARD) {
         val = 1;
     } else {
-        val = val % 5;
+        val = val % 20;
     }
 
-    if (val == 0) val = 5;
+    if (val == 0) val = 20;
 
     if (val != star) {
         //  if(operate == OperateConfig.ADD)

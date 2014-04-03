@@ -203,9 +203,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>255</integer>
-									<integer>241</integer>
-									<integer>166</integer>
+									<integer>254</integer>
+									<integer>250</integer>
+									<integer>198</integer>
 								</array>
 							</dict>
 						</array>
@@ -234,7 +234,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -774,7 +774,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -829,7 +829,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>15</real>
+											<real>30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -897,7 +897,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>15</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1013,7 +1013,7 @@
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>1</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1040,7 +1040,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.5</real>
+								<real>0.30000001192092896</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1057,7 +1057,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>0.5</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -1069,7 +1069,7 @@
 								<key>value</key>
 								<array>
 									<real>15</real>
-									<real>5</real>
+									<real>15</real>
 								</array>
 							</dict>
 							<dict>
@@ -1079,8 +1079,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>8</real>
-									<real>5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -1124,9 +1124,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.99999600648880005</real>
 										<real>1</real>
-										<real>1</real>
+										<real>0.95635992288589478</real>
+										<real>0.59608066082000732</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -1145,10 +1145,10 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.69103771448135376</real>
-										<real>0.6975172758102417</real>
-										<real>0.69764351844787598</real>
-										<real>0.55000001192092896</real>
+										<real>1</real>
+										<real>0.95960348844528198</real>
+										<real>0.85274070501327515</real>
+										<real>1</real>
 									</array>
 									<array>
 										<real>0.0</real>
@@ -1171,40 +1171,29 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>gravity</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>speed</string>
+								<string>startRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>80</real>
 									<real>20</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tangentialAccel</string>
+								<string>endRadius</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>20</real>
+									<real>110</real>
+									<real>10</real>
 								</array>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>radialAccel</string>
+								<string>rotatePerSecond</string>
 								<key>type</key>
 								<string>FloatVar</string>
 								<key>value</key>
@@ -1247,7 +1236,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1302,7 +1291,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>15</real>
+											<real>30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1370,7 +1359,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>15</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1450,7 +1439,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1505,7 +1494,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1573,7 +1562,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1653,7 +1642,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1708,7 +1697,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1776,7 +1765,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1856,7 +1845,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1911,7 +1900,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-15</real>
+											<real>-30</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1967,7 +1956,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-15</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>

@@ -17,14 +17,14 @@ var NewYearLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("新春好礼界面");
+        lz.um.beginLogPageView("新春好礼界面");
     },
 
     onExit: function () {
         cc.log("NewYearLayer onExit");
         this._super();
 
-        lz.dc.endLogPageView("新春好礼界面");
+        lz.um.endLogPageView("新春好礼界面");
     },
 
     init: function () {

@@ -29,15 +29,22 @@ var CardHalfNode = cc.Node.extend({
         var star = this._card.get("star");
         var index = star > 2 ? star - 2 : 1;
 
-        this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
-        this.addChild(this._frameSprite);
+        if (this._card.isBossCard()) {
+            var ccbNode = cc.BuilderReader.load(main_scene_image[url], this);
+            this.addChild(ccbNode);
 
-        this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
-        this.addChild(this._cardSprite);
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("def", 0);
+        } else {
+            this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
+            this.addChild(this._frameSprite);
 
-        this._iconSprite = cc.Sprite.create(main_scene_image[this._card.getCardIcon()]);
-        this._iconSprite.setPosition(cc.p(40, -53));
-        this.addChild(this._iconSprite);
+            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+            this.addChild(this._cardSprite);
+
+            this._iconSprite = cc.Sprite.create(main_scene_image[this._card.getCardIcon()]);
+            this._iconSprite.setPosition(cc.p(40, -53));
+            this.addChild(this._iconSprite);
+        }
 
         return true;
     },

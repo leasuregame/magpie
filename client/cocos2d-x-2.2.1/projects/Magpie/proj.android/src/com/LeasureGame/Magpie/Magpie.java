@@ -25,12 +25,20 @@ package com.LeasureGame.Magpie;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 public class Magpie extends Cocos2dxActivity{
+	public static Context STATIC_REF = null;
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		
+		STATIC_REF = this;
+	}
+	
+	public static Context getContext(){
+	    return STATIC_REF;
 	}
 	
     static {

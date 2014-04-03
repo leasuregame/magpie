@@ -33,29 +33,27 @@ var BattleEndLayer = cc.Layer.extend({
         bgLayer.setPosition(this._battleEndLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
+        var type = this._battleLog.get("type");
         var isWin = this._battleLog.isWin();
-        var label;
 
-        if (isWin) {
+        if (type == BOSS_BATTLE_LOG) {
+            this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect90, this);
+            this._ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
+            this.addChild(this._ccbNode);
+        } else if (isWin) {
             this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
             this._ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
             this.addChild(this._ccbNode);
-
-            label = this._ccbNode.controller.ccbLabel;
-            var titleIcon = this._ccbNode.controller.ccbTitleIcon;
-            titleIcon.setTexture(lz.getTexture(main_scene_image.icon227));
-
+            this._ccbNode.controller.ccbTitleIcon.setTexture(lz.getTexture(main_scene_image.icon227));
         } else {
             this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
             this._ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
             this.addChild(this._ccbNode);
-
-            label = this._ccbNode.controller.ccbLabel;
         }
 
+        var label = this._ccbNode.controller.ccbLabel;
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
-
         var isNoReward = false;
 
         if (len == 0) {
@@ -72,21 +70,20 @@ var BattleEndLayer = cc.Layer.extend({
                     {str: "必能打过", color: cc.c3b(255, 255, 255)}
                 ];
             }
+
             isNoReward = true;
             len = 3;
         }
 
         var offsetY = 133;
-        var rewardLabel;
         for (var i = 0; i < len; ++i) {
-
             if (str[i].icon) {
                 var rewardIcon = cc.Sprite.create(main_scene_image[str[i].icon]);
                 rewardIcon.setPosition(cc.p(-70, offsetY - 12));
                 label.addChild(rewardIcon);
             }
 
-            rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
+            var rewardLabel = cc.LabelTTF.create(str[i].str, "STHeitiTC-Medium", 20);
             rewardLabel.setColor(str[i].color);
             if (!isNoReward) {
                 rewardLabel.setAnchorPoint(cc.p(0, 1));
@@ -161,11 +158,9 @@ var BattleEndLayer = cc.Layer.extend({
                 FragmentLayer.pop(fragment);
                 this._canClick = true;
             }, 1.5);
-
         } else {
             this._canClick = true;
         }
-
     },
 
     end: function () {
@@ -188,7 +183,10 @@ var BattleEndLayer = cc.Layer.extend({
         }
 
         BattlePlayer.getInstance().next();
-        BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
+        BattlePlayer.getInstance().play({
+            id: this._battleLog.get("id"),
+            isPlayback: true
+        });
     },
 
     _onClickGoStrengthenLayer: function () {

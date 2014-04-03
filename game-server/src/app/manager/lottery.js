@@ -11,7 +11,7 @@
  * 抽卡
  * */
 
-var cardConfig = require('../../config/data/card');
+var configData = require('../../config/data');
 var utility = require('../common/utility');
 var entityUtil = require('../util/entityUtil');
 var Card = require('../domain/entity/card');
@@ -40,27 +40,18 @@ var freeLottery = function(level, eids) {
     return [card, 0, 0];
 };
 
-/*
- * 抽卡，传入参数抽卡种类
- * 1：普通抽卡
- * 2：高级抽卡
- * */
-var randomCardId = function (star) {
-    var len = tableIds.length;
-    return tableIds[_.random(0, len/5 - 1) * 5 + star - 1];
-};
 
 var gen_card_star = function (level, hCounts) {
     var levelMapping = {
         "1": "LOWER",
         "2": "HIGHT"
     };
-    var rateObj = utility.deepCopy(cardConfig.STAR[levelMapping[level]]);
-    var margins = cardConfig.HIGHT_DRAWCARD_MARGIN;
+    var rateObj = utility.deepCopy(configData.card.STAR[levelMapping[level]]);
+    var margins = configData.card.HIGHT_DRAWCARD_MARGIN;
 
     if (level == 2) { //高级抽卡特殊处理
 
-        if (hCounts == cardConfig.MAX_HIGHT_DRAWCARD_COUNT) {
+        if (hCounts == configData.card.MAX_HIGHT_DRAWCARD_COUNT) {
             rateObj['3'] = rateObj['4'] = 0;
             rateObj['5'] = 100;
         } else {
@@ -89,10 +80,10 @@ var gen_card_star = function (level, hCounts) {
 
 var gen_card_level = function (star) {
     if (star >= 3) {
-        return cardConfig.HIGHT_LEVEL_INIT;
+        return configData.card.HIGHT_LEVEL_INIT;
     }
 
-    var levelInitObj = cardConfig.LOWER_LEVEL_INIT;
+    var levelInitObj = configData.card.LOWER_LEVEL_INIT;
     return utility.randomValue(_.keys(levelInitObj), _.values(levelInitObj));
 };
 
@@ -110,7 +101,7 @@ var gen_card_fragment = function (level, times, rCounts, hCounts) {
         return 0;
     }
 
-    var margin = utility.deepCopy(cardConfig.FRAGMENT[level]);
+    var margin = utility.deepCopy(configData.card.FRAGMENT[level]);
     var counts = (level == 1) ? rCounts : hCounts;
     counts = counts - margin.COUNTS;
     var rate = (counts <= 0 ) ? 0 : counts * margin.MARGIN;
@@ -144,7 +135,7 @@ var freeCard = function(star) {
 };
 
 var consume = function (level, type) {
-    var mapping = cardConfig.LOTTERY_CONSUME;
+    var mapping = configData.card.LOTTERY_CONSUME;
     return mapping[type][level]
 };
 
@@ -153,11 +144,11 @@ var initPassiveSkill = function (star) {
 
     var results = [];
     for (var i = 0; i < count; i++) {
-        var index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
-        var _res = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-');
+        var index = _.random(configData.card.PASSIVESKILL.TYPE.length - 1);
+        var _res = configData.card.PASSIVESKILL.VALUE_SCOPE.split('-');
         var start = parseInt(_res[0]), end = parseInt(_res[1]);
         results.push({
-            name: cardConfig.PASSIVESKILL.TYPE[index],
+            name: configData.card.PASSIVESKILL.TYPE[index],
             value: _.random(start, end)
         })
     }

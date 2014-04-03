@@ -17,13 +17,15 @@ beforeEach(function() {
 
       var cards_ok = false;
       var enemy_card_length = own_card_length = 0;
-      _.each(battleLog.cards, function(val, id) {
-        if (id <= 6 && _.isObject(val)) {
-          own_card_length += 1;
-        }
-        if (id > 6 && _.isObject(val)) {
-          enemy_card_length += 1;
-        }
+      _.each(battleLog.cards, function(cards) {
+        _.each(cards, function(val, id) {
+          if (id <= 6 && _.isObject(val)) {
+            own_card_length += 1;
+          }
+          if (id > 6 && _.isObject(val)) {
+            enemy_card_length += 1;
+          }
+        });
       });
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
@@ -39,6 +41,9 @@ beforeEach(function() {
         var stepFormatOk = true;
         var dmage = {};
         _.each(steps, function(s) {
+          if (_.isUndefined(s.go)) {
+            return;
+          }
           _.each(s.d, function(pos, index) {
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
@@ -64,7 +69,7 @@ beforeEach(function() {
             if (k > 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
-          })
+          });
           if (enemy_card_length == death_man) {
             ok = true;
           } else {
@@ -79,7 +84,7 @@ beforeEach(function() {
             if (k <= 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
-          })
+          });
 
           if (own_card_length == death_man) {
             ok = true;
@@ -218,6 +223,13 @@ var entryGame = function(account, areaId) {
   });
 };
 
+var shortDateString = function() {
+  var now;
+
+  now = new Date();
+  return "" + (now.getFullYear()) + "-" + (now.getMonth() + 1) + "-" + (now.getDate());
+};
+
 
 var dologin = function() {
   async.timesSeries(300, function(i, done) {
@@ -231,6 +243,31 @@ var dologin = function() {
   }, function(err) {
     console.log('finished');
   });
+};
+
+var thisWeek = function() {
+  var now, onejan, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7);
+  return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+};
+var lastWeek = function() {
+  var end, lastWeekNumber, lastYear, now, onejan, start, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7) - 1;
+  if (weekNumber === 0) {
+    lastYear = now.getFullYear() - 1;
+    start = new Date(lastYear, 0, 1);
+    end = new Date(lastYear, 12, 0);
+    lastWeekNumber = Math.ceil((((end - start) / 86400000) + start.getDate() + 1) / 7);
+    return '' + lastYear + lastWeekNumber;
+  } else {
+    return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+  }
 };
 
 
@@ -289,8 +326,8 @@ var game = {
 
       pomelo.on('onNewYearReward', function(data) {
         console.log('onNewYearReward', data);
-      });    
-      
+      });
+
       pomelo.on('onPowerGive', function(data) {
         console.log('on power given', data);
       });
@@ -306,7 +343,11 @@ var game = {
       pomelo.on('onResetData', function(data) {
         console.log('on onResetData', data);
       });
-      
+
+      pomelo.on('onFriendHelp', function(data) {
+        console.log('on onFriendHelp', data);
+      });
+
       if (typeof callback == 'function') {
         callback();
       }

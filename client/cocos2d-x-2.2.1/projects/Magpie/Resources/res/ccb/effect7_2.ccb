@@ -306,7 +306,7 @@
 														<key>value</key>
 														<array>
 															<real>20</real>
-															<real>-20</real>
+															<real>-12.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -342,7 +342,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -371,7 +371,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -560,7 +560,7 @@
 														<key>value</key>
 														<array>
 															<real>-20</real>
-															<real>-10</real>
+															<real>-2.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -596,7 +596,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-15</real>
+														<real>-3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -625,7 +625,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -813,8 +813,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>-20</real>
-															<real>20</real>
+															<real>-12.5</real>
+															<real>12.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -850,7 +850,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>25</real>
+														<real>6.25</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -879,7 +879,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1053,7 +1053,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-25</real>
+														<real>-6.25</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1082,7 +1082,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1244,7 +1244,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1273,7 +1273,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1325,8 +1325,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>1.7000000476837158</real>
-													<real>1.7000000476837158</real>
+													<real>1.5499999523162842</real>
+													<real>1.5499999523162842</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -1567,8 +1567,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>20</real>
-															<real>-20</real>
+															<real>12.5</real>
+															<real>-12.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -1604,7 +1604,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1633,7 +1633,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1822,7 +1822,7 @@
 														<key>value</key>
 														<array>
 															<real>-20</real>
-															<real>-20</real>
+															<real>-12.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -1858,7 +1858,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-15</real>
+														<real>-3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -1887,7 +1887,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2075,8 +2075,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>-10</real>
-															<real>20</real>
+															<real>-2.5</real>
+															<real>12.5</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -2112,7 +2112,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>25</real>
+														<real>6.25</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2141,7 +2141,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2292,7 +2292,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-25</real>
+														<real>-6.25</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2321,7 +2321,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2483,7 +2483,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.75</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2512,7 +2512,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>191</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2564,8 +2564,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>1.7000000476837158</real>
-													<real>1.7000000476837158</real>
+													<real>1.5499999523162842</real>
+													<real>1.5499999523162842</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -2850,7 +2850,7 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>20</real>
+															<real>12</real>
 															<real>-20</real>
 															<integer>0</integer>
 														</array>
@@ -2887,7 +2887,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -2916,7 +2916,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3105,7 +3105,7 @@
 														<key>value</key>
 														<array>
 															<real>-20</real>
-															<real>-20</real>
+															<real>-12</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -3141,7 +3141,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-15</real>
+														<real>-3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3170,7 +3170,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3358,8 +3358,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>-20</real>
-															<real>20</real>
+															<real>-12</real>
+															<real>12</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -3395,7 +3395,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>25</real>
+														<real>5.0000004768371582</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3424,7 +3424,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3587,7 +3587,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-25</real>
+														<real>-5.0000004768371582</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3616,7 +3616,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3778,7 +3778,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3807,7 +3807,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -3859,8 +3859,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>1.2999999523162842</real>
-													<real>1.2999999523162842</real>
+													<real>1.059999942779541</real>
+													<real>1.059999942779541</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -3883,6 +3883,265 @@
 											</dict>
 										</array>
 										<key>seqExpanded</key>
+										<true/>
+									</dict>
+									<dict>
+										<key>animatedProperties</key>
+										<dict>
+											<key>0</key>
+											<dict/>
+										</dict>
+										<key>baseClass</key>
+										<string>CCParticleSystemQuad</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCParticleSystemQuad</string>
+										<key>memberVarAssignmentName</key>
+										<string></string>
+										<key>memberVarAssignmentType</key>
+										<integer>0</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>anchorPoint</string>
+												<key>type</key>
+												<string>Point</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ignoreAnchorPointForPosition</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>emitterMode</string>
+												<key>type</key>
+												<string>IntegerLabeled</string>
+												<key>value</key>
+												<integer>1</integer>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>posVar</string>
+												<key>type</key>
+												<string>Point</string>
+												<key>value</key>
+												<array>
+													<real>40</real>
+													<real>40</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>emissionRate</string>
+												<key>type</key>
+												<string>Float</string>
+												<key>value</key>
+												<real>30</real>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>duration</string>
+												<key>type</key>
+												<string>Float</string>
+												<key>value</key>
+												<real>0.30000001192092896</real>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>totalParticles</string>
+												<key>type</key>
+												<string>Integer</string>
+												<key>value</key>
+												<integer>30</integer>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>life</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.5</real>
+													<real>0.20000000298023224</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>startSize</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>30</real>
+													<real>10</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>endSize</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>startSpin</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>180</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>endSpin</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>angle</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>360</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>startColor</string>
+												<key>type</key>
+												<string>Color4FVar</string>
+												<key>value</key>
+												<array>
+													<array>
+														<real>0.353767991065979</real>
+														<real>0.30260959267616272</real>
+														<real>0.75725126266479492</real>
+														<real>1</real>
+													</array>
+													<array>
+														<real>0.0</real>
+														<real>0.0</real>
+														<real>0.0</real>
+														<real>0.0</real>
+													</array>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>endColor</string>
+												<key>type</key>
+												<string>Color4FVar</string>
+												<key>value</key>
+												<array>
+													<array>
+														<real>0.40041527152061462</real>
+														<real>0.13842871785163879</real>
+														<real>0.69014984369277954</real>
+														<real>1</real>
+													</array>
+													<array>
+														<real>0.0</real>
+														<real>0.0</real>
+														<real>0.0</real>
+														<real>0.0</real>
+													</array>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>blendFunc</string>
+												<key>type</key>
+												<string>Blendmode</string>
+												<key>value</key>
+												<array>
+													<integer>1</integer>
+													<integer>1</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>startRadius</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>20</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>endRadius</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>120</real>
+													<real>20</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>rotatePerSecond</string>
+												<key>type</key>
+												<string>FloatVar</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>texture</string>
+												<key>type</key>
+												<string>Texture</string>
+												<key>value</key>
+												<string>res/effect/effect/p15.png</string>
+											</dict>
+										</array>
+										<key>selected</key>
 										<true/>
 									</dict>
 									<dict>
@@ -4101,8 +4360,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>20</real>
-															<real>-20</real>
+															<real>12</real>
+															<real>-12</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4138,7 +4397,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4167,7 +4426,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4356,7 +4615,7 @@
 														<key>value</key>
 														<array>
 															<real>-20</real>
-															<real>-20</real>
+															<real>-12</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4392,7 +4651,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-15</real>
+														<real>-3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4421,7 +4680,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4609,8 +4868,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>-20</real>
-															<real>20</real>
+															<real>-12</real>
+															<real>12</real>
 															<integer>0</integer>
 														</array>
 													</dict>
@@ -4646,7 +4905,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>25</real>
+														<real>5.0000004768371582</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4675,7 +4934,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4849,7 +5108,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>-25</real>
+														<real>-5.0000004768371582</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -4878,7 +5137,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -5052,7 +5311,7 @@
 														<key>type</key>
 														<string>Degrees</string>
 														<key>value</key>
-														<real>15</real>
+														<real>3.0000002384185791</real>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -5081,7 +5340,7 @@
 														<key>type</key>
 														<string>Byte</string>
 														<key>value</key>
-														<integer>0</integer>
+														<integer>255</integer>
 													</dict>
 													<dict>
 														<key>name</key>
@@ -5144,8 +5403,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>1.2999999523162842</real>
-													<real>1.2999999523162842</real>
+													<real>1.059999942779541</real>
+													<real>1.059999942779541</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -5433,7 +5692,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -5496,8 +5755,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.5</real>
-									<real>1.5</real>
+									<real>1.0833333730697632</real>
+									<real>1.0833333730697632</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -5565,274 +5824,6 @@
 				</array>
 				<key>seqExpanded</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>animatedProperties</key>
-				<dict>
-					<key>0</key>
-					<dict/>
-				</dict>
-				<key>baseClass</key>
-				<string>CCParticleSystemQuad</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCParticleSystemQuad</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>emitterMode</string>
-						<key>type</key>
-						<string>IntegerLabeled</string>
-						<key>value</key>
-						<integer>0</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>posVar</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>40</real>
-							<real>40</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>emissionRate</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>50</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>duration</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.5</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>totalParticles</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>40</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>life</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.80000001192092896</real>
-							<real>0.20000000298023224</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startSize</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>20</real>
-							<real>8</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endSize</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>5</real>
-							<real>3</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startSpin</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>180</real>
-							<real>30</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endSpin</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>angle</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>360</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startColor</string>
-						<key>type</key>
-						<string>Color4FVar</string>
-						<key>value</key>
-						<array>
-							<array>
-								<real>0.353767991065979</real>
-								<real>0.30260959267616272</real>
-								<real>0.75725126266479492</real>
-								<real>1</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endColor</string>
-						<key>type</key>
-						<string>Color4FVar</string>
-						<key>value</key>
-						<array>
-							<array>
-								<real>0.40041527152061462</real>
-								<real>0.13842871785163879</real>
-								<real>0.69014984369277954</real>
-								<real>1</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-						<key>type</key>
-						<string>Blendmode</string>
-						<key>value</key>
-						<array>
-							<integer>1</integer>
-							<integer>1</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>speed</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>150</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tangentialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>360</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>-100</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>texture</string>
-						<key>type</key>
-						<string>Texture</string>
-						<key>value</key>
-						<string>res/effect/effect/p16.png</string>
-					</dict>
-				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -5921,7 +5912,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1666666269302368</real>
+			<real>0.1666666716337204</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

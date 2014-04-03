@@ -26,7 +26,7 @@ NND = {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-            
+
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
                 return cb(err, res);

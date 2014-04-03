@@ -81,7 +81,7 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     selectSql: function (table, where, limit) {
-        var orderby, fields;
+        var orderby, fields, where, limit;
         if (arguments.length == 1) {
             fields = table.fields || ''
             where = table.where;
@@ -123,6 +123,16 @@ var sqlHelper = {
 
     topPlayersSql: function(orderBy, limit) {
         return util.format("select * from player order by `%s` limit %s", orderBy, limit);
+    },
+
+    existsSql: function(options) {
+        var stm = Statement.where(options.where);
+        var where = stm.where == '' ? '' : ' where ' + stm.where;
+        var sql =  util.format("select count(*) as exist from `%s` %s", options.table, where);
+        return {
+            sql: sql,
+            args: stm.args
+        }
     }
 };
 
@@ -156,7 +166,8 @@ var FUNCTION_MAPPING = {
     'insert': sqlHelper.insertSql,
     'update': sqlHelper.updateSql,
     'select': sqlHelper.selectSql,
-    'delete': sqlHelper.deleteSql
+    'delete': sqlHelper.deleteSql, 
+    'exists': sqlHelper.existsSql
 };
 
 module.exports = sqlHelper;

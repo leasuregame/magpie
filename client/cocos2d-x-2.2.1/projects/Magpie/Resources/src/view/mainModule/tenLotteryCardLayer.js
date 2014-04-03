@@ -19,14 +19,14 @@ var TenLotteryCardLayer = LazyLayer.extend({
         cc.log("TenLotteryCardLayer onEnter");
 
         this._super();
-        lz.dc.beginLogPageView("十连抽获得卡牌界面");
+        lz.um.beginLogPageView("十连抽获得卡牌界面");
     },
 
     onExit: function () {
         cc.log("TenLotteryCardLayer onExit");
 
         this._super();
-        lz.dc.endLogPageView("十连抽获得卡牌界面");
+        lz.um.endLogPageView("十连抽获得卡牌界面");
     },
 
     init: function (data) {

@@ -21,16 +21,10 @@ var TournamentLayer = cc.Layer.extend({
     _rewardLabel: null,
     _rewardItem: null,
     _rewardEffect: null,
-    _menu: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
     _countLabel: null,
-    _abilityLabel: null,
-    _upgradeReward: null,
-    _level9Box: null,
-    _isFirstTournament: false,
-    _isFirstEnter: false,
     _selectRect: null,
     _isTouch: false,
 
@@ -39,9 +33,8 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
-        this.updateGuide();
 
-        lz.dc.beginLogPageView("竞技界面");
+        lz.um.beginLogPageView("竞技界面");
     },
 
     onExit: function () {
@@ -49,7 +42,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("竞技界面");
+        lz.um.endLogPageView("竞技界面");
     },
 
     init: function () {
@@ -63,7 +56,6 @@ var TournamentLayer = cc.Layer.extend({
         this._tournamentLayerFit = gameFit.mainScene.tournamentLayer;
 
         this._rankList = [];
-        this._isFirstEnter = true;
         this._selectRect = this._tournamentLayerFit.selectRect;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -118,10 +110,9 @@ var TournamentLayer = cc.Layer.extend({
         this._elixirLabel.setPosition(this._tournamentLayerFit.elixirLabelPoint);
         this.addChild(this._elixirLabel);
 
-        var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
+        var rewardIcon = cc.Sprite.create(main_scene_image.icon412);
         rewardIcon.setPosition(this._tournamentLayerFit.rewardIconPoint);
         this.addChild(rewardIcon);
-        rewardIcon.setScaleX(2.5);
 
         this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._rewardLabel.setPosition(this._tournamentLayerFit.rewardLabelPoint);
@@ -135,17 +126,26 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(this._tournamentLayerFit.buyCountItemPoint);
 
-        this._rewardItem = cc.MenuItemImage.create(
-            main_scene_image.button17,
-            main_scene_image.button17s,
-            main_scene_image.button17d,
+        var sprite = cc.Sprite.create(main_scene_image.icon281);
+        this._rewardItem = cc.MenuItemLabel.create(
+            sprite,
             this._onClickRankReward,
             this
         );
 
+        this._rewardItem.setScale(0.55);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
-        var menu = cc.Menu.create(buyCountItem, this._rewardItem);
+        var rankItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickRank,
+            this
+        );
+
+        rankItem.setPosition(this._tournamentLayerFit.rankItemPoint);
+
+        var menu = cc.Menu.create(buyCountItem, this._rewardItem, rankItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -193,6 +193,8 @@ var TournamentLayer = cc.Layer.extend({
         this._skyDialog.setLabel(label);
         this._skyDialog.setRect(this._tournamentLayerFit.skyDialogRect);
 
+        this.updateGuide();
+
         return true;
     },
 
@@ -200,29 +202,6 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var that = this;
-        var next = function () {
-            cc.log("isFirstTournament: " + that._isFirstTournament);
-            if (that._isFirstTournament) {
-                MandatoryTeachingLayer.pop(FIRST_TOURNAMENT);
-            }
-        };
-
-        if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop({
-                reward: this._upgradeReward,
-                cb: function () {
-                    if (this._level9Box) {
-                        Level9BoxLayer.pop({reward: this._level9Box, cb: next});
-                        this._level9Box = null;
-                    } else {
-                        next();
-                    }
-                }
-            });
-            this._upgradeReward = null;
-        } else {
-            next();
-        }
 
         var player = gameData.player;
 
@@ -238,13 +217,12 @@ var TournamentLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        gameData.tournament.sync(function () {
+        gameData.tournament.updateRankList(function () {
             cc.log("TournamentLayer update callback");
 
             that._addRankScrollView();
             that._updateRankRewardItem();
         });
-
     },
 
     _update: function () {
@@ -266,18 +244,17 @@ var TournamentLayer = cc.Layer.extend({
         if (reward) {
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
-            this._rewardItem.setEnabled(reward.canReceive);
 
             if (reward.canReceive) {
                 if (!this._rewardEffect) {
-                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
+                    this._rewardEffect.setScale(0.48);
                     this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
                     this.addChild(this._rewardEffect, 1);
                 }
             }
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
-            this._rewardItem.setEnabled(false);
         }
     },
 
@@ -353,17 +330,65 @@ var TournamentLayer = cc.Layer.extend({
         return null;
     },
 
-    _setPlayerUpgradeReward: function (upgradeReward, level9Box) {
+    defiance: function (data) {
         cc.log("TournamentLayer _setPlayerUpgradeReward");
 
-        this._upgradeReward = upgradeReward || null;
-        this._level9Box = level9Box || null;
-    },
+        var battleLogId = data.battleLogId;
+        var upgradeReward = data.upgradeReward;
+        var level9Box = data.level9Box;
+        var isFirstTournament = data.isFirstTournament;
+        var next = function () {
+            gameCombo.next();
+        };
 
-    _setFirstTournament: function (isFirstTournament) {
-        cc.log("TournamentLayer _setFirstTournament");
-
-        this._isFirstTournament = isFirstTournament;
+        gameCombo.push([
+            function () {
+                if (battleLogId) {
+                    BattlePlayer.getInstance().play({
+                        cb: next,
+                        id: battleLogId
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (upgradeReward) {
+                    PlayerUpgradeLayer.pop({
+                        cb: next,
+                        reward: upgradeReward
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (level9Box) {
+                    Level9BoxLayer.pop({
+                        cb: next,
+                        reward: level9Box
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (isFirstTournament) {
+                    MandatoryTeachingLayer.pop({
+                        cb: next,
+                        progress: FIRST_TOURNAMENT
+                    });
+                } else {
+                    next();
+                }
+            },
+            function () {
+                if (upgradeReward) {
+                    gameGuide.updateGuide();
+                }
+                next();
+            }
+        ]);
     },
 
     _onClickPlayer: function (id, point) {
@@ -380,17 +405,41 @@ var TournamentLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var reward = gameData.tournament.getLastRankReward();
+        if (!reward) {
+            TipLayer.tip("当前没有可领奖励");
+            return;
+        }
+
         var that = this;
+
         gameData.tournament.receive(function (reward) {
-            lz.tipReward(reward);
 
-            if (that._rewardEffect) {
-                that._rewardEffect.removeFromParent();
-                that._rewardEffect = null;
-            }
+            GiftBagLayer.pop({
+                reward: reward,
+                type: GET_GIFT_BAG,
+                titleType: TYPE_LOOK_REWARD,
+                cb: function () {
+                    lz.tipReward(reward);
 
-            that._updateRankRewardItem();
+                    if (that._rewardEffect) {
+                        that._rewardEffect.removeFromParent();
+                        that._rewardEffect = null;
+                    }
+
+                    that._updateRankRewardItem();
+                }
+            });
+
         });
+    },
+
+    _onClickRank: function () {
+        cc.log("TournamentLayer _onClickRank");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().switchLayer(ElixirRankLayer);
     },
 
     _onClickDetail: function () {

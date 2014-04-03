@@ -37,6 +37,7 @@ var gameData = {
     exchange: null,
     activity: null,
     greeting: null,
+    boss: null,
 
     gameStart: function (player) {
         cc.log("gameData init");
@@ -64,6 +65,9 @@ var gameData = {
         this.exchange = Exchange.create();
         this.activity = Activity.create();
         this.greeting = Greeting.create();
+        this.boss = Boss.create();
+
+        gameCombo.reset();
 
         gameMark.init();
 
@@ -77,7 +81,10 @@ var gameData = {
     },
 
     gameEnd: function () {
+        gameCombo.stop();
+
         if (this.clock) this.clock.unscheduleAllCallbacks();
         if (this.player) this.player.unscheduleAllCallbacks();
+        if (this.boss) this.boss.unscheduleAllCallbacks();
     }
 };

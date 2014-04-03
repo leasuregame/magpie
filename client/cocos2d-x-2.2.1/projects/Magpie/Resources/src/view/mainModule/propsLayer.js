@@ -27,7 +27,7 @@ var PropsLayer = cc.Layer.extend({
 
         this.schedule(this.update, 1);
 
-        lz.dc.beginLogPageView("道具界面");
+        lz.um.beginLogPageView("道具界面");
     },
 
     onExit: function () {
@@ -35,7 +35,7 @@ var PropsLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("道具界面");
+        lz.um.endLogPageView("道具界面");
     },
 
     init: function () {

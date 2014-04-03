@@ -23,7 +23,7 @@ var BattleMessageLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("战斗消息界面");
+        lz.um.beginLogPageView("战斗消息界面");
     },
 
     onExit: function () {
@@ -31,7 +31,7 @@ var BattleMessageLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("战斗消息界面");
+        lz.um.endLogPageView("战斗消息界面");
     },
 
     init: function () {
@@ -80,7 +80,10 @@ var BattleMessageLayer = cc.Layer.extend({
             scrollViewLayer.addChild(msgLabel);
 
             var timeLabel = cc.LabelTTF.create(
-                lz.getTimeStr(battleMessageList[i].createTime),
+                lz.getTimeStr({
+                    time: battleMessageList[i].createTime,
+                    fmt: "yyyy.MM.dd hh:mm"
+                }),
                 "STHeitiTC-Medium",
                 16
             );

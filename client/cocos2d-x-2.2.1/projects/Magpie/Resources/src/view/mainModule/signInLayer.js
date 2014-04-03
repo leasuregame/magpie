@@ -44,7 +44,7 @@ var SignInLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("签到界面");
+        lz.um.beginLogPageView("签到界面");
     },
 
     onExit: function () {
@@ -52,7 +52,7 @@ var SignInLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("签到界面");
+        lz.um.endLogPageView("签到界面");
     },
 
     init: function () {

@@ -47,6 +47,7 @@ var MANDATORY_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 var MandatoryTeachingLayer = LazyLayer.extend({
     _mandatoryTeachingLayerFit: null,
 
+    _cb: null,
     _progress: 0,   //总的教学进度
     _step: 100,       //当前教学步骤
     _overStep: 0,    //结束教学步骤
@@ -56,12 +57,9 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     _effectOrder: [],
     _effectNode: null,
     _rect: cc.rect(0, 0, 0, 0),    //点击有效区域
-
-
     _currentTeaching: null,
 
-
-    init: function (progress) {
+    init: function (args) {
         cc.log("MandatoryTeachingLayer init");
 
         if (!this._super()) return false;
@@ -72,9 +70,8 @@ var MandatoryTeachingLayer = LazyLayer.extend({
 
         var uid = gameData.player.get("uid");
 
-        cc.log(progress);
-
-        this._progress = progress;
+        this._cb = args.cb;
+        this._progress = args.progress;
         this._step = 0;
         this._overStep = teaching[this._progress].overStep;
         this._clickType = teaching[this._progress].clickType;
@@ -88,7 +85,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         this._changeEffect(this._effectOrder[this._step]);
 
         return true;
-
     },
 
     next: function () {
@@ -100,8 +96,11 @@ var MandatoryTeachingLayer = LazyLayer.extend({
         } else {
             this.removeFromParent();
             mandatoryTeachingLayer = null;
-        }
 
+            if (this._cb) {
+                this._cb();
+            }
+        }
     },
 
     _clearEffect: function () {
@@ -112,7 +111,6 @@ var MandatoryTeachingLayer = LazyLayer.extend({
             this._effectNode.removeFromParent();
             this._effectNode = null;
         }
-
     },
 
     clearAndSave: function () {
@@ -154,10 +152,7 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     isTeaching: function () {
         cc.log("MandatoryTeachingLayer isTeaching");
 
-        if (this._step < this._overStep) {
-            return true;
-        }
-        return false;
+        return (this._step < this._overStep);
     },
 
     /**
@@ -183,25 +178,26 @@ var MandatoryTeachingLayer = LazyLayer.extend({
     }
 });
 
-MandatoryTeachingLayer.create = function (progress) {
+MandatoryTeachingLayer.create = function (args) {
     var ret = new MandatoryTeachingLayer();
 
-    if (ret && ret.init(progress)) {
+    if (ret && ret.init(args)) {
         return ret;
     }
 
     return null;
 };
 
-MandatoryTeachingLayer.pop = function (progress) {
+MandatoryTeachingLayer.pop = function (args) {
     cc.log("MandatoryTeachingLayer pop");
+
     if (mandatoryTeachingLayer) {
         mandatoryTeachingLayer.removeFromParent();
         mandatoryTeachingLayer = null;
     }
 
     lz.scheduleOnce(function () {
-        mandatoryTeachingLayer = MandatoryTeachingLayer.create(progress);
+        mandatoryTeachingLayer = MandatoryTeachingLayer.create(args);
         MainScene.getInstance().addChild(mandatoryTeachingLayer, 20);
     }, 0.1);
 };

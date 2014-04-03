@@ -22,7 +22,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("玩家升级界面");
+        lz.um.beginLogPageView("玩家升级界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("玩家升级界面");
+        lz.um.endLogPageView("玩家升级界面");
     },
 
     init: function (data) {

@@ -59,7 +59,7 @@ var Friend = Entity.extend({
 
                     gameMark.updateFriendMark(false);
 
-                    lz.dc.event("event_friend");
+                    lz.um.event("event_friend");
                 } else {
                     cc.log("sync fail");
 
@@ -249,7 +249,7 @@ var Friend = Entity.extend({
 
                 TipLayer.tip("请求已发送");
 
-                lz.dc.event("event_add_friend");
+                lz.um.event("event_add_friend");
             } else if (data.code == 501) {
                 cc.log("addFriend fail");
 
@@ -281,7 +281,7 @@ var Friend = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_delete_friend");
+                lz.um.event("event_delete_friend");
             } else {
                 cc.log("deleteFriend fail");
 
@@ -317,7 +317,7 @@ var Friend = Entity.extend({
 
                     cb("success");
 
-                    lz.dc.event("event_give_bless");
+                    lz.um.event("event_give_bless");
                 } else {
                     cc.log("giveBless fail");
                     TipLayer.tip(data.msg);
@@ -357,7 +357,7 @@ var Friend = Entity.extend({
 
                     cb("success");
 
-                    lz.dc.event("event_receive_bless");
+                    lz.um.event("event_receive_bless");
                 } else {
                     cc.log("receiveBless fail");
                     TipLayer.tip(data.msg);

@@ -19,6 +19,7 @@
 
 var PVE_BATTLE_LOG = 0;
 var PVP_BATTLE_LOG = 1;
+var BOSS_BATTLE_LOG = 2;
 
 var BattleLogPool = Entity.extend({
     _battleLogPool: {},
@@ -46,13 +47,13 @@ var BattleLogPool = Entity.extend({
         sys.localStorage.setItem("battleLogPool", this._battleLogPool);
     },
 
-    pushBattleLog: function (battleLog, battleType) {
+    pushBattleLog: function (battleLog) {
         cc.log("BattleLogPool pushBattleLog");
 
-        battleLog.type = battleType || PVE_BATTLE_LOG;
+        battleLog.type = battleLog.type || PVE_BATTLE_LOG;
         battleLog.id = battleLog.id || 100000000;
 
-        if (battleLog.ownId !== gameData.player.get("id")) {
+        if (battleLog.enemyId === gameData.player.get("id")) {
             if (battleLog.winner == "own") {
                 battleLog.winner = "enemy";
             } else if (battleLog.winner == "enemy") {

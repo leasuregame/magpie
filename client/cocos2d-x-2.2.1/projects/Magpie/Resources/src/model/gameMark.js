@@ -58,6 +58,7 @@ var gameMark = {
 
     updateActivityMark: function (mark) {
         cc.log("gameMark updateActivityMark");
+
         this._activity = mark;
         MainScene.getInstance().updateMark();
     },
@@ -66,7 +67,7 @@ var gameMark = {
         cc.log("gameMark getCardLibraryMark");
 
         var mark = this._cardLibrary;
-        if (mark == false) {
+        if (!mark) {
             var cardLibrary = gameData.cardLibrary;
             for (var key in cardLibrary.get("type")) {
                 var type = cardLibrary.getTypeById(key);
@@ -82,6 +83,7 @@ var gameMark = {
 
     updateCardLibraryMark: function (mark) {
         cc.log("gameMark updateCardLibraryMark");
+
         this._cardLibrary = mark;
         MainScene.getInstance().updateMark();
     },
@@ -90,7 +92,7 @@ var gameMark = {
         cc.log("gameMark getAchievementMark");
 
         var mark = this._achievement;
-        if (mark == false) {
+        if (!mark) {
             var achievementList = gameData.achievement.getAchievementList();
             var len = achievementList.length;
 
@@ -105,12 +107,13 @@ var gameMark = {
                 }
             }
         }
-        this._achievement = mark
+        this._achievement = mark;
         return mark;
     },
 
     updateAchievementMark: function (mark) {
         cc.log("gameMark updateAchievementMark");
+
         this._achievement = mark;
         MainScene.getInstance().updateMark();
     },
@@ -119,7 +122,7 @@ var gameMark = {
         cc.log("gameMark getFriendMark");
 
         var mark = this._friend;
-        if (mark == false) {
+        if (!mark) {
             var friend = gameData.friend;
             var receiveCount = friend.get("receiveCount");
             var friendList = friend.get("friendList");
@@ -137,6 +140,7 @@ var gameMark = {
 
     updateFriendMark: function (mark) {
         cc.log("gameMark updateFriendMark");
+
         this._friend = mark;
         MainScene.getInstance().updateMark();
     },
@@ -146,7 +150,7 @@ var gameMark = {
 
         var mark = this._message;
 
-        if (mark == false) {
+        if (!mark) {
             if (this.getFriendMessageMark() == true) {
                 mark = true;
             } else if (this.getSystemMessageMark() == true) {
@@ -160,6 +164,7 @@ var gameMark = {
 
     updateMessageMark: function (mark) {
         cc.log("gameMark updateMessageMark");
+
         this._message = mark;
         MainScene.getInstance().updateMark();
     },
@@ -168,7 +173,7 @@ var gameMark = {
         cc.log("gameMark getMessageMark");
 
         var mark = this._signIn;
-        if (mark == false) {
+        if (!mark) {
             var signIn = gameData.signIn;
             if (signIn.canSignIn(0) == true) {
                 mark = true;
@@ -195,6 +200,7 @@ var gameMark = {
 
     updateSignInMark: function (mark) {
         cc.log("gameMark updateSignInMark");
+
         this._signIn = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
@@ -202,11 +208,13 @@ var gameMark = {
 
     getPowerRewardMark: function () {
         cc.log("gameMark getPowerRewardMark");
+
         return this._powerReward;
     },
 
     updatePowerRewardMark: function (mark) {
         cc.log("gameMark updatePowerRewardMark");
+
         this._powerReward = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
@@ -216,7 +224,7 @@ var gameMark = {
         cc.log("gameMark getGoldRewardMark");
 
         var mark = this._goldReward;
-        if (mark == false) {
+        if (!mark) {
             var goldRewards = outputTables.player_upgrade_reward.rows;
             var lv = gameData.player.get('lv');
             var keys = Object.keys(goldRewards);
@@ -242,6 +250,7 @@ var gameMark = {
 
     updateGoldRewardMark: function (mark) {
         cc.log("gameMark getGoldRewardMark");
+
         this._goldReward = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
@@ -249,11 +258,13 @@ var gameMark = {
 
     getRechargeMark: function () {
         cc.log("gameMark getRechargeMark");
+
         return this._recharge;
     },
 
     updateRechargeMark: function (mark) {
         cc.log("gameMark updateRechargeMark");
+
         this._recharge = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
@@ -263,7 +274,7 @@ var gameMark = {
         cc.log("gameMark getFriendMessageMark");
 
         var mark = this._friendMessage;
-        if (mark == false) {
+        if (!mark) {
             var friendMessageList = gameData.message.get("friendMessage");
             var len = friendMessageList.length;
             for (var i = 0; i < len; ++i) {
@@ -283,6 +294,7 @@ var gameMark = {
 
     updateFriendMessageMark: function (mark) {
         cc.log("gameMark updateFriendMessageMark");
+
         this._friendMessage = mark;
         this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
@@ -292,7 +304,7 @@ var gameMark = {
         cc.log("gameMark getSystemMessageMark");
 
         var mark = this._systemMessage;
-        if (mark == false) {
+        if (!mark) {
             var systemMessageList = gameData.message.get("systemMessage");
             var len = systemMessageList.length;
             for (var i = 0; i < len; ++i) {
@@ -308,6 +320,7 @@ var gameMark = {
 
     updateSystemMessageMark: function (mark) {
         cc.log("gameMark updateSystemMessageMark");
+
         this._systemMessage = mark;
         this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
@@ -329,6 +342,7 @@ var gameMark = {
 
     updateLotteryMark: function (mark) {
         cc.log("gameMark updateLotteryMark");
+
         this._lottery = mark;
         MainScene.getInstance().updateMark();
     },
@@ -358,6 +372,7 @@ var gameMark = {
 
     updateNewYearMark: function (mark) {
         cc.log("gameMark updateNewYearMark");
+
         this._newYearReward = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
@@ -379,6 +394,7 @@ var gameMark = {
 
     updateTreasureHuntMark: function (mark) {
         cc.log("gameMark updateTreasureHuntMark");
+
         this._treasureHunt = mark;
         MainScene.getInstance().updateMark();
     },
@@ -409,6 +425,5 @@ var gameMark = {
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }
-
 };
 

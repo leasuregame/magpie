@@ -1,4 +1,4 @@
-var helper = require('../util/helper');
+var helper = require('../../shared/version_helper');
 var KSS_HOST = 'http://kss.ksyun.com';
 var updateRecordDao = require('../util/updateRecordDao');
 var async = require('async');
@@ -28,7 +28,6 @@ exports.update = function(req, res) {
     return res.status(404).send('找不到版本信息'+platform);
   }
 
-  var filename = vData[platform].filename;
   if (ver != null && ver != '' && !/^\d{1,2}.\d{1,2}.\d{1,2}$/.test(ver)) {
     return res.status(400).send('版本号格式错误');
   }
@@ -37,6 +36,8 @@ exports.update = function(req, res) {
   if (!lastVersion) {
     return res.status(400).send('找不到上一版本号')
   }
+
+  var filename = vData[platform].filename;
   if (helper.versionCompare(ver, lastVersion)) {
     filename = vData[platform].lastFilename;
   }

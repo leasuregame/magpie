@@ -39,5 +39,31 @@ $(function() {
     window.location.href = window.location.pathname + '?' + $.param(query);
   });
 
+  $('#btnSearch').click(function(e) {
+    $.ajax({
+      url: '/admin/cdkey/search', 
+      data: {
+        q: $('#queryText').val()
+      },
+      dataType: 'json',
+    }).success(function(data){
+      if (data.length == 0) {
+        return alert('没有任何数据！');
+      }
+
+      var html = '';
+      for (var i = 0; i < data.length; i++) {
+        html += '<tr><td>' + data[i].code + '</td>';
+        html += '<td>' + data[i].startDate + '</td>';
+        html += '<td>' + data[i].endDate + '</td>';
+        html += '<td>' + data[i].activate + '</td></tr>';
+      }
+
+      $('table tbody').html(html);
+    }).error(function(data){
+      console.log('err', data);
+    })
+  });
+
   
 });

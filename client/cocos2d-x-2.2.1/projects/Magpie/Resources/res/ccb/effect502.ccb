@@ -90,7 +90,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1</real>
+											<real>1.3333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -105,7 +105,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.6666666269302368</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -312,7 +312,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.73333334922790527</real>
+											<real>1</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -373,7 +373,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.73333334922790527</real>
+											<real>1</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -566,7 +566,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -581,7 +581,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.3333333730697632</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1004,7 +1004,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1044,7 +1044,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -1087,7 +1087,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1130,7 +1130,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1308,7 +1308,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1348,7 +1348,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -1391,7 +1391,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1434,7 +1434,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1842,7 +1842,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>1.3333333730697632</real>
+									<real>1.6666667461395264</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1888,7 +1888,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>10</real>
+							<real>-20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1930,7 +1930,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1949,7 +1949,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>50</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1957,7 +1957,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.30000001192092896</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1974,8 +1974,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>0.20000000298023224</real>
+							<real>0.5</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -1985,8 +1985,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
-							<real>5</real>
+							<real>20</real>
+							<real>8</real>
 						</array>
 					</dict>
 					<dict>
@@ -2029,8 +2029,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>60</real>
+							<real>-90</real>
+							<real>120</real>
 						</array>
 					</dict>
 					<dict>
@@ -2088,45 +2088,34 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>speed</string>
+						<string>startRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>60</real>
 							<real>20</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tangentialAccel</string>
+						<string>endRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>180</real>
+							<real>40</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>radialAccel</string>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>0.0</real>
 							<real>0.0</real>
 						</array>
 					</dict>
@@ -2238,13 +2227,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1.3333333730697632</real>
+			<real>1.6666667461395264</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>1.6666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

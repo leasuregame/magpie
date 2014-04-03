@@ -86,7 +86,7 @@ var TreasureHunt = Entity.extend({
                     str: str
                 });
 
-                lz.dc.event("event_treasure_hunt", id);
+                lz.um.event("event_treasure_hunt", id);
             } else {
                 cc.log("treasureHunt fail");
 

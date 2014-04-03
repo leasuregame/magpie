@@ -12,7 +12,7 @@
  * */
 
 
-cc.BuilderReader.setResourcePath("./");
+//cc.BuilderReader.setResourcePath("./");
 
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
@@ -27,7 +27,7 @@ var MainScene = cc.Scene.extend({
 
         gameData.sound.playMusic();
 
-        lz.dc.beginLogPageView("主场景");
+        lz.um.beginLogPageView("主场景");
     },
 
     onExit: function () {
@@ -35,7 +35,7 @@ var MainScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("主场景");
+        lz.um.endLogPageView("主场景");
     },
 
     init: function () {

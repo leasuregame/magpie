@@ -23,6 +23,21 @@ exports.totalCount = function(options, cb) {
   });
 };
 
+exports.search = function(text, cb) {
+  var sql = "select c.* from cdkey c join player p on p.id = c.playerId where p.name = ? \
+    union \
+    select * from cdkey where code = ? \
+  ";
+  var args = [text, text, text, text];
+
+  if (new Date(text).toString() != 'Invalid Date') {
+    sql += 'union select * from cdkey where startDate = ? or endDate = ?';
+    args.push(text);
+  }
+
+  db.query(sql, args, cb);
+};
+
 exports.query = function(options, limitStart, limitCount, cb) {
   if (!options) {
     options = {};

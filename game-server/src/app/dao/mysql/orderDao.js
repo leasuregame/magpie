@@ -31,7 +31,7 @@ var TbOrderDao = (function(_super) {
 		var sql = 'select sum(amount)/100 as cash from tbOrder where playerId = ? and created between ? and ?';
 		dbClient.query(sql, [playerId, startDate, endDate], function(err, res) {
 			if (err) {
-				logger.error("[SQL ERROR, when query tborder]", sql, args);
+				logger.error("[SQL ERROR, when query tborder]", sql);
 				logger.error(err.stack);
 				return cb({
 					code: err.code,

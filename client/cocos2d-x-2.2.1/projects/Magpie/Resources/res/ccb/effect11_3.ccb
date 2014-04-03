@@ -212,7 +212,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>20</real>
+								<real>8.8000001907348633</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -241,7 +241,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>143</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -250,9 +250,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>117</integer>
-									<integer>213</integer>
 									<integer>255</integer>
+									<integer>170</integer>
+									<integer>71</integer>
 								</array>
 							</dict>
 							<dict>
@@ -403,7 +403,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-20</real>
+								<real>-8.8000001907348633</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -432,7 +432,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>143</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -441,9 +441,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>117</integer>
-									<integer>213</integer>
 									<integer>255</integer>
+									<integer>164</integer>
+									<integer>53</integer>
 								</array>
 							</dict>
 							<dict>
@@ -495,8 +495,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1.2200000286102295</real>
+							<real>1.2200000286102295</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -571,7 +571,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -590,7 +590,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>50</real>
+						<real>40</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -606,7 +606,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>50</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -615,7 +615,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.60000002384185791</real>
+							<real>0.40000000596046448</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -626,8 +626,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
+							<real>30</real>
 							<real>20</real>
-							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -637,8 +637,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>5</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -649,7 +649,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>360</real>
+							<real>180</real>
 						</array>
 					</dict>
 					<dict>
@@ -682,8 +682,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.0</real>
-								<real>0.99143940210342407</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
 								<real>1</real>
 								<real>1</real>
 							</array>
@@ -703,8 +703,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.46202266216278076</real>
-								<real>0.8382837176322937</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
 								<real>1</real>
 								<real>1</real>
 							</array>
@@ -729,9 +729,9 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
+						<string>startRadius</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
@@ -740,35 +740,24 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>speed</string>
+						<string>endRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>120</real>
+							<real>100</real>
 							<real>20</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tangentialAccel</string>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
 							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>60</real>
-							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -777,9 +766,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p15.png</string>
+						<string>res/effect/effect/p128.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -961,9 +952,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>0</integer>
-									<integer>150</integer>
 									<integer>255</integer>
+									<integer>147</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1110,9 +1101,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>212</integer>
+									<integer>120</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1269,7 +1260,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.36666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

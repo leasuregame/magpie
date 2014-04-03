@@ -16,7 +16,7 @@ var StartAnimationScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("开场动画场景");
+        lz.um.beginLogPageView("开场动画场景");
     },
 
     onExit: function () {
@@ -24,7 +24,7 @@ var StartAnimationScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("开场动画场景");
+        lz.um.endLogPageView("开场动画场景");
     },
 
     init: function () {

@@ -57,6 +57,7 @@ app.get('/admin/version/details/:version', filter.authorize, version.versionDeta
 app.get('/admin/cdkey', filter.authorize, cdkey.manage);
 app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
+app.get('/admin/cdkey/search', filter.authorize, cdkey.search);
 app.get('/admin/playerId', filter.authorize, player.get);
 pushMessage(app);
 sendReward(app);

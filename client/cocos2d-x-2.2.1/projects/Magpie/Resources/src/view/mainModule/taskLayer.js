@@ -33,7 +33,7 @@ var TaskLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("修炼界面");
+        lz.um.beginLogPageView("修炼界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("修炼界面");
+        lz.um.endLogPageView("修炼界面");
     },
 
     init: function () {
@@ -56,15 +56,6 @@ var TaskLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._index = gameData.task.getChapter();
-
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._taskLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
-        titleIcon.setPosition(this._taskLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,

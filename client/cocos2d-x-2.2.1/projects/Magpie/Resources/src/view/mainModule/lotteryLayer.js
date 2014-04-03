@@ -36,7 +36,7 @@ var LotteryLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("抽卡界面");
+        lz.um.beginLogPageView("抽卡界面");
     },
 
     onExit: function () {
@@ -44,7 +44,7 @@ var LotteryLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("抽卡界面");
+        lz.um.endLogPageView("抽卡界面");
     },
 
     init: function () {

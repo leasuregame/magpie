@@ -89,3 +89,22 @@ exports.generate = function(req, res) {
   console.log(req.body);
   res.send(shortid.generate());
 };
+
+exports.search = function(req, res) {
+  var text = req.query.q;
+  cdkeyDao.search(text, function(err, items) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      if (!!items && items.length > 0) {
+        res.send(items.map(function(r) {
+          r.startDate = localDateString(r.startDate);
+          r.endDate = localDateString(r.endDate);
+          return r;
+        }));
+      } else {
+        res.send([]);
+      }
+    }
+  });
+};

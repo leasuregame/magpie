@@ -39,7 +39,7 @@ var RankDao = (function(_super) {
     };
 
     RankDao.maxRanking = function(cb) {
-        dbClient.query('select max(ranking) + 1 as next_ranking from rank', function(err, res) {
+        dbClient.query('select max(ranking) + 1 as next_ranking from rank', [], function(err, res) {
             if (err) {
                 return cb(err);
             }

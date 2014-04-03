@@ -79,7 +79,7 @@ var Activity = Entity.extend({
 
                     gameMark.updateActivityMark(false);
 
-                    lz.dc.event("event_activity");
+                    lz.um.event("event_activity");
                 } else {
                     cc.log("sync fail");
 
@@ -153,7 +153,7 @@ var Activity = Entity.extend({
                 TipLayer.tipWithIcon(lz.getGameGoodsIcon("power"), " +" + power);
                 gameData.player.add("power", power);
 
-                lz.dc.event("event_give_power");
+                lz.um.event("event_give_power");
                 cb();
             } else {
                 TipLayer.tip(data.msg);
@@ -174,7 +174,7 @@ var Activity = Entity.extend({
 
                 cb(true);
 
-                lz.dc.event("event_receive_level_reward", id);
+                lz.um.event("event_receive_level_reward", id);
             } else {
                 TipLayer.tip(data.msg);
                 cb(false);
@@ -245,6 +245,12 @@ var Activity = Entity.extend({
                     "power": table.power,
                     "cardArray": cards
                 };
+
+                for (var key in reward) {
+                    if (key != "cardArray") {
+                        gameData.player.add(key, reward[key]);
+                    }
+                }
 
                 gameData.player.set("firstRechargeBox", GOT_FIRST_RECHARGER_BOX);
 

@@ -579,7 +579,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.60000002384185791</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -646,9 +646,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.77428323030471802</real>
-								<real>0.34193649888038635</real>
-								<real>0.0</real>
+								<real>0.25832366943359375</real>
+								<real>0.76826304197311401</real>
+								<real>0.8164551854133606</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -744,6 +744,8 @@
 						<string>res/effect/uiEffect/up18.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -927,9 +929,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>85</integer>
-							<integer>0</integer>
+							<integer>160</integer>
+							<integer>252</integer>
+							<integer>225</integer>
 						</array>
 					</dict>
 					<dict>

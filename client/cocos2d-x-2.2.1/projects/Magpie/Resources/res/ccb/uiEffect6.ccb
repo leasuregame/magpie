@@ -631,8 +631,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -658,7 +656,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>4.0499997138977051</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1222,7 +1220,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>10</real>
+							<real>5.9500002861022949</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1346,7 +1344,7 @@
 											<key>value</key>
 											<array>
 												<real>3</real>
-												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -1428,7 +1426,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/effect/p8.png</string>
+									<string>res/effect/effect/p28.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1597,7 +1595,7 @@
 											<key>value</key>
 											<array>
 												<real>3</real>
-												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -1681,7 +1679,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/effect/p8.png</string>
+									<string>res/effect/effect/p28.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1853,7 +1851,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>0.89999997615814209</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1904,7 +1902,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.76666665077209473</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1974,7 +1972,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.76666665077209473</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

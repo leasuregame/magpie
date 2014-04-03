@@ -46,11 +46,10 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
-    _rank: 0,
-    _goldCards: {},     //周卡月卡
-    _recharge: 0,       //充值记录标记
-    _firstRechargeBox: 0,   //首充礼包标记
-    _evolutionRate: {}, //星级进阶概率
+    _goldCards: {},     // 周卡月卡
+    _recharge: 0,       // 充值记录标记
+    _firstRechargeBox: 0,   // 首充礼包标记
+    _evolutionRate: {}, // 星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
     _ability: 0,        // 战斗力
@@ -62,6 +61,9 @@ var Player = Entity.extend({
     _maxSkillPoint: 0,  // 最大技能点
     _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
+
+    _honor: 0,          // 荣誉
+    _superHonor: 0,     // 精元
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
@@ -136,6 +138,8 @@ var Player = Entity.extend({
         this.set("powerTimestamp", data.power.time);
         this.set("goldCards", data.goldCards);
         this.set("vip", data.vip);
+        this.set("honor", data.honor);
+        this.set("superHonor", data.superHonor);
 
         if (data.speaker) {
             this.set("speaker", data.speaker);
@@ -175,6 +179,7 @@ var Player = Entity.extend({
         });
         gameData.lottery.init(data.firstTime);
         gameData.exchange.init(data.exchangeCards);
+        gameData.boss.init(data.bossInfo);
 
         this.set("ability", this.getAbility());
     },
@@ -197,7 +202,7 @@ var Player = Entity.extend({
 
                     that.set("evolutionRate", msg.initRate);
 
-                    lz.dc.event("event_order_list");
+                    lz.um.event("event_order_list");
                 } else {
                     cc.log("Player sync fail");
 
@@ -308,8 +313,6 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
-
-        gameGuide.updateGuide();
     },
 
     isFullLv: function () {
@@ -355,7 +358,7 @@ var Player = Entity.extend({
     _powerChangeEven: function () {
         cc.log("Player _powerChangeEven");
 
-        if (lz.NotificationHelp) {
+        if (typeof(lz.NotificationHelp) != "undefined") {
             lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
 
             if (this._power < this._maxPower) {
@@ -382,7 +385,7 @@ var Player = Entity.extend({
 
                 cb("success");
 
-                lz.dc.event("event_send_message");
+                lz.um.event("event_send_message");
             } else {
                 cc.log("sendMessage fail");
 
@@ -406,11 +409,11 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
 
                 cb(battleLogId);
 
-                lz.dc.event("event_fight");
+                lz.um.event("event_fight");
             } else {
                 cc.log("learn fail");
 
@@ -436,7 +439,7 @@ var Player = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_get_player_detail");
+                lz.um.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
 

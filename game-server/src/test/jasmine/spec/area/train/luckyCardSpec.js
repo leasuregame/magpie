@@ -66,6 +66,9 @@ describe("Area Server", function() {
 
 					beforeAll(function() {
 						doAjax('/clear/card', {}, function() {});
+						doAjax('/update/player/' + arthur.playerId, {
+							cardsCount: 1000
+						}, function() {});
 					});
 
 					beforeEach(function() {
@@ -169,7 +172,7 @@ describe("Area Server", function() {
 						it(test_name + ' >> ' + LOTTERY_COUNT + ' times', function() {
 							for (var i = 0; i < LOTTERY_COUNT; i++) {
 								(function(i) {
-									doIt(type, 15000, 2);
+									doIt(type, 15000, 10);
 								})(i);
 							}
 						});
@@ -177,6 +180,7 @@ describe("Area Server", function() {
 
 					test("元宝抽卡 >> should can be get a lucky card", LOTTERY_TYPE.GOLD);
 					test100times('元宝抽卡', LOTTERY_TYPE.GOLD);
+
 					test("活力值抽卡 >> should can be get a lucky card", LOTTERY_TYPE.ENERGY);
 					test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
 				});

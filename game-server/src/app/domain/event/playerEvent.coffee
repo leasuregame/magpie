@@ -1,5 +1,3 @@
-playerConfig = require('../../../config/data/player')
-msgConfig = require '../../../config/data/message'
 table = require('../../manager/table')
 utility = require '../../common/utility'
 _ = require 'underscore'

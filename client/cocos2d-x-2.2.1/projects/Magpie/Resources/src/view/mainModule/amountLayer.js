@@ -58,7 +58,7 @@ var AmountLayer = LazyLayer.extend({
         this._discount_num = data.discount_num || 100000000;
         this._discount = data.discount || 10;
 
-        var title = "购买" + data.name || "";
+        var title = data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._amountLayerFit.bgLayerPoint);

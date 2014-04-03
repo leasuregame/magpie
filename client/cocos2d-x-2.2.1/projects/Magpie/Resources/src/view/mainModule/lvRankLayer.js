@@ -25,7 +25,7 @@ var LvRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("等级排行榜界面");
+        lz.um.beginLogPageView("等级排行榜界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var LvRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("等级排行榜界面");
+        lz.um.endLogPageView("等级排行榜界面");
     },
 
     init: function () {

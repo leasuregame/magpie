@@ -2,8 +2,7 @@ dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
 playerManager = require('pomelo').app.get('playerManager')
 utility = require '../../../common/utility'
-msgConfig = require '../../../../config/data/message'
-playerConfig = require '../../../../config/data/player'
+configData = require '../../../../config/data'
 async = require 'async'
 _ = require 'underscore'
 
@@ -76,7 +75,7 @@ Handler::getFriends = (msg, session, next) ->
 
     (cb) ->
       [start, end] = todayPeriod()
-      where = " receiver = #{playerId} and type = #{msgConfig.MESSAGETYPE.BLESS} and createTime between #{start.valueOf()} and #{end.valueOf()}"
+      where = " receiver = #{playerId} and type = #{configData.message.MESSAGETYPE.BLESS} and createTime between #{start.valueOf()} and #{end.valueOf()}"
       dao.message.fetchMany where: where, cb
   ], (err, results) ->
     if err
@@ -105,9 +104,13 @@ Handler::getLineUpInfo = (msg, session, next) ->
         msg: err.msg or err
         }
       )
+    
+    lineUp = []
+    for lu in player.lineUp
+      i = {}
+      i[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of lu
+      lineUp.push i
 
-    lineUp = {}
-    lineUp[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of player.lineUpObj()
     next(null, {code: 200, msg: {
       lineUp: lineUp
       name: player.name
@@ -140,7 +143,7 @@ Handler::givePower = (msg, session, next) ->
     if hasGetPower(player, star_hour) 
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    point = playerConfig.POWER_GIVE.point
+    point = configData.player.POWER_GIVE.point
     player.givePower(star_hour, point)
     player.save()
     next(null, {code: 200, msg: {powerValue: point}})
@@ -151,8 +154,8 @@ Handler::getActivityInfo = (msg, session, next) ->
   async.parallel [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
-    (cb) =>
-      getRechargeRewardFlag @app, playerId, cb
+    # (cb) =>
+    #   getRechargeRewardFlag @app, playerId, cb
   ], (err, results) =>
     if err
       return next(null, {
@@ -162,15 +165,15 @@ Handler::getActivityInfo = (msg, session, next) ->
       )
 
     player = results[0]
-    rechargeFlag = results[1]
-    flag = setCanGetFlag player, rechargeFlag
+    # rechargeFlag = results[1]
+    # flag = setCanGetFlag player, rechargeFlag
     cur_hour = new Date().getHours()
     next(null, {
       code: 200,
       msg: {
         canGetPower: canGetPower(cur_hour) and not hasGetPower(player, powerGiveStartHour cur_hour) 
         levelReward: player.levelReward
-        rechargeFlag: flag
+        # rechargeFlag: flag
         hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
       }
     })
@@ -188,29 +191,30 @@ Handler::getLevelReward = (msg, session, next) ->
         code: err.code or 501
         msg: err.msg or err
         }
-      )    
+      )
 
     if player.hasLevelReward(id)
       return next(null, {code: 501, msg: '不能重复领取'})
 
     if player.lv < data.lv
-      return next(null, {code: 501, msg: "等级未达到#{data.lv}级, 不能领取"})    
+      return next(null, {code: 501, msg: "等级未达到#{data.lv}级, 不能领取"})
 
     player.increase('gold', data.gold)
+    player.increase('energy', data.energy)
     player.setLevelReward(id)
     player.save()
-    next(null, {code: 200, msg: {gold: data.gold}})
+    next(null, {code: 200, msg: {gold: data.gold, energy: data.energy}})
 
 canGetPower = (hour) ->
   canGetHours = []
-  for h in playerConfig.POWER_GIVE.hours
-    for i in [0...playerConfig.POWER_GIVE.duration]
+  for h in configData.player.POWER_GIVE.hours
+    for i in [0...configData.player.POWER_GIVE.duration]
       canGetHours.push h+i 
   _.contains canGetHours, hour
 
 powerGiveStartHour = (hour) ->
-  for h in playerConfig.POWER_GIVE.hours
-    for i in [0...playerConfig.POWER_GIVE.duration]
+  for h in configData.player.POWER_GIVE.hours
+    for i in [0...configData.player.POWER_GIVE.duration]
       return h if h+i is hour or h is hour
 
 hasGetPower = (player, hour) ->
@@ -234,7 +238,7 @@ checkFriendsStatus = (player, messages) ->
     f.canReceive = false
     f.canGive = true
 
-    matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.UNHANDLED
+    matches = messages.filter (m) -> m.sender is f.id and m.status is configData.message.MESSAGESTATUS.UNHANDLED
     if matches.length > 0
       f.canReceive = true
       f.msgId = matches[0].id

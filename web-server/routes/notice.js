@@ -7,6 +7,15 @@ var path = require('path');
 var qs = require('querystring');
 var dataUtil = require('../util/dataUtil');
 
+var SIZE_MAP = {
+  '1024x768': '18px', 
+  '2048x1536': '18px',
+  
+  '480x320': '12px', 
+  '960x640': '12px', 
+  '1136x640': '12px'
+};
+
 var readFile = function(name) {
   return fs.readFileSync(path.join(__dirname, '..', 'views', name), 'utf8');
 };
@@ -24,14 +33,22 @@ exports.admin = function(req, res) {
 };
 
 exports.noticeList = function(req, res) {
-  res.render('noticeList', {notices: dataUtil.getJson('notice'), menu: 'notice'});
+  res.render('noticeList', {
+    notices: dataUtil.getJson('notice'),
+    menu: 'notice'
+  });
 };
 
 exports.notice = function(req, res) {
   var platform = req.params.platform;
+  var w = req.query.w;
+  var h = req.query.h;
+  var key = h + 'x' + w;
+
   res.render('notice', {
-    title: platform+'公告',
-    content: dataUtil.html(platform+'_notice')
+    title: platform + '公告',
+    content: dataUtil.html(platform + '_notice'),
+    size: SIZE_MAP[key] || '12px'
   });
 };
 
@@ -44,7 +61,7 @@ exports.newNotice = function(req, res) {
   var item = {
     'name': req.body.inputName,
     'platform': req.body.inputPlatform,
-    'filename': req.body.inputPlatform+'_notice.html'
+    'filename': req.body.inputPlatform + '_notice.html'
   };
   data.push(item);
   dataUtil.setJson('notice', data);
@@ -86,7 +103,7 @@ exports.saveNotice = function(req, res) {
   console.log('before content', req.body.content);
   if (req.body.content) {
     console.log('save content');
-    dataUtil.saveHtml(platform+'_notice', req.body.content);
+    dataUtil.saveHtml(platform + '_notice', req.body.content);
   }
   res.end();
 };
@@ -106,6 +123,6 @@ exports.delNotice = function(req, res) {
   }
   data.splice(idx, 1);
   dataUtil.setJson('notice', data);
-  dataUtil.delFile(platform+'_notice.html');
+  dataUtil.delFile(platform + '_notice.html');
   res.send('ok');
 };

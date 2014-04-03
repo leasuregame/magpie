@@ -28,7 +28,7 @@ var StrokeLabel = cc.Node.extend({
         var string = arg[0];
         var fontName = arg[1] || "STHeitiTC-Medium";
         var fontSize = arg[2] || 20;
-        var dimensions = arg[3] || cc.size(0, arg[2]);
+        var dimensions = arg[3] || cc.size(0, 0);
         var alignment = arg[4] || cc.TEXT_ALIGNMENT_LEFT;
 
         this._strLabel = cc.LabelTTF.create(string, fontName, fontSize, dimensions, alignment);
@@ -78,6 +78,7 @@ var StrokeLabel = cc.Node.extend({
             this._strBgLabel[i].setString(text);
         }
 
+        this.update();
     },
 
     setColor: function (color3) {

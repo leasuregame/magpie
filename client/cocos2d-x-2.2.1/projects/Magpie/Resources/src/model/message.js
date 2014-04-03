@@ -68,7 +68,7 @@ var Message = Entity.extend({
 
                     gameMark.updateMessageMark(false);
 
-                    lz.dc.event("event_message_list");
+                    lz.um.event("event_message_list");
                 } else {
                     cc.log("sync fail");
 
@@ -147,7 +147,7 @@ var Message = Entity.extend({
 
                     gameData.friend.push(msg);
                     cb();
-                    lz.dc.event("event_friend_accept");
+                    lz.um.event("event_friend_accept");
                 } else {
                     TipLayer.tip(data.msg);
                     message.status = ACCEPT_STATUS;
@@ -188,7 +188,7 @@ var Message = Entity.extend({
 
                     message.status = REJECT_STATUS;
                     cb();
-                    lz.dc.event("event_friend_reject");
+                    lz.um.event("event_friend_reject");
                 } else {
                     cc.log("reject fail");
                 }
@@ -240,7 +240,7 @@ var Message = Entity.extend({
 
                     cb();
 
-                    lz.dc.event("event_handle_sys_message");
+                    lz.um.event("event_handle_sys_message");
                 } else {
                     TipLayer.tip(data.msg);
                     cc.log("receive fail");
@@ -259,7 +259,10 @@ var Message = Entity.extend({
         cc.log(battleLogPool.getBattleLogById(id));
 
         if (battleLogPool.getBattleLogById(id)) {
-            BattlePlayer.getInstance().play(id, true);
+            BattlePlayer.getInstance().play({
+                id: id,
+                isPlayback: true
+            });
             return;
         }
 
@@ -275,11 +278,14 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog);
 
-                BattlePlayer.getInstance().play(battleLogId, true);
+                BattlePlayer.getInstance().play({
+                    id: battleLogId,
+                    isPlayback: true
+                });
 
-                lz.dc.event("event_battle_play_back");
+                lz.um.event("event_battle_play_back");
             } else {
                 cc.log("playback fail");
 

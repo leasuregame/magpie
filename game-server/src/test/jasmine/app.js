@@ -197,6 +197,47 @@ app.get('/createDb', function(req, res) {
   command(req, res, 'sh', [__dirname + '/../../bin/initMysql.sh', 'magpie_area_1']);
 });
 
+app.get('/:table/query', function(req, res) {
+  var table = req.params.table;
+  var query = req.query;
+
+  var where = '', k, v, args = [];
+  for (k in query) {
+    where += ' ' + k + '=? and';
+    args.push(query[k]);
+  }  
+
+  var sql = 'select * from ' + table + (where == '' ? '': ' where ' + where.slice(0, -3));
+  console.log(sql, args);
+  mysql.magpiedb1.query(sql, args, function(err, results) {
+    console.log(err, results);
+    if (err) {
+      res.send({
+        code: 500, 
+        msg: err
+      });
+    } else {
+      if (!!results && results.length == 1) {
+        res.send({
+          code: 200,
+          data: results[0]
+        });
+      } else if (!!results && results.length > 1) {
+        res.send({
+          code: 200,
+          data: results
+        })
+      } else {
+        res.send({
+          code: 200,
+          data: null
+        })
+      }
+    }
+  });
+
+});
+
 app.get('/update/:table/:id', function(req, res) {
   var table = req.params.table;
   var id = req.params.id;

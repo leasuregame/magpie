@@ -78,7 +78,7 @@ var SignIn = Entity.extend({
 
                     gameMark.updateSignInMark(false);
 
-                    lz.dc.event("event_sign_in_record");
+                    lz.um.event("event_sign_in_record");
                 } else {
                     cc.log("sync fail");
 
@@ -177,7 +177,7 @@ var SignIn = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_sign_in");
+                lz.um.event("event_sign_in");
             } else {
                 cc.log("signIn fail");
 
@@ -211,7 +211,7 @@ var SignIn = Entity.extend({
 
                 cb(msg.reward);
 
-                lz.dc.event("event_remedy_sign_in");
+                lz.um.event("event_remedy_sign_in");
             } else {
                 cc.log("remedySignIn fail");
 
@@ -259,7 +259,7 @@ var SignIn = Entity.extend({
                     freeCount: table.lottery_free_count
                 });
 
-                lz.dc.event("event_receive_sign_in_reward", id);
+                lz.um.event("event_receive_sign_in_reward", id);
             } else {
                 cc.log("signIn fail");
 

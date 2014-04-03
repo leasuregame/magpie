@@ -65,7 +65,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.5</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -111,8 +111,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -206,7 +206,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.5</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -252,8 +252,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -376,8 +376,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>20</real>
+									<real>30</real>
+									<real>30</real>
 								</array>
 							</dict>
 							<dict>
@@ -394,7 +394,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.5</real>
+								<real>0.60000002384185791</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -402,7 +402,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>100</integer>
+								<integer>80</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -422,7 +422,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
+									<real>40</real>
 									<real>10</real>
 								</array>
 							</dict>
@@ -433,8 +433,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
+									<real>20</real>
 									<real>10</real>
-									<real>3</real>
 								</array>
 							</dict>
 							<dict>
@@ -445,7 +445,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>180</real>
 								</array>
 							</dict>
 							<dict>
@@ -467,7 +467,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>360</real>
 								</array>
 							</dict>
 							<dict>
@@ -576,6 +576,8 @@
 								<string>res/effect/uiEffect/up41.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -672,8 +674,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -709,13 +709,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.3333333432674408</real>
+			<real>0.5</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

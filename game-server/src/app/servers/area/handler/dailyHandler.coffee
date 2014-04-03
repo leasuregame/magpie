@@ -35,7 +35,7 @@ Handler::lottery = (msg, session, next) ->
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
 
-    if DAILY_LOTTERY_COUNT - player.dailyGift.lotteryCount < 5
+    if DAILY_LOTTERY_COUNT - player.dailyGift.lotteryCount < 20
       times = 3
 
     ### 抽奖次数减一 ###
@@ -74,10 +74,10 @@ Handler::signIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sdata = table.getTableItem('daily_signin_rewards', 1)
     if not player.signToday()
       return next(null, {code: 501, msg: '不能重复签到'})
-      
+    
+    sdata = table.getTableItem('daily_signin_rewards', 1)
     player.increase('money', sdata.money)
     player.increase('energy', sdata.energy)
     player.save()

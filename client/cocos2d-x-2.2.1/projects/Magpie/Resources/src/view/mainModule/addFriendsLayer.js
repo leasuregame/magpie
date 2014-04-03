@@ -25,7 +25,7 @@ var AddFriendsLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("添加好友界面");
+        lz.um.beginLogPageView("添加好友界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var AddFriendsLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("添加好友界面");
+        lz.um.endLogPageView("添加好友界面");
     },
 
     init: function () {

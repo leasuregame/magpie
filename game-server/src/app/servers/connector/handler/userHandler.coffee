@@ -5,6 +5,8 @@ _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
 util = require 'util'
+versionHandler = require '../../../../../shared/version_helper'
+request = require 'request'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -67,9 +69,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) =>
       [args, method] = authParams(type, msg, app)
       args.sid = session.id
-      #console.log '-login-2-', args, method
       app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
-        #console.log '-after auth-', msg.nickName
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -86,7 +86,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
           userId: user.id, 
           serverId: app.getServerId()
         }, (err, res) ->
-          #console.log '-after player remote-', res?.name, res?.userId
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -95,7 +94,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
         cb()
 
     (cb) =>
-      #console.log '-login-4', player?.name
       uid = user.id + '*' + areaId
       session.set('areaId', areaId)
       session.set('userId', user.id)
@@ -107,7 +105,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
         session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
-    #console.log '-login-5-err-', err
     if err
       logger.error 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
@@ -172,7 +169,8 @@ checkVersion = (app, msg, platform, cb) ->
     if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
       cb({code: 501, msg: '版本过低，请及时更新'})
     else 
-      cb({code: 600, msg: '客户端版本不是最新'})
+      getUpdateSize version, vData, cb
+      #cb({code: 600, msg: '您的版本需要更新（3.13M）'})
 
 checkIsOpenServer = (app, cb) ->
   openTime = new Date(app.get('sharedConf').openServerTime)
@@ -184,3 +182,39 @@ checkIsOpenServer = (app, cb) ->
     })
   else 
     cb()
+
+update_file_size = {}
+getUpdateSize = (version, vData, cb) ->
+  filename = vData.filename
+  if versionHandler.versionCompare(version, vData.lastVersion)
+    filename = vData.lastFilename
+
+  key = vData.version+filename
+  console.log update_file_size
+  if update_file_size[key]
+    return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
+  console.log update_file_size  
+
+  request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
+    try
+      size = JSON.parse(require('xml2json').toJson(res.body)).ListBucketResult.Contents.Size
+      update_file_size[key] = sizeFormat size
+      return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
+    catch error
+      cb({code: 600, msg: '您的版本需要新'})
+
+sizeFormat = (size) ->
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'KB'
+
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'MB'
+
+  size = size/1024
+  if size < 1024
+    return size.toFixed(1)+'GB'
+
+  return size + 'GB'
+

@@ -14,14 +14,14 @@ var GoldCardsLayer = cc.Layer.extend({
         cc.log("GoldCardsLayer onEnter");
         this._super();
         this.update();
-        lz.dc.beginLogPageView("周卡月卡界面");
+        lz.um.beginLogPageView("周卡月卡界面");
     },
 
     onExit: function () {
         cc.log("GoldCardsLayer onExit");
         this._super();
 
-        lz.dc.endLogPageView("周卡月卡界面");
+        lz.um.endLogPageView("周卡月卡界面");
     },
 
     init: function () {

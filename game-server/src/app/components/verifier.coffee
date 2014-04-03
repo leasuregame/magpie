@@ -10,8 +10,8 @@ SANBOX_URL = 'https://sandbox.itunes.apple.com/verifyReceipt'
 VERIFY_URL = 'https://buy.itunes.apple.com/verifyReceipt'
 
 GOLDCARDMAP = 
-  'com.leasuregame.magpie.week.card.pay6': 'week'
-  'com.leasuregame.magpie.month.card.pay30': 'month'
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
 
 # app receipt 验证返回状态码
 # 状态码 描述
@@ -52,19 +52,18 @@ class Component
     @timerId = setInterval executeVerify.bind(null, @app, @app.get('verifyQueue')), @interval
     process.nextTick cb
 
-  stop: (cd) ->
+  stop: (cb) ->
     clearInterval @timerId
     process.nextTick cb
 
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
+
   return if items.length is 0
 
-  async.each items, (item, done) ->
-    #return done() if item.doing
+  async.each items, (item, done) ->    
     tryCount = 0
-
     postReceipt = (reqUrl, receiptData) ->
       request.post {
         headers: 'content-type': 'application/json'
@@ -73,7 +72,7 @@ executeVerify = (app, queue) ->
       }, (err, res, body) ->
         if err
           logger.error('faild to verify app store receipt.', err)
-          return
+          return done()
 
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
@@ -81,10 +80,10 @@ executeVerify = (app, queue) ->
         else if body.status is 21005
           #收据服务器当前不可用
           item.doing = false
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, ()->)
         else 
           queue.del(item.id)
-          updateBuyRecord(app, item.id, {status: body.status})
+          updateBuyRecord(app, item.id, {status: body.status}, ()->)
 
         if body.status is 21007 and tryCount == 0
           tryCount += 1
@@ -97,13 +96,13 @@ executeVerify = (app, queue) ->
     if err
       logger.error('faild to verify app store reciept.', err)
 
-updatePlayer = (app, buyRecord, receiptResult) ->
+updatePlayer = (app, buyRecord, receiptResult, done) ->
   products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
   else
     throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
-    return
+    return done()
 
   isFirstRechage = false
   player = null
@@ -137,14 +136,15 @@ updatePlayer = (app, buyRecord, receiptResult) ->
     (updateResult, cb) ->
       addGoldCard(app, buyRecord.id, player, product, cb)
 
-    (cb) ->
-      noticeNewYearActivity app, player, cb
+    # (cb) ->
+    #   noticeNewYearActivity app, player, cb
   ], (err) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
-      return
+      return done()
 
     successMsg(app, player, isFirstRechage)
+    done()
 
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)
@@ -189,8 +189,8 @@ createNewGoldCard = (app, orderId, player, product, cb) ->
 
 isGoldCard = (product) ->
   ids = [
-    'com.leasuregame.magpie.week.card.pay6',
-    'com.leasuregame.magpie.month.card.pay30'
+    'com.leasuregame.magpie.week.card',
+    'com.leasuregame.magpie.month.card'
   ]
   if product and product.product_id in ids
     return true

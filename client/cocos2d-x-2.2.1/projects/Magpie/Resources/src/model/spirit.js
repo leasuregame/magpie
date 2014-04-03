@@ -88,7 +88,7 @@ var Spirit = Entity.extend({
 
                 cb(true);
 
-                lz.dc.event("event_spirit_upgrade", that._lv);
+                lz.um.event("event_spirit_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 

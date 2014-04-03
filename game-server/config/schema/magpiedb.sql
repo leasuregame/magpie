@@ -45,9 +45,17 @@ CREATE TABLE IF NOT EXISTS `player` (
   `activities` VARCHAR(1500) DEFAULT '',
   `initRate` VARCHAR(100) DEFAULT '{}',
   `speaker` INT(3) DEFAULT '0',
+  `honor` INT(10) DEFAULT '0',
+  `superHonor` INT(10) DEFAULT '0',
+  `cd` VARCHAR(100) DEFAULT '{}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- alter table player add column `honor` INT(10) DEFAULT '0';
+-- alter table player add column `superHonor` INT(10) DEFAULT '0';
+-- alter table player add column `kneelCount` INT(5) DEFAULT '0';
+-- alter table player add column `cd` VARCHAR(100) DEFAULT '{}';
 
 -- ----------------------------
 -- Table structure for greeting
@@ -127,8 +135,9 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
-  `passiveSkills` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
+  `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -194,11 +203,13 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,
+  `amount` INT(5) UNSIGNED DEFAULT '0',
   `isVerify` BOOLEAN DEFAULT '0',
   `status` INT(6),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `tbOrder`;
 CREATE TABLE IF NOT EXISTS `tbOrder` (
   `tradeNo` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
   `tborderNo` VARCHAR(128), 
@@ -211,6 +222,7 @@ CREATE TABLE IF NOT EXISTS `tbOrder` (
   PRIMARY KEY (`tradeNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `cdkey`;
 CREATE TABLE IF NOT EXISTS `cdkey` (
   `code` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
   `playerId` INT(10) UNSIGNED,
@@ -218,4 +230,70 @@ CREATE TABLE IF NOT EXISTS `cdkey` (
   `startDate` DATE,
   `endDate` DATE,
   PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `elixirOfRank`;
+CREATE TABLE IF NOT EXISTS `elixirOfRank` (
+  `playerId` INT(10) UNSIGNED,
+  `week` INT(8),
+  `name` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `elixir` INT(10) UNSIGNED DEFAULT '0',
+  `got` SMALLINT(2) DEFAULT '0',
+  PRIMARY KEY(`playerId`, `week`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------------------------------
+-- Boss 相关表
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `boss`;
+CREATE TABLE IF NOT EXISTS `boss` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tableId` INT(10) NOT NULL,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `atkCount` INT(3),
+  `finder` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `killer` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `hp` VARCHAR(500),
+  `status` SMALLINT(2) UNSIGNED DEFAULT '1',
+  `createTime` BIGINT(20),
+  `deathTime` BIGINT(20),
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `bossAttack`;
+CREATE TABLE IF NOT EXISTS `bossAttack` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `bossId` BIGINT(20) NOT NULL,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `damage` INT(10) DEFAULT '0',
+  `money` INT(10) DEFAULT '0',
+  `honor` INT(5) DEFAULT '0',
+  `moneyAdd` INT(10) DEFAULT '0',
+  `honorAdd` INT(5) DEFAULT '0',
+  `battleLogId` BIGINT(20),
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `damageOfRank`;
+CREATE TABLE IF NOT EXISTS `damageOfRank` (
+  `playerId` INT(10) UNSIGNED,
+  `week` INT(8),
+  `name` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `damage` INT(10) UNSIGNED DEFAULT '0',
+  `kneelCount` INT(5) DEFAULT '0',
+  `got` SMALLINT(2) DEFAULT '0',
+  PRIMARY KEY(`playerId`, `week`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `bossFriendReward`;
+CREATE TABLE IF NOT EXISTS `bossFriendReward` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `friendName` VARCHAR(50) COLLATE utf8_unicode_ci,
+  `money` INT(10) DEFAULT '0',
+  `honor` INT(5) DEFAULT '0',
+  `got` SMALLINT(2) DEFAULT '0',
+  `created` DATETIME,
+  PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

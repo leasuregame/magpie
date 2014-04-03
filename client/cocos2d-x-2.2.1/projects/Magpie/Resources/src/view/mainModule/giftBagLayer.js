@@ -28,6 +28,11 @@ var giftBagGoods = {
         url: "icon145"
     },
 
+    fragment: {
+        name: "卡魂",
+        url: "icon145"
+    },
+
     exp_card: {
         name: "经验元灵",
         url: "icon146"

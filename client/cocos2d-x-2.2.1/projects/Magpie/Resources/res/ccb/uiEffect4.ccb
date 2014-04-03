@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -110,7 +110,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2.8333332538604736</real>
+									<real>3.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -125,7 +125,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>3.3333332538604736</real>
+									<real>4</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -165,7 +165,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>3.3333332538604736</real>
+									<real>4</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -210,8 +210,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>8</real>
-							<real>47</real>
+							<real>3</real>
+							<real>43</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -233,8 +233,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>2.5</real>
+							<real>0.80000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -255,7 +255,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up20.png</string>
+							<string>res/effect/uiEffect/up117.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -266,7 +266,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>200</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -275,9 +275,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>0</integer>
-							<integer>136</integer>
-							<integer>224</integer>
+							<integer>30</integer>
+							<integer>252</integer>
+							<integer>253</integer>
 						</array>
 					</dict>
 					<dict>
@@ -576,8 +576,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>4</real>
+									<real>4</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -590,7 +590,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -619,7 +619,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -878,8 +878,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>4</real>
+									<real>4</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -892,7 +892,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -921,7 +921,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1704,8 +1704,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3.5</real>
-									<real>3.5</real>
+									<real>10</real>
+									<real>10</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1718,7 +1718,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-80</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2184,8 +2184,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3.5</real>
-									<real>3.5</real>
+									<real>13</real>
+									<real>13</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2198,7 +2198,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-80</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2943,7 +2943,7 @@
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>2.0903563499450684</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>3</real>
 			<key>resolution</key>

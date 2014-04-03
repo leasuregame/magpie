@@ -89,8 +89,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
 							<real>80</real>
+							<real>40</real>
 						</array>
 					</dict>
 					<dict>
@@ -124,7 +124,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.80000001192092896</real>
+							<real>1</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -135,8 +135,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>10</real>
+							<real>120</real>
+							<real>50</real>
 						</array>
 					</dict>
 					<dict>
@@ -147,7 +147,7 @@
 						<key>value</key>
 						<array>
 							<real>150</real>
-							<real>10</real>
+							<real>50</real>
 						</array>
 					</dict>
 					<dict>
@@ -191,15 +191,15 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.260517418384552</real>
-								<real>0.26052439212799072</real>
-								<real>0.26052063703536987</real>
+								<real>0.048441894352436066</real>
+								<real>0.2085777223110199</real>
+								<real>0.28658062219619751</real>
 								<real>1</real>
 							</array>
 							<array>
-								<real>0.047055669128894806</real>
-								<real>0.11261206120252609</real>
-								<real>0.093745715916156769</real>
+								<real>0.042697474360466003</real>
+								<real>0.175214022397995</real>
+								<real>0.1504061222076416</real>
 								<real>0.0</real>
 							</array>
 						</array>
@@ -215,7 +215,7 @@
 								<real>0.0</real>
 								<real>0.0</real>
 								<real>0.0</real>
-								<real>0.51999998092651367</real>
+								<real>1</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -286,9 +286,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p149.png</string>
+						<string>res/effect/effect/p55.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -404,7 +406,7 @@
 						<key>value</key>
 						<array>
 							<real>40</real>
-							<real>10</real>
+							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -414,8 +416,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>10</real>
+							<real>30</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -459,9 +461,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.46202266216278076</real>
-								<real>0.8382837176322937</real>
-								<real>1</real>
+								<real>0.2980048656463623</real>
+								<real>0.49167454242706299</real>
+								<real>0.5597037672996521</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -672,7 +674,7 @@
 						<key>value</key>
 						<array>
 							<real>25</real>
-							<real>10</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -682,8 +684,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>5</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -727,9 +729,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.57112699747085571</real>
-								<real>0.99130219221115112</real>
-								<real>0.91147470474243164</real>
+								<real>0.34693056344985962</real>
+								<real>0.56332093477249146</real>
+								<real>0.53181672096252441</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -825,8 +827,6 @@
 						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -49,6 +49,11 @@ var DamageRankLayer = LazyLayer.extend({
         titleBgIcon.setPosition(cc.p(320, 904));
         this._frameLayer.addChild(titleBgIcon);
 
+        this._kneelLabel = cc.LabelTTF.create("每天可膜拜3次", "STHeitiTC-Medium", 20);
+        this._kneelLabel.setPosition(cc.p(320, 860));
+        this._kneelLabel.setColor(cc.c3b(255, 239, 182));
+        this._frameLayer.addChild(this._kneelLabel);
+
         var titleIcon = cc.Sprite.create(main_scene_image.icon404);
         titleIcon.setPosition(cc.p(320, 912));
         this._frameLayer.addChild(titleIcon);
@@ -176,7 +181,7 @@ var DamageRankLayer = LazyLayer.extend({
             this._frameLayer.addChild(label[i]);
         }
 
-        this._skyDialog = SkyDialog.create();
+        this._skyDialog = SkyDialog.create()
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
@@ -211,6 +216,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         var skyMenu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         skyMenu.setPosition(cc.p(0, 0));
+        skyMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         skyLabel.addChild(skyMenu);
 
         this._skyDialog.setLabel(skyLabel);
@@ -233,6 +239,8 @@ var DamageRankLayer = LazyLayer.extend({
         var isGet = gameData.boss.isCanGetRankReward();
         this._showRewardItem.setEnabled(!isGet);
         this._rewardNode.setVisible(isGet);
+
+        this._kneelLabel.setVisible(this._selectType == TYPE_THIS_WEEK);
 
         this._rankList = [];
 
@@ -428,7 +436,7 @@ var DamageRankLayer = LazyLayer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的伤害值为0，无法获得奖励哟。"
+            tip: "亲，你本周的伤害值为0，无法获得奖励哟。"
         });
 
     },
@@ -448,11 +456,12 @@ var DamageRankLayer = LazyLayer.extend({
             cc.log(data);
             GiftBagLayer.pop({
                 reward: data,
-                type: GET_GIFT_BAG,
+                type: GET_GIFT_BAG_NO_CLOSE,
                 titleType: TYPE_LOOK_REWARD,
                 cb: function () {
                     lz.tipReward(data);
                     that.update();
+                    that.getParent().update();
                 }
             });
         });

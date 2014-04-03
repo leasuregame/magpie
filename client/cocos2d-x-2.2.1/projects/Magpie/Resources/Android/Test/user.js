@@ -50,17 +50,17 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "";
-        this._password = sys.localStorage.getItem("password") || "";
-        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
+        this._account = lz.load("account") || "";
+        this._password = lz.load("password") || "";
+        this._area = lz.load("area") || 0;
     },
 
     _save: function () {
         cc.log("User _save");
 
-        sys.localStorage.setItem("account", this._account);
-        sys.localStorage.setItem("password", this._password);
-        sys.localStorage.setItem("area", this._area);
+        lz.save("account", this._account);
+        lz.save("password", this._password);
+        lz.save("area", this._area);
     },
 
     canLogin: function () {
@@ -93,7 +93,7 @@ var User = Entity.extend({
 
         this._save();
 
-        var version = "1.3.0";
+        var version = lz.platformConfig.VERSION;
 
         if (typeof(cc.AssetsManager) != "undefined") {
             version = cc.AssetsManager.getInstance().getVersion();

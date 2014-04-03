@@ -102,7 +102,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     color: cc.c3b(255, 248, 69)
                 }
             );
-            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setAnchorPoint(cc.p(0.5, 0));
             tipLabel.setPosition(this._vipPrivilegeLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
@@ -165,7 +165,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
                 var vipPrivilegeLabel = null;
 
-                if(key == "description") {
+                if (key == "description") {
                     vipPrivilegeLabel = cc.LabelTTF.create(
                         vipPrivilege[key],
                         "STHeitiTC-Medium",
@@ -209,7 +209,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     fontSize: 20
                 }
             );
-            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0));
             vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
             scrollViewLayer.addChild(vipPrivilegeLabel);
         }

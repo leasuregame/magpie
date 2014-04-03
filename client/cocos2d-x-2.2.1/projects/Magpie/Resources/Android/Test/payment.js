@@ -37,17 +37,13 @@ var Payment = Entity.extend({
     _load: function () {
         cc.log("AppStore Payment _load");
 
-        var orderListJson = sys.localStorage.getItem(this._paymentKey);
-
-        if (orderListJson) {
-            this._orderList = JSON.parse(orderListJson) || [];
-        }
+        this._orderList = lz.load(this._paymentKey) || [];
     },
 
     _save: function () {
         cc.log("AppStore Payment _save");
 
-        sys.localStorage.setItem(this._paymentKey, JSON.stringify(this._orderList));
+        lz.save(this._paymentKey, this._orderList);
     },
 
     _judge: function () {

@@ -159,7 +159,7 @@ void AssetsManager::init()
     CCLOG("---------------------------------");
     
     std::string oldAppVersion = CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_APP_VERSION, "");
-    std::string appVersion = getAppVersion();
+    std::string appVersion = CCApplication::getAppVersion();
     
     CCLOG("%s", oldAppVersion.c_str());
     CCLOG("%s", appVersion.c_str());
@@ -611,12 +611,12 @@ void AssetsManager::setVersionFileUrl(const char *versionFileUrl)
 
 string AssetsManager::getVersion()
 {
-    return getNewVersion(CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, ""), getAppVersion());
+    return getNewVersion(CCUserDefault::sharedUserDefault()->getStringForKey(KEY_OF_VERSION, ""), CCApplication::getAppVersion());
 }
 
 void AssetsManager::deleteVersion()
 {
-    CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_VERSION, getAppVersion());
+    CCUserDefault::sharedUserDefault()->setStringForKey(KEY_OF_VERSION, CCApplication::getAppVersion());
 }
 
 void AssetsManager::setDelegate(AssetsManagerDelegateProtocol *delegate)
@@ -809,14 +809,6 @@ void AssetsManager::destroyStoragePath()
     }
     
     createStoragePath();
-}
-
-/*
- 获取客户端版本
- */
-std::string AssetsManager::getAppVersion()
-{
-    return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] UTF8String];
 }
 
 AssetsManager* AssetsManager::assetsManager = NULL;

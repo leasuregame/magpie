@@ -58,14 +58,22 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool canCollect");
 
         if (this._collectCount <= 0) {
-            var tipVip = gameData.player.get("vip") + 1;
+            var vip = gameData.player.get("vip");
 
-            tipVip = Math.max(tipVip, 3);
-            tipVip = Math.min(tipVip, 12);
+            var msg = "";
+
+            if (vip == MAX_VIP_LEVEL) {
+                msg = "明天再来采集吧";
+            } else {
+                var tipVip = vip + 1;
+                tipVip = Math.max(tipVip, 3);
+                tipVip = Math.min(tipVip, MAX_VIP_LEVEL);
+                msg = "成为VIP" + tipVip + "，每日即可获得额外的采集次数";
+            }
 
             GoPaymentLayer.pop({
                 title: "采集次数已用完",
-                msg: "成为VIP" + tipVip + "，每日即可获得额外的采集次数"
+                msg: msg
             });
             return false;
         }

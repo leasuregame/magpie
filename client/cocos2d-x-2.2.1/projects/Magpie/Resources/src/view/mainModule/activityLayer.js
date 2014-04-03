@@ -12,14 +12,13 @@
  * */
 
 
-var titleIcons = ["icon261", "icon356", "icon344", "icon262", "icon263", "icon265"];
+var titleIcons = ["icon261", "icon344", "icon262", "icon263", "icon265"];
 
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
 
     _layer: [
         SignInLayer,
-        NewYearLayer,
         GoldCardsLayer,
         PowerRewardLayer,
         GoldRewardLayer,
@@ -84,6 +83,11 @@ var ActivityLayer = cc.Layer.extend({
         mainMenu.setPosition(cc.p(0, 0));
 
         for (var i = 0; i < len; ++i) {
+
+            if (i == len - 1 && lz.platformConfig.PLATFORM != "TB") {
+                continue;
+            }
+
             var url = titleIcons[i];
 
             this._item[i] = cc.MenuItemImage.create(
@@ -151,11 +155,10 @@ var ActivityLayer = cc.Layer.extend({
         cc.log("ActivityLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());
-        this._mark[1].setVisible(gameMark.getNewYearMark());
-        this._mark[2].setVisible(gameMark.getGoldCardsMark());
-        this._mark[3].setVisible(gameMark.getPowerRewardMark());
-        this._mark[4].setVisible(gameMark.getGoldRewardMark());
-        this._mark[5].setVisible(gameMark.getRechargeMark());
+        this._mark[1].setVisible(gameMark.getGoldCardsMark());
+        this._mark[2].setVisible(gameMark.getPowerRewardMark());
+        this._mark[3].setVisible(gameMark.getGoldRewardMark());
+        // this._mark[4].setVisible(gameMark.getRechargeMark());
     }
 });
 

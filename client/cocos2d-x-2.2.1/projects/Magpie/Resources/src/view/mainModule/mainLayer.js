@@ -81,7 +81,7 @@ var MainLayer = cc.Layer.extend({
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
-        this.addChild(playerHeaderLabel);
+        this.addChild(playerHeaderLabel, 2);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon285);
         lineIcon.setAnchorPoint(cc.p(0, 0));
@@ -379,14 +379,6 @@ var MainLayer = cc.Layer.extend({
                     this._rankGuide.removeFromParent();
                     this._rankGuide = null;
                     gameGuide.set("rankGuide", false);
-                }
-            }
-
-            if (index == 4) {
-                var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
-                if (gameData.player.get("lv") < limitLv) {
-                    TipLayer.tip(limitLv + "级开放");
-                    return;
                 }
             }
 

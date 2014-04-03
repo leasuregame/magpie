@@ -8,10 +8,13 @@
 
 
 /*
- * 命名空间
+ * lz
  * */
+
+
 var lz = lz || {};
 
+// 判断平台是否浏览器
 lz.TARGET_PLATFORM_IS_BROWSER = !("opengl" in sys.capabilities && "browser" != sys.platform);
 
 /*
@@ -207,6 +210,10 @@ var gameGoodsIcon = {
     "superHonor": "icon406"
 };
 
+lz.getGoodsIconByKey = function (key) {
+    return gameGoodsIcon[key];
+};
+
 var gameGoodsName = {
     "exp": {
         name: "经验",
@@ -314,7 +321,7 @@ var gameGoodsName = {
     }
 };
 
-lz.getNameByKey = function (key) {
+lz.getGoodsNameByKey = function (key) {
     return gameGoodsName[key] || {
         name: key,
         color: cc.c3b(255, 255, 255)
@@ -326,16 +333,29 @@ lz.getRewardString = function (data) {
 
     for (var key in data) {
         if (data[key]) {
-            var reward = lz.getNameByKey(key);
+            var reward = lz.getGoodsNameByKey(key);
 
             if (key == "cards") {
                 var cards = data[key];
-                if (cards.length > 0) {
-                    str.push({
-                        str: cards[0].lv + "级" + reward.name + " : " + 1,
-                        color: reward.color,
-                        icon: reward.icon
-                    });
+                var count = {};
+                var len = cards.length;
+                var lv;
+
+                for (var i = 0; i < len; ++i) {
+                    if (cards[i]) {
+                        lv = cards[i].lv;
+                        count[lv] = count[lv] ? count[lv] + 1 : 1;
+                    }
+                }
+
+                for (lv in count) {
+                    if (count[lv]) {
+                        str.push({
+                            str: lv + "级" + reward.name + " : " + count[lv],
+                            color: reward.color,
+                            icon: reward.icon
+                        });
+                    }
                 }
             } else {
                 if (key != "fragment" && data[key] > 0) {
@@ -352,44 +372,55 @@ lz.getRewardString = function (data) {
     return str;
 };
 
-lz.getGameGoodsIcon = function (name) {
-    return gameGoodsIcon[name];
-};
+(function () {
+    var TIP_INTERVAL = 0.5 * 1000;
+    var lastTimestamp = 0;
 
-lz.tipReward = function (reward) {
-    reward = reward || {};
+    lz.tipReward = function (keyOrObj, count, isDouble) {
+        var reward = null;
 
-    var key;
-    var delay = 0;
+        if (typeof (keyOrObj) === "string") {
+            reward = {};
+            reward[keyOrObj] = count || 1;
+        } else {
+            reward = keyOrObj;
+        }
 
-    for (key in reward) {
-        if (!reward[key]) return;
+        for (var key in reward) {
+            if (!reward[key]) continue;
 
-        var fn = (function (key) {
-            return function () {
-                var str = lz.getNameByKey(key);
-                if (str.icon) {
-                    TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
-                } else {
-                    if (key == "cardArray") {
-                        var cards = reward[key];
-                        var len = cards.length;
-                        for (var i = 0; i < len; i++) {
-                            var card = Card.create(cards[i]);
-                            TipLayer.tipNoBg(card.get("name") + ": +1");
-                        }
+            var fn = (function (key) {
+                return function () {
+                    var str = lz.getGoodsNameByKey(key);
+
+                    if (str.icon) {
+                        TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
-                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                        if (key == "cardArray") {
+                            var cards = reward[key];
+                            var len = cards.length;
+
+                            for (var i = 0; i < len; i++) {
+                                var card = Card.create(cards[i]);
+                                TipLayer.tipNoBg(card.get("name") + ": +1");
+                            }
+                        } else {
+                            TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                        }
                     }
                 }
-            }
-        })(key);
+            })(key);
 
-        lz.scheduleOnce(fn, delay);
+            var now = Date.now();
+            lastTimestamp += TIP_INTERVAL;
+            lastTimestamp = Math.max(lastTimestamp, now);
+            var delay = (lastTimestamp - now) / 1000;
 
-        delay += 0.6;
-    }
-};
+            lz.scheduleOnce(fn, delay);
+        }
+    };
+})();
+
 
 /*
  * 设置时间格式
@@ -401,9 +432,9 @@ lz.getTimeStr = function (args) {
     var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";
 
     var o = {
-        "M+": date.getMonth() + 1, //月份
+        "M+": date.getMonth() + 1, //月
         "d+": date.getDate(), //日
-        "h+": date.getHours(), //小时
+        "h+": date.getHours(), //时
         "m+": date.getMinutes(), //分
         "s+": date.getSeconds() //秒
     };
@@ -419,6 +450,16 @@ lz.getTimeStr = function (args) {
     }
 
     return fmt;
+};
+
+lz.getMoneyStr = function (money) {
+    var threshold = 100000;
+
+    if (money < threshold) {
+        return ("" + money)
+    } else {
+        return (Math.floor(money / 10000) + "万");
+    }
 };
 
 var MAX_LAST_NAME_COUNT = 250;
@@ -514,6 +555,40 @@ lz.checkPoint = function (point) {
     y = Math.min(maxY, y);
 
     return cc.p(x, y)
+};
+
+lz.load = function (key) {
+    var str = sys.localStorage.getItem(key);
+
+    if (str) {
+        try {
+            var item = JSON.parse(str);
+
+            return item.data;
+        } catch (e) {
+            cc.log(str);
+            cc.log(e);
+
+            sys.localStorage.removeItem(key);
+        }
+    }
+
+    return undefined;
+};
+
+lz.save = function (key, data) {
+    var type = typeof(data);
+
+    var item = {
+        data: data,
+        type: type
+    };
+
+    var str = JSON.stringify(item);
+
+    if (str) {
+        sys.localStorage.setItem(key, str);
+    }
 };
 
 

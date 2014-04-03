@@ -190,16 +190,9 @@ var SpiritPoolLayer = cc.Layer.extend({
 
             if (this._reward.isDouble) {
                 spirit.setScale(1.5);
-
-                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect86, this);
-                rewardEffect.controller.ccbSpiritLabel.setString("+" + this._reward.spirit_obtain);
-                rewardEffect.setPosition(gameFit.GAME_MIDPOINT);
-                this.addChild(rewardEffect);
-                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                    rewardEffect.removeFromParent();
-                });
+                lz.tipReward("spirit", this._reward.spirit_obtain, true);
             } else {
-                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
+                lz.tipReward("spirit", this._reward.spirit_obtain);
             }
 
             this.update();

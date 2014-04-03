@@ -89,8 +89,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>60</real>
+									<real>40</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -115,7 +115,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>200</integer>
+								<integer>150</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -136,7 +136,7 @@
 								<key>value</key>
 								<array>
 									<real>100</real>
-									<real>10</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -146,8 +146,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>150</real>
-									<real>10</real>
+									<real>60</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -158,7 +158,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -169,7 +169,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -191,9 +191,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.260517418384552</real>
-										<real>0.26052439212799072</real>
-										<real>0.26052063703536987</real>
+										<real>0.10390175133943558</real>
+										<real>0.25601178407669067</real>
+										<real>0.38333231210708618</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -215,7 +215,7 @@
 										<real>0.0</real>
 										<real>0.0</real>
 										<real>0.0</real>
-										<real>0.51999998092651367</real>
+										<real>1</real>
 									</array>
 									<array>
 										<real>0.0</real>
@@ -254,7 +254,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>150</real>
+									<real>200</real>
 									<real>20</real>
 								</array>
 							</dict>
@@ -286,9 +286,11 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>res/effect/effect/p149.png</string>
+								<string>res/effect/effect/p55.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -352,8 +354,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>20</real>
+									<real>40</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -387,7 +389,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>1</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -398,8 +400,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
+									<real>50</real>
 									<real>40</real>
-									<real>10</real>
 								</array>
 							</dict>
 							<dict>
@@ -409,8 +411,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>10</real>
+									<real>30</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -454,9 +456,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.46202266216278076</real>
-										<real>0.8382837176322937</real>
-										<real>1</real>
+										<real>0.27268773317337036</real>
+										<real>0.47672021389007568</real>
+										<real>0.55454862117767334</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -662,7 +664,7 @@
 								<key>value</key>
 								<array>
 									<real>25</real>
-									<real>10</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -672,8 +674,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>10</real>
-									<real>5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -717,9 +719,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.57112699747085571</real>
-										<real>0.99130219221115112</real>
-										<real>0.91147470474243164</real>
+										<real>0.3458135724067688</real>
+										<real>0.56160253286361694</real>
+										<real>0.53018593788146973</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -781,7 +783,7 @@
 								<key>value</key>
 								<array>
 									<real>120</real>
-									<real>120</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -932,7 +934,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.86666667461395264</real>
+						<real>0.033333335071802139</real>
 						<key>type</key>
 						<integer>10</integer>
 						<key>value</key>
@@ -954,7 +956,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.86666667461395264</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -964,7 +966,44 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.10000000149011612</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect1800_4.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.20000000298023224</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect1800_1.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

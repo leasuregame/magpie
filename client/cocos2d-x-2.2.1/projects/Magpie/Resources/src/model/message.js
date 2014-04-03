@@ -256,9 +256,7 @@ var Message = Entity.extend({
 
         var battleLogPool = BattleLogPool.getInstance();
 
-        cc.log(battleLogPool.getBattleLogById(id));
-
-        if (battleLogPool.getBattleLogById(id)) {
+        if (battleLogPool.get(id)) {
             BattlePlayer.getInstance().play({
                 id: id,
                 isPlayback: true
@@ -278,7 +276,7 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog);
+                var battleLogId = battleLogPool.put(msg.battleLog);
 
                 BattlePlayer.getInstance().play({
                     id: battleLogId,
@@ -289,7 +287,7 @@ var Message = Entity.extend({
             } else {
                 cc.log("playback fail");
 
-                TipLayer.tip("战斗回放出错");
+                TipLayer.tip("找不到该战报");
             }
         });
     },

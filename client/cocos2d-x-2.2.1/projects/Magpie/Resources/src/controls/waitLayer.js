@@ -19,33 +19,9 @@ var WaitLayer = LazyLayer.extend({
 
         this.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
 
-        var point = cc.p(320, 568);
-        if (gameDevice != "Iphone5") {
-            point = cc.p(360, 480);
-        }
-
-        var waitSprite = cc.Sprite.create(main_scene_image.icon42);
-        waitSprite.setPosition(point);
-        this.addChild(waitSprite);
-
-        waitSprite.setOpacity(0);
-
-        waitSprite.runAction(
-            cc.Sequence.create(
-                cc.DelayTime.create(0.3),
-                cc.Spawn.create(
-                    cc.FadeIn.create(0.3),
-                    cc.RotateBy.create(0.3, -120)
-                ),
-                cc.CallFunc.create(function () {
-                    waitSprite.runAction(
-                        cc.RepeatForever.create(
-                            cc.RotateBy.create(0.3, -120)
-                        )
-                    )
-                })
-            )
-        );
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect88, this);
+        ccbNode.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(ccbNode);
 
         return true;
     }

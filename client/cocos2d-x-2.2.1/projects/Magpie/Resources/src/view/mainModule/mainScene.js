@@ -84,6 +84,10 @@ var MainScene = cc.Scene.extend({
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
+
+        if (this._mainMenuLayer) {
+            this._mainMenuLayer.updateMark();
+        }
     },
 
     updateGuide: function () {

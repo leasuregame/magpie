@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>18</integer>
+	<integer>49</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -278,8 +278,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -292,7 +292,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>10</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -321,7 +321,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -555,8 +555,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -569,7 +569,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-10</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -598,7 +598,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -9431,8 +9431,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>scale</string>
@@ -9449,8 +9451,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>scale</string>
@@ -12161,8 +12165,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
@@ -12179,8 +12185,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
@@ -12225,8 +12233,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>rotation</string>
@@ -12240,8 +12250,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>rotation</string>
@@ -15077,8 +15089,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
@@ -15095,8 +15109,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
@@ -15141,8 +15157,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>rotation</string>
@@ -15156,8 +15174,10 @@
 												<dict>
 													<key>easing</key>
 													<dict>
+														<key>opt</key>
+														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>rotation</string>
@@ -16977,7 +16997,7 @@
 														<key>opt</key>
 														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
@@ -16994,39 +17014,21 @@
 												<dict>
 													<key>easing</key>
 													<dict>
-														<key>type</key>
-														<integer>1</integer>
-													</dict>
-													<key>name</key>
-													<string>position</string>
-													<key>time</key>
-													<real>0.86666667461395264</real>
-													<key>type</key>
-													<integer>3</integer>
-													<key>value</key>
-													<array>
-														<real>0.0</real>
-														<real>8</real>
-													</array>
-												</dict>
-												<dict>
-													<key>easing</key>
-													<dict>
 														<key>opt</key>
 														<real>2</real>
 														<key>type</key>
-														<integer>1</integer>
+														<integer>4</integer>
 													</dict>
 													<key>name</key>
 													<string>position</string>
 													<key>time</key>
-													<real>1.1666666269302368</real>
+													<real>1.0666667222976685</real>
 													<key>type</key>
 													<integer>3</integer>
 													<key>value</key>
 													<array>
 														<real>0.0</real>
-														<real>10</real>
+														<real>7</real>
 													</array>
 												</dict>
 												<dict>
@@ -19684,6 +19686,8 @@
 										<integer>255</integer>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -23657,8 +23661,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -23709,7 +23711,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.83333331346511841</real>
 			<key>name</key>
@@ -23717,7 +23719,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.23333333432674408</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -23845,7 +23847,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.43333333730697632</real>
 			<key>name</key>
@@ -23879,7 +23881,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.43333333730697632</real>
 			<key>name</key>
@@ -24015,7 +24017,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.3333333432674408</real>
 			<key>name</key>
@@ -24049,7 +24051,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.3333333432674408</real>
 			<key>name</key>
@@ -24083,7 +24085,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.66666668653488159</real>
 			<key>name</key>
@@ -24117,7 +24119,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1</real>
 			<key>name</key>
@@ -24170,7 +24172,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1</real>
 			<key>name</key>
@@ -24257,7 +24259,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.5</real>
 			<key>name</key>
@@ -24937,7 +24939,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.7666666507720947</real>
 			<key>name</key>
@@ -24971,7 +24973,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.3333333730697632</real>
 			<key>name</key>
@@ -25005,7 +25007,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.2999999523162842</real>
 			<key>name</key>
@@ -25039,7 +25041,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.0666667222976685</real>
 			<key>name</key>
@@ -25073,7 +25075,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.2000000476837158</real>
 			<key>name</key>
@@ -25144,13 +25146,13 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.66666668653488159</real>
+						<real>0.033333335071802139</real>
 						<key>type</key>
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -25158,7 +25160,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
@@ -25192,7 +25194,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>1.3333333730697632</real>
 			<key>name</key>
@@ -25226,7 +25228,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>49</integer>
 			<key>length</key>
 			<real>0.5</real>
 			<key>name</key>

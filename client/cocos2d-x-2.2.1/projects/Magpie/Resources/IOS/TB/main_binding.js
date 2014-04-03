@@ -45,6 +45,8 @@ var appFiles = [
     'src/model/singleton.js',
     'src/model/gameConfig.js',
 
+    'src/model/fit4Iphone4.js',
+    'src/model/fit4Iphone5.js',
     'src/model/gameFit.js',
     'src/model/clock.js',
     'user.js',
@@ -114,6 +116,7 @@ var appFiles = [
     'src/view/mainModule/abilityRankLayer.js',
     'src/view/mainModule/achievementLayer.js',
     'src/view/mainModule/addFriendsLayer.js',
+    'src/view/mainModule/advancedTipsLabel.js',
     'src/view/mainModule/attackDetailsLayer.js',
     'src/view/mainModule/bossAppearLabel.js',
     'src/view/mainModule/bossHelpLabel.js',
@@ -126,7 +129,6 @@ var appFiles = [
     'src/view/mainModule/goldRewardLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',
-    'src/view/mainModule/newYearLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',
@@ -173,13 +175,13 @@ var appFiles = [
     'src/view/mainModule/messageLabel.js',
     'src/view/mainModule/messageLayer.js',
     'src/view/mainModule/monthLabel.js',
+    'src/view/mainModule/passiveSkillLabel.js',
     'src/view/mainModule/passiveSkillAfreshLabel.js',
     'src/view/mainModule/passLayer.js',
     'src/view/mainModule/passRankLayer.js',
     'src/view/mainModule/paymentLayer.js',
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
-    'src/view/mainModule/playerTournamentLabel.js',
     'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/rankLayer.js',
@@ -205,7 +207,6 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
-    'src/view/mainModule/useCardsTipLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
     'src/view/mainModule/mainBgLayer.js',
@@ -224,8 +225,7 @@ var appFiles = [
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/cloudLayer.js',
-    'src/view/battleModule/fragmentLayer.js',
-    'src/view/battleModule/skillFactory.js'
+    'src/view/battleModule/fragmentLayer.js'
 ];
 
 cc.dumpConfig();
@@ -239,7 +239,7 @@ var director = cc.Director.getInstance();
 director.setDisplayStats(false);
 
 // set FPS. the default value is 1.0/60 if you don't call this
-director.setAnimationInterval(1.0 / 30);
+gameConfig.init();
 
 // fit dev
 gameFitAdapter();

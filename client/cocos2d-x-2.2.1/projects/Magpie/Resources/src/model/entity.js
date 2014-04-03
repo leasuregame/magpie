@@ -17,9 +17,9 @@ var Entity = Event.extend({
         if (typeof value != "undefined") {
             if (this["_" + name] !== value) {
                 this["_" + name] = value;
-
-                this.emit(name + "Change");
             }
+
+            this.emit(name + "Change");
         }
     },
 

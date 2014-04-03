@@ -347,8 +347,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>50</real>
-									<real>10</real>
+									<real>40</real>
+									<real>30</real>
 								</array>
 							</dict>
 							<dict>
@@ -501,6 +501,8 @@
 								<string>res/effect/uiEffect/up41.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -772,8 +774,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

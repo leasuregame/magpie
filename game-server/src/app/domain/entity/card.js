@@ -452,7 +452,7 @@ var Card = (function(_super) {
         var curLv = this.lv;
         var cfg = table.getTableItem('card_price', 1);
         var lv_money = table.getTable('card_grow').filter(function(id, item) {
-            return item.lv < curLv && item.lv != 0;
+            return item.lv < curLv && item.lv > 0;
         }).map(function(item) {
             return item.money_need;
         }).reduce(function(x, y){

@@ -623,9 +623,9 @@ var ExploreLayer = cc.Layer.extend({
                                 animationManager.getRunningSequenceName()
                             );
 
-                            this.scheduleOnce(function () {
+                            that.scheduleOnce(function () {
                                 next();
-                            }, delay - 0.8);
+                            }, delay - 1);
                         },
                         function () {
                             if (findBoss) {

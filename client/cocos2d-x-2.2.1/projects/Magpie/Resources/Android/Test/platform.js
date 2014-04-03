@@ -11,6 +11,7 @@
 var lz = lz || {};
 
 lz.platformConfig = {
+    OS: "Android",
     PLATFORM: "TEST",
     VERSION: "1.4.0",
     GATE_SERVER_HOST: "124.238.236.33",

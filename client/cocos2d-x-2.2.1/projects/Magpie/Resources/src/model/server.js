@@ -88,7 +88,7 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name;
+            this._areaList[i].desc = this._areaList[i].index + "区  " + this._areaList[i].name;
             this._areaList[i].url = status.url;
         }
     },
@@ -166,12 +166,20 @@ var Server = Entity.extend({
         }
 
         var success = false;
+        var version = lz.platformConfig.VERSION;
+        if (typeof(cc.AssetsManager) != "undefined") {
+            version = cc.AssetsManager.getInstance().getVersion();
+        }
 
         var that = this;
 
         lz.pomelo.request(
             "gate.gateHandler.queryEntry",
-            {},
+            {
+                os: lz.platformConfig.OS,
+                platform: lz.platformConfig.PLATFORM,
+                version: version
+            },
             function (data) {
                 cc.log("pomelo websocket callback data:");
                 cc.log(data);

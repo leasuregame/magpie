@@ -90,7 +90,7 @@ var CardDao = (function(_super) {
 	};
 
 	CardDao.totalCount = function(cb) {
-		dbClient.query('select count(id) as num from card where tableId != 30000', function(err, res) {
+		dbClient.query('select count(id) as num from card where tableId = tableId_old and tableId < 2000', function(err, res) {
 			if (err) {
 				console.log('[sql error] when select count form card', err);
 			}
@@ -104,7 +104,7 @@ var CardDao = (function(_super) {
 	};
 
 	CardDao.selectForUpdate = function(limit, cb) {
-		dbClient.query('select id, tableId from card where tableId != 30000 order by id limit ' + limit, function(err, res) {
+		dbClient.query('select id, tableId from card where tableId = tableId_old and tableId < 2000 order by id limit ' + limit, function(err, res) {
 			if (err) {
 				console.log('[sql error]', err);
 			}

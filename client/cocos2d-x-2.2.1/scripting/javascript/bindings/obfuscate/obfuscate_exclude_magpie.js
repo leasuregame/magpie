@@ -217,3 +217,4 @@ CSSProperties.prototype.ccbFnRank;
 CSSProperties.prototype.ccbGoodsIcon1;
 CSSProperties.prototype.ccbGoodsIcon2;
 CSSProperties.prototype.ccbGoodsIcon3;
+CSSProperties.prototype.ccbTitleNode;

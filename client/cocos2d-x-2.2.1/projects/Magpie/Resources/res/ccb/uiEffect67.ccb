@@ -44,6 +44,21 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
+									<integer>0</integer>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>opacity</string>
+									<key>time</key>
+									<real>0.1666666716337204</real>
+									<key>type</key>
+									<integer>5</integer>
+									<key>value</key>
 									<integer>255</integer>
 								</dict>
 								<dict>
@@ -370,8 +385,8 @@
 						<key>value</key>
 						<array>
 							<integer>254</integer>
-							<integer>252</integer>
-							<integer>120</integer>
+							<integer>246</integer>
+							<integer>177</integer>
 						</array>
 					</dict>
 					<dict>
@@ -597,7 +612,7 @@
 						<key>value</key>
 						<array>
 							<real>30</real>
-							<real>10</real>
+							<real>30</real>
 						</array>
 					</dict>
 					<dict>
@@ -607,8 +622,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -619,7 +634,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>60</real>
 						</array>
 					</dict>
 					<dict>
@@ -630,7 +645,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>60</real>
 						</array>
 					</dict>
 					<dict>
@@ -640,8 +655,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>360</real>
 						</array>
 					</dict>
 					<dict>
@@ -715,8 +730,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>10</real>
+							<real>5</real>
 						</array>
 					</dict>
 					<dict>
@@ -750,6 +765,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -784,7 +801,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.5</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -827,7 +844,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.5</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>

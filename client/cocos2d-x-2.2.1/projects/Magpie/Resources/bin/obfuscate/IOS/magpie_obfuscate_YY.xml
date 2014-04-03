@@ -97,12 +97,12 @@
                 <file name="src/controls/slideLayer.js"/>
 
                 <file name="src/view/loginModule/loginScene.js"/>
-                <file name="src/view/loginModule/loginBgLayer.js"/>
+                <file name="IOS/YY/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="IOS/AppStore/loginLayer.js"/>
-                <file name="src/view/loginModule/newPlayerLayer.js"/>
+                <file name="IOS/YY/loginLayer.js"/>
+                <file name="IOS/YY/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
-                <file name="src/view/loginModule/selectAreaLayer.js"/>
+                <file name="IOS/YY/loginModule/selectAreaLayer.js"/>
 
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>

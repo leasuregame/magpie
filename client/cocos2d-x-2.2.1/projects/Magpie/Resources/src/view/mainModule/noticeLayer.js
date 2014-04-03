@@ -45,7 +45,11 @@ var NoticeLayer = cc.Layer.extend({
         noticeEffect.setPosition(point);
 
         var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
-        this._webLayer = lz.WebLayer.create(lz.platformConfig.GAME_NOTICE_URL, rect);
+        var size = cc.EGLView.getInstance().getFrameSize();
+        this._webLayer = lz.WebLayer.create(
+            lz.platformConfig.GAME_NOTICE_URL + "?w=" + size.width + "&h=" + size.height,
+            rect
+        );
 
         noticeEffect.controller.ccbMenu.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY - 1);
         this.addChild(noticeEffect);

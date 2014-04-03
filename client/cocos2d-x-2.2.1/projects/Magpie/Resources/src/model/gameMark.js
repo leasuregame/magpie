@@ -24,6 +24,9 @@ var gameMark = {
     _newYearReward: false,
     _treasureHunt: false,
     _goldCards: false,
+    _boss: false,
+    _tournament: false,
+    _bossList: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -43,6 +46,9 @@ var gameMark = {
         this._newYearReward = false;
         this._treasureHunt = false;
         this._goldCards = false;
+        this._boss = false;
+        this._tournament = false;
+        this._bossList = false;
     },
 
     getActivityMark: function () {
@@ -423,6 +429,57 @@ var gameMark = {
 
         this._goldCards = mark;
         this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getBossMark: function () {
+        cc.log("gameMark getBossMark");
+
+        var limitLv = outputTables.function_limit.rows[1].boss;
+        if (gameData.player.get("lv") < limitLv) {
+            return false;
+        }
+
+        return this._boss;
+    },
+
+    updateBossMark: function (mark) {
+        cc.log("gameMark updateBossMark");
+
+        this._boss = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getTournamentMark: function () {
+        cc.log("gameMark getTournamentMark");
+
+        this._tournament = gameData.tournament.isCanGetReward();
+
+        return this._tournament;
+    },
+
+    updateTournamentMark: function (mark) {
+        cc.log("gameMark updateTournamentMark");
+
+        this._tournament = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getBossListMark: function () {
+        cc.log("gameMark getBossListMark");
+
+        if (!this._bossList) {
+            var boss = gameData.boss;
+            this._bossList = boss.isCanGetRankReward() || (boss.get("kneelCount") > 0);
+        }
+
+        return this._bossList;
+    },
+
+    updateBossListMark: function (mark) {
+        cc.log("gameMark updateBossListMark");
+
+        this._bossList = mark;
         MainScene.getInstance().updateMark();
     }
 };

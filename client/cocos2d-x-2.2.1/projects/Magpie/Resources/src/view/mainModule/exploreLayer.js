@@ -79,10 +79,10 @@ var ExploreLayer = cc.Layer.extend({
         if (id == 0) {
             id = 8;
         }
-        var url = "explore_bg_" + id;
+        var url = "exploreEffect" + id;
         for (var i = 0; i < 3; ++i) {
-            this._mapLabel[i] = cc.Sprite.create(main_scene_image[url]);
-            this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
+            this._mapLabel[i] = cc.Node.create();
+            this._mapLabel[i].addChild(cc.BuilderReader.load(main_scene_image[url], this));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
@@ -595,7 +595,7 @@ var ExploreLayer = cc.Layer.extend({
 
                             if (isDouble) {
                                 url = "uiEffect87";
-                                var size = that._mapLabel[1].getContentSize();
+                                var size = cc.size(640, 208);
                                 var y = that._exploreLayerFit.mapLabelBasePoint.y + size.height * that._exploreLayerFit.mapLabelScaleY / 2;
                                 point = cc.p(gameFit.GAME_MIDPOINT.x, y);
                             }

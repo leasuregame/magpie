@@ -57,11 +57,16 @@ randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]
 
 filterServers = (areas, os, platform, version) ->
-	items = _.filter areas, (area) -> os in area.os and platform in area.platform
+	items = areas.filter (area) -> os in area.os and platform in area.platform
 	if version
 		versionSpecifyItems = items.filter (i) -> version in i.version
 		if versionSpecifyItems.length > 0
 			items = versionSpecifyItems
 
 	items.sort (x, y) -> parseInt(x.id) - parseInt(y.id)
+	items.map (el, idx) -> 
+		id: el.id
+		name: el.name
+		index: idx+1
+		status: el.status
 

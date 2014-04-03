@@ -380,7 +380,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>200</real>
+								<real>150</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -570,6 +570,8 @@
 								<string>res/effect/effect/p15.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -666,8 +668,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

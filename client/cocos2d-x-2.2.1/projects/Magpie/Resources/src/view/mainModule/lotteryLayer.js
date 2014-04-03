@@ -29,12 +29,14 @@ var LotteryLayer = cc.Layer.extend({
     _closeTenLotteryItem: null,
     _privilegeIcon: null,
     _tenLotteryTip: null,
+    _tenLotteryTip2: null,
 
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
 
         this._super();
         this.update();
+        this._updateTips();
 
         lz.um.beginLogPageView("抽卡界面");
     },
@@ -75,6 +77,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(this._lotteryLabel);
 
         this._tenLotteryTip = this._lotteryLabel.controller.ccbTenLotteryTip;
+        this._tenLotteryTip2 = this._lotteryLabel.controller.ccbTenLotteryTip2;
 
         var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
         lotteryDescLabel1.setPosition(this._lotteryLayerFit.lotteryDescLabel1Point);
@@ -213,6 +216,20 @@ var LotteryLayer = cc.Layer.extend({
         tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        this._tipsLabel = ColorLabelTTF.create();
+        this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
+        this.addChild(this._tipsLabel, 2);
+
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._lotteryLayerFit.helpItemPoint);
+        menu.addChild(helpItem);
+
         return true;
     },
 
@@ -221,7 +238,9 @@ var LotteryLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._tenLotteryTip.setVisible(gameData.lottery.get("firstHighTenLuckCard"));
+        var isFirst = gameData.lottery.get("firstHighTenLuckCard");
+        this._tenLotteryTip.setVisible(isFirst);
+        this._tenLotteryTip2.setVisible(!isFirst);
 
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));
@@ -270,6 +289,70 @@ var LotteryLayer = cc.Layer.extend({
         }
     },
 
+    _updateTips: function () {
+        cc.log("LotteryLayer _update");
+
+        var lottery = gameData.lottery;
+        var rate;
+
+        this._tipsLabel.setVisible(false);
+
+        if (this._times == 1) {
+            rate = lottery.getFragmentRate();
+            if (rate > 0) {
+                this._tipsLabel.setLabel(
+                    {
+                        string: rate + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
+                    },
+                    {
+                        string: "得",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22
+                    },
+                    {
+                        iconName: "fragment",
+                        scale: 0.7,
+                        spacing: -2
+                    }
+                );
+                this._tipsLabel.setVisible(true);
+            }
+        } else {
+            rate = lottery.getFiveStarCardRate();
+            if (rate > 0) {
+                this._tipsLabel.setLabel(
+                    {
+                        string: rate + "%",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
+                    },
+                    {
+                        string: "得",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22
+                    },
+                    {
+                        string: "5",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        offset: cc.p(0, -2)
+                    },
+                    {
+                        iconName: "star",
+                        spacing: -8
+                    }
+                );
+                this._tipsLabel.setVisible(true);
+            }
+        }
+    },
+
     ccbFnShowCard: function () {
         cc.log("LotteryLayer ccbFnShowCard");
 
@@ -301,6 +384,7 @@ var LotteryLayer = cc.Layer.extend({
             this._energyTenLotteryIcon[i].setVisible(true);
         }
         this._times = 10;
+        this._updateTips();
     },
 
     _onClickCloseTenLottery: function () {
@@ -317,6 +401,7 @@ var LotteryLayer = cc.Layer.extend({
             this._energyTenLotteryIcon[i].setVisible(false);
         }
         this._times = 1;
+        this._updateTips();
     },
 
     _onClickLottery: function (type, level) {
@@ -368,6 +453,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
+                    that._updateTips();
                     fn(data);
 
                 }, type, level);
@@ -376,6 +462,7 @@ var LotteryLayer = cc.Layer.extend({
                     cc.log(data);
 
                     that.update();
+                    that._updateTips();
                     fn(data);
 
                 }, type, level);
@@ -402,6 +489,14 @@ var LotteryLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
+    },
+
+    _onClickHelp: function () {
+        cc.log("LotteryLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["lottery"]);
     }
 });
 

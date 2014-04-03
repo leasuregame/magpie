@@ -1,5 +1,4 @@
 var pomelo = require('pomelo');
-var sync = require('pomelo-sync-plugin');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var ServerStateService = require('./app/service/serverStateService');
@@ -11,43 +10,9 @@ var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
 var PlayerManager = require('./app/manager/playerManager');
+var appUtil = require('./app/util/appUtil');
 var fs = require('fs');
 var path = require('path');
-
-var watchSharedConf = function(app) {
-  var confpath = path.join(__dirname, '..', 'shared', 'conf.json')
-
-  function setSharedConf(app, confpath) {
-    app.set('sharedConf', JSON.parse(
-      fs.readFileSync(confpath));
-    );
-  };
-
-  setSharedConf(app, confpath);
-  fs.watchFile(confpath, function(curr, prev) {
-    setSharedConf(app, confpath);
-  });
-};
-
-var watchAreaServersInfo = function(app) {
-  var env = app.get('env');
-  var serverConfigPath = app.getBase() + '/config/servers.json');
-  
-  function setAreas(app, sPath) {
-    var servers = JSON.parse(fs.readFileSync(sPath));
-    var areas = servers[env].area;
-    var idMap = {};
-    for (var i = 0; i < areas.length; i++) {
-      var area = areas[i];
-      idMap[area.id] = area.area;
-    }
-    app.set('areaIdMap', idMap);
-  };
-  setAreas(app, serverConfigPath);
-  fs.watchFile(serverConfigPath, function(curr, prev) {
-    setAreas(app, serverConfigPath);
-  });
-};
 
 /**
  * Init app for client.
@@ -78,7 +43,7 @@ app.configure('production|development', function() {
 
   //Set areasIdMap, a map from area id to serverId.
   if (app.serverType !== 'master') {
-    watchAreaServersInfo(app);
+    appUtil.loadAreaInfo(app);
   }
 
   // proxy configures
@@ -100,14 +65,11 @@ app.configure('production|development', function() {
   app.filter(pomelo.filters.timeout());
   app.rpcFilter(pomelo.rpcFilters.rpcLog());
 
-  watchSharedConf(app);
-
+  appUtil.loadShareConfig(app);
   app.set('errorHandler', function(err, msg, resp, session, opts, cb){
     cb(err, resp, opts);
   });
 });
-
-
 
 // app configuration
 app.configure('production|development', 'connector', function() {
@@ -131,19 +93,7 @@ app.configure('production|development', 'gate', function() {
 
 // configure sql database
 app.configure('production|development', 'connector|auth', function() {
-  var env = app.get('env');
-  app.set('mysql', require(app.getBase() + '/config/mysql.json')[env]['userdb']);
-
-  var dbclient = require('./app/dao/mysql/mysql').init(app);
-  app.set('dbClient', dbclient);
-
-  app.use(sync, {
-    sync: {
-      path: __dirname + '/app/dao/mysql/mapping/user',
-      dbclient: dbclient,
-      interval: 60000
-    }
-  });
+  appUtil.loadDatabaseInfo(app, 'userdb');
 });
 
 app.configure('production|development', 'area', function() {
@@ -159,26 +109,7 @@ app.configure('production|development', 'area', function() {
   areaUtil.checkFlagFile(app);
   app.before(cdFilter());
 
-  var areaId = app.get('curServer').area;
-  var mysqlConfig = require(app.getBase() + '/config/mysql.json');
-  var env = app.get('env');
-
-  var val = mysqlConfig;
-  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
-    val = mysqlConfig[env][areaId];
-  }
-  app.set('mysql', val);
-
-  var dbclient = require('./app/dao/mysql/mysql').init(app);
-  app.set('dbClient', dbclient);
-
-  app.use(sync, {
-    sync: {
-      path: __dirname + '/app/dao/mysql/mapping/area',
-      dbclient: dbclient,
-      interval: 60000
-    }
-  });
+  appUtil.loadDatabaseInfo(app, 'areadb');
 
   app.load(counter);
   app.load(verifier);

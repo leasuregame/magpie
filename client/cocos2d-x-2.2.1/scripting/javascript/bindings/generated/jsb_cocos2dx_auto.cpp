@@ -51572,6 +51572,23 @@ void js_register_cocos2dx_CCFileUtils(JSContext *cx, JSObject *global) {
 JSClass  *jsb_CCApplication_class;
 JSObject *jsb_CCApplication_prototype;
 
+JSBool js_cocos2dx_CCApplication_getAppVersion(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::CCApplication* cobj = (cocos2d::CCApplication *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getAppVersion();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+    
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_CCApplication_getTargetPlatform(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -51669,6 +51686,7 @@ void js_register_cocos2dx_CCApplication(JSContext *cx, JSObject *global) {
 	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
+        JS_FN("getAppVersion", js_cocos2dx_CCApplication_getAppVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTargetPlatform", js_cocos2dx_CCApplication_getTargetPlatform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAnimationInterval", js_cocos2dx_CCApplication_setAnimationInterval, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCurrentLanguage", js_cocos2dx_CCApplication_getCurrentLanguage, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -51737,15 +51755,19 @@ JSBool js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::CCEGLViewProtocol* cobj = (cocos2d::CCEGLViewProtocol *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 3) {
+	if (argc == 5) {
 		double arg0;
 		double arg1;
-		ResolutionPolicy arg2;
+        double arg2;
+		double arg3;
+		ResolutionPolicy arg4;
 		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+        ok &= JS_ValueToNumber(cx, argv[2], &arg2);
+		ok &= JS_ValueToNumber(cx, argv[3], &arg3);
+		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->setDesignResolutionSize(arg0, arg1, arg2);
+		cobj->setDesignResolutionSize(arg0, arg1, arg2, arg3, arg4);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -51772,7 +51794,6 @@ JSBool js_cocos2dx_CCEGLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc
 }
 
 
-
 void js_cocos2dx_CCEGLViewProtocol_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (CCEGLViewProtocol)", obj);
 }
@@ -51796,7 +51817,7 @@ void js_register_cocos2dx_CCEGLViewProtocol(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getVisibleOrigin", js_cocos2dx_CCEGLViewProtocol_getVisibleOrigin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setDesignResolutionSize", js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setDesignResolutionSize", js_cocos2dx_CCEGLViewProtocol_setDesignResolutionSize, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVisibleSize", js_cocos2dx_CCEGLViewProtocol_getVisibleSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
@@ -51872,6 +51893,23 @@ JSBool js_cocos2dx_CCEGLView_isOpenGLReady(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_CCEGLView_getFrameSize(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::CCEGLView * cobj = (cocos2d::CCEGLView *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::CCSize ret = cobj->getFrameSize();
+		jsval jsret;
+		jsret = ccsize_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+    
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_CCEGLView_sharedOpenGLView(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -51918,6 +51956,7 @@ void js_register_cocos2dx_CCEGLView(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("setIMEKeyboardState", js_cocos2dx_CCEGLView_setIMEKeyboardState, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isOpenGLReady", js_cocos2dx_CCEGLView_isOpenGLReady, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("getFrameSize", js_cocos2dx_CCEGLView_getFrameSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

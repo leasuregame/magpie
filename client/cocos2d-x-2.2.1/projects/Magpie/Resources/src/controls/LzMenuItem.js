@@ -84,6 +84,10 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
             this._iconImage.setPosition(position);
         };
 
+        ret.getOffset = function () {
+            return this._iconImage.getPosition();
+        };
+
         ret.showIconImage = function () {
             if (ret._iconImage) {
                 ret._iconImage.setVisible(true);

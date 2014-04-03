@@ -125,7 +125,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-144</real>
+								<real>-360</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -292,8 +292,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.3200000524520874</real>
-									<real>1.3200000524520874</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -306,7 +306,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>8</real>
+								<real>20</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -326,6 +326,14 @@
 									<string></string>
 									<string>res/effect/effect/p104.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>100</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -488,7 +496,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.26666668057441711</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

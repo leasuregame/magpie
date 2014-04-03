@@ -12,10 +12,22 @@
  * */
 
 
+var LINE_UP_CARD_LIMIT = {
+    o: {
+        start: 1,
+        end: 6
+    },
+    e: {
+        start: 7,
+        end: 12
+    }
+};
+
 var BattleLog = Entity.extend({
     _id: 0,
     _type: PVE_BATTLE_LOG,
-    _card: {},
+    _lineUpList: null,
+    _card: null,
     _ownId: 0,
     _ownName: null,
     _enemyId: 0,
@@ -31,11 +43,15 @@ var BattleLog = Entity.extend({
     init: function (id, isPlayback) {
         cc.log("BattleLog init");
 
-        var battleLog = BattleLogPool.getInstance().getBattleLogById(id);
+        var battleLog = BattleLogPool.getInstance().get(id);
+
+        if (battleLog.enemyId === gameData.player.get("id")) {
+            battleLog.winner = battleLog.winner == "own" ? "enemy" : "own";
+        }
 
         this.set("id", battleLog.id);
         this.set("type", battleLog.type);
-        this.set("card", battleLog.cards);
+        this.set("lineUpList", battleLog.cards);
         this.set("ownId", battleLog.ownId);
         this.set("ownName", battleLog.ownName);
         this.set("enemyId", battleLog.enemyId);
@@ -57,7 +73,7 @@ var BattleLog = Entity.extend({
         if (battleLog.isFirstTournament) {
             this.set("isFirstTournament", true);
         }
-        
+
         var player = gameData.player;
         var spirit = gameData.spirit;
         var cardList = gameData.cardList;
@@ -120,26 +136,32 @@ var BattleLog = Entity.extend({
         return (this._winner === "own");
     },
 
-    getSpirit: function (id) {
-        cc.log("BattleLog getSpirit: " + id);
+    getSpirit: function (param) {
+        cc.log("BattleLog getSpirit: " + param);
 
         var i;
-        if (id > 6) {
-            for (i = 7; i <= 12; ++i) {
-                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
-                    return i;
-                }
-            }
-        } else {
-            for (i = 1; i <= 6; ++i) {
+
+        if (param === "o" || param < 7) {
+            for (i = 1; i < 7; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }
             }
         }
+
+        if (param === "e" || param > 6) {
+            for (i = 7; i <= 12; ++i) {
+                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
     },
 
     recover: function () {
+        this._card = {};
         this._index = -1;
     },
 
@@ -153,6 +175,28 @@ var BattleLog = Entity.extend({
 
     getBattleStep: function () {
         cc.log("BattleLog getBattleStep: " + this._battleStep[this._index]);
+
+        var battleStep = this._battleStep[this._index];
+
+        if (battleStep.go != undefined) {
+            var lineUp = this._lineUpList[battleStep.go];
+            var faction = "o";
+
+            for (var key in lineUp) {
+                if (parseInt(key) > 6) {
+                    faction = "e";
+                    break;
+                }
+            }
+
+            var limit = LINE_UP_CARD_LIMIT[faction];
+
+            for (var i = limit.start; i <= limit.end; ++i) {
+                this._card[i] = lineUp[i];
+            }
+
+            return faction;
+        }
 
         return BattleStep.create(this._battleStep[this._index]);
     },

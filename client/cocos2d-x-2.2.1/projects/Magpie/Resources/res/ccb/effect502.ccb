@@ -235,7 +235,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>206</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -427,8 +427,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
-									<real>3</real>
+									<real>2.440000057220459</real>
+									<real>2.440000057220459</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -460,7 +460,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>143</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -723,7 +723,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -751,7 +751,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -993,7 +993,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -1166,7 +1166,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1203,8 +1203,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>4</real>
-							<real>4</real>
+							<real>3.2765958309173584</real>
+							<real>3.2765958309173584</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1217,7 +1217,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>20</real>
+						<real>5.5319156646728516</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1246,7 +1246,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>109</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1297,7 +1297,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -1470,7 +1470,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1507,8 +1507,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>4</real>
-							<real>4</real>
+							<real>3.2765958309173584</real>
+							<real>3.2765958309173584</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1521,7 +1521,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-20</real>
+						<real>-5.5319156646728516</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1550,7 +1550,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>109</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1601,7 +1601,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>255</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -1878,7 +1878,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1957,7 +1957,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.30000001192092896</real>
+						<real>0.40000000596046448</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1986,7 +1986,7 @@
 						<key>value</key>
 						<array>
 							<real>20</real>
-							<real>8</real>
+							<real>15</real>
 						</array>
 					</dict>
 					<dict>
@@ -1996,8 +1996,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>5</real>
-							<real>2</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -2128,6 +2128,8 @@
 						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -2233,7 +2235,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666667461395264</real>
+			<real>0.53333336114883423</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

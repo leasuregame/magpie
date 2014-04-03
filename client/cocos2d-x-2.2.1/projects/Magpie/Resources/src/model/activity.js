@@ -24,6 +24,7 @@ var Activity = Entity.extend({
     _goldReward: {},
     _hasLoginReward: false,
     _rechargeReward: {},
+    _goldRewardList: [],
 
     init: function () {
         cc.log("Activity init");
@@ -31,6 +32,18 @@ var Activity = Entity.extend({
         this._goldReward = {};
         this._rechargeReward = {};
         this._hasLoginReward = false;
+
+        var rows = outputTables.player_upgrade_reward.rows;
+        var index = 0;
+
+        for (var key in rows) {
+            this._goldRewardList[index] = rows[key];
+            index++;
+        }
+
+        this._goldRewardList.sort(function (a, b) {
+            return a.lv - b.lv;
+        });
 
         this.sync();
 
@@ -44,17 +57,19 @@ var Activity = Entity.extend({
         gameMark.updatePowerRewardMark(data.canGetPower);
 
         var mark = data.levelReward;
-        for (var i = 1; i <= 10; i++) {
-            var offset = (i - 1) % EACH_NUM_BIT;
-            var index = Math.floor((i - 1) / EACH_NUM_BIT);
+        var rows = outputTables.player_upgrade_reward.rows;
+
+        for (var key in rows) {
+            var offset = (key - 1) % EACH_NUM_BIT;
+            var index = Math.floor((key - 1) / EACH_NUM_BIT);
             if (mark[index]) {
                 if ((mark[index] >> offset & 1) == 1) {
-                    this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_RECEIVE);
+                    this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_RECEIVE);
                 } else {
-                    this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_NO_RECEIVE);
+                    this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_NO_RECEIVE);
                 }
             } else {
-                this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_NO_RECEIVE);
+                this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_NO_RECEIVE);
             }
         }
 
@@ -150,8 +165,10 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 var power = data.msg.powerValue;
-                TipLayer.tipWithIcon(lz.getGameGoodsIcon("power"), " +" + power);
+
                 gameData.player.add("power", power);
+
+                lz.tipReward("power", power);
 
                 lz.um.event("event_give_power");
                 cb();
@@ -168,9 +185,10 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tipWithIcon(lz.getGameGoodsIcon("gold"), " +" + data.msg.gold);
                 gameData.player.add("gold", data.msg.gold);
                 that._changeStateById(TYPE_GOLD_REWARD, id, GOLD_RECEIVE);
+
+                lz.tipReward(data.msg);
 
                 cb(true);
 
@@ -229,6 +247,7 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 cc.log("getFirstRechargeBox success");
+
                 var card = Card.create(data.msg.card);
                 gameData.cardList.push(card);
 

@@ -56,7 +56,7 @@ var EvolutionLayer = cc.Layer.extend({
         bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        if(gameData.player.get("lv") < outputTables.function_limit.rows[1].skill_upgrade) {
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].skill_upgrade) {
             this._skillUpgradeItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button22h,
                 main_scene_image.button22h,
@@ -131,13 +131,6 @@ var EvolutionLayer = cc.Layer.extend({
     _onClickSkillUpgrade: function () {
         cc.log("StrengthenLayer _onClickSkillUpgrade");
 
-        var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
-        if (gameData.player.get("lv") < limitLv) {
-            TipLayer.tip(limitLv + "级开放");
-            return;
-        }
-
-
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._skillUpgradeItem.setEnabled(false);
@@ -156,12 +149,6 @@ var EvolutionLayer = cc.Layer.extend({
     _onClickPassiveSkillUpgrade: function () {
         cc.log("EvolutionLayer _onClickCardEvolution");
 
-        var limitLv = outputTables.function_limit.rows[1].pass_skillafresh;
-        if (gameData.player.get("lv") < limitLv) {
-            TipLayer.tip(limitLv + "级开放");
-            return;
-        }
-
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._skillUpgradeItem.setEnabled(true);
@@ -178,6 +165,10 @@ var EvolutionLayer = cc.Layer.extend({
     },
 
     _switchLabel: function (runLabel) {
+        if (runLabel.canEnter && !runLabel.canEnter()) {
+            return;
+        }
+
         if (!(this._nowLayer instanceof runLabel)) {
             if (this._nowLabel != null) this.removeChild(this._nowLabel);
             this._nowLabel = runLabel.create();
@@ -195,4 +186,17 @@ EvolutionLayer.create = function () {
     }
 
     return null;
+};
+
+EvolutionLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("技能培养" + limitLv + "级开放");
+
+    return false;
 };

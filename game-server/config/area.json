@@ -1,15 +1,18 @@
-[{
-	"id": 1,
-	"name": "开天辟地",
-	"os": ["IOS"],
-	"platform": ["AppStore", "TB"],
-	"version": [],
-	"status": 10
-}, {
-	"id": 2,
-	"name": "八仙过海",
-	"os": ["IOS"],
-	"platform": ["AppStore", "TB"],
-	"version": [],
-	"status": 10
-}]
+[
+	{
+		"id": 1,
+		"name": "开天辟地",
+		"os": ["IOS"],
+		"platform": ["AppStore", "TB"],
+		"version": [],
+		"status": 10
+	}, 
+	{
+		"id": 2,
+		"name": "八仙过海",
+		"os": ["IOS"],
+		"platform": ["AppStore", "TB"],
+		"version": [],
+		"status": 10
+	}
+]

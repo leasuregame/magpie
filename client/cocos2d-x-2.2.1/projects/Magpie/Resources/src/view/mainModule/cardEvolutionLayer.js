@@ -58,14 +58,14 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
             if (state == EVOLUTION_SUCCESS) {
-                var star = this._card.get("star");
-                this._card.set("star", star + 1);
-                this._setCard();
-                this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                var star = that._card.get("star");
+                that._card.set("star", star + 1);
+                that._setCard();
+                that._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
                 next();
 
             } else {
-                this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+                that._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
                 next();
             }
         });
@@ -78,15 +78,15 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? star - 2 : 1;
+        var index = star > 2 ? Math.min(star - 2, 3) : 1;
 
         var controller = this._evolutionEffect.controller;
 
         controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        controller["ccbCardIcon"].setTexture(lz.getTexture(main_scene_image[this._card.getCardIcon()]));
+        controller["ccbCardIcon"].setTexture(lz.getTexture(this._card.getCardIcon()));
     },
 
-    ccbFnChangeCardFrame: function() {
+    ccbFnChangeCardFrame: function () {
         cc.log("CardEvolutionLayer ccbFnChangeCardFrame");
 
         var star = this._card.get("star");

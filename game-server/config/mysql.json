@@ -45,6 +45,13 @@
 			"user": "tb_leasuregame",
 			"password": "leasure405GAME"
 		},
+		"4": {
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_area_1",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
+		},
 		"userdb": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",

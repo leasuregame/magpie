@@ -19,6 +19,7 @@ var UPDATE_CD_TIME_INTERVAL = 1;    // cd和boss剩余时间更新间隔
 
 var Boss = Entity.extend({
     _bossList: null,        // boss列表
+    _cdTimestamp: 0,        // cd时间戳
     _cd: 0,                 // 下次攻击剩余时间
     _kneelList: null,       // 已膜拜列表
     _kneelCount: 0,         // 膜拜次数
@@ -41,6 +42,7 @@ var Boss = Entity.extend({
         this.on("canReceiveChange", this._canReceiveChangeEvent);
 
         this._bossList = [];
+        this._cdTimestamp = 0;
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
@@ -67,8 +69,14 @@ var Boss = Entity.extend({
         cc.log("Boss update");
 
         if (data) {
+            if (data.cd != undefined) {
+                this.sets({
+                    "cd": data.cd,
+                    "cdTimestamp": Date.now()
+                });
+            }
+
             this.sets({
-                "cd": data.cd,
                 "kneelCount": data.kneelCountLeft,
                 "kneelList": data.kneelList,
                 "canReceive": data.canReceive,
@@ -433,7 +441,12 @@ var Boss = Entity.extend({
     },
 
     _updateCdAndBoss: function () {
-        var interval = UPDATE_CD_TIME_INTERVAL * 1000;
+        if (this._cdTimestamp <= 0) {
+            this._cdTimestamp = Date.now();
+        }
+
+        var interval = Date.now() - this._cdTimestamp;
+        this._cdTimestamp = Date.now();
 
         if (this._cd > 0) {
             var cd = Math.max(0, this._cd - interval);

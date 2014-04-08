@@ -358,8 +358,8 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBLogout) {
-            tbAdapter.TBLogout(0);
+        if (lz.platformLogout) {
+            lz.platformLogout();
         }
 
         Dialog.pop("异地登录", function () {
@@ -373,12 +373,10 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBIsLogined) {
-            if (!tbAdapter.TBIsLogined()) {
-                MainScene.destroy();
-                cc.Director.getInstance().replaceScene(LoginScene.create());
-                return;
-            }
+        if (lz.platformIsLogin && !lz.platformIsLogin()) {
+            MainScene.destroy();
+            cc.Director.getInstance().replaceScene(LoginScene.create());
+            return;
         }
 
         gameData.user.login(function (type) {

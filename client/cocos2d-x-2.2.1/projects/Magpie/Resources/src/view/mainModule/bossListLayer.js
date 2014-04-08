@@ -364,20 +364,19 @@ var BossListLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(bossDieIcon);
             }
 
-            if (boss.status != BOSS_STATUS_DIE) {
-                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
-                countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLeftLabel.setPosition(cc.p(420, y - 33));
-                countLeftLabel.setColor(cc.c3b(167, 28, 0));
-                scrollViewLayer.addChild(countLeftLabel);
-            } else {
-
+            if (boss.killer) {
                 var killerLabel = StrokeLabel.create("最后攻击：" + boss.killer, "STHeitiTC-Medium", 20);
                 killerLabel.setAnchorPoint(cc.p(0.5, 0.5));
                 killerLabel.setPosition(cc.p(500, y - 33));
                 killerLabel.setColor(cc.c3b(255, 255, 255));
                 killerLabel.setBgColor(cc.c3b(155, 31, 24));
                 scrollViewLayer.addChild(killerLabel);
+            } else {
+                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
+                countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
+                countLeftLabel.setPosition(cc.p(420, y - 33));
+                countLeftLabel.setColor(cc.c3b(167, 28, 0));
+                scrollViewLayer.addChild(countLeftLabel);
             }
 
         }

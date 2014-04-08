@@ -232,6 +232,7 @@ var BossListLayer = cc.Layer.extend({
         }
 
         this._timeLabel = [];
+        this._bossFleeIcons = [];
 
         var scrollViewLayer = MarkLayer.create(this._bossListLayerFit.scrollViewLayerRect);
 
@@ -347,20 +348,20 @@ var BossListLayer = cc.Layer.extend({
             attackIcon.setPosition(cc.p(480, y + 15));
             scrollViewLayer.addChild(attackIcon);
 
-            var bossStatusIcon = null;
+            this._bossFleeIcons[i] = cc.Sprite.create(main_scene_image["icon396"]);
+            this._bossFleeIcons[i].setAnchorPoint(cc.p(0, 0.5));
+            this._bossFleeIcons[i].setPosition(cc.p(455, y + 30));
+            scrollViewLayer.addChild(this._bossFleeIcons[i]);
 
-            if (boss.status == BOSS_STATUS_FLEE) {
-                bossStatusIcon = cc.Sprite.create(main_scene_image["icon396"]);
+            if (boss.status != BOSS_STATUS_FLEE && boss.status != BOSS_STATUS_TIMEOUT) {
+                this._bossFleeIcons[i].setVisible(false);
             }
 
             if (boss.status == BOSS_STATUS_DIE) {
-                bossStatusIcon = cc.Sprite.create(main_scene_image["icon397"]);
-            }
-
-            if (bossStatusIcon) {
-                bossStatusIcon.setAnchorPoint(cc.p(0, 0.5));
-                bossStatusIcon.setPosition(cc.p(455, y + 30));
-                scrollViewLayer.addChild(bossStatusIcon);
+                var bossDieIcon = cc.Sprite.create(main_scene_image["icon397"]);
+                bossDieIcon.setAnchorPoint(cc.p(0, 0.5));
+                bossDieIcon.setPosition(cc.p(455, y + 30));
+                scrollViewLayer.addChild(bossDieIcon);
             }
 
             if (boss.status != BOSS_STATUS_DIE) {
@@ -409,6 +410,9 @@ var BossListLayer = cc.Layer.extend({
                 time: time + STOP_TIME
             }));
 
+            if (time <= 0 && bossList[i].status != BOSS_STATUS_DIE) {
+                this._bossFleeIcons[i].setVisible(true);
+            }
         }
     },
 

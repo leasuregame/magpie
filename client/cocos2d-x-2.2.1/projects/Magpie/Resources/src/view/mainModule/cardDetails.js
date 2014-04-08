@@ -326,12 +326,14 @@ var CardDetails = LazyLayer.extend({
             }
         };
 
-        PassiveSkillLabel.pop(
+        var res = PassiveSkillLabel.create(
             {
                 card: this._card,
                 cb: cb
             }
         );
+
+        this.addChild(res, 10);
     },
 
     _onClickClose: function () {

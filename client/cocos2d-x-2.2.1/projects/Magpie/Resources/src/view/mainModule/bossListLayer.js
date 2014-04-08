@@ -2,7 +2,7 @@
  * Created by lujunyu on 14-2-26.
  */
 
-var STOP_TIME = -1000 * 3600 * 8;
+var STOP_TIME = 0;//(new Date().getTimezoneOffset() - 8) * 60 * 1000;//-1000 * 3600 * 8;
 
 var BossListLayer = cc.Layer.extend({
     _bossListLayerFit: null,
@@ -73,9 +73,7 @@ var BossListLayer = cc.Layer.extend({
         this.addChild(nextAttackLabel);
 
         this._cdTimeLabel = cc.LabelTTF.create(
-            lz.getTimeStr({
-                time: this._cdTime + STOP_TIME
-            }),
+            lz.getCountdownStr(this._cdTime),
             "STHeitiTC-Medium",
             22
         );
@@ -324,9 +322,7 @@ var BossListLayer = cc.Layer.extend({
             }
 
             var runAwayTimeLabel = cc.LabelTTF.create(
-                lz.getTimeStr({
-                    time: boss.timeLeft + STOP_TIME
-                }),
+                lz.getCountdownStr(boss.timeLeft),
                 "STHeitiTC-Medium",
                 20
             );
@@ -395,9 +391,7 @@ var BossListLayer = cc.Layer.extend({
     _updateCdTime: function () {
 
         this._cdTime = gameData.boss.get("cd");
-        this._cdTimeLabel.setString(lz.getTimeStr({
-            time: this._cdTime + STOP_TIME
-        }));
+        this._cdTimeLabel.setString(lz.getCountdownStr(this._cdTime));
 
         this._removeTimeItem.setVisible(this._cdTime > 0);
 
@@ -405,9 +399,7 @@ var BossListLayer = cc.Layer.extend({
         var len = bossList.length;
         for (var i = 0; i < len; i++) {
             var time = bossList[i].timeLeft;
-            this._timeLabel[i].setString(lz.getTimeStr({
-                time: time + STOP_TIME
-            }));
+            this._timeLabel[i].setString(lz.getCountdownStr(time));
 
             if (time <= 0 && bossList[i].status != BOSS_STATUS_DIE) {
                 this._bossFleeIcons[i].setVisible(true);

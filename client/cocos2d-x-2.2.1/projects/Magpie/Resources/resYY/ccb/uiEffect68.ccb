@@ -142,8 +142,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -339,8 +337,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.0333333015441895</real>
-									<real>0.96666669845581055</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1003,8 +1001,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>16</real>
-													<real>30</real>
+													<real>11</real>
+													<real>29</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -1036,6 +1034,14 @@
 													<false/>
 													<integer>0</integer>
 												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>rotation</string>
+												<key>type</key>
+												<string>Degrees</string>
+												<key>value</key>
+												<real>3</real>
 											</dict>
 											<dict>
 												<key>name</key>
@@ -1356,8 +1362,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.0333333015441895</real>
-											<real>0.96666669845581055</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1729,7 +1735,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>0.56666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

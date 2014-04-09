@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -560,7 +560,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>1.0499999523162842</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -586,7 +586,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>resYY/effect/uiEffect/up207.png</string>
+							<string>resYY/main/spirit_1_0.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1230,9 +1230,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>116</integer>
-							<integer>245</integer>
 							<integer>255</integer>
+							<integer>232</integer>
+							<integer>159</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1593,7 +1593,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -1608,7 +1608,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>30</real>
+							<real>80</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1635,8 +1635,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>5</real>
+							<real>5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1668,7 +1668,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1677,9 +1677,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>115</integer>
-							<integer>253</integer>
 							<integer>255</integer>
+							<integer>237</integer>
+							<integer>166</integer>
 						</array>
 					</dict>
 					<dict>
@@ -2070,7 +2070,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>30</real>
+							<real>80</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2097,8 +2097,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>3</real>
+							<real>3</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2130,7 +2130,19 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>255</integer>
+							<integer>239</integer>
+							<integer>218</integer>
+						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2688,9 +2700,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>225</integer>
+									<integer>163</integer>
 								</array>
 							</dict>
 							<dict>
@@ -2794,9 +2806,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>234</integer>
+									<integer>178</integer>
 								</array>
 							</dict>
 							<dict>
@@ -2900,9 +2912,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>115</integer>
-									<integer>253</integer>
 									<integer>255</integer>
+									<integer>233</integer>
+									<integer>159</integer>
 								</array>
 							</dict>
 							<dict>
@@ -3169,9 +3181,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>33</integer>
-							<integer>57</integer>
-							<integer>60</integer>
+							<integer>77</integer>
+							<integer>68</integer>
+							<integer>48</integer>
 						</array>
 					</dict>
 					<dict>
@@ -3388,7 +3400,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.066666670143604279</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

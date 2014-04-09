@@ -50,7 +50,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-480</real>
+									<real>-495</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -113,7 +113,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up87.png</string>
+									<string>resYY/effect/uiEffect/up234.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -124,7 +124,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up101.png</string>
+									<string>resYY/effect/uiEffect/up235.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -135,7 +135,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up87.png</string>
+									<string>resYY/effect/uiEffect/up234.png</string>
 								</array>
 							</dict>
 						</array>
@@ -163,7 +163,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-250</real>
+									<real>-320</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -226,7 +226,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up242.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -237,7 +237,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up243.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -248,7 +248,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up242.png</string>
 								</array>
 							</dict>
 						</array>
@@ -276,7 +276,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-350</real>
+									<real>-400</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -339,7 +339,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up242.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -350,7 +350,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up243.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -361,12 +361,10 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up94.png</string>
+									<string>resYY/effect/uiEffect/up242.png</string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -458,7 +456,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up178</string>
+						<string>up237</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -472,7 +470,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>185</real>
+									<real>165</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -517,7 +515,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up178.png</string>
+									<string>resYY/effect/uiEffect/up237.png</string>
 								</array>
 							</dict>
 						</array>
@@ -544,7 +542,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-240</real>
+									<real>-215</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -602,7 +600,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-250</real>
+							<real>-320</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -653,7 +651,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up177</string>
+						<string>up236</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -667,7 +665,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>185</real>
+									<real>165</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -712,7 +710,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>resYY/effect/uiEffect/up177.png</string>
+									<string>resYY/effect/uiEffect/up236.png</string>
 								</array>
 							</dict>
 						</array>
@@ -739,7 +737,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-240</real>
+									<real>-215</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -797,7 +795,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-350</real>
+							<real>-400</real>
 							<integer>0</integer>
 						</array>
 					</dict>

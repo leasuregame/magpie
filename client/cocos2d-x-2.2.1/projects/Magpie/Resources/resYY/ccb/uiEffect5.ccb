@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -541,6 +541,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -618,6 +620,8 @@
 						<true/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1074,8 +1078,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>4</real>
+							<real>4</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1107,7 +1111,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1116,9 +1120,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>115</integer>
-							<integer>214</integer>
-							<integer>193</integer>
+							<integer>187</integer>
+							<integer>175</integer>
+							<integer>117</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1173,7 +1177,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>100</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -1309,7 +1313,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>100</integer>
+									<integer>150</integer>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -1354,7 +1358,7 @@
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
-									<integer>100</integer>
+									<integer>150</integer>
 								</dict>
 							</array>
 							<key>name</key>
@@ -1497,7 +1501,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>80</integer>
+						<integer>150</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1506,9 +1510,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>0</integer>
-							<integer>250</integer>
+							<integer>242</integer>
 							<integer>146</integer>
+							<integer>79</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1613,7 +1617,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.56666666269302368</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1681,7 +1685,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.89999997615814209</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -12,6 +12,7 @@ CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
 YY_APP_KEY = 'OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf'
 YY_APP_ID = 'IYYDS'
 
+accountMap = {}
 sessionIdMap = new Cache()
 tokenMap = new Cache()
 

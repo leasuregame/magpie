@@ -11,7 +11,7 @@
 var SOUND_OPEN = 1;
 var SOUND_CLOSE = 2;
 
-var MUSIC_VOLUME = 0.3;
+var MUSIC_VOLUME = 0.5;
 var EFFECT_VOLUME = 1.0;
 var NO_VOLUME = 0;
 

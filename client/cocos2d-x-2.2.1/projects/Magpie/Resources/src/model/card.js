@@ -12,7 +12,7 @@
  * */
 
 
-var MAX_CARD_TABLE_ID = 1000;
+var MAX_CARD_TABLE_ID = 2000;
 var MAX_CARD_STAR = 7;
 
 var EVOLUTION_SUCCESS = 1;
@@ -133,7 +133,6 @@ var Card = Entity.extend({
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
-            this.set("ability", data.ability);
             this.set("skillLv", data.skillLv);
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
@@ -146,6 +145,10 @@ var Card = Entity.extend({
         this._loadCardTable();
         this._loadSkillTable();
         this._calculateAddition();
+
+        if (data) {
+            this.set("ability", data.ability);
+        }
     },
 
     _updatePassiveSkills: function (data) {
@@ -727,6 +730,7 @@ var Card = Entity.extend({
                 }
 
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+
                 cb(result);
 
                 lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
@@ -833,7 +837,10 @@ var Card = Entity.extend({
 
         var price = table["star" + this._star];
 
-        price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
+        var rows = outputTables.card_grow.rows;
+        for (var i = 1; i < this._lv; ++i) {
+            price += rows[i].money_need;
+        }
 
         return price;
     },

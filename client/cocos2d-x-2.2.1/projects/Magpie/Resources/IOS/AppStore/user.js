@@ -93,7 +93,7 @@ var User = Entity.extend({
 
         this._save();
 
-        var version = "1.3.0";
+        var version = lz.platformConfig.VERSION;
 
         if (typeof(cc.AssetsManager) != "undefined") {
             version = cc.AssetsManager.getInstance().getVersion();

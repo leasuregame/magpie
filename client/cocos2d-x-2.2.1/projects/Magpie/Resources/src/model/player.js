@@ -250,12 +250,12 @@ var Player = Entity.extend({
         var len = lineUpCardList.length;
         var ability = 0;
         var card = null;
-        var spiritPassiveHarm = gameData.spirit.get("passiveHarm") / 100;
+        var spiritPassiveHarm = gameData.spirit.get("passiveHarm");
 
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm) + parseInt(card.get("initAtk") * spiritPassiveHarm);
+            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
         }
 
         return ability;
@@ -297,7 +297,9 @@ var Player = Entity.extend({
             }
         }
 
-        this.set("power", power);
+        if (this._power != power) {
+            this.set("power", power);
+        }
     },
 
     correctionPower: function (power, powerTimestamp) {
@@ -461,6 +463,8 @@ var Player = Entity.extend({
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
                     } else {
                         that.add(key, msg[key]);
                     }
@@ -599,9 +603,11 @@ var Player = Entity.extend({
         cc.log("Player getEvolutionRate: " + star);
 
         var rate = this._evolutionRate;
+
         if (rate) {
             return rate["star" + star] || 0;
         }
+
         return 0;
     }
 });

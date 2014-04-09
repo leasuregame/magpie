@@ -114,7 +114,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._lvLabel.setString(player.get("lv"));
         this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
         this._powerLabel.setString(player.get("power") + " / " + player.get("maxPower"));
     },
 

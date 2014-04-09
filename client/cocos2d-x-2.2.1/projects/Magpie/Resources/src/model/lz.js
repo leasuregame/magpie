@@ -452,6 +452,16 @@ lz.getTimeStr = function (args) {
     return fmt;
 };
 
+lz.getMoneyStr = function (money) {
+    var threshold = 100000;
+
+    if (money < threshold) {
+        return ("" + money)
+    } else {
+        return (Math.floor(money / 10000) + "万");
+    }
+};
+
 var MAX_LAST_NAME_COUNT = 250;
 var MAX_FIRST_NAME_COUNT = 2568;
 var MAX_ILLEGAL_STR_COUNT = 780;

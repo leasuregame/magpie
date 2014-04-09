@@ -69,7 +69,8 @@ var fit4Iphone4 = {
 
     "loginScene": {
         "loginBgLayer": {
-            "bgEffectPoint": cc.p(360, 480)
+            "bgEffectPoint": cc.p(360, 480),
+            "appVersionLabelPoint": cc.p(660, 940)
         },
         "loginLayer": {
             "loginFramePoint": cc.p(360, 520),
@@ -293,7 +294,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(250, 392),
             "tipDescriptionLabelPoint": cc.p(100, 352),
             "passiveSkillIconPoint": cc.p(100, 212),
-            "updatePassiveSKillItemPoint": cc.p(250, 212),
+            "updatePassiveSKillItemPoint": cc.p(270, 212),
             "passiveSkillOffsetX": -90,
             "passiveSkillIconPointY": 162,
             "passiveSkillNameLabelPointY": 162,
@@ -645,7 +646,7 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 559),
             "titleLabelPoint": cc.p(190, 830),
-             "lineUpItemPoint": cc.p(160, 834),
+            "lineUpItemPoint": cc.p(160, 834),
             "nameLabelPoint": cc.p(260, 764),
             "lvLabelPoint": cc.p(370, 764),
             "abilityLabelPoint": cc.p(500, 764),
@@ -716,7 +717,8 @@ var fit4Iphone4 = {
             "privilegeIconPoint": cc.p(370, 207),
             "fragmentTipLayerPoint": cc.p(360, 800),
             "fragmentTipIconPoint": cc.p(465, 800),
-            "tipsLabelPoint": cc.p(533, 267)
+            "tipsLabelPoint": cc.p(533, 272),
+            "helpItemPoint": cc.p(640, 790)
         },
         "lvRankLayer": {
             "scrollViewHeight": 700,
@@ -1413,7 +1415,7 @@ var fit4Iphone4 = {
             "speakerIconPoint": cc.p(150, 700),
             "msgEditBoxPoint": cc.p(345, 700),
             "sendItemPoint": cc.p(560, 700),
-            "scrollViewLayerRect": cc.rect(0, 0, 500, 470),
+            "scrollViewLayerRect": cc.rect(110, 165, 500, 470),
             "scrollViewBgLayerSize": cc.size(500, 480),
             "scrollViewBgLayerPoint": cc.p(360, 400),
             "scrollViewSize": cc.size(500, 470),

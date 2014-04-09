@@ -11,7 +11,9 @@
 var lz = lz || {};
 
 lz.platformConfig = {
-    PLATFORM: "AppStore",
+    OS: "Android",
+    PLATFORM: "TEST",
+    VERSION: "1.4.0",
     GATE_SERVER_HOST: "124.238.236.33",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",

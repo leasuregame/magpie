@@ -111,6 +111,19 @@ var CardListLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
+        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountIcon);
+
+        this._cardCountLabel = cc.LabelTTF.create(
+            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
+            "STHeitiTC-Medium",
+            22
+        );
+        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(this._cardCountLabel);
+
         this._sortItem1 = cc.MenuItemImage.create(
             main_scene_image.button30,
             main_scene_image.button30,
@@ -136,7 +149,16 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
         this._onSelectAllLowItem.setVisible(false);
 
-        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem);
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setScale(1.2);
+        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
+
+        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -144,19 +166,6 @@ var CardListLayer = cc.Layer.extend({
         this._selectAllLowHookIcon.setPosition(this._cardListLayerFit.selectAllLowHookIconPoint);
         this.addChild(this._selectAllLowHookIcon);
         this._selectAllLowHookIcon.setVisible(false);
-
-        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
-        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(cardCountIcon);
-
-        this._cardCountLabel = cc.LabelTTF.create(
-            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
-            "STHeitiTC-Medium",
-            22
-        );
-        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
-        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(this._cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
@@ -335,16 +344,7 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var buyCountItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
-            this._onClickBuyCount,
-            this
-        );
-        buyCountItem.setScale(1.2);
-        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
-
-        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
+        var menu = cc.Menu.create(sellItem, lineUpItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },
@@ -668,7 +668,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
         var leadCardStar = this._otherData.leadCard.get("star");
 
-        var useCardStar = Math.min(leadCardStar, 5);
+        var useCardStar = outputTables.star_upgrade.rows[leadCardStar].source_card_star;
 
         for (var key in cardList) {
             if (cardList[key].get("star") != useCardStar) {
@@ -788,7 +788,7 @@ var CardListLayer = cc.Layer.extend({
             }
 
             countLabel.setString(len);
-            moneyLabel.setString(money);
+            moneyLabel.setString(lz.getMoneyStr(money));
         };
 
         this._selectCallback();
@@ -1038,14 +1038,13 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                TipLayer.tip("阵容保存成功");
-
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();
                     noviceTeachingLayer.next();
 
                 }
 
+                MainScene.getInstance().switchLayer(MainLayer);
             }
         }, lineUp, index);
     },

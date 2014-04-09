@@ -16,9 +16,8 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
-var cardConfig = require('../../../config/data/card');
+var configData = require('../../../config/data');
 var _ = require("underscore");
-var psConfig = require('../../../config/data/passSkill');
 var PassiveSkillGroup = require('./passiveSkill');
 var cardLvs = table.getTable('card_lv_limit');
 var GROUP_EFFECT_ATK = 1
@@ -276,10 +275,8 @@ var Card = (function(_super) {
 
         hp += this.incs.elixir_hp;
         hp += this.incs.ps_hp;
-        hp += this.incs.spirit_hp;
         atk += this.incs.elixir_atk;
         atk += this.incs.ps_atk;
-        atk += this.incs.spirit_atk;
 
         this.hp = hp;
         this.atk = atk;
@@ -304,7 +301,7 @@ var Card = (function(_super) {
     };
 
     Card.prototype.ability = function() {
-        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var ae = configData.card.ABILIGY_EXCHANGE;
 
         // 1点攻击力=1点战斗力
         // 2点生命值=1点战斗力
@@ -315,9 +312,9 @@ var Card = (function(_super) {
             _abi += ae.star[this.star] * this.skillLv;
         }
 
-        // 0.1%暴击率=10点战斗力
-        // 0.1%闪避率=10点战斗力
-        // 0.1%减伤率=10点战斗力
+        // 1%暴击率=80点战斗力
+        // 1%闪避率=80点战斗力
+        // 1%减伤率=80点战斗力
         var should_inc_ps = ['dmg_reduce', 'crit', 'dodge', 'toughness', 'hit', 'disrupting'];
         if (this.star >= 3) {
             var group = this.passiveSkills.filter(function(group) {
@@ -380,9 +377,9 @@ var Card = (function(_super) {
 
 
     Card.prototype.afreshPassiveSkill = function(type, ps) {
-        var born_rates = psConfig.BORN_RATES;
+        var born_rates = configData.passSkill.BORN_RATES;
         var star = this.star >= 5 ? this.star : 5;
-        var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
+        var value_obj = configData.passSkill.AFRESH.TYPE[type].STAR[star];
 
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
@@ -450,8 +447,17 @@ var Card = (function(_super) {
     };
 
     Card.prototype.price = function() {
-        cfg = table.getTableItem('card_price', 1);
-        return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
+        var curLv = this.lv;
+        var cfg = table.getTableItem('card_price', 1);
+        var lv_money = table.getTable('card_grow').filter(function(id, item) {
+            return item.lv < curLv && item.lv > 0;
+        }).map(function(item) {
+            return item.money_need;
+        }).reduce(function(x, y){
+            return x + y;
+        }, 0);
+
+        return lv_money + (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
     Card.prototype.resetSkillLv = function() {

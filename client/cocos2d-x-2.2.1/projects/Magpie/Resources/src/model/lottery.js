@@ -60,12 +60,17 @@ var Lottery = Entity.extend({
     },
 
     getFiveStarCardRate: function () {
+        var rates = [40, 50, 70, 80, 100];
+
+        if (this.get("firstHighTenLuckCard")) {
+            return 0;
+        }
 
         if (this._goldLuckyCard10) {
             if (this._goldLuckyCard10.got) {
                 return 0;
             } else {
-                return Math.min(this._goldLuckyCard10.count * 20 + 20, 100);
+                return Math.min(rates[this._goldLuckyCard10.count], 100);
             }
         }
 
@@ -174,10 +179,12 @@ var Lottery = Entity.extend({
                     player.add("fragment", msg.fragment);
                 }
 
-                if (msg.goldLuckyCardForFragment) {
-                    that.set("goldLuckyCardForFragment", msg.goldLuckyCardForFragment);
-                } else {
-                    that.set("goldLuckyCardForFragment", {count: 5, got: true});
+                if (type == LOTTERY_BY_GOLD && level == 2) {
+                    if (msg.goldLuckyCardForFragment) {
+                        that.set("goldLuckyCardForFragment", msg.goldLuckyCardForFragment);
+                    } else {
+                        that.set("goldLuckyCardForFragment", {count: 5, got: true});
+                    }
                 }
 
                 cb({
@@ -233,10 +240,12 @@ var Lottery = Entity.extend({
                     player.add("fragment", msg.fragment);
                 }
 
-                if (msg.goldLuckyCard10) {
-                    that.set("goldLuckyCard10", msg.goldLuckyCard10);
-                } else {
-                    that.set("goldLuckyCard10", {count: 3, got: true});
+                if (type == LOTTERY_BY_GOLD && level == 2) {
+                    if (msg.goldLuckyCard10) {
+                        that.set("goldLuckyCard10", msg.goldLuckyCard10);
+                    } else {
+                        that.set("goldLuckyCard10", {count: 3, got: true});
+                    }
                 }
 
                 cb({

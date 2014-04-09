@@ -337,6 +337,12 @@ var main_scene_image = {
     button79s: main_scene_path + "button79s.png",
     button80: main_scene_path + "button80.png",
     button80s: main_scene_path + "button80s.png",
+    button81: main_scene_path + "button81.png",
+    button81d: main_scene_path + "button81d.png",
+    button81s: main_scene_path + "button81s.png",
+    button82: main_scene_path + "button82.png",
+    button82d: main_scene_path + "button82d.png",
+    button82s: main_scene_path + "button82s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -763,6 +769,7 @@ var main_scene_image = {
     icon425: main_scene_path + "icon425.png",
     icon426: main_scene_path + "icon426.png",
     icon427: main_scene_path + "icon427.png",
+    icon428: main_scene_path + "icon428.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -890,6 +897,15 @@ var main_scene_image = {
     battleEffect8: "res/ccb/battleEffect8.ccbi",
     battleEffect9: "res/ccb/battleEffect9.ccbi",
 
+    exploreEffect1: "res/ccb/exploreEffect1.ccbi",
+    exploreEffect2: "res/ccb/exploreEffect2.ccbi",
+    exploreEffect3: "res/ccb/exploreEffect3.ccbi",
+    exploreEffect4: "res/ccb/exploreEffect4.ccbi",
+    exploreEffect5: "res/ccb/exploreEffect5.ccbi",
+    exploreEffect6: "res/ccb/exploreEffect6.ccbi",
+    exploreEffect7: "res/ccb/exploreEffect7.ccbi",
+    exploreEffect8: "res/ccb/exploreEffect8.ccbi",
+
     uiEffect1: "res/ccb/uiEffect1.ccbi",
     uiEffect2: "res/ccb/uiEffect2.ccbi",
     uiEffect3: "res/ccb/uiEffect3.ccbi",
@@ -993,6 +1009,12 @@ var main_scene_image = {
     uiEffect101: "res/ccb/uiEffect101.ccbi",
     uiEffect102: "res/ccb/uiEffect102.ccbi",
     uiEffect103: "res/ccb/uiEffect103.ccbi",
+    uiEffect104: "res/ccb/uiEffect104.ccbi",
+    uiEffect105: "res/ccb/uiEffect105.ccbi",
+    uiEffect106: "res/ccb/uiEffect106.ccbi",
+    uiEffect107: "res/ccb/uiEffect107.ccbi",
+    uiEffect108: "res/ccb/uiEffect108.ccbi",
+    uiEffect109: "res/ccb/uiEffect109.ccbi",
 
 
     // 特效资源
@@ -1308,7 +1330,8 @@ var main_scene_image = {
     boss2_png: "res/effect/effect/boss2.png",
     boss2_plist: "res/effect/effect/boss2.plist",
     boss3_png: "res/effect/effect/boss3.png",
-    boss3_plist: "res/effect/effect/boss3.plist"
+    boss3_plist: "res/effect/effect/boss3.plist",
+    yy: "res/effect/uiEffect/yy.plist"
 };
 
 var main_scene_res = [

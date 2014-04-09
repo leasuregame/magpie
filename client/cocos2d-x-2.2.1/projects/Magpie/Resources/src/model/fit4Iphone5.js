@@ -69,7 +69,8 @@ var fit4Iphone5 = {
 
     "loginScene": {
         "loginBgLayer": {
-            "bgEffectPoint": cc.p(320, 568)
+            "bgEffectPoint": cc.p(320, 568),
+            "appVersionLabelPoint": cc.p(620, 1116)
         },
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
@@ -293,7 +294,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(210, 510),
             "tipDescriptionLabelPoint": cc.p(60, 470),
             "passiveSkillIconPoint": cc.p(60, 275),
-            "updatePassiveSKillItemPoint": cc.p(210, 275),
+            "updatePassiveSKillItemPoint": cc.p(230, 275),
             "passiveSkillOffsetX": -130,
             "passiveSkillIconPointY": 225,
             "passiveSkillNameLabelPointY": 225,
@@ -715,7 +716,8 @@ var fit4Iphone5 = {
             "privilegeIconPoint": cc.p(330, 280),
             "fragmentTipLayerPoint": cc.p(320, 970),
             "fragmentTipIconPoint": cc.p(425, 970),
-            "tipsLabelPoint": cc.p(493, 335)
+            "tipsLabelPoint": cc.p(493, 340),
+            "helpItemPoint": cc.p(600, 960)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,
@@ -1416,7 +1418,7 @@ var fit4Iphone5 = {
             "speakerIconPoint": cc.p(110, 850),
             "msgEditBoxPoint": cc.p(305, 850),
             "sendItemPoint": cc.p(520, 850),
-            "scrollViewLayerRect": cc.rect(0, 0, 500, 590),
+            "scrollViewLayerRect": cc.rect(70, 205, 500, 590),
             "scrollViewBgLayerSize": cc.size(500, 600),
             "scrollViewBgLayerPoint": cc.p(320, 500),
             "scrollViewSize": cc.size(500, 590),

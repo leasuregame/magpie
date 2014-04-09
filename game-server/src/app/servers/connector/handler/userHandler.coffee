@@ -139,7 +139,7 @@ authParams = (type, msg, app) ->
     AppStore: ['account', 'password', 'areaId']
     TB: ['nickName', 'userId', 'sessionId', 'areaId']
     PP: ['token', 'areaId']
-    YY: ['sid', 'account', 'time', 'appid', 'serverid', 'areaId']
+    YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId']
   
   args  = {}
   for k in keyMap[type]

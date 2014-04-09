@@ -19,7 +19,7 @@ var addSyncEvent = function(syncKey, entity, cb) {
     var fn;
     // 实时更新
     fn = app.get('sync').flush;
-    
+
     // 周期性更新
     // fn = app.get('sync').exec;
     fn.call(app.get('sync'),
@@ -72,13 +72,13 @@ var DaoBase = (function() {
     }
 
     if (this.table == 'player') {
-      if (!data.created){
+      if (!data.created) {
         data.created = utility.dateFormat(new Date(), 'yyyy-MM-dd h:mm:ss')
       }
       if (!data.uniqueId) {
         data.uniqueId = uuid.v1();
       }
-      
+
     }
 
     for (key in data) {
@@ -99,9 +99,7 @@ var DaoBase = (function() {
         }, null);
       }
 
-      var entity = new _this.domain(_.extend({
-        id: res.insertId
-      }, options.data));
+      var entity = new _this.domain(_.extend({}, options.data, {id: res.insertId}));
       if (options.sync) {
         addSyncEvent(_this.syncKey, entity);
       }
@@ -228,8 +226,8 @@ var DaoBase = (function() {
         });
       }
 
-      if (!!res && res.length > 0) {
-        return cb(null, !!res[0].exist);
+      if ( !! res && res.length > 0) {
+        return cb(null, !! res[0].exist);
       } else {
         return cb(null, false);
       }

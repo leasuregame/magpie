@@ -17,6 +17,7 @@ PLATFORM =
   APPSTORE: 'AppStore'
   TONGBU: 'TB'
   PP: 'PP'
+  YY: 'YY'
 
 module.exports = (app) ->
   new Handler(app)
@@ -52,16 +53,23 @@ Handler::login = (msg, session, next) ->
   doLogin(PLATFORM.APPSTORE, @app, msg, session, 'app', next)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin(PLATFORM.TONGBU, @app, msg, session, null, next)
+  doLogin(PLATFORM.TONGBU, @app, msg, session, 'tb', next)
 
 Handler::loginPP = (msg, session, next) ->
   doLogin(PLATFORM.PP, @app, msg, session, 'pp', next)
+
+Handler::loginYY = (msg, session, next) ->
+  doLogin(PLATFORM.YY, @app, msg, session, 'yy', next)
 
 doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
   user = null
   player = null
   uid = null
+
+  if _.isUndefined(areaId) or _.isNull(areaId)
+    return next(null, {code: 501, msg: '请选择一个区登陆'})
+
   async.waterfall [
     (cb) ->
       checkIsOpenServer app, cb
@@ -131,6 +139,7 @@ authParams = (type, msg, app) ->
     AppStore: ['account', 'password', 'areaId']
     TB: ['nickName', 'userId', 'sessionId', 'areaId']
     PP: ['token', 'areaId']
+    YY: ['sid', 'account', 'time', 'appid', 'serverid', 'areaId']
   
   args  = {}
   for k in keyMap[type]
@@ -168,6 +177,9 @@ versionCompare = (stra, strb) ->
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
   vData = getVersionData(app, platform)
+  if not vData
+    return cb({501, msg: "找不到#{platform}的版本信息"})
+
   if versionCompare(version, vData.version) >= 0
     cb()
   else

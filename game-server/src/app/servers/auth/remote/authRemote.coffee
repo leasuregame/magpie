@@ -9,7 +9,9 @@ _string = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
 
 CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
-accountMap = {}
+YY_APP_KEY = 'OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf'
+YY_APP_ID = 'IYYDS'
+
 sessionIdMap = new Cache()
 tokenMap = new Cache()
 
@@ -145,6 +147,23 @@ class Authorize
         return cb(err)
       cb(null, user?.toJson())
 
+  @YY: (args, cb) ->
+    console.log args
+    if args.sid is md5("#{YY_APP_KEY}#{args.appkey}#{args.appid}#{args.account}#{args.time}").toUpperCase()
+      
+      fetchUserInfoOrCreate args.account, null, (err, user) ->
+        if err
+          return cb(err)
+
+        checkDuplicatedLogin args.areaId, args.frontendId, user, args.sid, (err, user) ->
+          cb(err, user?.toJson())
+    else
+      cb({code: 501, msg: '登陆失败，请重新登陆'})
+
+md5 = (text) ->
+  hash = require('crypto').createHash('md5')
+  hash.update(text).digest('hex')
+
 parseBody = (body) ->
   result = {}
   body.split(',').forEach (i) ->
@@ -169,17 +188,16 @@ ppErrorMessage = (result) ->
 
 
 fetchUserInfoOrCreate = (account, id, done) ->
+  userData = account: account
+  userData.id = id if id
   dao.user.fetchOne {
-    where: id: id, account: account
+    where: userData
     sync: true
   }, (err, user) ->
     if err and err.code is 404
-      dao.user.create {
-        data: {
-          id: id,
-          account: account
-        }
-      }, (e, u) ->
+      dao.user.create
+        data: userData
+      , (e, u) ->
         if e and not u
           logger.error('can not create user: ', id, account)
           done({code: 501, msg: '登录失败，请重新登录'})

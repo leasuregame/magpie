@@ -1,9 +1,15 @@
 http = require 'http'
+querystring = require "querystring"
 url = require 'url'
 util = require 'util'
+fs = require 'fs'
+path = require 'path'
+ursa = require 'ursa'
 logger = require('pomelo-logger').getLogger(__filename)
 
 APPKEY = 'o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo'
+
+PUBLIC_KEY = fs.readFileSync(path.join(__dirname, '..', '..', 'config', 'pp.pub'))
 
 module.exports = (app, opts) ->
   return new Component(app, opts)
@@ -17,8 +23,11 @@ class Component
     server = @app.getCurServer()
     http.createServer (req, res) =>
       pathname = url.parse(req.url).pathname
+      console.log pathname, req.method, req
       if pathname is '/orderResult'
         checkOrderResult(@app, req, res)
+      else if pathname is '/orderResult/PP'
+        processPPOrderResult(@app, req, res)
       else 
         res.writeHead(404, 'Not Found')
         res.end()
@@ -31,6 +40,68 @@ class Component
   stop: (force, cb) ->
     process.nextTick cb
 
+processPPOrderResult = (app, req, res) ->
+  processPost req, res, (data) ->
+    sign = new Buffer(data.sign, 'base64')    
+    key = ursa.createPublicKey(PUBLIC_KEY)
+    base64Sign = key.publicDecrypt(sign, 'base64', 'utf8')
+    jData = JSON.parse base64Sign
+    console.log 'jData=', jData
+    ### order_id, billno, account, amount, status, app_id, uuid, roleid, zone, sign ###
+    if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount and data.status is jData.status
+      if jData.status is '0'
+        areaId = jData.zone
+        playerId = jData.roleid
+
+        remoteData = 
+          playerId: playerId
+          areaId: areaId
+          tradeNo: jData.billno
+          tborderNo: jData.order_id
+          partner: 'PP'
+          amount: jData.amount
+
+        session = 
+          get: (k) -> return areaId if k is 'areaId'
+
+        app.rpc.area.orderRemote.add session, remoteData, 'PP', (err, orderRes) ->
+          console.log '-a-', err, orderRes
+          if err or not orderRes.ok
+            res.write('fail')
+            res.end()
+          else
+            res.write("success")
+            res.end()
+      else 
+        res.write("success")
+        res.end()
+    else
+      res.write('fail')
+      res.end()
+
+processPost = (request, response, callback) ->
+  queryData = ""
+  return null  if typeof callback isnt "function"
+  if request.method is "POST"
+    request.on "data", (data) ->
+      queryData += data
+      if queryData.length > 1e6
+        queryData = ""
+        response.writeHead(413,
+          "Content-Type": "text/plain"
+        ).end()
+        request.connection.destroy()
+      return
+
+    request.on "end", ->
+      callback(querystring.parse(queryData))
+      return
+  else
+    response.writeHead 405,
+      "Content-Type": "text/plain"
+
+    response.end()
+  return
 
 checkOrderResult = (app, req, res) ->
   params = url.parse(req.url, true).query
@@ -69,7 +140,7 @@ checkOrderResult = (app, req, res) ->
       paydes: paydes
       productId: productId
       tborderNo: tborder
-    }, (err, orderRes) ->
+    }, 'TB', (err, orderRes) ->
       if err or not orderRes.ok
         logger.error('add tb order faild: ', err, orderRes)
         res.write(JSON.stringify({status: 'error'}))

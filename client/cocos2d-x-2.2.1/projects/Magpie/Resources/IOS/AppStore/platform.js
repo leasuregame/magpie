@@ -4,20 +4,21 @@
 
 
 /*
- * app platform
+ * AppStore platform
  * */
 
 
 var lz = lz || {};
 
 lz.platformConfig = {
+    OS: "IOS",
     PLATFORM: "AppStore",
     VERSION: "1.4.0",
-    GATE_SERVER_HOST: "124.238.236.33",
+    GATE_SERVER_HOST: "115.29.243.80",
     GATE_SERVER_PORT: "3009",
-    UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",
-    UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/app/version",
-    GAME_NOTICE_URL: "http://124.238.236.33:9090/api/app/notice",
+    UPDATE_PACKAGE_URL: "http://115.29.243.80:9090/api/app/update/",
+    UPDATE_VERSION_URL: "http://115.29.243.80:9090/api/app/version",
+    GAME_NOTICE_URL: "http://115.29.243.80:9090/api/app/notice",
     UM_APP_KEY: "5314371056240be15b216fc1"
 };
 

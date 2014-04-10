@@ -389,8 +389,8 @@ var ConfigLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBLogout) {
-            tbAdapter.TBLogout(0);
+        if (lz.platformLogout) {
+            lz.platformLogout();
         }
 
         MainScene.destroy();

@@ -123,9 +123,9 @@
             'src/view/loginModule/loginBgLayer.js',
             // 'TB/loginLayer.js',
             'IOS/AppStore/loginLayer.js',
-            'src/view/loginModule/newPlayerLayer.js',
+            'IOS/YY/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
-            'src/view/loginModule/selectAreaLayer.js',
+            'IOS/YY/selectAreaLayer.js',
 
             'src/view/startAnimationModule/startAnimationLayer.js',
             'src/view/startAnimationModule/startAnimationScene.js',

@@ -104,9 +104,10 @@ checkAmountIsCorrect = (amount, cash, platform) ->
 
 
 updateArgs = (args, platform, order) ->
-  if platform is 'PP' and order.paydes
-    [productId] = order.billno.split('-')
+  if platform is 'PP'
+    [productId, areaId] = order.billno.split('-')
     args.productId = parseInt productId
+    args.areaId = parseInt areaId
 
 addGoldCard = (app, tradeNo, player, product, cb) ->
   return cb() if not isGoldCard(product)

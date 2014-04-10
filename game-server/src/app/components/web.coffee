@@ -60,6 +60,7 @@ processPPOrderResult = (app, req, res) ->
           tborderNo: jData.order_id
           partner: 'PP'
           amount: jData.amount
+          productId: productId
 
         session = 
           get: (k) -> return areaId if k is 'areaId'

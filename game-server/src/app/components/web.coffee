@@ -46,10 +46,10 @@ processPPOrderResult = (app, req, res) ->
     key = ursa.createPublicKey(PUBLIC_KEY)
     base64Sign = key.publicDecrypt(sign, 'base64', 'utf8')
     jData = JSON.parse base64Sign
-    console.log 'jData=', jData
+    console.log 'jData=', jData, data, data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
     ### order_id, billno, account, amount, status, app_id, uuid, roleid, zone, sign ###
-    if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount and data.status is jData.status
-      if jData.status is '0'
+    if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
+      if parseInt(jData.status) is 0
         [productId, areaId] = jData.billno.split('-')
         playerId = jData.roleid
 
@@ -64,6 +64,7 @@ processPPOrderResult = (app, req, res) ->
         session = 
           get: (k) -> return areaId if k is 'areaId'
 
+        console.log '-remote-', remoteData
         app.rpc.area.orderRemote.add session, remoteData, 'PP', (err, orderRes) ->
           console.log '-a-', err, orderRes
           if err or not orderRes.ok

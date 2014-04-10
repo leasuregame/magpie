@@ -101,6 +101,7 @@ processPost = (request, response, callback) ->
       "Content-Type": "text/plain"
 
     response.end()
+    callback()
   return
 
 checkOrderResult = (app, req, res) ->

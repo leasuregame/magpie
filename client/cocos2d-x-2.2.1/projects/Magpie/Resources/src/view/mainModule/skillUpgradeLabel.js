@@ -301,7 +301,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _extract: function () {
         cc.log("CardTrainLabel _extract");
 
-        if(this._extractEffect != null) {
+        if (this._extractEffect != null) {
             this._extractEffect.removeFromParent();
             this._extractEffect = null;
         }
@@ -478,14 +478,14 @@ var SkillUpgradeLabel = cc.Node.extend({
         var that = this;
         this._dummyCard = lz.clone(that._leadCard);
 
-        var cb = function() {
+        var cb = function () {
             that._leadCard.extract(function () {
                 that._extract();
             }, EXTRACT_SKILL_POINT);
         };
 
         ExtractTipLabel.pop({
-            cb:cb,
+            cb: cb,
             type: EXTRACT_SKILL_POINT,
             num: this._leadCard.get("skillPoint")
         });
@@ -510,4 +510,17 @@ SkillUpgradeLabel.create = function () {
     }
 
     return null;
+};
+
+SkillUpgradeLabel.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("技能升级" + limitLv + "级开放");
+
+    return false;
 };

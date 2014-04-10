@@ -1,8 +1,7 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
-cardConfig = require '../../config/data/card'
-playerConfig = require '../../config/data/player'
+configData = require '../../config/data'
 utility = require '../common/utility'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
@@ -80,8 +79,8 @@ module.exports =
     ###
       点亮7张卡牌后，概率随机到新卡和旧卡
     ###
-    if lightUpIds.length > cardConfig.LUCKY_CARD_LIMIT.COUNT
-      if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
+    if lightUpIds.length > configData.card.LUCKY_CARD_LIMIT.COUNT
+      if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
         #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
@@ -166,7 +165,7 @@ genSkillInc = (card) ->
     logger.warn('can not find skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
-  fl = playerConfig.FRIENDCOUNT_LIMIT
+  fl = configData.player.FRIENDCOUNT_LIMIT
   keys = Object.keys(fl).reverse()
 
   for lv in keys
@@ -179,11 +178,11 @@ initPassiveSkill = (star) ->
   count = star - 2
   results = []
   for i in [0...count]
-    index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1)
-    [start, end] = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-')
+    index = _.random(configData.card.PASSIVESKILL.TYPE.length-1)
+    [start, end] = configData.card.PASSIVESKILL.VALUE_SCOPE.split('-')
     results.push(
       id:i,
-      name: cardConfig.PASSIVESKILL.TYPE[index],
+      name: configData.card.PASSIVESKILL.TYPE[index],
       value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
     )
   results

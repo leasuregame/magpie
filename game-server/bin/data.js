@@ -129,7 +129,7 @@ Data.prototype.correctCardTableId = function() {
 
   cardDao.totalCount(function(err, count) {
     console.log(err, count);
-    pageNum = 2
+    pageNum = 1000
     pages = Math.ceil(count / pageNum);
 
     fCount = 0

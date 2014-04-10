@@ -5,7 +5,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 battleLog = require './battle_log'
 
 class VirtualPlayer extends Player
-  init: (data) ->
+  init: (data, options) ->
     @data = data
     cards = parseCards data
 
@@ -16,34 +16,14 @@ class VirtualPlayer extends Player
     else
       lineUp = defaultLineUp cards
       
-    super(
+    super({
       cards: cards
       lineUp: lineUp
-    )
+    }, options)
     @is_monster = true
 
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
-
-  # bindCards: ->
-  #   _hero = (id) =>
-  #     for h in @heros
-  #       return if h.id is parseInt(id) then h
-  #     null
-    
-  #   if @lineUp? and @lineUp != ''
-  #     @parseLineUp().forEach (item) =>
-  #       [pos, id] = item 
-  #       _h = _hero(id)      
-
-  #       if _h
-  #         @matrix.set(pos, _h)
-  #       else
-  #         logger.info 'you have not such card with id is ' + id
-  #   else
-  #     logger.warn 'there is not line up for player ' + @name
-    
-  #   @matrix.reset()
 
   setCards: ->
     cobj = {}

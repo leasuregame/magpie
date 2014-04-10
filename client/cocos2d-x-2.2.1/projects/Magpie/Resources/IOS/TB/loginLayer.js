@@ -121,7 +121,7 @@ var LoginLayer = cc.Layer.extend({
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-        if (tbAdapter && tbAdapter.TBIsLogined()) {
+        if (lz.platformIsLogin && lz.platformIsLogin()) {
             str = tbAdapter.TBNickName();
         }
 

@@ -1,9 +1,14 @@
 extends adminLayout
 
 block content
-    div(class='panel panel-default')
+  
+
+  div(class='panel panel-default')
+     
+    - each v, k in version
+    
       div(class='panel-heading')
-        strong App Store 版本
+        strong #{k} 平台版本
         span(class='pull-right')
           a(href='http://www.ksyun.com/product/ks3' target='blank') 金山云存储
       div(class='panel-body')
@@ -13,60 +18,26 @@ block content
             div(class='form-group')
               lable(for='app_version', class='col-sm-2 control-label') 当前版本
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_version', value='#{version.app.version}')
+                input(type='text', class='form-control', name='app_version', value='#{v.version}')
               lable(for='app_lastVersion', class='col-sm-2 control-label') 上一版本
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_lastVersion', value='#{version.app.lastVersion}')
+                input(type='text', class='form-control', name='app_lastVersion', value='#{v.lastVersion}')
             div(class='form-group')
               lable(for='app_oldestVersion', class='col-sm-2 control-label') 最老版本
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_oldestVersion', value='#{version.app.oldestVersion}')
+                input(type='text', class='form-control', name='app_oldestVersion', value='#{v.oldestVersion}')
             hr
             div(class='form-group')
               lable(for='app_filename', class='col-sm-2 control-label') 部分更新包
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_filename', value='#{version.app.filename}' required)
+                input(type='text', class='form-control', name='app_filename', value='#{v.filename}' required)
               lable(for='app_lastFilename', class='col-sm-2 control-label') 全部更新包
               div(class='col-sm-4')
-                input(type='text', class='form-control', name='app_lastFilename', value='#{version.app.lastFilename}')
+                input(type='text', class='form-control', name='app_lastFilename', value='#{v.lastFilename}')
             div(class='form-group')
               div(class='col-sm-offset-2 col-sm-2')
                 button(type='submit', class='btn btn-default btn-block btn-lg') 更新
 
         div(class='col-md-3')
-          a(class='btn btn-primary btn-block', href='/api/app/update/1.0.0') Download #{version.app.filename}
-          a(class='btn btn-primary btn-block', href='/api/app/update/#{version.app.lastVersion}') Download #{version.app.lastFilename}
-
-      div(class='panel-heading')
-        strong 同步推版本
-      div(class='panel-body')
-        div(class='col-md-9')
-
-          form(class='form-horizontal', role='form',  action="/admin/version", method='POST')
-            div(class='form-group')
-              lable(for='tb_version', class='col-sm-2 control-label') 当前版本
-              div(class='col-sm-4')
-                input(type='text', class='form-control', name='tb_version', value='#{version.tb.version}')
-              lable(for='tb_lastVersion', class='col-sm-2 control-label') 上一版本
-              div(class='col-sm-4')
-                input(type='text', class='form-control', name='tb_lastVersion', value='#{version.tb.lastVersion}')
-            div(class='form-group')
-              lable(for='tb_oldestVersion', class='col-sm-2 control-label') 最老版本
-              div(class='col-sm-4')
-                input(type='text', class='form-control', name='tb_oldestVersion', value='#{version.tb.oldestVersion}')
-            hr
-            div(class='form-group')
-              lable(for='tb_filename', class='col-sm-2 control-label') 部分更新包
-              div(class='col-sm-4')
-                input(type='text', class='form-control', name='tb_filename', value='#{version.tb.filename}')
-              lable(for='tb_lastFilename', class='col-sm-2 control-label') 全部更新包
-              div(class='col-sm-4')
-                input(type='text', class='form-control', name='tb_lastFilename', value='#{version.tb.lastFilename}')
-
-            div(class='form-group')
-              div(class='col-sm-offset-2 col-sm-2')
-                button(type='submit', class='btn btn-default btn-block btn-lg') 更新
-
-        div(class='col-md-3')
-          a(class='btn btn-primary btn-block', href='/api/tb/update/1.0.0') Download #{version.tb.filename}
-          a(class='btn btn-primary btn-block', href='/api/tb/update/#{version.tb.lastVersion}') Download #{version.tb.lastFilename}
+          a(class='btn btn-primary btn-block', href='/api/#{k}/update/1.0.0') Download #{v.filename}
+          a(class='btn btn-primary btn-block', href='/api/#{k}/update/#{v.lastVersion}') Download #{v.lastFilename}

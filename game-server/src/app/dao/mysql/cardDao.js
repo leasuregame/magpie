@@ -78,7 +78,7 @@ var CardDao = (function(_super) {
 	};
 
 	CardDao.createExpCard = function(options, cb) {
-		var exp_card_id = require('../../../config/data/card').EXP_CARD_ID;
+		var exp_card_id = require('../../../config/data').card.EXP_CARD_ID;
 
 		return CardDao.create({data: {
 			playerId: options.data.playerId,

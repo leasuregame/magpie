@@ -34,7 +34,7 @@ Manager = module.exports =
       challenger.increase('startCount')
       defender.increase('challengeCount')
       
-      rewards = {ranking_elixir: 0}
+      rewards = {ranking_elixir: 0, elixir: 0}
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
       upgradeInfo = null
       level9Box = null

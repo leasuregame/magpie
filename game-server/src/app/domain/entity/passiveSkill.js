@@ -1,4 +1,4 @@
-var psConfig = require('../../../config/data/passSkill');
+var configData = require('../../../config/data');
 var utility = require('../../common/utility');
 var _ = require('underscore');
 
@@ -53,9 +53,9 @@ PassiveSkillGroup.prototype.create = function(star) {
 };
 
 PassiveSkillGroup.prototype.born = function(id) {
-  var br = psConfig.BORN_RATES;
+  var br = configData.passSkill.BORN_RATES;
   var name = utility.randomValue(_.keys(br), _.values(br));
-  var value = _.random(100, psConfig.INIT_MAX * 100);
+  var value = _.random(100, configData.passSkill.INIT_MAX * 100);
 
   this.items.push({
     id: id,
@@ -67,9 +67,9 @@ PassiveSkillGroup.prototype.born = function(id) {
 PassiveSkillGroup.prototype.afrash = function(type, star, ps, lock) {
   if (!ps || _.isUndefined(lock) || lock == LOCK.BOTH) return;
 
-  var born_rates = psConfig.BORN_RATES;
+  var born_rates = configData.passSkill.BORN_RATES;
   var star = star >= 5 ? star : 5;
-  var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
+  var value_obj = configData.passSkill.AFRESH.TYPE[type].STAR[star];
 
   var name = ps.name, value = ps.value;
   if (lock != LOCK.NAME) {

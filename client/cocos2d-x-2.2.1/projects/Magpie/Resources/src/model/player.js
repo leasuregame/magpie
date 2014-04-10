@@ -28,42 +28,42 @@ var GOT_FIRST_RECHARGER_BOX = 2;
 var POWER_NOTIFICATION_KEY = 1;
 
 var Player = Entity.extend({
-    _id: 0,             // 数据库id
-    _uid: "",           // 玩家唯一标识
-    _createTime: 0,     // 创建时间
-    _userId: 0,         // 帐号id
-    _areaId: 0,         // 区
-    _name: "",          // 角色
-    _power: 0,          // 体力
-    _powerTimestamp: 0, // 体力时间戳
-    _lv: 0,             // 等级
-    _exp: 0,            // 经验
-    _gold: 0,           // 魔石
-    _money: 0,          // 金钱
-    _elixir: 0,         // 仙丹
-    _fragment: 0,       // 卡魂
-    _energy: 0,         // 活力
-    _skillPoint: 0,     // 技能点
-    _vip: 0,            // VIP等级
-    _cash: 0,           // 付费
-    _goldCards: {},     // 周卡月卡
-    _recharge: 0,       // 充值记录标记
+    _id: 0,                 // 数据库id
+    _uid: "",               // 玩家唯一标识
+    _createTime: 0,         // 创建时间
+    _userId: 0,             // 帐号id
+    _areaId: 0,             // 区
+    _name: "",              // 角色
+    _power: 0,              // 体力
+    _powerTimestamp: 0,     // 体力时间戳
+    _lv: 0,                 // 等级
+    _exp: 0,                // 经验
+    _gold: 0,               // 魔石
+    _money: 0,              // 金钱
+    _elixir: 0,             // 仙丹
+    _fragment: 0,           // 卡魂
+    _energy: 0,             // 活力
+    _skillPoint: 0,         // 技能点
+    _vip: 0,                // VIP等级
+    _cash: 0,               // 付费
+    _goldCards: {},         // 周卡月卡
+    _recharge: 0,           // 充值记录标记
     _firstRechargeBox: 0,   // 首充礼包标记
-    _evolutionRate: {}, // 星级进阶概率
+    _evolutionRate: null,   // 星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
-    _ability: 0,        // 战斗力
-    _speaker: 0,        // 喇叭数量
+    _ability: 0,            // 战斗力
+    _speaker: 0,            // 喇叭数量
 
-    _maxLv: 0,          // 最大等级
-    _maxPower: 0,       // 最大体力
-    _maxMoney: 0,       // 最大金钱
-    _maxSkillPoint: 0,  // 最大技能点
-    _maxEnergy: 0,      // 最大活力
-    _maxExp: 0,         // 最大经验
+    _maxLv: 0,              // 最大等级
+    _maxPower: 0,           // 最大体力
+    _maxMoney: 0,           // 最大金钱
+    _maxSkillPoint: 0,      // 最大技能点
+    _maxEnergy: 0,          // 最大活力
+    _maxExp: 0,             // 最大经验
 
-    _honor: 0,          // 荣誉
-    _superHonor: 0,     // 精元
+    _honor: 0,              // 荣誉
+    _superHonor: 0,         // 精元
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
@@ -72,7 +72,6 @@ var Player = Entity.extend({
 
         this.unscheduleAllCallbacks();
 
-        MAX_LINE_UP_CARD = 3;
         this._evolutionRate = {};
 
         this.off();
@@ -177,7 +176,11 @@ var Player = Entity.extend({
             challengeBuyCount: data.dailyGift.challengeBuyCount,
             expCardBuyCount: data.dailyGift.expCardCount
         });
-        gameData.lottery.init(data.firstTime);
+        gameData.lottery.init({
+            firstTime: data.firstTime,
+            goldLuckyCard10: data.dailyGift.goldLuckyCard10,
+            goldLuckyCardForFragment: data.dailyGift.goldLuckyCardForFragment
+        });
         gameData.exchange.init(data.exchangeCards);
         gameData.boss.init(data.bossInfo);
 
@@ -247,12 +250,12 @@ var Player = Entity.extend({
         var len = lineUpCardList.length;
         var ability = 0;
         var card = null;
-        var spiritPassiveHarm = gameData.spirit.get("passiveHarm") / 100;
+        var spiritPassiveHarm = gameData.spirit.get("passiveHarm");
 
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm) + parseInt(card.get("initAtk") * spiritPassiveHarm);
+            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
         }
 
         return ability;
@@ -294,7 +297,9 @@ var Player = Entity.extend({
             }
         }
 
-        this.set("power", power);
+        if (this._power != power) {
+            this.set("power", power);
+        }
     },
 
     correctionPower: function (power, powerTimestamp) {
@@ -323,19 +328,7 @@ var Player = Entity.extend({
         cc.log("Player _lvChangeEvent");
 
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
-
-        var table = outputTables.function_limit.rows[1];
-
-        MAX_LINE_UP_CARD = 2;
-
-        if (this._lv >= table.card5_position) {
-            MAX_LINE_UP_CARD = 5;
-        } else if (this._lv >= table.card4_position) {
-            MAX_LINE_UP_CARD = 4;
-        } else if (this._lv >= table.card3_position) {
-            MAX_LINE_UP_CARD = 3;
-        }
-
+        gameData.lineUp.update();
         gameMark.updateGoldRewardMark(false);
     },
 
@@ -409,7 +402,7 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
 
@@ -470,6 +463,8 @@ var Player = Entity.extend({
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
                     } else {
                         that.add(key, msg[key]);
                     }
@@ -608,9 +603,11 @@ var Player = Entity.extend({
         cc.log("Player getEvolutionRate: " + star);
 
         var rate = this._evolutionRate;
+
         if (rate) {
             return rate["star" + star] || 0;
         }
+
         return 0;
     }
 });

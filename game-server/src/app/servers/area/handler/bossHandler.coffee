@@ -8,8 +8,7 @@ utility = require('../../../common/utility')
 entityUtil = require('../../../util/entityUtil')
 table = require '../../../manager/table'
 job = require '../../../dao/job'
-BOSSCONFIG = require('../../../../config/data/bossStatus')
-BOSS_STATUS = BOSSCONFIG.STATUS
+configData = require '../../../../config/data'
 logger = require('pomelo-logger').getLogger(__filename)
 
 module.exports = (app) ->
@@ -199,10 +198,10 @@ Handler::convertHonor = (msg, session, next) ->
     if err
       return next(null, {code: 501, msg: err.message or err.msg})
 
-    if player.honor < number * BOSSCONFIG.HONOR_TO_SUPER
+    if player.honor < number * configData.bossStatus.HONOR_TO_SUPER
       return next(null, {code: 501, msg: '荣誉点不足'})
 
-    player.decrease 'honor', number * BOSSCONFIG.HONOR_TO_SUPER
+    player.decrease 'honor', number * configData.bossStatus.HONOR_TO_SUPER
     player.increase 'superHonor', number
     player.save()
 
@@ -267,8 +266,8 @@ Handler::kneel = (msg, session, next) ->
         cb({code: 501, msg: '玩家没有上榜，不能膜拜'})
       cb(null)
     (cb) ->
-      player.increase 'energy', BOSSCONFIG.KNEEL_REWARD.ENERGY
-      player.addPower BOSSCONFIG.KNEEL_REWARD.POWER
+      player.increase 'energy', configData.bossStatus.KNEEL_REWARD.ENERGY
+      player.addPower configData.bossStatus.KNEEL_REWARD.POWER
       player.updateGift 'kneelCountLeft', player.dailyGift.kneelCountLeft-1
       player.addKneel targetId
       player.save()
@@ -282,8 +281,8 @@ Handler::kneel = (msg, session, next) ->
     next(null, {
       code: 200,
       msg: 
-        power: BOSSCONFIG.KNEEL_REWARD.POWER
-        energy: BOSSCONFIG.KNEEL_REWARD.ENERGY
+        power: configData.bossStatus.KNEEL_REWARD.POWER
+        energy: configData.bossStatus.KNEEL_REWARD.ENERGY
     })
 
 Handler::bossList = (msg, session, next) ->
@@ -305,7 +304,6 @@ Handler::bossList = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
-    console.log 'boss count: ', results.length
     next(null, {
       code: 200,
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
@@ -347,18 +345,18 @@ Handler::attack = (msg, session, next) ->
       if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() or boss.isDeath()
         return cb({code: 501, msg: 'Boss已结束'})
 
-      if boss.playerId isnt playerId and boss.status is BOSS_STATUS.SLEEP
+      if boss.playerId isnt playerId and boss.status is configData.bossStatus.STATUS.SLEEP
         return cb({code: 501, msg: 'Boss未苏醒'})
       cb()
     (cb) ->
       if inspireCount > 5
         inspireCount = 5
 
-      gold_resume = BOSSCONFIG.INSPIRE_GOLD * inspireCount
+      gold_resume = configData.bossStatus.INSPIRE_GOLD * inspireCount
       if player.gold < gold_resume
         return cb({code: 501, msg: '魔石不足'})
 
-      incRate = _.min [inspireCount * BOSSCONFIG.INSPIRE_PER_CARD, BOSSCONFIG.INSPIRE_MAX]
+      incRate = _.min [inspireCount * configData.bossStatus.INSPIRE_PER_CARD, configData.bossStatus.INSPIRE_MAX]
       fightManager.attackBoss player, boss, incRate, cb
     (bl ,cb) ->
       totalDamage = countDamage(bl)
@@ -399,14 +397,14 @@ countDamageRewards = (rank) ->
     honor: row.honor
     energy: row.energy
   else 
-    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or BOSSCONFIG.REWARD_COUNT.BASE_VALUE
+    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
     gap = table.getTableItem('values', 'damageOfRankHonorGap')?.value or 0
-    honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/BOSSCONFIG.REWARD_COUNT.DURACTION)*BOSSCONFIG.REWARD_COUNT.FACTOR)
-    honor = BOSSCONFIG.REWARD_COUNT.MIN if honor < BOSSCONFIG.REWARD_COUNT.MIN
+    honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
+    honor = configData.bossStatus.REWARD_COUNT.MIN if honor < configData.bossStatus.REWARD_COUNT.MIN
     honor: honor
 
 checkBossStatus = (items, cb) ->
-  timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
+  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
   ids = timeOutItems.map (i) -> i.id
 
   if ids.length is 0
@@ -414,12 +412,12 @@ checkBossStatus = (items, cb) ->
 
   dao.boss.update {
     where: ' id in ('+ids.toString()+') '
-    data: status: BOSS_STATUS.TIMEOUT
+    data: status: configData.bossStatus.STATUS.TIMEOUT
   }, (err, res) ->
     if err
       cb(err)
     else
-      timeOutItems.forEach (i) -> i.status = BOSS_STATUS.TIMEOUT
+      timeOutItems.forEach (i) -> i.status = configData.bossStatus.STATUS.TIMEOUT
       cb(null, items)
 
 countDamage = (bl) ->
@@ -440,16 +438,16 @@ countRewards = (totalDamage, boss, bl, player) ->
   bossInfo = table.getTableItem('boss', boss.tableId)
   rewardsInc = table.getTableItem('boss_type_rate', bossInfo.type)?.reward_inc or 0
 
-  money = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_MONEY.DAMAGE*BOSSCONFIG.DAMAGE_TO_MONEY.MONEY*(100+rewardsInc)/100
-  honor = Math.ceil totalDamage/BOSSCONFIG.DAMAGE_TO_HONOR.DAMAGE*BOSSCONFIG.DAMAGE_TO_HONOR.HONOR*(100+rewardsInc)/100
+  money = Math.ceil totalDamage/configData.bossStatus.DAMAGE_TO_MONEY.DAMAGE*configData.bossStatus.DAMAGE_TO_MONEY.MONEY*(100+rewardsInc)/100
+  honor = Math.ceil totalDamage/configData.bossStatus.DAMAGE_TO_HONOR.DAMAGE*configData.bossStatus.DAMAGE_TO_HONOR.HONOR*(100+rewardsInc)/100
   bl.rewards = 
     money: money
     honor: honor
 
   if boss.playerId isnt player.id
     bl.rewards.friend = 
-      money: Math.ceil(money*BOSSCONFIG.FRIEND_REWARD_PERCENT)
-      honor: Math.ceil(honor*BOSSCONFIG.FRIEND_REWARD_PERCENT)
+      money: Math.ceil(money*configData.bossStatus.FRIEND_REWARD_PERCENT)
+      honor: Math.ceil(honor*configData.bossStatus.FRIEND_REWARD_PERCENT)
 
 noticeFriendrewards = (player, boss, rewards) ->
   return if player.id is boss.playerId
@@ -477,21 +475,23 @@ sendMessage = (playerId, rewards) ->
 
 updateBossAndPlayer = (boss, bl, player, gold_resume) ->
   if boss.atkCount is 0
-    boss.set('status', BOSS_STATUS.AWAKE)
+    boss.set('status', configData.bossStatus.STATUS.AWAKE)
   boss.increase('atkCount')
 
   # update hp info
-  for k, v of bl.cards
-    c = boss.hp[k-6]
-    if k > 6 and c? and c.cardId is v.tableId
-      boss.updateHp(k-6, v.hpLeft)
+  for cards in bl.cards
+    do (cards) ->
+      _.each cards, (v, k) ->
+        c = boss.hp[k-6]
+        if k > 6 and c? and c.cardId is v.tableId
+          boss.updateHp(k-6, v.hpLeft)
 
   # update status and death time
   maxCount = table.getTableItem('boss', boss.tableId)?.atk_count or 10
   
   isWin = bl.winner is 'own'
   if isWin or boss.atkCount is maxCount
-    boss.set('status', if isWin then BOSS_STATUS.DEATH else BOSS_STATUS.RUNAWAY)
+    boss.set('status', if isWin then configData.bossStatus.STATUS.DEATH else configData.bossStatus.STATUS.RUNAWAY)
     boss.set('deathTime', new Date().getTime())
     boss.set('killer', player.name)
     # 奖励翻倍

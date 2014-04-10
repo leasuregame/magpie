@@ -192,7 +192,7 @@ var PropsLayer = cc.Layer.extend({
         var player = gameData.player;
 
         this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
     },
 
     _onClickPayment: function () {

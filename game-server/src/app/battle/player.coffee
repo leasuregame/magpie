@@ -13,7 +13,7 @@ copyAttrs = (self, ent) ->
   self.name = ent.name
   self.lv = ent.lv
   self.exp = ent.exp
-  self.lineUp = _.clone(ent.lineUp)
+  self.lineUp = filterEmptyLinuUp _.clone(ent.lineUp)
   self.spiritor = if ent.spiritor? then new Spiritor(ent.spiritor) else null
   self.cards = ent.activeCards?() or ent.cards
 
@@ -22,6 +22,15 @@ copyAttrs = (self, ent) ->
   _.each _refs, (v, k) -> 
     if v is -1 
       self.spiritorIdx = parseInt(k)
+
+filterEmptyLinuUp = (lineUp) ->
+  return lineUp if lineUp.length is 1
+
+  l = lineUp[0]
+  if _.isObject(l) and _.keys(l).length is 1 and _.values(l).indexOf(-1) > -1
+    lineUp.splice 0, 1
+    return lineUp
+  return lineUp
 
 defaultEntity = 
   id: 0
@@ -35,6 +44,7 @@ defaultEntity =
 DEFAULT_OPTIONS = 
   inc_scale: 0
   is_attacker: false
+  is_boss: false
 
 class Player extends Module
   init: (entity, options = {}) ->
@@ -47,6 +57,7 @@ class Player extends Module
     @matrix = new Matrix()
     @dead = false
     @is_monster = false
+    @used_empty_lineUp = false
     @cards_for_bl = {}
     
     @loadHeros()
@@ -88,7 +99,8 @@ class Player extends Module
   bindCards: ->
     if @lineUp and not _.isEmpty(@lineUp)
       lu = @lineUp.shift()
-      if _.keys(lu).length is 1
+      
+      if _.keys(lu).length is 1 and @used_empty_lineUp
         return
 
       @matrix.clear()
@@ -107,6 +119,9 @@ class Player extends Module
       @matrix.reset()
       @correctIdx(@is_attacker)
       @setCards()
+
+      if _.keys(lu).length is 1
+        @used_empty_lineUp = true
     else
       logger.warn 'there is not line up for player ' + @name
 

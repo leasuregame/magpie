@@ -124,8 +124,9 @@ class Authorize
             logger.error(err)
             return done({code: 501, msg: '登陆失败，请重新登陆'})
 
+          console.log(err, body)
           result = parseBody body
-          if result.status is 0
+          if parseInt(result.status) is 0
             tokenMap.put token, result, 1000 * 60 * 60
             done(null, result)
           else
@@ -167,7 +168,7 @@ parseBody = (body) ->
   result = {}
   body.split(',').forEach (i) ->
     [k, v] = i.split(':')
-    result[_string.trim(k, '"')] = parseInt v
+    result[_string.trim(k, '"')] = _.string.trim(v, '"')
   result
 
 ppErrorMessage = (result) ->

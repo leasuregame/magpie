@@ -70,14 +70,14 @@ var mergeXmlFile = function(files, dir, cb) {
   });
 };
 
-var outputFiles = [
-  '../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json'
-  //'../../gm/config/table/table.json'
-];
+var outputFiles = {
+  default: ['../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json'],
+  YY: ['../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/IOS/YY/table.json']
+};
 
-for (var i = outputFiles.length - 1; i >= 0; i--) {
-  outputFiles[i] = path.resolve(__dirname, outputFiles[i]);
-  tryMkdir(outputFiles[i]);
+for (var k in outputFiles) {
+  outputFiles[k] = path.resolve(__dirname, outputFiles[k]);
+  tryMkdir(outputFiles[k]);
 };
 
 console.log('start write to ', outputFiles);
@@ -99,7 +99,11 @@ walk(DATA_DIR, function(err, files) {
     });
     var tabledata = loadtable.apply(loadtable, files);
 
-    outputFiles.forEach(function(filepath) {
+    var ofiles = outputFiles[platform];
+    if (!ofiles) {
+      ofiles = outputFiles['default'];
+    }
+    ofiles.forEach(function(filepath) {
       fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
     });
 

@@ -67,3 +67,7 @@ lz.platformConfig = {
 
     lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
+
+
+var ND_VERSION_CHECK_LEVEL_STRICT = 0;
+var ND_VERSION_CHECK_LEVEL_NORMAL = 1;

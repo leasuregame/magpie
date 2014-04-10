@@ -14,7 +14,7 @@ var tryMkdir = function(file) {
     } catch (e) {};
     tryPath += '/';
   };
-}
+};
 
 var walk = function(dir, done) {
   var results = [];
@@ -39,6 +39,37 @@ var walk = function(dir, done) {
   });
 };
 
+var mergeXmlFile = function(files, dir, cb) {
+  var filepath = function(val) {
+    return val.split('/').slice(-2).join('/');
+  };
+
+  var replace = function(target) {
+    var find;
+    fpath = filepath(target);
+
+    for (var i = 0; i < files.length; i++) {
+      f = files[i];
+      if (filepath(f) == fpath) {
+        find = i;
+        break;
+      }
+    }
+
+    if (find != null) {
+      files.splice(find, 1);
+      files.push(target);
+    }
+  };
+
+  walk(dir, function(err, items) {
+    items.forEach(function(item) {
+      replace(item);
+    });
+    cb(files);
+  });
+};
+
 var outputFiles = [
   '../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json'
   //'../../gm/config/table/table.json'
@@ -52,24 +83,37 @@ for (var i = outputFiles.length - 1; i >= 0; i--) {
 console.log('start write to ', outputFiles);
 process.chdir(__dirname);
 
-var DATA_DIR = path.join(__dirname, '..', 'data');
+var DATA_DIR = path.join(__dirname, '..', 'data', 'share');
+
+var platform = process.argv[2] || null;
+
 walk(DATA_DIR, function(err, files) {
   if (err) {
     console.log('[ERROR] when read files, ', err);
   }
-  files = files.filter(function(file) {
-    return /.xml$/.test(file);
-  });
-  var tabledata = loadtable.apply(loadtable, files);
 
-  outputFiles.forEach(function(filepath) {
-    fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
-  });
+  function loadXmlFileData(files) {
+    console.log(files);
+    files = files.filter(function(file) {
+      return /.xml$/.test(file);
+    });
+    var tabledata = loadtable.apply(loadtable, files);
 
-  fs.writeFileSync('../../gm/config/table/table.json', JSON.stringify(tabledata.exports));
-  fs.writeFileSync('../../game-server/data/table.json', JSON.stringify(tabledata.exports));
+    outputFiles.forEach(function(filepath) {
+      fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
+    });
 
-  console.log('complete');
+    fs.writeFileSync('../../gm/config/table/table.json', JSON.stringify(tabledata.exports));
+    fs.writeFileSync('../../game-server/data/table.json', JSON.stringify(tabledata.exports));
 
+    console.log('complete');
+  };
 
+  if (platform) {
+    mergeXmlFile(files, path.join(DATA_DIR, '..', platform), function(files) {
+      loadXmlFileData(files);
+    });
+  } else {
+    loadXmlFileData(files);
+  }
 });

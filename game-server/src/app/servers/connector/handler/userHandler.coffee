@@ -18,6 +18,8 @@ PLATFORM =
   TONGBU: 'TB'
   PP: 'PP'
   YY: 'YY'
+  91: 'S91'
+  UC: 'uc'
 
 module.exports = (app) ->
   new Handler(app)
@@ -60,6 +62,9 @@ Handler::loginPP = (msg, session, next) ->
 
 Handler::loginYY = (msg, session, next) ->
   doLogin(PLATFORM.YY, @app, msg, session, 'yy', next)
+
+Handler::login91 = (msg, session, next) ->
+  doLogin(PLATFORM['91'], @app, msg, session, '91', next)
 
 doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
@@ -140,6 +145,7 @@ authParams = (type, msg, app) ->
     TB: ['nickName', 'userId', 'sessionId', 'areaId']
     PP: ['token', 'areaId']
     YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId']
+    91: ['sessionid', 'uin', 'appid', 'areaId']
   
   args  = {}
   for k in keyMap[type]

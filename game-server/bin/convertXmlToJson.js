@@ -76,8 +76,10 @@ var outputFiles = {
 };
 
 for (var k in outputFiles) {
-  outputFiles[k] = path.resolve(__dirname, outputFiles[k]);
-  tryMkdir(outputFiles[k]);
+  outputFiles[k].forEach(function(p) {
+    p = path.resolve(__dirname, p);
+    tryMkdir(p);
+  });
 };
 
 console.log('start write to ', outputFiles);

@@ -50,7 +50,7 @@ processPPOrderResult = (app, req, res) ->
     ### order_id, billno, account, amount, status, app_id, uuid, roleid, zone, sign ###
     if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount and data.status is jData.status
       if jData.status is '0'
-        areaId = jData.zone
+        [productId, areaId] = jData.billno.split('-')
         playerId = jData.roleid
 
         remoteData = 
@@ -101,6 +101,7 @@ processPost = (request, response, callback) ->
       "Content-Type": "text/plain"
 
     response.end()
+    callback()
   return
 
 checkOrderResult = (app, req, res) ->

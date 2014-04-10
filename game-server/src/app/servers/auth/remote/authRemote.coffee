@@ -146,7 +146,9 @@ class Authorize
 
   @YY: (args, cb) ->
     console.log args
-    if args.signid is md5("#{YY_APP_KEY}#{args.appkey}#{args.appid}#{args.account}#{args.time}").toUpperCase()
+    text = "#{YY_APP_KEY}#{args.appid}#{args.account}#{args.time}"
+    console.log 'text: ', text
+    if args.signid is md5(text).toUpperCase()
       
       fetchUserInfoOrCreate args.account, null, (err, user) ->
         if err

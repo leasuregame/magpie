@@ -9,8 +9,10 @@ _string = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
 
 CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
-YY_APP_KEY = 'OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf'
-YY_APP_ID = 'IYYDS'
+APP_KEY_YY = 'OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf'
+APP_ID_YY = 'IYYDS'
+
+APP_KEY_91 = ''
 
 accountMap = {}
 sessionIdMap = new Cache()
@@ -101,7 +103,7 @@ class Authorize
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
-      if err
+      if errP
         logger.error(err)
         return cb(err)
 
@@ -147,7 +149,7 @@ class Authorize
 
   @YY: (args, cb) ->
     console.log args
-    text = "#{YY_APP_KEY}#{args.appid}#{args.account}#{args.time}"
+    text = "#{APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
     console.log 'text: ', text
     if args.signid is md5(text).toUpperCase()
       
@@ -160,6 +162,40 @@ class Authorize
     else
       cb({code: 501, msg: '登陆失败，请重新登陆'})
 
+  @S91: (args, cb) ->
+    console.log args
+
+    aysnc.waterfall [
+      (done) ->
+        if validSessionId(args.uin, args.sessionid)
+          return done(null, false)
+        
+        requestUrl = 'http://service.sj.91.com/usercenter/AP.aspx'
+        request.get requestUrl, {
+          AppId: args.appid
+          Act: 4
+          Uin: args.uin
+          SessionId: args.sessionid
+          Sign: md5("#{args.appid}4#{args.uin}#{args.sessionid}#{APP_KEY_91}")
+        }, (err, res, body) ->
+          console.log err, body, body.ErrorCode
+          if (err)
+            return done(null, false)
+
+          result = body
+          if result.ErrorCode is 1
+            done(null, true)
+          else 
+            done(s91ErrorMessage(result))
+      (result, done) ->
+        fetchUserInfoOrCreate args.uin, null, done
+      (user, done) ->
+        checkDuplicatedLogin args.areaId, args.frontendId, user, args.sid, done
+    ], (err, user) ->
+      if err
+        return cb(err)
+      cb(null, user?.toJson())
+
 md5 = (text) ->
   hash = require('crypto').createHash('md5')
   hash.update(text).digest('hex')
@@ -170,6 +206,18 @@ parseBody = (body) ->
     [k, v] = i.split(':')
     result[_string.trim(k, '"')] = _.string.trim(v, '"')
   result
+
+s91ErrorMessage = (result) ->
+  errorCode = 
+    0: '失败'
+    1: '成功'
+    2: 'AppId无效'
+    3: 'Act无效'
+    4: '参数无效'
+    5: 'Sign无效'
+    11: 'SessionId无效'
+
+  code: 501, msg: errorCode[result.ErrorCode] or result.ErrorDesc
 
 ppErrorMessage = (result) ->
   errorCode = 

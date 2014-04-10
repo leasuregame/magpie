@@ -290,6 +290,26 @@
 		9019930418F69DC700A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
 		9019930518F69DCB00A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
 		9019930618F69DDC00A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
+		9019931418F7077900A74ECF /* ATSMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930B18F7077900A74ECF /* ATSMS.framework */; };
+		9019931518F7077A00A74ECF /* ATSMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930B18F7077900A74ECF /* ATSMS.framework */; };
+		9019931618F7077A00A74ECF /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930C18F7077900A74ECF /* Encrypt.framework */; };
+		9019931718F7077A00A74ECF /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930C18F7077900A74ECF /* Encrypt.framework */; };
+		9019931818F7077A00A74ECF /* Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930D18F7077900A74ECF /* Log.framework */; };
+		9019931918F7077A00A74ECF /* Log.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930D18F7077900A74ECF /* Log.framework */; };
+		9019931A18F7077A00A74ECF /* NDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930E18F7077900A74ECF /* NDJSON.framework */; };
+		9019931B18F7077A00A74ECF /* NDJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930E18F7077900A74ECF /* NDJSON.framework */; };
+		9019931C18F7077A00A74ECF /* NDUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930F18F7077900A74ECF /* NDUtility.framework */; };
+		9019931D18F7077A00A74ECF /* NDUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930F18F7077900A74ECF /* NDUtility.framework */; };
+		9019931E18F7077A00A74ECF /* NetEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931018F7077900A74ECF /* NetEngine.framework */; };
+		9019931F18F7077A00A74ECF /* NetEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931018F7077900A74ECF /* NetEngine.framework */; };
+		9019932018F7077A00A74ECF /* NdComPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931118F7077900A74ECF /* NdComPlatform.framework */; };
+		9019932118F7077A00A74ECF /* NdComPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931118F7077900A74ECF /* NdComPlatform.framework */; };
+		9019932218F7077A00A74ECF /* NdComPlatformInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931218F7077900A74ECF /* NdComPlatformInt.framework */; };
+		9019932318F7077A00A74ECF /* NdComPlatformInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019931218F7077900A74ECF /* NdComPlatformInt.framework */; };
+		9019932418F7077A00A74ECF /* NdComPlatform_SNS_Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9019931318F7077900A74ECF /* NdComPlatform_SNS_Resources.bundle */; };
+		9019932518F7077A00A74ECF /* NdComPlatform_SNS_Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9019931318F7077900A74ECF /* NdComPlatform_SNS_Resources.bundle */; };
+		9019932818F7091D00A74ECF /* NDAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9019932618F7091D00A74ECF /* NDAdapter.mm */; };
+		9019932918F7091D00A74ECF /* NDAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9019932618F7091D00A74ECF /* NDAdapter.mm */; };
 		902B07A61858C475003A2A49 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		902B07A71858C475003A2A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		902B07A81858C475003A2A49 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -3133,6 +3153,17 @@
 		901992F818F6965A00A74ECF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		901992FB18F6968800A74ECF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9019930318F69DC700A74ECF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9019930B18F7077900A74ECF /* ATSMS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ATSMS.framework; sourceTree = "<group>"; };
+		9019930C18F7077900A74ECF /* Encrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Encrypt.framework; sourceTree = "<group>"; };
+		9019930D18F7077900A74ECF /* Log.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Log.framework; sourceTree = "<group>"; };
+		9019930E18F7077900A74ECF /* NDJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NDJSON.framework; sourceTree = "<group>"; };
+		9019930F18F7077900A74ECF /* NDUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NDUtility.framework; sourceTree = "<group>"; };
+		9019931018F7077900A74ECF /* NetEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetEngine.framework; sourceTree = "<group>"; };
+		9019931118F7077900A74ECF /* NdComPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NdComPlatform.framework; sourceTree = "<group>"; };
+		9019931218F7077900A74ECF /* NdComPlatformInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NdComPlatformInt.framework; sourceTree = "<group>"; };
+		9019931318F7077900A74ECF /* NdComPlatform_SNS_Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NdComPlatform_SNS_Resources.bundle; sourceTree = "<group>"; };
+		9019932618F7091D00A74ECF /* NDAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDAdapter.mm; sourceTree = "<group>"; };
+		9019932718F7091D00A74ECF /* NDAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAdapter.h; sourceTree = "<group>"; };
 		902B08A81858C475003A2A49 /* Magpie-TB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902B08D01858C571003A2A49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		902B08D11858C571003A2A49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -3376,16 +3407,24 @@
 				9066001018ED4A0100AAC9D8 /* libsqlite3.dylib in Frameworks */,
 				9066000E18ED4A0100AAC9D8 /* libz.dylib in Frameworks */,
 				901992FD18F6968F00A74ECF /* AdSupport.framework in Frameworks */,
+				9019931418F7077900A74ECF /* ATSMS.framework in Frameworks */,
 				901992FC18F6968800A74ECF /* AssetsLibrary.framework in Frameworks */,
+				9019932018F7077A00A74ECF /* NdComPlatform.framework in Frameworks */,
 				901992FA18F6967C00A74ECF /* MessageUI.framework in Frameworks */,
 				9066000F18ED4A0100AAC9D8 /* SystemConfiguration.framework in Frameworks */,
+				9019931C18F7077A00A74ECF /* NDUtility.framework in Frameworks */,
 				9066001418ED4A0100AAC9D8 /* QuartzCore.framework in Frameworks */,
 				901992F918F6965A00A74ECF /* CoreTelephony.framework in Frameworks */,
 				9066001B18ED4A0100AAC9D8 /* CoreGraphics.framework in Frameworks */,
+				9019931618F7077A00A74ECF /* Encrypt.framework in Frameworks */,
+				9019931818F7077A00A74ECF /* Log.framework in Frameworks */,
 				901992F718F6964700A74ECF /* AddressBook.framework in Frameworks */,
+				9019931A18F7077A00A74ECF /* NDJSON.framework in Frameworks */,
 				9066001118ED4A0100AAC9D8 /* libMobClickCpp.a in Frameworks */,
 				9066001218ED4A0100AAC9D8 /* libcocos2dx.a in Frameworks */,
 				9066001318ED4A0100AAC9D8 /* libxml2.dylib in Frameworks */,
+				9019931E18F7077A00A74ECF /* NetEngine.framework in Frameworks */,
+				9019932218F7077A00A74ECF /* NdComPlatformInt.framework in Frameworks */,
 				9066001518ED4A0100AAC9D8 /* OpenGLES.framework in Frameworks */,
 				9066001618ED4A0100AAC9D8 /* OpenAL.framework in Frameworks */,
 				9066001718ED4A0100AAC9D8 /* AudioToolbox.framework in Frameworks */,
@@ -3404,16 +3443,24 @@
 				9066010518ED4A0300AAC9D8 /* libz.dylib in Frameworks */,
 				9066010718ED4A0300AAC9D8 /* libsqlite3.dylib in Frameworks */,
 				9019930218F696F400A74ECF /* AdSupport.framework in Frameworks */,
+				9019931518F7077A00A74ECF /* ATSMS.framework in Frameworks */,
 				9019930118F696EE00A74ECF /* AssetsLibrary.framework in Frameworks */,
+				9019932118F7077A00A74ECF /* NdComPlatform.framework in Frameworks */,
 				9019930018F696E900A74ECF /* MessageUI.framework in Frameworks */,
 				9066011118ED4A0300AAC9D8 /* Foundation.framework in Frameworks */,
+				9019931D18F7077A00A74ECF /* NDUtility.framework in Frameworks */,
 				9066011018ED4A0300AAC9D8 /* UIKit.framework in Frameworks */,
 				9066010618ED4A0300AAC9D8 /* SystemConfiguration.framework in Frameworks */,
 				9066010B18ED4A0300AAC9D8 /* QuartzCore.framework in Frameworks */,
+				9019931718F7077A00A74ECF /* Encrypt.framework in Frameworks */,
+				9019931918F7077A00A74ECF /* Log.framework in Frameworks */,
 				901992FF18F696C700A74ECF /* CoreTelephony.framework in Frameworks */,
+				9019931B18F7077A00A74ECF /* NDJSON.framework in Frameworks */,
 				9066011218ED4A0300AAC9D8 /* CoreGraphics.framework in Frameworks */,
 				901992FE18F696BC00A74ECF /* AddressBook.framework in Frameworks */,
 				9066010818ED4A0300AAC9D8 /* libMobClickCpp.a in Frameworks */,
+				9019931F18F7077A00A74ECF /* NetEngine.framework in Frameworks */,
+				9019932318F7077A00A74ECF /* NdComPlatformInt.framework in Frameworks */,
 				9066010918ED4A0300AAC9D8 /* libcocos2dx.a in Frameworks */,
 				9066010A18ED4A0300AAC9D8 /* libxml2.dylib in Frameworks */,
 				9066010C18ED4A0300AAC9D8 /* OpenGLES.framework in Frameworks */,
@@ -4525,6 +4572,48 @@
 			path = ../Resources/IOS/YY;
 			sourceTree = "<group>";
 		};
+		9019930718F7077900A74ECF /* 91 */ = {
+			isa = PBXGroup;
+			children = (
+				9019930818F7077900A74ECF /* SDK */,
+				9019932618F7091D00A74ECF /* NDAdapter.mm */,
+				9019932718F7091D00A74ECF /* NDAdapter.h */,
+			);
+			path = 91;
+			sourceTree = "<group>";
+		};
+		9019930818F7077900A74ECF /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				9019930918F7077900A74ECF /* framework5 */,
+				9019931318F7077900A74ECF /* NdComPlatform_SNS_Resources.bundle */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		9019930918F7077900A74ECF /* framework5 */ = {
+			isa = PBXGroup;
+			children = (
+				9019930A18F7077900A74ECF /* framework */,
+				9019931118F7077900A74ECF /* NdComPlatform.framework */,
+				9019931218F7077900A74ECF /* NdComPlatformInt.framework */,
+			);
+			path = framework5;
+			sourceTree = "<group>";
+		};
+		9019930A18F7077900A74ECF /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				9019930B18F7077900A74ECF /* ATSMS.framework */,
+				9019930C18F7077900A74ECF /* Encrypt.framework */,
+				9019930D18F7077900A74ECF /* Log.framework */,
+				9019930E18F7077900A74ECF /* NDJSON.framework */,
+				9019930F18F7077900A74ECF /* NDUtility.framework */,
+				9019931018F7077900A74ECF /* NetEngine.framework */,
+			);
+			path = framework;
+			sourceTree = "<group>";
+		};
 		902B08CF1858C571003A2A49 /* TB */ = {
 			isa = PBXGroup;
 			children = (
@@ -4567,6 +4656,7 @@
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				9019930718F7077900A74ECF /* 91 */,
 				9006744918F5352B00B47B57 /* YY */,
 				9045C27118EE567E00B3ED9F /* PP */,
 				90F3931E18C9C712002EC9BC /* UM */,
@@ -5460,6 +5550,7 @@
 				9066036218ED4B2B00AAC9D8 /* Icon-57.png in Resources */,
 				9066034C18ED4B2B00AAC9D8 /* Default-568h@2x.png in Resources */,
 				9066036018ED4B2B00AAC9D8 /* Icon-50.png in Resources */,
+				9019932418F7077A00A74ECF /* NdComPlatform_SNS_Resources.bundle in Resources */,
 				9066035818ED4B2B00AAC9D8 /* Icon-144.png in Resources */,
 				9066035E18ED4B2B00AAC9D8 /* Icon-40.png in Resources */,
 				9066003118ED4A0100AAC9D8 /* res in Resources */,
@@ -5482,6 +5573,7 @@
 				9066011718ED4A0300AAC9D8 /* README in Resources */,
 				9066036F18ED4B2B00AAC9D8 /* iTunesArtwork in Resources */,
 				9066034F18ED4B2B00AAC9D8 /* Default.png in Resources */,
+				9019932518F7077A00A74ECF /* NdComPlatform_SNS_Resources.bundle in Resources */,
 				9066035118ED4B2B00AAC9D8 /* Default@2x.png in Resources */,
 				9066036718ED4B2B00AAC9D8 /* Icon-72.png in Resources */,
 				9066011818ED4A0300AAC9D8 /* res in Resources */,
@@ -6176,6 +6268,7 @@
 				9066006018ED4A0300AAC9D8 /* cpCollision.c in Sources */,
 				9066006118ED4A0300AAC9D8 /* cpHashSet.c in Sources */,
 				9066006218ED4A0300AAC9D8 /* GUIReader.cpp in Sources */,
+				9019932918F7091D00A74ECF /* NDAdapter.mm in Sources */,
 				9066006318ED4A0300AAC9D8 /* cpPolyShape.c in Sources */,
 				9066006418ED4A0300AAC9D8 /* cpShape.c in Sources */,
 				9066006518ED4A0300AAC9D8 /* cpSpace.c in Sources */,
@@ -7219,6 +7312,7 @@
 				9066FF6918ED4A0100AAC9D8 /* cpHashSet.c in Sources */,
 				9066FF6A18ED4A0100AAC9D8 /* GUIReader.cpp in Sources */,
 				9066FF6B18ED4A0100AAC9D8 /* cpPolyShape.c in Sources */,
+				9019932818F7091D00A74ECF /* NDAdapter.mm in Sources */,
 				9066FF6C18ED4A0100AAC9D8 /* cpShape.c in Sources */,
 				9066FF6D18ED4A0100AAC9D8 /* cpSpace.c in Sources */,
 				9066FF6E18ED4A0100AAC9D8 /* cpSpaceComponent.c in Sources */,
@@ -8175,6 +8269,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/91/SDK/framework5/framework",
+					"$(SRCROOT)/lib/91/SDK/framework5",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8230,6 +8329,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/91/SDK/framework5/framework",
+					"$(SRCROOT)/lib/91/SDK/framework5",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8283,6 +8387,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/91/SDK/framework5/framework",
+					"$(SRCROOT)/lib/91/SDK/framework5",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8338,6 +8447,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/91/SDK/framework5/framework",
+					"$(SRCROOT)/lib/91/SDK/framework5",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (

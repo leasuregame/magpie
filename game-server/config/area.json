@@ -3,7 +3,7 @@
 		"id": 1,
 		"name": "开天辟地",
 		"os": ["IOS", "ANDROID"],
-		"platform": ["AppStore", "TB", "PP", "91", "UC"],
+		"platform": ["AppStore", "TB", "PP", "YY", "91", "UC"],
 		"version": [],
 		"status": 10
 	}, 
@@ -11,7 +11,7 @@
 		"id": 2,
 		"name": "八仙过海",
 		"os": ["IOS", "ANDROID"],
-		"platform": ["AppStore", "TB", "PP", "91", "UC"],
+		"platform": ["AppStore", "TB", "PP", "YY", "91", "UC"],
 		"version": [],
 		"status": 10
 	}

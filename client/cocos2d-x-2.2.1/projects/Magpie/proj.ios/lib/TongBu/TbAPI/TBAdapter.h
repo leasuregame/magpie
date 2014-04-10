@@ -11,7 +11,6 @@
 #include <iostream>
 #include "ScriptingCore.h"
 
-#endif
 /*屏幕方向枚举，等同于iOS原生方向*/
 typedef enum {
     TBInterfaceOrientationPortrait = 1,
@@ -102,4 +101,5 @@ public:
     void ShowMessage(char *msg);
 };
 
+#endif
 

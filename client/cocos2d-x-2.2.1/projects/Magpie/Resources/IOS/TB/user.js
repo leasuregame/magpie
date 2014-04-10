@@ -115,7 +115,9 @@ var User = Entity.extend({
                     } else {
                         cc.log("login fail");
 
-                        tbAdapter.TBLogout(0);
+                        if (lz.platformLogout) {
+                            lz.platformLogout();
+                        }
 
                         cb(0);
 
@@ -125,7 +127,7 @@ var User = Entity.extend({
             });
         };
 
-        if (!tbAdapter.TBIsLogined()) {
+        if (lz.platformIsLogin && !lz.platformIsLogin()) {
             // 登录成功回调
             tbAdapter.loginResultHandler = function (isSuccess) {
                 cc.log("tbAdapter loginResultHandler: " + isSuccess);

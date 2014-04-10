@@ -1009,7 +1009,12 @@ var main_scene_image = {
     uiEffect101: "res/ccb/uiEffect101.ccbi",
     uiEffect102: "res/ccb/uiEffect102.ccbi",
     uiEffect103: "res/ccb/uiEffect103.ccbi",
+    uiEffect104: "res/ccb/uiEffect104.ccbi",
+    uiEffect105: "res/ccb/uiEffect105.ccbi",
     uiEffect106: "res/ccb/uiEffect106.ccbi",
+    uiEffect107: "res/ccb/uiEffect107.ccbi",
+    uiEffect108: "res/ccb/uiEffect108.ccbi",
+    uiEffect109: "res/ccb/uiEffect109.ccbi",
 
 
     // 特效资源
@@ -1325,7 +1330,8 @@ var main_scene_image = {
     boss2_png: "res/effect/effect/boss2.png",
     boss2_plist: "res/effect/effect/boss2.plist",
     boss3_png: "res/effect/effect/boss3.png",
-    boss3_plist: "res/effect/effect/boss3.plist"
+    boss3_plist: "res/effect/effect/boss3.plist",
+    yy: "res/effect/uiEffect/yy.plist"
 };
 
 var main_scene_res = [

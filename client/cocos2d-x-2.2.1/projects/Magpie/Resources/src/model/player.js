@@ -463,6 +463,8 @@ var Player = Entity.extend({
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
                     } else {
                         that.add(key, msg[key]);
                     }

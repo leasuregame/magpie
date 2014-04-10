@@ -204,7 +204,7 @@ parseBody = (body) ->
   result = {}
   body.split(',').forEach (i) ->
     [k, v] = i.split(':')
-    result[_string.trim(k, '"')] = _.string.trim(v, '"')
+    result[_string.trim(k, '"')] = _string.trim(v, '"')
   result
 
 s91ErrorMessage = (result) ->

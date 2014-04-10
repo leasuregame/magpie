@@ -84,6 +84,19 @@
 	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLName</key>
+			<string>com.LeasureGame.Magpie-91</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>91-com.LeasureGame.Magpie-91</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.4.0</string>
 	<key>LSRequiresIPhoneOS</key>

@@ -59,7 +59,7 @@ static AppDelegate s_sharedApplication;
 }
 
 
-//⽀支付宝回调
+// ⽀付宝回调
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     [[PPAppPlatformKit sharedInstance] alixPayResult:url];
     return YES;

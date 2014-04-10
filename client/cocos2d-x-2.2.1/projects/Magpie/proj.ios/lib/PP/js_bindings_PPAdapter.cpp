@@ -60,21 +60,6 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationLandscapeLeft(
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPVerifyingUpdatePassCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 0) {
-		cobj->PPVerifyingUpdatePassCallBack();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_js_bindings_PPAdapter_PPAdapter_PPCurrentUserId(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -82,9 +67,13 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPCurrentUserId(JSContext *cx, uint32_
 	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->PPCurrentUserId();
+		uint64_t ret = cobj->PPCurrentUserId();
+        
+        char userId[100];
+        sprintf(userId, "%llu", ret);
+        
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = c_string_to_jsval(cx, userId);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -120,26 +109,6 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPSetCloseRechargeAlertMessage(JSConte
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
 		cobj->PPSetCloseRechargeAlertMessage(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPClosePageViewCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->PPClosePageViewCallBack(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -210,26 +179,6 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationPortraitUpside
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
 		cobj->PPSetIsDeviceOrientationPortraitUpsideDown(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPCloseWebViewCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->PPCloseWebViewCallBack(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -349,41 +298,6 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPCurrentUserName(JSContext *cx, uint3
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPPayResultCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->PPPayResultCallBack(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPLogOffCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 0) {
-		cobj->PPLogOffCallBack();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_js_bindings_PPAdapter_PPAdapter_PPSetIsLongComet(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -397,26 +311,6 @@ JSBool js_js_bindings_PPAdapter_PPAdapter_PPSetIsLongComet(JSContext *cx, uint32
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
 		cobj->PPSetIsLongComet(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_js_bindings_PPAdapter_PPAdapter_PPLoginStrCallBack(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	PPAdapter* cobj = (PPAdapter *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->PPLoginStrCallBack(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -560,26 +454,20 @@ void js_register_js_bindings_PPAdapter_PPAdapter(JSContext *cx, JSObject *global
 	static JSFunctionSpec funcs[] = {
 		JS_FN("PPCheckGameUpdate", js_js_bindings_PPAdapter_PPAdapter_PPCheckGameUpdate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsDeviceOrientationLandscapeLeft", js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationLandscapeLeft, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPVerifyingUpdatePassCallBack", js_js_bindings_PPAdapter_PPAdapter_PPVerifyingUpdatePassCallBack, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPCurrentUserId", js_js_bindings_PPAdapter_PPAdapter_PPCurrentUserId, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPShowLogin", js_js_bindings_PPAdapter_PPAdapter_PPShowLogin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetCloseRechargeAlertMessage", js_js_bindings_PPAdapter_PPAdapter_PPSetCloseRechargeAlertMessage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPClosePageViewCallBack", js_js_bindings_PPAdapter_PPAdapter_PPClosePageViewCallBack, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsNSlogData", js_js_bindings_PPAdapter_PPAdapter_PPSetIsNSlogData, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPLogout", js_js_bindings_PPAdapter_PPAdapter_PPLogout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPShowCenter", js_js_bindings_PPAdapter_PPAdapter_PPShowCenter, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsDeviceOrientationPortraitUpsideDown", js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationPortraitUpsideDown, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPCloseWebViewCallBack", js_js_bindings_PPAdapter_PPAdapter_PPCloseWebViewCallBack, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsOpenRecharge", js_js_bindings_PPAdapter_PPAdapter_PPSetIsOpenRecharge, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsDeviceOrientationPortrait", js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationPortrait, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsLogOutPushLoginView", js_js_bindings_PPAdapter_PPAdapter_PPSetIsLogOutPushLoginView, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPGetUserInfoSecurity", js_js_bindings_PPAdapter_PPAdapter_PPGetUserInfoSecurity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetRechargeAmount", js_js_bindings_PPAdapter_PPAdapter_PPSetRechargeAmount, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPCurrentUserName", js_js_bindings_PPAdapter_PPAdapter_PPCurrentUserName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPPayResultCallBack", js_js_bindings_PPAdapter_PPAdapter_PPPayResultCallBack, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPLogOffCallBack", js_js_bindings_PPAdapter_PPAdapter_PPLogOffCallBack, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsLongComet", js_js_bindings_PPAdapter_PPAdapter_PPSetIsLongComet, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("PPLoginStrCallBack", js_js_bindings_PPAdapter_PPAdapter_PPLoginStrCallBack, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPSetIsDeviceOrientationLandscapeRight", js_js_bindings_PPAdapter_PPAdapter_PPSetIsDeviceOrientationLandscapeRight, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPExchangeGoods", js_js_bindings_PPAdapter_PPAdapter_PPExchangeGoods, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("PPInit", js_js_bindings_PPAdapter_PPAdapter_PPInit, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),

@@ -1,29 +1,3 @@
-// login scene res
-var login_scene_path = "res/login/";
-
-var login_scene_image = {
-    edit1: login_scene_path + "edit1.png",
-    edit2: login_scene_path + "edit2.png"
-};
-
-var login_scene_res = [
-    //image
-
-    //plist
-
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-];
-
-for (var key in login_scene_image) {
-    login_scene_res.push({src: login_scene_image[key]});
-}
-
 // main scene res
 var main_scene_path = "res/main/";
 
@@ -1392,18 +1366,3 @@ main_scene_res.push({src: "./res/font/AchievementWord.fnt"});
 main_scene_res.push({src: "./res/font/AchievementWord.png"});
 main_scene_res.push({src: "./res/font/levelWord.fnt"});
 main_scene_res.push({src: "./res/font/levelWord.png"});
-
-// battle scene res
-var battle_scene_res = [
-    //image
-
-    //plist
-
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-];

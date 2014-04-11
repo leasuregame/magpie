@@ -5898,7 +5898,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066003E18ED4A0300AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5911,7 +5911,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066012618ED4A2200AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5924,7 +5924,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066021D18ED4A2400AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5937,7 +5937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066FC9E18ED110100AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5950,7 +5950,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066FDAF18ED111000AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5963,7 +5963,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		9066FF4718ED4A0100AAC9D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5976,7 +5976,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		90AB48E51858785100F74B58 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5989,7 +5989,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		90F535091862EAC2008207BD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6002,7 +6002,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 		90F5361E1862EB3C008207BD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6015,7 +6015,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/tcsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/game";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/src\ntouch -cm ${SRCROOT}/../Resources/res\ntouch -cm ${SRCROOT}/../Resources/resYY\ntouch -cm ${SRCROOT}/../Resources/AppStore\ntouch -cm ${SRCROOT}/../Resources/AppStore-Releases\ntouch -cm ${SRCROOT}/../Resources/TB\ntouch -cm ${SRCROOT}/../Resources/TB-Releases\ntouch -cm ${SRCROOT}/../Resources/PP\ntouch -cm ${SRCROOT}/../Resources/PP-Releases\ntouch -cm ${SRCROOT}/../Resources/91\ntouch -cm ${SRCROOT}/../Resources/91-Releases\ntouch -cm ${SRCROOT}/../Resources/YY\ntouch -cm ${SRCROOT}/../Resources/YY-Releases";
 		};
 /* End PBXShellScriptBuildPhase section */
 

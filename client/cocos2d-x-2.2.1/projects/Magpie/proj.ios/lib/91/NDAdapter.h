@@ -11,6 +11,16 @@
 
 #include <iostream>
 
+typedef struct BuyInfoData {
+    const char * cooOrderSerial;
+	const char * productId;
+	const char * productName;
+	float productPrice;
+	float productOrignalPrice;
+	int productCount;
+	const char * payDescription;
+} BuyInfo;
+
 class NDAdapter
 {
 public:
@@ -163,12 +173,20 @@ public:
  *	Objective-C回调中调回C++同名函数
  *
  *****************************************************************************/
+    // 初始化完成的通知
+    void SNSInitResult(bool result, int code);
     
-    void SNSInitResult();
-    void SNSLeavePlatform();
-    void SNSLoginResult();
-    void SNSPauseExit();
-    void SNSBuyResult();
+    // 离开平台界面时，会发送该通知
+    void SNSLeavePlatform(bool result, int code);
+    
+    // 登录完成的通知
+    void SNSLoginResult(bool result, int code);
+    
+    // 暂停页退出的通知
+    void SNSPauseExit(bool result, int code);
+    
+    // 购买结果的通知,在购买结束时会发送该通知
+    void SNSBuyResult(bool result, int code, BuyInfo * buyInfo);
 };
 
 #endif /* defined(__ND_ADAPTER__) */

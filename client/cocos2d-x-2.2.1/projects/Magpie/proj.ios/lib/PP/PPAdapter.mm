@@ -201,7 +201,7 @@ void PPAdapter::PPVerifyingUpdatePassCallBack()
 
 void PPAdapter::PPLoginStrCallBack(const char * paramStrToKenKey)
 {
-    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    JSContext * cx = ScriptingCore::getInstance()->getGlobalContext();
     jsval v[] = {
         v[0] = c_string_to_jsval(cx, paramStrToKenKey),
     };

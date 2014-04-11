@@ -287,9 +287,6 @@
 		9019930018F696E900A74ECF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212CE1870702600671D28 /* MessageUI.framework */; };
 		9019930118F696EE00A74ECF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901992FB18F6968800A74ECF /* AssetsLibrary.framework */; };
 		9019930218F696F400A74ECF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909187FE18A726D80023312A /* AdSupport.framework */; };
-		9019930418F69DC700A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
-		9019930518F69DCB00A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
-		9019930618F69DDC00A74ECF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930318F69DC700A74ECF /* StoreKit.framework */; };
 		9019931418F7077900A74ECF /* ATSMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930B18F7077900A74ECF /* ATSMS.framework */; };
 		9019931518F7077A00A74ECF /* ATSMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930B18F7077900A74ECF /* ATSMS.framework */; };
 		9019931618F7077A00A74ECF /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9019930C18F7077900A74ECF /* Encrypt.framework */; };
@@ -3149,10 +3146,10 @@
 		9006747018F54CF300B47B57 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
 		9006747118F54CF300B47B57 /* selectAreaLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = selectAreaLayer.js; sourceTree = "<group>"; };
 		9006747218F54CF300B47B57 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDCallbackHandler.h; sourceTree = "<group>"; };
 		901992F618F6964700A74ECF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		901992F818F6965A00A74ECF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		901992FB18F6968800A74ECF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		9019930318F69DC700A74ECF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9019930B18F7077900A74ECF /* ATSMS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ATSMS.framework; sourceTree = "<group>"; };
 		9019930C18F7077900A74ECF /* Encrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Encrypt.framework; sourceTree = "<group>"; };
 		9019930D18F7077900A74ECF /* Log.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Log.framework; sourceTree = "<group>"; };
@@ -3483,7 +3480,6 @@
 				906601EF18ED4A2200AAC9D8 /* libsqlite3.dylib in Frameworks */,
 				906601F018ED4A2200AAC9D8 /* libMobClickCpp.a in Frameworks */,
 				906601F118ED4A2200AAC9D8 /* libcocos2dx.a in Frameworks */,
-				9019930418F69DC700A74ECF /* StoreKit.framework in Frameworks */,
 				906601F218ED4A2200AAC9D8 /* libxml2.dylib in Frameworks */,
 				906601F318ED4A2200AAC9D8 /* QuartzCore.framework in Frameworks */,
 				906601F418ED4A2200AAC9D8 /* OpenGLES.framework in Frameworks */,
@@ -3510,7 +3506,6 @@
 				906602E618ED4A2400AAC9D8 /* libsqlite3.dylib in Frameworks */,
 				906602E718ED4A2400AAC9D8 /* libMobClickCpp.a in Frameworks */,
 				906602E818ED4A2400AAC9D8 /* libcocos2dx.a in Frameworks */,
-				9019930518F69DCB00A74ECF /* StoreKit.framework in Frameworks */,
 				906602E918ED4A2400AAC9D8 /* libxml2.dylib in Frameworks */,
 				906602EA18ED4A2400AAC9D8 /* QuartzCore.framework in Frameworks */,
 				906602EB18ED4A2400AAC9D8 /* OpenGLES.framework in Frameworks */,
@@ -3612,7 +3607,6 @@
 				90F535E61862EAC2008207BD /* UIKit.framework in Frameworks */,
 				90F535E71862EAC2008207BD /* Foundation.framework in Frameworks */,
 				90F535E81862EAC2008207BD /* CoreGraphics.framework in Frameworks */,
-				9019930618F69DDC00A74ECF /* StoreKit.framework in Frameworks */,
 				90F535EA1862EAC2008207BD /* libcurl.a in Frameworks */,
 				90F535EB1862EAC2008207BD /* libwebsockets.a in Frameworks */,
 			);
@@ -4578,6 +4572,7 @@
 				9019930818F7077900A74ECF /* SDK */,
 				9019932618F7091D00A74ECF /* NDAdapter.mm */,
 				9019932718F7091D00A74ECF /* NDAdapter.h */,
+				9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */,
 			);
 			path = 91;
 			sourceTree = "<group>";
@@ -5100,7 +5095,6 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9019930318F69DC700A74ECF /* StoreKit.framework */,
 				901992FB18F6968800A74ECF /* AssetsLibrary.framework */,
 				901992F818F6965A00A74ECF /* CoreTelephony.framework */,
 				901992F618F6964700A74ECF /* AddressBook.framework */,
@@ -5373,7 +5367,7 @@
 						DevelopmentTeam = TJT2HAB95B;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -5381,7 +5375,7 @@
 						DevelopmentTeam = TJT2HAB95B;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

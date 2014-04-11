@@ -102,7 +102,7 @@ const char * PPAdapter::PPCurrentUserName()
     return userName;
 }
 
-int PPAdapter::PPCurrentUserId()
+uint64_t PPAdapter::PPCurrentUserId()
 {
      CCLOG("PPCurrentUserId");
     

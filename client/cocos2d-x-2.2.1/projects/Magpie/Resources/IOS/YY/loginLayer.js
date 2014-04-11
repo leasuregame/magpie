@@ -58,7 +58,7 @@ var LoginLayer = cc.Layer.extend({
 
         this.addChild(this._loginFrame);
 
-        if(gameDevice != "Iphone5") {
+        if (gameDevice != "Iphone5") {
             this._loginFrame.setPosition(cc.p(360, 540));
         } else {
             this._loginFrame.setPosition(cc.p(320, 568));
@@ -125,9 +125,10 @@ var LoginLayer = cc.Layer.extend({
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-//        if (tbAdapter && tbAdapter.TBIsLogined()) {
-//            str = tbAdapter.TBNickName();
-//        }
+        if (lz.platformIsLogin && lz.platformIsLogin()) {
+            var yyUser = yyAdapter.YYGetUser();
+            str = yyUser.userName;
+        }
 
         this._accountLabel.setString(str);
     },
@@ -163,9 +164,7 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-//        if (tbAdapter && tbAdapter.TBLogin) {
-//            tbAdapter.TBLogin(0);
-//        }
+        yyAdapter.YYLogin();
     }
 });
 

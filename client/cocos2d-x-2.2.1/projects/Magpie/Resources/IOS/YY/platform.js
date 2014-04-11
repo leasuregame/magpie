@@ -67,3 +67,24 @@ lz.platformConfig = {
 
     lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
+
+
+var yyAdapter = yy.YYAdapter.YYAdapterInstance();
+yyAdapter.YYInitWithAppId(lz.platformConfig.APP_ID, true);
+
+yyAdapter.YYOnLoginRetCode = function(code, yyUser) {
+    cc.log("yyAdapter YYOnLoginRetCode: " + code);
+    cc.log(JSON.stringify(yyUser));
+};
+
+lz.platformIsLogin = function () {
+    cc.log("yyAdapter YYIsLogin");
+
+    return yyAdapter.YYIsLogin();
+};
+
+lz.platformLogout = function () {
+    cc.log("yyAdapter YYLogout");
+
+    yyAdapter.YYLogout();
+};

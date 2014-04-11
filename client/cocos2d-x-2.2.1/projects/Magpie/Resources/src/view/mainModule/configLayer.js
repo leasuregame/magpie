@@ -349,7 +349,6 @@ var ConfigLayer = cc.Layer.extend({
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
             NoticeLayer.pop();
         }
-
     },
 
     _onClickTips: function () {

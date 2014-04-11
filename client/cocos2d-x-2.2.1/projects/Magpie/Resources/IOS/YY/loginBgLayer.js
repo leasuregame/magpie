@@ -25,7 +25,7 @@ var LoginBgLayer = cc.Layer.extend({
         var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect104, this);
         this.addChild(bgEffect);
 
-        if(gameDevice != "Iphone5") {
+        if (gameDevice != "Iphone5") {
             bgEffect.setPosition(cc.p(360, 432));
             bgEffect.controller.ccbTitleNode.setPosition(cc.p(0, 170));
         } else {

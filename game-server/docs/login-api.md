@@ -16,7 +16,8 @@
 pomelo.request('conenctor.userHandler.login', {
   account: 'testUser',
   password: '*****',
-  areaId: 1
+  areaId: 1,
+  version: '1.4.0'
 }, function(err, result) {
   console.log(result.code, result.msg.player, result.msg.user);
 })
@@ -29,7 +30,8 @@ pomelo.request('conenctor.userHandler.loginTB', {
   nickName: 'testUser',
   userId: 123123123,
   sessionId: 'aisdfdsyfi239e423eji232i4u32847132u4',
-  areaId: 1
+  areaId: 1,
+  version: '1.4.0'
 }, function(err, result) {
   console.log(result.code, result.msg.player, result.msg.user);
 })
@@ -39,8 +41,9 @@ pomelo.request('conenctor.userHandler.loginTB', {
 
 ```js
 pomelo.request('conenctor.userHandler.loginPP', {
-  token: 'iasudfas78r892348923iyu327891432hu1423'
-  areaId: 1
+  token: 'iasudfas78r892348923iyu327891432hu1423',
+  areaId: 1,
+  version: '1.4.0'
 }, function(err, result) {
   console.log(result.code, result.msg.player, result.msg.user);
 })
@@ -55,7 +58,8 @@ pomelo.request('conenctor.userHandler.loginYY', {
   time: 1341234124314,
   appid: 'IYYDS',
   serverid: '',
-  areaId: 1
+  areaId: 1,
+  version: '1.4.0'
 }, function(err, result) {
   console.log(result.code, result.msg.player, result.msg.user);
 })
@@ -65,10 +69,11 @@ pomelo.request('conenctor.userHandler.loginYY', {
 
 ```js
 pomelo.request('conenctor.userHandler.login91', {
-  sessionid: 'iasudfas78r892348923iyu327891432hu1423'
+  sessionid: 'iasudfas78r892348923iyu327891432hu1423',
   uin: 12312312431,
   appid: 113216,
-  areaId: 1
+  areaId: 1,
+  version: '1.4.0'
 }, function(err, result) {
   console.log(result.code, result.msg.player, result.msg.user);
 })

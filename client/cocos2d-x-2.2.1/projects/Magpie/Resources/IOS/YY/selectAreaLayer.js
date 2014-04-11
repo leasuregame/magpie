@@ -43,7 +43,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._areaList = areaList;
 
-        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect108, this);
+        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect38, this);
         selectAreaFrame.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(selectAreaFrame, 1);
 

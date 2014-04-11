@@ -46,7 +46,7 @@
         engineDir: '../../../../Cocos2d-html5-v2.2.1/cocos2d/',
         //SingleEngineFile:'',
         appFiles: [
-            'src/resource.js',
+            'resYY/resource.js',
 
             'src/table/table.js',
 
@@ -120,9 +120,9 @@
             'src/controls/slideLayer.js',
 
             'src/view/loginModule/loginScene.js',
-            'src/view/loginModule/loginBgLayer.js',
+            'IOS/YY/loginBgLayer.js',
             // 'TB/loginLayer.js',
-            'IOS/AppStore/loginLayer.js',
+            'IOS/YY/loginLayer.js',
             'IOS/YY/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
             'IOS/YY/selectAreaLayer.js',

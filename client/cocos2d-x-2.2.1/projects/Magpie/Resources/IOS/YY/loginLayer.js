@@ -54,7 +54,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
-        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect107, this);
+        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect70, this);
 
         this.addChild(this._loginFrame);
 

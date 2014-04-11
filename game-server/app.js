@@ -1,3 +1,6 @@
+// load .env value to process.env
+require('dotenv').load();
+
 var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');

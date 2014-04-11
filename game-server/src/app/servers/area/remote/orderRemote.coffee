@@ -97,11 +97,11 @@ Remote::add = (args, platform, callback) ->
 checkAmountIsCorrect = (amount, cash, platform) ->
   switch platform
     when 'PP' then result = parseInt(amount) == cash
+    when '91' then result = parseInt(amount) == cash
     when 'TB' then result = parseInt(amount) == cash*100
     else result = false
 
   result
-
 
 updateArgs = (args, platform, order) ->
   if platform is 'PP'

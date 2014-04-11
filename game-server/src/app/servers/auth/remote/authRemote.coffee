@@ -4,15 +4,10 @@ Cache = require '../../../common/cache'
 app = require('pomelo').app
 dao = app.get('dao')
 request = require 'request'
+qs = require 'querystring'
 async = require 'async'
 _string = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
-
-CHECK_URL = 'http://tgi.tongbu.com/checkv2.aspx'
-APP_KEY_YY = 'OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf'
-APP_ID_YY = 'IYYDS'
-
-APP_KEY_91 = ''
 
 accountMap = {}
 sessionIdMap = new Cache()
@@ -78,7 +73,7 @@ class Authorize
         if validSessionId(userId, sessionId)
           return done(null, true)
 
-        url = "#{CHECK_URL}?k=#{sessionId}"
+        url = "#{process.env.LOGIN_CHECK_URL_TONGBU}?k=#{sessionId}"
         request.get url, (err, res, body) ->
           if err
             logger.error('faild to check tongbu session id', sessionId, userId)
@@ -120,7 +115,7 @@ class Authorize
         if validToken(token)
           return done(null, tokenMap.get(token))
 
-        requestUrl = "http://passport_i.25pp.com:8080/index?tunnel-command=2852126756"
+        requestUrl = process.env.LOGIN_CHECK_URL_PP
         request.post requestUrl, {body: token}, (err, res, body) -> 
           if err
             logger.error(err)
@@ -149,7 +144,7 @@ class Authorize
 
   @YY: (args, cb) ->
     console.log args
-    text = "#{APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
+    text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
     console.log 'text: ', text
     if args.signid is md5(text).toUpperCase()
       
@@ -165,25 +160,26 @@ class Authorize
   @S91: (args, cb) ->
     console.log args
 
-    aysnc.waterfall [
+    async.waterfall [
       (done) ->
         if validSessionId(args.uin, args.sessionid)
           return done(null, false)
         
-        requestUrl = 'http://service.sj.91.com/usercenter/AP.aspx'
-        request.get requestUrl, {
+        query = {
           AppId: args.appid
           Act: 4
           Uin: args.uin
           SessionId: args.sessionid
-          Sign: md5("#{args.appid}4#{args.uin}#{args.sessionid}#{APP_KEY_91}")
-        }, (err, res, body) ->
+          Sign: md5("#{args.appid}4#{args.uin}#{args.sessionid}#{process.env.APP_KEY_91}")
+        }
+        requestUrl = "#{process.env.LOGIN_CHECK_URL_91}?#{qs.stringify(query)}"
+        request.get requestUrl, (err, res, body) ->
           console.log err, body, body.ErrorCode
           if (err)
             return done(null, false)
 
-          result = body
-          if result.ErrorCode is 1
+          result = JSON.parse body
+          if parseInt(result.ErrorCode) is 1
             done(null, true)
           else 
             done(s91ErrorMessage(result))

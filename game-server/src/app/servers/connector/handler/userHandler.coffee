@@ -19,7 +19,7 @@ PLATFORM =
   PP: 'PP'
   YY: 'YY'
   91: 'S91'
-  UC: 'uc'
+  UC: 'UC'
 
 module.exports = (app) ->
   new Handler(app)
@@ -87,6 +87,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       args = authParams(type, msg, app)
       args.sid = session.id
       app.rpc.auth.authRemote.authorize session, args, type, (err, u, isValid) ->
+        console.log '-1-', err, u
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -145,7 +146,7 @@ authParams = (type, msg, app) ->
     TB: ['nickName', 'userId', 'sessionId', 'areaId']
     PP: ['token', 'areaId']
     YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId']
-    91: ['sessionid', 'uin', 'appid', 'areaId']
+    S91: ['sessionid', 'uin', 'appid', 'areaId']
   
   args  = {}
   for k in keyMap[type]

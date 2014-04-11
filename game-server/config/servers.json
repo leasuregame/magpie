@@ -14,7 +14,8 @@
       { "id": "area-server-2", "host": "127.0.0.1", "port": 4101, "area": 2, "args": " --debug=7886 "  }
     ],
     "notice": [
-      { "id": "tb-notice-server-1", "host": "127.0.0.1", "port": 4200, "webPort": 5050, "args": " --debug=7885 "}
+      { "id": "tb-notice-server-1", "host": "127.0.0.1", "port": 4200, "webPort": 5050, "args": " --debug=7885 "},
+      { "id": "tb-notice-server-2", "host": "127.0.0.1", "port": 4201, "webPort": 80}
     ]
   },
   "production": {
@@ -33,7 +34,8 @@
       { "id": "area-server-2", "host": "124.238.236.33", "port": 4101, "area": 2 }
     ],
     "notice": [
-      { "id": "tb-notice-server-1", "host": "124.238.236.33", "port": 4200, "webPort": 5050}
+      { "id": "tb-notice-server-1", "host": "124.238.236.33", "port": 4200, "webPort": 5050},
+      { "id": "tb-notice-server-2", "host": "124.238.236.33", "port": 4201, "webPort": 80}
     ]
   }
 }

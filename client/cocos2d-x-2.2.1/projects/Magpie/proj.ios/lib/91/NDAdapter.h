@@ -141,13 +141,34 @@ public:
      @param buyInfo 购买信息
      @result 若未登录调用则返回错误码，否则返回0
      */
-    int NDBuy(const char * cooOrderSerial,     // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
-               const char * productId,          // 商品Id
-               const char * productName,        // 商品名字
-               float productOrignalPrice,       // 商品价格，两位小数
-               float productPrice,              // 商品原始价格，保留两位小数
-               int productCount,                // 购买商品个数
-               const char * payDescription);    // 购买描述，可选，没有为空
+    int NDUniPay(const char * cooOrderSerial,       // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+               const char * productId,              // 商品Id
+               const char * productName,            // 商品名字
+               float productOrignalPrice,           // 商品价格，两位小数
+               float productPrice,                  // 商品原始价格，保留两位小数
+               int productCount,                    // 购买商品个数
+               const char * payDescription);        // 购买描述，可选，没有为空
+    
+    int NDUniPayAsyn(const char * cooOrderSerial,   // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+              const char * productId,               // 商品Id
+              const char * productName,             // 商品名字
+              float productOrignalPrice,            // 商品价格，两位小数
+              float productPrice,                   // 商品原始价格，保留两位小数
+              int productCount,                     // 购买商品个数
+              const char * payDescription);         // 购买描述，可选，没有为空
+    
+    
+/******************************************************************************
+ *
+ *	Objective-C回调中调回C++同名函数
+ *
+ *****************************************************************************/
+    
+    void SNSInitResult();
+    void SNSLeavePlatform();
+    void SNSLoginResult();
+    void SNSPauseExit();
+    void SNSBuyResult();
 };
 
 #endif /* defined(__ND_ADAPTER__) */

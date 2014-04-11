@@ -94,12 +94,9 @@ void PPAdapter::PPSetRechargeAmount(int paramAmount)
 
 const char * PPAdapter::PPCurrentUserName()
 {
-     CCLOG("PPCurrentUserName");
+    CCLOG("PPCurrentUserName");
     
-    NSString * NSUserName = [[PPAppPlatformKit sharedInstance] currentUserName];
-    const char * userName = [NSUserName UTF8String];
-    
-    return userName;
+    return [[[PPAppPlatformKit sharedInstance] currentUserName] UTF8String];
 }
 
 uint64_t PPAdapter::PPCurrentUserId()

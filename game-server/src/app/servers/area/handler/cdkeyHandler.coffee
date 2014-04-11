@@ -43,7 +43,6 @@ Handler::verifyCdkey = (msg, session, next) ->
       @app.get('dao').cdkey.isAvalifyPlayer playerId, keyPrefix, cb
     
     (valified, cb) ->
-      console.log '-a-a-a-', valified
       if valified
         return cb({code: 501, msg: '每个玩家只能使用一个激活码'})
       cb()
@@ -79,7 +78,7 @@ returnData = (data) ->
   money: data.money if data.money
   skillPoint: data.skillPoint if data.skillPoint
   elixir: data.elixir if data.elixir
-  fragment: data.fragments if data.fragments
+  fragments: data.fragments if data.fragments
   spirit: data.spirit if data.spirit
 
 updatePlayer = (app, player, data, cb) ->

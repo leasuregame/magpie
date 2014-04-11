@@ -13,8 +13,13 @@ ACCOUNT_REG = /[\w+]{6,50}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
-APP_STORE_TYPE = 'app'
-TONG_BU_TYPE = 'tongbu'
+PLATFORM = 
+  APPSTORE: 'AppStore'
+  TONGBU: 'TB'
+  PP: 'PP'
+  YY: 'YY'
+  91: 'S91'
+  UC: 'UC'
 
 module.exports = (app) ->
   new Handler(app)
@@ -47,17 +52,29 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin(APP_STORE_TYPE, @app, msg, session, 'app', next)
+  doLogin(PLATFORM.APPSTORE, @app, msg, session, 'app', next)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
+  doLogin(PLATFORM.TONGBU, @app, msg, session, 'tb', next)
 
-doLogin  = (type, app, msg, session, platform, next) ->  
-  #console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
+Handler::loginPP = (msg, session, next) ->
+  doLogin(PLATFORM.PP, @app, msg, session, 'pp', next)
+
+Handler::loginYY = (msg, session, next) ->
+  doLogin(PLATFORM.YY, @app, msg, session, 'yy', next)
+
+Handler::login91 = (msg, session, next) ->
+  doLogin(PLATFORM['91'], @app, msg, session, '91', next)
+
+doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
   user = null
   player = null
   uid = null
+
+  if _.isUndefined(areaId) or _.isNull(areaId)
+    return next(null, {code: 501, msg: '请选择一个区登陆'})
+
   async.waterfall [
     (cb) ->
       checkIsOpenServer app, cb
@@ -67,9 +84,10 @@ doLogin  = (type, app, msg, session, platform, next) ->
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      [args, method] = authParams(type, msg, app)
+      args = authParams(type, msg, app)
       args.sid = session.id
-      app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+      app.rpc.auth.authRemote.authorize session, args, type, (err, u, isValid) ->
+        console.log '-1-', err, u
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -124,15 +142,18 @@ onUserLeave = (app, session, reason) ->
 
 authParams = (type, msg, app) ->
   keyMap = 
-    app: keys: ['account', 'password', 'areaId'], method: 'auth'
-    tongbu: keys: ['nickName', 'userId', 'sessionId', 'areaId'], method: 'checkSession'
+    AppStore: ['account', 'password', 'areaId']
+    TB: ['nickName', 'userId', 'sessionId', 'areaId']
+    PP: ['token', 'areaId']
+    YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId']
+    S91: ['sessionid', 'uin', 'appid', 'areaId']
   
   args  = {}
-  for k in keyMap[type]?.keys
+  for k in keyMap[type]
     args[k] = msg[k] if msg[k]?
 
   args.frontendId = app.getServerId()
-  [args, keyMap[type]?.method]
+  args
 
 getVersionData = (app, platform) ->
   if not platform
@@ -163,6 +184,9 @@ versionCompare = (stra, strb) ->
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
   vData = getVersionData(app, platform)
+  if not vData
+    return cb({501, msg: "找不到#{platform}的版本信息"})
+
   if versionCompare(version, vData.version) >= 0
     cb()
   else

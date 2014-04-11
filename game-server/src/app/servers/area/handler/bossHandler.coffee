@@ -304,7 +304,6 @@ Handler::bossList = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
-    console.log 'boss count: ', results.length
     next(null, {
       code: 200,
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
@@ -405,7 +404,7 @@ countDamageRewards = (rank) ->
     honor: honor
 
 checkBossStatus = (items, cb) ->
-  timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
+  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
   ids = timeOutItems.map (i) -> i.id
 
   if ids.length is 0

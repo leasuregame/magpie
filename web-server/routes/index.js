@@ -18,7 +18,7 @@ exports.index = function(req, res) {
     }
   ], function(err, results) {
     if (err) {
-      return res.status(500).send('服务器出错');
+      return res.status(500).send('服务器出错'+err);
     }
     console.log('message: ', results);
     var counts = results[0][0];

@@ -218,6 +218,38 @@
 		3EC20B8218331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7F18331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.cpp */; };
 		3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */; };
 		3EC20B8618331D7400F2C4D6 /* jsb_cocos2d_studio.js in Resources */ = {isa = PBXBuildFile; fileRef = 3EC20B7C18331CA200F2C4D6 /* jsb_cocos2d_studio.js */; };
+		9006739418F3A88500B47B57 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006737F18F3A88500B47B57 /* AlipayRsaLib.a */; };
+		9006739518F3A88500B47B57 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006737F18F3A88500B47B57 /* AlipayRsaLib.a */; };
+		9006739618F3A88500B47B57 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006738018F3A88500B47B57 /* Alixpay.bundle */; };
+		9006739718F3A88500B47B57 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006738018F3A88500B47B57 /* Alixpay.bundle */; };
+		9006739818F3A88500B47B57 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006738118F3A88500B47B57 /* AlixPaylib.a */; };
+		9006739918F3A88500B47B57 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006738118F3A88500B47B57 /* AlixPaylib.a */; };
+		9006739A18F3A88500B47B57 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738518F3A88500B47B57 /* NSObject+SBJSON.m */; };
+		9006739B18F3A88500B47B57 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738518F3A88500B47B57 /* NSObject+SBJSON.m */; };
+		9006739C18F3A88500B47B57 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738718F3A88500B47B57 /* NSString+SBJSON.m */; };
+		9006739D18F3A88500B47B57 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738718F3A88500B47B57 /* NSString+SBJSON.m */; };
+		9006739E18F3A88500B47B57 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738918F3A88500B47B57 /* SBJSON.m */; };
+		9006739F18F3A88500B47B57 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738918F3A88500B47B57 /* SBJSON.m */; };
+		900673A018F3A88500B47B57 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738B18F3A88500B47B57 /* SBJsonBase.m */; };
+		900673A118F3A88500B47B57 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738B18F3A88500B47B57 /* SBJsonBase.m */; };
+		900673A218F3A88500B47B57 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738D18F3A88500B47B57 /* SBJsonParser.m */; };
+		900673A318F3A88500B47B57 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738D18F3A88500B47B57 /* SBJsonParser.m */; };
+		900673A418F3A88500B47B57 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738F18F3A88500B47B57 /* SBJsonWriter.m */; };
+		900673A518F3A88500B47B57 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9006738F18F3A88500B47B57 /* SBJsonWriter.m */; };
+		900673A618F3A88500B47B57 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739018F3A88500B47B57 /* libcrypto.a */; };
+		900673A718F3A88500B47B57 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739018F3A88500B47B57 /* libcrypto.a */; };
+		900673A818F3A88500B47B57 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739118F3A88500B47B57 /* libUPPayPlugin.a */; };
+		900673A918F3A88500B47B57 /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739118F3A88500B47B57 /* libUPPayPlugin.a */; };
+		900673AA18F3A88500B47B57 /* PPAppPlatformKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739218F3A88500B47B57 /* PPAppPlatformKit.framework */; };
+		900673AB18F3A88500B47B57 /* PPAppPlatformKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006739218F3A88500B47B57 /* PPAppPlatformKit.framework */; };
+		900673AC18F3A88500B47B57 /* PPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006739318F3A88500B47B57 /* PPImage.bundle */; };
+		900673AD18F3A88500B47B57 /* PPImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006739318F3A88500B47B57 /* PPImage.bundle */; };
+		900673B018F3EE7B00B47B57 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 900673AF18F3EE7B00B47B57 /* AppController.mm */; };
+		900673B318F3EE8A00B47B57 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 900673B218F3EE8A00B47B57 /* AppController.mm */; };
+		900673BE18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 900673BB18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js */; };
+		900673BF18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 900673BB18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js */; };
+		900673C018F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */; };
+		900673C118F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */; };
 		902B07A61858C475003A2A49 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		902B07A71858C475003A2A49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		902B07A81858C475003A2A49 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
@@ -460,6 +492,14 @@
 		902B08F11858C571003A2A49 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 902B08DF1858C571003A2A49 /* Icon-80.png */; };
 		902B08F31858C571003A2A49 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 902B08E11858C571003A2A49 /* iTunesArtwork */; };
 		902B08F51858C666003A2A49 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902B08F41858C666003A2A49 /* StoreKit.framework */; };
+		9045C26918EE50E100B3ED9F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26818EE50E000B3ED9F /* CFNetwork.framework */; };
+		9045C26B18EE50E900B3ED9F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26A18EE50E900B3ED9F /* CoreFoundation.framework */; };
+		9045C26C18EE510500B3ED9F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909187FE18A726D80023312A /* AdSupport.framework */; };
+		9045C26D18EE510D00B3ED9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C212D01870702D00671D28 /* Security.framework */; };
+		9045C26F18EE514500B3ED9F /* libMobileGestalt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26E18EE514500B3ED9F /* libMobileGestalt.dylib */; };
+		9045C27018EE536300B3ED9F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
+		9045C2A418EE5F6600B3ED9F /* PPAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */; };
+		9045C2A518EE5F6600B3ED9F /* PPAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */; };
 		9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5E918C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
 		9058F5EA18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
@@ -1359,7 +1399,6 @@
 		906603F818ED701C00AAC9D8 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 906603D818ED6D2400AAC9D8 /* payment.js */; };
 		906603F918ED701C00AAC9D8 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 906603D918ED6D2400AAC9D8 /* platform.js */; };
 		906603FA18ED701C00AAC9D8 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 906603DA18ED6D2400AAC9D8 /* user.js */; };
-		9066FCA018ED110100AAC9D8 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		9066FCA118ED110100AAC9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		9066FCA218ED110100AAC9D8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
 		9066FCA318ED110100AAC9D8 /* UIListViewEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7318331C7B00F2C4D6 /* UIListViewEx.cpp */; };
@@ -1593,7 +1632,6 @@
 		9066FD9C18ED110100AAC9D8 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748917F0874400B9ACAE /* json_internalmap.inl */; };
 		9066FD9D18ED110100AAC9D8 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748E17F0874400B9ACAE /* json_valueiterator.inl */; };
 		9066FDA618ED110100AAC9D8 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E749117F0874400B9ACAE /* sconscript */; };
-		9066FDB118ED111000AAC9D8 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446CE156DE74F00887EB5 /* AppController.mm */; };
 		9066FDB218ED111000AAC9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D45446CF156DE74F00887EB5 /* main.m */; };
 		9066FDB418ED111000AAC9D8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D45446D2156DE74F00887EB5 /* RootViewController.mm */; };
 		9066FDB518ED111000AAC9D8 /* UIListViewEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EC20B7318331C7B00F2C4D6 /* UIListViewEx.cpp */; };
@@ -3016,6 +3054,34 @@
 		3EC20B8018331CB000F2C4D6 /* jsb_cocos2dx_studio_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_cocos2dx_studio_auto.hpp; sourceTree = "<group>"; };
 		3EC20B8318331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_cocos2dx_studio_manual.cpp; sourceTree = "<group>"; };
 		3EC20B8418331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsb_cocos2dx_studio_manual.h; sourceTree = "<group>"; };
+		9006737B18F3A24900B47B57 /* PPCallbackHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCallbackHandler.h; sourceTree = "<group>"; };
+		9006737F18F3A88500B47B57 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		9006738018F3A88500B47B57 /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		9006738118F3A88500B47B57 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		9006738318F3A88500B47B57 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9006738418F3A88500B47B57 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		9006738518F3A88500B47B57 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		9006738618F3A88500B47B57 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		9006738718F3A88500B47B57 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		9006738818F3A88500B47B57 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		9006738918F3A88500B47B57 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		9006738A18F3A88500B47B57 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9006738B18F3A88500B47B57 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		9006738C18F3A88500B47B57 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9006738D18F3A88500B47B57 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9006738E18F3A88500B47B57 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9006738F18F3A88500B47B57 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9006739018F3A88500B47B57 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		9006739118F3A88500B47B57 /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
+		9006739218F3A88500B47B57 /* PPAppPlatformKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PPAppPlatformKit.framework; sourceTree = "<group>"; };
+		9006739318F3A88500B47B57 /* PPImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PPImage.bundle; sourceTree = "<group>"; };
+		900673AE18F3EE7B00B47B57 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		900673AF18F3EE7B00B47B57 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
+		900673B118F3EE8A00B47B57 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		900673B218F3EE8A00B47B57 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
+		900673BB18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_PPAdapter_api.js; sourceTree = "<group>"; };
+		900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_PPAdapter.cpp; sourceTree = "<group>"; };
+		900673BD18F3F4DA00B47B57 /* js_bindings_PPAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_PPAdapter.hpp; sourceTree = "<group>"; };
 		902B08A81858C475003A2A49 /* Magpie-TB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magpie-TB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902B08D01858C571003A2A49 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		902B08D11858C571003A2A49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -3036,6 +3102,11 @@
 		902B08E01858C571003A2A49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902B08E11858C571003A2A49 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		902B08F41858C666003A2A49 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9045C26818EE50E000B3ED9F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9045C26A18EE50E900B3ED9F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		9045C26E18EE514500B3ED9F /* libMobileGestalt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libMobileGestalt.dylib; path = usr/lib/libMobileGestalt.dylib; sourceTree = SDKROOT; };
+		9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PPAdapter.mm; sourceTree = "<group>"; };
+		9045C2A318EE5F6600B3ED9F /* PPAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAdapter.h; sourceTree = "<group>"; };
 		9058F5E118C4609800FD88DB /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
 		9058F5E218C4609800FD88DB /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		9058F5E318C4609800FD88DB /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
@@ -3353,20 +3424,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9066FD6918ED110100AAC9D8 /* libz.dylib in Frameworks */,
+				9045C27018EE536300B3ED9F /* libstdc++.6.dylib in Frameworks */,
+				9045C26F18EE514500B3ED9F /* libMobileGestalt.dylib in Frameworks */,
+				9066FD7518ED110100AAC9D8 /* Foundation.framework in Frameworks */,
+				9066FD7418ED110100AAC9D8 /* UIKit.framework in Frameworks */,
+				900673AA18F3A88500B47B57 /* PPAppPlatformKit.framework in Frameworks */,
+				9066FD6F18ED110100AAC9D8 /* QuartzCore.framework in Frameworks */,
+				9066FD7618ED110100AAC9D8 /* CoreGraphics.framework in Frameworks */,
+				9045C26D18EE510D00B3ED9F /* Security.framework in Frameworks */,
+				900673A818F3A88500B47B57 /* libUPPayPlugin.a in Frameworks */,
+				9045C26C18EE510500B3ED9F /* AdSupport.framework in Frameworks */,
 				9066FD6A18ED110100AAC9D8 /* SystemConfiguration.framework in Frameworks */,
+				9045C26B18EE50E900B3ED9F /* CoreFoundation.framework in Frameworks */,
+				900673A618F3A88500B47B57 /* libcrypto.a in Frameworks */,
+				9045C26918EE50E100B3ED9F /* CFNetwork.framework in Frameworks */,
+				9066FD6918ED110100AAC9D8 /* libz.dylib in Frameworks */,
 				9066FD6B18ED110100AAC9D8 /* libsqlite3.dylib in Frameworks */,
 				9066FD6C18ED110100AAC9D8 /* libMobClickCpp.a in Frameworks */,
 				9066FD6D18ED110100AAC9D8 /* libcocos2dx.a in Frameworks */,
 				9066FD6E18ED110100AAC9D8 /* libxml2.dylib in Frameworks */,
-				9066FD6F18ED110100AAC9D8 /* QuartzCore.framework in Frameworks */,
 				9066FD7018ED110100AAC9D8 /* OpenGLES.framework in Frameworks */,
+				9006739818F3A88500B47B57 /* AlixPaylib.a in Frameworks */,
 				9066FD7118ED110100AAC9D8 /* OpenAL.framework in Frameworks */,
+				9006739418F3A88500B47B57 /* AlipayRsaLib.a in Frameworks */,
 				9066FD7218ED110100AAC9D8 /* AudioToolbox.framework in Frameworks */,
 				9066FD7318ED110100AAC9D8 /* AVFoundation.framework in Frameworks */,
-				9066FD7418ED110100AAC9D8 /* UIKit.framework in Frameworks */,
-				9066FD7518ED110100AAC9D8 /* Foundation.framework in Frameworks */,
-				9066FD7618ED110100AAC9D8 /* CoreGraphics.framework in Frameworks */,
 				9066FD7718ED110100AAC9D8 /* StoreKit.framework in Frameworks */,
 				9066FD7818ED110100AAC9D8 /* libcurl.a in Frameworks */,
 				9066FD7918ED110100AAC9D8 /* libwebsockets.a in Frameworks */,
@@ -3383,12 +3465,17 @@
 				9066FE7D18ED111000AAC9D8 /* libMobClickCpp.a in Frameworks */,
 				9066FE7E18ED111000AAC9D8 /* libcocos2dx.a in Frameworks */,
 				9066FE7F18ED111000AAC9D8 /* libxml2.dylib in Frameworks */,
+				900673A718F3A88500B47B57 /* libcrypto.a in Frameworks */,
+				9006739918F3A88500B47B57 /* AlixPaylib.a in Frameworks */,
+				9006739518F3A88500B47B57 /* AlipayRsaLib.a in Frameworks */,
 				9066FE8018ED111000AAC9D8 /* QuartzCore.framework in Frameworks */,
+				900673A918F3A88500B47B57 /* libUPPayPlugin.a in Frameworks */,
 				9066FE8118ED111000AAC9D8 /* OpenGLES.framework in Frameworks */,
 				9066FE8218ED111000AAC9D8 /* OpenAL.framework in Frameworks */,
 				9066FE8318ED111000AAC9D8 /* AudioToolbox.framework in Frameworks */,
 				9066FE8418ED111000AAC9D8 /* AVFoundation.framework in Frameworks */,
 				9066FE8518ED111000AAC9D8 /* UIKit.framework in Frameworks */,
+				900673AB18F3A88500B47B57 /* PPAppPlatformKit.framework in Frameworks */,
 				9066FE8618ED111000AAC9D8 /* Foundation.framework in Frameworks */,
 				9066FE8718ED111000AAC9D8 /* CoreGraphics.framework in Frameworks */,
 				9066FE8818ED111000AAC9D8 /* StoreKit.framework in Frameworks */,
@@ -4291,6 +4378,41 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		9006737E18F3A88500B47B57 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				9006737F18F3A88500B47B57 /* AlipayRsaLib.a */,
+				9006738018F3A88500B47B57 /* Alixpay.bundle */,
+				9006738118F3A88500B47B57 /* AlixPaylib.a */,
+				9006738218F3A88500B47B57 /* json */,
+				9006739018F3A88500B47B57 /* libcrypto.a */,
+				9006739118F3A88500B47B57 /* libUPPayPlugin.a */,
+				9006739218F3A88500B47B57 /* PPAppPlatformKit.framework */,
+				9006739318F3A88500B47B57 /* PPImage.bundle */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		9006738218F3A88500B47B57 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				9006738318F3A88500B47B57 /* JSON.h */,
+				9006738418F3A88500B47B57 /* NSObject+SBJSON.h */,
+				9006738518F3A88500B47B57 /* NSObject+SBJSON.m */,
+				9006738618F3A88500B47B57 /* NSString+SBJSON.h */,
+				9006738718F3A88500B47B57 /* NSString+SBJSON.m */,
+				9006738818F3A88500B47B57 /* SBJSON.h */,
+				9006738918F3A88500B47B57 /* SBJSON.m */,
+				9006738A18F3A88500B47B57 /* SBJsonBase.h */,
+				9006738B18F3A88500B47B57 /* SBJsonBase.m */,
+				9006738C18F3A88500B47B57 /* SBJsonParser.h */,
+				9006738D18F3A88500B47B57 /* SBJsonParser.m */,
+				9006738E18F3A88500B47B57 /* SBJsonWriter.h */,
+				9006738F18F3A88500B47B57 /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
 		902B08CF1858C571003A2A49 /* TB */ = {
 			isa = PBXGroup;
 			children = (
@@ -4316,9 +4438,24 @@
 			path = TB;
 			sourceTree = "<group>";
 		};
+		9045C27118EE567E00B3ED9F /* PP */ = {
+			isa = PBXGroup;
+			children = (
+				9006737E18F3A88500B47B57 /* SDK */,
+				900673BB18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js */,
+				900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */,
+				900673BD18F3F4DA00B47B57 /* js_bindings_PPAdapter.hpp */,
+				9045C2A318EE5F6600B3ED9F /* PPAdapter.h */,
+				9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */,
+				9006737B18F3A24900B47B57 /* PPCallbackHandler.h */,
+			);
+			path = PP;
+			sourceTree = "<group>";
+		};
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				9045C27118EE567E00B3ED9F /* PP */,
 				90F3931E18C9C712002EC9BC /* UM */,
 				9058F62118C460DA00FD88DB /* TongBu */,
 				9058F60918C460CD00FD88DB /* WebLayer */,
@@ -4527,6 +4664,8 @@
 		906603A718ED665600AAC9D8 /* PP */ = {
 			isa = PBXGroup;
 			children = (
+				900673AE18F3EE7B00B47B57 /* AppController.h */,
+				900673AF18F3EE7B00B47B57 /* AppController.mm */,
 				906603A818ED665600AAC9D8 /* AppDelegate.cpp */,
 				906603A918ED665600AAC9D8 /* AppDelegate.h */,
 			);
@@ -4537,6 +4676,8 @@
 		906603AB18ED666000AAC9D8 /* PP-Releases */ = {
 			isa = PBXGroup;
 			children = (
+				900673B118F3EE8A00B47B57 /* AppController.h */,
+				900673B218F3EE8A00B47B57 /* AppController.mm */,
 				906603AC18ED666000AAC9D8 /* AppDelegate.cpp */,
 				906603AD18ED666000AAC9D8 /* AppDelegate.h */,
 			);
@@ -4769,6 +4910,9 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9045C26E18EE514500B3ED9F /* libMobileGestalt.dylib */,
+				9045C26A18EE50E900B3ED9F /* CoreFoundation.framework */,
+				9045C26818EE50E000B3ED9F /* CFNetwork.framework */,
 				90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */,
 				909187FE18A726D80023312A /* AdSupport.framework */,
 				90C212D01870702D00671D28 /* Security.framework */,
@@ -5351,6 +5495,7 @@
 				9066031B18ED4B2000AAC9D8 /* Icon-100.png in Resources */,
 				9066033318ED4B2000AAC9D8 /* Icon-80.png in Resources */,
 				9066FD9418ED110100AAC9D8 /* jsb_sys.js in Resources */,
+				900673AC18F3A88500B47B57 /* PPImage.bundle in Resources */,
 				9066FD9518ED110100AAC9D8 /* jsb.js in Resources */,
 				9066033718ED4B2000AAC9D8 /* iTunesArtwork in Resources */,
 				9066FD9618ED110100AAC9D8 /* README in Resources */,
@@ -5362,6 +5507,7 @@
 				9066032718ED4B2000AAC9D8 /* Icon-40.png in Resources */,
 				9066FD9918ED110100AAC9D8 /* res in Resources */,
 				9066032F18ED4B2000AAC9D8 /* Icon-72.png in Resources */,
+				9006739618F3A88500B47B57 /* Alixpay.bundle in Resources */,
 				9066031718ED4B2000AAC9D8 /* Default.png in Resources */,
 				9066FD9B18ED110100AAC9D8 /* json_internalarray.inl in Resources */,
 				9066FD9C18ED110100AAC9D8 /* json_internalmap.inl in Resources */,
@@ -5393,8 +5539,10 @@
 				9066032A18ED4B2000AAC9D8 /* Icon-50.png in Resources */,
 				9066031618ED4B2000AAC9D8 /* Default-568h@2x.png in Resources */,
 				9066033418ED4B2000AAC9D8 /* Icon-80.png in Resources */,
+				900673AD18F3A88500B47B57 /* PPImage.bundle in Resources */,
 				9066031C18ED4B2000AAC9D8 /* Icon-100.png in Resources */,
 				9066FE9B18ED111000AAC9D8 /* json_valueiterator.inl in Resources */,
+				9006739718F3A88500B47B57 /* Alixpay.bundle in Resources */,
 				9066033218ED4B2000AAC9D8 /* Icon-76.png in Resources */,
 				9066032418ED4B2000AAC9D8 /* Icon-152.png in Resources */,
 				9066032C18ED4B2000AAC9D8 /* Icon-57.png in Resources */,
@@ -6476,7 +6624,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9066FCA018ED110100AAC9D8 /* AppController.mm in Sources */,
 				9066FCA118ED110100AAC9D8 /* main.m in Sources */,
 				9066FCA218ED110100AAC9D8 /* RootViewController.mm in Sources */,
 				9066FCA318ED110100AAC9D8 /* UIListViewEx.cpp in Sources */,
@@ -6487,6 +6634,7 @@
 				9066FCA818ED110100AAC9D8 /* js_bindings_chipmunk_functions.cpp in Sources */,
 				9066FCA918ED110100AAC9D8 /* js_bindings_chipmunk_manual.cpp in Sources */,
 				9066FCAA18ED110100AAC9D8 /* js_bindings_chipmunk_registration.cpp in Sources */,
+				9045C2A418EE5F6600B3ED9F /* PPAdapter.mm in Sources */,
 				9066FCAB18ED110100AAC9D8 /* js_bindings_core.cpp in Sources */,
 				9066FCAC18ED110100AAC9D8 /* js_manual_conversions.cpp in Sources */,
 				9066FCAD18ED110100AAC9D8 /* ScriptingCore.cpp in Sources */,
@@ -6502,9 +6650,11 @@
 				9066FCB718ED110100AAC9D8 /* cpRotaryLimitJoint.c in Sources */,
 				9066FCB818ED110100AAC9D8 /* cpSimpleMotor.c in Sources */,
 				9066FCB918ED110100AAC9D8 /* cpSlideJoint.c in Sources */,
+				900673BE18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js in Sources */,
 				9066FCBA18ED110100AAC9D8 /* cpArbiter.c in Sources */,
 				9066FCBB18ED110100AAC9D8 /* cpArray.c in Sources */,
 				9066FCBC18ED110100AAC9D8 /* cpBB.c in Sources */,
+				9006739C18F3A88500B47B57 /* NSString+SBJSON.m in Sources */,
 				9066FCBD18ED110100AAC9D8 /* cpBBTree.c in Sources */,
 				9066FCBE18ED110100AAC9D8 /* cpBody.c in Sources */,
 				9066FCBF18ED110100AAC9D8 /* cpCollision.c in Sources */,
@@ -6534,6 +6684,7 @@
 				9066FCD918ED110100AAC9D8 /* CCBValue.cpp in Sources */,
 				9066FCDA18ED110100AAC9D8 /* CCControlButtonLoader.cpp in Sources */,
 				9066FCDB18ED110100AAC9D8 /* CCControlLoader.cpp in Sources */,
+				9006739E18F3A88500B47B57 /* SBJSON.m in Sources */,
 				9066FCDC18ED110100AAC9D8 /* CCData.cpp in Sources */,
 				9066FCDD18ED110100AAC9D8 /* CCLabelBMFontLoader.cpp in Sources */,
 				9066FCDE18ED110100AAC9D8 /* CCLabelTTFLoader.cpp in Sources */,
@@ -6569,6 +6720,7 @@
 				9066FCFC18ED110100AAC9D8 /* CCScrollView.cpp in Sources */,
 				9066FCFD18ED110100AAC9D8 /* CCSorting.cpp in Sources */,
 				9066FCFE18ED110100AAC9D8 /* CCTableView.cpp in Sources */,
+				9006739A18F3A88500B47B57 /* NSObject+SBJSON.m in Sources */,
 				9066FCFF18ED110100AAC9D8 /* CCTableViewCell.cpp in Sources */,
 				9066FD0018ED110100AAC9D8 /* CCPhysicsDebugNode.cpp in Sources */,
 				9066FD0118ED110100AAC9D8 /* CCPhysicsSprite.cpp in Sources */,
@@ -6597,6 +6749,7 @@
 				9066FD1818ED110100AAC9D8 /* SkeletonData.cpp in Sources */,
 				9066FD1918ED110100AAC9D8 /* SkeletonJson.cpp in Sources */,
 				9066FD1A18ED110100AAC9D8 /* Skin.cpp in Sources */,
+				900673A018F3A88500B47B57 /* SBJsonBase.m in Sources */,
 				9066FD1B18ED110100AAC9D8 /* Slot.cpp in Sources */,
 				9066FD1C18ED110100AAC9D8 /* SceneReader.cpp in Sources */,
 				9066FD1D18ED110100AAC9D8 /* SlotData.cpp in Sources */,
@@ -6625,6 +6778,7 @@
 				9066FD3518ED110100AAC9D8 /* CCArmature.cpp in Sources */,
 				9066FD3618ED110100AAC9D8 /* CCBone.cpp in Sources */,
 				9066FD3718ED110100AAC9D8 /* CCDatas.cpp in Sources */,
+				900673B018F3EE7B00B47B57 /* AppController.mm in Sources */,
 				9066FD3818ED110100AAC9D8 /* CCBatchNode.cpp in Sources */,
 				9066FD3918ED110100AAC9D8 /* CCDecorativeDisplay.cpp in Sources */,
 				9066FD3A18ED110100AAC9D8 /* CCDisplayFactory.cpp in Sources */,
@@ -6640,6 +6794,8 @@
 				9066FD4418ED110100AAC9D8 /* CCUtilMath.cpp in Sources */,
 				9066FD4518ED110100AAC9D8 /* CCComAttribute.cpp in Sources */,
 				9066FD4618ED110100AAC9D8 /* CCComAudio.cpp in Sources */,
+				900673C018F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */,
+				900673A418F3A88500B47B57 /* SBJsonWriter.m in Sources */,
 				906603AA18ED665600AAC9D8 /* AppDelegate.cpp in Sources */,
 				9066FD4718ED110100AAC9D8 /* CCComController.cpp in Sources */,
 				9066FD4818ED110100AAC9D8 /* CCComRender.cpp in Sources */,
@@ -6667,6 +6823,7 @@
 				9066FD5F18ED110100AAC9D8 /* UILoadingBar.cpp in Sources */,
 				9066FD6018ED110100AAC9D8 /* UISlider.cpp in Sources */,
 				9066FD6118ED110100AAC9D8 /* UISwitch.cpp in Sources */,
+				900673A218F3A88500B47B57 /* SBJsonParser.m in Sources */,
 				9066FD6218ED110100AAC9D8 /* UITextField.cpp in Sources */,
 				9066FD6318ED110100AAC9D8 /* CSContentJsonDictionary.cpp in Sources */,
 				9066FD6418ED110100AAC9D8 /* DictionaryHelper.cpp in Sources */,
@@ -6680,7 +6837,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9066FDB118ED111000AAC9D8 /* AppController.mm in Sources */,
 				9066FDB218ED111000AAC9D8 /* main.m in Sources */,
 				9066FDB418ED111000AAC9D8 /* RootViewController.mm in Sources */,
 				9066FDB518ED111000AAC9D8 /* UIListViewEx.cpp in Sources */,
@@ -6691,6 +6847,7 @@
 				9066FDBA18ED111000AAC9D8 /* js_bindings_chipmunk_functions.cpp in Sources */,
 				9066FDBB18ED111000AAC9D8 /* js_bindings_chipmunk_manual.cpp in Sources */,
 				9066FDBC18ED111000AAC9D8 /* js_bindings_chipmunk_registration.cpp in Sources */,
+				9045C2A518EE5F6600B3ED9F /* PPAdapter.mm in Sources */,
 				9066FDBD18ED111000AAC9D8 /* js_bindings_core.cpp in Sources */,
 				9066FDBE18ED111000AAC9D8 /* js_manual_conversions.cpp in Sources */,
 				9066FDBF18ED111000AAC9D8 /* WebLayerOC.m in Sources */,
@@ -6706,9 +6863,11 @@
 				9066FDCA18ED111000AAC9D8 /* cpRatchetJoint.c in Sources */,
 				9066FDCB18ED111000AAC9D8 /* cpRotaryLimitJoint.c in Sources */,
 				9066FDCC18ED111000AAC9D8 /* cpSimpleMotor.c in Sources */,
+				900673BF18F3F4DA00B47B57 /* js_bindings_PPAdapter_api.js in Sources */,
 				9066FDCD18ED111000AAC9D8 /* cpSlideJoint.c in Sources */,
 				9066FDCE18ED111000AAC9D8 /* cpArbiter.c in Sources */,
 				9066FDCF18ED111000AAC9D8 /* cpArray.c in Sources */,
+				9006739D18F3A88500B47B57 /* NSString+SBJSON.m in Sources */,
 				9066FDD018ED111000AAC9D8 /* cpBB.c in Sources */,
 				9066FDD118ED111000AAC9D8 /* cpBBTree.c in Sources */,
 				9066FDD218ED111000AAC9D8 /* cpBody.c in Sources */,
@@ -6738,6 +6897,7 @@
 				9066FDEA18ED111000AAC9D8 /* CCBSequence.cpp in Sources */,
 				9066FDEB18ED111000AAC9D8 /* CCBSequenceProperty.cpp in Sources */,
 				9066FDEC18ED111000AAC9D8 /* CCBValue.cpp in Sources */,
+				9006739F18F3A88500B47B57 /* SBJSON.m in Sources */,
 				9066FDED18ED111000AAC9D8 /* CCControlButtonLoader.cpp in Sources */,
 				9066FDEE18ED111000AAC9D8 /* CCControlLoader.cpp in Sources */,
 				9066FDEF18ED111000AAC9D8 /* CCData.cpp in Sources */,
@@ -6773,6 +6933,7 @@
 				9066FE0D18ED111000AAC9D8 /* CCScale9Sprite.cpp in Sources */,
 				9066FE0E18ED111000AAC9D8 /* CCEditBox.cpp in Sources */,
 				9066FE0F18ED111000AAC9D8 /* CCEditBoxImplIOS.mm in Sources */,
+				9006739B18F3A88500B47B57 /* NSObject+SBJSON.m in Sources */,
 				9066FE1018ED111000AAC9D8 /* CCScrollView.cpp in Sources */,
 				9066FE1118ED111000AAC9D8 /* CCSorting.cpp in Sources */,
 				9066FE1218ED111000AAC9D8 /* CCTableView.cpp in Sources */,
@@ -6801,6 +6962,7 @@
 				9066FE2A18ED111000AAC9D8 /* Json.cpp in Sources */,
 				9066FE2B18ED111000AAC9D8 /* RegionAttachment.cpp in Sources */,
 				9066FE2C18ED111000AAC9D8 /* Skeleton.cpp in Sources */,
+				900673A118F3A88500B47B57 /* SBJsonBase.m in Sources */,
 				9066FE2D18ED111000AAC9D8 /* SkeletonData.cpp in Sources */,
 				9066FE2E18ED111000AAC9D8 /* SkeletonJson.cpp in Sources */,
 				9066FE2F18ED111000AAC9D8 /* Skin.cpp in Sources */,
@@ -6829,6 +6991,7 @@
 				9066FE4618ED111000AAC9D8 /* CCTween.cpp in Sources */,
 				9066FE4718ED111000AAC9D8 /* CCArmature.cpp in Sources */,
 				9066FE4818ED111000AAC9D8 /* CCBone.cpp in Sources */,
+				900673B318F3EE8A00B47B57 /* AppController.mm in Sources */,
 				9066FE4918ED111000AAC9D8 /* CCDatas.cpp in Sources */,
 				9066FE4A18ED111000AAC9D8 /* CCBatchNode.cpp in Sources */,
 				9066FE4B18ED111000AAC9D8 /* CCDecorativeDisplay.cpp in Sources */,
@@ -6844,6 +7007,8 @@
 				9066FE5518ED111000AAC9D8 /* CCTransformHelp.cpp in Sources */,
 				9066FE5618ED111000AAC9D8 /* CCTweenFunction.cpp in Sources */,
 				9066FE5718ED111000AAC9D8 /* CCUtilMath.cpp in Sources */,
+				900673C118F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */,
+				900673A518F3A88500B47B57 /* SBJsonWriter.m in Sources */,
 				906603AE18ED666000AAC9D8 /* AppDelegate.cpp in Sources */,
 				9066FE5818ED111000AAC9D8 /* CCComAttribute.cpp in Sources */,
 				9066FE5918ED111000AAC9D8 /* CCComAudio.cpp in Sources */,
@@ -6871,6 +7036,7 @@
 				9066FE7018ED111000AAC9D8 /* UILoadingBar.cpp in Sources */,
 				9066FE7118ED111000AAC9D8 /* UISlider.cpp in Sources */,
 				9066FE7218ED111000AAC9D8 /* UISwitch.cpp in Sources */,
+				900673A318F3A88500B47B57 /* SBJsonParser.m in Sources */,
 				9066FE7318ED111000AAC9D8 /* UITextField.cpp in Sources */,
 				9066FE7418ED111000AAC9D8 /* CSContentJsonDictionary.cpp in Sources */,
 				9066FE7518ED111000AAC9D8 /* DictionaryHelper.cpp in Sources */,
@@ -8299,6 +8465,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/PP/SDK",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8332,6 +8502,7 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
+					"$(SRCROOT)/lib/PP/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -8353,6 +8524,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/PP/SDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8383,6 +8558,7 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
+					"$(SRCROOT)/lib/PP/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -8405,6 +8581,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/PP/SDK",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -8438,6 +8618,7 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
+					"$(SRCROOT)/lib/PP/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -8459,6 +8640,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/lib/PP/SDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -8489,6 +8674,7 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries",
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
+					"$(SRCROOT)/lib/PP/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

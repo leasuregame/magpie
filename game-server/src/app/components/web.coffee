@@ -5,9 +5,8 @@ util = require 'util'
 fs = require 'fs'
 path = require 'path'
 ursa = require 'ursa'
+async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
-
-APPKEY = 'o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo'
 
 PUBLIC_KEY = fs.readFileSync(path.join(__dirname, '..', '..', 'config', 'pp.pub'))
 
@@ -24,13 +23,19 @@ class Component
     http.createServer (req, res) =>
       pathname = url.parse(req.url).pathname
       console.log pathname, req.method, req
-      if pathname is '/orderResult'
-        checkOrderResult(@app, req, res)
-      else if pathname is '/orderResult/PP'
-        processPPOrderResult(@app, req, res)
-      else 
-        res.writeHead(404, 'Not Found')
-        res.end()
+      switch pathname
+        when '/orderResult' 
+          processTBOrderResult(@app, req, res)
+          break
+        when '/orderResult/PP' 
+          processPPOrderResult(@app, req, res)
+          break
+        when '/orderResult/91' 
+          process91OrderResult(@app, req, res)
+          break
+        else 
+          res.writeHead(404, 'Not Found')
+          res.end()
     .listen(server.webPort, server.host)
     process.nextTick cb
 
@@ -39,6 +44,91 @@ class Component
 
   stop: (force, cb) ->
     process.nextTick cb
+
+process91OrderResult = (app, req, res) ->
+  if req.method isnt 'GET'
+    res.writeHead 405, "Content-Type": "text/plain"
+    return res.end()
+
+  params = url.parse(req.url, true).query
+  console.log 'params: ', params
+
+  AppId        = params['AppId'] #应用ID
+  Act        = params['Act'] #操作
+  ProductName    = params['ProductName'] #应用名称
+  ConsumeStreamId  = params['ConsumeStreamId'] #消费流水号
+  CooOrderSerial   = params['CooOrderSerial'] #商户订单号
+  Uin        = params['Uin'] #91帐号ID
+  GoodsId      = params['GoodsId'] #商品ID
+  GoodsInfo      = params['GoodsInfo'] #商品名称
+  GoodsCount     = params['GoodsCount'] #商品数量
+  OriginalMoney    = params['OriginalMoney'] #原始总价（格式：0.00）
+  OrderMoney     = params['OrderMoney'] #实际总价（格式：0.00）
+  Note       = params['Note'] #支付描述
+  PayStatus      = params['PayStatus'] #支付状态：0=失败，1=成功
+  CreateTime     = params['CreateTime'] #创建时间
+  Sign       = params['Sign'] #91服务器直接传过来的sign
+
+  async.waterfall [
+    (done) ->
+      makeSureParamsIsNotEmpty params, done
+
+    (done) ->
+      if parseInt Act isnt 1
+        done ErrorCode: '3', ErrorDesc: 'Act无效'
+
+      APP_ID_91 = process.env.APP_ID_91
+      if AppId.toString() isnt APP_ID_91.toString()
+        done ErrorCode: '2', ErrorDesc: 'AppId无效'
+
+      sign_check = md5 "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{Note}#{PayStatus}#{CreateTime}#{process.env.APP_KEY_91}"
+      console.log Sign, sign_check
+      if sign_check is Sign
+        done()
+      else 
+        done ErrorCode: '5', ErrorDesc: 'Sign无效'
+
+    (done) ->
+      [playerId, areaId] = Note.split(':')
+      remoteData = 
+        playerId: playerId
+        areaId: parseInt areaId
+        tradeNo: CooOrderSerial
+        tbOrderNo: ConsumeStreamId
+        partner: '91'
+        amount: OrderMoney
+        productId: GoodsId
+        paydes: Note
+
+      session = 
+        get: (k) -> return areaId if k is 'areaId'
+
+      app.rpc.area.orderRemote.add session, remoteData, '91', (err, orderResult) ->
+        console.log '-91-', err, orderResult
+        if err or not orderResult.ok
+          done ErrorCode: '0', ErrorDesc: '接收失败'
+        else
+          done()
+  ], (err) ->
+    if err
+      res.write(JSON.stringify(err))
+    else
+      res.write(JSON.stringify({ErrorCode: '1', ErrorDesc: '接收成功'}))
+
+    res.end()
+
+makeSureParamsIsNotEmpty = (params, cb) ->
+  ok = params.AppId? and params.Act? and params.ProductName? and \
+  params.ConsumeStreamId? and params.CooOrderSerial? and \
+  params.Uin? and params.GoodsId? and params.GoodsInfo? and \
+  params.GoodsCount? and params.OriginalMoney? and \
+  params.OrderMoney? and params.Note? and params.PayStatus? and \
+  params.CreateTime? and params.Sign?
+
+  if ok 
+    cb(null)
+  else 
+    cb({ErrorCode: '0', ErrorDesc: '接收失败'})
 
 processPPOrderResult = (app, req, res) ->
   processPost req, res, (data) ->
@@ -105,7 +195,11 @@ processPost = (request, response, callback) ->
     callback()
   return
 
-checkOrderResult = (app, req, res) ->
+processTBOrderResult = (app, req, res) ->
+  if req.method isnt 'GET'
+    res.writeHead 405, "Content-Type": "text/plain"
+    return res.end()
+
   params = url.parse(req.url, true).query
   # source, trade_no, amount, partner, paydes, debug, sign
   source = params.source
@@ -119,12 +213,12 @@ checkOrderResult = (app, req, res) ->
 
   tempsign = md5 util.format(
     'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&tborder=%s&key=%s',
-    source, trade_no, amount, partner, paydes, tborder, APPKEY
+    source, trade_no, amount, partner, paydes, tborder, process.env.APP_KEY_TB
   )
   if debug
     tempsign = md5 util.format(
       'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
-      source, trade_no, amount, partner, paydes, debug, tborder, APPKEY
+      source, trade_no, amount, partner, paydes, debug, tborder, process.env.APP_KEY_TB
     )
     
   res.writeHead(200, {'Content-type': 'application/json'})

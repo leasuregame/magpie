@@ -270,6 +270,63 @@ int NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号
 }
 
 
+/******************************************************************************
+ *
+ *	Objective-C回调中调回C++同名函数
+ *
+ *****************************************************************************/
+void SNSInitResult(bool result, int code)
+{
+    
+}
+
+void SNSLeavePlatform(bool result, int code)
+{
+    
+}
+
+void SNSLoginResult(bool result, int code)
+{
+    
+}
+
+void SNSPauseExit(bool result, int code)
+{
+    
+}
+
+void SNSBuyResult(bool result, int code, BuyInfo * buyInfo)
+{
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    
+    JSObject* jsobj = JS_NewObject(cx, NULL, NULL, NULL);
+    
+    jsval jsCooOrderSerial = c_string_to_jsval(cx, buyInfo->cooOrderSerial);
+    jsval jsProductId = c_string_to_jsval(cx, buyInfo->productId);
+    jsval jsProductName = c_string_to_jsval(cx, buyInfo->productName);
+    jsval jsProductOrignalPrice = DOUBLE_TO_JSVAL(buyInfo->productOrignalPrice);
+    jsval jsProductPrice = DOUBLE_TO_JSVAL(buyInfo->productPrice);
+    jsval jsProductCount = INT_TO_JSVAL(buyInfo->productCount);
+    jsval jsPayDescription = c_string_to_jsval(cx, buyInfo->payDescription);
+    
+    JS_SetProperty(cx, jsobj, "cooOrderSerial", &jsCooOrderSerial);
+    JS_SetProperty(cx, jsobj, "productId", &jsProductId);
+    JS_SetProperty(cx, jsobj, "productName", &jsProductName);
+    JS_SetProperty(cx, jsobj, "productOrignalPrice", &jsProductOrignalPrice);
+    JS_SetProperty(cx, jsobj, "productPrice", &jsProductPrice);
+    JS_SetProperty(cx, jsobj, "productCount", &jsProductCount);
+    JS_SetProperty(cx, jsobj, "payDescription", &jsPayDescription);
+    
+    jsval v[] = {
+        v[0] = BOOLEAN_TO_JSVAL(result),
+        v[1] = INT_TO_JSVAL(code),
+        v[2] = OBJECT_TO_JSVAL(jsobj)
+    };
+    
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSBuyResult", 3, v, NULL);
+}
+
+
 #pragma mark    ---------------SDK CALLBACK OJC---------------
 /******************************************************************************
  *
@@ -295,93 +352,57 @@ static NDCallbackHandler * s_SharedNDCallbackHandler = NULL;
 - (void)SNSInitResult : (NSNotification *)notify
 {
     CCLOG("SNSInitResult");
+    
+    NDAdapter::NDAdapterInstance()->SNSInitResult();
 }
 
 
 - (void)SNSLeavePlatform : (NSNotification *)notify
 {
     CCLOG("SNSLeavePlatform");
+    
+    NDAdapter::NDAdapterInstance()->SNSLeavePlatform();
 }
 
 - (void)SNSLoginResult : (NSNotification *)notify
 {
     CCLOG("SNSLoginResult");
     
-    NSDictionary *dict = [notify userInfo];
-    BOOL success = [[dict objectForKey:@"result"] boolValue];
-    NdGuestAccountStatus* guestStatus = (NdGuestAccountStatus*)[dict
-                                                                objectForKey:@"NdGuestAccountStatus"]; //登录成功后处理
-    if([[NdComPlatform defaultPlatform] isLogined] && success) { //也可以通过[[NdComPlatform defaultPlatform] getCurrentLoginState]判断是否游客登录状态
-        if (guestStatus) {
-            if ([guestStatus isGuestLogined]) { //游客账号登录成功;
-            }
-            else if ([guestStatus isGuestRegistered]) {
-                //游客成功注册为普通账号
-            } }
-        else {
-            //普通账号登录成功!
-        } }
-    //登录失败处理和相应提示
-    else {
-        int error = [[dict objectForKey:@"error"] intValue];
-        NSString* strTip = [NSString stringWithFormat:@"登录失败, error=%d", error]; switch (error) {
-            case ND_COM_PLATFORM_ERROR_USER_CANCEL://用户取消登录
-                if (([[NdComPlatform defaultPlatform] getCurrentLoginState] ==
-                     ND_LOGIN_STATE_GUEST_LOGIN)) {
-                    strTip = @"当前仍处于游客登录状态";
-                }
-                else {
-                    strTip = @"用户未登录"; }
-                break;
-            case ND_COM_PLATFORM_ERROR_APP_KEY_INVALID://appId未授权接入, 或appKey 无效
-                strTip = @"登录失败, 请检查appId/appKey";
-                break;
-            case ND_COM_PLATFORM_ERROR_CLIENT_APP_ID_INVALID://无效的应用ID
-                strTip = @"登录失败, 无效的应用ID";
-                break;
-            case ND_COM_PLATFORM_ERROR_HAS_ASSOCIATE_91:
-                strTip = @"有关联的91账号,不能以游客方式登录";
-                break;
-            default:
-                //其他类型的错误提示
-            break; }
-    }
+    NSDictionary * dict = [notify userInfo];
+    
+    BOOL result = [[dict objectForKey : @"result"] boolValue];
+    int code = [[dict objectForKey : @"error"] intValue];
+    
+    NDAdapter::NDAdapterInstance()->SNSLoginResult(result, code);
 }
 
 - (void)SNSPauseExit : (NSNotification *)notify {
-    //do what you want
+    CCLOG("SNSPauseExit");
+    
+    NDAdapter::NDAdapterInstance()->SNSPauseExit();
 }
 
 - (void)SNSBuyResult : (NSNotification*)notify
 {
-    NSDictionary* dic = [notify userInfo];
-    BOOL bSuccess = [[dic objectForKey:@"result"] boolValue]; NSString* str = bSuccess ? @"购买成功" : @"购买失败";
-    if (!bSuccess) {
-        //TODO: 购买失败处理
-        NSString* strError = nil;
-        int nErrorCode = [[dic objectForKey:@"error"] intValue]; switch (nErrorCode) {
-            case ND_COM_PLATFORM_ERROR_USER_CANCEL: strError = @"用户取消操作";
-                break;
-            case ND_COM_PLATFORM_ERROR_NETWORK_FAIL: strError = @"网络连接错误";
-                break;
-            case ND_COM_PLATFORM_ERROR_SERVER_RETURN_ERROR: strError = @"服务端处理失败";
-                break;
-            case ND_COM_PLATFORM_ERROR_ORDER_SERIAL_SUBMITTED: //!!!: 异步支付,用户进入充值界面了
-                strError = @"支付订单已提交";
-                break;
-            default:
-                strError = @"购买过程发生错误"; break;
-        }
-        str = [str stringByAppendingFormat:@"\n%@", strError];
-    }
-    else {
-        //TODO: 购买成功处理
-    }
-    //本次购买的请求参数
-    NdBuyInfo* buyInfo = (NdBuyInfo*)[dic objectForKey:@"buyInfo"];
-    str = [str stringByAppendingFormat:@"\n<productId = %@, productCount = %d, cooOrderSerial = %@>",
-           buyInfo.productId, buyInfo.productCount, buyInfo.cooOrderSerial];
-    NSLog(@"NdUiPayAsynResult: %@", str);
+    CCLOG("SNSBuyResult");
+    
+    NSDictionary * dict = [notify userInfo];
+    
+    bool result = [[dict objectForKey : @"result"] boolValue];
+    int code = [[dict objectForKey : @"error"] intValue];
+    NdBuyInfo * NSBuyInfo = (NdBuyInfo *)[dict objectForKey : @"buyInfo"];
+    
+    BuyInfo buyInfo = new BuyInfo();
+    
+    buyInfo->cooOrderSerial = [NSBuyInfo cooOrderSerial];
+    buyInfo->productId = [NSBuyInfo productId];
+    buyInfo->productName = [NSBuyInfo productName];
+    buyInfo->productOrignalPrice = [NSBuyInfo productOrignalPrice];
+    buyInfo->productPrice = [NSBuyInfo productPrice];
+    buyInfo->productCount = [NSBuyInfo productCount];
+    buyInfo->payDescription = [NSBuyInfo payDescription];
+    
+    NDAdapter::NDAdapterInstance()->SNSBuyResult(result, code, buyInfo);
 }
 
 @end

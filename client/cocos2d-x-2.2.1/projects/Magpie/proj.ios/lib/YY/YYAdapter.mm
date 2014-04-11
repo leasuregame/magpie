@@ -120,9 +120,9 @@ void YYAdapter::YYOnLoginRetCode(long code, User * user)
     CCLOG("-------------%s", user->userName);
     CCLOG("-------------%d", user->isLogin);
     
-    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    JSContext * cx = ScriptingCore::getInstance()->getGlobalContext();
     
-    JSObject* jsobj = JS_NewObject(cx, NULL, NULL, NULL);
+    JSObject * jsobj = JS_NewObject(cx, NULL, NULL, NULL);
     
     char account[100];
     sprintf(account, "%ld", user->account);

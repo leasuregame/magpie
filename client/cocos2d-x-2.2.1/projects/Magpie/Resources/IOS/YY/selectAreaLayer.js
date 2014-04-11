@@ -69,24 +69,24 @@ var SelectAreaLayer = cc.Layer.extend({
             var y = scrollViewHeight - (len - 1 - i) * 70 - 35;
 
             var areaItem = cc.MenuItemImage.create(
-                main_scene_image.up95,
-                main_scene_image.up95,
+                main_scene_image.button83,
+                main_scene_image.button83s,
                 this._onClickArea(i),
                 this
             );
 
-            areaItem.setScaleX(0.9);
-            areaItem.setPosition(cc.p(320, y));
+            //areaItem.setScaleX(0.9);
+            areaItem.setPosition(cc.p(340, y));
 
             var area = this._areaList[i];
 
             var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
             areaLabel.setColor(area.color);
-            areaLabel.setPosition(cc.p(250, 30));
+            areaLabel.setPosition(cc.p(210, 30));
             areaItem.addChild(areaLabel);
 
             var statusIcon = cc.Sprite.create(area.url);
-            statusIcon.setPosition(cc.p(400, 30));
+            statusIcon.setPosition(cc.p(360, 30));
             areaItem.addChild(statusIcon);
 
             menu.addChild(areaItem);

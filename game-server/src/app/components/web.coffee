@@ -89,7 +89,7 @@ process91OrderResult = (app, req, res) ->
         done ErrorCode: '5', ErrorDesc: 'Sign无效'
 
     (done) ->
-      [playerId, areaId] = Note.split(':')
+      [playerId, areaId] = CooOrderSerial.split('-')
       remoteData = 
         playerId: playerId
         areaId: parseInt areaId

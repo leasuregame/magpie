@@ -269,6 +269,8 @@
 		9006748018F54D1800B47B57 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747018F54CF300B47B57 /* platform.js */; };
 		9006748118F54D1800B47B57 /* selectAreaLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747118F54CF300B47B57 /* selectAreaLayer.js */; };
 		9006748218F54D1800B47B57 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747218F54CF300B47B57 /* user.js */; };
+		9011F0BD18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
+		9011F0BE18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
 		901992EE18F694D200A74ECF /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006744718F5351F00B47B57 /* libc++abi.dylib */; };
 		901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		901992F018F695B300A74ECF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26818EE50E000B3ED9F /* CFNetwork.framework */; };
@@ -1101,7 +1103,6 @@
 		9066020D18ED4A2200AAC9D8 /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A2757B61697FAAD00504026 /* jsb.js */; };
 		9066020E18ED4A2200AAC9D8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 15A3D3021682F0A0002FB0C5 /* README */; };
 		9066020F18ED4A2200AAC9D8 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 15A3D3601682F0B5002FB0C5 /* CMakeLists.txt */; };
-		9066021018ED4A2200AAC9D8 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		9066021118ED4A2200AAC9D8 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748817F0874400B9ACAE /* json_internalarray.inl */; };
 		9066021218ED4A2200AAC9D8 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748917F0874400B9ACAE /* json_internalmap.inl */; };
 		9066021318ED4A2200AAC9D8 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748E17F0874400B9ACAE /* json_valueiterator.inl */; };
@@ -1319,7 +1320,6 @@
 		906602F318ED4A2400AAC9D8 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A96A4F2174A3432008653A9 /* libcurl.a */; };
 		906602F418ED4A2400AAC9D8 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB8701D175E07C6005D39BF /* libwebsockets.a */; };
 		906602F618ED4A2400AAC9D8 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 15A3D3021682F0A0002FB0C5 /* README */; };
-		906602F718ED4A2400AAC9D8 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 1AE4B40116D1FECD003C6D1C /* res */; };
 		906602F818ED4A2400AAC9D8 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 15A3D3601682F0B5002FB0C5 /* CMakeLists.txt */; };
 		906602F918ED4A2400AAC9D8 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748817F0874400B9ACAE /* json_internalarray.inl */; };
 		906602FA18ED4A2400AAC9D8 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E748917F0874400B9ACAE /* json_internalmap.inl */; };
@@ -3147,6 +3147,7 @@
 		9006747118F54CF300B47B57 /* selectAreaLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = selectAreaLayer.js; sourceTree = "<group>"; };
 		9006747218F54CF300B47B57 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDCallbackHandler.h; sourceTree = "<group>"; };
+		9011F0BC18F7E38200EC3967 /* resYY */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resYY; path = ../Resources/resYY; sourceTree = "<group>"; };
 		901992F618F6964700A74ECF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		901992F818F6965A00A74ECF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		901992FB18F6968800A74ECF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -3680,6 +3681,7 @@
 				906603EE18ED6E2C00AAC9D8 /* YY-Releases */,
 				1AE4B40216D1FECD003C6D1C /* src */,
 				1AE4B40116D1FECD003C6D1C /* res */,
+				9011F0BC18F7E38200EC3967 /* resYY */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -5635,8 +5637,8 @@
 				9066039718ED4B3500AAC9D8 /* Icon-50.png in Resources */,
 				9066038F18ED4B3500AAC9D8 /* Icon-144.png in Resources */,
 				9066039518ED4B3500AAC9D8 /* Icon-40.png in Resources */,
-				9066021018ED4A2200AAC9D8 /* res in Resources */,
 				9066039D18ED4B3500AAC9D8 /* Icon-72.png in Resources */,
+				9011F0BD18F7E38200EC3967 /* resYY in Resources */,
 				9066038518ED4B3500AAC9D8 /* Default.png in Resources */,
 				9066021118ED4A2200AAC9D8 /* json_internalarray.inl in Resources */,
 				9066021218ED4A2200AAC9D8 /* json_internalmap.inl in Resources */,
@@ -5657,11 +5659,11 @@
 				9066038618ED4B3500AAC9D8 /* Default.png in Resources */,
 				9066038818ED4B3500AAC9D8 /* Default@2x.png in Resources */,
 				9066039E18ED4B3500AAC9D8 /* Icon-72.png in Resources */,
-				906602F718ED4A2400AAC9D8 /* res in Resources */,
 				906602F818ED4A2400AAC9D8 /* CMakeLists.txt in Resources */,
 				906602F918ED4A2400AAC9D8 /* json_internalarray.inl in Resources */,
 				906603F018ED6E2C00AAC9D8 /* game.jsc in Resources */,
 				906602FA18ED4A2400AAC9D8 /* json_internalmap.inl in Resources */,
+				9011F0BE18F7E38200EC3967 /* resYY in Resources */,
 				9066039C18ED4B3500AAC9D8 /* Icon-58.png in Resources */,
 				9066038C18ED4B3500AAC9D8 /* Icon-114.png in Resources */,
 				9066038E18ED4B3500AAC9D8 /* Icon-120.png in Resources */,

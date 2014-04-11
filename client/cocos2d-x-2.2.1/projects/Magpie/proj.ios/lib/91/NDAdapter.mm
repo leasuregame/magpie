@@ -61,9 +61,10 @@ NDAdapter * NDAdapter::NDAdapterInstance()
         
         // 购买结果的通知,在购买结束时会发送该通知
         [[NSNotificationCenter defaultCenter] addObserver : [NDCallbackHandler sharedHandler]
-                                                 selector : @selector(NdUniPayResult:)
+                                                 selector : @selector(SNSBuyResult:)
                                                      name : kNdCPBuyResultNotification
                                                    object : nil];
+
     }
     
     return s_SharedNDAdapter;
@@ -214,7 +215,7 @@ void NDAdapter::NDEnterPlatform(int nFlag)
     [[NdComPlatform defaultPlatform] NdEnterPlatform : nFlag];
 }
 
-int NDAdapter::NDBuy(const char * cooOrderSerial,      // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+int NDAdapter::NDUniPay(const char * cooOrderSerial,    // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
            const char * productId,                      // 商品Id
            const char * productName,                    // 商品名字
            float productOrignalPrice,                   // 商品价格，两位小数
@@ -222,6 +223,8 @@ int NDAdapter::NDBuy(const char * cooOrderSerial,      // 合作商的订单号�
            int productCount,                            // 购买商品个数
            const char * payDescription)                 // 购买描述，可选，没有为空
 {
+    CCLOG("NDUniPay");
+    
     NSString * NSCooOrderSerial = [NSString stringWithUTF8String : cooOrderSerial];
     NSString * NSProductId = [NSString stringWithUTF8String : productId];
     NSString * NSProductName = [NSString stringWithUTF8String : productName];
@@ -236,7 +239,34 @@ int NDAdapter::NDBuy(const char * cooOrderSerial,      // 合作商的订单号�
     buyInfo.productPrice = productPrice;
     buyInfo.payDescription = NSPayDescription;
     
-    return [[NdComPlatform defaultPlatform] NdUniPay:buyInfo];
+    return [[NdComPlatform defaultPlatform] NdUniPay : buyInfo];
+}
+
+int NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+                 const char * productId,                // 商品Id
+                 const char * productName,              // 商品名字
+                 float productOrignalPrice,             // 商品价格，两位小数
+                 float productPrice,                    // 商品原始价格，保留两位小数
+                 int productCount,                      // 购买商品个数
+                 const char * payDescription)           // 购买描述，可选，没有为空
+{
+    CCLOG("NDUniPayAsyn");
+
+    NSString * NSCooOrderSerial = [NSString stringWithUTF8String : cooOrderSerial];
+    NSString * NSProductId = [NSString stringWithUTF8String : productId];
+    NSString * NSProductName = [NSString stringWithUTF8String : productName];
+    NSString * NSPayDescription = [NSString stringWithUTF8String : payDescription];
+    
+    NdBuyInfo * buyInfo = [[NdBuyInfo new] autorelease];
+    
+    buyInfo.cooOrderSerial = NSCooOrderSerial;
+    buyInfo.productId = NSProductId;
+    buyInfo.productName = NSProductName;
+    buyInfo.productOrignalPrice = productOrignalPrice;
+    buyInfo.productPrice = productPrice;
+    buyInfo.payDescription = NSPayDescription;
+    
+    return [[NdComPlatform defaultPlatform]  NdUniPayAsyn : buyInfo];
 }
 
 
@@ -322,9 +352,9 @@ static NDCallbackHandler * s_SharedNDCallbackHandler = NULL;
     //do what you want
 }
 
-- (void)NdUniPayResult : (NSNotification*)notify
+- (void)SNSBuyResult : (NSNotification*)notify
 {
-    NSDictionary *dic = [notify userInfo];
+    NSDictionary* dic = [notify userInfo];
     BOOL bSuccess = [[dic objectForKey:@"result"] boolValue]; NSString* str = bSuccess ? @"购买成功" : @"购买失败";
     if (!bSuccess) {
         //TODO: 购买失败处理
@@ -336,9 +366,12 @@ static NDCallbackHandler * s_SharedNDCallbackHandler = NULL;
                 break;
             case ND_COM_PLATFORM_ERROR_SERVER_RETURN_ERROR: strError = @"服务端处理失败";
                 break;
+            case ND_COM_PLATFORM_ERROR_ORDER_SERIAL_SUBMITTED: //!!!: 异步支付,用户进入充值界面了
+                strError = @"支付订单已提交";
+                break;
             default:
-                strError = @"购买过程发生错误";
-            break; }
+                strError = @"购买过程发生错误"; break;
+        }
         str = [str stringByAppendingFormat:@"\n%@", strError];
     }
     else {
@@ -348,7 +381,7 @@ static NDCallbackHandler * s_SharedNDCallbackHandler = NULL;
     NdBuyInfo* buyInfo = (NdBuyInfo*)[dic objectForKey:@"buyInfo"];
     str = [str stringByAppendingFormat:@"\n<productId = %@, productCount = %d, cooOrderSerial = %@>",
            buyInfo.productId, buyInfo.productCount, buyInfo.cooOrderSerial];
-    NSLog(@"NdUiPayResult: %@", str);
+    NSLog(@"NdUiPayAsynResult: %@", str);
 }
 
 @end

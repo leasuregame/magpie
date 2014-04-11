@@ -4,7 +4,7 @@ utility = require('../common/utility')
 path = require 'path'
 fs = require 'fs'
 
-DEFAULT_INTERVAL = 60000 * 5
+DEFAULT_INTERVAL = 60000 * 60
 HOUR  = 0
 DATE_FILEPATH = path.join(__dirname, '..', '..', 'config', 'lvDistributionDate.conf')
 

@@ -1,5 +1,21 @@
 extends adminLayout
 
+block head
+  script(type="text/javascript", src="https://www.google.com/jsapi")
+  script.
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable(#{unescape(JSON.stringify(users))}));
+
+      var options = {
+        title: '用户在线人数分布图'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
 block content
   div.jumbotron
     h1 版本用户分布 
@@ -16,7 +32,7 @@ block content
 
   div.jumbotron
     h1 游戏 Web API
-      small.pull-right 115.29.175.156:9090
+      small.pull-right 
     small [ ]中得字符为参数。[platform]为平台参数（app或tb）
     small
       a(href='http://www.ksyun.com/product/ks3', target='blank') 去更新下载包

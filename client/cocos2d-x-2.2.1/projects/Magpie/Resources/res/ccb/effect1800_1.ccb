@@ -289,8 +289,6 @@
 								<string>res/effect/effect/p55.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -627,7 +625,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>50</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -643,7 +641,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>50</integer>
+								<integer>30</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -771,8 +769,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>30</real>
+									<real>20</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -806,6 +804,8 @@
 								<string>res/effect/effect/p15.png</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

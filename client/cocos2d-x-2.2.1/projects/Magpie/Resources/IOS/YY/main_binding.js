@@ -101,7 +101,7 @@ var appFiles = [
     'src/controls/dialog.js',
     'src/controls/slideLayer.js',
 
-    'src/view/loginModule/loginScene.js',
+    'loginScene.js',
     'loginBgLayer.js',
     'src/view/loginModule/updateLayer.js',
     'loginLayer.js',

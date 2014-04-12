@@ -17,19 +17,29 @@ var LoginScene = cc.Scene.extend({
     _toLayer: null,
 
     onEnter: function () {
-        cc.log("LoginScene onEnter");
+        cc.log("YY LoginScene onEnter");
 
         this._super();
 
-        if (this._toLayer) {
-            this.switchLayer(this._toLayer);
-        } else {
-            this.switchLayer(LoginLayer);
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect106,this);
+        effect.setPosition(gameFit.GAME_MIDPOINT);
 
-            if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-                NoticeLayer.pop();
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            cc.log("#############");
+
+            if (this._toLayer) {
+                this.switchLayer(this._toLayer);
+            } else {
+                this.switchLayer(LoginLayer);
+
+                if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+                    NoticeLayer.pop();
+                }
             }
-        }
+        });
+
+        this.addChild(effect);
+
 
         lz.um.beginLogPageView("登录场景");
     },

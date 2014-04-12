@@ -75,19 +75,19 @@ var SelectAreaLayer = cc.Layer.extend({
                 this
             );
 
-            //areaItem.setScaleX(0.9);
             areaItem.setPosition(cc.p(340, y));
 
             var area = this._areaList[i];
 
             var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
             areaLabel.setColor(area.color);
-            areaLabel.setPosition(cc.p(210, 30));
+            areaLabel.setPosition(cc.p(140, 30));
             areaItem.addChild(areaLabel);
 
-            var statusIcon = cc.Sprite.create(area.url);
-            statusIcon.setPosition(cc.p(360, 30));
-            areaItem.addChild(statusIcon);
+            var statusLabel =  StrokeLabel.create(area.statusName, "STHeitiTC-Medium", 35);
+            statusLabel.setColor(area.color);
+            statusLabel.setPosition(cc.p(420, 30));
+            areaItem.addChild(statusLabel);
 
             menu.addChild(areaItem);
         }

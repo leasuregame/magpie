@@ -985,10 +985,6 @@ var main_scene_image = {
     uiEffect103: "res/ccb/uiEffect103.ccbi",
     uiEffect104: "res/ccb/uiEffect104.ccbi",
     uiEffect105: "res/ccb/uiEffect105.ccbi",
-    uiEffect106: "res/ccb/uiEffect106.ccbi",
-    uiEffect107: "res/ccb/uiEffect107.ccbi",
-    uiEffect108: "res/ccb/uiEffect108.ccbi",
-    uiEffect109: "res/ccb/uiEffect109.ccbi",
 
 
     // 特效资源

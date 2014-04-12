@@ -70,14 +70,14 @@ public:
      @param nFlag 标识（按位标识）预留，默认为0
      @result 错误码
      */
-    void NDLogin(int nFlag);
+    int NDLogin(int nFlag);
     
     /**
      @brief 登录平台,默认自动登陆，支持游客账号登陆
      @param nFlag 标识（按位标识）预留，默认为0
      @result 错误码
      */
-    void NDLoginEx(int nFlag);
+    int NDLoginEx(int nFlag);
     
     /**
      @brief 进入游客账号转正式账号界面
@@ -174,19 +174,22 @@ public:
  *
  *****************************************************************************/
     // 初始化完成的通知
-    void SNSInitResult(bool result, int code);
+    void SNSInitResult();
     
     // 离开平台界面时，会发送该通知
-    void SNSLeavePlatform(bool result, int code);
+    void SNSLeavePlatform();
     
     // 登录完成的通知
     void SNSLoginResult(bool result, int code);
     
     // 暂停页退出的通知
-    void SNSPauseExit(bool result, int code);
+    void SNSPauseExit();
     
     // 购买结果的通知,在购买结束时会发送该通知
     void SNSBuyResult(bool result, int code, BuyInfo * buyInfo);
+    
+    // 会话过期，会发送该通知
+    void SNSSessionInvalid();
 };
 
 #endif /* defined(__ND_ADAPTER__) */

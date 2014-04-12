@@ -221,7 +221,7 @@ ppAdapter.PPLogOffCallBack = function () {
 };
 
 lz.platformIsLogin = function () {
-    cc.log("ppAdapter token");
+    cc.log("ppAdapter token: " + ppAdapter.token);
     cc.log(ppAdapter.PPCurrentUserId());
     cc.log(ppAdapter.PPCurrentUserName());
 

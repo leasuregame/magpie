@@ -64,6 +64,12 @@ NDAdapter * NDAdapter::NDAdapterInstance()
                                                  selector : @selector(SNSBuyResult:)
                                                      name : kNdCPBuyResultNotification
                                                    object : nil];
+        
+        // 会话过期，会发送该通知
+        [[NSNotificationCenter defaultCenter] addObserver : [NDCallbackHandler sharedHandler]
+                                                 selector : @selector(SNSSessionInvalid:)
+                                                     name : (NSString *)kNdCPSessionInvalidNotification
+                                                   object : nil];
 
     }
     
@@ -81,7 +87,7 @@ int NDAdapter::NDInit(int appId, const char * appKey, int versionCheckLevel)
     
     cfg.appid = appId;
     cfg.appKey = NSAppKey;
-    cfg.versionCheckLevel = ND_VERSION_CHECK_LEVEL_STRICT;
+    cfg.versionCheckLevel = (ND_VERSION_CHECK_LEVEL)versionCheckLevel;
     
     return [[NdComPlatform defaultPlatform] NdInit : cfg];
 }
@@ -119,18 +125,18 @@ void NDAdapter::NDSetAutoRotation(bool isAutoRotate)
     [[NdComPlatform defaultPlatform] NdSetAutoRotation : isAutoRotate];
 }
 
-void NDAdapter::NDLogin(int nFlag)
+int NDAdapter::NDLogin(int nFlag)
 {
     CCLOG("NDLogin");
     
-    [[NdComPlatform defaultPlatform] NdLogin : nFlag];
+    return [[NdComPlatform defaultPlatform] NdLogin : nFlag];
 }
 
-void NDAdapter::NDLoginEx(int nFlag)
+int NDAdapter::NDLoginEx(int nFlag)
 {
     CCLOG("NDLoginEx");
     
-    [[NdComPlatform defaultPlatform] NdLoginEx : nFlag];
+    return [[NdComPlatform defaultPlatform] NdLoginEx : nFlag];
 }
 
 void NDAdapter::NDGuestRegist(int nFlag)
@@ -144,7 +150,7 @@ bool NDAdapter::NDIsLogined()
 {
     CCLOG("NDIsLogined");
     
-    [[NdComPlatform defaultPlatform] isLogined];
+    return [[NdComPlatform defaultPlatform] isLogined];
 }
 
 int NDAdapter::NDGetCurrentLoginState()
@@ -207,11 +213,13 @@ int NDAdapter::NDPause()
 {
     CCLOG("NDPause");
     
-    [[NdComPlatform defaultPlatform] NdPause];
+    return [[NdComPlatform defaultPlatform] NdPause];
 }
 
 void NDAdapter::NDEnterPlatform(int nFlag)
 {
+    CCLOG("NDEnterPlatform");
+    
     [[NdComPlatform defaultPlatform] NdEnterPlatform : nFlag];
 }
 
@@ -242,7 +250,7 @@ int NDAdapter::NDUniPay(const char * cooOrderSerial,    // 合作商的订单号
     return [[NdComPlatform defaultPlatform] NdUniPay : buyInfo];
 }
 
-int NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+int NDAdapter::NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
                  const char * productId,                // 商品Id
                  const char * productName,              // 商品名字
                  float productOrignalPrice,             // 商品价格，两位小数
@@ -275,27 +283,32 @@ int NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号
  *	Objective-C回调中调回C++同名函数
  *
  *****************************************************************************/
-void SNSInitResult(bool result, int code)
+void NDAdapter::SNSInitResult()
 {
-    
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSInitResult");
 }
 
-void SNSLeavePlatform(bool result, int code)
+void NDAdapter::SNSLeavePlatform()
 {
-    
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSLeavePlatform");
 }
 
-void SNSLoginResult(bool result, int code)
+void NDAdapter::SNSLoginResult(bool result, int code)
 {
+    jsval v[] = {
+        v[0] = BOOLEAN_TO_JSVAL(result),
+        v[1] = INT_TO_JSVAL(code)
+    };
     
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSLoginResult", 2, v, NULL);
 }
 
-void SNSPauseExit(bool result, int code)
+void NDAdapter::SNSPauseExit()
 {
-    
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSPauseExit");
 }
 
-void SNSBuyResult(bool result, int code, BuyInfo * buyInfo)
+void NDAdapter::SNSBuyResult(bool result, int code, BuyInfo * buyInfo)
 {
     JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
     
@@ -324,6 +337,11 @@ void SNSBuyResult(bool result, int code, BuyInfo * buyInfo)
     };
     
     ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSBuyResult", 3, v, NULL);
+}
+
+void NDAdapter::SNSSessionInvalid()
+{
+    ScriptingCore::getInstance()->executeCallbackWithOwner(this, "SNSSessionInvalid");
 }
 
 
@@ -392,17 +410,24 @@ static NDCallbackHandler * s_SharedNDCallbackHandler = NULL;
     int code = [[dict objectForKey : @"error"] intValue];
     NdBuyInfo * NSBuyInfo = (NdBuyInfo *)[dict objectForKey : @"buyInfo"];
     
-    BuyInfo buyInfo = new BuyInfo();
+    BuyInfo * buyInfo = new BuyInfo();
     
-    buyInfo->cooOrderSerial = [NSBuyInfo cooOrderSerial];
-    buyInfo->productId = [NSBuyInfo productId];
-    buyInfo->productName = [NSBuyInfo productName];
+    buyInfo->cooOrderSerial = [[NSBuyInfo cooOrderSerial] UTF8String];
+    buyInfo->productId = [[NSBuyInfo productId] UTF8String];
+    buyInfo->productName = [[NSBuyInfo productName] UTF8String];
     buyInfo->productOrignalPrice = [NSBuyInfo productOrignalPrice];
     buyInfo->productPrice = [NSBuyInfo productPrice];
     buyInfo->productCount = [NSBuyInfo productCount];
-    buyInfo->payDescription = [NSBuyInfo payDescription];
+    buyInfo->payDescription = [[NSBuyInfo payDescription] UTF8String];
     
     NDAdapter::NDAdapterInstance()->SNSBuyResult(result, code, buyInfo);
+}
+
+- (void)SNSSessionInvalid : (NSNotification *)notify
+{
+    CCLOG("SNSSessionInvalid");
+    
+	NDAdapter::NDAdapterInstance()->SNSSessionInvalid();
 }
 
 @end

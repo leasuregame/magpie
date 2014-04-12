@@ -251,7 +251,6 @@
 		900673C018F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */; };
 		900673C118F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 900673BC18F3F4DA00B47B57 /* js_bindings_PPAdapter.cpp */; };
 		9006744618F5351400B47B57 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
-		9006744818F5351F00B47B57 /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006744718F5351F00B47B57 /* libc++abi.dylib */; };
 		9006745618F5352B00B47B57 /* yygresource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006745018F5352B00B47B57 /* yygresource.bundle */; };
 		9006745718F5352B00B47B57 /* yygresource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006745018F5352B00B47B57 /* yygresource.bundle */; };
 		9006745818F5352B00B47B57 /* YYAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9006745218F5352B00B47B57 /* YYAdapter.mm */; };
@@ -271,7 +270,10 @@
 		9006748218F54D1800B47B57 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747218F54CF300B47B57 /* user.js */; };
 		9011F0BD18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
 		9011F0BE18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
-		901992EE18F694D200A74ECF /* libc++abi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006744718F5351F00B47B57 /* libc++abi.dylib */; };
+		9011F0C218F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */; };
+		9011F0C318F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */; };
+		9011F0C418F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */; };
+		9011F0C518F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */; };
 		901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		901992F018F695B300A74ECF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26818EE50E000B3ED9F /* CFNetwork.framework */; };
 		901992F118F695BB00A74ECF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26A18EE50E900B3ED9F /* CoreFoundation.framework */; };
@@ -3148,6 +3150,9 @@
 		9006747218F54CF300B47B57 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDCallbackHandler.h; sourceTree = "<group>"; };
 		9011F0BC18F7E38200EC3967 /* resYY */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resYY; path = ../Resources/resYY; sourceTree = "<group>"; };
+		9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_NDAdapter_api.js; sourceTree = "<group>"; };
+		9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_NDAdapter.cpp; sourceTree = "<group>"; };
+		9011F0C118F926C100EC3967 /* js_bindings_NDAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_NDAdapter.hpp; sourceTree = "<group>"; };
 		901992F618F6964700A74ECF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		901992F818F6965A00A74ECF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		901992FB18F6968800A74ECF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -3474,7 +3479,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9006744818F5351F00B47B57 /* libc++abi.dylib in Frameworks */,
 				9006744618F5351400B47B57 /* libstdc++.6.dylib in Frameworks */,
 				906601ED18ED4A2200AAC9D8 /* libz.dylib in Frameworks */,
 				906601EE18ED4A2200AAC9D8 /* SystemConfiguration.framework in Frameworks */,
@@ -3501,7 +3505,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */,
-				901992EE18F694D200A74ECF /* libc++abi.dylib in Frameworks */,
 				906602E418ED4A2400AAC9D8 /* libz.dylib in Frameworks */,
 				906602E518ED4A2400AAC9D8 /* SystemConfiguration.framework in Frameworks */,
 				906602E618ED4A2400AAC9D8 /* libsqlite3.dylib in Frameworks */,
@@ -4572,6 +4575,9 @@
 			isa = PBXGroup;
 			children = (
 				9019930818F7077900A74ECF /* SDK */,
+				9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */,
+				9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */,
+				9011F0C118F926C100EC3967 /* js_bindings_NDAdapter.hpp */,
 				9019932618F7091D00A74ECF /* NDAdapter.mm */,
 				9019932718F7091D00A74ECF /* NDAdapter.h */,
 				9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */,
@@ -6237,6 +6243,7 @@
 				9066004518ED4A0300AAC9D8 /* cocosjs_manual_conversions.cpp in Sources */,
 				9066004618ED4A0300AAC9D8 /* js_bindings_ccbreader.cpp in Sources */,
 				9066004718ED4A0300AAC9D8 /* js_bindings_chipmunk_auto_classes.cpp in Sources */,
+				9011F0C318F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */,
 				9066004818ED4A0300AAC9D8 /* js_bindings_chipmunk_functions.cpp in Sources */,
 				9066004918ED4A0300AAC9D8 /* js_bindings_chipmunk_manual.cpp in Sources */,
 				9066004A18ED4A0300AAC9D8 /* js_bindings_chipmunk_registration.cpp in Sources */,
@@ -6306,6 +6313,7 @@
 				9066008918ED4A0300AAC9D8 /* UILayoutParameter.cpp in Sources */,
 				9066008A18ED4A0300AAC9D8 /* js_bindings_MobClickCpp.cpp in Sources */,
 				9066008B18ED4A0300AAC9D8 /* CCScale9SpriteLoader.cpp in Sources */,
+				9011F0C518F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */,
 				9066008C18ED4A0300AAC9D8 /* CCScrollViewLoader.cpp in Sources */,
 				9066008D18ED4A0300AAC9D8 /* CCSpriteLoader.cpp in Sources */,
 				9066008E18ED4A0300AAC9D8 /* CCControl.cpp in Sources */,
@@ -7281,6 +7289,7 @@
 				9066FF4E18ED4A0100AAC9D8 /* cocosjs_manual_conversions.cpp in Sources */,
 				9066FF4F18ED4A0100AAC9D8 /* js_bindings_ccbreader.cpp in Sources */,
 				9066FF5018ED4A0100AAC9D8 /* js_bindings_chipmunk_auto_classes.cpp in Sources */,
+				9011F0C218F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */,
 				9066FF5118ED4A0100AAC9D8 /* js_bindings_chipmunk_functions.cpp in Sources */,
 				9066FF5218ED4A0100AAC9D8 /* js_bindings_chipmunk_manual.cpp in Sources */,
 				9066FF5318ED4A0100AAC9D8 /* js_bindings_chipmunk_registration.cpp in Sources */,
@@ -7350,6 +7359,7 @@
 				9066FF9218ED4A0100AAC9D8 /* CCSpriteLoader.cpp in Sources */,
 				9066FF9318ED4A0100AAC9D8 /* js_bindings_MobClickCpp.cpp in Sources */,
 				9066FF9418ED4A0100AAC9D8 /* CCControl.cpp in Sources */,
+				9011F0C418F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */,
 				9066FF9518ED4A0100AAC9D8 /* CCControlButton.cpp in Sources */,
 				9066FF9618ED4A0100AAC9D8 /* CCControlColourPicker.cpp in Sources */,
 				9066FF9718ED4A0100AAC9D8 /* CCControlHuePicker.cpp in Sources */,

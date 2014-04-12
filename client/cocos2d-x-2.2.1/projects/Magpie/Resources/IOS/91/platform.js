@@ -274,13 +274,14 @@ var ND_COM_PLATFORM_ERROR_3RD_REAUTH_FAILDED = -28002;          // 验证第三�
 
 // 初始化91平台
 var ndAdapter = nd.NDAdapter.NDAdapterInstance();
+ndAdapter.NDSetAutoRotation(false);
 ndAdapter.NDInit(lz.platformConfig.APP_ID, lz.platformConfig.APP_KEY, ND_VERSION_CHECK_LEVEL_STRICT);
-ndAdapter.NDSetDebugMode(0);
 
 // 初始化完成的通知
 ndAdapter.SNSInitResult = function () {
     cc.log("SNSInitResult");
 
+    ndAdapter.NDSetDebugMode(0);
     ndAdapter.NDShowToolBar(ND_TOOL_BAR_AT_TOP_LEFT);
 };
 
@@ -323,12 +324,12 @@ ndAdapter.NDLoginCallBack = function () {
 };
 
 // 暂停页退出的通知
-ndAdapter.SNSPauseExit = function() {
+ndAdapter.SNSPauseExit = function () {
     cc.log("SNSPauseExit");
 };
 
 // 购买结果的通知,在购买结束时会发送该通知
-ndAdapter.SNSBuyResult = function(result, code, buyInfo) {
+ndAdapter.SNSBuyResult = function (result, code, buyInfo) {
     cc.log("SNSBuyResult");
     cc.log("result: " + result);
     cc.log("code: " + code);
@@ -337,7 +338,7 @@ ndAdapter.SNSBuyResult = function(result, code, buyInfo) {
 };
 
 // 会话过期，会发送该通知
-ndAdapter.SNSSessionInvalid = function() {
+ndAdapter.SNSSessionInvalid = function () {
     cc.log("SNSSessionInvalid");
 };
 

@@ -80,6 +80,10 @@ int NDAdapter::NDInit(int appId, const char * appKey, int versionCheckLevel)
 {
     CCLOG("NDInit");
     
+    CCLOG("%d", appId);
+    CCLOG("%s", appKey);
+    CCLOG("%d", versionCheckLevel);
+    
     NSString * NSAppKey = [NSString stringWithUTF8String : appKey];
     
     // 初始化平台
@@ -95,6 +99,7 @@ int NDAdapter::NDInit(int appId, const char * appKey, int versionCheckLevel)
 void NDAdapter::NDSetDebugMode(int mode)
 {
     CCLOG("NdSetDebugMode");
+    CCLOG("%d", mode);
     
     [[NdComPlatform defaultPlatform] NdSetDebugMode : mode];
 }

@@ -260,20 +260,23 @@
 		9006746718F54A6000B47B57 /* js_bindings_YYAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9006746318F54A6000B47B57 /* js_bindings_YYAdapter_api.js */; };
 		9006746818F54A6000B47B57 /* js_bindings_YYAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */; };
 		9006746918F54A6000B47B57 /* js_bindings_YYAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */; };
-		9006747B18F54D1800B47B57 /* loginBgLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006746B18F54CF300B47B57 /* loginBgLayer.js */; };
-		9006747C18F54D1800B47B57 /* loginLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006746C18F54CF300B47B57 /* loginLayer.js */; };
-		9006747D18F54D1800B47B57 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006746D18F54CF300B47B57 /* main_binding.js */; };
-		9006747E18F54D1800B47B57 /* newPlayerLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006746E18F54CF300B47B57 /* newPlayerLayer.js */; };
-		9006747F18F54D1800B47B57 /* payment.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006746F18F54CF300B47B57 /* payment.js */; };
-		9006748018F54D1800B47B57 /* platform.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747018F54CF300B47B57 /* platform.js */; };
-		9006748118F54D1800B47B57 /* selectAreaLayer.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747118F54CF300B47B57 /* selectAreaLayer.js */; };
-		9006748218F54D1800B47B57 /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 9006747218F54CF300B47B57 /* user.js */; };
 		9011F0BD18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
 		9011F0BE18F7E38200EC3967 /* resYY in Resources */ = {isa = PBXBuildFile; fileRef = 9011F0BC18F7E38200EC3967 /* resYY */; };
 		9011F0C218F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */; };
 		9011F0C318F926C100EC3967 /* js_bindings_NDAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */; };
 		9011F0C418F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */; };
 		9011F0C518F926C100EC3967 /* js_bindings_NDAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */; };
+		9011F0D618F94AA600EC3967 /* loginBgLayer.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0CB18F94AA600EC3967 /* loginBgLayer.js */; };
+		9011F0D718F94AA600EC3967 /* loginLayer.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0CC18F94AA600EC3967 /* loginLayer.js */; };
+		9011F0D818F94AA600EC3967 /* loginScene.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0CD18F94AA600EC3967 /* loginScene.js */; };
+		9011F0D918F94AA600EC3967 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0CE18F94AA600EC3967 /* main_binding.js */; };
+		9011F0DA18F94AA600EC3967 /* newPlayerLayer.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0CF18F94AA600EC3967 /* newPlayerLayer.js */; };
+		9011F0DB18F94AA600EC3967 /* payment.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D018F94AA600EC3967 /* payment.js */; };
+		9011F0DC18F94AA600EC3967 /* platform.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D118F94AA600EC3967 /* platform.js */; };
+		9011F0DD18F94AA600EC3967 /* selectAreaLayer.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D218F94AA600EC3967 /* selectAreaLayer.js */; };
+		9011F0DE18F94AA600EC3967 /* spiritSideNode.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D318F94AA600EC3967 /* spiritSideNode.js */; };
+		9011F0DF18F94AA600EC3967 /* table.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D418F94AA600EC3967 /* table.js */; };
+		9011F0E018F94AA600EC3967 /* user.js in Sources */ = {isa = PBXBuildFile; fileRef = 9011F0D518F94AA600EC3967 /* user.js */; };
 		901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		901992F018F695B300A74ECF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26818EE50E000B3ED9F /* CFNetwork.framework */; };
 		901992F118F695BB00A74ECF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9045C26A18EE50E900B3ED9F /* CoreFoundation.framework */; };
@@ -3140,19 +3143,22 @@
 		9006746318F54A6000B47B57 /* js_bindings_YYAdapter_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_YYAdapter_api.js; sourceTree = "<group>"; };
 		9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_YYAdapter.cpp; sourceTree = "<group>"; };
 		9006746518F54A6000B47B57 /* js_bindings_YYAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_YYAdapter.hpp; sourceTree = "<group>"; };
-		9006746B18F54CF300B47B57 /* loginBgLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginBgLayer.js; sourceTree = "<group>"; };
-		9006746C18F54CF300B47B57 /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
-		9006746D18F54CF300B47B57 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
-		9006746E18F54CF300B47B57 /* newPlayerLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = newPlayerLayer.js; sourceTree = "<group>"; };
-		9006746F18F54CF300B47B57 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
-		9006747018F54CF300B47B57 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
-		9006747118F54CF300B47B57 /* selectAreaLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = selectAreaLayer.js; sourceTree = "<group>"; };
-		9006747218F54CF300B47B57 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		9011F0B818F78B5F00EC3967 /* NDCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDCallbackHandler.h; sourceTree = "<group>"; };
 		9011F0BC18F7E38200EC3967 /* resYY */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resYY; path = ../Resources/resYY; sourceTree = "<group>"; };
 		9011F0BF18F926C100EC3967 /* js_bindings_NDAdapter_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_NDAdapter_api.js; sourceTree = "<group>"; };
 		9011F0C018F926C100EC3967 /* js_bindings_NDAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_NDAdapter.cpp; sourceTree = "<group>"; };
 		9011F0C118F926C100EC3967 /* js_bindings_NDAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_NDAdapter.hpp; sourceTree = "<group>"; };
+		9011F0CB18F94AA600EC3967 /* loginBgLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginBgLayer.js; sourceTree = "<group>"; };
+		9011F0CC18F94AA600EC3967 /* loginLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginLayer.js; sourceTree = "<group>"; };
+		9011F0CD18F94AA600EC3967 /* loginScene.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = loginScene.js; sourceTree = "<group>"; };
+		9011F0CE18F94AA600EC3967 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
+		9011F0CF18F94AA600EC3967 /* newPlayerLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = newPlayerLayer.js; sourceTree = "<group>"; };
+		9011F0D018F94AA600EC3967 /* payment.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = payment.js; sourceTree = "<group>"; };
+		9011F0D118F94AA600EC3967 /* platform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = platform.js; sourceTree = "<group>"; };
+		9011F0D218F94AA600EC3967 /* selectAreaLayer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = selectAreaLayer.js; sourceTree = "<group>"; };
+		9011F0D318F94AA600EC3967 /* spiritSideNode.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = spiritSideNode.js; sourceTree = "<group>"; };
+		9011F0D418F94AA600EC3967 /* table.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = table.js; sourceTree = "<group>"; };
+		9011F0D518F94AA600EC3967 /* user.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
 		901992F618F6964700A74ECF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		901992F818F6965A00A74ECF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		901992FB18F6968800A74ECF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -3680,7 +3686,7 @@
 				906603E818ED6E0800AAC9D8 /* PP-Releases */,
 				906603CA18ED6D1800AAC9D8 /* 91 */,
 				906603EB18ED6E2000AAC9D8 /* 91-Releases */,
-				9006746A18F54CF300B47B57 /* YY */,
+				9011F0CA18F94AA600EC3967 /* YY */,
 				906603EE18ED6E2C00AAC9D8 /* YY-Releases */,
 				1AE4B40216D1FECD003C6D1C /* src */,
 				1AE4B40116D1FECD003C6D1C /* res */,
@@ -4555,17 +4561,20 @@
 			path = include;
 			sourceTree = "<group>";
 		};
-		9006746A18F54CF300B47B57 /* YY */ = {
+		9011F0CA18F94AA600EC3967 /* YY */ = {
 			isa = PBXGroup;
 			children = (
-				9006746B18F54CF300B47B57 /* loginBgLayer.js */,
-				9006746C18F54CF300B47B57 /* loginLayer.js */,
-				9006746D18F54CF300B47B57 /* main_binding.js */,
-				9006746E18F54CF300B47B57 /* newPlayerLayer.js */,
-				9006746F18F54CF300B47B57 /* payment.js */,
-				9006747018F54CF300B47B57 /* platform.js */,
-				9006747118F54CF300B47B57 /* selectAreaLayer.js */,
-				9006747218F54CF300B47B57 /* user.js */,
+				9011F0CB18F94AA600EC3967 /* loginBgLayer.js */,
+				9011F0CC18F94AA600EC3967 /* loginLayer.js */,
+				9011F0CD18F94AA600EC3967 /* loginScene.js */,
+				9011F0CE18F94AA600EC3967 /* main_binding.js */,
+				9011F0CF18F94AA600EC3967 /* newPlayerLayer.js */,
+				9011F0D018F94AA600EC3967 /* payment.js */,
+				9011F0D118F94AA600EC3967 /* platform.js */,
+				9011F0D218F94AA600EC3967 /* selectAreaLayer.js */,
+				9011F0D318F94AA600EC3967 /* spiritSideNode.js */,
+				9011F0D418F94AA600EC3967 /* table.js */,
+				9011F0D518F94AA600EC3967 /* user.js */,
 			);
 			name = YY;
 			path = ../Resources/IOS/YY;
@@ -5603,14 +5612,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9006747B18F54D1800B47B57 /* loginBgLayer.js in Resources */,
-				9006747C18F54D1800B47B57 /* loginLayer.js in Resources */,
-				9006747D18F54D1800B47B57 /* main_binding.js in Resources */,
-				9006747E18F54D1800B47B57 /* newPlayerLayer.js in Resources */,
-				9006747F18F54D1800B47B57 /* payment.js in Resources */,
-				9006748018F54D1800B47B57 /* platform.js in Resources */,
-				9006748118F54D1800B47B57 /* selectAreaLayer.js in Resources */,
-				9006748218F54D1800B47B57 /* user.js in Resources */,
 				9066039F18ED4B3500AAC9D8 /* Icon-76.png in Resources */,
 				9006745618F5352B00B47B57 /* yygresource.bundle in Resources */,
 				9066038D18ED4B3500AAC9D8 /* Icon-120.png in Resources */,
@@ -6471,6 +6472,7 @@
 				9066014118ED4A2200AAC9D8 /* cpSlideJoint.c in Sources */,
 				9066014218ED4A2200AAC9D8 /* cpArbiter.c in Sources */,
 				9066014318ED4A2200AAC9D8 /* cpArray.c in Sources */,
+				9011F0DB18F94AA600EC3967 /* payment.js in Sources */,
 				9066014418ED4A2200AAC9D8 /* cpBB.c in Sources */,
 				9066014518ED4A2200AAC9D8 /* cpBBTree.c in Sources */,
 				9066014618ED4A2200AAC9D8 /* cpBody.c in Sources */,
@@ -6504,17 +6506,21 @@
 				9066016118ED4A2200AAC9D8 /* CCControlLoader.cpp in Sources */,
 				9066016218ED4A2200AAC9D8 /* CCData.cpp in Sources */,
 				9066016318ED4A2200AAC9D8 /* CCLabelBMFontLoader.cpp in Sources */,
+				9011F0E018F94AA600EC3967 /* user.js in Sources */,
 				9066016418ED4A2200AAC9D8 /* CCLabelTTFLoader.cpp in Sources */,
 				9066016518ED4A2200AAC9D8 /* CCLayerColorLoader.cpp in Sources */,
 				9066016618ED4A2200AAC9D8 /* CCLayerGradientLoader.cpp in Sources */,
 				9066016718ED4A2200AAC9D8 /* CCLayerLoader.cpp in Sources */,
 				9066016818ED4A2200AAC9D8 /* CCMenuItemImageLoader.cpp in Sources */,
 				9066016918ED4A2200AAC9D8 /* CCMenuItemLoader.cpp in Sources */,
+				9011F0DA18F94AA600EC3967 /* newPlayerLayer.js in Sources */,
 				9066016A18ED4A2200AAC9D8 /* CCNode+CCBRelativePositioning.cpp in Sources */,
 				9066016B18ED4A2200AAC9D8 /* CCNodeLoader.cpp in Sources */,
 				9066016C18ED4A2200AAC9D8 /* CCNodeLoaderLibrary.cpp in Sources */,
 				9066016D18ED4A2200AAC9D8 /* CCParticleSystemQuadLoader.cpp in Sources */,
 				9066016E18ED4A2200AAC9D8 /* UILayoutParameter.cpp in Sources */,
+				9011F0D618F94AA600EC3967 /* loginBgLayer.js in Sources */,
+				9011F0D918F94AA600EC3967 /* main_binding.js in Sources */,
 				9066016F18ED4A2200AAC9D8 /* CCScale9SpriteLoader.cpp in Sources */,
 				9066017018ED4A2200AAC9D8 /* CCScrollViewLoader.cpp in Sources */,
 				9066017118ED4A2200AAC9D8 /* CCSpriteLoader.cpp in Sources */,
@@ -6536,6 +6542,7 @@
 				9066018118ED4A2200AAC9D8 /* CCEditBoxImplIOS.mm in Sources */,
 				9066018218ED4A2200AAC9D8 /* CCScrollView.cpp in Sources */,
 				9066018318ED4A2200AAC9D8 /* CCSorting.cpp in Sources */,
+				9011F0DE18F94AA600EC3967 /* spiritSideNode.js in Sources */,
 				9066018418ED4A2200AAC9D8 /* CCTableView.cpp in Sources */,
 				9066018518ED4A2200AAC9D8 /* CCTableViewCell.cpp in Sources */,
 				9066018618ED4A2200AAC9D8 /* CCPhysicsDebugNode.cpp in Sources */,
@@ -6561,6 +6568,8 @@
 				9066019A18ED4A2200AAC9D8 /* extension.cpp in Sources */,
 				9066019B18ED4A2200AAC9D8 /* Json.cpp in Sources */,
 				9066019C18ED4A2200AAC9D8 /* RegionAttachment.cpp in Sources */,
+				9011F0D718F94AA600EC3967 /* loginLayer.js in Sources */,
+				9011F0DF18F94AA600EC3967 /* table.js in Sources */,
 				9066019D18ED4A2200AAC9D8 /* Skeleton.cpp in Sources */,
 				9066019E18ED4A2200AAC9D8 /* SkeletonData.cpp in Sources */,
 				9066019F18ED4A2200AAC9D8 /* SkeletonJson.cpp in Sources */,
@@ -6596,6 +6605,7 @@
 				906601BD18ED4A2200AAC9D8 /* CCBatchNode.cpp in Sources */,
 				906601BE18ED4A2200AAC9D8 /* CCDecorativeDisplay.cpp in Sources */,
 				906601BF18ED4A2200AAC9D8 /* CCDisplayFactory.cpp in Sources */,
+				9011F0DD18F94AA600EC3967 /* selectAreaLayer.js in Sources */,
 				906601C018ED4A2200AAC9D8 /* CCDisplayManager.cpp in Sources */,
 				906601C118ED4A2200AAC9D8 /* CCSkin.cpp in Sources */,
 				906601C218ED4A2200AAC9D8 /* CCColliderDetector.cpp in Sources */,
@@ -6621,6 +6631,7 @@
 				906601D518ED4A2200AAC9D8 /* CocosGUI.cpp in Sources */,
 				906601D618ED4A2200AAC9D8 /* UIHelper.cpp in Sources */,
 				906601D718ED4A2200AAC9D8 /* UIInputManager.cpp in Sources */,
+				9011F0D818F94AA600EC3967 /* loginScene.js in Sources */,
 				906601D818ED4A2200AAC9D8 /* UILayer.cpp in Sources */,
 				906601D918ED4A2200AAC9D8 /* UIListView.cpp in Sources */,
 				906601DA18ED4A2200AAC9D8 /* UIPageView.cpp in Sources */,
@@ -6641,6 +6652,7 @@
 				906601E918ED4A2200AAC9D8 /* json_reader.cpp in Sources */,
 				906601EA18ED4A2200AAC9D8 /* json_value.cpp in Sources */,
 				906601EB18ED4A2200AAC9D8 /* json_writer.cpp in Sources */,
+				9011F0DC18F94AA600EC3967 /* platform.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

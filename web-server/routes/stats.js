@@ -1,8 +1,8 @@
 var onlineUserDao = require('../util/onlineUserDao');
 
 exports.onlineUser = function(req, res) {
-  var curDate = req.query.date;
-
+  var curDate = '2014-4-11'; //req.query.date;
+  console.log('curDate', curDate);
   onlineUserDao.getRecords(curDate, function(err, items) {
     if (err) {
       return res.status(500).send('服务器出错'+err);

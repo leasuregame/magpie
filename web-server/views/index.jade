@@ -6,17 +6,23 @@ block head
     google.load("visualization", "1", {packages:["corechart"]});
     google.setOnLoadCallback(drawChart);
     function drawChart() {
-      var data = google.visualization.arrayToDataTable(#{unescape(JSON.stringify(users))}));
+      $.get('/admin/stats/onlineuser?date=' + new Date().toDateString(), function(data) {
+        var data = google.visualization.arrayToDataTable(data);
 
-      var options = {
-        title: '用户在线人数分布图'
-      };
+        var options = {
+          title: '用户在线人数分布图'
+        };
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);  
+      });      
+    };
 
 block content
+  div.jumbotron
+    div.row
+      div(id='chart_div')
+
   div.jumbotron
     h1 版本用户分布 
       small 用户总数：#{userNum}

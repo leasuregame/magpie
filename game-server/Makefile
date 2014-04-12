@@ -4,7 +4,7 @@ build:
 	sh ./bin/build.sh
 
 convert-data: build
-	node ./bin/convertXmlToJson.js 
+	node ./bin/convertXmlToJson.js $(platform)
 
 start: build convert-data
 	pomelo start -e production --daemon

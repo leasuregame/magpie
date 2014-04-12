@@ -122,9 +122,7 @@ var BossLayer = cc.Layer.extend({
         this.addChild(runAwayTimeLabel);
 
         this._bossCdTimeLabel = StrokeLabel.create(
-            lz.getTimeStr({
-                time: boss.timeLeft + STOP_TIME
-            }),
+            lz.getCountdownStr(boss.timeLeft),
             "STHeitiTC-Medium",
             22
         );
@@ -156,9 +154,7 @@ var BossLayer = cc.Layer.extend({
         this.addChild(attackCdTimeLabel);
 
         this._cdTimeLabel = StrokeLabel.create(
-            lz.getTimeStr({
-                time: this._cdTime + STOP_TIME
-            }),
+            lz.getCountdownStr(this._cdTime),
             "STHeitiTC-Medium",
             22
         );
@@ -301,18 +297,13 @@ var BossLayer = cc.Layer.extend({
     _updateCdTime: function () {
 
         this._cdTime = gameData.boss.get("cd");
-        this._cdTimeLabel.setString(lz.getTimeStr({
-            time: this._cdTime + STOP_TIME
-        }));
+
+        this._cdTimeLabel.setString(lz.getCountdownStr(this._cdTime));
 
         this._removeCdTimeItem.setVisible(this._cdTime > 0);
 
         var boss = gameData.boss.getBoss(this._bossId);
-        this._bossCdTimeLabel.setString(
-            lz.getTimeStr({
-                time: boss.timeLeft + STOP_TIME
-            })
-        );
+        this._bossCdTimeLabel.setString(lz.getCountdownStr(boss.timeLeft));
     },
 
     _onClickAdd: function () {

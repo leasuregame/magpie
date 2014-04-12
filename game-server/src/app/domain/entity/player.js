@@ -1386,7 +1386,7 @@ var Player = (function(_super) {
 
     Player.prototype.kneelCountLeft = function() {
         if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
-            this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
+            this.updateGift('kneelCountLeft', KNEELCOUNT_DEFAULT);
         }
         return this.dailyGift.kneelCountLeft;
     };

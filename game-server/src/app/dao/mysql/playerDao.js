@@ -364,8 +364,14 @@ function sort(a, b) {
 };
 
 function getLineUpIds(lineUp) {
-    if (_.isString(lineUp)) {
-        var lineUp = JSON.parse(lineUp);
+    if (_.isString(lineUp) || lineUp != '') {
+        try{
+            var lineUp = JSON.parse(lineUp);   
+            return _.values(lineUp[0] || []); 
+        } catch (e) {
+            return [];
+        }
+    } else if (_.isObject(lineUp)) {
         return _.values(lineUp[0] || []);
     }
     return [];

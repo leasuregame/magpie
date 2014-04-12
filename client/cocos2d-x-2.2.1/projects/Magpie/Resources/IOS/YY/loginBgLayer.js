@@ -22,7 +22,7 @@ var LoginBgLayer = cc.Layer.extend({
 
         this._loginBgLayerFit = gameFit.loginScene.loginBgLayer;
 
-        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect104, this);
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect36, this);
         this.addChild(bgEffect);
 
         if (gameDevice != "Iphone5") {

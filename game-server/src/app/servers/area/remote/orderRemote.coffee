@@ -17,26 +17,18 @@ module.exports = (app) ->
 
 Remote = (@app) ->
 
-Remote::add = (args, callback) ->
-  playerId = args.playerId
-  areaId = args.areaId
-  tradeNo = args.tradeNo
-  partner = args.partner
-  amount = args.amount
-  paydes = args.paydes
-  productId = args.productId
-  tborderNo = args.tborderNo
-
+Remote::add = (args, platform, callback) ->
+  console.log '-b-', args, platform
   player = null
   product = null
   isFirstRechage = false
   async.waterfall [
     (cb) =>
-      @app.get('playerManager').getPlayerInfo pid: playerId, cb
+      @app.get('playerManager').getPlayerInfo pid: args.playerId, cb
 
     (_player, cb) =>
       player = _player
-      @app.get('dao').order.fetchOne where: tradeNo: tradeNo, (err, o) -> cb(null, o)
+      @app.get('dao').order.fetchOne where: tradeNo: args.tradeNo, (err, o) -> cb(null, o)
 
     (exist, cb) =>
       if exist
@@ -46,39 +38,41 @@ Remote::add = (args, callback) ->
           return cb(null, exist)
 
       @app.get('dao').order.create data: {
-        playerId: playerId
-        tradeNo: tradeNo
-        tborderNo: tborderNo
-        partner: partner
-        amount: amount
-        paydes: paydes
+        playerId: args.playerId
+        tradeNo: args.tradeNo
+        tborderNo: args.tborderNo
+        partner: args.partner
+        amount: args.amount
+        paydes: args.paydes
         status: ORDER_INIT_STATUS
         created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
       }, cb
 
     (order, cb) =>
-      order.partner = partner
-      order.amount = amount
-      order.paydes = paydes
+      # updateArgs(args, platform, order)
 
-      product = table.getTableItem('recharge', productId)
+      order.partner = args.partner
+      order.amount = args.amount
+      order.paydes = args.paydes if args.paydes
+
+      product = table.getTableItem('recharge', args.productId)
       if not product
-        logger.warn('找不到购买的对应产品, 产品id为', productId)
+        logger.warn('找不到购买的对应产品, 产品id为', args.productId)
         updateOrderStatus(@app, order, ORDER_ERROR_STATUS_1)
         return cb({ok: false, msg: '找不到购买的对应产品'})
 
       # 检查充值的金额是否正确
-      if parseInt(amount) != product.cash*100
-        logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', amount+'分,', 
-          '产品实际金额为:', product.cash+'元', '产品id为:', productId)
+      if not checkAmountIsCorrect(args.amount, product?.cash, platform)
+        logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', args.amount+'分,', 
+          '产品实际金额为:', product.cash+'元', '产品id为:', args.productId)
         updateOrderStatus(@app, order, ORDER_ERROR_STATUS_2)
         return cb({ok: false, msg: '充值的金额跟产品金额不匹配'})
       
       times = 1
       ### 首冲获得相应倍数魔石 ###
-      if player.isRechargeFirstTime(parseInt productId)
+      if player.isRechargeFirstTime(parseInt args.productId)
         times = product.times
-        player.setRechargeFirstTime(parseInt productId)
+        player.setRechargeFirstTime(parseInt args.productId)
 
       if player.cash is 0
         isFirstRechage = true
@@ -89,7 +83,7 @@ Remote::add = (args, callback) ->
       updateOrderStatus(@app, order, ORDER_FINISHED_STATUS, cb)
     
     (updated, cb) =>
-      addGoldCard @app, tradeNo, player, product, cb
+      addGoldCard @app, args.tradeNo, player, product, cb
 
     (cb) =>
       noticeNewYearActivity @app, player, cb
@@ -99,6 +93,21 @@ Remote::add = (args, callback) ->
 
     successMsg(@app, player, isFirstRechage)
     callback(null, {ok: true})
+
+checkAmountIsCorrect = (amount, cash, platform) ->
+  switch platform
+    when 'PP' then result = parseInt(amount) == cash
+    when '91' then result = parseInt(amount) == cash
+    when 'TB' then result = parseInt(amount) == cash*100
+    else result = false
+
+  result
+
+updateArgs = (args, platform, order) ->
+  if platform is 'PP'
+    [productId, areaId] = order.billno.split('-')
+    args.productId = parseInt productId
+    args.areaId = parseInt areaId
 
 addGoldCard = (app, tradeNo, player, product, cb) ->
   return cb() if not isGoldCard(product)
@@ -200,7 +209,7 @@ sendNewYearMsg = (app, player, flag, recharge) ->
     }
   }, (err, res) ->
     if err
-      logger.error('faild to send message to playerId ', playerId)
+      logger.error('faild to send message to playerId ', player.id)
 
 successMsg = (app, player, isFirstRechage) ->
   app.get('messageService').pushByPid player.id, {

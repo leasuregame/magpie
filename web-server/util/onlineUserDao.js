@@ -7,5 +7,6 @@ exports.getRecords = function(scope, cb) {
   var end = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1);
 
   var sql = 'select createTime as ct, qty from onlineUser where createTime between ' + start.getTime() + ' and ' + end.getTime();
+  console.log(sql);
   db.query(sql, cb);
 };

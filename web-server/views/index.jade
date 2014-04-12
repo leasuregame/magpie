@@ -1,27 +1,70 @@
 extends adminLayout
 
 block head
-  script(type="text/javascript", src="https://www.google.com/jsapi")
+  script(type="text/javascript", src="/js/highcharts.js")
   script.
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      $.get('/admin/stats/onlineuser?date=' + new Date().toDateString(), function(data) {
-        var data = google.visualization.arrayToDataTable(data);
+    $(function () {
+      function updateOnlineUserChart(query_date) {
+        if (!query_date) {
+          query_date = new Date().toDateString();
+        }
 
-        var options = {
-          title: '用户在线人数分布图'
-        };
+        $.get('/admin/stats/onlineuser?date=' + query_date, function(result) {
+          items = result.items;
+          Highcharts.setOptions({global:{useUTC : false}});
+          $('#chart_div').highcharts({
+              chart: {
+                  type: 'spline'
+              },
+              title: {
+                  text: '用户在线人数分布图'
+              },
+              subtitle: {
+                  text: ''
+              },
+              xAxis: {
+                  labels: {
+                    formatter: function() {
+                      return  Highcharts.dateFormat('%H:%M', this.value);
+                    }
+                  }
+              },
+              yAxis: {
+                  title: {
+                      text: '在线人数'
+                  },
+                  min: 0
+              },
+              tooltip: {
+                  formatter: function() {
+                      return '<b>'+ this.series.name + new Date(this.x).toLocaleTimeString() + '</b><br/>'+
+                      '数量：'+this.y+'（个）';
+                  }
+              },
+              
+              series: [{
+                  name: new Date(result.curDate).toLocaleDateString(),
+                  data: items
+              }]
+          });
+        });
+      }
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);  
-      });      
-    };
+      updateOnlineUserChart();
+
+      $('#cur_date_for_onlineuser').change(function() {
+        var q_data = $('#cur_date_for_onlineuser').val();
+        updateOnlineUserChart(q_data);
+      });
+    });
 
 block content
-  div.jumbotron
-    div.row
-      div(id='chart_div')
+  div.col-sm-3.col-sm-offset-9
+    div(style="padding: 10px 5px 5px 0; text-align: right")
+      label 更改日期：
+      input(type='date' id='cur_date_for_onlineuser')
+  div.well      
+    div(id='chart_div')
 
   div.jumbotron
     h1 版本用户分布 

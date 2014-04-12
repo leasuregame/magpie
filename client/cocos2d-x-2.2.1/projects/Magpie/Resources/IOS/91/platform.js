@@ -300,7 +300,8 @@ ndAdapter.SNSLoginResult = function (result, code) {
     } else {
         switch (code) {
             case ND_COM_PLATFORM_ERROR_USER_CANCEL:
-                TipLayer.tip("用户取消登录");
+                MainScene.destroy();
+                cc.Director.getInstance().replaceScene(LoginScene.create());
                 break;
             case ND_COM_PLATFORM_ERROR_APP_KEY_INVALID:
                 TipLayer.tip("未授权的appId");

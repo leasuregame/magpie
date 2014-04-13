@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -723,8 +723,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -737,7 +737,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>120</real>
+								<real>88</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -766,7 +766,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1102,8 +1102,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1116,7 +1116,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-120</real>
+								<real>-88</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1145,7 +1145,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1207,8 +1207,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1.6666648387908936</real>
+							<real>-1.9999994039535522</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1235,8 +1235,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.2777777910232544</real>
+							<real>1.2777777910232544</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1333,8 +1333,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
-										<real>0.0</real>
+										<real>-5</real>
+										<real>4</real>
 									</array>
 								</dict>
 								<dict>
@@ -1353,8 +1353,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
-										<real>10</real>
+										<real>-5</real>
+										<real>14</real>
 									</array>
 								</dict>
 								<dict>
@@ -1371,8 +1371,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.0</real>
-										<real>0.0</real>
+										<real>-5</real>
+										<real>4</real>
 									</array>
 								</dict>
 							</array>
@@ -1890,7 +1890,7 @@
 						<key>displayName</key>
 						<string>CCMenuItemImage</string>
 						<key>memberVarAssignmentName</key>
-						<string>_btnGoldBox</string>
+						<string>ccbGoldBox</string>
 						<key>memberVarAssignmentType</key>
 						<integer>2</integer>
 						<key>properties</key>
@@ -1907,8 +1907,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>1.6666648387908936</real>
+									<real>-1.9999994039535522</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1951,7 +1951,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickGoldBox</string>
+									<string>ccbFnGoldBox</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -1997,8 +1997,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -2008,7 +2006,7 @@
 				<key>displayName</key>
 				<string>CCMenu</string>
 				<key>memberVarAssignmentName</key>
-				<string>goldBoxMenu</string>
+				<string>ccbGoldBoxMenu</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -2441,7 +2439,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>157</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2524,7 +2522,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2583,7 +2581,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2599,7 +2597,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>50</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2608,8 +2606,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.75</real>
-							<real>0.25</real>
+							<real>0.69999998807907104</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -2773,6 +2771,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2931,7 +2931,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2941,7 +2941,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.10000000149011612</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_heal.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

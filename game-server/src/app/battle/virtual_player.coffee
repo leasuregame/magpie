@@ -2,62 +2,46 @@ Player = require './player'
 VHero = require './virtual_hero'
 _ = require 'underscore'
 logger = require('pomelo-logger').getLogger(__filename)
+battleLog = require './battle_log'
 
 class VirtualPlayer extends Player
-  init: (data) ->
+  init: (data, options) ->
     @data = data
     cards = parseCards data
 
     if data.is_random? and data.is_random is 1
       lineUp = randomLineUp cards
-      console.log 'random lineup: ', lineUp
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
       lineUp = defaultLineUp cards
-      console.log 'default Line Up: ', lineUp
-    console.log 'data: ', data
-    
-    super(
+      
+    super({
       cards: cards
       lineUp: lineUp
-    )
+    }, options)
     @is_monster = true
 
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
-  bindCards: ->
-    _hero = (id) =>
-      for h in @heros
-        return if h.id is parseInt(id) then h
-      null
-    
-    if @lineUp? and @lineUp != ''
-      @parseLineUp().forEach (item) =>
-        [pos, id] = item 
-        _h = _hero(id)      
-
-        if _h
-          @matrix.set(pos, _h)
-        else
-          logger.info 'you have not such card with id is ' + id
-    else
-      logger.warn 'there is not line up for player ' + @name
-    
-    @matrix.reset()
-
-  getCards: ->
+  setCards: ->
     cobj = {}
     for c in @heros
       cobj[c.idx] = {
         tableId: c.card_id
-        hp: c.hp
-        atk: c.atk
+        hp: c.init_hp
+        atk: c.init_atk
         boss: true if c.boss?
-        skillId: c.skill_id if c.skill?
       }
     cobj
+
+    @cards_for_bl = cobj
+    
+    battleLog.addCards cobj
+    battleLog.addStep {
+      go: battleLog.get('cards').length - 1
+    }
 
 parseCards = (data) ->
   cards = []
@@ -87,7 +71,7 @@ parseCards = (data) ->
 
 randomLineUp = (cards) ->
   ids = _.map cards, (c) -> c.id
-  pos = ['00', '01', '02', '10', '11', '12']
+  pos = [1,2,3,4,5,6]
   pos_copy = _.clone(pos)
 
   _res = []
@@ -96,30 +80,31 @@ randomLineUp = (cards) ->
     _res.push pos_copy[r]
     pos_copy.splice(r, 1)
 
-  lu = ''
+  lu = {}
   for i in [0...ids.length]
-    lu += "#{_res[i]}:#{ids[i]},"
+    lu[_res[i]] = ids[i]
 
-  lu[0...-1]
+  [lu]
 
 genLineUp = (cards, formation) ->
   if formation is null or typeof formation is 'undefined'
-    return ''
+    return []
 
   _cards = _.clone(cards)
-  arr = formation.split(',').map (item) =>
+  lu = {}
+  formation.split(',').forEach (item) =>
     [pos, _tableId] = item.split(':')
     _card = _.findWhere _cards, {tableId: parseInt(_tableId)}
     _cards.splice(_cards.indexOf(_card), 1)
     _card_id = _card.id
-    "#{pos}:#{_card_id}"
+    lu[pos] = _card_id
 
-  arr.join(',')
+  [lu]
 
 defaultLineUp = (cards) ->
-  lu = ''
+  lu = {}
   for c in cards
-    lu += "#{c.id}:#{c.id},"
-  lu[0...-1]
+    lu[c.id] = c.id
+  [lu]
 
 module.exports = VirtualPlayer

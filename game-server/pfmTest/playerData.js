@@ -3,12 +3,14 @@ var path = require('path');
 var Data = require('./data');
 var _ = require('underscore');
 var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var app = pomelo.createApp({
+  base: path.join(__dirname, '..')
+});
 
 var genDao = function(key) {
   app.set('env', process.argv[2] || 'development');
   //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-  app.set('mysql', require('../config/mysql1')[process.argv[2] || 'development'][key]);
+  app.set('mysql', require('../config/mysql')[process.argv[2] || 'development'][key]);
   app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
   var dao = require('../app/dao').init('mysql');
   app.set('dao', dao);

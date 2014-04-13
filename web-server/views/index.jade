@@ -1,0 +1,107 @@
+extends adminLayout
+
+block head
+  script(type="text/javascript", src="/js/highcharts.js")
+  script.
+    $(function () {
+      function updateOnlineUserChart(query_date) {
+        if (!query_date) {
+          query_date = new Date().toDateString();
+        }
+
+        $.get('/admin/stats/onlineuser?date=' + query_date, function(result) {
+          items = result.items;
+          Highcharts.setOptions({global:{useUTC : false}});
+          $('#chart_div').highcharts({
+              chart: {
+                  type: 'spline'
+              },
+              title: {
+                  text: '用户在线人数分布图'
+              },
+              subtitle: {
+                  text: ''
+              },
+              xAxis: {
+                  labels: {
+                    formatter: function() {
+                      return  Highcharts.dateFormat('%H:%M', this.value);
+                    }
+                  }
+              },
+              yAxis: {
+                  title: {
+                      text: '在线人数'
+                  },
+                  min: 0
+              },
+              tooltip: {
+                  formatter: function() {
+                      return '<b>'+ this.series.name + new Date(this.x).toLocaleTimeString() + '</b><br/>'+
+                      '数量：'+this.y+'（个）';
+                  }
+              },
+              
+              series: [{
+                  name: new Date(result.curDate).toLocaleDateString(),
+                  data: items
+              }]
+          });
+        });
+      }
+
+      updateOnlineUserChart();
+
+      $('#cur_date_for_onlineuser').change(function() {
+        var q_data = $('#cur_date_for_onlineuser').val();
+        updateOnlineUserChart(q_data);
+      });
+    });
+
+block content
+  div.col-sm-3.col-sm-offset-9
+    div(style="padding: 10px 5px 5px 0; text-align: right")
+      label 更改日期：
+      input(type='date' id='cur_date_for_onlineuser')
+  div.well      
+    div(id='chart_div')
+
+  div.jumbotron
+    h1 版本用户分布 
+      small 用户总数：#{userNum}
+    div.row
+      - each count in counts
+        a(href='/admin/version/details/#{count.version}')
+          div.vblock.col-sm-3
+            div.version-header V#{count.version}
+            div.version-body
+              div.text-center.vnum #{count.num}
+              div.text-right.percent #{count.percent}%  
+            div.version-footer 点击查看详情
+
+  div.jumbotron
+    h1 游戏 Web API
+      small.pull-right 
+    small [ ]中得字符为参数。[platform]为平台参数（app或tb）
+    small
+      a(href='http://www.ksyun.com/product/ks3', target='blank') 去更新下载包
+
+    dl
+      dt
+        span.label.label-primary /api/[platform]/version
+      dd
+        span 获取最新的版本号
+      dt
+        span.label.label-primary /api/[platform]/update/[version]
+      dd
+        p 获取更新包。[version]为当前手机游戏的版本号，根据这个版本号来判断是下载部分包还是完全包。
+        ul
+          li version 为空，下载完全包
+          li version 为上一版本号，下载部分包
+          li version 小于上一版本号，下载完全包
+
+      dt
+        span.label.label-primary /api/[platform]/notice
+      dd
+        p 游戏公告内容地址
+      

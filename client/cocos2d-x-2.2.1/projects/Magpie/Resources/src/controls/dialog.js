@@ -17,7 +17,7 @@ var Dialog = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("对话框");
+        lz.um.beginLogPageView("对话框");
     },
 
     onExit: function () {
@@ -25,7 +25,7 @@ var Dialog = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("对话框");
+        lz.um.endLogPageView("对话框");
     },
 
     init: function (msg, cb) {
@@ -99,9 +99,9 @@ Dialog.create = function (msg, cb) {
 
 
 Dialog.pop = function (msg, cb) {
-    var dialog = Dialog.create(msg, cb);
+    lz.scheduleOnce(function () {
+        var dialog = Dialog.create(msg, cb);
 
-    cc.Director.getInstance().getRunningScene().addChild(dialog, 10000);
-
-    return dialog;
+        cc.Director.getInstance().getRunningScene().addChild(dialog, 10000);
+    }, 0.01);
 };

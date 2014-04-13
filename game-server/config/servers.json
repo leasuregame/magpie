@@ -1,8 +1,7 @@
 {
   "development": {
     "connector": [
-      { "id": "connector-server-1", "host": "127.0.0.1", "port": 4150, "clientPort": 4010, "frontend": true, "area": 1, "args": " --debug=7878 " },
-      { "id": "connector-server-2", "host": "127.0.0.1", "port": 4151, "clientPort": 4011, "frontend": true, "area": 2, "args": " --debug=7879 " }
+      { "id": "connector-server-1", "host": "127.0.0.1", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1, "args": " --debug=7878 " }
     ],
     "gate": [
       { "id": "gate-server-1", "host": "127.0.0.1", "port": 4149, "clientPort": 4009, "frontend": true, "args": " --debug=7880 " }
@@ -11,24 +10,28 @@
       { "id": "auth-server-1", "host": "127.0.0.1", "port": 5300, "args": " --debug=7881 " }
     ],
     "area": [
-      { "id": "area-server-1", "host": "127.0.0.1", "port": 5100, "area": 1, "args": " --debug=7884 "  }, 
-      { "id": "area-server-2", "host": "127.0.0.1", "port": 5101, "area": 2, "args": " --debug=7885 "  }
-    ] 
+      { "id": "area-server-1", "host": "127.0.0.1", "port": 4100, "area": 1, "args": " --debug=7884 "  },
+      { "id": "area-server-2", "host": "127.0.0.1", "port": 4101, "area": 2, "args": " --debug=7886 "  }
+    ],
+    "notice": [
+      { "id": "tb-notice-server-1", "host": "127.0.0.1", "port": 4200, "webPort": 5050, "args": " --debug=7885 "}
+    ]
   },
   "production": {
     "connector": [
-      { "id": "connector-server-1", "host": "124.238.236.33", "port": 4150, "clientPort": 4010, "frontend": true, "area": 1},
-      { "id": "connector-server-2", "host": "124.238.236.33", "port": 4151, "clientPort": 4011, "frontend": true, "area": 2}
+      { "id": "connector-server-1", "host": "127.0.0.1", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1}
     ],
     "gate": [
-      { "id": "gate-server-1", "host": "124.238.236.33", "port": 4149, "clientPort": 4009, "frontend": true }
+      { "id": "gate-server-1", "host": "127.0.0.1", "port": 3149, "clientPort": 3009, "frontend": true }
     ],
     "auth": [
-      { "id": "auth-server-1", "host": "124.238.236.33", "port": 5300}
+      { "id": "auth-server-1", "host": "127.0.0.1", "port": 4300}
     ],
     "area": [
-      { "id": "area-server-1", "host": "124.238.236.33", "port": 5100, "area": 1 }, 
-      { "id": "area-server-2", "host": "124.238.236.33", "port": 5101, "area": 2 }
-    ] 
+      { "id": "area-server-1", "host": "127.0.0.1", "port": 4100, "area": 1 }
+    ],
+    "notice": [
+      { "id": "tb-notice-server-1", "host": "127.0.0.1", "port": 4200, "webPort": 5050}
+    ]
   }
 }

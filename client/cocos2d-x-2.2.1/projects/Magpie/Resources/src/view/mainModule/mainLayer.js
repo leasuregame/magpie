@@ -17,7 +17,7 @@ var MainLayer = cc.Layer.extend({
 
     _layer: [
         SpiritPoolLayer,
-        LotteryLayer,
+        SummonLayer,
         TreasureHuntLayer,
         StrengthenLayer,
         EvolutionLayer,
@@ -36,6 +36,7 @@ var MainLayer = cc.Layer.extend({
     _friendMark: null,
     _messageMark: null,
     _lotteryMark: null,
+    _treasureHuntMark: null,
 
     _treasureHuntGuide: null,
     _rankGuide: null,
@@ -51,7 +52,7 @@ var MainLayer = cc.Layer.extend({
         this.updateGuide();
         this.onTeaching();
 
-        lz.dc.beginLogPageView("主界面");
+        lz.um.beginLogPageView("主界面");
     },
 
     onExit: function () {
@@ -59,7 +60,7 @@ var MainLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("主界面");
+        lz.um.endLogPageView("主界面");
     },
 
     init: function () {
@@ -80,25 +81,24 @@ var MainLayer = cc.Layer.extend({
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
-        this.addChild(playerHeaderLabel);
+        this.addChild(playerHeaderLabel, 2);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon285);
         lineIcon.setAnchorPoint(cc.p(0, 0));
         lineIcon.setPosition(this._mainLayerFit.lineIconPoint);
         this.addChild(lineIcon);
-        var player = gameData.player;
 
         var abilityLabelIcon = cc.Sprite.create(main_scene_image.icon286);
         abilityLabelIcon.setAnchorPoint(cc.p(0, 0));
         abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
         this.addChild(abilityLabelIcon);
 
-        var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
+        var abilityLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
-        var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
+        var rankingLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         rankingLabel.setAnchorPoint(cc.p(0, 0.5));
         rankingLabel.setPosition(this._mainLayerFit.rankingLabelPoint);
         this.addChild(rankingLabel);
@@ -129,6 +129,10 @@ var MainLayer = cc.Layer.extend({
         );
         treasureHuntLayerItem.setOffset(cc.p(-5, 5));
         treasureHuntLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+
+        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._treasureHuntMark.setPosition(cc.p(185, 80));
+        treasureHuntLayerItem.addChild(this._treasureHuntMark);
 
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -202,7 +206,7 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
-        this._friendMark = cc.Sprite.create(main_scene_image.icon289);
+        this._friendMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
         this._friendMark.setPosition(cc.p(75, 80));
         friendLayerItem.addChild(this._friendMark);
 
@@ -227,6 +231,15 @@ var MainLayer = cc.Layer.extend({
 
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
+        var greetingLabelItem = cc.MenuItemImage.create(
+            main_scene_image.button3,
+            main_scene_image.button3s,
+            this._onClickGreeting,
+            this
+        );
+
+        greetingLabelItem.setPosition(this._mainLayerFit.greetingLabelItemPoint);
+
         var menu = cc.Menu.create(
             lotteryLayerItem,
             treasureHuntLayerItem,
@@ -238,39 +251,40 @@ var MainLayer = cc.Layer.extend({
             achievementLayerItem,
             friendLayerItem,
             messageItem,
-            configLayerItem
+            configLayerItem,
+            greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
         this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
-        this._spiritLayerItem.controller.markEffect.setVisible(false);
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(false);
         this.addChild(this._spiritLayerItem);
 
         var isVisible = false;
-        var that = this;
-        this.scheduleOnce(function () {
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
 
-            var spirit = gameData.spirit;
-            var spiritPool = gameData.spiritPool;
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
 
-            if (spirit.canUpgrade()) {
-                isVisible = true;
-            } else if (spiritPool.get("collectCount") > 0) {
-                isVisible = true;
-            }
+        this._spiritLayerItem.controller.ccbMarkEffect.setVisible(isVisible);
 
-            that._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+        var ability = gameData.player.get("ability");
+        var ranking = gameData.tournament.get("ranking");
 
-        }, 0.1);
-
+        abilityLabel.setString(ability);
+        rankingLabel.setString(ranking);
 
         return true;
     },
 
-    _onClickSpiritItem: function () {
-        cc.log("MainLayer _onClickSpiritItem");
+    ccbFnSpiritItem: function () {
+        cc.log("MainLayer ccbFnSpiritItem");
 
         MainScene.getInstance().switchLayer(this._layer[0]);
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
@@ -291,7 +305,7 @@ var MainLayer = cc.Layer.extend({
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
         this._lotteryMark.setVisible(gameMark.getLotteryMark());
-
+        this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
     },
 
     updateGuide: function () {
@@ -315,22 +329,34 @@ var MainLayer = cc.Layer.extend({
             this._lotteryGuide.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
             this.addChild(this._lotteryGuide);
         }
-
     },
 
     onTeaching: function () {
         cc.log("MainLayer onTeaching");
 
         if (gameGuide.get("isFirstPassiveSkillAfresh")) {
-            this.set("isFirstPassiveSkillAfresh", false);
-            MandatoryTeachingLayer.pop(FIRST_PASSIVE_SKILL_AFRESH);
+            gameGuide.set("isFirstPassiveSkillAfresh", false);
+            MandatoryTeachingLayer.pop({
+                progress: FIRST_PASSIVE_SKILL_AFRESH
+            });
         }
+    },
 
+    _onClickGreeting: function () {
+        cc.log("MainLayer _onClickGreeting");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var greetingLabel = GreetingLabel.getInstance();
+        if (greetingLabel.getParent()) {
+            greetingLabel.removeFromParent();
+        }
+        this.addChild(greetingLabel, 2);
     },
 
     _onClickLayer: function (index) {
         return function () {
-            cc.log("MainMenuLayer _onClickLayer: " + index);
+            cc.log("MainLayer _onClickLayer: " + index);
 
             if (index == 1) {
                 if (this._lotteryGuide) {
@@ -356,9 +382,9 @@ var MainLayer = cc.Layer.extend({
                 }
             }
 
-            MainScene.getInstance().switchLayer(this._layer[index]);
-
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            MainScene.getInstance().switchLayer(this._layer[index]);
 
             if (noviceTeachingLayer.isNoviceTeaching()) {
                 noviceTeachingLayer.clearAndSave();

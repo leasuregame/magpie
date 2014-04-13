@@ -269,6 +269,11 @@ describe("Area Server", function() {
 						power: JSON.stringify({
 							time: Date.now(),
 							value: 10000000
+						}),
+						cardsCount: 1000,
+						cardBook: JSON.stringify({
+							mark: [],
+							flag: []
 						})
 					}, function() {
 						//loginWith(passer.account, passer.password, passer.areaId);
@@ -289,7 +294,7 @@ describe("Area Server", function() {
 
 				var count = 1;
 				var totalCount = 100;
-				var curLv = 10
+				var curLv = 10;
 
 				it(totalCount + '次', function() {
 					var doTest = function() {
@@ -319,6 +324,8 @@ describe("Area Server", function() {
 								]);
 								expect(data.msg.upgradeInfo.friendsCount).toEqual(20);
 							}
+
+
 
 							// doAjax('/player/' + passer.playerId, {}, function(res) {
 							// 	expect(res.data.lv).toEqual(data.msg.lv);
@@ -389,6 +396,10 @@ var checkExploreResult = function(data, task, oldTask) {
 					progress: oldTask.progress,
 					mark: []
 				});
+			}
+
+			if (res.first_win) {
+				expect(res.money_obtain).toBeGreaterThan(5000);
 			}
 			break;
 		case 'box':

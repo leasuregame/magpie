@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -253,7 +253,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -492,7 +492,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -565,7 +565,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1514,7 +1514,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1551,8 +1551,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1584,7 +1584,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1608,7 +1608,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -1711,7 +1711,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1730,7 +1730,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>80</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1746,7 +1746,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>250</integer>
+						<integer>50</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1755,8 +1755,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>0.25</real>
+							<real>0.60000002384185791</real>
+							<real>0.10000000149011612</real>
 						</array>
 					</dict>
 					<dict>
@@ -1869,29 +1869,7 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>speed</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>200</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tangentialAccel</string>
+						<string>startRadius</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -1902,7 +1880,18 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>radialAccel</string>
+						<string>endRadius</string>
+						<key>type</key>
+						<string>FloatVar</string>
+						<key>value</key>
+						<array>
+							<real>280</real>
+							<real>40</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotatePerSecond</string>
 						<key>type</key>
 						<string>FloatVar</string>
 						<key>value</key>
@@ -1920,6 +1909,8 @@
 						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -2124,7 +2115,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>240</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2153,7 +2144,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2347,7 +2338,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-240</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2376,7 +2367,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2424,7 +2415,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3013,7 +3004,7 @@
 						<key>displayName</key>
 						<string>card_frame4</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_frame</string>
+						<string>ccbCardFrame</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -3199,7 +3190,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3252,7 +3243,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -3486,7 +3477,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3500,8 +3491,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-63</real>
-									<real>-72</real>
+									<real>56.200031280517578</real>
+									<real>64.656074523925781</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3537,7 +3528,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>90</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3566,7 +3557,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3823,7 +3814,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -3837,8 +3828,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>63</real>
-									<real>72</real>
+									<real>56.200031280517578</real>
+									<real>64.656074523925781</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3874,7 +3865,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>90</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3903,7 +3894,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4031,7 +4022,7 @@
 						<key>displayName</key>
 						<string>card12_half1</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_half</string>
+						<string>ccbCardHalf</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -4192,7 +4183,7 @@
 						<key>displayName</key>
 						<string>card_icon1</string>
 						<key>memberVarAssignmentName</key>
-						<string>card_icon</string>
+						<string>ccbCardIcon</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -4249,7 +4240,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/main/card_icon1.png</string>
+									<string>res/main/card_icon_1_0.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4300,7 +4291,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-50</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4327,8 +4318,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1000000238418579</real>
-							<real>1.1000000238418579</real>
+							<real>2</real>
+							<real>2</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4399,7 +4390,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4494,7 +4485,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>30</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -4637,6 +4628,8 @@
 						<string>res/effect/uiEffect/up113.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4884,8 +4877,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.60000038146972656</real>
+									<real>0.60000038146972656</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -4898,7 +4891,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>5.1428613662719727</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5162,8 +5155,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.60000038146972656</real>
+									<real>0.60000038146972656</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -5176,7 +5169,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-5.1428613662719727</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5382,8 +5375,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.57142901420593262</real>
+									<real>0.57142901420593262</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -5463,7 +5456,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -5600,7 +5593,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.6666667461395264</real>
+			<real>1.2333333492279053</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -5610,7 +5603,44 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.066666670143604279</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/card_upgrade_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>1.5666667222976685</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_smalltree_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>
@@ -5634,7 +5664,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>startSetStar</string>
+							<string>ccbFnStartSetStar</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5650,7 +5680,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_changeCardFrame</string>
+							<string>ccbFnChangeCardFrame</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -5677,7 +5707,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.1666666716337204</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/card_evolutionary success_sound.mp3</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>
@@ -5711,7 +5760,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.63333332538604736</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_noword_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

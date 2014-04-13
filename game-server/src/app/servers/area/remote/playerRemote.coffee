@@ -16,7 +16,6 @@ Remote::createPlayer = (args, callback) ->
   areaId = args.areaId
   serverId = args.serverId
   uid = userId + '*' + areaId
-  self = this
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
     if not err and player
@@ -37,14 +36,17 @@ Remote::createPlayer = (args, callback) ->
       
       ### 每天重置一次玩家的部分数据 ###
       player.resetData() if not player.isReset()
-      console.log 'cards : ', player.cards
       ### 缓存登陆的玩家信息 ###
       area.addPlayer player
       messageService.add(uid, serverId, player.id, player.name)
       callback(null, player.toJson())
 
-Remote::getPlayerByUserId = (userId, serverId, callback) ->
+Remote::getPlayerByUserId = (args, callback) ->
+  userId = args.userId
+  serverId = args.serverId
+  
   dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
+    console.log 'get player by userId: ', userId, player?.name
     if err and not player
       return callback {code: 501, msg: '找不到玩家'}
 
@@ -56,6 +58,7 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
     
     uid = userId + '*' + player.areaId
     messageService.add(uid, serverId, player.id, player.name)
+    console.log '-end get player-'
     return callback null, _.extend(player.toJson(), serverTime: Date.now())
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->

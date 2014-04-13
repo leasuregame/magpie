@@ -131,7 +131,7 @@
 						<key>displayName</key>
 						<string>up164</string>
 						<key>memberVarAssignmentName</key>
-						<string>goodsIcon</string>
+						<string>ccbGoodsIcon</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -143,7 +143,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-60</real>
+									<real>-40</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -166,8 +166,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>1.2000000476837158</real>
+									<real>1.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -188,7 +188,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up164.png</string>
+									<string>res/main/icon148.png</string>
 								</array>
 							</dict>
 						</array>
@@ -203,7 +203,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>goodsLabel</string>
+						<string>ccbGoodsLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -215,8 +215,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-30</real>
-									<real>0.0</real>
+									<real>-14</real>
+									<real>1</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -238,8 +238,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.69999998807907104</real>
-									<real>0.69999998807907104</real>
+									<real>0.60000002384185791</real>
+									<real>0.60000002384185791</real>
 									<false/>
 									<integer>0</integer>
 								</array>

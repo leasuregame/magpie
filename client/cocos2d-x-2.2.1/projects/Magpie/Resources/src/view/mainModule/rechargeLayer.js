@@ -14,9 +14,8 @@ var RechargeLayer = cc.Layer.extend({
         cc.log("RechargeLayer onEnter");
 
         this._super();
-        this.update();
 
-        lz.dc.beginLogPageView("充值优惠界面");
+        lz.um.beginLogPageView("充值优惠界面");
     },
 
     onExit: function () {
@@ -24,7 +23,7 @@ var RechargeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("充值优惠界面");
+        lz.um.endLogPageView("充值优惠界面");
     },
 
     init: function () {
@@ -34,11 +33,6 @@ var RechargeLayer = cc.Layer.extend({
 
         this._rechargeLayerFit = gameFit.mainScene.rechargeLayer;
 
-        return true;
-    },
-
-    update: function () {
-        cc.log("RechargeLayer update");
         var headIcon = cc.Sprite.create(main_scene_image.icon266);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._rechargeLayerFit.headIconPoint);
@@ -49,13 +43,13 @@ var RechargeLayer = cc.Layer.extend({
         midIcon.setPosition(this._rechargeLayerFit.midIconPoint);
         this.addChild(midIcon);
 
-        var itemText = cc.LabelTTF.create('首次充值，3倍返利。', "STHeitiTC-Medium", 20);
+        var itemText = cc.LabelTTF.create("首次充值，3倍返利。", "STHeitiTC-Medium", 20);
         itemText.setAnchorPoint(cc.p(0, 0));
         itemText.setPosition(this._rechargeLayerFit.itemTextPoint);
         itemText.setColor(cc.c3b(97, 11, 9));
         this.addChild(itemText);
 
-        var description = lz.format('首次任意金额的充值，你都将获得3倍的魔石。不是2倍，更不是1倍，是3倍。送啥都不如送这玩意来的更直接，更实在。', 14);
+        var description = lz.format("首次任意金额的充值，你都将获得3倍的魔石。不是2倍，更不是1倍，是3倍。送啥都不如送这玩意来的更直接，更实在。", 14);
         for (var i = 0; i < description.length; i++) {
             var text = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 20);
             text.setAnchorPoint(cc.p(0, 0));
@@ -81,13 +75,16 @@ var RechargeLayer = cc.Layer.extend({
         var btnTitle = cc.Sprite.create(main_scene_image.icon268);
         btnTitle.setPosition(this._rechargeLayerFit.btnTitlePoint);
         this.addChild(btnTitle);
+
+        return true;
     },
 
     _onClickGo2Payment: function () {
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        cc.log("RechargeLayer _onClickGo2Payment");
 
+        //gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         var shopLayer = ShopLayer.create();
-        shopLayer.switchLayer(VipLayer);
+        shopLayer._onClickVipLayer();
         MainScene.getInstance().switchTo(shopLayer);
     }
 });

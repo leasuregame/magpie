@@ -17,6 +17,6 @@
     "log4js": "0.6.4",
     "async": ">=0.0.1",
     "sqlite3":"*",
-     "connect-flash":"*"
+    "connect-flash":"*"
   }
 }

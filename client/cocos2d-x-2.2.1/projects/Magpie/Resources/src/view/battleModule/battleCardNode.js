@@ -27,12 +27,14 @@ var BattleCardNode = cc.Node.extend({
     _skillId: 0,
     _skillType: 0,
     _skillName: "",
+    _normalAtkId: 0,
+    _effectId: 0,
     _isDie: false,
     _ccbNode: null,
     _animationManager: null,
     _hpProgress: null,
     _spiritHpProgress: null,
-    _tipLabel: null,
+    _cb: null,
 
     init: function (data, index) {
         cc.log("BattleCardNode init");
@@ -44,33 +46,44 @@ var BattleCardNode = cc.Node.extend({
 
         this._spiritHp = data.spiritHp || 0;
         this._spiritAtk = data.spiritAtk || 0;
-        this._maxHp = data.hp;
+        this._maxHp = data.totalHp || data.hp;
         this._hp = this._maxHp - this._spiritHp;
-        this._nowHp = this._hp;
+        this._nowHp = data.hp - this._spiritHp;
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
-        this._skillId = data.skillId || 0;
         this._isDie = false;
 
         this._load();
 
-        this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
+        if (this.isBossCard()) {
+            this._ccbNode = cc.BuilderReader.load(main_scene_image[this._url], this);
+        } else {
+            this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
 
-        var frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+            var frameSpriteTexture;
 
-        var num = this._star > 2 ? this._star - 2 : 1;
-        var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
+            if (this.isLeadCard()) {
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+            } else {
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
+            }
 
-        if (this._skillType > 3) {
-            this._skillType = 3;
+            var num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
+            var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
+
+            var iconSpriteTexture = lz.getTexture(this.getCardIcon());
+
+            this.ccbFrameSprite.setTexture(frameSpriteTexture);
+            this.ccbCardSprite.setTexture(cardSpriteTexture);
+            this.ccbIconSprite.setTexture(iconSpriteTexture);
+
+            if (this.getCardSubscript()) {
+                var subscriptSprite = cc.Sprite.create(this.getCardSubscript());
+                subscriptSprite.setAnchorPoint(cc.p(0, 0));
+                subscriptSprite.setPosition(cc.p(-1.8, -2.3));
+                this.ccbIconSprite.addChild(subscriptSprite);
+            }
         }
-        var iconSpriteTexture = lz.getTexture(main_scene_image["card_icon" + this._skillType]);
-
-        this._animationManager = this._ccbNode.animationManager;
-
-        this._frameSprite.setTexture(frameSpriteTexture);
-        this._cardSprite.setTexture(cardSpriteTexture);
-        this._iconSprite.setTexture(iconSpriteTexture);
 
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
@@ -78,8 +91,7 @@ var BattleCardNode = cc.Node.extend({
             this._nowHp,
             this._hp
         );
-        this._hpProgress.setPosition(cc.p(0, -100));
-        this.addChild(this._hpProgress);
+        this.ccbProgressNode.addChild(this._hpProgress);
 
         this._spiritHpProgress = Progress.create(
             null,
@@ -87,13 +99,11 @@ var BattleCardNode = cc.Node.extend({
             0,
             Math.floor(this._hp / 2)
         );
-        this._spiritHpProgress.setPosition(cc.p(0, -100));
-        this.addChild(this._spiritHpProgress);
+        this.ccbProgressNode.addChild(this._spiritHpProgress);
 
         this.addChild(this._ccbNode);
 
-        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
-        this.addChild(this._tipLabel);
+        this._animationManager = this._ccbNode.animationManager;
 
         return true;
     },
@@ -104,7 +114,9 @@ var BattleCardNode = cc.Node.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
-        this._skillId = cardTable.skill_id || this._skillId;
+        this._skillId = cardTable.skill_id;
+        this._normalAtkId = cardTable.normal_atk_id || 1;
+        this._effectId = cardTable.effect_id || 1;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
 
@@ -112,11 +124,16 @@ var BattleCardNode = cc.Node.extend({
         if (this._skillId) {
             var skillTable = outputTables.skills.rows[this._skillId];
             this._skillType = skillTable.type || 0;
+            this._skillType = this._skillType > 3 ? 3 : this._skillType;
         }
     },
 
-    getSkillId: function () {
-        return this._skillId;
+    getSkillFn: function () {
+        return ("skill" + this._effectId);
+    },
+
+    getNormalAtkFn: function () {
+        return ("skill" + this._normalAtkId);
     },
 
     getSpiritHp: function () {
@@ -127,10 +144,20 @@ var BattleCardNode = cc.Node.extend({
         return this._spiritAtk;
     },
 
+    getCardIcon: function (type) {
+        type = type != 2 ? 1 : 2;
+
+        return main_scene_image[(skillIconMap[type][this._skillId] || skillIconMap[type][0])];
+    },
+
+    getCardSubscript: function () {
+        return main_scene_image["card_subscript_" + this._star];
+    },
+
     update: function (value) {
         cc.log(this._index + " BattleCardNode update: " + value);
 
-        var time = 0.3;
+        var time = 0.2;
         var differenceValue;
         var differenceTime;
         var absValue = Math.abs(value);
@@ -142,34 +169,44 @@ var BattleCardNode = cc.Node.extend({
         if (value > 0) {
             if (this._nowHp > this._hp) {
                 differenceValue = this._hpProgress.getDifferenceValue();
-                differenceTime = time * differenceValue / absValue;
 
-                this._hpProgress.setValue(this._hp, differenceTime);
+                if (differenceValue > 0) {
+                    differenceTime = time * differenceValue / absValue;
 
-                this.scheduleOnce(function () {
-                    this._spiritHpProgress.setValue(this._nowHp - this._hp, time - differenceTime);
-                }, differenceTime);
+                    this._hpProgress.setValue(this._hp, differenceTime);
+
+                    this.scheduleOnce(function () {
+                        this._spiritHpProgress.setValue(this._nowHp - this._hp, time - differenceTime);
+                    }, differenceTime);
+                } else {
+                    this._spiritHpProgress.setValue(this._nowHp - this._hp, time);
+                }
             } else {
                 this._hpProgress.setValue(this._nowHp, time);
             }
         } else if (value < 0) {
             if (this._nowHp < this._hp) {
                 differenceValue = this._spiritHpProgress.getValue();
-                differenceTime = time * differenceValue / absValue;
 
-                this._spiritHpProgress.setValue(0, differenceTime);
+                if (differenceValue > 0) {
+                    differenceTime = time * differenceValue / absValue;
 
-                this.scheduleOnce(function () {
-                    this._hpProgress.setValue(this._nowHp, time - differenceTime);
-                }, differenceTime);
+                    this._spiritHpProgress.setValue(0, differenceTime);
+
+                    this.scheduleOnce(function () {
+                        this._hpProgress.setValue(this._nowHp, time - differenceTime);
+                    }, differenceTime);
+                } else {
+                    this._hpProgress.setValue(this._nowHp, time);
+                }
             } else {
                 this._spiritHpProgress.setValue(this._nowHp - this._hp, time);
             }
         }
     },
 
-    callback: function () {
-        this.getParent().callback();
+    ccbFnCallback: function () {
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {
@@ -182,20 +219,18 @@ var BattleCardNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect4, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect12, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect5, this);
         }
 
         if (ccbNode) {
-            cc.log(ccbNode);
-
             var len = this._skillName.length;
             for (var i = 0; i < len; ++i) {
-                ccbNode.controller["label" + i].setString(this._skillName[i]);
+                ccbNode.controller["ccbLabel" + i].setString(this._skillName[i]);
             }
 
-            ccbNode.controller.card.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
+            ccbNode.controller.ccbCard.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
         }
 
         return ccbNode;
@@ -211,11 +246,23 @@ var BattleCardNode = cc.Node.extend({
         }
 
         tweenDuration = tweenDuration || 0;
-        this._cb = cb || function () {
+
+        this._cb = function () {
+            if (cb) {
+                cb();
+                cb = null;
+            }
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
+    },
+
+    setProgressVisible: function (visible) {
+        this._hpProgress.setVisible(visible);
+        this._spiritHpProgress.setVisible(visible);
     },
 
     die: function () {
@@ -225,20 +272,31 @@ var BattleCardNode = cc.Node.extend({
             if (this._nowHp <= 0) {
                 this._isDie = true;
 
-                this.runAnimations("die_1");
-
-                this._hpProgress.setVisible(false);
-                this._spiritHpProgress.setVisible(false);
+                this.runAnimations("die");
 
                 if (this._spirit > 0) {
                     this.getParent().releaseSpirit(this._index, this._spirit);
                 }
-            } else if (this._nowHp / this._hp < 0.05) {
-                if (this._animationManager.getRunningSequenceName() != "god_1") {
-                    this.runAnimations("god_1");
+            } else {
+                this.setProgressVisible(true);
+
+                if (this._nowHp / this._hp < 0.05) {
+                    if (this._animationManager.getRunningSequenceName() != "god") {
+                        this.runAnimations("god");
+                    }
                 }
             }
         }
+    },
+
+    isLeadCard: function () {
+        return (this._tableId < 10000 || this._tableId == 30000);
+    },
+
+    isBossCard: function () {
+        cc.log(this._tableId);
+
+        return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });
 

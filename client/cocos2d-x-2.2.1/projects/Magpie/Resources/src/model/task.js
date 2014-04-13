@@ -101,12 +101,10 @@ var Task = Entity.extend({
         cc.log("Task canExplore");
 
         if (gameData.player.get("power") < this._powerNeed) {
-            TipLayer.tip("体力不足");
             return POWER_NO_ENOUGH;
         }
 
         if (gameData.cardList.isFull()) {
-            TipLayer.tip("卡牌已满，请先消耗");
             return CARD_FULL;
         }
 
@@ -160,17 +158,19 @@ var Task = Entity.extend({
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
+            var player = gameData.player;
+            var msg = data.msg;
+
             if (data.code == 200) {
                 cc.log("explore success");
-
-                var msg = data.msg;
 
                 var cbData = {
                     result: msg.result,
                     power: msg.power_consume,
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    goldList: msg.momo
+                    goldList: msg.momo,
+                    isDouble: msg.isDouble || false
                 };
 
                 if (msg.task.id > that._id) {
@@ -182,7 +182,9 @@ var Task = Entity.extend({
 
                 that.update(msg.task);
 
-                var player = gameData.player;
+                if (msg.find_boss) {
+                    cbData.findBoss = msg.find_boss;
+                }
 
                 if (msg.upgradeInfo) {
                     player.upgrade(msg.upgradeInfo);
@@ -204,8 +206,9 @@ var Task = Entity.extend({
                 }
 
                 if (msg.through_reward) {
-                    cbData.through_reward = msg.through_reward;
                     player.add("money", msg.through_reward.money);
+
+                    cbData.through_reward = msg.through_reward;
                 }
 
                 cc.log("first_win: " + msg.first_win);
@@ -218,7 +221,7 @@ var Task = Entity.extend({
                     msg.battle_log.rewards.money = msg.money_obtain;
                     msg.battle_log.rewards.exp = msg.exp_obtain;
 
-                    cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log, PVE_BATTLE_LOG);
+                    cbData.battleLogId = BattleLogPool.getInstance().put(msg.battle_log);
                 } else {
                     player.add("money", msg.money_obtain);
 
@@ -237,11 +240,25 @@ var Task = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_task", id);
+                lz.um.event("event_task", id);
+            } else if (data.code == 501) {
+                cc.log("explore fail");
+
+                if (msg) {
+                    if (msg.message) {
+                        TipLayer.tip(msg.message);
+                    }
+
+                    if (msg.power) {
+                        player.correctionPower(msg.power.value, msg.power.time);
+                    }
+                }
+
+                cb(null);
             } else {
                 cc.log("explore fail");
 
-                TipLayer.tip(data.msg);
+                TipLayer.tip(msg);
 
                 cb(null);
             }
@@ -280,7 +297,7 @@ var Task = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_wipe_out_task", id);
+                lz.um.event("event_wipe_out_task", "" + id);
             } else {
                 cc.log("wipeOut fail");
 
@@ -303,7 +320,7 @@ var Task = Entity.extend({
 
                 gameData.player.add("gold", gold);
 
-                lz.dc.event("event_momo", gold);
+                lz.um.event("event_momo", gold);
             } else {
                 cc.log("obtainGold fail");
 

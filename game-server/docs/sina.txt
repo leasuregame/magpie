@@ -1,8 +1,13 @@
+TB01890600
+
 user：root
 电信 网通 密码：
 124.238.236.30 219.232.247.30   URT7d8cJ4wMukArWMqWxjraxheErqL2i
 124.238.236.32 219.232.247.32   uqg3RgSqxFZEVSq8iHurksx9CHFUASJw
 124.238.236.33 219.232.247.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
+
+ssh -l root 115.29.175.156
+ssh -l root 115.29.12.178
 
 然后登陆新浪的ssh命令式：
 
@@ -14,7 +19,7 @@ http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
 git pull origin master
-账号：
+帐号：
 wuzhanghai@leasuregame.com
 密码：
 wuzhanghai34
@@ -53,25 +58,29 @@ make inittables
 node ./bin/dao.js all production
 
 # kill a process tree
-kill -- -$( ps opgid= 17165 | tr -d ' ' )
+kill -- -$( ps opgid= 7256 | tr -d ' ' )
 
 cd game-server
 pkill -9 -f node
-make build
+make build && make convert-data
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
 cd ../update-server && forever start app.js && cd ../game-server
 
+make start && make start-webserver && cd ../gm && make runserver2
+
+tail -f ./logs/node-log-tb-notice-server-1.log
 tail -f ./logs/node-log-area-server-1.log
-tail -n 2000 ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 http://124.238.236.33:7003
 test, 123
 
-use Dev http Client to test verify receipt.
+copy file from remote server:
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-connector-server-1.log ~/connector.log
+scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-area-server-1.log ~/area.log
 
 新浪服务器master：
-角色账号：987123000
+角色帐号：987123000
 登陆密码：helloboy
 
 服务器：花果山
@@ -79,3 +88,12 @@ use Dev http Client to test verify receipt.
 
 服务器：水帘洞
 角色名称：杨翠阳
+
+[2014-02-10 14:19:29.086] [INFO] console - [sql connection error]:  { [Error: Connection lost: The server closed the connection.] fatal: true, code: 'PROTOCOL_CONNECTION_LOST' }
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/alidata1/magpie/game-server/node_modules/mysql/lib/protocol/Protocol.js:78:13)
+    at Socket.onend (stream.js:79:10)
+    at Socket.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+

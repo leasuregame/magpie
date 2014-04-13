@@ -32,6 +32,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _upgradeItem: null,
     _selectLeadCardIcon: null,
     _showUpgrade: false,
+    _effect: null,
 
     onEnter: function () {
         cc.log("SkillUpgradeLabel onEnter");
@@ -39,7 +40,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("技能升级界面");
+        lz.um.beginLogPageView("技能升级界面");
     },
 
     onExit: function () {
@@ -47,7 +48,7 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("技能升级界面");
+        lz.um.endLogPageView("技能升级界面");
     },
 
     init: function () {
@@ -61,10 +62,14 @@ var SkillUpgradeLabel = cc.Node.extend({
         cardItemBgSprite.setPosition(this._skillUpgradeLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
-        var skillPointIcon = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 22);
-        skillPointIcon.setColor(cc.c3b(255, 239, 131));
+        var skillPointIcon = cc.Sprite.create(main_scene_image.icon152);
         skillPointIcon.setPosition(this._skillUpgradeLabelFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
+
+        var skillPointIconLabel = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 22);
+        skillPointIconLabel.setColor(cc.c3b(255, 239, 131));
+        skillPointIconLabel.setPosition(this._skillUpgradeLabelFit.skillPointIconLabelPoint);
+        this.addChild(skillPointIconLabel);
 
         this._skillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -167,7 +172,26 @@ var SkillUpgradeLabel = cc.Node.extend({
         );
         this._upgradeItem.setPosition(this._skillUpgradeLabelFit.upgradeItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem);
+        this._extractItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button11,
+            main_scene_image.button11s,
+            main_scene_image.button9d,
+            main_scene_image.icon368,
+            this._onClickExtract,
+            this
+        );
+
+        this._extractItem.setPosition(this._skillUpgradeLabelFit.extractItemPoint);
+
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+        helpItem.setPosition(this._skillUpgradeLabelFit.helpItemPoint);
+
+        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem, this._extractItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -207,6 +231,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             );
 
             this._upgradeItem.setEnabled(false);
+            this._extractItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
@@ -268,14 +293,109 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
 
-            this._upgradeItem.setEnabled(true);
+            this._upgradeItem.setEnabled(this._leadCard.canUpgradeSkill());
+            this._extractItem.setEnabled(true);
         }
+    },
+
+    _extract: function () {
+        cc.log("CardTrainLabel _extract");
+
+        if (this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+        this._extractEffect = cc.BuilderReader.load(main_scene_image.uiEffect85, this);
+        var animationManager = this._extractEffect.animationManager;
+        animationManager.runAnimationsForSequenceNamedTweenDuration(this._skillUpgradeLabelFit.extractEffectUrl, 0);
+        this._effectTime = animationManager.getSequenceDuration(
+            animationManager.getRunningSequenceName()
+        );
+        var date = new Date();
+        this._startTime = date.getTime();
+        this._extractEffect.setPosition(this._skillUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._extractEffect, 10);
+    },
+
+    ccbFnExtract: function () {
+        cc.log("CardTrainLabel ccbFnExtract");
+
+        var date = new Date();
+        var useTime = this._effectTime - (date.getTime() - this._startTime) / 1000;
+        var nowSkillPoint = this._dummyCard.get("skillPoint");
+        var tmpTime = useTime / 0.05;
+        var tmpSkillPoint = nowSkillPoint / tmpTime;
+
+        var fn = function () {
+
+            if (nowSkillPoint < tmpSkillPoint) {
+                tmpSkillPoint = nowSkillPoint;
+            }
+
+            nowSkillPoint -= tmpSkillPoint;
+
+            var skillPoint = gameData.player.get("skillPoint") - nowSkillPoint;
+            this._skillPointLabel.setString(Math.round(skillPoint));
+
+            if (nowSkillPoint <= 0) {
+                this._skillPointLabel.setString(gameData.player.get("skillPoint"));
+
+                this._skillLvLabel.setString(this._dummyCard.get("skillLv"));
+                this._skillHarmLabel.setString(this._dummyCard.get("skillHarm") + "%");
+
+                this._nextSkillLvLabel.setString(this._leadCard.get("skillLv"));
+                this._nextSkillHarmLabel.setString(this._leadCard.get("skillHarm") + "%");
+
+                this._arrowLabel1.setVisible(true);
+                this._arrowLabel2.setVisible(true);
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+                this._nextSkillLvLabel.runAction(spawnAction.clone());
+                this._nextSkillHarmLabel.runAction(spawnAction.clone());
+                this._upgradeItem.setEnabled(true);
+
+                this.unschedule(fn);
+                if (this._extractEffect != null) {
+                    this._extractEffect.removeFromParent();
+                    this._extractEffect = null;
+                }
+
+            }
+
+        };
+
+        this.schedule(fn, 0.05);
     },
 
     _onClickSelectLeadCard: function () {
         cc.log("SkillUpgradeLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
+        if (this._extractEffect != null) {
+            this._extractEffect.removeFromParent();
+            this._extractEffect = null;
+        }
+
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -328,15 +448,56 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect52, this);
-            effect.setPosition(that._skillUpgradeLabelFit.selectLeadCardItemPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
-                effect.removeFromParent();
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
+            }
+
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect52, this);
+            that._effect.setPosition(that._skillUpgradeLabelFit.selectLeadCardItemPoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                that._effect.removeFromParent();
+                that._effect = null;
             });
-            that.addChild(effect, 10);
+            that.addChild(that._effect, 10);
             that._showUpgrade = true;
             that.update();
         });
+    },
+
+    _onClickExtract: function () {
+        cc.log("SkillUpgradeLabel _onClickExtract");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._leadCard.get("skillPoint") == 0) {
+            TipLayer.tip("该卡没有可提取的技能点");
+            return;
+        }
+
+        var that = this;
+        this._dummyCard = lz.clone(that._leadCard);
+
+        var cb = function () {
+            that._leadCard.extract(function () {
+                that._extract();
+            }, EXTRACT_SKILL_POINT);
+        };
+
+        ExtractTipLabel.pop({
+            cb: cb,
+            type: EXTRACT_SKILL_POINT,
+            num: this._leadCard.get("skillPoint")
+        });
+
+    },
+
+    _onClickHelp: function () {
+        cc.log("SkillUpgradeLabel _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["skillUpgrade"]);
     }
 });
 
@@ -349,4 +510,17 @@ SkillUpgradeLabel.create = function () {
     }
 
     return null;
+};
+
+SkillUpgradeLabel.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].skill_upgrade;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("技能升级" + limitLv + "级开放");
+
+    return false;
 };

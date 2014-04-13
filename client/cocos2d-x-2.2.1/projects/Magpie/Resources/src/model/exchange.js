@@ -13,8 +13,8 @@
  * */
 
 
-var EXCHANGE_STAR4_CARD = 15;
-var EXCHANGE_STAR5_CARD = 40;
+var EXCHANGE_STAR4_CARD = 10;
+var EXCHANGE_STAR5_CARD = 30;
 
 var SELECT_ALL_EXCHANGE_CARD = 0;
 var SELECT_STAR4_EXCHANGE_CARD = 1;
@@ -30,26 +30,39 @@ var Exchange = Entity.extend({
         this._updateList(ids);
     },
 
-    _load: function () {
-        cc.log("Exchange _load");
-        var list = [10, 14, 45, 34];
-        this._updateList(list);
-
-    },
-
     _updateList: function (ids) {
         cc.log("Exchange updateList: " + ids);
 
         this._exchangeCardList = [];
-        for (var i = 0; i < ids.length; ++i) {
-            this._exchangeCardList.push({
-                id: i,
-                card: Card.create({
+        var len = ids.length;
+
+        for (var i = 0; i < len; ++i) {
+
+            var card = null;
+            if (ids[i] > 0) {
+                card = Card.create({
                     tableId: ids[i],
                     lv: 1,
                     skillLv: 1
-                })
-            })
+                });
+            }
+            this._exchangeCardList.push({
+                id: ids[i],
+                card: card
+            });
+        }
+
+    },
+
+    _changeExchangeCardId: function (id) {
+        cc.log("Exchange _changeExchangeCardId: " + id);
+
+        var len = this._exchangeCardList.length;
+        for (var i = 0; i < len; i++) {
+            if (this._exchangeCardList[i].id == id) {
+                this._exchangeCardList[i].id = -1 * id;
+                break;
+            }
         }
 
     },
@@ -96,6 +109,10 @@ var Exchange = Entity.extend({
         return true;
     },
 
+    getFragmentsNeed: function(star) {
+        return star == 4 ? EXCHANGE_STAR4_CARD : EXCHANGE_STAR5_CARD;
+    },
+
     getExchangeCards: function (cb) {
         cc.log("Exchange getExchangeCards");
 
@@ -109,7 +126,8 @@ var Exchange = Entity.extend({
                     cc.log("getExchangeCards success");
                     var ids = data.msg.ids;
                     that._updateList(ids);
-                    gameData.player.add("money", -1000);
+                    var needMoney = outputTables.values.rows["reflashExcCardsMoney"].value;
+                    gameData.player.add("money", -1 * needMoney);
                     cb();
                 } else {
                     cc.log("getExchangeCards fail");
@@ -142,14 +160,13 @@ var Exchange = Entity.extend({
                 }
 
                 gameData.player.add("fragment", -consume);
+                that._changeExchangeCardId(id);
 
                 var card = Card.create(msg.card);
-
                 gameData.cardList.push(card);
-
                 cb(card);
 
-                lz.dc.event("event_exchange_card", id);
+                lz.um.event("event_exchange_card", id);
             } else {
                 cc.log("exchange fail");
             }

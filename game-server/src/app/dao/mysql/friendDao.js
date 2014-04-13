@@ -20,12 +20,16 @@ var FriendDao = (function(_super) {
         this.friendId = attrs.friendId;
         this.giveCount = attrs.giveCount;
         this.receiveCount = attrs.receiveCount;
+        this.friendGiveCount = attrs.friendGiveCount;
+        this.friendReceiveCount = attrs.friendReceiveCount;
     };
     domain.DEFAULT_VALUES = {
         giveCount: 0,
-        receiveCount: 0
+        receiveCount: 0,
+        friendGiveCount: 0,
+        friendReceiveCount: 0
     };
-    domain.FIELDS = ['playerId', 'friendId', 'giveCount', 'receiveCount'];
+    domain.FIELDS = ['playerId', 'friendId', 'giveCount', 'receiveCount', 'friendGiveCount', 'friendReceiveCount'];
     FriendDao.domain = domain;   
 
     FriendDao.getFriends = function(playerId, cb) {
@@ -33,7 +37,7 @@ var FriendDao = (function(_super) {
             join friend as f on p.id = f.friendId \
             where f.playerId =  ? \
             union \
-            select p.id, p.name, p.lv, p.ability, f.receiveCount as giveCount, f.giveCount as receiveCount from player as p \
+            select p.id, p.name, p.lv, p.ability, f.friendGiveCount as giveCount, f.friendReceiveCount as receiveCount from player as p \
             join friend as f on p.id = f.playerId \
             where f.friendId = ?';
         var args = [playerId, playerId];
@@ -77,24 +81,32 @@ var FriendDao = (function(_super) {
         FriendDao.delete({where: condition}, cb);
     };
 
-    FriendDao.updateFriendBlessCount = function(playerId, friendId, cb) {
+    FriendDao.updateGiveCount = function(playerId, friendId, cb) {
+        FriendDao.updateFriendBlessCount(playerId, friendId, 'give', cb);
+    };
+
+    FriendDao.updateReceiveCount = function(playerId, friendId, cb) {
+        FriendDao.updateFriendBlessCount(playerId, friendId, 'receive', cb);
+    }
+
+    FriendDao.updateFriendBlessCount = function(playerId, friendId, type, cb) {
         var format = 'update friend \
-            set giveCount = case \
+            set %(type)sCount = case \
             when playerId = %(playerId)s and friendId = %(friendId)s then \
-                giveCount + 1 \
+                %(type)sCount + 1 \
             else \
-                giveCount \
+                %(type)sCount \
             end, \
-            receiveCount = case \
+            friend%(type)sCount = case \
             when playerId = %(friendId)s and friendId = %(playerId)s then \
-                receiveCount + 1 \
+                friend%(type)sCount + 1 \
             else \
-                receiveCount \
+                friend%(type)sCount \
             end \
             where (playerId = %(playerId)s and friendId = %(friendId)s) \
-            or (playerId = %(friendId)s and friendId = %(playerId)s)'
+            or (playerId = %(friendId)s and friendId = %(playerId)s)';
 
-        var sql = sprintf(format, {playerId: playerId, friendId: friendId});
+        var sql = sprintf(format, {playerId: playerId, friendId: friendId, type: type});
         return dbClient.query(sql, [], function(err, res) {
             if (err) {
                 logger.error('faild to update friend bless count', 'playerId=', playerId, 'friendId=', friendId);

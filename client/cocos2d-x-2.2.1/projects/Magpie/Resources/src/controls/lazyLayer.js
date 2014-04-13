@@ -90,8 +90,10 @@ LazyLayer.create = function () {
     LazyLayer.closeCloudLayer = function () {
         cc.log("LazyLayer closeCloudLayer");
 
-        _cloudLayer.removeFromParent();
-        _cloudLayer = null;
+        if (_cloudLayer) {
+            _cloudLayer.removeFromParent();
+            _cloudLayer = null;
+        }
     };
 })();
 

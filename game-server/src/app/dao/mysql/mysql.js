@@ -16,12 +16,17 @@ NND = {
      */
 
     query: function (sql, args, cb) {
+        if (typeof args == 'function') {
+            cb = args;
+            args = [];
+        }
+
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-
+            console.log('query: ', !!client, sql, args);
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
                 return cb(err, res);
@@ -30,13 +35,13 @@ NND = {
     },
 
     queues: function (sqlList, cb) {
-        console.log(sqlList);
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
-            queues(client, true);
+
+            queues(client, false);
             var trans = client.startTransaction();
 
             function error(e, info) {

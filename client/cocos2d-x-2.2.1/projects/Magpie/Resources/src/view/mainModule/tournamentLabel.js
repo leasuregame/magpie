@@ -36,63 +36,64 @@ var TournamentLabel = cc.Node.extend({
 
         this._target = target;
         this._player = data;
-
         var player = gameData.player;
 
         if (this._player.playerId != player.get("id")) {
             var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
+                main_scene_image.button19,
+                main_scene_image.button19s,
                 this._onClickPlayer,
                 this
             );
             playerItem.setAnchorPoint(cc.p(0, 0));
             playerItem.setPosition(cc.p(0, 0));
-            playerItem.setScaleX(1.05);
+            playerItem.setScaleX(1.017);
 
             var playerItemMenu = LazyMenu.create(playerItem);
             playerItemMenu.setPosition(cc.p(0, 0));
             this.addChild(playerItemMenu);
         } else {
-            var myselfSprite = cc.Sprite.create(main_scene_image.button18);
-            myselfSprite.setScaleX(1.05);
+            var myselfSprite = cc.Sprite.create(main_scene_image.button20);
+            myselfSprite.setScaleX(1.017);
             myselfSprite.setAnchorPoint(cc.p(0, 0));
             myselfSprite.setPosition(cc.p(0, 0));
             this.addChild(myselfSprite);
         }
+
         var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
         nameIcon.setContentSize(cc.size(155, 35));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
-        nameIcon.setPosition(cc.p(20, 99));
+        nameIcon.setPosition(cc.p(20, 89));
         this.addChild(nameIcon);
 
         var nameLabel = cc.LabelTTF.create(this._player.name, "STHeitiTC-Medium", 22);
         nameLabel.setColor(cc.c3b(255, 242, 206));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(30, 99));
+        nameLabel.setPosition(cc.p(30, 89));
         this.addChild(nameLabel);
 
         var ranking = this._player.ranking;
         if (ranking <= 3) {
             var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
-            rankingIcon.setPosition(cc.p(95, 44));
+            rankingIcon.setPosition(cc.p(95, 34));
             this.addChild(rankingIcon);
         } else {
             var rankingLabel = StrokeLabel.create(ranking, "STHeitiTC-Medium", 38);
             rankingLabel.setColor(cc.c3b(255, 242, 206));
-            rankingLabel.setPosition(cc.p(95, 42));
+            rankingLabel.setPosition(cc.p(95, 32));
             this.addChild(rankingLabel);
         }
 
-        if (this._player.playerId != player.get("id")) {
-            var functionItem = null;
+        var ability = this._player.ability;
+        var functionItem = null;
 
+        if (this._player.playerId != player.get("id")) {
             if (this._player.type != CAN_DISPLAY) {
                 if (this._player.type == CAN_ADD_FRIEND) {
                     functionItem = cc.MenuItemImage.createWithIcon(
                         main_scene_image.button10,
                         main_scene_image.button10s,
-                        main_scene_image.icon120,
+                        main_scene_image.icon359,
                         this._onClickFunction,
                         this
                     );
@@ -113,28 +114,38 @@ var TournamentLabel = cc.Node.extend({
                         this
                     );
                     var tipIcon = cc.Sprite.create(main_scene_image.icon288);
-                    tipIcon.setPosition(cc.p(530, 27));
+                    tipIcon.setScale(0.85);
+                    tipIcon.setPosition(cc.p(530, 24));
                     this.addChild(tipIcon);
                 }
-
-                functionItem.setPosition(cc.p(530, 67));
-
-                var functionItemMenu = LazyMenu.create(functionItem);
-                functionItemMenu.setPosition(cc.p(0, 0));
-                this.addChild(functionItemMenu);
             }
 
         } else {
-            var abilityIcon = cc.LabelTTF.create("战力", "STHeitiTC-Medium", 22);
-            abilityIcon.setColor(cc.c3b(56, 3, 5));
-            abilityIcon.setPosition(cc.p(530, 82));
-            this.addChild(abilityIcon);
+            ability = player.get("ability");
 
-            var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
-            abilityLabel.setColor(cc.c3b(56, 3, 5));
-            abilityLabel.setPosition(cc.p(530, 48));
-            this.addChild(abilityLabel);
+            functionItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon358,
+                this._onClickLineUp,
+                this
+            );
         }
+
+        if (functionItem) {
+            functionItem.setPosition(cc.p(530, 62));
+            var functionItemMenu = LazyMenu.create(functionItem);
+            functionItemMenu.setPosition(cc.p(0, 0));
+            this.addChild(functionItemMenu);
+        }
+
+        var abilityIcon = cc.Sprite.create(main_scene_image.icon341);
+        abilityIcon.setPosition(cc.p(60, 130));
+        this.addChild(abilityIcon);
+
+        var abilityLabel = cc.LabelTTF.create(ability, "STHeitiTC-Medium", 22);
+        abilityLabel.setPosition(cc.p(130, 128));
+        this.addChild(abilityLabel);
 
         var cardList = this._player.cardList;
         var scrollViewLayer = cc.Layer.create();
@@ -146,9 +157,9 @@ var TournamentLabel = cc.Node.extend({
             scrollViewLayer.addChild(cardHeadNode);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
-        scrollView.setContentSize(cc.size(378, 75.6));
-        scrollView.setPosition(cc.p(206, 30));
+        var scrollView = cc.ScrollView.create(cc.size(226.8, 76), scrollViewLayer);
+        scrollView.setContentSize(cc.size(378, 76));
+        scrollView.setPosition(cc.p(206, 20));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -156,15 +167,22 @@ var TournamentLabel = cc.Node.extend({
         var turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         turnLeftSprite.setRotation(180);
         turnLeftSprite.setScale(0.5);
-        turnLeftSprite.setPosition(cc.p(192, 67));
+        turnLeftSprite.setPosition(cc.p(192, 57));
         this.addChild(turnLeftSprite, 1);
 
         var turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
         turnRightSprite.setScale(0.5);
-        turnRightSprite.setPosition(cc.p(443, 67));
+        turnRightSprite.setPosition(cc.p(443, 57));
         this.addChild(turnRightSprite, 1);
 
         return true;
+    },
+
+    _onClickLineUp: function () {
+        cc.log("TournamentLabel _onClickLineUp");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        LineUpLayer.pop();
     },
 
     _onClickPlayer: function () {
@@ -192,42 +210,29 @@ var TournamentLabel = cc.Node.extend({
                     LineUpDetail.pop(data);
                 }, this._player.playerId);
             } else {
-
                 var tournament = gameData.tournament;
                 var count = tournament.get("count");
+                var key = gameData.player.get("uid") + "_firstCountUsed";
 
-                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("uid") + "_firstCountUsed") || 1;
-                isFirstCountUsed = parseInt(isFirstCountUsed);
-                if (count == 0 && isFirstCountUsed == 1) {
+                var isFirstCountUsed = lz.load(key);
 
-                    sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 0);
-                    this._target.showTip();
-
-                } else {
-                    if (count != 0) {
-                        sys.localStorage.setItem(gameData.player.get("uid") + "_firstCountUsed", 1);
-                    }
-
+                var cb = function () {
                     gameData.tournament.defiance(function (data) {
                         cc.log(data);
 
-                        if (data) {
-                            if (data.upgradeReward) {
-                                that._target._setPlayerUpgradeReward(data.upgradeReward, data.level9Box);
-                            }
+                        that._target.defiance(data);
+                    }, that._player.playerId, that._player.ranking);
+                };
 
-                            if (data.isFirstTournament) {
-                                that._target._setFirstTournament(data.isFirstTournament);
-                            }
+                if (count == 0 && isFirstCountUsed == 1) {
+                    lz.save(key, 0);
+                    this._target.showTip(cb);
+                } else {
+                    if (count != 0) {
+                        lz.save(key, 1);
+                    }
 
-                            BattlePlayer.getInstance().play(data.battleLogId);
-
-                        } else {
-                            that._target.update();
-                        }
-                    }, this._player.playerId, this._player.ranking);
-
-
+                    cb();
                 }
             }
         }

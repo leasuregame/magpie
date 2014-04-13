@@ -369,7 +369,7 @@
 				<key>displayName</key>
 				<string>spirit</string>
 				<key>memberVarAssignmentName</key>
-				<string>spiritNode</string>
+				<string>ccbSpiritNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -495,7 +495,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickSpirit</string>
+									<string>ccbFnSpirit</string>
 									<integer>2</integer>
 								</array>
 							</dict>

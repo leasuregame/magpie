@@ -1,0 +1,17 @@
+老版本客户端：切换到（tag：v1.0.0-beta）magpie/client/cocos2d-x-2.2.1/p/Magpie/proj.ios/Magpie.xcodeproj 项目输出
+
+
+客户端发布流程：
+1、打开你妹的 XCODE
+2、到 magpie/client 目录下 make build
+3、切换到 Magpie-TB-Releases
+4、如果输出真机测试，链接设备，输出
+5、如果生成安装包，切记不要链接任何设备，并且切换到目标 iOS Device
+6、到菜单栏选择：Product->Archive 并等待编译
+7、编译完弹出界面，选择 Distribute
+8、选择第三个选项 Export as Xcode Archive 保存到空文件夹
+9、右键显示包内容 Products->Applications 把 .app 文件复制出来
+10、把 .app 拉到 iTunes 等待传完
+11、右键 极品神仙 选择 在Finder中显示
+12、把 .ipa 包复制出来，改名，压缩
+13、到这里就完了。。。。。

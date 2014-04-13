@@ -28,17 +28,131 @@ describe("Area Server", function() {
                 2: 4,
                 3: 3,
                 6: -1
-              }
+              },
+              index: 0
             },
             function(data) {
               console.log(data);
               expect(data.code).toEqual(200);
-              expect(data.msg.lineUp).toEqual({
+              expect(data.msg.lineUp).toEqual([{
                 1: 5,
                 2: 4,
                 3: 3,
                 6: -1
-              });
+              }]);
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              },
+              index: 0
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.lineUp).toEqual([{
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              }]);
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              },
+              index: 1
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('上阵卡牌的不能重复');
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: [{
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              },{
+                4: 2,
+                5: 1,
+                6: -1
+              }]
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.lineUp).toEqual([{
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              },{
+                4: 2,
+                5: 1,
+                6: -1
+              }]);
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: [{
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              },{
+                4: 3,
+                5: 1,
+                6: -1
+              }]
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('上阵卡牌的不能重复');
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: [{
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              },{
+                4: 2,
+                5: 1
+              }]
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('阵型中缺少元神信息');
             }
           );
 
@@ -56,7 +170,45 @@ describe("Area Server", function() {
             function(data) {
               console.log(data);
               expect(data.code).toEqual(501);
-              expect(data.msg).toEqual('上阵卡牌数量不对');
+              expect(data.msg).toEqual('参数错误');
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: [{
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              }],
+              index: 1
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('参数错误');
+            }
+          );
+
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              },
+              index: 2
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('参数错误');
             }
           );
 
@@ -65,6 +217,8 @@ describe("Area Server", function() {
       });
 
       describe('when numbers of card are the same', function(){
+        
+        
         it('should can not change line up', function(){
           request(
             'area.trainHandler.changeLineUp', {
@@ -73,7 +227,8 @@ describe("Area Server", function() {
                 2: 4,
                 3: 3,
                 6: -1
-              }
+              }, 
+              index: 0
             },
             function(data) {
               console.log(data);

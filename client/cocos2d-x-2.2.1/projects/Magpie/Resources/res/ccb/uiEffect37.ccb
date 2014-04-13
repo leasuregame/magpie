@@ -93,7 +93,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickRegister</string>
+									<string>ccbFnRegister</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -208,7 +208,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickOpenArea</string>
+									<string>ccbFnOpenArea</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -254,6 +254,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -267,7 +269,7 @@
 						<key>displayName</key>
 						<string>CCMenuItemImage</string>
 						<key>memberVarAssignmentName</key>
-						<string>startGameNode</string>
+						<string>ccbStartGameNode</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -323,7 +325,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>_onClickLogin</string>
+									<string>ccbFnLogin</string>
 									<integer>2</integer>
 								</array>
 							</dict>
@@ -531,7 +533,7 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>areaName</string>
+				<string>ccbAreaName</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -729,7 +731,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>accountLabel</string>
+						<string>ccbAccountLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -786,7 +788,7 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>accountNode</string>
+				<string>ccbAccountNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -984,7 +986,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>passwordLabel</string>
+						<string>ccbPasswordLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -1034,8 +1036,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -1043,7 +1043,7 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>passwordNode</string>
+				<string>ccbPasswordNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1179,9 +1179,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>1.40625</real>
 			<key>position</key>
-			<real>3.2999999523162842</real>
+			<real>10</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

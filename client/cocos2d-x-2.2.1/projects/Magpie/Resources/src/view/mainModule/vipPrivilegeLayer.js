@@ -14,11 +14,12 @@
 
 var vipPrivilegeDescription = {
     lottery_free_count: "每日免费寻宝次数",
+    exp_card_count: "每日经验元灵购买次数",
     friend_count: "好友上限",
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",
     receive_bless_count: "每日接受祝福次数",
-    challenge_count: "每日有奖竞技次数",
+    challenge_buy_count: "每日有奖竞技购买次数",
     spirit_collect_count: "每日灵气采集次数"
 };
 
@@ -30,7 +31,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("VIP特权界面");
+        lz.um.beginLogPageView("VIP特权界面");
     },
 
     onExit: function () {
@@ -38,7 +39,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("VIP特权界面");
+        lz.um.endLogPageView("VIP特权界面");
     },
 
     init: function () {
@@ -67,41 +68,41 @@ var VipPrivilegeLayer = LazyLayer.extend({
                 {
                     string: "您是",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: "VIP" + vip,
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 },
                 {
                     string: "再冲",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: nextVipCash,
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 },
                 {
                     string: "元即可享受",
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20
+                    fontSize: 23
                 },
                 {
                     string: "VIP" + (vip + 1),
                     fontName: "STHeitiTC-Medium",
-                    fontSize: 20,
+                    fontSize: 23,
                     isStroke: true,
                     color: cc.c3b(255, 248, 69)
                 }
             );
-            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setAnchorPoint(cc.p(0.5, 0));
             tipLabel.setPosition(this._vipPrivilegeLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
@@ -126,13 +127,13 @@ var VipPrivilegeLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 355;
+        var scrollViewHeight = len * 420;
         if (scrollViewHeight < this._vipPrivilegeLayerFit.scrollViewHeight) {
             scrollViewHeight = this._vipPrivilegeLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 355 - i * 355;
+            var y = scrollViewHeight - 420 - i * 420;
 
             var vipPrivilege = vipPrivilegeList[i];
 
@@ -144,31 +145,46 @@ var VipPrivilegeLayer = LazyLayer.extend({
             var bgSprite = cc.Sprite.create(bgSpriteUrl);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
-            bgSprite.setScaleY(1.15);
+            bgSprite.setScaleY(1.29);
             scrollViewLayer.addChild(bgSprite);
 
             var vipIcon = cc.Sprite.create(main_scene_image["vip" + vipPrivilege.id]);
-            vipIcon.setPosition(cc.p(250, y + 320));
+            vipIcon.setPosition(cc.p(250, y + 360));
             scrollViewLayer.addChild(vipIcon);
 
-            var offsetY = y + 280;
+            var offsetY = y + 315;
             for (var key in vipPrivilege) {
-                if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
-                    var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
-                    vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeIcon);
 
-                    var vipPrivilegeLabel = cc.LabelTTF.create(
-                        vipPrivilegeDescription[key] + " + " + vipPrivilege[key],
+                if (vipPrivilege[key] <= 0 || key == "id") {
+                    continue;
+                }
+
+                var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+                vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+                scrollViewLayer.addChild(vipPrivilegeIcon);
+
+                var vipPrivilegeLabel = null;
+
+                if (key == "description") {
+                    vipPrivilegeLabel = cc.LabelTTF.create(
+                        vipPrivilege[key],
                         "STHeitiTC-Medium",
                         20
                     );
-                    vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
-                    vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
-                    scrollViewLayer.addChild(vipPrivilegeLabel);
-
-                    offsetY -= 35;
+                } else {
+                    vipPrivilegeLabel = cc.LabelTTF.create(
+                        (vipPrivilegeDescription[key]) + " + " + vipPrivilege[key],
+                        "STHeitiTC-Medium",
+                        20
+                    );
                 }
+
+
+                vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+                vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+                scrollViewLayer.addChild(vipPrivilegeLabel);
+
+                offsetY -= 35;
             }
 
             var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
@@ -181,7 +197,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     fontSize: 20
                 },
                 {
-                    string: "VIP" + (12 - i),
+                    string: "VIP" + (MAX_VIP_LEVEL - i),
                     fontName: "STHeitiTC-Medium",
                     fontSize: 20,
                     isStroke: true,
@@ -193,10 +209,9 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     fontSize: 20
                 }
             );
-            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0));
             vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
             scrollViewLayer.addChild(vipPrivilegeLabel);
-
         }
 
         var scrollView = cc.ScrollView.create(this._vipPrivilegeLayerFit.scrollViewSize, scrollViewLayer);
@@ -223,8 +238,6 @@ var VipPrivilegeLayer = LazyLayer.extend({
         parent.addChild(paymentLayer, 1);
 
         this.removeFromParent();
-
-
     }
 });
 

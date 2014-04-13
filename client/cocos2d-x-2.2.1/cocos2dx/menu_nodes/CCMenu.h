@@ -69,6 +69,11 @@ public:
      */
     virtual ~CCMenu(){}
 
+    /*
+     处理两层按钮同时接受到点击崩溃bug
+     */
+    static bool onTouch;
+    
     /** creates an empty CCMenu */
     static CCMenu* create();
 

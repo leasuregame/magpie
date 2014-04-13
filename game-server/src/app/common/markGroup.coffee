@@ -16,6 +16,16 @@ class MarkGroup
 		@value = val
 		@
 
+	markPositions: () ->
+		### 返回所有已经标记为1的位置 ###
+		return [] if @value.length is 0
+
+		num = @length*@value.length
+		results = []
+		for i in [1..num]
+			results.push i if @hasMark(i)
+		results
+
 	_getItem: (num) ->
 		idx = @_idx(num)
 		if @value[idx]? then @value[idx] else 0

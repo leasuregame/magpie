@@ -1,7 +1,6 @@
 Module = require '../common/module'
 Events = require '../common/events'
 table = require '../manager/table'
-spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
 
 class Spiritor extends Module
@@ -25,7 +24,6 @@ class Spiritor extends Module
       continue if not hero.skill or not hero.death()
 
       if @trigger()
-        console.log '元神攻击', @lv, @spirit_atk_pct
         hero.usingSkill(
           (res) -> 
             cb(hero)

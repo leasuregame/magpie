@@ -5,9 +5,12 @@ fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
-msgConfig = require '../../../../config/data/message'
+configData = require '../../../../config/data'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+Cache = require '../../../common/cache'
+utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 
 rankingConfig = table.getTableItem('ranking_list',1)
 
@@ -15,17 +18,19 @@ INTERVALS =
   10000: 106
   7000: 83
   5000: 62
-  3000: 41
-  1000: 19
-  700: 14
-  300: 11
-  199: 5
+  3000: 26
+  1000: 15
+  700: 7
+  300: 3
+  199: 2
   1: 1
 
 STATUS_NORMAL = 0  # 正常状态，可查看 ###
 STATUS_CHALLENGE = 1  # 可挑战状态 ###
 STATUS_COUNTER_ATTACK = 2  # 可反击状态 ###
 STATUS_DISPLAYE = 3  # 可显示状态，不显示查询按钮 ###
+
+BusyRankings = new Cache()
 
 module.exports = (app) ->
   new Handler(app)
@@ -34,7 +39,6 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  start = Date.now()
   player = null
   async.waterfall [
     (cb) =>
@@ -58,7 +62,6 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      console.log 'rank info: ', player.rank
       if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
@@ -66,13 +69,10 @@ Handler::rankingList = (msg, session, next) ->
 
     (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
-      console.log 'rankingList: ', rankings
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
           rankings[ranking] = STATUS_COUNTER_ATTACK
-
-      playerManager.rankingList _.keys(rankings), (err, players, ranks) ->
-        cb(err, players, ranks, rankings)
+      playerManager.rankingList _.keys(rankings), (err, players, ranks) -> cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
     if err
@@ -87,10 +87,8 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now() - start
+      rankStats: r.stats
     }
-    end = Date.now();
-    console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -99,13 +97,19 @@ Handler::challenge = (msg, session, next) ->
   targetId = msg.targetId
   ranking = msg.ranking
 
-  if playerId is targetId
-   return next null,{code: 501, msg: '不能挑战自己'}
+  if BusyRankings.get(ranking)?
+    return next null, {code: 501, msg: '对方正在战斗中'}
+  BusyRankings.put(ranking, ranking, 5000)
 
   player = null
   target = null
   isWin = false
   async.waterfall [
+    (cb) ->
+      if playerId is targetId
+        return cb({code: 501, msg: '不能挑战自己'})
+      else
+        cb()
     (cb) ->
       playerManager.getPlayers [playerId, targetId], cb
 
@@ -123,7 +127,7 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
+      rankManager.exchangeRankings player, target, isWin, (err, res, rewards, upgradeInfo, level9Box) ->
         if err and not res
           return cb(err)
         else
@@ -131,13 +135,17 @@ Handler::challenge = (msg, session, next) ->
 
   ], (err, rewards, bl, upgradeInfo, level9Box) ->
       if err
+        BusyRankings.del(ranking)
         return next(null, {code: err.code, msg: err.msg or err.message})
-
+        
       firstTime = false
       if player.rank?.startCount is 1
         firstTime = true
 
       bl.rewards = rewards
+      
+      BusyRankings.del(ranking)
+
       next(null, {code: 200, msg: {
         battleLog: bl
         upgradeInfo: upgradeInfo if upgradeInfo
@@ -194,7 +202,7 @@ Handler::getRankingReward = (msg, session, next) ->
       where: id: rank.id
     }, (err, res) -> 
       if err
-        return next(null, msg: {code: 501, msg: err.message or err.msg})
+        return next(null, {code: 501, msg: err.message or err.msg})
         
       player.increase('elixir', rewardData.elixir)
       player.save()
@@ -202,6 +210,124 @@ Handler::getRankingReward = (msg, session, next) ->
         code: 200, 
         msg: elixir: rewardData.elixir
       })
+  
+Handler::thisWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').elixirOfRank.thisWeekElixirRank cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.getRank playerId, utility.thisWeek(), cb
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    orderList = results[0]
+    thisWeekRank = results[1]
+
+    next(null, {code: 200, msg:{
+      elixirs: orderList, 
+      thisWeek: thisWeekRank
+    }})
+
+Handler::lastWeek = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) =>
+      @app.get('dao').elixirOfRank.lastWeekElixirRank cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.getRank playerId, utility.lastWeek(), cb
+    (cb) =>
+      @app.get('dao').elixirOfRank.fetchOne {
+        fields: ['got']
+        where: playerId: playerId, week: utility.lastWeek()
+      }, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else
+          cb(null, res)
+  ], (err, results) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})
+
+    orderList = results[0]
+    lastWeekRank = results[1]
+    got = results[2]?.got
+    
+    next(null, {code: 200, msg:{
+      elixirs: orderList, 
+      lastWeek: lastWeekRank,
+      isGet: !!got
+    }})
+
+Handler::getElixirRankReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+  week = utility.lastWeek()
+  rank = null
+  dao = @app.get('dao')
+  async.waterfall [
+    (cb) ->
+      dao.elixirOfRank.getRank playerId, week, cb
+    (res, cb) ->
+      rank = res
+      if not rank
+        return cb({code: 501, msg: '上周不够努力，没奖励可领哦'})
+      cb(null)
+    (cb) ->    
+      dao.elixirOfRank.fetchOne {
+        where: {
+          playerId: playerId,
+          week: week
+        },
+        fields: ['got']
+      }, cb
+    (eor, cb) ->
+      if eor?.got is 1
+        return cb({code: 501, msg: '不能重复领取'})
+      cb()
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+  ], (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.message or err.msg})  
+
+    data = rewardOfRank(rank?.rank)
+
+    entityUtil.getReward player, data, (err, cards) ->
+      return next(null, {code: 501, msg: err.message or err.msg}) if err
+
+      dao.elixirOfRank.update {
+        data: got: 1
+        where: playerId: playerId, week: week
+      }, (err, res) ->
+        return next(null, {code: 501, msg: err.message or err.msg}) if err
+
+        results = _.extend {}, data, {
+          card: cards[0] if cards.length > 0
+          cardIds: cards.map (c) -> c.id
+        }
+        delete results.exp_card
+        delete results.id
+        player.save()
+        next(null, {code: 200, msg: results})
+
+rewardOfElixirRank = (rank) ->
+  return if not rank
+  rewardOfRank(rank)
+
+rewardOfRank = (rank) ->
+  row = table.getTableItem('elixir_ranking_reward', rank)
+  if row
+    row
+  else 
+    money50 = table.getTableItem('elixir_ranking_reward', 50)?.money or 330500
+    gap = table.getTableItem('values', 'elixirOfRankMoneyGap')?.value or 0
+    money = parseInt (money50-gap)*(1-Math.ceil((rank-50)/20)*0.003)
+    if money < 50000
+      money = 50000
+    money: money
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0
@@ -248,10 +374,10 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
-    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
+      ability: p.ability
       ranking: ranks[p.id]
       cards: if p.cards? then (p.cards.sort (x, y) -> x.star < y.star).map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
@@ -279,8 +405,8 @@ saveBattleLog = (bl, playerName) ->
       sender: playerId
       receiver: targetId
       content: "#{playerName}挑战了你，" + result 
-      type: msgConfig.MESSAGETYPE.BATTLENOTICE
-      status: msgConfig.MESSAGESTATUS.NOTICE
+      type: configData.message.MESSAGETYPE.BATTLENOTICE
+      status: configData.message.MESSAGESTATUS.NOTICE
       options: {battleLogId: res.id}
     }, (err, message) ->
       if err

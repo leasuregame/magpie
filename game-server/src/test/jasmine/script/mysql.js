@@ -16,16 +16,16 @@ m1Conn.connect()
 
 exp.magpiedb1 = m1Conn;
 
-var m2Conn = mysql.createConnection({
-  host: magpie_area_2.host,
-  port: magpie_area_2.port,
-  user: magpie_area_2.user,
-  password: magpie_area_2.password,
-  database: magpie_area_2.database
-});
-m2Conn.connect()
+// var m2Conn = mysql.createConnection({
+//   host: magpie_area_2.host,
+//   port: magpie_area_2.port,
+//   user: magpie_area_2.user,
+//   password: magpie_area_2.password,
+//   database: magpie_area_2.database
+// });
+// m2Conn.connect()
 
-exp.magpiedb2 = m2Conn;
+// exp.magpiedb2 = m2Conn;
 
 
 var userConn = mysql.createConnection({

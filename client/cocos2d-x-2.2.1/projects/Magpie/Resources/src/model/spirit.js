@@ -20,7 +20,6 @@ var Spirit = Entity.extend({
     _rate: 0,
     _passiveHarm: 0,
     _skillHarm: 0,
-    _ability: 0,
 
     init: function (data) {
         cc.log("Spirit init");
@@ -28,11 +27,11 @@ var Spirit = Entity.extend({
         this.off();
         this.on("lvChange", this._lvChangeEven);
 
-        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
+        this.set("maxLv", outputTables.lv_limit.rows[1].spirit_lv_limit);
 
         this.update(data);
 
-        cc.log(this);
+        this.on("lvChange", this._abilityChangeEven);
 
         return true;
     },
@@ -44,7 +43,6 @@ var Spirit = Entity.extend({
 
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
-        this.set("ability", data.ability);
     },
 
     _lvChangeEven: function () {
@@ -56,6 +54,12 @@ var Spirit = Entity.extend({
         this._passiveHarm = table.hp_inc;
         this._skillHarm = table.spirit_atk_pct;
         this._rate = table.rate;
+    },
+
+    _abilityChangeEven: function () {
+        cc.log("Spirit _abilityChangeEven");
+
+        gameData.player.checkAbility();
     },
 
     getSpiritUrl: function () {
@@ -84,7 +88,7 @@ var Spirit = Entity.extend({
 
                 cb(true);
 
-                lz.dc.event("event_spirit_upgrade", that._lv);
+                lz.um.event("event_spirit_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 

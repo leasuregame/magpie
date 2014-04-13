@@ -16,6 +16,7 @@ var BattleSpiritNode = cc.Node.extend({
     _index: 0,
     _ccbNode: null,
     _animationManager: null,
+    _cb: null,
 
     init: function (spiritLv, index) {
         cc.log("BattleSpiritNode init");
@@ -30,19 +31,19 @@ var BattleSpiritNode = cc.Node.extend({
         this._animationManager = this._ccbNode.animationManager;
         this.addChild(this._ccbNode);
 
-        this._spiritSprite1.setTexture(spiritSpriteTexture);
-        this._spiritSprite2.setTexture(spiritSpriteTexture);
+        this.ccbSpiritSprite1.setTexture(spiritSpriteTexture);
+        this.ccbSpiritSprite2.setTexture(spiritSpriteTexture);
 
         return true;
     },
 
-    showAddition: function () {
+    ccbFnShowAddition: function () {
         var startIndex = this._index < 7 ? 1 : 7;
-        this.getParent().showAddition(startIndex);
+        this.getParent().ccbFnShowAddition(startIndex);
     },
 
-    callback: function () {
-        this.getParent().callback();
+    ccbFnCallback: function () {
+        this.getParent().ccbFnCallback();
     },
 
     getSubtitleNode: function () {
@@ -51,13 +52,9 @@ var BattleSpiritNode = cc.Node.extend({
         var ccbNode = null;
 
         if (this._index < 7) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect6, this);
         } else {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
-        }
-
-        if (ccbNode) {
-            cc.log(ccbNode);
+            ccbNode = cc.BuilderReader.load(main_scene_image.battleEffect7, this);
         }
 
         return ccbNode;
@@ -67,15 +64,24 @@ var BattleSpiritNode = cc.Node.extend({
         cc.log("BattleSpiritNode runAnimations: " + name);
 
         if (this._animationManager.getRunningSequenceName()) {
-            this._cb();
+            if (this._cb) {
+                this._cb();
+            }
         }
 
         tweenDuration = tweenDuration || 0;
-        this._cb = cb || function () {
+
+        this._cb = function () {
+            if (cb) {
+                cb();
+                cb = null;
+            }
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, this._cb);
+
+        return this._animationManager.getSequenceDuration(name);
     }
 });
 

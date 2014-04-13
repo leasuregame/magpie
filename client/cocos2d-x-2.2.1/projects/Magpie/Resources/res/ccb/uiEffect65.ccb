@@ -255,7 +255,7 @@
 						<key>displayName</key>
 						<string>CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string>goldLabel</string>
+						<string>ccbGoldLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -268,7 +268,7 @@
 								<key>value</key>
 								<array>
 									<real>95</real>
-									<real>7</real>
+									<real>3</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -310,7 +310,7 @@
 								<key>type</key>
 								<string>FontTTF</string>
 								<key>value</key>
-								<string>GillSans</string>
+								<string>Helvetica-Bold</string>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -319,7 +319,7 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>45</real>
+									<real>41</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -360,8 +360,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -506,7 +504,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
@@ -518,13 +516,32 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>128</real>
+			<real>301.57864379882812</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.066666670143604279</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/startAnimationSound/startAnimation_money_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

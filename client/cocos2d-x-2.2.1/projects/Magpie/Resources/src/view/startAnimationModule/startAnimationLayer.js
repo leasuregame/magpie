@@ -35,11 +35,11 @@ var StartAnimationLayer = cc.Layer.extend({
     play: function () {
         cc.log("StartAnimationLayer play");
 
-        this.next();
+        this.ccbFnNext();
     },
 
-    next: function () {
-        cc.log("StartAnimationLayer next");
+    ccbFnNext: function () {
+        cc.log("StartAnimationLayer ccbFnNext");
 
         if (this._ccbNode) {
             this._ccbNode.removeFromParent();
@@ -68,8 +68,8 @@ var StartAnimationLayer = cc.Layer.extend({
         cc.Director.getInstance().replaceScene(MainScene.getInstance());
     },
 
-    playMusic: function () {
-        cc.log("StartAnimationLayer playMusic");
+    ccbFnPlayMusic: function () {
+        cc.log("StartAnimationLayer ccbFnPlayMusic");
 
         gameData.sound.playMusic(main_scene_image.start_animation_music, true);
     }

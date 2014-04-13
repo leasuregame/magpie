@@ -28,7 +28,6 @@ Module.prototype.monitorHandler = function(agent, msg, cb) {
 			lv: p.lv
 		};
 	});
-	//console.log('area info monitor: ', data.length);
 	agent.notify(module.exports.moduleId, {serverId: serverId, body: data});
 };
 
@@ -43,7 +42,6 @@ Module.prototype.masterHandler = function(agent, msg, cb) {
 		agent.notifyByType('area', module.exports.moduleId);
 		return;
 	}
-	//console.log('master handler: ', msg);
 	var data = agent.get(module.exports.moduleId);
 	if(!data) {
 		data = {};
@@ -54,7 +52,6 @@ Module.prototype.masterHandler = function(agent, msg, cb) {
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
 	if(!!cb && typeof cb === 'function') {
-		console.log('client handler: ', agent.get(module.exports.moduleId));
 		var data = agent.get(module.exports.moduleId);
 		if (data) {
 			cb(null, data[msg.sid]);

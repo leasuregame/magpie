@@ -52,7 +52,7 @@ var CardListLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡牌列表界面");
+        lz.um.beginLogPageView("卡牌列表界面");
     },
 
     onExit: function () {
@@ -60,7 +60,7 @@ var CardListLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡牌列表界面");
+        lz.um.endLogPageView("卡牌列表界面");
     },
 
     init: function (selectType, cb, otherData) {
@@ -71,10 +71,9 @@ var CardListLayer = cc.Layer.extend({
         this._cardListLayerFit = gameFit.mainScene.cardListLayer;
 
         this._cardLabel = {};
-        this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
-        this._otherData = otherData;
+        this._otherData = otherData || {};
         this._maxSelectCount = gameData.cardList.get("count");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -97,10 +96,10 @@ var CardListLayer = cc.Layer.extend({
         for (var key in cardList) {
             var card = cardList[key];
 
-            var cardLabel = CardLabel.create(this, card, selectType);
+            var cardLabel = CardLabel.create(this, card, selectType, this._otherData);
             cardLabel.setAnchorPoint(cc.p(0, 0));
             cardLabel.setPosition(cc.p(0, 0));
-
+            cardLabel.setVisible(false);
             scrollViewLayer.addChild(cardLabel);
 
             this._cardLabel[key] = cardLabel;
@@ -111,6 +110,19 @@ var CardListLayer = cc.Layer.extend({
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
+
+        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
+        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountIcon);
+
+        this._cardCountLabel = cc.LabelTTF.create(
+            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
+            "STHeitiTC-Medium",
+            22
+        );
+        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(this._cardCountLabel);
 
         this._sortItem1 = cc.MenuItemImage.create(
             main_scene_image.button30,
@@ -137,7 +149,16 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
         this._onSelectAllLowItem.setVisible(false);
 
-        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem);
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setScale(1.2);
+        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
+
+        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -145,19 +166,6 @@ var CardListLayer = cc.Layer.extend({
         this._selectAllLowHookIcon.setPosition(this._cardListLayerFit.selectAllLowHookIconPoint);
         this.addChild(this._selectAllLowHookIcon);
         this._selectAllLowHookIcon.setVisible(false);
-
-        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
-        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(cardCountIcon);
-
-        this._cardCountLabel = cc.LabelTTF.create(
-            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
-            "STHeitiTC-Medium",
-            22
-        );
-        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
-        this._cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
-        this.addChild(this._cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
@@ -214,6 +222,8 @@ var CardListLayer = cc.Layer.extend({
         var noSelectCardListIndex = [];
         var i;
 
+        var cardLabelList = [];
+
         for (i = 0; i < cardCount; ++i) {
             if (this._isCanSelect(cardListIndex[i])) {
                 canSelectCardListIndex.push(cardListIndex[i]);
@@ -232,6 +242,8 @@ var CardListLayer = cc.Layer.extend({
             var index = this._sortType == SORT_TYPE_DROP ? (cardCount - i) : (i + 1);
             this._cardLabel[cardListIndex[i]].setPosition(this._getCardLocation(index));
             flag[cardListIndex[i]] = true;
+
+            cardLabelList[index - 1] = this._cardLabel[cardListIndex[i]];
         }
 
         var len = this._excludeList.length;
@@ -247,6 +259,12 @@ var CardListLayer = cc.Layer.extend({
                 delete this._cardLabel[key];
             }
         }
+
+        var slideLayer = SlideLayer.create({
+            labels: cardLabelList
+        });
+
+        slideLayer.showSlide();
     },
 
     _getCardLocation: function (index) {
@@ -313,7 +331,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button9s,
             main_scene_image.icon24,
             this._onClickLineUp,
-            this);
+            this
+        );
         lineUpItem.setPosition(this._cardListLayerFit.lineUpItemPoint);
 
         var sellItem = cc.MenuItemImage.createWithIcon(
@@ -325,16 +344,7 @@ var CardListLayer = cc.Layer.extend({
         );
         sellItem.setPosition(this._cardListLayerFit.sellItemPoint);
 
-        var buyCountItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
-            this._onClickBuyCount,
-            this
-        );
-        buyCountItem.setScale(1.2);
-        buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
-
-        var menu = cc.Menu.create(sellItem, lineUpItem, buyCountItem);
+        var menu = cc.Menu.create(sellItem, lineUpItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
     },
@@ -382,7 +392,9 @@ var CardListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
-        this._maxSelectCount = MAX_LINE_UP_CARD;
+        var lineUp = gameData.lineUp;
+        var index = this._otherData.index;
+        this._maxSelectCount = lineUp.getPerLineUpCount(index);
 
         this._selectCallback = function () {
             cc.log("CardListLayer _initLineUp _selectCallback");
@@ -406,12 +418,20 @@ var CardListLayer = cc.Layer.extend({
             }
         };
 
-        var lineUp = gameData.lineUp.getLineUpList();
-        var len = lineUp.length;
+        var maxLineUp = lineUp.get("maxLineUp");
 
-        for (var i = 0; i < len; ++i) {
-            if (this._cardLabel[lineUp[i]] !== undefined) {
-                this._cardLabel[lineUp[i]].select();
+        for (var i = 0; i < maxLineUp; ++i) {
+            var lineUpList = gameData.lineUp.getLineUpList(i);
+            var len = lineUpList.length;
+
+            for (var j = 0; j < len; ++j) {
+                if (this._cardLabel[lineUpList[j]] !== undefined) {
+                    if (index == i) {
+                        this._cardLabel[lineUpList[j]].select();
+                    } else {
+                        this._excludeList.push(lineUpList[j]);
+                    }
+                }
             }
         }
     },
@@ -494,7 +514,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if (!cardList[key].canUpgradeSkill()) {
+            if (cardList[key].get("star") < 2) {
                 this._excludeList.push(key);
             }
         }
@@ -605,8 +625,6 @@ var CardListLayer = cc.Layer.extend({
     _initCardUpgradeRetinue: function () {
         cc.log("CardListLayer _initCardUpgradeRetinue");
 
-        //this._tipLabel.setString("已上阵的卡牌不可以作为从卡");
-
         this._initRetinue();
 
         this._onSelectAllLowItem.setVisible(true);
@@ -645,15 +663,15 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionRetinue: function () {
         cc.log("CardListLayer _initCardEvolutionRetinue");
 
-        //this._tipLabel.setString("星级进阶只能消耗相同星级的卡牌");
-
         this._initRetinue();
 
         var cardList = gameData.cardList.get("cardList");
         var leadCardStar = this._otherData.leadCard.get("star");
 
+        var useCardStar = outputTables.star_upgrade.rows[leadCardStar].source_card_star;
+
         for (var key in cardList) {
-            if (cardList[key].get("star") != leadCardStar) {
+            if (cardList[key].get("star") != useCardStar) {
                 this._excludeList.push(key);
             }
         }
@@ -667,7 +685,8 @@ var CardListLayer = cc.Layer.extend({
         countLabel.setPosition(this._cardListLayerFit.countLabelPoint);
         this.addChild(countLabel);
 
-        var rateLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        var initRate = gameData.player.getEvolutionRate(leadCardStar);
+        var rateLabel = cc.LabelTTF.create(initRate, "STHeitiTC-Medium", 25);
         rateLabel.setPosition(this._cardListLayerFit.rateLabelPoint);
         this.addChild(rateLabel);
 
@@ -676,7 +695,7 @@ var CardListLayer = cc.Layer.extend({
 
             var selectList = this._getSelectCardList();
             var len = selectList.length;
-            var rate = len * this._otherData.leadCard.getPreCardRate();
+            var rate = len * this._otherData.leadCard.getPreCardRate() + initRate;
 
             if (rate >= 100) {
                 rate = 100;
@@ -692,6 +711,7 @@ var CardListLayer = cc.Layer.extend({
 
             countLabel.setString(len);
             rateLabel.setString(rate + "%");
+
         };
 
         this._selectCallback();
@@ -768,7 +788,7 @@ var CardListLayer = cc.Layer.extend({
             }
 
             countLabel.setString(len);
-            moneyLabel.setString(money);
+            moneyLabel.setString(lz.getMoneyStr(money));
         };
 
         this._selectCallback();
@@ -858,7 +878,32 @@ var CardListLayer = cc.Layer.extend({
             }
         }
 
-        this._cb(this._getSelectCardList());
+        var selectCardList = this._getSelectCardList();
+
+        if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
+            var len = selectCardList.length;
+            var isShowTip = false;
+            for (var i = 0; i < len; i++) {
+                var star = selectCardList[i].get("star");
+                if (star == 4 || star == 5) {
+                    isShowTip = true;
+                }
+            }
+
+            var that = this;
+            var cb = function () {
+                that._cb(selectCardList);
+            };
+
+            if (isShowTip) {
+                AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
+            } else {
+                cb();
+            }
+
+        } else {
+            this._cb(selectCardList);
+        }
     },
 
     _onClickBuyCount: function () {
@@ -915,13 +960,33 @@ var CardListLayer = cc.Layer.extend({
         var cardIdList = [];
         var len = selectCardList.length;
 
+        if (len <= 0) {
+            TipLayer.tip("请选择出售卡牌");
+
+            return;
+        }
+
+        var isShowTip = false;
         for (var i = 0; i < len; ++i) {
+            var star = selectCardList[i].get("star");
+            if (star == 4 || star == 5) {
+                isShowTip = true;
+            }
             cardIdList.push(selectCardList[i].get("id"));
         }
 
-        gameData.cardList.sell(function () {
-            MainScene.getInstance().switchTo(CardListLayer.create());
-        }, cardIdList);
+        var cb = function () {
+            gameData.cardList.sell(function () {
+                MainScene.getInstance().switchTo(CardListLayer.create());
+            }, cardIdList);
+        };
+
+        if (isShowTip) {
+            AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
+        } else {
+            cb();
+        }
+
     },
 
     _onClickChangeLineUp: function () {
@@ -929,7 +994,8 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
+        var index = this._otherData.index;
+        var lineUp = lz.clone(gameData.lineUp.getLineUp(index));
         var cardList = this._getSelectCardList();
         var i, key, len = cardList.length;
 
@@ -972,17 +1038,15 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (success) {
             if (success) {
-                MainScene.getInstance().switchLayer(MainLayer);
-
                 if (noviceTeachingLayer.isNoviceTeaching()) {
                     noviceTeachingLayer.clearAndSave();
                     noviceTeachingLayer.next();
 
                 }
 
+                MainScene.getInstance().switchLayer(MainLayer);
             }
-        }, lineUp);
-
+        }, lineUp, index);
     },
 
     _onClickLineUp: function () {
@@ -1027,18 +1091,23 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         }
-
     }
 });
 
 
-CardListLayer.create = function (selectType, cb, otherData) {
+CardListLayer.create = function (/* Multi arguments */) {
     var ret = new CardListLayer();
 
-    selectType = selectType || SELECT_TYPE_DEFAULT;
-    otherData = otherData || {};
-    cb = cb || function () {
-    };
+    var selectType = arguments[0] || SELECT_TYPE_DEFAULT;
+    var cb;
+    var otherData;
+
+    if (typeof(arguments[1]) == "function") {
+        cb = arguments[1];
+        otherData = arguments[2] || {};
+    } else {
+        otherData = arguments[1] || {};
+    }
 
     if (ret && ret.init(selectType, cb, otherData)) {
         return ret;

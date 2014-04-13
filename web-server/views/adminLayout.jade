@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    script(type='text/javascript', src='/js/jquery-1.10.2.min.js')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/css/main.css')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    block head
+  body
+    div(class='container')
+      nav(class='navbar navbar-default', role='navigation')
+        div(class='navbar-header')
+          button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='#nb-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(class='navbar-brand', href='/') LeasureGame
+        div(class='collapse navbar-collapse', id='nb-collapse')
+          ul(class='nav navbar-nav')
+            li(class=menu=='notice' ? 'active':'')
+              a(href='/admin/notice') 公告管理
+            li(class=menu=='version' ? 'active':'')
+              a(href='/admin/version') 版本号
+            li(class=menu=='cdkey' ? 'active':'')
+              a(href='/admin/cdkey') 激活码
+            li(class=menu=='msgPush' ? 'active':'')
+              a(href='/admin/msgPush') 消息推送
+            li(class=menu=='reward' ? 'active':'')
+              a(href='/admin/sendReward') 奖励发放
+            
+          p.navbar-text.navbar-right
+            a.navbar-link(href='/logout') 注销
+      block content
+
+      hr
+      div.footer.well.text-center Copyright© 2014 LeasureGame Inc. 
+

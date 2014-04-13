@@ -16,7 +16,7 @@ var StartAnimationScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("开场动画场景");
+        lz.um.beginLogPageView("开场动画场景");
     },
 
     onExit: function () {
@@ -24,13 +24,15 @@ var StartAnimationScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("开场动画场景");
+        lz.um.endLogPageView("开场动画场景");
     },
 
     init: function () {
         cc.log("StartAnimationScene init");
 
         if (!this._super()) return false;
+
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
         var startAnimationLayer = StartAnimationLayer.create();
         this.addChild(startAnimationLayer);

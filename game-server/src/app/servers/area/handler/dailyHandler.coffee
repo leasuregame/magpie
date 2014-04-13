@@ -1,6 +1,8 @@
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+DAILY_LOTTERY_COUNT = table.getTableItem('daily_gift', 1).lottery_count
+
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,6 +12,7 @@ Handler = (@app) ->
 Handler::lottery = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  times = 1
   goldResume = 20
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
@@ -22,30 +25,35 @@ Handler::lottery = (msg, session, next) ->
     if player.dailyGift.lotteryCount <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
-    if player.gold < goldResume
-      return next(null, {code: 501, msg: '魔石不足'})
-
     if player.dailyGift.lotteryFreeCount > 0
       ### 免费抽奖次数减一 ###
       goldResume = 0
       player.updateGift 'lotteryFreeCount', player.dailyGift.lotteryFreeCount-1
     else
+      if player.gold < goldResume
+        return next(null, {code: 501, msg: '魔石不足'})
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
+
+    if DAILY_LOTTERY_COUNT - player.dailyGift.lotteryCount < 20
+      times = 3
 
     ### 抽奖次数减一 ###
     player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
 
     resource = randomReward()
     if resource.type is 'power'
-      player.resumePower(resource.value)
+      player.addPower(resource.value*times)
+    else if resource.type is 'spirit'
+      player.incSpirit(resource.value*times)
     else
-      player.increase(resource.type, resource.value)
+      player.increase(resource.type, resource.value*times)
 
     player.save()
 
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
+      times: times,
       lotteryCount: player.toJson().dailyGift.lotteryCount,
       lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount,
       goldResume: goldResume
@@ -66,8 +74,10 @@ Handler::signIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    if not player.signToday()
+      return next(null, {code: 501, msg: '不能重复签到'})
+    
     sdata = table.getTableItem('daily_signin_rewards', 1)
-    player.signToday()
     player.increase('money', sdata.money)
     player.increase('energy', sdata.energy)
     player.save()
@@ -100,6 +110,7 @@ Handler::reSignIn = (msg, session, next) ->
     sdata = table.getTableItem('daily_signin_rewards', 1)
     player.decrease('gold', goldResume)
     player.increase('energy', sdata.energy)
+    player.increase('money', sdata.money)
     player.save()
     
     next(null, {

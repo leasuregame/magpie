@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var TenLotteryCardLayer = LazyLayer.extend({
     _tenLotteryCardLayerFit: null,
 
@@ -18,14 +19,14 @@ var TenLotteryCardLayer = LazyLayer.extend({
         cc.log("TenLotteryCardLayer onEnter");
 
         this._super();
-        lz.dc.beginLogPageView("十连抽获得卡牌界面");
+        lz.um.beginLogPageView("十连抽获得卡牌界面");
     },
 
     onExit: function () {
         cc.log("TenLotteryCardLayer onExit");
 
         this._super();
-        lz.dc.endLogPageView("十连抽获得卡牌界面");
+        lz.um.endLogPageView("十连抽获得卡牌界面");
     },
 
     init: function (data) {
@@ -35,11 +36,11 @@ var TenLotteryCardLayer = LazyLayer.extend({
 
         this._tenLotteryCardLayerFit = gameFit.mainScene.tenLotteryCardLayer;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._canClick = false;
         this._cardList = data.card;
         this._fragment = data.fragment;
-
-        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect64, this);
         this._ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint);
@@ -62,28 +63,24 @@ var TenLotteryCardLayer = LazyLayer.extend({
             var url = card.get("url");
             var star = card.get("star");
             var index = star > 2 ? star - 2 : 1;
-            var skillType = card.get("skillType");
 
-            if (skillType > 3) {
-                skillType = 3;
-            }
-            this["card_half_" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-            this["card_icon_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
-            this["card_frame_" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+            this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(card.getCardIcon()));
         }
     },
 
-    _setFragment: function () {
-        cc.log("TenLotteryCardLayer _setFragment: " + this._fragment);
+    ccbFnSetFragment: function () {
+        cc.log("TenLotteryCardLayer ccbFnSetFragment: " + this._fragment);
 
         if (this._fragment) {
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint1);
-            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            ccbNode.controller.ccbFragment.setString("+" + this._fragment);
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
             this.addChild(ccbNode, 1);
         }
     },
-
 
     onTouchBegan: function (touch, event) {
         cc.log("LazyLayer onTouchBegan");
@@ -96,20 +93,22 @@ var TenLotteryCardLayer = LazyLayer.extend({
                 this._cb();
             }
         }
+
         return true;
     }
-
 });
 
-TenLotteryCardLayer.create = function (data) {
-    var ref = new TenLotteryCardLayer();
 
-    if (ref && ref.init(data)) {
-        return ref;
+TenLotteryCardLayer.create = function (data) {
+    var ret = new TenLotteryCardLayer();
+
+    if (ret && ret.init(data)) {
+        return ret;
     }
 
     return null;
 };
+
 
 TenLotteryCardLayer.pop = function (data) {
     var tenLotteryCardLayer = TenLotteryCardLayer.create(data);

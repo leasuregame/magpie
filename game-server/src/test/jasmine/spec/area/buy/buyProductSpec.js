@@ -55,6 +55,7 @@ describe("Area Server", function() {
 					});
 
 					it("卡库容量会相应增加", function() {
+						// 第一次购买 1个
 						request("area.buyHandler.buyProduct", {
 							id: 7
 						}, function(data) {
@@ -74,6 +75,72 @@ describe("Area Server", function() {
 								expect(p.cardsCount).toEqual(data.msg.cardsCount);
 							});
 						});
+
+						// 第二次购买 1个
+						request("area.buyHandler.buyProduct", {
+							id: 7
+						}, function(data) {
+							expect(data).toEqual({
+								code: 200,
+								msg: {
+									consume: {
+										key: 'gold',
+										value: 39970
+									},
+									cardsCount: 37
+								}
+							});
+
+							doAjax('/player/100', function(res) {
+								var p = res.data;
+								expect(p.cardsCount).toEqual(data.msg.cardsCount);
+							});
+						});
+
+						// 第三次购买 5个
+						request("area.buyHandler.buyProduct", {
+							id: 7,
+							times: 5
+						}, function(data) {
+							expect(data).toEqual({
+								code: 200,
+								msg: {
+									consume: {
+										key: 'gold',
+										value: 39730
+									},
+									cardsCount: 42
+								}
+							});
+
+							doAjax('/player/100', function(res) {
+								var p = res.data;
+								expect(p.cardsCount).toEqual(data.msg.cardsCount);
+							});
+						});
+						
+						// 第四次购买 10个
+						request("area.buyHandler.buyProduct", {
+							id: 7,
+							times: 10
+						}, function(data) {
+							expect(data).toEqual({
+								code: 200,
+								msg: {
+									consume: {
+										key: 'gold',
+										value: 39130
+									},
+									cardsCount: 52
+								}
+							});
+
+							doAjax('/player/100', function(res) {
+								var p = res.data;
+								expect(p.cardsCount).toEqual(data.msg.cardsCount);
+							});
+						});
+
 					});
 				});
 			});

@@ -24,7 +24,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("注册界面");
+        lz.um.beginLogPageView("注册界面");
     },
 
     onExit: function () {
@@ -32,7 +32,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("注册界面");
+        lz.um.endLogPageView("注册界面");
     },
 
     init: function () {
@@ -70,10 +70,9 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._accountEditBox.setFont("STHeitiTC-Medium", 30);
-        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(50);
         this._accountEditBox.setVisible(false);
-        registerFrame.controller.accountLabel.addChild(this._accountEditBox);
+        registerFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
 
         this._passwordEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
@@ -101,7 +100,7 @@ var RegisterLayer = cc.Layer.extend({
         //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(20);
         this._passwordEditBox.setVisible(false);
-        registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
+        registerFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
 
         this._passwordAgainEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
@@ -126,10 +125,9 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
-        //this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordAgainEditBox.setMaxLength(20);
         this._passwordAgainEditBox.setVisible(false);
-        registerFrame.controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
+        registerFrame.controller.ccbPasswordAgainLabel.addChild(this._passwordAgainEditBox);
 
         registerFrame.animationManager.setCompletedAnimationCallback(this, function () {
             this._accountEditBox.setVisible(true);
@@ -146,15 +144,15 @@ var RegisterLayer = cc.Layer.extend({
         var text = this._accountEditBox.getText();
         var len = text.length;
         if (!text) {
-            TipLayer.tip("请输入账号");
+            TipLayer.tip("请输入帐号");
         } else if (len < 6 || len > 50) {
-            TipLayer.tip("账号长度为6-50位");
+            TipLayer.tip("帐号长度为6-50位");
         } else if (CHINESE_REG.test(text)) {
-            TipLayer.tip("账号不能包含中文");
+            TipLayer.tip("帐号不能包含中文");
         } else if (EMPTY_SPACE_REG.test(text)) {
-            TipLayer.tip("账号不能包含空格");
+            TipLayer.tip("帐号不能包含空格");
         } else if (!(EMAIL_REG.test(text) || ACCOUNT_REG.test(text))) {
-            TipLayer.tip("账号不能包含非法字符");
+            TipLayer.tip("帐号不能包含非法字符");
         } else {
             return true;
         }
@@ -206,35 +204,31 @@ var RegisterLayer = cc.Layer.extend({
         return false;
     },
 
-    _onClickRegister: function () {
-        cc.log("RegisterLayer _onClickRegister");
+    ccbFnRegister: function () {
+        cc.log("RegisterLayer ccbFnRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        var user = gameData.user;
 
         if (this._judgeAccount() && this._judgePassword() && this._judgePasswordAgain()) {
             var account = this._accountEditBox.getText();
             var password = this._passwordEditBox.getText();
 
             var that = this;
-            user.register(function (data) {
+            gameData.user.register(function (data) {
                 cc.log(data);
 
                 TipLayer.tip("注册成功，请登录游戏");
-                that.getParent().switchTo(LoginLayer.create());
-                that.removeFromParent();
+                that.getParent().switchLayer(LoginLayer);
             }, account, password);
         }
     },
 
-    _onClickBack: function () {
-        cc.log("RegisterLayer _onClickBack");
+    ccbFnBack: function () {
+        cc.log("RegisterLayer ccbFnBack");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switchTo(LoginLayer.create());
-        this.removeFromParent();
+        this.getParent().switchLayer(LoginLayer);
     }
 });
 

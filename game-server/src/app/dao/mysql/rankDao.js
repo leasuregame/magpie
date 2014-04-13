@@ -25,7 +25,7 @@ var RankDao = (function(_super) {
     };
 
     RankDao.getRankingsByPids = function(pids, cb) {
-        var sql = "select ranking from rank where id in (" + pids.toString() + ")";
+        var sql = "select ranking from rank where playerId in (" + pids.toString() + ")";
         dbClient.query(sql, [], cb);
     };
 
@@ -39,7 +39,7 @@ var RankDao = (function(_super) {
     };
 
     RankDao.maxRanking = function(cb) {
-        dbClient.query('select max(ranking) + 1 as next_ranking from rank', function(err, res) {
+        dbClient.query('select max(ranking) + 1 as next_ranking from rank', [], function(err, res) {
             if (err) {
                 return cb(err);
             }
@@ -63,12 +63,11 @@ var RankDao = (function(_super) {
                 if (err) {
                     return cb(err);
                 }
-                console.log('init ranking : ', res);
                 if ( !! res && res.length > 0) {
                     RankDao.create({
                         data: {
                             playerId: pid,
-                            ranking: res[0].next_ranking
+                            ranking: res[0].next_ranking || 1
                         }
                     }, function(err, rank) {
                         if (err) {

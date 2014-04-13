@@ -6,6 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+/*
+ * select area layer
+ * */
+
+
 var SelectAreaLayer = cc.Layer.extend({
     _selectAreaLayerFit: null,
 
@@ -16,7 +22,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("选区界面");
+        lz.um.beginLogPageView("选区界面");
     },
 
     onExit: function () {
@@ -24,7 +30,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("选区界面");
+        lz.um.endLogPageView("选区界面");
     },
 
     init: function (areaList) {
@@ -41,13 +47,14 @@ var SelectAreaLayer = cc.Layer.extend({
         selectAreaFrame.setPosition(this._selectAreaLayerFit.selectAreaFramePoint);
         this.addChild(selectAreaFrame, 1);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(0, 28, 640, 400));
+        var scrollViewLayer = MarkLayer.create(cc.rect(-40, 0, 640, 400));
         var len = this._areaList.length;
 
         var scrollViewHeight = len * 70 + 10;
         if (scrollViewHeight < 400) {
             scrollViewHeight = 400;
         }
+
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -56,9 +63,10 @@ var SelectAreaLayer = cc.Layer.extend({
         scrollView.setPosition(cc.p(-320, -300));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
-        selectAreaFrame.controller.areaList.addChild(scrollView, 1);
+        selectAreaFrame.controller.ccbAreaList.addChild(scrollView, 1);
 
-        for (var i = 0; i < len; ++i) {
+        for (var i = len - 1; i >= 0; --i) {
+            var y = scrollViewHeight - (len - 1 - i) * 70 - 70;
 
             var areaItem = cc.MenuItemImage.create(
                 main_scene_image.up95,
@@ -67,7 +75,7 @@ var SelectAreaLayer = cc.Layer.extend({
                 this
             );
 
-            areaItem.setPosition(cc.p(320, scrollViewHeight - i * 70 - 70));
+            areaItem.setPosition(cc.p(320, y));
 
             var area = this._areaList[i];
 
@@ -88,7 +96,6 @@ var SelectAreaLayer = cc.Layer.extend({
 
         return true;
     },
-
 
     _onClickArea: function (id) {
         return function () {

@@ -1,5 +1,3 @@
-playerConfig = require('../../../config/data/player')
-msgConfig = require '../../../config/data/message'
 table = require('../../manager/table')
 utility = require '../../common/utility'
 _ = require 'underscore'
@@ -17,17 +15,7 @@ exports.addEvents = (app, player) ->
       }, () ->
 
   player.on 'power.resume', ->
-    ply = player
-    interval = playerConfig.POWER_RESUME.interval
-    power = ply.power
-    now = Date.now()
-    times = 1
-
-    if (power.time + interval) <= now
-      times = parseInt (now - power.time)/interval
-      resumePoint = playerConfig.POWER_RESUME.point
-      ply.resumePower(resumePoint * times)
-      ply.save()
+    player.checkResumePower()
 
   player.on 'lineUp.change', ->
     player.updateAbility()
@@ -45,6 +33,11 @@ exports.addEvents = (app, player) ->
     if start <= now <= end and not player.isReset()
       player.resetData()
       player.save()
+
+      app.get('messageService').pushByPid player.id, {
+        route: 'onResetData', 
+        msg: player.dailyData()
+      }, () ->
 
   player.emit('lineUp.change')
 

@@ -2,12 +2,10 @@ playerManager = require('pomelo').app.get('playerManager')
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
-taskRate = require '../../../../config/data/taskRate'
+configData = require '../../../../config/data'
 async = require 'async'
 _ = require 'underscore'
 Card = require '../../../domain/entity/card'
-cardConfig = require '../../../../config/data/card'
-spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
@@ -23,6 +21,7 @@ Handler = (@app) ->
 探索
 ###
 Handler::explore = (msg, session, next) ->
+
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
@@ -40,9 +39,13 @@ Handler::explore = (msg, session, next) ->
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 
+      # 手动同一次体力值
+      player.checkResumePower()
+      
       taskManager.explore player, taskId, cb
 
-    (data, chapterId, sectionId, cb) =>
+    (data, chapterId, sectionId, cb) =>     
+
       if data.result is 'fight'
         taskManager.fightToMonster(
           {pid: player.id, tableId: taskId, table: 'task_config'}
@@ -51,7 +54,7 @@ Handler::explore = (msg, session, next) ->
 
           if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
-            player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'      
+            player.incSpirit battleLog.rewards.totalSpirit if battleLog.winner is 'own'      
 
           if battleLog.winner is 'own'
             checkFragment(battleLog, player, chapterId)
@@ -74,9 +77,16 @@ Handler::explore = (msg, session, next) ->
             taskManager.countExploreResult player, data, taskId, chapterId, cb
       else
         taskManager.countExploreResult player, data, taskId, chapterId, cb
+
+    (data, cb) ->
+      # 寻找boss，1~20次探索必然出现一个boss
+      taskManager.seekBoss(data, player, cb)
   ], (err, data) =>
     if err
-      return next(null, {code: err.code or 500, msg: err.msg})
+      if err.code is 501
+        return next(null, {code: err.code, msg: message: err.msg, power: player.power})
+      else 
+        return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
     data.task = player.getTask()
@@ -109,7 +119,7 @@ Handler::wipeOut = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   type = msg.type or 'task'
   chapterId = msg.chapterId
-  console.log 'wipe out:', msg
+
   if type is 'task' and chapterId? and (chapterId < 1 or chapterId > 50)
     return next(null, {code: 501, msg: "无效参数：#{chapterId}"})
 
@@ -124,7 +134,6 @@ Handler::wipeOut = (msg, session, next) ->
       taskManager.wipeOut player, type, chapterId, cb
   ], (err, player, rewards) ->
     if err
-      console.log 'wipe out error: ', err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     upgradeInfo = null
@@ -298,16 +307,26 @@ Handler::mysticalPass = (msg, session, next) ->
     (bl, cb) ->
       countSpirit(player, bl, 'PASS')
       if bl.winner is 'own'
-        mpcData = table.getTableItem('mystical_pass_config', player.pass.mystical.diff)
+        ### 达成成就 ###
+        achieve.passPhaseTo(player, player.pass.mystical.diff)
+
+        mpcData = table.getTableItem('mystical_pass_reward', player.pass.mystical.diff)
+        
         bl.rewards.skillPoint = mpcData.skill_point
+        bl.rewards.money = mpcData.money
+        bl.rewards.energy = mpcData.energy
+        bl.rewards.gold = mpcData.gold
 
         player.increase('skillPoint', mpcData.skill_point)
+        player.increase('money', mpcData.money)
+        player.increase('energy', mpcData.energy)
+        player.increase('gold', mpcData.gold)
         player.clearMysticalPass()        
-        player.incSpirit(bl.rewards.totalSpirit)
+        player.incSpirit(bl.rewards.totalSpirit) if bl.rewards?.totalSpirit > 0
         player.save()
 
       cb(null, bl)
-  ], (err, bl) ->
+  ], (err, bl) =>
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -316,17 +335,19 @@ Handler::mysticalPass = (msg, session, next) ->
       hasMystical: player.hasMysticalPass()
     }})
 
+    saveBattleLog(@app, playerId, player?.pass?.mystical?.diff, 'pve_mystical', bl) if bl?
+
 countSpirit = (player, bl, type) ->
   totalSpirit = 0
   _.each bl.cards, (v, k) ->
     return if k <= 6
     
     if v.boss?
-      v.spirit = spiritConfig.SPIRIT[type].BOSS
-      totalSpirit += spiritConfig.SPIRIT[type].BOSS
+      v.spirit = configData.spirit.SPIRIT[type].BOSS
+      totalSpirit += configData.spirit.SPIRIT[type].BOSS
     else
-      v.spirit = spiritConfig.SPIRIT[type].OTHER
-      totalSpirit += spiritConfig.SPIRIT[type].OTHER
+      v.spirit = configData.spirit.SPIRIT[type].OTHER
+      totalSpirit += configData.spirit.SPIRIT[type].OTHER
 
   bl.rewards.totalSpirit = totalSpirit if bl.winner is 'own'
 
@@ -351,17 +372,23 @@ updatePlayer = (player, rewards, layer) ->
   player.save()
 
 checkFragment = (battleLog, player, chapterId) ->  
+  cid = parseInt(chapterId)
+  scope = chapterScope cid
   if(
-    player.task.hasFragment != parseInt(chapterId) and 
-    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    player.task.hasFragment not in scope and 
+    ( utility.hitRate(configData.taskRate.fragment_rate) or cid%5 is 0 )
     )
     battleLog.rewards.fragment = 1
     task = utility.deepCopy(player.task)
-    task.hasFragment = parseInt(chapterId)
+    task.hasFragment = cid
     player.set('task', task)
     player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
+
+chapterScope = (cid) ->
+  p = (Math.ceil cid/5)*5
+  [p-4..p]
 
 saveBattleLog = (app, pid, eid, type, bl) ->
   app.get('dao').battleLog.create {

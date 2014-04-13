@@ -25,7 +25,7 @@ var ExchangeLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡魂兑换界面");
+        lz.um.beginLogPageView("卡魂兑换界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡魂兑换界面");
+        lz.um.endLogPageView("卡魂兑换界面");
     },
 
     init: function () {
@@ -49,15 +49,6 @@ var ExchangeLayer = cc.Layer.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._exchangeLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
-
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._exchangeLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon246);
-        titleIcon.setPosition(this._exchangeLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._exchangeLayerFit.headLabelPoint);
@@ -91,15 +82,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         updateItem.setPosition(this._exchangeLayerFit.updateItemPoint);
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._exchangeLayerFit.backItemPoint);
-
-        var menu = cc.Menu.create(backItem, updateItem);
+        var menu = cc.Menu.create(updateItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -111,7 +94,8 @@ var ExchangeLayer = cc.Layer.extend({
         costMoneyIcon.setPosition(cc.p(30, 18));
         costLabel.addChild(costMoneyIcon);
 
-        var costMoney = cc.LabelTTF.create(1000, "STHeitiTC-Medium", 22);
+        var needMoney = outputTables.values.rows["reflashExcCardsMoney"].value;
+        var costMoney = cc.LabelTTF.create(needMoney, "STHeitiTC-Medium", 22);
         costMoney.setPosition(cc.p(80, 15));
         costLabel.addChild(costMoney);
 
@@ -152,14 +136,16 @@ var ExchangeLayer = cc.Layer.extend({
     update: function () {
         cc.log("ExchangeLayer update");
 
-        this._fragmentLabel.setString(gameData.player.get("fragment"));
-        this._moneyLabel.setString(gameData.player.get("money"));
+        var player = gameData.player;
+
+        this._fragmentLabel.setString(player.get("fragment"));
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
     },
 
     _update: function () {
         cc.log("ExchangeLayer _update");
 
-        if(this._label) {
+        if (this._label) {
             this._label.removeFromParent();
             this._label = null;
         }
@@ -177,50 +163,55 @@ var ExchangeLayer = cc.Layer.extend({
         this._label.addChild(menu);
 
         this._cardItem = {};
-        this._effect = {};
+
         var point = this._exchangeLayerFit.basePoint;
         for (var i = 0; i < len; ++i) {
+            if (exchangeCardList[i].id > 0) {
 
-            var card = exchangeCardList[i].card;
-            var x = point.x + (i % 2) * 300;
-            var y = point.y - parseInt(i / 2) * this._exchangeLayerFit.offsetHeight;
+                var card = exchangeCardList[i].card;
+                var x = point.x + (i % 2) * 300;
+                var y = point.y - parseInt(i / 2) * this._exchangeLayerFit.offsetHeight;
 
-            var cardItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(exchangeCardList[i]), this);
-            cardItem.setPosition(cc.p(x - 7, y + 29));
-            menu.addChild(cardItem);
-            this._cardItem[exchangeCardList[i].id] = cardItem;
+                var cardItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(exchangeCardList[i]), this);
+                cardItem.setPosition(cc.p(x - 7, y + 29));
+                menu.addChild(cardItem);
+                this._cardItem[exchangeCardList[i].id] = cardItem;
 
-            var skillType = card.get("skillType");
-            if (skillType > 3) {
-                skillType = 3;
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                effect.setPosition(cardItem.getPosition());
+                this.addChild(effect, 2);
+
+                var skillType = card.get("skillType");
+                if (skillType > 3) {
+                    skillType = 3;
+                }
+                var skillIcon = cc.Sprite.create(card.getCardIcon(2));
+                skillIcon.setPosition(cc.p(x - 72, y - 40));
+                this._label.addChild(skillIcon);
+
+                var skillNameLabel = cc.LabelTTF.create(card.get("skillName"), "STHeitiTC-Medium", 22);
+                skillNameLabel.setPosition(cc.p(x - 5, y - 40));
+                this._label.addChild(skillNameLabel);
+
+                var name = card.get("name");
+                name = name.split("·")[1];
+                var cardNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 22);
+                cardNameLabel.setPosition(cc.p(x - 8, y + 113));
+                this._label.addChild(cardNameLabel);
+
+                var url = "icon" + (325 + card.get("star"));
+
+                var exchangeItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
+                    main_scene_image[url],
+                    this._onClickExchange(card.get("tableId"), card.get("star")),
+                    this
+                );
+                exchangeItem.setScale(0.8);
+                exchangeItem.setPosition(cc.p(x - 5, y - 88));
+                menu.addChild(exchangeItem);
             }
-            var skillIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
-            skillIcon.setPosition(cc.p(x - 70, y - 40));
-            this._label.addChild(skillIcon);
-
-            var skillNameLabel = cc.LabelTTF.create(card.get("skillName"), "STHeitiTC-Medium", 22);
-            skillNameLabel.setPosition(cc.p(x - 5, y - 40));
-            this._label.addChild(skillNameLabel);
-
-            var name = card.get("name");
-            name = name.split("·")[1];
-            var cardNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 22);
-            cardNameLabel.setPosition(cc.p(x - 8, y + 113));
-            this._label.addChild(cardNameLabel);
-
-            var url = "icon" + (325 + card.get("star"));
-
-            var exchangeItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                main_scene_image[url],
-                this._onClickExchange(card.get("tableId"), card.get("star")),
-                this
-            );
-            exchangeItem.setScale(0.8);
-            exchangeItem.setPosition(cc.p(x - 5, y - 88));
-            menu.addChild(exchangeItem);
-
         }
 
     },
@@ -231,7 +222,6 @@ var ExchangeLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var id = data.id;
             var card = data.card;
             var star = card.get("star");
 
@@ -247,18 +237,23 @@ var ExchangeLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var exchange = gameData.exchange;
+            var needFragment = exchange.getFragmentsNeed(star);
 
-            if (!exchange.canExchange(star)) {
+            if (gameData.cardList.isFull()) {
+                CardListFullTipLayer.pop();
                 return;
             }
 
             var that = this;
-            exchange.exchange(function (data) {
-                cc.log(data);
-                that.update();
 
-                TipLayer.tip("恭喜您，获得 " + data.get("name"));
-            }, id, star);
+            AdvancedTipsLabel.pop(TYPE_EXCHANGE_CARD_TIPS, function () {
+                exchange.exchange(function (data) {
+                    cc.log(data);
+                    that.update();
+                    that._update();
+                    TipLayer.tip("恭喜您，获得 " + data.get("name"));
+                }, id, star);
+            }, {fragment: needFragment});
         };
     },
 
@@ -275,7 +270,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         var that = this;
-        gameData.exchange.getExchangeCards(function(){
+        gameData.exchange.getExchangeCards(function () {
             that.update();
             that._update();
         });

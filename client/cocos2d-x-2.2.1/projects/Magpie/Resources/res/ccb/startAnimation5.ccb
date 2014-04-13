@@ -965,8 +965,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>res/effect/startAnimation/s114.png</string>
+							<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+							<string>s114.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1260,8 +1260,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>res/effect/startAnimation/s114.png</string>
+							<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+							<string>s114.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1420,8 +1420,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>res/effect/startAnimation/s115.png</string>
+							<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+							<string>s115.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1698,8 +1698,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s105.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s105.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1899,8 +1899,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s110.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s110.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2094,8 +2094,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s105.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s105.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2306,8 +2306,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s109.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s109.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2424,8 +2424,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s103.png</string>
+									<string>res/effect/startAnimation/startAnimationRes3.plist</string>
+									<string>s103.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2650,8 +2650,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s116.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s116.png</string>
 								</array>
 							</dict>
 						</array>
@@ -2799,8 +2799,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s117.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s117.png</string>
 								</array>
 							</dict>
 						</array>
@@ -3069,8 +3069,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s126.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s126.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3268,8 +3268,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s130.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s130.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3666,8 +3666,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s123.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s123.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3865,8 +3865,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s125.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s125.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4064,8 +4064,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s127.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s127.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4263,8 +4263,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s124.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s124.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4462,8 +4462,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s128.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s128.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4821,8 +4821,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s122.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s122.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5033,8 +5033,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s118.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s118.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5245,8 +5245,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s118.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s118.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5455,8 +5455,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s51.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s51.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5642,8 +5642,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s121.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s121.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -6081,8 +6081,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s132.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s132.png</string>
 								</array>
 							</dict>
 						</array>
@@ -6230,8 +6230,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s133.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s133.png</string>
 								</array>
 							</dict>
 						</array>
@@ -6379,8 +6379,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s134.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s134.png</string>
 								</array>
 							</dict>
 						</array>
@@ -6528,8 +6528,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s135.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s135.png</string>
 								</array>
 							</dict>
 						</array>
@@ -6910,8 +6910,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s119.png</string>
+											<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+											<string>s119.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7040,8 +7040,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s120.png</string>
+											<string>res/effect/startAnimation/startAnimationRes3.plist</string>
+											<string>s120.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7303,8 +7303,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s136.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s136.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -7624,8 +7624,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s137.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s137.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -7872,8 +7872,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s138.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s138.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -8141,8 +8141,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s139.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s139.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -8770,7 +8770,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>5.1666665077209473</real>
+									<real>5.3333334922790527</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -8788,7 +8788,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>5.5</real>
+									<real>6</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -8816,7 +8816,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>5.1666665077209473</real>
+									<real>5.3333334922790527</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -8852,7 +8852,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -8902,7 +8902,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.0</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -8988,7 +8988,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>5.1666665077209473</real>
+									<real>5.3333334922790527</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -9006,7 +9006,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>5.5</real>
+									<real>6</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -9034,7 +9034,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>5.1666665077209473</real>
+									<real>5.3333334922790527</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -9070,7 +9070,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -9120,7 +9120,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.0</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -9364,7 +9364,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>next</string>
+							<string>ccbFnNext</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -9379,9 +9379,9 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.93350696563720703</real>
 			<key>position</key>
-			<real>4.0666666030883789</real>
+			<real>6.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

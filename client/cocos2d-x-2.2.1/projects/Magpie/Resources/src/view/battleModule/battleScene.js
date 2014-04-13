@@ -21,7 +21,7 @@ var BattleScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("战斗场景");
+        lz.um.beginLogPageView("战斗场景");
     },
 
     onExit: function () {
@@ -29,7 +29,7 @@ var BattleScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("战斗场景");
+        lz.um.endLogPageView("战斗场景");
     },
 
     init: function (battleLog) {
@@ -43,9 +43,9 @@ var BattleScene = cc.Scene.extend({
         this.addChild(battleBeganLayer, 1);
         this._battleProcess.push(battleBeganLayer);
 
-        var batterLayer = BatterLayer.create(battleLog);
-        this.addChild(batterLayer);
-        this._battleProcess.push(batterLayer);
+        var battleLayer = BattleLayer.create(battleLog);
+        this.addChild(battleLayer);
+        this._battleProcess.push(battleLayer);
 
         var battleEndLayer = BattleEndLayer.create(battleLog);
         this.addChild(battleEndLayer, 1);

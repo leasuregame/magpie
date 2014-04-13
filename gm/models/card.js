@@ -143,18 +143,19 @@ Card.setCardsName = function (cards) {
 
 
 var genSkillInc = function (card) {
-    var cdata, max, min, skill;
-    if (card.star < 3)
-        return;
-    cdata = table.getTableItem('cards', card.tableId);
-    skill = cdata.skill_id_linktarget;
-    if (skill != null) {
-        min = skill["star" + card.star + "_inc_min"] * 10;
-        max = skill["star" + card.star + "_inc_max"] * 10;
-        return card.skillInc = _.random(min, max) / 10;
-    } else {
-        throw new Error('can not file skill info of card: ' + card.tableId);
-    }
+    card.factor = _.random(1, 1000);
+    // var cdata, max, min, skill;
+    // if (card.star < 3)
+    //     return;
+    // cdata = table.getTableItem('cards', card.tableId);
+    // skill = cdata.skill_id_linktarget;
+    // if (skill != null) {
+    //     min = skill["star" + card.star + "_inc_min"] * 10;
+    //     max = skill["star" + card.star + "_inc_max"] * 10;
+    //     return card.skillInc = _.random(min, max) / 10;
+    // } else {
+    //     throw new Error('can not file skill info of card: ' + card.tableId);
+    // }
 };
 
 

@@ -22,7 +22,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("玩家升级界面");
+        lz.um.beginLogPageView("玩家升级界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("玩家升级界面");
+        lz.um.endLogPageView("玩家升级界面");
     },
 
     init: function (data) {
@@ -51,7 +51,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
         this.addChild(ccbNode);
 
-        var label = ccbNode.controller.label;
+        var label = ccbNode.controller.ccbLabel;
 
         var str = lz.getRewardString(data.reward);
         var len = str.length;
@@ -60,7 +60,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         var lv = gameData.player.get("lv");
 
-        var lvLabel = ccbNode.controller.lvLabel;
+        var lvLabel = ccbNode.controller.ccbLvLabel;
         lvLabel.setString(lv);
 
         var offsetY = 150;

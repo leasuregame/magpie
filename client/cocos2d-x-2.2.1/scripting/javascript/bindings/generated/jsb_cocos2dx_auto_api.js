@@ -10366,6 +10366,8 @@ sharedFileUtils : function () {},
  */
 cc.Application = {
 
+getAppVersion: function() {},
+
 /**
  * @method getTargetPlatform
  * @return A value converted from C/C++ "cocos2d::TargetPlatform"

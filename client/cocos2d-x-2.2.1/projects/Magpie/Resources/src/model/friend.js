@@ -30,7 +30,7 @@ var Friend = Entity.extend({
     },
 
     update: function (data) {
-        cc.log("friend update");
+        cc.log("Friend update");
 
         this.set("friendList", data.friends);
         this.set("giveCount", data.giveCount);
@@ -39,7 +39,7 @@ var Friend = Entity.extend({
     },
 
     sync: function () {
-        cc.log("friend sync");
+        cc.log("Friend sync");
 
         var that = this;
         lz.server.request(
@@ -55,25 +55,11 @@ var Friend = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
-
-                    lz.server.on("onBless", function (data) {
-                        cc.log("***** on bless:");
-                        cc.log(data);
-
-                        that._onBless(data.msg);
-                        gameMark.updateFriendMark(true);
-                    });
-
-                    lz.server.on("onFriendAction", function (data) {
-                        cc.log("***** on friend action:");
-                        cc.log(data);
-
-                        that._onFriendAction(data.msg);
-                    });
+                    that.setListener();
 
                     gameMark.updateFriendMark(false);
 
-                    lz.dc.event("event_friend");
+                    lz.um.event("event_friend");
                 } else {
                     cc.log("sync fail");
 
@@ -84,8 +70,50 @@ var Friend = Entity.extend({
         );
     },
 
+    setListener: function () {
+        cc.log("Friend setListener");
+
+        var that = this;
+
+        lz.server.on("onBless", function (data) {
+            cc.log("***** on bless:");
+            cc.log(data);
+
+            that._onBless(data.msg);
+            gameMark.updateFriendMark(true);
+        });
+
+        lz.server.on("onFriendAction", function (data) {
+            cc.log("***** on friend action:");
+            cc.log(data);
+
+            that._onFriendAction(data.msg);
+        });
+    },
+
+    _sort: function (a, b) {
+        cc.log("Friend _sort");
+
+        if (a.canReceive && !b.canReceive) {
+            return -1;
+        }
+
+        if (!a.canReceive && b.canReceive) {
+            return 1;
+        }
+
+        return a.id - b.id;
+    },
+
+    getFriendList: function () {
+        cc.log("Friend getFriendLise");
+
+        this._friendList.sort(this._sort);
+        return this._friendList;
+    },
+
     _onBless: function (msg) {
-        cc.log("friend _onBless");
+        cc.log("Friend _onBless");
 
         var friend = this.getFriend(msg.sender);
 
@@ -96,19 +124,19 @@ var Friend = Entity.extend({
     },
 
     _onFriendAction: function (msg) {
-        cc.log("friend _onFriendAction");
+        cc.log("Friend _onFriendAction");
 
         var type = msg.type;
 
         if (type == FRIEND_ACTION_ADD) {
             this.push(msg.friend);
         } else if (type == FRIEND_ACTION_DELETE) {
-            this.deleteFriend(msg.friend.id);
+            this.deleteFriendById(msg.friend.id);
         }
     },
 
     push: function (friend) {
-        cc.log("friend push");
+        cc.log("Friend push");
 
         friend.canGive = friend.canGive || true;
         friend.canReceive = friend.canReceive || false;
@@ -117,7 +145,7 @@ var Friend = Entity.extend({
         this._friendList.push(friend);
     },
 
-    deleteFriend: function (friendId) {
+    deleteFriendById: function (friendId) {
         var len = this._friendList.length;
 
         for (var i = 0; i < len; ++i) {
@@ -221,7 +249,7 @@ var Friend = Entity.extend({
 
                 TipLayer.tip("请求已发送");
 
-                lz.dc.event("event_add_friend");
+                lz.um.event("event_add_friend");
             } else if (data.code == 501) {
                 cc.log("addFriend fail");
 
@@ -247,17 +275,18 @@ var Friend = Entity.extend({
             if (data.code == 200) {
                 cc.log("deleteFriend success");
 
-                that.deleteFriend(friendId);
+                that.deleteFriendById(friendId);
 
                 TipLayer.tip("删除成功");
 
                 cb();
 
-                lz.dc.event("event_delete_friend");
+                lz.um.event("event_delete_friend");
             } else {
                 cc.log("deleteFriend fail");
 
                 TipLayer.tip("删除失败");
+                cb();
             }
         });
     },
@@ -284,13 +313,15 @@ var Friend = Entity.extend({
                     friend.giveCount += 1;
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipWithIcon(lz.getGameGoodsIcon("energy"), " +" + msg.energy);
+                    lz.tipReward("energy", msg.energy);
 
                     cb("success");
 
-                    lz.dc.event("event_give_bless");
+                    lz.um.event("event_give_bless");
                 } else {
                     cc.log("giveBless fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {
@@ -322,13 +353,15 @@ var Friend = Entity.extend({
 
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipWithIcon(lz.getGameGoodsIcon("energy"), " +" + msg.energy);
+                    lz.tipReward("energy", msg.energy);
 
                     cb("success");
 
-                    lz.dc.event("event_receive_bless");
+                    lz.um.event("event_receive_bless");
                 } else {
                     cc.log("receiveBless fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {

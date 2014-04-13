@@ -25,18 +25,26 @@ var CardHeadNode = cc.Node.extend({
         this._card = card;
 
         var url = "icon11";
-        var star = 6;
+        var star = 0;
 
         if (this._card === -1) {
             url = "icon12";
         } else if (this._card) {
             star = this._card.get("star");
-            url = this._card.get("url") + "_head" + (star > 2 ? star - 2 : 1);
+            url = this._card.get("url") + "_head" + (star > 2 ? Math.min(star - 2, 3) : 1);
+        } else {
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect61, this);
+            effect.setPosition(cc.p(51, 57));
+            this.addChild(effect, 1);
         }
 
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(cc.p(0, 6));
+        if (star <= 5) {
+            this._cardSprite.setPosition(cc.p(0, 6));
+        } else {
+            this._cardSprite.setPosition(cc.p(2, 4));
+        }
         this.addChild(this._cardSprite);
 
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);

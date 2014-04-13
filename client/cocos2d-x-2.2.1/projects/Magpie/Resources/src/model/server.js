@@ -8,10 +8,6 @@
  * */
 
 
-// gate server config
-var GATE_SERVER_HOST = "124.238.236.33";
-var GATE_SERVER_PORT = "4009";
-
 // connect timeout
 var CONNECT_TIMEOUT = 5;
 
@@ -28,6 +24,10 @@ var RECONNECT_TIME = 3;
 var CONNECT_FAIL = 0;
 var CONNECT_SUCCESS = 1;
 var CONNECT_TRYING = 2;
+
+// disconnect status
+var DISCONNECT_DEFAULT = 0;
+var DISCONNECT_KICK = 1;
 
 // area status
 var AREA_STATUS = {
@@ -68,6 +68,7 @@ var Server = Entity.extend({
     _areaList: null,
     _gateServerStatus: CONNECT_FAIL,
     _gameServerStatus: CONNECT_FAIL,
+    _disconnectStatus: DISCONNECT_DEFAULT,
 
     init: function () {
         cc.log("Server init");
@@ -87,13 +88,15 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  ";// + status.statusName;
+            this._areaList[i].desc = this._areaList[i].index + "区  " + this._areaList[i].name;
             this._areaList[i].url = status.url;
         }
     },
 
     connectGateServer: function (cb) {
         cc.log("Server connectGateServer");
+
+        this.unscheduleAllCallbacks();
 
         this._gateServerStatus = CONNECT_FAIL;
         this._gameServerStatus = CONNECT_FAIL;
@@ -120,19 +123,21 @@ var Server = Entity.extend({
 
             that._gateServerStatus = CONNECT_FAIL;
 
-            lz.scheduleOnce(function () {
+            that.scheduleOnce(function () {
                 that.connectGateServer(cb);
             }, RECONNECT_TIME);
         });
 
         lz.pomelo.init({
-            host: GATE_SERVER_HOST,
-            port: GATE_SERVER_PORT,
+            host: lz.platformConfig.GATE_SERVER_HOST,
+            port: lz.platformConfig.GATE_SERVER_PORT,
             user: {},
             handshakeCallback: function () {
             }
         }, function () {
             cc.log("gate server connect success");
+
+            that.unscheduleAllCallbacks();
 
             success = true;
 
@@ -141,7 +146,7 @@ var Server = Entity.extend({
             that.queryEntry(cb);
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that._gateServerStatus = CONNECT_FAIL;
 
@@ -153,21 +158,33 @@ var Server = Entity.extend({
     queryEntry: function (cb) {
         cc.log("Server queryEntry");
 
+        this.unscheduleAllCallbacks();
+
         if (!this._gateServerStatus == CONNECT_SUCCESS) {
             cc.log("请勿在连接未成功时获取数据");
             return;
         }
 
         var success = false;
+        var version = lz.platformConfig.VERSION;
+        if (typeof(cc.AssetsManager) != "undefined") {
+            version = cc.AssetsManager.getInstance().getVersion();
+        }
 
         var that = this;
 
         lz.pomelo.request(
             "gate.gateHandler.queryEntry",
-            {},
+            {
+                os: lz.platformConfig.OS,
+                platform: lz.platformConfig.PLATFORM,
+                version: version
+            },
             function (data) {
                 cc.log("pomelo websocket callback data:");
                 cc.log(data);
+
+                that.unscheduleAllCallbacks();
 
                 success = true;
 
@@ -185,15 +202,15 @@ var Server = Entity.extend({
 
                     that._closeAllWaitLayer();
 
-                    lz.dc.event("event_query_entry");
+                    lz.um.event("event_query_entry");
                 } else {
-                    lz.scheduleOnce(function () {
+                    that.scheduleOnce(function () {
                         that.connectGateServer(cb);
                     }, RECONNECT_TIME);
                 }
             });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that.disconnect();
             }
@@ -201,17 +218,17 @@ var Server = Entity.extend({
     },
 
     connectGameServer: function (cb) {
-        cc.log("Server connectGameServer");
+        cc.log("Server connectGameServer: " + cb);
 
-        if (this.isConnect()) {
-            cb();
-
-            return;
-        }
+        this.unscheduleAllCallbacks();
 
         this._showWaitLayer();
 
         this.off();
+
+        if (this.isConnect()) {
+            this.disconnect();
+        }
 
         var success = false;
 
@@ -229,8 +246,8 @@ var Server = Entity.extend({
 
             that._gameServerStatus = CONNECT_FAIL;
 
-            lz.scheduleOnce(function () {
-                that.connectGameServer();
+            that.scheduleOnce(function () {
+                that.connectGameServer(cb);
             }, RECONNECT_TIME);
         });
 
@@ -243,9 +260,12 @@ var Server = Entity.extend({
         }, function () {
             cc.log("game server connect success");
 
+            that.unscheduleAllCallbacks();
+
             success = true;
 
             that._gameServerStatus = CONNECT_SUCCESS;
+            that._disconnectStatus = DISCONNECT_DEFAULT;
 
             that.off();
 
@@ -256,16 +276,29 @@ var Server = Entity.extend({
                 cc.log("网络连接断开");
 
                 that.off();
-                that._closeAllWaitLayer();
 
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                Dialog.pop("网络断开，点击确定重新连接...", function () {
-                    MainScene.destroy();
+                that._closeAllWaitLayer();
 
-                    cc.Director.getInstance().replaceScene(LoginScene.create());
-                });
+                gameData.gameEnd();
+
+                that.scheduleOnce(function () {
+                    if (that._disconnectStatus == DISCONNECT_KICK) {
+                        that.kick();
+                    } else {
+                        that.reConnect();
+                    }
+                }, 0.5);
+            });
+
+            that.on("onKick", function () {
+                cc.log("***** on onKick:");
+
+                cc.log("异地登录");
+
+                that._disconnectStatus = DISCONNECT_KICK;
             });
 
             that._closeAllWaitLayer();
@@ -275,17 +308,19 @@ var Server = Entity.extend({
             }
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that._gameServerStatus = CONNECT_FAIL;
 
-                that.connectGameServer();
+                that.connectGameServer(cb);
             }
         }, CONNECT_TIMEOUT);
     },
 
     request: function (route, msg, cb, isBackstageRequest) {
         cc.log("Server request");
+
+        this.unscheduleAllCallbacks();
 
         if (!isBackstageRequest) {
             this._showWaitLayer();
@@ -300,6 +335,8 @@ var Server = Entity.extend({
 
         var that = this;
         lz.pomelo.request(route, msg, function (data) {
+            that.unscheduleAllCallbacks();
+
             success = true;
 
             if (!isBackstageRequest) {
@@ -309,11 +346,63 @@ var Server = Entity.extend({
             cb(data);
         });
 
-        lz.scheduleOnce(function () {
+        this.scheduleOnce(function () {
             if (!success) {
                 that.disconnect();
             }
         }, REQUEST_TIMEOUT);
+    },
+
+    kick: function () {
+        cc.log("Server kick");
+
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
+        if (lz.platformLogout) {
+            lz.platformLogout();
+        }
+
+        Dialog.pop("异地登录", function () {
+            MainScene.destroy();
+            cc.Director.getInstance().replaceScene(LoginScene.create());
+        });
+    },
+
+    reConnect: function () {
+        cc.log("Server reConnect");
+
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
+
+        if (lz.platformIsLogin && !lz.platformIsLogin()) {
+            MainScene.destroy();
+            cc.Director.getInstance().replaceScene(LoginScene.create());
+            return;
+        }
+
+        gameData.user.login(function (type) {
+            cc.log("Server reConnect success");
+
+            cc.log("-----------------------------------------------------");
+            cc.log("type: " + type);
+            cc.log("-----------------------------------------------------");
+
+            MainScene.destroy();
+
+            switch (type) {
+                case 0:
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    var loginScene = LoginScene.create();
+                    loginScene.switchLayer(NewPlayerLayer);
+                    cc.Director.getInstance().replaceScene(loginScene);
+                    break;
+                case 3:
+                    break;
+            }
+        });
     },
 
     disconnect: function () {
@@ -329,7 +418,7 @@ var Server = Entity.extend({
     },
 
     isConnect: function () {
-        return (lz.pomelo.isConnect() && this._gameServerStatus == CONNECT_SUCCESS);
+        return (lz.pomelo.isConnect() && (this._gameServerStatus == CONNECT_SUCCESS || this._gateServerStatus == CONNECT_SUCCESS));
     },
 
     getRecommendArea: function () {

@@ -23,14 +23,14 @@ describe("Area Server", function() {
 				});
 			});
 
-			describe('当已经领取了该事件段的体力时', function() {
+			describe('当已经领取了该时间段的体力时', function() {
 				beforeEach(function() {
 					var now = new Date();
 					doAjax('/update/player/101', {
 						dailyGift: JSON.stringify({
 							lotteryCount: 500, // 每日抽奖次数
 							lotteryFreeCount: 0, // 每日免费抽奖次数
-							powerGiven: [12], // 体力赠送情况
+							powerGiven: [11], // 体力赠送情况
 							powerBuyCount: 6, // 购买体力次数
 							challengeCount: 10, // 每日有奖竞技次数
 							challengeBuyCount: 10, //每日有奖竞技购买次数
@@ -55,7 +55,7 @@ describe("Area Server", function() {
 
 				it('不能重复领取', function() {
 					request('area.playerHandler.givePower', {
-						hour: 12
+						hour: 11
 					}, function(data) {
 						console.log(data);
 						expect(data).toEqual({
@@ -110,6 +110,7 @@ describe("Area Server", function() {
 
 						doAjax('/player/2', {}, function(res) {
 							expect(JSON.parse(res.data.power).value).toEqual(100);
+							expect(JSON.parse(res.data.dailyGift).powerGiven).toEqual([17]);
 						})
 					});
 				});

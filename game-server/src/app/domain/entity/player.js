@@ -15,18 +15,13 @@
 var utility = require('../../common/utility');
 var MarkGroup = require('../../common/markGroup');
 var Entity = require('./entity');
-var playerConfig = require('../../../config/data/player');
-var msgConfig = require('../../../config/data/message');
-var spiritConfig = require('../../../config/data/spirit');
+var configData = require('../../../config/data');
 var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
-var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
-var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
 
 var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
@@ -50,6 +45,9 @@ var LOTTERY_FREE_COUNT = dgTabRow.lottery_free_count;
 var POWER_BUY_COUNT = dgTabRow.power_buy_count;
 var CHALLENGE_COUNT = dgTabRow.challenge_count;
 var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
+var EXP_CARD_COUNT = dgTabRow.exp_card_count;
+
+var KNEELCOUNT_DEFAULT = 3
 
 var defaultMark = function() {
     var i, result = [];
@@ -66,7 +64,7 @@ var NOW = function() {
 var addEvents = function(player) {
     // // 经验值改变，判断是否升级
     // player.on('exp.change', function(exp) {
-    //     if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
+    //     if (player.lv <= 0 || player.lv >= configData.player.MAX_PLAYER_LV) {
     //         return;
     //     }
 
@@ -129,7 +127,7 @@ var addEvents = function(player) {
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != configData.card.EXP_CARD_ID) {
             card.isNewLightUp = true;
             player.cardBookMark.mark(card.tableId);
             var cardBook = utility.deepCopy(player.cardBook);
@@ -161,23 +159,24 @@ var addEvents = function(player) {
                 break;
             }
         }
-        if (oldVip == 0 && player.vip > 0) {
-            achieve.vip(player);
-        }
+        // 达成vip成就
+        achieve.vipTo(player, player.vip);
+        
         recountVipPrivilege(player, oldVip);
     });
 };
 
 var correctPower = function(player) {
-    var interval, power, now, times = 1, resumePoint;
+    var interval, power, now, times = 1,
+        resumePoint;
 
-    interval = playerConfig.POWER_RESUME.interval;
+    interval = configData.player.POWER_RESUME.interval;
     power = player.power;
     now = Date.now();
 
     if ((power.time + interval) <= now) {
         times = parseInt((now - power.time) / interval);
-        resumePoint = playerConfig.POWER_RESUME.point;
+        resumePoint = configData.player.POWER_RESUME.point;
         player.resumePower(resumePoint * times);
         player.save();
     }
@@ -251,7 +250,13 @@ var Player = (function(_super) {
         'firstTime',
         'levelReward',
         'teachingStep',
-        'exchangeCards'
+        'exchangeCards',
+        'activities',
+        'initRate',
+        'speaker',
+        'honor',
+        'superHonor',
+        'cd'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -266,14 +271,18 @@ var Player = (function(_super) {
         exp: 0,
         money: 10000,
         gold: 20,
-        lineUp: '12:-1',
+        lineUp: [{6:-1}],
         ability: 0,
         task: {
             id: 1,
             progress: 0,
             hasWin: false,
             mark: [],
-            hasFragment: -1
+            hasFragment: -1,
+            boss: {
+                count: 0,
+                found: false
+            }
         },
         passLayer: 0,
         pass: {
@@ -292,6 +301,7 @@ var Player = (function(_super) {
             powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
             challengeBuyCount: CHALLENGE_BUY_COUNT, //每日有奖竞技购买次数
+            expCardCount: EXP_CARD_COUNT,
             receivedBless: { // 接收的祝福
                 count: DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -299,6 +309,18 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: DEFAULT_GIVE_COUNT,
                 receivers: []
+            },
+            hasGotLoginReward: 0,
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
             }
         },
         fragments: 0,
@@ -307,12 +329,12 @@ var Player = (function(_super) {
         skillPoint: 0,
         spiritor: {
             lv: 1,
-            spirit: DEFAULT_SPIRIT
+            spirit: configData.spirit.DEFAULT_SPIRIT
         },
         spiritPool: {
             lv: 1,
             exp: 0,
-            collectCount: spiritConfig.MAX_COLLECT_COUNT
+            collectCount: configData.spirit.MAX_COLLECT_COUNT
         },
         signIn: {},
         achievement: {},
@@ -331,11 +353,28 @@ var Player = (function(_super) {
         resetDate: '1970-1-1',
         firstTime: {
             lowLuckyCard: 1,
-            highLuckyCard: 1
+            highLuckyCard: 1,
+            highTenLuckCard: 1,
+            frb: 1, // 首次充值礼包是否领取标记
+            recharge: 0
         },
         levelReward: [],
         teachingStep: 0,
-        exchangeCards: []
+        exchangeCards: [],
+        goldCards: {},
+        activities: {},
+        initRate: {
+            star1: 0,
+            star2: 0,
+            star3: 0,
+            star4: 0
+        },
+        speaker: 0,
+        honor: 0,
+        superHonor: 0,
+        cd: {
+            lastAtkTime: 0 // 上一次攻击boss的时间点
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -364,8 +403,9 @@ var Player = (function(_super) {
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
-            challengeCount: CHALLENGE_COUNT + vipPrivilege.challenge_count, // 每日有奖竞技次数
-            challengeBuyCount: CHALLENGE_BUY_COUNT, // 每日有奖竞技购买次数
+            challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
+            challengeBuyCount: CHALLENGE_BUY_COUNT + vipPrivilege.challenge_buy_count, // 每日有奖竞技购买次数
+            expCardCount: EXP_CARD_COUNT + vipPrivilege.exp_card_count,
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
                 givers: []
@@ -373,6 +413,18 @@ var Player = (function(_super) {
             gaveBless: { // 送出的祝福
                 count: realCount(this.lv, giveBlessTab) + vipPrivilege.give_bless_count,
                 receivers: []
+            },
+            hasGotLoginReward: 0,
+            kneelCountLeft: KNEELCOUNT_DEFAULT,
+            kneelList: [],
+            rmTimerCount: 1,
+            goldLuckyCard10: {
+                count: 0,
+                got: false
+            },
+            goldLuckyCardForFragment: {
+                count: 0,
+                got: false
             }
         };
 
@@ -384,7 +436,7 @@ var Player = (function(_super) {
         task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
-        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
+        spiritPool.collectCount = configData.spirit.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
@@ -392,6 +444,42 @@ var Player = (function(_super) {
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.dailyData = function() {
+        return {
+            dailyGift: this.dailyGift,
+            pass: this.pass,
+            task: this.task,
+            spiritPool: this.spiritPool,
+            friendsCount: this.friendsCount
+        };
+    };
+
+    Player.prototype.incGoldLuckyCard10 = function(){
+        var goldLuckyCard10 = this.dailyGift.goldLuckyCard10;
+        if (_.isUndefined(goldLuckyCard10)) {
+            goldLuckyCard10 = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCard10.count += 1;
+        this.updateGift('goldLuckyCard10', goldLuckyCard10);
+    };
+
+    Player.prototype.incGoldLuckyCardForFragment = function(){
+        var goldLuckyCardForFragment = this.dailyGift.goldLuckyCardForFragment;
+        if (_.isUndefined(goldLuckyCardForFragment)) {
+            goldLuckyCardForFragment = {
+                count: 0,
+                got: false
+            };
+        }
+
+        goldLuckyCardForFragment.count += 1;
+        this.updateGift('goldLuckyCardForFragment', goldLuckyCardForFragment);
     };
 
     Player.prototype.isReset = function() {
@@ -439,9 +527,7 @@ var Player = (function(_super) {
             logger.error('can not fine spirit config infi by level ' + this.spiritor.lv);
             return;
         }
-        var cards = this.activeCards();
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
+        this.activeCards().forEach(function(card) {
             var incs = {
                 spirit_hp: 0,
                 spirit_atk: 0
@@ -458,7 +544,7 @@ var Player = (function(_super) {
 
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
-        }
+        });
     };
 
     Player.prototype.incSpirit = function(val) {
@@ -466,14 +552,14 @@ var Player = (function(_super) {
             logger.warn('can not increase spirit of player by value:', val);
             return;
         }
-        var spiritor = _.clone(this.spiritor);        
+        var spiritor = _.clone(this.spiritor);
         spiritor.spirit = spiritor.spirit + val;
         this.set('spiritor', spiritor);
     };
 
-    Player.prototype.canUpgradeSpiritor = function(){
+    Player.prototype.canUpgradeSpiritor = function() {
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
-        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+        if ( !! spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
             return true;
         }
         return false;
@@ -528,16 +614,22 @@ var Player = (function(_super) {
 
     Player.prototype.getAbility = function() {
         var ability = 0;
+        var ae = configData.card.ABILIGY_EXCHANGE;
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        var hp_pct = spiritorData.hp_inc;
+        var atk_pct = spiritorData.atk_inc;
+
         this.activeCards().forEach(function(card) {
             var _a = card.ability();
+
+            // 计算元神增加的战斗力
+            var _hp = parseInt(card.init_hp / ae.hp * hp_pct / 100);
+            var _atk = parseInt(card.init_atk / ae.atk * atk_pct / 100);
+
             if (!_.isNaN(_a)) {
-                ability += card.ability();
+                ability += _a + _hp + _atk;
             }
         });
-        // 元神加成的战斗力
-        if (this.spiritor.lv > 0) {
-            ability += this.spiritor.lv * SPIRITOR_PER_LV;
-        }
 
         this.set('ability', ability);
         return ability;
@@ -547,26 +639,26 @@ var Player = (function(_super) {
         this.set('ability', this.getAbility());
     };
 
-    Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
-        var cards = _.values(this.cards).filter(function(id, c) {
-            return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-        });
-        var cardTable = table.getTable('cards');
+    // Player.prototype.activeGroupEffect = function() {
+    //     var cardIds = _.values(lineUpToObj(this.lineUp));
+    //     var cards = _.values(this.cards).filter(function(id, c) {
+    //         return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+    //     });
+    //     var cardTable = table.getTable('cards');
 
-        for (var i = 0; i < cards.length; i++) {
-            var card = cards[i];
-            var cardConfig = cardTable.getItem(card.id);
-            var series = cardConfig.group.toString().split(',');
-            var seriesCards = cardTable.filter(function(id, item) {
-                return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-            });
+    //     for (var i = 0; i < cards.length; i++) {
+    //         var card = cards[i];
+    //         var cdata = cardTable.getItem(card.id);
+    //         var series = cdata.group.toString().split(',');
+    //         var seriesCards = cardTable.filter(function(id, item) {
+    //             return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+    //         });
 
-            if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-                card.activeGroupEffect();
-            }
-        }
-    };
+    //         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+    //             card.activeGroupEffect();
+    //         }
+    //     }
+    // };
 
     Player.prototype.isVip = function() {
         return this.vip > 0;
@@ -592,7 +684,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
+        return _.contains(this.activeCardIds(), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -626,17 +718,20 @@ var Player = (function(_super) {
         return cards;
     };
 
+    Player.prototype.activeCardIds = function(){
+        return this.lineUp.reduce(function(pre, cur){
+            return pre.concat(_.values(cur));
+        }, []);
+    };
+
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(lineUpToObj(this.lineUp));
+        var cardIds = this.activeCardIds();
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
     };
 
     Player.prototype.updatePower = function(power) {
-        if (!_.isNumber(power.value)) {
-            console.log('=========power value is wrong=========', power);
-        }
         this.set('power', power);
     };
 
@@ -650,20 +745,33 @@ var Player = (function(_super) {
         }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
-        console.log('power consume: ', value, power);
         this.updatePower(power);
         this.emit('power.consume', cVal);
     };
 
-    Player.prototype.resumePower = function(value) {
+    Player.prototype.checkResumePower = function() {
+        var interval, now, power, resumePoint, times;
+        interval = configData.player.POWER_RESUME.interval;
+        power = this.power;
+        now = Date.now();
+        times = 1;
+
+        if ((power.time + interval) <= now) {
+            times = parseInt((now - power.time) / interval);
+            resumePoint = configData.player.POWER_RESUME.point;
+            this.resumePower(resumePoint * times, power.time + interval * times);
+            this.save();
+        }
+    };
+
+    Player.prototype.resumePower = function(value, time) {
         var max_power = getMaxPower(this.lv);
 
         if (typeof value == 'undefined' || this.power.value >= max_power) return;
 
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
-        power.time = Date.now();
-        console.log('power resume: ', value, power);
+        power.time = time || Date.now();
         this.updatePower(power);
     };
 
@@ -676,15 +784,17 @@ var Player = (function(_super) {
         var power = _.clone(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('add power: ', value, power);
         this.updatePower(power);
     };
 
     Player.prototype.givePower = function(hour, value) {
+        if (!_.isNumber(hour) || !_.isNumber(value)) {
+            logger.error('can not give power with ', hour, value);
+            return;
+        }
         var power = utility.deepCopy(this.power);
         power.value += value;
         power.time = Date.now();
-        console.log('give power: ', value, power);
         this.updatePower(power);
 
         // 更新dailyGift的power
@@ -699,14 +809,24 @@ var Player = (function(_super) {
         this.dailyGift = dg;
     };
 
-    Player.prototype.updateLineUp = function(lineupObj) {
-        this.set('lineUp', objToLineUp(lineupObj));
-        checkLineUp(this);
+    Player.prototype.updateLineUp = function(lineupObj, index) {
+        if (_.isNull(index) || _.isUndefined(index)) {
+            return this.set('lineUp', lineupObj);
+        }
+
+        var lu = _.clone(this.lineUp);
+        if (index > lu.length) {
+            throw new Error('can not update player lineUp with the index ' + index);
+        }
+
+        lu[index] = lineupObj;
+        this.set('lineUp', lu);
+        //checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        checkLineUp(this);
-        return lineUpToObj(this.lineUp);
+        //checkLineUp(this);
+        return this.lineUp;
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -772,7 +892,6 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
-            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -858,7 +977,7 @@ var Player = (function(_super) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
-        this.passMark.mark(layer);
+        this.passMark.setValue(this.pass.mark).mark(layer);
         pass.mark = this.passMark.value;
         this.pass = pass;
     };
@@ -868,10 +987,11 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        return this.passMark.hasMark(layer);
+        return this.passMark.setValue(this.pass.mark).hasMark(layer);
     };
 
     Player.prototype.canResetPassMark = function() {
+        this.passMark.setValue(this.pass.mark);
         for (var i = 1; i <= this.passLayer; i++) {
             if (this.passMark.hasMark(i)) {
                 return true;
@@ -943,9 +1063,14 @@ var Player = (function(_super) {
                 flag: 0
             };
         }
+        if(utility.hasMark(si[key].mark, new Date().getDate())) {
+            return false;
+        }
+
 
         si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
+        return true;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
@@ -1000,7 +1125,7 @@ var Player = (function(_super) {
         } else {
             si[key].flag = utility.mark(parseInt(si[key].flag), id);
         }
-        
+
         this.signIn = si;
     };
 
@@ -1017,18 +1142,11 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.canUseElixir = function() {
-        if (this.lv >= 80) {
-            return Number.MAX_VALUE;
-        }
-        return elixirLimit(this.lv);
-    };
-
     Player.prototype.getRanking = function() {
         var rank = {
             ranking: 0
         };
-        if(this.rank) {
+        if (this.rank) {
             rank.ranking = this.rank.ranking;
         }
         return rank;
@@ -1038,17 +1156,19 @@ var Player = (function(_super) {
         var rank = {
             ranking: 0,
             canGetReward: [],
-            notCanGetReward: []
+            notCanGetReward: [],
+            stats: {}
         };
-        if(this.rank) {
+        if (this.rank) {
             rank.ranking = this.rank.ranking;
             rank.canGetReward = this.rank.rankingRewards();
             rank.notCanGetReward = this.rank.rewardsNotHave();
+            rank.stats = this.rank.stats();
         }
         return rank;
     };
 
-    Player.prototype.getTask = function(){
+    Player.prototype.getTask = function() {
         return {
             id: this.task.id,
             progress: this.task.progress,
@@ -1060,8 +1180,7 @@ var Player = (function(_super) {
 
         var spiritor = {
             lv: this.spiritor.lv,
-            spirit: this.spiritor.spirit,
-            ability: this.spiritor.lv * SPIRITOR_PER_LV
+            spirit: this.spiritor.spirit
         };
 
         return spiritor;
@@ -1073,7 +1192,7 @@ var Player = (function(_super) {
 
     Player.prototype.delFriend = function(fid) {
         var i, fri;
-        for(i = 0; i < this.friends.length; i++) {
+        for (i = 0; i < this.friends.length; i++) {
             fri = this.friends[i];
             if (fri.id == fid) {
                 this.friends.splice(i, 1);
@@ -1082,14 +1201,42 @@ var Player = (function(_super) {
         }
     };
 
-    Player.prototype.hasFirstTime = function(){
+    Player.prototype.hasFirstTime = function() {
         var ft = this.firstTime;
         for (var key in ft) {
             if (ft[key]) {
                 return true;
             }
         }
+
+        if (typeof this.firstTime.highTenLuckCard == 'undefined') {
+            return true;
+        }
+
+        if (typeof this.firstTime.recharge == 'undefined' || this.firstTime.recharge < 128) {
+            return true;
+        }
         return false;
+    };
+
+    Player.prototype.getFirstTime = function() {
+        var frb = typeof this.firstTime.frb == 'undefined' ? 1 : this.firstTime.frb;
+        // frb = 1 为可领取状态
+        if (this.cash <= 0) {
+            frb = 0; // 不可领取状态
+        }
+
+        if (this.cash > 0 && frb == 0) {
+            frb = 2; // 已领取状态
+        }
+
+        return {
+            lowLuckyCard: this.firstTime.lowLuckyCard,
+            highLuckyCard: this.firstTime.highLuckyCard,
+            highTenLuckCard: typeof this.firstTime.highTenLuckCard == 'undefined' ? 1 : this.firstTime.highTenLuckCard,
+            recharge: this.firstTime.recharge || 0,
+            firstRechargeBox: frb
+        };
     };
 
     Player.prototype.setFirstTime = function(name, val) {
@@ -1104,7 +1251,170 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        this.levelReward = this.levelRewardMark.value;
+        var lr = utility.deepCopy(this.levelRewardMark.value);
+        this.set('levelReward', lr);
+    };
+
+    Player.prototype.lightUpCards = function() {
+        var f = this.cardBookFlag.markPositions();
+        var m = this.cardBookMark.markPositions();
+        return _.union(f, m);
+    };
+
+    Player.prototype.addGoldCard = function(gc) {
+        this.goldCards[gc.type] = gc;
+    };
+
+    Player.prototype.addGoldCards = function(gcs) {
+        for (var i = 0; i < gcs.length; i++) {
+            this.addGoldCard(gcs[i]);
+        }
+    };
+
+    Player.prototype.getGoldCard = function() {
+        var gc = {};
+        for (var g in this.goldCards) {
+            gc[g] = this.goldCards[g].toJson();
+        }
+        return gc;
+    };
+
+    Player.prototype.setInitRate = function(star, val) {
+        if (star < 1 || star > 6) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        ir['star' + star] = val;
+        this.initRate = ir;
+    };
+
+    Player.prototype.incInitRate = function(star, val) {
+        if (star < 1 || star > 6) {
+            return;
+        }
+
+        var ir = utility.deepCopy(this.initRate);
+        if (typeof ir['star' + star] == 'undefined') {
+            ir['star' + star] = 0;
+        }
+        ir['star' + star] += val;
+        this.initRate = ir;
+    };
+
+    Player.prototype.isRechargeFirstTime = function(productId) {
+        if (typeof productId != 'number' || productId > 7) {
+            return false;
+        }
+        return !utility.hasMark(this.firstTime.recharge || 0, productId);
+    };
+
+    Player.prototype.setRechargeFirstTime = function(productId) {
+        if (typeof productId == 'number') {
+            var ft = utility.deepCopy(this.firstTime);
+            ft.recharge = utility.mark(ft.recharge || 0, productId);
+            this.firstTime = ft;
+        }
+    };
+
+    Player.prototype.getCD = function() {
+        var lastAtkTime = this.cd.lastAtkTime || 0;
+        var now = new Date().getTime();
+        var duration = lastAtkTime + 30 * 60 * 1000 - now;
+        return duration < 0 ? 0 : duration;
+    };
+
+    Player.prototype.resetCD = function() {
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = new Date().getTime();
+        this.cd = cd;
+    };
+
+    Player.prototype.removeCD = function() {
+        var cd = utility.deepCopy(this.cd);
+        cd.lastAtkTime = 0;
+        this.cd = cd;
+    };
+
+    Player.prototype.incBossCount = function() {
+        var task = utility.deepCopy(this.task);
+        if (!task.boss) {
+            task.boss = {
+                count: 0,
+                found: false
+            }
+        }
+
+        task.boss.count += 1;
+        this.task = task;
+    };
+
+    Player.prototype.setBossFound = function(val) {
+        var task = utility.deepCopy(this.task);
+        if (!task.boss) {
+            task.boss = {
+                count: 0,
+                found: false
+            }
+        }
+
+        task.boss.found = val;
+        if (!val) {
+            task.boss.count = 0;
+        }
+
+        this.task = task;
+    };
+
+    Player.prototype.removeTimerConsume = function() {
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var consume = 20 * this.dailyGift.rmTimerCount;
+        return consume > 200 ? 200 : consume;
+    };
+
+    Player.prototype.incRmTimerCount = function() {
+        if (typeof this.dailyGift.rmTimerCount == 'undefined') {
+            this.updateGift('rmTimerCount', 1);
+        }
+
+        var count = parseInt(this.dailyGift.rmTimerCount + 1);
+        this.updateGift('rmTimerCount', count);
+    };
+
+    Player.prototype.kneelCountLeft = function() {
+        if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
+            this.updateGift('kneelCountLeft', KNEELCOUNT_DEFAULT);
+        }
+        return this.dailyGift.kneelCountLeft;
+    };
+
+    Player.prototype.hasKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', []);
+            return false;
+        }
+        return this.dailyGift.kneelList.indexOf(pid) > -1;
+    };
+
+    Player.prototype.addKneel = function(pid) {
+        if (typeof this.dailyGift.kneelList == 'undefined') {
+            this.updateGift('kneelList', [pid]);
+        } else {
+            var dg = utility.deepCopy(this.dailyGift);
+            dg.kneelList.push(pid);
+            this.dailyGift = dg;
+        }
+    };
+
+    Player.prototype.getDailyGift = function() {
+        var dailyGift = utility.deepCopy(this.dailyGift);
+        delete dailyGift.kneelCountLeft;
+        delete dailyGift.kneelList;
+        delete dailyGift.rmTimerCount;
+        return dailyGift;
     };
 
     Player.prototype.toJson = function() {
@@ -1124,10 +1434,10 @@ var Player = (function(_super) {
             money: this.money,
             gold: this.gold,
             lineUp: this.lineUpObj(),
-            ability: this.getAbility(),
+            //ability: this.getAbility(),
             task: this.getTask(),
             pass: this.getPass(),
-            dailyGift: utility.deepCopy(this.dailyGift),
+            dailyGift: this.getDailyGift(),
             skillPoint: this.skillPoint,
             energy: this.energy,
             fragments: this.fragments,
@@ -1135,7 +1445,7 @@ var Player = (function(_super) {
             spiritor: this.getSpiritor(),
             spiritPool: utility.deepCopy(this.spiritPool),
             cards: _.values(this.cards)
-                .sort(function(x, y){
+                .sort(function(x, y) {
                     return y.createTime - x.createTime;
                 })
                 .map(function(card) {
@@ -1143,10 +1453,21 @@ var Player = (function(_super) {
                 }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
-            firstTime: this.hasFirstTime() ? this.firstTime : void 0,
+            firstTime: this.getFirstTime(),
             teachingStep: this.teachingStep,
             cardsCount: this.cardsCount,
-            exchangeCards: this.exchangeCards
+            exchangeCards: this.exchangeCards,
+            goldCards: this.getGoldCard(),
+            speaker: this.speaker,
+            honor: this.honor,
+            superHonor: this.superHonor,
+            bossInfo: {
+                cd: this.getCD(),
+                kneelCountLeft: this.kneelCountLeft(),
+                kneelList: this.dailyGift.kneelList || [],
+                rmTimerCount: this.dailyGift.rmTimerCount || 1,
+                canReceive: this.hasFriendReward || false,
+            }
         };
     };
 
@@ -1162,7 +1483,7 @@ var elixirLimit = function(lv) {
     if (lv <= 50) {
         return 2000 * lv;
     } else {
-        return 2000 * 50 + 4000 * (lv - 50);
+        return 2000 * 50 + 8000 * (lv - 50);
     }
 };
 
@@ -1171,7 +1492,7 @@ var elixirLimit = function(lv) {
 //         return sp;
 //     }
 //     sp = utility.deepCopy(sp);
-//     sp.collectCount = spiritConfig.MAX_COLLECT_COUNT - sp.collectCount;
+//     sp.collectCount = configData.spirit.MAX_COLLECT_COUNT - sp.collectCount;
 //     return sp;
 // };
 
@@ -1180,8 +1501,8 @@ var elixirLimit = function(lv) {
 //         return dg;
 //     }
 //     dg = utility.deepCopy(dg);
-//     dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
-//     dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;
+//     dg.gaveBless.count = configData.message.MAX_GIVE_COUNT - dg.gaveBless.count;
+//     dg.receivedBless.count = configData.message.MAX_RECEIVE_COUNT - dg.receivedBless.count;
 //     dg.lotteryCount = DAILY_LOTTERY_COUNT - dg.lotteryCount;
 //     return dg;
 // };
@@ -1232,7 +1553,6 @@ var checkLineUp = function(player) {
     var card_count = vals.filter(function(v) {
         return v !== -1;
     }).length;
-    console.log(obj, vals, card_count);
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {
@@ -1270,7 +1590,7 @@ var positionConvert = function(val) {
 
 var getMaxPower = function(lv) {
     // var max_power = 50;
-    // var powerLimit = playerConfig.POWER_LIMIT;
+    // var powerLimit = configData.player.POWER_LIMIT;
     // for (var lv in powerLimit) {
     //     if (this.lv <= parseInt(lv)) {
     //         max_power = powerLimit[lv];
@@ -1298,7 +1618,8 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
-    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    dg.challengeBuyCount += curVipInfo.challenge_buy_count - oldVipInfo.challenge_buy_count;
+    dg.expCardCount += curVipInfo.exp_card_count - oldVipInfo.exp_card_count;
     player.dailyGift = dg;
 
     var sp = utility.deepCopy(player.spiritPool);
@@ -1317,7 +1638,7 @@ var executeVipPrivilege = function(player) {
     dg.powerBuyCount += pri.buy_power_count;
     dg.gaveBless.count += pri.give_bless_count;
     dg.receivedBless.count += pri.receive_bless_count;
-    dg.challengeCount += pri.challege_count;
+    dg.challengeBuyCount += pri.challenge_buy_count;
 
     player.dailyGift = dg;
 

@@ -19,56 +19,34 @@
 
 var PVE_BATTLE_LOG = 0;
 var PVP_BATTLE_LOG = 1;
+var BOSS_BATTLE_LOG = 2;
 
 var BattleLogPool = Entity.extend({
-    _battleLogPool: {},
+    _battleLogPool: null,
 
     init: function () {
         cc.log("BattleLogPool init");
 
         this._battleLogPool = {};
-        this._load();
     },
 
-    _load: function () {
-        cc.log("BattleLogPool _load");
-
-        var battleLogPool = sys.localStorage.getItem("battleLogPool") || {};
-
-        for (var key in battleLogPool) {
-            if (battleLogPool[key]) {
-                this._battleLogPool[key] = battleLogPool[key];
-            }
-        }
-    },
-
-    _save: function () {
-        sys.localStorage.setItem("battleLogPool", this._battleLogPool);
-    },
-
-    pushBattleLog: function (battleLog, battleType) {
+    put: function (battleLog) {
         cc.log("BattleLogPool pushBattleLog");
 
-        battleLog.type = battleType || PVE_BATTLE_LOG;
-        battleLog.id = battleLog.id || 0;
-
-        if (battleLog.ownId !== gameData.player.get("id")) {
-            if (battleLog.winner == "own") {
-                battleLog.winner = "enemy";
-            } else if (battleLog.winner == "enemy") {
-                battleLog.winner = "own"
-            }
-        }
+        battleLog.type = battleLog.type || PVE_BATTLE_LOG;
+        battleLog.id = battleLog.id || 100000000;
 
         this._battleLogPool[battleLog.id] = battleLog;
 
-        this._save();
+        lz.save("battleLog" + battleLog.id, battleLog);
 
         return battleLog.id;
     },
 
-    getBattleLogById: function (id) {
+    get: function (id) {
         cc.log("BattleLogPool getBattleByBattleLogId");
+
+        this._battleLogPool[id] = this._battleLogPool[id] || lz.load("battleLog" + id);
 
         return this._battleLogPool[id];
     }

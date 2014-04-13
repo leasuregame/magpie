@@ -14,7 +14,7 @@
  * delete
  * */
 
-dbClient = require('pomelo').app.get('dbClient');
+var dbClient = require('pomelo').app.get('dbClient');
 var Card = require("../../domain/entity/card");
 //var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
@@ -52,9 +52,6 @@ var CardDao = (function(_super) {
 			}
 
 			var card = results[0];
-			//var pss = results[1];
-
-			//card.addPassiveSkills(pss);
 			return cb(null, card);
 		});
 	};
@@ -75,32 +72,13 @@ var CardDao = (function(_super) {
 					return cb(null, []);
 				}
 
-				/*passiveSkillDao.fetchMany({
-					sync: options.sync,
-					where: ' cardId in (' + ids.toString() + ')'
-				}, function(err, pss) {
-					if (err) {
-						return cb(err);
-					}
-
-					cards.forEach(function(card) {
-						var _pss = _.where(pss, {
-							cardId: card.id
-						});
-						if (_pss !== null) {
-							card.addPassiveSkills(_pss);
-						}
-					});
-					return cb(null, cards);
-				});
-                */
-                return cb(null, cards);
+        return cb(null, cards);
 			}
 		]);
 	};
 
 	CardDao.createExpCard = function(options, cb) {
-		var exp_card_id = require('../../../config/data/card').EXP_CARD_ID;
+		var exp_card_id = require('../../../config/data').card.EXP_CARD_ID;
 
 		return CardDao.create({data: {
 			playerId: options.data.playerId,
@@ -110,6 +88,34 @@ var CardDao = (function(_super) {
 			exp: options.data.exp || 0
 		}}, cb);
 	};
+
+	CardDao.totalCount = function(cb) {
+		dbClient.query('select count(id) as num from card where tableId != 30000', function(err, res) {
+			if (err) {
+				console.log('[sql error] when select count form card', err);
+			}
+
+			if (!!res && res.length > 0) {
+				cb(null, res[0].num);
+			} else {
+				cb(null, 0);
+			}
+		});
+	};
+
+	CardDao.selectForUpdate = function(limit, cb) {
+		dbClient.query('select id, tableId from card where tableId != 30000 order by id limit ' + limit, function(err, res) {
+			if (err) {
+				console.log('[sql error]', err);
+			}
+
+			if (!!res && res.length > 0) {
+				cb(null, res);
+			} else {
+				cb(null, []);
+			}
+		});
+	}
 
 	return CardDao;
 })(DaoBase);

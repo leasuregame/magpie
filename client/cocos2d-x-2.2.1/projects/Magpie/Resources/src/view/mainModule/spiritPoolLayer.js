@@ -21,7 +21,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     _preObtainLabel: null,
     _goldLabel: null,
     _spirit: null,
-    spiritNode: null,
+    ccbSpiritNode: null,
     _spiritPool: null,
     _hook: null,
     _useGold: false,
@@ -33,7 +33,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("灵台界面");
+        lz.um.beginLogPageView("灵台界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("灵台界面");
+        lz.um.endLogPageView("灵台界面");
     },
 
     init: function () {
@@ -117,7 +117,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         lvIcon.setPosition(this._spiritPoolLayerFit.lvIconPoint);
         this.addChild(lvIcon);
 
-        this._lvLabel = cc.LabelTTF.create("LV.  0 / 0", "STHeitiTC-Medium", 22);
+        this._lvLabel = cc.LabelTTF.create("Lv.  0 / 0", "STHeitiTC-Medium", 22);
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(this._spiritPoolLayerFit.lvLabelPoint);
         this.addChild(this._lvLabel);
@@ -162,14 +162,14 @@ var SpiritPoolLayer = cc.Layer.extend({
     update: function () {
         cc.log("SpiritPoolLayer update");
 
-        this.spiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
+        this.ccbSpiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
 
         var spiritPool = gameData.spiritPool;
         var player = gameData.player;
 
-        this._lvLabel.setString("LV.  " + spiritPool.get("lv") + " / " + spiritPool.get("maxLv"));
+        this._lvLabel.setString("Lv.  " + spiritPool.get("lv") + " / " + spiritPool.get("maxLv"));
         this._expLabel.setString("经验  " + spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
-        this._countLabel.setString(spiritPool.get("collectCount"));
+        this._countLabel.setString(spiritPool.get("collectCount") + " / " + spiritPool.get("maxCollectCount"));
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
         this._goldLabel.setString(player.get("gold"));
 
@@ -180,20 +180,22 @@ var SpiritPoolLayer = cc.Layer.extend({
         }
     },
 
-    _collectSpirit: function () {
-        cc.log("SpiritPoolLayer collectSpirit");
+    ccbFnCollectSpirit: function () {
+        cc.log("SpiritPoolLayer ccbFnCollectSpirit");
 
         if (this._reward) {
             var spirit = cc.Sprite.create(main_scene_image.icon247);
             spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
             this.addChild(spirit);
 
-           // var str = "灵气: +" + this._reward.spirit_obtain;
-
             if (this._reward.isDouble) {
-              //  str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
                 spirit.setScale(1.5);
+                lz.tipReward("spirit", this._reward.spirit_obtain, true);
+            } else {
+                lz.tipReward("spirit", this._reward.spirit_obtain);
             }
+
+            this.update();
 
             var point1 = this._spiritPoolLayerFit.spiritPoolItemPoint;
             var point2 = this._spiritPoolLayerFit.spiritIconPoint;
@@ -219,27 +221,21 @@ var SpiritPoolLayer = cc.Layer.extend({
                         cc.ScaleTo.create(0.5, 0.3, 0.3)
                     )
                 ),
-                cc.Hide.create()
+                cc.CallFunc.create(function () {
+                    spirit.removeFromParent();
+
+                    if (noviceTeachingLayer.isNoviceTeaching()) {
+                        noviceTeachingLayer.next();
+                    }
+                }, this)
             ));
-
-            this.scheduleOnce(function () {
-                spirit.removeFromParent();
-                // TipLayer.tipNoBg(str);
-                TipLayer.tipWithIcon(gameGoodsIcon["spirit"], " +" + this._reward.spirit_obtain);
-                this.update();
-
-                if (noviceTeachingLayer.isNoviceTeaching()) {
-                    noviceTeachingLayer.next();
-                }
-            }, 2);
         }
-
 
         LazyLayer.closeCloudLayer();
     },
 
-    _onClickSpiritPool: function () {
-        cc.log("SpiritPoolLayer _onClickSoulTable");
+    ccbFnSpiritPool: function () {
+        cc.log("SpiritPoolLayer ccbFnSpiritPool");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -269,8 +265,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         }, this._useGold);
     },
 
-    _onClickSpirit: function () {
-        cc.log("SpiritPoolLayer _onClickSpirit");
+    ccbFnSpirit: function () {
+        cc.log("SpiritPoolLayer ccbFnSpirit");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 

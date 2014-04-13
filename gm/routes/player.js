@@ -122,11 +122,11 @@ var player = function (app) {
         var url = Url.parse(req.url, true);
         var query = url.query;
         //console.log(req.url);
-        var player = JSON.parse(query['player']);
+        var player = query['player'];
         var area = JSON.parse(query['area']);
-        var data = player;
+        var data = JSON.parse(player);
 
-
+        console.log(player, data);
         var options = {
             where: {
                 name: data.name,
@@ -143,7 +143,7 @@ var player = function (app) {
                 res.send({type: 'error', info: '修改数据失败'});
 
             } else {
-                logger.info("[update]" + JSON.stringify(data));
+                logger.info("[update]" + player);
                 res.send({type: 'success', info: '修改数据成功'});
             }
 

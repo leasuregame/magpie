@@ -12,12 +12,13 @@
  * */
 
 
-cc.BuilderReader.setResourcePath("./");
+//cc.BuilderReader.setResourcePath("./");
 
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
     _mainMenuLayer: null,
+    _speakerLayer: null,
 
     onEnter: function () {
         cc.log("MainScene onEnter");
@@ -26,7 +27,7 @@ var MainScene = cc.Scene.extend({
 
         gameData.sound.playMusic();
 
-        lz.dc.beginLogPageView("主场景");
+        lz.um.beginLogPageView("主场景");
     },
 
     onExit: function () {
@@ -34,11 +35,13 @@ var MainScene = cc.Scene.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("主场景");
+        lz.um.endLogPageView("主场景");
     },
 
     init: function () {
         cc.log("MainScene init");
+
+        cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
@@ -51,20 +54,26 @@ var MainScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
+        this._speakerLayer = SpeakerLayer.create();
+        this.addChild(this._speakerLayer, 8);
+
         noviceTeachingLayer = NoviceTeachingLayer.create();
         if (noviceTeachingLayer.isNoviceTeaching()) {
             this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
         }
-
-        this.retain();
     },
 
     changeMessage: function (msg) {
         cc.log("MainScene changeMessage");
 
         this._mainBgLayer.changeMessage(msg);
+    },
+
+    speaker: function (msg) {
+        cc.log("MainScene speaker");
+        this._speakerLayer.push(msg);
     },
 
     getLayer: function () {
@@ -75,7 +84,10 @@ var MainScene = cc.Scene.extend({
         if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
-        
+
+        if (this._mainMenuLayer) {
+            this._mainMenuLayer.updateMark();
+        }
     },
 
     updateGuide: function () {
@@ -111,6 +123,8 @@ var MainScene = cc.Scene.extend({
         this.addChild(this._nowLayer);
 
         this._mainMenuLayer.update();
+
+        this.updateMark();
     }
 });
 
@@ -122,19 +136,23 @@ var MainScene = cc.Scene.extend({
     var _mainScene = null;
 
     MainScene.getInstance = function () {
+        cc.log("MainScene getInstance");
+
         if (_mainScene == null) {
             _mainScene = new MainScene();
-            _mainScene.init();
+            _mainScene.retain();
         }
 
         return _mainScene;
     };
 
     MainScene.destroy = function () {
-        if(_mainScene) {
+        if (_mainScene) {
             _mainScene.release();
             _mainScene = null;
         }
+
+        GreetingLabel.destroy();
 
         gameData.sound.stopMusic();
     };

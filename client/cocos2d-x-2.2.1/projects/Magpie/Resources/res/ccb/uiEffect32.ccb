@@ -492,8 +492,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -852,7 +850,7 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string>lvLabel</string>
+						<string>ccbLvLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -929,7 +927,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>label</string>
+						<string>ccbLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -1443,7 +1441,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>120</real>
+						<real>80</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1459,7 +1457,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>50</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1479,8 +1477,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>70</real>
-							<real>20</real>
+							<real>60</real>
+							<real>10</real>
 						</array>
 					</dict>
 					<dict>
@@ -1490,8 +1488,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
-							<real>5</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1977,6 +1975,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

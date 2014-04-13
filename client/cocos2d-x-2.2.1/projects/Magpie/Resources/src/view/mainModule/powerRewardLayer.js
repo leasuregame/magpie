@@ -18,7 +18,7 @@ var PowerRewardLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("领取体力界面");
+        lz.um.beginLogPageView("领取体力界面");
     },
 
     onExit: function () {
@@ -26,7 +26,7 @@ var PowerRewardLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("领取体力界面");
+        lz.um.endLogPageView("领取体力界面");
     },
 
     init: function () {

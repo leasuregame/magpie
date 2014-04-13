@@ -20,20 +20,23 @@ var MainMenuLayer = cc.Layer.extend({
     _markSprite: null,
     _layer: [
         [MainLayer],
-        [TaskLayer, ExploreLayer],
-        [PassLayer],
+        [InstancesLayer, TaskLayer, ExploreLayer, PassLayer],
+        [BossListLayer, BossLayer],
         [TournamentLayer],
         [CardListLayer],
         [ShopLayer]
     ],
 
-    _passGuide: null,
+    _instancesGuide: null,
     _tournamentGuide: null,
+    _bossGuide: null,
+    _bossMark: null,
 
     onEnter: function () {
         this._super();
         this.update();
         this.updateGuide();
+        this.updateMark();
     },
 
     init: function () {
@@ -73,6 +76,10 @@ var MainMenuLayer = cc.Layer.extend({
             mainMenu.addChild(item);
         }
 
+        this._bossMark = cc.BuilderReader.load(main_scene_image.uiEffect91, this);
+        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+        this.addChild(this._bossMark);
+
         return true;
     },
 
@@ -104,11 +111,18 @@ var MainMenuLayer = cc.Layer.extend({
         var basePoint = this._mainMenuLayerFit.itemBasePoint;
         var offsetX = this._mainMenuLayerFit.itemOffsetX;
 
-        if (gameGuide.get("passGuide") && !this._passGuide) {
-            this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._passGuide.setRotation(180);
-            this._passGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
-            this.addChild(this._passGuide);
+        if (gameGuide.get("instancesGuide") && !this._instancesGuide) {
+            this._instancesGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._instancesGuide.setRotation(180);
+            this._instancesGuide.setPosition(cc.p(basePoint.x + offsetX, basePoint.y));
+            this.addChild(this._instancesGuide);
+        }
+
+        if (gameGuide.get("bossGuide") && !this._bossGuide) {
+            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._bossGuide.setRotation(180);
+            this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+            this.addChild(this._bossGuide);
         }
 
         if (gameGuide.get("tournamentGuide") && !this._tournamentGuide) {
@@ -119,15 +133,43 @@ var MainMenuLayer = cc.Layer.extend({
         }
     },
 
+    updateMark: function () {
+        cc.log("MainMenuLayer updateMark");
+
+        var mark = gameMark.getBossMark();
+
+        if (mark) {
+            var nowLayer = MainScene.getInstance().getLayer();
+            var len = this._layer[2].length;
+
+            for (var i = 0; i < len; ++i) {
+                if (nowLayer instanceof this._layer[2][i]) {
+                    gameMark.updateBossMark(false);
+                    return;
+                }
+            }
+        }
+
+        this._bossMark.setVisible(mark);
+    },
+
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
+            if (index == 1) {
+                if (this._instancesGuide) {
+                    this._instancesGuide.removeFromParent();
+                    this._instancesGuide = null;
+                    gameGuide.set("instancesGuide", false);
+                }
+            }
+
             if (index == 2) {
-                if (this._passGuide) {
-                    this._passGuide.removeFromParent();
-                    this._passGuide = null;
-                    gameGuide.set("passGuide", false);
+                if (this._bossGuide) {
+                    this._bossGuide.removeFromParent();
+                    this._bossGuide = null;
+                    gameGuide.set("bossGuide", false);
                 }
             }
 
@@ -154,8 +196,6 @@ var MainMenuLayer = cc.Layer.extend({
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
             }
-
-
         }
     }
 });

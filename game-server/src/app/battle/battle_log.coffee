@@ -4,9 +4,10 @@ Battle log steps 格式:
 ###
 class BattleLog
   constructor: ->
-    @result = {}
-    @steps = []
-    @rewards = {}
+    @result = 
+      steps: []
+      rewards: {}
+      cards: []
 
   set: (key, value) ->
     @result[key] = value
@@ -14,24 +15,26 @@ class BattleLog
   get: (key) ->
     @result[key]
 
+  addCards: (cards) ->
+    @result.cards.push cards
+
   setWinner: (winner) ->
     @set('winner', winner)
 
   addStep: (step) ->
-    @steps.push step
+    @result.steps.push step
 
   addReward: (key, value) ->
-    @rewards[key] = value
+    @result.rewards[key] = value
 
   reports: ->
-    @set('steps', @steps)
-    @set('rewards', @rewards)
     @result
 
   clear: ->
-    @result = {}
-    @rewards = {}
-    @steps = []
+    @result = 
+      steps: []
+      rewards: {}
+      cards: []
 
 analyze = (bl) ->
   

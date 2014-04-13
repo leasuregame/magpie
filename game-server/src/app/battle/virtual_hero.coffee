@@ -29,14 +29,17 @@ class VirtualHero extends Hero
       atk_inc = if @boss.atk_inc then (@boss.atk_inc) else 0
       #hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
       hp_inc = if @boss.hp_inc then (@boss.hp_inc) else 0
-      @atk += parseInt(@atk * atk_inc / 100)
-      @hp += parseInt(@hp * hp_inc / 100)
+      @init_atk = @atk += parseInt(@atk * atk_inc / 100)
+      @init_hp = @hp += parseInt(@hp * hp_inc / 100)
 
     @star = 3
-    @skill_id = card_config.skill_id
+    @skill_id = card.skill_id
     @sp_value = [
-      {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
-      {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
+      active: true
+      items: [
+        {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
+        {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
+      ]
     ]
 
   loadSkill: ->

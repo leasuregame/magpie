@@ -30,11 +30,21 @@ describe("Area Server", function() {
 						expect(data.code).toEqual(200);
 						expect(data.msg.name).toEqual('Defender');
 						expect(data.msg.lv).toEqual(42);
-						expect(Object.keys(data.msg.lineUp)).toEqual( [ '1', '2', '3', '4', '5', '6' ] );
+						expect(data.msg.vip).toEqual(0);
+						expect(data.msg.rankStats).toEqual({
+							historyRanking: 20000,
+							winStreakCount: 0,
+							winningStreak: 0,
+							challengeCount: 0,
+							beChallengeCount: 0,
+							winCount: 0,
+							loseCount: 0,
+							avgWinRate: '0.0%'
+						});
+						expect(Object.keys(data.msg.lineUp)).toEqual(['1', '2', '3', '4', '5', '6']);
 					});
 				});
 			});
-
 		});
 	});
 });

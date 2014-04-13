@@ -15,7 +15,7 @@
 var SpiritDetails = LazyLayer.extend({
     _spiritDetailsFit: null,
 
-    spiritNode: null,
+    ccbSpiritNode: null,
     _lvLabel: null,
     _expLabel: null,
     _passiveHarmLabel: null,
@@ -23,6 +23,7 @@ var SpiritDetails = LazyLayer.extend({
     _skillHarmLabel: null,
     _upgradeItem: null,
     _ccbNode: null,
+    _showUpgrade: false,
 
     onEnter: function () {
         cc.log("SpiritDetails onEnter");
@@ -30,7 +31,7 @@ var SpiritDetails = LazyLayer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("元神界面");
+        lz.um.beginLogPageView("元神界面");
     },
 
     onExit: function () {
@@ -38,7 +39,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("元神界面");
+        lz.um.endLogPageView("元神界面");
     },
 
     init: function () {
@@ -47,6 +48,7 @@ var SpiritDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this._spiritDetailsFit = gameFit.mainScene.spiritDetails;
+        this._showUpgrade = false;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
@@ -108,11 +110,15 @@ var SpiritDetails = LazyLayer.extend({
         this._passiveHarmLabel.setPosition(this._spiritDetailsFit.passiveHarmLabelPoint);
         this.addChild(this._passiveHarmLabel);
 
-        this._lvLabel = cc.LabelTTF.create("LV.  0 / 0", "STHeitiTC-Medium", 22);
+        this._lvLabel = cc.LabelTTF.create("Lv.  0 / 0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._spiritDetailsFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
-        this._expLabel = cc.LabelTTF.create("灵气:    0 / 0", "STHeitiTC-Medium", 22);
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon317);
+        spiritIcon.setPosition(this._spiritDetailsFit.spiritIconPoint);
+        this.addChild(spiritIcon);
+
+        this._expLabel = cc.LabelTTF.create("灵气:  0 / 0", "STHeitiTC-Medium", 22);
         this._expLabel.setPosition(this._spiritDetailsFit.expLabelPoint);
         this.addChild(this._expLabel);
 
@@ -153,28 +159,54 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        this.spiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
+        this.ccbSpiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
 
         this._upgradeItem.setEnabled(spirit.canUpgrade());
 
-        this._lvLabel.setString("LV.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
-        this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
+        this._lvLabel.setString("Lv.  " + spirit.get("lv") + " / " + spirit.get("maxLv"));
+        this._expLabel.setString("灵气:  " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+
+        if (this._showUpgrade) {
+            this._showUpgrade = false;
+            var moveByAction = cc.Sequence.create(
+                cc.MoveBy.create(0.1, cc.p(5, 0)),
+                cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                cc.MoveBy.create(0.1, cc.p(5, 0)),
+                cc.MoveBy.create(0.1, cc.p(-5, 0))
+            );
+            var scaleToAction = cc.Sequence.create(
+                cc.ScaleTo.create(0.1, 1.5),
+                cc.ScaleTo.create(0.1, 1),
+                cc.ScaleTo.create(0.1, 1.5),
+                cc.ScaleTo.create(0.1, 1)
+
+            );
+            var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+
+            this._passiveHarmLabel.runAction(spawnAction);
+        }
     },
 
-    closeCloud: function () {
-        cc.log("SpiritDetails closeCloud");
+    ccbFnUpdate: function () {
+        cc.log("SpiritDetails ccbFnUpdate");
+
+        this.update();
+    },
+
+    ccbFnCloseCloud: function () {
+        cc.log("SpiritDetails ccbFnCloseCloud");
 
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect59, this);
         var controller = effect.controller;
         var spirit = gameData.spirit;
 
         var lv = spirit.get("lv");
-        controller.oldLvLabel.setString("LV.  " + (lv - 1));
-        controller.nowLvLabel.setString("LV.  " + lv);
-        controller.oldPassiveHarmLabel.setString(this._oldPassiveHarm);
-        controller.nowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
-        controller.spiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));
+        controller.ccbOldLvLabel.setString("Lv.  " + (lv - 1));
+        controller.ccbNowLvLabel.setString("Lv.  " + lv);
+        controller.ccbOldPassiveHarmLabel.setString(this._oldPassiveHarm);
+        controller.ccbNowPassiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
+        controller.ccbSpiritIcon.setTexture(lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(lv / 2)]));
 
         effect.setPosition(this._spiritDetailsFit.effectPoint);
         effect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -206,6 +238,7 @@ var SpiritDetails = LazyLayer.extend({
             cc.log(success);
 
             if (success) {
+                that._showUpgrade = true;
                 that._oldPassiveHarm = that._passiveHarmLabel.getString();
                 that._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             } else {

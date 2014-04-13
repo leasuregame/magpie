@@ -37,7 +37,7 @@ var GoldLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("摸一摸界面");
+        lz.um.beginLogPageView("摸一摸界面");
     },
 
     onExit: function () {
@@ -45,7 +45,7 @@ var GoldLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("摸一摸界面");
+        lz.um.endLogPageView("摸一摸界面");
     },
 
     init: function (data) {
@@ -80,7 +80,7 @@ var GoldLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var isFirstGold = parseInt(sys.localStorage.getItem(gameData.player.get("uid") + "_firstGold")) || 0;
+        var isFirstGold = lz.load(gameData.player.get("uid") + "_firstGold") || 0;
         if (!isFirstGold) {
 
             this._tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect54, this);
@@ -88,11 +88,11 @@ var GoldLayer = LazyLayer.extend({
             this._tipEffect.setAnchorPoint(cc.p(0.5, 0.5));
             this.addChild(this._tipEffect);
 
-            sys.localStorage.setItem(gameData.player.get("uid") + "_firstGold", 1);
+            lz.save(gameData.player.get("uid") + "_firstGold", 1);
         }
 
         this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);
-        this._goldBoxItem.controller.goldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        this._goldBoxItem.controller.ccbGoldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
         this.addChild(this._goldBoxItem);
 
@@ -268,7 +268,7 @@ var GoldLayer = LazyLayer.extend({
             gameData.task.obtainGold(this._gold);
 
             var tipEffect = cc.BuilderReader.load(main_scene_image.uiEffect65, this);
-            tipEffect.controller.goldLabel.setString(this._gold);
+            tipEffect.controller.ccbGoldLabel.setString(this._gold);
             tipEffect.setPosition(this._goldLayerFit.tipLabelPoint);
             this.addChild(tipEffect);
         }
@@ -282,12 +282,12 @@ var GoldLayer = LazyLayer.extend({
         }, 2);
     },
 
-    _onClickGoldBox: function () {
-        cc.log("GoldLayer _onClickGoldBox");
+    ccbFnGoldBox: function () {
+        cc.log("GoldLayer ccbFnGoldBox");
 
         gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
-        this._btnGoldBox.setEnabled(false);
+        this.ccbGoldBox.setEnabled(false);
 
         if (this._tipEffect) {
             this._tipEffect.setPosition(this._goldLayerFit.tipTextPoint);

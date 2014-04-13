@@ -10,7 +10,8 @@ var ACTION = {
   INSERT: 'insert',
   UPDATE: 'update',
   DELETE: 'delete',
-  SELECT: 'select'
+  SELECT: 'select',
+  EXISTS: 'exists'
 };
 
 var addSyncEvent = function(syncKey, entity, cb) {
@@ -18,7 +19,7 @@ var addSyncEvent = function(syncKey, entity, cb) {
     var fn;
     // 实时更新
     fn = app.get('sync').flush;
-    
+
     // 周期性更新
     // fn = app.get('sync').exec;
     fn.call(app.get('sync'),
@@ -71,13 +72,13 @@ var DaoBase = (function() {
     }
 
     if (this.table == 'player') {
-      if (!data.created){
+      if (!data.created) {
         data.created = utility.dateFormat(new Date(), 'yyyy-MM-dd h:mm:ss')
       }
       if (!data.uniqueId) {
         data.uniqueId = uuid.v1();
       }
-      
+
     }
 
     for (key in data) {
@@ -98,9 +99,7 @@ var DaoBase = (function() {
         }, null);
       }
 
-      var entity = new _this.domain(_.extend({
-        id: res.insertId
-      }, options.data));
+      var entity = new _this.domain(_.extend({}, options.data, {id: res.insertId}));
       if (options.sync) {
         addSyncEvent(_this.syncKey, entity);
       }
@@ -125,7 +124,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
-    console.log('fetch manay:', stm);
+    //console.log('fetchMnay: ', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
@@ -154,7 +153,6 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.UPDATE, options);
-    console.log(stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when update " + _this.table + "s]", err.stack);
@@ -197,7 +195,7 @@ var DaoBase = (function() {
     var _this = this;
     return dbClient.query(sql, args, function(err, res) {
       if (err) {
-        logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack);
+        logger.error("[SQL ERROR, when query " + _this.table + "s]", err.stack);
         return cb({
           code: err.code,
           msg: err.message
@@ -210,6 +208,28 @@ var DaoBase = (function() {
         }));
       } else {
         return cb(null, []);
+      }
+    });
+  };
+
+  DaoBase.exists = function(options, cb) {
+    var _this = this;
+    options.table = options.table || this.table;
+    var stm = sqlHelper.generateSql(ACTION.EXISTS, options);
+
+    return dbClient.query(stm.sql, stm.args, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when query " + _this.table + "s]", err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if ( !! res && res.length > 0) {
+        return cb(null, !! res[0].exist);
+      } else {
+        return cb(null, false);
       }
     });
   };

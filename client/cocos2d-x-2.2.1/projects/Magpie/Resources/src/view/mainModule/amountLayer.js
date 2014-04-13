@@ -23,7 +23,12 @@ var AmountLayer = LazyLayer.extend({
     _countLabel: null,
     _consumeLabel: null,
     _tip: null,
-    _maxBuyTimes: 0,
+    _maxBuyTimes: 0,    //可购买最大次数
+    _remainTimes: 0,    //剩余购买次数
+    _consume_inc: 0,    //每次消耗增量
+    _consume_max: 0,    //每次消耗最大值
+    _discount_num: 100000000,   //可以打折数量
+    _discount: 10,       //打几折
 
     onEnter: function () {
         cc.log("AmountLayer onEnter");
@@ -43,11 +48,17 @@ var AmountLayer = LazyLayer.extend({
         };
         this._price = data.price || 0;
         this._obtain = data.obtain || 0;
-        this._count = 1;
         this._maxCount = data.count || 0;
+        this._count = this._maxCount > 0 ? 1 : 0;
         this._tip = data.tip || "";
         this._maxBuyTimes = data.maxBuyTimes || 0;
-        var title = "购买" + data.name || "";
+        this._remainTimes = data.remainTimes || 0;
+        this._consume_inc = data.consume_inc || 0;
+        this._consume_max = data.consume_max || 0;
+        this._discount_num = data.discount_num || 100000000;
+        this._discount = data.discount || 10;
+
+        var title = data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._amountLayerFit.bgLayerPoint);
@@ -66,7 +77,7 @@ var AmountLayer = LazyLayer.extend({
         if (this._maxBuyTimes > 0) {
             var point = this._amountLayerFit.titleLabelPoint;
             var size = titleLabel.getContentSize();
-            var halfTitle = "(" + this._maxCount + "/" + this._maxBuyTimes + ")";
+            var halfTitle = "(" + this._remainTimes + "/" + this._maxBuyTimes + ")";
             var halfTitleLabel = StrokeLabel.create(halfTitle, "STHeitiTC-Medium", 20);
             halfTitleLabel.setColor(cc.c3b(255, 252, 175));
             halfTitleLabel.setAnchorPoint(cc.p(0, 0));
@@ -182,14 +193,32 @@ var AmountLayer = LazyLayer.extend({
 
     update: function () {
         this._count = Math.max(this._count, 0);
+
         if (this._count > this._maxCount) {
             TipLayer.tip(this._tip);
+
             this._count = this._maxCount;
         }
-        // this._count = Math.min(this._count, this._maxCount);
+
         this._countLabel.setString(this._count);
 
-        var consume = this._price * this._count;
+        var consume = 0;
+        if (this._consume_inc != 0) {
+            var usedCount = this._maxBuyTimes - this._remainTimes;
+            for (var i = 1; i <= this._count; i++) {
+                var tmpConsume = this._price + usedCount * this._consume_inc;
+                if (tmpConsume > this._consume_max) {
+                    tmpConsume = this._consume_max;
+                }
+                consume += tmpConsume;
+                usedCount++;
+            }
+        } else if (this._count >= this._discount_num) {
+            consume = this._price * (this._discount / 10) * this._count;
+        } else {
+            consume = this._price * this._count;
+        }
+
         this._consumeLabel.setString(consume);
 
         var obtain = this._obtain * this._count;

@@ -52,7 +52,7 @@ class Skill extends Module
   _satisfy: ()->
     if @type in ['aoe', 'mult_heal']
       tags = @getTargets()
-      if _.isArray(tags) and tags.length > 1
+      if _.isArray(tags) and tags.length > 0
         return true
       else
         return false

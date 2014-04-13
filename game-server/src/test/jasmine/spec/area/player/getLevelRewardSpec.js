@@ -23,10 +23,10 @@ describe("Area Server", function() {
 
 			describe('当等级奖励已经领取时', function() {
 				beforeEach(function() {
-					doAjax('/update/player/100', {
+					doAjax('/update/player/2', {
 						levelReward: [1]
 					}, function() {
-						loginWith('arthur', '1', 1);
+						loginWith('2', '1', 1);
 					});
 				});
 

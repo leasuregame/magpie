@@ -15,7 +15,7 @@ var CardListFullTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("卡库满提示界面");
+        lz.um.beginLogPageView("卡库满提示界面");
     },
 
     onExit: function () {
@@ -23,31 +23,32 @@ var CardListFullTipLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡库满提示界面");
+        lz.um.endLogPageView("卡库满提示界面");
     },
 
-    init: function() {
+    init: function () {
         cc.log("CardListFullTipLayer init");
 
         if (!this._super()) return false;
 
         this._cardListFullTipLayerFit = gameFit.mainScene.cardListFullTipLayer;
 
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 300));
         bgSprite.setPosition(this._cardListFullTipLayerFit.bgSpritePoint);
-        lazyLayer.addChild(bgSprite);
+        this.addChild(bgSprite);
 
         var tipTitleLabel = cc.LabelTTF.create("温馨提示", "STHeitiTC-Medium", 30);
         tipTitleLabel.setPosition(this._cardListFullTipLayerFit.tipTitleLabelPoint);
-        lazyLayer.addChild(tipTitleLabel);
+        this.addChild(tipTitleLabel);
 
         var tipLabel = cc.LabelTTF.create("卡牌数量已达上限，可以选择以下操作", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(this._cardListFullTipLayerFit.tipLabelPoint);
-        lazyLayer.addChild(tipLabel);
+        this.addChild(tipLabel);
 
         var go2StrengthenItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -87,26 +88,26 @@ var CardListFullTipLayer = LazyLayer.extend({
 
         var menu = cc.Menu.create(go2StrengthenItem, go2SellItem, go2BuyItem, cancelItem);
         menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
+        this.addChild(menu);
 
         return true;
 
     },
 
-    _onClickGo2Strengthen: function() {
+    _onClickGo2Strengthen: function () {
         cc.log("CardListFullTipLayer _onClickGo2Strengthen");
         this.removeFromParent();
         MainScene.getInstance().switchLayer(StrengthenLayer);
 
     },
 
-    _onClickGo2Sell: function() {
+    _onClickGo2Sell: function () {
         cc.log("CardListFullTipLayer _onGo2Sell");
         this.removeFromParent();
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_SELL));
     },
 
-    _onClickGo2Buy: function() {
+    _onClickGo2Buy: function () {
         cc.log("CardListFullTipLayer _onClickGo2Buy");
         this.removeFromParent();
 
@@ -131,8 +132,10 @@ var CardListFullTipLayer = LazyLayer.extend({
         );
     },
 
-    _onClickCancel: function() {
+    _onClickCancel: function () {
         cc.log("CardListFullTipLayer _onClickCancel");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.removeFromParent();
     },
 
@@ -148,7 +151,7 @@ var CardListFullTipLayer = LazyLayer.extend({
     }
 });
 
-CardListFullTipLayer.create = function() {
+CardListFullTipLayer.create = function () {
     var ret = new CardListFullTipLayer();
 
     if (ret && ret.init()) {
@@ -157,7 +160,7 @@ CardListFullTipLayer.create = function() {
     return null;
 };
 
-CardListFullTipLayer.pop = function() {
+CardListFullTipLayer.pop = function () {
     var cardListFullTipLayer = CardListFullTipLayer.create();
 
     MainScene.getInstance().getLayer().addChild(cardListFullTipLayer, 10);

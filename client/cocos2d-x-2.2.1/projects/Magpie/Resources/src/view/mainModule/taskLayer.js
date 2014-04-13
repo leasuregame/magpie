@@ -33,7 +33,7 @@ var TaskLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("修炼界面");
+        lz.um.beginLogPageView("修炼界面");
     },
 
     onExit: function () {
@@ -41,7 +41,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("修炼界面");
+        lz.um.endLogPageView("修炼界面");
     },
 
     init: function () {
@@ -56,15 +56,6 @@ var TaskLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._index = gameData.task.getChapter();
-
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._taskLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
-        titleIcon.setPosition(this._taskLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -186,6 +177,10 @@ var TaskLayer = cc.Layer.extend({
 
         this._scrollView.setContentOffset(this._getScrollViewOffset());
 
+        var cloudEffect = cc.BuilderReader.load(main_scene_image.uiEffect75);
+        cloudEffect.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(cloudEffect);
+
         return true;
     },
 
@@ -209,6 +204,7 @@ var TaskLayer = cc.Layer.extend({
 
         var size = this._sectionItem[section].getContentSize();
         var point = this._sectionItem[section].getPosition();
+
         this._markSprite.setPosition(cc.p(point.x, point.y + size.height - 30));
 
         var minIndex = Math.max(this._index - 2, 0) * TASK_SECTION_COUNT + 1;

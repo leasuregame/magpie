@@ -378,7 +378,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>110</real>
+											<real>0.0</real>
 											<real>-185</real>
 											<integer>0</integer>
 										</array>
@@ -422,7 +422,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickRegister</string>
+											<string>ccbFnRegister</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -491,8 +491,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-110</real>
-											<real>-185</real>
+											<real>250</real>
+											<real>215</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -535,7 +535,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>_onClickBack</string>
+											<string>ccbFnBack</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -555,7 +555,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/uiEffect/up123.png</string>
+											<string>res/effect/uiEffect/up162.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -566,7 +566,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/uiEffect/up124.png</string>
+											<string>res/effect/uiEffect/up163.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -577,7 +577,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/effect/uiEffect/up123.png</string>
+											<string>res/effect/uiEffect/up162.png</string>
 										</array>
 									</dict>
 								</array>
@@ -681,7 +681,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>110</real>
+									<real>0.0</real>
 									<real>-185</real>
 									<integer>0</integer>
 								</array>
@@ -730,80 +730,6 @@
 								</array>
 							</dict>
 						</array>
-					</dict>
-					<dict>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>up88</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
-						<key>properties</key>
-						<array>
-							<dict>
-								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>-110</real>
-									<real>-185</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.5</real>
-									<real>0.5</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>ignoreAnchorPointForPosition</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>displayFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string></string>
-									<string>res/effect/uiEffect/up88.png</string>
-								</array>
-							</dict>
-						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -1966,7 +1892,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>accountLabel</string>
+						<string>ccbAccountLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -2027,7 +1953,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>passwordLabel</string>
+						<string>ccbPasswordLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -2088,7 +2014,7 @@
 						<key>displayName</key>
 						<string>CCNode</string>
 						<key>memberVarAssignmentName</key>
-						<string>passwordAgainLabel</string>
+						<string>ccbPasswordAgainLabel</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

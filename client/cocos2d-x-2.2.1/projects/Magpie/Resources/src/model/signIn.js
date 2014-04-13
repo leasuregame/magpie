@@ -46,6 +46,7 @@ var SignIn = Entity.extend({
                 this._flag[i] = months[key].flag || 0;
             } else {
                 monthMark.mark = 0;
+                this._flag[i] = 0;
             }
 
             monthMark.count = 0;
@@ -77,7 +78,7 @@ var SignIn = Entity.extend({
 
                     gameMark.updateSignInMark(false);
 
-                    lz.dc.event("event_sign_in_record");
+                    lz.um.event("event_sign_in_record");
                 } else {
                     cc.log("sync fail");
 
@@ -89,7 +90,7 @@ var SignIn = Entity.extend({
     },
 
     getMonthMark: function (index) {
-        cc.log("SignIn getMonth");
+        cc.log("SignIn getMonthMark");
 
         return this._monthsMark[index];
     },
@@ -128,8 +129,14 @@ var SignIn = Entity.extend({
 
         if (index == 0) {
             var nowDay = new Date().getDate();
+
+            var signIn = 0;
+            if (this.canSignIn(index)) {
+                signIn = 1;
+            }
+
             if (this._monthsMark[0]) {
-                return (this._monthsMark[0].count < nowDay);
+                return (this._monthsMark[0].count < nowDay - signIn);
             }
         }
 
@@ -139,11 +146,11 @@ var SignIn = Entity.extend({
     canReceive: function (index, i) {
         cc.log("MonthLabel canReceive");
 
-        if (index == 0) {
-            return ((this._flag[0] >> i & 1) != 1);
+        if (this._flag[index]) {
+            return ((this._flag[index] >> i & 1) != 1);
         }
 
-        return false;
+        return true;
     },
 
     signIn: function (cb) {
@@ -170,7 +177,7 @@ var SignIn = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_sign_in");
+                lz.um.event("event_sign_in");
             } else {
                 cc.log("signIn fail");
 
@@ -204,7 +211,7 @@ var SignIn = Entity.extend({
 
                 cb(msg.reward);
 
-                lz.dc.event("event_remedy_sign_in");
+                lz.um.event("event_remedy_sign_in");
             } else {
                 cc.log("remedySignIn fail");
 
@@ -226,8 +233,6 @@ var SignIn = Entity.extend({
             if (data.code == 200) {
                 cc.log("signIn success");
 
-                var msg = data.msg;
-
                 var table = outputTables.signIn_rewards.rows[id];
 
                 gameData.player.adds({
@@ -235,11 +240,10 @@ var SignIn = Entity.extend({
                     energy: table.energy,
                     skillPoint: table.skillPoint,
                     elixir: table.elixir,
+                    fragment: table.fragments,
                     gold: table.gold
                 });
-
                 gameData.spirit.add("exp", table.spirit);
-
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
                 that._flag[0] = that._flag[0] | (1 << (id - 1));
@@ -249,12 +253,13 @@ var SignIn = Entity.extend({
                     energy: table.energy,
                     skillPoint: table.skillPoint,
                     elixir: table.elixir,
+                    fragment: table.fragments,
                     gold: table.gold,
                     spirit: table.spirit,
                     freeCount: table.lottery_free_count
                 });
 
-                lz.dc.event("event_receive_sign_in_reward", id);
+                lz.um.event("event_receive_sign_in_reward", id);
             } else {
                 cc.log("signIn fail");
 

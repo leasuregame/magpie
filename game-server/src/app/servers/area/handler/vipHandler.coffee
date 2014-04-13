@@ -2,30 +2,138 @@ dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 logger = require('pomelo-logger').getLogger(__filename)
-async = require 'async'
+async = require 'async' 
 _ = require 'underscore'
+
+GOLDCARDMAP = 
+  'com.leasuregame.magpie.week.card': 'week'
+  'com.leasuregame.magpie.month.card': 'month'
+
+addOrder = (app, tradeNo, player, cash, cb) ->
+  app.get('dao').order.create data: {
+    playerId: player.id
+    tradeNo: tradeNo
+    partner: 'tongbu'
+    amount: cash * 100
+    paydes: ''
+    status: 2000
+    created: utility.dateFormat(new Date(), "yyyy-MM-dd hh:mm:ss")
+  }, cb
+
+addGoldCard = (app, tradeNo, player, product, cb) ->
+  return cb() if not isGoldCard(product)
+
+  today = new Date()
+  vd = new Date()
+  vd.setDate(today.getDate()+product.valid_days-1)
+  app.get('dao').goldCard.create {
+    data: {
+      orderNo: tradeNo,
+      playerId: player.id,
+      type: GOLDCARDMAP[product.product_id],
+      created: utility.dateFormat(today, "yyyy-MM-dd"),
+      validDate: utility.dateFormat(vd, "yyyy-MM-dd"),
+      status: 1
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to create goldCard record: ', err)
+
+    player.addGoldCard(res)
+    cb()
+
+isGoldCard = (product) ->
+  ids = [
+    'com.leasuregame.magpie.week.card',
+    'com.leasuregame.magpie.month.card'
+  ]
+  if product and product.product_id in ids
+    return true
+  else
+    return false
+
+noticeNewYearActivity = (app, player, cb) ->
+  startDate = new Date app.get('sharedConf').newYearActivity.startDate
+  endDate = new Date app.get('sharedConf').newYearActivity.endDate
+  now = new Date()
+
+  if startDate <= now < endDate
+    app.get('dao').order.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
+      return cb(err) if err
+      if cash <= 0
+        return cb()
+
+      len = (table.getTable('new_year_rechage').filter (id, row) -> row.cash <= cash).length
+      if len > 0
+        recharge = player.activities.recharge or 0
+        flag = (Math.pow(2, len)-1)^recharge
+        sendNewYearMsg(app, player, flag, recharge) if flag > 0
+
+      return cb()
+  else
+    cb()
+
+sendNewYearMsg = (app, player, flag, recharge) ->
+  app.get('messageService').pushByPid player.id, {
+    route: 'onNewYearReward',
+    msg: {
+      flag: {
+        canGet: flag
+        hasGet: recharge
+      }
+    }
+  }, (err, res) ->
+    if err
+      logger.error('faild to send message to playerId ', playerId)
 
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
 
-Handler::buyVip = (msg, session, next) ->
-  playerId = session.get('playerId')
-  id = msg.id
+# Handler::buyVip = (msg, session, next) ->
+#   playerId = session.get('playerId')
+#   id = msg.id
 
-  playerManager.getPlayerInfo pid: playerId, (err, player) ->
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+#   data = table.getTableItem('recharge', id)
+#   tradeNo = new Date().getTime().toString()
 
-    data = table.getTableItem('recharge', id)
-    player.increase('cash', data.cash)
-    player.increase('gold', (data.cash * 10) + data.gold)
-    player.save()
-    next(null, {code: 200, msg: {
-      vip: player.vip
-    }})
+#   player = null
+#   async.waterfall [
+#     (cb) ->
+#       playerManager.getPlayerInfo pid: playerId, cb
+
+#     (res, cb) =>
+#       player = res
+#       addGoldCard @app, tradeNo, player, data, cb
+
+#     (cb) =>
+#       addOrder @app, tradeNo, player, data.cash, cb
+#   ], (err) =>
+#     if err
+#       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+#     player.increase('cash', data.cash)
+#     player.increase('gold', (data.cash * 10) + data.gold)
+#     player.save()
+#     next(null, {code: 200, msg: {
+#       vip: player.vip
+#     }})
+
+#     noticeNewYearActivity @app, player, (err) ->
+#     @app.get('messageService').pushByPid player.id, {
+#       route: 'onVerifyResult',
+#       msg: {
+#         gold: player.gold,
+#         vip: player.vip,
+#         cash: player.cash,
+#         goldCards: player.getGoldCard()
+#       }
+#     }, (err, res) ->
+#       if err
+#         logger.error('faild to send message to playerId ', playerId)
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -54,6 +162,26 @@ Handler::buyVipBox = (msg, session, next) ->
 
       openVipBox(player, boxInfo, next)
 
+Handler::firstRechargeBox = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if player.cash <= 0
+      return next(null, {code: 501, msg: '无权限领取该礼包'})
+
+    boxInfo = table.getTableItem('first_recharge_box', 1)
+    if not boxInfo
+      return next(null, {code: 501, msg: '找不到该礼包信息'})
+
+    if player.firstTime.frb is 0
+      return next(null, {code: 501, msg: '已领取'})
+
+    openFirstRechargeBox player, boxInfo, next
+
+
 checkResourceLimit = (player, boxInfo, cb) ->
   resLimit = table.getTableItem('resource_limit', 1)
   maxValue = (keys) ->
@@ -81,12 +209,12 @@ genMsg = (keys) ->
 
   return text[0...-1] + '已经达到上限，不能购买'
 
-openVipBox = (player, boxInfo, next) ->
-  setIfExist = (attrs) ->
-    player.increase att, val for att, val of boxInfo when att in attrs
-    return
+setIfExist = (player, boxInfo, attrs) ->
+  player.increase att, val for att, val of boxInfo when att in attrs
+  return
 
-  setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
+openVipBox = (player, boxInfo, next) ->
+  setIfExist player, boxInfo, ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
 
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id
@@ -100,4 +228,27 @@ openVipBox = (player, boxInfo, next) ->
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
   else
     next(null, {code: 200, msg: {card: {}, cardIds: []}})
+
+openFirstRechargeBox = (player, boxInfo, next) ->
+  setIfExist player, boxInfo, ['energy', 'money', 'skillPoint', 'elixir']
+  player.incSpirit boxInfo.spirit if _.has boxInfo, 'spirit'
+  player.addPower boxInfo.power if _.has boxInfo, 'power'
+  player.setFirstTime 'frb', 0
+  player.save()
+
+  if _.has boxInfo, 'card_id'
+    cardData = 
+      tableId: boxInfo.card_id
+      lv: boxInfo.card_lv
+      playerId: player.id
+
+    entityUtil.createCard cardData, (err, card) ->
+      if err
+        return next null, {code: err.code or 500, msg: err.msg or err}
+
+      player.addCard(card)
+      next null, {code: 200, msg: {card: card.toJson()}}
+  else
+    next null, {code: 200}
+
 

@@ -24,7 +24,7 @@ var MessageLabel = cc.Node.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("滑动消息条");
+        lz.um.beginLogPageView("滑动消息条");
     },
 
     onExit: function () {
@@ -32,7 +32,7 @@ var MessageLabel = cc.Node.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("滑动消息条");
+        lz.um.endLogPageView("滑动消息条");
     },
 
     init: function () {
@@ -81,4 +81,4 @@ MessageLabel.create = function () {
     }
 
     return null;
-}
+};

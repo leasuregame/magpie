@@ -15,8 +15,10 @@
 var FriendMessageLayer = cc.Layer.extend({
     _friendMessageLayerFit: null,
 
+    _friendMessageList: [],
     _scrollView: null,
     _scrollViewElement: {},
+    _markEffect: [],
 
     onEnter: function () {
         cc.log("FriendMessageLayer onEnter");
@@ -24,7 +26,7 @@ var FriendMessageLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("好友消息界面");
+        lz.um.beginLogPageView("好友消息界面");
     },
 
     onExit: function () {
@@ -32,7 +34,7 @@ var FriendMessageLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("好友消息界面");
+        lz.um.endLogPageView("好友消息界面");
     },
 
     init: function () {
@@ -41,16 +43,15 @@ var FriendMessageLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._friendMessageLayerFit = gameFit.mainScene.friendMessageLayer;
-
         return true;
     },
 
     update: function () {
         cc.log("FriendMessageLayer update");
 
-        var friendMessageList = gameData.message.get("friendMessage");
-
-        var len = friendMessageList.length;
+        this._friendMessageList = gameData.message.get("friendMessage");
+        this._markEffect = [];
+        var len = this._friendMessageList.length;
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -67,103 +68,115 @@ var FriendMessageLayer = cc.Layer.extend({
         }
 
         this._scrollViewElement = {};
-
+        var that = this;
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 107 - 127 * i;
+            (function (i) {
+                var y = scrollViewHeight - 107 - 127 * i;
 
-            var id = friendMessageList[i].id;
-            var type = friendMessageList[i].type;
-            var status = friendMessageList[i].status;
+                var id = that._friendMessageList[i].id;
+                var type = that._friendMessageList[i].type;
+                var status = that._friendMessageList[i].status;
 
-            var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
-            msgBgSprite.setAnchorPoint(cc.p(0, 0));
-            msgBgSprite.setPosition(cc.p(0, y));
-            scrollViewLayer.addChild(msgBgSprite);
+                var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
+                msgBgSprite.setAnchorPoint(cc.p(0, 0));
+                msgBgSprite.setPosition(cc.p(0, y));
+                scrollViewLayer.addChild(msgBgSprite);
 
-            var msgLabel = cc.LabelTTF.create(friendMessageList[i].content, "STHeitiTC-Medium", 22);
-            msgLabel.setAnchorPoint(cc.p(0, 0.5));
-            msgLabel.setPosition(cc.p(20, y + 60));
-            scrollViewLayer.addChild(msgLabel);
+                var msgLabel = cc.LabelTTF.create(that._friendMessageList[i].content, "STHeitiTC-Medium", 22);
+                msgLabel.setAnchorPoint(cc.p(0, 0.5));
+                msgLabel.setPosition(cc.p(20, y + 60));
+                scrollViewLayer.addChild(msgLabel);
 
-            var timeLabel = cc.LabelTTF.create(
-                lz.getTimeStr(friendMessageList[i].createTime),
-                "STHeitiTC-Medium",
-                16
-            );
-            timeLabel.setAnchorPoint(cc.p(1, 0));
-            timeLabel.setPosition(cc.p(580, y + 13));
-            scrollViewLayer.addChild(timeLabel);
-
-            if (type == ADD_FRIEND_MESSAGE) {
-                var hasBeenAcceptIcon = cc.Sprite.create(main_scene_image.icon136);
-                hasBeenAcceptIcon.setPosition(cc.p(530, y + 60));
-                scrollViewLayer.addChild(hasBeenAcceptIcon, 1);
-
-                var hasBeenRejectIcon = cc.Sprite.create(main_scene_image.icon137);
-                hasBeenRejectIcon.setPosition(cc.p(530, y + 60));
-                scrollViewLayer.addChild(hasBeenRejectIcon, 1);
-
-                if (status == ASKING_STATUS) {
-                    hasBeenAcceptIcon.setVisible(false);
-                    hasBeenRejectIcon.setVisible(false);
-
-                    var acceptItem = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button9,
-                        main_scene_image.button9s,
-                        main_scene_image.icon131,
-                        this._onClickAccept(id),
-                        this
-                    );
-                    acceptItem.setPosition(cc.p(375, y + 62));
-                    menu.addChild(acceptItem);
-
-                    var rejectItem = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button9,
-                        main_scene_image.button9s,
-                        main_scene_image.icon133,
-                        this._onClickReject(id),
-                        this
-                    );
-                    rejectItem.setPosition(cc.p(520, y + 62));
-                    menu.addChild(rejectItem);
-
-                    this._scrollViewElement[id] = {
-                        hasBeenAcceptIcon: hasBeenAcceptIcon,
-                        hasBeenRejectIcon: hasBeenRejectIcon,
-                        acceptItem: acceptItem,
-                        rejectItem: rejectItem
-                    };
-                } else if (status == ACCEPT_STATUS) {
-                    hasBeenRejectIcon.setVisible(false);
-                } else if (status == REJECT_STATUS) {
-                    hasBeenAcceptIcon.setVisible(false);
-                }
-            } else if (type == LEAVE_MESSAGE) {
-                var name = friendMessageList[i].senderName;
-
-                if (!gameData.friend.getFriend(name)) {
-                    var addFriendItem = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button9,
-                        main_scene_image.button9s,
-                        main_scene_image.icon41,
-                        this._onClickAddFriend(name),
-                        this
-                    );
-                    addFriendItem.setPosition(cc.p(375, y + 62));
-                    menu.addChild(addFriendItem);
-                }
-
-
-                var readItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
-                    main_scene_image.icon134,
-                    this._onClickRead(friendMessageList[i]),
-                    this
+                var timeLabel = cc.LabelTTF.create(
+                    lz.getTimeStr({
+                        time: that._friendMessageList[i].createTime,
+                        fmt: "yyyy.MM.dd hh:mm"
+                    }),
+                    "STHeitiTC-Medium",
+                    16
                 );
-                readItem.setPosition(cc.p(520, y + 62));
-                menu.addChild(readItem);
-            }
+                timeLabel.setAnchorPoint(cc.p(1, 0));
+                timeLabel.setPosition(cc.p(580, y + 13));
+                scrollViewLayer.addChild(timeLabel);
+
+                if (type == ADD_FRIEND_MESSAGE) {
+                    var hasBeenAcceptIcon = cc.Sprite.create(main_scene_image.icon136);
+                    hasBeenAcceptIcon.setPosition(cc.p(530, y + 60));
+                    scrollViewLayer.addChild(hasBeenAcceptIcon, 1);
+
+                    var hasBeenRejectIcon = cc.Sprite.create(main_scene_image.icon137);
+                    hasBeenRejectIcon.setPosition(cc.p(530, y + 60));
+                    scrollViewLayer.addChild(hasBeenRejectIcon, 1);
+
+                    if (status == ASKING_STATUS) {
+                        hasBeenAcceptIcon.setVisible(false);
+                        hasBeenRejectIcon.setVisible(false);
+
+                        var acceptItem = cc.MenuItemImage.createWithIcon(
+                            main_scene_image.button9,
+                            main_scene_image.button9s,
+                            main_scene_image.icon131,
+                            that._onClickAccept(id),
+                            that
+                        );
+                        acceptItem.setPosition(cc.p(375, y + 62));
+                        menu.addChild(acceptItem);
+
+                        var rejectItem = cc.MenuItemImage.createWithIcon(
+                            main_scene_image.button9,
+                            main_scene_image.button9s,
+                            main_scene_image.icon133,
+                            that._onClickReject(id),
+                            that
+                        );
+                        rejectItem.setPosition(cc.p(520, y + 62));
+                        menu.addChild(rejectItem);
+
+                        that._scrollViewElement[id] = {
+                            hasBeenAcceptIcon: hasBeenAcceptIcon,
+                            hasBeenRejectIcon: hasBeenRejectIcon,
+                            acceptItem: acceptItem,
+                            rejectItem: rejectItem
+                        };
+                    } else if (status == ACCEPT_STATUS) {
+                        hasBeenRejectIcon.setVisible(false);
+                    } else if (status == REJECT_STATUS) {
+                        hasBeenAcceptIcon.setVisible(false);
+                    }
+                } else if (type == LEAVE_MESSAGE) {
+                    var name = that._friendMessageList[i].senderName;
+
+                    if (!gameData.friend.getFriend(name)) {
+                        var addFriendItem = cc.MenuItemImage.createWithIcon(
+                            main_scene_image.button9,
+                            main_scene_image.button9s,
+                            main_scene_image.icon41,
+                            that._onClickAddFriend(name),
+                            that
+                        );
+                        addFriendItem.setPosition(cc.p(375, y + 62));
+                        menu.addChild(addFriendItem);
+                    }
+
+                    var readItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.icon134,
+                        that._onClickRead(i),
+                        that
+                    );
+                    readItem.setPosition(cc.p(520, y + 62));
+
+                    if (status == UNHANDLED_STATUS && !that._markEffect[i]) {
+                        that._markEffect[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, that);
+                        that._markEffect[i].setPosition(cc.p(130, 55));
+                        readItem.addChild(that._markEffect[i]);
+                    }
+
+                    menu.addChild(readItem);
+                }
+            })(i);
+
         }
 
         this._scrollView = cc.ScrollView.create(this._friendMessageLayerFit.scrollViewSize, scrollViewLayer);
@@ -182,6 +195,15 @@ var FriendMessageLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
             var element = this._scrollViewElement[id];
+
+            var friendList = gameData.friend.get("friendList");
+            var len = friendList.length;
+            var maxFriends = gameData.friend.get("maxFriendCount");
+
+            if (len >= maxFriends) {
+                TipLayer.tip("你的好友已达上限");
+                return;
+            }
 
             gameData.message.accept(function () {
                 gameMark.updateFriendMessageMark(false);
@@ -223,11 +245,28 @@ var FriendMessageLayer = cc.Layer.extend({
         }
     },
 
-    _onClickRead: function (message) {
+    _onClickRead: function (index) {
+
+        var that = this;
+
         return function () {
-            cc.log("FriendMessageLayer _onClickRead: " + message);
+            cc.log("FriendMessageLayer _onClickRead: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var message = that._friendMessageList[index];
+            var id = that._friendMessageList[index].id;
+            var status = that._friendMessageList[index].status;
+
+            if (status == UNHANDLED_STATUS) {
+                gameData.message.setAsRead(id, function () {
+                    that._friendMessageList[index].status = HANDLED_STATUS;
+                    if (that._markEffect[index]) {
+                        that._markEffect[index].removeFromParent();
+                        that._markEffect[index] = null;
+                    }
+                });
+            }
 
             gameMark.updateFriendMessageMark(false);
 

@@ -4,7 +4,7 @@ utility = require('../common/utility')
 path = require 'path'
 fs = require 'fs'
 
-DEFAULT_INTERVAL = 60000 * 5
+DEFAULT_INTERVAL = 60000 * 60
 HOUR  = 0
 DATE_FILEPATH = path.join(__dirname, '..', '..', 'config', 'lvDistributionDate.conf')
 
@@ -36,7 +36,7 @@ class Component
 
   afterStart: (cb) ->
     @timerId = setInterval onlineUserCounter.bind(null, @), @interval
-    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 30
+    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 60
     process.nextTick cb
 
   stop: (force, cb) ->
@@ -47,7 +47,6 @@ class Component
 
 onlineUserCounter = (self) ->
   self.client.request 'areaInfo', {sid: self.app.getServerId()}, (err, data) ->
-    logger.info('count online users: ', err, data)
     self.app.get('dao').onlineUser.create data: {
       createTime: Date.now()
       qty: data.length

@@ -17,7 +17,7 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("星级进阶卡牌界面");
+        lz.um.beginLogPageView("星级进阶卡牌界面");
     },
 
     onExit: function () {
@@ -25,12 +25,12 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("星级进阶卡牌界面");
+        lz.um.endLogPageView("星级进阶卡牌界面");
     },
 
     init: function (data) {
 
-        cc.log("LotteryCardLayer init");
+        cc.log("CardEvolutionLayer init");
 
         if (!this._super()) return false;
 
@@ -40,12 +40,12 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
-        this._evolutionEffect = cc.BuilderReader.load(main_scene_image.uiEffect45, this);
+        this._evolutionEffect = cc.BuilderReader.load(main_scene_image.uiEffect73, this);
 
-        var point = gameFit.mainScene.cardEvolutionLayer.selectLeadCardItemPoint;
+        var point = gameFit.GAME_MIDPOINT;
         this._evolutionEffect.setPosition(point);
         this._setCard();
-        this._changeCardFrame();
+        this.ccbFnChangeCardFrame();
         this.addChild(this._evolutionEffect);
 
         var that = this;
@@ -58,14 +58,14 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         this._evolutionEffect.animationManager.setCompletedAnimationCallback(this, function () {
             if (state == EVOLUTION_SUCCESS) {
-                var star = this._card.get("star");
-                this._card.set("star", star + 1);
-                this._setCard();
-                this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                var star = that._card.get("star");
+                that._card.set("star", star + 1);
+                that._setCard();
+                that._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
                 next();
 
             } else {
-                this._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+                that._evolutionEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
                 next();
             }
         });
@@ -78,27 +78,24 @@ var CardEvolutionLayer = LazyLayer.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? star - 2 : 1;
-        var skillType = this._card.get("skillType");
-        if (skillType > 3) {
-            skillType = 3;
-        }
+        var index = star > 2 ? Math.min(star - 2, 3) : 1;
+
         var controller = this._evolutionEffect.controller;
 
-        controller["card_half"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        controller["card_icon"].setTexture(lz.getTexture(main_scene_image["card_icon" + skillType]));
+        controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+        controller["ccbCardIcon"].setTexture(lz.getTexture(this._card.getCardIcon()));
     },
 
-    _changeCardFrame: function() {
-        cc.log("CardEvolutionLayer _changeCardFrame");
+    ccbFnChangeCardFrame: function () {
+        cc.log("CardEvolutionLayer ccbFnChangeCardFrame");
 
         var star = this._card.get("star");
         var controller = this._evolutionEffect.controller;
-        controller["card_frame"].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
+        controller["ccbCardFrame"].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
     },
 
-    startSetStar: function () {
-        cc.log("CardEvolutionLayer startSetStar");
+    ccbFnStartSetStar: function () {
+        cc.log("CardEvolutionLayer ccbFnStartSetStar");
         this._index = 0;
         this._setStar();
     },

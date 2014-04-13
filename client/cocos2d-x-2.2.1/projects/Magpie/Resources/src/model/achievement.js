@@ -67,18 +67,11 @@ var Achievement = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
-
-                    lz.server.on("onAchieve", function (data) {
-                        cc.log("***** on achieve:");
-                        cc.log(data);
-
-                        gameData.achievement.setAchieve(data.msg.achieveId);
-                        gameMark.updateAchievementMark(true);
-                    });
+                    that.setListener();
 
                     gameMark.updateAchievementMark(false);
 
-                    lz.dc.event("event_achievement");
+                    lz.um.event("event_achievement");
                 } else {
                     cc.log("sync fail");
 
@@ -89,6 +82,20 @@ var Achievement = Entity.extend({
             },
             true
         );
+    },
+
+    setListener: function () {
+        cc.log("Achievement setListener");
+
+        var that = this;
+
+        lz.server.on("onAchieve", function (data) {
+            cc.log("***** on achieve:");
+            cc.log(data);
+
+            that.setAchieve(data.msg.achieveId);
+            gameMark.updateAchievementMark(true);
+        });
     },
 
     getAchievementList: function () {
@@ -159,7 +166,7 @@ var Achievement = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_achievement_reward", id);
+                lz.um.event("event_achievement_reward", id);
             } else {
                 cc.log("receiver fail");
 
@@ -182,7 +189,7 @@ var Achievement = Entity.extend({
 
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect57, this);
         ccbNode.setPosition(point);
-        ccbNode.controller.label.setString(achievement.name);
+        ccbNode.controller.ccbLabel.setString(achievement.name);
         MainScene.getInstance().addChild(ccbNode, 20);
     }
 });

@@ -10,7 +10,6 @@
 
 var Level9BoxLayer = LazyLayer.extend({
     _level9BoxLayerFit: null,
-
     _reward: null,
     _cb: null,
 
@@ -19,7 +18,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("九级礼包界面");
+        lz.um.beginLogPageView("九级礼包界面");
     },
 
     onExit: function () {
@@ -27,7 +26,7 @@ var Level9BoxLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("九级礼包界面");
+        lz.um.endLogPageView("九级礼包界面");
     },
 
     init: function (data) {
@@ -35,97 +34,53 @@ var Level9BoxLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._reward = data.reward;
-        this._cb = data.cb || null;
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._level9BoxLayerFit = gameFit.mainScene.level9BoxLayer;
-        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
+        bgLayer.setPosition(cc.p(0, 0));
+        this.addChild(bgLayer);
+
+        this._reward = data.reward;
+        this._cb = data.cb || null;
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect55, this);
         this._ccbNode.setPosition(this._level9BoxLayerFit.bgSpritePoint);
         this.addChild(this._ccbNode);
 
-        this._ccbNode.controller.menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-
-        this._tipLabel = cc.Node.create();
-        this.addChild(this._tipLabel);
-
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 550));
-        bgSprite.setPosition(this._level9BoxLayerFit.bgSpritePoint);
-        this._tipLabel.addChild(bgSprite);
-
-        for (var key in this._reward) {
-            if (rewardGoodsUrl[key] != undefined && this._reward[key] > 0) {
-                var goodName = lz.getNameByKey(key);
-                var goodIcon = rewardGoodsUrl[key];
-                var point = this._level9BoxLayerFit.boxGoodsPoints[key];
-
-                var goodsSprite = cc.Sprite.create(main_scene_image[goodIcon]);
-                goodsSprite.setPosition(point);
-                this._tipLabel.addChild(goodsSprite);
-
-                var nameLabel = StrokeLabel.create(goodName.name, "STHeitiTC-Medium", 25);
-                nameLabel.setColor(cc.c3b(255, 252, 175));
-                nameLabel.setAnchorPoint(cc.p(0, 0.5));
-                nameLabel.setPosition(cc.p(point.x + 50, point.y + 20));
-                this._tipLabel.addChild(nameLabel);
-
-                var countLabel = StrokeLabel.create(this._reward[key], "STHeitiTC-Medium", 25);
-                countLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLabel.setPosition(cc.p(point.x + 50, point.y - 20));
-                this._tipLabel.addChild(countLabel);
-            }
-        }
-
-        this._tipLabel.setVisible(false);
-
-        var okItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon21,
-            this._onClickOk,
-            this
-        );
-        okItem.setPosition(this._level9BoxLayerFit.okItemPoint);
-
-        var menu = cc.Menu.create(okItem);
-        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        menu.setPosition(cc.p(0, 0));
-        this._tipLabel.addChild(menu);
+        this._ccbNode.controller.ccbMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         return true;
     },
 
-    _onClickBox: function () {
-        cc.log("Level9Box _onClickBox");
+    ccbFnBox: function () {
+        cc.log("Level9Box ccbFnBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._ccbNode.controller.boxItem.setEnabled(false);
+        this._ccbNode.controller.ccbBoxItem.setEnabled(false);
         this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
     },
 
-    _showBox: function () {
-        cc.log("Level9Box _showBox");
+    ccbFnShowBox: function () {
+        cc.log("Level9Box ccbFnShowBox");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._tipLabel.setVisible(true);
-    },
-
-    _onClickOk: function () {
-        cc.log("Level9BoxLayer _onClickOk");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
+        var that = this;
         this.removeFromParent();
 
-        lz.tipReward(this._reward);
-
-        if (this._cb) {
-            this._cb();
-        }
+        GiftBagLayer.pop({
+            reward: this._reward,
+            type: SHOW_GIFT_BAG_NO_CLOSE,
+            cb: function () {
+                lz.tipReward(that._reward);
+                if (that._cb) {
+                    that._cb();
+                }
+            }
+        });
     }
 });
 

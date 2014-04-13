@@ -36,6 +36,9 @@ var CardUpgradeLabel = cc.Layer.extend({
     _upgradeItem: null,
     _selectLeadCardIcon: null,
     _money: null,
+    _getExp: 0,
+    _needExp: 0,
+    _effect: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -43,7 +46,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡牌升级界面");
+        lz.um.beginLogPageView("卡牌升级界面");
     },
 
     onExit: function () {
@@ -51,7 +54,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡牌升级界面");
+        lz.um.endLogPageView("卡牌升级界面");
     },
 
     init: function () {
@@ -193,7 +196,17 @@ var CardUpgradeLabel = cc.Layer.extend({
         );
         this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._cardUpgradeLabelFit.helpItemPoint);
+
         var menu = cc.Menu.create(
+            helpItem,
             selectLeadCardItem,
             this._upgradeItem,
             this._selectRetinueCardItem
@@ -263,6 +276,8 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._atkLabel.setString(this._leadCard.get("atk"));
             this._atkAdditionLabel.setString("+ 0");
 
+            this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+
             this._expLabel.setString("0");
             this._moneyLabel.setString("0");
             cc.log(this._leadCard.getCardFullLvNeedExp());
@@ -297,13 +312,14 @@ var CardUpgradeLabel = cc.Layer.extend({
             var dummyCard = lz.clone(this._leadCard);
 
             this._money = dummyCard.addExp(exp);
-
+            this._getExp = exp;
             this._hpAdditionLabel.setString("+ " + (dummyCard.get("hp") - this._leadCard.get("hp")));
             this._atkAdditionLabel.setString("+ " + (dummyCard.get("atk") - this._leadCard.get("atk")));
 
             this._expLabel.setString(exp);
             this._moneyLabel.setString(this._money);
-            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
+            this._needExp = this._leadCard.getCardFullLvNeedExp();
+            this._expNeedLabel.setString(this._needExp);
             this._cardCountLabel.setString(cardCount);
 
             if (this._money > gameData.player.get("money")) {
@@ -346,7 +362,6 @@ var CardUpgradeLabel = cc.Layer.extend({
                 fadeInAction.clone()
             );
 
-
             this._lvLabel.runAction(cc.RepeatForever.create(lvLabelAction));
 
             this._upgradeItem.setEnabled(true);
@@ -359,10 +374,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._stopAllActions();
 
         var nowExp = exp;
-        var upgradeEffect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
-        upgradeEffect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
-        this.addChild(upgradeEffect, 10);
+        this._effect = cc.BuilderReader.load(main_scene_image.uiEffect42, this);
+        this._effect.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
+        this.addChild(this._effect, 10);
 
+        var that = this;
         var fn = function () {
             var addExp = Math.floor(dummyCard.get("maxExp") / 10);
 
@@ -418,9 +434,13 @@ var CardUpgradeLabel = cc.Layer.extend({
 
                 this.update();
 
-                upgradeEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-                upgradeEffect.animationManager.setCompletedAnimationCallback(this, function () {
-                    upgradeEffect.removeFromParent();
+                that._effect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                    if (that._effect) {
+                        that._effect.removeFromParent();
+                        that._effect = null;
+                    }
+
                     if (mandatoryTeachingLayer) {
                         if (mandatoryTeachingLayer.isTeaching()) {
                             mandatoryTeachingLayer.next();
@@ -438,6 +458,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -471,6 +496,11 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
+
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
                 mandatoryTeachingLayer.clearAndSave();
@@ -497,6 +527,55 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.getParent().switchToCardListLayer(cardListLayer);
     },
 
+    _showTip: function (cb) {
+        cc.log("CardUpgradeLabel _showTip");
+
+        var lazyLayer = LazyLayer.create();
+        this.addChild(lazyLayer, 10);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgSprite.setContentSize(cc.size(500, 230));
+        bgSprite.setPosition(this._cardUpgradeLabelFit.bgSpritePoint2);
+        lazyLayer.addChild(bgSprite);
+
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._cardUpgradeLabelFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        lazyLayer.addChild(msgBgIcon);
+
+        var tip = cc.LabelTTF.create("卡牌经验已超过等级上限，确定继续么？", "STHeitiTC-Medium", 22);
+        tip.setPosition(this._cardUpgradeLabelFit.tipPoint);
+        lazyLayer.addChild(tip);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            function () {
+                cb();
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+
+        okItem.setPosition(this._cardUpgradeLabelFit.okItemPoint);
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(this._cardUpgradeLabelFit.closeItemPoint);
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        lazyLayer.addChild(menu);
+    },
+
     _onClickUpgrade: function () {
         cc.log("CardUpgradeLabel _onClickUpgrade");
 
@@ -518,28 +597,47 @@ var CardUpgradeLabel = cc.Layer.extend({
             }
         }
 
-        LazyLayer.showCloudLayer();
-
-        var cardIdList = [];
-        var len = this._retinueCard.length;
-        for (var i = 0; i < len; ++i) {
-            cardIdList.push(this._retinueCard[i].get("id"));
-        }
-
-        var dummyCard = lz.clone(this._leadCard);
-
         var that = this;
-        this._leadCard.upgrade(function (data) {
-            cc.log(data);
 
-            if (data) {
-                that._retinueCard = [];
-                that._upgrade(dummyCard, data.exp, data.money, len);
-            } else {
-                that.update();
-                LazyLayer.closeCloudLayer();
+        var next = function () {
+            LazyLayer.showCloudLayer();
+
+            var cardIdList = [];
+            var len = that._retinueCard.length;
+            for (var i = 0; i < len; ++i) {
+                cardIdList.push(that._retinueCard[i].get("id"));
             }
-        }, cardIdList);
+
+                var dummyCard = lz.clone(that._leadCard);
+
+            that._leadCard.upgrade(function (data) {
+                cc.log(data);
+
+                if (data) {
+                    that._retinueCard = [];
+                    that._getExp = 0;
+                    that._needExp = 0;
+                    that._upgrade(dummyCard, data.exp, data.money, len);
+                } else {
+                    that.update();
+                    LazyLayer.closeCloudLayer();
+                }
+            }, cardIdList);
+        };
+
+        if (this._getExp > this._needExp) {
+            this._showTip(next);
+        } else {
+            next();
+        }
+    },
+
+    _onClickHelp: function() {
+        cc.log("CardUpgradeLabel _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["cardUpgrade"]);
     }
 });
 

@@ -141,19 +141,21 @@ var Pass = Entity.extend({
 
                 cc.log("firstWin: " + msg.firstWin);
 
-                if(msg.firstWin) {
+                if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
-                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(cbData);
 
-                lz.dc.event("event_pass", id);
+                lz.um.event("event_pass", id);
             } else {
                 cc.log("defiance fail");
 
                 TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },
@@ -206,7 +208,7 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
-                if(msg.firstWin) {
+                if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
@@ -218,9 +220,13 @@ var Pass = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_wipe_out_pass");
+                lz.um.event("event_wipe_out_pass");
             } else {
                 cc.log("wipeOut fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },
@@ -241,13 +247,17 @@ var Pass = Entity.extend({
                     hasMystical: msg.hasMystical || false
                 });
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
 
-                lz.dc.event("event_mystical");
+                lz.um.event("event_mystical");
             } else {
                 cc.log("mystical fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },
@@ -275,7 +285,7 @@ var Pass = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_reset_pass");
+                lz.um.event("event_reset_pass");
             } else {
                 cc.log("reset fail");
 

@@ -18,6 +18,7 @@ var SpiritPool = Entity.extend({
     _exp: 0,
     _maxExp: 0,
     _collectCount: 0,
+    _maxCollectCount: 0,
     _perObtain: 0,
 
     init: function (data) {
@@ -27,7 +28,8 @@ var SpiritPool = Entity.extend({
         this.on("lvChange", this._lvChangeEvent);
 
         this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
-
+        var vip = gameData.player.get("vip");
+        this._maxCollectCount = outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[vip].spirit_collect_count;
         this.update(data);
 
         cc.log(this);
@@ -56,14 +58,22 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool canCollect");
 
         if (this._collectCount <= 0) {
-            var tipVip = gameData.player.get("vip") + 1;
+            var vip = gameData.player.get("vip");
 
-            tipVip = Math.max(tipVip, 3);
-            tipVip = Math.min(tipVip, 12);
+            var msg = "";
+
+            if (vip == MAX_VIP_LEVEL) {
+                msg = "明天再来采集吧";
+            } else {
+                var tipVip = vip + 1;
+                tipVip = Math.max(tipVip, 3);
+                tipVip = Math.min(tipVip, MAX_VIP_LEVEL);
+                msg = "成为VIP" + tipVip + "，每日即可获得额外的采集次数";
+            }
 
             GoPaymentLayer.pop({
                 title: "采集次数已用完",
-                msg: "成为VIP" + tipVip + "，每日即可获得额外的采集次数"
+                msg: msg
             });
             return false;
         }
@@ -100,7 +110,7 @@ var SpiritPool = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_collect", useGold ? "useGold" : "none");
+                lz.um.event("event_collect", useGold ? "useGold" : "none");
             } else {
                 cc.log("upgrade fail");
 

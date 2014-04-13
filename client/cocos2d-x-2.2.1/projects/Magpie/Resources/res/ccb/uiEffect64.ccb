@@ -7405,7 +7405,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_1</string>
+								<string>ccbCardFrame1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -7523,7 +7523,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_1</string>
+								<string>ccbCardHalf1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -7641,7 +7641,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_1</string>
+								<string>ccbCardIcon1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -7698,7 +7698,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7983,7 +7983,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_2</string>
+								<string>ccbCardFrame2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8101,7 +8101,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_2</string>
+								<string>ccbCardHalf2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8219,7 +8219,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_2</string>
+								<string>ccbCardIcon2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8276,7 +8276,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -8561,7 +8561,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_3</string>
+								<string>ccbCardFrame3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8679,7 +8679,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_3</string>
+								<string>ccbCardHalf3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8797,7 +8797,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_3</string>
+								<string>ccbCardIcon3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -8854,7 +8854,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -9139,7 +9139,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_4</string>
+								<string>ccbCardFrame4</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -9257,7 +9257,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_4</string>
+								<string>ccbCardHalf4</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -9375,7 +9375,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_4</string>
+								<string>ccbCardIcon4</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -9432,7 +9432,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -9717,7 +9717,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_5</string>
+								<string>ccbCardFrame5</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -9835,7 +9835,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_5</string>
+								<string>ccbCardHalf5</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -9953,7 +9953,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_5</string>
+								<string>ccbCardIcon5</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -10010,7 +10010,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -10295,7 +10295,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_6</string>
+								<string>ccbCardFrame6</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -10413,7 +10413,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_6</string>
+								<string>ccbCardHalf6</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -10531,7 +10531,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_6</string>
+								<string>ccbCardIcon6</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -10588,7 +10588,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -10873,7 +10873,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_7</string>
+								<string>ccbCardFrame7</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -10991,7 +10991,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_7</string>
+								<string>ccbCardHalf7</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -11109,7 +11109,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_7</string>
+								<string>ccbCardIcon7</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -11166,7 +11166,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -11451,7 +11451,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_8</string>
+								<string>ccbCardFrame8</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -11569,7 +11569,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_8</string>
+								<string>ccbCardHalf8</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -11687,7 +11687,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_8</string>
+								<string>ccbCardIcon8</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -11744,7 +11744,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -12029,7 +12029,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_9</string>
+								<string>ccbCardFrame9</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12147,7 +12147,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_9</string>
+								<string>ccbCardHalf9</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12265,7 +12265,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_9</string>
+								<string>ccbCardIcon9</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12322,7 +12322,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -12607,7 +12607,7 @@
 								<key>displayName</key>
 								<string>card_frame</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_frame_10</string>
+								<string>ccbCardFrame10</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12725,7 +12725,7 @@
 								<key>displayName</key>
 								<string>card_half</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_half_10</string>
+								<string>ccbCardHalf10</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12843,7 +12843,7 @@
 								<key>displayName</key>
 								<string>card_icon</string>
 								<key>memberVarAssignmentName</key>
-								<string>card_icon_10</string>
+								<string>ccbCardIcon10</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -12900,7 +12900,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card_icon1.png</string>
+											<string>res/main/card_icon_1_0.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -13799,7 +13799,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>_setFragment</string>
+							<string>ccbFnSetFragment</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -14049,7 +14049,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.0666667222976685</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

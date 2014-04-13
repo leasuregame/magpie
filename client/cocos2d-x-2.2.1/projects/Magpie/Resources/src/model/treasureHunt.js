@@ -25,8 +25,8 @@ var TreasureHunt = Entity.extend({
     update: function (data) {
         cc.log("TreasureHunt update");
 
-        this._count = data.count;
-        this._freeCount = data.freeCount;
+        this.set("count", data.count);
+        this.set("freeCount", data.freeCount);
     },
 
     canTreasureHunt: function () {
@@ -35,7 +35,7 @@ var TreasureHunt = Entity.extend({
             return false;
         }
 
-        if (this._freeCount <= 0 && gameData.player.get("gold") < 10) {
+        if (this._freeCount <= 0 && gameData.player.get("gold") < 20) {
             TipLayer.tip("魔石不足");
             return false;
         }
@@ -61,7 +61,13 @@ var TreasureHunt = Entity.extend({
 
                 var goldResume = data.msg.goldResume;
 
-                gameData.player.add(table.type, table.value);
+                var times = msg.times;
+
+                if (table.type == "spirit") {
+                    gameData.spirit.add("exp", table.value * times);
+                } else {
+                    gameData.player.add(table.type, table.value * times);
+                }
 
                 if (that._freeCount <= 0) {
                     gameData.player.add("gold", -goldResume);
@@ -70,15 +76,17 @@ var TreasureHunt = Entity.extend({
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
+                gameMark.updateTreasureHuntMark(false);
+
                 var str = {};
-                str[table.type] = table.value;
+                str[table.type] = table.value * times;
 
                 cb({
                     id: id,
                     str: str
                 });
 
-                lz.dc.event("event_treasure_hunt", id);
+                lz.um.event("event_treasure_hunt", id);
             } else {
                 cc.log("treasureHunt fail");
 

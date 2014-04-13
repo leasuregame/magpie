@@ -3,8 +3,14 @@ Battle = require '../battle/battle'
 battleLog = require '../battle/battle_log'
 Player = require '../battle/player'
 VirtualPlayer = require '../battle/virtual_player'
+BossPlayer = require '../battle/boss_player'
 playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
+
+BATTLELOG_TYPE = 
+  PVE: 0
+  PVP: 1
+  BOSS: 2
 
 class Manager
   @pve: (args, callback) ->
@@ -16,39 +22,56 @@ class Manager
     taskData.sectionId = sectionId
     
     playerEntity = null
-    async.waterfall([
+    async.waterfall [
       (cb) ->
         playerManager.getPlayerInfo {pid: pid, sync: false}, cb
       
       (_playerEntity, cb) ->
-        playerEntity = _playerEntity
-        attacker = new Player(playerEntity)
-        defender = new VirtualPlayer(taskData)
-
         battleLog.clear()
+        
+        playerEntity = _playerEntity
+        defender = new VirtualPlayer(taskData)
+        attacker = new Player(playerEntity, is_attacker: true)
+
         battle = new Battle(attacker, defender)
         battle.process()
 
         cb(null,  battleLog)
-      ],
-      (err, bl) ->
-        if err
-          return callback(err, null)
-        
-        callback(null, bl.reports())
-    )
+    ], (err, bl) ->
+      if err
+        return callback(err, null)
+
+      res = bl.reports()
+      res.type = BATTLELOG_TYPE.PVE
+      callback(null, res)
 
   @pvp: (attEnt, defEnt, callback) ->
-
-    attacker = new Player(attEnt)
-    attacker.setLineUp attEnt.get('lineUp')
-    defender = new Player(defEnt)
-    defender.setLineUp defEnt.get('lineUp')
-
     battleLog.clear()
+
+    defender = new Player(defEnt)
+    attacker = new Player(attEnt, is_attacker: true)
+    
     battle = new Battle(attacker, defender)
     battle.process()
 
-    callback null, battleLog.reports()
+    res = battleLog.reports()
+    res.type = BATTLELOG_TYPE.PVP
+    callback(null, res)
+
+  @attackBoss: (player, boss, incRate, callback) ->
+    battleLog.clear()
+
+    defender = new BossPlayer(boss, {is_boss: true})
+    attacker = new Player(player, {
+      inc_scale: incRate,
+      is_attacker: true
+    })
+    
+    battle = new Battle(attacker, defender)
+    battle.process()
+
+    res = battleLog.reports()
+    res.type = BATTLELOG_TYPE.BOSS
+    callback(null, res)
 
 module.exports = Manager

@@ -57,18 +57,58 @@
 										<key>opt</key>
 										<real>2</real>
 										<key>type</key>
+										<integer>4</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.20000000298023224</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
+										<real>1.2999999523162842</real>
+										<real>1.2999999523162842</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>opt</key>
+										<real>2</real>
+										<key>type</key>
+										<integer>4</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.40000000596046448</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
+										<real>1.1000000238418579</real>
+										<real>1.1000000238418579</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>opt</key>
+										<real>2</real>
+										<key>type</key>
 										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.60000002384185791</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>1.6000000238418579</real>
-										<real>1.6000000238418579</real>
+										<real>1.2999999523162842</real>
+										<real>1.2999999523162842</real>
 									</array>
 								</dict>
 								<dict>
@@ -80,7 +120,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>0.80000001192092896</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -221,8 +261,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -258,17 +296,17 @@
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
-			<real>1.3333333730697632</real>
+			<real>4</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>3.7333333492279053</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>344.19802856445312</real>
+			<real>195.27247619628906</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

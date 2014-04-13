@@ -25,7 +25,14 @@ describe("Area Server", function() {
           request('area.trainHandler.passSkillAfresh', {
             playerId: arthur.playerId,
             cardId: 101,
-            psIds: [0, 1]
+            groupId: 1,
+            psIds: [{
+              id: 0,
+              lock: 1
+            }, {
+              id: 1,
+              lock: 1
+            }]
           }, function(data) {
             console.log('result: ', data);
             expect(data.code).toEqual(200);
@@ -36,7 +43,7 @@ describe("Area Server", function() {
               expect(pss).toEqual(data.msg.passiveSkills);
             });
 
-            
+
           });
         });
       });

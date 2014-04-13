@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>3</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -899,8 +899,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s95.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s95.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1334,8 +1334,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s92.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s92.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1346,7 +1346,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1671,8 +1671,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s93.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s93.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1683,7 +1683,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1708,7 +1708,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1722,8 +1722,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>200</real>
+									<real>-170</real>
+									<real>390</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1750,8 +1750,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.10000000149011612</real>
+									<real>0.10000000149011612</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1764,7 +1764,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-900</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1967,8 +1967,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s94.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s94.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2502,8 +2502,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s98.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s98.png</string>
 								</array>
 							</dict>
 						</array>
@@ -2691,8 +2691,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s97.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s97.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2728,7 +2728,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3023,8 +3023,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s99.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s99.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3341,8 +3341,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s101.png</string>
+									<string>res/effect/startAnimation/startAnimationRes3.plist</string>
+									<string>s101.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3540,8 +3540,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s102.png</string>
+									<string>res/effect/startAnimation/startAnimationRes3.plist</string>
+									<string>s102.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3858,8 +3858,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s100.png</string>
+									<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+									<string>s100.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -3895,7 +3895,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4079,8 +4079,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s106.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s106.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4246,7 +4246,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>148</real>
+									<real>168</real>
 									<real>-226</real>
 									<integer>0</integer>
 								</array>
@@ -4290,8 +4290,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s107.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s107.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4302,7 +4302,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -4485,7 +4485,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4571,7 +4571,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4860,8 +4860,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s105.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s105.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5061,8 +5061,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s110.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s110.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5256,8 +5256,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s105.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s105.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5468,8 +5468,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s109.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s109.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5586,8 +5586,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s103.png</string>
+											<string>res/effect/startAnimation/startAnimationRes3.plist</string>
+											<string>s103.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5746,8 +5746,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s104.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s104.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -5758,7 +5758,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -5787,8 +5787,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>130</real>
+									<real>-382</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -5977,7 +5977,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>225</real>
+									<real>245</real>
 									<real>-418</real>
 									<integer>0</integer>
 								</array>
@@ -6021,8 +6021,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s108.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s108.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -6033,7 +6033,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -6188,7 +6188,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>-15</real>
 									<real>-388</real>
 									<integer>0</integer>
 								</array>
@@ -6232,8 +6232,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s108.png</string>
+									<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+									<string>s108.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -6244,7 +6244,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6280,7 +6280,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6513,7 +6513,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6735,7 +6735,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>190</real>
+									<real>250</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -6778,8 +6778,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s111.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s111.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -6790,7 +6790,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -7247,8 +7247,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s73.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s73.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7342,8 +7342,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s112.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s112.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -8269,7 +8269,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>next</string>
+							<string>ccbFnNext</string>
 							<integer>2</integer>
 						</array>
 					</dict>

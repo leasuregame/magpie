@@ -22,7 +22,7 @@ var AchievementLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("成就界面");
+        lz.um.beginLogPageView("成就界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var AchievementLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("成就界面");
+        lz.um.endLogPageView("成就界面");
     },
 
     init: function () {
@@ -73,10 +73,9 @@ var AchievementLayer = cc.Layer.extend({
             scrollViewHeight = this._achievementLayerFit.scrollViewHeight;
         }
 
+        var slideLabel = [];
+
         var scrollViewLayer = MarkLayer.create(this._achievementLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu, 1);
 
         this._scrollViewElement = {};
 
@@ -85,23 +84,31 @@ var AchievementLayer = cc.Layer.extend({
             y -= 120;
             var id = achievement[i].id;
 
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
+
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(menu, 1);
+
             var bgSprite = cc.Sprite.create(main_scene_image.button15);
             bgSprite.setScaleX(1.04);
             bgSprite.setScaleY(0.9);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
-            scrollViewLayer.addChild(bgSprite);
+            slideLabel[i].addChild(bgSprite);
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(140, 34));
             nameIcon.setPosition(cc.p(95, y + 78));
-            scrollViewLayer.addChild(nameIcon);
+            slideLabel[i].addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(achievement[i].name, "STHeitiTC-Medium", 25);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(35, y + 78));
-            scrollViewLayer.addChild(nameLabel, 1);
+            slideLabel[i].addChild(nameLabel, 1);
 
             var countLabel = cc.LabelTTF.create(
                 "(" + achievement[i].count + "/" + achievement[i].need + ")",
@@ -111,13 +118,13 @@ var AchievementLayer = cc.Layer.extend({
             countLabel.setColor(cc.c3b(56, 3, 5));
             countLabel.setAnchorPoint(cc.p(0, 0.5));
             countLabel.setPosition(cc.p(180, y + 79));
-            scrollViewLayer.addChild(countLabel);
+            slideLabel[i].addChild(countLabel);
 
             var descriptionLabel = cc.LabelTTF.create(achievement[i].description, "STHeitiTC-Medium", 20);
             descriptionLabel.setColor(cc.c3b(56, 3, 5));
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel.setPosition(cc.p(30, y + 40));
-            scrollViewLayer.addChild(descriptionLabel);
+            slideLabel[i].addChild(descriptionLabel);
 
             var isReceiver = achievement[i].isReceiver;
             var isAchieve = achievement[i].isAchieve;
@@ -125,48 +132,64 @@ var AchievementLayer = cc.Layer.extend({
             this._scrollViewElement[id] = {};
 
             var isReceiverIcon = cc.Sprite.create(main_scene_image.icon212);
-            isReceiverIcon.setPosition(cc.p(510, y + 60));
-            scrollViewLayer.addChild(isReceiverIcon);
+            isReceiverIcon.setPosition(cc.p(535, y + 88));
+            slideLabel[i].addChild(isReceiverIcon);
+
+            var receiverItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon123,
+                this._onClickReceiver(achievement[i].id),
+                this
+            );
+            receiverItem.setPosition(cc.p(510, y + 60));
+            menu.addChild(receiverItem);
+
+            this._scrollViewElement[id].isReceiverIcon = isReceiverIcon;
+            this._scrollViewElement[id].receiverItem = receiverItem;
+
+
+            var rewardLabel = cc.Node.create();
+            slideLabel[i].addChild(rewardLabel);
+
+            var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+            goldIcon.setPosition(cc.p(410, y + 50));
+            rewardLabel.addChild(goldIcon);
+
+            var goldLabel = cc.LabelTTF.create(achievement[i].gold, "Arial", 25);
+            goldLabel.setColor(cc.c3b(56, 3, 5));
+            goldLabel.setAnchorPoint(cc.p(0, 0.5));
+            goldLabel.setPosition(cc.p(430, y + 50));
+            rewardLabel.addChild(goldLabel);
+
+            var energyIcon = cc.Sprite.create(main_scene_image.icon154);
+            energyIcon.setPosition(cc.p(510, y + 50));
+            rewardLabel.addChild(energyIcon);
+
+            var energyLabel = cc.LabelTTF.create(achievement[i].energy, "Arial", 25);
+            energyLabel.setColor(cc.c3b(56, 3, 5));
+            energyLabel.setAnchorPoint(cc.p(0, 0.5));
+            energyLabel.setPosition(cc.p(530, y + 50));
+            rewardLabel.addChild(energyLabel);
+
+            this._scrollViewElement[id].rewardLabel = rewardLabel;
 
             if (!isReceiver) {
                 isReceiverIcon.setVisible(false);
-
                 if (isAchieve) {
-                    var receiverItem = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button10,
-                        main_scene_image.button10s,
-                        main_scene_image.icon123,
-                        this._onClickReceiver(achievement[i].id),
-                        this
-                    );
-                    receiverItem.setPosition(cc.p(510, y + 60));
-                    menu.addChild(receiverItem);
-
-                    this._scrollViewElement[id].isReceiverIcon = isReceiverIcon;
-                    this._scrollViewElement[id].receiverItem = receiverItem;
+                    receiverItem.setVisible(true);
+                    rewardLabel.setVisible(false);
                 } else {
-                    var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-                    goldIcon.setPosition(cc.p(410, y + 50));
-                    scrollViewLayer.addChild(goldIcon);
-
-                    var goldLabel = cc.LabelTTF.create(achievement[i].gold, "Arial", 25);
-                    goldLabel.setColor(cc.c3b(56, 3, 5));
-                    goldLabel.setAnchorPoint(cc.p(0, 0.5));
-                    goldLabel.setPosition(cc.p(430, y + 50));
-                    scrollViewLayer.addChild(goldLabel);
-
-                    var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-                    energyIcon.setPosition(cc.p(510, y + 50));
-                    scrollViewLayer.addChild(energyIcon);
-
-                    var energyLabel = cc.LabelTTF.create(achievement[i].energy, "Arial", 25);
-                    energyLabel.setColor(cc.c3b(56, 3, 5));
-                    energyLabel.setAnchorPoint(cc.p(0, 0.5));
-                    energyLabel.setPosition(cc.p(530, y + 50));
-                    scrollViewLayer.addChild(energyLabel);
+                    receiverItem.setVisible(false);
+                    rewardLabel.setVisible(true);
                 }
+            } else {
+                receiverItem.setVisible(false);
             }
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
+
 
         var scrollView = cc.ScrollView.create(this._achievementLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setPosition(this._achievementLayerFit.scrollViewPoint);
@@ -176,6 +199,16 @@ var AchievementLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(609, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
+
+        var slideLayer = SlideLayer.create(
+            {
+                labels: slideLabel,
+                slideTime: 0.4,
+                timeTick: 0.05
+            }
+        );
+
+        slideLayer.showSlide();
 
         return true;
     },
@@ -192,6 +225,8 @@ var AchievementLayer = cc.Layer.extend({
 
                 that._scrollViewElement[id].receiverItem.setVisible(false);
 
+                that._scrollViewElement[id].rewardLabel.setVisible(true);
+
                 var isReceiverIcon = that._scrollViewElement[id].isReceiverIcon;
                 isReceiverIcon.setVisible(true);
 
@@ -205,6 +240,13 @@ var AchievementLayer = cc.Layer.extend({
 
                 lz.tipReward(data);
                 gameMark.updateAchievementMark(false);
+
+                if (mandatoryTeachingLayer) {
+                    if (mandatoryTeachingLayer.isTeaching()) {
+                        mandatoryTeachingLayer.clearAndSave();
+                        mandatoryTeachingLayer.next();
+                    }
+                }
 
             }, id);
         }

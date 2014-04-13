@@ -25,7 +25,7 @@ var StrengthenLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("强化界面");
+        lz.um.beginLogPageView("强化界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var StrengthenLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("强化界面");
+        lz.um.endLogPageView("强化界面");
     },
 
     init: function () {

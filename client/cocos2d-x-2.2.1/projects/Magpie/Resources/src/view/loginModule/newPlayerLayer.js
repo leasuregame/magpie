@@ -16,7 +16,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("创建新玩家界面");
+        lz.um.beginLogPageView("创建新玩家界面");
     },
 
     onExit: function () {
@@ -24,7 +24,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("创建新玩家界面");
+        lz.um.endLogPageView("创建新玩家界面");
     },
 
     init: function () {
@@ -40,7 +40,6 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(340, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
-
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate({
@@ -74,7 +73,7 @@ var NewPlayerLayer = cc.Layer.extend({
             }
         });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
+        newPlayerFrame.controller.ccbPlayerNameLabel.addChild(this._nameEditBox);
 
         newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function () {
             this._nameEditBox.setPlaceHolder("汉字、子母或数字");
@@ -87,38 +86,36 @@ var NewPlayerLayer = cc.Layer.extend({
     _setRandomName: function () {
         cc.log("NewPlayerLayer _setRandomName");
 
-        var user = gameData.user;
-        var name = user.getRandomName();
+        var name = lz.getRandomName();
 
-        while (!user.eligibleName(name)) {
-            name = user.getRandomName();
+        while (!lz.eligibleName(name)) {
+            name = lz.getRandomName();
         }
 
         this._nameEditBox.setText(name);
     },
 
-    _onClickRandom: function () {
-        cc.log("NewPlayerLayer _onClickRandom");
+    ccbFnRandom: function () {
+        cc.log("NewPlayerLayer ccbFnRandom");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._setRandomName();
     },
 
-    _onClickOk: function () {
-        cc.log("NewPlayerLayer _onClickOk");
+    ccbFnOk: function () {
+        cc.log("NewPlayerLayer ccbFnOk");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var name = this._nameEditBox.getText();
-        var user = gameData.user;
 
         if (!name) {
             TipLayer.tip("请输入昵称");
             return;
         }
 
-        if (!user.eligibleName(name)) {
+        if (!lz.eligibleName(name)) {
             TipLayer.tip("昵称已被占用");
             return;
         }
@@ -128,23 +125,12 @@ var NewPlayerLayer = cc.Layer.extend({
         }, name);
     },
 
-    _onClickBack: function () {
-        cc.log("NewPlayerLayer _onClickBack");
+    ccbFnClose: function () {
+        cc.log("NewPlayerLayer ccbFnClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.removeFromParent();
-    },
-
-    _onClickClose: function () {
-        cc.log("NewPlayerLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-       // lz.server.disconnect();
-        this.getParent().switchTo(LoginLayer.create());
-        this.removeFromParent();
-
+        this.getParent().switchLayer(LoginLayer);
     }
 });
 

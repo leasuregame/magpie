@@ -11,6 +11,7 @@
  * card details
  * */
 
+var CARD_DETAILS_LAYER_HANDLER_PRIORITY = -205;
 
 var CardDetails = LazyLayer.extend({
     _cardDetailsFit: null,
@@ -23,9 +24,8 @@ var CardDetails = LazyLayer.extend({
         cc.log("CardDetails onEnter");
 
         this._super();
-        this.update();
 
-        lz.dc.beginLogPageView("卡牌详细信息界面");
+        lz.um.beginLogPageView("卡牌详细信息界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var CardDetails = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡牌详细信息界面");
+        lz.um.endLogPageView("卡牌详细信息界面");
     },
 
     init: function (card, cb) {
@@ -42,6 +42,7 @@ var CardDetails = LazyLayer.extend({
         if (!this._super()) return false;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._cardDetailsFit = gameFit.mainScene.cardDetails;
 
         this._card = card;
@@ -76,7 +77,6 @@ var CardDetails = LazyLayer.extend({
         nameLabel.setColor(cc.c3b(255, 236, 168));
         nameLabel.setPosition(this._cardDetailsFit.nameLabelPoint);
         this.addChild(nameLabel);
-
 
         var star = this._card.get("star");
         for (var i = 0; i < MAX_CARD_STAR; ++i) {
@@ -204,8 +204,39 @@ var CardDetails = LazyLayer.extend({
         passiveSkillIcon.setPosition(this._cardDetailsFit.passiveSkillIconPoint);
         this.addChild(passiveSkillIcon);
 
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon36,
+            this._onClickClose,
+            this
+        );
+        closeItem.setPosition(this._cardDetailsFit.closeItemPoint);
+
+        var menu = cc.Menu.create(closeItem);
+        menu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        this._updatePassiveSkill();
+
+        return true;
+    },
+
+    _updatePassiveSkill: function () {
+        cc.log("CardDetails _updatePassiveSkill");
+
+        if (this._passiveSkillLayer) {
+            this._passiveSkillLayer.removeFromParent();
+            this._passiveSkillLayer = null;
+        }
+
+        this._passiveSkillLayer = cc.Layer.create();
+        this.addChild(this._passiveSkillLayer);
+
         if (this._card.hasPassiveSkill()) {
-            var passiveSkill = this._card.get("passiveSkill");
+            var passiveSkill = this._card.getActivePassiveSkill();
             var x = this._cardDetailsFit.passiveSkillOffsetX;
 
             for (var key in passiveSkill) {
@@ -216,17 +247,17 @@ var CardDetails = LazyLayer.extend({
                 passiveSkillIcon = cc.Sprite.create(main_scene_image.icon275);
                 passiveSkillIcon.setAnchorPoint(cc.p(0, 0.5));
                 passiveSkillIcon.setPosition(cc.p(x, this._cardDetailsFit.passiveSkillIconPointY));
-                this.addChild(passiveSkillIcon);
+                this._passiveSkillLayer.addChild(passiveSkillIcon);
                 passiveSkillIcon.setScale(0.8);
 
                 var passiveSkillNameLabel = cc.LabelTTF.create(passiveSkill[key].description, "STHeitiTC-Medium", 20);
                 passiveSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
                 passiveSkillNameLabel.setPosition(cc.p(x + 30, this._cardDetailsFit.passiveSkillNameLabelPointY));
-                this.addChild(passiveSkillNameLabel);
+                this._passiveSkillLayer.addChild(passiveSkillNameLabel);
 
                 var passiveSkillValueLabel = cc.LabelTTF.create("+ " + value + "%", "STHeitiTC-Medium", 20);
                 passiveSkillValueLabel.setPosition(cc.p(x + 120, this._cardDetailsFit.passiveSkillValueLabelPointY));
-                this.addChild(passiveSkillValueLabel);
+                this._passiveSkillLayer.addChild(passiveSkillValueLabel);
 
                 if (value >= 8.0) {
                     passiveSkillValueLabel.setColor(cc.c3b(255, 248, 69));
@@ -236,11 +267,18 @@ var CardDetails = LazyLayer.extend({
                     passiveSkillValueLabel.setColor(cc.c3b(118, 238, 60));
                 }
             }
+
+            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106, this);
+            this._updatePassiveSkillEffect.setAnchorPoint(cc.p(0, 0.5));
+            this._updatePassiveSkillEffect.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
+            this._updatePassiveSkillEffect.controller.ccbMenu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
+
+            this.addChild(this._updatePassiveSkillEffect);
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
             tipLabel.setPosition(this._cardDetailsFit.tipLabel2Point);
-            this.addChild(tipLabel);
+            this._passiveSkillLayer.addChild(tipLabel);
 
             var str = "三星以上拥有被动效果";
             var star = this._card.get("star");
@@ -256,44 +294,16 @@ var CardDetails = LazyLayer.extend({
             var tipDescriptionLabel = cc.LabelTTF.create(str + "，具体属性随机生成。", "STHeitiTC-Medium", 20);
             tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             tipDescriptionLabel.setPosition(this._cardDetailsFit.tipDescriptionLabel2Point);
-            this.addChild(tipDescriptionLabel);
-        }
-
-        var closeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon36,
-            this._onClickClose,
-            this
-        );
-        closeItem.setPosition(this._cardDetailsFit.closeItemPoint);
-
-        this._menu = cc.Menu.create(closeItem);
-        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
-
-        return true;
-    },
-
-    update: function () {
-        cc.log("CardDetails update");
-
-        var children = this._menu.getChildren();
-        var len = children.length;
-
-        var x = this._cardDetailsFit.menuBaseX + (len - 1) * 200 / 2;
-
-        for (var i = 0; i < len; ++i) {
-            children[i].setPosition(cc.p(x - 200 * i, this._cardDetailsFit.menuBaseY));
+            this._passiveSkillLayer.addChild(tipDescriptionLabel);
         }
     },
 
     hideMenu: function () {
         cc.log("CardDetails hideMenu");
 
-        this._menu.setVisible(false);
+        if (this._updatePassiveSkillEffect) {
+            this._updatePassiveSkillEffect.setVisible(false);
+        }
     },
 
     showMenu: function () {
@@ -302,12 +312,33 @@ var CardDetails = LazyLayer.extend({
         this._menu.setVisible(true);
     },
 
+    ccbFnUpdatePassiveSKill: function () {
+        cc.log("CardDetails ccbFnUpdatePassiveSKill");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+        var cb = function (id) {
+            if (id != that._card.getActivePassiveSkillId()) {
+                that._card.activePassiveSkill(function () {
+                    that._updatePassiveSkill();
+                }, id);
+            }
+        };
+
+        PassiveSkillLabel.pop(
+            {
+                card: this._card,
+                cb: cb
+            }
+        );
+    },
+
     _onClickClose: function () {
         cc.log("CardDetails _onClickClose");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._menu.setEnabled(false);
         this.removeFromParent();
 
         if (this._cb) {
@@ -334,4 +365,3 @@ CardDetails.pop = function (card, cb) {
 
     return cardDetails;
 };
-

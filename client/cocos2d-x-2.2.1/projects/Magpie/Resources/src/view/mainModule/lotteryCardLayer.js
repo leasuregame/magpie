@@ -22,7 +22,7 @@ var LotteryCardLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("抽卡获得卡牌界面");
+        lz.um.beginLogPageView("抽卡获得卡牌界面");
     },
 
     onExit: function () {
@@ -30,7 +30,7 @@ var LotteryCardLayer = LazyLayer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("抽卡获得卡牌界面");
+        lz.um.endLogPageView("抽卡获得卡牌界面");
     },
 
     init: function (data) {
@@ -52,16 +52,16 @@ var LotteryCardLayer = LazyLayer.extend({
 
         var controller = this._ccbNode.controller;
 
-        controller.nameLabel.setString(this._card.get("name"));
+        controller.ccbNameLabel.setString(this._card.get("name"));
 
         var urlList = this._card.getCardFullUrl();
         var len = urlList.length;
 
         for (var i = 0; i < 3; ++i) {
             if (i < len) {
-                controller["cardFull" + i].setTexture(lz.getTexture(urlList[i]));
+                controller["ccbCardFull" + i].setTexture(lz.getTexture(urlList[i]));
             } else {
-                controller["cardFull" + i].setVisible(false);
+                controller["ccbCardFull" + i].setVisible(false);
             }
         }
 
@@ -69,18 +69,18 @@ var LotteryCardLayer = LazyLayer.extend({
             this._canClick = true;
         });
 
-
         return true;
     },
 
-    startSetStar: function () {
-        cc.log("LotteryCardLayer startSetStar");
+    ccbFnStartSetStar: function () {
+        cc.log("LotteryCardLayer ccbFnStartSetStar");
 
         this._index = 0;
 
         if (this._fragment) {
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
+            ccbNode.controller.ccbFragment.setString("+" + this._fragment);
             this.addChild(ccbNode, 1);
 
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
@@ -130,6 +130,7 @@ var LotteryCardLayer = LazyLayer.extend({
                 this._cb();
             }
         }
+
         return true;
     }
 });

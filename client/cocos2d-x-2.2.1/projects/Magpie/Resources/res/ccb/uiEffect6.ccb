@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -220,7 +220,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>219</real>
+									<real>209</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -364,7 +364,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>118</real>
+									<real>128</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -560,13 +560,163 @@
 							</dict>
 						</array>
 					</dict>
+					<dict>
+						<key>baseClass</key>
+						<string>CCSprite</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>up233</string>
+						<key>memberVarAssignmentName</key>
+						<string>ccbTenLotteryTip2</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>267</real>
+									<real>110</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>0.5</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>displayFrame</string>
+								<key>type</key>
+								<string>SpriteFrame</string>
+								<key>value</key>
+								<array>
+									<string></string>
+									<string>res/effect/uiEffect/up233.png</string>
+								</array>
+							</dict>
+						</array>
+						<key>seqExpanded</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>baseClass</key>
+						<string>CCSprite</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>up189</string>
+						<key>memberVarAssignmentName</key>
+						<string>ccbTenLotteryTip</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>267</real>
+									<real>133</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>0.5</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>displayFrame</string>
+								<key>type</key>
+								<string>SpriteFrame</string>
+								<key>value</key>
+								<array>
+									<string></string>
+									<string>res/effect/uiEffect/up189.png</string>
+								</array>
+							</dict>
+						</array>
+						<key>selected</key>
+						<true/>
+						<key>seqExpanded</key>
+						<true/>
+					</dict>
 				</array>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>highDoor</string>
+				<string>ccbHighDoor</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -621,6 +771,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1128,7 +1280,7 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string>lowDoor</string>
+				<string>ccbLowDoor</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1146,7 +1298,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>10</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1183,6 +1335,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1268,7 +1422,7 @@
 											<key>value</key>
 											<array>
 												<real>3</real>
-												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -1328,7 +1482,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
+									<real>1</real>
 									<real>1</real>
 									<false/>
 									<integer>0</integer>
@@ -1350,7 +1504,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/effect/p8.png</string>
+									<string>res/effect/effect/p28.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1399,7 +1553,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1519,7 +1673,7 @@
 											<key>value</key>
 											<array>
 												<real>3</real>
-												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -1603,7 +1757,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/effect/p8.png</string>
+									<string>res/effect/effect/p28.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1775,7 +1929,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.1333334445953369</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1809,7 +1963,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>showCard</string>
+							<string>ccbFnShowCard</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -1826,7 +1980,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.23333333432674408</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1879,7 +2033,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>showCard</string>
+							<string>ccbFnShowCard</string>
 							<integer>2</integer>
 						</array>
 					</dict>

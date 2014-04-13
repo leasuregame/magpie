@@ -32,13 +32,6 @@ var Message = Entity.extend({
     init: function () {
         cc.log("Message init");
 
-        lz.server.on("onSystemMessage", function (data) {
-            cc.log("***** on system message:");
-            cc.log(data);
-
-            MainScene.getInstance().changeMessage(data.msg);
-        });
-
         this.sync();
 
         return true;
@@ -71,18 +64,11 @@ var Message = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
-
-                    lz.server.on("onMessage", function (data) {
-                        cc.log("***** on message:");
-                        cc.log(data);
-
-                        gameData.message.push(data.msg);
-
-                    });
+                    that.setListener();
 
                     gameMark.updateMessageMark(false);
 
-                    lz.dc.event("event_message_list");
+                    lz.um.event("event_message_list");
                 } else {
                     cc.log("sync fail");
 
@@ -91,6 +77,26 @@ var Message = Entity.extend({
             },
             true
         );
+    },
+
+    setListener: function () {
+        cc.log("Message setListener");
+
+        var that = this;
+
+        lz.server.on("onSystemMessage", function (data) {
+            cc.log("***** on system message:");
+            cc.log(data);
+
+            MainScene.getInstance().changeMessage(data.msg);
+        });
+
+        lz.server.on("onMessage", function (data) {
+            cc.log("***** on message:");
+            cc.log(data);
+
+            that.push(data.msg);
+        });
     },
 
     push: function (msg) {
@@ -141,9 +147,15 @@ var Message = Entity.extend({
 
                     gameData.friend.push(msg);
                     cb();
-                    lz.dc.event("event_friend_accept");
+                    lz.um.event("event_friend_accept");
                 } else {
+                    TipLayer.tip(data.msg);
+                    message.status = ACCEPT_STATUS;
+                    cb();
+
                     cc.log("accept fail");
+                    TipLayer.tip(data.msg);
+                    cb();
                 }
             });
         } else {
@@ -176,7 +188,7 @@ var Message = Entity.extend({
 
                     message.status = REJECT_STATUS;
                     cb();
-                    lz.dc.event("event_friend_reject");
+                    lz.um.event("event_friend_reject");
                 } else {
                     cc.log("reject fail");
                 }
@@ -218,7 +230,8 @@ var Message = Entity.extend({
                         money: msg.money,
                         power: msg.powerValue,
                         skillPoint: msg.skillPoint,
-                        elixir: msg.elixir
+                        elixir: msg.elixir,
+                        energy: msg.energy
                     });
 
                     gameData.spirit.add("exp", msg.spirit);
@@ -227,7 +240,7 @@ var Message = Entity.extend({
 
                     cb();
 
-                    lz.dc.event("event_handle_sys_message");
+                    lz.um.event("event_handle_sys_message");
                 } else {
                     TipLayer.tip(data.msg);
                     cc.log("receive fail");
@@ -243,10 +256,11 @@ var Message = Entity.extend({
 
         var battleLogPool = BattleLogPool.getInstance();
 
-        cc.log(battleLogPool.getBattleLogById(id));
-
-        if (battleLogPool.getBattleLogById(id)) {
-            BattlePlayer.getInstance().play(id, true);
+        if (battleLogPool.get(id)) {
+            BattlePlayer.getInstance().play({
+                id: id,
+                isPlayback: true
+            });
             return;
         }
 
@@ -262,17 +276,46 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = battleLogPool.put(msg.battleLog);
 
-                BattlePlayer.getInstance().play(battleLogId, true);
+                BattlePlayer.getInstance().play({
+                    id: battleLogId,
+                    isPlayback: true
+                });
 
-                lz.dc.event("event_battle_play_back");
+                lz.um.event("event_battle_play_back");
             } else {
                 cc.log("playback fail");
 
-                TipLayer.tip("战斗回放出错");
+                TipLayer.tip("找不到该战报");
             }
         });
+    },
+
+    setAsRead: function (id, cb) {
+
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == id) {
+                message = this._friendMessage[i];
+                break;
+            }
+        }
+
+        lz.server.request("area.messageHandler.setAsRead", {
+            msgId: id
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("setAsRead success");
+                message.status = HANDLED_STATUS;
+                cb();
+            } else {
+                cc.log("setAsRead fail");
+            }
+        })
     },
 
     _sort: function () {

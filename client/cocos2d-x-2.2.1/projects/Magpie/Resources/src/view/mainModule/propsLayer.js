@@ -11,7 +11,7 @@
  * props layer
  * */
 
-var productUrl = ["icon283", "icon284", "icon278", "icon279", "icon280"];
+var productUrl = ["icon283", "icon284", "icon374", "icon278", "icon279", "icon280"];
 
 var PropsLayer = cc.Layer.extend({
     _propsLayerFit: null,
@@ -27,7 +27,7 @@ var PropsLayer = cc.Layer.extend({
 
         this.schedule(this.update, 1);
 
-        lz.dc.beginLogPageView("道具界面");
+        lz.um.beginLogPageView("道具界面");
     },
 
     onExit: function () {
@@ -35,7 +35,7 @@ var PropsLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("道具界面");
+        lz.um.endLogPageView("道具界面");
     },
 
     init: function () {
@@ -84,6 +84,10 @@ var PropsLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect74, this);
+        effect.setPosition(this._propsLayerFit.paymentItemPoint);
+        this.addChild(effect);
+
         var buyIcon = cc.Sprite.create(main_scene_image.icon303);
         buyIcon.setPosition(this._propsLayerFit.buyIconPoint);
         this.addChild(buyIcon);
@@ -91,10 +95,9 @@ var PropsLayer = cc.Layer.extend({
         var productList = gameData.shop.getProductList();
         var len = productList.length;
 
+        var slideLabel = [];
+
         var scrollViewLayer = MarkLayer.create(this._propsLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu, 1);
 
         var scrollViewHeight = len * 180;
 
@@ -103,14 +106,22 @@ var PropsLayer = cc.Layer.extend({
 
             var product = productList[i];
 
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
+
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(menu, 1);
+
             var bgSprite = cc.Sprite.create(main_scene_image.icon162);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(17, y));
-            scrollViewLayer.addChild(bgSprite);
+            slideLabel[i].addChild(bgSprite);
 
             var productSprite = cc.Sprite.create(main_scene_image[productUrl[i]]);
             productSprite.setPosition(cc.p(95, y + 82));
-            scrollViewLayer.addChild(productSprite);
+            slideLabel[i].addChild(productSprite);
 
             var buyItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
@@ -126,29 +137,31 @@ var PropsLayer = cc.Layer.extend({
             titleLabel.setColor(cc.c3b(74, 27, 27));
             titleLabel.setAnchorPoint(cc.p(0, 0.5));
             titleLabel.setPosition(cc.p(170, y + 125));
-            scrollViewLayer.addChild(titleLabel);
+            slideLabel[i].addChild(titleLabel);
 
             var descriptionLabel = cc.LabelTTF.create(product.disc, "STHeitiTC-Medium", 18);
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel.setColor(cc.c3b(74, 27, 27));
             descriptionLabel.setPosition(cc.p(170, y + 85));
-            scrollViewLayer.addChild(descriptionLabel);
+            slideLabel[i].addChild(descriptionLabel);
 
             var costIcon = cc.LabelTTF.create("价格:", "STHeitiTC-Medium", 20);
             costIcon.setColor(cc.c3b(74, 27, 27));
             costIcon.setAnchorPoint(cc.p(0, 0.5));
             costIcon.setPosition(cc.p(170, y + 45));
-            scrollViewLayer.addChild(costIcon);
+            slideLabel[i].addChild(costIcon);
 
             var costTypeIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon[product.consume_type]]);
             costTypeIcon.setPosition(cc.p(245, y + 45));
-            scrollViewLayer.addChild(costTypeIcon);
+            slideLabel[i].addChild(costTypeIcon);
 
             var costLabel = cc.LabelTTF.create(product.consume, "STHeitiTC-Medium", 20);
             costLabel.setColor(cc.c3b(74, 27, 27));
             costLabel.setAnchorPoint(cc.p(0, 0.5));
             costLabel.setPosition(cc.p(275, y + 42));
-            scrollViewLayer.addChild(costLabel);
+            slideLabel[i].addChild(costLabel);
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
 
         this._scrollView = cc.ScrollView.create(this._propsLayerFit.scrollViewSize, scrollViewLayer);
@@ -160,6 +173,16 @@ var PropsLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
+        var slideLayer = SlideLayer.create(
+            {
+                labels: slideLabel,
+                slideTime: 0.4,
+                timeTick: 0.05
+            }
+        );
+
+        slideLayer.showSlide();
+
         return true;
     },
 
@@ -169,7 +192,7 @@ var PropsLayer = cc.Layer.extend({
         var player = gameData.player;
 
         this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
     },
 
     _onClickPayment: function () {
@@ -195,18 +218,40 @@ var PropsLayer = cc.Layer.extend({
 
             cc.log(product);
 
-            if (product.count <= 0) {
-                TipLayer.tip(product.tip);
-                return;
-            }
+            if (product.remainTimes <= 0) {
 
-            var that = this;
-            AmountLayer.pop(
-                function (count) {
-                    that._buyProduct(id, count);
-                },
-                product
-            );
+                if (id <= 2) {
+
+                    var tipVip = gameData.player.get("vip") + 1;
+
+                    tipVip = Math.max(tipVip, 1);
+                    tipVip = Math.min(tipVip, 12);
+
+                    if (id == 1) {
+                        if (gameData.shop.get("expCardBuyCount") <= 0) {
+                            GoPaymentLayer.pop({
+                                title: "经验元灵购买次数已用完",
+                                msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
+                            });
+                        }
+                    } else {
+                        if (gameData.shop.get("powerBuyCount") <= 0) {
+                            GoPaymentLayer.pop({
+                                title: "体力购买次数已用完",
+                                msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
+                            });
+                        }
+                    }
+                }
+            } else {
+                var that = this;
+                AmountLayer.pop(
+                    function (count) {
+                        that._buyProduct(id, count);
+                    },
+                    product
+                );
+            }
         }
     },
 

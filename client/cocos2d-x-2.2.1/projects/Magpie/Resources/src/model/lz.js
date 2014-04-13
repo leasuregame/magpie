@@ -8,10 +8,13 @@
 
 
 /*
- * 命名空间
+ * lz
  * */
+
+
 var lz = lz || {};
 
+// 判断平台是否浏览器
 lz.TARGET_PLATFORM_IS_BROWSER = !("opengl" in sys.capabilities && "browser" != sys.platform);
 
 /*
@@ -201,7 +204,14 @@ var gameGoodsIcon = {
     "skillPoint": "icon152",
     "spirit": "icon317",
     "exp_card": "icon316",
-    "exp": "icon318"
+    "exp": "icon318",
+    "speaker": "icon375",
+    "honor": "icon405",
+    "superHonor": "icon406"
+};
+
+lz.getGoodsIconByKey = function (key) {
+    return gameGoodsIcon[key];
 };
 
 var gameGoodsName = {
@@ -223,7 +233,7 @@ var gameGoodsName = {
     "powerValue": {
         name: "体力",
         color: cc.c3b(255, 239, 131),
-        icon: gameGoodsIcon["powerValue"]
+        icon: gameGoodsIcon["power"]
     },
     "power": {
         name: "体力",
@@ -236,6 +246,11 @@ var gameGoodsName = {
         icon: gameGoodsIcon["elixir"]
     },
     "fragment": {
+        name: "卡魂",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["fragment"]
+    },
+    "fragments": {
         name: "卡魂",
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["fragment"]
@@ -254,7 +269,7 @@ var gameGoodsName = {
         name: "灵气",
         color: cc.c3b(118, 238, 60),
         icon: gameGoodsIcon["spirit"]
-    }, 
+    },
     "spirit": {
         name: "灵气",
         color: cc.c3b(118, 238, 60),
@@ -285,10 +300,28 @@ var gameGoodsName = {
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)
+    },
+    "cardArray": {
+        color: cc.c3b(255, 239, 131)
+    },
+    "speaker": {
+        name: "喇叭",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["speaker"]
+    },
+    "honor": {
+        name: "荣誉",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["honor"]
+    },
+    "superHonor": {
+        name: "精元",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["superHonor"]
     }
 };
 
-lz.getNameByKey = function (key) {
+lz.getGoodsNameByKey = function (key) {
     return gameGoodsName[key] || {
         name: key,
         color: cc.c3b(255, 255, 255)
@@ -300,16 +333,29 @@ lz.getRewardString = function (data) {
 
     for (var key in data) {
         if (data[key]) {
-            var reward = lz.getNameByKey(key);
+            var reward = lz.getGoodsNameByKey(key);
 
             if (key == "cards") {
                 var cards = data[key];
-                if (cards.length > 0) {
-                    str.push({
-                        str: cards[0].lv + "级" + reward.name + " : " + 1,
-                        color: reward.color,
-                        icon: reward.icon
-                    });
+                var count = {};
+                var len = cards.length;
+                var lv;
+
+                for (var i = 0; i < len; ++i) {
+                    if (cards[i]) {
+                        lv = cards[i].lv;
+                        count[lv] = count[lv] ? count[lv] + 1 : 1;
+                    }
+                }
+
+                for (lv in count) {
+                    if (count[lv]) {
+                        str.push({
+                            str: lv + "级" + reward.name + " : " + count[lv],
+                            color: reward.color,
+                            icon: reward.icon
+                        });
+                    }
                 }
             } else {
                 if (key != "fragment" && data[key] > 0) {
@@ -326,51 +372,225 @@ lz.getRewardString = function (data) {
     return str;
 };
 
-lz.getGameGoodsIcon = function (name) {
-    return gameGoodsIcon[name];
-};
+(function () {
+    var TIP_INTERVAL = 0.5 * 1000;
+    var lastTimestamp = 0;
 
-lz.tipReward = function (reward) {
-    reward = reward || {};
+    lz.tipReward = function (keyOrObj, count, isDouble) {
+        var reward = null;
 
-    var key;
-    var delay = 0;
+        if (typeof (keyOrObj) === "string") {
+            reward = {};
+            reward[keyOrObj] = count || 1;
+        } else {
+            reward = keyOrObj;
+        }
 
-    for (key in reward) {
-        if (!reward[key]) return;
+        for (var key in reward) {
+            if (!reward[key]) continue;
 
-        var fn = (function (key) {
-            return function () {
-                var str = lz.getNameByKey(key);
-                if (str.icon) {
-                    TipLayer.tipWithIcon(str.icon, " +" + reward[key]);
-                } else {
-                    TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+            var fn = (function (key) {
+                return function () {
+                    var str = lz.getGoodsNameByKey(key);
+
+                    if (str.icon) {
+                        TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
+                    } else {
+                        if (key == "cardArray") {
+                            var cards = reward[key];
+                            var len = cards.length;
+
+                            for (var i = 0; i < len; i++) {
+                                var card = Card.create(cards[i]);
+                                TipLayer.tipNoBg(card.get("name") + ": +1");
+                            }
+                        } else {
+                            TipLayer.tipNoBg(str.name + ": +" + reward[key]);
+                        }
+                    }
                 }
-            }
-        })(key);
+            })(key);
 
-        lz.scheduleOnce(fn, delay);
+            var now = Date.now();
+            lastTimestamp += TIP_INTERVAL;
+            lastTimestamp = Math.max(lastTimestamp, now);
+            var delay = (lastTimestamp - now) / 1000;
 
-        delay += 0.6;
+            lz.scheduleOnce(fn, delay);
+        }
+    };
+})();
+
+
+/*
+ * 设置时间格式
+ * time: 时间
+ * fmt: 格式
+ * */
+lz.getTimeStr = function (args) {
+    var date = (args && args.time) ? new Date(args.time) : new Date();
+    var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";
+
+    var o = {
+        "M+": date.getMonth() + 1, //月
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds() //秒
+    };
+
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
     }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+
+    return fmt;
 };
 
-lz.getTimeStr = function (time) {
-    cc.log("BattleMessageLayer _getTimeStr");
+lz.getMoneyStr = function (money) {
+    var threshold = 100000;
 
-    var date = new Date(time);
-    var today = new Date();
-    var timeStr = "";
-
-    if (today.toDateString() === date.toDateString()) {
-        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+    if (money < threshold) {
+        return ("" + money)
     } else {
-        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+        return (Math.floor(money / 10000) + "万");
+    }
+};
+
+var MAX_LAST_NAME_COUNT = 250;
+var MAX_FIRST_NAME_COUNT = 2568;
+var MAX_ILLEGAL_STR_COUNT = 780;
+
+lz.getRandomFirstName = function () {
+    cc.log("lz getRandomFirstName");
+
+    return (outputTables.first_name.rows[lz.randomInt(1, MAX_FIRST_NAME_COUNT)].first_name);
+};
+
+lz.getRandomLastName = function () {
+    cc.log("lz getRandomLastName");
+
+    return (outputTables.last_name.rows[lz.randomInt(1, MAX_LAST_NAME_COUNT)].last_name);
+};
+
+lz.getRandomName = function () {
+    cc.log("lz getRandomName");
+
+    return (lz.getRandomLastName() + lz.getRandomFirstName());
+};
+
+lz.eligibleName = function (name) {
+    cc.log("lz eligibleName");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        if (name.indexOf(illegalStr[i].illegal_str) != -1) {
+            cc.log(illegalStr[i].illegal_str);
+
+            return false;
+        }
     }
 
-    return timeStr;
+    return true;
 };
+
+lz.replaceStr = function (str) {
+    cc.log("lz replaceStr");
+
+    var illegalStr = outputTables.illegal_str.rows;
+
+    for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+        var index = 0;
+        var illegalWord = illegalStr[i].illegal_str;
+        var len = illegalWord.length;
+
+        while (true) {
+            index = str.indexOf(illegalWord, index);
+
+            if (index == -1) {
+                break;
+            }
+
+            var sStr = str.substring(0, index);
+            var eStr = str.substring(index + len);
+
+            str = sStr;
+
+            for (var j = 0; j < len; ++j) {
+                str += "*";
+            }
+
+            str += eStr;
+
+            index += len;
+        }
+    }
+
+    return str;
+};
+
+lz.checkPoint = function (point) {
+    cc.log("lz checkPoint");
+
+    var x = point.x;
+    var y = point.y;
+    var gameView = gameFit.GAME_VIEW;
+
+    var minX = gameView.x;
+    var maxX = minX + gameView.width;
+
+    var minY = gameView.y;
+    var maxY = minY + gameView.height;
+
+    x = Math.max(minX, x);
+    x = Math.min(maxX, x);
+
+    y = Math.max(minY, y);
+    y = Math.min(maxY, y);
+
+    return cc.p(x, y)
+};
+
+lz.load = function (key) {
+    var str = sys.localStorage.getItem(key);
+
+    if (str) {
+        try {
+            var item = JSON.parse(str);
+
+            return item.data;
+        } catch (e) {
+            cc.log(str);
+            cc.log(e);
+
+            sys.localStorage.removeItem(key);
+        }
+    }
+
+    return undefined;
+};
+
+lz.save = function (key, data) {
+    var type = typeof(data);
+
+    var item = {
+        data: data,
+        type: type
+    };
+
+    var str = JSON.stringify(item);
+
+    if (str) {
+        sys.localStorage.setItem(key, str);
+    }
+};
+
 
 /*
  * 数组去重

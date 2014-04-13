@@ -3,7 +3,9 @@ var path = require('path');
 var Data = require('./data');
 var _ = require('underscore');
 var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var app = pomelo.createApp({
+  base: path.join(__dirname, '..')
+});
 
 var genDao = function(key) {
   app.set('env', process.argv[3] || 'development');
@@ -37,6 +39,12 @@ var main = function() {
       quenues.push(gdata.fixDuplicateRanking);
     case 'reset-ranking': 
       quenues.push(gdata.resetRanking);
+    case 'change-card-tableid': 
+      quenues.push(gdata.correctCardTableId);
+    case 'change-card-book': 
+      quenues.push(gdata.correctCardBook);
+    case 'change-card-ps': 
+      quenues.push(gdata.changeCardPassiveSkill);      
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

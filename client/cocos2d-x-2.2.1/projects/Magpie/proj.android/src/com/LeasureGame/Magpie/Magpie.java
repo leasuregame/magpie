@@ -25,12 +25,37 @@ package com.LeasureGame.Magpie;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 public class Magpie extends Cocos2dxActivity{
+	public static Context STATIC_REF = null;
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		
+		STATIC_REF = this;
+	}
+	
+	public static Context getContext(){
+	    return STATIC_REF;
+	}
+	
+	public static String getAppVersion() {
+		String version = "";
+		
+		try {
+			PackageManager pm = STATIC_REF.getPackageManager();  
+			PackageInfo pi = pm.getPackageInfo(STATIC_REF.getPackageName(), 0);  
+			version = pi.versionName;
+		} catch (Exception e) {  
+			Log.e("VersionInfo", "Exception", e);  
+	    } 
+		
+		return version;
 	}
 	
     static {

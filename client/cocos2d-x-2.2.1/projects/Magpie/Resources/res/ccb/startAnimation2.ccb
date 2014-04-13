@@ -188,6 +188,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -544,8 +546,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s36.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s36.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1217,8 +1219,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s39.png</string>
+											<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+											<string>s39.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1356,8 +1358,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s40.png</string>
+											<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+											<string>s40.png</string>
 										</array>
 									</dict>
 								</array>
@@ -1487,8 +1489,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s41.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s41.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1940,8 +1942,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s32.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s32.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2070,8 +2072,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s33.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s33.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2200,8 +2202,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s34.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s34.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2330,8 +2332,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s35.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s35.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2641,8 +2643,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s42.png</string>
+											<string>res/effect/startAnimation/startAnimationRes4.plist</string>
+											<string>s42.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2911,8 +2913,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s43.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s43.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3457,8 +3459,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string>res/effect/startAnimation/s31.png</string>
+											<string>res/effect/startAnimation/startAnimationRes1.plist</string>
+											<string>s31.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3789,8 +3791,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s44.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s44.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4000,8 +4002,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s45.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s45.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4211,8 +4213,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s46.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s46.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4224,17 +4226,6 @@
 								<string>Byte</string>
 								<key>value</key>
 								<integer>0</integer>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>blendFunc</string>
-								<key>type</key>
-								<string>Blendmode</string>
-								<key>value</key>
-								<array>
-									<integer>770</integer>
-									<integer>771</integer>
-								</array>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -4433,8 +4424,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s47.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s47.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4644,8 +4635,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>res/effect/startAnimation/s48.png</string>
+									<string>res/effect/startAnimation/startAnimationRes2.plist</string>
+									<string>s48.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5340,7 +5331,7 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string>next</string>
+							<string>ccbFnNext</string>
 							<integer>2</integer>
 						</array>
 					</dict>

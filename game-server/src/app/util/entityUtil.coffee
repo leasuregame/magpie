@@ -1,7 +1,7 @@
 dao = require('pomelo').app.get('dao')
+playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
-cardConfig = require '../../config/data/card'
-playerConfig = require '../../config/data/player'
+configData = require '../../config/data'
 utility = require '../common/utility'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
@@ -15,8 +15,8 @@ module.exports =
       data.star = data.tableId%5 or 5
 
     if data.star >= 3
-      data.passiveSkills = initPassiveSkill(data.star)
-      genSkillInc(data)
+      data.passiveSkills = initPassiveSkillGroup(data.star)
+      genFactorForCard(data)
 
     dao.card.create data: data, (err, card) ->
       if err
@@ -30,24 +30,26 @@ module.exports =
     ### 等级到达最高级后不加经验 ###
     if player.lv >= MAX_PLAYER_LV
       player.exp = 0
-      return
+      return cb(false)
 
     player.increase('exp', exp)
     upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
     isUpgrade = false
     level9Box = null
-    rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
+    rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0, power: 0
     while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.decrease 'exp', upgradeInfo.exp
+      
       updateFriendCount(player)
 
       rewards.money += upgradeInfo.money
       rewards.energy += upgradeInfo.energy
       rewards.skillPoint += upgradeInfo.skillPoint
       rewards.elixir += upgradeInfo.elixir
+      rewards.power += upgradeInfo.power
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
       if player.lv is 9
@@ -66,43 +68,104 @@ module.exports =
       player.increase('energy', rewards.energy)
       player.increase('skillPoint', rewards.skillPoint)
       player.increase('elixir', rewards.elixir)
+      player.addPower rewards.power
 
     if player.lv is MAX_PLAYER_LV
       player.exp = 0
       
     cb(isUpgrade, level9Box, rewards)
 
-  randomCardId: (star) ->
-    tableIds = table.getTable('cards').filter((id) -> id <= 500)
-        .map((item) -> parseInt(item.id))
-        .sort((x, y) -> x - y)
-    len = tableIds.length
-    idx = _.random(0, len/5 - 1) * 5 + parseInt(star) - 1
-    tableIds[idx]
+  randomCardId: (star, lightUpIds) ->
+    ###
+      点亮7张卡牌后，概率随机到新卡和旧卡
+    ###
+    if lightUpIds.length > configData.card.LUCKY_CARD_LIMIT.COUNT
+      if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
+        id = generateCardId star, null, lightUpIds
+      else
+        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
+        lightUpIds = filterTableId lightUpIds if star is 5
+        id = generateCardId star, lightUpIds
+        vstar = cardStar(id)
+        id += star - vstar if star isnt vstar
+    else
+      id = generateCardId star
+
+    id
 
   randomCardIds: (stars, num) ->
     utility.randArrayItems getCardIdsByStar(stars), num
 
-getCardIdsByStar = (stars) ->
+  getReward: (player, data, cb) ->
+    setIfExist(player, data)
+
+    if typeof data.spirit != 'undefined' and data.spirit > 0
+      player.incSpirit(data.spirit)
+    if typeof data.power != 'undefined' and data.power > 0
+      player.addPower(data.power)
+    if typeof data.exp_card != 'undefined' and data.exp_card > 0
+      playerManager.addExpCardFor player, data.exp_card, cb
+    else 
+      cb(null, [])
+
+setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
+  player.increase att, val for att, val of data when att in attrs and val > 0
+  return
+
+filterTableId = (ids) ->
+  # 过滤掉5星卡牌及与其同一系列的所有卡牌
+  exceptIds = []
+  ids.forEach (i) ->
+    if cardStar(i) is 5
+      s = i-4
+      e = i+15
+      exceptIds = exceptIds.concat [s..e]
+  
+  ids.filter (i) -> i not in exceptIds
+
+generateCardId = (star, tableIds, exceptIds) ->
+  ### 
+  star: 卡牌星级
+  tableIds: 如果不为空，那么从tableIds中拿一张
+  exceptIds: 为排除的卡牌id 
+  ###
+  if not tableIds
+    if exceptIds?
+      tableIds = getCardIdsByStar [star], exceptIds
+    else
+      tableIds = getCardIdsByStar [star]
+
+  idx = _.random(0, tableIds.length-1)
+  tableIds[idx]
+
+getCardIdsByStar = (stars, exceptIds = []) ->
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 500 and row.star in stars)
+  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
-  console.log '-a-a-', items
+
+  if items.length is 0 and exceptIds.length > 0
+    return exceptIds.filter (i) -> cardStar(i) in stars
   items
+
+cardStar = (tid) ->
+  tid%20 || 20
+
+genFactorForCard = (card) ->
+  card.factor = _.random(1, 1000)
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)
-  skill = cdata.skill_id_linktarget
+  skill = cdata?.skill_id_linktarget
   if skill?
     min = skill["star#{card.star}_inc_min"]
     max = skill["star#{card.star}_inc_max"]
     card.skillInc = _.random(min, max)
   else
-    logger.warn('can not file skill info of card: ' + card.tableId)
+    logger.warn('can not find skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
-  fl = playerConfig.FRIENDCOUNT_LIMIT
+  fl = configData.player.FRIENDCOUNT_LIMIT
   keys = Object.keys(fl).reverse()
 
   for lv in keys
@@ -115,11 +178,21 @@ initPassiveSkill = (star) ->
   count = star - 2
   results = []
   for i in [0...count]
-    index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1)
-    [start, end] = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-')
+    index = _.random(configData.card.PASSIVESKILL.TYPE.length-1)
+    [start, end] = configData.card.PASSIVESKILL.VALUE_SCOPE.split('-')
     results.push(
       id:i,
-      name: cardConfig.PASSIVESKILL.TYPE[index],
+      name: configData.card.PASSIVESKILL.TYPE[index],
       value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
     )
   results
+
+initPassiveSkillGroup = (star) ->
+  list = []
+  for i in [1..3]
+    list.push {
+      id: i,
+      items: initPassiveSkill(star)
+      active: if i is 1 then true else false
+    }
+  list

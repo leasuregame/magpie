@@ -25,7 +25,7 @@ var PassRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.beginLogPageView("天道排行榜界面");
+        lz.um.beginLogPageView("天道排行榜界面");
     },
 
     onExit: function () {
@@ -33,7 +33,7 @@ var PassRankLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("天道排行榜界面");
+        lz.um.endLogPageView("天道排行榜界面");
     },
 
     init: function () {
@@ -51,16 +51,23 @@ var PassRankLayer = cc.Layer.extend({
             scrollViewHeight = this._passRankLayerFit.scrollViewHeight;
         }
 
+        var slideLabel = [];
+
         var scrollViewLayer = MarkLayer.create(this._passRankLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
 
         this._playerItem = {};
         var own = gameData.player.get("id");
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 120 - 120 * i;
+
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
+
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(menu);
 
             if (this._passRankList[i].id == own) {
 
@@ -69,7 +76,7 @@ var PassRankLayer = cc.Layer.extend({
                 myselfSprite.setScaleY(0.9);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
-                scrollViewLayer.addChild(myselfSprite);
+                slideLabel[i].addChild(myselfSprite);
             } else {
 
                 var playerItem = cc.MenuItemImage.create(
@@ -90,45 +97,47 @@ var PassRankLayer = cc.Layer.extend({
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
                 rankIcon.setPosition(cc.p(60, y + 60));
-                scrollViewLayer.addChild(rankIcon);
+                slideLabel[i].addChild(rankIcon);
             } else {
                 var rankLabel = StrokeLabel.create(i + 1, "Arial", 55);
                 rankLabel.setColor(cc.c3b(255, 252, 175));
                 rankLabel.setPosition(cc.p(60, y + 62));
-                scrollViewLayer.addChild(rankLabel);
+                slideLabel[i].addChild(rankLabel);
             }
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(155, 35));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
             nameIcon.setPosition(cc.p(105, y + 80));
-            scrollViewLayer.addChild(nameIcon);
+            slideLabel[i].addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(this._passRankList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 80));
-            scrollViewLayer.addChild(nameLabel);
+            slideLabel[i].addChild(nameLabel);
 
             var passIcon = cc.Sprite.create(main_scene_image.icon206);
             passIcon.setPosition(cc.p(420, y + 60));
-            scrollViewLayer.addChild(passIcon);
+            slideLabel[i].addChild(passIcon);
 
             var passLabel = cc.LabelTTF.create(this._passRankList[i].passLayer, "Arial", 35);
-            passLabel.setColor(cc.c3b(56, 3, 5));
+            passLabel.setColor(cc.c3b(123, 60, 54));
             passLabel.setAnchorPoint(cc.p(0, 0.5));
             passLabel.setPosition(cc.p(465, y + 55));
-            scrollViewLayer.addChild(passLabel);
+            slideLabel[i].addChild(passLabel);
 
             var abilityIcon = cc.Sprite.create(main_scene_image.icon207);
             abilityIcon.setPosition(cc.p(140, y + 40));
-            scrollViewLayer.addChild(abilityIcon);
+            slideLabel[i].addChild(abilityIcon);
 
             var abilityLabel = cc.LabelTTF.create(this._passRankList[i].ability, "Arial", 22);
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
             abilityLabel.setPosition(cc.p(175, y + 37));
-            scrollViewLayer.addChild(abilityLabel);
+            slideLabel[i].addChild(abilityLabel);
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
 
         var scrollView = cc.ScrollView.create(this._passRankLayerFit.scrollViewSize, scrollViewLayer);
@@ -179,6 +188,18 @@ var PassRankLayer = cc.Layer.extend({
 
         this._skyDialog.setLabel(label);
         this._skyDialog.setRect(this._passRankLayerFit.skyDialogRect);
+
+
+        var slideLayer = SlideLayer.create(
+            {
+                labels: slideLabel,
+                slideTime: 0.4,
+                timeTick: 0.05
+            }
+        );
+
+        slideLayer.showSlide();
+
 
         return true;
     },

@@ -100,18 +100,11 @@ var CardLibrary = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg.cardBook);
-
-                    lz.server.on("onLightUpCard", function (data) {
-                        cc.log("***** on message:");
-                        cc.log(data);
-
-                        that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
-                        gameMark.updateCardLibraryMark(true);
-                    });
+                    that.setListener();
 
                     gameMark.updateCardLibraryMark(false);
 
-                    lz.dc.event("event_get_card_book");
+                    lz.um.event("event_get_card_book");
                 } else {
                     cc.log("sync fail");
 
@@ -122,42 +115,46 @@ var CardLibrary = Entity.extend({
         );
     },
 
-    _sort: function (a, b) {
-        var starA = a.card.get("star");
-        var starB = b.card.get("star");
+    setListener: function () {
+        cc.log("CardLibrary setListener");
 
-        var tableIdA = a.card.get("tableId");
-        var tableIdB = b.card.get("tableId");
+        var that = this;
 
-        if (starA != starB) {
-            return (starB - starA);
-        } else {
-            return tableIdA - tableIdB;
-        }
+        lz.server.on("onLightUpCard", function (data) {
+            cc.log("***** on message:");
+            cc.log(data);
+
+            that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
+            gameMark.updateCardLibraryMark(true);
+        });
+    },
+
+    _sort1: function (a, b) {
+        return (a.card.get("tableId") - b.card.get("tableId"));
     },
 
     _sort2: function (a, b) {
+        var cardLibrary = gameData.cardLibrary;
 
-        var stateA = gameData.cardLibrary.getTypeById(a.id);
-        var stateB = gameData.cardLibrary.getTypeById(b.id);
-
-        var starA = a.card.get("star");
-        var starB = b.card.get("star");
+        var stateA = cardLibrary.getTypeById(a.id);
+        var stateB = cardLibrary.getTypeById(b.id);
 
         var tableIdA = a.card.get("tableId");
         var tableIdB = b.card.get("tableId");
 
-        if (stateA != stateB && (stateA == CARD_RECEIVE || stateB == CARD_RECEIVE)) {
-            return stateB - stateA;
-        } else if (starA != starB) {
-            return (starA - starB);
-        } else {
-            return tableIdA - tableIdB;
+        if (stateA == CARD_RECEIVE && stateB != CARD_RECEIVE) {
+            return -1;
         }
+
+        if (stateA != CARD_RECEIVE && stateB == CARD_RECEIVE) {
+            return 1;
+        }
+
+        return (tableIdA - tableIdB);
     },
 
     isSortByState: function (res) {
-        var sort = res ? this._sort2 : this._sort;
+        var sort = res ? this._sort2 : this._sort1;
         this._cardLibrary.sort(sort);
     },
 
@@ -189,7 +186,7 @@ var CardLibrary = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_receive_card_book_reward", id);
+                lz.um.event("event_receive_card_book_reward", id);
             } else {
                 cc.log("receive fail");
             }

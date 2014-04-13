@@ -18,55 +18,71 @@ var UPDATE_POWER_VALUE = 5;
 var OVER_NOVICE_STEP = 17;
 var LOTTERY_ENOUGH = 200;
 
+var MONTH_CARD = 0;
+var WEEK_CARD = 1;
+
+var NO_FIRST_RECHARGER_BOX = 0;
+var HAS_FIRST_RECHARGER_BOX = 1;
+var GOT_FIRST_RECHARGER_BOX = 2;
+
+var POWER_NOTIFICATION_KEY = 1;
+
 var Player = Entity.extend({
-    _id: 0,             // 数据库id
-    _uid: "",           // 玩家唯一标识
-    _createTime: 0,     // 创建时间
-    _userId: 0,         // 账号id
-    _areaId: 0,         // 区
-    _name: "",          // 角色
-    _power: 0,          // 体力
-    _powerTimestamp: 0, // 体力时间戳
-    _lv: 0,             // 等级
-    _exp: 0,            // 经验
-    _gold: 0,           // 魔石
-    _money: 0,          // 金钱
-    _elixir: 0,         // 仙丹
-    _fragment: 0,       // 卡魂
-    _energy: 0,         // 活力
-    _skillPoint: 0,     // 技能点
-    _vip: 0,            // VIP等级
-    _cash: 0,           // 付费
-    _rank: 0,
+    _id: 0,                 // 数据库id
+    _uid: "",               // 玩家唯一标识
+    _createTime: 0,         // 创建时间
+    _userId: 0,             // 帐号id
+    _areaId: 0,             // 区
+    _name: "",              // 角色
+    _power: 0,              // 体力
+    _powerTimestamp: 0,     // 体力时间戳
+    _lv: 0,                 // 等级
+    _exp: 0,                // 经验
+    _gold: 0,               // 魔石
+    _money: 0,              // 金钱
+    _elixir: 0,             // 仙丹
+    _fragment: 0,           // 卡魂
+    _energy: 0,             // 活力
+    _skillPoint: 0,         // 技能点
+    _vip: 0,                // VIP等级
+    _cash: 0,               // 付费
+    _goldCards: {},         // 周卡月卡
+    _recharge: 0,           // 充值记录标记
+    _firstRechargeBox: 0,   // 首充礼包标记
+    _evolutionRate: null,   // 星级进阶概率
     _maxTournamentCount: 0,
     _tournamentCount: 0,
+    _ability: 0,            // 战斗力
+    _speaker: 0,            // 喇叭数量
 
-    _maxLv: 0,          // 最大等级
-    _maxPower: 0,       // 最大体力
-    _maxMoney: 0,       // 最大金钱
-    _maxSkillPoint: 0,  // 最大技能点
-    _maxEnergy: 0,      // 最大活力
-    _maxExp: 0,         // 最大经验
+    _maxLv: 0,              // 最大等级
+    _maxPower: 0,           // 最大体力
+    _maxMoney: 0,           // 最大金钱
+    _maxSkillPoint: 0,      // 最大技能点
+    _maxEnergy: 0,          // 最大活力
+    _maxExp: 0,             // 最大经验
+
+    _honor: 0,              // 荣誉
+    _superHonor: 0,         // 精元
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
-    init: function (data) {
+    init: function (data, cb) {
         cc.log("Player init");
 
-        MAX_LINE_UP_CARD = 3;
+        this.unscheduleAllCallbacks();
 
-        cc.log("teachingStep = " + data.teachingStep);
-        if (data.teachingStep != null) {
-            this.set("noviceTeachStep", data.teachingStep);
-        }
+        this._evolutionRate = {};
 
         this.off();
         this.on("lvChange", this._lvChangeEvent);
         this.on("energyChange", this._energyChangeEvent);
         this.on("vipChange", this._vipChangeEvent);
+        this.on("powerChange", this._powerChangeEven);
 
         this._load();
         this.update(data);
+        this.sync();
 
         gameData.cardLibrary.init();
         gameData.friend.init();
@@ -76,12 +92,16 @@ var Player = Entity.extend({
         gameData.achievement.init();
         gameData.activity.init();
         gameData.speak.init();
-       // gameData.exchange.init();
         gameData.payment.init();
-
-        cc.log(this);
+        gameData.greeting.init();
 
         this.schedule(this.updatePower, UPDATE_POWER_TIME_INTERVAL);
+
+        this.setListener();
+
+        if (cb) {
+            cb();
+        }
 
         return true;
     },
@@ -99,24 +119,44 @@ var Player = Entity.extend({
     update: function (data) {
         cc.log("Player update");
 
+        this.set("noviceTeachStep", data.teachingStep);
         this.set("id", data.id);
         this.set("uid", data.uniqueId);
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
-        this.set("vip", data.vip);
         this.set("name", data.name);
-        this.set("lv", data.lv);
         this.set("exp", data.exp);
         this.set("gold", data.gold);
         this.set("money", data.money);
         this.set("elixir", data.elixir);
         this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
-        this.set("energy", data.energy);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
         this.set("powerTimestamp", data.power.time);
+        this.set("goldCards", data.goldCards);
+        this.set("vip", data.vip);
+        this.set("honor", data.honor);
+        this.set("superHonor", data.superHonor);
+
+        if (data.speaker) {
+            this.set("speaker", data.speaker);
+        } else {
+            this.set("speaker", 0);
+        }
+
+        if (data.firstTime) {
+            this.set("recharge", data.firstTime.recharge);
+            this.set("firstRechargeBox", data.firstTime.firstRechargeBox)
+        } else {
+            this.set("recharge", 127);
+            this.set("firstRechargeBox", NO_FIRST_RECHARGER_BOX);
+        }
+
+        // 需要调用gameMark
+        this.set("lv", data.lv);
+        this.set("energy", data.energy);
 
         gameData.clock.init(data.serverTime);
         gameData.cardList.init(data.cards, data.cardsCount);
@@ -133,11 +173,107 @@ var Player = Entity.extend({
         gameData.shop.init({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
-            challengeBuyCount: data.dailyGift.challengeBuyCount
+            challengeBuyCount: data.dailyGift.challengeBuyCount,
+            expCardBuyCount: data.dailyGift.expCardCount
         });
-        gameData.lottery.init(data.firstTime);
-        cc.log(data.exchangeCards);
-        gameData.exchange.init(data.exchangeCards)
+        gameData.lottery.init({
+            firstTime: data.firstTime,
+            goldLuckyCard10: data.dailyGift.goldLuckyCard10,
+            goldLuckyCardForFragment: data.dailyGift.goldLuckyCardForFragment
+        });
+        gameData.exchange.init(data.exchangeCards);
+        gameData.boss.init(data.bossInfo);
+
+        this.set("ability", this.getAbility());
+    },
+
+    sync: function () {
+        cc.log("Player sync");
+
+        var that = this;
+        lz.server.request(
+            "area.trainHandler.starUpgradeInitRate",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("Player sync success");
+
+                    var msg = data.msg;
+
+                    that.set("evolutionRate", msg.initRate);
+
+                    lz.um.event("event_order_list");
+                } else {
+                    cc.log("Player sync fail");
+
+                    that.sync();
+                }
+            },
+            true
+        );
+    },
+
+    setListener: function () {
+        cc.log("Player setListener");
+
+        lz.server.on("onResetData", function (data) {
+            cc.log("***** on reset data:");
+            cc.log(data);
+
+            var msg = data.msg;
+
+            gameData.task.update(msg.task);
+            gameData.pass.update(msg.pass);
+            gameData.spiritPool.update(msg.spiritPool);
+            gameData.friend.update({
+                "maxFriendCount": msg.friendsCount
+            });
+            gameData.treasureHunt.update({
+                count: msg.dailyGift.lotteryCount,
+                freeCount: msg.dailyGift.lotteryFreeCount
+            });
+            gameData.shop.update({
+                powerBuyCount: msg.dailyGift.powerBuyCount,
+                challengeBuyCount: msg.dailyGift.challengeBuyCount,
+                expCardBuyCount: msg.dailyGift.expCardCount
+            });
+
+            MainScene.getInstance().updateMark();
+        });
+    },
+
+    getAbility: function () {
+        var lineUpCardList = gameData.lineUp.getLineUpCardList();
+        var len = lineUpCardList.length;
+        var ability = 0;
+        var card = null;
+        var spiritPassiveHarm = gameData.spirit.get("passiveHarm");
+
+        for (var i = 0; i < len; ++i) {
+            card = lineUpCardList[i];
+            ability += card.get("ability");
+            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
+        }
+
+        return ability;
+    },
+
+    checkAbility: function () {
+        cc.log("Player checkAbility");
+
+        var ability = this.getAbility();
+
+        if (ability != this._ability) {
+            TipLayer.tipAbility(ability - this._ability);
+        }
+
+        cc.log(this._ability);
+        cc.log(ability);
+
+        this._ability = ability;
     },
 
     updatePower: function () {
@@ -148,17 +284,29 @@ var Player = Entity.extend({
         var serverTime = gameData.clock.get("time");
 
         var interval = serverTime - this._powerTimestamp;
+        var power = this._power;
 
         if (interval > 0) {
             var times = Math.floor(interval / UPDATE_POWER_TIME);
 
-            this._power += UPDATE_POWER_VALUE * times;
+            power += UPDATE_POWER_VALUE * times;
             this._powerTimestamp += times * UPDATE_POWER_TIME;
 
-            if (this._power > this._maxPower) {
-                this._power = this._maxPower;
+            if (power > this._maxPower) {
+                power = this._maxPower;
             }
         }
+
+        if (this._power != power) {
+            this.set("power", power);
+        }
+    },
+
+    correctionPower: function (power, powerTimestamp) {
+        gameData.clock.updateServerTime();
+
+        this.set("power", power);
+        this.set("powerTimestamp", powerTimestamp);
     },
 
     upgrade: function (data) {
@@ -170,42 +318,23 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
-
-        gameGuide.updateGuide();
     },
 
     isFullLv: function () {
-        cc.log("Player isFullLv");
-
-        if (this._lv == this._maxLv) {
-            return true;
-        }
-
-        return false;
+        return (this._lv >= this._maxLv);
     },
 
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
 
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
-
-        var table = outputTables.function_limit.rows[1];
-
-        MAX_LINE_UP_CARD = 2;
-
-        if (this._lv >= table.card5_position) {
-            MAX_LINE_UP_CARD = 5;
-        } else if (this._lv >= table.card4_position) {
-            MAX_LINE_UP_CARD = 4;
-        } else if (this._lv >= table.card3_position) {
-            MAX_LINE_UP_CARD = 3;
-        }
-
+        gameData.lineUp.update();
         gameMark.updateGoldRewardMark(false);
     },
 
     _energyChangeEvent: function () {
         cc.log("Player _energyChangeEvent");
+
         if (this._energy >= LOTTERY_ENOUGH) {
             gameMark.updateLotteryMark(true);
         } else {
@@ -215,19 +344,22 @@ var Player = Entity.extend({
 
     _vipChangeEvent: function () {
         cc.log("Player _vipChangeEvent");
+
         gameData.shop.updateMaxCount();
     },
 
-    getAbility: function () {
-        var lineUpCardList = gameData.lineUp.getLineUpCardList();
-        var len = lineUpCardList.length;
-        var ability = gameData.spirit.get("ability");
+    _powerChangeEven: function () {
+        cc.log("Player _powerChangeEven");
 
-        for (var i = 0; i < len; ++i) {
-            ability += lineUpCardList[i].get("ability");
+        if (typeof(lz.NotificationHelp) != "undefined") {
+            lz.NotificationHelp.remove(POWER_NOTIFICATION_KEY);
+
+            if (this._power < this._maxPower) {
+                var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
+
+                lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+            }
         }
-
-        return ability;
     },
 
     sendMessage: function (cb, playerId, msg) {
@@ -246,7 +378,7 @@ var Player = Entity.extend({
 
                 cb("success");
 
-                lz.dc.event("event_send_message");
+                lz.um.event("event_send_message");
             } else {
                 cc.log("sendMessage fail");
 
@@ -270,11 +402,11 @@ var Player = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 
                 cb(battleLogId);
 
-                lz.dc.event("event_fight");
+                lz.um.event("event_fight");
             } else {
                 cc.log("learn fail");
 
@@ -300,7 +432,7 @@ var Player = Entity.extend({
 
                 cb(msg);
 
-                lz.dc.event("event_get_player_detail");
+                lz.um.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
 
@@ -309,8 +441,47 @@ var Player = Entity.extend({
         });
     },
 
+    invite: function (cb, key) {
+        cc.log("Player invitation: " + key);
+
+        var that = this;
+        lz.server.request("area.cdkeyHandler.verifyCdkey", {
+            cdkey: key
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("invite success");
+
+                var msg = data.msg;
+                for (key in msg) {
+                    if (key == "cardArray") {
+                        var cards = msg[key];
+                        var len = cards.length;
+                        for (var i = 0; i < len; i++) {
+                            var card = Card.create(cards[i]);
+                            gameData.cardList.push(card);
+                        }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
+                    } else {
+                        that.add(key, msg[key]);
+                    }
+                }
+
+                cb(msg);
+            } else {
+                cc.log("invite fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     setStep: function (step) {
         cc.log("Player setStep: " + step);
+
         var that = this;
         lz.server.request("area.playerHandler.setStep", {
             step: step
@@ -324,7 +495,120 @@ var Player = Entity.extend({
 
                 TipLayer.tip(data.msg);
             }
-        });
+        }, true);
+    },
+
+    getRemainDays: function (type) {
+        cc.log("Player getRemainDays: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.remainingDays || 0;
+            } else {
+                return 0;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.remainingDays || 0;
+            } else {
+                return 0;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+    },
+
+    isGotDaily: function (type) {
+        cc.log("Player isGotDaily: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.hasGot;
+            } else {
+                return 1;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.hasGot;
+            } else {
+                return 1;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+    },
+
+    goldCardsStatus: function (type) {
+        cc.log("Player goldCardsStatus: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                return goldCards.month.status;
+            } else {
+                return 0;
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                return goldCards.week.status;
+            } else {
+                return 0;
+            }
+        } else {
+            cc.log("类型出错！！！");
+            return 0;
+        }
+    },
+
+    resetGoldCards: function (type) {
+        cc.log("Player resetGoldCards: " + type);
+
+        var goldCards = this.get("goldCards");
+        if (type == MONTH_CARD) {
+            if (goldCards.month) {
+                if (goldCards.month.remainingDays == 0) {
+                    goldCards.month.remainingDays = -1;
+                }
+            } else {
+                goldCards.month = {
+                    "remainingDays": -1
+                };
+            }
+        } else if (type == WEEK_CARD) {
+            if (goldCards.week) {
+                if (goldCards.week.remainingDays == 0) {
+                    goldCards.week.remainingDays = -1;
+                }
+            } else {
+                goldCards.week = {
+                    "remainingDays": -1
+                };
+            }
+        }
+    },
+
+    isFirstPayment: function (id) {
+        cc.log("Player isFirstPayment: " + id);
+
+        var offset = (id - 1) % EACH_NUM_BIT;
+        var mark = this._recharge;
+        return !((mark >> offset & 1) == 1);
+    },
+
+    getEvolutionRate: function (star) {
+        cc.log("Player getEvolutionRate: " + star);
+
+        var rate = this._evolutionRate;
+
+        if (rate) {
+            return rate["star" + star] || 0;
+        }
+
+        return 0;
     }
 });
 

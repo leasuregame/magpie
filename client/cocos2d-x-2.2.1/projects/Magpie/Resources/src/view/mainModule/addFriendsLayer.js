@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var AddFriendsLayer = cc.Layer.extend({
     _addFriendsLayerFit: null,
 
@@ -24,7 +25,7 @@ var AddFriendsLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("添加好友界面");
+        lz.um.beginLogPageView("添加好友界面");
     },
 
     onExit: function () {
@@ -32,7 +33,7 @@ var AddFriendsLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("添加好友界面");
+        lz.um.endLogPageView("添加好友界面");
     },
 
     init: function () {
@@ -206,15 +207,15 @@ var AddFriendsLayer = cc.Layer.extend({
             scrollViewHeight = this._addFriendsLayerFit.scrollViewHeight;
         }
 
-        var menu = LazyMenu.create();
-
-        var friendMenu = LazyMenu.create();
-        friendMenu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(friendMenu);
+        var slideLabel = [];
 
         for (var i = 0; i < listLen; i++) {
 
             var y = scrollViewHeight - 127 - 127 * i;
+
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(false);
 
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
@@ -226,36 +227,41 @@ var AddFriendsLayer = cc.Layer.extend({
             friendItem.setAnchorPoint(cc.p(0, 0));
             friendItem.setPosition(cc.p(0, y));
             friendItem.setScaleY(0.9);
+
+            var friendMenu = LazyMenu.create();
+            friendMenu.setPosition(cc.p(0, 0));
             friendMenu.addChild(friendItem);
+            slideLabel[i].addChild(friendMenu);
+
             this._friendItem[i] = friendItem;
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(180, 35));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
             nameIcon.setPosition(cc.p(40, y + 85));
-            scrollViewLayer.addChild(nameIcon);
+            slideLabel[i].addChild(nameIcon);
 
             var otherIcon = cc.Sprite.create(main_scene_image.icon30);
             otherIcon.setPosition(cc.p(96, y + 38));
-            scrollViewLayer.addChild(otherIcon);
+            slideLabel[i].addChild(otherIcon);
 
             var nameLabel = cc.LabelTTF.create(this._friendsList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(50, y + 85));
-            scrollViewLayer.addChild(nameLabel);
+            slideLabel[i].addChild(nameLabel);
 
             var lvLabel = cc.LabelTTF.create(this._friendsList[i].lv, "STHeitiTC-Medium", 22);
             lvLabel.setColor(cc.c3b(56, 3, 5));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
             lvLabel.setPosition(cc.p(76, y + 36));
-            scrollViewLayer.addChild(lvLabel);
+            slideLabel[i].addChild(lvLabel);
 
             var abilityLabel = cc.LabelTTF.create(this._friendsList[i].ability, "STHeitiTC-Medium", 22);
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
             abilityLabel.setPosition(cc.p(157, y + 36));
-            scrollViewLayer.addChild(abilityLabel);
+            slideLabel[i].addChild(abilityLabel);
 
             var point = cc.p(490, y + 63);
 
@@ -267,12 +273,13 @@ var AddFriendsLayer = cc.Layer.extend({
                 this
             );
             addFriendItem.setPosition(point);
-
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
             menu.addChild(addFriendItem);
-        }
+            slideLabel[i].addChild(menu);
 
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
+            scrollViewLayer.addChild(slideLabel[i]);
+        }
 
         this._scrollView = cc.ScrollView.create(this._addFriendsLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setPosition(this._addFriendsLayerFit.scrollViewPoint);
@@ -283,6 +290,13 @@ var AddFriendsLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
 
+        var slideLayer = SlideLayer.create({
+            labels: slideLabel,
+            slideTime: 0.4,
+            timeTick: 0.05
+        });
+
+        slideLayer.showSlide();
     },
 
     _onClickFriend: function (index) {
@@ -337,9 +351,15 @@ var AddFriendsLayer = cc.Layer.extend({
     _onClickSearchFriend: function () {
         cc.log("AddFriendsLayer _onClickSearchFriend");
 
-        this._searchFriendItem.setEnabled(false);
         var text = this._nameEditBox.getText();
         cc.log("add friend's name: " + text);
+
+        if (text == null || text == "") {
+            TipLayer.tip("请先输入好友名字");
+            return;
+        }
+
+        this._searchFriendItem.setEnabled(false);
 
         var that = this;
         gameData.friend.searchFriend(text, function (friend) {
@@ -370,17 +390,14 @@ var AddFriendsLayer = cc.Layer.extend({
             that.update();
             that._updateFriendsItem.setEnabled(true);
         });
-
     }
-
 });
 
 AddFriendsLayer.create = function () {
+    var ret = new AddFriendsLayer();
 
-    var ref = new AddFriendsLayer();
-
-    if (ref && ref.init()) {
-        return ref;
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;

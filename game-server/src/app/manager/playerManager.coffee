@@ -16,7 +16,6 @@ class Manager
 
   getPlayerInfo: (params, cb) ->
     _player = @getPlayerFromCache(params.pid)
-    console.log '-get player form area cache-', _player != null
     return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
@@ -25,9 +24,9 @@ class Manager
       sync: sync
     }, (err, player) ->
       if err isnt null
+        err.msg = '找不到玩家' if err.code is 404
         cb(err, null)
         return
-
       cb(null, player)
 
   getPlayerFromCache: (id) ->
@@ -70,12 +69,14 @@ class Manager
         results = []
         leftIds = []
         for id in _ids 
-          cache = @getPlayerFromCache(id)          
+          cache = @getPlayerFromCache(id)
           if cache
+            cards = cache.getCards(_.values(cache.lineUp[0]) || [])
             results.push {
               id: cache.id
               name: cache.name
-              cards: cache.activeCards().map (c) -> playerId: c.playerId, tableId: c.tableId, star: c.star
+              ability: cache.ability
+              cards: cards.map (c) -> playerId: c.playerId, tableId: c.tableId, star: c.star
             }
           else 
             leftIds.push id
@@ -101,8 +102,8 @@ class Manager
     , (n, callback) =>
       @app.get('dao').card.createExpCard data: {
         playerId: player.id,
-        lv: 6,
-        exp: 29
+        lv: 7,
+        exp: 19
       }, callback
     , (err, cards) ->
       if err
@@ -120,5 +121,9 @@ class Manager
   delFriendIfOnline: (pid, fid) ->
     ply = @getPlayerFromCache pid
     ply.delFriend fid if ply
+
+  updatePlayerBossFoundIfOnline: (pid) ->
+    ply = @getPlayerFromCache pid
+    ply.setBossFound(false) if ply
 
 module.exports = Manager

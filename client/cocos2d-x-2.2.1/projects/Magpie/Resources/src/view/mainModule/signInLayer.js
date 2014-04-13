@@ -44,7 +44,7 @@ var SignInLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("签到界面");
+        lz.um.beginLogPageView("签到界面");
     },
 
     onExit: function () {
@@ -52,7 +52,7 @@ var SignInLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("签到界面");
+        lz.um.endLogPageView("签到界面");
     },
 
     init: function () {
@@ -66,33 +66,28 @@ var SignInLayer = cc.Layer.extend({
 
         this._index = 0;
 
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(this._signInLayerFit.bgSpriteSize);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg21);
         bgSprite.setPosition(this._signInLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
+
+        var topBgLabel = cc.Sprite.create(main_scene_image.icon332);
+        topBgLabel.setPosition(this._signInLayerFit.topBgLabelPoint);
+        this.addChild(topBgLabel);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
         titleLabel.setPosition(this._signInLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
-        this._turnLeftItem = cc.MenuItemImage.create(
-            main_scene_image.icon37,
-            main_scene_image.icon37,
-            this._onClickTurnLeft,
-            this
-        );
+        this._turnLeftItem = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftItem.setRotation(180);
         this._turnLeftItem.setScale(0.8);
         this._turnLeftItem.setPosition(this._signInLayerFit.turnLeftItemPoint);
+        this.addChild(this._turnLeftItem);
 
-        this._turnRightItem = cc.MenuItemImage.create(
-            main_scene_image.icon37,
-            main_scene_image.icon37,
-            this._onClickTurnRight,
-            this
-        );
+        this._turnRightItem = cc.Sprite.create(main_scene_image.icon37);
         this._turnRightItem.setScale(0.8);
         this._turnRightItem.setPosition(this._signInLayerFit.turnRightItemPoint);
+        this.addChild(this._turnRightItem);
 
         this._signInItem = cc.MenuItemImage.create(
             main_scene_image.button10,
@@ -114,7 +109,7 @@ var SignInLayer = cc.Layer.extend({
         this._remedySignInItem.setScale(0.8);
         this._remedySignInItem.setPosition(this._signInLayerFit.remedySignInItemPoint);
 
-        var specialOfferIcon = cc.LayerColor.create(cc.c4b(66, 31, 28, 255), 108, 30);
+        var specialOfferIcon = cc.LayerColor.create(cc.c4b(153, 84, 50, 255), 108, 30);
         specialOfferIcon.setPosition(this._signInLayerFit.specialOfferIconPoint);
         this.addChild(specialOfferIcon);
 
@@ -128,8 +123,6 @@ var SignInLayer = cc.Layer.extend({
         this.addChild(spend);
 
         var menu = cc.Menu.create(
-            this._turnLeftItem,
-            this._turnRightItem,
             this._signInItem,
             this._remedySignInItem
         );
@@ -247,7 +240,6 @@ var SignInLayer = cc.Layer.extend({
                 alreadyRewardIcon: alreadyRewardIcon,
                 rewardLabel: rewardLabel
             };
-
         }
 
         return true;
@@ -274,31 +266,39 @@ var SignInLayer = cc.Layer.extend({
 
         this._signInCountLabel.setString(monthMark.count);
 
-        if (this._index != 0) {
-            for (var i = 0; i < 5; ++i) {
+        var table = outputTables.signIn_rewards;
 
-                this._elementList[i].readyRewardItem.setVisible(false);
-                this._elementList[i].rewardIcon.setVisible(true);
-                this._elementList[i].alreadyRewardIcon.setVisible(false);
-                this._elementList[i].rewardItem.setVisible(true);
+        cc.log(monthMark.count);
 
-            }
-        } else {
-            for (var i = 0; i < 5; ++i) {
+        for (var i = 0; i < 5; ++i) {
+            var visible = signIn.canReceive(this._index, i);
 
-                var visible = signIn.canReceive(this._index, i);
-                this._elementList[i].rewardIcon.setVisible(visible);
-                this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+            cc.log(visible);
 
-                var table = outputTables.signIn_rewards.rows[i + 1];
-                var count = table.count != -1 ? table.count : monthMark.days;
+            var row = table.rows[i + 1];
+            var count = row.count != -1 ? row.count : monthMark.days;
 
-                if (monthMark.count >= count) {
-                    this._elementList[i].readyRewardItem.setVisible(visible);
+            cc.log(count);
+
+            if (monthMark.count >= count) {
+                if(this._index == 0) {
                     this._elementList[i].rewardIcon.setVisible(false);
                     this._elementList[i].alreadyRewardIcon.setVisible(!visible);
-                    this._elementList[i].rewardItem.setVisible(!visible);
+                } else {
+                    this._elementList[i].rewardIcon.setVisible(visible);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
                 }
+            } else {
+                this._elementList[i].rewardIcon.setVisible(true);
+                this._elementList[i].alreadyRewardIcon.setVisible(false);
+            }
+
+            if (this._index == 0 && monthMark.count >= count) {
+                this._elementList[i].rewardItem.setVisible(!visible);
+                this._elementList[i].readyRewardItem.setVisible(visible);
+            } else {
+                this._elementList[i].rewardItem.setVisible(true);
+                this._elementList[i].readyRewardItem.setVisible(false);
             }
         }
     },
@@ -376,31 +376,13 @@ var SignInLayer = cc.Layer.extend({
         }
     },
 
-    _onClickTurnLeft: function () {
-        cc.log("SignInLayer _onClickTurnLeft");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._index = Math.min(this._index + 1, MAX_SIGN_IN_HISTORY - 1);
-        this.update();
-    },
-
-    _onClickTurnRight: function () {
-        cc.log("SignInLayer _onClickTurnRight");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._index = Math.max(this._index - 1, 0);
-        this.update();
-    },
-
     /**
      * when a touch finished
      * @param {cc.Touch} touches
      * @param {event} event
      */
     onTouchesEnded: function (touches, event) {
-        cc.log("TaskLayer onTouchesEnded");
+        cc.log("SignInLayer onTouchesEnded");
 
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();

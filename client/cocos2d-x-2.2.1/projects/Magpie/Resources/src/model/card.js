@@ -12,19 +12,65 @@
  * */
 
 
-var MAX_CARD_TABLE_ID = 1000;
-var MAX_CARD_STAR = 5;
+var MAX_CARD_TABLE_ID = 2000;
+var MAX_CARD_STAR = 7;
 
 var EVOLUTION_SUCCESS = 1;
 var EVOLUTION_FAIL = 0;
 var EVOLUTION_ERROR = -1;
+
+var EXTRACT_ELIXIR = 0;
+var EXTRACT_SKILL_POINT = 1;
+
+var LOCK_TYPE_DEFAULT = 0;
+var LOCK_TYPE_NAME = 1;
+var LOCK_TYPE_VALUE = 2;
+var LOCK_TYPE_BOTH = 3;
+
+var BOSS_CARD_TABLE_ID = {
+    begin: 40000,
+    end: 40002
+};
 
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",
     crit: "暴击",
     dodge: "闪避",
-    dmg_reduce: "减伤"
+    dmg_reduce: "减伤",
+    toughness: "韧性",
+    hit: "命中",
+    disrupting: "破防"
+};
+
+// 卡牌下标
+var skillIconMap = {
+    1: {
+        0: "card_icon_1_0",
+        1: "card_icon_1_1",
+        2: "card_icon_1_2",
+        3: "card_icon_1_2",
+        4: "card_icon_1_3",
+        5: "card_icon_1_4",
+        6: "card_icon_1_4",
+        7: "card_icon_1_5",
+        8: "card_icon_1_5",
+        9: "card_icon_1_5",
+        10: "card_icon_1_5"
+    },
+    2: {
+        0: "card_icon_2_0",
+        1: "card_icon_2_1",
+        2: "card_icon_2_2",
+        3: "card_icon_2_2",
+        4: "card_icon_2_3",
+        5: "card_icon_2_4",
+        6: "card_icon_2_4",
+        7: "card_icon_2_5",
+        8: "card_icon_2_5",
+        9: "card_icon_2_5",
+        10: "card_icon_2_5"
+    }
 };
 
 var Card = Entity.extend({
@@ -43,7 +89,7 @@ var Card = Entity.extend({
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
-    _kind: 0,
+    _kind: 0,               // 卡牌类型
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
@@ -59,7 +105,7 @@ var Card = Entity.extend({
     _skillType: 0,          // 技能类型
     _skillMaxLv: 0,         // 技能最大等级
 
-    _url: "",
+    _url: "",               // 图片资源路径
 
     _newCardMark: false,
 
@@ -70,23 +116,10 @@ var Card = Entity.extend({
 
         this.update(data);
 
-        if (data.skillInc) {
-            cc.log("=============================================");
-            cc.log(data);
+        this.off();
+        this.on("abilityChange", this._abilityChangeEvent);
 
-
-            cc.log(this);
-
-            if (data != undefined && data.hp != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
-                cc.Assert(data.hp == this._hp, "Card hp error");
-
-            if (data != undefined && data.atk != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
-                cc.Assert(data.atk == this._atk, "Card atk error");
-
-            cc.log("=============================================");
-        }
-
-        this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
+        this._newCardMark = this._id && (lz.load("card_" + this._id + "_mark") || false);
 
         return true;
     },
@@ -100,33 +133,56 @@ var Card = Entity.extend({
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
-            this.set("ability", data.ability);
             this.set("skillLv", data.skillLv);
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
             this.set("elixirAtk", data.elixirAtk);
             this.set("skillPoint", data.skillPoint);
 
-            this._updatePassiveSkill(data.passiveSkills);
+            this._updatePassiveSkills(data.passiveSkills);
         }
 
         this._loadCardTable();
         this._loadSkillTable();
         this._calculateAddition();
+
+        if (data) {
+            this.set("ability", data.ability);
+        }
     },
 
-    _updatePassiveSkill: function (data) {
+    _updatePassiveSkills: function (data) {
         cc.log("Card _updatePassiveSkill");
+
+        cc.log(data);
 
         if (data) {
             var len = data.length;
             for (var i = 0; i < len; ++i) {
-                this._passiveSkill[data[i].id] = {
-                    id: data[i].id,
-                    name: data[i].name,
-                    value: data[i].value,
-                    description: passiveSkillDescription[data[i].name]
-                }
+                this._updatePassiveSkill(data[i]);
+            }
+        }
+    },
+
+    _updatePassiveSkill: function (passiveSkill) {
+        cc.log("Card _updatePassiveSkill: ");
+        cc.log(passiveSkill);
+
+        this._passiveSkill[passiveSkill.id] = {
+            id: passiveSkill.id,
+            active: passiveSkill.active,
+            items: {}
+        };
+
+        var items = passiveSkill.items;
+        var len = items.length;
+        for (var i = 0; i < len; ++i) {
+            var item = items[i];
+            this._passiveSkill[passiveSkill.id].items[item.id] = {
+                id: item.id,
+                name: item.name,
+                value: item.value,
+                description: passiveSkillDescription[item.name]
             }
         }
     },
@@ -155,9 +211,6 @@ var Card = Entity.extend({
 
         this._initHp = Math.floor(this._initHp);
         this._initAtk = Math.floor(this._initAtk);
-
-//        this._hp = this._initHp;
-//        this._atk = this._initAtk;
 
         this._url = "card" + cardTable.url;
 
@@ -193,37 +246,6 @@ var Card = Entity.extend({
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
     },
 
-    setNewCardMark: function (mark) {
-        this._newCardMark = mark;
-        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
-    },
-
-    getSkillType: function () {
-        cc.log("Card _getSkillType");
-
-        if (this._skillType == 1 || this._skillType == 2) {
-            return "攻击";
-        }
-
-        if (this._skillType == 3 || this._skillType == 4) {
-            return "治疗";
-        }
-
-        return "";
-    },
-
-    hasSkill: function () {
-        return (!!this._skillId);
-    },
-
-    hasPassiveSkill: function () {
-        for (var key in this._passiveSkill) {
-            return true;
-        }
-
-        return false;
-    },
-
     _calculateAddition: function () {
         cc.log("Card _calculateAddition");
 
@@ -255,10 +277,47 @@ var Card = Entity.extend({
         this._atk = this._initAtk + elixirAtk + psAtk;
     },
 
+    _abilityChangeEvent: function () {
+        cc.log("Card _abilityChangeEvent");
+
+        gameData.player.checkAbility();
+    },
+
+    setNewCardMark: function (mark) {
+        this._newCardMark = mark;
+        lz.save("card_" + this._id + "_mark", this._newCardMark);
+    },
+
+    getSkillType: function () {
+        cc.log("Card _getSkillType");
+
+        if (this._skillType == 1 || this._skillType == 2) {
+            return "攻击";
+        }
+
+        if (this._skillType == 3 || this._skillType == 4) {
+            return "治疗";
+        }
+
+        return "";
+    },
+
+    hasSkill: function () {
+        return (!!this._skillId);
+    },
+
+    hasPassiveSkill: function () {
+        for (var key in this._passiveSkill) {
+            return true;
+        }
+
+        return false;
+    },
+
     getCardFullUrl: function () {
         cc.log("Card getCardFullUrl");
 
-        var len = this._star - 3;
+        var len = Math.min(this._star - 3, 2);
 
         var urlList = [main_scene_image[this._url + "_full1"]];
 
@@ -267,6 +326,16 @@ var Card = Entity.extend({
         }
 
         return urlList;
+    },
+
+    getCardIcon: function (type) {
+        type = type != 2 ? 1 : 2;
+
+        return main_scene_image[(skillIconMap[type][this._skillId] || skillIconMap[type][0])];
+    },
+
+    getCardSubscript: function () {
+        return main_scene_image["card_subscript_" + this._star];
     },
 
     addExp: function (exp) {
@@ -309,16 +378,6 @@ var Card = Entity.extend({
 
         return (cardGrow.cur_exp + this._exp);
     },
-
-    getCardFullLvExp: function () {
-        cc.log("Card getCardFullLvExp");
-
-        // 读取卡牌升级配置表
-        var cardGrow = outputTables.card_grow.rows[this._maxLv];
-
-        return (cardGrow.cur_exp + this.getCardExp());
-    },
-
 
     getCardFullLvNeedExp: function () {
         cc.log("Card getCardFullLvNeedExp");
@@ -365,7 +424,7 @@ var Card = Entity.extend({
                     money: msg.money_consume
                 });
 
-                lz.dc.event("event_card_upgrade", that._lv);
+                lz.um.event("event_card_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 
@@ -386,10 +445,13 @@ var Card = Entity.extend({
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
-            return skillUpgradeTable["star" + this._star];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows;
+            var totalSKillPoint = 0;
+            for (var i = 1; i <= this._skillLv; i++) {
+                totalSKillPoint += skillUpgradeTable[i]["star" + this._star];
+            }
+            return totalSKillPoint - this._skillPoint;
         }
-
         return 0;
     },
 
@@ -402,7 +464,7 @@ var Card = Entity.extend({
 
             var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
-            return (this._skillInc + skillHarmGrow * (this._skillLv + 1));
+            return (this._skillInc + skillHarmGrow * this._skillLv);
         }
 
         return 0;
@@ -428,10 +490,11 @@ var Card = Entity.extend({
                 });
 
                 gameData.player.add("skillPoint", -msg.skillPoint);
+                that.add("skillPoint", msg.skillPoint);
 
                 cb();
 
-                lz.dc.event("event_card_skill_upgrade", that._skillLv);
+                lz.um.event("event_card_skill_upgrade", that._skillLv);
             } else {
                 cc.log("upgradeSkill fail");
 
@@ -448,14 +511,69 @@ var Card = Entity.extend({
         return (this._star > 2);
     },
 
-    afreshPassiveSkill: function (cb, afreshIdList, type) {
+    getActivePassiveSkill: function () {
+        cc.log("Card getActivePassiveSkill");
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                return passiveSkill.items;
+            }
+        }
+
+        return null;
+    },
+
+    getActivePassiveSkillId: function () {
+        cc.log("Card getActivePassiveSkillId");
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                return passiveSkill.id;
+            }
+        }
+
+        return null;
+    },
+
+    getPassiveSkillById: function (id) {
+        cc.log("Card getPassiveSkillById: " + id);
+
+        if (this._passiveSkill[id]) {
+            return this._passiveSkill[id].items;
+        }
+
+        return null;
+    },
+
+    getOpenPassiveSkillNeedGold: function () {
+        return (Object.keys(this._passiveSkill).length - 2) * 50;
+    },
+
+    updateActivePassiveSkill: function (id) {
+        cc.log("Card updateActivePassiveSkill: " + id);
+
+        for (var key in this._passiveSkill) {
+            var passiveSkill = this._passiveSkill[key];
+            if (passiveSkill.active) {
+                passiveSkill.active = false;
+            }
+        }
+
+        this._passiveSkill[id].active = true;
+    },
+
+    afreshPassiveSkill: function (cb, gid, afreshIdList, type) {
         cc.log("Card afreshPassiveSkill " + this._id);
+        cc.log(gid);
         cc.log(afreshIdList);
         cc.log(type);
 
         var that = this;
         lz.server.request("area.trainHandler.passSkillAfresh", {
             cardId: this._id,
+            groupId: gid,
             psIds: afreshIdList,
             type: type
         }, function (data) {
@@ -466,17 +584,18 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update(msg);
+                that.set("ability", msg.ability);
+                that._updatePassiveSkill(msg.passiveSkill);
 
                 if (type == USE_MONEY) {
-                    gameData.player.add("money", -2000);
+                    gameData.player.add("money", -5000);
                 } else if (type == USE_GOLD) {
                     gameData.player.add("gold", -20);
                 }
 
                 cb(true);
 
-                lz.dc.event("event_card_passive_skill_afresh", type);
+                lz.um.event("event_card_passive_skill_afresh", type);
             } else {
                 cc.log("passSkillAfresh fail");
 
@@ -485,6 +604,57 @@ var Card = Entity.extend({
                 cb(false);
             }
         });
+    },
+
+    activePassiveSkill: function (cb, id) {
+        cc.log("Card activePassiveSkill: " + id);
+
+        var that = this;
+        lz.server.request("area.trainHandler.passSkillActive", {
+            cardId: this._id,
+            groupId: id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillActive success");
+
+                that.updateActivePassiveSkill(id);
+                that.set("ability", data.msg.ability);
+                cb();
+
+            } else {
+                cc.log("passSkillActive fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    openPassiveSkill: function (cb) {
+        cc.log("Card openPassiveSkill");
+
+        var that = this;
+        lz.server.request("area.trainHandler.passSkillOpen", {
+            cardId: this._id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillOpen success");
+                var msg = data.msg;
+
+                gameData.player.set("gold", msg.gold);
+                that._updatePassiveSkill(msg.passiveSkill);
+
+                cb();
+            } else {
+                cc.log("passSkillOpen fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+
     },
 
     canEvolution: function () {
@@ -523,6 +693,16 @@ var Card = Entity.extend({
         return 0;
     },
 
+    getEvolutionNeedSuperHonor: function () {
+        cc.log("Card getEvolutionNeedSuperHonor");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].super_honor;
+        }
+
+        return 0;
+    },
+
     evolution: function (cb, cardIdList) {
         cc.log("Card evolution " + this._id);
         cc.log(cardIdList);
@@ -540,13 +720,20 @@ var Card = Entity.extend({
                 var msg = data.msg;
 
                 gameData.player.add("money", -that.getEvolutionNeedMoney());
+                gameData.player.add("superHonor", -that.getEvolutionNeedSuperHonor());
                 gameData.cardList.deleteById(cardIdList);
 
                 that.update(msg.card);
+
+                if (msg.initRate) {
+                    gameData.player.set("evolutionRate", msg.initRate);
+                }
+
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+
                 cb(result);
 
-                lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
+                lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
                 cc.log("evolution fail");
 
@@ -586,14 +773,60 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_train", "type:" + trainType + " count:" + trainCount);
+                lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
                 cc.log("train fail");
 
                 TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    getElixir: function () {
+        return this._elixirAtk + this._elixirHp;
+    },
+
+    extract: function (cb, type) {
+        cc.log("Card extract: ", +this._id);
+
+        var that = this;
+        lz.server.request("area.trainHandler.extract", {
+            cardId: this._id,
+            type: type
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("extract success");
+
+                var msg = data.msg;
+                gameData.player.add("gold", -200);
+
+                that.update(msg.card);
+
+                if (msg.elixir) {
+                    var oldElixir = gameData.player.get("elixir");
+                    gameData.player.set("elixir", msg.elixir);
+                    lz.tipReward({
+                        "elixir": msg.elixir - oldElixir
+                    });
+
+                } else if (msg.skillPoint) {
+                    var oldSkillPoint = gameData.player.get("skillPoint");
+                    gameData.player.set("skillPoint", msg.skillPoint);
+                    lz.tipReward({
+                        "skillPoint": msg.skillPoint - oldSkillPoint
+                    });
+                }
 
                 cb();
+
+                lz.um.event("event_card_extract", "type:" + type);
+            } else {
+                cc.log("extract fail");
+
+                TipLayer.tip(data.msg);
             }
+
         });
     },
 
@@ -604,9 +837,20 @@ var Card = Entity.extend({
 
         var price = table["star" + this._star];
 
-        price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
+        var rows = outputTables.card_grow.rows;
+        for (var i = 1; i < this._lv; ++i) {
+            price += rows[i].money_need;
+        }
 
         return price;
+    },
+
+    isLeadCard: function () {
+        return (this._tableId < 10000 || this._tableId == 30000);
+    },
+
+    isBossCard: function () {
+        return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });
 

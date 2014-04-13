@@ -116,10 +116,19 @@ Achievement.taskPartPassTo = function(player, chapter) {
 	}	
 };
 
+Achievement.vipTo = function(player, vip) {
+	checkIsReached(player, 'vipTo', vip);
+};
+
+Achievement.passPhaseTo = function(player, phase) {
+	checkIsReached(player, 'passPhaseTo', phase);
+};
+
 var checkIsReached_alpha = function(player, method, incVal, useMax) {
 	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
-		method: method
+		method: method,
+		isAchieve: false
 	});
 	if (!_.isEmpty(items)) {
 		need = items[0].got + incVal;
@@ -130,16 +139,32 @@ var checkIsReached_alpha = function(player, method, incVal, useMax) {
 var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
 	achs.forEach(function(ach) {
-		if ( (typeof player.achievement[ach.id] == 'undefined') || 
-			(typeof player.achievement[ach.id] != 'undefined' && !player.achievement[ach.id].isAchieve) ) {
+		if ( isAchieved(player, ach.id) ) {
 			reachAchievement(player, ach.id);
 		}
 	});
 	updateAchievement(player, method, need, useMax);
 };
 
+var isAchieved = function(player, id) {
+	return (typeof player.achievement[id] == 'undefined') || 
+				 (typeof player.achievement[id] != 'undefined' && !player.achievement[id].isAchieve);
+};
+
+var resetAchievementIfChange = function(ach) {	
+	_.each(ach, function(val, id) {
+		var d = table.getTableItem('achievement', id);
+		if (val.isAchieve && d && val.got < d.need) {
+			val.isAchieve = false;
+			val.isTake = false;
+		}
+	});
+};
+
 var updateAchievement = function(player, method, got, useMax) {
 	var ach = utility.deepCopy(player.achievement);
+	resetAchievementIfChange(ach);
+
 	var items = _.where(_.values(ach), {
 		method: method
 	});
@@ -169,6 +194,7 @@ var updateAchievement = function(player, method, got, useMax) {
 		});
 	// reset achievement of player
 	player.achievement = ach;
+	player.save()
 };
 
 var reachedAchievements = function(methodName, need) {
@@ -183,12 +209,19 @@ var reachAchievement = function(player, id) {
 	sendMessage(player, id);
 };
 
+var onlyOneAchieved = function(achivement) {
+	return _.values(achivement).filter(function(a) {
+		return a.isAchieve;
+	}).length == 1;
+};
+
 var sendMessage = function(player, achId) {
 	if (messageService != null && typeof(messageService.pushByPid) != 'undefined') {
 		messageService.pushByPid(player.id, {
 			route: 'onAchieve',
 			msg: {
-				achieveId: achId
+				achieveId: achId,
+				firstTime: onlyOneAchieved(player.achievement) ? true : void 0
 			}
 		}, function(err, res) {
 			logger.info('push message(route: onAchieve):', err, res);

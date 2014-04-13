@@ -11,16 +11,16 @@
  * 抽卡
  * */
 
-var cardConfig = require('../../config/data/card');
+var configData = require('../../config/data');
 var utility = require('../common/utility');
 var entityUtil = require('../util/entityUtil');
 var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 
-var lottery = function (level, type, rFragments, hFragment, hCounts) {
-    var card = newCard(level, hCounts);
-    var fragment = gen_card_fragment(level, rFragments, hFragment);
+var lottery = function (level, type, times, rFragments, hFragment, hCounts, lightUpIds) {
+    var card = newCard(level, hCounts, lightUpIds);
+    var fragment = gen_card_fragment(level, times, rFragments, hFragment);
     var consume_val = consume(level, type);
     //var pss = initPassiveSkill(card.star);
 
@@ -40,29 +40,18 @@ var freeLottery = function(level, eids) {
     return [card, 0, 0];
 };
 
-/*
- * 抽卡，传入参数抽卡种类
- * 1：普通抽卡
- * 2：高级抽卡
- * */
-var randomCardId = function (star) {
-    var len = tableIds.length;
-    return tableIds[_.random(0, len/5 - 1) * 5 + star - 1];
-};
 
 var gen_card_star = function (level, hCounts) {
     var levelMapping = {
         "1": "LOWER",
         "2": "HIGHT"
     };
-    var rateObj = utility.deepCopy(cardConfig.STAR[levelMapping[level]]);
-    var margins = cardConfig.HIGHT_DRAWCARD_MARGIN;
-
-    console.log('before count',rateObj);
+    var rateObj = utility.deepCopy(configData.card.STAR[levelMapping[level]]);
+    var margins = configData.card.HIGHT_DRAWCARD_MARGIN;
 
     if (level == 2) { //高级抽卡特殊处理
 
-        if (hCounts == cardConfig.MAX_HIGHT_DRAWCARD_COUNT) {
+        if (hCounts == configData.card.MAX_HIGHT_DRAWCARD_COUNT) {
             rateObj['3'] = rateObj['4'] = 0;
             rateObj['5'] = 100;
         } else {
@@ -70,7 +59,6 @@ var gen_card_star = function (level, hCounts) {
             for(var i = margins.length - 1; i >= 0;i--) {
                 if(hCounts >= margins[i].COUNTS) {
                     var ms = margins[i];
-                   // console.log('ms =',ms);
                     var count = hCounts - ms.COUNTS;
                     var rate = ms.MARGIN * count;
                     rateObj['3'] = ms['3'] - rate;
@@ -83,40 +71,47 @@ var gen_card_star = function (level, hCounts) {
                     break;
                 }
             }
-
-            console.log('hCounts =',hCounts, 'after count...', rateObj['3'],rateObj['4'],rateObj['5']);
         }
 
     }
-
-    console.log('after count',rateObj);
 
     return utility.randomValue(_.keys(rateObj), _.values(rateObj));
 };
 
 var gen_card_level = function (star) {
     if (star >= 3) {
-        return cardConfig.HIGHT_LEVEL_INIT;
+        return configData.card.HIGHT_LEVEL_INIT;
     }
 
-    var levelInitObj = cardConfig.LOWER_LEVEL_INIT;
+    var levelInitObj = configData.card.LOWER_LEVEL_INIT;
     return utility.randomValue(_.keys(levelInitObj), _.values(levelInitObj));
 };
 
-var gen_card_fragment = function (level, rCounts, hCounts) {
+var gen_card_fragment = function (level, times, rCounts, hCounts) {
+    // 单次高级抽卡，每10次获得一个卡魂
+    var frags = 0;
+    if(level == 2 && times == 1) {
+        if (hCounts%10 == 0) {
+            frags += 1;
+        } 
+        return frags;
+    }
 
-    var margin = utility.deepCopy(cardConfig.FRAGMENT[level]);
+    if (level == 2 && times == 10) {
+        return 0;
+    }
+
+    var margin = utility.deepCopy(configData.card.FRAGMENT[level]);
     var counts = (level == 1) ? rCounts : hCounts;
-    console.log('counts',counts)
     counts = counts - margin.COUNTS;
     var rate = (counts <= 0 ) ? 0 : counts * margin.MARGIN;
-    console.log('rate',rate);
+    
     return utility.hitRate(rate) ? 1 : 0;
 };
 
-var newCard = function (level, hCounts) {
-    var card_star = parseInt(gen_card_star(level, hCounts));
-    var card_id = entityUtil.randomCardId(card_star);
+var newCard = function (level, hCounts, lightUpIds) {
+    var card_star = parseInt(gen_card_star(level, hCounts));    
+    var card_id = entityUtil.randomCardId(card_star, lightUpIds);
     var card_level = parseInt(gen_card_level(card_star));
 
     return {
@@ -140,7 +135,7 @@ var freeCard = function(star) {
 };
 
 var consume = function (level, type) {
-    var mapping = cardConfig.LOTTERY_CONSUME;
+    var mapping = configData.card.LOTTERY_CONSUME;
     return mapping[type][level]
 };
 
@@ -149,11 +144,11 @@ var initPassiveSkill = function (star) {
 
     var results = [];
     for (var i = 0; i < count; i++) {
-        var index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
-        var _res = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-');
+        var index = _.random(configData.card.PASSIVESKILL.TYPE.length - 1);
+        var _res = configData.card.PASSIVESKILL.VALUE_SCOPE.split('-');
         var start = parseInt(_res[0]), end = parseInt(_res[1]);
         results.push({
-            name: cardConfig.PASSIVESKILL.TYPE[index],
+            name: configData.card.PASSIVESKILL.TYPE[index],
             value: _.random(start, end)
         })
     }

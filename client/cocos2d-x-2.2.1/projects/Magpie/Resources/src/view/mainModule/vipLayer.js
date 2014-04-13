@@ -11,39 +11,6 @@
  * vip layer
  * */
 
-
-var vipBoxGoods = {
-    energy: {
-        name: "活力点",
-        url: "icon110"
-    },
-
-    money: {
-        name: "仙币",
-        url: "icon108"
-    },
-
-    skillPoint: {
-        name: "技能点",
-        url: "icon109"
-    },
-
-    elixir: {
-        name: "仙丹",
-        url: "icon107"
-    },
-
-    fragments: {
-        name: "卡魂",
-        url: "icon145"
-    },
-
-    exp_card: {
-        name: "经验元灵",
-        url: "icon146"
-    }
-};
-
 var vipBoxUrl = {
     vip1: "icon276",
     vip2: "icon276",
@@ -66,6 +33,8 @@ var VipLayer = cc.Layer.extend({
     _moneyLabel: null,
     _scrollView: null,
 
+    _isFirstEnter: true,
+
     onEnter: function () {
         cc.log("VipLayer onEnter");
 
@@ -74,7 +43,7 @@ var VipLayer = cc.Layer.extend({
 
         this.schedule(this._update, 1);
 
-        lz.dc.beginLogPageView("VIP礼包界面");
+        lz.um.beginLogPageView("VIP礼包界面");
     },
 
     onExit: function () {
@@ -82,7 +51,7 @@ var VipLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("VIP礼包界面");
+        lz.um.endLogPageView("VIP礼包界面");
     },
 
     init: function () {
@@ -91,6 +60,7 @@ var VipLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._vipLayerFit = gameFit.mainScene.vipLayer;
+        this._isFirstEnter = true;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -133,6 +103,10 @@ var VipLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect74, this);
+        effect.setPosition(this._vipLayerFit.paymentItemPoint);
+        this.addChild(effect);
+
         var buyIcon = cc.Sprite.create(main_scene_image.icon303);
         buyIcon.setPosition(this._vipLayerFit.buyIconPoint);
         this.addChild(buyIcon);
@@ -155,9 +129,8 @@ var VipLayer = cc.Layer.extend({
         var vip = gameData.player.get("vip");
 
         var scrollViewLayer = MarkLayer.create(this._vipLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu, 1);
+
+        var slideLabel = [];
 
         var scrollViewHeight = len * 180;
         if (scrollViewHeight < this._vipLayerFit.scrollViewHeight) {
@@ -168,18 +141,26 @@ var VipLayer = cc.Layer.extend({
             var y = scrollViewHeight - 170 - i * 180;
             var vipBox = vipBoxList[i];
 
+            slideLabel[i] = cc.Node.create();
+            slideLabel[i].setPosition(cc.p(0, 0));
+            slideLabel[i].setVisible(!this._isFirstEnter);
+
+            var menu = LazyMenu.create();
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[i].addChild(menu, 1);
+
             if (vipBox.id <= vip && index == undefined) {
                 index = i;
 
                 var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect56, this);
                 ccbNode.setPosition(cc.p(320, y + 85));
-                scrollViewLayer.addChild(ccbNode);
+                slideLabel[i].addChild(ccbNode);
             }
 
             var bgSprite = cc.Sprite.create(main_scene_image.icon162);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(17, y));
-            scrollViewLayer.addChild(bgSprite);
+            slideLabel[i].addChild(bgSprite);
 
             var vipBoxDetailsItem = cc.MenuItemImage.create(
                 main_scene_image[vipBoxUrl["vip" + vipBox.id]],
@@ -187,14 +168,15 @@ var VipLayer = cc.Layer.extend({
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setPosition(cc.p(95, y + 92));
+            vipBoxDetailsItem.setPosition(cc.p(95, y + 86));
+            vipBoxDetailsItem.setScale(0.8);
             menu.addChild(vipBoxDetailsItem);
 
             var buyItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon163,
-                this._onClickBuy(vipBox.id),
+                this._onClickBuy(vipBox),
                 this
             );
             buyItem.setPosition(cc.p(525, y + 45));
@@ -203,12 +185,12 @@ var VipLayer = cc.Layer.extend({
             var vipLabel = cc.Sprite.create(main_scene_image["vip" + vipBox.id]);
             vipLabel.setAnchorPoint(cc.p(0, 0.5));
             vipLabel.setPosition(cc.p(170, y + 143));
-            scrollViewLayer.addChild(vipLabel);
+            slideLabel[i].addChild(vipLabel);
 
             var titleLabel = cc.LabelTTF.create("尊享礼包", "STHeitiTC-Medium", 22);
             titleLabel.setColor(cc.c3b(74, 27, 27));
             titleLabel.setPosition(cc.p(340, y + 140));
-            scrollViewLayer.addChild(titleLabel);
+            slideLabel[i].addChild(titleLabel);
 
             var descriptionLabel = cc.LabelTTF.create(
                 "只能购买一次，点击图表可预览礼包内容。",
@@ -218,44 +200,41 @@ var VipLayer = cc.Layer.extend({
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel.setColor(cc.c3b(74, 27, 27));
             descriptionLabel.setPosition(cc.p(170, y + 105));
-            scrollViewLayer.addChild(descriptionLabel);
+            slideLabel[i].addChild(descriptionLabel);
 
             var costIcon = cc.LabelTTF.create("原价", "STHeitiTC-Medium", 20);
             costIcon.setColor(cc.c3b(74, 27, 27));
             costIcon.setAnchorPoint(cc.p(0, 0.5));
             costIcon.setPosition(cc.p(175, y + 70));
-            scrollViewLayer.addChild(costIcon);
+            slideLabel[i].addChild(costIcon);
 
             var costGoldIcon = cc.Sprite.create(main_scene_image.icon148);
             costGoldIcon.setScale(0.7);
             costGoldIcon.setPosition(cc.p(250, y + 70));
-            scrollViewLayer.addChild(costGoldIcon);
+            slideLabel[i].addChild(costGoldIcon);
 
             var costLabel = cc.LabelTTF.create(vipBox.true_price, "STHeitiTC-Medium", 20);
             costLabel.setColor(cc.c3b(74, 27, 27));
             costLabel.setAnchorPoint(cc.p(0, 0.5));
             costLabel.setPosition(cc.p(275, y + 67));
-            scrollViewLayer.addChild(costLabel);
+            slideLabel[i].addChild(costLabel);
 
-            var specialOfferIcon = cc.LayerColor.create(cc.c4b(217, 59, 59, 255), 50, 30);
-            specialOfferIcon.setPosition(cc.p(170, y + 20));
-            scrollViewLayer.addChild(specialOfferIcon);
-
-            var specialOfferIconLabel = cc.LabelTTF.create("现价", "STHeitiTC-Medium", 20);
-            specialOfferIconLabel.setAnchorPoint(cc.p(0, 0.5));
-            specialOfferIconLabel.setPosition(cc.p(175, y + 35));
-            scrollViewLayer.addChild(specialOfferIconLabel);
+            var specialOfferIcon = cc.Sprite.create(main_scene_image.icon167);
+            specialOfferIcon.setPosition(cc.p(195, y + 35));
+            slideLabel[i].addChild(specialOfferIcon);
 
             var goldIcon = cc.Sprite.create(main_scene_image.icon148);
             goldIcon.setScale(0.7);
             goldIcon.setPosition(cc.p(250, y + 35));
-            scrollViewLayer.addChild(goldIcon);
+            slideLabel[i].addChild(goldIcon);
 
             var specialOfferLabel = cc.LabelTTF.create(vipBox.price, "STHeitiTC-Medium", 20);
             specialOfferLabel.setColor(cc.c3b(74, 27, 27));
             specialOfferLabel.setAnchorPoint(cc.p(0, 0.5));
             specialOfferLabel.setPosition(cc.p(275, y + 32));
-            scrollViewLayer.addChild(specialOfferLabel);
+            slideLabel[i].addChild(specialOfferLabel);
+
+            scrollViewLayer.addChild(slideLabel[i]);
         }
 
         this._scrollView = cc.ScrollView.create(this._vipLayerFit.scrollViewSize, scrollViewLayer);
@@ -268,6 +247,18 @@ var VipLayer = cc.Layer.extend({
 
         offsetY = Math.min(this._scrollView.minContainerOffset().y + (index || 0) * 180, 0);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
+
+        if (this._isFirstEnter) {
+            this._isFirstEnter = false;
+            var slideLayer = SlideLayer.create(
+                {
+                    labels: slideLabel,
+                    slideTime: 0.4,
+                    timeTick: 0.05
+                }
+            );
+            slideLayer.showSlide();
+        }
     },
 
     _update: function () {
@@ -276,62 +267,7 @@ var VipLayer = cc.Layer.extend({
         var player = gameData.player;
 
         this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
-    },
-
-    _addVipBoxDetails: function (obj) {
-        cc.log("VipLayer _addVipBoxDetails");
-
-        var data = obj.data;
-        var cb = obj.cb;
-
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer);
-
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 550));
-        bgSprite.setPosition(this._vipLayerFit.bgSprite2Point);
-        lazyLayer.addChild(bgSprite);
-
-        for (var key in data) {
-            if (vipBoxGoods[key] != undefined && data[key] > 0) {
-                var goods = vipBoxGoods[key];
-                var point = this._vipLayerFit.vipBoxGoodsPoints[key];
-
-                var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setPosition(point);
-                lazyLayer.addChild(goodsSprite);
-
-                var nameLabel = StrokeLabel.create(goods.name, "STHeitiTC-Medium", 25);
-                nameLabel.setColor(cc.c3b(255, 252, 175));
-                nameLabel.setAnchorPoint(cc.p(0, 0.5));
-                nameLabel.setPosition(cc.p(point.x + 50, point.y + 20));
-                lazyLayer.addChild(nameLabel);
-
-                var countLabel = StrokeLabel.create(data[key], "STHeitiTC-Medium", 25);
-                countLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLabel.setPosition(cc.p(point.x + 50, point.y - 20));
-                lazyLayer.addChild(countLabel);
-            }
-        }
-
-        var okItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon21,
-            function () {
-                lazyLayer.removeFromParent();
-                if (cb) {
-                    cb();
-                }
-            },
-            this
-        );
-        okItem.setPosition(this._vipLayerFit.okItemPoint);
-
-        var menu = cc.Menu.create(okItem);
-        menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
+        this._moneyLabel.setString(lz.getMoneyStr(player.get("money")));
     },
 
     _onClickPayment: function () {
@@ -339,25 +275,24 @@ var VipLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var paymentLayer = PaymentLayer.create();
-        this.addChild(paymentLayer, 1);
+        PaymentLayer.pop();
     },
 
-    _onClickBuy: function (id) {
+    _onClickBuy: function (vipBox) {
         return function () {
-            cc.log("VipLayer _onClickBuy: " + id);
+            cc.log("VipLayer _onClickBuy: " + vipBox.id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var that = this;
+            var id = vipBox.id;
 
             if (gameData.player.get("vip") < id) {
                 GoPaymentLayer.pop({
                     title: "购 买 失 败",
                     msg: "只有达到VIP" + id + "才能购买此礼包，快去充值吧！",
                     cb: function () {
-                        var paymentLayer = PaymentLayer.create();
-                        that.addChild(paymentLayer, 1);
+                        PaymentLayer.pop();
                     }
                 });
 
@@ -369,15 +304,22 @@ var VipLayer = cc.Layer.extend({
                 return;
             }
 
-            gameData.shop.buyVipBox(function (data) {
-                cc.log(data);
-                var cb = function () {
+
+            var cb = function () {
+                gameData.shop.buyVipBox(function (data) {
+                    cc.log(data);
                     that.update();
                     lz.tipReward(data);
-                };
-                that._addVipBoxDetails({data: data, cb: cb});
-            }, id);
+                }, id);
+            };
+
+            GiftBagLayer.pop({
+                reward: vipBox,
+                type: BUY_GIFT_BAG,
+                cb: cb
+            });
         }
+
     },
 
     _onClickVipBoxDetails: function (data) {
@@ -386,7 +328,8 @@ var VipLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this._addVipBoxDetails({data: data});
+            GiftBagLayer.pop({reward: data, type: SHOW_GIFT_BAG});
+
         }
     }
 });

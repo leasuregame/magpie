@@ -28,7 +28,7 @@ var CardLibraryLayer = cc.Layer.extend({
         this._super();
         this.update();
 
-        lz.dc.beginLogPageView("卡库界面");
+        lz.um.beginLogPageView("卡库界面");
     },
 
     onExit: function () {
@@ -36,7 +36,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.dc.endLogPageView("卡库界面");
+        lz.um.endLogPageView("卡库界面");
     },
 
 
@@ -148,7 +148,7 @@ var CardLibraryLayer = cc.Layer.extend({
             }
         }
 
-        for(; i < 250; i++) {
+        for (; i < 250; i++) {
             row = Math.floor(i / 4);
             index = i % 4;
             var cardLockIcon = cc.Sprite.create(main_scene_image.card_back);
@@ -250,7 +250,6 @@ var CardLibraryLayer = cc.Layer.extend({
                         effect.removeFromParent();
                     });
                     lz.tipReward(data);
-                    // TipLayer.tipNoBg("活力点: +" + data);
 
                     gameMark.updateCardLibraryMark(false);
                 }, id);

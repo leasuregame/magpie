@@ -5,6 +5,7 @@ var async = require('async');
 var _ = require('underscore');
 var table = require('../app/manager/table');
 var cardConfig = require('../config/data/card');
+var MarkGroup = require('../app/common/markGroup');
 
 module.exports = function(db, dir) {
   return new Data(db, dir);
@@ -17,6 +18,170 @@ var Data = function(db, dir) {
   } else {
     this.fixtures_dir = path.join(__dirname, '..', 'config', 'fixtures/');
   }
+};
+
+Data.prototype.changeCardPassiveSkill = function() {
+  var cardDao = this.db.card;
+  var totalCount = 0, finished = 0;
+  cardDao.fetchMany({where: ' star in (3, 4, 5)'}, function(err, cards) {
+    
+    totalCount = cards.length;
+    async.each(cards, function(card, done) {
+      var ps = [];
+      if (card.passiveSkills.length > 0 && !card.passiveSkills[0].items) {
+        ps = card.passiveSkills;
+      }
+
+      card.passiveSkills = [{
+        id: 1,
+        items: ps,
+        active: true
+      },{
+        id: 2,
+        items: [],
+        active: false
+      }, {
+        id: 3,
+        items: [],
+        active: false
+      }];
+      card.bornPassiveSkill();
+      card.psGroupCount = 3;
+      cardDao.update({
+        where: {
+          id: card.id
+        },
+        data: card.getSaveData()
+      }, function(err, res) {
+        finished += 1;
+        done();
+      });
+    }, function(err) {
+      console.log('change passiveSkill of cards finished');
+      console.log('total count: ', totalCount);
+      console.log('finised: ', finished);
+    });
+  });
+};
+
+Data.prototype.correctCardBook = function() {
+  var idTab = table.getTable('new_card_id_map');
+
+  var playerDao = this.db.player;
+  var totalCount = 0,
+    finished = 0;
+  playerDao.fetchMany({}, function(err, players) {
+    totalCount = players.length;
+
+    async.each(players, function(ply, done) {
+      var newIds = [];
+
+      var ids = ply.lightUpCards();
+      if (ids.length == 0) {
+        return done();
+      }
+      ids.forEach(function(id) {
+        var item = idTab.getItem(id);
+        if (item) {
+          newIds.push(item.new_id);
+        }
+      });
+
+      var mg = new MarkGroup([]);
+      newIds.forEach(function(id) {
+        mg.mark(id);
+      });
+
+      playerDao.update({
+        where: {
+          id: ply.id
+        },
+        data: {
+          cardBook: {
+            mark: mg.value,
+            flag: mg.value
+          }
+        }
+      }, function(err, res) {
+        if (err) {
+          console.log(err, res);
+          done();
+        } else {
+          console.log('update card book for player id: ', ply.id);
+          finished += 1;
+          done();
+        }
+
+      });
+
+    }, function(err) {
+      console.log('update player card book finished.');
+      console.log('totalCount: ', totalCount);
+      console.log('finished: ', finished);
+    });
+  });
+};
+
+Data.prototype.correctCardTableId = function() {
+  var idTab = table.getTable('new_card_id_map');
+  var cardDao = this.db['card'];
+  var updatedId = [];
+
+  cardDao.totalCount(function(err, count) {
+    console.log(err, count);
+    pageNum = 1000
+    pages = Math.ceil(count / pageNum);
+
+    fCount = 0
+    async.times(pages, function(page, next) {
+      var start = page * pageNum;
+
+      cardDao.selectForUpdate(' ' + start + ', ' + pageNum, function(err, cards) {
+        async.each(cards, function(card, done) {
+          console.log(card);
+          var item = idTab.getItem(card.tableId)
+          var newId;
+
+          if (item) {
+            newId = item.new_id;
+            cardDao.update({
+              where: {
+                id: card.id
+              },
+              data: {
+                tableId: newId
+              }
+            }, function(err, updateRes) {
+              if (err) {
+                console.log(err);
+                done();
+              } else {
+                console.log('update ' + card.tableId + ' to ' + newId);
+                fCount += 1;
+                updatedId.push(card.id);
+                console.log(fCount);
+                done()
+              }
+            });
+
+          } else {
+            done();
+          }
+        }, function(err) {
+          next(null);
+        });
+
+      });
+
+    }, function(err, results) {
+      console.log('change tableId of card finished.');
+      console.log('total cards:', count);
+      console.log('finished:', fCount);
+      console.log('updated ids: ', JSON.stringify(updatedId.sort(function(x, y) {
+        return x - y;
+      })));
+    });
+  });
 };
 
 Data.prototype.resetRanking = function() {
@@ -66,9 +231,9 @@ Data.prototype.fixDuplicateRanking = function() {
         }
       }
     }
-    console.log(items.length, '====adsfadsfas');
+
     async.eachSeries(items, function(item, done) {
-      console.log('-a-a-', item.toJson());
+
       self.db['rank'].maxRanking(function(err, maxRanking) {
         console.log(err, maxRanking, item.id);
         self.db['rank'].update({
@@ -144,7 +309,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       }
       if (table == 'card') {
         genSkillInc(row);
-        initPassiveSkill(row);
+        initPassiveSkillGroup(row);
       }
       self.db[table].delete({
         where: where
@@ -229,7 +394,7 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -274,11 +439,12 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
 Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   var self = this;
   var filePath = path.join(this.fixtures_dir, '..', '..', 'robot.csv');
+  var elixir = 3000;
   console.log(filePath);
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -341,7 +507,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
                 star: cards.ids[n] % 5 || 5
               };
               genSkillInc(cardData);
-              initPassiveSkill(cardData);
+              initPassiveSkillGroup(cardData);
 
               self.db.card.create({
                 data: cardData
@@ -351,6 +517,26 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
 
             }, cb);
           });
+        },
+        function(cb) {
+          self.db.elixirOfRank.create({
+            data: {
+              playerId: row.id,
+              week: thisWeek(),
+              name: row.playerName,
+              elixir: elixir + parseInt(row.id)
+            }
+          }, cb);
+        },
+        function(cb) {
+          self.db.elixirOfRank.create({
+            data: {
+              playerId: row.id,
+              week: lastWeek(),
+              name: row.playerName,
+              elixir: elixir + parseInt(row.id) + _.random(1, 10000)
+            }
+          }, cb);
         }
       ], function(err, results) {
         console.log('result: ', err, results);
@@ -446,7 +632,7 @@ Data.prototype.dataForRanking = function(callback) {
           async.times(row.card_count, function(n, next) {
             cardData.tableId = ids[_.random(0, ids.length - 1)];
             genSkillInc(cardData);
-            initPassiveSkill(cardData);
+            initPassiveSkillGroup(cardData);
             self.db.card.create({
               data: cardData
             }, next);
@@ -559,20 +745,25 @@ var random_lineup = function(cards) {
 var genSkillInc = function(card) {
   if (parseInt(card.star) < 3) {
     // console.log("card = ",card);
-    card.skillInc = 0;
+    // card.skillInc = 0;
+    card.factor = 0;
     return;
   }
-  var cdata, max, min, skill;
-  cdata = table.getTableItem('cards', card.tableId);
-  skill = cdata.skill_id_linktarget;
-  if (skill != null) {
-    min = skill["star" + card.star + "_inc_min"];
-    max = skill["star" + card.star + "_inc_max"];
-    card.skillInc = _.random(min, max);
-    //console.log("skillInc = ",card.skillInc);
-  } else {
-    throw new Error('can not file skill info of card: ' + card.tableId);
-  }
+
+  card.factor = _.random(1, 1000);
+  return;
+
+  // var cdata, max, min, skill;
+  // cdata = table.getTableItem('cards', card.tableId);
+  // skill = cdata.skill_id_linktarget;
+  // if (skill != null) {
+  //   min = skill["star" + card.star + "_inc_min"];
+  //   max = skill["star" + card.star + "_inc_max"];
+  //   card.skillInc = _.random(min, max);
+  //   //console.log("skillInc = ",card.skillInc);
+  // } else {
+  //   throw new Error('can not file skill info of card: ' + card.tableId);
+  // }
 };
 
 var initPassiveSkill = function(card) {
@@ -597,4 +788,74 @@ var initPassiveSkill = function(card) {
   }
 
   card.passiveSkills = results;
+};
+
+
+var initPassiveSkills, initPassiveSkillGroup;
+
+initPassiveSkills = function(star) {
+  var count, end, i, index, results, start, _i, _ref;
+  star = star > 5 ? 5 : star;
+  
+  count = star - 2;
+  results = [];
+  for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+    index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
+    _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
+    results.push({
+      id: i,
+      name: cardConfig.PASSIVESKILL.TYPE[index],
+      value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
+    });
+  }
+  return results;
+};
+
+initPassiveSkillGroup = function(card) {
+  var star = card.star;
+  if (star < 3) {
+    return card.passiveSkills = [];
+  }
+
+  if (card.passiveSkills) {
+    return;
+  }
+
+  var i, list, _i;
+
+  list = [];
+  for (i = _i = 1; _i <= 3; i = ++_i) {
+    list.push({
+      id: i,
+      items: initPassiveSkills(star),
+      active: i === 1 ? true : false
+    });
+  }
+  card.passiveSkills = list;
+};
+
+
+var thisWeek = function() {
+  var now, onejan, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7);
+  return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+};
+var lastWeek = function() {
+  var end, lastWeekNumber, lastYear, now, onejan, start, weekNumber;
+
+  now = new Date();
+  onejan = new Date(now.getFullYear(), 0, 1);
+  weekNumber = Math.ceil((((now - onejan) / 86400000) + onejan.getDate() + 1) / 7) - 1;
+  if (weekNumber === 0) {
+    lastYear = now.getFullYear() - 1;
+    start = new Date(lastYear, 0, 1);
+    end = new Date(lastYear, 12, 0);
+    lastWeekNumber = Math.ceil((((end - start) / 86400000) + start.getDate() + 1) / 7);
+    return '' + lastYear + lastWeekNumber;
+  } else {
+    return '' + now.getFullYear() + (weekNumber < 10 ? '0' + weekNumber : weekNumber);
+  }
 };

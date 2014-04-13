@@ -27,23 +27,31 @@ var CardHalfNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? star - 2 : 1;
-        var skillType = this._card.get("skillType") || 0;
-        if (skillType > 3) {
-            skillType = 3;
+        var index = star > 2 ? Math.min(star - 2, 3) : 1;
+
+        if (this._card.isBossCard()) {
+            var ccbNode = cc.BuilderReader.load(main_scene_image[url], this);
+            this.addChild(ccbNode);
+
+            ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("def", 0);
+        } else {
+            this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
+            this.addChild(this._frameSprite);
+
+            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+            this.addChild(this._cardSprite);
+
+            this._iconSprite = cc.Sprite.create(this._card.getCardIcon());
+            this._iconSprite.setPosition(cc.p(40, -53));
+            this.addChild(this._iconSprite);
+
+            if (this._card.getCardSubscript()) {
+                var subscriptSprite = cc.Sprite.create(this._card.getCardSubscript());
+                subscriptSprite.setAnchorPoint(cc.p(0, 0));
+                subscriptSprite.setPosition(cc.p(-1.8, -2.3));
+                this._iconSprite.addChild(subscriptSprite);
+            }
         }
-
-        this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
-        this.addChild(this._frameSprite);
-
-        this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
-        this.addChild(this._cardSprite);
-
-        // if (skillType) {
-        this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
-        this._iconSprite.setPosition(cc.p(40, -53));
-        this.addChild(this._iconSprite);
-        //  }
 
         return true;
     },

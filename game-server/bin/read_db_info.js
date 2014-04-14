@@ -20,7 +20,7 @@ if (!fs.existsSync(dateDir)) {
 var params = '';
 for (var n in mysqlConfig[env]) {
   var db = mysqlConfig[env][n];
-  params += 'mysqldump --add-drop-table -u' + db.user + ' -p' + db.password + ' --database ' + db.database + ' > ' + dateDir + '/' + db.database + '-' + prefix + '.sql && ';
+  params += 'mysqldump --add-drop-table -h' + db.host + ' -P' + db.port + ' -u' + db.user + ' -p' + db.password + ' --database ' + db.database + ' > ' + dateDir + '/' + db.database + '-' + prefix + '.sql && ';
 }
 
 console.log(params.slice(0, -3));

@@ -11,8 +11,11 @@
 
 @interface YYGUser : NSObject
 @property (strong) NSString *sid;
-@property long account;
+@property uint64_t account;
 @property long long time;
 @property (strong) NSString *username;
 @property bool isLogin;
+@property (strong) NSString* passport;
+@property uint64_t udbuid;
+@property (strong) NSString *gameServer;  //厂商提供
 @end

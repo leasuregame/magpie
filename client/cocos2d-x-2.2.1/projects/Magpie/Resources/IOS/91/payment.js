@@ -37,7 +37,7 @@ var Payment = Entity.extend({
             (product.cash + product.gold / 10).toFixed(2),
             product.cash.toFixed(2),
             1,
-            ""
+            player.get("id")
         );
     },
 

@@ -75,6 +75,29 @@ public:
      */
     User * YYGetUser();
     
+    /**
+     * @brief     玩家选择区服 (厂商在玩家选择完区服, 进入游戏后调用)
+     * @return    无返回
+     */
+    void YYSelectGameServer(const char * serverName);
+    
+    /**
+     * @brief     玩家创建角色 (厂商在玩家创建完角色后调用)
+     * @return    无返回
+     */
+    void YYCreateUserRole(const char * roleName, int defaultRoleLevel);
+    
+    /**
+     * @brief     玩家角色升级 (厂商在玩家角色升级的时候调用)
+     * @return    无返回
+     */
+    void YYUpdateUserRole(const char * roleName, int roleLevel);
+    
+    /**
+     * @brief     玩家充值 count单位是人民币 (厂商在玩家appstore充值到游戏成功之后调用)
+     * @return    无返回
+     */
+    void YYGameConsumeOnServer(const char * serverName, float count);
     
 /******************************************************************************
  *

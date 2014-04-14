@@ -25,6 +25,28 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 JSClass  *jsb_YYAdapter_class;
 JSObject *jsb_YYAdapter_prototype;
 
+JSBool js_js_bindings_YYAdapter_YYAdapter_YYCreateUserRole(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	YYAdapter* cobj = (YYAdapter *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 2) {
+		const char* arg0;
+		int arg1;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->YYCreateUserRole(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+	return JS_FALSE;
+}
 JSBool js_js_bindings_YYAdapter_YYAdapter_YYLogin(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -80,7 +102,7 @@ JSBool js_js_bindings_YYAdapter_YYAdapter_YYGetUser(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
 	if (argc == 0) {
 		User* ret = cobj->YYGetUser();
-
+		
 		JSObject* jsobj = JS_NewObject(cx, NULL, NULL, NULL);
     
 	    char account[100];
@@ -102,12 +124,32 @@ JSBool js_js_bindings_YYAdapter_YYAdapter_YYGetUser(JSContext *cx, uint32_t argc
 	    JS_SetProperty(cx, jsobj, "isLogin", &jsIsLogin);
         
         jsval jsret = OBJECT_TO_JSVAL(jsobj);
-		
+
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_js_bindings_YYAdapter_YYAdapter_YYSelectGameServer(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	YYAdapter* cobj = (YYAdapter *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 1) {
+		const char* arg0;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->YYSelectGameServer(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_js_bindings_YYAdapter_YYAdapter_YYInitWithAppId(JSContext *cx, uint32_t argc, jsval *vp)
@@ -145,6 +187,50 @@ JSBool js_js_bindings_YYAdapter_YYAdapter_YYModifyPassword(JSContext *cx, uint32
 	}
 
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_js_bindings_YYAdapter_YYAdapter_YYUpdateUserRole(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	YYAdapter* cobj = (YYAdapter *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 2) {
+		const char* arg0;
+		int arg1;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->YYUpdateUserRole(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+	return JS_FALSE;
+}
+JSBool js_js_bindings_YYAdapter_YYAdapter_YYGameConsumeOnServer(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	YYAdapter* cobj = (YYAdapter *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 2) {
+		const char* arg0;
+		double arg1;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->YYGameConsumeOnServer(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
 JSBool js_js_bindings_YYAdapter_YYAdapter_YYRegister(JSContext *cx, uint32_t argc, jsval *vp)
@@ -259,12 +345,16 @@ void js_register_js_bindings_YYAdapter_YYAdapter(JSContext *cx, JSObject *global
 	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("YYCreateUserRole", js_js_bindings_YYAdapter_YYAdapter_YYCreateUserRole, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYLogin", js_js_bindings_YYAdapter_YYAdapter_YYLogin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYLogout", js_js_bindings_YYAdapter_YYAdapter_YYLogout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYIsLogin", js_js_bindings_YYAdapter_YYAdapter_YYIsLogin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYGetUser", js_js_bindings_YYAdapter_YYAdapter_YYGetUser, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("YYSelectGameServer", js_js_bindings_YYAdapter_YYAdapter_YYSelectGameServer, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYInitWithAppId", js_js_bindings_YYAdapter_YYAdapter_YYInitWithAppId, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYModifyPassword", js_js_bindings_YYAdapter_YYAdapter_YYModifyPassword, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("YYUpdateUserRole", js_js_bindings_YYAdapter_YYAdapter_YYUpdateUserRole, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("YYGameConsumeOnServer", js_js_bindings_YYAdapter_YYAdapter_YYGameConsumeOnServer, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("YYRegister", js_js_bindings_YYAdapter_YYAdapter_YYRegister, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_js_bindings_YYAdapter_YYAdapter_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END

@@ -84,13 +84,15 @@ var User = Entity.extend({
                     areaId: that._area,
                     version: version
                 }, function (data) {
-                    cc.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     cc.log(data);
 
                     var msg = data.msg;
 
                     if (data.code == 200) {
                         cc.log("login success");
+
+                        // YY数据收集
+                        yyAdapter.YYSelectGameServer(that._area);
 
                         that.update(msg.user);
 
@@ -163,6 +165,9 @@ var User = Entity.extend({
                 cc.log("createPlayer success");
 
                 var msg = data.msg;
+
+                // YY数据收集
+                yyAdapter.YYCreateUserRole(msg.player.name, msg.player.lv);
 
                 gameData.gameStart(msg.player);
 

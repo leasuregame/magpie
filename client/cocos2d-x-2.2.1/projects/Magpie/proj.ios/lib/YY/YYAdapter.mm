@@ -105,6 +105,42 @@ User * YYAdapter::YYGetUser()
     return _user;
 }
 
+void YYAdapter::YYSelectGameServer(const char * serverName)
+{
+    CCLOG("YYSelectGameServer");
+    
+    NSString * NSServerName = [NSString stringWithUTF8String : serverName];
+    
+    [[YYGameCenterSdk defaultSdk] selectGameServer : NSServerName];
+}
+
+void YYAdapter::YYCreateUserRole(const char * roleName, int defaultRoleLevel)
+{
+    CCLOG("YYCreateUserRole");
+    
+    NSString * NSRoleName = [NSString stringWithUTF8String : roleName];
+    
+    [[YYGameCenterSdk defaultSdk] createUserRole : NSRoleName defaultRoleLevel : defaultRoleLevel];
+}
+
+void YYAdapter::YYUpdateUserRole(const char * roleName, int roleLevel)
+{
+    CCLOG("YYUpdateUserRole");
+    
+    NSString * NSRoleName = [NSString stringWithUTF8String : roleName];
+    
+    [[YYGameCenterSdk defaultSdk] updateUserRole : NSRoleName roleLever : roleLevel];
+}
+
+void YYAdapter::YYGameConsumeOnServer(const char * serverName, float count)
+{
+    CCLOG("YYGameConsumeOnServer");
+    
+    NSString * NSServerName = [NSString stringWithUTF8String : serverName];
+    
+    [[YYGameCenterSdk defaultSdk] gameConsumeOnServer : NSServerName count : count];
+}
+
 
 #pragma mark    ---------------SDK CALLBACK---------------
 /******************************************************************************
@@ -114,12 +150,6 @@ User * YYAdapter::YYGetUser()
  *****************************************************************************/
 void YYAdapter::YYOnLoginRetCode(long code, User * user)
 {
-    CCLOG("-------------%s", user->sid);
-    CCLOG("-------------%ld", user->account);
-    CCLOG("-------------%lld", user->time);
-    CCLOG("-------------%s", user->userName);
-    CCLOG("-------------%d", user->isLogin);
-    
     JSContext * cx = ScriptingCore::getInstance()->getGlobalContext();
     
     JSObject * jsobj = JS_NewObject(cx, NULL, NULL, NULL);

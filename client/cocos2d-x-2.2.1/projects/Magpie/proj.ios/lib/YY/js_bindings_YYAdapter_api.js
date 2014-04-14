@@ -9,6 +9,13 @@ var yy = yy || {};
 yy.YYAdapter = {
 
 /**
+ * @method YYCreateUserRole
+ * @param {const char*}
+ * @param {int}
+ */
+YYCreateUserRole : function () {},
+
+/**
  * @method YYLogin
  */
 YYLogin : function () {},
@@ -31,6 +38,12 @@ YYIsLogin : function () {},
 YYGetUser : function () {},
 
 /**
+ * @method YYSelectGameServer
+ * @param {const char*}
+ */
+YYSelectGameServer : function () {},
+
+/**
  * @method YYInitWithAppId
  * @param {const char*}
  * @param {bool}
@@ -41,6 +54,20 @@ YYInitWithAppId : function () {},
  * @method YYModifyPassword
  */
 YYModifyPassword : function () {},
+
+/**
+ * @method YYUpdateUserRole
+ * @param {const char*}
+ * @param {int}
+ */
+YYUpdateUserRole : function () {},
+
+/**
+ * @method YYGameConsumeOnServer
+ * @param {const char*}
+ * @param {float}
+ */
+YYGameConsumeOnServer : function () {},
 
 /**
  * @method YYRegister

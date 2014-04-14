@@ -84,7 +84,6 @@ process91OrderResult = (app, req, res) ->
       sign_text = "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}"+
         "#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}"+
         "#{CreateTime}#{process.env.APP_KEY_91}"
-      console.log('sign text: ', sign_text)
       sign_check = md5 new Buffer(sign_text, 'utf8')
       console.log Sign, sign_check
       if sign_check is Sign

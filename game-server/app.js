@@ -24,9 +24,9 @@ var app = pomelo.createApp();
 app.set('name', 'game-server');
 app.set('debug', false);
 
-app.configure('production|development', function() {
-  app.enable('systemMonitor');
-});
+// app.configure('production|development', function() {
+//   app.enable('systemMonitor');
+// });
 
 app.configure('production|development', function() {
   var areaInfo = require('./app/modules/areaInfo');

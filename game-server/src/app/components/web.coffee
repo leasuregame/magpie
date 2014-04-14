@@ -97,7 +97,7 @@ process91OrderResult = (app, req, res) ->
         playerId: playerId
         areaId: parseInt areaId
         tradeNo: CooOrderSerial
-        tbOrderNo: ConsumeStreamId
+        tborderNo: ConsumeStreamId
         partner: '91'
         amount: OrderMoney
         productId: GoodsId

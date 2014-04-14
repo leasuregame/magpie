@@ -5,6 +5,14 @@
 		"os": ["IOS"],
 		"platform": ["TB"],
 		"version": [],
+		"status": 20
+	}, 
+	{
+		"id": 2,
+		"name": "八仙过海",
+		"os": ["IOS"],
+		"platform": ["PP", "YY", "91"],
+		"version": [],
 		"status": 10
 	}
 ]

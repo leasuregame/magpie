@@ -616,8 +616,16 @@ var ExploreLayer = cc.Layer.extend({
 
                             rewardEffect.animationManager.setCompletedAnimationCallback(that, function () {
                                 rewardEffect.removeFromParent();
-                                next();
                             });
+
+                            var animationManager = rewardEffect.animationManager;
+                            var delay = animationManager.getSequenceDuration(
+                                animationManager.getRunningSequenceName()
+                            );
+
+                            that.scheduleOnce(function () {
+                                next();
+                            }, delay - 1);
                         },
                         function () {
                             if (findBoss) {

@@ -639,6 +639,7 @@ var main_scene_image = {
     p149: effect_scene_path + "effect/" + "p149.png",
     p150: effect_scene_path + "effect/" + "p150.png",
     p151: effect_scene_path + "effect/" + "p151.png",
+    p153: effect_scene_path + "effect/" + "p153.png",
     
     boss2_png: effect_scene_path + "effect/" + "boss2.png",
     boss2_plist: effect_scene_path + "effect/" + "boss2.plist",

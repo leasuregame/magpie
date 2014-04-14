@@ -668,7 +668,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
         var leadCardStar = this._otherData.leadCard.get("star");
 
-        var useCardStar = Math.min(leadCardStar, 5);
+        var useCardStar = outputTables.star_upgrade.rows[leadCardStar].source_card_star;
 
         for (var key in cardList) {
             if (cardList[key].get("star") != useCardStar) {

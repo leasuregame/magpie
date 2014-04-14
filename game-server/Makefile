@@ -4,9 +4,9 @@ build:
 	sh ./bin/build.sh
 
 convert-data: build
-	node ./bin/convertXmlToJson.js 
+	node ./bin/convertXmlToJson.js $(platform)
 
-start: build convert-data
+start: convert-data
 	pomelo start -e production --daemon
 
 stop:
@@ -78,8 +78,8 @@ restartserver: build
 	./node_modules/.bin/pomelo start production --daemon
 
 newdb:
-	sh ./bin/initMysql.sh magpie_area_1
-	sh ./bin/initMysql.sh magpie_area_2
+	sh ./bin/initMysql.sh magpie_area_3
+	sh ./bin/initMysql.sh magpie_area_4
 
 inittables: 
 	mysql -uroot -p1easure114E -e "drop database if exists $(db);create database $(db);use $(db);source ./config/schema/init.sql;GRANT ALL PRIVILEGES ON $(db).* to dev@localhost IDENTIFIED BY '1';" 

@@ -65,7 +65,9 @@ var SelectAreaLayer = cc.Layer.extend({
         scrollView.updateInset();
         selectAreaFrame.controller.ccbAreaList.addChild(scrollView, 1);
 
-        for (var i = 0; i < len; ++i) {
+        for (var i = len - 1; i >= 0; --i) {
+            var y = scrollViewHeight - (len - 1 - i) * 70 - 70;
+
             var areaItem = cc.MenuItemImage.create(
                 main_scene_image.up95,
                 main_scene_image.up95,
@@ -73,7 +75,7 @@ var SelectAreaLayer = cc.Layer.extend({
                 this
             );
 
-            areaItem.setPosition(cc.p(320, scrollViewHeight - i * 70 - 70));
+            areaItem.setPosition(cc.p(320, y));
 
             var area = this._areaList[i];
 

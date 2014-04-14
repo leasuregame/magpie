@@ -14,7 +14,7 @@ var path = require('path');
 var flash = require('connect-flash');
 
 // all environments
-app.set('port', process.env.PORT || 3003);
+app.set('port', process.env.PORT || 7003);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('basepath', __dirname + '/public');

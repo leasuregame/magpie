@@ -103,18 +103,23 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
+
+    resetAreaName: function(id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
     },
 
     updateSelectAreaName: function (id) {
         cc.log("LoginLayer updateSelectAreaName");
 
-        var area = this._areaList[id];
-        this._selectAreaName.setString(area.name);
-        this._selectAreaName.setColor(area.color);
-
+        this.resetAreaName(id);
         this._loginFrame.setVisible(true);
     },
 

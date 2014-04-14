@@ -92,7 +92,7 @@ var User = Entity.extend({
                         cc.log("login success");
 
                         // YY数据收集
-                        yyAdapter.YYSelectGameServer(that._area);
+                        yyAdapter.YYSelectGameServer("s" + that._area);
 
                         that.update(msg.user);
 

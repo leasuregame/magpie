@@ -94,11 +94,11 @@ class Authorize
         if not isValid
           return done({code: 501, msg: '登录失败，请重新登录'})
 
-        fetchUserInfoOrCreate nickName, userId, done
+        fetchUserInfoOrCreate "tb-#{nickName}", null, done
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
-      if errP
+      if err
         logger.error(err)
         return cb(err)
 
@@ -133,7 +133,7 @@ class Authorize
         userName = result.username
         uid = result.userid
 
-        fetchUserInfoOrCreate userName, uid, done
+        fetchUserInfoOrCreate "pp-#{userName}", null, done
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
@@ -143,12 +143,10 @@ class Authorize
       cb(null, user?.toJson())
 
   @YY: (args, cb) ->
-    console.log args
     text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
-    console.log 'text: ', text
     if args.signid is md5(text).toUpperCase()
       
-      fetchUserInfoOrCreate args.account, null, (err, user) ->
+      fetchUserInfoOrCreate "yy-#{args.account}", null, (err, user) ->
         if err
           return cb(err)
 
@@ -158,8 +156,6 @@ class Authorize
       cb({code: 501, msg: '登陆失败，请重新登陆'})
 
   @S91: (args, cb) ->
-    console.log args
-
     async.waterfall [
       (done) ->
         if validSessionId(args.uin, args.sessionid)
@@ -174,7 +170,6 @@ class Authorize
         }
         requestUrl = "#{process.env.LOGIN_CHECK_URL_91}?#{qs.stringify(query)}"
         request.get requestUrl, (err, res, body) ->
-          console.log err, body, body.ErrorCode
           if (err)
             return done(null, false)
 
@@ -184,7 +179,7 @@ class Authorize
           else 
             done(s91ErrorMessage(result))
       (result, done) ->
-        fetchUserInfoOrCreate args.uin, null, done
+        fetchUserInfoOrCreate "91-#{args.uin}", null, done
       (user, done) ->
         checkDuplicatedLogin args.areaId, args.frontendId, user, args.sid, done
     ], (err, user) ->

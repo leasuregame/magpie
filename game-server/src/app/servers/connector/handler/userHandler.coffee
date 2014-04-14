@@ -87,7 +87,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
       args = authParams(type, msg, app)
       args.sid = session.id
       app.rpc.auth.authRemote.authorize session, args, type, (err, u, isValid) ->
-        console.log '-1-', err, u
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err

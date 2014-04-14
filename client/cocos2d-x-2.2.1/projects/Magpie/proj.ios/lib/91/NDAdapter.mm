@@ -250,12 +250,13 @@ int NDAdapter::NDUniPay(const char * cooOrderSerial,    // 合作商的订单号
     buyInfo.productName = NSProductName;
     buyInfo.productOrignalPrice = productOrignalPrice;
     buyInfo.productPrice = productPrice;
+    buyInfo.productCount = productCount;
     buyInfo.payDescription = NSPayDescription;
     
     return [[NdComPlatform defaultPlatform] NdUniPay : buyInfo];
 }
 
-int NDAdapter::NDUniPayAsyn(const char * cooOrderSerial,           // 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
+int NDAdapter::NDUniPayAsyn(const char * cooOrderSerial,// 合作商的订单号，必须保证唯一，双方对账的唯一标记（用GUID生成，32位）
                  const char * productId,                // 商品Id
                  const char * productName,              // 商品名字
                  float productOrignalPrice,             // 商品价格，两位小数
@@ -277,9 +278,10 @@ int NDAdapter::NDUniPayAsyn(const char * cooOrderSerial,           // 合作商�
     buyInfo.productName = NSProductName;
     buyInfo.productOrignalPrice = productOrignalPrice;
     buyInfo.productPrice = productPrice;
+    buyInfo.productCount = productCount;
     buyInfo.payDescription = NSPayDescription;
     
-    return [[NdComPlatform defaultPlatform]  NdUniPayAsyn : buyInfo];
+    return [[NdComPlatform defaultPlatform] NdUniPayAsyn : buyInfo];
 }
 
 

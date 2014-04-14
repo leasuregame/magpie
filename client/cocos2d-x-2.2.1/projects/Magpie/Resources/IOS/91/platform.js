@@ -274,8 +274,8 @@ var ND_COM_PLATFORM_ERROR_3RD_REAUTH_FAILDED = -28002;          // 验证第三�
 
 // 初始化91平台
 var ndAdapter = nd.NDAdapter.NDAdapterInstance();
-ndAdapter.NDSetAutoRotation(false);
 ndAdapter.NDInit(lz.platformConfig.APP_ID, lz.platformConfig.APP_KEY, ND_VERSION_CHECK_LEVEL_STRICT);
+ndAdapter.uin = null;
 
 // 初始化完成的通知
 ndAdapter.SNSInitResult = function () {
@@ -297,12 +297,17 @@ ndAdapter.SNSLoginResult = function (result, code) {
     cc.log("code: " + code);
 
     if (ndAdapter.NDIsLogined() && result) {
+        ndAdapter.uin = ndAdapter.NDLoginUin();
         ndAdapter.NDLoginCallBack();
     } else {
         switch (code) {
             case ND_COM_PLATFORM_ERROR_USER_CANCEL:
-                MainScene.destroy();
-                cc.Director.getInstance().replaceScene(LoginScene.create());
+                if (ndAdapter.uin) {
+                    ndAdapter.uin = null;
+
+                    MainScene.destroy();
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                }
                 break;
             case ND_COM_PLATFORM_ERROR_APP_KEY_INVALID:
                 TipLayer.tip("未授权的appId");
@@ -335,6 +340,44 @@ ndAdapter.SNSBuyResult = function (result, code, buyInfo) {
     cc.log("code: " + code);
     cc.log("buyInfo: " + JSON.stringify(buyInfo));
 
+    gameData.payment._closeWaitLayer();
+
+    if (result) {
+        Dialog.pop("充值成功，请稍候");
+        gameData.payment.buyGoodsSuccess(buyInfo.cooOrderSerial);
+    } else {
+        switch (code) {
+            case ND_COM_PLATFORM_ERROR_USER_CANCEL:
+                Dialog.pop("充值失败，用户取消");
+                break;
+            case ND_COM_PLATFORM_ERROR_NETWORK_FAIL:
+                Dialog.pop("充值失败，网络连接错误");
+                break;
+            case ND_COM_PLATFORM_ERROR_SERVER_RETURN_ERROR:
+                Dialog.pop("充值失败，服务端失败");
+                break;
+            case ND_COM_PLATFORM_ERROR_ORDER_SERIAL_SUBMITTED:
+                Dialog.pop("充值失败，余额不足");
+                break;
+            case ND_COM_PLATFORM_ERROR_PARAM:
+                Dialog.pop("充值失败，商品不合法");
+                break;
+            case ND_COM_PLATFORM_ERROR_VG_MONEY_TYPE_FAILED:
+                Dialog.pop("充值失败，查询失败");
+                break;
+            case ND_COM_PLATFORM_ERROR_VG_ORDER_FAILED:
+                Dialog.pop("充值失败，获取订单失败");
+                break;
+            case ND_COM_PLATFORM_ERROR_VG_BACK_FROM_RECHARGE:
+                Dialog.pop("充值失败，进入虚拟充值");
+                break;
+            case ND_COM_PLATFORM_ERROR_PAY_FAILED:
+                Dialog.pop("充值失败");
+                break;
+            default :
+                Dialog.pop("充值失败，未知错误");
+        }
+    }
 };
 
 // 会话过期，会发送该通知

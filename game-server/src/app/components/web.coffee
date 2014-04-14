@@ -51,7 +51,7 @@ process91OrderResult = (app, req, res) ->
     return res.end()
 
   params = url.parse(req.url, true).query
-  console.log 'params: ', params
+  console.log '91-params: ', params
 
   AppId        = params['AppId'] #应用ID
   Act        = params['Act'] #操作
@@ -81,7 +81,7 @@ process91OrderResult = (app, req, res) ->
       if AppId.toString() isnt APP_ID_91.toString()
         done ErrorCode: '2', ErrorDesc: 'AppId无效'
 
-      sign_check = md5 "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{Note}#{PayStatus}#{CreateTime}#{process.env.APP_KEY_91}"
+      sign_check = md5 "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}#{CreateTime}#{process.env.APP_KEY_91}"
       console.log Sign, sign_check
       if sign_check is Sign
         done()

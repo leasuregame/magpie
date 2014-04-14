@@ -243,7 +243,18 @@ dailyGift error result in issues:
 6: 增加数据校验测试接口，返回部分玩家的数据给客户端做校验。及时发现导致不一致的数据的原因
 
 
+<<<<<<< HEAD
+
+6. 仙丹培养每级上限bug 
+7. 首冲三倍魔石奖励 -- done
+8. app store 服务端验证 -- done
+9. 修改签到bug
+10. onPowerGiveEnd 发送了两次
+
+9. onPowerGiveEnd 发送了两次
+=======
 9. onPowerGiveEnd 发送了两次  --done
+>>>>>>> e787ad4142f6dffd7ecbbd2725038a6f331a4203
 10.所有游戏资源在到达等级最大值是，读取配置表的下一个值是null的，有可能会导致程序出错
 11.角色满级后，不加经验 -- done
 12.排名奖励10不见了 -- done
@@ -338,4 +349,8 @@ dailyGift error result in issues:
 
 5：最高连胜竞技场和成就不符，竞技信息界面显示17，但成就里显示的是10.
 
+<<<<<<< HEAD
+SELECT r1.id, r1.name, r1.lv, r1.ability FROM player AS r1 JOIN (SELECT ROUND(RAND() * (SELECT MAX(id) FROM player)) AS id) AS r2 WHERE r1.id not in (100) and r1.id >= r2.id ORDER BY r1.id ASC LIMIT 5;
+=======
 6：经验元灵购买也有问题，把我的钱扣了，卡牌没有给，提示是仙币不足。 
+>>>>>>> e787ad4142f6dffd7ecbbd2725038a6f331a4203

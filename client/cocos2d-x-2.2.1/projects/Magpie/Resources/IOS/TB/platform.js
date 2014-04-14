@@ -118,9 +118,6 @@ tbAdapter.leavedPlatformHandler = function (closeType, order) {
         case TB_PLATFORM_LEAVED_DEFAULT:
             break;
         case TB_PLATFORM_LEAVED_FROM_LOGIN:
-            if (!tbAdapter.TBIsLogined()) {
-                tbAdapter.TBLogin(0);
-            }
             break;
         case TB_PLATFORM_LEAVED_FROM_USER_CENTER:
             break;

@@ -563,12 +563,6 @@
 		9045C27018EE536300B3ED9F /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		9045C2A418EE5F6600B3ED9F /* PPAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */; };
 		9045C2A518EE5F6600B3ED9F /* PPAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */; };
-		9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
-		9058F5E918C4609800FD88DB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E218C4609800FD88DB /* IAPHelp.mm */; };
-		9058F5EA18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
-		9058F5EB18C4609800FD88DB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E418C4609800FD88DB /* IAPHelpOC.mm */; };
-		9058F5EC18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */; };
-		9058F5ED18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */; };
 		9058F5F618C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
 		9058F5F718C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
 		9058F5F818C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */; };
@@ -593,14 +587,6 @@
 		9058F61E18C460CD00FD88DB /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9058F61018C460CD00FD88DB /* WebLayerOC.m */; };
 		9058F61F18C460CD00FD88DB /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9058F61018C460CD00FD88DB /* WebLayerOC.m */; };
 		9058F62018C460CD00FD88DB /* WebLayerOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9058F61018C460CD00FD88DB /* WebLayerOC.m */; };
-		9058F62A18C460DA00FD88DB /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F62318C460DA00FD88DB /* jsb_TBAdapter.cpp */; };
-		9058F62B18C460DA00FD88DB /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F62318C460DA00FD88DB /* jsb_TBAdapter.cpp */; };
-		9058F62C18C460DA00FD88DB /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F62618C460DA00FD88DB /* TBAdapter.mm */; };
-		9058F62D18C460DA00FD88DB /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9058F62618C460DA00FD88DB /* TBAdapter.mm */; };
-		9058F62E18C460DA00FD88DB /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F62818C460DA00FD88DB /* TBPlatform.framework */; };
-		9058F62F18C460DA00FD88DB /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F62818C460DA00FD88DB /* TBPlatform.framework */; };
-		9058F63018C460DA00FD88DB /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9058F62918C460DA00FD88DB /* TBPlatformResource.bundle */; };
-		9058F63118C460DA00FD88DB /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9058F62918C460DA00FD88DB /* TBPlatformResource.bundle */; };
 		9058F63518C4644F00FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63318C4644F00FD88DB /* AppDelegate.cpp */; };
 		9058F63918C4645900FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63718C4645900FD88DB /* AppDelegate.cpp */; };
 		9058F63D18C4646200FD88DB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9058F63B18C4646200FD88DB /* AppDelegate.cpp */; };
@@ -2143,6 +2129,34 @@
 		90DE78DA18C71ECE005A300F /* user.js in Resources */ = {isa = PBXBuildFile; fileRef = 90DE78BF18C71D46005A300F /* user.js */; };
 		90E99D3A18E9CE460054AD54 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
 		90E99D3B18E9CE4D0054AD54 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */; };
+		90EE02D918FB950A00E2FB36 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02D118FB950A00E2FB36 /* jsb_TBAdapter.cpp */; };
+		90EE02DA18FB950A00E2FB36 /* jsb_TBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02D118FB950A00E2FB36 /* jsb_TBAdapter.cpp */; };
+		90EE02DB18FB950A00E2FB36 /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02D418FB950A00E2FB36 /* TBPlatform.framework */; };
+		90EE02DC18FB950B00E2FB36 /* TBPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02D418FB950A00E2FB36 /* TBPlatform.framework */; };
+		90EE02DD18FB950B00E2FB36 /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90EE02D518FB950A00E2FB36 /* TBPlatformResource.bundle */; };
+		90EE02DE18FB950B00E2FB36 /* TBPlatformResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90EE02D518FB950A00E2FB36 /* TBPlatformResource.bundle */; };
+		90EE02DF18FB950B00E2FB36 /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02D718FB950A00E2FB36 /* TBAdapter.mm */; };
+		90EE02E018FB950B00E2FB36 /* TBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02D718FB950A00E2FB36 /* TBAdapter.mm */; };
+		90EE02E918FB95A400E2FB36 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E318FB95A400E2FB36 /* IAPHelp.mm */; };
+		90EE02EA18FB95A400E2FB36 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E318FB95A400E2FB36 /* IAPHelp.mm */; };
+		90EE02EB18FB95A400E2FB36 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E318FB95A400E2FB36 /* IAPHelp.mm */; };
+		90EE02EC18FB95A400E2FB36 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E318FB95A400E2FB36 /* IAPHelp.mm */; };
+		90EE02ED18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */; };
+		90EE02EE18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */; };
+		90EE02EF18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */; };
+		90EE02F018FB95A400E2FB36 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */; };
+		90EE02F118FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */; };
+		90EE02F218FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */; };
+		90EE02F318FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */; };
+		90EE02F418FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */; };
+		90EE02F518FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */; };
+		90EE02F618FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */; };
+		90EE02F718FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */; };
+		90EE02F818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */; };
+		90EE02FA18FB965A00E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
+		90EE02FB18FB967500E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
+		90EE02FC18FB967C00E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
+		90EE02FD18FB968200E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
 		90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
@@ -3197,13 +3211,6 @@
 		9045C26E18EE514500B3ED9F /* libMobileGestalt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libMobileGestalt.dylib; path = usr/lib/libMobileGestalt.dylib; sourceTree = SDKROOT; };
 		9045C2A218EE5F6600B3ED9F /* PPAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PPAdapter.mm; sourceTree = "<group>"; };
 		9045C2A318EE5F6600B3ED9F /* PPAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAdapter.h; sourceTree = "<group>"; };
-		9058F5E118C4609800FD88DB /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
-		9058F5E218C4609800FD88DB /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
-		9058F5E318C4609800FD88DB /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
-		9058F5E418C4609800FD88DB /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
-		9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_IAPHelp.cpp; sourceTree = "<group>"; };
-		9058F5E618C4609800FD88DB /* js_bindings_IAPHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_IAPHelp.hpp; sourceTree = "<group>"; };
-		9058F5E718C4609800FD88DB /* js_bindings_IAPHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_IAPHelp_api.js; sourceTree = "<group>"; };
 		9058F5F118C460BF00FD88DB /* js_bindings_NotificationHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_NotificationHelp.cpp; sourceTree = "<group>"; };
 		9058F5F218C460BF00FD88DB /* js_bindings_NotificationHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_NotificationHelp.hpp; sourceTree = "<group>"; };
 		9058F5F318C460BF00FD88DB /* js_bindings_NotificationHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_NotificationHelp_api.js; sourceTree = "<group>"; };
@@ -3218,13 +3225,6 @@
 		9058F60E18C460CD00FD88DB /* WebLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLayer.mm; sourceTree = "<group>"; };
 		9058F60F18C460CD00FD88DB /* WebLayerOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLayerOC.h; sourceTree = "<group>"; };
 		9058F61018C460CD00FD88DB /* WebLayerOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLayerOC.m; sourceTree = "<group>"; };
-		9058F62318C460DA00FD88DB /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
-		9058F62418C460DA00FD88DB /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
-		9058F62518C460DA00FD88DB /* TBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAdapter.h; sourceTree = "<group>"; };
-		9058F62618C460DA00FD88DB /* TBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TBAdapter.mm; sourceTree = "<group>"; };
-		9058F62718C460DA00FD88DB /* TBCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCallbackHandler.h; sourceTree = "<group>"; };
-		9058F62818C460DA00FD88DB /* TBPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TBPlatform.framework; sourceTree = "<group>"; };
-		9058F62918C460DA00FD88DB /* TBPlatformResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TBPlatformResource.bundle; sourceTree = "<group>"; };
 		9058F63318C4644F00FD88DB /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		9058F63418C4644F00FD88DB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9058F63718C4645900FD88DB /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -3355,6 +3355,21 @@
 		90DE78C618C71D58005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90DE78C918C71D66005A300F /* game.jsc */ = {isa = PBXFileReference; lastKnownFileType = file; path = game.jsc; sourceTree = "<group>"; };
 		90E99D3918E9CE460054AD54 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		90EE02D118FB950A00E2FB36 /* jsb_TBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_TBAdapter.cpp; sourceTree = "<group>"; };
+		90EE02D218FB950A00E2FB36 /* jsb_TBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jsb_TBAdapter.hpp; sourceTree = "<group>"; };
+		90EE02D418FB950A00E2FB36 /* TBPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TBPlatform.framework; sourceTree = "<group>"; };
+		90EE02D518FB950A00E2FB36 /* TBPlatformResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TBPlatformResource.bundle; sourceTree = "<group>"; };
+		90EE02D618FB950A00E2FB36 /* TBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAdapter.h; sourceTree = "<group>"; };
+		90EE02D718FB950A00E2FB36 /* TBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TBAdapter.mm; sourceTree = "<group>"; };
+		90EE02D818FB950A00E2FB36 /* TBCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCallbackHandler.h; sourceTree = "<group>"; };
+		90EE02E218FB95A400E2FB36 /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
+		90EE02E318FB95A400E2FB36 /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
+		90EE02E418FB95A400E2FB36 /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
+		90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
+		90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_IAPHelp.cpp; sourceTree = "<group>"; };
+		90EE02E718FB95A400E2FB36 /* js_bindings_IAPHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_IAPHelp.hpp; sourceTree = "<group>"; };
+		90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_IAPHelp_api.js; sourceTree = "<group>"; };
+		90EE02F918FB965A00E2FB36 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_MobClickCpp.cpp; sourceTree = "<group>"; };
 		90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_MobClickCpp.hpp; sourceTree = "<group>"; };
 		90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_MobClickCpp_api.js; sourceTree = "<group>"; };
@@ -3388,8 +3403,8 @@
 			files = (
 				90E99D3B18E9CE4D0054AD54 /* libstdc++.6.dylib in Frameworks */,
 				909187FF18A726D80023312A /* AdSupport.framework in Frameworks */,
-				9058F62E18C460DA00FD88DB /* TBPlatform.framework in Frameworks */,
 				90C212CD1870701E00671D28 /* SystemConfiguration.framework in Frameworks */,
+				90EE02DB18FB950A00E2FB36 /* TBPlatform.framework in Frameworks */,
 				90C212D11870702D00671D28 /* Security.framework in Frameworks */,
 				90C212CF1870702600671D28 /* MessageUI.framework in Frameworks */,
 				902B08721858C475003A2A49 /* QuartzCore.framework in Frameworks */,
@@ -3485,6 +3500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EE02FC18FB967C00E2FB36 /* StoreKit.framework in Frameworks */,
 				9006744618F5351400B47B57 /* libstdc++.6.dylib in Frameworks */,
 				906601ED18ED4A2200AAC9D8 /* libz.dylib in Frameworks */,
 				906601EE18ED4A2200AAC9D8 /* SystemConfiguration.framework in Frameworks */,
@@ -3510,6 +3526,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EE02FD18FB968200E2FB36 /* StoreKit.framework in Frameworks */,
 				901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */,
 				906602E418ED4A2400AAC9D8 /* libz.dylib in Frameworks */,
 				906602E518ED4A2400AAC9D8 /* SystemConfiguration.framework in Frameworks */,
@@ -3603,6 +3620,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EE02FB18FB967500E2FB36 /* StoreKit.framework in Frameworks */,
 				90F535DE1862EAC2008207BD /* libz.dylib in Frameworks */,
 				909D73B418754C0B009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				90F535DC1862EAC2008207BD /* libsqlite3.dylib in Frameworks */,
@@ -3628,8 +3646,8 @@
 			files = (
 				90E99D3A18E9CE460054AD54 /* libstdc++.6.dylib in Frameworks */,
 				90A8D61F18B4691500EA6409 /* AdSupport.framework in Frameworks */,
-				9058F62F18C460DA00FD88DB /* TBPlatform.framework in Frameworks */,
 				90A846BB1872C04600582139 /* Security.framework in Frameworks */,
+				90EE02DC18FB950B00E2FB36 /* TBPlatform.framework in Frameworks */,
 				90A846BA1872C03F00582139 /* MessageUI.framework in Frameworks */,
 				90A846B91872C03600582139 /* SystemConfiguration.framework in Frameworks */,
 				90F536EF1862EB3C008207BD /* QuartzCore.framework in Frameworks */,
@@ -3653,6 +3671,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EE02FA18FB965A00E2FB36 /* StoreKit.framework in Frameworks */,
 				D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */,
 				909D73B318754C06009D69C4 /* SystemConfiguration.framework in Frameworks */,
 				1A82F5FB169AC92500C4B13A /* libsqlite3.dylib in Frameworks */,
@@ -4668,31 +4687,17 @@
 		9058F5D218C4600500FD88DB /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				9019930718F7077900A74ECF /* 91 */,
-				9006744918F5352B00B47B57 /* YY */,
+				90EE02E118FB95A400E2FB36 /* IAPHelp */,
 				9045C27118EE567E00B3ED9F /* PP */,
+				9019930718F7077900A74ECF /* 91 */,
+				90EE02D018FB950A00E2FB36 /* TB */,
+				9006744918F5352B00B47B57 /* YY */,
 				90F3931E18C9C712002EC9BC /* UM */,
-				9058F62118C460DA00FD88DB /* TongBu */,
 				9058F60918C460CD00FD88DB /* WebLayer */,
 				9058F60218C460C600FD88DB /* Reachability */,
 				9058F5F018C460BF00FD88DB /* NotificationHelp */,
-				9058F5E018C4609800FD88DB /* IAPHelp */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		9058F5E018C4609800FD88DB /* IAPHelp */ = {
-			isa = PBXGroup;
-			children = (
-				9058F5E118C4609800FD88DB /* IAPHelp.h */,
-				9058F5E218C4609800FD88DB /* IAPHelp.mm */,
-				9058F5E318C4609800FD88DB /* IAPHelpOC.h */,
-				9058F5E418C4609800FD88DB /* IAPHelpOC.mm */,
-				9058F5E518C4609800FD88DB /* js_bindings_IAPHelp.cpp */,
-				9058F5E618C4609800FD88DB /* js_bindings_IAPHelp.hpp */,
-				9058F5E718C4609800FD88DB /* js_bindings_IAPHelp_api.js */,
-			);
-			path = IAPHelp;
 			sourceTree = "<group>";
 		};
 		9058F5F018C460BF00FD88DB /* NotificationHelp */ = {
@@ -4728,28 +4733,6 @@
 				9058F61018C460CD00FD88DB /* WebLayerOC.m */,
 			);
 			path = WebLayer;
-			sourceTree = "<group>";
-		};
-		9058F62118C460DA00FD88DB /* TongBu */ = {
-			isa = PBXGroup;
-			children = (
-				9058F62218C460DA00FD88DB /* TbAPI */,
-				9058F62818C460DA00FD88DB /* TBPlatform.framework */,
-				9058F62918C460DA00FD88DB /* TBPlatformResource.bundle */,
-			);
-			path = TongBu;
-			sourceTree = "<group>";
-		};
-		9058F62218C460DA00FD88DB /* TbAPI */ = {
-			isa = PBXGroup;
-			children = (
-				9058F62318C460DA00FD88DB /* jsb_TBAdapter.cpp */,
-				9058F62418C460DA00FD88DB /* jsb_TBAdapter.hpp */,
-				9058F62518C460DA00FD88DB /* TBAdapter.h */,
-				9058F62618C460DA00FD88DB /* TBAdapter.mm */,
-				9058F62718C460DA00FD88DB /* TBCallbackHandler.h */,
-			);
-			path = TbAPI;
 			sourceTree = "<group>";
 		};
 		9058F63218C4644F00FD88DB /* AppStore */ = {
@@ -5062,6 +5045,42 @@
 			path = "../Resources/game/IOS/TB-Releases";
 			sourceTree = "<group>";
 		};
+		90EE02D018FB950A00E2FB36 /* TB */ = {
+			isa = PBXGroup;
+			children = (
+				90EE02D118FB950A00E2FB36 /* jsb_TBAdapter.cpp */,
+				90EE02D218FB950A00E2FB36 /* jsb_TBAdapter.hpp */,
+				90EE02D318FB950A00E2FB36 /* SDK */,
+				90EE02D618FB950A00E2FB36 /* TBAdapter.h */,
+				90EE02D718FB950A00E2FB36 /* TBAdapter.mm */,
+				90EE02D818FB950A00E2FB36 /* TBCallbackHandler.h */,
+			);
+			path = TB;
+			sourceTree = "<group>";
+		};
+		90EE02D318FB950A00E2FB36 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				90EE02D418FB950A00E2FB36 /* TBPlatform.framework */,
+				90EE02D518FB950A00E2FB36 /* TBPlatformResource.bundle */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		90EE02E118FB95A400E2FB36 /* IAPHelp */ = {
+			isa = PBXGroup;
+			children = (
+				90EE02E218FB95A400E2FB36 /* IAPHelp.h */,
+				90EE02E318FB95A400E2FB36 /* IAPHelp.mm */,
+				90EE02E418FB95A400E2FB36 /* IAPHelpOC.h */,
+				90EE02E518FB95A400E2FB36 /* IAPHelpOC.mm */,
+				90EE02E618FB95A400E2FB36 /* js_bindings_IAPHelp.cpp */,
+				90EE02E718FB95A400E2FB36 /* js_bindings_IAPHelp.hpp */,
+				90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */,
+			);
+			path = IAPHelp;
+			sourceTree = "<group>";
+		};
 		90F3931E18C9C712002EC9BC /* UM */ = {
 			isa = PBXGroup;
 			children = (
@@ -5112,6 +5131,7 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90EE02F918FB965A00E2FB36 /* StoreKit.framework */,
 				901992FB18F6968800A74ECF /* AssetsLibrary.framework */,
 				901992F818F6965A00A74ECF /* CoreTelephony.framework */,
 				901992F618F6964700A74ECF /* AddressBook.framework */,
@@ -5478,9 +5498,9 @@
 				90DE78D618C71ECE005A300F /* loginLayer.js in Resources */,
 				90DE78D718C71ECE005A300F /* main_binding.js in Resources */,
 				90DE78D818C71ECE005A300F /* payment.js in Resources */,
+				90EE02DD18FB950B00E2FB36 /* TBPlatformResource.bundle in Resources */,
 				90DE78D918C71ECE005A300F /* platform.js in Resources */,
 				90DE78DA18C71ECE005A300F /* user.js in Resources */,
-				9058F63018C460DA00FD88DB /* TBPlatformResource.bundle in Resources */,
 				902B08811858C475003A2A49 /* jsb_cocos2d_studio.js in Resources */,
 				902B08E41858C571003A2A49 /* Default@2x.png in Resources */,
 				902B08831858C475003A2A49 /* jsb_deprecated.js in Resources */,
@@ -5835,8 +5855,8 @@
 				90F537141862EB3C008207BD /* CMakeLists.txt in Resources */,
 				90F537171862EB3C008207BD /* json_internalarray.inl in Resources */,
 				90F5375E186303E3008207BD /* res in Resources */,
-				9058F63118C460DA00FD88DB /* TBPlatformResource.bundle in Resources */,
 				90F537181862EB3C008207BD /* json_internalmap.inl in Resources */,
+				90EE02DE18FB950B00E2FB36 /* TBPlatformResource.bundle in Resources */,
 				90F537191862EB3C008207BD /* json_valueiterator.inl in Resources */,
 				90F5371A1862EB3C008207BD /* Icon-72.png in Resources */,
 				90F5371B1862EB3C008207BD /* Default-568h@2x.png in Resources */,
@@ -6043,6 +6063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				902B07A61858C475003A2A49 /* AppController.mm in Sources */,
+				90EE02D918FB950A00E2FB36 /* jsb_TBAdapter.cpp in Sources */,
 				902B07A71858C475003A2A49 /* main.m in Sources */,
 				902B07A81858C475003A2A49 /* RootViewController.mm in Sources */,
 				902B07A91858C475003A2A49 /* UIListViewEx.cpp in Sources */,
@@ -6058,7 +6079,6 @@
 				902B07B41858C475003A2A49 /* ScriptingCore.cpp in Sources */,
 				902B07B51858C475003A2A49 /* chipmunk.c in Sources */,
 				902B07B61858C475003A2A49 /* cpConstraint.c in Sources */,
-				9058F62A18C460DA00FD88DB /* jsb_TBAdapter.cpp in Sources */,
 				902B07B71858C475003A2A49 /* cpDampedRotarySpring.c in Sources */,
 				902B07B81858C475003A2A49 /* cpDampedSpring.c in Sources */,
 				902B07B91858C475003A2A49 /* cpGearJoint.c in Sources */,
@@ -6117,7 +6137,6 @@
 				902B07ED1858C475003A2A49 /* CCParticleSystemQuadLoader.cpp in Sources */,
 				902B07EE1858C475003A2A49 /* UILayoutParameter.cpp in Sources */,
 				902B07EF1858C475003A2A49 /* CCScale9SpriteLoader.cpp in Sources */,
-				9058F62C18C460DA00FD88DB /* TBAdapter.mm in Sources */,
 				902B07F01858C475003A2A49 /* CCScrollViewLoader.cpp in Sources */,
 				902B07F11858C475003A2A49 /* CCSpriteLoader.cpp in Sources */,
 				902B07F21858C475003A2A49 /* CCControl.cpp in Sources */,
@@ -6192,6 +6211,7 @@
 				902B083C1858C475003A2A49 /* CCTween.cpp in Sources */,
 				902B083D1858C475003A2A49 /* CCArmature.cpp in Sources */,
 				902B083E1858C475003A2A49 /* CCBone.cpp in Sources */,
+				90EE02DF18FB950B00E2FB36 /* TBAdapter.mm in Sources */,
 				9058F5F818C460BF00FD88DB /* js_bindings_NotificationHelp.cpp in Sources */,
 				902B08401858C475003A2A49 /* CCDatas.cpp in Sources */,
 				902B08411858C475003A2A49 /* CCBatchNode.cpp in Sources */,
@@ -6558,6 +6578,7 @@
 				9066018B18ED4A2200AAC9D8 /* WebLayerOC.m in Sources */,
 				9066018C18ED4A2200AAC9D8 /* LocalStorageAndroid.cpp in Sources */,
 				9066018D18ED4A2200AAC9D8 /* jsb_cocos2dx_auto.cpp in Sources */,
+				90EE02EF18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */,
 				9066018E18ED4A2200AAC9D8 /* jsb_cocos2dx_studio_auto.cpp in Sources */,
 				9066018F18ED4A2200AAC9D8 /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				9066019018ED4A2200AAC9D8 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
@@ -6591,6 +6612,7 @@
 				906601AC18ED4A2200AAC9D8 /* HttpClient.cpp in Sources */,
 				906601AD18ED4A2200AAC9D8 /* CCSkeleton.cpp in Sources */,
 				906601AE18ED4A2200AAC9D8 /* CCSkeletonAnimation.cpp in Sources */,
+				90EE02F318FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */,
 				906601AF18ED4A2200AAC9D8 /* WebSocket.cpp in Sources */,
 				906601B018ED4A2200AAC9D8 /* jsb_websocket.cpp in Sources */,
 				906601B118ED4A2200AAC9D8 /* NotificationHelp.mm in Sources */,
@@ -6635,6 +6657,7 @@
 				906601D718ED4A2200AAC9D8 /* UIInputManager.cpp in Sources */,
 				906601D818ED4A2200AAC9D8 /* UILayer.cpp in Sources */,
 				906601D918ED4A2200AAC9D8 /* UIListView.cpp in Sources */,
+				90EE02EB18FB95A400E2FB36 /* IAPHelp.mm in Sources */,
 				906601DA18ED4A2200AAC9D8 /* UIPageView.cpp in Sources */,
 				906601DB18ED4A2200AAC9D8 /* UIScrollView.cpp in Sources */,
 				906601DC18ED4A2200AAC9D8 /* UIButton.cpp in Sources */,
@@ -6647,6 +6670,7 @@
 				906601E318ED4A2200AAC9D8 /* UILoadingBar.cpp in Sources */,
 				906601E418ED4A2200AAC9D8 /* UISlider.cpp in Sources */,
 				906601E518ED4A2200AAC9D8 /* UISwitch.cpp in Sources */,
+				90EE02F718FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */,
 				906601E618ED4A2200AAC9D8 /* UITextField.cpp in Sources */,
 				906601E718ED4A2200AAC9D8 /* CSContentJsonDictionary.cpp in Sources */,
 				906601E818ED4A2200AAC9D8 /* DictionaryHelper.cpp in Sources */,
@@ -6686,6 +6710,7 @@
 				9066023418ED4A2400AAC9D8 /* cpPinJoint.c in Sources */,
 				9066023518ED4A2400AAC9D8 /* cpPivotJoint.c in Sources */,
 				9066023618ED4A2400AAC9D8 /* cpRatchetJoint.c in Sources */,
+				90EE02EC18FB95A400E2FB36 /* IAPHelp.mm in Sources */,
 				9066023718ED4A2400AAC9D8 /* cpRotaryLimitJoint.c in Sources */,
 				9066023818ED4A2400AAC9D8 /* cpSimpleMotor.c in Sources */,
 				9066023918ED4A2400AAC9D8 /* cpSlideJoint.c in Sources */,
@@ -6740,10 +6765,12 @@
 				9066026918ED4A2400AAC9D8 /* js_bindings_MobClickCpp.cpp in Sources */,
 				9066026A18ED4A2400AAC9D8 /* CCScale9SpriteLoader.cpp in Sources */,
 				9066026B18ED4A2400AAC9D8 /* CCScrollViewLoader.cpp in Sources */,
+				90EE02F018FB95A400E2FB36 /* IAPHelpOC.mm in Sources */,
 				9066026C18ED4A2400AAC9D8 /* CCSpriteLoader.cpp in Sources */,
 				9066026D18ED4A2400AAC9D8 /* CCControl.cpp in Sources */,
 				9066026E18ED4A2400AAC9D8 /* CCControlButton.cpp in Sources */,
 				9066026F18ED4A2400AAC9D8 /* CCControlColourPicker.cpp in Sources */,
+				90EE02F818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */,
 				9066027018ED4A2400AAC9D8 /* CCControlHuePicker.cpp in Sources */,
 				9066027118ED4A2400AAC9D8 /* CCControlPotentiometer.cpp in Sources */,
 				9066027218ED4A2400AAC9D8 /* js_bindings_NotificationHelp.cpp in Sources */,
@@ -6832,6 +6859,7 @@
 				906602C418ED4A2400AAC9D8 /* CCComAudio.cpp in Sources */,
 				906602C518ED4A2400AAC9D8 /* CCComController.cpp in Sources */,
 				906602C618ED4A2400AAC9D8 /* AssetsManager.mm in Sources */,
+				90EE02F418FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */,
 				906602C718ED4A2400AAC9D8 /* CCComRender.cpp in Sources */,
 				906602C818ED4A2400AAC9D8 /* CCInputDelegate.cpp in Sources */,
 				906602C918ED4A2400AAC9D8 /* UIRootWidget.cpp in Sources */,
@@ -7502,7 +7530,6 @@
 			files = (
 				90F5350B1862EAC2008207BD /* AppController.mm in Sources */,
 				90F5350C1862EAC2008207BD /* main.m in Sources */,
-				9058F5E918C4609800FD88DB /* IAPHelp.mm in Sources */,
 				90F5350D1862EAC2008207BD /* RootViewController.mm in Sources */,
 				90F5350E1862EAC2008207BD /* UIListViewEx.cpp in Sources */,
 				90F5350F1862EAC2008207BD /* cocos2d_specifics.cpp in Sources */,
@@ -7516,7 +7543,6 @@
 				90F535171862EAC2008207BD /* js_manual_conversions.cpp in Sources */,
 				9058F61E18C460CD00FD88DB /* WebLayerOC.m in Sources */,
 				90F535181862EAC2008207BD /* ScriptingCore.cpp in Sources */,
-				9058F5ED18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */,
 				90F535191862EAC2008207BD /* chipmunk.c in Sources */,
 				90F5351A1862EAC2008207BD /* cpConstraint.c in Sources */,
 				90F5351B1862EAC2008207BD /* cpDampedRotarySpring.c in Sources */,
@@ -7549,6 +7575,7 @@
 				90F535371862EAC2008207BD /* cpVect.c in Sources */,
 				90F535381862EAC2008207BD /* CDAudioManager.m in Sources */,
 				90F535391862EAC2008207BD /* CDOpenALSupport.m in Sources */,
+				90EE02EA18FB95A400E2FB36 /* IAPHelp.mm in Sources */,
 				90F5353A1862EAC2008207BD /* CocosDenshion.m in Sources */,
 				90F5353B1862EAC2008207BD /* SimpleAudioEngine.mm in Sources */,
 				90F5353C1862EAC2008207BD /* SimpleAudioEngine_objc.m in Sources */,
@@ -7656,6 +7683,7 @@
 				90F535AB1862EAC2008207BD /* CCBatchNode.cpp in Sources */,
 				90F535AC1862EAC2008207BD /* CCDecorativeDisplay.cpp in Sources */,
 				9058F60618C460C600FD88DB /* Reachability.m in Sources */,
+				90EE02F618FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */,
 				90F535AD1862EAC2008207BD /* CCDisplayFactory.cpp in Sources */,
 				90F535AE1862EAC2008207BD /* CCDisplayManager.cpp in Sources */,
 				90F535AF1862EAC2008207BD /* CCSkin.cpp in Sources */,
@@ -7677,11 +7705,11 @@
 				90F535BE1862EAC2008207BD /* UILayout.cpp in Sources */,
 				90F535BF1862EAC2008207BD /* UIWidget.cpp in Sources */,
 				90F535C01862EAC2008207BD /* UILayoutDefine.cpp in Sources */,
+				90EE02EE18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */,
 				90F535C11862EAC2008207BD /* CocosGUI.cpp in Sources */,
 				90F535C21862EAC2008207BD /* UIHelper.cpp in Sources */,
 				90F535C41862EAC2008207BD /* UIInputManager.cpp in Sources */,
 				90F535C51862EAC2008207BD /* UILayer.cpp in Sources */,
-				9058F5EB18C4609800FD88DB /* IAPHelpOC.mm in Sources */,
 				90F535C61862EAC2008207BD /* UIListView.cpp in Sources */,
 				90F535C81862EAC2008207BD /* UIPageView.cpp in Sources */,
 				90F535C91862EAC2008207BD /* UIScrollView.cpp in Sources */,
@@ -7697,6 +7725,7 @@
 				90F535D51862EAC2008207BD /* UITextField.cpp in Sources */,
 				90F535D61862EAC2008207BD /* CSContentJsonDictionary.cpp in Sources */,
 				90F535D71862EAC2008207BD /* DictionaryHelper.cpp in Sources */,
+				90EE02F218FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */,
 				90F535D81862EAC2008207BD /* json_reader.cpp in Sources */,
 				90F535D91862EAC2008207BD /* json_value.cpp in Sources */,
 				90F535DA1862EAC2008207BD /* json_writer.cpp in Sources */,
@@ -7708,6 +7737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90F536201862EB3C008207BD /* AppController.mm in Sources */,
+				90EE02DA18FB950A00E2FB36 /* jsb_TBAdapter.cpp in Sources */,
 				90F536211862EB3C008207BD /* main.m in Sources */,
 				90F536221862EB3C008207BD /* RootViewController.mm in Sources */,
 				90F536231862EB3C008207BD /* UIListViewEx.cpp in Sources */,
@@ -7776,7 +7806,6 @@
 				90F536611862EB3C008207BD /* CCLayerGradientLoader.cpp in Sources */,
 				90F536621862EB3C008207BD /* CCLayerLoader.cpp in Sources */,
 				90F536631862EB3C008207BD /* CCMenuItemImageLoader.cpp in Sources */,
-				9058F62B18C460DA00FD88DB /* jsb_TBAdapter.cpp in Sources */,
 				90F536641862EB3C008207BD /* CCMenuItemLoader.cpp in Sources */,
 				90F536651862EB3C008207BD /* CCNode+CCBRelativePositioning.cpp in Sources */,
 				90F536661862EB3C008207BD /* CCNodeLoader.cpp in Sources */,
@@ -7812,7 +7841,6 @@
 				90F536841862EB3C008207BD /* LocalStorageAndroid.cpp in Sources */,
 				90F536861862EB3C008207BD /* jsb_cocos2dx_auto.cpp in Sources */,
 				90F536881862EB3C008207BD /* jsb_cocos2dx_studio_auto.cpp in Sources */,
-				9058F62D18C460DA00FD88DB /* TBAdapter.mm in Sources */,
 				90F536891862EB3C008207BD /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				90F5368A1862EB3C008207BD /* jsb_cocos2dx_extension_manual.cpp in Sources */,
 				90F536901862EB3C008207BD /* Animation.cpp in Sources */,
@@ -7857,6 +7885,7 @@
 				90F536B71862EB3C008207BD /* CCTween.cpp in Sources */,
 				90F536B81862EB3C008207BD /* CCArmature.cpp in Sources */,
 				90F536B91862EB3C008207BD /* CCBone.cpp in Sources */,
+				90EE02E018FB950B00E2FB36 /* TBAdapter.mm in Sources */,
 				90F536BB1862EB3C008207BD /* CCDatas.cpp in Sources */,
 				90F536BC1862EB3C008207BD /* CCBatchNode.cpp in Sources */,
 				90F536BD1862EB3C008207BD /* CCDecorativeDisplay.cpp in Sources */,
@@ -7959,10 +7988,10 @@
 				15A3D42A1682F0D4002FB0C5 /* CDAudioManager.m in Sources */,
 				9058F63518C4644F00FD88DB /* AppDelegate.cpp in Sources */,
 				15A3D42B1682F0D4002FB0C5 /* CDOpenALSupport.m in Sources */,
+				90EE02E918FB95A400E2FB36 /* IAPHelp.mm in Sources */,
 				15A3D42C1682F0D4002FB0C5 /* CocosDenshion.m in Sources */,
 				15A3D42D1682F0D4002FB0C5 /* SimpleAudioEngine.mm in Sources */,
 				15A3D42E1682F0D4002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
-				9058F5EC18C4609800FD88DB /* js_bindings_IAPHelp.cpp in Sources */,
 				15A3D5271682F1A5002FB0C5 /* CCBAnimationManager.cpp in Sources */,
 				15A3D5281682F1A5002FB0C5 /* CCBFileLoader.cpp in Sources */,
 				15A3D5291682F1A5002FB0C5 /* CCBKeyframe.cpp in Sources */,
@@ -8043,7 +8072,6 @@
 				1A40E7B01727C3DB006D4861 /* jsb_opengl_functions.cpp in Sources */,
 				1A40E7B11727C3DB006D4861 /* jsb_opengl_manual.cpp in Sources */,
 				3EC20B8518331CC100F2C4D6 /* jsb_cocos2dx_studio_manual.cpp in Sources */,
-				9058F5E818C4609800FD88DB /* IAPHelp.mm in Sources */,
 				1A40E7B21727C3DB006D4861 /* jsb_opengl_registration.cpp in Sources */,
 				1A40E7B51727C427006D4861 /* js_bindings_opengl.cpp in Sources */,
 				1A96A4EB174A32C5008653A9 /* XMLHTTPRequest.cpp in Sources */,
@@ -8068,6 +8096,7 @@
 				1A5E74A517F0874400B9ACAE /* CCDecorativeDisplay.cpp in Sources */,
 				1A5E74A617F0874400B9ACAE /* CCDisplayFactory.cpp in Sources */,
 				1A5E74A717F0874400B9ACAE /* CCDisplayManager.cpp in Sources */,
+				90EE02F518FB95A400E2FB36 /* js_bindings_IAPHelp_api.js in Sources */,
 				1A5E74A817F0874400B9ACAE /* CCSkin.cpp in Sources */,
 				1A5E74A917F0874400B9ACAE /* CCColliderDetector.cpp in Sources */,
 				1A5E74AA17F0874400B9ACAE /* CCArmatureDataManager.cpp in Sources */,
@@ -8089,8 +8118,8 @@
 				1A5E74B717F0874400B9ACAE /* UIWidget.cpp in Sources */,
 				1A5E74BA17F0874400B9ACAE /* UILayoutDefine.cpp in Sources */,
 				1A5E74BB17F0874400B9ACAE /* CocosGUI.cpp in Sources */,
+				90EE02ED18FB95A400E2FB36 /* IAPHelpOC.mm in Sources */,
 				1A5E74BC17F0874400B9ACAE /* UIHelper.cpp in Sources */,
-				9058F5EA18C4609800FD88DB /* IAPHelpOC.mm in Sources */,
 				1A5E74BD17F0874400B9ACAE /* UIInputManager.cpp in Sources */,
 				1A5E74BE17F0874400B9ACAE /* UILayer.cpp in Sources */,
 				1A5E74C017F0874400B9ACAE /* UIListView.cpp in Sources */,
@@ -8109,6 +8138,7 @@
 				1A5E74CC17F0874400B9ACAE /* UITextField.cpp in Sources */,
 				1A5E74CD17F0874400B9ACAE /* CSContentJsonDictionary.cpp in Sources */,
 				1A5E74CE17F0874400B9ACAE /* DictionaryHelper.cpp in Sources */,
+				90EE02F118FB95A400E2FB36 /* js_bindings_IAPHelp.cpp in Sources */,
 				1A5E74D117F0874400B9ACAE /* json_reader.cpp in Sources */,
 				1A5E74D217F0874400B9ACAE /* json_value.cpp in Sources */,
 				1A5E74D417F0874400B9ACAE /* json_writer.cpp in Sources */,
@@ -8180,6 +8210,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/lib/TongBu",
+					"$(PROJECT_DIR)/lib/TB/SDK",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
@@ -8235,6 +8266,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/lib/TongBu",
+					"$(PROJECT_DIR)/lib/TB/SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -9085,7 +9117,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/lib/TongBu",
+					"$(SRCROOT)/lib/TB/SDK",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
@@ -9140,7 +9172,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/lib/TongBu",
+					"$(SRCROOT)/lib/TB/SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;

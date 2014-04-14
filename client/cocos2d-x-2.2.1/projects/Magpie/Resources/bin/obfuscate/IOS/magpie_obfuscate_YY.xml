@@ -24,16 +24,16 @@
                 <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res_ios/">
-                <file name="src/resource.js"/>
+                <file name="resYY/resource.js"/>
 
-                <file name="src/table/table.js"/>
+                <file name="IOS/YY/table.js"/>
 
                 <file name="src/model/event.js"/>
                 <file name="src/model/entity.js"/>
 
                 <file name="src/model/lz.js"/>
                 <file name="src/model/um.js"/>
-                <file name="IOS/AppStore/platform.js"/>
+                <file name="IOS/YY/platform.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
 
@@ -44,7 +44,7 @@
                 <file name="src/model/fit4Iphone5.js"/>
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="IOS/AppStore/user.js"/>
+                <file name="IOS/YY/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -70,7 +70,7 @@
                 <file name="src/model/greeting.js"/>
                 <file name="src/model/boss.js"/>
 
-                <file name="IOS/AppStore/payment.js"/>
+                <file name="IOS/YY/payment.js"/>
 
                 <file name="src/model/battleLogPool.js"/>
                 <file name="src/model/battleLog.js"/>
@@ -96,13 +96,13 @@
                 <file name="src/controls/dialog.js"/>
                 <file name="src/controls/slideLayer.js"/>
 
-                <file name="src/view/loginModule/loginScene.js"/>
-                <file name="IOS/YY/loginModule/loginBgLayer.js"/>
+                <file name="IOS/YY/loginScene.js"/>
+                <file name="IOS/YY/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
                 <file name="IOS/YY/loginLayer.js"/>
-                <file name="IOS/YY/loginModule/newPlayerLayer.js"/>
+                <file name="IOS/YY/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
-                <file name="IOS/YY/loginModule/selectAreaLayer.js"/>
+                <file name="IOS/YY/selectAreaLayer.js"/>
 
                 <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
                 <file name="src/view/startAnimationModule/startAnimationScene.js"/>
@@ -189,7 +189,7 @@
                 <file name="src/view/mainModule/spiritDetails.js"/>
                 <file name="src/view/mainModule/spiritNode.js"/>
                 <file name="src/view/mainModule/spiritPoolLayer.js"/>
-                <file name="src/view/mainModule/spiritSideNode.js"/>
+                <file name="IOS/YY/spiritSideNode.js"/>
                 <file name="src/view/mainModule/starLabel.js"/>
                 <file name="src/view/mainModule/strengthenLayer.js"/>
                 <file name="src/view/mainModule/summonLayer.js"/>

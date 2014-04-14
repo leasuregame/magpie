@@ -49,7 +49,7 @@ process91OrderResult = (app, req, res) ->
   if req.method isnt 'GET'
     res.writeHead 405, "Content-Type": "text/plain"
     return res.end()
-
+  console.log('91-url:', req.url)
   params = url.parse(req.url, true).query
   console.log '91-params: ', params
 
@@ -81,7 +81,10 @@ process91OrderResult = (app, req, res) ->
       if AppId.toString() isnt APP_ID_91.toString()
         done ErrorCode: '2', ErrorDesc: 'AppId无效'
 
-      sign_check = md5 "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}#{CreateTime}#{process.env.APP_KEY_91}"
+      sign_text = "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}"+
+        "#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}"+
+        "#{CreateTime}#{process.env.APP_KEY_91}"
+      sign_check = md5 new Buffer(sign_text, 'utf8')
       console.log Sign, sign_check
       if sign_check is Sign
         done()

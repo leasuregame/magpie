@@ -220,6 +220,7 @@ ppAdapter.PPLogOffCallBack = function () {
     cc.Director.getInstance().replaceScene(LoginScene.create());
 };
 
+
 lz.platformIsLogin = function () {
     cc.log("ppAdapter token: " + ppAdapter.token);
     cc.log(ppAdapter.PPCurrentUserId());

@@ -77,6 +77,7 @@ yyAdapter.YYOnLoginRetCode = function(code, yyUser) {
     cc.log(JSON.stringify(yyUser));
 };
 
+
 lz.platformIsLogin = function () {
     cc.log("yyAdapter YYIsLogin");
 

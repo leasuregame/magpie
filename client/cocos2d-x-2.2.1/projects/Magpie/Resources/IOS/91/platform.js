@@ -385,6 +385,7 @@ ndAdapter.SNSSessionInvalid = function () {
     cc.log("SNSSessionInvalid");
 };
 
+
 lz.platformIsLogin = function () {
     cc.log("ndAdapter NDIsLogined");
 

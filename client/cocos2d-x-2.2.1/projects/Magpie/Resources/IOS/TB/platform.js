@@ -183,10 +183,10 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败，未知错误");
             break;
         case 0:
-            Dialog.pop("充值失败");
+            Dialog.pop("充值失败，待支付");
             break;
         case 1:
-            Dialog.pop("充值失败");
+            Dialog.pop("充值中");
             break;
         case 2:
             Dialog.pop("充值失败");

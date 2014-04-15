@@ -208,7 +208,7 @@ var ConfigLayer = cc.Layer.extend({
             itemMenu.addChild(gameCenterItem);
             y -= 120;
 
-            var gameCenterItemTitle = StrokeLabel.create("玩家中心", "STHeitiTC-Medium", 30);
+            var gameCenterItemTitle = StrokeLabel.create("用户中心", "STHeitiTC-Medium", 30);
             gameCenterItemTitle.setAnchorPoint(cc.p(0, 0.5));
             gameCenterItemTitle.setPosition(cc.p(40, 55));
             gameCenterItem.addChild(gameCenterItemTitle);

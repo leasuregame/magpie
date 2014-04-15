@@ -1128,9 +1128,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>146</integer>
-									<integer>91</integer>
-									<integer>0</integer>
+									<integer>224</integer>
+									<integer>198</integer>
+									<integer>129</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1445,9 +1445,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>148</integer>
-									<integer>119</integer>
-									<integer>30</integer>
+									<integer>214</integer>
+									<integer>197</integer>
+									<integer>149</integer>
 								</array>
 							</dict>
 							<dict>

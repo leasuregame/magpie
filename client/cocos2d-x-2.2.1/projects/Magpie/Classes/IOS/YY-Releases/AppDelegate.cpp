@@ -16,9 +16,11 @@
 #include "jsb_opengl_registration.h"
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
+#include "js_bindings_IAPHelp.hpp"
 #include "js_bindings_MobClickCpp.hpp"
 #include "js_bindings_WebLayer.hpp"
 #include "js_bindings_NotificationHelp.hpp"
+#include "js_bindings_YYAdapter.hpp"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -62,9 +64,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
+    sc->addRegisterCallback(register_all_js_bindings_IAPHelp);
     sc->addRegisterCallback(register_all_js_bindings_MobClickCpp);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);
     sc->addRegisterCallback(register_all_js_bindings_NotificationHelp);
+    sc->addRegisterCallback(register_all_js_bindings_YYAdapter);
 
     sc->start();
     

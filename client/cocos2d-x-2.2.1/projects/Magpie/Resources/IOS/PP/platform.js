@@ -21,7 +21,7 @@ lz.platformConfig = {
     UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",
     UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/app/version",
     GAME_NOTICE_URL: "http://124.238.236.33:9090/api/app/notice",
-    UM_APP_KEY: "5314371056240be15b216fc1"
+    UM_APP_KEY: "534c98bf56240b227310f320"
 };
 
 
@@ -95,24 +95,31 @@ var PP_PAY_RESULT_CODE_USER_OFF_LINE = 88;          // 非法访问，可能用�
 // 初始化PP平台
 var ppAdapter = pp.PPAdapter.PPAdapterInstance();
 ppAdapter.PPInit(lz.platformConfig.APP_ID, lz.platformConfig.APP_KEY);
-ppAdapter.PPSetIsNSlogData(true);
+ppAdapter.PPSetIsNSlogData(false);
 ppAdapter.PPSetRechargeAmount(30);
 ppAdapter.PPSetIsLongComet(true);
-ppAdapter.PPSetIsLogOutPushLoginView(true);
+ppAdapter.PPSetIsLogOutPushLoginView(false);
 ppAdapter.PPSetIsOpenRecharge(true);
 ppAdapter.PPSetCloseRechargeAlertMessage("当前关闭充值功能哦");
 ppAdapter.PPCheckGameUpdate();
 
 ppAdapter.token = "";
+ppAdapter._PPCurrentUserId = ppAdapter.PPCurrentUserId;
+ppAdapter.PPCurrentUserId = function () {
+    return parseInt(ppAdapter._PPCurrentUserId());
+};
 
 // 充值回调
 ppAdapter.PPPayResultCallBack = function (code) {
     cc.log("ppAdapter PPPayResultCallBack");
     cc.log("code: " + code);
 
+    gameData.payment._closeWaitLayer();
+
     switch (code) {
         case PP_PAY_RESULT_CODE_SUCCEED:
             Dialog.pop("充值成功，请稍候");
+            gameData.payment.buyGoodsSuccess();
             break;
         case PP_PAY_RESULT_CODE_FOR_BIDDEN:
             Dialog.pop("充值失败，禁止访问");
@@ -169,6 +176,9 @@ ppAdapter.PPLoginStrCallBack = function (token) {
     cc.log("token: " + token);
 
     ppAdapter.token = token;
+
+    ppAdapter.PPGetUserInfoSecurity();
+    ppAdapter.PPLoginCallBack();
 };
 
 ppAdapter.PPLoginCallBack = function () {
@@ -179,6 +189,19 @@ ppAdapter.PPLoginCallBack = function () {
 ppAdapter.PPCloseWebViewCallBack = function (code) {
     cc.log("ppAdapter PPCloseWebViewCallBack");
     cc.log("code: " + code);
+
+    switch (code) {
+        case PP_WEB_VIEW_CODE_RECHARGE:
+            break;
+        case PP_WEB_VIEW_CODE_RECHARGE_AND_EXCHANGE:
+            break;
+        case PP_WEB_VIEW_CODE_OTHER:
+            break;
+        default:
+            break;
+    }
+
+    gameData.payment._closeWaitLayer();
 };
 
 // 关闭界面回调
@@ -192,10 +215,16 @@ ppAdapter.PPLogOffCallBack = function () {
     cc.log("ppAdapter PPLogOffCallBack");
 
     ppAdapter.token = "";
+
+    MainScene.destroy();
+    cc.Director.getInstance().replaceScene(LoginScene.create());
 };
+
 
 lz.platformIsLogin = function () {
     cc.log("ppAdapter token: " + ppAdapter.token);
+    cc.log(ppAdapter.PPCurrentUserId());
+    cc.log(ppAdapter.PPCurrentUserName());
 
     return (ppAdapter.PPCurrentUserId() && ppAdapter.PPCurrentUserName());
 };

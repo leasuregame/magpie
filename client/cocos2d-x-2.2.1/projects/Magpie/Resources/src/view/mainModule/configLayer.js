@@ -76,7 +76,16 @@ var ConfigLayer = cc.Layer.extend({
 
         var scrollViewLayer = MarkLayer.create(this._configLayerFit.scrollViewLayerRect);
 
+        var itemMenu = LazyMenu.create();
+        itemMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(itemMenu, 2);
+
         var scrollViewHeight = 7 * 120;
+
+        if (lz.platformShowCenter) {
+            scrollViewHeight = 8 * 120;
+        }
+
         var y = scrollViewHeight - 60;
 
         var bgMusicItem = cc.MenuItemImage.create(
@@ -88,6 +97,7 @@ var ConfigLayer = cc.Layer.extend({
 
         bgMusicItem.setAnchorPoint(cc.p(0, 0.5));
         bgMusicItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(bgMusicItem);
         y -= 120;
 
         var musicItemTitle = StrokeLabel.create("背景音乐", "STHeitiTC-Medium", 30);
@@ -120,6 +130,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         soundItem.setAnchorPoint(cc.p(0, 0.5));
         soundItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(soundItem);
         y -= 120;
 
         var soundItemTitle = StrokeLabel.create("游戏音效", "STHeitiTC-Medium", 30);
@@ -151,6 +162,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         noticeItem.setAnchorPoint(cc.p(0, 0.5));
         noticeItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(noticeItem);
         y -= 120;
 
         var noticeItemTitle = StrokeLabel.create("公告", "STHeitiTC-Medium", 30);
@@ -171,6 +183,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         tipsItem.setAnchorPoint(cc.p(0, 0.5));
         tipsItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(tipsItem);
         y -= 120;
 
         var tipsItemTitle = StrokeLabel.create("攻略", "STHeitiTC-Medium", 30);
@@ -183,20 +196,28 @@ var ConfigLayer = cc.Layer.extend({
         tipIcon.setPosition(cc.p(518, 55));
         tipsItem.addChild(tipIcon);
 
-        var QQGroup = cc.MenuItemImage.create(
-            main_scene_image.icon127,
-            main_scene_image.icon127,
-            null,
-            this
-        );
-        QQGroup.setAnchorPoint(cc.p(0, 0.5));
-        QQGroup.setPosition(cc.p(15, y));
-        y -= 120;
+        if (lz.platformShowCenter) {
+            var gameCenterItem = cc.MenuItemImage.create(
+                main_scene_image.icon127,
+                main_scene_image.icon127,
+                this._onClickShowCenter,
+                this
+            );
+            gameCenterItem.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterItem.setPosition(cc.p(15, y));
+            itemMenu.addChild(gameCenterItem);
+            y -= 120;
 
-        var QQGroupTitle = StrokeLabel.create("Q群： 264272502", "STHeitiTC-Medium", 30);
-        QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
-        QQGroupTitle.setPosition(cc.p(40, 55));
-        QQGroup.addChild(QQGroupTitle);
+            var gameCenterItemTitle = StrokeLabel.create("用户中心", "STHeitiTC-Medium", 30);
+            gameCenterItemTitle.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterItemTitle.setPosition(cc.p(40, 55));
+            gameCenterItem.addChild(gameCenterItemTitle);
+
+            var gameCenterIcon = cc.Sprite.create(main_scene_image.icon273);
+            gameCenterIcon.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterIcon.setPosition(cc.p(518, 55));
+            gameCenterItem.addChild(gameCenterIcon);
+        }
 
         var framesBgLabel = cc.Sprite.create(main_scene_image.icon127);
         framesBgLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -218,6 +239,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         this._framesItem[0].setAnchorPoint(cc.p(0, 0.5));
         this._framesItem[0].setPosition(cc.p(250, y));
+        itemMenu.addChild(this._framesItem[0]);
 
         var framesSelectLabel1 = StrokeLabel.create("15", "STHeitiTC-Medium", 30);
         framesSelectLabel1.setAnchorPoint(cc.p(0, 0.5));
@@ -232,6 +254,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         this._framesItem[1].setAnchorPoint(cc.p(0, 0.5));
         this._framesItem[1].setPosition(cc.p(370, y));
+        itemMenu.addChild(this._framesItem[1]);
 
         var framesSelectLabel2 = StrokeLabel.create("30", "STHeitiTC-Medium", 30);
         framesSelectLabel2.setAnchorPoint(cc.p(0, 0.5));
@@ -246,6 +269,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         this._framesItem[2].setAnchorPoint(cc.p(0, 0.5));
         this._framesItem[2].setPosition(cc.p(490, y));
+        itemMenu.addChild(this._framesItem[2]);
 
         var framesSelectLabel3 = StrokeLabel.create("60", "STHeitiTC-Medium", 30);
         framesSelectLabel3.setAnchorPoint(cc.p(0, 0.5));
@@ -265,6 +289,22 @@ var ConfigLayer = cc.Layer.extend({
         scrollViewLayer.addChild(this._framesSelect, 2);
         y -= 120;
 
+        var QQGroup = cc.MenuItemImage.create(
+            main_scene_image.icon127,
+            main_scene_image.icon127,
+            null,
+            this
+        );
+        QQGroup.setAnchorPoint(cc.p(0, 0.5));
+        QQGroup.setPosition(cc.p(15, y));
+        itemMenu.addChild(QQGroup);
+        y -= 120;
+
+        var QQGroupTitle = StrokeLabel.create("Q群： 264272502", "STHeitiTC-Medium", 30);
+        QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
+        QQGroupTitle.setPosition(cc.p(40, 55));
+        QQGroup.addChild(QQGroupTitle);
+
         var go2LoginItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
@@ -273,6 +313,7 @@ var ConfigLayer = cc.Layer.extend({
         );
         go2LoginItem.setAnchorPoint(cc.p(0, 0.5));
         go2LoginItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(go2LoginItem);
 
         var go2LoginItemTitle = StrokeLabel.create("退出登录", "STHeitiTC-Medium", 30);
         go2LoginItemTitle.setAnchorPoint(cc.p(0, 0.5));
@@ -283,21 +324,6 @@ var ConfigLayer = cc.Layer.extend({
         go2LoginIcon.setAnchorPoint(cc.p(0, 0.5));
         go2LoginIcon.setPosition(cc.p(518, 55));
         go2LoginItem.addChild(go2LoginIcon);
-
-        var menu = LazyMenu.create(
-            bgMusicItem,
-            soundItem,
-            noticeItem,
-            tipsItem,
-            QQGroup,
-            go2LoginItem,
-            this._framesItem[0],
-            this._framesItem[1],
-            this._framesItem[2]
-        );
-
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
 
         var scrollView = cc.ScrollView.create(this._configLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
@@ -349,7 +375,6 @@ var ConfigLayer = cc.Layer.extend({
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
             NoticeLayer.pop();
         }
-
     },
 
     _onClickTips: function () {
@@ -359,6 +384,14 @@ var ConfigLayer = cc.Layer.extend({
 
         var tipsLayer = TipsLayer.create();
         this.addChild(tipsLayer, 1);
+    },
+
+    _onClickShowCenter: function () {
+        cc.log("ConfigLayer _onClickShowCenter");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        lz.platformShowCenter();
     },
 
     _onClickBack: function () {

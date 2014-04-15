@@ -50,7 +50,7 @@ static AppDelegate s_sharedApplication;
     
     [window makeKeyAndVisible];
 
-    [[UIApplication sharedApplication] setStatusBarHidden: YES];
+    [[UIApplication sharedApplication] setStatusBarHidden: YES withAnimation: UIStatusBarAnimationFade];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     cocos2d::CCApplication::sharedApplication()->run();

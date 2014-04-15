@@ -94,15 +94,12 @@ void PPAdapter::PPSetRechargeAmount(int paramAmount)
 
 const char * PPAdapter::PPCurrentUserName()
 {
-     CCLOG("PPCurrentUserName");
+    CCLOG("PPCurrentUserName");
     
-    NSString * NSUserName = [[PPAppPlatformKit sharedInstance] currentUserName];
-    const char * userName = [NSUserName UTF8String];
-    
-    return userName;
+    return [[[PPAppPlatformKit sharedInstance] currentUserName] UTF8String];
 }
 
-int PPAdapter::PPCurrentUserId()
+uint64_t PPAdapter::PPCurrentUserId()
 {
      CCLOG("PPCurrentUserId");
     
@@ -204,7 +201,7 @@ void PPAdapter::PPVerifyingUpdatePassCallBack()
 
 void PPAdapter::PPLoginStrCallBack(const char * paramStrToKenKey)
 {
-    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    JSContext * cx = ScriptingCore::getInstance()->getGlobalContext();
     jsval v[] = {
         v[0] = c_string_to_jsval(cx, paramStrToKenKey),
     };
@@ -268,6 +265,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
     CCLOG("ppPayResultCallBack");
     CCLOG("paramPPPayResultCode: %d", paramPPPayResultCode);
     
+    [[UIApplication sharedApplication] setStatusBarHidden : YES];
+    
     PPAdapter::PPAdapterInstance()->PPPayResultCallBack(paramPPPayResultCode);
 }
 
@@ -279,6 +278,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
 - (void)ppVerifyingUpdatePassCallBack
 {
     CCLOG("ppVerifyingUpdatePassCallBack");
+    
+    [[UIApplication sharedApplication] setStatusBarHidden : YES];
     
     PPAdapter::PPAdapterInstance()->PPVerifyingUpdatePassCallBack();
 }
@@ -296,6 +297,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
     
     CCLOG("paramStrToKenKey: %s", strToKenKey);
     
+    [[UIApplication sharedApplication] setStatusBarHidden : YES];
+    
     PPAdapter::PPAdapterInstance()->PPLoginStrCallBack(strToKenKey);
 }
 
@@ -308,6 +311,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
 {
     CCLOG("ppCloseWebViewCallBack");
     CCLOG("paramPPWebViewCode: %d", paramPPWebViewCode);
+    
+    [[UIApplication sharedApplication] setStatusBarHidden : YES];
     
     PPAdapter::PPAdapterInstance()->PPCloseWebViewCallBack(paramPPWebViewCode);
 }
@@ -322,6 +327,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
     CCLOG("ppClosePageViewCallBack");
     CCLOG("paramPPPageCode: %d", paramPPPageCode);
     
+    [[UIApplication sharedApplication] setStatusBarHidden : YES];
+    
     PPAdapter::PPAdapterInstance()->PPClosePageViewCallBack(paramPPPageCode);
 }
 
@@ -332,6 +339,8 @@ static PPCallbackHandler * s_SharedPPCallbackHandler = NULL;
 - (void)ppLogOffCallBack
 {
     CCLOG("ppLogOffCallBack");
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     PPAdapter::PPAdapterInstance()->PPLogOffCallBack();
 }

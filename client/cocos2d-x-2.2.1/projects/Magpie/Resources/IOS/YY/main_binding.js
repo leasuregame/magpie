@@ -29,9 +29,9 @@
 require('jsb.js');
 
 var appFiles = [
-    'src/resource.js',
+    'resYY/resource.js',
 
-    'src/table/table.js',
+    'table.js',
 
     'src/model/event.js',
     'src/model/entity.js',
@@ -101,7 +101,7 @@ var appFiles = [
     'src/controls/dialog.js',
     'src/controls/slideLayer.js',
 
-    'src/view/loginModule/loginScene.js',
+    'loginScene.js',
     'loginBgLayer.js',
     'src/view/loginModule/updateLayer.js',
     'loginLayer.js',
@@ -194,7 +194,7 @@ var appFiles = [
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
     'src/view/mainModule/spiritPoolLayer.js',
-    'src/view/mainModule/spiritSideNode.js',
+    'spiritSideNode.js',
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/summonLayer.js',

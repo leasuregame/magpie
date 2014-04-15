@@ -53,7 +53,7 @@ var LineUpLayer = LazyLayer.extend({
 
         this._locate = this._lineUpLayerFit.locatePoints;
         this._touchRect = this._lineUpLayerFit.touchRect;
-        this._index = 0;
+        this._index = LINE_UP_INDEX;
         this._lineUpItem = [];
         this._lineUp = [];
 

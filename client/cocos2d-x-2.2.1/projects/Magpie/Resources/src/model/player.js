@@ -318,6 +318,11 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
+
+        // YY数据收集
+        if (yyAdapter && yyAdapter.YYUpdateUserRole) {
+            yyAdapter.YYUpdateUserRole(this._name, this._lv);
+        }
     },
 
     isFullLv: function () {

@@ -19,6 +19,7 @@
 #include "js_bindings_MobClickCpp.hpp"
 #include "js_bindings_WebLayer.hpp"
 #include "js_bindings_NotificationHelp.hpp"
+#include "js_bindings_PPAdapter.hpp"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -65,6 +66,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_js_bindings_MobClickCpp);
     sc->addRegisterCallback(register_all_js_bindings_WebLayer);
     sc->addRegisterCallback(register_all_js_bindings_NotificationHelp);
+    sc->addRegisterCallback(register_all_js_bindings_PPAdapter);
 
     sc->start();
     

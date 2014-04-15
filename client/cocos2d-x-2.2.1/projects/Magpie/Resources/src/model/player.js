@@ -320,7 +320,7 @@ var Player = Entity.extend({
         gameData.friend.set("maxFriendCount", data.friendsCount);
 
         // YY数据收集
-        if (yyAdapter && yyAdapter.YYUpdateUserRole) {
+        if (typeof(yyAdapter) != "undefined" && yyAdapter.YYUpdateUserRole) {
             yyAdapter.YYUpdateUserRole(this._name, this._lv);
         }
     },

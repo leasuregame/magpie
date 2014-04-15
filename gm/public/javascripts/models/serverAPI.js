@@ -15,7 +15,7 @@ function initServer(cb) {
     console.log("initServer");
     pomelo.init({
         host: host,
-        port: 4009,
+        port: 3009,
         log: true
     }, function () {
 

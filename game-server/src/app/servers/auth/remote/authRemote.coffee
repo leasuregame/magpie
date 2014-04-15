@@ -270,7 +270,7 @@ checkDuplicatedLogin = (areaId, frontendId, user, sid, done) ->
   user.loginCount += 1
   user.save()
 
-  if accountMap[user.id] and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
+  if accountMap[user.id] #and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
     bss = app.get('backendSessionService')
     
     bss.kickByUid accountMap[user.id].serverId, user.id + '*' + areaId, (err, res) -> 

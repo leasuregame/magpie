@@ -175,6 +175,7 @@ class Authorize
 
           result = JSON.parse body
           if parseInt(result.ErrorCode) is 1
+            sessionIdMap.put args.uin, args.sessionid, 1000 * 60 * 60
             done(null, true)
           else 
             done(s91ErrorMessage(result))
@@ -272,8 +273,8 @@ checkDuplicatedLogin = (areaId, frontendId, user, sid, done) ->
 
   if accountMap[user.id] #and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
     bss = app.get('backendSessionService')
-    
-    bss.kickByUid accountMap[user.id].serverId, user.id + '*' + areaId, (err, res) -> 
+
+    bss.kickByUid accountMap[user.id].serverId, user.id + '*' + accountMap[user.id].areaId, (err, res) -> 
       accountMap[user.id] = {areaId: areaId, serverId: frontendId, sid: sid}
       done(null, user)
   else

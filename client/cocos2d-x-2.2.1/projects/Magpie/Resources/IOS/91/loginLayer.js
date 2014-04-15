@@ -1,11 +1,10 @@
 /**
  * Created with JetBrains WebStorm.
- * User: lcc3536
- * Date: 13-5-17
- * Time: 上午10:47
+ * User: lujunyu
+ * Date: 13-12-30
+ * Time: 下午2:26
  * To change this template use File | Settings | File Templates.
  */
-
 
 /*
  * login layer
@@ -25,8 +24,7 @@ var LoginLayer = cc.Layer.extend({
     _selectAreaEffect: null,
     _scrollView: null,
     _loginItem: null,
-    _accountEditBox: null,
-    _passwordEditBox: null,
+    _accountLabel: null,
     _selectAreaName: null,
     _loginFrame: null,
 
@@ -35,7 +33,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.um.beginLogPageView("登录界面");
+        lz.um.beginLogPageView("91登录界面");
     },
 
     onExit: function () {
@@ -44,7 +42,7 @@ var LoginLayer = cc.Layer.extend({
         this._super();
         this.unscheduleAllCallbacks();
 
-        lz.um.endLogPageView("登录界面");
+        lz.um.endLogPageView("91登录界面");
     },
 
     init: function () {
@@ -56,65 +54,31 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
-        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
+        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect70, this);
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        this._loginFrame.controller.ccbAccountNode.setPosition(this._loginLayerFit.accountNodePoint);
-        this._loginFrame.controller.ccbPasswordNode.setPosition(this._loginLayerFit.passwordNodePoint);
         this._loginFrame.controller.ccbStartGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._accountEditBox.setPosition(cc.p(0, -3));
-
-        this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
-        this._accountEditBox.setDelegate({
-            /**
-             * This method is called when an edit box gains focus after keyboard is shown.
-             * @param {cc.EditBox} sender
-             */
-            editBoxEditingDidBegin: function (sender) {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            }
-        });
-
-        this._accountEditBox.setFont("STHeitiTC-Medium", 35);
-        this._accountEditBox.setMaxLength(50);
-        this._loginFrame.controller.ccbAccountLabel.addChild(this._accountEditBox);
-
-
-        this._passwordEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._passwordEditBox.setPosition(cc.p(0, 0));
-
-        this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
-        this._passwordEditBox.setDelegate({
-            /**
-             * This method is called when an edit box gains focus after keyboard is shown.
-             * @param {cc.EditBox} sender
-             */
-            editBoxEditingDidBegin: function (sender) {
-                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            }
-        });
-        this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
-        this._passwordEditBox.setMaxLength(20);
-        this._loginFrame.controller.ccbPasswordLabel.addChild(this._passwordEditBox);
-
-        this._accountEditBox.setText(user.get("account"));
-        this._passwordEditBox.setText(user.get("password"));
+        this._accountLabel = StrokeLabel.create("当前未登录", "STHeitiTC-Medium", 30);
+        this._accountLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._accountLabel.setPosition(cc.p(0, 0));
+        this._loginFrame.controller.ccbAccountLabel.addChild(this._accountLabel);
 
         this._selectAreaName = StrokeLabel.create("", "STHeitiTC-Medium", 30);
+        this._selectAreaName.setAnchorPoint(cc.p(0, 0.5));
         this._selectAreaName.setPosition(cc.p(0, 0));
-        this._loginFrame.controller.ccbAreaName.addChild(this._selectAreaName);
+        this._loginFrame.controller.ccbAreaNameLabel.addChild(this._selectAreaName);
 
         this.updateAreaList();
+
+        this.schedule(this.updateAccountLabel, 1);
+
         return true
     },
 
     updateAreaList: function () {
-        cc.log("LoginLayer upateAreaList");
+        cc.log("LoginLayer updateAreaList");
 
         var that = this;
         lz.server.connectGateServer(function () {
@@ -122,7 +86,6 @@ var LoginLayer = cc.Layer.extend({
 
             that.scheduleOnce(that.updateAreaList, GATE_SERVER_TIMEOUT);
         });
-
     },
 
     addAreaList: function () {
@@ -140,10 +103,17 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
 
+    resetAreaName: function(id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
     },
 
     updateSelectAreaName: function (id) {
@@ -156,11 +126,14 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setVisible(true);
     },
 
-    updateEditBox: function () {
+    updateAccountLabel: function () {
+        var str = "当前未登录";
 
-        this._accountEditBox.setText(user.get("account"));
-        this._passwordEditBox.setText(user.get("password"));
-        this._loginFrame.setVisible(true);
+        if(ndAdapter.NDIsLogined()) {
+            str = ndAdapter.NDNickName();
+        }
+
+        this._accountLabel.setString(str);
     },
 
     ccbFnOpenArea: function () {
@@ -179,17 +152,8 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var user = gameData.user;
-
-        user.set("account", this._accountEditBox.getText());
-        user.set("password", this._passwordEditBox.getText());
-
-        if (!user.canLogin()) {
-            return;
-        }
-
         var that = this;
-        user.login(function (type) {
+        gameData.user.login(function (type) {
             cc.log(type);
 
             if (type == 2) {
@@ -198,11 +162,12 @@ var LoginLayer = cc.Layer.extend({
         });
     },
 
-    ccbFnRegister: function () {
-        cc.log("LoginLayer ccbFnRegister");
+    ccbFnAccountLogin: function () {
+        cc.log("LoginLayer ccbFnAccountLogin");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        this.getParent().switchLayer(RegisterLayer);
+
+        ndAdapter.NDLogin(0);
     }
 });
 

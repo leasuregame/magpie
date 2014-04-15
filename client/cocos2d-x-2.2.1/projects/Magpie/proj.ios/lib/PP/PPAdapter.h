@@ -81,7 +81,7 @@ public:
      * @brief     获取用户id
      * @return    返回当前登录用户id
      */
-    int PPCurrentUserId();
+    uint64_t PPCurrentUserId();
     
     /**
      * @brief     设定打印SDK日志

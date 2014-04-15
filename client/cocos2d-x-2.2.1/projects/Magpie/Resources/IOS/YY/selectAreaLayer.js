@@ -43,7 +43,7 @@ var SelectAreaLayer = cc.Layer.extend({
 
         this._areaList = areaList;
 
-        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect108, this);
+        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect38, this);
         selectAreaFrame.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(selectAreaFrame, 1);
 
@@ -69,25 +69,25 @@ var SelectAreaLayer = cc.Layer.extend({
             var y = scrollViewHeight - (len - 1 - i) * 70 - 35;
 
             var areaItem = cc.MenuItemImage.create(
-                main_scene_image.up95,
-                main_scene_image.up95,
+                main_scene_image.button83,
+                main_scene_image.button83s,
                 this._onClickArea(i),
                 this
             );
 
-            areaItem.setScaleX(0.9);
-            areaItem.setPosition(cc.p(320, y));
+            areaItem.setPosition(cc.p(340, y));
 
             var area = this._areaList[i];
 
             var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
             areaLabel.setColor(area.color);
-            areaLabel.setPosition(cc.p(250, 30));
+            areaLabel.setPosition(cc.p(140, 30));
             areaItem.addChild(areaLabel);
 
-            var statusIcon = cc.Sprite.create(area.url);
-            statusIcon.setPosition(cc.p(400, 30));
-            areaItem.addChild(statusIcon);
+            var statusLabel =  StrokeLabel.create(area.statusName, "STHeitiTC-Medium", 35);
+            statusLabel.setColor(area.color);
+            statusLabel.setPosition(cc.p(420, 30));
+            areaItem.addChild(statusLabel);
 
             menu.addChild(areaItem);
         }

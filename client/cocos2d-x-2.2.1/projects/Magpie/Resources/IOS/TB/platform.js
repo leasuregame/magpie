@@ -20,7 +20,8 @@ lz.platformConfig = {
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
     UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/tb/version",
-    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
+    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice",
+    UM_APP_KEY: "534c99f956240b191c287b68"
 };
 
 
@@ -59,6 +60,8 @@ lz.platformConfig = {
     if (typeof(lz.NotificationHelp) != "undefined") {
         lz.NotificationHelp.start();
     }
+
+    lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
 
 
@@ -118,9 +121,6 @@ tbAdapter.leavedPlatformHandler = function (closeType, order) {
         case TB_PLATFORM_LEAVED_DEFAULT:
             break;
         case TB_PLATFORM_LEAVED_FROM_LOGIN:
-            if (!tbAdapter.TBIsLogined()) {
-                tbAdapter.TBLogin(0);
-            }
             break;
         case TB_PLATFORM_LEAVED_FROM_USER_CENTER:
             break;
@@ -183,10 +183,10 @@ tbAdapter.checkOrderResultHandler = function (order, status, amount) {
             Dialog.pop("充值失败，未知错误");
             break;
         case 0:
-            Dialog.pop("充值失败");
+            Dialog.pop("充值失败，待支付");
             break;
         case 1:
-            Dialog.pop("充值失败");
+            Dialog.pop("充值中");
             break;
         case 2:
             Dialog.pop("充值失败");

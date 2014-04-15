@@ -519,7 +519,7 @@ var fit4Iphone4 = {
             "line1IconPoint": cc.p(360, 840),
             "line2IconPoint": cc.p(360, 709),
             "descriptionBgIconPoint": cc.p(40, 106),
-            "descriptionIconPoint": cc.p(120, 162),
+            "descriptionIconPoint": cc.p(120, 202),
             "titleLabelPoint": cc.p(360, 920),
             "spiritShadowPoint": cc.p(350, 698),
             "spiritNodePoint": cc.p(360, 695),

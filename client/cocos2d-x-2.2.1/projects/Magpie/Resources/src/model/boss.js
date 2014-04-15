@@ -457,7 +457,7 @@ var Boss = Entity.extend({
             var len = this._bossList.length;
             for (var i = 0; i < len; ++i) {
                 var boss = this._bossList[i];
-                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_DIE) {
+                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_TIMEOUT || boss.status == BOSS_STATUS_DIE) {
                     boss.timeLeft = 0;
                 } else {
                     boss.timeLeft = Math.max(0, boss.timeLeft - interval);

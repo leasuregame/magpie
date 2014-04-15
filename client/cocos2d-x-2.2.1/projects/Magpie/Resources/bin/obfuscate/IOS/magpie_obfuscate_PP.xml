@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/AppStore-Releases/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/PP-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>
@@ -24,7 +24,7 @@
                 <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res_ios/">
-                <file name="src/resource.js"/>
+                <file name="res/resource.js"/>
 
                 <file name="src/table/table.js"/>
 
@@ -33,7 +33,7 @@
 
                 <file name="src/model/lz.js"/>
                 <file name="src/model/um.js"/>
-                <file name="IOS/AppStore/platform.js"/>
+                <file name="IOS/PP/platform.js"/>
                 <file name="src/model/pomelo.js"/>
                 <file name="src/model/server.js"/>
 
@@ -44,7 +44,7 @@
                 <file name="src/model/fit4Iphone5.js"/>
                 <file name="src/model/gameFit.js"/>
                 <file name="src/model/clock.js"/>
-                <file name="IOS/AppStore/user.js"/>
+                <file name="IOS/PP/user.js"/>
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
@@ -70,7 +70,7 @@
                 <file name="src/model/greeting.js"/>
                 <file name="src/model/boss.js"/>
 
-                <file name="IOS/AppStore/payment.js"/>
+                <file name="IOS/PP/payment.js"/>
 
                 <file name="src/model/battleLogPool.js"/>
                 <file name="src/model/battleLog.js"/>
@@ -99,7 +99,7 @@
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
                 <file name="src/view/loginModule/updateLayer.js"/>
-                <file name="IOS/AppStore/loginLayer.js"/>
+                <file name="IOS/PP/loginLayer.js"/>
                 <file name="src/view/loginModule/newPlayerLayer.js"/>
                 <file name="src/view/loginModule/registerLayer.js"/>
                 <file name="src/view/loginModule/selectAreaLayer.js"/>

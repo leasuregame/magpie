@@ -7,7 +7,7 @@
     <target name="compile">
         <!--advanced / simple-->
         <jscomp compilationLevel="simple" warning="quiet"
-                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/AppStore-Releases/game.js">
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/PP-Releases/game.js">
             <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
                 <file name="obfuscate_exclude_cocos2d.js"/>
                 <file name="obfuscate_exclude_chipmunk.js"/>

@@ -70,7 +70,6 @@ var Payment = Entity.extend({
 
         if (productId >= 8) {
             gameData.player.resetGoldCards(9 - productId);
-            this._cb();
 
             lz.server.request("area.cardHandler.buyGoldCard", {
                 orderNo: order,
@@ -84,6 +83,8 @@ var Payment = Entity.extend({
                 }
             }, true);
         }
+
+        this._cb();
     }
 });
 

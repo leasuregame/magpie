@@ -51,7 +51,7 @@ static AppDelegate s_sharedApplication;
     
     [window makeKeyAndVisible];
 
-    [[UIApplication sharedApplication] setStatusBarHidden: YES];
+    [[UIApplication sharedApplication] setStatusBarHidden: YES withAnimation: UIStatusBarAnimationFade];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     cocos2d::CCApplication::sharedApplication()->run();
@@ -59,7 +59,7 @@ static AppDelegate s_sharedApplication;
 }
 
 
-//⽀支付宝回调
+// ⽀付宝回调
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     [[PPAppPlatformKit sharedInstance] alixPayResult:url];
     return YES;

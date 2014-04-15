@@ -79,7 +79,6 @@ var User = Entity.extend({
                     areaId: that._area,
                     version: version
                 }, function (data) {
-                    cc.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     cc.log(data);
 
                     var msg = data.msg;

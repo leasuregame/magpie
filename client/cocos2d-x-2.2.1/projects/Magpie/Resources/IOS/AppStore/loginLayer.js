@@ -35,7 +35,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.um.beginLogPageView("登录界面");
+        lz.um.beginLogPageView("AppStore登录界面");
     },
 
     onExit: function () {
@@ -44,7 +44,7 @@ var LoginLayer = cc.Layer.extend({
         this._super();
         this.unscheduleAllCallbacks();
 
-        lz.um.endLogPageView("登录界面");
+        lz.um.endLogPageView("AppStore登录界面");
     },
 
     init: function () {
@@ -140,10 +140,17 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
 
+    resetAreaName: function(id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
     },
 
     updateSelectAreaName: function (id) {

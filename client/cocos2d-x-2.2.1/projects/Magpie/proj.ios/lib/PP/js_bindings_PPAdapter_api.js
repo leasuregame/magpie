@@ -20,13 +20,8 @@ PPCheckGameUpdate : function () {},
 PPSetIsDeviceOrientationLandscapeLeft : function () {},
 
 /**
- * @method PPVerifyingUpdatePassCallBack
- */
-PPVerifyingUpdatePassCallBack : function () {},
-
-/**
  * @method PPCurrentUserId
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "uint64_t"
  */
 PPCurrentUserId : function () {},
 
@@ -40,12 +35,6 @@ PPShowLogin : function () {},
  * @param {const char*}
  */
 PPSetCloseRechargeAlertMessage : function () {},
-
-/**
- * @method PPClosePageViewCallBack
- * @param {PPPageCode}
- */
-PPClosePageViewCallBack : function () {},
 
 /**
  * @method PPSetIsNSlogData
@@ -68,12 +57,6 @@ PPShowCenter : function () {},
  * @param {bool}
  */
 PPSetIsDeviceOrientationPortraitUpsideDown : function () {},
-
-/**
- * @method PPCloseWebViewCallBack
- * @param {PPWebViewCode}
- */
-PPCloseWebViewCallBack : function () {},
 
 /**
  * @method PPSetIsOpenRecharge
@@ -111,27 +94,10 @@ PPSetRechargeAmount : function () {},
 PPCurrentUserName : function () {},
 
 /**
- * @method PPPayResultCallBack
- * @param {PPPayResultCode}
- */
-PPPayResultCallBack : function () {},
-
-/**
- * @method PPLogOffCallBack
- */
-PPLogOffCallBack : function () {},
-
-/**
  * @method PPSetIsLongComet
  * @param {bool}
  */
 PPSetIsLongComet : function () {},
-
-/**
- * @method PPLoginStrCallBack
- * @param {const char*}
- */
-PPLoginStrCallBack : function () {},
 
 /**
  * @method PPSetIsDeviceOrientationLandscapeRight

@@ -54,11 +54,11 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
-        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect107, this);
+        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect70, this);
 
         this.addChild(this._loginFrame);
 
-        if(gameDevice != "Iphone5") {
+        if (gameDevice != "Iphone5") {
             this._loginFrame.setPosition(cc.p(360, 540));
         } else {
             this._loginFrame.setPosition(cc.p(320, 568));
@@ -107,9 +107,17 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
+
+    resetAreaName: function(id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
     },
 
     updateSelectAreaName: function (id) {
@@ -125,9 +133,10 @@ var LoginLayer = cc.Layer.extend({
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-//        if (tbAdapter && tbAdapter.TBIsLogined()) {
-//            str = tbAdapter.TBNickName();
-//        }
+        if (lz.platformIsLogin && lz.platformIsLogin()) {
+            var yyUser = yyAdapter.YYGetUser();
+            str = yyUser.userName;
+        }
 
         this._accountLabel.setString(str);
     },
@@ -163,9 +172,7 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-//        if (tbAdapter && tbAdapter.TBLogin) {
-//            tbAdapter.TBLogin(0);
-//        }
+        yyAdapter.YYLogin();
     }
 });
 

@@ -1,5 +1,5 @@
 /**
- * Created by lcc3536 on 13-11-30.
+ * Created by lcc3536 on 13-12-6.
  */
 
 
@@ -8,172 +8,41 @@
  * */
 
 
-var PAYMENT_LOCK = 0;
-var PAYMENT_PURCHASED = 1;
-var PAYMENT_FAILED = 2;
-var PAYMENT_RESTORED = 3;
-var PAYMENT_PURCHASING = 4;
-
-var JUDGE_INTERVAL = 300;
-
 var Payment = Entity.extend({
-    _paymentKey: "",
-    _orderList: null,
     _waitLayer: null,
     _cb: null,
 
     init: function () {
-        cc.log("AppStore Payment init");
+        cc.log("91 Payment init");
 
-        this.unscheduleAllCallbacks();
-
-        this._paymentKey = gameData.player.get("uid") + "_payment_key";
-        this._orderList = [];
-
-        this._load();
-        this.schedule(this._judge, JUDGE_INTERVAL);
-    },
-
-    _load: function () {
-        cc.log("AppStore Payment _load");
-
-        this._orderList = lz.load(this._paymentKey) || [];
-    },
-
-    _save: function () {
-        cc.log("AppStore Payment _save");
-
-        lz.save(this._paymentKey, this._orderList);
-    },
-
-    _judge: function () {
-        cc.log("AppStore Payment _judge");
-
-        var len = this._orderList.length;
-
-        for (var i = 0; i < len; ++i) {
-            this._sendOrder(this._orderList[i]);
-        }
-    },
-
-    _push: function (order) {
-        cc.log("AppStore Payment _push");
-
-        this._orderList.push(order);
-
-        this._save();
-
-        this._sendOrder(order);
-    },
-
-    _pop: function (order) {
-        cc.log("AppStore Payment _pop");
-
-        var len = this._orderList.length;
-
-        for (var i = len - 1; i >= 0; --i) {
-            if (this._orderList[i] == order) {
-                this._orderList.splice(i, 1);
-            }
-        }
-
-        this._save();
+        this._waitLayer = null;
+        this._cb = null;
     },
 
     buy: function (args) {
-        cc.log("AppStore Payment buy");
+        cc.log("91 Payment buy");
 
         var product = args.product;
         this._cb = args.cb;
 
-        if (lz.IAPHelp) {
-            this._showWaitLayer();
+        this._showWaitLayer();
 
-            cc.log(product.product_id);
+        var user = gameData.user;
+        var player = gameData.player;
 
-            lz.IAPHelp.buy(product.product_id, this, this._payCallback);
-        }
-    },
-
-    _sendOrder: function (order) {
-        cc.log("AppStore Payment _sendOrder");
-
-        var that = this;
-        lz.server.request("area.verifyHandler.appStore", order, function (data) {
-            cc.log(data);
-
-            var code = data.code;
-
-            if (code == 200 || code == 600 || code == 501) {
-                cc.log("send order success");
-
-                that._pop(order);
-            } else {
-                cc.log("send order fail");
-            }
-        }, true);
-    },
-
-    _payCallback: function (paymentData) {
-        cc.log("AppStore Payment _payCallback");
-
-        cc.log("=============================================================");
-        cc.log("paymentData state: " + paymentData.state);
-        cc.log("paymentData product: " + paymentData.product);
-        cc.log("paymentData receipt: " + paymentData.receipt);
-        cc.log("paymentData msg: " + paymentData.msg);
-        cc.log("=============================================================");
-
-        var state = paymentData.state;
-        var product = paymentData.product;
-
-        if (state == PAYMENT_LOCK) {
-            cc.log("payment lock");
-
-            Dialog.pop("充值失败");
-            this._closeWaitLayer();
-        } else if (state == PAYMENT_PURCHASED) {
-            cc.log("payment purchased");
-
-            if (product == "com.leasuregame.magpie.week.card") {
-                gameData.player.resetGoldCards(WEEK_CARD);
-            }
-
-            if (product == "com.leasuregame.magpie.month.card") {
-                gameData.player.resetGoldCards(MONTH_CARD);
-            }
-
-            this._cb();
-
-            this._push({
-                productId: paymentData.product,
-                receipt: paymentData.receipt
-            });
-
-            Dialog.pop("充值已成功，请稍候");
-            this._closeWaitLayer();
-        } else if (state == PAYMENT_FAILED) {
-            cc.log("payment failed");
-
-            Dialog.pop("充值失败");
-            this._closeWaitLayer();
-        } else if (state == PAYMENT_RESTORED) {
-            cc.log("payment restored");
-
-            Dialog.pop("该商品已购买");
-            this._closeWaitLayer();
-        } else if (state == PAYMENT_PURCHASING) {
-            cc.log("payment purchasing");
-        } else {
-            cc.log("payment error");
-
-            Dialog.pop("未知错误");
-            this._closeWaitLayer();
-        }
+        ndAdapter.NDUniPayAsyn(
+            product.id + "-" + user.get("area") + "-" + player.get("uid") + "-" + Date.now(),
+            product.id,
+            product.product_id,
+            (product.cash + product.gold / 10).toFixed(2),
+            product.cash.toFixed(2),
+            1,
+            player.get("id")
+        );
     },
 
     _showWaitLayer: function () {
-        cc.log("AppStore Payment _showWaitLayer");
+        cc.log("91 Payment _showWaitLayer");
 
         if (!this._waitLayer) {
             this._waitLayer = WaitLayer.pop();
@@ -181,11 +50,39 @@ var Payment = Entity.extend({
     },
 
     _closeWaitLayer: function () {
-        cc.log("AppStore Payment _closeWaitLayer");
+        cc.log("91 Payment _closeWaitLayer");
 
         if (this._waitLayer) {
             this._waitLayer.removeFromParent();
             this._waitLayer = null;
+        }
+    },
+
+    buyGoodsSuccess: function (order) {
+        cc.log("91 Payment buyGoodsSuccess: " + order);
+
+        if (!order) {
+            return;
+        }
+
+        var args = order.split("-");
+        var productId = parseInt(args[0]);
+
+        if (productId >= 8) {
+            gameData.player.resetGoldCards(9 - productId);
+            this._cb();
+
+            lz.server.request("area.cardHandler.buyGoldCard", {
+                orderNo: order,
+                productId: productId
+            }, function (data) {
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("buyGoldCard success");
+                } else {
+                    cc.log("buyGoldCard fail");
+                }
+            }, true);
         }
     }
 });

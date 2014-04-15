@@ -22,7 +22,8 @@
     "coffee-script": "1.6.2",
     "csv": "*",
     "pomelo-admin": "*",
-    "ursa": "~0.8.0"
+    "ursa": "~0.8.0",
+    "dotenv": "*"
   },
   "devDependencies": {
     "underscore": "1.4.4",

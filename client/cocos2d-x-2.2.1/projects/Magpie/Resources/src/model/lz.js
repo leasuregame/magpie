@@ -431,6 +431,13 @@ lz.getTimeStr = function (args) {
     var date = (args && args.time) ? new Date(args.time) : new Date();
     var fmt = (args && args.fmt) ? args.fmt : "hh:mm:ss";
 
+    /*将时间转换成北京时间*/
+    var localTime = date.getTime();
+    var localOffset = date.getTimezoneOffset() * 60 * 1000;
+    var utc = localTime + localOffset;
+
+    date = new Date(utc + 8 * 3600 * 1000);
+
     var o = {
         "M+": date.getMonth() + 1, //月
         "d+": date.getDate(), //日
@@ -442,6 +449,26 @@ lz.getTimeStr = function (args) {
     if (/(y+)/.test(fmt)) {
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
     }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+
+    return fmt;
+};
+
+/*
+* 获取倒计时
+* */
+lz.getCountdownStr = function (time) {
+    var fmt = "hh:mm:ss";
+    var o = {
+        "h+": parseInt(time / 3600000), //时
+        "m+": parseInt((time % 3600000) / 60000), //分
+        "s+": parseInt((time % 60000) / 1000) //秒
+    };
 
     for (var k in o) {
         if (new RegExp("(" + k + ")").test(fmt)) {

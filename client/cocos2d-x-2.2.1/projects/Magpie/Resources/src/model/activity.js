@@ -186,6 +186,7 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 gameData.player.add("gold", data.msg.gold);
+                gameData.player.add("energy",data.msg.energy);
                 that._changeStateById(TYPE_GOLD_REWARD, id, GOLD_RECEIVE);
 
                 lz.tipReward(data.msg);

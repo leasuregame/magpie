@@ -21,7 +21,7 @@ lz.platformConfig = {
     UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",
     UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/app/version",
     GAME_NOTICE_URL: "http://124.238.236.33:9090/api/app/notice",
-    UM_APP_KEY: "5314371056240be15b216fc1"
+    UM_APP_KEY: "534c999b56240b5a0d01d4b9"
 };
 
 
@@ -67,3 +67,25 @@ lz.platformConfig = {
 
     lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
+
+
+var yyAdapter = yy.YYAdapter.YYAdapterInstance();
+yyAdapter.YYInitWithAppId(lz.platformConfig.APP_ID, true);
+
+yyAdapter.YYOnLoginRetCode = function(code, yyUser) {
+    cc.log("yyAdapter YYOnLoginRetCode: " + code);
+    cc.log(JSON.stringify(yyUser));
+};
+
+
+lz.platformIsLogin = function () {
+    cc.log("yyAdapter YYIsLogin");
+
+    return yyAdapter.YYIsLogin();
+};
+
+lz.platformLogout = function () {
+    cc.log("yyAdapter YYLogout");
+
+    yyAdapter.YYLogout();
+};

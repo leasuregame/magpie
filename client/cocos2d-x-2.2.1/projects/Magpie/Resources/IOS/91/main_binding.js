@@ -29,7 +29,7 @@
 require('jsb.js');
 
 var appFiles = [
-    'src/resource.js',
+    'res/resource.js',
 
     'src/table/table.js',
 

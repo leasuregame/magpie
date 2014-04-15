@@ -120,8 +120,7 @@ class Player extends Module
       @correctIdx(@is_attacker)
       @setCards()
 
-      if _.keys(lu).length is 1
-        @used_empty_lineUp = true
+      @used_empty_lineUp = true
     else
       logger.warn 'there is not line up for player ' + @name
 

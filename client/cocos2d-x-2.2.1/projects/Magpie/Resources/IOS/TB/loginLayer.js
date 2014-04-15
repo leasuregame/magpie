@@ -33,7 +33,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.um.beginLogPageView("同步推登录界面");
+        lz.um.beginLogPageView("TB登录界面");
     },
 
     onExit: function () {
@@ -42,7 +42,7 @@ var LoginLayer = cc.Layer.extend({
         this._super();
         this.unscheduleAllCallbacks();
 
-        lz.um.endLogPageView("同步推登录界面");
+        lz.um.endLogPageView("TB登录界面");
     },
 
     init: function () {
@@ -103,9 +103,17 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
+
+    resetAreaName: function(id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
     },
 
     updateSelectAreaName: function (id) {
@@ -159,9 +167,7 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (tbAdapter && tbAdapter.TBLogin) {
-            tbAdapter.TBLogin(0);
-        }
+        tbAdapter.TBLogin(0);
     }
 });
 

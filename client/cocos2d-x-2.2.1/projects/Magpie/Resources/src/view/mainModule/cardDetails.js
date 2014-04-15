@@ -268,7 +268,7 @@ var CardDetails = LazyLayer.extend({
                 }
             }
 
-            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106, this);
+            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect105, this);
             this._updatePassiveSkillEffect.setAnchorPoint(cc.p(0, 0.5));
             this._updatePassiveSkillEffect.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
             this._updatePassiveSkillEffect.controller.ccbMenu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
@@ -326,12 +326,14 @@ var CardDetails = LazyLayer.extend({
             }
         };
 
-        PassiveSkillLabel.pop(
+        var res = PassiveSkillLabel.create(
             {
                 card: this._card,
                 cb: cb
             }
         );
+
+        this.addChild(res, 10);
     },
 
     _onClickClose: function () {

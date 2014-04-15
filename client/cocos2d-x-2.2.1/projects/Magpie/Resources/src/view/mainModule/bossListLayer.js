@@ -2,7 +2,7 @@
  * Created by lujunyu on 14-2-26.
  */
 
-var STOP_TIME = -1000 * 3600 * 8;
+var STOP_TIME = 0;//(new Date().getTimezoneOffset() - 8) * 60 * 1000;//-1000 * 3600 * 8;
 
 var BossListLayer = cc.Layer.extend({
     _bossListLayerFit: null,
@@ -73,9 +73,7 @@ var BossListLayer = cc.Layer.extend({
         this.addChild(nextAttackLabel);
 
         this._cdTimeLabel = cc.LabelTTF.create(
-            lz.getTimeStr({
-                time: this._cdTime + STOP_TIME
-            }),
+            lz.getCountdownStr(this._cdTime),
             "STHeitiTC-Medium",
             22
         );
@@ -232,6 +230,7 @@ var BossListLayer = cc.Layer.extend({
         }
 
         this._timeLabel = [];
+        this._bossFleeIcons = [];
 
         var scrollViewLayer = MarkLayer.create(this._bossListLayerFit.scrollViewLayerRect);
 
@@ -323,9 +322,7 @@ var BossListLayer = cc.Layer.extend({
             }
 
             var runAwayTimeLabel = cc.LabelTTF.create(
-                lz.getTimeStr({
-                    time: boss.timeLeft + STOP_TIME
-                }),
+                lz.getCountdownStr(boss.timeLeft),
                 "STHeitiTC-Medium",
                 20
             );
@@ -347,36 +344,35 @@ var BossListLayer = cc.Layer.extend({
             attackIcon.setPosition(cc.p(480, y + 15));
             scrollViewLayer.addChild(attackIcon);
 
-            var bossStatusIcon = null;
+            this._bossFleeIcons[i] = cc.Sprite.create(main_scene_image["icon396"]);
+            this._bossFleeIcons[i].setAnchorPoint(cc.p(0, 0.5));
+            this._bossFleeIcons[i].setPosition(cc.p(455, y + 30));
+            scrollViewLayer.addChild(this._bossFleeIcons[i]);
 
-            if (boss.status == BOSS_STATUS_FLEE) {
-                bossStatusIcon = cc.Sprite.create(main_scene_image["icon396"]);
+            if (boss.status != BOSS_STATUS_FLEE && boss.status != BOSS_STATUS_TIMEOUT) {
+                this._bossFleeIcons[i].setVisible(false);
             }
 
             if (boss.status == BOSS_STATUS_DIE) {
-                bossStatusIcon = cc.Sprite.create(main_scene_image["icon397"]);
+                var bossDieIcon = cc.Sprite.create(main_scene_image["icon397"]);
+                bossDieIcon.setAnchorPoint(cc.p(0, 0.5));
+                bossDieIcon.setPosition(cc.p(455, y + 30));
+                scrollViewLayer.addChild(bossDieIcon);
             }
 
-            if (bossStatusIcon) {
-                bossStatusIcon.setAnchorPoint(cc.p(0, 0.5));
-                bossStatusIcon.setPosition(cc.p(455, y + 30));
-                scrollViewLayer.addChild(bossStatusIcon);
-            }
-
-            if (boss.status != BOSS_STATUS_DIE) {
-                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
-                countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
-                countLeftLabel.setPosition(cc.p(420, y - 33));
-                countLeftLabel.setColor(cc.c3b(167, 28, 0));
-                scrollViewLayer.addChild(countLeftLabel);
-            } else {
-
+            if (boss.killer) {
                 var killerLabel = StrokeLabel.create("最后攻击：" + boss.killer, "STHeitiTC-Medium", 20);
                 killerLabel.setAnchorPoint(cc.p(0.5, 0.5));
                 killerLabel.setPosition(cc.p(500, y - 33));
                 killerLabel.setColor(cc.c3b(255, 255, 255));
                 killerLabel.setBgColor(cc.c3b(155, 31, 24));
                 scrollViewLayer.addChild(killerLabel);
+            } else {
+                var countLeftLabel = cc.LabelTTF.create("剩余攻击次数: " + boss.countLeft + "次", "STHeitiTC-Medium", 20);
+                countLeftLabel.setAnchorPoint(cc.p(0, 0.5));
+                countLeftLabel.setPosition(cc.p(420, y - 33));
+                countLeftLabel.setColor(cc.c3b(167, 28, 0));
+                scrollViewLayer.addChild(countLeftLabel);
             }
 
         }
@@ -395,9 +391,7 @@ var BossListLayer = cc.Layer.extend({
     _updateCdTime: function () {
 
         this._cdTime = gameData.boss.get("cd");
-        this._cdTimeLabel.setString(lz.getTimeStr({
-            time: this._cdTime + STOP_TIME
-        }));
+        this._cdTimeLabel.setString(lz.getCountdownStr(this._cdTime));
 
         this._removeTimeItem.setVisible(this._cdTime > 0);
 
@@ -405,10 +399,11 @@ var BossListLayer = cc.Layer.extend({
         var len = bossList.length;
         for (var i = 0; i < len; i++) {
             var time = bossList[i].timeLeft;
-            this._timeLabel[i].setString(lz.getTimeStr({
-                time: time + STOP_TIME
-            }));
+            this._timeLabel[i].setString(lz.getCountdownStr(time));
 
+            if (time <= 0 && bossList[i].status != BOSS_STATUS_DIE) {
+                this._bossFleeIcons[i].setVisible(true);
+            }
         }
     },
 

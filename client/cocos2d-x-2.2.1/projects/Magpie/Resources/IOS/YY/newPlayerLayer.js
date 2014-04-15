@@ -34,7 +34,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._newPlayerLayerFit = gameFit.loginScene.newPlayerLayer;
 
-        var newPlayerFrame = cc.BuilderReader.load(main_scene_image.uiEffect109, this);
+        var newPlayerFrame = cc.BuilderReader.load(main_scene_image.uiEffect40, this);
         newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 

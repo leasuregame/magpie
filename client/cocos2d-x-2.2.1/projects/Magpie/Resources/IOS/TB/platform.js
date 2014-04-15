@@ -20,7 +20,8 @@ lz.platformConfig = {
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
     UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/tb/version",
-    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice"
+    GAME_NOTICE_URL: "http://115.29.12.178:9090/api/tb/notice",
+    UM_APP_KEY: "534c99f956240b191c287b68"
 };
 
 
@@ -59,6 +60,8 @@ lz.platformConfig = {
     if (typeof(lz.NotificationHelp) != "undefined") {
         lz.NotificationHelp.start();
     }
+
+    lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
 
 

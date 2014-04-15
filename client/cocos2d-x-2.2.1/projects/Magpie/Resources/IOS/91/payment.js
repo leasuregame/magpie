@@ -82,6 +82,8 @@ var Payment = Entity.extend({
                     cc.log("buyGoldCard fail");
                 }
             }, true);
+        } else {
+            gameData.player.updateFirstPayment(productId);
         }
 
         this._cb();

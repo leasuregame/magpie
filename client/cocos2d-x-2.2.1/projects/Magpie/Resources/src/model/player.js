@@ -604,6 +604,12 @@ var Player = Entity.extend({
         return !((mark >> offset & 1) == 1);
     },
 
+    updateFirstPayment: function(id) {
+        cc.log("Player updateFirstPayment: " + id);
+
+        this._recharge = this._recharge | (1 << (id - 1));
+    },
+
     getEvolutionRate: function (star) {
         cc.log("Player getEvolutionRate: " + star);
 

@@ -4,7 +4,7 @@
       { "id": "connector-server-1", "host": "127.0.0.1", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1, "args": " --debug=7878 " }
     ],
     "gate": [
-      { "id": "gate-server-1", "host": "127.0.0.1", "port": 4149, "clientPort": 4009, "frontend": true, "args": " --debug=7880 " }
+      { "id": "gate-server-1", "host": "127.0.0.1", "port": 4149, "clientPort": 3009, "frontend": true, "args": " --debug=7880 " }
     ],
     "auth": [
       { "id": "auth-server-1", "host": "127.0.0.1", "port": 5300, "args": " --debug=7881 " }
@@ -32,7 +32,7 @@
       { "id": "area-server-2", "host": "115.29.12.178", "port": 4101, "area": 2 }
     ],
     "notice": [
-      { "id": "tb-notice-server-1", "host": "115.29.12.178", "port": 4200, "webPort": 5050}
+      { "id": "tb-notice-server-1", "host": "115.29.12.178", "port": 4200, "webPort": 80}
     ]
   }
 }

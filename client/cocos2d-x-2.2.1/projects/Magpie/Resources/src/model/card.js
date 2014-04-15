@@ -314,20 +314,6 @@ var Card = Entity.extend({
         return false;
     },
 
-    getCardFullUrl: function () {
-        cc.log("Card getCardFullUrl");
-
-        var len = Math.min(this._star - 3, 2);
-
-        var urlList = [main_scene_image[this._url + "_full1"]];
-
-        for (var i = 0; i < len; ++i) {
-            urlList.push(main_scene_image[this._url + "_full" + (i + 2)]);
-        }
-
-        return urlList;
-    },
-
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
 

@@ -94,7 +94,7 @@ class Authorize
         if not isValid
           return done({code: 501, msg: '登录失败，请重新登录'})
 
-        fetchUserInfoOrCreate "tb-#{nickName}", null, done
+        fetchUserInfoOrCreate nickName, null, done
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->

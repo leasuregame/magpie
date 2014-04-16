@@ -4,6 +4,10 @@ var beautify_html = require('js-beautify').html;
 
 var DIRNAME = path.join(__dirname, '..', 'data');
 
+if (!fs.existsSync(DIRNAME)) {
+  fs.mkdirSync(DIRNAME);
+}
+
 var filePath = function(name, ext) {
   return DIRNAME + '/' + name + '.' + ext;
 };

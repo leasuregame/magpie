@@ -13,7 +13,7 @@ var lz = lz || {};
 lz.platformConfig = {
     OS: "IOS",
     PLATFORM: "PP",
-    VERSION: "1.4.0",
+    VERSION: "1.4.2",
     APP_ID: 3183,
     APP_KEY: "27c09e4ed7f6c03851e26945a99d1c3f",
     GATE_SERVER_HOST: "124.238.236.33",

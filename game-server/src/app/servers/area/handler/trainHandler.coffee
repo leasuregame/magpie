@@ -231,7 +231,7 @@ Handler::luckyCard = (msg, session, next) ->
       if ent.star is 5
         achieve.star5card(player)
 
-      if level is HIGH_LUCKYCARD and ent.star == 5 
+      if level is HIGH_LUCKYCARD and ent.star >= 5 
         card = table.getTableItem('cards', ent.tableId)
         msg = {
           #route: 'onSystemMessage',
@@ -507,7 +507,7 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.soLucky(player)
 
         # 获得五星卡成就
-        if card.star is 5
+        if card.star >= 5
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {

@@ -22,7 +22,7 @@ class Component
     server = @app.getCurServer()
     http.createServer (req, res) =>
       pathname = url.parse(req.url).pathname
-      console.log pathname, req.method, req
+      
       switch pathname
         when '/orderResult' 
           processTBOrderResult(@app, req, res)
@@ -49,9 +49,8 @@ process91OrderResult = (app, req, res) ->
   if req.method isnt 'GET'
     res.writeHead 405, "Content-Type": "text/plain"
     return res.end()
-
+  
   params = url.parse(req.url, true).query
-  console.log 'params: ', params
 
   AppId        = params['AppId'] #应用ID
   Act        = params['Act'] #操作
@@ -81,20 +80,24 @@ process91OrderResult = (app, req, res) ->
       if AppId.toString() isnt APP_ID_91.toString()
         done ErrorCode: '2', ErrorDesc: 'AppId无效'
 
-      sign_check = md5 "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{Note}#{PayStatus}#{CreateTime}#{process.env.APP_KEY_91}"
-      console.log Sign, sign_check
+      sign_text = "#{APP_ID_91}#{Act}#{ProductName}#{ConsumeStreamId}#{CooOrderSerial}#{Uin}"+
+        "#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}"+
+        "#{CreateTime}#{process.env.APP_KEY_91}"
+      sign_check = md5 new Buffer(sign_text, 'utf8')
+      #console.log Sign, sign_check
       if sign_check is Sign
         done()
       else 
         done ErrorCode: '5', ErrorDesc: 'Sign无效'
 
     (done) ->
-      [playerId, areaId] = CooOrderSerial.split('-')
+      [proId, areaId] = CooOrderSerial.split('-')
+      playerId = parseInt(Note)
       remoteData = 
         playerId: playerId
         areaId: parseInt areaId
         tradeNo: CooOrderSerial
-        tbOrderNo: ConsumeStreamId
+        tborderNo: ConsumeStreamId
         partner: '91'
         amount: OrderMoney
         productId: GoodsId
@@ -104,7 +107,6 @@ process91OrderResult = (app, req, res) ->
         get: (k) -> return areaId if k is 'areaId'
 
       app.rpc.area.orderRemote.add session, remoteData, '91', (err, orderResult) ->
-        console.log '-91-', err, orderResult
         if err or not orderResult.ok
           done ErrorCode: '0', ErrorDesc: '接收失败'
         else
@@ -136,10 +138,10 @@ processPPOrderResult = (app, req, res) ->
     key = ursa.createPublicKey(PUBLIC_KEY)
     base64Sign = key.publicDecrypt(sign, 'base64', 'utf8')
     jData = JSON.parse base64Sign
-    console.log 'jData=', jData
+    #console.log 'jData=', jData, data, data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
     ### order_id, billno, account, amount, status, app_id, uuid, roleid, zone, sign ###
-    if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount and data.status is jData.status
-      if jData.status is '0'
+    if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
+      if parseInt(jData.status) is 0
         [productId, areaId] = jData.billno.split('-')
         playerId = jData.roleid
 
@@ -156,7 +158,6 @@ processPPOrderResult = (app, req, res) ->
           get: (k) -> return areaId if k is 'areaId'
 
         app.rpc.area.orderRemote.add session, remoteData, 'PP', (err, orderRes) ->
-          console.log '-a-', err, orderRes
           if err or not orderRes.ok
             res.write('fail')
             res.end()
@@ -220,7 +221,7 @@ processTBOrderResult = (app, req, res) ->
       'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
       source, trade_no, amount, partner, paydes, debug, tborder, process.env.APP_KEY_TB
     )
-    
+  #console.log tempsign, sign
   res.writeHead(200, {'Content-type': 'application/json'})
   if tempsign is sign
     [playerId, areaId, productId] = paydes.split(':')

@@ -68,13 +68,13 @@ class Player extends Module
   attack: (callback) ->
     _hero = @currentHero()
     if _hero is null or _hero.death()
-      logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。\
-      卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()} \
-      卡牌位置: #{@matrix.curIndex}
-      "
+      # logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。\
+      # 卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()} \
+      # 卡牌位置: #{@matrix.curIndex}
+      # "
       #@dead = true
     else
-      logger.info "#{@name} 出手", _hero.idx
+      #logger.info "#{@name} 出手", _hero.idx
       _hero.attack (enemyHeros) =>
         return callback() if not enemyHeros
 
@@ -84,7 +84,7 @@ class Player extends Module
         hasDeath = not _.isEmpty(enemyHeros.filter (h) -> h.death())
 
         if hasDeath and not @enemy.death()
-          logger.warn '卡牌死亡，判断触发元神之怒'
+          #logger.warn '卡牌死亡，判断触发元神之怒'
           ### 触发元神之怒 ###
           @enemy.spiritor.angry(enemyHeros, callback)
         else 
@@ -120,10 +120,7 @@ class Player extends Module
       @correctIdx(@is_attacker)
       @setCards()
 
-      if _.keys(lu).length is 1
-        @used_empty_lineUp = true
-    else
-      logger.warn 'there is not line up for player ' + @name
+      @used_empty_lineUp = true
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp

@@ -21,6 +21,12 @@ PLATFORM =
   91: 'S91'
   UC: 'UC'
 
+add_account_prefix = (account) ->
+  'app-'+account
+
+del_account_prefix = (account) ->
+  account.slice(4)
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -43,7 +49,7 @@ Handler::register = (msg, session, next) ->
     return next(null, {code: 501, msg: '密码只能由6-20位的数字或字母组成'})
 
   @app.rpc.auth.authRemote.register session, {
-    account: msg.account
+    account: add_account_prefix(msg.account)
     password: msg.password
   }, (err, user) ->
     if err
@@ -52,7 +58,14 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin(PLATFORM.APPSTORE, @app, msg, session, 'app', next)
+  msg.account = add_account_prefix(msg.account)
+
+  doLogin PLATFORM.APPSTORE, @app, msg, session, 'app', (err, res) ->
+    if not err and res.code is 200
+      res.msg.user.account = del_account_prefix(res.msg.user.account)
+      next(null, res)
+    else
+      next(err, res)
 
 Handler::loginTB = (msg, session, next) ->
   doLogin(PLATFORM.TONGBU, @app, msg, session, 'tb', next)
@@ -87,7 +100,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
       args = authParams(type, msg, app)
       args.sid = session.id
       app.rpc.auth.authRemote.authorize session, args, type, (err, u, isValid) ->
-        console.log '-1-', err, u
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -214,10 +226,9 @@ getUpdateSize = (version, vData, cb) ->
     filename = vData.lastFilename
 
   key = vData.version+filename
-  console.log update_file_size
+
   if update_file_size[key]
     return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
-  console.log update_file_size  
 
   request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
     try

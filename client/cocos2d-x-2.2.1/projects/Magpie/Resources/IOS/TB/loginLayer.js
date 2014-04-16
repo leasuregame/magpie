@@ -108,7 +108,7 @@ var LoginLayer = cc.Layer.extend({
         }
     },
 
-    resetAreaName: function(id) {
+    resetAreaName: function (id) {
         cc.log("LoginLayer resetAreaName");
 
         var area = this._areaList[id];

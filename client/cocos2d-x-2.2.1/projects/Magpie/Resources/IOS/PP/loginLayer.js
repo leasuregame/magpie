@@ -95,6 +95,7 @@ var LoginLayer = cc.Layer.extend({
         var user = gameData.user;
 
         var areaId = user.get("area") || server.getRecommendArea();
+
         user.set("area", areaId);
         this._areaList = server.get("areaList");
         var len = this._areaList.length;
@@ -102,13 +103,15 @@ var LoginLayer = cc.Layer.extend({
         for (var i = 0; i < len; ++i) {
             var area = this._areaList[i];
 
+            cc.log(area.id);
+
             if (areaId == area.id) {
                 this.resetAreaName(i);
             }
         }
     },
 
-    resetAreaName: function(id) {
+    resetAreaName: function (id) {
         cc.log("LoginLayer resetAreaName");
 
         var area = this._areaList[id];

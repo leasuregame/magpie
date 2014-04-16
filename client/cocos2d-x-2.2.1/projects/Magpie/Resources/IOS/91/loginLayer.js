@@ -108,7 +108,7 @@ var LoginLayer = cc.Layer.extend({
         }
     },
 
-    resetAreaName: function(id) {
+    resetAreaName: function (id) {
         cc.log("LoginLayer resetAreaName");
 
         var area = this._areaList[id];
@@ -129,7 +129,7 @@ var LoginLayer = cc.Layer.extend({
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-        if(ndAdapter.NDIsLogined()) {
+        if (ndAdapter.NDIsLogined()) {
             str = ndAdapter.NDNickName();
         }
 

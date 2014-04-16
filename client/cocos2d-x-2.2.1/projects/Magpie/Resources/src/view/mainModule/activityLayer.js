@@ -12,7 +12,7 @@
  * */
 
 
-var titleIcons = ["icon261", "icon344", "icon262", "icon263", "icon265"];
+var titleIcons = ["icon261", "icon344", "icon262", "icon263", "icon429", "icon265"];
 
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
@@ -22,6 +22,7 @@ var ActivityLayer = cc.Layer.extend({
         GoldCardsLayer,
         PowerRewardLayer,
         GoldRewardLayer,
+        NewAreaRewardLayer,
         InvitationLayer
     ],
     _selectIcon: null,

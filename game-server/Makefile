@@ -9,6 +9,9 @@ convert-data: build
 start: convert-data
 	pomelo start -e production --daemon
 
+start-yy: convert-data platform=YY
+	pomelo start -e production --daemon	
+
 stop:
 	pomelo stop
 

@@ -9,7 +9,8 @@ convert-data: build
 start: convert-data
 	pomelo start -e production --daemon
 
-start-yy: convert-data platform=YY
+start-yy: build
+	node ./bin/convertXmlToJson.js YY
 	pomelo start -e production --daemon	
 
 stop:

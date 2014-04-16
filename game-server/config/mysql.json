@@ -25,24 +25,24 @@
 
 	"production": {
 		"1": {
-			"host": "112.124.140.89",
+			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "tb_area_1",
-			"user": "tb_leasuregame",
+			"database": "yy_db_area_1",
+			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"2": {
-			"host": "112.124.140.89",
+			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "magpie_area_2",
-			"user": "tb_leasuregame",
+			"database": "yy_db_area_2",
+			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"userdb": {
-			"host": "112.124.140.89",
+			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "tb_user",
-			"user": "tb_leasuregame",
+			"database": "yy_userdb",
+			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		}
 	}

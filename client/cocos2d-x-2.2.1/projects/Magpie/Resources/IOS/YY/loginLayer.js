@@ -98,7 +98,7 @@ var LoginLayer = cc.Layer.extend({
         var server = lz.server;
         var user = gameData.user;
 
-        var areaId = user.get("area") || server.getRecommendArea();
+        var areaId = server.getRecommendArea();
         user.set("area", areaId);
         this._areaList = server.get("areaList");
         var len = this._areaList.length;

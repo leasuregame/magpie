@@ -281,7 +281,7 @@ ndAdapter.uin = null;
 ndAdapter.SNSInitResult = function () {
     cc.log("SNSInitResult");
 
-    ndAdapter.NDSetDebugMode(0);
+//    ndAdapter.NDSetDebugMode(0);
     ndAdapter.NDShowToolBar(ND_TOOL_BAR_AT_TOP_LEFT);
 };
 

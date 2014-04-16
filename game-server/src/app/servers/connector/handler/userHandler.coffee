@@ -226,10 +226,9 @@ getUpdateSize = (version, vData, cb) ->
     filename = vData.lastFilename
 
   key = vData.version+filename
-  console.log update_file_size
+
   if update_file_size[key]
     return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
-  console.log update_file_size  
 
   request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
     try

@@ -22,7 +22,7 @@ class Component
     server = @app.getCurServer()
     http.createServer (req, res) =>
       pathname = url.parse(req.url).pathname
-      console.log pathname, req.method, req
+      
       switch pathname
         when '/orderResult' 
           processTBOrderResult(@app, req, res)
@@ -49,9 +49,8 @@ process91OrderResult = (app, req, res) ->
   if req.method isnt 'GET'
     res.writeHead 405, "Content-Type": "text/plain"
     return res.end()
-  console.log('91-url:', req.url)
+  
   params = url.parse(req.url, true).query
-  console.log '91-params: ', params
 
   AppId        = params['AppId'] #应用ID
   Act        = params['Act'] #操作
@@ -85,7 +84,7 @@ process91OrderResult = (app, req, res) ->
         "#{GoodsId}#{GoodsInfo}#{GoodsCount}#{OriginalMoney}#{OrderMoney}#{Note}#{PayStatus}"+
         "#{CreateTime}#{process.env.APP_KEY_91}"
       sign_check = md5 new Buffer(sign_text, 'utf8')
-      console.log Sign, sign_check
+      #console.log Sign, sign_check
       if sign_check is Sign
         done()
       else 
@@ -108,7 +107,6 @@ process91OrderResult = (app, req, res) ->
         get: (k) -> return areaId if k is 'areaId'
 
       app.rpc.area.orderRemote.add session, remoteData, '91', (err, orderResult) ->
-        console.log '-91-', err, orderResult
         if err or not orderResult.ok
           done ErrorCode: '0', ErrorDesc: '接收失败'
         else
@@ -140,7 +138,7 @@ processPPOrderResult = (app, req, res) ->
     key = ursa.createPublicKey(PUBLIC_KEY)
     base64Sign = key.publicDecrypt(sign, 'base64', 'utf8')
     jData = JSON.parse base64Sign
-    console.log 'jData=', jData, data, data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
+    #console.log 'jData=', jData, data, data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
     ### order_id, billno, account, amount, status, app_id, uuid, roleid, zone, sign ###
     if data.order_id is jData.order_id and data.billno is jData.billno and data.amount is jData.amount
       if parseInt(jData.status) is 0
@@ -161,7 +159,6 @@ processPPOrderResult = (app, req, res) ->
 
         console.log '-remote-', remoteData
         app.rpc.area.orderRemote.add session, remoteData, 'PP', (err, orderRes) ->
-          console.log '-a-', err, orderRes
           if err or not orderRes.ok
             res.write('fail')
             res.end()
@@ -225,7 +222,8 @@ processTBOrderResult = (app, req, res) ->
       'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
       source, trade_no, amount, partner, paydes, debug, tborder, process.env.APP_KEY_TB
     )
-  console.log tempsign, sign
+
+  #console.log tempsign, sign
   res.writeHead(200, {'Content-type': 'application/json'})
   if tempsign is sign
     [playerId, areaId, productId] = paydes.split(':')

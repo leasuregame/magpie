@@ -121,7 +121,7 @@ class Authorize
             logger.error(err)
             return done({code: 501, msg: '登陆失败，请重新登陆'})
 
-          console.log(err, body)
+          #console.log(err, body)
           result = parseBody body
           if parseInt(result.status) is 0
             tokenMap.put token, result, 1000 * 60 * 60

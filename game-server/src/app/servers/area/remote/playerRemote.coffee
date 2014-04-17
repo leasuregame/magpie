@@ -46,7 +46,6 @@ Remote::getPlayerByUserId = (args, callback) ->
   serverId = args.serverId
   
   dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
-    console.log 'get player by userId: ', userId, player?.name
     if err and not player
       return callback {code: 501, msg: '找不到玩家'}
 
@@ -58,7 +57,6 @@ Remote::getPlayerByUserId = (args, callback) ->
     
     uid = userId + '*' + player.areaId
     messageService.add(uid, serverId, player.id, player.name)
-    console.log '-end get player-'
     return callback null, _.extend(player.toJson(), serverTime: Date.now())
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->

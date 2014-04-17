@@ -301,6 +301,12 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       var where = {
         id: row.id
       };
+      if (!row.id) {
+        where = {
+          1: 0
+        };
+      }
+
       if (table == 'friend') {
         where = {
           playerId: row.playerId,

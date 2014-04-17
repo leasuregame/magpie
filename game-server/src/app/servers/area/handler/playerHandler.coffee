@@ -165,6 +165,8 @@ Handler::getActivityInfo = (msg, session, next) ->
       )
 
     player = results[0]
+    loginCountReward = player.activities.loginCount or 0
+
     # rechargeFlag = results[1]
     # flag = setCanGetFlag player, rechargeFlag
     cur_hour = new Date().getHours()
@@ -175,6 +177,7 @@ Handler::getActivityInfo = (msg, session, next) ->
         levelReward: player.levelReward
         # rechargeFlag: flag
         hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
+        loginCount: loginCountReward # 新服累计登陆次数
       }
     })
 

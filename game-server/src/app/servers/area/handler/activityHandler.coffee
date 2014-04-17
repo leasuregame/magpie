@@ -26,12 +26,40 @@ Handler::get = (msg, session, next) ->
   if not Activity[type]
     return next(null, {code: 501, msg: '没有该类型奖励'})
 
-  Activity[type](@app, playerId, type, args, next)
+  Activity[type](@app, playerId, args, next)
 
 
 class Activity
+  # 新服累计登陆次数奖励
+  @loginCount: (app, playerId, args, next) ->
+    if not args or not args.count or not _.isNumber(args.count)
+      return next(null, {code: 501, msg: '参数不正确'})
+
+    player = null
+    async.waterfall [
+      (cb) ->
+        app.get('playerManager').getPlayerInfo pid: playerId, cb
+
+      (res, cb) ->
+        player = res
+
+        if not player.hasLoginCountReward(args.count)
+          return next(null, {code: 501, msg: '累计登陆次数不足'})
+
+        rewardData = table.getTableItem('login_count_reward', args.count)
+        if not rewardData
+          return next(null, {code: 501, msg: '找不到该奖励'})
+
+        entityUtil.getReward player, rewardData, cb
+    ], (err, cards) ->
+      if err
+        return next(null, {code: err.code or 501, msg: err.msg or err})
+
+      player.setLoginCountReward(args.count)
+      next(null, {code: 200, msg: cards: cards})
+
   # 登陆奖励
-  @login: (app, playerId, type, args, next) ->
+  @login: (app, playerId, args, next) ->
     async.waterfall [
       (cb) ->
         app.get('playerManager').getPlayerInfo pid: playerId, cb
@@ -50,7 +78,7 @@ class Activity
       next(null, {code: 200})
 
   # 累计充值奖励
-  @recharge: (app, playerId, type, args, next) ->
+  @recharge: (app, playerId, args, next) ->
     if not args or not args.id or not _.isNumber(args.id)
       return next(null, {code: 501, msg: '参数不正确'})
 

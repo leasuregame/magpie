@@ -1417,6 +1417,10 @@ var Player = (function(_super) {
         return dailyGift;
     };
 
+    Player.prototype.hasLoginCountReward = function(count) {
+        
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,

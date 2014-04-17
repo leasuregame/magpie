@@ -13,8 +13,8 @@ var lz = lz || {};
 lz.platformConfig = {
     OS: "IOS",
     PLATFORM: "AppStore",
-    VERSION: "1.4.0",
-    GATE_SERVER_HOST: "124.238.236.33",//"115.29.243.80",
+    VERSION: "1.4.2",
+    GATE_SERVER_HOST: "115.29.243.80",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.243.80:9090/api/app/update/",
     UPDATE_VERSION_URL: "http://115.29.243.80:9090/api/app/version",

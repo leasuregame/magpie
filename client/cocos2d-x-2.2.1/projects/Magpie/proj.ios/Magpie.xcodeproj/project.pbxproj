@@ -255,8 +255,6 @@
 		9006745718F5352B00B47B57 /* yygresource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9006745018F5352B00B47B57 /* yygresource.bundle */; };
 		9006745818F5352B00B47B57 /* YYAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9006745218F5352B00B47B57 /* YYAdapter.mm */; };
 		9006745918F5352B00B47B57 /* YYAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9006745218F5352B00B47B57 /* YYAdapter.mm */; };
-		9006745B18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006745A18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a */; };
-		9006745C18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9006745A18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a */; };
 		9006746718F54A6000B47B57 /* js_bindings_YYAdapter_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 9006746318F54A6000B47B57 /* js_bindings_YYAdapter_api.js */; };
 		9006746818F54A6000B47B57 /* js_bindings_YYAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */; };
 		9006746918F54A6000B47B57 /* js_bindings_YYAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */; };
@@ -2157,6 +2155,8 @@
 		90EE02FB18FB967500E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
 		90EE02FC18FB967C00E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
 		90EE02FD18FB968200E2FB36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE02F918FB965A00E2FB36 /* StoreKit.framework */; };
+		90EE030118FE804C00E2FB36 /* libyygamesdk_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE030018FE804C00E2FB36 /* libyygamesdk_universal.a */; };
+		90EE030218FE804D00E2FB36 /* libyygamesdk_universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EE030018FE804C00E2FB36 /* libyygamesdk_universal.a */; };
 		90F3932418C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932518C9C712002EC9BC /* js_bindings_MobClickCpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */; };
 		90F3932818C9C712002EC9BC /* libMobClickCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F3932218C9C712002EC9BC /* libMobClickCpp.a */; };
@@ -3153,7 +3153,6 @@
 		9006745118F5352B00B47B57 /* YYAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAdapter.h; sourceTree = "<group>"; };
 		9006745218F5352B00B47B57 /* YYAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YYAdapter.mm; sourceTree = "<group>"; };
 		9006745318F5352B00B47B57 /* YYCallbackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCallbackHandler.h; sourceTree = "<group>"; };
-		9006745A18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libyygamecentersdk_armv7_armv7s_arm64.a; sourceTree = "<group>"; };
 		9006746318F54A6000B47B57 /* js_bindings_YYAdapter_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_YYAdapter_api.js; sourceTree = "<group>"; };
 		9006746418F54A6000B47B57 /* js_bindings_YYAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_YYAdapter.cpp; sourceTree = "<group>"; };
 		9006746518F54A6000B47B57 /* js_bindings_YYAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_YYAdapter.hpp; sourceTree = "<group>"; };
@@ -3370,6 +3369,7 @@
 		90EE02E718FB95A400E2FB36 /* js_bindings_IAPHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_IAPHelp.hpp; sourceTree = "<group>"; };
 		90EE02E818FB95A400E2FB36 /* js_bindings_IAPHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_IAPHelp_api.js; sourceTree = "<group>"; };
 		90EE02F918FB965A00E2FB36 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		90EE030018FE804C00E2FB36 /* libyygamesdk_universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libyygamesdk_universal.a; sourceTree = "<group>"; };
 		90F3931F18C9C712002EC9BC /* js_bindings_MobClickCpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_MobClickCpp.cpp; sourceTree = "<group>"; };
 		90F3932018C9C712002EC9BC /* js_bindings_MobClickCpp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_MobClickCpp.hpp; sourceTree = "<group>"; };
 		90F3932118C9C712002EC9BC /* js_bindings_MobClickCpp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_MobClickCpp_api.js; sourceTree = "<group>"; };
@@ -3502,6 +3502,7 @@
 			files = (
 				90EE02FC18FB967C00E2FB36 /* StoreKit.framework in Frameworks */,
 				9006744618F5351400B47B57 /* libstdc++.6.dylib in Frameworks */,
+				90EE030118FE804C00E2FB36 /* libyygamesdk_universal.a in Frameworks */,
 				906601ED18ED4A2200AAC9D8 /* libz.dylib in Frameworks */,
 				906601EE18ED4A2200AAC9D8 /* SystemConfiguration.framework in Frameworks */,
 				906601EF18ED4A2200AAC9D8 /* libsqlite3.dylib in Frameworks */,
@@ -3512,7 +3513,6 @@
 				906601F418ED4A2200AAC9D8 /* OpenGLES.framework in Frameworks */,
 				906601F518ED4A2200AAC9D8 /* OpenAL.framework in Frameworks */,
 				906601F618ED4A2200AAC9D8 /* AudioToolbox.framework in Frameworks */,
-				9006745B18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a in Frameworks */,
 				906601F718ED4A2200AAC9D8 /* AVFoundation.framework in Frameworks */,
 				906601F818ED4A2200AAC9D8 /* UIKit.framework in Frameworks */,
 				906601F918ED4A2200AAC9D8 /* Foundation.framework in Frameworks */,
@@ -3528,6 +3528,7 @@
 			files = (
 				90EE02FD18FB968200E2FB36 /* StoreKit.framework in Frameworks */,
 				901992EF18F694DB00A74ECF /* libstdc++.6.dylib in Frameworks */,
+				90EE030218FE804D00E2FB36 /* libyygamesdk_universal.a in Frameworks */,
 				906602E418ED4A2400AAC9D8 /* libz.dylib in Frameworks */,
 				906602E518ED4A2400AAC9D8 /* SystemConfiguration.framework in Frameworks */,
 				906602E618ED4A2400AAC9D8 /* libsqlite3.dylib in Frameworks */,
@@ -3542,7 +3543,6 @@
 				906602EF18ED4A2400AAC9D8 /* UIKit.framework in Frameworks */,
 				906602F018ED4A2400AAC9D8 /* Foundation.framework in Frameworks */,
 				906602F118ED4A2400AAC9D8 /* CoreGraphics.framework in Frameworks */,
-				9006745C18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a in Frameworks */,
 				906602F318ED4A2400AAC9D8 /* libcurl.a in Frameworks */,
 				906602F418ED4A2400AAC9D8 /* libwebsockets.a in Frameworks */,
 			);
@@ -4563,9 +4563,9 @@
 		9006744A18F5352B00B47B57 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				9006745A18F53DC400B47B57 /* libyygamecentersdk_armv7_armv7s_arm64.a */,
 				9006744B18F5352B00B47B57 /* include */,
 				9006745018F5352B00B47B57 /* yygresource.bundle */,
+				90EE030018FE804C00E2FB36 /* libyygamesdk_universal.a */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -8701,7 +8701,6 @@
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
 					"$(SRCROOT)/lib/YY/SDK",
-					"$(PROJECT_DIR)/lib/YY/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -8755,7 +8754,6 @@
 					"$(SRCROOT)/../../../external/libwebsockets/ios/lib",
 					"$(SRCROOT)/lib/UM",
 					"$(SRCROOT)/lib/YY/SDK",
-					"$(PROJECT_DIR)/lib/YY/SDK",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

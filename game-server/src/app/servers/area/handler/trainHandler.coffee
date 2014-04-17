@@ -231,7 +231,7 @@ Handler::luckyCard = (msg, session, next) ->
       if ent.star is 5
         achieve.star5card(player)
 
-      if level is HIGH_LUCKYCARD and ent.star == 5 
+      if level is HIGH_LUCKYCARD and ent.star >= 5 
         card = table.getTableItem('cards', ent.tableId)
         msg = {
           #route: 'onSystemMessage',
@@ -507,7 +507,7 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.soLucky(player)
 
         # 获得五星卡成就
-        if card.star is 5
+        if card.star >= 5
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
           msg = {
@@ -843,15 +843,13 @@ Handler::changeLineUp = (msg, session, next) ->
     if _.uniq(cids_wo_spirit).length isnt cids_wo_spirit.length
       return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
 
-    console.log cids, lineupItems
-    console.log cids.filter((i) -> i is -1).length, lineupItems.length
     if cids.filter((i) -> i is -1).length isnt lineupItems.length
       return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
     for lineup in lineupItems
       cardIds = _.values(lineup)
       tids = player.getCards(cardIds).map (i) -> i.tableId
-      console.log '-6-', cardIds, tids
+      
       if cardIds.length isnt (tids.length+1)
         return next(null, {code: 501, msg: '上阵卡牌不存在'})
 

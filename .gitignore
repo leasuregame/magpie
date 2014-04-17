@@ -34,7 +34,7 @@ game-server/selenium-server-standalone-2.33.0.jar
 *.csv#
 
 game-server/config/powerGivenFlag-*.json
-web-server/data/*.html
+web-server/data
 shared/version.json
 gm/config/mysql.json
 shared/version.json

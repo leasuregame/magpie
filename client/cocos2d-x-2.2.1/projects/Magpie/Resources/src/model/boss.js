@@ -217,6 +217,19 @@ var Boss = Entity.extend({
         return this._bossList;
     },
 
+    isCanAttack: function (bossId) {
+        cc.log("Boss isCanAttack: " + bossId);
+        var boss = this.getBoss(bossId);
+
+        if (boss.timeLeft == 0) {
+            return false;
+        } else if (boss.status == BOSS_STATUS_DIE || boss.status == BOSS_STATUS_FLEE || boss.stattus == BOSS_STATUS_TIMEOUT) {
+            return false;
+        }
+
+        return true;
+    },
+
     attack: function (cb, bossId, inspireCount) {
         cc.log("Boss attack");
 

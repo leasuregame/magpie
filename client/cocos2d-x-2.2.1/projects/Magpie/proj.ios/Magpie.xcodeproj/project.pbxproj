@@ -5401,7 +5401,7 @@
 						DevelopmentTeam = TJT2HAB95B;
 					};
 					9066012318ED4A2200AAC9D8 = {
-						DevelopmentTeam = TJT2HAB95B;
+						DevelopmentTeam = ZBZQCW2YLX;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;

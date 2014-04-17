@@ -9,6 +9,7 @@ async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 
 PUBLIC_KEY = fs.readFileSync(path.join(__dirname, '..', '..', 'config', 'pp.pub'))
+APP_KEY_TB = "o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo"
 
 module.exports = (app, opts) ->
   return new Component(app, opts)
@@ -214,7 +215,7 @@ processTBOrderResult = (app, req, res) ->
 
   tempsign = md5 util.format(
     'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
-    source, trade_no, amount, partner, paydes, debug, tborder, process.env.APP_KEY_TB
+    source, trade_no, amount, partner, paydes, debug, tborder, APP_KEY_TB
   )
 
   console.log tempsign, sign

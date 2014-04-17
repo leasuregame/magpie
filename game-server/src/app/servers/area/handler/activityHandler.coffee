@@ -1,6 +1,7 @@
 async = require 'async'
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 _ = require 'underscore'
 
 LOGIN_REWARD = 20
@@ -15,13 +16,13 @@ Handler::get = (msg, session, next) ->
   args = msg.args
   playerId = session.get('playerId')
 
-  startDate = new Date @app.get('sharedConf').newYearActivity.startDate
-  endDate = new Date @app.get('sharedConf').newYearActivity.endDate
-  endDate.setDate(endDate.getDate()+1)
-  now = new Date()
+  # startDate = new Date @app.get('sharedConf').newYearActivity.startDate
+  # endDate = new Date @app.get('sharedConf').newYearActivity.endDate
+  # endDate.setDate(endDate.getDate()+1)
+  # now = new Date()
 
-  if startDate > now or now > endDate
-    return next(null, {code: 501, msg: '不在领取时间段'})
+  # if startDate > now or now > endDate
+  #   return next(null, {code: 501, msg: '不在领取时间段'})
 
   if not Activity[type]
     return next(null, {code: 501, msg: '没有该类型奖励'})
@@ -43,8 +44,11 @@ class Activity
       (res, cb) ->
         player = res
 
-        if not player.hasLoginCountReward(args.count)
+        if not player.canGetLoginCountReward(args.count)
           return next(null, {code: 501, msg: '累计登陆次数不足'})
+
+        if player.hasLoginCountReward(args.count) 
+          return next(null, {code: 501, msg: '已领取'})
 
         rewardData = table.getTableItem('login_count_reward', args.count)
         if not rewardData
@@ -56,7 +60,8 @@ class Activity
         return next(null, {code: err.code or 501, msg: err.msg or err})
 
       player.setLoginCountReward(args.count)
-      next(null, {code: 200, msg: cards: cards})
+      player.save()
+      next(null, {code: 200, msg: card: if (!!cards and cards.length > 0) then cards[0]?.toJson() else null})
 
   # 登陆奖励
   @login: (app, playerId, args, next) ->

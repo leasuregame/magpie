@@ -107,9 +107,9 @@ module.exports =
       playerManager.addExpCardFor player, data.exp_card, cb
 
     if typeof data.card_id != 'undefined' and data.card_id > 0
-      exports.createCard {
+      this.createCard {
         playerId: player.id
-        tableId: card_id
+        tableId: data.card_id
       }, (err, card) -> cb(null, [card])
     else 
       cb(null, [])

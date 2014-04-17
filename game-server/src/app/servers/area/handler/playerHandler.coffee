@@ -165,7 +165,7 @@ Handler::getActivityInfo = (msg, session, next) ->
       )
 
     player = results[0]
-    loginCountReward = player.activities.loginCount or 0
+    logined = player.activities.logined or {count: 0, got: 0}
 
     # rechargeFlag = results[1]
     # flag = setCanGetFlag player, rechargeFlag
@@ -177,7 +177,7 @@ Handler::getActivityInfo = (msg, session, next) ->
         levelReward: player.levelReward
         # rechargeFlag: flag
         hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
-        loginCount: loginCountReward # 新服累计登陆次数
+        loginInfo: logined # 新服累计登陆次数
       }
     })
 

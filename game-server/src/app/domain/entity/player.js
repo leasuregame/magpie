@@ -444,6 +444,9 @@ var Player = (function(_super) {
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
+
+        // 记录登陆次数
+        this.incLoginCount();
     };
 
     Player.prototype.dailyData = function() {
@@ -1418,7 +1421,36 @@ var Player = (function(_super) {
     };
 
     Player.prototype.hasLoginCountReward = function(count) {
-        
+        loginedCount = this.activities.logined != null ? this.activities.logined.got : 0;
+        return utility.hasMark(loginedCount, count);
+    };
+
+    Player.prototype.canGetLoginCountReward = function(count) {
+        loginedCount = this.activities.logined != null ? this.activities.logined.count : 1;
+        return loginedCount >= count;
+    };
+
+    Player.prototype.setLoginCountReward = function(count) {
+        if (typeof this.activities.logined == 'undefined') {
+            this.activities.logined = {
+                count: 1, 
+                got: 0
+            };
+        }
+
+        this.activities.logined.got = utility.mark(this.activities.logined.got, count);
+        this.set('activities', this.activities);
+    };
+
+    Player.prototype.incLoginCount = function() {
+        if (typeof this.activities.logined == 'undefined') {
+            this.activities.logined = {
+                count: 0, 
+                got: 0
+            };
+        }
+        this.activities.logined.count += 1;
+        this.set('activities', this.activities);
     };
 
     Player.prototype.toJson = function() {

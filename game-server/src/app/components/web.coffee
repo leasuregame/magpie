@@ -219,15 +219,7 @@ processTBOrderResult = (app, req, res) ->
     'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
     source, trade_no, amount, partner, paydes, debug, tborder, APP_KEY_TB
   )
-<<<<<<< HEAD
-  if debug
-    tempsign = md5 util.format(
-      'source=%s&trade_no=%s&amount=%d&partner=%s&paydes=%s&debug=%d&tborder=%s&key=%s',
-      source, trade_no, amount, partner, paydes, debug, tborder, process.env.APP_KEY_TB
-    )
-=======
-
->>>>>>> f98657adf4d0b372117a8280086998ae4215dbda
+  
   console.log tempsign, sign
   res.writeHead(200, {'Content-type': 'application/json'})
   if tempsign is sign

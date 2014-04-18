@@ -33,7 +33,7 @@ Handler::get = (msg, session, next) ->
 class Activity
   # 新服累计登陆次数奖励
   @loginCount: (app, playerId, args, next) ->
-    if not args or not args.count or not _.isNumber(args.count)
+    if not args or not args.count or isNaN(parseInt args.count)
       return next(null, {code: 501, msg: '参数不正确'})
 
     player = null
@@ -59,9 +59,11 @@ class Activity
       if err
         return next(null, {code: err.code or 501, msg: err.msg or err})
 
+      card = if (!!cards and cards.length > 0) then cards[0] else null
       player.setLoginCountReward(args.count)
+      player.addCard(card) if card?
       player.save()
-      next(null, {code: 200, msg: card: if (!!cards and cards.length > 0) then cards[0]?.toJson() else null})
+      next(null, {code: 200, msg: card: card?.toJson()})
 
   # 登陆奖励
   @login: (app, playerId, args, next) ->

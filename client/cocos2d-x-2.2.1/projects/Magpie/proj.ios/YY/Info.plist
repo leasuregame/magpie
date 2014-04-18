@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>YY大神</string>
 	<key>CFBundleExecutable</key>
@@ -103,7 +103,7 @@
 			<string>com.LeasureGame.Magpie-YY</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>YYGAME_IYYDS</string>
+				<string>YYGAME-IYYDS</string>
 			</array>
 		</dict>
 	</array>

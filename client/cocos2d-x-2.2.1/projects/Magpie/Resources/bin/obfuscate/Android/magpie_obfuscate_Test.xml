@@ -24,7 +24,7 @@
                 <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res_android/">
-                <file name="src/resource.js"/>
+                <file name="res/resource.js"/>
 
                 <file name="src/table/table.js"/>
 

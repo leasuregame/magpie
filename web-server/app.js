@@ -17,6 +17,7 @@ var sendReward = require('./routes/reward');
 var flash = require('connect-flash');
 var player = require('./routes/player');
 var stats = require('./routes/stats');
+var area = require('./routes/area');
 
 var app = express();
 
@@ -60,8 +61,11 @@ app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
 app.get('/admin/cdkey/search', filter.authorize, cdkey.search);
 app.get('/admin/playerId', filter.authorize, player.get);
+app.get('/admin/areaeditor', filter.authorize, area.editor);
+app.post('/admin/areaeditor/save', filter.authorize, area.save);
 
 app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
+
 
 pushMessage(app);
 sendReward(app);

@@ -21,6 +21,40 @@ var LoginScene = cc.Scene.extend({
 
         this._super();
 
+        if (LoginScene.flag) {
+            if (this._toLayer) {
+                this.switchLayer(this._toLayer);
+            } else {
+                this.switchLayer(LoginLayer);
+
+                if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+                    NoticeLayer.pop();
+                }
+            }
+        } else {
+            LoginScene.flag = true;
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect106, this);
+            effect.setPosition(gameFit.GAME_MIDPOINT);
+
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+
+                if (this._toLayer) {
+                    this.switchLayer(this._toLayer);
+                } else {
+                    this.switchLayer(LoginLayer);
+
+                    if (!lz.TARGET_PLATFORM_IS_BROWSER) {
+                        NoticeLayer.pop();
+                    }
+                }
+
+                effect.removeFromParent();
+            });
+
+            this.addChild(effect);
+        }
+
         lz.um.beginLogPageView("登录场景");
     },
 
@@ -51,26 +85,6 @@ var LoginScene = cc.Scene.extend({
         var loginBgLayer = LoginBgLayer.create();
         this.addChild(loginBgLayer);
 
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect106,this);
-        effect.setPosition(gameFit.GAME_MIDPOINT);
-
-        effect.animationManager.setCompletedAnimationCallback(this, function () {
-
-            if (this._toLayer) {
-                this.switchLayer(this._toLayer);
-            } else {
-                this.switchLayer(LoginLayer);
-
-                if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-                    NoticeLayer.pop();
-                }
-            }
-
-            effect.removeFromParent();
-        });
-
-        this.addChild(effect);
-
         return true;
     },
 
@@ -99,6 +113,9 @@ var LoginScene = cc.Scene.extend({
         this.addChild(this._nowLayer);
     }
 });
+
+
+LoginScene.flag = false;
 
 LoginScene.create = function (toLayer) {
     var ret = new LoginScene();

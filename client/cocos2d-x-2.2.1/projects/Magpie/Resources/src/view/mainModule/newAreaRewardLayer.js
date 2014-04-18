@@ -21,52 +21,52 @@ var NewAreaRewardLayer = cc.Layer.extend({
 
         var scrollViewLayer = MarkLayer.create(this._newAreaRewardLayerFit.scrollViewLayerRect);
 
-        var test = [];
+        var table = outputTables.login_count_reward.rows;
 
-        for (var i = 0; i < 30; i++) {
-            test[i] = {
-                money: 10000 + 5000 * i,
-                energy: 100 + 50 * i
-            }
-
-            if (i % 5 == 0) {
-                test[i]["fragments"] = 1 + i / 5;
-            }
-        }
-
-        test[6]["cardArray"] = [
-            {
-                tableId: 965,
-                lv: 1,
-                skillLv: 1
-            }
-        ];
-
-        var len = 30;
+        var len = Object.keys(table).length;
         var scrollViewHeight = len * 153;
 
         var cardMenu = cc.Menu.create();
         cardMenu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(cardMenu, 2);
 
-        for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 153 - i * 153;
+        var activity = gameData.activity;
+        var index = 0;
+
+        for (var id in table) {
+            var y = scrollViewHeight - 153 - index * 153;
             var bgSprite = cc.Sprite.create(main_scene_image.button19);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(15, y));
             scrollViewLayer.addChild(bgSprite);
 
-            var str = "登陆第" + lz.getNumberStr(i + 1) + "天";
+            var str = "登陆第" + lz.getNumberStr(id) + "天";
             var dayLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
             dayLabel.setAnchorPoint(cc.p(0, 0));
             dayLabel.setPosition(cc.p(35, y + 120));
             scrollViewLayer.addChild(dayLabel);
 
             var x = 60;
-            var rewards = test[i];
+            var rewards = table[id];
             for (var key in rewards) {
-                var goods = giftBagGoods[key];
-                if (goods.name != "cardArray") {
+
+                if (key == "id") {
+                    continue;
+                }
+
+                if (key == "card_id") {
+                    var card = Card.create({
+                        tableId: rewards[key],
+                        lv: 1,
+                        skillLv: 1
+                    });
+                    var cardItem = CardHeadNode.getCardHeadItem(card);
+                    cardItem.setAnchorPoint(cc.p(0, 0));
+                    cardItem.setScale(0.8);
+                    cardItem.setPosition(cc.p(x, y + 20));
+                    cardMenu.addChild(cardItem);
+                } else {
+                    var goods = giftBagGoods[key];
                     var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
                     goodsSprite.setAnchorPoint(cc.p(0, 0));
                     goodsSprite.setPosition(cc.p(x, y + 20));
@@ -75,35 +75,24 @@ var NewAreaRewardLayer = cc.Layer.extend({
                     var goodsLabel = cc.LabelTTF.create(rewards[key], "STHeitiTC-Medium", 16);
                     goodsLabel.setAnchorPoint(cc.p(1, 0));
                     goodsLabel.setPosition(cc.p(75, 8));
-                    goodsLabel.setColor(cc.c3b(0, 255, 0));
-
                     goodsSprite.addChild(goodsLabel);
-                    x += 100;
-                } else {
-                    var cards = rewards[key];
-                    var len2 = cards.length;
-                    for (var j = 0; j < len2; j++) {
-                        var card = Card.create(cards[j]);
-                        var cardItem = CardHeadNode.getCardHeadItem(card);
-                        cardItem.setAnchorPoint(cc.p(0, 0));
-                        cardItem.setScale(0.8);
-                        cardItem.setPosition(cc.p(x, y + 20));
-                        cardMenu.addChild(cardItem);
-                        x += 100;
-                    }
                 }
+                x += 100;
             }
-
             var btnGetReward = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,
                 main_scene_image.button9d,
                 main_scene_image.icon123,
-                this._onClickGetReward(i),
+                this._onClickGetReward(id),
                 this
             );
 
             btnGetReward.setPosition(cc.p(510, y + 60));
+
+            var state = activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id);
+            btnGetReward.setEnabled(state == NOT_GOT_REWARD);
+            btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
             var menu = cc.Menu.create(btnGetReward);
             menu.setPosition(cc.p(0, 0));
@@ -111,13 +100,15 @@ var NewAreaRewardLayer = cc.Layer.extend({
 
             var hasBeenGainIcon = cc.Sprite.create(main_scene_image.icon138);
             hasBeenGainIcon.setPosition(cc.p(510, y + 60));
-            hasBeenGainIcon.setVisible(false);
+            hasBeenGainIcon.setVisible(state == ALREADY_GOT_REWARD);
             scrollViewLayer.addChild(hasBeenGainIcon, 1);
 
-            this._scrollViewElement[i] = {
+            this._scrollViewElement[id] = {
                 hasBeenGainIcon: hasBeenGainIcon,
                 btnGetReward: btnGetReward
             };
+
+            index++;
         }
 
         var scrollView = cc.ScrollView.create(this._newAreaRewardLayerFit.scrollViewSize, scrollViewLayer);
@@ -137,8 +128,12 @@ var NewAreaRewardLayer = cc.Layer.extend({
             cc.log("NewAreaRewardLayer _onClickGetReward: " + id);
 
             var element = that._scrollViewElement[id];
-            element.hasBeenGainIcon.setVisible(true);
-            element.btnGetReward.setVisible(false);
+            gameData.activity.getLoginCountReward(function (rewards) {
+                element.hasBeenGainIcon.setVisible(true);
+                element.btnGetReward.setVisible(false);
+
+                lz.tipReward(rewards);
+            }, id);
         }
     }
 

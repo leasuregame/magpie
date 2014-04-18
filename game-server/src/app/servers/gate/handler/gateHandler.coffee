@@ -57,7 +57,11 @@ randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]
 
 filterServers = (areas, os, platform, version) ->
-	items = areas.filter (area) -> os in area.os and platform in area.platform
+	if os is 'ALL' and platform is 'ALL'
+		items = areas
+	else
+		items = areas.filter (area) -> os in area.os and platform in area.platform
+	
 	if version
 		versionSpecifyItems = items.filter (i) -> version in i.version
 		if versionSpecifyItems.length > 0

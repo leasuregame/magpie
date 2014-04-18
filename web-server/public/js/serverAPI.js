@@ -22,8 +22,8 @@ function initServer(cb) {
 
         var route = "gate.gateHandler.queryEntry";
         pomelo.request(route, {
-            os: 'IOS',
-            platform: 'YY'
+            os: 'ALL',
+            platform: 'ALL'
         }, function (data) {
             console.log(data);
             var msg = data.msg;

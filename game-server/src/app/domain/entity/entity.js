@@ -68,7 +68,7 @@ var Entity = (function(_super) {
         }
 
         _.each(attrs, function(v, k) {
-            if (_.isObject(v)) {
+            if (_.isObject(v) && !_.isDate(v)) {
                 v = _.clone(v);
             }
 

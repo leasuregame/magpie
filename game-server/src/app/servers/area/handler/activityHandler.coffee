@@ -2,6 +2,7 @@ async = require 'async'
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
+achive = require '../../../domain/achievement'
 _ = require 'underscore'
 
 LOGIN_REWARD = 20
@@ -63,6 +64,8 @@ class Activity
       player.setLoginCountReward(args.count)
       player.addCard(card) if card?
       player.save()
+
+      achive.star5card(player) if card?.star is 5
       next(null, {code: 200, msg: card: card?.toJson()})
 
   # 登陆奖励

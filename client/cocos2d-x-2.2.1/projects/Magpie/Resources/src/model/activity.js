@@ -299,8 +299,10 @@ var Activity = Entity.extend({
                     if (key != "id" && key != "card_id") {
                         if (key == "fragments") {
                             reward["fragment"] = table[key];
+                            gameData.player.add("fragment", table[key]);
                         } else {
                             reward[key] = table[key];
+                            gameData.player.add(key, table[key]);
                         }
                     }
                 }

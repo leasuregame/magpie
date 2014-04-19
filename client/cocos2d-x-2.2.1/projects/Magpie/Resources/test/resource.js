@@ -1223,6 +1223,7 @@ var main_scene_image = {
     18: test_scene_path + "res/" + "18.png",
     19: test_scene_path + "res/" + "19.png",
     20: test_scene_path + "res/" + "20.png",
+    21: test_scene_path + "res/" + "21.png",
     29: test_scene_path + "res/" + "29.png",
     30: test_scene_path + "res/" + "30.png",
     35: test_scene_path + "res/" + "35.png",
@@ -1261,6 +1262,11 @@ var main_scene_image = {
     93: test_scene_path + "res/" + "93.png",
     95: test_scene_path + "res/" + "95.png",
     105: test_scene_path + "res/" + "105.png",
+    106: test_scene_path + "res/" + "106.png",
+    107: test_scene_path + "res/" + "107.png",
+    108: test_scene_path + "res/" + "108.png",
+    109: test_scene_path + "res/" + "109.png",
+    110: test_scene_path + "res/" + "110.png",
 
 
 
@@ -1276,6 +1282,7 @@ var main_scene_image = {
     texiao9: test_scene_path + "ccb/" + "texiao9.ccbi",
     texiao11: test_scene_path + "ccb/" + "texiao11.ccbi",
     texiao12: test_scene_path + "ccb/" + "texiao12.ccbi",
+    texiao13: test_scene_path + "ccb/" + "texiao13.ccbi",
     texiao15: test_scene_path + "ccb/" + "texiao15.ccbi",
     texiao16: test_scene_path + "ccb/" + "texiao16.ccbi",
     texiao17: test_scene_path + "ccb/" + "texiao17.ccbi",
@@ -1290,6 +1297,9 @@ var main_scene_image = {
     texiao27: test_scene_path + "ccb/" + "texiao27.ccbi",
     texiao28: test_scene_path + "ccb/" + "texiao28.ccbi",
     texiao29: test_scene_path + "ccb/" + "texiao29.ccbi",
+    texiao30: test_scene_path + "ccb/" + "texiao30.ccbi",
+    texiao31: test_scene_path + "ccb/" + "texiao31.ccbi",
+    texiao32: test_scene_path + "ccb/" + "texiao32.ccbi",
 
 };
 

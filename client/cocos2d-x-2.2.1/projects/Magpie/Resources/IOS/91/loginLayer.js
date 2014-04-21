@@ -94,7 +94,7 @@ var LoginLayer = cc.Layer.extend({
         var server = lz.server;
         var user = gameData.user;
 
-        var areaId = user.get("area") || server.getRecommendArea();
+        var areaId = server.getRecommendArea();
         user.set("area", areaId);
         this._areaList = server.get("areaList");
         var len = this._areaList.length;
@@ -108,7 +108,7 @@ var LoginLayer = cc.Layer.extend({
         }
     },
 
-    resetAreaName: function(id) {
+    resetAreaName: function (id) {
         cc.log("LoginLayer resetAreaName");
 
         var area = this._areaList[id];
@@ -129,7 +129,7 @@ var LoginLayer = cc.Layer.extend({
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-        if(ndAdapter.NDIsLogined()) {
+        if (ndAdapter.NDIsLogined()) {
             str = ndAdapter.NDNickName();
         }
 

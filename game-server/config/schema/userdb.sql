@@ -5,9 +5,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- -------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
-  `account` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
+  `account` VARCHAR(60) COLLATE utf8_unicode_ci NOT NULL,
   `password` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `name` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `loginCount` SMALLINT(5) UNSIGNED DEFAULT '0',

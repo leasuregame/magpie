@@ -18,7 +18,6 @@ module.exports = (app) ->
 Remote = (@app) ->
 
 Remote::add = (args, platform, callback) ->
-  console.log '-b-', args, platform
   player = null
   product = null
   isFirstRechage = false

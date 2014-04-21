@@ -124,6 +124,7 @@
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
                 <file name="src/view/mainModule/invitationLayer.js"/>
+                <file name="src/view/mainModule/newAreaRewardLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>

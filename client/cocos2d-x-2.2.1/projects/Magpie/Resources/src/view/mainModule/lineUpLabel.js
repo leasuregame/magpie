@@ -114,6 +114,11 @@ var LineUpLabel = cc.Layer.extend({
         this._scrollView.setContentOffset(this._getScrollViewOffset());
         this.addChild(this._scrollView);
 
+        var table = outputTables.card_lineup_limit.rows[1];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            this._scrollView.setTouchEnabled(false);
+        }
+
         return true;
     },
 
@@ -204,6 +209,13 @@ var LineUpLabel = cc.Layer.extend({
 
         this._index = (this._index + 1) % len;
         this._isClick = true;
+
+        var table = outputTables.card_lineup_limit.rows[this._index];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            TipLayer.tip(table["card_1"] + " 级开启");
+            this._index = (this._index + 1) % len;
+            return;
+        }
 
         this.update();
     },

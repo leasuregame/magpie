@@ -2,7 +2,9 @@ var Entity = require('../../app/domain/entity/entity');
 var should = require('should');
 var sinon = require('sinon');
 
-describe("Entity Object", function () {
+Entity.FIELDS = ['name'];
+
+describe("Entity Object", function() {
     describe(".set()", function () {
         it("should can be set correct property", function () {
             var ent = new Entity();
@@ -17,15 +19,48 @@ describe("Entity Object", function () {
         });
     });
 
-    describe('.get()', function () {
-        it('should can get value of a property', function () {
-            var ent = new Entity({id: 1});
+    describe('.set() for object value', function() {
+        it('should can be set correct property', function() {
+            var ent = new Entity({
+                name: {
+                    firstName: 'arthur',
+                    lastName: 'wu'
+                }
+            });
+
+            ent.name.should.eql({
+                firstName: 'arthur',
+                lastName: 'wu'
+            });
+
+            ent.name.firstName = 'andy';
+            ent.set('name', ent.name);
+
+            ent.name.should.eql({
+                firstName: 'andy',
+                lastName: 'wu'
+            });
+            ent.changedFields.should.eql(['name']);
+            ent.getSaveData().should.eql({
+                name: {
+                    firstName: 'andy',
+                    lastName: 'wu'
+                }
+            });
+        });
+    })
+
+    describe('.get()', function() {
+        it('should can get value of a property', function() {
+            var ent = new Entity({
+                id: 1
+            });
             ent.get('id').should.equal(1);
         });
     });
 
-    describe('.track()', function () {
-        it('should can be track a property', function () {
+    describe('.track()', function() {
+        it('should can be track a property', function() {
             var ent = new Entity({
                 name: 'entity one',
                 lv: 10
@@ -43,15 +78,15 @@ describe("Entity Object", function () {
         });
     });
 
-    describe('.increase', function () {
-        it('should can be increase a value', function () {
+    describe('.increase', function() {
+        it('should can be increase a value', function() {
             var ent = new Entity();
             ent.set('money', 10);
             ent.increase('money', 3);
             ent.get('money').should.equal(13);
         });
 
-        it('should can be increase a value undefined', function () {
+        it('should can be increase a value undefined', function() {
             var ent = new Entity();
             ent.set('money', 10);
             ent.increase('money');
@@ -59,14 +94,14 @@ describe("Entity Object", function () {
         });
     });
 
-    describe('.decrease', function () {
-        it('should can be decrease a value', function () {
+    describe('.decrease', function() {
+        it('should can be decrease a value', function() {
             var ent = new Entity();
             ent.set('money', 10);
             ent.decrease('money', 5);
             ent.get('money').should.equal(5);
         });
-        it('should can be decrease a value', function () {
+        it('should can be decrease a value', function() {
             var ent = new Entity();
             ent.set('money', 10);
             ent.decrease('money');
@@ -74,8 +109,8 @@ describe("Entity Object", function () {
         });
     });
 
-    describe('.getSaveData', function () {
-        it('should can be getSaveData', function () {
+    describe('.getSaveData', function() {
+        it('should can be getSaveData', function() {
             Entity.FIELDS = ['name', 'lv', 'money'];
             Entity.DEFAULT_VALUES = {
                 name: 'ha',
@@ -85,12 +120,15 @@ describe("Entity Object", function () {
             var ent = new Entity();
             ent.increase('lv', 2);
             ent.decrease('money', 500);
-            ent.getSaveData().should.eql({lv: 12, money: 500});
+            ent.getSaveData().should.eql({
+                lv: 12,
+                money: 500
+            });
         });
     });
 
-    describe('.allData', function () {
-        it('should can be get allData', function () {
+    describe('.allData', function() {
+        it('should can be get allData', function() {
             Entity.FIELDS = ['id', 'lv', 'money'];
             Entity.DEFAULT_VALUES = {
                 id: 1,
@@ -98,7 +136,11 @@ describe("Entity Object", function () {
                 money: 1000
             };
             var ent = new Entity();
-            ent.allData().should.eql({id:1,lv:10,money:1000});
+            ent.allData().should.eql({
+                id: 1,
+                lv: 10,
+                money: 1000
+            });
         });
     });
 

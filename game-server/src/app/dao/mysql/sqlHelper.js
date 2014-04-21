@@ -146,9 +146,9 @@ var Statement = {
         } else if (typeof params === 'object') {
             for (var key in params) {
                 if (params[key] == null) {
-                    where_str += '`'+key + '` is ? and '
+                    where_str += ''+key + ' is ? and '
                 } else {
-                    where_str += '`'+key + '` = ? and ';
+                    where_str += ''+key + ' = ? and ';
                 }                
                 args.push(params[key]);
             }

@@ -94,11 +94,11 @@ class Authorize
         if not isValid
           return done({code: 501, msg: '登录失败，请重新登录'})
 
-        fetchUserInfoOrCreate nickName, userId, done
+        fetchUserInfoOrCreate nickName, null, done
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
-      if errP
+      if err
         logger.error(err)
         return cb(err)
 
@@ -121,7 +121,7 @@ class Authorize
             logger.error(err)
             return done({code: 501, msg: '登陆失败，请重新登陆'})
 
-          console.log(err, body)
+          #console.log(err, body)
           result = parseBody body
           if parseInt(result.status) is 0
             tokenMap.put token, result, 1000 * 60 * 60
@@ -133,7 +133,7 @@ class Authorize
         userName = result.username
         uid = result.userid
 
-        fetchUserInfoOrCreate userName, uid, done
+        fetchUserInfoOrCreate "pp-#{userName}", null, done
       (user, done) ->
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
@@ -143,12 +143,10 @@ class Authorize
       cb(null, user?.toJson())
 
   @YY: (args, cb) ->
-    console.log args
     text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
-    console.log 'text: ', text
     if args.signid is md5(text).toUpperCase()
       
-      fetchUserInfoOrCreate args.account, null, (err, user) ->
+      fetchUserInfoOrCreate "yy-#{args.account}", null, (err, user) ->
         if err
           return cb(err)
 
@@ -158,8 +156,6 @@ class Authorize
       cb({code: 501, msg: '登陆失败，请重新登陆'})
 
   @S91: (args, cb) ->
-    console.log args
-
     async.waterfall [
       (done) ->
         if validSessionId(args.uin, args.sessionid)
@@ -174,17 +170,17 @@ class Authorize
         }
         requestUrl = "#{process.env.LOGIN_CHECK_URL_91}?#{qs.stringify(query)}"
         request.get requestUrl, (err, res, body) ->
-          console.log err, body, body.ErrorCode
           if (err)
             return done(null, false)
 
           result = JSON.parse body
           if parseInt(result.ErrorCode) is 1
+            sessionIdMap.put args.uin, args.sessionid, 1000 * 60 * 60
             done(null, true)
           else 
             done(s91ErrorMessage(result))
       (result, done) ->
-        fetchUserInfoOrCreate args.uin, null, done
+        fetchUserInfoOrCreate "91-#{args.uin}", null, done
       (user, done) ->
         checkDuplicatedLogin args.areaId, args.frontendId, user, args.sid, done
     ], (err, user) ->
@@ -275,10 +271,10 @@ checkDuplicatedLogin = (areaId, frontendId, user, sid, done) ->
   user.loginCount += 1
   user.save()
 
-  if accountMap[user.id] and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
+  if accountMap[user.id] #and areaId is accountMap[user.id].areaId and sid isnt accountMap[user.id].sid
     bss = app.get('backendSessionService')
-    
-    bss.kickByUid accountMap[user.id].serverId, user.id + '*' + areaId, (err, res) -> 
+
+    bss.kickByUid accountMap[user.id].serverId, user.id + '*' + accountMap[user.id].areaId, (err, res) -> 
       accountMap[user.id] = {areaId: areaId, serverId: frontendId, sid: sid}
       done(null, user)
   else

@@ -16,6 +16,15 @@ var BossDao = (function(_super) {
   BossDao.table = 'boss';
   BossDao.domain = Boss;
 
+  /*
+      Boss状态: 
+        SLEEP: 1,     沉睡
+        AWAKE: 2,     苏醒
+        RUNAWAY: 3,   逃跑
+        TIMEOUT: 4,   超时
+        DEATH: 5,     死亡
+        DISAPPEAR: 6  消失
+   */
   BossDao.bossList = function(playerId, friendIds, cb) {
     var now = new Date().getTime();
 

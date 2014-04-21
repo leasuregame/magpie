@@ -26,8 +26,8 @@ var Entity = (function(_super) {
         this.tracked = [];
 
         _.defaults(attributes, utility.deepCopy(this.constructor.DEFAULT_VALUES));
-        
-        var self =  this;
+
+        var self = this;
         Object.keys(attributes).forEach(function(key) {
             self.track(key);
         });
@@ -68,10 +68,15 @@ var Entity = (function(_super) {
         }
 
         _.each(attrs, function(v, k) {
-            if (_.has(_this.attributes, k) && _this.attributes[k] == v) {
-                return; // value is not changed
+            if (_.isObject(v) && !_.isDate(v)) {
+                v = _.clone(v);
             }
 
+            if (_.has(_this.attributes, k)) {
+                if (_this.attributes[k] == v) {
+                    return; // equal string, number
+                }
+            }
             // add to tracked
             if (_this.tracked.indexOf(k) < 0) {
                 _this.track(k);
@@ -87,7 +92,7 @@ var Entity = (function(_super) {
                     logger.error(e);
                 }
             }
-
+            
             // add to changeFields
             if (_this.constructor.FIELDS.indexOf(k) > -1 && _this.changedFields.indexOf(k) < 0) {
                 _this.changedFields.push(k);
@@ -97,7 +102,7 @@ var Entity = (function(_super) {
         });
 
         _this.emit('change', _this.attributes);
-        
+
         _.each(attrs, function(v, k) {
             var type = k + '.change';
             _this.emit(type, v);

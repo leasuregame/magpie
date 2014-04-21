@@ -1,7 +1,7 @@
 var logger = require('pomelo-logger').getLogger(__filename);
-var DaoBase = require("./daoBase");
-var utility = require("../../common/utility");
-var dbClient = require('pomelo').app.get('dbClient');
+var utility = require("../../../../common/utility");
+var dbClient = require('pomelo').app.get('dbClient_sharedb');
+var DaoBase = require("../../daoBase");
 var util = require('util');
 
 var CdkeyDao = (function(_super) {
@@ -12,6 +12,7 @@ var CdkeyDao = (function(_super) {
   }
 
   CdkeyDao.table = 'cdkey';
+  CdkeyDao.dbClient = dbClient;
 
   var domain = function(attrs) {
     this.code = attrs.code,
@@ -28,7 +29,7 @@ var CdkeyDao = (function(_super) {
 
   CdkeyDao.isAvalifyPlayer = function (playerId, prefix, cb) {
     var sql = "select `code` from cdkey where playerId="+playerId+" and `code` like \'"+prefix+"-%\'";
-    dbClient.query(sql,function(err, res) {
+    this.dbClient.query(sql,function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when query cdkey]", sql);
         logger.error(err.stack);

@@ -49,3 +49,14 @@ util.loadDatabaseInfo = (app, type) ->
       interval: 60000
     }
   }
+
+util.loadShareDatabaseInfo = (app) ->
+  mysqlPath = path.join app.getBase(), 'config', 'mysql.json'
+  env = app.get('env')
+  mysqlConfig = JSON.parse(fs.readFileSync(mysqlPath))
+
+  app.set 'mysql_sharedb', mysqlConfig[env]['sharedb']
+  console.log '-1-', app.get('mysql_sharedb')
+  dbClient = require(app.getBase() + '/app/dao/mysql/mysql').init(app, 'mysql_sharedb')
+  console.log '-2-', dbClient
+  app.set('dbClient_sharedb', dbClient)

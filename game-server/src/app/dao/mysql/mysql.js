@@ -8,8 +8,8 @@ NND = {
      初始化mysql数据库连接池
      */
 
-    init: function (app) {
-        return _pool = require('./pool').createMysqlPool(app);
+    init: function (app, configKey) {
+        return _pool = require('./pool').createMysqlPool(app, configKey);
     },
     /*
      执行sql语句
@@ -82,11 +82,11 @@ NND = {
 
 
 sqlclient = {
-    init: function (app) {
+    init: function (app, key) {
         if ( !! _pool) {
             return sqlclient;
         } else {
-            NND.init(app);
+            NND.init(app, key);
             sqlclient.insert = NND.query;
             sqlclient.update = NND.query;
             sqlclient.delete = NND.query;

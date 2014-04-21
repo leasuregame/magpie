@@ -86,6 +86,21 @@ var gameGuide = {
     _bossGuide: false,
     _succorCardsGuide: false,
 
+    init: function () {
+        this._tournamentGuide = false;
+        this._passGuide = false;
+        this._instancesGuide = false;
+        this._treasureHuntGuide = false;
+        this._rankGuide = false;
+        this._card3Guide = false;
+        this._card4Guide = false;
+        this._card5Guide = false;
+        this._isFirstPassiveSkillAfresh = false;
+        this._lotteryGuide = false;
+        this._bossGuide = false;
+        this._succorCardsGuide = false;
+    },
+
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
         var lv = gameData.player.get("lv");

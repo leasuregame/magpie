@@ -67,7 +67,9 @@ var Activity = Entity.extend({
 
         this.updateLevelRewardFlag(data.levelReward);
         this.updateRechargeFlag(data.rechargeFlag);
-        this.updateLoginCountFlag(data.loginInfo);
+        if (data.loginInfo) {
+            this.updateLoginCountFlag(data.loginInfo);
+        }
     },
 
     sync: function () {

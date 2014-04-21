@@ -85,7 +85,7 @@ var ActivityLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
 
-            if (i == len - 1 && lz.platformConfig.PLATFORM != "TB") {
+            if (i == len - 1 && (lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore")) {
                 continue;
             }
 

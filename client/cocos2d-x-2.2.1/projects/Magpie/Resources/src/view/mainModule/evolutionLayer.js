@@ -151,10 +151,10 @@ var EvolutionLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._skillUpgradeItem.setEnabled(true);
-        this._passiveSkillUpgradeItem.setEnabled(false);
-
-        this._switchLabel(PassiveSkillAfreshLabel);
+        if (this._switchLabel(PassiveSkillAfreshLabel)) {
+            this._skillUpgradeItem.setEnabled(true);
+            this._passiveSkillUpgradeItem.setEnabled(false);
+        }
 
         if (mandatoryTeachingLayer) {
             if (mandatoryTeachingLayer.isTeaching()) {
@@ -166,7 +166,7 @@ var EvolutionLayer = cc.Layer.extend({
 
     _switchLabel: function (runLabel) {
         if (runLabel.canEnter && !runLabel.canEnter()) {
-            return;
+            return false;
         }
 
         if (!(this._nowLayer instanceof runLabel)) {
@@ -174,6 +174,8 @@ var EvolutionLayer = cc.Layer.extend({
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }
+
+        return true;
     }
 });
 

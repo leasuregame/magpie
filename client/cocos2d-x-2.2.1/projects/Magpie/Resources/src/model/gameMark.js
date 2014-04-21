@@ -27,6 +27,7 @@ var gameMark = {
     _boss: false,
     _tournament: false,
     _bossList: false,
+    _newAreaReward: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -49,6 +50,7 @@ var gameMark = {
         this._boss = false;
         this._tournament = false;
         this._bossList = false;
+        this._newAreaReward = false;
     },
 
     getActivityMark: function () {
@@ -56,7 +58,7 @@ var gameMark = {
 
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
-                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark();
+                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() || this.getNewAreaReward();
         }
 
         return this._activity;
@@ -480,6 +482,29 @@ var gameMark = {
         cc.log("gameMark updateBossListMark");
 
         this._bossList = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getNewAreaReward: function () {
+        cc.log("gameMark getNewAreaReward");
+
+        if (!this._newAreaReward) {
+            for (var i = 1; i <= 30; i++) {
+                if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, i) == NOT_GOT_REWARD) {
+                    this._newAreaReward = true;
+                    break;
+                }
+            }
+        }
+
+        return this._newAreaReward;
+    },
+
+    updateNewAreaReward: function (mark) {
+        cc.log("gameMark updateNewAreaReward");
+
+        this._newAreaReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }
 };

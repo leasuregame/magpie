@@ -831,6 +831,12 @@ var fit4Iphone4 = {
             "systemMessageIconPoint": cc.p(403, 912),
             "bgSpritePoint": cc.p(40, 106)
         },
+        "newAreaRewardLayer": {
+            "tipLabelPoint": cc.p(360, 821),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 640),
+            "scrollViewSize": cc.size(640, 640),
+            "scrollViewPoint": cc.p(40, 130)
+        },
         "newYearLayer": {
             "bgSpritePoint": cc.p(48, 108),
             "topSpritePoint": cc.p(360, 648),

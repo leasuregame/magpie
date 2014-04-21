@@ -744,6 +744,8 @@ var main_scene_image = {
     icon426: main_scene_path + "icon426.png",
     icon427: main_scene_path + "icon427.png",
     icon428: main_scene_path + "icon428.png",
+    icon429: main_scene_path + "icon429.png",
+    icon430: main_scene_path + "icon430.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -1301,7 +1303,6 @@ var main_scene_image = {
     boss2_plist: "res/effect/effect/boss2.plist",
     boss3_png: "res/effect/effect/boss3.png",
     boss3_plist: "res/effect/effect/boss3.plist",
-    yy: "res/effect/uiEffect/yy.plist"
 };
 
 var main_scene_res = [

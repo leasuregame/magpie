@@ -833,6 +833,12 @@ var fit4Iphone5 = {
             "systemMessageIconPoint": cc.p(361, 1085),
             "bgSpritePoint": cc.p(0, 106)
         },
+        "newAreaRewardLayer": {
+            "tipLabelPoint": cc.p(320, 997),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 820),
+            "scrollViewSize": cc.size(640, 820),
+            "scrollViewPoint": cc.p(0, 130)
+        },
         "newYearLayer": {
             "bgSpritePoint": cc.p(8, 108),
             "topSpritePoint": cc.p(320, 828),

@@ -87,6 +87,8 @@ var gameGuide = {
     _succorCardsGuide: false,
 
     init: function () {
+        cc.log("gameGuide init");
+
         this._tournamentGuide = false;
         this._passGuide = false;
         this._instancesGuide = false;

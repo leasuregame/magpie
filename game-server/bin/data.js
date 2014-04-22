@@ -21,15 +21,124 @@ var Data = function(db, dir) {
   }
 };
 
+Data.prototype.savePalyerData = function() {
+  var results = [];
+  this.db.player.fetchMany({}, function(err, players) {
+    results = players.map(function(player) {
+      return player.allData()
+    })
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData', 'player.json'), JSON.stringify(results), 'utf8', function(err) {
+      console.log('finished!');
+    });
+  });
+};
+
+Data.prototype.saveCardData = function() {
+  var results = [];
+  this.db.card.fetchMany({}, function(err, cards) {
+    results = cards.map(function(card) {
+      return card.allData()
+    })
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData', 'card.json'), JSON.stringify(results), 'utf8', function(err) {
+      console.log(err);
+      console.log('finished!');
+    });
+  });
+};
+
+Data.prototype.readData = function() {
+  var cardDao = this.db.card;
+  var playerDao = this.db.player;
+
+  async.waterfall([
+
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'card.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      } 
+
+      var cdata = fs.readFileSync(fpath, 'utf8');
+      cdata = JSON.parse(cdata);
+
+      async.each(cdata, function(card, done1) {
+        cardDao.update({
+          where: {
+            id: card.id
+          },
+          data: card
+        }, function(err, r) {
+          if (!err && !r) {
+            cardDao.create({
+              data: card
+            }, function(err, res) {
+              console.log('create card', card.id);
+              done1(err);
+            });
+          } else {
+            if (err) {
+              done1(err);
+            } else {
+              console.log('update card', card.id);
+              done1(null);
+            }
+          }
+        })
+      }, function(err) {
+        done(err);
+      });
+    },
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'player.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      } 
+
+      var pdata = fs.readFileSync(fpath, 'utf8');
+      pdata = JSON.parse(pdata);
+
+      async.each(pdata, function(player, done1) {
+        playerDao.update({
+          where: {id: player.id},
+          data: player
+        }, function(err, r) {
+         if (!err && !r) {
+            playerDao.create({
+              data: player
+            }, function(err, res) {
+              console.log('create player', player.id);
+              done1(err);
+            });
+          } else {
+            if (err) {
+              done1(err);
+            } else {
+              console.log('update player', player.id);
+              done1(null);
+            }
+          }
+        })
+      }, function(err) {
+        done(err);
+      });
+    }
+  ], function(err) {
+
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('complete ok!');
+    }
+
+  });
+};
+
 Data.prototype.fixPlayerElixir = function() {
   var finished = 0,
-      totalCount = 0;
-  console.log('message');
-  var playerDao = this.db.player; 
+    totalCount = 0;
+  var playerDao = this.db.player;
   var cardDao = this.db.card;
-  playerDao.fetchMany({
-    where: 'id < 2000'
-  }, function(err, players) {
+  playerDao.fetchMany({}, function(err, players) {
     totalCount = players.length;
 
     async.each(players, function(player, done) {
@@ -46,7 +155,9 @@ Data.prototype.fixPlayerElixir = function() {
       }
       var pdata = player.getSaveData();
       playerDao.update({
-        where: {id: player.id},
+        where: {
+          id: player.id
+        },
         data: pdata
       }, function(err) {
         console.log('updated ', player.id, player.name);
@@ -60,9 +171,9 @@ Data.prototype.fixPlayerElixir = function() {
           }
         }, function(err) {
           if (!err) {
-            finished += 1;  
+            finished += 1;
           }
-          
+
           done(err);
         });
       });
@@ -76,9 +187,12 @@ Data.prototype.fixPlayerElixir = function() {
 
 Data.prototype.changeCardPassiveSkill = function() {
   var cardDao = this.db.card;
-  var totalCount = 0, finished = 0;
-  cardDao.fetchMany({where: ' star in (3, 4, 5)'}, function(err, cards) {
-    
+  var totalCount = 0,
+    finished = 0;
+  cardDao.fetchMany({
+    where: ' star in (3, 4, 5)'
+  }, function(err, cards) {
+
     totalCount = cards.length;
     async.each(cards, function(card, done) {
       var ps = [];
@@ -90,7 +204,7 @@ Data.prototype.changeCardPassiveSkill = function() {
         id: 1,
         items: ps,
         active: true
-      },{
+      }, {
         id: 2,
         items: [],
         active: false
@@ -856,7 +970,7 @@ var initPassiveSkills, initPassiveSkillGroup;
 initPassiveSkills = function(star) {
   var count, end, i, index, results, start, _i, _ref;
   star = star > 5 ? 5 : star;
-  
+
   count = star - 2;
   results = [];
   for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {

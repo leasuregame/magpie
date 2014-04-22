@@ -1431,26 +1431,29 @@ var Player = (function(_super) {
     };
 
     Player.prototype.setLoginCountReward = function(count) {
-        if (typeof this.activities.logined == 'undefined') {
-            this.activities.logined = {
+        var act = utility.deepCopy(this.activities);
+
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
                 count: 1, 
                 got: 0
             };
         }
 
-        this.activities.logined.got = utility.mark(this.activities.logined.got, count);
-        this.set('activities', this.activities);
+        act.logined.got = utility.mark(act.logined.got, count);
+        this.set('activities', act);
     };
 
     Player.prototype.incLoginCount = function() {
-        if (typeof this.activities.logined == 'undefined') {
-            this.activities.logined = {
+        var act = utility.deepCopy(this.activities);
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
                 count: 0, 
                 got: 0
             };
         }
-        this.activities.logined.count += 1;
-        this.set('activities', this.activities);
+        act.logined.count += 1;
+        this.set('activities', act);
     };
 
     Player.prototype.toJson = function() {

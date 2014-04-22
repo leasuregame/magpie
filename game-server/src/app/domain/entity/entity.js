@@ -68,10 +68,6 @@ var Entity = (function(_super) {
         }
 
         _.each(attrs, function(v, k) {
-            if (_.isObject(v) && !_.isDate(v)) {
-                v = _.clone(v);
-            }
-
             if (_.has(_this.attributes, k)) {
                 if (_this.attributes[k] == v) {
                     return; // equal string, number

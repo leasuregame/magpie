@@ -27,7 +27,7 @@ Data.prototype.savePalyerData = function() {
     results = players.map(function(player) {
       return player.allData()
     })
-    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData', 'player.json'), JSON.stringify(results), 'utf8', function(err) {
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData1', 'player.json'), JSON.stringify(results), 'utf8', function(err) {
       console.log('finished!');
     });
   });
@@ -39,7 +39,7 @@ Data.prototype.saveCardData = function() {
     results = cards.map(function(card) {
       return card.allData()
     })
-    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData', 'card.json'), JSON.stringify(results), 'utf8', function(err) {
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData1', 'card.json'), JSON.stringify(results), 'utf8', function(err) {
       console.log(err);
       console.log('finished!');
     });
@@ -56,7 +56,7 @@ Data.prototype.readData = function() {
       var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'card.json');
       if (!fs.existsSync(fpath)) {
         return done(null);
-      } 
+      }
 
       var cdata = fs.readFileSync(fpath, 'utf8');
       cdata = JSON.parse(cdata);
@@ -92,17 +92,19 @@ Data.prototype.readData = function() {
       var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'player.json');
       if (!fs.existsSync(fpath)) {
         return done(null);
-      } 
+      }
 
       var pdata = fs.readFileSync(fpath, 'utf8');
       pdata = JSON.parse(pdata);
 
       async.each(pdata, function(player, done1) {
         playerDao.update({
-          where: {id: player.id},
+          where: {
+            id: player.id
+          },
           data: player
         }, function(err, r) {
-         if (!err && !r) {
+          if (!err && !r) {
             playerDao.create({
               data: player
             }, function(err, res) {
@@ -133,6 +135,90 @@ Data.prototype.readData = function() {
   });
 };
 
+
+Data.prototype.addElixirToCard = function() {
+  var cardDao = this.db.card;
+  var playerDao = this.db.player;
+  var cardIds = [];
+  var ignoreIds = [];
+
+  async.waterfall([
+
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'card.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      }
+
+      var cdata = fs.readFileSync(fpath, 'utf8');
+      cdata = JSON.parse(cdata);
+      var ids = [743, 675, 632, 512, 492, 451, 436, 405, 394, 384, 376, 359, 352, 290, 217];
+
+      var filterCards = cdata.filter(function(c) {
+        return ids.indexOf(c.playerId) < 0 && (c.elixirHp > 0 || c.elixirAtk > 0);
+      });
+
+      if (filterCards.length <= 0) {
+        return done(null);
+      }
+
+      
+      async.each(filterCards, function(card, done1) {
+        cardDao.fetchOne({
+          where: {
+            id: card.id
+          }
+        }, function(err, resCard) {
+          if (err) {
+            console.log('卡牌Id：', card.id);
+            console.log("查找卡牌出错", err);
+            ignoreIds.push(card.id);
+            done1(null);
+          } else {
+            var ea = resCard.elixirAtk + card.elixirAtk;
+            var eh = resCard.elixirHp + card.elixirHp;
+
+            cardDao.update({
+              where: {
+                id: card.id
+              },
+              data: {
+                elixirAtk: ea,
+                elixirHp: eh
+              }
+            }, function(err, r) {
+
+              if (err) {
+                done1(err);
+              } else {
+                console.log('update card', card.id);
+                console.log('playerId: ', card.playerId);
+                console.log('增加仙丹值：', 'hp: ', card.elixirHp, 'atk: ', card.elixirAtk);
+                cardIds.push(card.id);
+                done1(null);
+              }
+
+            });
+          }
+        });
+      }, function(err) {
+        done(err);
+      });
+    }
+  ], function(err) {
+
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('ignore card: ', ignoreIds);
+      console.log('updated card: ', cardIds);
+      console.log('complete ok!');
+    }
+
+  });
+};
+
+
 Data.prototype.fixPlayerElixir = function() {
   var finished = 0,
       totalCount = 0;
@@ -148,6 +234,10 @@ Data.prototype.fixPlayerElixir = function() {
       }
       var elixir = ach['17'].got;
       console.log('player elixir: ', elixir);
+      if (elixir < 200000) {
+        return done(null);
+      }
+
       if (elixir >= 200000) {
         ach['17'].got = 200000;
         player.achievement = ach;

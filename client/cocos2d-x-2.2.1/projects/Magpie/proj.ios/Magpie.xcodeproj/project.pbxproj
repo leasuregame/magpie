@@ -5401,18 +5401,18 @@
 						DevelopmentTeam = TJT2HAB95B;
 					};
 					9066012318ED4A2200AAC9D8 = {
-						DevelopmentTeam = TJT2HAB95B;
+						DevelopmentTeam = ZBZQCW2YLX;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					9066021A18ED4A2400AAC9D8 = {
-						DevelopmentTeam = TJT2HAB95B;
+						DevelopmentTeam = ZBZQCW2YLX;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};

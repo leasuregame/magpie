@@ -51353,6 +51353,7 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
+                "name": "60魔石",
                 "cash": 6,
                 "gold": 6,
                 "product_id": "com.leasuregame.magpie.pay6",
@@ -51360,6 +51361,7 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
+                "name": "300魔石",
                 "cash": 30,
                 "gold": 33,
                 "product_id": "com.leasuregame.magpie.pay30",
@@ -51367,6 +51369,7 @@ var outputTables = {
             },
             "3": {
                 "id": 3,
+                "name": "680魔石",
                 "cash": 68,
                 "gold": 76,
                 "product_id": "com.leasuregame.magpie.pay68",
@@ -51374,6 +51377,7 @@ var outputTables = {
             },
             "4": {
                 "id": 4,
+                "name": "1280魔石",
                 "cash": 128,
                 "gold": 146,
                 "product_id": "com.leasuregame.magpie.pay128",
@@ -51381,6 +51385,7 @@ var outputTables = {
             },
             "5": {
                 "id": 5,
+                "name": "1980魔石",
                 "cash": 198,
                 "gold": 232,
                 "product_id": "com.leasuregame.magpie.pay198",
@@ -51388,6 +51393,7 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
+                "name": "3280魔石",
                 "cash": 328,
                 "gold": 403,
                 "product_id": "com.leasuregame.magpie.pay328",
@@ -51395,6 +51401,7 @@ var outputTables = {
             },
             "7": {
                 "id": 7,
+                "name": "6480魔石",
                 "cash": 648,
                 "gold": 842,
                 "product_id": "com.leasuregame.magpie.pay648",
@@ -51402,6 +51409,7 @@ var outputTables = {
             },
             "8": {
                 "id": 8,
+                "name": "周卡",
                 "cash": 6,
                 "gold": 6,
                 "product_id": "com.leasuregame.magpie.week.card",
@@ -51411,6 +51419,7 @@ var outputTables = {
             },
             "9": {
                 "id": 9,
+                "name": "月卡",
                 "cash": 30,
                 "gold": 33,
                 "product_id": "com.leasuregame.magpie.month.card",

@@ -70,7 +70,7 @@ lz.platformConfig = {
 
 
 var yyAdapter = yy.YYAdapter.YYAdapterInstance();
-yyAdapter.YYInitWithAppId(lz.platformConfig.APP_ID, true);
+yyAdapter.YYInitWithAppId(lz.platformConfig.APP_ID, false);
 
 yyAdapter.YYOnLoginRetCode = function (code, yyUser) {
     cc.log("yyAdapter YYOnLoginRetCode: " + code);

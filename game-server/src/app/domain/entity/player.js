@@ -1371,8 +1371,16 @@ var Player = (function(_super) {
             this.updateGift('rmTimerCount', 1);
         }
 
-        var consume = 20 * this.dailyGift.rmTimerCount;
-        return consume > 200 ? 200 : consume;
+        var consume = 0;
+        if (this.dailyGift.rmTimerCount <= 10) {
+            consume = 20;
+        } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
+            consume = 30;
+        } else {
+            consume = 50;
+        }
+
+        return consume;
     };
 
     Player.prototype.incRmTimerCount = function() {

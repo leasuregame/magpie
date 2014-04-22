@@ -47,6 +47,12 @@ var main = function() {
       quenues.push(gdata.changeCardPassiveSkill);     
     case 'fix-elixir': 
       quenues.push(gdata.fixPlayerElixir);
+    case 'save-player': 
+      quenues.push(gdata.savePalyerData);
+    case 'save-card': 
+      quenues.push(gdata.saveCardData);
+    case 'read-data': 
+      quenues.push(gdata.readData);
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

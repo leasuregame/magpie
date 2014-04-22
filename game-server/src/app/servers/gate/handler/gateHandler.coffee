@@ -60,7 +60,7 @@ filterServers = (areas, os, platform, version) ->
 	if os.toUpperCase() is 'ALL' and platform.toUpperCase() is 'ALL'
 		items = areas
 	else
-		items = areas.filter (area) -> os.toUpperCase() in area.os and platform.toUpperCase() in area.platform
+		items = areas.filter (area) -> os.toUpperCase() in area.os.toUpperCase() and platform.toUpperCase() in area.platform.toUpperCase()
 	
 	if version
 		versionSpecifyItems = items.filter (i) -> version in i.version

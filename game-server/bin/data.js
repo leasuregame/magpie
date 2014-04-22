@@ -6,6 +6,7 @@ var _ = require('underscore');
 var table = require('../app/manager/table');
 var cardConfig = require('../config/data/card');
 var MarkGroup = require('../app/common/markGroup');
+var utility = require('../app/common/utility');
 
 module.exports = function(db, dir) {
   return new Data(db, dir);
@@ -18,6 +19,62 @@ var Data = function(db, dir) {
   } else {
     this.fixtures_dir = path.join(__dirname, '..', 'config', 'fixtures/');
   }
+};
+
+Data.prototype.fixPlayerElixir = function() {
+  var finished = 0,
+      totalCount = 0;
+
+  var playerDao = this.db.player; 
+  var cardDao = this.db.card;
+  playerDao.fetchMany({
+    where: 'id < 1000'
+  }, function(err, players) {
+    totalCount = players.length;
+
+    async.each(players, function(player, done) {
+      var ach = utility.deepCopy(player.achievement);
+      if (typeof ach['17'] == 'undefined') {
+        return done(null);
+      }
+      var elixir = ach['17'].got;
+      console.log('player elixir: ', elixir);
+      if (elixir >= 200000) {
+        // ach['17'].got = 200000;
+        // player.achievement = ach;
+        // player.elixir += 1;
+        finished += 1;
+      }
+
+      done(null)
+
+      // playerDao.update({
+      //   where: {id: player.id},
+      //   data: player.getSaveData()
+      // }, function(err) {
+      //   console.log('updated ', player.id);
+      //   cardDao.update({
+      //     where: {
+      //       playerId: player.id
+      //     },
+      //     data: {
+      //       elixirAtk: 0,
+      //       elixirHp: 0
+      //     }
+      //   }, function(err) {
+      //     if (!err) {
+      //       finished += 1;  
+      //     }
+          
+      //     done(err);
+      //   });
+      // });
+
+    }, function(err) {
+      console.log('total: ', totalCount);
+      console.log('finished: ', finished);
+    });
+  });
 };
 
 Data.prototype.changeCardPassiveSkill = function() {

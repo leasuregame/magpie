@@ -44,7 +44,9 @@ var main = function() {
     case 'change-card-book': 
       quenues.push(gdata.correctCardBook);
     case 'change-card-ps': 
-      quenues.push(gdata.changeCardPassiveSkill);      
+      quenues.push(gdata.changeCardPassiveSkill);     
+    case 'fix-elixir': 
+      quenues.push(gdata.fixPlayerElixir);
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

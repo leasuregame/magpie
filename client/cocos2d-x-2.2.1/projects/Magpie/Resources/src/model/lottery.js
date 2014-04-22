@@ -60,7 +60,7 @@ var Lottery = Entity.extend({
     },
 
     getFiveStarCardRate: function () {
-        var rates = [40, 50, 70, 80, 100];
+        var rates = [100];
 
         if (this.get("firstHighTenLuckCard")) {
             return 0;
@@ -78,7 +78,7 @@ var Lottery = Entity.extend({
     },
 
     getFragmentRate: function () {
-        var rates = [50, 70, 100];
+        var rates = [100];
 
         if (this._goldLuckyCardForFragment) {
             if (this._goldLuckyCardForFragment.got) {

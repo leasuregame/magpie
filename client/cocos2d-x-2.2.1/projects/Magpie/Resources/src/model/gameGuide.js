@@ -54,8 +54,28 @@ var CARD_LINEUP_LIMIT = [
     {
         "1": {
             "tableName": "card_1",
-            "tip": "援军卡组已开启，现在可上阵新的卡牌",
-            "name": "succorCardsGuide"
+            "tip": "第6个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card6Guide"
+        },
+        "2": {
+            "tableName": "card_2",
+            "tip": "第7个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card7Guide"
+        },
+        "3": {
+            "tableName": "card_3",
+            "tip": "第8个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card8Guide"
+        },
+        "4": {
+            "tableName": "card_4",
+            "tip": "第9个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card9Guide"
+        },
+        "5": {
+            "tableName": "card_5",
+            "tip": "第10个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card10Guide"
         }
     }
 ];

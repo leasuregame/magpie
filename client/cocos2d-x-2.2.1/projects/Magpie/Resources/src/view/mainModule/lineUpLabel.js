@@ -186,8 +186,9 @@ var LineUpLabel = cc.Layer.extend({
             this.addChild(this._card3Guide, 10);
         }
 
-        if (gameGuide.get("succorCardsGuide")) {
-            for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 5; i++) {
+            var key = "card" + (6 + i) + "Guide";
+            if (gameGuide.get(key)) {
                 if (!this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i] = cc.BuilderReader.load(main_scene_image.uiEffect43);
                     this._succorCardsGuide[i].setPosition(cc.p(79 + 122 * i, 0));
@@ -248,9 +249,10 @@ var LineUpLabel = cc.Layer.extend({
                 if (this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i].removeFromParent();
                     this._succorCardsGuide[i] = null;
+                    var key = "card" + (6 + i) + "Guide";
+                    gameGuide.set(key, false);
                 }
             }
-            gameGuide.set("succorCardsGuide", false);
         }
 
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));

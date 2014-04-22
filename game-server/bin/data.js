@@ -24,11 +24,11 @@ var Data = function(db, dir) {
 Data.prototype.fixPlayerElixir = function() {
   var finished = 0,
       totalCount = 0;
-
+  console.log('message');
   var playerDao = this.db.player; 
   var cardDao = this.db.card;
   playerDao.fetchMany({
-    where: 'id < 1000'
+    where: 'id < 2000'
   }, function(err, players) {
     totalCount = players.length;
 
@@ -40,35 +40,32 @@ Data.prototype.fixPlayerElixir = function() {
       var elixir = ach['17'].got;
       console.log('player elixir: ', elixir);
       if (elixir >= 200000) {
-        // ach['17'].got = 200000;
-        // player.achievement = ach;
-        // player.elixir += 1;
-        finished += 1;
+        ach['17'].got = 200000;
+        player.achievement = ach;
+        player.elixir = 200000;
       }
-
-      done(null)
-
-      // playerDao.update({
-      //   where: {id: player.id},
-      //   data: player.getSaveData()
-      // }, function(err) {
-      //   console.log('updated ', player.id);
-      //   cardDao.update({
-      //     where: {
-      //       playerId: player.id
-      //     },
-      //     data: {
-      //       elixirAtk: 0,
-      //       elixirHp: 0
-      //     }
-      //   }, function(err) {
-      //     if (!err) {
-      //       finished += 1;  
-      //     }
+      var pdata = player.getSaveData();
+      playerDao.update({
+        where: {id: player.id},
+        data: pdata
+      }, function(err) {
+        console.log('updated ', player.id, player.name);
+        cardDao.update({
+          where: {
+            playerId: player.id
+          },
+          data: {
+            elixirAtk: 0,
+            elixirHp: 0
+          }
+        }, function(err) {
+          if (!err) {
+            finished += 1;  
+          }
           
-      //     done(err);
-      //   });
-      // });
+          done(err);
+        });
+      });
 
     }, function(err) {
       console.log('total: ', totalCount);

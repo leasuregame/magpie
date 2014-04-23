@@ -6,6 +6,7 @@ var _ = require('underscore');
 var table = require('../app/manager/table');
 var cardConfig = require('../config/data/card');
 var MarkGroup = require('../app/common/markGroup');
+var utility = require('../app/common/utility');
 
 module.exports = function(db, dir) {
   return new Data(db, dir);
@@ -20,11 +21,268 @@ var Data = function(db, dir) {
   }
 };
 
+Data.prototype.savePalyerData = function() {
+  var results = [];
+  this.db.player.fetchMany({}, function(err, players) {
+    results = players.map(function(player) {
+      return player.allData()
+    })
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData1', 'player.json'), JSON.stringify(results), 'utf8', function(err) {
+      console.log('finished!');
+    });
+  });
+};
+
+Data.prototype.saveCardData = function() {
+  var results = [];
+  this.db.card.fetchMany({}, function(err, cards) {
+    results = cards.map(function(card) {
+      return card.allData()
+    })
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'playerData1', 'card.json'), JSON.stringify(results), 'utf8', function(err) {
+      console.log(err);
+      console.log('finished!');
+    });
+  });
+};
+
+Data.prototype.readData = function() {
+  var cardDao = this.db.card;
+  var playerDao = this.db.player;
+
+  async.waterfall([
+
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'card.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      }
+
+      var cdata = fs.readFileSync(fpath, 'utf8');
+      cdata = JSON.parse(cdata);
+
+      async.each(cdata, function(card, done1) {
+        cardDao.update({
+          where: {
+            id: card.id
+          },
+          data: card
+        }, function(err, r) {
+          if (!err && !r) {
+            cardDao.create({
+              data: card
+            }, function(err, res) {
+              console.log('create card', card.id);
+              done1(err);
+            });
+          } else {
+            if (err) {
+              done1(err);
+            } else {
+              console.log('update card', card.id);
+              done1(null);
+            }
+          }
+        })
+      }, function(err) {
+        done(err);
+      });
+    },
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'player.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      }
+
+      var pdata = fs.readFileSync(fpath, 'utf8');
+      pdata = JSON.parse(pdata);
+
+      async.each(pdata, function(player, done1) {
+        playerDao.update({
+          where: {
+            id: player.id
+          },
+          data: player
+        }, function(err, r) {
+          if (!err && !r) {
+            playerDao.create({
+              data: player
+            }, function(err, res) {
+              console.log('create player', player.id);
+              done1(err);
+            });
+          } else {
+            if (err) {
+              done1(err);
+            } else {
+              console.log('update player', player.id);
+              done1(null);
+            }
+          }
+        })
+      }, function(err) {
+        done(err);
+      });
+    }
+  ], function(err) {
+
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('complete ok!');
+    }
+
+  });
+};
+
+
+Data.prototype.addElixirToCard = function() {
+  var cardDao = this.db.card;
+  var playerDao = this.db.player;
+  var cardIds = [];
+  var ignoreIds = [];
+
+  async.waterfall([
+
+    function(done) {
+      var fpath = path.join(__dirname, '..', '..', '..', 'playerData', 'card.json');
+      if (!fs.existsSync(fpath)) {
+        return done(null);
+      }
+
+      var cdata = fs.readFileSync(fpath, 'utf8');
+      cdata = JSON.parse(cdata);
+      var ids = [743, 675, 632, 512, 492, 451, 436, 405, 394, 384, 376, 359, 352, 290, 217];
+
+      var filterCards = cdata.filter(function(c) {
+        return ids.indexOf(c.playerId) < 0 && (c.elixirHp > 0 || c.elixirAtk > 0);
+      });
+
+      if (filterCards.length <= 0) {
+        return done(null);
+      }
+
+      
+      async.each(filterCards, function(card, done1) {
+        cardDao.fetchOne({
+          where: {
+            id: card.id
+          }
+        }, function(err, resCard) {
+          if (err) {
+            console.log('卡牌Id：', card.id);
+            console.log("查找卡牌出错", err);
+            ignoreIds.push(card.id);
+            done1(null);
+          } else {
+            var ea = resCard.elixirAtk + card.elixirAtk;
+            var eh = resCard.elixirHp + card.elixirHp;
+
+            cardDao.update({
+              where: {
+                id: card.id
+              },
+              data: {
+                elixirAtk: ea,
+                elixirHp: eh
+              }
+            }, function(err, r) {
+
+              if (err) {
+                done1(err);
+              } else {
+                console.log('update card', card.id);
+                console.log('playerId: ', card.playerId);
+                console.log('增加仙丹值：', 'hp: ', card.elixirHp, 'atk: ', card.elixirAtk);
+                cardIds.push(card.id);
+                done1(null);
+              }
+
+            });
+          }
+        });
+      }, function(err) {
+        done(err);
+      });
+    }
+  ], function(err) {
+
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('ignore card: ', ignoreIds);
+      console.log('updated card: ', cardIds);
+      console.log('complete ok!');
+    }
+
+  });
+};
+
+
+Data.prototype.fixPlayerElixir = function() {
+  var finished = 0,
+    totalCount = 0;
+  var playerDao = this.db.player;
+  var cardDao = this.db.card;
+  playerDao.fetchMany({}, function(err, players) {
+    totalCount = players.length;
+
+    async.each(players, function(player, done) {
+      var ach = utility.deepCopy(player.achievement);
+      if (typeof ach['17'] == 'undefined') {
+        return done(null);
+      }
+      var elixir = ach['17'].got;
+      console.log('player elixir: ', elixir);
+      if (elixir < 200000) {
+        return done(null);
+      }
+
+      if (elixir >= 200000) {
+        ach['17'].got = 200000;
+        player.achievement = ach;
+        player.elixir = 200000;
+      }
+      var pdata = player.getSaveData();
+      playerDao.update({
+        where: {
+          id: player.id
+        },
+        data: pdata
+      }, function(err) {
+        console.log('updated ', player.id, player.name);
+        cardDao.update({
+          where: {
+            playerId: player.id
+          },
+          data: {
+            elixirAtk: 0,
+            elixirHp: 0
+          }
+        }, function(err) {
+          if (!err) {
+            finished += 1;
+          }
+
+          done(err);
+        });
+      });
+
+    }, function(err) {
+      console.log('total: ', totalCount);
+      console.log('finished: ', finished);
+    });
+  });
+};
+
 Data.prototype.changeCardPassiveSkill = function() {
   var cardDao = this.db.card;
-  var totalCount = 0, finished = 0;
-  cardDao.fetchMany({where: ' star in (3, 4, 5)'}, function(err, cards) {
-    
+  var totalCount = 0,
+    finished = 0;
+  cardDao.fetchMany({
+    where: ' star in (3, 4, 5)'
+  }, function(err, cards) {
+
     totalCount = cards.length;
     async.each(cards, function(card, done) {
       var ps = [];
@@ -36,7 +294,7 @@ Data.prototype.changeCardPassiveSkill = function() {
         id: 1,
         items: ps,
         active: true
-      },{
+      }, {
         id: 2,
         items: [],
         active: false
@@ -301,6 +559,12 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       var where = {
         id: row.id
       };
+      if (!row.id) {
+        where = {
+          1: 0
+        };
+      }
+
       if (table == 'friend') {
         where = {
           playerId: row.playerId,
@@ -796,7 +1060,7 @@ var initPassiveSkills, initPassiveSkillGroup;
 initPassiveSkills = function(star) {
   var count, end, i, index, results, start, _i, _ref;
   star = star > 5 ? 5 : star;
-  
+
   count = star - 2;
   results = [];
   for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {

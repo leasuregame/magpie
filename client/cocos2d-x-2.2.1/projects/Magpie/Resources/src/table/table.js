@@ -97,6 +97,16 @@ var nameChanged = {
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
+    "recharge": "充值类型",
+    "充值类型": "recharge",
+    "vip": "vip等级配置表",
+    "vip等级配置表": "vip",
+    "vip_box": "vip礼包赠品",
+    "vip礼包赠品": "vip_box",
+    "vip_privilege": "vip特权",
+    "vip特权": "vip_privilege",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
@@ -124,17 +134,7 @@ var nameChanged = {
     "task_through_reward": "通关仙币奖励",
     "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
-    "任务扫荡产出表": "wipe_out",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
-    "recharge": "充值类型",
-    "充值类型": "recharge",
-    "vip": "vip等级配置表",
-    "vip等级配置表": "vip",
-    "vip_box": "vip礼包赠品",
-    "vip礼包赠品": "vip_box",
-    "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege"
+    "任务扫荡产出表": "wipe_out"
 };
 var outputTables = {
     "achievement": {
@@ -12908,11 +12908,11 @@ var outputTables = {
             },
             "1": {
                 "id": 1,
-                "card_1": 40,
-                "card_2": 40,
-                "card_3": 40,
-                "card_4": 40,
-                "card_5": 40
+                "card_1": 55,
+                "card_2": 65,
+                "card_3": 75,
+                "card_4": 80,
+                "card_5": 85
             }
         }
     },
@@ -30094,6 +30094,477 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 764,
+                "card_lv": 20
+            }
+        }
+    },
+    "recharge": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "60魔石",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.pay6",
+                "times": 2
+            },
+            "2": {
+                "id": 2,
+                "name": "300魔石",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.pay30",
+                "times": 2
+            },
+            "3": {
+                "id": 3,
+                "name": "680魔石",
+                "cash": 68,
+                "gold": 76,
+                "product_id": "com.leasuregame.magpie.pay68",
+                "times": 2
+            },
+            "4": {
+                "id": 4,
+                "name": "1280魔石",
+                "cash": 128,
+                "gold": 146,
+                "product_id": "com.leasuregame.magpie.pay128",
+                "times": 2
+            },
+            "5": {
+                "id": 5,
+                "name": "1980魔石",
+                "cash": 198,
+                "gold": 232,
+                "product_id": "com.leasuregame.magpie.pay198",
+                "times": 2
+            },
+            "6": {
+                "id": 6,
+                "name": "3280魔石",
+                "cash": 328,
+                "gold": 403,
+                "product_id": "com.leasuregame.magpie.pay328",
+                "times": 2
+            },
+            "7": {
+                "id": 7,
+                "name": "6480魔石",
+                "cash": 648,
+                "gold": 842,
+                "product_id": "com.leasuregame.magpie.pay648",
+                "times": 3
+            },
+            "8": {
+                "id": 8,
+                "name": "周卡",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.week.card",
+                "daily_gold": 60,
+                "valid_days": 7,
+                "times": 1
+            },
+            "9": {
+                "id": 9,
+                "name": "月卡",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.month.card",
+                "daily_gold": 100,
+                "valid_days": 30,
+                "times": 1
+            }
+        }
+    },
+    "vip": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "name": "Vip1",
+                "cash": 6,
+                "total_cash": 6
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "name": "Vip2",
+                "cash": 50,
+                "total_cash": 56
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "name": "Vip3",
+                "cash": 100,
+                "total_cash": 156
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "name": "Vip4",
+                "cash": 200,
+                "total_cash": 356
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "name": "Vip5",
+                "cash": 500,
+                "total_cash": 856
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "name": "Vip6",
+                "cash": 1000,
+                "total_cash": 1856
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "name": "Vip7",
+                "cash": 2000,
+                "total_cash": 3856
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "name": "Vip8",
+                "cash": 5000,
+                "total_cash": 8856
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "name": "Vip9",
+                "cash": 8000,
+                "total_cash": 16856
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "name": "Vip10",
+                "cash": 10000,
+                "total_cash": 26856
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "name": "Vip11",
+                "cash": 20000,
+                "total_cash": 46856
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "name": "Vip12",
+                "cash": 50000,
+                "total_cash": 96856
+            }
+        }
+    },
+    "vip_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 5000,
+                "money": 100000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "fragments": 2,
+                "exp_card": 0,
+                "price": 18,
+                "true_price": 66
+            },
+            "2": {
+                "id": 2,
+                "energy": 6000,
+                "money": 150000,
+                "skillPoint": 10000,
+                "elixir": 0,
+                "fragments": 3,
+                "exp_card": 0,
+                "price": 58,
+                "true_price": 195
+            },
+            "3": {
+                "id": 3,
+                "energy": 7000,
+                "money": 200000,
+                "skillPoint": 20000,
+                "elixir": 20000,
+                "fragments": 4,
+                "exp_card": 40,
+                "price": 88,
+                "true_price": 246
+            },
+            "4": {
+                "id": 4,
+                "energy": 8000,
+                "money": 250000,
+                "skillPoint": 30000,
+                "elixir": 40000,
+                "fragments": 5,
+                "exp_card": 50,
+                "price": 188,
+                "true_price": 569
+            },
+            "5": {
+                "id": 5,
+                "energy": 9000,
+                "money": 300000,
+                "skillPoint": 40000,
+                "elixir": 60000,
+                "fragments": 6,
+                "exp_card": 60,
+                "price": 288,
+                "true_price": 726
+            },
+            "6": {
+                "id": 6,
+                "energy": 10000,
+                "money": 350000,
+                "skillPoint": 50000,
+                "elixir": 80000,
+                "fragments": 7,
+                "exp_card": 70,
+                "price": 388,
+                "true_price": 1080
+            },
+            "7": {
+                "id": 7,
+                "energy": 11000,
+                "money": 400000,
+                "skillPoint": 60000,
+                "elixir": 100000,
+                "fragments": 8,
+                "exp_card": 80,
+                "price": 488,
+                "true_price": 1368
+            },
+            "8": {
+                "id": 8,
+                "energy": 12000,
+                "money": 450000,
+                "skillPoint": 70000,
+                "elixir": 120000,
+                "fragments": 9,
+                "exp_card": 90,
+                "price": 588,
+                "true_price": 1989
+            },
+            "9": {
+                "id": 9,
+                "energy": 13000,
+                "money": 500000,
+                "skillPoint": 80000,
+                "elixir": 140000,
+                "fragments": 10,
+                "exp_card": 100,
+                "price": 688,
+                "true_price": 2366
+            },
+            "10": {
+                "id": 10,
+                "energy": 14000,
+                "money": 550000,
+                "skillPoint": 90000,
+                "elixir": 160000,
+                "fragments": 11,
+                "exp_card": 110,
+                "price": 788,
+                "true_price": 2899
+            },
+            "11": {
+                "id": 11,
+                "energy": 15000,
+                "money": 600000,
+                "skillPoint": 100000,
+                "elixir": 180000,
+                "fragments": 12,
+                "exp_card": 120,
+                "price": 888,
+                "true_price": 3288
+            },
+            "12": {
+                "id": 12,
+                "energy": 16000,
+                "money": 650000,
+                "skillPoint": 110000,
+                "elixir": 200000,
+                "fragments": 13,
+                "exp_card": 130,
+                "price": 999,
+                "true_price": 3986
+            }
+        }
+    },
+    "vip_privilege": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lottery_free_count": 0,
+                "exp_card_count": 0,
+                "buy_power_count": 0,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "1": {
+                "id": 1,
+                "lottery_free_count": 1,
+                "exp_card_count": 40,
+                "buy_power_count": 1,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "2": {
+                "id": 2,
+                "lottery_free_count": 2,
+                "exp_card_count": 80,
+                "buy_power_count": 2,
+                "give_bless_count": 1,
+                "receive_bless_count": 1,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "3": {
+                "id": 3,
+                "lottery_free_count": 3,
+                "exp_card_count": 120,
+                "buy_power_count": 3,
+                "give_bless_count": 2,
+                "receive_bless_count": 2,
+                "spirit_collect_count": 1,
+                "challenge_buy_count": 5,
+                "friend_count": 0
+            },
+            "4": {
+                "id": 4,
+                "lottery_free_count": 4,
+                "exp_card_count": 160,
+                "buy_power_count": 4,
+                "give_bless_count": 3,
+                "receive_bless_count": 3,
+                "spirit_collect_count": 2,
+                "challenge_buy_count": 10,
+                "friend_count": 5
+            },
+            "5": {
+                "id": 5,
+                "lottery_free_count": 5,
+                "exp_card_count": 200,
+                "buy_power_count": 5,
+                "give_bless_count": 4,
+                "receive_bless_count": 4,
+                "spirit_collect_count": 3,
+                "challenge_buy_count": 15,
+                "friend_count": 10
+            },
+            "6": {
+                "id": 6,
+                "lottery_free_count": 6,
+                "exp_card_count": 240,
+                "buy_power_count": 6,
+                "give_bless_count": 5,
+                "receive_bless_count": 5,
+                "spirit_collect_count": 4,
+                "challenge_buy_count": 20,
+                "friend_count": 15
+            },
+            "7": {
+                "id": 7,
+                "lottery_free_count": 7,
+                "exp_card_count": 280,
+                "buy_power_count": 7,
+                "give_bless_count": 6,
+                "receive_bless_count": 6,
+                "spirit_collect_count": 5,
+                "challenge_buy_count": 25,
+                "friend_count": 20
+            },
+            "8": {
+                "id": 8,
+                "lottery_free_count": 8,
+                "exp_card_count": 320,
+                "buy_power_count": 8,
+                "give_bless_count": 7,
+                "receive_bless_count": 7,
+                "spirit_collect_count": 6,
+                "challenge_buy_count": 30,
+                "friend_count": 25
+            },
+            "9": {
+                "id": 9,
+                "lottery_free_count": 9,
+                "exp_card_count": 360,
+                "buy_power_count": 9,
+                "give_bless_count": 8,
+                "receive_bless_count": 8,
+                "spirit_collect_count": 7,
+                "challenge_buy_count": 35,
+                "friend_count": 30
+            },
+            "10": {
+                "id": 10,
+                "lottery_free_count": 10,
+                "exp_card_count": 400,
+                "buy_power_count": 10,
+                "give_bless_count": 9,
+                "receive_bless_count": 9,
+                "spirit_collect_count": 8,
+                "challenge_buy_count": 40,
+                "friend_count": 35
+            },
+            "11": {
+                "id": 11,
+                "lottery_free_count": 11,
+                "exp_card_count": 440,
+                "buy_power_count": 11,
+                "give_bless_count": 10,
+                "receive_bless_count": 10,
+                "spirit_collect_count": 9,
+                "challenge_buy_count": 45,
+                "friend_count": 40
+            },
+            "12": {
+                "id": 12,
+                "lottery_free_count": 12,
+                "exp_card_count": 480,
+                "buy_power_count": 12,
+                "give_bless_count": 11,
+                "receive_bless_count": 11,
+                "spirit_collect_count": 10,
+                "challenge_buy_count": 50,
+                "friend_count": 45
             }
         }
     },
@@ -51329,477 +51800,6 @@ var outputTables = {
             "50": {
                 "id": 50,
                 "money_obtain": 8450
-            }
-        }
-    },
-    "first_recharge_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 764,
-                "card_lv": 20
-            }
-        }
-    },
-    "recharge": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "60魔石",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.pay6",
-                "times": 2
-            },
-            "2": {
-                "id": 2,
-                "name": "300魔石",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.pay30",
-                "times": 2
-            },
-            "3": {
-                "id": 3,
-                "name": "680魔石",
-                "cash": 68,
-                "gold": 76,
-                "product_id": "com.leasuregame.magpie.pay68",
-                "times": 2
-            },
-            "4": {
-                "id": 4,
-                "name": "1280魔石",
-                "cash": 128,
-                "gold": 146,
-                "product_id": "com.leasuregame.magpie.pay128",
-                "times": 2
-            },
-            "5": {
-                "id": 5,
-                "name": "1980魔石",
-                "cash": 198,
-                "gold": 232,
-                "product_id": "com.leasuregame.magpie.pay198",
-                "times": 2
-            },
-            "6": {
-                "id": 6,
-                "name": "3280魔石",
-                "cash": 328,
-                "gold": 403,
-                "product_id": "com.leasuregame.magpie.pay328",
-                "times": 2
-            },
-            "7": {
-                "id": 7,
-                "name": "6480魔石",
-                "cash": 648,
-                "gold": 842,
-                "product_id": "com.leasuregame.magpie.pay648",
-                "times": 3
-            },
-            "8": {
-                "id": 8,
-                "name": "周卡",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.week.card",
-                "daily_gold": 60,
-                "valid_days": 7,
-                "times": 1
-            },
-            "9": {
-                "id": 9,
-                "name": "月卡",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.month.card",
-                "daily_gold": 100,
-                "valid_days": 30,
-                "times": 1
-            }
-        }
-    },
-    "vip": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "name": "Vip1",
-                "cash": 6,
-                "total_cash": 6
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "name": "Vip2",
-                "cash": 50,
-                "total_cash": 56
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "name": "Vip3",
-                "cash": 100,
-                "total_cash": 156
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "name": "Vip4",
-                "cash": 200,
-                "total_cash": 356
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "name": "Vip5",
-                "cash": 500,
-                "total_cash": 856
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "name": "Vip6",
-                "cash": 1000,
-                "total_cash": 1856
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "name": "Vip7",
-                "cash": 2000,
-                "total_cash": 3856
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "name": "Vip8",
-                "cash": 5000,
-                "total_cash": 8856
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "name": "Vip9",
-                "cash": 8000,
-                "total_cash": 16856
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "name": "Vip10",
-                "cash": 10000,
-                "total_cash": 26856
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "name": "Vip11",
-                "cash": 20000,
-                "total_cash": 46856
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "name": "Vip12",
-                "cash": 50000,
-                "total_cash": 96856
-            }
-        }
-    },
-    "vip_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 5000,
-                "money": 100000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "fragments": 2,
-                "exp_card": 0,
-                "price": 18,
-                "true_price": 66
-            },
-            "2": {
-                "id": 2,
-                "energy": 6000,
-                "money": 150000,
-                "skillPoint": 10000,
-                "elixir": 0,
-                "fragments": 3,
-                "exp_card": 0,
-                "price": 58,
-                "true_price": 195
-            },
-            "3": {
-                "id": 3,
-                "energy": 7000,
-                "money": 200000,
-                "skillPoint": 20000,
-                "elixir": 20000,
-                "fragments": 4,
-                "exp_card": 40,
-                "price": 88,
-                "true_price": 246
-            },
-            "4": {
-                "id": 4,
-                "energy": 8000,
-                "money": 250000,
-                "skillPoint": 30000,
-                "elixir": 40000,
-                "fragments": 5,
-                "exp_card": 50,
-                "price": 188,
-                "true_price": 569
-            },
-            "5": {
-                "id": 5,
-                "energy": 9000,
-                "money": 300000,
-                "skillPoint": 40000,
-                "elixir": 60000,
-                "fragments": 6,
-                "exp_card": 60,
-                "price": 288,
-                "true_price": 726
-            },
-            "6": {
-                "id": 6,
-                "energy": 10000,
-                "money": 350000,
-                "skillPoint": 50000,
-                "elixir": 80000,
-                "fragments": 7,
-                "exp_card": 70,
-                "price": 388,
-                "true_price": 1080
-            },
-            "7": {
-                "id": 7,
-                "energy": 11000,
-                "money": 400000,
-                "skillPoint": 60000,
-                "elixir": 100000,
-                "fragments": 8,
-                "exp_card": 80,
-                "price": 488,
-                "true_price": 1368
-            },
-            "8": {
-                "id": 8,
-                "energy": 12000,
-                "money": 450000,
-                "skillPoint": 70000,
-                "elixir": 120000,
-                "fragments": 9,
-                "exp_card": 90,
-                "price": 588,
-                "true_price": 1989
-            },
-            "9": {
-                "id": 9,
-                "energy": 13000,
-                "money": 500000,
-                "skillPoint": 80000,
-                "elixir": 140000,
-                "fragments": 10,
-                "exp_card": 100,
-                "price": 688,
-                "true_price": 2366
-            },
-            "10": {
-                "id": 10,
-                "energy": 14000,
-                "money": 550000,
-                "skillPoint": 90000,
-                "elixir": 160000,
-                "fragments": 11,
-                "exp_card": 110,
-                "price": 788,
-                "true_price": 2899
-            },
-            "11": {
-                "id": 11,
-                "energy": 15000,
-                "money": 600000,
-                "skillPoint": 100000,
-                "elixir": 180000,
-                "fragments": 12,
-                "exp_card": 120,
-                "price": 888,
-                "true_price": 3288
-            },
-            "12": {
-                "id": 12,
-                "energy": 16000,
-                "money": 650000,
-                "skillPoint": 110000,
-                "elixir": 200000,
-                "fragments": 13,
-                "exp_card": 130,
-                "price": 999,
-                "true_price": 3986
-            }
-        }
-    },
-    "vip_privilege": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lottery_free_count": 0,
-                "exp_card_count": 0,
-                "buy_power_count": 0,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "1": {
-                "id": 1,
-                "lottery_free_count": 1,
-                "exp_card_count": 40,
-                "buy_power_count": 1,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "2": {
-                "id": 2,
-                "lottery_free_count": 2,
-                "exp_card_count": 80,
-                "buy_power_count": 2,
-                "give_bless_count": 1,
-                "receive_bless_count": 1,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "3": {
-                "id": 3,
-                "lottery_free_count": 3,
-                "exp_card_count": 120,
-                "buy_power_count": 3,
-                "give_bless_count": 2,
-                "receive_bless_count": 2,
-                "spirit_collect_count": 1,
-                "challenge_buy_count": 5,
-                "friend_count": 0
-            },
-            "4": {
-                "id": 4,
-                "lottery_free_count": 4,
-                "exp_card_count": 160,
-                "buy_power_count": 4,
-                "give_bless_count": 3,
-                "receive_bless_count": 3,
-                "spirit_collect_count": 2,
-                "challenge_buy_count": 10,
-                "friend_count": 5
-            },
-            "5": {
-                "id": 5,
-                "lottery_free_count": 5,
-                "exp_card_count": 200,
-                "buy_power_count": 5,
-                "give_bless_count": 4,
-                "receive_bless_count": 4,
-                "spirit_collect_count": 3,
-                "challenge_buy_count": 15,
-                "friend_count": 10
-            },
-            "6": {
-                "id": 6,
-                "lottery_free_count": 6,
-                "exp_card_count": 240,
-                "buy_power_count": 6,
-                "give_bless_count": 5,
-                "receive_bless_count": 5,
-                "spirit_collect_count": 4,
-                "challenge_buy_count": 20,
-                "friend_count": 15
-            },
-            "7": {
-                "id": 7,
-                "lottery_free_count": 7,
-                "exp_card_count": 280,
-                "buy_power_count": 7,
-                "give_bless_count": 6,
-                "receive_bless_count": 6,
-                "spirit_collect_count": 5,
-                "challenge_buy_count": 25,
-                "friend_count": 20
-            },
-            "8": {
-                "id": 8,
-                "lottery_free_count": 8,
-                "exp_card_count": 320,
-                "buy_power_count": 8,
-                "give_bless_count": 7,
-                "receive_bless_count": 7,
-                "spirit_collect_count": 6,
-                "challenge_buy_count": 30,
-                "friend_count": 25
-            },
-            "9": {
-                "id": 9,
-                "lottery_free_count": 9,
-                "exp_card_count": 360,
-                "buy_power_count": 9,
-                "give_bless_count": 8,
-                "receive_bless_count": 8,
-                "spirit_collect_count": 7,
-                "challenge_buy_count": 35,
-                "friend_count": 30
-            },
-            "10": {
-                "id": 10,
-                "lottery_free_count": 10,
-                "exp_card_count": 400,
-                "buy_power_count": 10,
-                "give_bless_count": 9,
-                "receive_bless_count": 9,
-                "spirit_collect_count": 8,
-                "challenge_buy_count": 40,
-                "friend_count": 35
-            },
-            "11": {
-                "id": 11,
-                "lottery_free_count": 11,
-                "exp_card_count": 440,
-                "buy_power_count": 11,
-                "give_bless_count": 10,
-                "receive_bless_count": 10,
-                "spirit_collect_count": 9,
-                "challenge_buy_count": 45,
-                "friend_count": 40
-            },
-            "12": {
-                "id": 12,
-                "lottery_free_count": 12,
-                "exp_card_count": 480,
-                "buy_power_count": 12,
-                "give_bless_count": 11,
-                "receive_bless_count": 11,
-                "spirit_collect_count": 10,
-                "challenge_buy_count": 50,
-                "friend_count": 45
             }
         }
     }

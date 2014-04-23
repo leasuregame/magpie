@@ -18,9 +18,10 @@ Handler::verifyCdkey = (msg, session, next) ->
   [keyPrefix, val] = cdkey.split('-')
   player = null
   cdkeyRow = null
+  cdkeyDao = @app.get('dao_share').cdkey
   async.waterfall [
     (cb) => 
-      @app.get('dao').cdkey.fetchOne where: code: cdkey, (err, res) ->
+      cdkeyDao.fetchOne where: code: cdkey, (err, res) ->
         if err and err.code is 404
           return cb({code: 501, msg: '激活码不存在'})
         else 
@@ -40,7 +41,7 @@ Handler::verifyCdkey = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.get('dao').cdkey.isAvalifyPlayer playerId, keyPrefix, cb
+      cdkeyDao.isAvalifyPlayer playerId, keyPrefix, cb
     
     (valified, cb) ->
       if valified
@@ -55,7 +56,7 @@ Handler::verifyCdkey = (msg, session, next) ->
       if not data
         return cb({code: 501, msg: '激活码不存在'}, null, null)
 
-      @app.get('dao').cdkey.update {
+      cdkeyDao.update {
         data: activate: 1, playerId: playerId
         where: code: cdkey
       }, (err, updated) ->

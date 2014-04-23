@@ -1,3 +1,216 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?mso-application progid="Excel.Sheet"?>
-<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><DocumentProperties xmlns="urn:schemas-microsoft-com:office:office"><Author>arthur wu</Author><LastAuthor>arthur wu</LastAuthor><Created>2014-03-27T10:40:04</Created><Company>le zhi of zhuhai</Company></DocumentProperties><CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office"><KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer></CustomDocumentProperties><ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel"><WindowWidth>28800</WindowWidth><WindowHeight>11880</WindowHeight><ActiveSheet>1</ActiveSheet><ProtectStructure>False</ProtectStructure><ProtectWindows>False</ProtectWindows></ExcelWorkbook><Styles><Style ss:ID="s5" ss:Name="货币[0]"><NumberFormat ss:Format="_ &quot;￥&quot;* #,##0_ ;_ &quot;￥&quot;* \-#,##0_ ;_ &quot;￥&quot;* &quot;-&quot;_ ;_ @_ "/></Style><Style ss:ID="s4" ss:Name="百分比"><NumberFormat ss:Format="0%"/></Style><Style ss:ID="s3" ss:Name="千位分隔[0]"><NumberFormat ss:Format="_ * #,##0_ ;_ * \-#,##0_ ;_ * &quot;-&quot;_ ;_ @_ "/></Style><Style ss:ID="s2" ss:Name="货币"><NumberFormat ss:Format="_ &quot;￥&quot;* #,##0.00_ ;_ &quot;￥&quot;* \-#,##0.00_ ;_ &quot;￥&quot;* &quot;-&quot;??_ ;_ @_ "/></Style><Style ss:ID="s1" ss:Name="千位分隔"><NumberFormat ss:Format="_ * #,##0.00_ ;_ * \-#,##0.00_ ;_ * &quot;-&quot;??_ ;_ @_ "/></Style><Style ss:ID="Default" ss:Name="Normal"><Alignment ss:Vertical="Bottom"/><Borders/><Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/><Interior/><NumberFormat/><Protection/></Style><Style ss:ID="s6"><Alignment ss:Vertical="Bottom"/><Borders/><Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/><Interior/><NumberFormat/><Protection/></Style><Style ss:ID="s7"><Alignment ss:Vertical="Bottom"/><Borders/><Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/><Interior/><NumberFormat/><Protection/></Style></Styles><Worksheet ss:Name="功能开放等级限制"><Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="3" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19"><Column ss:Index="2" ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="107"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="149"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="107"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="120"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="156"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="124"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="140"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="156"/><Column ss:Index="11" ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="156"/><Row><Cell><Data ss:Type="String">id</Data></Cell><Cell><Data ss:Type="String">竞技开放等级</Data></Cell><Cell><Data ss:Type="String">第3个卡槽开放等级</Data></Cell><Cell><Data ss:Type="String">天道开放等级</Data></Cell><Cell><Data ss:Type="String">技能开启等级</Data></Cell><Cell><Data ss:Type="String">第4个卡槽开放等级</Data></Cell><Cell><Data ss:Type="String">排行榜查看等级</Data></Cell><Cell><Data ss:Type="String">寻宝开放等级</Data></Cell><Cell><Data ss:Type="String">第5个卡槽开放等级</Data></Cell><Cell><Data ss:Type="String">降魔开放等级</Data></Cell><Cell><Data ss:Type="String">被动洗练</Data></Cell></Row><Row><Cell><Data ss:Type="String">id</Data></Cell><Cell><Data ss:Type="String">rank</Data></Cell><Cell><Data ss:Type="String">card3_position</Data></Cell><Cell><Data ss:Type="String">pass</Data></Cell><Cell><Data ss:Type="String">skill_upgrade</Data></Cell><Cell><Data ss:Type="String">card4_position</Data></Cell><Cell><Data ss:Type="String">ranking_list</Data></Cell><Cell><Data ss:Type="String">lottery</Data></Cell><Cell><Data ss:Type="String">card5_position</Data></Cell><Cell><Data ss:Type="String">boss</Data></Cell><Cell><Data ss:Type="String">pass_skillafresh</Data></Cell></Row><Row><Cell><Data ss:Type="Number">1</Data></Cell><Cell><Data ss:Type="Number">5</Data></Cell><Cell><Data ss:Type="Number">6</Data></Cell><Cell><Data ss:Type="Number">10</Data></Cell><Cell><Data ss:Type="Number">10</Data></Cell><Cell><Data ss:Type="Number">15</Data></Cell><Cell><Data ss:Type="Number">20</Data></Cell><Cell><Data ss:Type="Number">25</Data></Cell><Cell><Data ss:Type="Number">35</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell><Cell><Data ss:Type="Number">45</Data></Cell></Row></Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Header x:Margin="0.511805555555556"/><Footer x:Margin="0.511805555555556"/></PageSetup><TopRowVisible>0</TopRowVisible><LeftColumnVisible>0</LeftColumnVisible><Panes><Pane><Number>3</Number><ActiveRow>5</ActiveRow><ActiveCol>10</ActiveCol><RangeSelection>R6C11</RangeSelection></Pane></Panes><ProtectObjects>False</ProtectObjects><ProtectScenarios>False</ProtectScenarios></WorksheetOptions></Worksheet><Worksheet ss:Name="卡槽开放等级配置表"><Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19"><Row><Cell><Data ss:Type="String">阵型索引</Data></Cell><Cell><Data ss:Type="String">卡槽1</Data></Cell><Cell><Data ss:Type="String">卡槽2</Data></Cell><Cell><Data ss:Type="String">卡槽3</Data></Cell><Cell><Data ss:Type="String">卡槽4</Data></Cell><Cell><Data ss:Type="String">卡槽5</Data></Cell></Row><Row><Cell><Data ss:Type="String">id</Data></Cell><Cell><Data ss:Type="String">card_1</Data></Cell><Cell><Data ss:Type="String">card_2</Data></Cell><Cell><Data ss:Type="String">card_3</Data></Cell><Cell><Data ss:Type="String">card_4</Data></Cell><Cell><Data ss:Type="String">card_5</Data></Cell></Row><Row><Cell><Data ss:Type="Number">0</Data></Cell><Cell><Data ss:Type="Number">1</Data></Cell><Cell><Data ss:Type="Number">1</Data></Cell><Cell><Data ss:Type="Number">6</Data></Cell><Cell><Data ss:Type="Number">15</Data></Cell><Cell><Data ss:Type="Number">35</Data></Cell></Row><Row><Cell><Data ss:Type="Number">1</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell><Cell><Data ss:Type="Number">40</Data></Cell></Row></Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Header x:Margin="0.511805555555556"/><Footer x:Margin="0.511805555555556"/></PageSetup><Selected/><TopRowVisible>0</TopRowVisible><LeftColumnVisible>0</LeftColumnVisible><Panes><Pane><Number>3</Number><ActiveRow>3</ActiveRow><ActiveCol>4</ActiveCol><RangeSelection>R4C5</RangeSelection></Pane></Panes><ProtectObjects>False</ProtectObjects><ProtectScenarios>False</ProtectScenarios></WorksheetOptions></Worksheet><Worksheet ss:Name="export"><Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19"><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="156"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="142"/><Row><Cell ss:StyleID="s7"><Data ss:Type="String">sheet_name</Data></Cell><Cell ss:StyleID="s7"><Data ss:Type="String">export_name</Data></Cell><Cell ss:StyleID="s7"><Data ss:Type="String">merge_to</Data></Cell></Row><Row><Cell><Data ss:Type="String">功能开放等级限制</Data></Cell><Cell><Data ss:Type="String">function_limit</Data></Cell></Row><Row><Cell><Data ss:Type="String">卡槽开放等级配置表</Data></Cell><Cell><Data ss:Type="String">card_lineup_limit</Data></Cell></Row></Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Header x:Margin="0.511805555555556"/><Footer x:Margin="0.511805555555556"/></PageSetup><Print><ValidPrinterInfo/><PaperSizeIndex>9</PaperSizeIndex></Print><TopRowVisible>0</TopRowVisible><LeftColumnVisible>0</LeftColumnVisible><Panes><Pane><Number>3</Number><ActiveRow>2</ActiveRow><ActiveCol>0</ActiveCol><RangeSelection>R3C1</RangeSelection></Pane></Panes><ProtectObjects>False</ProtectObjects><ProtectScenarios>False</ProtectScenarios></WorksheetOptions></Worksheet></Workbook>
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-03-27T10:40:04Z</Created>
+  <Company>le zhi of zhuhai</Company>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
+ </CustomDocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>8120</WindowHeight>
+  <WindowWidth>32900</WindowWidth>
+  <WindowTopX>1580</WindowTopX>
+  <WindowTopY>2640</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="功能开放等级限制">
+  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="107"/>
+   <Column ss:AutoFitWidth="0" ss:Width="149"/>
+   <Column ss:AutoFitWidth="0" ss:Width="107"/>
+   <Column ss:AutoFitWidth="0" ss:Width="120"/>
+   <Column ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:AutoFitWidth="0" ss:Width="124"/>
+   <Column ss:AutoFitWidth="0" ss:Width="140"/>
+   <Column ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="156"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">竞技开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">第3个卡槽开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">天道开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">技能开启等级</Data></Cell>
+    <Cell><Data ss:Type="String">第4个卡槽开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">排行榜查看等级</Data></Cell>
+    <Cell><Data ss:Type="String">寻宝开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">第5个卡槽开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">降魔开放等级</Data></Cell>
+    <Cell><Data ss:Type="String">被动洗练</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">rank</Data></Cell>
+    <Cell><Data ss:Type="String">card3_position</Data></Cell>
+    <Cell><Data ss:Type="String">pass</Data></Cell>
+    <Cell><Data ss:Type="String">skill_upgrade</Data></Cell>
+    <Cell><Data ss:Type="String">card4_position</Data></Cell>
+    <Cell><Data ss:Type="String">ranking_list</Data></Cell>
+    <Cell><Data ss:Type="String">lottery</Data></Cell>
+    <Cell><Data ss:Type="String">card5_position</Data></Cell>
+    <Cell><Data ss:Type="String">boss</Data></Cell>
+    <Cell><Data ss:Type="String">pass_skillafresh</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">45</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>6</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="卡槽开放等级配置表">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">阵型索引</Data></Cell>
+    <Cell><Data ss:Type="String">卡槽1</Data></Cell>
+    <Cell><Data ss:Type="String">卡槽2</Data></Cell>
+    <Cell><Data ss:Type="String">卡槽3</Data></Cell>
+    <Cell><Data ss:Type="String">卡槽4</Data></Cell>
+    <Cell><Data ss:Type="String">卡槽5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">card_1</Data></Cell>
+    <Cell><Data ss:Type="String">card_2</Data></Cell>
+    <Cell><Data ss:Type="String">card_3</Data></Cell>
+    <Cell><Data ss:Type="String">card_4</Data></Cell>
+    <Cell><Data ss:Type="String">card_5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">55</Data></Cell>
+    <Cell><Data ss:Type="Number">65</Data></Cell>
+    <Cell><Data ss:Type="Number">75</Data></Cell>
+    <Cell><Data ss:Type="Number">80</Data></Cell>
+    <Cell><Data ss:Type="Number">85</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:AutoFitWidth="0" ss:Width="142"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">功能开放等级限制</Data></Cell>
+    <Cell><Data ss:Type="String">function_limit</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">卡槽开放等级配置表</Data></Cell>
+    <Cell><Data ss:Type="String">card_lineup_limit</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

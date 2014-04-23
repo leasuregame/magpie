@@ -113,6 +113,10 @@ app.configure('production|development', 'area', function() {
   app.before(cdFilter());
 
   appUtil.loadDatabaseInfo(app, 'areadb');
+  appUtil.loadShareDatabaseInfo(app);
+
+  var dao_share = require('./app/dao').init('mysql', 'share');
+  app.set('dao_share', dao_share);
 
   app.load(counter);
   app.load(verifier);

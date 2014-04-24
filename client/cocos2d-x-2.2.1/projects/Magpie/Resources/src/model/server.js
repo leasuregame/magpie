@@ -424,12 +424,18 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
+        var areaId = gameData.user.get("area");
+
         if (this._areaList) {
             var len = this._areaList.length;
 
-            if (len > 0) {
-                return this._areaList[len - 1].id;
+            for (var i = 0; i < len; ++i) {
+                if (areaId == this._areaList[i].id) {
+                    return areaId;
+                }
             }
+
+            return this._areaList[len - 1].id;
         }
 
         return 0;

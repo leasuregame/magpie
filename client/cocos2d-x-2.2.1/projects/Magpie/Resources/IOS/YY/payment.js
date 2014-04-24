@@ -154,9 +154,7 @@ var Payment = Entity.extend({
             for (var key in table) {
                 if (table[key].product_id == paymentData.product) {
                     // YY数据收集
-                    if (yyAdapter && yyAdapter.YYGameConsumeOnServer) {
-                        yyAdapter.YYGameConsumeOnServer(gameData.user.get("area"), table[key].cash);
-                    }
+                    yyAdapter.YYGameConsumeOnServer(gameData.user.get("area"), table[key].cash);
 
                     break;
                 }

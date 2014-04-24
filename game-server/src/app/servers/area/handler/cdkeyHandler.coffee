@@ -2,6 +2,7 @@ async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 entityUtil = require('../../../util/entityUtil')
+_ = require 'underscore'
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,6 +11,7 @@ Handler = (@app) ->
 
 Handler::verifyCdkey = (msg, session, next) ->
   playerId = session.get('playerId')
+  areaId = session.get('areaId')
   cdkey = msg.cdkey
 
   if not cdkey or not validCdkey(cdkey)
@@ -28,10 +30,15 @@ Handler::verifyCdkey = (msg, session, next) ->
           cb(err, res)
     
     (row, cb) =>
+      console.log row
       if not row
         return cb({code: 501, msg: '激活码不存在'})
+
       if row.activate is 1
         return cb({code: 501, msg: '激活码已使用过'})
+
+      if _.isArray(row.area) and row.area.length > 0 and areaId not in row.area
+        return cb({code: 501, msg: '激活码不能在该区使用'})
 
       ed = new Date(row.endDate.toDateString())
       ed.setDate(ed.getDate()+1)

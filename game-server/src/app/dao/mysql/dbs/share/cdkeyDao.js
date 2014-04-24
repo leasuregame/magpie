@@ -15,16 +15,23 @@ var CdkeyDao = (function(_super) {
   CdkeyDao.dbClient = dbClient;
 
   var domain = function(attrs) {
-    this.code = attrs.code,
-    this.playerId = attrs.playerId,
-    this.activate = attrs.activate,
-    this.startDate = attrs.startDate,
-    this.endDate = attrs.endDate
+    this.code = attrs.code;
+    this.playerId = attrs.playerId;
+    this.activate = attrs.activate;
+    this.startDate = attrs.startDate;
+    this.endDate = attrs.endDate;
+    
+    if (attrs.area && typeof attrs.area == 'string') {
+      this.area = JSON.parse(attrs.area);
+    } else {
+      this.area = null;
+    }
   };
   domain.DEFAULT_VALUES = {
-    activate: 0
+    activate: 0,
+    area: []
   };
-  domain.FIELDS = ['code', 'playerId', 'activate', 'startDate', 'endDate'];
+  domain.FIELDS = ['code', 'playerId', 'activate', 'startDate', 'endDate', 'area'];
   CdkeyDao.domain = domain;
 
   CdkeyDao.isAvalifyPlayer = function (playerId, prefix, cb) {

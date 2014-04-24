@@ -20,6 +20,13 @@
 			"database": "userdb",
 			"user": "dev",
 			"password": "1"
+		},
+		"sharedb": {
+			"host": "127.0.0.1",
+			"port": "3306",
+			"database": "sharedb",
+			"user": "dev",
+			"password": "1"
 		}
 	},
 
@@ -42,6 +49,13 @@
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
 			"database": "tb_db_userdb",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
+		},
+		"sharedb": {
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_db_sharedb",
 			"user": "tb_leasuregame",
 			"password": "leasure405GAME"
 		}

@@ -1,6 +1,7 @@
 path = require('path')
 fs = require('fs')
 sync = require('pomelo-sync-plugin')
+Mysql = require('../dao/mysql/mysql')
 
 util = module.exports
 
@@ -39,9 +40,8 @@ util.loadDatabaseInfo = (app, type) ->
     areaId = app.get('curServer').area
     app.set 'mysql', mysqlConfig[env][areaId]
 
-  dbClient = require(app.getBase() + '/app/dao/mysql/mysql').init(app)
+  dbClient = new Mysql(app)
   app.set('dbClient', dbClient)
-
   app.use sync, {
     sync: {
       path: app.getBase() + '/app/dao/mysql/mapping/' + (if type is 'userdb' then 'user' else 'area'),
@@ -49,3 +49,12 @@ util.loadDatabaseInfo = (app, type) ->
       interval: 60000
     }
   }
+
+util.loadShareDatabaseInfo = (app) ->
+  mysqlPath = path.join app.getBase(), 'config', 'mysql.json'
+  env = app.get('env')
+  mysqlConfig = JSON.parse(fs.readFileSync(mysqlPath))
+
+  app.set 'mysql_sharedb', mysqlConfig[env]['sharedb']
+  dbClient = new Mysql(app, 'mysql_sharedb')
+  app.set('dbClient_sharedb', dbClient)

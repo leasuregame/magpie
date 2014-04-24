@@ -146,7 +146,7 @@ class Authorize
     text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
     if args.signid is md5(text).toUpperCase()
       
-      fetchUserInfoOrCreate "yy-#{args.account}", null, (err, user) ->
+      fetchUserInfoOrCreate "yy-#{args.account}", null, {name: args.userName}, (err, user) ->
         if err
           return cb(err)
 
@@ -227,16 +227,22 @@ ppErrorMessage = (result) ->
   code: 501, msg: errorCode[result.status.toString(16)] or '无法识别的状态'
 
 
-fetchUserInfoOrCreate = (account, id, done) ->
-  userData = account: account
-  userData.id = id if id
+fetchUserInfoOrCreate = (account, id, data, done) ->
+  if not done
+    done = data 
+    data = {}
+
+  where = account: account
+  where.id = id if id
+  _.extend data, where
+
   dao.user.fetchOne {
-    where: userData
+    where: where
     sync: true
   }, (err, user) ->
     if err and err.code is 404
       dao.user.create
-        data: userData
+        data: data
       , (e, u) ->
         if e and not u
           logger.error('can not create user: ', id, account)

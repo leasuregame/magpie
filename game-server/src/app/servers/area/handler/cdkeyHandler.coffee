@@ -53,7 +53,7 @@ Handler::verifyCdkey = (msg, session, next) ->
       cb()
 
     (cb) =>
-      cdkeyDao.isAvalifyPlayer playerId, keyPrefix, cb
+      cdkeyDao.isAvalifyPlayer playerId, keyPrefix, areaId, cb
     
     (valified, cb) ->
       if valified
@@ -69,8 +69,8 @@ Handler::verifyCdkey = (msg, session, next) ->
         return cb({code: 501, msg: '激活码不存在'}, null, null)
 
       cdkeyDao.update {
-        data: activate: 1, playerId: playerId
-        where: code: cdkey
+        data: activate: 1, playerId: playerId, areaId: areaId
+        where: code: cdkey,
       }, (err, updated) ->
         updatePlayer(@app, player, data, cb)
   ], (err, data, player, cards) ->

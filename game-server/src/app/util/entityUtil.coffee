@@ -57,7 +57,7 @@ module.exports =
           money: 50000
           skillPoint: 50000
           energy: 5000
-          powerValue: 200
+          powerValue: 100
           gold: 200
         player.increase('money', level9Box.money)
         player.increase('skillPoint', level9Box.skillPoint)

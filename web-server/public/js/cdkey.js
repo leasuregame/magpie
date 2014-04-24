@@ -2,7 +2,7 @@ $(function() {
   function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
+      results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
@@ -15,7 +15,8 @@ $(function() {
         prefix: $('#cdkeyPrefix').val(),
         startDate: $('#startDate').val(),
         endDate: $('#endDate').val(),
-        qty: $('#keyQty').val()
+        qty: $('#keyQty').val(),
+        area: $('#area').val()
       },
       dataType: 'json'
     }).success(function(data) {
@@ -41,12 +42,12 @@ $(function() {
 
   $('#btnSearch').click(function(e) {
     $.ajax({
-      url: '/admin/cdkey/search', 
+      url: '/admin/cdkey/search',
       data: {
         q: $('#queryText').val()
       },
       dataType: 'json',
-    }).success(function(data){
+    }).success(function(data) {
       if (data.length == 0) {
         return alert('没有任何数据！');
       }
@@ -60,10 +61,23 @@ $(function() {
       }
 
       $('table tbody').html(html);
-    }).error(function(data){
+    }).error(function(data) {
       console.log('err', data);
     })
   });
 
-  
+
+  function initList() {
+    var inner = "";
+    inner += '<option value = "-1">所有</option>';
+    servers.forEach(function(area) {
+      inner += '<option value =' + area.id + '>' + area.id + '区 ' + area.name + '</option>';
+    });
+    $("#area").append(inner);
+  };
+
+  initServer(function() {
+    initList();
+  });
+
 });

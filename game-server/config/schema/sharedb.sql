@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS `cdkey` (
   `activate` SMALLINT(1) DEFAULT '0',
   `startDate` DATE,
   `endDate` DATE,
+  `area` VARCHAR(512),
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

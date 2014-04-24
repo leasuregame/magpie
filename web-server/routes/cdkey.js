@@ -47,15 +47,21 @@ exports.manage = function(req, res) {
 };
 
 exports.pregenerate = function(req, res) {
-  var prefix = req.query.prefix;
-  startDate = req.query.startDate;
-  endDate = req.query.endDate;
-  qty = req.query.qty;
+  var prefix = req.query.prefix,
+  startDate = req.query.startDate,
+  endDate = req.query.endDate,
+  qty = parseInt(req.query.qty),
+  area = parseInt(req.query.area);
+
+  var areaInfo = [];
+  if (area > -1) {
+    areaInfo.push(area);
+  }
 
   if (qty == '') {
     qty = 1;
   } else {
-    qty = parseInt(qty);
+    qty = qty;
   }
 
   uids = []
@@ -66,7 +72,8 @@ exports.pregenerate = function(req, res) {
     return {
       code: id,
       startDate: startDate,
-      endDate: endDate
+      endDate: endDate,
+      area: JSON.stringify(areaInfo)
     };
   })
 
@@ -86,7 +93,6 @@ exports.pregenerate = function(req, res) {
 };
 
 exports.generate = function(req, res) {
-  console.log(req.body);
   res.send(shortid.generate());
 };
 

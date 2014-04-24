@@ -8,6 +8,15 @@ var localDateString = function(date) {
   return util.format('%s-%s-%s', date.getFullYear(), date.getMonth() + 1, date.getDate());
 };
 
+var areaString = function(area) {
+  var _str = '';
+  for (var i = 0; i < area.length; i++) {
+    var a = area[i];
+    _str += '' + a + '区, ';
+  }
+  return _str.slice(0, -2);
+};
+
 exports.manage = function(req, res) {
   var page = (req.query.page != null ? req.query.page : 1) || 1;
   var used = req.query.used != null ? req.query.used : -1;
@@ -38,12 +47,12 @@ exports.manage = function(req, res) {
         rows: rows.map(function(r) {
           r.startDate = localDateString(r.startDate);
           r.endDate = localDateString(r.endDate);
+          r.area = r.area != null && typeof r.area == 'string' ? areaString(JSON.parse(r.area)) : '所有';
           return r;
         })
       });
     });
   });
-
 };
 
 exports.pregenerate = function(req, res) {

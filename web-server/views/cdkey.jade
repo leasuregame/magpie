@@ -48,6 +48,7 @@ block content
               strong(style='color:red') &nbsp;&nbsp;(总数:#{totalCount})
             th 开始日期
             th 结束日期
+            th 区服
             th(style='color: red')
               div.radios
                 label
@@ -67,6 +68,7 @@ block content
               td #{row.code}
               td #{row.startDate}
               td #{row.endDate}
+              td #{row.area}
               td #{row.activate}
       div(style='float: right')
         ul(id="paginator")

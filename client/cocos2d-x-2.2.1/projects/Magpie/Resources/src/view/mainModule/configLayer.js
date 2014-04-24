@@ -154,71 +154,6 @@ var ConfigLayer = cc.Layer.extend({
         soundItem.addChild(this._soundSelect);
         this._soundSelect.setVisible(this._soundOpen);
 
-        var noticeItem = cc.MenuItemImage.create(
-            main_scene_image.icon127,
-            main_scene_image.icon127,
-            this._onClickNotice,
-            this
-        );
-        noticeItem.setAnchorPoint(cc.p(0, 0.5));
-        noticeItem.setPosition(cc.p(15, y));
-        itemMenu.addChild(noticeItem);
-        y -= 120;
-
-        var noticeItemTitle = StrokeLabel.create("公告", "STHeitiTC-Medium", 30);
-        noticeItemTitle.setAnchorPoint(cc.p(0, 0.5));
-        noticeItemTitle.setPosition(cc.p(40, 55));
-        noticeItem.addChild(noticeItemTitle);
-
-        var noticeIcon = cc.Sprite.create(main_scene_image.icon273);
-        noticeIcon.setAnchorPoint(cc.p(0, 0.5));
-        noticeIcon.setPosition(cc.p(518, 55));
-        noticeItem.addChild(noticeIcon);
-
-        var tipsItem = cc.MenuItemImage.create(
-            main_scene_image.icon127,
-            main_scene_image.icon127,
-            this._onClickTips,
-            this
-        );
-        tipsItem.setAnchorPoint(cc.p(0, 0.5));
-        tipsItem.setPosition(cc.p(15, y));
-        itemMenu.addChild(tipsItem);
-        y -= 120;
-
-        var tipsItemTitle = StrokeLabel.create("攻略", "STHeitiTC-Medium", 30);
-        tipsItemTitle.setAnchorPoint(cc.p(0, 0.5));
-        tipsItemTitle.setPosition(cc.p(40, 55));
-        tipsItem.addChild(tipsItemTitle);
-
-        var tipIcon = cc.Sprite.create(main_scene_image.icon273);
-        tipIcon.setAnchorPoint(cc.p(0, 0.5));
-        tipIcon.setPosition(cc.p(518, 55));
-        tipsItem.addChild(tipIcon);
-
-        if (lz.platformShowCenter) {
-            var gameCenterItem = cc.MenuItemImage.create(
-                main_scene_image.icon127,
-                main_scene_image.icon127,
-                this._onClickShowCenter,
-                this
-            );
-            gameCenterItem.setAnchorPoint(cc.p(0, 0.5));
-            gameCenterItem.setPosition(cc.p(15, y));
-            itemMenu.addChild(gameCenterItem);
-            y -= 120;
-
-            var gameCenterItemTitle = StrokeLabel.create("用户中心", "STHeitiTC-Medium", 30);
-            gameCenterItemTitle.setAnchorPoint(cc.p(0, 0.5));
-            gameCenterItemTitle.setPosition(cc.p(40, 55));
-            gameCenterItem.addChild(gameCenterItemTitle);
-
-            var gameCenterIcon = cc.Sprite.create(main_scene_image.icon273);
-            gameCenterIcon.setAnchorPoint(cc.p(0, 0.5));
-            gameCenterIcon.setPosition(cc.p(518, 55));
-            gameCenterItem.addChild(gameCenterIcon);
-        }
-
         var framesBgLabel = cc.Sprite.create(main_scene_image.icon127);
         framesBgLabel.setAnchorPoint(cc.p(0, 0.5));
         framesBgLabel.setPosition(cc.p(15, y));
@@ -304,6 +239,71 @@ var ConfigLayer = cc.Layer.extend({
         QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);
+
+        var noticeItem = cc.MenuItemImage.create(
+            main_scene_image.icon127,
+            main_scene_image.icon127,
+            this._onClickNotice,
+            this
+        );
+        noticeItem.setAnchorPoint(cc.p(0, 0.5));
+        noticeItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(noticeItem);
+        y -= 120;
+
+        var noticeItemTitle = StrokeLabel.create("公告", "STHeitiTC-Medium", 30);
+        noticeItemTitle.setAnchorPoint(cc.p(0, 0.5));
+        noticeItemTitle.setPosition(cc.p(40, 55));
+        noticeItem.addChild(noticeItemTitle);
+
+        var noticeIcon = cc.Sprite.create(main_scene_image.icon273);
+        noticeIcon.setAnchorPoint(cc.p(0, 0.5));
+        noticeIcon.setPosition(cc.p(518, 55));
+        noticeItem.addChild(noticeIcon);
+
+        var tipsItem = cc.MenuItemImage.create(
+            main_scene_image.icon127,
+            main_scene_image.icon127,
+            this._onClickTips,
+            this
+        );
+        tipsItem.setAnchorPoint(cc.p(0, 0.5));
+        tipsItem.setPosition(cc.p(15, y));
+        itemMenu.addChild(tipsItem);
+        y -= 120;
+
+        var tipsItemTitle = StrokeLabel.create("攻略", "STHeitiTC-Medium", 30);
+        tipsItemTitle.setAnchorPoint(cc.p(0, 0.5));
+        tipsItemTitle.setPosition(cc.p(40, 55));
+        tipsItem.addChild(tipsItemTitle);
+
+        var tipIcon = cc.Sprite.create(main_scene_image.icon273);
+        tipIcon.setAnchorPoint(cc.p(0, 0.5));
+        tipIcon.setPosition(cc.p(518, 55));
+        tipsItem.addChild(tipIcon);
+
+        if (lz.platformShowCenter) {
+            var gameCenterItem = cc.MenuItemImage.create(
+                main_scene_image.icon127,
+                main_scene_image.icon127,
+                this._onClickShowCenter,
+                this
+            );
+            gameCenterItem.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterItem.setPosition(cc.p(15, y));
+            itemMenu.addChild(gameCenterItem);
+            y -= 120;
+
+            var gameCenterItemTitle = StrokeLabel.create("用户中心", "STHeitiTC-Medium", 30);
+            gameCenterItemTitle.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterItemTitle.setPosition(cc.p(40, 55));
+            gameCenterItem.addChild(gameCenterItemTitle);
+
+            var gameCenterIcon = cc.Sprite.create(main_scene_image.icon273);
+            gameCenterIcon.setAnchorPoint(cc.p(0, 0.5));
+            gameCenterIcon.setPosition(cc.p(518, 55));
+            gameCenterItem.addChild(gameCenterIcon);
+        }
 
         var go2LoginItem = cc.MenuItemImage.create(
             main_scene_image.icon127,

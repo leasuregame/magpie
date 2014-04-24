@@ -83,7 +83,7 @@ var PaymentLayer = LazyLayer.extend({
 
         var nextVipCash = gameData.shop.getNextVipCash();
         var vip = gameData.player.get("vip");
-        cc.log(nextVipCash);
+
         if (nextVipCash) {
             var tipLabel = ColorLabelTTF.create(
                 {
